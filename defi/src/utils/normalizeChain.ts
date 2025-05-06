@@ -1940,7 +1940,7 @@ export const chainCoingeckoIds = {
     github: ['matter-labs'],
     symbol: "ZK",
     cmcId: "24091",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -3273,7 +3273,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3613,7 +3613,7 @@ export const chainCoingeckoIds = {
     geckoId: "sophon",
     symbol: "SOPH",
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2"],
@@ -3833,7 +3833,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -3847,7 +3847,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -4187,6 +4187,66 @@ export const chainCoingeckoIds = {
     url: "https://initia.xyz", 
     github: ["initia-labs"],
   }, 
+  "Treasure": {
+    geckoId: "magic",
+    symbol: "MAGIC",
+    cmcId: "14783",
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: "Eigen",
+    },
+    twitter: "treasure_dao",
+    url: "https://treasure.lol/",
+    github: ["treasureproject"],
+    chainId: 61166
+  },
+  "Lens": {
+    geckoId: "gho",
+    symbol: "GHO",
+    cmcId: "23508",
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: "Avail",
+    },
+    twitter: "lc",
+    url: "https://lens.xyz/",
+    github: ["lens-protocol"],
+    chainId: 232
+  },
+  "OpenZK": {
+    geckoId: null,
+    symbol: "ozETH",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: "Ethereum",
+    },
+    twitter: "OpenZkNetwork",
+    url: "https://www.openzk.net/",
+    github: null,
+    chainId: 1345
+  },
+  "ZKcandy": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: "Avail",
+    },
+    twitter: "ZKcandyHQ",
+    url: "https://zkcandy.io/",
+    github: null,
+    chainId: 320
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4272,7 +4332,6 @@ const chainLabelMap = {
   "europa": "Europa",
   "core": "CORE",
   "rpg": "Rangers",
-  //"era": "ZKsync Era",
   "bfc": "Bifrost Network",
   "chainx": "BEVM",
   "ftn": "Bahamut",

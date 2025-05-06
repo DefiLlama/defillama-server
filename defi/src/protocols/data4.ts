@@ -13343,5 +13343,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1746552214
   },
+  {
+    id: "6141",
+    name: "TAKOSWAP",
+    address: "ogpu:0x9CBAb677B5dAE21c2EEdf491aA5E3D07Eb7b813B",
+    symbol: "TAKO",
+    url: "https://takoswap.app/",
+    description: "Decentralized exchange on OpenGPU",
+    chain: "OpenGPU",
+    logo: `${baseIconsUrl}/takoswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["OpenGPU"],
+    module: "TAKOSWAP/index.js",
+    twitter: "takoswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1746560861
+  },
 ];
 export default data4;

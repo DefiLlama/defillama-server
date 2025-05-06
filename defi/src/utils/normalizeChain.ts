@@ -4186,6 +4186,14 @@ export const chainCoingeckoIds = {
     twitter: "initia",
     url: "https://initia.xyz", 
     github: ["initia-labs"],
+  },
+  "OpenGPU": {
+    geckoId: "open-gpu",
+    symbol: "OGPU",
+    cmcId: "30751",
+    categories: ["EVM"],
+    twitter: "OpenGPUfndn",
+    url: "https://opengpu.network/",
   }, 
 } as unknown as ChainCoinGekcoIds
 
@@ -4374,6 +4382,7 @@ const chainLabelMap = {
   "lukso": "LUKSO",
   "aleph_zero": "Aleph Zero EVM",
   "gravity": "Gravity",
+  "ogpu": "OpenGPU"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

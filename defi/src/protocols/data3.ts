@@ -20089,6 +20089,10 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "solv-protocol-funds/index.js",
     twitter: "SolvProtocol",
+    tokensExcludedFromParent: {
+      Binance: ["SOLVBTC.JUP", "SOLVBTC.ENA"],
+      Soneium: ["SOLVBTC.JUP"],
+    },
     audit_links: ["https://github.com/solv-finance/Audit"],
     parentProtocol: "parent#solv-protocol",
     listedAt: 1695959391,

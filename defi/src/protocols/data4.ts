@@ -13249,7 +13249,35 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#solv-protocol",
+    tokensExcludedFromParent: {
+      Ethereum: ["SOLVBTC"],
+      Binance: ["SOLVBTC"],
+      Avalanche: ["SOLVBTC"],
+    },
     listedAt: 1746523182
+  },
+  {
+    id: "6137",
+    name: "Turtle Club",
+    address: null,
+    symbol: "-",
+    url: "https://turtle.club",
+    description: "Turtle Club is a liquidity distribution protocol that helps you earn more from your Web3 activity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/turtle-club.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    module: "TurtleClub/index.js",
+    treasury: "turtleclub.js",
+    twitter: "turtleclubhouse",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Turtle-DAO"],
+    listedAt: 1746529678
   },
 ];
 export default data4;

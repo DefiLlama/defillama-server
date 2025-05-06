@@ -13229,5 +13229,27 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1746445991
   },
+  {
+    id: "6136",
+    name: "Solv Strategies",
+    address: null,
+    symbol: "-",
+    url: "https://solv.finance",
+    description: "Pioneering A Decentralized Bitcoin Reserve with SolvBTC.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/solv-strategies.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Binance"],
+    module: "solv-strategies/index.js",
+    twitter: "SolvProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#solv-protocol",
+    listedAt: 1746523182
+  },
 ];
 export default data4;

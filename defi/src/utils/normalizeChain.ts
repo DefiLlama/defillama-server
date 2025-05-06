@@ -2474,7 +2474,7 @@ export const chainCoingeckoIds = {
   "Mode": {
     geckoId: "mode",
     symbol: "MODE",
-    cmcId: null,
+    cmcId: "31016",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",

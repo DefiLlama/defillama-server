@@ -6977,7 +6977,7 @@ const parentProtocols: IParentProtocol[] = [
     description: "A social network where every post is a coin.",
     logo: `${baseIconsUrl}/zora-protocol.jpg`,
     gecko_id: "zora",
-    cmcId: null,
+    cmcId: "35931",
     chains: [],
     twitter: "zora",
     governanceID: ["snapshot:zora.eth"],

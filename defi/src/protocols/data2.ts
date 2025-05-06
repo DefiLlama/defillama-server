@@ -26715,7 +26715,7 @@ const data2: Protocol[] = [
     id: "2521",
     name: "Ethereum Foundation",
     address: null,
-    symbol: "-",
+    symbol: "ETH",
     url: "https://ethereum.foundation",
     description:
       "The Ethereum Foundation (EF) is a non-profit that supports the Ethereum ecosystem. We are part of a larger community of organizations and individuals that fund protocol development, grow the ecosystem, and advocate for Ethereum.",
@@ -26724,7 +26724,7 @@ const data2: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "ethereum",
-    cmcId: null,
+    cmcId: "1027",
     category: "Foundation",
     chains: ["Ethereum"],
     module: "dummy.js",

@@ -3576,14 +3576,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#idex",
-    name: "IDEX",
-    url: "https://idex.io/",
-    description: `The fastest, most secure decentralized exchange`,
-    logo: `${baseIconsUrl}/idex.png`,
+    name: "Kuma", // previously IDEX
+    url: "https://kuma.bid/",
+    description: `Proof-of-Liquidity Perpetuals DEX`,
+    logo: `${baseIconsUrl}/kuma.png`,
     gecko_id: "aurora-dao",
     cmcId: "310",
     chains: [],
-    twitter: "idexio",
+    twitter: "kumadotbid",
     github: ["idexio"],
   },
   {

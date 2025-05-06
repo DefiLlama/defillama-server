@@ -2654,7 +2654,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
     logo: `${baseIconsUrl}/spacefi.png`,
-    gecko_id: null,
+    gecko_id: "spacefi-zksync",
     cmcId: null,
     chains: [],
     twitter: "spacefi_io",
@@ -5908,7 +5908,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Solayer is the restaking protocol on Solana, securing both endogenous AVS (dApps) through stake-weighted quality of service and exogenous AVS via Solana-based POS primitives",
     logo: `${baseIconsUrl}/solayer.jpg`,
-    gecko_id: null,
+    gecko_id: "solayer",
     cmcId: null,
     chains: [],
     twitter: "solayer_labs",
@@ -6976,7 +6976,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://zora.co/explore",
     description: "A social network where every post is a coin.",
     logo: `${baseIconsUrl}/zora-protocol.jpg`,
-    gecko_id: null,
+    gecko_id: "zora",
     cmcId: null,
     chains: [],
     twitter: "zora",

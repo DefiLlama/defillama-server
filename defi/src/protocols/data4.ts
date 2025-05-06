@@ -11824,14 +11824,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6071",
-    name: "LNDfi",
+    name: "LND",
+    previousNames: ["LNDfi"],
     address: null,
     symbol: "-",
     url: "https://LND.fi",
     description:
       "LNDfi is a modular, interconnected, non-custodial money market platform. Designed to enhance capital efficiency and broaden liquidity access across diverse assets, it provides a flexible framework that enables market participants to manage risk effectively while streamlining borrowing and lending. Built for a multichain ecosystem, LND seamlessly integrates across multiple networks, maximizing interoperability and expanding access to liquidity",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/lndfi.jpg`,
+    logo: `${baseIconsUrl}/lnd.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

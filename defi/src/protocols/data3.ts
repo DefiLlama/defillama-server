@@ -40600,7 +40600,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/magpie-protocol.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "magpie",
+    gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
     chains: ["Ethereum", "Arbitrum", "Base", "Avalanche", "Optimism", "Polygon"],

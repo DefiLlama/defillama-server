@@ -20071,13 +20071,14 @@ const data3: Protocol[] = [
   {
     id: "3572",
     name: "Solv Basis Trading",
+    previousNames: ["Solv Funds"],
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
     url: "https://solv.finance/",
     description:
       "Solv Basis Trading offers products that use advanced strategies, like basis trades and hedging, to deliver consistent, low-risk returns. By balancing market movements, these solutions allow Bitcoin holders to generate steady profits.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/solv-funds.png`,
+    logo: `${baseIconsUrl}/solv-basis-trading.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

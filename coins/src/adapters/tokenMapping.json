@@ -48,7 +48,19 @@
       "to": "coingecko#usd-coin"
     }
   },
+  "ogpu": {
+    "0x4714383df98d792db7b9e16eba90df75cbf0388d": {
+      "decimals": "18",
+      "symbol": "WOGPU",
+      "to": "coingecko#open-gpu"
+    }
+  },
   "berachain": {
+    "0x656b95E550C07a9ffe548bd4085c72418Ceb1dba": {
+      "decimals": "18",
+      "symbol": "BGT",
+      "to": "coingecko#berachain-bera"
+    },
     "0x5475611dffb8ef4d697ae39df9395513b6e947d7": {
       "decimals": "18",
       "symbol": "srUSD",

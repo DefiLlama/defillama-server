@@ -1323,6 +1323,11 @@
     }
   },
   "rsk": {
+    "0xaf368c91793cb22739386dfcbbb2f1a9e4bcbebf": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "RBTC",

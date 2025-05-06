@@ -3347,8 +3347,8 @@ export const chainCoingeckoIds = {
       chain: "Arbitrum",
       types: ["L3"]
     },
-    twitter: "idexio",
-    url: "https://idex.io/"
+    twitter: "kumadotbid",
+    url: "https://kuma.bid/"
   },
   "Zircuit": {
     geckoId: "zircuit",

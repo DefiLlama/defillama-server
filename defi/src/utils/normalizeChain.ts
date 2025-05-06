@@ -4156,6 +4156,28 @@ export const chainCoingeckoIds = {
     twitter: "Aleph__Zero",
     url: "https://alephzero.org",
   }, 
+  "Flame": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Rollup"],
+    chainId: 253368190,
+    parent: {
+      chain: "Celestia",
+      types: ["L2", "gas"],
+    },
+    twitter: "Flame_evm",
+    url: "https://www.astria.org/flame"
+  },
+  "Basecamp": {
+    geckoId: null,
+    symbol: "CAMP",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 123420001114,
+    twitter: "campnetworkxyz",
+    url: "https://www.campnetwork.xyz/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

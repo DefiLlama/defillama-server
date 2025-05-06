@@ -3338,7 +3338,7 @@ export const chainCoingeckoIds = {
     twitter: "Chainflip",
     url: "https://chainflip.io/"
   },
-  "IDEX": {
+  "XCHAIN": {
     geckoId: "aurora-dao",
     symbol: "IDEX",
     cmcId: null,
@@ -4373,7 +4373,7 @@ const chainLabelMap = {
   "babylon": "Babylon Genesis",
   "lukso": "LUKSO",
   "aleph_zero": "Aleph Zero EVM",
-  "gravity": "Gravity"
+  "gravity": "Gravity",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4419,7 +4419,8 @@ const newChainLabelMap = {
   "wax": "Wax",
   "unit0": "Unit Zero",
   "eos": "Vaulta",
-  "gravity": "Gravity by Galxe"
+  "gravity": "Gravity by Galxe",
+  "idex": "XCHAIN"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

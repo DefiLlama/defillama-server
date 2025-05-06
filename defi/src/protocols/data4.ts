@@ -13321,5 +13321,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1746530626
   },
+  {
+    id: "6140",
+    name: "CMswap",
+    address: null,
+    symbol: "-",
+    url: "https://cmswap.xyz",
+    description: "Crypto Multiverse of Community — A DEX based on Uniswap V3",
+    chain: "JBC",
+    logo: `${baseIconsUrl}/cmswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["JBC", "Bitkub"],
+    module: "cmswap/index.js",
+    twitter: "CMswap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1746552214
+  },
 ];
 export default data4;

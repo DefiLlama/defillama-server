@@ -178,18 +178,21 @@ async function _storeAppMetadata() {
       mapKey: 'revenue', data: revenueData, finalDataKeys: {
         dailyRevenue: 'total24h',
         revenue30d: 'total30d',
+        allTimeRevenue: 'totalAllTime',
       }
     },
     {
       mapKey: 'bribe', data: feeBribeRevenueData, finalDataKeys: {
         dailyBribesRevenue: 'total24h',
         bribesRevenue30d: 'total30d',
+        allTimeBribesRevenue: 'totalAllTime',
       }
     },
     {
       mapKey: 'tokenTax', data: feeTokenTaxData, finalDataKeys: {
         dailyTokenTaxes: 'total24h',
         tokenTaxesRevenue30d: 'total30d',
+        allTimeTokenTaxes: 'totalAllTime',
       }
     },
     {

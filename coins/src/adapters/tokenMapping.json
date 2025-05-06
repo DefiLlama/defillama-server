@@ -6168,6 +6168,11 @@
     }
   },
   "reya": {
+    "0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB": {
+      "to": "asset#ethereum:0x738d1115b90efa71ae468f1287fc864775e23a31",
+      "decimals": 30,
+      "symbol": "srUSD"
+    },
     "0x6b48c2e6a32077ec17e8ba0d98ffc676dfab1a30": {
       "to": "coingecko#ethereum",
       "decimals": 18,

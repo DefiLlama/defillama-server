@@ -1,12 +1,18 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, isDoubleCounted } from "./utils/normalizeChain";
 import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 
 export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
-  const categorySelected = params.category === undefined ? undefined : decodeURI(params.category).replace(/_/g, " ");
+  let categorySelected = undefined
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain.toLowerCase(), true);
+  if (params.category) {
+    categorySelected = decodeURI(params.category).replace(/_/g, " ")
+    if (params.doublecounted !== "true" && isDoubleCounted(false, categorySelected)) {
+      params.doublecounted = "true"
+    }
+  }
 
   const sumDailyTvls = {} as {
     [ts: number]: {
@@ -135,7 +141,7 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
 
     if (!params.readFromPG)
       await storeDatasetR2(filename, csv);
-    else 
+    else
       filename = `chain-dataset-${rawChain}.csv`
 
     return { filename, csv }

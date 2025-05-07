@@ -104,6 +104,11 @@ export default {
                 "id": "2254",
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746489600": true,
+            }
+        }
     },
     "polynomial-trade": {
         "id": "2848"

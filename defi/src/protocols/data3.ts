@@ -50931,7 +50931,6 @@ const data3: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/1GmeMR4WXA4RmsyeipGhdqWfCLVDkikil/view?usp=sharing"],
     listedAt: 1721444409,
   },
-  /* // broke values
   {
     id: "4906",
     name: "Phoenix DeFi Hub",
@@ -50957,7 +50956,6 @@ const data3: Protocol[] = [
     ],
     listedAt: 1721445275,
   },
-  */
   {
     id: "4907",
     name: "ProBit Global",

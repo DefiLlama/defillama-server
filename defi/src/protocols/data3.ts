@@ -62819,7 +62819,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5427",
-    name: "Bluefin AMM",
+    name: "Bluefin Spot",
     address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
     symbol: "BLUE",
     url: "https://bluefin.io",

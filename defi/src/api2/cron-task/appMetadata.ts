@@ -148,7 +148,7 @@ async function _storeAppMetadata() {
     readRouteData('/dimensions/dexs/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/derivatives/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/aggregators/dv-lite').catch(() => ({ protocols: {} })),
-    readRouteData('/dimensions/options/dnv-lite').catch(() => ({ protocols: {} })),
+    readRouteData('/dimensions/options/dpv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/aggregator-derivatives/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/bridge-aggregators/dbv-lite').catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => ([])),

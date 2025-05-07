@@ -5063,6 +5063,21 @@
     }
   },
   "sei": {
+    "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
+      "decimals": "18",
+      "symbol": "M-BTC",
+      "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0x93919784c523f39cacaa98ee0a9d96c3f32b593e": {
+      "decimals": "8",
+      "symbol": "brBTC",
+      "to": "coingecko#bedrock-btc"
+    },
+    "0x9151434b16b9763660705744891fa906f660ecc5": {
+      "decimals": "6",
+      "symbol": "USD₮0",
+      "to": "coingecko#tether"
+    },
     "0x80Eede496655FB9047dd39d9f418d5483ED600df": {
       "decimals": "18",
       "symbol": "FRAX",

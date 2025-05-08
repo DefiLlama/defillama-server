@@ -13243,7 +13243,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Binance"],
     module: "solv-strategies/index.js",
     twitter: "SolvProtocol",

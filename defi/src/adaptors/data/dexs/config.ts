@@ -3021,4 +3021,7 @@ export default {
     "titan": {
         id: "6076"
     },
+    "yakafinance-v3": {
+        id: "6114"
+    },
 } as AdaptorsConfig

@@ -3219,4 +3219,10 @@ export default {
     "initia-dex": {
         id: "6138"
     },
+    "yakafinance": {
+        id: "4871"
+    },
+    "yakafinance-v3": {
+        id: "6114"
+    },
 } as AdaptorsConfig

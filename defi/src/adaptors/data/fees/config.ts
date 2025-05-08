@@ -3227,5 +3227,8 @@ export default {
     },
     "kelp": {
         id: "3946"
+    },
+    "arena-launchpad": {
+        id: "6155"
     }
 } as AdaptorsConfig

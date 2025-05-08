@@ -3024,4 +3024,10 @@ export default {
     "yakafinance-v3": {
         id: "6114"
     },
+    "arena-dex": {
+        id: "6154"
+    },
+    "arena-launchpad": {
+        id: "6155"
+    }
 } as AdaptorsConfig

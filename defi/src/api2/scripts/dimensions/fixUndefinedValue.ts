@@ -1,8 +1,9 @@
 import * as fs from 'fs';
-import { initializeTVLCacheDB } from '../db';
-import { TABLES } from '../db';
+import { initializeTVLCacheDB } from '../../db';
+import { TABLES } from '../../db';
+import path from 'path';
 
-const file = 'undefined-2025-05-05-7943.log'
+const file = 'undefined-2025-05-08-1826.log'
 
 const fixInfo: any = {
   fees: {
@@ -64,7 +65,7 @@ const fixInfo: any = {
     },
   },
 }
-const filePath = `./${file}`
+const filePath = path.join(__dirname, file)
 const fileData = fs.readFileSync(filePath, 'utf8')
 const parsedData = JSON.parse(fileData)
 
@@ -85,14 +86,14 @@ for (const [adapterType, protocols] of Object.entries(parsedData)) {
   fixedDataAll[adapterType] = protocols
 }
 
-fs.writeFileSync(`fixed-${file}`, JSON.stringify(fixedDataAll, null, 2), 'utf8')
+fs.writeFileSync(path.join(__dirname, `fixed-${file}`), JSON.stringify(fixedDataAll, null, 2), 'utf8')
 console.log('Fixed data saved to fixed-', file)
 
 
 function fixUndefinedValues(data: any, origValue: string, fixValue: any) {
   fixValue = '"' + fixValue + '"'
   const fixedDataStr = JSON.stringify(data) // Deep clone the data to avoid mutating the original object
-  const replaced = fixedDataStr.replace(new RegExp('"'+origValue+'"', 'g'), fixValue)
+  const replaced = fixedDataStr.replace(new RegExp('"' + origValue + '"', 'g'), fixValue)
   return JSON.parse(replaced)
 }
 

@@ -7043,7 +7043,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#yaka-finance",
     name: "Yaka Finance",
-    url: "https://mosaic.ag",
+    url: "https://yaka.finance/",
     description: "Yaka Finance is Sei network's native ve(3,3) DEX integrating Algebra Integral's concentrated liquidity framework with Gamma Strategies' automated management system",
     logo: `${baseIconsUrl}/yaka-finance.jpg`,
     gecko_id: null,

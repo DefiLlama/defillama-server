@@ -51,7 +51,7 @@
     "dimensions-notify-backfill": "npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill2.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
-    "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/checkForDeadProtocols.ts",
+    "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/dimensions/checkForDeadProtocols.ts",
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
   },

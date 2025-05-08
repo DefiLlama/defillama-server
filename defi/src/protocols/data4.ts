@@ -692,7 +692,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum","Optimism","BOB"],
+    chains: ["Ethereum","Optimism","Arbitrum","Base"],
     oraclesByChain: {
       arbitrum: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     },

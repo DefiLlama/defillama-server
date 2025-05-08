@@ -63826,15 +63826,15 @@ const data3: Protocol[] = [
   {
     id: "5473",
     name: "Arena of Faith",
-    address: null,
-    symbol: "-", // ACP token TGE still on going
+    address: "0x104e363ac6521e55a24ae724855362acec3febe6",
+    symbol: "ACP", // ACP token TGE still on going
     url: "https://aof.global/staking",
     description: "Competitive gaming ecosystem",
     chain: "Metis",
     logo: `${baseIconsUrl}/arena-of-faith.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "arena-of-faith",
     cmcId: null,
     category: "Farm",
     chains: ["Metis"],

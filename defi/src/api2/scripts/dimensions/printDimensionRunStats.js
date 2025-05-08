@@ -1,6 +1,6 @@
 const fs = require('fs');
-const allLogs = fs.readFileSync(__dirname + '/../../../dimensionsRun.log', 'utf8').split('\n')
-const outputFile = __dirname + '/../../../dimensionsRunStats.log'
+const allLogs = fs.readFileSync(__dirname + '/../../../../dimensionsRun.log', 'utf8').split('\n')
+const outputFile = __dirname + '/../../../../dimensionsRunStats.log'
 fs.writeFileSync(outputFile, '') // reset file before appending to it
 
 printBlockLogStats()

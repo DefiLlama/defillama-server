@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { initializeTVLCacheDB } from '../db';
-import { TABLES } from '../db';
+import { initializeTVLCacheDB } from '../../db';
+import { TABLES } from '../../db';
 
 const file = 'negativeValues-2025-05-02-1863.log'
 const filePath = `./${file}`

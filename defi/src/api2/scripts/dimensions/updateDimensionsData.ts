@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 import * as sdk from '@defillama/sdk'
 import * as axios from 'axios'
-import dynamodb from '../../utils/shared/dynamodb';
+import dynamodb from '../../../utils/shared/dynamodb';
 
 const inputDir = path.join(process.env.TVL_LOCAL_CACHE_ROOT_FOLDER, "/api2-data/pg-cache/dimensions-data")
 

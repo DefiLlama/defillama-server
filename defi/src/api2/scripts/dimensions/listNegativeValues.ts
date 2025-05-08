@@ -1,10 +1,10 @@
-import '../utils/failOnError'
+import '../../utils/failOnError'
 
-import loadAdaptorsData from "../../adaptors/data"
-import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
+import loadAdaptorsData from "../../../adaptors/data"
+import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
 
-import { RUN_TYPE, } from "../utils";
-import { ADAPTER_TYPES } from '../../adaptors/handlers/triggerStoreAdaptorData';
+import { RUN_TYPE, } from "../../utils";
+import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
 
 function iterateAndGetNegativeValueInfo(info: any, negativeData: any[] = [], key = '') {

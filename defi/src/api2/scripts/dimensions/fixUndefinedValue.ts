@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { initializeTVLCacheDB } from '../db';
-import { TABLES } from '../db';
+import { initializeTVLCacheDB } from '../../db';
+import { TABLES } from '../../db';
 
 const file = 'undefined-2025-05-05-7943.log'
 

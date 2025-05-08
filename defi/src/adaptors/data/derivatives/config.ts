@@ -104,6 +104,11 @@ export default {
                 "id": "2254",
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746489600": true,
+            }
+        }
     },
     "polynomial-trade": {
         "id": "2848"
@@ -208,7 +213,12 @@ export default {
         },
     },
     "aevo": {
-        "id": "2797"
+        "id": "2797",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "grizzly-trade": {
         disabled: true,

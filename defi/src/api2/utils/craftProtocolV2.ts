@@ -17,6 +17,7 @@ export type CraftProtocolV2Common = {
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
   restrictResponseSize?: boolean;
+  skipCachedHourlyData?: boolean;
 }
 
 
@@ -32,6 +33,7 @@ export async function craftProtocolV2({
   skipAggregatedTvl,
   restrictResponseSize,
   getCachedProtocolData = getProtocolAllTvlData,
+  skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
 
@@ -42,14 +44,24 @@ export async function craftProtocolV2({
   if (!useHourlyData)
     protocolCache = await getCachedProtocolData(protocolData, true)
 
+  let _getLastHourlyRecord: any = null
+  let _getLastHourlyTokensUsd: any = null
+  let _getLastHourlyTokens: any = null
+
+  if (!isDeadProtocolOrHourly && !skipCachedHourlyData) {
+    _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
+    _getLastHourlyTokensUsd = getLastHourlyTokensUsd(protocolData as any)
+    _getLastHourlyTokens = getLastHourlyTokens(protocolData as any)
+  }
+
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
     getCachedMCap(protocolData.gecko_id),
-    isDeadProtocolOrHourly ? null : getLastHourlyRecord(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokensUsd(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokens(protocolData as any),
+    _getLastHourlyRecord,
+    _getLastHourlyTokensUsd,
+    _getLastHourlyTokens,
   ]);
 
   if (!useHourlyData) {

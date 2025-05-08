@@ -1952,7 +1952,12 @@ export default {
     },
     "phoenix": {
         displayName: "Phoenix",
-        "id": "3170"
+        "id": "3170",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "ryze": {
         "id": "3907"
@@ -3009,5 +3014,11 @@ export default {
     },
     "voltage-v4": {
         id: "5754"
+    },
+    "initia-dex": {
+        id: "6138"
+    },
+    "titan": {
+        id: "6076"
     },
 } as AdaptorsConfig

@@ -749,6 +749,8 @@ const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
 
 const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+const ThreeMonthsAgo = (Date.now() / 1000) - 3 * 30 * 24 * 60 * 60
+const isLessThanThreeMonthsAgo = (timeS: string) => timeSToUnix(timeS) > ThreeMonthsAgo
 
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
@@ -798,14 +800,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         }
 
         if (isSpike) {
-
-          // delay till 7th May to notify on discord for spikes with ratio < 8
-          const may7thTimestamp = +new Date('2023-05-07T00:00:00Z')
-          let notifyOnDiscord = currentValue / highestCloseValue > 8
-          if (+Date.now() > may7thTimestamp)
-            notifyOnDiscord = true
-          
-          if (NOTIFY_ON_DISCORD && notifyOnDiscord)
+          if (NOTIFY_ON_DISCORD && isLessThanThreeMonthsAgo(timeS)) 
             spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]

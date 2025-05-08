@@ -3217,4 +3217,7 @@ export default {
     "voltage-v4": {
         id: "5754"
     },
+    "initia-dex": {
+        id: "6138"
+    },
 } as AdaptorsConfig

@@ -13599,7 +13599,7 @@ const data4: Protocol[] = [
     url: "https://trade.bluefin.io/lend",
     description: "AlphaLend is a decentralized, non-custodial lending and borrowing protocol built on the SUI blockchain. It allows users to earn interest on deposited assets and borrow against their deposited assets without intermediaries. The protocol is designed to be composable, efficient, and secure, enabling developers and users to access core DeFi primitives in a trustless manner.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/bluefin-alphalend.png`,
+    logo: `${baseIconsUrl}/alphalend.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "bluefin",

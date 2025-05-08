@@ -36416,33 +36416,6 @@ const data3: Protocol[] = [
     audit_links: ["https://dedaub.com/audits/illuminex/illuminex-jan-19-2024/"],
     listedAt: 1710199785,
   },
- /* {
-    id: "4276",
-    name: "CIAN Vaults", // previous CIAN LSTs
-    previousNames: ["CIAN LSTs"],
-    address: null,
-    symbol: "-",
-    url: "https://cian.app",
-    description:
-      "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/cian-vaults.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Ethereum", "Optimism", "Arbitrum", "Binance"],
-    oraclesByChain: {
-      ethereum: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/6225 , confirmed with cian team that is only using redstone on ETH chain for now.
-    },
-    forkedFrom: [],
-    module: "cian-lst/index.js",
-    twitter: "CIAN_protocol",
-    audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
-    parentProtocol: "parent#cian-protocol",
-    listedAt: 1710212538,
-  },*/
   {
     id: "4277",
     name: "OPT Finance", //dex aggregator
@@ -36731,7 +36704,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum", "Polygon", "Avalanche"],
-    oracles: [],
+    oracles: ["Chainlink"],
     forkedFrom: [],
     module: "cian-automation/index.js",
     twitter: "CIAN_protocol",
@@ -61659,12 +61632,12 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Arbitrum"],
-    oracles: ["RedStone"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
+    oracles: ["Chainlink"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/chainlink-oracles
     oraclesBreakdown: [
       {
-        name: "RedStone",
+        name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles"],
+        proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/chainlink-oracles"],
       }
     ],
     forkedFrom: [],

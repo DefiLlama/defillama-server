@@ -6,6 +6,7 @@ import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
 import { RUN_TYPE, } from "../../utils";
 import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
+import path from 'path';
 
 function iterateAndGetNegativeValueInfo(info: any, negativeData: any[] = [], key = '') {
   if (typeof info === 'object') {
@@ -67,7 +68,7 @@ async function run() {
   console.table(overallStats)
   const fileName = `negativeValues-${new Date().toISOString().split('T')[0]}-${Math.floor(Math.random() * 10000)}.log`
   console.log('Saving to file:', fileName)
-  fs.writeFileSync(fileName, JSON.stringify(protocolDataMap, null, 2))
+  fs.writeFileSync(path.join(__dirname, fileName), JSON.stringify(protocolDataMap, null, 2))
 }
 
 

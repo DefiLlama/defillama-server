@@ -343,7 +343,6 @@ export default {
         "id": "2296"
     },
     "mux": {
-        "name": "MUX Protocol",
         "id": "2254"
     },
     "emdx": {

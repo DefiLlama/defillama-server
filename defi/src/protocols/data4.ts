@@ -13569,5 +13569,27 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "6152",
+    name: "CaviarNine HyperStake",
+    address: null,
+    symbol: "-",
+    url: "https://www.caviarnine.com/earn/hyper-stake",
+    description: "HyperStake's self-adjusting LSULP/ XRD pool delivers high rewards with zero upkeep, earning fees from instant unstakers and 7-day depositors.",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/caviarnine-hyperstake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Radix"],
+    module: "caviernine-hyperstake/index.js",
+    twitter: "CaviarNine",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#caviarnine",
+    listedAt: 1746711348
+  },
 ];
 export default data4;

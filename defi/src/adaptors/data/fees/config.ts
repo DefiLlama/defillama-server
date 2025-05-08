@@ -3225,4 +3225,7 @@ export default {
     "yakafinance-v3": {
         id: "6114"
     },
+    "kelp": {
+        id: "3946"
+    }
 } as AdaptorsConfig

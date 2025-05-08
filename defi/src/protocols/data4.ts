@@ -12006,7 +12006,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.vanillafinance.xyz",
-    description: `On-Chain Trading Infrastructure—Long or Short any New Token In 1 Second`,
+    description: `Vanilla Finance is an on-chain trading infrastructure, offering leveraged derivatives services ranging from 3x to 10,000x.`,
     chain: "Binance",
     logo: `${baseIconsUrl}/vanilla-finance.jpg`,
     audits: "0",

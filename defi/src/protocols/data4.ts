@@ -13254,6 +13254,8 @@ const data4: Protocol[] = [
       Ethereum: ["SOLVBTC"],
       Binance: ["SOLVBTC"],
       Avalanche: ["SOLVBTC"],
+      Bob: ["SOLVBTC"],
+      Berachain: ["SOLVBTC"],
     },
     listedAt: 1746523182
   },

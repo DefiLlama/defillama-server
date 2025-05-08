@@ -19885,9 +19885,9 @@ const data3: Protocol[] = [
     name: "The Arena", // previous Stars Arena
     address: null,
     symbol: "-",
-    url: "https://starsarena.com/",
+    url: "https://arena.social/",
     description:
-      "Star Shares - trade twitter profiles on $AVAX. Buy and share your favorite creators and earn from their success",
+      "The Arena is a next gen SocialFi app redefining how creators connect, engage, and monetize their content",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/the-arena.jpg`,
     audits: "0",

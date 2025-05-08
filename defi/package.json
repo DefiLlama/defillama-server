@@ -44,7 +44,7 @@
     "cron-dimensions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx  --node-options='--max-old-space-size=20144' ts-node --logError --transpile-only src/api2/cron-task/dimensions.ts",
     "cron-raises": "npx ts-node --logError --transpile-only src/api2/cron-task/raises.ts",
     "extension-updateExtensionTwitterConfig": "export AWS_REGION='eu-central-1' && npx ts-node --logError --transpile-only src/api2/scripts/updateExtensionTwitterConfig.ts",
-    "dimensions-store-all": "npx  --node-options='--max-old-space-size=30144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts  2>&1 | tee dimensionsRun.log; node src/api2/scripts/printDimensionRunStats.js  2>&1 | tee dimensionsRunStats2.log",
+    "dimensions-store-all": "npx  --node-options='--max-old-space-size=30144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts  2>&1 | tee dimensionsRun.log; node src/api2/scripts/dimensions/printDimensionRunStats.js  2>&1 | tee dimensionsRunStats2.log",
     "fillOld-dimensions": "npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "fillOld-dimensions-interactive": "npm run update-submodules; npx ts-node --logError --transpile-only src/cli/interactive-dimensions.ts",
     "fillOld-dimensions-all": "refill_all_missing_protocols=true npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",

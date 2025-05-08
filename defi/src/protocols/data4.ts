@@ -13591,5 +13591,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#caviarnine",
     listedAt: 1746711348
   },
+  {
+    id: "6153",
+    name: "AlphaLend",
+    address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
+    symbol: "BLUE",
+    url: "https://trade.bluefin.io/lend",
+    description: "AlphaLend is a decentralized, non-custodial lending and borrowing protocol built on the SUI blockchain. It allows users to earn interest on deposited assets and borrow against their deposited assets without intermediaries. The protocol is designed to be composable, efficient, and secure, enabling developers and users to access core DeFi primitives in a trustless manner.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/bluefin-alphalend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "bluefin",
+    cmcId: "12114",
+    category: "Lending",
+    chains: ["Sui"],
+    module: "bluefin-alphalend/index.js",
+    twitter: "bluefinapp",
+    forkedFrom: [],
+    oracles: ["pyth"],
+    parentProtocol: "parent#bluefin"
+  },
 ];
 export default data4;

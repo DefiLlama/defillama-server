@@ -13609,8 +13609,9 @@ const data4: Protocol[] = [
     module: "bluefin-alphalend/index.js",
     twitter: "bluefinapp",
     forkedFrom: [],
-    oracles: ["pyth"],
-    parentProtocol: "parent#bluefin"
+    oracles: ["Pyth"],
+    parentProtocol: "parent#bluefin",
+    listedAt: 1746735537
   },
 ];
 export default data4;

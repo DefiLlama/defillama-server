@@ -73,7 +73,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       let nextEvent;
       if (!rawNextEvent) {
         nextEvent = undefined;
-      } else if ((rawNextEvent.noOfTokens.length = 1)) {
+      } else if ((rawNextEvent.noOfTokens.length === 1)) {
         nextEvent = {
           date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[0], 0),

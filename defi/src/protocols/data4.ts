@@ -13615,14 +13615,14 @@ const data4: Protocol[] = [
   },
     {
       id: "6154",
-      name: "The Arena DEX", 
+      name: "Arena DEX", 
       address: null,
       symbol: "-",
       url: "https://arena.social/",
       description:
         "A DEX for The Arena ecosystem",
       chain: "Avalanche",
-      logo: `${baseIconsUrl}/the-arena-dex.jpg`,
+      logo: `${baseIconsUrl}/arena-dex.jpg`,
       audits: "0",
       audit_note: null,
       gecko_id: null,
@@ -13638,14 +13638,14 @@ const data4: Protocol[] = [
     },
       {
         id: "6155",
-        name: "The Arena Launchpad", 
+        name: "Arena.Trade", 
         address: null,
         symbol: "-",
         url: "https://arena.social/",
         description:
           "A Launchpad for The Arena ecosystem",
         chain: "Avalanche",
-        logo: `${baseIconsUrl}/the-arena-launchpad.jpg`,
+        logo: `${baseIconsUrl}/arena.trade.jpg`,
         audits: "0",
         audit_note: null,
         gecko_id: null,

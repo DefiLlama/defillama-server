@@ -9789,7 +9789,7 @@ const data4: Protocol[] = [
       "LiquidOps is an over collateralized lending and borrowing protocol built on ao.arweave.dev and arweave.org",
     chain: "AO",
     logo: `${baseIconsUrl}/liquidops.jpg`,
-    audits: "1",
+    audits: "2",
     audit_links: [
       "https://docs.liquidops.io/security/audits",
     ],

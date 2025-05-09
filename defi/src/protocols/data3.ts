@@ -56613,7 +56613,7 @@ const data3: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Restone",
-        type: "Primary",
+        type: "Secondary",
         proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
       }
     ],

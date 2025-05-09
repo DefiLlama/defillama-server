@@ -13241,7 +13241,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://solv.finance",
-    description: "Pioneering A Decentralized Bitcoin Reserve with SolvBTC.",
+    description: "Solv Strategies simplifies DeFi with automated solutions that put your Bitcoin to work. From liquidity provision to sophisticated yield farming, these curated strategies make it easy to earn rewards across DeFi protocols—no expertise required.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/solv-strategies.jpg`,
     audits: "0",

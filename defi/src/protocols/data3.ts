@@ -37405,7 +37405,7 @@ const data3: Protocol[] = [
     listedAt: 1710785382,
   },
   {
-    id: "4319",
+  id: "4319",
     name: "MYX Finance",
     address: null,
     symbol: "-",
@@ -55271,7 +55271,6 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "TorchTon",
-    github: ["torch-core"],
     parentProtocol: "parent#torch",
     listedAt: 1725449904
   },

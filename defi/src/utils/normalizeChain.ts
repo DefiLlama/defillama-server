@@ -4195,6 +4195,14 @@ export const chainCoingeckoIds = {
     twitter: "OpenGPUfndn",
     url: "https://opengpu.network/",
   }, 
+  "Echelon Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "EchelonMarket",
+    url: "https://echelon.market/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4382,7 +4390,8 @@ const chainLabelMap = {
   "lukso": "LUKSO",
   "aleph_zero": "Aleph Zero EVM",
   "gravity": "Gravity",
-  "ogpu": "OpenGPU"
+  "ogpu": "OpenGPU",
+  "echelon_initia": "Echelon Chain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

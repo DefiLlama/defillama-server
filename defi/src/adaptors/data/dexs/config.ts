@@ -1952,7 +1952,12 @@ export default {
     },
     "phoenix": {
         displayName: "Phoenix",
-        "id": "3170"
+        "id": "3170",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "ryze": {
         "id": "3907"
@@ -2397,7 +2402,12 @@ export default {
         id: "4670"
     },
     "pendle": {
-        id: "382"
+        id: "382",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746230400": true,
+            }
+        }
     },
     "seiyan-fun": {
         id: "5019"
@@ -2999,4 +3009,25 @@ export default {
     "boop-fun": {
         id: "6129"
     },
+    "pancakeswap-infinity": {
+        id: "6133"
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
+    "initia-dex": {
+        id: "6138"
+    },
+    "titan": {
+        id: "6076"
+    },
+    "yakafinance-v3": {
+        id: "6114"
+    },
+    "arena-dex": {
+        id: "6154"
+    },
+    "arena-launchpad": {
+        id: "6155"
+    }
 } as AdaptorsConfig

@@ -265,6 +265,11 @@ export default {
   },
   "okx": {
     id: "5201",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1746403200: true
+      }
+    }
   },
   "jeton": {
     id: "5213",

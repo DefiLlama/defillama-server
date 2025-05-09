@@ -343,7 +343,6 @@ export default {
         "id": "2296"
     },
     "mux": {
-        "name": "MUX Protocol",
         "id": "2254"
     },
     "emdx": {
@@ -3208,4 +3207,28 @@ export default {
     },
     "bancor-v2": { id: "162"},
     "bancor-v3": { id: "1995"},
+    "pancakeswap-infinity": {
+        id: "6133"
+    },
+    "catex": {
+        id: "6052"
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
+    "initia-dex": {
+        id: "6138"
+    },
+    "yakafinance": {
+        id: "4871"
+    },
+    "yakafinance-v3": {
+        id: "6114"
+    },
+    "kelp": {
+        id: "3946"
+    },
+    "arena-launchpad": {
+        id: "6155"
+    }
 } as AdaptorsConfig

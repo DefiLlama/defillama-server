@@ -48,7 +48,19 @@
       "to": "coingecko#usd-coin"
     }
   },
+  "ogpu": {
+    "0x4714383df98d792db7b9e16eba90df75cbf0388d": {
+      "decimals": "18",
+      "symbol": "WOGPU",
+      "to": "coingecko#open-gpu"
+    }
+  },
   "berachain": {
+    "0x656b95E550C07a9ffe548bd4085c72418Ceb1dba": {
+      "decimals": "18",
+      "symbol": "BGT",
+      "to": "coingecko#berachain-bera"
+    },
     "0x5475611dffb8ef4d697ae39df9395513b6e947d7": {
       "decimals": "18",
       "symbol": "srUSD",
@@ -1321,6 +1333,21 @@
     }
   },
   "rsk": {
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "decimals": "18",
+      "symbol": "xSolvBTC",
+      "to": "coingecko#solv-protocol-solvbtc-bbn"
+    },
+    "0x541fd749419ca806a8bc7da8ac23d346f2df8b77": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "SolvBTC"
+    },
+    "0xaf368c91793cb22739386dfcbbb2f1a9e4bcbebf": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "RBTC",
@@ -5046,6 +5073,21 @@
     }
   },
   "sei": {
+    "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
+      "decimals": "18",
+      "symbol": "M-BTC",
+      "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0x93919784c523f39cacaa98ee0a9d96c3f32b593e": {
+      "decimals": "8",
+      "symbol": "brBTC",
+      "to": "coingecko#bedrock-btc"
+    },
+    "0x9151434b16b9763660705744891fa906f660ecc5": {
+      "decimals": "6",
+      "symbol": "USD₮0",
+      "to": "coingecko#tether"
+    },
     "0x80Eede496655FB9047dd39d9f418d5483ED600df": {
       "decimals": "18",
       "symbol": "FRAX",
@@ -6166,6 +6208,11 @@
     }
   },
   "reya": {
+    "0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB": {
+      "to": "asset#ethereum:0x738d1115b90efa71ae468f1287fc864775e23a31",
+      "decimals": 30,
+      "symbol": "srUSD"
+    },
     "0x6b48c2e6a32077ec17e8ba0d98ffc676dfab1a30": {
       "to": "coingecko#ethereum",
       "decimals": 18,

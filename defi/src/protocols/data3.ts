@@ -49543,8 +49543,8 @@ const data3: Protocol[] = [
   {
     id: "4846",
     name: "D2 Finance",
-    address: "arbitrum:0xed7f000eE335B8199b004cCA1c6f36d188CF6cb8",
-    symbol: "D2",
+    address: null,
+    symbol: "-",
     url: "https://d2.finance/strategies",
     description:
       "Tokenized Derivatives Strategies, dynamically managing risk and reward efficiently. Offering a robust suite of institutional-grade managed strategies within innovative, non-custodial single-click vault architecture.",
@@ -49552,7 +49552,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/d2-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "d2-token",
+    gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
     chains: ["Arbitrum"],

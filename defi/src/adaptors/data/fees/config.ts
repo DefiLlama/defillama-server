@@ -3230,5 +3230,8 @@ export default {
     },
     "arena-launchpad": {
         id: "6155"
+    },
+    "avalon": {
+        id: "4473"
     }
 } as AdaptorsConfig

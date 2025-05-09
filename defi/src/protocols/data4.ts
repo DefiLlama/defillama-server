@@ -13221,7 +13221,8 @@ const data4: Protocol[] = [
     description: "Telegram USD is a blue-chip-backed stablecoin on the TON blockchain, designed for cross-chain yield and seamless payments. It’s easy to mint, secure, and optimized for DeFi on Telegram.",
     chain: "TON",
     logo: `${baseIconsUrl}/telegram-usd.jpg`,
-    audits: "0",
+    audits: "1",
+    audit_links: ["https://certificate.quantstamp.com/full/torch-finance/9edd725c-737d-4273-b2ca-6e65ce7b7575/index.html"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -13229,6 +13230,7 @@ const data4: Protocol[] = [
     chains: ["TON"],
     module: "tgusd/index.js",
     twitter: "TorchTon",
+    parentProtocol: "parent#torch",
     forkedFrom: [],
     oracles: [],
     listedAt: 1746445991

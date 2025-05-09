@@ -55251,15 +55251,16 @@ const data3: Protocol[] = [
   },
   {
     id: "5096",
-    name: "Torch Stable Swap",
+    name: "Torch",
     address: null,
     symbol: "-",
     url: "https://torch.finance",
     description:
-      "Stable Swap on TON blockchain. Supporting ultra-slow slippage StableSwap and deepend liquidity Weighted Pool all with in one DEX. The Open League Hackathon Top 3.",
+      "Stable Swap on TON blockchain. Supporting ultra-slow slippage StableSwap and deepend liquidity Weighted Pool all with in one DEX. Backed by Curve Finance.",
     chain: "TON",
     logo: `${baseIconsUrl}/torch-finance.jpg`,
-    audits: "0",
+    audits: "1",
+    audit_links: ["https://2186085260-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLog7O0J3oIzgJu3kOFtL%2Fuploads%2FuH1Y2RMTptrVoxpmgAd1%2FTorch%20DEX%20-%20Zellic%20Audit%20Report.pdf?alt=media&token=d9a5ebbf-5b0e-4481-bc35-941c4fccb032"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -55270,6 +55271,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "TorchTon",
     github: ["torch-core"],
+    parentProtocol: "parent#torch",
     listedAt: 1725449904
   },
   {

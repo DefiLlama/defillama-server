@@ -55252,6 +55252,7 @@ const data3: Protocol[] = [
   {
     id: "5096",
     name: "Torch",
+    previousNames: ["Torch Stable Swap"],
     address: null,
     symbol: "-",
     url: "https://torch.finance",

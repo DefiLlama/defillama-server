@@ -3,7 +3,7 @@ import { initializeTVLCacheDB } from '../../db';
 import { TABLES } from '../../db';
 import path from 'path';
 
-const file = 'undefined-2025-05-08-1826.log'
+const file = 'undefined-2025-05-09-3130.log'
 
 const fixInfo: any = {
   fees: {
@@ -65,6 +65,10 @@ const fixInfo: any = {
     },
   },
 }
+const globalFixInfo = {
+  klatyn: 'klaytn',
+  'bnb': 'bsc',
+}
 const filePath = path.join(__dirname, file)
 const fileData = fs.readFileSync(filePath, 'utf8')
 const parsedData = JSON.parse(fileData)
@@ -72,7 +76,7 @@ const parsedData = JSON.parse(fileData)
 let fixedDataAll = {} as any
 for (const [adapterType, protocols] of Object.entries(parsedData)) {
   for (const [id, data] of Object.entries(protocols as any)) {
-    const fixValue = fixInfo[adapterType]?.[id]
+    const fixValue = { ...globalFixInfo, ...fixInfo[adapterType]?.[id] }
     if (!fixValue) {
       delete (protocols as any)[id]
     } else {
@@ -88,7 +92,6 @@ for (const [adapterType, protocols] of Object.entries(parsedData)) {
 
 fs.writeFileSync(path.join(__dirname, `fixed-${file}`), JSON.stringify(fixedDataAll, null, 2), 'utf8')
 console.log('Fixed data saved to fixed-', file)
-
 
 function fixUndefinedValues(data: any, origValue: string, fixValue: any) {
   fixValue = '"' + fixValue + '"'

@@ -13722,7 +13722,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Berachain"],
     module: "beracana/index.js",
     twitter: "beracana",

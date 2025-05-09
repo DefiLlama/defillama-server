@@ -3049,7 +3049,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#maker",
-    name: "Sky", // previous Maker 
+    name: "Sky", // previous Maker
     url: "https://sky.money/",
     description:
       "Sky enables users to get rewarded for non-custodial saving with USDS.",
@@ -5500,7 +5500,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#avalon-labs",
     name: "Avalon Labs",
     url: "https://www.avalonfinance.xyz",
-    description: "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    description: "Powering ₿itcoin's On-Chain Capital Markets.",
     logo: `${baseIconsUrl}/avalon-labs.jpg`,
     gecko_id: null,
     cmcId: null,

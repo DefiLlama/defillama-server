@@ -26822,7 +26822,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1701352413,
   },
-   { 
+   {
     id: "3866",
     name: "Rainbow Bridge",
     address: null,
@@ -26843,7 +26843,7 @@ const data3: Protocol[] = [
     module: "rainbow/index.js",
     twitter: "auroraisnear",
     listedAt: 1744262362,
-  }, 
+  },
   {
     id: "3867",
     name: "Ascent Exchange V1",
@@ -38546,7 +38546,7 @@ const data3: Protocol[] = [
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
           chains: [
           {chain: "Aptos"},
-        ]      
+        ]
       },
     ],
     forkedFrom: [],
@@ -40959,7 +40959,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.avalonfinance.xyz",
-    description: "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    description: "Powering ₿itcoin's On-Chain Capital Markets.",
     chain: "Merlin",
     logo: `${baseIconsUrl}/avalon-labs.jpg`,
     audits: "2",
@@ -53778,7 +53778,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#metastreet",
     listedAt: 1724263681,
   },*/
-  // { double count of stakewise v2 adapter 
+  // { double count of stakewise v2 adapter
   //   id: "5032",
   //   name: "StakeWise V3",
   //   address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
@@ -55372,7 +55372,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.avalonfinance.xyz",
-    description: "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    description: "Powering ₿itcoin's On-Chain Capital Markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/avalon-labs.jpg`,
     audits: "0",
@@ -60199,7 +60199,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oracles: ["Chainlink"], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions 
+    oracles: ["Chainlink"], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",
@@ -63756,7 +63756,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5470",
-    name: "Celeron", 
+    name: "Celeron",
     address: "mode:0x8b83ECC4EF8FaEc5c05b7D6EC002B659BE137120",
     symbol: "CEL",
     url: "https://celeron.xyz/",

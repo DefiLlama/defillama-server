@@ -34,6 +34,12 @@ const config: any = {
     quoteToken: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
     usdplus: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
   },
+  plume_mainnet: {
+    factory: "0x7a861Ae8C708DC6171006C57c9163BD2BB57a8Aa",
+    processor: "0x68Dd74e23461d99b7312Bfb5baddfd3Fa28404c7",
+    quoteToken: "0x1fA3671dF7300DF728858B88c7216708f22dA3Fb",
+    usdplus: "0x1fA3671dF7300DF728858B88c7216708f22dA3Fb",
+  }
 };
 
 async function getTokenPrices(chain: string, timestamp: number, writes: Write[] = []): Promise<Write[]> {

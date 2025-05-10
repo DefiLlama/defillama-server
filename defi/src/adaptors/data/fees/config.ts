@@ -3228,7 +3228,7 @@ export default {
     "kelp": {
         id: "3946"
     },
-    "arena-launchpad": {
+    "arena-launch": {
         id: "6155"
     },
     "avalon": {

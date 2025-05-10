@@ -3027,7 +3027,7 @@ export default {
     "arena-dex": {
         id: "6154"
     },
-    "arena-launchpad": {
+    "arena-launch": {
         id: "6155"
     }
 } as AdaptorsConfig

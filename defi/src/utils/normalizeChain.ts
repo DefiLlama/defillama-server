@@ -3750,10 +3750,11 @@ export const chainCoingeckoIds = {
   "Plume": {
     geckoId: "plume",
     symbol: "PLUME",
-    cmcId: null,
+    cmcId: "35364",
     categories: ["EVM"],
     twitter: "plumenetwork",
-    url: "https://plumenetwork.xyz/",
+    github: ["plumenetwork"],
+    url: "https://plume.org/",
     chainId: 98865,
   },
   "EDU Chain": {
@@ -4090,12 +4091,13 @@ export const chainCoingeckoIds = {
     chainId: 2345
   }, 
   "Plume Mainnet": {
-    geckoId: null,
+    geckoId: "plume",
     symbol: "PLUME",
-    cmcId: null,
+    cmcId: "35364",
     categories: ["EVM"],
     twitter: "plumenetwork",
-    url: "https://plumenetwork.xyz",
+    github: ["plumenetwork"],
+    url: "https://plume.org/",
     chainId: 98866
   }, 
   "Perennial": {

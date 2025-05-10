@@ -37,6 +37,7 @@ export const layerZeroChainMapping: { [key: string]: string } = {
   "opBNB Mainnet": "op_bnb",
   "Arbitrum Nova": "arbitrum_nova",
   "Lightlink": "lightlink_phoenix",
+  "Plume Mainnet": "plume_mainnet"
 };
 
 export default async function main() {

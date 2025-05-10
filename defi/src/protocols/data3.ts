@@ -43792,7 +43792,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://mitosis.org",
     description:
-      "Ecosystem-Owned Liquidity with L1 Chain that empowers LPs to make informed decisions on multi-chain yield while enabling protocols to bootstrap stable liquidity.",
+      "Mitosis is an L1 network designed for programmable liquidity that enhances the liquidity provision experience for both DeFi projects and liquidity providers. With Mitosis, DeFi projects can conduct targeted marketing to attract liquidity. Liquidity providers can trade tokenized LP positions on the Mitosis chain, allowing users to easily trade yield positions..",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mitosis.jpg`,
     audits: "2",

@@ -13731,5 +13731,26 @@ const data4: Protocol[] = [
     audit_links: ["https://app.beracana.com/beracana-audit.pdf"],
     listedAt: 1746799138
   },
+  {
+    id: "6159",
+    name: "Launch Coin on Believe", 
+    address: null,
+    symbol: "-",
+    url: "https://believe.app/",
+    description:
+      "Allows users to reply to any tweet with @launchcoin +name to turn it into a coin. Powered by the Believe app",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/launch-coin-on-believe.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "launchcoin",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 export default data4;

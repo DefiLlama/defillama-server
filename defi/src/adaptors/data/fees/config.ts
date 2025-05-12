@@ -3233,5 +3233,59 @@ export default {
     },
     "avalon": {
         id: "4473"
-    }
+    },
+    "hyperlend": {
+        id: "5940"
+    },
+    "hyperyield": {
+        id: "5862"
+    },
+    "kinza-finance": {
+        id: "3171"
+    },
+    "lava": {
+        id: "4241"
+    },
+    "lendle": {
+        id: "3300"
+    },
+    "more-markets": {
+        id: "5320"
+    },
+    "pac-finance": {
+        id: "4211"
+    },
+    "realt-rmm-marketplace-v2": {
+        id: "4190"
+    },
+    "realt-rmm-marketplace": {
+        id: "2359"
+    },
+    "sakefinance": {
+        id: "5627"
+    },
+    "colend-protocol": {
+        id: "4518"
+    },
+    "extra-finance-xlend": {
+        id: "5554"
+    },
+    "seamless-v1": {
+        id: "3502"
+    },
+    "superlend": {
+        id: "5230"
+    },
+    "unleash-protocol": {
+        id: "5793"
+    },
+    "vicuna-lending": {
+        id: "5755"
+    },
+    "zerolend": {
+        id: "3243"
+    },
+    "sosovalue": { // Indexes
+        id: "5619"
+    },
 } as AdaptorsConfig

@@ -180,7 +180,8 @@ export const chainToCoingeckoId = {
   Hyperliquid: "hyperevm",
   unichain: "unichain",
   ink: "ink", 
-  swellchain: "swellchain"
+  swellchain: "swellchain", 
+  plume_mainnet: "plume-network"
 };
 
 export default chainToCoingeckoId;

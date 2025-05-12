@@ -19903,7 +19903,6 @@ const data3: Protocol[] = [
     twitter: "TheArenaApp",
     forkedFrom: ["friend.tech"],
     oracles: [],
-    github: [],
     listedAt: 1695774131,
     parentProtocol: "parent#the-arena"
   },

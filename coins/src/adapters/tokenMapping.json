@@ -8035,6 +8035,16 @@
     }
   },
   "hyperliquid": {
+    "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USD₮0"
+    },
+    "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
+      "to": "coingecko#ethena-usde",
+      "decimals": 18,
+      "symbol": "USDe"
+    },
     "0x1Ecd15865D7F8019D546f76d095d9c93cc34eDFa": {
       "to": "coingecko#liquidlaunch",
       "decimals": 18,

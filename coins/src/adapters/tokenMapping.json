@@ -3533,6 +3533,16 @@
     }
   },
   "lightlink_phoenix": {
+    "0xbcf8c1b03bbdda88d579330bdf236b58f8bb2cfd": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
+    "0x808d7c71ad2ba3fa531b068a2417c63106bc0949": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "0x18fb38404dadee1727be4b805c5b242b5413fa40": {
       "decimals": "6",
       "symbol": "USDC",

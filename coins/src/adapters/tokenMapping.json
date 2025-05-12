@@ -867,6 +867,11 @@
     }
   },
   "bsc": {
+    "0x77c9b49a58325131D08F9dC120388f20c57c2572": {
+      "decimals": "18",
+      "symbol": "slisBNB CollateralListaDAODistributor",
+      "to": "coingecko#synclub-staked-bnb"
+    },
     "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
       "decimals": "8",
       "symbol": "WBTC",

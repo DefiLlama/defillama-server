@@ -56332,8 +56332,8 @@ const data3: Protocol[] = [
   {
     id: "5145",
     name: "IPOR Fusion",
-    address: "0x1e4746dc744503b53b4a082cb3607b169a289090",
-    symbol: "IPOR",
+    address: null,
+    symbol: "-",
     url: "https://ipor.io",
     description:
       "IPOR Fusion is a meta DeFi aggregation, execution & intelligence engine that introduces a unified liquidity framework for on-chain asset management. Fusion combines various aggregation and routing protocols into a single smart contract layer, automating asset management and maximizing returns across yield sources. Imagine intelligence-driven execution for looping, carry trades, arbitrage, leveraged farming, and passive lending at your fingertips",

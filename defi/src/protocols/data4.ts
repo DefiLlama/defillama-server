@@ -13640,17 +13640,19 @@ const data4: Protocol[] = [
     oracles: [],
     github: [],
     listedAt: 1746742252,
+    parentProtocol: "parent#the-arena"
   },
   {
     id: "6155",
-    name: "Arena.Trade", 
+    name: "Arena Launch", 
+    previousNames: ["Arena.Trade"],
     address: null,
     symbol: "-",
     url: "https://arena.social/",
     description:
       "A Launchpad for The Arena ecosystem",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/arena.trade.jpg`,
+    logo: `${baseIconsUrl}/arena-launch.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -13663,6 +13665,7 @@ const data4: Protocol[] = [
     oracles: [],
     github: [],
     listedAt: 1746742259,
+    parentProtocol: "parent#the-arena"
   },
   {
     id: "6156",

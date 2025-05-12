@@ -7062,6 +7062,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TorchTon",
     github: ["torch-core"],
+  },
+  {
+    id: "parent#the-arena",
+    name: "The Arena",
+    url: "https://arena.social/",
+    description: "The Arena is a next gen SocialFi app redefining how creators connect, engage, and monetize their content",
+    logo: `${baseIconsUrl}/the-arena.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TheArenaApp",
   }
 ];
 

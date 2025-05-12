@@ -19882,14 +19882,15 @@ const data3: Protocol[] = [
   },
   {
     id: "3564",
-    name: "The Arena", // previous Stars Arena
+    name: "Arena SocialFi", 
+    previousNames: ["Stars Arena", /*"The Arena"*/],
     address: null,
     symbol: "-",
     url: "https://arena.social/",
     description:
       "The Arena is a next gen SocialFi app redefining how creators connect, engage, and monetize their content",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/the-arena.jpg`,
+    logo: `${baseIconsUrl}/arena-socialfi.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19902,6 +19903,7 @@ const data3: Protocol[] = [
     oracles: [],
     github: [],
     listedAt: 1695774131,
+    parentProtocol: "parent#the-arena"
   },
   {
     id: "3565",

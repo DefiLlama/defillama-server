@@ -16,6 +16,7 @@ export default {
   ...others.adapters,
   ...others2.adapters,
   ...graphCoins.adapters,
+  fraxtalGas: require('./other/fraxtalGas'),
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),

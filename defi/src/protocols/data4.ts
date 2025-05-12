@@ -13638,7 +13638,6 @@ const data4: Protocol[] = [
     twitter: "TheArenaApp",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    github: [],
     listedAt: 1746742252,
     parentProtocol: "parent#the-arena"
   },
@@ -13663,7 +13662,6 @@ const data4: Protocol[] = [
     twitter: "TheArenaApp",
     forkedFrom: [],
     oracles: [],
-    github: [],
     listedAt: 1746742259,
     parentProtocol: "parent#the-arena"
   },

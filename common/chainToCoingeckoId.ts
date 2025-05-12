@@ -181,7 +181,7 @@ export const chainToCoingeckoId = {
   unichain: "unichain",
   ink: "ink",
   swellchain: "swellchain",
-  plume_mainnet: "plume-network",
+  plume_mainnet: "plume-network"
 };
 
 export default chainToCoingeckoId;

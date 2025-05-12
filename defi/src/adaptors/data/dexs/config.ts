@@ -3029,5 +3029,8 @@ export default {
     },
     "arena-launch": {
         id: "6155"
-    }
+    },
+    "believe": {
+        id: "6159"
+    },
 } as AdaptorsConfig

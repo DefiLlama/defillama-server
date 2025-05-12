@@ -4205,6 +4205,21 @@ export const chainCoingeckoIds = {
     twitter: "EchelonMarket",
     url: "https://echelon.market/",
   }, 
+    "Superseed": {
+    geckoId: "superseed",
+    symbol: "SUPR",
+    cmcId: "36436",
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 5330,
+    github: ['superseed-xyz'],
+    twitter: "SuperseedXYZ",
+    url: "https://www.superseed.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4393,7 +4408,8 @@ const chainLabelMap = {
   "aleph_zero": "Aleph Zero EVM",
   "gravity": "Gravity",
   "ogpu": "OpenGPU",
-  "echelon_initia": "Echelon Chain"
+  "echelon_initia": "Echelon Chain",
+  "sseed": "Superseed"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

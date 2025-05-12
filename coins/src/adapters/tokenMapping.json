@@ -56,6 +56,11 @@
     }
   },
   "berachain": {
+    "0xD2C41BF4033A83C0FC3A7F58a392Bf37d6dCDb58": {
+      "decimals": "18",
+      "symbol": "osBGT",
+      "to": "coingecko#infrafred-bgt"
+    },
     "0x656b95E550C07a9ffe548bd4085c72418Ceb1dba": {
       "decimals": "18",
       "symbol": "BGT",

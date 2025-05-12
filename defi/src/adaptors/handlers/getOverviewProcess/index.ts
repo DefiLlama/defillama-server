@@ -89,7 +89,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.OPTIONS]: AdaptorRecordType.dailyPremiumVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
-    [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
+    // [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
 }
@@ -122,14 +122,14 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyAppRevenue,
         AdaptorRecordType.dailyAppFees,
     ],
-    [AdapterType.ROYALTIES]: [
+    /* [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,
         AdaptorRecordType.dailyUserFees,
         AdaptorRecordType.dailyHoldersRevenue,
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
         AdaptorRecordType.dailyProtocolRevenue
-    ],
+    ], */
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyPremiumVolume
     ],

@@ -26,6 +26,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -146,6 +147,22 @@ async function getSymbolAndDecimals(
       symbol: token.symbol,
       decimals: Number(token.decimals),
     };
+  } else if (chain == "starknet") {
+    try {
+      const [symbol, decimals] = await Promise.all([
+        call({
+          abi: cairoErc20Abis.symbol,
+          target: tokenAddress,
+        }).then((r) => feltArrToStr([r])),
+        call({
+          abi: cairoErc20Abis.decimals,
+          target: tokenAddress,
+        }).then((r) => Number(r)),
+      ]);
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
   } else if (chain == "hedera") {
     try {
       const { symbol, decimals } = await fetch(
@@ -157,16 +174,16 @@ async function getSymbolAndDecimals(
     } catch (e) {
       return;
     }
-  } else if (chain == "hyperliquid") {
-    await cacheHyperliquidTokens();
-    const token = ((await hyperliquidTokens).tokens as any[]).find(
-      (t) => t.tokenId === tokenAddress,
-    );
-    if (!token) return;
-    return {
-      decimals: token.weiDecimals,
-      symbol: token.name,
-    };
+    // } else if (chain == "hyperliquid") {
+    //   await cacheHyperliquidTokens();
+    //   const token = ((await hyperliquidTokens).tokens as any[]).find(
+    //     (t) => t.tokenId === tokenAddress,
+    //   );
+    //   if (!token) return;
+    //   return {
+    //     decimals: token.weiDecimals,
+    //     symbol: token.name,
+    //   };
   } else if (chain == "aptos") {
     const res = await fetch(
       `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(
@@ -398,7 +415,7 @@ async function getAndStoreHourly(
     `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
     3,
   );
-  if (!Array.isArray(coinData.prices)) {
+  if (!Array.isArray(coinData.prices) || !coinData.prices.length) {
     console.error(
       `[scripts - getAndStoreHourly] Couldn't get data for ${coin.id}`,
     );

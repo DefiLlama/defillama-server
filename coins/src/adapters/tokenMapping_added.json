@@ -1544,6 +1544,11 @@
       "decimals": "18",
       "symbol": "rUSD",
       "to": "coingecko#fx-rusd"
+    },
+    "0x0Fb765ddBD4d26AC524AA5990B0643D0Ab6Ac2fE": {
+      "decimals": "8",
+      "symbol": "WAVES",
+      "to": "coingecko#waves"
     }
   },
   "klaytn": {
@@ -4698,6 +4703,12 @@
       "decimals": "8",
       "symbol": "AMAPT",
       "to": "coingecko#amnis-aptos"
+    },
+    "0x111ae3e5bc816a5e63c2da97d0aa3886519e0cd5e4b046659fa35796bd11542a::stapt_token::StakedApt": {
+      "name": "Staked Aptos Coin",
+      "decimals": "8",
+      "symbol": "STAPT",
+      "to": "coingecko#amnis-staked-aptos-coin"
     }
   },
   "dogechain": {
@@ -5904,6 +5915,11 @@
       "decimals": "8",
       "symbol": "PUZZLE",
       "to": "coingecko#puzzle-swap"
+    },
+    "GjwAHMjqWzYR4LgoNy91CxUKAGJN79h2hseZoae4nU8t": {
+      "decimals": "8",
+      "symbol": "UNIT0",
+      "to": "coingecko#unit0"
     }
   },
   "songbird": {
@@ -7869,12 +7885,6 @@
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"
-    },
-    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
-      "name": "suBTC",
-      "decimals": "18",
-      "symbol": "suBTC",
-      "to": "coingecko#bitcoin"
     }
   },
   "rpg": {
@@ -8285,11 +8295,6 @@
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "EOS",
-      "to": "coingecko#eos"
-    },
-    "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
-      "decimals": "18",
-      "symbol": "WEOS",
       "to": "coingecko#eos"
     },
     "0x922d641a426dcffaef11680e5358f34d97d112e1": {

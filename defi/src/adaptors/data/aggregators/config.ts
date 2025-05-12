@@ -3,6 +3,11 @@ import { AdaptorsConfig } from "../types";
 export default {
   "jupiter-aggregator": {
     id: "2141",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1741564800": true,
+      },
+    },
   },
   "dexible": {
     disabled: true,
@@ -80,12 +85,18 @@ export default {
     cleanRecordsConfig: {
       genuineSpikes: {
         1674172800: true,
-        1680739200: true
+        1680739200: true,
+        1678492800: true,
       }
-  }
+    }
   },
   "cowswap": {
     id: "2643",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1722816000": true,
+      },
+    },
   },
   "kyberswap": {
     id: "3982",
@@ -254,6 +265,11 @@ export default {
   },
   "okx": {
     id: "5201",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1746403200: true
+      }
+    }
   },
   "jeton": {
     id: "5213",
@@ -303,6 +319,14 @@ export default {
   },
   "enso": {
     id: "5741",
+     cleanRecordsConfig: {
+      genuineSpikes: {
+        "1738540800": true,
+        "1738627200": true,
+        "1738713600": true,
+        "1746489600": true
+      },
+    },
   },
   "1delta": {
     id: "5740",
@@ -318,5 +342,14 @@ export default {
   },
   "mosaic": {
     id: "5890"
-  }
+  },
+  "houdiniswap": {
+    id: "3041"
+  },
+  "cro-ag": {
+    id: "6026"
+  },
+  "kame-aggregator": {
+    id: "6064"
+  },
 } as AdaptorsConfig;

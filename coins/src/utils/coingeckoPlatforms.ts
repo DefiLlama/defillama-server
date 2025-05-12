@@ -60,7 +60,7 @@ export async function iterateOverPlatforms(
   for (const platform in platforms) {
     if (platform !== "" && platforms[platform] !== "") {
       try {
-        const chain = platformMap[platform.toLowerCase()];
+        const chain = platformMap[platform.toLowerCase()]?.toLowerCase();
         if (chain === undefined) {
           continue;
         }

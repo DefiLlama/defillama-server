@@ -139,11 +139,11 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8a053350ca5F9352a16deD26ab333e2D251DAd7c",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   },
-  Re7BTC: {
-    rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
-    chain: "ethereum",
-    address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
-  },
+  // Re7BTC: {
+  //   rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
+  //   chain: "ethereum",
+  //   address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
+  // },
   weETHk: {
     rate: async ({ api }) => {
       const rate = await api.call({
@@ -340,13 +340,63 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
     address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
-    confidence: 1
+    confidence: 1,
+  },
+  JSTRY: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256 shares) external view returns (uint256)",
+        target: "0x36036fFd9B1C6966ab23209E073c68Eb9A992f50",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+    confidence: 1,
+  },
+  M: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+          params: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+      ]);
+      return supply / assets;
+    },
+    chain: "ethereum",
+    underlying: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+    address: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+  },
+  mHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRateToUnderlying",
+        target: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    address: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
   },
 };
 
 export async function derivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
+    Object.keys(configs).map((k: string) =>
+      deriv(timestamp, k, configs[k]).catch((e) => {
+        k;
+        e;
+      }),
+    ),
   );
 }
 

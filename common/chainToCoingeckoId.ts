@@ -174,6 +174,13 @@ export const chainToCoingeckoId = {
   // xrp: "xrp",
   hedera: "hedera-hashgraph",
   bfc: "bifrost-network",
+  occ: "edu-chain",
+  wc: "world-chain",
+  soneium: "soneium",
+  Hyperliquid: "hyperevm",
+  unichain: "unichain",
+  ink: "ink", 
+  swellchain: "swellchain"
 };
 
 export default chainToCoingeckoId;

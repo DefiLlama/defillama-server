@@ -17,7 +17,9 @@ export default {
         cleanRecordsConfig: {
             genuineSpikes: {
                 1718755200: true,
-                1722297600: true
+                1722297600: true,
+                1722816000: true,
+                1738540800: true,
             }
         }
     },
@@ -275,7 +277,6 @@ export default {
         }
     },
     "baryon": {
-        "enabled": false,
         "id": "1950"
     },
     "cherryswap": {
@@ -881,13 +882,7 @@ export default {
         "id": "2299"
     },
     "cetus": {
-        parentId: "Cetus",
         "id": "2289",
-        protocolsData: {
-            "cetus": {
-                "id": "2289",
-            }
-        }
     },
     "opx-finance": {
         "id": "2256"
@@ -1238,8 +1233,7 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847",
-        enabled: false
+        "id": "1847"
     },
     "maia-v3": {
         "id": "2760"
@@ -1958,7 +1952,12 @@ export default {
     },
     "phoenix": {
         displayName: "Phoenix",
-        "id": "3170"
+        "id": "3170",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "ryze": {
         "id": "3907"
@@ -1983,7 +1982,6 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2230,7 +2228,6 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: false,
         id: "4515"
     },
     "merlinswap": {
@@ -2260,7 +2257,6 @@ export default {
     },
     "fenix-finance": {
         parentId: "Fenix Finance",
-        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2406,7 +2402,12 @@ export default {
         id: "4670"
     },
     "pendle": {
-        id: "382"
+        id: "382",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746230400": true,
+            }
+        }
     },
     "seiyan-fun": {
         id: "5019"
@@ -2839,7 +2840,7 @@ export default {
     "degen-launchpad": {
         id: "5857"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "metropolis-amm": {
@@ -2909,5 +2910,127 @@ export default {
     },
     "gacha": {
         id: "5942"
-    }
+    },
+    "kittypunch-stable": {
+        id: "5790"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "justbet": {
+        id: "5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "sandglass": {
+        id: "5965"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
+    "verus": {
+        id: "5601"
+    },
+    "haedal": {
+        id: "5784"
+    },
+    "hardswap": {
+        id: "5999"
+    },
+    "momentum": {
+        id: "6005"
+    },
+    "jup-ape": {
+        id: "4860"
+    },
+    "sonex": {
+        id: "5640"
+    },
+    "kyo-fi-v3": {
+        id: "5622"
+    },
+    "kongswap": {
+        id: "5528"
+    },
+    "elys-dex": {
+        id: "5544"
+    },
+    "razordex": {
+        id: "6054"
+    },
+    "tonpump": {
+        id: "5468"
+    },
+    "flowx-v3": {
+        id: "4582"
+    },
+    "zora-sofi": {
+        id: "6069"
+    },
+    "launchlab": {
+        id: "6074",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1745539200": true,
+            }
+        }
+    },
+    "beezie": {
+        id: "6075"
+    },
+    "kittypunch-v3": {
+        id: "6051"
+    },
+    "sonicxswap": {
+        id: "6083"
+    },
+    "1dex": {
+        id: "6003"
+    },
+    "swaps-io": {
+        id: "6092"
+    },
+    "humanfi": {
+        id: "6094"
+    },
+    "mosaic-amm": {
+        id: "6098"
+    },
+    "goosefx_v2": {
+        id: "5998"
+    },
+    "sanctum-infinity": {
+        id: "4368"
+    },
+    "pepe-dex": {
+        id: "6086"
+    },
+    "boop-fun": {
+        id: "6129"
+    },
+    "pancakeswap-infinity": {
+        id: "6133"
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
+    "initia-dex": {
+        id: "6138"
+    },
+    "titan": {
+        id: "6076"
+    },
+    "yakafinance-v3": {
+        id: "6114"
+    },
+    "arena-dex": {
+        id: "6154"
+    },
+    "arena-launch": {
+        id: "6155"
+    },
+    "believe": {
+        id: "6159"
+    },
 } as AdaptorsConfig

@@ -28,7 +28,7 @@
     "get-snapshot-ids": "npx ts-node --logError src/governance/getSnapshotIds.ts",
     "get-overview-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node --logError --transpile-only src/adaptors/cli/runGetOverview.ts",
     "interactive": "npx ts-node --logError --transpile-only src/cli/interactive.ts",
-    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=6144 ts-node --logError --transpile-only src/storeTvlTask.ts",
+    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=10144 ts-node --logError --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/storeChainAssets.ts",
     "override-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/overrideChainAssets.ts",
     "store-chain-asset-historical-flows": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/storeChainAssetFlows.ts",
@@ -44,15 +44,16 @@
     "cron-dimensions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx  --node-options='--max-old-space-size=20144' ts-node --logError --transpile-only src/api2/cron-task/dimensions.ts",
     "cron-raises": "npx ts-node --logError --transpile-only src/api2/cron-task/raises.ts",
     "extension-updateExtensionTwitterConfig": "export AWS_REGION='eu-central-1' && npx ts-node --logError --transpile-only src/api2/scripts/updateExtensionTwitterConfig.ts",
-    "dimensions-store-all": "npx  --node-options='--max-old-space-size=30144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts  2>&1 | tee dimensionsRun.log; node src/api2/scripts/printDimensionRunStats.js  2>&1 | tee dimensionsRunStats2.log",
+    "dimensions-store-all": "npx  --node-options='--max-old-space-size=30144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts  2>&1 | tee dimensionsRun.log; node src/api2/scripts/dimensions/printDimensionRunStats.js  2>&1 | tee dimensionsRunStats2.log",
     "fillOld-dimensions": "npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "fillOld-dimensions-interactive": "npm run update-submodules; npx ts-node --logError --transpile-only src/cli/interactive-dimensions.ts",
     "fillOld-dimensions-all": "refill_all_missing_protocols=true npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "dimensions-notify-backfill": "npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill2.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
-    "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/checkForDeadProtocols.ts",
-    "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts"
+    "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/dimensions/checkForDeadProtocols.ts",
+    "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
+    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

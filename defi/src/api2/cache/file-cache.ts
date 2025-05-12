@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
-import { log } from '@defillama/sdk'
+import { log, } from '@defillama/sdk'
+import { sliceIntoChunks } from '@defillama/sdk/build/util';
 export { PG_CACHE_KEYS }
 
 const CACHE_DIR = getEnv().api2CacheDir;
@@ -59,7 +60,7 @@ export async function getMetadataAll() {
   return JSON.parse(data)
 }
 
-const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9-\/\.]/g, '').toLowerCase()
+export const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9\/\.]/g, '').toLowerCase()
 
 export async function storeRouteData(subPath: string, data: any) {
   subPath = fileNameNormalizer(`build/${subPath}`)
@@ -110,8 +111,9 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
+// it is no longer needed thanks to change to deleteFromPGCache
 // ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
-let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.8'  // update the version number to reset the cache
+let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.9'  // update the version number to reset the cache
 if (process.env.LLAMA_RUN_LOCAL === 'true') {
   TVL_CACHE_FOLDER = 'tvl-cache-daily'
 }
@@ -143,6 +145,50 @@ export function getDailyTvlCacheId(id: string) {
 
 export async function deleteFromPGCache(key: string) {
   log('Deleting from db cache:', key)
+  let keySplit = key.split('/')
+  if (typeof keySplit[1] === 'string' && keySplit[1].startsWith('tvl-cache-daily')) {
+    keySplit[1] = TVL_CACHE_FOLDER
+    key = keySplit.join('/');
+    log("delete key changed to:", key)
+  }
   const id = getCacheFile(key)
   return deleteFileData(id)
+}
+
+
+// allTvlData is quite big, so we need to chunk it
+// into smaller pieces to avoid hitting the file size limit, json.stringify error
+export async function storeTvlCacheAllFile(data: any) {
+  if (typeof data !== 'object') {
+    throw new Error('Invalid data type. Expected an object.')
+  }
+  const { allTvlData = {}, ...restCache } = data
+  const  tvlEntries = Object.entries(allTvlData)
+  const chunkedTvlEntries = sliceIntoChunks(tvlEntries, 1000)
+  restCache.tvlEntryCount = chunkedTvlEntries.length
+
+  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, restCache)
+  let i = 0 
+  for (const chunk of chunkedTvlEntries) {
+    const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
+    await writeToPGCache(key, chunk)
+    i++
+  }
+}
+
+export async function readTvlCacheAllFile() {
+  const restCache = await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)
+  if (!restCache) return {}
+  const { tvlEntryCount } = restCache
+  const allTvlData: any = {}
+  for (let i = 0; i < tvlEntryCount; i++) {
+    const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
+    const chunk = await readFromPGCache(key)
+    if (chunk) {
+      for (const [id, data] of chunk)
+        allTvlData[id] = data
+    }
+  }
+
+  return { ...restCache, allTvlData }
 }

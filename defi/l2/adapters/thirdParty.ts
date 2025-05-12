@@ -39,7 +39,7 @@ const hyperlane = async (): Promise<void> => {
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
   if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch("https://api.axelarscan.io/?method=getAssets").then((r) => r.json());
+    bridgePromises[bridge] = fetch("https://api.axelarscan.io/api/getAssets").then((r) => r.json());
   const data = await bridgePromises[bridge];
   if (doneAdapters.includes(bridge)) return;
   data.map((token: any) => {
@@ -107,6 +107,7 @@ const celer = async (): Promise<void> => {
     let normalizedChain: string = chain;
     if (chain in chainMap) normalizedChain = chainMap[chain];
     if (!allChainKeys.includes(normalizedChain)) return;
+    if (!addresses[normalizedChain]) addresses[normalizedChain] = [];
     addresses[normalizedChain].push(pp.pegged_token.token.address.toLowerCase());
   });
   doneAdapters.push(bridge);
@@ -118,6 +119,11 @@ const layerzero = async (): Promise<void> => {
 
   const staticTokens: { [chain: string]: string[] } = {
     morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    unichain: [
+      "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "0xc3eACf0612346366Db554C991D7858716db09f58",
+      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+    ],
   };
 
   Object.keys(staticTokens).map((chain: string) => {
@@ -128,7 +134,44 @@ const layerzero = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer(), hyperlane(), layerzero()];
+const flow = async (): Promise<void> => {
+  const bridge = "flow";
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  if (doneAdapters.includes(bridge)) return;
+  data.tokens.map(({ chainId, address, tags }: any) => {
+    const chain = chainIdMap[chainId];
+    if (!allChainKeys.includes(chain)) return;
+    if (!tags.includes("bridged-coin")) return;
+    if (!(chain in addresses)) addresses[chain] = [];
+    addresses[chain].push(address);
+  });
+
+  doneAdapters.push(bridge);
+};
+const adapters = [
+  axelar().catch((e) => {
+    throw new Error(`Axelar fails with: ${e}`);
+  }),
+  wormhole().catch((e) => {
+    throw new Error(`Wormhole fails with: ${e}`);
+  }),
+  celer().catch((e) => {
+    throw new Error(`Celer fails with: ${e}`);
+  }),
+  hyperlane().catch((e) => {
+    throw new Error(`Hyperlane fails with: ${e}`);
+  }),
+  layerzero().catch((e) => {
+    throw new Error(`Layerzero fails with: ${e}`);
+  }),
+  flow().catch((e) => {
+    throw new Error(`flow fails with: ${e}`);
+  }),
+];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {

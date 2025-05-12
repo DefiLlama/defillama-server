@@ -181,6 +181,13 @@ functions:
       - httpApi:
           path: /batchHistorical
           method: get
+  batchHistoricalSpan:
+    handler: src/getBatchHistoricalCoinsSpan.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /batchHistoricalSpan
+          method: get
   coinPercentageChange:
     handler: src/getPercentageChange.default
     timeout: 60

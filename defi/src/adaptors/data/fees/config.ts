@@ -73,7 +73,13 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX"
+        parentId: "GMX",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1744070398": true,
+                "1743984000": true
+            },
+        }
     },
     "lido": {
         "id": "182"
@@ -249,8 +255,7 @@ export default {
         "id": "21516"
     },
     "cardano": {
-        "enabled": false,
-        "id": "2010" // wrong id, not related to klaytn
+        "id": "2010"
     },
     "cronos": {
         "id": "25"
@@ -338,7 +343,6 @@ export default {
         "id": "2296"
     },
     "mux": {
-        "name": "MUX Protocol",
         "id": "2254"
     },
     "emdx": {
@@ -1739,7 +1743,6 @@ export default {
         id: "4733"
     },
     "cellula": {
-        enabled: false,
         id: "4705"
     },
     "clusters": {
@@ -2045,7 +2048,7 @@ export default {
         id: "5188"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
     "bifrost-liquid-staking": {
         id: "1738"
@@ -2416,6 +2419,7 @@ export default {
         id: "5742"
     },
     "polymarket": {
+        enabled: false, // fees value is wrong
         id: "711"
     },
     "velar": {
@@ -2576,7 +2580,7 @@ export default {
     "rings": {
         id: "5526"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "ton": {
@@ -2871,5 +2875,363 @@ export default {
     },
     "traderjoe-lend": {
         id: "2179"
+    },
+    "vaultcraft": {
+        id: "1791"
+    },
+    "dextoro": {
+        id: "5954"
+    },
+    "move": {
+        id: "3073"
+    },
+    "snakefinance": {
+        id: "5760"
+    },
+    "baker-dao": {
+        id: "5964"
+    },
+    "hedera": {
+        id: "295"
+    },
+    "pinksale": {
+        id: "1807"
+    },
+    "katana": {
+        id: "797"
+    },
+    "saucerswap": {
+        id: "1979"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "syncswap": {
+        id: "2728"
+    },
+    "filecoin": {
+        id: "314"
+    },
+    "paycash": {
+        id: "1452"
+    },
+    "paradex": {
+        id: "3648"
+    },
+    "tornado": {
+        id: "148"
+    },
+    "karak": {
+        id: "2410" // chainId
+    },
+    "saber": {
+        id: "419"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "privacy-pools": {
+        id: "5977"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
+    "oxfun": {
+        id: "6699" // chainId
+    },
+    "verus": {
+        id: "5601" 
+    },
+    "haedal": {
+        id: "5784"
+    },
+    "haedal-vault": {
+        id: "5967"
+    },
+    "equilibria": {
+        id: "3091"
+    },
+    // "arweave": {
+    //     id: "35386", // cmcId // this is arweave fees, should not be linked to AO
+    // },
+    "usdx": {
+        id: "5234"
+    },
+    "rocketpool": {
+        id: "900"
+    },
+    "winr": {
+        id: "777777" // chainId
+    },
+    "sofa-org": {
+        id: "4779"
+    },
+    "edgex": {
+        id: "4954"
+    },
+    "royco": {
+        id: "5337"
+    },
+    "dolomite": {
+        id: "2187"
+    },
+    "stader": {
+        id: "1044"
+    },
+    "cian-yieldlayer": {
+        id: "5376"
+    },
+    "beraborrow": {
+        id: "5746"
+    },
+    "apestore": {
+        id: "4584"
+    },
+    "euler": { // euler v2
+        id: "5044"
+    },
+    "hardswap": {
+        id: "5999"
+    },
+    "spark": {
+        id: "2929"
+    },
+    "hypurrfi": {
+        id: "5838"
+    },
+    "stakestone-stone": {
+        id: "3558"
+    },
+    "resupply": {
+        id: "5963"
+    },
+    "momentum": {
+        id: "6005"
+    },
+    "sonex": {
+        id: "5640"
+    },
+    "kyo-fi-v3": {
+        id: "5622"
+    },
+    "hashkey": {
+        id: "177" // chainId
+    },
+    "polynomial": {
+        id: "8008" // chainId
+    },
+    "veda": {
+        id: "5825"
+    },
+    "felix": {
+        id: "6015"
+    },
+    "zo": {
+        id: "6018"
+    },
+    "liquidloans-io": {
+        id: "4043"
+    },
+    "powercity-earn-protocols": {
+        id: "4376"
+    },
+    "powercity-flex-protocols": {
+        id: "4881"
+    },
+    "sable-finance": {
+        id: "3355"
+    },
+    "teddy-cash": {
+        id: "535"
+    },
+    "threshold-thusd": {
+        id: "4812"
+    },
+    "jellyverse": {
+        id: "4772",
+        protocolsData: {
+            "v2": {
+                id: "4772"
+            }
+        }
+    },
+    "usual": {
+        id: "4882"
+    },
+    "ondo": {
+        id: "2542"
+    },
+    "traderjoe-lb-v2-2": {
+        id: "4794"
+    },
+    "kongswap": {
+        id: "5528"
+    },
+    "alpacafinance-gmx": {
+        id: "2658"
+    },
+    "phame-protocol": {
+        id: "3569"
+    },
+    "sobax-io": {
+        id: "4143"
+    },
+    "tsunami-fi": {
+        id: "2979"
+    },
+    "kinetix-v1": {
+        id: "3465"
+    },
+    "axiom": {
+        id: "6049"
+    },
+    "mellow-lrt": {
+        id: "4756"
+    },
+    "liquid-ron": {
+        id: "6020"
+    },
+    "razordex": {
+        id: "6054"
+    },
+    "yei-finance": {
+        id: "4721"
+    },
+    "chedda-finance": {
+        id: "5912"
+    },
+    "arbitrum-timeboost": {
+        id: "6065"
+    },
+    "kairos": {
+        id: "6066"
+    },
+    "ostium": {
+        id: "4932"
+    },
+    "lista-lending": {
+        id: "6056"
+    },
+    "zora-chain": {
+        id: "7777777" // chainId
+    },
+    "zora-sofi": {
+        id: "6069" 
+    },
+    "yearn-ether": {
+        id: "3973" 
+    },
+    "yearn-finance": {
+        id: "113" 
+    },
+    "compound-v3": {
+        id: "2088" 
+    },
+    "amnis-finance": {
+        id: "3667" 
+    },
+    "kittypunch-v3": {
+        id: "6051"
+    },
+    "sonicxswap": {
+        id: "6083"
+    },
+    "m0": {
+        id: "5241"
+    },
+    "bucket-protocol": {
+        id: "3206"
+    },
+    "oogabooga": {
+        id: "5880"
+    },
+    "typus-dov": {
+        id: "2946"
+    },
+    "typus-perp": {
+        id: "6014"
+    },
+    "typus-safu": {
+        id: "5152"
+    },
+    "echo": {
+        id: "6091"
+    },
+    "sanctum": {
+        id: "3388"
+    },
+    "lifi": {
+        id: "6093"
+    },
+    "humanfi": {
+        id: "6094"
+    },
+    "launchlab": {
+        id: "6074"
+    },
+    "sanctum-infinity": {
+        id: "4368"
+    },
+    "sanctum-validator-lsts": {
+        id: "4371"
+    },
+    "socket": {
+        id: "6097"
+    },
+    "mosaic-amm": {
+        id: "6098"
+    },
+    "lobbyfi": {
+        id: "6109"
+    },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "1dex": {
+        id: "6003"
+    },
+    "eigenlayer": {
+        id: "3107"
+    },
+    "kittypunch": {
+        id: "5203"
+    },
+    "binance-staked-eth": {
+        id: "2914"
+    },
+    "boop-fun": {
+        id: "6129"
+    },
+    "bancor-v2": { id: "162"},
+    "bancor-v3": { id: "1995"},
+    "pancakeswap-infinity": {
+        id: "6133"
+    },
+    "catex": {
+        id: "6052"
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
+    "initia-dex": {
+        id: "6138"
+    },
+    "yakafinance": {
+        id: "4871"
+    },
+    "yakafinance-v3": {
+        id: "6114"
+    },
+    "kelp": {
+        id: "3946"
+    },
+    "arena-launch": {
+        id: "6155"
+    },
+    "avalon": {
+        id: "4473"
     }
 } as AdaptorsConfig

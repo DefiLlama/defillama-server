@@ -33,8 +33,17 @@ export default async function (
   storePreviousData: boolean,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
   overwriteExistingData = false,
+  extraOptions: any = {},
 ) {
+  const { debugData } = extraOptions
   const hourlyPK = hourlyTvl(protocol.id);
+  const currentTvl = calculateTVLWithAllExtraSections(tvl)
+
+  if (currentTvl < 0) {
+    const errorMessage = `TVL for ${protocol.name} is negative TVL(${currentTvl}), fix the adapter.`
+    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+    throw new Error(errorMessage);
+  }
 
   const [
     lastHourlyTVLObject,
@@ -65,7 +74,6 @@ export default async function (
 
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
-    const currentTvl = calculateTVLWithAllExtraSections(tvl)
     if (currentTvl > 200e9) {
       let errorMessage = `TVL of ${protocol.name} is over 200bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
@@ -76,6 +84,10 @@ export default async function (
       })
 
       await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+      await sendMessage(`
+        ${errorMessage}
+        debug data: ${JSON.stringify(debugData)}
+        `, process.env.OUTDATED_WEBHOOK!)
       throw new Error(errorMessage)
     }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
@@ -132,11 +144,12 @@ export default async function (
         })
       })
       if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
-        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
-        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-        throw new Error(
-          errorMessage
-        );
+        console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
+        if (lastHourlyTVL > 1e5) {
+          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
+          await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+          throw new Error(errorMessage);
+        }
       }
     }
   }
@@ -198,7 +211,7 @@ async function checkForMissingAssets(
   let errorMessage: string = `TVL flags in ${protocol.module}: \n`;
   const baseErrorLength: number = errorMessage.length
   Object.keys(previous).map((chain: string) => {
-    if (['SK', 'tvl'].includes(chain)) return 
+    if (['SK', 'tvl'].includes(chain)) return
     if (!(chain in current)) {
       errorMessage += `chain ${chain} missing \n`;
       return;
@@ -208,7 +221,7 @@ async function checkForMissingAssets(
     });
   });
 
-  if (errorMessage.length == baseErrorLength) return 
+  if (errorMessage.length == baseErrorLength) return
   await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!);
   throw new Error(errorMessage);
 }

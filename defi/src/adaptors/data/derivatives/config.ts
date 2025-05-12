@@ -14,6 +14,11 @@ export default {
                 "enabled": true
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1692230400: true,
+            }
+        },
         "id": "337"
     },
     "jojo": {
@@ -99,6 +104,11 @@ export default {
                 "id": "2254",
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746489600": true,
+            }
+        }
     },
     "polynomial-trade": {
         "id": "2848"
@@ -203,7 +213,12 @@ export default {
         },
     },
     "aevo": {
-        "id": "2797"
+        "id": "2797",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "grizzly-trade": {
         disabled: true,
@@ -258,7 +273,9 @@ export default {
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,
-                "1697328000": true
+                "1697328000": true,
+                "1722816000": true,
+                "1738540800": true,
             },
         }
     },
@@ -338,6 +355,11 @@ export default {
     },
     "panacakeswap-perp": {
         "id": "3538",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1736640000": true,
+            },
+        }
     },
     "apollox": {
         "id": "1772"
@@ -384,7 +406,12 @@ export default {
         "id": "3129"
     },
     "paradex": {
-        "id": "3648"
+        "id": "3648",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            },
+        }
     },
     "swapbased": {
         parentId: "SwapBased",
@@ -489,6 +516,11 @@ export default {
     },
     "orderly-network": {
         "id": "2264",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            },
+        },
         protocolsData: {
             "orderly-network-derivatives": {
                 "id": "2264",
@@ -580,7 +612,8 @@ export default {
                 1716336000: true,
                 1717718400: true,
                 1722297600: true,
-                1724457600: true
+                1724457600: true,
+                1676678400: true,
             }
         }
     },
@@ -605,7 +638,12 @@ export default {
         "id": "4215"
     },
     "avantis": {
-        "id": "4108"
+        "id": "4108",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1743552000": true,
+            },
+        }
     },
     "flashtrade": {
         "id": "4107",
@@ -691,7 +729,12 @@ export default {
     },
     "apex-omni": {
         parentId: "ApeX Protocol",
-        id: "4822"
+        id: "4822",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            },
+        }
     },
     "edgeX": {
         id: "4954",
@@ -720,7 +763,7 @@ export default {
         id: "5151"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
     "kuma-v1": {
         id: "5079"
@@ -836,5 +879,36 @@ export default {
     },
     "agdex": {
         id: "5467"
-    }
+    },
+    "vest": {
+        id: "4400"
+    },
+    "goosefx_v2": {
+        enabled: false, // team asked to have adapter moved to dexs config
+        id: "5998"
+    },
+    "zo": {
+        id: "6018"
+    },
+    "d8x": {
+        id: "3924"
+    },
+    "elfi": {
+        id: "5160"
+    },
+    "tearex": {
+        id: "5920"
+    },
+    "typus-perp": {
+        id: "6014",
+    },
+    "loxodrome-perp": {
+        id: "5300",
+    },
+    "ostium": {
+        id: "4932",
+    },
+    "vanilla-finance-perps": {
+        id: "6079",
+    },
 } as AdaptorsConfig

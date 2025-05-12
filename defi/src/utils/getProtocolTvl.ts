@@ -1,4 +1,4 @@
-import { Protocol } from "../protocols/data";
+import { Protocol, protocolsById, } from "../protocols/data";
 import type { ITvlsWithChangesByChain, ProtocolTvls } from "../types";
 import { secondsInDay, secondsInMonth, secondsInWeek } from "./date";
 import { includeCategoryIntoChainTvl } from "./excludeProtocols";
@@ -194,7 +194,10 @@ export async function getProtocolTvl(
       });
 
       if (chainsLength === 0 || (chainsLength <= 3 && allTvlsAreAddl)) {
-        chainTvls[protocol.chains[0]] = {
+        // let defaultChain = protocol.chains[0] ?? protocolsById[protocol.id]?.chains[0] ?? protocolsById[protocol.id]?.chain
+        let defaultChain = protocol.chains[0]
+        if (defaultChain) {
+        chainTvls[defaultChain] = {
           tvl,
           tvlPrevDay,
           tvlPrevWeek,
@@ -202,20 +205,21 @@ export async function getProtocolTvl(
         };
 
         if (chainTvls["doublecounted"]) {
-          chainTvls[`${protocol.chains[0]}-doublecounted`] = {
+          chainTvls[`${defaultChain}-doublecounted`] = {
             ...chainTvls["doublecounted"],
           };
         }
         if (chainTvls["liquidstaking"]) {
-          chainTvls[`${protocol.chains[0]}-liquidstaking`] = {
+          chainTvls[`${defaultChain}-liquidstaking`] = {
             ...chainTvls["liquidstaking"],
           };
         }
         if (chainTvls["dcAndLsOverlap"]) {
-          chainTvls[`${protocol.chains[0]}-dcAndLsOverlap`] = {
+          chainTvls[`${defaultChain}-dcAndLsOverlap`] = {
             ...chainTvls["dcAndLsOverlap"],
           };
         }
+      }
       }
     }
   } catch (error) {

@@ -1,7 +1,6 @@
 import { cache, initCache, checkModuleDoubleCounted, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
-import { storeRouteData, writeToPGCache } from "../cache/file-cache";
+import { storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
-import { PG_CACHE_KEYS } from "../constants";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
@@ -34,8 +33,7 @@ async function run() {
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON  })
   await initializeProtocolDataMap()
-  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
-  await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this
+  await storeTvlCacheAllFile(cache)
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {

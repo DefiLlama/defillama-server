@@ -7073,6 +7073,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "TheArenaApp",
+  },
+  {
+    id: "parent#lendle",
+    name: "Lendle",
+    url: "https://arena.social/",
+    description: "Permissionless money market that redistributes revenue to its users, paid in blue chip assets, powered by Mantle",
+    logo: `${baseIconsUrl}/lendle.jpg`,
+    gecko_id: "lendle",
+    cmcId: "29006",
+    chains: [],
+    twitter: "lendlexyz",
   }
 ];
 

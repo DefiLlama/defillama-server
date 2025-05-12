@@ -13800,7 +13800,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747046774
   },
-    {
+  {
     id: "6162",
     name: "Berancia", 
     address: null,
@@ -13822,6 +13822,104 @@ const data4: Protocol[] = [
     oracles: [],
     audit_links: ["https://barencias-organization.gitbook.io/berancia"],
     listedAt: 1747046911
+  },
+  {
+    id: "6163",
+    name: "Neutrl", 
+    address: null,
+    symbol: "-",
+    url: "https://www.neutrl.fi/",
+    description:
+      "Neutrl is a market-neutral synthetic dollar designed to unlock untapped yield opportunities in OTC and altcoin markets. Neutrl leverages OTC arbitrage, funding rate inefficiencies, and DeFi-native market-neutral strategies to provide a single, high-yield access point for capital allocators.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/neutrl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    module: "neutrl/index.js",
+    twitter: "neutrl_labs",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1747077131
+  },
+  {
+    id: "6164",
+    name: "Supra Staking", 
+    address: null,
+    symbol: "-",
+    url: "https://supra.com/data/validators",
+    description:
+      "Staking provides users with 8% APY",
+    chain: "Supra",
+    logo: `${baseIconsUrl}/supra-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Supra"],
+    module: "supra-staking/index.js",
+    twitter: "SUPRA_Labs",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1747077322
+  },
+  {
+    id: "6165",
+    name: "Lendle Earn", 
+    address: "mantle:0x25356aeca4210ef7553140edb9b8026089e49396",
+    symbol: "LEND",
+    url: "https://app.lendle.xyz/yields",
+    description:
+      "TVL accounts for all assets deposited into the Vaults",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/lendle-earn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Mantle"],
+    module: "lendle-earn/index.js",
+    twitter: "lendlexyz",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#lendle",
+    listedAt: 1747077329
+  },
+  {
+    id: "6166",
+    name: "Roots", 
+    address: null,
+    symbol: "-",
+    url: "https://rootsfi.com/",
+    description:
+      "Collateralize Berachain LP tokens, Mint MEAD stablecoin, retain all your BGT faming upside",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/roots.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Berachain"],
+    module: "roots/index.js",
+    twitter: "rootsfi",
+    forkedFrom: [],
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14591"]
+      }
+    ],
+    audit_links: ["https://docs.rootsfi.com/essentials/audits"],
+    github: ["roots-fi"],
+    listedAt: 1747077337
   },
 ];
 export default data4;

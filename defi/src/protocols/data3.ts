@@ -13848,17 +13848,18 @@ const data3: Protocol[] = [
   },
   {
     id: "3300",
-    name: "Lendle",
+    name: "Lendle Lend",
+    //previousNames: ["Lendle"]
     address: "mantle:0x25356aeca4210ef7553140edb9b8026089e49396",
     symbol: "LEND",
     url: "https://www.lendle.xyz",
     description: "Decentralized, non-custodial lending and borrowing market on MantleNetwork.",
     chain: "Mantle",
-    logo: `${baseIconsUrl}/lendle.jpg`,
+    logo: `${baseIconsUrl}/lendle-lend.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "lendle",
-    cmcId: "29006",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
     oracles: ["Api3", "Pyth"], // https://docs.lendle.xyz/using-the-lendle-application/markets/borrow/liquidations-and-flashloans#oracles Api3 is used for mETH
@@ -13867,6 +13868,7 @@ const data3: Protocol[] = [
     twitter: "lendlexyz",
     listedAt: 1690465888,
     audit_links: ["https://sourcehat.com/audits/Lendle/"],
+    parentProtocol: "parent#lendle"
   },
   {
     id: "3301",

@@ -3748,9 +3748,9 @@ export const chainCoingeckoIds = {
     url: "https://soneium.org"
   },
   "Plume": {
-    geckoId: "plume",
+    geckoId: null,
     symbol: "PLUME",
-    cmcId: "35364",
+    cmcId: null,
     categories: ["EVM"],
     twitter: "plumenetwork",
     github: ["plumenetwork"],

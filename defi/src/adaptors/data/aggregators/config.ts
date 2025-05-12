@@ -319,6 +319,11 @@ export default {
   },
   "enso": {
     id: "5741",
+     cleanRecordsConfig: {
+      genuineSpikes: {
+        "1746489600": true,
+      },
+    },
   },
   "1delta": {
     id: "5740",

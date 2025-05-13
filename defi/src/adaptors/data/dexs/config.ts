@@ -2781,6 +2781,8 @@ export default {
     },
     "superswap-v3": {
         id: "5373"
+    },
+    "SecuredFinance": {
+        id: "4197"
     }
-
 } as AdaptorsConfig

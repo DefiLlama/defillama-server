@@ -10459,6 +10459,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "maple/index.js",
     twitter: "maplefinance",
+    oracles: ["Chainlink"], //https://maplefinance.gitbook.io/maple/technical-resources/singletons/oracles
     parentProtocol: "parent#maple-finance",
     audit_links: ["https://github.com/maple-labs/maple-core#audit-reports"],
   },

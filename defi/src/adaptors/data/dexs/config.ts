@@ -3033,4 +3033,7 @@ export default {
     "believe": {
         id: "6159"
     },
+    "rockswap": {
+        id: "4204"
+    }
 } as AdaptorsConfig

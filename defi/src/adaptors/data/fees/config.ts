@@ -3288,4 +3288,7 @@ export default {
     "sosovalue": { // Indexes
         id: "5619"
     },
+    "rockswap": {
+        id: "4204"
+    }
 } as AdaptorsConfig

@@ -13919,5 +13919,59 @@ const data4: Protocol[] = [
     github: ["roots-fi"],
     listedAt: 1747077337
   },
+  {
+    id: "6167",
+    name: "BasisOS", 
+    address: "base:0x73Cb479f2ccf77BAd90BcDA91e3987358437240A",
+    symbol: "BIOS",
+    url: "https://basisos.org/",
+    description:
+      "BasisOS Agent is an autonomous AI system built to manage DeFi protocols, executing trading strategies, managing risk, and optimizing operations through a modular, multi-agent design",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/basisos.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "basisos-by-virtuals",
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Arbitrum"],
+    module: "basisos/index.js",
+    twitter: "BasisOS",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"]
+      }
+    ],
+    audit_links: ["https://github.com/Hexens/Smart-Contract-Review-Public-Reports/blob/main/BasisOS-nov-24(Final).pdf"],
+    github: ["Logarithm-Labs"],
+    listedAt: 1747156379
+  },
+  {
+    id: "6168",
+    name: "XOXNO Liquid Staking", 
+    address: null,
+    symbol: "-",
+    assetToken: "xEGLD",
+    url: "https://xoxno.com",
+    description:
+      "xEGLD is a liquid staking token for EGLD, integrated across the XOXNO protocol. Pegged to EGLD, it grows with staking rewards, allowing users to earn yield while keeping liquidity",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/xoxno-liquid-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Elrond"],
+    module: "xoxno-liquid-staking/index.js",
+    twitter: "XoxnoNetwork",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1747156831
+  },
 ];
 export default data4;

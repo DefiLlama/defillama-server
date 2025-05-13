@@ -7570,7 +7570,7 @@
   "soneium": {
     "0x102d758f688a4C1C5a80b116bD945d4455460282": {
       "to": "coingecko#usdt0",
-      "decimals": 18,
+      "decimals": 6,
       "symbol": "USDT0"
     },
     "0x0000000000000000000000000000000000000000": {

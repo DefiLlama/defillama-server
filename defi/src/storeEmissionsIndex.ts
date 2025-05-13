@@ -21,6 +21,7 @@ type ProtocolData = {
   gecko_id?: string;
   mcap?: any;
   events?: any;
+  unlockEvents?: any;
   unlocksPerDay: number;
 };
 
@@ -115,6 +116,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         maxSupply,
         gecko_id: res.gecko_id,
         events: res.metadata.events,
+        unlockEvents: res.metadata.unlockEvents,
         nextEvent,
         unlocksPerDay,
       });

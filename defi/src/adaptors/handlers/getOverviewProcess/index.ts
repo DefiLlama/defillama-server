@@ -131,7 +131,7 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyProtocolRevenue
     ], */
     [AdapterType.OPTIONS]: [
-        AdaptorRecordType.dailyPremiumVolume
+        AdaptorRecordType.dailyNotionalVolume,
     ],
     [AdapterType.DERIVATIVES]: [
         AdaptorRecordType.dailyShortOpenInterest,

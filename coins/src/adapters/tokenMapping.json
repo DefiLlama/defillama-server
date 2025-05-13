@@ -7571,7 +7571,7 @@
     "0x102d758f688a4C1C5a80b116bD945d4455460282": {
       "to": "coingecko#usdt0",
       "decimals": 18,
-      "symbol": "UST0"
+      "symbol": "USDT0"
     },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",

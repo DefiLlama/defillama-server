@@ -115,6 +115,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "5833": "formnetwork",
   "5854": "hemi-l2",
   "6063": "mxczkevm",
+  "6148": "lens",
+  "6149": "openzk",
+  "6150": "treasure",
+  "6151": "zkcandy",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

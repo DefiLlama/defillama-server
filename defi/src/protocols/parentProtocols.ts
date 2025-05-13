@@ -1650,7 +1650,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#curve-finance",
     name: "Curve Finance",
-    url: "https://curve.fi",
+    url: "https://curve.finance",
     description:
       "Creating deep on-chain liquidity using advanced bonding curves",
     logo: `${baseIconsUrl}/curve.png`,

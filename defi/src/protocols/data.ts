@@ -75,7 +75,7 @@ const data: Protocol[] = [
     name: "Curve DEX",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
-    url: "https://curve.fi",
+    url: "https://curve.finance",
     description:
       "Curve is a decentralized exchange liquidity pool on Ethereum designed for extremely efficient stablecoin trading",
     chain: "Ethereum",
@@ -88,7 +88,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
     twitter: "CurveFinance",
-    audit_links: ["https://docs.curve.fi/references/audits/"],
+    audit_links: ["https://docs.curve.finance/references/audits/"],
     oracles: [],
     language: "Vyper",
     parentProtocol: "parent#curve-finance",

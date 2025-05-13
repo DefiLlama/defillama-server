@@ -1,12 +1,12 @@
-import { AdaptorRecord, getAdaptorRecord2, } from "../../adaptors/db-utils/adaptor-record";
-import { getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
+import { AdaptorRecord, getAdaptorRecord2, } from "../../../adaptors/db-utils/adaptor-record";
+import { getAdapterRecordTypes, } from "../../../adaptors/handlers/getOverviewProcess";
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import loadAdaptorsData from "../../adaptors/data"
-import { ProtocolAdaptor } from "../../adaptors/data/types";
-import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
-import { getTimestampString } from "../utils";
-import { AdapterRecord2 } from "../../adaptors/db-utils/AdapterRecord2";
-import { storeAdapterRecordBulk } from "../../adaptors/db-utils/db2";
+import loadAdaptorsData from "../../../adaptors/data"
+import { ProtocolAdaptor } from "../../../adaptors/data/types";
+import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData";
+import { getTimestampString } from "../../utils";
+import { AdapterRecord2 } from "../../../adaptors/db-utils/AdapterRecord2";
+import { storeAdapterRecordBulk } from "../../../adaptors/db-utils/db2";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 
 async function run() {

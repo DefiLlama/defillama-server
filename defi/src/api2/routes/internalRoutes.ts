@@ -89,6 +89,7 @@ async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperEx
         useNewChainNames: true,
         useHourlyData: false,
         skipAggregatedTvl: false,
+        skipCachedHourlyData: true,
         getCachedProtocolData,
       })
       responseData.push(protocolResponse)

@@ -75,7 +75,7 @@ const data: Protocol[] = [
     name: "Curve DEX",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
-    url: "https://curve.fi",
+    url: "https://curve.finance",
     description:
       "Curve is a decentralized exchange liquidity pool on Ethereum designed for extremely efficient stablecoin trading",
     chain: "Ethereum",
@@ -88,7 +88,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
     twitter: "CurveFinance",
-    audit_links: ["https://docs.curve.fi/references/audits/"],
+    audit_links: ["https://docs.curve.finance/references/audits/"],
     oracles: [],
     language: "Vyper",
     parentProtocol: "parent#curve-finance",
@@ -1190,8 +1190,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/homora-v2.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "alpha-finance",
-    cmcId: "7232",
+    gecko_id: null, // added to stella id:3148
+    cmcId: null, // added to stella id:3148
     category: "Leveraged Farming",
     chains: ["Ethereum", "Avalanche", "Fantom", "Optimism"],
     module: "alpha-homora/index.js",
@@ -2317,7 +2317,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
-      bsc: ["Chainlink"], // https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
+      bsc: ["RedStone"], // https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
       //   op_bnb: ["Binance Oracle"]
       unichain: ["RedStone"] //https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool
     },
@@ -10459,6 +10459,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "maple/index.js",
     twitter: "maplefinance",
+    oracles: ["Chainlink"], //https://maplefinance.gitbook.io/maple/technical-resources/singletons/oracles
     parentProtocol: "parent#maple-finance",
     audit_links: ["https://github.com/maple-labs/maple-core#audit-reports"],
   },
@@ -15084,6 +15085,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Empire_DEX",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636439712,
+    deadUrl: true
   },
   /*
 {
@@ -19195,6 +19197,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BrincFi",
     audit_links: ["https://www.certik.com/projects/brincfi"],
     listedAt: 1639098493,
+    deadUrl: true
   },
   {
     id: "1001",
@@ -19343,7 +19346,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "0",
     audit_note: null,
     gecko_id: "safeswap-token",
-    cmcId: null,
+    cmcId: "15021",
     category: "Dexs",
     chains: ["Polygon", "Ethereum"],
     module: "safeswap/index.js",

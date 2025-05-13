@@ -2044,7 +2044,7 @@ export const chainCoingeckoIds = {
   "PulseChain": {
     geckoId: "pulsechain",
     symbol: "PLS",
-    cmcId: null,
+    cmcId: "11145",
     categories: ["EVM"],
     chainid: 369,
     twitter: "PulsechainCom",
@@ -2474,7 +2474,7 @@ export const chainCoingeckoIds = {
   "Mode": {
     geckoId: "mode",
     symbol: "MODE",
-    cmcId: null,
+    cmcId: "31016",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -3324,7 +3324,7 @@ export const chainCoingeckoIds = {
   "Gravity by Galxe": {
     geckoId: "g-token",
     symbol: "G",
-    cmcId: null,
+    cmcId: "32120",
     categories: ["EVM"],
     chainId: 1625,
     twitter: "GravityChain",
@@ -3338,7 +3338,7 @@ export const chainCoingeckoIds = {
     twitter: "Chainflip",
     url: "https://chainflip.io/"
   },
-  "IDEX": {
+  "XCHAIN": {
     geckoId: "aurora-dao",
     symbol: "IDEX",
     cmcId: null,
@@ -3347,8 +3347,8 @@ export const chainCoingeckoIds = {
       chain: "Arbitrum",
       types: ["L3"]
     },
-    twitter: "idexio",
-    url: "https://idex.io/"
+    twitter: "kumadotbid",
+    url: "https://kuma.bid/"
   },
   "Zircuit": {
     geckoId: "zircuit",
@@ -4156,6 +4156,68 @@ export const chainCoingeckoIds = {
     twitter: "Aleph__Zero",
     url: "https://alephzero.org",
   }, 
+  "Flame": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Rollup"],
+    chainId: 253368190,
+    parent: {
+      chain: "Celestia",
+      types: ["L2", "gas"],
+    },
+    twitter: "Flame_evm",
+    url: "https://www.astria.org/flame"
+  },
+  "Basecamp": {
+    geckoId: null,
+    symbol: "CAMP",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 123420001114,
+    twitter: "campnetworkxyz",
+    url: "https://www.campnetwork.xyz/",
+  }, 
+  "Initia": {
+    geckoId: "initia",
+    symbol: "INIT",
+    cmcId: "33120",
+    categories: null,
+    twitter: "initia",
+    url: "https://initia.xyz", 
+    github: ["initia-labs"],
+  },
+  "OpenGPU": {
+    geckoId: "open-gpu",
+    symbol: "OGPU",
+    cmcId: "30751",
+    categories: ["EVM"],
+    twitter: "OpenGPUfndn",
+    url: "https://opengpu.network/",
+  }, 
+  "Echelon Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "EchelonMarket",
+    url: "https://echelon.market/",
+  }, 
+    "Superseed": {
+    geckoId: "superseed",
+    symbol: "SUPR",
+    cmcId: "36436",
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 5330,
+    github: ['superseed-xyz'],
+    twitter: "SuperseedXYZ",
+    url: "https://www.superseed.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4342,7 +4404,10 @@ const chainLabelMap = {
   "babylon": "Babylon Genesis",
   "lukso": "LUKSO",
   "aleph_zero": "Aleph Zero EVM",
-  "gravity": "Gravity"
+  "gravity": "Gravity",
+  "ogpu": "OpenGPU",
+  "echelon_initia": "Echelon Chain",
+  "sseed": "Superseed"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4388,7 +4453,8 @@ const newChainLabelMap = {
   "wax": "Wax",
   "unit0": "Unit Zero",
   "eos": "Vaulta",
-  "gravity": "Gravity by Galxe"
+  "gravity": "Gravity by Galxe",
+  "idex": "XCHAIN"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

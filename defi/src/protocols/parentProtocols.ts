@@ -1650,7 +1650,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#curve-finance",
     name: "Curve Finance",
-    url: "https://curve.fi",
+    url: "https://curve.finance",
     description:
       "Creating deep on-chain liquidity using advanced bonding curves",
     logo: `${baseIconsUrl}/curve.png`,
@@ -2037,7 +2037,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Solv Protocol",
     url: "https://solv.finance/",
     description:
-      "Solv Protocol is a leading Bitcoin staking platform, allowing Bitcoin holders to unlock the full potential of over $1 trillion in Bitcoin assets. By providing secure, transparent staking infrastructure and access to liquid staking tokens (LSTs) like SolvBTC.BBN, Solv is paving the way for Bitcoin’s role in the future of decentralized finance.",
+      "Solv Protocol is a premier on-chain platform offering global Bitcoin holders a full suite of Bitcoin financial services, including lending, liquid staking, yield generation and fund management, all powered by the largest on-chain Bitcoin Reserve.\n\nBy bridging the gap between Traditional Finance (TradFi), Centralized Finance (CeFi), and Decentralized Finance (DeFi), Solv unlocks the full potential of over $1 trillion in Bitcoin.",
     logo: `${baseIconsUrl}/solv-protocol.png`,
     gecko_id: null,
     cmcId: null,
@@ -2654,7 +2654,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
     logo: `${baseIconsUrl}/spacefi.png`,
-    gecko_id: null,
+    gecko_id: "spacefi-zksync",
     cmcId: null,
     chains: [],
     twitter: "spacefi_io",
@@ -3049,7 +3049,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#maker",
-    name: "Sky", // previous Maker 
+    name: "Sky", // previous Maker
     url: "https://sky.money/",
     description:
       "Sky enables users to get rewarded for non-custodial saving with USDS.",
@@ -3576,14 +3576,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#idex",
-    name: "IDEX",
-    url: "https://idex.io/",
-    description: `The fastest, most secure decentralized exchange`,
-    logo: `${baseIconsUrl}/idex.png`,
+    name: "Kuma", // previously IDEX
+    url: "https://kuma.bid/",
+    description: `Proof-of-Liquidity Perpetuals DEX`,
+    logo: `${baseIconsUrl}/kuma.png`,
     gecko_id: "aurora-dao",
     cmcId: "310",
     chains: [],
-    twitter: "idexio",
+    twitter: "kumadotbid",
     github: ["idexio"],
   },
   {
@@ -5500,7 +5500,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#avalon-labs",
     name: "Avalon Labs",
     url: "https://www.avalonfinance.xyz",
-    description: "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    description: "Powering ₿itcoin's On-Chain Capital Markets.",
     logo: `${baseIconsUrl}/avalon-labs.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -5591,8 +5591,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "IPOR refers to a set of protocols, smart contracts, and software that forms a set of DApps for DeFi focused on interest rate derivatives",
     logo: `${baseIconsUrl}/ipor-protocol.svg`,
-    gecko_id: "ipor",
-    cmcId: "22880",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "ipor_io",
     treasury: "ipor.js",
@@ -5908,7 +5908,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Solayer is the restaking protocol on Solana, securing both endogenous AVS (dApps) through stake-weighted quality of service and exogenous AVS via Solana-based POS primitives",
     logo: `${baseIconsUrl}/solayer.jpg`,
-    gecko_id: null,
+    gecko_id: "solayer",
     cmcId: null,
     chains: [],
     twitter: "solayer_labs",
@@ -6976,8 +6976,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://zora.co/explore",
     description: "A social network where every post is a coin.",
     logo: `${baseIconsUrl}/zora-protocol.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "zora",
+    cmcId: "35931",
     chains: [],
     twitter: "zora",
     governanceID: ["snapshot:zora.eth"],
@@ -7043,7 +7043,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#yaka-finance",
     name: "Yaka Finance",
-    url: "https://mosaic.ag",
+    url: "https://yaka.finance/",
     description: "Yaka Finance is Sei network's native ve(3,3) DEX integrating Algebra Integral's concentrated liquidity framework with Gamma Strategies' automated management system",
     logo: `${baseIconsUrl}/yaka-finance.jpg`,
     gecko_id: null,
@@ -7051,6 +7051,40 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "YakaFinance",
   },
+  {
+    id: "parent#torch",
+    name: "Torch Finance",
+    url: "https://torch.finance",
+    description: "Torch is the core liquidity layer for stablecoins on the TON blockchain. Built with a highly optimized Curve-style StableSwap AMM, Torch enables deep, low-slippage swaps between major stablecoins. At its center is tgUSD, a cross-chain yield-bearing stablecoin 1:1 backed by USDT, designed for both DeFi and real-world payments.",
+    logo: `${baseIconsUrl}/torch-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TorchTon",
+    github: ["torch-core"],
+  },
+  {
+    id: "parent#the-arena",
+    name: "The Arena",
+    url: "https://arena.social/",
+    description: "The Arena is a next gen SocialFi app redefining how creators connect, engage, and monetize their content",
+    logo: `${baseIconsUrl}/the-arena.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TheArenaApp",
+  },
+  {
+    id: "parent#lendle",
+    name: "Lendle",
+    url: "https://arena.social/",
+    description: "Permissionless money market that redistributes revenue to its users, paid in blue chip assets, powered by Mantle",
+    logo: `${baseIconsUrl}/lendle.jpg`,
+    gecko_id: "lendle",
+    cmcId: "29006",
+    chains: [],
+    twitter: "lendlexyz",
+  }
 ];
 
 export default parentProtocols;

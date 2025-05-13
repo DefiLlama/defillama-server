@@ -116,7 +116,8 @@ async function _storeAppMetadata() {
     volumeData,
     perpsData,
     aggregatorsData,
-    optionsData,
+    optionsNotionalData,
+    optionsPremiumData,
     perpsAggregatorsData,
     bridgeAggregatorsData,
     emmissionsData,
@@ -149,6 +150,7 @@ async function _storeAppMetadata() {
     readRouteData('/dimensions/derivatives/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/aggregators/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/options/dnv-lite').catch(() => ({ protocols: {} })),
+    readRouteData('/dimensions/options/dpv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/aggregator-derivatives/dv-lite').catch(() => ({ protocols: {} })),
     readRouteData('/dimensions/bridge-aggregators/dbv-lite').catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => ([])),
@@ -178,18 +180,21 @@ async function _storeAppMetadata() {
       mapKey: 'revenue', data: revenueData, finalDataKeys: {
         dailyRevenue: 'total24h',
         revenue30d: 'total30d',
+        allTimeRevenue: 'totalAllTime',
       }
     },
     {
       mapKey: 'bribe', data: feeBribeRevenueData, finalDataKeys: {
         dailyBribesRevenue: 'total24h',
         bribesRevenue30d: 'total30d',
+        allTimeBribesRevenue: 'totalAllTime',
       }
     },
     {
       mapKey: 'tokenTax', data: feeTokenTaxData, finalDataKeys: {
         dailyTokenTaxes: 'total24h',
         tokenTaxesRevenue30d: 'total30d',
+        allTimeTokenTaxes: 'totalAllTime',
       }
     },
     {
@@ -211,7 +216,7 @@ async function _storeAppMetadata() {
       }
     },
     {
-      mapKey: 'options', data: optionsData, finalDataKeys: {
+      mapKey: 'options', data: optionsPremiumData, finalDataKeys: {
         dailyOptionsVolume: 'total24h',
       }
     },
@@ -634,7 +639,7 @@ async function _storeAppMetadata() {
       }
     }
 
-    for (const protocol of optionsData.protocols) {
+    for (const protocol of optionsPremiumData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         options: true
@@ -647,7 +652,28 @@ async function _storeAppMetadata() {
         }
       }
     }
-    for (const chain of optionsData.allChains ?? []) {
+    for (const chain of optionsPremiumData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        options: true
+      }
+    }
+
+
+    for (const protocol of optionsNotionalData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        options: true
+      }
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          options: true
+        }
+      }
+    }
+    for (const chain of optionsNotionalData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         options: true

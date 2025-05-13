@@ -173,6 +173,8 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
 
       } else if ('breakdown' in moduleObject) {
+        throw new Error('Breakdown adapters are deprecated, migrate it to use simple adapter')
+
 
         const protocolsData = config?.[adapterKey]?.protocolsData
         if (!protocolsData)

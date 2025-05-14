@@ -13992,6 +13992,7 @@ const data4: Protocol[] = [
     twitter: "jito_sol",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#jito",
   },
     {
     id: "6170",

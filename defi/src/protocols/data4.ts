@@ -14061,7 +14061,7 @@ const data4: Protocol[] = [
     listedAt: 1747233946
   },
   {
-    id: "6169",
+    id: "6173",
     name: "Strike Finance Perpetuals",
     address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
     symbol: "STRIKE",
@@ -14085,7 +14085,7 @@ const data4: Protocol[] = [
     parentProtocol: 'parent#strike-finance',
   },
     {
-    id: "6170",
+    id: "6174",
     name: "Solv Others",
     address: null,
     symbol: "-",

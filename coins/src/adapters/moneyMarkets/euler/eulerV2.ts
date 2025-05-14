@@ -13,7 +13,7 @@ const vaultAbi = require("./vault.abi.json");
 interface Market {
     address: string;
     symbol: string;
-    decimals: number;
+    // decimals: number;
     underlying: string;
     sharePrice: number;
 }
@@ -45,7 +45,7 @@ async function getEulerV2Tokens(
         return vaultDeploy.args[0]; // proxy
     });
 
-    const [assets, sharePrice, decimals, symbols] = await Promise.all([
+    const [assets, sharePrice, symbols] = await Promise.all([
         sdk.api.abi.multiCall({
             calls: vaultAddresses.map((address: any) => ({
                 target: address,
@@ -69,15 +69,6 @@ async function getEulerV2Tokens(
                 target: address,
                 params: [],
             })),
-            abi: vaultAbi.find((m: any) => m.name === "decimals"),
-            chain,
-            permitFailure: true,
-        }),
-        sdk.api.abi.multiCall({
-            calls: vaultAddresses.map((address: any) => ({
-                target: address,
-                params: [],
-            })),
             abi: vaultAbi.find((m: any) => m.name === "symbol"),
             chain,
             permitFailure: true,
@@ -89,7 +80,6 @@ async function getEulerV2Tokens(
             address: vaultAddresses[i],
             underlying: asset["output"],
             symbol: symbols.output[i].output,
-            decimals: decimals.output[i].output,
             sharePrice: sharePrice.output[i].output / 1e18,
         };
     });
@@ -109,7 +99,7 @@ function formWrites(
             underlyingPrices[m.underlying.toLowerCase()];
         const rate = m.sharePrice;
         if (coinData == null || rate == null) return;
-        const eTokenPrice: number = (coinData.price * rate);
+        const eTokenPrice: number = coinData.price * rate;
 
         if (eTokenPrice == 0) return;
 
@@ -126,11 +116,6 @@ function formWrites(
         );
     });
 
-    console.log(
-        "writes",
-        writes
-    )
-
     return writes;
 }
 
@@ -140,10 +125,12 @@ export default async function getEulerV2TokenPrices(
     factory: string,
     fromBlock: number
 ) {
-    const [block, eulerV2Tokens] = await Promise.all([
-        getBlock(chain, timestamp),
-        getEulerV2Tokens(chain, timestamp, factory, fromBlock),
-    ]);
+    const eulerV2Tokens = await getEulerV2Tokens(
+        chain,
+        timestamp,
+        factory,
+        fromBlock
+    );
 
     const underlyingPrices = await getTokenAndRedirectDataMap(
         eulerV2Tokens.map((m: Market) => m.underlying),

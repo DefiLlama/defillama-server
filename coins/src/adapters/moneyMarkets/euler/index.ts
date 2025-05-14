@@ -54,22 +54,16 @@ const v2ChainConfigs = {
 };
 
 function eulerV2(timestamp: number = 0) {
-    return getEulerV2TokenPrices(
-        "ethereum",
-        timestamp,
-        "0x29a56a1b8214D9Cf7c5561811750D5cBDb45CC8e",
-        20529225
+    return Promise.all(
+        Object.entries(v2ChainConfigs).map(([chain, config]) =>
+            getEulerV2TokenPrices(
+                chain,
+                timestamp,
+                config.factory,
+                config.fromBlock
+            )
+        )
     );
-    // return Promise.all(
-    //   Object.entries(v2ChainConfigs).map(([chain, config]) =>
-    //     getEulerV2TokenPrices(
-    //       chain,
-    //       timestamp,
-    //       config.factory,
-    //       config.fromBlock,
-    //     ),
-    //   ),
-    // );
 }
 
 export const adapters = {

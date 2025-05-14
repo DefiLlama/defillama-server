@@ -14084,5 +14084,27 @@ const data4: Protocol[] = [
     oracles: [],
     parentProtocol: 'parent#strike-finance',
   },
+    {
+    id: "6170",
+    name: "Solv Others",
+    address: null,
+    symbol: "-",
+    url: "https://solv.finance",
+    description: "Solv Protocol is the on-chain Bitcoin Reserve, bridging TradFi, CeFi, and DeFi to unlock the full potential of over $1 trillion in Bitcoin. Through SolvBTC and SolvBTC.LSTs (Liquid Staking Tokens)",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/solv-others.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: 'Anchor BTC',
+    chains: ["Merlin"],
+    module: "solv-others/index.js",
+    twitter: "SolvProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#solv-protocol",
+    listedAt: 1747252621
+  },
 ];
 export default data4;

@@ -660,6 +660,9 @@ export default {
     },
     "rfx-rfx-trade": {
         id: "5406"
-    }
+    },
+    "moonlander": {
+        id: "5658"
+    },
 
 } as AdaptorsConfig

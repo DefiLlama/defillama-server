@@ -2785,9 +2785,6 @@ export default {
     "SecuredFinance": {
         id: "4197"
     },
-    "moonlander": {
-        id: "5658"
-    },
     "jito-mev-tips": {
         id: "6169"
     }

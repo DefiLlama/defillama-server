@@ -13973,5 +13973,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747156831
   },
+    {
+    id: "6169",
+    name: "Jito Mev Tips", 
+    address: null,
+    symbol: "-",
+    url: "https://www.jito.network/",
+    description:
+      "Jito Restaking is a multi-asset staking protocol for node consensus networks. The protocol tokenizes staked assets as vault receipt tokens for enhanced liquidity and composability.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jito-mev-tips.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "MEV",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "jito_sol",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 export default data4;

@@ -65262,7 +65262,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.b14g.xyz/",
-    description: "b14g is a Bitcoin Merge Staking platform that unlocks the full potential of your BTC. By blending Bitcoin’s strength with native tokens, b14g creates a secure, scalable, and slashing-free staking experience. With innovative features like the Merge Marketplace, b14g makes it easy to access top-tier staking yields — even if you’re short on capital",
+    description: "b14g is a modular dual-staking layer for Bitcoin that lets protocols secure their networks with both BTC and their native token—reducing sell pressure, increasing token utility, and improving sustainability",
     chain: "CORE",
     logo: `${baseIconsUrl}/b14g.jpg`,
     audits: "2",

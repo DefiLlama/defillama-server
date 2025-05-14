@@ -230,7 +230,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
   "flow": { ticker: "FLOW", address: "coingecko:flow" },
   "mxczkevm": { ticker: "MXC", address: "coingecko:mxc" },
-  "lens": { ticker: "GHO", address: "coingecko:gho" },
+  // "lens": { ticker: "gho", address: "coingecko:gho" },
   "openzk": { ticker: "OZK", address: "coingecko:openzk-network" },
   "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
   // "zkcandy": {}

@@ -30527,6 +30527,8 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oraclesByChain: {
       base: ["Chainlink", "Chronicle"], // https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc, https://github.com/DefiLlama/defillama-server/pull/9498/files
+      Hyperliquid L1: ["RedStone"], // https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc, https://github.com/DefiLlama/defillama-server/pull/9498/files
+      
     },
     forkedFrom: [],
     module: "morpho-blue/index.js",

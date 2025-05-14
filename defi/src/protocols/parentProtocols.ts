@@ -7096,6 +7096,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["strike-finance"],
     twitter: "strikecardano",
+  },
+    {
+    id: "parent#xoxno",
+    name: "XOXNO",
+    url: "https://xoxno.com/",
+    description: "Liquid stake. Swap tokens. Trade collectibles.",
+    logo: `${baseIconsUrl}/xoxno.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "XoxnoNetwork",
   }
 ];
 

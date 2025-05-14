@@ -13971,6 +13971,7 @@ const data4: Protocol[] = [
     twitter: "XoxnoNetwork",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#xoxno",
     listedAt: 1747156831
   }, {
     id: "6169",

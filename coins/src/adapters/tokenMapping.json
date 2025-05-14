@@ -1062,6 +1062,11 @@
     }
   },
   "arbitrum": {
+    "0x17573150d67d820542efb24210371545a4868b03": {
+      "decimals": "18",
+      "symbol": "alETH",
+      "to": "coingecko#alchemix-eth"
+    },
     "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
       "decimals": "6",
       "symbol": "USDT",

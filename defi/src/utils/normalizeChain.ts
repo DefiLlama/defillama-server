@@ -1940,7 +1940,7 @@ export const chainCoingeckoIds = {
     github: ['matter-labs'],
     symbol: "ZK",
     cmcId: "24091",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -3273,7 +3273,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3613,7 +3613,7 @@ export const chainCoingeckoIds = {
     geckoId: "sophon",
     symbol: "SOPH",
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2"],
@@ -3833,7 +3833,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -3847,7 +3847,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],

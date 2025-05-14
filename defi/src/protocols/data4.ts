@@ -13974,7 +13974,7 @@ const data4: Protocol[] = [
     listedAt: 1747156831
   }, {
     id: "6169",
-    name: "Jito Mev Tips", 
+    name: "Jito MEV Tips", 
     address: null,
     symbol: "-",
     url: "https://www.jito.network/",

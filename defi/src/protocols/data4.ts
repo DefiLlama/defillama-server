@@ -10230,7 +10230,6 @@ const data4: Protocol[] = [
     ],
     oracles: [],
     parentProtocol: 'parent#strike-finance',
-    github: ["strike-finance"],
     listedAt: 1743787721,
   },
   {
@@ -13997,7 +13996,6 @@ const data4: Protocol[] = [
     ],
     oracles: [],
     parentProtocol: 'parent#strike-finance',
-    github: ["strike-finance"],
   },
 ];
 export default data4;

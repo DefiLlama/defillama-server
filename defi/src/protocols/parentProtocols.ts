@@ -7094,6 +7094,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ["strike-finance"],
     twitter: "strikecardano",
   }
 ];

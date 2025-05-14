@@ -36,4 +36,4 @@ The previous commands will run the backfill in the cloud. If you would like to r
 - Backfilling an adapter with a chain with the flag `runAtCurrTime` enabled and other chain with a specific start time will make the first chain backfill with the same value from the specific start time of the other chain.
 - When multiple chains. The backfill starts with the oldest start time for all chains. This results in extra queries that we already know there's no data available.
 
-Decided to push later in time this improvements and prioritize other developements. Let me know if u think it's a problem and should be improved!
+Decided to push later in time this improvements and prioritize other developments. Let me know if u think it's a problem and should be improved!

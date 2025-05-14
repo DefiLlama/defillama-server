@@ -2,19 +2,20 @@ import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared"
 import { chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 
-export async function getChainDefaultChartData(chain: string) {
+export async function getChainDefaultChartData(chain: string, chartBody?: any) {
   chain = chain.toLowerCase();
   const global = chain === "";
   const properChaiName = Object.keys(chainCoingeckoIds).find((k) => k.toLowerCase() === chain);
   if (properChaiName === undefined && !global) {
     return errorResponse({
-      message: "There is no chain with that name",
+      message: "There is no chain with that name " + chain,
     });
   }
-  const chart = await fetch(
-    `https://api.llama.fi/lite/charts${global ? "" : "/" + transformNewChainName(properChaiName!)}`
-  );
-  const chartBody = await chart.json();
+
+  if (!chartBody) {
+    const chart = await fetch(`https://api.llama.fi/lite/charts${global ? "" : "/" + transformNewChainName(properChaiName!)}`);
+    chartBody = await chart.json();
+  }
 
   const tvl = Object.fromEntries(chartBody.tvl);
 
@@ -48,7 +49,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     const data = await getChainDefaultChartData(chain)
     return successResponse(data, 10 * 60);
   } catch (e) {
-    return errorResponse({ message: "There is no chain with that name" })
+    return errorResponse({ message: "There is no chain with that name: " + chain })
   }
 };
 

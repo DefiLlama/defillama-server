@@ -243,3 +243,16 @@ export const eclipse = async (): Promise<Address[]> => {
   res.map(({ address }: any) => addresses.eclipse.push(address));
   return addresses.eclipse;
 };
+export const flow = async (): Promise<Address[]> => {
+  if (addresses.flow) return addresses.flow;
+  const res: { tokens: { address: string; tags: string[] }[] } = await fetch(
+    "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+  );
+
+  addresses.flow = [];
+  res.tokens.map(({ address, tags }: any) => {
+    if (!tags.includes("bridged-coin")) addresses.flow.push(address);
+  });
+
+  return addresses.flow;
+};

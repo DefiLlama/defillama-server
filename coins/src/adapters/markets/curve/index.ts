@@ -153,6 +153,12 @@ export function curve13(timestamp: number = 0) {
     getGaugePrices("kava", timestamp),
   ]);
 }
+export function curve14(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("fraxtal", defaultRegistries, timestamp),
+    getGaugePrices("fraxtal", timestamp),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -169,4 +175,5 @@ export const adapters = {
   curve11,
   curve12,
   curve13,
+  curve14,
 };

@@ -62,3 +62,27 @@ export function roundVaules(obj: any) {
   }
   return obj
 }
+
+export function getObjectKeyCount(obj: any) {
+  if (!obj || typeof obj !== 'object') {
+    return 1
+  }
+  let count = 1
+  for (const key in obj) {
+    count += getObjectKeyCount(obj[key])
+  }
+  return count
+}
+
+export function roundNumbersInObject(obj: any): any {
+  if (typeof obj === 'number') {
+    return Math.round(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map(roundNumbersInObject);
+  } else if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, roundNumbersInObject(value)])
+    );
+  }
+  return obj;
+}

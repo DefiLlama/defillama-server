@@ -12,6 +12,9 @@ const contracts: {
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438", oracle: "0xfCEE9754E8C375e145303b7cE7BEca3201734A2B" },
     { name: "mBASIS", token: "0x2a8c22E3b10036f3AEF5875d04f8441d4188b656", oracle: "0x1615cBC603192ae8A9FF20E98dd0e40a405d76e4" },
     { name: "mBTC", token: "0x007115416AB6c266329a03B09a8aa39aC2eF7d9d", oracle: "0x9987BE0c1dc5Cd284a4D766f4B5feB4F3cb3E28e", requiresConversion: true },
+    { name: "mEDGE", token: "0xbB51E2a15A9158EBE2b0Ceb8678511e063AB7a55", oracle: "0x20cd58F72cF1727a2937eB1816593390cf8d91cB" },
+    { name: "mMEV", token: "0x030b69280892c888670EDCDCD8B69Fd8026A0BF3", oracle: "0x9BF00b7CFC00D6A7a2e2C994DB8c8dCa467ee359" },
+    { name: "mRe7YIELD", token: "0x87C9053C819bB28e0D73d33059E1b3DA80AFb0cf", oracle: "0x7E8C632ab231479886AF1Bc02B9D646e4634Da93" },
   ],
   base: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438", oracle: "0xcbCf1e67F1988e2572a2A620321Aef2ff73369f0" },
@@ -20,6 +23,10 @@ const contracts: {
   sapphire: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
   ],
+  etlk: [
+    { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
+    { name: "mBASIS", token: "0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" },
+  ]
 };
 
 const btcToUsdOracle: { [chain: string]: string } = {

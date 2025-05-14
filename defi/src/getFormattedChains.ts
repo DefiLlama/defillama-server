@@ -116,7 +116,14 @@ export const getFormattedChains = async (category: string) => {
     chainsUnique.map(async (elem: string) => {
       for (let i = 0; i < 5; i++) {
         try {
-          return await fetch(`https://api.llama.fi/lite/charts/${elem}`).then((resp) => resp.json());
+          const tempChainData = await fetch(`https://api.llama.fi/lite/charts/${elem}`).then((resp) => resp.json());
+          if(!tempChainData){
+            console.log(`Wrong data for lite/charts/${elem}`)
+            return {
+              tvl: []
+            }
+          }
+          return tempChainData
         } catch (e) {
           console.log(elem, e);
         }

@@ -18,5 +18,11 @@ export default {
     },
     "teleswap": {
         id: "5532",
-    }
+    },
+    "rubic": {
+        id: "1282",
+    },
+    "socket": {
+        id: "6097"
+    },
 } as AdaptorsConfig

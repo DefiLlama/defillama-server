@@ -95,6 +95,9 @@ export function unknownTokens(timestamp: number = 0) {
 }
 export async function unknownTokens2(timestamp: number = 0) {
   const config: any = {
+    sonic: [
+      { pool: '0xD1CB1622a50506F0fDdf329CB857a0935C7FbbF9', unknown: '0x0e899dA2aD0817ed850ce68f7f489688E4D42D9D', known: '0xb1e25689d55734fd3fffc939c4c3eb52dff8a794'}
+    ],
     beam: [
       { pool: "0xe510c67dd0a54d06f04fd5af9094fe64ed605eab", unknown: "0xd51bfa777609213a653a2cd067c9a0132a2d316a", known: "0x76bf5e7d2bcb06b1444c0a2742780051d8d0e304", confidence: 1.01 },
     ],
@@ -156,6 +159,8 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     optimism: [
       { pool: "0xf3C45b45223Df6071a478851B9C17e0630fDf535", unknown: "0x1e925De1c68ef83bD98eE3E130eF14a50309C01B", known: "0x4200000000000000000000000000000000000006", },
+      { pool: "0x62191C893DF8d26aC295BA1274a00975dc07190C", unknown: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", known: "0x4200000000000000000000000000000000000006", },
+      { pool: "0xAE6c9B2A2777D0396cbE7E13Fc9ACEAC0D052e00", unknown: "0xc38464250f51123078bbd7ea574e185f6623d037", known: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", },
     ],
   }
   const projectName = 'unknownTokensV2';
@@ -295,7 +300,6 @@ export async function warlord(timestamp: number = 0) {
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = [];
   await wNLXCore(timestamp, writes);
-  await dsu(timestamp, writes);
   const chain = "ethereum";
   const api = await getApi(chain, timestamp);
   const price = await api.call({
@@ -363,27 +367,40 @@ async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
 }
 
 async function dsu(timestamp: number = 0, writes: Write[] = []) {
-  const chain = "arbitrum";
-  const api = await getApi(chain, timestamp);
-  const dsu = "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b";
-  const usdc = "0xaf88d065e77c8cc2239327c5edb3a432268e5831";
-  const treasury = "0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27";
-  const supply = await api.call({ abi: "uint256:totalSupply", target: dsu });
-  const balance = await api.call({
-    abi: "erc20:balanceOf",
-    target: usdc,
-    params: treasury,
-  });
-  const pricesObject = {
-    [dsu]: { price: (balance * 1e12) / supply, underlying: usdc },
-  };
-  await getWrites({
-    chain,
-    timestamp,
-    writes,
-    pricesObject,
-    projectName: "other",
-  });
+  const config: {[chain: string]: { DSU: string, USDC: string, treasury: string }} = {
+    arbitrum: {
+      DSU: '0x52c64b8998eb7c80b6f526e99e29abdcc86b841b', 
+      USDC: '0xaf88d065e77c8cc2239327c5edb3a432268e5831', 
+      treasury: "0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27"
+    }, 
+    perennial: {
+      DSU: '0x7b4Adf64B0d60fF97D672E473420203D52562A84', 
+      USDC: '0x39CD9EF9E511ec008247aD5DA01245D84a9521be', 
+      treasury: '0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27'
+    }
+  }
+  await Promise.all(Object.keys(config).map(async (chain: string) => {
+    const { DSU, USDC, treasury } = config[chain]
+    const api = await getApi(chain, timestamp);
+    const supply = await api.call({ abi: "uint256:totalSupply", target: DSU });
+    const balance = await api.call({
+      abi: "erc20:balanceOf",
+      target: USDC,
+      params: treasury,
+    });
+    const pricesObject = {
+      [DSU]: { price: (balance * 1e12) / supply, underlying: USDC },
+    };
+    await getWrites({
+      chain,
+      timestamp,
+      writes,
+      pricesObject,
+      projectName: "dsu",
+    });
+  }))
+
+  return writes
 }
 
 // price taken from unknownTokensV3 instead
@@ -552,4 +569,5 @@ export const adapters = {
   reyaUSD,
   karakWrapped,
   matrixdock,
+  dsu
 };

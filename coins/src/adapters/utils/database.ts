@@ -17,6 +17,8 @@ import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
+import { sendMessage } from "../../../../defi/src/utils/discord";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -191,7 +193,10 @@ async function getTokenAndRedirectDataFromAPI(
     const pk = e[0];
     let data = e[1];
     data.chain = pk.substring(0, pk.indexOf(":"));
-    data.address = pk.substring(pk.indexOf(":") + 1);
+    const address = pk.substring(pk.indexOf(":") + 1);
+    data.address = chainsThatShouldNotBeLowerCased.includes(data.chain)
+      ? address
+      : address.toLowerCase();
     return data;
   });
 }
@@ -407,11 +412,28 @@ export async function batchWriteWithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   failOnError: boolean,
 ): Promise<void> {
-  const { previousItems, redirectChanges } = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
-  await batchWrite([...filteredItems, ...redirectChanges], failOnError);
-  await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
+  try {
+    const { previousItems, redirectChanges } = await readPreviousValues(items);
+    const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+      await checkMovement(items, previousItems);
+    await batchWrite([...filteredItems, ...redirectChanges], failOnError);
+    await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
+  } catch (e) {
+    const adapter = items.find((i) => i.adapter != null)?.adapter;
+    console.log(`batchWriteWithAlerts failed with: ${e}`);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `batchWriteWithAlerts ${adapter} failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK!,
+        true,
+      );
+    else
+      await sendMessage(
+        "batchWriteWithAlerts error but missing urgent webhook",
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
+  }
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

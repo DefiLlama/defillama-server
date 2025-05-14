@@ -9,20 +9,29 @@ function getUnique(arry: string[]) {
     return [...new Set(arry)]
 }
 
-writeFileSync("./src/utils/imports/adapters.ts",
+// Add error handling for writing adapter imports
+try {
+  writeFileSync("./src/utils/imports/adapters.ts",
     `export default {
     ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
 }`)
+} catch (error) {
+  console.log('Error writing adapters.ts:', error)
+}
 
 createImportAdaptersJSON()
 
-const excludeLiquidation = ["test.ts", "utils", "README.md"]
-writeFileSync("./src/utils/imports/adapters_liquidations.ts",
+// Add error handling for writing liquidation adapters
+try {
+  const excludeLiquidation = ["test.ts", "utils", "README.md"]
+  writeFileSync("./src/utils/imports/adapters_liquidations.ts",
     `export default {
     ${readdirSync("./DefiLlama-Adapters/liquidations").filter(f => !excludeLiquidation.includes(f))
         .map(f => `"${f}": require("@defillama/adapters/liquidations/${f}"),`).join('\n')}
 }`)
-
+} catch (error) {
+  console.log('Error writing adapters_liquidations.ts:', error)
+}
 
 // For adapters type adaptor
 function getDirectories(source: string) {
@@ -55,13 +64,23 @@ const importPaths = [
     "bridge-aggregators"
 ]
 
+// Add error handling for dimension adapters
 for (const folderPath of importPaths) {
+  try {
     const paths_keys = getDirectories(`${baseFolderPath}/${folderPath}`).filter(key => !excludeKeys.includes(key))
     writeFileSync(`./src/utils/imports/${folderPath.replace("/", "_")}_adapters.ts`,
         `
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 export default {
-${paths_keys.map(path => createDimensionAdaptersModule(path, folderPath)).join('\n')}
+${paths_keys.map(path => {
+  try {
+    const response = createDimensionAdaptersModule(path, folderPath)
+    return response
+  } catch (error) {
+    console.log(`Error creating module for ${path} in ${folderPath}:`, error)
+    return ''
+  }
+}).join('\n')}
 } as {[key:string]: {
     module: { default: Adapter },
     codePath: string
@@ -82,6 +101,9 @@ function mockFunctions(obj: any) {
     return obj
 }
         `)
+  } catch (error) {
+    console.log(`Error writing ${folderPath} adapters:`, error)
+  }
 }
 
 function createDimensionAdaptersModule(path: string, folderPath: string) {
@@ -108,18 +130,27 @@ export interface IImportObj {
 }
 
 // emissions-adapters
-const emission_keys = getDirectories(`./emissions-adapters/protocols`)
-writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
+// Add error handling for emissions adapters
+try {
+  const emission_keys = getDirectories(`./emissions-adapters/protocols`)
+  writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
     `export default {
     ${emission_keys.map(k => `"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
 }`)
+} catch (error) {
+  console.log('Error writing emissions_adapters.ts:', error)
+}
 
 function createImportAdaptersJSON() {
+  try {
     const adaptersFile = __dirname + "/../utils/imports/tvlAdapterData.json"
     let data: any = {}
     protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
     writeFileSync(adaptersFile, JSON.stringify(data, null, 2))
     execSync(['node', __dirname + "/buildTvlModuleData.js", adaptersFile].join(' '), { stdio: 'inherit' })
+  } catch (error) {
+    console.log('Error creating import adapters JSON:', error)
+  }
 }
 
 //Replace all fuctions with mock functions in an object all the way down

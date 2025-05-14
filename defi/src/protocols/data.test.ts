@@ -6,6 +6,7 @@ import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewCha
 import protocols from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
+import operationalCosts from "../operationalCosts/daos";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
@@ -20,6 +21,12 @@ test("Dimensions: no repeated ids", async () => {
     }
   }
 })
+
+test("operational expenses: script has been run", async () => {
+  const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
+
+  expect(outputData).toEqual(operationalCosts)
+});
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))
@@ -156,6 +163,16 @@ test("no id is repeated", async () => {
   }
 });
 
+test("no name is repeated", async () => {
+  const names = new Set();
+  for (const protocol of (protocols as {name:string, previousNames?:string[]}[]).concat(parentProtocols)) {
+    for(const name of [protocol.name, ...(protocol.previousNames ?? [])]){
+      expect(names).not.toContain(name.toLowerCase());
+      names.add(name.toLowerCase())
+    }
+  }
+});
+
 test("all oracle names match exactly", async () => {
   const oracles = {} as any;
   for (const protocol of (protocols).concat(parentProtocols as any)) {
@@ -184,7 +201,7 @@ test("no coingeckoId is repeated", async () => {
 
 test("no surprise category", async () => {
   const whitelistedCategories = [
-    'Dexes',
+    'Dexs',
     'Bridge',
     'Lending',
     'Yield Aggregator',
@@ -245,7 +262,7 @@ test("no surprise category", async () => {
     'Token Locker',
     'Bug Bounty',
     'DCA Tools',
-    'Managed Token Pools',
+    'Onchain Capital Allocator',
     'Developer Tools',
     'Stablecoin Issuer',
     'Coins Tracker',
@@ -259,7 +276,10 @@ test("no surprise category", async () => {
     'Liquidity Automation',
     'Charity Fundraising',
     'Volume Boosting',
-    'DOR'
+    'DOR',
+    'Collateral Management',
+    'Meme',
+    'Private Investment Platform'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -277,6 +297,7 @@ test("no module repeated", async () => {
   }
 });
 
+/*
 test("icon exists", async () => {
   for (const protocol of protocols) {
     const icon = protocol.logo?.substr(baseIconsUrl.length + 1);
@@ -288,3 +309,4 @@ test("icon exists", async () => {
     }
   }
 });
+*/

@@ -7,7 +7,7 @@ import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
-import { getClosestDayStartTimestamp } from "./date";
+import { getObjectKeyCount } from "../api2/utils";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -55,8 +55,8 @@ export default async function craftParentProtocol({
 }) {
   const childProtocols = isTreasuryApi
     ? treasuries
-        .filter((protocol) => protocol.parentProtocol === parentProtocol.id)
-        .map((p) => ({ ...p, name: p.name.replace(" (treasury)", "") }))
+      .filter((protocol) => protocol.parentProtocol === parentProtocol.id)
+      .map((p) => ({ ...p, name: p.name.replace(" (treasury)", "") }))
     : protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
@@ -68,8 +68,8 @@ export default async function craftParentProtocol({
   const PROTOCOL_API = isTreasuryApi
     ? "https://api.llama.fi/treasury"
     : useHourlyData
-    ? "https://api.llama.fi/hourly"
-    : "https://api.llama.fi/updatedProtocol";
+      ? "https://api.llama.fi/hourly"
+      : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
     childProtocols.map((protocolData) =>
@@ -128,350 +128,30 @@ export async function craftParentProtocolInternal({
 }) {
   if (!fetchMcap) fetchMcap = protocolMcap;
 
-  const currentTime = Math.floor(Date.now() / 1000);
+  let { chainTvls, tokensInUsd, tokens, tvl } = mergeChildProtocolData(childProtocolsTvls, isHourlyTvl);
 
-  const { chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
-    .filter((prot: any) => (prot.message ? false : true))
-    .sort((a, b) => (b.tvl ?? []).length - (a.tvl ?? []).length)
-    .reduce<ICombinedTvls>(
-      (acc, curr) => {
-        const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? {};
-        const isTvlDataHourly = isHourlyTvl(curr.tvl);
-
-        // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
-        for (const chain in curr.chainTvls) {
-          // store tvl to exclude by date
-          const tvlToExcludeByDate: { [date: number]: number } = {};
-          // TOKENS IN USD OF EACH CHAIN BY DATE
-          curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }, index) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-
-            // roundoff lasthourly date
-            let nearestDate = date;
-            if (index === curr.chainTvls[chain].tokensInUsd!.length - 1) {
-              nearestDate = currentTime;
-            }
-
-            // fill the missing dates in chart by calc avg of nearest dates combined value
-            if (index !== 0 && !isTvlDataHourly) {
-              let prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date;
-              while (nearestDate - prevDate > 86400) {
-                prevDate += 86400;
-                const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
-
-                if (!acc.chainTvls[chain].tokensInUsd[prevDate]) {
-                  acc.chainTvls[chain].tokensInUsd[prevDate] = {};
-                }
-                for (const token in tokens) {
-                  acc.chainTvls[chain].tokensInUsd[prevDate][token] =
-                    (acc.chainTvls[chain].tokensInUsd[prevDate][token] || 0) +
-                    ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-
-                  if (tokensExcludedFromParent[chain]?.includes(token)) {
-                    // store tvl to exclude by date
-                    tvlToExcludeByDate[prevDate] =
-                      (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                  }
-                }
-              }
-            }
-
-            if (!acc.chainTvls[chain].tokensInUsd[nearestDate]) {
-              acc.chainTvls[chain].tokensInUsd[nearestDate] = {};
-            }
-
-            for (const token in tokens) {
-              acc.chainTvls[chain].tokensInUsd[nearestDate][token] =
-                (acc.chainTvls[chain].tokensInUsd[nearestDate][token] || 0) + tokens[token];
-
-              if (tokensExcludedFromParent[chain]?.includes(token)) {
-                // store tvl to exclude by date
-                tvlToExcludeByDate[nearestDate] = (tvlToExcludeByDate[nearestDate] || 0) + tokens[token];
-              }
-            }
-          });
-
-          // TVLS OF EACH CHAIN BY DATE
-          curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-            // roundoff lasthourly date
-            let nearestDate = date;
-            if (index === curr.chainTvls[chain].tvl.length - 1) {
-              nearestDate = currentTime;
-            } else {
-              nearestDate = getClosestDayStartTimestamp(date);
-            }
-
-            // fill the missing dates in chart by calc avg of nearest dates combined value
-            if (index !== 0 && !isTvlDataHourly) {
-              let prevDate = curr.chainTvls[chain].tvl[index - 1].date;
-              while (nearestDate - prevDate > 86400) {
-                prevDate += 86400;
-                const prev = curr.chainTvls[chain].tvl[index - 1];
-
-                acc.chainTvls[chain].tvl = {
-                  ...acc.chainTvls[chain].tvl,
-                  [prevDate]:
-                    (acc.chainTvls[chain].tvl[prevDate] || 0) +
-                    (prev.totalLiquidityUSD + totalLiquidityUSD) / 2 -
-                    (tvlToExcludeByDate[prevDate] || 0),
-                };
-              }
-            }
-
-            acc.chainTvls[chain].tvl = {
-              ...acc.chainTvls[chain].tvl,
-              [nearestDate]:
-                (acc.chainTvls[chain].tvl[nearestDate] || 0) +
-                totalLiquidityUSD -
-                (tvlToExcludeByDate[nearestDate] || 0),
-            };
-          });
-          // NO.OF TOKENS IN EACH CHAIN BY DATE
-          curr.chainTvls[chain].tokens?.forEach(({ date, tokens }, index) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-
-            // roundoff lasthourly date
-            let nearestDate = date;
-            if (index === curr.chainTvls[chain].tokens!.length - 1) {
-              nearestDate = currentTime;
-            }
-
-            // fill the missing dates in chart by calc avg of nearest dates combined value
-            if (index !== 0 && !isTvlDataHourly) {
-              let prevDate = curr.chainTvls[chain].tokens![index - 1].date;
-              while (nearestDate - prevDate > 86400) {
-                prevDate += 86400;
-                const prev = curr.chainTvls[chain].tokens![index - 1];
-
-                if (!acc.chainTvls[chain].tokens[prevDate]) {
-                  acc.chainTvls[chain].tokens[prevDate] = {};
-                }
-                for (const token in tokens) {
-                  acc.chainTvls[chain].tokens[prevDate][token] =
-                    (acc.chainTvls[chain].tokens[prevDate][token] || 0) +
-                    ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                }
-              }
-            }
-
-            if (!acc.chainTvls[chain].tokens[nearestDate]) {
-              acc.chainTvls[chain].tokens[nearestDate] = {};
-            }
-
-            for (const token in tokens) {
-              acc.chainTvls[chain].tokens[nearestDate][token] =
-                (acc.chainTvls[chain].tokens[nearestDate][token] || 0) + tokens[token];
-            }
-          });
-        }
-
-        if (!skipAggregatedTvl) {
-          // store tvl to exclude by date
-          const tvlToExcludeByDate: { [date: number]: number } = {};
-
-          if (curr.tokensInUsd) {
-            curr.tokensInUsd.forEach(({ date, tokens }, index) => {
-              // roundoff lasthourly date
-              let nearestDate = date;
-              if (index === curr.tokensInUsd!.length - 1) {
-                nearestDate = currentTime;
-              }
-
-              if (index !== 0 && !isTvlDataHourly) {
-                let prevDate = curr.tokensInUsd![index - 1].date;
-                while (nearestDate - prevDate > 86400) {
-                  prevDate += 86400;
-                  const prev = curr.tokensInUsd![index - 1];
-
-                  Object.keys(tokens).forEach((token) => {
-                    if (!acc.tokens[prevDate]) {
-                      acc.tokens[prevDate] = {};
-                    }
-
-                    acc.tokens[prevDate][token] =
-                      (acc.tokens[prevDate][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-
-                    if (Object.values(tokensExcludedFromParent).flat().includes(token)) {
-                      // store tvl to exclude by date
-                      tvlToExcludeByDate[prevDate] =
-                        (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                    }
-                  });
-                }
-              }
-
-              Object.keys(tokens).forEach((token) => {
-                if (!acc.tokensInUsd[nearestDate]) {
-                  acc.tokensInUsd[nearestDate] = {};
-                }
-
-                acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
-
-                if (Object.values(tokensExcludedFromParent).flat().includes(token)) {
-                  tvlToExcludeByDate[nearestDate] =
-                    (tvlToExcludeByDate[nearestDate] || 0) + (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
-                }
-              });
-            });
-          }
-
-          if (curr.tokens) {
-            curr.tokens.forEach(({ date, tokens }, index) => {
-              // roundoff lasthourly date
-              let nearestDate = date;
-              if (index === curr.tokens!.length - 1) {
-                nearestDate = currentTime;
-              }
-
-              if (index !== 0 && !isTvlDataHourly) {
-                let prevDate = curr.tokens![index - 1].date;
-                while (nearestDate - prevDate > 86400) {
-                  prevDate += 86400;
-                  const prev = curr.tokens![index - 1];
-
-                  Object.keys(tokens).forEach((token) => {
-                    if (!acc.tokens[prevDate]) {
-                      acc.tokens[prevDate] = {};
-                    }
-
-                    acc.tokens[prevDate][token] =
-                      (acc.tokens[prevDate][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                  });
-                }
-              }
-
-              Object.keys(tokens).forEach((token) => {
-                if (!acc.tokens[nearestDate]) {
-                  acc.tokens[nearestDate] = {};
-                }
-
-                acc.tokens[nearestDate][token] = (acc.tokens[nearestDate][token] || 0) + tokens[token];
-              });
-            });
-          }
-
-          if (curr.tvl) {
-            curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-              // roundoff lasthourly date
-              let nearestDate = date;
-              if (index === curr.tvl!.length - 1) {
-                nearestDate = currentTime;
-              }
-
-              if (index !== 0 && !isTvlDataHourly) {
-                let prevDate = curr.tvl![index - 1].date;
-                while (nearestDate - prevDate > 86400) {
-                  prevDate += 86400;
-                  const prev = curr.tvl![index - 1];
-                  acc.tvl[prevDate] =
-                    (acc.tvl[prevDate] || 0) +
-                    (prev.totalLiquidityUSD + totalLiquidityUSD) / 2 -
-                    (tvlToExcludeByDate[prevDate] || 0);
-                }
-              }
-
-              acc.tvl[nearestDate] =
-                (acc.tvl[nearestDate] || 0) + totalLiquidityUSD - (tvlToExcludeByDate[nearestDate] || 0);
-            });
-          }
-        }
-
-        return acc;
-      },
-      {
-        chainTvls: {},
-        tokens: {},
-        tokensInUsd: {},
-        tvl: {},
-      }
-    );
-
-  //  FORMAT TVL, TOKENS, TOKENS IN USD BY DATE OF EACH CHAIN TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedChainTvls: IChainTvl = {};
-  for (const chain in chainTvls) {
-    const tvl = Object.entries(chainTvls[chain].tvl).map(([date, totalLiquidityUSD]) => ({
-      date: Number(date),
-      totalLiquidityUSD,
-    }));
-
-    const tokens: ITokens = [];
-    for (const date in chainTvls[chain].tokens) {
-      tokens.push({
-        date: Number(date),
-        tokens: chainTvls[chain].tokens[date],
-      });
-    }
-
-    const tokensInUsd: ITokens = [];
-    for (const date in chainTvls[chain].tokensInUsd) {
-      tokens.push({
-        date: Number(date),
-        tokens: chainTvls[chain].tokensInUsd[date],
-      });
-    }
-
-    formattedChainTvls[chain] = {
-      tvl,
-      tokens,
-      tokensInUsd,
-    };
+  if (skipAggregatedTvl) {
+    tvl = []
+    tokensInUsd = []
+    tokens = []
   }
 
   // TOTAL TVL OF EACH CHAIN
   const currentChainTvls: ICurrentChainTvls = {};
-  for (const name in formattedChainTvls) {
-    currentChainTvls[name] = formattedChainTvls[name].tvl[formattedChainTvls[name].tvl.length - 1].totalLiquidityUSD;
+  for (const name in chainTvls) {
+    if (chainTvls[name].tvl?.length)
+      currentChainTvls[name] = chainTvls[name].tvl[chainTvls[name].tvl.length - 1].totalLiquidityUSD;
   }
-
-  //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTokens: ITokens = [];
-  for (const date in tokens) {
-    formattedTokens.push({ date: Number(date), tokens: tokens[date] });
-  }
-
-  //  FORMAT TOTAL TOKENS VALUE IN USD BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTokensInUsd: ITokens = [];
-  for (const date in tokensInUsd) {
-    formattedTokensInUsd.push({
-      date: Number(date),
-      tokens: tokensInUsd[date],
-    });
-  }
-
-  // FORMAT TVL BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTvl = Object.entries(tvl).map(([date, totalLiquidityUSD]) => ({
-    date: Number(date),
-    totalLiquidityUSD,
-  }));
 
   const [tokenMcap] = await Promise.all([fetchMcap(parentProtocol.gecko_id)]);
 
   const response: IProtocolResponse = {
     ...parentProtocol,
     currentChainTvls,
-    chainTvls: formattedChainTvls,
-    tokens: formattedTokens,
-    tokensInUsd: formattedTokensInUsd,
-    tvl: formattedTvl,
+    chainTvls,
+    tokens,
+    tokensInUsd,
+    tvl,
     isParentProtocol: true,
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];
@@ -489,10 +169,8 @@ export async function craftParentProtocolInternal({
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB
-  const jsonData = JSON.stringify(response);
-  const dataLength = jsonData.length;
-
-  if (dataLength >= 5.8e6) {
+  let keyCount = getObjectKeyCount(response);
+  if (keyCount >= 1.5e5) { // there are more than 150k keys
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;
@@ -520,4 +198,197 @@ export async function craftParentProtocolInternal({
   }
 
   return response;
+}
+
+function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) {
+  childProtocolsTvls = childProtocolsTvls.filter((prot: any) => (prot.message ? false : true))
+  let latestTS: number
+
+  // find the last record timestamp among all child protocols
+  childProtocolsTvls.forEach(({ tvl = [] }: any) => {
+    if (tvl.length) {
+      if (!latestTS)
+        latestTS = tvl[0].date
+      tvl.forEach(({ date }: any) => {
+        if (date > latestTS) latestTS = date
+      })
+    }
+  })
+
+  childProtocolsTvls.map((protocolData: any) => {
+    const excludedSet = new Set<string>()
+    if (protocolData.tokensExcludedFromParent) {
+      Object.values(protocolData.tokensExcludedFromParent).flat().forEach((token: any) => {
+        excludedSet.add(token.toUpperCase())
+      })
+    }
+
+
+    mappifyTVLRecordsAndExcludeTokens(protocolData, excludedSet)
+    Object.values(protocolData.chainTvls ?? {}).forEach((chainData: any) => {
+      mappifyTVLRecordsAndExcludeTokens(chainData, excludedSet)
+    })
+  })
+
+  const finalData: any = {
+    tvl: {},
+    tokensInUsd: {},
+    tokens: {},
+    chainTvls: {},
+  }
+
+  const tvlKeys = ['tvl', 'tokensInUsd', 'tokens']
+
+  childProtocolsTvls.forEach((protocolData: any) => {
+    tvlKeys.forEach((key) => {
+      finalData[key] = addDataToMap(finalData[key], protocolData[key])
+    })
+
+    Object.entries(protocolData.chainTvls ?? {}).forEach(([chain, chainData]: any) => {
+      tvlKeys.forEach((key) => {
+        if (!finalData.chainTvls[chain]) finalData.chainTvls[chain] = {}
+        finalData.chainTvls[chain][key] = addDataToMap(finalData.chainTvls[chain][key], chainData[key])
+      })
+    })
+  })
+
+
+  // turn all the date maps into arrays
+  tvlKeys.forEach((key) => {
+    finalData[key] = Object.values(finalData[key])
+  })
+
+  Object.values(finalData.chainTvls).forEach((chainData: any) => {
+    tvlKeys.forEach((key) => {
+      chainData[key] = Object.values(chainData[key])
+    })
+  })
+
+  return finalData
+
+
+  function mappifyTVLRecordsAndExcludeTokens(protocolData: any, excludedSet: Set<string>) {
+    const { tvl, tokensInUsd, tokens } = protocolData;
+    const isTvlDataHourly = isHourlyTvl(tvl);
+    const tvlMap = getDateMapWithMissingData(tvl, isTvlDataHourly);
+    const tokensInUsdMap = getDateMapWithMissingData(tokensInUsd, isTvlDataHourly);
+    const tokensMap = getDateMapWithMissingData(tokens, isTvlDataHourly);
+
+
+    removeExcludedTokens({ tvlMap, tokensInUsdMap, tokensMap }, excludedSet);
+    protocolData.tvl = tvlMap;
+    protocolData.tokensInUsd = tokensInUsdMap;
+    protocolData.tokens = tokensMap;
+  }
+
+  function removeExcludedTokens({ tvlMap, tokensInUsdMap, tokensMap }: any, excludedSet: Set<string>) {
+    if (!excludedSet?.size) return;
+
+    Object.values(tokensInUsdMap).forEach((record: any) => {
+      const tokensObj = record.tokens
+      const tvlRecord = tvlMap[record.date]
+      Object.keys(tokensObj).forEach((token) => {
+        if (excludedSet.has(token)) {
+          if (tvlRecord) tvlRecord.totalLiquidityUSD -= tokensObj[token]
+          delete tokensObj[token]
+        }
+      })
+    })
+
+    Object.values(tokensMap).forEach((record: any) => {
+      const tokensObj = record.tokens
+      Object.keys(tokensObj).forEach((token) => {
+        if (excludedSet.has(token)) {
+          delete tokensObj[token]
+        }
+      })
+    })
+  }
+
+
+  function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
+    const dateMap: { [date: number]: any } = {}
+    data.sort((a, b) => a.date - b.date) // sort by date
+
+    const recordCount = data.length
+    if (recordCount === 0) return dateMap;
+
+
+    // for daily tvl data, the last entry is the latest hourly record. if that is the case, we need to align that timestamp with latest hourly record of other child protocols
+    if (!isTvlDataHourly) {
+      let newestRecord = data[data.length - 1]
+      const currentDayStartUTC = getStartOfDayTimestamp(Math.floor(Date.now() / 1000))
+      const isTodayHourlyData = newestRecord.date >= currentDayStartUTC
+      if (isTodayHourlyData) {
+        newestRecord.date = latestTS
+      } else {  // if the lastst hourly record is not for today, we need to align it with the start of the day of the last record
+        newestRecord.date = getStartOfDayTimestamp(newestRecord.date)
+      }
+    }
+
+
+    // turn the data into a map
+    let lastRecordWithDate = data[0]
+    data.forEach((record, idx) => {
+      const isLastRecord = idx === recordCount - 1
+
+      // if it is not an hourly tvl data, we need to round the timestamp to the start of the day, we leave the last record as is (as it can be the latest hourly record)
+      if (!isTvlDataHourly && !isLastRecord) {
+        record.date = getStartOfDayTimestamp(record.date)
+      }
+
+      dateMap[record.date] = record
+    })
+
+
+    // we fill missing data only for daily tvl data
+    let nextDateTS = lastRecordWithDate.date + 86400
+    while (nextDateTS < latestTS && !isTvlDataHourly) {
+      if (!dateMap[nextDateTS]) dateMap[nextDateTS] = { ...clone(lastRecordWithDate), date: nextDateTS }  // to avoid mutating the same object, can turn into a bug in the case of excluding tvl if we operate on the same record again and again
+      lastRecordWithDate = dateMap[nextDateTS]
+      nextDateTS += 86400
+    }
+
+    // if the last record is not the latest timestamp, we need to add that too
+    if (!dateMap[latestTS] && !isTvlDataHourly) dateMap[latestTS] = { ...clone(lastRecordWithDate), date: latestTS }
+
+
+    return dateMap;
+  }
+
+  function clone(obj: any) {
+    return JSON.parse(JSON.stringify(obj))
+  }
+
+  function addDataToMap(acc: any = {}, curr: any) {
+    Object.keys(curr).forEach((key) => {
+      acc[key] = mergeMapRecords(acc[key], curr[key])
+    })
+    return acc
+
+
+    function mergeMapRecords(original: any = {}, toMerge: any) {
+      Object.keys(toMerge).forEach((key) => {
+        if (key === 'date') {
+          original[key] = toMerge[key]
+        } else if (typeof toMerge[key] === 'object') {
+          original[key] = mergeMapRecords(original[key], toMerge[key])
+        } else if (typeof toMerge[key] === 'number') {
+          original[key] = (original[key] ?? 0) + toMerge[key]
+        }
+      })
+      return original
+    }
+  }
+}
+
+const tsNoonMap: { [key: number]: number } = {}
+
+function getStartOfDayTimestamp(ts: number) {
+  if (!tsNoonMap[ts]) {
+    const date = new Date(ts * 1000)
+    date.setUTCHours(0, 0, 0, 0)
+    tsNoonMap[ts] = Math.floor(date.getTime() / 1000)
+  }
+  return tsNoonMap[ts]
 }

@@ -6,4 +6,6 @@ export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin", "eclipse"];
 
 export const bridgedTvlMixedCaseChains: string[] = ["solana", "tron", "sui", "aptos", "eclipse"];
 
+export const chainsWithCaseSensitiveDataProviders = ['aptos', 'stacks']
+
 export const nullAddress = "0x0000000000000000000000000000000000000000";

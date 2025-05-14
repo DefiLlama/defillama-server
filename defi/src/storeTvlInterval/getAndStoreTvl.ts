@@ -162,7 +162,10 @@ type StoreTvlOptions = {
   chainsToRefill?: string[],
   cacheData?: Object,
   overwriteExistingData?: boolean,
+  runType?: string,
 }
+
+const deadChains = new Set(['heco', 'astrzk'])
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -184,6 +187,7 @@ export async function storeTvl(
     chainsToRefill = [],
     cacheData,
     overwriteExistingData = false,
+    runType = 'default',
   } = options
 
   if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
@@ -209,6 +213,8 @@ export async function storeTvl(
         if (typeof tvlFunction !== "function") {
           return
         }
+
+        if (runType === 'cron-task' && deadChains.has(chain)) tvlFunction = () => ({})
         let storedKey = `${chain}-${tvlType}`
         let tvlFunctionIsFetch = false;
         if (tvlType === "tvl") {
@@ -273,7 +279,9 @@ export async function storeTvl(
   }
   try {
     if (!process.env.DRY_RUN) {
-      await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers
+      await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData, {
+        debugData: { tokensBalances, usdTokenBalances, rawTokenBalances, usdTvls },
+      } ); // Checks circuit breakers
 
       const options = { protocol, unixTimestamp, storePreviousData, overwriteExistingData, }
       const storeTokensAction = storeNewTokensValueLocked({

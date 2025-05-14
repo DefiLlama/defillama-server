@@ -1,6 +1,9 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
-import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 export const staleMargin = 6 * 60 * 60;
@@ -57,16 +60,24 @@ export async function iterateOverPlatforms(
   for (const platform in platforms) {
     if (platform !== "" && platforms[platform] !== "") {
       try {
-        const chain = platformMap[platform.toLowerCase()];
+        const chain = platformMap[platform.toLowerCase()]?.toLowerCase();
         if (chain === undefined) {
           continue;
         }
         aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
         const address =
-          chain + ":" + lowercase(platforms[platform]!, chain).trim();
+          chain +
+          ":" +
+          (chainsWithCaseSensitiveDataProviders.includes(chain)
+            ? platforms[platform]
+            : lowercase(platforms[platform]!, chain).trim());
         const PK = `asset#${address}`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
-        if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
+        if (
+          !coinPlatformData[PK] ||
+          coinPlatformData[PK].timestamp < margin ||
+          coinPlatformData[PK].confidence < 0.99
+        ) {
           await iterator(PK);
         }
       } catch (e) {

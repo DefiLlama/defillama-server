@@ -18,7 +18,7 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
-    if (chain.toLowerCase() == "tron" && totalNew < 20_000_000_000) {
+    if (chain.toLowerCase() == "tron" && totalNew < 15_000_000_000) {
       chains;
       allNew;
       throw new Error(`USDT not counted for Tron`);

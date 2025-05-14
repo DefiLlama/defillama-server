@@ -7,7 +7,7 @@ import * as aggregatorsData from "./aggregators"
 import * as optionsData from "./options"
 import * as incentivesData from "./incentives"
 import * as protocolsData from "./protocols"
-import * as royaltiesData from "./royalties"
+// import * as royaltiesData from "./royalties"
 import * as bridgeAggregatorsData from "./bridge-aggregators";
 import * as aggregatorDerivativesData from "./aggregator-derivatives";
 import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
@@ -21,7 +21,7 @@ const mapping = {
   [AdapterType.OPTIONS]: optionsData,
   [AdapterType.INCENTIVES]: incentivesData,
   [AdapterType.PROTOCOLS]: protocolsData,
-  [AdapterType.ROYALTIES]: royaltiesData,
+  // [AdapterType.ROYALTIES]: royaltiesData,
   [AdapterType.AGGREGATOR_DERIVATIVES]: aggregatorDerivativesData,
   [AdapterType.BRIDGE_AGGREGATORS]: bridgeAggregatorsData,
 }

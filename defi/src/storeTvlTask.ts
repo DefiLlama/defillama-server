@@ -13,10 +13,12 @@ import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "./api2/utils/time";
+const path = require('path');
 
 const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
+const projectPath = path.resolve(__dirname, '../');
 
 async function main() {
 
@@ -52,6 +54,9 @@ async function main() {
     } as any
     let success = true
     const startTime = getUnixTimeNow()
+    let protocolName = protocol.name
+
+
     try {
       const staleCoins: StaleCoins = {};
       const adapterModule = importAdapterDynamic(protocol)
@@ -67,20 +72,34 @@ async function main() {
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
-      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
+
+      // if (protocolName) runningSet.add(protocolName)
+
+
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
+
+      // if (protocolName) runningSet.delete(protocolName)
+
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
 
       success = false
       let errorString = e?.message
+      const errorStack = e?.stack?.split('\n').map((line: string) => {
+        return line.replace(projectPath, '')
+      }).slice(0, 4).join('\n');
+
       try {
-        errorString = JSON.stringify(e)
+        if (!errorString)
+          errorString = JSON.stringify(e)
       } catch (e) { }
+
       await elastic.addErrorLog({
         error: e as any,
         errorString,
+        errorStack,
         metadata,
       } as any)
     }
@@ -96,8 +115,13 @@ async function main() {
 
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
+    // if (protocolName) runningSet.delete(protocolName)
+
+    // console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
     console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
+
+  // const runningSet = new Set()
 
   const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))
@@ -189,7 +213,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
     return true
 
   const HOUR = 60 * 60
-  const MIN_WAIT_TIME = 3/4 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
+  const MIN_WAIT_TIME = 3 / 4 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
   const currentTime = Math.round(Date.now() / 1000)
   const timeDiff = currentTime - lastRecord.SK
   const highestRecentTvl = getMax(lastRecord)

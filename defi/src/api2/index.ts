@@ -29,8 +29,8 @@ async function main() {
 
   if (skipSubPath) {
     setTvlRoutes(webserver, '/')
-  } 
-  
+  }
+
   if (process.env.API2_SUBPATH) {
     const router = new HyperExpress.Router()
     const subPath = '/' + process.env.API2_SUBPATH
@@ -49,10 +49,12 @@ async function main() {
         process.env.CURRENT_COMMIT_HASH = currentCommitHash
         console.log('current code hash: ', currentCommitHash)
         fs.writeFileSync(__dirname + '/../../.safe_commit_hash', currentCommitHash)
-      } catch (e) { }
-      process.send!('ready')
+      } catch (e) { console.error('Failed to read current commit hash', (e as any).message) }
+      try {
+        process.send!('ready')
+      } catch (e) { console.error('Failed to send ready message to parent process') }
     })
-    .catch((e) => console.log('Failed to start webserver on port ' + port, e))
+    .catch((e) => console.log('Failed to start webserver on port ' + port, e.message))
 }
 
 process.on('SIGINT', shutdown);

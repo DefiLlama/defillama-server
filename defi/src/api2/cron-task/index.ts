@@ -1,7 +1,6 @@
 import { cache, initCache, checkModuleDoubleCounted, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
-import { storeRouteData, writeToPGCache } from "../cache/file-cache";
+import { storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
-import { PG_CACHE_KEYS } from "../constants";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
@@ -21,6 +20,8 @@ import { storeLangs } from "../../storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
+import * as sdk from '@defillama/sdk'
+import { RUN_TYPE } from "../utils";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -30,10 +31,9 @@ let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMont
 
 async function run() {
   await initializeTVLCacheDB()
-  await initCache({ cacheType: 'cron' })
+  await initCache({ cacheType: RUN_TYPE.CRON  })
   await initializeProtocolDataMap()
-  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
-  await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this
+  await storeTvlCacheAllFile(cache)
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
@@ -47,6 +47,7 @@ async function run() {
   }
 
   // await writeProtocolTvlData()  // to be served from rest api instead
+  await writeBitcoinAddressesFile()
   await writeProtocols()
   await writeConfig()
   await writeOracles()
@@ -99,7 +100,7 @@ async function run() {
     console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
     console.time('getLatestProtocolTokensUSD filterADayAgo')
-    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true,  })
+    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true, })
     const latestProtocolTokensUSDMap: any = {}
     latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
     console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
@@ -297,7 +298,7 @@ async function run() {
 
     // this is handled in rest server now
     // const withConcurrency = 25
- 
+
     // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
     // await PromisePool.withConcurrency(withConcurrency).for(items)
     //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
@@ -352,6 +353,20 @@ async function run() {
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
     console.timeEnd(debugString)
+  }
+
+  async function writeBitcoinAddressesFile() {
+    try {
+
+      const debugString = 'write /config/smol/bitcoin-addresses'
+      console.time(debugString)
+      const Bucket = "tvl-adapter-cache"
+      const data = await await sdk.cache.readCache(`${Bucket}/bitcoin-addresses.json`)
+      await storeRouteData('/config/smol/bitcoin-addresses.json', data)
+      console.timeEnd(debugString)
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 

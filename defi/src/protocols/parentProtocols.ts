@@ -7084,6 +7084,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "29006",
     chains: [],
     twitter: "lendlexyz",
+  },
+  {
+    id: "parent#strike-finance",
+    name: "Strike Finance",
+    url: "https://www.strikefinance.org/",
+    description: "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading.",
+    logo: `${baseIconsUrl}/strike-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["strike-finance"],
+    twitter: "strikecardano",
   }
 ];
 

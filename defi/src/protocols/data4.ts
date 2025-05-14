@@ -10209,7 +10209,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5997",
-    name: "Strike Finance",
+    name: "Strike Finance Forwards",
     address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
     symbol: "STRIKE",
     url: "https://www.strikefinance.org/",
@@ -10229,7 +10229,7 @@ const data4: Protocol[] = [
       "https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf",
     ],
     oracles: [],
-    github: ["strike-finance"],
+    parentProtocol: 'parent#strike-finance',
     listedAt: 1743787721,
   },
   {
@@ -13972,8 +13972,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1747156831
-  },
-    {
+  }, {
     id: "6169",
     name: "Jito Mev Tips", 
     address: null,
@@ -14059,6 +14058,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1747233946
+  },
+  {
+    id: "6169",
+    name: "Strike Finance Perpetuals",
+    address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
+    symbol: "STRIKE",
+    url: "https://www.strikefinance.org/",
+    description: "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/strike-finance.png`,
+    audits: "2",
+    chains: ["Cardano"],
+    module: "strike-finance/index.js",
+    twitter: "strikecardano",
+    forkedFrom: [],
+    audit_links: [
+      "https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf",
+    ],
+    oracles: [],
+    parentProtocol: 'parent#strike-finance',
   },
 ];
 export default data4;

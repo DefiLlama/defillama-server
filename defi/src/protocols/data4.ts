@@ -14038,5 +14038,27 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747233546
   },
+   {
+    id: "6172",
+    name: "GainzSwap", 
+    address: null,
+    symbol: "-",
+    url: "https://www.gainzswap.xyz",
+    description:
+      "GainzSwap is a community-driven DeFi platform on EDU Chain for trading, staking, governance, and referrals—built to serve the on-chain education community.",
+    chain: "EDU Chain",
+    logo: `${baseIconsUrl}/gainzswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["EDU Chain"],
+    module: "GainzSwap/index.js",
+    twitter: "GainzSwap",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1747233946
+  },
 ];
 export default data4;

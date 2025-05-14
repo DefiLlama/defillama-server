@@ -2785,8 +2785,5 @@ export default {
     },
     "SecuredFinance": {
         id: "4197"
-    },
-    "jito-mev-tips": {
-        id: "6169"
     }
 } as AdaptorsConfig

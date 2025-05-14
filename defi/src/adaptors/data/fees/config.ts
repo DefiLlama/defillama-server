@@ -3241,5 +3241,8 @@ export default {
     },
     "superswap-v3": {
         id: "5373"
+    },
+    "jito-mev-tips": {
+        id: "6169"
     }
 } as AdaptorsConfig

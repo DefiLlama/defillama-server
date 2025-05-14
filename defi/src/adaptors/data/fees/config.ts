@@ -2033,7 +2033,12 @@ export default {
     },
     "meteora": {
         parentId: "Meteora",
-        id: "385"
+        id: "385",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1747180800": true,
+            }
+        }
     },
     "zarban": {
         id: "5636",

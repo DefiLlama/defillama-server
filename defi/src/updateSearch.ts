@@ -89,4 +89,5 @@ const main = async ()=>{
     console.log(status)
 }
 
-export default main
+//export default main
+main()

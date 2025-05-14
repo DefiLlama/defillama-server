@@ -2033,7 +2033,12 @@ export default {
     },
     "meteora": {
         parentId: "Meteora",
-        id: "385"
+        id: "385",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1747180800": true,
+            }
+        }
     },
     "zarban": {
         id: "5636",
@@ -3236,5 +3241,8 @@ export default {
     },
     "superswap-v3": {
         id: "5373"
+    },
+    "jito-mev-tips": {
+        id: "6169"
     }
 } as AdaptorsConfig

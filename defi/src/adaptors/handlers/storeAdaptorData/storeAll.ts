@@ -87,7 +87,7 @@ run().catch((e) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 90 minutes
+}, 1000 * 60 * 50) // 50 minutes
 
 
 function getYesterdayTimeS() {

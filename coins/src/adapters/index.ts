@@ -1,5 +1,6 @@
 import * as compound from "./moneyMarkets/compound";
 import * as aave from "./moneyMarkets/aave";
+import * as euler from "./moneyMarkets/euler";
 import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
@@ -10,6 +11,7 @@ import * as graphCoins from "./markets/graphCoins";
 export default {
   ...compound.adapters,
   ...aave.adapters,
+  ...euler.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,

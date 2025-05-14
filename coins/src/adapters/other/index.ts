@@ -129,6 +129,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     arbitrum: [
       { pool: "0xC977492506E6516102a5687154394Ed747A617ff", unknown: "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", known: "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B", },
       { pool: "0xd3aC0C63feF0506699d68d833a10477137254aFf", unknown: "0x9A592B4539E22EeB8B2A3Df679d572C7712Ef999", known: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1", },
+      { pool: "0xfB4fE921F724f3C7B610a826c827F9F6eCEf6886", unknown: "0x17573150d67d820542EFb24210371545a4868B03", known: "0x178412e79c25968a32e89b11f63b33f733770c2a", },
     ],
     avax: [
       { pool: "0x2071a39da7450d68e4f4902774203df208860da2", unknown: "0x3712871408a829c5cd4e86da1f4ce727efcd28f6", known: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7", },

@@ -2099,7 +2099,6 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "olab/index.js",
     twitter: "opinionlabsxyz",
-    forkedFrom: ["Polymarket"],
     oracles: [], 
     audit_links: [],
     listedAt: 1737379705

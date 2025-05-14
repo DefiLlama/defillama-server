@@ -28778,6 +28778,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#zora",
     listedAt: 1677604484,
   },
+  /* big spike
   {
     id: "2611",
     name: "Balancer V2",
@@ -28798,6 +28799,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/balancer/balancer-v2-monorepo/tree/master/audits"],
     parentProtocol: "parent#balancer",
   },
+  */
   {
     id: "2612",
     name: "Genius",

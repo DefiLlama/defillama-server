@@ -13972,7 +13972,8 @@ const data4: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#xoxno",
     listedAt: 1747156831
-  }, {
+  }, 
+  {
     id: "6169",
     name: "Jito MEV Tips", 
     address: null,
@@ -13994,7 +13995,7 @@ const data4: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#jito",
   },
-    {
+  {
     id: "6170",
     name: "Kuma V2", 
     address: null,
@@ -14016,7 +14017,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747233246
   },
-    {
+  {
     id: "6171",
     name: "MAYZ Protocol", 
     address: "cardano:9e975c76508686eb2d57985dbaea7e3843767a31b4dcf4e99e564683.4d41595a",
@@ -14038,7 +14039,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747233546
   },
-   {
+  {
     id: "6172",
     name: "GainzSwap", 
     address: null,

@@ -179,8 +179,8 @@ export const chainToCoingeckoId = {
   soneium: "soneium",
   Hyperliquid: "hyperevm",
   unichain: "unichain",
-  ink: "ink", 
-  swellchain: "swellchain", 
+  ink: "ink",
+  swellchain: "swellchain",
   plume_mainnet: "plume-network"
 };
 

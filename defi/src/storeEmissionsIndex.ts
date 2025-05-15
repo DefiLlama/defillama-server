@@ -81,7 +81,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         };
       } else {
         nextEvent = {
-          date: Math.ceil(now / 86400) * 86400,
+          date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[1], 0),
         };
       }

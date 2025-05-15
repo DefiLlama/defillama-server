@@ -24923,7 +24923,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "mantle/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
   },
   {
     id: "3783",
@@ -27193,7 +27193,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     chains: ["Ethereum"],
     module: "mantle-meth/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     listedAt: 1701703365,
   },
   {
@@ -61099,7 +61099,7 @@ const data3: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     module: "mantle-restaking/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     forkedFrom: [],
     oracles: [],
     listedAt: 1731495743

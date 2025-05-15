@@ -26293,7 +26293,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "bitdao.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     oracles: [],
     forkedFrom: [],
     governanceID: ["snapshot:bitdao.eth"],

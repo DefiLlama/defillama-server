@@ -3244,5 +3244,8 @@ export default {
     },
     "jito-mev-tips": {
         id: "6169"
-    }
+    },
+    "meth-protocol": {
+        id: "3882"
+    },
 } as AdaptorsConfig

@@ -7857,7 +7857,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Token Locker",
-    chains: ["Ethereum","Arbitrum","Base","Optimism","Polygon","Avalanche","Blast","Binance"],
+    chains: ["Ethereum","Arbitrum","Base","Optimism","Polygon","Avalanche","Binance"],
     forkedFrom: [],
     module: "BitbondLockers/index.js",
     audit_links: ["https://skynet.certik.com/projects/bitbond"],

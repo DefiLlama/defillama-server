@@ -14107,5 +14107,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#solv-protocol",
     listedAt: 1747252621
   },
+  {
+    id: "6175",
+    name: "Kana Labs Perps",
+    address: null,
+    symbol: "-",
+    url: "https://www.kana.trade/?market=APT-PERP",
+    description: "Swap, Stake, Trade, Invest and more across 40 liquidity sources.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/kana-labs-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "kanalabs",
+    parentProtocol: "parent#kana-labs",
+  },
 ];
 export default data4;

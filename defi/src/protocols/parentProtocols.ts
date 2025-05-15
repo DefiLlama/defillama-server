@@ -7097,7 +7097,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["strike-finance"],
     twitter: "strikecardano",
   },
-    {
+  {
     id: "parent#xoxno",
     name: "XOXNO",
     url: "https://xoxno.com/",
@@ -7107,6 +7107,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "XoxnoNetwork",
+  },
+  {
+    id: "parent#kana-labs",
+    name: "Kana Labs",
+    url: "https://kanalabs.io",
+    description: "Liquid stake. Swap tokens. Trade collectibles.",
+    logo: `${baseIconsUrl}/kana-labs.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "kanalabs",
   }
 ];
 

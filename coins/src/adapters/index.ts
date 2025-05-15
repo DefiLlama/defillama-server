@@ -147,4 +147,5 @@ export default {
   convexStaked: require("./yield/convexStaked"),
   folksFinance: require("./moneyMarkets/folks-finance"),
   xlpt: require("./markets/xlpt"),
+  tempest: require("./yield/tempest"),
 };

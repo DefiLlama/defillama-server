@@ -14153,7 +14153,7 @@ const data4: Protocol[] = [
     listedAt: 1747319273
   },
     {
-    id: "6176",
+    id: "6177",
     name: "IVX Protocol",
     address: null,
     symbol: "-",

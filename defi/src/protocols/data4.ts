@@ -7839,6 +7839,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "usdd-io/index.js",
     twitter: "usddio",
+    oracles: ["Chainlink"], //https://docs.usdd.io/developers/oracle
     listedAt: 1741877201
   },
   {

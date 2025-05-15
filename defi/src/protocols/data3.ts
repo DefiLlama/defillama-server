@@ -11384,7 +11384,7 @@ const data3: Protocol[] = [
     cmcId: "27793",
     category: "RWA",
     chains: ["Tron"],
-    oracles: [],
+    oracles: ["Chainlink"], //https://stusdt.io/#/home. Please refer to the footer in anny page of the UI
     forkedFrom: [],
     module: "stUSDT/index.js",
     twitter: "stusdtio",

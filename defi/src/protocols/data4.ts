@@ -14061,6 +14061,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747233946
   },
+  /*
   { 
     id: "6173",
     name: "Strike Finance Perpetuals",
@@ -14085,6 +14086,7 @@ const data4: Protocol[] = [
     oracles: [],
     parentProtocol: 'parent#strike-finance',
   },
+  */
   {
     id: "6174",
     name: "Solv Others",

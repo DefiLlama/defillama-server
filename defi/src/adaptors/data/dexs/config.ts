@@ -2785,5 +2785,8 @@ export default {
     },
     "SecuredFinance": {
         id: "4197"
-    }
+    },
+    "thena-integral": {
+        id: "6179"
+    },
 } as AdaptorsConfig

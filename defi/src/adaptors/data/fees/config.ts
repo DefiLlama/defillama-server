@@ -3254,4 +3254,7 @@ export default {
     "holdstation-agg": {
         id: "6178"
     },
+    "thena-integral": {
+        id: "6179"
+    },
 } as AdaptorsConfig

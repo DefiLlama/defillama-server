@@ -2091,7 +2091,7 @@ const data4: Protocol[] = [
       "The World's Opinion Protocol, enabling anyone to create predictions using any token in a decentralized, permissionless way. The O.LAB product suite empower users to predict, trade, and verify truth like never before",
     chain: "Base",
     logo: `${baseIconsUrl}/o.lab.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -2100,7 +2100,7 @@ const data4: Protocol[] = [
     module: "olab/index.js",
     twitter: "opinionlabsxyz",
     oracles: [], 
-    audit_links: [],
+    audit_links: ["https://pub-d9508a69438c476b87530c53cfa2910c.r2.dev/Prediction%20Market%20-%20Zellic%20Audit%20Report.pdf"],
     listedAt: 1737379705
   },
   {

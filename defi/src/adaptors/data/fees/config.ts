@@ -3248,4 +3248,7 @@ export default {
     "meth-protocol": {
         id: "3882"
     },
+    "believe": {
+        id: "6159"
+    },
 } as AdaptorsConfig

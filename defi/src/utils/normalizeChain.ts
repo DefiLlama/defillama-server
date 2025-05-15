@@ -3747,7 +3747,7 @@ export const chainCoingeckoIds = {
     twitter: "soneium",
     url: "https://soneium.org"
   },
-  "Plume": {
+  "Plume (Deprecated)": {
     geckoId: "plume",
     symbol: "PLUME",
     cmcId: null,
@@ -4448,6 +4448,7 @@ const newChainLabelMap = {
   "new": "AB",
   "formnetwork": "Form Network",
   "hyperliquid": "Hyperliquid L1",
+  "plume": "Plume (Deprecated)",
   "lightlink_phoenix": "LightLink",
   "move": "Movement", 
   "wax": "Wax",

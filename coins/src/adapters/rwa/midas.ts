@@ -29,7 +29,7 @@ const contracts: {
   ],
   rsk: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
-    { name: "mBTC", token: "0xEF85254Aa4a8490bcC9C02Ae38513Cae8303FB53", oracle: "0xa3A252Babc8A576660c6B8B9e3bD096D2f5017cE", requiresConversion: true },
+    { name: "mBTC", token: "0xEF85254Aa4a8490bcC9C02Ae38513Cae8303FB53" },
   ]
 };
 

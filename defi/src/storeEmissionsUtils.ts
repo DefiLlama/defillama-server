@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
-import { createCategoryData } from "../emissions-adapters/utils/categoryData";
+import { createCategoryData, createSectionData } from "../emissions-adapters/utils/categoryData";
 import { ChartSection, EmissionBreakdown, Protocol, SectionData } from "../emissions-adapters/types/adapters";
 import { createFuturesData } from "../emissions-adapters/utils/futures";
 import { storeR2JSONString, getR2 } from "./utils/r2";
@@ -48,7 +48,9 @@ async function aggregateMetadata(
   }
 
   const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories);
+  const realTimeSectionAllocation = createSectionData(realTimeChart);
   const documentedTokenAllocation = createCategoryData(documentedChart, rawData.categories);
+  const documentedSectionAllocation = createSectionData(documentedChart);
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
@@ -57,16 +59,25 @@ async function aggregateMetadata(
   if (documentedChart.length) {
     documentedData = {
       data: mapToServerData(documentedChart),
-      tokenAllocation: documentedTokenAllocation,
+      tokenAllocation: {
+        ...documentedTokenAllocation,
+        bySection: documentedSectionAllocation,
+      },
     };
     realTimeData = {
       data: mapToServerData(realTimeChart),
-      tokenAllocation: realTimeTokenAllocation,
+      tokenAllocation: {
+        ...realTimeTokenAllocation,
+        bySection: realTimeSectionAllocation,
+      },
     };
   } else {
     documentedData = {
       data: mapToServerData(realTimeChart),
-      tokenAllocation: realTimeTokenAllocation,
+      tokenAllocation: {
+        ...realTimeTokenAllocation,
+        bySection: realTimeSectionAllocation,
+      },
     };
   }
 

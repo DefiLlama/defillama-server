@@ -14129,7 +14129,7 @@ const data4: Protocol[] = [
     twitter: "kanalabs",
     parentProtocol: "parent#kana-labs",
   },
-    {
+  {
     id: "6176",
     name: "Kofi Finance",
     address: null,
@@ -14152,7 +14152,7 @@ const data4: Protocol[] = [
     github: ["KofiFinance"],
     listedAt: 1747319273
   },
-    {
+  {
     id: "6177",
     name: "IVX Protocol",
     address: null,
@@ -14172,6 +14172,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1747319373
+  },
+  {
+    id: "6178",
+    name: "Holdstation DEX Aggregator",
+    address: "era:0xed4040fd47629e7c8fbb7da76bb50b3e7695f0f2",
+    symbol: "HOLD",
+    url: "https://holdstation.exchange/",
+    description: "DEX Aggregator for World Chain",
+    chain: "World Chain",
+    logo: `${baseIconsUrl}/holdstation-dex-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["World Chain"],
+    module: "dummy.js",
+    twitter: "HoldstationW",
+    forkedFrom: [],
+    parentProtocol: "parent#holdstation",
   },
 ];
 export default data4;

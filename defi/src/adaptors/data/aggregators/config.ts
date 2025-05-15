@@ -330,4 +330,7 @@ export default {
   "kame-aggregator": {
     id: "6064"
   },
+  "holdstation-agg": {
+    id: "6178"
+  },
 } as AdaptorsConfig;

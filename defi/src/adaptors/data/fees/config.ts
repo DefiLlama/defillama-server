@@ -3251,4 +3251,7 @@ export default {
     "believe": {
         id: "6159"
     },
+    "holdstation-agg": {
+        id: "6178"
+    },
 } as AdaptorsConfig

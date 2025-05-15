@@ -1625,6 +1625,7 @@ export default {
             genuineSpikes: {
                 "1714867200": true,
                 "1714953600": true,
+                "1747180800": true
             }
         }
     },
@@ -2785,7 +2786,7 @@ export default {
     "SecuredFinance": {
         id: "4197"
     },
-    "jito-mev-tips": {
-        id: "6169"
-    }
+    "thena-integral": {
+        id: "6179"
+    },
 } as AdaptorsConfig

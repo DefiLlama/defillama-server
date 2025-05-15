@@ -3,6 +3,8 @@ import { getConnection } from "./utils";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 
+const JTO = "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL";
+
 const assets: {
   [token: string]: { oracle: string; symbol: string; decimals: number };
 } = {
@@ -16,7 +18,7 @@ const assets: {
     symbol: "wfragJTO",
     decimals: 9,
   },
-  jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL: {
+  [JTO]: {
     oracle: "",
     symbol: "JTO",
     decimals: 9,
@@ -32,7 +34,7 @@ export async function jtoDerivs(timestamp: number = 0) {
 
   await Promise.all(
     Object.keys(assets).map(async (asset: string) => {
-      if (asset == "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL") return;
+      if (asset == JTO) return;
       const accountInfo = await connection.getAccountInfo(
         new PublicKey(assets[asset].oracle),
       );
@@ -42,7 +44,7 @@ export async function jtoDerivs(timestamp: number = 0) {
       const tokensDeposited = Number(accountInfo.data.readBigUInt64LE(112));
 
       pricesObject[asset] = {
-        underlying: assets.JTO,
+        underlying: JTO,
         symbol: assets[asset].symbol,
         decimals: assets[asset].decimals,
         price: tokensDeposited / vrtSupply,

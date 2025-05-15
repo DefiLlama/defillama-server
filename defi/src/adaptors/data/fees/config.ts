@@ -2033,7 +2033,12 @@ export default {
     },
     "meteora": {
         parentId: "Meteora",
-        id: "385"
+        id: "385",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1747180800": true,
+            }
+        }
     },
     "zarban": {
         id: "5636",
@@ -3236,5 +3241,20 @@ export default {
     },
     "superswap-v3": {
         id: "5373"
-    }
+    },
+    "jito-mev-tips": {
+        id: "6169"
+    },
+    "meth-protocol": {
+        id: "3882"
+    },
+    "believe": {
+        id: "6159"
+    },
+    "holdstation-agg": {
+        id: "6178"
+    },
+    "thena-integral": {
+        id: "6179"
+    },
 } as AdaptorsConfig

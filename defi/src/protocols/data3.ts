@@ -11384,7 +11384,7 @@ const data3: Protocol[] = [
     cmcId: "27793",
     category: "RWA",
     chains: ["Tron"],
-    oracles: [],
+    oracles: ["Chainlink"], //https://stusdt.io/#/home. Please refer to the footer in anny page of the UI
     forkedFrom: [],
     module: "stUSDT/index.js",
     twitter: "stusdtio",
@@ -24249,13 +24249,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3753",
-    name: "XOXNO",
+    name: "XOXNO NFT Marketplace",
+    //previousNames: ["XOXNO"],
     address: null,
     symbol: "-",
     url: "https://mobile.xoxno.com/",
     description: "A marketplace on MultiversX to discover, collect, create and sell digital assets",
     chain: "Elrond",
-    logo: `${baseIconsUrl}/xoxno.png`,
+    logo: `${baseIconsUrl}/xoxno-nft-marketplace.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -24266,6 +24267,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "xoxnoNFTs",
+    parentProtocol: "parent#xoxno",
   },
   {
     id: "3754",
@@ -24921,7 +24923,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "mantle/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
   },
   {
     id: "3783",
@@ -27191,7 +27193,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     chains: ["Ethereum"],
     module: "mantle-meth/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     listedAt: 1701703365,
   },
   {
@@ -30314,13 +30316,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4016",
-    name: "Kana Labs",
+    name: "Kana Labs Aggregator",
+    //previousNames: ["Kana Labs"],
     address: null,
     symbol: "-",
     url: "https://kanalabs.io",
     description: "Swap, Stake, Trade, Invest and more across 40 liquidity sources.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/kana-labs.png`,
+    logo: `${baseIconsUrl}/kana-labs-aggregator.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -30331,6 +30334,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "kanalabs",
+    parentProtocol: "parent#kana-labs",
   },
   {
     id: "4017",
@@ -56612,14 +56616,7 @@ const data3: Protocol[] = [
     module: "cygnus-fi-restake/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work
-    oraclesBreakdown: [
-      {
-        name: "Restone",
-        type: "Primary",
-        proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
-      }
-    ],
+    oracles: [],
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },
@@ -61102,7 +61099,7 @@ const data3: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     module: "mantle-restaking/index.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     forkedFrom: [],
     oracles: [],
     listedAt: 1731495743
@@ -65262,7 +65259,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.b14g.xyz/",
-    description: "b14g is a Bitcoin Merge Staking platform that unlocks the full potential of your BTC. By blending Bitcoin’s strength with native tokens, b14g creates a secure, scalable, and slashing-free staking experience. With innovative features like the Merge Marketplace, b14g makes it easy to access top-tier staking yields — even if you’re short on capital",
+    description: "b14g is a modular dual-staking layer for Bitcoin that lets protocols secure their networks with both BTC and their native token—reducing sell pressure, increasing token utility, and improving sustainability.",
     chain: "CORE",
     logo: `${baseIconsUrl}/b14g.jpg`,
     audits: "2",

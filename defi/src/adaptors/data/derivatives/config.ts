@@ -664,5 +664,8 @@ export default {
     "moonlander": {
         id: "5658"
     },
+    "kanalabs-perp": {
+        id: "6175"
+    },
 
 } as AdaptorsConfig

@@ -14199,7 +14199,7 @@ const data4: Protocol[] = [
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://www.thena.fi",
-    description: "THENA INTEGRAL is a decentralized exchange on BSC",
+    description: "THENA Integral is a concentrated liquidity management infrastructure, utilized with plugins on BSC chain, powered by Algebra Protocol",
     chain: "Binance",
     logo: `${baseIconsUrl}/thena-integral.jpg`,
     audits: "0",

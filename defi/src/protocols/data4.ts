@@ -14061,7 +14061,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1747233946
   },
-  /*{ // TODO: check if new adapters will be added
+  { 
     id: "6173",
     name: "Strike Finance Perpetuals",
     address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
@@ -14084,7 +14084,7 @@ const data4: Protocol[] = [
     ],
     oracles: [],
     parentProtocol: 'parent#strike-finance',
-  },*/
+  },
   {
     id: "6174",
     name: "Solv Others",

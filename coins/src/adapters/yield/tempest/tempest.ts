@@ -155,11 +155,11 @@ async function getTempestTokens(
                 BigInt(position.output[3]); // amount1Idle
 
             const token0Divisor =
-                BigInt(10) ** BigInt(rswEthVaults[i].token0Decimals);
+                BigInt(10) ** BigInt(symmetricVaults[i].token0Decimals);
             const token1Divisor =
-                BigInt(10) ** BigInt(rswEthVaults[i].token1Decimals);
+                BigInt(10) ** BigInt(symmetricVaults[i].token1Decimals);
             const supplyDivisor =
-                BigInt(10) ** BigInt(rswEthVaults[i].vaultDecimals);
+                BigInt(10) ** BigInt(symmetricVaults[i].vaultDecimals);
 
             const token0Amount = Number(token0Sum) / Number(token0Divisor);
             const token1Amount = Number(token1Sum) / Number(token1Divisor);

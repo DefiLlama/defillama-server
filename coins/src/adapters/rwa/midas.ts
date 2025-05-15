@@ -27,7 +27,7 @@ const contracts: {
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
     { name: "mBASIS", token: "0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" },
   ],
-  rootstock: [
+  rsk: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
     { name: "mBTC", token: "0xEF85254Aa4a8490bcC9C02Ae38513Cae8303FB53", requiresConversion: true },
   ]

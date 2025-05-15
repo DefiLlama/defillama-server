@@ -195,6 +195,13 @@ functions:
       - httpApi:
           path: /percentage/{coins}
           method: get
+  coinVolumes:
+    handler: src/getVolume.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /volume/{coins}
+          method: get
   block:
     handler: src/getBlock.default
     timeout: 60

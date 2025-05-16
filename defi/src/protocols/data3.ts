@@ -19884,7 +19884,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3564",
-    name: "Arena SocialFi", 
+    name: "Arena SocialFi",
     previousNames: ["Stars Arena", /*"The Arena"*/],
     address: null,
     symbol: "-",
@@ -59597,7 +59597,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Switchboard"],
     oraclesBreakdown: [
       {
         name: "Switchboard",

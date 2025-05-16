@@ -3257,4 +3257,7 @@ export default {
     "thena-integral": {
         id: "6179"
     },
+    "fastlane": {
+        id: "6182"
+    },
 } as AdaptorsConfig

@@ -108,7 +108,7 @@ function formWrites(
             chain,
             m.address,
             eTokenPrice,
-            18,
+            coinData.decimals,
             `${m.symbol}`,
             timestamp,
             "euler",

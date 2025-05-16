@@ -14237,5 +14237,33 @@ const data4: Protocol[] = [
     parentProtocol: "parent#accumulated-finance",
     listedAt: 1747336144,
   },
+    {
+    id: "6181",
+    name: "Orki Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.orki.finance/",
+    description: `USDK is the USD-pegged, overcollateralized and native stablecoin on Swellchain. Issued by Orki Finance and backed by LST/LRT-based assets like swETH and rswETH.`,
+    chain: "Swellchain",
+    logo: `${baseIconsUrl}/orki-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Swellchain"],
+    oracles: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://orki-finance.gitbook.io/orki-finance-docs/infra/redstone-oracle"]
+      }
+    ],
+    forkedFrom: ["Liquity V2"],
+    module: "orki-usd/index.js",
+    twitter: "OrkiFi",
+    listedAt: 1747359221,
+  },
 ];
 export default data4;

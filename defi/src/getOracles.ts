@@ -101,7 +101,77 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
-        if (protocol.oraclesByChain) {
+        if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
+          const activeOracles: Array<{ name: string, type: string, chain: string | null }> = [];
+
+          for (const oracleEntry of protocol.oraclesBreakdown) {
+            const oracleName = oracleEntry.name;
+            const oracleType = oracleEntry.type;
+            const generalStartDateStr = oracleEntry.startDate;
+            const generalEndDateStr = oracleEntry.endDate;
+
+            if (oracleEntry.chains && oracleEntry.chains.length > 0) {
+              for (const chainConfig of oracleEntry.chains) {
+                const chainName = chainConfig.chain;
+                const effectiveStartDateStr = chainConfig.startDate || generalStartDateStr;
+                const effectiveEndDateStr = chainConfig.endDate || generalEndDateStr;
+
+                let isActive = true;
+                if (effectiveStartDateStr) {
+                  const startDateTs = new Date(effectiveStartDateStr).getTime() / 1000;
+                  if (timestamp < startDateTs) {
+                    isActive = false;
+                  }
+                }
+                if (isActive && effectiveEndDateStr) {
+                  const endDateTs = new Date(effectiveEndDateStr).getTime() / 1000;
+                  if (timestamp > endDateTs) {
+                    isActive = false;
+                  }
+                }
+
+                if (isActive) {
+                  activeOracles.push({ name: oracleName, type: oracleType, chain: chainName });
+                }
+              }
+            } else {
+              let isActive = true;
+              if (generalStartDateStr) {
+                const startDateTs = new Date(generalStartDateStr).getTime() / 1000;
+                if (timestamp < startDateTs) {
+                  isActive = false;
+                }
+              }
+              if (isActive && generalEndDateStr) {
+                const endDateTs = new Date(generalEndDateStr).getTime() / 1000;
+                if (timestamp > endDateTs) {
+                  isActive = false;
+                }
+              }
+
+              if (isActive) {
+                activeOracles.push({ name: oracleName, type: oracleType, chain: null });
+              }
+            }
+          }
+
+          const primaryOracles = activeOracles.filter(o => o.type === 'Primary');
+          const aggregatorOracles = activeOracles.filter(o => o.type === 'Aggregator');
+          const numAggregators = aggregatorOracles.length;
+
+          for (const o of primaryOracles) {
+            sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, item, oracleProtocols, protocol, o.chain);
+          }
+          if (numAggregators > 0) {
+            const splitItem: Item = {};
+            for (const key in item) {
+              splitItem[key] = item[key] / numAggregators;
+            }
+            for (const o of aggregatorOracles) {
+              sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, splitItem, oracleProtocols, protocol, o.chain);
+            }
+          }
+        } else if (protocol.oraclesByChain) {
           for (const chain in protocol.oraclesByChain) {
             for (const oracle of protocol.oraclesByChain[chain]) {
               sum(sumDailyTvlsByChain, sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);

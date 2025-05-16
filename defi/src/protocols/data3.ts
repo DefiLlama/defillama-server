@@ -56199,7 +56199,7 @@ const data3: Protocol[] = [
     address: "0x963eec23618BbC8e1766661d5f263f18094Ae4d5",
     symbol: "CYBRO",
     url: "https://app.cybro.io",
-    description: "CYBRO is an AI-based yield aggregator platform on the Blast blockchain",
+    description: "CYBRO is an AI-powered multichain earn markeplace",
     chain: "Blast",
     logo: `${baseIconsUrl}/cybro.jpg`,
     audits: "2",

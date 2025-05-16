@@ -211,14 +211,13 @@ function formWrites(
             m.vaultAddress,
             tempestTokenPrice,
             m.vaultDecimals,
-            `${m.symbol}`,
+            `${m.vaultSymbol}`,
             timestamp,
             "tempest",
             0.9
         );
     });
 
-    console.log("writes", writes);
     return writes;
 }
 

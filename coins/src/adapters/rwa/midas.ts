@@ -26,24 +26,25 @@ const contracts: {
   etlk: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
     { name: "mBASIS", token: "0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" },
+  ],
+  rsk: [
+    { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
+    { name: "mBTC", token: "0xEF85254Aa4a8490bcC9C02Ae38513Cae8303FB53" },
   ]
 };
 
-const btcToUsdOracle: { [chain: string]: string } = {
-  ethereum: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-};
+const btcToUsdOracleEth = "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c";
 
-async function getBtcToUsdPrice(api: any, btcOracle: string | undefined): Promise<number> {
-  if (!btcOracle) return 1;
-  const response = await api.call({ abi: AGGREGATOR_ABI, target: btcOracle });
+async function getBtcToUsdPrice(timestamp: number): Promise<number> {
+  const api = await getApi("ethereum", timestamp);
+  const response = await api.call({ abi: AGGREGATOR_ABI, target: btcToUsdOracleEth });
   return response.answer / 1e8;
 }
 
 async function getTokenPrices(chain: string, timestamp: number, ethereumPrices: Record<string, number>): Promise<Write[]> {
   const api = await getApi(chain, timestamp);
   const tokens = contracts[chain] || [];
-  const btcOracle = btcToUsdOracle[chain];
-  const btcToUsdPrice = await getBtcToUsdPrice(api, btcOracle);
+  const btcToUsdPrice = await getBtcToUsdPrice(timestamp);
 
   const tokensWithOracles = tokens.filter(t => t.oracle);
   const tokensWithoutOracles = tokens.filter(t => !t.oracle);

@@ -7118,6 +7118,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "kanalabs",
+  },
+  {
+    id: "parent#accumulated-finance",
+    name: "Accumulated Finance",
+    url: "https://accumulated.finance",
+    description: "Omnichain liquid staking, LST lending, leverage staking. AEVM (Accumulated EVM) app-chain",
+    logo: `${baseIconsUrl}/accumulated-finance.png`,
+    gecko_id: null, // ACFI Preview Only
+    cmcId: null,
+    chains: [],
+    twitter: "AccumulatedFi",
+    github: ["AccumulatedFinance"],
   }
 ];
 

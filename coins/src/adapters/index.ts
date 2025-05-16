@@ -148,4 +148,5 @@ export default {
   folksFinance: require("./moneyMarkets/folks-finance"),
   xlpt: require("./markets/xlpt"),
   sundaeswapV3: require("./markets/sundaeswapv3"),
+  tempest: require("./yield/tempest"),
 };

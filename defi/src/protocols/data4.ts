@@ -4973,6 +4973,7 @@ const data4: Protocol[] = [
     github: ["infrared-dao"],
     listedAt: 1739442996
   },
+  /*
   {
     id: "5776",
     name: "Dopin Protocol",
@@ -4994,6 +4995,7 @@ const data4: Protocol[] = [
     twitter: "Dopinprotocol", 
     listedAt: 1739443997
   },
+  */
   {
     id: "5777",
     name: "SoSoValue Basis",

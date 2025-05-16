@@ -8360,6 +8360,66 @@
     }
   },
   "plume_mainnet": {
+    "0xD3BFd6E6187444170A1674c494E55171587b5641": {
+      "to": "coingecko#nest-elixir-vault-lp",
+      "decimals": 6,
+      "symbol": "inELIXIR"
+    },
+    "0x593cCcA4c4bf58b7526a4C164cEEf4003C6388db": {
+      "to": "coingecko#nest-alpha-vault",
+      "decimals": 6,
+      "symbol": "nALPHA"
+    },
+    "0x11113Ff3a60C2450F4b22515cB760417259eE94B": {
+      "to": "coingecko#nest-basis-vault",
+      "decimals": 6,
+      "symbol": "nBASIS"
+    },
+    "0x02cDb5CCc97d5DC7Ed2747831b516669eB635706": {
+      "to": "coingecko#nest-btc-vault",
+      "decimals": 8,
+      "symbol": "nBTC"
+    },
+    "0xA5f78B2A0Ab85429d2DfbF8B60abc70F4CeC066c": {
+      "to": "coingecko#nest-credit-vault",
+      "decimals": 6,
+      "symbol": "nCREDIT"
+    },
+    "0x9fbC367B9Bb966a2A537989817A088AFCaFFDC4c": {
+      "to": "coingecko#nest-elixir-vault",
+      "decimals": 6,
+      "symbol": "nELIXIR"
+    },
+    "0xdeA736937d464d288eC80138bcd1a2E109A200e3": {
+      "to": "coingecko#nest-etf-vault",
+      "decimals": 6,
+      "symbol": "nETF"
+    },
+    "0xbfC5770631641719cd1Cf809D8325B146aED19De": {
+      "to": "coingecko#nest-institutional-vault",
+      "decimals": 6,
+      "symbol": "nINSTO"
+    },
+    "0xb52b090837a035f93A84487e5A7D3719C32Aa8A9": {
+      "to": "coingecko#nest-payfi-vault",
+      "decimals": 6,
+      "symbol": "nPAYFI"
+    },
+    "0xE72Fe64840F4EF80E3Ec73a1c749491b5c938CB9": {
+      "to": "coingecko#nest-treasury-vault",
+      "decimals": 6,
+      "symbol": "nTBILL"
+    },
+    "0xe9e8330a71912F03E54E7D93795acD9a56f070Aa": {
+      "to": "coingecko#paypal-usd",
+      "decimals": 6,
+      "symbol": "PayUSD"
+    },
+    "0x39d1F90eF89C52dDA276194E9a832b484ee45574": {
+      "to": "coingecko#dinero-staked-eth",
+      "decimals": 18,
+      "symbol": "pETH"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#plume",
       "decimals": 18,

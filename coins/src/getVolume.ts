@@ -6,6 +6,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 
 const samples = 10;
+
 type QueryParams = {
   coins: string[];
   period: number;
@@ -13,10 +14,6 @@ type QueryParams = {
   timestamp: number;
   searchWidth: number;
 };
-type VolumeResponse = {
-  [coin: string]: number;
-};
-
 function formParamsObject(event: any): QueryParams {
   const coins = (event.pathParameters?.coins ?? "").split(",");
   const period = quantisePeriod(
@@ -74,7 +71,7 @@ async function fetchDBData(
 }
 
 function calcAverage(response: any) {
-  let results = {} as VolumeResponse;
+  let results: { [coin: string]: number } = {};
 
   Object.keys(response).map((c) => {
     if (response[c].length < samples * 0.7)
@@ -99,15 +96,18 @@ const handler = async (event: any): Promise<IResponse> => {
     samples,
   );
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
-  const response: VolumeResponse = await fetchDBData(
+  const dbData = await fetchDBData(
     timestamps,
     coins,
     PKTransforms,
     params.searchWidth,
   );
+
+  const response = calcAverage(dbData);
+
   return successResponse(
     {
-      coins: calcAverage(response),
+      coins: response,
     },
     3600,
   ); // 1 hour cache

@@ -102,8 +102,11 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
         if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
+          const activeOracles: Array<{ name: string, type: string, chain: string | null }> = [];
+
           for (const oracleEntry of protocol.oraclesBreakdown) {
             const oracleName = oracleEntry.name;
+            const oracleType = oracleEntry.type;
             const generalStartDateStr = oracleEntry.startDate;
             const generalEndDateStr = oracleEntry.endDate;
 
@@ -128,7 +131,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
                 }
 
                 if (isActive) {
-                  sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, item, oracleProtocols, protocol, chainName);
+                  activeOracles.push({ name: oracleName, type: oracleType, chain: chainName });
                 }
               }
             } else {
@@ -147,8 +150,25 @@ export async function getOraclesInternal({ ...options }: any = {}) {
               }
 
               if (isActive) {
-                sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, item, oracleProtocols, protocol, null);
+                activeOracles.push({ name: oracleName, type: oracleType, chain: null });
               }
+            }
+          }
+
+          const primaryOracles = activeOracles.filter(o => o.type === 'Primary');
+          const aggregatorOracles = activeOracles.filter(o => o.type === 'Aggregator');
+          const numAggregators = aggregatorOracles.length;
+
+          for (const o of primaryOracles) {
+            sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, item, oracleProtocols, protocol, o.chain);
+          }
+          if (numAggregators > 0) {
+            const splitItem: Item = {};
+            for (const key in item) {
+              splitItem[key] = item[key] / numAggregators;
+            }
+            for (const o of aggregatorOracles) {
+              sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, splitItem, oracleProtocols, protocol, o.chain);
             }
           }
         } else if (protocol.oraclesByChain) {

@@ -53,7 +53,7 @@ const processFile = (file: string, globalNameToId: Record<string, string>, paren
     ...Object.values(parentNameToId),
   ]);
   
-const forkedFromRegex = /forkedFrom:\s*\[(.*?)\]/gs;
+  const forkedFromRegex = /forkedFrom:\s*\[(.*?)\]/gs;
   let match;
   
   while ((match = forkedFromRegex.exec(content)) !== null) {
@@ -120,18 +120,18 @@ const forkedFromRegex = /forkedFrom:\s*\[(.*?)\]/gs;
       return `"${id}"`;
     });
     
-    let updatedForkedFrom;
+    let updatedForkedFromIds;
     if (originalForkedFrom.includes("\n")) {
       const indentMatch = /forkedFrom:\s*\[\s*\n(\s+)/.exec(originalForkedFrom);
       const indent = indentMatch ? indentMatch[1] : "    ";
-      updatedForkedFrom = `forkedFrom: [\n${indent}${updatedNames.join(`,\n${indent}`)}\n${indent.slice(0, -2)}]`;
+      updatedForkedFromIds = `forkedFromIds: [\n${indent}${updatedNames.join(`,\n${indent}`)}\n${indent.slice(0, -2)}]`;
     } else {
-      updatedForkedFrom = `forkedFrom: [${updatedNames.join(", ")}]`;
+      updatedForkedFromIds = `forkedFromIds: [${updatedNames.join(", ")}]`;
     }
     
-    content = content.substring(0, match.index) + updatedForkedFrom + content.substring(match.index + originalForkedFrom.length);
+    content = content.substring(0, match.index) + updatedForkedFromIds + content.substring(match.index + originalForkedFrom.length);
     
-    forkedFromRegex.lastIndex = match.index + updatedForkedFrom.length;
+    forkedFromRegex.lastIndex = match.index + updatedForkedFromIds.length;
   }
   
   fs.writeFileSync(outputPath, content);

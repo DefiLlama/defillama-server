@@ -14237,7 +14237,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#accumulated-finance",
     listedAt: 1747336144,
   },
-    {
+   {
     id: "6181",
     name: "Orki Finance",
     address: null,
@@ -14264,6 +14264,26 @@ const data4: Protocol[] = [
     module: "orki-usd/index.js",
     twitter: "OrkiFi",
     listedAt: 1747359221,
+  },
+  {
+    id: "6182",
+    name: "Fastlane",
+    address: null,
+    symbol: "-",
+    url: "https://www.fastlane.xyz",
+    description: `We build MEV-aware infrastructure and smart contracts to make DeFi useable and keep it decentralized.`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/fastlane.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "MEV",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "0xFastLane",
   },
 ];
 export default data4;

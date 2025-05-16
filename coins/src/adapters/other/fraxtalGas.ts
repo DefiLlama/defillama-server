@@ -7,7 +7,7 @@ import { Write } from "../utils/dbInterfaces";
 
 export async function fraxtalGas(timestamp: number = 0) {
   const redirect =
-    timestamp != 0 && timestamp < 1745881200 ? "frax-ether" : "frax-share";
+    timestamp != 0 && timestamp < 1745949877 ? "frax-ether" : "frax-share";
 
   const data = await getTokenAndRedirectDataMap(
     [redirect],

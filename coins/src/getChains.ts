@@ -155,6 +155,7 @@ export const adaptersRepoChainsJson: string[] = [
   "parallel",
   "persistence",
   "pgn",
+  "plume_mainnet",
   "pokt",
   "polis",
   "polkadot",

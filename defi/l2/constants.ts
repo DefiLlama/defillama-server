@@ -115,6 +115,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "5833": "formnetwork",
   "5854": "hemi-l2",
   "6063": "mxczkevm",
+  "6148": "lens",
+  "6149": "openzk",
+  "6150": "treasure",
+  "6151": "zkcandy",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -226,4 +230,8 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
   "flow": { ticker: "FLOW", address: "coingecko:flow" },
   "mxczkevm": { ticker: "MXC", address: "coingecko:mxc" },
+  // "lens": { ticker: "gho", address: "coingecko:gho" },
+  "openzk": { ticker: "OZK", address: "coingecko:openzk-network" },
+  "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
+  // "zkcandy": {}
 };

@@ -18014,8 +18014,8 @@ const data2: Protocol[] = [
   {
     id: "2147",
     name: "IPOR Derivatives",
-    address: "0x1e4746dc744503b53b4a082cb3607b169a289090",
-    symbol: "IPOR",
+    address: null,
+    symbol: "-",
     url: "https://ipor.io",
     description:
       "IPOR (Inter Protocol Over-block Rate) is a DeFi permissionless interest rate index used by IPOR Protocol (an interest rate derivative DEX). IPOR Protocol allows users to hedge their exposure by leveraging non-custodian on-chain interest rate swaps.",
@@ -26293,7 +26293,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "bitdao.js",
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     oracles: [],
     forkedFrom: [],
     governanceID: ["snapshot:bitdao.eth"],

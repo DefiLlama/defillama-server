@@ -1,5 +1,6 @@
 import * as compound from "./moneyMarkets/compound";
 import * as aave from "./moneyMarkets/aave";
+import * as euler from "./moneyMarkets/euler";
 import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
@@ -10,13 +11,14 @@ import * as graphCoins from "./markets/graphCoins";
 export default {
   ...compound.adapters,
   ...aave.adapters,
+  ...euler.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
   ...others2.adapters,
   ...graphCoins.adapters,
-  fraxtalGas: require('./other/fraxtalGas'),
+  fraxtalGas: require("./other/fraxtalGas"),
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
@@ -145,4 +147,6 @@ export default {
   convexStaked: require("./yield/convexStaked"),
   folksFinance: require("./moneyMarkets/folks-finance"),
   xlpt: require("./markets/xlpt"),
+  sundaeswapV3: require("./markets/sundaeswapv3"),
+  tempest: require("./yield/tempest"),
 };

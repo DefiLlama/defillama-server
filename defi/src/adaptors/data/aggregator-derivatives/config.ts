@@ -11,13 +11,8 @@ export default {
   //     }
   //   }
   // },
-  "mux-protocol": {
-    "id": "2254",
-    "protocolsData": {
-      "mux-protocol-agge": {
-        "id": "5054",
-      }
-    },
+  "mux-protocol-agge": {
+    "id": "5054",
   },
   "rage-trade": {
     "id": "4447",
@@ -30,11 +25,6 @@ export default {
   },
   "perpie": {
     "id": "4817",
-    protocolsData: {
-      "derivatives": {
-        "id": "4817"
-      }
-    }
   },
   "bitoro": {
     "id": "4841",

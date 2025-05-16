@@ -75,7 +75,7 @@ const data: Protocol[] = [
     name: "Curve DEX",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
-    url: "https://curve.fi",
+    url: "https://curve.finance",
     description:
       "Curve is a decentralized exchange liquidity pool on Ethereum designed for extremely efficient stablecoin trading",
     chain: "Ethereum",
@@ -88,7 +88,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
     twitter: "CurveFinance",
-    audit_links: ["https://docs.curve.fi/references/audits/"],
+    audit_links: ["https://docs.curve.finance/references/audits/"],
     oracles: [],
     language: "Vyper",
     parentProtocol: "parent#curve-finance",
@@ -2317,7 +2317,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
-      bsc: ["Chainlink"], // https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
+      bsc: ["RedStone"], // https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
       //   op_bnb: ["Binance Oracle"]
       unichain: ["RedStone"] //https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool
     },
@@ -8455,7 +8455,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tron"],
     module: "justlend.js",
     twitter: "DeFi_JUST",
-    oracles: ["WINkLink"],
+    oracles: ["Chainlink"], //https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle
     audit_links: ["https://www.justlend.link/docs/justlend_audit_en.pdf"],
     github: ["justlend"],
   },
@@ -10459,6 +10459,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "maple/index.js",
     twitter: "maplefinance",
+    oracles: ["Chainlink"], //https://maplefinance.gitbook.io/maple/technical-resources/singletons/oracles
     parentProtocol: "parent#maple-finance",
     audit_links: ["https://github.com/maple-labs/maple-core#audit-reports"],
   },
@@ -12795,7 +12796,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DeFi_JUST",
     audit_links: ["https://just.tronscan.org/docs/audit-report-just_cn.pdf"],
     listedAt: 1634757569,
-    oracles: ["WINkLink"],
+    oracles: ["Chainlink"], //https://juststable.tronscan.org/?lang=en-US#/home. Please refer to the footer in any page.
     stablecoins: ["usdj"],
   },
   {

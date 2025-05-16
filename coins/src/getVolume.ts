@@ -5,7 +5,7 @@ import { getTimestampsArray, quantisePeriod } from "./utils/timestampUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 
-const samples = 6;
+const samples = 10;
 type QueryParams = {
   coins: string[];
   period: number;
@@ -61,19 +61,10 @@ async function fetchDBData(
           timestamp,
           searchWidth,
         );
-        if (finalCoin.SK === undefined) {
-          return;
-        }
-        if (response[PKTransforms[coin.PK]] == undefined) {
-          response[PKTransforms[coin.PK]] = {
-            volumes: [{ timestamp: finalCoin.SK, volume: finalCoin.volume }],
-          };
-        } else {
-          response[PKTransforms[coin.PK]].prices.push({
-            timestamp: finalCoin.SK,
-            volume: finalCoin.volume,
-          });
-        }
+        if (finalCoin.SK === undefined) return;
+        if (response[PKTransforms[coin.PK]] == undefined)
+          response[PKTransforms[coin.PK]] = [finalCoin.volume];
+        else response[PKTransforms[coin.PK]].push(finalCoin.volume);
       }),
     );
   });
@@ -81,20 +72,24 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-function calcPercentages(response: any) {
+
+function calcAverage(response: any) {
   let results = {} as VolumeResponse;
 
   Object.keys(response).map((c) => {
-    const data = response[c].prices;
-    if (data.length < samples * 0.7)
+    if (response[c].length < samples * 0.7)
       return new Error(`unavailable for this time period`);
 
-    const aggregateVolume = data.reduce((p: number, c: any) => p + c.volume, 0);
-    results[c] = aggregateVolume / data.length;
+    const aggregateVolume = response[c].reduce(
+      (p: number, c: number) => p + c,
+      0,
+    );
+    results[c] = aggregateVolume / response[c].length;
   });
 
   return results;
 }
+
 const handler = async (event: any): Promise<IResponse> => {
   const params = formParamsObject(event);
   const timestamps = getTimestampsArray(
@@ -112,15 +107,10 @@ const handler = async (event: any): Promise<IResponse> => {
   );
   return successResponse(
     {
-      coins: calcPercentages(response),
+      coins: calcAverage(response),
     },
     3600,
   ); // 1 hour cache
 };
 
 export default wrap(handler);
-
-// handler({
-//   pathParameters: { coins: "coingecko:bitcoin" },
-//   queryStringParameters: { period: "1h" },
-// }); // ts-node coins/src/getVolume.ts

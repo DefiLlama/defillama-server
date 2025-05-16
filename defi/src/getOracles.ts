@@ -101,7 +101,57 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
-        if (protocol.oraclesByChain) {
+        if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
+          for (const oracleEntry of protocol.oraclesBreakdown) {
+            const oracleName = oracleEntry.name;
+            const generalStartDateStr = oracleEntry.startDate;
+            const generalEndDateStr = oracleEntry.endDate;
+
+            if (oracleEntry.chains && oracleEntry.chains.length > 0) {
+              for (const chainConfig of oracleEntry.chains) {
+                const chainName = chainConfig.chain;
+                const effectiveStartDateStr = chainConfig.startDate || generalStartDateStr;
+                const effectiveEndDateStr = chainConfig.endDate || generalEndDateStr;
+
+                let isActive = true;
+                if (effectiveStartDateStr) {
+                  const startDateTs = new Date(effectiveStartDateStr).getTime() / 1000;
+                  if (timestamp < startDateTs) {
+                    isActive = false;
+                  }
+                }
+                if (isActive && effectiveEndDateStr) {
+                  const endDateTs = new Date(effectiveEndDateStr).getTime() / 1000;
+                  if (timestamp > endDateTs) {
+                    isActive = false;
+                  }
+                }
+
+                if (isActive) {
+                  sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, item, oracleProtocols, protocol, chainName);
+                }
+              }
+            } else {
+              let isActive = true;
+              if (generalStartDateStr) {
+                const startDateTs = new Date(generalStartDateStr).getTime() / 1000;
+                if (timestamp < startDateTs) {
+                  isActive = false;
+                }
+              }
+              if (isActive && generalEndDateStr) {
+                const endDateTs = new Date(generalEndDateStr).getTime() / 1000;
+                if (timestamp > endDateTs) {
+                  isActive = false;
+                }
+              }
+
+              if (isActive) {
+                sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, item, oracleProtocols, protocol, null);
+              }
+            }
+          }
+        } else if (protocol.oraclesByChain) {
           for (const chain in protocol.oraclesByChain) {
             for (const oracle of protocol.oraclesByChain[chain]) {
               sum(sumDailyTvlsByChain, sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);

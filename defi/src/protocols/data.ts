@@ -8455,7 +8455,21 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tron"],
     module: "justlend.js",
     twitter: "DeFi_JUST",
-    oracles: ["Chainlink"], //https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle
+    oraclesBreakdown: [
+      {
+        name: 'WINkLink',
+        type: 'Primary',
+        proof: [''],
+        startDate: '2021-11-04',
+        endDate: '2025-05-15',
+      },
+      {
+        name: 'Chainlink',
+        type: 'Primary',
+        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle'],
+        startDate: '2025-05-15',
+      },
+    ],
     audit_links: ["https://www.justlend.link/docs/justlend_audit_en.pdf"],
     github: ["justlend"],
   },

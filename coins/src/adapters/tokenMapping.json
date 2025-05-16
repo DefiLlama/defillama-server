@@ -6476,6 +6476,21 @@
       "decimals": 18,
       "symbol": "USD0++.e"
     },
+    "0x035B6f6E50D8c250d80E3f919bBcC76aD2884c94": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "SolvBTC"
+    },
+    "0xb825f0997824Fe07DaB51Fa7Da9f4c864F19eb82": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
+    },
+    "0xb1987E120E827339380bf429a82550f46AcAB8b4": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 18,
+      "symbol": "weETH"
+    },
     "0x17C9D8Cef7Ef072844EEaEdE1F9f54C7E3fa8743": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -8502,7 +8517,7 @@
       "decimals": 18,
       "symbol": "DAI"
     }
-  }, 
+  },
   "xp": {
     "0x8c290B96768210Dc1Ab64970Ff62F0F97be00431": {
       "to": "coingecko#xphere",

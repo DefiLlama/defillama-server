@@ -14245,7 +14245,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.orki.finance/",
-    description: `USDK is the USD-pegged, overcollateralized and native stablecoin on Swellchain. Issued by Orki Finance and backed by LST/LRT-based assets like swETH and rswETH.`,
+    description: `Orki  is a permissionless credit protocol and the native stablecoin  of the Swellchain. Optimized for Liquid Restaked Tokens (LRTs), it leverages Liquity v2  design and Swell's  Proof of Restake for enhanced security.`,
     chain: "Swellchain",
     logo: `${baseIconsUrl}/orki-finance.jpg`,
     audits: "0",

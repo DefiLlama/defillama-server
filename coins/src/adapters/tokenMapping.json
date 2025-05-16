@@ -8502,5 +8502,12 @@
       "decimals": 18,
       "symbol": "DAI"
     }
+  }, 
+  "xp": {
+    "0x8c290B96768210Dc1Ab64970Ff62F0F97be00431": {
+      "to": "coingecko#xphere",
+      "decimals": 18,
+      "symbol": "wXP"
+    }
   }
 }

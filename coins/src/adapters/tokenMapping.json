@@ -8524,5 +8524,12 @@
       "decimals": 18,
       "symbol": "wXP"
     }
+  },
+    "xsat": {
+    "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "esBTC"
+    }
   }
 }

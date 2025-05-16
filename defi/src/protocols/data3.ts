@@ -47907,14 +47907,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4776",
-    name: "Mutuari",
+    name: "Percentme",
     address: null,
     symbol: "-",
-    url: "https://mutuari.com",
+    url: "https://percent.me",
     description:
-      "Mutuari Lending is an open source non - custodial protocol for lending and borrowing purposes that aims to redefine the way people access financial services.",
+      "Percentme Lending is an open source non - custodial protocol for lending and borrowing purposes that aims to redefine the way people access financial services.",
     chain: "Bahamut",
-    logo: `${baseIconsUrl}/mutuari.jpg`,
+    logo: `${baseIconsUrl}/percentme.svg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -47924,9 +47924,10 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "mutuari/index.js",
-    twitter: null,
+    twitter: 'percentme_com',
     audit_links: [],
     listedAt: 1718535578,
+    previousNames: ['Mutuari']
   },
   {
     id: "4777",

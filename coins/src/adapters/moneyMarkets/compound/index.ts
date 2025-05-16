@@ -12,11 +12,8 @@ export function compound(timestamp: number = 0) {
 }
 export function venus(timestamp: number = 0) {
   return Promise.all([
-    getTokenPrices(
-      "bsc",
-      "0xfd36e2c2a6789db23113685031d7f16329158384",
-      timestamp,
-    ),
+    getTokenPrices("bsc", "0xfd36e2c2a6789db23113685031d7f16329158384", timestamp,),
+    getTokenPrices("era", "0xddE4D098D9995B659724ae6d5E3FB9681Ac941B1", timestamp,),
   ]);
 }
 export function ironbank(timestamp: number = 0) {

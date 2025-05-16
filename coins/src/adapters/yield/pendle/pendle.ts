@@ -70,7 +70,9 @@ const gasMapping: { [chain: string]: string[] } = {
     "0xf7906f274c174a52d444175729e3fa98f9bde285",
     "0xcba3b226ca62e666042cb4a1e6e4681053885f75",
     "0x9e612ff1902c5feea4fd69eb236375d5299e0ffc",
+    "0x46e6b4a950eb1abba159517dea956afd01ea9497",
   ],
+  sonic: ["0x3aef1d372d0a7a7e482f465bc14a42d78f920392"],
 };
 
 const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
@@ -109,7 +111,18 @@ export default async function getTokenPrices(
     .map((l: any) => l.market)
     .filter((m: string) => !blacklist.includes(m.toLowerCase()));
 
-  if (chain == "arbitrum")
+  if (chain == "berachain")
+    unfilteredMarkets.push(
+      ...[
+        "0xd8079e0929d67390067529974b116212903cac69",
+        "0x0651c3f8ba59e312529d9a92fcebd8bb159cbaed",
+        "0xbfc42d9cb3358603e4804ac9ab54159fd5a85098",
+        "0x227d4a2e5734b500fa0bed940e4df54bdda25636",
+        "0x31ed9f16c7bbc26ae3404b14abc68adc7611b1a6",
+        "0xd8f42a92a0e2995eee9aed66d630de00a9b49e22",
+      ],
+    );
+  else if (chain == "arbitrum")
     unfilteredMarkets.push(
       ...[
         "0xe11f9786b06438456b044b3e21712228adcaa0d1",
@@ -121,7 +134,7 @@ export default async function getTokenPrices(
         "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
       ],
     );
-  if (chain == "ethereum")
+  else if (chain == "ethereum")
     unfilteredMarkets.push(
       ...[
         "0x1729981345aa5cacdc19ea9eeffea90cf1c6e28b",
@@ -156,7 +169,7 @@ export default async function getTokenPrices(
         "0x792b9ede7a18c26b814f87eb5e0c8d26ad189780",
       ],
     );
-  if (chain == "bsc")
+  else if (chain == "bsc")
     unfilteredMarkets.push(
       ...[
         "0x9daa2878a8739e66e08e7ad35316c5143c0ea7c7",
@@ -446,12 +459,17 @@ export default async function getTokenPrices(
       const customDecimals: { [SY: string]: number } = {
         "0xec30e55b51d9518cfcf5e870bcf89c73f5708f72": 8,
         "0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52": 8,
+        "0x068def65b9dbaff02b4ee54572a9fa7dfb188ea3": 3,
       };
+
+      const exceptions: string[] = [
+        "0x84ecc6be573f15991736131f924f7bf571ed3b60",
+      ];
 
       const price =
         (underlying.price * exchangeRates[m]) /
         10 **
-          (SYs[i] in customDecimals
+          (SYs[i] in customDecimals && exceptions.includes(m.toLowerCase())
             ? customDecimals[SYs[i]]
             : underlying.decimals);
 

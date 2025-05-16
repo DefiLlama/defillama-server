@@ -1,11 +1,13 @@
 import { distressedAssets } from "../adapters/other/distressed";
+import { padAddress } from "./coingeckoPlatforms";
+import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
 
 export function lowercaseAddress(coin: string) {
-  if (coin.startsWith("solana:") || coin.startsWith("eclipse:")) {
-    return coin;
-  } else if (coin.startsWith("gnosis:")) {
+  const chain = coin.substring(0, coin.indexOf(":"));
+  if (chainsThatShouldNotBeLowerCased.includes(chain)) return coin;
+  else if (chain == "gnosis")
     return coin.replace("gnosis:", "xdai:").toLowerCase();
-  }
+  else if (chain == "starknet") return `starknet:${padAddress(coin.toLowerCase())}`;
   return coin.toLowerCase();
 }
 

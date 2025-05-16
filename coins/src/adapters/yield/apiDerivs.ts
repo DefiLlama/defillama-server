@@ -126,6 +126,19 @@ const configs: { [adapter: string]: Config } = {
     decimals: "9",
     symbol: "stSUI",
   },
+  mCAKE: {
+    rate: async () => {
+      const res = await fetch(
+        "https://explorer.pancakeswap.com/api/cached/pools/stable/bsc/0xc54d35a8Cfd9f6dAe50945Df27A91C9911A03ab1",
+      ).then((r) => r.json());
+      return res.token0Price;
+    },
+    chain: "bsc",
+    address: "0x581fa684d0ec11ccb46b1d92f1f24c8a3f95c0ca",
+    underlying: "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+    decimals: "18",
+    symbol: "mCAKE",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {
@@ -161,13 +174,15 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   };
 
   const writes: Write[] = [];
-  return await getWrites({
-    underlyingChain,
-    chain,
-    timestamp,
-    pricesObject,
-    projectName,
-    writes,
-    confidence,
-  });
+  return (
+    await getWrites({
+      underlyingChain,
+      chain,
+      timestamp,
+      pricesObject,
+      projectName,
+      writes,
+      confidence,
+    })
+  ).filter((w) => !isNaN(w.price ?? NaN));
 }

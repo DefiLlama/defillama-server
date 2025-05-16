@@ -5,6 +5,7 @@ import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
 import { getUnixTimeNow } from '../../../api2/utils/time';
 import { elastic } from '@defillama/sdk';
+import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
 
 async function run() {
   const startTimeAll = getUnixTimeNow()
@@ -19,6 +20,7 @@ async function run() {
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
+    if (adapterType === AdapterType.PROTOCOLS) return;
     // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
@@ -26,7 +28,18 @@ async function run() {
 
     try {
 
-      await handler2({ adapterType })
+      let yesterdayIdSet: Set<string> = new Set()
+      let todayIdSet: Set<string> = new Set()
+
+      try {
+        const yesterdayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getYesterdayTimeS() });
+        const todayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getTodayTimeS() });
+        yesterdayIdSet = new Set(yesterdayData.map((d: any) => d.id));
+        todayIdSet = new Set(todayData.map((d: any) => d.id));
+      } catch (e) {
+        console.error("Error in getAllDimensionsRecordsOnDate", e)
+      }
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, })
 
     } catch (e) {
       console.error("error", e)
@@ -74,4 +87,22 @@ run().catch((e) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 90 minutes
+}, 1000 * 60 * 50) // 50 minutes
+
+
+function getYesterdayTimeS() {
+  const yesterday = new Date();
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+  const yyyy = yesterday.getUTCFullYear();
+  const mm = String(yesterday.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(yesterday.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function getTodayTimeS() {
+  const today = new Date();
+  const yyyy = today.getUTCFullYear();
+  const mm = String(today.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(today.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}

@@ -10,16 +10,20 @@ import {
 } from "../../utils/getLastRecord"
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
+import { getObjectKeyCount } from ".";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  restrictResponseSize?: boolean;
+  skipCachedHourlyData?: boolean;
 }
 
 
 export type CraftProtocolV2Options = CraftProtocolV2Common & {
   protocolData: Protocol;
+  getCachedProtocolData?: Function;
 }
 
 export async function craftProtocolV2({
@@ -27,24 +31,37 @@ export async function craftProtocolV2({
   useNewChainNames,
   useHourlyData,
   skipAggregatedTvl,
+  restrictResponseSize,
+  getCachedProtocolData = getProtocolAllTvlData,
+  skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology,deprecated, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
   const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
 
   if (!useHourlyData)
-    protocolCache = await getProtocolAllTvlData(protocolData, true)
+    protocolCache = await getCachedProtocolData(protocolData, true)
+
+  let _getLastHourlyRecord: any = null
+  let _getLastHourlyTokensUsd: any = null
+  let _getLastHourlyTokens: any = null
+
+  if (!isDeadProtocolOrHourly && !skipCachedHourlyData) {
+    _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
+    _getLastHourlyTokensUsd = getLastHourlyTokensUsd(protocolData as any)
+    _getLastHourlyTokens = getLastHourlyTokens(protocolData as any)
+  }
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
     getCachedMCap(protocolData.gecko_id),
-    isDeadProtocolOrHourly ? null : getLastHourlyRecord(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokensUsd(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokens(protocolData as any),
+    _getLastHourlyRecord,
+    _getLastHourlyTokensUsd,
+    _getLastHourlyTokens,
   ]);
 
   if (!useHourlyData) {
@@ -166,11 +183,7 @@ export async function craftProtocolV2({
 
   if (parentProtocolId) {
     parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
-    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).sort((a, b) => {
-      if (a.deprecated && !b.deprecated) return 1
-      if (!a.deprecated && b.deprecated) return -1
-      return (cache.tvlProtocol[b.id]?.tvl ?? 0) - (cache.tvlProtocol[a.id]?.tvl ?? 0)
-    }).map((p) => p.name);
+    childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 
   if (childProtocolsNames.length > 0 && parentName) {
@@ -193,14 +206,31 @@ export async function craftProtocolV2({
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
-  const debug_totalTime = performance.now() - debug_t0
+  // const debug_totalTime = performance.now() - debug_t0
   // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+
+
+  if (restrictResponseSize) {
+    const keyCount = getObjectKeyCount(response)
+    if (keyCount > 1.5e5) { // there are more than 150k keys
+      // console.log(`${response.name} Response size is too large: ${keyCount} keys. Limiting response size.`)
+      Object.keys(response?.chainTvls ?? {}).forEach((key) => {
+        response.chainTvls[key].tokensInUsd = null
+        response.chainTvls[key].tokens = null
+      })
+    }
+  }
 
   return response;
 }
 
 export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
-  const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
+  const sizeKey = options.restrictResponseSize ? 'smol' : 'normal'
+  const protoId = options.protocolData.id
+  const hourlyKey = options.useHourlyData ? 'hourly' : 'daily'
+  const aggKey = options.skipAggregatedTvl ? 'noAgg' : 'agg'
+  const newChainKey = options.useNewChainNames ? 'new' : 'old'
+  const id = `${protoId}-${hourlyKey}-${aggKey}-${newChainKey}-${sizeKey}`
   const CACHE_KEY = CACHE_KEYS.PROTOCOL
   return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
 }

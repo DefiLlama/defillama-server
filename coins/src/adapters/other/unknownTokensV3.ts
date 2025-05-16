@@ -38,6 +38,8 @@ const config: any = {
       "0x1A8E1Fb29479c73B215045C5Ea8367257ee16E43", // SIFU
     "0x97Ad75064b20fb2B2447feD4fa953bF7F007a706":
       "0x6dcba3657EE750A51A13A235B4Ed081317dA3066", // BERASTONE
+    "0x437cc33344a0B27A429f795ff6B469C72698B291": 
+      "0x970A7749EcAA4394C8B2Bf5F2471F41FD6b79288" // wM
   },
   kroma: {
     "0x61e0D34b5206Fa8005EC1De8000df9B9dDee23Db":
@@ -46,6 +48,10 @@ const config: any = {
   bsquared: {
     "0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2":
       "0xdc4224cea3afdddbfc6aa23ffeaa1c50a59a6493", // uBTC
+  },
+  arbitrum: {
+    "0xba3e932310cd1dbf5bd13079bd3d6bae4570886f":
+      "0x695F5B9Bc0b5A41fb4eB0B1fB5DFA0F6d389A079", // yBTC
   },
 };
 

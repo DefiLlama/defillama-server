@@ -45,10 +45,10 @@ export async function getTokenAccountBalances(
         ) {
           return;
         }
-        console.log(
-          data.data.map((i: any) => i.result.value)[i],
-          tokenAccounts[i].toString(),
-        );
+        // console.log(
+        //   data.data.map((i: any) => i.result.value)[i],
+        //   tokenAccounts[i].toString(),
+        // );
         if (allowError) return;
       }
       const {

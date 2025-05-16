@@ -1,5 +1,5 @@
 export enum CATEGORIES {
-    DEX = 'Dexes',
+    DEX = 'Dexs',
     Lending = 'Lending',
     Chain = 'Chain',
     NFT_Marketplace = 'NFT Marketplace',

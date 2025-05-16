@@ -28,6 +28,21 @@ export function curve(timestamp: number = 0) {
       "0x8b83c4aa949254895507d09365229bc3a8c7f710",
       "0x2570f1bd5d2735314fc102eb12fc1afe9e6e7193",
       "0x1d08E7adC263CfC70b1BaBe6dC5Bb339c16Eec52",
+      "0xe06a65e09ae18096b99770a809ba175fa05960e2",
+      "0x1062fd8ed633c1f080754c19317cb3912810b5e5",
+      "0x28ca243dc0ac075dd012fcf9375c25d18a844d96",
+      "0x8ffc7b89412efd0d17edea2018f6634ea4c2fcb2",
+      "0xd6982da59f1d26476e259559508f4135135cf9b8",
+      "0x189b4e49b5caf33565095097b4b960f14032c7d0",
+      "0x1ee81c56e42ec34039d993d12410d437ddea341e",
+      "0x74345504eaea3d9408fc69ae7eb2d14095643c5b",
+      "0xca554e2e2948a211d4650fe0f4e271f01f9cb5f1",
+      "0x27cb9629ae3ee05cb266b99ca4124ec999303c9d",
+      "0xd7bf9bb6bd088317effd116e2b70ea3a054cbceb",
+      "0x16b54e3ac8e3ba088333985035b869847e36e770",
+      "0x13ea95ce68185e334d3747539845a3b7643a8cab",
+      "0x5018be882dcce5e3f2f3b0913ae2096b9b3fb61f",
+      "0x52bf165abd26106d810733cc29faff68b96dece8",
     ]),
     getGaugePrices("ethereum", timestamp),
   ]);
@@ -138,6 +153,12 @@ export function curve13(timestamp: number = 0) {
     getGaugePrices("kava", timestamp),
   ]);
 }
+export function curve14(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("fraxtal", defaultRegistries, timestamp),
+    getGaugePrices("fraxtal", timestamp),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -154,4 +175,5 @@ export const adapters = {
   curve11,
   curve12,
   curve13,
+  curve14,
 };

@@ -164,14 +164,24 @@ export const chainToCoingeckoId = {
   apechain: "apechain",
   boba_bnb: "boba-bnb",
   sui: "sui",
-  sonic: "sonic"
+  sonic: "sonic",
+  abstract: "abstract",
   // dl: cg
   // chz: "chiliz",
   // stellar: "stellar",
-  // stacks: "stacks",
+  stacks: "stacks",
   // cosmos: "cosmos",
   // xrp: "xrp",
-  // hedera: "hedera-hashgraph",
+  hedera: "hedera-hashgraph",
+  bfc: "bifrost-network",
+  occ: "edu-chain",
+  wc: "world-chain",
+  soneium: "soneium",
+  Hyperliquid: "hyperevm",
+  unichain: "unichain",
+  ink: "ink",
+  swellchain: "swellchain",
+  plume_mainnet: "plume-network"
 };
 
 export default chainToCoingeckoId;

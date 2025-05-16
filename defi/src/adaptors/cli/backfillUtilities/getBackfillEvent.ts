@@ -29,7 +29,7 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.DERIVATIVES]: 'dv',
     [AdapterType.OPTIONS]: 'dv',
     [AdapterType.PROTOCOLS]: 'dv',
-    [AdapterType.ROYALTIES]: 'dv',
+    // [AdapterType.ROYALTIES]: 'dv',
     [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
 }
 
@@ -82,7 +82,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             else if (volume instanceof AdaptorRecord) {
                 const cleanRecord = volume.getCleanAdaptorRecord()
                 if (
-                    // if clean data (filtering errors, posible NaN values, event data) is null
+                    // if clean data (filtering errors, possible NaN values, event data) is null
                     cleanRecord === null
                     // or sum of timestamp's dimension is 0
                     || sumAllVolumes(cleanRecord.data) === 0

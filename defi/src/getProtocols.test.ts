@@ -18,7 +18,7 @@ test("snapshots of responses", async () => {
         "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
         "audit_note": null,
         "audits": "2",
-        "category": "Dexes",
+        "category": "Dexs",
         "chain": "Ethereum",
         "change_1d": 100,
         "change_1h": 100,

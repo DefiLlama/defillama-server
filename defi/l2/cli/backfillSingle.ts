@@ -17,7 +17,7 @@ const chain: string = "Tron";
 let auth: string[] = [];
 async function iniDbConnection() {
   await setEnvSecrets();
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
+  auth = process.env.PG_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
   return postgres(auth[0], { idle_timeout: 90 });
@@ -46,7 +46,7 @@ async function getTimestampArray(): Promise<number[]> {
 }
 
 async function proc(timestamp: number) {
-  const res: any = await findTvls(timestamp);
+  const res: any = await findTvls(false, timestamp);
   if (res.Tron.total.total < 10_000_000_000) throw new Error(`bad tvl`);
   const write: any = { Tron: res.Tron, timestamp };
   await overwrite(write);

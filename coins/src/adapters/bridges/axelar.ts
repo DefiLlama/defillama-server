@@ -8,7 +8,7 @@ const chainMap: { [chain: string]: string } = {
 };
 
 export default async function bridge(): Promise<Token[]> {
-  const tokenMap = await fetch("https://api.axelarscan.io/?method=getAssets");
+  const tokenMap = await fetch("https://api.axelarscan.io/api/getAssets");
   const tokens: Token[] = [];
 
   //   const unknownChains: string[] = [];

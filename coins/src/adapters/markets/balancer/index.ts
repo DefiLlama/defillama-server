@@ -1,5 +1,6 @@
 import { getTokenPrices2 } from "./balancerV2";
 import getTokenPrices from "./balancer";
+import { balancerV3 } from "./balancerV3";
 // import linearPrices from "./linearPools";
 
 export function balancer1(timestamp: number = 0) {
@@ -59,6 +60,9 @@ export function beets(timestamp: number = 0) {
     getTokenPrices("optimism", timestamp),
   ]);
 }
+export function beracore(timestamp: number = 0) {
+  return getTokenPrices("berachain", timestamp);
+}
 
 export const adapters = {
   balancer1,
@@ -70,5 +74,7 @@ export const adapters = {
   balancer7,
   balancer8,
   beets,
+  beracore,
   linearPools,
+  balancerV3,
 };

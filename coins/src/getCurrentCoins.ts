@@ -24,7 +24,7 @@ const handler = async (
           response[PKTransforms[coin.PK]] = {
               decimals: coin.decimals,
               price: coin.price,
-              symbol: coin.symbol,
+              symbol: coin.symbol.replace(/\0/g, ""),
               timestamp: coin.timestamp,
               confidence: coin.confidence,
           }
@@ -44,7 +44,7 @@ const handler = async (
           if(isFresh(redirectedCoin.timestamp, searchWidth)){
             response[PKTransforms[ogCoin.PK]] = {
                 decimals: ogCoin.decimals,
-                symbol: ogCoin.symbol,
+                symbol: ogCoin.symbol.replace(/\0/g, ""),
                 price: redirectedCoin.price,
                 timestamp: redirectedCoin.timestamp,
                 confidence: redirectedCoin.confidence,

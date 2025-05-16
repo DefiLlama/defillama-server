@@ -1,16 +1,21 @@
 import nodeFetch from "node-fetch"
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import * as sdk from "@defillama/sdk";
+import { lowercaseAddress } from "../utils/processCoin";
 
 export const fetch = async (url: string, requestParams?: any) => nodeFetch(url, requestParams).then(r => r.json())
 
 export function formatExtraTokens(chain: string, tokens: [string, string, string, number][]) {
-  return tokens.map(([fromAddress, to, symbol, decimals]) => ({
-    from: `${chain}:${fromAddress}`,
-    to,
-    symbol,
-    decimals,
-  }))
+  return tokens.map(([fromAddress, to, symbol, decimals]) => {
+    const pk = `${chain}:${fromAddress}`;
+    const from = lowercaseAddress(pk);
+    return {
+      from,
+      to,
+      symbol,
+      decimals,
+    };
+  });
 }
 
 // TODO: inefficient, dont use, use multiCall instead

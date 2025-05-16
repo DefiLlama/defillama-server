@@ -12,6 +12,11 @@ import { PromisePool } from "@supercharge/promise-pool";
 import * as sdk from '@defillama/sdk'
 import { nullAddress } from "../../../utils/shared/constants";
 
+const metaRegistryContracts: {[chain: string]: string } = {
+  ethereum: '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC', 
+  fraxtal: '0xd125E7a0cEddF89c6473412d85835450897be6Dc'
+}
+
 async function getPools(
   api: ChainApi,
   name: string | undefined,
@@ -43,7 +48,7 @@ async function getPools(
   }
 
   async function getPoolsFromRegistryAggregator(api: ChainApi) {
-    const target = "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC";
+    const target = metaRegistryContracts[chain]
     cache.registries.crypto = target
     const pools: any = {};
     pools["crypto"] = await api.fetchList({ lengthAbi: abi.pool_count, itemAbi: abi.pool_list, target })
@@ -52,7 +57,7 @@ async function getPools(
 
   const { chain } = api;
   if (name == "pcs") return getPcsPools(api);
-  if (chain == "ethereum") return getPoolsFromRegistryAggregator(api);
+  if (chain in metaRegistryContracts) return getPoolsFromRegistryAggregator(api);
   const registries: string[] = chain == "bsc" ? bscRegistries : (
     await api.multiCall({
       target: contracts[chain].addressProvider,

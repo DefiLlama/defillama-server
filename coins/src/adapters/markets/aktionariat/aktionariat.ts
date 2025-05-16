@@ -47,7 +47,7 @@ export default async function getTokenPrices(
   chain: string,
   subgraph: string,
   timestamp: number,
-  ignoreAddresses: string[], // ignore stablecoin addreses
+  ignoreAddresses: string[], // ignore stablecoin addresses
 ) {
   let tokenInfos: any[];
   tokenInfos = await fetchTokensFromSubgraph(subgraph, timestamp);

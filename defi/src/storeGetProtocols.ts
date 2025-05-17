@@ -10,6 +10,7 @@ import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
+import protocols from "./protocols/data";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -29,6 +30,14 @@ export async function storeGetProtocols({
   getLastWeekTokensUsd,
   getLastMonthTokensUsd,
 }: any = {}) {
+  const idToName: Record<string, string> = {};
+  for (const p of protocols) {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  }
+  for (const parent of parentProtocolsList) {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  }
+
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
     getLastHourlyRecord,
@@ -48,12 +57,16 @@ export async function storeGetProtocols({
           getLastWeekTokensUsd,
           getLastMonthTokensUsd,
         });
+        let forkedFrom = protocol.forkedFrom;
+        if (Array.isArray(protocol.forkedFromIds)) {
+          forkedFrom = protocol.forkedFromIds.map((id) => idToName[id] || id);
+        }
         return {
           category: protocol.category,
           chains: protocol.chains,
           oracles: protocol.oracles,
           oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
-          forkedFrom: protocol.forkedFrom,
+          forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,
           name: protocol.name,

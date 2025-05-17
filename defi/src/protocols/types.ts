@@ -75,6 +75,7 @@ export interface IParentProtocol {
   twitter: string | null;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   governanceID?: Array<string>;
   github?: Array<string>;
   treasury?: string | null;

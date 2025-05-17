@@ -333,4 +333,7 @@ export default {
   "holdstation-agg": {
     id: "6178"
   },
+  "bungee-dex": {
+    id: "6187"
+  },
 } as AdaptorsConfig;

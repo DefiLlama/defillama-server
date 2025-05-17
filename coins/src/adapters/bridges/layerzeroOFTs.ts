@@ -887,6 +887,10 @@ export const OFTs: { [symbol: string]: { [chain: string]: string[] } } = {
   frxETH: {
     Fraxtal: ["\\\\n"],
   },
+  PayUSD: {
+    Ethereum: ["0xe9e8330a71912F03E54E7D93795acD9a56f070Aa"],
+    "Plume Mainnet": ["0xe9e8330a71912F03E54E7D93795acD9a56f070Aa"],
+  },
 };
 
 // let fs = require("fs");

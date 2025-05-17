@@ -10197,7 +10197,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "jito-restaking/index.js",
     twitter: "jito_sol",
-    forkedFromIds: ["SPL Stake Pool"],
+    forkedFromIds: [],
     audit_links: [
       "https://spl.solana.com/stake-pool#security-audits",
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
@@ -14325,7 +14325,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Polygon"],
     oracles: [],
-    forkedFrom: ["Solidly"],
+    forkedFromIds: ["1407"],
     module: "gt3/index.js",
     twitter: "gt3finance",
     treasury: "gt3.js",

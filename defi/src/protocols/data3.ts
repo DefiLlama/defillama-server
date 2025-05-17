@@ -41098,7 +41098,7 @@ const data3: Protocol[] = [
     category: "Services",
     chains: ["Binance", "Polygon"],
     oracles: [],
-    forkedFromIds: ["Internal"],
+    forkedFromIds: [],
     module: "stobox/index.js",
     twitter: "StoboxCompany",
     github: ["StoboxTechnologies"],

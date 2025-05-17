@@ -838,7 +838,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/crypticlabs/swerve-audit-report/blob/master/Swerve%20Finance%20Audit%20-%20by%20Cryptic%20Labs%20v3.pdf",
     ],
-    forkedFromIds: ["parent#curve-finance"],
+    forkedFromIds: ["3"],
     github: ["SwerveFinance"], //check
   },
   {
@@ -2862,7 +2862,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf",
     ],
-    forkedFromIds: ["parent#curve-finance"],
+    forkedFromIds: ["3"],
     github: ["ellipsis-finance"],
   },
   {
@@ -10980,7 +10980,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["EOS"],
     module: "ecurve/index.js",
     twitter: "DAPPAccountDAO",
-    forkedFromIds: ["parent#curve-finance"],
+    forkedFromIds: ["3"],
     deadUrl: true,
   },
   {

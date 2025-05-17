@@ -31691,7 +31691,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: ["RedStone"],
+    oracles: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/9841
     forkedFrom: [],
     module: "eigenpie/index.js",
     twitter: "Eigenpiexyz_io",

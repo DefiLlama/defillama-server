@@ -16,6 +16,7 @@ export interface Protocol {
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   module: string;
   twitter?: string | null;
   language?: string;

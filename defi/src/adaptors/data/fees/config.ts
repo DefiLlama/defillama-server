@@ -3260,4 +3260,7 @@ export default {
     "fastlane": {
         id: "6182"
     },
+    "bungee-bridge": {
+        id: "6188"
+    },
 } as AdaptorsConfig

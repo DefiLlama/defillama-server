@@ -3263,4 +3263,7 @@ export default {
     "bungee-bridge": {
         id: "6188"
     },
+    "hadouken-amm": {
+        id: "2748"
+    },
 } as AdaptorsConfig

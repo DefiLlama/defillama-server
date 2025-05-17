@@ -5313,7 +5313,7 @@ const data4: Protocol[] = [
     chains: ["Flow"],
     module: "kittypunch-stable/index.js",
     twitter: "KittyPunchXYZ",
-    forkedFromIds: ["parent#curve-finance"],
+    forkedFromIds: ["3"],
     oracles: [],
     parentProtocol: "parent#kittypunch",
     listedAt: 1739584037

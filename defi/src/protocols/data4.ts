@@ -285,7 +285,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["CORE"],
     oracles: [],
-    forkedFromIds: ["parent#gmx"],
+    forkedFromIds: ["3365"],
     module: "satoshi-perps/index.js",
     twitter: "SatoshiAppXYZ",
     audit_links: ["https://github.com/NLX-Protocol/shatoshi-perps/blob/main/audits/Verichains%20Public%20Report%20-%20Satoshi%20Perp.pdf"],
@@ -4132,7 +4132,7 @@ const data4: Protocol[] = [
         proof: ["https://soneium.blockscout.com/address/0xE71E8c6FF0066F712F885d2c3866Fdc22E3C7E4E?tab=contract_code"]
       },
     ],
-    forkedFromIds: ["parent#gmx"],
+    forkedFromIds: ["3365"],
     listedAt: 1738844419
   },
   {
@@ -4643,7 +4643,7 @@ const data4: Protocol[] = [
     category: "Algo-Stables",
     chains: ["Sonic"],
     oracles: [],
-    forkedFromIds: ["parent#tomb-finance"],
+    forkedFromIds: ["376"],
     module: "snake/index.js",
     twitter: "SnakeOnSonic",
     listedAt: 1738964053
@@ -7252,7 +7252,7 @@ const data4: Protocol[] = [
     category: "Algo-Stables",
     chains: ["Sonic"],
     module: "matrixai/index.js",
-    forkedFromIds: ["parent#tomb-finance"],
+    forkedFromIds: ["376"],
     twitter: "MatrixAIOnSonic",
     listedAt: 1741358231,
   },
@@ -8330,7 +8330,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["ZetaChain"],
     oracles: [],
-    forkedFromIds: ["parent#gmx"],
+    forkedFromIds: ["3365"],
     module: "golden-finance/index.js",
     twitter: "0xGoldenFinance",
     listedAt: 1742386544
@@ -10690,7 +10690,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Sui"],
-    forkedFromIds: ["parent#sudo-finance"],
+    forkedFromIds: ["4045"],
     oracles: [],
     module: "zo/index.js",
     twitter: "zofaiperps",

@@ -7130,6 +7130,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AccumulatedFi",
     github: ["AccumulatedFinance"],
+  },
+  {
+    id: "parent#bungee",
+    name: "Bungee",
+    url: "https://new.bungee.exchange/",
+    description: "Bungee is a liquidity marketplace built on SOCKET Protocol that lets you trade any token on any chain",
+    logo: `${baseIconsUrl}/bungee.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "BungeeExchange",
   }
 ];
 

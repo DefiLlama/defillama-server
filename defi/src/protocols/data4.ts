@@ -643,8 +643,8 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Anchor BTC",
-    chains: ["Ethereum","Binance","Bitlayer"],
+    category: "Restaking",
+    chains: ["Ethereum","Binance","Bitlayer","Berachain","Sui"],
     oracles: [],
     forkedFrom: [],
     module: "satlayer/index.js",
@@ -652,7 +652,11 @@ const data4: Protocol[] = [
     github: ["satlayer"],
     audit_links: [
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/Satlayer_audit_report_2024-08-15.pdf",
-      "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf"
+      "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf",
+      "https://github.com/satlayer/satlayer-sui/blob/main/audits/satlayer-sui-zenith-20250313.pdf",
+      "https://github.com/satlayer/satlayer-sui/blob/main/audits/satlayer-sui-asymptotic-20250314.pdf",
+      "https://github.com/satlayer/satlayer-bvs/blob/main/docs/public/audits/satlayer-core-phase-1-dedaub-20250325.pdf",
+      "https://github.com/satlayer/satlayer-bvs/blob/main/docs/public/audits/satlayer-core-phase-1-coinspect-20250404.pdf"
     ],
     listedAt: 1736176895
   },

@@ -54695,12 +54695,12 @@ const data3: Protocol[] = [
     module: "injective-orderbook/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
-    oracles: ["Stork","Pyth"],
+    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Stork",
-        type: "Primary",
-        proof: ["https://docs.helixapp.com/trading/perpetuals"]
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9709"]
       },
       {
         name: "Pyth",

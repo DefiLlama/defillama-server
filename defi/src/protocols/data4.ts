@@ -13484,7 +13484,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "CDP",
     chains: ["Bitcoin"],
     module: "yala/index.js",
     twitter: "yalaorg",

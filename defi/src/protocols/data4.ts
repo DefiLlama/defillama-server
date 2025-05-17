@@ -13491,7 +13491,7 @@ const data4: Protocol[] = [
     module: "yala/index.js",
     twitter: "yalaorg",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/9788
     github: ["yalaorg"],
     audit_links: ["https://docs.yala.org/security-audits"],
     listedAt: 1746625641

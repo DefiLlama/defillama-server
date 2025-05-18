@@ -3269,4 +3269,13 @@ export default {
     "ivx": {
         id: "6177"
     },
+    "axial": {
+        id: "845"
+    },
+    "mobius-money": {
+        id: "588"
+    },
+    "nerve": {
+        id: "301"
+    },
 } as AdaptorsConfig

@@ -6602,7 +6602,7 @@ const data3: Protocol[] = [
       "Stream offers exposure to market making opportunities and delta neutral strategies via decentralized strategies. In exchange for using this software, users may pay up to 10% in performance fees and Stream may keep more if it outperforms predicted APY. These strategies focus primarily on DEX and DeFi only trades. However in the event of reaching over capacity, Stream reserves the right to work with third parties such as major market makers to earn yield for users. If these positions are entered into there will be an announcement and it will be visible in the transparency dashboard.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stream-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -6612,6 +6612,7 @@ const data3: Protocol[] = [
     twitter: "StreamDefi",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://github.com/zenith-security/reports/blob/main/reports/Zenith%20Audit%20Report%20-%20Stream%20Protocol.pdf"],
     listedAt: 1684246278,
   },
   {

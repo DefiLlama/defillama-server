@@ -11386,6 +11386,14 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Tron"],
     oracles: ["Chainlink"], //https://stusdt.io/#/home. Please refer to the footer in anny page of the UI
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],
+        startDate: '2024-10-31',
+      },
+    ],
     forkedFrom: [],
     module: "stUSDT/index.js",
     twitter: "stusdtio",

@@ -7168,6 +7168,7 @@ const data: Protocol[] = [
     gecko_id: "hop-protocol",
     cmcId: "20547",
     category: "Cross Chain Bridge",
+    forkedFromIds: ["202"],
     chains: ["Ethereum", "Polygon", "xDai", "Optimism", "Arbitrum"],
     module: "hop",
     treasury: "hop.js",

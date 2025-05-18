@@ -3266,4 +3266,7 @@ export default {
     "hadouken-amm": {
         id: "2748"
     },
+    "ivx": {
+        id: "6177"
+    },
 } as AdaptorsConfig

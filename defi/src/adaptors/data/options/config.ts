@@ -87,5 +87,8 @@ export default {
     },
     "premia-v3": {
         id: "3497"
-    }
+    },
+    "ivx": {
+        id: "6177"
+    },
 } as AdaptorsConfig

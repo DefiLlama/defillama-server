@@ -7092,6 +7092,26 @@
       "to": "coingecko#liquid-crypto",
       "decimals": 18,
       "symbol": "LQDX"
+    },
+    "0x8C4aCd74Ff4385f3B7911432FA6787Aa14406f8B": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x8201c02d4ab2214471e8c3ad6475c8b0cd9f2d06": {
+      "to": "coingecko#usdc",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0x5501a36b1313ac5d27e85418acd2aa4564f50b44": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0x0Fa205c0446cD9EeDCc7538c9E24BC55AD08207f": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
     }
   },
   "shido": {

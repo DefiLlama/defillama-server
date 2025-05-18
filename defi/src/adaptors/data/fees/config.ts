@@ -2636,9 +2636,9 @@ export default {
     "syncswap-v3": {
         id: "5982"
     },
-    "oxfun": {
-        id: "6699" // chainId
-    },
+    // "oxfun": {  // it is a cex and fees cant be verified on chain
+    //     id: "6699" // chainId  
+    // },
     "verus": {
         id: "5601"
     },

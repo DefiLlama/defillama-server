@@ -64,7 +64,9 @@ export async function storeGetProtocols({
         return {
           category: protocol.category,
           chains: protocol.chains,
-          oracles: protocol.oracles,
+          oracles: protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0
+            ? protocol.oraclesBreakdown.map((x) => x.name)
+            : protocol.oracles,
           oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
           forkedFrom,
           listedAt: protocol.listedAt,

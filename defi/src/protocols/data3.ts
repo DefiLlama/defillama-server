@@ -37475,7 +37475,7 @@ const data3: Protocol[] = [
     name: "Curve LlamaLend",
     address: "0xd533a949740bb3306d119cc777fa900ba034cd52",
     symbol: "CRV",
-    url: "https://lend.curve.finance/",
+    url: "https://www.curve.finance/lend/ethereum/markets/",
     description: `Curve's isolated lending market infrastructure enables users to borrow or lend using stablecoin $crvUSD along with permissionless markets created from crypto-tokenized collaterals, where markets may be created permissionlessly. Positions are managed passively: if the collateral's price decreases, the system automatically sells off collateral in a ‘soft liquidation mode’. If the collateral's price increases, the system recovers the collateral.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/curve-llamalend.jpg`,

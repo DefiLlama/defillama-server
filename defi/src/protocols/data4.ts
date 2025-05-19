@@ -14453,7 +14453,7 @@ const data4: Protocol[] = [
     twitter: "phantom",
     listedAt: 1747659045,
   },
-    {
+  {
     id: "6190",
     name: "USD AI",
     address: null,
@@ -14474,6 +14474,26 @@ const data4: Protocol[] = [
     twitter: "USDai_Official",
     listedAt: 1747659245,
   },
-
+  {
+    id: "6191",
+    name: "v60",
+    address: null,
+    symbol: "-",
+    url: "https://v60.io/",
+    description: `Fast, cost-effictive, and scalable decentralized trading. First DEX built on @prom_io.`,
+    chain: "Prom",
+    logo: `${baseIconsUrl}/v60.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Prom"],
+    oracles: [],
+    forkedFromIds: ["2197"],
+    module: "v60/index.js",
+    twitter: "v60dex",
+    listedAt: 1747666194,
+  },
 ];
 export default data4;

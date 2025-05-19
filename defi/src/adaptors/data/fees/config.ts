@@ -3293,4 +3293,7 @@ export default {
     "takara-lend": {
         id: "5783"
     },
+    "worldle": {
+        id: "6192"
+    },
 } as AdaptorsConfig

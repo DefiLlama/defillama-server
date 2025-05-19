@@ -2792,4 +2792,7 @@ export default {
     "nerve": {
         id: "301"
     },
+    "minmax": {
+        id: "826"
+    },
 } as AdaptorsConfig

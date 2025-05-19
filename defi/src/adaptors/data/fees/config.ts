@@ -3278,4 +3278,19 @@ export default {
     "nerve": {
         id: "301"
     },
+    "minmax": {
+        id: "826"
+    },
+    "flowx-v3": {
+        id: "4582"
+    },
+    "flowx-finance": {
+        id: "3196"
+    },
+    "roots": {
+        id: "6166"
+    },
+    "takara-lend": {
+        id: "5783"
+    },
 } as AdaptorsConfig

@@ -21936,7 +21936,8 @@ const data2: Protocol[] = [
   },
   {
     id: "2314",
-    name: "Gate-io",
+    name: "Gate",
+    previousNames: ["Gate-io"],
     address: null,
     symbol: "-",
     url: "https://www.gate.com",

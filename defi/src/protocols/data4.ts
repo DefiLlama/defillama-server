@@ -14367,7 +14367,7 @@ const data4: Protocol[] = [
     name: "Hyperstable",
     address: "hyperliquid:0x28245AB01298eaEf7933bC90d35Bd9DbCA5C89DB",
     symbol: "PEG",
-    url: "https://www.fastlane.xyz",
+    url: "https://hyperstable.xyz/",
     description: `Hyperstable is a crypto-backed, over-collateralized and decentralized stablecoin that's designed to trade at one US Dollar. Built on HyperEVM.`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperstable.jpg`,

@@ -3296,4 +3296,7 @@ export default {
     "worldle": {
         id: "6192"
     },
+    "rhea-lend": {
+        id: "1546"
+    },
 } as AdaptorsConfig

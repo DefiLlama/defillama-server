@@ -3620,6 +3620,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.protonloan.com/developers/audit"],
     language: "C++",
     listedAt: 1646953530,
+    parentProtocol: "parent#metalx",
   },
   {
     id: "1533",
@@ -5420,6 +5421,7 @@ const data2: Protocol[] = [
     twitter: "MetalXApp",
     audit_links: ["https://drive.google.com/file/d/1sSr8DKzdHO4aV6Xeh3JaNuAkvH7Yxuqr/view?usp=sharing"],
     listedAt: 1649097710,
+    parentProtocol: "parent#metalx",
   },
   {
     id: "1610",
@@ -28974,6 +28976,7 @@ const data2: Protocol[] = [
     twitter: "MetalXApp",
     oracles: [],
     listedAt: 1677755490,
+    parentProtocol: "parent#metalx",
   },
   {
     id: "2620",

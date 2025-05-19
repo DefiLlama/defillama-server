@@ -1062,6 +1062,11 @@
     }
   },
   "arbitrum": {
+    "0x437cc33344a0b27a429f795ff6b469c72698b291": {
+      "decimals": "6",
+      "symbol": "wM",
+      "to": "coingecko#wrappedm-by-m0"
+    },
     "0x17573150d67d820542efb24210371545a4868b03": {
       "decimals": "18",
       "symbol": "alETH",

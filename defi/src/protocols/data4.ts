@@ -14503,7 +14503,7 @@ const data4: Protocol[] = [
     url: "https://world.org/ecosystem/app_c895e94c9c7d2ab9899b6083ad95e31d",
     description: `Worldle turns your daily wordle fix into real crypto rewards. Solve puzzles, build your streak, and duel others where winner takes all`,
     chain: "World Chain",
-    logo: `${baseIconsUrl}/wordle.jpg`,
+    logo: `${baseIconsUrl}/worldle.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -21944,7 +21944,7 @@ const data2: Protocol[] = [
     description:
       "Established in 2013, Gate.io is a cryptocurrency exchange serving over 22 million global users. The platform supports spot trading, futures contracts, margin trading, and wealth management products for more than 3,800 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets. Gate entities are licensed or registered in jurisdictions including Hong Kong, Gibraltar, Malta, Italy, Australia, Lithuania, Dubai DMCC, and the Bahamas",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/gate-io.jpg`,
+    logo: `${baseIconsUrl}/gate.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

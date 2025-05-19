@@ -14453,5 +14453,27 @@ const data4: Protocol[] = [
     twitter: "phantom",
     listedAt: 1747659045,
   },
+    {
+    id: "6190",
+    name: "USD.AI",
+    address: null,
+    symbol: "-",
+    url: "https://usd.ai/",
+    description: `USD.AI is a yield-bearing synthetic dollar, backed by infrastructure hardware powering compute, energy, and telecom.`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/usd.ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "usdai/index.js",
+    twitter: "USDai_Official",
+    listedAt: 1747659245,
+  },
+
 ];
 export default data4;

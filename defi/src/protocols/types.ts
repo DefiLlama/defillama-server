@@ -13,6 +13,7 @@ export interface Protocol {
   gecko_id: string | null;
   cmcId: string | null;
   category?: string;
+  tags?: string[];
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;

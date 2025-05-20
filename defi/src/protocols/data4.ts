@@ -7845,13 +7845,13 @@ const data4: Protocol[] = [
         name: "WINkLink",
         type: "Primary",
         proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],
-        endDate: '2024-10-31',
+        endDate: '2025-05-15',
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.usdd.io/developers/oraclehome","https://x.com/justinsuntron/status/1851885789116039226"],
-        startDate: '2024-10-31',
+        startDate: '2025-05-15',
       },
     ],
     listedAt: 1741877201

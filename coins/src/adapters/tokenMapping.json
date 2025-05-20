@@ -6603,6 +6603,16 @@
     }
   },
   "stellar": {
+    "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA": {
+      "to": "coingecko#stellar",
+      "decimals": 7,
+      "symbol": "XLM"
+    },
+    "CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "USDC"
+    },
     "CDTKPWPLOURQA2SGTKTUQOWRCBZEORB4BWBOMJ3D3ZTQQSGE5F6JBQLV": {
       "to": "coingecko#euro-coin",
       "decimals": 7,
@@ -6612,6 +6622,11 @@
       "to": "coingecko#aquarius",
       "decimals": 7,
       "symbol": "AQUA"
+    },
+    "CD25MNVTZDL4Y3XBCPCJXGXATV5WUHHOWMYFF4YBEGU5FCPGMYTVG5JY": {
+      "to": "coingecko#blend",
+      "decimals": 7,
+      "symbol": "BLND"
     },
     "XLM": {
       "to": "coingecko#stellar",

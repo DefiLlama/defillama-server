@@ -13989,7 +13989,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.jito.network/",
     description:
-      "Jito MEV Tips are an off-chain, validator-directed tipping mechanism within the Solana blockchain ecosystem. They enable users—particularly high-frequency traders, arbitrage bots, and DeFi applications—to pay validators running the Jito-Solana client for prioritized transaction inclusion. This system operates alongside Solana’s native priority fees, offering more deterministic and efficient transaction ordering.",
+      "Jito's block engine aims to responsibly manage MEV on Solana by minimizing its negative impact on network performance, promoting decentralization through transparency and open tools, and fairly distributing MEV rewards to validators and users",
     chain: "Solana",
     logo: `${baseIconsUrl}/jito-mev-tips.jpg`,
     audits: "0",

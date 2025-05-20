@@ -21796,7 +21796,7 @@ const data2: Protocol[] = [
     symbol: "JTO",
     //assetToken: "JitoSOL", // gives JTO price to jitoSOL
     url: "https://jito.network",
-    description: "MEV-Boosted Staking Rewards",
+    description: "JitoSOL is the first liquid staking derivative on Solana to include MEV rewards. Tracks the price of SOL while accruing staking and MEV rewards. Yield is accrued in the price so it will steadily appreciate vs. SOL",
     chain: "Solana",
     logo: `${baseIconsUrl}/jito-liquid-staking.png`,
     audits: "2",

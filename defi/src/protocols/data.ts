@@ -12813,6 +12813,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"], //https://juststable.tronscan.org/?lang=en-US#/home. Please refer to the footer in any page.
     oraclesBreakdown: [
       {
+        name: "WINkLink",
+        type: "Primary",
+        proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],
+        endDate: '2024-10-31',
+      },
+      {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],

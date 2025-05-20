@@ -11388,6 +11388,12 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"], //https://stusdt.io/#/home. Please refer to the footer in anny page of the UI
     oraclesBreakdown: [
       {
+        name: "WINkLink",
+        type: "Primary",
+        proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],
+        endDate: '2024-10-31',
+      },
+      {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://juststable.tronscan.org/?lang=en-US#/home","https://x.com/justinsuntron/status/1851885789116039226"],

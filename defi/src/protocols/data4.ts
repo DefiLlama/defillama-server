@@ -14927,7 +14927,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum", "Base", "Swellchain"],
+    chains: ["Ethereum", "Base"],
     oracles: [],
     forkedFrom: [],
     module: "steakhouse/index.js",

@@ -19360,7 +19360,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Prediction Market",
-    chains: ["Binance", "Polygon", "Nibiru"],
+    chains: ["Binance", "Polygon"],
     module: "prdt/index.js",
     twitter: "PRDT_Finance",
     forkedFrom: [],

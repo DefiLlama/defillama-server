@@ -93,6 +93,24 @@ function sum(
   oracleProtocols[oracle].add(protocol.name);
 }
 
+function isActive(timestamp: number, startDateStr?: string, endDateStr?: string): 'active' | 'inactive' | 'not-started' {
+  if (startDateStr) {
+    const startTimestamp = new Date(startDateStr).getTime() / 1000;
+    if (timestamp < startTimestamp) {
+      return 'not-started';
+    }
+  }
+
+  if (endDateStr) {
+    const endTimestamp = new Date(endDateStr).getTime() / 1000;
+    if (timestamp > endTimestamp) {
+      return 'inactive';
+    }
+  }
+
+  return 'active';
+}
+
 export async function getOraclesInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const sumDailyTvlsByChain = {} as SumDailyTvls;
@@ -103,6 +121,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
       try {
         if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
           const activeOracles: Array<{ name: string, type: string, chain: string | null }> = [];
+          const inactiveAggregators: Array<{ name: string, type: string, chain: string | null }> = [];
 
           for (const oracleEntry of protocol.oraclesBreakdown) {
             const oracleName = oracleEntry.name;
@@ -115,61 +134,62 @@ export async function getOraclesInternal({ ...options }: any = {}) {
                 const chainName = chainConfig.chain;
                 const effectiveStartDateStr = chainConfig.startDate || generalStartDateStr;
                 const effectiveEndDateStr = chainConfig.endDate || generalEndDateStr;
-
-                let isActive = true;
-                if (effectiveStartDateStr) {
-                  const startDateTs = new Date(effectiveStartDateStr).getTime() / 1000;
-                  if (timestamp < startDateTs) {
-                    isActive = false;
+                const status = isActive(timestamp, effectiveStartDateStr, effectiveEndDateStr);
+                if (status === 'not-started') continue;
+                if (status === 'inactive') {
+                  if (oracleType === 'Aggregator') {
+                    inactiveAggregators.push({ name: oracleName, type: oracleType, chain: chainName });
+                  } else {
+                    const zeroItem: Item = {};
+                    for (const key in item) {
+                      zeroItem[key] = 0;
+                    }
+                    sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, zeroItem, oracleProtocols, protocol, chainName);
                   }
-                }
-                if (isActive && effectiveEndDateStr) {
-                  const endDateTs = new Date(effectiveEndDateStr).getTime() / 1000;
-                  if (timestamp > endDateTs) {
-                    isActive = false;
-                  }
-                }
-
-                if (isActive) {
+                } else {
                   activeOracles.push({ name: oracleName, type: oracleType, chain: chainName });
                 }
               }
             } else {
-              let isActive = true;
-              if (generalStartDateStr) {
-                const startDateTs = new Date(generalStartDateStr).getTime() / 1000;
-                if (timestamp < startDateTs) {
-                  isActive = false;
+              const status = isActive(timestamp, generalStartDateStr, generalEndDateStr);
+              if (status === 'not-started') continue;
+              if (status === 'inactive') {
+                if (oracleType === 'Aggregator') {
+                  inactiveAggregators.push({ name: oracleName, type: oracleType, chain: null });
+                } else {
+                  const zeroItem: Item = {};
+                  for (const key in item) {
+                    zeroItem[key] = 0;
+                  }
+                  sum(sumDailyTvlsByChain, sumDailyTvls, oracleName, timestamp, zeroItem, oracleProtocols, protocol, null);
                 }
-              }
-              if (isActive && generalEndDateStr) {
-                const endDateTs = new Date(generalEndDateStr).getTime() / 1000;
-                if (timestamp > endDateTs) {
-                  isActive = false;
-                }
-              }
-
-              if (isActive) {
+              } else {
                 activeOracles.push({ name: oracleName, type: oracleType, chain: null });
               }
             }
           }
 
           const primaryOracles = activeOracles.filter(o => o.type === 'Primary');
-          const aggregatorOracles = activeOracles.filter(o => o.type === 'Aggregator');
-          const numAggregators = aggregatorOracles.length;
-
           for (const o of primaryOracles) {
             sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, item, oracleProtocols, protocol, o.chain);
           }
-          if (numAggregators > 0) {
+
+          const activeAggregators = activeOracles.filter(o => o.type === 'Aggregator');
+          if (activeAggregators.length > 0) {
             const splitItem: Item = {};
             for (const key in item) {
-              splitItem[key] = item[key] / numAggregators;
+              splitItem[key] = item[key] / activeAggregators.length;
             }
-            for (const o of aggregatorOracles) {
+            for (const o of activeAggregators) {
               sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, splitItem, oracleProtocols, protocol, o.chain);
             }
+          }
+          for (const o of inactiveAggregators) {
+            const zeroItem: Item = {};
+            for (const key in item) {
+              zeroItem[key] = 0;
+            }
+            sum(sumDailyTvlsByChain, sumDailyTvls, o.name, timestamp, zeroItem, oracleProtocols, protocol, o.chain);
           }
         } else if (protocol.oraclesByChain) {
           for (const chain in protocol.oraclesByChain) {

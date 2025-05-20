@@ -6842,7 +6842,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#jito",
     name: "Jito",
     url: "https://jito.network",
-    description: "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+    description: "Jito is a Solana infrastructure provider offering a suite of products",
     logo: `${baseIconsUrl}/jito.png`,
     gecko_id: "jito-governance-token",
     cmcId: null,

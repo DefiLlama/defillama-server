@@ -286,16 +286,33 @@ function table(data, columns, title = '') {
   fs.appendFileSync(outputFile, tableString + '\n', 'utf8');
 
 
+
   function tableToString(data, columns) {
     let tableString = '';
 
     // Add the header row
-    tableString += columns.join(' | ') + '\n';
-    tableString += columns.map(() => '---').join(' | ') + '\n';
+    // tableString += columns.join(' | ') + '\n';
+    // tableString += columns.map(() => '---').join(' | ') + '\n';
+    const headerObject = {}
+    const headerObject1 = {}
+    columns.forEach((col) => {
+      headerObject[col] = col
+      headerObject1[col] = '---'
+    })
+    data.unshift(headerObject1)
+    data.unshift(headerObject)
+    // Calculate the maximum width for each column
+    const columnWidths = columns.map((col) =>
+      Math.max(col.length, ...data.map((row) => (row[col] !== undefined ? String(row[col]).length : 0)))
+    );
 
     // Add the data rows
-    data.forEach(row => {
-      const tableRow = columns.map(col => row[col] !== undefined ? row[col] : '').join(' | ');
+    data.forEach((row) => {
+      // Format the row with padded values
+      const tableRow = columns.map((col, index) => {
+        const cell = row[col] !== undefined ? String(row[col]) : '';
+        return cell.padEnd(columnWidths[index], ' ');
+      }).join(' | ');
       tableString += tableRow + '\n';
     });
 

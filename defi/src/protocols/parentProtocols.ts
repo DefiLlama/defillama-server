@@ -7144,10 +7144,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#metalx",
-    name: "Metal X",
+    name: "MetalX",
     url: "https://metalx.com/",
     description: "Metal X allows users to trade all available cryptos on the exchange and offers what most of the CEX's offer nowadays - Orderbook, different types of orders (Limit order, Market order, Stop loss order, Take profit order,) and trading view chart integration",
-    logo: `${baseIconsUrl}/metal-x.jpg`,
+    logo: `${baseIconsUrl}/metalx.jpg`,
     gecko_id: null, 
     cmcId: null,
     chains: [],

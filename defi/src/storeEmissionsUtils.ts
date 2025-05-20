@@ -35,6 +35,7 @@ async function aggregateMetadata(
   const pData = findPId(cgId, pId?.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
   const id = pData ? pData.name : cgId ? cgId : protocolName;
   let defillamaIds = [rawData.metadata.protocolIds?.[0]].filter(Boolean)
+  const protocolCategory = protocols.find(p => p.id === pId || p.parentProtocol === pId)?.category;
   //transform parent#id to ids
   if (pId?.startsWith("parent#")) {
     const childIds = protocols
@@ -101,6 +102,7 @@ async function aggregateMetadata(
       futures,
       defillamaIds,
       categories: rawData.categories,
+      protocolCategory
     },
     id,
   };
@@ -199,6 +201,7 @@ export async function processSingleProtocol(
     name: data.name,
     defillamaId: data.defillamaIds[0] || "",
     linked: data.defillamaIds.length > 1 ? data.defillamaIds.slice(1) : [],
+    category: data.protocolCategory,
     emission24h: sum(day),
     emission7d: sum(week),
     emission30d: sum(month),

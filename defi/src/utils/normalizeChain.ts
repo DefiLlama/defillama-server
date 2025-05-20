@@ -3516,6 +3516,7 @@ export const chainCoingeckoIds = {
     geckoId: "unit0",
     symbol: "UNIT0",
     cmcId: "33785",
+    categories: ["EVM"],
     twitter: "UnitsNetwork",
     url: "https://units.network/",
   },

@@ -14725,6 +14725,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "senpaiswap",
     forkedFromIds: ["340"],
     listedAt: 1636194738,
+    deadUrl: true,
   },
   {
     id: "796",

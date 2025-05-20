@@ -6842,7 +6842,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#jito",
     name: "Jito",
     url: "https://jito.network",
-    description: "Jito is a Solana infrastructure provider offering a suite of products",
+    description: "Jito Network powers the Solana ecosystem with MEV-optimized infrastructure and deep DeFi integrations, delivering unmatched staking efficiency and liquidity",
     logo: `${baseIconsUrl}/jito.png`,
     gecko_id: "jito-governance-token",
     cmcId: null,

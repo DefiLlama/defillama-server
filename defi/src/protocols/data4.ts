@@ -14934,5 +14934,26 @@ const data4: Protocol[] = [
     twitter: "SteakhouseFi",
     listedAt: 1747736199
   },
+    {
+    id: "6213",
+    name: "Tulipa Capital",
+    address: null,
+    symbol: "-",
+    url: "https://www.tulipa.capital",
+    description: `Tulipa Capital is dedicated to revolutionizing the crypto markets with transparency, efficiency, and proven resilience. Our advanced strategies and commitment to innovation empower institutional investors to deploy capital at scale.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tulipa-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum", "Berachain", "BOB", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tulip-capital/index.js",
+    twitter: "tulipacapital",
+    listedAt: 1747736624
+  },
 ];
 export default data4;

@@ -34,6 +34,16 @@ async function aggregateMetadata(
   const cgId = getCgId(rawData.metadata.token) ?? pData0?.gecko_id;
   const pData = findPId(cgId, pId?.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
   const id = pData ? pData.name : cgId ? cgId : protocolName;
+  let defillamaIds = [rawData.metadata.protocolIds?.[0]].filter(Boolean)
+  //transform parent#id to ids
+  if (pId?.startsWith("parent#")) {
+    const childIds = protocols
+    .filter(protocol => protocol.parentProtocol === pId)
+    .map(protocol => protocol.id);
+
+    defillamaIds = childIds.length ? childIds : [];
+  }
+
 
   const factories: string[] = ["daomaker"];
   if (factories.includes(protocolName) && !(pData || cgId))
@@ -89,6 +99,7 @@ async function aggregateMetadata(
       name,
       gecko_id,
       futures,
+      defillamaIds,
       categories: rawData.categories,
     },
     id,
@@ -185,12 +196,15 @@ export async function processSingleProtocol(
   });
 
   const breakdown = {
+    name: data.name,
+    defillamaId: data.defillamaIds[0] || "",
+    linked: data.defillamaIds.length > 1 ? data.defillamaIds.slice(1) : [],
     emission24h: sum(day),
     emission7d: sum(week),
     emission30d: sum(month),
   };
 
-  if (sum(Object.values(breakdown)) > 0) emissionsBrakedown[sluggifiedId] = breakdown;
+  if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) emissionsBrakedown[sluggifiedId] = breakdown;
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 

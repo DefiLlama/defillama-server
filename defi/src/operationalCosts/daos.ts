@@ -51,10 +51,10 @@ export default [
         sources: ["https://lookerstudio.google.com/u/0/reporting/cb74b814-7ce1-4449-88e5-eac57637b934/page/ZK0YC"],
         headcount: 31,
         annualUsdCost: {
-            salaries: 257507*12,
+            salaries: 580392,
         },
-        notes: ["Using data from March 2023"],
-        lastUpdate: "2023-04-29"
+        notes: ["Using FY2024 data from Looker Studio"],
+        lastUpdate: "2025-05-20"
     },
     {
         protocolId: "326", // beefy

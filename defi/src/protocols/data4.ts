@@ -4019,7 +4019,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.solera.market/",
-    description: "Solera is credit and lending hub for crypto and RWAs, backed by Plume Network",
+    description: "The Credit Hub Bridging Real World Asset Yields to DeFi",
     chain: "Plume (Deprecated)",
     logo: `${baseIconsUrl}/solera.png`,
     audits: "2",
@@ -4027,9 +4027,9 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Plume (Deprecated)"],
+    chains: ["Plume (Deprecated)", "Plume Mainnet"],
     module: "solera/index.js",
-    twitter: "soleramarkets",
+    twitter: "SoleraLabs",
     oracles: ["Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
     forkedFromIds: ["1599"],
     audit_links: [

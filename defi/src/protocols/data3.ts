@@ -59562,7 +59562,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    tags: ["Treasury Bills", "Money Market Funds"], 
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

@@ -1412,6 +1412,10 @@ export const chainCoingeckoIds = {
     symbol: "ECH",
     cmcId: "20047",
     categories: ["EVM", "Cosmos"],
+    parent: {
+      chain: "Initia", 
+      types: ["L2"]
+    }
   },
   "MultiVAC": {
     geckoId: "multivac",

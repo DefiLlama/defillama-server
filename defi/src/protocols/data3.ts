@@ -64468,7 +64468,7 @@ const data3_2: Protocol[] = [
     category: "Launchpad",
     chains: ["XDC"],
     module: "bbbpump/index.js",
-    twitter: "bbbpumpdotfun",
+    twitter: "bbbpump",
     listedAt: 1734289678
   },
   {

@@ -58825,7 +58825,8 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "truemarkets/index.js",
     twitter: "Truemarketsorg",
-    listedAt: 1729254083
+    listedAt: 1729254083,
+    treasury: 'truemarkets.js'
   },
   {
     id: "5252",

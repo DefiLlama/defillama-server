@@ -119,13 +119,13 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
     const now = new Date().getTime() / 1000;
 
     emissionData.documentedData.data.forEach(
-      (chart: { data: Array<{ timestamp: number; unlocked: number }>; label: string }) => {
+      (chart: { data: Array<{ timestamp: number; rawEmission: number }>; label: string }) => {
         if (!incentiveCtegoriesNames?.includes(chart.label)) return;
         chart.data
           .filter((val) => val.timestamp < currDate)
           .forEach((val) => {
             if (val.timestamp < now)
-              unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.unlocked;
+              unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.rawEmission;
           });
       },
       {}

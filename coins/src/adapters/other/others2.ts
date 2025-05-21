@@ -73,6 +73,23 @@ async function wSTBT(timestamp: number = 0) {
   });
 }
 
+async function feUBTC(timestamp: number = 0) {
+  const chain = "hyperliquid";
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
+  const feUBTC = "0xefbd9cfe88235f0e648aefb52c8e8dc152a9ad6f";
+  const UBTC = "0x9fdbda0a5e284c32744d2f17ee5c74b284993463";
+  const supply = (await api.call({ abi: "uint256:totalSupply", target: feUBTC })) / 1e18;
+  const balance = (await api.call({ abi: "erc20:balanceOf", params: feUBTC, target: UBTC }))/1e8
+  pricesObject[feUBTC] = { price: balance/supply, underlying:UBTC};
+  return getWrites({
+    chain,
+    timestamp,
+    pricesObject,
+    projectName: "other2",
+  });
+}
+
 async function beraborrow(timestamp: number = 0) {
   const chain = "berachain";
   const api = await getApi(chain, timestamp);
@@ -105,5 +122,5 @@ async function beraborrow(timestamp: number = 0) {
 
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT, beraborrow,
+  wstBFC, stOAS, wSTBT, beraborrow, feUBTC,
 };

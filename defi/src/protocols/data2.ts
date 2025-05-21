@@ -25826,7 +25826,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "citadao",
     cmcId: "17515",
-    category: "RWA",
+    tags: ["Real Estate"],
     chains: ["Ethereum"],
     module: "citadao/index.js",
     twitter: "citadao_io",

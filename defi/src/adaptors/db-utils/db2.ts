@@ -118,7 +118,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
 }
 
 
-export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number }) {
+export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapterType: AdapterType, timestamp?: number }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 

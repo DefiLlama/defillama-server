@@ -147,6 +147,7 @@ function createImportAdaptersJSON() {
     let data: any = {}
     protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
     writeFileSync(adaptersFile, JSON.stringify(data, null, 2))
+    // we are running this as JS file because it is faster than compiling as ts
     execSync(['node', __dirname + "/buildTvlModuleData.js", adaptersFile].join(' '), { stdio: 'inherit' })
   } catch (error) {
     console.log('Error creating import adapters JSON:', error)

@@ -68,6 +68,11 @@ export default {
   },
   "1inch-agg": {
     id: "189",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1747699200": true,
+      },
+    },
   },
   "zrx": {
     id: "4628",

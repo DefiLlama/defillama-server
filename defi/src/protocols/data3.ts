@@ -24664,7 +24664,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Pyth", "Switchboard"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oracles: ["Pyth", "Switchboard", "Chainlink"], //https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -24675,6 +24675,11 @@ const data3_1: Protocol[] = [
         name: "Switchboard",
         type: "Aggregator",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9552"]
+      },
+      {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550"]
       }
     ],
     forkedFrom: [],

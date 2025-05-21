@@ -15028,5 +15028,27 @@ const data4: Protocol[] = [
     parentProtocol: "parent#revert",
     listedAt: 1747803327
   },
+  {
+    id: "6217",
+    name: "Silent Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://ceremony.silentprotocol.org/",
+    description: `Silent Protocol is a privacy-preserving infrastructure on Ethereum that enables compliant and composable privacy for transactions and dApps. It uses the EZEE framework to separate encryption from execution, allowing private smart contract interactions. Its modular Layer 1.5 Ghost Layer, powered by zero-knowledge proofs and 0VM, supports secure private asset transfers and privacy-enabled dApp interactions via 0dapps.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/silent-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "silent/index.js",
+    twitter: "silentdao_",
+    audit_links: ["https://silent-protocol.gitbook.io/silent-protocol-1/miscellaneous/audits-and-security"],
+    listedAt: 1747865417
+  },
 ];
 export default data4;

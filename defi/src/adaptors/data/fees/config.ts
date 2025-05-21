@@ -3476,4 +3476,10 @@ export default {
     "puppyfun": {
         id: "5895"
     },
+    "kittenswap": {
+        id: "5876"
+    },
+    "kittenswap-cl": {
+        id: "6004"
+    }
 } as AdaptorsConfig

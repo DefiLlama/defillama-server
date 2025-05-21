@@ -61683,12 +61683,18 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Arbitrum"],
-    oracles: ["RedStone"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles"],
+        endDate: "2025-05-08",
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/chainlink-oracles"],
+        startDate: "2025-05-08",
       }
     ],
     forkedFrom: [],

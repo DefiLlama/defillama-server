@@ -3481,5 +3481,8 @@ export default {
     },
     "kittenswap-cl": {
         id: "6004"
-    }
+    },
+    "polygon-zkevm": {
+        id: "1101"
+    },
 } as AdaptorsConfig

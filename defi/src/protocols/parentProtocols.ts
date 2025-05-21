@@ -7077,7 +7077,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lendle",
     name: "Lendle",
-    url: "https://arena.social/",
+    url: "https://www.lendle.xyz/",
     description: "Permissionless money market that redistributes revenue to its users, paid in blue chip assets, powered by Mantle",
     logo: `${baseIconsUrl}/lendle.jpg`,
     gecko_id: "lendle",

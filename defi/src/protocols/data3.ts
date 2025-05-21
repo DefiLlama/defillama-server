@@ -41,7 +41,7 @@ import type { Protocol } from "./types";
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
 
-const data3: Protocol[] = [
+const data3_1: Protocol[] = [
   {
     id: "2701",
     name: "FairySwap V2",
@@ -33897,6 +33897,9 @@ const data3: Protocol[] = [
     parentProtocol: "parent#secta-finance",
     listedAt: 1708805907,
   },
+]
+
+const data3_2: Protocol[] = [
   {
     id: "4167",
     name: "Fluid Lending",
@@ -65727,4 +65730,5 @@ const data3: Protocol[] = [
   // Please don't add new litings here; please use data4.ts
 ];
 
+const data3 = data3_1.concat(data3_2)
 export default data3;

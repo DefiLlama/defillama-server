@@ -15047,6 +15047,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "silent/index.js",
     twitter: "silentdao_",
+    treasury: "silent-protocol.js",
     audit_links: ["https://silent-protocol.gitbook.io/silent-protocol-1/miscellaneous/audits-and-security"],
     listedAt: 1747865417
   },

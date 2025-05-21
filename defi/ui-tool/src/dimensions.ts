@@ -6,19 +6,18 @@ import { getTimestampString } from "../../src/api2/utils";
 import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
-
-const adapterTypes = Object.values(AdapterType)
+import { ADAPTER_TYPES } from "../../src/adaptors/handlers/triggerStoreAdaptorData";
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 const recordItems: any = {}
 
 export const dimensionFormChoices: any = {
-  adapterTypes,
+  adapterTypes: ADAPTER_TYPES,
   adapterTypeChoices: {},
 }
 
-adapterTypes.forEach((adapterType: any) => {
+ADAPTER_TYPES.forEach((adapterType: any) => {
   const { protocolAdaptors } = loadAdaptorsData(adapterType)
   dimensionFormChoices.adapterTypeChoices[adapterType] = protocolAdaptors.map((p: any) => p.displayName)
 })
@@ -169,7 +168,7 @@ export async function storeAllWaitingRecords(ws: any) {
   sendWaitingRecords(ws)
 }
 
-function sendWaitingRecords(ws: any) {
+export function sendWaitingRecords(ws: any) {
   ws.send(JSON.stringify({
     type: 'waiting-records',
     data: Object.values(recordItems).map(getRecordItem),

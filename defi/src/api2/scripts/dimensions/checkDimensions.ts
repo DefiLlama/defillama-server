@@ -37,7 +37,6 @@ async function run() {
   // Go over all types
   await Promise.all(ADAPTER_TYPES.map(fetchDataLast30Days))
 
-  const { protocolMap: protocolTypeProtocolMap } = loadAdaptorsData(AdapterType.PROTOCOLS)
 
   // generate summaries for all types
   await Promise.all(ADAPTER_TYPES.map(generateSummaries))
@@ -81,27 +80,16 @@ async function run() {
   }
 
   async function generateSummaries(adapterType: AdapterType) {
-    if (adapterType === AdapterType.PROTOCOLS) return;
-
+    
     const recordType = DEFAULT_CHART_BY_ADAPTOR_TYPE[adapterType]
 
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
-
-    // dex & fees sometimes share config & data, it is stored in AdapterType.PROTOCOLS
-    const includeProtocolTypeData = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType)
-    let protocolRecordData = {} as any
-    if (includeProtocolTypeData) {
-      protocolRecordData = allCache[AdapterType.PROTOCOLS].protocols
-      dimensionProtocolMap = { ...protocolTypeProtocolMap, ...dimensionProtocolMap }
-    }
 
     const adapterData = allCache[adapterType]
 
 
     const protocolSummaries = {} as any
     const parentProtocolSummaries = {} as any
-    const chainSet = new Set<string>()
-    const parentProtocolsData: { [id: string]: any } = {}
     adapterData.protocolSummaries = protocolSummaries
     adapterData.parentProtocolSummaries = parentProtocolSummaries
 
@@ -126,10 +114,9 @@ async function run() {
 
 
       const protocolId = protocolInfo.protocolType === ProtocolType.CHAIN ? protocolInfo.id2 : protocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
-      const protocolRecords = protocolRecordData[protocolId]?.records ?? {}
 
       // fetch each day's aggregate data
-      const records = { ...(adapterData.protocols[protocolId]?.records ?? {}), ...protocolRecords }
+      const records = { ...(adapterData.protocols[protocolId]?.records ?? {}),}
       dateStringArray.forEach((timeS) => {
         const record = records[timeS]
         if (!record) return;

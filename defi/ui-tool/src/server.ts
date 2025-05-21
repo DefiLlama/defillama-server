@@ -8,7 +8,7 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 })
 
-import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, storeAllWaitingRecords } from './dimensions'
+import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 
 const WS = require('ws');
 const { spawn } = require('child_process');
@@ -21,7 +21,7 @@ console.log('WebSocket server running on port 8080');
 // Start the React app
 console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
 const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-if(process.platform === 'win32') {
+if (process.platform === 'win32') {
   spawn(npmPath, ['run', 'start'], { cwd: __dirname, windowsVerbatimArguments: true, shell: true });
 } else {
   spawn(npmPath, ['run', 'start'], { cwd: __dirname });
@@ -37,6 +37,7 @@ wss.on('connection', (ws: any) => {
     type: 'init',
     data: { dimensionFormChoices }
   }));
+  sendWaitingRecords(ws);
 
   // start streaming logs to the client
   const wrappedLog = (...args: any) => {
@@ -74,6 +75,9 @@ wss.on('connection', (ws: any) => {
         break;
       case 'dimensions-refill-save-all':
         storeAllWaitingRecords(ws);
+        break;
+      case 'reload-table':
+        sendWaitingRecords(ws);
         break;
       default: console.error('Unknown message type:', data.type); break;
     }

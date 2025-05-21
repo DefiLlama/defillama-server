@@ -115,13 +115,6 @@ async function runMigrateData() {
       '1833-unidex-agg-derivative': '1833',
       '3396-logx-aggregator': '3396',
     },
-    [AdapterType.PROTOCOLS]: {
-      '1632-v2': '1632',
-      '1632-v3': '2895',
-      'parent#uniswap-v1': '2196',
-      'parent#uniswap-v2': '2197',
-      'parent#uniswap-v3': '2198',
-    },
   } as any
   for (const adapterType of ADAPTER_TYPES) {
     if (!protocolConfigAll[adapterType]) protocolConfigAll[adapterType] = {}
@@ -153,7 +146,6 @@ async function runMigrateData() {
 
   for (const adapterType of ADAPTER_TYPES) {
     newRecordMap[adapterType] = {}
-    // if (adapterType !== AdapterType.PROTOCOLS) continue;
     const dbMappingConfig = protocolConfigAll[adapterType]
     let allData = await getAllAdapterItemsInDB({ adapterType })
     console.log('data fetched', allData.length, 'adapterType', adapterType)

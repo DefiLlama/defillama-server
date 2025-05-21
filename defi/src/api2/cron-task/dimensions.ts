@@ -65,14 +65,13 @@ const timeData = {
   yesterday: getTimeData(true),
 }
 
+
 async function run() {
   // Go over all types
   const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
   await storeDimensionsCacheV2(allCache) // store the updated cache
 
-
-  const { protocolMap: protocolTypeProtocolMap } = loadAdaptorsData(AdapterType.PROTOCOLS)
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
@@ -186,7 +185,6 @@ async function run() {
   }
 
   function generateSummaries(adapterType: AdapterType) {
-    if (adapterType === AdapterType.PROTOCOLS) return;
     const timeKey1 = `data load ${adapterType}`
 
     const recordTypes = getAdapterRecordTypes(adapterType)
@@ -194,14 +192,6 @@ async function run() {
     console.time(timeKey1)
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
     console.timeEnd(timeKey1)
-
-    // dex & fees sometimes share config & data, it is stored in AdapterType.PROTOCOLS
-    const includeProtocolTypeData = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType)
-    let protocolRecordData = {} as any
-    if (includeProtocolTypeData) {
-      protocolRecordData = allCache[AdapterType.PROTOCOLS].protocols
-      dimensionProtocolMap = { ...protocolTypeProtocolMap, ...dimensionProtocolMap }
-    }
 
     const adapterData = allCache[adapterType]
     const timeKey3 = `summary ${adapterType}`
@@ -292,7 +282,6 @@ async function run() {
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
       protocol.info.defillamaId = protocol.info.protocolType === ProtocolType.CHAIN ? `chain#${protocol.info.defillamaId ?? info.id}` : protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
-      const protocolTypeRecords = protocolRecordData[dimensionProtocolId]?.records ?? {}
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
 
 
@@ -302,32 +291,10 @@ async function run() {
 
 
       if (!records)
-        records = { ...adapterTypeRecords, ...protocolTypeRecords, } // if there are duplicate records between protocol and specific adaptertype, the generic record overwrites specific record (Noticed that uniswap stores in both protocol & dex record and dex records are wrong)
+        records = adapterTypeRecords
 
       if (isBreakdownAdapter) {
-        const childProtocols = dimensionProtocolInfo.childProtocols
-
-        // generate protocol summaries for child protocols
-        childProtocols.forEach((childProtocol: any) => {
-          const versionKey = childProtocol.versionKey
-          if (!versionKey) {
-            console.log('versionKey is missing', childProtocol, dimensionProtocolInfo.name)
-            return;
-          }
-          let childProtocolRecords = extractChildRecords({ records, versionKey })
-          const uniqueChildId = childProtocol.id2
-
-          // unlikely but covering the case if we stored child protocol records directly instead of part of breakdown adapter
-          if (uniqueChildId !== dimensionProtocolId) {
-            const protocolTypeRecords = protocolRecordData[uniqueChildId]?.records ?? {}
-            const adapterTypeRecords = adapterData.protocols[uniqueChildId]?.records ?? {}
-            // console.log(protocol.info.id, protocol.info.name, 'childProtocolRecords', Object.keys(childProtocolRecords).length, 'protocolTypeRecords', Object.keys(protocolTypeRecords).length, 'adapterTypeRecords', Object.keys(adapterTypeRecords).length, versionKey)
-            childProtocolRecords = { ...protocolTypeRecords, ...adapterTypeRecords, ...childProtocolRecords }
-          }
-          // console.log('Processing child protocol', childProtocol.name, Object.values(childProtocolRecords).length, 'records')
-          addProtocolData({ protocolId: childProtocol.id2, records: childProtocolRecords, dimensionProtocolInfo: childProtocol, isParentProtocol: false, adapterType, skipChainSummary: false, })
-        })
-
+        console.log('Fix this code should not reach here, there are no more breakdown adapters')
         return;
       }
       // console.log('Processing', protocolName, Object.values(records).length, 'records')
@@ -342,7 +309,6 @@ async function run() {
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
         // we dont create summary for items in protocols instead use the fetched records for others
-        if (adapterType === AdapterType.PROTOCOLS) return;
         let { aggregated, } = record
         const timestamp = timeSToUnix(timeS)
 
@@ -432,7 +398,6 @@ async function run() {
       })
 
       for (const recordType of recordTypes) {
-        if (adapterType === AdapterType.PROTOCOLS) return;
 
         let _protocolData = protocolData[recordType]
         if (!_protocolData) continue
@@ -911,35 +876,10 @@ function getSurroundingKeysExcludingCurrent<T>(array: T[], currentIndex: number,
   return beforeCurrent.concat(afterCurrent);
 }
 
-
-function extractChildRecords({ records, versionKey }: { records: IJSON<any>, versionKey: string }) {
-  const response: IJSON<any> = {}
-  Object.entries(records).forEach(([timeS, record]: any) => {
-    const parentBreakdown = record?.breakdown
-    if (!parentBreakdown) return;
-    const aggregated: any = {}
-    // const breakdown: any = {}
-    Object.entries(parentBreakdown).forEach(([recordType, breakdownData]: any) => {
-      const childData = breakdownData[versionKey]
-      if (!childData) return;
-      aggregated[recordType] = childData
-      // breakdown[recordType] = childData
-    })
-
-    response[timeS] = {
-      aggregated,
-      // breakdown,  // we dont need breakdown data for child records since there is only that protocol
-    }
-  })
-  return response
-}
-
-
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
 async function generateDimensionsResponseFiles(cache: any) {
   for (const adapterType of ADAPTER_TYPES) {
-    if (adapterType === AdapterType.PROTOCOLS) continue
     const cacheData = cache[adapterType]
     const { protocolSummaries, parentProtocolSummaries, } = cacheData
 

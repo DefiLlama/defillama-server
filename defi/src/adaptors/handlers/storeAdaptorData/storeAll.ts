@@ -20,7 +20,6 @@ async function run() {
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
-    if (adapterType === AdapterType.PROTOCOLS) return;
     // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)

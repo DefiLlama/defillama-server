@@ -16002,7 +16002,19 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Liquidity manager",
     chains: ["Solana"],
-    oracles: ["Pyth", "Chainlink"], //https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550 https://x.com/KaminoFinance/status/1916826045333844063
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.kamino.finance/risk/oracles"],
+      },
+      {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550", "https://x.com/KaminoFinance/status/1916826045333844063"],
+        startDate: "2025-04-29",
+      },
+    ],
     forkedFrom: [],
     module: "kamino/index.js",
     twitter: "KaminoFinance",

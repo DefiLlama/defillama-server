@@ -24664,7 +24664,6 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Pyth", "Switchboard", "Chainlink"], //https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -24679,7 +24678,8 @@ const data3_1: Protocol[] = [
       {
         name: "Chainlink",
         type: "Aggregator",
-        proof: ["https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550"]
+        proof: ["https://gov.kamino.finance/t/kamino-integrates-chainlink-data-streams-for-high-quality-low-latency-market-data/550"],
+        startDate: "2025-04-29",
       }
     ],
     forkedFrom: [],

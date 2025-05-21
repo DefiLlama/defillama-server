@@ -32,11 +32,6 @@ console.info("Hello from notifyAdapterStatus");
 const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
 
 async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }) {
-  if (adaptorType === AdapterType.PROTOCOLS) {
-    console.log("skipping protocols")
-    return;
-  }
-
   const { data: parsedBody } = await axios.get('https://api.llama.fi/overview/' + adaptorType)
 
   const returnedProtocols = new Set(parsedBody.protocols.map((p: any) => p.module))

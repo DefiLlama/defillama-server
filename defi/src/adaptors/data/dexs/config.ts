@@ -2796,4 +2796,189 @@ export default {
     "minmax": {
         id: "826"
     },
+    "arthswap-v3": {
+        id: "4272",
+    },
+    "alienbase-v3": {
+        id: "3361",
+    },
+    "blasterswap": {
+        id: "4296",
+    },
+    "cleopatra-v2": {
+        id: "4286",
+    },
+    "moraswap-v3": {
+        id: "4269",
+    },
+    "infusion": {
+        id: "4294",
+    },
+    "pharaoh-v2": {
+        id: "4287"
+    },
+    "omax-swap": {
+        id: "2464",
+    },
+    "kim-exchange-v2": {
+        id: "4038",
+    },
+    "merchant-moe-liquidity-book": {
+        id: "4427",
+    },
+    "web3world": {
+        id: "4430",
+    },
+    "glyph-exchange": {
+        id: "4347",
+    },
+    "firefly": {
+        id: "4500"
+    },
+    "velodrome-slipstream": {
+        id: "4249",
+    },
+    "FeeFree": {
+        id: "4530",
+    },
+    "linehub-v3": {
+        id: "4661",
+    },
+    "physica-finance": {
+        id: "4719",
+    },
+    "bitgenie-amm": {
+        id: "4573",
+    },
+    "aerodrome-slipstream": {
+        id: "4524"
+    },
+    "capybara-exchange": {
+        id: "4747",
+    },
+    "vanillaswap-v2": {
+        id: "4600",
+    },
+    "vanillaswap-v3": {
+        id: "4601",
+    },
+    "maverick-v2": {
+        id: "4752"
+    },
+    "thruster-v3": {
+        id: "4199",
+    },
+    "thruster-v2": {
+        id: "4207",
+    },
+    "balanced": {
+        id: "448",
+    },
+    "voltage-v3": {
+        id: "4188",
+    },
+    "dusa": {
+        id: "4788",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1718841600": true,
+                "1718755200": true,
+            }
+        }
+    },
+    "traderjoe-lb-v2-2": {
+        id: "4794",
+    },
+    "carbondefi": {
+        id: "2890"
+    },
+    "glyph-exchange-v4": {
+        id: "4880"
+    },
+    "dexswap": {
+        id: "3277",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722211200": true
+            }
+        }
+    },
+    "blasterswap-v3": {
+        id: "4728",
+    },
+    "splash": {
+        id: "4712",
+    },
+    "jellyverse": {
+        id: "4772",
+    },
+    "xtrade": {
+        id: "5040"
+    },
+    "magicsea-lb": {
+        id: "4755",
+    },
+    "apexdefi": {
+        id: "5065"
+    },
+    "dtx-v3": {
+        id: "5141",
+    },
+    "scribe-exchange-v4": {
+        id: "4943",
+    },
+    "mintswap": {
+        id: "4811",
+    },
+    "nabla": {
+        id: "5309",
+    },
+    "aerodrome": {
+        id: "3450"
+    },
+    "shadow-exchange": {
+        id: "5570",
+    },
+    "holdstation-swap": {
+        id: "5493",
+    },
+    "zkswap-stable": {
+        id: "5391",
+    },
+    "zkswap-v3": {
+        id: "5392",
+    },
+    "nova-fi": {
+        id: "5677",
+    },
+    "reservoir-tools-amm": {
+        id: "5678",
+    },
+    "reservoir-tools-clmm": {
+        id: "5679",
+    },
+    "kodiak-v3": {
+        id: "5744",
+    },
+    "beralis-v3": {
+        id: "5759",
+    },
+    "rooster": {
+        id: "5704",
+    },
+    "sailfish": {
+        id: "5643",
+    },
+    "artexswap": {
+        id: "5665",
+    },
+    "mondrain": {
+        id: "5765",
+    },
+    "shadow-legacy": {
+        id: "5682"
+    },
+    "puppyfun": {
+        id: "5895"
+    },
 } as AdaptorsConfig

@@ -219,7 +219,6 @@ async function refillAllProtocols() {
 
 
   async function runAdapterType(adapterType: AdapterType) {
-    if (adapterType === AdapterType.PROTOCOLS) return;
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {
       if (!adaptorDataMap[data.id]) adaptorDataMap[data.id] = new Set()

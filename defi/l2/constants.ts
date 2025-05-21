@@ -7,6 +7,9 @@ export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 export const excludedTvlId = "5897";
 
+let notifs: number = 0;
+export const fetchNotifsSent = () => (notifs += 1);
+
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
 export const chainsWithoutCanonicalBridges: string[] = [

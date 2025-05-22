@@ -347,23 +347,51 @@
       "decimals": "6",
       "symbol": "xNIBI",
       "to": "coingecko#astrovault-xnibi"
-    }
-  },
-  "cataclysm_1": {
-    "unibi": {
-      "decimals": "6",
-      "symbol": "NIBI",
-      "to": "coingecko#nibiru"
     },
     "0x0CaCF669f8446BeCA826913a3c6B96aCD4b02a97": {
       "decimals": "18",
       "symbol": "WNIBI",
       "to": "coingecko#nibiru"
     },
+    "0xcA0a9Fb5FBF692fa12fD13c0A900EC56Bb3f0a7b": {
+      "decimals": "6",
+      "symbol": "stNIBI",
+      "to": "coingecko#stnibi"
+    },
+    "tf:nibi1udqqx30cw8nwjxtl4l28ym9hhrp933zlq8dqxfjzcdhvl8y24zcqpzmh8m:ampNIBI": {
+      "decimals": "6",
+      "symbol": "stNIBI.nibi",
+      "to": "coingecko#stnibi"
+    },
+    "0x0829F361A05D993d5CEb035cA6DF3446b060970b": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x08EBA8ff53c6ee5d37A90eD4b5239f2F85e7B291": {
       "decimals": "18",
       "symbol": "USDC.arb",
       "to": "coingecko#usd-coin"
+    },
+    "0x43F2376D5D03553aE72F4A8093bbe9de4336EB08": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xcdA5b77E2E2268D9E09c874c1b9A4c3F07b37555": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x7168634Dd1ee48b1C5cC32b27fD8Fc84E12D00E6": {
+      "decimals": "6",
+      "symbol": "AXV",
+      "to": "coingecko#astrovault"
+    },
+    "0x1429B38e58b97de646ACd65fdb8a4502c2131484": {
+      "decimals": "18",
+      "symbol": "WNIBI.omni",
+      "to": "coingecko#nibiru"
     }
   },
   "tron": {
@@ -8545,7 +8573,7 @@
       "symbol": "wXP"
     }
   },
-    "xsat": {
+  "xsat": {
     "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
       "to": "coingecko#bitcoin",
       "decimals": 18,

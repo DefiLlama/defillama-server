@@ -4235,6 +4235,16 @@ export const chainCoingeckoIds = {
     twitter: "SuperseedXYZ",
     url: "https://x-phere.com/"
   },
+  "Lens": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 232,
+    github: ['lens-protocol'],
+    twitter: "LC",
+    url: "https://lens.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -356,12 +356,12 @@
     "0xcA0a9Fb5FBF692fa12fD13c0A900EC56Bb3f0a7b": {
       "decimals": "6",
       "symbol": "stNIBI",
-      "to": "coingecko#stnibi"
+      "to": "coingecko#nibiru"
     },
     "tf:nibi1udqqx30cw8nwjxtl4l28ym9hhrp933zlq8dqxfjzcdhvl8y24zcqpzmh8m:ampNIBI": {
       "decimals": "6",
       "symbol": "stNIBI.nibi",
-      "to": "coingecko#stnibi"
+      "to": "coingecko#nibiru"
     },
     "0x0829F361A05D993d5CEb035cA6DF3446b060970b": {
       "decimals": "6",

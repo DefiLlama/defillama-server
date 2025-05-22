@@ -215,7 +215,6 @@ test("no surprise category", async () => {
     'Derivatives',
     'Payments',
     'Privacy',
-    'Staking',
     'Yield',
     'RWA',
     'Indexes',

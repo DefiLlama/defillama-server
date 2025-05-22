@@ -15809,7 +15809,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "aurora-near",
     cmcId: "14803",
-    category: "Staking",
+    category: "Farm",
     chains: ["Aurora"],
     oracles: [],
     forkedFrom: [],

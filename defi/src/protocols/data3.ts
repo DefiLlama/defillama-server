@@ -25943,8 +25943,8 @@ const data3_1: Protocol[] = [
   {
     id: "3826",
     name: "Yelay V2",
-    address: "0x40803cea2b2a32bda1be61d3604af6a814e70976",
-    symbol: "SPOOL",
+    address: "0xaee5913ffd19dbca4fd1ef6f3925ed0414407d37",
+    symbol: "YLAY",
     url: "https://www.yelay.io/",
     description:
       "Automatically optimize yield across the best DeFi platforms. Transform crypto yield into things your customers really want.",

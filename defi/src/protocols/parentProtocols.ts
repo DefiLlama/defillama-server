@@ -3303,10 +3303,10 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Automatically optimize yield across the best DeFi platforms. Transform crypto yield into things your customers really want.",
     logo: `${baseIconsUrl}/yelay-protocol.jpg`,
-    gecko_id: "spool-dao-token",
-    cmcId: "18726",
+    gecko_id: "yelay",
+    cmcId: "33754",
     chains: [],
-    github: ["SpoolFi"],
+    github: ["SpoolFi", "YieldLayer"],
     treasury: "spool-protocol.js",
     governanceID: ["snapshot:gov.spool.eth"],
     twitter: "YieldLayer",

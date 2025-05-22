@@ -33078,6 +33078,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     oraclesByChain: {
       mode: ["Api3", "RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
+      ethereum: ["eOracle"],
     },
     forkedFromIds: ["111"],
     module: "sturdy-v2/index.js",

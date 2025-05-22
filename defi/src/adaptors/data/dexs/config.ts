@@ -1533,6 +1533,11 @@ export default {
     },
     "cellana-finance": {
         id: "4194",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1747785600": true
+            }
+        }
     },
     "nile-exchange": {
         parentId: "Nile Exchange",

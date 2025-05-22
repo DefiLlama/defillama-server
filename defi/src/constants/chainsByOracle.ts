@@ -148,7 +148,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Gravity",
     "Hedera",
     "Horizen EON",
-    'IDEX',
+    "IDEX",
     "inEVM",
     "IOTA EVM",
     "Kaia",
@@ -199,7 +199,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sonic",
     "Berachain",
     "Abstract",
-    "Hyperliquid L1"
+    "Hyperliquid L1",
   ],
   "Chainlink": [
     "Ethereum",
@@ -222,7 +222,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Starknet",
     "Solana",
     "Soneium",
-    "Plume Mainnet"
+    "Plume Mainnet",
   ],
   "Switchboard": ["Solana", "Ethereum", "CORE", "Arbitrum", "OP Mainnet", "Base", "Aurora", "Aptos", "Sui"],
   "RedStone": [
@@ -304,7 +304,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Cronos zkEVM",
     "Kaia",
     "Polynomial",
-    "Plume Mainnet"
+    "Plume Mainnet",
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "OP Mainnet", "Arbitrum", "Gnosis", "Avalanche"],
   "Api3": [
@@ -345,7 +345,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Taiko",
     "X Layer",
     "Zircuit",
-    "Lumia"
+    "Lumia",
   ],
   "Band": [
     "CLV",
@@ -362,6 +362,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Findora",
     "Icon",
     "Meter",
+    "Nibiru",
     "Oasis",
     "Celo",
     "Harmony",
@@ -475,7 +476,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Scroll",
     "Berachain",
     "Plume Mainnet",
-    "Corn"
+    "Corn",
   ],
   "eOracle": [
     "Base",
@@ -487,7 +488,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Polygon zkEVM",
     "Scroll",
     "Taiko",
-    "zkLink Nova"
+    "zkLink Nova",
   ],
 };
 

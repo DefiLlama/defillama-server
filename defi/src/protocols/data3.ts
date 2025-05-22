@@ -49440,6 +49440,7 @@ const data3_2: Protocol[] = [
     twitter: "joincommonwlth",
     listedAt: 1731198987
   },
+  /* combining them under the liquid listing
   {
     id: "4840",
     name: "ether.fi Vaults", // previous ether.fi Symbiotic
@@ -49466,6 +49467,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1720019023,
   },
+  */
   {
     id: "4841",
     name: "Bitoro Network", // previous Bitoro

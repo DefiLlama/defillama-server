@@ -15102,7 +15102,7 @@ const data4: Protocol[] = [
     url: "https://goldenasset.org",
     description: `GemSwap is a project by Golden Swan Solutions that enables the tokenization of investment-grade gemstones. The Real GEM Token is 100% backed by physical gemstones, providing investors with a secure and transparent way to access this asset class`,
     chain: "Sei",
-    logo: `${baseIconsUrl}/gemswap-by-golden-swap-solutions.jpg`,
+    logo: `${baseIconsUrl}/gemswap-by-golden-swan-solutions.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

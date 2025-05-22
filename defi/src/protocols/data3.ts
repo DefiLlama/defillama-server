@@ -54091,7 +54091,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: ["Chronicle", "RedStone", "Pyth", "Chainlink"], // https://oracles.euler.finance/1
+    oracles: [], // euler does not set any oracles, they are set by the risk curators
     forkedFrom: [],
     module: "euler-v2/index.js",
     twitter: "eulerfinance",

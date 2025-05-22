@@ -60,9 +60,10 @@ export default async function fetchBridgeUsdTokenTvls(
   });
 
   const notifs = fetchNotifsSent();
-  failedDeps.map((dep: string) => (errorString = `${errorString} ${dep},`));
 
-  process.env.CHAIN_ASSET_WEBHOOK && errorString.length > 30 && notifs > 2
+  [...new Set(failedDeps)].map((dep: string) => (errorString = `${errorString} ${dep},`));
+
+  process.env.CHAIN_ASSET_WEBHOOK && errorString.length > 30 && notifs > 1
     ? await sendMessage(errorString, process.env.CHAIN_ASSET_WEBHOOK!)
     : console.log(errorString);
 

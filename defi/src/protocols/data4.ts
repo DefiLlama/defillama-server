@@ -9327,7 +9327,7 @@ const data4: Protocol[] = [
     chains: ["Binance"],
     module: "evoq/index.js",
     forkedFromIds: ["1997"],
-    oracles: [],
+    oracles: ["Pyth"],//https://docs.hyperpiexyz.io/oracle/pyth
     twitter: "Evoq_Finance",
     audit_links: [
       "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",

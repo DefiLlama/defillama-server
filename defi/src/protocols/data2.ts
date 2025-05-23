@@ -20859,7 +20859,7 @@ const data2: Protocol[] = [
         type: "Primary",
         proof: [
           "https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price",
-          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update
+          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update"
           ]
       }
     ],

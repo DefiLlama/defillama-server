@@ -12702,7 +12702,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["114"],
     oraclesByChain: {
       zklink: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      manta: ["RedStone"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
+      manta: ["eOracle"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
       scroll: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       linea: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       mode: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles

@@ -15053,7 +15053,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6218",
-    name: "SPICE Protocol",
+    name: "SPICE",
     address: null,
     symbol: "-",
     url: "http://spiceprotocol.xyz/",

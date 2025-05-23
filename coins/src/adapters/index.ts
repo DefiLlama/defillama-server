@@ -149,4 +149,5 @@ export default {
   xlpt: require("./markets/xlpt"),
   sundaeswapV3: require("./markets/sundaeswapv3"),
   tempest: require("./yield/tempest"),
+  momentum: require("./markets/momentum"),
 };

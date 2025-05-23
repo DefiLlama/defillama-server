@@ -53,7 +53,7 @@ async function storeCoinData(coinData: Write[]) {
       timestamp: c.timestamp,
       symbol: c.symbol,
       confidence: c.confidence,
-      volume: c.volume
+      volume: c.volume,
     }))
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
@@ -70,7 +70,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     PK: c.PK,
     price: c.price,
     confidence: c.confidence,
-    volume: c.volume
+    volume: c.volume,
   }));
   await Promise.all([
     produceKafkaTopics(
@@ -149,6 +149,22 @@ async function getSymbolAndDecimals(
       symbol: token.symbol,
       decimals: Number(token.decimals),
     };
+  } else if (chain == "sui") {
+    try {
+      const res = await fetch(`${process.env.SUI_RPC}`, {
+        method: "POST",
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "suix_getCoinMetadata",
+          params: [tokenAddress],
+        }),
+      }).then((r) => r.json());
+      const { symbol, decimals } = res.result;
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
   } else if (chain == "starknet") {
     try {
       const [symbol, decimals] = await Promise.all([
@@ -294,7 +310,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           timestamp: data.last_updated_at,
           symbol: idToSymbol[cgId].toUpperCase(),
           confidence: 0.99,
-          volume: data.usd_24h_vol
+          volume: data.usd_24h_vol,
         });
     });
 

@@ -9,6 +9,7 @@ import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
 import { getDisplayChainName } from "./adaptors/utils/getAllChainsFromAdaptors";
+import { protocolsIncentives } from "../emissions-adapters/no-emissions/incentives";
 
 const prefix = "coingecko:";
 
@@ -105,7 +106,8 @@ async function aggregateMetadata(
       defillamaIds,
       categories: rawData.categories,
       protocolCategory,
-      chainName
+      chainName,
+      pId
     },
     id,
   };
@@ -113,6 +115,12 @@ async function aggregateMetadata(
 
 async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggregateMetadata>>["data"]) {
   try {
+    const hasIncentives = emissionData.pId ? protocolsIncentives.includes(emissionData.pId) : false;
+    
+    if (!hasIncentives) {
+      return [];
+    }
+    
     const incentiveCtegories = ["farming"];
 
     const currDate = new Date().getTime() / 1000;

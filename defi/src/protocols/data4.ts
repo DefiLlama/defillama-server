@@ -15331,5 +15331,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#panoptic",
     listedAt: 1748034447
   },
+  {
+    id: "6231",
+    name: "OmniSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.omniswap.ai/",
+    description: "Decentralized exchange on Nibiru.",
+    chain: "Nibiru",
+    logo: `${baseIconsUrl}/omniswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Nibiru"],
+    oracles: [],
+    forkedFrom: ["2197"],
+    module: "omniswap/index.js",
+    twitter: "Omnipumpdotio",
+    listedAt: 1748034612
+  },
 ];
 export default data4;

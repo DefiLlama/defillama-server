@@ -2935,6 +2935,7 @@ export const chainCoingeckoIds = {
     cmcId: "28508",
     twitter: "NibiruChain",
     url: "https://nibiru.fi",
+    chainId: 6900,
   },
   "BSquared": {
     geckoId: null,

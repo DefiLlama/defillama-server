@@ -23045,7 +23045,7 @@ const data3_1: Protocol[] = [
     address: "cardano:asset1dr8y38xyvw96gldkvfqkj2utc53umyy4ejhe4r",
     symbol: "CSWAP",
     url: "https://cswap.fi",
-    description: "CSWAP DeFi Ecosystem Utility & Governance Token",
+    description: "A progressive DEX for the Cardano Ecosystem, merging next generation DEX capabilities with NFTfi",
     chain: "Cardano",
     logo: `${baseIconsUrl}/cswap-dex.jpg`,
     audits: "0",

@@ -15266,5 +15266,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rho",
     listedAt: 1747966849
   },
+  {
+    id: "6228",
+    name: "SMARDEX P2P Lending",
+    address: null,
+    symbol: "-",
+    url: "https://smardex.io",
+    description: `P2P Lending is a simple on-chain lending and borrowing protocol for ERC20 tokens on Ethereum. It uses a fixed-term loan model with upfront collateral to avoid liquidation risks. Borrowers create loan proposals directly on-chain, and lenders can choose to accept them—no off-chain signatures or processes are required, making the system fully decentralized`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/smardex-p2p-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "p2p-lending/index.js",
+    twitter: "SmarDex",
+    listedAt: 1747967378
+  },
 ];
 export default data4;

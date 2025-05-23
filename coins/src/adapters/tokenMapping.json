@@ -333,6 +333,11 @@
     }
   },
   "nibiru": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "NIBI",
+      "to": "coingecko#nibiru"
+    },
     "unibi": {
       "decimals": "6",
       "symbol": "NIBI",

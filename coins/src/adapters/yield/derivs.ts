@@ -387,6 +387,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x0d01dc56dcaaca66ad901c959b4011ec",
     address: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
   },
+  USH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:fetchPrice",
+        target: "0xDc4ddde1EeaF64d77B23B794b89BfBe281B5Ce35",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb",
+    address: "0x8fF0dd9f9C40a0d76eF1BcFAF5f98c1610c74Bd8",
+  },
 };
 
 export async function derivs(timestamp: number) {

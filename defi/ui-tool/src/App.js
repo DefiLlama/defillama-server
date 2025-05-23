@@ -6,9 +6,10 @@ import {
   Tabs,
   Table,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined } from '@ant-design/icons';
 
 import './App.css';
+import { Line } from '@ant-design/plots';
 
 const { Content, } = Layout;
 const { Text } = Typography;
@@ -37,9 +38,10 @@ const App = () => {
   const [dimRefillWaitingRecords, setDimRefillWaitingRecords] = useState([]);
   const [waitingRecordsShowChainColumns, setWaitingRecordsShowChainColumns] = useState(false);
   const [waitingRecordsDeletableIds, setWaitingRecordsDeletableIds] = useState([]);
+  const [waitingRecordsShowChart, setWaitingRecordsShowChart] = useState(true);
+  const [waitingRecordsSelectedChartColumn, setWaitingRecordsSelectedChartColumn] = useState('');
 
-  // WebSocket connection
-  useEffect(() => {
+  function addWebSocketConnection() {
     const ws = new WebSocket('ws://localhost:8080');
     wsRef.current = ws;
 
@@ -51,6 +53,7 @@ const App = () => {
     ws.onclose = () => {
       setIsConnected(false);
       console.log('WebSocket disconnected');
+      setTimeout(addWebSocketConnection, 1000); // Reconnect after 1 second
     };
 
     ws.onmessage = (event) => {
@@ -81,7 +84,11 @@ const App = () => {
     return () => {
       ws.close();
     };
-  }, []);
+
+  }
+
+  // WebSocket connection
+  useEffect(addWebSocketConnection, []);
 
   const clearOutput = () => {
     setOutput('');
@@ -278,17 +285,37 @@ const App = () => {
     </Form>)
   }
 
+  function printChartData(data, columnField) {
+    if (!columnField) return null;
+    data = [...data]
+    data.sort((a, b) => new Date(a.timeS) - new Date(b.timeS))
+    data = data.filter(i => i.hasOwnProperty(columnField))
+    const config = {
+      data,
+      xField: (d) => new Date(d.timeS),
+      yField: columnField,
+      colorField: 'protocolName',
+      height: 300,
+      connectNulls: { connect: false},
+    }
+    return <Line {...config} />
+  }
+
   function getWaitingRecordsTable() {
     if (!dimRefillWaitingRecords?.length) return null;
 
     const colSet = new Set(['id', 'adapterType'])
     const stringColSet = new Set(['id', 'adapterType', 'protocolName', 'timeS'])
     const columns = []
+    const chartColumnsSet = new Set([])
     dimRefillWaitingRecords.forEach(record => {
       Object.keys(record).forEach(key => {
         if (colSet.has(key)) return;
+        if (key.startsWith('_')) {
+          if (key.startsWith('_d') && key.lastIndexOf('_') === 0) chartColumnsSet.add(key);
+          return;
+        }
         if (!waitingRecordsShowChainColumns && key.includes('_')) return;
-        if (key.startsWith('_')) return;
         const column = { title: key, dataIndex: key, key, }
         if (stringColSet.has(key))
           column.sorter = (a, b) => a[key].localeCompare(b[key]);
@@ -298,6 +325,21 @@ const App = () => {
         colSet.add(key);
       });
     });
+    const chartColumns = Array.from(chartColumnsSet)
+    let selectChartElement = null;
+    let chartColumnSelected = waitingRecordsSelectedChartColumn ? waitingRecordsSelectedChartColumn : chartColumns[0];
+
+    if (chartColumns.length > 1 && waitingRecordsShowChart) {
+      selectChartElement = <Select
+        defaultValue={waitingRecordsSelectedChartColumn ? waitingRecordsSelectedChartColumn : chartColumnSelected}
+        style={{ width: 200 }}
+        onChange={setWaitingRecordsSelectedChartColumn}
+      >
+        {chartColumns.map((column) => (
+          <Option key={column} value={column}>{column}</Option>
+        ))}
+      </Select>
+    }
 
     return (
       <div>
@@ -342,6 +384,15 @@ const App = () => {
             </Button>
 
 
+            <Button
+              type="default"
+              icon={< LineChartOutlined />}
+              onClick={() => setWaitingRecordsShowChart(!waitingRecordsShowChart)}
+            >
+              {waitingRecordsShowChart ? 'Hide Chart' : 'Show Chart'}
+            </Button>
+
+            {selectChartElement}
 
 
             <Switch
@@ -353,11 +404,12 @@ const App = () => {
           </div>
         </div>
 
+        {waitingRecordsShowChart && printChartData(dimRefillWaitingRecords, chartColumnSelected)}
 
         <Table
           columns={columns}
           dataSource={dimRefillWaitingRecords}
-          pagination={{ pageSize: 50 }}
+          pagination={{ pageSize: 5000 }}
           rowKey={(record) => record.id}
           rowSelection={{
             type: 'checkbox',

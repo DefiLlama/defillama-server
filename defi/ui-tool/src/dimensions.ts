@@ -116,6 +116,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
           if (!r) return;
           recordItems[r.id] = r
         })
+      sendWaitingRecords(ws)
     })
 
 

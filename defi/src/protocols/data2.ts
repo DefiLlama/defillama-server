@@ -20847,8 +20847,22 @@ const data2: Protocol[] = [
     chains: ["Near"],
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
-    forkedFrom: [],
-    oracles: ["Pyth"], // https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update (Upgraded to Pyth Lazer for price feeds)
+    forkedFrom: [], 
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Fallback",
+        proof: ["https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price"]
+      },
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: [
+          "https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price",
+          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update
+          ]
+      }
+    ],
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,

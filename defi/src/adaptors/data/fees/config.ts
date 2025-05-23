@@ -3503,4 +3503,7 @@ export default {
     "fastjpeg": {
         id: "6229"
     },
+    "silent": {
+        id: "6217"
+    }
 } as AdaptorsConfig

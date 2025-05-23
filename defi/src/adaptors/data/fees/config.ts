@@ -3505,5 +3505,8 @@ export default {
     },
     "silent": {
         id: "6217"
-    }
+    },
+    "aftermath-fi-amm": {
+        id: "3259"
+    },
 } as AdaptorsConfig

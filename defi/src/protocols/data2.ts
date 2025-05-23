@@ -20847,9 +20847,8 @@ const data2: Protocol[] = [
     chains: ["Near"],
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
-    forkedFrom: [],
-    oracles: ["Stork", "Pyth"], 
-     oraclesBreakdown: [
+    forkedFrom: [], 
+    oraclesBreakdown: [
       {
         name: "Stork",
         type: "Fallback",
@@ -20857,7 +20856,7 @@ const data2: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Fallback",
+        type: "Primary",
         proof: ["https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price"]
       }
     ],

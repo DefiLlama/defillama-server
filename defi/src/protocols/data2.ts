@@ -20857,7 +20857,10 @@ const data2: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price"]
+        proof: [
+          "https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price",
+          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update
+          ]
       }
     ],
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],

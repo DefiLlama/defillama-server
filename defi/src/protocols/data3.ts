@@ -39561,13 +39561,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4411",
-    name: "Satoshi Protocol",
+    name: "River",
+    previousNames: ["Satoshi Protocol"],
     address: null,
     symbol: "-",
-    url: "https://satoshiprotocol.org/",
-    description: `Satoshi Protocol is the 1st universal stablecoin protocol backed by Bitcoin, using BTC as collateral to mint the native stablecoin satUSD across Bitcoin Mainnet, Layer 2s, and the EVM ecosystem.`,
+    url: "https://app.river.inc/",
+    description: `River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol`,
     chain: "BEVM",
-    logo: `${baseIconsUrl}/satoshi-protocol.png`,
+    logo: `${baseIconsUrl}/river.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,
@@ -39575,7 +39576,7 @@ const data3_2: Protocol[] = [
     category: "CDP",
     chains: [ "Bitlayer", "BOB", "Binance"],
     module: "satoshi-protocol/index.js",
-    twitter: "Satoshi_BTCFi",
+    twitter: "RiverdotInc",
     forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
@@ -39583,7 +39584,7 @@ const data3_2: Protocol[] = [
       bsc: ["eOracle"] // https://github.com/DefiLlama/defillama-server/pull/9478
     },
     github: ["Satoshi-Protocol"],
-    audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],
+    audit_links: ["https://docs.river.inc/outro/audit-reports"],
     listedAt: 1711912377,
   },
   {

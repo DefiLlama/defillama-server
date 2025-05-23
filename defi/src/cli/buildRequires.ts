@@ -59,7 +59,6 @@ const importPaths = [
     "aggregators",
     "options",
     "incentives",
-    "protocols",
     "aggregator-derivatives",
     "bridge-aggregators"
 ]

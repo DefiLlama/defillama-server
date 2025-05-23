@@ -15229,7 +15229,7 @@ const data4: Protocol[] = [
     description: `Rho Protocol is a cryptonative interest rates market. The platform uniquely offers trading of staking, lending, and perpetual future funding rates all in one venue, as well as allowing users to passively earn yield by depositing into Rho's vaults`,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/rho-protocol.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -15262,7 +15262,6 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "rho-vaults/index.js",
     twitter: "Rho_xyz",
-    audit_links: ["https://audits.oxor.io/reports/-NsF0vIwYyzQJhrgL2nf"],
     parentProtocol: "parent#rho",
     listedAt: 1747966849
   },

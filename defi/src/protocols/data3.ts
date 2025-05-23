@@ -23042,10 +23042,10 @@ const data3_1: Protocol[] = [
   {
     id: "3700",
     name: "CSWAP DEX",
-    address: "cardano:asset1vg9t6spzheltksjpsj7e7pe6pqq368askuw29y",
+    address: "cardano:asset1dr8y38xyvw96gldkvfqkj2utc53umyy4ejhe4r",
     symbol: "CSWAP",
     url: "https://cswap.fi",
-    description: "The first DEX for NFTs on Cardano. Instant Liquidity. Powered by an orderbook/AMM hybrid.",
+    description: "A progressive DEX for the Cardano Ecosystem, merging next generation DEX capabilities with NFTfi",
     chain: "Cardano",
     logo: `${baseIconsUrl}/cswap-dex.jpg`,
     audits: "0",

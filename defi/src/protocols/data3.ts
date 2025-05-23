@@ -61169,7 +61169,7 @@ const data3_2: Protocol[] = [
     module: "adrena/index.js",
     twitter: "AdrenaProtocol",
     forkedFrom: [],
-    oracles: ["Edge", "Pyth"], // https://docs.adrena.xyz/technical-documentation/oracles-and-price-feeds
+    oracles: ["Edge"],
     oraclesBreakdown: [
       {
         name: "Edge",

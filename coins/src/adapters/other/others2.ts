@@ -4,6 +4,9 @@ import { getTokenSupplies, getTokenAccountBalances, } from "../solana/utils";
 import { getApi } from "../utils/sdk";
 import { nullAddress } from "../../utils/shared/constants";
 import { getLogs } from "../../utils/cache/getLogs";
+import { getObject, } from "../utils/sui";
+import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { CoinData, Write } from "../utils/dbInterfaces";
 
 
 async function solanaAVS(timestamp: number = 0) {
@@ -35,12 +38,7 @@ async function wstBFC(timestamp: number = 0) {
   const bal = await api.call({ abi: "erc20:balanceOf", target: '0xEff8378C6419b50C9D87f749f6852d96D4Cc5aE4', params: wstBFC, });
   const supply = await api.call({ abi: "erc20:totalSupply", target: wstBFC });
   pricesObject[wstBFC] = { price: bal / supply, underlying: nullAddress };
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "other2",
-  });
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
 async function stOAS(timestamp: number = 0) {
@@ -50,12 +48,7 @@ async function stOAS(timestamp: number = 0) {
   const stOAS = "0x804c0ab078e4810edbec24a4ffb35ceb3e5bd61b";
   const rate = await api.call({ abi: "uint256:exchangeRate", target: stOAS });
   pricesObject[stOAS] = { price: rate / 1e18, underlying: nullAddress };
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "other2",
-  });
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
 async function wSTBT(timestamp: number = 0) {
@@ -65,12 +58,7 @@ async function wSTBT(timestamp: number = 0) {
   const wSTBT = "0x288a8005c53632d920045b7c7c2e54a3f1bc4c83";
   const price = await api.call({ abi: "uint256:stbtPerToken", target: wSTBT });
   pricesObject[wSTBT] = { price: price / 1e18, underlying: '0x530824DA86689C9C17CdC2871Ff29B058345b44a' };
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "other2",
-  });
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
 async function feUBTC(timestamp: number = 0) {
@@ -80,14 +68,9 @@ async function feUBTC(timestamp: number = 0) {
   const feUBTC = "0xefbd9cfe88235f0e648aefb52c8e8dc152a9ad6f";
   const UBTC = "0x9fdbda0a5e284c32744d2f17ee5c74b284993463";
   const supply = (await api.call({ abi: "uint256:totalSupply", target: feUBTC })) / 1e18;
-  const balance = (await api.call({ abi: "erc20:balanceOf", params: feUBTC, target: UBTC }))/1e8
-  pricesObject[feUBTC] = { price: balance/supply, underlying:UBTC};
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "other2",
-  });
+  const balance = (await api.call({ abi: "erc20:balanceOf", params: feUBTC, target: UBTC })) / 1e8
+  pricesObject[feUBTC] = { price: balance / supply, underlying: UBTC };
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
 async function beraborrow(timestamp: number = 0) {
@@ -99,10 +82,10 @@ async function beraborrow(timestamp: number = 0) {
   const names = await api.multiCall({ abi: 'string:name', calls: infraAssets, permitFailure: true, })
   const bbInfraWrappers = infraAssets.filter((_: any, i: number) => names[i] && names[i].startsWith('Beraborrow: '))
   const bbInfraWrapperUnderlyings = await api.multiCall({ abi: 'address:underlying', calls: bbInfraWrappers })
-  const balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: bbInfraWrapperUnderlyings.map((target: string, i: number) => ({ target, params: bbInfraWrappers[i]})) })
-  const supplies  = await api.multiCall({  abi: 'uint256:totalSupply', calls: bbInfraWrappers})
-  const tDecimals = await api.multiCall({  abi: 'uint8:decimals', calls: bbInfraWrappers})
-  const uDecimals = await api.multiCall({  abi: 'uint8:decimals', calls: bbInfraWrapperUnderlyings})
+  const balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: bbInfraWrapperUnderlyings.map((target: string, i: number) => ({ target, params: bbInfraWrappers[i] })) })
+  const supplies = await api.multiCall({ abi: 'uint256:totalSupply', calls: bbInfraWrappers })
+  const tDecimals = await api.multiCall({ abi: 'uint8:decimals', calls: bbInfraWrappers })
+  const uDecimals = await api.multiCall({ abi: 'uint8:decimals', calls: bbInfraWrapperUnderlyings })
   const pricesObject: any = {};
   bbInfraWrappers.forEach((wrapper: string, i: number) => {
     if (+supplies[i] === 0) return;
@@ -112,15 +95,26 @@ async function beraborrow(timestamp: number = 0) {
       underlying: bbInfraWrapperUnderlyings[i],
     }
   })
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "other2",
-  });
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
 export const adapters = {
   solanaAVS,
   wstBFC, stOAS, wSTBT, beraborrow, feUBTC,
+  springSUI: async (timestamp: number = 0) => {
+    if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
+      throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");
+    }
+    const chain = "sui"
+    const springSUI = '0x83556891f4a0f233ce7b05cfe7f957d4020492a34f5405b2cb9377d060bef4bf::spring_sui::SPRING_SUI'
+
+    const pool = await getObject('0x15eda7330c8f99c30e430b4d82fd7ab2af3ead4ae17046fcb224aa9bad394f6b');
+    const price = pool.fields.storage.fields.total_sui_supply / pool.fields.lst_treasury_cap.fields.total_supply.fields.value
+
+    const [basePrice]: CoinData[] = await getTokenAndRedirectData(["sui"], "coingecko", timestamp,);
+
+    const writes: Write[] = [];
+    addToDBWritesList(writes, chain, springSUI, price * basePrice.price, 9, "other2", timestamp, "other", 0.95,);
+    return writes;
+  }
 };

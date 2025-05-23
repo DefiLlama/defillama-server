@@ -2992,4 +2992,10 @@ export default {
     "kittenswap-cl": {
         id: "6004"
     },
+    "interest-protocol-stable-swap": {
+        id: "6034"
+    },
+    "gt3": {
+        id: "6184"
+    },
 } as AdaptorsConfig

@@ -3485,4 +3485,16 @@ export default {
     "polygon-zkevm": {
         id: "1101"
     },
+    "orki-finance": {
+        id: "6181"
+    },
+    "interest-protocol-stable-swap": {
+        id: "6034"
+    },
+    "metronome-synth": {
+        id: "2428"
+    },
+    "vesper": {
+        id: "220"
+    },
 } as AdaptorsConfig

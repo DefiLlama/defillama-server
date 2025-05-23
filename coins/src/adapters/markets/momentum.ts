@@ -41,5 +41,3 @@ export async function momentum(timestamp: number) {
 
   return writes;
 }
-
-momentum(0); // ts-node coins/src/adapters/markets/momentum.ts

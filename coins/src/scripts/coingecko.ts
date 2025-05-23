@@ -537,9 +537,6 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
     ).then((r) => r.json())) as Coin[];
 
-    // coins = coins.filter((c) => c.id == "stellar-synthetic-usd");
-    // if (!coins.length) process.exit(0);
-    
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
         coins.map((coin) => coin.id),

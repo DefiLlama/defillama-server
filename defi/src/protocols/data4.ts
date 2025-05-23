@@ -15287,5 +15287,26 @@ const data4: Protocol[] = [
     twitter: "SmarDex",
     listedAt: 1747967378
   },
+  {
+    id: "6229",
+    name: "FastJPEG",
+    address: null,
+    symbol: "-",
+    url: "https://fastjpeg.com/",
+    description: `FastJPEG has a simple 3 step process to launch a token`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/fastjpeg.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "fastjpg",
+    github: ["fastjpeg"],
+  },
 ];
 export default data4;

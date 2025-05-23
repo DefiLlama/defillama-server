@@ -3500,4 +3500,7 @@ export default {
     "gt3": {
         id: "6184"
     },
+    "fastjpeg": {
+        id: "6229"
+    },
 } as AdaptorsConfig

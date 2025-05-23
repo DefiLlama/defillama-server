@@ -3010,5 +3010,8 @@ export default {
     },
     "near-intents": {
         id: "6225"
-    }
+    },
+    "fastjpeg": {
+        id: "6229"
+    },
 } as AdaptorsConfig

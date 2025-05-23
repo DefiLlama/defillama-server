@@ -65257,7 +65257,7 @@ const data3_2: Protocol[] = [
     module: "panoptic/index.js",
     twitter: "Panoptic_xyz",
     audit_links: ["https://panoptic.xyz/docs/security/security_audits"],
-    github: ["panoptic-labs"],
+    parentProtocol: "parent#panoptic",
     listedAt: 1734704761
   },
   {

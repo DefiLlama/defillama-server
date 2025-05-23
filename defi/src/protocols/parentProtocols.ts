@@ -7164,6 +7164,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Rho_xyz",
     github: ["RhoLabs"],
+  },
+  {
+    id: "parent#panoptic",
+    name: "Panoptic protocol",
+    url: "https://panoptic.xyz",
+    description: "Panoptic is a decentralized, permissionless, and open-source protocol for creating and trading synthetic assets on the Berachain blockchain",
+    logo: `${baseIconsUrl}/panoptic-protocol.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "Panoptic_xyz",
+    github: ["panoptic-labs"],
   }
 ];
 

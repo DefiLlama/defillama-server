@@ -15308,5 +15308,28 @@ const data4: Protocol[] = [
     twitter: "fastjpg",
     github: ["fastjpeg"],
   },
+  {
+    id: "6230",
+    name: "Panoptic V1.1",
+    address: null,
+    symbol: "-",
+    url: "https://panoptic.xyz",
+    description: "Panoptic is the first on-chain, permissionless options protocol, revolutionizing trading and liquidity provision.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/panoptic-v1.1.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "panoptic-v1_1/index.js",
+    twitter: "Panoptic_xyz",
+    audit_links: ["https://panoptic.xyz/docs/security/security_audits"],
+    parentProtocol: "parent#panoptic",
+    listedAt: 1748034447
+  },
 ];
 export default data4;

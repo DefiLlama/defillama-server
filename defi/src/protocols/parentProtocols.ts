@@ -7152,6 +7152,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MetalXApp",
+  },
+  {
+    id: "parent#rho",
+    name: "Rho",
+    url: "https://www.rho.trading/",
+      description: "Rho Protocol is a cryptonative interest rates market. The platform uniquely offers trading of staking, lending, and perpetual future funding rates all in one venue, as well as allowing users to passively earn yield by depositing into Rho's vaults",
+      logo: `${baseIconsUrl}/rho.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "Rho_xyz",
+    github: ["RhoLabs"],
   }
 ];
 

@@ -3497,4 +3497,7 @@ export default {
     "vesper": {
         id: "220"
     },
+    "gt3": {
+        id: "6184"
+    },
 } as AdaptorsConfig

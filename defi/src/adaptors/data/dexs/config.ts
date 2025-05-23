@@ -3008,4 +3008,7 @@ export default {
     "gt3": {
         id: "6184"
     },
+    "near-intents": {
+        id: "6225"
+    }
 } as AdaptorsConfig

@@ -719,6 +719,11 @@ export default {
     },
     "cetus": {
         id: "2289",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1747872000: true
+            }
+        }
     },
     "opx-finance": {
         id: "2256"
@@ -1449,7 +1454,12 @@ export default {
         id: "980"
     },
     "allbridge-classic": {
-        id: "577"
+        id: "577",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1747872000: true
+            }
+        }
     },
     "monocerus": {
         id: "3622"

@@ -15352,5 +15352,25 @@ const data4: Protocol[] = [
     twitter: "Omnipumpdotio",
     listedAt: 1748034612
   },
+  {
+    id: "6232",
+    name: "Eden Relay",
+    address: null,
+    symbol: "-",
+    url: "https://edennetwork.io/",
+    description: "A suite of OFAC compliant tooling for Ethereum validators and builders to maximize their revenue..",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eden-relay.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "MEV",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "EdenNetwork",
+  },
 ];
 export default data4;

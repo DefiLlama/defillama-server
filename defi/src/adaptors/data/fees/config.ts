@@ -3509,4 +3509,7 @@ export default {
     "aftermath-fi-amm": {
         id: "3259"
     },
+    "eden": {
+        id: "6232"
+    }
 } as AdaptorsConfig

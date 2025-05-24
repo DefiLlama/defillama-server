@@ -575,6 +575,8 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of revenueData.protocols) {
+      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         revenue: true
@@ -589,6 +591,8 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of holdersRevenueData.protocols) {
+      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         holdersRevenue: true

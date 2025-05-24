@@ -341,4 +341,7 @@ export default {
   "bungee-dex": {
     id: "6187"
   },
+  "lifi": {
+    id: "6233"
+  }
 } as AdaptorsConfig;

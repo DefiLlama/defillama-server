@@ -7176,6 +7176,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Panoptic_xyz",
     github: ["panoptic-labs"],
+  },
+  {
+    id: "parent#li.fi",
+    name: "Li.Fi",
+    url: "https://li.fi/",
+    description: "A cross-chain liquidity aggregation protocol designed to simplify and optimize asset swaps and transfers across multiple blockchain networks",
+    logo: `${baseIconsUrl}/li.fi.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "lifiprotocol",
+    github: ["lifinance"],
   }
 ];
 

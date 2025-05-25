@@ -2533,6 +2533,7 @@ const data2: Protocol[] = [
     twitter: "fountainprot",
     audit_links: ["https://github.com/dev-fountain/fountain-protocol-audit"],
     listedAt: 1646137364,
+    deadUrl: true,
   },
   {
     id: "1487",

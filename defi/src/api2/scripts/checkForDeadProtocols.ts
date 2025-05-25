@@ -85,6 +85,10 @@ async function run() {
 
   const whitelistedSet = new Set([
     'test market',
+    'Rho Markets',
+    'Orbit Protocol',
+    'MovePosition',
+    'DAOLama'
   ])
   const filteredHighBorrowedProtocols = verHighBorrowedProtocols.filter((i: any) => {
     return i.borrowedOrig  > 200_000 && !i.isMarkedDead && i.borrowedDiff > 5 && i.category === 'Lending' && !whitelistedSet.has(i.name)

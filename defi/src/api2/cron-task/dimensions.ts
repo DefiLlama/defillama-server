@@ -1,4 +1,5 @@
 import '../utils/failOnError'
+require("dotenv").config();
 
 import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
 import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";

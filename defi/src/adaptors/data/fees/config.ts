@@ -3517,5 +3517,11 @@ export default {
     },
     "rubicon": {
         id: "799"
+    },
+    "interest-movement-curve": {
+        id: "6055"
+    },
+    "basisos": {
+        id: "6167"
     }
 } as AdaptorsConfig

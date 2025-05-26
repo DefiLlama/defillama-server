@@ -3014,4 +3014,7 @@ export default {
     "fastjpeg": {
         id: "6229"
     },
+    "interest-movement-curve": {
+        id: "6055"
+    },
 } as AdaptorsConfig

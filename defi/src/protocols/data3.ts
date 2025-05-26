@@ -56620,6 +56620,7 @@ const data3_2: Protocol[] = [
     github: ["oraclefreedollar"],
     listedAt: 1726581912
   },
+  /* delist cygnus . BTC collateral does not belong to them
   {
     id: "5156",
     name: "Cygnus Restake",
@@ -56643,6 +56644,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },
+  */
   {
     id: "5157",
     name: "Yellow",

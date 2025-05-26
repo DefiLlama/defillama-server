@@ -2806,6 +2806,16 @@
     }
   },
   "ibc": {
+    "B0BEE773CEF718E8B6D2892A27D57FEFB00BD8B2E698367B5CC96A4F36148726": {
+      "decimals": "6",
+      "symbol": "BABY",
+      "to": "coingecko#babylon"
+    },
+    "37A3FB4FED4CA04ED6D9E5DA36C6D27248645F0E22F585576A1488B8A89C5A50": {
+      "decimals": "6",
+      "symbol": "INIT",
+      "to": "coingecko#initia"
+    },
     "F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349": {
       "decimals": "6",
       "symbol": "USDC",
@@ -8143,6 +8153,11 @@
     }
   },
   "hyperliquid": {
+    "0xE6829d9a7eE3040e1276Fa75293Bde931859e8fA": {
+      "to": "coingecko#mantle-restaked-eth",
+      "decimals": 18,
+      "symbol": "cmETH"
+    },
     "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
       "to": "coingecko#tether",
       "decimals": 6,

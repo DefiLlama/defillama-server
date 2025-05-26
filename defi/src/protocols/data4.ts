@@ -15393,5 +15393,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.li.fi/smart-contracts/audits"],
     parentProtocol: "parent#li.fi",
   },
+  {
+    id: "6234",
+    name: "Zoomex",
+    address: null,
+    symbol: "-",
+    url: "https://www.zoomex.com",
+    description: `Zoomex is a centralized cryptocurrency exchange established in 2021 and is registered in United States.`,
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/zoomex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    module: "zoomex-cex/index.js",
+    twitter: "ZoomexOfficial",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1748270471
+  },
 ];
 export default data4;

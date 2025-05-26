@@ -56,7 +56,7 @@ const config = {
   },
   thruster03: { chain: 'blast', factory: '0xb4A7D971D0ADea1c73198C97d7ab3f9CE4aaFA13' },
   thruster1: { chain: 'blast', factory: '0x37836821a2c03c171fB1a595767f4a16e2b93Fc4' },
-  equalizerSonic: { chain: 'sonic', factory: '0xDDD9845Ba0D8f38d3045f804f67A1a8B9A528FcC' },
+  // equalizerSonic: { chain: 'sonic', factory: '0xDDD9845Ba0D8f38d3045f804f67A1a8B9A528FcC' },
   bulbaswap: { chain: "morph", factory: "0x8D2A8b8F7d200d75Bf5F9E84e01F9272f90EFB8b" },
   kodiakv2: { chain: 'berachain', factory: '0x5e705e184d233ff2a7cb1553793464a9d0c3028f' },
   swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663' },

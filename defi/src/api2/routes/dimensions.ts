@@ -70,7 +70,7 @@ export async function getOverviewProcess2({
   const { summaries, allChains, protocolSummaries = {} } = cacheData
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
-      chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+    chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
@@ -127,6 +127,8 @@ export async function getOverviewProcess2({
       // console.log('no data found', _id, info)
       return null
     }
+
+    if (!summary?.recordCount) return null; // if there are no data points, we should filter out the protocol
     if (summary?.totalAllTime) protocolTotalAllTimeSum += summary.totalAllTime
 
     protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])

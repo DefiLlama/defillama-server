@@ -167,7 +167,7 @@ async function run() {
           })
 
           if (totalValue === 0) {
-            delete records[day]
+            // delete records[day]
             deleteCount++
           } else {
             // console.log('found day with data', day, 'totalValue', totalValue)
@@ -431,6 +431,21 @@ async function run() {
         addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary, debugParams, })
         addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary, debugParams, })
 
+        // add record count
+        const allKeys = Object.keys(protocol.records)
+        allKeys.forEach((timeS: string) => {
+          const { aggregated } = protocol.records[timeS]
+          if (!aggregated[recordType]) return;
+          protocolSummary.recordCount++
+          const { chains } = aggregated[recordType]
+          Object.entries(chains).forEach(([chain]: any) => {
+            if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
+            const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
+            chainSummary.recordCount++
+          })
+        })
+
+
         // totalAllTime
         const acumulativeRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
         if (acumulativeRecordType) {
@@ -440,10 +455,10 @@ async function run() {
             const { aggregated } = protocol.records[timeS]
             if (!aggregated[recordType]) return;
             const { value, chains } = aggregated[recordType]
-             // if are not tracking the protocol's data from it's launch
-             // we accept the accumulative record as the total value if it exists in the first 10 records
-             // else, we dont trust the accumulative record and compute it using daily data
-            const canUseAccumulativeRecord = idx < 10 
+            // if are not tracking the protocol's data from it's launch
+            // we accept the accumulative record as the total value if it exists in the first 10 records
+            // else, we dont trust the accumulative record and compute it using daily data
+            const canUseAccumulativeRecord = idx < 10
             let accumulativeRecord = { value: 0, chains: {} }
 
             if (canUseAccumulativeRecord && aggregated[acumulativeRecordType])
@@ -659,6 +674,7 @@ function initSummaryItem(isChain = false) {
     total24h: 0,
     total48hto24h: 0,
     chainSummary: {},
+    recordCount: 0,
   }
   if (isChain)
     delete response.chainSummary
@@ -693,6 +709,7 @@ type RecordSummary = {
   total14dto7d?: number
   total60dto30d?: number
   total1y?: number
+  recordCount: number
 }
 
 type ProtocolSummary = RecordSummary & {
@@ -754,7 +771,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
       if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
-        let isSpike = false 
+        let isSpike = false
         if (highestCloseValue > 0) {
           let currentValueisHigh = currentValue > 1e6 // 1 million
           switch (key) {
@@ -766,7 +783,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         }
 
         if (isSpike) {
-          if (NOTIFY_ON_DISCORD && isLessThanThreeMonthsAgo(timeS)) 
+          if (NOTIFY_ON_DISCORD && isLessThanThreeMonthsAgo(timeS))
             spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]

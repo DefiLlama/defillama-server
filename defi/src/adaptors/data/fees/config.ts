@@ -3514,5 +3514,8 @@ export default {
     },
     "level": {
         id: "5090"
+    },
+    "rubicon": {
+        id: "799"
     }
 } as AdaptorsConfig

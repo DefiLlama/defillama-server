@@ -399,6 +399,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb",
     address: "0x8fF0dd9f9C40a0d76eF1BcFAF5f98c1610c74Bd8",
   },
+  eliteRingsScUSD: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0x13cCc810DfaA6B71957F2b87060aFE17e6EB8034",
+      });
+      return rate / 1e18;
+    },
+    chain: "sonic",
+    underlying: "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
+    address: "0xd4aA386bfCEEeDd9De0875B3BA07f51808592e22",
+  },
 };
 
 export async function derivs(timestamp: number) {

@@ -211,6 +211,15 @@ functions:
           method: get
     environment:
       LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000
+  batchBlocks:
+    handler: src/getBlock.batchBlocks
+    timeout: 60
+    events:
+      - httpApi:
+          path: /blocks/{chain}
+          method: post
+    environment:
+      LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000
   corsPreflight:
     handler: src/corsPreflight.default
     events:

@@ -61167,17 +61167,17 @@ const data3_2: Protocol[] = [
     module: "adrena/index.js",
     twitter: "AdrenaProtocol",
     forkedFrom: [],
-    oracles: ["Edge"],
     oraclesBreakdown: [
       {
         name: "Edge",
         type: "Primary",
         proof: ["https://x.com/AdrenaProtocol/status/1925828470573076631"],
+        startDate: "2025-05-23"
       },
       {
         name: "Pyth",
         type: "Fallback",
-        proof: ["https://docs.adrena.xyz/technical-documentation/oracles-and-price-feeds"],
+        proof: ["https://docs.adrena.xyz/technical-documentation/oracles-and-price-feeds", "https://x.com/AdrenaProtocol/status/1925828470573076631"],
       },
     ],
     audit_links: ["https://docs.adrena.xyz/technical-documentation/audits"],

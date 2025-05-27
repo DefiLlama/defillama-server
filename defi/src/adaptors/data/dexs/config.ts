@@ -3017,4 +3017,7 @@ export default {
     "interest-movement-curve": {
         id: "6055"
     },
+    "garden": {
+        id: "4086"
+    }
 } as AdaptorsConfig

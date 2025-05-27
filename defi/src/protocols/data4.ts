@@ -15509,5 +15509,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#smardex-ecosystem",
     listedAt: 1748362857
   },
+  {
+    id: "6239",
+    name: "Royal Government of Bhutan Treasury",
+    address: null,
+    symbol: "-",
+    url: "https://www.dhi.bt/",
+    description: `Royal Government of Bhutan Treasury is a sovereign crypto reserve managed by the Bhutanese government`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/royal-government-of-bhutan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Treasury Manager",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: "bhutan-gov.js",
+    twitter: null,
+  },
 ];
 export default data4;

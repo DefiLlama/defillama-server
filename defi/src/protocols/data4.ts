@@ -15431,7 +15431,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "mossethereum.js",
-    twitter: "mossethereum.js",
+    twitter: "mossethereum",
     oracles: [], 
     forkedFrom: [],
   },

@@ -7188,6 +7188,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "lifiprotocol",
     github: ["lifinance"],
+  },
+  {
+    id: "parent#smardex-ecosystem",
+    name: "SMARDEX Ecosystem",
+    url: "https://smardex.io",
+    description: "SMARDEX is building tomorrow's DeFi ecosystem! Powered by the $SDEX token",
+    logo: `${baseIconsUrl}/smardex-ecosystem.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "SmarDex",
   }
 ];
 

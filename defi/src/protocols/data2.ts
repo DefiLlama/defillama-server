@@ -30765,6 +30765,7 @@ const data2: Protocol[] = [
     module: "SmarDex/index.js",
     twitter: "SmarDex",
     audit_links: [" https://smardex.io/audit-reports"],
+    parentProtocol: "parent#smardex-ecosystem",
     listedAt: 1679329866,
   },
   /*

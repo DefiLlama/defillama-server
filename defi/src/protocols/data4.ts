@@ -15284,6 +15284,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "p2p-lending/index.js",
     twitter: "SmarDex",
+    parentProtocol: "parent#smardex-ecosystem",
     listedAt: 1747967378
   },
   {
@@ -15474,6 +15475,39 @@ const data4: Protocol[] = [
     twitter: "initia",
     oracles: [], 
     forkedFrom: [],
+  },
+  {
+    id: "6238",
+    name: "SMARDEX USDN",
+    address: null,
+    symbol: "-",
+    url: "https://smardex.io",
+    description: `USDN token is a synthetic U.S. dollar backed by a structured product utilizing a delta-Neutral strategy`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/smardex-usdn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
+      },
+      {
+        name: "Chainlink",
+        type: "Fallback",
+        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
+      },
+    ],
+    forkedFrom: [],
+    module: "SMARDEX-USDN/index.js",
+    twitter: "SmarDex",
+    parentProtocol: "parent#smardex-ecosystem",
+    listedAt: 1748362857
   },
 ];
 export default data4;

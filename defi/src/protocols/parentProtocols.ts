@@ -3054,8 +3054,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Sky enables users to get rewarded for non-custodial saving with USDS.",
     logo: `${baseIconsUrl}/sky.jpg`,
-    gecko_id: "maker",
-    cmcId: "1518",
+    gecko_id: "sky",
+    cmcId: "33038",
     chains: [],
     twitter: "SkyEcosystem",
     treasury: "maker.js",

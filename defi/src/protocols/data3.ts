@@ -22257,8 +22257,8 @@ const data3_1: Protocol[] = [
     id: "3665",
     name: "Sky RWA",
     previousNames: ["Maker RWA"],
-    address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-    symbol: "MKR",
+    address: "0x56072c95faa701256059aa122697b133aded9279",
+    symbol: "SKY",
     url: "https://makerdao.com/en/",
     description:
       "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",

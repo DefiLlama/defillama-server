@@ -5327,7 +5327,7 @@ const data3_1: Protocol[] = [
     symbol: "-",
     url: "https://www.spark.fi/",
     description:
-      "Spark is an at-scale stablecoin allocation engine capturing yield across DeFi, RWAs and exchanges. This yield is provided cross-chain to Savings USDS holders",
+      "SparkLend is a stablecoin lending market. Unlike other lending protocols where rates fluctuate based on utilization or loan size, SparkLend offers governance-defined rates that do not vary based on those factors. This is made possible by Spark’s Liquidity Layer (SLL), which supplies consistent stablecoin liquidity to the protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sparklend.jpg`,
     audits: "2",

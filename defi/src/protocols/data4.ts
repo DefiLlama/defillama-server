@@ -10019,7 +10019,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.spark.fi/",
     description:
-      "The Spark Liquidity Layer (SLL) automates liquidity provision of USDS, sUSDS, and USDC directly from Sky across various blockchain networks and DeFi protocols",
+      "The Spark Liquidity Layer (SLL) automates liquidity provision of USDS, sUSDS, and USDC directly from Sky across various blockchain networks, DeFi protocols, and RWA",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/spark-liquidity-layer.jpg`,
     audits: "2",

@@ -6806,7 +6806,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#spark",
     name: "Spark",
     url: "https://www.spark.fi/",
-    description: "Maximize your stablecoin rewards with . Withdraw to USDC, USDS, or DAI at any time with no slippage or platform fees.",
+    description: "Spark is an onchain capital allocator that borrows from Sky’s $6.5B+ stablecoin reserves to deploy capital across DeFi, CeFi, and RWAs—delivering deep, scalable liquidity to the ecosystem. For users, Spark transforms this yield into accessible products like sUSDS and sUSDC, enabling seamless, fee-free access to onchain, diversified returns.",
     logo: `${baseIconsUrl}/spark.jpg`,
     gecko_id: null,
     cmcId: null,

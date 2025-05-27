@@ -36005,8 +36005,8 @@ const data3_2: Protocol[] = [
   {
     id: "4257",
     name: "Definitive",
-    address: null,
-    symbol: "-",
+    address: "base:0xED6E000dEF95780fb89734c07EE2ce9F6dcAf110",
+    symbol: "EDGE",
     url: "https://www.definitive.fi",
     description:
       "Definitive is the premier non-custodial platform for advanced DeFi yield and on-chain trade execution.",
@@ -36014,8 +36014,8 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/definitive.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "definitive",
+    cmcId: "36288",
     category: "DEX Aggregator",
     chains: ["Arbitrum", "Polygon", "Optimism", "Base", "Avalanche"],
     module: "definitive/index.js",

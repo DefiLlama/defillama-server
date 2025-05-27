@@ -49275,10 +49275,6 @@ const data3_2: Protocol[] = [
     module: "desyn-yieldAggregator/index.js",
     twitter: "DesynLab",
     parentProtocol: "parent#desyn-protocol",
-    tokensExcludedFromParent: {
-      AILayer: ["BFBTC"],
-      Hemi: ["BFBTC"],
-    },
     listedAt: 1719915986,
   },
   {

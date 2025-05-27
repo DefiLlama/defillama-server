@@ -405,7 +405,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "uint256:getRate",
         target: "0x13cCc810DfaA6B71957F2b87060aFE17e6EB8034",
       });
-      return rate / 1e18;
+      return rate / 1e6;
     },
     chain: "sonic",
     underlying: "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",

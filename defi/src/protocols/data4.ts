@@ -9327,7 +9327,6 @@ const data4: Protocol[] = [
     chains: ["Binance"],
     module: "evoq/index.js",
     forkedFromIds: ["1997"],
-    oracles: ["Pyth"],//https://docs.hyperpiexyz.io/oracle/pyth
     twitter: "Evoq_Finance",
     audit_links: [
       "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",
@@ -9354,7 +9353,14 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "hyperpie/index.js",
     forkedFrom: [],
-    oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.hyperpiexyz.io/tech-stack-and-media-kit/oracle/pyth"],
+        startDate: "2025-05-19"
+      },
+    ],
     twitter: "Hyperpiexyz_io",
     audit_links: [
       "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",

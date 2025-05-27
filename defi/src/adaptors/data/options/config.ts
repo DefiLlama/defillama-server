@@ -91,4 +91,7 @@ export default {
     "ivx": {
         id: "6177"
     },
+    "sofa-org": {
+        id: "4779"
+    }
 } as AdaptorsConfig

@@ -1,13 +1,14 @@
 import AWS from "aws-sdk";
 import sleep from "./sleep";
 
-const client = new AWS.DynamoDB.DocumentClient({
-  ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
-    endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
-    sslEnabled: false,
-    region: "local"
-  })
-});
+const client: any = undefined
+//  new AWS.DynamoDB.DocumentClient({
+//   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
+//     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
+//     sslEnabled: false,
+//     region: "local"
+//   })
+// });
 export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
 
 const dynamodb = {

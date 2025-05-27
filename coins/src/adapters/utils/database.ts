@@ -66,17 +66,11 @@ export async function getTokenAndRedirectData(
     tokens = tokens.filter((t: string) => !alreadyInCache.includes(t));
     if (tokens.length == 0) return response;
 
-    let apiRes;
-    if (process.env.LOCAL_TEST === "true") {
-      apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
-    } else {
-      apiRes = await getTokenAndRedirectDataDB(
-        tokens,
-        chain,
-        timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-        hoursRange,
-      );
-    }
+    const apiRes = await getTokenAndRedirectDataFromAPI(
+      tokens,
+      chain,
+      timestamp,
+    );
 
     apiRes.map((r: any) => {
       if (r.address == null) return;

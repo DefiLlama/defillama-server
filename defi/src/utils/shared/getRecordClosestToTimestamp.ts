@@ -14,7 +14,7 @@ export default async function getTVLOfRecordClosestToTimestamp(
       },
       KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end"
     })
-    .then((records) => {
+    .then((records: any) => {
       if (records.Items == undefined || records.Items.length == 0) {
         return {
           SK: undefined

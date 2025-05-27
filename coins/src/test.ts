@@ -11,7 +11,6 @@ process.on("unhandledRejection", (err) => {
 });
 
 import adapters from "./adapters/index";
-import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { logTable } from '@defillama/sdk'
 
 if (process.argv.length < 3) {
@@ -41,12 +40,9 @@ async function main() {
 
   const adapterFn = typeof protocolWrapper === 'function' ? protocolWrapper : protocolWrapper[protocol];
   const results = await adapterFn(0)
-  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-    results.flat()
-  );
-
+  
   const lTable: any = []
-  resultsWithoutDuplicates.forEach(i => {
+  results.flat().forEach((i: any) => {
     lTable[i.PK] = { symbol: i.symbol, price: i.price ?? i.redirect, decimals: i.decimals, PK: i.PK }
   })
   /* console.log(`==== Example results ====`);

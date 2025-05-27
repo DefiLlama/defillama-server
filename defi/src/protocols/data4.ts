@@ -15414,5 +15414,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1748270471
   },
+  {
+    id: "6235",
+    name: "Moss Genomics",
+    address: null,
+    symbol: "-",
+    url: "https://mossethereum.com/",
+    description: `A public company accumulating ETH for its treasury and exploring tokenized shares, Moss Genomics aims to bring transparent, blockchain-based ownership to public markets.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/moss-genomics.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "mossethereum.js",
+    twitter: "mossethereum.js",
+    oracles: [], 
+    forkedFrom: [],
+  },
 ];
 export default data4;

@@ -12,7 +12,7 @@
     "ws": "^8.18.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run start-server",
     "start-server": "npx ts-node --transpile-only --logError src/server.ts",
     "build": "react-scripts build",
     "eject": "react-scripts eject"

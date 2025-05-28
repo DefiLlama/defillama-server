@@ -1230,7 +1230,12 @@ export default {
         id: "3330"
     },
     "syncswap": {
-        id: "2728"
+        id: "2728",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1748390400": true
+            },
+        }
     },
     "echodex-v3": {
         parentId: "EchoDEX",

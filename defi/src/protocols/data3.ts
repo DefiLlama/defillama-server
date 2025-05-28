@@ -12700,16 +12700,53 @@ const data3_1: Protocol[] = [
     module: "lineabank/index.js",
     twitter: "LayerBankFi",
     forkedFromIds: ["114"],
-    oraclesByChain: {
-      zklink: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      manta: ["eOracle"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
-      scroll: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      linea: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      mode: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      bsquared: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9219
-      bob: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9219
-      hemi: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9533
-    },
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [
+          "https://github.com/DefiLlama/defillama-server/pull/9884",
+          "https://docs.layerbank.finance/protocol/lending/oracles",
+          "https://github.com/DefiLlama/defillama-server/pull/9219",
+          "https://github.com/DefiLlama/defillama-server/pull/9533",
+          "https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0"
+        ],
+        chains: [
+          {
+            chain: "zklink",
+            startDate: "2024-10-31"
+          },
+          {
+            chain: "manta",
+            startDate: "2025-05-08"
+          },
+          {
+            chain: "scroll",
+            startDate: "2024-10-31"
+          },
+          {
+            chain: "linea",
+            startDate: "2024-10-31"
+          },
+          {
+            chain: "mode",
+            startDate: "2024-10-31"
+          },
+          {
+            chain: "bsquared",
+            startDate: "2025-02-04"
+          },
+          {
+            chain: "bob",
+            startDate: "2025-02-04"
+          },
+          {
+            chain: "hemi",
+            startDate: "2025-03-25"
+          }
+        ]
+      }
+    ],
     listedAt: 1689773129,
     audit_links: [
       "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf",

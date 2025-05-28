@@ -8101,6 +8101,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    },
+    "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 18,
+      "symbol": "weETH"
     }
   },
   "sty": {

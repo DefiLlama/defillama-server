@@ -7199,6 +7199,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SmarDex",
+  },
+    {
+    id: "parent#felix",
+    name: "Felix",
+    url: "https://usefelix.xyz",
+    description: "Borrow against blue-chip collateral and earn native yield with the Felix stablecoin, feUSD",
+    logo: `${baseIconsUrl}/felix.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "felixprotocol",
   }
 ];
 

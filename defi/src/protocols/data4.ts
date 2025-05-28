@@ -10634,14 +10634,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6015",
-    name: "Felix",
+    name: "Felix CDP",
     address: null,
     symbol: "-",
     url: "https://usefelix.xyz/borrow",
     description:
       "Felix is a synthetic dollar protocol on Hyperliquid L1",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/felix.jpg`,
+    logo: `${baseIconsUrl}/felix-cdp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -10651,7 +10651,14 @@ const data4: Protocol[] = [
     module: "felix/index.js",
     twitter: "felixprotocol",
     forkedFromIds: ["5656"],
-    oracles: ["RedStone"], //https://usefelix.gitbook.io/felix-docs/advanced/risk-management#redstone-oracles
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://usefelix.gitbook.io/felix-docs/advanced/risk-management#redstone-oracles"],
+      },
+    ], 
+    parentProtocol: "parent#felix",
     audit_links: ["https://usefelix.gitbook.io/felix-docs/advanced/smart-contract-audits#felix-audits"],
     listedAt: 1744135586
   },
@@ -15535,6 +15542,28 @@ const data4: Protocol[] = [
     module: "dummy.js",
     treasury: "bhutan-gov.js",
     twitter: null,
+  },
+    {
+    id: "6240",
+    name: "Felix Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://usefelix.xyz/earn",
+    description: `Deposit assets to be lent via Morpho Vaults to earn interest.`,
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/felix-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Hyperliquid L1"],
+    module: "felix-vaults/index.js",
+    twitter: "felixprotocol",
+    oracles: [], 
+    forkedFrom: [],
+    parentProtocol: "parent#felix",
+    listedAt: 1748421637
   },
 ];
 export default data4;

@@ -15453,7 +15453,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/binance-smart-chain.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "binancecoin",
     cmcId: null,
     category: "Chain",
     chains: ["Binance"],

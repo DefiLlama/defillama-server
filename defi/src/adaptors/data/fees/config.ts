@@ -3523,5 +3523,8 @@ export default {
     },
     "basisos": {
         id: "6167"
+    },
+    "berachain-bribes": {
+        id: "6243"
     }
 } as AdaptorsConfig

@@ -33113,9 +33113,44 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oraclesByChain: {
-      mode: ["Api3", "RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
-    },
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
+        chains: [{chain: "flow"}, {chain: "mode"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
+        chains: [{chain: "ethereum"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://v2.sturdy.finance/silos"],
+        chains: [{chain: "linea"},{chain: "optimism"}]
+      },
+      {
+        name: "Api3",
+        type: "Secondary",
+        proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
+        chains: [{chain: "mode"},]
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
+        chains: [{chain: "ethereum", startDate: "2025-05-08"},]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
+        chains: [{chain: "ethereum"},{chain: "mode"},]
+      }
+    ],
     forkedFromIds: ["111"],
     module: "sturdy-v2/index.js",
     twitter: "SturdyFinance",

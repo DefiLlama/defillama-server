@@ -172,7 +172,12 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
   }
 }
 
-const getDateByDaysAgo = (days: number) => new Date(Date.now() - days * 24 * 60 * 60 * 1000).getTime() / 1000;
+const getDateByDaysAgo = (days: number) => {
+  const date = new Date();
+  date.setUTCHours(0, 0, 0, 0);
+  date.setUTCDate(date.getUTCDate() - days);
+  return date.getTime() / 1000;
+};
 const sum = (arr: number[]) => arr.reduce((acc, val) => acc + val, 0);
 
 export async function processSingleProtocol(

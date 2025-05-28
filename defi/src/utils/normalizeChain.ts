@@ -4223,7 +4223,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 5330,
     github: ['superseed-xyz'],
-    twitter: "Xphere_official",
+    twitter: "SuperseedXYZ",
     url: "https://www.superseed.xyz/"
   },
   "Xphere": {
@@ -4233,7 +4233,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 20250217,
     github: ['xpherechain'],
-    twitter: "SuperseedXYZ",
+    twitter: "Xphere_official",
     url: "https://x-phere.com/"
   },
   "Lens": {

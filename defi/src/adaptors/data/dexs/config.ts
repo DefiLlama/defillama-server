@@ -719,11 +719,6 @@ export default {
     },
     "cetus": {
         id: "2289",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1747872000: true
-            }
-        }
     },
     "opx-finance": {
         id: "2256"

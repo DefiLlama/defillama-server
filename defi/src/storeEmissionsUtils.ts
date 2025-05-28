@@ -197,16 +197,26 @@ export async function processSingleProtocol(
   const weekAgo = getDateByDaysAgo(7);
   const dayAgo = getDateByDaysAgo(1);
   const monthAgo = getDateByDaysAgo(30);
+  const yearAgo = getDateByDaysAgo(365);
 
-  const [day, week, month]: number[][] = [[], [], []];
+  const [day, week, month, year, allTime]: number[][] = [[], [], [], [], []];
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
   unlockUsdChart.forEach(([ts, val]) => {
     if (Number(val) < 0) return;
-    if (Number(ts) > monthAgo) month.push(Number(val));
-    if (Number(ts) > weekAgo) week.push(Number(val));
-    if (Number(ts) > dayAgo) day.push(Number(val));
+    const timestamp = Number(ts);
+    const value = Number(val);
+    
+    allTime.push(value);
+    if (timestamp > yearAgo) year.push(value);
+    if (timestamp > monthAgo) month.push(value);
+    if (timestamp > weekAgo) week.push(value);
+    if (timestamp >= dayAgo) day.push(value);
   });
+
+  const emissions1y = sum(year);
+  const emissionsAllTime = sum(allTime);
+  const emissionsAverage1y = year.length > 0 ? emissions1y / 12 : 0;
 
   const breakdown = {
     name: data.name,
@@ -217,6 +227,9 @@ export async function processSingleProtocol(
     emission24h: sum(day),
     emission7d: sum(week),
     emission30d: sum(month),
+    emissions1y,
+    emissionsAllTime,
+    emissionsAverage1y,
   };
 
   if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) emissionsBrakedown[sluggifiedId] = breakdown;

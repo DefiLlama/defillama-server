@@ -4244,6 +4244,15 @@ export const chainCoingeckoIds = {
     chainId: 232,
     github: ['lens-protocol'],
     twitter: "LC",
+    url: "https://www.skatechain.org/"
+  },
+  "Skate": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 5050,
+    twitter: "skate_chain",
     url: "https://lens.xyz/"
   },
 } as unknown as ChainCoinGekcoIds

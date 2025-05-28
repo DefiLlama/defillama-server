@@ -15407,7 +15407,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.zoomex.com",
-    description: `Zoomex is a centralized cryptocurrency exchange established in 2021 and is registered in United States.`,
+    description: `Zoomex is a global crypto platform focused on simplicity, speed, and ease of use. With millisecond execution and a clean, user-friendly interface.`,
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/zoomex.jpg`,
     audits: "0",

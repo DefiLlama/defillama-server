@@ -3526,5 +3526,8 @@ export default {
     },
     "berachain-bribes": {
         id: "6243"
-    }
+    },
+    "asymmetry-usdaf": {
+        id: "6247"
+    },
 } as AdaptorsConfig

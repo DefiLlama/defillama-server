@@ -667,5 +667,8 @@ export default {
     "kanalabs-perp": {
         id: "6175"
     },
+    "grvt-perps": {
+        id: "5599"
+    }
 
 } as AdaptorsConfig

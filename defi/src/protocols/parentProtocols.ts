@@ -7200,7 +7200,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SmarDex",
   },
-    {
+  {
     id: "parent#felix",
     name: "Felix",
     url: "https://usefelix.xyz",
@@ -7210,6 +7210,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "felixprotocol",
+  },
+    {
+    id: "parent#seedfi",
+    name: "SeedFi",
+    url: "https://seedfi.trade",
+    description: "The pioneering native one-stop trading platform",
+    logo: `${baseIconsUrl}/seedfi.jpg`,
+    gecko_id: null, 
+    cmcId: null,
+    chains: [],
+    twitter: "superseedfi",
   }
 ];
 

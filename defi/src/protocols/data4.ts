@@ -15604,7 +15604,13 @@ const data4: Protocol[] = [
     chains: ["Superseed"],
     module: "seedfi-perp/index.js",
     twitter: "superseedfi",
-    oracles: [], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.seedfi.trade/"],
+      },
+    ],
     forkedFrom: [],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362

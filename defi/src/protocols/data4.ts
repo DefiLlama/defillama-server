@@ -9689,7 +9689,7 @@ const data4: Protocol[] = [
     name: "Clutch Markets",
     address: "arbitrum:0x05905af7933f89280aB258919F0dFA056CeD8e43",
     symbol: "CLUTCH",
-    url: "https://clutch.markets/",
+    url: "https://clutch.market",
     description:
       "The first fully on-chain decentralized parlay platform. Bet on sports , crypto and politics",
     chain: "Arbitrum",

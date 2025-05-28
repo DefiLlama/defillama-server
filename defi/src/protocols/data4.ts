@@ -15531,7 +15531,7 @@ const data4: Protocol[] = [
     url: "https://www.dhi.bt/",
     description: `Royal Government of Bhutan Treasury is a sovereign crypto reserve managed by the Bhutanese government`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/royal-government-of-bhutan.jpg`,
+    logo: `${baseIconsUrl}/royal-government-of-bhutan-treasury.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

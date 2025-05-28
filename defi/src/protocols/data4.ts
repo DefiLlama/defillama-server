@@ -15615,5 +15615,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362
   },
+  {
+    id: "6243",
+    name: "Berachain Bribes",
+    address: null,
+    symbol: "BERA",
+    url: "https://www.berachain.com/",
+    description: "Tracks bribes paid by protocols in Berachain's PoL system to attract BGT delegation, based on on-chain incentive distribution events.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/berachain-bribes.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Berachain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "berachain",
+  },
 ];
 export default data4;

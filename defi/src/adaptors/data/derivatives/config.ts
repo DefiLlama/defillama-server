@@ -669,6 +669,9 @@ export default {
     },
     "grvt-perps": {
         id: "5599"
+    },
+    "rho-protocol": {
+        id: "6226"
     }
 
 } as AdaptorsConfig

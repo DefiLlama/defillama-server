@@ -3019,5 +3019,8 @@ export default {
     },
     "garden": {
         id: "4086"
+    },
+    "skate-amm": {
+        id: "6246"
     }
 } as AdaptorsConfig

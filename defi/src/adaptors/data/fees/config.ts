@@ -3535,5 +3535,74 @@ export default {
     },
     "saros": {
         id: "1262"
-    }
+    },
+    "9summits": {
+        id: "6194"
+    },
+    "alphaping": {
+        id: "6195"
+    },
+    "alterscope": {
+        id: "6215"
+    },
+    "apostro": {
+        id: "6196"
+    },
+    "b-protocol": {
+        id: "6197"
+    },
+    "block-analitica": {
+        id: "6198"
+    },
+    "clearstar": {
+        id: "6199"
+    },
+    "euler-dao": {
+        id: "6200"
+    },
+    "felix-vaults": {
+        id: "6240"
+    },
+    "fence": {
+        id: "6201"
+    },
+    "gauntlet": {
+        id: "6202"
+    },
+    "hakutora": {
+        id: "6203"
+    },
+    "hyperithm": {
+        id: "6204"
+    },
+    "k3": {
+        id: "6205"
+    },
+    "llamarisk": {
+        id: "6206"
+    },
+    "m11c": {
+        id: "6207"
+    },
+    "mev-capital": {
+        id: "6208"
+    },
+    "ouroboros": {
+        id: "6209"
+    },
+    "re7": {
+        id: "6210"
+    },
+    "relend": {
+        id: "6211"
+    },
+    "steakhouse": {
+        id: "6212"
+    },
+    "tulip-capital": {
+        id: "6213"
+    },
+    "yearn-curating": {
+        id: "6251"
+    },
 } as AdaptorsConfig

@@ -15144,7 +15144,7 @@ const data4: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Ethereum"],
     oracles: [],
-    forkedFrom: ["Lido"],
+    forkedFromIds: ["182"],
     module: "lis/index.js",
     twitter: "impactstake",
     listedAt: 1747922925
@@ -15361,7 +15361,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Nibiru"],
     oracles: [],
-    forkedFrom: ["2197"],
+    forkedFromIds: ["2197"],
     module: "omniswap/index.js",
     twitter: "Omnipumpdotio",
     listedAt: 1748034612

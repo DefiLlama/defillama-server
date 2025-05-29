@@ -1,4 +1,3 @@
-
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
@@ -38,26 +37,21 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const { protocolAdaptors, } = loadAdaptorsData(adapterType as AdapterType)
   let protocol = protocolAdaptors.find(p => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
 
-  if (!protocol) {
-    console.error('Protocol not found')
-    return;
-  }
+    if (!protocol) {
+      throw new Error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
+    }
 
   if (fromTimestamp > toTimestamp) {
     console.error('Invalid date range. Start date should be less than end date.')
     return;
   }
 
-
   let i = 0
-  const items: any = []
+  let items: IStoreAdaptorDataHandlerEvent[] = []
   let timeSWithData = new Set()
   let days = getDaysBetweenTimestamps(fromTimestamp, toTimestamp)
 
-
   if (args.onlyMissing) {
-
-
     const allTimeSData = await getAllDimensionsRecordsTimeS({ adapterType: adapterType as any, id: protocol.id2 })
     timeSWithData = new Set(allTimeSData.map((d: any) => d.timeS))
     allTimeSData.sort((a: any, b: any) => a.timestamp - b.timestamp)
@@ -81,10 +75,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
       }
       lastTimestamp -= ONE_DAY_IN_SECONDS
     } while (lastTimestamp > firstTimestamp)
-
-
   } else {
-
     let currentDayEndTimestamp = toTimestamp
 
     while (days >= 0) {
@@ -101,14 +92,12 @@ export async function runDimensionsRefill(ws: any, args: any) {
       days--
       currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
-
   }
 
   const { errors } = await PromisePool
     .withConcurrency(args.parallelCount)
     .for(items)
     .process(async (eventObj: any) => {
-
       console.log(++i, 'refilling data on', new Date((eventObj.timestamp) * 1000).toLocaleDateString())
       const response = await handler2(eventObj)
       if (checkBeforeInsert && response?.length)
@@ -118,7 +107,6 @@ export async function runDimensionsRefill(ws: any, args: any) {
         })
       sendWaitingRecords(ws)
     })
-
 
   const runTime = ((+(new Date) - start) / 1e3).toFixed(1)
   console.log(`[Done] | runtime: ${runTime}s  `)
@@ -133,7 +121,6 @@ export async function runDimensionsRefill(ws: any, args: any) {
   }
 }
 
-
 function getDaysBetweenTimestamps(from: number, to: number): number {
   return Math.round((to - from) / ONE_DAY_IN_SECONDS)
 }
@@ -145,7 +132,6 @@ export function removeWaitingRecords(ws: any, ids: any) {
 }
 
 export async function storeAllWaitingRecords(ws: any) {
-
   const allRecords = Object.entries(recordItems)
   // randomize the order of the records
   allRecords.sort(() => Math.random() - 0.5)

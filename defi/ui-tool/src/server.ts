@@ -1,5 +1,8 @@
-
+import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 const path = require('path');
+const WS = require('ws');
+const { spawn } = require('child_process');
+
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 process.on('uncaughtException', (err) => {
@@ -10,24 +13,46 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 })
 
-import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
-
-const WS = require('ws');
-const { spawn } = require('child_process');
-
 const wss = new WS.Server({ port: 8080 });
 
 console.log('WebSocket server running on port 8080');
 
-
 // Start the React app
 console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
 const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-if (process.platform === 'win32') {
-  spawn(npmPath, ['run', 'start'], { cwd: __dirname, windowsVerbatimArguments: true, shell: true });
-} else {
-  spawn(npmPath, ['run', 'start'], { cwd: __dirname });
-}
+const reactAppPath = path.resolve(__dirname, '..');
+
+// Start React with specific port and environment
+const reactApp = spawn(npmPath, ['run', 'start-react'], {
+  cwd: reactAppPath,
+  env: {
+    ...process.env,
+    PORT: '5001'
+  }
+});
+
+// Graceful shutdown handler
+const shutdown = (signal: string) => {
+  console.log(`\n\n🛑 Received ${signal}. Shutting down gracefully...`);
+  console.log('- Stopping React app');
+  reactApp.kill();
+  console.log('- Closing WebSocket server');
+  wss.close();
+  console.log('✅ Cleanup complete\n');
+  process.exit(0);
+};
+
+// Handle shutdown signals
+process.on('SIGINT', () => shutdown('SIGINT'));
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+
+reactApp.stdout.on('data', (data: Buffer) => {
+  console.log(data.toString());
+});
+
+reactApp.stderr.on('data', (data: Buffer) => {
+  console.error(data.toString());
+});
 
 const originalConsoleLog = console.log
 const originalConsoleError = console.error

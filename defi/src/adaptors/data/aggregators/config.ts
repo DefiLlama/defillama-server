@@ -343,5 +343,8 @@ export default {
   },
   "lifi": {
     id: "6233"
+  },
+  "mimboku-aggregator": {
+    id: "6252"
   }
 } as AdaptorsConfig;

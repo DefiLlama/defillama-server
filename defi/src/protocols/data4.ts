@@ -15813,5 +15813,25 @@ const data4: Protocol[] = [
     twitter: "yearnfi",
     listedAt: 1748533355
   },
+  {
+    id: "6252",
+    name: "Mimboku Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://mimboku.com/",
+    description: "First native liquidity aggregator and top NFT community in Story",
+    chain: "Story",
+    logo: `${baseIconsUrl}/mimboku-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Story"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "mimboku_story",
+  },
 ];
 export default data4;

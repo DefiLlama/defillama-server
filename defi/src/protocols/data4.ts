@@ -15710,8 +15710,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/asymmetry-usdaf.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "asymmetry-finance",
-    cmcId: "35631",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
     oracles: [],
@@ -15719,6 +15719,7 @@ const data4: Protocol[] = [
     module: "asymmetry-usdaf/index.js",
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
+    parentProtocol: "parent#asymmetry",
     listedAt: 1748466717
   },
   {

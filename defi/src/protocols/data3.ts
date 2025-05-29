@@ -6641,8 +6641,8 @@ const data3_1: Protocol[] = [
   {
     id: "2986",
     name: "Asymmetry Finance",
-    address: null,
-    symbol: "-",
+    address: "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+    symbol: "ASF",
     url: "https://www.asymmetry.finance",
     description: "Asymmetry Finance is a protocol that creates hybrid liquid staking products with real yield.",
     chain: "Ethereum",
@@ -6658,7 +6658,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
-    github: ["asymmetryfinance"],
+    parentProtocol: "parent#asymmetry",
     listedAt: 1684247028,
   },
   {

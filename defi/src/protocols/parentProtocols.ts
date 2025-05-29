@@ -7232,6 +7232,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "29082",
     chains: [],
     twitter: "saros_xyz",
+  },
+  {
+    id: "parent#asymmetry",
+    name: "Asymmetry",
+    url: "https://asymmetry.fi",
+    description: "Asymmetry Finance is a DeFi protocol offering liquid staking and synthetic asset products, including safETH (a diversified LST basket), afETH (auto-compounding ETH), USDaf (a collateralized stablecoin), and yield-optimizing vaults",
+    logo: `${baseIconsUrl}/asymmetry.jpg`,
+    gecko_id: "asymmetry-finance",
+    cmcId: "35631",
+    chains: [],
+    twitter: "asymmetryfin",
+    github: ["asymmetryfinance"],
   }
 ];
 

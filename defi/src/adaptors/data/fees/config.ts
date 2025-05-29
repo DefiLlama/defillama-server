@@ -3530,4 +3530,10 @@ export default {
     "asymmetry-usdaf": {
         id: "6247"
     },
+    "saros-dlmm": {
+        id: "6250"
+    },
+    "saros": {
+        id: "1262"
+    }
 } as AdaptorsConfig

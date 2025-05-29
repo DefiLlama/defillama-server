@@ -3022,5 +3022,8 @@ export default {
     },
     "skate-amm": {
         id: "6246"
+    },
+    "saros-dlmm": {
+        id: "6250"
     }
 } as AdaptorsConfig

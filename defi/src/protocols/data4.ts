@@ -15583,7 +15583,7 @@ const data4: Protocol[] = [
     module: "seedfi-amm/index.js",
     twitter: "superseedfi",
     oracles: [], 
-    forkedFrom: ["2198"],
+    forkedFromIds: ["2198"],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362
   },

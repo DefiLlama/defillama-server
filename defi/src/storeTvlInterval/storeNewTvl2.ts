@@ -82,12 +82,9 @@ export default async function (
             errorMessage += `\n${token} has ${humanizeNumber(value)}`
           }
       })
+      console.log(errorMessage, usdTokenBalances, currentTvl, tvl, debugData)
 
       await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
-      await sendMessage(`
-        ${errorMessage}
-        debug data: ${JSON.stringify(debugData)}
-        `, process.env.OUTDATED_WEBHOOK!)
       throw new Error(errorMessage)
     }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {

@@ -15881,7 +15881,7 @@ const data4: Protocol[] = [
     url: "https://www.hybra.finance",
     description: "Public liquidity layer on Hyperliquid · Upgraded ve(3,3) flywheel · CL & intent-based gasless trades",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/hybra-park.jpg`,
+    logo: `${baseIconsUrl}/hybra.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

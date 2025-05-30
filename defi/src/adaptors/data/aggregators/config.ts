@@ -346,5 +346,8 @@ export default {
   },
   "mimboku-aggregator": {
     id: "6252"
+  },
+  "vetrade": {
+    id: "6253"
   }
 } as AdaptorsConfig;

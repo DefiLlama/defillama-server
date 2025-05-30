@@ -15894,5 +15894,26 @@ const data4: Protocol[] = [
     twitter: "HybraFinance",
     listedAt: 1748622421
   },
+
+  {
+    id: "6256",
+    name: "BitcoinBridge.app",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitcoinbridge.app/",
+    description: "BitcoinBridge.app is a web app that lets users transfer assets between Ethereum and Bitcoin by connecting their wallets and initiating cross-chain transactions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitcoinbridge.app.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum","Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: null,
+  },
 ];
 export default data4;

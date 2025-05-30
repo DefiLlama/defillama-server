@@ -3026,5 +3026,8 @@ export default {
     },
     "saros-dlmm": {
         id: "6250"
+    },
+    "bitcoinbridge.app": {
+        id: "6256"
     }
 } as AdaptorsConfig

@@ -3607,5 +3607,8 @@ export default {
     },
     "mintpark": {
         id: "6254"
+    },
+    "bitcoinbridge.app": {
+        id: "6256"
     }
 } as AdaptorsConfig

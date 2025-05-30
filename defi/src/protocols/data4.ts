@@ -15873,5 +15873,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "mintpark_io",
   },
+  {
+    id: "6255",
+    name: "Hybra",
+    address: null,
+    symbol: "-",
+    url: "https://www.hybra.finance",
+    description: "Public liquidity layer on Hyperliquid · Upgraded ve(3,3) flywheel · CL & intent-based gasless trades",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hybra-park.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    oracles: [],
+    forkedFromIds: ["1407"],
+    module: "hybra-v2/index.js",
+    twitter: "HybraFinance",
+    listedAt: 1748622421
+  },
 ];
 export default data4;

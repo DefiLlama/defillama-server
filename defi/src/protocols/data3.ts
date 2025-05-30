@@ -36097,6 +36097,7 @@ const data3_2: Protocol[] = [
     github: ["DefinitiveCo"],
     audit_links: ["https://github.com/DefinitiveCo/definitive-public/tree/main/audits"],
     listedAt: 1709828870,
+    deprecated: true
   },
   {
     id: "4258",

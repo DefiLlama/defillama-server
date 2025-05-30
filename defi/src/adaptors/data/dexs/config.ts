@@ -1545,7 +1545,8 @@ export default {
         id: "4194",
         cleanRecordsConfig: {
             genuineSpikes: {
-                "1747785600": true
+                "1747785600": true,
+                "1748476800": true,
             }
         }
     },

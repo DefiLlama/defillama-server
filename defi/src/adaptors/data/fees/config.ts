@@ -3605,4 +3605,7 @@ export default {
     "yearn-curating": {
         id: "6251"
     },
+    "mintpark": {
+        id: "6254"
+    }
 } as AdaptorsConfig

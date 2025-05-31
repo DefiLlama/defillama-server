@@ -3608,7 +3608,7 @@ export default {
     "mintpark": {
         id: "6254"
     },
-    "bitcoinbridge.app": {
+    "bitcoin-bridge": {
         id: "6256"
     },
     "uniderp": {

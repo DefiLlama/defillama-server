@@ -3027,7 +3027,7 @@ export default {
     "saros-dlmm": {
         id: "6250"
     },
-    "bitcoinbridge.app": {
+    "bitcoin-bridge": {
         id: "6256"
     },
     "uniderp": {

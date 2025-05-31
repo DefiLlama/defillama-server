@@ -3610,5 +3610,8 @@ export default {
     },
     "bitcoinbridge.app": {
         id: "6256"
+    },
+    "uniderp": {
+        id: "6126"
     }
 } as AdaptorsConfig

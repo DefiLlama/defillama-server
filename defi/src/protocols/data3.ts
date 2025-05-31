@@ -28893,7 +28893,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
-    chains: ["Osmosis"],
+    chains: ["Osmosis", "Milkyway"],
     oracles: [],
     forkedFrom: [],
     module: "milky-way/index.js",

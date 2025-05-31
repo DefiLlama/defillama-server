@@ -4255,6 +4255,14 @@ export const chainCoingeckoIds = {
     twitter: "skate_chain",
     url: "https://lens.xyz/"
   },
+  "Milkyway": {
+    geckoId: "milkyway-2",
+    symbol: "MILK",
+    cmcId: "20874",
+    categories: ["Cosmos"],
+    twitter: "milky_way_zone",
+    url: "https://www.milkyway.zone/"
+  }
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

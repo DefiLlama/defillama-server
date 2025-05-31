@@ -101,7 +101,8 @@ export default async function (
           }
       })
 
-      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+      if (currentTvl < 2e12) // less than 2 trillion
+        await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {

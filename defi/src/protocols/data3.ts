@@ -19358,7 +19358,7 @@ const data3_1: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     module: "dummy.js",
-    oracles: [],
+    oracles: ["Pyth"], //https://docs.pancakeswap.finance/trade/perpetual-trading/perpetual-trading-v2#enhanced-security https://docs.asterdex.com/product/asterex-simple/price-oracles
     forkedFrom: [],
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",

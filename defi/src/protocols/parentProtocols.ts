@@ -7226,7 +7226,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#saros",
     name: "Saros",
     url: "https://saros.finance",
-    description: "Saros is a decentralized exchange protocol on Berachain that allows users to swap, pool, and earn yield on their assets.",
+    description: "Saros is a decentralized exchange protocol on Solana that allows users to swap, pool, and earn yield on their assets.",
     logo: `${baseIconsUrl}/saros.svg`,
     gecko_id: "saros-finance",
     cmcId: "29082",

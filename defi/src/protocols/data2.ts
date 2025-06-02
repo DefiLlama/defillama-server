@@ -16668,7 +16668,9 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      Unichain: ["RedStone"],
     forkedFrom: [],
     module: "compound-v3/index.js",
     twitter: "compoundfinance",

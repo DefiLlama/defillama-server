@@ -12649,6 +12649,7 @@ const data4: Protocol[] = [
   {
     id: "6107",
     name: "Hyperbeat",
+    oracles : ["RedStone"],
     address: null,
     symbol: "-",
     url: "https://hyperbeat.org/",

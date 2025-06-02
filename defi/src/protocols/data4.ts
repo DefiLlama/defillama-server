@@ -15941,5 +15941,31 @@ const data4: Protocol[] = [
     parentProtocol: "parent#cian-protocol",
     listedAt: 1748883773,
   },
+  {
+    id: "6258",
+    name: "Sui Rewards Me",
+    address: "sui:0xbd2301d12b96dd64b41134168931dd54742c0336bcf1752ed346a177ac00d1ed::SuiRewardsMe::SUIREWARDSME",
+    symbol: "SRM",
+    url: "https://suirewards.me/",
+    description:
+      "Sui Rewards Me is a Rewards DEX providing customizable rewards, to grow projects and support communities, powered by every swap. Users can overlay custom tokenomics onto any Sui coin - rewarding holders, strengthening liquidity, and fueling project development",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/sui-rewards-me.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "suirewardsme/index.js",
+    twitter: "SuiRewardsMe",
+    audit_links: [
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewards.me.pdf",
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewardsMe_%24SRM.pdf"
+    ],
+    listedAt: 1748884884,
+  },
 ];
 export default data4;

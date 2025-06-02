@@ -6786,6 +6786,11 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
+    },
+    "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
+      "decimals": 18,
+      "symbol": "M-BTC",
+      "to": "coingecko#merlin-s-seal-btc"
     }
   },
   "flow": {

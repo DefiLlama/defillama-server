@@ -3613,5 +3613,8 @@ export default {
     },
     "uniderp": {
         id: "6126"
+    },
+    "reachme": {
+        id: "6260"
     }
 } as AdaptorsConfig

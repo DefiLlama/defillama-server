@@ -40695,14 +40695,15 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4457",
-    name: "Magpie Protocol",
+    name: "Fly",
+    previousNames: ["Magpie Protocol"],
     address: null,
     symbol: "-",
-    url: "https://www.magpiefi.xyz",
+    url: "https://app.fly.trade/",
     description:
-      "Trading any tokens between any chains - without the need to bridge, is what makes Magpie your efficient app to navigate DeFi.",
+      "Fly (previously Magpie Protocol), is an aggregation infra for DEXs, LSTs and chains.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/magpie-protocol.png`,
+    logo: `${baseIconsUrl}/fly.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -40712,7 +40713,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "magpieprotocol",
+    twitter: "flytrade_",
   },
   {
     id: "4458",

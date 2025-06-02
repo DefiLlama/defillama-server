@@ -52759,14 +52759,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4982",
-    name: "Crack & Stack",
+    name: "Crack And Stack",
     address: null,
     symbol: "-",
     url: "https://crackandstack.com",
     description:
       "Crack & Stack is the leading multiplayer Web3 game on Taiko. Enter the mines, collect ETH and try to escape with your bounty.",
     chain: "Taiko",
-    logo: `${baseIconsUrl}/crack-&-stack.jpg`,
+    logo: `${baseIconsUrl}/crack-and-stack.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

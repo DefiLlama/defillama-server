@@ -2504,6 +2504,7 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1737725859
   },
+  /* DELISTED - SUPPLY OF MBTC DOES NOT MATCH SUPPLY OF NBTC THAT IT SELF DONT MATCH THE NTBTC RESERVERS. 
   {
     id: "5666",
     name: "Babypie",
@@ -2527,6 +2528,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1737725867
   },
+  */
   {
     id: "5667",
     name: "Sophon Farm",

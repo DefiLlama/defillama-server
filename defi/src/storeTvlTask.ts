@@ -14,6 +14,7 @@ import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "./api2/utils/time";
 const path = require('path');
+const v8 = require('v8');
 
 const maxRetries = 2;
 
@@ -21,6 +22,7 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
 
 async function main() {
+  console.log('Heap Size Limit (MB):', v8.getHeapStatistics().heap_size_limit / 1024 / 1024);
 
   const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()

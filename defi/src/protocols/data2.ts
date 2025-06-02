@@ -9470,7 +9470,7 @@ const data2: Protocol[] = [
     name: "Ladex Exchange",
     address: null,
     symbol: "-",
-    url: "https://ladex.exchange",
+    url: "", // hijacked by hackers
     description:
       "One-step solution for swapping tokens on Lachain. Users can earn fees for each swap by adding and removing liquidity to the pairs on ladex.",
     chain: "Lachain",

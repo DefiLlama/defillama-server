@@ -10040,6 +10040,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.spark.fi/dev/security/security-and-audits#spark-liquidity-layer"],
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
+    tokensExcludedFromParent: {
+      Ethereum: ["SPDAI"],    
+    },
     listedAt: 1743696229
   },
   {

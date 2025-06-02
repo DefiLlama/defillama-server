@@ -4459,6 +4459,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "stacker/index.js",
     twitter: "StackerVentures",
+    deadUrl: true,
     audit_links: [],
   },
   {
@@ -5870,6 +5871,7 @@ const data: Protocol[] = [
     chains: ["Fantom"],
     module: "tomb/index.js",
     twitter: "tombfinance",
+    deadUrl: true,
     parentProtocol: "parent#tomb-finance",
     oracles: ["DIA"],
   },
@@ -6054,6 +6056,7 @@ const data: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Firebird-Swap-v1.0.pdf",
     ],
     governanceID: ["snapshot:firebirdfinance.eth"],
+    deadUrl: true,
     github: ["firebird-finance"],
   },
   {
@@ -12176,6 +12179,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1634027456,
     parentProtocol: "parent#pods-finance",
+    deadUrl: true,
   },
   {
     id: "664",
@@ -25974,6 +25978,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1643047373,
     stablecoins: ["moremoney-usd"],
     github: ["MoreMoney-Finance"],
+    deadUrl: true,
   },
   {
     id: "1312",

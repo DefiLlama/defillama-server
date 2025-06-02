@@ -22217,6 +22217,7 @@ const data3_1: Protocol[] = [
     twitter: "zkSynth",
     audit_links: ["https://blaize.tech/clients/smart-contract-security-audit-for-synthex"],
     github: ["zksynth"],
+    deadUrl: true,
     listedAt: 1697722575,
   },
   {
@@ -25550,6 +25551,7 @@ const data3_1: Protocol[] = [
     module: "bril-finance/index.js",
     twitter: "Bril_Finance",
     audit_links: [],
+    deadUrl: true,
     listedAt: 1700394987,
   },
   {
@@ -30867,6 +30869,7 @@ const data3_1: Protocol[] = [
     module: "lila-finance/index.js",
     twitter: "LilaFinance",
     github: ["Lila-Finance"],
+    deadUrl: true,
     listedAt: 1705438657,
   },
   {
@@ -30956,6 +30959,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "horiza/index.js",
     twitter: "horizaio",
+    deadUrl: true,
     listedAt: 1705508558,
   },
   {
@@ -43499,6 +43503,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "limitless/index.js",
     twitter: "limitlessdefi",
+    deadUrl: true,
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
   },
@@ -49801,6 +49806,7 @@ const data3_2: Protocol[] = [
     module: "sturgeon/index.js",
     twitter: "Sturgeon_fi",
     github: ["sturgeon-protocol"],
+    deadUrl: true,
     listedAt: 1720210095,
   },
   {

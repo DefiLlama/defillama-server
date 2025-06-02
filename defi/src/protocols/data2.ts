@@ -6145,6 +6145,7 @@ const data2: Protocol[] = [
     twitter: "HodlTree",
     audit_links: ["https://github.com/HodlTreeProtocol/stableFlashloan/blob/master/audits/Certik.pdf"],
     listedAt: 1649686454,
+    deadUrl: true,
     github: ["HodlTreeProtocol"],
   },
   {
@@ -10130,6 +10131,7 @@ const data2: Protocol[] = [
     module: "penrose/index.js",
     twitter: "PenroseDeFi",
     parentProtocol: "parent#sphere",
+    deadUrl: true,
     listedAt: 1654600878,
   },
   {

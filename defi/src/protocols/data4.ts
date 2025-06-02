@@ -15918,5 +15918,28 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: null,
   },
+  {
+    id: "6257",
+    name: "CIAN Curating",
+    address: null,
+    symbol: "-",
+    url: "https://cian.app",
+    description:
+      "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cian-curating.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cian-curating/index.js",
+    twitter: "CIAN_protocol",
+    parentProtocol: "parent#cian-protocol",
+    listedAt: 1748883773,
+  },
 ];
 export default data4;

@@ -40695,7 +40695,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4457",
-    name: "Fly",
+    name: "fly.trade",
     previousNames: ["Magpie Protocol"],
     address: null,
     symbol: "-",
@@ -40703,7 +40703,7 @@ const data3_2: Protocol[] = [
     description:
       "Fly (previously Magpie Protocol), is an aggregation infra for DEXs, LSTs and chains.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/fly.png`,
+    logo: `${baseIconsUrl}/fly.trade.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

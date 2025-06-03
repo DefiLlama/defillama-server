@@ -10052,7 +10052,7 @@ const data2: Protocol[] = [
     cmcId: "9423",
     category: "Indexes",
     chains: ["Ethereum", "Avalanche"],
-    oracles: ["RedStone"], //https://docs.phuture.finance/protocol-1/about
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.phuture.finance/protocol-1/about
     forkedFrom: [],
     module: "phuture/index.js",
     twitter: "phuture_finance",
@@ -20195,7 +20195,7 @@ const data2: Protocol[] = [
     module: "yieldyak-staked-avax/index.js",
     twitter: "yieldyak_",
     forkedFrom: [],
-    oracles: ["RedStone"],
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     audit_links: ["https://docs.geode.fi/developers/audits"],
     parentProtocol: "parent#yield-yak",
     listedAt: 1667041431,
@@ -21434,7 +21434,7 @@ const data2: Protocol[] = [
     module: "voltz/index.js",
     twitter: "voltz_xyz",
     forkedFrom: [],
-    oracles: ["RedStone"],
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     audit_links: [
       "https://certificate.quantstamp.com/full/voltz-protocol",
       "https://www.certik.com/projects/voltz",
@@ -25781,7 +25781,7 @@ const data2: Protocol[] = [
     chains: ["Avalanche"],
     module: "deltaprime/index.js",
     twitter: "DeltaPrimeDefi",
-    oracles: ["RedStone"],
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     forkedFrom: [],
     audit_links: [
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/DeltaPrime-Review-Piotr-Szlachciak.pdf",

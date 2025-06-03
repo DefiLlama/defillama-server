@@ -1703,7 +1703,7 @@ const data4: Protocol[] = [
     module: "cian-bera/index.js",
     twitter: "CIAN_protocol",
     forkedFrom: [],
-    oracles: ["RedStone"],//https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],//https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -3885,7 +3885,7 @@ const data4: Protocol[] = [
     chains: ["TON"],
     module: "factorial/index.js",
     twitter: "FactorialFi",
-    oracles: ["RedStone"], // https://docs.factorial.finance/oracle
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://docs.factorial.finance/oracle
     forkedFrom: [],  
     listedAt: 1738669030
   },
@@ -4325,7 +4325,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Berachain"],
-    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -5140,7 +5139,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sei"],
-    oracles: ["RedStone"], //https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures, https://app.takaralend.com/market/WSEI
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -5201,7 +5199,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Binance"],
-    oracles: ["RedStone"],//https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],//https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     forkedFrom: [],
     module: "bitfi-cedefi/index.js",
     twitter: "Bitfi_Org", 
@@ -8951,7 +8949,6 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "degenPrime/index.js",
     forkedFromIds: ["2479"],
-    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -9808,7 +9805,6 @@ const data4: Protocol[] = [
     chains: ["AO"],
     module: "LiquidOps/index.js",
     forkedFrom: [],
-    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -14265,7 +14261,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Swellchain"],
-    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",

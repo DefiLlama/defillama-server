@@ -7809,7 +7809,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
     module: "range/index.js",
     twitter: "Range_Protocol",
-    oracles: ["RedStone"], //https://docs.skatechain.org/skate-fi/vertex#oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.skatechain.org/skate-fi/vertex#oracles
     forkedFrom: [],
     audit_links: [
       "https://github.com/Range-Protocol/contracts/blob/master/audits/Certik-Audit.pdf",
@@ -18532,7 +18532,7 @@ const data3_1: Protocol[] = [
     category: "Lending",
     chains: ["Base"],
     module: "seamless/index.js",
-    oracles: ["RedStone"], //https://docs.seamlessprotocol.com/technical/oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.seamlessprotocol.com/technical/oracles
     forkedFromIds: ["1599"],
     twitter: "SeamlessFi",
     audit_links: ["https://github.com/seamless-protocol/audits"],
@@ -20187,7 +20187,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["RedStone"],
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "arcanum/index.js",
     twitter: "0xArcanum",
@@ -21951,7 +21951,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Scroll"],
-    oracles: ["RedStone"],
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     forkedFromIds: ["114"],
     module: "loanshark/index.js",
     twitter: "loansharktech",
@@ -24417,7 +24417,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Manta"],
-    oracles: ["RedStone"], //https://goku-money.gitbook.io/goku-money/faq/oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://goku-money.gitbook.io/goku-money/faq/oracles
     forkedFrom: [],
     module: "goku-money/index.js",
     twitter: "goku_stable",
@@ -28384,7 +28384,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "RWA Lending",
     chains: ["Canto"],
-    oracles: ["RedStone"], //https://docs.vivacity.finance/reference/architecture#price-oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.vivacity.finance/reference/architecture#price-oracles
     forkedFrom: [],
     module: "vivacity/index.js",
     twitter: "vivacityfinance",
@@ -31742,7 +31742,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/9841
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/9841
     forkedFrom: [],
     module: "eigenpie/index.js",
     twitter: "Eigenpiexyz_io",
@@ -32934,7 +32934,6 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Binance"],
-    oracles: ["RedStone"], //https://docs.ambit.finance/borrowing/oracles
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -33792,7 +33791,7 @@ const data3_1: Protocol[] = [
     module: "prisma-lrt/index.js",
     twitter: "PrismaFi",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
     parentProtocol: "parent#prisma",
     stablecoins: ["prismalrt-ultra"],
     listedAt: 1708605362,
@@ -35160,7 +35159,7 @@ const data3_2: Protocol[] = [
     treasury: "wand.js",
     twitter: "WandProtocol",
     forkedFrom: [],
-    oracles: ["RedStone"], // https://docs.wand.fi/product-introduction/redstone-oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://docs.wand.fi/product-introduction/redstone-oracles
     github: ["wandfi"],
     listedAt: 1709402190,
   },
@@ -35659,7 +35658,7 @@ const data3_2: Protocol[] = [
     module: "blume-fm/index.js",
     twitter: "blumefm",
     forkedFromIds: ["114"],
-    oracles: ["RedStone"], //https://docs.blume.fm/oracles-redstone
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.blume.fm/oracles-redstone
     listedAt: 1709639594,
   },
   {
@@ -35989,7 +35988,7 @@ const data3_2: Protocol[] = [
     chains: ["Blast"],
     module: "alien-finance/index.js",
     twitter: "aliendotfinance",
-    oracles: ["RedStone"], // https://blastscan.io/address/0x3A9B69eE4b7F238c38380A540B211f682f724968#readContract
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://blastscan.io/address/0x3A9B69eE4b7F238c38380A540B211f682f724968#readContract
     forkedFrom: [],
     listedAt: 1709815505,
   },
@@ -36711,7 +36710,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["RedStone"], //https://docs.methlab.xyz/overview/Strategy.html#strategy
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.methlab.xyz/overview/Strategy.html#strategy
     forkedFrom: [],
     module: "methlab-xyz/index.js",
     twitter: "methlabxyz",
@@ -39998,7 +39997,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Mantle"],
-    oracles: ["RedStone"], //https://docs.merchantmoe.com/liquidity-book/vaults#h_e0c60a9c6a
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.merchantmoe.com/liquidity-book/vaults#h_e0c60a9c6a
     forkedFromIds: ["2906"],
     module: "merchant-moe-lb/index.js",
     twitter: "MerchantMoe_xyz",
@@ -41543,7 +41542,7 @@ const data3_2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "wise-lending-v2/index.js",
-    oracles: ["RedStone"], //https://wisesoft.gitbook.io/wise/wise-lending#id-2-robust-oracle-safety-system
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://wisesoft.gitbook.io/wise/wise-lending#id-2-robust-oracle-safety-system
     forkedFrom: [],
     twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
@@ -42319,7 +42318,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Blast"],
-    oracles: ["RedStone"], ///https://docs.seismic.finance/accepted-collateral-types#oracles-utilized
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], ///https://docs.seismic.finance/accepted-collateral-types#oracles-utilized
     forkedFromIds: ["111"],
     module: "seismic/index.js",
     twitter: "seismicfinance",
@@ -42411,7 +42410,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: ["RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9998
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9998
     forkedFrom: [],
     module: "ion-protocol/index.js",
     twitter: "ionprotocol",
@@ -42465,7 +42464,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["BSquared"],
-    oracles: ["RedStone"], //https://docs.bitlen.io/borrowing/oracle
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.bitlen.io/borrowing/oracle
     forkedFromIds: ["4054"],
     module: "bitlen/index.js",
     twitter: "BitLen_Finance",
@@ -43076,7 +43075,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Mode"],
-    oracles: ["RedStone"], //https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles
     forkedFromIds: ["270"],
     module: "ebisu-finance/index.js",
     twitter: "Ebisu_Finance",
@@ -45421,7 +45420,7 @@ const data3_2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "native-lend/index.js",
     twitter: "native_fi",
-    oracles: ["RedStone"], //https://docs.native.org/native-dev/getting-started/lend
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.native.org/native-dev/getting-started/lend
     forkedFrom: [],
     parentProtocol: "parent#native",
     listedAt: 1716459034,
@@ -50625,7 +50624,6 @@ const data3_2: Protocol[] = [
     chains: ["Bitlayer"],
     module: "desyn-basisTrading/index.js",
     twitter: "DesynLab",
-    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -51271,7 +51269,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Anchor BTC",
     chains: ["AILayer"],
-    oracles: ["RedStone"], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     forkedFrom: [],
     module: "bitfi/index.js",
     twitter: "Bitfi_Org",
@@ -51997,7 +51995,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    oracles: ["RedStone"], //https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options
     forkedFrom: [],
     chains: ["TON"],
     module: "tonhedge/index.js",
@@ -58381,7 +58379,6 @@ const data3_2: Protocol[] = [
     module: "superlend/index.js",
     twitter: "SuperlendHQ",
     forkedFromIds: ["1599"],
-    oracles: ["RedStone"], //https://docs.superlend.xyz/superlend-features/oracle
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -58484,7 +58481,7 @@ const data3_2: Protocol[] = [
     module: "usdx/index.js",
     twitter: "StablesLabs",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://docs.usdx.money/informaiton/oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://docs.usdx.money/informaiton/oracles
     audit_links: ["https://docs.usdx.money/informaiton/audit"],
     listedAt: 1728645744
   },
@@ -62050,7 +62047,7 @@ const data3_2: Protocol[] = [
     module: "tempest-finance/index.js",
     twitter: "tempest_fi",
     forkedFrom: [],
-    oracles: ["RedStone"], // https://tempestfinance.gitbook.io/tempest-finance-docs/introduction/faq
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://tempestfinance.gitbook.io/tempest-finance-docs/introduction/faq
     audit_links: ["https://github.com/Tempest-Finance/core-public"],
     github: ["Tempest-Finance"],
     listedAt: 1732137329
@@ -65550,7 +65547,6 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Arbitrum"],
-    oracles: ["RedStone"],  // https://docs.tren.finance/protocol/asset-risk/oracle-risk, https://docs.tren.finance/protocol/isolated-modules#redstone-oracles
     oraclesBreakdown: [
       {
         name: "RedStone",

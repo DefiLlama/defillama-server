@@ -123,6 +123,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
     PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
     "PENDLE-LPT": "0x0921ccc98956b1599003fd9739d5e66bf319a161",
+    coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
+    ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547" // SAME , backing 2 tokens and aparently also loop
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

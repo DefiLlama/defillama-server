@@ -47,6 +47,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
+    clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911" // IS NOT BACKED
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -78,7 +79,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
     //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
     HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
-    KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb"
+    KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d" // IS NOT BACKED
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -219,6 +221,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   optimism: {
     MIM: "0xb153fb3d196a8eb25522705560ac152eeec57901",
     GRAIN: "0xfd389dc9533717239856190f42475d3f263a270d",
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d" // IS NOT BACKED
   },
   era: {
     MVX: "0xc8ac6191cdc9c7bf846ad6b52aaaa7a0757ee305",
@@ -296,6 +299,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
     WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
+    clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5" // IS NOT BACKED
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"

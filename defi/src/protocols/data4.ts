@@ -239,7 +239,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Sapphire"],
-    oracles: ["Band"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12897
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12897
     forkedFromIds: ["270"],
     module: "bitusd/index.js",
     twitter: "BitUSD_finance",

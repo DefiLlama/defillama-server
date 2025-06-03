@@ -286,7 +286,7 @@ const data: Protocol[] = [
     twitter: "SkyEcosystem",
     audit_links: ["https://security.makerdao.com/"],
     parentProtocol: "parent#maker",
-    oracles: ["Chronicle"],
+    oraclesBreakdown: [ { name: "Chronicle", type: "Primary", proof: [] } ],
   },
   {
     id: "119",
@@ -441,7 +441,7 @@ const data: Protocol[] = [
     module: "keep.js",
     twitter: null,
     audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
-    oracles: ["Chronicle"],
+    oraclesBreakdown: [ { name: "Chronicle", type: "Primary", proof: [] } ],
     github: ["keep-network"], //check
   },
   {
@@ -1667,7 +1667,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35",
     ],
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
     governanceID: ["snapshot:mantra-dao.eth"],
     github: ["MantraDAO"],
   },
@@ -3347,7 +3347,7 @@ const data: Protocol[] = [
     module: "mirror/index.js",
     twitter: "mirror_protocol",
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
     openSource: true,
     deadUrl: true,
   },
@@ -7458,7 +7458,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://docs.balanced.network/assets/files/balanced-audit-slowmist-2021-b1aa5c5048546151a3c22fee5ab5c62c.pdf",
     ],
     parentProtocol: "parent#balanceddao",
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
   },
   {
     id: "449",
@@ -9593,7 +9593,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "omm/index.js",
     twitter: "ommfinance",
     audit_links: ["https://docs.omm.finance/technical-info/smart-contracts"],
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
   },
   {
     id: "547",
@@ -25727,7 +25727,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom", "KCC", "MultiVAC"],
     module: "Guru/index.js",
     twitter: "FTM1337",
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
     parentProtocol: "parent#guru-network-dao",
     listedAt: 1642725601,
   },

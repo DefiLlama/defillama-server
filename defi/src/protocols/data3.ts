@@ -8391,7 +8391,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Secret"],
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "shadeprotocol-lend/index.js",
     twitter: "Shade_Protocol",
@@ -8440,7 +8440,7 @@ const data3_1: Protocol[] = [
     chains: ["Secret"],
     module: "shadeprotocol-silk/index.js",
     twitter: "Shade_Protocol",
-    oracles: ["Band"],
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ],
     forkedFrom: [],
     parentProtocol: "parent#shade-protocol",
     stablecoins: ["silk"],
@@ -22300,7 +22300,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     tags: ["Treasury Bills"],
     chains: ["Ethereum"],
-    oracles: ["Chronicle"],
+    oraclesBreakdown: [ { name: "Chronicle", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "maker-rwa/index.js",
     twitter: "SkyEcosystem",
@@ -26978,7 +26978,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    oracles: ["Band"], // https://blog.bandprotocol.com/omnibybetafinance-integrates-bandoracle-on-ethereum/ , contract https://etherscan.io/address/0x2609df43e246664c7c930303f9fcbc669f93fda6#code
+    oraclesBreakdown: [ { name: "Band", type: "Primary", proof: [] } ], // https://blog.bandprotocol.com/omnibybetafinance-integrates-bandoracle-on-ethereum/ , contract https://etherscan.io/address/0x2609df43e246664c7c930303f9fcbc669f93fda6#code
     chains: ["Ethereum"],
     module: "beta-finance-v2/index.js",
     twitter: "beta_finance",
@@ -58635,7 +58635,7 @@ const data3_2: Protocol[] = [
     module: "m0/index.js",
     twitter: "m0foundation",
     forkedFrom: [],
-    oracles: ["Chronicle"], // https://www.m0.org/press-releases/chronicle-launches-real-world-asset-oracle-with-initial-integration-on-m-0-building-infrastructure-for-transformation-of-digital-money
+    oraclesBreakdown: [ { name: "Chronicle", type: "Primary", proof: ["https://www.m0.org/press-releases/chronicle-launches-real-world-asset-oracle-with-initial-integration-on-m-0-building-infrastructure-for-transformation-of-digital-money"] } ], 
     audit_links: ["https://docs.m0.org/portal/technical/audits"],
     listedAt: 1728953339
   },
@@ -60100,7 +60100,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Solana"],
-    oracles: ["Switchboard"], // https://docs.synatra.xyz/synthetic-staking/oracles
+    oraclesBreakdown: [ { name: "Switchboard", type: "Primary", proof: [] } ], // https://docs.synatra.xyz/synthetic-staking/oracles
     forkedFrom: [],
     module: "synatra/index.js",
     twitter: "synatraxyz",
@@ -63567,7 +63567,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana", "RENEC"],
-    oracles: ["Switchboard"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12535
+    oraclesBreakdown: [ { name: "Switchboard", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/12535"] } ], 
     forkedFrom: [],
     module: "renec-lend/index.js",
     twitter: "RelendOfficial",

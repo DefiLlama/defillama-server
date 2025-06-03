@@ -3591,7 +3591,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "01/index.js",
     twitter: "01_exchange",
@@ -3730,7 +3730,7 @@ const data2: Protocol[] = [
     cmcId: "9989",
     category: "Indexes",
     chains: ["Solana"],
-    oracles: ["Pyth"], //https://twitter.com/SolriseFinance/status/1405836105610452992?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //https://twitter.com/SolriseFinance/status/1405836105610452992?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
     forkedFrom: [],
     module: "solrise-finance/index.js",
     twitter: "SolriseFinance",
@@ -7193,7 +7193,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "dual/index.js",
     twitter: "DualFinance",
@@ -9228,7 +9228,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
-    oracles: ["Pyth"], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
     forkedFrom: [],
     module: "apollox/index.js",
     twitter: "APX_Finance",
@@ -9917,7 +9917,7 @@ const data2: Protocol[] = [
     cmcId: "19973",
     category: "Derivatives",
     chains: ["Polygon"],
-    oracles: ["Pyth"], // https://docs.metavault.trade/more/oracles
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.metavault.trade/more/oracles
     forkedFromIds: ["337"],
     module: "metavault.trade/index.js",
     twitter: "MetavaultTRADE",
@@ -9985,7 +9985,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "zeta/index.js",
     twitter: "ZetaMarkets",
@@ -10682,7 +10682,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Fantom"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "unidex/index.js",
     twitter: "UniDexFinance",
@@ -10750,7 +10750,7 @@ const data2: Protocol[] = [
     cmcId: "12265",
     category: "Indexes",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "investin/index.js",
     twitter: "Investin_pro",
@@ -14535,7 +14535,7 @@ const data2: Protocol[] = [
     module: "optifi/index.js",
     twitter: "OptifiLabs",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     audit_links: ["https://optifi.gitbook.io/optifi/security/audit-report"],
     listedAt: 1661022636,
     deadUrl: true,
@@ -15790,7 +15790,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "cega/index.js",
     twitter: "cega_fi",
@@ -18198,7 +18198,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
-    oracles: ["Pyth"], // https://docs.lifinity.io/dex/oracle
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.lifinity.io/dex/oracle
     forkedFrom: [],
     module: "lifinity/index.js",
     twitter: "Lifinity_io",
@@ -18694,7 +18694,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
-    oracles: ["Pyth"], // https://docs.goosefx.io/features/perpetual-futures/understanding-perpetual-futures/oracles
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.goosefx.io/features/perpetual-futures/understanding-perpetual-futures/oracles
     forkedFrom: [],
     module: "goosefx/index.js",
     twitter: "GooseFX1",
@@ -19177,7 +19177,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "beluga-protocol/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.beluga.so/dex/oracle
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.beluga.so/dex/oracle
     twitter: "Belugadex",
     audit_links: [
       "https://kudelskisecurity.com/wp-content/uploads/PUBLIC_RELEASE_REDACTED_Kudelski_BelugaDex_SCR_2022_Retest_Report.pdf",
@@ -19377,7 +19377,7 @@ const data2: Protocol[] = [
     module: "prdt/index.js",
     twitter: "PRDT_Finance",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://prdt-finance.gitbook.io/prdt-finance-gitbook
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://prdt-finance.gitbook.io/prdt-finance-gitbook
     audit_links: ["https://www.certik.com/projects/prdt-finance"],
     listedAt: 1666274834,
   },
@@ -19465,7 +19465,7 @@ const data2: Protocol[] = [
     module: "argo/index.js",
     twitter: "ArgoUSD",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     language: "Move",
     audit_links: ["https://docs.argo.fi/assets/files/argo_audit-43ec7be6d291130e1ae7793bec34fc3d.pdf"],
     listedAt: 1666310264,
@@ -19981,7 +19981,6 @@ const data2: Protocol[] = [
     module: "aries-markets/index.js",
     twitter: "AriesMarkets",
     forkedFrom: [],
-    oracles: ["Pyth"], 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -22474,7 +22473,7 @@ const data2: Protocol[] = [
     module: "abelfinance/index.js",
     twitter: "abelfinance",
     forkedFromIds: ["114"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     audit_links: [
       "https://github.com/Vital-block/Project-KYC-Verification/blob/main/ABEL%20FINANCE%20KYC%20CERTIFICATE.pdf",
       "https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf",
@@ -23061,7 +23060,7 @@ const data2: Protocol[] = [
     module: "mummy/index.js",
     twitter: "mummyftm",
     forkedFromIds: ["337"],
-    oracles: ["Pyth"], // https://docs.mummy.finance/trade/trading-v2/platform-mechanics/pyth-price-feed
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.mummy.finance/trade/trading-v2/platform-mechanics/pyth-price-feed
     governanceID: ["snapshot:mmyvote.eth"],
     listedAt: 1671034969,
   },
@@ -25560,7 +25559,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "cap-v4/index.js",
     twitter: "CapDotFinance",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
@@ -27148,7 +27147,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Synthetics",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "parcl/index.js",
     twitter: "Parcl",
@@ -27367,7 +27366,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "vela-exchange/index.js",
     twitter: "vela_exchange",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1676686261,
   },
   {
@@ -27565,7 +27564,7 @@ const data2: Protocol[] = [
     module: "bhavish/index.js",
     twitter: "NexterDotFi",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5339
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/5339
     audit_links: [
       "https://nexter.fi/docs/blocksec-audit-report.pdf",
       "https://nexter.fi/docs/slowmist-audit-report.pdf",
@@ -27985,7 +27984,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "cypher-trade/index.js",
     twitter: "cypher_protocol",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     listedAt: 1677162923,
     github: ["chugach-foundation"],
@@ -29439,7 +29438,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     module: "uniwhale/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     twitter: "UniwhaleEx",
     audit_links: [
       "https://cdn.uniwhale.co/pdf/UniWhale_final_Secure3_Audit_Report.pdf",
@@ -29517,7 +29516,7 @@ const data2: Protocol[] = [
     chains: ["Cronos"],
     module: "fulcrom/index.js",
     forkedFromIds: ["337"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     twitter: "FulcromFinance",
     parentProtocol: "parent#fulcrom",
     listedAt: 1678203844,
@@ -29906,7 +29905,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFromIds: ["337"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",
@@ -29995,7 +29994,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Fantom"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFromIds: ["337"],
     module: "morphex/index.js",
     twitter: "MorphexFTM",

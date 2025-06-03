@@ -599,7 +599,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Eclipse"],
-    oracles: ["Pyth"], // https://doc.astrol.io/astrolend/oracle-usage
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://doc.astrol.io/astrolend/oracle-usage
     forkedFrom: [],
     module: "astrolend/index.js",
     twitter: "AstrolFinance",
@@ -1149,7 +1149,7 @@ const data4: Protocol[] = [
     cmcId: "23038",
     category: "Derivatives",
     chains: ["Sonic"],
-    oracles: ["Pyth"], // https://sonicscan.org/address/0xe9263682e837efabb145f8c632b9d2c518d90652#code
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://sonicscan.org/address/0xe9263682e837efabb145f8c632b9d2c518d90652#code
     forkedFrom: [],
     module: "navigator/index.js",
     twitter: "NaviExSonic",
@@ -1634,7 +1634,7 @@ const data4: Protocol[] = [
     module: "untitledbank/index.js",
     twitter: "BankUntitled",
     forkedFrom: [],
-    oracles: ["Pyth"], // Pyth currently used for majority of deposited value, usdc.e, astr & weth // https://docs.untitledbank.co/
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // Pyth currently used for majority of deposited value, usdc.e, astr & weth // https://docs.untitledbank.co/
     audit_links: ["https://beosin.com/audits/Untitled-Bank_202501101523.pdf"],
     listedAt: 1736960289
   },
@@ -2031,7 +2031,7 @@ const data4: Protocol[] = [
     module: "metastable-musd/index.js",
     twitter: "MetaStables",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.mstable.io/developers/contracts, https://github.com/DefiLlama/DefiLlama-Adapters/pull/13154
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.mstable.io/developers/contracts, https://github.com/DefiLlama/DefiLlama-Adapters/pull/13154
     listedAt: 1737379687
   },
   {
@@ -2053,7 +2053,7 @@ const data4: Protocol[] = [
     module: "sonefi-perp/index.js",
     twitter: "SoneFi_xyz",
     forkedFrom: [],
-    oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697
@@ -2340,7 +2340,7 @@ const data4: Protocol[] = [
     module: "moonlander/index.js",
     twitter: "MoonlanderTrade",
     forkedFromIds: ["1772"],
-    oracles: ["Pyth"], // https://docs.moonlander.trade/
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.moonlander.trade/
     listedAt: 1737641003
   },
   {
@@ -3809,7 +3809,6 @@ const data4: Protocol[] = [
     chains: ["Eclipse"],
     module: "neptune-protocol/index.js",
     twitter: "Neptune_Stable",
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -4123,7 +4122,6 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "wavex/index.js",
     twitter: "waveX_fi",
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6096,7 +6094,7 @@ const data4: Protocol[] = [
     category: "Basis Trading",
     chains: ["Bitcoin"],
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
@@ -6337,7 +6335,6 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6966,7 +6963,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Sei"],
-    oracles: ["Pyth"], 
     oraclesBreakdown: [
         {
          name: "Pyth",
@@ -8064,7 +8060,7 @@ const data4: Protocol[] = [
     category: "Liquidity manager",
     chains: ["Solana"],
     forkedFrom: [],
-    oracles: ["Pyth"], //https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks
     module: "defituna.js",
     twitter: "DeFiTuna",
     audit_links: ["https://github.com/Torii-Security/audits/blob/main/solana/torii-defituna-report.pdf"],
@@ -8543,7 +8539,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Berachain"],
-    oracles: ["Pyth"], 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -8574,7 +8569,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Morph"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -9259,7 +9253,6 @@ const data4: Protocol[] = [
     chains: ["Filecoin"],
     module: "usdfc/index.js",
     forkedFromIds: ["270"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -10053,7 +10046,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Movement"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -10617,7 +10609,6 @@ const data4: Protocol[] = [
     module: "typus-perp/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -11461,7 +11452,6 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Hyperliquid L1"],
     forkedFrom: [],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -11915,7 +11905,7 @@ const data4: Protocol[] = [
     chains: ["Movement"],
     module: "arche-protocol/index.js",
     twitter: "ArcheProtocol",
-    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
     forkedFrom: [],
     audit_links: ["https://github.com/arche-labs/assets/blob/main/audits/Arche%20Protocol%20Audit%20Report.pdf"],
     listedAt: 1745249658
@@ -13638,7 +13628,7 @@ const data4: Protocol[] = [
     module: "bluefin-alphalend/index.js",
     twitter: "bluefinapp",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     parentProtocol: "parent#bluefin",
     listedAt: 1746735537
   },
@@ -13931,7 +13921,6 @@ const data4: Protocol[] = [
     module: "roots/index.js",
     twitter: "rootsfi",
     forkedFrom: [],
-    oracles: ["Pyth"], 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -14392,7 +14381,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Hyperliquid L1"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",

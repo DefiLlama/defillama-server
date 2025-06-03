@@ -2105,7 +2105,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon"],
     module: "siren/index.js",
     twitter: "sirenprotocol",
-    oracles: ["Pyth"], // https://docs.siren.xyz/faq/pyth-integration
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.siren.xyz/faq/pyth-integration
     audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
     governanceID: ["snapshot:sirenmarkets.eth"],
     github: ["sirenmarkets"],
@@ -3794,7 +3794,7 @@ const data: Protocol[] = [
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
     parentProtocol: "parent#ribbon-finance",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
   },
   {
     id: "282",
@@ -3905,7 +3905,7 @@ const data: Protocol[] = [
     module: "mango-markets/index.js",
     twitter: "mangomarkets",
     audit_links: ["https://docs.mango.markets/audit"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     wrongLiquidity: true,
     parentProtocol: "parent#mango-markets",
     deadUrl: true,
@@ -4519,7 +4519,7 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "solfarm.js",
     twitter: "TulipProtocol",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     openSource: false,
     github: ["sol-farm"],
   },
@@ -5563,7 +5563,7 @@ const data: Protocol[] = [
     treasury: "perpetual-protocol.js",
     twitter: "perpprotocol",
     audit_links: ["https://docs.perp.fi/library/audit-report"],
-    oracles: ["Pyth"], // https://v3docs.perp.com/perp-v3/docs-for-users/how-perp-v3-works/pyth-oracles
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://v3docs.perp.com/perp-v3/docs-for-users/how-perp-v3-works/pyth-oracles
     governanceID: ["snapshot:vote-perp.eth", "snapshot:perp-temp-check.eth"],
     github: ["perpetual-protocol"],
   },
@@ -7068,7 +7068,7 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "acumen/index.js",
     twitter: "acumenofficial",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     openSource: false,
   },
   {
@@ -7914,7 +7914,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1iRy6v6_CsJKXOBSk_6mg4kmqvBL-Aqlj/view?usp=sharing",
       "https://drive.google.com/file/d/1HHHveh99XGfvkyqBZWvzzdNMot2ETm9q/view?usp=sharing",
     ],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     github: ["port-finance"],
   },
   {
@@ -9382,7 +9382,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "larix.js",
     twitter: "ProjectLarix",
     audit_links: ["https://docs.projectlarix.com/how-to-prove/audit"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     openSource: false,
   },
   {
@@ -11207,7 +11207,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "francium.js",
     twitter: "Francium_Defi",
     audit_links: ["https://www.certik.org/projects/francium"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     openSource: false,
   },
   {
@@ -11830,7 +11830,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "jetprotocol.js",
     twitter: "JetProtocol",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     parentProtocol: "parent#jet",
   },
   {
@@ -13716,7 +13716,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "synthetify/index.js",
     twitter: "synthetify",
     audit_links: ["https://github.com/Synthetify/synthetify-landing/blob/master/public/blog/audit/audit.pdf"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1635546647,
     github: ["Synthetify"],
   },
@@ -14384,7 +14384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "apricot.js",
     twitter: "ApricotFinance",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1636003606,
     openSource: false,
   },
@@ -18580,7 +18580,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "drift.js",
     twitter: "DriftProtocol",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
     parentProtocol: "parent#drift",
     listedAt: 1638568951,
@@ -19674,7 +19674,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arkadiko.js",
     twitter: "ArkadikoFinance",
     language: "Clarity",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     github: ["arkadiko-dao"],
     listedAt: 1639420466,
   },
@@ -20603,7 +20603,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "chest-finance/index.js",
     twitter: "chestfinance",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1640040907,
     openSource: false,
     deadUrl: true,
@@ -22755,7 +22755,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "friktion/index.js",
     twitter: "friktion_labs",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1640906003,
     openSource: false,
     github: ["Friktion-Labs"],
@@ -22952,7 +22952,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://uploads-ssl.webflow.com/62c82c6d2ffe37f2356d8f28/62fd49a04b1b9b62fcf5786f_PUBLIC_RELEASE_PSYOPTIONS.pdf",
     ],
-    oracles: ["Pyth"], //https://twitter.com/PsyOptions/status/1584729631269482496?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //https://twitter.com/PsyOptions/status/1584729631269482496?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
     listedAt: 1641069495,
     github: ["mithraiclabs"],
   },
@@ -23369,7 +23369,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "katana/index.js",
     twitter: "Katana_HQ",
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1641359167,
     openSource: false,
   },
@@ -25821,7 +25821,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2022.12.08%20-%20Final%20-%20Buffer%20Finance%20Audit%20Report.pdf",
     ],
-    oracles: ["Pyth"], //Changed from chainlink to Pyth https://mirror.xyz/0xc730FbdFEb3e9dF76008A19962963cA4A2bd8de2/3fD_61Nf_RQLIe2oGh0Ug9we8b9nxTiMefdw6Q8Tl7g
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //Changed from chainlink to Pyth https://mirror.xyz/0xc730FbdFEb3e9dF76008A19962963cA4A2bd8de2/3fD_61Nf_RQLIe2oGh0Ug9we8b9nxTiMefdw6Q8Tl7g
     forkedFrom: [],
     listedAt: 1642780144,
   },
@@ -26934,7 +26934,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "hubble/index.js",
     twitter: "HubbleProtocol",
     audit_links: ["https://hubble-markets.gitbook.io/hubble-protocol-official-docs/documentation/security-audits"],
-    oracles: ["Pyth"],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     listedAt: 1643884771,
     stablecoins: ["usdh"],
     github: ["hubbleprotocol"],

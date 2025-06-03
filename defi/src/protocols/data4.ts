@@ -1611,7 +1611,7 @@ const data4: Protocol[] = [
     module: "sake-finance/index.js",
     twitter: "sakefinance",
     forkedFromIds: ["1599"],
-    oracles: ["Chainlink"], // https://docs.sakefinance.com/sake-finance/resources/oracles
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], // https://docs.sakefinance.com/sake-finance/resources/oracles
     audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
     listedAt: 1736960282
   },
@@ -1822,7 +1822,7 @@ const data4: Protocol[] = [
     module: "zarban/index.js",
     twitter: "ZarbanProtocol",
     forkedFromIds: ["111"],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13111
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13111
     audit_links: ["https://www.auditone.io/audit-report/zarban"],
     treasury: "zarban.js",
     github: ["zarbanio"],
@@ -5338,7 +5338,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -5392,7 +5391,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Story"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -5426,7 +5424,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Berachain"],
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6477,7 +6474,6 @@ const data4: Protocol[] = [
     category: "Indexes",
     chains: ["Arbitrum","Binance"],
     forkedFrom: [],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -7843,7 +7839,6 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "usdd-io/index.js",
     twitter: "usddio",
-    oracles: ["Chainlink"], //https://docs.usdd.io/developers/oracle
     oraclesBreakdown: [
       {
         name: "WINkLink",
@@ -7854,7 +7849,7 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.usdd.io/developers/oraclehome","https://x.com/justinsuntron/status/1851885789116039226"],
+        proof: ["https://docs.usdd.io/developers/oraclehome","https://x.com/justinsuntron/status/1851885789116039226", "https://docs.usdd.io/developers/oracle"],
         startDate: '2025-05-15',
       },
     ],
@@ -7949,7 +7944,6 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Sonic"],
     forkedFrom: [],
-    oracles: ["Api3"],
     oraclesBreakdown: [
       {
         name: "Api3",
@@ -8142,7 +8136,6 @@ const data4: Protocol[] = [
     module: "rfx-exchange-v2/index.js",
     twitter: "RFX_exchange",
     forkedFrom: [],
-    oracles: ["Pyth","Stork"], 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -8198,7 +8191,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Base"],
-    oracles: ["DIA"],
     oraclesBreakdown: [
       {
         name: "DIA",
@@ -8632,7 +8624,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Base"],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -12403,7 +12394,6 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "plaza-finance/index.js",
     twitter: "plaza_finance",
-    oracles: ["Chainlink"], 
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -13523,7 +13513,7 @@ const data4: Protocol[] = [
     module: "yala/index.js",
     twitter: "yalaorg",
     forkedFrom: [],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/9788
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], // https://github.com/DefiLlama/defillama-server/pull/9788
     github: ["yalaorg"],
     audit_links: ["https://docs.yala.org/security-audits"],
     listedAt: 1746625641
@@ -13972,7 +13962,6 @@ const data4: Protocol[] = [
     module: "basisos/index.js",
     twitter: "BasisOS",
     forkedFrom: [],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",

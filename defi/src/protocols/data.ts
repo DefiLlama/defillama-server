@@ -115,7 +115,6 @@ const data: Protocol[] = [
     module: "aave/index.js",
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -189,7 +188,6 @@ const data: Protocol[] = [
     module: "compound-onchain/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
-    oracles: ["Chainlink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -394,7 +392,7 @@ const data: Protocol[] = [
     treasury: "nexus-mutual.js",
     twitter: "NexusMutual",
     audit_links: ["https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:community.nexusmutual.eth", "specialresolution.nexusmutual.eth"],
     github: ["NexusMutual"], //check
   },
@@ -486,8 +484,7 @@ const data: Protocol[] = [
     twitter: "loopringorg",
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
-    ],
-    oracles: ["Chainlink"], // https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/
+    ], 
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -602,7 +599,7 @@ const data: Protocol[] = [
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
     audit_links: ["https://github.com/BarnBridge/BarnBridge-PM/tree/master/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:barnbridge.eth"],
     github: ["BarnBridge"], //check
   },
@@ -708,7 +705,7 @@ const data: Protocol[] = [
     module: "rari/index.js",
     twitter: "RariCapital",
     audit_links: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     governanceID: [
       "snapshot:fuse.eth",
@@ -754,7 +751,7 @@ const data: Protocol[] = [
     module: "hakka.js",
     twitter: "hakkafinance",
     audit_links: ["https://github.com/hakkafinance/audit-reports"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:hakka.eth"],
     github: ["hakkafinance"], //check
   },
@@ -863,7 +860,7 @@ const data: Protocol[] = [
       "https://consensys.net/diligence/audits/2020/06/amp",
       "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["flexahq"], //check
   },
   {
@@ -886,7 +883,7 @@ const data: Protocol[] = [
     module: "dydx/index.js",
     twitter: "dYdX",
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     parentProtocol: "parent#dydx",
     language: "Cairo",
   },
@@ -930,7 +927,7 @@ const data: Protocol[] = [
     twitter: "BreederDodo",
     audit_links: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
     parentProtocol: "parent#dodo",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "148",
@@ -974,7 +971,7 @@ const data: Protocol[] = [
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",
     audit_links: ["https://docs.bprotocol.org/technical-documentation/bug-bounty"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["backstop-protocol"], //check
   },
   {
@@ -1047,7 +1044,7 @@ const data: Protocol[] = [
     module: "augur/index.js",
     twitter: "AugurProject",
     audit_links: ["https://github.com/AugurProject/augur-audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["AugurProject"], //check
   },
   {
@@ -1130,7 +1127,7 @@ const data: Protocol[] = [
     module: "88mph/index.js",
     twitter: "88mphapp",
     audit_links: ["https://docs.88mph.app/developer-docs/security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:88mph.eth"],
     github: ["88mphapp"], //check
   },
@@ -1176,7 +1173,7 @@ const data: Protocol[] = [
     module: "growthdefi/index.js",
     twitter: "GrowthDefi",
     audit_links: ["https://consensys.net/diligence/audits/2020/12/growth-defi-v1/"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["GrowthDeFi"], //check
   },
   {
@@ -1222,7 +1219,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:boringvote.eth"],
     github: ["BoringDAO"], //check
   },
@@ -1559,7 +1556,7 @@ const data: Protocol[] = [
     twitter: "MushroomsFinan1",
     audit_links: ["https://github.com/mushroomsforest/deployment/blob/main/security.md"],
     forkedFromIds: ["113"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:mushroomsfi.eth"],
     deadUrl: true,
   },
@@ -1717,7 +1714,7 @@ const data: Protocol[] = [
     module: "wing.js",
     twitter: "Wing_Finance",
     audit_links: ["https://docs.wing.finance/#audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   /*
   {
@@ -1739,7 +1736,7 @@ const data: Protocol[] = [
     module: "fuse.js",
     twitter: "Fuse_network",
     audit_links: ["https://github.com/fuseio/fuse-network/blob/master/audits/zokyo.pdf"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   */
   {
@@ -1958,7 +1955,7 @@ const data: Protocol[] = [
     module: "defidollar/index.js",
     twitter: "defidollar",
     audit_links: ["https://docs.dusd.finance/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     deadUrl: true,
   },
   {
@@ -1999,7 +1996,7 @@ const data: Protocol[] = [
     treasury: "ooki.js",
     twitter: "OokiTrade",
     audit_links: ["https://docs.ooki.com/developers/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:ooki.eth", "eip155:1:0x3133b4F4dcffc083724435784fEFAD510FA659c6"],
   },
   /*
@@ -2402,7 +2399,7 @@ const data: Protocol[] = [
     module: "auctus/index.js",
     twitter: "AuctusOptions",
     audit_links: ["https://docs.auctus.org/security#audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["AuctusProject"],
   },
   {
@@ -2485,7 +2482,7 @@ const data: Protocol[] = [
     module: "vesper/index.js",
     twitter: "VesperFi",
     audit_links: ["https://github.com/vesperfi/doc/tree/main/audit"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:vsp.eth"],
     github: ["vesperfi"],
   },
@@ -2529,7 +2526,7 @@ const data: Protocol[] = [
     module: "definer/index.js",
     twitter: "DeFinerOrg",
     audit_links: ["https://docs.definer.org/"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:definerorg.eth"],
     github: ["DeFinerOrg"],
   },
@@ -2590,7 +2587,7 @@ const data: Protocol[] = [
     module: "enzyme/index.js",
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
   },
@@ -2655,7 +2652,7 @@ const data: Protocol[] = [
     treasury: "futureswap.js",
     twitter: "futureswapx",
     audit_links: ["https://docs.futureswap.com/other/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["futureswap"],
   },
   {
@@ -2884,7 +2881,7 @@ const data: Protocol[] = [
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     parentProtocol: "parent#pooltogether",
   },
   {
@@ -2991,7 +2988,7 @@ const data: Protocol[] = [
     treasury: "we-piggy.js",
     twitter: "wepiggydotcom",
     audit_links: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     github: ["WePiggy"],
   },
@@ -3137,7 +3134,7 @@ const data: Protocol[] = [
     treasury: "mimo-protocol.js",
     twitter: "ParallelMoney",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:mimo.eth"],
     stablecoins: ["parallel"],
     github: ["mimo-capital"],
@@ -3212,7 +3209,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:pancakebunny.eth"],
     github: ["PancakeBunny-finance"],
   },
@@ -3236,7 +3233,7 @@ const data: Protocol[] = [
     treasury: "fei-protocol.js",
     twitter: "feiprotocol",
     audit_links: ["https://docs.fei.money/audit"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: [
       "snapshot:fei.eth",
       "eip155:1:0x0BEF27FEB58e857046d630B2c03dFb7bae567494",
@@ -3453,7 +3450,7 @@ const data: Protocol[] = [
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
     audit_links: ["https://docs.reflexer.finance/risk/geb-risks"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["eip155:1:0x7a6BBe7fDd793CC9ab7e0fc33605FCd2D19371E8"],
     stablecoins: ["rai-reflex-index"],
     github: ["reflexer-labs"],
@@ -3477,7 +3474,7 @@ const data: Protocol[] = [
     module: "set-protocol/index.js",
     twitter: "SetProtocol",
     audit_links: ["https://www.tokensets.com/#/security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["SetProtocol"],
   },
   {
@@ -3567,7 +3564,7 @@ const data: Protocol[] = [
       "https://www.coinspect.com/liquity-audit/",
     ],
     parentProtocol: "parent#liquity",
-    oracles: ["Chainlink"]
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ]
   },
   {
     id: "271",
@@ -3612,7 +3609,7 @@ const data: Protocol[] = [
       "https://cryptex.finance/Cryptex_-_Final_Report.pdf",
       "https://certificate.quantstamp.com/full/cryptex",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     parentProtocol: "parent#cryptex-finance",
   },
   {
@@ -3696,7 +3693,7 @@ const data: Protocol[] = [
     module: "stafi/index.js",
     twitter: "StaFi_Protocol",
     audit_links: ["https://github.com/stafiprotocol/stafi-bootstrap/tree/master/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["stafiprotocol"],
   },
   {
@@ -3887,7 +3884,7 @@ const data: Protocol[] = [
     twitter: "opyn_",
     audit_links: ["https://opyn.gitbook.io/opyn/get-started/security#audits"],
     parentProtocol: "parent#opyn",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "286",
@@ -4374,7 +4371,7 @@ const data: Protocol[] = [
     module: "ruler/index.js",
     twitter: "RulerProtocol",
     audit_links: ["https://docs.rulerprotocol.com/security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["Ruler-Protocol"],
   },
   /*
@@ -5015,7 +5012,7 @@ const data: Protocol[] = [
     twitter: "GMX_IO",
     audit_links: ["https://gmxio.gitbook.io/gmx/audit"],
     parentProtocol: "parent#gmx",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "338",
@@ -5056,7 +5053,7 @@ const data: Protocol[] = [
     module: "lien/index.js",
     twitter: "LienFinance",
     audit_links: ["https://lien.finance/risk"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["LienFinance"],
   },
   {
@@ -5099,7 +5096,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "nsure/index.js",
     twitter: "Nsure_network",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["nsure-tech"],
   },
   {
@@ -5143,7 +5140,7 @@ const data: Protocol[] = [
     module: "impermax/index.js",
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     parentProtocol: "parent#impermax-finance"
   },
   {
@@ -5206,7 +5203,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Algorand%20Smart%20Contract%20Audit/Yieldly_Finance_Lottery_Algorand_Smart_Contract_Halborn_v1_1.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "347",
@@ -5260,7 +5257,7 @@ const data: Protocol[] = [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389",
       "https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     github: ["fildaio"],
   },
@@ -5303,7 +5300,7 @@ const data: Protocol[] = [
     treasury: "cvi.js",
     twitter: "official_CVI",
     audit_links: ["https://cvi.finance/files/usdt-audit.pdf", "https://cvi.finance/files/eth-audit.pdf"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["govi-dao"],
   },
   {
@@ -5499,7 +5496,7 @@ const data: Protocol[] = [
     module: "fraxfinance/index.js",
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     parentProtocol: "parent#frax-finance",
     stablecoins: ["frax"],
   },
@@ -5744,7 +5741,7 @@ const data: Protocol[] = [
     module: "merlinlab/index.js",
     twitter: "MerlinLab_",
     audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     deadUrl: true,
   },
   {
@@ -5893,7 +5890,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "ethernity/index.js",
     twitter: "EthernityChain",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "378",
@@ -5935,7 +5932,7 @@ const data: Protocol[] = [
     module: "cardstarter/index.js",
     twitter: "CardStarter",
     audit_links: ["https://t.me/Cardstarter/115433"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "380",
@@ -5960,7 +5957,7 @@ const data: Protocol[] = [
       "https://www.lendhub.org/report/LendHubreport-020821.pdf",
       "https://www.lendhub.org/report/LendHubAuditReport2.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     github: ["lendhub"],
   },
@@ -6247,7 +6244,7 @@ const data: Protocol[] = [
     module: "apyfinance/index.js",
     twitter: "apyfinance",
     audit_links: ["https://github.com/apy-finance/apy-audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "394",
@@ -6785,7 +6782,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://moonfarmfinance.medium.com/moonfarm-finances-security-auditted-and-certified-by-the-arcadia-group-810c4f24c051",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   */ //temporary, until the adapter is onchain
   {
@@ -7567,7 +7564,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wildcredit/index.js",
     twitter: "WildCredit",
     audit_links: ["https://code423n4.com/reports/2021-07-wildcredit/"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     deadUrl: true,
   },
   {
@@ -7694,7 +7691,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "multiplierfinance/index.js",
     twitter: "MultiplierMXX",
     audit_links: ["https://mcl-docs.multiplier.finance/developers/security-and-audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     deadUrl: true,
   },
   {
@@ -7866,7 +7863,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "benqi/index.js",
     twitter: "BenqiFinance",
     audit_links: ["https://docs.benqi.fi/risks#audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     parentProtocol: "parent#benqi",
     tokensExcludedFromParent: {
@@ -8620,7 +8617,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom", "Avalanche"],
     module: "robovault/index.js",
     twitter: "robo_vault",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://docs.robo-vault.com/security"],
     github: ["RoboVault"],
   },
@@ -8955,7 +8952,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/PancakeBunny-finance/qubit-finance/blob/master/audits/PeckShield-Audit-Report-Qubit-v1.0.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     github: ["PancakeBunny-finance"],
   },
@@ -9129,7 +9126,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "ramp/index.js",
     twitter: "RampDefi",
     audit_links: ["https://github.com/RAMP-DEFI/Security-Audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["RAMP-DEFI"],
   },
   {
@@ -9293,7 +9290,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "twindex/index.js",
     twitter: "twindexcom",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["2197"],
   },
   {
@@ -10177,7 +10174,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Ethereum"],
     module: "liqee/index.js",
     twitter: "liqeeio",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     github: ["Liqee"],
   },
@@ -10244,7 +10241,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "unore.js",
     twitter: "LunosDAO",
     audit_links: ["https://github.com/Uno-Re/audit-reports"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["Uno-Re"],
   },
   {
@@ -10477,7 +10474,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "maple/index.js",
     twitter: "maplefinance",
-    oracles: ["Chainlink"], //https://maplefinance.gitbook.io/maple/technical-resources/singletons/oracles
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], //https://maplefinance.gitbook.io/maple/technical-resources/singletons/oracles
     parentProtocol: "parent#maple-finance",
     audit_links: ["https://github.com/maple-labs/maple-core#audit-reports"],
   },
@@ -10934,7 +10931,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/chainsulting/Smart-Contract-Security-Audits/blob/master/Percent%20Finance/02_Smart%20Contract%20Audit%20Percent%20Finance.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["114"],
     governanceID: ["hundredfinance.eth"],
     github: ["hundred-finance"],
@@ -10958,7 +10955,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cap/index.js",
     twitter: "CapDotFinance",
     parentProtocol: "parent#cap-finance",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "609",
@@ -11189,7 +11186,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "VeeFinance",
     audit_links: ["https://vee.finance/home#contract"],
     forkedFromIds: ["114"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   },
   {
     id: "620",
@@ -11232,7 +11229,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "trava/index.js",
     twitter: "trava_finance",
     audit_links: ["https://hacken.io/audits/#trava_finance", "https://www.certik.org/projects/trava"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["TravaFinance"],
   },
   {
@@ -11518,7 +11515,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "totemfi/index.js",
     twitter: "TotemFi",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     deadUrl: true,
   },
   {
@@ -11740,7 +11737,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Geist-v1.0.pdf",
       "https://solidity.finance/audits/GeistProtocol/",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["111"],
     github: ["geist-finance"],
   },
@@ -11855,7 +11852,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "alkemi/index.js",
     twitter: "AlkemiNetwork",
     audit_links: ["https://github.com/AlkemiNetwork/alkemi-earn-security-audit"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["AlkemiNetwork"],
   },
   {
@@ -11900,7 +11897,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Augmented-v1.0.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["augmented-finance"],
   },
   {
@@ -12176,7 +12173,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "podsfinance/index.js",
     twitter: "PodsFinance",
     audit_links: ["https://docs.pods.finance/security/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1634027456,
     parentProtocol: "parent#pods-finance",
     deadUrl: true,
@@ -12331,7 +12328,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report/Smart%20Contract%20Security%20Audit%20Report%20-%20Shield.pdf",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Shield-v1.0.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1634242012,
   },
   {
@@ -12481,7 +12478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "phoenix/index.js",
     twitter: "Phoenix__PHX",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1634418530,
     github: ["Phoenix-Finance"],
     deadUrl: true,
@@ -12813,9 +12810,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "juststable/index.js",
     twitter: "DeFi_JUST",
     audit_links: ["https://just.tronscan.org/docs/audit-report-just_cn.pdf"],
-    listedAt: 1634757569,
-    oracles: ["Chainlink"], //https://juststable.tronscan.org/?lang=en-US#/home. Please refer to the footer in any page.
-    oraclesBreakdown: [
+    listedAt: 1634757569, 
+    oraclesBreakdown: [ //https://juststable.tronscan.org/?lang=en-US#/home. Please refer to the footer in any page.
       {
         name: "WINkLink",
         type: "Primary",
@@ -12987,7 +12983,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "evolutionland/index.js",
     twitter: "Evolution_Land",
     audit_links: ["https://www.certik.org/projects/evolutionland"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1634932898,
   },
   */
@@ -13562,7 +13558,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "handlefi/index.js",
     twitter: "handle_fi",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://drive.google.com/file/d/1WMbvtLCA07z5Jlg9k4tV76x8yDWV66-Z/view"],
     listedAt: 1635466605,
     parentProtocol: "parent#handle-finance",
@@ -13612,7 +13608,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solo/index.js",
     twitter: "solo_top",
     audit_links: ["https://www.certik.com/projects/solotop"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1635500629,
   },
   {
@@ -13764,7 +13760,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "stabilizefi/index.js",
     twitter: "stabilize_fi",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1635796872,
     forkedFromIds: ["270"],
     github: ["Stabilizefi"],
@@ -13877,7 +13873,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "defihalal/index.js",
     twitter: "DefiHalal",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1635801672,
     forkedFromIds: ["270"],
     deadUrl: true,
@@ -15007,7 +15003,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "blizzfinance/index.js",
     twitter: "BlizzFinance",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["111"],
     github: ["pe1kko"],
     listedAt: 1636390733,
@@ -15941,7 +15937,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polyroll.js",
     twitter: "PolyrollOrg",
     audit_links: ["https://docs.polyroll.org/security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1637119818,
   },
   {
@@ -16055,7 +16051,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "risq.js",
     twitter: "risqprotocol",
     audit_links: ["https://solidity.finance/audits/RisqProtocol"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1637190999,
   },
   {
@@ -17323,7 +17319,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "defrost/index.js",
     twitter: "Defrost_Finance",
     audit_links: ["https://github.com/DefrostFinance/Audit-Reports/blob/main/REP-Defrost-Finance-2021-11-10.pdf"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1637875319,
     github: ["DefrostFinance"],
   },
@@ -17596,7 +17592,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "oddz/index.js",
     twitter: "oddz_finance",
     audit_links: ["https://github.com/oddz-finance/audits"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1638117141,
     github: ["oddz-finance"],
   },
@@ -18899,7 +18895,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mobiusfinance/index.js",
     twitter: "Mobius_Finance",
     audit_links: ["https://docs.mobius.finance/technical-resources/audit"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1638877544,
   },
   {
@@ -18943,7 +18939,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-HoneyFarm-v1.0.pdf",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-HoneyFarm-v1.0.1.pdf",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1638879127,
   },
   {
@@ -19010,7 +19006,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "powerbomb/index.js",
     twitter: "powerbombfi",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1638882894,
     deadUrl: true,
   },
@@ -19207,7 +19203,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "luxor.js",
     twitter: "LuxorMoney",
     forkedFromIds: ["340"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1639028773,
   },
   {
@@ -20497,7 +20493,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "linear/index.js",
     twitter: "LinearFinance",
     audit_links: ["https://www.certik.com/projects/linearfinance"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1639989997,
     governanceID: ["snapshot:lineardao.eth"],
     github: ["Linear-finance"],
@@ -20974,7 +20970,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["CSC"],
     module: "ifpool/index.js",
     twitter: "if_networks",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/IFWallet/ifpool_staking/blob/main/audits/IFPool%20Security%20Assessment.pdf"],
     listedAt: 1640179280,
   },
@@ -21099,7 +21095,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "thetanuts/index.js",
     twitter: "ThetanutsFi",
     audit_links: ["https://docs.thetanuts.finance/contracts-and-security/security"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1640274979,
   },
   {
@@ -21562,7 +21558,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["CSC"],
     module: "waterloan/index.js",
     twitter: "realwaterloan",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["111"],
     listedAt: 1640628751,
     deadUrl: true,
@@ -23068,7 +23064,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "whaleloans/index.js",
     twitter: "WhaleLoans",
     audit_links: ["https://github.com/Whale-loans/audits/blob/main/audits/Blocksec/whale_v1.4.pdf"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFromIds: ["340"],
     listedAt: 1641173125,
   },
@@ -23198,7 +23194,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "euler/index.js",
     twitter: "eulerfinance",
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://docs.euler.finance/security/smart-contract-audits"],
     parentProtocol: "parent#euler",
     listedAt: 1641231917,
@@ -23310,7 +23306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://www.certik.com/projects/everrise",
       "https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/EverRise",
     ],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1641256925,
   },
   {
@@ -23860,7 +23856,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "ocean-protocol/index.js",
   twitter: "oceanprotocol",
   audit_links: ["https://github.com/oceanprotocol/contracts/blob/main/docs/Ocean_Protocol_Smart_Contract_Security_Audit_Report_Halborn_Final%20(1).pdf"],
-  oracles: ["Chainlink"],
+  oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
   listedAt: 1641595980,
 },
 */
@@ -25218,7 +25214,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "perifinance/index.js",
     twitter: "PERIfinance",
     audit_links: ["https://www.certik.org/projects/perifinance"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1642450048,
     github: ["perifinance"],
   }, */
@@ -25799,7 +25795,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/CREAMSummary.pdf"],
     forkedFromIds: ["114"],
     listedAt: 1642768849,
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     governanceID: ["snapshot:iron-bank.eth"],
     stablecoins: ["iron-bank-euro"],
     deadUrl: true,
@@ -27470,7 +27466,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     module: "minimax/index.js",
     twitter: "MinimaxFinance",
     language: "Solidity",

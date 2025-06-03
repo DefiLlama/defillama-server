@@ -2709,7 +2709,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Restaked BTC",
+    category: "Bridge",
     chains: ["Bitcoin"],
     module: "coffer-network/index.js",
     twitter: "CofferNetwork",

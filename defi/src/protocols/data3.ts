@@ -44146,7 +44146,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

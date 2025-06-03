@@ -15633,7 +15633,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Governance Incentives",
+    category: "Chain",
     chains: ["Berachain"],
     oracles: [],
     forkedFrom: [],

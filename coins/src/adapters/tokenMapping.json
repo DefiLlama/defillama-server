@@ -6273,6 +6273,11 @@
       "to": "coingecko#weth",
       "decimals": 18,
       "symbol": "WETH"
+    },
+    "0xE59EABcDc3C86909a391D0760b039A3f23d48281": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
     }
   },
   "aeternity": {

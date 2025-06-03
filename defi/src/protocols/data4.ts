@@ -16012,5 +16012,35 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "reachme_io",
   },
+  {
+    id: "6261",
+    name: "Dre Finance",
+    address: "sonic:0xF8232259D4F92E44eF84F18A0B9877F4060B26F1",
+    symbol: "DRE",
+    url: "https://dre.finance/",
+    description:
+      "$DRE is a decentralized reserve currency backed by a diversified basket of assets. $DRE is unique, community-driven and transparent",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/dre-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Sonic"],
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14883"],
+      }
+    ],
+    forkedFrom: [],
+    module: "drefinance/index.js",
+    treasury: "drefinance.js",
+    twitter: "drefinance",
+    github: ["dredotfinance"],
+    listedAt: 1748928247,
+  },
 ];
 export default data4;

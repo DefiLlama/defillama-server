@@ -34864,6 +34864,7 @@ const data3_2: Protocol[] = [
     oracles: [],
     listedAt: 1709294815,
   },
+  /*
   {
     id: "4205",
     name: "Cygnus Finance",
@@ -34893,6 +34894,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1709294898,
   },
+  */
   {
     id: "4206",
     name: "BladeSwap AMM",
@@ -56537,6 +56539,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#electroswap",
     listedAt: 1726266687,
   },
+  /*
   {
     id: "5149",
     name: "Cygnus clTON",
@@ -56561,6 +56564,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726335675,
   },
+  */
   {
     id: "5150",
     name: "swap.coffee",

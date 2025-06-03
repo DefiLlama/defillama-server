@@ -5610,6 +5610,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ElectroSwap_Dex",
   },
+  /*
   {
     id: "parent#cygnus-finance",
     name: "Cygnus",
@@ -5624,6 +5625,7 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["cygnus-finance-global-usd"],
     twitter: "CygnusFi",
   },
+  */
   {
     id: "parent#typus-finance",
     name: "Typus Finance",

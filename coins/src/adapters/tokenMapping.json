@@ -6268,6 +6268,11 @@
       "to": "coingecko#wicrypt",
       "decimals": 18,
       "symbol": "WNT"
+    },
+    "0xbe231A8492487aAe6096278A97050FAe6B9d5BEc": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "WETH"
     }
   },
   "aeternity": {

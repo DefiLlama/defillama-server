@@ -331,7 +331,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     oraclesBreakdown: [
       {
         name: "Api3",
@@ -744,7 +743,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Fraxtal"],
-    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFromIds: ["1599"],
     module: "dtrinity-dlend/index.js",
     twitter: "dtrinity_defi",
@@ -1364,7 +1363,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: ["Api3"], // https://aurum-finance.gitbook.io/docs
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://aurum-finance.gitbook.io/docs
     module: "aurum/index.js",
     twitter: "AurumFi_Sonic",
     forkedFromIds: ["1599"],
@@ -1935,7 +1934,6 @@ const data4: Protocol[] = [
     module: "citrex-markets/index.js",
     twitter: "citrex_markets",
     forkedFrom: [],
-    oracles: ["Stork"],
     oraclesBreakdown: [
       {
       name: "Stork",
@@ -2657,7 +2655,6 @@ const data4: Protocol[] = [
     module: "vicuna/index.js",
     twitter: "VicunaFinance",
     forkedFromIds: ["326"],
-    oracles: ["Api3"],
     oraclesBreakdown: [
       {
         name: "Api3",
@@ -4031,7 +4028,7 @@ const data4: Protocol[] = [
     chains: ["Plume (Deprecated)", "Plume Mainnet"],
     module: "solera/index.js",
     twitter: "SoleraLabs",
-    oracles: ["Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
     forkedFromIds: ["1599"],
     audit_links: [
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2FLPus8JS8WGA5412Nf2eH%2FSolera%20-%20Zenith%20Audit%20Report%20-%2012-18-2024.pdf?alt=media&token=ade0f7c6-2105-422f-8411-f099cf71e00f",
@@ -4709,7 +4706,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Plume (Deprecated)"],
-    oracles: ["Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13432
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13432
     forkedFrom: [],
     module: "multichainz/index.js",
     twitter: "MultichainZ_",
@@ -7567,7 +7564,6 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
-    oracles: ["Stork"],
     oraclesBreakdown: [
       {
       name: "Stork",

@@ -1159,7 +1159,7 @@ const data3_1: Protocol[] = [
     cmcId: "23758",
     category: "Liquidity manager",
     chains: ["Ethereum", "Polygon zkEVM"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["2197"],
     module: "antfarm-finance/index.js",
     treasury: "antfarm_finance.js",
@@ -2789,7 +2789,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Arbitrum"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["376"],
     module: "ArbiTen/index.js",
     twitter: "ArbiTenFinance",
@@ -4634,7 +4634,7 @@ const data3_1: Protocol[] = [
     cmcId: "22355",
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Stork"], //https://vertex-protocol.gitbook.io/docs/basics/pricing-oracles
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], //https://vertex-protocol.gitbook.io/docs/basics/pricing-oracles
     forkedFrom: [],
     module: "vertex/index.js",
     twitter: "vertex_protocol",
@@ -6761,7 +6761,7 @@ const data3_1: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "shrike-perps/index.js",
     twitter: "DovishFi",
-    oracles: ["Api3"],
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ],
     forkedFromIds: ["337"],
     listedAt: 1684332007,
   },
@@ -8182,7 +8182,7 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum"],
     module: "paribus/index.js",
     twitter: "paribus_io",
-    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFromIds: ["114"],
     github: ["Paribus"],
     listedAt: 1685645869,
@@ -8276,7 +8276,7 @@ const data3_1: Protocol[] = [
     module: "tropykus-zkevm/index.js",
     twitter: "tropykus",
     forkedFromIds: ["111"],
-    oracles: ["Api3"], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448,
   },
@@ -11646,7 +11646,7 @@ const data3_1: Protocol[] = [
     chains: ["Pulse"],
     module: "pulserate/index.js",
     twitter: "PulseRate_",
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["376"],
     listedAt: 1688644022,
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Pulse%20Rate/Pulse%20Rate.pdf"],
@@ -12472,7 +12472,7 @@ const data3_1: Protocol[] = [
     chains: ["Meter"],
     module: "meter-Liquid-Staking/index.js",
     twitter: "Meter_IO",
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFrom: [],
     listedAt: 1689657535,
   },
@@ -15677,7 +15677,7 @@ const data3_1: Protocol[] = [
     module: "aark/index.js",
     twitter: "Aark_Digital",
     forkedFrom: [],
-    oracles: ["Stork"], // https://twitter.com/StorkOracle/status/1752761185886470440
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://twitter.com/StorkOracle/status/1752761185886470440
     listedAt: 1691812695,
   },
   {
@@ -20067,7 +20067,7 @@ const data3_1: Protocol[] = [
     module: "phame/index.js",
     twitter: "Phamouscrypto",
     forkedFromIds: ["337"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     audit_links: ["https://skynet.certik.com/projects/phame", "https://sourcehat.com/audits/Phame"],
     listedAt: 1695898558,
   },
@@ -20403,7 +20403,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Pulse"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["111"],
     module: "phiat/index.js",
     twitter: "phiatcrypto",
@@ -20770,7 +20770,6 @@ const data3_1: Protocol[] = [
     module: "perennial-v2/index.js",
     twitter: "perenniallabs",
     forkedFrom: [],
-    oracles: ["Stork"],
     oraclesBreakdown: [
       {
       name: "Stork",
@@ -22418,7 +22417,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Scroll"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "cog-finance/index.js",
     twitter: "CogFinance",
@@ -24192,7 +24191,7 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum", "Ethereum", "Blast"],
     module: "marginly/index.js",
     forkedFrom: [],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     twitter: "marginlycom",
     audit_links: [
       "https://github.com/eq-lab/marginly/blob/main/audit/Quantstamp-marginly-final-report.pdf",
@@ -27146,7 +27145,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["2198"],
     chains: ["Fantom", "Arbitrum", "Base"],
     module: "Thick/index.js",
@@ -30285,7 +30284,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Osmosis"],
-    oracles: ["TWAP"], // Osmosis Concentrated Liquidity Pool TWAP
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ], // Osmosis Concentrated Liquidity Pool TWAP
     forkedFrom: [],
     module: "margined-protocol/index.js",
     twitter: "margined_io",
@@ -31245,7 +31244,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/5644
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/5644
     forkedFrom: [],
     module: "init-capital/index.js",
     twitter: "InitCapital_",
@@ -33547,7 +33546,7 @@ const data3_1: Protocol[] = [
     module: "aurelius/index.js",
     twitter: "AureliusFi",
     forkedFromIds: ["270", "111"],
-    oracles: ["Api3"], // https://docs.aurelius.finance/security#oracles
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://docs.aurelius.finance/security#oracles
     audit_links: ["https://docs.aurelius.finance/security"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708396298,
@@ -34943,7 +34942,7 @@ const data3_2: Protocol[] = [
     module: "juice-finance/index.js",
     twitter: "Juice_Finance",
     forkedFrom: [],
-    oracles: ["Api3"], //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles Api3 has ETH, USDB & ezETH feeds
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles Api3 has ETH, USDB & ezETH feeds
     listedAt: 1709308594,
   },
   {
@@ -35009,7 +35008,7 @@ const data3_2: Protocol[] = [
     module: "pac-finance/index.js",
     twitter: "pac_finance",
     forkedFromIds: ["1599"],
-    oracles: ["Api3"], // https://docs.pac.finance/security#oracle
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://docs.pac.finance/security#oracle
     listedAt: 1709315721,
   },
   {
@@ -35076,7 +35075,6 @@ const data3_2: Protocol[] = [
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
     forkedFromIds: ["2899"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
-    oracles: ["Stork"],
     oraclesBreakdown: [
       {
       name: "Stork",
@@ -35921,7 +35919,7 @@ const data3_2: Protocol[] = [
     chains: ["Mode"],
     module: "ironclad/index.js",
     twitter: "IroncladFinance",
-    oracles: ["Api3"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFromIds: ["111"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1709767737,
@@ -37141,7 +37139,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Ethereum"],
-    oracles: ["Api3"], //https://arbiscan.io/address/0x6295248f578bfa9c057a3e1182bed27121530e7a#readProxyContract , API3Oracle address : 0x28c1576eb118f2Ccd02eF2e6Dbd732F5C8D2e86B.
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], //https://arbiscan.io/address/0x6295248f578bfa9c057a3e1182bed27121530e7a#readProxyContract , API3Oracle address : 0x28c1576eb118f2Ccd02eF2e6Dbd732F5C8D2e86B.
     forkedFrom: [],
     module: "airpuff/index.js",
     twitter: "airpuff_io",
@@ -38699,7 +38697,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum", "Base", "Optimism", "Arbitrum"],
-    oracles: ["TWAP"],
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "aloe/index.js",
     twitter: "aloecapital",
@@ -38830,7 +38828,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Pulse"],
-    oracles: ["TWAP"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551
     forkedFromIds: ["270"],
     module: "earn-powercity-io/index.js",
     twitter: "POWERCITYio",
@@ -40709,7 +40707,7 @@ const data3_2: Protocol[] = [
     chains: ["Base"],
     module: "bsx-exchange/index.js",
     forkedFrom: [],
-    oracles: ["Stork"], // https://docs.bsx.exchange/bsx-docs/architectural-overview/oracle
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://docs.bsx.exchange/bsx-docs/architectural-overview/oracle
     twitter: "bsx_labs",
     listedAt: 1712661648,
   },
@@ -46733,7 +46731,6 @@ const data3_2: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFromIds: ["1599"],
-    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/8796
     oraclesBreakdown: [
       {
         name: "Api3",
@@ -47466,7 +47463,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: ["Api3"], // confirmed by team https://docs.hana.finance/contracts-and-security/price-oracle WETH-API3OracleWrapper-Taiko 0x987c740ecedC426c7b08a8cf041511446b1cDd55, USDC-API3OracleWrapper-Taiko 0x311A245b0119983fd015d60950C0c4AD9e0D16A1
+    oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // confirmed by team https://docs.hana.finance/contracts-and-security/price-oracle WETH-API3OracleWrapper-Taiko 0x987c740ecedC426c7b08a8cf041511446b1cDd55, USDC-API3OracleWrapper-Taiko 0x311A245b0119983fd015d60950C0c4AD9e0D16A1
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",
@@ -49079,7 +49076,7 @@ const data3_2: Protocol[] = [
     module: "apex-omni/index.js",
     twitter: "OfficialApeXdex",
     forkedFrom: [],
-    oracles: ["Stork"],
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ],
     parentProtocol: "parent#apex-protocol",
     listedAt: 1719488031,
   },
@@ -50435,7 +50432,7 @@ const data3_2: Protocol[] = [
     chains: ["Pulse"],
     module: "flex-powercity-io/index.js",
     twitter: "POWERCITYio",
-    oracles: ["TWAP"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551
+    oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551
     forkedFromIds: ["270"],
     parentProtocol: "parent#powercity",
     stablecoins: ["hex-dollar-coin"],
@@ -52083,7 +52080,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    oracles: ["Stork"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11217  , https://docs.starkware.co/starkex/perpetual/oracle-price-tick.html
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11217  , https://docs.starkware.co/starkex/perpetual/oracle-price-tick.html
     forkedFrom: [],
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "edgeX/index.js",
@@ -52639,7 +52636,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Reya Network"],
-    oracles: ["Stork"], // https://x.com/reya_xyz/status/1825486954613379098
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://x.com/reya_xyz/status/1825486954613379098
     forkedFrom: [],
     module: "reya-perp/index.js",
     twitter: "reya_xyz",

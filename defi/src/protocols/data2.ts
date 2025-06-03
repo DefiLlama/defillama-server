@@ -23495,7 +23495,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Staking Rental",
     chains: ["Cardano"],
     module: "optim-liquidity-bonds/index.js",
     twitter: "OptimFi",

@@ -24,13 +24,13 @@ const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const reactAppPath = path.resolve(__dirname, '..');
 
 // Start React with specific port and environment
-/* const reactApp = spawn(npmPath, ['run', 'start-react'], {
+const reactApp = spawn(npmPath, ['run', 'start-react'], {
   cwd: reactAppPath,
   env: {
     ...process.env,
     PORT: '5001'
   }
-}); */
+});
 
 // Graceful shutdown handler
 const shutdown = (signal: string) => {
@@ -38,7 +38,7 @@ const shutdown = (signal: string) => {
   console.log('- Closing WebSocket server');
   wss.close();
   console.log('- Stopping React app');
-  // reactApp.kill();
+  reactApp.kill();
   console.log('✅ Cleanup complete\n');
   process.exit(0);
 };

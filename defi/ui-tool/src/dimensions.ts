@@ -37,9 +37,9 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const { protocolAdaptors, } = loadAdaptorsData(adapterType as AdapterType)
   let protocol = protocolAdaptors.find(p => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
 
-    if (!protocol) {
-      throw new Error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
-    }
+  if (!protocol) {
+    throw new Error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
+  }
 
   if (fromTimestamp > toTimestamp) {
     console.error('Invalid date range. Start date should be less than end date.')
@@ -140,7 +140,7 @@ export async function storeAllWaitingRecords(ws: any) {
     .withConcurrency(11)
     .for(allRecords)
     .process(async ([id, record]: any) => {
-      if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
+      // if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
       const { storeRecordV2Function, storeDDBFunctions } = record as any
       if (storeRecordV2Function) await storeRecordV2Function()
       if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))

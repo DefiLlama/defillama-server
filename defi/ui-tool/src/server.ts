@@ -1,4 +1,5 @@
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
+import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 const path = require('path');
 const WS = require('ws');
 const { spawn } = require('child_process');
@@ -34,10 +35,10 @@ const reactApp = spawn(npmPath, ['run', 'start-react'], {
 // Graceful shutdown handler
 const shutdown = (signal: string) => {
   console.log(`\n\n🛑 Received ${signal}. Shutting down gracefully...`);
-  console.log('- Stopping React app');
-  reactApp.kill();
   console.log('- Closing WebSocket server');
   wss.close();
+  console.log('- Stopping React app');
+  reactApp.kill();
   console.log('✅ Cleanup complete\n');
   process.exit(0);
 };
@@ -46,31 +47,34 @@ const shutdown = (signal: string) => {
 process.on('SIGINT', () => shutdown('SIGINT'));
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 
-reactApp.stdout.on('data', (data: Buffer) => {
-  console.log(data.toString());
-});
-
-reactApp.stderr.on('data', (data: Buffer) => {
-  console.error(data.toString());
-});
-
 const originalConsoleLog = console.log
 const originalConsoleError = console.error
+
+function stringify(a: any) {
+  try {
+    const str = JSON.stringify(a);
+    return str
+  } catch (e) {
+    return a
+  }
+}
 
 wss.on('connection', (ws: any) => {
   console.log('Client connected');
 
   ws.send(JSON.stringify({
     type: 'init',
-    data: { dimensionFormChoices }
+    data: { dimensionFormChoices, tvlProtocolList }
   }));
   sendWaitingRecords(ws);
+  sendTvlStoreWaitingRecords(ws);
+  sendTvlDeleteWaitingRecords(ws);
 
   // start streaming logs to the client
   const wrappedLog = (...args: any) => {
     ws.send(JSON.stringify({
       type: 'output',
-      content: args.map((arg: any) => (typeof arg === 'string' ? arg : JSON.stringify(arg))).join(' ')
+      content: args.map((arg: any) => (typeof arg === 'string' ? arg : stringify(arg))).join(' ')
     }));
     originalConsoleLog(...args);
   }
@@ -90,7 +94,7 @@ wss.on('connection', (ws: any) => {
   console.log = wrappedLog
   console.error = wrappedError
 
-  ws.on('message', (message: any) => {
+  ws.on('message', async (message: any) => {
     const data = JSON.parse(message);
 
     switch (data.type) {
@@ -106,6 +110,28 @@ wss.on('connection', (ws: any) => {
       case 'reload-table':
         sendWaitingRecords(ws);
         break;
+
+
+      
+      case 'tvl-runCommand':
+        runTvlAction(ws, data.data);
+        break;
+      case 'tvl-refill-save-all':
+        tvlStoreAllWaitingRecords(ws);
+        break;
+      case 'tvl-refill-deleteRecords':
+        removeTvlStoreWaitingRecords(ws, data.data);
+        break;
+      case 'tvl-delete-clear-list':
+        tvlDeleteClearList(ws);
+        break;
+      case 'tvl-delete-delete-records':
+        await tvlDeleteSelectedRecords(ws, data.data);
+        break;
+      case 'tvl-delete-delete-all':
+        await tvlDeleteAllRecords(ws);
+        break;
+
       default: console.error('Unknown message type:', data.type); break;
     }
   });

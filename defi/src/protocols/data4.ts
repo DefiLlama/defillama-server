@@ -13494,7 +13494,8 @@ const data4: Protocol[] = [
     ],
     audit_links: ["https://github.com/Hexens/Smart-Contract-Review-Public-Reports/blob/main/BasisOS-nov-24(Final).pdf"],
     github: ["Logarithm-Labs"],
-    listedAt: 1747156379
+    listedAt: 1747156379,
+    wrongLiquidity: true
   },
   {
     id: "6168",

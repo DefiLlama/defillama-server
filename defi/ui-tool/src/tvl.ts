@@ -114,6 +114,10 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
           break;
         }
       }
+      if (hasNonEvmChain && !chains?.length) {  // if it is not partial refill and there are non-evm chains in the adapter, we throw an error
+        console.error("Adapter has non-EVM chains, enable skipBlockFetch flag if it supports refilling or provide list of chains to refill");
+        return;
+      }
 
     }
 

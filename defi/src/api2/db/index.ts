@@ -303,10 +303,31 @@ function callWrapper(fn: Function) {
   }
 }
 
+
+async function _getProtocolItems(ddbPKFunction: Function, protocolId: string, { timestampTo, timestampFrom }: { timestampTo?: number, timestampFrom?: number }) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  let timestampFilter: any = {}
+
+  if (timestampFrom) timestampFilter[Op.gte] = timestampFrom
+  if (timestampTo) timestampFilter[Op.lte] = timestampTo
+
+  const items: any = await table.findAll({
+    where: { id: protocolId, timestamp: timestampFilter },
+    attributes: ['data', 'timestamp'],
+    raw: true,
+    order: [['timestamp', 'DESC']],
+  })
+
+  items.forEach((i: any) => i.data.SK = i.timestamp)
+
+  return items.map((i: any) => i.data)
+}
+
 const getLatestProtocolItem = callWrapper(_getLatestProtocolItem)
 const getAllProtocolItems = callWrapper(_getAllProtocolItems)
 const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
 const saveProtocolItem = callWrapper(_saveProtocolItem)
+const getProtocolItems = callWrapper(_getProtocolItems)
 
 function getPGConnection() {
   return sequelize
@@ -331,6 +352,7 @@ export {
   getHourlyTvlUpdatedRecordsCount,
   getDimensionsUpdatedRecordsCount,
   getTweetsPulledCount,
+  getProtocolItems,
 }
 
 // Add a process exit hook to close the database connection

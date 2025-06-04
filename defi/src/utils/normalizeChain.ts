@@ -4262,6 +4262,13 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "milky_way_zone",
     url: "https://www.milkyway.zone/"
+  },
+  "MilkyWay Rollup": {
+    geckoId: null,
+    symbol: "MILK",
+    cmcId: null,
+    twitter: "milky_way_zone",
+    url: "https://www.milkyway.zone/"
   }
 } as unknown as ChainCoinGekcoIds
 
@@ -4454,6 +4461,7 @@ const chainLabelMap = {
   "echelon_initia": "Echelon Chain",
   "sseed": "Superseed",
   "xp": "Xphere",
+  "milkyway_rollup": "MilkyWay Rollup"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

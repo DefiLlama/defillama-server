@@ -3616,5 +3616,8 @@ export default {
     },
     "reachme": {
         id: "6260"
+    },
+    "haiku": {
+        id: "6266"
     }
 } as AdaptorsConfig

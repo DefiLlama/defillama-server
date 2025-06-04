@@ -352,5 +352,8 @@ export default {
   },
   "dzap": {
     id: "6259"
+  },
+  "haiku": {
+    id: "6266"
   }
 } as AdaptorsConfig;

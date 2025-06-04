@@ -50046,7 +50046,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     forkedFrom: [],
-    chains: ["BEVM", "EDU Chain", "Arbitrum", "Base"],
+    chains: [ "EDU Chain", "Arbitrum", "Base"],
     module: "blend-finance/index.js",
     twitter: "Protocol_Blend",
     github: ["Blend-Blend"],

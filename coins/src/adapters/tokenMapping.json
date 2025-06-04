@@ -8507,6 +8507,16 @@
       "to": "coingecko#ethereum",
       "decimals": 8,
       "symbol": "ETH"
+    },
+    "0x9d146a4c9472a7e7b0dbc72da0eafb02b54173a956ef22a9fba29756f8661c6c": {
+      "to": "coingecko#ethena-usde",
+      "decimals": 6,
+      "symbol": "USDe"
+    },
+    "0x74f0c7504507f7357f8a218cc70ce3fc0f4b4e9eb8474e53ca778cb1e0c6dcc5": {
+      "to": "coingecko#ethena-staked-usde",
+      "decimals": 8,
+      "symbol": "sUSDe"
     }
   },
   "mtt_network": {

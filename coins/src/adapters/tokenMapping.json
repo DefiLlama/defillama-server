@@ -1879,10 +1879,15 @@
       "decimals": 8,
       "symbol": "AMI"
     },
-      "0x50788befc1107c0cc4473848a92e5c783c635866ce3c98de71d2eeb7d2a34f85::usdt_coin::USDTether": {
+    "0x50788befc1107c0cc4473848a92e5c783c635866ce3c98de71d2eeb7d2a34f85::usdt_coin::USDTether": {
       "to": "coingecko#usdt0",
       "decimals": 6,
       "symbol": "zUSDT"
+    },
+    "0x821c94e69bc7ca058c913b7b5e6b0a5c9fd1523d58723a966fb8c1f5ea888105": {
+      "to": "coingecko#aptos",
+      "decimals": 8,
+      "symbol": "kAPT"
     }
   },
   "velas": {

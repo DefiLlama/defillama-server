@@ -15574,5 +15574,85 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "HaikuTrade",
   },
+  {
+    id: "6267",
+    name: "Stellar DEX",
+    address: "stellar:-",
+    symbol: "XLM",
+    url: "https://developers.stellar.org/docs/learn/encyclopedia/sdex/liquidity-on-stellar-sdex-liquidity-pools#sdex",
+    description:
+      "The Stellar network acts as a decentralized distributed exchange that allows users to trade and convert assets with the network's Offer operations",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/stellar-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Stellar"],
+    forkedFrom: [],
+    module: "stellar-dex/index.js",
+    twitter: "StellarOrg",
+    listedAt: 1749018753,
+  },
+  {
+    id: "6268",
+    name: "Granite",
+    address: null,
+    symbol: "-",
+    url: "https://app.granite.world/",
+    description:
+      "Granite Protocol is an autonomous Bitcoin Liquidity Protocol on the Stacks blockchain. The protocol allows borrowers to take stablecoin loans using Stacks’ sBTC as collateral while eliminating rehypothecation risk. Liquidity providers can earn yield on stablecoins by providing liquidity to the pool, which is then lent to borrowers. Granite is a project incubated by Trust Machines. For more information about Granite, please visit granite.world",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/granite.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Stacks"],
+    forkedFrom: [],
+    module: "granite/index.js",
+    twitter: "GraniteBTC",
+    audit_links: [
+      "https://github.com/GraniteProtocol/audits"
+    ],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14908"]
+      }
+    ],
+    listedAt: 1749019047,
+  },
+  {
+    id: "6269",
+    name: "Sypher Finance",
+    address: "base:0x5dd2750f18Da3e5933a20340B0fa10cef56A8B07",
+    symbol: "SYP",
+    url: "https://www.sypher.finance/",
+    description:
+      "Sypher Finance is a decentralized, and non-custodial perpetual exchange, designed to offer cutting-edge solutions for risk management, particularly focused on liquidity providers (LPs).",
+    chain: "Base",
+    logo: `${baseIconsUrl}/sypher-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    forkedFrom: [],
+    module: "SypherFinance/index.js",
+    twitter: "Sypher_Fi",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.sypher.finance/#id-4.-minimal-price-impact-with-chainlink-oracles"]
+      }
+    ],
+    listedAt: 1749019352,
+  },
 ];
 export default data4;

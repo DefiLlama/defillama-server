@@ -672,6 +672,9 @@ export default {
     },
     "rho-protocol": {
         id: "6226"
+    },
+    "strike-finance": {
+        id: "6173"
     }
 
 } as AdaptorsConfig

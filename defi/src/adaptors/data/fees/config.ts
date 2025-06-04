@@ -3619,5 +3619,11 @@ export default {
     },
     "haiku": {
         id: "6266"
+    },
+    "p2p-lending": {
+        id: "6228"
+    },
+    "strike-finance": {
+        id: "6173"
     }
 } as AdaptorsConfig

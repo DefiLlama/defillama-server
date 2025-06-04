@@ -206,10 +206,15 @@ export async function storeTvl2({
     ethBlock = blockData.ethereumBlock
     chainBlocks = blockData.chainBlocks;
   } else if (!skipBlockData) {
-      const res = await getBlocksRetry(unixTimestamp, { adapterModule: module })
-      ethBlock = res.ethereumBlock;
-      chainBlocks = res.chainBlocks;
+    let blockFetchOptions: any = { adapterModule: module }
+    if (options.chainsToRefill?.length) {
+      blockFetchOptions = { chains: options.chainsToRefill}
+    }
+    const res = await getBlocksRetry(unixTimestamp, blockFetchOptions)
+    ethBlock = res.ethereumBlock;
+    chainBlocks = res.chainBlocks;
   }
+
 
   return storeTvl(unixTimestamp, ethBlock, chainBlocks, protocol, module, staleCoins, maxRetries, storePreviousData, useCurrentPrices, breakIfTvlIsZero, runBeforeStore, options);
 }

@@ -27914,7 +27914,6 @@ const data3_1: Protocol[] = [
     github: ["multibit-repo"],
     listedAt: 1703359571,
   },
-  /*
   {
     id: "3953",
     name: "MilkyWay",
@@ -27941,7 +27940,6 @@ const data3_1: Protocol[] = [
     github: ["milkyway-labs"],
     listedAt: 1703359758,
   },
-  */
   {
     id: "3954",
     name: "Surf Protocol",

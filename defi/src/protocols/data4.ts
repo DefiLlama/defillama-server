@@ -15690,7 +15690,7 @@ const data4: Protocol[] = [
     symbol: "HDX", 
     url: "https://hydration.net/",
     description:
-      "Hydration is a decentralized lending protocol on Hydration.",
+      "Hydration Lending is a decentralized lending protocol on Hydration.",
     chain: "HydraDX",
     logo: `${baseIconsUrl}/hydration-lending.jpg`,
     audits: "0",

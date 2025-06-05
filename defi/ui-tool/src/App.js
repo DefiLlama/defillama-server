@@ -875,7 +875,7 @@ const App = () => {
 
             > Clear list </Button>
 
-            <Button type="default" icon={<DeleteOutlined />}
+           {/*  <Button type="default" icon={<DeleteOutlined />}
               onClick={() => {
                 const payload = {
                   type: 'tvl-delete-delete-all',
@@ -887,7 +887,7 @@ const App = () => {
               }}
               danger
 
-            > Delete everything in DB </Button>
+            > Delete everything in DB </Button> */}
 
 
 

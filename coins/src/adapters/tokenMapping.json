@@ -6102,7 +6102,7 @@
       "decimals": 8,
       "symbol": "WBTC"
     },
-    "0xe4880249745eAc5F1eD9d8F7DF844792D560e750": {
+    "0xe4880249745eac5f1ed9d8f7df844792d560e750": {
       "to": "coingecko#spiko-us-t-bills-money-market-fund",
       "decimals": 5,
       "symbol": "USTBL"
@@ -8819,6 +8819,38 @@
       "to": "coingecko#bonsai-token",
       "decimals": 18,
       "symbol": "BONSAI"
+    }
+  },
+  "echelon_initia": {
+    "0x274be80e66d76fe5d65c12207ac47625d6756bb4fae8182d044463d21e80e078": {
+      "to": "coingecko#initia",
+      "decimals": 6,
+      "symbol": "INIT"
+    },
+    "0x29b45e201f7958d307b0b1239c3c3859f67ea5d4ddd15f00ca26af5d2d73eb7": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xbdeb90bb2e0f5bab4583fa46c28ec2bffa57502a31d1d5f24725d5c2242b888": {
+      "to": "coingecko#celestia",
+      "decimals": 6,
+      "symbol": "TIA"
+    },
+    "0x98a9ca6d7d34d9fdd8637947fda22bad26716d48515db179f1dcfa51d3d51705": {
+      "to": "coingecko#ethereum",
+      "decimals": 6,
+      "symbol": "ETH"
+    },
+    "0x61d7c7ec64adfda0ac8f30c2f3f828c1c5d9a53bbb756d14a0a9f86bf05deb9a": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 6,
+      "symbol": "weETH"
+    },
+    "0xc67813aa57a9fea540542aa1f00f6d8c62eb10108d09a2599cdd6447ad45eb25": {
+      "decimals": "6",
+      "symbol": "milkTIA",
+      "to": "coingecko#milkyway-staked-tia"
     }
   }
 }

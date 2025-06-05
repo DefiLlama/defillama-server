@@ -3466,7 +3466,7 @@ export const chainCoingeckoIds = {
       types: ["L2"],
       da: 'Ethereum',
     },
-    twitter: "worldcoin",
+    twitter: "world_chain_",
     url: "https://world.org/",
     chainId: 480
   },

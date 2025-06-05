@@ -15699,7 +15699,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["HydraDX"],
-    forkedFromIds: ["111"],
+    forkedFromIds: ["1599"],
     module: "hydration-lending/index.js",
     twitter: "hydration_net",
     listedAt: 1749084847,

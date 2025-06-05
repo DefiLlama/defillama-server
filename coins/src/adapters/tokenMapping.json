@@ -7286,6 +7286,41 @@
     }
   },
   "corn": {
+    "0x85aDfA60dDf86b67E6fD493Bd2c774b2eD772D14": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 18,
+      "symbol": "weETH"
+    },
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
+    "0x485BBC4F98c071C9BD74Ac255262E61F866f071a": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "wETH"
+    },
+    "0xDF0B24095e15044538866576754F3C964e902Ee6": {
+      "to": "coingecko#usdc",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
+      "to": "coingecko#usdt0",
+      "decimals": 6,
+      "symbol": "USDT0"
+    },
+    "0x44f49ff0da2498bcb1d3dc7c0f999578f67fd8c6": {
+      "to": "coingecko#corn-3",
+      "decimals": 18,
+      "symbol": "CORN"
+    },
+    "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "BTCN"
+    },
     "0xda5ddd7270381a7c2717ad10d1c0ecb19e3cdfb2": {
       "to": "coingecko#bitcoin",
       "decimals": 18,

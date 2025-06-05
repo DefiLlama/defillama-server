@@ -3625,5 +3625,8 @@ export default {
     },
     "strike-finance": {
         id: "6173"
+    },
+    "haedal-protocol": {
+        id: "3489"
     }
 } as AdaptorsConfig

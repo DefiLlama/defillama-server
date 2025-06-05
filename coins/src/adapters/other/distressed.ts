@@ -47,7 +47,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
-    clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911" // IS NOT BACKED
+    clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911", // IS NOT BACKED
+    NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
+    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f"  // BACKED BY THE ABOVE, SO SAME 
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -80,7 +82,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
     HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
     KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
-    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d" // IS NOT BACKED
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
+    MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b"
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -124,7 +127,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
     "PENDLE-LPT": "0x0921ccc98956b1599003fd9739d5e66bf319a161",
     coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
-    ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547" // SAME , backing 2 tokens and aparently also loop
+    ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
+    MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

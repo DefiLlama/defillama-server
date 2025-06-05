@@ -373,6 +373,11 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
+    "0xfCfc58685101e2914cBCf7551B432500db84eAa8": {
+      "decimals": "18",
+      "symbol": "MIM",
+      "to": "coingecko#magic-internet-money"
+    },
     "0x08EBA8ff53c6ee5d37A90eD4b5239f2F85e7B291": {
       "decimals": "18",
       "symbol": "USDC.arb",

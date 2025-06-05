@@ -8915,7 +8915,7 @@ const data2: Protocol[] = [
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apx-finance.png`,
+    logo: `${baseIconsUrl}/apx-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

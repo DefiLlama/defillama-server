@@ -3127,6 +3127,13 @@ export const chainCoingeckoIds = {
     url: "https://joltify.io/",
     github: ["joltify-finance"]
   },
+  "IOTA": {
+    geckoId: 'iota',
+    symbol: 'IOTA',
+    cmcId: "1720",
+    twitter: "iota",
+    url: "https://www.iota.org/",
+  },
   "IOTA EVM": {
     geckoId: 'iota',
     symbol: 'IOTA',
@@ -4461,7 +4468,8 @@ const chainLabelMap = {
   "echelon_initia": "Echelon Chain",
   "sseed": "Superseed",
   "xp": "Xphere",
-  "milkyway_rollup": "MilkyWay Rollup"
+  "milkyway_rollup": "MilkyWay Rollup",
+  "iota": "IOTA"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

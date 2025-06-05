@@ -2019,6 +2019,7 @@ export default {
         id: "5306",
     },
     "zeebu": {
+        enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
         id: "5540",
     },
     "lnexchange-perp": {

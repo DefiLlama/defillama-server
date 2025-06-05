@@ -3,7 +3,6 @@ import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
-import * as sdk from "@defillama/sdk";
 
 type Config = {
   chain: string;
@@ -14,26 +13,6 @@ type Config = {
   symbol?: string;
   decimals?: number;
   confidence?: number;
-};
-
-const lrts = (target: string) => {
-  return async ({ api }: any) => {
-    const balances = new sdk.Balances({
-      chain: api.chain,
-      timestamp: api.timestamp,
-    });
-    const [assets, supply, decimals] = await Promise.all([
-      api.call({
-        abi: "function underlyingTvl() view returns (address[] tokens, uint256[] amounts)",
-        target,
-      }),
-      api.call({ abi: "erc20:totalSupply", target }),
-      api.call({ abi: "erc20:decimals", target }),
-    ]);
-    balances.add(assets.tokens, assets.amounts);
-    const usdValue = await balances.getUSDValue();
-    return usdValue / (supply / 10 ** decimals);
-  };
 };
 
 const configs: { [adapter: string]: Config } = {
@@ -410,6 +389,19 @@ const configs: { [adapter: string]: Config } = {
     chain: "sonic",
     underlying: "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
     address: "0xd4aA386bfCEEeDd9De0875B3BA07f51808592e22",
+  },
+  BPRO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getUnderlyingPrice(address cToken) external view returns (uint256)",
+        target: "0x7fa5500c978e89660bf3bd0526f8f7164de0b38f",
+        params: "0x440cd83c160de5c96ddb20246815ea44c7abbca8",
+      });
+      return rate / 1e18;
+    },
+    chain: "rsk",
+    underlying: "0xEf213441a85DF4d7acBdAe0Cf78004E1e486BB96",
+    address: "0x440cd83c160de5c96ddb20246815ea44c7abbca8",
   },
 };
 

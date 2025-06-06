@@ -16542,13 +16542,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3439",
-    name: "Hydration", // previous HydraDX
+    name: "Hydration DEX", 
+    previousNames: ["Hydration", "HydraDX"],
     address: null,
     symbol: "HDX",
     url: "https://hydration.net",
     description: "Hydration unites swaps, lending and the Hollar stablecoin under the roof of a scalable appchain.",
     chain: "Hydration",
-    logo: `${baseIconsUrl}/hydration.jpg`, // hydration.jpg
+    logo: `${baseIconsUrl}/hydration-dex.jpg`, // hydration.jpg
     audits: "0",
     audit_note: null,
     gecko_id: "hydradx",

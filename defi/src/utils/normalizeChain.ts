@@ -43,6 +43,10 @@ const doublecountedCategorySet = new Set([
   "Anchor BTC",
   "CDP Manager",
   "Restaked BTC",
+  "Basis Trading",
+  "CeDeFi",
+  "RWA Lending",
+  "RWA"
 ].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {

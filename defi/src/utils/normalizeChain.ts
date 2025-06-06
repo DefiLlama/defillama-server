@@ -33,9 +33,20 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
+const doublecountedCategorySet = new Set([
+  "Yield Aggregator",
+  "Yield",
+  "Liquidity manager",
+  "Onchain Capital Allocator",
+  "Risk Curators",
+  "Treasury Manager",
+  "Anchor BTC",
+  "CDP Manager",
+  "Restaked BTC",
+].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Onchain Capital Allocator", "Risk Curators", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
+  return moduleDoubleCounted === true || (typeof category === 'string' && doublecountedCategorySet.has(category?.toLowerCase()));
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']

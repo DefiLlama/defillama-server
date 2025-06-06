@@ -94,6 +94,7 @@ export default {
   chai: require("./yield/chai"),
   kuma: require("./rwa/kuma"),
   ondo: require("./rwa/ondo"),
+  pareto: require("./rwa/pareto"),
   hashnote: require("./rwa/hashnote"),
   hiyield: require("./rwa/hiyield"),
   mux: require("./yield/mux"),

@@ -15815,7 +15815,7 @@ const data4: Protocol[] = [
     listedAt: 1749181205,
   },
   /*{
-    id: "6275",
+    id: "6277",
     name: "AAVE Umbrella",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
@@ -15834,5 +15834,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "aave",
   },*/
+  {
+    id: "6278",
+    name: "Nebula Lending",
+    address: null,
+    symbol: "-",
+    url: "https://www.nebulalending.io/",
+    description:
+      "Nebula is the leading lending protocol built on Nibiru Chain designed to maximize your asset value",
+    chain: "Nibiru",
+    logo: `${baseIconsUrl}/nebula-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Nibiru"],
+    forkedFromIds: ["114"],
+    module: "nebula/index.js",
+    twitter: "NebulaLending_",
+    listedAt: 1749220364,
+  },
 ];
 export default data4;

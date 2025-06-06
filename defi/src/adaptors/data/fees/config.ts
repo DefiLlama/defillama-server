@@ -3630,5 +3630,13 @@ export default {
     "haedal-protocol": {
         id: "3489"
     },
-    "reya-dex": { id: '4978' },
+    "reya-dex": { 
+        id: '4978' 
+    },
+    "bodega-market": { 
+        id: '6012' 
+    },
+    "tbtc": {
+        id: "2535"
+    },
 } as AdaptorsConfig

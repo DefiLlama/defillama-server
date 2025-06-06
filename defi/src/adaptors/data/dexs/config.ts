@@ -2559,7 +2559,12 @@ export default {
         "category": "Dexs"
     },
     "drift-protocol-swap": {
-        id: "5071"
+        id: "5071",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1749081600": true
+            }
+        },
     },
     "grizzly-trade-swap": {
         "disabled": true,

@@ -12,7 +12,7 @@ interface SumDailyTvls {
 }
 
 interface OracleProtocols {
-  [oracle: string]: Set<string>;
+  [oracle: string]: { [protocol: string]: number };
 }
 
 interface Item {
@@ -43,7 +43,9 @@ function sum(
   const dataByChain = totalByChain[time][oracle] ?? {};
   const data = total[time][oracle] ?? {};
 
+  let totalTvl = 0;
   const isOldTvlRecord = Object.keys(item).filter((item) => !["PK", "SK", "tvl"].includes(item)).length === 0;
+  
   for (const section in item) {
     const sectionSplit = (isOldTvlRecord && section === "tvl" ? protocol.chain : section).split("-");
 
@@ -79,6 +81,7 @@ function sum(
           data[section] = (data[section] ?? 0) + item[section];
         } else {
           data.tvl = (data.tvl ?? 0) + item[section];
+          totalTvl += item[section];
         }
       }
     }
@@ -88,9 +91,9 @@ function sum(
   total[time][oracle] = data;
 
   if (!oracleProtocols[oracle]) {
-    oracleProtocols[oracle] = new Set();
+    oracleProtocols[oracle] = {};
   }
-  oracleProtocols[oracle].add(protocol.name);
+  oracleProtocols[oracle][protocol.name] = totalTvl;
 }
 
 function isActive(timestamp: number, startDateStr?: string, endDateStr?: string): 'active' | 'inactive' | 'not-started' {
@@ -237,7 +240,13 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   return {
     chart: sumDailyTvls,
     chainChart: sumDailyTvlsByChain,
-    oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
+    oraclesTVS: oracleProtocols,
+    oracles: Object.fromEntries(
+      Object.entries(oracleProtocols).map(([oracle, protocols]) => [
+        oracle,
+        Object.keys(protocols)
+      ])
+    ),
     chainsByOracle: finalChainsByOracle,
   };
 }

@@ -15794,7 +15794,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6276",
-    name: "TradingStrategy.",
+    name: "TradingStrategy",
     address: null,
     symbol: "-",
     url: "https://tradingstrategy.ai/",

@@ -3,7 +3,10 @@ import {
   getSymbolAndDecimals,
 } from "../../scripts/coingeckoUtils";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { nullAddress } from "../../utils/shared/constants";
+import {
+  chainsThatShouldNotBeLowerCased,
+  nullAddress,
+} from "../../utils/shared/constants";
 import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 import { fetch } from "../utils";
 // import setEnvSecrets from "../../utils/shared/setEnvSecrets";
@@ -165,13 +168,61 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
 
   const decimalQueries: { [chain: string]: string[] } = {};
   const additionalMappings: { [chain: string]: string[] } = {};
+  const tokenQueries: { [chain: string]: string[] } = {};
   res.map(({ from, to }: any) => {
-    const [chain, address] = from.split(":");
+    const [chain, address] = to.split(":");
+    const [sourceChain, sourceAddress] = from.split(":");
+
+    if (!(sourceChain in tokenQueries)) tokenQueries[sourceChain] = [];
+    tokenQueries[sourceChain].push(sourceAddress.toLowerCase());
+
+    if (!(sourceChain in decimalQueries)) decimalQueries[sourceChain] = [];
+    decimalQueries[sourceChain].push(
+      chainsThatShouldNotBeLowerCased.includes(sourceChain)
+        ? sourceAddress.toLowerCase()
+        : sourceAddress,
+    );
+
     if (!(chain in decimalQueries)) decimalQueries[chain] = [];
-    decimalQueries[chain].push(address);
-    if (!(from in additionalMappings)) additionalMappings[from] = [];
-    additionalMappings[from].push(to);
+    decimalQueries[chain].push(
+      chainsThatShouldNotBeLowerCased.includes(chain)
+        ? address.toLowerCase()
+        : address,
+    );
+
+    if (!(to in additionalMappings)) additionalMappings[to] = [];
+    additionalMappings[to].push(
+      chainsThatShouldNotBeLowerCased.includes(chain)
+        ? from.toLowerCase()
+        : from,
+    );
   });
+
+  const oftTokens: { [chain: string]: string } = {};
+  await Promise.all(
+    Object.keys(tokenQueries).map((chain: string) =>
+      multiCall({
+        chain,
+        calls: tokenQueries[chain].map((target) => ({ target })),
+        abi: "address:token",
+        withMetadata: true,
+        permitFailure: true,
+      })
+        .then((r) => {
+          if (!r.length) return;
+          r.map((call: any) => {
+            if (call.success == true)
+              oftTokens[
+                `${chain}:${call.input.target}`
+              ] = `${chain}:${call.output}`;
+          });
+        })
+        .catch((e) => {
+          e;
+          chain;
+        }),
+    ),
+  );
 
   await solanaTokensPromise;
   const decimals: { [coin: string]: string } = {};
@@ -182,6 +233,7 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
         calls: decimalQueries[chain].map((target) => ({ target })),
         abi: "erc20:decimals",
         withMetadata: true,
+        permitFailure: true,
       })
         .then((r) => {
           if (!r.length) return;
@@ -204,15 +256,23 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
     ),
   );
 
-  res.map(({ from, symbol }: any) => {
-    if (!decimals[from] || !additionalMappings[from]) return;
+  // from is destination in codebase
+  // from is source in json
+  res.map(({ to, symbol }: any) => {
+    if (!decimals[to] || !additionalMappings[to]) return;
 
-    additionalMappings[from].map((to: string) => {
+    additionalMappings[to].map((from: string) => {
       mappings.push({
-        from,
-        to,
+        to: oftTokens[to] ?? to,
+        from: oftTokens[from] ?? from,
         symbol,
         decimals: decimals[from],
+      });
+      mappings.push({
+        to: oftTokens[from] ?? from,
+        from: oftTokens[to] ?? to,
+        symbol,
+        decimals: decimals[to],
       });
     });
   });

@@ -1,5 +1,11 @@
+import {
+  cacheSolanaTokens,
+  getSymbolAndDecimals,
+} from "../../scripts/coingeckoUtils";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { nullAddress } from "../../utils/shared/constants";
+import setEnvSecrets from "../../utils/shared/setEnvSecrets";
+import { fetch } from "../utils";
 // import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 import { getTokenAndRedirectData } from "../utils/database";
 import { OFTs } from "./layerzeroOFTs";
@@ -36,13 +42,15 @@ export const layerZeroChainMapping: { [key: string]: string } = {
   Avalanche: "avax",
   "opBNB Mainnet": "op_bnb",
   "Arbitrum Nova": "arbitrum_nova",
-  "Lightlink": "lightlink_phoenix",
-  "Plume Mainnet": "plume_mainnet"
+  Lightlink: "lightlink_phoenix",
+  "Plume Mainnet": "plume_mainnet",
 };
 
 export default async function main() {
   // await setEnvSecrets();
   const mappings: any[] = [];
+  await getMoreLayerZeroMappings(mappings);
+
   const uniquePks: { [chain: string]: string[] } = {};
 
   Object.keys(OFTs).map((symbol: string) => {
@@ -135,6 +143,71 @@ export default async function main() {
     PKs.map((from) => {
       if (!decimals[from]) return;
 
+      mappings.push({
+        from,
+        to,
+        symbol,
+        decimals: decimals[from],
+      });
+    });
+  });
+
+  return mappings;
+}
+
+async function getMoreLayerZeroMappings(mappings: any[]) {
+  await setEnvSecrets();
+  const solanaTokensPromise = cacheSolanaTokens();
+
+  const res = await fetch(
+    "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json",
+  );
+
+  const decimalQueries: { [chain: string]: string[] } = {};
+  const additionalMappings: { [chain: string]: string[] } = {};
+  res.map(({ from, to }: any) => {
+    const [chain, address] = from.split(":");
+    if (!(chain in decimalQueries)) decimalQueries[chain] = [];
+    decimalQueries[chain].push(address);
+    if (!(from in additionalMappings)) additionalMappings[from] = [];
+    additionalMappings[from].push(to);
+  });
+
+  await solanaTokensPromise;
+  const decimals: { [coin: string]: string } = {};
+  await Promise.all(
+    Object.keys(decimalQueries).map((chain: string) =>
+      multiCall({
+        chain,
+        calls: decimalQueries[chain].map((target) => ({ target })),
+        abi: "erc20:decimals",
+        withMetadata: true,
+      })
+        .then((r) => {
+          if (!r.length) return;
+          r.map((call: any) => {
+            if (call.success == true)
+              decimals[`${chain}:${call.input.target}`] = call.output;
+          });
+        })
+        .catch(async () => {
+          await Promise.all(
+            decimalQueries[chain].map((target) =>
+              getSymbolAndDecimals(target, chain, "").catch((e) => {
+                e;
+                target;
+                chain;
+              }),
+            ),
+          );
+        }),
+    ),
+  );
+
+  res.map(({ from, symbol }: any) => {
+    if (!decimals[from] || !additionalMappings[from]) return;
+
+    additionalMappings[from].map((to: string) => {
       mappings.push({
         from,
         to,

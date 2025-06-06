@@ -675,6 +675,7 @@ export default {
     },
     "strike-finance": {
         id: "6173"
-    }
+    },
+    "reya-dex": { id: '4978' },
 
 } as AdaptorsConfig

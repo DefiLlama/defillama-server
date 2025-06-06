@@ -3629,5 +3629,6 @@ export default {
     },
     "haedal-protocol": {
         id: "3489"
-    }
+    },
+    "reya-dex": { id: '4978' },
 } as AdaptorsConfig

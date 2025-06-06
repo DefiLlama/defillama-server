@@ -5996,7 +5996,13 @@ const data4: Protocol[] = [
     category: "DCA Tools",
     chains: ["Arbitrum"],
     forkedFrom: [],
-    oracles: ["Uniswap V3"],
+    oraclesBreakdown: [
+      {
+        name: "Uniswap V3",
+        type: "Primary",
+        proof: []
+      }
+    ],
     module: "OneDollarDCAE/index.js",
     twitter: null,
     listedAt: 1740166867
@@ -7006,7 +7012,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["Polygon"],
-    oracles: ["Uniswap V3"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13772
+    oraclesBreakdown: [
+      {
+        name: "Uniswap V3",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13772"]
+      }
+    ],
     module: "unihedge/index.js",
     twitter: "UnihedgeOrg",
     listedAt: 1741358597,
@@ -15854,6 +15866,88 @@ const data4: Protocol[] = [
     module: "nebula/index.js",
     twitter: "NebulaLending_",
     listedAt: 1749220364,
+  },
+  {
+    id: "6279",
+    name: "Yieldoor",
+    address: null,
+    symbol: "-",
+    url: "https://app.yieldoor.com/",
+    description:
+      "Platform for Leveraged Yield Farming",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yieldoor.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum", "Sonic", "Base"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14830"]
+      }
+    ],
+    module: "yieldoor/index.js",
+    twitter: "YieldoorFi",
+    audit_links: [
+      "https://audits.sherlock.xyz/contests/791"
+    ],
+    listedAt: 1749247235,
+  },
+  {
+    id: "6280",
+    name: "TaraPerps",
+    address: null,
+    symbol: "-",
+    url: "https://taraperps.com/",
+    description:
+      "Perpetual Exchange on Taraxa",
+    chain: "Taraxa",
+    logo: `${baseIconsUrl}/taraperps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Taraxa"],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14942"]
+      }
+    ],
+    forkedFromIds: ["337"],
+    module: "taraperps/index.js",
+    twitter: "TaraxaPerps",
+    listedAt: 1749247243,
+  },
+  {
+    id: "6281",
+    name: "Atlantis",
+    address: null,
+    symbol: "-",
+    url: "https://www.atlantisprotocol.so/swap",
+    description:
+      "Atlantis is a next-generation DeFi protocol, built with a fully integrated end-to-end design. By combining a high-performance DEX, a native launchpad, and a suite of plugins that fuels continuous revenue sharing, Atlantis creates a seamless, closed-loop system where value flows back to the community",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/atlantis.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sonic"],
+    forkedFromIds: ["2198"],
+    module: "Atlantis-algebra/index.js",
+    twitter: "atlantisonsonic",
+    audit_links: [
+      "https://3468129680-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKboRABceyMllFm7vMRLZ%2Fuploads%2FschKQ6l6avq9x3Aldvfd%2FBailsec%20-%20Atlantis%20-%20Final%20Report.pdf?alt=media&token=522bce14-bf50-44ce-bad4-48cd92108d83"
+    ],
+    listedAt: 1749247251,
   },
 ];
 export default data4;

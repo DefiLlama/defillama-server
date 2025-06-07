@@ -61611,7 +61611,8 @@ const data3_2: Protocol[] = [
     module: "celeron/index.js",
     twitter: "Celeron_xyz",
     audit_links: ["https://blocksafu.com/audit/0xCeleronFarm"],
-    listedAt: 1733495718
+    listedAt: 1733495718,
+    deadUrl: true
   },
   {
     id: "5471",

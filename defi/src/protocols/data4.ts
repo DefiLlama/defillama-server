@@ -15949,5 +15949,48 @@ const data4: Protocol[] = [
     ],
     listedAt: 1749247251,
   },
+  {
+    id: "6282",
+    name: "letsBONK.fun",
+    address: "solana:CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk",
+    symbol: "LETSBONK",
+    url: "https://letsbonk.fun/",
+    description:
+      "Meme token launchpad",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/letsbonk.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lets-bonk",
+    cmcId: "36347",
+    category: "Launchpad",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "bonk_fun",
+  },
+  {
+    id: "6283",
+    name: "BOOKUSD",
+    address: null,
+    symbol: "-",
+    url: "https://app.bookusd.com/",
+    description:
+      "Decentralized stablecoin on BSC. Borrow BUD with BOOK, earn BUSS by staking BUD, and earn BUD by staking BUSS",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bookusd.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Binance"],
+    forkedFromIds: ["270"],
+    module: "dummy.js",
+    twitter: "BookMemeBsc",
+    audit_links: [
+      "https://github.com/BookMemeBsc/bookusd-contracts/blob/main/PeckShield-Audit-Report-BookUSD-v1.0.pdf"
+    ],
+  },
 ];
 export default data4;

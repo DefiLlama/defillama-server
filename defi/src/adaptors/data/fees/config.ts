@@ -3639,4 +3639,10 @@ export default {
     "tbtc": {
         id: "2535"
     },
+    "letsbonk": {
+        id: "6282"
+    },
+    "bookusd": {
+        id: "6283"
+    }
 } as AdaptorsConfig

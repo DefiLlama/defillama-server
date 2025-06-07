@@ -217,6 +217,9 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         decimals = token.decimals;
         symbol = token.symbol;
       }
+
+      if (!decimals || !symbol) return;
+
       writes.push({
         PK: `asset#${token.from}`,
         SK: 0,

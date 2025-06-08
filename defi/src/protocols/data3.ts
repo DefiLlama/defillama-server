@@ -39138,7 +39138,6 @@ const data3_2: Protocol[] = [
   {
     id: "4449",
     name: "pump.fun", 
-    previousNames: ["Pump"],
     address: null,
     symbol: "-",
     url: "https://www.pump.fun/",

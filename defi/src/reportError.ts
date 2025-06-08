@@ -7,19 +7,35 @@ import { sluggifyString } from "./utils/sluggify";
 // CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, contact TEXT, id serial primary key);
 
 export async function reportError({ message, protocol, dataType, correctSource, contact }: any) {
+  const formattedMessage = `Protocol: ${protocol}
+Data: ${dataType}
+What's wrong: ${message}
+Correct data: ${correctSource}
+<https://defillama.com/protocol/${sluggifyString(protocol)}>`
+
+  await fetch(`https://defillama.api.frontapp.com/channels/cha_kj4ps/incoming_messages`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      sender: {
+        name: contact ?? 'Anonymous',
+      },
+      subject: `Report: ${protocol} (${dataType})`,
+      body: formattedMessage,
+    }),
+  });
+  
   await getErrorDBConnection()`
   insert into errorReports (
     time, protocol, dataType, message, correctSource, contact
   ) values (
     ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType ?? null}, ${message ?? null}, ${correctSource ?? null}, ${contact ?? null}
   )`
-    await sendMessage(
-      `Protocol: ${protocol}
-Data: ${dataType}
-What's wrong: ${message}
-Correct data: ${correctSource}
-Contact: ${contact ?? '-'}
-<https://defillama.com/protocol/${sluggifyString(protocol)}>`, process.env.ERROR_REPORTS_WEBHOOK, false).catch(e => console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
+    await sendMessage(message, process.env.ERROR_REPORTS_WEBHOOK, false)
+    .catch(e => console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
 
 }
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

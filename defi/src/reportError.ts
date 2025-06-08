@@ -3,6 +3,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { sendMessage } from "./utils/discord";
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
 import { sluggifyString } from "./utils/sluggify";
+import fetch from "node-fetch";
 
 // CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, contact TEXT, id serial primary key);
 
@@ -11,7 +12,7 @@ export async function reportError({ message, protocol, dataType, correctSource, 
 Data: ${dataType}
 What's wrong: ${message}
 Correct data: ${correctSource}
-<https://defillama.com/protocol/${sluggifyString(protocol)}>`
+https://defillama.com/protocol/${sluggifyString(protocol)}`
 
   await fetch(`https://defillama.api.frontapp.com/channels/cha_kj4ps/incoming_messages`, {
     method: 'POST',

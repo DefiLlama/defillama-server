@@ -15986,11 +15986,12 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Binance"],
     forkedFromIds: ["270"],
-    module: "dummy.js",
+    module: "bookusd/index.js",
     twitter: "BookMemeBsc",
     audit_links: [
       "https://github.com/BookMemeBsc/bookusd-contracts/blob/main/PeckShield-Audit-Report-BookUSD-v1.0.pdf"
     ],
+    listedAt: 1749412532,
   },
 ];
 export default data4;

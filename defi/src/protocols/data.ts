@@ -18370,7 +18370,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1638464179,
     github: ["RetreebInc"],
   },
-  /* big spike
   {
     id: "963",
     name: "Vexchange",
@@ -18391,7 +18390,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     listedAt: 1638464939,
   },
-  */
   {
     id: "964",
     name: "Nemesis DAO",

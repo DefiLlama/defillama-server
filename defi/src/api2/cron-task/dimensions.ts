@@ -23,6 +23,7 @@ import { sluggifyString } from "../../utils/sluggify"
 import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
+import { chainCoingeckoIds, normalizeChain } from '../../utils/normalizeChain';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -40,6 +41,27 @@ function getProtocolAppMetricsFlag(info: any) {
   let id = info.id2 ?? info.id
   if (id && blacklistedAppIdSet.has(info.id2)) return false
   return true
+}
+
+function getL2Info(info: any) {
+  let id = info.id2 ?? info.id
+  if (id?.startsWith('chain#')) id = id.slice(6)
+  let chainData = Object.values(chainCoingeckoIds).find(chain => chain.chainId == id);
+  let parentChainId = 0;
+  if (chainData?.parent?.chain) {
+    const parentChainName = chainData.parent.chain;
+    const parentChain = chainCoingeckoIds[parentChainName];
+    parentChainId = parentChain?.chainId || 0;
+  }
+  return {
+    id: id,
+    name: info.name,
+    parentChain: {
+      name: chainData?.parent?.chain || '',
+      id: parentChainId,
+      types: chainData?.parent?.types || [],
+    },
+  }
 }
 
 
@@ -288,9 +310,10 @@ async function run() {
 
       const isBreakdownAdapter = !isParentProtocol && dimensionProtocolInfo?.childProtocols?.length > 0
 
-      if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
-
-
+      skipChainSummary = (protocol.info.protocolType === ProtocolType.CHAIN) ? 
+                   !getL2Info(protocol.info).parentChain.types.includes("L2") : 
+                   skipChainSummary;
+                   
       if (!records)
         records = adapterTypeRecords
 
@@ -318,7 +341,28 @@ async function run() {
 
         Object.entries(aggregated).forEach(addRecordData)
 
-        if (hasAppMetrics) {
+        const l2Info = getL2Info(protocol.info);
+        if (l2Info.parentChain.types.includes("L2") && l2Info.parentChain.id) {
+          const dailyFeesData = aggregated[AdaptorRecordType.dailyFees];
+          const dailyRevenueData = aggregated[AdaptorRecordType.dailyRevenue];
+
+          if (dailyFeesData && dailyRevenueData) {
+            const l1Fees = Math.abs(dailyFeesData.value - dailyRevenueData.value);
+            if (l1Fees > 0) {
+              const parentChainName = normalizeChain(l2Info.parentChain.name);
+              const oldData = aggregated[AdaptorRecordType.dailyFees] || { value: 0, chains: {} };
+              aggregated[AdaptorRecordType.dailyFees] = {
+                value: l1Fees + oldData.value,
+                chains: {
+                  ...oldData.chains,
+                  [parentChainName]: l1Fees
+                }
+              };
+            }
+          }
+        }
+
+        if (hasAppMetrics || getL2Info(protocol.info).parentChain.types.includes("L2")) {
           const dailyFeesData = aggregated[AdaptorRecordType.dailyFees]
           const dailyRevenueData = aggregated[AdaptorRecordType.dailyRevenue]
 
@@ -581,7 +625,6 @@ async function run() {
     }
 
     function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, protocolLatestRecord, debugParams, }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, protocolLatestRecord?: any, debugParams?: any }) {
-
       // protocolLatestRecord ?? record is a hack to show latest data as protocol's 24h data but not use that record for computing chain/global summary
       if (protocolSummary) _addToSummary({ record: protocolLatestRecord ?? record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary, debugParams, })
       // we need to skip updating summary because underlying child data is already used to update the summary

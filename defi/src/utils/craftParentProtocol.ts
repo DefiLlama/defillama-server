@@ -72,7 +72,7 @@ export default async function craftParentProtocol({
       : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
-    childProtocols.map((protocolData) =>
+    childProtocols.filter(i => !i.excludeTvlFromParent).map((protocolData) =>
       fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
     )
   );

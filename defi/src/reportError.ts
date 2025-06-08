@@ -22,7 +22,7 @@ https://defillama.com/protocol/${sluggifyString(protocol)}`
     },
     body: JSON.stringify({
       sender: {
-        handle: contact ?? 'Anonymous',
+        handle: contact ?? `Anon ${Math.round(Math.random()*1e5)}`,
       },
       subject: `Report: ${protocol} (${dataType})`,
       body: formattedMessage,

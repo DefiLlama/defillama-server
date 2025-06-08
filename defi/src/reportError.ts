@@ -14,7 +14,7 @@ What's wrong: ${message}
 Correct data: ${correctSource}
 https://defillama.com/protocol/${sluggifyString(protocol)}`
 
-  await fetch(`https://defillama.api.frontapp.com/channels/cha_kj4ps/incoming_messages`, {
+  const frontResponse = await fetch(`https://defillama.api.frontapp.com/channels/cha_kj4ps/incoming_messages`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
@@ -22,12 +22,12 @@ https://defillama.com/protocol/${sluggifyString(protocol)}`
     },
     body: JSON.stringify({
       sender: {
-        name: contact ?? 'Anonymous',
+        handle: contact ?? 'Anonymous',
       },
       subject: `Report: ${protocol} (${dataType})`,
       body: formattedMessage,
     }),
-  });
+  }).then(res => res.json());
   
   await getErrorDBConnection()`
   insert into errorReports (

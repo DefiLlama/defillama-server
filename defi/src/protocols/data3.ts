@@ -6593,7 +6593,7 @@ const data3_1: Protocol[] = [
     name: "crvUSD",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
-    url: "https://crvusd.curve.finance/#/ethereum/markets",
+    url: "https://www.curve.finance/crvusd/ethereum/markets/",
     description: "crvUSD is a collateralized-debt-position (CDP) stablecoin pegged to the US Dollar",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/crvusd.jpg`,

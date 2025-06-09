@@ -122,6 +122,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6149": "openzk",
   "6150": "treasure",
   "6151": "zkcandy",
+  "6284": "ao",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -237,4 +238,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "openzk": { ticker: "OZK", address: "coingecko:openzk-network" },
   "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
   // "zkcandy": {}
+  "ao": { ticker: "AO", address: "coingecko:ao-computers" },
 };

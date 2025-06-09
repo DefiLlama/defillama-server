@@ -3043,4 +3043,7 @@ export default {
     "meteora-damm-v2": {
         id: "6288"
     },
+    "meteora-dbc": {
+        id: "6290"
+    }
 } as AdaptorsConfig

@@ -3653,5 +3653,8 @@ export default {
     },
     "moonpiefun": {
         id: "6289"
+    },
+    "meteora-dbc": {
+        id: "6290"
     }
 } as AdaptorsConfig

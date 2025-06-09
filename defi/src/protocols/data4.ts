@@ -16130,5 +16130,27 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
   },
+  {
+    id: "6290",
+    name: "Meteora Dynamic Bonding Curve",
+    address: null,
+    symbol: "-",
+    url: "https://v2.meteora.ag/",
+    description:
+      "Meteora's Dynamic Bonding Curve is a permissionless token launch protocol that allows platforms to create customizable bonding curve pools for new tokens, enabling immediate trading, flexible fee structures, and automated migration to AMMs",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/meteora-dynamic-bonding-curve.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "MeteoraAG",
+    forkedFromIds: [],
+    audit_links: [],
+    parentProtocol: "parent#meteora",
+  },
 ];
 export default data4;

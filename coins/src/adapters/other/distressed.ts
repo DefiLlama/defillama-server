@@ -310,6 +310,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"
   },
+  bera: {
+    "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E"
+  },
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
   // }

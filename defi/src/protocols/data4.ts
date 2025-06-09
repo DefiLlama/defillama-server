@@ -15952,8 +15952,8 @@ const data4: Protocol[] = [
   {
     id: "6282",
     name: "letsBONK.fun",
-    address: "solana:CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk",
-    symbol: "LETSBONK",
+    address: null,
+    symbol: "-",
     url: "https://letsbonk.fun/",
     description:
       "Meme token launchpad",
@@ -15961,8 +15961,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/letsbonk.fun.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "lets-bonk",
-    cmcId: "36347",
+    gecko_id: null,
+    cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],
     forkedFromIds: [],

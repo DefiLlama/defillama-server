@@ -16079,7 +16079,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["Real Estate"],
-    chains: ["Base", "Plume Mainnet"],
+    chains: ["Base"],
     forkedFromIds: [],
     module: "realtyx/index.js",
     twitter: "RealtyX_DAO",

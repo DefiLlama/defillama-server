@@ -3644,5 +3644,11 @@ export default {
     },
     "bookusd": {
         id: "6283"
-    }
+    },
+    "indigo": {
+        id: "2309"
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
 } as AdaptorsConfig

@@ -16087,5 +16087,27 @@ const data4: Protocol[] = [
     github: ["HomuraAcc"],
     listedAt: 1749485401,
   },
+  {
+    id: "6288",
+    name: "Meteora DAMM V2",
+    address: null,
+    symbol: "-",
+    url: "https://v2.meteora.ag/",
+    description:
+      "Constant-product AMM pools with configurable features such as dynamic fees, fee scheduling, and token-based fee selection, designed to support liquidity provision and token launches with minimal maintenance",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/meteora-damm-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "MeteoraAG",
+    forkedFromIds: [],
+    audit_links: [],
+    parentProtocol: "parent#meteora",
+  },
 ];
 export default data4;

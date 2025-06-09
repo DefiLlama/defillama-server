@@ -3039,5 +3039,8 @@ export default {
     },
     "uniderp": {
         id: "6126"
-    }
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
 } as AdaptorsConfig

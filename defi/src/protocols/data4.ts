@@ -16109,5 +16109,26 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#meteora",
   },
+  {
+    id: "6289",
+    name: "MoonPie",
+    address: null,
+    symbol: "-",
+    url: "https://moonpie.fun/",
+    description:
+      "Launch tokens. Trade instantly. No presale, no team allocation. Built on Asset Chain. Fair-launch forever",
+    chain: "Asset Chain",
+    logo: `${baseIconsUrl}/moonpie.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Asset Chain"],
+    module: "dummy.js",
+    twitter: "MoonPieFun",
+    forkedFromIds: [],
+    audit_links: [],
+  },
 ];
 export default data4;

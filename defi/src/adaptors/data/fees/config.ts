@@ -3651,4 +3651,7 @@ export default {
     "meteora-damm-v2": {
         id: "6288"
     },
+    "moonpiefun": {
+        id: "6289"
+    }
 } as AdaptorsConfig

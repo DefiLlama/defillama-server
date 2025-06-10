@@ -16146,7 +16146,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],
-    module: "thevault-unstake-pool/index.js",
+    module: "dummy.js",
     twitter: "MeteoraAG",
     forkedFromIds: [],
     audit_links: [],

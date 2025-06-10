@@ -16243,14 +16243,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6295",
-    name: "Namada",
+    name: "Namada Shielded Pools",
     address: null,
     symbol: "-",
     url: "https://namada.net",
     description:
       "Namada is an L1 proof-of-stake blockchain with a ZK-powered multi-asset shielded pool serving as the composable privacy layer for the multichain",
     chain: "Namada",
-    logo: `${baseIconsUrl}/namada.jpg`,
+    logo: `${baseIconsUrl}/namada-shielded-pools.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

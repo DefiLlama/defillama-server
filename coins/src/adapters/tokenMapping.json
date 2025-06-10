@@ -8320,6 +8320,11 @@
     }
   },
   "hemi": {
+    "0xad11a8BEb98bbf61dbb1aa0F6d6F2ECD87b35afA": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
     "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
       "to": "coingecko#bitcoin",
       "decimals": 18,

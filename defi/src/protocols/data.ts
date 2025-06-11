@@ -207,10 +207,20 @@ const data: Protocol[] = [
     module: "synthetix/index.js",
     twitter: "synthetix_io",
     audit_links: ["https://docs.synthetix.io/v/v3/for-developers/smart-contract-audits/"],
-    oraclesByChain: {
-      ethereum: ["Chainlink"],
-      optimism: ["Chainlink", "Pyth"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "ethereum"},{chain: "optimism"}]
+      },
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "optimism"}]
+      }
+    ],
     parentProtocol: "parent#synthetix",
   },
   {
@@ -405,10 +415,20 @@ const data: Protocol[] = [
     twitter: "dForcenet",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
-    oraclesByChain: {
-      ethereum: ["Chainlink"],
-      conflux: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5150
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "ethereum"}]
+      },
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5150"],
+        chains: [{chain: "conflux"}]
+      }
+    ],
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
     github: ["dforce-network"], //check
@@ -2197,13 +2217,14 @@ const data: Protocol[] = [
     cmcId: "7844",
     category: "Liquidity manager",
     chains: ["Binance", "Arbitrum", "Optimism", "Base", "Polygon", "Linea", "Avalanche", "Fantom", "Moonriver", "Moonbeam", "Kava"],
-    oraclesByChain: {
-      binance: ["Chainlink"],
-      arbitrum: ["Chainlink"],
-      optimism: ["Chainlink"],
-      base: ["Chainlink"],
-      polygon: ["Chainlink"],
-    },  // https://docs.acryptos.com/tutorials-guides/resources/oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.acryptos.com/tutorials-guides/resources/oracles"],
+        chains: [{chain: "binance"},{chain: "arbitrum"},{chain: "optimism"},{chain: "base"},{chain: "polygon"}]
+      }
+    ],
     module: "acryptos/index.js",
     twitter: "acryptosdao",
     audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],
@@ -2295,11 +2316,14 @@ const data: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFromIds: ["114"],
-    oraclesByChain: {
-      bsc: ["RedStone"], // https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
-      //   op_bnb: ["Binance Oracle"]
-      unichain: ["RedStone"] //https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool
-    },
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain","https://docs-v4.venus.io/risk/resilient-price-oracle","https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool"],
+        chains: [{chain: "bsc"},{chain: "unichain"}]
+      }
+    ],
     parentProtocol: "parent#venus-finance",
   },
   {
@@ -5201,16 +5225,20 @@ const data: Protocol[] = [
     chains: ["Arbitrum", "Avalanche", "Binance", "Blast", "Ethereum", "Fantom", "Kava", "Optimism"],
     module: "abracadabra/index.js",
     twitter: "MIM_Spell",
-    oraclesByChain: {
-      arbitrum: ["Chainlink"],
-      avalanche: ["Chainlink"],
-      blast: ["RedStone"],
-      bsc: ["Chainlink"],
-      ethereum: ["Chainlink"],
-      fantom: ["Chainlink"],
-      kava: ["RedStone"],
-      optimism: ["Chainlink"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "arbitrum"},{chain: "avalanche"},{chain: "bsc"},{chain: "ethereum"},{chain: "fantom"},{chain: "optimism"}]
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "blast"},{chain: "kava"}]
+      }
+    ],
     parentProtocol: "parent#abracadabra",
     audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
   },
@@ -5981,9 +6009,14 @@ const data: Protocol[] = [
     module: "pendle/index.js",
     twitter: "pendle_fi",
     audit_links: ["https://github.com/pendle-finance/pendle-core-v2-public/tree/main/audits"],
-    oraclesByChain: {
-      arbitrum: ["RedStone"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "RedStone"}]
+      }
+    ],
     github: ["pendle-finance"],
   },
   {
@@ -9307,12 +9340,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Binance", "Polygon"],
     module: "thales/index.js",
     twitter: "thales_io",
-    oraclesByChain: {
-      optimism: ["Chainlink"], //  https://github.com/DefiLlama/defillama-server/pull/5327#issuecomment-1869801081
-      arbitrum: ["Chainlink"], // since the speedmarkets products is only a very small amout of TVL , we can not add it to the oracles. Our rule is around 50% TVL https://github.com/DefiLlama/DefiLlama-Adapters/discussions/6254
-      polygon: ["Chainlink"],
-      base: ["Chainlink"],
-    },
+    oraclesBreakdown: [  // since the speedmarkets products is only a very small amout of TVL , we can not add it to the oracles. Our rule is around 50% TVL 
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5327#issuecomment-1869801081","https://github.com/DefiLlama/DefiLlama-Adapters/discussions/6254"],
+        chains: [{chain: "optimism"},{chain: "arbitrum"},{chain: "polygon"},{chain: "base"}]
+      }
+    ],
     treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
     github: ["thales-markets"],
@@ -9717,9 +9752,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Cronos"],
     module: "annex.js",
     twitter: "AnnexFinance",
-    oraclesByChain: {
-      cronos: ["Band"], //contract https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
-    },
+    oraclesBreakdown: [
+      {
+        name: "Band",
+        type: "Primary",
+        proof: ["https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code"],
+        chains: [{chain: "cronos"}]
+      }
+    ],
     audit_links: ["https://www.certik.org/projects/annex"],
     github: ["annexfinance"],
   },
@@ -11343,14 +11383,32 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://omniscia.io/reports/mean-finance-permit2-adapter-64ad40c224448c00148ee2f9",
       "https://omniscia.io/reports/mean-finance-nft-permission-system-65536361239be600181362f3",
     ],
-    oraclesByChain: {
-      arbitrum: ["Chainlink", "TWAP"],
-      polygon: ["Chainlink", "Api3", "TWAP"],
-      optimism: ["Chainlink", "TWAP"],
-      ethereum: ["Chainlink", "TWAP"],
-      bsc: ["Chainlink", "TWAP"],
-      rsk: ["Umbrella Network"], // https://medium.com/umbrella-network/umbrella-integrates-with-balmy-90cfa7f0247c
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "arbitrum"},{chain: "polygon"},{chain: "optimism"},{chain: "bsc"},{chain: "ethereum"}]
+      },
+      {
+        name: "TWAP",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "arbitrum"},{chain: "polygon"},{chain: "optimism"},{chain: "bsc"},{chain: "ethereum"}]
+      },
+      {
+        name: "Umbrella Network",
+        type: "Primary",
+        proof: ["https://medium.com/umbrella-network/umbrella-integrates-with-balmy-90cfa7f0247c"],
+        chains: [{chain: "rsk"}]
+      },
+      {
+        name: "Api3",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "polygon"}]
+      },
+    ],
     github: ["balmy-protocol"],
   },
   {
@@ -12077,9 +12135,20 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Options",
     chains: ["Ethereum", "Arbitrum"],
-    oraclesByChain: {
-      arbitrum: ["Chainlink", "DIA"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "arbitrum"}]
+      },
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "arbitrum"}]
+      }
+    ],
     module: "dopex/index.js",
     twitter: "dopex_io",
     audit_links: ["https://docs.dopex.io/developer/audits"],
@@ -12669,10 +12738,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast", "Base"],
     module: "yel/index.js",
     twitter: "yel_finance",
-    oraclesByChain: {
-      sonic: ["Chainlink"], //Source: https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles
-      base: ["Chainlink"], //Source: https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles"],
+        chains: [{chain: "sonic"},{chain: "base"}]
+      }
+    ],
     listedAt: 1634674060,
     github: ["YieldEnhancementLabs"],
     governanceID: ["snapshot:yelfinance.eth"],

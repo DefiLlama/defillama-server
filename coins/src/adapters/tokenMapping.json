@@ -8903,6 +8903,43 @@
       "to": "coingecko#neutron-3",
       "decimals": 6,
       "symbol": "NTRN"
+      }
+  },
+  "hydradx": {
+    "0x0000000000000000000000000000000100000016": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x000000000000000000000000000000010000000a": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x0000000000000000000000000000000100000013": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0x0000000000000000000000000000000100000005": {
+      "to": "coingecko#polkadot",
+      "decimals": 10,
+      "symbol": "DOT"
+    },
+    "0x000000000000000000000000000000010000000f": {
+      "to": "coingecko#voucher-dot",
+      "decimals": 10,
+      "symbol": "vDOT"
+    },
+    "0x00000000000000000000000000000001000f453d": {
+      "to": "coingecko#tbtc",
+      "decimals": 18,
+      "symbol": "tBTC"
+    },
+    "0x00000000000000000000000000000001000002b2": {
+      "to": "coingecko#gigadot",
+      "decimals": 18,
+      "symbol": "2-Pool-GDOT"
     }
   }
 }

@@ -3644,5 +3644,17 @@ export default {
     },
     "bookusd": {
         id: "6283"
+    },
+    "indigo": {
+        id: "2309"
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
+    "moonpiefun": {
+        id: "6289"
+    },
+    "meteora-dbc": {
+        id: "6290"
     }
 } as AdaptorsConfig

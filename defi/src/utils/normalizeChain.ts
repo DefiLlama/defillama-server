@@ -4291,6 +4291,15 @@ export const chainCoingeckoIds = {
     cmcId: null,
     twitter: "milky_way_zone",
     url: "https://www.milkyway.zone/"
+  },
+  "Namada": {
+    geckoId: "namada",
+    symbol: "NAM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "namada",
+    url: "https://namada.net/",
+    github: ["anoma"],
   }
 } as unknown as ChainCoinGekcoIds
 

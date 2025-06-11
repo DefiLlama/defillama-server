@@ -2345,7 +2345,8 @@ export default {
         id: "6155"
     },
     "believe": {
-        id: "6159"
+        id: "6159",
+        disabled: true,
     },
     "rockswap": {
         id: "4204"
@@ -3038,5 +3039,14 @@ export default {
     },
     "uniderp": {
         id: "6126"
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
+    "meteora-dbc": {
+        id: "6290"
+    },
+    "x3x": {
+        id: "6272"
     }
 } as AdaptorsConfig

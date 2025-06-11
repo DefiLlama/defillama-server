@@ -11,6 +11,7 @@ const baseTokens: { [symbol: string]: string } = {
   JTO: "jito-governance-token",
   JLP: "jupiter-perpetuals-liquidity-provider-token",
   ETH: "ethereum",
+  MXN: "real-mxn",
 };
 
 type MarketInfo = {
@@ -140,6 +141,33 @@ const marketInfos: MarketInfo[] = [
     decimals: 9,
     oracleDecimals: 0,
     chain: "eclipse",
+  },
+  {
+    address: "GrzLxEjHk4suuE7EjZwsJpXwagpGVffQVPvGBCqat8tk",
+    mintAddress: "B9XrZdPhbPi5FZXgpReHzDY5bkF18aRxtkgXzDmZz8uw",
+    symbol: "CETES",
+    unit: "MXN",
+    decimals: 6,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "8BTZiJ5G8SkB69bPtGfA2eiyYhkqbDhf8ryxovJFVnuJ",
+    mintAddress: "EETKGUFiM5ihrtz4cCXZngMTyMxrk8WanUemDHX4BfVD",
+    symbol: "fragSOL",
+    unit: "SOL",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "7Rywj5jGRqHr4YHPPoMUUZ1MSZPQzUVrVvZVUiKxaWnj",
+    mintAddress: "AM8LKTfzZ5KUxviB7faYh5kFdnJhWgGVoRrZpfmi37ms",
+    symbol: "fragJTO",
+    unit: "JTO",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
   },
 ];
 

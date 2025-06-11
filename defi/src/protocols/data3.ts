@@ -8210,6 +8210,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#paladin-finance",
     wrongLiquidity: true, // not listed on coingecko, showing liquidity for another WAR token
+    deprecated: true,
     listedAt: 1685977922,
   },
   {
@@ -14647,6 +14648,7 @@ const data3_1: Protocol[] = [
     ],
     parentProtocol: "parent#paladin-finance",
     listedAt: 1691414989,
+    deprecated: true
   },
   {
     id: "3353",
@@ -62726,13 +62728,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5526",
-    name: "Rings",
+    name: "Trevee Earn",
+    previousNames: ["Rings"],
     address: null,
     symbol: "-",
     url: "https://rings.money/",
     description: "Rings is a meta-stablecoin for USD & ETH offering competitive yield for stakers, providing deep liquidity for Sonic DeFi, and funding Sonic DeFi projects via its lockers.",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/rings.jpg`,
+    logo: `${baseIconsUrl}/trevee-earn.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

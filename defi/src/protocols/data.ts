@@ -11306,6 +11306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/pessimistic-io/audits/blob/914e35fdfc879451a61d2a3969f3be839b8c808f/Paladin%20Security%20Analysis%20by%20Pessimistic.pdf",
     ],
     parentProtocol: "parent#paladin-finance",
+    deprecated: true
   },
   {
     id: "625",

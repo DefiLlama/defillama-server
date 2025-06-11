@@ -7429,7 +7429,7 @@
       "symbol": "WETH"
     },
     "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#fantom",
+      "to": "coingecko#sonic-3",
       "decimals": 18,
       "symbol": "S"
     },
@@ -8187,6 +8187,16 @@
     }
   },
   "unichain": {
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "to": "coingecko#renzo-restaked-eth",
+      "decimals": 18,
+      "symbol": "ezETH"
+    },
+    "0x0555e30da8f98308edb960aa94c0db47230d2b9c": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
     "0xc3eACf0612346366Db554C991D7858716db09f58": {
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": 18,

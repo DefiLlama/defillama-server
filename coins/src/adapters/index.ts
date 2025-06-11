@@ -152,4 +152,5 @@ export default {
   sundaeswapV3: require("./markets/sundaeswapv3"),
   tempest: require("./yield/tempest"),
   momentum: require("./markets/momentum"),
+  pst: require("./solana/pst"),
 };

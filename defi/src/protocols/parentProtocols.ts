@@ -7246,6 +7246,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "asymmetryfin",
     github: ["asymmetryfinance"],
+  },
+  {
+    id: "parent#the-vault",
+    name: "The Vault",
+    url: "https://thevault.finance",
+    description: "A Decentralized Modular LST Ecosystem on Solana. Growing the Solana Network with a Community Focus, with vSOL",
+    logo: `${baseIconsUrl}/the-vault.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "thevaultfinance",
   }
 ];
 

@@ -359,6 +359,6 @@ export default {
   },
   "bluefin7k-aggregator": {
     parentId: "Bluefin",
-    "id": "6291",
+    "id": "6296",
   },
 } as AdaptorsConfig;

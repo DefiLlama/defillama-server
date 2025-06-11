@@ -16278,7 +16278,7 @@ const data4: Protocol[] = [
     cmcId: "12114",
     category: "DEX Aggregator",
     chains: ["Sui"],
-    module: "bluefin7k-aggregator/index.js",
+    module: "7k-aggregator/index.js",
     twitter: "bluefinapp",
     forkedFrom: [],
     parentProtocol: "parent#bluefin",

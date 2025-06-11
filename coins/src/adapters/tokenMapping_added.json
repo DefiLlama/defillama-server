@@ -5462,30 +5462,6 @@
       "symbol": "pCKB",
       "to": "coingecko#nervos-network"
     },
-    "0x9e858a7aaedf9fdb1026ab1f77f627be2791e98a": {
-      "name": "ETH",
-      "decimals": "18",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
-    },
-    "0x186181e225dc1ad85a4a94164232bd261e351c33": {
-      "name": "USDC",
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0x2c9fc6087875646112f66a3c92fef2d158faa76e": {
-      "name": "DAI",
-      "decimals": "18",
-      "symbol": "DAI",
-      "to": "coingecko#dai"
-    },
-    "0x8e019acb11c7d17c26d334901fa2ac41c1f44d50": {
-      "name": "USDT",
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    },
     "0xb44a9b6905af7c801311e8f4e76932ee959c663c": {
       "name": "Wrapped BTC",
       "decimals": "8",

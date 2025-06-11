@@ -1,11 +1,22 @@
+import { Balances } from "@defillama/sdk";
+
+export type AssetBalance = Record<string, number>;
+
+export interface AssetPoR {
+  minted: Balances;
+  reserves: Balances;
+}
+
 export interface GetPoROptions {
   timestamp: number;
 }
 
-export interface IPoRAdapter {
-  // total assets were minted/issued across all destination blockchains
-  minted: (options: GetPoROptions) => Promise<{[key: string]: number}>;
+export interface GetPoRResult {
+  // chain => AssetPoR
+  [key: string]: AssetPoR;
+}
 
-  // total backing assets are being locked across all source blockchains
-  unrelaesed: (options: GetPoROptions) => Promise<{[key: string]: number}>;
+export interface IPoRAdapter {
+  assetLabel: string;
+  reserves: (options: GetPoROptions) => Promise<GetPoRResult>;
 }

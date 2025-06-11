@@ -3,16 +3,12 @@ import { getReserves } from "../utils/adapter";
 import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
 
 const adapter: IPoRAdapter = {
-  assetLabel: 'hemiBTC',
+  assetLabel: 'BTC.b',
   reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = bitcoinAddressBook.hemiBTC;
+    const addresses = bitcoinAddressBook.avalanche;
     return await getReserves(options, {
-      hemi: {
-        minted: [
-          {
-            address: '0xAA40c0c7644e0b2B224509571e10ad20d9C4ef28',
-          },
-        ],
+      avax: {
+        minted: [{address: '0x152b9d0FdC40C096757F570A51E494bd4b943E50'}],
       },
       bitcoin: {
         reserves: {
@@ -24,4 +20,3 @@ const adapter: IPoRAdapter = {
 }
 
 export default adapter;
-

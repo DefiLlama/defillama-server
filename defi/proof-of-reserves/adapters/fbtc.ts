@@ -3,49 +3,63 @@ import { getReserves } from "../utils/adapter";
 import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
 
 const adapter: IPoRAdapter = {
-  assetLabel: 'iBTC',
+  assetLabel: 'FBTC',
   reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = await bitcoinAddressBook.dlcLink();
+    const addresses = await bitcoinAddressBook.fbtc();
     return await getReserves(options, {
       ethereum: {
         minted: [
           {
-            address: '0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2',
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
+          },
+        ],
+      },
+      mantle: {
+        minted: [
+          {
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
           },
         ],
       },
       arbitrum: {
         minted: [
           {
-            address: '0x050c24dbf1eec17babe5fc585f06116a259cc77a',
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
           },
         ],
       },
-      optimism: {
+      bob: {
         minted: [
           {
-            address: '0x2baa7e92f3f14883264bfa63058cc223ad719438',
-          },
-        ],
-      },
-      base: {
-        minted: [
-          {
-            address: '0x12418783e860997eb99e8aCf682DF952F721cF62',
-          },
-        ],
-      },
-      avax: {
-        minted: [
-          {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
           },
         ],
       },
       bsc: {
         minted: [
           {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
+          },
+        ],
+      },
+      base: {
+        minted: [
+          {
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
+          },
+        ],
+      },
+      berachain: {
+        minted: [
+          {
+            address: '0xbAC93A69c62a1518136FF840B788Ba715cbDfE2B',
+          },
+        ],
+      },
+      sonic: {
+        minted: [
+          {
+            address: '0xc96de26018a54d51c097160568752c4e3bd6c364',
           },
         ],
       },

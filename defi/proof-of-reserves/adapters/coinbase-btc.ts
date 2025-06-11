@@ -3,49 +3,36 @@ import { getReserves } from "../utils/adapter";
 import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
 
 const adapter: IPoRAdapter = {
-  assetLabel: 'iBTC',
+  assetLabel: 'cbBTC',
   reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = await bitcoinAddressBook.dlcLink();
+    const addresses = bitcoinAddressBook.coinbasebtc;
     return await getReserves(options, {
       ethereum: {
         minted: [
           {
-            address: '0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2',
-          },
-        ],
-      },
-      arbitrum: {
-        minted: [
-          {
-            address: '0x050c24dbf1eec17babe5fc585f06116a259cc77a',
-          },
-        ],
-      },
-      optimism: {
-        minted: [
-          {
-            address: '0x2baa7e92f3f14883264bfa63058cc223ad719438',
+            address: '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf',
           },
         ],
       },
       base: {
         minted: [
           {
-            address: '0x12418783e860997eb99e8aCf682DF952F721cF62',
+            address: '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf',
           },
         ],
       },
-      avax: {
+      arbitrum: {
         minted: [
           {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
+            address: '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf',
           },
         ],
       },
-      bsc: {
+      solana: {
         minted: [
           {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
+            address: 'cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij',
+            decimals: 8,
           },
         ],
       },

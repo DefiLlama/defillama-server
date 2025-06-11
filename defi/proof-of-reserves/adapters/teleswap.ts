@@ -3,49 +3,35 @@ import { getReserves } from "../utils/adapter";
 import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
 
 const adapter: IPoRAdapter = {
-  assetLabel: 'iBTC',
+  assetLabel: 'TELEBTC',
   reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = await bitcoinAddressBook.dlcLink();
+    const addresses = bitcoinAddressBook.teleswap;
     return await getReserves(options, {
-      ethereum: {
-        minted: [
-          {
-            address: '0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2',
-          },
-        ],
-      },
-      arbitrum: {
-        minted: [
-          {
-            address: '0x050c24dbf1eec17babe5fc585f06116a259cc77a',
-          },
-        ],
-      },
-      optimism: {
-        minted: [
-          {
-            address: '0x2baa7e92f3f14883264bfa63058cc223ad719438',
-          },
-        ],
-      },
-      base: {
-        minted: [
-          {
-            address: '0x12418783e860997eb99e8aCf682DF952F721cF62',
-          },
-        ],
-      },
-      avax: {
-        minted: [
-          {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
-          },
-        ],
-      },
       bsc: {
         minted: [
           {
-            address: '0x25be3edd820a8fce6b8e211f40c5b82ba176994c',
+            address: '0xC58C1117DA964aEbe91fEF88f6f5703e79bdA574',
+          },
+        ],
+      },
+      polygon: {
+        minted: [
+          {
+            address: '0x3BF668Fe1ec79a84cA8481CEAD5dbb30d61cC685',
+          },
+        ],
+      },
+      bsquared: {
+        minted: [
+          {
+            address: '0x05698eaD40cD0941e6E5B04cDbd56CB470Db762A',
+          },
+        ],
+      },
+      bob: {
+        minted: [
+          {
+            address: '0x0670bEeDC28E9bF0748cB254ABd946c87f033D9d',
           },
         ],
       },

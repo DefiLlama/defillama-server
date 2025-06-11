@@ -2,7 +2,7 @@ import { IPoRAdapter } from '../types';
 
 // usage
 // ts-node cli/test.ts project-slug
-// ex: ts-node cli/test.ts lombard-lbtc
+// ex: ts-node cli/test.ts lombard
 
 const project = process.argv[2];
 
@@ -37,17 +37,38 @@ if (process.argv[3]) {
     console.log('')
 
     try {
-      const [mintedBalances, unreleasedBalances] = await Promise.all([
-        adapter.minted({timestamp: timestamp}),
-        adapter.unrelaesed({timestamp: timestamp}),
-      ])
-      for (const [token, balance] of Object.entries(mintedBalances)) {
-        const backingRatio = unreleasedBalances[token] / balance * 100;
-        console.log(`${'Minted:'.padEnd(15)} ${balance} ${token}`);
-        console.log(`${'Unreleased:'.padEnd(15)} ${unreleasedBalances[token]} ${token}`);
-        console.log(`${'Backing Ratio:'.padEnd(15)} ${(backingRatio).toFixed(4)}% - ${backingRatio >= 100 ? '✅ GOOD' : '❌ BAD'}`);
+      const result = await adapter.reserves({timestamp: timestamp});
+
+      console.log('');
+      console.log(`----- Asset: ${adapter.assetLabel} -----`);
+
+      let totalMinted = 0;
+      let totalReserves = 0;
+      for (const [chain, chainBalance] of Object.entries(result)) {
+        let chainTotalMinted = 0;
+        let chainTotalReserves = 0;
+        for (const balance of Object.values(chainBalance.minted.getBalances())) {
+          totalMinted += Number(balance);
+          chainTotalMinted += Number(balance);
+        }
+        for (const balance of Object.values(chainBalance.reserves.getBalances())) {
+          totalReserves += Number(balance);
+          chainTotalReserves += Number(balance);
+        }
         console.log('');
+        console.log(chain);
+        console.log(`\t${'Minted:'.padEnd(10)} ${chainTotalMinted}`);
+        console.log(`\t${'Reserves:'.padEnd(10)} ${chainTotalReserves}`);
       }
+
+      const backingRatio = totalReserves / totalMinted * 100;
+
+      console.log('');
+      console.log('----- Summarize -----');
+      console.log(`${'Backing:'.padEnd(10)} ${(backingRatio).toFixed(4)}% - ${backingRatio >= 100 ? '✅ GOOD' : '❌ BAD'}`);
+      console.log(`${'Minted:'.padEnd(10)} ${totalMinted}`);
+      console.log(`${'Reserves:'.padEnd(10)} ${totalReserves}`);
+      console.log('');
     } catch(e: any) {
       console.log(e)
     }

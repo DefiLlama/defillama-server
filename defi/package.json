@@ -54,6 +54,7 @@
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
     "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/dimensions/checkForDeadProtocols.ts",
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
+    "check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
   },
   "devDependencies": {

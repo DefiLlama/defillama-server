@@ -1,5 +1,5 @@
 import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/adapter";
+import { getReserves } from "../utils/getReserves";
 import ADDRESSES from "../../DefiLlama-Adapters/projects/helper/coreAssets.json";
 
 const adapter: IPoRAdapter = {

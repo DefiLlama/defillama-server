@@ -1,5 +1,5 @@
 import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/adapter";
+import { getReserves } from "../utils/getReserves";
 import axios from 'axios';
 
 const adapter: IPoRAdapter = {

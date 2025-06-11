@@ -7546,6 +7546,7 @@ const data4: Protocol[] = [
     github: ["superhedge-finance"],
     listedAt: 1741815021
   },
+/*
   {
     id: "5897",
     name: "Bridged TVL Excluded Assets",
@@ -7564,6 +7565,7 @@ const data4: Protocol[] = [
     module: "bridged-tvl-excluded/index.js",
     twitter: "",
   },
+*/
   {
     id: "5898",
     name: "USDD",

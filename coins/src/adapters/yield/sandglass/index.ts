@@ -161,8 +161,8 @@ const marketInfos: MarketInfo[] = [
     chain: "solana",
   },
   {
-    address: "7Rywj5jGRqHr4YHPPoMUUZ1MSZPQzUVrVvZVUiKxaWnj",
-    mintAddress: "AM8LKTfzZ5KUxviB7faYh5kFdnJhWgGVoRrZpfmi37ms",
+    address: "8FriGWLJ1NGXdtm9ow4SoFGMcidKGs5s81yRCG3YjVw2",
+    mintAddress: "9Mbo33isosQXQAg2VNTD4pobCDHtmFAkMwuUo3Vb11fh",
     symbol: "fragJTO",
     unit: "JTO",
     decimals: 9,

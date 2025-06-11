@@ -7548,7 +7548,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5897",
-    name: "Bridged TVL Excluded Asets",
+    name: "Bridged TVL Excluded Assets",
     address: null,
     symbol: "-",
     url: "",

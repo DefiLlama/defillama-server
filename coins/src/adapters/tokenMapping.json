@@ -8873,6 +8873,38 @@
       "to": "coingecko#milkyway-staked-tia"
     }
   },
+  "namada": {
+    "tnam1p5z8ruwyu7ha8urhq2l0dhpk2f5dv3ts7uyf2n75": {
+      "to": "coingecko#osmosis",
+      "decimals": 6,
+      "symbol": "OSMO"
+    },
+    "tnam1pkg30gnt4q0zn7j00r6hms4ajrxn6f5ysyyl7w9m": {
+      "to": "coingecko#cosmos",
+      "decimals": 6,
+      "symbol": "ATOM"
+    },
+    "tnam1pklj3kwp0cpsdvv56584rsajty974527qsp8n0nm": {
+      "to": "coingecko#celestia",
+      "decimals": 6,
+      "symbol": "TIA"
+    },
+    "tnam1pk288t54tg99umhamwx998nh0q2dhc7slch45sqy": {
+      "to": "coingecko#penumbra",
+      "decimals": 6,
+      "symbol": "UM"
+    },
+    "tnam1phv4vcuw2ftsjahhvg65w4ux8as09tlysuhvzqje": {
+      "to": "coingecko#nym",
+      "decimals": 6,
+      "symbol": "NYM"
+    },
+    "tnam1pk6pgu4cpqeu4hqjkt6s724eufu64svpqgu52m3g": {
+      "to": "coingecko#neutron-3",
+      "decimals": 6,
+      "symbol": "NTRN"
+      }
+  },
   "hydradx": {
     "0x0000000000000000000000000000000100000016": {
       "to": "coingecko#usd-coin",

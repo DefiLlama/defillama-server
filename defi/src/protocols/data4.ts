@@ -15928,8 +15928,8 @@ const data4: Protocol[] = [
   {
     id: "6281",
     name: "Atlantis",
-    address: null,
-    symbol: "-",
+    address: "sonic:0x9138a8733dce2e877f430b7500e3c229ad7599d9",
+    symbol: "AQUA",
     url: "https://www.atlantisprotocol.so/swap",
     description:
       "Atlantis is a next-generation DeFi protocol, built with a fully integrated end-to-end design. By combining a high-performance DEX, a native launchpad, and a suite of plugins that fuels continuous revenue sharing, Atlantis creates a seamless, closed-loop system where value flows back to the community",
@@ -15937,7 +15937,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/atlantis.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "atlantis-aqua-token",
     cmcId: null,
     category: "Dexs",
     chains: ["Sonic"],

@@ -3656,5 +3656,8 @@ export default {
     },
     "meteora-dbc": {
         id: "6290"
+    },
+    "renzo": {
+        id: "3933"
     }
 } as AdaptorsConfig

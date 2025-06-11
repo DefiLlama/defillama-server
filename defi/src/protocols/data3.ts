@@ -30423,6 +30423,7 @@ const data3_1: Protocol[] = [
     twitter: "PeapodsFinance",
     audit_links: ["https://sourcehat.com/audits/PeapodsFinance/"],
     listedAt: 1706184132,
+    oracles : ["DIA"],
   },
   {
     id: "4064",

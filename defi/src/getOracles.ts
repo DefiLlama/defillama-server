@@ -93,7 +93,7 @@ function sum(
   if (!oracleProtocols[oracle]) {
     oracleProtocols[oracle] = {};
   }
-  oracleProtocols[oracle][protocol.name] = totalTvl;
+  oracleProtocols[oracle][protocol.name] = (oracleProtocols[oracle][protocol.name] ?? 0) + totalTvl;
 }
 
 function isActive(timestamp: number, startDateStr?: string, endDateStr?: string): 'active' | 'inactive' | 'not-started' {

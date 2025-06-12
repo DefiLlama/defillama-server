@@ -1151,7 +1151,7 @@ const data4: Protocol[] = [
     cmcId: "30714",
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046
+    oraclesBreakdown: [ { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046"] } ],
     forkedFrom: [],
     module: "cvex/index.js",
     twitter: "cvex_xyz",
@@ -2173,17 +2173,16 @@ const data4: Protocol[] = [
     module: "resolv/index.js",
     twitter: "ResolvLabs",
     forkedFrom: [],
-    oracles: ["Pyth", "RedStone"], // https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool https://docs.resolv.xyz/litepaper/for-developers/smart-contracts
     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296"]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
       },
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296"]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
       },
     ],
     stablecoins: ["resolv-usd"],
@@ -3284,7 +3283,6 @@ const data4: Protocol[] = [
     chains: ["Hedera"],
     module: "sirio-fi/index.js",
     twitter: "SirioFinance",
-    oracles: ["Supra"],
     oraclesBreakdown: [
       {
         name: "Supra",
@@ -5642,7 +5640,6 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     forkedFrom: [],
-    oracles: ["Pyth","Stork","RedStone"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6203,7 +6200,6 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Hyperliquid L1"],
     forkedFromIds: ["1599"],
-    oracles: ["Pyth", "RedStone"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6329,7 +6325,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Base"],
-    oracles: ["Pyth","Chainlink"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -6530,7 +6525,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["CrossFi"],
-    oracles: ["DIA"], 
     oraclesBreakdown: [
       {
         name: "DIA",
@@ -7457,7 +7451,6 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Movement"],
     forkedFrom: [],
-    oracles: ["Pyth", "Switchboard", "Coingecko"], //https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -8567,7 +8560,6 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "hyperlend/index.js",
     forkedFromIds: ["1599"],
-    oracles: ["Pyth","RedStone"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -11191,7 +11183,6 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Supra"],
     forkedFrom: [],
-    oracles: ["Supra"],
     oraclesBreakdown: [
       {
         name: "Supra",

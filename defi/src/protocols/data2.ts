@@ -5347,10 +5347,20 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Polygon", "Polygon zkEVM"],
-    oraclesByChain: {
-      polygon: ["Chainlink"],
-      polygon_zkevm: ["Pyth"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "polygon"}]
+      },
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "polygon_zkevm"}]
+      },
+    ],
     forkedFromIds: ["114"],
     module: "0vix/index.js",
     twitter: "0vixProtocol",
@@ -9677,27 +9687,18 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Sui", "Aptos"],
-    oraclesByChain: {
-      Sui: ["Supra", "Pyth"], //https://doc-en.mole.fi/security/oracle
-      Aptos: ["Pyth"],
-    },
     oraclesBreakdown: [
       {
         name: "Supra",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
-        chains: [
-          {chain: "Sui"},
-        ]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
+        chains: [{chain: "Sui"},]
       },
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
-        chains: [
-          {chain: "Sui"},
-          {chain: "Aptos"},
-        ]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
+        chains: [{chain: "Sui"},{chain: "Aptos"},]
       }
     ],
     forkedFrom: [],
@@ -13049,10 +13050,14 @@ const data2: Protocol[] = [
     tags: ["Carbon Credits"],
     chains: ["Polygon", "Celo"],
     module: "toucan-protocol/index.js",
-    oraclesByChain: {
-      polygon: [],
-      celo: ["Witnet"],
-    },
+    oraclesBreakdown: [
+      {
+        name: "Witnet",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "celo"}]
+      },
+    ],
     forkedFrom: [],
     twitter: "ToucanProtocol",
     audit_links: ["https://docs.toucan.earth/protocol/resources/security"],
@@ -14517,12 +14522,14 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oraclesByChain: {
-      arbitrum: ["Chainlink"],
-      ethereum: ["Chainlink"],
-      base: ["Chainlink"],
-      optimism: ["Chainlink"],
-    }, // the oracle of each pools if provided on the UI https://app.silo.finance/
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.silo.finance/"],
+        chains: [{chain: "arbitrum"}, {chain: "ethereum"}, {chain: "base"}, {chain: "optimism"}]
+      },
+    ],
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",
@@ -15815,36 +15822,24 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum", "Fraxtal", "Arbitrum"],
-    oraclesByChain: {
-      ethereum: ["Chainlink"],
-      fraxtal: ["RedStone"],
-      arbitrum: ["Chainlink"],
-    },
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [
-          {chain: "Ethereum"},
-          {chain: "Arbitrum"}
-        ]
+        chains: [{chain: "Ethereum"},{chain: "Arbitrum"}]
       },
       {
         name: "Api3",
         type: "Secondary",
         proof: [],
-        chains: [
-          {chain: "Fraxtal"},
-        ]
+        chains: [{chain: "Fraxtal"},]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [
-          {chain: "Fraxtal"},
-        ]
+        chains: [{chain: "Fraxtal"},]
       }
     ],
     forkedFrom: [],
@@ -18364,47 +18359,30 @@ const data2: Protocol[] = [
     module: "dolomite/index.js",
     twitter: "Dolomite_io",
     forkedFrom: [],
-    oraclesByChain: {
-      arbitrum: ["Chainlink"],
-      polygon_zkevm: ["Chainlink"],
-      xlayer: ["Chainlink"],
-      mantle: ["Chronicle"],
-      berachain: ["RedStone"],
-    },
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/7767","https://app.dolomite.io/balances"],
-        chains: [
-          {chain: "Arbitrum"},
-          {chain: "Polygon zkEVM"},
-          {chain: "X Layer"}
-        ]
+        chains: [{chain: "arbitrum"},{chain: "polygon_zkevm"},{chain: "xlayer"}]
       },
       {
         name: "Chronicle",
         type: "Primary",
         proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], 
-        chains: [
-          {chain: "Mantle"},
-        ]
+        chains: [{chain: "mantle"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
-        chains: [
-          {chain: "Berachain"}
-        ]
+        chains: [{chain: "berachain"}]
       },
       {
         name: "Chainsight",
         type: "Secondary",
         proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
-        chains: [
-          {chain: "Berachain"}
-        ]
+        chains: [{chain: "berachain"}]
       }
     ],
     audit_links: [
@@ -25073,9 +25051,14 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Partially Algorithmic Stablecoin",
     chains: ["Cardano"],
-    oraclesByChain: {
-      cardano: ["COTI's Oracle"]
-    },
+    oraclesBreakdown: [
+      {
+        name: "COTI's Oracle",
+        type: "Primary",
+        proof: [],
+        chains: [{chain: "cardano"}]
+      },
+    ],
     forkedFrom: [],
     module: "djed-alliance/index.js",
     twitter: "DjedAlliance",
@@ -26120,9 +26103,14 @@ const data2: Protocol[] = [
     module: "vaultka/index.js",
     twitter: "Vaultkaofficial",
     forkedFrom: [],
-    oraclesByChain: {
-      solana: ["Pyth"],// "https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle",
-    },
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle"],
+        chains: [{chain: "solana"}]
+      },
+    ],
     audit_links: [
       "https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf",
       "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf",
@@ -28208,9 +28196,14 @@ const data2: Protocol[] = [
     chains: ["Sui"],
     module: "bluefin/index.js",
     twitter: "bluefinapp",
-    oraclesByChain: {
-      sui: ["Pyth"], // https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price
-    },
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price"],
+        chains: [{chain: "sui"}]
+      },
+    ],
     forkedFrom: [],
     parentProtocol: "parent#bluefin",
     audit_links: ["https://docsend.com/v/3rwt5/trail-of-bits-audit-bluefin-v2"],

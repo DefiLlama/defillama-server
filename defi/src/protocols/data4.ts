@@ -665,9 +665,14 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum","Optimism","Arbitrum","Base"],
-    oraclesByChain: {
-      arbitrum: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
-    },
+    oraclesBreakdown: [
+      {
+        name: "Api3",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
+        chains: [{chain: "arbitrum"}]
+      }
+    ],
     forkedFrom: [],
     module: "yield-fi/index.js",
     twitter: "getyieldfi",
@@ -1167,14 +1172,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
-    oraclesByChain: {
-      sonic: ["RedStone"], 
-    },
     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://app.silo.finance","https://github.com/DefiLlama/defillama-server/pull/9560"]
+        proof: ["https://app.silo.finance","https://github.com/DefiLlama/defillama-server/pull/9560"],
       },
       {
         name: "Chainlink",
@@ -2847,9 +2849,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Scroll"],
-    oraclesByChain: {
-      scroll: ["Chainlink"], //https://docs.quill.finance/faq/liquidations-oracle-and-redemptions
-    },
     oraclesBreakdown: [
       {
         name: "Chainlink",

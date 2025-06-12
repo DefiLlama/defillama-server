@@ -118,9 +118,25 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const sumDailyTvlsByChain = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
+  const latestProtocolTimestamps = new Map<string, number>();
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      const lastProcessedTimestamp = latestProtocolTimestamps.get(protocol.id);
+  
+          if (lastProcessedTimestamp !== undefined && timestamp < lastProcessedTimestamp) {
+            return;
+          }
+  
+          if (lastProcessedTimestamp === undefined || timestamp > lastProcessedTimestamp) {
+            latestProtocolTimestamps.set(protocol.id, timestamp);
+            for (const orc in oracleProtocols) {
+              if (oracleProtocols[orc][protocol.name]) {
+                delete oracleProtocols[orc][protocol.name];
+              }
+            }
+          }
+      
       try {
         if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
           const activeOracles: Array<{ name: string, type: string, chain: string | null }> = [];

@@ -3048,5 +3048,8 @@ export default {
     },
     "x3x": {
         id: "6272"
+    },
+    "duality": {
+        id: "5459"
     }
 } as AdaptorsConfig

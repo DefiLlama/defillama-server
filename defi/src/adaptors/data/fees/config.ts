@@ -2924,6 +2924,9 @@ export default {
     "arena-launch": {
         id: "6155"
     },
+    "arena-dex": {
+        id: "6154"
+    },
     "avalon": {
         id: "4473"
     },

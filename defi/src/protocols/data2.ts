@@ -16668,9 +16668,19 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oraclesByChain: {
-      ethereum: ["Chainlink"],
-      Unichain: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9930"],
+        chains: [{chain: "unichain"}]
+      },
+    ],
     forkedFrom: [],
     module: "compound-v3/index.js",
     twitter: "compoundfinance",

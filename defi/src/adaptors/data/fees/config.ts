@@ -3662,5 +3662,11 @@ export default {
     },
     "renzo": {
         id: "3933"
+    },
+    "jpg-store": {
+        id: "5970"
+    },
+    "liquidops": {
+        id: "5980"
     }
 } as AdaptorsConfig

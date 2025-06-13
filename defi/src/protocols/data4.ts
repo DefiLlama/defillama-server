@@ -12227,6 +12227,13 @@ const data4: Protocol[] = [
     module: "hyperbeat/index.js",
     twitter: "0xhyperbeat",
     audit_links: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9931"],
+      },
+    ],
     listedAt: 1745849227,
   },
   {

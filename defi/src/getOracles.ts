@@ -82,18 +82,16 @@ function sum(
       (chain ? sectionSplit[0] === chain : true)
     ) {
       const sectionKey = `${getChainDisplayName(sectionSplit[0], true)}${sectionSplit[1] ? `-${sectionSplit[1]}` : ""}`;
-      const chainDisplayName = getChainDisplayName(sectionSplit[0], true);
       dataByChain[sectionKey] = (dataByChain[sectionKey] ?? 0) + item[section];
 
-      if (!sectionSplit[1]) {
-        if (extraSections.includes(section)) {
-          data[section] = (data[section] ?? 0) + item[section];
-        } else {
-          data.tvl = (data.tvl ?? 0) + item[section];
-           oracleProtocolsHistory[time][oracle][protocol.name][chainDisplayName] =
-              (oracleProtocolsHistory[time][oracle][protocol.name][chainDisplayName] ?? 0) + item[section];
-        }
+      if (extraSections.includes(section)) {
+        data[section] = (data[section] ?? 0) + item[section];
+      } else {
+        data.tvl = (data.tvl ?? 0) + item[section];
       }
+
+      oracleProtocolsHistory[time][oracle][protocol.name][sectionKey] =
+          (oracleProtocolsHistory[time][oracle][protocol.name][sectionKey] ?? 0) + item[section];
     }
   }
 

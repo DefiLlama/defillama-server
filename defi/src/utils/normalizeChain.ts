@@ -3592,9 +3592,9 @@ export const chainCoingeckoIds = {
     chainId: 21000000
   },
   "VinuChain": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "vinuchain",
+    symbol: "VC",
+    cmcId: "28580",
     categories: ["EVM"],
     twitter: "vinuchain",
     url: "https://www.vinuchain.org/",

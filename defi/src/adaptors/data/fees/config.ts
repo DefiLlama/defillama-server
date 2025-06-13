@@ -3666,7 +3666,7 @@ export default {
     "jpg-store": {
         id: "5970"
     },
-    "liquidops": {
+    "LiquidOps": {
         id: "5980"
     }
 } as AdaptorsConfig

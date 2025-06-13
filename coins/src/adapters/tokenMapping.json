@@ -5983,7 +5983,7 @@
       "symbol": "LYX"
     },
     "0x8a3982f0a7d154d11a5f43eec7f50e52ebbc8f7d": {
-      "to": "stakingverse-staked-lyx",
+      "to": "coingecko#stakingverse-staked-lyx",
       "decimals": 18,
       "symbol": "sLYX"
     },

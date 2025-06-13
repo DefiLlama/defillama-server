@@ -3051,5 +3051,8 @@ export default {
     },
     "duality": {
         id: "5459"
+    },
+    "gliquid": {
+        id: "6294"
     }
 } as AdaptorsConfig

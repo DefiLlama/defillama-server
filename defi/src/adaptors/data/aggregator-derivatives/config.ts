@@ -13,6 +13,11 @@ export default {
   // },
   "mux-protocol-agge": {
     "id": "5054",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1749686400": true,
+      }
+    }
   },
   "rage-trade": {
     "id": "4447",

@@ -33,9 +33,24 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
+const doublecountedCategorySet = new Set([
+  "Yield Aggregator",
+  "Yield",
+  "Liquidity manager",
+  "Onchain Capital Allocator",
+  "Risk Curators",
+  "Treasury Manager",
+  "Anchor BTC",
+  "CDP Manager",
+  "Restaked BTC",
+  "Basis Trading",
+  "CeDeFi",
+  "RWA Lending",
+  "RWA"
+].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Onchain Capital Allocator", "Risk Curators", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
+  return moduleDoubleCounted === true || (typeof category === 'string' && doublecountedCategorySet.has(category?.toLowerCase()));
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -3127,6 +3142,13 @@ export const chainCoingeckoIds = {
     url: "https://joltify.io/",
     github: ["joltify-finance"]
   },
+  "IOTA": {
+    geckoId: 'iota',
+    symbol: 'IOTA',
+    cmcId: "1720",
+    twitter: "iota",
+    url: "https://www.iota.org/",
+  },
   "IOTA EVM": {
     geckoId: 'iota',
     symbol: 'IOTA',
@@ -3466,7 +3488,7 @@ export const chainCoingeckoIds = {
       types: ["L2"],
       da: 'Ethereum',
     },
-    twitter: "worldcoin",
+    twitter: "world_chain_",
     url: "https://world.org/",
     chainId: 480
   },
@@ -3570,9 +3592,9 @@ export const chainCoingeckoIds = {
     chainId: 21000000
   },
   "VinuChain": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "vinuchain",
+    symbol: "VC",
+    cmcId: "28580",
     categories: ["EVM"],
     twitter: "vinuchain",
     url: "https://www.vinuchain.org/",
@@ -4262,6 +4284,35 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "milky_way_zone",
     url: "https://www.milkyway.zone/"
+  },
+  "MilkyWay Rollup": {
+    geckoId: null,
+    symbol: "MILK",
+    cmcId: null,
+    twitter: "milky_way_zone",
+    url: "https://www.milkyway.zone/"
+  },
+  "Namada": {
+    geckoId: "namada",
+    symbol: "NAM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "namada",
+    url: "https://namada.net/",
+    github: ["anoma"],
+  },
+  "Civitia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://civitia.org/",
+    twitter: "civitiaorg",
   }
 } as unknown as ChainCoinGekcoIds
 
@@ -4454,6 +4505,8 @@ const chainLabelMap = {
   "echelon_initia": "Echelon Chain",
   "sseed": "Superseed",
   "xp": "Xphere",
+  "milkyway_rollup": "MilkyWay Rollup",
+  "iota": "IOTA"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

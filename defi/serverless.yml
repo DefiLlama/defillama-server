@@ -194,6 +194,7 @@ functions:
     environment:
       ERROR_REPORTS_DB: ${env:ERROR_REPORTS_DB}
       ERROR_REPORTS_WEBHOOK: ${env:ERROR_REPORTS_WEBHOOK}
+      FRONT_API_TOKEN: ${env:FRONT_API_TOKEN}
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30

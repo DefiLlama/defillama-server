@@ -2019,6 +2019,7 @@ export default {
         id: "5306",
     },
     "zeebu": {
+        enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
         id: "5540",
     },
     "lnexchange-perp": {
@@ -2923,6 +2924,9 @@ export default {
     "arena-launch": {
         id: "6155"
     },
+    "arena-dex": {
+        id: "6154"
+    },
     "avalon": {
         id: "4473"
     },
@@ -3613,5 +3617,56 @@ export default {
     },
     "uniderp": {
         id: "6126"
+    },
+    "reachme": {
+        id: "6260"
+    },
+    "haiku": {
+        id: "6266"
+    },
+    "p2p-lending": {
+        id: "6228"
+    },
+    "strike-finance": {
+        id: "6173"
+    },
+    "haedal-protocol": {
+        id: "3489"
+    },
+    "reya-dex": { 
+        id: '4978' 
+    },
+    "bodega-market": { 
+        id: '6012' 
+    },
+    "tbtc": {
+        id: "2535"
+    },
+    "letsbonk": {
+        id: "6282"
+    },
+    "bookusd": {
+        id: "6283"
+    },
+    "indigo": {
+        id: "2309"
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
+    "moonpiefun": {
+        id: "6289"
+    },
+    "meteora-dbc": {
+        id: "6290"
+    },
+    "renzo": {
+        id: "3933"
+    },
+    "jpg-store": {
+        id: "5970"
+    },
+    "LiquidOps": {
+        id: "5980"
     }
 } as AdaptorsConfig

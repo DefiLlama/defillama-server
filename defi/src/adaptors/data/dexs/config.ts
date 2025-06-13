@@ -2345,7 +2345,8 @@ export default {
         id: "6155"
     },
     "believe": {
-        id: "6159"
+        id: "6159",
+        disabled: true,
     },
     "rockswap": {
         id: "4204"
@@ -2559,7 +2560,12 @@ export default {
         "category": "Dexs"
     },
     "drift-protocol-swap": {
-        id: "5071"
+        id: "5071",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1749081600": true
+            }
+        },
     },
     "grizzly-trade-swap": {
         "disabled": true,
@@ -2777,7 +2783,8 @@ export default {
             "genuineSpikes": {
                 "1660176000": false,
                 "1665014400": false,
-                "1684713600": false
+                "1684713600": false,
+                "1749340800": false,
             }
         },
         id: "2769"
@@ -3032,5 +3039,20 @@ export default {
     },
     "uniderp": {
         id: "6126"
+    },
+    "meteora-damm-v2": {
+        id: "6288"
+    },
+    "meteora-dbc": {
+        id: "6290"
+    },
+    "x3x": {
+        id: "6272"
+    },
+    "duality": {
+        id: "5459"
+    },
+    "gliquid": {
+        id: "6294"
     }
 } as AdaptorsConfig

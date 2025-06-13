@@ -43,6 +43,7 @@ import aptos from "./aptosFa";
 import sophon from "./sophon";
 import unichan from "./unichain";
 import flow from "./flow";
+import layerzero from "./layerzero";
 
 export type Token =
   | {
@@ -114,6 +115,7 @@ export const bridges = [
   // sophon,
   unichan,
   flow,
+  // layerzero,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -215,6 +217,9 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         decimals = token.decimals;
         symbol = token.symbol;
       }
+
+      if (!decimals || !symbol) return;
+
       writes.push({
         PK: `asset#${token.from}`,
         SK: 0,

@@ -349,5 +349,11 @@ export default {
   },
   "vetrade": {
     id: "6253"
+  },
+  "dzap": {
+    id: "6259"
+  },
+  "haiku": {
+    id: "6266"
   }
 } as AdaptorsConfig;

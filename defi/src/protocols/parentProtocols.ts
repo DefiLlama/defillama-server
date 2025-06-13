@@ -9,7 +9,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aave",
     name: "AAVE",
-    url: "https://aave.com\r\n",
+    url: "https://aave.com",
     description:
       "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     logo: `${baseIconsUrl}/aave.png`,
@@ -30,7 +30,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sushi",
     url: "https://sushi.com/",
     description:
-      "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+      "A fully decentralized protocol for automated liquidity provision on Ethereum.",
     logo: `${baseIconsUrl}/sushi.jpg`,
     gecko_id: "sushi",
     cmcId: "6758",
@@ -606,7 +606,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "MUX Protocol",
     url: "https://mux.network/",
     description:
-    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
+    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,allowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
     logo: `${baseIconsUrl}/mux protocol.png`,
     gecko_id: "mcdex",
     cmcId: "5956",
@@ -2494,7 +2494,7 @@ const parentProtocols: IParentProtocol[] = [
     description: "Velocore is a ve(3,3) DEX with real-time voting.",
     logo: `${baseIconsUrl}/velocore.png`,
     gecko_id: null,
-    cmcId: null,
+    cmcId: "24254",
     chains: [],
     twitter: "velocorexyz",
   },
@@ -3041,8 +3041,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX",
     logo: `${baseIconsUrl}/vapordex.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "vaporfi",
+    cmcId: "23967",
     chains: [],
     twitter: "VaporDex",
     github: ["VaporFi"],
@@ -5610,6 +5610,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ElectroSwap_Dex",
   },
+  /*
   {
     id: "parent#cygnus-finance",
     name: "Cygnus",
@@ -5624,6 +5625,7 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["cygnus-finance-global-usd"],
     twitter: "CygnusFi",
   },
+  */
   {
     id: "parent#typus-finance",
     name: "Typus Finance",
@@ -6372,8 +6374,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Umoja is DeFi's structured product and trade execution layer, offering seamless access to low-risk, high-yield crypto assets through 'smartcoins. These innovative, crypto-collateralized digital assets are designed to protect principal while generating sustainable yields, making wealth creation effortless and accessible to everyone",
     logo: `${baseIconsUrl}/umoja-protocol.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "umoja",
+    cmcId: "31673",
     chains: [],
     twitter: "UmojaProtocol",
   },
@@ -6535,8 +6537,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://haedal.xyz/",
     description: "A place to stake and earn on Sui",
     logo: `${baseIconsUrl}/haedal.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "haedal",
+    cmcId: "36369",
     chains: [],
     twitter: "HaedalProtocol",
   },
@@ -6581,8 +6583,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://gopluslabs.io",
     description: "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
     logo: `${baseIconsUrl}/goplus-security.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "goplus-security",
+    cmcId: "35268",
     chains: [],
     twitter: "GoPlusSecurity",
   },
@@ -7069,8 +7071,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://arena.social/",
     description: "The Arena is a next gen SocialFi app redefining how creators connect, engage, and monetize their content",
     logo: `${baseIconsUrl}/the-arena.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "the-arena",
+    cmcId: "33708",
     chains: [],
     twitter: "TheArenaApp",
   },
@@ -7103,8 +7105,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://xoxno.com/",
     description: "Liquid stake. Swap tokens. Trade collectibles.",
     logo: `${baseIconsUrl}/xoxno.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "xoxno",
+    cmcId: "31917",
     chains: [],
     twitter: "XoxnoNetwork",
   },
@@ -7244,6 +7246,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "asymmetryfin",
     github: ["asymmetryfinance"],
+  },
+  {
+    id: "parent#the-vault",
+    name: "The Vault",
+    url: "https://thevault.finance",
+    description: "A Decentralized Modular LST Ecosystem on Solana. Growing the Solana Network with a Community Focus, with vSOL",
+    logo: `${baseIconsUrl}/the-vault.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "thevaultfinance",
   }
 ];
 

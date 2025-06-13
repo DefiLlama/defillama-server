@@ -201,7 +201,8 @@ export default {
                 "1700438400": true,
                 "1700352000": true,
                 "1700265600": true,
-                "1700179200": true
+                "1700179200": true,
+                "1749600000": true,
             },
         }
 
@@ -672,6 +673,10 @@ export default {
     },
     "rho-protocol": {
         id: "6226"
-    }
+    },
+    "strike-finance": {
+        id: "6173"
+    },
+    "reya-dex": { id: '4978' },
 
 } as AdaptorsConfig

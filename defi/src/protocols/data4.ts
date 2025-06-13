@@ -12649,7 +12649,6 @@ const data4: Protocol[] = [
   {
     id: "6107",
     name: "Hyperbeat",
-    oracles : ["RedStone"],
     address: null,
     symbol: "-",
     url: "https://hyperbeat.org/",
@@ -12667,6 +12666,13 @@ const data4: Protocol[] = [
     module: "hyperbeat/index.js",
     twitter: "0xhyperbeat",
     audit_links: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9931"],
+      },
+    ],
     listedAt: 1745849227,
   },
   {

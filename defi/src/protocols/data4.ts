@@ -16279,7 +16279,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6297",
-    name: "Almamak",
+    name: "Almanak",
     address: null,
     symbol: "-",
     url: "https://almanak.co",

@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "fast-levenshtein": "^3.0.0",
     "jsdom": "^26.1.0"
   }
 }

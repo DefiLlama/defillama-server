@@ -9,7 +9,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aave",
     name: "AAVE",
-    url: "https://aave.com\r\n",
+    url: "https://aave.com",
     description:
       "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     logo: `${baseIconsUrl}/aave.png`,
@@ -30,7 +30,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sushi",
     url: "https://sushi.com/",
     description:
-      "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+      "A fully decentralized protocol for automated liquidity provision on Ethereum.",
     logo: `${baseIconsUrl}/sushi.jpg`,
     gecko_id: "sushi",
     cmcId: "6758",
@@ -606,7 +606,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "MUX Protocol",
     url: "https://mux.network/",
     description:
-    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
+    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,allowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
     logo: `${baseIconsUrl}/mux protocol.png`,
     gecko_id: "mcdex",
     cmcId: "5956",

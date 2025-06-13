@@ -4300,6 +4300,19 @@ export const chainCoingeckoIds = {
     twitter: "namada",
     url: "https://namada.net/",
     github: ["anoma"],
+  },
+  "Civitia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://civitia.org/",
+    twitter: "civitiaorg",
   }
 } as unknown as ChainCoinGekcoIds
 

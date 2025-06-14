@@ -3054,5 +3054,8 @@ export default {
     },
     "gliquid": {
         id: "6294"
+    },
+    "oxium": {
+        id: "6301"
     }
 } as AdaptorsConfig

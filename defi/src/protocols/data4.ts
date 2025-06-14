@@ -16386,5 +16386,27 @@ const data4: Protocol[] = [
     github: ["rezervemoney"],
     listedAt: 1749841977,
   },
+  {
+    id: "6301",
+    name: "Oxium",
+    address: null,
+    symbol: "-",
+    url: "https://oxium.xyz/",
+    description:
+      "Capital-efficient and modular CLOB DEX",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/oxium.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sei"],
+    module: "oxium/index.js",
+    twitter: "oxiumxyz",
+    forkedFromIds: ["4610"],
+    audit_links: ["https://docs.mangrove.exchange/start-here/audits"],
+    listedAt: 1749884715,
+  },
 ];
 export default data4;

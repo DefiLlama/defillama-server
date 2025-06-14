@@ -3668,5 +3668,8 @@ export default {
     },
     "LiquidOps": {
         id: "5980"
+    },
+    "oxium": {
+        id: "6301"
     }
 } as AdaptorsConfig

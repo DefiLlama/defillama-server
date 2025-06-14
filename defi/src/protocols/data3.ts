@@ -17961,7 +17961,6 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     twitter: "EkuboProtocol",
     audit_links: ["https://docs.ekubo.org/integration-guides/reference/audits"],
-    parentProtocol: "parent#ekubo",
     listedAt: 1694136553,
   },
   {

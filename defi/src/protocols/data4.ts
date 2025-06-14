@@ -676,7 +676,7 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: ["https://docs.yield.fi/resources/oracles"],
-        chains: [{chain: "Ethereum"}]
+        chains: [{chain: "ethereum"}]
       }
     ],
     forkedFrom: [],

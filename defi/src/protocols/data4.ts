@@ -207,7 +207,7 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["TON"],
     forkedFrom: [],
-    audit_links: ["https://www.thefiva.com/fiva_audit_report_032025.pdf"],
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2025-05-FIVA-yieldtokenizationprotocol-securityreview.pdf", "https://www.thefiva.com/fiva_audit_report_032025.pdf"],
     module: "fiva/index.js",
     twitter: "FivaProtocol",
     listedAt: 1735573225

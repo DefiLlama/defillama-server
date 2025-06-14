@@ -16477,6 +16477,13 @@ const data4: Protocol[] = [
     module: "Jackson/index.js",
     twitter: "JacksonProtocol",
     forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15063"],
+      }
+    ],
     listedAt: 1749936061,
   },
 ];

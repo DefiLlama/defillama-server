@@ -16337,14 +16337,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6299",
-    name: "Civitia",
+    name: "Civitia Game",
     address: null,
     symbol: "-",
     url: "https://app.civitia.org/",
     description:
       "Civitia is a decentralized game that invites users to collaborate and interact within a unique social and financial ecosystem, leveraging Initia modular blockchain and Celestia modular data availability network",
     chain: "Civitia",
-    logo: `${baseIconsUrl}/civitia.jpg`,
+    logo: `${baseIconsUrl}/civitia-game.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

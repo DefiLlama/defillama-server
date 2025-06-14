@@ -3880,7 +3880,11 @@ const data4: Protocol[] = [
     chains: ["Plume (Deprecated)", "Plume Mainnet"],
     module: "solera/index.js",
     twitter: "SoleraLabs",
-    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] }, {
+        name: "eOracle",
+        type: "Secondary",
+        proof: ["https://docs.solera.market/overview/editor/oracles"]
+      },  ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
     forkedFromIds: ["1599"],
     audit_links: [
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2FLPus8JS8WGA5412Nf2eH%2FSolera%20-%20Zenith%20Audit%20Report%20-%2012-18-2024.pdf?alt=media&token=ade0f7c6-2105-422f-8411-f099cf71e00f",

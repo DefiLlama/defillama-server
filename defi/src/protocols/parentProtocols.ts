@@ -3868,11 +3868,11 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ajiraPayDefi",
   },
   {
-    id: "parent#dragonswap",
-    name: "DragonSwap",
+    id: "parent#dragonswap", 
+    name: "DragonSwap Kaia", // preivous DragonSwap
     url: "https://dgswap.io",
     description: "DragonSwap is a decentralized automated liquidity protocol.",
-    logo: `${baseIconsUrl}/dragonswap.png`,
+    logo: `${baseIconsUrl}/dragonswap-kaia.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -5388,11 +5388,11 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dragon-swap",
-    name: "Dragon Swap",
+    name: "Dragon Swap Sei", // previous Dragon Swap
     url: "https://dragonswap.app",
     description:
       "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
-    logo: `${baseIconsUrl}/dragon-swap.jpg`,
+    logo: `${baseIconsUrl}/dragon-swap-sei.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

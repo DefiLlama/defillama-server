@@ -671,6 +671,12 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
         chains: [{chain: "arbitrum"}]
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://docs.yield.fi/resources/oracles"],
+        chains: [{chain: "Ethereum"}]
       }
     ],
     forkedFrom: [],

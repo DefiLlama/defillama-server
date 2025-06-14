@@ -9692,13 +9692,13 @@ const data2: Protocol[] = [
         name: "Supra",
         type: "Aggregator",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
-        chains: [{chain: "Sui"},]
+        chains: [{chain: "sui"},]
       },
       {
         name: "Pyth",
         type: "Aggregator",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
-        chains: [{chain: "Sui"},{chain: "Aptos"},]
+        chains: [{chain: "sui"},{chain: "aptos"},]
       }
     ],
     forkedFrom: [],
@@ -15833,13 +15833,13 @@ const data2: Protocol[] = [
         name: "Api3",
         type: "Secondary",
         proof: [],
-        chains: [{chain: "Fraxtal"},]
+        chains: [{chain: "fraxtal"},]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Fraxtal"},]
+        chains: [{chain: "fraxtal"},]
       }
     ],
     forkedFrom: [],

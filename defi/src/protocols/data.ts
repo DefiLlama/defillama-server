@@ -6014,7 +6014,7 @@ const data: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [{chain: "RedStone"}]
+        chains: [{chain: "redstone"}]
       }
     ],
     github: ["pendle-finance"],

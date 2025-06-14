@@ -6960,7 +6960,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "InterestDEX",
   }*/
-  {
+  /*{ // merged both into ekubo
     id: "parent#ekubo",
     name: "Ekubo Protocol",
     url: "https://ekubo.org/",
@@ -6971,7 +6971,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EkuboProtocol",
     github: ["EkuboProtocol"],
-  },
+  },*/
   {
     id: "parent#zora",
     name: "ZORA Protocol",

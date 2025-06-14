@@ -7958,7 +7958,7 @@ const data4: Protocol[] = [
     audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FU7Q6UV6CGLwU33vLuGwo%2Fuploads%2FtzTGuvytvqAikGukksoj%2FeGMX%20Exit%20Tech%20Audit%20Report.pdf?alt=media&token=9b9afe04-c6ab-431b-9075-d9d9d6517e4b"],
     listedAt: 1742305759
   },
-  {
+  /*{ // merged both into ekubo
     id: "5914",
     name: "Ekubo EVM",
     address: "0x04c46e830bb56ce22735d5d8fc9cb90309317d0f",
@@ -7979,7 +7979,7 @@ const data4: Protocol[] = [
     twitter: "EkuboProtocol",
     parentProtocol: "parent#ekubo",
     listedAt: 1742305799
-  },
+  },*/
   {
     id: "5915",
     name: "YO Protocol",

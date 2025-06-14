@@ -4522,7 +4522,7 @@ const data4: Protocol[] = [
     name: "MultichainZ",
     address: null,
     symbol: "-",
-    url: "https://www.multichainz.com",
+    url: "https://dapp.multichainz.com/",
     description: "Omnichain money markets for Real-World Assets and Liquid Staking Derivatives",
     chain: "Plume (Deprecated)",
     logo: `${baseIconsUrl}/multichainz.png`,

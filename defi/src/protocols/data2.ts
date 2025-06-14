@@ -15827,7 +15827,7 @@ const data2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Ethereum"},{chain: "Arbitrum"}]
+        chains: [{chain: "ethereum"},{chain: "arbitrum"}]
       },
       {
         name: "Api3",

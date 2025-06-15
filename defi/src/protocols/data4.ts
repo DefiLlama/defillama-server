@@ -11616,7 +11616,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6079",
-    name: "Superp(formerly Vanilla Finance)",
+    name: "Superp",
     address: null,
     symbol: "-",
     url: " https://www.superp.xyz",

@@ -11616,11 +11616,11 @@ const data4: Protocol[] = [
   },
   {
     id: "6079",
-    name: "Vanilla Finance",
+    name: "Superp(formerly Vanilla Finance)",
     address: null,
     symbol: "-",
-    url: "https://www.vanillafinance.xyz",
-    description: `Vanilla Finance is an on-chain trading infrastructure, offering leveraged derivatives services ranging from 3x to 10,000x.`,
+    url: " https://www.superp.xyz",
+    description: `Superp(formerly Vanilla Finance) is a perp DEX for any meme, up to 10,000x leverage.`,
     chain: "Binance",
     logo: `${baseIconsUrl}/vanilla-finance.jpg`,
     audits: "0",
@@ -11630,7 +11630,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     module: "vanillaFinance/index.js",
-    twitter: "VanillaFinance",
+    twitter: Superp_xyz",
     forkedFrom: [],
     github: ["VanillaDevTeam"],
     listedAt: 1745416525

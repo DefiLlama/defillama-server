@@ -9039,6 +9039,12 @@ const data4: Protocol[] = [
         proof: ["https://docs.hyperpiexyz.io/tech-stack-and-media-kit/oracle/pyth"],
         startDate: "2025-05-19"
       },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.hyperpiexyz.io/tech-stack-and-media-kit/oracle/redstone"],
+        startDate: "2025-06-05"
+      },
     ],
     twitter: "Hyperpiexyz_io",
     audit_links: [

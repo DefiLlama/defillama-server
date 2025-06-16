@@ -63,6 +63,7 @@ export async function storeGetProtocols({
         }
         return {
           category: protocol.category,
+          ...(protocol.tags ? { tags: protocol.tags } : {}),
           chains: protocol.chains,
           oracles: protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0
             ? protocol.oraclesBreakdown.map((x) => x.name)
@@ -184,6 +185,7 @@ export async function storeGetProtocols({
       name: protocol.name,
       symbol: protocol.symbol,
       category: protocol.category,
+      ...(protocol.tags ? { tags: protocol.tags } : {}),
       tvl: protocol.tvl,
       chainTvls: Object.fromEntries(
         Object.entries(protocol.chainTvls).filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
@@ -191,7 +193,7 @@ export async function storeGetProtocols({
       mcap: protocol.mcap,
       gecko_id: protocol.gecko_id,
       parent: protocol.parentProtocol,
-      ...(protocol.deprecated ? {deprecated: true} : {})
+      ...(protocol.deprecated ? { deprecated: true } : {})
     }))
     .concat(extendedParentProtocols);
 

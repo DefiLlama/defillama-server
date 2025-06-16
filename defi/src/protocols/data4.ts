@@ -16619,7 +16619,7 @@ const data4: Protocol[] = [
   },
    {
     id: "6311",
-    name: "tzBTC",
+    name: "Jolt",
     address: "optimism:0xd549aa17c5010A33ca5E3D2051b8904B5a279b0A",
     symbol: "JOLT",
     url: "https://jolt.finance",

@@ -6353,6 +6353,11 @@
       "to": "coingecko#ripple",
       "decimals": 6,
       "symbol": "XRP"
+    },
+    "4F55534700000000000000000000000000000000.rHuiXXjHLpMP8ZE9sSQU5aADQVWDwv6h5p": {
+      "to": "coingecko#ousg",
+      "decimals": 6,
+      "symbol": "OUSG"
     }
   },
   "reya": {

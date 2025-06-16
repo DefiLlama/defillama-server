@@ -7258,7 +7258,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "thevaultfinance",
   },
-  {
+  /*{
     id: "parent#solido-money",
     name: "Solido",
     url: "https://solido.money/",
@@ -7269,7 +7269,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SolidoMoney",
     github: ["Solido-Money"],
-  }
+  }*/
 ];
 
 export default parentProtocols;

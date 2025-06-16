@@ -11192,7 +11192,6 @@ const data4: Protocol[] = [
     module: "solido/index.js",
     twitter: "SolidoMoney",
     audit_links: ["https://movebit.xyz/reports/20250414-Solido-Money-Final-Audit-Report.pdf"],
-    parentProtocol: "parent#solido-money",
     listedAt: 1744832607,
   },
   {
@@ -16573,7 +16572,7 @@ const data4: Protocol[] = [
     github: ["nexusportal"],
     listedAt: 1750066218
   },
-  {
+  /*{
     id: "6309",
     name: "Solido Grow",
     address: null,
@@ -16595,8 +16594,8 @@ const data4: Protocol[] = [
     audit_links: ["https://movebit.xyz/reports/20250609-Grow-Protocol-Final-Audit-Report.pdf"],
     parentProtocol: "parent#solido-money",
     listedAt: 1750066218
-  },
-    {
+  },*/
+  {
     id: "6310",
     name: "tzBTC",
     address: null,

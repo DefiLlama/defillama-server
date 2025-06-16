@@ -16638,5 +16638,26 @@ const data4: Protocol[] = [
     forkedFromIds: ["111"],
     listedAt: 1750066518
   },
+  {
+    id: "6312",
+    name: "Hydro Lending",
+    address: "injective:factory/inj1etz0laas6h7vemg3qtd67jpr6lh8v7xz7gfzqw/hdro",
+    symbol: "HDRO",
+    url: "https://app.hydroprotocol.finance/lending",
+    description: "Supply and borrow a variety of tokens to earn interest and protocol incentives",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/hydro-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Injective"],
+    forkedFrom: [],
+    module: "hydro-lending/index.js",
+    twitter: "hydro_fi",
+    parentProtocol: "parent#hydro-protocol",
+    listedAt: 1750086961
+  },
 ];
 export default data4;

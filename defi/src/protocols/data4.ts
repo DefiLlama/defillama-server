@@ -16664,7 +16664,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.nemoprotocol.com/",
-    description: "Nemo Protocol is a yield platform on Sui that enables users and projects to trade, optimize, and monetize yield through features like yield trading and Yield-as-a-Service (YaaS",
+    description: "Nemo Protocol is a yield platform on Sui that enables users and projects to trade, optimize, and monetize yield through features like yield trading and Yield-as-a-Service (YaaS)",
     chain: "Sui",
     logo: `${baseIconsUrl}/nemo-protocol.jpg`,
     audits: "2",

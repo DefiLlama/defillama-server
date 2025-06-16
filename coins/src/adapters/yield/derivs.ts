@@ -403,6 +403,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xEf213441a85DF4d7acBdAe0Cf78004E1e486BB96",
     address: "0x440cd83c160de5c96ddb20246815ea44c7abbca8",
   },
+  GPRIME: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:sharePrice",
+        target: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
+      });
+      return rate / 1e18;
+    },
+    chain: "plume_mainnet",
+    underlying: "0x78adD880A697070c1e765Ac44D65323a0DcCE913",
+    address: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
+  },
 };
 
 export async function derivs(timestamp: number) {

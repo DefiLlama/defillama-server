@@ -3671,5 +3671,17 @@ export default {
     },
     "oxium": {
         id: "6301"
-    }
+    },
+    "gliquid": {
+        id: "6294"
+    },
+    "rank-trading": {
+        id: "6084"
+    },
+    "hypurrfi-isolated": {
+        id: "6053"
+    },
+    "hydradx": {
+        id: "6271"
+    },
 } as AdaptorsConfig

@@ -16626,7 +16626,7 @@ const data4: Protocol[] = [
     description:
       "Jolt Finance is a permissionless Aave V2 style lending and borrowing protocol on Optimism, enabling users to supply assets for yield or borrow against collateral. It is security-focused, restricts smart contracts from borrowing, employs conservative risk parameters, and uses multisig-controlled, timelocked governance for upgrades. Users also earn reward tokens that provide protocol revenue share.",
     chain: "Optimism",
-    logo: `${baseIconsUrl}/jolt-finance.jpg`,
+    logo: `${baseIconsUrl}/jolt.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

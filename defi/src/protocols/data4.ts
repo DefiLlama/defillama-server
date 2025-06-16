@@ -16530,5 +16530,47 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1750065734
   },
+  {
+    id: "6307",
+    name: "Gloom Finance",
+    address: "sonic:0xc263D9B606F1551950a712D66A5F5e7dEBe3AEfa",
+    symbol: "GLOOM",
+    url: "https://www.gloom.finance",
+    description:
+      "Liquidity marketplace on Sonic",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/gloom-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lords",
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sonic"],
+    module: "gloom/index.js",
+    twitter: "GloomOnSonic",
+    forkedFromIds: ["2197"],
+    listedAt: 1750066146
+  },
+  {
+    id: "6308",
+    name: "Nexus Portal",
+    address: "xdc:0x6daf228391e388b05bbc682fea3cb1cc3e38c44e",
+    symbol: "NEXU",
+    url: "https://www.thenexusportal.io",
+    description:
+      "The Nexus is a multi-dimensional DeFi protocol on XDC Network & XRP EVM Sidechain with a futuristic holographic UI, unique multi-farm and multi-staking system.",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/nexus-portal.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lords",
+    cmcId: null,
+    category: "Dexs",
+    chains: ["XDC"],
+    module: "nexus-dex/index.js",
+    twitter: "PoweredByNEXUS",
+    forkedFromIds: ["2197"],
+    listedAt: 1750066218
+  },
 ];
 export default data4;

@@ -198,6 +198,21 @@ test("no coingeckoId is repeated", async () => {
   }
 });
 
+test("forkedFromIds are valid protocol ids", async () => {
+  const existingIds = new Set(protocols.map(p => p.id));
+  for (const protocol of protocols) {
+    if (protocol.forkedFromIds) {
+      for (const forkedId of protocol.forkedFromIds) {
+        // Check that forkedId is a string number
+        expect(typeof forkedId).toBe('string');
+        expect(isNaN(Number(forkedId))).toBe(false);
+        // Check that forkedId exists as a protocol id
+        expect(existingIds).toContain(forkedId);
+      }
+    }
+  }
+});
+
 
 test("no surprise category", async () => {
   const whitelistedCategories = [

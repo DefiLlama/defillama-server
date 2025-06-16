@@ -16644,7 +16644,7 @@ const data4: Protocol[] = [
     address: "injective:factory/inj1etz0laas6h7vemg3qtd67jpr6lh8v7xz7gfzqw/hdro",
     symbol: "HDRO",
     url: "https://app.hydroprotocol.finance/lending",
-    description: "Supply and borrow a variety of tokens to earn interest and protocol incentives",
+    description: "Hydro Lending is a decentralized, non-custodial money market built on the Injective Network and part of the Hydro Protocol DeFi suite",
     chain: "Injective",
     logo: `${baseIconsUrl}/hydro-lending.jpg`,
     audits: "0",

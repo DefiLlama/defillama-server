@@ -7257,6 +7257,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "thevaultfinance",
+  },
+  {
+    id: "parent#solido-money",
+    name: "Solido",
+    url: "https://solido.money/",
+    description: "Solido is building critical DeFi infrastructure on Move that lays the foundation for Supra's on-chain finance",
+    logo: `${baseIconsUrl}/solido.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SolidoMoney",
+    github: ["Solido-Money"],
   }
 ];
 

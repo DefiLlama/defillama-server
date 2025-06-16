@@ -31552,7 +31552,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    forkedFromIds: ["Kelp DAO"],
+    forkedFromIds: ["3946"],
     module: "prime-staked/index.js",
     parentProtocol: "parent#origin-defi",
     twitter: "PrimeStaked",

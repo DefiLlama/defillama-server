@@ -12,6 +12,7 @@ const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
   ],
   hyperliquid: [
     ["0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463", "0x20000000000000000000000000000000000000c5"], // UBTC
+    ["0xbe6727b535545c67d5caa73dea54865b92cf7907", "0x20000000000000000000000000000000000000dD"], // UETH
   ],
 };
 

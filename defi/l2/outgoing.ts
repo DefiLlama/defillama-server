@@ -40,13 +40,13 @@ export default async function fetchBridgeUsdTokenTvls(
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds), excludedTvlId];
   const filteredIds: string[] = [];
   ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
-  const tokenBalances: any[] = await Promise.all(
+  let tokenBalances: any[] = await Promise.all(
     filteredIds.map((i: string) =>
       getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
 
-  tokenBalances.push(await getExcludedTvl(timestamp));
+  tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
 
   let errorString = `canonical bridge issue around:`;
   filteredIds.map((id: string, i: number) => {

@@ -210,6 +210,7 @@ export default {
     id: "5061"
   },
   "7k-aggregator": {
+    disabled: true,
     id: "4868",
   },
   "akka": {
@@ -355,5 +356,9 @@ export default {
   },
   "haiku": {
     id: "6266"
-  }
+  },
+  "bluefin7k-aggregator": {
+    parentId: "Bluefin",
+    id: "6305",
+  },
 } as AdaptorsConfig;

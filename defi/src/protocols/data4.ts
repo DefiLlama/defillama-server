@@ -16603,7 +16603,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://tzbtc.io/transparency",
     description:
-      "Decentralised, Transparent and Compliant: tzBTC delivers the power of Bitcoin as a token to smart contract supporting blockchains.",
+      "tzBTC is a wrapped Bitcoin token on Tezos, backed 1:1 by BTC and issued through a multi-signature keyholder system that enables auditable minting and burning.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/tzbtc.jpg`,
     audits: "0",

@@ -16659,5 +16659,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hydro-protocol",
     listedAt: 1750086961
   },
+  {
+    id: "6313",
+    name: "Nemo Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.nemoprotocol.com/",
+    description: "Nemo Protocol is a yield platform on Sui that enables users and projects to trade, optimize, and monetize yield through features like yield trading and Yield-as-a-Service (YaaS",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/nemo-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    forkedFrom: [],
+    module: "nemo/index.js",
+    twitter: "Nemoprotocol",
+    audit_links: ["https://movebit.xyz/reports/20250217-Nemo-Final-Audit-Report.pdf"],
+    listedAt: 1750092892
+  },
 ];
 export default data4;

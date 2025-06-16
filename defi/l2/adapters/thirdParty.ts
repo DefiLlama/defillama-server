@@ -204,9 +204,9 @@ const adapters = [
   flow().catch((e) => {
     throw new Error(`flow fails with: ${e}`);
   }),
-  // unit().catch((e) => {
-  //   throw new Error(`unit fails with: ${e}`);
-  // }),
+  unit().catch((e) => {
+    throw new Error(`unit fails with: ${e}`);
+  }),
 ];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 

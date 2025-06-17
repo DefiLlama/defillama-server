@@ -8986,5 +8986,27 @@
       "decimals": 18,
       "symbol": "2-Pool-GDOT"
     }
+  },
+  "coti": {
+    "0x7637C7838EC4Ec6b85080F28A678F8E234bB83D1": {
+      "to": "coingecko#coti-governance-token",
+      "decimals": 18,
+      "symbol": "gCOTI"
+    },
+    "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": {
+      "to": "coingecko#coti",
+      "decimals": 18,
+      "symbol": "COTI"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#coti",
+      "decimals": 18,
+      "symbol": "COTI"
+    },
+    "0xf1Feebc4376c68B7003450ae66343Ae59AB37D3C": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
   }
 }

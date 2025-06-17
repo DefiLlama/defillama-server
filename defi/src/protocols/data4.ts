@@ -16839,6 +16839,13 @@ const data4: Protocol[] = [
     tags: ["Money Market Funds"],
     chains: ["HashKey Chain"],
     forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "NexaToken",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14939"]
+      }
+    ],
     module: "bosera_usd_money_market_etf/index.js",
     twitter: null,
     audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SlowMist%20Audit%20Report%20-%20Bosera%20USD%20Money%20Market%20ETF.pdf"],

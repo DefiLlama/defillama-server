@@ -3979,6 +3979,16 @@
     }
   },
   "xdc": {
+    "0xcc0587aebda397146cc828b445db130a94486e74": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
+    "0x2a8e898b6242355c290e1f4fc966b8788729a4d4": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
     "0x71f7f49ff81e9be77c9175611212ecb199ba0824": {
       "decimals": "8",
       "symbol": "xBTC",

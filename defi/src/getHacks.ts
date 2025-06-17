@@ -8,11 +8,11 @@ export async function getHacksInternal() {
     .filter((r) => r.fields["Name"] !== undefined)
     .map((r) => {
       const defillamaId = r.fields["DefiLlama Id"] ?? null;
-      const parentProtocolId = defillamaId ? protocols.find((p) => p.id === defillamaId)?.parentProtocol : null;
+      const protocol = defillamaId ? protocols.find((p) => p.id === defillamaId) : null;
       
       return {
         date: new Date(r.fields["Date"]).getTime() / 1000,
-        name: r.fields["Name"],
+        name: protocol?.name ?? r.fields["Name"],
         classification: r.fields["Classification"] ?? null,
         technique: r.fields["Technique"] ?? null,
         amount: r.fields["Funds Lost"] ?? null,
@@ -22,7 +22,7 @@ export async function getHacksInternal() {
         source: r.fields["Link"],
         returnedFunds: r.fields["Refunded funds to users"] ?? null,
         defillamaId: r.fields["DefiLlama Id"] ?? null,
-        ...(parentProtocolId ? { parentProtocolId } : {}),
+        ...(protocol?.parentProtocol ? { parentProtocolId: protocol.parentProtocol } : {}),
         language: r.fields["Language"] ?? null,
       };
     });

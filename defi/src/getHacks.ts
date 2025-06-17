@@ -8,7 +8,7 @@ export async function getHacksInternal() {
     .filter((r) => r.fields["Name"] !== undefined)
     .map((r) => {
       const defillamaId = r.fields["DefiLlama Id"] ?? null;
-      const protocol = defillamaId ? protocols.find((p) => p.id === defillamaId) : null;
+      const protocol = defillamaId ? protocols.find((p) => p.id == defillamaId) : null;
       
       return {
         date: new Date(r.fields["Date"]).getTime() / 1000,
@@ -21,7 +21,7 @@ export async function getHacksInternal() {
         targetType: r.fields["Target Type"] ?? null,
         source: r.fields["Link"],
         returnedFunds: r.fields["Refunded funds to users"] ?? null,
-        defillamaId: r.fields["DefiLlama Id"] ?? null,
+        defillamaId,
         ...(protocol?.parentProtocol ? { parentProtocolId: protocol.parentProtocol } : {}),
         language: r.fields["Language"] ?? null,
       };

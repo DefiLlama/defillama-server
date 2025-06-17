@@ -52459,7 +52459,7 @@ const data3_2: Protocol[] = [
   {
     id: "5039",
     name: "TAOlie",
-    address: "2zE5rJ2ctXMz9hVbk1AvJa78X7mh3kuR728SNzGXTEeu",
+    address: "solana:7dLJnm2NzHPMwB7mJL7azhyMLqs4ZzKYkkhr3ob72Gwo",
     symbol: "TAOlie",
     url: "https://taolie.ai/",
     description:

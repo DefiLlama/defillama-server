@@ -1,25 +1,36 @@
 import dimensionConfigs from "../adaptors/data/configs";
-import { baseIconsUrl } from "../constants";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
-import protocols from "./data";
+import protocols, { protocolsById } from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
+  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     const ids = new Set();
     for (const value of Object.values(map)) {
-      if (!value.enabled) continue;
-      const id = value.isChain ? 'chain#'+value.id : value.id
-      if (ids.has(id)) console.log(`Dimensions: Repeated id ${id} in ${metric}`)
-      expect(ids).not.toContain(id);
-      ids.add(id);
+      if (value.enabled === false || chainIdSet.has(value.id)) continue;
+      if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
+      expect(ids).not.toContain(value.id);
+      ids.add(value.id);
     }
   }
+})
+test("Dimensions: no unknown ids", async () => {
+  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
+  let failed = false;
+  for (const [metric, map] of Object.entries(dimensionConfigs)) {
+    for (const value of Object.values(map)) {
+      if (value.enabled === false ||  chainIdSet.has(value.id) || protocolsById[value.id]) continue;
+      console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
+      failed = true
+    }
+  }
+  expect(failed).toBeFalsy();
 })
 
 test("operational expenses: script has been run", async () => {

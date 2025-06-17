@@ -1516,9 +1516,9 @@ export default {
     "size-credit": {
         id: "4904"
     },
-    "stbot": {
-        id: "4909"
-    },
+    // "stbot": {  // duplicate of sol-trading-bot
+    //     id: "4909"
+    // },
     "zns": {
         id: "4920"
     },
@@ -2363,9 +2363,9 @@ export default {
     "logx": {
         id: "5137"
     },
-    "ekubo-evm": {
-        id: "5914"
-    },
+    // "ekubo-evm": { // merged into ekubo https://github.com/DefiLlama/defillama-server/commit/3aba710f2a43514ddd5c64368670df078144361b
+    //     id: "5914"
+    // },
     "contango": {
         id: "3602"
     },

@@ -2195,9 +2195,9 @@ export default {
     "tonco": {
         id: "5363"
     },
-    "ekubo-evm": {
-        id: "5914"
-    },
+    // "ekubo-evm": { // merged with ekubo : https://github.com/DefiLlama/defillama-server/commit/3aba710f2a43514ddd5c64368670df078144361b
+    //     id: "5914"
+    // },
     "equalizer-cl": {
         id: "5603"
     },

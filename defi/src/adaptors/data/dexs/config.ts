@@ -3057,5 +3057,8 @@ export default {
     },
     "oxium": {
         id: "6301"
+    },
+    "stars-arena": {
+        id: "3564"
     }
 } as AdaptorsConfig

@@ -86,7 +86,7 @@ function sum(
 
       if (extraSections.includes(section)) {
         data[section] = (data[section] ?? 0) + item[section];
-      } else {
+      } else if (!sectionSplit[1]) {
         data.tvl = (data.tvl ?? 0) + item[section];
       }
 

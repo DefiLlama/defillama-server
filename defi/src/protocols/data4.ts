@@ -16681,5 +16681,33 @@ const data4: Protocol[] = [
     audit_links: ["https://movebit.xyz/reports/20250217-Nemo-Final-Audit-Report.pdf"],
     listedAt: 1750092892
   },
+  {
+    id: "6314",
+    name: "Denario",
+    address: null,
+    symbol: "-",
+    url: "https://www.denario.swiss",
+    description: "Denario Silver (DSC) is a digital token that represents direct, legally secured co-ownership of real physical silver. Each token is backed 1:1 by one ounce of 999.9-purity silver granules stored in high-security, duty-free Swiss vaults.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/denario.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Commodities"],
+    chains: ["Polygon"],
+    forkedFrom: [],
+    module: "denario/index.js",
+    twitter: "DenarioSwiss",
+    github: ["DenarioSwiss"],
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://polygonscan.com/token/0x5D4E735784293a0A8D37761AD93C13A0DD35c7E7#readProxyContract#F13"],
+      }
+    ],
+    listedAt: 1750166486
+  },
 ];
 export default data4;

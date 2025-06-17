@@ -194,8 +194,7 @@ async function run() {
         const body = summaries.flatMap((doc: any) => [{ index: { _index: 'dim_metrics_1', _id: `dm_${adapterType}_${doc.id2}` } }, doc])
         await esClient.bulk({ refresh: true, body })
       } catch (e: any) {
-        let message: string = JSON.stringify(e?.message) 
-        console.error(`Error saving ${adapterType} summaries`, message.length ? (message.slice(0, 250) + (message.length > 250) ? '...': '') : e)
+        console.error(`Error saving ${adapterType} summaries`, e)
       }
 
       // write to discord

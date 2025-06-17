@@ -527,7 +527,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of feeBribeRevenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -543,7 +543,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of feeTokenTaxData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -575,7 +575,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of revenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -591,7 +591,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of holdersRevenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
       
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],

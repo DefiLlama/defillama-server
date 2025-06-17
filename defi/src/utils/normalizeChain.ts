@@ -4313,6 +4313,15 @@ export const chainCoingeckoIds = {
     },
     url: "https://civitia.org/",
     twitter: "civitiaorg",
+  },
+  "Titan": {
+    geckoId: null,
+    symbol: "TKX",
+    cmcId: null,
+    categories: ["EVM"],
+    url: "https://titanlab.io/home",
+    twitter: "TitanMainnet",
+    chainId: 18888
   }
 } as unknown as ChainCoinGekcoIds
 

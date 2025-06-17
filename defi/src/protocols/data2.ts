@@ -3881,6 +3881,7 @@ const data2: Protocol[] = [
     twitter: "BabenaFinance",
     language: "Pact",
     listedAt: 1647387814,
+    deprecated: true
   },
   {
     id: "1550",
@@ -4112,6 +4113,7 @@ const data2: Protocol[] = [
     module: "kdlaunch/index.js",
     twitter: "KdLaunch",
     listedAt: 1647474666,
+    deprecated: true
   },
   {
     id: "1560",
@@ -4272,6 +4274,7 @@ const data2: Protocol[] = [
     module: "anedak/index.js",
     twitter: null,
     listedAt: 1647812879,
+    deprecated: true
   },
   {
     id: "1567",

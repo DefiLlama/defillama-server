@@ -52474,6 +52474,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     forkedFrom: [],
     module: "taoline/index.js",
+    treasury: "taolie.js",
     twitter: "TAOlie_SOL",
     audit_links: ["https://www.cyberscope.io/audits/taoliedepin"],
     listedAt: 1724519313

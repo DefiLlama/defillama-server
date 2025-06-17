@@ -3724,13 +3724,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5726",
-    name: "Factorial",
+    name: "Affluent",
+    previousNames: ["Factorial"],
     address: null,
     symbol: "-",
-    url: "https://factorial.finance/",
-    description: "Factorial is built on The Open Network (TON), utilizing its parallelism and scalability to provide a decentralized, permissionless lending solution",
+    url: "https://affluent.org",
+    description: "Affluent is the infrastructure built for trustless asset management. Affluent’s goal is to bring professional yet trustless yield strategies to everyday users through Telegram-based experiences that abstract away DeFi complexity for seamless financial empowerment.",
     chain: "Soneium",
-    logo: `${baseIconsUrl}/factorial.jpg`,
+    logo: `${baseIconsUrl}/affluent.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -3738,7 +3739,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["TON"],
     module: "factorial/index.js",
-    twitter: "FactorialFi",
+    twitter: "AffluentOrg",
     oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://docs.factorial.finance/oracle
     forkedFrom: [],  
     listedAt: 1738669030

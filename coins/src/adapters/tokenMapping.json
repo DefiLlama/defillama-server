@@ -1482,6 +1482,11 @@
     }
   },
   "avax": {
+    "0xfd2c2A98009d0cBed715882036e43d26C4289053": {
+      "decimals": "18",
+      "symbol": "avBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xa38bfa13beef9beb75f3698b4647f027fbe8f61d": {
       "decimals": "18",
       "symbol": "rsAVAX",

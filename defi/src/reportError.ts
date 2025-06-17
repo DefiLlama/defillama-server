@@ -35,7 +35,7 @@ https://defillama.com/protocol/${sluggifyString(protocol)}`
   ) values (
     ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType ?? null}, ${message ?? null}, ${correctSource ?? null}, ${contact ?? null}
   )`
-    await sendMessage(message, process.env.ERROR_REPORTS_WEBHOOK, false)
+    await sendMessage(formattedMessage, process.env.ERROR_REPORTS_WEBHOOK, false)
     .catch(e => console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
 
 }

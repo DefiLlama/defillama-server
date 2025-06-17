@@ -169,6 +169,15 @@ const marketInfos: MarketInfo[] = [
     oracleDecimals: 0,
     chain: "solana",
   },
+  {
+    address: "hzmYvfvU9LNc7eUVwRNFyDhQ1W3faXVpC8CAn76z3cj",
+    mintAddress: "CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
+    symbol: "CRT",
+    unit: "USDC",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
 ];
 
 export async function sandglass(timestamp: number = 0): Promise<Write[]> {

@@ -34,7 +34,7 @@ async function getPostTitles() {
 
 
   const message = 'New rekt news post (Add to hack page if missing): \n\n' + featuredTitles.map((post: any) => `[${post.title}](${post.link})`).join('\n');
-  await sendMessage(message, process.env.TEAM_WEBHOOK!, false)
+  await sendMessage(message, process.env.UNLISTED_WEBHOOK!, false)
 }
 
 getPostTitles().catch(err => {

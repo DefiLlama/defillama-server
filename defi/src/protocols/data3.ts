@@ -5010,7 +5010,7 @@ const data3_1: Protocol[] = [
   {
     id: "2923",
     name: "TProtocol V1",
-    address: "-",
+    address: null,
     symbol: "TPS",
     url: "https://legacy.tprotocol.io/",
     description: "First DeFi composable LSD solution for stablecoins.",
@@ -19333,7 +19333,7 @@ const data3_1: Protocol[] = [
   {
     id: "3560",
     name: "TProtocol V2",
-    address: "-",
+    address: null,
     symbol: "TPS",
     url: "https://www.tprotocol.io",
     description:

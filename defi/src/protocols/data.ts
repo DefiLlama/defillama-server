@@ -27505,6 +27505,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 ];
 const protocols = data.concat(data2, data3, data4);
 protocols.forEach(setProtocolCategory)
+
+protocols.forEach((protocol: Protocol) => {  // TODO: this is a hack to remove bad addresses like 'sui:-', we should fix this in the listings and remove this code
+  if (typeof protocol.address === "string" && protocol.address.endsWith(':-'))
+    protocol.address = null
+})
+
 export default protocols;
 export const protocolsById =  protocols.reduce((accum, protocol) => {
   accum[protocol.id] = protocol;

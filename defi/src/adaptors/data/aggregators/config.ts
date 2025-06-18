@@ -59,10 +59,9 @@ export default {
     enabled: false,
     id: "3847",
   },
-  // "openocean": {
-  //   enabled: false,
-  //   id: "533",
-  // },
+  "openocean": {
+    id: "533",
+  },
   "arcane-dex": {
     id: "3885",
   },

@@ -164,7 +164,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
     return all;
   }, {});
 
-  const unlisted = tokens.filter((t) => alreadyLinked[t.from] !== true);
+  const unlisted = tokens; //.filter((t) => alreadyLinked[t.from] !== true);
   const toAddressToRecord = {} as { [PK: string]: string };
   const redirectsNeeded: any[] = [];
   const redirectMap: { [redirect: string]: string } = {};
@@ -197,45 +197,61 @@ async function _storeTokensOfBridge(bridge: Bridge) {
     if (record.price) toAddressToRecord[toPK] = record.PK;
   });
 
+  const slasherTokens: {
+    origin_chain: string;
+    origin_address: string;
+    bridged_chain: string;
+    bridged_address: string;
+  }[] = [];
   const writes: any[] = [];
-  await Promise.all(
-    unlisted.map(async (token) => {
-      const finalPK = toAddressToRecord[craftToPK(token.to)];
-      if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
-      if ("getAllInfo" in token) {
-        try {
-          const newToken = await token.getAllInfo();
-          decimals = newToken.decimals;
-          symbol = newToken.symbol;
-        } catch (e) {
-          console.log("Skipping token", finalPK, e);
-          return;
-        }
-      } else {
-        decimals = token.decimals;
-        symbol = token.symbol;
-      }
+  unlisted.map((token) => {
+    const finalPK = toAddressToRecord[craftToPK(token.to)];
+    // if (finalPK === undefined) return;
+    if (token.to.startsWith("coingecko")) return;
 
-      if (!decimals || !symbol) return;
+    const [origin_chain, origin_address] = token.to.split(":");
+    const [bridged_chain, bridged_address] = token.from.split(":");
 
-      writes.push({
-        PK: `asset#${token.from}`,
-        SK: 0,
-        created: getCurrentUnixTimestamp(),
-        decimals,
-        symbol,
-        redirect: finalPK,
-        confidence: 0.97,
-        adapter: "bridges",
-      });
-    }),
-  );
+    slasherTokens.push({
+      origin_chain,
+      origin_address,
+      bridged_chain,
+      bridged_address,
+    });
 
-  await batchWrite(writes, true);
-  await produceKafkaTopics(writes, ["coins-metadata"]);
-  return tokens;
+    // let decimals: number, symbol: string;
+    // if ("getAllInfo" in token) {
+    //   try {
+    //     const newToken = await token.getAllInfo();
+    //     decimals = newToken.decimals;
+    //     symbol = newToken.symbol;
+    //   } catch (e) {
+    //     console.log("Skipping token", finalPK, e);
+    //     return;
+    //   }
+    // } else {
+    //   decimals = token.decimals;
+    //   symbol = token.symbol;
+    // }
+
+    // if (!decimals || !symbol) return;
+
+    // writes.push({
+    //   PK: `asset#${token.from}`,
+    //   SK: 0,
+    //   created: getCurrentUnixTimestamp(),
+    //   decimals,
+    //   symbol,
+    //   redirect: finalPK,
+    //   confidence: 0.97,
+    //   adapter: "bridges",
+    // });
+  });
+
+  // await batchWrite(writes, true);
+  // await produceKafkaTopics(writes, ["coins-metadata"]);
+  return slasherTokens;
 }
 export async function storeTokens() {
   return await Promise.all(

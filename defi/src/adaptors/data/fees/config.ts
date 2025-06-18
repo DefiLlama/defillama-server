@@ -3686,5 +3686,8 @@ export default {
     },
     "yieldnest": {
         id: "4606"
+    },
+    "rezerve-money": {
+        id: "6300"
     }
 } as AdaptorsConfig

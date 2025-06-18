@@ -3060,5 +3060,8 @@ export default {
     },
     "stars-arena": {
         id: "3564"
-    }
+    },
+    "garuda-defi": {
+        id: "6324"
+    },
 } as AdaptorsConfig

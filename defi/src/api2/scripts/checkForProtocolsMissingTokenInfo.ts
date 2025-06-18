@@ -19,6 +19,7 @@ const chains = Object.entries(chainCoingeckoIds).map(([chain, id]: any) => {
     category: 'chain-listing',
     name: `${chain} (chain)`,
     id: `${chain} (chain)`,
+    gecko_id: id.geckoId,
   }
 })
 
@@ -236,7 +237,7 @@ async function getCoinTableData(coinType: string) {
 
 
   console.log('Protocols found:', Object.keys(protocolsFound).length, `[${coinType}]`);
-  const tableData = Object.values(protocolsFound).map((entry: any, idx: number) => {
+  const tableData = Object.values(protocolsFound).map((entry: any, _idx: number) => {
     let coinSet = new Set<string>()
     let coins = entry.coins.filter((coin: any) => {
       if (coinSet.has(coin.id)) return false
@@ -246,7 +247,7 @@ async function getCoinTableData(coinType: string) {
     return {
       // idx: idx + 1,
       // id: entry.protocol.id,
-      name: entry.protocol.name,
+      name: entry.protocol.name.slice(0, 16),
       // url: entry.protocol.url || entry.protocol.parentProtocol?.url,
       // twitter: entry.protocol.twitter || entry.protocol.parentProtocol?.twitter,
       // github: entry.protocol.github || entry.protocol.parentProtocol?.github,
@@ -255,7 +256,7 @@ async function getCoinTableData(coinType: string) {
       // githubK: entry.githubHandle ?? '',
       symbols: coins.map((coin: any) => coin.symbol).join(', ').slice(0, 16),
       coinIds: coins.map((coin: any) => coin.id).join(', ').slice(0, 25),
-      coins: coins.map((coin: any) => coin.name).join(', ').slice(0, 35),
+      coins: coins.map((coin: any) => coin.name).join(', ').slice(0, 25),
       category: entry.protocol.category
     }
   })

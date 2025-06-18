@@ -7811,6 +7811,11 @@
     }
   },
   "soneium": {
+    "0x1217BfE6c773EEC6cc4A38b5Dc45B92292B6E189": {
+      "to": "coingecko#openusdt",
+      "decimals": 6,
+      "symbol": "OUSDT"
+    },
     "0x102d758f688a4C1C5a80b116bD945d4455460282": {
       "to": "coingecko#usdt0",
       "decimals": 6,

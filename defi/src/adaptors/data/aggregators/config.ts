@@ -354,5 +354,8 @@ export default {
   },
   "haiku": {
     id: "6266"
+  },
+  "bluefin7k-aggregator": {
+    id: "6322"
   }
 } as AdaptorsConfig;

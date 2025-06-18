@@ -13210,9 +13210,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "LuaSwap",
     address: "0xb1f66997a5760428d3a87d68b90bfe0ae64121cc",
     symbol: "LUA",
-    url: "https://luaswap.org/#/",
-    description:
-      "LuaSwap is a swap protocol inspired by the previous AMM-based swap protocols such as Uniswap and SushiSwap.",
+    url: "https://cha.finance/",
+    description: "Cha.Finance is a DEFI 3.0 protocol that aims to reinvent and decentralize finances across WEB3.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/luaswap.jpg`,
     audits: "2",

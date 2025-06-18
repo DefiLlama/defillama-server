@@ -66,6 +66,8 @@ interface CsvData {
 
 export interface CsvLoaderConfig {
   dateFormat?: DateFormat;
+  filter_column_name?: string;
+  filter_column_value?: string | number;
 }
 
 const csvCache = new Map<string, CsvData>();
@@ -201,7 +203,21 @@ export async function fetchFromCsv(
     throw new Error(`No data found for date ${targetDateStr} in ${csvFilenameWithoutExtension}.csv`);
   }
 
-  const result = mapCsvDataToResult(rowsData[0], header);
+  let filteredRows = rowsData;
+  
+  // Apply filtering if filter parameters are provided and column exists
+  if (loaderConfig?.filter_column_name && loaderConfig?.filter_column_value !== undefined) {
+    const filterColumnName = loaderConfig.filter_column_name;
+    if (header.includes(filterColumnName)) {
+      filteredRows = rowsData.filter(row => row[filterColumnName] === loaderConfig.filter_column_value);
+    }
+  }
+
+  if (filteredRows.length === 0) {
+    throw new Error(`No data found after filtering for date ${targetDateStr} in ${csvFilenameWithoutExtension}.csv`);
+  }
+
+  const result = mapCsvDataToResult(filteredRows[0], header);
 
   return result as FetchResult;
 }

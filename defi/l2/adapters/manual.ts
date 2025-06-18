@@ -165,4 +165,5 @@ export const nativeWhitelist: { [chain: string]: string[] } = {
     "0x27f485b62c4a7e635f561a87560adf5090239e93",
   ],
   unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
+  osmosis: ["uosmo"],
 };

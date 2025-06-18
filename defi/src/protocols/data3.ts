@@ -48711,14 +48711,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4868",
-    name: "Bluefin7K Aggregator",
-    previousNames: ["7K Aggregator"],
-    address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
-    symbol: "BLUE",
+    name: "7K Aggregator", // https://github.com/DefiLlama/dimension-adapters/pull/3448#issuecomment-2982632542 keep this listing
+    address: null,
+    symbol: "-",
     url: "https://trade.bluefin.io/swap/",
     description: "A Sui-native aggregator that routes through a network of DEXs and Bluefin’s RFQ engine, offering users the best rates and the deepest liquidity on the Sui Network",
     chain: "Sui",
-    logo: `${baseIconsUrl}/bluefin7k-aggregator.jpg`,
+    logo: `${baseIconsUrl}/7k-aggregator.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -48728,7 +48727,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "bluefinapp",
     forkedFrom: [],
-    parentProtocol: "parent#bluefin",
+ //   parentProtocol: "parent#bluefin",
   },
   {
     id: "4869",

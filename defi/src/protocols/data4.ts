@@ -16873,5 +16873,25 @@ const data4: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/stobix"],
     listedAt: 1750202587
   },
+  {
+    id: "6322",
+    name: "Bluefin7K Aggregator",
+    address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
+    symbol: "BLUE",
+    url: "https://trade.bluefin.io/swap/",
+    description: "A Sui-native aggregator that routes through a network of DEXs and Bluefin’s RFQ engine, offering users the best rates and the deepest liquidity on the Sui Network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/bluefin7k-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "bluefinapp",
+    forkedFrom: [],
+    parentProtocol: "parent#bluefin",
+  },
 ];
 export default data4;

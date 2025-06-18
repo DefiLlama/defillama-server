@@ -208,10 +208,12 @@ async function _storeTokensOfBridge(bridge: Bridge) {
   unlisted.map((token) => {
     const finalPK = toAddressToRecord[craftToPK(token.to)];
     // if (finalPK === undefined) return;
-    if (token.to.startsWith("coingecko")) return;
-
-    const [origin_chain, origin_address] = token.to.split(":");
-    const [bridged_chain, bridged_address] = token.from.split(":");
+    const [origin_chain, origin_address] = token.to.startsWith("coingecko")
+      ? token.to.split("#")
+      : token.to.split(":");
+    const [bridged_chain, bridged_address] = token.from.startsWith("coingecko")
+      ? token.from.split("#")
+      : token.from.split(":");
 
     slasherTokens.push({
       origin_chain,

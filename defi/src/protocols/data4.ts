@@ -16739,7 +16739,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.votre.xyz/",
-    description: "Votre is a next-generation crypto lending platform built to empower digitally-native high-net-worth individuals, family offices, and funds with secure, liquidation-free borrowing solutions. Built on Base and using cbBTC, Votre offers industry-leading LTVs (up to 90%), low interest rates (2–3%), and more tax-efficient structures compared to competitors like Ledn, Arch, and SALT. Backed by a16z's CSX, Votre is currently raising to capture market share, support more assets, and establish itself as the premier borrowing platform in the industry.",
+    description: "Votre is a next-gen crypto lending platform offering liquidation-free loans with up to 90% LTV and 2–3% rates on Base using cbBTC.",
     chain: "Base",
     logo: `${baseIconsUrl}/votre.jpg`,
     audits: "2",

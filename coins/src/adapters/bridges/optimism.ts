@@ -1,7 +1,8 @@
 import { Token } from "./index";
 import { fetch, formatExtraTokens } from "../utils";
-// import tokenMappings from "../tokenMapping_added.json";
+import tokenMappings from "../tokenMapping_added.json";
 import tokenMappings2 from "../tokenMapping.json";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 export default async function bridge(): Promise<Token[]> {
   const bridge = (
@@ -39,23 +40,24 @@ export default async function bridge(): Promise<Token[]> {
   });
   const response = [tokens, extraTokens];
 
-  // Object.entries(tokenMappings).forEach(([chain, tokenMap]) => {
-  //   const tokens: [string, string, string, number][] = [];
-  //   Object.entries(tokenMap).map(
-  //     ([from, { to, symbol, decimals: decimalsNum }]) => {
-  //       const decimals = +decimalsNum;
-  //       if (isNaN(decimals))
-  //         throw new Error("Is not valid token mapping: " + from);
-  //       // const from_lowerCase = from.toLowerCase()
-  //       // if (from_lowerCase !== from)
-  //       //   tokens.push([from_lowerCase, to, symbol, decimals]);
-  //       let token = from;
-  //       if (!chainsThatShouldNotBeLowerCased.includes(chain)) token = token.toLowerCase();
-  //       tokens.push([token, to, symbol, decimals]);
-  //     },
-  //   );
-  //   response.push(formatExtraTokens(chain, tokens));
-  // });
+  Object.entries(tokenMappings).forEach(([chain, tokenMap]) => {
+    const tokens: [string, string, string, number][] = [];
+    Object.entries(tokenMap).map(
+      ([from, { to, symbol, decimals: decimalsNum }]) => {
+        const decimals = +decimalsNum;
+        if (isNaN(decimals))
+          throw new Error("Is not valid token mapping: " + from);
+        // const from_lowerCase = from.toLowerCase()
+        // if (from_lowerCase !== from)
+        //   tokens.push([from_lowerCase, to, symbol, decimals]);
+        let token = from;
+        if (!chainsThatShouldNotBeLowerCased.includes(chain))
+          token = token.toLowerCase();
+        tokens.push([token, to, symbol, decimals]);
+      },
+    );
+    response.push(formatExtraTokens(chain, tokens));
+  });
 
   Object.entries(tokenMappings2).forEach(([chain, tokenMap]) => {
     const tokens: [string, string, string, number][] = [];

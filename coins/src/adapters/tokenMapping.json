@@ -473,16 +473,6 @@
       "decimals": "18",
       "symbol": "BEPRO",
       "to": "coingecko#bepro-network"
-    },
-    "0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7": {
-      "decimals": "8",
-      "symbol": "DSC",
-      "to": "asset#ethereum:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
-    },
-    "0xf7e2d612f1a0ce09ce9fc6fc0b59c7fd5b75042f": {
-      "decimals": "8",
-      "symbol": "DGC",
-      "to": "asset#ethereum:0xf7e2d612f1a0ce09ce9fc6fc0b59c7fd5b75042f"
     }
   },
   "evmos": {
@@ -544,6 +534,16 @@
     }
   },
   "ethereum": {
+    "0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7": {
+      "decimals": "8",
+      "symbol": "DSC",
+      "to": "asset#polygon:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
+    },
+    "0xf7e2d612f1a0ce09ce9fc6fc0b59c7fd5b75042f": {
+      "decimals": "8",
+      "symbol": "DGC",
+      "to": "asset#polygon:0xf7e2d612f1a0ce09ce9fc6fc0b59c7fd5b75042f"
+    },
     "0xCdFb58c8C859Cb3F62ebe9Cf2767F9e036C7fb15": {
       "decimals": "8",
       "symbol": "bfBTC",

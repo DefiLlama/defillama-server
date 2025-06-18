@@ -16891,7 +16891,7 @@ const data4: Protocol[] = [
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "bluefinapp",
-    forkedFrom: [],
+    forkedFromIds: [],
     parentProtocol: "parent#bluefin",
   },
   {
@@ -16911,9 +16911,53 @@ const data4: Protocol[] = [
     chains: ["Avalanche"],
     module: "avant-avbtc/index.js",
     twitter: "avantprotocol",
-    forkedFrom: [],
+    forkedFromIds: [],
     parentProtocol: "parent#avant-protocol",
     listedAt: 1750202587
+  },
+  {
+    id: "6324",
+    name: "GarudaDefi",
+    address: null,
+    symbol: "-",
+    url: "https://garuda-defi.org",
+    description: "Garuda DeFi is an automated market maker (AMM) built on the Terra Classic blockchain which enables factory token, permissionless pool creation, staking token and farms for earning yield.",
+    chain: "Terra",
+    logo: `${baseIconsUrl}/garudadefi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs", 
+    chains: ["Terra"],
+    module: "garuda-defi/index.js",
+    twitter: "garuda_defi",
+    forkedFromIds: [],
+    listedAt: 1750260883
+  },
+  {
+    id: "6325",
+    name: "HyperCat",
+    address: null,
+    symbol: "-",
+    url: "https://www.hypercat.exchange/",
+    description: "HyperCat is a decentralized exchange (DEX) built on the Algebra Integral smart contracts. Leveraging a modular architecture powered by Algebra Integral’s V4 AMM, HyperCat enables flexible trading and liquidity management through the use of plugins, with support for custom hooks that will be available to extend on-chain functionality even further",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypercat.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    module: "hypercat/index.js",
+    twitter: "hypercatex",
+    forkedFromIds: ["3710"],
+    audit_links: [
+      "https://docs.gamma.xyz/gamma/learn/audits",
+      "https://docs.algebra.finance/algebra-integral-documentation/algebra-integral-technical-reference/audits"
+    ],
+    listedAt: 1750261449
   },
 ];
 export default data4;

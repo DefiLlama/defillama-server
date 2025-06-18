@@ -14647,13 +14647,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6223",
-    name: "Avant Protocol",
+    name: "Avant avUSD",
     address: null,
     symbol: "-",
     url: "https://www.avantprotocol.com",
     description: `Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through a DeFi-powered stable-value token. The platform introduces avUSD, a stable-value token, and savUSD, its staked, yield-bearing counterpart.`,
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/avant-protocol.jpg`,
+    logo: `${baseIconsUrl}/avant-avusd.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -14663,6 +14663,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "avant/index.js",
     twitter: "avantprotocol",
+    parentProtocol: "parent#avant-protocol",
     audit_links: ["https://docs.avantprotocol.com/security/audits"],
     listedAt: 1747939430
   },
@@ -16892,6 +16893,27 @@ const data4: Protocol[] = [
     twitter: "bluefinapp",
     forkedFrom: [],
     parentProtocol: "parent#bluefin",
+  },
+  {
+    id: "6323",
+    name: "Avant avBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.avantprotocol.com",
+    description: "Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through DeFi-powered stable-value tokens. The platform introduces avBTC, a bitcoin-pegged token, and savBTC, its staked, yield-bearing counterpart.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/avant-avbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator", // since the assets are redeposited into lending (euler) protocols not CEXs
+    chains: ["Avalanche"],
+    module: "avant-avbtc/index.js",
+    twitter: "avantprotocol",
+    forkedFrom: [],
+    parentProtocol: "parent#avant-protocol",
+    listedAt: 1750202587
   },
 ];
 export default data4;

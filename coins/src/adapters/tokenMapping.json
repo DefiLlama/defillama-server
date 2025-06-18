@@ -7547,6 +7547,11 @@
     }
   },
   "ink": {
+    "0xe343167631d89B6Ffc58B88d6b7fB0228795491D": {
+      "to": "coingecko#global-dollar",
+      "decimals": 6,
+      "symbol": "USDG"
+    },
     "0x4200000000000000000000000000000000000006": {
       "to": "coingecko#ethereum",
       "decimals": 18,

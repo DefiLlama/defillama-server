@@ -3684,4 +3684,7 @@ export default {
     "hydradx": {
         id: "6271"
     },
+    "yieldnest": {
+        id: "4606"
+    }
 } as AdaptorsConfig

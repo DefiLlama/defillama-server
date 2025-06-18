@@ -153,4 +153,5 @@ export default {
   tempest: require("./yield/tempest"),
   momentum: require("./markets/momentum"),
   pst: require("./solana/pst"),
+  denario: require("./rwa/denario"),
 };

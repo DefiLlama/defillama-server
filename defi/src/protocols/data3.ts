@@ -5173,7 +5173,7 @@ const data3_1: Protocol[] = [
           "https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025",
           "https://github.com/DefiLlama/defillama-server/pull/9240"
         ],
-        startDate: "2025/02/10"
+        startDate: "2025-02-10"
       },
       {
         name: "Chronicle",
@@ -5182,7 +5182,7 @@ const data3_1: Protocol[] = [
           "https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025",
           "https://github.com/DefiLlama/defillama-server/pull/9240"
         ],
-        startDate: "2025/02/10"
+        startDate: "2025-02-10"
       },
       {
         name: "RedStone",
@@ -5191,7 +5191,7 @@ const data3_1: Protocol[] = [
           "https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025",
           "https://github.com/DefiLlama/defillama-server/pull/9240"
         ],
-        startDate: "2025/02/10"
+        startDate: "2025-02-10"
       }
     ],
     audit_links: ["https://devs.spark.fi/security/security-and-audits"],
@@ -37608,8 +37608,8 @@ const data3_2: Protocol[] = [
         type: "Primary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
         chains: [
-          {chain: "Aptos"},
-          {chain: "Movement"},
+          {chain: "aptos"},
+          {chain: "move"},
         ]
       },
       {
@@ -37617,7 +37617,7 @@ const data3_2: Protocol[] = [
         type: "Secondary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
           chains: [
-          {chain: "Aptos"},
+          {chain: "aptos"},
         ]
       },
     ],

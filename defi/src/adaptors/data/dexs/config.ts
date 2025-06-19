@@ -2346,7 +2346,7 @@ export default {
     },
     "believe": {
         id: "6159",
-        disabled: true,
+        enabled: false,
     },
     "rockswap": {
         id: "4204"

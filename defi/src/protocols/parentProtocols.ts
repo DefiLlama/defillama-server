@@ -7281,6 +7281,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "avantprotocol",
   },
+   {
+    id: "parent#matrixdock",
+    name: "MatrixDock",
+    url: "https://www.matrixdock.com/home",
+    description: "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
+    logo: `${baseIconsUrl}/matrixdock.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "matrixdock",
+  },
 ];
 
 export default parentProtocols;

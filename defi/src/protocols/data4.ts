@@ -17038,5 +17038,26 @@ const data4: Protocol[] = [
     twitter: "hyperbloomxyz",
     forkedFromIds: [],
   },
+  {
+    id: "6330",
+    name: "MatrixDock XAUM",
+    address: null,
+    symbol: "-",
+    url: "https://www.matrixdock.com/home",
+    description: "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/matrixdock-xaum.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Commodities"],
+    chains: ["Ethereum", "Binance"],
+    module: "matrixdock-gold/index.js",
+    twitter: "matrixdock",
+    forkedFromIds: [],
+    parentProtocol: "parent#matrixdock",
+    listedAt: 1750328350
+  },
 ];
 export default data4;

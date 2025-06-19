@@ -8328,6 +8328,11 @@
     }
   },
   "hyperliquid": {
+    "0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDHL"
+    },
     "0xE6829d9a7eE3040e1276Fa75293Bde931859e8fA": {
       "to": "coingecko#mantle-restaked-eth",
       "decimals": 18,

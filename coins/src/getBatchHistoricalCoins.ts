@@ -13,7 +13,7 @@ async function fetchDBData(
   coinsObj: any,
   coins: any[],
   coinQueries: string[],
-  PKTransforms: { [key: string]: string },
+  PKTransforms: { [key: string]: string[] },
   searchWidth: number,
 ) {
   let response = {} as any;
@@ -40,24 +40,26 @@ async function fetchDBData(
         if (finalCoin.SK === undefined) {
           return;
         }
-        if (response[PKTransforms[coin.PK]] == undefined) {
-          response[PKTransforms[coin.PK]] = {
-            symbol: coin.symbol,
-            prices: [
-              {
-                timestamp: finalCoin.SK,
-                price: finalCoin.price,
-                confidence: coin.confidence,
-              },
-            ],
-          };
-        } else {
-          response[PKTransforms[coin.PK]].prices.push({
-            timestamp: finalCoin.SK,
-            price: finalCoin.price,
-            confidence: coin.confidence,
-          });
-        }
+        PKTransforms[coin.PK].forEach((coinName) => {
+          if (response[coinName] == undefined) {
+            response[coinName] = {
+              symbol: coin.symbol,
+              prices: [
+                {
+                  timestamp: finalCoin.SK,
+                  price: finalCoin.price,
+                  confidence: coin.confidence,
+                },
+              ],
+            };
+          } else {
+            response[coinName].prices.push({
+              timestamp: finalCoin.SK,
+              price: finalCoin.price,
+              confidence: coin.confidence,
+            });
+          }
+        });
       }),
     );
   });

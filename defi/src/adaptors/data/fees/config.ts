@@ -3689,5 +3689,14 @@ export default {
     },
     "rezerve-money": {
         id: "6300"
+    },
+    "nova": {
+        id: "6326"
+    },
+    "pepeboost": {
+        id: "6327"
+    },
+    "padre": {
+        id: "6328"
     }
 } as AdaptorsConfig

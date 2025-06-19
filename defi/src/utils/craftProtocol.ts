@@ -168,6 +168,15 @@ function fetchFrom(pk: string, start: number) {
     .then((r) => r.Items ?? []);
 }
 
+function normalizeDate(dateStr?: string): string | undefined {
+  if (!dateStr) return undefined;
+
+  const date = new Date(dateStr.replace(/\//g, "-"));
+  if (isNaN(date.getTime())) return undefined;
+
+  return date.toISOString().split("T")[0]; // YYYY-MM-DD
+}
+
 export default async function craftProtocol({
   protocolData,
   useNewChainNames,
@@ -226,9 +235,13 @@ export default async function craftProtocol({
   if (response.oraclesBreakdown) {
     response.oraclesBreakdown = response.oraclesBreakdown.map(oracle => ({
       ...oracle,
+      startDate: normalizeDate(oracle.startDate),
+      endDate: normalizeDate(oracle.endDate),
       chains: oracle.chains?.map(chainConfig => ({
         ...chainConfig,
-        chain: getChainDisplayName(chainConfig.chain, useNewChainNames)
+        chain: getChainDisplayName(chainConfig.chain, useNewChainNames),
+        startDate: normalizeDate(chainConfig.startDate),
+        endDate: normalizeDate(chainConfig.endDate),
       }))
     }));
   }

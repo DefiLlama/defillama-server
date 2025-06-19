@@ -9326,23 +9326,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "534",
-    name: "Thales",
-    address: "0x03e173ad8d1581a4802d3b532ace27a62c5b81dc",
-    symbol: "THALES",
-    url: "https://thalesmarket.io/",
+    name: "Overtime",
+    previousNames: ["Thales"],
+    address: "0x90ce5720c17587d28e4af120ae2d313b3bad1722",
+    symbol: "OVER",
+    url: "https://www.overtime.io/",
     description:
-      "Thales is an Ethereum protocol that allows the creation of peer-to-peer parimutuel markets that anyone can join. This building block is the foundation of novel on-chain initiatives, from a platform for AMM-based positional markets to immersive gamified experiences, and much more.",
+      "Overtime is a decentralized onchain sportsbook ecosystem enabling sports betting and digital options trading. Built on smart contracts with Chainlink data feeds, it operates without centralized control. Features pioneering AMM architecture and trustless liquidity pools for seamless, transparent betting experiences across popular sporting events.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/thales.png`,
+    logo: `${baseIconsUrl}/overtime.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "thales",
-    cmcId: "11973",
+    gecko_id: "overtime",
+    cmcId: "36272",
     category: "Prediction Market",
     chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Binance", "Polygon"],
     module: "thales/index.js",
-    twitter: "thales_io",
-    oraclesBreakdown: [  // since the speedmarkets products is only a very small amout of TVL , we can not add it to the oracles. Our rule is around 50% TVL 
+    twitter: "Overtime_io",
+    oraclesBreakdown: [  
       {
         name: "Chainlink",
         type: "Primary",
@@ -9351,7 +9352,16 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       }
     ],
     treasury: "thales.js",
-    audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
+    audit_links: [
+      "https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit",
+      "https://github.com/decurity/audits/blob/master/ThalesMarket/thales-market-speedmarkets-audit-report-1.1.pdf",
+      "https://github.com/Decurity/audits/blob/master/ThalesMarket/thales-market-liquidity-pool-audit-report-1.1.pdf",
+      "https://iosiro.com/audits/thales-parlay-market-amm-smart-contract-audit",
+      "https://iosiro.com/audits/thales-amm-smart-contract-audit",
+      "https://www.certik.com/projects/thales",
+      "https://iosiro.com/audits/thales-binary-option-market-smart-contract-audit",
+      "https://iosiro.com/audits/staked-thales-betting-proxy-smart-contract-audit",
+      ],
     github: ["thales-markets"],
   },
   {

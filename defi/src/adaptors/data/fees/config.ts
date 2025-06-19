@@ -3698,5 +3698,8 @@ export default {
     },
     "padre": {
         id: "6328"
-    }
+    },
+    "hypercat": {
+        id: "6325"
+    },
 } as AdaptorsConfig

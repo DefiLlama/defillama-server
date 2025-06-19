@@ -58651,7 +58651,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],  // https://docs.more.markets/borrow/oracles-and-pricing
     forkedFromIds: ["1599"],
     module: "more-markets/index.js",
-    twitter: "More_Protocol",
+    twitter: "MORE_DeFi",
     github: ["MoreLabsXYZ"],
     listedAt: 1730816643
   },

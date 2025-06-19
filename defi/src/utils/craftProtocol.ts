@@ -223,6 +223,16 @@ export default async function craftProtocol({
     mcap,
   };
 
+  if (response.oraclesBreakdown) {
+    response.oraclesBreakdown = response.oraclesBreakdown.map(oracle => ({
+      ...oracle,
+      chains: oracle.chains?.map(chainConfig => ({
+        ...chainConfig,
+        chain: getChainDisplayName(chainConfig.chain, useNewChainNames)
+      }))
+    }));
+  }
+
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
       return;

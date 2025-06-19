@@ -3707,5 +3707,8 @@ export default {
     },
     "launch-on-bags": {
         id: "6332"
+    },
+    "gluex-protocol": {
+        id: "6334"
     }
 } as AdaptorsConfig

@@ -17118,5 +17118,28 @@ const data4: Protocol[] = [
     twitter: "KGeN_IO",
     forkedFromIds: [],
   },
+  {
+    id: "6334",
+    name: "GlueX",
+    address: null,
+    symbol: "-",
+    url: "https://gluex.xyz/",
+    description: "GlueX is the semantic and execution layer for DeFi, offering APIs for spot routing, lending, LPing and more — all powered by a network of optimizers and abstracted across 17+ blockchains..",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gluex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: [
+      "Ethereum", "Arbitrum", "Base", "xDai", "Binance", "Polygon",
+      "Avalanche", "Optimism", "Blast", "Linea", "Mantle", "Scroll",
+      "Taiko", "Berachain", "Sonic", "Unichain", "Hyperliquid L1"
+    ],  
+    module: "dummy.js",
+    twitter: "GluexProtocol",
+    forkedFromIds: [],
+  },
 ];
 export default data4;

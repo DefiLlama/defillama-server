@@ -360,5 +360,8 @@ export default {
   },
   "hyperbloom": {
     id: "6329"
+  },
+  "gluex-protocol": {
+    id: "6334"
   }
 } as AdaptorsConfig;

@@ -16378,6 +16378,7 @@ const data4: Protocol[] = [
     category: "Reserve Currency",
     chains: ["Sonic"],
     module: "rezerve/index.js",
+    treasury: "rezerve.js",
     twitter: "rezervemoney",
     forkedFromIds: ["340"],
     oraclesBreakdown: [

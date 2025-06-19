@@ -357,5 +357,8 @@ export default {
   },
   "bluefin7k-aggregator": {
     id: "6322"
+  },
+  "hyperbloom": {
+    id: "6329"
   }
 } as AdaptorsConfig;

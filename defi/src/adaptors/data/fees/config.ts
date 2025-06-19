@@ -3702,4 +3702,7 @@ export default {
     "hypercat": {
         id: "6325"
     },
+    "kgen": {
+        id: "6333"
+    },
 } as AdaptorsConfig

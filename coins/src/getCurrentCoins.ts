@@ -78,9 +78,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-handler({
-  pathParameters: {
-    coins:
-      "sei:0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1,sei:0x3894085Ef7Ff0f0aeDf52E2A2704928d1Ec074F1",
-  },
-}); // ts-node coins/src/getCurrentCoins.ts
+// handler({
+//   pathParameters: {
+//     coins:
+//       "sei:0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1,sei:0x3894085Ef7Ff0f0aeDf52E2A2704928d1Ec074F1",
+//   },
+// }); // ts-node coins/src/getCurrentCoins.ts

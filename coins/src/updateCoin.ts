@@ -208,10 +208,10 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-handler({
-  pathParameters: {
-    coins:
-      "ethereum:0x1f9840a85d5af5bf1d1762f925bdadDC4201f984,ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,base:0x5ae84075f0e34946821a8015dab5299a00992721,fantom:0x582423c10c9e83387a96d00a69ba3d11ee47b7b5,base:0x27d2decb4bfc9c76f0309b8e88dec3a601fe25a8",
-  },
-});
+// handler({
+//   pathParameters: {
+//     coins:
+//       "ethereum:0x1f9840a85d5af5bf1d1762f925bdadDC4201f984,ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,base:0x5ae84075f0e34946821a8015dab5299a00992721,fantom:0x582423c10c9e83387a96d00a69ba3d11ee47b7b5,base:0x27d2decb4bfc9c76f0309b8e88dec3a601fe25a8",
+//   },
+// });
 // ts-node coins/src/updateCoin.ts

@@ -3705,4 +3705,7 @@ export default {
     "kgen": {
         id: "6333"
     },
+    "launch-on-bags": {
+        id: "6332"
+    }
 } as AdaptorsConfig

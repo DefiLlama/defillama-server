@@ -76,7 +76,12 @@ async function storeData(subPath: string, data: any) {
   const filePath = path.join(CACHE_DIR!, subPath)
   const dirPath = path.dirname(filePath)
   await ensureDirExists(dirPath)
-  return fs.promises.writeFile(filePath, JSON.stringify(data))
+  try {
+    return await fs.promises.writeFile(filePath, JSON.stringify(data))
+  } catch (e) {
+    log(`Error storing data to ${filePath}:`, (e as any)?.message)
+    return null
+  }
 }
 
 async function readFileData(subPath: string) {

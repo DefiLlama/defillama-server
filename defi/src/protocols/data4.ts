@@ -16864,7 +16864,7 @@ const data4: Protocol[] = [
     description: "Trade 200X onchain futures with intelligent assistance. AI Signals from chart analysis, real-time news, and market sentiment.",
     chain: "Base",
     logo: `${baseIconsUrl}/stobix.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

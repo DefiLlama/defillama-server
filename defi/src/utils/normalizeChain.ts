@@ -4322,7 +4322,33 @@ export const chainCoingeckoIds = {
     url: "https://titanlab.io/home",
     twitter: "TitanMainnet",
     chainId: 18888
-  }
+  },
+  "LogX Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "LogX_trade",
+    url: "https://logx.network/",
+  },
+  "Numbers": {
+    geckoId: "numbers-protocol",
+    symbol: "NUM",
+    cmcId: "13521",
+    categories: ["EVM"],
+    twitter: "numbersprotocol",
+    url: "https://www.numbersprotocol.io/",
+    chainId: 10507,
+    github: ["numbersprotocol"],
+  },
+  "Phantasma": {
+    geckoId: "phantasma",
+    symbol: "SOUL",
+    cmcId: "2827",
+    categories: ["EVM"],
+    twitter: "PhantasmaChain",
+    url: "https://phantasma.info/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4515,7 +4541,8 @@ const chainLabelMap = {
   "sseed": "Superseed",
   "xp": "Xphere",
   "milkyway_rollup": "MilkyWay Rollup",
-  "iota": "IOTA"
+  "iota": "IOTA",
+  "logx": "LogX Network"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

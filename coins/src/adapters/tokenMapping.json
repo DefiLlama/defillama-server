@@ -1693,6 +1693,11 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 18,
       "symbol": "sUSDe"
+    },
+     "0x623f2774d9f27b59bc6b954544487532ce79d9df": {
+      "decimals": "8",
+      "symbol": "bfBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "jbc": {

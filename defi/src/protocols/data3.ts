@@ -2391,7 +2391,7 @@ const data3_1: Protocol[] = [
     assetToken: "STBT",
     url: "https://www.matrixdock.com/home",
     description:
-      "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
+      "Short-Term US Treasury Bill Token enables risk-free yields from U.S. Treasury securities and reverse repos. Pegged 1:1 to USD, interest is rebased to holders STBT balances daily.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/matrixdock-stbt.jpg`,
     audits: "0",

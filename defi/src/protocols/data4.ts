@@ -17045,7 +17045,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.matrixdock.com/home",
-    description: "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
+    description: "Launched in 2024, XAUm is a digital gold token issued by Matrixdock. XAUm provides investors with a secure and efficient way to own and trade gold digitally, with each token representing one gram of LBMA-certified physical gold securely stored in vaults.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/matrixdock-xaum.jpg`,
     audits: "0",

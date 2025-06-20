@@ -14911,15 +14911,15 @@ const data3: Protocol[] = [
   },
   {
     id: "3354",
-    name: "slisBNB", // rebrand from Synclub Staked BNB
+    name: "Lista Liquid Staking", 
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
     assetToken: "slisBNB",
     url: "https://www.synclub.io/",
     description:
-      "slisBNB is the yield bearing & liquid staking token for Lista DAO, which appreciates against BNB in line with BNB's staking APR.",
+      "Lista Liquid Staking is the yield bearing & liquid staking token for Lista DAO, which appreciates against BNB in line with BNB's staking APR.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/slisbnb.png`,
+    logo: `${baseIconsUrl}/lista-dao.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

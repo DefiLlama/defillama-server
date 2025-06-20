@@ -409,7 +409,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name)
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl ? true : false,
+        tvl: protocol.tvl != null ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {})

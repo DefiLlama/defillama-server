@@ -7300,3 +7300,5 @@ export const parentProtocolsById = parentProtocols.reduce((accum, protocol) => {
   accum[protocol.id] = protocol;
   return accum;
 }, {} as Record<string, IParentProtocol>);
+
+import './data'; // Import the data file to ensure it is loaded (we update parent protocols in there)

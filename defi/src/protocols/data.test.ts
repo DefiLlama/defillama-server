@@ -349,6 +349,44 @@ test("oraclesBreakdown chains are normalized", async () => {
   }
 });
 
+test("oraclesBreakdown dates are in YYYY-MM-DD format", async () => {
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  
+  for (const protocol of protocols) {
+    if (protocol.oraclesBreakdown) {
+      for (const oracle of protocol.oraclesBreakdown) {
+        if (oracle.startDate) {
+          if (!dateRegex.test(oracle.startDate)) {
+            throw new Error(`Oracle "${oracle.name}" in protocol "${protocol.name}" has invalid startDate format: "${oracle.startDate}". Expected YYYY-MM-DD format.`);
+          }
+        }
+        
+        if (oracle.endDate) {
+          if (!dateRegex.test(oracle.endDate)) {
+            throw new Error(`Oracle "${oracle.name}" in protocol "${protocol.name}" has invalid endDate format: "${oracle.endDate}". Expected YYYY-MM-DD format.`);
+          }
+        }
+        
+        if (oracle.chains) {
+          for (const chainInfo of oracle.chains) {
+            if (chainInfo.startDate) {
+              if (!dateRegex.test(chainInfo.startDate)) {
+                throw new Error(`Chain "${chainInfo.chain}" in oracle "${oracle.name}" of protocol "${protocol.name}" has invalid startDate format: "${chainInfo.startDate}". Expected YYYY-MM-DD format.`);
+              }
+            }
+            
+            if (chainInfo.endDate) {
+              if (!dateRegex.test(chainInfo.endDate)) {
+                throw new Error(`Chain "${chainInfo.chain}" in oracle "${oracle.name}" of protocol "${protocol.name}" has invalid endDate format: "${chainInfo.endDate}". Expected YYYY-MM-DD format.`);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
 /*
 test("icon exists", async () => {
   for (const protocol of protocols) {

@@ -214,13 +214,13 @@ const data: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Ethereum" }, { chain: "OP Mainnet" }]
+        chains: [{ chain: "ethereum" }, { chain: "optimism" }]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "OP Mainnet" }]
+        chains: [{ chain: "optimism" }]
       }
     ],
     parentProtocol: "parent#synthetix",
@@ -422,13 +422,13 @@ const data: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Ethereum" }]
+        chains: [{ chain: "ethereum" }]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5150"],
-        chains: [{ chain: "Conflux" }]
+        chains: [{ chain: "conflux" }]
       }
     ],
     governanceID: ["snapshot:dforcenet.eth"],
@@ -2224,7 +2224,7 @@ const data: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.acryptos.com/tutorials-guides/resources/oracles"],
-        chains: [{ chain: "Binance" }, { chain: "Arbitrum" }, { chain: "OP Mainnet" }, { chain: "Base" }, { chain: "Polygon" }]
+        chains: [{ chain: "binance" }, { chain: "arbitrum" }, { chain: "optimism" }, { chain: "base" }, { chain: "polygon" }]
       }
     ],
     module: "acryptos/index.js",
@@ -2323,7 +2323,7 @@ const data: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain", "https://docs-v4.venus.io/risk/resilient-price-oracle", "https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool"],
-        chains: [{ chain: "BSC" }, { chain: "Unichain" }]
+        chains: [{ chain: "bsc" }, { chain: "unichain" }]
       }
     ],
     parentProtocol: "parent#venus-finance",
@@ -5232,13 +5232,13 @@ const data: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Arbitrum" }, { chain: "Avalanche" }, { chain: "BSC" }, { chain: "Ethereum" }, { chain: "Fantom" }, { chain: "OP Mainnet" }]
+        chains: [{ chain: "arbitrum" }, { chain: "avalanche" }, { chain: "bsc" }, { chain: "ethereum" }, { chain: "fantom" }, { chain: "optimism" }]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Blast" }, { chain: "Kava" }]
+        chains: [{ chain: "blast" }, { chain: "kava" }]
       }
     ],
     parentProtocol: "parent#abracadabra",
@@ -6016,7 +6016,7 @@ const data: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Redstone" }]
+        chains: [{ chain: "redstone" }]
       }
     ],
     github: ["pendle-finance"],
@@ -9348,7 +9348,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
         name: "Chainlink",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5327#issuecomment-1869801081", "https://github.com/DefiLlama/DefiLlama-Adapters/discussions/6254"],
-        chains: [{ chain: "OP Mainnet" }, { chain: "Arbitrum" }, { chain: "Polygon" }, { chain: "Base" }]
+        chains: [{ chain: "optimism" }, { chain: "arbitrum" }, { chain: "polygon" }, { chain: "base" }]
       }
     ],
     treasury: "thales.js",
@@ -9769,7 +9769,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
         name: "Band",
         type: "Primary",
         proof: ["https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code"],
-        chains: [{ chain: "Cronos" }]
+        chains: [{ chain: "cronos" }]
       }
     ],
     audit_links: ["https://www.certik.org/projects/annex"],
@@ -11401,25 +11401,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Arbitrum" }, { chain: "Polygon" }, { chain: "OP Mainnet" }, { chain: "BSC" }, { chain: "Ethereum" }]
+        chains: [{ chain: "arbitrum" }, { chain: "polygon" }, { chain: "optimism" }, { chain: "bsc" }, { chain: "ethereum" }]
       },
       {
         name: "TWAP",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Arbitrum" }, { chain: "Polygon" }, { chain: "OP Mainnet" }, { chain: "BSC" }, { chain: "Ethereum" }]
+        chains: [{ chain: "arbitrum" }, { chain: "polygon" }, { chain: "optimism" }, { chain: "bsc" }, { chain: "ethereum" }]
       },
       {
         name: "Umbrella Network",
         type: "Primary",
         proof: ["https://medium.com/umbrella-network/umbrella-integrates-with-balmy-90cfa7f0247c"],
-        chains: [{ chain: "Rootstock" }]
+        chains: [{ chain: "rsk" }]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Polygon" }]
+        chains: [{ chain: "polygon" }]
       },
     ],
     github: ["balmy-protocol"],
@@ -12153,13 +12153,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Arbitrum" }]
+        chains: [{ chain: "arbitrum" }]
       },
       {
         name: "DIA",
         type: "Primary",
         proof: [],
-        chains: [{ chain: "Arbitrum" }]
+        chains: [{ chain: "arbitrum" }]
       }
     ],
     module: "dopex/index.js",
@@ -12756,7 +12756,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
         name: "Chainlink",
         type: "Primary",
         proof: ["https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles"],
-        chains: [{ chain: "Sonic" }, { chain: "Base" }]
+        chains: [{ chain: "sonic" }, { chain: "base" }]
       }
     ],
     listedAt: 1634674060,

@@ -5355,13 +5355,13 @@ const data2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Polygon"}]
+        chains: [{chain: "polygon"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Polygon zkEVM"}]
+        chains: [{chain: "polygon_zkevm"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -9695,13 +9695,13 @@ const data2: Protocol[] = [
         name: "Supra",
         type: "Aggregator",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
-        chains: [{chain: "Sui"},]
+        chains: [{chain: "sui"},]
       },
       {
         name: "Pyth",
         type: "Aggregator",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9651","https://doc-en.mole.fi/security/oracle"],
-        chains: [{chain: "Sui"},{chain: "Aptos"},]
+        chains: [{chain: "sui"},{chain: "aptos"},]
       }
     ],
     forkedFrom: [],
@@ -13058,7 +13058,7 @@ const data2: Protocol[] = [
         name: "Witnet",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Celo"}]
+        chains: [{chain: "celo"}]
       },
     ],
     forkedFrom: [],
@@ -14530,7 +14530,7 @@ const data2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.silo.finance/"],
-        chains: [{chain: "Arbitrum"}, {chain: "Ethereum"}, {chain: "Base"}, {chain: "OP Mainnet"}]
+        chains: [{chain: "arbitrum"}, {chain: "ethereum"}, {chain: "base"}, {chain: "optimism"}]
       },
     ],
     forkedFrom: [],
@@ -15830,19 +15830,19 @@ const data2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Ethereum"},{chain: "Arbitrum"}]
+        chains: [{chain: "ethereum"},{chain: "arbitrum"}]
       },
       {
         name: "Api3",
         type: "Secondary",
         proof: [],
-        chains: [{chain: "Fraxtal"},]
+        chains: [{chain: "fraxtal"},]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Fraxtal"},]
+        chains: [{chain: "fraxtal"},]
       }
     ],
     forkedFrom: [],
@@ -16144,7 +16144,7 @@ const data2: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9930"],
-        chains: [{chain: "Unichain"}]
+        chains: [{chain: "unichain"}]
       },
     ],
     forkedFrom: [],
@@ -18379,25 +18379,25 @@ const data2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/7767","https://app.dolomite.io/balances"],
-        chains: [{chain: "Arbitrum"},{chain: "Polygon zkEVM"},{chain: "X Layer"}]
+        chains: [{chain: "arbitrum"},{chain: "polygon_zkevm"},{chain: "xlayer"}]
       },
       {
         name: "Chronicle",
         type: "Primary",
         proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], 
-        chains: [{chain: "Mantle"}]
+        chains: [{chain: "mantle"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
-        chains: [{chain: "Berachain"}]
+        chains: [{chain: "berachain"}]
       },
       {
         name: "Chainsight",
         type: "Secondary",
         proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
-        chains: [{chain: "Berachain"}]
+        chains: [{chain: "berachain"}]
       }
     ],
     audit_links: [
@@ -25071,7 +25071,7 @@ const data2: Protocol[] = [
         name: "COTI's Oracle",
         type: "Primary",
         proof: [],
-        chains: [{chain: "Cardano"}]
+        chains: [{chain: "cardano"}]
       },
     ],
     forkedFrom: [],
@@ -26123,7 +26123,7 @@ const data2: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle"],
-        chains: [{chain: "Solana"}]
+        chains: [{chain: "solana"}]
       },
     ],
     audit_links: [
@@ -28216,7 +28216,7 @@ const data2: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price"],
-        chains: [{chain: "Sui"}]
+        chains: [{chain: "sui"}]
       },
     ],
     forkedFrom: [],

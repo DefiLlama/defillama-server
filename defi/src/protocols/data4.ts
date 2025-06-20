@@ -670,7 +670,7 @@ const data4: Protocol[] = [
         name: "Api3",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
-        chains: [{chain: "Arbitrum"}]
+        chains: [{chain: "arbitrum"}]
       }
     ],
     forkedFrom: [],

@@ -326,6 +326,29 @@ test("no module repeated", async () => {
   }
 });
 
+test("oraclesBreakdown chains are normalized", async () => {
+  for (const protocol of protocols) {
+    if (protocol.oraclesBreakdown) {
+      for (const oracle of protocol.oraclesBreakdown) {
+        if (oracle.chains) {
+          for (const chainInfo of oracle.chains) {
+            const originalChain = chainInfo.chain;
+            const normalizedChainName = getChainDisplayName(originalChain, true);
+            
+            if (chainCoingeckoIds[normalizedChainName] === undefined && normalizedChainName !== "Multi-Chain") {
+              throw new Error(`Oracle chain "${originalChain}" (normalized to "${normalizedChainName}") in oracle "${oracle.name}" of protocol "${protocol.name}" should be on chainMap`);
+            }
+            
+            if (originalChain !== normalizedChainName && chainCoingeckoIds[normalizedChainName] !== undefined) {
+              throw new Error(`Oracle chain "${originalChain}" in oracle "${oracle.name}" of protocol "${protocol.name}" should be normalized to "${normalizedChainName}"`);
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
 /*
 test("icon exists", async () => {
   for (const protocol of protocols) {

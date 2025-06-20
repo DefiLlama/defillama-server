@@ -16516,7 +16516,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6306",
-    name: "Realms World ",
+    name: "Realms World",
     address: "0x686f2404e77ab0d9070a46cdfb0b7fecdd2318b0",
     symbol: "LORDS",
     url: "https://realms.world",

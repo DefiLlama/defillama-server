@@ -1694,7 +1694,7 @@
       "decimals": 18,
       "symbol": "sUSDe"
     },
-     "0x623f2774d9f27b59bc6b954544487532ce79d9df": {
+    "0x623f2774d9f27b59bc6b954544487532ce79d9df": {
       "decimals": "8",
       "symbol": "bfBTC",
       "to": "coingecko#bitcoin"
@@ -6886,6 +6886,11 @@
     }
   },
   "matchain": {
+    "0x44a83a012B926853DFc1BBE2ec5BEf37126067e8": {
+      "to": "coingecko#matchain",
+      "decimals": 18,
+      "symbol": "MAT"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#binancecoin",
       "decimals": 18,

@@ -17278,6 +17278,7 @@ const data4: Protocol[] = [
     module: "unitas/index.js",
     twitter: "UnitasLabs",
     forkedFromIds: [],
+    treasury: "unitas.js",
     audit_links: ["http://github.com/UnipayFi/Audit"],
     listedAt: 1750434543
   },

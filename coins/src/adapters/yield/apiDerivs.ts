@@ -3,8 +3,6 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
-import * as sdk from "@defillama/sdk";
-import { request, gql } from "graphql-request";
 
 type Config = {
   chain: string;
@@ -22,7 +20,7 @@ const configs: { [adapter: string]: Config } = {
   LiNEAR: {
     rate: async ({ t }) => {
       const res = await fetch(
-        "https://gateway-arbitrum.network.thegraph.com/api/e5a80a42743d120ed405223ae2059bde/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg",
+        `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_API_KEY}/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg`,
         {
           headers: {
             accept: "*/*",
@@ -44,6 +42,7 @@ const configs: { [adapter: string]: Config } = {
           method: "POST",
         },
       ).then((r) => r.json());
+      if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
       const { timestamp, price } = res.data.prices[0];
       if (t - timestamp > margin) throw new Error(`LiNEAR subgraph stale rate`);
       return price;
@@ -75,11 +74,81 @@ const configs: { [adapter: string]: Config } = {
     address: "0x14d60e7fdc0d71d8611742720e4c50e7a974020c",
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
   },
+  stSTX: {
+    rate: async () => {
+      const res = await fetch(
+        "https://app.stackingdao.com/.netlify/functions/stats",
+      ).then((r) => r.json());
+      return res.ratio;
+    },
+    chain: "stacks",
+    address: "sp4sze494vc2yc5jyg7ayfq44f5q4pyv7dvmdpbg.ststx-token::ststx",
+    underlying: "sp102v8p0f7jx67arq77wea3d3cfb5xw39redt0am.token-wstx",
+    decimals: "6",
+    symbol: "stSTX",
+  },
+  LBTCv: {
+    rate: async ({ t }) => {
+      const api = await getApi("ethereum", t, true);
+      const [tvls, supply] = await Promise.all([
+        fetch("https://api.llama.fi/protocol/lombard-vault").then((r) =>
+          r.json(),
+        ),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x5401b8620E5FB570064CA9114fd1e135fd77D57c",
+        }),
+      ]);
+      const tvl = tvls.tvl.reduce(
+        (
+          prev: { date: number; totalLiquidityUSD: number },
+          curr: { date: number; totalLiquidityUSD: number },
+        ) => (Math.abs(curr.date - t) < Math.abs(prev.date - t) ? curr : prev),
+      );
+      if (Math.abs(tvl.date - t) > 8 * margin)
+        throw new Error(`no TVL data for Lombard Vault at this time`);
+      return (tvl.totalLiquidityUSD * 1e8) / supply;
+    },
+    chain: "ethereum",
+    address: "0x5401b8620E5FB570064CA9114fd1e135fd77D57c",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    decimals: "8",
+    symbol: "LBTCv",
+  },
+  stSUI: {
+    rate: async () =>
+      await fetch("https://api.alphafi.xyz/stsui/price").then((r) => r.json()),
+    chain: "sui",
+    address:
+      "0xd1b72982e40348d069bb1ff701e634c117bb5f741f44dff91e472d3b01461e55::stsui::STSUI",
+    underlying:
+      "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+    decimals: "9",
+    symbol: "stSUI",
+  },
+  mCAKE: {
+    rate: async () => {
+      const res = await fetch(
+        "https://explorer.pancakeswap.com/api/cached/pools/stable/bsc/0xc54d35a8Cfd9f6dAe50945Df27A91C9911A03ab1",
+      ).then((r) => r.json());
+      return res.token0Price;
+    },
+    chain: "bsc",
+    address: "0x581fa684d0ec11ccb46b1d92f1f24c8a3f95c0ca",
+    underlying: "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+    decimals: "18",
+    symbol: "mCAKE",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
+    Object.keys(configs).map((k: string) =>
+      deriv(timestamp, k, configs[k]).catch((e) => {
+        console.log(e);
+        return [];
+      }),
+    ),
   );
 }
 
@@ -105,13 +174,15 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   };
 
   const writes: Write[] = [];
-  return await getWrites({
-    underlyingChain,
-    chain,
-    timestamp,
-    pricesObject,
-    projectName,
-    writes,
-    confidence,
-  });
+  return (
+    await getWrites({
+      underlyingChain,
+      chain,
+      timestamp,
+      pricesObject,
+      projectName,
+      writes,
+      confidence,
+    })
+  ).filter((w) => !isNaN(w.price ?? NaN));
 }

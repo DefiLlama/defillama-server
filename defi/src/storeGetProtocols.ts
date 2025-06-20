@@ -6,29 +6,17 @@ import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
-import { getChainDisplayName } from "./utils/normalizeChain";
+import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
+import protocols from "./protocols/data";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
     [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
     [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
   });
-}
-
-function replaceChainNames(
-  oraclesByChain?:
-    | {
-      [chain: string]: string[];
-    }
-    | undefined
-) {
-  if (!oraclesByChain) return oraclesByChain;
-  return Object.fromEntries(
-    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, true), vals])
-  );
 }
 
 export async function storeGetProtocols({
@@ -42,6 +30,14 @@ export async function storeGetProtocols({
   getLastWeekTokensUsd,
   getLastMonthTokensUsd,
 }: any = {}) {
+  const idToName: Record<string, string> = {};
+  for (const p of protocols) {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  }
+  for (const parent of parentProtocolsList) {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  }
+
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
     getLastHourlyRecord,
@@ -61,12 +57,19 @@ export async function storeGetProtocols({
           getLastWeekTokensUsd,
           getLastMonthTokensUsd,
         });
+        let forkedFrom = protocol.forkedFrom;
+        if (Array.isArray(protocol.forkedFromIds)) {
+          forkedFrom = protocol.forkedFromIds.map((id) => idToName[id] || id);
+        }
         return {
           category: protocol.category,
+          ...(protocol.tags ? { tags: protocol.tags } : {}),
           chains: protocol.chains,
-          oracles: protocol.oracles,
-          oraclesByChain: replaceChainNames(protocol.oraclesByChain),
-          forkedFrom: protocol.forkedFrom,
+          oracles: protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0
+            ? protocol.oraclesBreakdown.map((x) => x.name)
+            : protocol.oracles,
+          oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
+          forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,
           name: protocol.name,
@@ -83,6 +86,7 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
+        ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
         };
       })
     )
@@ -181,6 +185,7 @@ export async function storeGetProtocols({
       name: protocol.name,
       symbol: protocol.symbol,
       category: protocol.category,
+      ...(protocol.tags ? { tags: protocol.tags } : {}),
       tvl: protocol.tvl,
       chainTvls: Object.fromEntries(
         Object.entries(protocol.chainTvls).filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
@@ -188,6 +193,7 @@ export async function storeGetProtocols({
       mcap: protocol.mcap,
       gecko_id: protocol.gecko_id,
       parent: protocol.parentProtocol,
+      ...(protocol.deprecated ? { deprecated: true } : {})
     }))
     .concat(extendedParentProtocols);
 

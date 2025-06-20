@@ -1,3 +1,5 @@
+import { lowercase } from "../../utils/coingeckoPlatforms";
+
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
@@ -44,6 +46,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
+    XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
+    clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911", // IS NOT BACKED
+    NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
+    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f"  // BACKED BY THE ABOVE, SO SAME 
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -74,10 +80,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MINTME: "0x7d05d38e6109a3aeeebf0a570eb8f6856cb4b55e",
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
     //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
-    HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd"
+    HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
+    KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
+    MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b"
   },
   bsc: {
-    BGEO: '0xc342774492b54ce5f8ac662113ed702fc1b34972',
+    BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
     aBNBb: "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d",
     aBNBc: "0xe85afccdafbe7f2b096f268e31cce3da8da2990a",
     DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561",
@@ -115,7 +124,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     JEFE: "0x80fa6d5384bdde296a28a321f73ab70977575129",
     LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
     BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
-    PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f"
+    PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
+    "PENDLE-LPT": "0x0921ccc98956b1599003fd9739d5e66bf319a161",
+    coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
+    ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
+    MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -126,14 +139,14 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
     PEEP: "n54ZwXEcLnc3o7zK48nhrLV4KTU5wWD4iq7Gvdt5tik",
     //WIF: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
-    GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
+    TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95",
   },
   pulse: {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
     MMC: "0x387776e41b4688d79e1770dceba1f6d854911eb1",
     HUNT: "0xd854f7814b676f1c19ea22d4137d0176413c85b4",
-    Wildfire: "0x4db9112fe1c3670a7adb5e206ef6ce26707a2767"
+    Wildfire: "0x4db9112fe1c3670a7adb5e206ef6ce26707a2767",
   },
   avax: {
     BPAY: "0x8ccee641c3d937dc89d1d94fe4d8051624042fcf",
@@ -149,7 +162,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DDC: "0x38e853f7519d3db2d245ce0d21960f68a6448051",
     MYD: "0xf3797a24dd0ced905e2d08b03cf364aac49caa6d",
     JLP: "0xa56d382c5aa9774d4eb98f1500670d3049fede9b",
-    PARR: "0xf10b5a72f0abeb27a5ddba950082e4edff4c825d"
+    PARR: "0xf10b5a72f0abeb27a5ddba950082e4edff4c825d",
   },
   oasis: {
     USDT: "0x6Cb9750a92643382e020eA9a170AbB83Df05F30B",
@@ -214,6 +227,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   optimism: {
     MIM: "0xb153fb3d196a8eb25522705560ac152eeec57901",
     GRAIN: "0xfd389dc9533717239856190f42475d3f263a270d",
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d" // IS NOT BACKED
   },
   era: {
     MVX: "0xc8ac6191cdc9c7bf846ad6b52aaaa7a0757ee305",
@@ -284,25 +298,35 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   callisto: {
     SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
   },
-  blast:{
+  blast: {
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
   },
   base: {
-    WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E"
+    WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
+    WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
+    AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
+    clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5" // IS NOT BACKED
+  },
+  sonic: {
+    wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"
+  },
+  bera: {
+    "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E"
+  },
+  hyperliquid: {
+    LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
+    CUTEPURR: "0xc9dfbbb952fd91ed37978907ce158575afac2d5a"
   }
- // merlin: {
- //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
- // }
+  // merlin: {
+  //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
+  // }
 };
 
 export const distressedAssets = Object.fromEntries(
   Object.entries(contracts)
     .map(([chain, tokens]) => {
       return Object.entries(tokens).map(([_symbol, address]) => {
-        return [
-          `${chain}:${chain === "solana" ? address : address.toLowerCase()}`,
-          true,
-        ];
+        return [`${chain}:${lowercase(address, chain)}`, true];
       });
     })
     .flat(),

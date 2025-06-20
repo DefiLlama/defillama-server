@@ -1,33 +1,31 @@
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
-  "binance": "bsc",
-  "wanchain": "wan",
-  "kucoin": "kcc",
-  "terra classic": "terra",
-  "nova network": "nova",
-  "godwokenv1": "godwoken_v1",
-  "arbitrum nova": "arbitrum_nova",
-  "zksync era": "era",
-  "polygon zkevm": "polygon_zkevm",
-  "eos evm": "eos_evm",
-  "oasys": "oas",
-  "map protocol": "map",
-  "pulsechain": "pulse",
-  "opbnb": "op_bnb",
-  "bifrost network": "bfc",
-  "horizen eon": "eon",
-  "bahamut": "ftn",
-  "bevm": "chainx",
-  "bitnet": "btn",
-  "defichain evm": "defichain_evm",
-  "hydration": "hydradx",
-  "zklink nova": "zklink",
-  "bitlayer": "btr",
-  "cronos zkevm": "cronos_zkevm",
-  "kaia": "klaytn",
-  "viction": "tomochain"
 } as {
   [chain: string]: string
+}
+
+// for adding reverse mapping, like 'Fuel Ignition' -> 'fuel' i.e converting chain display name (visible to users) to chain ids (unique string identifier we use internally)
+function addNormalizedChainReplacements(obj: { [key: string]: string }) {
+  Object.entries(obj).forEach(([key, value]) => {
+    value = value.toLowerCase()
+    if (key === value) return;
+    normalizedChainReplacements[value] = key
+  })
+}
+
+export function replaceChainNamesForOraclesByChain(
+  useNewChainNames: boolean,
+  oraclesByChain?:
+    | {
+      [chain: string]: string[];
+    }
+    | undefined
+) {
+  if (!oraclesByChain) return oraclesByChain;
+  return Object.fromEntries(
+    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, useNewChainNames), vals])
+  );
 }
 
 export function normalizeChain(chain: string) {
@@ -35,8 +33,24 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
+const doublecountedCategorySet = new Set([
+  "Yield Aggregator",
+  "Yield",
+  "Liquidity manager",
+  "Onchain Capital Allocator",
+  "Risk Curators",
+  "Treasury Manager",
+  "Anchor BTC",
+  "CDP Manager",
+  "Restaked BTC",
+  "Basis Trading",
+  "CeDeFi",
+  "RWA Lending",
+  "RWA"
+].map(c => c.toLowerCase()));
+
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
+  return moduleDoubleCounted === true || (typeof category === 'string' && doublecountedCategorySet.has(category?.toLowerCase()));
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -60,7 +74,8 @@ export type ChainCoinGekcoId = {
   url?: string | null;
   parent?: {
     chain: string,
-    types: string[]
+    types: string[],
+    da?: string
   }
 }
 
@@ -91,7 +106,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 42161,
     governanceID: ["snapshot:arbitrumfoundation.eth"],
@@ -106,14 +122,15 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 11297108109,
   },
-  "Optimism": {
+  "OP Mainnet": {
     geckoId: "optimism",
     symbol: "OP",
     cmcId: "11840",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 10,
     governanceID: ["snapshot:opcollective.eth", "eip155:10:0xcDF27F107725988f2261Ce2256bDfCdE8B382B10"],
@@ -189,12 +206,12 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/"
   },
   "Polygon": {
-    geckoId: "matic-network",
-    symbol: "MATIC",
-    cmcId: "3890",
+    geckoId: "polygon-ecosystem-token",
+    symbol: "POL",
+    cmcId: "28321",
     categories: ["EVM"],
     chainId: 137,
-    github: ['maticnetwork'],
+    github: ['maticnetwork', '0xpolygon'],
     twitter: "0xPolygon",
     url: "https://polygon.technology/"
   },
@@ -357,7 +374,7 @@ export const chainCoingeckoIds = {
     github: ['rsksmart'],
     symbol: "RBTC",
     cmcId: "3626",
-    categories: ["EVM","Bitcoin Sidechains"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     parent: {
       chain: "Bitcoin",
       types: ["gas"]
@@ -431,7 +448,12 @@ export const chainCoingeckoIds = {
     github: ['celo-org'],
     symbol: "CELO",
     cmcId: "5567",
-    categories: ["EVM"],
+    categories: ["EVM",  "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Eigen',
+    },
     chainId: 42220,
     twitter: "Celo",
     url: "https://celo.org/"
@@ -569,13 +591,13 @@ export const chainCoingeckoIds = {
     twitter: "NEARProtocol",
     url: "https://near.org/"
   },
-  "EOS": {
+  "Vaulta": {
     geckoId: "eos",
-    github: ['EOSIO'],
+    github: ['EOSIO', 'eosnetworkfoundation', 'AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
-    twitter: "EOSNetworkFDN",
-    url: "https://eosnetwork.com/"
+    twitter: "Vaulta_",
+    url: "https://eosnetwork.com/resources/resource-type/vaulta/"
   },
   "Songbird": {
     geckoId: "songbird",
@@ -624,7 +646,7 @@ export const chainCoingeckoIds = {
   },
   "Viction": { // previously TomoChain
     geckoId: "tomochain",
-    github: ['tomochain','BuildOnViction'],
+    github: ['tomochain', 'BuildOnViction'],
     symbol: "VIC",
     cmcId: "2570",
     categories: ["EVM"],
@@ -737,7 +759,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 288,
     twitter: "bobanetwork",
@@ -888,7 +911,8 @@ export const chainCoingeckoIds = {
     categories: ["Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "zksync",
     url: "https://zksync.io/"
@@ -1199,7 +1223,8 @@ export const chainCoingeckoIds = {
     cmcId: "4642",
     categories: ["EVM"],
     twitter: "hedera",
-    url: "https://hedera.com/"
+    url: "https://hedera.com/",
+    chainId: 295,
   },
   "Findora": {
     geckoId: "findora",
@@ -1384,7 +1409,7 @@ export const chainCoingeckoIds = {
     twitter: "terra_money",
     url: "https://www.terra.money/"
   },
-  "SXnetwork": {
+  "SX Network": {
     geckoId: "sx-network",
     github: ['sx-network'],
     symbol: "SX",
@@ -1402,6 +1427,10 @@ export const chainCoingeckoIds = {
     symbol: "ECH",
     cmcId: "20047",
     categories: ["EVM", "Cosmos"],
+    parent: {
+      chain: "Initia", 
+      types: ["L2"]
+    }
   },
   "MultiVAC": {
     geckoId: "multivac",
@@ -1483,6 +1512,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "Filecoin",
     url: "https://filecoin.io/",
+    chainId: 314,
   },
   "Flow": {
     geckoId: "flow",
@@ -1728,10 +1758,11 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     github: ['starknet-io'],
     symbol: "STRK",
-    cmcId: null,
+    cmcId: "22691",
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     governanceID: ["snapshot:starknet.eth"],
     twitter: "Starknet",
@@ -1928,10 +1959,11 @@ export const chainCoingeckoIds = {
     github: ['matter-labs'],
     symbol: "ZK",
     cmcId: "24091",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 324,
     twitter: "zksync",
@@ -1945,7 +1977,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 1101,
     twitter: "0xPolygon",
@@ -2030,7 +2063,7 @@ export const chainCoingeckoIds = {
   "PulseChain": {
     geckoId: "pulsechain",
     symbol: "PLS",
-    cmcId: null,
+    cmcId: "11145",
     categories: ["EVM"],
     chainid: 369,
     twitter: "PulsechainCom",
@@ -2126,7 +2159,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 5000,
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     url: "https://www.mantle.xyz/",
   },
   "Neon": {
@@ -2147,7 +2180,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 8453,
     twitter: "base",
@@ -2161,10 +2195,12 @@ export const chainCoingeckoIds = {
     github: ["ConsenSys"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
+    chainId: 59144
   },
   "GravityBridge": {
     geckoId: null,
@@ -2266,14 +2302,17 @@ export const chainCoingeckoIds = {
   "Kroma": {
     geckoId: "kroma",
     symbol: "KRO",
-    cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    cmcId: "27190",
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 255,
     github: ["kroma-network"],
+    twitter: "kroma_network",
+    url: "https://kroma.network/"
   },
   "Manta": {
     geckoId: "manta-network",
@@ -2282,7 +2321,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Celestia',
     },
     github: ['manta-network'],
     chainId: 169, //being used as id for volume/fees
@@ -2331,7 +2371,8 @@ export const chainCoingeckoIds = {
     github: ["scroll-tech"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 534352,
     twitter: "Scroll_ZKP",
@@ -2411,7 +2452,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Celestia',
     },
     chainId: 1890
   },
@@ -2451,11 +2493,12 @@ export const chainCoingeckoIds = {
   "Mode": {
     geckoId: "mode",
     symbol: "MODE",
-    cmcId: null,
+    cmcId: "31016",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     github: ["mode-network"],
     chainId: 34443,
@@ -2471,12 +2514,14 @@ export const chainCoingeckoIds = {
     twitter: "FONSmartChain",
     url: "https://fonchain.io/",
   },
-  "Newton": {
+  "AB": {
     geckoId: "newton-project",
-    symbol: "NEW",
+    symbol: "AB",
     cmcId: "3871",
     github: ["newtonproject"],
     categories: ["EVM"],
+    twitter: "newton_project",
+    url: "https://ab.org/en/"
   },
   "JBC": {
     geckoId: null,
@@ -2588,7 +2633,7 @@ export const chainCoingeckoIds = {
     geckoId: "fraxtal",
     symbol: "FXTL",
     cmcId: null,
-    categories: ["EVM","Superchain"],
+    categories: ["EVM", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2657,7 +2702,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 81457,
     twitter: "Blast_L2",
@@ -2756,7 +2802,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 7887,
     twitter: "KintoXYZ",
@@ -2779,7 +2826,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 7777777,
     twitter: "zora",
@@ -2855,18 +2903,23 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
     twitter: "Karak_Network",
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub Chain": {
+  "KUB": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
     categories: ["EVM"],
-    twitter: "bitkubchain",
-    url: "https://www.bitkubchain.com",
-    github: ["bitkub-chain"],
+    twitter: "KUBChain",
+    url: "https://www.kubchain.com/",
+    github: ["bitkub-chain", "bitkub-blockchain"],
     chainId: 96
   },
   "Ancient8": {
@@ -2876,17 +2929,18 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     parent: {
       chain: "Optimism",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia',
     },
     chainId: 888888888,
     twitter: "Ancient8_gg",
     url: "https://ancient8.gg/"
   },
-  "Hyperliquid": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["Cosmos"],
+  "Hyperliquid L1": {
+    geckoId: "hyperliquid",
+    symbol: "HYPE",
+    cmcId: "32196",
+    categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
   },
@@ -2896,6 +2950,7 @@ export const chainCoingeckoIds = {
     cmcId: "28508",
     twitter: "NibiruChain",
     url: "https://nibiru.fi",
+    chainId: 6900,
   },
   "BSquared": {
     geckoId: null,
@@ -2909,7 +2964,12 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
     twitter: "derivexyz",
     url: "https://www.derive.xyz/",
     chainId: 957,
@@ -2931,7 +2991,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     parent: {
       chain: "OKTChain",
-      types: ["L2","gas"]
+      types: ["L2", "gas"]
     },
     twitter: "okx",
     url: "https://www.okx.com/xlayer"
@@ -2952,7 +3012,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Bitcoin Sidechains", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     github: ["bob-collective"],
     chainId: 60808,
@@ -2964,7 +3025,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     twitter: "BitlayerLabs",
-    categories: ["Bitcoin Sidechains","EVM"],
+    categories: ["Bitcoin Sidechains", "EVM"],
     github: ["bitlayer-org"],
     chainId: 200901,
     url: "https://www.bitlayer.org"
@@ -2989,7 +3050,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3006,6 +3067,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
     url: "https://bouncebit.io/",
+    github: ["BounceBit-Labs"],
     chainId: 6001,
   },
   "re.al": {
@@ -3022,10 +3084,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "taikoxyz",
     url: "https://taiko.xyz",
@@ -3060,7 +3123,7 @@ export const chainCoingeckoIds = {
     url: "https://aelf.com/",
     github: ["aelfProject"],
   },
-  "Lukso": {
+  "LUKSO": {
     geckoId: "lukso-token-2",
     symbol: "LYX",
     cmcId: "27622",
@@ -3074,16 +3137,23 @@ export const chainCoingeckoIds = {
     geckoId: "joltify",
     symbol: "JOLT",
     cmcId: "19855",
-    categories: ["EVM","Cosmos"],
+    categories: ["EVM", "Cosmos"],
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"]
   },
+  "IOTA": {
+    geckoId: 'iota',
+    symbol: 'IOTA',
+    cmcId: "1720",
+    twitter: "iota",
+    url: "https://www.iota.org/",
+  },
   "IOTA EVM": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'iota',
+    symbol: 'IOTA',
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3099,7 +3169,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Superchain"],
     parent: {
       chain: "Base",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia'
     },
     twitter: "HamOnWarpcast",
     url: "https://ham.fun",
@@ -3125,7 +3196,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Arbitrum",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia',
     },
     twitter: "RariChain",
     url: "https://rarichain.org/",
@@ -3152,10 +3224,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "Mint_Blockchain",
     url: "https://www.mintchain.io/",
@@ -3227,7 +3300,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup", "Elastic Network"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3275,10 +3348,10 @@ export const chainCoingeckoIds = {
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/"
   },
-  "Gravity": {
+  "Gravity by Galxe": {
     geckoId: "g-token",
     symbol: "G",
-    cmcId: null,
+    cmcId: "32120",
     categories: ["EVM"],
     chainId: 1625,
     twitter: "GravityChain",
@@ -3292,7 +3365,7 @@ export const chainCoingeckoIds = {
     twitter: "Chainflip",
     url: "https://chainflip.io/"
   },
-  "IDEX": {
+  "XCHAIN": {
     geckoId: "aurora-dao",
     symbol: "IDEX",
     cmcId: null,
@@ -3301,8 +3374,8 @@ export const chainCoingeckoIds = {
       chain: "Arbitrum",
       types: ["L3"]
     },
-    twitter: "idexio",
-    url: "https://idex.io/"
+    twitter: "kumadotbid",
+    url: "https://kuma.bid/"
   },
   "Zircuit": {
     geckoId: "zircuit",
@@ -3311,7 +3384,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 48900,
     twitter: "ZircuitL2",
@@ -3324,10 +3398,12 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "PolynomialFi",
-    url: "https://www.polynomial.fi/"
+    url: "https://www.polynomial.fi/",
+    chainId: 8008
   },
   "Electroneum": {
     geckoId: "electroneum",
@@ -3341,11 +3417,12 @@ export const chainCoingeckoIds = {
   "Lisk": {
     geckoId: "lisk",
     symbol: "LSK",
-    cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    cmcId: "1214",
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     url: "https://lisk.com/",
     twitter: "LiskHQ",
@@ -3365,7 +3442,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "BSC",
       types: ["L2", "gas"]
@@ -3378,114 +3455,1136 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup","Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     url: "https://shape.network/",
     twitter: "Shape_L2",
     chainId: 360
   },
+  "Fuel Ignition": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Ethereum',
+    },
+    twitter: "fuel_network",
+    url: "https://fuel.network/",
+  },
+  "World Chain": {
+    geckoId: "worldcoin-wld",
+    symbol: "WLD",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Ethereum',
+    },
+    twitter: "world_chain_",
+    url: "https://world.org/",
+    chainId: 480
+  },
+  "ApeChain": {
+    geckoId: "apecoin",
+    symbol: "APE",
+    cmcId: "18876",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "apecoin",
+    url: "https://apechain.com/",
+    chainId: 33139
+  },
+  "Asset Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "xendfinance",
+    url: "https://xend.finance/",
+    chainId: 42420
+  },
+  "Morph": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Ethereum',
+    },
+    twitter: "MorphLayer",
+    url: "https://www.morphl2.io"
+  },
+  "Eclipse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "EclipseFND",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Celestia',
+    },
+    url: "https://www.eclipse.xyz",
+  },
+  "Unit Zero": {
+    geckoId: "unit0",
+    symbol: "UNIT0",
+    cmcId: "33785",
+    categories: ["EVM"],
+    twitter: "UnitsNetwork",
+    url: "https://units.network/",
+  },
+  "Shido": {
+    geckoId: "shido-2",
+    github: ['ShidoGlobal'],
+    symbol: "SHIDO",
+    cmcId: "28211",
+    categories: ["EVM", "Cosmos"],
+    twitter: "ShidoGlobal",
+    url: "https://shido.io/"
+  },
+  "Redbelly": {
+    geckoId: "redbelly-network-token",
+    symbol: "RBNT",
+    cmcId: null,
+    twitter: "RedbellyNetwork",
+    url: "https://www.redbelly.network",
+  },
+  "exSat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "exSatNetwork",
+    url: "https://exsat.network/",
+    github: ["exsat-network"],
+    chainId: 7200
+  },
+  "Taraxa": {
+    geckoId: "taraxa",
+    symbol: "TARA",
+    cmcId: "8715",
+    categories: ["EVM"],
+    twitter: "taraxa_project",
+    url: "https://taraxa.io/",
+    chainId: 841
+  },
+  "Corn": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "use_corn",
+    url: "https://usecorn.com/",
+    chainId: 21000000
+  },
+  "VinuChain": {
+    geckoId: "vinuchain",
+    symbol: "VC",
+    cmcId: "28580",
+    categories: ["EVM"],
+    twitter: "vinuchain",
+    url: "https://www.vinuchain.org/",
+    github: ["vinuchain"],
+    chainId: 207
+  },
+  "Sonic": {
+    geckoId: "sonic-3",
+    symbol: "S",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "SonicLabs",
+    url: "https://www.soniclabs.com",
+    chainId: 146
+  },
+  "Ink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Ethereum',
+    },
+    twitter: "inkonchain",
+    url: "https://inkonchain.com",
+    github: ["inkonchain"],
+    chainId: 57073
+  },
+  "DuckChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "Duck_Chain",
+    url: "https://duckchain.io/"
+  },
+  "Sophon": {
+    geckoId: "sophon",
+    symbol: "SOPH",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Avail',
+    },
+    twitter: "sophon",
+    url: "https://sophon.xyz/",
+    github: ["sophon-org"],
+    chainId: 50104
+  },
+  "QL1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "QomLOne",
+    url: "https://qom.one",
+  },
+  "Vana": {
+    geckoId: "vana",
+    symbol: "VANA",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "withvana",
+    url: "https://www.vana.org"
+  },
+  "Agoric": {
+    geckoId: "agoric",
+    symbol: "BLD",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "agoric",
+    url: "https://agoric.com",
+    github: ["agoric"],
+  },
+  "Swellchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 1923,
+    twitter: "swellnetworkio",
+    url: "https://www.swellnetwork.io/"
+  },
+  "Elys": {
+    geckoId: "elys-network",
+    symbol: "ELYS",
+    cmcId: "32959",
+    categories: ["Cosmos"],
+    twitter: "elys_network",
+    url: "https://elys.network/",
+    github: ["elys-network"],
+  },
+  "Odyssey": {
+    geckoId: "dione",
+    symbol: "DIONE",
+    cmcId: "21473",
+    categories: ["EVM"],
+    twitter: "DioneProtocol",
+    url: "https://www.dioneprotocol.com/",
+    github: ["DioneProtocol"],
+    chainId: 153153
+  },
+  "Kopi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "kopi_money",
+    url: "https://kopi.money",
+    github: ["kopi-money"],
+  },
+  "Pryzm": {
+    geckoId: "pryzm",
+    symbol: "PRYZM",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "Pryzm_Zone",
+    url: "https://app.pryzm.zone",
+    github: ["pryzm-finance"],
+  },
+  "CrossFi": {
+    geckoId: "crossfi-2",
+    symbol: "XFI",
+    cmcId: "26202",
+    categories: ["EVM", "Cosmos"],
+    twitter: "crossfichain",
+    url: "https://crossfi.org/",
+    chainId: 4158
+  },
+  "Waterfall": {
+    geckoId: "water-3",
+    symbol: "WATER",
+    cmcId: "32282",
+    categories: ["EVM"],
+    twitter: "waterfall_dag",
+    url: "https://waterfall.network/",
+    chainId: 181
+  },
+  "Mantra": {
+    geckoId: "mantra-dao",
+    symbol: "OM",
+    cmcId: "6536",
+    categories: ["Cosmos"],
+    twitter: "MANTRA_Chain",
+    url: "https://www.mantrachain.io/",
+  },
+  "Verus": {
+    geckoId: "verus-coin",
+    symbol: "VRSC",
+    cmcId: "5049",
+    twitter: "VerusCoin",
+    url: "https://verus.io/",
+    github: ["VerusCoin"],
+  },
+  "Soneium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 1868,
+    twitter: "soneium",
+    url: "https://soneium.org"
+  },
+  "Plume (Deprecated)": {
+    geckoId: null,
+    symbol: "PLUME",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    github: ["plumenetwork"],
+    url: "https://plume.org/",
+    chainId: 98865,
+  },
+  "EDU Chain": {
+    geckoId: "edu-coin",
+    symbol: "EDU",
+    cmcId: "24613",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "opencampus_xyz",
+    url: "https://www.opencampus.xyz/",
+    chainId: 41923,
+  },
+  "Fluence": {
+    geckoId: "fluence-2",
+    symbol: "FLT",
+    cmcId: "30097",
+    categories: ["EVM"],
+    twitter: "fluence_project",
+    url: "https://www.fluence.network",
+    github: ["fluencelabs"],
+    chainId: 9999999,
+  },
+  "Swan": {
+    geckoId: "swan-chain",
+    symbol: "SWAN",
+    cmcId: null,
+    categories: ["EVM", "Rollup",],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    twitter: "swan_chain",
+    url: "https://swanchain.io/",
+    github: ["swanchain"],
+    chainId: 254,
+  },
+  "Superposition": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "Superpositionso",
+    url: "https://superposition.so",
+    chainId: 55244
+  },
+  "Artela": {
+    geckoId: "artela-network",
+    symbol: "ART",
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    twitter: "Artela_Network",
+    url: "https://artela.network/",
+    chainId: 11820
+  },
+  "Redstone": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "redstonexyz",
+    url: "https://redstone.xyz/",
+    chainId: 690
+  },
+  "Abstract": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    twitter: "AbstractChain",
+    url: "https://www.abs.xyz/",
+    chainId: 2741
+  },
+  "Zero Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    twitter: "zerodotnetwork",
+    url: "https://zero.network/",
+    chainId: 543210
+  },
+  "Parex": {
+    geckoId: "parex",
+    symbol: "PRX",
+    cmcId: "18094",
+    categories: ["EVM"],
+    twitter: "zerodotnetwork",
+    url: "https://parex.network/",
+    chainId: 322202
+  },
+  "SX Rollup": {
+    geckoId: "sx-network-2",
+    symbol: "SX",
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SX_Bet",
+    url: "https://sx.bet"
+  },
+  "Penumbra": {
+    geckoId: "penumbra",
+    symbol: "UM",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "penumbrazone",
+    url: "https://penumbra.zone/",
+  },
+  "Berachain": {
+    geckoId: "berachain-bera",
+    symbol: "BERA",
+    cmcId: "24647",
+    categories: ["EVM"],
+    twitter: "berachain",
+    url: "https://www.berachain.com/",
+    chainId: 80094
+  },
+  "Stratis": {
+    geckoId: "stratis",
+    symbol: "STRAX",
+    cmcId: "30168",
+    categories: ["EVM"],
+    twitter: "stratisplatform",
+    url: "https://www.stratisplatform.com/",
+    github: ["stratisproject"],
+    chainId: 105105
+  },
+  "Silicon zkEVM": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 2355,
+    twitter: "0xSilicon",
+    url: "https://silicon.network",
+  },
+  "Unichain": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 130,
+    twitter: "unichain",
+    url: "https://www.unichain.org",
+  }, 
+  "Story": {
+    geckoId: "story-2",
+    symbol: "IP",
+    cmcId: "35626",
+    categories: ["EVM"],
+    chainId: 1514,
+    twitter: "StoryProtocol",
+    url: "https://www.story.foundation/",
+  }, 
+  "Lumia": {
+    geckoId: "lumia",
+    symbol: "LUMIA",
+    cmcId: "33439",
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    chainId: 994873017,
+    twitter: "BuildOnLumia",
+    url: "https://lumia.org/",
+  }, 
+  "Form Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2","gas"],
+    },
+    chainId: 478,
+    twitter: "0xForm",
+    url: "https://form.network/",
+  }, 
+  "HyperEVM": {
+    geckoId: null,
+    symbol: "HYPE",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 999,
+    twitter: "HyperliquidX",
+    url: "https://hyperfoundation.org/",
+  }, 
+  "Hemi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    chainId: 43111,
+    twitter: "hemi_xyz",
+    url: "https://hemi.xyz",
+  }, 
+  "Saga": {
+    geckoId: "saga-2",
+    symbol: "SAGA",
+    cmcId: "30372",
+    categories: ["EVM", "Cosmos"],
+    chainId: 5464,
+    twitter: "Sagaxyz__",
+    url: "https://www.saga.xyz/",
+  }, 
+  "Movement": {
+    geckoId: "movement",
+    symbol: "MOVE",
+    cmcId: "32452",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    chainId: 3073,
+    twitter: "movementlabsxyz",
+    url: "https://movementlabs.xyz/",
+  }, 
+  "Qubic": {
+    geckoId: "qubic-network",
+    symbol: "QUBIC",
+    cmcId: "29169",
+    twitter: "_Qubic_",
+    url: "https://qubic.org/",
+    github: ["qubic"]
+  }, 
+  "WINR": {
+    geckoId: "winr-protocol",
+    symbol: "WINR",
+    cmcId: "23681",
+    twitter: "WINRProtocol",
+    url: "https://link3.to/winrprotocol",
+    chainId: 777777
+  }, 
+  "MTT Network": {
+    geckoId: null,
+    symbol: "MTT",
+    cmcId: null,
+    twitter: "MTT_NETWORK",
+    url: "https://www.mtt.network/",
+    chainId: 6880
+  }, 
+  "HashKey Chain": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: "hashkey-ecopoints",
+    symbol: "HSK",
+    cmcId: "33849",
+    twitter: "HashKeyHSK",
+    url: "https://hsk.xyz/",
+    chainId: 177
+  }, 
+  "Mind Network": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: "mind-network",
+    symbol: "FHE",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "arbitrum",
+      types: ["L3"]
+    },
+    chainId: 228,
+    twitter: "mindnetwork_xyz",
+    github: ["mind-network"],
+    url: "https://www.mindnetwork.xyz",
+  },
+  "AO": {
+    geckoId: "ao-computer",
+    symbol: "AO",
+    cmcId: "35386",
+    categories: [],
+    twitter: "aoTheComputer",
+    github: ["permaweb"],
+    url: "https://ao.arweave.net/",
+  },
+  "Supra": {
+    geckoId: "supra",
+    symbol: "SUPRA",
+    cmcId: "34240",
+    categories: ["EVM"],
+    twitter: "SUPRA_Labs",
+    url: "https://supra.com/",
+  }, 
+  "Prom": {
+    geckoId: "prometeus",
+    symbol: "PROM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "prom_io",
+    url: "https://prom.io/",
+    chainId: 277
+  },
+  "Goat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "GOATRollup",
+    url: "https://www.goat.network/",
+    chainId: 2345
+  }, 
+  "Plume Mainnet": {
+    geckoId: "plume",
+    symbol: "PLUME",
+    cmcId: "35364",
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    github: ["plumenetwork"],
+    url: "https://plume.org/",
+    chainId: 98866
+  }, 
+  "Perennial": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "perenniallabs",
+    url: "https://perennial.finance/",
+    chainId: 1424
+  },
+  "Peaq": {
+    geckoId: "peaq-2",
+    symbol: "PEAQ",
+    cmcId: "14588",
+    categories: ["EVM"],
+    twitter: "peaq",
+    url: "https://www.peaq.xyz/",
+    chainId: 3338
+  },
+  "Moonchain": {
+    geckoId: "mxc",
+    symbol: "MXC",
+    cmcId: "3628",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    twitter: "Moonchain_com",
+    url: "https://www.moonchain.com/",
+    chainId: 18686
+  }, 
+  "Babylon Genesis": {
+    geckoId: "babylon",
+    symbol: "BABY",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "babylonlabs_io",
+    github: ["babylonlabs-io"],
+    url: "https://babylonlabs.io"
+  },
+  "Haven1": {
+    geckoId: "haven1",
+    symbol: "H1",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 8811,
+    twitter: "Haven1official",
+    url: "https://haven1.org/",
+  }, 
+  "Aleph Zero EVM": {
+    geckoId: "aleph-zero",
+    symbol: "AZERO",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 41455,
+    twitter: "Aleph__Zero",
+    url: "https://alephzero.org",
+  }, 
+  "Flame": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Rollup"],
+    chainId: 253368190,
+    parent: {
+      chain: "Celestia",
+      types: ["L2", "gas"],
+    },
+    twitter: "Flame_evm",
+    url: "https://www.astria.org/flame"
+  },
+  "Basecamp": {
+    geckoId: null,
+    symbol: "CAMP",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 123420001114,
+    twitter: "campnetworkxyz",
+    url: "https://www.campnetwork.xyz/",
+  }, 
+  "Initia": {
+    geckoId: "initia",
+    symbol: "INIT",
+    cmcId: "33120",
+    categories: null,
+    twitter: "initia",
+    url: "https://initia.xyz", 
+    github: ["initia-labs"],
+  },
+  "OpenGPU": {
+    geckoId: "open-gpu",
+    symbol: "OGPU",
+    cmcId: "30751",
+    categories: ["EVM"],
+    twitter: "OpenGPUfndn",
+    url: "https://opengpu.network/",
+  }, 
+  "Echelon Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "EchelonMarket",
+    url: "https://echelon.market/",
+  }, 
+  "Superseed": {
+    geckoId: "superseed",
+    symbol: "SUPR",
+    cmcId: "36436",
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 5330,
+    github: ['superseed-xyz'],
+    twitter: "SuperseedXYZ",
+    url: "https://www.superseed.xyz/"
+  },
+  "Xphere": {
+    geckoId: "xphere",
+    symbol: "XP",
+    cmcId: "36056",
+    categories: ["EVM"],
+    chainId: 20250217,
+    github: ['xpherechain'],
+    twitter: "Xphere_official",
+    url: "https://x-phere.com/"
+  },
+  "Lens": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 232,
+    github: ['lens-protocol'],
+    twitter: "LC",
+    url: "https://www.skatechain.org/"
+  },
+  "Skate": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 5050,
+    twitter: "skate_chain",
+    url: "https://lens.xyz/"
+  },
+  "Milkyway": {
+    geckoId: "milkyway-2",
+    symbol: "MILK",
+    cmcId: "20874",
+    categories: ["Cosmos"],
+    twitter: "milky_way_zone",
+    url: "https://www.milkyway.zone/"
+  },
+  "MilkyWay Rollup": {
+    geckoId: null,
+    symbol: "MILK",
+    cmcId: null,
+    twitter: "milky_way_zone",
+    url: "https://www.milkyway.zone/"
+  },
+  "Namada": {
+    geckoId: "namada",
+    symbol: "NAM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "namada",
+    url: "https://namada.net/",
+    github: ["anoma"],
+  },
+  "Civitia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://civitia.org/",
+    twitter: "civitiaorg",
+  },
+  "Titan": {
+    geckoId: null,
+    symbol: "TKX",
+    cmcId: null,
+    categories: ["EVM"],
+    url: "https://titanlab.io/home",
+    twitter: "TitanMainnet",
+    chainId: 18888
+  }
 } as unknown as ChainCoinGekcoIds
-
-chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
-chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
-chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
-chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
-chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
-chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
-chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
-chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
-chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
-chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
-chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Protocol"]
-chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
-chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
-chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
-chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
-chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
-chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
-chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
-chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
-chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
-chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
-chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
-  switch (chain) {
-    case "Binance":
-      return "BSC"
-    case "Kucoin":
-      return "KCC"
-    case "OKExChain":
-      return "OKTChain"
-    case "xDai":
-      return "Gnosis"
-    case "Cosmos":
-      return "CosmosHub"
-    case "Terra":
-      return "Terra Classic"
-    case "Nova":
-      return "Nova Network"
-    case "godwoken_v1":
-      return "GodwokenV1"
-    case "arbitrum_nova":
-      return "Arbitrum Nova"
-    case "Milkomeda":
-      return "Milkomeda C1"
-    case "Elrond":
-      return "MultiversX"
-    case "RSK":
-      return "Rootstock"
-    case "Orai":
-      return "Oraichain"
-    case "zkSync":
-      return "ZKsync Lite"
-    case "polygon_zkevm":
-      return "Polygon zkEVM"
-    case "eos_evm":
-      return "EOS EVM"
-    case "Map":
-      return "MAP Protocol"
-    case "Pulse":
-      return "PulseChain"
-    case "Op_Bnb":
-        return "opBNB"
-    case "WEMIX":
-      return "WEMIX3.0"
-    case "Umee":
-      return "UX"
-    case "TomoChain":
-      return "Viction"
-    case "Sapphire":
-      return "Oasis Sapphire"
-    case "Oasis":
-      return "Oasis Emerald"
-    case "zklink":
-      return "zkLink Nova"
-    case "Bitkub":
-      return "Bitkub Chain"
-    case "HydraDX":
-      return "Hydration"
-    case "Ripple":
-      return "XRPL"
-    case "Persistence":
-      return "Persistence One"
-    case "Klaytn":
-      return "Kaia"
-    case "zkSync Era":
-      return "ZKsync Era"
-    case "zkSync Lite":
-      return "ZKsync Lite"
-    case "Lyra Chain":
-      return "Derive Chain"
-    default:
-      return chain
-  }
+  return chainOldLabelToNewLabelMap[chain] || chain
 }
+
+// if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
+const chainLabelMap = {
+  "zklink": "zkLink",
+  "bitkub": "Bitkub",
+  "lyra": "Lyra Chain",
+  "fuel": "Fuel",
+  "op_bnb": "Op_Bnb",
+  "hydradx": "HydraDX",
+  "orai": "Orai",
+  "map": "Map",
+  "umee": "Umee",
+  "wemix": "WEMIX",
+  "persistence": "Persistence",
+  "ripple": "Ripple",
+  "milkomeda": "Milkomeda",
+  "zksync": "zkSync",
+  "era": "zkSync Era",
+  "tomochain": "TomoChain",
+  "elrond": "Elrond",
+  "rsk": "RSK",
+  "pulse": "Pulse",
+  "sapphire": "Sapphire",
+  "oasis": "Oasis",
+  "klaytn": "Klaytn",
+  "kcc": "Kucoin",
+  "okexchain": "OKExChain",
+  "xdai": "xDai",
+  "cosmos": "Cosmos",
+  "terra": "Terra",
+  "bsc": "Binance",
+  "wan": "Wanchain",
+  "nova": "Nova Network",
+  "godwoken_v1": "GodwokenV1",
+  "avax": "Avalanche",
+  "xdaiarb": "XdaiArb",
+  "defichain": "DefiChain",
+  "polynetwork": "PolyNetwork",
+  "eos": "EOS",
+  "neo": "NEO",
+  "iotex": "IoTeX",
+  "thundercore": "ThunderCore",
+  "hpb": "HPB",
+  "energyweb": "EnergyWeb",
+  "gochain": "GoChain",
+  "smartbch": "smartBCH",
+  "zyx": "ZYX",
+  "vechain": "VeChain",
+  "xdc": "XDC",
+  "ethereumclassic": "EthereumClassic",
+  "bifrost network": "Bifrost Network",
+  "bevm": "BEVM",
+  "horizen eon": "Horizen EON",
+  "csc": "CSC",
+  "skale": "SKALE",
+  "dfk": "DFK",
+  "clv": "CLV",
+  "rei": "REI",
+  "reichain": "REIchain",
+  "ontology_evm": "OntologyEVM",
+  "sx": "SXnetwork",
+  "multivac": "MultiVAC",
+  "ore": "ORE",
+  "lbry": "LBRY",
+  "rvn": "Ravencoin",
+  "icp": "ICP",
+  "arbitrum_nova": "Arbitrum Nova",
+  "ethpow": "EthereumPoW",
+  "functionx": "FunctionX",
+  "milkomeda_a1": "Milkomeda A1",
+  "muuchain": "MUUCHAIN",
+  "ton": "TON",
+  "boba_avax": "Boba_Avax",
+  "boba_bnb": "Boba_Bnb",
+  "enuls": "ENULS",
+  "europa": "Europa",
+  "core": "CORE",
+  "rpg": "Rangers",
+  //"era": "ZKsync Era",
+  "bfc": "Bifrost Network",
+  "chainx": "BEVM",
+  "ftn": "Bahamut",
+  "polygon_zkevm": "Polygon zkEVM",
+  "eos_evm": "EOS EVM",
+  "oas": "Oasys",
+  "xpla": "XPLA",
+  "neon_evm": "Neon",
+  "gravitybridge": "GravityBridge",
+  "aura": "Aura Network",
+  "mvc": "MVC",
+  "alv": "ALV",
+  "dsc": "DSC",
+  "pg": "Pego",
+  "shimmer_evm": "ShimmerEVM",
+  "nos": "NOS",
+  "renec": "RENEC",
+  "radixdlt": "Radix",
+  "ethf": "ETHF",
+  "meer": "MEER",
+  "elsm": "Elysium",
+  "eon": "Horizen EON",
+  "chz": "Chiliz",
+  "lightlink_phoenix": "LightLink",
+  "pgn": "PGN",
+  "dash": "Dash",
+  "fsc": "FSC",
+  "new": "Newton",
+  "jbc": "JBC",
+  "cmp": "CMP",
+  "airdao": "AirDAO",
+  "dydx": "dYdX",
+  "btn": "Bitnet",
+  "zeta": "ZetaChain",
+  "area": "Areon Network",
+  "defiverse": "DeFiVerse",
+  "manta_atlantic": "Manta Atlantic",
+  "astrzk": "Astar zkEVM",
+  "inevm": "inEVM",
+  "q": "Q Protocol",
+  "bsquared": "BSquared",
+  "imx": "Immutable zkEVM",
+  "defichain_evm": "DeFiChain EVM",
+  "rss3_vsl": "RSS3",
+  "islm": "HAQQ",
+  "svm": "SatoshiVM",
+  "karak": "K2",
+  "xlayer": "X Layer",
+  "lac": "LaChain Network",
+  "bob": "BOB",
+  "btr": "Bitlayer",
+  "ace": "Endurance",
+  "dfs": "DFS Network",
+  "cyeth": "Cyber",
+  "real": "re.al",
+  "iotaevm": "IOTA EVM",
+  "ailayer": "AILayer",
+  "ox_chain": "OXFUN",
+  "etlk": "Etherlink",
+  "reya": "Reya Network",
+  "cronos_zkevm": "Cronos zkEVM",
+  "band": "BandChain",
+  "immutablex": "Immutable X",
+  "neox": "Neo X Mainnet",
+  "idex": "IDEX",
+  "etn": "Electroneum",
+  "wc": "World Chain",
+  "apechain": "ApeChain",
+  "assetchain": "Asset Chain",
+  "unit0": "UNIT0",
+  "rbn": "Redbelly",
+  "xsat": "exSat",
+  "tara": "Taraxa",
+  "vinu": "VinuChain",
+  "bouncebit": "BounceBit",
+  "aelf": "aelf",
+  "hela": "HeLa",
+  "duckchain": "DuckChain",
+  "qom": "QL1",
+  "crossfi": "CrossFi",
+  "water": "Waterfall",
+  "occ": "EDU Chain",
+  "optimism": "Optimism",
+  "spn": "Superposition",
+  "zero_network": "Zero Network",
+  "silicon_zk": "Silicon zkEVM",
+  "sty": "Story",
+  "formnetwork": "Form Network",
+  "hyper_evm": "HyperEVM",
+  "hyperliquid": "Hyperliquid L1",
+  "winr": "WINR",
+  "mtt_network": "MTT Network",
+  "hsk": "HashKey Chain",
+  "fhe": "Mind Network",
+  "ao": "AO",
+  "plume_mainnet": "Plume Mainnet",
+  "mxczkevm": "Moonchain",
+  "babylon": "Babylon Genesis",
+  "lukso": "LUKSO",
+  "aleph_zero": "Aleph Zero EVM",
+  "gravity": "Gravity",
+  "ogpu": "OpenGPU",
+  "echelon_initia": "Echelon Chain",
+  "sseed": "Superseed",
+  "xp": "Xphere",
+  "milkyway_rollup": "MilkyWay Rollup",
+  "iota": "IOTA"
+} as { [key: string]: string }
+
+// When we decide to change the display name of a chain, we add the mapping for the new name here
+const newChainLabelMap = {
+  "zklink": "zkLink Nova",
+  "bitkub": "KUB",
+  "lyra": "Derive Chain",
+  "fuel": "Fuel Ignition",
+  "op_bnb": "opBNB",
+  "hydradx": "Hydration",
+  "orai": "Oraichain",
+  "map": "MAP Protocol",
+  "umee": "UX",
+  "wemix": "WEMIX3.0",
+  "persistence": "Persistence One",
+  "ripple": "XRPL",
+  "milkomeda": "Milkomeda C1",
+  "zksync": "ZKsync Lite",
+  "era": "ZKsync Era",
+  "tomochain": "Viction",
+  "elrond": "MultiversX",
+  "rsk": "Rootstock",
+  "pulse": "PulseChain",
+  "sapphire": "Oasis Sapphire",
+  "oasis": "Oasis Emerald",
+  "klaytn": "Kaia",
+  "kcc": "KCC",
+  "okexchain": "OKTChain",
+  "xdai": "Gnosis",
+  "cosmos": "CosmosHub",
+  "terra": "Terra Classic",
+  "bsc": "BSC",
+  "europa": "SKALE Europa",
+  "occ": "EDU Chain",
+  "optimism": "OP Mainnet",
+  "sx": "SX Network",
+  "sxr": "SX Rollup",
+  "new": "AB",
+  "formnetwork": "Form Network",
+  "plume": "Plume (Deprecated)",
+  "lightlink_phoenix": "LightLink",
+  "move": "Movement", 
+  "wax": "Wax",
+  "unit0": "Unit Zero",
+  "eos": "Vaulta",
+  "gravity": "Gravity by Galxe",
+  "idex": "XCHAIN"
+} as { [key: string]: string }
+
+const allChainLabelMap = {
+  ...chainLabelMap,
+  ...newChainLabelMap,
+} as { [key: string]: string }
+
+// mapping from old chain name to new chain name
+const chainOldLabelToNewLabelMap = {} as { [key: string]: string }
+
+Object.entries(newChainLabelMap)
+  .filter(([key,]) => chainLabelMap[key])
+  .forEach(([key, newChainLabel]) => {
+    const chainLabel = chainLabelMap[key] as string
+    if (!chainLabel) return;
+    chainCoingeckoIds[chainLabel] = chainCoingeckoIds[newChainLabel]
+    chainOldLabelToNewLabelMap[chainLabel] = newChainLabel
+  })
+
+addNormalizedChainReplacements(chainLabelMap)
+addNormalizedChainReplacements(newChainLabelMap)
+
 
 export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
   if (extraSections.includes(normalizedChain)) {
@@ -3494,634 +4593,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
   if (normalizedChain.includes('-')) {
     return normalizedChain.split('-').map(chain => getChainDisplayName(chain, useNewChainNames)).join('-')
   }
-  switch (normalizedChain) {
-    case "bsc":
-      return useNewChainNames ? "BSC" : "Binance"
-    case "wan":
-      return "Wanchain"
-    case "kcc":
-      return useNewChainNames ? "KCC" : "Kucoin"
-    case "okexchain":
-      return useNewChainNames ? "OKTChain" : "OKExChain"
-    case "xdai":
-      return useNewChainNames ? "Gnosis" : "xDai"
-    case "cosmos":
-      return useNewChainNames ? "CosmosHub" : "Cosmos"
-    case "terra":
-      return useNewChainNames ? "Terra Classic" : "Terra"
-    case "nova":
-      return useNewChainNames ? "Nova Network" : "Nova Network"
-    case "godwoken_v1":
-      return useNewChainNames ? "GodwokenV1" : "GodwokenV1"
-    case "elrond":
-      return useNewChainNames ? "MultiversX" : "Elrond"
-    case "rsk":
-      return useNewChainNames ? "Rootstock" : "RSK"
-    case "pulse":
-      return useNewChainNames ? "PulseChain" : "Pulse"
-    case "sapphire":
-      return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
-    case "oasis":
-      return useNewChainNames ? "Oasis Emerald" : "Oasis"
-    case "klaytn":
-      return useNewChainNames ? "Kaia" : "Klaytn"
-    case "avax":
-      return "Avalanche"
-    case "xdaiarb":
-      return "XdaiArb"
-    case "defichain":
-      return "DefiChain"
-    case "stacks":
-      return "Stacks"
-    case "polynetwork":
-      return "PolyNetwork"
-    case "eos":
-      return "EOS"
-    case "neo":
-      return "NEO"
-    case "iotex":
-      return "IoTeX"
-    case "thundercore":
-      return "ThunderCore"
-    case "telos":
-      return "Telos"
-    case "hpb":
-      return "HPB"
-    case "energyweb":
-      return "EnergyWeb"
-    case "gochain":
-      return "GoChain"
-    case "tomochain":
-      return useNewChainNames ? "Viction" : "TomoChain"
-    case "fusion":
-      return "Fusion"
-    case "kardia":
-      return "Kardia"
-    case "fuse":
-      return "Fuse"
-    case "sora":
-      return "Sora"
-    case "smartbch":
-      return "smartBCH"
-    case "elastos":
-      return "Elastos"
-    case "hoo":
-      return "Hoo"
-    case "cronos":
-      return "Cronos"
-    case "polis":
-      return "Polis"
-    case "zyx":
-      return "ZYX"
-    case "stellar":
-      return "Stellar"
-    case "shiden":
-      return "Shiden"
-    case "metis":
-      return "Metis"
-    case "ubiq":
-      return "Ubiq"
-    case "mixin":
-      return "Mixin"
-    case "everscale":
-      return "Everscale"
-    case "vechain":
-      return "VeChain"
-    case "xdc":
-      return "XDC"
-    case "velas":
-      return "Velas"
-    case "ethereumclassic":
-      return "EthereumClassic"
-    case "zksync":
-      return useNewChainNames ? "ZKsync Lite" : "zkSync"
-    case "zksync era":
-      return useNewChainNames ? "ZKsync Era" : "zkSync Era"
-    case "bifrost network":
-      return "Bifrost Network"
-    case "bevm":
-      return "BEVM"
-    case "horizen eon":
-      return "Horizen EON"
-    case "godwoken":
-      return "Godwoken"
-    case "callisto":
-      return "Callisto"
-    case "csc":
-      return "CSC"
-    case "ergo":
-      return "Ergo"
-    case "parallel":
-      return "Parallel"
-    case "theta":
-      return "Theta"
-    case "meter":
-      return "Meter"
-    case "syscoin":
-      return "Syscoin"
-    case "moonbeam":
-      return "Moonbeam"
-    case "astar":
-      return "Astar"
-    case "curio":
-      return "Curio"
-    case "skale":
-      return "SKALE"
-    case "bittorrent":
-      return "Bittorrent"
-    case "genshiro":
-      return "Genshiro"
-    case "wax":
-      return "Wax"
-    case "evmos":
-      return "Evmos"
-    case "proton":
-      return "Proton"
-    case "kadena":
-      return "Kadena"
-    case "vite":
-      return "Vite"
-    case "milkomeda":
-      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
-    case "dfk":
-      return "DFK"
-    case "clv":
-      return "CLV"
-    case "rei":
-      return "REI"
-    case "crab":
-      return "Crab"
-    case "hedera":
-      return "Hedera"
-    case "findora":
-      return "Findora"
-    case "hydra":
-      return "Hydra"
-    case "bitgert":
-      return "Bitgert"
-    case "reef":
-      return "Reef"
-    case "candle":
-      return "Candle"
-    case "bifrost":
-      return "Bifrost"
-    case "stafi":
-      return "Stafi"
-    case "lachain":
-      return "Lachain"
-    case "coti":
-      return "Coti"
-    case "bitcoincash":
-      return "Bitcoincash"
-    case "litcoin":
-      return "Litecoin"
-    case "doge":
-      return "Doge"
-    case "obyte":
-      return "Obyte"
-    case "reichain":
-      return "REIchain"
-    case "ontology_evm":
-      return "OntologyEVM"
-    case "carbon":
-      return "Carbon"
-    case "neo3":
-      return "Neo3"
-    case "palette":
-      return "Pallete"
-    case "bytomsidechain":
-      return "Bytomsidechain"
-    case "starcoin":
-      return "Starcoin"
-    case "terra2":
-      return "Terra2"
-    case "sx":
-      return "SXnetwork"
-    case "echelon":
-      return "Echelon"
-    case "multivac":
-      return "MultiVAC"
-    case "ore":
-      return "ORE"
-    case "lbry":
-      return "LBRY"
-    case "rvn":
-      return "Ravencoin"
-    case "acala":
-      return "Acala"
-    case "icp":
-      return "ICP"
-    case "kintsugi":
-      return "Kintsugi"
-    case "filecoin":
-      return "Filecoin"
-    case "flow":
-      return "Flow"
-    case "kujira":
-      return "Kujira"
-    case "heiko":
-      return "Heiko"
-    case "posichain":
-      return "Posichain"
-    case "dogechain":
-      return "Dogechain"
-    case "canto":
-      return "Canto"
-    case "ripple":
-      return useNewChainNames ? "XRPL" : "Ripple"
-    case "godwokenv1":
-      return "GodwokenV1"
-    case "arbitrum_nova":
-      return "Arbitrum Nova"
-    case "ultron":
-      return "Ultron"
-    case "interlay":
-      return "Interlay"
-    case "juno":
-      return "Juno"
-    case "tombchain":
-      return "Tombchain"
-    case "crescent":
-      return "Crescent"
-    case "vision":
-      return "Vision"
-    case "ethpow":
-      return "EthereumPoW"
-    case "cube":
-      return "Cube"
-    case "functionx":
-      return "FunctionX"
-    case "aptos":
-      return "Aptos"
-    case "kekchain":
-      return "Kekchain"
-    case "milkomeda_a1":
-      return "Milkomeda A1"
-    case "stride":
-      return "Stride"
-    case "muuchain":
-      return "MUUCHAIN"
-    case "injective":
-      return "Injective"
-    case "step":
-      return "Step"
-    case "ton":
-      return "TON"
-    case "starknet":
-      return "Starknet"
-    case "dexit":
-      return "Dexit"
-    case "empire":
-      return "Empire"
-    case "boba_avax":
-      return "Boba_Avax"
-    case "boba_bnb":
-      return "Boba_Bnb"
-    case "comdex":
-      return "Comdex"
-    case "flare":
-      return "Flare"
-    case "tlchain":
-      return "Tlchain"
-    case "zeniq":
-      return "Zeniq"
-    case "omax":
-      return "Omax"
-    case "bitindi":
-      return "Bitindi"
-    case "map":
-      return useNewChainNames ? "MAP Protocol" : "Map"
-    case "stargaze":
-      return "Stargaze"
-    case "libre":
-      return "Libre"
-    case "umee":
-      return useNewChainNames ? "UX" : "Umee"
-    case "wemix":
-      return useNewChainNames ? "WEMIX3.0" : "WEMIX"
-    case "persistence":
-      return useNewChainNames ? "Persistence One" : "Persistence"
-    case "enuls":
-      return "ENULS"
-    case "orai":
-      return useNewChainNames ? "Oraichain" : "Orai"
-    case "goerli":
-      return "Goerli"
-    case "europa":
-      return "SKALE Europa"
-    case "core":
-      return "CORE"
-    case "rpg":
-      return "Rangers"
-    case "lung":
-      return "Lung"
-    case "loop":
-      return "Loop"
-    case "bone":
-      return "Bone"
-    case "era":
-      return "ZKsync Era"
-    case "bfc":
-      return "Bifrost Network"
-    case "chainx":
-      return "BEVM"
-    case "ftn":
-      return "Bahamut"
-    case "polygon_zkevm":
-      return "Polygon zkEVM"
-    case "meta":
-      return "Meta"
-    case "equilibrium":
-      return "Equilibrium"
-    case "regen":
-      return "Regen"
-    case "eos_evm":
-      return "EOS EVM"
-    case "quicksilver":
-      return "Quicksilver"
-    case "oas":
-      return "Oasys"
-    case "migaloo":
-      return "Migaloo"
-    case "sui":
-      return "Sui"
-    case "grove":
-      return "Grove"
-    case "xpla":
-      return "XPLA"
-    case "neutron":
-      return "Neutron"
-    case "onus":
-      return "Onus"
-    case "pokt":
-      return "Pokt"
-    case "quasar":
-      return "Quasar"
-    case "concordium":
-      return "Concordium"
-    case "chihuahua":
-      return "Chihuahua"
-    case "rollux":
-      return "Rollux"
-    case "tenet":
-      return "Tenet"
-    case "mantle":
-      return "Mantle"
-    case "neon_evm":
-      return "Neon"
-    case "base":
-      return "Base"
-    case "linea":
-      return "Linea"
-    case "gravitybridge":
-      return "GravityBridge"
-    case "aura":
-      return "Aura Network"
-    case "sei":
-      return "Sei"
-    case "op_bnb":
-      return useNewChainNames ? "opBNB" : "op_bnb"
-    case "archway":
-      return "Archway"
-    case "hydradx":
-      return useNewChainNames ? "Hydration" : "HydraDX"
-    case "shibarium":
-      return "Shibarium"
-    case "mvc":
-      return "MVC"
-    case "alv":
-      return "ALV"
-    case "dsc":
-      return "DSC"
-    case "darwinia":
-      return "Darwinia"
-    case "pg":
-      return "Pego"
-    case "kroma":
-      return "Kroma"
-    case "manta":
-      return "Manta"
-    case "shimmer_evm":
-      return "ShimmerEVM"
-    case "beam":
-      return "Beam"
-    case "nos":
-      return "NOS"
-    case "scroll":
-      return "Scroll"
-    case "renec":
-      return "RENEC"
-    case "radixdlt":
-      return "Radix"
-    case "nolus":
-      return "Nolus"
-    case "ethf":
-      return "ETHF"
-    case "meer":
-      return "MEER"
-    case "elsm":
-      return "Elysium"
-    case "eon":
-      return "Horizen EON"
-    case "chz":
-      return "Chiliz"
-    case "lightlink_phoenix":
-      return "LightLink"
-    case "pgn":
-      return "PGN"
-    case "mayachain":
-      return "Mayachain"
-    case "dash":
-      return "Dash"
-    case "bostrom":
-      return "Bostrom"
-    case "alephium":
-      return "Alephium"
-    case "mode":
-      return "Mode"
-    case "fsc":
-      return "FSC"
-    case "new":
-      return "Newton"
-    case "jbc":
-      return "JBC"
-    case "sommelier":
-      return "Sommelier"
-    case "bahamut":
-      return "Bahamut"
-    case "zkfair":
-      return "Zkfair"
-    case "cmp":
-      return "CMP"
-    case "firechain":
-      return "Firechain"
-    case "airdao":
-      return "AirDAO"
-    case "dydx":
-      return "dYdX"
-    case "btn":
-      return "Bitnet"
-    case "bitnet":
-      return "Bitnet"
-    case "zeta":
-      return "ZetaChain"
-    case "celestia":
-      return "Celestia"
-    case "fraxtal":
-      return "Fraxtal"
-    case "area":
-      return "Areon Network"
-    case "defiverse":
-      return "DeFiVerse"
-    case "manta_atlantic":
-      return "Manta Atlantic"
-    case "xai":
-      return "Xai"
-    case "merlin":
-      return "Merlin"
-    case "blast":
-      return "Blast"
-    case "bitrock":
-      return "Bitrock"
-    case "astrzk":
-      return "Astar zkEVM"
-    case "naka":
-      return "Naka"
-    case "inevm":
-      return "inEVM"
-    case "dymension":
-      return "Dymension"
-    case "q":
-      return "Q Protocol"
-      case "zklink":
-        return useNewChainNames ? "zkLink Nova" : "zkLink"
-    case "kinto":
-      return "Kinto"
-    case "imx":
-      return "Immutable zkEVM"
-    case "zora":
-      return "Zora"
-    case "defichain_evm":
-      return "DeFiChain EVM"
-    case "rss3_vsl":
-      return "RSS3"
-    case "bittensor":
-      return "Bittensor"
-    case "degen":
-      return "Degen"
-    case "islm":
-      return "HAQQ"
-    case "svm":
-      return "SatoshiVM"
-    case "venom":
-      return "Venom"
-    case "karak":
-      return "K2"
-    case "bitkub":
-      return useNewChainNames ? "Bitkub Chain" : "Bitkub"
-    case "ancient8":
-      return "Ancient8"
-    case "hyperliquid":
-      return "Hyperliquid"
-    case "nibiru":
-      return "Nibiru"
-    case "bsquared":
-      return "BSquared"
-    case "lyra":
-      return useNewChainNames ? "Derive Chain" : "Lyra Chain"
-    case "planq":
-      return "Planq"
-    case "xlayer":
-      return "X Layer"
-    case "lac":
-      return "LaChain Network"
-    case "bob":
-      return "BOB"
-    case "btr":
-      return "Bitlayer"
-    case "ace":
-      return "Endurance"
-    case "dfs":
-      return "DFS Network"
-    case "cyeth":
-      return "Cyber"
-    case "bouncebit":
-        return "BounceBit"
-    case "real":
-        return "re.al"
-    case "taiko":
-        return "Taiko"
-    case "genesys":
-      return "Genesys"
-    case "kava":
-      return "Kava"
-    case "polkadex":
-      return "Polkadex"
-    case "aelf":
-      return "aelf"
-    case "lukso":
-      return "Lukso"
-    case "joltify":
-      return "Joltify"
-    case "iotaevm":
-      return "IOTA EVM"
-    case "ham":
-      return "Ham"
-    case "sanko":
-      return "Sanko"
-    case "rari":
-      return "Rari"
-    case "massa":
-      return "Massa"
-    case "ailayer":
-      return "AILayer"
-    case "mint":
-      return "Mint"
-    case "ox_chain":
-      return "OXFUN"
-    case "etlk":
-      return "Etherlink"
-    case "noble":
-      return "Noble"
-    case "aeternity":
-      return "Aeternity"
-    case "saakuru":
-      return "Saakuru"
-    case "reya":
-      return "Reya Network"
-    case "cronos_zkevm":
-      return "Cronos zkEVM"
-    case "dexalot":
-      return "Dexalot"
-    case "band":
-      return "BandChain"
-    case "immutablex":
-      return "Immutable X"
-    case "neox":
-      return "Neo X Mainnet"
-    case "gravity":
-      return "Gravity"
-    case "chainflip":
-      return "Chainflip"
-    case "idex":
-      return "IDEX"
-    case "zircuit":
-      return "Zircuit"
-    case "polynomial":
-      return "Polynomial"
-    case "etn":
-      return "Electroneum"
-    case "lisk":
-      return "Lisk"
-    case "hela":
-      return "HeLa"
-    case "matchain":
-      return "Matchain"
-    case "shape":
-      return "Shape"
-    default:
-      return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
-  }
+  const label = useNewChainNames ? allChainLabelMap[normalizedChain] : chainLabelMap[normalizedChain]
+  if (label) return label
+  return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
 }
 
 export function getDisplayChain(chains: string[]) {
@@ -4141,3 +4615,8 @@ Object.entries(chainCoingeckoIds).forEach(([chain, obj]) => chainIdToNameMap[obj
 export function getChainNameFromId(id: string | number | undefined) {
   return chainIdToNameMap['' + id]
 }
+
+export const chainNameToIdMap: { [name: string]: string } = {}
+const chainNames = Object.keys(chainCoingeckoIds)
+chainNames.sort()
+chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))

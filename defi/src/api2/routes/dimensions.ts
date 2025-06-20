@@ -8,10 +8,10 @@ import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap 
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
-import { getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
+import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
-const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
+// const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
 
 function formatChartData(data: any = {}) {
   return Object.entries(data)
@@ -30,7 +30,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
   const rawDataType = req.query_parameters.dataType
   const rawCategory = req.query_parameters.category
-  const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
+  const category = (rawCategory === 'dexs' ? 'dexs' : rawCategory) as CATEGORIES
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")
@@ -70,7 +70,7 @@ export async function getOverviewProcess2({
   const { summaries, allChains, protocolSummaries = {} } = cacheData
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
-      chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+    chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
@@ -86,17 +86,19 @@ export async function getOverviewProcess2({
   }
 
   response.breakdown24h = null
+  response.breakdown30d = null
   response.chain = chain ?? null
   if (response.chain)
     response.chain = getDisplayChainNameCached(response.chain)
   response.allChains = allChains
 
   // TODO: missing average1y
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d',]
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'total7DaysAgo', 'total30DaysAgo', 'totalAllTime']
 
   responseKeys.forEach(key => {
     response[key] = summary[key]
   })
+  let protocolTotalAllTimeSum = 0
 
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
   response.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
@@ -104,8 +106,8 @@ export async function getOverviewProcess2({
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
-  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols', 'parentProtocol', 'slug',]
-  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'total14dto7d',]  // TODO: missing breakdown24h/fix it?
+  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols',]
+  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'breakdown30d', 'total14dto7d', 'total7DaysAgo', 'total30DaysAgo']  // TODO: missing breakdown24h/fix it?
 
   response.protocols = Object.entries(protocolSummaries).map(([_id, { summaries, info }]: any) => {
     const res: any = {}
@@ -126,10 +128,14 @@ export async function getOverviewProcess2({
       return null
     }
 
+    if (!summary?.recordCount) return null; // if there are no data points, we should filter out the protocol
+    if (summary?.totalAllTime) protocolTotalAllTimeSum += summary.totalAllTime
+
     protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])
     res.id = res.defillamaId ?? res.id
     return res
   }).filter((i: any) => i)
+  if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
 
   return response
 }
@@ -214,9 +220,9 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
   const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
   const routeFile = `dimensions/${routeSubPath}`
 
-  if (!dimensionsFileSet.has(routeSubPath)) {
-    return errorResponse(res, 'Data not found', { statusCode: 404 })
-  }
+  // if (!dimensionsFileSet.has(fileNameNormalizer(routeSubPath))) {
+  //   return errorResponse(res, 'Data not found', { statusCode: 404 })
+  // }
   const data = await readRouteData(routeFile)
 
   if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
@@ -238,9 +244,9 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   const routeFile = `dimensions/${routeSubPath}`
   const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
 
-  if (!dimensionsFileSet.has(routeSubPath)) {
-    return errorResponse(res, errorMessage, { statusCode: 404 })
-  }
+  // if (!dimensionsFileSet.has(fileNameNormalizer(routeSubPath))) {
+  //   return errorResponse(res, errorMessage, { statusCode: 404 })
+  // }
   const data = await readRouteData(routeFile)
   if (!data)
     return errorResponse(res, errorMessage)

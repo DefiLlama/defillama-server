@@ -6,6 +6,7 @@ import parentProtocols from "./protocols/parentProtocols";
 import treasuries from "./protocols/treasury";
 import { chainCoingeckoIds } from "./utils/normalizeChain";
 import { METADATA_FILE } from "./api2/constants";
+import { importAdapter } from './utils/imports/importAdapter';
 
 async function main() {
   let data: any = { protocols, entities, treasuries, parentProtocols, chainCoingeckoIds }
@@ -27,7 +28,7 @@ function updateItemInfo(protocols: any) {
     }
 
     try {
-      const module = require('@defillama/adapters/projects/' + protocol.module)
+      const module = importAdapter(protocol)
       protocol.misrepresentedTokens = module.misrepresentedTokens
       protocol.hallmarks = module.hallmarks
       protocol.deadFrom = module.deadFrom

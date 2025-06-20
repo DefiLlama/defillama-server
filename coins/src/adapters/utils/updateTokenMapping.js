@@ -33,11 +33,12 @@ async function run() {
       }
       chainTokenMapping[token] = { to: `coingecko#${coingeckoId}`, decimals, symbol }
       let i = 0
-      label = symbol
+      label = symbol.replace(/\./g, '_')
       while (coreTokenMapping[label] && coreTokenMapping[label].toLowerCase() !== normalizedLabel) {
         label = `${symbol}_${++i}`
       }
-      coreTokenMapping[label] = token
+      if (token !== '0x0000000000000000000000000000000000000000')
+        coreTokenMapping[label] = token
     }
 
     if (Object.keys(chainTokenMapping).length)

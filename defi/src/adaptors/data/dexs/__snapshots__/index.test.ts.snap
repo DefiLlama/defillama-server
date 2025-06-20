@@ -9,7 +9,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -60,7 +60,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Starknet",
     "chains": Array [
       "starknet",
@@ -104,7 +104,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -149,7 +149,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Mixin",
     "chains": Array [
       "mixin",
@@ -188,7 +188,7 @@ Array [
     "address": "bsc:0x0ddef12012ed645f12aeb1b845cb5ad61c7423f5",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -231,7 +231,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -273,7 +273,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Stacks",
     "chains": Array [
       "stacks",
@@ -317,7 +317,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Algorand",
     "chains": Array [
       "algorand",
@@ -357,7 +357,7 @@ Array [
     "address": "arbitrum:0x6740acb82ac5c63a7ad2397ee1faed7c788f5f8c",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -400,7 +400,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -445,7 +445,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -492,7 +492,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "CORE",
     "chains": Array [
       "core",
@@ -534,7 +534,7 @@ Array [
     "address": "telos:0xa84df7aFbcbCC1106834a5feD9453bd1219B1fb5",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Telos",
     "chains": Array [
       "telos",
@@ -579,7 +579,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Aurora",
     "chains": Array [
       "aurora",
@@ -624,7 +624,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Elrond",
     "chains": Array [
       "elrond",
@@ -666,7 +666,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Terra",
     "chains": Array [
       "terra",
@@ -706,7 +706,7 @@ Array [
     "address": "polygon:0x1b7805e2829fd7D194DCc3078a4199b13c77E467",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -751,7 +751,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -792,7 +792,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Aptos",
     "chains": Array [
       "aptos",
@@ -832,7 +832,7 @@ Array [
     "address": "avax:0xcF8419A615c57511807236751c0AF38Db4ba3351",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -877,7 +877,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -925,7 +925,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -968,7 +968,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1029,7 +1029,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1088,7 +1088,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1141,7 +1141,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1193,7 +1193,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1236,7 +1236,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonbeam",
     "chains": Array [
       "moonbeam",
@@ -1294,7 +1294,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonbeam",
     "chains": Array [
       "moonbeam",
@@ -1350,7 +1350,7 @@ Array [
     "address": "fantom:0xf24bcf4d1e507740041c9cfd2dddb29585adce1e",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -1398,7 +1398,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "smartBCH",
     "chains": Array [
       "smartbch",
@@ -1439,7 +1439,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Bitcoin",
     "chains": Array [
       "bitcoin",
@@ -1482,7 +1482,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1525,7 +1525,7 @@ Array [
     "address": "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1567,7 +1567,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1611,7 +1611,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Heco",
     "chains": Array [
       "bsc",
@@ -1655,7 +1655,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -1697,7 +1697,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Canto",
     "chains": Array [
       "canto",
@@ -1740,7 +1740,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cube",
     "chains": Array [
       "cube",
@@ -1782,7 +1782,7 @@ Array [
     "address": "energyweb:0x9cd9CAECDC816C3E7123A4F130A91A684D01f4Dc",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "EnergyWeb",
     "chains": Array [
       "energyweb",
@@ -1823,7 +1823,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Aptos",
     "chains": Array [
       "aptos",
@@ -1865,7 +1865,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fusion",
     "chains": Array [
       "fusion",
@@ -1904,7 +1904,7 @@ Array [
     "address": "bsc:0x4957c1c073557BFf33C01A7cA1436D0d2409d439",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1951,7 +1951,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "OKExChain",
     "chains": Array [
       "okexchain",
@@ -1994,7 +1994,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Klaytn",
     "chains": Array [
       "klaytn",
@@ -2040,7 +2040,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2081,7 +2081,7 @@ Array [
     "address": "polygon:0x9c78ee466d6cb57a4d01fd887d2b5dfb2d46288f",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -2121,7 +2121,7 @@ Array [
     "address": "avax:0x3711c397b6c8f7173391361e27e67d72f252caad",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -2162,7 +2162,7 @@ Array [
     "address": "bsc:0xA60205802E1B5C6EC1CAFA3cAcd49dFeECe05AC9",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2203,7 +2203,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -2247,7 +2247,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cronos",
     "chains": Array [
       "cronos",
@@ -2288,7 +2288,7 @@ Array [
     "address": "bsc:0xcC4b3EA1F25c8772D390dA1DB507832aBE4a9740",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2335,7 +2335,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2383,7 +2383,7 @@ Array [
     "address": "0x0f51bb10119727a7e5ea3538074fb341f56b09ad",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2425,7 +2425,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cronos",
     "chains": Array [
       "cronos",
@@ -2470,7 +2470,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Harmony",
     "chains": Array [
       "harmony",
@@ -2516,7 +2516,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2560,7 +2560,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "EOS",
     "chains": Array [
       "eos",
@@ -2602,7 +2602,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "DefiChain",
     "chains": Array [
       "defichain",
@@ -2642,7 +2642,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2680,7 +2680,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Carbon",
     "chains": Array [
       "carbon",
@@ -2718,7 +2718,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -2761,7 +2761,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2802,7 +2802,7 @@ Array [
     "address": "polygon:0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -2849,7 +2849,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2893,7 +2893,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -2941,7 +2941,7 @@ Array [
     "address": "polygon:0x39aB6574c289c3Ae4d88500eEc792AB5B947A5Eb",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -3037,7 +3037,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "arbitrum",
@@ -3093,7 +3093,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -3174,7 +3174,7 @@ Array [
     "address": "empire:0xc84d8d03aa41ef941721a4d77b24bb44d7c7ac55",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -3218,7 +3218,7 @@ Array [
     "address": "0x1416946162b1c2c871a73b07e932d2fb6c932069",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Energi",
     "chains": Array [
       "energi",
@@ -3258,7 +3258,7 @@ Array [
     "address": "fantom:0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6",
     "audit_note": "Equalizer is forked from Velodrome, which had it's improvements over Solidly audited multiple times.",
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -3303,7 +3303,7 @@ Array [
     "audit_links": Array [],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kava",
     "chains": Array [
       "kava",
@@ -3345,7 +3345,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Mixin",
     "chains": Array [
       "mixin",
@@ -3383,7 +3383,7 @@ Array [
     "address": "findora:0xccc94d78b01d94330f25f7b8e827ef24249132de",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Findora",
     "chains": Array [
       "findora",
@@ -3428,7 +3428,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cronos",
     "chains": Array [
       "cronos",
@@ -3473,7 +3473,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "NEO",
     "chains": Array [
       "neo",
@@ -3510,7 +3510,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -3563,7 +3563,7 @@ Array [
     "address": "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "FunctionX",
     "chains": Array [
       "functionx",
@@ -3608,7 +3608,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Boba",
     "chains": Array [
       "boba",
@@ -3653,7 +3653,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Elastos",
     "chains": Array [
       "elastos",
@@ -3697,7 +3697,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "arbitrum",
@@ -3709,7 +3709,7 @@ Array [
       "id": "337",
       "protocolsData": Object {
         "swap": Object {
-          "category": "Dexes",
+          "category": "Dexs",
           "displayName": "GMX - SWAP",
           "enabled": true,
           "id": "337",
@@ -3752,7 +3752,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "solana",
@@ -3797,7 +3797,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "polygon",
@@ -3844,7 +3844,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -3887,7 +3887,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -3928,7 +3928,7 @@ Array [
     "address": "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -3979,7 +3979,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Hedera",
     "chains": Array [
       "hedera",
@@ -4021,7 +4021,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Injective",
     "chains": Array [
       "injective",
@@ -4061,7 +4061,7 @@ Array [
     "address": "metis:0xb27bbeaaca2c00d6258c3118bab6b5b6975161c8",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Metis",
     "chains": Array [
       "metis",
@@ -4082,7 +4082,7 @@ Array [
     "id": "1384",
     "language": "Solidity",
     "listedAt": 1644507498,
-    "logo": "https://icons.llama.fi/hermes-protocol.png",
+    "logo": "https://icons.llama.fi/hermes-v2.png",
     "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
@@ -4103,7 +4103,7 @@ Array [
     "address": "null",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Map",
     "chains": Array [
       "map",
@@ -4145,7 +4145,7 @@ Array [
     "address": "xdai:0x71850b7e9ee3f13ab46d67167341e4bdc905eef9",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "xDai",
     "chains": Array [
       "polygon",
@@ -4189,7 +4189,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonriver",
     "chains": Array [
       "moonriver",
@@ -4235,7 +4235,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Algorand",
     "chains": Array [
       "algorand",
@@ -4280,7 +4280,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "bsc",
@@ -4320,7 +4320,7 @@ Array [
     "address": "bitgert:0xB999Ea90607a826A3E6E6646B404c3C7d11fa39D",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Bitgert",
     "chains": Array [
       "bitgert",
@@ -4366,7 +4366,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Flow",
     "chains": Array [
       "flow",
@@ -4411,7 +4411,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -4453,7 +4453,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -4494,7 +4494,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Starknet",
     "chains": Array [
       "starknet",
@@ -4539,7 +4539,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -4625,7 +4625,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "OKExChain",
     "chains": Array [
       "okexchain",
@@ -4666,7 +4666,7 @@ Array [
     "address": "juno:-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Juno",
     "chains": Array [
       "juno",
@@ -4706,7 +4706,7 @@ Array [
     "address": "kardia:0xe9cac5d99375d02fb506be890011b2f57fc614e1",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kardia",
     "chains": Array [
       "kardia",
@@ -4747,7 +4747,7 @@ Array [
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Karura",
     "chains": Array [
       "KARURA",
@@ -4784,7 +4784,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ronin",
     "chains": Array [
       "ronin",
@@ -4825,7 +4825,7 @@ Array [
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kava",
     "chains": Array [
       "kava",
@@ -4865,7 +4865,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Klaytn",
     "chains": Array [
       "klaytn",
@@ -4905,7 +4905,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Klaytn",
     "chains": Array [
       "klaytn",
@@ -4950,7 +4950,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -4995,7 +4995,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Klaytn",
     "chains": Array [
       "klaytn",
@@ -5039,7 +5039,7 @@ Array [
     "address": "boba:0x618CC6549ddf12de637d46CDDadaFC0C2951131C",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Boba",
     "chains": Array [
       "boba",
@@ -5127,7 +5127,7 @@ Array [
     "address": "kucoin:0x4a81704d8c16d9fb0d7f61b747d0b5a272badf14",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kucoin",
     "chains": Array [
       "kcc",
@@ -5173,7 +5173,7 @@ Array [
     ],
     "audit_note": null,
     "audits": null,
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "aurora",
@@ -5239,7 +5239,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "optimism",
@@ -5303,7 +5303,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -5394,7 +5394,7 @@ Array [
     "address": "xdai:0x1698cd22278ef6e7c0df45a8dea72edbea9e42aa",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "xDai",
     "chains": Array [
       "xdai",
@@ -5434,7 +5434,7 @@ Array [
     "address": "tombchain:0x4200000000000000000000000000000000000108",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tombchain",
     "chains": Array [
       "tombchain",
@@ -5477,7 +5477,7 @@ Array [
     "address": "solana:LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -5524,7 +5524,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Aptos",
     "chains": Array [
       "aptos",
@@ -5567,7 +5567,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "tomochain",
@@ -5609,7 +5609,7 @@ Array [
     "address": "stellar:GAB7STHVD5BDH3EEYXPI3OM7PCS4V443PYB5FNT6CFGJVPDLMKDM24WK",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Stellar",
     "chains": Array [
       "stellar",
@@ -5650,7 +5650,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Heco",
     "chains": Array [
       "heco",
@@ -5693,7 +5693,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -5736,7 +5736,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "1",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -5786,7 +5786,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Heco",
     "chains": Array [
       "bsc",
@@ -5830,7 +5830,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "TON",
     "chains": Array [
       "ton",
@@ -5870,7 +5870,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "polygon:0x82362ec182db3cf7829014bc61e9be8a2e82868a",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -5912,7 +5912,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0x445cC9518cF7bc7386A2e3aaF510650b0FB05f5F",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -6002,7 +6002,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -6044,7 +6044,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "IoTeX",
     "chains": Array [
       "iotex",
@@ -6088,7 +6088,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "EthereumPoW",
     "chains": Array [
       "ethpow",
@@ -6130,7 +6130,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "cardano:asset1d9v7aptfvpx7we2la8f25kwprkj2ma5rp6uwzv",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cardano",
     "chains": Array [
       "cardano",
@@ -6173,7 +6173,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "smartBCH",
     "chains": Array [
       "smartbch",
@@ -6214,7 +6214,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -6255,7 +6255,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "celo:0x73a210637f6f6b7005512677ba6b3c96bb4aa44b",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Celo",
     "chains": Array [
       "celo",
@@ -6298,7 +6298,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kucoin",
     "chains": Array [
       "kcc",
@@ -6339,7 +6339,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "0x68a3637ba6e75c0f66b61a42639c4e9fcd3d4824",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Conflux",
     "chains": Array [
       "conflux",
@@ -6385,7 +6385,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -6426,7 +6426,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -6469,7 +6469,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "smartBCH",
     "chains": Array [
       "milkomeda",
@@ -6557,7 +6557,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Starknet",
     "chains": Array [
       "starknet",
@@ -6600,7 +6600,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Metis",
     "chains": Array [
       "metis",
@@ -6644,7 +6644,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -6689,7 +6689,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "OKExChain",
     "chains": Array [
       "okexchain",
@@ -6731,7 +6731,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -6773,7 +6773,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Boba",
     "chains": Array [
       "boba",
@@ -6814,7 +6814,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -6858,7 +6858,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "bsc",
@@ -6948,7 +6948,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Orai",
     "chains": Array [
       "orai",
@@ -6988,7 +6988,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "solana:orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -7029,7 +7029,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Near",
     "chains": Array [
       "near",
@@ -7069,7 +7069,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Osmosis",
     "chains": Array [
       "cosmos",
@@ -7106,7 +7106,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Obyte",
     "chains": Array [
       "obyte",
@@ -7150,7 +7150,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Algorand",
     "chains": Array [
       "algorand",
@@ -7194,7 +7194,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "moonriver",
@@ -7239,7 +7239,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -7282,7 +7282,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Astar",
     "chains": Array [
       "bsc",
@@ -7327,7 +7327,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Klaytn",
     "chains": Array [
       "klaytn",
@@ -7371,7 +7371,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "avax:0x60781C2586D68229fde47564546784ab3fACA982",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -7414,7 +7414,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "eos:MLNK-eos-swap.pcash",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "EOS",
     "chains": Array [
       "eos",
@@ -7455,7 +7455,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "syscoin:0xE18c200A70908c89fFA18C628fE1B83aC0065EA4",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Syscoin",
     "chains": Array [
       "syscoin",
@@ -7497,7 +7497,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -7539,7 +7539,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "cronos:0xbdd4e5660839a088573191A9889A262c0Efc0983",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cronos",
     "chains": Array [
       "cronos",
@@ -7583,7 +7583,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -7628,7 +7628,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -7669,7 +7669,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tezos",
     "chains": Array [
       "tezos",
@@ -7709,7 +7709,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -7750,7 +7750,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Rangers",
     "chains": Array [
       "rpg",
@@ -7793,7 +7793,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -7837,7 +7837,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -7882,7 +7882,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -7938,7 +7938,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -8000,7 +8000,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tezos",
     "chains": Array [
       "tezos",
@@ -8040,7 +8040,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "polygon",
@@ -8086,7 +8086,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -8124,7 +8124,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Near",
     "chains": Array [
       "near",
@@ -8164,7 +8164,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Optimism",
     "chains": Array [
       "optimism",
@@ -8202,7 +8202,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "solana:Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -8244,7 +8244,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -8289,7 +8289,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -8331,7 +8331,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Hedera",
     "chains": Array [
       "hedera",
@@ -8373,7 +8373,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": null,
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -8416,7 +8416,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "0x7Dc31a2FCBfbAd1ed4519111Fd33f78316BcBC81",
     "audit_note": null,
     "audits": "1",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "SXnetwork",
     "chains": Array [
       "sx",
@@ -8458,7 +8458,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": null,
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -8501,7 +8501,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -8541,7 +8541,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -8582,7 +8582,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0x7a364484303B38Bce7B0ab60a20DA8F2F4370129",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -8624,7 +8624,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "moonriver:0x6bD193Ee6D2104F14F94E2cA6efefae561A4334B",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonriver",
     "chains": Array [
       "moonriver",
@@ -8667,7 +8667,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonbeam",
     "chains": Array [
       "moonbeam",
@@ -8708,7 +8708,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "arbitrum:0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -8753,7 +8753,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -8796,7 +8796,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -8838,7 +8838,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "fantom:0xe2fb177009ff39f52c0134e8007fa0e4baacbd07",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -8881,7 +8881,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Callisto",
     "chains": Array [
       "callisto",
@@ -8922,7 +8922,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -8970,7 +8970,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -9008,7 +9008,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0x6e281f90c6d1b5e5a01fb6f14c428aff69c04c3f",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -9054,7 +9054,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -9098,7 +9098,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -9142,7 +9142,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Stellar",
     "chains": Array [
       "stellar",
@@ -9183,7 +9183,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonbeam",
     "chains": Array [
       "moonbeam",
@@ -9224,7 +9224,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Step",
     "chains": Array [
       "step",
@@ -9264,7 +9264,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -9307,7 +9307,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cardano",
     "chains": Array [
       "cardano",
@@ -9349,7 +9349,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tron",
     "chains": Array [
       "tron",
@@ -9391,7 +9391,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kava",
     "chains": Array [
       "kava",
@@ -9450,7 +9450,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kava",
     "chains": Array [
       "kava",
@@ -9509,7 +9509,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -9576,7 +9576,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -9638,7 +9638,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Conflux",
     "chains": Array [
       "conflux",
@@ -9683,7 +9683,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -9731,7 +9731,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -9825,7 +9825,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -9911,7 +9911,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -9950,7 +9950,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Terra",
     "chains": Array [
       "terra",
@@ -9992,7 +9992,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Metis",
     "chains": Array [
       "metis",
@@ -10079,7 +10079,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -10121,7 +10121,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "0xa5f2211b9b8170f694421f2046281775e8468044",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Thorchain",
     "chains": Array [
       "thorchain",
@@ -10195,7 +10195,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Algorand",
     "chains": Array [
       "algorand",
@@ -10236,7 +10236,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -10278,7 +10278,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "fantom:0x6c021ae822bea943b2e66552bde1d2696a53fbb7",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -10320,7 +10320,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -10376,7 +10376,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -10429,7 +10429,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "ThunderCore",
     "chains": Array [
       "thundercore",
@@ -10473,7 +10473,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Celo",
     "chains": Array [
       "celo",
@@ -10513,7 +10513,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ultron",
     "chains": Array [
       "ultron",
@@ -10558,7 +10558,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -10602,7 +10602,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "avax",
@@ -10648,7 +10648,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "vision:VRbNprwjvBomKhvnhZq7Y33JRcrQJethpc",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Vision",
     "chains": Array [
       "vision",
@@ -10690,7 +10690,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -10730,7 +10730,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Optimism",
     "chains": Array [
       "optimism",
@@ -10773,7 +10773,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Findora",
     "chains": Array [
       "findora",
@@ -10818,7 +10818,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "SmartBCH",
     "chains": Array [
       "ethereum",
@@ -10864,7 +10864,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "vechain:-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "VeChain",
     "chains": Array [
       "vechain",
@@ -10908,7 +10908,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Harmony",
     "chains": Array [
       "harmony",
@@ -10948,7 +10948,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fuse",
     "chains": Array [
       "fuse",
@@ -10990,7 +10990,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "meter:0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Meter",
     "chains": Array [
       "meter",
@@ -11046,7 +11046,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "meter:0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Meter",
     "chains": Array [
       "meter",
@@ -11102,7 +11102,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "tezos:KT1TwzD6zV3WeJ39ukuqxcfK2fJCnhvrdN1X",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tezos",
     "chains": Array [
       "tezos",
@@ -11145,7 +11145,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cronos",
     "chains": Array [
       "cronos",
@@ -11189,7 +11189,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Velas",
     "chains": Array [
       "velas",
@@ -11233,7 +11233,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Wanchain",
     "chains": Array [
       "wan",
@@ -11273,7 +11273,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -11317,7 +11317,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Velas",
     "chains": Array [
       "velas",
@@ -11362,7 +11362,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "WEMIX",
     "chains": Array [
       "wemix",
@@ -11405,7 +11405,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -11451,7 +11451,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -11492,7 +11492,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0xe7eada32caf827d3ba8cb1074830d803c9bd48c3",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -11537,7 +11537,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Cardano",
     "chains": Array [
       "cardano",
@@ -11580,7 +11580,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -11621,7 +11621,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "dogechain:0x570C41a71b5e2cb8FF4445184d7ff6f78A4DbcBD",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Dogechain",
     "chains": Array [
       "dogechain",
@@ -11668,7 +11668,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -11711,7 +11711,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "avax",
@@ -11759,7 +11759,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "waves:Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Waves",
     "chains": Array [
       "waves",
@@ -11796,7 +11796,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "elrond:MEX-455c57",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Elrond",
     "chains": Array [
       "elrond",
@@ -11838,7 +11838,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "XDC",
     "chains": Array [
       "xdc",
@@ -11883,7 +11883,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -11924,7 +11924,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "dogechain:0x6FC4563460d5f45932C473334d5c1C5B4aEA0E01",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Dogechain",
     "chains": Array [
       "dogechain",
@@ -11966,7 +11966,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "godwoken_v1:0x885fb612947ccF1C7611894Bd828D388b046fc24",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Godwoken",
     "chains": Array [
       "godwoken",
@@ -12011,7 +12011,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -12054,7 +12054,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": null,
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Zilliqa",
     "chains": Array [
       "zilliqa",
@@ -12091,7 +12091,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "optimism:0xFA436399d0458Dbe8aB890c3441256E3E09022a8",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Optimism",
     "chains": Array [
       "optimism",
@@ -12135,7 +12135,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonriver",
     "chains": Array [
       "moonriver",
@@ -12180,7 +12180,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -12236,7 +12236,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -12290,7 +12290,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -12389,7 +12389,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "1",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -12444,7 +12444,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -12487,7 +12487,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -12549,7 +12549,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -12609,7 +12609,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -12673,7 +12673,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -12734,7 +12734,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -12795,7 +12795,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",

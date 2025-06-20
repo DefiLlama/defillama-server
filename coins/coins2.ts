@@ -2,7 +2,7 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import { getCoins2Connection } from "./getDBConnection";
+import { getPgConnection } from "./src/utils/shared/getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import fetch from "node-fetch";
 
@@ -23,7 +23,7 @@ const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 6 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
 const zeroDecimalAdapters: string[] = [
-  'LiNEAR',
+  "LiNEAR",
   "coingecko",
   "chainlink-nft",
   "defichain",
@@ -73,7 +73,7 @@ async function queryPostgresWithRetry(
     await sleep(5000 + 1e4 * Math.random());
     if (counter == 3) {
       // await closeConnection();
-      // sql = await getCoins2Connection();
+      // sql = await getPgConnection();
     }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
@@ -175,7 +175,7 @@ export async function getRedisConnection() {
     } catch (e) {
       reject(e);
     }
-  })
+  });
   return _redis;
 }
 
@@ -184,7 +184,7 @@ process.on("exit", async () => {
     const redis = await _redis;
     redis.quit();
   }
-})
+});
 
 export async function queryRedis(
   values: CoinRead[],
@@ -194,7 +194,7 @@ export async function queryRedis(
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
 
-  const redis = await getRedisConnection()
+  const redis = await getRedisConnection();
   let res = await redis.mget(keys);
   // console.log("mget finished");
   const jsonValues: { [key: string]: Coin } = {};
@@ -235,7 +235,7 @@ async function queryPostgres(
 
   let sql;
   if (batchPostgresReads) {
-    sql = await getCoins2Connection();
+    sql = await getPgConnection();
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
@@ -249,7 +249,7 @@ async function queryPostgres(
   } else {
     await Promise.all(
       splitKeys.map(async (key) => {
-        sql = await getCoins2Connection();
+        sql = await getPgConnection();
         const read = await queryPostgresWithRetry(
           sql`
         select ${sql(pgColumns)} from splitkey where 
@@ -363,7 +363,7 @@ export async function readCoins2(
 }
 export async function readFirstTimestamp(pk: string) {
   if (!auth) await generateAuth();
-  const sql = await getCoins2Connection();
+  const sql = await getPgConnection();
   const chain = Buffer.from(pk.split(":")[0], "utf8");
   const key = Buffer.from(pk.substring(pk.split(":")[0].length + 1), "utf8");
   const read = await sql`
@@ -440,7 +440,7 @@ async function storeChangedAdapter(changedAdapters: {
   try {
     if (Object.keys(changedAdapters).length == 0) return;
     if (!auth) await generateAuth();
-    let sql = await getCoins2Connection();
+    let sql = await getPgConnection();
 
     const inserts: ChangedAdapter[] = Object.entries(changedAdapters).map(
       ([key, c]) => ({
@@ -529,7 +529,7 @@ export async function writeToRedis(
     );
   }
   try {
-    const redis = await getRedisConnection()
+    const redis = await getRedisConnection();
     await redis.mset(strings);
   } catch (e) {
     await sendMessage(
@@ -554,7 +554,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   }));
   try {
     // console.log("creating a new pg instance");
-    let sql = await getCoins2Connection();
+    let sql = await getPgConnection();
     // console.log("created a new pg instance");
     await queryPostgresWithRetry(
       sql`
@@ -619,7 +619,7 @@ export async function batchReadPostgres(
   end: number,
 ): Promise<any[]> {
   if (!auth) await generateAuth();
-  let sql = await getCoins2Connection();
+  let sql = await getPgConnection();
   const chain = key.split(":")[0];
   const address = key.substring(key.split(":")[0].length + 1);
   let data = await queryPostgresWithRetry(

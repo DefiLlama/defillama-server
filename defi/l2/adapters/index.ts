@@ -2,20 +2,29 @@ import { call } from "@defillama/sdk/build/abi/abi2";
 import { Chain } from "@defillama/sdk/build/general";
 import { Address } from "@defillama/sdk/build/types";
 import axios from "axios";
-import fetch from "node-fetch";
+import nodefetch from "node-fetch";
+import sleep from "../../src/utils/shared/sleep";
+
+async function fetch(url: string, i: number = 3) {
+  if (i == 0) return await nodefetch(url).then((r) => r.json());
+  try {
+    return await nodefetch(url).then((r) => r.json());
+  } catch {
+    await sleep(Math.random() * 5000 + 3000);
+    return fetch(url, i - 1);
+  }
+}
 
 let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
   if (addresses.arbitrum) return addresses.arbitrum;
-  const data = await fetch("https://bridge.arbitrum.io/token-list-42161.json").then((r) => r.json());
+  const data = await fetch("https://bridge.arbitrum.io/token-list-42161.json");
   addresses.arbitrum = data.tokens.map((token: any) => token.address.toLowerCase());
   return addresses.arbitrum;
 };
 export const nova = async (): Promise<Address[]> => {
   if (addresses.nova) return addresses.nova;
-  const data = await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/42170_arbed_uniswap_labs_default.json").then(
-    (r) => r.json()
-  );
+  const data = await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/42170_arbed_uniswap_labs_default.json");
   addresses.nova = data.tokens.map((token: any) => token.address.toLowerCase());
   return addresses.nova;
 };
@@ -23,26 +32,24 @@ export const mantle = async (): Promise<Address[]> => {
   if (addresses.mantle) return addresses.mantle;
   const data = await fetch(
     "https://raw.githubusercontent.com/mantlenetworkio/mantle-token-lists/main/mantle.tokenlist.json"
-  ).then((r) => r.json());
+  );
   addresses.mantle = data.tokens.filter((t: any) => t.chainId == 5000).map((t: any) => t.address.toLowerCase());
   return addresses.mantle;
 };
 export const avax = async (): Promise<Address[]> => {
   if (addresses.avax) return addresses.avax;
-  const oldData = await fetch("https://raw.githubusercontent.com/0xngmi/bridge-tokens/main/data/penultimate.json").then(
-    (r) => r.json()
-  );
+  const oldData = await fetch("https://raw.githubusercontent.com/0xngmi/bridge-tokens/main/data/penultimate.json");
   const oldTokens = oldData.map((t: any) => t["Avalanche Token Address"].toLowerCase());
   const newData = await fetch(
     "https://raw.githubusercontent.com/ava-labs/avalanche-bridge-resources/main/avalanche_contract_address.json"
-  ).then((r) => r.json());
+  );
   const newTokens = Object.values(newData).map((t: any) => t.toLowerCase());
   addresses.avax = [...oldTokens, ...newTokens];
   return addresses.avax;
 };
 export const base = async (): Promise<Address[]> => {
   if (addresses.base) return addresses.base;
-  const data = await fetch("https://static.optimism.io/optimism.tokenlist.json").then((r) => r.json());
+  const data = await fetch("https://static.optimism.io/optimism.tokenlist.json");
   const baseData = data.tokens.filter((t: any) => t.chainId === 8453);
   addresses.base = baseData.map((t: any) => t.address.toLowerCase());
   return addresses.base;
@@ -51,7 +58,7 @@ export const linea = async (): Promise<Address[]> => {
   if (addresses.linea) return addresses.linea;
   const data = await fetch(
     "https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-shortlist.json"
-  ).then((r) => r.json());
+  );
   addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
@@ -75,7 +82,7 @@ export const metis = async (): Promise<Address[]> => {
 };
 export const optimism = async (): Promise<Address[]> => {
   if (addresses.optimism) return addresses.optimism;
-  const data = await fetch("https://static.optimism.io/optimism.tokenlist.json").then((r) => r.json());
+  const data = await fetch("https://static.optimism.io/optimism.tokenlist.json");
   const baseData = data.tokens.filter((t: any) => t.chainId === 10);
   addresses.optimism = baseData.map((t: any) => t.address.toLowerCase());
   return addresses.optimism;
@@ -111,7 +118,7 @@ export const polygon_zkevm = async (): Promise<Address[]> => {
 };
 export const scroll = async (): Promise<Address[]> => {
   if (addresses.scroll) return addresses.scroll;
-  const data = await fetch("https://scroll-tech.github.io/token-list/scroll.tokenlist.json").then((r) => r.json());
+  const data = await fetch("https://scroll-tech.github.io/token-list/scroll.tokenlist.json");
   const baseData = data.tokens.filter((t: any) => t.chainId === 534352);
   addresses.scroll = baseData.map((t: any) => t.address.toLowerCase());
   return addresses.scroll;
@@ -120,7 +127,7 @@ export const starknet = async (): Promise<Address[]> => {
   if (addresses.starknet) return addresses.starknet;
   const data = await fetch(
     "https://raw.githubusercontent.com/starknet-io/starknet-addresses/master/bridged_tokens/mainnet.json"
-  ).then((r) => r.json());
+  );
   addresses.starknet = data.map((t: any) => t.l2_token_address?.toLowerCase()).filter((t: any) => t != null);
   return addresses.starknet;
 };
@@ -175,9 +182,7 @@ export const zklink = async (): Promise<Address[]> => {
   const allTokens = [];
   let page = 1;
   do {
-    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`).then((r) =>
-      r.json()
-    );
+    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`);
     allTokens.push(...items);
     page++;
     if (page >= meta.totalPages) break;
@@ -190,7 +195,7 @@ export const manta = async (): Promise<Address[]> => {
   const bridge = (
     await fetch(
       "https://raw.githubusercontent.com/Manta-Network/manta-pacific-token-list/main/json/manta-pacific-mainnet-token-list.json"
-    ).then((r) => r.json())
+    )
   ).tokens as any[];
 
   addresses.manta = bridge
@@ -202,7 +207,7 @@ export const osmosis = async (): Promise<Address[]> => {
   if (addresses.osmosis) return addresses.osmosis;
   const res = await fetch(
     `https://raw.githubusercontent.com/osmosis-labs/assetlists/main/osmosis-1/generated/chain_registry/assetlist.json`
-  ).then((r) => r.json());
+  );
 
   addresses.osmosis = [];
   res.assets.map((c: any) => {
@@ -213,4 +218,41 @@ export const osmosis = async (): Promise<Address[]> => {
   });
 
   return addresses.osmosis;
+};
+export const aptos = async (): Promise<Address[]> => {
+  if (addresses.aptos) return addresses.aptos;
+  const res: { tokenAddress: string; bridge: string }[] = await fetch(
+    "https://raw.githubusercontent.com/PanoraExchange/Aptos-Tokens/refs/heads/main/token-list.json"
+  );
+
+  addresses.aptos = [];
+  res.map(({ tokenAddress, bridge }) => {
+    if (!bridge) return;
+    addresses.aptos.push(tokenAddress);
+  });
+
+  return addresses.aptos;
+};
+export const eclipse = async (): Promise<Address[]> => {
+  if (addresses.eclipse) return addresses.eclipse;
+  const res: { tokenAddress: string; bridge: string }[] = await fetch(
+    "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
+  );
+
+  addresses.eclipse = [];
+  res.map(({ address }: any) => addresses.eclipse.push(address));
+  return addresses.eclipse;
+};
+export const flow = async (): Promise<Address[]> => {
+  if (addresses.flow) return addresses.flow;
+  const res: { tokens: { address: string; tags: string[] }[] } = await fetch(
+    "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+  );
+
+  addresses.flow = [];
+  res.tokens.map(({ address, tags }: any) => {
+    if (!tags.includes("bridged-coin")) addresses.flow.push(address);
+  });
+
+  return addresses.flow;
 };

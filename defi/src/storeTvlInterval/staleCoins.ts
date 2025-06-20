@@ -1,5 +1,5 @@
-import { queryPostgresWithRetry } from "../../l2/layer2pg";
-import { getCoins2Connection } from "../getDBConnection";
+import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
+import { getPgConnection } from "../utils/shared/getDBConnection";
 import { sendMessage } from "../utils/discord";
 import { searchWidth } from "../utils/shared/constants";
 
@@ -56,7 +56,7 @@ export function checkForStaleness(
 export async function storeStaleCoins(staleCoins: StaleCoins) {
   try {
     if (Object.keys(staleCoins).length == 0) return;
-    const sql = await getCoins2Connection()
+    const sql = await getPgConnection();
 
     const stored: StaleCoinData[] = await queryPostgresWithRetry(
       sql`
@@ -100,7 +100,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
 }
 
 export async function notifyStaleCoins() {
-  const sql = await getCoins2Connection()
+  const sql = await getPgConnection();
 
   const stored: StaleCoinData[] = await sql` select ${sql(columns)} from stalecoins`;
 
@@ -132,7 +132,7 @@ export async function notifyStaleCoins() {
 const changedAdapterColumns: any[] = ["key", "from", "to", "change"];
 
 export async function notifyChangedAdapter() {
-  const sql = await getCoins2Connection()
+  const sql = await getPgConnection();
 
   const stored: ChangedAdapter[] = await sql` select ${sql(changedAdapterColumns)} from adapterchanges`;
 

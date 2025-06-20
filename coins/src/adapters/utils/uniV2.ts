@@ -12,13 +12,14 @@ const coreAssetsCache: {
 const MinLiquidity = 50000;
 const MinVolume = 1000000;
 
+const maxConfidence = 0.94
 function calculateConfidence(value: number, _minLiquidity = MinLiquidity) {
   value = +value;
   if (value <= _minLiquidity || value > 1e11) return 0;
   else if (value > _minLiquidity && value <= 100000) {
-    const slope = (0.98 - 0.8) / (100000 - _minLiquidity);
+    const slope = (maxConfidence - 0.8) / (100000 - _minLiquidity);
     return 0.8 + slope * (value - _minLiquidity);
-  } else return 0.98;
+  } else return maxConfidence;
 }
 
 let coreAssetFile: Promise<any>;
@@ -282,7 +283,7 @@ export function getUniV2Adapter({
     const tokenData: any = {};
     pairs.forEach((pair: any, idx: number) => {
       const totalSupply = lpSupplies[idx];
-      if (!totalSupply) return;
+      if (!totalSupply || reserves[idx] == null) return;
 
       const [reserve0, reserve1] = reserves[idx];
       const token0 = token0s[idx];

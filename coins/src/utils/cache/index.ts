@@ -16,7 +16,6 @@ export async function getCache(project: string, chain: string, { useTvlCache = f
   if (useTvlCache)
     Key = Key.replace('coins-cache', 'tvl-adapter-cache/cache')
 
-  console.log(Key, 'kye')
   try {
     const json = await sdk.cache.readCache(Key)
     if (!json || Object.keys(json).length === 0) throw new Error('Invalid data')

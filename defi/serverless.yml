@@ -12,9 +12,6 @@ provider:
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: dev # Default to dev if no stage is specified
-  tracing: # Enable X-Ray tracing (debugging)
-    apiGateway: true
-    lambda: true
   iamRoleStatements:
     - Effect: Allow # X-Ray permissions
       Action:
@@ -197,6 +194,7 @@ functions:
     environment:
       ERROR_REPORTS_DB: ${env:ERROR_REPORTS_DB}
       ERROR_REPORTS_WEBHOOK: ${env:ERROR_REPORTS_WEBHOOK}
+      FRONT_API_TOKEN: ${env:FRONT_API_TOKEN}
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30
@@ -665,12 +663,14 @@ functions:
     memorySize: 512
     events:
       - schedule: cron(20 * * * ? *)
-  updateSearch:
-    handler: src/updateSearch.default
-    timeout: 900
-    memorySize: 512
-    events:
-      - schedule: cron(30 * * * ? *)
+  #updateSearch:
+  #  handler: src/updateSearch.default
+  #  timeout: 900
+  #  memorySize: 512
+  #  events:
+  #    - schedule: cron(30 * * * ? *)
+  #  environment:
+  #    SEARCH_MASTER_KEY: ${env:SEARCH_MASTER_KEY}
  # missedUpdates:
   #   handler: src/stats/getMissedUpdates.default
   #   timeout: 30
@@ -828,6 +828,14 @@ functions:
       - http:
           path: chain-assets/historical-flows/{chain}/{period}
           method: get
+  # depositedContracts: 
+  #   handler: src/getDepositedContracts.default
+  #   timeout: 30
+  #   memorySize: 1000
+  #   events:
+  #     - http:
+  #         path: deposited-contracts/{addresses}/{threshold}
+  #         method: get
 
 resources:
   # CORS for api gateway errors

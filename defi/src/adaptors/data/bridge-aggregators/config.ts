@@ -6,5 +6,26 @@ export default {
     },
     "xy-finance": {
         id: "1885"
-    }
+    },
+    "okx": {
+        id: "5201",
+    },
+    "swing": {
+        id: "5474",
+    },
+    "bitgetwallet": {
+        id: "3207",
+    },
+    "teleswap": {
+        id: "5532",
+    },
+    "rubic": {
+        id: "1282",
+    },
+    "socket": {
+        id: "6097"
+    },
+    "bungee-bridge": {
+        id: "6188"
+    },
 } as AdaptorsConfig

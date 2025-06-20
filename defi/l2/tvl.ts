@@ -3,14 +3,14 @@ import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./native";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
-import { ownTokens, tokenFlowCategories, zero } from "./constants";
+import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./test";
 
-export default async function main(timestamp?: number) {
+export default async function main(override?: boolean, timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
@@ -52,7 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  await verifyChanges(chains);
+  if (!timestamp && override != true) await verifyChanges(chains);
 
   return chains;
 }
@@ -75,7 +75,6 @@ async function translateToChainData(
   const nativeTokenTotalValues: any = {};
 
   let translatedData: any = {};
-  const selectedChains: Chain[] = Object.keys(data.canonical);
   aggregateNativeTokens();
 
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
@@ -85,9 +84,10 @@ async function translateToChainData(
 
   function aggregateNativeTokens() {
     tokenFlowCategories.map((key: keyof ChainData) => {
-      selectedChains.map((chain: Chain) => {
+      allChainKeys.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
+          if (key == "outgoing") return;
           const unwrappedGas =
             symbol.startsWith("W") && nativeTokenSymbols.includes(symbol.substring(1)) ? symbol.substring(1) : symbol;
           if (!(unwrappedGas in nativeTokenTotalValues)) nativeTokenTotalValues[unwrappedGas] = zero;
@@ -99,11 +99,14 @@ async function translateToChainData(
 
   async function processProperty(data: ChainData, key: keyof ChainData) {
     await Promise.all(
-      selectedChains.map(async (chain: Chain) => {
+      allChainKeys.map(async (chain: Chain) => {
         if (!(chain in data[key])) return;
         if (!(chain in translatedData)) translatedData[chain] = {};
         if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
-        if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain]) await processOwnTokens(data, key, chain);
+        if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain])
+          await processOwnTokens(data, key, chain, false);
+        if (chain in ownTokens && `W${ownTokens[chain].ticker}` in data[key][chain])
+          await processOwnTokens(data, key, chain, true);
         const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
         translatedData[chain][key] = { total, breakdown: data[key][chain] };
       })
@@ -130,15 +133,18 @@ async function translateToChainData(
   function combineThirdPartyFlows() {
     Object.keys(translatedData).map((chain: Chain) => {
       const breakdown: { [symbol: string]: BigNumber } = {};
-      if (!("incoming" in translatedData[chain])) return;
-      Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
-        breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
-      });
-      Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
-        if (!(symbol in breakdown)) return;
-        breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
-        // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
-      });
+      if ("incoming" in translatedData[chain]) {
+        Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
+          breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
+        });
+      }
+      if ("outgoing" in translatedData[chain]) {
+        Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
+          if (!(symbol in breakdown)) return;
+          breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].outgoing.breakdown[symbol]);
+          // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
+        });
+      }
       const total = Object.values(breakdown).reduce((p: BigNumber, c: BigNumber) => p.plus(c), zero);
       translatedData[chain].thirdParty = { total, breakdown };
       delete translatedData[chain].incoming;
@@ -146,22 +152,24 @@ async function translateToChainData(
     });
   }
 
-  async function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain) {
+  async function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain, wrapped: boolean) {
     if (key == "outgoing") return;
     const ownToken = ownTokens[chain];
-    const total = data[key][chain][ownToken.ticker];
+    const isWrappedTicker = wrapped ? `W${ownToken.ticker}` : ownToken.ticker;
+
+    const total = data[key][chain][isWrappedTicker];
     if (!total) return;
     if (!translatedData[chain].ownTokens)
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
     const percOnThisChain = total.div(nativeTokenTotalValues[ownToken.ticker]);
     const mcaps = await mcapsPromise;
-    const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain));
-    const mcap = address ? mcaps[address].mcap : total;
-    const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
+    const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain)) ?? ownToken.address;
+    const mcap = address && address in mcaps ? mcaps[address].mcap : total;
+    const thisAssetMcap = BigNumber.min(total, percOnThisChain.times(mcap));
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
     translatedData[chain].ownTokens.breakdown[ownToken.ticker] =
       translatedData[chain].ownTokens.breakdown[ownToken.ticker].plus(thisAssetMcap);
-    delete data[key][chain][ownToken.ticker];
+    delete data[key][chain][isWrappedTicker];
   }
 
   return translatedData;

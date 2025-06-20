@@ -1,5 +1,9 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 export const staleMargin = 6 * 60 * 60;
@@ -32,28 +36,48 @@ export interface CoinMetadata {
   last_updated_at: number;
 }
 
-function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase();
+export function padAddress(address: string, length: number = 66): string {
+  let prefix = "0x";
+  const data = address.substring(address.indexOf(prefix) + prefix.length);
+  const zeros = length - prefix.length - data.length;
+  for (let i = 0; i < zeros; i++) prefix += "0";
+  return prefix + data;
+}
+export function lowercase(address: string, chain: string) {
+  if (chain == "starknet") return padAddress(address.toLowerCase());
+  return chainsThatShouldNotBeLowerCased.includes(chain)
+    ? address
+    : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(
   coin: Coin,
   iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
+  aggregatedPlatforms: string[],
 ) {
   const platforms = coin.platforms as StringObject;
   for (const platform in platforms) {
     if (platform !== "" && platforms[platform] !== "") {
       try {
-        const chain = platformMap[platform.toLowerCase()];
+        const chain = platformMap[platform.toLowerCase()]?.toLowerCase();
         if (chain === undefined) {
           continue;
         }
+        aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
         const address =
-          chain + ":" + lowercase(platforms[platform]!, chain).trim();
+          chain +
+          ":" +
+          (chainsWithCaseSensitiveDataProviders.includes(chain)
+            ? platforms[platform]
+            : lowercase(platforms[platform]!, chain).trim());
         const PK = `asset#${address}`;
-        const margin = getCurrentUnixTimestamp() - staleMargin
-        if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
+        const margin = getCurrentUnixTimestamp() - staleMargin;
+        if (
+          !coinPlatformData[PK] ||
+          coinPlatformData[PK].timestamp < margin ||
+          coinPlatformData[PK].confidence < 0.99
+        ) {
           await iterator(PK);
         }
       } catch (e) {
@@ -97,4 +121,13 @@ export async function getCoinPlatformData(coins: Coin[]) {
     console.error(e);
   }
   return coinPlatformData;
+}
+
+export async function aggregatePlatforms(
+  chain: string,
+  address: string,
+  aggregatedPlatforms: string[],
+) {
+  const normalizedAddress = lowercase(address, chain);
+  aggregatedPlatforms.push(`${chain}:${normalizedAddress}`);
 }

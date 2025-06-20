@@ -3,7 +3,6 @@ import fees from "./fees/config";
 import aggregators from "./aggregators/config";
 import options from "./options/config";
 import incentives from "./incentives/config";
-import protocols from "./protocols/config";
 import derivatives from "./derivatives/config";
 import aggregatorDerivatives from "./aggregator-derivatives/config";
 import { AdaptorsConfig, IJSON } from "./types";
@@ -15,7 +14,6 @@ const configs = {
   aggregators,
   options,
   incentives,
-  protocols,
   derivatives,
   aggregatorDerivatives
 } as IJSON<AdaptorsConfig>;

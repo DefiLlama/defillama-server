@@ -40,7 +40,7 @@ async function main() {
   }
 
   const adapterFn = typeof protocolWrapper === 'function' ? protocolWrapper : protocolWrapper[protocol];
-  const results = await adapterFn(0);
+  const results = await adapterFn(0)
   const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );
@@ -57,13 +57,13 @@ async function main() {
   console.log(`^^^^ Example results ^^^^`); */
   let items = Object.values(lTable)
   const itemCount = items.length;
-  if (itemCount > 999) {
+  if (itemCount > 99) {
     items.sort(() => Math.random() - 0.5);
-    items = items.slice(0, 999);
+    items = items.slice(0, 99);
   }
   logTable(items)
-  if (itemCount > 999)
-    console.log(`Too many items to log: ${itemCount}, showing random 999`);
+  if (itemCount > 99)
+    console.log(`Too many items to log: ${itemCount}, showing random 99`);
 
 }
 main();

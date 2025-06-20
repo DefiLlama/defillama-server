@@ -93,7 +93,7 @@ async function getDexPools(){
         bridgedCoins[to].push(from)
     })
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes" && !excludedPools.includes(p.pool))
+        (p) => config.protocols[p.project]?.category === "Dexs" && !excludedPools.includes(p.pool))
     return {dexPools, cgCoins, bridgedCoins}
 }
 

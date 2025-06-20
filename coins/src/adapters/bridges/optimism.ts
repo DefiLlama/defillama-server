@@ -50,7 +50,7 @@ export default async function bridge(): Promise<Token[]> {
   //       // if (from_lowerCase !== from)
   //       //   tokens.push([from_lowerCase, to, symbol, decimals]);
   //       let token = from;
-  //       if (!["solana"].includes(chain)) token = token.toLowerCase();
+  //       if (!chainsThatShouldNotBeLowerCased.includes(chain)) token = token.toLowerCase();
   //       tokens.push([token, to, symbol, decimals]);
   //     },
   //   );
@@ -64,12 +64,7 @@ export default async function bridge(): Promise<Token[]> {
         const decimals = +decimalsNum;
         if (isNaN(decimals))
           throw new Error("Is not valid token mapping: " + from);
-        // const from_lowerCase = from.toLowerCase()
-        // if (from_lowerCase !== from)
-        //   tokens.push([from_lowerCase, to, symbol, decimals]);
-        let token = from;
-        if (!["solana"].includes(chain)) token = token.toLowerCase();
-        tokens.push([token, to, symbol, decimals]);
+        tokens.push([from, to, symbol, decimals]);
       },
     );
     response.push(formatExtraTokens(chain, tokens));

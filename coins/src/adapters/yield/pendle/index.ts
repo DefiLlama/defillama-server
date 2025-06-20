@@ -288,3 +288,5 @@ export async function penpie(timestamp: number = 0) {
     ),
   );
 }
+
+pendle(); // ts-node src/adapters/yield/pendle/index.ts

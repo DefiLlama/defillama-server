@@ -1259,5 +1259,3 @@ const CHAINS_ASSETS = 'https://api.llama.fi/chain-assets/chains'
 const LIQUIDITY_API = 'https://defillama-datasets.llama.fi/liquidity.json'
 const ARTICLES_API = 'https://api.llama.fi/news/articles'
 const NFT_MARKETPLACES_VOLUME_API = 'https://nft.llama.fi/exchangeVolume'
-
-storeAppMetadata()

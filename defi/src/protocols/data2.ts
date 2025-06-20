@@ -14941,7 +14941,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2038",
-    name: "lisUSD", // rebrand from Helio Protocol (lisUSD)
+    name: "Lista CDP", 
     previousNames: ["Helio Protocol (lisUSD)"],
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
@@ -14949,7 +14949,7 @@ const data2: Protocol[] = [
     description:
       "Lista DAO functions as a open-source liquidity protocol for earning yields on collateralized Crypto assets (BNB, ETH, Stablecoins, and other cryptocurrencies) and borrowing of our decentralized stablecoin, lisUSD. It uses and expands the proven MakerDAO model for a decentralized, unbiased, collateral-backed destablecoin",
     chain: "Binance",
-    logo: `${baseIconsUrl}/lisusd.png`,
+    logo: `${baseIconsUrl}/lista-dao.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

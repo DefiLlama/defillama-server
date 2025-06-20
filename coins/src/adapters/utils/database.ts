@@ -1,23 +1,9 @@
 require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import {
-  Write,
-  DbEntry,
-  DbQuery,
-  Read,
-  CoinData,
-  Metadata,
-} from "./dbInterfaces";
-import { batchWrite2, translateItems } from "../../../coins2";
-const confidenceThreshold: number = 0.3;
+import { Write, DbEntry, Read, CoinData } from "./dbInterfaces";
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import produceKafkaTopics from "../../utils/coins3/produce";
-import { lowercase } from "../../utils/coingeckoPlatforms";
-import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
@@ -25,6 +11,21 @@ process.env.tableName = "prod-coins-table";
 
 let cache: any = {};
 let lastCacheClear: number;
+
+function padAddress(address: string, length: number = 66): string {
+  let prefix = "0x";
+  const data = address.substring(address.indexOf(prefix) + prefix.length);
+  const zeros = length - prefix.length - data.length;
+  for (let i = 0; i < zeros; i++) prefix += "0";
+  return prefix + data;
+}
+
+function lowercase(address: string, chain: string) {
+  if (chain == "starknet") return padAddress(address.toLowerCase());
+  return chainsThatShouldNotBeLowerCased.includes(chain)
+    ? address
+    : address.toLowerCase();
+}
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -194,174 +195,6 @@ async function getTokenAndRedirectDataFromAPI(
     return data;
   });
 }
-async function getTokenAndRedirectDataDB(
-  tokens: string[],
-  chain: string,
-  timestamp: number,
-  hoursRange: number,
-) {
-  let allReads: Read[] = [];
-  const batchSize = 500;
-
-  for (let lower = 0; lower < tokens.length; lower += batchSize) {
-    const upper =
-      lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
-    // in order of tokens
-    // timestamped origin entries
-    let timedDbEntries: any[] = await Promise.all(
-      tokens.slice(lower, upper).map((t: string) => {
-        return getTVLOfRecordClosestToTimestamp(
-          chain == "coingecko"
-            ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${lowercase(t, chain)}`,
-          timestamp,
-          hoursRange * 60 * 60,
-        );
-      }),
-    );
-
-    // calls probably get jumbled in here
-    // current origin entries, for current redirects
-    const latestDbEntries: DbEntry[] = await batchGet(
-      tokens.slice(lower, upper).map((t: string) => ({
-        PK:
-          chain == "coingecko"
-            ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${lowercase(t, chain)}`,
-        SK: 0,
-      })),
-    );
-
-    // current redirect links
-    const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
-      const selectedEntries: any[] = timedDbEntries.filter(
-        (t: any) => d.PK == t.PK,
-      );
-      if (selectedEntries.length == 0) {
-        return { PK: d.redirect, SK: d.SK };
-      } else {
-        return { PK: selectedEntries[0].redirect, SK: selectedEntries[0].SK };
-      }
-    });
-
-    // timed redirect data
-    let timedRedirects: any[] = await Promise.all(
-      redirects.map((r: DbQuery) => {
-        if (r.PK == undefined) return;
-        return getTVLOfRecordClosestToTimestamp(
-          r.PK,
-          timestamp,
-          hoursRange * 60 * 60,
-        );
-      }),
-    );
-
-    // aggregate
-    let validResults: Read[] = latestDbEntries
-      .map((ld: DbEntry) => {
-        let dbEntry = timedDbEntries.find((e: any) => {
-          if (e.SK != null) return e.PK == ld.PK;
-        });
-        if (dbEntry != null) {
-          const latestDbEntry: DbEntry | undefined = latestDbEntries.find(
-            (e: any) => {
-              if (e.SK != null) return e.PK == ld.PK;
-            },
-          );
-
-          dbEntry.decimals = latestDbEntry?.decimals;
-          dbEntry.symbol = latestDbEntry?.symbol;
-        }
-        let redirect = timedRedirects.find((e: any) => {
-          if (e != null) return e.PK == ld.redirect;
-        });
-
-        if (dbEntry == null && redirect == null)
-          return { dbEntry: ld, redirect: ["FALSE"] };
-        if (dbEntry && ld.redirect) dbEntry.redirect = ld.redirect;
-        if (redirect == null) return { dbEntry, redirect: [] };
-        return { dbEntry: ld, redirect: [redirect] };
-      })
-      .filter((v: any) => v.redirect[0] != "FALSE");
-
-    allReads.push(...validResults);
-  }
-  return aggregateTokenAndRedirectData(allReads);
-}
-export async function filterWritesWithLowConfidence(
-  allWrites: Write[],
-  latencyHours: number = 3,
-) {
-  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
-
-  allWrites = allWrites.filter((w: Write) => w != undefined);
-  const allReads = (
-    await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
-  ).filter(
-    (w: any) =>
-      (w.timestamp ?? 0) > recentTime || (w.created ?? 0 > recentTime),
-  );
-
-  const filteredWrites: Write[] = [];
-  const checkedWrites: Write[] = [];
-
-  if (allWrites.length == 0) return [];
-
-  allWrites.map((w: Write) => {
-    let checkedWritesOfThisKind = checkedWrites.filter(
-      (x: Write) =>
-        x.PK == w.PK &&
-        (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
-          w.SK != 0 &&
-          x.SK != 0) ||
-          (x.SK == 0 && w.SK == 0)),
-    );
-
-    if (checkedWritesOfThisKind.length > 0) return;
-    checkedWrites.push(w);
-
-    let allWritesOfThisKind = allWrites.filter(
-      (x: Write) =>
-        x.PK == w.PK &&
-        (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
-          w.SK != 0 &&
-          x.SK != 0) ||
-          (x.SK == 0 && w.SK == 0)),
-    );
-
-    let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
-
-    if (allWritesOfThisKind.length == 1) {
-      if (
-        allReadsOfThisKind.length == 1 &&
-        allWritesOfThisKind[0].confidence < allReadsOfThisKind[0].confidence
-      )
-        return;
-      if (
-        "confidence" in allWritesOfThisKind[0] &&
-        allWritesOfThisKind[0].confidence > confidenceThreshold
-      ) {
-        filteredWrites.push(allWritesOfThisKind[0]);
-        return;
-      }
-    } else {
-      const maxConfidence = Math.max.apply(
-        null,
-        [...allWritesOfThisKind, ...allReadsOfThisKind].map(
-          (x: Write) => x.confidence,
-        ),
-      );
-      filteredWrites.push(
-        allWritesOfThisKind.filter(
-          (x: Write) =>
-            x.confidence == maxConfidence && x.confidence > confidenceThreshold,
-        )[0],
-      );
-    }
-  });
-
-  return filteredWrites.filter((f: Write) => f != undefined);
-}
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
     .map((r: Read) => {
@@ -401,70 +234,6 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
     .filter((d: CoinData) => d.price != -1);
 
   return coinData;
-}
-export async function batchWriteWithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  failOnError: boolean,
-): Promise<void> {
-  try {
-    const { previousItems, redirectChanges } = await readPreviousValues(items);
-    const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-      await checkMovement(items, previousItems);
-    await batchWrite([...filteredItems, ...redirectChanges], failOnError);
-    await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
-  } catch (e) {
-    const adapter = items.find((i) => i.adapter != null)?.adapter;
-    console.log(`batchWriteWithAlerts failed with: ${e}`);
-    if (process.env.URGENT_COINS_WEBHOOK)
-      await sendMessage(
-        `batchWriteWithAlerts ${adapter} failed with: ${e}`,
-        process.env.URGENT_COINS_WEBHOOK!,
-        true,
-      );
-    else
-      await sendMessage(
-        "batchWriteWithAlerts error but missing urgent webhook",
-        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-        true,
-      );
-  }
-}
-export async function batchWrite2WithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-) {
-  const { previousItems, redirectChanges } = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
-
-  await batchWrite2(
-    await translateItems(filteredItems),
-    undefined,
-    undefined,
-    "DB 390",
-  );
-}
-async function readPreviousValues(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  latencyHours: number = 6,
-): Promise<{ previousItems: DbEntry[]; redirectChanges: any[] }> {
-  let queries: { PK: string; SK: number }[] = [];
-  items.map(
-    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
-      if (i % 2) return;
-      queries.push({
-        PK: t.PK,
-        SK: 0,
-      });
-    },
-  );
-  const results = await batchGet(queries);
-  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
-  const previousItems = results.filter(
-    (r: any) => r.timestamp > recentTime || r.confidence > 1,
-  );
-
-  const redirectChanges = findRedirectChanges(items, results);
-  return { previousItems, redirectChanges };
 }
 function findRedirectChanges(items: any[], results: any[]): any[] {
   const newRedirects: { [key: string]: any } = {};
@@ -529,26 +298,4 @@ async function checkMovement(
   // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
   return filteredItems.filter((v: any) => v != null);
-}
-export async function getDbMetadata(
-  assets: string[],
-  chain: string,
-): Promise<Metadata> {
-  const res: DbEntry[] = await batchGet(
-    assets.map((a: string) => ({
-      PK:
-        chain == "coingecko"
-          ? `coingecko#${a.toLowerCase()}`
-          : `asset#${chain}:${lowercase(a, chain)}`,
-      SK: 0,
-    })),
-  );
-  const metadata: Metadata = {};
-  res.map((r: DbEntry) => {
-    metadata[r.PK.substring(r.PK.indexOf(":") + 1)] = {
-      decimals: r.decimals,
-      symbol: r.symbol,
-    };
-  });
-  return metadata;
 }

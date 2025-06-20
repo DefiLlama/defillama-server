@@ -28,7 +28,6 @@
     "@types/jest": "^29.0.0",
     "@types/node": "^14.14.35",
     "@types/node-fetch": "^2.5.10",
-    "aws-sdk": "^2.1692.0",
     "babel-jest": "^29.0.0",
     "babel-loader": "^8.2.2",
     "esbuild": "^0.14.38",
@@ -45,7 +44,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.354.0",
     "@defillama/sdk": "^5.0.96",
     "@ethersproject/bignumber": "^5.5.0",
     "@project-serum/anchor": "^0.26.0",

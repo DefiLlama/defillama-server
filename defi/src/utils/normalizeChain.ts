@@ -4616,7 +4616,9 @@ export function getChainNameFromId(id: string | number | undefined) {
   return chainIdToNameMap['' + id]
 }
 
-export const chainNameToIdMap: { [name: string]: string } = {}
+export const chainNameToIdMap: { [name: string]: string } = {
+  'Plume': 'plume', // 'plume' key is used for the deprecated chain, so we need to map 'Plume' to 'plume'
+}
 const chainNames = Object.keys(chainCoingeckoIds)
 chainNames.sort()
 chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))

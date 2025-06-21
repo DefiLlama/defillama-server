@@ -52,11 +52,14 @@ async function getTokenPrices(chain: string, timestamp: number) {
   const writes: Write[] = [];
 
   tokens.forEach((token: any, i: number) => {
+    // Oracle price is in 8 decimals (standard for USD prices)
+    const priceInUSD = prices[i][0] / 1e8;
+    
     addToDBWritesList(
       writes,
       chain,
       token,
-      prices[i][0] / 10 ** decimals[i],
+      priceInUSD,
       decimals[i],
       symbols[i],
       timestamp,

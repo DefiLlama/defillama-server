@@ -38,7 +38,9 @@ protocols.forEach((protocol: any) => {
 
 
 const fetchJson = async (url: string) => fetch(url).then(res => res.json())
-const slugMap: any = {}
+const slugMap: any = {
+  'Binance': 'bsc',
+}
 
 const slug = (tokenName = '') => {
   if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(' ').join('-').split("'").join('')

@@ -9318,15 +9318,16 @@ const data4: Protocol[] = [
   },
   {
     id: "5973",
-    name: "Rolldex",
+    name: "RollX",
+    previousNames: ["Rolldex"],
     address: null,
     symbol: "-",
-    url: "https://rolldex.io",
+    url: "https://www.rolldex.io/",
     description:
-      "Rolldex is the first BitVM-powered BTCFi-centric derivatives exchange.",
+      "The first BitVM-powered multichain BTC-Fi-centric decentralized derivatives trading platform. 100% community-owned.",
     chain: "Bitlayer",
-    logo: `${baseIconsUrl}/rolldex.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/rollx.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9334,7 +9335,8 @@ const data4: Protocol[] = [
     chains: ["Bitlayer","Base"],
     module: "rolldex/index.js",
     forkedFrom: [],
-    twitter: "Rolldex_io",
+    twitter: "rollxfi",
+    audit_links: ["https://skynet.certik.com/zh-CN/projects/rolldex"],
     listedAt: 1743442067
   },
   {

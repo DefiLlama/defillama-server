@@ -21,7 +21,7 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
 
 
 export function getFileCacheKeyV2() {
-  return `dimensions-data-v2-v1.0.45`
+  return `dimensions-data-v2-v1.0.46`
 }
 
 // to ensure that we pull the cache data only once

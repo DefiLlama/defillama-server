@@ -9318,12 +9318,12 @@ const data4: Protocol[] = [
   },
   {
     id: "5973",
-    name: "Rolldex",
+    name: "RollX",
     address: null,
     symbol: "-",
     url: "https://rolldex.io",
     description:
-      "Rolldex is the first BitVM-powered BTCFi-centric derivatives exchange.",
+      "RollX is the first BitVM-powered BTCFi-centric derivatives exchange.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/rolldex.jpg`,
     audits: "0",
@@ -9334,7 +9334,7 @@ const data4: Protocol[] = [
     chains: ["Bitlayer","Base"],
     module: "rolldex/index.js",
     forkedFrom: [],
-    twitter: "Rolldex_io",
+    twitter: "rollxfi",
     listedAt: 1743442067
   },
   {

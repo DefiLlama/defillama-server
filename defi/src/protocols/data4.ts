@@ -17244,7 +17244,7 @@ const data4: Protocol[] = [
     github: ["altitude-fi"],
     listedAt: 1750434523
   },
-  /*{ // merged adapter was reverted https://github.com/DefiLlama/DefiLlama-Adapters/pull/15168
+  { 
     id: "6339",
     name: "MatStake",
     address: null,
@@ -17263,8 +17263,8 @@ const data4: Protocol[] = [
     twitter: "matchain_io",
     forkedFromIds: [],
     audit_links: ["https://docs.matstake.io/#contract-audit"],
-    listedAt: 1750434533
-  },*/
+    listedAt: 1750696932
+  },
   {
     id: "6340",
     name: "Unitas",

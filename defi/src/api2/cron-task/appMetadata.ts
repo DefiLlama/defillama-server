@@ -11,7 +11,7 @@ import { colord } from 'colord'
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from './githubMetrics';
-import { chainCoingeckoIds } from '../../utils/normalizeChain';
+import { chainCoingeckoIds, chainNameToIdMap } from '../../utils/normalizeChain';
 import protocols from '../../protocols/data';
 import parentProtocols from '../../protocols/parentProtocols';
 const { exec } = require('child_process');
@@ -38,7 +38,9 @@ protocols.forEach((protocol: any) => {
 
 
 const fetchJson = async (url: string) => fetch(url).then(res => res.json())
-const slugMap: any = {}
+const slugMap: any = {
+  'Binance': 'bsc',
+}
 
 const slug = (tokenName = '') => {
   if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(' ').join('-').split("'").join('')
@@ -293,7 +295,7 @@ async function _storeAppMetadata() {
     })
 
     tvlData.protocols.forEach((protocol: any) => {
-      let id = protocol.id ?? protocol.defillamaId 
+      let id = protocol.id ?? protocol.defillamaId
       if (id && protocol.chains?.length) {
         if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
         protocol.chains.forEach((chain: any) => {
@@ -332,7 +334,7 @@ async function _storeAppMetadata() {
       dimensionsMap[mapKey] = dataMap
       data.protocols.map((pData: any) => {
         let id = pData.id ?? pData.defillamaId ?? pData.name
-        if ( pData.chains?.length) {
+        if (pData.chains?.length) {
           if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
           pData.chains.forEach((chain: any) => {
             protocolChainSetMap[id].add(chain)
@@ -341,7 +343,7 @@ async function _storeAppMetadata() {
 
         if (!pData.hasOwnProperty('total24h')) return; // skip if this total24h field is missing
         if (pData.id) dataMap[pData.id] = pData
-        if (pData.defillamaId)  dataMap[pData.defillamaId] = pData
+        if (pData.defillamaId) dataMap[pData.defillamaId] = pData
         if (pData.name) dataMap[pData.name] = pData
       })
     })
@@ -386,7 +388,7 @@ async function _storeAppMetadata() {
       chainDenominationsKeys.forEach((key) => {
         obj[key] = data[key] ?? null
       })
-      if (data.parent?.chain === 'Ethereum') 
+      if (data.parent?.chain === 'Ethereum')
         obj = {
           "geckoId": "ethereum",
           "cmcId": "1027",
@@ -592,7 +594,7 @@ async function _storeAppMetadata() {
 
     for (const protocol of holdersRevenueData.protocols) {
       if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
-      
+
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         holdersRevenue: true
@@ -803,6 +805,12 @@ async function _storeAppMetadata() {
     const sortedChainData = Object.keys(finalChains)
       .sort()
       .reduce((r: any, k) => ((r[k] = finalChains[k]), r), {})
+
+    for (const _chain of Object.values(sortedChainData)) {
+      const chain = _chain as any
+      chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name)
+      if (!chainNameToIdMap[chain.name]) console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`,)
+    }
 
     await storeRouteData('/config/smol/appMetadata-chains.json', sortedChainData)
     console.log('finished building metadata')
@@ -1029,7 +1037,7 @@ async function _storeAppMetadata() {
         childProtocolIds.forEach((id: any) => {
           hacksData.push(...(hacksMap[id] ?? []))
         })
-        
+
       }
       if (hacksData) hacksData = hacksData.sort((a: any, b: any) => b.date - a.date)
 

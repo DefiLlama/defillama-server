@@ -14537,7 +14537,7 @@ const data3_1: Protocol[] = [
     audit_links: [
       "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_f(x)_V2_Report_v1.4_20250107.pdf"
     ],
-    stablecoins: ["fractional-eth"],
+    stablecoins: ["fxusd"],
     listedAt: 1691149929,
   },
   {

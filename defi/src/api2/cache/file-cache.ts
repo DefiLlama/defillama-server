@@ -197,3 +197,37 @@ export async function readTvlCacheAllFile() {
 
   return { ...restCache, allTvlData }
 }
+
+
+export async function readHistoricalTVLMetadataFile() {
+  const restCache = await readFromPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META)
+  if (!restCache) return {}
+  const { tvlEntryCount } = restCache
+  const historicalProtocolTvls: any = []
+  for (let i = 0; i < tvlEntryCount; i++) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    const chunk = await readFromPGCache(key)
+    historicalProtocolTvls.push(...chunk)
+  }
+
+  return { ...restCache, historicalProtocolTvls }
+}
+
+// allTvlData is quite big, so we need to chunk it
+// into smaller pieces to avoid hitting the file size limit, json.stringify error
+export async function storeHistoricalTVLMetadataFile(data: any) {
+  if (typeof data !== 'object') {
+    throw new Error('Invalid data type. Expected an object.')
+  }
+  const { historicalProtocolTvls = {}, ...restCache } = data
+  const chunkedTvlEntries = sliceIntoChunks(historicalProtocolTvls, 1000)
+  restCache.tvlEntryCount = chunkedTvlEntries.length
+
+  await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, restCache)
+  let i = 0
+  for (const chunk of chunkedTvlEntries) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    await writeToPGCache(key, chunk)
+    i++
+  }
+}

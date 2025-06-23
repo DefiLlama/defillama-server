@@ -93,5 +93,8 @@ export default {
     },
     "sofa-org": {
         id: "4779"
+    },
+    "optfun": {
+        id: "6337"
     }
 } as AdaptorsConfig

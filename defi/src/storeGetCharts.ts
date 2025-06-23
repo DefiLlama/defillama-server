@@ -14,8 +14,9 @@ import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
-import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
+import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
+import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -266,7 +267,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
       lastDailyTimestamp: data.lastDailyTimestamp,
       doublecountedProtocolIds: data.doublecountedProtocolIds
     }))
-    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
+    await storeHistoricalTVLMetadataFile(data);
     // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
   } else {
     const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
@@ -389,7 +390,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   await Promise.all(
     Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(
-        Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
+        Object.entries(chainDailyTvls).map(([section, tvls]) => [getDisplayChainNameCached(section), Object.entries(tvls)])
       );
       let filename = `lite/charts/categories/${category}`;
 

@@ -3710,5 +3710,14 @@ export default {
     },
     "gluex-protocol": {
         id: "6334"
-    }
+    },
+    "bullaexchange": {
+        id: "5766"
+    },
+    "aries-markets": {
+        id: "2228"
+    },
+    "yala": {
+        id: "6147"
+    },
 } as AdaptorsConfig

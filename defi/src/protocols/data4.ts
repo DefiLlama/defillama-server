@@ -17329,5 +17329,25 @@ const data4: Protocol[] = [
     github: ["kavablue"],
     listedAt: 1750619885
   },
+  {
+    id: "6343",
+    name: "StableHodl",
+    address: null,
+    symbol: "-",
+    url: "https://stablehodl.com/",
+    description: "StableHodl is a Stablecoin Yield Generation platform powered by HeLa Network. StableHodl leverages funding arbitrage within crypto exchanges to optimize returns and generates yields, rewards stakers with HLUSD, the native stable coin of HeLa network.",
+    chain: "HeLa",
+    logo: `${baseIconsUrl}/stablehodl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["HeLa"],
+    module: "stablehodl/index.js",
+    twitter: "StableHodl",
+    forkedFromIds: [],
+    listedAt: 1750697565
+  },
 ];
 export default data4;

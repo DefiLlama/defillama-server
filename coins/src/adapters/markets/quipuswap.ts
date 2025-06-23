@@ -19,12 +19,9 @@ export async function quipuswap(timestamp: number = 0) {
 
   res.map(({ tokenAddress, exchangeRate, metadata }: any) => {
     if (!metadata) return;
-    const { symbol, decimals } = metadata;
+    const { symbol, decimals, token_id } = metadata;
 
-    if (fa2priorities[tokenAddress] && fa2priorities[tokenAddress] != symbol)
-      return;
-
-    pricesObject[tokenAddress] = {
+    pricesObject[`${tokenAddress}-${token_id}`] = {
       symbol,
       decimals,
       price: exchangeRate,
@@ -37,6 +34,6 @@ export async function quipuswap(timestamp: number = 0) {
     pricesObject,
     projectName: "quipuswap",
     writes,
-    confidence: 0.7,
+    confidence: 1,
   });
 }

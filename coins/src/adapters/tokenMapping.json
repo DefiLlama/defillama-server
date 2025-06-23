@@ -8792,6 +8792,11 @@
       "to": "coingecko#plume",
       "decimals": 18,
       "symbol": "WPLUME"
+    },
+    "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "esBTC"
     }
   },
   "mxczkevm": {

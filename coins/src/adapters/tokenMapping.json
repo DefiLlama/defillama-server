@@ -6810,6 +6810,11 @@
     }
   },
   "hela": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#hela-usd",
+      "decimals": 18,
+      "symbol": "HLUSD"
+    },
     "0xf5b85320a772b436cb8105441a3db9ba29437b4a": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

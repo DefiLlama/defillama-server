@@ -21,7 +21,7 @@ export async function quipuswap(timestamp: number = 0) {
     if (!metadata) return;
     const { symbol, decimals, token_id } = metadata;
 
-    pricesObject[token_id ? `${tokenAddress}-${token_id}` : tokenAddress] = {
+    pricesObject[`${tokenAddress}-${token_id}`] = {
       symbol,
       decimals,
       price: exchangeRate,

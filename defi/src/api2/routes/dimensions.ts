@@ -191,6 +191,14 @@ export async function getProtocolDataHandler2({
   }
 
   response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
+  if (response.totalDataChartBreakdown) {
+    response.totalDataChartBreakdown.forEach(([_, chart]: any) => {
+      Object.entries(chart).forEach(([chain, value]: any) => {
+        delete chart[chain]
+        chart[getDisplayChainNameCached(chain)] = value
+      })
+    })
+  }
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   return response

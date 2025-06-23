@@ -21,7 +21,7 @@ export async function quipuswap(timestamp: number = 0) {
     if (!metadata) return;
     const { symbol, decimals, token_id } = metadata;
 
-    pricesObject[`${tokenAddress}-${token_id}`] = {
+    pricesObject[token_id ? `${tokenAddress}-${token_id}` : tokenAddress] = {
       symbol,
       decimals,
       price: exchangeRate,
@@ -34,6 +34,6 @@ export async function quipuswap(timestamp: number = 0) {
     pricesObject,
     projectName: "quipuswap",
     writes,
-    confidence: 1,
+    confidence: 0.9,
   });
 }

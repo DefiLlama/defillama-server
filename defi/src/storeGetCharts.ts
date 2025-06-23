@@ -16,6 +16,7 @@ import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
+import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -389,7 +390,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   await Promise.all(
     Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(
-        Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
+        Object.entries(chainDailyTvls).map(([section, tvls]) => [getDisplayChainNameCached(section), Object.entries(tvls)])
       );
       let filename = `lite/charts/categories/${category}`;
 

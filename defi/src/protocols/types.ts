@@ -35,9 +35,9 @@ export interface Protocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   rugged?: boolean;
-  deadUrl?: boolean;
-  deadFrom?: number | string;
   excludeTvlFromParent?: boolean;
+  deadUrl?: boolean; // for all domains that stopped being used, to avoid scammers registering there for a scam page
+  deadFrom?: number | string; // for protocols that are dead, will trigger less frequent TVL updates
   tokensExcludedFromParent?: {
     [chain:string]: string[];
   },

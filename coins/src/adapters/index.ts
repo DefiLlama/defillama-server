@@ -94,6 +94,7 @@ export default {
   chai: require("./yield/chai"),
   kuma: require("./rwa/kuma"),
   ondo: require("./rwa/ondo"),
+  pareto: require("./rwa/pareto"),
   hashnote: require("./rwa/hashnote"),
   hiyield: require("./rwa/hiyield"),
   mux: require("./yield/mux"),
@@ -151,4 +152,7 @@ export default {
   sundaeswapV3: require("./markets/sundaeswapv3"),
   tempest: require("./yield/tempest"),
   momentum: require("./markets/momentum"),
+  pst: require("./solana/pst"),
+  denario: require("./rwa/denario"),
+  // quipuswap: require("./markets/quipuswap"),
 };

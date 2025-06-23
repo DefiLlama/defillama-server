@@ -253,17 +253,18 @@ function getRecordItem(record: any) {
 const deleteRecordsList: any = {}
 
 async function tvlDeleteGetList(ws: any, protocol: IProtocol, data: any) {
+  await initializeTVLCacheDB()
 
-  const usdTvlRecords = await dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": dailyTvl(protocol.id),
-      ":from": data.dateFrom - 1, // -1 to include the from date
-      ":to": data.dateTo + 1, // +1 to include the to date
-    },
-    KeyConditionExpression: "PK = :pk AND SK BETWEEN :from AND :to",
-  });
 
-  (usdTvlRecords.Items ?? []).forEach((item: any) => {
+  const usdTvlRecords = await getProtocolItems(dailyTvl, protocol.id, {
+    timestampFrom: data.dateFrom - 86400,
+    timestampTo: data.dateTo + 86400,
+  })
+
+  console.log('Pulled ', usdTvlRecords.length || 0, 'tvl records for protocol:', protocol.name, 'from:', new Date(data.dateFrom * 1000).toDateString(), 'to:', new Date(data.dateTo * 1000).toDateString())
+
+
+  usdTvlRecords.forEach((item: any) => {
     const id = `${protocol.id}-${item.SK}`
     const res = { id, protocol, usdTvls: item, unixTimestamp: item.SK }
     delete item.PK

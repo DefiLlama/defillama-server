@@ -111,3 +111,4 @@ jobs:
           DUNE_API_KEYS: ${{ secrets.DUNE_API_KEYS }}
           APIKEY: ${{ secrets.APIKEY }}
           SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}
+          FRONT_API_TOKEN: ${{ secrets.FRONT_API_TOKEN }}

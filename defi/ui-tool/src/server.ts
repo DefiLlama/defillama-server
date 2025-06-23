@@ -1,10 +1,11 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
-const path = require('path');
 const WS = require('ws');
 const { spawn } = require('child_process');
 
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
@@ -112,7 +113,7 @@ wss.on('connection', (ws: any) => {
         break;
 
 
-      
+
       case 'tvl-runCommand':
         runTvlAction(ws, data.data);
         break;

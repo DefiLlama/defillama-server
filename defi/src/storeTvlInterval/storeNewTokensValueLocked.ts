@@ -17,8 +17,8 @@ type StoreTvlOptions = {
   overwriteExistingData?: boolean,
 }
 
-function compressTVL(obj: tvlsObject<TokensValueLocked>, hourlyPK: string) {
-  const isUSDValue = /usd/i.test(hourlyPK);
+function compressTVL(obj: tvlsObject<TokensValueLocked>, _hourlyPK: string) {
+  // const isUSDValue = /usd/i.test(hourlyPK);
   Object.keys(obj).forEach((key) => {
     Object.keys(obj[key]).forEach((coinKey) => {
       let value = obj[key][coinKey]

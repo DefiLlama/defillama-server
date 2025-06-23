@@ -7,6 +7,7 @@ import axios from 'axios';
 import { protocolsById } from "../../protocols/data";
 import { importAdapter, } from "../../utils/imports/importAdapter";
 import { sendMessage } from '../../utils/discord';
+import { tableToString } from '../utils';
 
 const lines = [] as string[]
 
@@ -88,7 +89,8 @@ async function run() {
     'Rho Markets',
     'Orbit Protocol',
     'MovePosition',
-    'DAOLama'
+    'DAOLama',
+    'RealT RMM Marketplace V2',
   ])
   const filteredHighBorrowedProtocols = verHighBorrowedProtocols.filter((i: any) => {
     return i.borrowedOrig  > 200_000 && !i.isMarkedDead && i.borrowedDiff > 5 && i.category === 'Lending' && !whitelistedSet.has(i.name)
@@ -98,13 +100,13 @@ async function run() {
     console.log('These are protocols with high borrowed tvl [filtered list]')
     console.table(filteredHighBorrowedProtocols, ['id', 'name', 'borrowedDiffHn', 'borrowed', 'hnTvl', 'category', 'chain', 'isMarkedDead'])
 
-    if (process.env.TEAM_WEBHOOK) {
+    if (process.env.UNLISTED_WEBHOOK) {
       let message = tableToString(filteredHighBorrowedProtocols, ['id', 'name', 'borrowedDiffHn', 'borrowed', 'hnTvl', 'chain',])
       message = `These are protocols with high borrowed tvl 
       ${message}
     (if the protocol has correct data, add it to the whitelist here: https://github.com/DefiLlama/defillama-server/blob/master/defi/src/api2/scripts/checkForDeadProtocols.ts#L87)
       `
-      await sendMessage(message, process.env.TEAM_WEBHOOK!)
+      await sendMessage(message, process.env.UNLISTED_WEBHOOK!)
 
     }
   }
@@ -133,37 +135,4 @@ function getAverageOfObject(obj: Record<string, number> = {}) {
 function isHackedOrRugged(protocol: any) {
   const str = JSON.stringify(protocol.hallmarks ?? []).toLowerCase()
   return str.includes('hack') || str.includes('rug')
-}
-
-function tableToString(data: any, columns: any) {
-  let tableString = '';
-
-  // Add the header row
-  // tableString += columns.join(' | ') + '\n';
-  // tableString += columns.map(() => '---').join(' | ') + '\n';
-  const headerObject: any = {}
-  const headerObject1: any = {}
-  columns.forEach((col: any) => {
-    headerObject[col] = col
-    headerObject1[col] = '---'
-  })
-  data.unshift(headerObject1)
-  data.unshift(headerObject)
-  // Calculate the maximum width for each column
-  const columnWidths = columns.map((col: any) => 
-    Math.max(col.length, ...data.map((row: any) => (row[col] !== undefined ? String(row[col]).length : 0)))
-  );
-
-  // Add the data rows
-  data.forEach((row: any) => {
-
-    // Format the row with padded values
-    const tableRow = columns.map((col: any, index: number) => {
-      const cell = row[col] !== undefined ? String(row[col]) : '';
-      return cell.padEnd(columnWidths[index], ' ');
-    }).join(' | ');
-    tableString += tableRow + '\n';
-  });
-
-  return tableString;
 }

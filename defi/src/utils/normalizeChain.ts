@@ -33,9 +33,24 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
+const doublecountedCategorySet = new Set([
+  "Yield Aggregator",
+  "Yield",
+  "Liquidity manager",
+  "Onchain Capital Allocator",
+  "Risk Curators",
+  "Treasury Manager",
+  "Anchor BTC",
+  "CDP Manager",
+  "Restaked BTC",
+  "Basis Trading",
+  "CeDeFi",
+  "RWA Lending",
+  "RWA"
+].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Onchain Capital Allocator", "Risk Curators", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
+  return moduleDoubleCounted === true || (typeof category === 'string' && doublecountedCategorySet.has(category?.toLowerCase()));
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -3127,6 +3142,13 @@ export const chainCoingeckoIds = {
     url: "https://joltify.io/",
     github: ["joltify-finance"]
   },
+  "IOTA": {
+    geckoId: 'iota',
+    symbol: 'IOTA',
+    cmcId: "1720",
+    twitter: "iota",
+    url: "https://www.iota.org/",
+  },
   "IOTA EVM": {
     geckoId: 'iota',
     symbol: 'IOTA',
@@ -3570,9 +3592,9 @@ export const chainCoingeckoIds = {
     chainId: 21000000
   },
   "VinuChain": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "vinuchain",
+    symbol: "VC",
+    cmcId: "28580",
     categories: ["EVM"],
     twitter: "vinuchain",
     url: "https://www.vinuchain.org/",
@@ -4269,7 +4291,64 @@ export const chainCoingeckoIds = {
     cmcId: null,
     twitter: "milky_way_zone",
     url: "https://www.milkyway.zone/"
-  }
+  },
+  "Namada": {
+    geckoId: "namada",
+    symbol: "NAM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "namada",
+    url: "https://namada.net/",
+    github: ["anoma"],
+  },
+  "Civitia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://civitia.org/",
+    twitter: "civitiaorg",
+  },
+  "Titan": {
+    geckoId: null,
+    symbol: "TKX",
+    cmcId: null,
+    categories: ["EVM"],
+    url: "https://titanlab.io/home",
+    twitter: "TitanMainnet",
+    chainId: 18888
+  },
+  "LogX Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "LogX_trade",
+    url: "https://logx.network/",
+  },
+  "Numbers": {
+    geckoId: "numbers-protocol",
+    symbol: "NUM",
+    cmcId: "13521",
+    categories: ["EVM"],
+    twitter: "numbersprotocol",
+    url: "https://www.numbersprotocol.io/",
+    chainId: 10507,
+    github: ["numbersprotocol"],
+  },
+  "Phantasma": {
+    geckoId: "phantasma",
+    symbol: "SOUL",
+    cmcId: "2827",
+    categories: ["EVM"],
+    twitter: "PhantasmaChain",
+    url: "https://phantasma.info/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4461,7 +4540,9 @@ const chainLabelMap = {
   "echelon_initia": "Echelon Chain",
   "sseed": "Superseed",
   "xp": "Xphere",
-  "milkyway_rollup": "MilkyWay Rollup"
+  "milkyway_rollup": "MilkyWay Rollup",
+  "iota": "IOTA",
+  "logx": "LogX Network"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4562,7 +4643,9 @@ export function getChainNameFromId(id: string | number | undefined) {
   return chainIdToNameMap['' + id]
 }
 
-export const chainNameToIdMap: { [name: string]: string } = {}
+export const chainNameToIdMap: { [name: string]: string } = {
+  'Plume': 'plume', // 'plume' key is used for the deprecated chain, so we need to map 'Plume' to 'plume'
+}
 const chainNames = Object.keys(chainCoingeckoIds)
 chainNames.sort()
 chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))

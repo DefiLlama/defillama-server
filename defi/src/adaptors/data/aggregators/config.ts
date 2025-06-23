@@ -59,10 +59,9 @@ export default {
     enabled: false,
     id: "3847",
   },
-  // "openocean": {
-  //   enabled: false,
-  //   id: "533",
-  // },
+  "openocean": {
+    id: "533",
+  },
   "arcane-dex": {
     id: "3885",
   },
@@ -355,5 +354,14 @@ export default {
   },
   "haiku": {
     id: "6266"
+  },
+  "bluefin7k-aggregator": {
+    id: "6322"
+  },
+  "hyperbloom": {
+    id: "6329"
+  },
+  "gluex-protocol": {
+    id: "6334"
   }
 } as AdaptorsConfig;

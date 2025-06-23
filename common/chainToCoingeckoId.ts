@@ -28,7 +28,7 @@ export const chainToCoingeckoId = {
   secret: "secret",
   rsk: "rootstock",
   neo: "neo",
-  tezos: "tezos",
+  // tezos: "tezos",
   wan: "wanchain",
   ontology: "ontology",
   algorand: "algorand",
@@ -181,7 +181,7 @@ export const chainToCoingeckoId = {
   unichain: "unichain",
   ink: "ink",
   swellchain: "swellchain",
-  plume_mainnet: "plume-network"
+  plume_mainnet: "plume-network",
 };
 
 export default chainToCoingeckoId;

@@ -3720,4 +3720,7 @@ export default {
     "yala": {
         id: "6147"
     },
+    "alkimiya": {
+        id: "6344"
+    }
 } as AdaptorsConfig

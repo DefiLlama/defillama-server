@@ -3064,4 +3064,10 @@ export default {
     "garuda-defi": {
         id: "6324"
     },
+    "alkimiya": {
+        id: "6344"
+    },
+    "smardex-usdn": {
+        id: "6238"
+    }
 } as AdaptorsConfig

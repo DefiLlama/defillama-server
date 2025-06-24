@@ -17372,6 +17372,7 @@ const data4: Protocol[] = [
     module: "alkimiya/index.js",
     twitter: "alkimiya_io",
     forkedFromIds: [],
+    treasury: "alkimiya.js",
     listedAt: 1750782967
   },
   {

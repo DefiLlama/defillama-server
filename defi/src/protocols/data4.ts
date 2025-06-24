@@ -17462,5 +17462,24 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1750783915
   },
+  {
+    id: "6349",
+    name: "Smithii",
+    address: null,
+    symbol: "-",
+    url: "https://smithii.io/",
+    description: "Launch and Manage your token without Coding",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/smithii.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "SmithiiTools",
+    forkedFromIds: [],
+  },
 ];
 export default data4;

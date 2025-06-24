@@ -3722,5 +3722,8 @@ export default {
     },
     "alkimiya": {
         id: "6344"
+    },
+    "smithii": {
+        id: "6349"
     }
 } as AdaptorsConfig

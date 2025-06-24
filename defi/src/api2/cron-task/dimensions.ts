@@ -23,6 +23,7 @@ import { sluggifyString } from "../../utils/sluggify"
 import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
+import { ProtocolAdaptor } from '../../adaptors/data/types';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -240,8 +241,9 @@ async function run() {
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
-    function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any, hasAppMetrics?: boolean }) {
+    function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
+      if (dimensionProtocolInfo.doublecounted) skipChainSummary = true
 
 
       if (!protocolId) {
@@ -286,7 +288,7 @@ async function run() {
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
 
 
-      const isBreakdownAdapter = !isParentProtocol && dimensionProtocolInfo?.childProtocols?.length > 0
+      const isBreakdownAdapter = !isParentProtocol && (dimensionProtocolInfo?.childProtocols ?? []).length > 0
 
       if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
 

@@ -4349,6 +4349,31 @@ export const chainCoingeckoIds = {
     twitter: "PhantasmaChain",
     url: "https://phantasma.info/",
   },
+  "Inertia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    twitter: "Inertia_fi",
+    url: "https://inrt.fi/",
+  },
+  "Yominet": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    twitter: "kamigotchiworld",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4542,7 +4567,8 @@ const chainLabelMap = {
   "xp": "Xphere",
   "milkyway_rollup": "MilkyWay Rollup",
   "iota": "IOTA",
-  "logx": "LogX Network"
+  "logx": "LogX Network",
+  "yomi": "Yominet"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

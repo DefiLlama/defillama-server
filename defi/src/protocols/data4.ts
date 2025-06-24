@@ -10448,7 +10448,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     forkedFrom: [],
     module: "mainstreet/index.js",
-    twitter: "Main_StFinance",
+    twitter: "Main_St_Finance",
     listedAt: 1744280825
   },
   {

@@ -29718,6 +29718,19 @@ const data3_1: Protocol[] = [
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9498/files"],
         chains: [{chain: "base"}]
       },
+         {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://app.morpho.org/unichain/earn"],
+        chains: [{chain: "Unichain"}]
+      },
+         {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://x.com/MorphoLabs/status/1915405407251812787"],
+        chains: [{chain: "Hyperliquid L1"}]
+      },
+      
     ],
     forkedFrom: [],
     module: "morpho-blue/index.js",

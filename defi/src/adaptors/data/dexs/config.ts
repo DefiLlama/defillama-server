@@ -3069,5 +3069,8 @@ export default {
     },
     "smardex-usdn": {
         id: "6238"
-    }
+    },
+    "volta-markets": {
+        id: "6345"
+    },
 } as AdaptorsConfig

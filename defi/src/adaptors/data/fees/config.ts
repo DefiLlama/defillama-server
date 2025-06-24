@@ -3725,5 +3725,8 @@ export default {
     },
     "smithii": {
         id: "6349"
-    }
+    },
+    "volta-markets": {
+        id: "6345"
+    },
 } as AdaptorsConfig

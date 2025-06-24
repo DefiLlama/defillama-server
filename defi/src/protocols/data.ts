@@ -9503,7 +9503,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Dexs",
     chains: ["Near"],
-    oracles: ["Pyth"],
     module: "reffinance.js",
     twitter: "rhea_finance",
     parentProtocol: "parent#rhea-finance",

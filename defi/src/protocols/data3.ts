@@ -52585,6 +52585,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://oracles.euler.finance/146/"],
+        chains: [{chain: "Unichain"}]
+      },
+           {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://oracles.euler.finance/1923/"],
+        chains: [{chain: "Swellchain"}]
+      },
+    ],
      // euler does not set any oracles, they are set by the risk curators
     forkedFrom: [],
     module: "euler-v2/index.js",

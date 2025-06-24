@@ -216,7 +216,7 @@ const data3_1: Protocol[] = [
   {
     id: "2708",
     name: "Puzzle Lend",
-    address: "waves:-",
+    address: null,
     symbol: "PUZZLESWAP",
     url: "https://lend.puzzleswap.org/",
     description: "Puzzle Lend is the safest Lending Protocol built on the Waves blockchain",
@@ -3858,7 +3858,7 @@ const data3_1: Protocol[] = [
   {
     id: "2871",
     name: "Kimberlite",
-    address: "arbitrum:-",
+    address: null,
     symbol: "KLB",
     url: "https://kimberlite.rocks/",
     description: "Multichain high Yield, Token/LP Locker, and Utility backed NFT Collection",
@@ -4771,7 +4771,7 @@ const data3_1: Protocol[] = [
   {
     id: "2912",
     name: "Onsen Swap",
-    address: "era:-",
+    address: null,
     symbol: "ON",
     url: "https://app.onsenswap.xyz/",
     description: "Swap, Yield farming, Launchpad",
@@ -5125,7 +5125,7 @@ const data3_1: Protocol[] = [
   {
     id: "2928",
     name: "Veax",
-    address: "near:-",
+    address: null,
     symbol: "VEAX",
     url: "https://veax.com/",
     description:
@@ -8789,7 +8789,7 @@ const data3_1: Protocol[] = [
   {
     id: "3090",
     name: "MiaSwap",
-    address: "onus:-",
+    address: null,
     symbol: "MIA",
     url: "https://miaswap.io/",
     description:
@@ -10289,7 +10289,7 @@ const data3_1: Protocol[] = [
   {
     id: "3158",
     name: "Themis Protocol",
-    address: "arbitrum:-",
+    address: null,
     symbol: "TMS",
     url: "https://beta.themis.exchange/",
     description: "Themis Protocol is a decentralized, multi-chain supported Peer-to-Pool lending & borrowing platform",
@@ -12608,7 +12608,7 @@ const data3_1: Protocol[] = [
   {
     id: "3259",
     name: "Aftermath AMM",
-    address: "sui:-",
+    address: null,
     symbol: "-",
     url: "https://aftermath.finance",
     description: "The ease of a centralized exchange with none of the risk.",
@@ -12632,7 +12632,7 @@ const data3_1: Protocol[] = [
   {
     id: "3260",
     name: "Reax Swaps",
-    address: "mantle:-",
+    address: null,
     symbol: "REAX",
     url: "https://app.reax.one/",
     description:
@@ -12656,7 +12656,7 @@ const data3_1: Protocol[] = [
   {
     id: "3261",
     name: "Reax Assets",
-    address: "mantle:-",
+    address: null,
     symbol: "REAX",
     url: "https://app.reax.one/synthetics",
     description: "Reax Assets is a platform enabling creation and trading of synthetic assets",
@@ -12851,7 +12851,7 @@ const data3_1: Protocol[] = [
   {
     id: "3270",
     name: "Reax Lending",
-    address: "mantle:-",
+    address: null,
     symbol: "REAX",
     url: "https://app.reax.one/lend",
     description:
@@ -13366,7 +13366,7 @@ const data3_1: Protocol[] = [
   {
     id: "3293",
     name: "Gravity Bridge",
-    address: "gravitybridge:-",
+    address: null,
     symbol: "GRAV",
     assetToken: "-",
     url: "https://www.gravitybridge.net",
@@ -16884,7 +16884,7 @@ const data3_1: Protocol[] = [
   {
     id: "3451",
     name: "Astarter Launch ISPO",
-    address: "cardano:-",
+    address: null,
     symbol: "AA",
     url: "https://astarter.io/",
     description:
@@ -17473,7 +17473,7 @@ const data3_1: Protocol[] = [
   {
     id: "3478",
     name: "Astarter AMM",
-    address: "cardano:-",
+    address: null,
     symbol: "AA",
     url: "https://astarter.io/",
     description:
@@ -19883,7 +19883,7 @@ const data3_1: Protocol[] = [
   {
     id: "3585",
     name: "TangleSwap",
-    address: "ethereum:-",
+    address: null,
     symbol: "VOID",
     url: "https://tangleswap.exchange",
     description:
@@ -20805,7 +20805,7 @@ const data3_1: Protocol[] = [
   {
     id: "3626",
     name: "SpaceFi Scroll",
-    address: "scroll:-",
+    address: null,
     symbol: "SPACE",
     url: "https://spacefi.io",
     description: "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
@@ -21016,7 +21016,7 @@ const data3_1: Protocol[] = [
   {
     id: "3636",
     name: "Aftermath afSUI",
-    address: "sui:-",
+    address: null,
     symbol: "-",
     url: "https://aftermath.finance",
     description:
@@ -23560,7 +23560,7 @@ const data3_1: Protocol[] = [
   {
     id: "3750",
     name: "Metavault V3",
-    address: "linea:-",
+    address: null,
     symbol: "MVX",
     url: "https://metavault.trade/apps/swap",
     description: "Spot Trading on Metavault's V3-style DEX",
@@ -23644,7 +23644,7 @@ const data3_1: Protocol[] = [
   {
     id: "3754",
     name: "Acala Euphrates",
-    address: "acala:-",
+    address: null,
     symbol: "DOT",
     url: "https://farm.acala.network/",
     description: "Deposit DOT liquidity and earn boosted rewards",
@@ -24036,7 +24036,7 @@ const data3_1: Protocol[] = [
   {
     id: "3771",
     name: "PattieSwap",
-    address: "bsc:-", // there were issues with the original deployment, better to wait for cg listing
+    address: null, // there were issues with the original deployment, better to wait for cg listing
     symbol: "PATTIE",
     url: "https://pattieswap.finance/",
     description:
@@ -24078,7 +24078,7 @@ const data3_1: Protocol[] = [
   {
     id: "3773",
     name: "Elektrik",
-    address: "lightlink:-",
+    address: null,
     symbol: "ELTK",
     url: "https://app.elektrik.network/#/swap",
     description: "Omnichain Perpetual Swaps Exchange",
@@ -24438,7 +24438,7 @@ const data3_1: Protocol[] = [
   {
     id: "3791",
     name: "Maya Protocol",
-    address: "maya:-",
+    address: null,
     symbol: "CACAO",
     url: "https://www.mayaprotocol.com",
     description:
@@ -27103,7 +27103,7 @@ const data3_1: Protocol[] = [
   {
     id: "3911",
     name: "Metavault Derivatives V2",
-    address: "linea:-",
+    address: null,
     symbol: "MVX",
     url: "https://metavault.trade",
     description: "Derivatives Protocol on the linea Chain",
@@ -27416,7 +27416,7 @@ const data3_1: Protocol[] = [
   {
     id: "3925",
     name: "SingularityNet AGIX Staking",
-    address: "cardano:-",
+    address: null,
     symbol: "AGIX",
     url: "https://staking.singularitynet.io/howitworks",
     description: `By staking AGIX tokens, you support the operations of our blockchain network and in doing so you will be rewarded with more AGIX tokens for your contributions`,
@@ -28702,7 +28702,7 @@ const data3_1: Protocol[] = [
   {
     id: "3981",
     name: "Aftermath Aggregator",
-    address: "sui:-",
+    address: null,
     symbol: "-",
     url: "https://aftermath.finance",
     description: "A decentralized exchange (DEX) aggregator",
@@ -30035,7 +30035,7 @@ const data3_1: Protocol[] = [
   {
     id: "4040",
     name: "ICDex",
-    address: "icp:-",
+    address: null,
     symbol: "ICL",
     url: "https://iclight.io",
     description: "ICDex: A fully on-chain order book DEX on the IC",
@@ -32674,7 +32674,7 @@ const data3_1: Protocol[] = [
   {
     id: "4149",
     name: "Aurelius",
-    address: "mantle:-",
+    address: null,
     symbol: "-",
     url: "https://www.aurelius.finance/",
     description:
@@ -61997,7 +61997,7 @@ const data3_2: Protocol[] = [
   {
     id: "5474",
     name: "Swing",
-    address: "ethereum:-",
+    address: null,
     symbol: "$SWING",
     url: "https://swing.xyz/",
     description: "Swing is a digital asset API platform offering liquidity routing services for web2 & web3 businesses",

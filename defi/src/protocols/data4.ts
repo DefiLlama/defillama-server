@@ -8376,7 +8376,7 @@ const data4: Protocol[] = [
   // {
   //   id: "5932",
   //   name: "Energy Web Chain",
-  //   address: "energyweb:-",
+  //   address: null,
   //   symbol: "EWT",
   //   url: "https://www.energyweb.org/",
   //   description:
@@ -9426,7 +9426,7 @@ const data4: Protocol[] = [
   {
     id: "5978",
     name: "Polkadot Treasury",
-    address: "polkadot:-",
+    address: null,
     symbol: "DOT",
     url: "https://polkadot.com/",
     description:
@@ -10692,7 +10692,7 @@ const data4: Protocol[] = [
   {
     id: "6035",
     name: "peaq",
-    address: "peaq:-",
+    address: null,
     symbol: "PEAQ",
     url: "https://www.peaq.xyz/",
     description: "peaq is a layer-1 blockchain designed to be the go-to backbone for DePINs (real-world apps)",
@@ -10730,7 +10730,7 @@ const data4: Protocol[] = [
   {
     id: "6037",
     name: "Plume Mainnet",
-    address: "plume:-",
+    address: null,
     symbol: "PLUME",
     url: "https://plumenetwork.xyz",
     description: "Bringing the real world onchain",
@@ -10749,7 +10749,7 @@ const data4: Protocol[] = [
   {
     id: "6038",
     name: "Filecoin",
-    address: "filecoin:-",
+    address: null,
     symbol: "FIL",
     url: "https://filecoin.io/",
     description: "Filecoin is the largest decentralized data storage marketplace, protocol, & cryptocurrency.",
@@ -15604,7 +15604,7 @@ const data4: Protocol[] = [
   {
     id: "6267",
     name: "Stellar DEX",
-    address: "stellar:-",
+    address: null,
     symbol: "XLM",
     url: "https://developers.stellar.org/docs/learn/encyclopedia/sdex/liquidity-on-stellar-sdex-liquidity-pools#sdex",
     description:
@@ -15712,7 +15712,7 @@ const data4: Protocol[] = [
   {
     id: "6271",
     name: "Hydration Lending",
-    address: "hydradx:-",
+    address: null,
     symbol: "HDX", 
     url: "https://hydration.net/",
     description:

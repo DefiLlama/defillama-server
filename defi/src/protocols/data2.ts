@@ -1790,7 +1790,7 @@ const data2: Protocol[] = [
   {
     id: "1458",
     name: "Equilibrium Lending",
-    address: "equilibrium:-",
+    address: null,
     symbol: "EQ",
     url: "https://app.equilibrium.io/market",
     description: "Lending with collateral basket support and min LTV as low as 105%",
@@ -3794,7 +3794,7 @@ const data2: Protocol[] = [
     id: "1546",
     name: "Rhea Lend",
     previousNames: ["Burrow"],
-    address: "near:-",
+    address: null,
     symbol: "BRRR",
     url: "https://lending.rhea.finance/",
     description:
@@ -3863,7 +3863,7 @@ const data2: Protocol[] = [
   {
     id: "1549",
     name: "Babena",
-    address: "kadena:-",
+    address: null,
     symbol: "BABE",
     url: "https://babena.finance",
     description: "Certificate of Deposit on the Kadena blockchain",
@@ -4096,7 +4096,7 @@ const data2: Protocol[] = [
   {
     id: "1559",
     name: "KDLaunch",
-    address: "kadena:-",
+    address: null,
     symbol: "KDL",
     url: "https://www.kdlaunch.com/#/staking",
     description: "The First Decentralized IDO Platform on the Kadena Blockchain",
@@ -7941,7 +7941,7 @@ const data2: Protocol[] = [
   {
     id: "1728",
     name: "Astarnova",
-    address: "moonbeam:-",
+    address: null,
     symbol: "NOVA",
     url: "https://astarnova.io",
     description: "Astarnova is a DeFI protocol implementing a DEX, Farms and yield optimizers on Astar network",
@@ -8159,7 +8159,7 @@ const data2: Protocol[] = [
   {
     id: "1738",
     name: "Bifrost Liquid Staking",
-    address: "kusama:-",
+    address: null,
     symbol: "BNC",
     url: "https://bifrost.finance",
     description:
@@ -8856,7 +8856,7 @@ const data2: Protocol[] = [
   {
     id: "1769",
     name: "KDSwap",
-    address: "kadena:-",
+    address: null,
     symbol: "KDS",
     url: "https://kdswap.exchange",
     description: "KDSwap the first DEX that enables token tracking / price movement on the kadana blockchain.",
@@ -10643,7 +10643,7 @@ const data2: Protocol[] = [
   {
     id: "1847",
     name: "Acala Swap",
-    address: "acala:-",
+    address: null,
     symbol: "ACA",
     url: "https://apps.acala.network/swap",
     description:
@@ -10665,7 +10665,7 @@ const data2: Protocol[] = [
   {
     id: "1848",
     name: "Acala Dollar",
-    address: "acala:-",
+    address: null,
     symbol: "aUSD",
     url: "https://apps.acala.network/vault",
     description:
@@ -10688,7 +10688,7 @@ const data2: Protocol[] = [
   {
     id: "1849",
     name: "Acala Liquid Staking",
-    address: "acala:-",
+    address: null,
     symbol: "DOT",
     url: "https://apps.acala.network/ldot",
     description: "Liquidity for staked assets. Instant redeem. Available for Polkadot and Kusama.",
@@ -11364,7 +11364,7 @@ const data2: Protocol[] = [
   {
     id: "1879",
     name: "Acala LCDOT",
-    address: "acala:-",
+    address: null,
     symbol: "DOT",
     url: "https://apps.acala.network",
     description: "Liquid Crowdloans",
@@ -11532,7 +11532,7 @@ const data2: Protocol[] = [
   {
     id: "1886",
     name: "Kintsugi",
-    address: "kintsugi:-",
+    address: null,
     symbol: "KINT",
     url: "https://kintsugi.interlay.io",
     description: "Radically open #Bitcoin on Kusama Network, canary network of @interlayHQ",
@@ -11824,7 +11824,7 @@ const data2: Protocol[] = [
   {
     id: "1899",
     name: "Taiga Karura",
-    address: "karura:-",
+    address: null,
     symbol: "TAI",
     url: "https://www.taigaprotocol.io/",
     description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Kusama.",
@@ -14717,7 +14717,7 @@ const data2: Protocol[] = [
   {
     id: "2028",
     name: "Bifrost Dex",
-    address: "kusama:-",
+    address: null,
     symbol: "BNC",
     url: "https://bifrost.finance",
     description:
@@ -14832,7 +14832,7 @@ const data2: Protocol[] = [
   {
     id: "2033",
     name: "Interlay BTC",
-    address: "interlay:-",
+    address: null,
     symbol: "INTR",
     url: "https://interlay.io/",
     description: "Fully trustless and decentralized Bitcoin bridge",
@@ -15259,7 +15259,7 @@ const data2: Protocol[] = [
   {
     id: "2052",
     name: "Junoswap",
-    address: "juno:-",
+    address: null,
     symbol: "RAW",
     url: "https://www.junoswap.com/",
     description:
@@ -15656,7 +15656,7 @@ const data2: Protocol[] = [
   {
     id: "2069",
     name: "Interlay Staking",
-    address: "interlay:-",
+    address: null,
     symbol: "INTR",
     url: "https://interlay.io/",
     description: "Liquid staking for INTR tokens",
@@ -15677,7 +15677,7 @@ const data2: Protocol[] = [
   {
     id: "2070",
     name: "Interlay Collateral",
-    address: "interlay:-",
+    address: null,
     symbol: "INTR",
     url: "https://interlay.io/",
     description: "Polkadot (DOT) tokens locked to protect/collateralise the bridged BTC",
@@ -21747,7 +21747,7 @@ const data2: Protocol[] = [
   {
     id: "2335",
     name: "ABEL Finance",
-    address: "aptos:-",
+    address: null,
     symbol: "ABEL",
     url: "https://abelfinance.xyz/#/markets",
     description: "A Cross-Chain Lending Platform Built on Aptos and Sui",
@@ -25130,7 +25130,7 @@ const data2: Protocol[] = [
   {
     id: "2487",
     name: "Stargaze",
-    address: "stargaze:-",
+    address: null,
     symbol: "STARS",
     url: "https://www.stargaze.zone",
     description:
@@ -28772,7 +28772,7 @@ const data2: Protocol[] = [
   {
     id: "2650",
     name: "ShadowSwap",
-    address: "core:-",
+    address: null,
     symbol: "SHDW",
     url: "https://shadowswap.xyz",
     description:

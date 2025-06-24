@@ -7066,7 +7066,7 @@ const data: Protocol[] = [
   {
     id: "430",
     name: "Acumen",
-    address: "solana:-",
+    address: null,
     symbol: "ACM",
     url: "https://acumen.network",
     description:
@@ -10896,7 +10896,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "605",
     name: "Telos Swap",
-    address: "telos:-",
+    address: null,
     symbol: "SWAP",
     url: "https://www.tswaps.com",
     description:
@@ -15380,7 +15380,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "823",
     name: "TomoFinance",
-    address: "tomo:-",
+    address: null,
     symbol: "TFI",
     url: "https://tomo.finance",
     description: "TomoFinance is a portal to generate TAI, the stablecoin on TomoChain.",
@@ -18459,7 +18459,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "963",
     name: "Vexchange",
-    address: "vechain:-",
+    address: null,
     symbol: "VEX",
     url: "https://vexchange.io/swap",
     description: "A protocol for trading and automated liquidity provision on VeChain",
@@ -24552,7 +24552,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1243",
     name: "StackSwap",
-    address: "stacks:-",
+    address: null,
     symbol: "STSW",
     url: "https://app.stackswap.org/swap",
     description:
@@ -26068,7 +26068,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1314",
   name: "Shiden dApp Staking",
-  address: "shiden:-",
+  address: null,
   symbol: "SDN",
   url: "https://shiden.astar.network",
   description: "Shiden Network is a multi-chain decentralized application layer on Kusama Network. dApp staking is a mechanism that incentives developers who built in the Shiden ecosystem. Users can stake on those dApps to earn staking rewards and at the same time support the project by giving them a daily income.",
@@ -26346,7 +26346,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1327",
     name: "Astar dApps Staking",
-    address: "astar:-",
+    address: null,
     symbol: "ASTR",
     url: "https://astar.network",
     description:

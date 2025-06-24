@@ -16447,6 +16447,7 @@ const data2: Protocol[] = [
     listedAt: 1663680968,
     governanceID: ["snapshot:fistdex.eth"],
     github: ["FstSwapDex"],
+    deadUrl: true
   },
   {
     id: "2102",

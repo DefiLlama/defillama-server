@@ -15130,7 +15130,7 @@ const data4: Protocol[] = [
     description: "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure—on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers superior yields to depositors without increasing systemic risk. Founded in 2024, infiniFi is backed by top Web3 investors and is integrated with major protocols like AAVE, Pendle, and Ethena.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/infinifi.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -15140,6 +15140,11 @@ const data4: Protocol[] = [
     module: "infiniFi/index.js",
     twitter: "infinifilabs",
     github: ["InfiniFi-Labs"],
+    audit_links: [
+      "https://docsend.com/view/vxet6fdzgb6zhfnn",
+      "https://docsend.com/view/qtz5tmdi35d7f5si",
+      "https://docsend.com/view/8nw9dtr9qhssndzw"
+    ],
     listedAt: 1748465947
   },
   {

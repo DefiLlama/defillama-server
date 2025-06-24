@@ -534,6 +534,11 @@
     }
   },
   "ethereum": {
+    "0x3DDc84940Ab509C11B20B76B466933f40b750dc9": {
+      "decimals": "18",
+      "symbol": "BENJI",
+      "to": "coingecko#franklin-templeton-benji"
+    },
     "0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7": {
       "decimals": "8",
       "symbol": "DSC",

@@ -17354,30 +17354,5 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1750697565
   },
-  {
-    id: "6344",
-    name: "Rhea Dex",
-    previousNames: ["Ref"],
-    address: "near:-",
-    symbol: "REF",
-    url: "hhttps://dex.rhea.finance/",
-    description:
-      "RHEA Finance is a community-led, multi-purpose DeFi platform built on the NEAR Protocol.",
-    chain: "Near",
-    logo: `${baseIconsUrl}/rhea-dex.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dex",
-    chains: ["Near"],
-    oracles: ["Pyth"],
-    forkedFrom: [],
-    audit_links: [],
-    module: "reffinance.js",
-    twitter: "rhea_finance",
-    parentProtocol: "parent#rhea-finance",
-    listedAt: 1750745653,
-  },
 ];
 export default data4;

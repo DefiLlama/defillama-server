@@ -3796,9 +3796,9 @@ const data2: Protocol[] = [
     previousNames: ["Burrow"],
     address: "near:-",
     symbol: "BRRR",
-    url: "https://app.burrow.finance/",
+    url: "https://lending.rhea.finance/",
     description:
-      "Burrow is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
+      "Rhea Lending is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
     chain: "Near",
     logo: `${baseIconsUrl}/rhea-lend.jpg`,
     audits: "2",
@@ -3807,14 +3807,14 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Near"],
-    oracles: ["Price Oracle"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#price-oracle & https://github.com/DefiLlama/defillama-server/pull/8381
+    oracles: ["Pyth"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#price-oracle & https://github.com/DefiLlama/defillama-server/pull/8381
     forkedFrom: [],
     audit_links: [
       "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-1.pdf",
       "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-2.pdf",
     ],
     module: "burrow.cash/index.js",
-    twitter: "burrow_finance",
+    twitter: "rhea_finance",
     parentProtocol: "parent#rhea-finance",
     listedAt: 1647296278,
   },

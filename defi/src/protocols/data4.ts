@@ -15374,7 +15374,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum","Bitcoin"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: null,
+    twitter: "BitcoinBridge_",
   },
   {
     id: "6257",

@@ -15337,13 +15337,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6255",
-    name: "Hybra",
+    name: "Hybra V2",
+    //previousNames: ["Hybra"],
     address: null,
     symbol: "-",
     url: "https://www.hybra.finance",
     description: "Public liquidity layer on Hyperliquid · Upgraded ve(3,3) flywheel · CL & intent-based gasless trades",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/hybra.jpg`,
+    logo: `${baseIconsUrl}/hybra-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -15353,6 +15354,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1407"],
     module: "hybra-v2/index.js",
     twitter: "HybraFinance",
+    parentProtocol: "parent#hybra",
     listedAt: 1748622421
   },
   {
@@ -17480,6 +17482,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "SmithiiTools",
     forkedFromIds: [],
+  },
+  {
+    id: "6350",
+    name: "Hybra V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.hybra.finance",
+    description: "Hybra Concentrated-Liquidity (CL) pools use Uniswap V3 contracts without modification",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hybra-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["2198"],
+    module: "hybra-v3/index.js",
+    twitter: "HybraFinance",
+    parentProtocol: "parent#hybra",
+    listedAt: 1750812759
   },
 ];
 export default data4;

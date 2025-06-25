@@ -7281,7 +7281,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "avantprotocol",
   },
-   {
+  {
     id: "parent#matrixdock",
     name: "MatrixDock",
     url: "https://www.matrixdock.com/home",
@@ -7291,6 +7291,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "matrixdock",
+  },
+  {
+    id: "parent#hybra",
+    name: "Hybra",
+    url: "https://www.hybra.finance",
+    description: "Public liquidity layer on Hyperliquid · Upgraded ve(3,3) flywheel · CL & intent-based gasless trades",
+    logo: `${baseIconsUrl}/hybra.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HybraFinance",
   },
 ];
 

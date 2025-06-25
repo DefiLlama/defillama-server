@@ -8400,10 +8400,20 @@
     }
   },
   "hemi": {
-    "0xad11a8BEb98bbf61dbb1aa0F6d6F2ECD87b35afA": {
+    "0x12B6e6FC45f81cDa81d2656B974E8190e4ab8D93": {
+      "to": "coingecko#tbtc",
+      "decimals": 18,
+      "symbol": "tBTC"
+    },
+    "0xad11a8beb98bbf61dbb1aa0f6d6f2ecd87b35afa": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0x028de74e2fe336511a8e5fab0426d1cfd5110dbb": {
+      "to": "coingecko#tether-gold",
+      "decimals": 6,
+      "symbol": "XAUt"
     },
     "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
       "to": "coingecko#bitcoin",
@@ -8645,7 +8655,7 @@
     },
     "0x74f0c7504507f7357f8a218cc70ce3fc0f4b4e9eb8474e53ca778cb1e0c6dcc5": {
       "to": "coingecko#ethena-staked-usde",
-      "decimals": 8,
+      "decimals": 6,
       "symbol": "sUSDe"
     }
   },

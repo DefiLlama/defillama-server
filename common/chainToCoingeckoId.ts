@@ -182,6 +182,7 @@ export const chainToCoingeckoId = {
   ink: "ink",
   swellchain: "swellchain",
   plume_mainnet: "plume-network",
+  hemi: "hemi",
 };
 
 export default chainToCoingeckoId;

@@ -14751,7 +14751,7 @@ const data3_1: Protocol[] = [
     description:
       "Lista Liquid Staking is the yield bearing & liquid staking token for Lista DAO, which appreciates against BNB in line with BNB's staking APR.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/lista-dao.png`,
+    logo: `${baseIconsUrl}/lista-liquid-staking.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

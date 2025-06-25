@@ -14949,7 +14949,7 @@ const data2: Protocol[] = [
     description:
       "Lista DAO functions as a open-source liquidity protocol for earning yields on collateralized Crypto assets (BNB, ETH, Stablecoins, and other cryptocurrencies) and borrowing of our decentralized stablecoin, lisUSD. It uses and expands the proven MakerDAO model for a decentralized, unbiased, collateral-backed destablecoin",
     chain: "Binance",
-    logo: `${baseIconsUrl}/lista-dao.png`,
+    logo: `${baseIconsUrl}/lista-cdp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -678,5 +678,8 @@ export default {
         id: "6173"
     },
     "reya-dex": { id: '4978' },
+    "alkimiya": {
+        id: "6344"
+    },
 
 } as AdaptorsConfig

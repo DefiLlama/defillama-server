@@ -11148,6 +11148,9 @@ const data4: Protocol[] = [
     twitter: "LISTA_DAO",
     forkedFrom: [],
     parentProtocol: "parent#lista-dao",
+    tokensExcludedFromParent: {
+      BSC: ["SLISBNB"],
+    },
     listedAt: 1744828415,
   },
   {

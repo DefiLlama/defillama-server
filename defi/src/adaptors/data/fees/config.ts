@@ -3729,4 +3729,7 @@ export default {
     "volta-markets": {
         id: "6345"
     },
+    "bluefin-alphalend": {
+        id: "6153"
+    }
 } as AdaptorsConfig

@@ -53,6 +53,7 @@ export type getHistoricalTvlForAllProtocolsOptionalOptions = {
   getModule?: Function;
   readFromR2Cache?: boolean;
   storeMeta?: boolean;
+  forceIncludeCategories?: string[]; //used for forcing inclusion (used for oracles)
 };
 
 const allProtocolRes: {
@@ -66,27 +67,31 @@ export async function getHistoricalTvlForAllProtocols(
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
   const protocolList = getHistTvlOptions.protocolList ?? protocols;
-  const { storeMeta = false } = getHistTvlOptions;
+  const { storeMeta = false, forceIncludeCategories = [] } = getHistTvlOptions;
   const excludedProcolsIds: any = {};
   const excludedProcolsIdsExceptBridge: any = {};
   const doublecountedProtocolIds: any = {};
 
   const historicalProtocolTvls = await Promise.all(
     protocolList.map(async (protocol) => {
+      const isForcedInclude = protocol.category ? forceIncludeCategories.includes(protocol.category) : false;
+      
+      const isNormallyExcluded = 
+        !storeMeta && 
+        excludeProtocolsFromCharts && 
+        (excludeProtocolInCharts(protocol, includeBridge) || isExcludedFromChainTvl(protocol.category));
+        if (isNormallyExcluded && !isForcedInclude) {
+        excludedProcolsIds[protocol.id] = true;
+        excludedProcolsIdsExceptBridge[protocol.id] = true;
+        return;
+      }
+
       excludedProcolsIds[protocol.id] =
         excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(protocol.category);
       excludedProcolsIdsExceptBridge[protocol.id] =
         excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(protocol.category);
-      if (!protocol || (!storeMeta && excludeProtocolsFromCharts && excludeProtocolInCharts(protocol, includeBridge))) {
-        return;
-      }
-
-      if (!storeMeta && excludeProtocolsFromCharts && isExcludedFromChainTvl(protocol.category)) {
-        return;
-      }
-
+      
       let lastTvl: any, historicalTvl: any, module: any;
-
       async function _getAllProtocolData(protocol: Protocol) {
         if (!allProtocolRes[protocol.id]) {
           allProtocolRes[protocol.id] = Promise.all([

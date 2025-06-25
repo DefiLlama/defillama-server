@@ -213,7 +213,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: false, ...options }
+    { includeBridge: false, forceIncludeCategories: ['RWA'], ...options }
   );
 
   const timestamps = Object.keys(oracleProtocols);

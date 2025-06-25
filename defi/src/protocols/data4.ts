@@ -17507,5 +17507,82 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hybra",
     listedAt: 1750812759
   },
+  {
+    id: "6351",
+    name: "ManaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://mana.win/app/dex",
+    description: "ManaSwap is the decentralized exchange of the Mana ecosystem. Trade bonded tokens from mana.win, stablecoins and more on ManaSwap",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/manaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["2197"],
+    module: "ManaSwap/index.js",
+    twitter: "manadotwin",
+    listedAt: 1750885251
+  },
+  {
+    id: "6352",
+    name: "Tapp Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://tapp.exchange/",
+    description: "First Non-EVM v4 DEX built on Aptos",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/tapp-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Aptos"],
+    audit_links: ["https://tapp-exchange.gitbook.io/tapp-exchange/brand-and-security/audit-report"],
+    module: "tapp-exchange/index.js",
+    twitter: "TappExchange",
+    listedAt: 1750885257
+  },
+  {
+    id: "6353",
+    name: "Weiss Finance",
+    address: null,
+    symbol: "-",
+    url: "https://weiss.finance",
+    description: "Weiss Finance - Unlock liquidity without selling your assets. Mint DORI, a powerful stablecoin backed by your SUI",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/weiss-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sui"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
+      },
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
+      },
+      {
+        name: "Switchboard",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
+      }
+    ],
+    module: "weissFinance/index.js",
+    twitter: "weiss_fi",
+    listedAt: 1750885265,
+    openSource: false
+  },
 ];
 export default data4;

@@ -81,13 +81,13 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.mantissa.finance/developers/security#de-peg-protection"],
-        chains: [{chain: "polygon"}]
+        chains: [{chain: "Polygon"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.mantissa.finance/developers/security#de-peg-protection"],
-        chains: [{chain: "polygon_zkevm"}]
+        chains: [{chain: "Polygon zkEVM"}]
       },
     ],
     forkedFrom: [],
@@ -2312,7 +2312,7 @@ const data3_1: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.native.org/aqua/smart-contracts/smart-contract-addresses"],
-        chains: [{chain: "zklink"}]
+        chains: [{chain: "zkLink"}]
       },
     ],
     forkedFrom: [],
@@ -6574,13 +6574,13 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles"],
-        chains: [{chain: "ethereum"}, {chain: "arbitrum"}, {chain: "era"}, {chain: "linea"}, {chain: "polygon_zkevm"}, {chain: "optimism"}]
+        chains: [{chain: "Ethereum"}, {chain: "Arbitrum"}, {chain: "zkSync Era"}, {chain: "Linea"}, {chain: "Polygon zkEVM"}, {chain: "Optimism"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles"],
-        chains: [{chain: "mantle"}]
+        chains: [{chain: "Mantle"}]
       },
     ],
     forkedFromIds: ["270"],
@@ -7324,13 +7324,13 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5150"],
-        chains: [{chain: "bsc"}]
+        chains: [{chain: "Binance"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5150"],
-        chains: [{chain: "mantle"}]
+        chains: [{chain: "Mantle"}]
       },
     ],
     audit_links: ["https://ktx-public-assets.s3.ap-southeast-1.amazonaws.com/MetaScan_Report_KTX_Finance.pdf"],
@@ -12178,31 +12178,31 @@ const data3_1: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.zerolend.xyz/security/oracles#using-redstone-oracles","https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a","https://docs.zerolend.xyz/security/oracles/redstone"],
-        chains: [{chain: "blast"}, {chain: "base"}, {chain: "manta"}, {chain: "zircuit"}]
+        chains: [{chain: "Blast"}, {chain: "Base"}, {chain: "Manta"}, {chain: "Zircuit"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.zerolend.xyz/security/oracles/chainlink"],
-        chains: [{chain: "linea"}, {chain: "ethereum"}]
+        chains: [{chain: "Linea"}, {chain: "Ethereum"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.zerolend.xyz/security/oracles#using-pyth-oracles"],
-        chains: [{chain: "era"}]
+        chains: [{chain: "zkSync Era"}]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9559"],
-        chains: [{chain: "hemi"}]
+        chains: [{chain: "Hemi"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3"],
-        chains: [{chain: "xlayer"}]
+        chains: [{chain: "X Layer"}]
       }
     ],
     forkedFromIds: ["1599"],
@@ -12380,35 +12380,35 @@ const data3_1: Protocol[] = [
         ],
         chains: [
           {
-            chain: "zklink",
+            chain: "zkLink",
             startDate: "2024-10-31"
           },
           {
-            chain: "manta",
+            chain: "Manta",
             startDate: "2025-05-08"
           },
           {
-            chain: "scroll",
+            chain: "Scroll",
             startDate: "2024-10-31"
           },
           {
-            chain: "linea",
+            chain: "Linea",
             startDate: "2024-10-31"
           },
           {
-            chain: "mode",
+            chain: "Mode",
             startDate: "2024-10-31"
           },
           {
-            chain: "bsquared",
+            chain: "BSquared",
             startDate: "2025-02-04"
           },
           {
-            chain: "bob",
+            chain: "BOB",
             startDate: "2025-02-04"
           },
           {
-            chain: "hemi",
+            chain: "Hemi",
             startDate: "2025-03-25"
           }
         ]
@@ -14497,19 +14497,19 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.zkera.fi/zkera-finance-overview#oracles"],
-        chains: [{chain: "era"}]
+        chains: [{chain: "zkSync Era"}]
       },
       {
         name: "Supra",
         type: "Primary",
         proof: ["https://docs.zkera.fi/zkera-finance-overview#oracles"],
-        chains: [{chain: "metis"}]
+        chains: [{chain: "Metis"}]
       },
       {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.zkera.fi/zkera-finance-overview#oracles"],
-        chains: [{chain: "telos"}]
+        chains: [{chain: "Telos"}]
       },
     ],
     listedAt: 1691144368,
@@ -15628,7 +15628,7 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://omnibtclabs.gitbook.io/omnibtc/omnibtc-features/omnilending/oracles"],
-        chains: [{chain: "sui"}]
+        chains: [{chain: "Sui"}]
       },
     ],
     forkedFrom: [],
@@ -17514,7 +17514,7 @@ const data3_1: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://myso-finance.gitbook.io/myso-v2-docs/protocol-overview/blitz-match-p2p/zero-liquidation-loans/lenders"],
-        chains: [{chain: "arbitrum"}, {chain: "mantle"}, {chain: "ethereum"}, {chain: "base"}]
+        chains: [{chain: "Arbitrum"}, {chain: "Mantle"}, {chain: "Ethereum"}, {chain: "Base"}]
       },
     ],
     forkedFrom: [],
@@ -18652,19 +18652,19 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.morphex.trade/oracles"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.morphex.trade/oracles"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.morphex.trade/oracles","https://github.com/DefiLlama/defillama-server/pull/9183"],
-        chains: [{chain: "mode"}]
+        chains: [{chain: "Mode"}]
       }
     ],
     forkedFromIds: ["337"],
@@ -19049,37 +19049,37 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5434#issuecomment-1889510580"],
-        chains: [{chain: "wemix"}]
+        chains: [{chain: "WEMIX"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://twitter.com/redstone_defi/status/1763580020751245496","https://github.com/DefiLlama/defillama-server/pull/6353#discussion_r1550765182"],
-        chains: [{chain: "manta"},{chain: "mode"},{chain: "bob"}]
+        chains: [{chain: "Manta"},{chain: "Mode"},{chain: "BOB"}]
       },
       {
         name: "Supra",
         type: "Primary",
         proof: ["https://docs.shoebill.finance/risk/oracle"],
-        chains: [{chain: "bsquared"}]
+        chains: [{chain: "BSquared"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.shoebill.finance/risk/oracle"],
-        chains: [{chain: "metis"}]
+        chains: [{chain: "Metis"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.shoebill.finance/risk/oracle"],
-        chains: [{chain: "kroma"}]
+        chains: [{chain: "Kroma"}]
       },
       {
         name: "Witnet",
         type: "Primary",
         proof: ["https://docs.shoebill.finance/risk/oracle"],
-        chains: [{chain: "klaytn"}]
+        chains: [{chain: "Klaytn"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -24978,25 +24978,25 @@ const data3_1: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.sumer.money/developers/price-feeds/redstone-price-feeds-on-zklink-nova"],
-        chains: [{chain: "zklink"}]
+        chains: [{chain: "zkLink"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.sumer.money/developers/price-feeds/pyth-price-feeds-on-meter"],
-        chains: [{chain: "meter"}]
+        chains: [{chain: "Meter"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-arbitrum","https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-base"],
-        chains: [{chain: "arbitrum"},{chain: "base"},{chain: "ethereum"}]
+        chains: [{chain: "Arbitrum"},{chain: "Base"},{chain: "Ethereum"}]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9319"],
-        chains: [{chain: "berachain"}]
+        chains: [{chain: "Berachain"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -27611,7 +27611,7 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["ps://docs.renzoprotocol.com/docs/integrations/l2-native-restaking"],
-        chains: [{chain: "ethereum"}, {chain: "arbitrum"},{chain: "linea"},{chain: "base"},{chain: "optimism"}]
+        chains: [{chain: "Ethereum"}, {chain: "Arbitrum"},{chain: "Linea"},{chain: "Base"},{chain: "Optimism"}]
       }
     ],
     forkedFrom: [],
@@ -27726,7 +27726,7 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9319"],
-        chains: [{chain: "conflux"}]
+        chains: [{chain: "Conflux"}]
       },
     ],
     forkedFrom: [],
@@ -29710,13 +29710,13 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
       {
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9498/files"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
     ],
     forkedFrom: [],
@@ -30309,13 +30309,13 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5644"],
-        chains: [{chain: "ethereum"}]
+        chains: [{chain: "Ethereum"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/5644"],
-        chains: [{chain: "mantle"}]
+        chains: [{chain: "Mantle"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -30538,19 +30538,19 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth"],
-        chains: [{chain: "meter"}, {chain: "taiko"}]
+        chains: [{chain: "Meter"}, {chain: "Taiko"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.meridianfinance.net/resources/technical-and-security/oracles/chainlink"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
       {
         name: "Stork",
         type: "Primary",
         proof: ["https://docs.meridianfinance.net/resources/technical-and-security/oracles/stork"],
-        chains: [{chain: "taraxa"}]
+        chains: [{chain: "Taraxa"}]
       },
     ],
     forkedFromIds: ["111"],
@@ -30759,31 +30759,31 @@ const data3_1: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: ["https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode"],
-        chains: [{chain: "mode"},{chain: "base"}]
+        chains: [{chain: "Mode"},{chain: "Base"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode"],
-        chains: [{chain: "mode"},{chain: "base"},{chain: "fraxtal"},{chain: "lisk"}]
+        chains: [{chain: "Mode"},{chain: "Base"},{chain: "Fraxtal"},{chain: "Lisk"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode"],
-        chains: [{chain: "base"},{chain: "optimism"}]
+        chains: [{chain: "Base"},{chain: "Optimism"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode"],
-        chains: [{chain: "mode"},{chain: "optimism"},{chain: "base"}]
+        chains: [{chain: "Mode"},{chain: "Optimism"},{chain: "Base"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode"],
-        chains: [{chain: "fraxtal"}]
+        chains: [{chain: "Fraxtal"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -31692,43 +31692,43 @@ const data3_1: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "bsc"}]
+        chains: [{chain: "Binance"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "bob"}]
+        chains: [{chain: "BOB"}]
       },
       {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "bob"}]
+        chains: [{chain: "BOB"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "core"},{chain: "bob"}]
+        chains: [{chain: "CORE"},{chain: "BOB"}]
       },
       {
         name: "Binance Oracle",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "op_bnb"}]
+        chains: [{chain: "Op_Bnb"}]
       },
       {
         name: "Umbrella",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "rsk"}]
+        chains: [{chain: "RSK"}]
       },
       {
         name: "Supra",
         type: "Primary",
         proof: ["https://docs.segment.finance/protocol/advanced-safety-features/oracles"],
-        chains: [{chain: "bsquared"}]
+        chains: [{chain: "BSquared"}]
       },
     ],
     forkedFromIds: ["114"],
@@ -32264,37 +32264,37 @@ const data3_1: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
-        chains: [{chain: "flow"}, {chain: "mode"}]
+        chains: [{chain: "Flow"}, {chain: "Mode"}]
       },
       {
         name: "Chainlink",
         type: "Secondary",
         proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
-        chains: [{chain: "ethereum"}]
+        chains: [{chain: "Ethereum"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://v2.sturdy.finance/silos"],
-        chains: [{chain: "linea"},{chain: "optimism"}]
+        chains: [{chain: "Linea"},{chain: "Optimism"}]
       },
       {
         name: "Api3",
         type: "Secondary",
         proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
-        chains: [{chain: "mode"},]
+        chains: [{chain: "Mode"},]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
-        chains: [{chain: "ethereum", startDate: "2025-05-08"},]
+        chains: [{chain: "Ethereum", startDate: "2025-05-08"},]
       },
       {
         name: "RedStone",
         type: "Secondary",
         proof: ["https://docs.sturdy.finance/overview/security-and-audits","https://v2.sturdy.finance/silos"],
-        chains: [{chain: "ethereum"},{chain: "mode"},]
+        chains: [{chain: "Ethereum"},{chain: "Mode"},]
       }
     ],
     forkedFromIds: ["111"],
@@ -33114,7 +33114,7 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.fluid.instadapp.io/autogenerated-docs/oracle/implementations/chainlinkOracleImpl.html"],
-        chains: [{chain: "ethereum"},{chain: "arbitrum"},{chain: "base"}]
+        chains: [{chain: "Ethereum"},{chain: "Arbitrum"},{chain: "Base"}]
       },
     ],
     module: "fluid/index.js",
@@ -34216,13 +34216,13 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.synfutures.com/oyster-amm/protocol-parameters/base-network"],
-        chains: [{chain: "base"}]
+        chains: [{chain: "Base"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["github.com/DefiLlama/defillama-server/pull/6111"],
-        chains: [{chain: "blast"}]
+        chains: [{chain: "Blast"}]
       },
     ],
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
@@ -37608,8 +37608,8 @@ const data3_2: Protocol[] = [
         type: "Primary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
         chains: [
-          {chain: "aptos"},
-          {chain: "move"},
+          {chain: "Aptos"},
+          {chain: "Move"},
         ]
       },
       {
@@ -37617,7 +37617,7 @@ const data3_2: Protocol[] = [
         type: "Secondary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
           chains: [
-          {chain: "aptos"},
+          {chain: "Aptos"},
         ]
       },
     ],
@@ -38583,19 +38583,19 @@ const data3_2: Protocol[] = [
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bevm"},{chain: "bob"}]
+        chains: [{chain: "BEVM"},{chain: "BOB"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bob"}]
+        chains: [{chain: "BOB"}]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9478"],
-        chains: [{chain: "bsc"}]
+        chains: [{chain: "Binance"}]
       },
     ],
     github: ["Satoshi-Protocol"],
@@ -39973,13 +39973,13 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management"],
-        chains: [{chain: "ethereum"},{chain: "mantle"}]
+        chains: [{chain: "Ethereum"},{chain: "Mantle"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.avalonfinance.xyz/avalon-products/defi-lending/oracles"],
-        chains: [{chain: "sonic"},{chain: "binance"},{chain: "taiko"}]
+        chains: [{chain: "Sonic"},{chain: "Binance"},{chain: "Taiko"}]
       },
     ],//https://github.com/avalonfinancexyz/ORACLE https://github.com/DefiLlama/defillama-server/pull/7838 removed apro on apro team request
     forkedFromIds: ["1599"],
@@ -39989,7 +39989,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon-AVAF_audit_report_2024-06-11.pdf", 'https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon_Finance-ORACLE_audit_report_2024-04-09.pdf'],
     listedAt: 1712919585,
     tokensExcludedFromParent: {
-      taiko: ["USDA", "SUSDA"],
+      Taiko: ["USDA", "SUSDA"],
     },
   },
   {
@@ -44400,7 +44400,7 @@ const data3_2: Protocol[] = [
         name: "Api3",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
-        chains: [{chain: "mode"}]
+        chains: [{chain: "Mode"}]
       },
     ],
     forkedFromIds: ["382"],
@@ -49042,13 +49042,13 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://tech.usual.money/smart-contracts/utility-contracts/chainlink-oracles"],
-        chains: [{chain: "ethereum"}]
+        chains: [{chain: "Ethereum"}]
       },
       {
         name: "Pyth",
         type: "Primary",
         proof: ["https://tech.usual.money/smart-contracts/utility-contracts/pyth-oracles"],
-        chains: [{chain: "arbitrum"}]
+        chains: [{chain: "Arbitrum"}]
       },
     ],
     forkedFrom: [],
@@ -59725,9 +59725,9 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
     tokensExcludedFromParent: {
-      iotex: ["USDA", "SUSDA"],
-      taiko: ["USDA", "SUSDA"],
-      zircuit: ["USDA", "SUSDA"],
+      IoTeX: ["USDA", "SUSDA"],
+      Taiko: ["USDA", "SUSDA"],
+      Zircuit: ["USDA", "SUSDA"],
     },
     listedAt: 1731778454
   },

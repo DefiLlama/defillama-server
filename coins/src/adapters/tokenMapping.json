@@ -8657,6 +8657,16 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 6,
       "symbol": "sUSDe"
+    },
+    "0x48b904a97eafd065ced05168ec44638a63e1e3bcaec49699f6b8dabbd1424650": {
+      "to": "coingecko#usda-2",
+      "decimals": 18,
+      "symbol": "USDa"
+    },
+    "0xe699e6c1733462632821b6e5b954c0ed3aa9ad1efb70b6ce92616952ade89258": {
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
+      "decimals": 18,
+      "symbol": "sUSDa"
     }
   },
   "mtt_network": {

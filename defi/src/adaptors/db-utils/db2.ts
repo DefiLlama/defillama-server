@@ -23,11 +23,13 @@ export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3
     const pgItem = record.getPGItem()
     const hourlyDDbItem = record.getHourlyDDBItem()
     const ddbItem = record.getDDBItem()
+    const eventItem = { ...record.getDDBItem(), source: 'dimension-adapter' }
 
     await Promise.all([
       Tables.DIMENSIONS_DATA.upsert(pgItem),
       dynamodb.putDimensionsData(ddbItem),
       dynamodb.putDimensionsData(hourlyDDbItem),
+      dynamodb.putEventData(eventItem),
     ])
   } catch (error) {
     if (retriesLeft > 0) {

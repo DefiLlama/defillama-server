@@ -181,6 +181,12 @@ export default async function (
     SK: unixTimestamp,
     ...hourlyData,
   });
+  await dynamodb.putEventData({
+    PK: hourlyPK,
+    SK: unixTimestamp,
+    ...hourlyData,
+    source: 'tvl-adapter',
+  })
 
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 

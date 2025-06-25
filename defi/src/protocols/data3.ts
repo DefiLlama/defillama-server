@@ -31168,7 +31168,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "garden-2",
     cmcId: null,
-    category: "Bridge",
+    category: "Cross Chain Bridge",
     chains: ["Bitcoin", "Arbitrum"],
     forkedFrom: [],
     module: "garden/index.js",

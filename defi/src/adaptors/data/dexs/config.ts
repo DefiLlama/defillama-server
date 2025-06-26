@@ -3072,5 +3072,8 @@ export default {
     },
     "tapp-exchange": {
         id: "6352"
+    },
+    "eulerswap": {
+        id: "6358"
     }
 } as AdaptorsConfig

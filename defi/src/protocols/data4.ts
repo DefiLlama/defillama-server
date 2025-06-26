@@ -14188,7 +14188,7 @@ const data4: Protocol[] = [
     twitter: "ClearstarLabs",
     listedAt: 1747733862
   },
-    {
+  {
     id: "6200",
     name: "Euler DAO",
     address: "0xd9fcd98c322942075a5c3860693e9f4f03aae07b",
@@ -17665,6 +17665,25 @@ const data4: Protocol[] = [
     twitter: "TheRigLST",
     github: ["Rig-Labs"],
     listedAt: 1750960887,
+  },
+  {
+    id: "6358",
+    name: "EulerSwap",
+    address: "0xd9fcd98c322942075a5c3860693e9f4f03aae07b",
+    symbol: "EUL",
+    url: "https://app.euler.finance/swap",
+    description: `EulerSwap is the decentralized exchange of the Euler ecosystem.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eulerswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum","Unichain"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "eulerfinance",
   },
 ];
 export default data4;

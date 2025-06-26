@@ -461,7 +461,7 @@ const chainsByOracle: Record<string, Array<string>> = {
   "Ojo Oracle": ["Archway", "Comdex", "Injective", "Juno", "Neutron", "Osmosis", "Secret", "Stargaze"],
   "Pragma": ["Starknet"],
   "Harbinger": ["Tezos"],
-  "SEDA": ["Aurora", "Evmos", "OP Mainnet", "Plume Mainnet"],
+  "Flux": ["Aurora", "Evmos", "OP Mainnet", "Plume Mainnet"],
   "Nest": ["Ethereum", "BSC", "Aurora", "KCC", "CLV", "Polygon"],
   "Chronicle": [
     "Ethereum",

@@ -9677,8 +9677,8 @@ const data4: Protocol[] = [
   {
     id: "5989",
     name: "Spark Liquidity Layer",
-    address: null,
-    symbol: "-",
+    address: "0xc20059e0317de91738d13af027dfc4a50781b066",
+    symbol: "SPK",
     url: "https://www.spark.fi/",
     description:
       "The Spark Liquidity Layer (SLL) automates liquidity provision of USDS, sUSDS, and USDC directly from Sky across various blockchain networks, DeFi protocols, and RWA",

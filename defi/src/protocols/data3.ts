@@ -5148,8 +5148,8 @@ const data3_1: Protocol[] = [
     id: "2929",
     name: "SparkLend",
     //previousNames: ["Spark"],
-    address: null,
-    symbol: "-",
+    address: "0xc20059e0317de91738d13af027dfc4a50781b066",
+    symbol: "SPK",
     url: "https://www.spark.fi/",
     description:
       "SparkLend is a stablecoin lending market. Unlike other lending protocols where rates fluctuate based on utilization or loan size, SparkLend offers governance-defined rates that do not vary based on those factors. This is made possible by Spark’s Liquidity Layer (SLL), which supplies consistent stablecoin liquidity to the protocol",

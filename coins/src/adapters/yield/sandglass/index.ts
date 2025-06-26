@@ -172,7 +172,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "hzmYvfvU9LNc7eUVwRNFyDhQ1W3faXVpC8CAn76z3cj",
-    mintAddress: "CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
+    mintAddress: "52EBWh8t1yHK5AA7RsKVaCU44YpgGsatbDSNPSbBpWUr",
     symbol: "CRT",
     unit: "USDC",
     decimals: 9,

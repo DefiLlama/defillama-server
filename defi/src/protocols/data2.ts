@@ -2591,7 +2591,19 @@ const data2: Protocol[] = [
     cmcId: "19268",
     category: "Lending",
     chains: ["Aurora"],
-    oracles: ["SEDA", "Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: [],
+      },
+      {
+        name: "Flux",
+        type: "Primary",
+        proof: [],
+        endDate: "2023-09-01"
+      }
+    ],
     forkedFromIds: ["114"],
     module: "aurigami.js",
     twitter: "aurigami_PLY",
@@ -3175,7 +3187,14 @@ const data2: Protocol[] = [
     cmcId: "19728",
     category: "Lending",
     chains: ["Aurora"],
-    oracles: ["SEDA"],
+    oraclesBreakdown: [
+      {
+        name: "Flux",
+        type: "Primary",
+        proof: [],
+        endDate: '2023-09-01'
+      }
+    ],
     forkedFromIds: ["114"],
     module: "bastion/index.js",
     twitter: "BastionProtocol",
@@ -9116,7 +9135,14 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Evmos"],
-    oracles: ["SEDA"],
+    oraclesBreakdown: [
+      {
+        name: "Flux",
+        type: "Primary",
+        proof: [],
+        endDate: '2023-09-01'
+      }
+    ],
     forkedFromIds: ["114"],
     module: "coslend/index.js",
     twitter: "coslend",
@@ -13828,7 +13854,14 @@ const data2: Protocol[] = [
     module: "nex/index.js",
     twitter: "nex_market",
     forkedFromIds: ["337"],
-    oracles: ["SEDA"],
+    oraclesBreakdown: [
+      {
+        name: "Flux",
+        type: "Primary",
+        proof: [],
+        endDate: '2023-09-01'
+      }
+    ],
     audit_links: [
       "https://github.com/NEX-market/nex-contracts/blob/d6688b13eab7dcc731a2143c5c4fbd6c1af257bd/audits/NEX_Audit_Report_by_WatchPug.pdf",
     ],
@@ -20004,7 +20037,14 @@ const data2: Protocol[] = [
     module: "opx/index.js",
     twitter: "opxfinance",
     forkedFromIds: ["337"],
-    oracles: ["SEDA"],
+    oraclesBreakdown: [
+      {
+        name: "Flux",
+        type: "Primary",
+        proof: [],
+        endDate: '2023-09-01'
+      }
+    ],
     audit_links: ["https://github.com/opxfinance/opx-contracts/tree/main/audits"],
     listedAt: 1667818926,
     github: ["opxfinance"],

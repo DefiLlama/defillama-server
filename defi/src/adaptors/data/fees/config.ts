@@ -3731,5 +3731,14 @@ export default {
     },
     "bluefin-alphalend": {
         id: "6153"
+    },
+    "tapp-exchange": {
+        id: "6352"
+    },
+    "eulerswap": {
+        id: "6358"
+    },
+    "ssv-network": {
+        id: "6359"
     }
 } as AdaptorsConfig

@@ -12909,7 +12909,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["zkSync Era"],
-    module: "dracula/index.js",
+    module: "dracula-era/index.js",
     twitter: "dracula_fi",
     forkedFromIds: ["1407"],
     audit_links: ["https://draculafi.gitbook.io/draculafi/security/audit"],

@@ -60,5 +60,3 @@ export async function jupAg(timestamp: number) {
 
   return writes;
 }
-
-jupAg(0) // ts-node coins/src/adapters/solana/jupAg.ts

@@ -3070,4 +3070,7 @@ export default {
     "volta-markets": {
         id: "6345"
     },
+    "tapp-exchange": {
+        id: "6352"
+    }
 } as AdaptorsConfig

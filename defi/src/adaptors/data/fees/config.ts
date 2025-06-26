@@ -3731,5 +3731,8 @@ export default {
     },
     "bluefin-alphalend": {
         id: "6153"
+    },
+    "tapp-exchange": {
+        id: "6352"
     }
 } as AdaptorsConfig

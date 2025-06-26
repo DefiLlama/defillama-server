@@ -37393,6 +37393,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "3fmutual/index.js",
     twitter: "HakkaFinance",
+    deadUrl: true,
     listedAt: 1711376333,
   },
   {

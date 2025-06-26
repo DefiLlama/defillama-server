@@ -3737,5 +3737,8 @@ export default {
     },
     "eulerswap": {
         id: "6358"
+    },
+    "ssv-network": {
+        id: "6359"
     }
 } as AdaptorsConfig

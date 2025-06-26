@@ -4607,6 +4607,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#weth"
+    },
+    "0x4353b76E03AD5FF74d40Bf5bb2Ee4d0FC6fE6D3b": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "blast": {
@@ -8193,6 +8198,11 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
+    },
+    "0x6B40636013CD0C5cBa347345e7CA2291B34Cd37D": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "sxr": {

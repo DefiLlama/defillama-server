@@ -17584,5 +17584,25 @@ const data4: Protocol[] = [
     listedAt: 1750885265,
     openSource: false
   },
+  {
+    id: "6354",
+    name: "Crocodile Finance",
+    address: "avax:0x4CB85e39d5622Af604405077A589c3078F3A59b2",
+    symbol: "CROC",
+    url: "https://crocodile.finance",
+    description: "Crocodile Finance, an Algorithmic Stablecoin where 1 $CROC is equivalent to 1 $AVAX. Algorithmic stablecoins are non-collateralized tokens designed to follow the price of their pegged asset, offering greater capital efficiency than traditional collateralized stablecoins",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/crocodile-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stable",
+    chains: ["Avalanche"],
+    module: "crocodile/index.js",
+    forkedFromIds: ["376"],
+    twitter: "CrocodileFi",
+    listedAt: 1750897685,
+  },
 ];
 export default data4;

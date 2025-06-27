@@ -8564,13 +8564,18 @@ const data4: Protocol[] = [
     forkedFromIds: ["1599"],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"]
+      },
+      {
         name: "Pyth",
-        type: "Aggregator",
+        type: "Fallback",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       },
       {
         name: "RedStone",
-        type: "Aggregator",
+        type: "Fallback",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       }
     ],

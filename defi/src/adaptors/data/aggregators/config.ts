@@ -350,7 +350,12 @@ export default {
     id: "6253"
   },
   "dzap": {
-    id: "6259"
+    id: "6259",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1750982400: true,
+      }
+    }
   },
   "haiku": {
     id: "6266"

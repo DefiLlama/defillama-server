@@ -29705,7 +29705,20 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oraclesBreakdown: [], // removed oracles since Morpho Blue does not set oracles, oracles are set by the risk curators
+    // oraclesBreakdown: [ // removed oracles since Morpho Blue does not set oracles, oracles are set by the risk curators
+    //   { 
+    //     name: "Chainlink",
+    //     type: "Primary",
+    //     proof: ["https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc"],
+    //     chains: [{chain: "Base"}]
+    //   },
+    //   {
+    //     name: "Chronicle",
+    //     type: "Primary",
+    //     proof: ["https://github.com/DefiLlama/defillama-server/pull/9498/files"],
+    //     chains: [{chain: "Base"}]
+    //   },
+    // ],
     forkedFrom: [],
     module: "morpho-blue/index.js",
     twitter: "MorphoLabs",

@@ -155,4 +155,5 @@ export default {
   pst: require("./solana/pst"),
   denario: require("./rwa/denario"),
   quipuswap: require("./markets/quipuswap"),
+  reya: require("./yield/reya"),
 };

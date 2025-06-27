@@ -23134,7 +23134,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Aurora"],
   module: "necc/index.js",
   twitter: "neccdao",
-  oracles: ["SEDA"],
+  oracles: ["Flux"],
   listedAt: 1641175410,
 },
 */

@@ -54796,7 +54796,7 @@ const data3_2: Protocol[] = [
     url: "https://crosscurve.fi",
     description:
       "Unified Cross-Chain Liquidity & High-Yield Farming. Your all-in-one solution to swap, bridge, and earn ﻿with full security.",
-    chain: "Ethereum",
+    chain: "Fantom",
     logo: `${baseIconsUrl}/crosscurve.png`,
     audits: "3",
     audit_note: null,

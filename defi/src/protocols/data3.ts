@@ -63437,11 +63437,11 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5545",
-    name: "Theo Network",
+    name: "Theo",
     address: null,
     symbol: "-",
     url: "https://theo.xyz/",
-    description: "Theo Network is a set of onchain contracts and off-chain systems built to capture onchain funding rates at scale",
+    description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/theo-network.jpg`,
     audits: "2",
@@ -63452,7 +63452,7 @@ const data3_2: Protocol[] = [
     chains: ["Ethereum","Arbitrum","Base"],
     forkedFrom: [],
     module: "theo-network/index.js",
-    twitter: "TheoNetwork_",
+    twitter: "Theo_Network",
     audit_links: [
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit.md",
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit_2.md"

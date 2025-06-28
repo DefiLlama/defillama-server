@@ -7303,6 +7303,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HybraFinance",
   },
+  {
+    id: "parent#hydrex",
+    name: "Hydrex",
+    url: "https://hydrex.fi",
+    description: "Hydrex is a liquidity-neutral ve(3,3) protocol built on Base for Base, designed to bring new users onchain",
+    logo: `${baseIconsUrl}/hydrex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hydrexfi",
+  },
 ];
 
 export default parentProtocols;

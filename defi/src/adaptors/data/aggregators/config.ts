@@ -349,14 +349,9 @@ export default {
   "vetrade": {
     id: "6253"
   },
-  "dzap": {
-    id: "6259",
-    cleanRecordsConfig: {
-      genuineSpikes: {
-        1750982400: false,
-      }
-    }
-  },
+  // "dzap": {  // wash trading?
+  //   id: "6259"
+  // },
   "haiku": {
     id: "6266"
   },

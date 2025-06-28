@@ -4638,6 +4638,19 @@ Object.entries(newChainLabelMap)
 addNormalizedChainReplacements(chainLabelMap)
 addNormalizedChainReplacements(newChainLabelMap)
 
+export function getChainIdFromDisplayName(displayName: string): string {
+  if (extraSections.includes(displayName)) {
+    return displayName;
+  }
+
+  if (displayName.includes('-')) {
+    return displayName
+      .split('-')
+      .map(name => getChainIdFromDisplayName(name))
+      .join('-');
+  }
+  return normalizeChain(displayName);
+}
 
 export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
   if (extraSections.includes(normalizedChain)) {

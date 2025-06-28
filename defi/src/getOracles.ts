@@ -1,6 +1,6 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
+import { extraSections, getChainDisplayName, getChainIdFromDisplayName } from "./utils/normalizeChain";
 import { chainsByOracle } from "./constants/chainsByOracle";
 
 interface SumDailyTvls {
@@ -138,7 +138,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
 
             if (oracleEntry.chains && oracleEntry.chains.length > 0) {
               for (const chainConfig of oracleEntry.chains) {
-                const chainName = chainConfig.chain;
+                const chainName = getChainIdFromDisplayName(chainConfig.chain);
                 const effectiveStartDateStr = chainConfig.startDate || generalStartDateStr;
                 const effectiveEndDateStr = chainConfig.endDate || generalEndDateStr;
                 const status = isActive(timestamp, effectiveStartDateStr, effectiveEndDateStr);

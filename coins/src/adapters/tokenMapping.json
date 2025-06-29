@@ -9082,6 +9082,16 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0x8c39b1fd0e6260fdf20652fc436d25026832bfea": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0x639acc80569c5fc83c6fbf2319a6cc38bbfe26d1": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
     }
   },
   "boba": {

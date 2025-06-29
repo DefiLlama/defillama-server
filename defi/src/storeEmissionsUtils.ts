@@ -237,7 +237,8 @@ export async function processSingleProtocol(
     emissionsAverage1y,
   };
 
-  //if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) emissionsBrakedown[sluggifiedId] = breakdown;
+  //if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) 
+  emissionsBrakedown[sluggifiedId] = breakdown;
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 

@@ -4374,6 +4374,15 @@ export const chainCoingeckoIds = {
     },
     twitter: "kamigotchiworld",
   },
+  "Katana": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "katana",
+    url: "https://katana.network/",
+    chainId: 747474,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

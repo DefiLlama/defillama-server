@@ -9105,5 +9105,47 @@
       "decimals": 8,
       "symbol": "WBTC"
     }
+  },
+  "katana": {
+    "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a": {
+      "to": "coingecko#agora-dollar",
+      "decimals": 6,
+      "symbol": "AUSD"
+    },
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
+    "0x7Fb4D0f51544F24F385a421Db6e7D4fC71Ad8e5C": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
+    },
+    "0x9893989433e7a383Cb313953e4c2365107dc19a7": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 18,
+      "symbol": "weETH"
+    },
+    "0x1e5eFCA3D0dB2c6d5C67a4491845c43253eB9e4e": {
+      "to": "coingecko#morpho",
+      "decimals": 18,
+      "symbol": "MORPHO"
+    },
+    "0xb24e3035d1FCBC0E43CF3143C3Fd92E53df2009b": {
+      "to": "coingecko#polygon-ecosystem-token",
+      "decimals": 18,
+      "symbol": "POL"
+    },
+    "0x17BFF452dae47e07CeA877Ff0E1aba17eB62b0aB": {
+      "to": "coingecko#sushi",
+      "decimals": 18,
+      "symbol": "SUSHI"
+    },
+    "0x476eaCd417cD65421bD34fca054377658BB5E02b": {
+      "to": "coingecko#yearn-finance",
+      "decimals": 18,
+      "symbol": "YFI"
+    }
   }
 }

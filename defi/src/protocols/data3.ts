@@ -38562,14 +38562,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4411",
-    name: "River",
+    name: "River Omni-CDP",
     previousNames: ["Satoshi Protocol"],
     address: null,
     symbol: "-",
     url: "https://app.river.inc/",
     description: `River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol`,
     chain: "BEVM",
-    logo: `${baseIconsUrl}/river.jpg`,
+    logo: `${baseIconsUrl}/river-omni-cdp.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,
@@ -38599,8 +38599,8 @@ const data3_2: Protocol[] = [
         chains: [{chain: "Binance"}]
       },
     ],
-    github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.river.inc/outro/audit-reports"],
+    parentProtocol: "parent#river-inc",
     listedAt: 1711912377,
   },
   {

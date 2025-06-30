@@ -7314,6 +7314,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hydrexfi",
   },
+  {
+    id: "parent#river-inc",
+    name: "River Inc",
+    url: "https://river.inc/",
+    description: "River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol",
+    logo: `${baseIconsUrl}/river-inc.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RiverdotInc",
+    github: ["Satoshi-Protocol"],
+    stablecoins: ["river-stablecoin"],
+  },
 ];
 
 export default parentProtocols;

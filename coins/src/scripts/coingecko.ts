@@ -19,7 +19,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
-import { chainsWithCaseSensitiveDataProviders } from "../utils/shared/constants";
+import { chainsThatShouldNotBeLowerCased, chainsWithCaseSensitiveDataProviders } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 
 enum COIN_TYPES {
@@ -186,7 +186,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const platformQueries: string[] = filteredCoins
     .map((f: Coin) =>
       Object.entries(f.platforms).map(([chain, address]) => {
-        if (ignoredChainSet.has(chain)) return;
+        if (ignoredChainSet.has(chain) || chain === 'hyperliquid') return; // hyperliquid key in cg is not the evm
         if (address.startsWith('ibc/') || address.startsWith('factory/') || address.startsWith('zil')) return;
         let i = cgPlatformtoChainId[chain];
         if (!i) {
@@ -195,7 +195,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           missingChainIdMapping[chain] = chain;
           i = chain.toLowerCase();
         }
-        if (!chainsWithCaseSensitiveDataProviders.includes(i)) address = address.toLowerCase();
+        if (!chainsWithCaseSensitiveDataProviders.includes(i) && !chainsThatShouldNotBeLowerCased.includes(i)) address = address.toLowerCase();
         return `${i}:${address}`;
       }).filter(i => i),
     )
@@ -237,7 +237,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
             const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
             if (ignoredChainSet.has(chain)) return;
-            const normalizedPK = !chainsWithCaseSensitiveDataProviders.includes(chain)
+            const normalizedPK = !chainsWithCaseSensitiveDataProviders.includes(chain) && chainsThatShouldNotBeLowerCased.includes(chain)
               ? PK.toLowerCase()
               : PK;
             const platformData = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}

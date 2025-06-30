@@ -143,7 +143,7 @@ export const chainToCoingeckoId = {
   planq: "planq-network",
   bsquared: "bsquared-network",
   nibiru: "nibiru",
-  hyperliquid: "hyperliquid",
+  // hyperliquid: "hyperliquid",  // this is not evm?
   ancient8: "ancient8",
   degen: "degen",
   cronos_zkevm: "cronos-zkevm",

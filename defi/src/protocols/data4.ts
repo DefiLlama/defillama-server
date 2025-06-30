@@ -5901,7 +5901,7 @@ const data4: Protocol[] = [
     url: "https://veda.tech",
     description: `Veda is the leading DeFi vault platform, enabling crypto applications, asset issuers, and protocols to build consumer-grade cross chain yield products. Veda's technology is powering many of DeFi's largest vault products, including ether.fi Liquid, Lombard DeFi Vault, and Mantle cmETH`,
     chain: "Berachain",
-    logo: `${baseIconsUrl}/veda.png`,
+    logo: `${baseIconsUrl}/veda.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

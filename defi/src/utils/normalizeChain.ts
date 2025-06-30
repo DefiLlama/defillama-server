@@ -4387,7 +4387,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: "XRP",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     twitter: "Peersyst",
     url: "https://www.xrplevm.org/",
     chainId: 1440000,

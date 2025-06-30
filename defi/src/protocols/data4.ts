@@ -17895,5 +17895,25 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1751248379,
   },
+  {
+    id: "6369",
+    name: "Universal Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.universal.xyz",
+    description: `Trade crypto’s most popular assets from your onchain wallet. 80+ 1:1 backed wrapped uAssets. uXRP, uSUI, uSOL `,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/universal-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "universal/index.js",
+    twitter: "universaldotxyz",
+    forkedFrom: [],
+    listedAt: 1751297732
+  },
 ];
 export default data4;

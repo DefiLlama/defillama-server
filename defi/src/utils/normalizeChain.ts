@@ -4383,6 +4383,15 @@ export const chainCoingeckoIds = {
     url: "https://katana.network/",
     chainId: 747474,
   },
+  "XRPL EVM": {
+    geckoId: null,
+    symbol: "XRP",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "Peersyst",
+    url: "https://www.xrplevm.org/",
+    chainId: 1440000,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4577,7 +4586,8 @@ const chainLabelMap = {
   "milkyway_rollup": "MilkyWay Rollup",
   "iota": "IOTA",
   "logx": "LogX Network",
-  "yomi": "Yominet"
+  "yomi": "Yominet",
+  "xrplevm": "XRPL EVM",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

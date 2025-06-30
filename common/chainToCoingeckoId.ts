@@ -143,7 +143,7 @@ export const chainToCoingeckoId = {
   planq: "planq-network",
   bsquared: "bsquared-network",
   nibiru: "nibiru",
-  hyperliquid: "hyperliquid",
+  // hyperliquid: "hyperliquid",  // this is not evm?
   ancient8: "ancient8",
   degen: "degen",
   cronos_zkevm: "cronos-zkevm",
@@ -167,7 +167,7 @@ export const chainToCoingeckoId = {
   sonic: "sonic",
   abstract: "abstract",
   // dl: cg
-  // chz: "chiliz",
+  chz: "chiliz",
   // stellar: "stellar",
   stacks: "stacks",
   // cosmos: "cosmos",
@@ -177,13 +177,78 @@ export const chainToCoingeckoId = {
   occ: "edu-chain",
   wc: "world-chain",
   soneium: "soneium",
-  Hyperliquid: "hyperevm",
+  // hyperliquid: "hyperevm",
   unichain: "unichain",
   ink: "ink",
   swellchain: "swellchain",
   plume_mainnet: "plume-network",
   hemi: "hemi",
+  sty: "story",
+  hydration: "hydration",
+  stellar: "stellar",
+  xrp: "xrp",
+  corn: "corn",
+  morph: "morph-l2",
+  ronin: "ronin",
+  zircuit: "zircuit",
+  op_bnb: "opbnb",
+  xcc: "cyber",
+  sophon: "sophon",
+  lisk: "lisk",
+  move: "movement",
+  tezos: "tezos",
+  artela: "artela",
+  kroma: "kroma",
+  lrs: "larissa",
+  lightlink_phoenix: "lightlink",
+  ftn: "bahamut",
+  ethereumclassic: "ethereum-classic",
+  flow: "flow-evm",
+  shimmer_evm: "shimmer_evm",
+  sapphire: "oasis-sapphire",
+  xdc: "xdc-network",
+  q: "q-mainnet",
+  islm: "haqq-network",
+  zklink: "zklink-nova",
+  gravity: "gravity-alpha",
+  tara: "taraxa",
+  europa: "skale",
+  duckchain: "duckchain",
+  mint: "mint",
+  defiverse: "defiverse",
+  meld: "meld",
+  bevm: "bevm",
+  laika: "laikachain",
+  shido: "shido",
+  sseed: "superseed",
+  hela: "hela",
+  lens: "lens",
+  sxr: "sx-rollup",
+  saga: "saga",
+  inevm: "inevm",
+  airdao: "airdao",
+  goat: "goat",
+  etn: "electroneum",
+  godwoken_v1: "godwoken",
+  defichain_evm: "defichain",
+  unit0: "units-network",
+  rss3_vsl: "rss3-vsl",
+  area: "areon-network ",
+  zero_network: "zero-network",
+  astrzk: "astar-zkevm",
 };
+
+export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(
+  (acc: any, [chain, cgId]) => {
+    acc[cgId] = chain;
+    return acc;
+  },
+  {},
+);
+
+cgPlatformtoChainId["hyperevm"] = "hyperliquid";
+cgPlatformtoChainId["sei-v2"] = "sei";
+cgPlatformtoChainId["zilliqa-evm"] = "zilliqa";
 
 export default chainToCoingeckoId;
 

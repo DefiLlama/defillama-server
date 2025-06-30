@@ -9146,6 +9146,11 @@
       "to": "coingecko#yearn-finance",
       "decimals": 18,
       "symbol": "YFI"
+    },
+    "0x9B8Df6E244526ab5F6e6400d331DB28C8fdDdb55": {
+      "to": "coingecko#wrapped-solana-universal",
+      "decimals": 18,
+      "symbol": "uSOL"
     }
   }
 }

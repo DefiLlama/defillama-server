@@ -298,19 +298,19 @@ export default {
     "sudofinance": {
         id: "4045"
     },
-    "blastfutures": {
-        enabled: false,
-        id: "4221",
-        parentId: "RabbitX Fusion",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1709337600": true,
-                "1709251200": true,
-                "1709164800": true,
-                "1709078400": true,
-            },
-        }
-    },
+    // "blastfutures": { // volume is duplicate with rabbitx fusion
+    //     enabled: false,
+    //     id: "4221",
+    //     parentId: "RabbitX Fusion",
+    //     cleanRecordsConfig: {
+    //         genuineSpikes: {
+    //             "1709337600": true,
+    //             "1709251200": true,
+    //             "1709164800": true,
+    //             "1709078400": true,
+    //         },
+    //     }
+    // },
     "synfutures-v3": {
         parentId: "SynFutures",
         id: "4215"
@@ -490,10 +490,10 @@ export default {
     "vest": {
         id: "4400"
     },
-    "goosefx_v2": {
-        enabled: false, // team asked to have adapter moved to dexs config
-        id: "5998"
-    },
+    // "goosefx_v2": {
+    //     enabled: false, // team asked to have adapter moved to dexs config
+    //     id: "5998"
+    // },
     "zo": {
         id: "6018"
     },

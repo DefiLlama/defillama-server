@@ -2116,10 +2116,10 @@ export default {
     "berachain-hub": {
         id: "5742"
     },
-    "polymarket": {
-        enabled: false, // fees value is wrong
-        id: "711"
-    },
+    // "polymarket": { // polymarket does not change fees
+    //     enabled: false, // fees value is wrong
+    //     id: "711"
+    // },
     "velar": {
         id: "4339"
     },

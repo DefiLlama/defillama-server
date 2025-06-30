@@ -34,7 +34,6 @@ export default {
     id: "3154",
   },
   "bitkeep": {
-    enabled: false,
     id: "3207",
   },
   "jumper-exchange": {
@@ -55,10 +54,10 @@ export default {
   "aggre": {
     id: "3809",
   },
-  "llamaswap": {
-    enabled: false,
-    id: "3847",
-  },
+  // "llamaswap": { // volume it duplicate with adapter
+  //   enabled: false,
+  //   id: "3847",
+  // },
   "openocean": {
     id: "533",
   },

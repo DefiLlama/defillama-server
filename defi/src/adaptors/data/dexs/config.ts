@@ -917,18 +917,18 @@ export default {
     "dexalot": {
         id: "2589"
     },
-    "1inch": {
-        enabled: false,
-        id: "189"
-    },
+    // "1inch": { // does not have adapter for dexs
+    //     enabled: false,
+    //     id: "189"
+    // },
     /* "carthage": {
         enabled: false,
         id: 1944
     }, */
-    "dexible": {
-        enabled: false,
-        id: "2249",
-    },
+    // "dexible": { // move to aggregator config
+    //     enabled: false,
+    //     id: "2249",
+    // },
     "alienfi": {
         id: "2603"
     },

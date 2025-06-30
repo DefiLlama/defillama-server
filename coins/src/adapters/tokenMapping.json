@@ -9171,6 +9171,11 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "vbWBTC"
+    },
+    "0x62D6A123E8D19d06d68cf0d2294F9A3A0362c6b3": {
+      "to": "coingecko#usds",
+      "decimals": 18,
+      "symbol": "vbUSDS"
     }
   }
 }

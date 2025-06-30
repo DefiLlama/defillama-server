@@ -3210,6 +3210,26 @@
       "decimals": "6",
       "symbol": "dATOM",
       "to": "coingecko#drop-staked-atom"
+    },
+    "3FC3D99F9E5003057353AD968A6E3AC12AE50741B41441666BAB3890485C9D00": {
+      "decimals": "18",
+      "symbol": "mBTC",
+      "to": "coingecko#midas-btc-yield-token"
+    },
+    "925137DE4F77A2F26A5FA5051200437F43AFBBC39A4F443968C8E93B756AFB3B": {
+      "decimals": "18",
+      "symbol": "USDY",
+      "to": "coingecko#ondo-us-dollar-yield"
+    },
+    "C9D6B804F68F218448D7D2AF5D26C0E6E93CD16F99D1695E77B5BE5CBD7D5ADB": {
+      "decimals": "18",
+      "symbol": "sUSDS",
+      "to": "coingecko#susds"
+    },
+    "88386AC48152D48B34B082648DF836F975506F0B57DBBFC10A54213B1BF484CB": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "zeta": {

@@ -1014,6 +1014,7 @@ const data: Protocol[] = [
   {
     id: "151",
     name: "Rhino.fi",
+    address: null,
     symbol: "RHINO",
     url: "https://rhino.fi",
     description: "Rhino.fi is the lightening fast stablecoin liquidity layer powering instant, scalable, cross-chain liquidity all through a single API. We operate our own internal solver and pre-funded liquidity network, enabling guaranteed stablecoin pricing, minimal slippage, and near-instant settlement across 35+ chains, including Ethereum, Solana, Tron, TON, BNB and specialised Appchains. Trusted by 2M+ users with over $5.5B bridged to date, we support major and localised stablecoins with built-in KYT and single-KYB onboarding to simplify compliance from day one",

@@ -3740,5 +3740,8 @@ export default {
     },
     "ssv-network": {
         id: "6359"
+    },
+    "astroport-v2": {
+        id: "3117"
     }
 } as AdaptorsConfig

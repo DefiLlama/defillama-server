@@ -70,6 +70,12 @@ async function feUBTC(timestamp: number = 0) {
   const supply = (await api.call({ abi: "uint256:totalSupply", target: feUBTC })) / 1e18;
   const balance = (await api.call({ abi: "erc20:balanceOf", params: feUBTC, target: UBTC })) / 1e8
   pricesObject[feUBTC] = { price: balance / supply, underlying: UBTC };
+  
+  // wHLP
+  const wHLP = "0x1359b05241cA5076c9F59605214f4F84114c0dE8";
+  const wHLPRate = (await api.call({ abi: "uint256:getRate", target: '0x470bd109a24f608590d85fc1f5a4b6e625e8bdff' })) / 1e18;
+  pricesObject[wHLP] = { price: wHLPRate * 1e12 };
+
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 

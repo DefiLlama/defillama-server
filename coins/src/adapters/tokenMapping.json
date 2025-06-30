@@ -9171,6 +9171,31 @@
       "to": "coingecko#wrapped-solana-universal",
       "decimals": 18,
       "symbol": "uSOL"
+    },
+    "0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "vbETH"
+    },
+    "0x203A662b0BD271A6ed5a60EdFbd04bFce608FD36": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "vbUSDC"
+    },
+    "0x2DCa96907fde857dd3D816880A0df407eeB2D2F2": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "vbUSDT"
+    },
+    "0x0913DA6Da4b42f538B445599b46Bb4622342Cf52": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "vbWBTC"
+    },
+    "0x62D6A123E8D19d06d68cf0d2294F9A3A0362c6b3": {
+      "to": "coingecko#usds",
+      "decimals": 18,
+      "symbol": "vbUSDS"
     }
   }
 }

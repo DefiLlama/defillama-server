@@ -363,5 +363,8 @@ export default {
   },
   "gluex-protocol": {
     id: "6334"
+  },
+  "liquidswap": {
+    id: "6374"
   }
 } as AdaptorsConfig;

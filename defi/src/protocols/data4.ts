@@ -17999,5 +17999,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#etherfi-cash",
     listedAt: 1751313285,
   },
+  {
+    id: "6374",
+    name: "Liquidswap HL",
+    address: "hyperliquid:0xa043053570d42d6f553896820dfd42b6",
+    symbol: "LIQD",
+    url: "https://liqd.ag/",
+    description:
+      "Advanced DEX aggregator built for optimized multi-hop routing, delivering the best rates across all HyperEVM liquidity sources",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/liquidswap-hl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "liquidlaunch",
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "LiquidLaunchHL",
+    forkedFrom: [],
+  },
 ];
 export default data4;

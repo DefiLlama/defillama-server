@@ -17928,7 +17928,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregrator",
+    category: "Yield Aggregator",
     chains: ["CORE", "Arbitrum", "Base", "Ethereum", "Optimism", "Soneium", "Binance"],
     module: "moneyfi/index.js",
     twitter: "MoneyFiHub",

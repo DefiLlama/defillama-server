@@ -3082,4 +3082,7 @@ export default {
     "moai-v3": {
         id: "6377"
     },
+    "byreal": {
+        id: "6368"
+    }
 } as AdaptorsConfig

@@ -18154,7 +18154,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "moonshot",
-    forkedFrom: [],
+    forkedFromIds: [],
     parentProtocol: "parent#moonshot",
   },
 ];

@@ -3746,5 +3746,11 @@ export default {
     },
     "moonshot-create": {
         id: "6380"
+    },
+    "byreal": {
+        id: "6368"
+    },
+    "bitflux": {
+        id: "5344"
     }
 } as AdaptorsConfig

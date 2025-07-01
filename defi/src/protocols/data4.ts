@@ -10388,6 +10388,17 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Plume Mainnet", "Plume (Deprecated)"],
     forkedFromIds: ["1599"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://docs.mysticfinance.xyz/overview/oracles"],
+      }
+      {
+      name: "eOracle",
+      type: "Aggregator",
+      proof: ["https://docs.mysticfinance.xyz/overview/oracles"],
+    ],
     module: "mystic-finance/index.js",
     twitter: "mystic_finance",
     audit_links: [],

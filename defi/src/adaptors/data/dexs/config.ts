@@ -3075,5 +3075,11 @@ export default {
     },
     "eulerswap": {
         id: "6358"
-    }
+    },
+    "moai-v2": {
+        id: "6376"
+    },
+    "moai-v3": {
+        id: "6377"
+    },
 } as AdaptorsConfig

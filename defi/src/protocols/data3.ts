@@ -19358,7 +19358,23 @@ const data3_1: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     module: "dummy.js",
-    oracles: ["Pyth"], //https://docs.pancakeswap.finance/trade/perpetual-trading/perpetual-trading-v2#enhanced-security https://docs.asterdex.com/product/asterex-simple/price-oracles
+    oracleBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+      {
+        name: "Chainlink",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+      {
+        name: "Binance Oracle",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+    ],
     forkedFrom: [],
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",

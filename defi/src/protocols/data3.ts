@@ -50560,13 +50560,14 @@ const data3_2: Protocol[] = [
   {
     id: "4952",
     name: "Troves",
+    previousNames: ["STRKFarm"],
     address: null,
     symbol: "-",
     url: "https://www.troves.fi/",
     description:
       "Troves is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/strkfarm.jpg`,
+    logo: `${baseIconsUrl}/troves.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -50577,7 +50578,7 @@ const data3_2: Protocol[] = [
     chains: ["Starknet"],
     module: "troves/index.js",
     twitter: "troves",
-    github: ["troves"],
+    github: ["troves",""],
     listedAt: 1722961657,
   },
   {

@@ -10750,6 +10750,7 @@ const data3_1: Protocol[] = [
   {
     id: "3179",
     name: "Hypha",
+    previousNames: ["GoGoPool"],
     address: "avax:0x69260B9483F9871ca57f81A90D91E2F96c2Cd11d",
     symbol: "GGP",
     assetToken: "stAVAX",
@@ -10757,7 +10758,7 @@ const data3_1: Protocol[] = [
     description:
       "Hypha is the first permissionless staking protocol built for Avalanche Subnets and node operators to launch  for cheaper and faster using the GGP token. Currently, we cater to node operators and liquid stakers.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/gogopool.png`,
+    logo: `${baseIconsUrl}/hypha.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "gogopool",

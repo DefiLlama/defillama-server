@@ -7330,7 +7330,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#etherfi-cash",
     name: "EtherFi Cash",
-    url: "https://river.inc/",
+    url: "https://www.ether.fi/",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     logo: `${baseIconsUrl}/etherfi-cash.jpg`,
     gecko_id: null,

@@ -917,10 +917,10 @@ export default {
     "dexalot": {
         id: "2589"
     },
-    "1inch": {
-        enabled: false,
-        id: "189"
-    },
+    // "1inch": { // move to aggregators
+    //     enabled: false,
+    //     id: "189"
+    // },
     /* "carthage": {
         enabled: false,
         id: 1944

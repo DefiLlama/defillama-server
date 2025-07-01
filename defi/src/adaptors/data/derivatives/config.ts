@@ -298,19 +298,19 @@ export default {
     "sudofinance": {
         id: "4045"
     },
-    "blastfutures": {
-        enabled: false,
-        id: "4221",
-        parentId: "RabbitX Fusion",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1709337600": true,
-                "1709251200": true,
-                "1709164800": true,
-                "1709078400": true,
-            },
-        }
-    },
+    // "blastfutures": { // duplicate with rabbitx fusion
+    //     enabled: false,
+    //     id: "4221",
+    //     parentId: "RabbitX Fusion",
+    //     cleanRecordsConfig: {
+    //         genuineSpikes: {
+    //             "1709337600": true,
+    //             "1709251200": true,
+    //             "1709164800": true,
+    //             "1709078400": true,
+    //         },
+    //     }
+    // },
     "synfutures-v3": {
         parentId: "SynFutures",
         id: "4215"

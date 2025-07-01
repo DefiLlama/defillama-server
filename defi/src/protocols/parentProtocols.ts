@@ -7351,10 +7351,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#moonshot",
-    name: "Moonshot",
+    name: "Moonshot.com",
     url: "https://moonshot.com/",
     description: "Buy, Sell, and Create Memes with Apple Pay. Live on App Store and Google Play in 130+ Countries",
-    logo: `${baseIconsUrl}/moonshot.jpg`,
+    logo: `${baseIconsUrl}/moonshot.com.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

@@ -18094,5 +18094,47 @@ const data4: Protocol[] = [
     parentProtocol: "parent#moai-finance",
     listedAt: 1751364850
   },
+  {
+    id: "6378",
+    name: "xStocks",
+    address: null,
+    symbol: "-",
+    url: "https://xstocksfi.io",
+    description:
+      "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/xstocks.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Stocks & ETFs"],
+    chains: ["Solana"],
+    module: "xstocks/index.js",
+    twitter: "xStocksFi",
+    forkedFromIds: [],
+    listedAt: 1751380114
+  },
+  {
+    id: "6379",
+    name: "Cronos Bet",
+    address: "cronos:0x2a6d580fc42e42744c691fc533af5ec757f6e1b1",
+    symbol: "CBET",
+    url: "https://cronosbet.xyz",
+    description:
+      "CronosBet is the first AI-powered on-chain casino on Cronos, revolutionizing decentralized gambling with fully transparent smart contracts. The platform supports betting with possibly any token available on VVS Finance, offering instant payouts and KYC-free gaming. The $CBET token powers the ecosystem with planned expansion into sports betting and AI-driven prediction markets. Built for degens by degens - fast, transparent, and trustless gambling with no delays, no tricks, just fair odds and instant wins.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/cronos-bet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Cronos"],
+    module: "cronosbet/index.js",
+    twitter: "CronosBetAI",
+    forkedFromIds: [],
+    listedAt: 1751380514
+  },
 ];
 export default data4;

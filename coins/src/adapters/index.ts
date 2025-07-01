@@ -154,4 +154,7 @@ export default {
   momentum: require("./markets/momentum"),
   pst: require("./solana/pst"),
   capyfi: require("./moneyMarkets/capyfi"),
+  denario: require("./rwa/denario"),
+  quipuswap: require("./markets/quipuswap"),
+  reya: require("./yield/reya"),
 };

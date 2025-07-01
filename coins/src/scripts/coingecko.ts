@@ -11,7 +11,7 @@ import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
-import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
   fetchCgPriceData,
@@ -19,7 +19,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
-import { chainsWithCaseSensitiveDataProviders } from "../utils/shared/constants";
+import { chainsThatShouldNotBeLowerCased, chainsWithCaseSensitiveDataProviders } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 
 enum COIN_TYPES {
@@ -52,7 +52,10 @@ async function storeCoinData(coinData: Write[]) {
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
-      items.map((i) => ({ adapter: "coingecko", decimals: 0, ...i } as Dynamo)),
+      items.map((i) => {
+        const { volume, ...rest } = i;
+        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+      }),
     ),
     batchWrite(items, false),
   ]);
@@ -81,6 +84,8 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 
 const aggregatedPlatforms: string[] = [];
 
+const ignoredChainSet = new Set(['sora', 'hydration', 'polkadot', 'osmosis', 'xrp', 'sonic-svm', 'vechain', 'cosmos', 'binancecoin', 'ordinals', 'saga-2', 'mantra', 'thorchain', 'initia', 'xcc', 'secret', 'icp', 'bittensor', 'kasplex', 'terra-2', 'bittorrent-old']);
+
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await fetchCgPriceData(coins.map((c) => c.id));
   await storeCGCoinMetadatas(coinData);
@@ -92,9 +97,14 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     if (!(c.id in coinData)) return;
     if (timestamp - coinData[c.id].last_updated_at < staleMargin) return;
     Object.entries(c.platforms).map(([chain, address]) => {
-      const i = Object.values(chainToCoingeckoId).indexOf(chain);
+      const i = cgPlatformtoChainId[chain];
+      if (ignoredChainSet.has(chain) || ignoredChainSet.has(i)) return;
+      if (!i) {
+        console.warn('No chain found for', chain, 'in', c.id, c.platforms[chain]);
+        return;
+      }
       stalePlatforms.push(
-        `asset#${Object.keys(chainToCoingeckoId)[i]}:${address}`,
+        `asset#${i}:${address}`,
       );
     });
     staleIds.push(c.id);
@@ -171,14 +181,25 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     (coin) =>
       coinData[coin.id]?.usd !== undefined && !staleIds.includes(coin.id),
   );
-  const platformQueries = filteredCoins
+
+  const missingChainIdMapping = {} as { [key: string]: string };
+  const platformQueries: string[] = filteredCoins
     .map((f: Coin) =>
       Object.entries(f.platforms).map(([chain, address]) => {
-        const i = Object.values(chainToCoingeckoId).indexOf(chain);
-        return `${Object.keys(chainToCoingeckoId)[i]}:${address}`;
-      }),
+        if (ignoredChainSet.has(chain) || chain === 'hyperliquid') return; // hyperliquid key in cg is not the evm
+        if (address.startsWith('ibc/') || address.startsWith('factory/') || address.startsWith('zil')) return;
+        let i = cgPlatformtoChainId[chain];
+        if (!i) {
+          if (!missingChainIdMapping[chain])
+            console.warn('[MissingChainId]', chain, 'in', f.id, f.platforms[chain]);
+          missingChainIdMapping[chain] = chain;
+          i = chain.toLowerCase();
+        }
+        if (!chainsWithCaseSensitiveDataProviders.includes(i) && !chainsThatShouldNotBeLowerCased.includes(i)) address = address.toLowerCase();
+        return `${i}:${address}`;
+      }).filter(i => i),
     )
-    .flat();
+    .flat() as string[]
 
   const coinPlatformDataArray: CgEntry[] = await batchGet(
     platformQueries.map((q: string) => ({
@@ -205,25 +226,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
-          const normalizedPK = chainsWithCaseSensitiveDataProviders.includes(
-            chain,
-          )
-            ? PK.toLowerCase()
-            : PK;
-          const platformData = coinPlatformData[normalizedPK];
-          if (platformData && platformData?.confidence > 0.99) return;
-
-          const created = getCurrentUnixTimestamp();
-          const address = PK.substring(PK.indexOf(":") + 1);
-          const { decimals, symbol } =
-            platformData &&
-            "decimals" in platformData &&
-            "symbol" in platformData
-              ? (coinPlatformData[normalizedPK] as any)
-              : await getSymbolAndDecimals(address, chain, coin.symbol);
-
-          if (decimals == undefined) return;
 
           if (!pricesAndMcaps[cgPK(coin.id)]) {
             console.error(
@@ -231,18 +233,47 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             );
             return;
           }
+          try {
 
-          const item = {
-            PK: normalizedPK,
-            SK: 0,
-            created,
-            decimals,
-            symbol,
-            redirect: cgPK(coin.id),
-            confidence: 0.99,
-          };
-          kafkaItems.push(item);
-          await ddb.put(item);
+            const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+            if (ignoredChainSet.has(chain)) return;
+            const normalizedPK = !chainsWithCaseSensitiveDataProviders.includes(chain) && chainsThatShouldNotBeLowerCased.includes(chain)
+              ? PK.toLowerCase()
+              : PK;
+            const platformData = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
+            if (platformData && platformData?.confidence > 0.99) return;
+
+            const created = getCurrentUnixTimestamp();
+            const address = PK.substring(PK.indexOf(":") + 1);
+            let { decimals, symbol } = platformData as any
+            if (decimals == undefined || symbol == undefined) {
+              const symbolAndDecimals = await getSymbolAndDecimals(address, chain, coin.symbol, coin.platforms[(chainToCoingeckoId as any)[chain] || chain]);
+              if (symbolAndDecimals) console.log(`Found symbol and decimals for ${coin.id} on ${chain}:`, symbolAndDecimals);
+              else console.log(`Couldn't find symbol and decimals for ${coin.id} on ${chain} ${PK}`)
+
+              if (!symbolAndDecimals) return;
+              decimals = symbolAndDecimals.decimals;
+              symbol = symbolAndDecimals.symbol;
+            }
+            if (decimals == undefined) return;
+
+            const item = {
+              PK: normalizedPK,
+              SK: 0,
+              created,
+              decimals,
+              symbol,
+              redirect: cgPK(coin.id),
+              confidence: 0.99,
+            };
+            kafkaItems.push(item);
+            await ddb.put(item);
+          } catch (e) {
+            console.error(
+              `[scripts - getAndStoreCoins] Error storing platform data for ${coin.id} on ${PK}`,
+            );
+            console.error(e);
+          }
         },
         coinPlatformData,
         aggregatedPlatforms,

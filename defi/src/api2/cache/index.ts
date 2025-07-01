@@ -6,8 +6,7 @@ import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
 import { ChainCoinGekcoIds } from "../../utils/normalizeChain";
-import { clearOldCacheFolders, getMetadataAll, readFromPGCache, readTvlCacheAllFile } from './file-cache'
-import { PG_CACHE_KEYS } from "../constants";
+import { clearOldCacheFolders, getMetadataAll, readHistoricalTVLMetadataFile, readTvlCacheAllFile } from './file-cache'
 import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
@@ -330,7 +329,7 @@ export const CACHE_KEYS = {
 
 async function setHistoricalTvlForAllProtocols() {
   try {
-    cache.historicalTvlForAllProtocolsMeta = await readFromPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META)
+    cache.historicalTvlForAllProtocolsMeta = await readHistoricalTVLMetadataFile()
   } catch (e) {
     console.error(e);
   }

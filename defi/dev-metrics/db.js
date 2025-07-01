@@ -117,6 +117,37 @@ GitOwner.init(
   }
 );
 
+
+class CGTokenMetadata extends Model { }
+CGTokenMetadata.init(
+  {
+    id: { type: DataTypes.STRING, primaryKey: true, },
+    data: DataTypes.JSONB,
+  },
+  {
+    sequelize,
+    tableName: 'cg_token_metadata',
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+  }
+);
+
+class CMCTokenMetadata extends Model { }
+CMCTokenMetadata.init(
+  {
+    id: { type: DataTypes.STRING, primaryKey: true, },
+    data: DataTypes.JSONB,
+  },
+  {
+    sequelize,
+    tableName: 'cmc_token_metadata',
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+  }
+);
+
 class GitRepo extends Model { }
 GitRepo.init(
   {
@@ -264,6 +295,38 @@ async function addRawCommits(commits) {
   return GitCommitRaw.bulkCreate(commits, { ignoreDuplicates: true })
 }
 
+
+async function addCMCTokenMetadatas(coins) {
+  const records = coins.map(coin => ({ id: coin.id, data: coin }))
+  return CMCTokenMetadata.bulkCreate(records, { ignoreDuplicates: true })
+}
+
+async function getAllCMCTokenMetadata() {
+  const data = await CMCTokenMetadata.findAll({ attributes: ['data'], raw: true, })
+  const dataMap = {}
+  for (const item of data) {
+    const coin = item.data
+    dataMap[coin.id] = coin
+  }
+  return dataMap
+}
+
+async function addCGTokenMetadatas(coins) {
+  const records = coins.map(coin => ({ id: coin.id, data: coin }))
+  return CGTokenMetadata.bulkCreate(records, { ignoreDuplicates: true })
+}
+
+async function getAllCGTokenMetadata() {
+  const data = await CGTokenMetadata.findAll({ attributes: ['data'], raw: true, })
+  const dataMap = {}
+  for (const item of data) {
+    const coin = item.data
+    dataMap[coin.id] = coin
+  }
+  return dataMap
+}
+
+
 /**
  * Check if an archive data is already pulled exists for a given archive_file
  * @param {String} archive_file   
@@ -293,7 +356,7 @@ async function getOrgContributersMonthyAggregation({ orgs = [], repos = [] }) {
   if (!orgs.length && !repos.length) throw new Error('No org or repo filter provided')
   if (!orgs.length) orgs = null
   if (!repos.length) repos = null
-  
+
   return sequelize
     .query(owner_query_contributers, {
       replacements: { orgs, repos },
@@ -314,4 +377,8 @@ module.exports = {
   getOrgMonthyAggregation,
   getOrgContributersMonthyAggregation,
   sequelize,
+  addCMCTokenMetadatas,
+  getAllCMCTokenMetadata,
+  addCGTokenMetadatas,
+  getAllCGTokenMetadata,
 }

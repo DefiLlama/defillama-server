@@ -12,6 +12,7 @@ const baseTokens: { [symbol: string]: string } = {
   JLP: "jupiter-perpetuals-liquidity-provider-token",
   ETH: "ethereum",
   MXN: "real-mxn",
+  "FLP.1": "flash-liquidity-token",
 };
 
 type MarketInfo = {
@@ -166,6 +167,24 @@ const marketInfos: MarketInfo[] = [
     symbol: "fragJTO",
     unit: "JTO",
     decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "hzmYvfvU9LNc7eUVwRNFyDhQ1W3faXVpC8CAn76z3cj",
+    mintAddress: "52EBWh8t1yHK5AA7RsKVaCU44YpgGsatbDSNPSbBpWUr",
+    symbol: "CRT",
+    unit: "USDC",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "CZnZHPw7fjHA54WHxvNdr1dNweceVT7HwYi4WWZ77N5y",
+    mintAddress: "7sxrDsyfuEryDsHurLi4Fkd8RitkmbojQZFELfR1QcKQ",
+    symbol: "FLP.1",
+    unit: "FLP.1",
+    decimals: 6,
     oracleDecimals: 0,
     chain: "solana",
   },

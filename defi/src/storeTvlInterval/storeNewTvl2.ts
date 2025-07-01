@@ -85,7 +85,9 @@ export default async function (
       })
       console.log(errorMessage, usdTokenBalances, currentTvl, tvl, debugData)
 
-      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+
+      if (currentTvl < 2e12) // less than 2 trillion
+        await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
@@ -179,6 +181,12 @@ export default async function (
     SK: unixTimestamp,
     ...hourlyData,
   });
+  await dynamodb.putEventData({
+    PK: hourlyPK,
+    SK: unixTimestamp,
+    ...hourlyData,
+    source: 'tvl-adapter',
+  })
 
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 

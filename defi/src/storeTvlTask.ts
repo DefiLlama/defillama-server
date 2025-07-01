@@ -20,6 +20,7 @@ const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
+const runOnlyAdapters = process.env.RUN_ONLY_ADAPTERS ? process.env.RUN_ONLY_ADAPTERS.split(',').map((a: string) => a.trim()) : []
 
 async function main() {
   console.log('Heap Size Limit (MB):', v8.getHeapStatistics().heap_size_limit / 1024 / 1024);
@@ -58,6 +59,10 @@ async function main() {
     const startTime = getUnixTimeNow()
     let protocolName = protocol.name
 
+    if (runOnlyAdapters.length > 0 && !runOnlyAdapters.includes(protocolName)) {
+      skipped++
+      return;
+    }
 
     try {
       const staleCoins: StaleCoins = {};
@@ -84,23 +89,19 @@ async function main() {
 
       // if (protocolName) runningSet.delete(protocolName)
 
-      console.log('FAILED: ', protocol?.name, e?.message)
       failed++
-
+      
       success = false
-      let errorString = e?.message
+      let errorString = getErrorString(e);
       const errorStack = e?.stack?.split('\n').map((line: string) => {
         return line.replace(projectPath, '')
       }).slice(0, 4).join('\n');
 
-      try {
-        if (!errorString)
-          errorString = JSON.stringify(e)
-      } catch (e) { }
+      console.log('FAILED: ', protocol?.name, errorString)
 
       await elastic.addErrorLog({
         error: e as any,
-        errorString,
+        errorString: typeof errorString === 'string' ? errorString : '',
         errorStack,
         metadata,
       } as any)
@@ -247,3 +248,27 @@ setTimeout(async () => {
   preExit()
   process.exit(1);
 }, 1000 * 60 * 40); // 40 minutes
+
+function getErrorString(e: any) {
+  try {
+
+    if (e?.message) {
+      return e.message;
+    }
+
+
+    if (e.llamaRPCError) {
+      const errorString = `Llama RPC error! method: ${e.method} `
+      const errors = e.errors.map((i: any) => `- host: ${i?.host} error: ${getErrorString(i?.error)}`)
+      return errorString + '\n' + errors.join('\n')
+    }
+
+    if (e?.toString) {
+      return e.toString();
+    }
+
+    return JSON.stringify(e);
+  } catch (e) {
+    return e
+  }
+}

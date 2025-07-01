@@ -7,11 +7,10 @@
 
 import { getMetadataAll, readRouteData, storeRouteData } from '../cache/file-cache'
 import { cache } from '@defillama/sdk'
-import { colord } from 'colord'
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from './githubMetrics';
-import { chainCoingeckoIds } from '../../utils/normalizeChain';
+import { chainCoingeckoIds, chainNameToIdMap } from '../../utils/normalizeChain';
 import protocols from '../../protocols/data';
 import parentProtocols from '../../protocols/parentProtocols';
 const { exec } = require('child_process');
@@ -38,7 +37,9 @@ protocols.forEach((protocol: any) => {
 
 
 const fetchJson = async (url: string) => fetch(url).then(res => res.json())
-const slugMap: any = {}
+const slugMap: any = {
+  'Binance': 'bsc',
+}
 
 const slug = (tokenName = '') => {
   if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(' ').join('-').split("'").join('')
@@ -96,8 +97,6 @@ async function _storeAppMetadata() {
   const hacksMap: any = {}
   const emissionsProtocolMap: any = {}
   const chartDenominationsChainMap: any = {}
-
-  const protocolMetadata = finalProtocols
 
   const [
     tvlData,
@@ -242,7 +241,6 @@ async function _storeAppMetadata() {
   createDataMaps()
 
   await _storeMetadataFile()
-  await _storeProtocolData()
 
   function createDataMaps() {
 
@@ -293,7 +291,7 @@ async function _storeAppMetadata() {
     })
 
     tvlData.protocols.forEach((protocol: any) => {
-      let id = protocol.id ?? protocol.defillamaId 
+      let id = protocol.id ?? protocol.defillamaId
       if (id && protocol.chains?.length) {
         if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
         protocol.chains.forEach((chain: any) => {
@@ -332,7 +330,7 @@ async function _storeAppMetadata() {
       dimensionsMap[mapKey] = dataMap
       data.protocols.map((pData: any) => {
         let id = pData.id ?? pData.defillamaId ?? pData.name
-        if ( pData.chains?.length) {
+        if (pData.chains?.length) {
           if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
           pData.chains.forEach((chain: any) => {
             protocolChainSetMap[id].add(chain)
@@ -341,7 +339,7 @@ async function _storeAppMetadata() {
 
         if (!pData.hasOwnProperty('total24h')) return; // skip if this total24h field is missing
         if (pData.id) dataMap[pData.id] = pData
-        if (pData.defillamaId)  dataMap[pData.defillamaId] = pData
+        if (pData.defillamaId) dataMap[pData.defillamaId] = pData
         if (pData.name) dataMap[pData.name] = pData
       })
     })
@@ -386,7 +384,7 @@ async function _storeAppMetadata() {
       chainDenominationsKeys.forEach((key) => {
         obj[key] = data[key] ?? null
       })
-      if (data.parent?.chain === 'Ethereum') 
+      if (data.parent?.chain === 'Ethereum')
         obj = {
           "geckoId": "ethereum",
           "cmcId": "1027",
@@ -409,7 +407,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name)
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl ? true : false,
+        tvl: protocol.tvl != null ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {})
@@ -527,7 +525,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of feeBribeRevenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -543,7 +541,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of feeTokenTaxData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -575,7 +573,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of revenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -591,8 +589,8 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of holdersRevenueData.protocols) {
-      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
-      
+      if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
+
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         holdersRevenue: true
@@ -804,440 +802,16 @@ async function _storeAppMetadata() {
       .sort()
       .reduce((r: any, k) => ((r[k] = finalChains[k]), r), {})
 
+    for (const _chain of Object.values(sortedChainData)) {
+      const chain = _chain as any
+      chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name)
+      if (!chainNameToIdMap[chain.name]) console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`,)
+    }
+
     await storeRouteData('/config/smol/appMetadata-chains.json', sortedChainData)
     console.log('finished building metadata')
   }
-
-  async function _storeProtocolData() {
-
-
-    for (const protocol of tvlData.protocols)
-      await storeProtocolFEData(protocol, false)
-
-
-    for (const protocol of tvlData.parentProtocols)
-      await storeProtocolFEData(protocol, true)
-
-
-    function getPalatte(protocolName: string) {
-      const DEFAULT_COLOR = "#2172E5"
-
-      const nameToId = (name: string) => name
-        .trim()
-        .toLowerCase()
-        .replace(/[()'’]/g, '') // Remove parentheses and single quotes
-        .replace(/\s+/g, '-'); // Replace spaces with hyphens
-      return protocolPalettes[nameToId(protocolName)] ?? DEFAULT_COLOR
-    }
-
-    function fetchProtocolArticles({ tags = '', size = 2, }: any) {
-      if (!tags) return []
-      tags = tags.toLowerCase()
-      if (!articlesTagMap[tags]) return []
-
-      return articlesTagMap[tags].slice(0, size).map((element: any) => ({
-        headline: element.headlines.basic,
-        date: element.display_date,
-        href: `https://dlnews.com${element.canonical_url}`,
-        imgSrc: element.promo_items?.basic?.url ?? null
-      }))
-    }
-
-    async function storeProtocolFEData(protocolData?: any, isParentProtocol?: boolean) {
-
-      const slugName = slug(protocolData.name)
-      const protocolId = protocolData.id ?? protocolData.defillamaId
-      let parentProtocolId = undefined
-      let childProtocolSlugs = []
-      let childProtocolIds = []
-      if (!isParentProtocol) parentProtocolId = protocolData.parentProtocol
-      else {
-        childProtocolSlugs = parentProtocolMetadataMap[protocolId]?.childProtocolsInfo.map((i: any) => i.name).map(sluggify) ?? []
-        childProtocolIds = parentProtocolMetadataMap[protocolId]?.childProtocolsInfo.map((i: any) => i.defillamaId ?? i.id) ?? []
-      }
-
-      // check if we show inflows
-      let inflowsExist = false
-
-      if (isParentProtocol) {
-        inflowsExist = !parentProtocolMetadataMap[protocolId]?.childProtocolsInfo.some((i: any) => i.misrepresentedTokens)
-      } else {
-        inflowsExist = !protocolData.misrepresentedTokens
-      }
-
-
-      // raises data
-
-      let protocolRaises = raisesProtocolMap[protocolId]
-      if (!protocolRaises && parentProtocolId) protocolRaises = raisesProtocolMap[parentProtocolId]
-      if (protocolRaises?.length > 0) protocolData.raises = protocolRaises
-
-
-
-      // chart colors
-      const chartTypes = [
-        'TVL',
-        'Mcap',
-        'Token Price',
-        'FDV',
-        'Fees',
-        'Revenue',
-        'Volume',
-        'Perps Volume',
-        'Unlocks',
-        'Active Addresses',
-        'New Addresses',
-        'Transactions',
-        'Gas Used',
-        'Staking',
-        'Borrowed',
-        'Median APY',
-        'USD Inflows',
-        'Total Proposals',
-        'Successful Proposals',
-        'Max Votes',
-        'Treasury',
-        'Bridge Deposits',
-        'Bridge Withdrawals',
-        'Token Volume',
-        'Token Liquidity',
-        'Tweets',
-        'Developers',
-        'Contributers',
-        'Devs Commits',
-        'Contributers Commits',
-        'NFT Volume',
-        'Premium Volume',
-        'Perps Aggregators Volume',
-        'Bridge Aggregators Volume'
-      ]
-
-
-      const backgroundColor = getPalatte(protocolData.name)
-      const colorTones = Object.fromEntries(chartTypes.map((type, index) => [type, selectColor(index, backgroundColor)]))
-
-
-
-
-
-      // Dev Metrics data
-      let devMetrics = devMetricsMap[protocolId] ?? null
-      if (!devMetrics && parentProtocolId) devMetrics = devMetricsMap[parentProtocolId] ?? null
-
-
-
-
-      // dimensions data
-      // const metrics = protocolData.metrics || {}
-      const dimensionMetrics: any = {}
-      let feesData: any = []
-      let revenueData: any = []
-
-      dimensionsConfig.forEach(({ mapKey, finalDataKeys }: any) => {
-        const allData = dimensionsMap[mapKey]
-        const getData = (p: any) => allData[p.defillamaId ?? p.id] ?? allData[p.name]
-        let data
-        if (isParentProtocol) {
-          const childProtocols = parentProtocolMetadataMap[protocolId]?.childProtocolsInfo ?? []
-          data = childProtocols.map(getData).filter((d: any) => d)
-        } else {
-          data = getData(protocolData)
-          if (data) data = [data]
-        }
-
-        if (!data?.length) data = []
-        else {
-          if (!protocolData.chains?.length) {
-            const allChains = data.map((d: any) => d.chains).flat()
-            protocolData.chains = Array.from(new Set(allChains))
-          }
-        }
-
-        switch (mapKey) {
-          case 'fees': feesData = data; break;
-          case 'revenue': revenueData = data; break;
-        }
-
-        Object.entries(finalDataKeys).forEach(([responseKey, dimensionsKey]: any) => {
-          if (!data?.length) {
-            dimensionMetrics[responseKey] = null
-            return;
-          }
-          dimensionMetrics[responseKey] = data?.reduce((acc: any, curr: any) => (acc += curr[dimensionsKey] || 0), 0) ?? null
-        })
-
-      })
-
-
-
-      // similar protocols
-
-      let similarProtocols = []
-
-      if (!isParentProtocol && protocolData.category) {
-        const protocolChainSet = new Set(protocolData.chains ?? [])
-        similarProtocols = protocolCategoriesMap[protocolData.category]?.filter((p: any) => p.name !== protocolData.name) ?? []
-        similarProtocols = similarProtocols.map((p: any) => {
-          let commonChains = p.chains.filter((chain: any) => protocolChainSet.has(chain)).length
-          return { name: p.name, tvl: p.tvl, commonChains }
-        }).sort((a: any, b: any) => b.tvl - a.tvl)
-      }
-
-
-      const similarProtocolsSet = new Set()
-
-      const protocolsWithCommonChains = [...similarProtocols].sort((a, b) => b.commonChains - a.commonChains).slice(0, 10)
-
-      // first 5 are the protocols that are on same chain + same category
-      protocolsWithCommonChains.forEach((p) => similarProtocolsSet.add(p.name))
-
-      // last 5 are the protocols in same category
-      // similarProtocols.forEach((p: any) => {
-      //   if (similarProtocolsSet.size < 10) {
-      //     similarProtocolsSet.add(p.name)
-      //   }
-      // })
-
-
-
-
-
-      // NFT Volume data
-      let nftVolumeData = nftExchangeVolumeMap[slugName] ?? []
-
-
-
-
-      // treasury data
-      let treasury = treasuriesMap[protocolId] ?? null
-      if (!treasury && !isParentProtocol) treasury = treasuriesMap[parentProtocolId] ?? null
-
-
-
-
-      // expenses data
-      let expenses = expensesMap[protocolId] ?? null
-      if (!expenses && !isParentProtocol) expenses = expensesMap[parentProtocolId] ?? null
-
-
-
-      // hacks data
-      let hacksData = hacksMap[protocolId ?? protocolData.defillamaId] ?? null
-      // if (!hacksData && parentProtocolId) hacksData = hacksMap[parentProtocolId] ?? null
-      if (!hacksData && isParentProtocol) {
-        hacksData = []
-        childProtocolIds.forEach((id: any) => {
-          hacksData.push(...(hacksMap[id] ?? []))
-        })
-        
-      }
-      if (hacksData) hacksData = hacksData.sort((a: any, b: any) => b.date - a.date)
-
-
-
-      // yield data
-      let projectNames = protocolData?.otherProtocols?.map(sluggify) ?? []
-      projectNames = [...projectNames, slugName]
-      if (isParentProtocol) projectNames.push(...childProtocolSlugs)
-      const projectYields: any = []
-      projectNames.forEach((p: any) => {
-        if (yieldPoolsProtocolMap[p]) {
-          projectYields.push(...yieldPoolsProtocolMap[p])
-        }
-      })
-
-
-
-
-      // token liquidity
-      let tokenPools = liquidityTokenPoolsMap[protocolId]?.tokenPools ?? []
-      if (!tokenPools.length && parentProtocolId) tokenPools = liquidityTokenPoolsMap[parentProtocolId]?.tokenPools ?? []
-
-      const liquidityAggregated = tokenPools.reduce((agg: any, pool: any) => {
-        if (!agg[pool.project]) agg[pool.project] = {}
-        agg[pool.project][pool.chain] = pool.tvlUsd + (agg[pool.project][pool.chain] ?? 0)
-        return agg
-      }, {})
-
-      const tokenLiquidity = yieldsConfig
-        ? Object.entries(liquidityAggregated)
-          .filter((x) => (yieldsConfig.protocols[x[0]]?.name ? true : false))
-          .map((p: any) => Object.entries(p[1]).map((c) => [yieldsConfig.protocols[p[0]].name, c[0], c[1]]))
-          .flat()
-          .sort((a, b) => b[2] - a[2])
-        : []
-
-
-
-      // active users data
-      let users = activeUsersData[protocolId] ?? null
-
-
-
-      // emissions data
-
-      let upcomingEvent: any = []
-      let emissions = emissionsProtocolMap[protocolId] ?? null
-      if (!emissions && parentProtocolId) emissions = emissionsProtocolMap[parentProtocolId] ?? null
-
-      if (emissions) {
-        const protocolUpcomingEvent = emissions?.events?.find((e: any) => e.timestamp >= Date.now() / 1000)
-        const upcomingEventTS = protocolUpcomingEvent?.timestamp ?? null
-        if (
-          !protocolUpcomingEvent ||
-          (protocolUpcomingEvent.noOfTokens.length === 1 && protocolUpcomingEvent.noOfTokens[0] === 0)
-        ) {
-          upcomingEvent = [{ timestamp: null }]
-        } else {
-          const comingEvents = emissions?.events?.filter((e: any) => e.timestamp === upcomingEventTS) ?? []
-          upcomingEvent = [...comingEvents]
-        }
-
-      }
-
-      const chartDenominations = []
-
-      if (protocolData.chains && protocolData.chains.length > 0) {
-        chartDenominations.push({ symbol: 'USD', geckoId: null })
-
-        if (chartDenominationsChainMap[protocolData.chains[0]]?.geckoId) {
-          chartDenominations.push(chartDenominationsChainMap[protocolData.chains[0]])
-        } else {
-          chartDenominations.push(chartDenominationsChainMap['Ethereum'])
-        }
-      }
-
-      let tvlMethodolodyUrl = null
-      if (!isParentProtocol && protocolInfoMap[protocolId]?.module) {
-        tvlMethodolodyUrl = `https://github.com/DefiLlama/DefiLlama-Adapters/tree/main/projects/${protocolInfoMap[protocolId]?.module}`
-      }
-
-      const data = {
-        articles: fetchProtocolArticles({ tags: protocolData.name }),
-        // protocol,
-        devMetrics,
-        nftVolumeData,
-        protocolData: {
-          // ...protocolData,
-          symbol: protocolData.symbol ?? null,
-          metrics: {
-            // ...metrics,
-            tvl: !!protocolMetadata[protocolId]?.tvl,
-            devMetrics: !!devMetrics,
-            fees: !!protocolMetadata[protocolId]?.fees,
-            revenue: !!protocolMetadata[protocolId]?.revenue,
-            dexs: !!protocolMetadata[protocolId]?.dexs,
-            perps: !!protocolMetadata[protocolId]?.perps,
-            aggregators: !!protocolMetadata[protocolId]?.aggregator,
-            perpsAggregators: !!protocolMetadata[protocolId]?.perpsAggregators,
-            bridgeAggregators: !!protocolMetadata[protocolId]?.bridgeAggregators,
-            options: !!protocolMetadata[protocolId]?.options,
-            // medianApy: medianApy.data.length > 0,
-            inflows: inflowsExist,
-            unlocks: !!protocolMetadata[protocolId]?.unlocks,
-            bridge: protocolData.category === 'Bridge' || protocolData.category === 'Cross Chain',
-            treasury: !!protocolMetadata[protocolId]?.treasury,
-            tokenLiquidity: !!protocolMetadata[protocolId]?.liquidity,
-            nftVolume: (nftVolumeData?.length ?? 0) > 0,
-            yields: projectYields.length > 0,
-            forks: !!protocolMetadata[protocolId]?.forks,
-          }
-        },
-        backgroundColor,
-        similarProtocols: Array.from(similarProtocolsSet).map((protocolName) =>
-          similarProtocols.find((p: any) => p.name === protocolName)
-        ),
-        chartColors: colorTones,
-        users: users
-          ? {
-            activeUsers: users.users?.value ?? null,
-            newUsers: users.newUsers?.value ?? null,
-            transactions: users.txs?.value ?? null,
-            gasUsd: users.gasUsd?.value ?? null
-          }
-          : null,
-        ...dimensionMetrics,
-
-        // we stop showing governance data for now
-        controversialProposals: [],
-        governanceApis: [],
-        // controversialProposals,
-        // governanceApis: governanceApis.filter((x) => !!x),
-        treasury: treasury?.tokenBreakdowns ?? null,
-        yields: projectYields.length > 0
-          ? {
-            noOfPoolsTracked: projectYields.length,
-            averageAPY: projectYields.reduce((acc: any, { apy }: any) => acc + apy, 0) / projectYields.length
-          }
-          : null,
-        helperTexts: {
-          fees:
-            feesData?.length > 1
-              ? 'Sum of all fees from ' +
-              (feesData.reduce((acc: any, curr: any) => (acc = [...acc, curr.name]), []) ?? []).join(',')
-              : feesData?.[0]?.methodology?.['Fees'] ?? null,
-          revenue:
-            revenueData?.length > 1
-              ? 'Sum of all revenue from ' +
-              (revenueData.reduce((acc: any, curr: any) => (acc = [...acc, curr.name]), []) ?? []).join(',')
-              : revenueData?.[0]?.methodology?.['Revenue'] ?? null,
-          users:
-            'This only counts users that interact with protocol directly (so not through another contract, such as a dex aggregator), and only on arbitrum, avax, bsc, ethereum, xdai, optimism, polygon.'
-        },
-        expenses,
-        tokenLiquidity,
-        upcomingEvent,
-        methodologyUrls: {
-          tvl: tvlMethodolodyUrl,
-          fees: feesData?.[0]?.methodologyURL ?? null,
-          dexs: volumeData?.[0]?.methodologyURL ?? null,
-          perps: perpsData?.[0]?.methodologyURL ?? null,
-          treasury: protocolData.treasury
-            ? `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/projects/treasury/${protocolData.treasury}`
-            : null,
-          stablecoins: protocolData.stablecoins
-            ? protocolData.stablecoins
-              .map(
-                (name: any) =>
-                  `${name}$https://github.com/DefiLlama/peggedassets-server/blob/master/src/adapters/peggedAssets/${name}/index.ts`
-              )
-              .join(',')
-            : null
-        },
-        chartDenominations,
-        hacksData,
-        // clientSide: isCpusHot
-      }
-
-
-
-      // store data in file, replace # with - in protocol id to get around fragment identifier issue in urls
-      await storeRouteData(`/config/smol/protocol-${protocolId}.json`.replace('#', '-'), data)
-    }
-  }
-
 }
-
-function selectColor(number: any, color: any) {
-  const hue = number * 137.508 // use golden angle approximation
-
-  const { h, s, l, a } = colord(color).toHsl()
-
-  return colord({
-    h: h + hue,
-    s: number !== 0 && l < 70 ? 70 : s,
-    l: number !== 0 && l < 60 ? 60 : l,
-    a: number !== 0 && a < 0.6 ? 1 : a
-  }).toHex()
-}
-
-const sluggify = (input: string) => {
-  const slug = decodeURIComponent(input)
-    .toLowerCase()
-    .replace(/[^\w\/]+/g, '-')
-  return slug.replace(/^-+/, '').replace(/-+$/, '')
-}
-
 
 // API endpoints
 const ACTIVE_USERS_API = 'https://api.llama.fi/activeUsers'

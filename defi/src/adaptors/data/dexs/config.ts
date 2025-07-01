@@ -917,10 +917,10 @@ export default {
     "dexalot": {
         id: "2589"
     },
-    "1inch": {
-        enabled: false,
-        id: "189"
-    },
+    // "1inch": { // move to aggregators
+    //     enabled: false,
+    //     id: "189"
+    // },
     /* "carthage": {
         enabled: false,
         id: 1944
@@ -2195,9 +2195,9 @@ export default {
     "tonco": {
         id: "5363"
     },
-    "ekubo-evm": {
-        id: "5914"
-    },
+    // "ekubo-evm": { // merged with ekubo : https://github.com/DefiLlama/defillama-server/commit/3aba710f2a43514ddd5c64368670df078144361b
+    //     id: "5914"
+    // },
     "equalizer-cl": {
         id: "5603"
     },
@@ -2346,7 +2346,7 @@ export default {
     },
     "believe": {
         id: "6159",
-        disabled: true,
+        enabled: false,
     },
     "rockswap": {
         id: "4204"
@@ -3048,5 +3048,32 @@ export default {
     },
     "x3x": {
         id: "6272"
+    },
+    "duality": {
+        id: "5459"
+    },
+    "gliquid": {
+        id: "6294"
+    },
+    "oxium": {
+        id: "6301"
+    },
+    "stars-arena": {
+        id: "3564"
+    },
+    "garuda-defi": {
+        id: "6324"
+    },
+    "smardex-usdn": {
+        id: "6238"
+    },
+    "volta-markets": {
+        id: "6345"
+    },
+    "tapp-exchange": {
+        id: "6352"
+    },
+    "eulerswap": {
+        id: "6358"
     }
 } as AdaptorsConfig

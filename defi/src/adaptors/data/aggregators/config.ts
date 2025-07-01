@@ -34,7 +34,6 @@ export default {
     id: "3154",
   },
   "bitkeep": {
-    enabled: false,
     id: "3207",
   },
   "jumper-exchange": {
@@ -55,14 +54,13 @@ export default {
   "aggre": {
     id: "3809",
   },
-  "llamaswap": {
-    enabled: false,
-    id: "3847",
-  },
-  // "openocean": {
+  // "llamaswap": { // duplicate with volume with other aggregators
   //   enabled: false,
-  //   id: "533",
+  //   id: "3847",
   // },
+  "openocean": {
+    id: "533",
+  },
   "arcane-dex": {
     id: "3885",
   },
@@ -350,10 +348,22 @@ export default {
   "vetrade": {
     id: "6253"
   },
-  "dzap": {
-    id: "6259"
-  },
+  // "dzap": {  // wash trading?
+  //   id: "6259"
+  // },
   "haiku": {
     id: "6266"
+  },
+  "bluefin7k-aggregator": {
+    id: "6322"
+  },
+  "hyperbloom": {
+    id: "6329"
+  },
+  "gluex-protocol": {
+    id: "6334"
+  },
+  "liquidswap": {
+    id: "6374"
   }
 } as AdaptorsConfig;

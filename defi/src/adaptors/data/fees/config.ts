@@ -1516,9 +1516,9 @@ export default {
     "size-credit": {
         id: "4904"
     },
-    "stbot": {
-        id: "4909"
-    },
+    // "stbot": {  // duplicate of sol-trading-bot
+    //     id: "4909"
+    // },
     "zns": {
         id: "4920"
     },
@@ -2116,10 +2116,10 @@ export default {
     "berachain-hub": {
         id: "5742"
     },
-    "polymarket": {
-        enabled: false, // fees value is wrong
-        id: "711"
-    },
+    // "polymarket": { // fees value is wrong, protocol does not charge fees
+    //     enabled: false, 
+    //     id: "711"
+    // },
     "velar": {
         id: "4339"
     },
@@ -2363,9 +2363,9 @@ export default {
     "logx": {
         id: "5137"
     },
-    "ekubo-evm": {
-        id: "5914"
-    },
+    // "ekubo-evm": { // merged into ekubo https://github.com/DefiLlama/defillama-server/commit/3aba710f2a43514ddd5c64368670df078144361b
+    //     id: "5914"
+    // },
     "contango": {
         id: "3602"
     },
@@ -2923,6 +2923,9 @@ export default {
     },
     "arena-launch": {
         id: "6155"
+    },
+    "arena-dex": {
+        id: "6154"
     },
     "avalon": {
         id: "4473"
@@ -3659,5 +3662,86 @@ export default {
     },
     "renzo": {
         id: "3933"
+    },
+    "jpg-store": {
+        id: "5970"
+    },
+    "LiquidOps": {
+        id: "5980"
+    },
+    "oxium": {
+        id: "6301"
+    },
+    "gliquid": {
+        id: "6294"
+    },
+    "rank-trading": {
+        id: "6084"
+    },
+    "hypurrfi-isolated": {
+        id: "6053"
+    },
+    "hydradx": {
+        id: "6271"
+    },
+    "yieldnest": {
+        id: "4606"
+    },
+    "rezerve-money": {
+        id: "6300"
+    },
+    "nova": {
+        id: "6326"
+    },
+    "pepeboost": {
+        id: "6327"
+    },
+    "padre": {
+        id: "6328"
+    },
+    "hypercat": {
+        id: "6325"
+    },
+    "kgen": {
+        id: "6333"
+    },
+    "launch-on-bags": {
+        id: "6332"
+    },
+    "gluex-protocol": {
+        id: "6334"
+    },
+    "bullaexchange": {
+        id: "5766"
+    },
+    "aries-markets": {
+        id: "2228"
+    },
+    "yala": {
+        id: "6147"
+    },
+    "alkimiya": {
+        id: "6344"
+    },
+    "smithii": {
+        id: "6349"
+    },
+    "volta-markets": {
+        id: "6345"
+    },
+    "bluefin-alphalend": {
+        id: "6153"
+    },
+    "tapp-exchange": {
+        id: "6352"
+    },
+    "eulerswap": {
+        id: "6358"
+    },
+    "ssv-network": {
+        id: "6359"
+    },
+    "astroport-v2": {
+        id: "3117"
     }
 } as AdaptorsConfig

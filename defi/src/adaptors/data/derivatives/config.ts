@@ -201,7 +201,8 @@ export default {
                 "1700438400": true,
                 "1700352000": true,
                 "1700265600": true,
-                "1700179200": true
+                "1700179200": true,
+                "1749600000": true,
             },
         }
 
@@ -297,19 +298,19 @@ export default {
     "sudofinance": {
         id: "4045"
     },
-    "blastfutures": {
-        enabled: false,
-        id: "4221",
-        parentId: "RabbitX Fusion",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1709337600": true,
-                "1709251200": true,
-                "1709164800": true,
-                "1709078400": true,
-            },
-        }
-    },
+    // "blastfutures": { // duplicate with rabbitx fusion
+    //     enabled: false,
+    //     id: "4221",
+    //     parentId: "RabbitX Fusion",
+    //     cleanRecordsConfig: {
+    //         genuineSpikes: {
+    //             "1709337600": true,
+    //             "1709251200": true,
+    //             "1709164800": true,
+    //             "1709078400": true,
+    //         },
+    //     }
+    // },
     "synfutures-v3": {
         parentId: "SynFutures",
         id: "4215"
@@ -677,5 +678,8 @@ export default {
         id: "6173"
     },
     "reya-dex": { id: '4978' },
+    "alkimiya": {
+        id: "6344"
+    },
 
 } as AdaptorsConfig

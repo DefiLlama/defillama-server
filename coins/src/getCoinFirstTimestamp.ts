@@ -16,11 +16,13 @@ const handler = async (
       if (finalCoin === undefined) {
         return;
       }
-      response[PKTransforms[coin.PK]] = {
-        symbol: coin.symbol,
-        price: finalCoin.price,
-        timestamp: finalCoin.SK
-      };
+      PKTransforms[coin.PK].forEach((coinName) => {
+        response[coinName] = {
+          symbol: coin.symbol,
+          price: finalCoin.price,
+          timestamp: finalCoin.SK
+        };
+      });
     })
   );
   return successResponse(

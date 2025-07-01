@@ -45,7 +45,7 @@ async function getEulerV2Tokens(
         return vaultDeploy.args[0]; // proxy
     });
 
-    const [assets, sharePrice, symbols] = await Promise.all([
+    const [assets, sharePrice, symbols, dTokens] = await Promise.all([
         sdk.api.abi.multiCall({
             calls: vaultAddresses.map((address: any) => ({
                 target: address,
@@ -73,6 +73,15 @@ async function getEulerV2Tokens(
             chain,
             permitFailure: true,
         }),
+        sdk.api.abi.multiCall({
+            calls: vaultAddresses.map((address: any) => ({
+                target: address,
+                params: [],
+            })),
+            abi: vaultAbi.find((m: any) => m.name === "dToken"),
+            chain,
+            permitFailure: true,
+        }),
     ]);
 
     const marketData = assets.output.map((asset: any, i: number) => {
@@ -81,6 +90,7 @@ async function getEulerV2Tokens(
             underlying: asset["output"],
             symbol: symbols.output[i].output,
             sharePrice: sharePrice.output[i].output / 1e18,
+            dToken: dTokens.output[i].output,
         };
     });
 
@@ -110,6 +120,18 @@ function formWrites(
             eTokenPrice,
             coinData.decimals,
             `${m.symbol}`,
+            timestamp,
+            "euler",
+            0.9
+        );
+
+        addToDBWritesList(
+            writes,
+            chain,
+            m.dToken,
+            coinData.price * -1,
+            coinData.decimals,
+            `${m.symbol}-DEBT`,
             timestamp,
             "euler",
             0.9

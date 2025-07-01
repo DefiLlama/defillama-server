@@ -3592,9 +3592,9 @@ export const chainCoingeckoIds = {
     chainId: 21000000
   },
   "VinuChain": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "vinuchain",
+    symbol: "VC",
+    cmcId: "28580",
     categories: ["EVM"],
     twitter: "vinuchain",
     url: "https://www.vinuchain.org/",
@@ -4300,7 +4300,98 @@ export const chainCoingeckoIds = {
     twitter: "namada",
     url: "https://namada.net/",
     github: ["anoma"],
-  }
+  },
+  "Civitia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://civitia.org/",
+    twitter: "civitiaorg",
+  },
+  "Titan": {
+    geckoId: null,
+    symbol: "TKX",
+    cmcId: null,
+    categories: ["EVM"],
+    url: "https://titanlab.io/home",
+    twitter: "TitanMainnet",
+    chainId: 18888
+  },
+  "LogX Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "LogX_trade",
+    url: "https://logx.network/",
+  },
+  "Numbers": {
+    geckoId: "numbers-protocol",
+    symbol: "NUM",
+    cmcId: "13521",
+    categories: ["EVM"],
+    twitter: "numbersprotocol",
+    url: "https://www.numbersprotocol.io/",
+    chainId: 10507,
+    github: ["numbersprotocol"],
+  },
+  "Phantasma": {
+    geckoId: "phantasma",
+    symbol: "SOUL",
+    cmcId: "2827",
+    categories: ["EVM"],
+    twitter: "PhantasmaChain",
+    url: "https://phantasma.info/",
+  },
+  "Inertia": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    twitter: "Inertia_fi",
+    url: "https://inrt.fi/",
+  },
+  "Yominet": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    parent: {
+      chain: "Initia",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    twitter: "kamigotchiworld",
+  },
+  "Katana": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "katana",
+    url: "https://katana.network/",
+    chainId: 747474,
+  },
+  "XRPL EVM": {
+    geckoId: null,
+    symbol: "XRP",
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    twitter: "Peersyst",
+    url: "https://www.xrplevm.org/",
+    chainId: 1440000,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4493,7 +4584,10 @@ const chainLabelMap = {
   "sseed": "Superseed",
   "xp": "Xphere",
   "milkyway_rollup": "MilkyWay Rollup",
-  "iota": "IOTA"
+  "iota": "IOTA",
+  "logx": "LogX Network",
+  "yomi": "Yominet",
+  "xrplevm": "XRPL EVM",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4563,6 +4657,19 @@ Object.entries(newChainLabelMap)
 addNormalizedChainReplacements(chainLabelMap)
 addNormalizedChainReplacements(newChainLabelMap)
 
+export function getChainIdFromDisplayName(displayName: string): string {
+  if (extraSections.includes(displayName)) {
+    return displayName;
+  }
+
+  if (displayName.includes('-')) {
+    return displayName
+      .split('-')
+      .map(name => getChainIdFromDisplayName(name))
+      .join('-');
+  }
+  return normalizeChain(displayName);
+}
 
 export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
   if (extraSections.includes(normalizedChain)) {
@@ -4594,7 +4701,9 @@ export function getChainNameFromId(id: string | number | undefined) {
   return chainIdToNameMap['' + id]
 }
 
-export const chainNameToIdMap: { [name: string]: string } = {}
+export const chainNameToIdMap: { [name: string]: string } = {
+  'Plume': 'plume', // 'plume' key is used for the deprecated chain, so we need to map 'Plume' to 'plume'
+}
 const chainNames = Object.keys(chainCoingeckoIds)
 chainNames.sort()
 chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))

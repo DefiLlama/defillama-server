@@ -7338,6 +7338,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ether_fi",
   },
+  {
+    id: "parent#moai-finance",
+    name: "Moai Finance",
+    url: "https://xrplevm.moai-finance.xyz/swap",
+    description: "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
+    logo: `${baseIconsUrl}/moai-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MoaiFinance",
+  },
 ];
 
 export default parentProtocols;

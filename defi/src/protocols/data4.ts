@@ -18136,5 +18136,26 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1751380514
   },
+  {
+    id: "6380",
+    name: "Moonshot Create",
+    address: null,
+    symbol: "-",
+    url: "https://moonshot.com/",
+    description:
+      "The easiest way for anyone to launch a memecoin with Apple Pay",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/moonshot-create.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "moonshot",
+    forkedFrom: [],
+    parentProtocol: "parent#moonshot",
+  },
 ];
 export default data4;

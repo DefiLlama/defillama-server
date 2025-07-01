@@ -3743,5 +3743,8 @@ export default {
     },
     "astroport-v2": {
         id: "3117"
+    },
+    "moonshot-create": {
+        id: "6380"
     }
 } as AdaptorsConfig

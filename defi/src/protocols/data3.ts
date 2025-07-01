@@ -55763,9 +55763,9 @@ const data3_2: Protocol[] = [
     category: "Trading App",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "usemoonshot",
+    twitter: "moonshot",
     forkedFrom: [],
-    listedAt: 1727485605
+    parentProtocol: "parent#moonshot",
   },
   {
     id: "5189",

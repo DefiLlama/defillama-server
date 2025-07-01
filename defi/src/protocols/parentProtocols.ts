@@ -7349,6 +7349,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MoaiFinance",
   },
+  {
+    id: "parent#moonshot",
+    name: "Moonshot",
+    url: "https://moonshot.com/",
+    description: "Buy, Sell, and Create Memes with Apple Pay. Live on App Store and Google Play in 130+ Countries",
+    logo: `${baseIconsUrl}/moonshot.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "moonshot",
+  },
 ];
 
 export default parentProtocols;

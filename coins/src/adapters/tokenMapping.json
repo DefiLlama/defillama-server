@@ -3254,8 +3254,13 @@
       "to": "coingecko#tether"
     },
     "0x96152e6180e085fa57c7708e18af8f05e37b479d": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "BASE.USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x0327f0660525b15Cdb8f1f5FBF0dD7Cd5Ba182aD": {
+      "decimals": "6",
+      "symbol": "USDC.ARB",
       "to": "coingecko#usd-coin"
     },
     "0x1de70f3e971b62a0707da18100392af14f7fb677": {

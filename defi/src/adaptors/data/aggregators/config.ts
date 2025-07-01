@@ -33,9 +33,9 @@ export default {
   "avnu": {
     id: "3154",
   },
-  "bitkeep": {
-    id: "3207",
-  },
+  // "bitkeep": {
+  //   id: "3207", // duplicate with bitgetwallet
+  // },
   "jumper-exchange": {
     id: "3524",
     cleanRecordsConfig: {

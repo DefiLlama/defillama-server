@@ -18839,6 +18839,23 @@ const data3_1: Protocol[] = [
     chains: ["Binance"],
     module: "dummy.js",
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+      {
+        name: "Chainlink",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+      {
+        name: "Binance Oracle",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9928"]
+      },
+    ],
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",
     listedAt: 1695222044,

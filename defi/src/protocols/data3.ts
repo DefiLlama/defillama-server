@@ -50577,25 +50577,32 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4952",
-    name: "STRKFarm",
+    name: "Troves",
+    previousNames: ["STRKFarm"],
     address: null,
     symbol: "-",
-    url: "https://www.strkfarm.com/",
+    url: "https://www.troves.fi/",
     description:
-      "STRKFarm is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
+      "Troves is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/strkfarm.jpg`,
+    logo: `${baseIconsUrl}/troves.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    oracles: ["Pragma"], // https://docs.strkfarm.xyz/p/strategies/sensei-delta-neutral-lending
+    oraclesBreakdown: [
+      {
+      name: "Pragma",
+      type: "Primary",
+      proof: ["https://docs.strkfarm.xyz/p/strategies/sensei-delta-neutral-lending"]
+      }
+    ],
     forkedFrom: [],
     chains: ["Starknet"],
     module: "strkfarm/index.js",
-    twitter: "strkfarm",
-    github: ["strkfarm"],
+    twitter: "troves",
+    github: ["troves"],
     listedAt: 1722961657,
   },
   {

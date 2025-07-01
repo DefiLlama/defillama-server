@@ -18157,5 +18157,26 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#moonshot",
   },
+  {
+    id: "6381",
+    name: "Amana",
+    address: null,
+    symbol: "-",
+    url: "https://amanadefi.com/",
+    description:
+      "Amana is an omnichain yield platform that simplifies crypto investing by enabling users to deposit assets and automatically earn optimized returns across top DeFi protocols, using secure cross-chain execution and smart routing to maximize yield with minimal effort",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/amana.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["ZetaChain"],
+    module: "amana-defi/index.js",
+    twitter: "Amana_DeFi",
+    forkedFromIds: [],
+    listedAt: 1751393433
+  },
 ];
 export default data4;

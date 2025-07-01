@@ -3752,5 +3752,8 @@ export default {
     },
     "bitflux": {
         id: "5344"
+    },
+    "marinade-select": {
+        id: "6275"
     }
 } as AdaptorsConfig

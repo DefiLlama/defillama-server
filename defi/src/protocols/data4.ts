@@ -18272,5 +18272,26 @@ const data4: Protocol[] = [
     twitter: "UnicornXAI",
     forkedFromIds: [],
   },
+  {
+    id: "6386",
+    name: "P2PFlip",
+    address: null,
+    symbol: "-",
+    url: "https://www.p2pflip.xyz/",
+    description:
+      "A peer-to-peer gambling protocol on Matchain where users can create and accept coin flip challenges with supported tokens. Players stake equal amounts, with the winner taking the pot minus a small protocol fee. The platform features Express Mode for gasless gameplay through session-based deposits and an automated relayer system for faster user experience.",
+    chain: "Matchain",
+    logo: `${baseIconsUrl}/p2pflip.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Matchain"],
+    module: "p2pflip/index.js",
+    forkedFromIds: [],
+    twitter: null,
+    listedAt: 1751490093
+  },
 ];
 export default data4;

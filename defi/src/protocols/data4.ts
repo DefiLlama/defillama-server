@@ -18251,5 +18251,26 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     listedAt: 1751458815
   },
+  {
+    id: "6385",
+    name: "UnicornX",
+    address: null,
+    symbol: "-",
+    url: "https://unicornx.ai/app/download",
+    description:
+      "Community-powered DEX with real-time Alpha signals. Fast, fair, and fully on-chain.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/unicornx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana", "Binance"],
+    module: "dummy.js",
+    twitter: "UnicornXAI",
+    forkedFromIds: [],
+    listedAt: 1751486707
+  },
 ];
 export default data4;

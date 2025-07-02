@@ -3755,5 +3755,8 @@ export default {
     },
     "marinade-select": {
         id: "6275"
+    },
+    "unicornx": {
+        id: "6385"
     }
 } as AdaptorsConfig

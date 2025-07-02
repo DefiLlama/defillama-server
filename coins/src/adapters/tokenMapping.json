@@ -1125,6 +1125,11 @@
     }
   },
   "arbitrum": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x437cc33344a0b27a429f795ff6b469c72698b291": {
       "decimals": "6",
       "symbol": "wM",
@@ -1359,6 +1364,11 @@
     }
   },
   "optimism": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x16ed8e219cde31e14a80dcb6c9127a5ec6e88e46": {
       "decimals": "18",
       "symbol": "apxETH",
@@ -1524,6 +1534,11 @@
     }
   },
   "base": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x102d758f688a4C1C5a80b116bD945d4455460282": {
       "to": "coingecko#usdt0",
       "decimals": 18,
@@ -7463,6 +7478,11 @@
     }
   },
   "sonic": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
       "decimals": "18",
       "symbol": "PEAS",
@@ -8763,6 +8783,11 @@
     }
   },
   "plume_mainnet": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0xD3BFd6E6187444170A1674c494E55171587b5641": {
       "to": "coingecko#nest-elixir-vault-lp",
       "decimals": 6,

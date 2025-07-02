@@ -18271,7 +18271,6 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "UnicornXAI",
     forkedFromIds: [],
-    listedAt: 1751486707
   },
 ];
 export default data4;

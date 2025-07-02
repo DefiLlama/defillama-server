@@ -15442,6 +15442,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1748884884,
   },
+  /* was delisted from agg volumes, the reported values are not accurate
   {
     id: "6259",
     name: "DZap",
@@ -15463,6 +15464,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.dzap.io/integration-fee-and-security/audit-reports"],
     twitter: "dzap_io",
   },
+  */
   {
     id: "6260",
     name: "ReachMe",

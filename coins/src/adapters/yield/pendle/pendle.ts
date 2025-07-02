@@ -51,13 +51,15 @@ export default async function getTokenPrices(
     permitFailure: true,
   });
 
+  const allYieldTokenDataArray: any[] = allYieldTokens.map(
+    (t) => scaleMapping.has(t) ? scaleMapping.get(t) : t).concat(
+    allAssetInfos.map((info: any) => info.assetAddress)
+  )
+
   const yieldTokenDataArray: CoinData[] = await getTokenAndRedirectData(
     [
-      ...new Set(
-        allYieldTokens.map((t) => scaleMapping.has(t) ? scaleMapping.get(t) : t).concat(
-          allAssetInfos.map((info: any) => info.assetAddress
+      ...new Set(allYieldTokenDataArray
         )
-      ))
     ].filter((t) => t != null),
     chain,
     timestamp
@@ -124,8 +126,9 @@ export default async function getTokenPrices(
     })
 
     allTokenInfos.map((info, i: number) => {
-      if (!allSyPrices[i] || !allPtRates[i]) return;
-      const ptPrice = allSyPrices[i] * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+      const syPrice = allSyPrices[i]
+      if (!syPrice || !allPtRates[i]) return;
+      const ptPrice = syPrice * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
       addToDBWritesList(
         writes,
         chain,
@@ -150,8 +153,9 @@ export default async function getTokenPrices(
     });
 
     allTokenInfos.map((info, i: number) => {
-      if (!allSyPrices[i] || !allLpRates[i]) return;
-      const lpPrice = allSyPrices[i] * (allLpRates[i] / (10 ** allSyDecimals[i]));
+      const syPrice = allSyPrices[i]
+      if (!syPrice || !allLpRates[i]) return;
+      const lpPrice = syPrice * (allLpRates[i] / (10 ** allSyDecimals[i]));
 
       addToDBWritesList(
         writes,
@@ -180,9 +184,9 @@ export default async function getTokenPrices(
     });
     
     allTokenInfos.map((info, i: number) => {
-      if (!allSyPrices[i] || !allYtRates[i]) return;
-
-      const ytPrice = allSyPrices[i] * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      const syPrice = allSyPrices[i]
+      if (!syPrice || !allYtRates[i]) return;
+      const ytPrice = syPrice * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,

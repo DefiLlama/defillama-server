@@ -14373,7 +14373,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-keepers.jpg`,
     audits: "0",
@@ -14394,7 +14394,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-vrf-v1.jpg`,
     audits: "0",
@@ -14415,7 +14415,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-vrf-v2.jpg`,
     audits: "0",

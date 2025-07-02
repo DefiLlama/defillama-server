@@ -18178,5 +18178,31 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1751393433
   },
+  {
+    id: "6382",
+    name: "Rango",
+    address: null,
+    symbol: "-",
+    url: "https://app.rango.exchange/bridge",
+    description:
+      "Rango is a cutting-edge routing and aggregation protocol for all cross-chain and on-chain swaps, aggregating bridges and DEXs in crypto world",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rango.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregator",
+    chains: [
+      "Solana", "Ethereum", "Arbitrum", "Base", "Optimism", "Polygon", "Avalanche", "Fantom", 
+      "BSC", "Scroll", "Bitcoin", "Binance", "Linea", "Celo", "zkSync Era", "Mode", "Tron", "Zora", "Blast",
+      "Fantom", "Moonriver", "Taiko", "Starknet", "Polygon zkEVM", "Sui", "Cronos", "Noble", "Boba", "Fuse",
+      "xDai", "Harmony", "Moonbeam"
+    ],
+    module: "dummy.js",
+    twitter: "RangoExchange",
+    forkedFromIds: [],
+    audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
+  },
 ];
 export default data4;

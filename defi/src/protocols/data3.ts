@@ -39573,14 +39573,15 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: [ "Bitlayer", "BOB", "Binance"],
+    chains: [ "Bitlayer", "BOB", "Binance", "Hemi"],
     module: "satoshi-protocol/index.js",
     twitter: "Satoshi_BTCFi",
     forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
       bob: ["Api3", "DIA"], // https://docs.satoshiprotocol.org/outro/oracle
-      bsc: ["eOracle"] // https://github.com/DefiLlama/defillama-server/pull/9478
+      bsc: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9478
+      hemi: ["eOracle"], // https://docs.satoshiprotocol.org/outro/oracle
     },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],

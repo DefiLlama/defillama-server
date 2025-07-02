@@ -291,7 +291,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Zircuit",
     "Fraxtal",
     "BOB",
-    "Hyperliquid",
+    "Hyperliquid L1",
     "BSquared",
     "Sonic",
     "Radix",

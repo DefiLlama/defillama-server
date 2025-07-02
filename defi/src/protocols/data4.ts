@@ -17988,6 +17988,9 @@ const data4: Protocol[] = [
     twitter: "ether_fi",
     forkedFrom: [],
     parentProtocol: "parent#etherfi-cash",
+    tokensExcludedFromParent: {
+      Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
+    },
     listedAt: 1751313277,
   },
   {

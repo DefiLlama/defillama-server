@@ -4804,8 +4804,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "Dopinprotocol/index.js",
     twitter: "Dopinprotocol", 
-    listedAt: 1739443997
-  },
+    listedAt: 1739443997,
+    deadUrl: true,  },
   {
     id: "5777",
     name: "SoSoValue Basis",
@@ -5168,8 +5168,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "nome-protocol/index.js",
     twitter: "NOMEprotocol", 
-    listedAt: 1739584051
-  },
+    listedAt: 1739584051,
+    deadUrl: true,  },
   {
     id: "5793",
     name: "Unleash Protocol",
@@ -5826,8 +5826,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "chickendefi/index.js",
     twitter: "chickensdefi",
-    listedAt: 1740078103
-  },
+    listedAt: 1740078103,
+    deadUrl: true,  },
   { 
     id: "5822",
     name: "Meme Wallet",
@@ -6063,8 +6063,8 @@ const data4: Protocol[] = [
     module: "fibonacci-dex/index.js",
     twitter: "Fibonaccixyz",
     audit_links: [],
-    listedAt: 1740338333
-  },
+    listedAt: 1740338333,
+    deadUrl: true,  },
   {
     id: "5833",
     name: "Form Network",
@@ -6667,8 +6667,8 @@ const data4: Protocol[] = [
     twitter: "spice_protocol",
     github: ["hemilabs"],
     audit_links: ["https://info.spice.so/audits"],
-    listedAt: 1741019257
-  },
+    listedAt: 1741019257,
+    deadUrl: true,  },
   {
     id: "5859",
     name: "ERC Burner",
@@ -7035,7 +7035,7 @@ const data4: Protocol[] = [
     module: "usury/index.js",
     twitter: "Usury_Finance",
     listedAt: 1741358957,
-  },
+    deadUrl: true,  },
   {
     id: "5875",
     name: "Tea-Fi",
@@ -8602,8 +8602,8 @@ const data4: Protocol[] = [
     module: "Ringswap/index.js",
     forkedFromIds: ["205"],
     twitter: "ringswaponsonic",
-    listedAt: 1742675684
-  },
+    listedAt: 1742675684,
+    deadUrl: true,  },
   {
     id: "5942",
     name: "Gacha",
@@ -8993,8 +8993,8 @@ const data4: Protocol[] = [
     module: "GoldMiner/index.js",
     forkedFrom: [],
     twitter: "goldminersonic",
-    listedAt: 1743107385
-  },
+    listedAt: 1743107385,
+    deadUrl: true,  },
   {
     id: "5959",
     name: "Evoq Finance",
@@ -14709,8 +14709,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "LuckyFuture/index.js",
     twitter: "LuckyFuture_AI",
-    listedAt: 1747939730
-  },
+    listedAt: 1747939730,
+    deadUrl: true,  },
   {
     id: "6225",
     name: "NEAR Intents",
@@ -15442,7 +15442,6 @@ const data4: Protocol[] = [
     ],
     listedAt: 1748884884,
   },
-  /* was delisted from agg volumes, the reported values are not accurate
   {
     id: "6259",
     name: "DZap",
@@ -15464,7 +15463,6 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.dzap.io/integration-fee-and-security/audit-reports"],
     twitter: "dzap_io",
   },
-  */
   {
     id: "6260",
     name: "ReachMe",
@@ -17988,9 +17986,6 @@ const data4: Protocol[] = [
     twitter: "ether_fi",
     forkedFrom: [],
     parentProtocol: "parent#etherfi-cash",
-    tokensExcludedFromParent: {
-      Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
-    },
     listedAt: 1751313277,
   },
   {
@@ -18161,95 +18156,6 @@ const data4: Protocol[] = [
     twitter: "moonshot",
     forkedFromIds: [],
     parentProtocol: "parent#moonshot",
-  },
-  {
-    id: "6381",
-    name: "Amana",
-    address: null,
-    symbol: "-",
-    url: "https://amanadefi.com/",
-    description:
-      "Amana is an omnichain yield platform that simplifies crypto investing by enabling users to deposit assets and automatically earn optimized returns across top DeFi protocols, using secure cross-chain execution and smart routing to maximize yield with minimal effort",
-    chain: "ZetaChain",
-    logo: `${baseIconsUrl}/amana.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield Aggregator",
-    chains: ["ZetaChain"],
-    module: "amana-defi/index.js",
-    twitter: "Amana_DeFi",
-    forkedFromIds: [],
-    listedAt: 1751393433
-  },
-  {
-    id: "6382",
-    name: "Rango",
-    address: null,
-    symbol: "-",
-    url: "https://app.rango.exchange/bridge",
-    description:
-      "Rango is a cutting-edge routing and aggregation protocol for all cross-chain and on-chain swaps, aggregating bridges and DEXs in crypto world",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/rango.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Bridge Aggregator",
-    chains: [
-      "Solana", "Ethereum", "Arbitrum", "Base", "Optimism", "Polygon", "Avalanche", "Fantom", 
-      "BSC", "Scroll", "Bitcoin", "Binance", "Linea", "Celo", "zkSync Era", "Mode", "Tron", "Zora", "Blast",
-      "Fantom", "Moonriver", "Taiko", "Starknet", "Polygon zkEVM", "Sui", "Cronos", "Noble", "Boba", "Fuse",
-      "xDai", "Harmony", "Moonbeam"
-    ],
-    module: "dummy.js",
-    twitter: "RangoExchange",
-    forkedFromIds: [],
-    audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
-  },
-  {
-    id: "6383",
-    name: "Hyperion DEX",
-    address: null,
-    symbol: "-",
-    url: "https://hyperiondex.com/",
-    description:
-      "The first Decentralized Exchange on Titan chain",
-    chain: "Titan",
-    logo: `${baseIconsUrl}/hyperion-dex.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Titan"],
-    module: "hyperiondex/index.js",
-    twitter: null,
-    forkedFromIds: [],
-    listedAt: 1751458815
-  },
-  {
-    id: "6384",
-    name: "Arch Swap",
-    address: null,
-    symbol: "-",
-    url: "https://arch.fi/swap",
-    description:
-      "Deeper liquidity, efficient incentives and lower fees.",
-    chain: "Botanix",
-    logo: `${baseIconsUrl}/arch-swap.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Botanix"],
-    module: "arch-fi/index.js",
-    twitter: "arch_swap",
-    forkedFromIds: ["3710"],
-    listedAt: 1751458815
   },
 ];
 export default data4;

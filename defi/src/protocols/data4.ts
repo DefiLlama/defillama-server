@@ -18209,5 +18209,47 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
   },
+  {
+    id: "6383",
+    name: "Hyperion DEX",
+    address: null,
+    symbol: "-",
+    url: "https://hyperiondex.com/",
+    description:
+      "The first Decentralized Exchange on Titan chain",
+    chain: "Titan",
+    logo: `${baseIconsUrl}/hyperion-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Titan"],
+    module: "hyperiondex/index.js",
+    twitter: null,
+    forkedFromIds: [],
+    listedAt: 1751458815
+  },
+  {
+    id: "6384",
+    name: "Arch Swap",
+    address: null,
+    symbol: "-",
+    url: "https://arch.fi/swap",
+    description:
+      "Deeper liquidity, efficient incentives and lower fees.",
+    chain: "Botanix",
+    logo: `${baseIconsUrl}/arch-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Botanix"],
+    module: "arch-fi/index.js",
+    twitter: "arch_swap",
+    forkedFromIds: ["3710"],
+    listedAt: 1751458815
+  },
 ];
 export default data4;

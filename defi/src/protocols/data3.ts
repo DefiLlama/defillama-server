@@ -38602,19 +38602,31 @@ const data3_2: Protocol[] = [
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "BEVM"},{chain: "BOB"}]
+        chains: [{chain: "bevm"}]
       },
       {
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "BOB"}]
+        chains: [{chain: "bob"}]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9478", "https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "Binance"},{chain: "Hemi"}]
+        chains: [{chain: "bsc"},{chain: "hemi"}]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9478", "https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "hemi"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9478", "https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "bsc"}]
       }
     ],
     audit_links: ["https://docs.river.inc/outro/audit-reports"],

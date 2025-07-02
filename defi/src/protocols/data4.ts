@@ -13782,9 +13782,10 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Binance"],
     forkedFromIds: ["3710"],
-    module: "dummy.js",
+    module: "thena-integral/index.js",
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",
+    listedAt: 1751488349
   },
   {
     id: "6180",

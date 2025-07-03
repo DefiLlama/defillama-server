@@ -18288,10 +18288,10 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Trading App",
     chains: ["Solana", "Binance"],
     module: "dummy.js",
-    twitter: "UnicornXAI",
+    twitter: "UV_DAO",
     forkedFromIds: [],
   },
   {

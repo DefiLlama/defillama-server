@@ -11177,19 +11177,14 @@ const data4: Protocol[] = [
       },
       {
         name: "RedStone",
-        type: "Fallback",
+        type: "Secondary",
         proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
       {
         name: "API3",
-        type: "Fallback",
+        type: "Secondary",
         proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
-      {
-        name: "Resilient Oracle",
-        type: "Aggregator",
-        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
-      }
     ],
     tokensExcludedFromParent: {
       BSC: ["SLISBNB"],

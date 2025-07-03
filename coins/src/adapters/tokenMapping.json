@@ -129,7 +129,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x5B82028cfc477C4E7ddA7FF33d59A23FA7Be002a": {
       "decimals": "18",
@@ -429,6 +429,11 @@
     }
   },
   "polygon": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usda-2"
+    },
     "0x172370d5cd63279efa6d502dab29171933a610af": {
       "decimals": "18",
       "symbol": "CRV",
@@ -534,6 +539,11 @@
     }
   },
   "ethereum": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usda-2"
+    },
     "0x3DDc84940Ab509C11B20B76B466933f40b750dc9": {
       "decimals": "18",
       "symbol": "BENJI",
@@ -929,7 +939,7 @@
     "0x8A60E489004Ca22d775C5F2c657598278d17D9c2": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     }
   },
   "meter": {
@@ -1024,7 +1034,7 @@
     "0x9356086146be5158E98aD827E21b5cF944699894": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x6B2a01A5f79dEb4c2f3c0eDa7b01DF456FbD726a": {
       "to": "coingecko#universal-btc",
@@ -1125,6 +1135,11 @@
     }
   },
   "arbitrum": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usda-2"
+    },
     "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
       "decimals": "18",
       "symbol": "vyUSD",
@@ -1364,6 +1379,11 @@
     }
   },
   "optimism": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usda-2"
+    },
     "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
       "decimals": "18",
       "symbol": "vyUSD",
@@ -1525,7 +1545,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
@@ -1607,7 +1627,7 @@
     "0x0000206329b97db379d5e1bf586bbdb969c63274": {
       "decimals": "18",
       "symbol": "USDA",
-      "to": "coingecko#angle-usd"
+      "to": "coingecko#usda-2"
     },
     "0xA61BeB4A3d02decb01039e378237032B351125B4": {
       "decimals": "18",
@@ -1692,7 +1712,7 @@
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0xd329f9A8589723357C36727a2D5e15974c835cCf": {
       "decimals": "18",
@@ -2568,7 +2588,7 @@
     "0x075df695b8E7f4361FA7F8c1426C63f11B06e326": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x5A61B1d8272B250729EA3F5eD3Ef843f4D66BC6e": {
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
@@ -3615,6 +3635,11 @@
     }
   },
   "xdai": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usda-2"
+    },
     "0xddafbb505ad214d7b80b1f830fccc89b60fb7a83": {
       "decimals": "6",
       "symbol": "USDC",
@@ -5417,7 +5442,7 @@
       "symbol": "seiyanETH"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -5732,7 +5757,7 @@
       "symbol": "uniBTC"
     },
     "0x250fC55c82bcE84C991ba25698A142B21cDC778A": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -5836,7 +5861,7 @@
       "symbol": "aBitSOLVBTC"
     },
     "0x91bd7f5e328aecd1024e4118ade0ccb786f55db1": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -5894,7 +5919,7 @@
     "0xff12470a969dd362eb6595ffb44c82c959fe9acc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x09413312b263fD252C16e592A45f4689F26cb79d": {
       "decimals": "18",
@@ -5972,7 +5997,7 @@
       "symbol": "LRC"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -6562,7 +6587,7 @@
       "symbol": "WETH"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -7226,7 +7251,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x950e7FB62398C3CcaBaBc0e3e0de3137fb0daCd2": {
       "decimals": "10",
@@ -7376,7 +7401,7 @@
   },
   "zksync": {
     "0xB8d7d88D042880aE87Bb61DE2dFFF8441768766D": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -7469,7 +7494,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
@@ -7596,7 +7621,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
@@ -8719,7 +8744,7 @@
       "symbol": "sUSDe"
     },
     "0x48b904a97eafd065ced05168ec44638a63e1e3bcaec49699f6b8dabbd1424650": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 8,
       "symbol": "USDa"
     },

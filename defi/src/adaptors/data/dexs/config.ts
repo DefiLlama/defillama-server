@@ -3084,5 +3084,8 @@ export default {
     },
     "byreal": {
         id: "6368"
+    },
+    "archfi": {
+        id: "6384"
     }
 } as AdaptorsConfig

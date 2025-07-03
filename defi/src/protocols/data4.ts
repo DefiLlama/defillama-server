@@ -11164,6 +11164,28 @@ const data4: Protocol[] = [
     twitter: "LISTA_DAO",
     forkedFrom: [],
     parentProtocol: "parent#lista-dao",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "Binance Oracle",
+        type: "Secondary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "API3",
+        type: "Secondary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+    ],
     tokensExcludedFromParent: {
       BSC: ["SLISBNB"],
     },
@@ -13782,9 +13804,10 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Binance"],
     forkedFromIds: ["3710"],
-    module: "dummy.js",
+    module: "thena-integral/index.js",
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",
+    listedAt: 1751488349
   },
   {
     id: "6180",
@@ -18250,6 +18273,47 @@ const data4: Protocol[] = [
     twitter: "arch_swap",
     forkedFromIds: ["3710"],
     listedAt: 1751458815
+  },
+  {
+    id: "6385",
+    name: "UnicornX",
+    address: null,
+    symbol: "-",
+    url: "https://unicornx.ai/app/download",
+    description:
+      "Community-powered DEX with real-time Alpha signals. Fast, fair, and fully on-chain.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/unicornx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana", "Binance"],
+    module: "dummy.js",
+    twitter: "UnicornXAI",
+    forkedFromIds: [],
+  },
+  {
+    id: "6386",
+    name: "P2PFlip",
+    address: null,
+    symbol: "-",
+    url: "https://www.p2pflip.xyz/",
+    description:
+      "A peer-to-peer gambling protocol on Matchain where users can create and accept coin flip challenges with supported tokens. Players stake equal amounts, with the winner taking the pot minus a small protocol fee. The platform features Express Mode for gasless gameplay through session-based deposits and an automated relayer system for faster user experience.",
+    chain: "Matchain",
+    logo: `${baseIconsUrl}/p2pflip.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Matchain"],
+    module: "p2pflip/index.js",
+    forkedFromIds: [],
+    twitter: null,
+    listedAt: 1751490093
   },
 ];
 export default data4;

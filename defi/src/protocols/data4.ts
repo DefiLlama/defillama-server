@@ -11164,6 +11164,33 @@ const data4: Protocol[] = [
     twitter: "LISTA_DAO",
     forkedFrom: [],
     parentProtocol: "parent#lista-dao",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "Binance Oracle",
+        type: "Secondary",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "API3",
+        type: "Fallback",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      },
+      {
+        name: "Resilient Oracle",
+        type: "Aggregator",
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
+      }
+    ],
     tokensExcludedFromParent: {
       BSC: ["SLISBNB"],
     },

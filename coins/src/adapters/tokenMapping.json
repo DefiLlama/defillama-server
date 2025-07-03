@@ -9306,5 +9306,32 @@
       "decimals": 8,
       "symbol": "WBTC"
     }
+  },
+  "vechain": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#vechain",
+      "decimals": 18,
+      "symbol": "VET"
+    },
+    "0xd8ccdd85abdbf68dfec95f06c973e87b1b5a9997": {
+      "to": "coingecko#vechain",
+      "decimals": 18,
+      "symbol": "WVET"
+    },
+    "0x45429a2255e7248e57fce99e7239aed3f84b7a53": {
+      "to": "coingecko#vechain",
+      "decimals": 18,
+      "symbol": "VVET"
+    },
+    "0x0000000000000000000000000000456e65726779": {
+      "to": "coingecko#vethor-token",
+      "decimals": 18,
+      "symbol": "VTHO"
+    },
+    "0x5ef79995fe8a89e0812330e4378eb2660cede699": {
+      "to": "coingecko#vebetterdao",
+      "decimals": 18,
+      "symbol": "B3TR"
+    }
   }
 }

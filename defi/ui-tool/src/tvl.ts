@@ -309,8 +309,8 @@ async function _deleteTvlRecords(ws: any, ids?: any) {
 
         try {
 
-          await deleteProtocolItems(tvlFunc, { id: protocol.id, timestamp: { [Op.lte]: deleteFrom, [Op.gte]: deleteTo } })
-          console.log('Deleting data for protocol:', protocol.name, 'from:', new Date(deleteFrom * 1000).toDateString(), 'to:', new Date(deleteTo * 1000).toDateString(), tvlFunc(protocol.id))
+          await deleteProtocolItems(tvlFunc, { id: protocol.id, timestamp: unixTimestamp })
+          console.log('Deleting data for protocol:', protocol.name, 'from:', new Date(deleteFrom * 1000).toDateString(), deleteFrom, 'to:', new Date(deleteTo * 1000).toDateString(), deleteTo, tvlFunc(protocol.id))
           const data = await dynamodb.query({
             ExpressionAttributeValues: {
               ":pk": tvlFunc(protocol.id),

@@ -39,6 +39,8 @@ async function getEulerV2Tokens(
         ],
         eventAbi:
             "event ProxyCreated(address indexed proxy, bool upgradeable, address implementation, bytes trailingData)",
+        skipCache: true, 
+        skipCacheRead: true
     });
 
     const vaultAddresses = vaultDeploys.map((vaultDeploy: any) => {

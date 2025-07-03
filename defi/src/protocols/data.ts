@@ -14564,7 +14564,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Bagels Finance is the first cross-chain leveraged yield farming protocol(multi-chain). Users can deposit ETH, WBTC, USDT, BUSD, BNB and other assets into Bagels smart contracts to earn the highest APY in the market; Bagels aims to provide users with 2x-10x leverage to earn 2x-10x APY in yield of leveraged farming and transaction fees of LP providers. It provides better liquidity for BSC, Ethereum Layer2 and other ecosystems.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/bagel-finance.png`,
+    logo: `${baseIconsUrl}/bagels-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "bagel",

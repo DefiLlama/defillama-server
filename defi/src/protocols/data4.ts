@@ -18315,5 +18315,21 @@ const data4: Protocol[] = [
     twitter: null,
     listedAt: 1751490093
   },
+  {
+    id: "redbelly-rwa",
+    name: "Redbelly Network",
+    address: "",
+    symbol: "RBNT",
+    url: "https://www.redbelly.network",
+    description: "Redbelly Network protocol for tokenized real-world assets.",
+    chain: "rbn",
+    category: "RWA",
+    logo: "https://storage.googleapis.com/redbelly-website.firebasestorage.app/Image/Image_1_2_b28a9996f6/Image_1_2_b28a9996f6.png",
+    module: "redbelly/index.js",
+    twitter: "RedbellyNetwork",
+    gecko_id: null,
+    cmcId: null,
+    chains: ["Ethereum"]
+  },
 ];
 export default data4;

@@ -18065,7 +18065,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://ariaprotocol.xyz",
     description:
-      "Aria is a protocol built on Story. It allows anyone to invest in and earn royalties from iconic IP which was previously inaccessible to most investors.",
+      "Founded in 2025, Aria is the first protocol to bring iconic real-world IP—starting with music—onchain as liquid, revenue-generating tradable tokens. Built on Story, Aria transforms cultural assets into IP Real-World Assets (IPRWAs). Retail investors access income-producing IP through Aria. Early offerings include partial rights to works performed by Justin Bieber, Miley Cyrus, and BLACKPINK. Aria enables investors to access IP rights and earn real-world revenue from avenues such as streaming. Looking ahead, Aria will include programmable IP and power a permissioned remix economy, where smart contracts govern how IP is licensed, monetized, and remixed—laying the financial rails for the next era of the IP economy.",
     chain: "Story",
     logo: `${baseIconsUrl}/aria-protocol.jpg`,
     audits: "0",

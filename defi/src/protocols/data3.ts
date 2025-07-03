@@ -20154,14 +20154,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3596",
-    name: "YieldFlow",
+    name: "YieldFlow Yield Farming",
     address: null,
     symbol: "-",
     url: "https://yieldflow.com",
     description:
       "YieldFlow is a decentralized platform for yieldfarming through staking, lending and liquidity mining.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/yieldflow.jpg`,
+    logo: `${baseIconsUrl}/yieldflow-yield-farming.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -20171,8 +20171,8 @@ const data3_1: Protocol[] = [
     module: "yieldflow/index.js",
     twitter: "yieldflowdotcom",
     forkedFrom: [],
-    github: ["yieldflow"],
     audit_links: ["https://skynet.certik.com/projects/yieldflow"],
+    parentProtocol: "parent#yieldflow",
     listedAt: 1696511565,
   },
   {
@@ -36635,13 +36635,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4323",
-    name: "Aera",
+    name: "Aera V2",
+    // previous Aera
     address: null,
     symbol: "-",
     url: "https://www.aera.finance",
     description: `Autonomous onchain treasury management protocol for DAOs, built by the team at Gauntlet.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aera.jpg`,
+    logo: `${baseIconsUrl}/aera-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -36659,7 +36660,7 @@ const data3_2: Protocol[] = [
     module: "aera/index.js",
     twitter: "aerafinance",
     audit_links: ["https://github.com/aera-finance/aera-contracts-public/blob/main/v2/audits/spearbit/2023-09-22.pdf"],
-    github: ["aera-finance"],
+    parentProtocol: "parent#aera",
     listedAt: 1710850850,
   },
   {
@@ -59230,14 +59231,15 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5345",
-    name: "Bagel Finance",
+    name: "Bagel Finance V1",
+    // previous Bagel Finance
     address: null,
     symbol: "-",
     url: "https://t.me/bagel_fi_bot/app",
     description:
       "The first DEX protocol on TON that lets users exchange Telegram Stars to cryptocurrencies.",
     chain: "TON",
-    logo: `${baseIconsUrl}/bagelfinance.jpg`,
+    logo: `${baseIconsUrl}/bagel-finance-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -59247,6 +59249,7 @@ const data3_2: Protocol[] = [
     module: "BagelFinance/index.js",
     twitter: "bagel_fi_ton",
     forkedFrom: [],
+    parentProtocol: "parent#bagel-finance",
     listedAt: 1731421782
   },
   {

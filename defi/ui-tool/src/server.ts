@@ -24,9 +24,9 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 })
 
-const wss = new WS.Server({ port: 8080 });
+const wss = new WS.Server({ port: process.env.WSS_PORT ?? 8080 });
 
-console.log('WebSocket server running on port 8080');
+console.log(`WebSocket server running on port ${wss.options.port}`);
 
 // Start the React app
 console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
@@ -38,7 +38,7 @@ const reactApp = spawn(npmPath, ['run', 'start-react'], {
   cwd: reactAppPath,
   env: {
     ...process.env,
-    PORT: '5001'
+    PORT: process.env.WEB_PORT ?? '5001'
   }
 });
 

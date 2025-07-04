@@ -18328,7 +18328,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Treasury Manager",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Base"],
     module: "aera-v3/index.js",
     forkedFromIds: [],

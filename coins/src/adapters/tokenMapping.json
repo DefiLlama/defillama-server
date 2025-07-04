@@ -7738,6 +7738,11 @@
       "to": "coingecko#noon-usn",
       "decimals": 18,
       "symbol": "USN"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#sophon",
+      "decimals": 18,
+      "symbol": "SOPH"
     }
   },
   "duckchain": {

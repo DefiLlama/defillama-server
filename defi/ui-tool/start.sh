@@ -10,6 +10,7 @@ git pull
 git submodule update --init --recursive
 git submodule update --remote --merge
 
+cd $ROOT_DIR
 npm i
 git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
 

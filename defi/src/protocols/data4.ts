@@ -17977,7 +17977,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://terminal.fi/",
-    description: `Terminal Finance is a spot decentralized exchange designed for trading institutional assets and yield-bearing stablecoins, while enabling protocols and institutions to establish liquidity on Converge.`,
+    description: `Terminal Finance is a spot decentralized exchange for trading institutional assets and yield-bearing stablecoins, while enabling protocols and institutions to establish liquidity on Converge.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/terminal-finance-pre-deposits.jpg`,
     audits: "0",

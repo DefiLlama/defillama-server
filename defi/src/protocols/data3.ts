@@ -56247,7 +56247,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5210",
-    name: "Hela Bridge",
+    name: "HeLa Bridge",
     address: null,
     symbol: "-",
     url: "https://bridge.helachain.com",

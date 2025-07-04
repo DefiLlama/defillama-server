@@ -12,7 +12,7 @@ try {
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 const WS = require('ws');
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
 
 
@@ -41,6 +41,23 @@ const reactApp = spawn(npmPath, ['run', 'start-react'], {
     PORT: process.env.WEB_PORT ?? 5001
   }
 });
+
+
+function restartServer() {
+  console.log('Restarting server...');
+
+  const startScriptPath = path.resolve(__dirname, './start.sh');
+  try {
+    execSync(`${startScriptPath}`, {
+      cwd: path.resolve(__dirname, '..'),
+      env: process.env,
+      stdio: 'inherit'
+    });
+    console.log('Server restarted successfully.');
+  } catch (error) {
+    console.error('Failed to restart server:', error);
+  }
+}
 
 // Graceful shutdown handler
 const shutdown = (signal: string) => {
@@ -140,6 +157,9 @@ const onAuthentication = (ws: any) => {
         break;
       case 'tvl-delete-delete-all':
         await tvlDeleteAllRecords(ws);
+        break;
+      case 'restart-server':
+        restartServer();
         break;
 
       default: console.error('Unknown message type:', data.type); break;

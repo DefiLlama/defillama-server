@@ -206,6 +206,19 @@ const App = () => {
           >
             Reconnect
           </Button>
+          <Button
+            type="default"
+            onClick={() => {
+              if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+                wsRef.current.send(JSON.stringify({ type: 'restart-server' }));
+                console.log('Restart server command sent');
+              } else {
+                console.error('WebSocket is not connected');
+              }
+            }}
+          >
+            Restart Server
+          </Button>
 
           <Button
             type="text"

@@ -3759,9 +3759,6 @@ export default {
     "unicornx": {
         id: "6385"
     },
-    "gt3-v2": {
-        id: "6184"
-    },
     "copump": {
         id: "6070"
     },

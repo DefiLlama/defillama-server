@@ -6088,27 +6088,20 @@ const data4: Protocol[] = [
   },
   {
     id: "5834",
-    name: "Ethereal",
+    name: "Ethereal Season Zero",
     address: null,
     symbol: "-",
     url: "https://www.ethereal.trade/",
-    description: `Ethereal is a decentralized spot and perpetuals exchange built on the Ethena Network, powered by native USDe collateral. With institutional-grade performance (sub-20ms latency, 1M+ orders/s) and DeFi-enabled self-custody from day one, Ethereal aims to be the premier trading venue for the rapidly growing Ethena ecosystem and beyond`,
+    description: `Deposit USDe into Ethereal and receive eUSDe receipt tokens. Hold to accumulate Ethereal points - and as a bonus unlock the maximum 30x Ethena Rewards multiplier on your deposit`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ethereal.png`,
+    logo: `${baseIconsUrl}/ethereal-season-zero.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Farm",
     chains: ["Ethereum"],
     forkedFrom: [],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13638"]
-      }
-    ],
     module: "ethereal/index.js",
     twitter: "etherealdex",
     audit_links: [

@@ -46,7 +46,7 @@ const reactApp = spawn(npmPath, ['run', 'start-react'], {
 function restartServer() {
   console.log('Restarting server...');
 
-  const startScriptPath = path.resolve(__dirname, './start.sh');
+  const startScriptPath = path.resolve(__dirname, './../start.sh');
   try {
     execSync(`${startScriptPath}`, {
       cwd: path.resolve(__dirname, '..'),

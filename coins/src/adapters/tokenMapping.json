@@ -1460,6 +1460,11 @@
     }
   },
   "goat": {
+    "0x623F2774d9f27B59bc6b954544487532CE79d9DF": {
+      "decimals": "8",
+      "symbol": "bfBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
       "decimals": "18",
       "symbol": "esBTC",

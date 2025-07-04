@@ -18524,5 +18524,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hyperlend",
     listedAt: 1751644953
   },
+  {
+    id: "6396",
+    name: "1776.MEME",
+    address: null,
+    symbol: "-",
+    url: "https://1776.meme/",
+    description:
+      "1776.MEME is a launchpad for meme-driven tokens, built on Ethereum and powered by the $USD1 and $WLFI tokens from World Liberty Finance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/1776.meme.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    module: "1776meme/index.js",
+    twitter: "1776meme_",
+    forkedFromIds: [],
+    listedAt: 1751660645
+  },
 ];
 export default data4;

@@ -77,7 +77,7 @@ const App = () => {
         }
       }
     }
-    let wsUrl = `${window.location.protocol === 'https:' ? 'wss://' : 'ws://'}${window.location.hostname}:${process.env.REACT_APP_WSS_PORT || 88888}`;
+    let wsUrl = `${window.location.protocol === 'https:' ? 'wss://' : 'ws://'}${window.location.hostname}:${process.env.REACT_APP_WSS_PORT || 8080}`;
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 

@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:24
+FROM node:24-bookworm
 
 # Set the working directory in the container to /app
 WORKDIR /app
@@ -17,4 +17,4 @@ EXPOSE 5001
 EXPOSE 8080
 
 # bash command to keep the container running
-CMD ["bash", "-c", "bash src/api2/ui-tool/start.sh; while true; do sleep 10000; done"]
+CMD ["bash", "-c", "bash start.sh; while true; do sleep 10000; done"]

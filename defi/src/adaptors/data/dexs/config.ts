@@ -3087,5 +3087,11 @@ export default {
     },
     "archfi": {
         id: "6384"
+    },
+    "copump": {
+        id: "6070"
+    },
+    "fanx-protocol": {
+        id: "4821"
     }
 } as AdaptorsConfig

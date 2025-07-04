@@ -3758,5 +3758,14 @@ export default {
     },
     "unicornx": {
         id: "6385"
+    },
+    "gt3-v2": {
+        id: "6184"
+    },
+    "copump": {
+        id: "6070"
+    },
+    "fanx-protocol": {
+        id: "4821"
     }
 } as AdaptorsConfig

@@ -33,10 +33,38 @@ export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: strin
   }
 }
 
+function sumByCategoryAndChain(sumDailyTvls: SumCategoriesByChainTvls, category: string, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
+  const timestamp = getClosestDayStartTimestamp(timestampRaw)
+  if (!sumDailyTvls[category]) {
+    sumDailyTvls[category] = {};
+  }
+  if (!sumDailyTvls[category][chain]) {
+    sumDailyTvls[category][chain] = {};
+  }
+  if (!sumDailyTvls[category][chain][tvlSection]) {
+    sumDailyTvls[category][chain][tvlSection] = {};
+  }
+  if (typeof itemTvl === "number" && !Number.isNaN(itemTvl)) {
+    sumDailyTvls[category][chain][tvlSection][timestamp] = itemTvl + (sumDailyTvls[category][chain][tvlSection][timestamp] ?? 0);
+  } else {
+    console.log("itemTvl is NaN", itemTvl, category, chain, tvlSection, timestamp);
+  }
+}
+
 interface SumDailyTvls {
   [chain: string]: {
     [tvlSection: string]: {
       [timestamp: number]: number | undefined;
+    };
+  };
+}
+
+interface SumCategoriesByChainTvls {
+  [category: string]: {
+    [chain: string]: {
+      [tvlSection: string]: {
+        [timestamp: number]: number | undefined;
+      };
     };
   };
 }
@@ -264,6 +292,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   // store overall tvl charts and individual chain charts
   const sumDailyTvls: SumDailyTvls = {};
   const sumCategoryTvls: SumDailyTvls = {};
+  const sumCategoriesByChainTvls: SumCategoriesByChainTvls = {};
 
   if (options.isApi2CronProcess) {
     const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
@@ -290,7 +319,6 @@ export async function storeGetCharts({ ...options }: any = {}) {
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       // total - sum of all protocols on all chains
-
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
 
       // doublecounted and liquid staking values === sum of tvl on all chains
@@ -300,7 +328,6 @@ export async function storeGetCharts({ ...options }: any = {}) {
       if (protocol.category?.toLowerCase() === "liquid staking") {
         sum(sumDailyTvls, "total", "liquidstaking", timestamp, item.tvl);
       }
-
       // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
       if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
         sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
@@ -312,7 +339,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
         // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
         const formattedChainName = getChainDisplayName(chain, true);
 
-        // if its and extra tvl, include those values in "total" tvl of defi
+        // if its an extra tvl section, include those values in "total" tvl of defi
         if (extraSections.includes(formattedChainName)) {
           sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
           return;
@@ -326,20 +353,32 @@ export async function storeGetCharts({ ...options }: any = {}) {
         //  check if its a valid chain name and not extra tvl section like pool2, staking etc
         if (chainCoingeckoIds[chainName] !== undefined) {
           sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
+          if (protocol.category) {
+            sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, tvlSection, timestamp, tvl);
+          }
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
-
           if (tvlSection === "tvl") {
             sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
+              if (protocol.category) {
+                sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "doublecounted", timestamp, tvl);
+              }
             }
+
             if (protocol.category?.toLowerCase() === "liquid staking") {
               sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
+              if (protocol.category) {
+                sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "liquidstaking", timestamp, tvl);
+              }
             }
 
             if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
               sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
+              if (protocol.category) {
+                sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "dcAndLsOverlap", timestamp, tvl);
+              }
             }
           }
 
@@ -354,17 +393,29 @@ export async function storeGetCharts({ ...options }: any = {}) {
         const chainName = transformNewChainName(protocol.chain);
 
         sum(sumDailyTvls, chainName, "tvl", timestamp, item.tvl);
+        if (protocol.category) {
+          sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "tvl", timestamp, item.tvl);
+        }
 
         // doublecounted and liquid staking values === sum of tvl on the chain this protocol exists
         if (protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "doublecounted", timestamp, item.tvl);
+          if (protocol.category) {
+            sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "doublecounted", timestamp, item.tvl);
+          }
         }
         if (protocol.category?.toLowerCase() === "liquid staking") {
           sum(sumDailyTvls, chainName, "liquidstaking", timestamp, item.tvl);
+          if (protocol.category) {
+            sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "liquidstaking", timestamp, item.tvl);
+          }
         }
 
         if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, item.tvl);
+          if (protocol.category) {
+            sumByCategoryAndChain(sumCategoriesByChainTvls, protocol.category, chainName, "dcAndLsOverlap", timestamp, item.tvl);
+          }
         }
       }
     },
@@ -392,6 +443,27 @@ export async function storeGetCharts({ ...options }: any = {}) {
     })
   );
 
+  await Promise.all(
+    Object.entries(sumCategoriesByChainTvls).map(async ([category, categoryDailyTvlsByChain]) => {
+      await Promise.all(Object.entries(categoryDailyTvlsByChain).map(async ([chain, chainDailyTvls]) => {
+        const chainResponse = Object.fromEntries(
+          Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
+        );
+        let filename = `lite/charts/categories/${category}/${chain}`;
+  
+        if (options.isApi2CronProcess) {
+          await storeRouteData(filename, roundNumbersInObject(chainResponse));
+        } else {
+          const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
+            [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+            [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+          });
+          await storeR2(filename, compressedRespone, true);
+        }
+      }))
+    })
+  );
+  
   await Promise.all(
     Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(

@@ -7395,6 +7395,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bagel_fi_ton",
   },
+  {
+    id: "parent#hyperlend",
+    name: "HyperLend",
+    url: "https://hyperlend.finance",
+    description: "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
+    logo: `${baseIconsUrl}/hyperlend.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hyperlendx",
+    github: ["hyperlendx"],
+  },
 ];
 
 export default parentProtocols;

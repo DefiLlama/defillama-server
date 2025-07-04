@@ -8545,7 +8545,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5940",
-    name: "HyperLend",
+    name: "HyperLend Pooled",
     address: null,
     symbol: "-",
     url: "https://hyperlend.finance",
@@ -8580,7 +8580,7 @@ const data4: Protocol[] = [
     ],
     twitter: "hyperlendx",
     audit_links: ["https://github.com/hyperlendx/audits"],
-    github: ["hyperlendx"],
+    parentProtocol: "parent#hyperlend",
     listedAt: 1742675675
   },
   {
@@ -18500,6 +18500,29 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1751623942
+  },
+  {
+    id: "6395",
+    name: "HyperLend Isolated",
+    address: null,
+    symbol: "-",
+    url: "https://hyperlend.finance",
+    description:
+      "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperlend-isolated.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hyperliquid L1"],
+    module: "hyperlend-isolated/index.js",
+    forkedFromIds: [],
+    twitter: "hyperlendx",
+    audit_links: ["https://github.com/hyperlendx/audits"],
+    parentProtocol: "parent#hyperlend",
+    listedAt: 1751644953
   },
 ];
 export default data4;

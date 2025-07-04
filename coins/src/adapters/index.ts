@@ -157,4 +157,5 @@ export default {
   denario: require("./rwa/denario"),
   quipuswap: require("./markets/quipuswap"),
   reya: require("./yield/reya"),
+  bluefin: require("./markets/bluefin"),
 };

@@ -13,6 +13,7 @@ import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWa
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 const WS = require('ws');
 const { spawn } = require('child_process');
+const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
 
 
 process.on('uncaughtException', (err) => {
@@ -68,7 +69,7 @@ function stringify(a: any) {
   }
 }
 
-wss.on('connection', (ws: any) => {
+const onAuthentication = (ws: any) => {
   console.log('Client connected');
 
   ws.send(JSON.stringify({
@@ -148,4 +149,31 @@ wss.on('connection', (ws: any) => {
   ws.on('close', () => {
     console.log('Client disconnected');
   });
+}
+
+wss.on('connection', (ws: any) => {
+  let authenticated = false;
+
+  // Add authentication middleware if password is set
+  if (AUTH_PASSWORD) {
+    ws.on('message', (message: string) => {
+      if (authenticated) return;
+      console.log('auth check')
+
+
+      const data = JSON.parse(message);
+      if (data.type === 'authenticate') {
+        const auth = data.password;
+        if (auth === AUTH_PASSWORD) {
+          authenticated = true;
+          onAuthentication(ws);
+          return;
+        }
+      }
+
+      console.error('Unauthorized connection attempt');
+      ws.close(4001, 'Unauthorized');
+    });
+  } else
+    onAuthentication(ws);
 });

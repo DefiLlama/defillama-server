@@ -38,7 +38,7 @@ const reactApp = spawn(npmPath, ['run', 'start-react'], {
   cwd: reactAppPath,
   env: {
     ...process.env,
-    PORT: process.env.WEB_PORT ?? '5001'
+    PORT: process.env.WEB_PORT ?? 5001
   }
 });
 

@@ -18450,5 +18450,56 @@ const data4: Protocol[] = [
     parentProtocol: "parent#bagel-finance",
     listedAt: 1751554883
   },
+  {
+    id: "6393",
+    name: "Obsidian",
+    address: null,
+    symbol: "-",
+    url: "https://obsidian.finance",
+    description:
+      "Obsidian is a DEX aggregator and yield protocol on Cronos and Cronos zkEVM, offering optimized swaps and staking opportunities.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/obsidian.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Cronos"],
+    module: "obsidian/index.js",
+    forkedFromIds: [],
+    twitter: "ObsidianSwap",
+    listedAt: 1751623842
+  },
+  {
+    id: "6394",
+    name: "Palladium Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://palladiumlabs.org",
+    description:
+      "Palladium is the first credit-powered payment layer on Bitcoin, unlocking interest-free borrowing and staking yield on collaterals, all in a secure, non-custodial way.",
+    chain: "Botanix",
+    logo: `${baseIconsUrl}/palladium-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Botanix"],
+    module: "palladium/index.js",
+    forkedFromIds: [],
+    twitter: "PalladiumLabs",
+    audit_links: ["https://scalebit.xyz/reports/20250617-Palladium-Labs-Final-Audit-Report.pdf", "https://hacken.io/audits/palladium/"],
+    github: ["PalladiumLabs"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15365"]
+      },
+    ],
+    listedAt: 1751623942
+  },
 ];
 export default data4;

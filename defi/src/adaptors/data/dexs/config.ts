@@ -3099,7 +3099,7 @@ export default {
     "fanx-protocol": {
         id: "4821"
     },
-    "1776.meme": {
+    "1776meme": {
         id: "6396"
     }
 } as AdaptorsConfig

@@ -154,7 +154,7 @@ export async function getCategoryChartByChainData(req: HyperExpress.Request, res
   const category = sluggifyString(req.path_parameters.category);
   const chain = sluggifyString(req.path_parameters.chain);
 
-  if (!category || !chain) return errorResponse(res, "Data not found", { statusCode: 404 });
+  if (!category) return errorResponse(res, "Data not found", { statusCode: 404 });
 
   const data = await getCategoryOrTagByChain({ category, chain });
 

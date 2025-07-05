@@ -7,24 +7,18 @@ import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { chainCoingeckoIds, extraSections, getChainDisplayName, transformNewChainName } from "./utils/normalizeChain";
 
 interface SumCategoriesOrTagsByChainTvls {
-    [tvlSection: string]: {
-      [timestamp: number]: number | undefined;
-    };
+  [tvlSection: string]: {
+    [timestamp: number]: number | undefined;
+  };
 }
 
-function sum(
-  sumDailyTvls: SumCategoriesOrTagsByChainTvls,
-  tvlSection: string,
-  timestampRaw: number,
-  itemTvl: number
-) {
+function sum(sumDailyTvls: SumCategoriesOrTagsByChainTvls, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw);
   if (!sumDailyTvls[tvlSection]) {
     sumDailyTvls[tvlSection] = {};
   }
   if (typeof itemTvl === "number" && !Number.isNaN(itemTvl)) {
-    sumDailyTvls[tvlSection][timestamp] =
-      itemTvl + (sumDailyTvls[tvlSection][timestamp] ?? 0);
+    sumDailyTvls[tvlSection][timestamp] = itemTvl + (sumDailyTvls[tvlSection][timestamp] ?? 0);
   } else {
     console.log("itemTvl is NaN", itemTvl, tvlSection, timestamp);
   }
@@ -45,8 +39,8 @@ async function getCategoryOrTagByChain({ category, tag, chain }: { category?: st
       if (category) {
         let hasCategory = category === sluggifyString(protocol.category ?? "");
         if (chain) {
-          hasCategory =
-            hasCategory && (protocol.chains ?? []).map((c) => sluggifyString(transformNewChainName(c))).includes(chain);
+          const pchains = Object.keys(item).map((c) => sluggifyString(transformNewChainName(c.split("-")[0])));
+          hasCategory = hasCategory && pchains.includes(chain);
         }
         toInclude = hasCategory;
       }

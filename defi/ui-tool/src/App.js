@@ -78,6 +78,14 @@ const App = () => {
       }
     }
     let wsUrl = `${window.location.protocol === 'https:' ? 'wss://' : 'ws://'}${window.location.hostname}:${process.env.REACT_APP_WSS_PORT || 8080}`;
+    if (process.env.REACT_APP_WSS_URL_AND_PORT)
+      wsUrl = process.env.REACT_APP_WSS_URL_AND_PORT
+    // Check localStorage for wsUrl override
+    const storedWsUrl = localStorage.getItem('wsUrl');
+    if (storedWsUrl) {
+      wsUrl = storedWsUrl;
+    }
+    
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
@@ -199,6 +207,19 @@ const App = () => {
             style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
           >
             Set API Key
+          </Button>
+          <Button
+            type="primary"
+            onClick={() => {
+              const url = prompt('Please enter WebSocket url:');
+              if (url) {
+                localStorage.setItem('wsUrl', url);
+                addWebSocketConnection();
+              }
+            }}
+            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+          >
+            Set WS Link
           </Button>
           <Button
             onClick={addWebSocketConnection}

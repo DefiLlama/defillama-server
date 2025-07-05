@@ -70,6 +70,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
   router.get("/lite/charts/categories/:category", defaultFileHandler);
+  router.get("/lite/charts/categories/:category/:chain", defaultFileHandler);
 
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));

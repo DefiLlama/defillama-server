@@ -5765,6 +5765,16 @@
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
+    },
+    "0x78fea795cbfcc5ffd6fb5b845a4f53d25c283bdb": {
+      "to": "coingecko#satoshi-stablecoin",
+      "decimals": 18,
+      "symbol": "satUSD"
+    },
+    "0xe53dcec07d16d88e386ae0710e86d9a400f83c31": {
+      "to": "coingecko#babylon",
+      "decimals": 6,
+      "symbol": "BABY"
     }
   },
   "xlayer": {

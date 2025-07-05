@@ -22,7 +22,7 @@ import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimension
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { setInternalRoutes } from "./internalRoutes";
-import { getCategoryChartByChainData } from "../../getCategoryChartByChainData";
+import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -73,8 +73,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/lite/charts/categories/:category", defaultFileHandler);
   router.get("/charts/categories/:category", ew(getCategoryChartByChainData));
   router.get("/charts/categories/:category/:chain", ew(getCategoryChartByChainData));
-  router.get("/charts/tags/:tag/:chain", ew(getCategoryChartByChainData));
-  router.get("/charts/tags/:tag/:chain", ew(getCategoryChartByChainData));
+  router.get("/charts/tags/:tag", ew(getTagChartByChainData));
+  router.get("/charts/tags/:tag/:chain", ew(getTagChartByChainData));
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));

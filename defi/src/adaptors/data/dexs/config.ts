@@ -2421,7 +2421,12 @@ export default {
         "displayName": "Quickswap V2"
     },
     "quickswap-v3": {
-        id: "2239"
+        id: "2239",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1751587200": false
+            }
+        }
     },
     "quickswap-liquidityHub": {
         id: "3743"

@@ -3767,5 +3767,14 @@ export default {
     },
     "1776meme": {
         id: "6396"
+    },
+    "avalon-usda": {
+        id: "5312"
+    },
+    "alpha-arcade": {
+        id: "6302",
+    },
+    "moar": {
+        id: "6013"
     }
 } as AdaptorsConfig

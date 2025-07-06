@@ -3101,5 +3101,8 @@ export default {
     },
     "1776meme": {
         id: "6396"
-    }
+    },
+    "alpha-arcade": {
+        id: "6302",
+    },
 } as AdaptorsConfig

@@ -3776,5 +3776,8 @@ export default {
     },
     "moar": {
         id: "6013"
+    },
+    "kofi-finance": {
+        id: "6176"
     }
 } as AdaptorsConfig

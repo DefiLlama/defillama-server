@@ -18629,7 +18629,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "drift.js",
     twitter: "DriftProtocol",
-    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://github.com/drift-labs/protocol-v2/blob/master/sdk/src/constants/perpMarkets.ts"] },
+      { name: "Switchboard", type: "Secondary", proof: ["https://github.com/drift-labs/protocol-v2/blob/master/sdk/src/constants/perpMarkets.ts"] },
+    ],
     audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
     parentProtocol: "parent#drift",
     listedAt: 1638568951,

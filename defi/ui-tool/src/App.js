@@ -66,6 +66,14 @@ const App = () => {
   const [tvlDeleteWaitingRecordsSelectedChartColumn, setTvlDeleteWaitingRecordsSelectedChartColumn] = useState('');
 
   function addWebSocketConnection() {
+    try {
+      _addWebSocketConnection();
+    } catch (error) { // Handle WebSocket connection errors
+      console.error('Error adding WebSocket connection:', error);
+    }
+  }
+
+  function _addWebSocketConnection() {
     // Check for auth requirement
     let password
     if (process.env.REACT_APP_WS_AUTH_PASSWORD) {
@@ -77,15 +85,16 @@ const App = () => {
         }
       }
     }
-    let wsUrl = `${window.location.protocol === 'https:' ? 'wss://' : 'ws://'}${window.location.hostname}:${process.env.REACT_APP_WSS_PORT || 8080}`;
-    if (process.env.REACT_APP_WSS_URL_AND_PORT)
-      wsUrl = process.env.REACT_APP_WSS_URL_AND_PORT
-    // Check localStorage for wsUrl override
-    const storedWsUrl = localStorage.getItem('wsUrl');
-    if (storedWsUrl) {
-      wsUrl = storedWsUrl;
-    }
-    
+    const port = process.env.REACT_APP_WSS_PORT || 8080;
+    let wsUrl = `${window.location.hostname}:${port}`;
+    // if (process.env.REACT_APP_WSS_URL_AND_PORT)
+    //   wsUrl = process.env.REACT_APP_WSS_URL_AND_PORT
+    // // Check localStorage for wsUrl override
+    // const storedWsUrl = localStorage.getItem('wsUrl');
+    // if (storedWsUrl) {
+    //   wsUrl = storedWsUrl;
+    // }
+
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
@@ -208,7 +217,7 @@ const App = () => {
           >
             Set API Key
           </Button>
-          <Button
+          {/* <Button
             type="primary"
             onClick={() => {
               const url = prompt('Please enter WebSocket url:');
@@ -220,7 +229,7 @@ const App = () => {
             style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
           >
             Set WS Link
-          </Button>
+          </Button> */}
           <Button
             onClick={addWebSocketConnection}
             style={{ display: isConnected ? 'none' : 'block' }}
@@ -237,6 +246,7 @@ const App = () => {
                 console.error('WebSocket is not connected');
               }
             }}
+            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
           >
             Restart Server
           </Button>

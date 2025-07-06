@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.2",
   "scripts": {
+    "aws-sdk": "^2.1692.0",
     "deploy:env": "npm run prebuild && sls deploy --stage $NODE_ENV",
     "deploy:dev": "export NODE_ENV=dev && npm run deploy:env",
     "deploy:prod": "export NODE_OPTIONS=--max-old-space-size=6144 && export NODE_ENV=prod && npm run deploy:env",
@@ -59,7 +60,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
-    "aws-sdk": "^2.1145.0",
     "babel-jest": "^29.0.0",
     "babel-loader": "^8.2.5",
     "esbuild": "^0.14.42",

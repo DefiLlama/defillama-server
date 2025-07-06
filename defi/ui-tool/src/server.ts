@@ -1,6 +1,11 @@
 const path = require('path');
+
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
+const WS = require('ws');
+const { spawn, } = require('child_process');
 import getTvlCacheEnv from '../../src/api2/env';
+const isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
 
 try {
   getTvlCacheEnv();
@@ -11,8 +16,7 @@ try {
 
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
-const WS = require('ws');
-const { spawn, execSync } = require('child_process');
+
 const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
 
 
@@ -24,48 +28,79 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 })
 
-const wss = new WS.Server({ port: process.env.WSS_PORT ?? 8080 });
+let wss: any, reactApp: any, server: any;
 
-console.log(`WebSocket server running on port ${wss.options.port}`);
+function startDevWebServer() {
 
-// Start the React app
-console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
-const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-const reactAppPath = path.resolve(__dirname, '..');
+  wss = new WS.Server({ port: 8080 });
 
-// Start React with specific port and environment
-const reactApp = spawn(npmPath, ['run', 'start-react'], {
-  cwd: reactAppPath,
-  env: {
-    ...process.env,
-    PORT: process.env.WEB_PORT ?? 5001
+  console.log(`WebSocket server running on port ${wss.options.port}`);
+  // Start the React app
+  console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
+  const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+  const reactAppPath = path.resolve(__dirname, '..');
+
+  // Start React with specific port and environment
+  reactApp = spawn(npmPath, ['run', 'start-react'], {
+    cwd: reactAppPath,
+    env: {
+      ...process.env,
+      PORT: 5001
+    }
+  });
+
+  wss.on('connection', onWebSocketConnection)
+
+}
+
+function startProdWebServer() {
+  console.log('Starting production web server...');
+  const express = require('express');
+  const http = require('http');
+  const WebSocket = require('ws');
+  const app = express();
+  const buildRootDir = path.resolve(__dirname, '../build');
+
+  // Serve React static files
+  app.use(express.static(buildRootDir));
+
+  // For any other route, serve index.html (for React Router)
+  // app.get('*', (_req: any, res: any) => {
+  //   res.sendFile(path.join(buildRootDir, 'index.html'));
+  // });
+
+  // Create HTTP server
+  server = http.createServer(app);
+
+  // Attach WebSocket server to the same HTTP server
+  wss = new WebSocket.Server({ server });
+
+  wss.on('connection', onWebSocketConnection);
+
+  // Start server
+  server.listen(5001, () => {
+    console.log(`Server listening on 5001`);
+  });
+}
+
+async function restartServer() {
+  if (!isProductionMode) {
+    console.log('Not in production mode, skipping restart');
+    return;
   }
-});
-
-
-function restartServer() {
   console.log('Restarting server...');
-
-  const startScriptPath = path.resolve(__dirname, './../start.sh');
-  try {
-    execSync(`${startScriptPath}`, {
-      cwd: path.resolve(__dirname, '..'),
-      env: process.env,
-      stdio: 'inherit'
-    });
-    console.log('Server restarted successfully.');
-  } catch (error) {
-    console.error('Failed to restart server:', error);
-  }
+  process.exit(0); // Exit the current process to trigger the restart script
 }
 
 // Graceful shutdown handler
 const shutdown = (signal: string) => {
   console.log(`\n\n🛑 Received ${signal}. Shutting down gracefully...`);
   console.log('- Closing WebSocket server');
-  wss.close();
+  if (wss)
+    wss.close();
   console.log('- Stopping React app');
-  reactApp.kill();
+  if (reactApp)
+    reactApp.kill();
   console.log('✅ Cleanup complete\n');
   process.exit(0);
 };
@@ -171,7 +206,8 @@ const onAuthentication = (ws: any) => {
   });
 }
 
-wss.on('connection', (ws: any) => {
+
+const onWebSocketConnection = (ws: any) => {
   let authenticated = false;
 
   // Add authentication middleware if password is set
@@ -196,4 +232,9 @@ wss.on('connection', (ws: any) => {
     });
   } else
     onAuthentication(ws);
-});
+}
+
+if (isProductionMode)
+  startProdWebServer();
+else
+  startDevWebServer();

@@ -33,6 +33,7 @@ function pre_init_server() {
 
   cd ui-tool
   npm i
+  export REACT_APP_WSS_PORT=5001
   npm run build
 }
 

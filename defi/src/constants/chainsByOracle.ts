@@ -490,6 +490,14 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Taiko",
     "zkLink Nova",
   ],
+  "BackGeoOracle": [
+    "Base",
+    "BSC",
+    "Arbitrum",
+    "Ethereum",
+    "Unichain",
+    "OP Mainnet",
+  ],
 };
 
 export { chainsByOracle };

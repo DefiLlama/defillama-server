@@ -87,13 +87,9 @@ const App = () => {
     }
     const port = process.env.REACT_APP_WSS_PORT || 8080;
     let wsUrl = `${window.location.hostname}:${port}`;
-    // if (process.env.REACT_APP_WSS_URL_AND_PORT)
-    //   wsUrl = process.env.REACT_APP_WSS_URL_AND_PORT
-    // // Check localStorage for wsUrl override
-    // const storedWsUrl = localStorage.getItem('wsUrl');
-    // if (storedWsUrl) {
-    //   wsUrl = storedWsUrl;
-    // }
+    let host = window.location.toString()
+    if (host.startsWith('https://'))
+      wsUrl = host
 
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;

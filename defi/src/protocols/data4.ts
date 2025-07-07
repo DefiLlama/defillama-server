@@ -15465,6 +15465,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1748884884,
   },
+  /* was delisted from agg volumes, the reported values are not accurate
   {
     id: "6259",
     name: "DZap",
@@ -15486,6 +15487,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.dzap.io/integration-fee-and-security/audit-reports"],
     twitter: "dzap_io",
   },
+  */
   {
     id: "6260",
     name: "ReachMe",
@@ -18009,6 +18011,9 @@ const data4: Protocol[] = [
     twitter: "ether_fi",
     forkedFrom: [],
     parentProtocol: "parent#etherfi-cash",
+    tokensExcludedFromParent: {
+      Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
+    },
     listedAt: 1751313277,
   },
   {

@@ -2954,7 +2954,7 @@ const parentProtocols: IParentProtocol[] = [
       "Contango lets you loop anything on-chain. You can create leverage (re)staking positions, arb rates differentials, farm points, or simply go long or short like a perp at low funding.",
     logo: `${baseIconsUrl}/contango.png`,
     gecko_id: "contango",
-    cmcId: null,
+    cmcId: "34045",
     chains: [],
     treasury: "contango.js",
     twitter: "Contango_xyz",
@@ -7418,6 +7418,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MORE_DeFi",
     github: ["MoreLabsXYZ"],
+  },
+  {
+    id: "parent#yei-finance",
+    name: "Yei Finance",
+    url: "https://www.more.markets",
+    description: "Lend, Trade, and Bridge across any chain.",
+    logo: `${baseIconsUrl}/yei-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "YeiFinance",
   },
 ];
 

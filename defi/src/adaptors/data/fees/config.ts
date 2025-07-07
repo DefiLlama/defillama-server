@@ -3779,5 +3779,14 @@ export default {
     },
     "kofi-finance": {
         id: "6176"
+    },
+    "jup-studio": {
+        id: "6398"
+    },
+    "liquidswap": {
+        id: "6374"
+    },
+    "yei-swap": {
+        id: "6400"
     }
 } as AdaptorsConfig

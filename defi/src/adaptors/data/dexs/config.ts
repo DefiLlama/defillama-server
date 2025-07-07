@@ -3105,4 +3105,7 @@ export default {
     "alpha-arcade": {
         id: "6302",
     },
+    "yei-swap": {
+        id: "6400"
+    }
 } as AdaptorsConfig

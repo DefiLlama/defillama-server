@@ -4807,8 +4807,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "Dopinprotocol/index.js",
     twitter: "Dopinprotocol", 
-    listedAt: 1739443997
-  },
+    listedAt: 1739443997,
+    deadUrl: true,  },
   {
     id: "5777",
     name: "SoSoValue Basis",
@@ -5171,8 +5171,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "nome-protocol/index.js",
     twitter: "NOMEprotocol", 
-    listedAt: 1739584051
-  },
+    listedAt: 1739584051,
+    deadUrl: true,  },
   {
     id: "5793",
     name: "Unleash Protocol",
@@ -5829,8 +5829,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "chickendefi/index.js",
     twitter: "chickensdefi",
-    listedAt: 1740078103
-  },
+    listedAt: 1740078103,
+    deadUrl: true,  },
   { 
     id: "5822",
     name: "Meme Wallet",
@@ -6066,8 +6066,8 @@ const data4: Protocol[] = [
     module: "fibonacci-dex/index.js",
     twitter: "Fibonaccixyz",
     audit_links: [],
-    listedAt: 1740338333
-  },
+    listedAt: 1740338333,
+    deadUrl: true,  },
   {
     id: "5833",
     name: "Form Network",
@@ -6663,8 +6663,8 @@ const data4: Protocol[] = [
     twitter: "spice_protocol",
     github: ["hemilabs"],
     audit_links: ["https://info.spice.so/audits"],
-    listedAt: 1741019257
-  },
+    listedAt: 1741019257,
+    deadUrl: true,  },
   {
     id: "5859",
     name: "ERC Burner",
@@ -7031,7 +7031,7 @@ const data4: Protocol[] = [
     module: "usury/index.js",
     twitter: "Usury_Finance",
     listedAt: 1741358957,
-  },
+    deadUrl: true,  },
   {
     id: "5875",
     name: "Tea-Fi",
@@ -8598,8 +8598,8 @@ const data4: Protocol[] = [
     module: "Ringswap/index.js",
     forkedFromIds: ["205"],
     twitter: "ringswaponsonic",
-    listedAt: 1742675684
-  },
+    listedAt: 1742675684,
+    deadUrl: true,  },
   {
     id: "5942",
     name: "Gacha",
@@ -8989,8 +8989,8 @@ const data4: Protocol[] = [
     module: "GoldMiner/index.js",
     forkedFrom: [],
     twitter: "goldminersonic",
-    listedAt: 1743107385
-  },
+    listedAt: 1743107385,
+    deadUrl: true,  },
   {
     id: "5959",
     name: "Evoq Finance",
@@ -14729,8 +14729,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "LuckyFuture/index.js",
     twitter: "LuckyFuture_AI",
-    listedAt: 1747939730
-  },
+    listedAt: 1747939730,
+    deadUrl: true,  },
   {
     id: "6225",
     name: "NEAR Intents",
@@ -18585,7 +18585,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#jupiter",
   },
-   {
+  {
     id: "6399",
     name: "EagleFi",
     address: null,
@@ -18606,6 +18606,69 @@ const data4: Protocol[] = [
     audit_links: ["https://sayfer.io/audits/smart-contract-audit-eagle-finance/"],
     forkedFromIds: [], 
     listedAt: 1751899162
+  },
+  {
+    id: "6400",
+    name: "YeiSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.yei.finance/",
+    description:
+      "Maximize your DeFi yield with YeiSwap. Unlock multiple layers of yield through trading, lending, and liquidity farming, all in one.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/yeiswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sei"],
+    module: "yei-swap/index.js",
+    twitter: "YeiFinance",
+    forkedFromIds: [], 
+    listedAt: 1751919841
+  },
+  {
+    id: "6401",
+    name: "Embr Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://embr.fun/",
+    description:
+      "Embr is built on Initia's Intervowen Stack. Users can bridge assets into Embr using either Initia's native bridge or Gas.zip, depending on their source chain.",
+    chain: "Initia",
+    logo: `${baseIconsUrl}/embr-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Initia"],
+    module: "embr-bridge/index.js",
+    twitter: "embrdotfun",
+    forkedFromIds: []
+  },
+  {
+    id: "6402",
+    name: "BIM",
+    address: "base:0x555FFF48549C1A25a723Bd8e7eD10870D82E8379",
+    symbol: "BIM",
+    url: "https://exchange.bim.finance/",
+    description:
+      "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bim.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "bim-2",
+    cmcId: "24877",
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    module: "bim/index.js",
+    twitter: "Bim_Exchange",
+    forkedFromIds: [],
+    audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
+    listedAt: 1751920749
   },
 ];
 export default data4;

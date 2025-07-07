@@ -18628,5 +18628,47 @@ const data4: Protocol[] = [
     forkedFromIds: [], 
     listedAt: 1751919841
   },
+  {
+    id: "6401",
+    name: "Embr Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://embr.fun/",
+    description:
+      "Embr is built on Initia's Intervowen Stack. Users can bridge assets into Embr using either Initia's native bridge or Gas.zip, depending on their source chain.",
+    chain: "Initia",
+    logo: `${baseIconsUrl}/embr-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Initia"],
+    module: "embr-bridge/index.js",
+    twitter: "embrdotfun",
+    forkedFromIds: []
+  },
+  {
+    id: "6401",
+    name: "BIM",
+    address: "base:0x555FFF48549C1A25a723Bd8e7eD10870D82E8379",
+    symbol: "BIM",
+    url: "https://exchange.bim.finance/",
+    description:
+      "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bim.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "bim-2",
+    cmcId: "24877",
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    module: "bim/index.js",
+    twitter: "Bim_Exchange",
+    forkedFromIds: [],
+    audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
+    listedAt: 1751920749
+  },
 ];
 export default data4;

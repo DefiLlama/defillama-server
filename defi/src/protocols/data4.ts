@@ -18649,7 +18649,7 @@ const data4: Protocol[] = [
     forkedFromIds: []
   },
   {
-    id: "6401",
+    id: "6402",
     name: "BIM",
     address: "base:0x555FFF48549C1A25a723Bd8e7eD10870D82E8379",
     symbol: "BIM",

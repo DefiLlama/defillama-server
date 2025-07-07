@@ -18542,5 +18542,27 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1751660645
   },
+  {
+    id: "6397",
+    name: "More Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://www.more.markets/",
+    description:
+      "More Vaults is a DeFi portfolio management that enables users to compose, rebalance, and upgrade any DeFi portfolio atomically without redeploying. Depositors hold one familiar receipt token through every strategy upgrade, providing seamless portfolio management and yield optimization.",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/more-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Flow"],
+    module: "more-vaults/index.js",
+    twitter: "MORE_DeFi",
+    forkedFromIds: [],
+    parentProtocol: "parent#more-markets",
+    listedAt: 1751893629
+  },
 ];
 export default data4;

@@ -7407,6 +7407,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "hyperlendx",
     github: ["hyperlendx"],
   },
+  {
+    id: "parent#more-markets",
+    name: "MORE Markets",
+    url: "https://www.more.markets",
+    description: "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
+    logo: `${baseIconsUrl}/more-markets.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MORE_DeFi",
+    github: ["MoreLabsXYZ"],
+  },
 ];
 
 export default parentProtocols;

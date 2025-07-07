@@ -58675,14 +58675,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5320",
-    name: "MORE Markets",
+    name: "MORE Lend", // previous MORE Markets
     address: null,
     symbol: "-",
     url: "https://www.more.markets",
     description:
       "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
     chain: "Flow",
-    logo: `${baseIconsUrl}/more-markets.png`,
+    logo: `${baseIconsUrl}/more-lend.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -58693,7 +58693,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["1599"],
     module: "more-markets/index.js",
     twitter: "MORE_DeFi",
-    github: ["MoreLabsXYZ"],
+    parentProtocol: "parent#more-markets",
     listedAt: 1730816643
   },
   {

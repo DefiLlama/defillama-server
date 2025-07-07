@@ -16960,7 +16960,7 @@ const data3_1: Protocol[] = [
       "Danogo is a decentralized CARDANO exchange for listing and trading Bond Token issued by Optim without central intermediaries.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/danogo.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

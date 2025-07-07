@@ -42963,8 +42963,7 @@ const data3_2: Protocol[] = [
     module: "yieldnest/index.js",
     twitter: "yieldnestFi",
     audit_links: [
-      "https://github.com/yieldnest/yieldnest-protocol-public/blob/master/audits/2024-04-10-chainsecurity_yieldnest_protocol_audit.pdf",
-      "https://github.com/yieldnest/yieldnest-protocol-public/blob/master/audits/2024-05-07-zokyo-yieldnest_protocol_audit.pdf",
+      "https://github.com/yieldnest/Publications/tree/main/audits",
     ],
     github: ["yieldnest"],
     listedAt: 1715748037,

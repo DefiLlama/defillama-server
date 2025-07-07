@@ -3901,6 +3901,22 @@ const data2: Protocol[] = [
     listedAt: 1647387814,
     deprecated: true
   },
+{
+  id: "privex",
+  name: "PriveX",
+  symbol: "PRVX", 
+  url: "https://prvx.io"
+  description: "PriveX is a privacy-enabled, intent-based perpetual DEX built on Base and COTI networks, combining ultra-fast execution, customizable AI-powered trading agents, and the first-ever on-chain native privacy layer. Traders can execute trades manually or deploy their own automated strategies, all while protecting sensitive transaction details such as symbols, sizes, and trading methods from public visibility.",
+  chain: "Multi-Chain", 
+  logo: "https://ibb.co/Df7QqCYs", 
+  category: "Derivatives", 
+  chains: ["Base", "Coti"],
+  module: "privex", 
+  twitter: "PriveX_Official", 
+  gecko_id: null, 
+  cmcId: null, 
+  listedAt: 1704067200, 
+},
   {
     id: "1550",
     name: "METF Finance",

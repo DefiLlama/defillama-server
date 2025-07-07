@@ -10144,7 +10144,7 @@ const data4: Protocol[] = [
     name: "Stable Jack V2",
     address: null,
     symbol: "-",
-    url: "https://deuro.com/",
+    url: "https://www.stablejack.xyz",
     description:
       "Stable Jack provide a high-yield, principal-protected stablecoin offering on Sonic though scUSD",
     chain: "Sonic",

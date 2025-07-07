@@ -10749,15 +10749,16 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3179",
-    name: "GoGoPool",
+    name: "Hypha",
+    previousNames: ["GoGoPool"],
     address: "avax:0x69260B9483F9871ca57f81A90D91E2F96c2Cd11d",
     symbol: "GGP",
-    assetToken: "ggAVAX",
+    assetToken: "stAVAX",
     url: "https://www.gogopool.com",
     description:
-      "GoGoPool is the first permissionless staking protocol built for Avalanche Subnets and node operators to launch  for cheaper and faster using the GGP token. Currently, we cater to node operators and liquid stakers.",
+      "Hypha is the first permissionless staking protocol built for Avalanche Subnets and node operators to launch  for cheaper and faster using the GGP token. Currently, we cater to node operators and liquid stakers.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/gogopool.png`,
+    logo: `${baseIconsUrl}/hypha.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "gogopool",
@@ -10766,8 +10767,8 @@ const data3_1: Protocol[] = [
     chains: ["Avalanche"],
     forkedFrom: [],
     module: "gogopool/index.js",
-    twitter: "GoGoPool_",
-    audit_links: ["https://docs.gogopool.com/audits"],
+    twitter: "hypha_sh",
+    audit_links: ["https://docs.hypha.sh/protocol/security/audits"],
     listedAt: 1688122598,
   },
   {
@@ -14372,7 +14373,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-keepers.jpg`,
     audits: "0",
@@ -14393,7 +14394,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-vrf-v1.jpg`,
     audits: "0",
@@ -14414,7 +14415,7 @@ const data3_1: Protocol[] = [
     symbol: "LINK",
     url: "https://chain.link",
     description:
-      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+      "Chainlink is the backbone of blockchain, the global standard connecting blockchains to real-world data, other blockchains, governments, and enterprise systems. Chainlink has enabled tens of trillions in transaction value across the blockchain economy, powering critical use cases across DeFi, banking, tokenized real-world assets (RWAs), cross-chain, and more. Chainlink is widely adopted by major financial market infrastructures, institutions, and top DeFi protocols, including Swift, Euroclear, Fidelity International, UBS, Kinexys by J.P. Morgan, Aave, GMX, Lido, and many more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/chainlink-vrf-v2.jpg`,
     audits: "0",
@@ -50589,25 +50590,32 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4952",
-    name: "STRKFarm",
+    name: "Troves",
+    previousNames: ["STRKFarm"],
     address: null,
     symbol: "-",
-    url: "https://www.strkfarm.com/",
+    url: "https://www.troves.fi/",
     description:
-      "STRKFarm is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
+      "Troves is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/strkfarm.jpg`,
+    logo: `${baseIconsUrl}/troves.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    oracles: ["Pragma"], // https://docs.strkfarm.xyz/p/strategies/sensei-delta-neutral-lending
+    oraclesBreakdown: [
+      {
+      name: "Pragma",
+      type: "Primary",
+      proof: ["https://docs.strkfarm.xyz/p/strategies/sensei-delta-neutral-lending"]
+      }
+    ],
     forkedFrom: [],
     chains: ["Starknet"],
     module: "strkfarm/index.js",
-    twitter: "strkfarm",
-    github: ["strkfarm"],
+    twitter: "troves",
+    github: ["troves"],
     listedAt: 1722961657,
   },
   {

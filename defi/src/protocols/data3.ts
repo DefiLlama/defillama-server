@@ -6804,7 +6804,7 @@ const data3_1: Protocol[] = [
     cmcId: "4927",
     category: "Onchain Capital Allocator",
     chains: ["Ethereum", "OP Mainnet", "Arbitrum", "Base", "Unichain", "BSC"],
-    oracles: ["BackGeoOracle"],
+    oraclesBreakdown: [{ name: "BackGeoOracle", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/10111"] }],
     forkedFrom: [],
     module: "rigoblock/index.js",
     twitter: "RigoBlock",

@@ -18670,5 +18670,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
     listedAt: 1751920749
   },
+  {
+    id: "6403",
+    name: "xSui",
+    address: null,
+    symbol: "-",
+    url: "https://app.mmt.finance/stake",
+    description:
+      "xSUI is a tokenized version of staked SUI. When users stake SUI via Momentum Finance, they receive xSUI in return, a liquid token that continuously accrues staking rewards while remaining usable across DeFi protocols..",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/xsui.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    module: "xsui/index.js",
+    twitter: "MMTFinance",
+    forkedFromIds: ["5311"],
+    listedAt: 1751930263
+  },
 ];
 export default data4;

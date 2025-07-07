@@ -18626,6 +18626,7 @@ const data4: Protocol[] = [
     module: "yei-swap/index.js",
     twitter: "YeiFinance",
     forkedFromIds: [], 
+    parentProtocol: "parent#yei-finance",
     listedAt: 1751919841
   },
   {

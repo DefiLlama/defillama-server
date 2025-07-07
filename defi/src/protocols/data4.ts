@@ -4807,8 +4807,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "Dopinprotocol/index.js",
     twitter: "Dopinprotocol", 
-    listedAt: 1739443997
-  },
+    listedAt: 1739443997,
+    deadUrl: true,  },
   {
     id: "5777",
     name: "SoSoValue Basis",
@@ -5171,8 +5171,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "nome-protocol/index.js",
     twitter: "NOMEprotocol", 
-    listedAt: 1739584051
-  },
+    listedAt: 1739584051,
+    deadUrl: true,  },
   {
     id: "5793",
     name: "Unleash Protocol",
@@ -5829,8 +5829,8 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "chickendefi/index.js",
     twitter: "chickensdefi",
-    listedAt: 1740078103
-  },
+    listedAt: 1740078103,
+    deadUrl: true,  },
   { 
     id: "5822",
     name: "Meme Wallet",
@@ -6066,8 +6066,8 @@ const data4: Protocol[] = [
     module: "fibonacci-dex/index.js",
     twitter: "Fibonaccixyz",
     audit_links: [],
-    listedAt: 1740338333
-  },
+    listedAt: 1740338333,
+    deadUrl: true,  },
   {
     id: "5833",
     name: "Form Network",
@@ -6663,8 +6663,8 @@ const data4: Protocol[] = [
     twitter: "spice_protocol",
     github: ["hemilabs"],
     audit_links: ["https://info.spice.so/audits"],
-    listedAt: 1741019257
-  },
+    listedAt: 1741019257,
+    deadUrl: true,  },
   {
     id: "5859",
     name: "ERC Burner",
@@ -7031,7 +7031,7 @@ const data4: Protocol[] = [
     module: "usury/index.js",
     twitter: "Usury_Finance",
     listedAt: 1741358957,
-  },
+    deadUrl: true,  },
   {
     id: "5875",
     name: "Tea-Fi",
@@ -8598,8 +8598,8 @@ const data4: Protocol[] = [
     module: "Ringswap/index.js",
     forkedFromIds: ["205"],
     twitter: "ringswaponsonic",
-    listedAt: 1742675684
-  },
+    listedAt: 1742675684,
+    deadUrl: true,  },
   {
     id: "5942",
     name: "Gacha",
@@ -8989,8 +8989,8 @@ const data4: Protocol[] = [
     module: "GoldMiner/index.js",
     forkedFrom: [],
     twitter: "goldminersonic",
-    listedAt: 1743107385
-  },
+    listedAt: 1743107385,
+    deadUrl: true,  },
   {
     id: "5959",
     name: "Evoq Finance",
@@ -14729,8 +14729,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "LuckyFuture/index.js",
     twitter: "LuckyFuture_AI",
-    listedAt: 1747939730
-  },
+    listedAt: 1747939730,
+    deadUrl: true,  },
   {
     id: "6225",
     name: "NEAR Intents",

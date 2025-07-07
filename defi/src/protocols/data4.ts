@@ -18585,5 +18585,27 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#jupiter",
   },
+   {
+    id: "6399",
+    name: "EagleFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.eaglefi.io/",
+    description:
+      "EagleFi, DEX on Massa Swap and Create tokens, provide liquidity & earn fees. Enterprise grade security, permissionless, community-first.",
+    chain: "Massa",
+    logo: `${baseIconsUrl}/eaglefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Massa"],
+    module: "eaglefi/index.js",
+    twitter: "Eaglefi_Massa",
+    audit_links: ["https://sayfer.io/audits/smart-contract-audit-eagle-finance/"],
+    forkedFromIds: [], 
+    listedAt: 1751899162
+  },
 ];
 export default data4;

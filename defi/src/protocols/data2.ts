@@ -22665,8 +22665,8 @@ const data2: Protocol[] = [
   {
     id: "2374",
     name: "Contango V1",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xc760f9782f8cea5b06d862574464729537159966",
+    symbol: "TANGO",
     url: "https://contango.xyz/",
     description:
       "Contango is a unique decentralized market offering expirables, contracts to buy or sell an asset at a set price and date in the future",

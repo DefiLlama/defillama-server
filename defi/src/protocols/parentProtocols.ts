@@ -2954,7 +2954,7 @@ const parentProtocols: IParentProtocol[] = [
       "Contango lets you loop anything on-chain. You can create leverage (re)staking positions, arb rates differentials, farm points, or simply go long or short like a perp at low funding.",
     logo: `${baseIconsUrl}/contango.png`,
     gecko_id: "contango",
-    cmcId: null,
+    cmcId: "34045",
     chains: [],
     treasury: "contango.js",
     twitter: "Contango_xyz",

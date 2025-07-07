@@ -20302,8 +20302,8 @@ const data3_1: Protocol[] = [
   {
     id: "3602",
     name: "Contango V2",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xc760f9782f8cea5b06d862574464729537159966",
+    symbol: "TANGO",
     url: "https://contango.xyz",
     description:
       "Contango lets you loop anything on-chain. You can create leverage (re)staking positions, arb rates differentials, farm points, or simply go long or short like a perp at low funding",

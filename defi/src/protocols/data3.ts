@@ -45464,13 +45464,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4721",
-    name: "Yei Finance",
+    name: "YeiLend",
+    //previousName: ["Yei Finance"],
     address: null,
     symbol: "-",
     url: "https://www.yei.finance",
     description: "Money Market on Sei Network",
     chain: "Sei",
-    logo: `${baseIconsUrl}/yei-finance.jpg`,
+    logo: `${baseIconsUrl}/yeilend.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -45498,6 +45499,7 @@ const data3_2: Protocol[] = [
       }
     ],
     listedAt: 1717532780,
+    parentProtocol: "parent#yei-finance",
   },
   {
     id: "4722",

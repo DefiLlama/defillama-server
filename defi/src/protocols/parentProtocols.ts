@@ -7419,6 +7419,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MORE_DeFi",
     github: ["MoreLabsXYZ"],
   },
+  {
+    id: "parent#yei-finance",
+    name: "Yei Finance",
+    url: "https://www.more.markets",
+    description: "Lend, Trade, and Bridge across any chain.",
+    logo: `${baseIconsUrl}/yei-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "YeiFinance",
+  },
 ];
 
 export default parentProtocols;

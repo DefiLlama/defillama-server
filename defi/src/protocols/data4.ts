@@ -18585,7 +18585,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#jupiter",
   },
-   {
+  {
     id: "6399",
     name: "EagleFi",
     address: null,
@@ -18606,6 +18606,27 @@ const data4: Protocol[] = [
     audit_links: ["https://sayfer.io/audits/smart-contract-audit-eagle-finance/"],
     forkedFromIds: [], 
     listedAt: 1751899162
+  },
+  {
+    id: "6400",
+    name: "YeiSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.yei.finance/",
+    description:
+      "Maximize your DeFi yield with YeiSwap. Unlock multiple layers of yield through trading, lending, and liquidity farming, all in one.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/yeiswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sei"],
+    module: "yei-swap/index.js",
+    twitter: "YeiFinance",
+    forkedFromIds: [], 
+    listedAt: 1751919841
   },
 ];
 export default data4;

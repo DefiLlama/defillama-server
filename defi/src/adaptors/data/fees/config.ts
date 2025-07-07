@@ -3785,5 +3785,8 @@ export default {
     },
     "liquidswap": {
         id: "6374"
+    },
+    "yei-swap": {
+        id: "6400"
     }
 } as AdaptorsConfig

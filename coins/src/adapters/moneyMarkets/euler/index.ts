@@ -48,12 +48,12 @@ const v2ChainConfigs = {
     fromBlock: 22282408,
     vaultCount: 126,
   },
-  swellchain: {
-    factory: "0x238bF86bb451ec3CA69BB855f91BDA001aB118b9",
-    vaultLens: "0x1f1997528FbD68496d8007E65599637fBBe85582",
-    fromBlock: 2350701,
-    vaultCount: 0,
-  },
+  // swellchain: {
+  //   factory: "0x238bF86bb451ec3CA69BB855f91BDA001aB118b9",
+  //   vaultLens: "0x1f1997528FbD68496d8007E65599637fBBe85582",
+  //   fromBlock: 2350701,
+  //   vaultCount: 0,
+  // },
   unichain: {
     factory: "0xbAd8b5BDFB2bcbcd78Cc9f1573D3Aad6E865e752",
     vaultLens: "0x03833b4A873eA1F657340C72971a2d0EbB2B4D82",

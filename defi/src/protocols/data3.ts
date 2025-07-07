@@ -16964,7 +16964,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Other Fixed Income"],
+    category: "Dexs",
     chains: ["Cardano"],
     module: "danogo/index.js",
     forkedFrom: [],

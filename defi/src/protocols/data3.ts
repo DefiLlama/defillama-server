@@ -48994,6 +48994,13 @@ const data3_2: Protocol[] = [
     twitter: "intlmemefund",
     github: ["International-Meme-Fund"],
     listedAt: 1721214362,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://forum.diadata.org/t/cdr-094-international-meme-fund-token-price-feed/1028"]
+      }
+    ],
   },
   {
     id: "4894",

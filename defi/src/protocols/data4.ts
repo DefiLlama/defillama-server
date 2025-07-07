@@ -18564,5 +18564,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#more-markets",
     listedAt: 1751893629
   },
+  {
+    id: "6398",
+    name: "Jupiter Studio",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    url: "https://jup.ag/studio",
+    description:
+      "Token creation lab for culture. With hyper customizable tools, anyone can architect their social economy.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-studio.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "JupiterExchange",
+    forkedFromIds: [],
+    parentProtocol: "parent#jupiter",
+  },
 ];
 export default data4;

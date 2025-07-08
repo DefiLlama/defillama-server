@@ -421,7 +421,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
+        // enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -1531,10 +1531,10 @@ export default {
     "origin-dollar": {
         id: "427"
     },
-    "betmode": {
-        enabled: false, // has negative fees for many dates
-        id: "4927"
-    },
+    // "betmode": {
+    //     enabled: false, // has negative fees for many dates
+    //     id: "4927"
+    // },
     "silo-finance": {
         id: "2020"
     },
@@ -2018,10 +2018,10 @@ export default {
     "maxapy": {
         id: "5306",
     },
-    "zeebu": {
-        enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
-        id: "5540",
-    },
+    // "zeebu": {
+    //     enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
+    //     id: "5540",
+    // },
     "lnexchange-perp": {
         id: "5639",
     },

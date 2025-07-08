@@ -922,13 +922,13 @@ export default {
     //     id: "189"
     // },
     /* "carthage": {
-        enabled: false,
+        enabled: false,  // dont trust the numbers
         id: 1944
     }, */
-    "dexible": {
-        enabled: false,
-        id: "2249",
-    },
+    // "dexible": {
+    //     enabled: false,  // it is an aggregator?
+    //     id: "2249",
+    // },
     "alienfi": {
         id: "2603"
     },
@@ -2344,10 +2344,10 @@ export default {
     "arena-launch": {
         id: "6155"
     },
-    "believe": {
-        id: "6159",
-        enabled: false,
-    },
+    // "believe": {
+    //     id: "6159",
+    //     enabled: false, // dont trust the numbers
+    // },
     "rockswap": {
         id: "4204"
     },

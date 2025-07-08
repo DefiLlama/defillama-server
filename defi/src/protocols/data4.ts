@@ -18692,5 +18692,30 @@ const data4: Protocol[] = [
     forkedFromIds: ["5311"],
     listedAt: 1751930263
   },
+  {
+    id: "6404",
+    name: "Felix USDhl",
+    address: null,
+    symbol: "-",
+    url: "https://usefelix.xyz",
+    description:
+      "Felix is a synthetic dollar protocol on Hyperliquid L1",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/felix-usdhl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Hyperliquid L1"],
+    module: "felix-usdhl/index.js",
+    twitter: "felixprotocol",
+    forkedFromIds: [],
+    parentProtocol: "parent#felix",
+    tokensExcludedFromParent: {
+      "Hyperliquid L1": ["USDHL"]  
+    },
+    listedAt: 1751964664
+  },
 ];
 export default data4;

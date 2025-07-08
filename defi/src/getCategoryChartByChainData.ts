@@ -24,7 +24,7 @@ function sum(sumDailyTvls: SumCategoriesOrTagsByChainTvls, tvlSection: string, t
   }
 }
 
-async function getCategoryOrTagByChain({ category, tag, chain }: { category?: string; tag?: string; chain?: string }) {
+async function getCategoryOrTagByChain({ category, tag, chain }: { category?: string | null; tag?: string | null; chain?: string | null }) {
   const categoryOrTag = category || tag;
   if (!categoryOrTag) {
     return null;
@@ -151,8 +151,8 @@ async function getCategoryOrTagByChain({ category, tag, chain }: { category?: st
 }
 
 export async function getCategoryChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const category = sluggifyString(req.path_parameters.category);
-  const chain = sluggifyString(req.path_parameters.chain);
+  const category = req.path_parameters.category ? sluggifyString(req.path_parameters.category) : null;
+  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
 
   if (!category) return errorResponse(res, "Data not found", { statusCode: 404 });
 
@@ -166,8 +166,8 @@ export async function getCategoryChartByChainData(req: HyperExpress.Request, res
 }
 
 export async function getTagChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const tag = sluggifyString(req.path_parameters.tag);
-  const chain = sluggifyString(req.path_parameters.chain);
+  const tag = req.path_parameters.tag ? sluggifyString(req.path_parameters.tag) : null;
+  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
 
   if (!tag) return errorResponse(res, "Data not found", { statusCode: 404 });
 

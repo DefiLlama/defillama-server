@@ -14480,6 +14480,13 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum", "Base"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: [""]
+      },
+    ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
     listedAt: 1747736199

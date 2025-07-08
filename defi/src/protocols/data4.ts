@@ -18730,7 +18730,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     module: "imf-money-v2/index.js",
     forkedFrom: [],

@@ -63488,7 +63488,7 @@ const data3_2: Protocol[] = [
     url: "https://theo.xyz/",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/theo-network.jpg`,
+    logo: `${baseIconsUrl}/theo.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -7430,6 +7430,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "YeiFinance",
   },
+  {
+    id: "parent#international-meme-fund",
+    name: "International Meme Fund",
+    url: "https://internationalmeme.fund",
+    description: "International Meme Fund.",
+    logo: `${baseIconsUrl}/international-meme-fund.`,
+    gecko_id: "international-meme-fund",
+    cmcId: null,
+    chains: [],
+    twitter: "intlmemefund",
+    github: ["International-Meme-Fund"],
+  },
 ];
 
 export default parentProtocols;

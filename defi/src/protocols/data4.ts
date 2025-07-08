@@ -18717,5 +18717,25 @@ const data4: Protocol[] = [
     },
     listedAt: 1751964664
   },
+  {
+    id: "4893",
+    name: "International Meme Fund V2",
+    address: "0x05be1d4c307c19450a6fd7ce7307ce72a3829a60",
+    symbol: "IMF",
+    url: "https://internationalmeme.fund",
+    description: "International Meme Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/international-meme-fund-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "imf-money-v2/index.js",
+    forkedFrom: [],
+    twitter: "intlmemefund",
+    parentProtocol: "parent#international-meme-fund",
+  },
 ];
 export default data4;

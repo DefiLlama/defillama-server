@@ -1,11 +1,4 @@
 {
-  "dchainmainnet": {
-    "0x6422B8E830Dda2D3A88c2c9D6Ef28b66569b945b": {
-      "decimals": "18",
-      "symbol": "WETH",
-      "to": "coingecko#ethereum"
-    }
-  },
   "haven1": {
     "0xB041be50694f3018912c18c710e7BBB931002598": {
       "decimals": "18",
@@ -9390,5 +9383,12 @@
       "decimals": 18,
       "symbol": "B3TR"
     }
-  }
+  },
+  "dchainmainnet": {
+    "0x6422B8E830Dda2D3A88c2c9D6Ef28b66569b945b": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
 }

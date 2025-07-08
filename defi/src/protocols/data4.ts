@@ -17075,7 +17075,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6329",
-    name: "Hyperbloom",
+    name: "HyperBloom",
     address: null,
     symbol: "-",
     url: "https://www.hyperbloom.xyz/",

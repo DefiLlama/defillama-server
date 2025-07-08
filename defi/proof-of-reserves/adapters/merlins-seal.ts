@@ -45,4 +45,4 @@ const mintedTokens = [
   // },
 ]
 
-export default getBitcoinReservesAdapter(protocolId, mintedTokens);
+export default getBitcoinReservesAdapter(protocolId, mintedTokens, ['0x72A817715f174a32303e8C33cDCd25E0dACfE60b']);

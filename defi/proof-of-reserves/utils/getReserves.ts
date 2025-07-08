@@ -47,15 +47,18 @@ export async function getTotalMinted(tokens: Array<TokenConfig>, getUsdValue: bo
       }
 
       if (excludeWallets) {
-        for (const wallet of excludeWallets) {
-          const balanceOf = await sdk.api2.abi.call({
-            chain: token.chain,
-            target: token.address,
-            abi: 'function balanceOf(address) view returns (uint256)',
-            params: [wallet],
-          });
-          const balance = Number(balanceOf) / 10**Number(decimals);
-
+        const excludeWalletsBalances = await sdk.api2.abi.multiCall({
+          chain: token.chain,
+          abi: 'function balanceOf(address) view returns (uint256)',
+          calls: excludeWallets.map(address => {
+            return {
+              target: token.address,
+              params: [address],
+            }
+          })
+        })
+        for (const walletBalance of excludeWalletsBalances) {
+          const balance = Number(walletBalance) / 10**Number(decimals);
           if (getUsdValue) {
             totalMinted -= balance * getCoinPrice(coinPrices, token);
           } else {

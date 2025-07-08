@@ -4,59 +4,10 @@ import {
 } from "../../utils/database";
 import { CoinData, Write } from "../../utils/dbInterfaces";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
-import getBlock from "../../utils/block";
 import { getApi } from "../../utils/sdk";
-import { ChainApi } from "@defillama/sdk";
 
 const sdk = require("@defillama/sdk");
 const vaultAbi = require("./vault.abi.json");
-
-async function fetchVaultAddresses(
-  chain: string,
-  api: ChainApi,
-  factory: string,
-  fromBlock: number,
-  vaultCount: number,
-  count: number,
-) {
-  const toBlock = Number(api.block);
-
-  // Fetch all pools from factory events
-  const vaultDeploys = await api.getLogs({
-    target: factory,
-    fromBlock: fromBlock,
-    toBlock,
-    topics: [
-      "0x04e664079117e113faa9684bc14aecb41651cbf098b14eda271248c6d0cda57c",
-    ],
-    eventAbi:
-      "event ProxyCreated(address indexed proxy, bool upgradeable, address implementation, bytes trailingData)",
-    skipCache: count > 0,
-    skipCacheRead: count > 0,
-  });
-
-  let vaultAddresses = vaultDeploys.map((vaultDeploy: any) => {
-    return vaultDeploy.args[0]; // proxy
-  });
-
-  if (vaultAddresses.length < vaultCount || count < 3) {
-    const rpc = process.env[`${chain.toUpperCase()}_RPC`];
-    if (!rpc) return vaultAddresses;
-    process.env[`${chain.toUpperCase()}_RPC`] = rpc?.substring(
-      rpc.indexOf(",") + 1,
-    );
-    vaultAddresses = await fetchVaultAddresses(
-      chain,
-      api,
-      factory,
-      fromBlock,
-      vaultCount,
-      count + 1,
-    );
-  }
-
-  return vaultAddresses;
-}
 
 interface Market {
   address: string;
@@ -71,19 +22,26 @@ async function getEulerV2Tokens(
   timestamp: number,
   factory: string,
   fromBlock: number,
-  vaultCount: number,
 ): Promise<Market[]> {
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
+  const toBlock = Number(api.block);
 
-  const vaultAddresses = await fetchVaultAddresses(
-    chain,
-    api,
-    factory,
-    fromBlock,
-    vaultCount,
-    0,
-  );
+  // Fetch all pools from factory events
+  const vaultDeploys = await api.getLogs({
+    target: factory,
+    fromBlock: fromBlock,
+    toBlock,
+    topics: [
+      "0x04e664079117e113faa9684bc14aecb41651cbf098b14eda271248c6d0cda57c",
+    ],
+    eventAbi:
+      "event ProxyCreated(address indexed proxy, bool upgradeable, address implementation, bytes trailingData)",
+  });
+
+  const vaultAddresses = vaultDeploys.map((vaultDeploy: any) => {
+    return vaultDeploy.args[0]; // proxy
+  });
 
   const [assets, sharePrice, symbols, dTokens] = await Promise.all([
     sdk.api.abi.multiCall({
@@ -186,14 +144,12 @@ export default async function getEulerV2TokenPrices(
   timestamp: number,
   factory: string,
   fromBlock: number,
-  vaultCount: number,
 ) {
   const eulerV2Tokens = await getEulerV2Tokens(
     chain,
     timestamp,
     factory,
     fromBlock,
-    vaultCount,
   );
 
   const underlyingPrices = await getTokenAndRedirectDataMap(

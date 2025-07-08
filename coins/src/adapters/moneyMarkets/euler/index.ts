@@ -70,7 +70,6 @@ function eulerV2(timestamp: number = 0) {
         timestamp,
         config.factory,
         config.fromBlock,
-        config.vaultCount,
       ),
     ),
   );

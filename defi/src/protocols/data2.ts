@@ -3021,7 +3021,7 @@ const data2: Protocol[] = [
     address: "bsc:0x477bc8d23c634c154061869478bce96be6045d12",
     symbol: "SFUND",
     url: "https://launchpad.seedify.fund/",
-    description: "Seedify is an incubator and launchpad for blockchain games, and gamers.",
+    description: "Seedify is a leading Web3 Launchpad and Incubator, established in 2021 to accelerate the next wave of blockchain innovation across DeFi, AI, RWAs, DePIN, and Gaming.",
     chain: "Binance",
     logo: `${baseIconsUrl}/seedify.png`,
     audits: "2",

@@ -1,26 +1,23 @@
-import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/getReserves";
-import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
+import { GetPoROptions } from '../types';
+import { getTotalMinted } from '../utils/getReserves';
+import { getBTCPriceUSD, getLlamaTvl } from '../utils/llamaApis';
 
-const adapter: IPoRAdapter = {
-  assetLabel: 'tBTC',
-  reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = await bitcoinAddressBook.tBTC();
-    return await getReserves(options, {
-      ethereum: {
-        minted: [
-          {
-            address: '0x18084fbA666a33d37592fA2633fD49a74DD93a88',
-          },
-        ],
-      },
-      bitcoin: {
-        reserves: {
-          owners: addresses,
-        }
-      },
-    })
+const protocolId = 'tbtc';
+
+const mintedTokens = [
+  {
+    chain: 'ethereum',
+    address: '0x18084fbA666a33d37592fA2633fD49a74DD93a88',
   }
-}
+]
 
-export default adapter;
+export default {
+  protocolId: protocolId,
+  minted: async function(_: GetPoROptions): Promise<number> {
+    const totalMinted = await getTotalMinted(mintedTokens);
+    return totalMinted * (await getBTCPriceUSD());
+  },
+  reserves: async function(): Promise<number> {
+    return await getLlamaTvl(protocolId);
+  },
+}

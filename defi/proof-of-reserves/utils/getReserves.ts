@@ -1,107 +1,70 @@
-import { GetPoROptions, GetPoRResult } from "../types";
-import { sumTokens } from '../../DefiLlama-Adapters/projects/helper/chain/bitcoin';
+import {getCoinPrices} from './llamaApis';
 import { getTokenSupplies } from '../../DefiLlama-Adapters/projects/helper/solana';
-import ADDRESSES from "../../DefiLlama-Adapters/projects/helper/coreAssets.json";
-import { Balances } from "@defillama/sdk";
-import * as sdk from "@defillama/sdk";
+import { TokenConfig } from '../types';
+import * as sdk from '@defillama/sdk';
 
-interface ReserveConfigs {
-  [key: string]: {
-    minted?: Array<{
-      address: string;
-      decimals?: number;
-    }>;
-    reserves?: {
-      countNative?: boolean;
-      tokens?: Array<string>;
-      owners: Array<string>;
-    }
+function getCoinPrice(coinPrices: Record<string, number>, token: TokenConfig): number {
+  const key = `${token.chain}:${token.address}`;
+  if (!coinPrices[key]) {
+    console.warn(`failed to get coin price ${key}`)
+    process.exit(1);
   }
+  return coinPrices[key] ? coinPrices[key] : 0;
 }
 
-export async function getReserves(_: GetPoROptions, configs: ReserveConfigs): Promise<GetPoRResult> {
-  const result: GetPoRResult = {};
+export async function getTotalMinted(tokens: Array<TokenConfig>, getUsdValue: boolean | undefined = undefined, excludeWallets: Array<string> | undefined = undefined): Promise<number> {
+  const coinPrices = await getCoinPrices(tokens);
 
-  for (const [chain, config] of Object.entries(configs)) {
-    const mintedBalance = new Balances({
-      chain: chain,
-    });
-    const reserveBalance = new Balances({
-      chain: chain,
-    });
+  let totalMinted = 0;
 
-    if (config.minted) {
-      for (const mintedToken of config.minted) {
-        if (chain === 'solana') {
-          const data = await getTokenSupplies([mintedToken.address]);
-          const totalSupply: any = Number((data as any)[mintedToken.address]) / (mintedToken.decimals ? 10**mintedToken.decimals : 1e8);
-          mintedBalance.addToken(mintedToken.address, totalSupply);
-        } else {
-          // evm
-          const supply = await sdk.api2.abi.call({
-            chain: chain,
-            target: mintedToken.address,
-            abi: 'uint256:totalSupply',
-          });
-          const decimals = await sdk.api2.abi.call({
-            chain: chain,
-            target: mintedToken.address,
-            abi: 'uint8:decimals',
-          });
-          const totalSupply = Number(supply) / 10**Number(decimals)
-          mintedBalance.addToken(mintedToken.address, totalSupply);
-        }
-      }
-    }
-
-    if (config.reserves) {
-      if (chain === 'bitcoin') {
-        const bitcoinBalances = await sumTokens({ owners: config.reserves.owners, forceCacheUse: true } as any);
-        const reserves = (bitcoinBalances as any).bitcoin ? Number((bitcoinBalances as any).bitcoin) : 0;
-        reserveBalance.addToken('bitcoin', reserves);
+  for (const token of tokens) {
+    if (token.chain === 'solana') {
+      const data = await getTokenSupplies([token.address]);
+      const totalSupply: any = Number((data as any)[token.address]) / (token.decimals ? 10**token.decimals : 1e8);
+      if (getUsdValue) {
+        totalMinted += totalSupply * getCoinPrice(coinPrices, token);
       } else {
-        // evm
-        if (config.reserves.tokens) {
-          for (const token of config.reserves.tokens) {
-            const decimals = await sdk.api2.abi.call({
-              chain: chain,
-              target: token,
-              abi: 'uint8:decimals',
-            });
+        totalMinted += totalSupply;
+      }
+    } else {
+      // evm
+      const supply = await sdk.api2.abi.call({
+        chain: token.chain,
+        target: token.address,
+        abi: 'uint256:totalSupply',
+      });
+      const decimals = await sdk.api2.abi.call({
+        chain: token.chain,
+        target: token.address,
+        abi: 'uint8:decimals',
+      });
+      const totalSupply = Number(supply) / 10**Number(decimals);
 
-            const balances = await sdk.api2.abi.multiCall({
-              chain: chain,
-              abi: 'function balanceOf(address) view returns(uint256)',
-              target: token,
-              calls: config.reserves.owners.map(owner => {
-                return {
-                  params: [owner],
-                }
-              })
-            });
-            for (const balance of balances) {
-              reserveBalance.add(token, Number(balance) / 10**Number(decimals));
-            }
-          }
-        }
+      if (getUsdValue) {
+        totalMinted += totalSupply * getCoinPrice(coinPrices, token);
+      } else {
+        totalMinted += totalSupply;
+      }
 
-        if (config.reserves.countNative) {
-          for (const owner of config.reserves.owners) {
-            const {output: balance} = await sdk.api2.eth.getBalance({
-              chain: chain,
-              target: owner,
-            });
-            reserveBalance.add(ADDRESSES.null, Number(balance) / 1e18);
+      if (excludeWallets) {
+        for (const wallet of excludeWallets) {
+          const balanceOf = await sdk.api2.abi.call({
+            chain: token.chain,
+            target: token.address,
+            abi: 'function balanceOf(address) view returns (uint256)',
+            params: [wallet],
+          });
+          const balance = Number(balanceOf) / 10**Number(decimals);
+
+          if (getUsdValue) {
+            totalMinted -= balance * getCoinPrice(coinPrices, token);
+          } else {
+            totalMinted -= balance;
           }
         }
       }
-    }
-
-    result[chain] = {
-      minted: mintedBalance,
-      reserves: reserveBalance,
     }
   }
 
-  return result;
+  return totalMinted;
 }

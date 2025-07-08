@@ -2,24 +2,24 @@ import { GetPoROptions } from '../types';
 import { getTotalMinted } from '../utils/getReserves';
 import { getBTCPriceUSD, getLlamaTvl } from '../utils/llamaApis';
 
-const protocolId = 'teleswap';
+const protocolId = 'kraken-bitcoin';
 
 const mintedTokens = [
   {
-    chain: 'bsc',
-    address: '0xC58C1117DA964aEbe91fEF88f6f5703e79bdA574',
+    chain: 'ethereum',
+    address: '0x73e0c0d45e048d25fc26fa3159b0aa04bfa4db98',
   },
   {
-    chain: 'polygon',
-    address: '0x3BF668Fe1ec79a84cA8481CEAD5dbb30d61cC685',
+    chain: 'optimism',
+    address: '0x73e0c0d45e048d25fc26fa3159b0aa04bfa4db98',
   },
   {
-    chain: 'bsquared',
-    address: '0x05698eaD40cD0941e6E5B04cDbd56CB470Db762A',
+    chain: 'ink',
+    address: '0x73E0C0d45E048D25Fc26Fa3159b0aA04BfA4Db98',
   },
   {
-    chain: 'bob',
-    address: '0x0670bEeDC28E9bF0748cB254ABd946c87f033D9d',
+    chain: 'unichain',
+    address: '0x73e0c0d45e048d25fc26fa3159b0aa04bfa4db98',
   },
 ]
 

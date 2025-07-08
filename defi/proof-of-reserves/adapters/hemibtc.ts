@@ -1,27 +1,27 @@
-import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/getReserves";
-import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
+import { GetPoROptions } from '../types';
+import { getTotalMinted } from '../utils/getReserves';
+import { getBTCPriceUSD, getLlamaTvl } from '../utils/llamaApis';
 
-const adapter: IPoRAdapter = {
-  assetLabel: 'hemiBTC',
-  reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = bitcoinAddressBook.hemiBTC;
-    return await getReserves(options, {
-      hemi: {
-        minted: [
-          {
-            address: '0xAA40c0c7644e0b2B224509571e10ad20d9C4ef28',
-          },
-        ],
-      },
-      bitcoin: {
-        reserves: {
-          owners: addresses,
-        }
-      },
-    })
-  }
+const protocolId = 'hemibtc';
+
+const mintedTokens = [
+  {
+    chain: 'hemi',
+    address: '0xAA40c0c7644e0b2B224509571e10ad20d9C4ef28',
+  },
+]
+
+export default {
+  protocolId: protocolId,
+  minted: async function(_: GetPoROptions): Promise<number> {
+    const totalMinted = await getTotalMinted(mintedTokens);
+    return totalMinted * (await getBTCPriceUSD());
+  },
+  reserves: async function(): Promise<number> {
+    return await getLlamaTvl(protocolId);
+  },
 }
 
-export default adapter;
+
+
 

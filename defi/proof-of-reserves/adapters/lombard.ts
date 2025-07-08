@@ -1,41 +1,31 @@
-import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/getReserves";
-import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
+import { GetPoROptions } from '../types';
+import { getTotalMinted } from '../utils/getReserves';
+import { getBTCPriceUSD, getLlamaTvl } from '../utils/llamaApis';
 
-const adapter: IPoRAdapter = {
-  assetLabel: 'LBTC',
-  reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = await bitcoinAddressBook.lombard();
-    return await getReserves(options, {
-      ethereum: {
-        minted: [
-          {
-            address: '0x8236a87084f8B84306f72007F36F2618A5634494',
-          },
-        ],
-      },
-      base: {
-        minted: [
-          {
-            address: '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
-          },
-        ],
-      },
-      bsc: {
-        minted: [
-          {
-            address: '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
-          },
-        ],
-      },
-      bitcoin: {
-        reserves: {
-          owners: addresses,
-        }
-      },
-    })
-  }
+const protocolId = 'lombard';
+
+const mintedTokens = [
+  {
+    chain: 'ethereum',
+    address: '0x8236a87084f8B84306f72007F36F2618A5634494',
+  },
+  {
+    chain: 'base',
+    address: '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
+  },
+  {
+    chain: 'bsc',
+    address: '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
+  },
+]
+
+export default {
+  protocolId: protocolId,
+  minted: async function(_: GetPoROptions): Promise<number> {
+    const totalMinted = await getTotalMinted(mintedTokens);
+    return totalMinted * (await getBTCPriceUSD());
+  },
+  reserves: async function(): Promise<number> {
+    return await getLlamaTvl(protocolId);
+  },
 }
-
-export default adapter;
-

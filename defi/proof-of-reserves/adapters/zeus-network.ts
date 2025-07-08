@@ -1,27 +1,24 @@
-import { GetPoROptions, GetPoRResult, IPoRAdapter } from "../types";
-import { getReserves } from "../utils/getReserves";
-import bitcoinAddressBook from '../../DefiLlama-Adapters/projects/helper/bitcoin-book/index';
+import { GetPoROptions } from '../types';
+import { getTotalMinted } from '../utils/getReserves';
+import { getBTCPriceUSD, getLlamaTvl } from '../utils/llamaApis';
 
-const adapter: IPoRAdapter = {
-  assetLabel: 'zBTC',
-  reserves: async function(options: GetPoROptions): Promise<GetPoRResult> {
-    const addresses = bitcoinAddressBook.zeusZBTC;
-    return await getReserves(options, {
-      solana: {
-        minted: [
-          {
-            address: 'zBTCug3er3tLyffELcvDNrKkCymbPWysGcWihESYfLg',
-            decimals: 8,
-          },
-        ],
-      },
-      bitcoin: {
-        reserves: {
-          owners: addresses,
-        }
-      },
-    })
+const protocolId = 'zeus-network';
+
+const mintedTokens = [
+  {
+    chain: 'solana',
+    address: 'zBTCug3er3tLyffELcvDNrKkCymbPWysGcWihESYfLg',
+    decimals: 8,
   }
-}
+]
 
-export default adapter;
+export default {
+  protocolId: protocolId,
+  minted: async function(_: GetPoROptions): Promise<number> {
+    const totalMinted = await getTotalMinted(mintedTokens);
+    return totalMinted * (await getBTCPriceUSD());
+  },
+  reserves: async function(): Promise<number> {
+    return await getLlamaTvl(protocolId);
+  },
+}

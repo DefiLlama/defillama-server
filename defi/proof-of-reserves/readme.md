@@ -14,4 +14,7 @@ git submodule update --init --recursive --remote --merge
 
 # run the checking script locally
 npm run check-por wbtc
+
+# check all available protocols
+npm run check-por allProtocols
 ```

@@ -7451,17 +7451,17 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Aggregator",
-        "proof": ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
       {
         name: "Switchboard",
         type: "Aggregator",
-        "proof": ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
       {
         name: "Coingecko",
         type: "Aggregator",
-        "proof": ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
     ],
     module: "moveposition/index.js",

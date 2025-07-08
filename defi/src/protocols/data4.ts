@@ -1136,10 +1136,10 @@ const data4: Protocol[] = [
   },
   {
     id: "5610",
-    name: "Crypto Valley Exchange",
+    name: "Jetstream",
     address: null,
     symbol: "-",
-    url: "https://cvex.xyz/",
+    url: "https://jetstream.trade/",
     description:
       "Decentralized derivatives clearing protocol. Enabling traders to reduce margin and unlock capital by providing exchanges with a robust clearing mechanism. First Exchange offers Crypto Derivatives with full portfolio risk. Ready to unleash and empower crypto derivatives by unlocking collateral.",
     chain: "Arbitrum",
@@ -1153,7 +1153,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [ { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046"] } ],
     forkedFrom: [],
     module: "cvex/index.js",
-    twitter: "cvex_xyz",
+    twitter: "Jetstreamtrade",
     listedAt: 1736469235
   },
   {

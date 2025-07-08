@@ -45439,8 +45439,8 @@ const data3_2: Protocol[] = [
   {
     id: "4720",
     name: "Dragon Swap V2 Sei",
-    address: null,
-    symbol: "-",
+    address: 'sei:0x0a526e425809aEA71eb279d24ae22Dee6C92A4Fe',
+    symbol: "DRG",
     url: "https://dragonswap.app",
     description:
       "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",

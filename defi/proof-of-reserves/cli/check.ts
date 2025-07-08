@@ -67,12 +67,15 @@ for (const item of items) {
   const filteredProtocols = projects.filter(project => !project.backing || isNaN(project.backing) || project.backing <= 98);
 
   const message = `
-Protocols minted tokens more than reserves:\n\n${sdk.util.tableToString([...filteredProtocols], printColumns)}\n\n
-Using this script: https://github.com/DefiLlama/defillama-server/blob/master/defi/proof-of-reserves/cli/check.ts
-  `
+Protocols minted tokens more than reserves:
+
+${sdk.util.tableToString([...filteredProtocols], printColumns)}
+
+
+Using this script: https://github.com/DefiLlama/defillama-server/blob/master/defi/proof-of-reserves/cli/check.ts`
 
   if (process.env.TEAM_WEBHOOK && filteredProtocols.length > 0) {
-    await sendMessage(message, process.env.TEAM_WEBHOOK!, false)
+    await sendMessage(message, process.env.TEAM_WEBHOOK!, true)
   }
 
   process.exit(0);

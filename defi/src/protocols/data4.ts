@@ -18697,9 +18697,9 @@ const data4: Protocol[] = [
     name: "Felix USDhl",
     address: null,
     symbol: "-",
-    url: "https://usefelix.xyz",
+    url: "https://usdhl.xyz/",
     description:
-      "Felix is a synthetic dollar protocol on Hyperliquid L1",
+      "USDhl is a fiat stable custom-built for the Hyperliquid ecosystem, serving as a building block for HIP-3, fx, payments, and more",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/felix-usdhl.jpg`,
     audits: "0",
@@ -18709,7 +18709,7 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["Hyperliquid L1"],
     module: "felix-usdhl/index.js",
-    twitter: "felixprotocol",
+    twitter: "usd_hl",
     forkedFromIds: [],
     parentProtocol: "parent#felix",
     tokensExcludedFromParent: {

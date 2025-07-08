@@ -54,5 +54,7 @@ if (projectArgv === 'allProtocols') {
       }
     }
   }
+
+  process.exit(0);
 })()
  

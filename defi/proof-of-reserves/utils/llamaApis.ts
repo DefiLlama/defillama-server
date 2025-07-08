@@ -18,13 +18,27 @@ export async function getCoinPrices(tokens: Array<TokenConfig>): Promise<Record<
   return coinPrices;
 }
 
+let allProtocols: any = null;
 export async function getLlamaTvl(protocolId: string): Promise<number> {
-  const response = await fetch(`https://api.llama.fi/tvl/${protocolId}`);
-  const tvl = await response.text();
-  return tvl ? Number(tvl) : 0;
+  if (allProtocols === null) {
+    const response = await fetch('https://api.llama.fi/protocols');
+    allProtocols = await response.json();
+  }
+
+  for (const protocolData of allProtocols) {
+    if (protocolData.slug === protocolId) {
+      return Number(protocolData.tvl);
+    }
+  }
+
+  return 0;
 }
 
+let btcPriceUsd: null | number = null;
 export async function getBTCPriceUSD(): Promise<number> {
-  const coinPrices = await getCoinPrices([{chain: 'ethereum', address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'}]);
-  return Number(coinPrices['ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599']);
+  if (btcPriceUsd === null) {
+    const coinPrices = await getCoinPrices([{chain: 'ethereum', address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'}]);
+    btcPriceUsd = Number(coinPrices['ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599']);
+  }
+  return btcPriceUsd;
 }

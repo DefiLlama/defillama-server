@@ -13,8 +13,8 @@ In the `defillama-server/defi` folder:
 git submodule update --init --recursive --remote --merge
 
 # run the checking script locally
-npm run check-por wbtc
+npm run local-test-por wbtc
 
 # check all available protocols
-npm run check-por allProtocols
+npm run local-test-por allProtocols
 ```

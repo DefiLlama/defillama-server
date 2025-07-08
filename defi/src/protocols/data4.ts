@@ -18801,5 +18801,24 @@ const data4: Protocol[] = [
     twitter: "XRiSE33",
     listedAt: 1752001351
   },
+  {
+    id: "6409",
+    name: "Carbon.inc",
+    address: null,
+    symbol: "-",
+    url: "https://carbon.inc/",
+    description: "Trade 425+ Pairs with up to 60x Leverage",
+    chain: "Base",
+    logo: `${baseIconsUrl}/carbon.inc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Base"],
+    module: "dummy.js",
+    forkedFrom: [],
+    twitter: "CarbonTerminal",
+  },
 ];
 export default data4;

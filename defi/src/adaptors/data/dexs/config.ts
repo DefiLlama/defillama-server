@@ -3107,5 +3107,8 @@ export default {
     },
     "yei-swap": {
         id: "6400"
+    },
+    "carbon": {
+        id: "6409"
     }
 } as AdaptorsConfig

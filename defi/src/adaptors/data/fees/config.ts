@@ -3788,5 +3788,11 @@ export default {
     },
     "yei-swap": {
         id: "6400"
+    },
+    "carbon": {
+        id: "6409"
+    },
+    "kanalabs-perp": {
+        id: "6175"
     }
 } as AdaptorsConfig

@@ -365,5 +365,8 @@ export default {
   },
   "liquidswap": {
     id: "6374"
+  },
+  "obsidian": {
+    id: "6393"
   }
 } as AdaptorsConfig;

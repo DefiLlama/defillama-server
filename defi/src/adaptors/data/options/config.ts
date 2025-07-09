@@ -47,10 +47,10 @@ export default {
         parentId: "Derive",
         id: "3923"
     },
-    "optionBlitz": {
-        enabled: false, //sus behavior
-        id: "4396"
-    },
+    // "optionBlitz": {
+    //     enabled: false, //sus behavior
+    //     id: "4396"
+    // },
     "smilee-finance": {
         id: "4350"
     },

@@ -4401,6 +4401,15 @@ export const chainCoingeckoIds = {
     url: "https://botanixlabs.com",
     chainId: 3637,
   },
+  "DChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "dchain_hq",
+    url: "https://www.dchain.foundation/",
+    chainId: 2716446429837000,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4598,6 +4607,7 @@ const chainLabelMap = {
   "yomi": "Yominet",
   "xrplevm": "XRPL EVM",
   "btnx": "Botanix",
+  "dchainmainnet": "DChain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

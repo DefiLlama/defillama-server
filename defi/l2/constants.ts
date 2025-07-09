@@ -135,6 +135,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   // "5323": "exSat",
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
+  "6401": "embr",
 };
 
 export const allChainKeys: string[] = [
@@ -239,4 +240,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
   // "zkcandy": {}
   "ao": { ticker: "AO", address: "coingecko:ao-computers" },
+  // embr: {}
 };

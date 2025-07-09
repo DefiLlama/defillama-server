@@ -421,7 +421,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
+        // enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -1531,10 +1531,10 @@ export default {
     "origin-dollar": {
         id: "427"
     },
-    "betmode": {
-        enabled: false, // has negative fees for many dates
-        id: "4927"
-    },
+    // "betmode": {
+    //     enabled: false, // has negative fees for many dates
+    //     id: "4927"
+    // },
     "silo-finance": {
         id: "2020"
     },
@@ -2018,10 +2018,10 @@ export default {
     "maxapy": {
         id: "5306",
     },
-    "zeebu": {
-        enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
-        id: "5540",
-    },
+    // "zeebu": {
+    //     enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
+    //     id: "5540",
+    // },
     "lnexchange-perp": {
         id: "5639",
     },
@@ -3758,5 +3758,41 @@ export default {
     },
     "unicornx": {
         id: "6385"
+    },
+    "copump": {
+        id: "6070"
+    },
+    "fanx-protocol": {
+        id: "4821"
+    },
+    "1776meme": {
+        id: "6396"
+    },
+    "avalon-usda": {
+        id: "5312"
+    },
+    "alpha-arcade": {
+        id: "6302",
+    },
+    "moar": {
+        id: "6013"
+    },
+    "kofi-finance": {
+        id: "6176"
+    },
+    "jup-studio": {
+        id: "6398"
+    },
+    "liquidswap": {
+        id: "6374"
+    },
+    "yei-swap": {
+        id: "6400"
+    },
+    "carbon": {
+        id: "6409"
+    },
+    "kanalabs-perp": {
+        id: "6175"
     }
 } as AdaptorsConfig

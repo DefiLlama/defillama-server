@@ -66,18 +66,46 @@ const App = () => {
   const [tvlDeleteWaitingRecordsSelectedChartColumn, setTvlDeleteWaitingRecordsSelectedChartColumn] = useState('');
 
   function addWebSocketConnection() {
-    const ws = new WebSocket('ws://localhost:8080');
+    try {
+      _addWebSocketConnection();
+    } catch (error) { // Handle WebSocket connection errors
+      console.error('Error adding WebSocket connection:', error);
+    }
+  }
+
+  function _addWebSocketConnection() {
+    // Check for auth requirement
+    let password
+    if (process.env.REACT_APP_WS_AUTH_PASSWORD) {
+      password = localStorage.getItem('wsAuthPassword');
+      if (!password) {
+        password = prompt('Please enter WebSocket authentication password:');
+        if (password) {
+          localStorage.setItem('wsAuthPassword', password);
+        }
+      }
+    }
+    const port = process.env.REACT_APP_WSS_PORT || 8080;
+    let wsUrl = `${window.location.hostname}:${port}`;
+    let host = window.location.toString()
+    if (host.startsWith('https://'))
+      wsUrl = host
+
+    const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
-    ws.onopen = () => {
-      setIsConnected(true);
-      console.log('WebSocket connected');
-    };
+    if (password) {
+      ws.onopen = () => {
+        ws.send(JSON.stringify({ type: 'authenticate', password }));
+        setIsConnected(true);
+        console.log('WebSocket connected');
+      };
+    }
 
     ws.onclose = () => {
       setIsConnected(false);
       console.log('WebSocket disconnected');
-      setTimeout(addWebSocketConnection, 1000); // Reconnect after 1 second
+      // setTimeout(addWebSocketConnection, 10000); // Reconnect after 10 seconds
     };
 
     ws.onmessage = (event) => {
@@ -171,13 +199,62 @@ const App = () => {
       algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
     }}>
       <Layout className='layout'>
-        <Button
-          type="text"
-          shape='round'
-          icon={< MoonOutlined />}
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          style={{ display: 'flex', alignSelf: 'flex-end', maxWidth: 100, margin: 10 }}
-        > {isDarkMode ? 'Light Mode' : 'Dark Mode'}  </Button>
+        <Flex gap={10} style={{ margin: '10px 10px 0' }} align='center' justify='flex-end'>
+          <Button
+            type="primary"
+            onClick={() => {
+              const password = prompt('Please enter WebSocket authentication password:');
+              if (password) {
+                localStorage.setItem('wsAuthPassword', password);
+                addWebSocketConnection();
+              }
+            }}
+            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+          >
+            Set API Key
+          </Button>
+          {/* <Button
+            type="primary"
+            onClick={() => {
+              const url = prompt('Please enter WebSocket url:');
+              if (url) {
+                localStorage.setItem('wsUrl', url);
+                addWebSocketConnection();
+              }
+            }}
+            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+          >
+            Set WS Link
+          </Button> */}
+          <Button
+            onClick={addWebSocketConnection}
+            style={{ display: isConnected ? 'none' : 'block' }}
+          >
+            Reconnect
+          </Button>
+          <Button
+            type="default"
+            onClick={() => {
+              if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+                wsRef.current.send(JSON.stringify({ type: 'restart-server' }));
+                console.log('Restart server command sent');
+              } else {
+                console.error('WebSocket is not connected');
+              }
+            }}
+            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+          >
+            Restart Server
+          </Button>
+
+          <Button
+            type="text"
+            shape='round'
+            icon={< MoonOutlined />}
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            style={{ display: 'flex', alignSelf: 'flex-end', maxWidth: 100, margin: 10 }}
+          > {isDarkMode ? 'Light Mode' : 'Dark Mode'}  </Button>
+        </Flex>
         <Content>
           <Splitter>
             <Splitter.Panel defaultSize="30%" min="20%" max="90%" className='content'>
@@ -875,7 +952,7 @@ const App = () => {
 
             > Clear list </Button>
 
-           {/*  <Button type="default" icon={<DeleteOutlined />}
+            {/*  <Button type="default" icon={<DeleteOutlined />}
               onClick={() => {
                 const payload = {
                   type: 'tvl-delete-delete-all',

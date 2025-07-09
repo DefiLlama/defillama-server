@@ -922,13 +922,13 @@ export default {
     //     id: "189"
     // },
     /* "carthage": {
-        enabled: false,
+        enabled: false,  // dont trust the numbers
         id: 1944
     }, */
-    "dexible": {
-        enabled: false,
-        id: "2249",
-    },
+    // "dexible": {
+    //     enabled: false,  // it is an aggregator?
+    //     id: "2249",
+    // },
     "alienfi": {
         id: "2603"
     },
@@ -2344,10 +2344,10 @@ export default {
     "arena-launch": {
         id: "6155"
     },
-    "believe": {
-        id: "6159",
-        enabled: false,
-    },
+    // "believe": {
+    //     id: "6159",
+    //     enabled: false, // dont trust the numbers
+    // },
     "rockswap": {
         id: "4204"
     },
@@ -2421,7 +2421,12 @@ export default {
         "displayName": "Quickswap V2"
     },
     "quickswap-v3": {
-        id: "2239"
+        id: "2239",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1751587200": true
+            }
+        }
     },
     "quickswap-liquidityHub": {
         id: "3743"
@@ -3087,5 +3092,23 @@ export default {
     },
     "archfi": {
         id: "6384"
+    },
+    "copump": {
+        id: "6070"
+    },
+    "fanx-protocol": {
+        id: "4821"
+    },
+    "1776meme": {
+        id: "6396"
+    },
+    "alpha-arcade": {
+        id: "6302",
+    },
+    "yei-swap": {
+        id: "6400"
+    },
+    "carbon": {
+        id: "6409"
     }
 } as AdaptorsConfig

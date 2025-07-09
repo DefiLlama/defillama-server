@@ -1,10 +1,23 @@
 const path = require('path');
+
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
+const WS = require('ws');
+const { spawn, } = require('child_process');
+import getTvlCacheEnv from '../../src/api2/env';
+const isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
+
+try {
+  getTvlCacheEnv();
+} catch (error) {
+  console.error("Error loading environment variables:", error);
+}
+
 
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
-const WS = require('ws');
-const { spawn } = require('child_process');
+
+const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
 
 
 process.on('uncaughtException', (err) => {
@@ -15,31 +28,79 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 })
 
-const wss = new WS.Server({ port: 8080 });
+let wss: any, reactApp: any, server: any;
 
-console.log('WebSocket server running on port 8080');
+function startDevWebServer() {
 
-// Start the React app
-console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
-const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-const reactAppPath = path.resolve(__dirname, '..');
+  wss = new WS.Server({ port: 8080 });
 
-// Start React with specific port and environment
-const reactApp = spawn(npmPath, ['run', 'start-react'], {
-  cwd: reactAppPath,
-  env: {
-    ...process.env,
-    PORT: '5001'
+  console.log(`WebSocket server running on port ${wss.options.port}`);
+  // Start the React app
+  console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
+  const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+  const reactAppPath = path.resolve(__dirname, '..');
+
+  // Start React with specific port and environment
+  reactApp = spawn(npmPath, ['run', 'start-react'], {
+    cwd: reactAppPath,
+    env: {
+      ...process.env,
+      PORT: 5001
+    }
+  });
+
+  wss.on('connection', onWebSocketConnection)
+
+}
+
+function startProdWebServer() {
+  console.log('Starting production web server...');
+  const express = require('express');
+  const http = require('http');
+  const WebSocket = require('ws');
+  const app = express();
+  const buildRootDir = path.resolve(__dirname, '../build');
+
+  // Serve React static files
+  app.use(express.static(buildRootDir));
+
+  // For any other route, serve index.html (for React Router)
+  // app.get('*', (_req: any, res: any) => {
+  //   res.sendFile(path.join(buildRootDir, 'index.html'));
+  // });
+
+  // Create HTTP server
+  server = http.createServer(app);
+
+  // Attach WebSocket server to the same HTTP server
+  wss = new WebSocket.Server({ server });
+
+  wss.on('connection', onWebSocketConnection);
+
+  // Start server
+  server.listen(5001, () => {
+    console.log(`Server listening on 5001`);
+  });
+}
+
+async function restartServer() {
+  if (!isProductionMode) {
+    console.log('Not in production mode, skipping restart');
+    return;
   }
-});
+  console.log('Restarting server...');
+  process.exit(0); // Exit the current process to trigger the restart script
+}
 
 // Graceful shutdown handler
 const shutdown = (signal: string) => {
   console.log(`\n\n🛑 Received ${signal}. Shutting down gracefully...`);
   console.log('- Closing WebSocket server');
-  wss.close();
+  if (wss)
+    wss.close();
   console.log('- Stopping React app');
-  reactApp.kill();
+  if (reactApp)
+    reactApp.kill();
   console.log('✅ Cleanup complete\n');
   process.exit(0);
 };
@@ -60,7 +121,7 @@ function stringify(a: any) {
   }
 }
 
-wss.on('connection', (ws: any) => {
+const onAuthentication = (ws: any) => {
   console.log('Client connected');
 
   ws.send(JSON.stringify({
@@ -132,6 +193,9 @@ wss.on('connection', (ws: any) => {
       case 'tvl-delete-delete-all':
         await tvlDeleteAllRecords(ws);
         break;
+      case 'restart-server':
+        restartServer();
+        break;
 
       default: console.error('Unknown message type:', data.type); break;
     }
@@ -140,4 +204,37 @@ wss.on('connection', (ws: any) => {
   ws.on('close', () => {
     console.log('Client disconnected');
   });
-});
+}
+
+
+const onWebSocketConnection = (ws: any) => {
+  let authenticated = false;
+
+  // Add authentication middleware if password is set
+  if (AUTH_PASSWORD) {
+    ws.on('message', (message: string) => {
+      if (authenticated) return;
+      console.log('auth check')
+
+
+      const data = JSON.parse(message);
+      if (data.type === 'authenticate') {
+        const auth = data.password;
+        if (auth === AUTH_PASSWORD) {
+          authenticated = true;
+          onAuthentication(ws);
+          return;
+        }
+      }
+
+      console.error('Unauthorized connection attempt');
+      ws.close(4001, 'Unauthorized');
+    });
+  } else
+    onAuthentication(ws);
+}
+
+if (isProductionMode)
+  startProdWebServer();
+else
+  startDevWebServer();

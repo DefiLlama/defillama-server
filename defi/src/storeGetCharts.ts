@@ -290,7 +290,6 @@ export async function storeGetCharts({ ...options }: any = {}) {
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       // total - sum of all protocols on all chains
-
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
 
       // doublecounted and liquid staking values === sum of tvl on all chains
@@ -300,7 +299,6 @@ export async function storeGetCharts({ ...options }: any = {}) {
       if (protocol.category?.toLowerCase() === "liquid staking") {
         sum(sumDailyTvls, "total", "liquidstaking", timestamp, item.tvl);
       }
-
       // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
       if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
         sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
@@ -312,7 +310,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
         // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
         const formattedChainName = getChainDisplayName(chain, true);
 
-        // if its and extra tvl, include those values in "total" tvl of defi
+        // if its an extra tvl section, include those values in "total" tvl of defi
         if (extraSections.includes(formattedChainName)) {
           sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
           return;
@@ -328,12 +326,12 @@ export async function storeGetCharts({ ...options }: any = {}) {
           sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
-
           if (tvlSection === "tvl") {
             sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
+
             if (protocol.category?.toLowerCase() === "liquid staking") {
               sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
             }
@@ -391,7 +389,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
       }
     })
   );
-
+  
   await Promise.all(
     Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(

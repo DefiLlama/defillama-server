@@ -1,25 +1,17 @@
 const fs = require("fs")
+const { mockFunctions } = require("@defillama/adapters/modules/util")
+const { getModule } = require("@defillama/adapters/adapters")
 
 const adaptersFile = process.argv[2] 
 const data = JSON.parse(fs.readFileSync(adaptersFile, "utf8"))
 
 Object.keys(data).forEach((key) => {
-  data[key] = mockFunctions(require(data[key]))
+  data[key] = mockFunctions(getModule(key) ?? require(data[key]))
   if (data[key].hallmarks) {
     data[key].hallmarks = convertHallmarkStrings(data[key].hallmarks)
   }
 })
 fs.writeFileSync(adaptersFile, JSON.stringify(data))
-
-//Replace all fuctions with mock functions in an object all the way down
-function mockFunctions(obj) {
-  if (typeof obj === "function") {
-    return 'llamaMockedTVLFunction'
-  } else if (typeof obj === "object") {
-    Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-  }
-  return obj
-}
 
 function convertHallmarkStrings(hallmarks) {
   if (!Array.isArray(hallmarks)) return hallmarks

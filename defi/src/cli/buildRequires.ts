@@ -3,8 +3,10 @@ import treasuries from "../protocols/treasury";
 import { writeFileSync, readdirSync } from "fs"
 import { execSync } from "child_process"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { mockFunctions } from "@defillama/adapters/modules/util";
 import entities from "../protocols/entities";
 
+/*   // no longer used
 function getUnique(arry: string[]) {
     return [...new Set(arry)]
 }
@@ -18,8 +20,10 @@ try {
 } catch (error) {
   console.log('Error writing adapters.ts:', error)
 }
+ */
 
 createImportAdaptersJSON()
+process.exit(0)
 
 // Add error handling for writing liquidation adapters
 try {
@@ -91,11 +95,11 @@ function mockTvlFunction() {
 }
 
 // code to replace function string with mock functions in an object all the way down
-function mockFunctions(obj: any) {
-    if (obj === "llamaMockedTVLFunction") {
+function unmockFunctions(obj: any) {
+    if (obj === 'lMTF') {
         return mockTvlFunction
     } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
+        Object.keys(obj).forEach((key) => obj[key] = unmockFunctions(obj[key]))
     }
     return obj
 }
@@ -111,7 +115,7 @@ function createDimensionAdaptersModule(path: string, folderPath: string) {
 
     // if (process.env.IS_API2_SERVER) {
         const module = mockFunctions(require(moduleFilePath))
-        moduleString = `mockFunctions(${JSON.stringify(module)})`
+        moduleString = `unMockFunctions(${JSON.stringify(module)})`
     // }
 
     return `"${removeDotTs(path)}": {
@@ -154,11 +158,3 @@ function createImportAdaptersJSON() {
 }
 
 //Replace all fuctions with mock functions in an object all the way down
-function mockFunctions(obj: any) {
-    if (typeof obj === "function") {
-        return 'llamaMockedTVLFunction'
-    } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-    }
-    return obj
-}

@@ -14478,13 +14478,14 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base"],
+    chains: ["Ethereum", "Base", "Unichain"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
         name: "Chronicle",
         type: "Primary",
-        proof: [""]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
+      
       },
     ],
     module: "steakhouse/index.js",

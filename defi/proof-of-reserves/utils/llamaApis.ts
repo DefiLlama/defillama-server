@@ -5,7 +5,11 @@ export async function getCoinPrices(tokens: Array<TokenConfig>): Promise<Record<
 
   let url = `https://coins.llama.fi/prices/current/`;
   for (const token of tokens) {
-    url += `${token.chain}:${token.address},`;
+    if (token.llamaCoinPriceId) {
+      url += `${token.llamaCoinPriceId},`;
+    } else {
+      url += `${token.chain}:${token.address},`;
+    }
   }
   const response = await fetch(url);
   const coins = (await response.json()).coins;

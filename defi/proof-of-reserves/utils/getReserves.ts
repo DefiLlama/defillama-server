@@ -4,7 +4,7 @@ import { TokenConfig } from '../types';
 import * as sdk from '@defillama/sdk';
 
 function getCoinPrice(coinPrices: Record<string, number>, token: TokenConfig): number {
-  const key = `${token.chain}:${token.address}`;
+  const key = token.llamaCoinPriceId ? token.llamaCoinPriceId : `${token.chain}:${token.address}`;
   if (!coinPrices[key]) {
     console.warn(`failed to get coin price ${key}`)
     process.exit(1);

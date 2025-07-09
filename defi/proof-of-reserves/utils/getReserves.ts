@@ -4,10 +4,9 @@ import { TokenConfig } from '../types';
 import * as sdk from '@defillama/sdk';
 
 function getCoinPrice(coinPrices: Record<string, number>, token: TokenConfig): number {
-  const key = `${token.chain}:${token.address}`;
+  const key = token.llamaCoinPriceId ? token.llamaCoinPriceId : `${token.chain}:${token.address}`;
   if (!coinPrices[key]) {
-    console.warn(`failed to get coin price ${key}`)
-    process.exit(1);
+    console.warn(`WARN - failed to get coin price ${token.chain}:${token.address}`)
   }
   return coinPrices[key] ? coinPrices[key] : 0;
 }
@@ -16,6 +15,15 @@ export async function getTotalMinted(tokens: Array<TokenConfig>, getUsdValue: bo
   const coinPrices = await getCoinPrices(tokens);
 
   let totalMinted = 0;
+
+  // group token by chain
+  const tokenByChains: {[key: string]: Array<TokenConfig>} = {};
+  for (const token of tokens) {
+    if (!tokenByChains[token.chain]) {
+      tokenByChains[token.chain] = [];
+    }
+    tokenByChains[token.chain].push(token);
+  }
 
   for (const token of tokens) {
     if (token.chain === 'solana') {

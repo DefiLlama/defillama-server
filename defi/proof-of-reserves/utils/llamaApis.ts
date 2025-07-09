@@ -3,17 +3,30 @@ import { TokenConfig } from '../types';
 export async function getCoinPrices(tokens: Array<TokenConfig>): Promise<Record<string, number>> {
   const coinPrices: Record<string, number> = {};
 
-  let url = `https://coins.llama.fi/prices/current/`;
-  for (const token of tokens) {
-    url += `${token.chain}:${token.address},`;
-  }
-  const response = await fetch(url);
-  const coins = (await response.json()).coins;
-  for (const [key, values] of Object.entries(coins)) {
-    if (values && (values as any).price) {
-      coinPrices[key] = Number((values as any).price);
+  const coinPerRequest = 20;
+  let index = 0;
+  let chunkTokens: Array<TokenConfig> = [];
+  do {
+    chunkTokens = tokens.slice(index * coinPerRequest, (index + 1) * coinPerRequest);
+
+    let url = `https://coins.llama.fi/prices/current/`;
+    for (const token of chunkTokens) {
+      if (token.llamaCoinPriceId) {
+        url += `${token.llamaCoinPriceId},`;
+      } else {
+        url += `${token.chain}:${token.address},`;
+      }
     }
-  }
+    const response = await fetch(url);
+    const coins = (await response.json()).coins;
+    for (const [key, values] of Object.entries(coins)) {
+      if (values && (values as any).price) {
+        coinPrices[key] = Number((values as any).price);
+      }
+    }
+
+    index++;
+  } while(chunkTokens.length > 0)
 
   return coinPrices;
 }

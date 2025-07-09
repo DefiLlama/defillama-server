@@ -2,6 +2,7 @@ export interface TokenConfig {
   chain: string;
   address: string;
   decimals?: number;
+  llamaCoinPriceId?: string;
 }
 
 export interface GetPoROptions {}

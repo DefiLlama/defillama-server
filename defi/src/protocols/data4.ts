@@ -1137,13 +1137,14 @@ const data4: Protocol[] = [
   {
     id: "5610",
     name: "Jetstream",
+    previousNames: ["Crypto Valley Exchange"],
     address: null,
     symbol: "-",
     url: "https://jetstream.trade/",
     description:
       "Decentralized derivatives clearing protocol. Enabling traders to reduce margin and unlock capital by providing exchanges with a robust clearing mechanism. First Exchange offers Crypto Derivatives with full portfolio risk. Ready to unleash and empower crypto derivatives by unlocking collateral.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/crypto-valley-exchange.png`,
+    logo: `${baseIconsUrl}/jetstream.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

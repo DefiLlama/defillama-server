@@ -4262,11 +4262,16 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: "-",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Elastic Network"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Avail',
+    },
     chainId: 232,
     github: ['lens-protocol'],
     twitter: "LC",
-    url: "https://www.skatechain.org/"
+    url: "https://lens.xyz/"
   },
   "Skate": {
     geckoId: null,
@@ -4275,7 +4280,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 5050,
     twitter: "skate_chain",
-    url: "https://lens.xyz/"
+    url: "https://www.skatechain.org/"
   },
   "Milkyway": {
     geckoId: "milkyway-2",

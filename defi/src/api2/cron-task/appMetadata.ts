@@ -754,6 +754,17 @@ async function _storeAppMetadata() {
       }
     }
 
+    const bridges = bridgesData.bridges.map((b: any) => b.slug)
+
+    for (const protocol of Object.entries(nameToId)) {
+      if (bridges.includes(slug(protocol[1] as string))) {
+        finalProtocols[protocol[0]] = {
+          ...finalProtocols[protocol[0]],
+          bridge: true
+        }
+      }
+    }
+
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
       .reduce((r: any, k) => {

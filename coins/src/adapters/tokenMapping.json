@@ -6595,6 +6595,11 @@
       "to": "coingecko#babylon",
       "decimals": 6,
       "symbol": "BABY"
+    },
+    "0xecf21b335b41f9d5a89f6186a99c19a3c467871f": {
+      "to": "coingecko#satoshi-stablecoin",
+      "decimals": 18,
+      "symbol": "satUSD"
     }
   },
   "xlayer": {

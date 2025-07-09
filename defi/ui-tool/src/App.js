@@ -148,10 +148,7 @@ const App = () => {
           setTvlDeleteWaitingRecords(data.data);
           break;
         case 'get-protocols-missing-tokens-response':
-          setMiscOutputTableData(data);
-          break;
         case 'get-protocols-token-dominance-response':
-          console.log(data)
           setMiscOutputTableData(data);
           break;
         default:
@@ -906,9 +903,73 @@ const App = () => {
       > Clear list </Button>)
 
     let data = ''
+    const cgCMCColumns = [
+      { title: 'Protocol/chain', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+      { title: 'Domain', dataIndex: 'domainK', key: 'domainK', sorter: (a, b) => a.domainK.localeCompare(b.domainK) },
+      { title: 'Twitter', dataIndex: 'twitterK', key: 'twitterK', sorter: (a, b) => a.twitterK.localeCompare(b.twitterK) },
+      { title: 'Symbols', dataIndex: 'symbols', key: 'symbols', sorter: (a, b) => a.symbols.localeCompare(b.symbols) },
+      { title: 'Coin IDs', dataIndex: 'coinIds', key: 'coinIds', sorter: (a, b) => a.coinIds.localeCompare(b.coinIds) },
+      { title: 'Coins', dataIndex: 'coins', key: 'coins', sorter: (a, b) => a.coins.localeCompare(b.coins) },
+      { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+    ]
     switch (miscOutputTableData.type) {
       case 'get-protocols-missing-tokens-response':
-        data = miscOutputTableData.data;
+        data = (
+          <div> 
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Missing CG Mappings
+            </div>
+            <Table
+              columns={cgCMCColumns}
+              dataSource={miscOutputTableData.data?.coingecko || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Missing CMC Mappings
+            </div>
+            <Table
+              columns={cgCMCColumns}
+              dataSource={miscOutputTableData.data?.coinmarketcap || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Protocols missing symbol info
+            </div>
+            <Table
+              columns={[
+                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                { title: 'Symbol', dataIndex: 'symbol', key: 'symbol', sorter: (a, b) => a.symbol.localeCompare(b.symbol) },
+                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+              ]}
+              dataSource={miscOutputTableData.data?.protocolsMissingSymbols || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Protocols missing Address info
+            </div>
+            <Table
+              columns={[
+                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                { title: 'Address', dataIndex: 'address', key: 'address', sorter: (a, b) => a.address.localeCompare(b.address) },
+                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+              ]}
+              dataSource={miscOutputTableData.data?.protocolsMissingAddresses || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+
+          </div>
+        )
         break;
       case 'get-protocols-token-dominance-response':
         data = (<Table
@@ -1112,7 +1173,7 @@ const App = () => {
         onFinish={handleSubmit}
         onValuesChange={handleFormChange}
         initialValues={{
-          action: 'Get protocols missing tokens'
+          action: 'Get protocols token dominance'
         }}
         style={{ 'max-width': '400px' }}
       >

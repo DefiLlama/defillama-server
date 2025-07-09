@@ -14486,8 +14486,16 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base"],
+    chains: ["Ethereum", "Base", "Unichain"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
+        chains: [{ chain: "Base" },{ chain: "Unichain"}],
+      },
+    ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
     listedAt: 1747736199

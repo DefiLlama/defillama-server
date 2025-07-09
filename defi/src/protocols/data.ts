@@ -4996,7 +4996,7 @@ const data: Protocol[] = [
   },
   {
     id: "337",
-    name: "GMX V1",
+    name: "GMX V1 Perps",
     address: "arbitrum:0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     symbol: "GMX",
     url: "https://gmx.io/",
@@ -5004,7 +5004,7 @@ const data: Protocol[] = [
     description:
       "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/gmx-v1.png`,
+    logo: `${baseIconsUrl}/gmx-v1-perps.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

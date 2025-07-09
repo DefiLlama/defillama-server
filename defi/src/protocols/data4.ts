@@ -14242,6 +14242,13 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "euler-dao/index.js",
     twitter: "eulerfinance",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349"]
+      },
+    ],
     listedAt: 1747734034
   },
    {

@@ -18631,7 +18631,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Sei"],
-    module: "yei-swap/index.js",
+    module: "dummy.js",
     twitter: "YeiFinance",
     forkedFromIds: [], 
     parentProtocol: "parent#yei-finance",

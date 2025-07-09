@@ -692,7 +692,7 @@
     "0x6e934283DaE5D5D1831cbE8d557c44c9B83F30Ee": {
       "decimals": "18",
       "symbol": "uATOM",
-      "to": "coingecko#cosmos-hub"
+      "to": "coingecko#cosmos"
     },
     "0xAcbF16f82753F3d52A2C87e4eEDA220c9A7A3762": {
       "decimals": "18",
@@ -717,7 +717,7 @@
     "0xc79e06860Aa9564f95E08fb7E5b61458d0C63898": {
       "decimals": "18",
       "symbol": "uHBAR",
-      "to": "coingecko#hedera"
+      "to": "coingecko#hedera-hashgraph"
     },
     "0x378c326A472915d38b2D8D41e1345987835FaB64": {
       "decimals": "18",
@@ -737,7 +737,7 @@
     "0xa260BA5fd9FF3FaE55Ac4930165A9C33519dE694": {
       "decimals": "18",
       "symbol": "uRNDR",
-      "to": "coingecko#render"
+      "to": "coingecko#render-token"
     },
     "0x30F16E3273AB6e4584B79B76fD944E577e49a5c8": {
       "decimals": "18",
@@ -2172,7 +2172,7 @@
     "0x6e934283DaE5D5D1831cbE8d557c44c9B83F30Ee": {
       "decimals": "18",
       "symbol": "uATOM",
-      "to": "coingecko#cosmos-hub"
+      "to": "coingecko#cosmos"
     },
     "0xAcbF16f82753F3d52A2C87e4eEDA220c9A7A3762": {
       "decimals": "18",
@@ -2197,7 +2197,7 @@
     "0xc79e06860Aa9564f95E08fb7E5b61458d0C63898": {
       "decimals": "18",
       "symbol": "uHBAR",
-      "to": "coingecko#hedera"
+      "to": "coingecko#hedera-hashgraph"
     },
     "0x378c326A472915d38b2D8D41e1345987835FaB64": {
       "decimals": "18",
@@ -2217,7 +2217,7 @@
     "0xa260BA5fd9FF3FaE55Ac4930165A9C33519dE694": {
       "decimals": "18",
       "symbol": "uRNDR",
-      "to": "coingecko#render"
+      "to": "coingecko#render-token"
     },
     "0x30F16E3273AB6e4584B79B76fD944E577e49a5c8": {
       "decimals": "18",
@@ -2778,7 +2778,7 @@
       "name": "HBAR",
       "decimals": "8",
       "symbol": "HBAR",
-      "to": "coingecko#hedera-hashgraph"
+      "to": "coingecko#hedera-hashgraph-hashgraph"
     },
     "0x769409037336430A1a5890065B7853f0D1D8b58f": {
       "name": "PENGU",
@@ -3029,7 +3029,7 @@
     "A4ia88XVtXHYT79z8i1qUQNu2o798Mb3R8u2kNQM5xfR": {
       "decimals": "9",
       "symbol": "uRNDR",
-      "to": "coingecko#render"
+      "to": "coingecko#render-token"
     },
     "FtXuu45uV4zLEQscW1ryZ7x9MjAQimMhs3fsVgdS2FFv": {
       "decimals": "9",
@@ -8140,7 +8140,7 @@
     "0x6e934283DaE5D5D1831cbE8d557c44c9B83F30Ee": {
       "decimals": "18",
       "symbol": "uATOM",
-      "to": "coingecko#cosmos-hub"
+      "to": "coingecko#cosmos"
     },
     "0xAcbF16f82753F3d52A2C87e4eEDA220c9A7A3762": {
       "decimals": "18",
@@ -8165,7 +8165,7 @@
     "0xc79e06860Aa9564f95E08fb7E5b61458d0C63898": {
       "decimals": "18",
       "symbol": "uHBAR",
-      "to": "coingecko#hedera"
+      "to": "coingecko#hedera-hashgraph"
     },
     "0x378c326A472915d38b2D8D41e1345987835FaB64": {
       "decimals": "18",
@@ -8185,7 +8185,7 @@
     "0xa260BA5fd9FF3FaE55Ac4930165A9C33519dE694": {
       "decimals": "18",
       "symbol": "uRNDR",
-      "to": "coingecko#render"
+      "to": "coingecko#render-token"
     },
     "0x30F16E3273AB6e4584B79B76fD944E577e49a5c8": {
       "decimals": "18",
@@ -8312,12 +8312,12 @@
       "symbol": "SAUCE"
     },
     "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#hedera-hashgraph",
+      "to": "coingecko#hedera-hashgraph-hashgraph",
       "decimals": 18,
       "symbol": "HBAR"
     },
     "0x0000000000000000000000000000000000163b5a": {
-      "to": "coingecko#hedera-hashgraph",
+      "to": "coingecko#hedera-hashgraph-hashgraph",
       "decimals": 8,
       "symbol": "WHBAR"
     },
@@ -8327,7 +8327,7 @@
       "symbol": "DOVU"
     },
     "0x00000000000000000000000000000000005c9f70": {
-      "to": "coingecko#hedera-liquity",
+      "to": "coingecko#hedera-hashgraph-liquity",
       "decimals": 8,
       "symbol": "HLQT"
     },
@@ -10650,7 +10650,7 @@
     "0x6e934283DaE5D5D1831cbE8d557c44c9B83F30Ee": {
       "decimals": "18",
       "symbol": "uATOM",
-      "to": "coingecko#cosmos-hub"
+      "to": "coingecko#cosmos"
     },
     "0xAcbF16f82753F3d52A2C87e4eEDA220c9A7A3762": {
       "decimals": "18",
@@ -10675,7 +10675,7 @@
     "0xc79e06860Aa9564f95E08fb7E5b61458d0C63898": {
       "decimals": "18",
       "symbol": "uHBAR",
-      "to": "coingecko#hedera"
+      "to": "coingecko#hedera-hashgraph"
     },
     "0x378c326A472915d38b2D8D41e1345987835FaB64": {
       "decimals": "18",
@@ -10695,7 +10695,7 @@
     "0xa260BA5fd9FF3FaE55Ac4930165A9C33519dE694": {
       "decimals": "18",
       "symbol": "uRNDR",
-      "to": "coingecko#render"
+      "to": "coingecko#render-token"
     },
     "0x30F16E3273AB6e4584B79B76fD944E577e49a5c8": {
       "decimals": "18",

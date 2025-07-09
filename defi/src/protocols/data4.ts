@@ -18744,6 +18744,13 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "intlmemefund",
     parentProtocol: "parent#international-meme-fund",
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://forum.diadata.org/t/cdr-094-international-meme-fund-token-price-feed/1028"]
+      }
+    ],
   },
   {
     id: "6406",

@@ -3794,5 +3794,8 @@ export default {
     },
     "kanalabs-perp": {
         id: "6175"
-    }
+    },
+    "hyperbloom": {
+        id: "6329"
+    },
 } as AdaptorsConfig

@@ -18877,5 +18877,25 @@ const data4: Protocol[] = [
     twitter: "DipCoinOfficial",
     listedAt: 1752078241
   },
+  {
+    id: "6412",
+    name: "Coinbase LTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinbase.com/en-sg/cbltc/proof-of-reserves",
+    description: "cbLTC is a wrapped token backed 1:1 by LTC held by Coinbase.",
+    chain: "Litecoin",
+    logo: `${baseIconsUrl}/coinbase-ltc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Litecoin"],
+    module: "coinbase-ltc/index.js",
+    forkedFrom: [],
+    twitter: "coinbase",
+    listedAt: 1752083601
+  },
 ];
 export default data4;

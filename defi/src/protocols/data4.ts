@@ -7056,14 +7056,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5876",
-    name: "Kittenswap",
+    name: "Kittenswap AMM",
     address: null,
     symbol: "-",
     url: "https://kittenswap.finance",
     description:
       "The community owned DEX for seamless trading on HyperEVM",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/kittenswap.jpg`,
+    logo: `${baseIconsUrl}/kittenswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

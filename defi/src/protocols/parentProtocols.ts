@@ -7422,7 +7422,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#yei-finance",
     name: "Yei Finance",
-    url: "https://www.more.markets",
+    url: "https://www.yei.finance/",
     description: "Lend, Trade, and Bridge across any chain.",
     logo: `${baseIconsUrl}/yei-finance.jpg`,
     gecko_id: null,

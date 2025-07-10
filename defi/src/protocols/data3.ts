@@ -30167,7 +30167,7 @@ const data3_1: Protocol[] = [
     description:
       "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/sudo-perps.png`,
+    logo: `${baseIconsUrl}/sudo-perps.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "slp",

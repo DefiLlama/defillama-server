@@ -3578,7 +3578,7 @@ const data3_1: Protocol[] = [
     chain: "Filecoin",
     logo: `${baseIconsUrl}/glif.png`,
     audits: "5",
-    audit_note: "GLIF has been audited by ConsenSys Diligence (two times), Hexens (two times), and Sherlock.",
+    audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",

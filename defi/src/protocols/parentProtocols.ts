@@ -6906,7 +6906,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "ZO",
     url: "https://zofai.io",
     description: "ZO is the first intelligent perpetual protocol built on Sui that offers you agent enhanced and automated perpetual trading experience",
-    logo: `${baseIconsUrl}/zofai.jpg`,
+    logo: `${baseIconsUrl}/zo.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

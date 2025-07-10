@@ -30167,7 +30167,7 @@ const data3_1: Protocol[] = [
     description:
       "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/sudo-perps.png`,
+    logo: `${baseIconsUrl}/sudo-perps.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "slp",
@@ -30181,7 +30181,7 @@ const data3_1: Protocol[] = [
     audit_links: [
       "https://336728225-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FY9xZ4YEB8Gkv1YMYZ49T%2Fuploads%2FucoGPFTlQmzDYT2Ff0tQ%2FSudo%20Finance%20Audit%20Report%20(1).pdf?alt=media&token=2133b2a8-7188-47fd-9c09-7fb7ec0296f7"
     ],
-    parentProtocol: "parent#sudo-finance",
+    parentProtocol: "parent#zofai",
     listedAt: 1705662884,
   },
   {

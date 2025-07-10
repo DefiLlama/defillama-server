@@ -6901,15 +6901,16 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["stable-jack-ausd"],
   },
   {
-    id: "parent#sudo-finance",
-    name: "Sudo Finance",
-    url: "https://sudo.finance",
-    description: "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain",
-    logo: `${baseIconsUrl}/sudo-finance.jpg`,
+    id: "parent#zofai",
+    // previously sudo-finance
+    name: "ZO",
+    url: "https://zofai.io",
+    description: "ZO is the first intelligent perpetual protocol built on Sui that offers you agent enhanced and automated perpetual trading experience",
+    logo: `${baseIconsUrl}/zofai.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "sudofinance",
+    twitter: "zofaiperps",
     github: ["sudofina","zofinance"],
   },
   {

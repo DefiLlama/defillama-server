@@ -18904,5 +18904,26 @@ const data4: Protocol[] = [
     twitter: "coinbase",
     listedAt: 1752083601
   },
+  {
+    id: "6413",
+    name: "FullSail Finance",
+    address: null,
+    symbol: "-",
+    url: "https://fullsail.finance",
+    description: "Full Sail is the most capital-efficient DEX ever by turning liquidity pools into prediction markets.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/fullsail-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sui"],
+    module: "FullSailFinance/index.js",
+    forkedFrom: [],
+    twitter: "fullsailfi",
+    audit_links: ["https://info.asymptotic.tech/full-sail-clmm-audit"],
+    listedAt: 1752158182
+  },
 ];
 export default data4;

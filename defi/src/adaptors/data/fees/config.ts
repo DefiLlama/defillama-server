@@ -3798,4 +3798,7 @@ export default {
     "hyperbloom": {
         id: "6329"
     },
+    "fullsail-finance": {
+        id: "6413"
+    }
 } as AdaptorsConfig

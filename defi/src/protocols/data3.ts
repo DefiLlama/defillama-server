@@ -3577,7 +3577,7 @@ const data3_1: Protocol[] = [
     description: "GLIF is DePIN’s on-chain credit layer - liquidity providers earn rewards and hardware providers scale operations.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/glif.png`,
-    audits: "5",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

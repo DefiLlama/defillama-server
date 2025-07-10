@@ -6901,8 +6901,8 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["stable-jack-ausd"],
   },
   {
-    id: "parent#zofai",
-    // previously sudo-finance
+    id: "parent#sudo-finance",
+    // previously Sudo Finance
     name: "ZO",
     url: "https://zofai.io",
     description: "ZO is the first intelligent perpetual protocol built on Sui that offers you agent enhanced and automated perpetual trading experience",

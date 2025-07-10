@@ -4,6 +4,9 @@ import { protocolsById } from "../../protocols/data";
 import * as sdk from "@defillama/sdk";
 import { importAdapter } from "../../utils/imports/importAdapter";
 
+import symbolsJson from "../../utils/symbols/symbols.json";
+const symbols: { [id: string]: string } = symbolsJson as any
+
 const whitelistedTokens = new Set(['WETH', 'USDC', 'USDT', 'SOL', 'ETH',
   // 'coingecko:tether', 'tether', 'bitcoin', 'ethereum',
   'WSTETH', 'WBNB', 'WHYPE', 'BTCB', 'STETH', 'USDC.E', 'SUI', 'WEETH'])
@@ -28,6 +31,7 @@ async function _getProtocolTokenDominanceTable() {
     const totalTvl: any = Object.values(tvl).reduce((sum: any, value: any) => sum + value, 0)
     if (totalTvl < 1e6) return; // Skip protocols with low TVL
     const highestToken = Object.entries(tvl).reduce((highest: any, [token, value]: any) => {
+      token = symbols[token] ?? token
       if (value > highest.value)
         return { token, value }
 

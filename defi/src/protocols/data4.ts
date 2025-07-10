@@ -18856,7 +18856,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Telegram Bot",
+    category: "DAO Service Provider",
     chains: ["Ethereum", "Arbitrum", "Base", "xDai", "Polygon", "Unichain", "World Chain"],
     module: "createDAO/index.js",
     forkedFrom: [],

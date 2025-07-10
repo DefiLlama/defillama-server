@@ -10361,7 +10361,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Sui"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: ["https://docs.zofinance.io/sudo-sdk/core-concepts#price-oracles"] } ],
     forkedFromIds: ["4045"],
     module: "zo/index.js",
     twitter: "zofaiperps",

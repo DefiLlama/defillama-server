@@ -10366,7 +10366,7 @@ const data4: Protocol[] = [
     module: "zo/index.js",
     twitter: "zofaiperps",
     audit_links: ["https://info.asymptotic.tech/sudo-audit-report"],
-    parentProtocol: "parent#zofai",
+    parentProtocol: "parent#sudo-finance",
     listedAt: 1744213568
   },
   {

@@ -8469,14 +8469,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       {
         name: 'WINkLink',
         type: 'Primary',
-        proof: [''],
+        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle'],
         startDate: '2021-11-04',
         endDate: '2025-05-15',
       },
       {
-        name: 'Chainlink',
+        name: 'Internal',
         type: 'Primary',
-        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle'],
+        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle', 'https://tronscan.org/#/address/TBPtNVdgkB8QPRHAJeZok6D9pqsFdALv9w'],
         startDate: '2025-05-15',
       },
     ],

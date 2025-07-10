@@ -181,11 +181,6 @@
       "symbol": "sUSDa",
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
-    "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E": {
-      "decimals": "8",
-      "symbol": "pumpBTC.bera",
-      "to": "coingecko#pumpbtc"
-    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#wrapped-bera",
       "decimals": 18,
@@ -968,11 +963,6 @@
       "decimals": "18",
       "symbol": "stBTC",
       "to": "coingecko#lorenzo-stbtc"
-    },
-    "0xadc9c900b05f39f48bb6f402a1bae60929f4f9a8": {
-      "decimals": "8",
-      "symbol": "pumpBTC.bera",
-      "to": "coingecko#pumpbtc"
     },
     "0x2eC37d45FCAE65D9787ECf71dc85a444968f6646": {
       "decimals": "8",

@@ -18904,5 +18904,24 @@ const data4: Protocol[] = [
     twitter: "coinbase",
     listedAt: 1752083601
   },
+  {
+    id: "6413",
+    name: "Pumper",
+    address: null,
+    symbol: "-",
+    url: "https://pumper.money/",
+    description: "Swipe right to buy the hottest memecoins. Live on App Store and Google Play.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pumper.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "usepumper",
+    forkedFrom: [],
+  }
 ];
 export default data4;

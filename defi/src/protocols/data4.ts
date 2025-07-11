@@ -15793,7 +15793,7 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: ["https://hydration.subsquare.io/treasury/proposals/23"]
+        proof: ["https://hydration.subsquare.io/treasury/proposals/23","https://github.com/DefiLlama/defillama-server/pull/10142"]
       }
     ],
   },

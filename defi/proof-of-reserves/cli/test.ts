@@ -1,5 +1,6 @@
 import { IPoRAdapter } from '../types';
 import fs from 'fs';
+import path from 'path';
 
 // usage
 // ts-node cli/test.ts project-slug
@@ -9,7 +10,7 @@ const projectArgv = process.argv[2];
 
 const projects: Array<string> = [];
 if (projectArgv === 'allProtocols') {
-  const items = fs.readdirSync(`${__dirname}/../adapters`);
+  const items = fs.readdirSync(path.join(__dirname, '..', 'adapters'));
   for (const item of items) {
     let adapterName = item;
     if (item.includes('.ts')) {
@@ -27,7 +28,7 @@ if (projectArgv === 'allProtocols') {
     let adapter: IPoRAdapter | null = null;
   
     try {
-      const adapterFile = `../adapters/${project}`;
+      const adapterFile = path.join('..', 'adapters', project);
       adapter = (await import(adapterFile)).default;
     } catch(e: any) {
       console.log(`adapter ${project} not found`);

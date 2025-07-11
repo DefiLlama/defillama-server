@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { IPoRAdapter } from '../types';
 import { sendMessage } from "../../src/utils/discord";
 import * as sdk from '@defillama/sdk';
@@ -16,7 +17,7 @@ interface Protocoldata {
 }
 
 let projects: Array<Protocoldata> = [];
-const items = fs.readdirSync(`${__dirname}/../adapters`);
+const items = fs.readdirSync(path.join(__dirname, '..', 'adapters'));
 for (const item of items) {
   let adapterName = item;
   if (item.includes('.ts')) {
@@ -34,8 +35,7 @@ for (const item of items) {
     .for(projects)
     .process(async (project) => {
       try {
-
-        const adapterFile = `../adapters/${project.protocolId}`;
+        const adapterFile = path.join('..', 'adapters', project.protocolId);
         const adapter: IPoRAdapter = (await import(adapterFile)).default;
 
         project.mintedUSD = await adapter.minted({});

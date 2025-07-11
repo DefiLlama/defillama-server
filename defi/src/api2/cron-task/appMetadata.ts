@@ -8,7 +8,7 @@ import { getMetadataAll, readRouteData, storeRouteData } from "../cache/file-cac
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from "./githubMetrics";
-import { chainCoingeckoIds, chainNameToIdMap } from "../../utils/normalizeChain";
+import { chainCoingeckoIds, chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 const { exec } = require("child_process");
@@ -307,11 +307,12 @@ async function _storeAppMetadata() {
 
     for (const protocol of tvlData.protocols) {
       let id = protocol.id ?? protocol.defillamaId;
-      if (id && protocol.chains?.length) {
+      if (id) {
         if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([]);
-        protocol.chains.forEach((chain: any) => {
+        for (const chain in (protocol.chainTvls ?? {})) {
+          if (chain.includes("-") || extraSections.includes(chain)) continue;
           protocolChainSetMap[id].add(chain);
-        });
+        }
       }
 
       if (protocol.category) {
@@ -345,9 +346,9 @@ async function _storeAppMetadata() {
         let id = pData.id ?? pData.defillamaId ?? pData.name;
         if (pData.chains?.length) {
           if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([]);
-          pData.chains.forEach((chain: any) => {
+          for (const chain of pData.chains) {
             protocolChainSetMap[id].add(chain);
-          });
+          }
         }
 
         if (!pData.hasOwnProperty("total24h")) return; // skip if this total24h field is missing
@@ -771,14 +772,14 @@ async function _storeAppMetadata() {
       }
     }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.slug)
+    const bridges = bridgesData.bridges.map((b: any) => b.slug);
 
     for (const protocol of Object.entries(nameToId)) {
       if (bridges.includes(slug(protocol[1] as string))) {
         finalProtocols[protocol[0]] = {
           ...finalProtocols[protocol[0]],
-          bridge: true
-        }
+          bridge: true,
+        };
       }
     }
 

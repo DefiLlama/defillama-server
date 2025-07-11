@@ -15,9 +15,13 @@ type Token = {
   symbol: string;
 };
 
-const chains: string[] = ["initia", "echelon_initia", "embr"];
 const chainIdMap: { [key: string]: string } = {
   echelon_initia: "echelon",
+  yomi: "yominet",
+  initia: "initia",
+  embr: "embr",
+  civitia: 'civitia', 
+  inertia: 'inertia'
 };
 
 const url = (chain: string, rpc: boolean) =>
@@ -65,7 +69,7 @@ async function bridge(chain: string): Promise<Token[]> {
 }
 
 async function getLocalAddress(chain: string, rpc: string, address: string) {
-  if (address.startsWith("evm/")) return `${chain}:0x${address.substring(0)}`;
+  if (address.startsWith("evm/")) return `${chain}:0x${address.substring(4)}`;
   const query = `${rpc}/initia/move/v1/metadata?denom=${address.replace(
     "/",
     "%2F",
@@ -78,7 +82,9 @@ export default async function bridges() {
   const tokens: Token[] = [];
 
   await Promise.all(
-    chains.map((chain) => bridge(chain).then((t) => tokens.push(...t))),
+    Object.keys(chainIdMap).map((chain) =>
+      bridge(chain).then((t) => tokens.push(...t)),
+    ),
   );
 
   return tokens;

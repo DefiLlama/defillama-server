@@ -8,6 +8,12 @@ import path from 'path';
 
 const projectArgv = process.argv[2];
 
+// Handle input
+if (!projectArgv) {
+  console.error('❌ Missing project name (e.g., "wbtc" or "allProtocols")');
+  process.exit(1);
+}
+
 const projects: Array<string> = [];
 if (projectArgv === 'allProtocols') {
   const items = fs.readdirSync(path.join(__dirname, '..', 'adapters'));
@@ -29,9 +35,10 @@ if (projectArgv === 'allProtocols') {
   
     try {
       const adapterFile = path.join('..', 'adapters', project);
-      adapter = (await import(adapterFile)).default;
+      adapter = require(adapterFile).default;
     } catch(e: any) {
-      console.log(`adapter ${project} not found`);
+      console.error(`❌ Failed to load adapter "${project}":`);
+      console.error(e.message || e);
       process.exit(0);
     }
   

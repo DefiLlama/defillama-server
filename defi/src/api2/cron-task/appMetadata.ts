@@ -456,7 +456,6 @@ async function _storeAppMetadata() {
     for (const chain of perpsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        derivatives: true,
         perps: true,
       };
     }
@@ -464,14 +463,12 @@ async function _storeAppMetadata() {
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
-        aggregator: true,
         dexAggregators: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          aggregator: true,
           dexAggregators: true,
         };
       }
@@ -485,7 +482,6 @@ async function _storeAppMetadata() {
     for (const chain of aggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        aggregators: true,
         dexAggregators: true,
       };
     }
@@ -564,7 +560,6 @@ async function _storeAppMetadata() {
     for (const chain of perpsAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        "aggregator-derivatives": true,
         "perpsAggregators": true,
       };
     }
@@ -591,7 +586,6 @@ async function _storeAppMetadata() {
     for (const chain of bridgeAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        "bridge-aggregators": true,
         "bridgeAggregators": true,
       };
     }

@@ -422,7 +422,8 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.stablecoins?.length ? { stablecoins: true } : {})
+        ...(protocol.stablecoins?.length ? { stablecoins: true } : {}),
+        ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -453,7 +454,7 @@ async function _storeAppMetadata() {
           : false,
         ...finalProtocols[protocol.id],
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
     }
 
@@ -661,6 +662,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         derivatives: true,
+        perps: true
       };
     }
 
@@ -668,12 +670,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         aggregator: true,
+        dexAggregators: true
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           aggregator: true,
+          dexAggregators: true
         };
       }
     }
@@ -681,6 +685,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         aggregators: true,
+        dexAggregators: true
       };
     }
 
@@ -761,6 +766,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "bridge-aggregators": true,
+        bridgeAggregators: true,
       };
     }
 
@@ -773,16 +779,16 @@ async function _storeAppMetadata() {
       }
     }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
+    // const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    for (const protocol of Object.entries(nameToId)) {
-      if (bridges.includes(slug(protocol[1] as string))) {
-        finalProtocols[protocol[0]] = {
-          ...finalProtocols[protocol[0]],
-          bridge: true,
-        };
-      }
-    }
+    // for (const protocol of Object.entries(nameToId)) {
+    //   if (bridges.includes(slug(protocol[1] as string))) {
+    //     finalProtocols[protocol[0]] = {
+    //       ...finalProtocols[protocol[0]],
+    //       bridge: true,
+    //     };
+    //   }
+    // }
 
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()

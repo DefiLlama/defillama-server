@@ -18964,5 +18964,24 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071
   },
+  {
+    id: "6416",
+    name: "ApStation",
+    address: null,
+    symbol: "-",
+    url: "https://apstation.io/",
+    description: "Zero fee modular DEX & Liquidity router on HyperEVM.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/apstation.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    forkedFrom: [],
+    twitter: "apstation_io",
+  },
 ];
 export default data4;

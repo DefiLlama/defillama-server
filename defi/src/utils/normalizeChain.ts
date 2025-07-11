@@ -4415,6 +4415,14 @@ export const chainCoingeckoIds = {
     url: "https://www.dchain.foundation/",
     chainId: 2716446429837000,
   },
+  "XION": {
+    geckoId: "xion-2",
+    symbol: "XION",
+    cmcId: null,
+    categories: ["Cosmos"],
+    url: "https://xion.burnt.com",
+    twitter: "burnt_xion",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

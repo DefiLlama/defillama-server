@@ -18983,5 +18983,25 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "apstation_io",
   },
+  {
+    id: "6417",
+    name: "Blaze Swap",
+    address: null,
+    symbol: "-",
+    url: "https://app.blazeswap.io/",
+    description: "Native Dex on XION.",
+    chain: "XION",
+    logo: `${baseIconsUrl}/blaze-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["XION"],
+    module: "blazeswap-io/index.js",
+    forkedFrom: [],
+    twitter: "Blaze_Swap",
+    listedAt: 1752240991
+  },
 ];
 export default data4;

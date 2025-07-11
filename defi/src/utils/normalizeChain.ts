@@ -4621,6 +4621,7 @@ const chainLabelMap = {
   "xrplevm": "XRPL EVM",
   "btnx": "Botanix",
   "dchainmainnet": "DChain",
+  "xion": "XION",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

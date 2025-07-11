@@ -15789,6 +15789,13 @@ const data4: Protocol[] = [
     module: "hydration-lending/index.js",
     twitter: "hydration_net",
     listedAt: 1749084847,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://hydration.subsquare.io/treasury/proposals/23"]
+      }
+    ],
   },
   {
     id: "6272",

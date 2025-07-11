@@ -51,14 +51,10 @@ export default async function (balances: { [address: string]: string }, timestam
         const balance = balances[address];
         const { price, decimals } = response;
         if (!price) return;
-        let symbol: string, amount: number;
-        if (response.PK.startsWith('coingecko:')) {
-          symbol = address;
-          amount = Number(balance);
-        } else {
-          symbol = (response.symbol as string).toUpperCase();
-          amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-        }
+        
+        const symbol = (response.symbol as string).toUpperCase();
+        const amount = response.PK.startsWith('coingecko:') ? Number(balance) : new BigNumber(balance).div(10 ** decimals).toNumber();
+        
         const usdAmount = amount * price;
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;

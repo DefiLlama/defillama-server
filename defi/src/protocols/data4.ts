@@ -15127,9 +15127,16 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
-      name: "Stork",
-      type: "Primary",
-      proof: ["https://docs.bima.money/security/mainnet-addresses"],
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Hemi"}, { chain: "CORE"}, { chain: "Goat"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Ethereum"}, { chain: "Binance"}, { chain: "Sonic"},]
       }
     ],
     module: "bima-labs-cdp/index.js",

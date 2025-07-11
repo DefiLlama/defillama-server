@@ -422,7 +422,6 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.stablecoins?.length ? { stablecoins: true } : {}),
         ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
       };
 
@@ -434,7 +433,6 @@ async function _storeAppMetadata() {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           ...(protocol.tvl ? { tvl: true } : {}),
-          ...(protocol.stablecoins?.length ? { stablecoins: true } : {})
         };
       }
       if (protocol.category === "Lending") {
@@ -454,8 +452,26 @@ async function _storeAppMetadata() {
           : false,
         ...finalProtocols[protocol.id],
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {})
+        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
+    }
+
+    for (const protocol in protocolInfoMap) {
+      if (protocolInfoMap[protocol].stablecoins?.length) {
+        finalProtocols[protocol] = {
+          ...finalProtocols[protocol],
+          stablecoins: true,
+        };
+      }
+    }
+
+    for (const protocol in parentProtocolsInfoMap) {
+      if (protocolInfoMap[protocol].stablecoins?.length) {
+        finalProtocols[protocol] = {
+          ...finalProtocols[protocol],
+          stablecoins: true,
+        };
+      }
     }
 
     for (const protocol of expensesData) {
@@ -662,7 +678,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         derivatives: true,
-        perps: true
+        perps: true,
       };
     }
 
@@ -670,14 +686,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         aggregator: true,
-        dexAggregators: true
+        dexAggregators: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           aggregator: true,
-          dexAggregators: true
+          dexAggregators: true,
         };
       }
     }
@@ -685,7 +701,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         aggregators: true,
-        dexAggregators: true
+        dexAggregators: true,
       };
     }
 
@@ -746,6 +762,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "aggregator-derivatives": true,
+        "perpsAggregators": true,
       };
     }
 
@@ -766,7 +783,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "bridge-aggregators": true,
-        bridgeAggregators: true,
+        "bridgeAggregators": true,
       };
     }
 

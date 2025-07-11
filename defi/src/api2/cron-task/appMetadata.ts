@@ -452,7 +452,7 @@ async function _storeAppMetadata() {
           : false,
         ...finalProtocols[protocol.id],
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
     }
 
@@ -762,7 +762,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "aggregator-derivatives": true,
-        "perpsAggregators": true,
+        perpsAggregators: true,
       };
     }
 
@@ -783,7 +783,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "bridge-aggregators": true,
-        "bridgeAggregators": true,
+        bridgeAggregators: true,
       };
     }
 

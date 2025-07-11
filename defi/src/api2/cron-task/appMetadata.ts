@@ -206,7 +206,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol in parentProtocolsInfoMap) {
-      if (protocolInfoMap[protocol].stablecoins?.length) {
+      if (parentProtocolsInfoMap[protocol].stablecoins?.length) {
         finalProtocols[protocol] = {
           ...finalProtocols[protocol],
           stablecoins: true,

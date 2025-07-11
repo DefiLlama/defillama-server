@@ -18729,9 +18729,6 @@ const data4: Protocol[] = [
     twitter: "usd_hl",
     forkedFromIds: [],
     parentProtocol: "parent#felix",
-    tokensExcludedFromParent: {
-      "Hyperliquid L1": ["USDHL"]  
-    },
     listedAt: 1751964664
   },
   {

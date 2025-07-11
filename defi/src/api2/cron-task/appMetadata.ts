@@ -169,7 +169,6 @@ async function _storeAppMetadata() {
         };
       }
 
-
       if (protocol.category === "Lending") {
         lendingProtocols += 1;
       }
@@ -192,7 +191,7 @@ async function _storeAppMetadata() {
           : false,
         ...finalProtocols[protocol.id],
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {})
+        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
     }
 
@@ -235,8 +234,6 @@ async function _storeAppMetadata() {
         liquidity: true,
       };
     }
-
-    // todo forks api
 
     for (const protocol of hacksData) {
       if (protocol.defillamaId) {
@@ -298,8 +295,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -318,8 +317,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -338,8 +339,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -376,8 +379,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -396,8 +401,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -414,8 +421,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of volumeData.allChains ?? []) {
@@ -438,8 +447,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of perpsData.allChains ?? []) {
@@ -465,8 +476,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of aggregatorsData.allChains ?? []) {
@@ -490,8 +503,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of optionsPremiumData.allChains ?? []) {
@@ -514,8 +529,10 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of optionsNotionalData.allChains ?? []) {
@@ -538,15 +555,17 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of perpsAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "aggregator-derivatives": true,
-        perpsAggregators: true,
+        "perpsAggregators": true,
       };
     }
 
@@ -563,15 +582,17 @@ async function _storeAppMetadata() {
         };
       }
 
-      for (const chain of protocol.chains ?? []) {
-        protocolChainSetMap[protocol.defillamaId].add(chain);
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of bridgeAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         "bridge-aggregators": true,
-        bridgeAggregators: true,
+        "bridgeAggregators": true,
       };
     }
 

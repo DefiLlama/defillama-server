@@ -10,7 +10,8 @@ import { addToDBWritesList } from '../utils/database';
 
 const additionalTokens = [
   'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx', 
-  'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu'
+  'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu', 
+  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj'
 ]
 
 async function getTokensWithCGMapping() {
@@ -31,7 +32,7 @@ export async function jupAg(timestamp: number) {
   for (const chunk of chunks) {
     const { value } = await connection.getMultipleParsedAccounts(chunk)
     const keyStr = chunk.join(',')
-    const jupCall = `https://api.jup.ag/price/v2?ids=${keyStr}&showExtraInfo=true`
+    const jupCall = `https://lite-api.jup.ag/price/v2?ids=${keyStr}&showExtraInfo=true`
     const { data: { data } } = await axios.get(jupCall)
     const tokenData = [] as any
     chunk.forEach((pk, i) => {

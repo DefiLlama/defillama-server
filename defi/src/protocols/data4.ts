@@ -15173,6 +15173,20 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum", "Goat", "Hemi"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Hemi"}, { chain: "CORE"}, { chain: "Goat"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Ethereum"}, { chain: "Binance"}, { chain: "Sonic"},]
+      }
+    ],
     module: "bima-labs-cdp/index.js",
     twitter: "BimaBTC",
     listedAt: 1748465209

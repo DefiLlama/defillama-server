@@ -309,7 +309,7 @@ async function _storeAppMetadata() {
       let id = protocol.id ?? protocol.defillamaId;
       if (id) {
         if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([]);
-        for (const chain in (protocol.chainTvls ?? {})) {
+        for (const chain in protocol.chainTvls ?? {}) {
           if (chain.includes("-") || extraSections.includes(chain)) continue;
           protocolChainSetMap[id].add(chain);
         }
@@ -422,6 +422,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.stablecoins?.length ? { stablecoins: true } : {})
       };
 
       if (protocol.parentProtocol) {
@@ -429,12 +430,11 @@ async function _storeAppMetadata() {
           ...(parentToChildProtocols[protocol.parentProtocol] ?? []),
           name,
         ];
-        if (protocol.tvl) {
-          finalProtocols[protocol.parentProtocol] = {
-            ...finalProtocols[protocol.parentProtocol],
-            tvl: true,
-          };
-        }
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          ...(protocol.tvl ? { tvl: true } : {}),
+          ...(protocol.stablecoins?.length ? { stablecoins: true } : {})
+        };
       }
       if (protocol.category === "Lending") {
         lendingProtocols += 1;
@@ -465,6 +465,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of treasuryData) {
+      if (protocol.misrepresentedTokens) continue;
       finalProtocols[protocol.id.split("-treasury")[0]] = {
         ...finalProtocols[protocol.id.split("-treasury")[0]],
         treasury: true,
@@ -772,7 +773,7 @@ async function _storeAppMetadata() {
       }
     }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.slug);
+    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
     for (const protocol of Object.entries(nameToId)) {
       if (bridges.includes(slug(protocol[1] as string))) {

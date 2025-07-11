@@ -123,6 +123,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6150": "treasure",
   "6151": "zkcandy",
   "6284": "ao",
+  "6414": "xion"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -241,4 +242,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // "zkcandy": {}
   "ao": { ticker: "AO", address: "coingecko:ao-computers" },
   // embr: {}
+  "xion": { ticker: "XION", address: "coingecko:xion-2" },
 };

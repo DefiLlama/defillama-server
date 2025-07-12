@@ -13,6 +13,8 @@ import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 const { exec } = require("child_process");
 
+const allExtraSections = [...extraSections, 'doublecounted', 'liquidstaking', 'dcAndLsOverlap']
+
 const protocolInfoMap: any = {};
 const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
@@ -174,7 +176,7 @@ async function _storeAppMetadata() {
       }
 
       for (const chain in protocol.chainTvls ?? {}) {
-        if (chain.includes("-") || extraSections.includes(chain)) continue;
+        if (chain.includes("-") || allExtraSections.includes(chain)) continue;
         protocolChainSetMap[protocol.defillamaId].add(chain);
       }
     }
@@ -682,6 +684,7 @@ async function _storeAppMetadata() {
       lending: { protocols: lendingProtocols, chains: 0 },
       treasury: { protocols: 0, chains: 0 },
       emissions: { protocols: 0, chains: 0 },
+      forks: { protocols: 0, chains: 0 },
     };
 
     for (const p in sortedProtocolData) {
@@ -701,7 +704,7 @@ async function _storeAppMetadata() {
       if (protocol.dexs) {
         totalTrackedByMetric.dexs.protocols += 1;
       }
-      if (protocol.aggregator) {
+      if (protocol.dexAggregators) {
         totalTrackedByMetric.dexAggregators.protocols += 1;
       }
       if (protocol.perps) {
@@ -722,6 +725,9 @@ async function _storeAppMetadata() {
       if (protocol.treasury) {
         totalTrackedByMetric.treasury.protocols += 1;
       }
+      if (protocol.forks) {
+        totalTrackedByMetric.forks.protocols += 1;
+      }
     }
 
     for (const pc in sortedChainData) {
@@ -740,19 +746,19 @@ async function _storeAppMetadata() {
       if (chain.dexs) {
         totalTrackedByMetric.dexs.chains += 1;
       }
-      if (chain.aggregators) {
+      if (chain.dexAggregators) {
         totalTrackedByMetric.dexAggregators.chains += 1;
       }
-      if (chain.derivatives) {
+      if (chain.perps) {
         totalTrackedByMetric.perps.chains += 1;
       }
-      if (chain["aggregator-derivatives"]) {
+      if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;
       }
       if (chain.options) {
         totalTrackedByMetric.options.chains += 1;
       }
-      if (chain["bridge-aggregators"]) {
+      if (chain.bridgeAggregators) {
         totalTrackedByMetric.bridgeAggregators.chains += 1;
       }
     }

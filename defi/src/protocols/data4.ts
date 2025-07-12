@@ -19045,5 +19045,24 @@ const data4: Protocol[] = [
     parentProtocol: "parent#carrot",
     listedAt: 1752343187
   },
+  {
+    id: "6419",
+    name: "PriveX",
+    address: null,
+    symbol: "-",
+    url: "https://prvx.io",
+    description: "A derivatives Privacy-enabled trading platform offering leveraged trading and Trading AI Agents on Base and Coti networks.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/privex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base", "Coti"],
+    module: "dummy.js",
+    forkedFrom: [],
+    twitter: "PriveX_Official",
+  },
 ];
 export default data4;

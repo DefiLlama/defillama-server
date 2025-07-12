@@ -3800,5 +3800,11 @@ export default {
     },
     "fullsail-finance": {
         id: "6413"
-    }
+    },
+    "hyperwave": {
+        id: "6407"
+    },
+    "meso-finance": {
+        id: "4938"
+    },
 } as AdaptorsConfig

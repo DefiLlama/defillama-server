@@ -10330,6 +10330,16 @@
       "to": "coingecko#gigadot",
       "decimals": 18,
       "symbol": "2-Pool-GDOT"
+    },
+    "0x0000000000000000000000000000000100001068": {
+      "to": "coingecko#gigaeth",
+      "decimals": 18,
+      "symbol": "2-Pool-GETH"
+    },
+    "0x0000000000000000000000000000000100000022": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
     }
   },
   "coti": {

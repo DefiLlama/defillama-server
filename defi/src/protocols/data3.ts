@@ -194,14 +194,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "2707",
-    name: "SPL Governance",
+    name: "Realms",
+    previousNames: ["SPL Governance"],
     address: null,
     symbol: "-",
-    url: "https://app.realms.today",
+    url: "https://app.realms.today/realms",
     description:
       "SPL Governance is a program which provides core building blocks and primitives to create Decentralized Autonomous Organizations (DAOs) on the Solana blockchain. The program is DAO type and asset type agnostic and can be used to build any type of DAOs which can own and manage any type of assets",
     chain: "Solana",
-    logo: `${baseIconsUrl}/spl-governance.png`,
+    logo: `${baseIconsUrl}/realms.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -210,7 +211,7 @@ const data3_1: Protocol[] = [
     chains: ["Solana"],
     forkedFrom: [],
     module: "spl-governance/index.js",
-    twitter: "realms_daos",
+    twitter: "realmsdaos",
     listedAt: 1679437797,
   },
   {

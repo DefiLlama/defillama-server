@@ -15173,6 +15173,20 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum", "Goat", "Hemi"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Hemi"}, { chain: "CORE"}, { chain: "Goat"}]
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Ethereum"}, { chain: "Binance"}, { chain: "Sonic"},]
+      }
+    ],
     module: "bima-labs-cdp/index.js",
     twitter: "BimaBTC",
     listedAt: 1748465209
@@ -15789,6 +15803,13 @@ const data4: Protocol[] = [
     module: "hydration-lending/index.js",
     twitter: "hydration_net",
     listedAt: 1749084847,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://hydration.subsquare.io/treasury/proposals/23","https://github.com/DefiLlama/defillama-server/pull/10142"]
+      }
+    ],
   },
   {
     id: "6272",
@@ -16438,13 +16459,13 @@ const data4: Protocol[] = [
     symbol: "RZR",
     url: "https://rezerve.money/",
     description:
-      "RZR is a decentralized reserve currency backed by a diversified basket of assets. RZR is unique, community-driven and transparent",
+      "RZR is a Reserve currency focused on accumulating 5,000 $BTC with the power of Community & DeFi. RZR uses bond sales and rebasing mechanics to achieve this goal. RZR was fair launched and has no VCs/team allocation.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/rezerve-money.jpg`,
     audits: "1",
     audit_note: null,
     gecko_id: null,
-    cmcId: null,
+    cmcId: "37291",
     category: "Reserve Currency",
     chains: ["Sonic"],
     module: "rezerve/index.js",
@@ -18936,7 +18957,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Chain",
     chains: ["XION"],
     module: "xion/index.js",
     forkedFrom: [],
@@ -18951,7 +18972,7 @@ const data4: Protocol[] = [
     url: "https://app.rysk.finance",
     description: "Rysk V12 introduces a new way to earn high, sustainable yield on ETH, BTC, and any volatile asset in DeFi. DeFi’s biggest gap has been obvious: scalable, efficient returns on its core assets. These assets are held by everyone, yet their yields remain low and unsustainable. Rysk fixes this by reimagining covered calls, a proven strategy from traditional finance, and making it work for DeFi.",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/xion-finance.jpg`,
+    logo: `${baseIconsUrl}/rysk-v12.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -18963,6 +18984,45 @@ const data4: Protocol[] = [
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071
+  },
+  {
+    id: "6416",
+    name: "ApStation",
+    address: null,
+    symbol: "-",
+    url: "https://apstation.io/",
+    description: "Zero fee modular DEX & Liquidity router on HyperEVM.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/apstation.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    forkedFrom: [],
+    twitter: "apstation_io",
+  },
+  {
+    id: "6417",
+    name: "Blaze Swap",
+    address: null,
+    symbol: "-",
+    url: "https://app.blazeswap.io/",
+    description: "Native Dex on XION.",
+    chain: "XION",
+    logo: `${baseIconsUrl}/blaze-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["XION"],
+    module: "blazeswap-io/index.js",
+    forkedFrom: [],
+    twitter: "Blaze_Swap",
+    listedAt: 1752240991
   },
 ];
 export default data4;

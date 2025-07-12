@@ -4,11 +4,11 @@
  * https://github.com/DefiLlama/defillama-app/blob/main/src/api/categories/protocols/getProtocolData.tsx
  */
 
-import { getMetadataAll, readRouteData, storeRouteData } from "../cache/file-cache";
+import { readRouteData, storeRouteData } from "../cache/file-cache";
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from "./githubMetrics";
-import { chainCoingeckoIds, chainNameToIdMap } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 const { exec } = require("child_process");
@@ -75,22 +75,6 @@ async function pullRaisesDataIfMissing() {
 async function _storeAppMetadata() {
   const finalProtocols: any = {};
   const finalChains: any = {};
-  const articlesTagMap: any = {};
-  const githubReportMap: any = {};
-  const nftExchangeVolumeMap: any = {};
-  const protocolMetadataMap: any = {};
-  const parentProtocolMetadataMap: any = {};
-  const raisesProtocolMap: any = {};
-  const expensesMap: any = {};
-  const dimensionsMap: any = {};
-  const protocolCategoriesMap: any = {};
-  const devMetricsMap: any = {};
-  const treasuriesMap: any = {};
-  const yieldPoolsProtocolMap: any = {};
-  const liquidityTokenPoolsMap: any = {};
-  const hacksMap: any = {};
-  const emissionsProtocolMap: any = {};
-  const chartDenominationsChainMap: any = {};
   let lendingProtocols = 0;
 
   const [
@@ -120,12 +104,6 @@ async function _storeAppMetadata() {
     chainAssetsData,
     chainsData,
     forksData,
-    articles,
-    yieldsConfig,
-    allDevMetricsData,
-    allNFTVolumes,
-    allMetadata,
-    emmissionsDataAll,
     stablecoinsTracked,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
@@ -154,256 +132,12 @@ async function _storeAppMetadata() {
     fetchJson(CHAINS_ASSETS).catch(() => ({})),
     readRouteData("/chains").catch(() => []),
     readRouteData("/forks").catch(() => ({ forks: {} })),
-    fetchJson(`${ARTICLES_API}`).catch(() => ({})),
-    fetchJson(YIELD_CONFIG_API).catch(() => ({ protocols: {} })),
-    pullDevMetricsData().catch(() => []),
-    fetchJson(NFT_MARKETPLACES_VOLUME_API).catch(() => []),
-    getMetadataAll(),
-    fetchJson(EMISSIONS_API).catch(() => []),
     fetchJson(STABLECOINS_API)
       .then((res) => ({ protocols: res.peggedAssets.length, chains: res.chains.length }))
       .catch(() => ({ protocols: 0, chains: 0 })),
   ]);
 
-  const dimensionsConfig = [
-    {
-      mapKey: "fees",
-      data: feesData,
-      finalDataKeys: {
-        dailyFees: "total24h",
-        fees30d: "total30d",
-        allTimeFees: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "revenue",
-      data: revenueData,
-      finalDataKeys: {
-        dailyRevenue: "total24h",
-        revenue30d: "total30d",
-        allTimeRevenue: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "holdersRevenue",
-      data: holdersRevenueData,
-      finalDataKeys: {
-        dailyHoldersRevenue: "total24h",
-        holdersRevenue30d: "total30d",
-        allTimeHoldersRevenue: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "bribe",
-      data: feeBribeRevenueData,
-      finalDataKeys: {
-        dailyBribesRevenue: "total24h",
-        bribesRevenue30d: "total30d",
-        allTimeBribesRevenue: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "tokenTax",
-      data: feeTokenTaxData,
-      finalDataKeys: {
-        dailyTokenTaxes: "total24h",
-        tokenTaxesRevenue30d: "total30d",
-        allTimeTokenTaxes: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "volume",
-      data: volumeData,
-      finalDataKeys: {
-        dailyVolume: "total24h",
-        allTimeVolume: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "derivatives",
-      data: perpsData,
-      finalDataKeys: {
-        dailyPerpsVolume: "total24h",
-        allTimePerpsVolume: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "aggregators",
-      data: aggregatorsData,
-      finalDataKeys: {
-        dailyAggregatorsVolume: "total24h",
-        allTimeAggregatorsVolume: "totalAllTime",
-      },
-    },
-    {
-      mapKey: "options",
-      data: optionsPremiumData,
-      finalDataKeys: {
-        dailyOptionsVolume: "total24h",
-      },
-    },
-    {
-      mapKey: "perpsAggregators",
-      data: perpsAggregatorsData,
-      finalDataKeys: {
-        dailyPerpsAggregatorVolume: "total24h",
-        allTimePerpsAggregatorVolume: "totalAllTime",
-      },
-    },
-  ];
-
-  // missing cg data, governance & yield median
-
-  createDataMaps();
-
   await _storeMetadataFile();
-
-  function createDataMaps() {
-    // create yield project map
-    for (const pool of yieldsData) {
-      if (!yieldPoolsProtocolMap[pool.project]) yieldPoolsProtocolMap[pool.project] = [];
-      yieldPoolsProtocolMap[pool.project].push(pool);
-    }
-
-    // map articles to tags
-    for (const article of articles?.content_elements ?? []) {
-      for (const tag of article?.taxonomy?.tags ?? []) {
-        const text = tag.text.toLowerCase();
-        if (!articlesTagMap[text]) {
-          articlesTagMap[text] = [];
-        }
-        articlesTagMap[text].push(article);
-      }
-    }
-
-    // link github reports to protocol ids
-    for (const report of allDevMetricsData) {
-      githubReportMap[report.project_id] = report;
-    }
-
-    // nft exchange volume
-    for (const { day, sum, sumUsd, exchangeName } of allNFTVolumes) {
-      const slugName = slug(exchangeName);
-      if (!nftExchangeVolumeMap[slugName]) {
-        nftExchangeVolumeMap[slugName] = [];
-      }
-      nftExchangeVolumeMap[slugName].push({ date: day, volume: sum, volumeUsd: sumUsd });
-    }
-
-    // map protocol metadata
-    for (const protocol of allMetadata.protocols) {
-      protocolMetadataMap[protocol.id] = protocol;
-    }
-
-    for (const protocol of allMetadata.protocols) {
-      protocolMetadataMap[protocol.id] = protocol;
-      if (protocol.parentProtocol && parentProtocolMetadataMap[protocol.parentProtocol]) {
-        const ppInfo = parentProtocolMetadataMap[protocol.parentProtocol];
-        protocolMetadataMap[protocol.id].parentProtocolInfo = ppInfo;
-        if (!ppInfo.childProtocolsInfo) ppInfo.childProtocolsInfo = [];
-        ppInfo.childProtocolsInfo.push(protocol);
-      }
-    }
-
-    for (const protocol of tvlData.protocols) {
-      let id = protocol.id ?? protocol.defillamaId;
-      if (id && protocol.chains?.length) {
-        if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([]);
-        protocol.chains.forEach((chain: any) => {
-          protocolChainSetMap[id].add(chain);
-        });
-      }
-
-      if (protocol.category) {
-        if (!protocolCategoriesMap[protocol.category]) {
-          protocolCategoriesMap[protocol.category] = [];
-        }
-        protocolCategoriesMap[protocol.category].push(protocol);
-      }
-    }
-
-    // raises
-    for (const raise of raisesData.raises) {
-      if (!raise.defillamaId) return;
-      if (!raisesProtocolMap[raise.defillamaId]) {
-        raisesProtocolMap[raise.defillamaId] = [];
-      }
-      raisesProtocolMap[raise.defillamaId].push(raise);
-    }
-
-    // expenses
-    for (const expense of expensesData) {
-      if (!expense.protocolId) return;
-      expensesMap[expense.protocolId] = expense;
-    }
-
-    // create dimensions map
-    for (const { mapKey, data } of dimensionsConfig) {
-      const dataMap: any = {};
-      dimensionsMap[mapKey] = dataMap;
-      for (const pData of data.protocols) {
-        let id = pData.id ?? pData.defillamaId ?? pData.name;
-        if (pData.chains?.length) {
-          if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([]);
-          pData.chains.forEach((chain: any) => {
-            protocolChainSetMap[id].add(chain);
-          });
-        }
-
-        if (!pData.hasOwnProperty("total24h")) return; // skip if this total24h field is missing
-        if (pData.id) dataMap[pData.id] = pData;
-        if (pData.defillamaId) dataMap[pData.defillamaId] = pData;
-        if (pData.name) dataMap[pData.name] = pData;
-      }
-    }
-
-    // dev metrics
-    for (const devMetric of allDevMetricsData) {
-      devMetricsMap[devMetric.project_id] = devMetric;
-    }
-
-    // treasuries
-    for (const treasury of treasuryData) {
-      if (typeof treasury.id === "string") treasuriesMap[treasury.id.replace("-treasury", "")] = treasury;
-    }
-
-    // liquidity
-    for (const pool of liquidityData) {
-      liquidityTokenPoolsMap[pool.id] = pool;
-    }
-
-    // hacks
-    for (const hack of hacksData) {
-      if (!hack.defillamaId && !hack.protocolId) return;
-      const key = (hack.defillamaId ? hack.defillamaId : hack.protocolId) + "";
-      if (!hacksMap[key]) {
-        hacksMap[key] = [];
-      }
-      hacksMap[key].push(hack);
-    }
-
-    // emissions
-    for (const emission of emmissionsDataAll) {
-      if (emission.protocolId) emissionsProtocolMap[emission.protocolId] = emission;
-    }
-
-    // chart denominations
-    const chainDenominationsKeys = ["geckoId", "cmcId", "symbol"];
-    for (const chain in chainCoingeckoIds) {
-      const data = chainCoingeckoIds[chain] as any;
-      let obj: any = {};
-      for (const key of chainDenominationsKeys) {
-        obj[key] = data[key] ?? null;
-      }
-      if (data.parent?.chain === "Ethereum")
-        obj = {
-          geckoId: "ethereum",
-          cmcId: "1027",
-          symbol: "ETH",
-        };
-      chartDenominationsChainMap[chain] = obj;
-    }
-  }
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
@@ -421,6 +155,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -428,15 +163,19 @@ async function _storeAppMetadata() {
           ...(parentToChildProtocols[protocol.parentProtocol] ?? []),
           name,
         ];
-        if (protocol.tvl) {
-          finalProtocols[protocol.parentProtocol] = {
-            ...finalProtocols[protocol.parentProtocol],
-            tvl: true,
-          };
-        }
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          ...(protocol.tvl ? { tvl: true } : {}),
+        };
       }
+
       if (protocol.category === "Lending") {
         lendingProtocols += 1;
+      }
+
+      for (const chain in protocol.chainTvls ?? {}) {
+        if (chain.includes("-") || extraSections.includes(chain)) continue;
+        protocolChainSetMap[protocol.defillamaId].add(chain);
       }
     }
     for (const protocol of tvlData.parentProtocols) {
@@ -456,6 +195,24 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol in protocolInfoMap) {
+      if (protocolInfoMap[protocol].stablecoins?.length) {
+        finalProtocols[protocol] = {
+          ...finalProtocols[protocol],
+          stablecoins: true,
+        };
+      }
+    }
+
+    for (const protocol in parentProtocolsInfoMap) {
+      if (parentProtocolsInfoMap[protocol].stablecoins?.length) {
+        finalProtocols[protocol] = {
+          ...finalProtocols[protocol],
+          stablecoins: true,
+        };
+      }
+    }
+
     for (const protocol of expensesData) {
       finalProtocols[protocol.protocolId] = {
         ...finalProtocols[protocol.protocolId],
@@ -464,6 +221,7 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of treasuryData) {
+      if (protocol.misrepresentedTokens) continue;
       finalProtocols[protocol.id.split("-treasury")[0]] = {
         ...finalProtocols[protocol.id.split("-treasury")[0]],
         treasury: true,
@@ -476,8 +234,6 @@ async function _storeAppMetadata() {
         liquidity: true,
       };
     }
-
-    // todo forks api
 
     for (const protocol of hacksData) {
       if (protocol.defillamaId) {
@@ -538,6 +294,12 @@ async function _storeAppMetadata() {
           fees: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
 
     for (const protocol of feeBribeRevenueData.protocols) {
@@ -554,6 +316,12 @@ async function _storeAppMetadata() {
           bribeRevenue: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
 
     for (const protocol of feeTokenTaxData.protocols) {
@@ -569,6 +337,12 @@ async function _storeAppMetadata() {
           ...finalProtocols[protocol.parentProtocol],
           tokenTax: true,
         };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
 
@@ -604,6 +378,12 @@ async function _storeAppMetadata() {
           revenue: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
 
     for (const protocol of holdersRevenueData.protocols) {
@@ -620,6 +400,12 @@ async function _storeAppMetadata() {
           holdersRevenue: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
 
     for (const protocol of volumeData.protocols) {
@@ -633,6 +419,12 @@ async function _storeAppMetadata() {
           ...finalProtocols[protocol.parentProtocol],
           dexs: true,
         };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of volumeData.allChains ?? []) {
@@ -654,31 +446,43 @@ async function _storeAppMetadata() {
           perps: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
     for (const chain of perpsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        derivatives: true,
+        perps: true,
       };
     }
 
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
-        aggregator: true,
+        dexAggregators: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          aggregator: true,
+          dexAggregators: true,
         };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of aggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        aggregators: true,
+        dexAggregators: true,
       };
     }
 
@@ -693,6 +497,12 @@ async function _storeAppMetadata() {
           ...finalProtocols[protocol.parentProtocol],
           options: true,
         };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
       }
     }
     for (const chain of optionsPremiumData.allChains ?? []) {
@@ -714,6 +524,12 @@ async function _storeAppMetadata() {
           options: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
     for (const chain of optionsNotionalData.allChains ?? []) {
       finalChains[slug(chain)] = {
@@ -734,11 +550,17 @@ async function _storeAppMetadata() {
           perpsAggregators: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
     for (const chain of perpsAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        "aggregator-derivatives": true,
+        "perpsAggregators": true,
       };
     }
 
@@ -754,11 +576,17 @@ async function _storeAppMetadata() {
           bridgeAggregators: true,
         };
       }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
     }
     for (const chain of bridgeAggregatorsData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        "bridge-aggregators": true,
+        "bridgeAggregators": true,
       };
     }
 
@@ -771,16 +599,16 @@ async function _storeAppMetadata() {
       }
     }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.slug)
+    // const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    for (const protocol of Object.entries(nameToId)) {
-      if (bridges.includes(slug(protocol[1] as string))) {
-        finalProtocols[protocol[0]] = {
-          ...finalProtocols[protocol[0]],
-          bridge: true
-        }
-      }
-    }
+    // for (const protocol of Object.entries(nameToId)) {
+    //   if (bridges.includes(slug(protocol[1] as string))) {
+    //     finalProtocols[protocol[0]] = {
+    //       ...finalProtocols[protocol[0]],
+    //       bridge: true,
+    //     };
+    //   }
+    // }
 
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
@@ -937,16 +765,12 @@ async function _storeAppMetadata() {
 
 // API endpoints
 const ACTIVE_USERS_API = "https://api.llama.fi/activeUsers";
-const EMISSIONS_API = "https://api.llama.fi/emissions";
 const PROTOCOLS_EXPENSES_API =
   "https://raw.githubusercontent.com/DefiLlama/defillama-server/master/defi/src/operationalCosts/output/expenses.json";
 
 const NFT_MARKETPLACES_STATS_API = "https://nft.llama.fi/exchangeStats";
 const BRIDGES_API = "https://bridges.llama.fi/bridges";
 const YIELD_POOLS_API = "https://yields.llama.fi/pools";
-const YIELD_CONFIG_API = "https://api.llama.fi/config/yields";
 const CHAINS_ASSETS = "https://api.llama.fi/chain-assets/chains";
 const LIQUIDITY_API = "https://defillama-datasets.llama.fi/liquidity.json";
-const ARTICLES_API = "https://api.llama.fi/news/articles";
-const NFT_MARKETPLACES_VOLUME_API = "https://nft.llama.fi/exchangeVolume";
 const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";

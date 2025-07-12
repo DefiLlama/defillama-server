@@ -19024,5 +19024,26 @@ const data4: Protocol[] = [
     twitter: "Blaze_Swap",
     listedAt: 1752240991
   },
+  {
+    id: "6418",
+    name: "Carrot Lend",
+    address: "solana:CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
+    symbol: "CRT",
+    url: "https://boost.deficarrot.com/",
+    description: "Carrot Lend is a peer-to-pool lending platform built for automation and designed to serve as a decentralized matchmaker between borrowers and lenders, powering leveraged and composable DeFi strategies.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/carrot-lend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    module: "carrot-lend/index.js",
+    forkedFrom: [],
+    twitter: "DeFiCarrot",
+    parentProtocol: "parent#carrot",
+    listedAt: 1752343187
+  },
 ];
 export default data4;

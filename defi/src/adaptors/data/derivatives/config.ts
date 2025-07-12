@@ -681,5 +681,8 @@ export default {
     "alkimiya": {
         id: "6344"
     },
+    "privex": {
+        id: "6419"
+    }
 
 } as AdaptorsConfig

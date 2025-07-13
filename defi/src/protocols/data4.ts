@@ -12595,6 +12595,16 @@ const data4: Protocol[] = [
       "https://github.com/blend-capital/blend-contracts-v2/tree/main/audits",
     ],
     listedAt: 1746030822,
+    oraclesBreakdown: [
+      {
+        name: "Reflector",
+        type: "Primary",
+        proof: [
+          "https://docs.blend.capital/pool-creators/selecting-an-oracle#well-known-oracles",
+          "https://github.com/blend-capital/oracle-aggregator#supported-oracles"
+        ]
+      }
+    ]
   },
   {
     id: "6123",

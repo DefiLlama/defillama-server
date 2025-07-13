@@ -54506,7 +54506,7 @@ const data3_2: Protocol[] = [
     description: "Treehouse is a decentralized application that introduces Treehouse Assets (tAssets) and Decentralized Offered Rates (DOR), new primitives that enable fixed income products in digital assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/treehouse-protocol.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -54515,7 +54515,8 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "treehouse/index.js",
     twitter: "TreehouseFi",
-    listedAt: 1725968902
+    listedAt: 1725968902,
+    audit_links: ["https://github.com/treehouse-gaia/audit-report"]
   },
   {
     id: "5132",

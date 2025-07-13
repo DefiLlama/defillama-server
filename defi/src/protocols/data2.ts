@@ -425,6 +425,7 @@ const data2: Protocol[] = [
     treasury: "kromatika.js",
     listedAt: 1644597183,
     github: ["Kromatika-Finance"],
+    audit_links: ["https://skynet.certik.com/projects/kromatika"]
   },
   {
     id: "1398",
@@ -20645,7 +20646,7 @@ const data2: Protocol[] = [
       "WOOFi Earn features supercharger vaults allow users to provide liquidity in WOOFi swap and earn single sided yields by delegating the liquidity management to the sPMM pool manager.",
     chain: "Binance",
     logo: `${baseIconsUrl}/woofi-earn.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20656,6 +20657,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1668524390,
     parentProtocol: "parent#woofi",
+    audit_links: ["https://learn.woo.org/woofi-docs/woofi-dev-docs/references/audits-and-bounties"]
   },
   {
     id: "2285",

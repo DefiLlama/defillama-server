@@ -3097,6 +3097,7 @@ const data: Protocol[] = [
     twitter: "StakeDAOHQ",
     governanceID: ["snapshot:stakedao.eth"],
     github: ["StakeDAO"],
+    audit_links: ["https://docs.stakedao.org/audits"]
   },
   {
     id: "250",

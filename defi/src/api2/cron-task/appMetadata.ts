@@ -52,7 +52,7 @@ export async function storeAppMetadata() {
     await pullDevMetricsData();
     await _storeAppMetadata();
   } catch (e) {
-    console.log("Error in storeAppMetadata: ");
+    console.log("Error in storeAppMetadata: ", e);
     console.error(e);
   }
 }

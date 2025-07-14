@@ -19135,6 +19135,23 @@ const data4: Protocol[] = [
     parentProtocol: "parent#trader-joe",
     listedAt: 1752492527
   },
-
+  {
+    id: "6423",
+    name: "Pumper",
+    address: null,
+    symbol: "-",
+    url: "https://pumper.money/",
+    description: "Swipe right to buy the hottest memecoins. Live on App Store and Google Play.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pumper.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "usepumper",
+    forkedFrom: [],
 ];
 export default data4;

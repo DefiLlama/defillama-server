@@ -19363,5 +19363,28 @@ const data4: Protocol[] = [
     github: ["onre-finance"],
     listedAt: 1752511417,
   },
+  {
+    id: "6433",
+    name: "Chips",
+    address: null,
+    symbol: "-",
+    url: "https://chips.finance",
+    description:
+      "Earn real Bitcoin, Kadena, and Litecoin/DOGE by staking tokenized ASIC hashrate (cTokens). Chips lets you stake cTokens, fuel them with kWATT tokens, and mine crypto — all verifiable on-chain",
+    chain: "Kadena",
+    logo: `${baseIconsUrl}/chips.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Kadena"],
+    forkedFromIds: [],
+    oraclesBreakdown: [ { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14301"] } ],
+    module: "chips/index.js",
+    twitter: "Chips_Finance",
+    audit_links: [],
+    listedAt: 1752535427,
+  },
 ];
 export default data4;

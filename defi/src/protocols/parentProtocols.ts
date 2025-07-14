@@ -3873,7 +3873,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://dgswap.io",
     description: "DragonSwap is a decentralized automated liquidity protocol.",
     logo: `${baseIconsUrl}/dragonswap-kaia.png`,
-    gecko_id: null,
+    gecko_id: "dragonswap",
     cmcId: null,
     chains: [],
     twitter: "dgswap",

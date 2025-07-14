@@ -63106,7 +63106,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "rings/index.js",
     github: ["Rings-Protocol"],
-    twitter: "Rings_Protocol",
+    twitter: "Trevee_xyz",
     stablecoins: ["rings-scusd"],
     listedAt: 1734620828
   },

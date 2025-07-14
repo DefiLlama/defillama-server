@@ -56,6 +56,11 @@
     }
   },
   "berachain": {
+    "0x1DB1591540d7A6062Be0837ca3C808aDd28844F6": {
+      "decimals": "18",
+      "symbol": "hOHM",
+      "to": "asset#ethereum:0x1db1591540d7a6062be0837ca3c808add28844f6"
+    },
     "0xD2C41BF4033A83C0FC3A7F58a392Bf37d6dCDb58": {
       "decimals": "18",
       "symbol": "osBGT",

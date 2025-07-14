@@ -3816,4 +3816,7 @@ export default {
     "cobaltx": {
         id: "6425"
     },
+    "40acres": {
+        id: "6061"
+    },
 } as AdaptorsConfig

@@ -58968,17 +58968,18 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5333",
-    name: "Carrot",
+    name: "Carrot Liquidity",
+    //previousNames: ["Carrot"],
     address: "solana:CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
     symbol: "CRT",
     url: "https://use.deficarrot.com/",
     description:
       "A liquid yield bearing token that maximizes your earned interest on stablecoins, consistently increasing the token value by intelligently routing funds to capture the highest available yield, without adding speculation risk",
     chain: "Solana",
-    logo: `${baseIconsUrl}/carrot.jpg`,
+    logo: `${baseIconsUrl}/carrot-liquidity.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "carrot-2",
+    gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Solana"],
@@ -58987,6 +58988,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Switchboard", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8978
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
+    parentProtocol: "parent#carrot",
     listedAt: 1731107322
   },
   {

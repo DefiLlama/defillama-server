@@ -7455,6 +7455,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ryskfinance",
     github: ["rysk-finance"],
   },
+  {
+    id: "parent#carrot",
+    name: "Carrot",
+    url: "https://deficarrot.com/",
+    description: "Carrot is Yield Made Simple.",
+    logo: `${baseIconsUrl}/carrot.jpg`,
+    gecko_id: "carrot-2",
+    cmcId: null,
+    chains: [],
+    twitter: "DeFiCarrot",
+  },
 ];
 
 export default parentProtocols;

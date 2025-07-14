@@ -3807,4 +3807,7 @@ export default {
     "meso-finance": {
         id: "4938"
     },
+    "apebot": {
+        id: "6420"
+    }
 } as AdaptorsConfig

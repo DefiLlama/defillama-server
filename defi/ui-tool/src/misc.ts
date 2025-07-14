@@ -1,4 +1,5 @@
 import { getMissingData } from "../../src/api2/scripts/checkForProtocolsMissingTokenInfo";
+import { getDimProtocolsChainMetricsMismatch } from "../../src/api2/scripts/getDimProtocolsChainsMissingMetric";
 import { getProtocolTokenDominanceTable } from "../../src/api2/scripts/getProtocolTokenDominanceTable";
 
 export async function runMiscCommand(ws: any, data: any) {
@@ -14,6 +15,11 @@ export async function runMiscCommand(ws: any, data: any) {
       ws.send(JSON.stringify({
         type: 'get-protocols-token-dominance-response',
         data: await getProtocolTokenDominanceTable(),
+      })); return;
+    case '[Dimensions] Get protocols missing metrics':
+      ws.send(JSON.stringify({
+        type: 'get-dim-protocols-missing-metrics-response',
+        data: await getDimProtocolsChainMetricsMismatch(),
       })); return;
 
     default: console.error('Unknown misc action:', action); break;

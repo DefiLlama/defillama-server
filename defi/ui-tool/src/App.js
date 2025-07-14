@@ -149,6 +149,7 @@ const App = () => {
           break;
         case 'get-protocols-missing-tokens-response':
         case 'get-protocols-token-dominance-response':
+        case 'get-dim-protocols-missing-metrics-response':
           setMiscOutputTableData(data);
           break;
         default:
@@ -988,6 +989,25 @@ const App = () => {
           rowKey={(record) => record.id}
         />)
         break;
+      case 'get-dim-protocols-missing-metrics-response':
+        const tableData = miscOutputTableData.data.map(record => {
+          const shallowCopy = {...record}
+          shallowCopy.missingMetrics = record.missingMetrics.join(', ');
+          shallowCopy.chains = record.chains.join(', ');
+          return shallowCopy
+        })        
+
+        data = (<Table
+        columns={[
+          { title: 'Protocol', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+          { title: 'Missing Metrics', dataIndex: 'missingMetrics', key: 'missingMetrics', sorter: (a, b) => a.missingMetrics - b.missingMetrics },
+          { title: 'Missing Chains', dataIndex: 'chains', key: 'chains', sorter: (a, b) => a.chains.localeCompare(b.chains) },
+        ]}
+          dataSource={tableData}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+        />)
+        break;
       default:
         return null; // Handle unknown type
     }
@@ -1185,6 +1205,7 @@ const App = () => {
           <Select>
             <Option value="Get protocols token dominance">Get protocol token dominance Table</Option>
             <Option value="Get protocols missing tokens">Missing cg/cmc mapping</Option>
+            <Option value="[Dimensions] Get protocols missing metrics">[Dimensions] Get protocols missing metrics</Option>
           </Select>
         </Form.Item>
 

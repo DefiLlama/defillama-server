@@ -7477,6 +7477,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Ebisu_Finance",
   },
+  {
+    id: "parent#blackhole",
+    name: "Blackhole",
+    url: "https://blackhole.xyz/",
+    description: "Blackhole is a next-generation decentralized exchange (DEX) built on the Avalanche blockchain",
+    logo: `${baseIconsUrl}/blackhole.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BlackholeDex",
+  },
 ];
 
 export default parentProtocols;

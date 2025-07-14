@@ -3809,5 +3809,8 @@ export default {
     },
     "apebot": {
         id: "6420"
+    },
+    "40acres": {
+        id: "6061"
     }
 } as AdaptorsConfig

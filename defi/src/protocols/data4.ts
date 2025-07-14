@@ -19114,5 +19114,27 @@ const data4: Protocol[] = [
     twitter: "ViesCoin",
     listedAt: 1752492370
   },
+  {
+    id: "6422",
+    name: "Token Mill",
+    address: null,
+    symbol: "-",
+    url: "https://tokenmill.xyz",
+    description: "Token Mill is Trader Joe's new DEX live on Avalanche and Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/token-mill.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana", "Avalanche"],
+    module: "tokenmill-xyz/index.js",
+    forkedFrom: [],
+    twitter: "token_mill",
+    parentProtocol: "parent#trader-joe",
+    listedAt: 1752492527
+  },
+
 ];
 export default data4;

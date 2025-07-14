@@ -19094,5 +19094,25 @@ const data4: Protocol[] = [
     twitter: "ApeBotSol",
     github: ["ApeBotOfficial"],
   },
+   {
+    id: "6421",
+    name: "Vies Token",
+    address: "cronos:0xB1D4e07659c91872dB927939f0BC6CD0747764BC",
+    symbol: "VIES",
+    url: "https://viescoin.xyz/home",
+    description: "Vies bridges lives with blockchain.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/vies-token.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Cronos"],
+    module: "vies-token/index.js",
+    forkedFrom: [],
+    twitter: "ViesCoin",
+    listedAt: 1752492370
+  },
 ];
 export default data4;

@@ -4423,6 +4423,14 @@ export const chainCoingeckoIds = {
     url: "https://xion.burnt.com",
     twitter: "burnt_xion",
   },
+  "Soon Network": {
+    geckoId: "soon-2",
+    symbol: "SOON",
+    cmcId: null,
+    categories: null,
+    url: "https://soo.network/",
+    twitter: "soon_svm",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4622,6 +4630,7 @@ const chainLabelMap = {
   "btnx": "Botanix",
   "dchainmainnet": "DChain",
   "xion": "XION",
+  "soon": "Soon Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

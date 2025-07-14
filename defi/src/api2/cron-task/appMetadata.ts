@@ -78,7 +78,6 @@ async function _storeAppMetadata() {
   const finalProtocols: any = {};
   const finalChains: any = {};
   let lendingProtocols = 0;
-  let cexs = 0;
 
   const [
     tvlData,
@@ -178,9 +177,6 @@ async function _storeAppMetadata() {
 
       if (protocol.category === "Lending") {
         lendingProtocols += 1;
-      }
-      if (protocol.category === "CEX") {
-        cexs += 1;
       }
 
       for (const chain in protocol.chainTvls ?? {}) {
@@ -698,7 +694,7 @@ async function _storeAppMetadata() {
       emissions: { protocols: 0, chains: 0 },
       forks: { protocols: 0, chains: 0 },
       oracles: { protocols: 0, chains: 0 },
-      cexs: { protocols: cexs, chains: 0 },
+      cexs: { protocols: 0, chains: 0 },
       bridgedTVL: { protocols: 0, chains: 0 },
       nfts: { protocols: 0, chains: 0 },
     };
@@ -790,6 +786,12 @@ async function _storeAppMetadata() {
     }
 
     totalTrackedByMetric.nfts.chains += Object.keys(chainNftsData).length;
+
+    for (const protocol in protocolInfoMap) {
+      if (protocolInfoMap[protocol].category === "CEX") {
+        totalTrackedByMetric.cexs.protocols += 1;
+      }
+    }
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
 

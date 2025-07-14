@@ -23,11 +23,13 @@ const protocolChainSetMap: {
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
+  protocolChainSetMap[protocol.id] = new Set();
   protocol.childProtocols = [];
 });
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
+  protocolChainSetMap[protocol.id] = new Set();
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   }

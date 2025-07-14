@@ -19285,7 +19285,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "RWA Lending",
-    chains: ["Ethereum", "Optimism", "Polygon", "Arbitrum", "Polygon zkEVM"],
+    chains: ["Ethereum", "Optimism", "Polygon", "Arbitrum"],
     forkedFromIds: [],
     module: "pareto/index.js",
     twitter: "paretocredit",

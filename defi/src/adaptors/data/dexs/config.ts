@@ -3113,5 +3113,8 @@ export default {
     },
     "fullsail-finance": {
         id: "6413"
-    }
+    },
+    "cobaltx": {
+        id: "6425"
+    },
 } as AdaptorsConfig

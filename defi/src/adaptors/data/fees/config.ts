@@ -3809,5 +3809,11 @@ export default {
     },
     "apebot": {
         id: "6420"
-    }
+    },
+    "ebisu-ebusd": {
+        id: "6423"
+    },
+    "cobaltx": {
+        id: "6425"
+    },
 } as AdaptorsConfig

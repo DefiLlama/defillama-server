@@ -13239,7 +13239,7 @@ const data3_1: Protocol[] = [
     name: "TruStake",
     address: null,
     symbol: "-",
-    url: "https://app.trufin.io/vaults/trustake",
+    url: "https://app.trufin.io/",
     description:
       "The TruStake vaults provide access to institutional liquid staking on a variety of proof-of-stake networks.",
     chain: "Ethereum",
@@ -44928,7 +44928,7 @@ const data3_2: Protocol[] = [
       "Pell uses BTC and its LSD to provide actively validated services (AVS) to BTC ecosystem projects, plug the gap in ecosystem security, reduce cost to develop ecosystem applications and optimise yield avenue for BTC holders. Pell aims to become the largest shared liquidity and cryptonomic security layer in the BTC ecosystem across market cycles",
     chain: "Merlin",
     logo: `${baseIconsUrl}/pell-network.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -44938,6 +44938,7 @@ const data3_2: Protocol[] = [
     module: "pell/index.js",
     twitter: "Pell_Network",
     listedAt: 1717010539,
+    audit_links:["https://github.com/0xPellNetwork/restaking-contracts/blob/main/audits/PeckShield-Audit-Report-PellNetwork-v1.0.pdf"]
   },
   {
     id: "4697",

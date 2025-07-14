@@ -123,7 +123,6 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6150": "treasure",
   "6151": "zkcandy",
   "6284": "ao",
-  // "6414": "xion"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -137,6 +136,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
   "6401": "embr",
+  "6414": "xion",
 };
 
 export const allChainKeys: string[] = [

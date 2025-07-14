@@ -23,13 +23,11 @@ const protocolChainSetMap: {
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
-  protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? []);
   protocol.childProtocols = [];
 });
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
-  protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? []);
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   }
@@ -179,7 +177,8 @@ async function _storeAppMetadata() {
         lendingProtocols += 1;
       }
 
-      for (const chain in protocol.chainTvls ?? {}) {
+      const chainTvls = Object.entries(protocol.chainTvls ?? {}).map((p: any) => [p[0], p[1]?.tvl ?? 0]).sort((a: any, b: any) => b[1] - a[1]);
+      for (const [chain] of chainTvls) {
         if (chain.includes("-") || allExtraSections.includes(chain)) continue;
         if (chainsMap[chain]) {
           protocolChainSetMap[protocol.defillamaId].add(chainsMap[chain]);

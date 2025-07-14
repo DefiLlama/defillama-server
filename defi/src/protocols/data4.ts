@@ -19380,7 +19380,7 @@ const data4: Protocol[] = [
     category: "RWA",
     chains: ["Kadena"],
     forkedFromIds: [],
-    oraclesBreakdown: [ { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14301"] } ],
+    oraclesBreakdown: [ { name: "DIA", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14301"] } ],
     module: "chips/index.js",
     twitter: "Chips_Finance",
     audit_links: [],

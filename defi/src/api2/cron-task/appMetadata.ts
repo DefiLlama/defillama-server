@@ -789,9 +789,7 @@ async function _storeAppMetadata() {
       }
     }
 
-    for (const chain of chainNftsData) {
-      totalTrackedByMetric.nfts.chains += 1;
-    }
+    totalTrackedByMetric.nfts.chains += Object.keys(chainNftsData).length;
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
 

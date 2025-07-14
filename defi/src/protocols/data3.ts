@@ -41948,7 +41948,8 @@ const data3_2: Protocol[] = [
   }, */
   {
     id: "4561",
-    name: "Ebisu Finance",
+    name: "Ebisu Finance V1",
+    //previousNames: ["Ebisu Finance"],
     address: null,
     symbol: "-",
     url: "https://ebisu.finance/",
@@ -41962,7 +41963,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Mode"],
-    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: ["https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles"] } ],
     forkedFromIds: ["270"],
     module: "ebisu-finance/index.js",
     twitter: "Ebisu_Finance",
@@ -41970,6 +41971,7 @@ const data3_2: Protocol[] = [
       "https://github.com/pashov/audits/blob/master/team/pdf/Ebisu-security-review.pdf",
       "https://ebisu.finance/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
     ],
+    parentProtocol: "parent#ebisu-finance",
     listedAt: 1714835461,
   },
   {

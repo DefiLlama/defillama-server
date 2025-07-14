@@ -19135,6 +19135,28 @@ const data4: Protocol[] = [
     parentProtocol: "parent#trader-joe",
     listedAt: 1752492527
   },
-
+  {
+    id: "6423",
+    name: "Ebisu Finance V2",
+    address: null,
+    symbol: "-",
+    url: "https://ebisu.finance/",
+    description:
+      "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ebisu-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    forkedFromIds: ["5656"],
+    module: "ebisu-ebUSD/index.js",
+    twitter: "Ebisu_Finance",
+    audit_links: [],
+    parentProtocol: "parent#ebisu-finance",
+    listedAt: 1752505837,
+  },
 ];
 export default data4;

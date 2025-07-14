@@ -7466,6 +7466,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DeFiCarrot",
   },
+  {
+    id: "parent#ebisu-finance",
+    name: "Ebisu Finance",
+    url: "https://www.ebisu.finance/",
+    description: "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
+    logo: `${baseIconsUrl}/ebisu-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Ebisu_Finance",
+  },
 ];
 
 export default parentProtocols;

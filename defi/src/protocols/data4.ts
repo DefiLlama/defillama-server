@@ -19337,6 +19337,7 @@ const data4: Protocol[] = [
     module: "blackhole/index.js",
     twitter: "BlackholeDex",
     audit_links: [],
+    parentProtocol: "parent#blackhole",
     listedAt: 1752511425,
   },
   {
@@ -19359,6 +19360,7 @@ const data4: Protocol[] = [
     module: "blackhole-CL/index.js",
     twitter: "BlackholeDex",
     audit_links: [],
+    parentProtocol: "parent#blackhole",
     listedAt: 1752511433,
   },
 ];

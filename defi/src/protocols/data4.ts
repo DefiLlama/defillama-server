@@ -19415,5 +19415,24 @@ const data4: Protocol[] = [
     github: ["NeriteOrg"],
     listedAt: 1752541038,
   },
+    {
+    id: "6435",
+    name: "Coinbase XRP",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinbase.com/en-in/cbxrp/proof-of-reserves",
+    description: "cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.",
+    chain: "Ripple",
+    logo: `${baseIconsUrl}/coinbase-xrp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ripple"],
+    module: "coinbase-xrp/index.js",
+    forkedFrom: [],
+    twitter: "coinbase"
+  }
 ];
 export default data4;

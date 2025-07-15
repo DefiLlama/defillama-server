@@ -19157,6 +19157,10 @@ const data4: Protocol[] = [
     module: "ebisu-ebUSD/index.js",
     twitter: "Ebisu_Finance",
     audit_links: [],
+    oraclesBreakdown: [ 
+      { name: "Chainlink", type: "Primary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] },
+      { name: "RedStone", type: "Secondary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] }
+    ],
     parentProtocol: "parent#ebisu-finance",
     listedAt: 1752505837,
   },

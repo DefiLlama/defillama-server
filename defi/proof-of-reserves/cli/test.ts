@@ -45,7 +45,7 @@ if (projectArgv === 'allProtocols') {
     if (adapter) {
       console.log('')
       console.info(`🦙 Checking ${project.toUpperCase()} assets & reserves 🦙`)
-      console.info(`---------------------------------------------------`)
+      console.info(`---------------------------------------------------------------------`)
       console.log('')
   
       try {

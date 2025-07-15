@@ -56,7 +56,7 @@
     }
   },
   "berachain": {
-    "0x1DB1591540d7A6062Be0837ca3C808aDd28844F6": {
+    "0x5bAd2b7A0A2eEE88A4ef05d5470cdEdB0ff948EA": {
       "decimals": "18",
       "symbol": "hOHM",
       "to": "asset#ethereum:0x1db1591540d7a6062be0837ca3c808add28844f6"
@@ -2703,6 +2703,11 @@
       "to": "coingecko#aptos",
       "decimals": 8,
       "symbol": "kAPT"
+    },
+    "0xbcff91abababee684b194219ff2113c26e63d57c8872e6fdaf25a41a45fb7197": {
+      "to": "coingecko#auro-finance",
+      "decimals": 8,
+      "symbol": "AURO"
     }
   },
   "velas": {

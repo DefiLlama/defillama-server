@@ -2085,7 +2085,8 @@ export default {
         id: "5715"
     },
     "jumper-exchange": {
-        id: "3524"
+        id: "3524",
+         enabled: false
     },
     "ocelex": {
         parentId: "Ocelex",

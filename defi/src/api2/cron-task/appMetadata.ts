@@ -8,7 +8,7 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections, getChainDisplayName } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 const { exec } = require("child_process");
@@ -185,7 +185,7 @@ async function _storeAppMetadata() {
         if (chainsMap[chain]) {
           protocolChainSetMap[protocol.defillamaId].add(chainsMap[chain]);
         } else {
-          protocolChainSetMap[protocol.defillamaId].add(chain);
+          protocolChainSetMap[protocol.defillamaId].add(getChainDisplayName(chain, true));
         }
       }
     }

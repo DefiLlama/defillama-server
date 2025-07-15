@@ -3087,7 +3087,7 @@ const data: Protocol[] = [
       "Stake DAO is a non-custodial decentralized protocol enabling users to access optimized yield opportunities in DeFi",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stakedao.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: "stake-dao",
     cmcId: "8299",
@@ -3098,6 +3098,7 @@ const data: Protocol[] = [
     twitter: "StakeDAOHQ",
     governanceID: ["snapshot:stakedao.eth"],
     github: ["StakeDAO"],
+    audit_links: ["https://docs.stakedao.org/audits"]
   },
   {
     id: "250",
@@ -7622,9 +7623,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Telcoin",
     address: "polygon:0xdf7837de1f2fa4631d716cf2502f8b230f1dcc32",
     symbol: "TEL",
-    url: "https://www.telx.network",
+    url: "https://www.telco.in",
     description:
-      "TELx is a network of decentralized financial markets powered by active Telcoin users. TELx functions as the decentralized liquidity engine of the Telcoin platform's suite of user-owned, mobile based financial products, including the Send Money Smarter Network and TELxchange.",
+      "Telcoin (TEL) is an Ethereum-based token designed for the open-sourced fintech platform and remittance market. It aims to provide low-cost, high-quality financial products for mobile phone users worldwide, focusing on unbanked populations. TEL is used for payments via mobile platforms and e-wallets, offering a cost-effective alternative to traditional money transfer platforms like Western Union.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/telcoin.png`,
     audits: "2",
@@ -7634,7 +7635,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Payments",
     chains: ["Polygon"],
     module: "telcoin/index.js",
-    twitter: "telcoin_team",
+    twitter: "telcoin",
     audit_links: ["https://www.certik.org/projects/telcoin"],
     github: ["telcoin"],
   },

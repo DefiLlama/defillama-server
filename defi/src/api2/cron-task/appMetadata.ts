@@ -36,13 +36,13 @@ protocols.forEach((protocol: any) => {
 });
 
 const fetchJson = async (url: string) => fetch(url).then((res) => res.json());
-const chainsMap: any = {
+const slugMap: any = {
   Binance: "BSC",
 };
 
 const slug = (tokenName = "") => {
-  if (!chainsMap[tokenName]) chainsMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return chainsMap[tokenName].toLowerCase().split(" ").join("-").split("'").join("");
+  if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
+  return slugMap[tokenName]
 };
 
 export async function storeAppMetadata() {
@@ -182,11 +182,7 @@ async function _storeAppMetadata() {
       const chainTvls = Object.entries(protocol.chainTvls ?? {}).map((p: any) => [p[0], p[1]?.tvl ?? 0]).sort((a: any, b: any) => b[1] - a[1]);
       for (const [chain] of chainTvls) {
         if (chain.includes("-") || allExtraSections.includes(chain)) continue;
-        if (chainsMap[chain]) {
-          protocolChainSetMap[protocol.defillamaId].add(chainsMap[chain]);
-        } else {
-          protocolChainSetMap[protocol.defillamaId].add(getChainDisplayName(chain, true));
-        }
+        protocolChainSetMap[protocol.defillamaId].add(chain);
       }
     }
     for (const protocol of tvlData.parentProtocols) {

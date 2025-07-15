@@ -3118,6 +3118,6 @@ export default {
         id: "6425"
     },
     "liquidlaunch": {
-        id: "6374"
+        id: "6441"
     },
 } as AdaptorsConfig

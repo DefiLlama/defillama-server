@@ -18688,14 +18688,14 @@ const data4: Protocol[] = [
     url: "https://embr.fun/",
     description:
       "Embr is built on Initia's Intervowen Stack. Users can bridge assets into Embr using either Initia's native bridge or Gas.zip, depending on their source chain.",
-    chain: "Initia",
+    chain: "Embr",
     logo: `${baseIconsUrl}/embr-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    chains: ["Initia"],
+    chains: ["Embr"],
     module: "embr-bridge/index.js",
     twitter: "embrdotfun",
     forkedFromIds: []

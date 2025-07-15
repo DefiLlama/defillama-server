@@ -4431,6 +4431,19 @@ export const chainCoingeckoIds = {
     url: "https://soo.network/",
     twitter: "soon_svm",
   },
+  "Embr": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    parent: {
+      chain: "Initia", 
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
+    url: "https://embr.fun/",
+    twitter: "embrdotfun",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

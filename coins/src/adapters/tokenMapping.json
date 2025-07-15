@@ -2663,6 +2663,11 @@
       "to": "coingecko#aptos",
       "decimals": 8,
       "symbol": "kAPT"
+    },
+    "0xbcff91abababee684b194219ff2113c26e63d57c8872e6fdaf25a41a45fb7197": {
+      "to": "coingecko#auro-finance",
+      "decimals": 8,
+      "symbol": "AURO"
     }
   },
   "velas": {

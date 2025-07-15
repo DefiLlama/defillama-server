@@ -3117,4 +3117,7 @@ export default {
     "cobaltx": {
         id: "6425"
     },
+    "liquidlaunch": {
+        id: "6374"
+    },
 } as AdaptorsConfig

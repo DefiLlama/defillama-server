@@ -3829,4 +3829,7 @@ export default {
     "echo-lsd": {
         id: "5464",
     },
+    "liquidlaunch": {
+        id: "6374"
+    },
 } as AdaptorsConfig

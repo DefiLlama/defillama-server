@@ -27837,6 +27837,13 @@ const data2: Protocol[] = [
     category: "Options",
     chains: ["Arbitrum"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.rysk.finance/resources/oracle"],
+      }
+    ],
     module: "rysk/index.js",
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",

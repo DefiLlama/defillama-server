@@ -18994,7 +18994,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "rysk-v12/index.js",
     forkedFrom: [],
-     oraclesBreakdown: [
+    oraclesBreakdown: [
       {
       name: "Stork",
       type: "Primary",

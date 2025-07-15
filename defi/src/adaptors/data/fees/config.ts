@@ -3825,5 +3825,8 @@ export default {
     },
     "pumper": {
         id: "6436",
-    }
+    },
+    "echo-lsd": {
+        id: "5464",
+    },
 } as AdaptorsConfig

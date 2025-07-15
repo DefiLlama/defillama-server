@@ -124,6 +124,9 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6151": "zkcandy",
   "6284": "ao",
   "6424": "soon",
+  "6438": "echelon-bridge",
+  "6439": "inertia-bridge",
+  "6440": "milkyway_rollup_bridge",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

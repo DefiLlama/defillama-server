@@ -371,5 +371,8 @@ export default {
   },
   "apstation": {
     id: "6416"
+  },
+  "dzap": {
+    id: "6435"
   }
 } as AdaptorsConfig;

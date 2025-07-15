@@ -19416,5 +19416,26 @@ const data4: Protocol[] = [
     github: ["NeriteOrg"],
     listedAt: 1752541038,
   },
+  {
+    id: "6435",
+    name: "DZap",
+    address: null,
+    symbol: "-",
+    url: "https://app.dzap.io/",
+    description:
+      "DZap is a cross-chain DeFi aggregator that lets users zap between protocols and chains in a single transaction, streamlining liquidity migration and strategy execution across multiple dApps",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dzap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Aurora", "Arbitrum", "Optimism", "Flare", "Cronos", "RSK", "Telos", "Avalanche", "BSC", "Fantom", "Solana", "Story", "Sui", "Base", "Fuse", "Polygon", "Sonic", "Manta", "Mint", "Kroma", "CORE", "Sui", "Sei", "Polygon zkEVM", "Metis", "Gravity", "Moonbeam", "Moonriver", "zkSync Era", "Soneium", "Kava", "Morph", "Merlin", "Mantle", "Mode", "Celo", "Ink", "Linea", "Blast", "Berachain", "Bitlayer"],
+    forkedFrom: [],
+    module: "dummy.js",
+    audit_links: ["https://docs.dzap.io/integration-fee-and-security/audit-reports"],
+    twitter: "dzap_io",
+  },
 ];
 export default data4;

@@ -9851,6 +9851,7 @@ const data4: Protocol[] = [
     tokensExcludedFromParent: {
       Ethereum: ["TBILL"],
       Arbitrum: ["TBILL"],
+      Ripple: ["TBILL"],
     },
     listedAt: 1743761401
   },

@@ -3822,5 +3822,8 @@ export default {
     },
     "nerite": {
         id: "6434"
+    },
+    "pumper": {
+        id: "6436",
     }
 } as AdaptorsConfig

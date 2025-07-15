@@ -21,7 +21,8 @@ const chainIdMap: { [key: string]: string } = {
   initia: "initia",
   embr: "embr",
   civitia: 'civitia', 
-  inertia: 'inertia'
+  inertia: 'inertia', 
+  milkyway_rollup: 'moo'
 };
 
 const url = (chain: string, rpc: boolean) =>

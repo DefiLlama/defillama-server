@@ -89,7 +89,7 @@ export const bridges = [
   // brc20,
   //bsc,
   fantom,
-  era,
+  // era,
   gasTokens,
   //harmony,
   // polygon,

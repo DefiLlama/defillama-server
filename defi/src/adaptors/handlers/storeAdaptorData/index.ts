@@ -16,6 +16,7 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import canGetBlock from "../../utils/canGetBlock";
 import { sendDiscordAlert } from "../../utils/notify";
 import { processFulfilledPromises, } from "./helpers";
+import dynamodb from "../../../utils/shared/dynamodb";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -167,7 +168,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     console.table(errorObjects)
   }
 
-  if (throwError && errorObjects.length) 
+  if (throwError && errorObjects.length)
     throw new Error('Errors found')
 
   if (isRunFromRefillScript)
@@ -222,11 +223,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if ("adapter" in adaptor) {
         adaptersToRun.push([module, adaptor.adapter])
       } else if ("breakdown" in adaptor) {
-        const dexBreakDownAdapter = adaptor.breakdown
-        const breakdownAdapters = Object.entries(dexBreakDownAdapter)
-        for (const [version, adapter] of breakdownAdapters) {
-          adaptersToRun.push([version, adapter]) // the version is the key for the record (like uni v2) not the version of the adapter
-        }
+        throw new Error("Invalid adapter - breakdown are no longer supported")
       } else
         throw new Error("Invalid adapter")
 
@@ -302,11 +299,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } = {}
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+      let allTokenBreakdownData: any = undefined // since there is no more breakdown adapters, there can only be one
+
+
 
 
       for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
-        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor })
+        const { response: runAdapterRes, breakdownData, } = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor, withMetadata: true, })
+        allTokenBreakdownData = breakdownData
         if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 
         const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)
@@ -327,7 +328,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
 
       if (noDataReturned && isRunFromRefillScript) {
-        console.log(`[${new Date(endTimestamp*1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
         return;
       }
 
@@ -353,11 +354,27 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         }
       }
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ adaptorRecords, protocolType: adaptor.protocolType, adapterType, protocol, configIdMap })
+
+      async function storeTokenBreakdownData() {
+        if (!adapterRecord || !allTokenBreakdownData) return;
+        const ddbItem = { ...adapterRecord.getDDBItem() } as any
+        ddbItem.data = allTokenBreakdownData
+        ddbItem.source = 'dimension-adapter'
+        ddbItem.subType = 'token-breakdown'
+        ddbItem.PK = `dimTokenBreakdown#${ddbItem.PK}`
+        await dynamodb.putEventData(ddbItem)
+      }
+
       if (adapterRecord) {
         if (!isDryRun) {
+
           await storeAdapterRecord(adapterRecord)
+          promises.push(storeTokenBreakdownData())
+
         } else if (checkBeforeInsert) {
+
           responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
+          responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
           responseObject.recordV2 = adapterRecord
           responseObject.id = `${adapterRecord.adapterType}#${adapterRecord.id}#${adapterRecord.timeS}`
           responseObject.timeS = adapterRecord.timeS
@@ -367,7 +384,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (process.env.runLocal === 'true' || isRunFromRefillScript)
         printData(storedData, recordTimestamp, protocol.module)
 
-      if (refillYesterdayPromise) 
+      if (refillYesterdayPromise)
         await refillYesterdayPromise
 
       return responseObject

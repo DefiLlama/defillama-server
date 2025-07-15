@@ -25,4 +25,10 @@ export default {
     "socket": {
         id: "6097"
     },
+    "bungee-bridge": {
+        id: "6188"
+    },
+    "rango": {
+        id: "6382"
+    }
 } as AdaptorsConfig

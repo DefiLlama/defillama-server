@@ -20,7 +20,7 @@ export interface IHandlerEvent {
   }>
 }
 
-export const ADAPTER_TYPES = Object.values(AdapterType)
+export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any) => adapterType !== AdapterType.PROTOCOLS)
 
 export const quarantineList = {
   [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],

@@ -8,7 +8,8 @@ import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorDat
 import * as fs from 'fs'
 import * as path from 'path'
 
-const badWords = ['undefined', 'immutablex', 'chiliz', 'haqq', 'bitlayer', 'superposition', 'archway-1' ]
+// const badWords = ['undefined', 'immutablex', 'chiliz', 'haqq', 'bitlayer', 'superposition', 'archway-1' ]
+const badWords = ['undefined', 'klatyn', 'bnb'].map((word) => `"${word}"`)
 
 async function run() {
   const overallStats = [] as any

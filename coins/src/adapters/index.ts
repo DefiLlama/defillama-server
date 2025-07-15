@@ -1,5 +1,6 @@
 import * as compound from "./moneyMarkets/compound";
 import * as aave from "./moneyMarkets/aave";
+import * as euler from "./moneyMarkets/euler";
 import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
@@ -10,12 +11,14 @@ import * as graphCoins from "./markets/graphCoins";
 export default {
   ...compound.adapters,
   ...aave.adapters,
+  ...euler.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
   ...others2.adapters,
   ...graphCoins.adapters,
+  fraxtalGas: require("./other/fraxtalGas"),
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
@@ -33,7 +36,8 @@ export default {
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
   xexchange: require("./markets/xexchange"),
-  cetus: require("./markets/cetus"),
+  // cetus: require("./markets/cetus"),
+  aftermath: require("./markets/aftermath"),
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
   ston: require("./markets/ston"),
@@ -90,6 +94,7 @@ export default {
   chai: require("./yield/chai"),
   kuma: require("./rwa/kuma"),
   ondo: require("./rwa/ondo"),
+  pareto: require("./rwa/pareto"),
   hashnote: require("./rwa/hashnote"),
   hiyield: require("./rwa/hiyield"),
   mux: require("./yield/mux"),
@@ -144,4 +149,13 @@ export default {
   convexStaked: require("./yield/convexStaked"),
   folksFinance: require("./moneyMarkets/folks-finance"),
   xlpt: require("./markets/xlpt"),
+  sundaeswapV3: require("./markets/sundaeswapv3"),
+  tempest: require("./yield/tempest"),
+  momentum: require("./markets/momentum"),
+  pst: require("./solana/pst"),
+  capyfi: require("./moneyMarkets/capyfi"),
+  denario: require("./rwa/denario"),
+  quipuswap: require("./markets/quipuswap"),
+  reya: require("./yield/reya"),
+  bluefin: require("./markets/bluefin"),
 };

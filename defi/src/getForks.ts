@@ -1,6 +1,8 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
+import protocols from "./protocols/data";
+import parentProtocols from "./protocols/parentProtocols";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -63,11 +65,21 @@ export async function getForksInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
+  const idToName: Record<string, string> = {};
+  protocols.forEach((p: any) => {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  });
+  parentProtocols.forEach((parent: any) => {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  });
+
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
-        let forks = protocol.forkedFrom;
-
+        let forks: string[] | undefined = undefined;
+        if (Array.isArray(protocol.forkedFromIds)) {
+          forks = protocol.forkedFromIds.map((id) => idToName[id] || id);
+        }
         if (forks) {
           forks.forEach((fork) => {
             sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol);

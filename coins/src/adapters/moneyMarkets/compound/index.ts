@@ -218,6 +218,14 @@ export function orbitv2(timestamp: number = 0) {
   );
 }
 
+export function segmentFinance(timestamp: number = 0) {
+  return getTokenPrices(
+    "bob",
+    "0xcD7C4F508652f33295F0aEd075936Cd95A4D2911",
+    timestamp,
+  );
+}
+
 export const adapters = {
   cantoLending,
   moonwell,
@@ -240,4 +248,5 @@ export const adapters = {
   mare,
   orbitv2,
   ironBank,
+  segmentFinance,
 };

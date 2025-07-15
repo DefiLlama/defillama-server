@@ -85,10 +85,6 @@ console.info("Hello from notifyAdapterStatus");
 const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
 
 async function notifyAdapterStatus(adaptorType: AdapterType, esData: any) {
-  if (adaptorType === AdapterType.PROTOCOLS) {
-    console.log("skipping protocols")
-    return;
-  }
   const protocolLastUpdateMap = new Map<string, number>()
   for (const protocol of esData) {
     for (const adapterType of protocol.adapterType.buckets) {

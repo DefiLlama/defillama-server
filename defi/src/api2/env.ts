@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 
 const requiredEnvVars = ['TVL_CACHE_DB_NAME', 'TVL_CACHE_DB_HOST', 'TVL_CACHE_DB_PORT', 'TVL_CACHE_DB_USERNAME', 'TVL_CACHE_DB_PASSWORD',]
@@ -11,6 +12,10 @@ export function validateEnv() {
   if (requiredEnvVars.some((envVar) => !ENV[envVar]))
     throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)
 }
+
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') }); //  absolute reference for wind mates 
+
 
 export default function getTvlCacheEnv() {
   const ENV = process.env

@@ -22,6 +22,7 @@ import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimension
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { setInternalRoutes } from "./internalRoutes";
+import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -70,7 +71,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
   router.get("/lite/charts/categories/:category", defaultFileHandler);
-
+  router.get("/charts/categories/:category", ew(getCategoryChartByChainData));
+  router.get("/charts/categories/:category/:chain", ew(getCategoryChartByChainData));
+  router.get("/charts/tags/:tag", ew(getTagChartByChainData));
+  router.get("/charts/tags/:tag/:chain", ew(getTagChartByChainData));
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
@@ -87,6 +91,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/emissions", r2Wrapper({ endpoint: 'emissionsIndex' }))
   router.get("/emissionsList", r2Wrapper({ endpoint: 'emissionsProtocolsList' }))
   router.get("/emissionsBreakdown", r2Wrapper({ endpoint: 'emissionsBreakdown' }))
+  router.get("/emissionsBreakdownAggregated", r2Wrapper({ endpoint: 'emissionsBreakdownAggregated' }))
   router.get("/emission/:name", emissionProtocolHandler)
   router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
 

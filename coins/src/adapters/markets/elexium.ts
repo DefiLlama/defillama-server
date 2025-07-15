@@ -30,7 +30,8 @@ async function getTokenPrices(timestamp: number) {
   pools.forEach(({  id, symbol, decimals, onchainPrice: price }: any) => {
     if (!price) return;
     symbol = symbol.replace(/ /g, '-').toUpperCase()
-    addToDBWritesList(writes, chain, id, price, decimals, symbol, timestamp, 'elexium', 0.9)
+    // returning bad data 
+    addToDBWritesList(writes, chain, id, 0, decimals, symbol, timestamp, 'elexium', 0.9)
   })
 
   return writes

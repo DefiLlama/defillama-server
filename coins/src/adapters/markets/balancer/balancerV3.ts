@@ -21,6 +21,9 @@ const graphs: { [chain: string]: string } = {
   xdai: sdk.graph.modifyEndpoint(
     "DDoABVc9xCRQwuXRq2QLZ6YLkjoFet74vnfncQDgJVo2",
   ),
+  sonic: sdk.graph.modifyEndpoint(
+    "8dRsm8mbA77DwEhVQVgzKmmYByjcbZoyXkafDbD5TuHq",
+  ),
 };
 
 async function getPoolIds3(chain: string): Promise<string[]> {

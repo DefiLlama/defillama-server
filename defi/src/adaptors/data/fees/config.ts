@@ -3819,4 +3819,7 @@ export default {
     "40acres": {
         id: "6061"
     },
+    "nerite": {
+        id: "6434"
+    }
 } as AdaptorsConfig

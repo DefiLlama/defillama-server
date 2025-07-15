@@ -67,6 +67,22 @@ const mintedTokens = [
     chain: 'sonic',
     address: '0xC3827A4BC8224ee2D116637023b124CED6db6e90',
   },
+  {
+    chain: 'hemi',
+    address: '0xF9775085d726E782E83585033B58606f7731AB18',
+  },
+  {
+    chain: 'duckchain',
+    address: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
+  },
+  {
+    chain: 'rsk',
+    address: '0xd3C8Da379d71A33BFEe8875F87AC2748beb1D58d',
+  },
+  {
+    chain: 'sei',
+    address: '0xDfc7D2d003A053b2E0490531e9317A59962b511E',
+  },
 ]
 
 export default getBitcoinReservesAdapter(protocolId, mintedTokens);

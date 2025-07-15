@@ -2972,6 +2972,7 @@ const data: Protocol[] = [
     twitter: "flamincome",
     github: ["flamincome"],
     audit_links: ["https://github.com/flamincome/audits"],
+    deadUrl: true,
   },
   {
     id: "244",

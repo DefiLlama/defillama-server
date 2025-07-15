@@ -19641,7 +19641,7 @@ const data3_1: Protocol[] = [
     module: "solv-protocol-funds/index.js",
     twitter: "SolvProtocol",
     tokensExcludedFromParent: {
-      Binance: ["SOLVBTC.JUP", "SOLVBTC.ENA"],
+      Binance: ["SOLVBTC.JUP", "SOLVBTC.TRADING"],
       Soneium: ["SOLVBTC.JUP"],
     },
     audit_links: ["https://github.com/solv-finance/Audit"],

@@ -1241,7 +1241,7 @@
     },
     "0x325DC9EBceC31940C658aCACa45f8293418d811E": {
       "decimals": "18",
-      "symbol": "SolvBTC.ENA",
+      "symbol": "SolvBTC.TRADING",
       "to": "coingecko#solv-btc"
     },
     "0x75A66958919f47870f62b2780c34a235dC357586": {
@@ -1348,7 +1348,7 @@
     },
     "0x53e63a31fd1077f949204b94f431bcab98f72bce": {
       "decimals": "18",
-      "symbol": "SolvBTC.ENA",
+      "symbol": "SolvBTC.TRADING",
       "to": "coingecko#solv-btc"
     },
     "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a": {

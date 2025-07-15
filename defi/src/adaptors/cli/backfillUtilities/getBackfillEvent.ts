@@ -28,7 +28,6 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.AGGREGATORS]: 'dv',
     [AdapterType.DERIVATIVES]: 'dv',
     [AdapterType.OPTIONS]: 'dv',
-    [AdapterType.PROTOCOLS]: 'dv',
     // [AdapterType.ROYALTIES]: 'dv',
     [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
 }

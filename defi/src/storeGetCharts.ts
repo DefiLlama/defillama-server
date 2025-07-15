@@ -14,8 +14,10 @@ import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
-import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
+import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
+import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
+import { TagCatetgoryMap } from "./protocols/tags";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -52,6 +54,7 @@ export type getHistoricalTvlForAllProtocolsOptionalOptions = {
   getModule?: Function;
   readFromR2Cache?: boolean;
   storeMeta?: boolean;
+  forceIncludeCategories?: string[]; //used for forcing inclusion (used for oracles)
 };
 
 const allProtocolRes: {
@@ -65,27 +68,31 @@ export async function getHistoricalTvlForAllProtocols(
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
   const protocolList = getHistTvlOptions.protocolList ?? protocols;
-  const { storeMeta = false } = getHistTvlOptions;
+  const { storeMeta = false, forceIncludeCategories = [] } = getHistTvlOptions;
   const excludedProcolsIds: any = {};
   const excludedProcolsIdsExceptBridge: any = {};
   const doublecountedProtocolIds: any = {};
 
   const historicalProtocolTvls = await Promise.all(
     protocolList.map(async (protocol) => {
+      const isForcedInclude = protocol.category ? forceIncludeCategories.includes(protocol.category) : false;
+      
+      const isNormallyExcluded = 
+        !storeMeta && 
+        excludeProtocolsFromCharts && 
+        (excludeProtocolInCharts(protocol, includeBridge) || isExcludedFromChainTvl(protocol.category));
+        if (isNormallyExcluded && !isForcedInclude) {
+        excludedProcolsIds[protocol.id] = true;
+        excludedProcolsIdsExceptBridge[protocol.id] = true;
+        return;
+      }
+
       excludedProcolsIds[protocol.id] =
         excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(protocol.category);
       excludedProcolsIdsExceptBridge[protocol.id] =
         excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(protocol.category);
-      if (!protocol || (!storeMeta && excludeProtocolsFromCharts && excludeProtocolInCharts(protocol, includeBridge))) {
-        return;
-      }
-
-      if (!storeMeta && excludeProtocolsFromCharts && isExcludedFromChainTvl(protocol.category)) {
-        return;
-      }
-
+      
       let lastTvl: any, historicalTvl: any, module: any;
-
       async function _getAllProtocolData(protocol: Protocol) {
         if (!allProtocolRes[protocol.id]) {
           allProtocolRes[protocol.id] = Promise.all([
@@ -266,7 +273,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
       lastDailyTimestamp: data.lastDailyTimestamp,
       doublecountedProtocolIds: data.doublecountedProtocolIds
     }))
-    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
+    await storeHistoricalTVLMetadataFile(data);
     // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
   } else {
     const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
@@ -283,20 +290,20 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      const protocolCategory = protocol.tags?.length ? TagCatetgoryMap[protocol.tags[0]] : protocol.category
+     
       // total - sum of all protocols on all chains
-
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
 
       // doublecounted and liquid staking values === sum of tvl on all chains
       if (protocol.doublecounted) {
         sum(sumDailyTvls, "total", "doublecounted", timestamp, item.tvl);
       }
-      if (protocol.category?.toLowerCase() === "liquid staking") {
+      if (protocolCategory?.toLowerCase() === "liquid staking") {
         sum(sumDailyTvls, "total", "liquidstaking", timestamp, item.tvl);
       }
-
       // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
-      if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+      if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
         sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
       }
 
@@ -306,7 +313,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
         // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
         const formattedChainName = getChainDisplayName(chain, true);
 
-        // if its and extra tvl, include those values in "total" tvl of defi
+        // if its an extra tvl section, include those values in "total" tvl of defi
         if (extraSections.includes(formattedChainName)) {
           sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
           return;
@@ -322,17 +329,17 @@ export async function storeGetCharts({ ...options }: any = {}) {
           sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
-
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
+            sum(sumCategoryTvls, (protocolCategory || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
-            if (protocol.category?.toLowerCase() === "liquid staking") {
+
+            if (protocolCategory?.toLowerCase() === "liquid staking") {
               sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+            if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
               sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
             }
           }
@@ -353,11 +360,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
         if (protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "doublecounted", timestamp, item.tvl);
         }
-        if (protocol.category?.toLowerCase() === "liquid staking") {
+        if (protocolCategory?.toLowerCase() === "liquid staking") {
           sum(sumDailyTvls, chainName, "liquidstaking", timestamp, item.tvl);
         }
 
-        if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+        if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, item.tvl);
         }
       }
@@ -385,11 +392,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
       }
     })
   );
-
+  
   await Promise.all(
     Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(
-        Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
+        Object.entries(chainDailyTvls).map(([section, tvls]) => [getDisplayChainNameCached(section), Object.entries(tvls)])
       );
       let filename = `lite/charts/categories/${category}`;
 

@@ -35,6 +35,19 @@ export async function processProtocolList() {
   await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
 
   await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
+  const protocols = Object.values(emissionsBrakedown);
+  const aggregated = {
+    protocols,
+    emission24h: 0,
+    emission7d: 0,
+    emission30d: 0
+  };
+  protocols.forEach((protocol: any) => {
+    aggregated.emission24h += protocol.emission24h;
+    aggregated.emission7d += protocol.emission7d;
+    aggregated.emission30d += protocol.emission30d;
+  });
+  await storeR2JSONString("emissionsBreakdownAggregated", JSON.stringify(aggregated));
 }
 
 async function handlerErrors(errors: string[]) {

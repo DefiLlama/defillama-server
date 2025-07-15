@@ -70,7 +70,7 @@ export async function getOverviewProcess2({
   const { summaries, allChains, protocolSummaries = {} } = cacheData
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
-      chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+    chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
@@ -127,6 +127,8 @@ export async function getOverviewProcess2({
       // console.log('no data found', _id, info)
       return null
     }
+
+    if (!summary?.recordCount) return null; // if there are no data points, we should filter out the protocol
     if (summary?.totalAllTime) protocolTotalAllTimeSum += summary.totalAllTime
 
     protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])
@@ -189,6 +191,14 @@ export async function getProtocolDataHandler2({
   }
 
   response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
+  if (response.totalDataChartBreakdown) {
+    response.totalDataChartBreakdown.forEach(([_, chart]: any) => {
+      Object.entries(chart).forEach(([chain, value]: any) => {
+        delete chart[chain]
+        chart[getDisplayChainNameCached(chain)] = value
+      })
+    })
+  }
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   return response

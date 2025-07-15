@@ -7,7 +7,7 @@ for (const protocol of protocols) {
 }
 
 export default function getDuplicatesBetweenAdapterTypes() {
-  const aTypes: AdapterType[] = Object.values(AdapterType).filter((aType) => ![AdapterType.PROTOCOLS, AdapterType.FEES].includes(aType))
+  const aTypes: AdapterType[] = Object.values(AdapterType).filter((aType) => ![AdapterType.FEES].includes(aType))
   const ids: any = {}
   const response: any = []
 
@@ -44,7 +44,7 @@ export default function getDuplicatesBetweenAdapterTypes() {
       const aType2 = aTypes[j]
       const dups = findDups(ids[aType], ids[aType2])
       if (dups.length) {
-        console.log(`Dimensions: uplicates between ${aType} and ${aType2}:`, dups.join(', '), 'count:', dups.length)
+        console.log(`Dimensions: duplicates between ${aType} and ${aType2}:`, dups.join(', '), 'count:', dups.length)
         response.push({ aType, aType2, dups })
       }
     }

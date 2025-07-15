@@ -6,7 +6,7 @@ import loadAdaptorsData from "../../../adaptors/data"
 import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsAfter, } from "../../../adaptors/db-utils/db2";
 import { getTimeSDaysAgo, } from "../../utils/time";
-import { roundVaules, } from "../../utils";
+import { roundVaules, tableToString, } from "../../utils";
 import * as sdk from "@defillama/sdk";
 import { sendMessage } from '../../../utils/discord';
 
@@ -37,7 +37,6 @@ async function run() {
   // Go over all types
   await Promise.all(ADAPTER_TYPES.map(fetchDataLast30Days))
 
-  const { protocolMap: protocolTypeProtocolMap } = loadAdaptorsData(AdapterType.PROTOCOLS)
 
   // generate summaries for all types
   await Promise.all(ADAPTER_TYPES.map(generateSummaries))
@@ -81,27 +80,16 @@ async function run() {
   }
 
   async function generateSummaries(adapterType: AdapterType) {
-    if (adapterType === AdapterType.PROTOCOLS) return;
-
+    
     const recordType = DEFAULT_CHART_BY_ADAPTOR_TYPE[adapterType]
 
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
-
-    // dex & fees sometimes share config & data, it is stored in AdapterType.PROTOCOLS
-    const includeProtocolTypeData = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType)
-    let protocolRecordData = {} as any
-    if (includeProtocolTypeData) {
-      protocolRecordData = allCache[AdapterType.PROTOCOLS].protocols
-      dimensionProtocolMap = { ...protocolTypeProtocolMap, ...dimensionProtocolMap }
-    }
 
     const adapterData = allCache[adapterType]
 
 
     const protocolSummaries = {} as any
     const parentProtocolSummaries = {} as any
-    const chainSet = new Set<string>()
-    const parentProtocolsData: { [id: string]: any } = {}
     adapterData.protocolSummaries = protocolSummaries
     adapterData.parentProtocolSummaries = parentProtocolSummaries
 
@@ -126,10 +114,9 @@ async function run() {
 
 
       const protocolId = protocolInfo.protocolType === ProtocolType.CHAIN ? protocolInfo.id2 : protocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
-      const protocolRecords = protocolRecordData[protocolId]?.records ?? {}
 
       // fetch each day's aggregate data
-      const records = { ...(adapterData.protocols[protocolId]?.records ?? {}), ...protocolRecords }
+      const records = { ...(adapterData.protocols[protocolId]?.records ?? {}),}
       dateStringArray.forEach((timeS) => {
         const record = records[timeS]
         if (!record) return;
@@ -203,8 +190,12 @@ async function run() {
     if (summaries.length) {
       setSignificance(summaries, 'average')
       console.log(`saving ${adapterType} summaries count: ${summaries.length}`)
-      const body = summaries.flatMap((doc: any) => [{ index: { _index: 'dim_metrics_1', _id: `dm_${adapterType}_${doc.id2}` } }, doc])
-      await esClient.bulk({ refresh: true, body })
+      try {
+        const body = summaries.flatMap((doc: any) => [{ index: { _index: 'dim_metrics_1', _id: `dm_${adapterType}_${doc.id2}` } }, doc])
+        await esClient.bulk({ refresh: true, body })
+      } catch (e: any) {
+        console.error(`Error saving ${adapterType} summaries`, e)
+      }
 
       // write to discord
 
@@ -215,10 +206,21 @@ async function run() {
         missingLastDayData.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
         missingLines.push('\n')
         missingLines.push('Missing data for significant protocols in ' + adapterType)
-        missingLines.push(`\nProtocol - ${field} - Days since last data (missing count last 30d)`)
-        missingLastDayData.forEach((item: any) => {
-          missingLines.push(`${item.name} - ${hn(item[field])}m - ${item.missingDaysSinceLastData} (${item.missingCount}) days`)
+        // missingLines.push(`\nProtocol - ${field} - Days since last data (missing count last 30d)`)
+        // missingLastDayData.forEach((item: any) => {
+        //   missingLines.push(`${item.name} - ${hn(item[field])}m - ${item.missingDaysSinceLastData} (${item.missingCount}) days`)
+        // })
+        missingLines.push(['name', field, 'Days since last data', 'missing count last 30d'].join(' --- '))
+        const columns = ['name', field, 'Days since', 'missing 30d']
+        const tableData = missingLastDayData.map((item: any) => {
+          return {
+            name: item.name.slice(0, 21),
+            [field]: hn(item[field]),
+            'Days since': item.missingDaysSinceLastData,
+            'missing 30d': item.missingCount
+          }
         })
+        missingLines.push(tableToString(tableData, columns))
         missingLines.push('\n')
       }
 
@@ -235,10 +237,23 @@ async function run() {
         bigSpikes.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
         dropLines.push('Big spikes in ' + adapterType)
         dropLines.push('\n')
-        dropLines.push(`\nProtocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount`)
-        bigSpikes.forEach((item: any) => {
-          dropLines.push(`${item.name} - ${item[field]}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        // dropLines.push(`\nProtocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount`)
+        // bigSpikes.forEach((item: any) => {
+        //   dropLines.push(`${item.name} - ${item[field]}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        // })
+        dropLines.push(['Protocol', field, 'Today', 'Yesterday', 'Avg2 (30d average excluding last 4 days)', 'recordCount'].join(' --- '))
+        const columns = ['Protocol', 'incAvg4', 'Today', 'Yesterday', 'Avg2', 'recordCount']
+        const tableData = bigSpikes.map((item: any) => {
+          return {
+            Protocol: item.name,
+            incAvg4: `${item[field]}%`,
+            Today: hn(item.todayValue),
+            Yesterday: hn(item.yesterdayValue),
+            'Avg2': hn(item.average2),
+            recordCount: item.recordCount
+          }
         })
+        dropLines.push(tableToString(tableData, columns))
         dropLines.push('\n')
       }
 
@@ -256,10 +271,23 @@ async function run() {
         bigDrops.sort((a: any, b: any) => (a[field] ?? 0) - (b[field] ?? 0))
         dropLines.push('\n')
         dropLines.push('Big drops in ' + adapterType)
-        dropLines.push(`Protocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount\n`)
-        bigDrops.forEach((item: any) => {
-          dropLines.push(`${item.name} - ${item[field] * -1}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        // dropLines.push(`Protocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount\n`)
+        // bigDrops.forEach((item: any) => {
+        //   dropLines.push(`${item.name} - ${item[field] * -1}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        // })
+        dropLines.push(['Protocol', field, 'Today', 'Yesterday', 'Avg2 (30d average excluding last 4 days)', 'recordCount'].join(' --- '))
+        const columns = ['Protocol', 'incAvg4', 'Today', 'Yesterday', 'Avg2', 'recordCount']
+        const tableData = bigDrops.map((item: any) => {
+          return {
+            Protocol: item.name,
+            incAvg4: `${item[field] * -1}%`,
+            Today: hn(item.todayValue),
+            Yesterday: hn(item.yesterdayValue),
+            'Avg2': hn(item.average2),
+            recordCount: item.recordCount
+          }
         })
+        dropLines.push(tableToString(tableData, columns))
         dropLines.push('\n')
       }
     }

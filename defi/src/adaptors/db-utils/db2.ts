@@ -23,11 +23,13 @@ export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3
     const pgItem = record.getPGItem()
     const hourlyDDbItem = record.getHourlyDDBItem()
     const ddbItem = record.getDDBItem()
+    const eventItem = { ...record.getDDBItem(), source: 'dimension-adapter' }
 
     await Promise.all([
       Tables.DIMENSIONS_DATA.upsert(pgItem),
       dynamodb.putDimensionsData(ddbItem),
       dynamodb.putDimensionsData(hourlyDDbItem),
+      dynamodb.putEventData(eventItem),
     ])
   } catch (error) {
     if (retriesLeft > 0) {
@@ -118,12 +120,14 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
 }
 
 
-export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number }) {
+export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapterType: AdapterType, timestamp?: number }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+  const filterCondition: any = { timestamp: { [Op.gte]: timestamp } }
+  if (adapterType) filterCondition.type = adapterType
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, timestamp: { [Op.gte]: timestamp } },
+    where: filterCondition,
     attributes: ['data', 'timestamp', 'id', 'timeS'],
     raw: true,
     order: [['timestamp', 'ASC']],

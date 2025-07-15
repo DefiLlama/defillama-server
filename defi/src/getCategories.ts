@@ -1,8 +1,7 @@
 import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
-import { getR2 } from "./utils/r2";
-import { getClosestDayStartTimestamp } from "./utils/date";
+import { DAY, getClosestDayStartTimestamp } from "./utils/date";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -18,6 +17,12 @@ interface IProtocolsByCategory {
 
 interface Item {
   [key: string]: number;
+}
+
+interface IProtocolTvl {
+  protocol: IProtocol
+  historicalTvl: Item[]
+  lastTimestamp: number
 }
 
 function sum(
@@ -73,21 +78,46 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
   
   const { historicalProtocolTvls, } = historicalProtocolTvlsData
 
-  historicalProtocolTvls.forEach((protocolTvl) => {
-    if (!protocolTvl) {
+
+function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number) {
+  try {
+    let category = protocolTvl.protocol.category;
+    if (category && category !== "CEX" && category !== 'Chain') {
+      sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
       return;
     }
+  } catch (error) {
+    console.log(protocolTvl.protocol.name, error);
+  }
+}
+
+  historicalProtocolTvls.forEach((protocolTvl) => {
+    if (!protocolTvl) return;
+
+    let previousItem: Item = { SK: 0 }
     protocolTvl.historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      try {
-        let category = protocolTvl.protocol.category;
-        if (category && category !== "CEX" && category !== 'Chain') {
-          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
-          return;
-        }
-      } catch (error) {
-        console.log(protocolTvl.protocol.name, error);
+      const previousTimestamp = getClosestDayStartTimestamp(previousItem.SK)
+      const daysDifference = previousTimestamp ? (timestamp - previousTimestamp) / DAY : 0
+
+      for (let i = 1; i < daysDifference; i++) {
+        const interpolatedItem: Item = {}
+        Object.keys(previousItem).forEach((key) => {
+          if (['SK', 'PK'].includes(key)) {
+            interpolatedItem[key] = previousItem[key]
+            return
+          }
+
+          if (!item[key]) return 
+
+          interpolatedItem[key] = previousItem[key] + (item[key] - previousItem[key]) * i / daysDifference
+        })
+
+        addToChart(protocolTvl, interpolatedItem, previousTimestamp + DAY * i)
       }
+
+      addToChart(protocolTvl, item, timestamp)
+      previousItem = item
     })
   })
 

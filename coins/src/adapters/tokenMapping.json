@@ -9628,6 +9628,11 @@
     }
   },
   "hyperliquid": {
+    "0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF": {
+      "to": "coingecko#fartcoin",
+      "decimals": 6,
+      "symbol": "UFART"
+    },
     "0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

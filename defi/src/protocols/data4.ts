@@ -15153,7 +15153,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6243",
-    name: "Berachain Bribes",
+    name: "Berachain Incentive Buys",
     address: null,
     symbol: "BERA",
     url: "https://www.berachain.com/",

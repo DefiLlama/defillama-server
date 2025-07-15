@@ -209,7 +209,7 @@
     "0x0F6f337B09cb5131cF0ce9df3Beb295b8e728F3B": {
       "decimals": "18",
       "symbol": "SolvBTC.BERA",
-      "to": "coingecko#solv-btc"
+      "to": "coingecko#solv-protocol-staked-btc"
     }
   },
   "alephium": {

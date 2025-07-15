@@ -19162,6 +19162,7 @@ const data4: Protocol[] = [
       { name: "Chainlink", type: "Primary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] },
       { name: "RedStone", type: "Secondary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] }
     ],
+    stablecoins: ["ebusd"],
     parentProtocol: "parent#ebisu-finance",
     listedAt: 1752505837,
   },

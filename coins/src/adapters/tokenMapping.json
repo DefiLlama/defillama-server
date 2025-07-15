@@ -894,6 +894,21 @@
     }
   },
   "ethereum": {
+    "0x6b6b870c7f449266a9f40f94eca5a6ff9b0857e4": {
+      "decimals": "18",
+      "symbol": "tBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }, 
+    "0xa01227a26a7710bc75071286539e47adb6dea417": {
+      "decimals": "18",
+      "symbol": "tUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    }, 
+    "0xa1150cd4a014e06f5e0a6ec9453fe0208da5adab": {
+      "decimals": "18",
+      "symbol": "tETH",
+      "to": "coingecko#ethereum"
+    },
     "0x0000206329b97db379d5e1bf586bbdb969c63274": {
       "decimals": "18",
       "symbol": "USDA",
@@ -1300,6 +1315,21 @@
     }
   },
   "bsc": {
+    "0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2": {
+      "decimals": "18",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
+    "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34": {
+      "decimals": "18",
+      "symbol": "USDe",
+      "to": "coingecko#ethena-usde"
+    },
+    "0x6c948a4c31d013515d871930fe3807276102f25d": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BNB",
+      "to": "coingecko#solv-btc"
+    },
     "0x77c9b49a58325131D08F9dC120388f20c57c2572": {
       "decimals": "18",
       "symbol": "slisBNB CollateralListaDAODistributor",
@@ -1485,6 +1515,16 @@
     }
   },
   "arbitrum": {
+    "0x1903aa5b603819B9dEbd2F4b202B686e9e393AfF": {
+      "decimals": "18",
+      "symbol": "eATH",
+      "to": "coingecko#aethir"
+    },
+    "0x6dbd962b4f62d18f756b5de57425574c4b8228d6": {
+      "decimals": "6",
+      "symbol": "dUSDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x0000206329b97db379d5e1bf586bbdb969c63274": {
       "decimals": "18",
       "symbol": "USDA",

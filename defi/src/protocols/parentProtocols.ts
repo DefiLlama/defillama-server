@@ -4711,7 +4711,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Native",
     url: "https://native.org",
     description:
-      "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+      "Native is an on-chain platform to build token liquidity that is openly accessible and cost effective. It serves as an alternative to traditional AMMs through integration of two innovative designs: the Native Swap Engine and Native Credit Pool",
     logo: `${baseIconsUrl}/native.jpg`,
     gecko_id: null,
     cmcId: null,

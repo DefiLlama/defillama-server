@@ -44202,14 +44202,15 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4663",
-    name: "Native Lend",
+    name: "Native Credit Pool",
+    previousNames: ["Native Lend"],
     address: null,
     symbol: "-",
     url: "https://native.org",
     description:
       "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/native-lend.jpg`,
+    logo: `${baseIconsUrl}/native-credit-pool.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -51913,7 +51914,7 @@ const data3_2: Protocol[] = [
     category: "Developer Tools",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "thegraph/index.js",  // preivous dummy, then added adapter https://github.com/DefiLlama/DefiLlama-Adapters/pull/15492
     twitter: "graphprotocol",
     audit_links: [],
     github: ["graphprotocol"],

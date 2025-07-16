@@ -3120,4 +3120,10 @@ export default {
     "liquidlaunch": {
         id: "6441"
     },
+    "multiswap": {
+        id: "1908"
+    },
+    "prjx": {
+        id: "6444"
+    }
 } as AdaptorsConfig

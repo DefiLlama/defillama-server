@@ -348,7 +348,7 @@ export default {
   "vetrade": {
     id: "6253"
   },
-  // "dzap": {  // wash trading?
+  // "dzap": {  // wash trading?, re-enabled with new listing 6435
   //   id: "6259"
   // },
   "haiku": {

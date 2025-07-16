@@ -39461,8 +39461,8 @@ const data3_2: Protocol[] = [
   {
     id: "4449",
     name: "pump.fun", 
-    address: null,
-    symbol: "-",
+    address: "solana:pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+    symbol: "PUMP",
     url: "https://www.pump.fun/",
     description:
       "Launch a coin that is instantly tradeable in one click for free",
@@ -39470,8 +39470,8 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/pump.fun.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "pump-fun",
+    cmcId: "36507",
     category: "Launchpad",
     chains: ["Solana"],
     module: "dummy.js",

@@ -15,11 +15,12 @@ async function getTokenPrices(timestamp: number) {
   const { data: assets } = await axios.get(
     "https://nightshade.finance/api/defillama-token-list?verified=true",
   );
-  assets.forEach(({ id, slug, decimals, priceUsd }: any) =>
+
+  assets.forEach(({ address, slug, decimals, priceUsd }: any) =>
     addToDBWritesList(
       writes,
       "alephium",
-      id,
+      address,
       priceUsd,
       decimals,
       slug,

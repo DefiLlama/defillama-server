@@ -3834,5 +3834,11 @@ export default {
     },
     "multiswap": {
         id: "1908"
+    },
+    "prjx": {
+        id: "6444"
+    },
+    "votre": {
+        id: "6316"
     }
 } as AdaptorsConfig

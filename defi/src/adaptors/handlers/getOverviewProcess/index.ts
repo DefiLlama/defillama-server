@@ -135,9 +135,9 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyNotionalVolume,
     ],
     [AdapterType.DERIVATIVES]: [
-        AdaptorRecordType.dailyShortOpenInterest,
-        AdaptorRecordType.dailyLongOpenInterest,
-        AdaptorRecordType.dailyOpenInterest
+        AdaptorRecordType.shortOpenInterestAtEnd,
+        AdaptorRecordType.longOpenInterestAtEnd,
+        AdaptorRecordType.openInterestAtEnd
     ]
 }
 

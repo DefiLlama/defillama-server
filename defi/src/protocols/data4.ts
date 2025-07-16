@@ -18329,7 +18329,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://unicornx.ai/app/download",
     description:
-      "Community-powered DEX with real-time Alpha signals. Fast, fair, and fully on-chain.",
+      "The singular trading ecosystem, more than a DEX.",
     chain: "Solana",
     logo: `${baseIconsUrl}/unicornx.jpg`,
     audits: "0",
@@ -18339,7 +18339,7 @@ const data4: Protocol[] = [
     category: "Trading App",
     chains: ["Solana", "Binance"],
     module: "dummy.js",
-    twitter: "UV_DAO",
+    twitter: "unicornxdex",
     forkedFromIds: [],
   },
   {

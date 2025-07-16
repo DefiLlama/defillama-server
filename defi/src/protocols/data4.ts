@@ -17209,7 +17209,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kgen.io/",
-    description: "KGeN is a multi-chain social layer for gamers, using soulbound POG Cards to track reputation, enable quests, and reward on-chain engagement across Web3 communities.",
+    description: "KGeN is building the world's largest Verified Distribution Protocol (VeriFi), which is designed to accelerate business growth through real, verified users.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/kgen.jpg`,
     audits: "0",

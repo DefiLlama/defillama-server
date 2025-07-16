@@ -1,5 +1,6 @@
 import { IPoRAdapter } from '../types';
 import fs from 'fs';
+import path from 'path';
 
 // usage
 // ts-node cli/test.ts project-slug
@@ -7,9 +8,15 @@ import fs from 'fs';
 
 const projectArgv = process.argv[2];
 
+// Handle input
+if (!projectArgv) {
+  console.error('❌ Missing project name (e.g., "wbtc" or "allProtocols")');
+  process.exit(1);
+}
+
 const projects: Array<string> = [];
 if (projectArgv === 'allProtocols') {
-  const items = fs.readdirSync(`${__dirname}/../adapters`);
+  const items = fs.readdirSync(path.join(__dirname, '..', 'adapters'));
   for (const item of items) {
     let adapterName = item;
     if (item.includes('.ts')) {
@@ -27,17 +34,18 @@ if (projectArgv === 'allProtocols') {
     let adapter: IPoRAdapter | null = null;
   
     try {
-      const adapterFile = `../adapters/${project}`;
-      adapter = (await import(adapterFile)).default;
+      const adapterFile = path.join('..', 'adapters', project);
+      adapter = require(adapterFile).default;
     } catch(e: any) {
-      console.log(`adapter ${project} not found`);
+      console.error(`❌ Failed to load adapter "${project}":`);
+      console.error(e.message || e);
       process.exit(0);
     }
   
     if (adapter) {
       console.log('')
       console.info(`🦙 Checking ${project.toUpperCase()} assets & reserves 🦙`)
-      console.info(`---------------------------------------------------`)
+      console.info(`---------------------------------------------------------------------`)
       console.log('')
   
       try {

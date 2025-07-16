@@ -24,7 +24,15 @@ function sum(sumDailyTvls: SumCategoriesOrTagsByChainTvls, tvlSection: string, t
   }
 }
 
-async function getCategoryOrTagByChain({ category, tag, chain }: { category?: string | null; tag?: string | null; chain?: string | null }) {
+async function getCategoryOrTagByChain({
+  category,
+  tag,
+  chain,
+}: {
+  category?: string | null;
+  tag?: string | null;
+  chain?: string | null;
+}) {
   const categoryOrTag = category || tag;
   if (!categoryOrTag) {
     return null;

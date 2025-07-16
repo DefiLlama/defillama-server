@@ -1,3 +1,4 @@
+process.env.IS_NOT_SCRIPT_MODE = 'TRUE'
 const path = require('path');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
@@ -15,6 +16,7 @@ try {
 
 
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
+import { runMiscCommand } from './misc';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
 const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
@@ -40,14 +42,19 @@ function startDevWebServer() {
   const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   const reactAppPath = path.resolve(__dirname, '..');
 
-  // Start React with specific port and environment
-  reactApp = spawn(npmPath, ['run', 'start-react'], {
-    cwd: reactAppPath,
-    env: {
-      ...process.env,
-      PORT: 5001
-    }
-  });
+  try {
+
+    // Start React with specific port and environment
+    reactApp = spawn(npmPath, ['run', 'start-react'], {
+      cwd: reactAppPath,
+      env: {
+        ...process.env,
+        PORT: 5001
+      }
+    });
+  } catch (error) {
+    console.error('Error starting React app:', error);
+  }
 
   wss.on('connection', onWebSocketConnection)
 
@@ -195,6 +202,11 @@ const onAuthentication = (ws: any) => {
         break;
       case 'restart-server':
         restartServer();
+        break;
+
+
+      case 'misc-runCommand':
+        runMiscCommand(ws, data.data);
         break;
 
       default: console.error('Unknown message type:', data.type); break;

@@ -8,7 +8,7 @@ import {
   Input,
   Flex,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 import './App.css';
@@ -65,6 +65,12 @@ const App = () => {
   const [tvlDeleteWaitingRecordsShowChart, setTvlDeleteWaitingRecordsShowChart] = useState(true);
   const [tvlDeleteWaitingRecordsSelectedChartColumn, setTvlDeleteWaitingRecordsSelectedChartColumn] = useState('');
 
+
+  // misc tab
+  const [miscForm] = Form.useForm();
+  const miscAction = Form.useWatch('action', miscForm);
+  const [miscOutputTableData, setMiscOutputTableData] = useState({});
+
   function addWebSocketConnection() {
     try {
       _addWebSocketConnection();
@@ -86,10 +92,11 @@ const App = () => {
       }
     }
     const port = process.env.REACT_APP_WSS_PORT || 8080;
-    let wsUrl = `${window.location.hostname}:${port}`;
+    let wsUrl = `http://${window.location.hostname}:${port}`;
     let host = window.location.toString()
     if (host.startsWith('https://'))
       wsUrl = host
+    console.log('WebSocket URL:', wsUrl);
 
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
@@ -100,6 +107,11 @@ const App = () => {
         setIsConnected(true);
         console.log('WebSocket connected');
       };
+    } else {
+      ws.onopen = () => {
+        setIsConnected(true);
+        console.log('WebSocket connected');
+      }
     }
 
     ws.onclose = () => {
@@ -135,6 +147,11 @@ const App = () => {
         case 'tvl-delete-waiting-records':
           setTvlDeleteWaitingRecords(data.data);
           break;
+        case 'get-protocols-missing-tokens-response':
+        case 'get-protocols-token-dominance-response':
+        case 'get-dim-protocols-missing-metrics-response':
+          setMiscOutputTableData(data);
+          break;
         default:
           console.log('Unknown message type', data);
           break;
@@ -153,6 +170,7 @@ const App = () => {
   // Key for localStorage
   const DIMENSIONS_FORM_STORAGE_KEY = 'dimensionRefillFormValues';
   const TVL_FORM_STORAGE_KEY = 'tvlFormValues';
+  const MISC_FORM_STORAGE_KEY = 'miscFormValues';
   const ACTIVE_TAB_KEY_STORAGE = 'activeTabKey';
 
   // Load form values from localStorage on mount
@@ -200,8 +218,10 @@ const App = () => {
     }}>
       <Layout className='layout'>
         <Flex gap={10} style={{ margin: '10px 10px 0' }} align='center' justify='flex-end'>
-          <Button
-            type="primary"
+
+          {!isConnected && <Text type="danger" style={{ marginLeft: 10 }}>WebSocket disconnected</Text>}
+
+          <Button icon={<LockOutlined />}
             onClick={() => {
               const password = prompt('Please enter WebSocket authentication password:');
               if (password) {
@@ -211,22 +231,9 @@ const App = () => {
             }}
             style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
           >
-            Set API Key
+            Set Key
           </Button>
-          {/* <Button
-            type="primary"
-            onClick={() => {
-              const url = prompt('Please enter WebSocket url:');
-              if (url) {
-                localStorage.setItem('wsUrl', url);
-                addWebSocketConnection();
-              }
-            }}
-            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
-          >
-            Set WS Link
-          </Button> */}
-          <Button
+          <Button icon={<ApiOutlined />}
             onClick={addWebSocketConnection}
             style={{ display: isConnected ? 'none' : 'block' }}
           >
@@ -245,6 +252,15 @@ const App = () => {
             style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
           >
             Restart Server
+          </Button>
+
+
+          <Button
+            style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
+            icon={<ClearOutlined />}
+            onClick={clearOutput}
+          >
+            Clear Output
           </Button>
 
           <Button
@@ -272,6 +288,11 @@ const App = () => {
                     key: 'tvl',
                     children: <div>{getTvlForm()}</div>,
                   },
+                  {
+                    label: 'misc',
+                    key: 'misc',
+                    children: <div>{getMiscForm()}</div>,
+                  },
                 ]}
                 onChange={(key) => {
                   setActiveTabKey(key);
@@ -283,6 +304,8 @@ const App = () => {
               {activeTabKey === 'dimensions' && getWaitingRecordsTable()}
               {activeTabKey === 'tvl' && getTvlStoreWaitingTable()}
               {activeTabKey === 'tvl' && getTvlDeleteWaitingTable()}
+              {activeTabKey === 'misc' && getMiscOutputTable()}
+
 
               {output && (<Divider>Console Output</Divider>)}
               <div
@@ -439,14 +462,6 @@ const App = () => {
           >
             Run
           </Button>
-          <Button
-            style={{ marginLeft: 10 }}
-            icon={<ClearOutlined />}
-            onClick={clearOutput}
-          >
-            Clear Output
-          </Button>
-          {!isConnected && <Text type="danger" style={{ marginLeft: 10 }}>WebSocket disconnected</Text>}
         </Form.Item>
       </Form>
     )
@@ -497,7 +512,6 @@ const App = () => {
         <Form.Item
           label="Protocol"
           name="protocol"
-          rules={[{ required: true, message: 'Please select a protocol' }]}
         >
           <Select placeholder="Select Protocol"
             optionFilterProp="children"
@@ -552,14 +566,6 @@ const App = () => {
           >
             Run
           </Button>
-          <Button
-            style={{ marginLeft: 10 }}
-            icon={<ClearOutlined />}
-            onClick={clearOutput}
-          >
-            Clear Output
-          </Button>
-          {!isConnected && <Text type="danger" style={{ marginLeft: 10 }}>WebSocket disconnected</Text>}
         </Form.Item>
 
 
@@ -890,6 +896,132 @@ const App = () => {
     );
   }
 
+  function getMiscOutputTable() {
+    if (!miscOutputTableData?.type) return null;
+    let clearButton = (
+      <Button type="primary" icon={<ClearOutlined />}
+        onClick={() => setMiscOutputTableData({})}
+      > Clear list </Button>)
+
+    let data = ''
+    const cgCMCColumns = [
+      { title: 'Protocol/chain', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+      { title: 'Domain', dataIndex: 'domainK', key: 'domainK', sorter: (a, b) => a.domainK.localeCompare(b.domainK) },
+      { title: 'Twitter', dataIndex: 'twitterK', key: 'twitterK', sorter: (a, b) => a.twitterK.localeCompare(b.twitterK) },
+      { title: 'Symbols', dataIndex: 'symbols', key: 'symbols', sorter: (a, b) => a.symbols.localeCompare(b.symbols) },
+      { title: 'Coin IDs', dataIndex: 'coinIds', key: 'coinIds', sorter: (a, b) => a.coinIds.localeCompare(b.coinIds) },
+      { title: 'Coins', dataIndex: 'coins', key: 'coins', sorter: (a, b) => a.coins.localeCompare(b.coins) },
+      { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+    ]
+    switch (miscOutputTableData.type) {
+      case 'get-protocols-missing-tokens-response':
+        data = (
+          <div> 
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Missing CG Mappings
+            </div>
+            <Table
+              columns={cgCMCColumns}
+              dataSource={miscOutputTableData.data?.coingecko || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Missing CMC Mappings
+            </div>
+            <Table
+              columns={cgCMCColumns}
+              dataSource={miscOutputTableData.data?.coinmarketcap || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Protocols missing symbol info
+            </div>
+            <Table
+              columns={[
+                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                { title: 'Symbol', dataIndex: 'symbol', key: 'symbol', sorter: (a, b) => a.symbol.localeCompare(b.symbol) },
+                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+              ]}
+              dataSource={miscOutputTableData.data?.protocolsMissingSymbols || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
+              Protocols missing Address info
+            </div>
+            <Table
+              columns={[
+                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                { title: 'Address', dataIndex: 'address', key: 'address', sorter: (a, b) => a.address.localeCompare(b.address) },
+                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+              ]}
+              dataSource={miscOutputTableData.data?.protocolsMissingAddresses || []}
+              pagination={{ pageSize: 100 }}
+              rowKey={(record) => record.name}
+            />
+
+
+
+          </div>
+        )
+        break;
+      case 'get-protocols-token-dominance-response':
+        data = (<Table
+        columns={[
+          { title: 'Protocol', dataIndex: 'protocol', key: 'protocol', sorter: (a, b) => a.protocol.localeCompare(b.protocol) },
+          { title: 'Token', dataIndex: 'highestToken', key: 'highestToken', sorter: (a, b) => a.tokenSymbol.localeCompare(b.tokenSymbol) },
+          { title: '% of TVL', dataIndex: 'dominance', key: 'dominance', sorter: (a, b) => a.dominance - b.dominance },
+          { title: 'Token value', dataIndex: 'highestTokenValueHN', key: 'highestTokenValueHN', sorter: (a, b) => a.highestTokenValue - b.highestTokenValue },
+          { title: 'Project tvl', dataIndex: 'totalTvlHN', key: 'totalTvlHN', sorter: (a, b) => a.totalTvl - b.totalTvl },
+          { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+          // { title: 'forkedFrom', dataIndex: 'forkedFrom', key: 'forkedFrom', sorter: (a, b) => a.forkedFrom.localeCompare(b.forkedFrom) },
+          // { title: 'misrepresentedTokens', dataIndex: 'misrepTokens', key: 'misrepTokens', },
+        ]}
+          dataSource={miscOutputTableData.data}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+        />)
+        break;
+      case 'get-dim-protocols-missing-metrics-response':
+        const tableData = miscOutputTableData.data.map(record => {
+          const shallowCopy = {...record}
+          shallowCopy.missingMetrics = record.missingMetrics.join(', ');
+          shallowCopy.chains = record.chains.join(', ');
+          return shallowCopy
+        })        
+
+        data = (<Table
+        columns={[
+          { title: 'Protocol', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+          { title: 'Missing Metrics', dataIndex: 'missingMetrics', key: 'missingMetrics', sorter: (a, b) => a.missingMetrics - b.missingMetrics },
+          { title: 'Missing Chains', dataIndex: 'chains', key: 'chains', sorter: (a, b) => a.chains.localeCompare(b.chains) },
+        ]}
+          dataSource={tableData}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+        />)
+        break;
+      default:
+        return null; // Handle unknown type
+    }
+
+    return (
+      <div>
+        <div style={{ marginBottom: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          {clearButton}
+        </div>
+        {data}
+      </div>
+    );
+  }
+
   function getTvlDeleteWaitingTable() {
     if (!tvlDeleteWaitingRecords?.length) return null;
     tvlDeleteWaitingRecords.forEach(record => record.unixTimestamp = '' + record.unixTimestamp);
@@ -1027,6 +1159,70 @@ const App = () => {
         />
       </div >
     );
+  }
+
+  function getMiscForm() {
+    // Handle form submission
+    const handleSubmit = (values) => {
+      const { dateRange, ...rest } = values;
+      const payload = {
+        type: 'misc-runCommand',
+        data: {
+          ...rest,
+          protocolName: values.protocol,
+          dateFrom: values.dateRange && Math.floor(values.dateRange[0].valueOf() / 1000),
+          dateTo: values.dateRange && Math.floor(values.dateRange[1].valueOf() / 1000),
+        }
+      };
+      console.log(' Misc Form values:', values, payload);
+
+      if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+        wsRef.current.send(JSON.stringify(payload));
+      }
+    };
+
+    // Save form values to localStorage on change
+    const handleFormChange = (_, allValues) => {
+      localStorage.setItem(MISC_FORM_STORAGE_KEY, JSON.stringify(allValues));
+    };
+
+    return (
+      <Form
+        form={miscForm}
+        layout="vertical"
+        onFinish={handleSubmit}
+        onValuesChange={handleFormChange}
+        initialValues={{
+          action: 'Get protocols token dominance'
+        }}
+        style={{ 'max-width': '400px' }}
+      >
+        <Form.Item
+          label="Action"
+          name="action"
+          rules={[{ required: true, message: 'Please select an action' }]}
+        >
+          <Select>
+            <Option value="Get protocols token dominance">Get protocol token dominance Table</Option>
+            <Option value="Get protocols missing tokens">Missing cg/cmc mapping</Option>
+            <Option value="[Dimensions] Get protocols missing metrics">[Dimensions] Get protocols missing metrics</Option>
+          </Select>
+        </Form.Item>
+
+
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            icon={<PlayCircleOutlined />}
+            disabled={!isConnected}
+          >
+            Run
+          </Button>
+        </Form.Item>
+
+      </Form>
+    )
   }
 };
 

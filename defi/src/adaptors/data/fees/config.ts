@@ -2085,7 +2085,8 @@ export default {
         id: "5715"
     },
     "jumper-exchange": {
-        id: "3524"
+        id: "3524",
+         enabled: false
     },
     "ocelex": {
         parentId: "Ocelex",
@@ -3794,5 +3795,41 @@ export default {
     },
     "kanalabs-perp": {
         id: "6175"
-    }
+    },
+    "hyperbloom": {
+        id: "6329"
+    },
+    "fullsail-finance": {
+        id: "6413"
+    },
+    "hyperwave": {
+        id: "6407"
+    },
+    "meso-finance": {
+        id: "4938"
+    },
+    "apebot": {
+        id: "6420"
+    },
+    "ebisu-ebusd": {
+        id: "6423"
+    },
+    "cobaltx": {
+        id: "6425"
+    },
+    "40acres": {
+        id: "6061"
+    },
+    "nerite": {
+        id: "6434"
+    },
+    "pumper": {
+        id: "6436",
+    },
+    "echo-lsd": {
+        id: "5464",
+    },
+    "liquidlaunch": {
+        id: "6441"
+    },
 } as AdaptorsConfig

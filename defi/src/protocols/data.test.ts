@@ -6,6 +6,7 @@ import protocols, { protocolsById } from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
+import { sluggifyString } from "../utils/sluggify";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
@@ -183,6 +184,16 @@ test("no name is repeated", async () => {
     }
   }
 });
+
+test("no slug is repeated", async () => {
+  const slugs = new Set();
+  for (const protocol of (protocols).concat(parentProtocols as any)) {
+    const slug = sluggifyString(protocol.name.trim());
+    expect(slugs).not.toContain(slug);
+    slugs.add(slug);
+  }
+});
+
 
 test("all oracle names match exactly", async () => {
   const oracles = {} as any;

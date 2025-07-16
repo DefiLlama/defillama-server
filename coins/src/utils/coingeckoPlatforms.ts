@@ -1,4 +1,4 @@
-import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { cgPlatformtoChainId as platformMap } from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
 import {
   chainsThatShouldNotBeLowerCased,
@@ -11,13 +11,6 @@ export const staleMargin = 6 * 60 * 60;
 interface StringObject {
   [id: string]: string | undefined;
 }
-export const platformMap = Object.entries(chainToCoingeckoId).reduce(
-  (o: any, i) => {
-    o[i[1]] = i[0];
-    return o;
-  },
-  {},
-) as StringObject;
 
 export interface Coin {
   id: string;

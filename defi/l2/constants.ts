@@ -123,6 +123,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6150": "treasure",
   "6151": "zkcandy",
   "6284": "ao",
+  "6424": "soon",
+  "6438": "echelon-bridge",
+  "6439": "inertia-bridge",
+  "6440": "milkyway_rollup_bridge",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -136,6 +140,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
   "6401": "embr",
+  "6414": "xion",
 };
 
 export const allChainKeys: string[] = [
@@ -241,4 +246,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // "zkcandy": {}
   "ao": { ticker: "AO", address: "coingecko:ao-computers" },
   // embr: {}
+  "xion": { ticker: "XION", address: "coingecko:xion-2" },
 };

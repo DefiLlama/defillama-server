@@ -425,6 +425,7 @@ const data2: Protocol[] = [
     treasury: "kromatika.js",
     listedAt: 1644597183,
     github: ["Kromatika-Finance"],
+    audit_links: ["https://skynet.certik.com/projects/kromatika"]
   },
   {
     id: "1398",
@@ -20645,7 +20646,7 @@ const data2: Protocol[] = [
       "WOOFi Earn features supercharger vaults allow users to provide liquidity in WOOFi swap and earn single sided yields by delegating the liquidity management to the sPMM pool manager.",
     chain: "Binance",
     logo: `${baseIconsUrl}/woofi-earn.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20656,6 +20657,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1668524390,
     parentProtocol: "parent#woofi",
+    audit_links: ["https://learn.woo.org/woofi-docs/woofi-dev-docs/references/audits-and-bounties"]
   },
   {
     id: "2285",
@@ -27823,13 +27825,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2605",
-    name: "Rysk Finance",
+    name: "Rysk V1",
     address: null,
     symbol: "-",
     url: "https://www.rysk.finance",
     description: "Crypto uncorrelated returns.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/rysk-finance.jpg`,
+    logo: `${baseIconsUrl}/rysk-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -27837,10 +27839,17 @@ const data2: Protocol[] = [
     category: "Options",
     chains: ["Arbitrum"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.rysk.finance/resources/oracle"],
+      }
+    ],
     module: "rysk/index.js",
     twitter: "ryskfinance",
+    parentProtocol: "parent#rysk-finance",
     listedAt: 1677530240,
-    github: ["rysk-finance"],
   },
   {
     id: "2606",

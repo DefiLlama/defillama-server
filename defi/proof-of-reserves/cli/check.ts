@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { IPoRAdapter } from '../types';
 import { sendMessage } from "../../src/utils/discord";
 import * as sdk from '@defillama/sdk';
@@ -13,10 +14,11 @@ interface Protocoldata {
   mintedUSD_hn?: string;
   backingString?: string;
   error?: string;
+  whitelisted?: boolean;
 }
 
 let projects: Array<Protocoldata> = [];
-const items = fs.readdirSync(`${__dirname}/../adapters`);
+const items = fs.readdirSync(path.join(__dirname, '..', 'adapters'));
 for (const item of items) {
   let adapterName = item;
   if (item.includes('.ts')) {
@@ -34,10 +36,10 @@ for (const item of items) {
     .for(projects)
     .process(async (project) => {
       try {
-
-        const adapterFile = `../adapters/${project.protocolId}`;
+        const adapterFile = path.join('..', 'adapters', project.protocolId);
         const adapter: IPoRAdapter = (await import(adapterFile)).default;
 
+        project.whitelisted = adapter.whitelised;
         project.mintedUSD = await adapter.minted({});
         project.mintedUSD_hn = sdk.humanizeNumber(project.mintedUSD)
         project.reservesUSD = await adapter.reserves();
@@ -64,7 +66,9 @@ for (const item of items) {
     printColumns.push('error');
   }
 
-  const filteredProtocols = projects.filter(project => !project.backing || isNaN(project.backing) || project.backing <= 98);
+  const filteredProtocols = projects
+    .filter(project => !project.whitelisted)
+    .filter(project => !project.backing || isNaN(project.backing) || project.backing <= 98);
 
   const message = `
 Protocols minted tokens more than reserves:

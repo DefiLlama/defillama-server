@@ -368,5 +368,11 @@ export default {
   },
   "obsidian": {
     id: "6393"
+  },
+  "apstation": {
+    id: "6416"
+  },
+  "dzap": {
+    id: "6435"
   }
 } as AdaptorsConfig;

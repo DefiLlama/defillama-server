@@ -3110,5 +3110,14 @@ export default {
     },
     "carbon": {
         id: "6409"
-    }
+    },
+    "fullsail-finance": {
+        id: "6413"
+    },
+    "cobaltx": {
+        id: "6425"
+    },
+    "liquidlaunch": {
+        id: "6441"
+    },
 } as AdaptorsConfig

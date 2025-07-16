@@ -2972,6 +2972,7 @@ const data: Protocol[] = [
     twitter: "flamincome",
     github: ["flamincome"],
     audit_links: ["https://github.com/flamincome/audits"],
+    deadUrl: true,
   },
   {
     id: "244",
@@ -3086,7 +3087,7 @@ const data: Protocol[] = [
       "Stake DAO is a non-custodial decentralized protocol enabling users to access optimized yield opportunities in DeFi",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stakedao.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: "stake-dao",
     cmcId: "8299",
@@ -3097,6 +3098,7 @@ const data: Protocol[] = [
     twitter: "StakeDAOHQ",
     governanceID: ["snapshot:stakedao.eth"],
     github: ["StakeDAO"],
+    audit_links: ["https://docs.stakedao.org/audits"]
   },
   {
     id: "250",
@@ -3121,8 +3123,8 @@ const data: Protocol[] = [
     id: "251", // previously Mimo Protocol
     name: "Parallel Protocol",
     previousNames: ["Mimo Protocol"],
-    address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
-    symbol: "MIMO",
+    address: "0x6c0aeceeDc55c9d55d8B99216a670D85330941c3",
+    symbol: "PRL",
     url: "https://mimo.capital",
     description:
       "Parallel is a decentralized protocol that issues stablecoins, PAR (EUR stablecoin) and paUSD (USD stablecoin), on the Ethereum, Polygon and Fantom blockchains. The PAR & paUSD stablecoin are decentralized, non-custodials, and collateral-backed FIAT stablecoins.",
@@ -3130,8 +3132,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/parallel-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "mimo-parallel-governance-token",
-    cmcId: "10831",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
@@ -4996,7 +4998,7 @@ const data: Protocol[] = [
   },
   {
     id: "337",
-    name: "GMX V1",
+    name: "GMX V1 Perps",
     address: "arbitrum:0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     symbol: "GMX",
     url: "https://gmx.io/",
@@ -5004,7 +5006,7 @@ const data: Protocol[] = [
     description:
       "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/gmx-v1.png`,
+    logo: `${baseIconsUrl}/gmx-v1-perps.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -7621,9 +7623,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Telcoin",
     address: "polygon:0xdf7837de1f2fa4631d716cf2502f8b230f1dcc32",
     symbol: "TEL",
-    url: "https://www.telx.network",
+    url: "https://www.telco.in",
     description:
-      "TELx is a network of decentralized financial markets powered by active Telcoin users. TELx functions as the decentralized liquidity engine of the Telcoin platform's suite of user-owned, mobile based financial products, including the Send Money Smarter Network and TELxchange.",
+      "Telcoin (TEL) is an Ethereum-based token designed for the open-sourced fintech platform and remittance market. It aims to provide low-cost, high-quality financial products for mobile phone users worldwide, focusing on unbanked populations. TEL is used for payments via mobile platforms and e-wallets, offering a cost-effective alternative to traditional money transfer platforms like Western Union.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/telcoin.png`,
     audits: "2",
@@ -7633,7 +7635,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Payments",
     chains: ["Polygon"],
     module: "telcoin/index.js",
-    twitter: "telcoin_team",
+    twitter: "telcoin",
     audit_links: ["https://www.certik.org/projects/telcoin"],
     github: ["telcoin"],
   },
@@ -8469,14 +8471,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       {
         name: 'WINkLink',
         type: 'Primary',
-        proof: [''],
+        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle'],
         startDate: '2021-11-04',
         endDate: '2025-05-15',
       },
       {
-        name: 'Chainlink',
+        name: 'Internal',
         type: 'Primary',
-        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle'],
+        proof: ['https://docs.justlend.org/developers/supply-and-borrow-market/price-oracle', 'https://tronscan.org/#/address/TBPtNVdgkB8QPRHAJeZok6D9pqsFdALv9w'],
         startDate: '2025-05-15',
       },
     ],

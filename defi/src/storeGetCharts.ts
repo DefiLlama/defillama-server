@@ -17,6 +17,7 @@ import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
 import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
+import { TagCatetgoryMap } from "./protocols/tags";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -289,6 +290,8 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      const protocolCategory = protocol.tags?.length ? TagCatetgoryMap[protocol.tags[0]] : protocol.category
+     
       // total - sum of all protocols on all chains
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
 
@@ -296,11 +299,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
       if (protocol.doublecounted) {
         sum(sumDailyTvls, "total", "doublecounted", timestamp, item.tvl);
       }
-      if (protocol.category?.toLowerCase() === "liquid staking") {
+      if (protocolCategory?.toLowerCase() === "liquid staking") {
         sum(sumDailyTvls, "total", "liquidstaking", timestamp, item.tvl);
       }
       // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
-      if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+      if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
         sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
       }
 
@@ -327,16 +330,16 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
+            sum(sumCategoryTvls, (protocolCategory || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking") {
+            if (protocolCategory?.toLowerCase() === "liquid staking") {
               sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+            if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
               sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
             }
           }
@@ -357,11 +360,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
         if (protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "doublecounted", timestamp, item.tvl);
         }
-        if (protocol.category?.toLowerCase() === "liquid staking") {
+        if (protocolCategory?.toLowerCase() === "liquid staking") {
           sum(sumDailyTvls, chainName, "liquidstaking", timestamp, item.tvl);
         }
 
-        if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+        if (protocolCategory?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, item.tvl);
         }
       }

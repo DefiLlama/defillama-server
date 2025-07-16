@@ -77,7 +77,7 @@ export default {
   aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
-  elexium: require("./markets/elexium"),
+  nightshade: require("./markets/nightshade"),
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
   solend: require("./solana/solend"),

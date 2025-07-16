@@ -19560,5 +19560,26 @@ const data4: Protocol[] = [
     twitter: "LiquidLaunchHL",
     forkedFrom: [],
   },
+  {
+    id: "6442",
+    name: "Ostrich",
+    address: null,
+    symbol: "-",
+    url: "https://app.ostrich.exchange/explore",
+    description: "Global Exchange Onchain. Trade stocks from the US, China, Japan, Germany, UK straight from your wallet with upto 50x leverage.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ostrich.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "ostrich/index.js",
+    twitter: "Ostrich_HQ",
+    forkedFrom: [],
+    audit_links: ["https://docs.ostrich.exchange/platform/audit-reports"],
+    listedAt: 1752655880
+  },
 ];
 export default data4;

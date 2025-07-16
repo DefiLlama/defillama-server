@@ -51913,7 +51913,7 @@ const data3_2: Protocol[] = [
     category: "Developer Tools",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "thegraph/index.js",  // preivous dummy, then added adapter https://github.com/DefiLlama/DefiLlama-Adapters/pull/15492
     twitter: "graphprotocol",
     audit_links: [],
     github: ["graphprotocol"],

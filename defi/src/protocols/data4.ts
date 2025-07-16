@@ -19638,7 +19638,32 @@ const data4: Protocol[] = [
     chains: ["Ripple"],
     module: "coinbase-xrp/index.js",
     forkedFrom: [],
-    twitter: "coinbase"
-  }
+    twitter: "coinbase",
+    listedAt: 1752694903,
+  },
+  {
+    id: "6446",
+    name: "K-BIT",
+    address: null,
+    symbol: "-",
+    url: "https://app.k-bit.xyz",
+    description: "K-BIT is the first PerpDEX on Kaia, and aims to be the no.1 PerpDEX in the world",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/k-bit.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Klaytn"],
+    module: "k-bit/index.js",
+    twitter: "kbit_xyz",
+    forkedFromIds: [],
+    audit_links: [
+      "https://www.halborn.com/audits/k-bit/perpdex",
+      "https://hacken.io/audits/k-bit/sca-k-bit-k-bit-contracts-jan2025/"
+    ],
+    listedAt: 1752694922,
+  },
 ];
 export default data4;

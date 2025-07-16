@@ -53902,9 +53902,17 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Anchor BTC",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Plume"],
     forkedFrom: [],
     module: "avalon-finance-cedefi/index.js",
+    oraclesBreakdown: [ 
+      {
+         name: "Chronicle", 
+         type: "Primary", 
+         proof: [], 
+         chains: [{ chain: "Plume" }],
+      }, 
+    ], 
     twitter: "avalonfinance_",
     parentProtocol: "parent#avalon-labs",
     audit_links: [],

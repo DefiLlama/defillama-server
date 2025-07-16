@@ -19618,7 +19618,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "prjx/index.js",
     twitter: "prjx_hl",
-    forkedFrom: [],
+    forkedFromIds: ["2198"],
     listedAt: 1752664531
   },
 ];

@@ -3832,4 +3832,7 @@ export default {
     "liquidlaunch": {
         id: "6441"
     },
+    "multiswap": {
+        id: "1908"
+    }
 } as AdaptorsConfig

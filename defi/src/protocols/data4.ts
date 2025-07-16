@@ -18189,7 +18189,8 @@ const data4: Protocol[] = [
     module: "xstocks/index.js",
     twitter: "xStocksFi",
     forkedFromIds: [],
-    listedAt: 1751380114
+    listedAt: 1751380114,
+    oracles: ["Chainlink", "Pyth"]
   },
   {
     id: "6379",

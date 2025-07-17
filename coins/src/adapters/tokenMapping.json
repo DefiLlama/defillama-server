@@ -1515,6 +1515,11 @@
     }
   },
   "arbitrum": {
+    "0x3EaBE18eAE267D1B57f917aBa085bb5906114600": {
+      "decimals": "18",
+      "symbol": "ePendle",
+      "to": "coingecko#equilibria-finance-ependle"
+    },
     "0x1903aa5b603819B9dEbd2F4b202B686e9e393AfF": {
       "decimals": "18",
       "symbol": "eATH",

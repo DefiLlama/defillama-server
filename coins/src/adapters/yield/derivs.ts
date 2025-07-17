@@ -415,6 +415,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x78adD880A697070c1e765Ac44D65323a0DcCE913",
     address: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
   },
+  "stk-ePendle": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRate",
+        target: "0xd302d7fd2c9375a433018fdfa5613be6ad3f18e3",
+      });
+      return rate / 1e18;
+    },
+    chain: "arbitrum",
+    underlying: "0x3EaBE18eAE267D1B57f917aBa085bb5906114600",
+    address: "0x37227785a1f4545ed914690e395e4CFE96B8319f",
+  },
 };
 
 export async function derivs(timestamp: number) {

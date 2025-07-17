@@ -683,6 +683,9 @@ export default {
     },
     "privex": {
         id: "6419"
+    },
+    "k-bit": {
+        id: "6446"
     }
 
 } as AdaptorsConfig

@@ -3843,5 +3843,11 @@ export default {
     },
     "sushiswap-agg": {
         id: "5061"
-    }
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "privex": {
+        id: "6419"
+    },
 } as AdaptorsConfig

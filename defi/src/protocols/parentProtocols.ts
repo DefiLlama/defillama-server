@@ -3873,7 +3873,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://dgswap.io",
     description: "DragonSwap is a decentralized automated liquidity protocol.",
     logo: `${baseIconsUrl}/dragonswap-kaia.png`,
-    gecko_id: "dragonswap",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "dgswap",
@@ -5393,7 +5393,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
     logo: `${baseIconsUrl}/dragon-swap-sei.jpg`,
-    gecko_id: null,
+    gecko_id: "dragonswap",
     cmcId: null,
     chains: [],
     twitter: "dragonswap_dex",

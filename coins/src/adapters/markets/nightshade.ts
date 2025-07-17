@@ -16,11 +16,11 @@ async function getTokenPrices(timestamp: number) {
     "https://nightshade.finance/api/defillama-token-list?verified=true",
   );
 
-  assets.forEach(({ address, slug, decimals, priceUsd }: any) =>
+  assets.forEach(({ id, slug, decimals, priceUsd }: any) =>
     addToDBWritesList(
       writes,
       "alephium",
-      address,
+      id,
       priceUsd,
       decimals,
       slug,

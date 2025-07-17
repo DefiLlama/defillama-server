@@ -412,23 +412,22 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Vara",
     "Velas",
     "Wanchain",
-    "Bevm"
-    "Bob"
-    "CrossFi"
-    "EDU Chain"
-    "Goat"
-    "Hydration"
-    "Kadena"
-    "Linea"
-    "Lukso"
-    "Plume Mainnet"
-    "Sonic"
-    "Stacks"
-    "Superseed"
-    "Lukso"
-    "Swellchain"
-    "Unichain"
-    "XRPL"
+    "BEVM",
+    "BOB",
+    "CrossFi",
+    "EDU Chain",
+    "Goat",
+    "Hydration",
+    "Kadena",
+    "Linea",
+    "Lukso",
+    "Plume Mainnet",
+    "Sonic",
+    "Stacks",
+    "Superseed",
+    "Swellchain",
+    "Unichain",
+    "Ripple"
   ],
   "Witnet": [
     "Arbitrum",

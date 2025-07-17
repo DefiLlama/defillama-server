@@ -38612,7 +38612,7 @@ const data3_2: Protocol[] = [
         name: "Api3",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bob"}]
+        chains: [{chain: "BOB"}]
       },
       {
         name: "eOracle",

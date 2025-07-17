@@ -898,12 +898,12 @@
       "decimals": "18",
       "symbol": "tBTC",
       "to": "coingecko#wrapped-bitcoin"
-    }, 
+    },
     "0xa01227a26a7710bc75071286539e47adb6dea417": {
       "decimals": "18",
       "symbol": "tUSDe",
       "to": "coingecko#ethena-staked-usde"
-    }, 
+    },
     "0xa1150cd4a014e06f5e0a6ec9453fe0208da5adab": {
       "decimals": "18",
       "symbol": "tETH",
@@ -1875,6 +1875,16 @@
     }
   },
   "goat": {
+    "0xd93cC64F0A64044790268C1117BdC7A26A872d2c": {
+      "decimals": "18",
+      "symbol": "nETH",
+      "to": "asset#ethereum:0xc6572019548dfeba782ba5a2093c836626c7789a"
+    },
+    "0x943F6Da7dDbFbdD446068c3b47f8433d9feedbA6": {
+      "decimals": "18",
+      "symbol": "rnETH",
+      "to": "asset#ethereum:0x9dc7e196092dac94f0c76cfb020b60fa75b97c5b"
+    },
     "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f": {
       "decimals": "18",
       "symbol": "esBTC",

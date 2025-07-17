@@ -21463,6 +21463,7 @@ const data2: Protocol[] = [
     audit_links: ["https://solidity.finance/audits/GMDAOVault"],
     listedAt: 1669732077,
     governanceID: ["snapshot:gmdgovernance.eth"],
+    deadUrl: true
   },
   {
     id: "2320",

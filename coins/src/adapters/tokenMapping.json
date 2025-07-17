@@ -10972,6 +10972,11 @@
       "to": "coingecko#vebetterdao",
       "decimals": 18,
       "symbol": "B3TR"
+    },
+    "0xf9b02b47694fd635a413f16dc7b38af06cc16fe5": {
+      "to": "coingecko#vechain",
+      "decimals": 18,
+      "symbol": "BVET"
     }
   },
   "dchainmainnet": {

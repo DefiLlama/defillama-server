@@ -4444,6 +4444,15 @@ export const chainCoingeckoIds = {
     url: "https://embr.fun/",
     twitter: "embrdotfun",
   },
+  "TAC": {
+    geckoId: "tac",
+    symbol: "TAC",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "TacBuild",
+    url: "https://tac.build/",
+    chainId: 239,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4644,6 +4653,7 @@ const chainLabelMap = {
   "dchainmainnet": "DChain",
   "xion": "XION",
   "soon": "Soon Network",
+  "tacchain": "TAC",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

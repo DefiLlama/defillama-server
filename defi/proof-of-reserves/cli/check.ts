@@ -39,7 +39,7 @@ for (const item of items) {
         const adapterFile = path.join('..', 'adapters', project.protocolId);
         const adapter: IPoRAdapter = (await import(adapterFile)).default;
 
-        project.whitelisted = adapter.whitelised;
+        project.whitelisted = adapter.whitelisted;
         project.mintedUSD = await adapter.minted({});
         project.mintedUSD_hn = sdk.humanizeNumber(project.mintedUSD)
         project.reservesUSD = await adapter.reserves();
@@ -68,7 +68,7 @@ for (const item of items) {
 
   const filteredProtocols = projects
     .filter(project => !project.whitelisted)
-    .filter(project => !project.backing || isNaN(project.backing) || project.backing <= 98);
+    .filter(project => !project.backing || isNaN(project.backing) || project.backing <= 95);
 
   const message = `
 Protocols minted tokens more than reserves:

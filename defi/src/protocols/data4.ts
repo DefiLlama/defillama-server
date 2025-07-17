@@ -10859,6 +10859,13 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum", "Arbitrum"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
+      }
+    ],
     module: "lighter-v2/index.js",
     twitter: "Lighter_xyz",
     //parentProtocol: "parent#lighter",

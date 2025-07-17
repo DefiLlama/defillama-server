@@ -2299,7 +2299,7 @@ const data3_1: Protocol[] = [
     symbol: "-",
     url: "https://native.org",
     description:
-      "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+      "Native Swap enables PMM pricing and atomic Swaps with on-chain credit management. Native introduces a high-frequency, auto-sign orderbook that seamlessly aligns with prevailing market prices, offering reliable quotes to ensure low latency and a high success rate by utilizing real-time on-chain inventory.",
     chain: "Binance",
     logo: `${baseIconsUrl}/native-swap.jpg`,
     audits: "0",
@@ -44208,7 +44208,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://native.org",
     description:
-      "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+      "Native Credit Pool is a unified, single-sided asset supply pool that enables market makers to borrow assets for trading, thereby enhancing liquidity in the on-chain spot market.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/native-credit-pool.jpg`,
     audits: "0",

@@ -4653,7 +4653,7 @@ const chainLabelMap = {
   "dchainmainnet": "DChain",
   "xion": "XION",
   "soon": "Soon Network",
-  "tacchain": "TAC",
+  "tac": "TAC",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -19731,5 +19731,26 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1752775167,
   },
+  {
+    id: "6450",
+    name: "Elys Perpetual",
+    address: null,
+    symbol: "-",
+    url: "https://app.elys.network/perpetual",
+    description: "The Elys Network's perpetual trading is a system designed to facilitate leveraged trading on various assets within the blockchain",
+    chain: "Elys",
+    logo: `${baseIconsUrl}/elys-perpetual.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Elys"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "elys_network",
+    parentProtocol: "parent#elys-protocol",
+    listedAt: 1752775682
+  },
 ];
 export default data4;

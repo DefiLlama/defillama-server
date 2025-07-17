@@ -686,6 +686,9 @@ export default {
     },
     "k-bit": {
         id: "6446"
+    },
+    "elys-perp": {
+        id: "6450"
     }
 
 } as AdaptorsConfig

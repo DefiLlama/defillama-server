@@ -3840,5 +3840,8 @@ export default {
     },
     "votre": {
         id: "6316"
+    },
+    "sushiswap-agg": {
+        id: "5061"
     }
 } as AdaptorsConfig

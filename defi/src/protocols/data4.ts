@@ -163,6 +163,7 @@ const data4: Protocol[] = [
     twitter: "zora",
     parentProtocol: "parent#zora",
   },
+  /* Using their own asset to mint it. removed
   {
     id: "5567",
     name: "Bedrock brBTC",
@@ -189,6 +190,7 @@ const data4: Protocol[] = [
     },
     listedAt: 1735572890
   },
+  */
   {
     id: "5568",
     name: "FIVA",

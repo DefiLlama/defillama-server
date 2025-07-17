@@ -3,45 +3,26 @@ import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter"
 import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
-import { Chain } from "@defillama/sdk/build/general";
+import { Chain, providers } from "@defillama/sdk/build/general";
 import { PromisePool } from '@supercharge/promise-pool';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
-import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import loadAdaptorsData from "../../data";
-import { ProtocolAdaptor, } from "../../data/types";
+import { AdaptorRecordType, ProtocolAdaptor, } from "../../data/types";
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
-import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
+import { AdaptorRecord, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { storeAdapterRecord } from "../../db-utils/db2";
-import canGetBlock from "../../utils/canGetBlock";
 import { sendDiscordAlert } from "../../utils/notify";
 import { processFulfilledPromises, } from "./helpers";
 import dynamodb from "../../../utils/shared/dynamodb";
 
 
+const blockChains = Object.keys(providers)
+
+const canGetBlock = (chain: Chain) => blockChains.includes(chain)
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 const timestampAtStartofHour = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
-
-export interface IHandlerEvent {
-  protocolModules: string[]
-  timestamp?: number
-  adaptorType: AdapterType
-  chain?: Chain
-  adaptorRecordTypes?: string[]
-  protocolVersion?: string
-}
-
-
-export const handler = async (event: IHandlerEvent) => {
-  await handler2({
-    timestamp: event.timestamp,
-    adapterType: event.adaptorType,
-    protocolNames: event.protocolModules ? new Set(event.protocolModules) : undefined,
-  })
-};
-
-export default wrapScheduledLambda(handler);
 
 export type IStoreAdaptorDataHandlerEvent = {
   timestamp?: number
@@ -306,7 +287,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
       for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
-        const { response: runAdapterRes, breakdownData, } = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor, withMetadata: true, })
+        const { response: runAdapterRes, breakdownData, } = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor, withMetadata: true, }) as any
         allTokenBreakdownData = breakdownData
         if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 

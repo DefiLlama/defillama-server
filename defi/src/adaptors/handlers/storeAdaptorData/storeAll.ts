@@ -1,11 +1,11 @@
 import '../../../api2/utils/failOnError'
 
 import { handler2 } from ".";
-import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
 import { getUnixTimeNow } from '../../../api2/utils/time';
 import { elastic } from '@defillama/sdk';
 import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
+import { ADAPTER_TYPES } from '../../data/types';
 
 async function run() {
   const startTimeAll = getUnixTimeNow()

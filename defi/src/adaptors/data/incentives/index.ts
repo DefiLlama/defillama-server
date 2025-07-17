@@ -1,5 +1,5 @@
 import incentives_imports from "../../../utils/imports/incentives_adapters"
-import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record";
+import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../types"
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
 export const importModule = (module: string) => incentives_imports[module].module

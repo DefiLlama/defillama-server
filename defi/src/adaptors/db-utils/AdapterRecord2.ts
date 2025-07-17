@@ -1,7 +1,7 @@
 
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { AdaptorRecord, AdaptorRecordType, } from "./adaptor-record"
-import { ProtocolAdaptor } from "../data/types"
+import { AdaptorRecord, } from "./adaptor-record"
+import { AdaptorRecordType, ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
 
 export function toStartOfDay(unixTimestamp: number) {

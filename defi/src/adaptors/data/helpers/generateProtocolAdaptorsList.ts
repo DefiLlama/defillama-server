@@ -1,7 +1,6 @@
 import protocols, { Protocol } from "../../../protocols/data";
-import parentProtocols from "../../../protocols/parentProtocols";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getDisplayChainName, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName, chainCoingeckoIds } from "../../../utils/normalizeChain"
@@ -24,11 +23,6 @@ const protocolMap = protocols.reduce((acc, curr) => {
   acc[curr.id] = curr
   return acc
 }, {} as IJSON<Protocol>)
-
-const parentProtocolDataMap = parentProtocols.reduce((acc, curr) => {
-  acc[curr.id] = curr
-  return acc
-}, {} as IJSON<IParentProtocol>)
 
 const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
   if (!obj.cmcId && !obj.chainId) return undefined
@@ -116,7 +110,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             },
             chains: getChainsFromBaseAdapter(baseModuleObject),
             logo: getLlamaoLogo(dexFoundInProtocols.logo),
-            disabled: configObj.disabled ?? false,
             displayName: configObj.displayName ?? dexFoundInProtocols.name,
             protocolType,
             methodologyURL: adapterObj.codePath,
@@ -149,9 +142,8 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
         list = chainDataMap
 
-      // Check if the module is enabled
       let configObj = config[adapterKey]
-      if (!configObj || configObj?.enabled === false) return;
+      if (!configObj) return;
       const protocolId = config?.[adapterKey].id
       let moduleObject = allImports[adapterKey].module.default
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
@@ -184,7 +176,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       let singleVersionKey: string
 
       if (parentConfig.protocolsData) {
-        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value && value.enabled !== false).map(([key]: any) => key)
+        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value).map(([key]: any) => key)
         if (keys.length === 1) singleVersionKey = keys[0]
       }
       delete parentConfig.protocolsData
@@ -203,7 +195,6 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         chains,
         chain: (protocol as any)!.chain ?? chains[0],
         logo: getLlamaoLogo(protocol!.logo),
-        disabled: configObj.disabled ?? false,
         displayName: configObj.displayName ?? protocol!.name,
         protocolType,
         isProtocolInOtherCategories: otherATId2s.has(id2),
@@ -240,37 +231,4 @@ const getLlamaoLogo = (logo: string | null) => {
   if (!logo) return logo
   if (logo.includes('chains')) return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/")
   return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/protocols/")
-}
-
-// This should be changed to be easier to mantain
-export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
-  "2196": {
-    id: "1",
-    name: "Uniswap"
-  },
-  "1599": {
-    id: "111",
-    name: "AAVE"
-  }
-}
-
-export const getBySpecificId = (key: string, id: string) => {
-  if (key === 'uniswap') return id === "2196"
-  if (key === 'aave') return id === "1599"
-  if (key === 'mimo') return id === "1241"
-  if (key === '0x') return id === "2116"
-  if (key === 'pact') return id === "1468"
-  if (key === 'karura-swap') return id === "451"
-  if (key === 'algofi') return id === "2091"
-  if (key === 'penguin') return id === "1575"
-  if (key === 'xdai') return id === "1659"
-  if (key === 'stargate') return id === "1571"
-  if (key === 'thena') return id === "2417"
-  if (key === 'verse') return id === "1732"
-  if (key === 'blur') return id === "2414"
-  if (key === 'solidlydex') return id === "2400"
-  if (key === 'tethys-finance') return id === "1139"
-  if (key === 'ashswap') return id === "2551"
-  if (key === 'dforce') return id === "123"
-  return false
 }

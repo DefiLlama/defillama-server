@@ -50,7 +50,6 @@
     "fillOld-dimensions": "npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "fillOld-dimensions-interactive": "npm run update-submodules; npx ts-node --logError --transpile-only src/cli/interactive-dimensions.ts",
     "fillOld-dimensions-all": "refill_all_missing_protocols=true NODE_OPTIONS=\"--max-old-space-size=8144\"  npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
-    "dimensions-notify-backfill": "npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill2.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
     "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/dimensions/checkForDeadProtocols.ts",

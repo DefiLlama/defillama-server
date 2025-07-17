@@ -1,7 +1,6 @@
 import type { Protocol } from "../../protocols/types";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
-import { getAvailableMetricsById } from "../../adaptors/data/configs";
 import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, getLastHourlyRecord, getLastHourlyTokensUsd, getLastHourlyTokens } from "../cache/index";
 import { getAllProtocolItems, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
@@ -80,7 +79,6 @@ export async function craftProtocolV2({
     chains: [],
     currentChainTvls: {},
     raises: getRaises(protocolData.id),
-    metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
 

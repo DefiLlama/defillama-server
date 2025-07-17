@@ -1,5 +1,5 @@
-import { ProtocolAdaptor } from "../../adaptors/data/types";
-import { AdaptorRecord, AdaptorRecordType, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
+import { AdaptorRecordType, ProtocolAdaptor } from "../../adaptors/data/types";
+import { AdaptorRecord, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
 import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";

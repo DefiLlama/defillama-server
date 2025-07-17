@@ -1,5 +1,5 @@
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdaptorData, IJSON, ProtocolAdaptor } from "./types";
 import * as dexData from "./dexs"
 import * as derivativesData from "./derivatives"
 import * as feesData from "./fees"
@@ -10,7 +10,6 @@ import * as incentivesData from "./incentives"
 import * as bridgeAggregatorsData from "./bridge-aggregators";
 import * as aggregatorDerivativesData from "./aggregator-derivatives";
 import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
-import { ADAPTER_TYPES } from "../handlers/triggerStoreAdaptorData";
 
 const mapping: any = {
   [AdapterType.DEXS]: dexData,

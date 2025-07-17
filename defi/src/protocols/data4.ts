@@ -19621,5 +19621,24 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     listedAt: 1752664531
   },
+    {
+    id: "6445",
+    name: "Wisdom Tree",
+    address: null,
+    symbol: "-",
+    url: "https://www.wisdomtreeconnect.com/",
+    description:
+      "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wisdomtree.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["RWA"],
+    chains: ["Ethereum"],
+    module: "wisdomtree/index.js",
+    forkedFromIds: []
+  },
 ];
 export default data4;

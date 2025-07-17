@@ -84,6 +84,7 @@ export default {
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
   glpDerivs: require("./yield/glpDerivs"),
+  glv: require("./yield/glv"),
   pendle: require("./yield/pendle"),
   penpie: require("./yield/pendle"),
   phux: require("./markets/phux"),

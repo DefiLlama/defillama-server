@@ -3092,7 +3092,7 @@ const data: Protocol[] = [
     gecko_id: "stake-dao",
     cmcId: "8299",
     category: "Yield",
-    chains: ["Ethereum", "Polygon", "Arbitrum", "BSC", "Fraxtal", "Base"],
+    chains: ["Ethereum", "Polygon", "Arbitrum", "BSC"],
     module: "stakedao/index.js",
     treasury: "stakedao.js",
     twitter: "StakeDAOHQ",

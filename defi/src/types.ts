@@ -91,6 +91,7 @@ export interface IProtocol
   symbol: string;
   module: string;
   slug: string;
+  parentProtocolSlug?: string;
   tvl: number | null;
   chain: string;
   chainTvls: ITvlsByChain;

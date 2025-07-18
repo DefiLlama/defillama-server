@@ -1,36 +1,35 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import protocols, { Protocol } from "./protocols/data";
+import protocols, { _InternalProtocolMetadataMap, Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, } from "./utils/normalizeChain";
 import { IChain, } from "./types";
-import { importAdapter } from "./utils/imports/importAdapter";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
-
-async function _checkModuleDoubleCounted(protocol: Protocol){
-  const module = await importAdapter(protocol);
-  return module.doublecounted
-}
 
 async function _getLastHourlyRecord(protocol: Protocol){
   return getLastRecord(hourlyTvl(protocol.id))
 }
 
 export async function craftChainsResponse(excludeDoublecountedAndLSD = false, useNewChainNames = false, {
-  checkModuleDoubleCounted = _checkModuleDoubleCounted,
   getLastHourlyRecord = _getLastHourlyRecord,
   protocolList = protocols,
 } = {}){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocolList.map(async (protocol) => {
-      if(excludeProtocolInCharts(protocol) || isExcludedFromChainTvl(protocol.category)){
+      const pMetadata = _InternalProtocolMetadataMap[protocol.id]
+      if (!pMetadata) {
+        console.error(`Protocol metadata not found for ${protocol.id}, skipping it`);
+        return undefined;
+      }
+      const { category, isLiquidStaking, isDoublecounted } = pMetadata;
+      if(excludeProtocolInCharts(protocol) || isExcludedFromChainTvl(category)){
         return undefined;
       }
       const lastTvl = await getLastHourlyRecord(protocol)
       if(lastTvl === undefined){
           return
       }
-      const excludeTvl = excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(await checkModuleDoubleCounted(protocol), protocol.category)  === true)
+      const excludeTvl = excludeDoublecountedAndLSD && (isLiquidStaking || isDoublecounted)
       if (excludeTvl) return;
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{

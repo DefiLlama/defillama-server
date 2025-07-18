@@ -3850,4 +3850,7 @@ export default {
     "privex": {
         id: "6419"
     },
+    "echo-strategy": {
+        id: "6454"
+    },
 } as AdaptorsConfig

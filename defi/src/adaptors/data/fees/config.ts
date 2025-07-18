@@ -3853,4 +3853,7 @@ export default {
     "echo-strategy": {
         id: "6454"
     },
+    "bluefin-pro": {
+        id: "6451"
+    },
 } as AdaptorsConfig

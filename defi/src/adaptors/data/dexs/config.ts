@@ -3125,5 +3125,11 @@ export default {
     },
     "prjx": {
         id: "6444"
-    }
+    },
+    "blackhole": {
+        id: "6430"
+    },
+    "blackhole-CL": {
+        id: "6431"
+    },
 } as AdaptorsConfig

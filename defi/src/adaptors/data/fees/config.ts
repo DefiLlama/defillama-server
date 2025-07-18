@@ -3856,4 +3856,10 @@ export default {
     "bluefin-pro": {
         id: "6451"
     },
+    "blackhole": {
+        id: "6430"
+    },
+    "blackhole-CL": {
+        id: "6431"
+    },
 } as AdaptorsConfig

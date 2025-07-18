@@ -3690,6 +3690,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GammaSwapLabs",
     github: ["gammaswap"],
+    treasury: "gammaswap.js",
     wrongLiquidity: true,
   },
   {

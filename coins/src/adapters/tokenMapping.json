@@ -96,11 +96,6 @@
       "symbol": "SBTC",
       "to": "coingecko#wrapped-bitcoin"
     },
-    "0xdCB3D91555385DaE23e6B966b5626aa7A75Be940": {
-      "decimals": "8",
-      "symbol": "ylpumpBTC",
-      "to": "coingecko#pumpbtc"
-    },
     "0xE946Dd7d03F6F5C440F68c84808Ca88d26475FC5": {
       "decimals": "8",
       "symbol": "ylfBTC",
@@ -2464,11 +2459,6 @@
       "symbol": "SolvBTC",
       "to": "coingecko#solv-btc"
     },
-    "0xf469fbd2abcd6b9de8e169d128226c0fc90a012e": {
-      "decimals": "8",
-      "symbol": "pumpBTC",
-      "to": "coingecko#pumpbtc"
-    },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "decimals": "18",
       "symbol": "USDa",
@@ -3475,11 +3465,6 @@
       "decimals": 18,
       "symbol": "uniBTC"
     },
-    "0xC75D7767F2EdFbc6a5b18Fc1fA5d51ffB57c2B37": {
-      "to": "coingecko#pumpbtc",
-      "decimals": 18,
-      "symbol": "pumpBTC"
-    },
     "0x93C6afA1882ea5E5bF403cA8fcb5aF87409EeCd0": {
       "to": "coingecko#ignition-fbtc",
       "decimals": 8,
@@ -4197,11 +4182,6 @@
       "decimals": "18",
       "symbol": "wzeta",
       "to": "coingecko#zetachain"
-    },
-    "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E": {
-      "decimals": "8",
-      "symbol": "pumpBTC",
-      "to": "coingecko#pumpbtc"
     }
   },
   "eos_evm": {
@@ -7697,12 +7677,6 @@
       "decimals": 18,
       "symbol": "uBTC"
     },
-    "0x5a2aa871954eBdf89b1547e75d032598356caad5": {
-      "name": "pumpBTC",
-      "decimals": "8",
-      "symbol": "pumpBTC",
-      "to": "coingecko#pumpbtc"
-    },
     "0x8BB97A618211695f5a6a889faC3546D1a573ea77": {
       "name": "nBTC",
       "decimals": "8",
@@ -8467,11 +8441,6 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
-    },
-    "0x1fcca65fb6ae3b2758b9b2b394cb227eae404e1e": {
-      "to": "coingecko#pumpbtc",
-      "decimals": 8,
-      "symbol": "pumpBTC"
     },
     "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34": {
       "to": "coingecko#ethena-usde",
@@ -9799,11 +9768,6 @@
       "decimals": "18",
       "symbol": "M-BTC",
       "to": "coingecko#merlin-s-seal-btc"
-    },
-    "0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e": {
-      "decimals": "8",
-      "symbol": "pumpBTC",
-      "to": "coingecko#pumpbtc"
     },
     "0xf6718b2701D4a6498eF77D7c152b2137Ab28b8A3": {
       "decimals": "18",

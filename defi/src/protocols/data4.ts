@@ -417,7 +417,7 @@ const data4: Protocol[] = [
     category: "Wallets",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "trust-wallet/index.js",
     twitter: "TrustWallet",
   },
   {

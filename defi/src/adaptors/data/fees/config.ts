@@ -1278,7 +1278,7 @@ export default {
     },
     "nile-exchange-v1": {
         parentId: "Nile Exchange",
-        "enabled": false,
+        "enabled": true,
         id: "4285"
     },
     "primordium": {

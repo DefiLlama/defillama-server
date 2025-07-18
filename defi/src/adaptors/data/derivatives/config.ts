@@ -689,6 +689,9 @@ export default {
     },
     "elys-perp": {
         id: "6450"
-    }
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
 
 } as AdaptorsConfig

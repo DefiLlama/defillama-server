@@ -2,6 +2,7 @@ import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections, getChainDisplayName, getChainIdFromDisplayName } from "./utils/normalizeChain";
 import { chainsByOracle } from "./constants/chainsByOracle";
+import { _InternalProtocolMetadata } from "./protocols/data";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -123,8 +124,15 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   const oracleProtocols = {} as OracleProtocols;
 
 
+  const protocolFilterFunction = (protocol: IProtocol, _protocolMetadata: _InternalProtocolMetadata) => {
+    if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) return true
+    if (Array.isArray(protocol.oracles) && protocol.oracles.length > 0) return true
+    if (protocol.oraclesByChain && Object.keys(protocol.oraclesByChain).length > 0) return true
+    return false
+  }
+
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, _protocolMetadata: _InternalProtocolMetadata) => {
       try {
         if (protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0) {
           const activeOracles: Array<{ name: string, type: string, chain: string | null }> = [];
@@ -213,7 +221,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: false, forceIncludeCategories: ['RWA'], ...options }
+    { includeBridge: false, forceIncludeCategories: ['RWA'], protocolFilterFunction, ...options }
   );
 
   const timestamps = Object.keys(oracleProtocols);

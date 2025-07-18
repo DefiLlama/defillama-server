@@ -35983,11 +35983,11 @@ const data3_2: Protocol[] = [
     name: "Trojan",
     address: null,
     symbol: "-",
-    url: "https://t.me/solana_unibot",
+    url: "https://trojanonsolana.com/",
     description:
       "Trojan is a Telegram trading bot with a wide range of features including a bespoke live price feed, limit and DCA orders, copy trading and sniping",
     chain: "Solana",
-    logo: `${baseIconsUrl}/trojan.png`,
+    logo: `${baseIconsUrl}/trojan.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -35996,7 +35996,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "PrimordiumGroup",
+    twitter: "TrojanOnSolana",
   },
   {
     id: "4294",

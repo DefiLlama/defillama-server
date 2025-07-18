@@ -19823,7 +19823,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity Manager",
+    category: "Liquidity manager",
     chains: ["Base", "Celo", "Ink", "Katana"],
     forkedFrom: [],
     module: "thedeep/index.js",

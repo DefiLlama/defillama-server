@@ -1,11 +1,8 @@
 
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { AdaptorRecord, AdaptorRecordType, RawRecordMap } from "./adaptor-record"
-import { ProtocolAdaptor } from "../data/types"
+import { AdaptorRecordType, ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
-import { Tables } from "../../api2/db/tables"
-import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
+import { AdaptorRecord } from "./adaptor-record"
 
 function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -125,16 +122,6 @@ export class AdapterRecord {
     }
   }
 
-
-  /* getHourlyPGItem() {
-    return {
-      timestamp: this.timestamp,
-      type: this.adapterType,
-      id: this.id,
-      data: JSON.stringify(this.data),
-    }
-  } */
-
   getDDBItem() {
     return {
       SK: toStartOfDay(this.timestamp),
@@ -150,22 +137,4 @@ export class AdapterRecord {
       data: this.data,
     }
   }
-}
-
-let isInitialized: any
-
-export async function storeAdapterRecord(record: AdapterRecord) {
-
-  if (!isInitialized) isInitialized = initializeTVLCacheDB()
-  await isInitialized
-
-  const pgItem = record.getPGItem()
-  const hourlyDDbItem = record.getHourlyDDBItem()
-  const ddbItem = record.getDDBItem()
-  
-  /* await Promise.all([
-    Tables.DIMENSIONS_DATA.upsert(pgItem),
-    dynamodb.putDimensionsData(ddbItem),
-    dynamodb.putDimensionsData(hourlyDDbItem),
-  ]) */
 }

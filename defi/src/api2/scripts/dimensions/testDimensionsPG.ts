@@ -1,9 +1,8 @@
 // import { Op, col, fn } from "sequelize";
 import { getAllDimensionsRecordsOnDate, init } from "../../../adaptors/db-utils/db2";
-import { Tables } from "../../db/tables";
-import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData";
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../../adaptors/data"
+import { ADAPTER_TYPES } from "../../../adaptors/data/types";
 
 async function fetchChainIds() {
 

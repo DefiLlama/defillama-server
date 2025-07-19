@@ -1,4 +1,4 @@
-import { AdaptorRecordType } from "./adaptor-record";
+import { AdaptorRecordType } from "../data/types";
 
 const isArrayUnique = (arr: any[]) => Array.isArray(arr) && new Set(arr).size === arr.length;
 test("No duplicated adapter type", async () => {

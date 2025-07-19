@@ -4,9 +4,9 @@ import loadAdaptorsData from "../../../adaptors/data"
 import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
 
 import { RUN_TYPE, } from "../../utils";
-import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
 import path from 'path';
+import { ADAPTER_TYPES } from '../../../adaptors/data/types';
 
 function iterateAndGetNegativeValueInfo(info: any, negativeData: any[] = [], key = '') {
   if (typeof info === 'object') {

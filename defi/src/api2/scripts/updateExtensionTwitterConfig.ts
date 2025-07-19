@@ -14,7 +14,7 @@ async function run() {
     { data: protocolLiteData }
   ] = await Promise.all([
     dynamodb.getExtensionTwitterConfig(),
-    axios.get('https://defillama-datasets.llama.fi/lite/protocols2')
+    axios.get('https://api.llama.fi/lite/protocols2')
   ])
   if (!Item) throw new Error('Unable to get twitter config')
   const whitelistedHandles = new Set()

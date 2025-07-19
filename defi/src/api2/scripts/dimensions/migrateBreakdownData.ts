@@ -4,7 +4,6 @@ import loadAdaptorsData from "../../../adaptors/data"
 import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
 
 import { RUN_TYPE, } from "../../utils";
-import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
 import * as path from 'path'
 import { initializeTVLCacheDB } from '../../db';
@@ -13,6 +12,7 @@ import { init } from '../../../adaptors/db-utils/db2';
 import { Tables } from '../../db/tables';
 import * as sdk from '@defillama/sdk'
 import { PromisePool } from '@supercharge/promise-pool'
+import { ADAPTER_TYPES } from '../../../adaptors/data/types';
 
 
 async function runConfig() {

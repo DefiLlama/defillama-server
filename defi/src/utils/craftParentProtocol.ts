@@ -4,7 +4,6 @@ import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
@@ -157,7 +156,6 @@ export async function craftParentProtocolInternal({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, parentRaises as Array<IRaise>),
-    metrics: getAvailableMetricsById(parentProtocol.id),
     symbol:
       parentProtocol.symbol ??
       (parentProtocol.gecko_id

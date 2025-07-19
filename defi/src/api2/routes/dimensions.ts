@@ -2,13 +2,12 @@
 import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
-import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
 import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')

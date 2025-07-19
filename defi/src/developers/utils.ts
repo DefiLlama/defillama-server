@@ -1,1 +1,0 @@
-export const npmPK = (pkg:string)=>`npm#${pkg}`

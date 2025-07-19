@@ -1,7 +1,4 @@
-import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
-import treasuries from "./protocols/treasury";
-import entities from "./protocols/entities";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -13,8 +10,7 @@ import {
   transformNewChainName,
   replaceChainNamesForOraclesByChain,
 } from "./utils/normalizeChain";
-import { craftChainsResponse } from "./getChains";
-import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import type { IProtocol, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
 import cgSymbolsJson from './utils/symbols/symbols.json'
 
@@ -235,25 +231,3 @@ export async function craftProtocolsResponse(
 ) {
   return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
-
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const protocols = await craftProtocolsResponse(false);
-
-  const chainData: IChain[] = event.queryStringParameters?.includeChains === "true" ? await craftChainsResponse() : [];
-
-  const response: Array<IProtocol | IChain> = [...protocols, ...chainData];
-
-  return cache20MinResponse(response);
-};
-
-export const treasuriesHandler = async (): Promise<IResponse> => {
-  return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries, true));
-};
-
-export const entitiesHandler = async (): Promise<IResponse> => {
-  return cache20MinResponse(await craftProtocolsResponseInternal(true, entities, true));
-};
-
-// handler({ pathParameters: {} } as any).then(console.log);
-
-export default wrap(handler);

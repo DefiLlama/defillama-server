@@ -1,5 +1,4 @@
-import { buildOutdatedMessage, findOutdatedPG, getOutdated } from './utils/findOutdated'
-import { wrapScheduledLambda } from "./utils/shared/wrap";
+import { buildOutdatedMessage, findOutdatedPG, } from './utils/findOutdated'
 import { sendMessage } from "./utils/discord"
 import axios from 'axios'
 import { getHourlyTvlUpdatedRecordsCount, initializeTVLCacheDB, getDimensionsUpdatedRecordsCount, getTweetsPulledCount, } from './api2/db';
@@ -7,35 +6,6 @@ import { getHourlyTvlUpdatedRecordsCount, initializeTVLCacheDB, getDimensionsUpd
 const maxDrift = 6 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
 
-
-const handler = async (_event: any) => {
-  const webhookUrl = process.env.OUTDATED_WEBHOOK!
-  const hourlyOutdated = await getOutdated((60 * 4 + 20) * 60); // 1hr
-  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours`, webhookUrl, false)
-  if (hourlyOutdated.length > 100) {
-    await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours ${hourlyOutdated.length > 400 ? llamaRole : ''}`, process.env.TEAM_WEBHOOK, false)
-  }
-  await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
-  const outdated = await getOutdated(maxDrift);
-  const message = buildOutdatedMessage(outdated)
-  if (message !== null) {
-    if (hourlyOutdated.length >= 320) {
-      await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl, false)
-    }
-    await sendMessage(message, webhookUrl)
-  }
-  /* 
-    const protocolIndexes = (await getOutdated(6 * 3600)).map(o => o[3]).filter(o => o < protocols.length); // remove treasuries
-    shuffleArray(protocolIndexes);
-    for (let i = 0; i < protocols.length; i += 40) {
-      const event = {
-        protocolIndexes: protocolIndexes.slice(i, i + 40)
-      };
-      await invokeLambda(`defillama-prod-storeTvlInterval2`, event);
-    }
-   */
-  await checkBuildStatus(webhookUrl)
-};
 
 async function checkBuildStatus(webhookUrl: string) {
   const actionsApi = 'https://api.github.com/repos/DefiLlama/defillama-server/actions/runs?per_page=100'
@@ -46,9 +16,6 @@ async function checkBuildStatus(webhookUrl: string) {
   if (i > 2)
     await sendMessage(`Last ${i} builds failed, check: https://github.com/DefiLlama/defillama-server/actions`, webhookUrl)
 }
-
-export default wrapScheduledLambda(handler);
-
 
 export async function notifyOutdatedPG() {
 

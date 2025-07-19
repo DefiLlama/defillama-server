@@ -2,6 +2,7 @@ import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols,
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
 import { DAY, getClosestDayStartTimestamp } from "./utils/date";
+import { _InternalProtocolMetadata, _InternalProtocolMetadataMap } from "./protocols/data";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -31,7 +32,8 @@ function sum(
   time: number,
   item: Item = {},
   categoryProtocols: IProtocolsByCategory,
-  protocol: IProtocol
+  protocol: IProtocol,
+  { isDoublecounted, isLiquidStaking }: _InternalProtocolMetadata
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -44,15 +46,15 @@ function sum(
     }
   }
 
-  if (protocol.doublecounted) {
+  if (isDoublecounted) {
     data.doublecounted = (data.doublecounted || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking") {
+  if (isLiquidStaking) {
     data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+  if (isLiquidStaking && isDoublecounted) {
     data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
@@ -75,24 +77,32 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
   } else {
     historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)
   }
-  
+
   const { historicalProtocolTvls, } = historicalProtocolTvlsData
 
 
-function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number) {
-  try {
-    let category = protocolTvl.protocol.category;
-    if (category && category !== "CEX" && category !== 'Chain') {
-      sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
-      return;
+  const excludedCategorySet = new Set(["CEX", "Chain",])
+  function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number, protocolMetadata: _InternalProtocolMetadata) {
+    try {
+      sum(sumDailyTvls, protocolMetadata.category, timestamp, item, categoryProtocols, protocolTvl.protocol, protocolMetadata);
+    } catch (error) {
+      console.log(protocolTvl.protocol.name, error);
     }
-  } catch (error) {
-    console.log(protocolTvl.protocol.name, error);
   }
-}
 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) return;
+
+    const protocolMetadata: _InternalProtocolMetadata = _InternalProtocolMetadataMap[protocolTvl.protocol.id];
+
+    if (!protocolMetadata) {
+      console.warn(`No metadata found for protocol ${protocolTvl.protocol.name} (${protocolTvl.protocol.id})`);
+      return;
+    }
+
+    if (excludedCategorySet.has(protocolMetadata.category)) {
+      return;
+    }
 
     let previousItem: Item = { SK: 0 }
     protocolTvl.historicalTvl.forEach((item) => {
@@ -108,15 +118,15 @@ function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number) {
             return
           }
 
-          if (!item[key]) return 
+          if (!item[key]) return
 
           interpolatedItem[key] = previousItem[key] + (item[key] - previousItem[key]) * i / daysDifference
         })
 
-        addToChart(protocolTvl, interpolatedItem, previousTimestamp + DAY * i)
+        addToChart(protocolTvl, interpolatedItem, previousTimestamp + DAY * i, protocolMetadata)
       }
 
-      addToChart(protocolTvl, item, timestamp)
+      addToChart(protocolTvl, item, timestamp, protocolMetadata)
       previousItem = item
     })
   })

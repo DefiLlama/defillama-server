@@ -1,10 +1,11 @@
 import { Protocol } from "../protocols/data";
 
+const excludedCategoriesSet = new Set(['Chain', 'CEX', 'Infrastructure', 'Staking Pool'])
+
 export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
     let exclude = false;
-    const excludedCategories = ['Chain', 'CEX', 'Infrastructure', 'Staking Pool']
-  
-    if (excludedCategories.includes(protocol.category!)) {
+
+    if (excludedCategoriesSet.has(protocol.category!)) {
       return true;
     }
   
@@ -15,8 +16,10 @@ export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: bool
     return exclude;
   }
   
+const excludedChainTvlCategoriesSet = new Set([ 'RWA', 'Basis Trading', 'CeDeFi', ])
+
 export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA" || category === "Basis Trading" || category === "CeDeFi";
+  return excludedChainTvlCategoriesSet.has(category as string);
 }
 
 export const includeCategoryIntoChainTvl = (category?:string)=>{

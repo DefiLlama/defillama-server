@@ -11,6 +11,8 @@ import {
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
 import { getObjectKeyCount } from ".";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import sluggify from "../../utils/sluggify";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
@@ -181,8 +183,10 @@ export async function craftProtocolV2({
   let childProtocolsNames: string[] = [];
   let parentProtocolId = protocolData.parentProtocol;
 
-  if (parentProtocolId) {
-    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
+  if (parentProtocolId && parentProtocolsById[parentProtocolId]) {
+    const parent = parentProtocolsById[parentProtocolId]
+    response.parentProtocolSlug = sluggify(parent as any);
+    parentName = parent.name ?? null;
     childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 

@@ -3867,4 +3867,10 @@ export default {
     "blackhole-CL": {
         id: "6431"
     },
+    "topcut": {
+        id: "6448"
+    },
+    "thevault": {
+        id: "4751"
+    }
 } as AdaptorsConfig

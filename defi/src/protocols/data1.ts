@@ -3483,6 +3483,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.tokensets.com/#/security"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     github: ["SetProtocol"],
+    deadUrl: true,
   },
   {
     id: "267",

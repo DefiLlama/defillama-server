@@ -1329,7 +1329,12 @@ export default {
         id: "4396"
     },
     "pumpdotfun": {
-        id: "4449"
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1752537600": true
+            },
+        }
     },
     "synthetix-v3": {
         id: "4446"

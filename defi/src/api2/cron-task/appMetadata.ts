@@ -606,16 +606,16 @@ async function _storeAppMetadata() {
       }
     }
 
-    // const bridges = bridgesData.bridges.map((b: any) => b.displayName);
+    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    // for (const protocol of Object.entries(nameToId)) {
-    //   if (bridges.includes(slug(protocol[1] as string))) {
-    //     finalProtocols[protocol[0]] = {
-    //       ...finalProtocols[protocol[0]],
-    //       bridge: true,
-    //     };
-    //   }
-    // }
+    for (const protocol of Object.entries(nameToId)) {
+      if (bridges.includes(slug(protocol[1] as string))) {
+        finalProtocols[protocol[0]] = {
+          ...finalProtocols[protocol[0]],
+          bridge: true,
+        };
+      }
+    }
 
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()

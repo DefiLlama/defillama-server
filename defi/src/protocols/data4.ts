@@ -19879,5 +19879,24 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/Virtue-CDP/virtue-audits"],
     listedAt: 1752861823
   },
+  {
+    id: "6456",
+    name: "Tothemoon",
+    address: null,
+    symbol: "-",
+    url: "https://tothemoon.com",
+    description: "Founded in 2018, Tothemoon is a global cryptocurrency platform serving users in over 100 countries. It offers trading for more than 300 cryptocurrencies, including BTC, ETH, DOT, SOL, and AVAX",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tothemoon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "tothemoon/index.js",
+    twitter: "2TheMoon_global",
+  },
 ];
 export default data4;

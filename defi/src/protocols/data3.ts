@@ -5244,6 +5244,7 @@ const data3_1: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "blazestake/index.js",
+    treasury: "blazestake.js",
     twitter: "solblaze_org",
     forkedFrom: [],
     audit_links: ["https://stake-docs.solblaze.org/protocol/audits"],

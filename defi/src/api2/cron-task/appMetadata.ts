@@ -8,7 +8,7 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 
 import fetch from "node-fetch";
 import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections, getChainDisplayName } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 const { exec } = require("child_process");
@@ -20,6 +20,7 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
+const nameToId: any = {};
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
@@ -29,6 +30,7 @@ parentProtocols.forEach((protocol: any) => {
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
+  nameToId[protocol.id] = protocol.name;
   protocolChainSetMap[protocol.id] = new Set();
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
@@ -150,10 +152,9 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = { name: chain };
     }
 
-    const nameToId: any = {};
+
     const parentToChildProtocols: any = {};
     for (const protocol of tvlData.protocols) {
-      nameToId[protocol.defillamaId] = protocol.name;
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
@@ -186,7 +187,6 @@ async function _storeAppMetadata() {
       }
     }
     for (const protocol of tvlData.parentProtocols) {
-      nameToId[protocol.id] = protocol.name;
 
       const name = slug(protocol.name);
       finalProtocols[protocol.id] = {
@@ -251,13 +251,11 @@ async function _storeAppMetadata() {
       }
     }
 
-    for (const market of nftMarketplacesData) {
-      const marketplaceExists = Object.entries(nameToId).find(
-        (protocol) => slug(market.exchangeName) === slug(protocol[1] as string)
-      ) as [string, string] | undefined;
-      if (marketplaceExists) {
-        finalProtocols[marketplaceExists[0]] = {
-          ...finalProtocols[marketplaceExists[0]],
+    const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
+    for (const protocolName in nameToId) {
+      if (allNftMarketplaces.includes(protocolName)) {
+        finalProtocols[nameToId[protocolName]] = {
+          ...finalProtocols[nameToId[protocolName]],
           nfts: true,
         };
       }
@@ -597,21 +595,22 @@ async function _storeAppMetadata() {
       };
     }
 
-    for (const protocol of Object.entries(nameToId)) {
-      if (emmissionsData.includes(slug(protocol[1] as string))) {
-        finalProtocols[protocol[0]] = {
-          ...finalProtocols[protocol[0]],
+    for (const protocolName in nameToId) {
+      if (emmissionsData.includes(slug(protocolName))) {
+        finalProtocols[nameToId[protocolName]] = {
+          ...finalProtocols[nameToId[protocolName]],
           emissions: true,
         };
       }
     }
 
+
     const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    for (const protocol of Object.entries(nameToId)) {
-      if (bridges.includes(slug(protocol[1] as string))) {
-        finalProtocols[protocol[0]] = {
-          ...finalProtocols[protocol[0]],
+    for (const protocolName in nameToId) {
+      if (bridges.includes(protocolName)) {
+        finalProtocols[nameToId[protocolName]] = {
+          ...finalProtocols[nameToId[protocolName]],
           bridge: true,
         };
       }

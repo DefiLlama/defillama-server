@@ -20,18 +20,18 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
-const nameToId: any = {};
+const nameAndIds: any = [];
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
-  nameToId[`${protocol.name}+${protocol.id}`] = protocol.id;
+  nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
   protocol.childProtocols = [];
 });
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
-  nameToId[`${protocol.name}+${protocol.id}`] = protocol.id;
+  nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
@@ -253,7 +253,7 @@ async function _storeAppMetadata() {
     }
 
     const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
-    for (const protocolNameAndId in nameToId) {
+    for (const protocolNameAndId of nameAndIds) {
       const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (allNftMarketplaces.includes(protocolName)) {
         finalProtocols[protocolId] = {
@@ -597,7 +597,7 @@ async function _storeAppMetadata() {
       };
     }
 
-    for (const protocolNameAndId in nameToId) {
+    for (const protocolNameAndId of nameAndIds) {
       const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (emmissionsData.includes(slug(protocolName))) {
         finalProtocols[protocolId] = {
@@ -610,7 +610,7 @@ async function _storeAppMetadata() {
 
     const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    for (const protocolNameAndId in nameToId) {
+    for (const protocolNameAndId of nameAndIds) {
       const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (bridges.includes(protocolName)) {
         finalProtocols[protocolId] = {

@@ -1,6 +1,16 @@
 import { Protocol } from "../../protocols/types";
 // import adapters from "./adapters"
-import adaptersData from "./tvlAdapterData.json"
+import fs from "fs";
+import path from "path";
+
+let adaptersData = {} as any
+
+try {
+    const _adaptersData = fs.readFileSync(path.join(__dirname, "tvlAdapterData.json"), "utf8");
+    adaptersData = JSON.parse(_adaptersData) as any
+} catch (error) {
+    console.error("Error loading adapter data:", error)
+}
 
 
 /**

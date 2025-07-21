@@ -319,7 +319,8 @@ test("no surprise category", async () => {
     'Risk Curators',
     'Chain Bribes',
     'DAO Service Provider',
-    'Staking Rental'
+    'Staking Rental',
+    'Canonical Bridge'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

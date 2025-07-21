@@ -2,13 +2,12 @@ import type { IParentProtocol, Protocol } from "../types";
 import { setProtocolCategory, TagCatetgoryMap } from "../tags";
 import parentProtocols from "../parentProtocols";
 import { sluggifyString } from "../../utils/sluggify";
-// import { importAdapter } from "../../utils/imports/importAdapter";
+import { importAdapter } from "../../utils/imports/importAdapter";
 import { isDoubleCounted } from "../../utils/normalizeChain";
 import data1 from "../data1";
 import data2 from "../data2";
 import data3 from "../data3";
 import data4 from "../data4";
-import path from "path";
 
 export type { Protocol };
 const protocols = data1.concat(data2, data3, data4);
@@ -83,8 +82,7 @@ protocols.forEach((protocol: Protocol) => {
       category = ''
     }
     const slugTagSet = new Set((protocol.tags || []).map(tag => sluggifyString(tag)))
-    // const module = importAdapter(protocol)
-    const module = require(path.join(__dirname, '..', '..', '..', 'DefiLlama-Adapters', 'projects', protocol.module));
+    const module = importAdapter(protocol)
     const isDoublecounted = isDoubleCounted(module.doublecounted, category)
 
     _InternalProtocolMetadataMap[protocol.id] = {

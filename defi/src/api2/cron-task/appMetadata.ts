@@ -163,7 +163,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
+        ...(['Bridge', 'Cross Chain Bridge', 'Canonical Bridge'].includes(protocol.category) ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {

@@ -37,7 +37,7 @@ export async function craftProtocolV2({
   getCachedProtocolData = getProtocolAllTvlData,
   skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, warningBanners, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -207,6 +207,10 @@ export async function craftProtocolV2({
 
   if (deprecated) {
     response.deprecated = true
+  }
+
+  if (warningBanners) {
+    response.warningBanners = warningBanners;
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime

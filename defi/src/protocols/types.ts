@@ -61,6 +61,10 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<{
+    message: string;
+    until?: string | number; // YYYY-MM-DD or unix timestamp
+  }>;
 }
 
 export interface IParentProtocol {
@@ -85,4 +89,8 @@ export interface IParentProtocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<{
+    message: string;
+    until?: string | number; // YYYY-MM-DD or unix timestamp
+  }>;
 }

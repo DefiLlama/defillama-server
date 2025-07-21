@@ -320,5 +320,8 @@ export default async function craftProtocol({
   if (module.deprecated) {
     response.deprecated = module.deprecated;
   }
+  if (module.warningBanners) {
+    response.warningBanners = module.warningBanners;
+  }
   return response;
 }

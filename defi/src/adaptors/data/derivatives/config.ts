@@ -693,5 +693,7 @@ export default {
     "bluefin-pro": {
         id: "6451"
     },
-
+    "ostrich": {
+        id: "6442"
+    },
 } as AdaptorsConfig

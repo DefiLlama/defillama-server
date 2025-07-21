@@ -6226,7 +6226,7 @@ const data3_1: Protocol[] = [
     name: "Merkl",
     address: "0x31429d1856aD1377A8A0079410B297e1a9e214c2",
     symbol: "ANGLE",
-    url: "https://merkl.angle.money",
+    url: "https://app.merkl.xyz/",
     description:
       "Merkl helps anyone incentivize concentrated liquidity positions in a more efficient way. It allows to customize how rewards are distributed to shape liquidity in specific ways.",
     chain: "Ethereum",

@@ -1,25 +1,29 @@
 import { Protocol } from "../protocols/data";
 
+const excludedCategoriesSet = new Set(['Chain', 'CEX', 'Infrastructure', 'Staking Pool', 'Canonical Bridge'])
+
 export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
-    let exclude = false;
-    const excludedCategories = ['Chain', 'CEX', 'Infrastructure', 'Staking Pool']
-  
-    if (excludedCategories.includes(protocol.category!)) {
-      return true;
-    }
-  
-    if (!includeBridge) {
-      exclude = protocol.name === "AnySwap" || protocol.category === "Bridge";
-    }
-  
-    return exclude;
+  let exclude = false;
+
+  if (excludedCategoriesSet.has(protocol.category!)) {
+    return true;
   }
-  
-export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA" || category === "Basis Trading" || category === "CeDeFi";
+
+  if (!includeBridge) {
+    exclude = protocol.name === "AnySwap" || protocol.category === "Bridge";
+  }
+
+  return exclude;
 }
 
-export const includeCategoryIntoChainTvl = (category?:string)=>{
-  if(category === undefined) return true
-  return !["Bridge", "RWA", "Basis Trading", "CeDeFi"].includes(category)
+const excludedChainTvlCategoriesSet = new Set(['RWA', 'Basis Trading', 'CeDeFi',])
+
+export function isExcludedFromChainTvl(category?: string) {
+  return excludedChainTvlCategoriesSet.has(category as string);
+}
+
+const excludedChainTvlCategoriesSet2 = new Set(['RWA', 'Basis Trading', 'CeDeFi', 'Canonical Bridge', "Bridge",])
+export const includeCategoryIntoChainTvl = (category?: string) => {
+  if (category === undefined) return true
+  return !excludedChainTvlCategoriesSet2.has(category as string);
 }

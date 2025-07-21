@@ -416,8 +416,9 @@ const data4: Protocol[] = [
     cmcId: "5964",
     category: "Wallets",
     chains: ["Ethereum"],
+    treasury: "trust-wallet.js",
     forkedFrom: [],
-    module: "dummy.js",
+    module: "trust-wallet/index.js",
     twitter: "TrustWallet",
   },
   {
@@ -19897,6 +19898,27 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "tothemoon/index.js",
     twitter: "2TheMoon_global",
+  },
+  {
+    id: "6457",
+    name: "stakedhype",
+    address: null,
+    symbol: "-",
+    url: "https://www.stakedhype.fi/",
+    description: "The Hyperliquid liquid staking platform.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/stakedhype.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Hyperliquid L1"],
+    forkedFrom: [],
+    module: "staked-hype/index.js",
+    twitter: "stakedhype",
+    audit_links: ["https://docs.stakedhype.fi/technical/audits"],
+    listedAt: 1753110072
   },
 ];
 export default data4;

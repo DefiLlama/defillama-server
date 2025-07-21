@@ -143,6 +143,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
 
 export function generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s }: { allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, otherATId2s: Set<string> }): ProtocolAdaptor[] {
   return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
+    
     try {
       let list = protocolMap
       if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
@@ -172,71 +173,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
 
       } else if ('breakdown' in moduleObject) {
-
-        const protocolsData = config?.[adapterKey]?.protocolsData
-        if (!protocolsData)
-          console.error(`No protocols data defined in ${adapterType}'s config for adapter with breakdown`, adapterKey)
-        const ids: Array<string> = []
-        const parentIds: Array<string> = []
-
-        Object.entries((protocolsData ?? {}) as any).forEach(([versionKey, versionConfig]: any) => {
-          if (!versionConfig || versionConfig.enabled === false) return;
-
-          const childConfig = { ...configObj, ...versionConfig }
-          delete childConfig.protocolsData
-          const adapter = (moduleObject as any).breakdown[versionKey]
-          if (!adapter) throw new Error(`No adapter found for ${versionKey}`)
-          baseModuleObject = adapter
-
-          const id = versionConfig.id
-          const childProtocol = list[id]
-          const childChains = getChainsFromBaseAdapter(adapter)
-          chains.push(...childChains)
-
-          if (!ids.includes(id)) {
-            ids.push(id)
-            const parentId = childProtocol.parentProtocol
-            if (parentId && !parentIds.includes(parentId)) parentIds.push(parentId)
-          }
-
-          if (!childProtocol) console.error(`Protocol not found with id ${versionConfig.id} and key ${adapterKey}`)
-          const id2 = protocolType === ProtocolType.CHAIN ? `chain#${adapterKey}` : id
-
-          childProtocols.push({
-            ...childProtocol,
-            ...childConfig,
-            id: !isNaN(+versionConfig.id) ? versionConfig.id : config[adapterKey].id,
-            id2,
-            defillamaId: versionConfig.id,
-            module: adapterKey,
-            config: { ...childConfig },
-            chains: childChains,
-            logo: getLlamaoLogo(childProtocol.logo),
-            disabled: childConfig.disabled ?? false,
-            displayName: childConfig.displayName ?? childProtocol.name,
-            protocolType,
-            versionKey,
-            isProtocolInOtherCategories: otherATId2s.has(id2),
-            methodologyURL: adapterObj.codePath,
-            methodology: getMethodologyDataByBaseAdapter(adapter, adapterType, childProtocol.category) ?? undefined
-          })
-        })
-
-        if (ids.length === 0 && !protocolId) return
-        if (ids.length === 1) {
-          // if (protocolId !== ids[0])
-          //   throw new Error(`Protocol id ${protocolId} does not match the only protocol id in the protocolsData array for ${adapterKey}`)
-          protocol = list[ids[0]]
-          if (!protocol) throw new Error(`No protocol found for ${adapterKey}`)
-          childProtocols = [] // if there is only one protocol, we don't need to list the children
-        } else {
-          if (!parentIds.length) throw new Error(`No parentIds found for ${adapterKey}`)
-          if (parentIds.length > 1) throw new Error(`More than one parentId found for ${adapterKey}`)
-          protocol = parentProtocolDataMap[parentIds[0]]
-          baseModuleObject = {} as BaseAdapter
-        }
-
-        chains = [...new Set(chains)]
+        throw new Error('Breakdown adapters are deprecated, migrate it to use simple adapter')
       }
 
       if (!protocol!) throw new Error(`No protocol found for ${adapterKey}`)
@@ -274,6 +211,8 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
         _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
+        _stat_allowNegative: !!adapterObj.module.default?.allowNegativeValue,
+        doublecounted: moduleObject.doublecounted ?? false,
       } as any
 
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey

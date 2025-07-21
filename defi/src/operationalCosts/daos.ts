@@ -49,12 +49,16 @@ export default [
     {
         protocolId: "340", // olympus
         sources: ["https://lookerstudio.google.com/u/0/reporting/cb74b814-7ce1-4449-88e5-eac57637b934/page/ZK0YC"],
-        headcount: 31,
+        headcount: 8,
         annualUsdCost: {
-            salaries: 257507*12,
+            subscriptions: 19384,
+            salaries: 580392,
+            legal: 69593,
+            hypernative: 60000,
+            audits: 91000,
         },
-        notes: ["Using data from March 2023"],
-        lastUpdate: "2023-04-29"
+        notes: ["Using FY2024 data from Looker Studio"],
+        lastUpdate: "2025-05-20"
     },
     {
         protocolId: "326", // beefy

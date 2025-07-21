@@ -3,7 +3,7 @@ import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./native";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
-import { ownTokens, tokenFlowCategories, zero } from "./constants";
+import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
@@ -75,7 +75,6 @@ async function translateToChainData(
   const nativeTokenTotalValues: any = {};
 
   let translatedData: any = {};
-  const selectedChains: Chain[] = Object.keys(data.canonical);
   aggregateNativeTokens();
 
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
@@ -85,7 +84,7 @@ async function translateToChainData(
 
   function aggregateNativeTokens() {
     tokenFlowCategories.map((key: keyof ChainData) => {
-      selectedChains.map((chain: Chain) => {
+      allChainKeys.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
           if (key == "outgoing") return;
@@ -100,7 +99,7 @@ async function translateToChainData(
 
   async function processProperty(data: ChainData, key: keyof ChainData) {
     await Promise.all(
-      selectedChains.map(async (chain: Chain) => {
+      allChainKeys.map(async (chain: Chain) => {
         if (!(chain in data[key])) return;
         if (!(chain in translatedData)) translatedData[chain] = {};
         if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
@@ -134,15 +133,18 @@ async function translateToChainData(
   function combineThirdPartyFlows() {
     Object.keys(translatedData).map((chain: Chain) => {
       const breakdown: { [symbol: string]: BigNumber } = {};
-      if (!("incoming" in translatedData[chain])) return;
-      Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
-        breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
-      });
-      Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
-        if (!(symbol in breakdown)) return;
-        breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
-        // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
-      });
+      if ("incoming" in translatedData[chain]) {
+        Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
+          breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
+        });
+      }
+      if ("outgoing" in translatedData[chain]) {
+        Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
+          if (!(symbol in breakdown)) return;
+          breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].outgoing.breakdown[symbol]);
+          // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
+        });
+      }
       const total = Object.values(breakdown).reduce((p: BigNumber, c: BigNumber) => p.plus(c), zero);
       translatedData[chain].thirdParty = { total, breakdown };
       delete translatedData[chain].incoming;

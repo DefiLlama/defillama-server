@@ -87,9 +87,9 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.FEES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
-    [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,
+    [AdapterType.OPTIONS]: AdaptorRecordType.dailyPremiumVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
-    [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
+    // [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
 }
@@ -105,6 +105,9 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordType.totalCreatorRevenue,
     [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordType.totalSupplySideRevenue,
     [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
+    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordType.totalBribesRevenue,
+    [AdaptorRecordType.dailyTokenTaxes]: AdaptorRecordType.totalTokenTaxes,
+    [AdaptorRecordType.dailyBridgeVolume]: AdaptorRecordType.totalBridgeVolume,
 }
 
 const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
@@ -120,21 +123,21 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyAppRevenue,
         AdaptorRecordType.dailyAppFees,
     ],
-    [AdapterType.ROYALTIES]: [
+    /* [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,
         AdaptorRecordType.dailyUserFees,
         AdaptorRecordType.dailyHoldersRevenue,
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
         AdaptorRecordType.dailyProtocolRevenue
-    ],
+    ], */
     [AdapterType.OPTIONS]: [
-        AdaptorRecordType.dailyPremiumVolume
+        AdaptorRecordType.dailyNotionalVolume,
     ],
     [AdapterType.DERIVATIVES]: [
-        AdaptorRecordType.dailyShortOpenInterest,
-        AdaptorRecordType.dailyLongOpenInterest,
-        AdaptorRecordType.dailyOpenInterest
+        AdaptorRecordType.shortOpenInterestAtEnd,
+        AdaptorRecordType.longOpenInterestAtEnd,
+        AdaptorRecordType.openInterestAtEnd
     ]
 }
 

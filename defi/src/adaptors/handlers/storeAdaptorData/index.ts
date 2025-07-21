@@ -16,6 +16,7 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import canGetBlock from "../../utils/canGetBlock";
 import { sendDiscordAlert } from "../../utils/notify";
 import { processFulfilledPromises, } from "./helpers";
+import dynamodb from "../../../utils/shared/dynamodb";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -33,7 +34,7 @@ export interface IHandlerEvent {
 
 
 export const handler = async (event: IHandlerEvent) => {
-  return handler2({
+  await handler2({
     timestamp: event.timestamp,
     adapterType: event.adaptorType,
     protocolNames: event.protocolModules ? new Set(event.protocolModules) : undefined,
@@ -53,19 +54,20 @@ export type IStoreAdaptorDataHandlerEvent = {
   todayIdSet?: Set<string>
   runType?: 'store-all' | 'default'
   throwError?: boolean
+  checkBeforeInsert?: boolean
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 10
+  const defaultMaxConcurrency = 21
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false,
+    throwError = false, checkBeforeInsert = false,
 
   } = event
   if (!isRunFromRefillScript)
-    console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
+    console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Get clean day
   let toTimestamp: number
   let fromTimestamp: number
@@ -76,7 +78,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
 
     if (toTimestamp * 1000 > Date.now()) {
-      console.info(`[${adapterType}] - cant refill data for today, it's not over yet`)
+      console.log(`[${adapterType}] - cant refill data for today, it's not over yet`)
       return;
     }
 
@@ -126,7 +128,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     .for(protocols)
     .onTaskFinished((item: any, _: any) => {
       if (!isRunFromRefillScript)
-        console.info(`[${adapterType}] - ${item.module} done!`)
+        console.log(`[${adapterType}] - ${item.module} done!`)
     })
     .process(runAndStoreProtocol)
 
@@ -151,7 +153,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const timeTakenSeconds = Math.floor((debugTimeEnd - _debugTimeStart) / 1000)
 
   if (!isRunFromRefillScript) {
-    console.info(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+    console.log(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
     await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
   }
 
@@ -166,18 +168,21 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     console.table(errorObjects)
   }
 
-  if (throwError && errorObjects.length) 
+  if (throwError && errorObjects.length)
     throw new Error('Errors found')
+
+  if (isRunFromRefillScript)
+    return results
   // console.log(JSON.stringify(errorObjects, null, 2))
   /* console.log(` ${adapterType} Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
   console.table(timeTable) */
 
-  console.info(`**************************`)
+  console.log(`**************************`)
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
     // if (protocol.module !== 'mux-protocol') return;
     if (!isRunFromRefillScript)
-      console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
+      console.log(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
 
 
     const startTime = getUnixTimeNow()
@@ -189,10 +194,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     }
 
     let success = true
+    let refillYesterdayPromise = undefined
     let errorObject: any
     // Get adapter info
-    let { id, module, } = protocol;
-    // console.info(`Adapter found ${id} ${module} ${versionKey}`)
+    let { id, id2, module, } = protocol;
+    // console.log(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
       // Import adaptor
@@ -217,11 +223,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if ("adapter" in adaptor) {
         adaptersToRun.push([module, adaptor.adapter])
       } else if ("breakdown" in adaptor) {
-        const dexBreakDownAdapter = adaptor.breakdown
-        const breakdownAdapters = Object.entries(dexBreakDownAdapter)
-        for (const [version, adapter] of breakdownAdapters) {
-          adaptersToRun.push([version, adapter]) // the version is the key for the record (like uni v2) not the version of the adapter
-        }
+        throw new Error("Invalid adapter - breakdown are no longer supported")
       } else
         throw new Error("Invalid adapter")
 
@@ -240,8 +242,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const isExpensiveAdapter = adaptor.isExpensiveAdapter
         // if it is an expensive adapter run every 4 hours or after 20:00 UTC
         const runNow = !isExpensiveAdapter || (hours % 4 === 0 || hours > 20)
-        const haveTodayData = todayIdSet.has(id)
-        const haveYesterdayData = yesterdayIdSet.has(id)
+        const haveTodayData = todayIdSet.has(id2)
+        const haveYesterdayData = yesterdayIdSet.has(id2)
         const yesterdayEndTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) - 1
 
 
@@ -251,9 +253,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
           // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
           if (!runAtCurrTime && !haveYesterdayData) {
-            console.info(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
+            console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
             try {
-              await handler2({
+              refillYesterdayPromise = handler2({
                 timestamp: yesterdayEndTimestamp,
                 adapterType,
                 protocolNames: new Set([protocol.displayName]),
@@ -265,12 +267,12 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           }
 
           if (haveTodayData && !runNow) {
-            console.info(`Skipping ${adapterType} - ${protocol.module} - already have today data for adapter running at current time`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} - already have today data for adapter running at current time`)
             return;
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            console.info(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 
@@ -295,9 +297,18 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adaptorRecords: {
         [key: string]: AdaptorRecord
       } = {}
+
+      let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+      let allTokenBreakdownData: any = undefined // since there is no more breakdown adapters, there can only be one
+
+
+
+
       for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
-        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
+        const { response: runAdapterRes, breakdownData, } = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor, withMetadata: true, })
+        allTokenBreakdownData = breakdownData
+        if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 
         const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)
         if (recordWithTimestamp) {
@@ -314,23 +325,69 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         }
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
+
+
+      if (noDataReturned && isRunFromRefillScript) {
+        console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        return;
+      }
+
+      const responseObject: any = {
+        recordV2: undefined,
+        storeDDBFunctions: [],
+        storeRecordV2Function: undefined,
+        adapterType: adapterType,
+        protocolName: protocol.displayName,
+      }
+
       const storedData: any = {}
       const adaptorRecordTypeByValue: any = Object.fromEntries(Object.entries(AdaptorRecordType).map(([key, value]) => [value, key]))
       for (const [recordType, record] of Object.entries(rawRecords)) {
-        // console.info("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
+        // console.log("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
         storedData[adaptorRecordTypeByValue[recordType]] = record
         adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
         if (!isDryRun) {
           const promise = storeAdaptorRecord(adaptorRecords[recordType], recordTimestamp)
           promises.push(promise)
+        } else if (checkBeforeInsert) {
+          responseObject.storeDDBFunctions.push(() => storeAdaptorRecord(adaptorRecords[recordType], recordTimestamp))
         }
       }
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ adaptorRecords, protocolType: adaptor.protocolType, adapterType, protocol, configIdMap })
-      if (adapterRecord && !isDryRun)
-        await storeAdapterRecord(adapterRecord)
+
+      async function storeTokenBreakdownData() {
+        if (!adapterRecord || !allTokenBreakdownData) return;
+        const ddbItem = { ...adapterRecord.getDDBItem() } as any
+        ddbItem.data = allTokenBreakdownData
+        ddbItem.source = 'dimension-adapter'
+        ddbItem.subType = 'token-breakdown'
+        ddbItem.PK = `dimTokenBreakdown#${ddbItem.PK}`
+        await dynamodb.putEventData(ddbItem)
+      }
+
+      if (adapterRecord) {
+        if (!isDryRun) {
+
+          await storeAdapterRecord(adapterRecord)
+          promises.push(storeTokenBreakdownData())
+
+        } else if (checkBeforeInsert) {
+
+          responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
+          responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
+          responseObject.recordV2 = adapterRecord
+          responseObject.id = `${adapterRecord.adapterType}#${adapterRecord.id}#${adapterRecord.timeS}`
+          responseObject.timeS = adapterRecord.timeS
+        }
+      }
       await Promise.all(promises)
       if (process.env.runLocal === 'true' || isRunFromRefillScript)
         printData(storedData, recordTimestamp, protocol.module)
+
+      if (refillYesterdayPromise)
+        await refillYesterdayPromise
+
+      return responseObject
     }
     catch (error) {
       try { (error as any).module = module } catch (e) { }
@@ -356,7 +413,7 @@ type chainObjet = {
 
 function printData(data: any, timestamp?: number, protocolName?: string) {
   const chains: chainObjet = {};
-  console.info(`\nrecord timestamp: ${timestamp} (${new Date((timestamp ?? 0) * 1e3).toISOString()})`)
+  console.log(`\nrecord timestamp: ${timestamp} (${new Date((timestamp ?? 0) * 1e3).toISOString()})`)
 
   // Collect data from all chains and keys
   for (const [mainKey, chainData] of Object.entries(data)) {
@@ -380,14 +437,14 @@ function printData(data: any, timestamp?: number, protocolName?: string) {
   // Print data, prioritizing protocol matches and handling versions otherwise
   for (const [chain, values] of Object.entries(chains)) {
     if (Object.keys(values.protocols).length > 0) {
-      console.info('')
+      console.log('')
       console.log(`chain: ${chain}`);
       for (const [key, value] of Object.entries(values.protocols)) {
         console.log(`${key}: ${humanizeNumber(Number(value))}`);
       }
     } else {
       for (const [version, versionData] of Object.entries(values.versions)) {
-        console.info('')
+        console.log('')
         console.log(`chain: ${chain}`);
         console.log(`version: ${version}`);
         for (const [key, value] of Object.entries(versionData as any)) {
@@ -396,6 +453,5 @@ function printData(data: any, timestamp?: number, protocolName?: string) {
       }
     }
   }
-  console.info('\n')
+  console.log('\n')
 }
-

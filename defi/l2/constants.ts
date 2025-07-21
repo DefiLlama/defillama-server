@@ -7,6 +7,9 @@ export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 export const excludedTvlId = "5897";
 
+let notifs: number = 0;
+export const fetchNotifsSent = () => (notifs += 1);
+
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
 export const chainsWithoutCanonicalBridges: string[] = [
@@ -25,6 +28,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "near",
   // "aurora",
   "berachain",
+  "flow",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -107,12 +111,19 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5700": "redstone",
   "5701": "wc",
   "5702": "zero_network",
-  "5703": "zkfair",
+  // "5703": "zkfair",
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
-  "5833": "formnetwork",
+  // "5833": "formnetwork",
   "5854": "hemi-l2",
+  "6063": "mxczkevm",
+  "6148": "lens",
+  "6149": "openzk",
+  "6150": "treasure",
+  "6151": "zkcandy",
+  "6284": "ao",
+  "6424": "soon",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -122,9 +133,14 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
-  "5323": "exSat",
+  // "5323": "exSat",
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
+  "6401": "embr",
+  "6414": "xion",
+  "6438": "echelon_initia",
+  "6439": "inertia",
+  "6440": "milkyway_rollup",
 };
 
 export const allChainKeys: string[] = [
@@ -222,4 +238,13 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
   "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
+  "flow": { ticker: "FLOW", address: "coingecko:flow" },
+  "mxczkevm": { ticker: "MXC", address: "coingecko:mxc" },
+  // "lens": { ticker: "gho", address: "coingecko:gho" },
+  "openzk": { ticker: "OZK", address: "coingecko:openzk-network" },
+  "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
+  // "zkcandy": {}
+  "ao": { ticker: "AO", address: "coingecko:ao-computers" },
+  // embr: {}
+  "xion": { ticker: "XION", address: "coingecko:xion-2" },
 };

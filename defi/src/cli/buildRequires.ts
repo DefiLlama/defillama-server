@@ -59,7 +59,6 @@ const importPaths = [
     "aggregators",
     "options",
     "incentives",
-    "protocols",
     "aggregator-derivatives",
     "bridge-aggregators"
 ]
@@ -72,7 +71,15 @@ for (const folderPath of importPaths) {
         `
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 export default {
-${paths_keys.map(path => createDimensionAdaptersModule(path, folderPath)).join('\n')}
+${paths_keys.map(path => {
+  try {
+    const response = createDimensionAdaptersModule(path, folderPath)
+    return response
+  } catch (error) {
+    console.log(`Error creating module for ${path} in ${folderPath}:`, error)
+    return ''
+  }
+}).join('\n')}
 } as {[key:string]: {
     module: { default: Adapter },
     codePath: string
@@ -139,6 +146,7 @@ function createImportAdaptersJSON() {
     let data: any = {}
     protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
     writeFileSync(adaptersFile, JSON.stringify(data, null, 2))
+    // we are running this as JS file because it is faster than compiling as ts
     execSync(['node', __dirname + "/buildTvlModuleData.js", adaptersFile].join(' '), { stdio: 'inherit' })
   } catch (error) {
     console.log('Error creating import adapters JSON:', error)

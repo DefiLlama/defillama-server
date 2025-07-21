@@ -13,9 +13,11 @@ export interface Protocol {
   gecko_id: string | null;
   cmcId: string | null;
   category?: string;
+  tags?: string[];
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   module: string;
   twitter?: string | null;
   language?: string;
@@ -33,8 +35,9 @@ export interface Protocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   rugged?: boolean;
-  deadUrl?: boolean;
-  deadFrom?: number | string;
+  excludeTvlFromParent?: boolean;
+  deadUrl?: boolean; // for all domains that stopped being used, to avoid scammers registering there for a scam page
+  deadFrom?: number | string; // for protocols that are dead, will trigger less frequent TVL updates
   tokensExcludedFromParent?: {
     [chain:string]: string[];
   },
@@ -58,7 +61,14 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<Banner>;
 }
+export interface Banner {
+  message: string;
+  until?: number|string; // unix timestamp or "forever" or date string  in 'YYYY-MM-DD' format, 'forever' if the field is not set
+  level: "low" | "alert" | "rug";
+}
+
 
 export interface IParentProtocol {
   id: string;
@@ -75,10 +85,12 @@ export interface IParentProtocol {
   twitter: string | null;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   governanceID?: Array<string>;
   github?: Array<string>;
   treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<Banner>;
 }

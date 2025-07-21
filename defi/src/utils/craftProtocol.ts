@@ -36,9 +36,20 @@ export function normalizeEthereum(balances: { [symbol: string]: number }) {
   return balances && formattedBalances;
 }
 
+const faultyTokenPks: string[] = ["1003", "1862", "1937", "2804"]
+  .map((id: string) => [`dailyUsdTokensTvl#${id}`, `dailyTokensTvl#${id}`])
+  .flat();
+
 export function selectChainFromItem(item: any, normalizedChain: string) {
   let altChainName = undefined;
-  if (normalizedChain.startsWith("avax")) {
+  if (faultyTokenPks.includes(item.PK)) {
+    const patchedSymbols: { [symbol: string]: any } = {};
+    Object.keys(item[normalizedChain]).map((symbol: string) => {
+      const patchedSymbol = symbol.trim().replace(/\x00/g, "");
+      patchedSymbols[patchedSymbol] = item[normalizedChain][symbol];
+    });
+    return patchedSymbols;
+  } else if (normalizedChain.startsWith("avax")) {
     altChainName = normalizedChain.replace("avax", "avalanche");
   } else if (normalizedChain.startsWith("avalanche")) {
     altChainName = normalizedChain.replace("avalanche", "avax");
@@ -308,6 +319,9 @@ export default async function craftProtocol({
   }
   if (module.deprecated) {
     response.deprecated = module.deprecated;
+  }
+  if (module.warningBanners) {
+    response.warningBanners = module.warningBanners;
   }
   return response;
 }

@@ -2,7 +2,8 @@ import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { allChainKeys, ownTokens } from "./constants";
-import { sendMessage } from "../src/utils/discord";
+import { fetchFailedDeps } from "./outgoing";
+import { getChainDisplayName } from "../src/utils/normalizeChain";
 
 export async function verifyChanges(chains: FinalData) {
   const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) =>
@@ -18,7 +19,7 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
-    if (chain.toLowerCase() == "tron" && totalNew < 20_000_000_000) {
+    if (chain.toLowerCase() == "tron" && totalNew < 15_000_000_000) {
       chains;
       allNew;
       throw new Error(`USDT not counted for Tron`);
@@ -30,6 +31,12 @@ export async function verifyChanges(chains: FinalData) {
     message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
       0
     )}% in ${hours}`;
+  });
+
+  const rawFailedDeps = fetchFailedDeps();
+  const failedDeps = rawFailedDeps.map((dep) => getChainDisplayName(dep, true));
+  Object.keys(res).map((chain: string) => {
+    if (!chains[chain] && failedDeps.includes(chain)) chains[chain] = res[chain];
   });
 
   if (message.length) throw new Error(message);

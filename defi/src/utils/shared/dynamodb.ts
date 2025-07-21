@@ -48,6 +48,28 @@ const dynamodb = {
   putDimensionsDataBulk: (
     items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
+  putEventData: async (
+    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+  ) => {
+    if (!item.PK) {
+      throw new Error("Item must have a PK");
+    }
+    if (!item.source) {
+      throw new Error("Item must have a source");
+    }
+
+    if (!item.SK) {
+      throw new Error("Item must have a SK");
+    }
+    item.SK_ORIGNAL = item.SK; // Store original SK for debugging
+    item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
+    try {
+      let response = await client.put({ TableName: 'prod-event-table', Item: item }).promise()
+      return response;
+    } catch (e: any) {
+      console.error("Failed to put event data", item.PK, item.source, e?.message || e);
+    }
+  },
 };
 export default dynamodb;
 

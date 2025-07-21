@@ -6,80 +6,51 @@ export default {
     "lyra": {
         parentId: "Derive",
         "startFrom": 1656460800,
-        "id": "5060"
-    },
-    "premia": {
-        "id": "381",
-        parentId: "Premia",
-        protocolsData: {
-            v2: {
-                id: "381",
-            },
-            v3: {
-                id: "3497",
-            }
-        }
+        id: "5060"
     },
     "thales": {
-        "id": "534"
+        id: "534"
     },
     "hegic": {
-        "id": "128"
+        id: "128"
     },
     "opyn": {
         "enabled": false,
-        "id": "285",
-        parentId: "Opyn",
-        protocolsData: {
-            gamma: {
-                id: "285",
-                enabled: false,
-            }
-        }
+        id: "285",
     },
     "aevo": {
-        "id": "5059"
+        id: "5059"
     },
     "typus": {
-        "id": "2946"
+        id: "2946"
     },
     "rysk-finance": {
-        "id": "2605"
+        id: "2605"
     },
     "tigris": {
         "enabled": false,
-        "id": "3129"
+        id: "3129"
     },
     "valorem": {
-        "id": "3501"
+        id: "3501"
     },
     "derivio": {
         parentId: "Deri",
         "enabled": false,
-        "id": "3759",
-        protocolsData: {
-            "derivatives": {
-                "id": "3759",
-            }
-        }
+        id: "3759",
     },
     "dopex": {
         parentId: "Dopex",
-        "id": "3817",
-        protocolsData: {
-            "clamm": {
-                "id": "3817",
-            }
-        }
+        id: "3817"
     },
     "lyra-v2": {
         parentId: "Derive",
-        "id": "3923"
+        id: "3923"
     },
-    "optionBlitz": {
-        enabled: false, //sus behavior
-        id: "4396"
-    },
+    // "optionBlitz": {
+    //     enabled: false, //sus behavior
+    //     id: "4396"
+    // },
     "smilee-finance": {
         id: "4350"
     },
@@ -107,5 +78,23 @@ export default {
     },
     "olab": {
         id: "5648"
+    },
+    // "paradex": {  // delisted because it is acting more like a perp
+    //     id: "3648"
+    // },
+    "premia-v2": {
+        id: "381"
+    },
+    "premia-v3": {
+        id: "3497"
+    },
+    "ivx": {
+        id: "6177"
+    },
+    "sofa-org": {
+        id: "4779"
+    },
+    "optfun": {
+        id: "6337"
     }
 } as AdaptorsConfig

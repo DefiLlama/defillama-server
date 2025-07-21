@@ -1544,6 +1544,11 @@
       "decimals": "18",
       "symbol": "rUSD",
       "to": "coingecko#fx-rusd"
+    },
+    "0x0Fb765ddBD4d26AC524AA5990B0643D0Ab6Ac2fE": {
+      "decimals": "8",
+      "symbol": "WAVES",
+      "to": "coingecko#waves"
     }
   },
   "klaytn": {
@@ -5437,35 +5442,11 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
-    "0xa21b19d660917c1de263ad040ba552737cfcef50": {
-      "name": "Wrapped USDC (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "USDC|bsc",
-      "to": "coingecko#usd-coin"
-    },
     "0x07a388453944bb54be709ae505f14aeb5d5cbb2c": {
       "name": "USDT",
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
-    },
-    "0x5c30d9396a97f2279737e63b2bf64cc823046591": {
-      "name": "Wrapped USDT (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "USDT|bsc",
-      "to": "coingecko#tether"
-    },
-    "0x7818fa4c71dc3b60049fb0b6066f18ff8c720f33": {
-      "name": "Wrapped WBTC (ForceBridge from Ethereum)",
-      "decimals": "8",
-      "symbol": "WBTC|eth",
-      "to": "coingecko#bitcoin"
-    },
-    "0x3f8d2b24c6fa7b190f368c3701ffcb2bd919af37": {
-      "name": "Wrapped BTCB (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "BTCB|bsc",
-      "to": "coingecko#bitcoin"
     }
   },
   "godwoken_v1": {
@@ -5480,96 +5461,6 @@
       "decimals": "18",
       "symbol": "pCKB",
       "to": "coingecko#nervos-network"
-    },
-    "0x9e858a7aaedf9fdb1026ab1f77f627be2791e98a": {
-      "name": "ETH",
-      "decimals": "18",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
-    },
-    "0xbadb9b25150ee75bb794198658a4d0448e43e528": {
-      "name": "Wrapped BNB (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "BNB|bsc",
-      "to": "coingecko#binancecoin"
-    },
-    "0x82455018f2c32943b3f12f4e59d0da2faf2257ef": {
-      "name": "Wrapped WBTC (ForceBridge from Ethereum)",
-      "decimals": "8",
-      "symbol": "WBTC|eth",
-      "to": "coingecko#wrapped-bitcoin"
-    },
-    "0xef2439e020509259fa603c34b35a81ffe676cfb4": {
-      "name": "Wrapped BTCB (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "BTCB|bsc",
-      "to": "coingecko#wrapped-bitcoin"
-    },
-    "0xb66954619363145a05ef835547449eb9050d82f6": {
-      "name": "WETH (via Celer cBridge from ETH)",
-      "decimals": "18",
-      "symbol": "WETH",
-      "to": "coingecko#ethereum"
-    },
-    "0x186181e225dc1ad85a4a94164232bd261e351c33": {
-      "name": "USDC",
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0xfa307cfdea89dc197a346c338a98ac85d517af6e": {
-      "name": "Wrapped USDC (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "USDC|bsc",
-      "to": "coingecko#usd-coin"
-    },
-    "0xdff2facdfe47c1d5b51f18231f900949f1d5988f": {
-      "name": "Wrapped USDT (ForceBridge from BSC)",
-      "decimals": "18",
-      "symbol": "USDT|bsc",
-      "to": "coingecko#tether"
-    },
-    "0x53bb26dc8c5efc6c95c37155aca487d1d043436a": {
-      "name": "USDC (via Celer cBridge from ETH)",
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0x2c9fc6087875646112f66a3c92fef2d158faa76e": {
-      "name": "DAI",
-      "decimals": "18",
-      "symbol": "DAI",
-      "to": "coingecko#dai"
-    },
-    "0x317f8d18fb16e49a958becd0ea72f8e153d25654": {
-      "name": "DAI (via Celer cBridge from ETH)",
-      "decimals": "18",
-      "symbol": "DAI",
-      "to": "coingecko#dai"
-    },
-    "0x8e019acb11c7d17c26d334901fa2ac41c1f44d50": {
-      "name": "USDT",
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    },
-    "0x3c790b38f466514ffcb4230e7b2334e52b64c942": {
-      "name": "USDT (via Celer cBridge from ETH)",
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    },
-    "0xcd7bc9fc617a4f82ec1c8359d1c8610b90e3b44c": {
-      "name": "BUSD (via Celer cBridge from BSC)",
-      "decimals": "18",
-      "symbol": "BUSD",
-      "to": "coingecko#binance-usd"
-    },
-    "0x1c428a6539a40ec5bb481631266a51cd19b233b1": {
-      "name": "WBTC (via Celer cBridge from ETH)",
-      "decimals": "8",
-      "symbol": "WBTC",
-      "to": "coingecko#bitcoin"
     },
     "0xb44a9b6905af7c801311e8f4e76932ee959c663c": {
       "name": "Wrapped BTC",
@@ -5910,6 +5801,11 @@
       "decimals": "8",
       "symbol": "PUZZLE",
       "to": "coingecko#puzzle-swap"
+    },
+    "GjwAHMjqWzYR4LgoNy91CxUKAGJN79h2hseZoae4nU8t": {
+      "decimals": "8",
+      "symbol": "UNIT0",
+      "to": "coingecko#unit0"
     }
   },
   "songbird": {
@@ -7875,12 +7771,6 @@
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"
-    },
-    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
-      "name": "suBTC",
-      "decimals": "18",
-      "symbol": "suBTC",
-      "to": "coingecko#bitcoin"
     }
   },
   "rpg": {
@@ -8291,11 +8181,6 @@
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "EOS",
-      "to": "coingecko#eos"
-    },
-    "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
-      "decimals": "18",
-      "symbol": "WEOS",
       "to": "coingecko#eos"
     },
     "0x922d641a426dcffaef11680e5358f34d97d112e1": {
@@ -9247,6 +9132,13 @@
       "decimals": "18",
       "symbol": "XTZ",
       "to": "coingecko#tezos"
+    }
+  },
+  "soneium": {
+    "0x102d758f688a4C1C5a80b116bD945d4455460282": {
+      "to": "coingecko#usdt0",
+      "decimals": 6,
+      "symbol": "USDT0"
     }
   }
 }

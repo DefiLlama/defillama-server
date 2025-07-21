@@ -6,13 +6,18 @@ import {
   canonicalBridgeIds,
   chainsWithoutCanonicalBridges,
   excludedTvlId,
+  fetchNotifsSent,
   geckoSymbols,
   protocolBridgeIds,
   zero,
 } from "./constants";
 import BigNumber from "bignumber.js";
+import { getR2JSONString } from "../src/utils/r2";
+import { sendMessage } from "../src/utils/discord";
+import { getExcludedTvl } from "./excluded";
 
 let allProtocols: AllProtocols = {};
+let failedDeps: string[] = [];
 
 export default async function fetchBridgeUsdTokenTvls(
   timestamp: number,
@@ -21,27 +26,50 @@ export default async function fetchBridgeUsdTokenTvls(
   usd: boolean = true,
   excludedIds: string[] = []
 ): Promise<AllProtocols | void> {
+  const deps: { [chain: string]: string[] } = await getR2JSONString("L2-dependancies");
+  const inverseDeps: { [chain: string]: string[] } = {};
+  Object.keys(deps).map((chain) => {
+    deps[chain].map((c2: string) => {
+      if (!(c2 in inverseDeps)) inverseDeps[c2] = [];
+      inverseDeps[c2].push(chain);
+    });
+  });
+
   const allProtocolsTemp: AllProtocols = persist ? allProtocols : {};
   if (Object.keys(allProtocolsTemp).length) return;
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds), excludedTvlId];
   const filteredIds: string[] = [];
   ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
-  const tokenBalances: any[] = await Promise.all(
+  let tokenBalances: any[] = await Promise.all(
     filteredIds.map((i: string) =>
       getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
 
-  let errorString = `missing hourly${usd ? "Usd" : ""}TokensTvl for ids`;
-  let throwError = false;
+  tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
+
+  let errorString = `canonical bridge issue around:`;
   filteredIds.map((id: string, i: number) => {
     if (tokenBalances[i].SK == null) {
-      errorString = `${errorString} ${id}`;
-      throwError = true;
+      const chain = canonicalBridgeIds[id] ?? protocolBridgeIds[id];
+
+      if (chain in deps) failedDeps.push(...deps[chain]);
+      Object.keys(inverseDeps).map((dep: string) => {
+        if (inverseDeps[dep].includes(chain) && !failedDeps.includes(dep)) {
+          failedDeps.push(dep);
+        }
+      });
     } else allProtocolsTemp[id] = tokenBalances[i];
   });
 
-  if (throwError) throw new Error(errorString);
+  const notifs = fetchNotifsSent();
+
+  [...new Set(failedDeps)].map((dep: string) => (errorString = `${errorString} ${dep},`));
+
+  process.env.CHAIN_ASSET_WEBHOOK && errorString.length > 30 && notifs > 1
+    ? await sendMessage(errorString, process.env.CHAIN_ASSET_WEBHOOK!)
+    : console.log(errorString);
+
   if (persist) allProtocols = allProtocolsTemp;
   return allProtocolsTemp;
 }
@@ -63,7 +91,7 @@ export async function fetchTvls(
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
 
   if (isCanonical) return sortCanonicalBridgeBalances(isProtocol);
-  const aggregate = aggregateChainTokenBalances(allProtocols);
+  const aggregate = await aggregateChainTokenBalances(allProtocols);
 
   if (params.mcapData && params.native) return addOutgoingToMcapData(aggregate, params.mcapData);
   return { data: aggregate };
@@ -155,3 +183,5 @@ function addOutgoingToMcapData(
 
   return { data: adjustedOutgoing, native: adjustedNative };
 }
+
+export const fetchFailedDeps = () => failedDeps;

@@ -17,8 +17,9 @@ import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
 import cgSymbolsJson from './utils/symbols/symbols.json'
+import { parentProtocolsById } from "./protocols/parentProtocols";
 
-const cgSymbols: {[id: string]: string } = cgSymbolsJson
+const cgSymbols: { [id: string]: string } = cgSymbolsJson
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -96,7 +97,7 @@ const stablecoins = [
   "avUSDT",
   "aOptUSDC",
   "sUSDe",
-  "USDY"
+  "USDY",
 ].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
@@ -114,7 +115,7 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   }
 
   for (const token in lastRecord.tvl) {
-    const normalizedToken = cgSymbols[token] ?? token
+    const normalizedToken = cgSymbols[token.replace("coingecko:", "")] ?? token
     if (majors.includes(normalizedToken)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
     } else if (stablecoins.some((stable) => normalizedToken.includes(stable))) {
@@ -209,6 +210,12 @@ export async function craftProtocolsResponseInternal(
           tokenBreakdowns: includeTokenBreakdowns && lastHourlyTokensUsd ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
           mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
+
+        if (protocol.parentProtocol) {
+          const parentProtocol = parentProtocolsById[protocol.parentProtocol];
+          if (parentProtocol)
+            dataToReturn.parentProtocolSlug = sluggify(parentProtocol as any);
+        }
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
 

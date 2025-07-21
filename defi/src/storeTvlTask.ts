@@ -14,13 +14,16 @@ import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "./api2/utils/time";
 const path = require('path');
+const v8 = require('v8');
 
 const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
+const runOnlyAdapters = process.env.RUN_ONLY_ADAPTERS ? process.env.RUN_ONLY_ADAPTERS.split(',').map((a: string) => a.trim()) : []
 
 async function main() {
+  console.log('Heap Size Limit (MB):', v8.getHeapStatistics().heap_size_limit / 1024 / 1024);
 
   const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
@@ -54,6 +57,13 @@ async function main() {
     } as any
     let success = true
     const startTime = getUnixTimeNow()
+    let protocolName = protocol.name
+
+    if (runOnlyAdapters.length > 0 && !runOnlyAdapters.includes(protocolName)) {
+      skipped++
+      return;
+    }
+
     try {
       const staleCoins: StaleCoins = {};
       const adapterModule = importAdapterDynamic(protocol)
@@ -69,26 +79,29 @@ async function main() {
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+
+      // if (protocolName) runningSet.add(protocolName)
+
+
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
-      console.log('FAILED: ', protocol?.name, e?.message)
-      failed++
 
+      // if (protocolName) runningSet.delete(protocolName)
+
+      failed++
+      
       success = false
-      let errorString = e?.message
+      let errorString = getErrorString(e);
       const errorStack = e?.stack?.split('\n').map((line: string) => {
         return line.replace(projectPath, '')
       }).slice(0, 4).join('\n');
 
-      try {
-        if (!errorString)
-          errorString = JSON.stringify(e)
-      } catch (e) { }
+      console.log('FAILED: ', protocol?.name, errorString)
 
       await elastic.addErrorLog({
         error: e as any,
-        errorString,
+        errorString: typeof errorString === 'string' ? errorString : '',
         errorStack,
         metadata,
       } as any)
@@ -105,8 +118,13 @@ async function main() {
 
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
+    // if (protocolName) runningSet.delete(protocolName)
+
+    // console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
     console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
+
+  // const runningSet = new Set()
 
   const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))
@@ -230,3 +248,27 @@ setTimeout(async () => {
   preExit()
   process.exit(1);
 }, 1000 * 60 * 40); // 40 minutes
+
+function getErrorString(e: any) {
+  try {
+
+    if (e?.message) {
+      return e.message;
+    }
+
+
+    if (e.llamaRPCError) {
+      const errorString = `Llama RPC error! method: ${e.method} `
+      const errors = e.errors.map((i: any) => `- host: ${i?.host} error: ${getErrorString(i?.error)}`)
+      return errorString + '\n' + errors.join('\n')
+    }
+
+    if (e?.toString) {
+      return e.toString();
+    }
+
+    return JSON.stringify(e);
+  } catch (e) {
+    return e
+  }
+}

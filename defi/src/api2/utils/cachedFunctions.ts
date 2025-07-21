@@ -46,7 +46,7 @@ export async function getProtocolAllTvlData(protocol: Protocol, useOnlyCachedDat
       getAllProtocolItems(dailyTokensTvl, protocol.id, tokensQueryOptions),
     ]);
 
-    const updateCache = historicalTokenTvl.length > 1 || historicalUsdTokenTvl.length > 1 || historicalUsdTvl.length > 1
+    const updateCache = historicalTokenTvl.length > 0 || historicalUsdTokenTvl.length > 0 || historicalUsdTvl.length > 0
     if (!protocolCache) protocolCache = {}
 
     if (updateCache) {

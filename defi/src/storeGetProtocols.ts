@@ -10,6 +10,7 @@ import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
+import protocols from "./protocols/data";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -29,6 +30,14 @@ export async function storeGetProtocols({
   getLastWeekTokensUsd,
   getLastMonthTokensUsd,
 }: any = {}) {
+  const idToName: Record<string, string> = {};
+  for (const p of protocols) {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  }
+  for (const parent of parentProtocolsList) {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  }
+
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
     getLastHourlyRecord,
@@ -48,12 +57,19 @@ export async function storeGetProtocols({
           getLastWeekTokensUsd,
           getLastMonthTokensUsd,
         });
+        let forkedFrom = protocol.forkedFrom;
+        if (Array.isArray(protocol.forkedFromIds)) {
+          forkedFrom = protocol.forkedFromIds.map((id) => idToName[id] || id);
+        }
         return {
           category: protocol.category,
+          ...(protocol.tags ? { tags: protocol.tags } : {}),
           chains: protocol.chains,
-          oracles: protocol.oracles,
+          oracles: protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0
+            ? protocol.oraclesBreakdown.map((x) => x.name)
+            : protocol.oracles,
           oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
-          forkedFrom: protocol.forkedFrom,
+          forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,
           name: protocol.name,
@@ -70,6 +86,8 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
+          ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {}),
+          ...(protocol.warningBanners ? {warningBanners: protocol.warningBanners} : {})
         };
       })
     )
@@ -168,6 +186,7 @@ export async function storeGetProtocols({
       name: protocol.name,
       symbol: protocol.symbol,
       category: protocol.category,
+      ...(protocol.tags ? { tags: protocol.tags } : {}),
       tvl: protocol.tvl,
       chainTvls: Object.fromEntries(
         Object.entries(protocol.chainTvls).filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
@@ -175,6 +194,8 @@ export async function storeGetProtocols({
       mcap: protocol.mcap,
       gecko_id: protocol.gecko_id,
       parent: protocol.parentProtocol,
+      ...(protocol.deprecated ? { deprecated: true } : {}),
+      ...(protocol.warningBanners ? { warningBanners: protocol.warningBanners } : {})
     }))
     .concat(extendedParentProtocols);
 

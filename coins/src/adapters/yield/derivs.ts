@@ -3,7 +3,6 @@ import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
-import * as sdk from "@defillama/sdk";
 
 type Config = {
   chain: string;
@@ -14,26 +13,6 @@ type Config = {
   symbol?: string;
   decimals?: number;
   confidence?: number;
-};
-
-const lrts = (target: string) => {
-  return async ({ api }: any) => {
-    const balances = new sdk.Balances({
-      chain: api.chain,
-      timestamp: api.timestamp,
-    });
-    const [assets, supply, decimals] = await Promise.all([
-      api.call({
-        abi: "function underlyingTvl() view returns (address[] tokens, uint256[] amounts)",
-        target,
-      }),
-      api.call({ abi: "erc20:totalSupply", target }),
-      api.call({ abi: "erc20:decimals", target }),
-    ]);
-    balances.add(assets.tokens, assets.amounts);
-    const usdValue = await balances.getUSDValue();
-    return usdValue / (supply / 10 ** decimals);
-  };
 };
 
 const configs: { [adapter: string]: Config } = {
@@ -341,6 +320,112 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
     address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
     confidence: 1,
+  },
+  JSTRY: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256 shares) external view returns (uint256)",
+        target: "0x36036fFd9B1C6966ab23209E073c68Eb9A992f50",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+    confidence: 1,
+  },
+  M: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+          params: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+      ]);
+      return supply / assets;
+    },
+    chain: "ethereum",
+    underlying: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+    address: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+  },
+  mHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRateToUnderlying",
+        target: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    address: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+  },
+  USH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:fetchPrice",
+        target: "0xDc4ddde1EeaF64d77B23B794b89BfBe281B5Ce35",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb",
+    address: "0x8fF0dd9f9C40a0d76eF1BcFAF5f98c1610c74Bd8",
+  },
+  eliteRingsScUSD: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0x13cCc810DfaA6B71957F2b87060aFE17e6EB8034",
+      });
+      return rate / 1e6;
+    },
+    chain: "sonic",
+    underlying: "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
+    address: "0xd4aA386bfCEEeDd9De0875B3BA07f51808592e22",
+  },
+  BPRO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getUnderlyingPrice(address cToken) external view returns (uint256)",
+        target: "0x7fa5500c978e89660bf3bd0526f8f7164de0b38f",
+        params: "0x440cd83c160de5c96ddb20246815ea44c7abbca8",
+      });
+      return rate / 1e18;
+    },
+    chain: "rsk",
+    underlying: "0xEf213441a85DF4d7acBdAe0Cf78004E1e486BB96",
+    address: "0x440cd83c160de5c96ddb20246815ea44c7abbca8",
+  },
+  GPRIME: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:sharePrice",
+        target: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
+      });
+      return rate / 1e18;
+    },
+    chain: "plume_mainnet",
+    underlying: "0x78adD880A697070c1e765Ac44D65323a0DcCE913",
+    address: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
+  },
+  "stk-ePendle": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRate",
+        target: "0xd302d7fd2c9375a433018fdfa5613be6ad3f18e3",
+      });
+      return rate / 1e18;
+    },
+    chain: "arbitrum",
+    underlying: "0x3EaBE18eAE267D1B57f917aBa085bb5906114600",
+    address: "0x37227785a1f4545ed914690e395e4CFE96B8319f",
   },
 };
 

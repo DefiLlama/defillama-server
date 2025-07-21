@@ -1,7 +1,6 @@
-import { cache, initCache, checkModuleDoubleCounted, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
-import { storeRouteData, writeToPGCache } from "../cache/file-cache";
+import { cache, initCache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
+import { readRouteData, storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
-import { PG_CACHE_KEYS } from "../constants";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
@@ -32,10 +31,15 @@ let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMont
 
 async function run() {
   await initializeTVLCacheDB()
-  await initCache({ cacheType: RUN_TYPE.CRON  })
+  await initCache({ cacheType: RUN_TYPE.CRON })
+
+  console.time('init protocol data map')
   await initializeProtocolDataMap()
-  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
-  await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this
+  console.timeEnd('init protocol data map')
+
+  await addProtocolAppMetadataToCache()
+
+  await storeTvlCacheAllFile(cache)
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
@@ -43,9 +47,6 @@ async function run() {
     protocolList: cache.metadata.protocols,
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
-    getModule: (protocol: any) => ({
-      doublecounted: checkModuleDoubleCounted(protocol),
-    })
   }
 
   // await writeProtocolTvlData()  // to be served from rest api instead
@@ -128,9 +129,8 @@ async function run() {
     getLastWeekTokensUsd = (protocol: any) => latestProtocolTokensUSDWeekAgoMap[protocol.id] ?? {}
     getLastMonthTokensUsd = (protocol: any) => latestProtocolTokensUSDMonthAgoMap[protocol.id] ?? {}
 
-    await PromisePool.withConcurrency(20)
-      .for(cache.metadata.protocols)
-      .process(async (protocol: any) => {
+    cache.metadata.protocols
+      .map((protocol: any) => {
         try {
           const dataObj: any = {}
           protocolDataMap[protocol.id] = dataObj
@@ -370,13 +370,25 @@ async function run() {
       console.error(e)
     }
   }
+
+  async function addProtocolAppMetadataToCache() {
+    console.time('addProtocolAppMetadataToCache')
+    try {
+      
+      cache.metadata.protocolAppMetadata = await readRouteData('/config/smol/appMetadata-protocols.json') ?? {}
+
+    } catch (e) {
+      console.error('Error reading appMetadata-protocols.json:', e)
+      cache.metadata.protocolAppMetadata = {}
+    }
+    console.timeEnd('addProtocolAppMetadataToCache')
+  }
 }
 
 async function getChainData(isV2: boolean) {
   return craftChainsResponse(isV2, isV2, {
     protocolList: cache.metadata.protocols,
     getLastHourlyRecord: getLastHourlyRecord as any,
-    checkModuleDoubleCounted: checkModuleDoubleCounted as any,
   })
 
 }

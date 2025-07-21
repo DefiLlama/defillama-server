@@ -72,7 +72,7 @@ export default async function craftParentProtocol({
       : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
-    childProtocols.map((protocolData) =>
+    childProtocols.filter(i => !i.excludeTvlFromParent).map((protocolData) =>
       fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
     )
   );
@@ -165,7 +165,7 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

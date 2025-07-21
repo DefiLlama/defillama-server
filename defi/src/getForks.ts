@@ -1,6 +1,8 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
+import protocols, { _InternalProtocolMetadata } from "./protocols/data";
+import parentProtocols from "./protocols/parentProtocols";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -24,7 +26,8 @@ function sum(
   time: number,
   item: Item = {},
   forkedProtocols: ForkedProtocols,
-  protocol: IProtocol
+  protocol: IProtocol,
+  { isDoublecounted, isLiquidStaking }: _InternalProtocolMetadata
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -39,15 +42,15 @@ function sum(
     }
   }
 
-  if (protocol.doublecounted) {
+  if (isDoublecounted) {
     data.doublecounted = (data.doublecounted || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking") {
+  if (isLiquidStaking) {
     data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+  if (isLiquidStaking && isDoublecounted) {
     data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
@@ -63,22 +66,40 @@ export async function getForksInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
+  const idToName: Record<string, string> = {};
+  protocols.forEach((p: any) => {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  });
+  parentProtocols.forEach((parent: any) => {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  });
+
+  const protocolFilterFunction = (protocol: IProtocol, _protocolMetadata: _InternalProtocolMetadata) => {
+    if (!Array.isArray(protocol?.forkedFromIds)) return false;
+    return protocol.forkedFromIds.length > 0
+  }
+
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, protocolMetadata: _InternalProtocolMetadata) => {
       try {
-        let forks = protocol.forkedFrom;
+        let forks: string[] | undefined = undefined;
+        if (Array.isArray(protocol.forkedFromIds))
+          forks = protocol.forkedFromIds.map((id) => idToName[id] || id);
 
         if (forks) {
           forks.forEach((fork) => {
-            sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol);
+            sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol, protocolMetadata);
           });
           return;
+        } else {
+          console.warn(`Protocol ${protocol.name} (${protocol.id}) has no forkedFromIds, skipping [this code should be unreachable, concerning]`);
         }
+        
       } catch (error) {
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: false, ...options }
+    { includeBridge: false, protocolFilterFunction, ...options }
   );
 
   return {

@@ -3,6 +3,8 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
+import { getConnection } from "../solana/utils";
+import { PublicKey } from "@solana/web3.js";
 
 type Config = {
   chain: string;
@@ -138,6 +140,23 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
     decimals: "18",
     symbol: "mCAKE",
+  },
+  wfragBTC: {
+    rate: async () => {
+      const connection = getConnection();
+      const accountInfo = await connection.getAccountInfo(
+        new PublicKey("DGWv49JvpJcy23UNUqGRuex9FVK8v5dnBdDowszY4RFG"),
+      );
+      if (!accountInfo) throw new Error(`wfragBTC account not found`);
+      const fragBtcInSol = Number(accountInfo.data.readBigUInt64LE(200));
+      const zBtcInSol = Number(accountInfo.data.readBigUInt64LE(4480));
+      return fragBtcInSol / zBtcInSol;
+    },
+    chain: "solana",
+    address: "WFRGB49tP8CdKubqCdt5Spo2BdGS4BpgoinNER5TYUm",
+    underlying: "zBTCug3er3tLyffELcvDNrKkCymbPWysGcWihESYfLg",
+    decimals: "8",
+    symbol: "wfragBTC",
   },
 };
 

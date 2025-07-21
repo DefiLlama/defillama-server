@@ -1,8 +1,8 @@
 import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
-import { getR2 } from "./utils/r2";
-import { getClosestDayStartTimestamp } from "./utils/date";
+import { DAY, getClosestDayStartTimestamp } from "./utils/date";
+import { _InternalProtocolMetadata, _InternalProtocolMetadataMap } from "./protocols/data";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -20,13 +20,20 @@ interface Item {
   [key: string]: number;
 }
 
+interface IProtocolTvl {
+  protocol: IProtocol
+  historicalTvl: Item[]
+  lastTimestamp: number
+}
+
 function sum(
   total: SumDailyTvls,
   category: string,
   time: number,
   item: Item = {},
   categoryProtocols: IProtocolsByCategory,
-  protocol: IProtocol
+  protocol: IProtocol,
+  { isDoublecounted, isLiquidStaking }: _InternalProtocolMetadata
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -39,15 +46,15 @@ function sum(
     }
   }
 
-  if (protocol.doublecounted) {
+  if (isDoublecounted) {
     data.doublecounted = (data.doublecounted || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking") {
+  if (isLiquidStaking) {
     data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
   }
 
-  if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+  if (isLiquidStaking && isDoublecounted) {
     data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
@@ -70,24 +77,57 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
   } else {
     historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)
   }
-  
+
   const { historicalProtocolTvls, } = historicalProtocolTvlsData
 
+
+  const excludedCategorySet = new Set(["CEX", "Chain",])
+  function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number, protocolMetadata: _InternalProtocolMetadata) {
+    try {
+      sum(sumDailyTvls, protocolMetadata.category, timestamp, item, categoryProtocols, protocolTvl.protocol, protocolMetadata);
+    } catch (error) {
+      console.log(protocolTvl.protocol.name, error);
+    }
+  }
+
   historicalProtocolTvls.forEach((protocolTvl) => {
-    if (!protocolTvl) {
+    if (!protocolTvl) return;
+
+    const protocolMetadata: _InternalProtocolMetadata = _InternalProtocolMetadataMap[protocolTvl.protocol.id];
+
+    if (!protocolMetadata) {
+      console.warn(`No metadata found for protocol ${protocolTvl.protocol.name} (${protocolTvl.protocol.id})`);
       return;
     }
+
+    if (excludedCategorySet.has(protocolMetadata.category)) {
+      return;
+    }
+
+    let previousItem: Item = { SK: 0 }
     protocolTvl.historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      try {
-        let category = protocolTvl.protocol.category;
-        if (category && category !== "CEX" && category !== 'Chain') {
-          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
-          return;
-        }
-      } catch (error) {
-        console.log(protocolTvl.protocol.name, error);
+      const previousTimestamp = getClosestDayStartTimestamp(previousItem.SK)
+      const daysDifference = previousTimestamp ? (timestamp - previousTimestamp) / DAY : 0
+
+      for (let i = 1; i < daysDifference; i++) {
+        const interpolatedItem: Item = {}
+        Object.keys(previousItem).forEach((key) => {
+          if (['SK', 'PK'].includes(key)) {
+            interpolatedItem[key] = previousItem[key]
+            return
+          }
+
+          if (!item[key]) return
+
+          interpolatedItem[key] = previousItem[key] + (item[key] - previousItem[key]) * i / daysDifference
+        })
+
+        addToChart(protocolTvl, interpolatedItem, previousTimestamp + DAY * i, protocolMetadata)
       }
+
+      addToChart(protocolTvl, item, timestamp, protocolMetadata)
+      previousItem = item
     })
   })
 

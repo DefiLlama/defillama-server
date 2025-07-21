@@ -25,12 +25,12 @@ Object.keys(providers).map((c: string) => {
 
 const hyperlane = async (): Promise<void> => {
   const bridge = "hyperlane";
+  if (doneAdapters.includes(bridge)) return;
   if (!(bridge in bridgePromises))
     bridgePromises[bridge] = fetch(
       "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
     ).then((r) => r.json());
   const data = await bridgePromises[bridge];
-  if (doneAdapters.includes(bridge)) return;
   if (!addresses.eclipse) addresses.eclipse = [];
   data.map(({ address }: any) => addresses.eclipse.push(address));
   doneAdapters.push(bridge);
@@ -38,10 +38,10 @@ const hyperlane = async (): Promise<void> => {
 
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch("https://api.axelarscan.io/?method=getAssets").then((r) => r.json());
-  const data = await bridgePromises[bridge];
   if (doneAdapters.includes(bridge)) return;
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch("https://api.axelarscan.io/api/getAssets").then((r) => r.json());
+  const data = await bridgePromises[bridge];
   data.map((token: any) => {
     if (!token.addresses) return;
     Object.keys(token.addresses).map((chain: string) => {
@@ -58,13 +58,13 @@ const axelar = async (): Promise<void> => {
 const wormhole = async (): Promise<void> => {
   const bridge = "wormhole";
 
+  if (doneAdapters.includes(bridge)) return;
   if (!(bridge in bridgePromises))
     bridgePromises[bridge] = axios.get(
       "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/content/by_dest.csv"
     );
 
   const data = (await bridgePromises[bridge]).data;
-  if (doneAdapters.includes(bridge)) return;
   const chainMap: { [ticker: string]: string } = {
     sol: "solana",
     eth: "ethereum",
@@ -98,15 +98,16 @@ const wormhole = async (): Promise<void> => {
 
 const celer = async (): Promise<void> => {
   const bridge = "celer";
+  if (doneAdapters.includes(bridge)) return;
   if (!(bridge in bridgePromises))
     bridgePromises[bridge] = fetch("https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll").then((r) => r.json());
   const data = await bridgePromises[bridge];
-  if (doneAdapters.includes(bridge)) return;
   data.pegged_pair_configs.map((pp: any) => {
     const chain = chainIdMap[pp.org_chain_id];
     let normalizedChain: string = chain;
     if (chain in chainMap) normalizedChain = chainMap[chain];
     if (!allChainKeys.includes(normalizedChain)) return;
+    if (!addresses[normalizedChain]) addresses[normalizedChain] = [];
     addresses[normalizedChain].push(pp.pegged_token.token.address.toLowerCase());
   });
   doneAdapters.push(bridge);
@@ -115,9 +116,25 @@ const celer = async (): Promise<void> => {
 const layerzero = async (): Promise<void> => {
   const bridge = "layerzero";
   if (doneAdapters.includes(bridge)) return;
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+
+  data.map(({ to }: any) => {
+    const [chain, address] = to.split(":");
+    if (!(chain in addresses)) addresses[chain] = [];
+    if (!(address in addresses[chain])) addresses[chain].push(address);
+  });
 
   const staticTokens: { [chain: string]: string[] } = {
     morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    unichain: [
+      "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "0xc3eACf0612346366Db554C991D7858716db09f58",
+      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+    ],
   };
 
   Object.keys(staticTokens).map((chain: string) => {
@@ -128,7 +145,69 @@ const layerzero = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer(), hyperlane(), layerzero()];
+const flow = async (): Promise<void> => {
+  const bridge = "flow";
+  if (doneAdapters.includes(bridge)) return;
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  data.tokens.map(({ chainId, address, tags }: any) => {
+    const chain = chainIdMap[chainId];
+    if (!allChainKeys.includes(chain)) return;
+    if (!tags.includes("bridged-coin")) return;
+    if (!(chain in addresses)) addresses[chain] = [];
+    addresses[chain].push(address);
+  });
+
+  doneAdapters.push(bridge);
+};
+
+const unit = async (): Promise<void> => {
+  const bridge = "unit";
+  if (doneAdapters.includes(bridge)) return;
+
+  const staticTokens: { [chain: string]: string[] } = {
+    hyperliquid: [
+      "0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463",
+      "0x068f321Fa8Fb9f0D135f290Ef6a3e2813e1c8A29",
+      "0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF",
+      "0xBe6727B535545C67d5cAa73dEa54865B92CF7907",
+    ],
+  };
+
+  Object.keys(staticTokens).map((chain: string) => {
+    if (!(chain in addresses)) addresses[chain] = [];
+    addresses[chain].push(...staticTokens[chain]);
+  });
+
+  doneAdapters.push(bridge);
+};
+
+const adapters = [
+  axelar().catch((e) => {
+    throw new Error(`Axelar fails with: ${e}`);
+  }),
+  wormhole().catch((e) => {
+    throw new Error(`Wormhole fails with: ${e}`);
+  }),
+  celer().catch((e) => {
+    throw new Error(`Celer fails with: ${e}`);
+  }),
+  hyperlane().catch((e) => {
+    throw new Error(`Hyperlane fails with: ${e}`);
+  }),
+  layerzero().catch((e) => {
+    throw new Error(`Layerzero fails with: ${e}`);
+  }),
+  flow().catch((e) => {
+    throw new Error(`flow fails with: ${e}`);
+  }),
+  unit().catch((e) => {
+    throw new Error(`unit fails with: ${e}`);
+  }),
+];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
@@ -154,6 +233,3 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 };
 
 export default tokenAddresses;
-
-// gravity bridge
-// pNetwork

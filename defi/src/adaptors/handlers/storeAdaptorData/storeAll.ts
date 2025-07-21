@@ -20,7 +20,6 @@ async function run() {
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
-    if (adapterType === AdapterType.PROTOCOLS) return;
     // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
@@ -87,7 +86,7 @@ run().catch((e) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 90 minutes
+}, 1000 * 60 * 50) // 50 minutes
 
 
 function getYesterdayTimeS() {

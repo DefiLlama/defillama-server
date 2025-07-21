@@ -126,6 +126,8 @@ export const additional: { [chain: string]: string[] } = {
     "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116", // sBTC
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc", // USDa
   ],
+  unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
+  reya: ["0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB"],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [
@@ -162,4 +164,6 @@ export const nativeWhitelist: { [chain: string]: string[] } = {
     "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
     "0x27f485b62c4a7e635f561a87560adf5090239e93",
   ],
+  unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
+  osmosis: ["uosmo"],
 };

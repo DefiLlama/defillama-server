@@ -19955,10 +19955,30 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Base",
     chains: ["Options"],
-    forkedFromIds: ["5690"],
     module: "hits4fun/index.js",
     twitter: "hits4fun",
     listedAt: 1753110715
+  },
+   {
+    id: "6460",
+    name: "Laine SOL",
+    address: null,
+    assetToken: "LAINESOL",
+    symbol: "-",
+    url: "https://stake.laine.one",
+    description: "Liquid Staking token on Solana chain",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/laine-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Solana",
+    chains: ["Liquid Staking"],
+    module: "laine-sol/index.js",
+    twitter: "laine_sa_",
+    github: ["laine-sa"],
+    listedAt: 1753110915
   },
 ];
 export default data4;

@@ -9643,7 +9643,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.valantis.xyz",
-    description: "The Modular DEX. Live on HyperEVM with stHYPE AMM, a next-gen pool built specific for LSTs",
+    description: "The Modular DEX. Live on HyperEVM with STEX, a next-gen AMM design built specific for staked assets",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/valantis.jpg`,
     audits: "2",

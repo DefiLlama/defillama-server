@@ -19425,7 +19425,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Arbitrum"],
-    forkedFromIds: [],
+    forkedFromIds: ["5656"],
     module: "nerite/index.js",
     twitter: "NeriteOrg",
     audit_links: [],

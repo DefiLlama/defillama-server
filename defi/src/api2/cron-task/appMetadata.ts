@@ -159,7 +159,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null ? true : false,
+        tvl: protocol.tvl != null && protocolInfoMap[protocol.id].module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -173,7 +173,7 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl ? { tvl: true } : {}),
+          ...(protocol.tvl != null ? { tvl: true } : {}),
         };
       }
 

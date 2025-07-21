@@ -4739,7 +4739,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: ["Hydra"],
+    chains: ["Hydra", "Hydra Chain"],
     module: "hydradex-v3/api.js",
     twitter: "hydra_chain",
     forkedFromIds: ["2198"],

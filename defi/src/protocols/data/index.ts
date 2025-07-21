@@ -3,7 +3,7 @@ import { setProtocolCategory, TagCatetgoryMap } from "../tags";
 import parentProtocols from "../parentProtocols";
 import { sluggifyString } from "../../utils/sluggify";
 // import { importAdapter } from "../../utils/imports/importAdapter";
-// import { isDoubleCounted } from "../../utils/normalizeChain";
+import { isDoubleCounted } from "../../utils/normalizeChain";
 import data1 from "../data1";
 import data2 from "../data2";
 import data3 from "../data3";
@@ -65,7 +65,7 @@ export type _InternalProtocolMetadata = {
   categoryLowerCase: string;
   categorySlug: string;
   isLiquidStaking: boolean;
-  // isDoublecounted: boolean;
+  isDoublecounted: boolean;
   slugTagSet: Set<string>;
   hasTvl: boolean;
   hasChainSlug: (chainSlug: string) => boolean;
@@ -83,7 +83,8 @@ protocols.forEach((protocol: Protocol) => {
     }
     const slugTagSet = new Set((protocol.tags || []).map(tag => sluggifyString(tag)))
     // const module = importAdapter(protocol)
-    // const isDoublecounted = isDoubleCounted(module.doublecounted, category)
+    const module = require(`../../../DefiLlama-Adapters/projects/${protocol.module}`);
+    const isDoublecounted = isDoubleCounted(module.doublecounted, category)
 
     _InternalProtocolMetadataMap[protocol.id] = {
       id: protocol.id,
@@ -92,7 +93,7 @@ protocols.forEach((protocol: Protocol) => {
       categorySlug: sluggifyString(category),
       isLiquidStaking: category === "Liquid Staking",
       slugTagSet,
-      // isDoublecounted,
+      isDoublecounted,
       hasTvl: protocol.module !== 'dummy.js',
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
 

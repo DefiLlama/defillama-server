@@ -565,7 +565,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "xdai-stake",
     cmcId: "5601",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "xdai/index.js",
     twitter: "gnosischain",

@@ -64,6 +64,7 @@ export interface Protocol {
   warningBanners?: Array<{
     message: string;
     until?: string | number; // YYYY-MM-DD or unix timestamp
+    type?: 'low' | 'alert' | 'rug';
   }>;
 }
 
@@ -92,5 +93,6 @@ export interface IParentProtocol {
   warningBanners?: Array<{
     message: string;
     until?: string | number; // YYYY-MM-DD or unix timestamp
+    type?: 'low' | 'alert' | 'rug';
   }>;
 }

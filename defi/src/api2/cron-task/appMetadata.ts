@@ -24,13 +24,14 @@ const nameToId: any = {};
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
+  nameToId[`${protocol.name}+${protocol.id}`] = protocol.id;
   protocolChainSetMap[protocol.id] = new Set();
   protocol.childProtocols = [];
 });
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
-  nameToId[protocol.id] = protocol.name;
+  nameToId[`${protocol.name}+${protocol.id}`] = protocol.id;
   protocolChainSetMap[protocol.id] = new Set();
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
@@ -252,10 +253,11 @@ async function _storeAppMetadata() {
     }
 
     const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
-    for (const protocolName in nameToId) {
+    for (const protocolNameAndId in nameToId) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (allNftMarketplaces.includes(protocolName)) {
-        finalProtocols[nameToId[protocolName]] = {
-          ...finalProtocols[nameToId[protocolName]],
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
           nfts: true,
         };
       }
@@ -595,10 +597,11 @@ async function _storeAppMetadata() {
       };
     }
 
-    for (const protocolName in nameToId) {
+    for (const protocolNameAndId in nameToId) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (emmissionsData.includes(slug(protocolName))) {
-        finalProtocols[nameToId[protocolName]] = {
-          ...finalProtocols[nameToId[protocolName]],
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
           emissions: true,
         };
       }
@@ -607,10 +610,11 @@ async function _storeAppMetadata() {
 
     const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    for (const protocolName in nameToId) {
+    for (const protocolNameAndId in nameToId) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (bridges.includes(protocolName)) {
-        finalProtocols[nameToId[protocolName]] = {
-          ...finalProtocols[nameToId[protocolName]],
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
           bridge: true,
         };
       }

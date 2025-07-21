@@ -135,6 +135,7 @@ export default {
   stakeDao: require("./yield/stakeDao"),
   kodiak: require("./markets/kodiak"),
   kSTRK: require("./other/kSTRK"),
+  xSTRK: require("./other/xSTRK"),
   jtoDerivs: require("./solana/jtoDerivs"),
   pac: require("./rwa/thepac"),
   xu3o8: require("./rwa/xu3o8"),

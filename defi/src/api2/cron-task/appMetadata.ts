@@ -156,10 +156,15 @@ async function _storeAppMetadata() {
 
     const parentToChildProtocols: any = {};
     for (const protocol of tvlData.protocols) {
+      const protocolInfo = protocolInfoMap[protocol.id]
+      if (!protocolInfo) {
+        console.warn(`Protocol ${protocol.id} not found in protocolInfoMap`);
+        continue;
+      }
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null && protocolInfoMap[protocol.id].module !== 'dummy.js' ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),

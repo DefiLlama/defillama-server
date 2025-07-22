@@ -328,7 +328,7 @@ async function tvlProtocolDataUpdate(cacheType?: string) {
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
-  return cache.tvlProtocol[protocol.id]  // TODO: should this be changed to latestHourlyData.tvl which returns latest hourly tvl record  (checking only the past 24 hours)
+  return cache.tvlProtocol[protocol.id]  
 }
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {

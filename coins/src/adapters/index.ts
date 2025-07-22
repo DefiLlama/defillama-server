@@ -160,4 +160,5 @@ export default {
   quipuswap: require("./markets/quipuswap"),
   reya: require("./yield/reya"),
   bluefin: require("./markets/bluefin"),
+  harvest: require("./yield/harvest"),
 };

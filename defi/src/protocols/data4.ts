@@ -13929,7 +13929,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/gt3.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "gt3-finance",
     cmcId: null,
     category: "Dexs",
     chains: ["Polygon"],

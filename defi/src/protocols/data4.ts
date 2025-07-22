@@ -14469,8 +14469,16 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance"],
+    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://lite.morpho.org/plume/earn", "https://explorer.plume.org/address/0xcEedB1173F4D3db19288b4913335CB2d44BEb175?tab=internal_txns", "https://explorer.plume.org/address/0x7824e4B3E21678f143Ce22308ADfd48d1D3160FB?tab=internal_txns", "https://explorer.plume.org/address/0xDF16567dA7d2F5Fec172DDFe42036976C6e7D95F?tab=internal_txns"],
+        chains: [{ chain: "Plume"}]
+      },
+    ],
     module: "re7/index.js",
     twitter: "Re7Labs",
     listedAt: 1747735814

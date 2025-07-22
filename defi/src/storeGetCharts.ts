@@ -451,7 +451,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
     categoryTvlsByChain[category] = {}
     for (const chain in sumCategoryTvls[category]) {
       const tvls = Object.entries(sumCategoryTvls[category][chain])
-      categoryTvlsByChain[category][chain] = tvls[tvls.length - 1][1] ?? 0
+      categoryTvlsByChain[category][chain] = tvls[tvls.length - 1]?.[1] ?? 0
     }
   }
   const chainsByCategory: Record<string, Array<string>> = {}

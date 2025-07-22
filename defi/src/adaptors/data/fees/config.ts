@@ -3878,5 +3878,8 @@ export default {
     },
     "pangolin-v3": {
         id: "6466"
+    },
+    "fpex": {
+        id: "6458"
     }
 } as AdaptorsConfig

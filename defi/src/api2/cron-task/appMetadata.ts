@@ -159,10 +159,11 @@ async function _storeAppMetadata() {
 
 
     const parentToChildProtocols: any = {};
+    const bridgeCategories = new Set(["Bridge", "Cross Chain Bridge", "Canonical Bridge"]);
     for (const protocol of tvlData.protocols) {
-      const protocolInfo = protocolInfoMap[protocol.id]
+      const protocolInfo = protocolInfoMap[protocol.defillamaId]
       if (!protocolInfo) {
-        console.warn(`Protocol ${protocol.id} not found in protocolInfoMap`);
+        console.warn(`Protocol ${protocol.defillamaId} not found in protocolInfoMap`);
         continue;
       }
       const name = slug(protocol.name);
@@ -172,7 +173,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(['Bridge', 'Cross Chain Bridge', 'Canonical Bridge'].includes(protocol.category) ? { bridges: true } : {}),
+        ...(bridgeCategories.has(protocol.category) ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {

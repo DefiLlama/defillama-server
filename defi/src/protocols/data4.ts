@@ -20088,5 +20088,25 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.sigma.money/risk-management/audit-reports"],
     listedAt: 1753201182
   },
+  {
+    id: "6466",
+    name: "Pangolin V3",
+    address: "avax:0x60781C2586D68229fde47564546784ab3fACA982",
+    symbol: "PANG",
+    url: "https://app.pangolin.exchange/",
+    description: "Pangolin V3 is the latest version of the Pangolin DEX, featuring Concentrated Liquidity and Dynamic Fees to boost capital efficiency and rewards.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/pangolin-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Avalanche"],
+    module: "dummy.js",
+    twitter: "pangolindex",
+    forkedFromIds: ["2198"],
+    parentProtocol: "parent#pangolin",
+  },
 ];
 export default data4;

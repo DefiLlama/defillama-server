@@ -7489,6 +7489,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BlackholeDex",
   },
+  {
+    id: "parent#pangolin",
+    name: "Pangolin",
+    url: "https://pangolin.exchange",
+    description: "Pangolin is a decentralized exchange (DEX) launched in 2021 by AvaLabs",
+    logo: `${baseIconsUrl}/pangolin.jpg`,
+    gecko_id: "pangolin",
+    cmcId: "8422",
+    chains: [],
+    twitter: "pangolindex",
+    github: ["pangolindex"],
+    governanceID: ["snapshot:pangolindex.eth"],
+  },
 ];
 
 export default parentProtocols;

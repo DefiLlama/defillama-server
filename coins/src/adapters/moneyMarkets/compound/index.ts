@@ -1,5 +1,6 @@
 import { compoundPrices } from "../../utils/compound-fork";
 import getTokenPrices from "./compound";
+import v3 from "./v3";
 
 export function compound(timestamp: number = 0) {
   return Promise.all([
@@ -12,8 +13,16 @@ export function compound(timestamp: number = 0) {
 }
 export function venus(timestamp: number = 0) {
   return Promise.all([
-    getTokenPrices("bsc", "0xfd36e2c2a6789db23113685031d7f16329158384", timestamp,),
-    getTokenPrices("era", "0xddE4D098D9995B659724ae6d5E3FB9681Ac941B1", timestamp,),
+    getTokenPrices(
+      "bsc",
+      "0xfd36e2c2a6789db23113685031d7f16329158384",
+      timestamp,
+    ),
+    getTokenPrices(
+      "era",
+      "0xddE4D098D9995B659724ae6d5E3FB9681Ac941B1",
+      timestamp,
+    ),
   ]);
 }
 export function ironbank(timestamp: number = 0) {
@@ -226,6 +235,10 @@ export function segmentFinance(timestamp: number = 0) {
   );
 }
 
+export function compoundV3(timestamp: number = 0) {
+  return v3(timestamp);
+}
+
 export const adapters = {
   cantoLending,
   moonwell,
@@ -249,4 +262,5 @@ export const adapters = {
   orbitv2,
   ironBank,
   segmentFinance,
+  compoundV3,
 };

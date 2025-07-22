@@ -5569,21 +5569,20 @@ const data4: Protocol[] = [
   },
   {
     id: "5810",
-    name: "Coinbase BTC",
+    name: "Coinbase Bridge",
+    previousNames: ["Coinbase BTC", "Coinbase LTC", "Coinbase ADA", "Coinbase XRP"],
     address: null,
     symbol: "-",
-    assetToken: "cbBTC",
-    url: "https://www.coinbase.com/cbbtc/proof-of-reserves",
-    description: "cbBTC is a wrapped token backed 1:1 by BTC held by Coinbase",
+    url: "https://www.coinbase.com/",
+    description: "Wrapped tokens backed 1:1 by assets held by Coinbase.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/coinbase-btc.png`,
+    logo: `${baseIconsUrl}/coinbase-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Bitcoin"],
-    forkedFrom: [],
+    chains: ["Litecoin", "Bitcoin", "Cardano", "Ripple"],
     module: "coinbase-btc/index.js",
     twitter: "coinbase", 
     listedAt: 1739912521
@@ -18926,7 +18925,7 @@ const data4: Protocol[] = [
     twitter: "DipCoinOfficial",
     listedAt: 1752078241
   },
-  {
+  /*{ // unified under coinbase-btc adapter
     id: "6412",
     name: "Coinbase LTC",
     address: null,
@@ -18945,7 +18944,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "coinbase",
     listedAt: 1752083601
-  },
+  },*/
   {
     id: "6413",
     name: "FullSail Finance",
@@ -19631,7 +19630,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     listedAt: 1752664531
   },
-  {
+  /*{ // unified under coinbase-btc adapter
     id: "6445",
     name: "Coinbase XRP",
     address: null,
@@ -19650,7 +19649,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "coinbase",
     listedAt: 1752694903,
-  },
+  },*/
   {
     id: "6446",
     name: "K-BIT",
@@ -19791,7 +19790,7 @@ const data4: Protocol[] = [
     audit_links: ["https://learn.bluefin.io/bluefin/other/security/code-audits"],
     listedAt: 1752859467,
   },
-  {
+ /* { // unified under coinbase-btc adapter
     id: "6452",
     name: "Coinbase ADA",
     address: null,
@@ -19810,7 +19809,7 @@ const data4: Protocol[] = [
     module: "coinbase-ada/index.js",
     twitter: "coinbase",
     listedAt: 1752859927,
-  },
+  },*/
   {
     id: "6453",
     name: "TheDeep",
@@ -19979,6 +19978,26 @@ const data4: Protocol[] = [
     twitter: "laine_sa_",
     github: ["laine-sa"],
     listedAt: 1753110915
+  },
+  {
+    id: "6461",
+    name: "Coinbase Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinbase.com",
+    description: "Wrapped tokens backed 1:1 by assets held by Coinbase.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinbase-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Litecoin", "Bitcoin", "Cardano", "Ripple"],
+    module: "coinbase-bridge/index.js",
+    forkedFrom: [],
+    twitter: "coinbase",
+    listedAt: 1753159173
   },
 ];
 export default data4;

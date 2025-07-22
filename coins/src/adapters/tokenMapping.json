@@ -4128,6 +4128,16 @@
     }
   },
   "zeta": {
+    "0x3e128c169564DD527C8e9bd85124BF6A890E5a5f": {
+      "decimals": "8",
+      "symbol": "CBBTC.ETH",
+      "to": "coingecko#coinbase-wrapped-btc"
+    },
+    "0x7c8dDa80bbBE1254a7aACf3219EBe1481c6E01d7": {
+      "decimals": "6",
+      "symbol": "USDT.ETH",
+      "to": "coingecko#tether"
+    },
     "0x4bC32034caCcc9B7e02536945eDbC286bACbA073": {
       "decimals": "9",
       "symbol": "SOL.SOL",

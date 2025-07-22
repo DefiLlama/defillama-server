@@ -57341,7 +57341,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://xapp.folks.finance",
     description:
-      "Hub and spoke cross chain lending protocol.",
+      "Crosschain DeFi Hub offering crosschain lending and borrowing.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/folks-finance-xchain.png`,
     audits: "2",

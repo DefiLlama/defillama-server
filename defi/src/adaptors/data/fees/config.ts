@@ -3876,4 +3876,7 @@ export default {
     "jupiter-staked-sol": {
         id: "4996"
     },
+    "pangolin-v3": {
+        id: "6466"
+    }
 } as AdaptorsConfig

@@ -1314,7 +1314,7 @@
       "decimals": "18",
       "symbol": "SY-clisBNB",
       "to": "coingecko#synclub-staked-bnb"
-    },  
+    },
     "0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2": {
       "decimals": "18",
       "symbol": "sUSDe",
@@ -5744,12 +5744,12 @@
       "to": "coingecko#bitnet"
     }
   },
-  "btnx": {  
+  "btnx": {
     "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402": {
       "decimals": "6",
       "symbol": "USDC.e",
       "to": "coingecko#usd-coin"
-      }
+    }
   },
   "area": {
     "0x298b6a733cd34e41ca87b264d968c8ca7b0b9931": {
@@ -10980,6 +10980,73 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    }
+  },
+  "tac": {
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+      "decimals": "18",
+      "symbol": "TAC",
+      "to": "coingecko#tac"
+    },
+    "0xAf368c91793CB22739386DFCbBb2F1A9e4bCBeBf": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
+    "0x7048c9e4aBD0cf0219E95a17A8C6908dfC4f0Ee4": {
+      "decimals": "8",
+      "symbol": "cbETH",
+      "to": "coingecko#coinbase-wrapped-btc"
+    },
+    "0x20512cF15E60242aB5237E0A76c873a338281397": {
+      "decimals": "9",
+      "symbol": "bmTON",
+      "to": "coingecko#bemo"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "WIF",
+      "to": "coingecko#dogwifcoin"
+    },
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
+      "decimals": "8",
+      "symbol": "LBTC",
+      "to": "coingecko#lombard-staked-btc"
+    },
+    "0x51A30E647D33A044967FA3DBb04d6ED6F45455F6": {
+      "decimals": "18",
+      "symbol": "USDN",
+      "to": "coingecko#noon-usn"
+    },
+    "0x5Ced7F73B76A555CCB372cc0F0137bEc5665F81E": {
+      "decimals": "18",
+      "symbol": "sUSDN",
+      "to": "coingecko#staked-usn"
+    },
+    "0x9bB6983Ca454320BD8691409690B4FCCD489EE96": {
+      "decimals": "18",
+      "symbol": "USD0",
+      "to": "coingecko#usual-usd"
+    },
+    "0x1791BAff6a5e2F2A1340e8B7C1EA2B0c1E2DD1ea": {
+      "decimals": "18",
+      "symbol": "USD0++",
+      "to": "coingecko#usd0-liquid-bond"
+    },
+    "0xb1b385542B6E80F77B94393Ba8342c3Af699f15c": {
+      "decimals": "18",
+      "symbol": "USR",
+      "to": "coingecko#resolv-usr"
+    },
+    "0x35533f54740F1F1aA4179E57bA37039dfa16868B": {
+      "decimals": "18",
+      "symbol": "RLP",
+      "to": "coingecko#resolv-rlp"
+    },
+    "0x2a52B289bA68bBd02676640aA9F605700c9e5699": {
+      "decimals": "18",
+      "symbol": "wstUSR",
+      "to": "coingecko#resolv-wstusr"
     }
   }
 }

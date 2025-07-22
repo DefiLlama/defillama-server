@@ -7,6 +7,9 @@ import { getHistoricalTvlForAllProtocolsOptionalOptions, IProtocol, processProto
 import { chainCoingeckoIds, extraSections, getChainDisplayName, transformNewChainName } from "./utils/normalizeChain";
 import { _InternalProtocolMetadata, Protocol } from "./protocols/data";
 import { cache, getLastHourlyRecord } from "./api2/cache";
+import { tvlExcludedBridgeCategoriesSet } from "./utils/excludeProtocols";
+
+const bridgeCategoriesSlugSet = new Set([...tvlExcludedBridgeCategoriesSet].map(sluggifyString));
 
 interface SumCategoriesOrTagsByChainTvls {
   [tvlSection: string]: {
@@ -48,6 +51,8 @@ async function getCategoryOrTagByChain({
     return true
   }
   const maybeRWAProtocolsAreNeeded = category === 'rwa' || tag
+  let includeBridge = false;
+  if (category) includeBridge = bridgeCategoriesSlugSet.has(category);
 
   const getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
     isApi2CronProcess: true,
@@ -154,7 +159,7 @@ async function getCategoryOrTagByChain({
       }
     },
     {
-      includeBridge: false,
+      includeBridge,
       ...getHistTvlOptions,
     }
   );

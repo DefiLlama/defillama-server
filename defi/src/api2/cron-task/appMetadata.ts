@@ -11,6 +11,7 @@ import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
+import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
@@ -159,7 +160,6 @@ async function _storeAppMetadata() {
 
 
     const parentToChildProtocols: any = {};
-    const bridgeCategories = new Set(["Bridge", "Cross Chain Bridge", "Canonical Bridge"]);
     for (const protocol of tvlData.protocols) {
       const protocolInfo = protocolInfoMap[protocol.defillamaId]
       if (!protocolInfo) {
@@ -173,7 +173,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(bridgeCategories.has(protocol.category) ? { bridges: true } : {}),
+        ...(bridgeCategoriesSet.has(protocol.category) ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {

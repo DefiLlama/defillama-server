@@ -5739,6 +5739,13 @@
       "to": "coingecko#bitnet"
     }
   },
+  "btnx": {  
+    "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+      }
+  },
   "area": {
     "0x298b6a733cd34e41ca87b264d968c8ca7b0b9931": {
       "decimals": "18",

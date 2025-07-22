@@ -71,6 +71,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
   router.get("/lite/charts/categories/:category", defaultFileHandler);
+  router.get("/lite/chains-by-categories", defaultFileHandler);
   router.get("/charts/categories/:category", ew(getCategoryChartByChainData));
   router.get("/charts/categories/:category/:chain", ew(getCategoryChartByChainData));
   router.get("/charts/tags/:tag", ew(getTagChartByChainData));

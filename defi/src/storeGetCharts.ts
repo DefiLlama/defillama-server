@@ -446,25 +446,31 @@ export async function storeGetCharts({ ...options }: any = {}) {
     })
   );
 
-  async function storeCategoryCharts([category, chainDailyTvls]: any) {
-    const chainResponse = Object.fromEntries(
-      Object.entries(chainDailyTvls).map(([section, tvls]: any) => [getDisplayChainNameCached(section), Object.entries(tvls)])
-    );
-    let filename = `lite/charts/categories/${category}`;
-
-    if (options.isApi2CronProcess) {
-      await storeRouteData(filename, roundNumbersInObject(chainResponse));
-    }
-    else {
-      const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
-        [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-      });
-      await storeR2(filename, compressedRespone, true);
+  const categoryTvlsByChain: Record<string, Record<string, number>> = {}
+  for (const category in sumCategoryTvls) {
+    categoryTvlsByChain[category] = {}
+    for (const chain in sumCategoryTvls[category]) {
+      const tvls = Object.entries(sumCategoryTvls[category][chain])
+      categoryTvlsByChain[category][chain] = tvls[tvls.length - 1][1] ?? 0
     }
   }
+  const chainsByCategory: Record<string, Array<string>> = {}
+  for (const category in categoryTvlsByChain) {
+    chainsByCategory[category] = Object.entries(categoryTvlsByChain[category]).sort((a, b) => b[1] - a[1]).map(([chain]) => getDisplayChainNameCached(chain))
+  }
 
-  await Promise.all(Object.entries(sumCategoryTvls).map(storeCategoryCharts));
+  let filename = 'lite/chains-by-categories'
+
+  if (options.isApi2CronProcess) {
+    await storeRouteData(filename, roundNumbersInObject(chainsByCategory));
+  }
+  else {
+    const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainsByCategory), {
+      [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+      [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+    });
+    await storeR2(filename, compressedRespone, true);
+  }
 }
 
 function roundNumbersInObject(obj: any): any {

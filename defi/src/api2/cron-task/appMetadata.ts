@@ -20,6 +20,8 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
+const categoriesSet = new Set<string>();
+const tagsSet = new Set<string>();
 const nameAndIds: any = [];
 
 parentProtocols.forEach((protocol: any) => {
@@ -33,6 +35,8 @@ protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
   nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
+  if (protocol.category) categoriesSet.add(protocol.category);
+  if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   }
@@ -155,15 +159,21 @@ async function _storeAppMetadata() {
 
 
     const parentToChildProtocols: any = {};
+    const bridgeCategories = new Set(["Bridge", "Cross Chain Bridge", "Canonical Bridge"]);
     for (const protocol of tvlData.protocols) {
+      const protocolInfo = protocolInfoMap[protocol.defillamaId]
+      if (!protocolInfo) {
+        console.warn(`Protocol ${protocol.defillamaId} not found in protocolInfoMap`);
+        continue;
+      }
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
+        ...(bridgeCategories.has(protocol.category) ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -173,7 +183,7 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl ? { tvl: true } : {}),
+          ...(protocol.tvl != null ? { tvl: true } : {}),
         };
       }
 
@@ -794,6 +804,8 @@ async function _storeAppMetadata() {
     }
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
+
+    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", { categories: Array.from(categoriesSet), tags: Array.from(tagsSet) });
 
     console.log("finished building metadata");
   }

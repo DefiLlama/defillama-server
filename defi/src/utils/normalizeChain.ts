@@ -46,7 +46,8 @@ const doublecountedCategorySet = new Set([
   "Basis Trading",
   "CeDeFi",
   "RWA Lending",
-  "RWA"
+  "RWA",
+  "Farm"
 ].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
@@ -4453,6 +4454,14 @@ export const chainCoingeckoIds = {
     url: "https://tac.build/",
     chainId: 239,
   },
+  "Hydra Chain": {
+    geckoId: null,
+    symbol: "HYDRA",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "hydrachainorg",
+    chainId: 4488
+  }
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4654,6 +4663,7 @@ const chainLabelMap = {
   "xion": "XION",
   "soon": "Soon Network",
   "tac": "TAC",
+  "hydragon": "Hydra Chain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

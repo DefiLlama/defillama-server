@@ -3872,5 +3872,8 @@ export default {
     },
     "thevault": {
         id: "4751"
-    }
+    },
+    "jupiter-staked-sol": {
+        id: "4996"
+    },
 } as AdaptorsConfig

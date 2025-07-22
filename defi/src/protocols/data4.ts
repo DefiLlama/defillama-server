@@ -19979,25 +19979,5 @@ const data4: Protocol[] = [
     github: ["laine-sa"],
     listedAt: 1753110915
   },
-  {
-    id: "6461",
-    name: "Coinbase Bridge",
-    address: null,
-    symbol: "-",
-    url: "https://www.coinbase.com",
-    description: "Wrapped tokens backed 1:1 by assets held by Coinbase.",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/coinbase-bridge.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Bridge",
-    chains: ["Litecoin", "Bitcoin", "Cardano", "Ripple"],
-    module: "coinbase-bridge/index.js",
-    forkedFrom: [],
-    twitter: "coinbase",
-    listedAt: 1753159173
-  },
 ];
 export default data4;

@@ -20,6 +20,8 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
+const categoriesSet = new Set<string>();
+const tagsSet = new Set<string>();
 const nameAndIds: any = [];
 
 parentProtocols.forEach((protocol: any) => {
@@ -33,6 +35,8 @@ protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
   nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
+  if (protocol.category) categoriesSet.add(protocol.category);
+  if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   }
@@ -799,6 +803,8 @@ async function _storeAppMetadata() {
     }
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
+
+    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", { categories: Array.from(categoriesSet), tags: Array.from(tagsSet) });
 
     console.log("finished building metadata");
   }

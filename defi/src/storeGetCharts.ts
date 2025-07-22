@@ -13,7 +13,7 @@ import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
-import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
@@ -89,17 +89,15 @@ export async function getHistoricalTvlForAllProtocols(
       const isNormallyExcluded =
         !storeMeta &&
         excludeProtocolsFromCharts &&
-        (excludeProtocolInCharts(protocol, includeBridge) || isExcludedFromChainTvl(category));
+        (excludeProtocolInCharts(category, includeBridge));
       if (isNormallyExcluded && !isForcedInclude) {
         excludedProcolsIds[protocol.id] = true;
         excludedProcolsIdsExceptBridge[protocol.id] = true;
         return;
       }
 
-      excludedProcolsIds[protocol.id] =
-        excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(category);
-      excludedProcolsIdsExceptBridge[protocol.id] =
-        excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(category);
+      excludedProcolsIds[protocol.id] = excludeProtocolInCharts(category, false)
+      excludedProcolsIdsExceptBridge[protocol.id] = excludeProtocolInCharts(category, true)
 
       let lastTvl: any, historicalTvl: any;
       async function _getAllProtocolData(protocol: Protocol) {

@@ -8,8 +8,8 @@ let adaptersData = {} as any
 try {
     const _adaptersData = fs.readFileSync(path.join(__dirname, "tvlAdapterData.json"), "utf8");
     adaptersData = JSON.parse(_adaptersData) as any
-} catch (error) {
-    console.error("Error loading adapter data:", error)
+} catch (error: any) {
+    console.error("Error loading adapter data:", error?.message)
 }
 
 

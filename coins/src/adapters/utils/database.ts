@@ -51,8 +51,7 @@ export async function getTokenAndRedirectData(
   const response: CoinData[] = [];
   await rateLimited(async () => {
     if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
-    // if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15)
-    cache = {}; // clear cache every 15 minutes
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}; // clear cache every 15 minutes
 
     const cacheKey = `${chain}-${hoursRange}`;
     if (!cache[cacheKey]) cache[cacheKey] = {};

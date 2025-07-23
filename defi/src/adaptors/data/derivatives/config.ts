@@ -696,4 +696,7 @@ export default {
     "ostrich": {
         id: "6442"
     },
+    "hibachi": {
+        id: "6467"
+    }
 } as AdaptorsConfig

@@ -39,6 +39,20 @@ interface SumDailyTvls {
   };
 }
 
+interface IChainTvlByCategoryOrTag {
+  [categoryOrTag: string]: {
+    [chain: string]: number;
+  };
+}
+
+function sumChainTvlByCategoryOrTag(sumChainTvlByCategoryOrTag: IChainTvlByCategoryOrTag, categoryOrTag: string, chain: string, tvl: number) {
+  const finalCategoryOrTag = categoryOrTag.toLowerCase().replace(" ", "_")
+  if (!sumChainTvlByCategoryOrTag[finalCategoryOrTag]) {
+    sumChainTvlByCategoryOrTag[finalCategoryOrTag] = {};
+  }
+  sumChainTvlByCategoryOrTag[finalCategoryOrTag][chain] = tvl + (sumChainTvlByCategoryOrTag[finalCategoryOrTag][chain] ?? 0);
+}
+
 export interface IProtocol extends Protocol {
   doublecounted: boolean;
 }
@@ -283,7 +297,8 @@ export async function processProtocols(
 export async function storeGetCharts({ ...options }: any = {}) {
   // store overall tvl charts and individual chain charts
   const sumDailyTvls: SumDailyTvls = {};
-  const sumCategoryTvls: SumDailyTvls = {};
+  const chainTvlByCategory: IChainTvlByCategoryOrTag = {}
+  const chainTvlByTag: IChainTvlByCategoryOrTag = {}
 
   if (options.isApi2CronProcess) {
     const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
@@ -348,7 +363,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, categoryLowerCase.replace(" ", "_"), chain, timestamp, tvl);
+            sumChainTvlByCategoryOrTag(chainTvlByCategory, categoryLowerCase, chainName, tvl)
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
@@ -416,11 +431,10 @@ export async function storeGetCharts({ ...options }: any = {}) {
         //  check if its a valid chain name and not extra tvl section like pool2, staking etc
         if (chainCoingeckoIds[chainName] !== undefined) {
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, categoryLowerCase.replace(" ", "_"), chain, timestamp, tvl);
+            sumChainTvlByCategoryOrTag(chainTvlByCategory, categoryLowerCase, chainName, tvl)
           }
         }
       });
-
     },
     { includeBridge: false, forceIncludeCategories: ['RWA'], protocolFilterFunction: filterForOnlyRWA, ...options }
   );
@@ -446,17 +460,9 @@ export async function storeGetCharts({ ...options }: any = {}) {
     })
   );
 
-  const categoryTvlsByChain: Record<string, Record<string, number>> = {}
-  for (const category in sumCategoryTvls) {
-    categoryTvlsByChain[category] = {}
-    for (const chain in sumCategoryTvls[category]) {
-      const tvls = Object.entries(sumCategoryTvls[category][chain])
-      categoryTvlsByChain[category][chain] = tvls[tvls.length - 1]?.[1] ?? 0
-    }
-  }
   const chainsByCategory: Record<string, Array<string>> = {}
-  for (const category in categoryTvlsByChain) {
-    chainsByCategory[category] = Object.entries(categoryTvlsByChain[category]).sort((a, b) => b[1] - a[1]).map(([chain]) => getDisplayChainNameCached(chain))
+  for (const category in chainTvlByCategory) {
+    chainsByCategory[category] = Object.entries(chainTvlByCategory[category]).sort((a, b) => b[1] - a[1]).map(([chain]) => chain)
   }
 
   let filename = 'lite/chains-by-categories'

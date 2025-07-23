@@ -6738,6 +6738,7 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Optimism"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://docs.ethos.finance/understanding-ethos-reserve/how-liquidations-work"]} ],
     forkedFromIds: ["270"],
     module: "ethos/index.js",
     twitter: "EthosReserve",

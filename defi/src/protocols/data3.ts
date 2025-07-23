@@ -42029,7 +42029,7 @@ const data3_2: Protocol[] = [
     description:
       "(Deprecated) Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ebisu-finance.png`,
+    logo: `${baseIconsUrl}/ebisu-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

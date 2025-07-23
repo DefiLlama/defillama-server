@@ -7496,7 +7496,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Ebisu",
     url: "https://ebisu.money/",
     description: "Ebisu is a Stablecoin Credit Market. Using a CDP model, users are able to borrow ebUSD against BTC, ETH, and USD pegged assets at competitive, market-set interest rates. ebUSD holders can participate in these credit markets by providing liquidity to Stability Pools and DEXs, earning real yield from borrower interest and liquidation gains.",
-    logo: `${baseIconsUrl}/ebisu-finance.jpg`,
+    logo: `${baseIconsUrl}/ebisu.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

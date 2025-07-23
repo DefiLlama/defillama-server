@@ -324,6 +324,12 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   hemi: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
     UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258"
+  },
+ plume: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+  },
+  xsat: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   }
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"

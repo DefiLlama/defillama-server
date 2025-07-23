@@ -15746,7 +15746,7 @@ const data4: Protocol[] = [
     module: "granite/index.js",
     twitter: "GraniteBTC",
     audit_links: [
-      "https://github.com/GraniteProtocol/audits"
+      "https://github.com/GraniteProtocol/core-v1/tree/master/audits"
     ],
     oraclesBreakdown: [
       {

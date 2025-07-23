@@ -20145,6 +20145,18 @@ const data4: Protocol[] = [
     chains: ["Arbitrum", "Base"],
     module: "dummy.js",
     twitter: "hibachi_xyz",
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Aggregator",
+        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"]
+      },
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"]
+      },
+    ],
     forkedFromIds: [],
   },
   {

@@ -62,7 +62,6 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
 export type _InternalProtocolMetadata = {
   id: string;
   category: string;
-  categoryLowerCase: string;
   categorySlug: string;
   isLiquidStaking: boolean;
   isDoublecounted: boolean;
@@ -91,7 +90,6 @@ protocols.forEach((protocol: Protocol) => {
     _InternalProtocolMetadataMap[protocol.id] = {
       id: protocol.id,
       category,
-      categoryLowerCase: category.toLowerCase(),
       categorySlug: sluggifyString(category),
       isLiquidStaking: category === "Liquid Staking",
       slugTagSet,

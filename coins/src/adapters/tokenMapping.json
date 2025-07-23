@@ -7256,6 +7256,11 @@
     }
   },
   "assetchain": {
+    "0x02afe9989D86a0357fbb238579FE035dc17BcAB0": {
+      "to": "coingecko#xend-finance",
+      "decimals": 18,
+      "symbol": "xRWA"
+    },
     "0x2B7C1342Cc64add10B2a79C8f9767d2667DE64B2": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

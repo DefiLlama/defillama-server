@@ -38742,6 +38742,7 @@ const data3_2: Protocol[] = [
     cmcId: "34498",
     category: "Options",
     chains: ["Arbitrum"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://docs.ithacaprotocol.io/docs/architecture/oracles"]} ],
     module: "ithaca/index.js",
     twitter: "IthacaProtocol",
     forkedFrom: [],

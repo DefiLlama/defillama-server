@@ -46,7 +46,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
     }),
     getTokenInfo(
       chain,
-      [baseAsset, ...assetInfos.map((info: any) => info.asset)],
+      [...assetInfos.map((info: any) => info.asset), baseAsset],
       undefined,
     ),
     getTokenAndRedirectData([baseAsset], chain, timestamp),

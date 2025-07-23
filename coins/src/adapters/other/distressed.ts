@@ -320,6 +320,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   goat: {
     UBTC: "0x78e26e8b953c7c78a58d69d8b9a91745c2bbb258",
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f"
+  },
+  hemi: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+    UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258"
   }
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"

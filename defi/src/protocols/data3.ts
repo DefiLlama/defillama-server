@@ -42021,13 +42021,13 @@ const data3_2: Protocol[] = [
   }, */
   {
     id: "4561",
-    name: "Ebisu Finance V1",
+    name: "Ebisu V1",
     //previousNames: ["Ebisu Finance"],
     address: null,
     symbol: "-",
-    url: "https://ebisu.finance/",
+    url: "https://ebisu.money/",
     description:
-      "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan",
+      "(Deprecated) Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ebisu-finance.png`,
     audits: "2",
@@ -42042,7 +42042,7 @@ const data3_2: Protocol[] = [
     twitter: "Ebisu_Finance",
     audit_links: [
       "https://github.com/pashov/audits/blob/master/team/pdf/Ebisu-security-review.pdf",
-      "https://ebisu.finance/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
+      "https://ebisu.money/audits/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
     ],
     parentProtocol: "parent#ebisu-finance",
     listedAt: 1714835461,

@@ -41952,7 +41952,7 @@ const data3_2: Protocol[] = [
   {
     id: "4561",
     name: "Ebisu V1",
-    previousNames: ["Ebisu Finance"],
+    //previousNames: ["Ebisu Finance"],
     address: null,
     symbol: "-",
     url: "https://ebisu.money/",

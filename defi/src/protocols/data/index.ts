@@ -98,7 +98,9 @@ protocols.forEach((protocol: Protocol) => {
 
     }
   } catch (e) {
-    console.error(`Error processing protocol ${protocol.name} (${protocol.id}):`, e)
+    let eMessage = e instanceof Error ? e.message : String(e);
+    if (!eMessage.includes('Could not find adapter for'))
+      console.error(`Error processing protocol ${protocol.name} (${protocol.id}):`, eMessage)
   }
 })
 

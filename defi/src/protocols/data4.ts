@@ -20147,6 +20147,24 @@ const data4: Protocol[] = [
     twitter: "hibachi_xyz",
     forkedFromIds: [],
   },
-  
+  {
+    id: "6468",
+    name: "Botanix Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.botanixlabs.com/",
+    description: "The canonical bridge for Botanix.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/botanix-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Canonical Bridge",
+    chains: ["Bitcoin"],
+    module: "dummy.js",
+    twitter: "BotanixLabs",
+    forkedFromIds: [],
+  },
 ];
 export default data4;

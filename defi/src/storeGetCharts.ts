@@ -14,7 +14,6 @@ import { promisify } from "util";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts } from "./utils/excludeProtocols";
-import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -45,12 +44,11 @@ interface IChainTvlByCategoryOrTag {
   };
 }
 
-function sumChainTvlByCategoryOrTag(sumChainTvlByCategoryOrTag: IChainTvlByCategoryOrTag, categoryOrTag: string, chain: string, tvl: number) {
-  const finalCategoryOrTag = categoryOrTag.toLowerCase().replace(" ", "_")
-  if (!sumChainTvlByCategoryOrTag[finalCategoryOrTag]) {
-    sumChainTvlByCategoryOrTag[finalCategoryOrTag] = {};
+function sumChainTvlByCategoryOrTag(sum: IChainTvlByCategoryOrTag, categoryOrTag: string, chain: string, tvl: number) {
+  if (!sum[categoryOrTag]) {
+    sum[categoryOrTag] = {};
   }
-  sumChainTvlByCategoryOrTag[finalCategoryOrTag][chain] = tvl + (sumChainTvlByCategoryOrTag[finalCategoryOrTag][chain] ?? 0);
+  sum[categoryOrTag][chain] = tvl + (sum[categoryOrTag][chain] ?? 0);
 }
 
 export interface IProtocol extends Protocol {
@@ -323,7 +321,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   }
 
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol, { categoryLowerCase, isLiquidStaking, isDoublecounted }: _InternalProtocolMetadata) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, { category, isLiquidStaking, isDoublecounted }: _InternalProtocolMetadata) => {
 
       // total - sum of all protocols on all chains
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
@@ -363,8 +361,16 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
           if (tvlSection === "tvl") {
-            sumChainTvlByCategoryOrTag(chainTvlByCategory, categoryLowerCase, chainName, tvl)
-            if (protocol?.doublecounted) {
+            if (category) {
+              sumChainTvlByCategoryOrTag(chainTvlByCategory, category, chainName, tvl)
+            }
+            if (protocol.tags) {
+              protocol.tags.forEach((tag) => {
+                sumChainTvlByCategoryOrTag(chainTvlByTag, tag, chainName, tvl)
+              })
+            }
+
+            if (isDoublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
 
@@ -412,7 +418,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   }
 
   await processProtocols(
-    async (timestamp: number, item: TvlItem, _protocol: IProtocol, { categoryLowerCase, }: _InternalProtocolMetadata) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, { category }: _InternalProtocolMetadata) => {
       Object.entries(item).forEach(([chain, tvl]) => {
         // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
         const formattedChainName = getChainDisplayName(chain, true);
@@ -431,7 +437,14 @@ export async function storeGetCharts({ ...options }: any = {}) {
         //  check if its a valid chain name and not extra tvl section like pool2, staking etc
         if (chainCoingeckoIds[chainName] !== undefined) {
           if (tvlSection === "tvl") {
-            sumChainTvlByCategoryOrTag(chainTvlByCategory, categoryLowerCase, chainName, tvl)
+            if (category) {
+              sumChainTvlByCategoryOrTag(chainTvlByCategory, category, chainName, tvl)
+            }
+            if (protocol.tags) {
+              protocol.tags.forEach((tag) => {
+                sumChainTvlByCategoryOrTag(chainTvlByTag, tag, chainName, tvl)
+              })
+            }
           }
         }
       });
@@ -465,17 +478,35 @@ export async function storeGetCharts({ ...options }: any = {}) {
     chainsByCategory[category] = Object.entries(chainTvlByCategory[category]).sort((a, b) => b[1] - a[1]).map(([chain]) => chain)
   }
 
-  let filename = 'lite/chains-by-categories'
+  let chainsByCategoryFilename = 'lite/chains-by-categories'
 
   if (options.isApi2CronProcess) {
-    await storeRouteData(filename, roundNumbersInObject(chainsByCategory));
+    await storeRouteData(chainsByCategoryFilename, roundNumbersInObject(chainsByCategory));
   }
   else {
     const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainsByCategory), {
       [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
       [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
     });
-    await storeR2(filename, compressedRespone, true);
+    await storeR2(chainsByCategoryFilename, compressedRespone, true);
+  }
+
+  const chainsByTag: Record<string, Array<string>> = {}
+  for (const tag in chainTvlByTag) {
+    chainsByTag[tag] = Object.entries(chainTvlByTag[tag]).sort((a, b) => b[1] - a[1]).map(([chain]) => chain)
+  }
+
+  let chainsByTagFilename = 'lite/chains-by-tags'
+  
+  if (options.isApi2CronProcess) {
+    await storeRouteData(chainsByTagFilename, roundNumbersInObject(chainsByTag));
+  }
+  else {
+    const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainsByTag), {
+      [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+      [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+    });
+    await storeR2(chainsByTagFilename, compressedRespone, true);
   }
 }
 

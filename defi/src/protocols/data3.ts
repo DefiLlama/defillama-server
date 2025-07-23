@@ -407,7 +407,7 @@ const data3_1: Protocol[] = [
       "https://github.com/0xGuard-com/audit-reports/blob/master/Kokomo%20Finance%20Token/Kokomo%20Finance%20Token.pdf",
     ],
     listedAt: 1679573387,
-    rugged: true,
+    rugged: true
   },
   {
     id: "2717",
@@ -1197,7 +1197,7 @@ const data3_1: Protocol[] = [
     twitter: "OnchainTrade",
     audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
     listedAt: 1680201542,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2753",
@@ -1757,7 +1757,13 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "syncdex-finance/index.js",
     twitter: "SyncDex_Finance",
-    listedAt: 1680775139
+    listedAt: 1680775139,
+    warningBanners: [
+      {
+        message: "SyncDEX Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   */
   {
@@ -2291,6 +2297,12 @@ const data3_1: Protocol[] = [
       "https://app.solidproof.io/projects/hashdao",
     ],
     listedAt: 1681133595,
+    warningBanners: [
+      {
+        message: "HashDAO has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2803",
@@ -2877,7 +2889,7 @@ const data3_1: Protocol[] = [
     ],
     twitter: "satoshicoreswap",
     listedAt: 1681436914,
-    rugged: true,
+    rugged: true
   },
   {
     id: "2828",
@@ -4026,7 +4038,7 @@ const data3_1: Protocol[] = [
     twitter: "Avatr_LSD",
     listedAt: 1682275843,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2879",
@@ -4585,6 +4597,12 @@ const data3_1: Protocol[] = [
     module: "swaprum/index.js",
     twitter: "Swaprum",
     listedAt: 1682586609,
+    warningBanners: [
+      {
+        message: "Swaprum has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2904",
@@ -5385,7 +5403,8 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1683282600,
     rugged: true,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "2938",
     name: "LuxsFi",
@@ -7823,7 +7842,8 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/BaySwap/audits/blob/main/Bay%20Swap%20Smart%20Contract%20Audit%20Report.pdf"],
     github: ["BaySwap"],
     listedAt: 1685532135,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3048",
     name: "Tranchess Ether",
@@ -12050,7 +12070,7 @@ const data3_1: Protocol[] = [
     twitter: "SkyDex_zksync",
     forkedFrom: [],
     listedAt: 1689589537,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3238",
@@ -12470,6 +12490,12 @@ const data3_1: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/rehold"],
     parentProtocol: "parent#rehold",
     listedAt: 1689773129,
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3253",
@@ -14478,6 +14504,12 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/MagnateArb/Audits/blob/main/SmartContract_Audit_Solidproof_MagnateProtocol.pdf"],
     github: ["MagnateArb"],
     listedAt: 1691144362,
+    warningBanners: [
+      {
+        message: "Magnate finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3343",
@@ -15897,6 +15929,12 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     github: ["abex-finance"],
     listedAt: 1692265558,
+    warningBanners: [
+      {
+        message: "ABEx Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3405",
@@ -17634,7 +17672,8 @@ const data3_1: Protocol[] = [
     twitter: "polylendxyz",
     github: ["polylendxyz"],
     listedAt: 1693922462,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3485",
     name: "Basetasm Finance",
@@ -19196,7 +19235,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "MantaSwap_",
     listedAt: 1695547555,
-    rugged: true,
+    rugged: true
   },
   {
     id: "3553",
@@ -20564,7 +20603,7 @@ const data3_1: Protocol[] = [
     twitter: "Scroll_1Dex",
     forkedFromIds: ["2197"],
     listedAt: 1697018504,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3614",
@@ -23487,7 +23526,7 @@ const data3_1: Protocol[] = [
     twitter: "LendoraProtocol",
     listedAt: 1699358645,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3746",
@@ -25027,6 +25066,12 @@ const data3_1: Protocol[] = [
     twitter: "SumerMoney",
     audit_links: ["https://docs.sumer.money/security/audits"],
     listedAt: 1700544773,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3815",
@@ -26940,6 +26985,12 @@ const data3_1: Protocol[] = [
       "https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_glorifinance_v1.0-signed.pdf",
     ],
     listedAt: 1702295229,
+    warningBanners: [
+      {
+        message: "Glori Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3903",
@@ -27542,7 +27593,7 @@ const data3_1: Protocol[] = [
     treasury: "syncus.js",
     twitter: "Syncus_Fi",
     listedAt: 1702903725,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3930",
@@ -27963,6 +28014,12 @@ const data3_1: Protocol[] = [
       AILayer: ["BFBTC"],
     },
     listedAt: 1703178529,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3948",
@@ -28428,7 +28485,7 @@ const data3_1: Protocol[] = [
     twitter: "ZebraLending",
     audit_links: ["https://github.com/ZebraDAOFinance/AuditReport/blob/main/ZebraDao.pdf"],
     listedAt: 1703765123,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3968",
@@ -28591,7 +28648,7 @@ const data3_1: Protocol[] = [
     module: "venuSwap/index.js",
     twitter: "Venu_Swap",
     listedAt: 1703852744,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3975",
@@ -28918,7 +28975,8 @@ const data3_1: Protocol[] = [
     twitter: "AbstraDEX",
     github: ["AbstraDex"],
     listedAt: 1704488220,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3990",
     name: "Interlay Lending",
@@ -34755,6 +34813,12 @@ const data3_2: Protocol[] = [
     audit_links: ["https://dubiw3zgo51jg.cloudfront.net/zircuit_audit_final.pdf"],
     forkedFrom: [],
     listedAt: 1709594345,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4239",
@@ -39586,7 +39650,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
     github: ["leaperfinance"],
     listedAt: 1712585675,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "4455",
@@ -40049,6 +40113,12 @@ const data3_2: Protocol[] = [
     module: "shibanova/index.js",
     twitter: "shibanovadefi",
     listedAt: 1712934494,
+    warningBanners: [
+      {
+        message: "ShibaNova has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4475",
@@ -42975,6 +43045,12 @@ const data3_2: Protocol[] = [
     ],
     github: ["yieldnest"],
     listedAt: 1715748037,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4607",
@@ -44666,6 +44742,12 @@ const data3_2: Protocol[] = [
     module: "daiko-dex/index.js",
     twitter: "DaikoDex",
     listedAt: 1716818551,
+    warningBanners: [
+      {
+        message: "DaikoDEX has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4684",
@@ -44944,7 +45026,13 @@ const data3_2: Protocol[] = [
     module: "pell/index.js",
     twitter: "Pell_Network",
     listedAt: 1717010539,
-    audit_links:["https://github.com/0xPellNetwork/restaking-contracts/blob/main/audits/PeckShield-Audit-Report-PellNetwork-v1.0.pdf"]
+    audit_links:["https://github.com/0xPellNetwork/restaking-contracts/blob/main/audits/PeckShield-Audit-Report-PellNetwork-v1.0.pdf"],
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4697",
@@ -47985,6 +48073,12 @@ const data3_2: Protocol[] = [
     twitter: "DesynLab",
     parentProtocol: "parent#desyn-protocol",
     listedAt: 1719915986,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4833",
@@ -49328,7 +49422,7 @@ const data3_2: Protocol[] = [
     twitter: "Sorta_Finance",
     audit_links: ["https://github.com/DeHacker-io/audits_public/blob/main/Sorta%20Finance.pdf"],
     listedAt: 1721214305,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "4893",
@@ -49984,6 +50078,12 @@ const data3_2: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/1kUmOPM8J63JmzM20H1Cg38oAfPRBJwLy/view?pli=1"],
     github: ["pumpbtc"],
     listedAt: 1721914007,
+    warningBanners: [
+      {
+        message: "PumpBTC has been reported for using unbacked assets to artificially inflate its own and other protocols TVL metrics. Proceed with caution.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4923",
@@ -62807,7 +62907,13 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "sboomfi/index.js",
     twitter: "SboomFi",
-    listedAt: 1734441511
+    listedAt: 1734441511,
+    warningBanners: [
+      {
+        message: "Sboom has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "5511",

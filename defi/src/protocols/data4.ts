@@ -4440,7 +4440,13 @@ const data4: Protocol[] = [
     module: "beralis-v2/index.js",
     twitter: "BeralisDex",
     parentProtocol: "parent#beralis",
-    listedAt: 1738964042
+    listedAt: 1738964042,
+    warningBanners: [
+      {
+        message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "5759",
@@ -4461,7 +4467,13 @@ const data4: Protocol[] = [
     module: "beralis-v3/index.js",
     twitter: "BeralisDex",
     parentProtocol: "parent#beralis",
-    listedAt: 1738964047
+    listedAt: 1738964047,
+    warningBanners: [
+      {
+        message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "5760",

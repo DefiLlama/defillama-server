@@ -1438,7 +1438,7 @@ const data: Protocol[] = [
     module: "synlev.js",
     twitter: null,
     github: ["SynLev"],
-    rugged: true,
+    rugged: true
   },
   {
     id: "172",
@@ -3548,7 +3548,7 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/yfii/audit"],
     forkedFromIds: ["113"],
     github: ["yfii"],
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "270",
@@ -3595,6 +3595,12 @@ const data: Protocol[] = [
     twitter: "Honeyswap",
     forkedFromIds: ["2197"],
     github: ["1Hive"],
+    warningBanners: [
+      {
+        message: "Honeyswap has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "272",
@@ -8633,7 +8639,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "stakesteak/index.js",
     twitter: "stake_steak",
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "501",
@@ -10637,6 +10643,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     twitter: "MultichainOrg",
     github: ["anyswap"],
+    warningBanners: [
+      {
+        message: "Please avoid using Multichain. The Multichain team doesn't control the keys and your money will get stuck/lost.",
+        level: "rug",
+      }
+    ]
   },
   {
     id: "592",
@@ -25713,6 +25725,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFromIds: ["114"],
     listedAt: 1642626305,
+    warningBanners: [
+      {
+        message: "Agora has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "1292",

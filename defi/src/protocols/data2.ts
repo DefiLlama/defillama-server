@@ -3495,6 +3495,12 @@ const data2: Protocol[] = [
     module: "01/index.js",
     twitter: "01_exchange",
     listedAt: 1646949250,
+    warningBanners: [
+      {
+        message: "01 Exchange was winded down. Please withdraw your remaining assets.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "1532",
@@ -11597,6 +11603,12 @@ const data2: Protocol[] = [
     twitter: "AvaultOmni",
     listedAt: 1657291702,
     github: ["AVaultFinance"],
+    warningBanners: [
+      {
+        message: "Avault has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "1888",
@@ -13353,7 +13365,7 @@ const data2: Protocol[] = [
       "https://github.com/solidproof/projects/blob/main/Drachma%20Exchange/SmartContract_Audit_Solidproof_DrachmaExchange.pdf",
     ],
     listedAt: 1660135625,
-    rugged: true,
+    rugged: true
   },
   {
     id: "1966",
@@ -18384,7 +18396,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     listedAt: 1665967733,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2186",
@@ -19528,7 +19540,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1666952098,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2234",
@@ -19741,7 +19753,7 @@ const data2: Protocol[] = [
     audit_links: ["https://etherauthority.io/crolend-token-smart-contract-audit"],
     listedAt: 1667316046,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   /* {
     id: "2243",
@@ -23409,6 +23421,12 @@ const data2: Protocol[] = [
     listedAt: 1672845040,
     deadUrl: true,
     rugged: true,
+    warningBanners: [
+      {
+        message: "Tegro Finance rugged",
+        level: "rug",
+      }
+    ]
   },
   {
     id: "2407",
@@ -25368,6 +25386,12 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#rehold",
     listedAt: 1675454199,
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2495",
@@ -27066,7 +27090,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1677149680,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2572",

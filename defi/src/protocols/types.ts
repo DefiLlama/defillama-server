@@ -93,4 +93,6 @@ export interface IParentProtocol {
   wrongLiquidity?: boolean;
   address?: string | null;
   warningBanners?: Array<Banner>;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }

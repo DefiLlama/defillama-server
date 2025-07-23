@@ -1660,6 +1660,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CurveFinance",
     governanceID: ["snapshot:curve.eth"],
     github: ["curvefi"],
+    warningBanners: [
+      {
+        message: "Curve Finance updated their website to curve.finance. Update all your bookmarks.",
+        level: "low",
+      }
+    ]
   },
   {
     id: "parent#astar-exchange",
@@ -1963,6 +1969,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "magpiexyz_io",
     treasury: "magpie.js",
     governanceID: ["snapshot:magpiexyz.eth"],
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#sudoswap",
@@ -2331,6 +2343,12 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rehold_io",
     github: ["rehold-io"],
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#stellaswap",
@@ -6508,6 +6526,12 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BeralisDex",
+    warningBanners: [
+      {
+        message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#sosovalue",

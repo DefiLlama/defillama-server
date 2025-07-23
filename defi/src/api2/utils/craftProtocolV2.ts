@@ -37,7 +37,7 @@ export async function craftProtocolV2({
   getCachedProtocolData = getProtocolAllTvlData,
   skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, warningBanners, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -194,8 +194,9 @@ export async function craftProtocolV2({
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (methodology)
-    response.methodology = methodology;
+  if (restProtocolData.methodology) {
+    response.methodology = restProtocolData.methodology;
+  }
 
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
@@ -205,12 +206,19 @@ export async function craftProtocolV2({
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
 
-  if (deprecated) {
+  if (restProtocolData.deprecated) {
     response.deprecated = true
   }
 
-  if (warningBanners) {
-    response.warningBanners = warningBanners;
+  if (restProtocolData.warningBanners) {
+    response.warningBanners = restProtocolData.warningBanners;
+  }
+
+  if (restProtocolData.rugged) {
+    response.rugged = true;
+  }
+  if (restProtocolData.deadUrl) {
+    response.deadUrl = true;
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime

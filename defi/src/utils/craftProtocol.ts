@@ -17,7 +17,6 @@ import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
-import { getR2, storeR2 } from "./r2";
 
 export function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
@@ -322,6 +321,12 @@ export default async function craftProtocol({
   }
   if (module.warningBanners) {
     response.warningBanners = module.warningBanners;
+  }
+  if (module.rugged) {
+    response.rugged = module.rugged;
+  }
+  if (module.deadUrl) {
+    response.deadUrl = module.deadUrl;
   }
   return response;
 }

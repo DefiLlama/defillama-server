@@ -20130,7 +20130,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6467",
-    name: "Pangolin V4",
+    name: "Pangolin V3",
     address: "avax:0x60781C2586D68229fde47564546784ab3fACA982",
     symbol: "PANG",
     url: "https://app.pangolin.exchange/",

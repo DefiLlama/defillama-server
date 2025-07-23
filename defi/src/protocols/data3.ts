@@ -41957,7 +41957,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://ebisu.money/",
     description:
-      "Ebisu is a Stablecoin Credit Market. Using a CDP model, users are able to borrow ebUSD against BTC, ETH, and USD pegged assets at competitive, market-set interest rates. ebUSD holders can participate in these credit markets by providing liquidity to Stability Pools and DEXs, earning real yield from borrower interest and liquidation gains.",
+      "(Deprecated) Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ebisu-finance.png`,
     audits: "2",
@@ -41972,7 +41972,7 @@ const data3_2: Protocol[] = [
     twitter: "Ebisu_Finance",
     audit_links: [
       "https://github.com/pashov/audits/blob/master/team/pdf/Ebisu-security-review.pdf",
-      "https://ebisu.finance/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
+      "https://ebisu.money/audits/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
     ],
     parentProtocol: "parent#ebisu-finance",
     listedAt: 1714835461,

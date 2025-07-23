@@ -3881,5 +3881,8 @@ export default {
     },
     "fpex": {
         id: "6458"
+    },
+    "uniswap-v4": {
+        id: "5690"
     }
 } as AdaptorsConfig

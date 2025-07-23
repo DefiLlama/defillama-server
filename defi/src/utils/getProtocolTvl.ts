@@ -1,7 +1,7 @@
 import { _InternalProtocolMetadataMap, Protocol, protocolsById, } from "../protocols/data";
 import type { ITvlsWithChangesByChain, ProtocolTvls } from "../types";
 import { secondsInDay, secondsInMonth, secondsInWeek } from "./date";
-import { includeCategoryIntoChainTvl } from "./excludeProtocols";
+import { excludeProtocolInCharts, } from "./excludeProtocols";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./getLastRecord";
 import {
   extraSections,
@@ -77,7 +77,7 @@ export async function getProtocolTvl(
           tvlPrevWeek = previousWeekRecord[chain] || null;
           tvlPrevMonth = previousMonthRecord[chain] || null;
 
-          if (includeCategoryIntoChainTvl(category)) {
+          if (!excludeProtocolInCharts(category)) {
             if (isDoublecounted) {
               chainTvls["doublecounted"] = {
                 tvl,
@@ -116,7 +116,7 @@ export async function getProtocolTvl(
 
           if (
             includeSection(chainDisplayName) &&
-            includeCategoryIntoChainTvl(category)
+            !excludeProtocolInCharts(category)
           ) {
             if (isDoublecounted) {
               chainTvls[`${chainDisplayName}-doublecounted`] = {

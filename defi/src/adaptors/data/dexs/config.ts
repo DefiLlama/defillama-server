@@ -3132,4 +3132,10 @@ export default {
     "blackhole-CL": {
         id: "6431"
     },
+    "pangolin-v3": {
+        id: "6466"
+    },
+    "fpex": {
+        id: "6458"
+    }
 } as AdaptorsConfig

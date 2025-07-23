@@ -14529,7 +14529,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Unichain"],
+    chains: ["Ethereum", "Base", "Unichain", "Corn"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -14537,6 +14537,12 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
         chains: [{ chain: "Base" },{ chain: "Unichain"}],
+      },
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://cornscan.io/address/0xFe423163bfEe287a132E656D5EC4a363B8A2B4f3/contract/21000000/readContract#F1"],
+        chains: [{ chain: "Corn" }],
       },
     ],
     module: "steakhouse/index.js",

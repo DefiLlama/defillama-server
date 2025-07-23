@@ -68,6 +68,9 @@ export type _InternalProtocolMetadata = {
   isDoublecounted: boolean;
   slugTagSet: Set<string>;
   hasTvl: boolean;
+  isDead: boolean;
+  misrepresentedTokens: boolean;
+  methodology?: string;
   hasChainSlug: (chainSlug: string) => boolean;
 }
 
@@ -93,7 +96,11 @@ protocols.forEach((protocol: Protocol) => {
       isLiquidStaking: category === "Liquid Staking",
       slugTagSet,
       isDoublecounted,
+      isDead: !!module.deadFrom,
       hasTvl: protocol.module !== 'dummy.js',
+      misrepresentedTokens: !!module.misrepresentedTokens,
+      methodology: module.methodology,
+      // hallmarks, // TODO: add it here, and remove all other usage of importAdapter()
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
 
     }

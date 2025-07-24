@@ -17162,7 +17162,7 @@ const data4: Protocol[] = [
     description: "DEX Aggregator & Yield Optimizer",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperbloom.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -17170,7 +17170,8 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "hyperbloom/index.js",
     twitter: "hyperbloomxyz",
-    forkedFromIds: [],
+    forkedFromIds: ["326"],
+    audit_links: ["https://github.com/pashov/audits/blob/master/team/pdf/Hyperbloom-security-review_2025-06-24.pdf"],
     listedAt: 1753371165
   },
   {

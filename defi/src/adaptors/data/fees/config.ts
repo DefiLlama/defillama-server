@@ -3887,5 +3887,11 @@ export default {
     },
     "uniswap-v4": {
         id: "5690"
-    }
+    },
+    "echo-lending": {
+        id: "5051"
+    },
+    "llamalend-curve": {
+        id: "4321"
+    },
 } as AdaptorsConfig

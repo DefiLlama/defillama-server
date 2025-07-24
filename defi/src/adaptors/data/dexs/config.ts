@@ -3137,5 +3137,8 @@ export default {
     },
     "fpex": {
         id: "6458"
-    }
+    },
+    "llamalend-curve": {
+        id: "4321"
+    },
 } as AdaptorsConfig

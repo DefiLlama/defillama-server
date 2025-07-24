@@ -20178,5 +20178,25 @@ const data4: Protocol[] = [
     twitter: "BotanixLabs",
     forkedFromIds: [],
   },
+  {
+    id: "6469",
+    name: "Gemini",
+    address: null,
+    symbol: "-",
+    url: "https://www.gemini.com",
+    description: "We build crypto products that are simple, elegant, and secure. Whether you are an individual or an institution, we want to help you buy, sell, and store your bitcoin and cryptocurrency.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/gemini.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    forkedFromIds: [],
+    module: "gemini/index.js",
+    twitter: "Gemini",
+    listedAt: 1753349019
+  },
 ];
 export default data4;

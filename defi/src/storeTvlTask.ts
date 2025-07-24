@@ -108,7 +108,7 @@ async function main() {
     }
 
 
-    const timeTakenI = (getUnixTimeNow() - startTime) / 1e3
+    const timeTakenI = getUnixTimeNow() - startTime
 
     await elastic.addRuntimeLog({
       runtime: timeTakenI,
@@ -121,7 +121,7 @@ async function main() {
     // if (protocolName) runningSet.delete(protocolName)
 
     // console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
-    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
+    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
   // const runningSet = new Set()

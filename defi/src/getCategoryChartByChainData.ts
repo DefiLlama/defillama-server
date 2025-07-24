@@ -45,10 +45,10 @@ async function getCategoryOrTagByChain({
 
   const protocolFilterFunction = (_protocol: Protocol, metadata: _InternalProtocolMetadata) => {
     const { categorySlug, slugTagSet, hasChainSlug, } = metadata;
-    let toFilter = false
-    if (tag) toFilter = slugTagSet.has(tag)
-    if (category) toFilter = categorySlug === category
-    if (chain) toFilter = hasChainSlug(chain)
+    let toFilter = true
+    if (tag) toFilter = toFilter && slugTagSet.has(tag)
+    if (category) toFilter = toFilter && categorySlug === category
+    if (chain) toFilter = toFilter && hasChainSlug(chain)
     return toFilter
   }
   const maybeRWAProtocolsAreNeeded = category === 'rwa' || tag

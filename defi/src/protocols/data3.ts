@@ -31890,7 +31890,7 @@ const data3_1: Protocol[] = [
     twitter: "synofinance",
     github: ["SynonymFinance"],
     listedAt: 1707281721,
-    deadUrl: true,  },
+  },
   {
     id: "4113",
     name: "HiveSwap V3",

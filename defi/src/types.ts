@@ -69,6 +69,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   chain?: string;
   module?: string;
   otherProtocols?: Array<string>;
+  parentProtocolSlug?: string;
   methodology?: string;
   misrepresentedTokens?: boolean;
   hallmarks?: [number, string][];
@@ -91,6 +92,7 @@ export interface IProtocol
   symbol: string;
   module: string;
   slug: string;
+  parentProtocolSlug?: string;
   tvl: number | null;
   chain: string;
   chainTvls: ITvlsByChain;

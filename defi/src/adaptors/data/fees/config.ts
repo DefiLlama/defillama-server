@@ -421,7 +421,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
+        // enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -1278,7 +1278,7 @@ export default {
     },
     "nile-exchange-v1": {
         parentId: "Nile Exchange",
-        "enabled": false,
+        "enabled": true,
         id: "4285"
     },
     "primordium": {
@@ -1329,7 +1329,12 @@ export default {
         id: "4396"
     },
     "pumpdotfun": {
-        id: "4449"
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1752537600": true
+            },
+        }
     },
     "synthetix-v3": {
         id: "4446"
@@ -1531,10 +1536,10 @@ export default {
     "origin-dollar": {
         id: "427"
     },
-    "betmode": {
-        enabled: false, // has negative fees for many dates
-        id: "4927"
-    },
+    // "betmode": {
+    //     enabled: false, // has negative fees for many dates
+    //     id: "4927"
+    // },
     "silo-finance": {
         id: "2020"
     },
@@ -2018,10 +2023,10 @@ export default {
     "maxapy": {
         id: "5306",
     },
-    "zeebu": {
-        enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
-        id: "5540",
-    },
+    // "zeebu": {
+    //     enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
+    //     id: "5540",
+    // },
     "lnexchange-perp": {
         id: "5639",
     },
@@ -2085,7 +2090,8 @@ export default {
         id: "5715"
     },
     "jumper-exchange": {
-        id: "3524"
+        id: "3524",
+         enabled: false
     },
     "ocelex": {
         parentId: "Ocelex",
@@ -3779,5 +3785,104 @@ export default {
     },
     "kofi-finance": {
         id: "6176"
+    },
+    "jup-studio": {
+        id: "6398"
+    },
+    "liquidswap": {
+        id: "6374"
+    },
+    "yei-swap": {
+        id: "6400"
+    },
+    "carbon": {
+        id: "6409"
+    },
+    "kanalabs-perp": {
+        id: "6175"
+    },
+    "hyperbloom": {
+        id: "6329"
+    },
+    "fullsail-finance": {
+        id: "6413"
+    },
+    "hyperwave": {
+        id: "6407"
+    },
+    "meso-finance": {
+        id: "4938"
+    },
+    "apebot": {
+        id: "6420"
+    },
+    "ebisu-ebusd": {
+        id: "6423"
+    },
+    "cobaltx": {
+        id: "6425"
+    },
+    "40acres": {
+        id: "6061"
+    },
+    "nerite": {
+        id: "6434"
+    },
+    "pumper": {
+        id: "6436",
+    },
+    "echo-lsd": {
+        id: "5464",
+    },
+    "liquidlaunch": {
+        id: "6441"
+    },
+    "multiswap": {
+        id: "1908"
+    },
+    "prjx": {
+        id: "6444"
+    },
+    "votre": {
+        id: "6316"
+    },
+    "sushiswap-agg": {
+        id: "5061"
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "privex": {
+        id: "6419"
+    },
+    "echo-strategy": {
+        id: "6454"
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
+    "blackhole": {
+        id: "6430"
+    },
+    "blackhole-CL": {
+        id: "6431"
+    },
+    "topcut": {
+        id: "6448"
+    },
+    "thevault": {
+        id: "4751"
+    },
+    "jupiter-staked-sol": {
+        id: "4996"
+    },
+    "pangolin-v3": {
+        id: "6466"
+    },
+    "fpex": {
+        id: "6458"
+    },
+    "uniswap-v4": {
+        id: "5690"
     }
 } as AdaptorsConfig

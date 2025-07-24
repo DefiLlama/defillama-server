@@ -3,8 +3,13 @@ import * as HyperExpress from "hyper-express";
 import { sluggifyString } from "./utils/sluggify";
 import { getClosestDayStartTimestamp } from "./utils/date";
 import { get20MinDate } from "./utils/shared";
-import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
+import { getHistoricalTvlForAllProtocolsOptionalOptions, IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { chainCoingeckoIds, extraSections, getChainDisplayName, transformNewChainName } from "./utils/normalizeChain";
+import { _InternalProtocolMetadata, Protocol } from "./protocols/data";
+import { cache, getLastHourlyRecord } from "./api2/cache";
+import { tvlExcludedBridgeCategoriesSet } from "./utils/excludeProtocols";
+
+const bridgeCategoriesSlugSet = new Set([...tvlExcludedBridgeCategoriesSet].map(sluggifyString));
 
 interface SumCategoriesOrTagsByChainTvls {
   [tvlSection: string]: {
@@ -24,50 +29,59 @@ function sum(sumDailyTvls: SumCategoriesOrTagsByChainTvls, tvlSection: string, t
   }
 }
 
-async function getCategoryOrTagByChain({ category, tag, chain }: { category?: string; tag?: string; chain?: string }) {
+async function getCategoryOrTagByChain({
+  category,
+  tag,
+  chain,
+}: {
+  category?: string | null;
+  tag?: string | null;
+  chain?: string | null;
+}) {
   const categoryOrTag = category || tag;
   if (!categoryOrTag) {
     return null;
   }
 
+  const protocolFilterFunction = (_protocol: Protocol, metadata: _InternalProtocolMetadata) => {
+    const { categorySlug, slugTagSet, hasChainSlug, } = metadata;
+    if (tag && !slugTagSet.has(tag)) return false
+    if (category && categorySlug !== category) return false
+    if (chain && !hasChainSlug(chain)) return false
+    return true
+  }
+  const maybeRWAProtocolsAreNeeded = category === 'rwa' || tag
+  let includeBridge = false;
+  if (category) includeBridge = bridgeCategoriesSlugSet.has(category);
+
+  const getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
+    isApi2CronProcess: true,
+    protocolList: cache.metadata.protocols,
+    getLastTvl: getLastHourlyRecord,
+    getAllTvlData: (protocol: any) => cache.allTvlData[protocol.id],
+    protocolFilterFunction,
+    forceIncludeCategories: maybeRWAProtocolsAreNeeded ? ['RWA'] : undefined,
+  }
+
+
   const sumCategoryOrTagTvls: SumCategoriesOrTagsByChainTvls = {};
 
+
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
-      let toInclude = true;
-
-      if (category) {
-        let hasCategory = category === sluggifyString(protocol.category ?? "");
-        if (chain) {
-          const pchains = Object.keys(item).map((c) => sluggifyString(transformNewChainName(c.split("-")[0])));
-          hasCategory = hasCategory && pchains.includes(chain);
-        }
-        toInclude = hasCategory;
-      }
-      if (tag) {
-        let hasTag = (protocol.tags ?? [])?.map((t) => sluggifyString(t)).includes(tag);
-        if (chain) {
-          hasTag =
-            hasTag && (protocol.chains ?? []).map((c) => sluggifyString(transformNewChainName(c))).includes(chain);
-        }
-        toInclude = hasTag;
-      }
-
-      if (!toInclude) return;
-
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, { isLiquidStaking, isDoublecounted, }: _InternalProtocolMetadata) => {
       if (!chain) {
         // total - sum of all protocols on all chains
         sum(sumCategoryOrTagTvls, "tvl", timestamp, item.tvl);
 
         // doublecounted and liquid staking values === sum of tvl on all chains
-        if (protocol.doublecounted) {
+        if (isDoublecounted) {
           sum(sumCategoryOrTagTvls, "doublecounted", timestamp, item.tvl);
         }
-        if (protocol.category?.toLowerCase() === "liquid staking") {
+        if (isLiquidStaking) {
           sum(sumCategoryOrTagTvls, "liquidstaking", timestamp, item.tvl);
         }
         // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
-        if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+        if (isLiquidStaking && isDoublecounted) {
           sum(sumCategoryOrTagTvls, "dcAndLsOverlap", timestamp, item.tvl);
         }
 
@@ -106,11 +120,11 @@ async function getCategoryOrTagByChain({ category, tag, chain }: { category?: st
           if (tvlSection === "tvl") {
             sum(sumCategoryOrTagTvls, tvlSection, timestamp, item[pchain]);
 
-            if (protocol.category?.toLowerCase() === "liquid staking") {
+            if (isLiquidStaking) {
               sum(sumCategoryOrTagTvls, "liquidstaking", timestamp, item[pchain]);
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+            if (isLiquidStaking && isDoublecounted) {
               sum(sumCategoryOrTagTvls, "dcAndLsOverlap", timestamp, item[pchain]);
             }
 
@@ -131,28 +145,31 @@ async function getCategoryOrTagByChain({ category, tag, chain }: { category?: st
           sum(sumCategoryOrTagTvls, "tvl", timestamp, item.tvl);
 
           // doublecounted and liquid staking values === sum of tvl on the chain this protocol exists
-          if (protocol.doublecounted) {
+          if (isDoublecounted) {
             sum(sumCategoryOrTagTvls, "doublecounted", timestamp, item.tvl);
           }
-          if (protocol.category?.toLowerCase() === "liquid staking") {
+          if (isLiquidStaking) {
             sum(sumCategoryOrTagTvls, "liquidstaking", timestamp, item.tvl);
           }
 
-          if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
+          if (isLiquidStaking && isDoublecounted) {
             sum(sumCategoryOrTagTvls, "dcAndLsOverlap", timestamp, item.tvl);
           }
         }
       }
     },
-    { includeBridge: false }
+    {
+      includeBridge,
+      ...getHistTvlOptions,
+    }
   );
 
   return sumCategoryOrTagTvls;
 }
 
 export async function getCategoryChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const category = sluggifyString(req.path_parameters.category);
-  const chain = sluggifyString(req.path_parameters.chain);
+  const category = req.path_parameters.category ? sluggifyString(req.path_parameters.category) : null;
+  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
 
   if (!category) return errorResponse(res, "Data not found", { statusCode: 404 });
 
@@ -166,8 +183,8 @@ export async function getCategoryChartByChainData(req: HyperExpress.Request, res
 }
 
 export async function getTagChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const tag = sluggifyString(req.path_parameters.tag);
-  const chain = sluggifyString(req.path_parameters.chain);
+  const tag = req.path_parameters.tag ? sluggifyString(req.path_parameters.tag) : null;
+  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
 
   if (!tag) return errorResponse(res, "Data not found", { statusCode: 404 });
 

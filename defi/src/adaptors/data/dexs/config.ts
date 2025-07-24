@@ -922,13 +922,13 @@ export default {
     //     id: "189"
     // },
     /* "carthage": {
-        enabled: false,
+        enabled: false,  // dont trust the numbers
         id: 1944
     }, */
-    "dexible": {
-        enabled: false,
-        id: "2249",
-    },
+    // "dexible": {
+    //     enabled: false,  // it is an aggregator?
+    //     id: "2249",
+    // },
     "alienfi": {
         id: "2603"
     },
@@ -2344,10 +2344,10 @@ export default {
     "arena-launch": {
         id: "6155"
     },
-    "believe": {
-        id: "6159",
-        enabled: false,
-    },
+    // "believe": {
+    //     id: "6159",
+    //     enabled: false, // dont trust the numbers
+    // },
     "rockswap": {
         id: "4204"
     },
@@ -3105,4 +3105,37 @@ export default {
     "alpha-arcade": {
         id: "6302",
     },
+    "yei-swap": {
+        id: "6400"
+    },
+    "carbon": {
+        id: "6409"
+    },
+    "fullsail-finance": {
+        id: "6413"
+    },
+    "cobaltx": {
+        id: "6425"
+    },
+    "liquidlaunch": {
+        id: "6441"
+    },
+    "multiswap": {
+        id: "1908"
+    },
+    "prjx": {
+        id: "6444"
+    },
+    "blackhole": {
+        id: "6430"
+    },
+    "blackhole-CL": {
+        id: "6431"
+    },
+    "pangolin-v3": {
+        id: "6466"
+    },
+    "fpex": {
+        id: "6458"
+    }
 } as AdaptorsConfig

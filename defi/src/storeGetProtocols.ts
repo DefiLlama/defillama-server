@@ -9,7 +9,7 @@ import { storeR2 } from "./utils/r2";
 import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
-import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts, } from "./utils/excludeProtocols";
 import protocols from "./protocols/data";
 
 function compress(data: string) {
@@ -86,7 +86,7 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
-        ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
+          ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
         };
       })
     )
@@ -99,7 +99,7 @@ export async function storeGetProtocols({
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (includeCategoryIntoChainTvl(p.category)) {
+    if (!excludeProtocolInCharts(p.category)) {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 

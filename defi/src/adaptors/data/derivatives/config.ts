@@ -490,10 +490,10 @@ export default {
     "vest": {
         id: "4400"
     },
-    "goosefx_v2": {
-        enabled: false, // team asked to have adapter moved to dexs config
-        id: "5998"
-    },
+    // "goosefx_v2": {
+    //     enabled: false, // team asked to have adapter moved to dexs config
+    //     id: "5998"
+    // },
     "zo": {
         id: "6018"
     },
@@ -681,5 +681,22 @@ export default {
     "alkimiya": {
         id: "6344"
     },
-
+    "privex": {
+        id: "6419"
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "elys-perp": {
+        id: "6450"
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
+    "ostrich": {
+        id: "6442"
+    },
+    "hibachi": {
+        id: "6467"
+    }
 } as AdaptorsConfig

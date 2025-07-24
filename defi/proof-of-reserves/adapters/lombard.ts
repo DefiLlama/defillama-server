@@ -15,6 +15,10 @@ const mintedTokens = [
     chain: 'bsc',
     address: '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
   },
+  {
+    chain: 'katana',
+    address: '0xb0f70c0bd6fd87dbeb7c10dc692a2a6106817072', // BTCK
+  },
 ]
 
 export default getBitcoinReservesAdapter(protocolId, mintedTokens);

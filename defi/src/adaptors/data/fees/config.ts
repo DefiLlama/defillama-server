@@ -3882,6 +3882,9 @@ export default {
     "fpex": {
         id: "6458"
     },
+    "blazestake": {
+        id: "2931"
+    },
     "uniswap-v4": {
         id: "5690"
     }

@@ -57003,7 +57003,7 @@ const data3_2: Protocol[] = [
     twitter: "allo_xyz",
     forkedFrom: [],
     listedAt: 1728896668,
-    deadUrl: true,  },
+  },
   {
     id: "5239",
     name: "Taiko Drips",

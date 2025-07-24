@@ -6194,7 +6194,7 @@ const data3_1: Protocol[] = [
     module: "extra/index.js",
     twitter: "extrafi_io",
     forkedFrom: [],
-    oracles: ["TWAP", "Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://docs.extrafi.io/extra_finance/leverage-farming/price-feed#price-protection-with-chainlink-price-feed"]} ],
     audit_links: ["https://docs.extrafi.io/extra_finance/audits-and-security"],
     parentProtocol: "parent#extra-finance",
     listedAt: 1684070957,

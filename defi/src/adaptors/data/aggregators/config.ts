@@ -374,5 +374,8 @@ export default {
   },
   "dzap": {
     id: "6435"
+  },
+  "rango": {
+    id: "6382"
   }
 } as AdaptorsConfig;

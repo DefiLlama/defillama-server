@@ -20379,5 +20379,24 @@ const data4: Protocol[] = [
     github: ["Pools-Finance"],
     listedAt: 1753371397
   },
+  {
+    id: "6478",
+    name: "Graphite Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://revenue.letsbonk.fun/",
+    description: "Graphite Protocol - We build smart contracts  and tech currently powering LiveBONK & bonk_fun.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/graphite-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "GraphiteProto",
+  },
 ];
 export default data4;

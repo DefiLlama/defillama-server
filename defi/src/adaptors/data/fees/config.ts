@@ -3894,4 +3894,7 @@ export default {
     "llamalend-curve": {
         id: "4321"
     },
+    "graphite-protocol": {
+        id: "6478"
+    }
 } as AdaptorsConfig

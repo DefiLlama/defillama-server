@@ -9,7 +9,7 @@ import { storeR2 } from "./utils/r2";
 import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
-import { excludeProtocolInCharts, } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts, hiddenCategoriesFromProtocolsListSet, } from "./utils/excludeProtocols";
 import protocols from "./protocols/data";
 
 function compress(data: string) {
@@ -90,7 +90,7 @@ export async function storeGetProtocols({
         };
       })
     )
-  ).filter((p) => !["Chain", "CEX", 'Canonical Bridge'].includes(p.category ?? ""));
+  ).filter((p) => !hiddenCategoriesFromProtocolsListSet.has(p.category ?? ""));
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -179,7 +179,7 @@ export async function storeGetProtocols({
   };
 
   const v2ProtocolData = response
-    .filter((p) => !["Chain", "CEX", 'Canonical Bridge'].includes(p.category ?? ""))
+    .filter((p) => !hiddenCategoriesFromProtocolsListSet.has(p.category ?? ""))
     .map((protocol) => ({
       id: protocol.id,
       name: protocol.name,

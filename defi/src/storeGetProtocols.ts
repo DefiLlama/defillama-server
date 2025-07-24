@@ -90,7 +90,7 @@ export async function storeGetProtocols({
         };
       })
     )
-  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
+  ).filter((p) => !["Chain", "CEX", 'Canonical Bridge'].includes(p.category ?? ""));
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -179,7 +179,7 @@ export async function storeGetProtocols({
   };
 
   const v2ProtocolData = response
-    .filter((p) => p.category !== "Chain" && p.category !== "CEX")
+    .filter((p) => !["Chain", "CEX", 'Canonical Bridge'].includes(p.category ?? ""))
     .map((protocol) => ({
       id: protocol.id,
       name: protocol.name,

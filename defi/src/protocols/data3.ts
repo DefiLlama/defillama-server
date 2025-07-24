@@ -26548,6 +26548,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     module: "mantle-meth/index.js",
     twitter: "mETHProtocol",
+    treasury: "mantle-meth.js",
     listedAt: 1701703365,
   },
   {

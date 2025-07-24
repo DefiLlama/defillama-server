@@ -17168,7 +17168,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Hyperliquid L1"],
-    module: "hyperbloom/index.js",
+    module: "HyperBloom/index.js",
     twitter: "hyperbloomxyz",
     forkedFromIds: ["326"],
     audit_links: ["https://github.com/pashov/audits/blob/master/team/pdf/Hyperbloom-security-review_2025-06-24.pdf"],

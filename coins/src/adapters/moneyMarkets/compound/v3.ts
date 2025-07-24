@@ -63,7 +63,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       tokenInfo.symbols[i].output,
       timestamp,
       "compound-v3",
-      1,
+      0.9,
     ),
   );
 

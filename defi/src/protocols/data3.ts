@@ -58724,6 +58724,14 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "esbtc/index.js",
     twitter: "exSatNetwork",
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+        
+      }
+    ],
     audit_links: ["https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2FWh5J6fh5FmaihWpA71nD%2Fblocksec_exsat_consensus_v1.0-signed.pdf?alt=media&token=d1028151-6fe5-46d6-aca6-ce63ee8c11d1", "https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2F3ozeFgUDhoOLswv7G8WF%2Fblocksec_exsat_evm_v1.0-signed.pdf?alt=media&token=a1333a1b-05a8-4378-8ab0-0bfff5a75671",],
     listedAt: 1730720237
   },

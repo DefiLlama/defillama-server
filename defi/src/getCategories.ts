@@ -36,10 +36,10 @@ function sum(
   protocol: IProtocol,
   { isDoublecounted, isLiquidStaking }: _InternalProtocolMetadata
 ) {
-  if (total[time] === undefined) {
+  if (total[time] == null) {
     total[time] = {};
   }
-  const data = total[time][category] || {};
+  const data = {...(total[time][category] || {})};
 
   for (const section in item) {
     if (section === "tvl" || extraSections.includes(section)) {
@@ -61,7 +61,7 @@ function sum(
 
   total[time][category] = data;
 
-  if (categoryProtocols[category] == undefined) {
+  if (categoryProtocols[category] == null) {
     categoryProtocols[category] = new Set();
   }
   categoryProtocols[category].add(protocol.name);

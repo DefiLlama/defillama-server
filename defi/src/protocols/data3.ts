@@ -31874,7 +31874,7 @@ const data3_1: Protocol[] = [
     name: "SYNO Finance",
     address: "arbitrum:0x577fd586c9e6ba7f2e85e025d5824dbe19896656",
     symbol: "SYNO",
-    url: "https://www.syno.finance/",
+    url: "https://syno.finance/",
     description: "SYNO is a truly cross-chain money market built on the Wormhole xChain technology stack",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/syno-finance.png`,

@@ -6001,7 +6001,7 @@ const data3_1: Protocol[] = [
     module: "meld-gold/index.js",
     twitter: "meldgold",
     forkedFrom: [],
-    oracles: ["Chainklink"],
+    oracles: ["Chainlink"],
     listedAt: 1683800481,
   },
   {

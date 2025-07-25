@@ -54,7 +54,6 @@ export default {
     id: "3809",
   },
   // "llamaswap": { // duplicate with volume with other aggregators
-  //   enabled: false,
   //   id: "3847",
   // },
   "openocean": {
@@ -164,7 +163,6 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": false,
     "id": "3554"
   },
   "magpie": {

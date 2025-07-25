@@ -194,10 +194,9 @@ export default {
     "whaleswap": {
         id: "1884"
     },
-    "nomiswap": {
-        "enabled": false,
-        id: "1823"
-    },
+    // "nomiswap": {
+    //     id: "1823"
+    // },
     "beethoven-x": {
         parentId: "Beethoven X",
         id: "654"
@@ -493,10 +492,9 @@ export default {
     "benswap": {
         id: "749"
     },
-    "bogged-finance": {
-        "enabled": false,
-        id: "617"
-    },
+    // "bogged-finance": {
+    //     id: "617"
+    // },
     "jetswap": {
         id: "659"
     },
@@ -578,14 +576,12 @@ export default {
         parentId: "IcecreamSwap",
         id: "1990"
     },
-    "arctic": {
-        "enabled": false,
-        id: "2176"
-    },
-    "swapsicle": {
-        "enabled": false,
-        id: "1824"
-    },
+    // "arctic": {
+    //     id: "2176"
+    // },
+    // "swapsicle": {
+    //     id: "1824"
+    // },
     "morpheus-swap": {
         id: "581"
     },
@@ -608,17 +604,15 @@ export default {
     "penguin": {
         id: "1575"
     },
-    "vortex-protocol": {
-        "enabled": false,
-        id: "1706"
-    },
+    // "vortex-protocol": {
+    //     id: "1706"
+    // },
     "dinosaur-eggs": {
         id: "695"
     },
-    "mcdex": {
-        "enabled": false,
-        id: "232"
-    },
+    // "mcdex": {
+    //     id: "232"
+    // },
     "mistswap": {
         id: "748"
     },
@@ -664,10 +658,9 @@ export default {
     "chainge-finance": {
         id: "704"
     },
-    "minerswap": {
-        "enabled": false,
-        id: "2233"
-    },
+    // "minerswap": {
+    //     id: "2233"
+    // },
     "wavelength-dao": {
         id: "2220"
     },
@@ -683,10 +676,9 @@ export default {
     "kava-swap": {
         id: "618"
     },
-    "emdx": {
-        "enabled": false,
-        id: "2299"
-    },
+    // "emdx": {
+    //     id: "2299"
+    // },
     "cetus": {
         id: "2289",
     },
@@ -700,25 +692,21 @@ export default {
     "openbook": {
         id: "2322"
     },
-    "ghostmarket": {
-        "enabled": false,
-        id: "2290"
-    },
-    "synfutures": {
-        "enabled": false,
-        id: "2328"
-    },
+    // "ghostmarket": {
+    //     id: "2290"
+    // },
+    // "synfutures": {
+    //     id: "2328"
+    // },
     "xswap-protocol": {
         id: "2145"
     },
-    "kperp-exchange": {
-        "enabled": false,
-        id: "2326"
-    },
-    "jojo": {
-        "enabled": false,
-        id: "2320"
-    },
+    // "kperp-exchange": {
+    //     id: "2326"
+    // },
+    // "jojo": {
+    //     id: "2320"
+    // },
     "10kswap": {
         id: "2345"
     },
@@ -728,10 +716,9 @@ export default {
     "sundaeswap": {
         id: "1302"
     },
-    "wx.network": {
-        "enabled": false,
-        id: "614"
-    },
+    // "wx.network": {
+    //     id: "614"
+    // },
     "myswap": {
         parentId: "mySwap",
         id: "2367"
@@ -838,21 +825,19 @@ export default {
     "plenty": {
         id: "490"
     },
-    "jediswap": {
-        parentId: "JediSwap",
-        "enabled": false,
-        id: "2344"
-    },
+    // "jediswap": {
+    //     parentId: "JediSwap",
+    //     id: "2344"
+    // },
     "solidlizard": {
         id: "2528"
     },
     "onepunch": {
         id: "2534"
     },
-    "thorwallet": {
-        "enabled": false,
-        id: "2533"
-    },
+    // "thorwallet": {
+    //     id: "2533"
+    // },
     "ashswap": {
         id: "2551"
     },
@@ -868,10 +853,9 @@ export default {
     "megaton-finance": {
         id: "2540"
     },
-    "bakeryswap": {
-        "enabled": false,
-        id: "602"
-    },
+    // "bakeryswap": {
+    //     id: "602"
+    // },
     "bisq": {
         id: "2588"
     },
@@ -879,15 +863,12 @@ export default {
         id: "2589"
     },
     // "1inch": { // move to aggregators
-    //     enabled: false,
     //     id: "189"
     // },
-    /* "carthage": {
-        enabled: false,  // dont trust the numbers
+    /* "carthage": { // dont trust the numbers
         id: 1944
     }, */
-    // "dexible": {
-    //     enabled: false,  // it is an aggregator?
+    // "dexible": {  // it is an aggregator?
     //     id: "2249",
     // },
     "alienfi": {
@@ -1032,10 +1013,9 @@ export default {
     "forge": {
         id: "2804"
     },
-    "interest-protocol": {
-        "enabled": false,
-        id: "3015"
-    },
+    // "interest-protocol": {
+    //     id: "3015"
+    // },
     "fxdx": {
         id: "3036"
     },
@@ -1303,11 +1283,10 @@ export default {
     "retro": {
         id: "3311"
     },
-    "metavault-v3": {
-        parentId: "Metavault",
-        "enabled": false,
-        id: "3750",
-    },
+    // "metavault-v3": {
+    //     parentId: "Metavault",
+    //     id: "3750",
+    // },
     "elektrik": {
         id: "3773"
     },
@@ -1317,11 +1296,10 @@ export default {
     "chimpexchange": {
         id: "3836"
     },
-    "lighterv2": {
-        parentId: "Lighter",
-        "enabled": false,
-        id: "3854"
-    },
+    // "lighterv2": {
+    //     parentId: "Lighter",
+    //     id: "3854"
+    // },
     "thick": {
         id: "3878"
     },
@@ -1567,7 +1545,6 @@ export default {
     "hercules-v3": {
         parentId: "Hercules",
         id: "4373",
-        enabled: true
     },
     "zklite": {
         id: "4519"
@@ -2298,9 +2275,8 @@ export default {
     "arena-launch": {
         id: "6155"
     },
-    // "believe": {
+    // "believe": { // dont trust the numbers
     //     id: "6159",
-    //     enabled: false, // dont trust the numbers
     // },
     "rockswap": {
         id: "4204"
@@ -2538,10 +2514,9 @@ export default {
         },
         id: "5070"
     },
-    "meridian-trade-swap": {
-        "enabled": false,
-        id: "3386"
-    },
+    // "meridian-trade-swap": {
+    //     id: "3386"
+    // },
     "baseswap-v2": {
         id: "3333"
     },
@@ -2577,10 +2552,9 @@ export default {
     "blex-volume": {
         id: "3605"
     },
-    "derivio-swap": {
-        "enabled": false,
-        id: "3759"
-    },
+    // "derivio-swap": {
+    //     id: "3759"
+    // },
     "ascent-v2": {
         id: "3867"
     },

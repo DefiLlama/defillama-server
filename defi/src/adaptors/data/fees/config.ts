@@ -168,20 +168,18 @@ export default {
     "cronos": {
         id: "25"
     },
-    "klaytn": {
-        "enabled": false,
-        id: "4256" // wrong id, not related to klaytn
-    },
+    // "klaytn": { // wrong id, not related to klaytn
+    //     id: "4256"
+    // },
     "dodo-fees": {
         id: "146",
     },
     "fantom": {
         id: "250"
     },
-    "mixin": {
-        "enabled": false,
-        id: "2349" // wrond id, not linked to mixin
-    },
+    // "mixin": {
+    //     id: "2349" // wrond id, not linked to mixin
+    // },
     "polygon": {
         id: "137"
     },
@@ -200,10 +198,9 @@ export default {
     "geist-finance": {
         id: "643"
     },
-    "boba": {
-        "enabled": false, // Error: INDEXA_DB not set
-        id: "14556" // Boba bridge id should be 3935
-    },
+    // "boba": {
+    //     id: "14556" // Boba bridge id should be 3935
+    // },
     "mojitoswap": {
         id: "1181"
     },
@@ -227,10 +224,9 @@ export default {
         parentId: "ApeSwap",
         id: "398"
     },
-    "nomiswap": {
-        "enabled": false,
-        id: "1823"
-    },
+    // "nomiswap": {
+    //     id: "1823"
+    // },
     "stellaswap": {
         id: "1274"
     },
@@ -291,7 +287,6 @@ export default {
         id: "2290"
     },
     "moonwell-artemis": {
-        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "1853"
     },
     "moonwell-apollo": {
@@ -360,7 +355,6 @@ export default {
     },
     "covo-finance": {
         parentId: "Covo Finance",
-        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2525"
     },
     "nftearth": {
@@ -413,7 +407,6 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        // enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -546,7 +539,6 @@ export default {
         id: "2641"
     },
     "veax": {
-        "enabled": false, // no file for veax in fees folder
         id: "2928"
     },
     "maestro": {
@@ -643,7 +635,6 @@ export default {
         id: "1772"
     },
     "concordex-io": {
-        "enabled": false, // file doesn't exist
         id: "3172"
     },
     "vvs-finance": {
@@ -725,11 +716,9 @@ export default {
     },
     "venus-finance": {
         id: "212",
-        "enabled": true
     },
     "none-trading-bot": {
         id: "3337",
-        "enabled": true
     },
     "dackieswap": {
         parentId: "DackieSwap",
@@ -756,7 +745,6 @@ export default {
         id: "324"
     },
     "meridian-trade": {
-        "enabled": false, // request to https://subgraph.meridianfinance.net/subgraphs/name/perpetuals-stats failed, reason: connect ECONNREFUSED 137.184.25.57:443
         id: "3386"
     },
     "yfx-v3": {
@@ -776,13 +764,11 @@ export default {
         id: "3454"
     },
     "sharesgram": {
-        "enabled": false, // only returns 0 for fees everytime
         id: "3464"
     },
-    "tigris": {
-        "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
-        id: "3129"
-    },
+    // "tigris": {
+    //     id: "3129"
+    // },
     "apex": {
         parentId: "ApeX Protocol",
         id: "1878"
@@ -800,11 +786,9 @@ export default {
     },
     "friend-room": {
         id: "3493",
-        "enabled": true
     },
     "liquis": {
         id: "3498",
-        "enabled": true
     },
     "dackieswap-v2": {
         parentId: "DackieSwap",
@@ -927,11 +911,10 @@ export default {
     "clipper": {
         id: "622"
     },
-    "morpho-compound": {
-        parentId: "Morpho",
-        "enabled": false, // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
-        id: "1997"
-    },
+    // "morpho-compound": {   // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
+    //     parentId: "Morpho",
+    //     id: "1997"
+    // },
     "benqi-staked-avax": {
         parentId: "Benqi",
         id: "1427"
@@ -979,11 +962,10 @@ export default {
     "caviarnine-shape-liquidity": {
         id: "3645"
     },
-    "metavault-v3": {
-        parentId: "Metavault",
-        "enabled": false,
-        id: "3750",
-    },
+    // "metavault-v3": {
+    //     parentId: "Metavault",
+    //     id: "3750",
+    // },
     "xoxno": {
         id: "3753"
     },
@@ -1262,16 +1244,13 @@ export default {
     },
     "nile-exchange-v1": {
         parentId: "Nile Exchange",
-        "enabled": true,
         id: "4285"
     },
     "primordium": {
         id: "4293",
-        enabled: true
     },
     "geodnet": {
         id: "4304",
-        enabled: true
     },
     "econia": {
         id: "4128"
@@ -1352,7 +1331,6 @@ export default {
     "hercules-v3": {
         parentId: "Hercules",
         id: "4373",
-        enabled: true
     },
     "orby-network": {
         id: "4154"
@@ -1520,8 +1498,7 @@ export default {
     "origin-dollar": {
         id: "427"
     },
-    // "betmode": {
-    //     enabled: false, // has negative fees for many dates
+    // "betmode": { // has negative fees for many dates
     //     id: "4927"
     // },
     "silo-finance": {
@@ -1617,7 +1594,6 @@ export default {
     "kyberswap-aggregator": {
         parentId: "KyberSwap",
         id: "3982",
-        enabled: true
     },
     "raybot": {
         id: "5022"
@@ -2007,8 +1983,7 @@ export default {
     "maxapy": {
         id: "5306",
     },
-    // "zeebu": {
-    //     enabled: false, // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
+    // "zeebu": { // do not trust the numbers, 50k+ rewards go to wallets who immediately send to cexes
     //     id: "5540",
     // },
     "lnexchange-perp": {
@@ -2073,10 +2048,9 @@ export default {
     "flaunch": {
         id: "5715"
     },
-    "jumper-exchange": {
-        id: "3524",
-         enabled: false
-    },
+    // "jumper-exchange": {  // As jumper charges 0 fees and all the fee goes to bridges, so no point in showing double fees
+    //     id: "3524",
+    // },
     "ocelex": {
         parentId: "Ocelex",
         id: "5379"
@@ -2107,7 +2081,6 @@ export default {
         id: "5742"
     },
     // "polymarket": { // fees value is wrong, protocol does not charge fees
-    //     enabled: false, 
     //     id: "711"
     // },
     "velar": {
@@ -3045,19 +3018,15 @@ export default {
     },
     "predy-finance-v5": {
         id: "3324",
-        "enabled": true
     },
     "zyberswap-v2": {
         id: "2467",
-        "enabled": true
     },
     "zyberswap-v3": {
         id: "2602",
-        "enabled": true
     },
     "zyberswap-stable": {
         id: "2530",
-        "enabled": true
     },
     "hydradex-v2": {
         id: "1673",

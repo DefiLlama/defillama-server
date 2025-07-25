@@ -43050,7 +43050,7 @@ const data3_2: Protocol[] = [
     listedAt: 1715748037,
     warningBanners: [
       {
-        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        message: "This protocol includes unproductive positions (coBTC) that may contribute to inflated metrics. Be safe.",
         level: "alert",
         until: "2025-09-23",
       }

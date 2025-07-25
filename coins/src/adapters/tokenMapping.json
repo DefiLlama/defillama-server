@@ -9674,6 +9674,11 @@
     }
   },
   "hyperliquid": {
+    "0xBE65F0F410A72BeC163dC65d46c83699e957D588": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDp"
+    },
     "0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF": {
       "to": "coingecko#fartcoin",
       "decimals": 6,

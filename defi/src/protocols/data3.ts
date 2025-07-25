@@ -59340,14 +59340,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5344",
-    name: "BitFLUX",
+    name: "Molten",
     address: null,
     symbol: "-",
-    url: "https://bitflux.finance",
+    url: "https://molten.finance/",
     description:
-      "BitFLUX makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
+      "Molten makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
     chain: "CORE",
-    logo: `${baseIconsUrl}/bitflux.jpg`,
+    logo: `${baseIconsUrl}/molten.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -59355,9 +59355,9 @@ const data3_2: Protocol[] = [
     category: "Dexs",
     chains: ["CORE"],
     module: "bitflux/index.js",
-    twitter: "BitFluxFi",
+    twitter: "moltendex",
     forkedFrom: [],
-    audit_links: ["https://docs.bitflux.finance/resources/security"],
+    audit_links: ["https://docs.molten.finance/stable-amm/security"],
     listedAt: 1731410636
   },
   {

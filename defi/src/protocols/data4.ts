@@ -20183,7 +20183,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Canonical Bridge",
     chains: ["Bitcoin"],
-    module: "dummy.js",
+    module: "btnx/index.js",
     twitter: "BotanixLabs",
     forkedFromIds: [],
   },

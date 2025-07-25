@@ -3843,5 +3843,11 @@ export default {
     },
     "graphite-protocol": {
         id: "6478"
+    },
+    "springswap": {
+        id: "5311"
+    },
+    "springsui-ecosystem": {
+        id: "5424"
     }
 } as AdaptorsConfig

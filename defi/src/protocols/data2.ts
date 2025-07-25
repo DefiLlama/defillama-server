@@ -20518,7 +20518,7 @@ const data2: Protocol[] = [
     name: "HTX",
     address: null,
     symbol: "-",
-    url: "https://www.huobi.com",
+    url: "https://www.htx.com/",
     description: "Huobi Global is a world-leading cryptocurrency trading exchange.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/htx.png`,
@@ -20532,7 +20532,7 @@ const data2: Protocol[] = [
     twitter: "HuobiGlobal",
     forkedFrom: [],
     listedAt: 1668362612,
-    deadUrl: true,  },
+   },
   {
     id: "2277",
     name: "Weld Finance",

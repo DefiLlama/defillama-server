@@ -57,7 +57,11 @@
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
-    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
+    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server",
+    "validate-api": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts",
+    "validate-api-pro": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts --api-type pro",
+    "compare-beta": "npx ts-node --logError --transpile-only src/utils/compareBeta.ts",
+    "compare-beta-pro": "npx ts-node --logError --transpile-only src/utils/compareBeta.ts --api-type pro"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -91,6 +95,7 @@
     "@defillama/sdk": "^5.0.126",
     "@elastic/elasticsearch": "^8.13.1",
     "@supercharge/promise-pool": "^2.3.2",
+    "@types/ajv": "^0.0.5",
     "@types/async-retry": "^1.4.8",
     "@types/aws-lambda": "^8.10.97",
     "@types/inquirer-autocomplete-prompt": "^2.0.0",
@@ -99,6 +104,7 @@
     "@types/node": "^18.0.0",
     "@types/node-fetch": "^2.5.10",
     "@types/promise.allsettled": "^1.0.6",
+    "ajv": "^8.17.1",
     "axios": "^1.6.5",
     "bignumber.js": "^9.0.1",
     "buffer-layout": "^1.2.2",

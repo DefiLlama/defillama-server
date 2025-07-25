@@ -377,5 +377,8 @@ export default {
   },
   "rango": {
     id: "6382"
-  }
+  },
+  "metamask": {
+    id: "3031"
+},
 } as AdaptorsConfig;

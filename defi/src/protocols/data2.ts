@@ -14450,7 +14450,7 @@ const data2: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report/OceanONE-Security-Audit-Report.md",
     ],
     listedAt: 1661353825,
-    deadUrl: true,  },
+  },
   {
     id: "2015",
     name: "MM Stableswap Polygon",
@@ -15343,7 +15343,7 @@ const data2: Protocol[] = [
     module: "junoswap/index.js",
     twitter: "JunoNetwork",
     listedAt: 1662131321,
-    deadUrl: true,  },
+     },
   {
     id: "2053",
     name: "Cega V1",

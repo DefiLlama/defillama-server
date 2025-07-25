@@ -3523,7 +3523,7 @@ const data3_1: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://noahark.pro",
-    description: "Best DeFi on EOS  EVM",
+    description: "Bestt DeFi on EOS  EVM",
     chain: "EOS EVM",
     logo: `${baseIconsUrl}/noah-swap.jpg`,
     audits: "2",
@@ -3607,7 +3607,7 @@ const data3_1: Protocol[] = [
     name: "Bonsai Strike",
     address: null,
     symbol: "-",
-    url: "https://bonsai.money",
+    url: "htps://bonsai.money",
     description:
       "Bonsai Strike is the first in a planned series of Defi products on Binance Smart Chain that help users access sustainable and real yield.",
     chain: "Binance",
@@ -12566,8 +12566,7 @@ const data3_1: Protocol[] = [
       "https://github.com/Horizon-Dex/Audits/blob/a1c7f31238a7b0d3390f37d178d855cf284cdcee/HorizonDEX_SC%20Comparison%20Report_11.07.2023_SA-1644%20(2).pdf",
       "https://github.com/Defimoonorg/Audit-Report/blob/main/Horizon-Dex.pdf",
     ],
-    listedAt: 1689797379,
-    deadUrl: true,  },
+    listedAt: 1689797379,  },
   {
     id: "3256",
     name: "EchoDEX V2",

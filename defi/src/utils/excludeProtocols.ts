@@ -16,4 +16,3 @@ export const tvlExcludedBridgeCategoriesSet = new Set(['Bridge', 'Canonical Brid
 export const bridgeCategoriesSet = new Set(['Bridge', 'Cross Chain Bridge', 'Canonical Bridge'])  // this is used in appMetadata.ts for setting bridge flag, used no where else
 
 export const hiddenCategoriesFromUISet = new Set(["Chain", "CEX"]) // hide these categories on defillama.com/categories page
-export const hiddenCategoriesFromProtocolsListSet = new Set(["Chain", "CEX", 'Bridge', 'Canonical Bridge']) // hide protocols with these categories on defillama.com home page , api.llama.fi/lite/protocols2 endpoint

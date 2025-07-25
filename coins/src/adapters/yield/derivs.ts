@@ -427,6 +427,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x3EaBE18eAE267D1B57f917aBa085bb5906114600",
     address: "0x37227785a1f4545ed914690e395e4CFE96B8319f",
   },
+  vkHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0x74392Fa56405081d5C7D93882856c245387Cece2",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x9BA2EDc44E0A4632EB4723E81d4142353e1bB160",
+  },
 };
 
 export async function derivs(timestamp: number) {

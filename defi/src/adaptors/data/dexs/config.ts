@@ -2,7 +2,6 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "champagneswap": {
-        disabled: true,
         id: "1643"
     },
     "katana": {
@@ -13,7 +12,6 @@ export default {
     //     parentId: "PancakeSwap",
     //     protocolsData: {
     //         v1: {
-    //             "disabled": true,
     //             id: "2590"
     //         },
     //         v2: {
@@ -79,7 +77,6 @@ export default {
         id: "383"
     },
     "serum": {
-        disabled: true,
         id: "145"
     },
     "curve": {
@@ -122,7 +119,6 @@ export default {
         id: "419"
     },
     "platypus": {
-        disabled: true,
         id: "944",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -178,15 +174,12 @@ export default {
         id: "238"
     },
     "klex-finance": {
-        disabled: true,
         id: "2049"
     },
     "koyo": {
-        disabled: true,
         id: "1766"
     },
     "pyeswap": {
-        disabled: true,
         id: "2109"
     },
     "sunswap": {
@@ -199,7 +192,6 @@ export default {
         }
     },
     "whaleswap": {
-        disabled: true,
         id: "1884"
     },
     "nomiswap": {
@@ -253,7 +245,6 @@ export default {
         id: "680"
     },
     "junoswap": {
-        disabled: true,
         id: "2052"
     },
     "knightswap-finance": {
@@ -279,11 +270,9 @@ export default {
         id: "1347"
     },
     "terraswap": {
-        disabled: true,
         id: "491"
     },
     "saros": {
-        disabled: true,
         id: "1262"
     },
     "vvs-finance": {
@@ -293,7 +282,6 @@ export default {
         id: "397"
     },
     "viperswap": {
-        disabled: true,
         id: "313"
     },
     "oolongswap": {
@@ -335,7 +323,6 @@ export default {
         id: "1274"
     },
     "wagyuswap": {
-        disabled: true,
         id: "1003"
     },
     "dystopia": {
@@ -351,7 +338,6 @@ export default {
         id: "1140"
     },
     "astroport": {
-        disabled: true,
         id: "1052"
     },
     "tethys-finance": {
@@ -359,7 +345,6 @@ export default {
         id: "1139"
     },
     "mimo": {
-        disabled: true,
         id: "1241"
     },
     "kaidex": {
@@ -373,11 +358,9 @@ export default {
         id: "1660"
     },
     "yodeswap": {
-        disabled: true,
         id: "1980"
     },
     "defi-kingdoms": {
-        disabled: true,
         id: "556",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -417,7 +400,6 @@ export default {
         id: "812"
     },
     "makiswap": {
-        disabled: true,
         id: "378"
     },
     "smartdex": {
@@ -437,11 +419,9 @@ export default {
         id: "2158"
     },
     "aldrin": {
-        disabled: true,
         id: "739"
     },
     "capricorn-finance": {
-        disabled: true,
         id: "2128"
     },
     "alex": {
@@ -455,7 +435,6 @@ export default {
         id: "1432"
     },
     "crodex": {
-        disabled: true,
         id: "828"
     },
     "babyswap": {
@@ -478,7 +457,6 @@ export default {
         id: "2167"
     },
     "jswap": {
-        disabled: true,
         id: "678"
     },
     "babydogeswap": {
@@ -538,7 +516,6 @@ export default {
         id: "1008"
     },
     "photonswap-finance": {
-        disabled: true,
         id: "847"
     },
     "alita-finance": {
@@ -548,7 +525,6 @@ export default {
         id: "646"
     },
     "wineryswap": {
-        disabled: true,
         id: "2118"
     },
     "huckleberry": {
@@ -584,7 +560,6 @@ export default {
     },
     "algofi": {
         parentId: "Algofi",
-        disabled: true,
         id: "2091"
     },
     "elk": {
@@ -594,7 +569,6 @@ export default {
         id: "707"
     },
     "unicly": {
-        disabled: true,
         id: "324"
     },
     "crema-finance": {
@@ -602,7 +576,6 @@ export default {
     },
     "icecreamswap": {
         parentId: "IcecreamSwap",
-        disabled: true,
         id: "1990"
     },
     "arctic": {
@@ -618,7 +591,6 @@ export default {
     },
     "fairyswap": {
         parentId: "FairySwap",
-        disabled: true,
         id: "1671"
     },
     "moon-swap": {
@@ -648,7 +620,6 @@ export default {
         id: "232"
     },
     "mistswap": {
-        disabled: true,
         id: "748"
     },
     "bxh": {
@@ -668,7 +639,6 @@ export default {
     },
     "4swap": {
         parentId: "Pando",
-        disabled: true,
         id: "951"
     },
     "gravis": {
@@ -776,7 +746,6 @@ export default {
         id: "2213"
     },
     "wojak-finance": {
-        disabled: true,
         id: "2113"
     },
     "ampleswap": {
@@ -789,7 +758,6 @@ export default {
         id: "976"
     },
     "zircon-gamma": {
-        disabled: true,
         id: "2143"
     },
     "lumenswap": {
@@ -805,18 +773,15 @@ export default {
         id: "1790"
     },
     "syrup-finance": {
-        disabled: true,
         id: "2401"
     },
     "axial": {
-        disabled: true,
         id: "845"
     },
     "exinswap": {
         id: "1179"
     },
     "darkness": {
-        disabled: true,
         id: "1555"
     },
     "zilswap": {
@@ -831,14 +796,12 @@ export default {
         id: "705"
     },
     "aequinox": {
-        disabled: true,
         id: "2090"
     },
     "vexchange": {
         id: "963"
     },
     "metropolis": {
-        disabled: true,
         id: "2452"
     },
     "verse": {
@@ -884,7 +847,6 @@ export default {
         id: "2528"
     },
     "onepunch": {
-        disabled: true,
         id: "2534"
     },
     "thorwallet": {
@@ -895,7 +857,6 @@ export default {
         id: "2551"
     },
     "veniceswap": {
-        disabled: true,
         id: "2550"
     },
     "oraidex": {
@@ -1001,7 +962,6 @@ export default {
         id: "2792"
     },
     "satoshiswap": {
-        disabled: true,
         id: "2827"
     },
     "wagmi": {
@@ -1018,7 +978,6 @@ export default {
         id: "2864"
     },
     "astroswap": {
-        disabled: true,
         id: "1368"
     },
     "merlin": {
@@ -1062,7 +1021,6 @@ export default {
     },
     "lighter": {
         parentId: "Lighter",
-        disabled: true,
         id: "2636"
     },
     "veax": {
@@ -1113,7 +1071,6 @@ export default {
         id: "3090"
     },
     "hummus": {
-        disabled: true,
         id: "1715"
     },
     "tokenlon-dex": {
@@ -1144,7 +1101,6 @@ export default {
         id: "2809",
     },
     "litx": {
-        disabled: true,
         id: "3159"
     },
     "equity-spot": {
@@ -1158,7 +1114,6 @@ export default {
         id: "3180"
     },
     "croswap": {
-        disabled: true,
         id: "2942"
     },
     "fusionx-v2": {
@@ -1237,7 +1192,6 @@ export default {
         id: "3349"
     },
     "fcon-dex": {
-        disabled: true,
         id: "3299"
     },
     "throne-v3": {
@@ -2452,7 +2406,6 @@ export default {
         id: "2596"
     },
     "voltswap-v1": {
-        "disabled": true,
         id: "1225",
         "displayName": "VoltSwap V1"
     },
@@ -2480,7 +2433,6 @@ export default {
         id: "3654"
     },
     "el-dorado-exchange-swap": {
-        "disabled": true,
         id: "2356",
         "category": "Dexs",
         "displayName": "El Dorado Exchange - SWAP"
@@ -2517,7 +2469,6 @@ export default {
         "displayName": "SpaceDex - SWAP"
     },
     "covo-v2-swap": {
-        "disabled": true,
         id: "2730",
         "category": "Dexs",
         "displayName": "Covo V2 - SWAP",
@@ -2526,7 +2477,6 @@ export default {
         }
     },
     "hydradex-v2": {
-        "disabled": true,
         id: "1673",
         "displayName": "Hydradex V2"
     },
@@ -2573,7 +2523,6 @@ export default {
         },
     },
     "grizzly-trade-swap": {
-        "disabled": true,
         id: "5124"
     },
     "ktx-swap": {
@@ -2606,7 +2555,6 @@ export default {
         id: "3409"
     },
     "morphex-old-swap": {
-        "disabled": true,
         id: "5125",
         "category": "Dexs"
     },
@@ -2759,7 +2707,6 @@ export default {
                 "1684713600": false
             }
         },
-        "disabled": true,
         id: "2590"
     },
     "pancakeswap-v2": {

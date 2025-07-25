@@ -10,7 +10,6 @@ export default {
     },
   },
   "dexible": {
-    disabled: true,
     startFrom: 1630022400,
     id: "2249",
     parentId: "2249",

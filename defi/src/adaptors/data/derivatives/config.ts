@@ -25,7 +25,6 @@ export default {
     "dydx": {
         parentId: "dYdX",
         id: "144",
-        disabled: true
     },
     "mux-protocol-perps": {
         id: "2254",
@@ -584,7 +583,6 @@ export default {
         id: "970"
     },
     "grizzly-trade-derivatives": {
-        "disabled": true,
         id: "3301"
     },
     "ktx-derivatives": {

@@ -73,7 +73,6 @@ export default {
     //     parentId: "PancakeSwap",
     //     protocolsData: {
     //         v1: {
-    //             "disabled": true,
     //             id: "2590"
     //         },
     //         v2: {
@@ -199,7 +198,6 @@ export default {
         id: "270"
     },
     "geist-finance": {
-        disabled: true,
         id: "643"
     },
     "boba": {
@@ -213,7 +211,6 @@ export default {
         id: "1241"
     },
     "junoswap": {
-        disabled: true,
         id: "2052"
     },
     "honeyswap": {
@@ -277,14 +274,12 @@ export default {
         id: "1616"
     },
     "valas-finance": {
-        disabled: true,
         id: "1584"
     },
     "gains-network": {
         id: "1018"
     },
     "ghostmarket": {
-        disabled: true,
         category: "NFT Marketplace",
         allAddresses: [
             "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",
@@ -303,14 +298,12 @@ export default {
         id: "1401"
     },
     "kperp-exchange": {
-        "disabled": true,
         id: "2326"
     },
     "llamalend": {
         id: "2252"
     },
     "0vix": {
-        disabled: true,
         id: "1614"
     },
     "mummy-finance": {
@@ -324,7 +317,6 @@ export default {
     },
     "el-dorado-exchange": {
         parentId: "EDE",
-        disabled: true,
         id: "2356"
     },
     "gearbox": {
@@ -516,7 +508,6 @@ export default {
         id: "2864"
     },
     "merlin": {
-        disabled: true,
         id: "2849"
     },
     "pika-protocol": {
@@ -546,7 +537,6 @@ export default {
         id: "2968"
     },
     "kwenta": {
-        disabled: true,
         id: "2981"
     },
     "gamma": {
@@ -599,7 +589,6 @@ export default {
         id: "2376"
     },
     "liondex": {
-        disabled: true,
         id: "2898"
     },
     "stealcam": {
@@ -696,7 +685,6 @@ export default {
         id: "626"
     },
     "grizzly-trade": {
-        disabled: true,
         id: "3301"
     },
     "rollup-finace": {
@@ -719,7 +707,6 @@ export default {
         id: "2982"
     },
     "fcon-dex": {
-        disabled: true,
         id: "3299"
     },
     "friend-tech": {
@@ -741,7 +728,6 @@ export default {
         "enabled": true
     },
     "none-trading-bot": {
-        disabled: true,
         id: "3337",
         "enabled": true
     },
@@ -840,7 +826,6 @@ export default {
         id: "2974"
     },
     "blazebot": {
-        disabled: true,
         id: "3527"
     },
     "stakewise": {
@@ -1021,7 +1006,6 @@ export default {
     "dydx": {
         parentId: "dYdX",
         id: "144",
-        disabled: true
     },
     "justlend": {
         id: "494"
@@ -2342,7 +2326,6 @@ export default {
         id: "4126"
     },
     "stout": {
-        disabled: true,
         id: "5902"
     },
     "rfx": {
@@ -3011,12 +2994,10 @@ export default {
     },
     "opensea-v1": {
         id: "2630",
-        "disabled": true,
         "displayName": "Opensea V1"
     },
     "opensea-v2": {
         id: "2631",
-        "disabled": true,
         "displayName": "Opensea V2"
     },
     "opensea-seaport": {
@@ -3061,7 +3042,6 @@ export default {
     },
     "predy-finance-v320": {
         id: "1657",
-        "disabled": true
     },
     "predy-finance-v5": {
         id: "3324",
@@ -3080,7 +3060,6 @@ export default {
         "enabled": true
     },
     "hydradex-v2": {
-        "disabled": true,
         id: "1673",
         "displayName": "Hydradex V2"
     },
@@ -3201,7 +3180,6 @@ export default {
                 "1684713600": false
             }
         },
-        "disabled": true,
         id: "2590"
     },
     "pancakeswap-v2": {

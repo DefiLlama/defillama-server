@@ -44,14 +44,14 @@ async function getCategoryOrTagByChain({
   }
 
   const protocolFilterFunction = (_protocol: Protocol, metadata: _InternalProtocolMetadata) => {
-    const { categorySlug, slugTagSet, hasChainSlug, } = metadata;
-    let toFilter = true
-    if (tag) toFilter = toFilter && slugTagSet.has(tag)
-    if (category) toFilter = toFilter && categorySlug === category
-    if (chain) toFilter = toFilter && hasChainSlug(chain)
-    return toFilter
-  }
-  const maybeRWAProtocolsAreNeeded = category === 'rwa' || tag
+    const { categorySlug, slugTagSet, hasChainSlug } = metadata;
+    let toFilter = true;
+    if (tag) toFilter = toFilter && slugTagSet.has(tag);
+    if (category) toFilter = toFilter && categorySlug === category;
+    if (chain) toFilter = toFilter && hasChainSlug(chain);
+    return toFilter;
+  };
+  const maybeRWAProtocolsAreNeeded = category === "rwa" || tag;
   let includeBridge = false;
   if (category) includeBridge = bridgeCategoriesSlugSet.has(category);
 
@@ -61,15 +61,18 @@ async function getCategoryOrTagByChain({
     getLastTvl: getLastHourlyRecord,
     getAllTvlData: (protocol: any) => cache.allTvlData[protocol.id],
     protocolFilterFunction,
-    forceIncludeCategories: maybeRWAProtocolsAreNeeded ? ['RWA'] : undefined,
-  }
-
+    forceIncludeCategories: maybeRWAProtocolsAreNeeded ? ["RWA"] : undefined,
+  };
 
   const sumCategoryOrTagTvls: SumCategoriesOrTagsByChainTvls = {};
 
-
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol, { isLiquidStaking, isDoublecounted, }: _InternalProtocolMetadata) => {
+    async (
+      timestamp: number,
+      item: TvlItem,
+      protocol: IProtocol,
+      { isLiquidStaking, isDoublecounted }: _InternalProtocolMetadata
+    ) => {
       if (!chain) {
         // total - sum of all protocols on all chains
         sum(sumCategoryOrTagTvls, "tvl", timestamp, item.tvl);
@@ -170,7 +173,10 @@ async function getCategoryOrTagByChain({
 
 export async function getCategoryChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const category = req.path_parameters.category ? sluggifyString(req.path_parameters.category) : null;
-  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
+  const chain =
+    req.path_parameters.chain && req.path_parameters.chain.toLowerCase() !== "all"
+      ? sluggifyString(req.path_parameters.chain)
+      : null;
 
   if (!category) return errorResponse(res, "Data not found", { statusCode: 404 });
 
@@ -185,7 +191,10 @@ export async function getCategoryChartByChainData(req: HyperExpress.Request, res
 
 export async function getTagChartByChainData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const tag = req.path_parameters.tag ? sluggifyString(req.path_parameters.tag) : null;
-  const chain = req.path_parameters.chain ? sluggifyString(req.path_parameters.chain) : null;
+  const chain =
+    req.path_parameters.chain && req.path_parameters.chain.toLowerCase() !== "all"
+      ? sluggifyString(req.path_parameters.chain)
+      : null;
 
   if (!tag) return errorResponse(res, "Data not found", { statusCode: 404 });
 

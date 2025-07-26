@@ -50,5 +50,8 @@ export default {
   },
   "sharpe-perp": {
     "id": "5165"
-  }
+  },
+  "defiapp": {
+    id: "5819",
+  },
 } as AdaptorsConfig;

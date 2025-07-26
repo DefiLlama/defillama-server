@@ -3849,5 +3849,17 @@ export default {
     },
     "springsui-ecosystem": {
         id: "5424"
-    }
+    },
+    "margin-zero": {
+        id: "5612"
+    },
+    "hyperbrick": {
+        id: "6481"
+    },
+    "binance-staked-sol": {
+        id: "5135"
+    },
+    "drift-staked-sol": {
+        id: "5046"
+    },
 } as AdaptorsConfig

@@ -3062,4 +3062,7 @@ export default {
     "llamalend-curve": {
         id: "4321"
     },
+    "hyperbrick": {
+        id: "6481"
+    },
 } as AdaptorsConfig

@@ -3065,4 +3065,7 @@ export default {
     "hyperbrick": {
         id: "6481"
     },
+    "angstrom": {
+        id: "6483"
+    },
 } as AdaptorsConfig

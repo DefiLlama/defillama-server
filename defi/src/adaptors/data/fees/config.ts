@@ -3862,4 +3862,7 @@ export default {
     "drift-staked-sol": {
         id: "5046"
     },
+    "angstrom": {
+        id: "6483"
+    },
 } as AdaptorsConfig

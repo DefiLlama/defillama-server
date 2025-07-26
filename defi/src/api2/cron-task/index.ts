@@ -22,6 +22,7 @@ import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
 import { RUN_TYPE } from "../utils";
+import { genFormattedChains } from "./genFormattedChains";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -392,4 +393,7 @@ async function getChainData(isV2: boolean) {
   })
 
 }
-run().catch(console.error).then(() => process.exit(0))
+run()
+  .then(genFormattedChains)
+  .catch(console.error)
+  .then(() => process.exit(0))

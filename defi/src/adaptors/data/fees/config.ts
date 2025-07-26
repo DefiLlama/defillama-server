@@ -3850,6 +3850,9 @@ export default {
     "springsui-ecosystem": {
         id: "5424"
     },
+    "springsui": {
+        id: "5311"
+    },
     "margin-zero": {
         id: "5612"
     },

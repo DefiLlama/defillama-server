@@ -2,7 +2,7 @@ import protocols from '../../src/protocols/data'
 import treasuries from '../../src/protocols/treasury'
 import entities from '../../src/protocols/entities'
 import { IProtocol } from '../../src/types';
-import { clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
+import { clearAllDimensionsCache, clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
 import { storeTvl2, storeTvl2Options } from '../../src/storeTvlInterval/getAndStoreTvl';
 import { humanizeNumber } from '@defillama/sdk';
 import evmChainProvidersList from '@defillama/sdk/build/providers.json';
@@ -10,7 +10,6 @@ import PromisePool from '@supercharge/promise-pool';
 import { deleteProtocolItems, getProtocolItems, initializeTVLCacheDB } from '../../src/api2/db';
 import dynamodb from '../../src/utils/shared/dynamodb';
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl, } from '../../src/utils/getLastRecord';
-import { Op } from 'sequelize';
 import { getClosestDayStartTimestamp } from '@defillama/dimension-adapters/utils/date';
 import { importAdapterDynamic } from '../../src/utils/imports/importAdapter';
 
@@ -19,6 +18,7 @@ const allItems = [...protocols, ...treasuries, ...entities]
 
 allItems.forEach((protocol: any) => tvlNameMap[protocol.name] = protocol)
 export const tvlProtocolList = allItems.filter(i => i.module !== 'dummy.js').map(i => i.name)
+import {  } from "../../src/cli/utils/clearProtocolCache";
 
 
 export async function runTvlAction(ws: any, data: any) {
@@ -37,6 +37,9 @@ export async function runTvlAction(ws: any, data: any) {
     case 'clear-cache':
       await clearProtocolCacheById(protocol.id)
       console.log('Cache cleared for protocol:', protocol.name);
+      break;
+    case 'clear-all-dimensions-cache':
+      await clearAllDimensionsCache()
       break;
     case 'refill-last':
       await fillLast(ws, protocol, options)

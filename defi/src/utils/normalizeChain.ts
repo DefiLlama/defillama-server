@@ -2927,9 +2927,9 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Superchain"],
     parent: {
-      chain: "Optimism",
+      chain: "Ethereum",
       types: ["L3"],
       da: 'Celestia',
     },

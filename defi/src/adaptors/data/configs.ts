@@ -39,11 +39,4 @@ Object.entries(configs).forEach(([metric, map]) => {
   }
 });
 
-export const getAvailableMetricsById = (id: string) =>
-  Object.entries(configs).reduce((acc, [metric]) => {
-    const isMetricEnabled = idMaps?.[metric]?.[id]?.enabled;
-    if (isMetricEnabled === true) acc[metric] = isMetricEnabled;
-    return acc;
-  }, {} as IJSON<boolean>);
-
 export default configs;

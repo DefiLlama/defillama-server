@@ -1,15 +1,13 @@
 import '../utils/failOnError'
 require("dotenv").config();
 
-import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
 import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
-import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
-import { getDisplayChainNameCached } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
@@ -18,12 +16,10 @@ import * as sdk from '@defillama/sdk'
 
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
 import { storeRouteData } from "../cache/file-cache"
-import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors"
 import { sluggifyString } from "../../utils/sluggify"
-import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
-import { ProtocolAdaptor } from '../../adaptors/data/types';
+import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -252,7 +248,6 @@ async function run() {
       }
       // in the case of chains (like chain fees/revenue), we store records in with id2 field instead of id, maybe for all cases?
       const dimensionProtocolId = dimensionProtocolInfo.protocolType === ProtocolType.CHAIN ? protocolId : dimensionProtocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
-      if (dimensionProtocolInfo.enabled === false) return; // we skip protocols that are disabled
       const tvlProtocolInfo = protocolsById[protocolId] ?? parentProtocolsById[protocolId]
       const knownBadIds = new Set(['1', 'smbswap'])
       if (!tvlProtocolInfo && !knownBadIds.has(protocolId) && !protocolId?.startsWith('chain#')) {
@@ -815,7 +810,6 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   // let currentTime = getStartOfTodayTime()
   let currentTime = getUnixTimeNow()
   const response: IJSON<any> = { ...records }
-  const isDisabled = info?.disabled
 
   Object.entries(records).forEach(([timeS, record]: any) => {
     if (!firstTimestamp || record.timestamp < firstTimestamp) {
@@ -833,7 +827,6 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   const fillUptoDays = 3 // we fill in data for upto 3 days
   let missingDataCounter = 0
   while (timeSToUnix(nextTimeS) < currentTime) {
-    if (isDisabled) break; // we dont fill in data for disabled protocols
     if (records[nextTimeS]) {
       missingDataCounter = 0
       lastTimeSWithData = nextTimeS

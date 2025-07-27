@@ -1,5 +1,5 @@
 import dexs_imports from "../../../utils/imports/dexs_adapters"
-import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record";
+import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../types"
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
 export const importModule = (module: string) => dexs_imports[module].module

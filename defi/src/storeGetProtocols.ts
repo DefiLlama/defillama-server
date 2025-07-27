@@ -1,23 +1,13 @@
 import { craftProtocolsResponse } from "./getProtocols";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
-import { storeR2 } from "./utils/r2";
 import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { excludeProtocolInCharts, hiddenCategoriesFromUISet, } from "./utils/excludeProtocols";
 import protocols from "./protocols/data";
-
-function compress(data: string) {
-  return brotliCompressSync(data, {
-    [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-    [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-  });
-}
 
 export async function storeGetProtocols({
   getCoinMarkets,
@@ -199,12 +189,3 @@ export async function storeGetProtocols({
 
   return { protocols2Data, v2ProtocolData };
 }
-
-const handler = async (_event: any) => {
-  const { protocols2Data, v2ProtocolData } = await storeGetProtocols();
-  const compressedV2Response = compress(JSON.stringify(protocols2Data));
-  await storeR2("lite/protocols2", compressedV2Response, true);
-  await storeR2("lite/v2/protocols", JSON.stringify(v2ProtocolData), true, false);
-};
-
-export default wrapScheduledLambda(handler);

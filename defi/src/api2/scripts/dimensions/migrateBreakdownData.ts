@@ -26,7 +26,7 @@ async function runConfig() {
     protocolConfigAll[adapterType] = {}
     const { importModule, protocolAdaptors } = loadAdaptorsData(adapterType)
     for (const { module, displayName, config } of protocolAdaptors) {
-      const adaptor = (await importModule(module)).default
+      const adaptor = await importModule(module)
       if (adaptor.breakdown) console.log(adapterType, module, 'has breakdown', displayName, config?.displayName)
 
     }

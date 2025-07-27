@@ -10,6 +10,7 @@ import * as incentivesData from "./incentives"
 import * as bridgeAggregatorsData from "./bridge-aggregators";
 import * as aggregatorDerivativesData from "./aggregator-derivatives";
 import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
+import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 
 const mapping: any = {
   [AdapterType.DEXS]: dexData,
@@ -23,7 +24,11 @@ const mapping: any = {
   [AdapterType.BRIDGE_AGGREGATORS]: bridgeAggregatorsData,
 }
 
-export const importModule = (adaptorType: AdapterType) => (mod: string) => import(all.imports[adaptorType][mod].moduleFilePath)
+export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
+  const { default: module } = await import(all.imports[adaptorType][mod].moduleFilePath)
+  setModuleDefaults(module)
+  return module
+}
 
 const all = { imports: {} } as { imports: IJSON<IImportsMap> }
 
@@ -42,13 +47,13 @@ function getOtherAdaperTypeId2s(adapterType: AdapterType): Set<string> {
     if (type === adapterType) return;
     if (!mapping[type]) return;
     const imports = getImports(type)
-    const config= mapping[type].config
+    const config = mapping[type].config
     Object.entries(imports).forEach(([adapterKey, adapterObj]) => {
       if (!config[adapterKey]) return;
       const isChain = adapterObj.module.default?.protocolType === ProtocolType.CHAIN
       const id = isChain ? 'chain#' + config[adapterKey].id : config[adapterKey].id
       otherAdapterIds.add(id)
-      Object.values(config[adapterKey].protocolsData ?? {}).forEach((config: any ) => {
+      Object.values(config[adapterKey].protocolsData ?? {}).forEach((config: any) => {
         otherAdapterIds.add(config.id)
       })
     })

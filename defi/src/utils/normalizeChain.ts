@@ -4076,7 +4076,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "arbitrum",
+      chain: "Arbitrum",
       types: ["L3"]
     },
     chainId: 228,

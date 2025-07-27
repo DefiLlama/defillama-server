@@ -14,7 +14,7 @@ test("Dimensions: no repeated ids", async () => {
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     const ids = new Set();
     for (const value of Object.values(map)) {
-      if (value.enabled === false || chainIdSet.has(value.id)) continue;
+      if (chainIdSet.has(value.id)) continue;
       if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
       expect(ids).not.toContain(value.id);
       ids.add(value.id);
@@ -26,7 +26,7 @@ test("Dimensions: no unknown ids", async () => {
   let failed = false;
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     for (const value of Object.values(map)) {
-      if (value.enabled === false ||  chainIdSet.has(value.id) || protocolsById[value.id]) continue;
+      if (chainIdSet.has(value.id) || protocolsById[value.id]) continue;
       console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
       failed = true
     }

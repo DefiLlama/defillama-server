@@ -18,17 +18,6 @@ interface INumOfProtocolsPerChain {
   [protocol: string]: number;
 }
 
-interface IExtraPropPerChain {
-  [chain: string]: {
-    [prop: string]: {
-      tvl: number;
-      tvlPrevDay?: number;
-      tvlPrevWeek?: number;
-      tvlPrevMonth?: number;
-    };
-  };
-}
-
 export const getPrevTvlFromChart = (chart: any, daysBefore: number) => {
   return chart[chart.length - 1 - daysBefore]?.[1] ?? null;
 };
@@ -60,12 +49,11 @@ for (const chain in chainCoingeckoIds) {
     chainsByParent.add(parentChain);
 }
 
+const allCategories = Array.from(categories).concat(Array.from(chainsByParent))
 
 
 let res: IResponse
 let chainMcaps: any = {}
-
-
 
 export async function genFormattedChains() {
   console.time('genFormattedChains')
@@ -100,14 +88,12 @@ export async function genFormattedChains() {
       return {};
     });
 
-  const allCategories = ['Non-EVM', ...Array.from(categories), ...Array.from(chainsByParent)]
-
 
   // generate route files
   const allData = getFormattedChains('All')
   await storeRouteData('/chains2/All', allData)
 
-  for (const category of allCategories) {
+  for (const category of ['All', 'Non-EVM',].concat(allCategories)) {
     try {
       const categoryData = getFormattedChains(category)
       await storeRouteData('/chains2/' + category, categoryData)
@@ -170,58 +156,56 @@ const getFormattedChains = (category: string) => {
 
   // calc no.of protocols present in each chains as well as extra tvl data like staking , pool2 etc
   const numOfProtocolsPerChain: INumOfProtocolsPerChain = {};
-  const extraPropPerChain: IExtraPropPerChain = {};
   res.protocols.forEach((protocol: LiteProtocol) => {
     protocol.chains.forEach((chain) => {
       numOfProtocolsPerChain[chain] = (numOfProtocolsPerChain[chain] || 0) + 1;
     });
-    Object.entries(protocol.chainTvls).forEach(([propKey, propValue]) => {
-      if (propKey.includes("-")) {
-        const prop = propKey.split("-")[1].toLowerCase();
-        const chain = propKey.split("-")[0];
-        if (extraPropPerChain[chain] === undefined) {
-          extraPropPerChain[chain] = {};
-        }
-        if (extraPropPerChain[chain][prop]?.tvl && extraPropPerChain[chain][prop]?.tvlPrevWeek && !extraPropPerChain[chain][prop]?.tvlPrevDay) {
-          extraPropPerChain[chain][prop].tvlPrevDay = extraPropPerChain[chain][prop]?.tvl
-        }
-        extraPropPerChain[chain][prop] = {
-          tvl: (propValue.tvl || 0) + (extraPropPerChain[chain][prop]?.tvl ?? 0),
-          tvlPrevDay: (propValue.tvlPrevDay || 0) + (extraPropPerChain[chain][prop]?.tvlPrevDay ?? 0),
-          tvlPrevWeek: (propValue.tvlPrevWeek || 0) + (extraPropPerChain[chain][prop]?.tvlPrevWeek ?? 0),
-          tvlPrevMonth: (propValue.tvlPrevMonth || 0) + (extraPropPerChain[chain][prop]?.tvlPrevMonth ?? 0),
-        };
-      }
-    });
   });
 
-  // format chains data
-  const tvlData = chainsData.map((d) => d.tvl);
+  function getTvlAggData(allChainData: any, tvlField: string, withChangePercentage = false) {
+    const tvlData = allChainData[tvlField]
+    const tvl = getPrevTvlFromChart(tvlData, 0);
+    const tvlPrevDay = getPrevTvlFromChart(tvlData, 1);
+    const tvlPrevWeek = getPrevTvlFromChart(tvlData, 7);
+    const tvlPrevMonth = getPrevTvlFromChart(tvlData, 30);
+    const response: any = {
+      tvl,
+      tvlPrevDay,
+      tvlPrevWeek,
+      tvlPrevMonth,
+    };
+    if (withChangePercentage) {
+      response.change_1d = getPercentChange(tvl, tvlPrevDay);
+      response.change_7d = getPercentChange(tvl, tvlPrevWeek);
+      response.change_1m = getPercentChange(tvl, tvlPrevMonth);
+    }
+    return response;
+  }
+
   // data set for pie chart and table
   const chainTvls = chainsUnique
     .map((chainName, i) => {
-      const tvl = getPrevTvlFromChart(tvlData[i], 0);
-      const tvlPrevDay = getPrevTvlFromChart(tvlData[i], 1);
-      const tvlPrevWeek = getPrevTvlFromChart(tvlData[i], 7);
-      const tvlPrevMonth = getPrevTvlFromChart(tvlData[i], 30);
+      const data = chainsData[i];
+      const tvlData = getTvlAggData(data, 'tvl', true)
       const geckoId = chainCoingeckoIds[chainName]?.geckoId;
       const mcap = geckoId && chainMcaps?.[`coingecko:${geckoId}`]?.mcap;
-      const mcaptvl = mcap && tvl && mcap / tvl;
+      const mcaptvl = mcap && tvlData.tvl && mcap / tvlData.tvl;
+      const extraTvl: any = {}
+
+      Object.keys(data).forEach((tvlType) => {
+        if (tvlType === 'tvl') return; // skip tvl as it is already processed
+        extraTvl[tvlType]= getTvlAggData(data, tvlType);
+      })
+
 
       return {
-        tvl,
-        tvlPrevDay,
-        tvlPrevWeek,
-        tvlPrevMonth,
+        ...tvlData,
         mcap: mcap || null,
         mcaptvl: mcaptvl || null,
         name: chainName,
         symbol: chainCoingeckoIds[chainName]?.symbol ?? "-",
         protocols: numOfProtocolsPerChain[chainName],
-        extraTvl: extraPropPerChain[chainName] || {},
-        change_1d: getPercentChange(tvl, tvlPrevDay),
-        change_7d: getPercentChange(tvl, tvlPrevWeek),
-        change_1m: getPercentChange(tvl, tvlPrevMonth),
+        extraTvl,
       };
     })
     .sort((a, b) => b.tvl - a.tvl);
@@ -267,7 +251,7 @@ const getFormattedChains = (category: string) => {
 
   return {
     chainsUnique,
-    categories: Array.from(categories).concat(Array.from(chainsByParent)),
+    categories: allCategories,
     chainTvls,
     stackedDataset,
     chainsGroupbyParent,

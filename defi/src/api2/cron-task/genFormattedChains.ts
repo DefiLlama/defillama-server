@@ -267,7 +267,7 @@ const getFormattedChains = (category: string) => {
 
   return {
     chainsUnique,
-    categories,
+    categories: Array.from(categories).concat(Array.from(chainsByParent)),
     chainTvls,
     stackedDataset,
     chainsGroupbyParent,

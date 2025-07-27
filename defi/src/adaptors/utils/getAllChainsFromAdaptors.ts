@@ -1,4 +1,4 @@
-import { Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, BaseAdapter, AdapterType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { getChainDisplayName, normalizedChainReplacements } from "../../utils/normalizeChain";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
@@ -42,8 +42,10 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
     }
 }
 
-export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
-    const methodology = Object.values(adapter)[0]?.meta?.methodology
+export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+    let methodology = (moduleObject as any).methodology
+    if (!methodology)
+        methodology = Object.values(adapter)[0]?.meta?.methodology
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
     if (typeof methodology === 'string') return methodology
     return {

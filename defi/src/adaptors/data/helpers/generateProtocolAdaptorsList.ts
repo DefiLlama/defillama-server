@@ -2,7 +2,7 @@ import protocols, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, BaseAdapter, ProtocolType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName, chainCoingeckoIds } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
@@ -115,7 +115,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             methodologyURL: adapterObj.codePath,
             methodology: undefined
           }
-          const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+          const methodology = getMethodologyDataByBaseAdapter(moduleObject as SimpleAdapter, baseModuleObject, type, infoItem.category)
           if (methodology)
             infoItem.methodology = methodology
           if (versionKey)
@@ -208,7 +208,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey
 
-      const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
+      const methodology = getMethodologyDataByBaseAdapter(moduleObject, baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 

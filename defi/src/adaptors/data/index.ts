@@ -44,12 +44,12 @@ function getOtherAdaperTypeId2s(adapterType: AdapterType): Set<string> {
     const imports = getImports(type)
     const config= mapping[type].config
     Object.entries(imports).forEach(([adapterKey, adapterObj]) => {
-      if (!config[adapterKey]?.enabled) return;
+      if (!config[adapterKey]) return;
       const isChain = adapterObj.module.default?.protocolType === ProtocolType.CHAIN
       const id = isChain ? 'chain#' + config[adapterKey].id : config[adapterKey].id
       otherAdapterIds.add(id)
       Object.values(config[adapterKey].protocolsData ?? {}).forEach((config: any ) => {
-        if (config.enabled) otherAdapterIds.add(config.id)
+        otherAdapterIds.add(config.id)
       })
     })
   })

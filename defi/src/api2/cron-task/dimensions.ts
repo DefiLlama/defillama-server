@@ -265,7 +265,7 @@ async function run() {
       protocol.misc = {
         versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
       };
-      const infoKeys = ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames']
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
       if (info.childProtocols?.length) protocol.info.childProtocols = info.childProtocols.map((child: any) => {
@@ -408,8 +408,6 @@ async function run() {
           // console.log('Using latest record for today', protocolId, protocolName, _protocolData.latest.timestamp, todayRecord.timestamp, protocolLatestRecord)
           protocolLatestRecord = _protocolData.latest
         }
-        // if (!todayRecord && !protocol.info.disabled) todayRecord = _protocolData.latest
-        // if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
         let recordLabel = recordType

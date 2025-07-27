@@ -94,8 +94,6 @@ async function run() {
 
     const summaries = [] as any
     for (const protocolInfo of Object.values(dimensionProtocolMap) as any) {
-      if (protocolInfo.enabled === false || protocolInfo.disabled) continue; // we skip protocols that are disabled
-
       const summary = {} as any
       summaries.push(summary)
       const keys = ['id', 'id2', 'name', 'versionKey', 'protocolType', 'category', 'chain', 'chains', 'module', 'defillamaId']

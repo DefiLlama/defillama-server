@@ -3068,4 +3068,7 @@ export default {
     "angstrom": {
         id: "6483"
     },
+    "apertureSwap": {
+        id: "3554"
+    },
 } as AdaptorsConfig

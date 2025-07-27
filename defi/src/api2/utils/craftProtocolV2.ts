@@ -10,6 +10,8 @@ import {
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
 import { getObjectKeyCount } from ".";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import sluggify from "../../utils/sluggify";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
@@ -34,7 +36,7 @@ export async function craftProtocolV2({
   getCachedProtocolData = getProtocolAllTvlData,
   skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -179,8 +181,10 @@ export async function craftProtocolV2({
   let childProtocolsNames: string[] = [];
   let parentProtocolId = protocolData.parentProtocol;
 
-  if (parentProtocolId) {
-    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
+  if (parentProtocolId && parentProtocolsById[parentProtocolId]) {
+    const parent = parentProtocolsById[parentProtocolId]
+    response.parentProtocolSlug = sluggify(parent as any);
+    parentName = parent.name ?? null;
     childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 
@@ -188,8 +192,9 @@ export async function craftProtocolV2({
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (methodology)
-    response.methodology = methodology;
+  if (restProtocolData.methodology) {
+    response.methodology = restProtocolData.methodology;
+  }
 
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
@@ -199,8 +204,19 @@ export async function craftProtocolV2({
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
 
-  if (deprecated) {
+  if (restProtocolData.deprecated) {
     response.deprecated = true
+  }
+
+  if (restProtocolData.warningBanners) {
+    response.warningBanners = restProtocolData.warningBanners;
+  }
+
+  if (restProtocolData.rugged) {
+    response.rugged = true;
+  }
+  if (restProtocolData.deadUrl) {
+    response.deadUrl = true;
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime

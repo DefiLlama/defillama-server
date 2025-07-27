@@ -6,7 +6,7 @@ import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
 import { ChainCoinGekcoIds } from "../../utils/normalizeChain";
-import { clearOldCacheFolders, getMetadataAll, readHistoricalTVLMetadataFile, readTvlCacheAllFile } from './file-cache'
+import { clearOldCacheFolders, getMetadataAll, readHistoricalTVLMetadataFile, readRouteData, readTvlCacheAllFile } from './file-cache'
 import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
@@ -14,6 +14,7 @@ import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 // import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 import { RUN_TYPE } from "../utils";
+import { updateProtocolMetadataUsingCache } from "../../protocols/data";
 
 export const cache: {
   metadata: {
@@ -23,6 +24,7 @@ export const cache: {
     parentProtocols: any[],
     chainCoingeckoIds: ChainCoinGekcoIds,
     isDoubleCountedProtocol: { [protocolId: string]: boolean },
+    protocolAppMetadata: any,
   },
   mcaps: Record<string, { mcap: number, timestamp: number }>,
   raises: any,
@@ -41,6 +43,11 @@ export const cache: {
   feesAdapterCache: any,
   twitterOverview: any,
   otherProtocolsMap: any,
+  latestHourlyData: {
+    tvl: any,
+    tvlUSD: any,
+    tvlToken: any,
+  },
 } = {
   metadata: {
     protocols: [],
@@ -49,6 +56,7 @@ export const cache: {
     parentProtocols: [],
     isDoubleCountedProtocol: {},
     chainCoingeckoIds: {},
+    protocolAppMetadata: {},
   },
   mcaps: {},
   raises: {},
@@ -67,6 +75,11 @@ export const cache: {
   feesAdapterCache: {},
   twitterOverview: {},
   otherProtocolsMap: {},
+  latestHourlyData: {
+    tvl: {},
+    tvlUSD: {},
+    tvlToken: {},
+  },
 }
 
 const MINUTES = 60 * 1000
@@ -92,6 +105,9 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
       setInterval(tvlProtocolDataUpdate, 20 * MINUTES)
       setInterval(setHistoricalTvlForAllProtocols, 2 * HOUR)
     }
+
+    cache.metadata.protocolAppMetadata = await readRouteData('/config/smol/appMetadata-protocols.json') ?? {}
+    updateProtocolMetadataUsingCache(cache.metadata.protocolAppMetadata)
 
 
   } else if (cacheType === RUN_TYPE.CRON) {
@@ -297,13 +313,22 @@ async function tvlProtocolDataUpdate(cacheType?: string) {
   allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
   allProtocolUSDItems = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true })
   allProtocolTokenItems = await getLatestProtocolItems(hourlyTokensTvl, { filterLast24Hours: true })
-  allProtocolItems.forEach((item: any) => cache.tvlProtocol[item.id] = item.data)
-  allProtocolUSDItems.forEach((item: any) => cache.tvlUSDProtocol[item.id] = item.data)
-  allProtocolTokenItems.forEach((item: any) => cache.tvlTokenProtocol[item.id] = item.data)
+  allProtocolItems.forEach((item: any) => {
+    cache.tvlProtocol[item.id] = item.data
+    cache.latestHourlyData.tvl[item.id] = item.data
+  })
+  allProtocolUSDItems.forEach((item: any) => {
+    cache.tvlUSDProtocol[item.id] = item.data
+    cache.latestHourlyData.tvlUSD[item.id] = item.data
+  })
+  allProtocolTokenItems.forEach((item: any) => {
+    cache.tvlTokenProtocol[item.id] = item.data
+    cache.latestHourlyData.tvlToken[item.id] = item.data
+  })
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
-  return cache.tvlProtocol[protocol.id]
+  return cache.tvlProtocol[protocol.id]  
 }
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {
@@ -312,10 +337,6 @@ export function getLastHourlyTokensUsd(protocol: IProtocol) {
 
 export function getLastHourlyTokens(protocol: IProtocol) {
   return cache.tvlTokenProtocol[protocol.id]
-}
-
-export function checkModuleDoubleCounted(protocol: IProtocol) {
-  return cache.metadata.isDoubleCountedProtocol[protocol.id] === true
 }
 
 export function protocolHasMisrepresentedTokens(protocol: IProtocol) {

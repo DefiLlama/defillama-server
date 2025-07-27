@@ -13,8 +13,9 @@ import {
 import type { IProtocol, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
 import cgSymbolsJson from './utils/symbols/symbols.json'
+import { parentProtocolsById } from "./protocols/parentProtocols";
 
-const cgSymbols: {[id: string]: string } = cgSymbolsJson
+const cgSymbols: { [id: string]: string } = cgSymbolsJson
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -205,6 +206,12 @@ export async function craftProtocolsResponseInternal(
           tokenBreakdowns: includeTokenBreakdowns && lastHourlyTokensUsd ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
           mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
+
+        if (protocol.parentProtocol) {
+          const parentProtocol = parentProtocolsById[protocol.parentProtocol];
+          if (parentProtocol)
+            dataToReturn.parentProtocolSlug = sluggify(parentProtocol as any);
+        }
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
 

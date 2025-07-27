@@ -10,7 +10,6 @@ export default {
     },
   },
   "dexible": {
-    disabled: true,
     startFrom: 1630022400,
     id: "2249",
     parentId: "2249",
@@ -55,7 +54,6 @@ export default {
     id: "3809",
   },
   // "llamaswap": { // duplicate with volume with other aggregators
-  //   enabled: false,
   //   id: "3847",
   // },
   "openocean": {
@@ -165,7 +163,6 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -374,5 +371,11 @@ export default {
   },
   "dzap": {
     id: "6435"
-  }
+  },
+  "rango": {
+    id: "6382"
+  },
+  "metamask": {
+    id: "3031"
+},
 } as AdaptorsConfig;

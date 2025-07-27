@@ -20,12 +20,10 @@ export default {
     "hyperliquid-perp": {
         parentId: "Hyperliquid",
         id: "5507",
-        "enabled": true
     },
     "dydx": {
         parentId: "dYdX",
         id: "144",
-        disabled: true
     },
     "mux-protocol-perps": {
         id: "2254",
@@ -44,7 +42,6 @@ export default {
     },
     "urdex": {
         id: "3085",
-        "enabled": true
     },
     "hmx": {
         id: "2296"
@@ -68,10 +65,9 @@ export default {
     "gains-network": {
         id: "1018"
     },
-    "palmswap": {
-        "enabled": false,
-        id: "3279"
-    },
+    // "palmswap": {
+    //     id: "3279"
+    // },
     "aevo": {
         id: "2797",
         cleanRecordsConfig: {
@@ -83,10 +79,9 @@ export default {
     "rollup-finace-perps": {
         id: "2889",
     },
-    "metavault-derivative": {
-        "enabled": false,
-        id: "1801"
-    },
+    // "metavault-derivative": {
+    //     id: "1801"
+    // },
     "satori": {
         id: "2982",
         cleanRecordsConfig: {
@@ -158,10 +153,9 @@ export default {
             },
         }
     },
-    "tigris": {
-        "enabled": false,
-        id: "3129"
-    },
+    // "tigris": {
+    //     id: "3129"
+    // },
     "paradex": {
         id: "3648",
         cleanRecordsConfig: {
@@ -192,7 +186,6 @@ export default {
         id: "3599",
     },
     "rabbitx": {
-        enabled: true,
         id: "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -299,7 +292,6 @@ export default {
         id: "4045"
     },
     // "blastfutures": { // duplicate with rabbitx fusion
-    //     enabled: false,
     //     id: "4221",
     //     parentId: "RabbitX Fusion",
     //     cleanRecordsConfig: {
@@ -390,7 +382,6 @@ export default {
     },
     "edgeX": {
         id: "4954",
-        "enabled": true,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -490,8 +481,7 @@ export default {
     "vest": {
         id: "4400"
     },
-    // "goosefx_v2": {
-    //     enabled: false, // team asked to have adapter moved to dexs config
+    // "goosefx_v2": { // team asked to have adapter moved to dexs config
     //     id: "5998"
     // },
     "zo": {
@@ -527,7 +517,6 @@ export default {
         },
         "displayName": "GMX - Derivatives V1",
         id: "337",
-        "enabled": true
     },
     "metavault_trade-metavault-derivative": {
         id: "1801"
@@ -535,7 +524,6 @@ export default {
     "morphex-derivatives": {
         "displayName": "Morphex - Derivatives",
         id: "2662",
-        "enabled": true
     },
     "covo-v2-derivatives": {
         "displayName": "Covo V2 - Derivatives",
@@ -551,7 +539,6 @@ export default {
     "level-finance-level-finance-derivative": {
         "displayName": "Level Finance - Derivatives",
         id: "2395",
-        "enabled": true
     },
     "el-dorado-exchange-derivatives": {
         id: "2356",
@@ -564,11 +551,9 @@ export default {
     },
     "vertex-protocol-derivatives": {
         id: "2899",
-        "enabled": true
     },
     "voodoo-trade-derivatives": {
         id: "3792",
-        "enabled": true
     },
     "pinnako-derivatives": {
         id: "3209",
@@ -584,7 +569,6 @@ export default {
         id: "970"
     },
     "grizzly-trade-derivatives": {
-        "disabled": true,
         id: "3301"
     },
     "ktx-derivatives": {
@@ -594,14 +578,12 @@ export default {
         "displayName": "GMX - Derivatives V2",
         id: "3365"
     },
-    "meridian-trade-derivatives": {
-        "enabled": false,
-        id: "3386"
-    },
+    // "meridian-trade-derivatives": {
+    //     id: "3386"
+    // },
     "morphex-old-derivatives": {
         "displayName": "Morphex - Derivatives",
         id: "3483",
-        "enabled": true
     },
     "nether-fi-derivatives": {
         id: "3509"
@@ -623,10 +605,9 @@ export default {
     "swapbased-perps": {
         id: "3373"
     },
-    "derivio-derivatives": {
-        "enabled": false,
-        id: "3759"
-    },
+    // "derivio-derivatives": {
+    //     id: "3759"
+    // },
     "beamex-beamex-perps": {
         id: "3251"
     },
@@ -683,6 +664,20 @@ export default {
     },
     "privex": {
         id: "6419"
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "elys-perp": {
+        id: "6450"
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
+    "ostrich": {
+        id: "6442"
+    },
+    "hibachi": {
+        id: "6467"
     }
-
 } as AdaptorsConfig

@@ -6,7 +6,7 @@ import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
-import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts, hiddenCategoriesFromUISet, } from "./utils/excludeProtocols";
 import protocols from "./protocols/data";
 
 export async function storeGetProtocols({
@@ -76,11 +76,11 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
-        ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
+          ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
         };
       })
     )
-  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
+  ).filter((p) => !hiddenCategoriesFromUISet.has(p.category ?? ""));
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -89,7 +89,7 @@ export async function storeGetProtocols({
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (includeCategoryIntoChainTvl(p.category)) {
+    if (!excludeProtocolInCharts(p.category)) {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 
@@ -169,7 +169,7 @@ export async function storeGetProtocols({
   };
 
   const v2ProtocolData = response
-    .filter((p) => p.category !== "Chain" && p.category !== "CEX")
+    .filter((p) => !hiddenCategoriesFromUISet.has(p.category ?? ""))
     .map((protocol) => ({
       id: protocol.id,
       name: protocol.name,

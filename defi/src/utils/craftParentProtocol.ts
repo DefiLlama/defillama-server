@@ -163,7 +163,7 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

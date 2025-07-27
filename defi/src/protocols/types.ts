@@ -61,7 +61,14 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<Banner>;
 }
+export interface Banner {
+  message: string;
+  until?: number|string; // unix timestamp or "forever" or date string  in 'YYYY-MM-DD' format, 'forever' if the field is not set
+  level: "low" | "alert" | "rug";
+}
+
 
 export interface IParentProtocol {
   id: string;
@@ -85,4 +92,7 @@ export interface IParentProtocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<Banner>;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }

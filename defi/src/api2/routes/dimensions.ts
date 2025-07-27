@@ -162,7 +162,7 @@ export async function getProtocolDataHandler2({
 
   const response: any = { ...info }
 
-  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
+  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'total30d' , 'totalAllTime',]
   summaryKeys.forEach(key => response[key] = summary[key])
 
   if (!excludeTotalDataChart) {

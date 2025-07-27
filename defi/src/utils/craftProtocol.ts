@@ -317,5 +317,14 @@ export default async function craftProtocol({
   if (module.deprecated) {
     response.deprecated = module.deprecated;
   }
+  if (module.warningBanners) {
+    response.warningBanners = module.warningBanners;
+  }
+  if (module.rugged) {
+    response.rugged = module.rugged;
+  }
+  if (module.deadUrl) {
+    response.deadUrl = module.deadUrl;
+  }
   return response;
 }

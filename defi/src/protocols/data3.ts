@@ -407,7 +407,7 @@ const data3_1: Protocol[] = [
       "https://github.com/0xGuard-com/audit-reports/blob/master/Kokomo%20Finance%20Token/Kokomo%20Finance%20Token.pdf",
     ],
     listedAt: 1679573387,
-    rugged: true,
+    rugged: true
   },
   {
     id: "2717",
@@ -601,7 +601,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "aptos",
     cmcId: "21794",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Aptos"],
     forkedFrom: [],
     module: "dummy.js",
@@ -620,7 +620,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "canto",
     cmcId: "21516",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Canto"],
     forkedFrom: [],
     module: "dummy.js",
@@ -1197,7 +1197,7 @@ const data3_1: Protocol[] = [
     twitter: "OnchainTrade",
     audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
     listedAt: 1680201542,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2753",
@@ -1757,7 +1757,13 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "syncdex-finance/index.js",
     twitter: "SyncDex_Finance",
-    listedAt: 1680775139
+    listedAt: 1680775139,
+    warningBanners: [
+      {
+        message: "SyncDEX Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   */
   {
@@ -1898,7 +1904,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "arbitrum",
     cmcId: "11841",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Arbitrum"],
     forkedFrom: [],
     module: "dummy.js",
@@ -1917,7 +1923,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "bitcoin",
     cmcId: "1",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Bitcoin"],
     forkedFrom: [],
     module: "dummy.js",
@@ -1936,7 +1942,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "acala",
     cmcId: "6756",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Acala"],
     forkedFrom: [],
     module: "dummy.js",
@@ -1956,7 +1962,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "moonbeam",
     cmcId: "6836",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Moonbeam"],
     forkedFrom: [],
     module: "dummy.js",
@@ -2291,6 +2297,12 @@ const data3_1: Protocol[] = [
       "https://app.solidproof.io/projects/hashdao",
     ],
     listedAt: 1681133595,
+    warningBanners: [
+      {
+        message: "HashDAO has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2803",
@@ -2877,7 +2889,7 @@ const data3_1: Protocol[] = [
     ],
     twitter: "satoshicoreswap",
     listedAt: 1681436914,
-    rugged: true,
+    rugged: true
   },
   {
     id: "2828",
@@ -3511,7 +3523,7 @@ const data3_1: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://noahark.pro",
-    description: "Best DeFi on EOS  EVM",
+    description: "Bestt DeFi on EOS  EVM",
     chain: "EOS EVM",
     logo: `${baseIconsUrl}/noah-swap.jpg`,
     audits: "2",
@@ -3595,7 +3607,7 @@ const data3_1: Protocol[] = [
     name: "Bonsai Strike",
     address: null,
     symbol: "-",
-    url: "https://bonsai.money",
+    url: "htps://bonsai.money",
     description:
       "Bonsai Strike is the first in a planned series of Defi products on Binance Smart Chain that help users access sustainable and real yield.",
     chain: "Binance",
@@ -4026,7 +4038,7 @@ const data3_1: Protocol[] = [
     twitter: "Avatr_LSD",
     listedAt: 1682275843,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2879",
@@ -4585,6 +4597,12 @@ const data3_1: Protocol[] = [
     module: "swaprum/index.js",
     twitter: "Swaprum",
     listedAt: 1682586609,
+    warningBanners: [
+      {
+        message: "Swaprum has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2904",
@@ -4739,7 +4757,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: ["Hydra"],
+    chains: ["Hydra", "Hydra Chain"],
     module: "hydradex-v3/api.js",
     twitter: "hydra_chain",
     forkedFromIds: ["2198"],
@@ -4749,8 +4767,8 @@ const data3_1: Protocol[] = [
   {
     id: "2911",
     name: "Aboard Exchange",
-    address: null,
-    symbol: "-",
+    address: "0xb0ed164f6e3c6a4153eeb43bf9674955a259ec45",
+    symbol: "ABE",
     url: "https://aboard.exchange",
     description: "Aboard Exchange is a leading order book perpetual DEX live on multi-chains",
     chain: "Arbitrum",
@@ -4768,7 +4786,8 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
     listedAt: 1682688586,
     github: ["Aboard-Exchange"],
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
   {
     id: "2912",
     name: "Onsen Swap",
@@ -5244,6 +5263,7 @@ const data3_1: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "blazestake/index.js",
+    treasury: "blazestake.js",
     twitter: "solblaze_org",
     forkedFrom: [],
     audit_links: ["https://stake-docs.solblaze.org/protocol/audits"],
@@ -5383,7 +5403,8 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1683282600,
     rugged: true,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "2938",
     name: "LuxsFi",
@@ -5980,7 +6001,7 @@ const data3_1: Protocol[] = [
     module: "meld-gold/index.js",
     twitter: "meldgold",
     forkedFrom: [],
-    oracles: ["Chainklink"],
+    oracles: ["Chainlink"],
     listedAt: 1683800481,
   },
   {
@@ -6173,7 +6194,7 @@ const data3_1: Protocol[] = [
     module: "extra/index.js",
     twitter: "extrafi_io",
     forkedFrom: [],
-    oracles: ["TWAP", "Chainlink"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://docs.extrafi.io/extra_finance/leverage-farming/price-feed#price-protection-with-chainlink-price-feed"]} ],
     audit_links: ["https://docs.extrafi.io/extra_finance/audits-and-security"],
     parentProtocol: "parent#extra-finance",
     listedAt: 1684070957,
@@ -6226,7 +6247,7 @@ const data3_1: Protocol[] = [
     name: "Merkl",
     address: "0x31429d1856aD1377A8A0079410B297e1a9e214c2",
     symbol: "ANGLE",
-    url: "https://merkl.angle.money",
+    url: "https://app.merkl.xyz/",
     description:
       "Merkl helps anyone incentivize concentrated liquidity positions in a more efficient way. It allows to customize how rewards are distributed to shape liquidity in specific ways.",
     chain: "Ethereum",
@@ -7821,7 +7842,8 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/BaySwap/audits/blob/main/Bay%20Swap%20Smart%20Contract%20Audit%20Report.pdf"],
     github: ["BaySwap"],
     listedAt: 1685532135,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3048",
     name: "Tranchess Ether",
@@ -9910,7 +9932,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "avalanche-2",
     cmcId: "5805",
-    category: "Chain", // need
+    category: "Canonical Bridge", // need
     chains: ["Avalanche"],
     module: "dummy.js", // need
     twitter: "avax",
@@ -10814,7 +10836,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "sui",
     cmcId: "20947",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "SuiNetwork",
@@ -11706,7 +11728,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "near",
     cmcId: "6535",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Near"],
     module: "dummy.js",
     twitter: null,
@@ -11853,7 +11875,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "metis-token",
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Metis"],
     module: "dummy.js",
     twitter: "MetisDAO",
@@ -12048,7 +12070,7 @@ const data3_1: Protocol[] = [
     twitter: "SkyDex_zksync",
     forkedFrom: [],
     listedAt: 1689589537,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3238",
@@ -12468,6 +12490,12 @@ const data3_1: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/rehold"],
     parentProtocol: "parent#rehold",
     listedAt: 1689773129,
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3253",
@@ -12538,8 +12566,7 @@ const data3_1: Protocol[] = [
       "https://github.com/Horizon-Dex/Audits/blob/a1c7f31238a7b0d3390f37d178d855cf284cdcee/HorizonDEX_SC%20Comparison%20Report_11.07.2023_SA-1644%20(2).pdf",
       "https://github.com/Defimoonorg/Audit-Report/blob/main/Horizon-Dex.pdf",
     ],
-    listedAt: 1689797379,
-    deadUrl: true,  },
+    listedAt: 1689797379,  },
   {
     id: "3256",
     name: "EchoDEX V2",
@@ -12888,7 +12915,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Evmos"],
     module: "dummy.js", // needs
     twitter: "EvmosDAO",
@@ -14476,6 +14503,12 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/MagnateArb/Audits/blob/main/SmartContract_Audit_Solidproof_MagnateProtocol.pdf"],
     github: ["MagnateArb"],
     listedAt: 1691144362,
+    warningBanners: [
+      {
+        message: "Magnate finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3343",
@@ -15895,6 +15928,12 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     github: ["abex-finance"],
     listedAt: 1692265558,
+    warningBanners: [
+      {
+        message: "ABEx Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3405",
@@ -17632,7 +17671,8 @@ const data3_1: Protocol[] = [
     twitter: "polylendxyz",
     github: ["polylendxyz"],
     listedAt: 1693922462,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3485",
     name: "Basetasm Finance",
@@ -19194,7 +19234,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "MantaSwap_",
     listedAt: 1695547555,
-    rugged: true,
+    rugged: true
   },
   {
     id: "3553",
@@ -19410,7 +19450,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "celestia",
     cmcId: "22861",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"], //Celestia
     module: "dummy.js",
     twitter: "CelestiaOrg",
@@ -20562,7 +20602,7 @@ const data3_1: Protocol[] = [
     twitter: "Scroll_1Dex",
     forkedFromIds: ["2197"],
     listedAt: 1697018504,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3614",
@@ -23485,7 +23525,7 @@ const data3_1: Protocol[] = [
     twitter: "LendoraProtocol",
     listedAt: 1699358645,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3746",
@@ -24194,7 +24234,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "arbitrum/index.js",
@@ -24214,7 +24254,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "arbitrumNova/index.js",
@@ -24233,7 +24273,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "Bitcoin"],
     forkedFrom: [],
     module: "avax/index.js",
@@ -24253,7 +24293,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "base/index.js",
@@ -24273,7 +24313,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "linea/index.js",
@@ -24292,7 +24332,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "mantle",
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "mantle/index.js",
@@ -24311,7 +24351,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "metis/index.js",
@@ -24330,7 +24370,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "Base"],
     forkedFrom: [],
     module: "optimism/index.js",
@@ -24349,7 +24389,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "polygonZk/index.js",
@@ -24368,7 +24408,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "scroll/index.js",
@@ -24387,7 +24427,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "starknet",
     cmcId: "22691",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "starknet/index.js",
@@ -24407,7 +24447,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "txBridge/index.js",
@@ -25025,6 +25065,13 @@ const data3_1: Protocol[] = [
     twitter: "SumerMoney",
     audit_links: ["https://docs.sumer.money/security/audits"],
     listedAt: 1700544773,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "3815",
@@ -26056,7 +26103,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "RSK"],
     forkedFrom: [],
     module: "rsk-bridge/index.js",
@@ -26075,7 +26122,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "Binance"],
     forkedFrom: [],
     module: "sovryn-bridge/index.js",
@@ -26500,6 +26547,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     module: "mantle-meth/index.js",
     twitter: "mETHProtocol",
+    treasury: "mantle-meth.js",
     listedAt: 1701703365,
   },
   {
@@ -26938,6 +26986,12 @@ const data3_1: Protocol[] = [
       "https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_glorifinance_v1.0-signed.pdf",
     ],
     listedAt: 1702295229,
+    warningBanners: [
+      {
+        message: "Glori Finance has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "3903",
@@ -27540,7 +27594,7 @@ const data3_1: Protocol[] = [
     treasury: "syncus.js",
     twitter: "Syncus_Fi",
     listedAt: 1702903725,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3930",
@@ -27679,7 +27733,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "boba/index.js",
@@ -27698,7 +27752,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "zksync-lite/index.js",
@@ -27961,6 +28015,13 @@ const data3_1: Protocol[] = [
       AILayer: ["BFBTC"],
     },
     listedAt: 1703178529,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "3948",
@@ -28426,7 +28487,7 @@ const data3_1: Protocol[] = [
     twitter: "ZebraLending",
     audit_links: ["https://github.com/ZebraDAOFinance/AuditReport/blob/main/ZebraDao.pdf"],
     listedAt: 1703765123,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3968",
@@ -28589,7 +28650,7 @@ const data3_1: Protocol[] = [
     module: "venuSwap/index.js",
     twitter: "Venu_Swap",
     listedAt: 1703852744,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "3975",
@@ -28916,7 +28977,8 @@ const data3_1: Protocol[] = [
     twitter: "AbstraDEX",
     github: ["AbstraDex"],
     listedAt: 1704488220,
-    deadUrl: true,  },
+    deadUrl: true
+  },
   {
     id: "3990",
     name: "Interlay Lending",
@@ -29893,7 +29955,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "manta-network",
     cmcId: "13631",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "manta-pacific/index.js",
@@ -30604,13 +30666,13 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4063",
-    name: "Peapods Options",
+    name: "Peapods Finance",
     address: "0x02f92800f57bcd74066f5709f1daa1a4302df875",
     symbol: "PEAS",
     url: "https://peapods.finance",
     description: "Peapods Finance allows you to earn real yield on any liquid asset through market volatility.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/peapods-options.png`,
+    logo: `${baseIconsUrl}/peapods-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "peapods-finance",
@@ -31811,7 +31873,7 @@ const data3_1: Protocol[] = [
     name: "SYNO Finance",
     address: "arbitrum:0x577fd586c9e6ba7f2e85e025d5824dbe19896656",
     symbol: "SYNO",
-    url: "https://www.syno.finance/",
+    url: "https://syno.finance/",
     description: "SYNO is a truly cross-chain money market built on the Wormhole xChain technology stack",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/syno-finance.png`,
@@ -31827,7 +31889,7 @@ const data3_1: Protocol[] = [
     twitter: "synofinance",
     github: ["SynonymFinance"],
     listedAt: 1707281721,
-    deadUrl: true,  },
+  },
   {
     id: "4113",
     name: "HiveSwap V3",
@@ -32527,7 +32589,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Bitcoin", "Ethereum", "Polygon", "Binance"],
     module: "bsquared/index.js",
     twitter: "BSquaredNetwork",
@@ -32628,14 +32690,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4146",
-    name: "karpatkey",
-    address: null,
-    symbol: "-",
-    url: "https://www.karpatkey.com/",
+    name: "kpk",
+    previousNames: ["karpatkey"],
+    address: "0xbf3f63d8ac133b16d7d50c015036b33219dd8d23",
+    symbol: "KPK",
+    url: "https://kpk.io/",
     description:
       "We help decentralised organisations to preserve capital through state-of-the-art risk management and trust-minimised DeFi treasury execution.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/karpatkey.jpg`,
+    logo: `${baseIconsUrl}/kpk.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -32644,7 +32707,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "karpatkey.js",
-    twitter: "karpatkey",
+    twitter: "kpk_io",
     forkedFrom: [],
     github: ["karpatkey"],
   },
@@ -34706,7 +34769,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "blast-bridge/index.js",
     twitter: "Blast_L2",
@@ -34725,7 +34788,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "mode",
     cmcId: "31016",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "mode/index.js",
     twitter: "modenetwork",
@@ -34752,6 +34815,13 @@ const data3_2: Protocol[] = [
     audit_links: ["https://dubiw3zgo51jg.cloudfront.net/zircuit_audit_final.pdf"],
     forkedFrom: [],
     listedAt: 1709594345,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "4239",
@@ -35253,16 +35323,16 @@ const data3_2: Protocol[] = [
   {
     id: "4261",
     name: "Gomble Games",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xd8002d4bd1d50136a731c141e3206d516e6d3b3d",
+    symbol: "GM",
     url: "https://gomblegames.com",
     description: "Strategic Casual Game Studio",
     chain: "Binance",
     logo: `${baseIconsUrl}/gomble-games.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "gomble",
+    cmcId: "36123",
     category: "Farm",
     chains: ["Binance"],
     module: "gomble/index.js",
@@ -35983,11 +36053,11 @@ const data3_2: Protocol[] = [
     name: "Trojan",
     address: null,
     symbol: "-",
-    url: "https://t.me/solana_unibot",
+    url: "https://trojanonsolana.com/",
     description:
       "Trojan is a Telegram trading bot with a wide range of features including a bespoke live price feed, limit and DCA orders, copy trading and sniping",
     chain: "Solana",
-    logo: `${baseIconsUrl}/trojan.png`,
+    logo: `${baseIconsUrl}/trojan.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -35996,7 +36066,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "PrimordiumGroup",
+    twitter: "TrojanOnSolana",
   },
   {
     id: "4294",
@@ -36941,7 +37011,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "kinto/index.js",
@@ -38014,7 +38084,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "rss3/index.js",
@@ -39240,7 +39310,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Base"],
     module: "degen-bridge/index.js",
     twitter: "degentokenbase",
@@ -39259,7 +39329,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "pulsechain-bridge/index.js",
     twitter: "PulsechainCom",
@@ -39278,7 +39348,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "ronin",
     cmcId: "14101",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "ronin-bridge/index.js",
     twitter: "Ronin_Network",
@@ -39583,7 +39653,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
     github: ["leaperfinance"],
     listedAt: 1712585675,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "4455",
@@ -40046,6 +40116,12 @@ const data3_2: Protocol[] = [
     module: "shibanova/index.js",
     twitter: "shibanovadefi",
     listedAt: 1712934494,
+    warningBanners: [
+      {
+        message: "ShibaNova has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4475",
@@ -41948,15 +42024,15 @@ const data3_2: Protocol[] = [
   }, */
   {
     id: "4561",
-    name: "Ebisu Finance V1",
+    name: "Ebisu V1",
     //previousNames: ["Ebisu Finance"],
     address: null,
     symbol: "-",
-    url: "https://ebisu.finance/",
+    url: "https://ebisu.money/",
     description:
-      "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan",
+      "(Deprecated) Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ebisu-finance.png`,
+    logo: `${baseIconsUrl}/ebisu-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -41969,7 +42045,7 @@ const data3_2: Protocol[] = [
     twitter: "Ebisu_Finance",
     audit_links: [
       "https://github.com/pashov/audits/blob/master/team/pdf/Ebisu-security-review.pdf",
-      "https://ebisu.finance/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
+      "https://ebisu.money/audits/PeckShield-Audit-Report-EbisuVault-v1.0.pdf",
     ],
     parentProtocol: "parent#ebisu-finance",
     listedAt: 1714835461,
@@ -42972,6 +43048,13 @@ const data3_2: Protocol[] = [
     ],
     github: ["yieldnest"],
     listedAt: 1715748037,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions (coBTC) that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "4607",
@@ -43072,7 +43155,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "solana",
     cmcId: "5426",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Solana"],
     forkedFrom: [],
     module: "dummy.js",
@@ -44663,6 +44746,12 @@ const data3_2: Protocol[] = [
     module: "daiko-dex/index.js",
     twitter: "DaikoDex",
     listedAt: 1716818551,
+    warningBanners: [
+      {
+        message: "DaikoDEX has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4684",
@@ -44852,7 +44941,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "taiko",
     cmcId: "31525",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Taiko"],
     forkedFrom: [],
     module: "taiko-bridge/index.js",
@@ -44941,7 +45030,14 @@ const data3_2: Protocol[] = [
     module: "pell/index.js",
     twitter: "Pell_Network",
     listedAt: 1717010539,
-    audit_links:["https://github.com/0xPellNetwork/restaking-contracts/blob/main/audits/PeckShield-Audit-Report-PellNetwork-v1.0.pdf"]
+    audit_links:["https://github.com/0xPellNetwork/restaking-contracts/blob/main/audits/PeckShield-Audit-Report-PellNetwork-v1.0.pdf"],
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "4697",
@@ -47162,7 +47258,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "dream-machine-token",
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "sanko-bridge/index.js",
     twitter: "SankoGameCorp",
@@ -47183,7 +47279,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "xai-blockchain",
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "xai-bridge/index.js",
     twitter: "XAI_GAMES",
@@ -47982,6 +48078,13 @@ const data3_2: Protocol[] = [
     twitter: "DesynLab",
     parentProtocol: "parent#desyn-protocol",
     listedAt: 1719915986,
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "4833",
@@ -49325,7 +49428,7 @@ const data3_2: Protocol[] = [
     twitter: "Sorta_Finance",
     audit_links: ["https://github.com/DeHacker-io/audits_public/blob/main/Sorta%20Finance.pdf"],
     listedAt: 1721214305,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "4893",
@@ -49981,6 +50084,12 @@ const data3_2: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/1kUmOPM8J63JmzM20H1Cg38oAfPRBJwLy/view?pli=1"],
     github: ["pumpbtc"],
     listedAt: 1721914007,
+    warningBanners: [
+      {
+        message: "PumpBTC has been reported for using unbacked assets to artificially inflate its own and other protocols TVL metrics. Proceed with caution.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "4923",
@@ -50287,7 +50396,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "Base", "Polygon", "Arbitrum", "Optimism"],
     forkedFrom: [],
     module: "reya-bridge/index.js",
@@ -51933,7 +52042,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "lisk",
     cmcId: "1214",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "lisk-l2/index.js",
@@ -56021,7 +56130,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://xapp.folks.finance",
     description:
-      "Hub and spoke cross chain lending protocol.",
+      "Crosschain DeFi Hub offering crosschain lending and borrowing.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/folks-finance-xchain.png`,
     audits: "2",
@@ -56446,7 +56555,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "mint-chain/index.js",
     twitter: "superbridgeapp",
@@ -56762,7 +56871,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "suibridge/index.js",
     twitter: "SuiNetwork",
@@ -56894,7 +57003,7 @@ const data3_2: Protocol[] = [
     twitter: "allo_xyz",
     forkedFrom: [],
     listedAt: 1728896668,
-    deadUrl: true,  },
+  },
   {
     id: "5239",
     name: "Taiko Drips",
@@ -58615,6 +58724,14 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "esbtc/index.js",
     twitter: "exSatNetwork",
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+        
+      }
+    ],
     audit_links: ["https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2FWh5J6fh5FmaihWpA71nD%2Fblocksec_exsat_consensus_v1.0-signed.pdf?alt=media&token=d1028151-6fe5-46d6-aca6-ce63ee8c11d1", "https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2F3ozeFgUDhoOLswv7G8WF%2Fblocksec_exsat_evm_v1.0-signed.pdf?alt=media&token=a1333a1b-05a8-4378-8ab0-0bfff5a75671",],
     listedAt: 1730720237
   },
@@ -59223,14 +59340,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5344",
-    name: "BitFLUX",
+    name: "Molten",
     address: null,
     symbol: "-",
-    url: "https://bitflux.finance",
+    url: "https://molten.finance/",
     description:
-      "BitFLUX makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
+      "Molten makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
     chain: "CORE",
-    logo: `${baseIconsUrl}/bitflux.jpg`,
+    logo: `${baseIconsUrl}/molten.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -59238,9 +59355,9 @@ const data3_2: Protocol[] = [
     category: "Dexs",
     chains: ["CORE"],
     module: "bitflux/index.js",
-    twitter: "BitFluxFi",
+    twitter: "moltendex",
     forkedFrom: [],
-    audit_links: ["https://docs.bitflux.finance/resources/security"],
+    audit_links: ["https://docs.molten.finance/stable-amm/security"],
     listedAt: 1731410636
   },
   {
@@ -59476,8 +59593,8 @@ const data3_2: Protocol[] = [
   {
     id: "5355",
     name: "based AI",
-    address: null,
-    symbol: "-",
+    address: "0x44971abf0251958492fee97da3e5c5ada88b9185",
+    symbol: "BASEDAI",
     url: "https://basedai.fi",
     description:
       "Based AI is a decentralized protocol merging AI with DeFi, offering unique farming opportunities and rewards, including the use of meme tokens like Pepecoin.",
@@ -59485,8 +59602,8 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/based-ai.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "basedai",
+    cmcId: "30584",
     category: "Farm",
     chains: ["Ethereum"],
     module: "basedai/index.js",
@@ -59921,7 +60038,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "zircuit",
     cmcId: "29711",
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Zircuit"],
     forkedFrom: [],
     module: "zircuit-chain/index.js",
@@ -60081,7 +60198,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "coredaoorg",
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum", "Binance", "Polygon", "Optimism", "Avalanche"],
     module: "core-bridge/index.js",
     twitter: "Coredao_Org",
@@ -62804,7 +62921,13 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "sboomfi/index.js",
     twitter: "SboomFi",
-    listedAt: 1734441511
+    listedAt: 1734441511,
+    warningBanners: [
+      {
+        message: "Sboom has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "5511",
@@ -62862,7 +62985,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "ink/index.js",
@@ -63352,7 +63475,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "swellchain/index.js",
@@ -63665,7 +63788,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Canonical Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "cronos-zk/index.js",

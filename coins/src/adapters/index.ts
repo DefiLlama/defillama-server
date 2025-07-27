@@ -84,6 +84,7 @@ export default {
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
   glpDerivs: require("./yield/glpDerivs"),
+  glv: require("./yield/glv"),
   pendle: require("./yield/pendle"),
   penpie: require("./yield/pendle"),
   phux: require("./markets/phux"),
@@ -134,6 +135,7 @@ export default {
   stakeDao: require("./yield/stakeDao"),
   kodiak: require("./markets/kodiak"),
   kSTRK: require("./other/kSTRK"),
+  xSTRK: require("./other/xSTRK"),
   jtoDerivs: require("./solana/jtoDerivs"),
   pac: require("./rwa/thepac"),
   xu3o8: require("./rwa/xu3o8"),
@@ -158,4 +160,5 @@ export default {
   quipuswap: require("./markets/quipuswap"),
   reya: require("./yield/reya"),
   bluefin: require("./markets/bluefin"),
+  harvest: require("./yield/harvest"),
 };

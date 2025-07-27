@@ -20501,7 +20501,7 @@ const data4: Protocol[] = [
     name: "Angstrom",
     address: null,
     symbol: "-",
-    url: "https://angstrom.xyz//",
+    url: "https://angstrom.xyz/",
     description: "Angstrom is a hybrid DEX built on Uniswap V4 that uses app-level sequencing to internalize MEV, allowing LPs to earn arbitrage profits instead of external actors",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/angstrom.jpg`,
@@ -20516,6 +20516,27 @@ const data4: Protocol[] = [
     twitter: "angstromxyz",
     github: ["SorellaLabs"],
     listedAt: 1753556082
+  },
+  {
+    id: "6484",
+    name: "Cabal",
+    address: null,
+    symbol: "-",
+    url: "https://thecabal.xyz",
+    description: "Cabal is an incentive layer that automates governance, staking, and reward capture. Users deposit base assets such as INIT or LP tokens to earn boosted yields from governance bribes and staking",
+    chain: "Initia",
+    logo: `${baseIconsUrl}/cabal.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Governance Incentives",
+    chains: ["Initia"],
+    forkedFromIds: [],
+    module: "cabal/index.js",
+    twitter: "CabalVIP",
+    github: ["Cabal-VIP"],
+    listedAt: 1753650153
   },
 ];
 export default data4;

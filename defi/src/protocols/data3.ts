@@ -57283,7 +57283,7 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/truemarkets.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "true",
     cmcId: null,
     category: "Prediction Market",
     chains: ["Base"],

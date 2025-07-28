@@ -20605,7 +20605,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.silo.finance/docs/audits"],
     listedAt: 1753725001
   },
-    {
+  {
     id: "6488",
     name: "Elyx Finance",
     address: null,
@@ -20624,6 +20624,49 @@ const data4: Protocol[] = [
     module: "elyx/index.js",
     twitter: "ElyxFinance",
     listedAt: 1753725007
+  },
+  {
+    id: "6489",
+    name: "Bitzy",
+    address: null,
+    symbol: "-",
+    url: "https://bitzy.app/",
+    description: "A Bitcoin DEX powered by Botanix",
+    chain: "Botanix",
+    logo: `${baseIconsUrl}/bitzy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Botanix"],
+    forkedFromIds: [],
+    module: "bitzy/index.js",
+    twitter: "bitzy_app",
+    audit_links: ["https://github.com/bitzy-app/audit-reports/blob/main/Bailsec%20-%20Bitzy%20-%20Update%20Audit%20(differential)%20-%20Final%20Report.pdf"],
+    listedAt: 1753725965
+  },
+  {
+    id: "6490",
+    name: "Nami Index",
+    address: null,
+    symbol: "-",
+    url: "https://namifi.app/nami-index",
+    description: "Nami Index is a decentralized protocol on Thorchain, built for issuing fully backed on-chain asset indexes",
+    chain: "Thorchain",
+    logo: `${baseIconsUrl}/nami-index.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Thorchain"],
+    forkedFromIds: [],
+    module: "nami-index/index.js",
+    twitter: "Nami_Index_",
+    audit_links: ["https://www.halborn.com/audits/thorchain/nami-protocol-rujira-index-product-0612c8"],
+    github: ["NAMIProtocol"],
+    listedAt: 1753725971
   },
 ];
 export default data4;

@@ -74,7 +74,7 @@ async function refillAdapter() {
   }
 
   protocolToRun = protocol.displayName
-  const adaptor: Adapter = (await importModule(protocol.module)).default;
+  const adaptor: Adapter = await importModule(protocol.module)
   const adapterVersion = adaptor.version
   const isVersion2 = adapterVersion === 2
 

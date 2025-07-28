@@ -1310,6 +1310,11 @@
     }
   },
   "bsc": {
+    "0xd7ee80546eb6da5ece3546f11c618a1e1158cc7a": {
+      "decimals": "18",
+      "symbol": "rtCIC",
+      "to": "coingecko#cicada-finance"
+    },
     "0x8b98563d66b74e5a644bff78fc72c86bba847a29": {
       "decimals": "18",
       "symbol": "SY-clisBNB",

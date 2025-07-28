@@ -3868,4 +3868,7 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
+    "definitive-v2": {
+        id: "4257"
+    },
 } as AdaptorsConfig

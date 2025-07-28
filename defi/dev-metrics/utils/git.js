@@ -103,7 +103,7 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
 
     setRepoLogFile(orgName, repoName, commitData)
   } catch (error) {
-    sdk.log('Error pulling/cloning repository:', orgName, repoData.name, error);
+    sdk.log('Error pulling/cloning repository:', orgName, repoData.name, error?.message || error);
   }
 }
 

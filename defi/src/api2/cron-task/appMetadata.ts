@@ -7,7 +7,7 @@
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 
 import fetch from "node-fetch";
-import { pullDevMetricsData } from "./githubMetrics";
+// import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
@@ -57,7 +57,7 @@ export async function storeAppMetadata() {
   console.log("starting to build metadata for front-end");
   try {
     await pullRaisesDataIfMissing();
-    await pullDevMetricsData();
+    // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);

@@ -22,14 +22,14 @@ export async function harvest(timestamp: number) {
   Object.keys(res).map((deployment) => {
     if (deployment == "updatedAt") return;
     Object.values(res[deployment]).map((vault: any) => {
-      const { chain, decimals, id, vaultAddress, usdPrice } = vault;
+      const { chain, decimals, vaultDecimals, id, vaultAddress, usdPrice } = vault;
 
       addToDBWritesList(
         writes,
         chainIdMap[chain],
         vaultAddress,
         usdPrice,
-        decimals,
+        vaultDecimals ?? decimals,
         `harvest-${id}`,
         timestamp,
         "harvest",

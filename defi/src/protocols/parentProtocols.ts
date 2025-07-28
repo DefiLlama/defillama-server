@@ -7533,6 +7533,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["pangolindex"],
     governanceID: ["snapshot:pangolindex.eth"],
   },
+  {
+    id: "parent#molten",
+    name: "Molten",
+    url: "https://molten.finance/",
+    description: "Molten makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
+    logo: `${baseIconsUrl}/molten.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "moltendex",
+    github: ["MoltenFi"],
+  },
 ];
 
 export default parentProtocols;

@@ -59340,14 +59340,15 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5344",
-    name: "Molten",
+    name: "Molten V3",
+    // previous Molten
     address: null,
     symbol: "-",
     url: "https://molten.finance/",
     description:
       "Molten makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
     chain: "CORE",
-    logo: `${baseIconsUrl}/molten.png`,
+    logo: `${baseIconsUrl}/molten-v3.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -59358,6 +59359,7 @@ const data3_2: Protocol[] = [
     twitter: "moltendex",
     forkedFrom: [],
     audit_links: ["https://docs.molten.finance/stable-amm/security"],
+    parentProtocol: "parent#molten",
     listedAt: 1731410636
   },
   {

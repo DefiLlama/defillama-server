@@ -1,14 +1,10 @@
 import { ChainApi } from "@defillama/sdk";
-import { getLogs } from "../../../utils/cache/getLogs";
-import { CoinData, Write } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import PromisePool from "@supercharge/promise-pool";
-import { wrappedGasTokens } from "../../utils/gasTokens";
-import { nullAddress } from "../../../utils/shared/constants";
 import { getConfig } from "../../../utils/cache";
 
 export default async function getTokenPrices(
@@ -56,7 +52,7 @@ export default async function getTokenPrices(
     allAssetInfos.map((info: any) => info.assetAddress)
   )
 
-  const yieldTokenDataArray: CoinData[] = await getTokenAndRedirectData(
+  const yieldTokenDataMap = await getTokenAndRedirectDataMap(
     [
       ...new Set(allYieldTokenDataArray
         )
@@ -67,11 +63,11 @@ export default async function getTokenPrices(
 
   const allSyPrices = allYieldTokens.map((t: string, i: number) => {
     const remap = scaleMapping.get(t) ?? t;
-    const data = yieldTokenDataArray.find((d: CoinData) => d.address === remap);
+    const data = yieldTokenDataMap[remap]
 
     if (!data) {
 
-      const dataAsset = yieldTokenDataArray.find((d: CoinData) => d.address === allAssetInfos[i].assetAddress);
+      const dataAsset = yieldTokenDataMap[allAssetInfos[i].assetAddress]
       if (!dataAsset) {
         return undefined;
       }
@@ -128,7 +124,12 @@ export default async function getTokenPrices(
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
       if (!syPrice || !allPtRates[i]) return;
-      const ptPrice = syPrice * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+
+      const ptPrice = (assetPrice ?? syPrice) * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+
       addToDBWritesList(
         writes,
         chain,
@@ -186,7 +187,11 @@ export default async function getTokenPrices(
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
       if (!syPrice || !allYtRates[i]) return;
-      const ytPrice = syPrice * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+
+      const ytPrice = (assetPrice ?? syPrice) * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,

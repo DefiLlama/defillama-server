@@ -7580,6 +7580,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["parallel-protocol","mimo-capital"],
     governanceID: ["snapshot:mimo.eth"],
     stablecoins: ["parallel"],
+    treasury: "mimo-protocol.js",
   },
 ];
 

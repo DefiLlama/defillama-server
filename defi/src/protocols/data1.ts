@@ -3138,7 +3138,6 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
-    treasury: "mimo-protocol.js",
     twitter: "ParallelMoney",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],

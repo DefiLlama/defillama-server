@@ -130,7 +130,7 @@ async function run() {
 
 
     async function pullChangedFromDBAndAddToCache() {
-      let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 5 * 24 * 60 * 60 : 0 // 5 days ago
+      let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 1 * 60 * 60 : 0 // 1 hour ago
       const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
 
       results.forEach((result: any) => {

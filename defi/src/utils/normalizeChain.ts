@@ -4461,7 +4461,15 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "hydrachainorg",
     chainId: 4488
-  }
+  },
+  "Provenance": {
+    geckoId: "hash-2",
+    symbol: "HASH",
+    cmcId: "19960",
+    categories: ["Cosmos"],
+    twitter: "provenancefdn",
+    url: "https://www.provenance.io/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

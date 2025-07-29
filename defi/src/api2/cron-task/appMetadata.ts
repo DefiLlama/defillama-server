@@ -630,6 +630,7 @@ async function _storeAppMetadata() {
       }
     }
 
+    const chainProtocolCount: any = {};
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
       .reduce((r: any, k) => {
@@ -637,6 +638,10 @@ async function _storeAppMetadata() {
         if (protocolInfoMap[k]) {
           r[k].displayName = protocolInfoMap[k].name;
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
+
+          r[k].chains.forEach((chain: any) => {
+            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1
+          });
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
@@ -683,6 +688,7 @@ async function _storeAppMetadata() {
       chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name);
       if (!chainNameToIdMap[chain.name])
         console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`);
+      chain.protocolCount = chainProtocolCount[chain.name] ?? 0;
     }
 
     await storeRouteData("/config/smol/appMetadata-chains.json", sortedChainData);

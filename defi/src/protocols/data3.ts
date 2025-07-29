@@ -57275,8 +57275,8 @@ const data3_2: Protocol[] = [
   {
     id: "5251",
     name: "Truemarkets",
-    address: null,
-    symbol: "-",
+    address: "base:0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab",
+    symbol: "TRUE",
     url: "https://truemarkets.org",
     description: "News through markets. Bounties on truth.",
     chain: "Base",

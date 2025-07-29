@@ -42719,7 +42719,7 @@ const data3_2: Protocol[] = [
     description: "Origami is a first-in-class automated leverage protocol launching on Ethereum and 🐻",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/origami-finance.jpg`,
-    audits: "17",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

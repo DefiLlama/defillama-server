@@ -1,5 +1,6 @@
 import { call, multiCall } from "@defillama/sdk/build/abi/index";
 import abi from "./abiVaultV3.json";
+import abiRegistry from "./abiRegistry.json";
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -9,9 +10,8 @@ import {
   Result as CallResult,
 } from "../../utils/sdkInterfaces";
 import { CoinData, Write } from "../../utils/dbInterfaces";
-import { getApi, requery } from "../../utils/sdk";
+import { requery } from "../../utils/sdk";
 import getBlock from "../../utils/block";
-import { getLogs } from "../../../utils/cache/getLogs";
 
 const manualVaults: { [chain: string]: string[] } = {
   ethereum: [],
@@ -125,6 +125,89 @@ async function getUsdValues(
 
   return usdValues.filter((v) => v.address !== "fail");
 }
+
+/**
+ * Fetches all endorsed vaults from the registry using getAllEndorsedVaults function
+ * @param chain - The blockchain network
+ * @param block - The block number (optional)
+ * @returns Array of vault addresses and their metadata
+ */
+export async function fetchAllEndorsedVaults(
+  chain: string,
+  block: number | undefined,
+): Promise<VaultKeys[]> {
+  const { target } = registries[chain];
+
+  // Call getAllEndorsedVaults to get all vault addresses
+  const allEndorsedVaults = await call({
+    abi: abiRegistry.getAllEndorsedVaults,
+    target,
+    chain: chain as any,
+    block,
+  });
+
+  // Flatten the 2D array to get all vault addresses
+  const vaultAddresses: string[] = allEndorsedVaults.output.flat();
+
+  // Add manual vaults if any
+  vaultAddresses.push(...manualVaults[chain as keyof typeof manualVaults]);
+
+  // Get token addresses and symbols for all vaults
+  let [{ output: tokens }, { output: symbols }]: MultiCallResults[] =
+    await Promise.all([
+      multiCall({
+        abi: abi.asset,
+        chain: chain as any,
+        calls: vaultAddresses.map((v: string) => ({
+          target: v,
+        })),
+        block,
+        permitFailure: true,
+      }),
+      multiCall({
+        abi: abi.symbol,
+        chain: chain as any,
+        calls: vaultAddresses.map((v: string) => ({
+          target: v,
+        })),
+        block,
+        permitFailure: true,
+      }),
+    ]);
+
+  // Retry failed asset calls
+  await Promise.all(
+    tokens.map(async (t: CallResult, i: number) => {
+      if (t.success == true) return;
+      try {
+        tokens[i] = await call({
+          abi: abi.asset,
+          target: t.input.target,
+          chain,
+          block,
+        });
+      } catch (error) {
+        console.error(`Failed to get asset for vault ${t.input.target}:`, error);
+      }
+    }),
+  );
+
+  // Build vault info array
+  const vaultInfo: VaultKeys[] = vaultAddresses
+    .map((v: string, i: number) => ({
+      address: v,
+      token: {
+        address: tokens[i]?.output || "",
+        symbol: "NA",
+      },
+      symbol: symbols[i]?.output || "Unknown",
+      type: "endorsed",
+    }))
+    .filter((vault) => vault.token.address !== ""); // Filter out vaults with failed asset calls
+
+  return vaultInfo;
+}
+
 async function pushMoreVaults(
   chain: string,
   vaults: string[],
@@ -180,20 +263,8 @@ async function pushMoreVaults(
 export default async function getTokenPricesV3(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
-  const api = await getApi(chain, timestamp);
-  const { target, fromBlock } = registries[chain];
-  const vaultEvents: any[] = await getLogs({
-    api,
-    target,
-    fromBlock,
-    eventAbi:
-      "event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)",
-    onlyArgs: true,
-  });
-
-  const vaultAddresses: string[] = vaultEvents.map((v) => v.vault);
-
-  const vaults = await pushMoreVaults(chain, vaultAddresses, block);
+  // Use the new fetchAllEndorsedVaults function instead of event scanning
+  const vaults = await fetchAllEndorsedVaults(chain, block);
 
   const coinsData = await getTokenAndRedirectDataMap(
     vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),

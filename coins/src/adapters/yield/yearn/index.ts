@@ -7,6 +7,9 @@ export function yearn(timestamp: number = 0) {
     getTokenPrices("base", timestamp),
     getTokenPrices("optimism", timestamp),
     getTokenPricesV3("ethereum", timestamp),
+    getTokenPricesV3("base", timestamp),
+    getTokenPricesV3("arbitrum", timestamp),
+    getTokenPricesV3("polygon", timestamp),
     getTokenPricesV3("katana", timestamp),
   ]);
 }

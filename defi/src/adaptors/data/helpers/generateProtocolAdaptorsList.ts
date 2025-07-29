@@ -64,7 +64,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
     if ('adapter' in moduleObject) {
       if (!protocolId) return
       dexFoundInProtocolsArr.push(list[protocolId])
-      baseModuleObject = moduleObject.adapter
+      baseModuleObject = moduleObject.adapter!
     }
     else if ('breakdown' in moduleObject) {
       const protocolsData = config?.[adapterKey]?.protocolsData
@@ -160,7 +160,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
         if (!protocolId) throw new Error(`No protocol id found for ${adapterKey}`)
         protocol = list[protocolId]
-        baseModuleObject = moduleObject.adapter
+        baseModuleObject = moduleObject.adapter!
         chains = getChainsFromBaseAdapter(baseModuleObject)
 
 

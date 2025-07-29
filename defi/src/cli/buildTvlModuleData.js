@@ -18,7 +18,7 @@ fs.writeFileSync(adaptersFile, JSON.stringify(data))
 //Replace all fuctions with mock functions in an object all the way down
 function mockFunctions(obj) {
   if (typeof obj === "function") {
-    return 'llamaMockedTVLFunction'
+    return '_lmtf'  // llamaMockedTVLFunction
   } else if (typeof obj === "object") {
     Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
   }

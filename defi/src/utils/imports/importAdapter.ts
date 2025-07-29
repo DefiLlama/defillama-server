@@ -35,10 +35,12 @@ function mockTvlFunction() {
 
 // code to replace function string with mock functions in an object all the way down
 function mockFunctions(obj: any) {
-    if (obj === "llamaMockedTVLFunction") {
+    // disabling the unmocking block as we never use it
+    
+    /* if (obj === "_lmtf") {  // llamaMockedTVLFunction
         return mockTvlFunction
     } else if (typeof obj === "object") {
         Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-    }
+    } */
     return obj
 }

@@ -11048,5 +11048,12 @@
       "symbol": "INIT",
       "to": "coingecko#initia"
     }
+  }, 
+  "eventum": {
+    "0xC9b68d8ab057b52785cF0e8e983A2eaFE6858979": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
   }
 }

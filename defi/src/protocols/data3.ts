@@ -42724,7 +42724,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Leveraged Farming",
-    chains: ["Ethereum", "Arbitrum"],
+    chains: ["Ethereum", "Berachain"],
     forkedFrom: [],
     module: "origami/index.js",
     twitter: "origami_fi",

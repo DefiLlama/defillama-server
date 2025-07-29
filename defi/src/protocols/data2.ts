@@ -20802,7 +20802,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "ghostmarket",
     cmcId: "17454",
-    category: "Liquid Staking",
+    category: "NFT Marketplace",
     chains: ["NEO"],
     module: "ghostmarket.js",
     twitter: "ghostmarketio",

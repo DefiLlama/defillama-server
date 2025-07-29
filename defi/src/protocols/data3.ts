@@ -36756,6 +36756,7 @@ const data3_2: Protocol[] = [
     twitter: "ArmadaFi",
     github: ["mithraiclabs"],
     listedAt: 1710856979,
+    deadUrl: true,
   },
   {
     id: "4325",

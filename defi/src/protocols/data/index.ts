@@ -58,6 +58,8 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
   if (!protocol.address && childAddress) protocol.address = childAddress
 })
 
+type DateString = string | number;
+type Hallmark = [DateString, string] | [[DateString, DateString], string];
 
 export type _InternalProtocolMetadata = {
   id: string;
@@ -70,6 +72,7 @@ export type _InternalProtocolMetadata = {
   isDead: boolean;
   misrepresentedTokens: boolean;
   methodology?: string;
+  hallmarks?: Hallmark[];
   hasChainSlug: (chainSlug: string) => boolean;
 }
 
@@ -98,10 +101,12 @@ protocols.forEach((protocol: Protocol) => {
       hasTvl: protocol.module !== 'dummy.js',
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
-      // hallmarks, // TODO: add it here, and remove all other usage of importAdapter()
+      hallmarks: module.hallmarks,
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
 
     }
+
+    sortHallmarks(module.hallmarks)
   } catch (e) {
     let eMessage = e instanceof Error ? e.message : String(e);
     if (!eMessage.includes('Could not find adapter for'))
@@ -120,4 +125,15 @@ export function updateProtocolMetadataUsingCache(protocolAppMetadataMap: any) {
     protocolMetadata.hasChainSlug = (chainSlug: string) => chainSlugSet.has(chainSlug);
     protocolMetadata.hasTvl = !!tvl;
   })
+}
+
+export function sortHallmarks(hallmarks: Hallmark[]) {
+  if (!Array.isArray(hallmarks)) return hallmarks;
+  return hallmarks?.sort((a: any, b: any) => {
+    let aTimestamp = a[0];
+    if (Array.isArray(aTimestamp)) aTimestamp = aTimestamp[0]; // range hallmarks have [start, end]
+    let bTimestamp = b[0];
+    if (Array.isArray(bTimestamp)) bTimestamp = bTimestamp[0];
+    return aTimestamp - bTimestamp; // sort by timestamp
+  });
 }

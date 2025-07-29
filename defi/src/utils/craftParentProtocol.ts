@@ -1,5 +1,5 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
@@ -179,20 +179,14 @@ export async function craftParentProtocolInternal({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    const hallmarks: { [date: number]: string } = {};
+    const hallmarks: any = []
     childProtocolsTvls.forEach((module) => {
-      if (module.hallmarks) {
-        module.hallmarks.forEach(([date, desc]: [number, string]) => {
-          if (!hallmarks[date] || hallmarks[date] !== desc) {
-            hallmarks[date] = desc;
-          }
-        });
-      }
+      if (module.hallmarks) 
+        hallmarks.push(...module.hallmarks);
     });
 
-    response.hallmarks = Object.entries(hallmarks)
-      .map(([date, desc]) => [Number(date), desc])
-      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
+    sortHallmarks(hallmarks);
+    response.hallmarks = hallmarks
   }
 
   return response;

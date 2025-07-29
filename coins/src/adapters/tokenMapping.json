@@ -56,10 +56,10 @@
     }
   },
   "berachain": {
-    "0x5bAd2b7A0A2eEE88A4ef05d5470cdEdB0ff948EA": {
+    "0x5bad2b7a0a2eee88a4ef05d5470cdedb0ff948ea": {
       "decimals": "18",
       "symbol": "hOHM",
-      "to": "asset#ethereum:0x1db1591540d7a6062be0837ca3c808add28844f6"
+      "to": "coingecko#origami-hohm"
     },
     "0xD2C41BF4033A83C0FC3A7F58a392Bf37d6dCDb58": {
       "decimals": "18",

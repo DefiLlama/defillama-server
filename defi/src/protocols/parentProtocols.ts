@@ -7545,6 +7545,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "moltendex",
     github: ["MoltenFi"],
   },
+  {
+    id: "parent#figure-markets",
+    name: "Figure Markets",
+    url: "https://www.figuremarkets.com/",
+    description: "Figure Markets is a decentralized custody platform that offers spot trading, crypto-backed lending, and yield-bearing assets like the SEC-registered YLDS token, using MPC wallets and smart contracts to manage user-owned capital across onchain and real-world strategies.",
+    logo: `${baseIconsUrl}/figure-markets.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "figuremarkets",
+  },
 ];
 
 export default parentProtocols;

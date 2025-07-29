@@ -52856,7 +52856,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "SoFi",
     chains: ["Optimism", "Base"],
     forkedFrom: [],
     module: "dummy.js",

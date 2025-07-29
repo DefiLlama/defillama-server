@@ -68,7 +68,6 @@ const importPaths = [
 for (const folderPath of importPaths) {
   try {
     const paths_keys = getDirectories(`${baseFolderPath}/${folderPath}`).filter(key => !excludeKeys.includes(key))
-    console.log(`Writing ${`./src/utils/imports/${folderPath.replace("/", "_")}_adapters.ts`} adapters`, paths_keys.length)
     writeFileSync(`./src/utils/imports/${folderPath.replace("/", "_")}_adapters.ts`,
       `
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";

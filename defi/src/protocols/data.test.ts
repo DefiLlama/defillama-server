@@ -103,7 +103,7 @@ test("valid treasury fields", async () => {
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function'  && _module !== '_lmtf')|| !treasuryKeys.has(key))
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
       }
     }

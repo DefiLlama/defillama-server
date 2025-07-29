@@ -7556,6 +7556,31 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "figuremarkets",
   },
+  {
+    id: "parent#orca",
+    name: "Orca",
+    url: "https://www.orca.so",
+    description: "Solana’s premier liquidity layer.",
+    logo: `${baseIconsUrl}/orca.jpg`,
+    gecko_id: "orca",
+    cmcId: "11165",
+    chains: [],
+    twitter: "orca_so",
+  },
+  {
+    id: "parent#parallel-protocol",
+    name: "Parallel Protocol",
+    url: "https://parallel.best/",
+    description: "Parallel is an over-collateralized, decentralized, modular & capital-efficient stablecoins protocol deployed on several chains. Each stablecoin can be minted against an approved basket of yield generating correlated assets at the oracle price and redeemed for it without cooldown",
+    logo: `${baseIconsUrl}/parallel-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParallelMoney",
+    github: ["parallel-protocol","mimo-capital"],
+    governanceID: ["snapshot:mimo.eth"],
+    stablecoins: ["parallel"],
+  },
 ];
 
 export default parentProtocols;

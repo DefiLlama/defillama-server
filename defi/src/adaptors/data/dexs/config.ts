@@ -3064,4 +3064,10 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
+    "prophet-fun": {
+        id: "6495"
+    },
+    "betterswap": {
+        id: "6118"
+    },
 } as AdaptorsConfig

@@ -89,6 +89,7 @@ async function _storeAppMetadata() {
 
   const [
     tvlData,
+    dimensionsChainAggData,
     yieldsData,
     expensesData,
     treasuryData,
@@ -119,6 +120,7 @@ async function _storeAppMetadata() {
     chainNftsData,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
+    readRouteData("/dimensions/chain-agg-data"),
     fetchJson(YIELD_POOLS_API).then((res) => res.data ?? []),
     fetchJson(PROTOCOLS_EXPENSES_API).catch(() => []),
     readRouteData("/treasuries").catch(() => []),
@@ -673,6 +675,10 @@ async function _storeAppMetadata() {
         };
       }
     }
+
+    Object.keys(finalChains).forEach((chain) => {
+      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {}
+    })
 
     const sortedChainData = Object.keys(finalChains)
       .sort()

@@ -1,7 +1,7 @@
 import { Adapter, BaseAdapter, AdapterType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { getChainDisplayName, normalizedChainReplacements } from "../../utils/normalizeChain";
-import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
+import { getMethodologyByType as getDefaultMethodologyByCategory, } from "../data/helpers/methodology";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
 const chainNameCache: IJSON<string> = {}
@@ -15,37 +15,11 @@ export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
     return Object.keys(moduleAdapter)
 }
 
-export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {
-    if (!adaptor) return []
-    if ("adapter" in adaptor) {
-        return [adaptorModule]
-    } else
-        throw new Error(`Invalid adapter ${adaptorModule}`)
-}
-
-export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
-    if (
-        'adapter' in moduleAdapter
-        || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)
-    ) {
-        const adapter = 'adapter' in moduleAdapter ? moduleAdapter.adapter : Object.values(moduleAdapter.breakdown)[0]
-        const methodology = Object.values(adapter)[0].meta?.methodology
-        if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
-        if (typeof methodology === 'string') return methodology
-        return {
-            ...(getDefaultMethodologyByCategory(category) ?? {}),
-            ...methodology
-        }
-    }
-    else {
-        return getParentProtocolMethodology(displayName, getAllProtocolsFromAdaptor(adaptorKey, moduleAdapter))
-    }
-}
 
 export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
     let methodology = (moduleObject as any).methodology
     if (!methodology)
-        methodology = Object.values(adapter)[0]?.meta?.methodology
+        methodology = Object.values(adapter).map((a: any) => a?.meta?.methodology).find((m: any) => m)
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
     if (typeof methodology === 'string') return methodology
     return {

@@ -268,9 +268,12 @@ async function run() {
       const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
+
+      // while fetching child data try to dimensions metadata if it exists else protocol metadata (comes from data.ts)
       if (info.childProtocols?.length) protocol.info.childProtocols = info.childProtocols.map((child: any) => {
         const res: any = {}
-        infoKeys.forEach(key => res[key] = (child as any)[key])
+        const childDimData: any = dimensionProtocolMap[child.id]
+        infoKeys.forEach(key => res[key] = childDimData?.[key] ?? (child as any)[key])
         return res
       })
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
@@ -622,8 +625,8 @@ async function run() {
 function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   const parentRecords: any = {}
   const { info, } = protocol
-  info.childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
-  info.linkedProtocols = [info.name].concat(info.childProtocols)
+  const childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
+  info.linkedProtocols = [info.name].concat(childProtocols)
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey

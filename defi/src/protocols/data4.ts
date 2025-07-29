@@ -20446,7 +20446,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Reserve Currency",
+    category: "Onchain Capital Allocator",
     chains: ["Cardano"],
     forkedFromIds: [],
     module: "PBG/index.js",

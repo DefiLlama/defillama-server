@@ -64,7 +64,6 @@ export default {
         id: "302"
     },
     "spiritswap": {
-        parentId: "SpiritSwap",
         id: "311"
     },
     "soulswap": {
@@ -89,7 +88,6 @@ export default {
         id: "146"
     },
     "velodrome": {
-        parentId: "Velodrome",
         id: "1799"
     },
     "woofi": {
@@ -109,7 +107,6 @@ export default {
         id: "541"
     },
     "solidly": {
-        parentId: "Solidly Labs",
         id: "1407"
     },
     "orca": {
@@ -130,11 +127,9 @@ export default {
         id: "863"
     },
     "biswap": {
-        parentId: "BiSwap",
         id: "373"
     },
     "apeswap": {
-        parentId: "ApeSwap",
         id: "398"
     },
     "pangolin": {
@@ -1910,11 +1905,9 @@ export default {
         id: "5225"
     },
     "balancer-v3": {
-        parentId: "Balancer",
         id: "5491"
     },
     "plunderswap": {
-        parentId: "PlunderSwap",
         id: "3840"
     },
     "hyperliquid-spot": {

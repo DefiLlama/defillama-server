@@ -6647,6 +6647,11 @@
       "to": "coingecko#babylon",
       "decimals": 6,
       "symbol": "BABY"
+    },
+    "0x4CBE838E2BD3B46247f80519B6aC79363298aa09": {
+      "to": "coingecko#universal-btc",
+      "decimals": 18,
+      "symbol": "satUniBTC"
     }
   },
   "xlayer": {

@@ -7579,7 +7579,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParallelMoney",
     github: ["parallel-protocol","mimo-capital"],
     governanceID: ["snapshot:mimo.eth"],
-    stablecoins: ["parallel"],
+    stablecoins: ["parallel", "parallel-usdp"],
     treasury: "mimo-protocol.js",
   },
 ];

@@ -4685,11 +4685,6 @@
       "decimals": "18",
       "symbol": "LL",
       "to": "coingecko#lightlink"
-    },
-    "0xca7F14F14d975bEFfEe190Cd3cD232a3a988Ab9C": {
-      "decimals": "18",
-      "symbol": "AMP",
-      "to": "coingecko#amped-finance"
     }
   },
   "linea": {
@@ -8873,6 +8868,11 @@
       "to": "coingecko#lombard-staked-btc",
       "decimals": "8",
       "symbol": "scBTC"
+    },
+    "0x4Cae73a23078e7A94D1e828Fa3bABa5080c04FcA": {
+      "decimals": "18",
+      "symbol": "AMPED",
+      "to": "coingecko#amped-finance"
     }
   },
   "vinu": {

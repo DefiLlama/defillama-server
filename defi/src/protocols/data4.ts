@@ -20936,13 +20936,13 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     forkedFromIds: [],
     module: "bracket-lst/index.js",
-    twitter: "etherexfi",
+    twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket",
     listedAt: 1753887804
   },
   {
-    id: "6502",
+    id: "6504",
     name: "Bracket Vaults",
     address: null,
     symbol: "-",
@@ -20958,7 +20958,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     forkedFromIds: [],
     module: "bracket-vaults/index.js",
-    twitter: "etherexfi",
+    twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket",
     listedAt: 1753887812

@@ -11048,5 +11048,17 @@
       "symbol": "INIT",
       "to": "coingecko#initia"
     }
+  },
+  "babylon": {
+    "bbn1j2nchmpuhkq0yj93g84txe33j5lhw2y7p3anhqjhvamqxsev6rmsneu85x": {
+      "decimals": 8,
+      "symbol": "satUniBTC",
+      "to": "coingecko#universal-btc"
+    },
+    "bbn17y5zvse30629t7r37xsdj73xsqp7qsdr7gpnh966wf5aslpn66rq5ekwsz": {
+      "decimals": 8,
+      "symbol": "cBABY",
+      "to": "coingecko#cube-staked-baby"
+    }
   }
 }

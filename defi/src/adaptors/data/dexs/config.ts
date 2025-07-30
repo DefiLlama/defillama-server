@@ -3070,4 +3070,7 @@ export default {
     "betterswap": {
         id: "6118"
     },
+    "orca-wavebreak": {
+        id: "6499"
+    },
 } as AdaptorsConfig

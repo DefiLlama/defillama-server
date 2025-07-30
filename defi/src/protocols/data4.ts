@@ -20963,5 +20963,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#bracket",
     listedAt: 1753887812
   },
+  {
+    id: "6505",
+    name: "Iguana Stableswap",
+    address: null,
+    symbol: "-",
+    url: "https://iguanadex.com",
+    description: "One-stop decentralized trading on Etherlink.",
+    chain: "Etherlink",
+    logo: `${baseIconsUrl}/iguana-stableswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Etherlink"],
+    module: "iguana-stableswap/index.js",
+    twitter: "iguanadex",
+    forkedFromIds: [],
+    parentProtocol: "parent#iguanadex",
+    listedAt: 1753892205
+  },
 ];
 export default data4;

@@ -7594,17 +7594,6 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "etherexfi",
     github: ["etherex-finance"],
   },
-  {
-    id: "parent#bracket",
-    name: "Bracket",
-    url: "https://www.bracket.fi/",
-    description: "Bracket provides infrastructure for managing on- and off-chain yield vaults, with features such as strategy constraints, tokenized shares, and real-time accounting",
-    logo: `${baseIconsUrl}/bracket.jpg`,
-    gecko_id: null,
-    cmcId: null,
-    chains: [],
-    twitter: "bracket_fi",
-  },
 ];
 
 export default parentProtocols;

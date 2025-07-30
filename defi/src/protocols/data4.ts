@@ -20938,7 +20938,7 @@ const data4: Protocol[] = [
     module: "bracket-lst/index.js",
     twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
-    parentProtocol: "parent#bracket",
+    parentProtocol: "parent#bracket-protocol",
     listedAt: 1753887804
   },
   {
@@ -20960,7 +20960,7 @@ const data4: Protocol[] = [
     module: "bracket-vaults/index.js",
     twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
-    parentProtocol: "parent#bracket",
+    parentProtocol: "parent#bracket-protocol",
     listedAt: 1753887812
   },
   {

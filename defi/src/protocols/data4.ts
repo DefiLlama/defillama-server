@@ -8593,7 +8593,7 @@ const data4: Protocol[] = [
       },
       {
         name: "RedStone",
-        type: "Fallback",
+        type: "Primary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       }
     ],

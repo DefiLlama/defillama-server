@@ -11049,6 +11049,13 @@
       "to": "coingecko#initia"
     }
   },
+  "eventum": {
+    "0xC9b68d8ab057b52785cF0e8e983A2eaFE6858979": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
   "babylon": {
     "bbn1j2nchmpuhkq0yj93g84txe33j5lhw2y7p3anhqjhvamqxsev6rmsneu85x": {
       "decimals": 8,
@@ -11059,6 +11066,5 @@
       "decimals": 6,
       "symbol": "cBABY",
       "to": "coingecko#cube-staked-baby"
-    }
   }
 }

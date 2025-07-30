@@ -161,4 +161,5 @@ export default {
   reya: require("./yield/reya"),
   bluefin: require("./markets/bluefin"),
   harvest: require("./yield/harvest"),
+  opensea: require("./nft/opensea"),
 };

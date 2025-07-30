@@ -25492,7 +25492,7 @@ const data3_1: Protocol[] = [
 	  cmcId: null,
 	  category: "Derivatives",
 	  chains: ["LightLink","Sonic"],
-	  oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], 
+	  oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: ["https://docs.amped.finance/price-feeds#price-feeds"] } ], 
 	  audit_links: ["https://github.com/BlockApex/Audit-Reports/blob/3d1df707bc6df3f761981b33007f8f32057c6654/Amped%20Finance%20Final%20Audit%20Report.pdf"],
 	  forkedFromIds: ["337"],
 	  module: "amped/index.js",

@@ -11066,5 +11066,6 @@
       "decimals": 6,
       "symbol": "cBABY",
       "to": "coingecko#cube-staked-baby"
+    }
   }
 }

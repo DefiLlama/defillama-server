@@ -4470,6 +4470,18 @@ export const chainCoingeckoIds = {
     twitter: "provenancefdn",
     url: "https://www.provenance.io/",
   },
+  "Eventum": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "EveDexOfficial",
+    url: "https://evedex.com/en-US/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

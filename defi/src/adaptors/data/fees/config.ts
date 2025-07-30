@@ -3871,4 +3871,7 @@ export default {
     "definitive-v2": {
         id: "4257"
     },
+    "bybit-staked-sol": {
+        id: "5179"
+    },
 } as AdaptorsConfig

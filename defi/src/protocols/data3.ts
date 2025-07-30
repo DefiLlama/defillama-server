@@ -24493,6 +24493,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     twitter: "frankencoinzchf",
     github: ["Frankencoin-ZCHF"],
+    treasury: "frankencoin.js",
     stablecoins: ["frankencoin"],
     listedAt: 1699970045,
   },

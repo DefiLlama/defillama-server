@@ -11,18 +11,15 @@ export default {
         id: "2326"
     },
     "synfutures-v1": {
-        parentId: "SynFutures",
         id: "2328"
     },
     "vela": {
         id: "2548"
     },
     "hyperliquid-perp": {
-        parentId: "Hyperliquid",
         id: "5507",
     },
     "dydx": {
-        parentId: "dYdX",
         id: "144",
     },
     "mux-protocol-perps": {
@@ -37,7 +34,6 @@ export default {
         id: "2848"
     },
     "pika-protocol": {
-        parentId: "Pika Protocol",
         id: "916"
     },
     "urdex": {
@@ -59,7 +55,6 @@ export default {
         }
     },
     "pika-protocol-v4": {
-        parentId: "Pika Protocol",
         id: "3281"
     },
     "gains-network": {
@@ -100,7 +95,6 @@ export default {
         }
     },
     "apex": {
-        parentId: "ApeX Protocol",
         id: "1878",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -115,7 +109,6 @@ export default {
         id: "1804",
     },
     "thena-perp": {
-        parentId: "Thena",
         id: "3537",
     },
     "panacakeswap-perp": {
@@ -171,7 +164,6 @@ export default {
         id: "3747"
     },
     "equation": {
-        parentId: "Equation",
         id: "3726",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -187,7 +179,6 @@ export default {
     },
     "rabbitx": {
         id: "2886",
-        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1700524800": true,
@@ -210,11 +201,9 @@ export default {
         id: "2175"
     },
     "synfutures-v2": {
-        parentId: "SynFutures",
         id: "3061"
     },
     "metavault-derivatives-v2": {
-        parentId: "Metavault",
         id: "3911"
     },
     "kiloex": {
@@ -233,7 +222,6 @@ export default {
         id: "4026"
     },
     "dydx-v4": {
-        parentId: "dYdX",
         id: "4067",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -242,7 +230,6 @@ export default {
         }
     },
     "equation-v2": {
-        parentId: "Equation",
         id: "4074",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -264,7 +251,6 @@ export default {
         }
     },
     "kinetix-derivatives-v2": {
-        parentId: "Kinetix",
         id: "4110"
     },
     "pingu": {
@@ -293,7 +279,6 @@ export default {
     },
     // "blastfutures": { // duplicate with rabbitx fusion
     //     id: "4221",
-    //     parentId: "RabbitX Fusion",
     //     cleanRecordsConfig: {
     //         genuineSpikes: {
     //             "1709337600": true,
@@ -304,7 +289,6 @@ export default {
     //     }
     // },
     "synfutures-v3": {
-        parentId: "SynFutures",
         id: "4215"
     },
     "avantis": {
@@ -334,7 +318,6 @@ export default {
         }
     },
     "logx": {
-        parentId: "LogX",
         id: "5137"
     },
     "swych": {
@@ -368,11 +351,9 @@ export default {
         id: "4555"
     },
     "linehub-perps": {
-        parentId: "LineHub",
         id: "4842"
     },
     "apex-omni": {
-        parentId: "ApeX Protocol",
         id: "4822",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -393,7 +374,6 @@ export default {
         id: "5016",
     },
     "bmx-freestyle": {
-        parentId: "BMX",
         id: "4903"
     },
     "tradoor": {
@@ -415,11 +395,9 @@ export default {
         id: "5208",
     },
     "quickswap-perps": {
-        parentId: "QuickSwap",
         id: "2980",
     },
     "capybara-perp": {
-        parentId: "Capybara Exchange",
         id: "5257",
     },
     "defx": {
@@ -441,11 +419,9 @@ export default {
         id: "5353"
     },
     "thetis-market": {
-        parentId: "Thetis Market",
         id: "5469"
     },
     "mars-perp": {
-        parentId: "Mars Protocol",
         id: "5498",
     },
     "satoshi-perps": {

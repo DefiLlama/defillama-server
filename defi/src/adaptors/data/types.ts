@@ -15,7 +15,7 @@ export interface ProtocolAdaptor extends Protocol {
     adapterType?: ProtocolType
     versionKey?: string
     methodologyURL: string
-    methodology?: string | IJSON<string>
+    methodology?: string | IJSON<string> | any
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
@@ -24,14 +24,10 @@ export interface ProtocolAdaptor extends Protocol {
 
 export interface IConfig {
     id: string
-    parentId?: string
-    latestFetchIsOk?: boolean
-    includedVolume?: string[]
     startFrom?: number
     displayName?: string
     cleanRecordsConfig?: ICleanRecordsConfig
     isChain?: boolean
-    protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 
 export interface IJSON<T> {

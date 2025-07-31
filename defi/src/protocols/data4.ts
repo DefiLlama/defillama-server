@@ -20984,5 +20984,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#iguanadex",
     listedAt: 1753892205
   },
+  {
+    id: "6506",
+    name: "Omni Exchange",
+    address: "base:0xf7178122a087ef8f5c7bea362b7dabe38f20bf05",
+    symbol: "OMNI",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/omni-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base", "Arbitrum", "Binance", "Avalanche", "Sonic", "Optimism"],
+    module: "omni-exchange/index.js",
+    twitter: "Omni_Exchange",
+    forkedFromIds: ["2198"],
+    listedAt: 1753925483
+  },
 ];
 export default data4;

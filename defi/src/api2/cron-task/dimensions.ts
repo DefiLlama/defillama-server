@@ -916,12 +916,14 @@ async function generateDimensionsResponseFiles(cache: any) {
 
       // store per chain overview
       const chains = allData.allChains ?? []
+      const totalDataChartByChain: any = {}
 
       for (const chainLabel of chains) {
         let chain = chainLabel.toLowerCase()
         chain = sluggifiedNormalizedChains[chain] ?? chain
         const data = await getOverviewProcess2({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
+        totalDataChartByChain[data.chain] = data.totalDataChart
         data.totalDataChart = []
         data.totalDataChartBreakdown = []
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-lite`, data)
@@ -930,8 +932,12 @@ async function generateDimensionsResponseFiles(cache: any) {
         if (!dimChainsAggData[chain][adapterType]) dimChainsAggData[chain][adapterType] = {}
         dimChainsAggData[chain][adapterType][recordType] = {
           '24h': data.total24h,
+          '7d': data.total7d,
+          '30d': data.total30d,
         }
       }
+
+      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-chain-total-data-chart`, totalDataChartByChain)
 
       // store protocol summary for each record type
       const allProtocols: any = { ...protocolSummaries, ...parentProtocolSummaries }

@@ -7375,6 +7375,11 @@
       "to": "coingecko#ousg",
       "decimals": 6,
       "symbol": "OUSG"
+    }, 
+    "524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De": {
+      "to": "coingecko#ripple-usd",
+      "decimals": 6,
+      "symbol": "RLUSD"
     }
   },
   "reya": {

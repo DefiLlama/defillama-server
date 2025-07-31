@@ -679,5 +679,14 @@ export default {
     },
     "hibachi": {
         id: "6467"
-    }
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "pvp-trade": {
+        id: "6510"
+    },
 } as AdaptorsConfig

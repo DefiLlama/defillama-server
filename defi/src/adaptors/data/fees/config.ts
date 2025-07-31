@@ -3874,4 +3874,7 @@ export default {
     "bybit-staked-sol": {
         id: "5179"
     },
+    "pvp-trade": {
+        id: "6510"
+    },
 } as AdaptorsConfig

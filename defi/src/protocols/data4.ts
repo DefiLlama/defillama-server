@@ -21046,5 +21046,25 @@ const data4: Protocol[] = [
     forkedFromIds: ["270"],
     listedAt: 1753971689
   },
+  {
+    id: "6509",
+    name: "DeFi Dollar",
+    address: null,
+    symbol: "-",
+    url: "https://defidollar.io/",
+    description: "Friendly fork of Liquity V2 on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/defi-dollar.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "defi-dollar-cdp/index.js",
+    twitter: "DeFiDollarIO",
+    forkedFromIds: ["5656"],
+    listedAt: 1753985702
+  },
 ];
 export default data4;

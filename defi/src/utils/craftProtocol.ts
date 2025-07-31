@@ -215,7 +215,7 @@ export default async function craftProtocol({
     currentChainTvls: {},
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
     mcap,
-  };
+  } as any;
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {

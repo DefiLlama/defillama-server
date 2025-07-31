@@ -24373,6 +24373,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1641874709,
     treasury: "looksrare.js",
     github: ["LooksRare"],
+    hallmarks: [
+      [['2022-01-11', '2022-05-22'], 'Token rewards for trading NFTs'],
+    ]
   },
   {
     id: "1230",

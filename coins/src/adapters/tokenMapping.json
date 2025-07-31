@@ -11065,5 +11065,12 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  },
+  "babylon": {
+    "bbn17y5zvse30629t7r37xsdj73xsqp7qsdr7gpnh966wf5aslpn66rq5ekwsz": {
+      "decimals": 6,
+      "symbol": "cBABY",
+      "to": "coingecko#cube-staked-baby"
+    }
   }
 }

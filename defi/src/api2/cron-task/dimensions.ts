@@ -923,7 +923,10 @@ async function generateDimensionsResponseFiles(cache: any) {
         chain = sluggifiedNormalizedChains[chain] ?? chain
         const data = await getOverviewProcess2({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
-        totalDataChartByChain[data.chain] = data.totalDataChart
+        for (const [date, value] of data.totalDataChart) {
+          totalDataChartByChain[date] = totalDataChartByChain[date] || {}
+          totalDataChartByChain[date][data.chain] = value
+        }
         data.totalDataChart = []
         data.totalDataChartBreakdown = []
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-lite`, data)
@@ -937,7 +940,7 @@ async function generateDimensionsResponseFiles(cache: any) {
         }
       }
 
-      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-chain-total-data-chart`, totalDataChartByChain)
+      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-total-data-chart`, totalDataChartByChain)
 
       // store protocol summary for each record type
       const allProtocols: any = { ...protocolSummaries, ...parentProtocolSummaries }

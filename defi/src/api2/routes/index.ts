@@ -1,28 +1,29 @@
 import * as HyperExpress from "hyper-express";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
-import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
-import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { get20MinDate } from "../../utils/shared";
-import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
-import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
-import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getCurrentUnixTimestamp } from "../../utils/date";
-import { getTweetStats } from "../../twitter/db";
-import { getClosestProtocolItem } from "../db";
-import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { computeInflowsData } from "../../getInflows";
-import { getFormattedChains } from "../../getFormattedChains";
-import { getR2 } from "../../utils/r2";
+import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
-import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getFormattedChains } from "../../getFormattedChains";
+import { computeInflowsData } from "../../getInflows";
+import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
+import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
+import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getTweetStats } from "../../twitter/db";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
+import { getR2 } from "../../utils/r2";
+import { get20MinDate } from "../../utils/shared";
+import sluggify from "../../utils/sluggify";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import setApiFetchCacheRoute from '../cache/api-fetch-cache';
+import { readRouteData, } from "../cache/file-cache";
+import { getClosestProtocolItem } from "../db";
+import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getDimensionProtocolFileRoute, getOverviewFileRoute } from "./dimensions";
 import { setInternalRoutes } from "./internalRoutes";
-import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
+import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -41,7 +42,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // router.get("/hourly/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false })));  // too expensive to handle here
   // router.get("/config/:chain/:contract", ew(getContractName));  // too many requests to handle here
   // add secret route to delete from PG cache
-
+  setApiFetchCacheRoute(router);
   router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
     dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false'
   })));

@@ -1,10 +1,10 @@
+import { log, } from '@defillama/sdk';
+import { sliceIntoChunks } from '@defillama/sdk/build/util';
 import fs from 'fs';
 import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
-import { log, } from '@defillama/sdk'
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
-export { PG_CACHE_KEYS }
+export { PG_CACHE_KEYS };
 
 const CACHE_DIR = getEnv().api2CacheDir;
 export const ROUTES_DATA_DIR = path.join(CACHE_DIR!, 'build')
@@ -231,3 +231,6 @@ export async function storeHistoricalTVLMetadataFile(data: any) {
     i++
   }
 }
+
+export { readFileData, storeData };
+

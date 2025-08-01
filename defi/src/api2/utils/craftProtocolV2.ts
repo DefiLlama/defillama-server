@@ -12,6 +12,7 @@ import { getProtocolAllTvlData } from "./cachedFunctions";
 import { getObjectKeyCount } from ".";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import sluggify from "../../utils/sluggify";
+import { _InternalProtocolMetadataMap } from "../../protocols/data";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
@@ -36,7 +37,8 @@ export async function craftProtocolV2({
   getCachedProtocolData = getProtocolAllTvlData,
   skipCachedHourlyData = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
+  const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -200,8 +202,7 @@ export async function craftProtocolV2({
     response.misrepresentedTokens = true;
 
   if (Array.isArray(hallmarks) && hallmarks.length > 0) {
-    response.hallmarks = hallmarks;
-    response.hallmarks?.sort((a, b) => a[0] - b[0]);
+    response.hallmarks = hallmarks as any
   }
 
   if (restProtocolData.deprecated) {

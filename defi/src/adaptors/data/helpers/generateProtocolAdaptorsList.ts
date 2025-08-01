@@ -2,10 +2,9 @@ import protocols, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { AdapterType, BaseAdapter, ProtocolType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, AdapterType, BaseAdapter, ProtocolType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName, chainCoingeckoIds } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
-import { IImportObj } from "../../../cli/buildRequires";
 import { IParentProtocol } from "../../../protocols/types";
 
 // Obtaining all dex protocols
@@ -47,6 +46,11 @@ const chainDataMap = chainData.reduce((acc, curr) => {
   return acc
 }, {} as IJSON<Protocol>)
 
+interface IImportObj {
+  module: { default: Adapter },
+  codePath: string
+  moduleFilePath: string
+}
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
@@ -66,35 +70,14 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
       dexFoundInProtocolsArr.push(list[protocolId])
       baseModuleObject = moduleObject.adapter!
     }
-    else if ('breakdown' in moduleObject) {
-      const protocolsData = config?.[adapterKey]?.protocolsData
-      if (!protocolsData) {
-        // console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
-        return
-      }
-      dexFoundInProtocolsArr = Object.values(protocolsData).map(protocolData => {
-        if (!list[protocolData.id]) console.error(`Protocol not found with id ${protocolData.id} and key ${adapterKey}`)
-        return list[protocolData.id]
-      }).filter(notUndefined)
-    }
     if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
       return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
         try {
           let configObj = config[adapterKey]
           let versionKey = undefined
-          const protData = config?.[adapterKey]?.protocolsData
-          if ('breakdown' in moduleObject) {
-            const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
-            configObj = vConfig ?? config[adapterKey]
-            if (key) {
-              versionKey = key
-              baseModuleObject = moduleObject.breakdown[key]
-            }
-          }
           if (!configObj || !dexFoundInProtocols) return
           if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
           const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
-          delete parentConfig.protocolsData
           const id = !isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id // used to query db, eventually should be changed to defillamaId
           const protocolType = (moduleObject as any).protocolType
           const infoItem: ProtocolAdaptor = {
@@ -172,14 +155,8 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
 
       if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
-      const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
       let singleVersionKey: string
 
-      if (parentConfig.protocolsData) {
-        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value).map(([key]: any) => key)
-        if (keys.length === 1) singleVersionKey = keys[0]
-      }
-      delete parentConfig.protocolsData
       const id = isNaN(+configObj.id) ? configObj.id : config[adapterKey].id // used to query db, eventually should be changed to defillamaId
       const id2 = protocolType === ProtocolType.CHAIN ? `chain#${adapterKey}` : id
 

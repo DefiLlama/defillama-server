@@ -110,13 +110,6 @@ function createDimensionAdaptersModule(path: string, folderPath: string) {
     },`
 }
 
-// Above type should match
-export interface IImportObj {
-  module: { default: Adapter },
-  codePath: string
-  moduleFilePath: string
-}
-
 // emissions-adapters
 // Add error handling for emissions adapters
 try {

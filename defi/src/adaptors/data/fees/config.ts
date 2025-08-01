@@ -3721,4 +3721,13 @@ export default {
     "spookyswap-v3": {
         id: "5272"
     },
+    "echodex": {
+        id: "3256"
+    },
+    "echodex-v3": {
+        id: "3349"
+    },
+    "ampleswap": {
+        id: "2383"
+    },
 } as AdaptorsConfig

@@ -32977,6 +32977,7 @@ const data3_1: Protocol[] = [
   {
     id: "4158",
     name: "Crypto.com Liquid Staking",
+    previousNames: ["Crypto.com Staked ETH"],
     address: null,
     symbol: "-",
     assetToken: "CDCETH",

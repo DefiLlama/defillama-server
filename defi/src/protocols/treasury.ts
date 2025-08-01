@@ -7,6 +7,7 @@ export const treasuries: Protocol[] = [...protocols, ...parentProtocols].filter(
   clone.id = `${i.id}-treasury`
   clone.module = `treasury/${i.treasury}`
   clone.name = `${i.name} (treasury)`
+  clone.category = 'Treasury'
   return clone
 })
 

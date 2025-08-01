@@ -15,9 +15,7 @@ const FAST_FALLBACK_MS = 10_000;
 
 const ALLOWED_HOSTS = new Set(['api.llama.fi', 'localhost:5001']);
 
-const CACHE_ROOT =
-  process.env.API2_CACHE_DIR ??
-  path.join(process.cwd(), 'defi', 'src', 'api2', '.api2-cache');
+const CACHE_ROOT = process.env.API2_CACHE_DIR ?? path.join(process.cwd(), 'defi', 'src', 'api2', '.api2-cache');
 const ENDPOINT_DIR = path.join(CACHE_ROOT, CACHE_SUBDIR);
 
 const flatten = (s: string) => s.replace(/[^a-zA-Z0-9]/g, '_');
@@ -85,8 +83,7 @@ export default function setApiFetchCacheRoute(router: HyperExpress.Router) {
     if (!isAllowedHost(api))
       return res.status(400).json({ error: 'host not allowed' });
 
-    const timeoutMs =
-      Number(req.query_parameters.timeout ?? DEFAULT_TIMEOUT_MS / 1_000) * 1_000;
+    const timeoutMs = Number(req.query_parameters.timeout ?? DEFAULT_TIMEOUT_MS / 1_000) * 1_000;
 
     const ttlMs = DEFAULT_TTL_MS;
     const minRefreshMs = MIN_REFRESH_SEC_HARD * 1_000;
@@ -119,28 +116,21 @@ export default function setApiFetchCacheRoute(router: HyperExpress.Router) {
         res.json(data);
       }
 
-      const isEmptyObj =
-        typeof data === 'object' &&
-        data !== null &&
-        Object.keys(data as object).length === 0;
+      const isEmptyObj = typeof data === 'object' && data !== null && Object.keys(data as object).length === 0;
       const isEmpty = data === null || data === undefined || isEmptyObj;
       const ageOk = !latest || Date.now() - latest.ts * 1_000 > minRefreshMs;
 
       if (!isEmpty && !isErrorPayload(data) && ageOk) {
         await purgeOld(base);
         const tsSec = Math.floor(Date.now() / 1_000);
-        await storeData(
-          path.join(CACHE_SUBDIR, `${base}-${tsSec}.json`),
-          { ts: tsSec, data },
-        );
+        await storeData(path.join(CACHE_SUBDIR, `${base}-${tsSec}.json`), { ts: tsSec, data });
       }
     } catch (err) {
       clearTimeout(fallbackTimer);
       if (responded) return;
 
       const e = err as any;
-      const reason =
-        e.name === 'AbortError' ? `timeout (${timeoutMs} ms)` : e.message;
+      const reason = e.name === 'AbortError' ? `timeout (${timeoutMs} ms)` : e.message;
       console.warn(`[cache] ${base} → fallback (${reason})`);
 
       if (latest && Date.now() - latest.ts * 1_000 < ttlMs) {

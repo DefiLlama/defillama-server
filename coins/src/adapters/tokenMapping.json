@@ -1779,6 +1779,11 @@
     }
   },
   "optimism": {
+    "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0": {
+      "decimals": "18",
+      "symbol": "sUSDS",
+      "to": "coingecko#susds"
+    },
     "0x0000206329b97db379d5e1bf586bbdb969c63274": {
       "decimals": "18",
       "symbol": "USDA",
@@ -1934,7 +1939,7 @@
       "decimals": "18",
       "symbol": "ArtBTC",
       "to": "coingecko#bitcoin"
-    }, 
+    },
     "0x02F294cC9Ceb2c80FbA3fD779e17FE191Cc360C4": {
       "decimals": "18",
       "symbol": "ArtBTC",
@@ -7375,7 +7380,7 @@
       "to": "coingecko#ousg",
       "decimals": 6,
       "symbol": "OUSG"
-    }, 
+    },
     "524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De": {
       "to": "coingecko#ripple-usd",
       "decimals": 6,
@@ -9603,6 +9608,11 @@
     }
   },
   "unichain": {
+    "0xA06b10Db9F390990364A3984C04FaDf1c13691b5": {
+      "decimals": "18",
+      "symbol": "sUSDS",
+      "to": "coingecko#susds"
+    },
     "0x2416092f143378750bb29b79eD961ab195CcEea5": {
       "to": "coingecko#renzo-restaked-eth",
       "decimals": 18,
@@ -11078,14 +11088,14 @@
       "symbol": "INIT",
       "to": "coingecko#initia"
     }
-  }, 
+  },
   "eventum": {
     "0xC9b68d8ab057b52785cF0e8e983A2eaFE6858979": {
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
-  }, 
+  },
   "eni": {
     "0xdc1a8a35b0baa3229b13f348ed708a2fd50b5e3a": {
       "decimals": "18",

@@ -21157,5 +21157,25 @@ const data4: Protocol[] = [
     twitter: "Okto_wallet",
     forkedFromIds: [],
   },
+  {
+    id: "6514",
+    name: "cronews",
+    address: null,
+    symbol: "-",
+    url: "https://www.cronews.fun/",
+    description: "Cronews is a decentralized news platform powered by community. Users can break news, shape narratives, and earn rewards. It's where community-driven journalism meets blockchain innovation.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/cronews.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Cronos"],
+    module: "cronews/index.js",
+    twitter: "cronewsfun",
+    forkedFromIds: [],
+    listedAt: 1754058864
+  },
 ];
 export default data4;

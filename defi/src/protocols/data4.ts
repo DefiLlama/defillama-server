@@ -14457,7 +14457,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Sonic", "Berachain", "Avalanche", "BOB", "Binance"],
+    chains: ["Ethereum", "Sonic", "Berachain", "Avalanche", "Binance"],
     forkedFrom: [],
     module: "mev-capital/index.js",
     twitter: "MEVCapital",

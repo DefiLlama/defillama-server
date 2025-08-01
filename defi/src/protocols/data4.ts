@@ -20109,6 +20109,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["XRPL EVM"],
+    oracles: ["TWAP"],  // https://app.surgedefi.com/#/docs?section=surge-oracle
     forkedFromIds: ["2198"],
     module: "surgedefi/index.js",
     twitter: "SurgeDEX",

@@ -21177,5 +21177,24 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1754058864
   },
+  {
+    id: "6515",
+    name: "Tree News",
+    address: null,
+    symbol: "-",
+    url: "https://news.treeofalpha.com/",
+    description: "Decentralized Community-Run News Aggregator.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tree-news.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Ethereum", "Base",  "Solana"],
+    module: "dummy.js",
+    twitter: "TreeNewsFeed",
+    forkedFromIds: [],
+  },
 ];
 export default data4;

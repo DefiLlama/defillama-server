@@ -3730,4 +3730,7 @@ export default {
     "ampleswap": {
         id: "2383"
     },
+    "tree-news": {
+        id: "6515"
+    },
 } as AdaptorsConfig

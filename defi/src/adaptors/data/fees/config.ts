@@ -3715,4 +3715,7 @@ export default {
     "pvp-trade": {
         id: "6510"
     },
+    "okto-wallet": {
+        id: "6513"
+    },
 } as AdaptorsConfig

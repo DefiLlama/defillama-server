@@ -2945,4 +2945,7 @@ export default {
     "orca-wavebreak": {
         id: "6499"
     },
+    "spookyswap-v3": {
+        id: "5272"
+    },
 } as AdaptorsConfig

@@ -3718,4 +3718,7 @@ export default {
     "okto-wallet": {
         id: "6513"
     },
+    "spookyswap-v3": {
+        id: "5272"
+    },
 } as AdaptorsConfig

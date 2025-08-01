@@ -11080,5 +11080,12 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  }, 
+  "eni": {
+    "0xdc1a8a35b0baa3229b13f348ed708a2fd50b5e3a": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
   }
 }

@@ -43,6 +43,11 @@ export function curve(timestamp: number = 0) {
       "0x13ea95ce68185e334d3747539845a3b7643a8cab",
       "0x5018be882dcce5e3f2f3b0913ae2096b9b3fb61f",
       "0x52bf165abd26106d810733cc29faff68b96dece8",
+      "0xC8Eb2Cf2f792F77AF0Cd9e203305a585E588179D",
+      "0xc3b19502F8c02be75F3f77fd673503520DEB51dD",
+      "0x5bA541585D6297B756F08B7c61a7E37752123B4F",
+      "0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6",
+      "0x30bf3E17CAD0baF1d6B64079Ec219808d2708fEb",
     ]),
     getGaugePrices("ethereum", timestamp),
   ]);

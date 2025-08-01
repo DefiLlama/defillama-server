@@ -10885,6 +10885,11 @@
       "to": "coingecko#usds",
       "decimals": 18,
       "symbol": "vbUSDS"
+    },
+    "0xB0F70C0bD6FD87dbEb7C10dC692a2a6106817072": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "BTCK"
     }
   },
   "xrplevm": {

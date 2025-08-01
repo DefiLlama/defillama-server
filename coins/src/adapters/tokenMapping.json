@@ -10084,6 +10084,21 @@
     }
   },
   "plume_mainnet": {
+    "0xCCA84731C19EB911C985E9d1892E0935C104Abce": {
+      "decimals": "18",
+      "symbol": "pUSDT",
+      "to": "coingecko#tether"
+    },
+    "0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
     "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
       "decimals": "18",
       "symbol": "vyUSD",

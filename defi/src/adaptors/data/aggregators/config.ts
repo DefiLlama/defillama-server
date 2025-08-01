@@ -12,7 +12,6 @@ export default {
   "dexible": {
     startFrom: 1630022400,
     id: "2249",
-    parentId: "2249",
     displayName: "Dexible V2",
   },
   "deflex": {
@@ -47,7 +46,6 @@ export default {
     id: "3681",
   },
   "caviarnine-agg": {
-    parentId: "CaviarNine",
     id: "5064",
   },
   "aggre": {
@@ -113,7 +111,6 @@ export default {
     id: "5063",
   },
   "aftermath-aggregator": {
-    parentId: "Aftermath Finance",
     id: "3981",
   },
   "dexhunter": {
@@ -129,10 +126,6 @@ export default {
   },
   // "unidex": {
   //   "id": "1833",
-  //   protocolsData: {
-  //       "unidex-dexs-agg": {
-  //           "id": "1833"
-  //       }
   //   }
   // },
   "swapgpt": {
@@ -162,7 +155,6 @@ export default {
     "id": "4278"
   },
   "aperture-swap": {
-    parentId: "Aperture Finance",
     "id": "3554"
   },
   "magpie": {
@@ -198,7 +190,6 @@ export default {
     }
   },
   "flowx-aggregator": {
-    parentId: "FlowX Finance",
     id: "4825",
   },
   "sushiswap-agg": {
@@ -211,7 +202,6 @@ export default {
     id: "4926",
   },
   "cetus-aggregator": {
-    parentId: "Cetus",
     "id": "4958",
     cleanRecordsConfig: {
       genuineSpikes: {
@@ -223,7 +213,6 @@ export default {
     id: "5028",
   },
   "scallop": {
-    parentId: "Scallop",
     id: "5087",
   },
   "lumia": {
@@ -271,7 +260,6 @@ export default {
     id: "3207",
   },
   "thetis-market": {
-    parentId: "Thetis Market",
     id: "5483"
   },
   "swing": {

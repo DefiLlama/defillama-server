@@ -1,4 +1,4 @@
-import protocols, { Protocol } from './data'
+import protocols, { Protocol, setProtocolMetadata } from './data'
 import type { IParentProtocol } from "./types";
 import parentProtocols from "./parentProtocols";
 
@@ -9,5 +9,7 @@ export const treasuries: Protocol[] = [...protocols, ...parentProtocols].filter(
   clone.name = `${i.name} (treasury)`
   return clone
 })
+
+treasuries.forEach(setProtocolMetadata)
 
 export default treasuries

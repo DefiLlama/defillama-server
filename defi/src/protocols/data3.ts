@@ -31050,6 +31050,9 @@ const data3_1: Protocol[] = [
     ],
     forkedFrom: [],
     module: "jupiter-perpetual.js",
+    tokensExcludedFromParent: {
+      Solana: ["JUPSOL", "JLP"],
+    },
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",
     listedAt: 1706560048,

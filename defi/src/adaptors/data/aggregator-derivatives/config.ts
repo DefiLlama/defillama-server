@@ -3,11 +3,6 @@ import { AdaptorsConfig } from "../types";
 export default {
   // "logx": {
   //   id: "3396",
-  //   protocolsData: {
-  //     "logx-aggregator": {
-  //       id: "3396",
-  //     }
-  //   }
   // },
   "mux-protocol-agge": {
     "id": "5054",

@@ -138,7 +138,7 @@ export default async function getTokenPrices(
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ptPrice = Math.min(assetPrice ?? 0, syPrice) * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+      const ptPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
 
       addToDBWritesList(
         writes,
@@ -225,7 +225,7 @@ export default async function getTokenPrices(
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ytPrice = Math.min(assetPrice ?? 0, syPrice) * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      const ytPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,

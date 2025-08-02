@@ -19969,13 +19969,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6458",
-    name: "FPeX - Nexapia",
+    name: "Nexapia",
+    previousNames: ["Flareporium"],
     address: "flare:0x8B1EA814149d533330b2D0BB15d797d937F9948C",
     symbol: "-",
     url: "https://fpex.nexapia.xyz/",
     description: "Nexapia Dex - Uniswap V3 fork - Flare Network's Community orientated Dex",
     chain: "Flare",
-    logo: `${baseIconsUrl}/flareporium.jpg`,
+    logo: `${baseIconsUrl}/nexapia.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19984,7 +19985,7 @@ const data4: Protocol[] = [
     chains: ["Flare"],
     forkedFromIds: ["5690"],
     module: "fpex/index.js",
-    twitter: null,
+    twitter: "Nexapia_",
     listedAt: 1753110172
   },
   {

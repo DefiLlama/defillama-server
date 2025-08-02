@@ -21180,8 +21180,8 @@ const data4: Protocol[] = [
   {
     id: "6515",
     name: "Tree News",
-    address: null,
-    symbol: "-",
+    address: "0xba25b2281214300e4e649fead9a6d6acd25f1c0a",
+    symbol: "TREE",
     url: "https://news.treeofalpha.com/",
     description: "Decentralized Community-Run News Aggregator.",
     chain: "Ethereum",

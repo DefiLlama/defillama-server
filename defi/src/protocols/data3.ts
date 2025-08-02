@@ -22768,7 +22768,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Liquid Staking",
     chains: ["Sui"],
     module: "volo-vsui/index.js",
     twitter: "volo_sui",

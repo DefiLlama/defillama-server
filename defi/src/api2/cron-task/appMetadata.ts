@@ -12,6 +12,7 @@ import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
+import { generateChartTimePeriods } from "../scripts/generateChartTimePeriods";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
@@ -86,6 +87,16 @@ async function _storeAppMetadata() {
   const finalProtocols: any = {};
   const finalChains: any = {};
   let lendingProtocols = 0;
+
+  // Generate chart time periods for fee protocols
+  let chartTimePeriods: { [protocolId: string]: string } = {};
+  try {
+    console.log("Generating chart time periods for fee protocols...");
+    chartTimePeriods = await generateChartTimePeriods();
+    console.log(`Generated time periods for ${Object.keys(chartTimePeriods).length} protocols`);
+  } catch (error) {
+    console.warn("Failed to generate chart time periods:", error);
+  }
 
   const [
     tvlData,
@@ -300,9 +311,12 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of feesData.protocols) {
+      const chartTimePeriod = chartTimePeriods[protocol.defillamaId];
+      
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         fees: true,
+        ...(chartTimePeriod && chartTimePeriod !== 'day' ? { chartDefaultTimePeriod: chartTimePeriod } : {}),
       };
 
       if (protocol.parentProtocol) {

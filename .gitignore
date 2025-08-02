@@ -17,3 +17,4 @@ defi/.current_commit_hash
 */api2-cache
 *.log
 temp/
+defi/src/api2/scripts/temp_charts/

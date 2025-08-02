@@ -56,7 +56,8 @@
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
-    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
+    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server",
+    "generate-chart-periods": "npx ts-node --logError --transpile-only src/api2/scripts/generateChartTimePeriods.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

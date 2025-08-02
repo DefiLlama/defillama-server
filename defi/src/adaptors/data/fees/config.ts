@@ -3733,4 +3733,10 @@ export default {
     "tree-news": {
         id: "6515"
     },
+    "archfi": {
+        id: "6384"
+    },
+    "netswap": {
+        id: "1140"
+    }
 } as AdaptorsConfig

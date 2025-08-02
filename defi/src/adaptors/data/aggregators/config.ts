@@ -365,5 +365,9 @@ export default {
   },
   "metamask": {
     id: "3031"
-},
+  },
+  "opensea": {
+    id: "2258"
+  }
+
 } as AdaptorsConfig;

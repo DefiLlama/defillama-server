@@ -21212,7 +21212,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["RWA"],
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Stellar"],
     module: "wisdomtree/index.js",
     forkedFromIds: []
   },

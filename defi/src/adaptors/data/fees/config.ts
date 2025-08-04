@@ -3743,5 +3743,8 @@ export default {
     },
     "stellaswap-v4": {
         id: "5802"
+    },
+    "basedapp": {
+        id: "6521"
     }
 } as AdaptorsConfig

@@ -668,4 +668,7 @@ export default {
     "okto-wallet": {
         id: "6513"
     },
+    "basedapp": {
+        id: "6521"
+    }
 } as AdaptorsConfig

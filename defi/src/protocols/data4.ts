@@ -19402,7 +19402,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Avalanche"],
-    forkedFromIds: ["2198"],
+    forkedFromIds: ["3710"],
     module: "blackhole-CL/index.js",
     twitter: "BlackholeDex",
     audit_links: [],

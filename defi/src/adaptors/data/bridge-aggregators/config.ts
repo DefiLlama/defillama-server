@@ -36,5 +36,8 @@ export default {
     },
     "opensea": {
         id: "2258"
+    },
+    "orbiter-finance": {
+        id: "6520"
     }
 } as AdaptorsConfig

@@ -21280,5 +21280,25 @@ const data4: Protocol[] = [
     audit_links: ["https://hacken.io/audits/vechain-foundation/sca-vechain-stargate-may2025/"],
     listedAt: 1754325955
   },
+  {
+    id: "6520",
+    name: "Orbiter Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.orbiter.finance/",
+    description:
+      "Orbiter Finance is a ZK-tech based cross-chain protocol offers fast, secure, and instant transfer",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/orbiter-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Base", "Arbitrum", "Optimism", "Polygon", "Avalanche", "Sonic", "Scroll", "Linea", "Unichain", "Berachain", "Ink", "Blast", "Mantle", "Mode", "Fraxtal", "Fuse", "Celo", "Soneium", "World Chain", "Binance", "Solana"],
+    module: "orbiter-finance/index.js",
+    forkedFromIds: [],
+    twitter: "Orbiter_Finance",
+  },
 ];
 export default data4;

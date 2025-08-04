@@ -21202,7 +21202,7 @@ const data4: Protocol[] = [
     name: "WisdomTree",
     address: null,
     symbol: "-",
-    url: "https://www.wisdomtreeconnect.com/",
+    url: "https://www.wisdomtreeprime.com/digital-funds/",
     description:
       "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
     chain: "Ethereum",

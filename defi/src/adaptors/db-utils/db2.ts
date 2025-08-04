@@ -126,12 +126,29 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
   const filterCondition: any = { timestamp: { [Op.gte]: timestamp } }
   if (adapterType) filterCondition.type = adapterType
 
-  const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: filterCondition,
-    attributes: ['data', 'timestamp', 'id', 'timeS'],
-    raw: true,
-    order: [['timestamp', 'ASC']],
-  })
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+  const label = `getAllItemsAfter(${adapterType}, ${timestamp})`
+  console.time(label)
+
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where: filterCondition,
+      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch)
+    sdk.log(`getAllItemsAfter(${adapterType}, ${timestamp}) found ${batch.length} total fetched: ${result.length} items after ${new Date(timestamp * 1000)}`)
+    if (batch.length < limit) break
+    offset += limit
+  }
+
+  console.timeEnd(label)
 
   return result
 }

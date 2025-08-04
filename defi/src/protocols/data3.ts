@@ -22761,7 +22761,7 @@ const data3_1: Protocol[] = [
     assetToken: "vSUI",
     url: "https://www.volo.fi/",
     description:
-      "Volo is a decentralized liquid staking platform dedicated to offering vSUI as a fully decentralized LST for SUI and supporting the ecosystem's growth with LSDFi yield strategies",
+      "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
     chain: "Sui",
     logo: `${baseIconsUrl}/volo.png`,
     audits: "2",
@@ -22773,7 +22773,7 @@ const data3_1: Protocol[] = [
     module: "volo-vsui/index.js",
     twitter: "volo_sui",
     forkedFrom: [],
-    audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf"],
+    audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf", "https://volosui.gitbook.io/volo/audit"],
     parentProtocol: "parent#navi-protocol",
     listedAt: 1698603343,
   },
@@ -32977,6 +32977,7 @@ const data3_1: Protocol[] = [
   {
     id: "4158",
     name: "Crypto.com Liquid Staking",
+    previousNames: ["Crypto.com Staked ETH"],
     address: null,
     symbol: "-",
     assetToken: "CDCETH",

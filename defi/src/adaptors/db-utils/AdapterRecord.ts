@@ -63,9 +63,6 @@ export class AdapterRecord {
     const data: DataJSON = { aggregated: {} }
     let eventTimestamp: number
     const adaptorId = protocolType === ProtocolType.CHAIN ? `chain#${protocol.id}` : protocol.id
-    const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
-    const hasBreakdown = !!configItem.protocolsData
-    const whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [])
     Object.keys(adaptorRecords).forEach((key: any) => transformRecord((adaptorRecords as any)[key].getCleanAdaptorRecord(), key))
 
     if (!eventTimestamp!) {
@@ -83,32 +80,16 @@ export class AdapterRecord {
       const chains: {
         [chain: string]: number
       } = {}
-      let breakdown: any = {}
       Object.keys(record.data).forEach((chain: any) => {
         const chainData: any = record.data[chain]
         chain = chain.endsWith('_key') ? chain.slice(0, -4) : chain
         Object.keys(chainData).forEach((key: any) => {
-          if (hasBreakdown && !whitelistedVersionKeys.has(key)) return;
           const chainDataKey: number = chainData[key]
           value += chainDataKey
           chains[chain] = (chains[chain] ?? 0) + chainDataKey
-          if (hasBreakdown) {
-            if (!breakdown[key]) {
-              breakdown[key] = {
-                value: 0,
-                chains: {},
-              }
-            }
-            breakdown[key].value += chainDataKey
-            breakdown[key].chains[chain] = chainDataKey
-          }
         })
       })
       data.aggregated[key] = { value, chains, }
-      if (hasBreakdown) {
-        if (!data.breakdown) data.breakdown = {}
-        data.breakdown[key] = breakdown
-      }
     }
   }
 

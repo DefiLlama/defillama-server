@@ -150,6 +150,7 @@ const App = () => {
         case 'get-protocols-missing-tokens-response':
         case 'get-protocols-token-dominance-response':
         case 'get-dim-protocols-missing-metrics-response':
+        case 'get-fee-chart-default-view-response':
           setMiscOutputTableData(data);
           break;
         default:
@@ -1035,6 +1036,25 @@ const App = () => {
           rowKey={(record) => record.id}
         />)
         break;
+      case 'get-fee-chart-default-view-response':
+        const tableData1 = miscOutputTableData.data.map(record => {
+          const shallowCopy = { ...record }
+          return shallowCopy
+        })
+
+        data = (<Table
+          columns={[
+            { title: 'Protocol', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+            { title: 'Id', dataIndex: 'id', key: 'id', sorter: (a, b) => a.id.localeCompare(b.id) },
+            { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+            { title: 'isWeekly', dataIndex: 'isWeekly', key: 'isWeekly', sorter: (a, b) => a.isWeekly.localeCompare(b.isWeekly) },
+            { title: 'isMonthly', dataIndex: 'isMonthly', key: 'isMonthly', sorter: (a, b) => a.isMonthly.localeCompare(b.isMonthly) },
+          ]}
+          dataSource={tableData1}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+        />)
+        break;
       default:
         return null; // Handle unknown type
     }
@@ -1233,6 +1253,7 @@ const App = () => {
             <Option value="Get protocols token dominance">Get protocol token dominance Table</Option>
             <Option value="Get protocols missing tokens">Missing cg/cmc mapping</Option>
             <Option value="[Dimensions] Get protocols missing metrics">[Dimensions] Get protocols missing metrics</Option>
+            <Option value="[Dimensions] Get fee chart default view">[Dimensions] Get fee chart default view</Option>
           </Select>
         </Form.Item>
 

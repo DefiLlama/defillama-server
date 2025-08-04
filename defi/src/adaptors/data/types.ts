@@ -5,9 +5,11 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
+type ChartBreakdownOptions = 'd' | 'w' | 'm'
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
+    defaultChartView?: ChartBreakdownOptions
     config?: IConfig
     id2: string
     isProtocolInOtherCategories?: boolean
@@ -15,7 +17,7 @@ export interface ProtocolAdaptor extends Protocol {
     adapterType?: ProtocolType
     versionKey?: string
     methodologyURL: string
-    methodology?: string | IJSON<string>
+    methodology?: string | IJSON<string> | any
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
@@ -24,14 +26,11 @@ export interface ProtocolAdaptor extends Protocol {
 
 export interface IConfig {
     id: string
-    parentId?: string
-    latestFetchIsOk?: boolean
-    includedVolume?: string[]
     startFrom?: number
     displayName?: string
+    defaultChartView?: ChartBreakdownOptions
     cleanRecordsConfig?: ICleanRecordsConfig
     isChain?: boolean
-    protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 
 export interface IJSON<T> {

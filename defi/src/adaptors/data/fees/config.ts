@@ -5,7 +5,6 @@ export default {
         id: "756"
     },
     "biswap": {
-        parentId: "BiSwap",
         id: "373"
     },
     "bitcoin": {
@@ -16,7 +15,6 @@ export default {
         id: "56"
     },
     "compound": {
-        parentId: "Compound Finance",
         id: "114"
     },
     "convex": {
@@ -37,12 +35,10 @@ export default {
         }
     },
     "frax-swap": {
-        parentId: "Frax Finance",
         id: "2121"
     },
     "gmx": {
         id: "337",
-        parentId: "GMX",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1744070398": true,
@@ -118,18 +114,15 @@ export default {
     //     },
     // },
     "velodrome": {
-        parentId: "Velodrome",
         id: "1799"
     },
     "wombat-exchange": {
         id: "1700"
     },
     "woofi": {
-        parentId: "WOOFi",
         id: "1461"
     },
     "metavault.trade": {
-        parentId: "MetaVault",
         id: "1801"
     },
     "aurora": {
@@ -217,11 +210,9 @@ export default {
         id: "551"
     },
     "spiritswap": {
-        parentId: "SpiritSwap",
         id: "311"
     },
     "apeswap": {
-        parentId: "ApeSwap",
         id: "398"
     },
     // "nomiswap": {
@@ -252,18 +243,15 @@ export default {
         id: "2169"
     },
     "stargate": {
-        parentId: "Stargate Finance",
         id: "1571"
     },
     "mm-stableswap-polygon": {
-        parentId: "MM Finance",
         id: "2015"
     },
     "elk": {
         id: "420"
     },
     "lyra": {
-        parentId: "Derive",
         id: "503"
     },
     "radioshack": {
@@ -311,7 +299,6 @@ export default {
         id: "128"
     },
     "el-dorado-exchange": {
-        parentId: "EDE",
         id: "2356"
     },
     "gearbox": {
@@ -354,7 +341,6 @@ export default {
         id: "2532"
     },
     "covo-finance": {
-        parentId: "Covo Finance",
         id: "2525"
     },
     "nftearth": {
@@ -364,11 +350,9 @@ export default {
         id: "2513"
     },
     "frax-ether": {
-        parentId: "Frax Finance",
         id: "2221"
     },
     "frax-fpi": {
-        parentId: "Frax Finance",
         id: "2607"
     },
     "zora": {
@@ -381,15 +365,12 @@ export default {
         id: "2643"
     },
     "maverick": {
-        parentId: "Maverick Protocol",
         id: "2644"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer",
         id: "2332"
     },
     "camelot-v2": {
-        parentId: "Camelot",
         id: "2307"
     },
     "thena-v1": {
@@ -406,7 +387,6 @@ export default {
         }
     },
     "ramses-exchange-v1": {
-        parentId: "Ramses Exchange",
         id: "2675"
     },
     "blastapi": {
@@ -419,22 +399,18 @@ export default {
         id: "2706"
     },
     "chainlink-vrf-v1": {
-        parentId: "Chainlink",
         displayName: "Chainlink VRF V1",
         id: "3339"
     },
     "chainlink-vrf-v2": {
-        parentId: "Chainlink",
         displayName: "Chainlink VRF V2",
         id: "3340"
     },
     "chainlink-keepers": {
-        parentId: "Chainlink",
         displayName: "Chainlink Keepers",
         id: "3338"
     },
     "chainlink-requests": {
-        parentId: "Chainlink",
         displayName: "Chainlink Requests",
         id: "2623"
     },
@@ -461,7 +437,6 @@ export default {
         id: "2760"
     },
     "morphex": {
-        parentId: "Morphex",
         id: "2662"
     },
     "kyotoswap": {
@@ -481,13 +456,11 @@ export default {
     },
     "covo-v2": {
         id: "2730",
-        parentId: "Covo Finance",
         cleanRecordsConfig: {
             genuineSpikes: true
         }
     },
     "camelot-v3": {
-        parentId: "Camelot",
         id: "2792"
     },
     "auragi": {
@@ -497,14 +470,12 @@ export default {
         id: "1444"
     },
     "thena-v3": {
-        parentId: "Thena",
         id: "2864"
     },
     "merlin": {
         id: "2849"
     },
     "pika-protocol": {
-        parentId: "Pika Protocol",
         id: "916"
     },
     "chronos": {
@@ -514,7 +485,6 @@ export default {
         id: "1833"
     },
     "joe-v2.1": {
-        parentId: "Trader Joe",
         id: "2906"
     },
     "e3": {
@@ -554,7 +524,6 @@ export default {
         id: "3038"
     },
     "lybra-finance": {
-        parentId: "Lybra Finance",
         id: "2904"
     },
     "houdini-swap": {
@@ -564,7 +533,6 @@ export default {
         id: "3055"
     },
     "cryptex-v2": {
-        parentId: "Cryptex Finance",
         id: "3051"
     },
     "usdo": {
@@ -574,7 +542,6 @@ export default {
         id: "3106"
     },
     "ramses-exchange-v2": {
-        parentId: "Ramses Exchange",
         id: "3096"
     },
     "abcdefx": {
@@ -602,7 +569,6 @@ export default {
         id: "3168"
     },
     "thalaswap": {
-        parentId: "Thala Labs",
         id: "2795"
     },
     "yield-yak-staked-avax": {
@@ -612,14 +578,12 @@ export default {
         id: "3792"
     },
     "equity": {
-        parentId: "Equalizer",
         id: "3173"
     },
     "pendle": {
         id: "382"
     },
     "move-dollar": {
-        parentId: "Thala Labs",
         id: "2789"
     },
     "pinnako": {
@@ -644,18 +608,15 @@ export default {
         id: "3265"
     },
     "benqi-lending": {
-        parentId: "Benqi",
         id: "467"
     },
     "pika-protocol-v4": {
-        parentId: "Pika Protocol",
         id: "3281"
     },
     "holdstation-defutures": {
         id: "2959"
     },
     "unicrypt": {
-        parentId: "UniCrypt",
         id: "1765"
     },
     "0x0dex": {
@@ -666,7 +627,6 @@ export default {
         id: "8453"
     },
     "velodrome-v2": {
-        parentId: "Velodrome",
         id: "3302"
     },
     "sobal": {
@@ -688,7 +648,6 @@ export default {
         id: "1201"
     },
     "fusionx-v3": {
-        parentId: "FusionX Finance",
         id: "3239"
     },
     "ferro": {
@@ -704,14 +663,12 @@ export default {
         id: "3377"
     },
     "fusionx-v2": {
-        parentId: "FusionX Finance",
         id: "3238"
     },
     "vertex-protocol": {
         id: "2899"
     },
     "edebase": {
-        parentId: "EDE",
         id: "3375"
     },
     "venus-finance": {
@@ -721,7 +678,6 @@ export default {
         id: "3337",
     },
     "dackieswap": {
-        parentId: "DackieSwap",
         id: "3345"
     },
     "banana-gun-trading": {
@@ -751,7 +707,6 @@ export default {
         id: "3429"
     },
     "gmx-v2": {
-        parentId: "GMX",
         id: "3365"
     },
     "swapbased-v2": {
@@ -770,15 +725,12 @@ export default {
     //     id: "3129"
     // },
     "apex": {
-        parentId: "ApeX Protocol",
         id: "1878"
     },
     "lybra-v2": {
-        parentId: "Lybra Finance",
         id: "3468"
     },
     "morphex-old": {
-        parentId: "Morphex",
         id: "3483"
     },
     "pact": {
@@ -791,7 +743,6 @@ export default {
         id: "3498",
     },
     "dackieswap-v2": {
-        parentId: "DackieSwap",
         id: "3515",
     },
     "basepaint": {
@@ -816,18 +767,15 @@ export default {
         id: "277"
     },
     "bmx": {
-        parentId: "Morphex",
         id: "3530"
     },
     "mango-v4": {
-        parentId: "Mango Markets",
         id: "3174"
     },
     "hono": {
         id: "3532"
     },
     "thena-perp": {
-        parentId: "Thena",
         id: "3537",
     },
     "post-tech": {
@@ -837,22 +785,18 @@ export default {
         id: "3499"
     },
     "tangible-rwa": {
-        parentId: "Tangible",
         id: "2231"
     },
     "caviar-tangible": {
-        parentId: "Tangible",
         id: "3528"
     },
     "solidly-v3": {
-        parentId: "Solidly Labs",
         id: "3481"
     },
     "friend3": {
         id: "3566"
     },
     "Scale": {
-        parentId: "Equalizer",
         id: "3575"
     },
     "stars-arena": {
@@ -871,11 +815,9 @@ export default {
         id: "3605"
     },
     "sudoswap-v1": {
-        parentId: "Sudoswap",
         id: "1917"
     },
     "sudoswap-v2": {
-        parentId: "Sudoswap",
         id: "3095"
     },
     "xena-finance": {
@@ -891,18 +833,15 @@ export default {
         id: "3657"
     },
     "shimmersea": {
-        parentId: "MagicSea",
         id: "3571"
     },
     "vapordex-v2": {
         id: "3654",
     },
     "chainlink-ccip": {
-        parentId: "Chainlink",
         id: "3675"
     },
     "crv-usd": {
-        parentId: "Curve Finance",
         id: "2994"
     },
     "shuriken": {
@@ -912,11 +851,9 @@ export default {
         id: "622"
     },
     // "morpho-compound": {   // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
-    //     parentId: "Morpho",
     //     id: "1997"
     // },
     "benqi-staked-avax": {
-        parentId: "Benqi",
         id: "1427"
     },
     "prisma-finance": {
@@ -956,21 +893,18 @@ export default {
         id: "3747"
     },
     "caviarnine-lsu-pool": {
-        parentId: "CaviarNine",
         id: "3666"
     },
     "caviarnine-shape-liquidity": {
         id: "3645"
     },
     // "metavault-v3": {
-    //     parentId: "Metavault",
     //     id: "3750",
     // },
     "xoxno": {
         id: "3753"
     },
     "equation": {
-        parentId: "Equation",
         id: "3726"
     },
     "hopr": {
@@ -986,7 +920,6 @@ export default {
         id: "3643"
     },
     "dydx": {
-        parentId: "dYdX",
         id: "144",
     },
     "justlend": {
@@ -1026,15 +959,12 @@ export default {
         id: "3883"
     },
     "beethoven-x": {
-        parentId: "Beethoven X",
         id: "654"
     },
     "ascent-v2": {
-        parentId: "Ascent Exchange",
         id: "3867"
     },
     "ascent-v3": {
-        parentId: "Ascent Exchange",
         id: "3868"
     },
     "xfai": {
@@ -1050,11 +980,9 @@ export default {
         id: "3921"
     },
     "metavault-derivatives-v2": {
-        parentId: "Metavault",
         id: "3911"
     },
     "dopex": {
-        parentId: "Dopex",
         id: "3817",
     },
     "bluefin": {
@@ -1067,7 +995,6 @@ export default {
         id: "2737"
     },
     "fvm-exchange": {
-        parentId: "Velocimeter",
         id: "3291"
     },
     "kiloex": {
@@ -1083,27 +1010,21 @@ export default {
         id: "3977"
     },
     "beamex": {
-        parentId: "BeamSwap",
         id: "3251"
     },
     "beamswap-v3": {
-        parentId: "BeamSwap",
         id: "3092",
     },
     "beamswap": {
-        parentId: "BeamSwap",
         id: "1289"
     },
     "shoebillFinance-v2": {
-        parentId: "Shoebill Finance",
         id: "3548"
     },
     "pepe-swaves": {
-        parentId: "PepeTeam",
         id: "2351"
     },
     "maple-finance": {
-        parentId: "Maple Finance",
         id: "587"
     },
     "jibswap": {
@@ -1134,11 +1055,9 @@ export default {
         id: "3823"
     },
     "squadswap-v2": {
-        parentId: "SquadSwap",
         id: "4009"
     },
     "squadswap-v3": {
-        parentId: "SquadSwap",
         id: "4010"
     },
     "zerion-wallet": {
@@ -1158,7 +1077,6 @@ export default {
         id: "169"
     },
     "equation-v2": {
-        parentId: "Equation",
         id: "4074"
     },
     "lexer": {
@@ -1171,18 +1089,15 @@ export default {
         id: "4094"
     },
     "kinetix-derivatives-v2": {
-        parentId: "Kinetix",
         id: "4110"
     },
     "pingu": {
         id: "4102"
     },
     "supswap-v2": {
-        parentId: "SupSwap",
         id: "4117"
     },
     "supswap-v3": {
-        parentId: "SupSwap",
         id: "4118"
     },
     "vaultka": {
@@ -1192,7 +1107,6 @@ export default {
         id: "4119"
     },
     "marinade-liquid-staking": {
-        parentId: "Marinade",
         id: "484",
         "cleanRecordsConfig": {
             genuineSpikes: {
@@ -1204,11 +1118,9 @@ export default {
         }
     },
     "marinade-native": {
-        parentId: "Marinade",
         id: "3672"
     },
     "inverse-finance": {
-        parentId: "Inverse Finance",
         id: "2433"
     },
     "furucombo": {
@@ -1239,11 +1151,9 @@ export default {
         id: "4194",
     },
     "nile-exchange": {
-        parentId: "Nile Exchange",
         id: "4072"
     },
     "nile-exchange-v1": {
-        parentId: "Nile Exchange",
         id: "4285"
     },
     "primordium": {
@@ -1259,7 +1169,6 @@ export default {
         id: "2756"
     },
     "morpho": {
-        parentId: "Morpho",
         id: "4025"
     },
     "blitz": {
@@ -1275,11 +1184,9 @@ export default {
         id: "4366"
     },
     "frax-amo": {
-        parentId: "Frax Finance",
         id: "359"
     },
     "keller": {
-        parentId: "Keller Finance",
         id: "4388"
     },
     "koi-finance": {
@@ -1321,15 +1228,12 @@ export default {
         id: "4506",
     },
     "merchant-moe-dex": {
-        parentId: "Merchant Moe",
         id: "4006"
     },
     "hercules-v2": {
-        parentId: "Hercules",
         id: "4372",
     },
     "hercules-v3": {
-        parentId: "Hercules",
         id: "4373",
     },
     "orby-network": {
@@ -1345,15 +1249,12 @@ export default {
         id: "200901"
     },
     "nuri-exchange-v1": {
-        parentId: "Nuri Exchange",
         id: "4564"
     },
     "nuri-exchange-v2": {
-        parentId: "Nuri Exchange",
         id: "4565"
     },
     "synfutures-v3": {
-        parentId: "SynFutures",
         id: "4215"
     },
     "jito": {
@@ -1363,14 +1264,12 @@ export default {
         id: "4602"
     },
     "dydx-v4": {
-        parentId: "dYdX",
         id: "4067"
     },
     "polter": {
         id: "4152"
     },
     "equation-v3": {
-        parentId: "Equation",
         id: "4586"
     },
     "Viridian": {
@@ -1389,7 +1288,6 @@ export default {
         id: "970",
     },
     "keller-cl": {
-        parentId: "Keller Finance",
         id: "4583"
     },
     "colony": {
@@ -1405,7 +1303,6 @@ export default {
         id: "4737"
     },
     "dragonswap-sei": {
-        parentId: "Dragon Swap",
         id: "4720"
     },
     "wen-markets": {
@@ -1418,25 +1315,21 @@ export default {
         id: "4777"
     },
     "magpie": {
-        parentId: "Magpie Ecosystem",
         id: "2271"
     },
     "time-fun": {
         id: "4786"
     },
     "cakepie": {
-        parentId: "Magpie Ecosystem",
         id: "4007"
     },
     "milkyway": {
         id: "3953"
     },
     "penpie": {
-        parentId: "Magpie Ecosystem",
         id: "3083"
     },
     "radpie": {
-        parentId: "Magpie Ecosystem",
         id: "3555"
     },
     "sideshift": {
@@ -1452,26 +1345,21 @@ export default {
         id: "2320"
     },
     "lynex-v1": {
-        parentId: "Lynex",
         id: "3908"
     },
     "linehub-perps": {
-        parentId: "LineHub",
         id: "4842"
     },
     "scoop": {
         id: "4827"
     },
     "ether-fi": {
-        parentId: "ether.fi",
         id: "4429"
     },
     "jup-ape": {
-        parentId: "Jupiter",
         id: "4860"
     },
     "scallop": {
-        parentId: "Scallop",
         id: "1961"
     },
     "d2finance": {
@@ -1508,18 +1396,15 @@ export default {
         id: "2289"
     },
     "arrakis-v2": {
-        parentId: "Arrakis Finance",
         id: "2667"
     },
     "stargate-finance-v2": {
-        parentId: "Stargate Finance",
         id: "4831"
     },
     "superstate": {
         id: "4265"
     },
     "apex-omni": {
-        parentId: "ApeX Protocol",
         id: "4822"
     },
     "dedust": {
@@ -1547,14 +1432,12 @@ export default {
         id: "4981"
     },
     "factor": {
-        parentId: "Factor",
         id: "3298"
     },
     "dexscreener": {
         id: "4990"
     },
     "kamino-lending": {
-        parentId: "Kamino",
         id: "3770"
     },
     "ston": {
@@ -1570,7 +1453,6 @@ export default {
         id: "5007"
     },
     "sunpump": {
-        parentId: "SUN.io",
         id: "4979"
     },
     "dextools": {
@@ -1592,7 +1474,6 @@ export default {
         id: "5013"
     },
     "kyberswap-aggregator": {
-        parentId: "KyberSwap",
         id: "3982",
     },
     "raybot": {
@@ -1608,7 +1489,6 @@ export default {
         id: "5029"
     },
     "ribbon": {
-        parentId: "Ribbon Finance",
         id: "281"
     },
     "velo": {
@@ -1636,11 +1516,9 @@ export default {
         id: "5049"
     },
     "lista-slisbnb": {
-        parentId: "Lista DAO",
         id: "3354"
     },
     "lista-lisusd": {
-        parentId: "Lista DAO",
         id: "2038"
     },
     "ethervista": {
@@ -1653,23 +1531,18 @@ export default {
         id: "5096"
     },
     "sunswap-v1": {
-        parentId: "SUN.io",
         id: "690"
     },
     "sunswap-v2": {
-        parentId: "SUN.io",
         id: "3005"
     },
     "sunswap-v3": {
-        parentId: "SUN.io",
         id: "4031"
     },
     "fwx-dex": {
-        parentId: "FWX",
         id: "4962"
     },
     "koi-finance-cl": {
-        parentId: "Koi Finance",
         id: "4678"
     },
     "superchain": {
@@ -1688,18 +1561,15 @@ export default {
         id: "541"
     },
     "bmx-freestyle": {
-        parentId: "BMX",
         id: "4903"
     },
     "pear-protocol": {
         id: "5151"
     },
     "solv-finance": {
-        parentId: "Solv Protocol",
         id: "4620"
     },
     "sparkdex-v3": {
-        parentId: "SparkDEX",
         id: "4888"
     },
     "toros": {
@@ -1739,11 +1609,9 @@ export default {
         id: "5213",
     },
     "sparkdex-v3-1": {
-        parentId: "SparkDEX",
         id: "5223"
     },
     "sparkdex-v2": {
-        parentId: "SparkDEX",
         id: "4887",
     },
     "arbitrum-nova": {
@@ -1765,26 +1633,21 @@ export default {
         id: "5195"
     },
     "wise-lending-v2": {
-        parentId: "Wise Lending",
         id: "4494"
     },
     "makenow-meme": {
         id: "5246"
     },
     "linehub-v3": {
-        parentId: "LineHub",
         id: "4661"
     },
     "linehub-v2": {
-        parentId: "LineHub",
         id: "4660"
     },
     "quickswap-hydra": {
-        parentId: "QuickSwap",
         id: "5187"
     },
     "quickswap-perps": {
-        parentId: "QuickSwap",
         id: "2980",
     },
     "step-finance": {
@@ -1794,15 +1657,12 @@ export default {
         id: "42420"
     },
     "kinetix-v2": {
-        parentId: "Kinetix",
         id: "3533"
     },
     "kinetix-v3": {
-        parentId: "Kinetix",
         id: "3534"
     },
     "metavault-amm-v2": {
-        parentId: "MetaVault",
         id: "5186"
     },
     "surge-trade": {
@@ -1812,7 +1672,6 @@ export default {
         id: "4274"
     },
     "juicebox": { // adapter not working
-        parentId: "Juicebox",
         id: "2833"
     },
     "celestia": {
@@ -1828,18 +1687,15 @@ export default {
         id: "5314"
     },
     "fluid-dex": {
-        parentId: "Fluid",
         id: "5317"
     },
     "g8keep": {
         id: "5318"
     },
     "iziswap": {
-        parentId: "iZUMI Finance",
         id: "1883"
     },
     "dragonswap-sei-v3": {
-        parentId: "Dragon Swap",
         id: "5066"
     },
     "morFi": {
@@ -1855,7 +1711,6 @@ export default {
         id: "4734"
     },
     "kamino-liquidity": {
-        parentId: "Kamino",
         id: "2062"
     },
     "blazingbot": {
@@ -1887,7 +1742,6 @@ export default {
     },
     "bluefin-amm": {
         id: "5427",
-        parentId: "Bluefin",
     },
     "taraswap": {
         id: "5437",
@@ -1896,32 +1750,27 @@ export default {
         id: "5446"
     },
     "bouncebit-cedefi": {
-        parentId: "BounceBit CeDeFi",
         id: "5450"
     },
     "swing": {
         id: "5474"
     },
     "thetis-market": {
-        parentId: "Thetis Market",
         id: "5469"
     },
     "iotex": {
         id: "4689"
     },
     "lyra-v2": {
-        parentId: "Derive",
         id: "3923"
     },
     "balancer-v3": {
-        parentId: "Balancer",
         id: "5491"
     },
     "memewe": {
         id: "5501"
     },
     "mars-perp": {
-        parentId: "Mars Protocol",
         id: "5498",
     },
     "neby-dex": {
@@ -1940,7 +1789,6 @@ export default {
         id: "5533"
     },
     "hyperliquid": {
-        parentId: "Hyperliquid",
         displayName: "Hyperliquid",
         id: "5761"
     },
@@ -1993,11 +1841,9 @@ export default {
         id: "4921",
     },
     "meteora-dlmm": {
-        parentId: "Meteora",
         id: "4148",
     },
     "meteora": {
-        parentId: "Meteora",
         id: "385",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -2036,7 +1882,6 @@ export default {
         id: "5656"
     },
     "jupiter": {
-        parentId: "Jupiter",
         id: "2141"
     },
     "rabby": {
@@ -2052,7 +1897,6 @@ export default {
     //     id: "3524",
     // },
     "ocelex": {
-        parentId: "Ocelex",
         id: "5379"
     },
     "levvy-fi": {
@@ -2062,7 +1906,6 @@ export default {
         id: "3618"
     },
     "bunni-v2": {
-        parentId: "Timeless",
         id: "5734"
     },
     "amped": {
@@ -2090,15 +1933,12 @@ export default {
         id: "5174"
     },
     "pulsex-v1": {
-        parentId: "PulseX",
         id: "2995"
     },
     "pulsex-v2": {
-        parentId: "PulseX",
         id: "3060"
     },
     "pulsex-stableswap": {
-        parentId: "PulseX",
         id: "5795",
     },
     "kodiak-v2": {
@@ -2138,7 +1978,6 @@ export default {
         id: "5774",
     },
     "jupiter-dca": {
-        parentId: "Jupiter",
         id: "5841",
     },
     "sablier": {
@@ -2217,7 +2056,6 @@ export default {
         id: "5845"
     },
     "thalaswap-v2": {
-        parentId: "Thala",
         id: "5329",
     },
     "degen-launchpad": {
@@ -3874,4 +3712,31 @@ export default {
     "bybit-staked-sol": {
         id: "5179"
     },
+    "pvp-trade": {
+        id: "6510"
+    },
+    "okto-wallet": {
+        id: "6513"
+    },
+    "spookyswap-v3": {
+        id: "5272"
+    },
+    "echodex": {
+        id: "3256"
+    },
+    "echodex-v3": {
+        id: "3349"
+    },
+    "ampleswap": {
+        id: "2383"
+    },
+    "tree-news": {
+        id: "6515"
+    },
+    "archfi": {
+        id: "6384"
+    },
+    "netswap": {
+        id: "1140"
+    }
 } as AdaptorsConfig

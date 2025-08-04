@@ -1,3 +1,7 @@
+
+type DateString = string | number;
+export type Hallmark = [DateString, string] | [[DateString, DateString], string];
+
 export interface Protocol {
   id: string;
   name: string;
@@ -62,6 +66,10 @@ export interface Protocol {
     }>
   }>
   warningBanners?: Array<Banner>;
+  hallmarks?: Hallmark[];
+  misrepresentedTokens?: boolean;
+  doublecounted?: boolean;
+  methodology?: string;
 }
 export interface Banner {
   message: string;

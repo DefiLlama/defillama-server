@@ -26,14 +26,6 @@ Object.entries(configs).forEach(([metric, map]) => {
   if (!idMaps[metric]) {
     idMaps[metric] = Object.values(map).reduce((acc, curr) => {
       acc[curr.id] = curr;
-      if (curr.parentId) {
-        acc[curr.parentId] = curr;
-      }
-      if (curr.protocolsData) {
-        Object.values(curr.protocolsData).forEach((protData) => {
-          acc[protData.id] = protData;
-        });
-      }
       return acc;
     }, {} as IJSON<AdaptorsConfig[string]>);
   }

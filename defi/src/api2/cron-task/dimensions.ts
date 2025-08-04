@@ -385,9 +385,14 @@ async function run() {
 
           if (breakdownByChain && Object.keys(breakdownByChain).length > 0) {
             if (!protocolRecord.breakdownByChain) protocolRecord.breakdownByChain = {}
+            if (!protocolRecord.breakdown) protocolRecord.breakdown = {}
             
             if (!protocolRecord.breakdownByChain[recordType]) {
               protocolRecord.breakdownByChain[recordType] = {}
+            }
+            
+            if (!protocolRecord.breakdown[recordType]) {
+              protocolRecord.breakdown[recordType] = {}
             }
             
             Object.entries(breakdownByChain).forEach(([chain, chainData]: [string, any]) => {
@@ -410,6 +415,18 @@ async function run() {
                     }
                   } else {
                     protocolRecord.breakdownByChain[recordType][chain][key] = inc
+                  }
+                  
+                  const existingGlobalValue = protocolRecord.breakdown[recordType][key]
+                  if (existingGlobalValue !== undefined) {
+                    const prevGlobal = Number(existingGlobalValue);
+                    if (Number.isFinite(prevGlobal)) {
+                      protocolRecord.breakdown[recordType][key] = prevGlobal + inc
+                    } else {
+                      protocolRecord.breakdown[recordType][key] = inc
+                    }
+                  } else {
+                    protocolRecord.breakdown[recordType][key] = inc
                   }
                 }
               })

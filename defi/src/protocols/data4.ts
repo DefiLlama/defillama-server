@@ -21211,7 +21211,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Other Fixed Income"],
+    tags: ["Other Fixed Income", "Onchain Equity", "Money Market Funds"],
     chains: ["Ethereum", "Stellar"],
     module: "wisdomtree/index.js",
     forkedFromIds: []

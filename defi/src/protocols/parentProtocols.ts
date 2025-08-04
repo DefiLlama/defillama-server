@@ -7349,7 +7349,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#river-inc",
-    name: "River Inc",
+    name: "River",
     url: "https://river.inc/",
     description: "River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol",
     logo: `${baseIconsUrl}/river-inc.jpg`,
@@ -7442,10 +7442,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#more-markets",
-    name: "MORE Markets",
+    name: "MORE",
     url: "https://www.more.markets",
     description: "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
-    logo: `${baseIconsUrl}/more-markets.png`,
+    logo: `${baseIconsUrl}/more.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

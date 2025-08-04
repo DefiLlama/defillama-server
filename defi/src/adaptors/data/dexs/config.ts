@@ -2948,4 +2948,7 @@ export default {
     "spookyswap-v3": {
         id: "5272"
     },
+    "stellaswap-v4": {
+        id: "5802"
+    }
 } as AdaptorsConfig

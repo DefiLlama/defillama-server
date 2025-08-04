@@ -3740,5 +3740,8 @@ export default {
     },
     "netswap": {
         id: "1140"
+    },
+    "stellaswap-v4": {
+        id: "5802"
     }
 } as AdaptorsConfig

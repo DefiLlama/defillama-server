@@ -1,4 +1,4 @@
-import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { cgPlatformtoChainId as platformMap } from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
 import {
   chainsThatShouldNotBeLowerCased,
@@ -11,13 +11,6 @@ export const staleMargin = 6 * 60 * 60;
 interface StringObject {
   [id: string]: string | undefined;
 }
-export const platformMap = Object.entries(chainToCoingeckoId).reduce(
-  (o: any, i) => {
-    o[i[1]] = i[0];
-    return o;
-  },
-  {},
-) as StringObject;
 
 export interface Coin {
   id: string;
@@ -60,23 +53,30 @@ export async function iterateOverPlatforms(
   for (const platform in platforms) {
     if (platform !== "" && platforms[platform] !== "") {
       try {
-        const chain = platformMap[platform.toLowerCase()];
+        const chain = platformMap[platform.toLowerCase()]?.toLowerCase();
         if (chain === undefined) {
           continue;
         }
         aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
-        const address =
+        const DBPK = `asset#${
+          chain +
+          ":" +
+          (chainsThatShouldNotBeLowerCased.includes(chain)
+            ? platforms[platform]
+            : lowercase(platforms[platform]!, chain).trim())
+        }`;
+        const PK = `asset#${
           chain +
           ":" +
           (chainsWithCaseSensitiveDataProviders.includes(chain)
             ? platforms[platform]
-            : lowercase(platforms[platform]!, chain).trim());
-        const PK = `asset#${address}`;
+            : lowercase(platforms[platform]!, chain).trim())
+        }`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
         if (
-          !coinPlatformData[PK] ||
-          coinPlatformData[PK].timestamp < margin ||
-          coinPlatformData[PK].confidence < 0.99
+          !coinPlatformData[DBPK] ||
+          coinPlatformData[DBPK].timestamp < margin ||
+          coinPlatformData[DBPK].confidence < 0.99
         ) {
           await iterator(PK);
         }

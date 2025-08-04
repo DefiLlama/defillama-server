@@ -1,7 +1,7 @@
 
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { AdaptorRecord, AdaptorRecordType, } from "./adaptor-record"
-import { ProtocolAdaptor } from "../data/types"
+import { AdaptorRecord, } from "./adaptor-record"
+import { AdaptorRecordType, ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
 
 export function toStartOfDay(unixTimestamp: number) {
@@ -62,19 +62,14 @@ export class AdapterRecord2 {
   }): AdapterRecord2 | null {
     // clone & clean to be safe
     const data: DataJSON = { aggregated: {} }
-    const adaptorId = protocol.protocolType === ProtocolType.CHAIN ? `chain#${protocol.id}` : protocol.id
     const adapterId2 = protocol.id2;
-    const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
-    const hasBreakdown = !!configItem.protocolsData
-    let whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [protocol.module])
-    const skipAdapterKeyCheck = !hasBreakdown && !protocol.isProtocolInOtherCategories
     let timestamp
     Object.keys(adaptorRecords).forEach((key: any) => transformRecord((adaptorRecords as any)[key].getCleanAdaptorRecord(), key))
 
     if (!timestamp || Object.keys(data.aggregated).length === 0) {
       // console.info('empty record?')
       if (Object.keys(data.aggregated).length)
-        console.info('empty record?', skipAdapterKeyCheck, protocol.module, protocol.id2, protocol.name, JSON.stringify(adaptorRecords), JSON.stringify(data.aggregated), protocolType, adapterType)
+        console.info('empty record?', protocol.module, protocol.id2, protocol.name, JSON.stringify(adaptorRecords), JSON.stringify(data.aggregated), protocolType, adapterType)
       return null
     }
 
@@ -87,13 +82,11 @@ export class AdapterRecord2 {
       timestamp = record.timestamp
       let value = 0
       const chains: { [chain: string]: number } = {}
-      let breakdown: any = {}
 
       Object.keys(record.data).forEach((chain: any) => {
         const chainData: any = record.data[chain]
         chain = chain.endsWith('_key') ? chain.slice(0, -4) : chain
         Object.keys(chainData).forEach((key: any) => {
-          if (!skipAdapterKeyCheck && !whitelistedVersionKeys.has(key)) return;
           let chainDataKey: number = chainData[key]
           if (typeof chainDataKey !== 'number') {
             if (!(typeof chainDataKey === 'object' && Object.keys(chainDataKey).length === 0))
@@ -103,27 +96,12 @@ export class AdapterRecord2 {
           chainDataKey = Math.round(chainDataKey)
           value += chainDataKey
           chains[chain] = (chains[chain] ?? 0) + chainDataKey
-          if (hasBreakdown) {
-            if (!breakdown[key]) {
-              breakdown[key] = {
-                value: 0,
-                chains: {},
-              }
-            }
-            breakdown[key].value += chainDataKey
-            breakdown[key].chains[chain] = chainDataKey
-          }
         })
       })
 
       if (skipZeroValue && value === 0) return;
 
       data.aggregated[key] = { value, chains, }
-      if (hasBreakdown) {
-        if (!data.breakdown) data.breakdown = {}
-        data.breakdown[key] = breakdown
-      }
-
     }
   }
 

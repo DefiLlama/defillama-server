@@ -1,5 +1,5 @@
-import { ProtocolAdaptor } from "../../adaptors/data/types";
-import { AdaptorRecord, AdaptorRecordType, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
+import { AdaptorRecordType, ProtocolAdaptor } from "../../adaptors/data/types";
+import { AdaptorRecord, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
 import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
@@ -21,7 +21,7 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
 
 
 export function getFileCacheKeyV2() {
-  return `dimensions-data-v2-v1.0.28`
+  return `dimensions-data-v2-v1.0.49`
 }
 
 // to ensure that we pull the cache data only once

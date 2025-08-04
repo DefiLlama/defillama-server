@@ -63,6 +63,12 @@ const prompts: any = {
     message: 'Is this a dry run? (default: false)',
     default: false,
   },
+  parallelCount: {
+    type: 'number',
+    name: 'parallelCount',
+    message: 'How many days to pull in parallel? (default: 3)',
+    default: 3,
+  },
   onlyMissing: {
     type: 'confirm',
     name: 'onlyMissing',
@@ -85,6 +91,7 @@ const runConfigEnv = {
   confirm: 'false',
   hide_config_table: 'true',
   refill_only_missing_data: 'false',
+  parallel_count: 3,
 }
 
 async function run(prompt: any) {
@@ -130,14 +137,19 @@ async function run(prompt: any) {
       case 'dateTo':
         runConfigEnv.to = answer
         prompts[currentPrompt].default = new Date(answer * 1000)
-        state.nextPrompt = 'dryRun'
+        state.nextPrompt = 'parallelCount'
         break;
       case 'onlyMissing':
         runConfigEnv.refill_only_missing_data = answer ? 'true' : 'false'
         prompts[currentPrompt].default = answer
         if (answer)
-          state.nextPrompt = 'dryRun'
+          state.nextPrompt = 'parallelCount'
         else state.nextPrompt = 'dateFrom'
+        break;
+      case 'parallelCount':
+        runConfigEnv.parallel_count = answer
+        prompts[currentPrompt].default = answer
+        state.nextPrompt = 'dryRun'
         break;
       case 'dryRun':
         runConfigEnv.dry_run = answer ? 'true' : 'false'

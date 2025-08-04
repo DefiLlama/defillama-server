@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, protocolBridgeIds, zero } from "./constants";
 import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
@@ -16,19 +16,24 @@ import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
 import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
+import { storeR2JSONString } from "../src/utils/r2";
 
-export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
+export async function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Promise<TokenTvlData> {
   const chainUsdTokenTvls: TokenTvlData = {};
+  const dependancies: { [chain: string]: string[] } = {};
 
   Object.keys(usdTokenBalances).map((id: string) => {
     const bridge = usdTokenBalances[id];
     Object.keys(bridge).map((chain: string) => {
-      if (chain == "tron") {
-        id;
-        bridge;
-      }
       if (canonicalBridgeIds[id] == chain) return;
       if (excludedTvlKeys.includes(chain)) return;
+
+      const dependancy = canonicalBridgeIds[id] ?? protocolBridgeIds[id];
+
+      if (dependancy) {
+        if (!(dependancy in dependancies)) dependancies[dependancy] = [];
+        dependancies[dependancy].push(chain);
+      }
 
       if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
       Object.keys(bridge[chain]).map((rawSymbol: string) => {
@@ -38,6 +43,8 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
       });
     });
   });
+
+  await storeR2JSONString("L2-dependancies", JSON.stringify(dependancies));
 
   return chainUsdTokenTvls;
 }

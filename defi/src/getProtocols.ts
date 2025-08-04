@@ -1,7 +1,4 @@
-import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
-import treasuries from "./protocols/treasury";
-import entities from "./protocols/entities";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -13,9 +10,12 @@ import {
   transformNewChainName,
   replaceChainNamesForOraclesByChain,
 } from "./utils/normalizeChain";
-import { craftChainsResponse } from "./getChains";
-import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import type { IProtocol, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
+import cgSymbolsJson from './utils/symbols/symbols.json'
+import { parentProtocolsById } from "./protocols/parentProtocols";
+
+const cgSymbols: { [id: string]: string } = cgSymbolsJson
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -93,7 +93,7 @@ const stablecoins = [
   "avUSDT",
   "aOptUSDC",
   "sUSDe",
-  "USDY"
+  "USDY",
 ].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
@@ -111,9 +111,10 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   }
 
   for (const token in lastRecord.tvl) {
-    if (majors.includes(token)) {
+    const normalizedToken = cgSymbols[token.replace("coingecko:", "")] ?? token
+    if (majors.includes(normalizedToken)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
-    } else if (stablecoins.some((stable) => token.includes(stable))) {
+    } else if (stablecoins.some((stable) => normalizedToken.includes(stable))) {
       breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
     } else {
       breakdown.others = breakdown.others + lastRecord.tvl[token];
@@ -193,7 +194,7 @@ export async function craftProtocolsResponseInternal(
 
         const dataToReturn: Omit<IProtocol, "raises"> = {
           ...protocol,
-          oraclesByChain: replaceChainNamesForOraclesByChain(false, protocol.oraclesByChain),
+          oraclesByChain: replaceChainNamesForOraclesByChain(useNewChainNames, protocol.oraclesByChain),
           slug: sluggify(protocol),
           tvl: lastHourlyRecord?.tvl ?? null,
           chainTvls,
@@ -205,6 +206,12 @@ export async function craftProtocolsResponseInternal(
           tokenBreakdowns: includeTokenBreakdowns && lastHourlyTokensUsd ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
           mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
+
+        if (protocol.parentProtocol) {
+          const parentProtocol = parentProtocolsById[protocol.parentProtocol];
+          if (parentProtocol)
+            dataToReturn.parentProtocolSlug = sluggify(parentProtocol as any);
+        }
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
 
@@ -231,25 +238,3 @@ export async function craftProtocolsResponse(
 ) {
   return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
-
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const protocols = await craftProtocolsResponse(false);
-
-  const chainData: IChain[] = event.queryStringParameters?.includeChains === "true" ? await craftChainsResponse() : [];
-
-  const response: Array<IProtocol | IChain> = [...protocols, ...chainData];
-
-  return cache20MinResponse(response);
-};
-
-export const treasuriesHandler = async (): Promise<IResponse> => {
-  return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries, true));
-};
-
-export const entitiesHandler = async (): Promise<IResponse> => {
-  return cache20MinResponse(await craftProtocolsResponseInternal(true, entities, true));
-};
-
-// handler({ pathParameters: {} } as any).then(console.log);
-
-export default wrap(handler);

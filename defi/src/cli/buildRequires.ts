@@ -4,9 +4,10 @@ import { writeFileSync, readdirSync } from "fs"
 import { execSync } from "child_process"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 import entities from "../protocols/entities";
+import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 
 function getUnique(arry: string[]) {
-    return [...new Set(arry)]
+  return [...new Set(arry)]
 }
 
 // Add error handling for writing adapter imports
@@ -27,7 +28,7 @@ try {
   writeFileSync("./src/utils/imports/adapters_liquidations.ts",
     `export default {
     ${readdirSync("./DefiLlama-Adapters/liquidations").filter(f => !excludeLiquidation.includes(f))
-        .map(f => `"${f}": require("@defillama/adapters/liquidations/${f}"),`).join('\n')}
+      .map(f => `"${f}": require("@defillama/adapters/liquidations/${f}"),`).join('\n')}
 }`)
 } catch (error) {
   console.log('Error writing adapters_liquidations.ts:', error)
@@ -35,33 +36,32 @@ try {
 
 // For adapters type adaptor
 function getDirectories(source: string) {
-    return readdirSync(source, { withFileTypes: true })
-        .map(dirent => dirent.name)
+  return readdirSync(source, { withFileTypes: true })
+    .map(dirent => dirent.name)
 }
 
 const extensions = ['ts', 'md', 'js']
 function removeDotTs(s: string) {
-    const splitted = s.split('.')
-    if (splitted.length > 1 && extensions.includes(splitted[splitted.length - 1]))
-        splitted.pop()
-    return splitted.join('.')
+  const splitted = s.split('.')
+  if (splitted.length > 1 && extensions.includes(splitted[splitted.length - 1]))
+    splitted.pop()
+  return splitted.join('.')
 }
 
 // dimension-adapters
 
-const excludeKeys = ["index", "README"]
+const excludeKeys = ["index", "README", '.gitkeep']
 const baseFolderPath = "./dimension-adapters" // path relative to current working directory -> `cd /defi`
 const basePackagePath = "@defillama/dimension-adapters" // how is defined in package.json
 const baseGithubURL = "https://github.com/DefiLlama/dimension-adapters/blob/master"
 const importPaths = [
-    "dexs",
-    "fees",
-    "aggregators",
-    "options",
-    "incentives",
-    "protocols",
-    "aggregator-derivatives",
-    "bridge-aggregators"
+  "dexs",
+  "fees",
+  "aggregators",
+  "options",
+  "incentives",
+  "aggregator-derivatives",
+  "bridge-aggregators"
 ]
 
 // Add error handling for dimension adapters
@@ -69,29 +69,24 @@ for (const folderPath of importPaths) {
   try {
     const paths_keys = getDirectories(`${baseFolderPath}/${folderPath}`).filter(key => !excludeKeys.includes(key))
     writeFileSync(`./src/utils/imports/${folderPath.replace("/", "_")}_adapters.ts`,
-        `
+      `
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 export default {
-${paths_keys.map(path => createDimensionAdaptersModule(path, folderPath)).join('\n')}
-} as {[key:string]: {
+${paths_keys.map(path => {
+        try {
+          const response = createDimensionAdaptersModule(path, folderPath)
+          return response
+        } catch (error) {
+          console.log(`Error creating module for ${path} in ${folderPath}:`, error)
+          return ''
+        }
+      }).join('\n')}
+} as any as {[key:string]: {
+    moduleFilePath: string,
     module: { default: Adapter },
     codePath: string
 } }
 
-
-function mockTvlFunction() {
-    throw new Error('This is a mock function, you should not be calling it, maybe you need to use importAdapterDynamic instead?')
-}
-
-// code to replace function string with mock functions in an object all the way down
-function mockFunctions(obj: any) {
-    if (obj === "llamaMockedTVLFunction") {
-        return mockTvlFunction
-    } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-    }
-    return obj
-}
         `)
   } catch (error) {
     console.log(`Error writing ${folderPath} adapters:`, error)
@@ -99,26 +94,20 @@ function mockFunctions(obj: any) {
 }
 
 function createDimensionAdaptersModule(path: string, folderPath: string) {
-    const moduleFilePath = `${basePackagePath}/${folderPath}/${removeDotTs(path)}`
-    let moduleString = `require("${moduleFilePath}")`
+  const moduleFilePath = `${basePackagePath}/${folderPath}/${removeDotTs(path)}`
 
-    // if (process.env.IS_API2_SERVER) {
-        const module = mockFunctions(require(moduleFilePath))
-        moduleString = `mockFunctions(${JSON.stringify(module)})`
-    // }
+  let module = require(moduleFilePath)
+  if (!module.default) {
+    throw new Error(`Module ${moduleFilePath} does not have a default export`)
+  }
+  setModuleDefaults(module.default)
+  module = mockFunctions(module)
 
-    return `"${removeDotTs(path)}": {
+  return `"${removeDotTs(path)}": {
         moduleFilePath: "${moduleFilePath}",
-        module: ${moduleString},
+        module: ${JSON.stringify(module)},
         codePath: "${baseGithubURL}/${folderPath}/${path}"
     },`
-}
-
-// Above type should match
-export interface IImportObj {
-    module: { default: Adapter },
-    codePath: string
-    moduleFilePath: string
 }
 
 // emissions-adapters
@@ -139,6 +128,7 @@ function createImportAdaptersJSON() {
     let data: any = {}
     protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
     writeFileSync(adaptersFile, JSON.stringify(data, null, 2))
+    // we are running this as JS file because it is faster than compiling as ts
     execSync(['node', __dirname + "/buildTvlModuleData.js", adaptersFile].join(' '), { stdio: 'inherit' })
   } catch (error) {
     console.log('Error creating import adapters JSON:', error)
@@ -147,10 +137,10 @@ function createImportAdaptersJSON() {
 
 //Replace all fuctions with mock functions in an object all the way down
 function mockFunctions(obj: any) {
-    if (typeof obj === "function") {
-        return 'llamaMockedTVLFunction'
-    } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-    }
-    return obj
+  if (typeof obj === "function") {
+    return '_lmtf'  // llamaMockedTVLFunction
+  } else if (typeof obj === "object") {
+    Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
+  }
+  return obj
 }

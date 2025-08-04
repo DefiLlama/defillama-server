@@ -1,6 +1,6 @@
 import type { IParentProtocol } from "../../protocols/types";
 import { errorResponse } from "../../utils/shared";
-import { IProtocolResponse, } from "../../types";
+import { IProtocol, IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
 import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache/index";
 import { cachedCraftProtocolV2 } from './craftProtocolV2'
@@ -26,15 +26,15 @@ export async function craftParentProtocolV2({
     });
   }
 
-  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, })
+  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, restrictResponseSize: false })
 
-  const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.map(getProtocolData));
+  const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.filter((i: IProtocol) => !i.excludeTvlFromParent).map(getProtocolData));
 
   const debug_t1 = performance.now(); // start the timer
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises:[] })
+  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises: [] })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]

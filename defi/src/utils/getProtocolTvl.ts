@@ -1,13 +1,11 @@
-import { Protocol } from "../protocols/data";
+import { _InternalProtocolMetadataMap, Protocol, protocolsById, } from "../protocols/data";
 import type { ITvlsWithChangesByChain, ProtocolTvls } from "../types";
 import { secondsInDay, secondsInMonth, secondsInWeek } from "./date";
-import { includeCategoryIntoChainTvl } from "./excludeProtocols";
+import { excludeProtocolInCharts, } from "./excludeProtocols";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./getLastRecord";
-import { importAdapter } from "./imports/importAdapter";
 import {
   extraSections,
   getChainDisplayName,
-  isDoubleCounted,
   nonChains,
 } from "./normalizeChain";
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
@@ -21,7 +19,7 @@ const _getYesterdayTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestam
 const _getLastWeekTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek, secondsInDay)
 const _getLastMonthTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInMonth, secondsInDay)
 
-const includeSection = (chainDisplayName:string)=> !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")
+const includeSection = (chainDisplayName: string) => !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")
 
 export async function getProtocolTvl(
   protocol: Readonly<Protocol>,
@@ -41,26 +39,31 @@ export async function getProtocolTvl(
   let tvlPrevWeek: number | null = null;
   let tvlPrevMonth: number | null = null;
 
+  const pMetadata = _InternalProtocolMetadataMap[protocol.id];
+
+  if (!pMetadata) {
+    console.error(`Protocol metadata not found for ${protocol.id}, skipping it`);
+    return { tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls };
+  }
+
+  const { category, isLiquidStaking, isDoublecounted } = pMetadata;
+
   try {
     const [
       lastRecord,
       previousDayRecord,
       previousWeekRecord,
       previousMonthRecord,
-      module,
       usdTokens
     ] = await Promise.all([
       getLastHourlyRecord(protocol),
       getYesterdayTvl(protocol),
       getLastWeekTvl(protocol),
       getLastMonthTvl(protocol),
-      importAdapter(protocol),
       protocol.tokensExcludedFromParent !== undefined ? Promise.all(
-        [getLastHourlyTokensUsd(protocol),getYesterdayTokensUsd(protocol),getLastWeekTokensUsd(protocol),getLastMonthTokensUsd(protocol)]
-        ) :null
+        [getLastHourlyTokensUsd(protocol), getYesterdayTokensUsd(protocol), getLastWeekTokensUsd(protocol), getLastMonthTokensUsd(protocol)]
+      ) : null
     ]);
-
-    const isDoubleCount = isDoubleCounted(module.doublecounted, protocol.category);
 
     if (lastRecord) {
       Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
@@ -74,8 +77,8 @@ export async function getProtocolTvl(
           tvlPrevWeek = previousWeekRecord[chain] || null;
           tvlPrevMonth = previousMonthRecord[chain] || null;
 
-          if (includeCategoryIntoChainTvl(protocol.category)) {
-            if (isDoubleCount) {
+          if (!excludeProtocolInCharts(category)) {
+            if (isDoublecounted) {
               chainTvls["doublecounted"] = {
                 tvl,
                 tvlPrevDay,
@@ -84,7 +87,7 @@ export async function getProtocolTvl(
               };
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking") {
+            if (isLiquidStaking) {
               chainTvls["liquidstaking"] = {
                 tvl,
                 tvlPrevDay,
@@ -93,10 +96,7 @@ export async function getProtocolTvl(
               };
             }
 
-            if (
-              protocol.category?.toLowerCase() === "liquid staking" &&
-              isDoubleCount
-            ) {
+            if (isLiquidStaking && isDoublecounted) {
               chainTvls["dcAndLsOverlap"] = {
                 tvl,
                 tvlPrevDay,
@@ -116,9 +116,9 @@ export async function getProtocolTvl(
 
           if (
             includeSection(chainDisplayName) &&
-            includeCategoryIntoChainTvl(protocol.category)
+            !excludeProtocolInCharts(category)
           ) {
-            if (isDoubleCount) {
+            if (isDoublecounted) {
               chainTvls[`${chainDisplayName}-doublecounted`] = {
                 tvl: chainTvl,
                 tvlPrevDay: previousDayRecord[chain] || null,
@@ -127,7 +127,7 @@ export async function getProtocolTvl(
               };
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking") {
+            if (isLiquidStaking) {
               chainTvls[`${chainDisplayName}-liquidstaking`] = {
                 tvl: chainTvl,
                 tvlPrevDay: previousDayRecord[chain] || null,
@@ -136,10 +136,7 @@ export async function getProtocolTvl(
               };
             }
 
-            if (
-              protocol.category?.toLowerCase() === "liquid staking" &&
-              isDoubleCount
-            ) {
+            if (isLiquidStaking && isDoublecounted) {
               chainTvls[`${chainDisplayName}-dcAndLsOverlap`] = {
                 tvl: chainTvl,
                 tvlPrevDay: previousDayRecord[chain] || null,
@@ -153,12 +150,12 @@ export async function getProtocolTvl(
         if (protocol.tokensExcludedFromParent !== undefined && usdTokens !== null && usdTokens[0] !== undefined) {
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
           if (chain === "tvl" || includeSection(chainDisplayName)) {
-            function getExcludedTvl(usdTokensSection:any){
-              if(typeof usdTokensSection !== "object"){
+            function getExcludedTvl(usdTokensSection: any) {
+              if (typeof usdTokensSection !== "object") {
                 return 0
               }
-              let tokensToExclude:string[] = []
-              if(chain === "tvl"){
+              let tokensToExclude: string[] = []
+              if (chain === "tvl") {
                 tokensToExclude = Array.from(new Set(Object.values(protocol.tokensExcludedFromParent!).flat()))
               } else {
                 tokensToExclude = protocol.tokensExcludedFromParent![chainDisplayName]
@@ -170,7 +167,7 @@ export async function getProtocolTvl(
                 return sum
               }, 0)
             }
-            if(chain === "tvl" || protocol.tokensExcludedFromParent[chainDisplayName]){
+            if (chain === "tvl" || protocol.tokensExcludedFromParent[chainDisplayName]) {
               chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
                 tvl: getExcludedTvl(usdTokens[0]?.[chain]),
                 tvlPrevDay: getExcludedTvl(usdTokens[1]?.[chain]),
@@ -194,27 +191,31 @@ export async function getProtocolTvl(
       });
 
       if (chainsLength === 0 || (chainsLength <= 3 && allTvlsAreAddl)) {
-        chainTvls[protocol.chains[0]] = {
-          tvl,
-          tvlPrevDay,
-          tvlPrevWeek,
-          tvlPrevMonth,
-        };
+        // let defaultChain = protocol.chains[0] ?? protocolsById[protocol.id]?.chains[0] ?? protocolsById[protocol.id]?.chain
+        let defaultChain = protocol.chains[0]
+        if (defaultChain) {
+          chainTvls[defaultChain] = {
+            tvl,
+            tvlPrevDay,
+            tvlPrevWeek,
+            tvlPrevMonth,
+          };
 
-        if (chainTvls["doublecounted"]) {
-          chainTvls[`${protocol.chains[0]}-doublecounted`] = {
-            ...chainTvls["doublecounted"],
-          };
-        }
-        if (chainTvls["liquidstaking"]) {
-          chainTvls[`${protocol.chains[0]}-liquidstaking`] = {
-            ...chainTvls["liquidstaking"],
-          };
-        }
-        if (chainTvls["dcAndLsOverlap"]) {
-          chainTvls[`${protocol.chains[0]}-dcAndLsOverlap`] = {
-            ...chainTvls["dcAndLsOverlap"],
-          };
+          if (chainTvls["doublecounted"]) {
+            chainTvls[`${defaultChain}-doublecounted`] = {
+              ...chainTvls["doublecounted"],
+            };
+          }
+          if (chainTvls["liquidstaking"]) {
+            chainTvls[`${defaultChain}-liquidstaking`] = {
+              ...chainTvls["liquidstaking"],
+            };
+          }
+          if (chainTvls["dcAndLsOverlap"]) {
+            chainTvls[`${defaultChain}-dcAndLsOverlap`] = {
+              ...chainTvls["dcAndLsOverlap"],
+            };
+          }
         }
       }
     }

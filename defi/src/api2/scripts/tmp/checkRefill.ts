@@ -55,8 +55,8 @@ async function run() {
   Object.entries(allCache).forEach(([adapterType, protocols]: any) => {
     console.log(adapterType)
     Object.entries(protocols).forEach(([protocolId, data]: any) => {
+      console.table(data)
       if (data.length < 3) return;
-      // console.table(data)
       let data0 = data[0].value
       if (data[1].value === data0 && data[2].value === data0) {
         possibleDuplicates.push({ adapterType, protocolId, data })

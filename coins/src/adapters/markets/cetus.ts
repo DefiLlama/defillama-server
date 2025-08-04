@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export function cetus(timestamp: number) {
 
+  throw new Error("Cetus is broken")
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
     throw new Error("Can't fetch historical data")

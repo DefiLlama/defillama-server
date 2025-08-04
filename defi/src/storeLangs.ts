@@ -1,6 +1,6 @@
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { processProtocols, TvlItem } from "./storeGetCharts";
-import type { Protocol } from "./protocols/data";
+import type { _InternalProtocolMetadata, Protocol } from "./protocols/data";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { storeRouteData } from "./api2/cache/file-cache";
@@ -70,7 +70,7 @@ export async function storeLangs({ ...options }: any = {}) {
   const sumDailySolanaOpenSourceTvls = {} as SumDailyTvls;
 
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: Protocol) => {
+    async (timestamp: number, item: TvlItem, protocol: Protocol, _protocolMetadata: _InternalProtocolMetadata) => {
       const language = protocol.language;
       if (language !== undefined) {
         sum(sumDailyTvls, language, timestamp, item.tvl, languageProtocols, protocol.name);

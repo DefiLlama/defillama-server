@@ -38,7 +38,8 @@ async function generateSearchList() {
         symbol: p.symbol,
         tvl: p.tvl,
         logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(p.name)}`
+        route: `/protocol/${standardizeProtocolName(p.name)}`,
+        ...(p.deprecated ? {deprecated: true} : {})
     }) as any).concat(protocols.parentProtocols.map(parent=>({
         id: normalize(parent.id.replace("#", "_")),
         name: parent.name,
@@ -50,12 +51,12 @@ async function generateSearchList() {
         name: chain,
         logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
         tvl: chainTvl[chain],
-        route: `/chain/${chain}`
+        route: `/chain/${standardizeProtocolName(chain)}`
     }))).concat(protocols.protocolCategories.map(category=>({
         id: `category_${normalize(category)}`,
         name: `All protocols in ${category}`,
         tvl: categoryTvl[category],
-        route: `/protocols/${category}`
+        route: `/protocols/${standardizeProtocolName(category)}`
     })))
     return results
 }
@@ -88,4 +89,5 @@ const main = async ()=>{
     console.log(status)
 }
 
-export default main
+//export default main
+main()

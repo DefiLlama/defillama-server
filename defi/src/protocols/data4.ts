@@ -20152,7 +20152,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Avalanche"],
-    module: "dummy.js",
+    module: "pangolin-v3/index.js",
     twitter: "pangolindex",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#pangolin",

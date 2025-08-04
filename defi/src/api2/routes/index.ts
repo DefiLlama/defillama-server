@@ -71,6 +71,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
   router.get("/lite/charts/categories/:category", defaultFileHandler);
+  router.get("/lite/chains-by-categories", defaultFileHandler);
+  router.get("/lite/chains-by-tags", defaultFileHandler);
   router.get("/charts/categories/:category", ew(getCategoryChartByChainData));
   router.get("/charts/categories/:category/:chain", ew(getCategoryChartByChainData));
   router.get("/charts/tags/:tag", ew(getTagChartByChainData));
@@ -83,8 +85,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
   router.get("/lite/protocols2", defaultFileHandler);
   router.get("/lite/v2/protocols", defaultFileHandler);
-  router.get("/chains2", ew(getFormattedChainsData))
-  router.get("/chains2/:category", ew(getFormattedChainsData))
+  router.get("/chains2", (_:any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
+  router.get("/chains2/:category", defaultFileHandler)
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
 

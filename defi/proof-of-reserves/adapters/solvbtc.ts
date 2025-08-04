@@ -32,10 +32,6 @@ const mintedTokens = [
     address: '0x541FD749419CA806a8bc7da8ac23D346f2dF8B77',
   },
   {
-    chain: 'core',
-    address: '0x9410e8052bc661041e5cb27fdf7d9e9e842af2aa',
-  },
-  {
     chain: 'taiko',
     address: '0x541FD749419CA806a8bc7da8ac23D346f2dF8B77',
   },

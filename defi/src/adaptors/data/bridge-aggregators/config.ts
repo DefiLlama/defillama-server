@@ -30,5 +30,11 @@ export default {
     },
     "rango": {
         id: "6382"
+    },
+    "dzap": {
+        id: "6435"
+    },
+    "opensea": {
+        id: "2258"
     }
 } as AdaptorsConfig

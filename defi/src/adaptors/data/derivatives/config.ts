@@ -11,21 +11,16 @@ export default {
         id: "2326"
     },
     "synfutures-v1": {
-        parentId: "SynFutures",
         id: "2328"
     },
     "vela": {
         id: "2548"
     },
     "hyperliquid-perp": {
-        parentId: "Hyperliquid",
         id: "5507",
-        "enabled": true
     },
     "dydx": {
-        parentId: "dYdX",
         id: "144",
-        disabled: true
     },
     "mux-protocol-perps": {
         id: "2254",
@@ -39,12 +34,10 @@ export default {
         id: "2848"
     },
     "pika-protocol": {
-        parentId: "Pika Protocol",
         id: "916"
     },
     "urdex": {
         id: "3085",
-        "enabled": true
     },
     "hmx": {
         id: "2296"
@@ -62,16 +55,14 @@ export default {
         }
     },
     "pika-protocol-v4": {
-        parentId: "Pika Protocol",
         id: "3281"
     },
     "gains-network": {
         id: "1018"
     },
-    "palmswap": {
-        "enabled": false,
-        id: "3279"
-    },
+    // "palmswap": {
+    //     id: "3279"
+    // },
     "aevo": {
         id: "2797",
         cleanRecordsConfig: {
@@ -83,10 +74,9 @@ export default {
     "rollup-finace-perps": {
         id: "2889",
     },
-    "metavault-derivative": {
-        "enabled": false,
-        id: "1801"
-    },
+    // "metavault-derivative": {
+    //     id: "1801"
+    // },
     "satori": {
         id: "2982",
         cleanRecordsConfig: {
@@ -105,7 +95,6 @@ export default {
         }
     },
     "apex": {
-        parentId: "ApeX Protocol",
         id: "1878",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -120,7 +109,6 @@ export default {
         id: "1804",
     },
     "thena-perp": {
-        parentId: "Thena",
         id: "3537",
     },
     "panacakeswap-perp": {
@@ -158,10 +146,9 @@ export default {
             },
         }
     },
-    "tigris": {
-        "enabled": false,
-        id: "3129"
-    },
+    // "tigris": {
+    //     id: "3129"
+    // },
     "paradex": {
         id: "3648",
         cleanRecordsConfig: {
@@ -177,7 +164,6 @@ export default {
         id: "3747"
     },
     "equation": {
-        parentId: "Equation",
         id: "3726",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -192,9 +178,7 @@ export default {
         id: "3599",
     },
     "rabbitx": {
-        enabled: true,
         id: "2886",
-        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1700524800": true,
@@ -217,11 +201,9 @@ export default {
         id: "2175"
     },
     "synfutures-v2": {
-        parentId: "SynFutures",
         id: "3061"
     },
     "metavault-derivatives-v2": {
-        parentId: "Metavault",
         id: "3911"
     },
     "kiloex": {
@@ -240,7 +222,6 @@ export default {
         id: "4026"
     },
     "dydx-v4": {
-        parentId: "dYdX",
         id: "4067",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -249,7 +230,6 @@ export default {
         }
     },
     "equation-v2": {
-        parentId: "Equation",
         id: "4074",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -271,7 +251,6 @@ export default {
         }
     },
     "kinetix-derivatives-v2": {
-        parentId: "Kinetix",
         id: "4110"
     },
     "pingu": {
@@ -299,9 +278,7 @@ export default {
         id: "4045"
     },
     // "blastfutures": { // duplicate with rabbitx fusion
-    //     enabled: false,
     //     id: "4221",
-    //     parentId: "RabbitX Fusion",
     //     cleanRecordsConfig: {
     //         genuineSpikes: {
     //             "1709337600": true,
@@ -312,7 +289,6 @@ export default {
     //     }
     // },
     "synfutures-v3": {
-        parentId: "SynFutures",
         id: "4215"
     },
     "avantis": {
@@ -342,7 +318,6 @@ export default {
         }
     },
     "logx": {
-        parentId: "LogX",
         id: "5137"
     },
     "swych": {
@@ -376,11 +351,9 @@ export default {
         id: "4555"
     },
     "linehub-perps": {
-        parentId: "LineHub",
         id: "4842"
     },
     "apex-omni": {
-        parentId: "ApeX Protocol",
         id: "4822",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -390,7 +363,6 @@ export default {
     },
     "edgeX": {
         id: "4954",
-        "enabled": true,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -402,7 +374,6 @@ export default {
         id: "5016",
     },
     "bmx-freestyle": {
-        parentId: "BMX",
         id: "4903"
     },
     "tradoor": {
@@ -424,11 +395,9 @@ export default {
         id: "5208",
     },
     "quickswap-perps": {
-        parentId: "QuickSwap",
         id: "2980",
     },
     "capybara-perp": {
-        parentId: "Capybara Exchange",
         id: "5257",
     },
     "defx": {
@@ -450,11 +419,9 @@ export default {
         id: "5353"
     },
     "thetis-market": {
-        parentId: "Thetis Market",
         id: "5469"
     },
     "mars-perp": {
-        parentId: "Mars Protocol",
         id: "5498",
     },
     "satoshi-perps": {
@@ -490,8 +457,7 @@ export default {
     "vest": {
         id: "4400"
     },
-    // "goosefx_v2": {
-    //     enabled: false, // team asked to have adapter moved to dexs config
+    // "goosefx_v2": { // team asked to have adapter moved to dexs config
     //     id: "5998"
     // },
     "zo": {
@@ -527,7 +493,6 @@ export default {
         },
         "displayName": "GMX - Derivatives V1",
         id: "337",
-        "enabled": true
     },
     "metavault_trade-metavault-derivative": {
         id: "1801"
@@ -535,7 +500,6 @@ export default {
     "morphex-derivatives": {
         "displayName": "Morphex - Derivatives",
         id: "2662",
-        "enabled": true
     },
     "covo-v2-derivatives": {
         "displayName": "Covo V2 - Derivatives",
@@ -551,7 +515,6 @@ export default {
     "level-finance-level-finance-derivative": {
         "displayName": "Level Finance - Derivatives",
         id: "2395",
-        "enabled": true
     },
     "el-dorado-exchange-derivatives": {
         id: "2356",
@@ -564,11 +527,9 @@ export default {
     },
     "vertex-protocol-derivatives": {
         id: "2899",
-        "enabled": true
     },
     "voodoo-trade-derivatives": {
         id: "3792",
-        "enabled": true
     },
     "pinnako-derivatives": {
         id: "3209",
@@ -584,7 +545,6 @@ export default {
         id: "970"
     },
     "grizzly-trade-derivatives": {
-        "disabled": true,
         id: "3301"
     },
     "ktx-derivatives": {
@@ -594,14 +554,12 @@ export default {
         "displayName": "GMX - Derivatives V2",
         id: "3365"
     },
-    "meridian-trade-derivatives": {
-        "enabled": false,
-        id: "3386"
-    },
+    // "meridian-trade-derivatives": {
+    //     id: "3386"
+    // },
     "morphex-old-derivatives": {
         "displayName": "Morphex - Derivatives",
         id: "3483",
-        "enabled": true
     },
     "nether-fi-derivatives": {
         id: "3509"
@@ -623,10 +581,9 @@ export default {
     "swapbased-perps": {
         id: "3373"
     },
-    "derivio-derivatives": {
-        "enabled": false,
-        id: "3759"
-    },
+    // "derivio-derivatives": {
+    //     id: "3759"
+    // },
     "beamex-beamex-perps": {
         id: "3251"
     },
@@ -683,6 +640,32 @@ export default {
     },
     "privex": {
         id: "6419"
-    }
-
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "elys-perp": {
+        id: "6450"
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
+    "ostrich": {
+        id: "6442"
+    },
+    "hibachi": {
+        id: "6467"
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "pvp-trade": {
+        id: "6510"
+    },
+    "okto-wallet": {
+        id: "6513"
+    },
 } as AdaptorsConfig

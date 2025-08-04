@@ -1,15 +1,13 @@
 import '../utils/failOnError'
 require("dotenv").config();
 
-import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
 import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
-import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
-import { getDisplayChainNameCached } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
@@ -18,12 +16,10 @@ import * as sdk from '@defillama/sdk'
 
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
 import { storeRouteData } from "../cache/file-cache"
-import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors"
 import { sluggifyString } from "../../utils/sluggify"
-import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
-import { ProtocolAdaptor } from '../../adaptors/data/types';
+import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -134,7 +130,7 @@ async function run() {
 
 
     async function pullChangedFromDBAndAddToCache() {
-      let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 5 * 24 * 60 * 60 : 0 // 5 days ago
+      let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 1 * 60 * 60 : 0 // 1 hour ago
       const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
 
       results.forEach((result: any) => {
@@ -252,7 +248,6 @@ async function run() {
       }
       // in the case of chains (like chain fees/revenue), we store records in with id2 field instead of id, maybe for all cases?
       const dimensionProtocolId = dimensionProtocolInfo.protocolType === ProtocolType.CHAIN ? protocolId : dimensionProtocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
-      if (dimensionProtocolInfo.enabled === false) return; // we skip protocols that are disabled
       const tvlProtocolInfo = protocolsById[protocolId] ?? parentProtocolsById[protocolId]
       const knownBadIds = new Set(['1', 'smbswap'])
       if (!tvlProtocolInfo && !knownBadIds.has(protocolId) && !protocolId?.startsWith('chain#')) {
@@ -270,16 +265,18 @@ async function run() {
       protocol.misc = {
         versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
       };
-      const infoKeys = ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames']
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
+
+      // while fetching child data try to dimensions metadata if it exists else protocol metadata (comes from data.ts)
       if (info.childProtocols?.length) protocol.info.childProtocols = info.childProtocols.map((child: any) => {
         const res: any = {}
-        infoKeys.forEach(key => res[key] = (child as any)[key])
+        const childDimData: any = dimensionProtocolMap[child.id]
+        infoKeys.forEach(key => res[key] = childDimData?.[key] ?? (child as any)[key])
         return res
       })
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
-      protocol.info.latestFetchIsOk = true
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
@@ -413,8 +410,6 @@ async function run() {
           // console.log('Using latest record for today', protocolId, protocolName, _protocolData.latest.timestamp, todayRecord.timestamp, protocolLatestRecord)
           protocolLatestRecord = _protocolData.latest
         }
-        // if (!todayRecord && !protocol.info.disabled) todayRecord = _protocolData.latest
-        // if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
         let recordLabel = recordType
@@ -629,8 +624,8 @@ async function run() {
 function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   const parentRecords: any = {}
   const { info, } = protocol
-  info.childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
-  info.linkedProtocols = [info.name].concat(info.childProtocols)
+  const childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
+  info.linkedProtocols = [info.name].concat(childProtocols)
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
@@ -815,7 +810,6 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   // let currentTime = getStartOfTodayTime()
   let currentTime = getUnixTimeNow()
   const response: IJSON<any> = { ...records }
-  const isDisabled = info?.disabled
 
   Object.entries(records).forEach(([timeS, record]: any) => {
     if (!firstTimestamp || record.timestamp < firstTimestamp) {
@@ -833,7 +827,6 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   const fillUptoDays = 3 // we fill in data for upto 3 days
   let missingDataCounter = 0
   while (timeSToUnix(nextTimeS) < currentTime) {
-    if (isDisabled) break; // we dont fill in data for disabled protocols
     if (records[nextTimeS]) {
       missingDataCounter = 0
       lastTimeSWithData = nextTimeS

@@ -2,13 +2,11 @@
 // The migration script is split because, reading from ddb is expensive, we want to do this as little as possible, idea is we run this once
 // and then we can run the rest of the migration scripts multiple times (and test changes) without having to read from ddb
 
-import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord2, } from "../../../adaptors/db-utils/adaptor-record";
-import { getAdapterRecordTypes, } from "../../../adaptors/handlers/getOverviewProcess";
+import { AdaptorRecord, getAdaptorRecord2, } from "../../../adaptors/db-utils/adaptor-record";
 import { writeToPGCache, } from "../../cache/file-cache";
 import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../../adaptors/data"
-import { ProtocolAdaptor } from "../../../adaptors/data/types";
-import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData";
+import { ADAPTER_TYPES, AdaptorRecordType, getAdapterRecordTypes, ProtocolAdaptor } from "../../../adaptors/data/types";
 
 export function getFileCacheKey(adaptorRecordType: AdapterType) {
   return `tmp/dimensions-data-migration-v1/${adaptorRecordType}`

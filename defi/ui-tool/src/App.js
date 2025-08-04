@@ -463,6 +463,33 @@ const App = () => {
             Run
           </Button>
         </Form.Item>
+
+        <Divider style={{ padding: 30 }}></Divider>
+
+        <Form.Item>
+          <Button
+            type="default"
+            icon={<ClearOutlined />}
+            disabled={!isConnected}
+            danger
+            onClick={() => {
+              const payload = {
+                type: 'tvl-runCommand',
+                data: {
+                  action: 'clear-all-dimensions-cache',
+                  protocolName: 'Compound V2'
+                }
+              };
+
+              if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+                wsRef.current.send(JSON.stringify(payload));
+              }
+            }}
+          >
+            Reset dimensions cache
+          </Button>
+        </Form.Item>
+
       </Form>
     )
   }
@@ -916,7 +943,7 @@ const App = () => {
     switch (miscOutputTableData.type) {
       case 'get-protocols-missing-tokens-response':
         data = (
-          <div> 
+          <div>
             <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
               Missing CG Mappings
             </div>
@@ -974,16 +1001,16 @@ const App = () => {
         break;
       case 'get-protocols-token-dominance-response':
         data = (<Table
-        columns={[
-          { title: 'Protocol', dataIndex: 'protocol', key: 'protocol', sorter: (a, b) => a.protocol.localeCompare(b.protocol) },
-          { title: 'Token', dataIndex: 'highestToken', key: 'highestToken', sorter: (a, b) => a.tokenSymbol.localeCompare(b.tokenSymbol) },
-          { title: '% of TVL', dataIndex: 'dominance', key: 'dominance', sorter: (a, b) => a.dominance - b.dominance },
-          { title: 'Token value', dataIndex: 'highestTokenValueHN', key: 'highestTokenValueHN', sorter: (a, b) => a.highestTokenValue - b.highestTokenValue },
-          { title: 'Project tvl', dataIndex: 'totalTvlHN', key: 'totalTvlHN', sorter: (a, b) => a.totalTvl - b.totalTvl },
-          { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
-          // { title: 'forkedFrom', dataIndex: 'forkedFrom', key: 'forkedFrom', sorter: (a, b) => a.forkedFrom.localeCompare(b.forkedFrom) },
-          // { title: 'misrepresentedTokens', dataIndex: 'misrepTokens', key: 'misrepTokens', },
-        ]}
+          columns={[
+            { title: 'Protocol', dataIndex: 'protocol', key: 'protocol', sorter: (a, b) => a.protocol.localeCompare(b.protocol) },
+            { title: 'Token', dataIndex: 'highestToken', key: 'highestToken', sorter: (a, b) => a.tokenSymbol.localeCompare(b.tokenSymbol) },
+            { title: '% of TVL', dataIndex: 'dominance', key: 'dominance', sorter: (a, b) => a.dominance - b.dominance },
+            { title: 'Token value', dataIndex: 'highestTokenValueHN', key: 'highestTokenValueHN', sorter: (a, b) => a.highestTokenValue - b.highestTokenValue },
+            { title: 'Project tvl', dataIndex: 'totalTvlHN', key: 'totalTvlHN', sorter: (a, b) => a.totalTvl - b.totalTvl },
+            { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+            // { title: 'forkedFrom', dataIndex: 'forkedFrom', key: 'forkedFrom', sorter: (a, b) => a.forkedFrom.localeCompare(b.forkedFrom) },
+            // { title: 'misrepresentedTokens', dataIndex: 'misrepTokens', key: 'misrepTokens', },
+          ]}
           dataSource={miscOutputTableData.data}
           pagination={{ pageSize: 5000 }}
           rowKey={(record) => record.id}
@@ -991,18 +1018,18 @@ const App = () => {
         break;
       case 'get-dim-protocols-missing-metrics-response':
         const tableData = miscOutputTableData.data.map(record => {
-          const shallowCopy = {...record}
+          const shallowCopy = { ...record }
           shallowCopy.missingMetrics = record.missingMetrics.join(', ');
           shallowCopy.chains = record.chains.join(', ');
           return shallowCopy
-        })        
+        })
 
         data = (<Table
-        columns={[
-          { title: 'Protocol', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
-          { title: 'Missing Metrics', dataIndex: 'missingMetrics', key: 'missingMetrics', sorter: (a, b) => a.missingMetrics - b.missingMetrics },
-          { title: 'Missing Chains', dataIndex: 'chains', key: 'chains', sorter: (a, b) => a.chains.localeCompare(b.chains) },
-        ]}
+          columns={[
+            { title: 'Protocol', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+            { title: 'Missing Metrics', dataIndex: 'missingMetrics', key: 'missingMetrics', sorter: (a, b) => a.missingMetrics - b.missingMetrics },
+            { title: 'Missing Chains', dataIndex: 'chains', key: 'chains', sorter: (a, b) => a.chains.localeCompare(b.chains) },
+          ]}
           dataSource={tableData}
           pagination={{ pageSize: 5000 }}
           rowKey={(record) => record.id}

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { deleteProtocolCache } from '../../utils/r2'
 import { deleteFromPGCache, getDailyTvlCacheId,  initializeTVLCacheDB } from '../../api2/db'
+import { getFileCacheKeyV2 } from '../../api2/utils/dimensionsUtils'
 
 export async function clearProtocolCache(protocolName: string) {
   const { data: protocols } = await axios.get('https://api.llama.fi/protocols')
@@ -23,4 +24,12 @@ export async function clearProtocolCacheById(protocolId: string) {
   // await deleteFromPGCache(pgCaceId) // clear postgres cache as well
   // add command do it via discord bot
   return console.log("Protocol cache deleted id: ", protocolId)
+}
+
+
+export async function clearAllDimensionsCache() {
+  const { API2_DIMENSIONS_SERVER_URL } = process.env
+  if (!API2_DIMENSIONS_SERVER_URL) throw new Error('Missing required env var: API2_DIMENSIONS_SERVER_URL')
+  await axios.delete(`${API2_DIMENSIONS_SERVER_URL}/debug-pg/${getFileCacheKeyV2()}`)
+  return console.log("All dimensions cache cleared")
 }

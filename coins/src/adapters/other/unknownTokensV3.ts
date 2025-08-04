@@ -59,6 +59,14 @@ const config: any = {
     "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a":
       "0x42514fa59DD4689573D35119CF9E0bda218e15ee", // aUSD
   },
+  scroll: {
+    "0xdb9E8F82D6d45fFf803161F2a5f75543972B229a":
+      "0xb17ccD860337209e2665afD5E7eAE9c0e5716b48", // USDQ
+  },
+  base: {
+    "0xf7178122A087eF8F5c7BeA362b7DaBE38F20Bf05":
+      "0x2019DEB4E18107A2FD8B4acBC7e3878037336fc2", // OMNI
+  },
 };
 
 export function unknownTokensV3(timestamp: number = 0) {

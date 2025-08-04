@@ -1,10 +1,9 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
@@ -157,7 +156,6 @@ export async function craftParentProtocolInternal({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, parentRaises as Array<IRaise>),
-    metrics: getAvailableMetricsById(parentProtocol.id),
     symbol:
       parentProtocol.symbol ??
       (parentProtocol.gecko_id
@@ -165,7 +163,7 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB
@@ -181,20 +179,14 @@ export async function craftParentProtocolInternal({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    const hallmarks: { [date: number]: string } = {};
+    const hallmarks: any = []
     childProtocolsTvls.forEach((module) => {
-      if (module.hallmarks) {
-        module.hallmarks.forEach(([date, desc]: [number, string]) => {
-          if (!hallmarks[date] || hallmarks[date] !== desc) {
-            hallmarks[date] = desc;
-          }
-        });
-      }
+      if (module.hallmarks) 
+        hallmarks.push(...module.hallmarks);
     });
 
-    response.hallmarks = Object.entries(hallmarks)
-      .map(([date, desc]) => [Number(date), desc])
-      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
+    sortHallmarks(hallmarks);
+    response.hallmarks = hallmarks
   }
 
   return response;

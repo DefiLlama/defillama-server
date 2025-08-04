@@ -425,6 +425,7 @@ const data2: Protocol[] = [
     treasury: "kromatika.js",
     listedAt: 1644597183,
     github: ["Kromatika-Finance"],
+    audit_links: ["https://skynet.certik.com/projects/kromatika"]
   },
   {
     id: "1398",
@@ -3494,6 +3495,12 @@ const data2: Protocol[] = [
     module: "01/index.js",
     twitter: "01_exchange",
     listedAt: 1646949250,
+    warningBanners: [
+      {
+        message: "01 Exchange was winded down. Please withdraw your remaining assets.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "1532",
@@ -11445,7 +11452,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Derivatives",
     chains: ["Polygon", "Optimism", "Arbitrum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -11596,6 +11603,12 @@ const data2: Protocol[] = [
     twitter: "AvaultOmni",
     listedAt: 1657291702,
     github: ["AVaultFinance"],
+    warningBanners: [
+      {
+        message: "Avault has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "1888",
@@ -13352,7 +13365,7 @@ const data2: Protocol[] = [
       "https://github.com/solidproof/projects/blob/main/Drachma%20Exchange/SmartContract_Audit_Solidproof_DrachmaExchange.pdf",
     ],
     listedAt: 1660135625,
-    rugged: true,
+    rugged: true
   },
   {
     id: "1966",
@@ -14437,7 +14450,7 @@ const data2: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report/OceanONE-Security-Audit-Report.md",
     ],
     listedAt: 1661353825,
-    deadUrl: true,  },
+  },
   {
     id: "2015",
     name: "MM Stableswap Polygon",
@@ -15330,7 +15343,7 @@ const data2: Protocol[] = [
     module: "junoswap/index.js",
     twitter: "JunoNetwork",
     listedAt: 1662131321,
-    deadUrl: true,  },
+     },
   {
     id: "2053",
     name: "Cega V1",
@@ -18383,7 +18396,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     listedAt: 1665967733,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2186",
@@ -19527,7 +19540,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1666952098,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2234",
@@ -19740,7 +19753,7 @@ const data2: Protocol[] = [
     audit_links: ["https://etherauthority.io/crolend-token-smart-contract-audit"],
     listedAt: 1667316046,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   /* {
     id: "2243",
@@ -20505,7 +20518,7 @@ const data2: Protocol[] = [
     name: "HTX",
     address: null,
     symbol: "-",
-    url: "https://www.huobi.com",
+    url: "https://www.htx.com/",
     description: "Huobi Global is a world-leading cryptocurrency trading exchange.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/htx.png`,
@@ -20519,7 +20532,7 @@ const data2: Protocol[] = [
     twitter: "HuobiGlobal",
     forkedFrom: [],
     listedAt: 1668362612,
-    deadUrl: true,  },
+   },
   {
     id: "2277",
     name: "Weld Finance",
@@ -20645,7 +20658,7 @@ const data2: Protocol[] = [
       "WOOFi Earn features supercharger vaults allow users to provide liquidity in WOOFi swap and earn single sided yields by delegating the liquidity management to the sPMM pool manager.",
     chain: "Binance",
     logo: `${baseIconsUrl}/woofi-earn.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20656,6 +20669,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1668524390,
     parentProtocol: "parent#woofi",
+    audit_links: ["https://learn.woo.org/woofi-docs/woofi-dev-docs/references/audits-and-bounties"]
   },
   {
     id: "2285",
@@ -20788,7 +20802,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "ghostmarket",
     cmcId: "17454",
-    category: "Liquid Staking",
+    category: "NFT Marketplace",
     chains: ["NEO"],
     module: "ghostmarket.js",
     twitter: "ghostmarketio",
@@ -21461,6 +21475,7 @@ const data2: Protocol[] = [
     audit_links: ["https://solidity.finance/audits/GMDAOVault"],
     listedAt: 1669732077,
     governanceID: ["snapshot:gmdgovernance.eth"],
+    deadUrl: true
   },
   {
     id: "2320",
@@ -23406,6 +23421,12 @@ const data2: Protocol[] = [
     listedAt: 1672845040,
     deadUrl: true,
     rugged: true,
+    warningBanners: [
+      {
+        message: "Tegro Finance rugged",
+        level: "rug",
+      }
+    ]
   },
   {
     id: "2407",
@@ -25365,6 +25386,12 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#rehold",
     listedAt: 1675454199,
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "2495",
@@ -25721,8 +25748,8 @@ const data2: Protocol[] = [
   {
     id: "2511",
     name: "HawkFi", // previous Hawksight
-    address: null,
-    symbol: "-",
+    address: "solana:BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
+    symbol: "HAWK",
     url: "https://hawksight.co",
     description:
       "HawkFi is the leading analytics & automation platform for on-chain market makers to get the smartest yield on Solana memecoins and ecosystem tokens. HawkFi currently automates market making for Meteora DLMM (Dynamic Liquidity Market Making) and Orca CLMM (Concentrated Liquidity Market Making).",
@@ -25730,8 +25757,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/hawkfi.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "hawksight",
+    cmcId: "19677",
     category: "Liquidity manager",
     chains: ["Solana"],
     module: "hawksight/index.js",
@@ -27063,7 +27090,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1677149680,
     rugged: true,
-    deadUrl: true,
+    deadUrl: true
   },
   {
     id: "2572",
@@ -27837,6 +27864,13 @@ const data2: Protocol[] = [
     category: "Options",
     chains: ["Arbitrum"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.rysk.finance/resources/oracle"],
+      }
+    ],
     module: "rysk/index.js",
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
@@ -28257,14 +28291,15 @@ const data2: Protocol[] = [
   },
   {
     id: "2625",
-    name: "Bluefin Perps",
+    name: "Bluefin Legacy",
+    previousNames: ["Bluefin Perps"],
     address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
     symbol: "BLUE",
     url: "https://bluefin.io",
     description:
       "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/bluefin-perps.png`,
+    logo: `${baseIconsUrl}/bluefin-legacy.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

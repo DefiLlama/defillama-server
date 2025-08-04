@@ -1,14 +1,10 @@
 import { ChainApi } from "@defillama/sdk";
-import { getLogs } from "../../../utils/cache/getLogs";
-import { CoinData, Write } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import PromisePool from "@supercharge/promise-pool";
-import { wrappedGasTokens } from "../../utils/gasTokens";
-import { nullAddress } from "../../../utils/shared/constants";
 import { getConfig } from "../../../utils/cache";
 
 export default async function getTokenPrices(
@@ -56,7 +52,7 @@ export default async function getTokenPrices(
     allAssetInfos.map((info: any) => info.assetAddress)
   )
 
-  const yieldTokenDataArray: CoinData[] = await getTokenAndRedirectData(
+  const yieldTokenDataMap = await getTokenAndRedirectDataMap(
     [
       ...new Set(allYieldTokenDataArray
         )
@@ -67,11 +63,11 @@ export default async function getTokenPrices(
 
   const allSyPrices = allYieldTokens.map((t: string, i: number) => {
     const remap = scaleMapping.get(t) ?? t;
-    const data = yieldTokenDataArray.find((d: CoinData) => d.address === remap);
+    const data = yieldTokenDataMap[remap]
 
     if (!data) {
 
-      const dataAsset = yieldTokenDataArray.find((d: CoinData) => d.address === allAssetInfos[i].assetAddress);
+      const dataAsset = yieldTokenDataMap[allAssetInfos[i].assetAddress]
       if (!dataAsset) {
         return undefined;
       }
@@ -116,19 +112,34 @@ export default async function getTokenPrices(
 
   async function ptWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length, allTokenInfos.length * 2);
-    const allPtRates = await api.multiCall({
-      abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({
-        target: pendleOracle,
-        params: [i.lp, 0]
-      })),
-      permitFailure: true,
-    })
+    const [allPtRates0, allPtRates1800, allPtRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
 
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allPtRates[i]) return;
-      const ptPrice = syPrice * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+      const ptRate = allPtRates0[i] ?? allPtRates1800[i] ?? allPtRates3600[i]
+      if (!syPrice || !ptRate) return;
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+
+      const ptPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+
       addToDBWritesList(
         writes,
         chain,
@@ -146,16 +157,29 @@ export default async function getTokenPrices(
 
   async function lpWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 2, allTokenInfos.length * 3);
-    const allLpRates = await api.multiCall({
-      abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
-      permitFailure: true,
-    });
+    const [allLpRates0, allLpRates1800, allLpRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
 
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allLpRates[i]) return;
-      const lpPrice = syPrice * (allLpRates[i] / (10 ** allSyDecimals[i]));
+      const lpRate = allLpRates0[i] ?? allLpRates1800[i] ?? allLpRates3600[i]
+      if (!syPrice || !lpRate) return;
+      const lpPrice = syPrice * (lpRate / (10 ** allSyDecimals[i]));
 
       addToDBWritesList(
         writes,
@@ -174,19 +198,34 @@ export default async function getTokenPrices(
 
   async function ytWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 3, allTokenInfos.length * 4);
-    const allYtRates = await api.multiCall({
-      abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({
-        target: pendleOracle,
-        params: [i.lp, 0]
-      })),
-      permitFailure: true,
-    });
+
+    const [allYtRates0, allYtRates1800, allYtRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
     
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allYtRates[i]) return;
-      const ytPrice = syPrice * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      const ytRate = allYtRates0[i] ?? allYtRates1800[i] ?? allYtRates3600[i]
+      if (!syPrice || !ytRate) return;
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+
+      const ytPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,

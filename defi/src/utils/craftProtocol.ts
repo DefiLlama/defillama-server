@@ -1,5 +1,5 @@
 import type { Protocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { _InternalProtocolMetadataMap } from "../protocols/data";
 import ddb, { getHistoricalValues } from "./shared/dynamodb";
 import {
   getLastRecord,
@@ -10,14 +10,11 @@ import {
   hourlyUsdTokensTvl,
   hourlyTokensTvl,
 } from "./getLastRecord";
-import { importAdapter } from "./imports/importAdapter";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
 import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
-import { getR2, storeR2 } from "./r2";
 
 export function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
@@ -93,8 +90,7 @@ export async function buildCoreData({
   useNewChainNames: boolean;
   useHourlyData: boolean;
 }) {
-  const module = await importAdapter(protocolData);
-  const misrepresentedTokens = module.misrepresentedTokens === true;
+  const { hallmarks, misrepresentedTokens } = _InternalProtocolMetadataMap[protocolData.id] || {};
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
@@ -187,8 +183,7 @@ export default async function craftProtocol({
     fetchFrom((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id), lastTimestamp),
   ]);
 
-  const module = await importAdapter(protocolData);
-  const misrepresentedTokens = module.misrepresentedTokens === true;
+  const { hallmarks, misrepresentedTokens, methodology } = _InternalProtocolMetadataMap[protocolData.id] || {};
   const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, { raises }, mcap] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
@@ -219,9 +214,8 @@ export default async function craftProtocol({
     chains: [],
     currentChainTvls: {},
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
-    metrics: getAvailableMetricsById(protocolData.id),
     mcap,
-  };
+  } as any;
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
@@ -307,18 +301,28 @@ export default async function craftProtocol({
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (module.methodology) {
-    response.methodology = module.methodology;
+  if (methodology) {
+    response.methodology = methodology;
   }
   if (misrepresentedTokens === true) {
     response.misrepresentedTokens = true;
   }
-  if (module.hallmarks) {
-    response.hallmarks = module.hallmarks;
-    response.hallmarks?.sort((a, b) => a[0] - b[0]);
+  if (hallmarks) {
+    (response as any).hallmarks = hallmarks;
+
   }
-  if (module.deprecated) {
-    response.deprecated = module.deprecated;
+  if (protocolData.deprecated) {
+    response.deprecated = protocolData.deprecated;
   }
+  if (protocolData.warningBanners) {
+    response.warningBanners = protocolData.warningBanners;
+  }
+  if (protocolData.rugged) {
+    response.rugged = protocolData.rugged;
+  }
+  if (protocolData.deadUrl) {
+    response.deadUrl = protocolData.deadUrl;
+  }
+
   return response;
 }

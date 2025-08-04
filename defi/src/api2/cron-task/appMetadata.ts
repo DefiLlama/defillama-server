@@ -7,10 +7,11 @@
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 
 import fetch from "node-fetch";
-import { pullDevMetricsData } from "./githubMetrics";
+// import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
+import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
@@ -20,36 +21,43 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
+const categoriesSet = new Set<string>();
+const tagsSet = new Set<string>();
+const nameAndIds: any = [];
 
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol;
+  nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
   protocol.childProtocols = [];
 });
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol;
+  nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
+  if (protocol.category) categoriesSet.add(protocol.category);
+  if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   }
 });
 
 const fetchJson = async (url: string) => fetch(url).then((res) => res.json());
-const chainsMap: any = {
+const slugMap: any = {
   Binance: "BSC",
 };
 
 const slug = (tokenName = "") => {
-  if (!chainsMap[tokenName]) chainsMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return chainsMap[tokenName].toLowerCase().split(" ").join("-").split("'").join("");
+  if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
+  return slugMap[tokenName]
 };
 
 export async function storeAppMetadata() {
   console.log("starting to build metadata for front-end");
   try {
     await pullRaisesDataIfMissing();
-    await pullDevMetricsData();
+    // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
@@ -150,18 +158,22 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = { name: chain };
     }
 
-    const nameToId: any = {};
+
     const parentToChildProtocols: any = {};
     for (const protocol of tvlData.protocols) {
-      nameToId[protocol.defillamaId] = protocol.name;
+      const protocolInfo = protocolInfoMap[protocol.defillamaId]
+      if (!protocolInfo) {
+        console.warn(`Protocol ${protocol.defillamaId} not found in protocolInfoMap`);
+        continue;
+      }
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.category === "Bridge" || protocol.category === "Cross Chain Bridge" ? { bridges: true } : {}),
+        ...(bridgeCategoriesSet.has(protocol.category) ? { bridges: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -171,7 +183,7 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl ? { tvl: true } : {}),
+          ...(protocol.tvl != null ? { tvl: true } : {}),
         };
       }
 
@@ -182,15 +194,10 @@ async function _storeAppMetadata() {
       const chainTvls = Object.entries(protocol.chainTvls ?? {}).map((p: any) => [p[0], p[1]?.tvl ?? 0]).sort((a: any, b: any) => b[1] - a[1]);
       for (const [chain] of chainTvls) {
         if (chain.includes("-") || allExtraSections.includes(chain)) continue;
-        if (chainsMap[chain]) {
-          protocolChainSetMap[protocol.defillamaId].add(chainsMap[chain]);
-        } else {
-          protocolChainSetMap[protocol.defillamaId].add(chain);
-        }
+        protocolChainSetMap[protocol.defillamaId].add(chain);
       }
     }
     for (const protocol of tvlData.parentProtocols) {
-      nameToId[protocol.id] = protocol.name;
 
       const name = slug(protocol.name);
       finalProtocols[protocol.id] = {
@@ -255,13 +262,12 @@ async function _storeAppMetadata() {
       }
     }
 
-    for (const market of nftMarketplacesData) {
-      const marketplaceExists = Object.entries(nameToId).find(
-        (protocol) => slug(market.exchangeName) === slug(protocol[1] as string)
-      ) as [string, string] | undefined;
-      if (marketplaceExists) {
-        finalProtocols[marketplaceExists[0]] = {
-          ...finalProtocols[marketplaceExists[0]],
+    const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
+    for (const protocolNameAndId of nameAndIds) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
+      if (allNftMarketplaces.includes(protocolName)) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
           nfts: true,
         };
       }
@@ -601,26 +607,30 @@ async function _storeAppMetadata() {
       };
     }
 
-    for (const protocol of Object.entries(nameToId)) {
-      if (emmissionsData.includes(slug(protocol[1] as string))) {
-        finalProtocols[protocol[0]] = {
-          ...finalProtocols[protocol[0]],
+    for (const protocolNameAndId of nameAndIds) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
+      if (emmissionsData.includes(slug(protocolName))) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
           emissions: true,
         };
       }
     }
 
-    // const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
-    // for (const protocol of Object.entries(nameToId)) {
-    //   if (bridges.includes(slug(protocol[1] as string))) {
-    //     finalProtocols[protocol[0]] = {
-    //       ...finalProtocols[protocol[0]],
-    //       bridge: true,
-    //     };
-    //   }
-    // }
+    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
+    for (const protocolNameAndId of nameAndIds) {
+      const [protocolName, protocolId] = protocolNameAndId.split("+");
+      if (bridges.includes(protocolName)) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
+          bridge: true,
+        };
+      }
+    }
+
+    const chainProtocolCount: any = {};
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
       .reduce((r: any, k) => {
@@ -628,6 +638,10 @@ async function _storeAppMetadata() {
         if (protocolInfoMap[k]) {
           r[k].displayName = protocolInfoMap[k].name;
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
+
+          r[k].chains.forEach((chain: any) => {
+            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1
+          });
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
@@ -674,6 +688,7 @@ async function _storeAppMetadata() {
       chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name);
       if (!chainNameToIdMap[chain.name])
         console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`);
+      chain.protocolCount = chainProtocolCount[chain.name] ?? 0;
     }
 
     await storeRouteData("/config/smol/appMetadata-chains.json", sortedChainData);
@@ -795,6 +810,8 @@ async function _storeAppMetadata() {
     }
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
+
+    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", { categories: Array.from(categoriesSet), tags: Array.from(tagsSet) });
 
     console.log("finished building metadata");
   }

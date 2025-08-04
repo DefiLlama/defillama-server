@@ -14,7 +14,7 @@ test("Dimensions: no repeated ids", async () => {
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     const ids = new Set();
     for (const value of Object.values(map)) {
-      if (value.enabled === false || chainIdSet.has(value.id)) continue;
+      if (chainIdSet.has(value.id)) continue;
       if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
       expect(ids).not.toContain(value.id);
       ids.add(value.id);
@@ -26,7 +26,7 @@ test("Dimensions: no unknown ids", async () => {
   let failed = false;
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     for (const value of Object.values(map)) {
-      if (value.enabled === false ||  chainIdSet.has(value.id) || protocolsById[value.id]) continue;
+      if (chainIdSet.has(value.id) || protocolsById[value.id]) continue;
       console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
       failed = true
     }
@@ -103,7 +103,7 @@ test("valid treasury fields", async () => {
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function'  && _module !== '_lmtf')|| !treasuryKeys.has(key))
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
       }
     }
@@ -319,7 +319,9 @@ test("no surprise category", async () => {
     'Risk Curators',
     'Chain Bribes',
     'DAO Service Provider',
-    'Staking Rental'
+    'Staking Rental',
+    'Canonical Bridge',
+    'Interface'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

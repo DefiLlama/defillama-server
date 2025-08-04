@@ -188,6 +188,24 @@ const marketInfos: MarketInfo[] = [
     oracleDecimals: 0,
     chain: "solana",
   },
+  {
+    address: "EZcRjKu1TpXA1kozWxwAgJ9YpWdW74irMpWyN6cuVNmH",
+    mintAddress: "6SK4WhZTD3fwpkYzE4oaGyqfPU9367MCWPYeNBLrrt1S",
+    symbol: "kySOL",
+    unit: "SOL",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "GpkBYWjccrT1e1T5TJKA15CmSeMNkbANvEfQUCnWGSn9",
+    mintAddress: "EbSf4fhDBDw137wLxfjAitf4p6M43VmkpFk6AZGMJo5M",
+    symbol: "kyJTO",
+    unit: "JTO",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
 ];
 
 export async function sandglass(timestamp: number = 0): Promise<Write[]> {

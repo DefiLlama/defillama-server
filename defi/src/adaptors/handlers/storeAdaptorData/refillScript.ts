@@ -7,8 +7,8 @@ import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
-import { ADAPTER_TYPES } from '../triggerStoreAdaptorData';
 import PromisePool from '@supercharge/promise-pool';
+import { ADAPTER_TYPES } from '../../data/types';
 
 
 // ================== Script Config ==================
@@ -74,7 +74,7 @@ async function refillAdapter() {
   }
 
   protocolToRun = protocol.displayName
-  const adaptor: Adapter = (await importModule(protocol.module)).default;
+  const adaptor: Adapter = await importModule(protocol.module)
   const adapterVersion = adaptor.version
   const isVersion2 = adapterVersion === 2
 

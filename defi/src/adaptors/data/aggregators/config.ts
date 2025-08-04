@@ -10,10 +10,8 @@ export default {
     },
   },
   "dexible": {
-    disabled: true,
     startFrom: 1630022400,
     id: "2249",
-    parentId: "2249",
     displayName: "Dexible V2",
   },
   "deflex": {
@@ -48,14 +46,12 @@ export default {
     id: "3681",
   },
   "caviarnine-agg": {
-    parentId: "CaviarNine",
     id: "5064",
   },
   "aggre": {
     id: "3809",
   },
   // "llamaswap": { // duplicate with volume with other aggregators
-  //   enabled: false,
   //   id: "3847",
   // },
   "openocean": {
@@ -115,7 +111,6 @@ export default {
     id: "5063",
   },
   "aftermath-aggregator": {
-    parentId: "Aftermath Finance",
     id: "3981",
   },
   "dexhunter": {
@@ -131,10 +126,6 @@ export default {
   },
   // "unidex": {
   //   "id": "1833",
-  //   protocolsData: {
-  //       "unidex-dexs-agg": {
-  //           "id": "1833"
-  //       }
   //   }
   // },
   "swapgpt": {
@@ -164,8 +155,6 @@ export default {
     "id": "4278"
   },
   "aperture-swap": {
-    parentId: "Aperture Finance",
-    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -201,7 +190,6 @@ export default {
     }
   },
   "flowx-aggregator": {
-    parentId: "FlowX Finance",
     id: "4825",
   },
   "sushiswap-agg": {
@@ -214,7 +202,6 @@ export default {
     id: "4926",
   },
   "cetus-aggregator": {
-    parentId: "Cetus",
     "id": "4958",
     cleanRecordsConfig: {
       genuineSpikes: {
@@ -226,7 +213,6 @@ export default {
     id: "5028",
   },
   "scallop": {
-    parentId: "Scallop",
     id: "5087",
   },
   "lumia": {
@@ -274,7 +260,6 @@ export default {
     id: "3207",
   },
   "thetis-market": {
-    parentId: "Thetis Market",
     id: "5483"
   },
   "swing": {
@@ -348,7 +333,7 @@ export default {
   "vetrade": {
     id: "6253"
   },
-  // "dzap": {  // wash trading?
+  // "dzap": {  // wash trading?, re-enabled with new listing 6435
   //   id: "6259"
   // },
   "haiku": {
@@ -371,5 +356,18 @@ export default {
   },
   "apstation": {
     id: "6416"
+  },
+  "dzap": {
+    id: "6435"
+  },
+  "rango": {
+    id: "6382"
+  },
+  "metamask": {
+    id: "3031"
+  },
+  "opensea": {
+    id: "2258"
   }
+
 } as AdaptorsConfig;

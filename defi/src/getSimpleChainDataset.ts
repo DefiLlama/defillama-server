@@ -3,6 +3,7 @@ import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, isDouble
 import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
+import { _InternalProtocolMetadataMap } from "./protocols/data";
 
 export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
   let categorySelected = undefined
@@ -29,7 +30,16 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
     if (!protocolTvl) {
       return;
     }
-    if (categorySelected !== undefined && protocolTvl.protocol.category !== categorySelected) {
+
+    const protocolMetadata = _InternalProtocolMetadataMap[protocolTvl.protocol.id];
+    if (!protocolMetadata) {
+      console.error(`Protocol metadata not found for ${protocolTvl.protocol.id}, skipping it`);
+      return;
+    }
+
+    const { category, isLiquidStaking, isDoublecounted } = protocolMetadata;
+
+    if (categorySelected !== undefined && category !== categorySelected) {
       return
     }
 
@@ -69,17 +79,17 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
         }
 
         if ((chainToBeUsed === null && chain === "tvl") || chainToBeUsed === chainName) {
-          if (protocol.doublecounted || protocol.category?.toLowerCase() === "liquid staking") {
-            if (protocol.doublecounted && params["doublecounted"] === "true") {
+          if (isDoublecounted || isLiquidStaking) {
+            if (isDoublecounted && params["doublecounted"] === "true") {
               dayTvl += tvl;
             }
 
-            if (protocol.category?.toLowerCase() === "liquid staking" && params["liquidstaking"] === "true") {
+            if (isLiquidStaking && params["liquidstaking"] === "true") {
               dayTvl += tvl;
             }
             if (
-              protocol.doublecounted &&
-              protocol.category?.toLowerCase() === "liquid staking" &&
+              isDoublecounted &&
+              isLiquidStaking &&
               params["doublecounted"] === "true" &&
               params["liquidstaking"] === "true"
             ) {

@@ -8,7 +8,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, } from "./utils/getLastRecord";
-import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
+import { closeConnection, getLatestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import { elastic } from '@defillama/sdk';
@@ -21,6 +21,7 @@ const maxRetries = 2;
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
 const runOnlyAdapters = process.env.RUN_ONLY_ADAPTERS ? process.env.RUN_ONLY_ADAPTERS.split(',').map((a: string) => a.trim()) : []
+const allProtocolData: any = {}
 
 async function main() {
   console.log('Heap Size Limit (MB):', v8.getHeapStatistics().heap_size_limit / 1024 / 1024);
@@ -39,6 +40,23 @@ async function main() {
   await getCurrentBlock({ chains: [] })
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
   await initializeTVLCacheDB()
+
+  const unixTs6HoursAgo = getUnixTimeNow() - 6 * 60 * 60
+  const unixTs45MinutesAgo = getUnixTimeNow() - 45 * 60
+
+  const allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
+
+  const protocolsUpdatedLast24HoursCount = allProtocolItems.length
+  const protocolsUpdatedLast6HoursCount = allProtocolItems.filter((i: any) => i.data.SK > unixTs6HoursAgo).length
+  const protocolsUpdatedLast45MinutesCount = allProtocolItems.filter((i: any) => i.data.SK > unixTs45MinutesAgo).length
+  console.log(`Protocols count: ${actions.length}`);
+  console.log(`Protocols updated in the last 24 hours: ${protocolsUpdatedLast24HoursCount}`);
+  console.log(`Protocols updated in the last 6 hours: ${protocolsUpdatedLast6HoursCount}`);
+  console.log(`Protocols updated in the last 45 minutes: ${protocolsUpdatedLast45MinutesCount}`);
+
+  allProtocolItems.forEach((item: any) => allProtocolData[item.id] = item.data)
+
+
   let i = 0
   let skipped = 0
   let failed = 0
@@ -90,7 +108,7 @@ async function main() {
       // if (protocolName) runningSet.delete(protocolName)
 
       failed++
-      
+
       success = false
       let errorString = getErrorString(e);
       const errorStack = e?.stack?.split('\n').map((line: string) => {
@@ -108,7 +126,7 @@ async function main() {
     }
 
 
-    const timeTakenI = (getUnixTimeNow() - startTime) / 1e3
+    const timeTakenI = getUnixTimeNow() - startTime
 
     await elastic.addRuntimeLog({
       runtime: timeTakenI,
@@ -121,7 +139,7 @@ async function main() {
     // if (protocolName) runningSet.delete(protocolName)
 
     // console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
-    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
+    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
   // const runningSet = new Set()
@@ -129,7 +147,7 @@ async function main() {
   const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))
     .for(actions)
-    .process(runProcess(filterProtocol))
+    .process(runProcess(filterProtocol as any))
 
   await normalAdapterRuns
   clearPriceCache()
@@ -202,7 +220,7 @@ async function saveSdkInternalCache() {
 }
 
 
-async function filterProtocol(adapterModule: any, protocol: any) {
+function filterProtocol(adapterModule: any, protocol: any) {
   // skip running protocols that are dead/rugged or dont have tvl
   if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
     return false;
@@ -210,7 +228,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
   const getMax = ((i: any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
-  const lastRecord = await getLatestProtocolItem(hourlyTvl, protocol.id)
+  const lastRecord = allProtocolData[protocol.id] 
   // for whatever reason if latest tvl record is not found, run tvl adapter
   if (!lastRecord)
     return true

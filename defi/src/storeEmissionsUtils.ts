@@ -8,7 +8,7 @@ import { storeR2JSONString, getR2 } from "./utils/r2";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
-import { getDisplayChainName } from "./adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
 import { protocolsIncentives } from "../emissions-adapters/no-emissions/incentives";
 
 const prefix = "coingecko:";
@@ -66,7 +66,7 @@ async function aggregateMetadata(
   const documentedSectionAllocation = createSectionData(documentedChart);
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
-  const chainName = getDisplayChainName(rawData.metadata?.chain ?? "");
+  const chainName = getDisplayChainNameCached(rawData.metadata?.chain ?? "");
 
   let documentedData;
   let realTimeData;

@@ -1660,6 +1660,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CurveFinance",
     governanceID: ["snapshot:curve.eth"],
     github: ["curvefi"],
+    warningBanners: [
+      {
+        message: "Curve Finance updated their website to curve.finance. Update all your bookmarks.",
+        level: "low",
+      }
+    ]
   },
   {
     id: "parent#astar-exchange",
@@ -1963,6 +1969,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "magpiexyz_io",
     treasury: "magpie.js",
     governanceID: ["snapshot:magpiexyz.eth"],
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#sudoswap",
@@ -2331,6 +2343,12 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rehold_io",
     github: ["rehold-io"],
+    warningBanners: [
+      {
+        message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#stellaswap",
@@ -2526,7 +2544,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#gmx",
     name: "GMX",
-    url: "https://gmxsol.io/",
+    url: "https://gmx.io",
     description:
       "GMX is a leading onchain exchange for perpetual and spot trading, offering deep liquidity, low fees, multi-chain support, and seamless one-click trading. Powered by isolated and multi-asset pools, the permissionless DEX enables anybody to provide liquidity and integrates with 80+ DeFi projects across Arbitrum, Avalanche, and Solana.",
     logo: `${baseIconsUrl}/gmx.png`,
@@ -3690,6 +3708,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GammaSwapLabs",
     github: ["gammaswap"],
+    treasury: "gammaswap.js",
     wrongLiquidity: true,
   },
   {
@@ -3873,7 +3892,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://dgswap.io",
     description: "DragonSwap is a decentralized automated liquidity protocol.",
     logo: `${baseIconsUrl}/dragonswap-kaia.png`,
-    gecko_id: "dragonswap",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "dgswap",
@@ -4711,7 +4730,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Native",
     url: "https://native.org",
     description:
-      "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+      "Native is an on-chain platform to build token liquidity that is openly accessible and cost effective. It serves as an alternative to traditional AMMs through integration of two innovative designs: the Native Swap Engine and Native Credit Pool",
     logo: `${baseIconsUrl}/native.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -5006,6 +5025,13 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DesynLab",
     github: ["Meta-DesynLab"],
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-09-23",
+      }
+    ]
   },
   {
     id: "parent#novaswap",
@@ -5393,7 +5419,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
     logo: `${baseIconsUrl}/dragon-swap-sei.jpg`,
-    gecko_id: null,
+    gecko_id: "dragonswap",
     cmcId: null,
     chains: [],
     twitter: "dragonswap_dex",
@@ -6507,6 +6533,12 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BeralisDex",
+    warningBanners: [
+      {
+        message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#sosovalue",
@@ -7468,10 +7500,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#ebisu-finance",
-    name: "Ebisu Finance",
-    url: "https://www.ebisu.finance/",
-    description: "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan.",
-    logo: `${baseIconsUrl}/ebisu-finance.jpg`,
+    name: "Ebisu",
+    url: "https://ebisu.money/",
+    description: "Ebisu is a Stablecoin Credit Market. Using a CDP model, users are able to borrow ebUSD against BTC, ETH, and USD pegged assets at competitive, market-set interest rates. ebUSD holders can participate in these credit markets by providing liquidity to Stability Pools and DEXs, earning real yield from borrower interest and liquidation gains.",
+    logo: `${baseIconsUrl}/ebisu.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -7487,6 +7519,80 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BlackholeDex",
+  },
+  {
+    id: "parent#pangolin",
+    name: "Pangolin",
+    url: "https://pangolin.exchange",
+    description: "Pangolin is a decentralized exchange (DEX) launched in 2021 by AvaLabs",
+    logo: `${baseIconsUrl}/pangolin.jpg`,
+    gecko_id: "pangolin",
+    cmcId: "8422",
+    chains: [],
+    twitter: "pangolindex",
+    github: ["pangolindex"],
+    governanceID: ["snapshot:pangolindex.eth"],
+  },
+  {
+    id: "parent#molten",
+    name: "Molten",
+    url: "https://molten.finance/",
+    description: "Molten makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
+    logo: `${baseIconsUrl}/molten.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "moltendex",
+    github: ["MoltenFi"],
+  },
+  {
+    id: "parent#figure-markets",
+    name: "Figure Markets",
+    url: "https://www.figuremarkets.com/",
+    description: "Figure Markets is a decentralized custody platform that offers spot trading, crypto-backed lending, and yield-bearing assets like the SEC-registered YLDS token, using MPC wallets and smart contracts to manage user-owned capital across onchain and real-world strategies.",
+    logo: `${baseIconsUrl}/figure-markets.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "figuremarkets",
+  },
+  {
+    id: "parent#orca",
+    name: "Orca",
+    url: "https://www.orca.so",
+    description: "Solana’s premier liquidity layer.",
+    logo: `${baseIconsUrl}/orca.jpg`,
+    gecko_id: "orca",
+    cmcId: "11165",
+    chains: [],
+    twitter: "orca_so",
+  },
+  {
+    id: "parent#parallel-protocol",
+    name: "Parallel Protocol",
+    url: "https://parallel.best/",
+    description: "Parallel is an over-collateralized, decentralized, modular & capital-efficient stablecoins protocol deployed on several chains. Each stablecoin can be minted against an approved basket of yield generating correlated assets at the oracle price and redeemed for it without cooldown",
+    logo: `${baseIconsUrl}/parallel-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParallelMoney",
+    github: ["parallel-protocol","mimo-capital"],
+    governanceID: ["snapshot:mimo.eth"],
+    stablecoins: ["parallel", "parallel-usdp"],
+    treasury: "mimo-protocol.js",
+  },
+  {
+    id: "parent#etherex",
+    name: "Etherex",
+    url: "https://etherex.finance/",
+    description: "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
+    logo: `${baseIconsUrl}/etherex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "etherexfi",
+    github: ["etherex-finance"],
   },
 ];
 

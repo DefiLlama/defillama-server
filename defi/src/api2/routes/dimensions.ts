@@ -2,13 +2,12 @@
 import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
-import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
 import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
@@ -106,7 +105,7 @@ export async function getOverviewProcess2({
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
-  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols',]
+  const protocolInfoKeys = ['defillamaId', 'name', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols',]
   const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'breakdown30d', 'total14dto7d', 'total7DaysAgo', 'total30DaysAgo']  // TODO: missing breakdown24h/fix it?
 
   response.protocols = Object.entries(protocolSummaries).map(([_id, { summaries, info }]: any) => {
@@ -163,7 +162,7 @@ export async function getProtocolDataHandler2({
 
   const response: any = { ...info }
 
-  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
+  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'total30d' , 'totalAllTime',]
   summaryKeys.forEach(key => response[key] = summary[key])
 
   if (!excludeTotalDataChart) {

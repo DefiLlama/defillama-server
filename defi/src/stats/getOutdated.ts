@@ -1,4 +1,3 @@
-import { successResponse, wrap, IResponse } from "../utils/shared";
 import protocols from "../protocols/data";
 import { getLastRecord, hourlyTvl } from "../utils/getLastRecord";
 import { getCurrentUnixTimestamp } from "../utils/date";
@@ -39,8 +38,3 @@ export async function getOutdated(getLastHourlyRecord = _getLastHourlyRecord) {
     }
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    return successResponse(await getOutdated()); // 10 mins cache
-};
-
-export default wrap(handler);

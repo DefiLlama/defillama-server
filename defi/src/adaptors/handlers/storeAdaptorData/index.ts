@@ -276,13 +276,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } = {}
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
-      let allTokenBreakdownData: any = undefined // since there is no more breakdown adapters, there can only be one
 
-
-
-
-      const { response: runAdapterRes, breakdownData, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all' },) as any
-      allTokenBreakdownData = breakdownData
+      const { response: runAdapterRes, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all' },) as any
       if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 
       const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)
@@ -330,9 +325,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ adaptorRecords, protocolType: adaptor.protocolType, adapterType, protocol, configIdMap })
 
       async function storeTokenBreakdownData() {
-        if (!adapterRecord || !allTokenBreakdownData) return;
+        if (!adapterRecord || !breakdownByToken) return;
         const ddbItem = { ...adapterRecord.getDDBItem() } as any
-        ddbItem.data = allTokenBreakdownData
+        ddbItem.data = breakdownByToken
         ddbItem.source = 'dimension-adapter'
         ddbItem.subType = 'token-breakdown'
         ddbItem.PK = `dimTokenBreakdown#${ddbItem.PK}`

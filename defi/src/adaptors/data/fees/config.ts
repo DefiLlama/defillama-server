@@ -296,7 +296,8 @@ export default {
         id: "2396"
     },
     "hegic": {
-        id: "128"
+        id: "128",
+        defaultChartView: "weekly",
     },
     "el-dorado-exchange": {
         id: "2356"
@@ -2074,7 +2075,8 @@ export default {
         id: "5813"
     },
     "beradrome": {
-        id: "5798"
+        id: "5798",
+        defaultChartView: "weekly",
     },
     "rings": {
         id: "5526"

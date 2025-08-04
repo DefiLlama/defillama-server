@@ -1,4 +1,4 @@
-import { Sequelize, Model, DataTypes } from 'sequelize'
+import { DataTypes, Model, Sequelize } from 'sequelize'
 
 const defaultDataColumns = {
   id: {
@@ -112,6 +112,14 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
     type: {
       type: DataTypes.STRING,
       primaryKey: true,
+    },
+    breakdown: {
+      type: DataTypes.JSON,
+      allowNull: true,
+    },
+    breakdownByChain: {
+      type: DataTypes.JSON,
+      allowNull: true,
     },
   }, {
     sequelize,

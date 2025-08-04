@@ -2,12 +2,12 @@
 import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
-import { errorResponse, successResponse } from "./utils";
+import { readRouteData } from "../cache/file-cache";
 import { timeSToUnix, } from "../utils/time";
-import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
-import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
+import { errorResponse, successResponse } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
@@ -187,6 +187,27 @@ export async function getProtocolDataHandler2({
       chartBreakdown[date] = formatBreakDownData(breakdown)
     })
     response.totalDataChartBreakdown = formatChartData(chartBreakdown)
+  }
+
+  const breakdownData = {} as any
+  const breakdownByChainData = {} as any
+  
+  Object.entries(records).forEach(([date, value]: any) => {
+    const recordData = value.aggregated[recordType]
+    if (recordData?.breakdown) {
+      breakdownData[date] = recordData.breakdown
+    }
+    if (recordData?.breakdownByChain) {
+      breakdownByChainData[date] = recordData.breakdownByChain
+    }
+  })
+
+  if (Object.keys(breakdownData).length > 0) {
+    response.breakdown = formatChartData(breakdownData)
+  }
+
+  if (Object.keys(breakdownByChainData).length > 0) {
+    response.breakdownByChain = formatChartData(breakdownByChainData)
   }
 
   response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))

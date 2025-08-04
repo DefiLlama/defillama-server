@@ -1,27 +1,25 @@
-import '../utils/failOnError'
+import '../utils/failOnError';
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import loadAdaptorsData from "../../adaptors/data"
-import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
+import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import loadAdaptorsData from "../../adaptors/data";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
+import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata } from "../utils/dimensionsUtils";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
-import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
 import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
-import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
+import * as sdk from '@defillama/sdk';
 import { RUN_TYPE, roundVaules, } from "../utils";
-import * as sdk from '@defillama/sdk'
 
-import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
-import { storeRouteData } from "../cache/file-cache"
-import { sluggifyString } from "../../utils/sluggify"
-import { storeAppMetadata } from './appMetadata';
+import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, ProtocolAdaptor, getAdapterRecordTypes } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
-import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
-
-// const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
+import { sluggifyString } from "../../utils/sluggify";
+import { storeRouteData } from "../cache/file-cache";
+import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions";
+import { storeAppMetadata } from './appMetadata';
 
 const blacklistedAppCategorySet = new Set([
   "Stablecoin Issuer", "MEV",
@@ -38,8 +36,6 @@ function getProtocolAppMetricsFlag(info: any) {
   if (id && blacklistedAppIdSet.has(info.id2)) return false
   return true
 }
-
-
 
 function getTimeData(moveADayBack = false) {
 
@@ -326,7 +322,7 @@ async function run() {
         }
 
         function addRecordData([recordType, aggData]: any) {
-          let { chains, value } = aggData
+          let { chains, value, breakdown, breakdownByChain } = aggData
 
           // if (value === 0) return; // skip zero values
 
@@ -336,6 +332,89 @@ async function run() {
           const summary = summaries[recordType] as RecordSummary
           const protocolRecord = protocolData[recordType]
           if (!summary.earliestTimestamp || timestamp < summary.earliestTimestamp) summary.earliestTimestamp = timestamp
+
+          if (breakdown && Object.keys(breakdown).length > 0) {
+            if (!protocolRecord.breakdownByChain) protocolRecord.breakdownByChain = {}
+            if (!protocolRecord.breakdown) protocolRecord.breakdown = {}
+            
+            const currentChain = Object.keys(chains)[0] || 'unknown'
+            
+            if (!protocolRecord.breakdownByChain[recordType]) {
+              protocolRecord.breakdownByChain[recordType] = {}
+            }
+            
+            if (!protocolRecord.breakdown[recordType]) {
+              protocolRecord.breakdown[recordType] = {}
+            }
+            
+            if (!protocolRecord.breakdownByChain[recordType][currentChain]) {
+              protocolRecord.breakdownByChain[recordType][currentChain] = {}
+            }
+            
+            Object.entries(breakdown).forEach(([key, value]: [string, any]) => {
+              if (value !== null && value !== undefined) {
+                const inc = Number(value);
+                if (!Number.isFinite(inc)) return;
+                
+                const existingValue = protocolRecord.breakdownByChain[recordType][currentChain][key]
+                if (existingValue !== undefined) {
+                  const prev = Number(existingValue);
+                  if (Number.isFinite(prev)) {
+                    protocolRecord.breakdownByChain[recordType][currentChain][key] = prev + inc
+                  } else {
+                    protocolRecord.breakdownByChain[recordType][currentChain][key] = inc
+                  }
+                } else {
+                  protocolRecord.breakdownByChain[recordType][currentChain][key] = inc
+                }
+                
+                const existingGlobalValue = protocolRecord.breakdown[recordType][key]
+                if (existingGlobalValue !== undefined) {
+                  const prevGlobal = Number(existingGlobalValue);
+                  if (Number.isFinite(prevGlobal)) {
+                    protocolRecord.breakdown[recordType][key] = prevGlobal + inc
+                  } else {
+                    protocolRecord.breakdown[recordType][key] = inc
+                  }
+                } else {
+                  protocolRecord.breakdown[recordType][key] = inc
+                }
+              }
+            })
+          }
+
+          if (breakdownByChain && Object.keys(breakdownByChain).length > 0) {
+            if (!protocolRecord.breakdownByChain) protocolRecord.breakdownByChain = {}
+            
+            if (!protocolRecord.breakdownByChain[recordType]) {
+              protocolRecord.breakdownByChain[recordType] = {}
+            }
+            
+            Object.entries(breakdownByChain).forEach(([chain, chainData]: [string, any]) => {
+              if (!protocolRecord.breakdownByChain[recordType][chain]) {
+                protocolRecord.breakdownByChain[recordType][chain] = {}
+              }
+              
+              Object.entries(chainData).forEach(([key, value]: [string, any]) => {
+                if (value !== null && value !== undefined) {
+                  const inc = Number(value);
+                  if (!Number.isFinite(inc)) return;
+                  
+                  const existingValue = protocolRecord.breakdownByChain[recordType][chain][key]
+                  if (existingValue !== undefined) {
+                    const prev = Number(existingValue);
+                    if (Number.isFinite(prev)) {
+                      protocolRecord.breakdownByChain[recordType][chain][key] = prev + inc
+                    } else {
+                      protocolRecord.breakdownByChain[recordType][chain][key] = inc
+                    }
+                  } else {
+                    protocolRecord.breakdownByChain[recordType][chain][key] = inc
+                  }
+                }
+              })
+            })
+          }
 
           if (!skipChainSummary) {
 

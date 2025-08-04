@@ -5,9 +5,11 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
+type ChartBreakdownOptions = 'd' | 'w' | 'm'
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
+    defaultChartView?: ChartBreakdownOptions
     config?: IConfig
     id2: string
     isProtocolInOtherCategories?: boolean
@@ -26,6 +28,7 @@ export interface IConfig {
     id: string
     startFrom?: number
     displayName?: string
+    defaultChartView?: ChartBreakdownOptions
     cleanRecordsConfig?: ICleanRecordsConfig
     isChain?: boolean
 }

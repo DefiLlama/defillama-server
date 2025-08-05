@@ -7594,6 +7594,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "etherexfi",
     github: ["etherex-finance"],
   },
+  {
+    id: "parent#paintswap",
+    name: "Paintswap",
+    url: "https://paintswap.io/",
+    description: "Paintswap is the ultimate open decentralized NFT Marketplace to buy and sell NFTs utilizing the latest NFT technology. Creators of Sonic Airdrop fNFT Order Book, NFT Marketplace & Launchpad, PaintswapVRF, Click Royale, and Estfor Kingdom. Home of $BRUSH",
+    logo: `${baseIconsUrl}/paintswap.jpg`,
+    gecko_id: "paint-swap",
+    cmcId: "13229",
+    chains: [],
+    twitter: "paint_swap",
+    github: ["PaintSwap"],
+  },
 ];
 
 export default parentProtocols;

@@ -6904,6 +6904,7 @@ const data: Protocol[] = [
     module: "paintswap/index.js",
     twitter: "paint_swap",
     audit_links: ["https://solidity.finance/audits/PaintSwap/"],
+    parentProtocol: "parent#paintswap",
   },
   {
     id: "422",

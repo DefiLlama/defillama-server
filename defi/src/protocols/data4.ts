@@ -21361,6 +21361,7 @@ const data4: Protocol[] = [
     module: "paintswap-orderbook/index.js",
     forkedFromIds: [],
     twitter: "paint_swap",
+    parentProtocol: "parent#paintswap",
     listedAt: 1754371199
   },
   {
@@ -21450,6 +21451,49 @@ const data4: Protocol[] = [
     twitter: "gloopfinance",
     audit_links: ["https://docs.gloop.finance/security-and-risk/audits"],
     listedAt: 1754371245
+  },
+  {
+    id: "6528",
+    name: "Edge Capital",
+    address: null,
+    symbol: "-",
+    url: "https://app.euler.finance/governor/edge-capital?network=tac",
+    description:
+      "Crypto hedge fund & largest liquidity provider to early-stage protocols",
+    chain: "TAC",
+    logo: `${baseIconsUrl}/edge-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["TAC"],
+    module: "edge-capital/index.js",
+    forkedFromIds: [],
+    twitter: "EdgeCapitalMgmt",
+    listedAt: 1754418907
+  },
+  {
+    id: "6529",
+    name: "Odyssey Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.odyssey.finance/en",
+    description:
+      "Odyssey is a DeFi super-app that uses ERC-4337 smart accounts to let users run gasless, cross-chain strategies with tools like Loopr, Bundlr, and Yieldr, all in one interface",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/odyssey-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum", "Sonic", "Arbitrum", "Avalanche"],
+    module: "odyssey/index.js",
+    forkedFromIds: [],
+    twitter: "0xOdysseyApp",
+    audit_links: ["https://docs.odyssey.finance/resources/audits"],
+    listedAt: 1754418913
   },
 ];
 export default data4;

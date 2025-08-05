@@ -7204,7 +7204,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#panoptic",
     name: "Panoptic protocol",
     url: "https://panoptic.xyz",
-    description: "Panoptic is a decentralized, permissionless, and open-source protocol for creating and trading synthetic assets on the Berachain blockchain",
+    description: "Panoptic is a DeFi protocol for trading perpetual options by replicating call and put positions using Uniswap v3/v4 liquidity, without relying on oracles or expiration dates",
     logo: `${baseIconsUrl}/panoptic-protocol.jpg`,
     gecko_id: null, 
     cmcId: null,

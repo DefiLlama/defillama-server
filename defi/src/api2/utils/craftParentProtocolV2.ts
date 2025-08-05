@@ -32,7 +32,7 @@ export async function craftParentProtocolV2({
 
   const debug_t1 = performance.now(); // start the timer
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
-    tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
+    tvl.length < 2 || tvl[1]?.date - tvl[0]?.date < 86400 ? true : false;
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises: [] })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []

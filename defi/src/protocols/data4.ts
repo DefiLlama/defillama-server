@@ -7233,6 +7233,7 @@ const data4: Protocol[] = [
     twitter: "csigmafinance",
     audit_links: ["https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Edge%20Audit%20Report%20-%20QuillAudits.pdf", "https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Institutional%20Audit%20Report%20-%20Immunebytes.pdf"],
     github: ["csigma-labs"],
+    wrongLiquidity: true,
     listedAt: 1741612942
   },
   {

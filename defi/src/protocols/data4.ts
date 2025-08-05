@@ -21495,5 +21495,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.odyssey.finance/resources/audits"],
     listedAt: 1754418913
   },
+  {
+    id: "6530",
+    name: "Verified Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.verified.network/",
+    description:
+      "Verified Network is decentralized, global financial infrastructure for issuing, distributing and servicing tokenized securities",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/verified-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Treasury Bills", "Other Fixed Income", "Private Credit"],
+    chains: ["Ethereum", "Base"],
+    module: "verified/index.js",
+    forkedFromIds: [],
+    twitter: "veridefi",
+    listedAt: 1754418921
+  },
 ];
 export default data4;

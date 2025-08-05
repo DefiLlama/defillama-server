@@ -21344,7 +21344,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6523",
-    name: "Paintswap Sonic",
+    name: "Paintswap on Sonic",
     address: "sonic:0xe51ee9868c1f0d6cd968a8b8c8376dc2991bfe44",
     symbol: "BRUSH",
     url: "https://paintswap.io/",

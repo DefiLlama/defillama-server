@@ -6886,7 +6886,7 @@ const data: Protocol[] = [
   },
   {
     id: "421",
-    name: "PaintSwap Fantom",
+    name: "PaintSwap on Fantom",
     address: "fantom:0x85dec8c4B2680793661bCA91a8F129607571863d",
     symbol: "BRUSH",
     url: "https://paintswap.finance",

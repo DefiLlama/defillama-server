@@ -18996,7 +18996,7 @@ const data4: Protocol[] = [
   },*/
   {
     id: "6413",
-    name: "FullSail Finance",
+    name: "Full Sail",
     address: null,
     symbol: "-",
     url: "https://fullsail.finance",

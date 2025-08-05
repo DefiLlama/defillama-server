@@ -3708,7 +3708,7 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
-    "definitive-v2": {
+    "definitive": {
         id: "4257"
     },
     "bybit-staked-sol": {

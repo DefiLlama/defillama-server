@@ -15821,7 +15821,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1749019352,
   },
-  /*{
+  {
     id: "6270", // TODO: add back once the contract in the adapter is deployed
     name: "INDX",
     address: null,
@@ -15848,7 +15848,7 @@ const data4: Protocol[] = [
     module: "indx/index.js",
     twitter: "indxsapp",
     listedAt: 1749084415,
-  },*/
+  },
   {
     id: "6271",
     name: "Hydration Lending",

@@ -3746,5 +3746,8 @@ export default {
     },
     "based-app": {
         id: "6521"
+    },
+    "imx-seaport": {
+        id: "6522"
     }
 } as AdaptorsConfig

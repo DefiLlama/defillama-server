@@ -21321,5 +21321,25 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "basedappHQ",
   },
+  {
+    id: "6522",
+    name: "Immutable Orderbook",
+    address: null,
+    symbol: "-",
+    url: "https://www.immutable.com/products/orderbook",
+    description:
+      "Immutable Orderbook is a shared liquidity layer for NFT trading on Immutable zkEVM, enabling marketplaces and developers to share listings and bids across all integrated platforms while enforcing royalties",
+    chain: "Immutable zkEVM",
+    logo: `${baseIconsUrl}/immutable-orderbook.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Immutable zkEVM"],
+    module: "dummy.js",
+    forkedFromIds: [],
+    twitter: "Immutable",
+  },
 ];
 export default data4;

@@ -18653,7 +18653,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6397",
-    name: "More Vaults",
+    name: "MORE Vaults",
     address: null,
     symbol: "-",
     url: "https://www.more.markets/",

@@ -20474,7 +20474,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2274",
-    name: "Kucoin",
+    name: "KuCoin",
     address: null,
     symbol: "-",
     url: "https://www.kucoin.com",

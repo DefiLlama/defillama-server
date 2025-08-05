@@ -37252,7 +37252,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "GlyphExchange/index.js",
     twitter: "glyph_exchange",
-    parentProtocol: "parent#glyph-exchange",
+    parentProtocol: "parent#molten",
     listedAt: 1711126267,
   },
   {
@@ -49127,7 +49127,8 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4880",
-    name: "Glyph V4",
+    name: "Molten V4",
+    previousNames: ["Glyph V4"],
     address: null,
     symbol: "-",
     url: "https://app-v4.glyph.exchange/swap",
@@ -49143,7 +49144,7 @@ const data3_2: Protocol[] = [
     module: "glyph-v4/index.js",
     twitter: "glyph_exchange",
     forkedFromIds: ["3710"],
-    parentProtocol: "parent#glyph-exchange",
+    parentProtocol: "parent#molten",
     listedAt: 1720786977,
   },
   {

@@ -5056,7 +5056,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "friendtech",
   },
-  {
+  /* {  // merged into molten
     id: "parent#glyph-exchange",
     name: "Glyph Exchange",
     url: "https://glyph.exchange",
@@ -5067,7 +5067,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "glyph_exchange",
-  },
+  }, */
   {
     id: "parent#clearpool",
     name: "Clearpool",

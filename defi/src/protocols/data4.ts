@@ -20554,7 +20554,7 @@ const data4: Protocol[] = [
     github: ["Cabal-VIP"],
     listedAt: 1753650153
   },
-  {
+  /* {  // duplicate of glyph v4
     id: "6485",
     name: "Molten V4",
     address: null,
@@ -20576,7 +20576,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.molten.finance/stable-amm/security"],
     parentProtocol: "parent#molten",
     listedAt: 1753724987
-  },
+  }, */
   {
     id: "6486",
     name: "Splashing Stake",

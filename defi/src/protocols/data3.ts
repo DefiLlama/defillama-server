@@ -56911,7 +56911,7 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/stables-labs-usdx.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "stables-labs-usdx",
+    gecko_id: "usdx-money-usdx",
     cmcId: "34060",
     category: "Basis Trading",
     chains: ["Ethereum", "Binance", "Arbitrum"],

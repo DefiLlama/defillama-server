@@ -19742,6 +19742,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "kinetiq/index.js",
     twitter: "kinetiq_xyz",
+    treasury: "kinetiq.js",
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1752719634,

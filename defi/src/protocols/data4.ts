@@ -14170,7 +14170,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
+        proof: ["https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth"],
         chains: [{chain: "Unichain"]
       },
     listedAt: 1747733002
@@ -14298,7 +14298,13 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://oracles.euler.finance/146/"],
-        chains: [{chain: "Unichain", "Swellchain"}]
+        chains: [{chain: "Unichain"}]
+      },
+           {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://oracles.euler.finance/1923/"],
+        chains: [{chain: "Swellchain"}]
       },
       {
         name: "Chainlink",
@@ -14352,8 +14358,8 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
-        chains: [{chain: "Unichain", "Hyperliquid"}]
+        proof: ["https://app.morpho.org/unichain/market/0xdacbdd711936b4f4bd789f0f7111e36e925d730ebd41178e36e705efd78a4aa1/weeth-weth, https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth, https://app.morpho.org/unichain/market/0xb98720c2275d134e04e37c94e2f82d0078b6b44f7d588cd2554353f45684c3ba/ezeth-weth, https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0"],
+        chains: [{chain: "Unichain"}]
       },
     listedAt: 1747734127
   },
@@ -14419,7 +14425,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
+        proof: ["https://app.morpho.org/unichain/vault/0xfA355999c12C63c465c591daf9C462e14ACf470b/k3-capital-eth-maxi"],
         chains: [{chain: "Unichain"}]
       },
     listedAt: 1747734980
@@ -14486,7 +14492,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
+        proof: ["https://app.morpho.org/unichain/vault/0xc063181747E56c034ac14dC82DB663409566Fdf6/mev-capital-usdc"],
         chains: [{chain: "Unichain"}]
       },
     listedAt: 1747735411
@@ -14537,7 +14543,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
+        proof: ["https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0, https://app.morpho.org/unichain/vault/0x6af5E46456A8ac80BB53a02799965DEF99c26e52/re7-weth, https://app.morpho.org/unichain/vault/0x2c0F7e917257926BA6233B20DE19d7fe3210858C/re7-usdt0"],
         chains: [{chain: "Unichain"}]
       },
     ],
@@ -14597,7 +14603,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/146/"],
+        proof: ["https://app.morpho.org/unichain/vault/0x0993Ae24a988c6925d80aD61344a76B81aA0D34c/steakhouse-eth, https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth"],
         chains: [{chain: "Unichain"}]
       },
     ],

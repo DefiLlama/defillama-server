@@ -3758,5 +3758,11 @@ export default {
     },
     "dexari": {
         id: "6531"
-    }
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
 } as AdaptorsConfig

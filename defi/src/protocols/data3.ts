@@ -43057,7 +43057,7 @@ const data3_2: Protocol[] = [
       {
         message: "This protocol includes unproductive positions (coBTC) that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2025-08-07",
       }
     ]
   },

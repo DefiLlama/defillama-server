@@ -3749,5 +3749,11 @@ export default {
     },
     "imx-seaport": {
         id: "6522"
-    }
+    },
+    "yo-protocol": {
+        id: "5915"
+    },
+    "edge-capital": {
+        id: "6528"
+    },
 } as AdaptorsConfig

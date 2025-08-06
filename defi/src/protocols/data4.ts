@@ -16643,6 +16643,7 @@ const data4: Protocol[] = [
     module: "Jackson/index.js",
     twitter: "JacksonProtocol",
     forkedFromIds: [],
+    treasury: "jackson.js",
     oraclesBreakdown: [
       {
         name: "Pyth",

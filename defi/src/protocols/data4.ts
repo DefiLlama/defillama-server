@@ -21517,5 +21517,25 @@ const data4: Protocol[] = [
     twitter: "veridefi",
     listedAt: 1754418921
   },
+  {
+    id: "6531",
+    name: "Dexari",
+    address: null,
+    symbol: "-",
+    url: "https://dexari.com/",
+    description:
+      "Trade perps & spot with CEX-like UX, advanced charts, and full self-custody. Powered by Hyperliquid",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/dexari.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    forkedFromIds: [],
+    twitter: "DexariDotCom",
+  },
 ];
 export default data4;

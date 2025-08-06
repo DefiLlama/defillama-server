@@ -3756,4 +3756,7 @@ export default {
     "edge-capital": {
         id: "6528"
     },
+    "dexari": {
+        id: "6531"
+    }
 } as AdaptorsConfig

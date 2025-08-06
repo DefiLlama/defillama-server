@@ -3765,4 +3765,7 @@ export default {
     "phantom-perps": {
         id: "6512"
     },
+    "hyperunit": {
+        id: "5788"
+    }
 } as AdaptorsConfig

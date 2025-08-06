@@ -21583,5 +21583,50 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1754499355
   },
+  {
+    id: "6534",
+    name: "Stabil Finance",
+    address: null,
+    symbol: "-",
+    url: "https://stabil.finance",
+    description:
+      "Compound APR to APY on Stabil Finance",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/stabil-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Cronos"],
+    module: "stabil-finance/index.js",
+    forkedFromIds: [],
+    twitter: "StabilFinance",
+    audit_links: [],
+    listedAt: 1754501732
+  },
+  {
+    id: "6535",
+    name: "GAIB",
+    address: null,
+    symbol: "-",
+    url: "https://gaib.ai",
+    description:
+      "GAIB is a financial layer for AI infrastructure, turning GPU-backed assets into yield-generating opportunities. Its AI synthetic dollar, AID, gives investors exposure to the AI economy while earning yield from compute resources. Users can stake AID (sAID) to earn passive income without giving up liquidity. GAIB also supports cloud providers and data centers by offering capital solutions to improve access to compute. Integrated with DeFi protocols like lending, borrowing, and structured products, GAIB connects AI and blockchain to open new investment opportunities",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gaib.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Commodities"],
+    chains: ["Ethereum", "Arbitrum", "Base"],
+    module: "gaib/index.js",
+    forkedFromIds: [],
+    twitter: "gaib_ai",
+    audit_links: ["https://docs.gaib.ai/audits"],
+    github: ["gaib-ai"],
+    listedAt: 1754501739
+  },
 ];
 export default data4;

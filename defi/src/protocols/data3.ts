@@ -60553,14 +60553,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5398",
-    name: "Phantom",
+    name: "Phantom Wallet",
     address: null,
     symbol: "-",
-    url: "https://phantom.app/",
+    url: "https://phantom.com/",
     description:
       "The friendly crypto wallet built for DeFi & NFTs",
     chain: "Solana",
-    logo: `${baseIconsUrl}/phantom.jpg`,
+    logo: `${baseIconsUrl}/phantom-wallet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -60569,6 +60569,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "phantom",
+    parentProtocol: "parent#phantom",
     forkedFrom: [],
   },
   {

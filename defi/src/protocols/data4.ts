@@ -11043,6 +11043,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "AxiomExchange",
+    parentProtocol: "parent#axiom",
   },
   {
     id: "6050",
@@ -21121,6 +21122,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "AxiomExchange",
+    parentProtocol: "parent#axiom",
     forkedFromIds: [],
   },
   {
@@ -21140,6 +21142,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "phantom",
+    parentProtocol: "parent#phantom",
     forkedFromIds: [],
   },
   {

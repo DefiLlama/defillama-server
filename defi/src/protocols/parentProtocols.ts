@@ -7606,6 +7606,28 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "paint_swap",
     github: ["PaintSwap"],
   },
+  {
+    id: "parent#phantom",
+    name: "Phantom",
+    url: "https://phantom.com/",
+    description: "The crypto app for everyone",
+    logo: `${baseIconsUrl}/phantom.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "phantom",
+  },
+  {
+    id: "parent#axiom",
+    name: "Axiom Pro",
+    url: "https://axiom.trade/",
+    description: "Axiom is a fast and feature-rich hybrid web trading experience, designed to elevate users' crypto journey with advanced analytics and high-speed execution",
+    logo: `${baseIconsUrl}/axiom-pro.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AxiomExchange",
+  },
 ];
 
 export default parentProtocols;

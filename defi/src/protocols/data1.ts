@@ -1847,10 +1847,7 @@ const data: Protocol[] = [
     twitter: "dHedgeOrg",
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"],
-    audit_links: [
-      "https://iosiro.com/audits/dhedge-platform-smart-contract-audit",
-      "https://www.certik.com/projects/dhedge",
-    ],
+    audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
   },
   {
     id: "191",

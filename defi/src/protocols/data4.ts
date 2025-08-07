@@ -14181,8 +14181,9 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth","https://oracles.euler.finance/130/"],
-        chains: [{chain: "Unichain"]
+        chains: [{chain: "Unichain"}]
       },
+    ],
     listedAt: 1747733002
   },
   {
@@ -14308,12 +14309,12 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://oracles.euler.finance/130/","https://oracles.euler.finance/1923/"],
-        chains: [{chain: "Unichain"},{chain: "Swellchain}]
+        chains: [{chain: "Unichain"},{chain: "Swellchain"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349"]
+        proof: ["https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349"],
         chains: [{chain: "Ethereum"},{chain: "Base"}]
       },
     
@@ -14371,6 +14372,7 @@ const data4: Protocol[] = [
         ],
         chains: [{chain: "Unichain"}]
       },
+    ],
     listedAt: 1747734127
   },
   {
@@ -14441,6 +14443,7 @@ const data4: Protocol[] = [
         ],
         chains: [{chain: "Unichain"}]
       },
+    ],
     listedAt: 1747734980
   },
   {
@@ -14511,6 +14514,7 @@ const data4: Protocol[] = [
         ],
         chains: [{chain: "Unichain"}]
       },
+    ],
     listedAt: 1747735411
   },
   {

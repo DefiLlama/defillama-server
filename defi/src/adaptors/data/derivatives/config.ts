@@ -670,5 +670,8 @@ export default {
     },
     "based-app": {
         id: "6521"
+    },
+    "dexari": {
+        id: "6531"
     }
 } as AdaptorsConfig

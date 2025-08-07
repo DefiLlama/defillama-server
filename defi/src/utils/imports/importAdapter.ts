@@ -20,7 +20,11 @@ try {
  */
 export function importAdapter(protocol: Protocol) {
     let adapterModule = (adaptersData as any)[protocol.module]
-    if (!adapterModule) throw new Error(`Could not find adapter for ${protocol.module}`)
+    if (!adapterModule) {
+        // throw new Error(`Could not find adapter for ${protocol.module}`)
+        console.error(`Could not find adapter for ${protocol.module}`)
+        return {}
+    }
     return mockFunctions(adapterModule)
 }
 
@@ -36,7 +40,7 @@ function mockTvlFunction() {
 // code to replace function string with mock functions in an object all the way down
 function mockFunctions(obj: any) {
     // disabling the unmocking block as we never use it
-    
+
     /* if (obj === "_lmtf") {  // llamaMockedTVLFunction
         return mockTvlFunction
     } else if (typeof obj === "object") {

@@ -3708,7 +3708,7 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
-    "definitive-v2": {
+    "definitive": {
         id: "4257"
     },
     "bybit-staked-sol": {
@@ -3749,5 +3749,23 @@ export default {
     },
     "imx-seaport": {
         id: "6522"
+    },
+    "yo-protocol": {
+        id: "5915"
+    },
+    "edge-capital": {
+        id: "6528"
+    },
+    "dexari": {
+        id: "6531"
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "hyperunit": {
+        id: "5788"
     }
 } as AdaptorsConfig

@@ -4645,8 +4645,8 @@ const data2: Protocol[] = [
   {
     id: "1582",
     name: "Aperture LM",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x1c986661170c1834db49c3830130d4038eeeb866",
+    symbol: "APTR",
     url: "https://aperture.finance",
     description:
       "Cross-chain investment ecosystem with a community-driven marketplace for strategies. All your DeFi needs taken care of in one single place.",
@@ -21664,8 +21664,8 @@ const data2: Protocol[] = [
   {
     id: "2328",
     name: "SynFutures V1",
-    address: null,
-    symbol: "-",
+    address: "0x6e15a54b5ecac17e58dadeddbe8506a7560252f9",
+    symbol: "F",
     url: "https://www.synfutures.com/",
     description:
       "SynFutures is a next-generation derivatives exchange focused on creating an open and trustless derivatives market by enabling futures trading on anything, anytime, anywhere. By cultivating a free market and maximizing the variety of tradable assets, SynFutures is lowering the barrier to entry in the derivatives market, creating a more equitable derivatives market.",
@@ -22347,8 +22347,8 @@ const data2: Protocol[] = [
   {
     id: "2359",
     name: "RealT RMM Marketplace",
-    address: null,
-    symbol: "-",
+    address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+    symbol: "REG",
     url: "https://rmm.realtoken.network/markets",
     description:
       "Based on the Aave protocol V2, Liquidity providers (Lenders) gain the ability to earn interest and generate passive income returns, while providing liquidity for Borrowers",
@@ -27968,8 +27968,8 @@ const data2: Protocol[] = [
   {
     id: "2610",
     name: "ZORA Marketplace",  // previous ZORA , cant use the previous name field cause parent will have that name
-    address: null,
-    symbol: "-",
+    address: "base:0x1111111111166b7fe7bd91427724b487980afc69",
+    symbol: "ZORA",
     url: "https://market.zora.co",
     description: "The NFT Marketplace Protocol",
     chain: "Ethereum",

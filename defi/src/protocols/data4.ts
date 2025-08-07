@@ -146,8 +146,8 @@ const data4: Protocol[] = [
   {
     id: "5566",
     name: "Zora Bridge",
-    address: null,
-    symbol: "-",
+    address: "base:0x1111111111166b7fe7bd91427724b487980afc69",
+    symbol: "ZORA",
     url: "https://zora.co/",
     description: "Ethereum L2: post for fun. earn for real",
     chain: "Ethereum",
@@ -11485,8 +11485,8 @@ const data4: Protocol[] = [
   {
     id: "6069",
     name: "ZORA Coins",
-    address: null,
-    symbol: "-",
+    address: "base:0x1111111111166b7fe7bd91427724b487980afc69",
+    symbol: "ZORA",
     url: "https://zora.co/explore",
     description:
       "A social network where every post is a coin.",

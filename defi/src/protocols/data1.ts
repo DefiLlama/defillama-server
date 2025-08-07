@@ -14321,8 +14321,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "753",
     name: "RealT Tokens",
-    address: null,
-    symbol: "-",
+    address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+    symbol: "REG",
     url: "https://realt.co",
     description:
       "RealToken provides investors with a simple, intelligent, and user-friendly method to buy into fractional, tokenized properties, leveraging the U.S. legal system and the permissionless, unrestricted token issuance of Ethereum.",
@@ -25926,7 +25926,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1302",
     name: "SundaeSwap V2",
-    address: null,
+    address: "cardano:9a9693a9a37912a5097918f97918d15240c92ab729a0b7c4aa144d7753554e444145",
     symbol: "SUNDAE",
     url: "https://www.sundaeswap.finance/",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",

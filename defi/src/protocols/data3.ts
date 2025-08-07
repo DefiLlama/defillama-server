@@ -1269,8 +1269,8 @@ const data3_1: Protocol[] = [
   {
     id: "2756",
     name: "Sharpe Magnum",
-    address: null,
-    symbol: "SHARPE",
+    address: "ethereum:0x3567aa22cd3ab9aef23d7e18ee0d7cf16974d7e6",
+    symbol: "SAI",
     url: "https://www.sharpe.ai",
     description:
       "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
@@ -2809,8 +2809,8 @@ const data3_1: Protocol[] = [
   {
     id: "2825",
     name: "Nostra Money Market", // previous nostra mainnet
-    address: null,
-    symbol: "-",
+    address: "0x610dbd98a28ebba525e9926b6aaf88f9159edbfd",
+    symbol: "NSTR",
     url: "https://nostra.finance",
     description:
       "Nostra Money Market enables everyday users to engage in permissionless non-custodial lending and borrowing on Starknet. Whether you're looking to earn passive income by lending your crypto or need access to funds through collateralized borrowing, Nostra Money Market provides a seamless financial experience tailored for you.",
@@ -4533,8 +4533,8 @@ const data3_1: Protocol[] = [
   {
     id: "2901",
     name: "Swell Liquid Staking",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     assetToken: "SWETH",
     url: "https://app.swellnetwork.io/",
     description: "Swell is a non-custodial liquid staking protocol",
@@ -8129,8 +8129,8 @@ const data3_1: Protocol[] = [
   {
     id: "3061",
     name: "SynFutures V2", // sunset
-    address: null,
-    symbol: "-",
+    address: "0x6e15a54b5ecac17e58dadeddbe8506a7560252f9",
+    symbol: "F",
     url: "https://trade.synfutures.com/#/trade",
     description: "SynFutures is a permissionless web3 infrastructure for derivatives",
     chain: "Polygon",
@@ -11801,8 +11801,8 @@ const data3_1: Protocol[] = [
   {
     id: "3225",
     name: "HOPE Swap",
-    address: null,
-    symbol: "-",
+    address: "0xc353bf07405304aeab75f4c2fac7e88d6a68f98e",
+    symbol: "HOPE",
     url: "https://hope.money",
     description: `All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.`,
     chain: "Ethereum",
@@ -19261,8 +19261,8 @@ const data3_1: Protocol[] = [
   {
     id: "3554",
     name: "ApertureSwap",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x1c986661170c1834db49c3830130d4038eeeb866",
+    symbol: "APTR",
     url: "https://app.aperture.finance/swap",
     description:
       "Trade crypto and earn rewards on the innovative decentralized exchange with concentrated liquidity on Manta Pacific chain.",
@@ -21099,8 +21099,8 @@ const data3_1: Protocol[] = [
   {
     id: "3637",
     name: "HOPE Lend",
-    address: null,
-    symbol: "-",
+    address: "0xc353bf07405304aeab75f4c2fac7e88d6a68f98e",
+    symbol: "HOPE",
     url: "https://hope.money",
     description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     chain: "Ethereum",
@@ -21120,8 +21120,8 @@ const data3_1: Protocol[] = [
   {
     id: "3638",
     name: "HOPE Collateral",
-    address: null,
-    symbol: "-",
+    address: "0xc353bf07405304aeab75f4c2fac7e88d6a68f98e",
+    symbol: "HOPE",
     url: "https://hope.money",
     description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     chain: "Ethereum",
@@ -21440,8 +21440,8 @@ const data3_1: Protocol[] = [
   {
     id: "3652",
     name: "Nostra Money Market Alpha",
-    address: null,
-    symbol: "-",
+    address: "0x610dbd98a28ebba525e9926b6aaf88f9159edbfd",
+    symbol: "NSTR",
     url: "https://alpha.nostra.finance/",
     description:
       "Nostra Money Market enables everyday users to engage in permissionless non-custodial lending and borrowing on Starknet. Whether you're looking to earn passive income by lending your crypto or need access to funds through collateralized borrowing, Nostra Money Market provides a seamless financial experience tailored for you.",
@@ -22296,8 +22296,8 @@ const data3_1: Protocol[] = [
     id: "3690",
     name: "SuperSweth Vault", // previously Swell Vault
     previousNames: ["Swell Vault"],
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     url: "https://www.swellnetwork.io/vault",
     description:
       "stETH deposited in this vault is unstaked and swapped into swETH, and then earns boosted yield from staking rewards, redirected Swell DAO commission, and Pearls for the upcoming $SWELL Voyage airdrop",
@@ -29813,8 +29813,8 @@ const data3_1: Protocol[] = [
   {
     id: "4026",
     name: "FWX Derivatives",
-    address: null,
-    symbol: "-",
+    address: "avax:0x13b1f0579bc895b2ffb835f295fd9b63fef36da0",
+    symbol: "B4FWX",
     url: "https://fwx.finance/",
     description:
       "FWX is an AMM-based leveraged swap platform that enables anyone to list tokens from the first days they are minted by simply providing liquidity",
@@ -30420,8 +30420,8 @@ const data3_1: Protocol[] = [
   {
     id: "4053",
     name: "Nostra Pools",
-    address: null,
-    symbol: "-",
+    address: "0x610dbd98a28ebba525e9926b6aaf88f9159edbfd",
+    symbol: "NSTR",
     url: "https://app.nostra.finance/pools",
     description:
       "Nostra Pools is an efficient and versatile decentralized exchange. Pools is an Automated Market Maker (AMM) based exchange, powered by constant product and StableSwap algorithms, which allows the trading of a wide range of assets with low slippage. Pools allows liquidity providers to receive swap fees.",
@@ -31060,8 +31060,8 @@ const data3_1: Protocol[] = [
   {
     id: "4078",
     name: "Swell Liquid Restaking",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     assetToken: "rswETH",
     url: "https://app.swellnetwork.io/restake",
     description:
@@ -31672,8 +31672,8 @@ const data3_1: Protocol[] = [
   {
     id: "4105",
     name: "Anzen V1",
-    address: null,
-    symbol: "-",
+    address: "base:0xeec468333ccc16d4bf1cef497a56cf8c0aae4ca3",
+    symbol: "ANZ",
     url: "https://anzen.finance",
     description: "USDz is a digital dollar backed by institutional grade real world assets",
     chain: "Ethereum",
@@ -33701,8 +33701,8 @@ const data3_2: Protocol[] = [
   {
     id: "4190",
     name: "RealT RMM Marketplace V2",
-    address: null,
-    symbol: "-",
+    address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+    symbol: "REG",
     url: "https://rmm.realtoken.network/markets/",
     description:
       "RMM V3, building on Aave V3, is a specialized platform for lending and borrowing that leverages RealTokens - tokens tied to real estate assets - as collateral. Users can use these RealTokens to borrow stablecoins, merging real estate investment with the DeFi space. This innovative approach offers a streamlined way for property investors to maintain liquidity and leverage their investments in the digital finance realm.",
@@ -34210,8 +34210,8 @@ const data3_2: Protocol[] = [
   {
     id: "4212",
     name: "Particle LAMM", // previous particle
-    address: null,
-    symbol: "-",
+    address: "blast:0xa027a3a04b44f79560153234e999b17c88e22db9",
+    symbol: "PTC",
     url: "https://app.particle.trade/",
     description: "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
     chain: "Blast",
@@ -34284,8 +34284,8 @@ const data3_2: Protocol[] = [
   {
     id: "4215",
     name: "SynFutures V3",
-    address: null,
-    symbol: "-",
+    address: "0x6e15a54b5ecac17e58dadeddbe8506a7560252f9",
+    symbol: "F",
     url: "https://trade.synfutures.com/#/trade",
     description:
       "SynFutures is a leading decentralized protocol for perpetual futures, democratizing the derivatives market by empowering users to trade any asset and create arbitrary futures contracts within seconds. Its V3 oAMM introduces the industry's first-ever integration of a unified AMM and on-chain matching order book model.",
@@ -36033,8 +36033,8 @@ const data3_2: Protocol[] = [
   {
     id: "4292",
     name: "Nostra nstSTRK",
-    address: null,
-    symbol: "-",
+    address: "0x610dbd98a28ebba525e9926b6aaf88f9159edbfd",
+    symbol: "NSTR",
     url: "https://app.nostra.finance/stake",
     description:
       "Nostra Staked STRK (nstSTRK) is a transferable liquid staking token that represents the share of the total STRK staked through Nostra. nstSTRK uses the ERC 4626 standard that enables yield-bearing tokens to be easily integrated into DeFi protocols",
@@ -37026,8 +37026,8 @@ const data3_2: Protocol[] = [
   {
     id: "4337",
     name: "Sharpe Earn",
-    address: null,
-    symbol: "SHARPE",
+    address: "ethereum:0x3567aa22cd3ab9aef23d7e18ee0d7cf16974d7e6",
+    symbol: "SAI",
     url: "https://www.sharpe.ai",
     description:
       "Sharpe is an AI-powered DeFi automation and execution environment designed for pro-traders and institutions. Our unified platform streamlines DeFi asset management, execution, and custody and provides traders with a comprehensive environment for earning yields, building strategies, advanced DEX trading, lending automation and so much more.",
@@ -38233,8 +38233,8 @@ const data3_2: Protocol[] = [
   {
     id: "4391",
     name: "GullNetwork Service",
-    address: null,
-    symbol: "-",
+    address: "manta:0x9582b518d28dc65945f8151c25e44a4e80504205",
+    symbol: "GULL",
     url: "https://www.gullnetwork.com",
     description:
       "GullNetwork, The trailblazing Layer 3 solution on Manta Network, transforming Defi with intuitive, codeless innovation and secure, equitable trading.",
@@ -39692,8 +39692,8 @@ const data3_2: Protocol[] = [
   {
     id: "4456",
     name: "Particle DUO",
-    address: null,
-    symbol: "-",
+    address: "blast:0xa027a3a04b44f79560153234e999b17c88e22db9",
+    symbol: "PTC",
     url: "https://duo.particle.trade",
     description:
       "Duo Exchange is an interest rate swapping protocol that allows LPs to access (1) fixed rate yield until maturity and (2) variable but potentially higher yield compared to the yield source.",
@@ -39802,8 +39802,8 @@ const data3_2: Protocol[] = [
   {
     id: "4461",
     name: "Swell L2 Farm",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     url: "https://www.swellnetwork.io/",
     description: "Pre-launch deposits for Swell L2, the L2 for Restaking",
     chain: "Ethereum",
@@ -40799,8 +40799,8 @@ const data3_2: Protocol[] = [
   {
     id: "4505",
     name: "Fjord V2",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x69457a1c9ec492419344da01daf0df0e0369d5d0",
+    symbol: "FJO",
     url: "https://www.fjordfoundry.com",
     description:
       "Connecting innovative projects and engaged backers through a community-focused platform, offering fair and transparent LBPs and token sale events.",
@@ -41950,8 +41950,8 @@ const data3_2: Protocol[] = [
   {
     id: "4557",
     name: "Fjord V1",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x69457a1c9ec492419344da01daf0df0e0369d5d0",
+    symbol: "FJO",
     url: "https://www.fjordfoundry.com",
     description:
       "Connecting innovative projects and engaged backers through a community-focused platform, offering fair and transparent LBPs and token sale events.",
@@ -42079,8 +42079,8 @@ const data3_2: Protocol[] = [
   {
     id: "4563",
     name: "Fenix Concentrated Liquidity",
-    address: null,
-    symbol: "-",
+    address: "blast:0x52f847356b38720b55ee18cb3e094ca11c85a192",
+    symbol: "FNX",
     url: "https://www.fenixfinance.io",
     description:
       "Fenix introduces a cutting-edge modular AMM architecture designed to revolutionize liquidity pool deployment, capital efficiency, price execution, and fee generation for exchanged assets.",
@@ -42102,8 +42102,8 @@ const data3_2: Protocol[] = [
   {
     id: "4564",
     name: "Nuri Legacy",
-    address: null,
-    symbol: "-",
+    address: "scroll:0xaaae8378809bb8815c08d3c59eb0c7d1529ad769",
+    symbol: "NURI",
     url: "https://www.nuri.exchange",
     description:
       "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
@@ -42125,8 +42125,8 @@ const data3_2: Protocol[] = [
   {
     id: "4565",
     name: "Nuri CL",
-    address: null,
-    symbol: "-",
+    address: "scroll:0xaaae8378809bb8815c08d3c59eb0c7d1529ad769",
+    symbol: "NURI",
     url: "https://www.nuri.exchange",
     description:
       "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
@@ -42457,7 +42457,7 @@ const data3_2: Protocol[] = [
   {
     id: "4580",
     name: "SundaeSwap V3",
-    address: null,
+    address: "cardano:9a9693a9a37912a5097918f97918d15240c92ab729a0b7c4aa144d7753554e444145",
     symbol: "SUNDAE",
     url: "https://www.sundaeswap.finance",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
@@ -44103,8 +44103,8 @@ const data3_2: Protocol[] = [
   {
     id: "4654",
     name: "GullNetwork AMM",
-    address: null,
-    symbol: "-",
+    address: "manta:0x9582b518d28dc65945f8151c25e44a4e80504205",
+    symbol: "GULL",
     url: "https://www.gullnetwork.com",
     description: "Uniswap V2 fork on Manta chain",
     chain: "Manta",
@@ -45478,8 +45478,8 @@ const data3_2: Protocol[] = [
   {
     id: "4717",
     name: "Joltify Lend", // previous Joltify Finance
-    address: null,
-    symbol: "-",
+    address: "bsc:0x7db21353a0c4659b6a9a0519066aa8d52639dfa5",
+    symbol: "JOLT",
     url: "https://app.joltify.io/",
     description:
       "The First EVM compatible game-changing L1 Public Chain built on the Cosmos SDK for Real-World Assets (RWA) and Beyond",
@@ -46090,8 +46090,8 @@ const data3_2: Protocol[] = [
   {
     id: "4744",
     name: "Anzen V2",
-    address: null,
-    symbol: "-",
+    address: "base:0xeec468333ccc16d4bf1cef497a56cf8c0aae4ca3",
+    symbol: "ANZ",
     url: "https://anzen.finance",
     description: "USDz is a digital dollar backed by institutional grade real world assets",
     chain: "Ethereum",
@@ -46610,8 +46610,8 @@ const data3_2: Protocol[] = [
   {
     id: "4768",
     name: "Joltify RWA",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x7db21353a0c4659b6a9a0519066aa8d52639dfa5",
+    symbol: "JOLT",
     url: "https://joltify.io",
     description:
       "The First EVM compatible game-changing L1 Public Chain built on the Cosmos SDK for Real-World Assets (RWA) and Beyond.",
@@ -46767,8 +46767,8 @@ const data3_2: Protocol[] = [
   {
     id: "4775",
     name: "Fenix Standard Pools",
-    address: null,
-    symbol: "-",
+    address: "blast:0x52f847356b38720b55ee18cb3e094ca11c85a192",
+    symbol: "FNX",
     url: "https://www.fenixfinance.io",
     description:
       "Fenix introduces a cutting-edge modular AMM architecture designed to revolutionize liquidity pool deployment, capital efficiency, price execution, and fee generation for exchanged assets.",
@@ -50938,8 +50938,8 @@ const data3_2: Protocol[] = [
   {
     id: "4962",
     name: "FWX DEX",
-    address: null,
-    symbol: "-",
+    address: "avax:0x13b1f0579bc895b2ffb835f295fd9b63fef36da0",
+    symbol: "B4FWX",
     url: "https://swap.fwx.finance/pool",
     description:
       "FWX is a permissionless leveraged AMM DEX with permissionless creation of lending markets and futures trading for any token",
@@ -51594,8 +51594,8 @@ const data3_2: Protocol[] = [
   {
     id: "4991",
     name: "Swell BTC LRT",
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     assetToken: "swBTC",
     url: "https://app.swellnetwork.io/stake/swbtc",
     description:
@@ -52167,8 +52167,8 @@ const data3_2: Protocol[] = [
   {
     id: "5017",
     name: "H2 Finance V2",
-    address: null,
-    symbol: "-",
+    address: "cronos_zkevm:0xcaf2fd3f47e7f46e99f74be579b2cc2233f33ef8",
+    symbol: "$H2",
     url: "https://h2.finance",
     description: "Uniswap v2 fork on Cronos zkEVM",
     chain: "Cronos zkEVM",
@@ -52188,8 +52188,8 @@ const data3_2: Protocol[] = [
   {
     id: "5018",
     name: "H2 Finance V3",
-    address: null,
-    symbol: "-",
+    address: "cronos_zkevm:0xcaf2fd3f47e7f46e99f74be579b2cc2233f33ef8",
+    symbol: "$H2",
     url: "https://h2.finance",
     description: "Uniswap v3 fork on Cronos zkEVM",
     chain: "Cronos zkEVM",
@@ -55390,8 +55390,8 @@ const data3_2: Protocol[] = [
   {
     id: "5165",
     name: "Sharpe Perp Aggregator",
-    address: null,
-    symbol: "SHARPE",
+    address: "ethereum:0x3567aa22cd3ab9aef23d7e18ee0d7cf16974d7e6",
+    symbol: "SAI",
     url: "https://www.sharpe.ai",
     description:
       "Sharpe Perp is an omnichain decentralized orderbook perpetual DEX built on Orderly that aims to provide a high-performance, low-latency trading app for traders looking to trade perpetual futures. Sharpe Perp is a hybrid orderbook model that combines the best features of centralized and decentralized exchanges, allowing Sharpe Perp to offer centralized exchange performance with low latency and concentrated liquidity while providing full transparency of decentralized exchanges and full self-custody of funds",
@@ -57517,8 +57517,8 @@ const data3_2: Protocol[] = [
   {
     id: "5262",
     name: "Swell Earn", // previous Swell ETH Earn Vault
-    address: null,
-    symbol: "-",
+    address: "ethereum:0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+    symbol: "SWELL",
     url: "https://app.swellnetwork.io/earn/vaults",
     description: "Swell Earn vaults are designed to simplify access to DeFi strategies, allowing users to effortlessly put their tokens to work in the DeFi ecosystem. By depositing tokens into the vault, users let the system automatically distribute those assets across multiple DeFi opportunities. With vault infrastructure and vault strategies provided by the team at Nucleus and active risk guardianship provided by Gauntlet . Assets deposited by users are certain to be a) up to date with latest opportunities b) optimized to capture the best yield mix and c) risk optimized to ensure best practices",
     chain: "Ethereum",
@@ -59688,8 +59688,8 @@ const data3_2: Protocol[] = [
   {
     id: "5359",
     name: "Solayer Restaking", //previous Solayer SOL
-    address: null,
-    symbol: "-",
+    address: "solana:LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+    symbol: "LAYER",
     url: "https://solayer.org",
     description:
       "sSOL is the universal liquidity layer for delegates [dApps] and LRTs on Solayer. Every unit of SOL can be perceived as a unit of blockspace lent towards dApps, securing network bandwidth and TPS.",
@@ -59711,8 +59711,8 @@ const data3_2: Protocol[] = [
   {
     id: "5360",
     name: "Solayer USD",
-    address: null,
-    symbol: "-",
+    address: "solana:LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+    symbol: "LAYER",
     url: "https://solayer.org",
     description:
       "Solayer USD (sUSD) is the yield-bearing stablecoin on Solana",

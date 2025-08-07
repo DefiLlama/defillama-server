@@ -4489,6 +4489,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "BitciChain",
     url: "https://bitcichain.com/",
+    chainId: 1907,
   },
 } as unknown as ChainCoinGekcoIds
 

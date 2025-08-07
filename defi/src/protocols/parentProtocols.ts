@@ -7641,6 +7641,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["hyperstable"],
     stablecoins: ["hyperstable-usd"],
   },
+  {
+    id: "parent#omni-exchange",
+    name: "Omni Exchange",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine",
+    logo: `${baseIconsUrl}/omni-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Omni_Exchange",
+  },
 ];
 
 export default parentProtocols;

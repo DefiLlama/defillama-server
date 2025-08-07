@@ -21006,7 +21006,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6506",
-    name: "Omni Exchange",
+    name: "Omni Exchange V3",
     address: "base:0xf7178122a087ef8f5c7bea362b7dabe38f20bf05",
     symbol: "OMNI",
     url: "https://omni.exchange",
@@ -21022,6 +21022,7 @@ const data4: Protocol[] = [
     module: "omni-exchange/index.js",
     twitter: "Omni_Exchange",
     forkedFromIds: ["2198"],
+    parentProtocol: "parent#omni-exchange",
     listedAt: 1753925483
   },
   {
@@ -21694,6 +21695,48 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "HyperFlow_fun",
     listedAt: 1754580149
+  },
+  {
+    id: "6539",
+    name: "Omni Exchange V2",
+    address: "base:0xf7178122a087ef8f5c7bea362b7dabe38f20bf05",
+    symbol: "OMNI",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/omni-exchange-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base", "Arbitrum", "Binance", "Avalanche", "Sonic", "Optimism"],
+    module: "omni-exchange-v2/index.js",
+    twitter: "Omni_Exchange",
+    forkedFromIds: ["2197"],
+    parentProtocol: "parent#omni-exchange",
+    listedAt: 1753925483
+  },
+  {
+    id: "6540",
+    name: "Omni Exchange Flux",
+    address: "base:0xf7178122a087ef8f5c7bea362b7dabe38f20bf05",
+    symbol: "OMNI",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/omni-exchange-flux.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base", "Arbitrum", "Binance", "Avalanche", "Sonic", "Optimism"],
+    module: "omni-exchange-flux/index.js",
+    twitter: "Omni_Exchange",
+    forkedFromIds: [],
+    parentProtocol: "parent#omni-exchange",
+    listedAt: 1753925483
   },
 ];
 export default data4;

@@ -2950,5 +2950,14 @@ export default {
     },
     "stellaswap-v4": {
         id: "5802"
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
     }
 } as AdaptorsConfig

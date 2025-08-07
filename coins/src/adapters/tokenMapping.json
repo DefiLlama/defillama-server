@@ -1309,7 +1309,17 @@
       "to": "coingecko#ethereum"
     }
   },
-  "bsc": {
+  "bsc": {  
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc"
+    },
     "0xd7ee80546eb6da5ece3546f11c618a1e1158cc7a": {
       "decimals": "18",
       "symbol": "rtCIC",

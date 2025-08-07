@@ -3080,14 +3080,14 @@ const data: Protocol[] = [
   // },
   {
     id: "249",
-    name: "StakeDAO",
+    name: "Stake-DAO",
     address: "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
     symbol: "SDT",
     url: "https://stakedao.org/",
     description:
       "Stake DAO is a non-custodial decentralized protocol enabling users to access optimized yield opportunities in DeFi",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stakedao.jpg`,
+    logo: `${baseIconsUrl}/stake-dao.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "stake-dao",

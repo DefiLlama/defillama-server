@@ -85,7 +85,7 @@ export class AdapterRecord2 {
       return null
     }
 
-    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, })
+    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, breakdownByLabel: jsonData.breakdownByLabel, breakdownByLabelByChain: jsonData.breakdownByLabelByChain })
 
 
     function validateRecord(record: any) {

@@ -501,12 +501,28 @@ export async function processSingleProtocol(
   //if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) 
   emissionsBrakedown[sluggifiedId] = breakdown;
 
+  let supplyMetrics;
+  if (v2ProcessedData) {
+    supplyMetrics = v2ProcessedData.supplyMetrics;
+  } else {
+    try {
+      supplyMetrics = await V2Processor.calculateAdjustedSupplyMetrics(
+        [],
+        adapter as any,
+        rawData.categories
+      );
+    } catch (error) {
+      console.warn(`Could not calculate supply metrics for V1 adapter ${protocolName}:`, error);
+      supplyMetrics = undefined;
+    }
+  }
+
   const finalData = {
     ...data,
     unlockUsdChart,
+    ...(supplyMetrics && { supplyMetrics }),
     ...(v2ProcessedData && {
       version: 2,
-      supplyMetrics: v2ProcessedData.supplyMetrics,
       componentData: await generateComponentData(v2ProcessedData, [dayAgo, weekAgo, monthAgo], data.metadata.token, priceCache)
     })
   };

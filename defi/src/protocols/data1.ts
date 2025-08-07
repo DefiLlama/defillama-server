@@ -894,7 +894,7 @@ const data: Protocol[] = [
   {
     id: "145",
     name: "Serum",
-    address: null,
+    address: "0x476c5e26a75bd202a9683ffd34359c0cc15be0ff",
     symbol: "SRM",
     url: "https://projectserum.com/",
     description:
@@ -4076,7 +4076,7 @@ const data: Protocol[] = [
   {
     id: "294",
     name: "Anchor",
-    address: null,
+    address: "terra:terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76",
     symbol: "ANC",
     url: "https://anchorprotocol.com/",
     description: "Money market on Terra",
@@ -6043,7 +6043,7 @@ const data: Protocol[] = [
   {
     id: "383",
     name: "Osmosis DEX",
-    address: null,
+    address: "osmosis:uosmo",
     symbol: "OSMO",
     url: "https://osmosis.zone/",
     description:
@@ -11221,7 +11221,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "618",
     name: "Kava Swap",
-    address: null,
+    address: "osmosis:ibc/70CF1A54E23EA4E480DEDA9E12082D3FD5684C3483CBDCE190C5C807227688C5",
     symbol: "SWP",
     url: "https://app.kava.io/swap/pools",
     description:
@@ -14948,7 +14948,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "801",
     name: "cBridge",
-    address: null,
+    address: "0x4f9254c83eb525f9fcf346490bbb3ed28a81c667",
     symbol: "CELR",
     url: "https://cbridge.celer.network/#/transfer",
     description:

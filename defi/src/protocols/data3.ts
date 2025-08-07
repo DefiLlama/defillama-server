@@ -591,7 +591,7 @@ const data3_1: Protocol[] = [
   {
     id: "2725",
     name: "Aptos",
-    address: null,
+    address: "aptos:0x1::aptos_coin::AptosCoin",
     symbol: "APT",
     url: "https://aptoslabs.com/",
     description: "A Safe, Scalable, and Upgradeable Web3 Infrastructure.",
@@ -3217,8 +3217,8 @@ const data3_1: Protocol[] = [
   {
     id: "2841",
     name: "Rodeo",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x033f193b3fceb22a440e89a2867e8fee181594d9",
+    symbol: "RDO",
     url: "https://www.rodeofinance.xyz",
     description:
       "Rodeo is creating a leverage hyperstructure on Arbitrum that lets users increase their positions in top-tier vaults and strategies.",
@@ -13881,7 +13881,7 @@ const data3_1: Protocol[] = [
   {
     id: "3315",
     name: "CrescentSwap",
-    address: null,
+    address: "arbitrum:0x0a1694716de67c98f61942b2cab7df7fe659c87a",
     symbol: "MNLT",
     url: "https://app.crescentswap.exchange/#/swap",
     description:
@@ -27290,8 +27290,8 @@ const data3_1: Protocol[] = [
   {
     id: "3916",
     name: "Vault Tech",
-    address: null,
-    symbol: "-",
+    address: "0x7f9b09f4717072cf4dc18b95d1b09e2b30c76790",
+    symbol: "$VAULT",
     url: "https://vault.tech",
     description:
       "Vault offers AI Escrow, seamless OTC trades and NLP-driven multi-chain Privacy Swap. Reap benefits as a token holder.",
@@ -27492,7 +27492,7 @@ const data3_1: Protocol[] = [
   {
     id: "3925",
     name: "SingularityNet AGIX Staking",
-    address: null,
+    address: "0x5b7533812759b45c2b44c19e320ba2cd2681b542",
     symbol: "AGIX",
     url: "https://staking.singularitynet.io/howitworks",
     description: `By staking AGIX tokens, you support the operations of our blockchain network and in doing so you will be rewarded with more AGIX tokens for your contributions`,
@@ -30119,7 +30119,7 @@ const data3_1: Protocol[] = [
   {
     id: "4040",
     name: "ICDex",
-    address: null,
+    address: "icp:hhaaz-2aaaa-aaaaq-aacla-cai",
     symbol: "ICL",
     url: "https://iclight.io",
     description: "ICDex: A fully on-chain order book DEX on the IC",
@@ -30128,7 +30128,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "iclighthouse-dao",
-    cmcId: null,
+    cmcId: "32141",
     category: "Dexs",
     chains: ["ICP"],
     forkedFrom: [],

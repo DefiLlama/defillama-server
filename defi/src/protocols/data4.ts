@@ -10739,7 +10739,7 @@ const data4: Protocol[] = [
   {
     id: "6035",
     name: "peaq",
-    address: null,
+    address: "peaq:PEAQ",
     symbol: "PEAQ",
     url: "https://www.peaq.xyz/",
     description: "peaq is a layer-1 blockchain designed to be the go-to backbone for DePINs (real-world apps)",
@@ -10777,7 +10777,7 @@ const data4: Protocol[] = [
   {
     id: "6037",
     name: "Plume Mainnet",
-    address: null,
+    address: "0x4c1746a800d224393fe2470c70a35717ed4ea5f1",
     symbol: "PLUME",
     url: "https://plumenetwork.xyz",
     description: "Bringing the real world onchain",
@@ -12130,8 +12130,8 @@ const data4: Protocol[] = [
   {
     id: "6099",
     name: "Helium",
-    address: null,
-    symbol: "-",
+    address: "solana:hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
+    symbol: "HNT",
     url: "https://www.helium.com",
     description:
       "Helium (HNT) is a decentralized blockchain network for IoT devices. It enables devices to communicate and share data across the network by connecting to nodes called Hotspots. These Hotspots serve as wireless gateways and blockchain miners, allowing users to mine and earn the native token HNT as rewar",
@@ -12140,7 +12140,7 @@ const data4: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "helium",
-    cmcId: null,
+    cmcId: "5665",
     category: "Chain",
     chains: ["Ethereum"],
     forkedFrom: [],
@@ -12410,7 +12410,7 @@ const data4: Protocol[] = [
   {
     id: "6112",
     name: "RedStone Finance",
-    address: null,
+    address: "0xc43c6bfeda065fe2c4c11765bf838789bd0bb5de",
     symbol: "RED",
     url: "https://www.redstone.finance/",
     description:
@@ -12420,7 +12420,7 @@ const data4: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "redstone-oracles",
-    cmcId: null,
+    cmcId: "21707",
     category: "Chain",
     chains: ["Ethereum"],
     forkedFrom: [],
@@ -15063,7 +15063,7 @@ const data4: Protocol[] = [
   {
     id: "6237", // unlocks product
     name: "Initia",
-    address: null,
+    address: "initia:uinit",
     symbol: "INIT",
     url: "https://initia.xyz/",
     description: `An application's final destination`,

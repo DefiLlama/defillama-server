@@ -21491,7 +21491,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Interface",
     chains: ["Binance"],
     module: "jojo/index.js",
     twitter: "jojo_exchange",

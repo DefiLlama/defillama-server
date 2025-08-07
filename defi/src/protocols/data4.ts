@@ -13994,7 +13994,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6186",
-    name: "Hyperstable",
+    name: "Hyperstable CDP",
     address: "hyperliquid:0x28245AB01298eaEf7933bC90d35Bd9DbCA5C89DB",
     symbol: "PEG",
     url: "https://hyperstable.xyz/",
@@ -14018,7 +14018,7 @@ const data4: Protocol[] = [
     module: "hyperstable/index.js",
     twitter: "HyperstableX",
     audit_links: ["https://hyperstable.gitbook.io/docs/security/audits"],
-    github: ["hyperstable"],
+    parentProtocol: "parent#hyperstable",
     listedAt: 1747431382,
   },
   {
@@ -21651,6 +21651,28 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "pendle_fi",
     listedAt: 1754577595
+  },
+  {
+    id: "6537",
+    name: "Hyperstable Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://hyperstable.xyz/",
+    description:
+      "Hyperstable Vaults are lending vaults built on Morpho Blue that enable users to supply and borrow assets with isolated risk, deployed and managed by Hyperstable on Hyperliquid",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperstable-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Hyperliquid L1"],
+    module: "hyperstable-vaults/index.js",
+    forkedFromIds: [],
+    twitter: "HyperstableX",
+    parentProtocol: "parent#hyperstable",
+    listedAt: 1754578412
   },
 ];
 export default data4;

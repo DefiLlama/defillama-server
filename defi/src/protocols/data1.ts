@@ -3080,7 +3080,7 @@ const data: Protocol[] = [
   // },
   {
     id: "249",
-    name: "Stake-DAO",
+    name: "Stake DAO",
     address: "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
     symbol: "SDT",
     url: "https://stakedao.org/",

@@ -21,7 +21,6 @@ import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
-import { setInternalRoutes } from "./internalRoutes";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -202,7 +201,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return successResponse(res, data, 60);
   }
 
-  setInternalRoutes(router, routerBasePath)
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {

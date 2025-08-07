@@ -12,7 +12,7 @@ import * as sdk from '@defillama/sdk';
 
 export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: string) {
 
-  router.get('/_internal/all-protocol-data', getAllProtocolLatestData)
+  // router.get('/_internal/all-protocol-data', getAllProtocolLatestData)
 
 
   router.get('/debug-pg/*', debugHandler)

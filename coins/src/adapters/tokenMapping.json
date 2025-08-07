@@ -10028,6 +10028,11 @@
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 8,
       "symbol": "sUSDa"
+    },
+    "0x16e733c5c943d78dbbaf1fc5beebbcc8db4ed647d2bdfcab74c2a527184a16aa": {
+      "to": "coingecko#ignition-fbtc",
+      "decimals": 8,
+      "symbol": "FBTC"
     }
   },
   "mtt_network": {

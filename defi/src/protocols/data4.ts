@@ -21674,5 +21674,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hyperstable",
     listedAt: 1754578412
   },
+  {
+    id: "6538",
+    name: "HyperFlow",
+    address: null,
+    symbol: "-",
+    url: "https://hyperflow.fun/",
+    description:
+      "Hyperflow is a DEX and bridge aggregator for swapping and transferring assets to Hyperliquid",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperflow.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    forkedFromIds: [],
+    twitter: "HyperFlow_fun",
+    listedAt: 1754580149
+  },
 ];
 export default data4;

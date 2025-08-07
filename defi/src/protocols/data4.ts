@@ -14176,6 +14176,13 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "9summits/index.js",
     twitter: "nine_summits",
+      oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth","https://oracles.euler.finance/130/"],
+        chains: [{chain: "Unichain"]
+      },
     listedAt: 1747733002
   },
   {
@@ -14298,10 +14305,18 @@ const data4: Protocol[] = [
     twitter: "eulerfinance",
     oraclesBreakdown: [
       {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://oracles.euler.finance/130/","https://oracles.euler.finance/1923/"],
+        chains: [{chain: "Unichain"},{chain: "Swellchain}]
+      },
+      {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349"]
+        chains: [{chain: "Ethereum"},{chain: "Base"}]
       },
+    
     ],
     listedAt: 1747734034
   },
@@ -14343,6 +14358,19 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "gauntlet/index.js",
     twitter: "gauntlet_xyz",
+     oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/unichain/market/0xdacbdd711936b4f4bd789f0f7111e36e925d730ebd41178e36e705efd78a4aa1/weeth-weth", 
+          "https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth", 
+          "https://app.morpho.org/unichain/market/0xb98720c2275d134e04e37c94e2f82d0078b6b44f7d588cd2554353f45684c3ba/ezeth-weth", 
+          "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
+          "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
+      },
     listedAt: 1747734127
   },
   {
@@ -14403,6 +14431,16 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "k3/index.js",
     twitter: "k3_capital",
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/unichain/vault/0xfA355999c12C63c465c591daf9C462e14ACf470b/k3-capital-eth-maxi",
+          "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
+      },
     listedAt: 1747734980
   },
   {
@@ -14463,6 +14501,16 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "mev-capital/index.js",
     twitter: "MEVCapital",
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/unichain/vault/0xc063181747E56c034ac14dC82DB663409566Fdf6/mev-capital-usdc",
+          "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
+      },
     listedAt: 1747735411
   },
   {
@@ -14505,8 +14553,24 @@ const data4: Protocol[] = [
       {
         name: "Stork",
         type: "Primary",
-        proof: ["https://lite.morpho.org/plume/earn", "https://explorer.plume.org/address/0xcEedB1173F4D3db19288b4913335CB2d44BEb175?tab=internal_txns", "https://explorer.plume.org/address/0x7824e4B3E21678f143Ce22308ADfd48d1D3160FB?tab=internal_txns", "https://explorer.plume.org/address/0xDF16567dA7d2F5Fec172DDFe42036976C6e7D95F?tab=internal_txns"],
-        chains: [{ chain: "Plume Mainnet" }]
+        proof: [
+          "https://lite.morpho.org/plume/earn", 
+          "https://explorer.plume.org/address/0xcEedB1173F4D3db19288b4913335CB2d44BEb175?tab=internal_txns", 
+          "https://explorer.plume.org/address/0x7824e4B3E21678f143Ce22308ADfd48d1D3160FB?tab=internal_txns", 
+          "https://explorer.plume.org/address/0xDF16567dA7d2F5Fec172DDFe42036976C6e7D95F?tab=internal_txns"
+        ],
+        chains: [{ chain: "Plume Mainnet"}]
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0", 
+          "https://app.morpho.org/unichain/vault/0x6af5E46456A8ac80BB53a02799965DEF99c26e52/re7-weth", 
+          "https://app.morpho.org/unichain/vault/0x2c0F7e917257926BA6233B20DE19d7fe3210858C/re7-usdt0",
+          "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
       },
     ],
     module: "re7/index.js",
@@ -14554,13 +14618,23 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Unichain" }],
+        chains: [{ chain: "Base" }],
       },
       {
         name: "Edge",
         type: "Primary",
         proof: ["https://cornscan.io/address/0xFe423163bfEe287a132E656D5EC4a363B8A2B4f3/contract/21000000/readContract#F1"],
         chains: [{ chain: "Corn" }],
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/unichain/vault/0x0993Ae24a988c6925d80aD61344a76B81aA0D34c/steakhouse-eth", 
+          "https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth",
+          "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
       },
     ],
     module: "steakhouse/index.js",

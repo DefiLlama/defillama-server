@@ -3776,5 +3776,17 @@ export default {
     },
     "omni-exchange-v3": {
         id: "6506"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
     }
 } as AdaptorsConfig

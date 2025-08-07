@@ -162,4 +162,5 @@ export default {
   bluefin: require("./markets/bluefin"),
   harvest: require("./yield/harvest"),
   opensea: require("./nft/opensea"),
+  brkteth: require("./yield/brkteth"),
 };

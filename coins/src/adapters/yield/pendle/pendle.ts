@@ -7,6 +7,10 @@ import {
 } from "../../utils/database";
 import { getConfig } from "../../../utils/cache";
 
+const assetExceptions: string[]  = [
+  "0xee9bfff7da99e6f85abc4f7fc33f5278473124e0", // tUSDe
+]
+
 export default async function getTokenPrices(
   timestamp: number,
   chain: string,
@@ -112,23 +116,33 @@ export default async function getTokenPrices(
 
   async function ptWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length, allTokenInfos.length * 2);
-    const allPtRates = await api.multiCall({
-      abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({
-        target: pendleOracle,
-        params: [i.lp, 0]
-      })),
-      permitFailure: true,
-    })
+    const [allPtRates0, allPtRates1800, allPtRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
 
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allPtRates[i]) return;
+      const ptRate = allPtRates0[i] ?? allPtRates1800[i] ?? allPtRates3600[i]
+      if (!syPrice || !ptRate) return;
 
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ptPrice = (assetPrice ?? syPrice) * (allPtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+      const ptPrice =  assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
 
       addToDBWritesList(
         writes,
@@ -147,16 +161,29 @@ export default async function getTokenPrices(
 
   async function lpWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 2, allTokenInfos.length * 3);
-    const allLpRates = await api.multiCall({
-      abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
-      permitFailure: true,
-    });
+    const [allLpRates0, allLpRates1800, allLpRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
 
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allLpRates[i]) return;
-      const lpPrice = syPrice * (allLpRates[i] / (10 ** allSyDecimals[i]));
+      const lpRate = allLpRates0[i] ?? allLpRates1800[i] ?? allLpRates3600[i]
+      if (!syPrice || !lpRate) return;
+      const lpPrice = syPrice * (lpRate / (10 ** allSyDecimals[i]));
 
       addToDBWritesList(
         writes,
@@ -175,23 +202,34 @@ export default async function getTokenPrices(
 
   async function ytWrites() {
     const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 3, allTokenInfos.length * 4);
-    const allYtRates = await api.multiCall({
-      abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
-      calls: allTokenInfos.map((i) => ({
-        target: pendleOracle,
-        params: [i.lp, 0]
-      })),
-      permitFailure: true,
-    });
+
+    const [allYtRates0, allYtRates1800, allYtRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
     
     allTokenInfos.map((info, i: number) => {
       const syPrice = allSyPrices[i]
-      if (!syPrice || !allYtRates[i]) return;
+      const ytRate = allYtRates0[i] ?? allYtRates1800[i] ?? allYtRates3600[i]
+      if (!syPrice || !ytRate) return;
 
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ytPrice = (assetPrice ?? syPrice) * (allYtRates[i] * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      const ytPrice = assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,

@@ -265,7 +265,7 @@ async function run() {
       protocol.misc = {
         versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
       };
-      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames']
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
 
@@ -277,7 +277,6 @@ async function run() {
         return res
       })
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
-      protocol.info.latestFetchIsOk = true
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
@@ -893,6 +892,7 @@ function getSurroundingKeysExcludingCurrent<T>(array: T[], currentIndex: number,
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
 async function generateDimensionsResponseFiles(cache: any) {
+  const dimChainsAggData: any = {}
   for (const adapterType of ADAPTER_TYPES) {
     const cacheData = cache[adapterType]
     const { protocolSummaries, parentProtocolSummaries, } = cacheData
@@ -915,16 +915,31 @@ async function generateDimensionsResponseFiles(cache: any) {
 
       // store per chain overview
       const chains = allData.allChains ?? []
+      const totalDataChartByChain: any = {}
 
       for (const chainLabel of chains) {
         let chain = chainLabel.toLowerCase()
         chain = sluggifiedNormalizedChains[chain] ?? chain
         const data = await getOverviewProcess2({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
+        for (const [date, value] of data.totalDataChart) {
+          totalDataChartByChain[date] = totalDataChartByChain[date] || {}
+          totalDataChartByChain[date][data.chain] = value
+        }
         data.totalDataChart = []
         data.totalDataChartBreakdown = []
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-lite`, data)
+
+        if (!dimChainsAggData[chain]) dimChainsAggData[chain] = {}
+        if (!dimChainsAggData[chain][adapterType]) dimChainsAggData[chain][adapterType] = {}
+        dimChainsAggData[chain][adapterType][recordType] = {
+          '24h': data.total24h,
+          '7d': data.total7d,
+          '30d': data.total30d,
+        }
       }
+
+      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-total-data-chart`, totalDataChartByChain)
 
       // store protocol summary for each record type
       const allProtocols: any = { ...protocolSummaries, ...parentProtocolSummaries }
@@ -959,4 +974,5 @@ async function generateDimensionsResponseFiles(cache: any) {
 
     console.timeEnd(timeKey)
   }
+  await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
 }

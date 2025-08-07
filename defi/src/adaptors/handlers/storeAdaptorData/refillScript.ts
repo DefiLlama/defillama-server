@@ -246,6 +246,7 @@ async function refillAllProtocols() {
     const timeSWithData = adaptorDataMap[protocolId] || new Set()
     let currentDayEndTimestamp = yesterday
     let i = 0
+    let errorCount = 0
     while (currentDayEndTimestamp > startTime) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
@@ -258,7 +259,16 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
         }
-        await handler2(eventObj)
+        try {
+          await handler2(eventObj)
+        } catch (error: any) {
+          errorCount++
+          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message)
+          if (errorCount > 3) {
+            console.error('Too many errors, stopping the script')
+            return
+          }
+        }
       }
       currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }

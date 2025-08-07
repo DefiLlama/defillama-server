@@ -92,10 +92,7 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
     const _cache = await readTvlCacheAllFile()
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
-    // await getDimensionsCacheV2(cacheType) // initialize dimensions cache // no longer needed since we pre-generate the files
-
     await setHistoricalTvlForAllProtocols()
-    // await loadDimensionsCache()
 
 
     // dont run it for local dev env

@@ -439,6 +439,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x0000000000000000000000000000000000000000",
     address: "0x9BA2EDc44E0A4632EB4723E81d4142353e1bB160",
   },
+  "SJ-wartBTC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function underlyingToWrapper(uint256) external view returns (uint256)",
+        target: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+        params: 1e6,
+      });
+      return rate / 1e6;
+    },
+    chain: "goat",
+    underlying: "0x02F294cC9Ceb2c80FbA3fD779e17FE191Cc360C4",
+    address: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+  },
 };
 
 export async function derivs(timestamp: number) {

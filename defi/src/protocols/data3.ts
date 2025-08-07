@@ -15299,7 +15299,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "aark-digital",
     cmcId: "32217",
-    category: "Derivatives",
+    category: "Interface",
     chains: ["Arbitrum"],
     module: "aark/index.js",
     twitter: "Aark_Digital",

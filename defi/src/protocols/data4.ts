@@ -21631,5 +21631,26 @@ const data4: Protocol[] = [
     github: ["gaib-ai"],
     listedAt: 1754501739
   },
+  {
+    id: "6536",
+    name: "Boros",
+    address: null,
+    symbol: "-",
+    url: "https://boros.pendle.finance/markets",
+    description:
+      "Boros is a yield-trading platform on margin by Pendle",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/boros.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "boros/index.js",
+    forkedFromIds: [],
+    twitter: "pendle_fi",
+    listedAt: 1754577595
+  },
 ];
 export default data4;

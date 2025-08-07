@@ -4482,6 +4482,14 @@ export const chainCoingeckoIds = {
     twitter: "EveDexOfficial",
     url: "https://evedex.com/en-US/",
   },
+  "Bitcichain": {
+    geckoId: "bitcicoin",
+    symbol: "BITCI",
+    cmcId: "8357",
+    categories: ["EVM"],
+    twitter: "BitciChain",
+    url: "https://bitcichain.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4684,6 +4692,7 @@ const chainLabelMap = {
   "soon": "Soon Network",
   "tac": "TAC",
   "hydragon": "Hydra Chain",
+  "bitci": "Bitcichain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

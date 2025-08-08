@@ -241,7 +241,6 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of treasuryData) {
-      if (protocol.misrepresentedTokens) continue;
       finalProtocols[protocol.id.split("-treasury")[0]] = {
         ...finalProtocols[protocol.id.split("-treasury")[0]],
         treasury: true,

@@ -11,6 +11,7 @@ export async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
+  let supplyMetricsBreakdown: Record<string, any> = {};
 
   const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(5)
@@ -20,7 +21,7 @@ export async function processProtocolList() {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(6000000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
+          withTimeout(6000000, processSingleProtocol(adapter, protocolName, emissionsBrakedown, supplyMetricsBreakdown), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
@@ -48,6 +49,7 @@ export async function processProtocolList() {
     aggregated.emission30d += protocol.emission30d;
   });
   await storeR2JSONString("emissionsBreakdownAggregated", JSON.stringify(aggregated));
+  await storeR2JSONString("emissionsSupplyMetrics", JSON.stringify(supplyMetricsBreakdown));
 }
 
 async function handlerErrors(errors: string[]) {

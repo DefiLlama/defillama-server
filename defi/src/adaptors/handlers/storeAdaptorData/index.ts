@@ -13,6 +13,7 @@ import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
+import * as sdk from '@defillama/sdk'
 
 
 const blockChains = Object.keys(providers)
@@ -267,13 +268,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       }
 
 
-      const promises: any = []
-
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
 
       const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all' },) as any
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
-
 
 
       // sort out record timestamp
@@ -308,7 +306,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         protocolName: protocol.displayName,
       }
 
-      const storedData: any = {}
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
 
       async function storeTokenBreakdownData() {
@@ -325,7 +322,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         if (!isDryRun) {
 
           await storeAdapterRecord(adapterRecord)
-          promises.push(storeTokenBreakdownData())
+          await storeTokenBreakdownData()
 
         } else if (checkBeforeInsert) {
 
@@ -336,9 +333,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           responseObject.timeS = adapterRecord.timeS
         }
       }
-      await Promise.all(promises)
       if (process.env.runLocal === 'true' || isRunFromRefillScript)
-        printData(storedData, recordTimestamp, protocol.module)
+        printData(adaptorRecordV2JSON, recordTimestamp, protocol.module)
 
       if (refillYesterdayPromise)
         await refillYesterdayPromise
@@ -389,46 +385,17 @@ type chainObjet = {
 }
 
 function printData(data: any, timestamp?: number, protocolName?: string) {
-  const chains: chainObjet = {};
-  console.log(`\nrecord timestamp: ${timestamp} (${new Date((timestamp ?? 0) * 1e3).toISOString()})`)
+  const chainInfo: chainObjet = {};
+  console.log(`\n protocol: ${protocolName} record timestamp: ${timestamp} (${new Date((timestamp ?? 0) * 1e3).toISOString()})`)
 
   // Collect data from all chains and keys
-  for (const [mainKey, chainData] of Object.entries(data)) {
-    for (const [chain, values] of Object.entries(chainData as any)) {
-      if (!chains[chain]) {
-        chains[chain] = { protocols: {}, versions: {} };
-      }
-      for (const [subKey, value] of Object.entries(values as any)) {
-        if (subKey === protocolName) {
-          chains[chain].protocols[mainKey] = value;
-        } else {
-          if (!chains[chain].versions[subKey]) {
-            chains[chain].versions[subKey] = {};
-          }
-          chains[chain].versions[subKey][mainKey] = value;
-        }
-      }
-    }
-  }
+  Object.entries(data.aggregated).forEach(([recordType, { chains }]: [string, any]) => {
+    Object.entries(chains).forEach(([chain, value]: [string, any]) => {
+      if (!chainInfo[chain]) chainInfo[chain] = { chain };
+      chainInfo[chain][recordType] = humanizeNumber(value);
+    });
+  })
 
-  // Print data, prioritizing protocol matches and handling versions otherwise
-  for (const [chain, values] of Object.entries(chains)) {
-    if (Object.keys(values.protocols).length > 0) {
-      console.log('')
-      console.log(`chain: ${chain}`);
-      for (const [key, value] of Object.entries(values.protocols)) {
-        console.log(`${key}: ${humanizeNumber(Number(value))}`);
-      }
-    } else {
-      for (const [version, versionData] of Object.entries(values.versions)) {
-        console.log('')
-        console.log(`chain: ${chain}`);
-        console.log(`version: ${version}`);
-        for (const [key, value] of Object.entries(versionData as any)) {
-          console.log(`${key}: ${humanizeNumber(Number(value))}`);
-        }
-      }
-    }
-  }
+  console.log(sdk.util.tableToString(Object.values(chainInfo)))
   console.log('\n')
 }

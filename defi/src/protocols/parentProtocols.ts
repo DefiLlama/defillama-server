@@ -7628,6 +7628,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AxiomExchange",
   },
+  {
+    id: "parent#hyperstable",
+    name: "Hyperstable",
+    url: "https://hyperstable.xyz/",
+    description: "Hyperstable is a crypto-backed, over-collateralized and decentralized stablecoin that's designed to trade at one US Dollar. Built on HyperEVM",
+    logo: `${baseIconsUrl}/hyperstable.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HyperstableX",
+    github: ["hyperstable"],
+    stablecoins: ["hyperstable-usd"],
+  },
+  {
+    id: "parent#omni-exchange",
+    name: "Omni Exchange",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine",
+    logo: `${baseIconsUrl}/omni-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Omni_Exchange",
+  },
 ];
 
 export default parentProtocols;

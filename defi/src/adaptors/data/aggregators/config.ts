@@ -371,6 +371,9 @@ export default {
   },
   "orbiter-finance": {
     id: "6520"
+  },
+  "hyperflow": {
+    id: "6538"
   }
 
 } as AdaptorsConfig;

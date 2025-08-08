@@ -2974,5 +2974,8 @@ export default {
     },
     "zerofi": {
         id: "6555"
+    },
+    "goonfi": {
+        id: "6556"
     }
 } as AdaptorsConfig

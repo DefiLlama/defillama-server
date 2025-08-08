@@ -2959,5 +2959,20 @@ export default {
     },
     "omni-exchange-v3": {
         id: "6506"
+    },
+    "fluxbeam": {
+        id: "3053"
+    },
+    "obric-v2": {
+        id: "2474"
+    },
+    "solfi": {
+        id: "6553"
+    },
+    "humidifi": {
+        id: "6554"
+    },
+    "zerofi": {
+        id: "6555"
     }
 } as AdaptorsConfig

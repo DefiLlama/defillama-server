@@ -3793,5 +3793,8 @@ export default {
     },
     "mass-dot-money": {
         id: "6546"
-    }
+    },
+    "sendshot": {
+        id: "6551"
+    },
 } as AdaptorsConfig

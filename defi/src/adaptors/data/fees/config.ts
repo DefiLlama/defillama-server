@@ -1143,7 +1143,12 @@ export default {
         id: "4235"
     },
     "ethena": {
-        id: "4133"
+        id: "4133",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1754524800": true
+            },
+        }
     },
     "avantis": {
         id: "4108"

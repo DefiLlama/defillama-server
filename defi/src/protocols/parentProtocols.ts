@@ -7652,6 +7652,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Omni_Exchange",
   },
+  {
+    id: "parent#kuraswap",
+    name: "KuraSwap",
+    url: "https://kuraswap.org",
+    description: "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
+    logo: `${baseIconsUrl}/kuraswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Kura_Dex",
+  },
 ];
 
 export default parentProtocols;

@@ -2977,5 +2977,11 @@ export default {
     },
     "goonfi": {
         id: "6556"
-    }
+    },
+    "tessera": {
+        id: "6557"
+    },
+    "hyperunit": {
+        id: "5788"
+    },
 } as AdaptorsConfig

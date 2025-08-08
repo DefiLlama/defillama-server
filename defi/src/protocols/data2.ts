@@ -22468,7 +22468,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Polygon", "Near", "Binance", "Map", "Ethereum", "Merlin"],
+    chains: ["Polygon", "Binance", "Map", "Ethereum", "Merlin"],
     module: "butternetwork/index.js",
     twitter: "ButterNetworkio",
     forkedFrom: [],

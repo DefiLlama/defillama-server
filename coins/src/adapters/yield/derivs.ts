@@ -439,6 +439,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x0000000000000000000000000000000000000000",
     address: "0x9BA2EDc44E0A4632EB4723E81d4142353e1bB160",
   },
+  HiHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function kHYPEToHYPE(uint256) external view returns (uint256)",
+        target: "0x62E6fa898761dE2345aB3d507b72c422a2829733",
+        params: '1000000000000000000',
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x4f322145abedb2b39f69e7d4531ab4b2e6483154",
+  },
   "SJ-wartBTC": {
     rate: async ({ api }) => {
       const rate = await api.call({

@@ -10811,7 +10811,7 @@ const data2: Protocol[] = [
     address: "base:0xa88594d404727625a9437c3f886c7643872296ae",
     symbol: "WELL",
     url: "https://moonwell.fi",
-    description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",
+    description: "Moonwell is an open lending and borrowing DeFi protocol on Base, Optimism, Moonbeam & Moonriver.",
     chain: "Moonbeam",
     logo: `${baseIconsUrl}/moonwell-lending.png`,
     audits: "2",

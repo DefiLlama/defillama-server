@@ -22008,7 +22008,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Basis Trading",
+    tags: ["Tokenized Trading Strategies"],
     chains: ["HashKey Chain"],
     module: "aoabt/index.js",
     twitter: "AssetoFinance",

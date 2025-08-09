@@ -3797,4 +3797,10 @@ export default {
     "sendshot": {
         id: "6551"
     },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
 } as AdaptorsConfig

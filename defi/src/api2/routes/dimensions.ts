@@ -13,9 +13,11 @@ const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimension
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
 
 function formatChartData(data: any = {}) {
-  return Object.entries(data)
-    // .filter(([_key, val]: any) => val) // we want to keep 0 values
-    .map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
+  const result = [];
+  for (const key in data) {
+    result.push([timeSToUnix(key), data[key]]);
+  }
+  return result.sort(([a]: any, [b]: any) => a - b);
 }
 
 function getPercentage(a: number, b: number) {

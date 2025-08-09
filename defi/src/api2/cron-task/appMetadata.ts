@@ -171,7 +171,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null && protocolInfo.module !== 'dummy.js' ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -241,7 +241,6 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of treasuryData) {
-      if (protocol.misrepresentedTokens) continue;
       finalProtocols[protocol.id.split("-treasury")[0]] = {
         ...finalProtocols[protocol.id.split("-treasury")[0]],
         treasury: true,

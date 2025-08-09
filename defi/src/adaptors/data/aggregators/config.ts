@@ -374,6 +374,8 @@ export default {
   },
   "hyperflow": {
     id: "6538"
+  },
+  "nordstern-finance": {
+    id: "6552"
   }
-
 } as AdaptorsConfig;

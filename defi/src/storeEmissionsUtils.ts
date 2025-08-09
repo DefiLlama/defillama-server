@@ -375,6 +375,7 @@ export async function processSingleProtocol(
   adapter: Protocol,
   protocolName: string,
   emissionsBrakedown: EmissionBreakdown,
+  supplyMetricsBreakdown: Record<string, any>,
   backfill: boolean = false
 ): Promise<string> {
   const rawData = await createRawSections(adapter, backfill);
@@ -515,6 +516,13 @@ export async function processSingleProtocol(
       console.warn(`Could not calculate supply metrics for V1 adapter ${protocolName}:`, error);
       supplyMetrics = undefined;
     }
+  }
+
+  if (supplyMetrics) {
+    supplyMetricsBreakdown[sluggifiedId] = {
+      name: data.name,
+      supplyMetrics: supplyMetrics
+    };
   }
 
   const finalData = {

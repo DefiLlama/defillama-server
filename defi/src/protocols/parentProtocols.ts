@@ -7641,6 +7641,28 @@ const parentProtocols: IParentProtocol[] = [
     github: ["hyperstable"],
     stablecoins: ["hyperstable-usd"],
   },
+  {
+    id: "parent#omni-exchange",
+    name: "Omni Exchange",
+    url: "https://omni.exchange",
+    description: "Omni Exchange connects liquidity across chains through a single onchain engine",
+    logo: `${baseIconsUrl}/omni-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Omni_Exchange",
+  },
+  {
+    id: "parent#kuraswap",
+    name: "KuraSwap",
+    url: "https://kuraswap.org",
+    description: "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
+    logo: `${baseIconsUrl}/kuraswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Kura_Dex",
+  },
 ];
 
 export default parentProtocols;

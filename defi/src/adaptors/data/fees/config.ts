@@ -1143,7 +1143,12 @@ export default {
         id: "4235"
     },
     "ethena": {
-        id: "4133"
+        id: "4133",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1754524800": true
+            },
+        }
     },
     "avantis": {
         id: "4108"
@@ -3767,5 +3772,35 @@ export default {
     },
     "hyperunit": {
         id: "5788"
-    }
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
+    },
+    "sendshot": {
+        id: "6551"
+    },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
 } as AdaptorsConfig

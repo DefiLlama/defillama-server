@@ -3803,4 +3803,19 @@ export default {
     "kura-v3": {
         id: "6548"
     },
+    "dextrabot": {
+        id: "6558"
+    },
+    "hyperdash": {
+        id: "6559"
+    },
+    "kinto-xyz": {
+        id: "6560"
+    },
+    "superX": {
+        id: "6561"
+    },
+    "wallet-v": {
+        id: "6562"
+    }
 } as AdaptorsConfig

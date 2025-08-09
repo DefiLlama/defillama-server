@@ -10926,6 +10926,11 @@
       "decimals": 18,
       "symbol": "YFI"
     },
+    "0x6C16E26013f2431e8B2e1Ba7067ECCcad0Db6C52": {
+      "to": "coingecko#jito-staked-sol",
+      "decimals": 18,
+      "symbol": "JitoSOL"
+    },
     "0x9B8Df6E244526ab5F6e6400d331DB28C8fdDdb55": {
       "to": "coingecko#wrapped-solana-universal",
       "decimals": 18,

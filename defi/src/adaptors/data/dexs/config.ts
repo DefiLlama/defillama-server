@@ -2981,9 +2981,9 @@ export default {
     "tessera": {
         id: "6557"
     },
-    "hyperunit": {
-        id: "5788"
-    },
+    // "hyperunit": { not tracking this for bridges
+    //     id: "5788"
+    // },
     "kura-v2": {
         id: "6549"
     },

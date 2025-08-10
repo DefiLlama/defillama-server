@@ -16612,7 +16612,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/rezerve-money.jpg`,
     audits: "1",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "rezerve-money",
     cmcId: "37291",
     category: "Reserve Currency",
     chains: ["Sonic"],

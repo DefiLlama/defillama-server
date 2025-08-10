@@ -22019,13 +22019,12 @@ const data4: Protocol[] = [
   },
   {
     id: "6551",
-    name: "Sendshot",
-    address: "solana:SENDdRQtYMWaQrBroBrJ2Q53fgVuq95CV9UPGEvpCxa",
+    name: "SendShot",
     symbol: "SEND",
     url: "https://www.sendai.fun/",
-    description: "Sendshot is a launchpad on Solana",
+    description: "Sendshot is the AI-first launchpad Engine, with multiple clients for attention capital markets, powered by SendAI",
     chain: "Solana",
-    logo: `${baseIconsUrl}/sendshot.jpg`,
+    logo: `${baseIconsUrl}/sendai.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "send-2",
@@ -22035,6 +22034,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: null,
     forkedFromIds: [],
+    parentProtocol: "parent#sendai"
   },
   {
     id: "6552",

@@ -169,8 +169,6 @@ async function _storeAppMetadata() {
     fetchJson(CHAIN_NFTS).catch(() => ({})),
   ]);
 
-  await _storeMetadataFile();
-
   const searchList: Record<
     string,
     { id: string; name: string; symbol?: string; tvl?: number; mcap?: number; logo: string | null; route: string, deprecated?: boolean }[]
@@ -181,6 +179,8 @@ async function _storeAppMetadata() {
     categories: [],
     tags: [],
   };
+
+  await _storeMetadataFile();
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {

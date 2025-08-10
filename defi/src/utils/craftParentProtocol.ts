@@ -7,6 +7,7 @@ import fetch from "node-fetch";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
+import * as fs from "fs";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -117,6 +118,7 @@ export async function craftParentProtocolInternal({
   isHourlyTvl,
   fetchMcap,
   parentRaises,
+  feMini = false,
 }: {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
@@ -124,6 +126,7 @@ export async function craftParentProtocolInternal({
   fetchMcap?: Function;
   childProtocolsTvls: Array<IProtocolResponse>;
   parentRaises: IRaise[];
+  feMini?: boolean;
 }) {
   if (!fetchMcap) fetchMcap = protocolMcap;
 
@@ -142,7 +145,7 @@ export async function craftParentProtocolInternal({
   childProtocolsTvls.forEach((protocolData: any) => {
     if (protocolData.message) {
       console.error(`Error building parent protocol: ${parentProtocol.name}`);
-      console.error(`Error in protocol data for ${protocolData.name}: ${protocolData.message}`);
+      console.error(`Error in protocol data for message ${protocolData.name}: ${protocolData.message}`);
       return;
     }
 
@@ -165,6 +168,7 @@ export async function craftParentProtocolInternal({
 
 
   let { chainTvls, tokensInUsd, tokens, tvl } = mergeChildProtocolData(childProtocolsTvls, isHourlyTvl);
+
 
   if (skipAggregatedTvl) {
     tvl = []
@@ -203,12 +207,39 @@ export async function craftParentProtocolInternal({
     mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
-  // Filter overall tokens, tokens in usd by date if data is more than 6MB
-  let keyCount = getObjectKeyCount(response);
-  if (keyCount >= 1.5e5) { // there are more than 150k keys
+  if (feMini) {
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;
+
+      if (Array.isArray(response.chainTvls[chain].tvl)) {
+        const transformedTvl: any = []
+        for (const record of response.chainTvls[chain].tvl) {
+          transformedTvl.push([record.date, record.totalLiquidityUSD])
+        }
+        response.chainTvls[chain].tvl = transformedTvl;
+      }
+    }
+
+    response.tokensInUsd = null
+    response.tokens = null
+
+    if (Array.isArray(response.tvl)) {
+      const transformedTvl: any = []
+      for (const record of response.tvl) {
+        transformedTvl.push([record.date, record.totalLiquidityUSD])
+      }
+      response.tvl = transformedTvl;
+    }
+
+  } else {
+    // Filter overall tokens, tokens in usd by date if data is more than 6MB
+    let keyCount = getObjectKeyCount(response);
+    if (keyCount >= 1.5e5) { // there are more than 150k keys
+      for (const chain in response.chainTvls) {
+        response.chainTvls[chain].tokens = null;
+        response.chainTvls[chain].tokensInUsd = null;
+      }
     }
   }
 

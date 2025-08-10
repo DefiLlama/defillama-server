@@ -20,6 +20,8 @@ export type CraftProtocolV2Common = {
   skipAggregatedTvl: boolean;
   restrictResponseSize?: boolean;
   skipCachedHourlyData?: boolean;
+  feMini?: boolean; // for fetching only aggregated tvl data without token breakdown & without raw token balancesMi
+  skipFeMiniTransform?: boolean; // for feMini we return data in ([date, usdValue]: [number, number]) instead of default { date: number, totalLiquidityUSD: number } format
 }
 
 
@@ -36,6 +38,8 @@ export async function craftProtocolV2({
   restrictResponseSize,
   getCachedProtocolData = getProtocolAllTvlData,
   skipCachedHourlyData = false,
+  feMini = false,
+  skipFeMiniTransform = false,
 }: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
   const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
@@ -50,6 +54,7 @@ export async function craftProtocolV2({
   let _getLastHourlyRecord: any = null
   let _getLastHourlyTokensUsd: any = null
   let _getLastHourlyTokens: any = null
+  const skipTokenAndTokenUsdData = useHourlyData || feMini
 
   if (!isDeadProtocolOrHourly && !skipCachedHourlyData) {
     _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
@@ -58,9 +63,9 @@ export async function craftProtocolV2({
   }
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
+    useHourlyData ? getAllProtocolItems(hourlyTvl, protocolData.id) : null,
+    useHourlyData ? getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id) : null,
+    useHourlyData ? getAllProtocolItems(hourlyTokensTvl, protocolData.id) : null,
     getCachedMCap(protocolData.gecko_id),
     _getLastHourlyRecord,
     _getLastHourlyTokensUsd,
@@ -71,6 +76,13 @@ export async function craftProtocolV2({
     historicalUsdTvl = protocolCache[0]
     historicalUsdTokenTvl = protocolCache[1]
     historicalTokenTvl = protocolCache[2]
+  }
+
+  if (feMini) {
+    historicalUsdTokenTvl = []
+    historicalTokenTvl = []
+    lastUsdTokenHourlyRecord = null
+    lastTokenHourlyRecord = null
   }
   const debug_dbTimeAll = performance.now() - debug_t0
 
@@ -124,33 +136,30 @@ export async function craftProtocolV2({
       };
     }
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
+    if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
+      for (const item of historicalUsdTvl) {
+        let usdValue = selectChainFromItem(item, chain)
+        if (typeof usdValue === 'number') {
+          usdValue = Math.floor(usdValue)
+          if (feMini && !skipFeMiniTransform) container.tvl.push([item.SK, usdValue] as any)
+          else container.tvl.push({ date: item.SK, totalLiquidityUSD: usdValue })
+        }
+      }
+    }
+    
+    if (Array.isArray(container?.tokensInUsd) && Array.isArray(historicalUsdTokenTvl)) {
+      for (const item of historicalUsdTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokensInUsd.push({ date: item.SK, tokens })
+      }
+    }
 
-    container?.tvl?.push(
-      ...historicalUsdTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
-        }))
-        .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
-    );
-
-    container?.tokensInUsd?.push(
-      ...historicalUsdTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
-
-    container?.tokens?.push(
-      ...historicalTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
+    if (Array.isArray(container?.tokens) && Array.isArray(historicalTokenTvl)) {
+      for (const item of historicalTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokens.push({ date: item.SK, tokens })
+      }
+    }
   });
 
   const singleChain = transformNewChainName(protocolData.chain);
@@ -225,7 +234,7 @@ export async function craftProtocolV2({
   // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
 
 
-  if (restrictResponseSize) {
+  if (!feMini && restrictResponseSize) {
     const keyCount = getObjectKeyCount(response)
     if (keyCount > 1.5e5) { // there are more than 150k keys
       // console.log(`${response.name} Response size is too large: ${keyCount} keys. Limiting response size.`)

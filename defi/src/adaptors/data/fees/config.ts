@@ -3812,7 +3812,7 @@ export default {
     "kinto-xyz": {
         id: "6560"
     },
-    "superX": {
+    "superx": {
         id: "6561"
     },
     "wallet-v": {

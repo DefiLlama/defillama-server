@@ -154,7 +154,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           price: data.usd,
           mcap: data.usd_market_cap,
           timestamp: data.last_updated_at,
-          symbol: idToSymbol[cgId].toUpperCase(),
+          symbol: idToSymbol[cgId].toUpperCase().trim().replace(/\x00/g, ""),
           confidence: 0.99,
           volume: data.usd_24h_vol,
         });

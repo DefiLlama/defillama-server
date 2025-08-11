@@ -144,34 +144,27 @@ async function generateSearchList() {
 
 const main = async () => {
   const results = await generateSearchList();
-  const searchListV1 = [
-    ...results.chains,
-    ...results.protocols,
-    ...results.stablecoins,
-    ...results.categories,
-    ...results.tags,
-  ];
-  const searchListV2 = [
-    { category: "Chains", pages: results.chains, route: "/chains" },
-    { category: "Protocols", pages: results.protocols, route: "/" },
-    { category: "Stablecoins", pages: results.stablecoins, route: "/stablecoins" },
-    { category: "Categories", pages: results.categories, route: "/categories" },
-    { category: "Tags", pages: results.tags, route: "/categories" },
+  const searchList = [
+    { category: "Chain", pages: results.chains, route: "/chains" },
+    { category: "Protocol", pages: results.protocols, route: "/" },
+    { category: "Stablecoin", pages: results.stablecoins, route: "/stablecoins" },
+    { category: "Category", pages: results.categories, route: "/categories" },
+    { category: "Tag", pages: results.tags, route: "/categories" },
   ];
 
-  await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+  await fetch(`https://search.defillama.com/indexes/pages/documents`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
   }).then((r) => r.json());
-  const submit = await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+  const submit = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(searchListV1),
+    body: JSON.stringify(searchList),
   }).then((r) => r.json());
   const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
@@ -179,8 +172,8 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
-  await storeR2("searchlist.json", JSON.stringify(searchListV2), true, false).catch((e) => {
-    console.log("Error storing search list v2", e);
+  await storeR2("searchlist.json", JSON.stringify(searchList), true, false).catch((e) => {
+    console.log("Error storing search list", e);
   });
 
   const errorMessage = status?.details?.error?.message;

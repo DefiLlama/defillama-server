@@ -302,9 +302,9 @@ export default {
     "el-dorado-exchange": {
         id: "2356"
     },
-    "gearbox": {
-        id: "1108"
-    },
+    // "gearbox": {
+    //     id: "1108"
+    // },
     "verse": {
         id: "1732"
     },

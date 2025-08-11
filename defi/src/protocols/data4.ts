@@ -22247,7 +22247,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6563",
-    name: "Choice ExchangeV",
+    name: "Choice Exchange",
     address: null,
     symbol: "-",
     url: "https://choice.exchange",

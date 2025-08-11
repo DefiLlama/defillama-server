@@ -9,18 +9,41 @@ const normalize = (str: string) =>
     .replace(/[^a-zA-Z0-9_-]/, "");
 const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
 
-async function generateSearchCategories() {
-  const [tvlData, stablecoinsData]: [
+async function generateSearchList() {
+  const endAt = Date.now();
+  const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
+  const [tvlData, stablecoinsData, tastyMetrics]: [
     {
       chains: string[];
       parentProtocols: any[];
       protocolCategories: string[];
       protocols: any[];
     },
-    { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> }
+    { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+    Record<string, number>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
+    fetch(
+      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&timezone=Asia%2FTokyo&type=url&search=`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
+        },
+      }
+    )
+      .then((r) => r.json())
+      .then((res: Array<{ x: string; y: number }>) => {
+        const final = {} as Record<string, number>;
+        for (const xy of res) {
+          final[xy.x] = xy.y;
+        }
+        return final;
+      })
+      .catch((e) => {
+        console.log("Error fetching tasty metrics", e);
+        return {};
+      }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -46,35 +69,43 @@ async function generateSearchCategories() {
     }
   }
 
-  const protocols = tvlData.protocols
-    .map((p) => ({
-      id: `protocol_${normalize(p.name)}`,
-      name: p.name,
-      symbol: p.symbol,
-      tvl: p.tvl,
-      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-      route: `/protocol/${standardizeProtocolName(p.name)}`,
-      ...(p.deprecated ? { deprecated: true } : {}),
+  const protocols = tvlData.parentProtocols
+    .map((parent) => ({
+      id: `protocol_parent_${normalize(parent.name)}`,
+      name: parent.name,
+      symbol: parent.symbol,
+      tvl: parentTvl[parent.id] ?? 0,
+      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
+      route: `/protocol/${standardizeProtocolName(parent.name)}`,
+      tag: "Protocol",
+      v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
     }))
     .concat(
-      tvlData.parentProtocols.map((parent) => ({
-        id: normalize(parent.id.replace("#", "_")),
-        name: parent.name,
-        symbol: parent.symbol,
-        tvl: parentTvl[parent.id] ?? 0,
-        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(parent.name)}`,
+      tvlData.protocols.map((p) => ({
+        id: `protocol_${normalize(p.name)}`,
+        name: p.name,
+        symbol: p.symbol,
+        tvl: p.tvl,
+        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
+        route: `/protocol/${standardizeProtocolName(p.name)}`,
+        ...(p.deprecated ? { deprecated: true } : {}),
+        tag: "Protocol",
+        v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
       }))
     )
-    .sort((a, b) => b.tvl - a.tvl);
+    .sort((a, b) => b.v - a.v);
 
-  const chains = tvlData.chains.map((chain) => ({
-    id: `chain_${normalize(chain)}`,
-    name: chain,
-    logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
-    tvl: chainTvl[chain],
-    route: `/chain/${standardizeProtocolName(chain)}`,
-  }));
+  const chains = tvlData.chains
+    .map((chain) => ({
+      id: `chain_${normalize(chain)}`,
+      name: chain,
+      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+      tvl: chainTvl[chain],
+      route: `/chain/${standardizeProtocolName(chain)}`,
+      tag: "Chain",
+      v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+    }))
+    .sort((a, b) => b.v - a.v);
 
   const categories = [] as any[];
   for (const category in categoryTvl) {
@@ -83,6 +114,8 @@ async function generateSearchCategories() {
       name: `All protocols in ${category}`,
       tvl: categoryTvl[category],
       route: `/protocols/${standardizeProtocolName(category)}`,
+      tag: "Category",
+      v: tastyMetrics[`/protocols/${standardizeProtocolName(category)}`] ?? 0,
     });
   }
 
@@ -93,36 +126,44 @@ async function generateSearchCategories() {
       name: `All protocols in ${tag}`,
       tvl: tagTvl[tag],
       route: `/protocols/${standardizeProtocolName(tag)}`,
+      tag: "Tag",
+      v: tastyMetrics[`/protocols/${standardizeProtocolName(tag)}`] ?? 0,
     });
   }
 
-  const stablecoins = stablecoinsData.peggedAssets.map((stablecoin) => ({
-    id: `stablecoin_${normalize(stablecoin.name)}`,
-    name: stablecoin.name,
-    symbol: stablecoin.symbol,
-    mcap: stablecoin.circulating.peggedUSD,
-    logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
-    route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
-  }));
+  const stablecoins = stablecoinsData.peggedAssets
+    .map((stablecoin) => ({
+      id: `stablecoin_${normalize(stablecoin.name)}`,
+      name: stablecoin.name,
+      symbol: stablecoin.symbol,
+      mcap: stablecoin.circulating.peggedUSD,
+      logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
+      route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
+      tag: "Stablecoin",
+      v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
+    }))
+    .sort((a, b) => b.v - a.v);
 
-  return { chains, protocols, stablecoins, categories, tags };
-}
-
-async function generateSearchList() {
-  const { chains, protocols, stablecoins, categories, tags } = await generateSearchCategories();
-  let searchListV1 = [...chains, ...protocols, ...stablecoins, ...categories, ...tags];
-  let searchListV2 = [
-    { category: "Chains", pages: chains, route: "/chains" },
-    { category: "Protocols", pages: protocols, route: "/" },
-    { category: "Stablecoins", pages: stablecoins, route: "/stablecoins" },
-    { category: "Categories", pages: categories, route: "/protocols" },
-    { category: "Tags", pages: tags, route: "/protocols" },
-  ];
-  return { searchListV1, searchListV2 };
+  return {
+    chains,
+    protocols,
+    stablecoins,
+    categories: categories.sort((a, b) => b.v - a.v),
+    tags: tags.sort((a, b) => b.v - a.v),
+  };
 }
 
 const main = async () => {
-  const { searchListV1, searchListV2 } = await generateSearchList();
+  const results = await generateSearchList();
+  const searchListV1 = [...results.chains, ...results.protocols, ...results.stablecoins, ...results.categories, ...results.tags];
+  const searchListV2 = [
+    { category: "Chains", pages: results.chains, route: "/chains" },
+    { category: "Protocols", pages: results.protocols, route: "/" },
+    { category: "Stablecoins", pages: results.stablecoins, route: "/stablecoins" },
+    { category: "Categories", pages: results.categories, route: "/categories" },
+    { category: "Tags", pages: results.tags, route: "/categories" },
+  ];
+
   await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
     method: "DELETE",
     headers: {

@@ -84,7 +84,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
   router.get("/lite/protocols2", defaultFileHandler);
   router.get("/lite/v2/protocols", defaultFileHandler);
-  router.get("/chains2", (_:any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
+  router.get("/chains2", (_: any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
   router.get("/chains2/:category", defaultFileHandler)
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
@@ -111,17 +111,17 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 
-  
+
   router.get("/_fe/static", defaultFileHandler)
 
   router.get("/_fe/protocol-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
-    dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false', feMini: true,
+    dataType: 'protocol', skipAggregatedTvl: false, restrictResponseSize: false, feMini: true,
   })));
   router.get("/_fe/treasury-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury', feMini: true, })));
   router.get("/_fe/entity-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities', feMini: true, })));
   router.get("/_fe/updatedProtocol-mini/:name", (async (req, res) => getProtocolishData(req, res, {
-    dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true', feMini: true,
-    restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false',
+    dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
+    restrictResponseSize: false, feMini: true,
   })));
 
 

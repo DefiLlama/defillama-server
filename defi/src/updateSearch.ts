@@ -9,18 +9,41 @@ const normalize = (str: string) =>
     .replace(/[^a-zA-Z0-9_-]/, "");
 const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
 
-async function generateSearchCategories() {
-  const [tvlData, stablecoinsData]: [
+async function generateSearchList() {
+  const endAt = Date.now();
+  const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
+  const [tvlData, stablecoinsData, tastyMetrics]: [
     {
       chains: string[];
       parentProtocols: any[];
       protocolCategories: string[];
       protocols: any[];
     },
-    { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> }
+    { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+    Record<string, number>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
+    fetch(
+      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&timezone=Asia%2FTokyo&type=url&search=`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
+        },
+      }
+    )
+      .then((r) => r.json())
+      .then((res: Array<{ x: string; y: number }>) => {
+        const final = {} as Record<string, number>;
+        for (const xy of res) {
+          final[xy.x] = xy.y;
+        }
+        return final;
+      })
+      .catch((e) => {
+        console.log("Error fetching tasty metrics", e);
+        return {};
+      }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -46,35 +69,40 @@ async function generateSearchCategories() {
     }
   }
 
-  const protocols = tvlData.protocols
-    .map((p) => ({
-      id: `protocol_${normalize(p.name)}`,
-      name: p.name,
-      symbol: p.symbol,
-      tvl: p.tvl,
-      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-      route: `/protocol/${standardizeProtocolName(p.name)}`,
-      ...(p.deprecated ? { deprecated: true } : {}),
+  const protocols = tvlData.parentProtocols
+    .map((parent) => ({
+      id: `protocol_parent_${normalize(parent.name)}`,
+      name: parent.name,
+      symbol: parent.symbol,
+      tvl: parentTvl[parent.id] ?? 0,
+      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
+      route: `/protocol/${standardizeProtocolName(parent.name)}`,
+      tag: 'Protocol',
     }))
     .concat(
-      tvlData.parentProtocols.map((parent) => ({
-        id: `protocol_parent_${normalize(parent.name)}`,
-        name: parent.name,
-        symbol: parent.symbol,
-        tvl: parentTvl[parent.id] ?? 0,
-        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(parent.name)}`,
+      tvlData.protocols.map((p) => ({
+        id: `protocol_${normalize(p.name)}`,
+        name: p.name,
+        symbol: p.symbol,
+        tvl: p.tvl,
+        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
+        route: `/protocol/${standardizeProtocolName(p.name)}`,
+        ...(p.deprecated ? { deprecated: true } : {}),
+        tag: 'Protocol',
       }))
     )
-    .sort((a, b) => b.tvl - a.tvl);
+    .sort((a, b) => (b.tvl ?? 0) - (a.tvl ?? 0));
 
-  const chains = tvlData.chains.map((chain) => ({
-    id: `chain_${normalize(chain)}`,
-    name: chain,
-    logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
-    tvl: chainTvl[chain],
-    route: `/chain/${standardizeProtocolName(chain)}`,
-  }));
+  const chains = tvlData.chains
+    .map((chain) => ({
+      id: `chain_${normalize(chain)}`,
+      name: chain,
+      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+      tvl: chainTvl[chain],
+      route: `/chain/${standardizeProtocolName(chain)}`,
+      tag: 'Chain',
+    }))
+    .sort((a, b) => (b.tvl ?? 0) - (a.tvl ?? 0));
 
   const categories = [] as any[];
   for (const category in categoryTvl) {
@@ -83,6 +111,7 @@ async function generateSearchCategories() {
       name: `All protocols in ${category}`,
       tvl: categoryTvl[category],
       route: `/protocols/${standardizeProtocolName(category)}`,
+      tag: 'Category',
     });
   }
 
@@ -93,6 +122,7 @@ async function generateSearchCategories() {
       name: `All protocols in ${tag}`,
       tvl: tagTvl[tag],
       route: `/protocols/${standardizeProtocolName(tag)}`,
+      tag: 'Tag',
     });
   }
 
@@ -104,33 +134,19 @@ async function generateSearchCategories() {
       mcap: stablecoin.circulating.peggedUSD,
       logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
       route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
+      tag: 'Stablecoin',
     }))
-    .sort((a, b) => b.mcap - a.mcap);
+    .sort((a, b) => (b.mcap ?? 0) - (a.mcap ?? 0));
 
-  return {
-    chains,
-    protocols,
-    stablecoins,
-    categories: categories.sort((a, b) => b.tvl - a.tvl),
-    tags: tags.sort((a, b) => b.tvl - a.tvl),
-  };
-}
+  const results = [...chains, ...protocols, ...stablecoins, ...categories, ...tags].sort(
+    (a, b) => (tastyMetrics[a.route] ?? 0) - (tastyMetrics[b.route] ?? 0)
+  );
 
-async function generateSearchList() {
-  const { chains, protocols, stablecoins, categories, tags } = await generateSearchCategories();
-  let searchListV1 = [...chains, ...protocols, ...stablecoins, ...categories, ...tags];
-  let searchListV2 = [
-    { category: "Chains", pages: chains, route: "/chains" },
-    { category: "Protocols", pages: protocols, route: "/" },
-    { category: "Stablecoins", pages: stablecoins, route: "/stablecoins" },
-    { category: "Categories", pages: categories, route: "/categories" },
-    { category: "Tags", pages: tags, route: "/categories" },
-  ];
-  return { searchListV1, searchListV2 };
+  return results;
 }
 
 const main = async () => {
-  const { searchListV1, searchListV2 } = await generateSearchList();
+  const results = await generateSearchList();
   await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
     method: "DELETE",
     headers: {
@@ -143,7 +159,7 @@ const main = async () => {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(searchListV1),
+    body: JSON.stringify(results),
   }).then((r) => r.json());
   const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
@@ -151,7 +167,7 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
-  await storeR2("searchlist.json", JSON.stringify(searchListV2), true, false).catch((e) => {
+  await storeR2("searchlist.json", JSON.stringify(results), true, false).catch((e) => {
     console.log("Error storing search list v2", e);
   });
 

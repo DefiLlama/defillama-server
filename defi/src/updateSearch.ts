@@ -124,7 +124,7 @@ async function generateSearchList() {
   }
 
   const stablecoins = stablecoinsData.peggedAssets.map((stablecoin) => ({
-    id: `stablecoin_${normalize(stablecoin.name)}_${stablecoin.symbol}`,
+    id: `stablecoin_${normalize(stablecoin.name)}_${normalize(stablecoin.symbol)}`,
     name: stablecoin.name,
     symbol: stablecoin.symbol,
     mcap: stablecoin.circulating.peggedUSD,

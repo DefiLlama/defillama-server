@@ -163,4 +163,5 @@ export default {
   harvest: require("./yield/harvest"),
   opensea: require("./nft/opensea"),
   brkteth: require("./yield/brkteth"),
+  suzaku: require("./restaking/suzaku"),
 };

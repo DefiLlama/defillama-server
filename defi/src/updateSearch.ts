@@ -58,7 +58,7 @@ async function generateSearchCategories() {
     }))
     .concat(
       tvlData.parentProtocols.map((parent) => ({
-        id: normalize(parent.id.replace("#", "_")),
+        id: `protocol_parent_${normalize(parent.name)}`,
         name: parent.name,
         symbol: parent.symbol,
         tvl: parentTvl[parent.id] ?? 0,
@@ -96,16 +96,24 @@ async function generateSearchCategories() {
     });
   }
 
-  const stablecoins = stablecoinsData.peggedAssets.map((stablecoin) => ({
-    id: `stablecoin_${normalize(stablecoin.name)}`,
-    name: stablecoin.name,
-    symbol: stablecoin.symbol,
-    mcap: stablecoin.circulating.peggedUSD,
-    logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
-    route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
-  }));
+  const stablecoins = stablecoinsData.peggedAssets
+    .map((stablecoin) => ({
+      id: `stablecoin_${normalize(stablecoin.name)}`,
+      name: stablecoin.name,
+      symbol: stablecoin.symbol,
+      mcap: stablecoin.circulating.peggedUSD,
+      logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
+      route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
+    }))
+    .sort((a, b) => b.mcap - a.mcap);
 
-  return { chains, protocols, stablecoins, categories, tags };
+  return {
+    chains,
+    protocols,
+    stablecoins,
+    categories: categories.sort((a, b) => b.tvl - a.tvl),
+    tags: tags.sort((a, b) => b.tvl - a.tvl),
+  };
 }
 
 async function generateSearchList() {
@@ -115,8 +123,8 @@ async function generateSearchList() {
     { category: "Chains", pages: chains, route: "/chains" },
     { category: "Protocols", pages: protocols, route: "/" },
     { category: "Stablecoins", pages: stablecoins, route: "/stablecoins" },
-    { category: "Categories", pages: categories, route: "/protocols" },
-    { category: "Tags", pages: tags, route: "/protocols" },
+    { category: "Categories", pages: categories, route: "/categories" },
+    { category: "Tags", pages: tags, route: "/categories" },
   ];
   return { searchListV1, searchListV2 };
 }

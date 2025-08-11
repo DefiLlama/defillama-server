@@ -700,5 +700,8 @@ export default {
     },
     "wallet-v": {
         id: "6562"
+    },
+    "rollx": {
+        id: "5973"
     }
 } as AdaptorsConfig

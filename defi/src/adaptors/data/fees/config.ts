@@ -3817,5 +3817,11 @@ export default {
     },
     "wallet-v": {
         id: "6562"
+    },
+    "kinetiq-staked-hype": {
+        id: "6447"
+    },
+    "resolv": {
+        id: "5655"
     }
 } as AdaptorsConfig

@@ -21360,7 +21360,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Ripple", "Arbitrum", "Optimism", "Solana", "Tron", "Polygon"],
     module: "gate-io/index.js",
-    twitter: "gate_io",
+    twitter: "Gate",
     forkedFrom: [],
     listedAt: 1669634683,
   },

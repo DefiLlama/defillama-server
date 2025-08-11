@@ -22329,5 +22329,24 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt:1754929605
   },
+  {
+    id: "6567",
+    name: "ADEN",
+    address: null,
+    symbol: "-",
+    url: "https://aden.io/",
+    description: "A Pro-Grade Order Book DEX",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/aden.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "bugscoin_bgsc",
+    forkedFromIds: [],
+  },
 ];
 export default data4;

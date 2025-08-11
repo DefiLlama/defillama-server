@@ -12,8 +12,6 @@ import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
-import { sluggifyString } from "../../utils/sluggify";
-import standardizeProtocolName from "../../utils/standardizeProtocolName";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
@@ -52,7 +50,7 @@ const slugMap: any = {
 
 const slug = (tokenName = "") => {
   if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return slugMap[tokenName];
+  return slugMap[tokenName]
 };
 
 export async function storeAppMetadata() {
@@ -88,7 +86,6 @@ async function _storeAppMetadata() {
   const finalProtocols: any = {};
   const finalChains: any = {};
   let lendingProtocols = 0;
-  const parentTvls: Record<string, number> = {}
 
   const [
     tvlData,
@@ -118,7 +115,7 @@ async function _storeAppMetadata() {
     chainAssetsData,
     chainsData,
     forksData,
-    stablecoinsData,
+    stablecoinsTracked,
     oraclesData,
     chainNftsData,
   ] = await Promise.all([
@@ -150,49 +147,23 @@ async function _storeAppMetadata() {
     readRouteData("/chains").catch(() => []),
     readRouteData("/forks").catch(() => ({ forks: {} })),
     fetchJson(STABLECOINS_API)
-      .then((res) => ({ protocolsTracked: res.peggedAssets.length, chainsTracked: res.chains.length, stablecoins: res.peggedAssets.map((s: any) => ({
-        id: `stablecoin_${normalize(s.name)}`,
-        name: s.name,
-        symbol: s.symbol,
-        mcap: s.circulating?.peggedUSD ?? 0,
-        logo: s.logo,
-        route: `/stablecoin/${standardizeProtocolName(s.name)}`,
-      })) }))
-      .catch(() => ({ protocolsTracked: 0, chainsTracked: 0, stablecoins: [] })),
+      .then((res) => ({ protocols: res.peggedAssets.length, chains: res.chains.length }))
+      .catch(() => ({ protocols: 0, chains: 0 })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
   ]);
 
   await _storeMetadataFile();
 
-  const searchList: Record<
-    string,
-    { id: string; name: string; symbol?: string; tvl?: number; mcap?: number; logo: string | null; route: string, deprecated?: boolean }[]
-  > = {
-    chains: [],
-    protocols: [],
-    stablecoins: stablecoinsData.stablecoins,
-    categories: [],
-    tags: [],
-  };
-
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
       finalChains[slug(chain)] = { name: chain };
-      const chainData = chainsData.find((c: any) => c.name === chain);
-      searchList.chains.push({
-        id: `chain_${normalize(chain)}`,
-        name: chain,
-        symbol: chainData?.symbol ?? chain,
-        tvl: chainData?.tvl ?? 0,
-        logo: `https://icons.llamao.fi/icons/chains/${standardizeProtocolName(chain)}?w=48&h=48`,
-        route: `/chain/${standardizeProtocolName(chain)}`,
-      });
     }
+
 
     const parentToChildProtocols: any = {};
     for (const protocol of tvlData.protocols) {
-      const protocolInfo = protocolInfoMap[protocol.defillamaId];
+      const protocolInfo = protocolInfoMap[protocol.defillamaId]
       if (!protocolInfo) {
         console.warn(`Protocol ${protocol.defillamaId} not found in protocolInfoMap`);
         continue;
@@ -200,7 +171,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -216,33 +187,20 @@ async function _storeAppMetadata() {
           ...finalProtocols[protocol.parentProtocol],
           ...(protocol.tvl != null ? { tvl: true } : {}),
         };
-        parentTvls[protocol.parentProtocol] = (parentTvls[protocol.parentProtocol] ?? 0) + (protocol.tvl ?? 0);
       }
 
       if (protocol.category === "Lending") {
         lendingProtocols += 1;
       }
 
-      const chainTvls = Object.entries(protocol.chainTvls ?? {})
-        .map((p: any) => [p[0], p[1]?.tvl ?? 0])
-        .sort((a: any, b: any) => b[1] - a[1]);
+      const chainTvls = Object.entries(protocol.chainTvls ?? {}).map((p: any) => [p[0], p[1]?.tvl ?? 0]).sort((a: any, b: any) => b[1] - a[1]);
       for (const [chain] of chainTvls) {
         if (chain.includes("-") || allExtraSections.includes(chain)) continue;
         protocolChainSetMap[protocol.defillamaId].add(chain);
       }
-
-      // search list
-      searchList.protocols.push({
-        id: `protocol_${normalize(protocol.name)}`,
-        name: protocol.name,
-        symbol: protocol.symbol,
-        tvl: protocol.tvl,
-        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(protocol.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(protocol.name)}`,
-        ...(protocol.deprecated ? { deprecated: true } : {}),
-      });
     }
     for (const protocol of tvlData.parentProtocols) {
+
       const name = slug(protocol.name);
       finalProtocols[protocol.id] = {
         name,
@@ -255,16 +213,6 @@ async function _storeAppMetadata() {
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
-
-      searchList.protocols.push({
-        id: `protocol_${normalize(protocol.name)}`,
-        name: protocol.name,
-        symbol: protocol.symbol,
-        tvl: parentTvls[protocol.id] ?? 0,
-        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(protocol.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(protocol.name)}`,
-        ...(protocol.deprecated ? { deprecated: true } : {}),
-      });
     }
 
     for (const protocol in protocolInfoMap) {
@@ -670,6 +618,7 @@ async function _storeAppMetadata() {
       }
     }
 
+
     const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
     for (const protocolNameAndId of nameAndIds) {
@@ -692,7 +641,7 @@ async function _storeAppMetadata() {
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
 
           r[k].chains.forEach((chain: any) => {
-            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1;
+            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1
           });
         }
         if (parentProtocolsInfoMap[k]) {
@@ -732,8 +681,8 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
-    });
+      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {}
+    })
 
     const sortedChainData = Object.keys(finalChains)
       .sort()
@@ -749,33 +698,9 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-chains.json", sortedChainData);
 
-
-
-    for (const category of categoriesSet) {
-      searchList.categories.push({
-        id: `category_${normalize(category)}`,
-        name: category,
-        tvl: 0,
-        logo: null,
-        route: `/protocols/${category}`,
-      });
-    }
-
-    for (const tag of tagsSet) {
-      searchList.tags.push({
-        id: `tag_${normalize(tag)}`,
-        name: tag,
-        tvl: 0,
-        logo: null,
-        route: `/protocols/${tag}`,
-      });
-    }
-
-    await storeRouteData("/config/smol/appMetadata-searchList.json", searchList);
-
     const totalTrackedByMetric = {
       tvl: { protocols: 0, chains: 0 },
-      stablecoins: { protocols: stablecoinsData.protocolsTracked, chains: stablecoinsData.chainsTracked },
+      stablecoins: stablecoinsTracked,
       fees: { protocols: 0, chains: 0 },
       revenue: { protocols: 0, chains: 0 },
       holdersRevenue: { protocols: 0, chains: 0 },
@@ -891,10 +816,7 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
 
-    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
-      categories: Array.from(categoriesSet),
-      tags: Array.from(tagsSet),
-    });
+    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", { categories: Array.from(categoriesSet), tags: Array.from(tagsSet) });
 
     console.log("finished building metadata");
   }
@@ -912,9 +834,3 @@ const CHAINS_ASSETS = "https://api.llama.fi/chain-assets/chains";
 const LIQUIDITY_API = "https://defillama-datasets.llama.fi/liquidity.json";
 const CHAIN_NFTS = "https://defillama-datasets.llama.fi/temp/chainNfts";
 const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
-
-const normalize = (str: string) =>
-  sluggifyString(str)
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "");

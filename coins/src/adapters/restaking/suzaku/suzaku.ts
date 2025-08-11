@@ -48,7 +48,11 @@ export async function getTokenPrices(timestamp: number): Promise<Write[]> {
 
   try {
     const usdPrice = await getOdosPrice(chainId, tokenAddress);
-    const price = usdPrice !== null ? usdPrice : 0.67;
+
+    if (usdPrice === null) {
+      console.log("No price available from Odos API");
+      return [];
+    }
 
     const [symbol, decimals, name] = await Promise.all([
       api.call({ target: tokenAddress, abi: 'string:symbol', permitFailure: true }),
@@ -59,11 +63,11 @@ export async function getTokenPrices(timestamp: number): Promise<Write[]> {
     const write: Write = {
       PK: `asset#${chain}:${tokenAddress.toLowerCase()}`,
       SK: timestamp,
-      price: price,
+      price: usdPrice,
       adapter: "suzaku",
       symbol: symbol,
       decimals: decimals,
-      confidence: 0.8
+      confidence: 0.9
     };
 
     writes.push(write);
@@ -71,18 +75,6 @@ export async function getTokenPrices(timestamp: number): Promise<Write[]> {
 
   } catch (error) {
     console.error(`Error getting token data:`, error);
-
-    const fallbackWrite: Write = {
-      PK: `asset#${chain}:${tokenAddress.toLowerCase()}`,
-      SK: timestamp,
-      price: 0.135,
-      adapter: "suzaku",
-      symbol: "SUZ",
-      decimals: 18,
-      confidence: 0.6
-    };
-
-    writes.push(fallbackWrite);
-    return writes;
+    return [];
   }
 }

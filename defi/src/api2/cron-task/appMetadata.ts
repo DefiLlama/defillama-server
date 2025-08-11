@@ -16,12 +16,6 @@ import { sluggifyString } from "../../utils/sluggify";
 import standardizeProtocolName from "../../utils/standardizeProtocolName";
 const { exec } = require("child_process");
 
-const normalize = (str: string) =>
-  sluggifyString(str)
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "");
-
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
 
 const protocolInfoMap: any = {};
@@ -919,4 +913,8 @@ const LIQUIDITY_API = "https://defillama-datasets.llama.fi/liquidity.json";
 const CHAIN_NFTS = "https://defillama-datasets.llama.fi/temp/chainNfts";
 const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
 
-
+const normalize = (str: string) =>
+  sluggifyString(str)
+    .replace(/[^a-zA-Z0-9_-]/, "")
+    .replace(/[^a-zA-Z0-9_-]/, "")
+    .replace(/[^a-zA-Z0-9_-]/, "");

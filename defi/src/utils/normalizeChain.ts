@@ -4497,7 +4497,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     twitter: "ENI__Official",
-    url: "https://eniac.network/",
+    url: "https://eni.top/",
     chainId: 173,
   },
 } as unknown as ChainCoinGekcoIds

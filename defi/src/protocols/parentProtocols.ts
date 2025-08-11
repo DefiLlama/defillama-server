@@ -7663,6 +7663,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Kura_Dex",
   },
+  {
+    id: "parent#sendai",
+    name: "SendAI",
+    address: "solana:SENDdRQtYMWaQrBroBrJ2Q53fgVuq95CV9UPGEvpCxa",
+    symbol: "SEND", 
+    url: "https://www.sendai.fun",
+    description: "The Tooling Layer for AI Agents on Solana",
+    logo: `${baseIconsUrl}/sendai.png`,
+    gecko_id: "send-2",
+    cmcId: "34948",
+    chains: ["solana"],
+    twitter: "sendaifun",
+  },
 ];
 
 export default parentProtocols;

@@ -94,7 +94,7 @@ async function _storeAppMetadata() {
   const finalProtocols: any = {};
   const finalChains: any = {};
   let lendingProtocols = 0;
-  const parentTvls: Record<string, number> = {}
+  const parentTvls: Record<string, number> = {};
 
   const [
     tvlData,
@@ -156,14 +156,18 @@ async function _storeAppMetadata() {
     readRouteData("/chains").catch(() => []),
     readRouteData("/forks").catch(() => ({ forks: {} })),
     fetchJson(STABLECOINS_API)
-      .then((res) => ({ protocolsTracked: res.peggedAssets.length, chainsTracked: res.chains.length, stablecoins: res.peggedAssets.map((s: any) => ({
-        id: `stablecoin_${normalize(s.name)}`,
-        name: s.name,
-        symbol: s.symbol,
-        mcap: s.circulating?.peggedUSD ?? 0,
-        logo: s.logo,
-        route: `/stablecoin/${standardizeProtocolName(s.name)}`,
-      })) }))
+      .then((res) => ({
+        protocolsTracked: res.peggedAssets.length,
+        chainsTracked: res.chains.length,
+        stablecoins: res.peggedAssets.map((s: any) => ({
+          id: `stablecoin_${normalize(s.name)}`,
+          name: s.name,
+          symbol: s.symbol,
+          mcap: s.circulating?.peggedUSD ?? 0,
+          logo: s.logo,
+          route: `/stablecoin/${standardizeProtocolName(s.name)}`,
+        })),
+      }))
       .catch(() => ({ protocolsTracked: 0, chainsTracked: 0, stablecoins: [] })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
@@ -171,7 +175,16 @@ async function _storeAppMetadata() {
 
   const searchList: Record<
     string,
-    { id: string; name: string; symbol?: string; tvl?: number; mcap?: number; logo: string | null; route: string, deprecated?: boolean }[]
+    {
+      id: string;
+      name: string;
+      symbol?: string;
+      tvl?: number;
+      mcap?: number;
+      logo: string | null;
+      route: string;
+      deprecated?: boolean;
+    }[]
   > = {
     chains: [],
     protocols: [],
@@ -755,8 +768,6 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-chains.json", sortedChainData);
 
-
-
     for (const category of categoriesSet) {
       searchList.categories.push({
         id: `category_${normalize(category)}`,
@@ -777,7 +788,22 @@ async function _storeAppMetadata() {
       });
     }
 
-    await storeRouteData("/config/smol/appMetadata-searchList.json", searchList);
+    const finalSearchList: any[] = [];
+    for (const searchCategory in searchList) {
+      finalSearchList.push({
+        category: searchCategory,
+        pages: searchList[searchCategory],
+        route:
+          searchCategory === "chains"
+            ? "/chains"
+            : searchCategory === "protocols"
+            ? "/"
+            : searchCategory === "stablecoins"
+            ? "/stablecoins"
+            : "/categories",
+      });
+    }
+    await storeRouteData("/config/smol/appMetadata-searchList.json", finalSearchList);
 
     const totalTrackedByMetric = {
       tvl: { protocols: 0, chains: 0 },
@@ -918,5 +944,3 @@ const CHAINS_ASSETS = "https://api.llama.fi/chain-assets/chains";
 const LIQUIDITY_API = "https://defillama-datasets.llama.fi/liquidity.json";
 const CHAIN_NFTS = "https://defillama-datasets.llama.fi/temp/chainNfts";
 const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
-
-

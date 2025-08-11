@@ -77,7 +77,6 @@ async function generateSearchList() {
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
       route: `/protocol/${standardizeProtocolName(parent.name)}`,
-      tag: "Protocol",
       v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
     }))
     .concat(
@@ -89,23 +88,18 @@ async function generateSearchList() {
         logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
         route: `/protocol/${standardizeProtocolName(p.name)}`,
         ...(p.deprecated ? { deprecated: true } : {}),
-        tag: "Protocol",
-        v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
+        v: tastyMetrics[`/protocol/${standardizeProtocolName(p.name)}`] ?? 0,
       }))
-    )
-    .sort((a, b) => b.v - a.v);
+    );
 
-  const chains = tvlData.chains
-    .map((chain) => ({
-      id: `chain_${normalize(chain)}`,
-      name: chain,
-      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
-      tvl: chainTvl[chain],
-      route: `/chain/${standardizeProtocolName(chain)}`,
-      tag: "Chain",
-      v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
-    }))
-    .sort((a, b) => b.v - a.v);
+  const chains = tvlData.chains.map((chain) => ({
+    id: `chain_${normalize(chain)}`,
+    name: chain,
+    logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+    tvl: chainTvl[chain],
+    route: `/chain/${standardizeProtocolName(chain)}`,
+    v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+  }));
 
   const categories = [] as any[];
   for (const category in categoryTvl) {
@@ -114,7 +108,6 @@ async function generateSearchList() {
       name: `All protocols in ${category}`,
       tvl: categoryTvl[category],
       route: `/protocols/${standardizeProtocolName(category)}`,
-      tag: "Category",
       v: tastyMetrics[`/protocols/${standardizeProtocolName(category)}`] ?? 0,
     });
   }
@@ -126,28 +119,24 @@ async function generateSearchList() {
       name: `All protocols in ${tag}`,
       tvl: tagTvl[tag],
       route: `/protocols/${standardizeProtocolName(tag)}`,
-      tag: "Tag",
       v: tastyMetrics[`/protocols/${standardizeProtocolName(tag)}`] ?? 0,
     });
   }
 
-  const stablecoins = stablecoinsData.peggedAssets
-    .map((stablecoin) => ({
-      id: `stablecoin_${normalize(stablecoin.name)}`,
-      name: stablecoin.name,
-      symbol: stablecoin.symbol,
-      mcap: stablecoin.circulating.peggedUSD,
-      logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
-      route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
-      tag: "Stablecoin",
-      v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
-    }))
-    .sort((a, b) => b.v - a.v);
+  const stablecoins = stablecoinsData.peggedAssets.map((stablecoin) => ({
+    id: `stablecoin_${normalize(stablecoin.name)}_${stablecoin.symbol}`,
+    name: stablecoin.name,
+    symbol: stablecoin.symbol,
+    mcap: stablecoin.circulating.peggedUSD,
+    logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
+    route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
+    v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
+  }));
 
   return {
-    chains,
-    protocols,
-    stablecoins,
+    chains: chains.sort((a, b) => b.v - a.v),
+    protocols: protocols.sort((a, b) => b.v - a.v),
+    stablecoins: stablecoins.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
   };
@@ -155,7 +144,13 @@ async function generateSearchList() {
 
 const main = async () => {
   const results = await generateSearchList();
-  const searchListV1 = [...results.chains, ...results.protocols, ...results.stablecoins, ...results.categories, ...results.tags];
+  const searchListV1 = [
+    ...results.chains,
+    ...results.protocols,
+    ...results.stablecoins,
+    ...results.categories,
+    ...results.tags,
+  ];
   const searchListV2 = [
     { category: "Chains", pages: results.chains, route: "/chains" },
     { category: "Protocols", pages: results.protocols, route: "/" },

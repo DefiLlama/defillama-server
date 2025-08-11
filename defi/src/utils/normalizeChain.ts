@@ -4496,7 +4496,7 @@ export const chainCoingeckoIds = {
     symbol: "ENI",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "eniacnetwork",
+    twitter: "ENI__Official",
     url: "https://eniac.network/",
     chainId: 173,
   },

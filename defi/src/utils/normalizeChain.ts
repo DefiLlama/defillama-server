@@ -4491,6 +4491,15 @@ export const chainCoingeckoIds = {
     url: "https://bitcichain.com/",
     chainId: 1907,
   },
+  "ENI": {
+    geckoId: null,
+    symbol: "ENI",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "eniacnetwork",
+    url: "https://eniac.network/",
+    chainId: 173,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4694,6 +4703,7 @@ const chainLabelMap = {
   "tac": "TAC",
   "hydragon": "Hydra Chain",
   "bitci": "Bitcichain",
+  "eni": "ENI",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -11162,6 +11162,11 @@
     }
   },
   "eni": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "EGAS",
+      "to": "asset#eni:0x6d1e851446f4d004ae2a72f9afed85e8829a205e"
+    },
     "0xdc1a8a35b0baa3229b13f348ed708a2fd50b5e3a": {
       "decimals": "18",
       "symbol": "USDT",

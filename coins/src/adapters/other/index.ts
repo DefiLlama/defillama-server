@@ -162,6 +162,9 @@ export async function unknownTokens2(timestamp: number = 0) {
       { pool: "0x62191C893DF8d26aC295BA1274a00975dc07190C", unknown: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", known: "0x4200000000000000000000000000000000000006", },
       { pool: "0xAE6c9B2A2777D0396cbE7E13Fc9ACEAC0D052e00", unknown: "0xc38464250f51123078bbd7ea574e185f6623d037", known: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", },
     ],
+    eni: [
+      { pool: "0x70fafce741d7f49f03434690fcb73d1933a90c1d", unknown: "0x6d1e851446f4d004ae2a72f9afed85e8829a205e", known: "0xdc1a8a35b0baa3229b13f348ed708a2fd50b5e3a", },
+    ]
   }
   const projectName = 'unknownTokensV2';
 

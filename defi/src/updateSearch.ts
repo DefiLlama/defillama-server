@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
-import { storeRouteData } from "./api2/cache/file-cache";
+import { storeR2 } from "./utils/r2";
 
 const normalize = (str: string) =>
   sluggifyString(str)
@@ -143,7 +143,7 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
-  await storeRouteData("/config/smol/appMetadata-searchlist.json", searchListV2).catch((e) => {
+  await storeR2("searchlist.json", JSON.stringify(searchListV2), true, false).catch((e) => {
     console.log("Error storing search list v2", e);
   });
 

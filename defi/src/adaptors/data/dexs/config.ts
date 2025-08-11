@@ -2948,4 +2948,46 @@ export default {
     "spookyswap-v3": {
         id: "5272"
     },
+    "stellaswap-v4": {
+        id: "5802"
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
+    },
+    "fluxbeam": {
+        id: "3053"
+    },
+    "obric-v2": {
+        id: "2474"
+    },
+    "solfi": {
+        id: "6553"
+    },
+    "humidifi": {
+        id: "6554"
+    },
+    "zerofi": {
+        id: "6555"
+    },
+    "goonfi": {
+        id: "6556"
+    },
+    "tessera": {
+        id: "6557"
+    },
+    // "hyperunit": { not tracking this for bridges
+    //     id: "5788"
+    // },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
 } as AdaptorsConfig

@@ -127,6 +127,43 @@ export async function craftParentProtocolInternal({
 }) {
   if (!fetchMcap) fetchMcap = protocolMcap;
 
+
+
+  // debug to find bad data
+  // -- debug start
+  const isBadDataFormat = (data: any) => {
+    if (typeof data !== "object" || !data) return true;
+    const { tvl, tokensInUsd, tokens } = data;
+    if (!Array.isArray(tvl)) return 'tvl'
+    if (!Array.isArray(tokensInUsd)) return 'tokensInUsd'
+    if (!Array.isArray(tokens)) return 'tokens'
+    return false;
+  }
+  childProtocolsTvls.forEach((protocolData: any) => {
+    if (protocolData.message) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for ${protocolData.name}: ${protocolData.message}`);
+      return;
+    }
+
+    const badData = isBadDataFormat(protocolData);
+    if (badData) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for ${protocolData.name}: ${badData}`)
+    }
+
+    Object.entries(protocolData.chainTvls ?? {}).forEach(([chain, chainData]: any) => {
+      const badChainData = isBadDataFormat(chainData);
+      if (badChainData) {
+        console.error(`Error building parent protocol: ${parentProtocol.name}`);
+        console.error(`Error in chain data for ${chain} in protocol ${protocolData.name}: ${badChainData}`)
+      }
+    });
+  })
+  // -- debug end
+
+
+
   let { chainTvls, tokensInUsd, tokens, tvl } = mergeChildProtocolData(childProtocolsTvls, isHourlyTvl);
 
   if (skipAggregatedTvl) {
@@ -181,7 +218,7 @@ export async function craftParentProtocolInternal({
     // show all hallmarks of child protocols on parent protocols chart
     const hallmarks: any = []
     childProtocolsTvls.forEach((module) => {
-      if (module.hallmarks) 
+      if (module.hallmarks)
         hallmarks.push(...module.hallmarks);
     });
 

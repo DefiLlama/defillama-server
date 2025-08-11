@@ -368,6 +368,14 @@ export default {
   },
   "opensea": {
     id: "2258"
+  },
+  "orbiter-finance": {
+    id: "6520"
+  },
+  "hyperflow": {
+    id: "6538"
+  },
+  "nordstern-finance": {
+    id: "6552"
   }
-
 } as AdaptorsConfig;

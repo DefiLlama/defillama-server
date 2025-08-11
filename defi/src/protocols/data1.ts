@@ -894,7 +894,7 @@ const data: Protocol[] = [
   {
     id: "145",
     name: "Serum",
-    address: null,
+    address: "0x476c5e26a75bd202a9683ffd34359c0cc15be0ff",
     symbol: "SRM",
     url: "https://projectserum.com/",
     description:
@@ -1847,10 +1847,7 @@ const data: Protocol[] = [
     twitter: "dHedgeOrg",
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"],
-    audit_links: [
-      "https://iosiro.com/audits/dhedge-platform-smart-contract-audit",
-      "https://www.certik.com/projects/dhedge",
-    ],
+    audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
   },
   {
     id: "191",
@@ -3080,14 +3077,14 @@ const data: Protocol[] = [
   // },
   {
     id: "249",
-    name: "StakeDAO",
+    name: "Stake DAO",
     address: "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
     symbol: "SDT",
     url: "https://stakedao.org/",
     description:
       "Stake DAO is a non-custodial decentralized protocol enabling users to access optimized yield opportunities in DeFi",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stakedao.jpg`,
+    logo: `${baseIconsUrl}/stake-dao.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "stake-dao",
@@ -4076,7 +4073,7 @@ const data: Protocol[] = [
   {
     id: "294",
     name: "Anchor",
-    address: null,
+    address: "terra:terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76",
     symbol: "ANC",
     url: "https://anchorprotocol.com/",
     description: "Money market on Terra",
@@ -6043,7 +6040,7 @@ const data: Protocol[] = [
   {
     id: "383",
     name: "Osmosis DEX",
-    address: null,
+    address: "osmosis:uosmo",
     symbol: "OSMO",
     url: "https://osmosis.zone/",
     description:
@@ -6886,25 +6883,25 @@ const data: Protocol[] = [
   },
   {
     id: "421",
-    name: "Paint Swap",
+    name: "PaintSwap on Fantom",
     address: "fantom:0x85dec8c4B2680793661bCA91a8F129607571863d",
     symbol: "BRUSH",
     url: "https://paintswap.finance",
     description:
       "PaintSwap Finance has the premier open NFT Marketplace on Fantom. It has a unique and sustainable yield farming AMM platform where 50% of farming rewards are locked for 3 months in the Art Gallery. The first project to create a video game built on the Fantom network, as well as many other exciting features in the works.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/paint-swap.png`,
+    logo: `${baseIconsUrl}/paintswap-fantom.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "paint-swap",
-    cmcId: "13229",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Fantom"],
     forkedFromIds: ["2197"],
     module: "paintswap/index.js",
     twitter: "paint_swap",
     audit_links: ["https://solidity.finance/audits/PaintSwap/"],
-    github: ["PaintSwap"],
+    parentProtocol: "parent#paintswap",
   },
   {
     id: "422",
@@ -11221,7 +11218,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "618",
     name: "Kava Swap",
-    address: null,
+    address: "osmosis:ibc/70CF1A54E23EA4E480DEDA9E12082D3FD5684C3483CBDCE190C5C807227688C5",
     symbol: "SWP",
     url: "https://app.kava.io/swap/pools",
     description:
@@ -14321,8 +14318,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "753",
     name: "RealT Tokens",
-    address: null,
-    symbol: "-",
+    address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+    symbol: "REG",
     url: "https://realt.co",
     description:
       "RealToken provides investors with a simple, intelligent, and user-friendly method to buy into fractional, tokenized properties, leveraging the U.S. legal system and the permissionless, unrestricted token issuance of Ethereum.",
@@ -14948,7 +14945,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "801",
     name: "cBridge",
-    address: null,
+    address: "0x4f9254c83eb525f9fcf346490bbb3ed28a81c667",
     symbol: "CELR",
     url: "https://cbridge.celer.network/#/transfer",
     description:
@@ -25926,7 +25923,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1302",
     name: "SundaeSwap V2",
-    address: null,
+    address: "cardano:9a9693a9a37912a5097918f97918d15240c92ab729a0b7c4aa144d7753554e444145",
     symbol: "SUNDAE",
     url: "https://www.sundaeswap.finance/",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",

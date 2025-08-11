@@ -5,7 +5,7 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
-type ChartBreakdownOptions = 'd' | 'w' | 'm'
+type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string

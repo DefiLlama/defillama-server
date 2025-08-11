@@ -7,6 +7,7 @@ import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
 import { sluggifyString } from "../utils/sluggify";
+import { AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
@@ -352,3 +353,10 @@ test("icon exists", async () => {
   }
 });
 */
+
+
+const isArrayUnique = (arr: any[]) => Array.isArray(arr) && new Set(arr).size === arr.length;
+test("No duplicated adapter type", async () => {
+    const values = Object.values(AdaptorRecordType)
+    expect(isArrayUnique(values)).toBeTruthy();
+});

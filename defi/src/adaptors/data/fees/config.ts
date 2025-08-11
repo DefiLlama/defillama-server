@@ -296,7 +296,8 @@ export default {
         id: "2396"
     },
     "hegic": {
-        id: "128"
+        id: "128",
+        defaultChartView: "weekly",
     },
     "el-dorado-exchange": {
         id: "2356"
@@ -1142,7 +1143,12 @@ export default {
         id: "4235"
     },
     "ethena": {
-        id: "4133"
+        id: "4133",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1754524800": true
+            },
+        }
     },
     "avantis": {
         id: "4108"
@@ -2074,7 +2080,8 @@ export default {
         id: "5813"
     },
     "beradrome": {
-        id: "5798"
+        id: "5798",
+        defaultChartView: "weekly",
     },
     "rings": {
         id: "5526"
@@ -3706,7 +3713,7 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
-    "definitive-v2": {
+    "definitive": {
         id: "4257"
     },
     "bybit-staked-sol": {
@@ -3738,5 +3745,77 @@ export default {
     },
     "netswap": {
         id: "1140"
+    },
+    "stellaswap-v4": {
+        id: "5802"
+    },
+    "based-app": {
+        id: "6521"
+    },
+    "imx-seaport": {
+        id: "6522"
+    },
+    "yo-protocol": {
+        id: "5915"
+    },
+    "edge-capital": {
+        id: "6528"
+    },
+    "dexari": {
+        id: "6531"
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "hyperunit": {
+        id: "5788"
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
+    },
+    "sendshot": {
+        id: "6551"
+    },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
+    "dextrabot": {
+        id: "6558"
+    },
+    "hyperdash": {
+        id: "6559"
+    },
+    "kinto-xyz": {
+        id: "6560"
+    },
+    "superx": {
+        id: "6561"
+    },
+    "wallet-v": {
+        id: "6562"
     }
 } as AdaptorsConfig

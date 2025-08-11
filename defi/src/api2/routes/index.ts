@@ -21,7 +21,6 @@ import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
-import { setInternalRoutes } from "./internalRoutes";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -94,6 +93,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/emissionsList", r2Wrapper({ endpoint: 'emissionsProtocolsList' }))
   router.get("/emissionsBreakdown", r2Wrapper({ endpoint: 'emissionsBreakdown' }))
   router.get("/emissionsBreakdownAggregated", r2Wrapper({ endpoint: 'emissionsBreakdownAggregated' }))
+  router.get("/emissionsSupplyMetrics", r2Wrapper({ endpoint: 'emissionsSupplyMetrics' }))
   router.get("/emission/:name", emissionProtocolHandler)
   router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
 
@@ -202,7 +202,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return successResponse(res, data, 60);
   }
 
-  setInternalRoutes(router, routerBasePath)
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {

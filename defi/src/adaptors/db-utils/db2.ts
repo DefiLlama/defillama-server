@@ -21,14 +21,14 @@ export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3
     await init()
 
     const pgItem = record.getPGItem()
-    const hourlyDDbItem = record.getHourlyDDBItem()
+    // const hourlyDDbItem = record.getHourlyDDBItem()  // we are storing this as event record
     const ddbItem = record.getDDBItem()
     const eventItem = { ...record.getDDBItem(), source: 'dimension-adapter' }
 
     await Promise.all([
       Tables.DIMENSIONS_DATA.upsert(pgItem),
       dynamodb.putDimensionsData(ddbItem),
-      dynamodb.putDimensionsData(hourlyDDbItem),
+      // dynamodb.putDimensionsData(hourlyDDbItem),
       dynamodb.putEventData(eventItem),
     ])
   } catch (error) {
@@ -67,7 +67,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl', 'blc']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {

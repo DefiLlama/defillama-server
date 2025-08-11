@@ -89,6 +89,7 @@ async function _storeAppMetadata() {
 
   const [
     tvlData,
+    dimensionsChainAggData,
     yieldsData,
     expensesData,
     treasuryData,
@@ -119,6 +120,7 @@ async function _storeAppMetadata() {
     chainNftsData,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
+    readRouteData("/dimensions/chain-agg-data"),
     fetchJson(YIELD_POOLS_API).then((res) => res.data ?? []),
     fetchJson(PROTOCOLS_EXPENSES_API).catch(() => []),
     readRouteData("/treasuries").catch(() => []),
@@ -169,7 +171,7 @@ async function _storeAppMetadata() {
       const name = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
         name,
-        tvl: protocol.tvl != null && protocolInfo.module !== 'dummy.js' ? true : false,
+        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== 'dummy.js' ? true : false,
         yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -239,7 +241,6 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of treasuryData) {
-      if (protocol.misrepresentedTokens) continue;
       finalProtocols[protocol.id.split("-treasury")[0]] = {
         ...finalProtocols[protocol.id.split("-treasury")[0]],
         treasury: true,
@@ -678,6 +679,10 @@ async function _storeAppMetadata() {
         };
       }
     }
+
+    Object.keys(finalChains).forEach((chain) => {
+      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {}
+    })
 
     const sortedChainData = Object.keys(finalChains)
       .sort()

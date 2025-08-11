@@ -7,6 +7,10 @@ import {
 } from "../../utils/database";
 import { getConfig } from "../../../utils/cache";
 
+const assetExceptions: string[]  = [
+  "0xee9bfff7da99e6f85abc4f7fc33f5278473124e0", // tUSDe
+]
+
 export default async function getTokenPrices(
   timestamp: number,
   chain: string,
@@ -138,7 +142,7 @@ export default async function getTokenPrices(
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ptPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
+      const ptPrice =  assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
 
       addToDBWritesList(
         writes,
@@ -193,6 +197,21 @@ export default async function getTokenPrices(
         0.9,
         undefined,
       );
+
+      if (info.lpWrapper) {
+        addToDBWritesList(
+          writes,
+          chain,
+          info.lpWrapper,
+          lpPrice,
+          18,
+          `${symbols[i]}-wrapper`,
+          timestamp,
+          "pendle-lp-wrapper",
+          0.9,
+          undefined,
+        );
+      }
     });
   }
 
@@ -225,7 +244,7 @@ export default async function getTokenPrices(
       const asset = allAssetInfos[i].assetAddress
       const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const ytPrice = Math.min(assetPrice ?? Infinity, syPrice) * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      const ytPrice = assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
       
       addToDBWritesList(
         writes,
@@ -289,6 +308,7 @@ async function getAllTokenInfos(chainId: number) {
     sy: string;
     pt: string;
     yt: string;
+    lpWrapper?: string;
   }[] = [];
 
   function formatPendleAddr(rawAddr: string): string {
@@ -303,6 +323,7 @@ async function getAllTokenInfos(chainId: number) {
         sy: formatPendleAddr(m.sy),
         pt: formatPendleAddr(m.pt),
         yt: formatPendleAddr(m.yt),
+        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
       }))
     )
   }
@@ -315,6 +336,7 @@ async function getAllTokenInfos(chainId: number) {
         sy: formatPendleAddr(m.sy),
         pt: formatPendleAddr(m.pt),
         yt: formatPendleAddr(m.yt),
+        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
       }))
     )
   }

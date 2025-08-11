@@ -1309,7 +1309,17 @@
       "to": "coingecko#ethereum"
     }
   },
-  "bsc": {
+  "bsc": {  
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc"
+    },
     "0xd7ee80546eb6da5ece3546f11c618a1e1158cc7a": {
       "decimals": "18",
       "symbol": "rtCIC",
@@ -1969,6 +1979,16 @@
     }
   },
   "base": {
+    "0xc31389794ffac23331e0d9f611b7953f90aa5fdc": {
+      "decimals": "18",
+      "symbol": "RLP",
+      "to": "coingecko#resolv-rlp"
+    },
+    "0xB67675158B412D53fe6B68946483ba920b135bA1": {
+      "decimals": "18",
+      "symbol": "WSTUSR",
+      "to": "coingecko#resolv-wstusr"
+    },
     "0xdbBC41FFD1e4D219E2cfd5Bfe9e4623cd4274532": {
       "decimals": "18",
       "symbol": "uRON",
@@ -9197,6 +9217,21 @@
     }
   },
   "soneium": {
+    "0x2a52b289ba68bbd02676640aa9f605700c9e5699": {
+      "to": "coingecko#resolv-wstusr",
+      "decimals": 18,
+      "symbol": "wstUSR"
+    },
+    "0x35533f54740f1f1aa4179e57ba37039dfa16868b": {
+      "to": "coingecko#resolv-rlp",
+      "decimals": 18,
+      "symbol": "RLP"
+    },
+    "0xb1b385542b6e80f77b94393ba8342c3af699f15c": {
+      "to": "coingecko#resolv-usr",
+      "decimals": 18,
+      "symbol": "USR"
+    },
     "0x1217BfE6c773EEC6cc4A38b5Dc45B92292B6E189": {
       "to": "coingecko#openusdt",
       "decimals": 6,
@@ -9709,6 +9744,11 @@
     }
   },
   "hyperliquid": {
+    "0x441794D6a8F9A3739F5D4E98a728937b33489D29": {
+      "to": "coingecko#hyperliquid",
+      "decimals": 18,
+      "symbol": "liquidHYPE"
+    },
     "0xBE65F0F410A72BeC163dC65d46c83699e957D588": {
       "to": "coingecko#usd-coin",
       "decimals": 18,
@@ -10028,6 +10068,11 @@
       "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 8,
       "symbol": "sUSDa"
+    },
+    "0x16e733c5c943d78dbbaf1fc5beebbcc8db4ed647d2bdfcab74c2a527184a16aa": {
+      "to": "coingecko#ignition-fbtc",
+      "decimals": 8,
+      "symbol": "FBTC"
     }
   },
   "mtt_network": {
@@ -10881,6 +10926,11 @@
       "decimals": 18,
       "symbol": "YFI"
     },
+    "0x6C16E26013f2431e8B2e1Ba7067ECCcad0Db6C52": {
+      "to": "coingecko#jito-staked-sol",
+      "decimals": 18,
+      "symbol": "JitoSOL"
+    },
     "0x9B8Df6E244526ab5F6e6400d331DB28C8fdDdb55": {
       "to": "coingecko#wrapped-solana-universal",
       "decimals": 18,
@@ -11116,6 +11166,13 @@
       "decimals": "18",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    }
+  },
+  "babylon": {
+    "bbn17y5zvse30629t7r37xsdj73xsqp7qsdr7gpnh966wf5aslpn66rq5ekwsz": {
+      "decimals": 6,
+      "symbol": "cBABY",
+      "to": "coingecko#cube-staked-baby"
     }
   }
 }

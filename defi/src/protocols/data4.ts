@@ -8373,9 +8373,10 @@ const data4: Protocol[] = [
       }
     ],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "sedge/index.js",
     twitter: "sedge_fi",
     parentProtocol: "parent#dfx-finance",
+    listedAt: 1755011597
   },
   {
     id: "5931",
@@ -22347,6 +22348,82 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "bugscoin_bgsc",
     forkedFromIds: [],
+  },
+  {
+    id: "6568",
+    name: "Earnium",
+    address: null,
+    symbol: "-",
+    url: "https://earnium.io/",
+    description: "Liquidity engine for Aptos",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/earnium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Aptos"],
+    module: "earnium/index.js",
+    twitter: "earnium_io",
+    forkedFromIds: [],
+    audit_links: [
+      "https://1273222962-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FwGVcxDIYKUfc2IcujBZO%2Fuploads%2FCTMVlklHys0xsNUkNKMt%2FEarnium%20Audit%20Report-2025-7-25.pdf?alt=media&token=264c6245-06e6-42fc-8f6e-8adc5fa7ad97"
+    ],
+    listedAt:1755011581
+  },
+  {
+    id: "6569",
+    name: "GammaSwap Yield Tokens",
+    address: "arbitrum:0xb08d8becab1bf76a9ce3d2d5fa946f65ec1d3e83",
+    symbol: "GS",
+    url: "https://app.gammaswap.com/yield-tokens",
+    description: "Mint yield tokens that deepen onchain liquidity",
+    chain: "Base",
+    logo: `${baseIconsUrl}/gammaswap-yieldtokens.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    module: "gammaswap-yieldtokens/index.js",
+    twitter: "GammaSwapLabs",
+    forkedFromIds: [],
+    parentProtocol: "parent#gammaswaplabs",
+    listedAt:1755011589
+  },
+  {
+    id: "6570",
+    name: "Templar Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.templarfi.org/",
+    description: "Templar is the first Cypher Lending protocol that enables borrowing stablecoins against Bitcoin, or any asset on any chain, without trusting centralized intermediaries. No wrapping, no bridging, no KYC necessary",
+    chain: "Near",
+    logo: `${baseIconsUrl}/templar-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Near"],
+    module: "templarfi/index.js",
+    twitter: "TemplarProtocol",
+    forkedFromIds: [],
+    audit_links: [
+      "https://github.com/Templar-Protocol/contracts/blob/dev/audits/2025-07-01/guvenkaya/Templar-NEAR-Smart-Contract-Security-Review-Final-Report.pdf",
+      "https://github.com/Templar-Protocol/contracts/blob/dev/audits/2025-07-01/thesis_defense/250701_Defense_by_Thesis_Templar_Smart_Contracts_Final_Security.pdf"
+    ],
+    oraclesBreakdown: [
+      {
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15879"],
+      }
+    ],
+    github: ["Templar-Protocol"],
+    listedAt:1755011603
   },
 ];
 export default data4;

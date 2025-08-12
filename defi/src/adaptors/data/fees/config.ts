@@ -1264,7 +1264,7 @@ export default {
         id: "4215"
     },
     "jito": {
-        id: "2308"
+        id: "6571"
     },
     "vfat": {
         id: "4602"
@@ -3824,9 +3824,9 @@ export default {
     "resolv": {
         id: "5655"
     },
-    // "jito-staked-sol": {
-    //     id: "2308"
-    // },
+    "jito-staked-sol": {
+        id: "2308"
+    },
     "cl-dex": {
         id: "6533"
     },

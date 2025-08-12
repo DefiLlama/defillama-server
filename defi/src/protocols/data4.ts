@@ -22425,5 +22425,25 @@ const data4: Protocol[] = [
     github: ["Templar-Protocol"],
     listedAt:1755011603
   },
+  {
+    id: "6571",
+    name: "Jito DAO",
+    address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+    symbol: "JTO",
+    url: "https://jito.network",
+    description: "Tracks fees and revenue collected by the Jito DAO from MEV and other network sources, excluding liquid staking rewards",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jito-dao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DAO Service Provider",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "jito_sol",
+    forkedFromIds: [],
+    parentProtocol: "parent#jito",
+  },
 ];
 export default data4;

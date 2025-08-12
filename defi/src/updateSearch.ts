@@ -25,7 +25,7 @@ async function generateSearchList() {
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
     fetch(
-      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&timezone=Asia%2FTokyo&type=url&search=`,
+      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&search=`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
@@ -152,11 +152,11 @@ const main = async () => {
     ...results.tags,
   ];
   const searchListV2 = [
-    { category: "Chains", pages: results.chains, route: "/chains" },
-    { category: "Protocols", pages: results.protocols, route: "/" },
-    { category: "Stablecoins", pages: results.stablecoins, route: "/stablecoins" },
-    { category: "Categories", pages: results.categories, route: "/categories" },
-    { category: "Tags", pages: results.tags, route: "/categories" },
+    { category: "Chain", pages: results.chains },
+    { category: "Protocol", pages: results.protocols },
+    { category: "Stablecoin", pages: results.stablecoins },
+    { category: "Category", pages: results.categories },
+    { category: "Tag", pages: results.tags },
   ];
 
   await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
@@ -179,6 +179,30 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
+
+  // v2
+  await fetch(`https://search.defillama.com/indexes/pages/documents`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+    },
+  }).then((r) => r.json());
+  const submit2 = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(searchListV2),
+  }).then((r) => r.json());
+  const status2 = await fetch(`https://search.defillama.com/tasks/${submit2.taskUid}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+    },
+  }).then((r) => r.json());
+
+  
+
   await storeR2("searchlist.json", JSON.stringify(searchListV2), true, false).catch((e) => {
     console.log("Error storing search list v2", e);
   });
@@ -188,6 +212,12 @@ const main = async () => {
     console.log(errorMessage);
   }
   console.log(status);
+
+  const errorMessage2 = status2?.details?.error?.message;
+  if (errorMessage2) {
+    console.log(errorMessage2);
+  }
+  console.log(status2);
 };
 
 //export default main

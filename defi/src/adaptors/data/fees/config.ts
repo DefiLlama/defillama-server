@@ -3824,9 +3824,9 @@ export default {
     "resolv": {
         id: "5655"
     },
-    "jito-staked-sol": {
-        id: "2308"
-    },
+    // "jito-staked-sol": {
+    //     id: "2308"
+    // },
     "cl-dex": {
         id: "6533"
     },

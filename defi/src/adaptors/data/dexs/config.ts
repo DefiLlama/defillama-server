@@ -2990,4 +2990,7 @@ export default {
     "kura-v3": {
         id: "6548"
     },
+    "aden": {
+        id: "6567"
+    }
 } as AdaptorsConfig

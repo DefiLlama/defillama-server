@@ -7663,6 +7663,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Kura_Dex",
   },
+  {
+    id: "parent#fomoswap",
+    name: "FomoSwap",
+    url: "https://fomo.biz/dex",
+    description: "FomoSwap is the decentralized exchange of the Fomo ecosystem. Trade bonded tokens from fomo.biz, stablecoins and more on FomoSwap",
+    logo: `${baseIconsUrl}/fomoswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fomodotbiz",
+    github: ["fomodotbiz"],
+  },
 ];
 
 export default parentProtocols;

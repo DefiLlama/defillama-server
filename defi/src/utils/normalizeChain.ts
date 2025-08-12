@@ -4226,7 +4226,7 @@ export const chainCoingeckoIds = {
     twitter: "OpenGPUfndn",
     url: "https://opengpu.network/",
   },
-  "Echelon Chain": {
+  "Echelon Initia": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4491,6 +4491,15 @@ export const chainCoingeckoIds = {
     url: "https://bitcichain.com/",
     chainId: 1907,
   },
+  "ENI": {
+    geckoId: null,
+    symbol: "ENI",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "ENI__Official",
+    url: "https://eni.top/",
+    chainId: 173,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4694,6 +4703,7 @@ const chainLabelMap = {
   "tac": "TAC",
   "hydragon": "Hydra Chain",
   "bitci": "Bitcichain",
+  "eni": "ENI",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4740,7 +4750,8 @@ const newChainLabelMap = {
   "unit0": "Unit Zero",
   "eos": "Vaulta",
   "gravity": "Gravity by Galxe",
-  "idex": "XCHAIN"
+  "idex": "XCHAIN",
+  "echelon_initia": "Echelon Initia"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

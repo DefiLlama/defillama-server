@@ -63,7 +63,7 @@ curl \
   ]'
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/attributes-to-retrieve' \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/displayed-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[

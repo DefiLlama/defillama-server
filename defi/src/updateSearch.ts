@@ -78,6 +78,7 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
       route: `/protocol/${standardizeProtocolName(parent.name)}`,
       v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
+      type: "Protocol",
     }))
     .concat(
       tvlData.protocols.map((p) => ({
@@ -89,6 +90,7 @@ async function generateSearchList() {
         route: `/protocol/${standardizeProtocolName(p.name)}`,
         ...(p.deprecated ? { deprecated: true } : {}),
         v: tastyMetrics[`/protocol/${standardizeProtocolName(p.name)}`] ?? 0,
+        type: "Protocol",
       }))
     );
 
@@ -99,16 +101,18 @@ async function generateSearchList() {
     tvl: chainTvl[chain],
     route: `/chain/${standardizeProtocolName(chain)}`,
     v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+    type: "Chain",
   }));
 
   const categories = [] as any[];
   for (const category in categoryTvl) {
     categories.push({
       id: `category_${normalize(category)}`,
-      name: `All protocols in ${category}`,
+      name: category,
       tvl: categoryTvl[category],
       route: `/protocols/${standardizeProtocolName(category)}`,
       v: tastyMetrics[`/protocols/${standardizeProtocolName(category)}`] ?? 0,
+      type: "Category",
     });
   }
 
@@ -116,10 +120,11 @@ async function generateSearchList() {
   for (const tag in tagTvl) {
     tags.push({
       id: `tag_${normalize(tag)}`,
-      name: `All protocols in ${tag}`,
+      name: tag,
       tvl: tagTvl[tag],
       route: `/protocols/${standardizeProtocolName(tag)}`,
       v: tastyMetrics[`/protocols/${standardizeProtocolName(tag)}`] ?? 0,
+      type: "Tag",
     });
   }
 
@@ -131,33 +136,20 @@ async function generateSearchList() {
     logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
     route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
     v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
+    type: "Stablecoin",
   }));
 
-  return {
-    chains: chains.sort((a, b) => b.v - a.v),
-    protocols: protocols.sort((a, b) => b.v - a.v),
-    stablecoins: stablecoins.sort((a, b) => b.v - a.v),
-    categories: categories.sort((a, b) => b.v - a.v),
-    tags: tags.sort((a, b) => b.v - a.v),
-  };
+  return [
+    ...chains.sort((a, b) => b.v - a.v),
+    ...protocols.sort((a, b) => b.v - a.v),
+    ...stablecoins.sort((a, b) => b.v - a.v),
+    ...categories.sort((a, b) => b.v - a.v),
+    ...tags.sort((a, b) => b.v - a.v),
+  ];
 }
 
 const main = async () => {
   const results = await generateSearchList();
-  const searchListV1 = [
-    ...results.chains,
-    ...results.protocols,
-    ...results.stablecoins,
-    ...results.categories,
-    ...results.tags,
-  ];
-  const searchListV2 = [
-    { id: "Chain", type: "Chain", pages: results.chains },
-    { id: "Protocol", type: "Protocol", pages: results.protocols },
-    { id: "Stablecoin", type: "Stablecoin", pages: results.stablecoins },
-    { id: "Category", type: "Category", pages: results.categories },
-    { id: "Tag", type: "Tag", pages: results.tags },
-  ];
 
   await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
     method: "DELETE",
@@ -171,7 +163,7 @@ const main = async () => {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(searchListV1),
+    body: JSON.stringify(results),
   }).then((r) => r.json());
   const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
@@ -193,7 +185,7 @@ const main = async () => {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(searchListV2),
+    body: JSON.stringify(results),
   }).then((r) => r.json());
   const status2 = await fetch(`https://search.defillama.com/tasks/${submit2.taskUid}`, {
     headers: {
@@ -203,7 +195,7 @@ const main = async () => {
 
   
 
-  await storeR2("searchlist.json", JSON.stringify(searchListV2), true, false).catch((e) => {
+  await storeR2("searchlist.json", JSON.stringify(results), true, false).catch((e) => {
     console.log("Error storing search list v2", e);
   });
 

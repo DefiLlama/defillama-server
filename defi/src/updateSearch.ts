@@ -24,14 +24,11 @@ async function generateSearchList() {
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
-    fetch(
-      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
-        },
-      }
-    )
+    fetch(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
+      headers: {
+        Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
+      },
+    })
       .then((r) => r.json())
       .then((res: Array<{ x: string; y: number }>) => {
         const final = {} as Record<string, number>;
@@ -139,13 +136,27 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
+  const results = {
+    chains: chains.sort((a, b) => b.v - a.v),
+    protocols: protocols.sort((a, b) => b.v - a.v),
+    stablecoins: stablecoins.sort((a, b) => b.v - a.v),
+    categories: categories.sort((a, b) => b.v - a.v),
+    tags: tags.sort((a, b) => b.v - a.v),
+  };
+
   return [
-    ...chains.sort((a, b) => b.v - a.v),
-    ...protocols.sort((a, b) => b.v - a.v),
-    ...stablecoins.sort((a, b) => b.v - a.v),
-    ...categories.sort((a, b) => b.v - a.v),
-    ...tags.sort((a, b) => b.v - a.v),
-  ];
+    ...results.chains.slice(0, 3),
+    ...results.protocols.slice(0, 3),
+    ...results.stablecoins.slice(0, 3),
+    ...results.categories.slice(0, 3),
+    ...results.tags.slice(0, 3),
+  ].concat(
+    results.chains.slice(3),
+    results.protocols.slice(3),
+    results.stablecoins.slice(3),
+    results.categories.slice(3),
+    results.tags.slice(3)
+  );
 }
 
 const main = async () => {
@@ -171,7 +182,6 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
-
   // v2
   await fetch(`https://search.defillama.com/indexes/pages/documents`, {
     method: "DELETE",
@@ -192,8 +202,6 @@ const main = async () => {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
   }).then((r) => r.json());
-
-  
 
   await storeR2("searchlist.json", JSON.stringify(results), true, false).catch((e) => {
     console.log("Error storing search list v2", e);

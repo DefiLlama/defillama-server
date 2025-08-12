@@ -2990,4 +2990,7 @@ export default {
     "kura-v3": {
         id: "6548"
     },
+    "cl-dex": {
+        id: "6533"
+    }
 } as AdaptorsConfig

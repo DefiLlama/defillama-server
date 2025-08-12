@@ -3823,5 +3823,8 @@ export default {
     },
     "resolv": {
         id: "5655"
+    },
+    "jito-staked-sol": {
+        id: "2308"
     }
 } as AdaptorsConfig

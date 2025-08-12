@@ -4226,7 +4226,7 @@ export const chainCoingeckoIds = {
     twitter: "OpenGPUfndn",
     url: "https://opengpu.network/",
   },
-  "Echelon Chain": {
+  "Echelon Initia": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4750,7 +4750,8 @@ const newChainLabelMap = {
   "unit0": "Unit Zero",
   "eos": "Vaulta",
   "gravity": "Gravity by Galxe",
-  "idex": "XCHAIN"
+  "idex": "XCHAIN",
+  "echelon_initia": "Echelon Initia"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

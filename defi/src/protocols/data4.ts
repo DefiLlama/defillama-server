@@ -19625,7 +19625,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6438",
-    name: "Echelon Bridge",
+    name: "Echelon Initia Bridge",
     address: null,
     symbol: "-",
     url: "https://echelon.market/",

@@ -2992,5 +2992,8 @@ export default {
     },
     "cl-dex": {
         id: "6533"
+    },
+    "swapr-v3": {
+        id: "4057"
     }
 } as AdaptorsConfig

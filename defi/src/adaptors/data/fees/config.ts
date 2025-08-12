@@ -3826,5 +3826,14 @@ export default {
     },
     "jito-staked-sol": {
         id: "2308"
+    },
+    "cl-dex": {
+        id: "6533"
+    },
+    "swapr-v3": {
+        id: "4057"
+    },
+    "swapr": {
+        id: "292"
     }
 } as AdaptorsConfig

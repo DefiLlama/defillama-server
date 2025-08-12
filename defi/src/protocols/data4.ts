@@ -22342,7 +22342,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Interface",
     chains: ["Arbitrum"],
     module: "dummy.js",
     twitter: "bugscoin_bgsc",

@@ -25,7 +25,7 @@ async function generateSearchList() {
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
     fetch(
-      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&timezone=Asia%2FTokyo&type=url&search=`,
+      `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&search=`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
@@ -145,11 +145,11 @@ async function generateSearchList() {
 const main = async () => {
   const results = await generateSearchList();
   const searchList = [
-    { category: "Chain", pages: results.chains, route: "/chains" },
-    { category: "Protocol", pages: results.protocols, route: "/" },
-    { category: "Stablecoin", pages: results.stablecoins, route: "/stablecoins" },
-    { category: "Category", pages: results.categories, route: "/categories" },
-    { category: "Tag", pages: results.tags, route: "/categories" },
+    { category: "Chain", pages: results.chains },
+    { category: "Protocol", pages: results.protocols },
+    { category: "Stablecoin", pages: results.stablecoins },
+    { category: "Category", pages: results.categories },
+    { category: "Tag", pages: results.tags },
   ];
 
   await fetch(`https://search.defillama.com/indexes/pages/documents`, {

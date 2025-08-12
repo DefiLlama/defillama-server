@@ -144,31 +144,31 @@ async function generateSearchList() {
     tags: tags.sort((a, b) => b.v - a.v),
   };
 
-  return [
-    ...results.chains.slice(0, 3),
-    ...results.protocols.slice(0, 3),
-    ...results.stablecoins.slice(0, 3),
-    ...results.categories.slice(0, 3),
-    ...results.tags.slice(0, 3),
-  ].concat(
-    results.chains.slice(3),
-    results.protocols.slice(3),
-    results.stablecoins.slice(3),
-    results.categories.slice(3),
-    results.tags.slice(3)
-  );
+  return {
+    results: [...results.chains, ...results.protocols, ...results.stablecoins, ...results.categories, ...results.tags],
+    topResults: [
+      ...results.chains.slice(0, 3),
+      ...results.protocols.slice(0, 3),
+      ...results.stablecoins.slice(0, 3),
+      ...results.categories.slice(0, 3),
+      ...results.tags.slice(0, 3),
+    ].map((r) => ({
+      ...r,
+      v: 0,
+    })),
+  };
 }
 
 const main = async () => {
-  const results = await generateSearchList();
+  const { results, topResults } = await generateSearchList();
 
-  await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+  await fetch(`https://search.defillama.com/indexes/pages/documents`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
   }).then((r) => r.json());
-  const submit = await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+  const submit = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -182,29 +182,8 @@ const main = async () => {
     },
   }).then((r) => r.json());
 
-  // v2
-  await fetch(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-    },
-  }).then((r) => r.json());
-  const submit2 = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(results),
-  }).then((r) => r.json());
-  const status2 = await fetch(`https://search.defillama.com/tasks/${submit2.taskUid}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-    },
-  }).then((r) => r.json());
-
-  await storeR2("searchlist.json", JSON.stringify(results), true, false).catch((e) => {
-    console.log("Error storing search list v2", e);
+  await storeR2("searchlist.json", JSON.stringify(topResults), true, false).catch((e) => {
+    console.log("Error storing top results search list", e);
   });
 
   const errorMessage = status?.details?.error?.message;
@@ -212,12 +191,6 @@ const main = async () => {
     console.log(errorMessage);
   }
   console.log(status);
-
-  const errorMessage2 = status2?.details?.error?.message;
-  if (errorMessage2) {
-    console.log(errorMessage2);
-  }
-  console.log(status2);
 };
 
 //export default main

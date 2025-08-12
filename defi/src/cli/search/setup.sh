@@ -37,7 +37,6 @@ curl \
   --data-binary '[
     "words",
     "v:desc",
-    "tvl:desc",
     "typo",
     "proximity",
     "attribute",
@@ -61,4 +60,17 @@ curl \
     "v",
     "tvl",
     "name"
+  ]'
+
+curl \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/attributes-to-retrieve' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "id",
+    "name",
+    "type",
+    "logo",
+    "route",
+    "deprecated"
   ]'

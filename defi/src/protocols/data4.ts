@@ -8356,7 +8356,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://sedge.fi/",
     description:
-      "FX on Base.",
+      "Sedge is a decentralized exchange on Base that enables users to swap fiat-backed stablecoins at real-world market rates using DFX Finance’s liquidity pools.",
     chain: "Base",
     logo: `${baseIconsUrl}/sedge.jpg`,
     audits: "0",

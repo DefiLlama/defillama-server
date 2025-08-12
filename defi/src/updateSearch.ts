@@ -152,11 +152,11 @@ const main = async () => {
     ...results.tags,
   ];
   const searchListV2 = [
-    { category: "Chain", pages: results.chains },
-    { category: "Protocol", pages: results.protocols },
-    { category: "Stablecoin", pages: results.stablecoins },
-    { category: "Category", pages: results.categories },
-    { category: "Tag", pages: results.tags },
+    { id: "Chain", pages: results.chains },
+    { id: "Protocol", pages: results.protocols },
+    { id: "Stablecoin", pages: results.stablecoins },
+    { id: "Category", pages: results.categories },
+    { id: "Tag", pages: results.tags },
   ];
 
   await fetch(`https://search.defillama.com/indexes/protocols/documents`, {

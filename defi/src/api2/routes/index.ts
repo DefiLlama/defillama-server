@@ -13,6 +13,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { getTweetStats } from "../../twitter/db";
 import { getClosestProtocolItem } from "../db";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 import { computeInflowsData } from "../../getInflows";
 import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
@@ -50,6 +51,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
     restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false',
   })));
+  router.get("/historicalProtocolTvl/:name", ew(getHistoricalProtocolTvl))
 
   router.get("/tokenProtocols/:symbol", ew(getTokenInProtocols));
   router.get("/protocols", protocolsRouteResponse);
@@ -202,6 +204,37 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return successResponse(res, data, 60);
   }
 
+}
+
+async function getHistoricalProtocolTvl(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const name = sluggify({ name: decodeURIComponent(req.path_parameters.name ?? "") } as any);
+  const protocolData = cache.protocolSlugMap[name];
+  const parentProtocol = cache.parentProtocolSlugMap[name];
+
+  if (!protocolData && !parentProtocol)
+    return errorResponse(res, "Protocol not found");
+
+  res.setHeaders({ Expires: get20MinDate() });
+
+  if (!protocolData && parentProtocol) {
+    const data = await cachedCraftParentProtocolV2({
+      parentProtocol,
+      useHourlyData: false,
+      skipAggregatedTvl: false,
+    } as any);
+
+    if ((data as any)?.message)
+      return errorResponse(res, (data as any).message);
+
+    const series = (data?.tvl ?? []).map((i: any) => ({ date: i.date, tvl: i.totalLiquidityUSD }))
+    return successResponse(res, series, 60);
+  }
+
+  const [dailyTvlData] = await getProtocolAllTvlData(protocolData, true);
+
+  const series = (dailyTvlData ?? []).map((i: any) => ({ date: i.SK, tvl: i.tvl ? Number(i.tvl.toFixed(5)) : 0 }))
+
+  return successResponse(res, series, 60);
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {

@@ -84,7 +84,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
   router.get("/lite/protocols2", defaultFileHandler);
   router.get("/lite/v2/protocols", defaultFileHandler);
-  router.get("/chains2", (_:any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
+  router.get("/chains2", (_: any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
   router.get("/chains2/:category", defaultFileHandler)
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
@@ -110,6 +110,21 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
+
+
+  router.get("/_fe/static", defaultFileHandler)
+
+  router.get("/_fe/protocol-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
+    dataType: 'protocol', skipAggregatedTvl: false, restrictResponseSize: false, feMini: true,
+  })));
+  router.get("/_fe/treasury-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury', feMini: true, })));
+  router.get("/_fe/entity-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities', feMini: true, })));
+  router.get("/_fe/updatedProtocol-mini/:name", (async (req, res) => getProtocolishData(req, res, {
+    dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
+    restrictResponseSize: false, feMini: true,
+  })));
+
+
 
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
@@ -204,7 +219,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 }
 
-async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {
+async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false }: GetProtocolishOptions) {
   let name = decodeURIComponent(req.path_parameters.name);
   name = sluggify({ name } as any);
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
@@ -220,6 +235,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
         parentProtocol: parentProtocol,
         useHourlyData,
         skipAggregatedTvl,
+        feMini,
       });
       return res.json(responseData);
     }
@@ -239,6 +255,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     useHourlyData,
     skipAggregatedTvl,
     restrictResponseSize,
+    feMini,
   });
   return res.json(responseData);
 }
@@ -309,6 +326,7 @@ type GetProtocolishOptions = {
   skipAggregatedTvl?: boolean,
   useNewChainNames?: boolean,
   restrictResponseSize?: boolean,
+  feMini?: boolean, // for fetching only aggregated tvl data without token breakdown & without raw token balances
 }
 
 async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {

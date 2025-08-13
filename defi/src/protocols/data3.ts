@@ -47168,7 +47168,7 @@ const data3_2: Protocol[] = [
     url: "https://app.scoreplay.xyz/compete?chainId=50104",
     description: "Scoreplay.xyz is a sports prediction market tailored for sports fans.",
     chain: "Base",
-    logo: `${baseIconsUrl}/scoreplay.jpg`,
+    logo: `${baseIconsUrl}/scoreplay.xyz.jpg`,
     audits: "1",
     audit_links: [
       "https://www.octane.security/post/octane-smart-contract-security-for-scoreplay",

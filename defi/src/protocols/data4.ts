@@ -4554,7 +4554,7 @@ const data4: Protocol[] = [
     description: "Omnichain money markets for Real-World Assets and Liquid Staking Derivatives",
     chain: "Plume (Deprecated)",
     logo: `${baseIconsUrl}/multichainz.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -4564,6 +4564,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "multichainz/index.js",
     twitter: "MultichainZ_",
+    audit_links: ["https://skynet.certik.com/projects/multichainz"],
     listedAt: 1739208685
   },
   {

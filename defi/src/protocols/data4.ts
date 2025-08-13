@@ -16622,9 +16622,16 @@ const data4: Protocol[] = [
     forkedFromIds: ["340"],
     oraclesBreakdown: [
       {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
+        endDate: '2025-08-12',
+      },
+      {
         name: "DIA",
         type: "Primary",
         proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
+        startDate: '2025-08-12',
       }
     ],
     audit_links: ["https://rezerve.gitbook.io/protocol/security/audits"],

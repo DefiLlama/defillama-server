@@ -22496,5 +22496,24 @@ const data4: Protocol[] = [
     ],
     listedAt:1755096295
   },
+  {
+    id: "6574",
+    name: "SuperReturn",
+    address: null,
+    symbol: "-",
+    url: "https://www.superreturn.ai/",
+    description: "SuperReturn is the intelligent asset manager that will help you allocate your capital in the most efficient way across the entire web3 space",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superreturn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum", "Soneium", "Plume"],
+    module: "superReturn/index.js",
+    twitter: "superreturnai",
+    listedAt:1755108027
+  },
 ];
 export default data4;

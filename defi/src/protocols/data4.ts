@@ -22296,7 +22296,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://theautopilot.xyz/app",
-    description: "It manages voting, claiming, and swapping across epochs with no manual input required",
+    description: " Autopilot is an on-chain automation system for veAERO holders.It manages voting, claiming, and swapping across epochs with no manual input required",
     chain: "Base",
     logo: `${baseIconsUrl}/autopilot.jpg`,
     audits: "2",

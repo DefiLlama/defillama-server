@@ -5762,8 +5762,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "KernelDAO is a suite of top restaking products, with over $2 billion in total value locked and live on 10+ chains including Ethereum, BNB Chain, and expanding further. KernelDAO’s three key products include Kernel, Kelp and Gain.",
     logo: `${baseIconsUrl}/kerneldao.jpg`,
-    gecko_id: null, // kelp-dao preview only
-    cmcId: null,
+    gecko_id: 'kernel-2',
+    cmcId: '36180',
     chains: [],
     twitter: "kernel_dao",
     github: ["Kelp-DAO"],

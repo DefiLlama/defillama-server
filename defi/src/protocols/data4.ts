@@ -14190,7 +14190,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6195",
-    name: "Alphaping",
+    name: "AlphaPing",
     address: null,
     symbol: "-",
     url: "https://alphaping.ch/",

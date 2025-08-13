@@ -3842,5 +3842,11 @@ export default {
     },
     "etherex": {
         id: "6502"
+    },
+    "earnium": {
+        id: "6568"
+    },
+    "teleswap": {
+        id: "5350"
     }
 } as AdaptorsConfig

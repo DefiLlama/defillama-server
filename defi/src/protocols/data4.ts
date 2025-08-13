@@ -22446,5 +22446,55 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#jito",
   },
+  {
+    id: "6572",
+    name: "Apollon",
+    address: "sei:0x5b8203e65aA5Be3F1CF53FD7fa21b91BA4038ECC",
+    symbol: "APO",
+    url: "https://www.apollon.fi/",
+    description: "Apollon is a decentralized protocol for synthetic assets on Sei, enabling seamless on-chain trading of stocks, ETFs, commodities, and other real-world assets. Designed for efficiency and scalability, Apollon aims to be the leading platform for synthetic asset trading, providing users with full control, security, and real-time market access",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/apollon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "apo",
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Sei"],
+    module: "apollon/index.js",
+    twitter: "apollon_fi",
+    forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15788"],
+      }
+    ],
+    listedAt:1755096289
+  },
+  {
+    id: "6573",
+    name: "Nova Fox",
+    address: "cronos:0xe1f864ae527d3646c222fe1b65460db2d6e62228",
+    symbol: "NFX",
+    url: "https://www.novalaunch.app",
+    description: "Nova is a next-generation multichain Web3 ecosystem, combining a powerful Launchpad and immersive GameFi platform — all built around the utility-rich, deflationary token $NFX",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/nova-fox.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "nova-fox",
+    cmcId: "36568",
+    category: "Launchpad",
+    chains: ["Cronos"],
+    module: "dummy.js",
+    twitter: "NovaLabs_X",
+    forkedFromIds: [],
+    audit_links: [
+      "https://skynet.certik.com/projects/nova-fox"
+    ],
+    listedAt:1755096295
+  },
 ];
 export default data4;

@@ -3848,5 +3848,8 @@ export default {
     },
     "teleswap": {
         id: "5350"
+    },
+    "aqua": {
+        id: "6575"
     }
 } as AdaptorsConfig

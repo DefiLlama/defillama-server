@@ -22522,5 +22522,23 @@ const data4: Protocol[] = [
     twitter: "superreturnai",
     listedAt:1755108027
   },
+  {
+    id: "6575",
+    name: "Aqua",
+    address: null,
+    symbol: "-",
+    url: "https://aquabot.io/",
+    description: "Community-driven trading bot on the Solana blockchain",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/aqua.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "Aquabot_io",
+  },
 ];
 export default data4;

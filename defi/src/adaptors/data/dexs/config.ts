@@ -3004,5 +3004,8 @@ export default {
     },
     "earnium": {
         id: "6568"
+    },
+    "aqua": {
+        id: "6575"
     }
 } as AdaptorsConfig

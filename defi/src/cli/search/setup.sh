@@ -60,7 +60,8 @@ curl \
   --data-binary '[
     "v",
     "tvl",
-    "name"
+    "name",
+    "deprecated"
   ]'
 
 curl \

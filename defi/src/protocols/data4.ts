@@ -22488,7 +22488,7 @@ const data4: Protocol[] = [
     cmcId: "36568",
     category: "Launchpad",
     chains: ["Cronos"],
-    module: "dummy.js",
+    module: "novafox/index.js",
     twitter: "NovaLabs_X",
     forkedFromIds: [],
     audit_links: [

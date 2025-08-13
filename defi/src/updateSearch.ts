@@ -12,7 +12,7 @@ const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().spl
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData, tastyMetrics]: [
+  const [tvlData, stablecoinsData,insightsAndToolsData, tastyMetrics]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -20,10 +20,15 @@ async function generateSearchList() {
       protocols: any[];
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+    Record<string, Array<{ name: string; route: string }>>,
     Record<string, number>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
+    fetch("https://defillama.com/insights-and-tools.json").then((r) => r.json()).catch((e) => {
+      console.log("Error fetching insights and tools", e);
+      return {};
+    }),
     fetch(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
@@ -136,21 +141,40 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
+  const insights = (insightsAndToolsData['Insights'] ?? []).map((i) => ({
+    id: `insight_${normalize(i.name)}`,
+    name: i.name,
+    route: i.route,
+    v: tastyMetrics[i.route] ?? 0,
+    type: "Insight",
+  }));
+  const tools = (insightsAndToolsData['Tools'] ?? []).map((t) => ({
+    id: `tool_${normalize(t.name)}`,
+    name: t.name,
+    route: t.route,
+    v: tastyMetrics[t.route] ?? 0,
+    type: "Tool",
+  }));
+
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
     stablecoins: stablecoins.sort((a, b) => b.v - a.v),
+    insights: insights.sort((a, b) => b.v - a.v),
+    tools: tools.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
   };
 
   return {
-    results: [...results.chains, ...results.protocols, ...results.stablecoins, ...results.categories, ...results.tags],
+    results: [...results.chains, ...results.protocols, ...results.stablecoins, ...results.insights, ...results.tools, ...results.categories, ...results.tags],
     topResults: [
       ...results.chains.slice(0, 3),
       ...results.protocols.slice(0, 3),
       ...results.stablecoins.slice(0, 3),
+      ...results.insights.slice(0, 3),
       ...results.categories.slice(0, 3),
+      ...results.tools.slice(0, 3),
       ...results.tags.slice(0, 3),
     ].map((r) => ({
       ...r,

@@ -16609,7 +16609,7 @@ const data4: Protocol[] = [
     symbol: "RZR",
     url: "https://rezerve.money/",
     description:
-      "RZR is a Reserve currency focused on accumulating 5,000 $BTC with the power of Community & DeFi. RZR uses bond sales and rebasing mechanics to achieve this goal. RZR was fair launched and has no VCs/team allocation.",
+      "RZR is a decentralized treasury accumulation protocol with one mission to accumulate 1 million ETH. With the power of Community & DeFi.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/rezerve-money.jpg`,
     audits: "1",
@@ -16617,7 +16617,7 @@ const data4: Protocol[] = [
     gecko_id: "rezerve-money",
     cmcId: "37291",
     category: "Reserve Currency",
-    chains: ["Sonic"],
+    chains: ["Sonic", "Ethereum"],
     module: "rezerve/index.js",
     treasury: "rezerve.js",
     twitter: "rezervemoney",
@@ -16627,6 +16627,13 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
+        endDate: '2025-08-12',
+      },
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
+        startDate: '2025-08-12',
       }
     ],
     audit_links: ["https://rezerve.gitbook.io/protocol/security/audits"],

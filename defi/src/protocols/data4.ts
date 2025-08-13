@@ -16632,7 +16632,7 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
+        proof: ["https://rezerve.gitbook.io/protocol/security/oracles","https://github.com/DefiLlama/defillama-server/pull/10385"],
         startDate: '2025-08-12',
       }
     ],

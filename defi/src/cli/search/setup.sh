@@ -41,7 +41,8 @@ curl \
     "proximity",
     "attribute",
     "sort",
-    "exactness"
+    "exactness",
+    "deprecated:asc
   ]'
 
 curl \

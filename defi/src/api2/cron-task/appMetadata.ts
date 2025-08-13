@@ -14,7 +14,7 @@ import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 const { exec } = require("child_process");
 
-const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap"];
+const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
 
 const protocolInfoMap: any = {};
 const parentProtocolsInfoMap: any = {};

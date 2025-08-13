@@ -3836,5 +3836,11 @@ export default {
     },
     "swapr": {
         id: "292"
+    },
+    "etherex-legacy": {
+        id: "6501"
+    },
+    "etherex": {
+        id: "6502"
     }
 } as AdaptorsConfig

@@ -135,7 +135,16 @@ export async function craftProtocolV2({
         tokens: [],
       };
     }
+
+    
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
+    
+    // we return empty response for chainTvls if feMini is true
+    if (feMini && chain !== 'tvl') {
+      response.chainTvls = {}
+      return;
+    } 
+
     if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
       for (const item of historicalUsdTvl) {
         let usdValue = selectChainFromItem(item, chain)

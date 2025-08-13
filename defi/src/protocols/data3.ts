@@ -59483,8 +59483,8 @@ const data3_2: Protocol[] = [
   {
     id: "5350",
     name: "TeleSwap",
-    address: null,
-    symbol: "-",
+    address: "0x0828096494ad6252f0f853abfc5b6ec9dfe9fdad",
+    symbol: "TST",
     url: "https://teleswap.xyz",
     description:
       "TeleSwap enables secure and seamless bridging of Bitcoin assets across blockchains.",
@@ -59492,12 +59492,12 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/teleswap.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "teleport-system-token",
+    cmcId: "31934",
     category: "Bridge",
     chains: ["Bitcoin", "Ethereum"],
     module: "teleswap/index.js",
-    twitter: "Teleport_DAO",
+    twitter: "Tele_Swap",
     forkedFrom: [],
     audit_links: ["https://github.com/TeleportDAO/audits/blob/main/reports/Quantstamp-Bitcoin-EVM.pdf"],
     listedAt: 1731495458

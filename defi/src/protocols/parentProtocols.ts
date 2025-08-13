@@ -2051,8 +2051,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Solv Protocol is a premier on-chain platform offering global Bitcoin holders a full suite of Bitcoin financial services, including lending, liquid staking, yield generation and fund management, all powered by the largest on-chain Bitcoin Reserve.\n\nBy bridging the gap between Traditional Finance (TradFi), Centralized Finance (CeFi), and Decentralized Finance (DeFi), Solv unlocks the full potential of over $1 trillion in Bitcoin.",
     logo: `${baseIconsUrl}/solv-protocol.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "solv-protocol",
+    cmcId: "12165",
     chains: [],
     twitter: "SolvProtocol",
     governanceID: ["snapshot:solvgov.eth"],

@@ -38771,6 +38771,7 @@ const data3_2: Protocol[] = [
     twitter: "THORChain",
     forkedFrom: [],
     listedAt: 1711945853,
+    deprecated: true
   },
   {
     id: "4415",

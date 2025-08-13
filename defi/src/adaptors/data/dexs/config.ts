@@ -3001,5 +3001,8 @@ export default {
     },
     "etherex": {
         id: "6502"
+    },
+    "earnium": {
+        id: "6568"
     }
 } as AdaptorsConfig

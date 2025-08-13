@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
+import { cexsData } from "./getCexs";
 
 const normalize = (str: string) =>
   sluggifyString(str)
@@ -12,7 +13,7 @@ const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().spl
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData,insightsAndToolsData, tastyMetrics]: [
+  const [tvlData, stablecoinsData, insightsAndToolsData, tastyMetrics]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -25,10 +26,12 @@ async function generateSearchList() {
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
-    fetch("https://defillama.com/insights-and-tools.json").then((r) => r.json()).catch((e) => {
-      console.log("Error fetching insights and tools", e);
-      return {};
-    }),
+    fetch("https://defillama.com/insights-and-tools.json")
+      .then((r) => r.json())
+      .catch((e) => {
+        console.log("Error fetching insights and tools", e);
+        return {};
+      }),
     fetch(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
@@ -141,20 +144,31 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
-  const insights = (insightsAndToolsData['Insights'] ?? []).map((i) => ({
+  const insights = (insightsAndToolsData["Insights"] ?? []).map((i) => ({
     id: `insight_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
     v: tastyMetrics[i.route] ?? 0,
     type: "Insight",
   }));
-  const tools = (insightsAndToolsData['Tools'] ?? []).map((t) => ({
+  const tools = (insightsAndToolsData["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
     route: t.route,
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
+
+  const cexs = cexsData
+    .filter((c) => c.slug)
+    .map((c) => ({
+      id: `cex_${normalize(c.name)}`,
+      name: c.name,
+      route: `/cex/${standardizeProtocolName(c.slug)}`,
+      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(c.slug)}?w=48&h=48`,
+      v: tastyMetrics[`/cex/${standardizeProtocolName(c.slug)}`] ?? 0,
+      type: "CEX",
+    }));
 
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
@@ -164,10 +178,20 @@ async function generateSearchList() {
     tools: tools.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
+    cexs: cexs.sort((a, b) => b.v - a.v),
   };
 
   return {
-    results: [...results.chains, ...results.protocols, ...results.stablecoins, ...results.insights, ...results.tools, ...results.categories, ...results.tags],
+    results: [
+      ...results.chains,
+      ...results.protocols,
+      ...results.stablecoins,
+      ...results.insights,
+      ...results.tools,
+      ...results.categories,
+      ...results.tags,
+      ...results.cexs,
+    ],
     topResults: [
       ...results.chains.slice(0, 3),
       ...results.protocols.slice(0, 3),

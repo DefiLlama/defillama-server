@@ -1134,7 +1134,7 @@ export const chainCoingeckoIds = {
     twitter: "EvmosOrg",
     url: "https://evmos.org/"
   },
-  "Proton": {
+  "XPR Network": {
     geckoId: "proton",
     github: ['ProtonProtocol', 'XPRNetwork'],
     symbol: "XPR",
@@ -4704,6 +4704,7 @@ const chainLabelMap = {
   "hydragon": "Hydra Chain",
   "bitci": "Bitcichain",
   "eni": "ENI",
+  "proton": "Proton",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4751,7 +4752,8 @@ const newChainLabelMap = {
   "eos": "Vaulta",
   "gravity": "Gravity by Galxe",
   "idex": "XCHAIN",
-  "echelon_initia": "Echelon Initia"
+  "echelon_initia": "Echelon Initia",
+  "proton": "XPR Network"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

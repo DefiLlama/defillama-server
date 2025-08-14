@@ -22641,5 +22641,49 @@ const data4: Protocol[] = [
     twitter: "ragafinance",
     listedAt:1755167300
   },
+  {
+    id: "6581",
+    name: "ENIBridge",
+    address: null,
+    symbol: "-",
+    url: "https://eni.orbiter.finance/",
+    description: "The official cross-chain bridge built on Orbiter Finance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/enibridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Canonical Bridge", 
+    chains: ["Ethereum"],
+    module: "enibridge/index.js",
+    twitter: "ENI__Official",
+  },
+  {
+    id: "6582",
+    name: "Apollo Diversified Credit Securitize Fund",
+    address: null,
+    symbol: "-",
+    url: "https://securitize.io/primary-market/apollo-diversified-credit-securitize-fund",
+    description: "Earn attractive yield with a fund that provides access to diversified securitized credit. This fund primarily invests in structured credit across multiple sectors.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/apollo-diversified-credit-securitize-fund.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Credit"], 
+    chains: ["Ethereum", "Aptos", "Avalanche", "Ink", "Polygon", "Solana"],
+    module: "acred/index.js",
+    oraclesBreakdown: [
+      {
+      name: "RedStone",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15387"],
+      }
+    ],
+    twitter: "securitize",
+    listedAt:1755190033
+  },
 ];
 export default data4;

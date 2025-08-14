@@ -4483,6 +4483,7 @@ const data2: Protocol[] = [
     twitter: "VivaStakingPool",
     language: "Solidity++",
     listedAt: 1648005896,
+    deadUrl: true
   },
   {
     id: "1575",

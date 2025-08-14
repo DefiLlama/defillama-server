@@ -20836,6 +20836,13 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "hylo/index.js",
     twitter: "hylo_so",
+    oraclesBreakdown: [
+      {
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://docs.hylo.so/technical-addendum/hylo-equations#sol-usd-oracle"],
+      }
+    ],
     audit_links: ["https://docs.hylo.so/security/audits"],
     listedAt: 1753802383
   },
@@ -21172,6 +21179,13 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "defi-dollar-cdp/index.js",
     twitter: "DeFiDollarIO",
+    oraclesBreakdown: [
+      {
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
+      }
+    ],
     forkedFromIds: ["5656"],
     listedAt: 1753985702
   },

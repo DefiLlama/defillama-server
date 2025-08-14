@@ -24801,7 +24801,8 @@ const data2: Protocol[] = [
   },
   {
     id: "2469",
-    name: "Cap V4",
+    name: "Cap Finance V4",
+    previousNames: ["Cap V4"],
     address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://cap.io",

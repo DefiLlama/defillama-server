@@ -11005,7 +11005,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "608",
-    name: "Cap",
+    name: "Cap Finance v1-v3",
+    previousNames: ["Cap"],
     address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://www.cap.io",

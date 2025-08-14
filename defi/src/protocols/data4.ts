@@ -22547,7 +22547,7 @@ const data4: Protocol[] = [
     address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
     symbol: "QUICK",
     url: "https://dapp.quickswap.exchange/",
-    description: "Swap, LP, farm, trade perps, stake, and more at lightning fast speeds and near-zero gas fees.",
+    description: "QuickSwap V4 leverages Algebra Integral for customizable liquidity pools, enhancing efficiency with lower gas costs and supports features like dynamic fees.",
     chain: "Base",
     logo: `${baseIconsUrl}/quickswap-v4.jpg`,
     audits: "0",

@@ -22601,5 +22601,45 @@ const data4: Protocol[] = [
     twitter: "x3x_studio",
     listedAt:1755166445
   },
+  {
+    id: "6579",
+    name: "capmoney",
+    address: null,
+    symbol: "-",
+    url: "https://cap.app/",
+    description: "Cap is a stablecoin protocol that provides credible financial guarantees via two products: the dollar-denominated cUSD and the yield-bearing stcUSD.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/capmoney.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield", // cant be cdp since no liq
+    chains: ["Ethereum"],
+    module: "cap-money/index.js",
+    twitter: "capmoney_",
+    audit_links: ["https://github.com/cap-labs-dev/cap-audits"],
+    github: ["cap-labs-dev"],
+    listedAt:1755167300
+  },
+  {
+    id: "6580",
+    name: "Raga Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.raga.finance/",
+    description: "Raga Finance brings institutional-grade structured products to help DeFi users maximize returns. Our one-click vaults simplify access to advanced yield strategies like autocompounding, looping, and more.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/raga-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator", 
+    chains: ["Berachain"],
+    module: "raga-finance/index.js",
+    twitter: "ragafinance",
+    listedAt:1755167300
+  },
 ];
 export default data4;

@@ -1516,7 +1516,7 @@ export default {
     "franklin-templeton": {
         id: "4878"
     },
-    "hashnote-usyc": {
+    "circle-usyc": {
         id: "3698"
     },
     "farcaster": {
@@ -2446,7 +2446,7 @@ export default {
         id: "5982"
     },
     // "oxfun": {  // it is a cex and fees cant be verified on chain
-    //     id: "6699" // chainId  
+    //     id: "6699" // chainId
     // },
     "verus": {
         id: "5601"
@@ -3432,11 +3432,11 @@ export default {
     "haedal-protocol": {
         id: "3489"
     },
-    "reya-dex": { 
-        id: '4978' 
+    "reya-dex": {
+        id: '4978'
     },
-    "bodega-market": { 
-        id: '6012' 
+    "bodega-market": {
+        id: '6012'
     },
     "tbtc": {
         id: "2535"

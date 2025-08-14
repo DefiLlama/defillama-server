@@ -1493,6 +1493,11 @@
     }
   },
   "stacks": {
+    "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststxbtc-token-v2::ststxbtc": {
+      "decimals": "8",
+      "symbol": "stSTXbtc",
+      "to": "coingecko#blockstack"
+    },
     "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-wstx": {
       "decimals": "6",
       "symbol": "WSTX",

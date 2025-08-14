@@ -86,7 +86,7 @@ async function generateSearchList() {
       type: "Protocol",
     }))
     .concat(
-      tvlData.protocols.map((p) => ({
+      tvlData.protocols.filter(p => p.name !== 'LlamaSwap').map((p) => ({
         id: `protocol_${normalize(p.name)}`,
         name: p.name,
         symbol: p.symbol,

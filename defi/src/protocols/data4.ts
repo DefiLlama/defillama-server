@@ -21532,7 +21532,7 @@ const data4: Protocol[] = [
     symbol: "GLOOP",
     url: "https://gloop.finance/",
     description:
-      "A DeFi suite consisting of two flagship products: 1. An index token protocol that allows users to invest in a basket of GMX liquidity providing assets by interacting with the protocol's Index contract. It manages various GM assets, calculates their weights, and allows users to mint, burn, and redeem index tokens",
+      "A DeFi suite consisting of two flagship products: 1. An index token protocol that allows users to invest in a basket of GMX liquidity providing assets by interacting with the protocol's Index contract. It manages various GM assets, calculates their weights, and allows users to mint, burn, and redeem index tokens. 2. A lending protocol which allows users to deposit and borrow USDC using GM assets (GMX liquidity provider tokens) as collateral.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/gloop.jpg`,
     audits: "2",

@@ -22480,7 +22480,7 @@ const data3_1: Protocol[] = [
     gecko_id: null, //
     cmcId: null,
     tags: ["Treasury Bills"],
-    chains: ["Canto", "Ethereum"],
+    chains: ["Ethereum"],
     module: "hashnote/index.js",
     twitter: "Hashnote_Labs",
     forkedFrom: [],

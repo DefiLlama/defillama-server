@@ -3007,5 +3007,11 @@ export default {
     },
     "aqua": {
         id: "6575"
+    },
+    "hybra-v2": {
+        id: "6255"
+    },
+    "hybra-v3": {
+        id: "6350"
     }
 } as AdaptorsConfig

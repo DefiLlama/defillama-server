@@ -704,7 +704,7 @@ export default {
     "rollx": {
         id: "5973"
     },
-    // "aden": {
-    //     id: "6567"
-    // }
+    "aden": {
+        id: "6567"
+    }
 } as AdaptorsConfig

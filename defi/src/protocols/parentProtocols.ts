@@ -8,7 +8,7 @@ import type { IParentProtocol } from "./types";
 const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aave",
-    name: "AAVE",
+    name: "Aave",
     url: "https://aave.com",
     description:
       "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",

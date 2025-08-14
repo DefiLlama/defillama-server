@@ -5025,7 +5025,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1599",
-    name: "AAVE V3",
+    name: "Aave V3",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com",
@@ -10468,7 +10468,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1838",
-    name: "AAVE V1",
+    name: "Aave V1",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com",

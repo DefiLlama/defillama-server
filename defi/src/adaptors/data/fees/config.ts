@@ -3857,5 +3857,26 @@ export default {
     },
     "hybra-v3": {
         id: "6350"
+    },
+    "superstate-uscc": {
+        id: "5120"
+    },
+    "alienfi": {
+        id: "2603"
+    },
+    "jetswap": {
+        id: "659"
+    },
+    "solarflare": {
+        id: "1269"
+    },
+    "subzero-zswap": {
+        id: "2556"
+    },
+    "swappi": {
+        id: "1660"
+    },
+    "swapsicle": {
+        id: "1824"
     }
 } as AdaptorsConfig

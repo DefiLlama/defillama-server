@@ -3005,7 +3005,7 @@ export default {
     "earnium": {
         id: "6568"
     },
-    "aqua": {
+    "aquabot": {
         id: "6575"
     },
     "hybra-v2": {

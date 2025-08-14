@@ -3849,7 +3849,7 @@ export default {
     "teleswap": {
         id: "5350"
     },
-    "aqua": {
+    "aquabot": {
         id: "6575"
     },
     "hybra-v2": {

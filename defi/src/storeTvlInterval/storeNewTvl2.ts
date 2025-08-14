@@ -124,6 +124,9 @@ export default async function (
         );
       } else {
         const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
+        if (currentTvl > 100e6) {
+          await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+        }
         reportError(
           errorMessage,
           protocol.name

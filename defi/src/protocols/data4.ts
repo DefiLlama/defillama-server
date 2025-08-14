@@ -21182,6 +21182,11 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       {
       name: "Pyth",
+      type: "Secondary",
+      proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
+      },
+      {
+      name: "Chainlink",
       type: "Primary",
       proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
       }

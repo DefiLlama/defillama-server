@@ -3884,5 +3884,11 @@ export default {
     },
     "odyssey-finance": {
         id: "6529"
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
+    "dsx": {
+        id: "6585"
     }
 } as AdaptorsConfig

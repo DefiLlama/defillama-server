@@ -4813,6 +4813,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "spectra_finance",
     governanceID: ["snapshot:apwine.eth", "snapshot:spectradao.eth"],
     github: ["perspectivefi"],
+    wrongLiquidity: true, // missing aerodrome pool
   },
   {
     id: "parent#blasterswap",

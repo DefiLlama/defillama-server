@@ -22704,5 +22704,25 @@ const data4: Protocol[] = [
     twitter: "securitize",
     listedAt:1755190033
   },
+  { // this listing will be for slasher yields dashboard , they are making the adapter
+    id: "6583",
+    name: "KyberSwap FairFlow",
+    address: "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
+    symbol: "KNC",
+    url: "https://kyberswap.com/earn/pools?protocol=uniswap-v4-fairflow",
+    description: "FairFlow is a swap hook that enhances liquidity pools, built on Uniswap V4 and similar protocols. It is designed to help LPs earn additional yields from arbitrage value besides LP fees, while maintaining top tier security",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kyberswap-fairflow.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator", 
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "KyberNetwork",
+    parentProtocol: "parent#kyberswap",
+    audit_links: ["https://github.com/KyberNetwork/kyber-exclusive-amm-sc/tree/main/audits"],
+  },
 ];
 export default data4;

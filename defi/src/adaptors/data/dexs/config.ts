@@ -2102,12 +2102,7 @@ export default {
         id: "6092"
     },
     "humanfi": {
-        id: "6094",
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1755129600": true
-            }
-        },
+        id: "6094"
     },
     "mosaic-amm": {
         id: "6098"
@@ -2975,7 +2970,12 @@ export default {
         id: "6553"
     },
     "humidifi": {
-        id: "6554"
+        id: "6554",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1755129600": true
+            }
+        },
     },
     "zerofi": {
         id: "6555"

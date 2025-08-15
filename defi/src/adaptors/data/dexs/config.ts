@@ -3028,9 +3028,6 @@ export default {
     "ocelex-v1": {
         id: "5378"
     },
-    "fluid-dex-lite": {
-        id: "5317"
-    },
     "spectra-v2": {
         id: "4725"
     },

@@ -3018,5 +3018,8 @@ export default {
     },
     "hybra-v3": {
         id: "6350"
+    },
+    "quickswap-v4": {
+        id: "6576"
     }
 } as AdaptorsConfig

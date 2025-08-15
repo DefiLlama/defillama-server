@@ -3878,5 +3878,11 @@ export default {
     },
     "swapsicle": {
         id: "1824"
+    },
+    "quickswap-v4": {
+        id: "6576"
+    },
+    "odyssey-finance": {
+        id: "6529"
     }
 } as AdaptorsConfig

@@ -3021,5 +3021,17 @@ export default {
     },
     "quickswap-v4": {
         id: "6576"
-    }
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "fluid-dex-lite": {
+        id: "5317"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
 } as AdaptorsConfig

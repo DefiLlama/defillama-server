@@ -3926,5 +3926,17 @@ export default {
     },
     "zebra-v2": {
         id: "3901"
-    }
+    },
+    "fluid-dex-lite": {
+        id: "5317"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
+    "noon": {
+        id: "5721"
+    },
+    "bim": {
+        id: "6402"
+    },
 } as AdaptorsConfig

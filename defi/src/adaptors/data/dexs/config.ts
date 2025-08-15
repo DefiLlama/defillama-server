@@ -3031,4 +3031,7 @@ export default {
     "spectra-v2": {
         id: "4725"
     },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
 } as AdaptorsConfig

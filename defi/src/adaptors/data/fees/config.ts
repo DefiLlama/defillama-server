@@ -3936,4 +3936,7 @@ export default {
     "bim": {
         id: "6402"
     },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
 } as AdaptorsConfig

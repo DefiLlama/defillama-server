@@ -22760,5 +22760,23 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "DSXTrade",
   },
+  { 
+    id: "6586",
+    name: "Fluid DEX Lite",
+    address: null,
+    symbol: "-",
+    url: "https://fluid.io/",
+    description: "Fluid DEX Lite is a highly gas-optimized decentralized exchange specially designed for small, frequent swaps of correlated asset pairs",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fluid-dex-lite.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "0xfluid",
+  },
 ];
 export default data4;

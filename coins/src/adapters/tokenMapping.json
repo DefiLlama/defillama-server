@@ -1984,6 +1984,11 @@
     }
   },
   "base": {
+    "0x9bba915f036158582c20b51113b925f243a1a1a1": {
+      "decimals": "18",
+      "symbol": "IMGN",
+      "to": "coingecko#imgn-labs"
+    },
     "0xc31389794ffac23331e0d9f611b7953f90aa5fdc": {
       "decimals": "18",
       "symbol": "RLP",

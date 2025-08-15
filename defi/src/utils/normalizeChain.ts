@@ -4500,6 +4500,22 @@ export const chainCoingeckoIds = {
     url: "https://eni.top/",
     chainId: 173,
   },
+  "soonBase": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["SVM"],
+    twitter: "soon_svm",
+    url: "https://soo.network/",
+  },
+  "svmBNB": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["SVM"],
+    twitter: "soon_svm",
+    url: "https://soo.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4705,6 +4721,8 @@ const chainLabelMap = {
   "bitci": "Bitcichain",
   "eni": "ENI",
   "proton": "Proton",
+  "soon_bsc": "svmBNB",
+  "soon_base": "soonBase"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

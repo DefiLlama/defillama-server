@@ -52292,7 +52292,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "RayBot_sol",
   },
-  {
+  /*{
     id: "5023",
     name: "Manta MYield",
     address: null,
@@ -52311,7 +52311,7 @@ const data3_2: Protocol[] = [
     module: "manta-myield/index.js",
     twitter: "CedefiYield",
     listedAt: 1724242037,
-  },
+  },*/
   {
     id: "5024",
     name: "Double",

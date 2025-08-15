@@ -486,7 +486,7 @@ export default {
         id: "731"
     },
     "pandora": {
-        id: "1698"
+        id: "1777"
     },
     "paycash": {
         id: "1452"

@@ -3913,7 +3913,7 @@ export default {
         id: "794"
     },
     "pandora": {
-        id: "1698"
+        id: "1777"
     },
     "pandoraswap": {
         id: "1698"

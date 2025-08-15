@@ -1351,8 +1351,8 @@ const data4: Protocol[] = [
     id: "5619",
     name: "SoSoValue Indexes",
     previousNames: ["SSI"],
-    address: null,
-    symbol: "-",
+    address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
+    symbol: "SOSO",
     url: "https://ssi.sosovalue.com/",
     description:
       "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
@@ -4838,8 +4838,8 @@ const data4: Protocol[] = [
   {
     id: "5777",
     name: "SoSoValue Basis",
-    address: null,
-    symbol: "-",
+    address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
+    symbol: "SOSO",
     url: "https://ssi.sosovalue.com",
     description: "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
     chain: "Base",

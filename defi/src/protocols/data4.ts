@@ -22704,5 +22704,27 @@ const data4: Protocol[] = [
     twitter: "securitize",
     listedAt:1755190033
   },
+  {
+    id: "6583",
+    name: "Solidex Finance",
+    address: "cronos:0xf94cAf1671C6B879952cCE90255CE9bAA4Eb386b",
+    symbol: "SDX",
+    url: "https://solidex.finance",
+    description: "Solidex combines the best of Uniswap and Solidly, built for Cronos chain, creating a capital-efficient, governance-aligned DEX optimized for sustainable yield",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/solidex-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Cronos"],
+    module: "solidex-finance/index.js",
+    twitter: "SoliDexCro",
+    audit_links: ["https://spywolf.co/audits/Solidex_audit.pdf"],
+    language: "Solidity",
+    github: ["solidexdev"],
+    listedAt: 1755129600
+  },
 ];
 export default data4;

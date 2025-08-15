@@ -3890,5 +3890,41 @@ export default {
     },
     "dsx": {
         id: "6585"
+    },
+    "cometh": {
+        id: "261"
+    },
+    "crodex": {
+        id: "828"
+    },
+    "fenix-finance-v3": {
+        id: "4775"
+    },
+    "fenix-finance": {
+        id: "4563"
+    },
+    "huckleberry": {
+        id: "630"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "oolongswap": {
+        id: "794"
+    },
+    "pandora": {
+        id: "1698"
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "titano-swych": {
+        id: "2102"
+    },
+    "zebra-v1": {
+        id: "3668"
+    },
+    "zebra-v2": {
+        id: "3901"
     }
 } as AdaptorsConfig

@@ -3939,4 +3939,31 @@ export default {
     "fluid-dex-lite": {
         id: "6586"
     },
+    "autoshark": {
+        id: "1074"
+    },
+    "babyswap": {
+        id: "597"
+    },
+    "blue-planet": {
+        id: "2158"
+    },
+    "complus-network": {
+        id: "471"
+    },
+    "dinosaur-eggs": {
+        id: "695"
+    },
+    "empiredex": {
+        id: "812"
+    },
+    "gin-finance": {
+        id: "1795"
+    },
+    "gravity-finance": {
+        id: "351"
+    },
+    "horizondex": {
+        id: "3255"
+    },
 } as AdaptorsConfig

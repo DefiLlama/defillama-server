@@ -7658,7 +7658,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://kuraswap.org",
     description: "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
     logo: `${baseIconsUrl}/kuraswap.jpg`,
-    gecko_id: null,
+    gecko_id: "kura",
     cmcId: null,
     chains: [],
     twitter: "Kura_Dex",

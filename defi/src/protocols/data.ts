@@ -218,7 +218,7 @@ const data: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Primary",
+        type: "Secondary",
         proof: [],
         chains: [{ chain: "Optimism" }]
       }

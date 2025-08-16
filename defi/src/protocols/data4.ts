@@ -22777,6 +22777,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "0xfluid",
+    parentProtocol: "parent#fluid",
   },
   { 
     id: "6587",

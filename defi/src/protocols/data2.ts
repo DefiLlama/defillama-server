@@ -28163,7 +28163,7 @@ const data2: Protocol[] = [
     previousNames: ["Proton Dex"],
     address: "proton:",
     symbol: "-",
-    url: "lending.metalx.com/markets",
+    url: "https://app.metalx.com/dex",
     description: "Dex on XPR Network",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/metalx-dex.png`,

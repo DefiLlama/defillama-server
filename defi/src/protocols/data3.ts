@@ -22467,14 +22467,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3698",
-    name: "Hashnote USYC",
+    name: "Circle USYC",
+    previousNames: ["Hashnote USYC"],
     address: null,
     symbol: "-",
-    url: "https://usyc.hashnote.com/",
+    url: "https://www.circle.com/usyc",
     description:
-      "Hashnote is a regulated DeFi platform with permissioned smart contracts, on-chain transparency, and customizable investment strategies for optimized risk-reward profiles.  USYC is a Hashnote product which provides exposure to short duration US Treasuries and Reverse Repo on US Treasuries",
+      "Circle USYC is a regulated DeFi platform with permissioned smart contracts, on-chain transparency, and customizable investment strategies for optimized risk-reward profiles.  USYC is a Hashnote product which provides exposure to short duration US Treasuries and Reverse Repo on US Treasuries",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hashnote-usyc.png`,
+    logo: `${baseIconsUrl}/circle-usyc.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null, //
@@ -22482,7 +22483,7 @@ const data3_1: Protocol[] = [
     tags: ["Treasury Bills"],
     chains: ["Ethereum"],
     module: "hashnote/index.js",
-    twitter: "Hashnote_Labs",
+    twitter: "circle",
     forkedFrom: [],
     listedAt: 1698280827,
   },

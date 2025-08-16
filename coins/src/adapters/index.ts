@@ -96,7 +96,7 @@ export default {
   kuma: require("./rwa/kuma"),
   ondo: require("./rwa/ondo"),
   pareto: require("./rwa/pareto"),
-  hashnote: require("./rwa/hashnote"),
+  circle: require("./rwa/circle"),
   hiyield: require("./rwa/hiyield"),
   mux: require("./yield/mux"),
   maverick: require("./markets/maverick"),

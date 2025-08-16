@@ -11472,8 +11472,8 @@ const data3_1: Protocol[] = [
   {
     id: "3210",
     name: "Arcadia V1",
-    address: null,
-    symbol: "-",
+    address: "0xaaa843fb2916c0b57454270418e121c626402aaa",
+    symbol: "AAA",
     url: "https://arcadia.finance",
     description: `Arcadia is a non-custodial protocol enabling composable cross-margin accounts on-chain. Margin account users can collateralize entire portfolios, access up to 10x more capital than their initial collateral value, and use their deposited collateral and the borrowed capital to permissionless interact with any other protocol from a single cross-margin account. Lenders supply assets to Arcadia's lending pools, earning passive yields for providing liquidity to margin account users.`,
     chain: "Ethereum",
@@ -39663,8 +39663,8 @@ const data3_2: Protocol[] = [
   {
     id: "4455",
     name: "Arcadia V2",
-    address: null,
-    symbol: "-",
+    address: "0xaaa843fb2916c0b57454270418e121c626402aaa",
+    symbol: "AAA",
     url: "https://arcadia.finance",
     description: "Leverage farming protocol on base",
     chain: "Base",

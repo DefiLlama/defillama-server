@@ -22778,5 +22778,25 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "0xfluid",
   },
+  { 
+    id: "6587",
+    name: "Turtle",
+    address: "cronos:0x8C9E2bEf2962CE302ef578113eebEc62920B7e57",
+    symbol: "TURTLE",
+    url: "https://turtleoncro.com/",
+    description: "Turtle on Cronos is a memecoin and that is driven by the community. Our focuses are onboarding, spreading awareness, and welcoming people to the cronos blockchain through NFTs, memes, good vibes, and safe trading",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/turtle.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Meme",
+    chains: ["Cronos"],
+    module: "dummy.js",
+    treasury: "turtle.js",
+    twitter: "TurtleonCro",
+    listedAt:1755319281
+  },
 ];
 export default data4;

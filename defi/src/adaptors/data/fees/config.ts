@@ -3960,6 +3960,9 @@ export default {
     "gin-finance": {
         id: "1795"
     },
+    "gravis": {
+        id: "2195"
+    },
     "gravity-finance": {
         id: "351"
     },

@@ -3969,4 +3969,7 @@ export default {
     "horizondex": {
         id: "3255"
     },
+    "zapfi": {
+        id: "6588"
+    }
 } as AdaptorsConfig

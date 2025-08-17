@@ -22799,5 +22799,23 @@ const data4: Protocol[] = [
     twitter: "TurtleonCro",
     listedAt:1755319281
   },
+  { 
+    id: "6588",
+    name: "Zapfi",
+    address: null,
+    symbol: "-",
+    url: "https://zapfi.fi/",
+    description: "Zapfi is a decentralized, non-custodial privacy protocol that allows users to send, deposit, and withdraw cryptocurrency without revealing their transaction",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/zapfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "Zapfi_Finance",
+  },
 ];
 export default data4;

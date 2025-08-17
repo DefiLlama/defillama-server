@@ -16442,6 +16442,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1749585725,
+    parentProtocol: "parent#superlend"
   },
   {
     id: "6293",

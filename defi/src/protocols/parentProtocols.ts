@@ -7676,6 +7676,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fomodotbiz",
     github: ["fomodotbiz"],
   },
+  {
+    id: "parent#superlend",
+    name: "Superlend",
+    url: "https://www.superlend.xyz/",
+    description: "Superlend aims to solve the most pressing challenges in DeFi lending and borrowing—fragmented liquidity, inefficient rates, and complex user experiences. By aggregating the best opportunities across multiple markets and protocols, we are making lending and borrowing seamless, efficient, and more profitable for users.",
+    logo: `${baseIconsUrl}/superlend.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SuperlendHQ",
+  },
 ];
 
 export default parentProtocols;

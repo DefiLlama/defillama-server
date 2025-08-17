@@ -3034,4 +3034,7 @@ export default {
     "fluid-dex-lite": {
         id: "6586"
     },
+    "renegade": {
+        id: "5103"
+    },
 } as AdaptorsConfig

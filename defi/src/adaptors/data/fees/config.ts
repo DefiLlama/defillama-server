@@ -3971,5 +3971,8 @@ export default {
     },
     "zapfi": {
         id: "6588"
+    },
+    "superfund": {
+        id: "6292"
     }
 } as AdaptorsConfig

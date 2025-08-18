@@ -3728,6 +3728,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#dydx",
     name: "dYdX",
     url: "https://dydx.exchange",
+    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
     description: `The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.`,
     logo: `${baseIconsUrl}/dydx.jpg`,
     gecko_id: "dydx-chain",

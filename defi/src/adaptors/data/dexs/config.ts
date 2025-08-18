@@ -3039,5 +3039,8 @@ export default {
     },
     "heaven-dex": {
         id: "6592"
+    },
+    "hx-finance": {
+        id: "6591"
     }
 } as AdaptorsConfig

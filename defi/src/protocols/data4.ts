@@ -22984,5 +22984,24 @@ const data4: Protocol[] = [
     parentProtocol: "parent#nemo",
     listedAt: 1755533939
   },
+  { 
+    id: "6597",
+    name: "HyperVault",
+    address: null,
+    symbol: "-",
+    url: "https://app.hypervault.finance/",
+    description: "Hypervault Finance is the premier multichain DeFi hub for yield. Hypervault allows users to deposit capital which is then deployed by Hypervault across various different DeFi protocols in order to deliver the best yield to the end user",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypervault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Hyperliquid L1"],
+    module: "hypervault/index.js",
+    twitter: "hypervaultfi",
+    listedAt: 1755534171
+  },
 ];
 export default data4;

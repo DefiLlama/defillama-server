@@ -16441,6 +16441,7 @@ const data4: Protocol[] = [
     twitter: "SuperlendHQ",
     forkedFromIds: [],
     audit_links: [],
+    parentProtocol: "parent#superlend-xyz",
     listedAt: 1749585725,
   },
   {

@@ -56845,6 +56845,7 @@ const data3_2: Protocol[] = [
         proof: ["https://docs.superlend.xyz/superlend-markets/superlend-features/oracle"]
       }
     ],
+    parentProtocol: "parent#superlend-xyz",
     listedAt: 1728536649
   },
   {

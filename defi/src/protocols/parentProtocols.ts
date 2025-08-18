@@ -7676,6 +7676,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fomodotbiz",
     github: ["fomodotbiz"],
   },
+  {
+    id: "parent#superlend-xyz",
+    name: "Superlend.xyz",
+    url: "https://www.superlend.xyz/",
+    description: "Save, borrow, and earn in DeFi—easily. The onchain app for smarter finance. 350+ markets, 15+ chains, one simple experience",
+    logo: `${baseIconsUrl}/superlend.xyz.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SuperlendHQ",
+  },
 ];
 
 export default parentProtocols;

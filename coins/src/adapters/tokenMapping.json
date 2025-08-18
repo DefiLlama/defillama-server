@@ -11156,7 +11156,7 @@
       "symbol": "wstUSR",
       "to": "coingecko#resolv-wstusr"
     },
-    "0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894": {
+    "0xF9775085d726E782E83585033B58606f7731AB18": {
       "to": "coingecko#universal-btc",
       "decimals": 8,
       "symbol": "uniBTC"

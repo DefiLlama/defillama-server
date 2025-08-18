@@ -4738,6 +4738,11 @@
     }
   },
   "linea": {
+    "0xC7346783f5e645aa998B106Ef9E7f499528673D8": {
+      "decimals": "18",
+      "symbol": "frxUSD",
+      "to": "coingecko#frax-usd"
+    },
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
       "symbol": "rsETH",

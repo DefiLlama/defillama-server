@@ -3508,7 +3508,7 @@ const data2: Protocol[] = [
     previousNames: ["Proton Loan"],
     address: "proton:LOAN-proton-loan.token",
     symbol: "LOAN",
-    url: "https://protonloan.com",
+    url: "https://lending.metalx.com",
     description: "MetalX Lending is a DeFi lending protocol powered by the XPR Network",
     chain: "Proton",
     logo: `${baseIconsUrl}/metalx-lending.png`,
@@ -3522,7 +3522,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "proton-loan/index.js",
     twitter: "MetalXApp",
-    audit_links: ["https://docs.protonloan.com/developers/audit"],
+    audit_links: ["https://lending.docs.metalx.com/developers/audit"],
     language: "C++",
     listedAt: 1646953530,
     parentProtocol: "parent#metalx",
@@ -4483,6 +4483,7 @@ const data2: Protocol[] = [
     twitter: "VivaStakingPool",
     language: "Solidity++",
     listedAt: 1648005896,
+    deadUrl: true
   },
   {
     id: "1575",
@@ -4553,8 +4554,8 @@ const data2: Protocol[] = [
   {
     id: "1578",
     name: "Hyphen",
-    address: null,
-    symbol: "-",
+    address: "0xf17e65822b568b3903685a7c9f496cf7656cc6c2",
+    symbol: "BICO",
     url: "https://www.biconomy.io",
     description:
       "Hyphen provides simple APIs that lets you easily offer instantaneous value transfers between EVM chains, various L2s & allows quick onboarding from L1 to L2s.",
@@ -4563,7 +4564,7 @@ const data2: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "biconomy",
-    cmcId: null,
+    cmcId: "9543",
     category: "Bridge",
     chains: ["Ethereum", "Polygon", "Avalanche"],
     forkedFrom: [],
@@ -4645,8 +4646,8 @@ const data2: Protocol[] = [
   {
     id: "1582",
     name: "Aperture LM",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x1c986661170c1834db49c3830130d4038eeeb866",
+    symbol: "APTR",
     url: "https://aperture.finance",
     description:
       "Cross-chain investment ecosystem with a community-driven marketplace for strategies. All your DeFi needs taken care of in one single place.",
@@ -5025,7 +5026,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1599",
-    name: "AAVE V3",
+    name: "Aave V3",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com",
@@ -5253,7 +5254,7 @@ const data2: Protocol[] = [
     previousNames: ["Proton Swap"],
     address: null,
     symbol: "-",
-    url: "https://www.protonswap.com/swap",
+    url: "https://app.metalx.com/swap",
     description: "Instant on-chain token swaps on XPR Network with 0 gas fee.",
     chain: "Proton",
     logo: `${baseIconsUrl}/metalx-swap.png`,
@@ -10468,7 +10469,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1838",
-    name: "AAVE V1",
+    name: "Aave V1",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com",
@@ -10811,7 +10812,7 @@ const data2: Protocol[] = [
     address: "base:0xa88594d404727625a9437c3f886c7643872296ae",
     symbol: "WELL",
     url: "https://moonwell.fi",
-    description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",
+    description: "Moonwell is an open lending and borrowing DeFi protocol on Base, Optimism, Moonbeam & Moonriver.",
     chain: "Moonbeam",
     logo: `${baseIconsUrl}/moonwell-lending.png`,
     audits: "2",
@@ -18760,7 +18761,7 @@ const data2: Protocol[] = [
   {
     id: "2200",
     name: "ION DAO",
-    address: null,
+    address: "osmosis:uion",
     symbol: "ION",
     url: "https://ion.wtf",
     description:
@@ -19237,8 +19238,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/frax-ether.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "frax-ether",
-    cmcId: "23225",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Ethereum"],
     module: "frax-ETH/index.js",
@@ -19943,7 +19944,7 @@ const data2: Protocol[] = [
   {
     id: "2251",
     name: "Stride",
-    address: null,
+    address: "osmosis:ibc/A8CA5EE328FA10C9519DF6057DA1F69682D28F7D0F5CCC7ECB72E3DCA2D157A4",
     symbol: "STRD",
     url: "https://stride.zone/",
     description: "Stride is a protocol for multichain liquid staking in the Cosmos ecosystem",
@@ -20474,7 +20475,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2274",
-    name: "Kucoin",
+    name: "KuCoin",
     address: null,
     symbol: "-",
     url: "https://www.kucoin.com",
@@ -21360,7 +21361,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Ripple", "Arbitrum", "Optimism", "Solana", "Tron", "Polygon"],
     module: "gate-io/index.js",
-    twitter: "gate_io",
+    twitter: "Gate",
     forkedFrom: [],
     listedAt: 1669634683,
   },
@@ -21664,8 +21665,8 @@ const data2: Protocol[] = [
   {
     id: "2328",
     name: "SynFutures V1",
-    address: null,
-    symbol: "-",
+    address: "0x6e15a54b5ecac17e58dadeddbe8506a7560252f9",
+    symbol: "F",
     url: "https://www.synfutures.com/",
     description:
       "SynFutures is a next-generation derivatives exchange focused on creating an open and trustless derivatives market by enabling futures trading on anything, anytime, anywhere. By cultivating a free market and maximizing the variety of tradable assets, SynFutures is lowering the barrier to entry in the derivatives market, creating a more equitable derivatives market.",
@@ -21823,7 +21824,7 @@ const data2: Protocol[] = [
   {
     id: "2335",
     name: "ABEL Finance",
-    address: null,
+    address: "aptos:0x7c0322595a73b3fc53bb166f5783470afeb1ed9f46d1176db62139991505dc61::abel_coin::AbelCoin",
     symbol: "ABEL",
     url: "https://abelfinance.xyz/#/markets",
     description: "A Cross-Chain Lending Platform Built on Aptos and Sui",
@@ -22347,8 +22348,8 @@ const data2: Protocol[] = [
   {
     id: "2359",
     name: "RealT RMM Marketplace",
-    address: null,
-    symbol: "-",
+    address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+    symbol: "REG",
     url: "https://rmm.realtoken.network/markets",
     description:
       "Based on the Aave protocol V2, Liquidity providers (Lenders) gain the ability to earn interest and generate passive income returns, while providing liquidity for Borrowers",
@@ -22468,7 +22469,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Polygon", "Near", "Binance", "Map", "Ethereum", "Merlin"],
+    chains: ["Polygon", "Binance", "Map", "Ethereum", "Merlin"],
     module: "butternetwork/index.js",
     twitter: "ButterNetworkio",
     forkedFrom: [],
@@ -24116,7 +24117,7 @@ const data2: Protocol[] = [
   {
     id: "2438",
     name: "Zeniq Swap",
-    address: null,
+    address: "bsc:0x5b52bfb8062ce664d74bbcd4cd6dc7df53fd7233",
     symbol: "ZENIQ",
     url: "https://www.zeniq.com",
     description:
@@ -24473,8 +24474,8 @@ const data2: Protocol[] = [
   {
     id: "2454",
     name: "GETH",
-    address: null,
-    symbol: "-",
+    address: "0x3802c218221390025bceabbad5d8c59f40eb74b8",
+    symbol: "GETH",
     assetToken: "GETH",
     url: "https://guarda.com/staking/ethereum-staking/",
     description:
@@ -24800,7 +24801,8 @@ const data2: Protocol[] = [
   },
   {
     id: "2469",
-    name: "Cap V4",
+    name: "Cap Finance V4",
+    previousNames: ["Cap V4"],
     address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://cap.io",
@@ -25212,7 +25214,7 @@ const data2: Protocol[] = [
   {
     id: "2487",
     name: "Stargaze",
-    address: null,
+    address: "cosmos:ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4",
     symbol: "STARS",
     url: "https://www.stargaze.zone",
     description:
@@ -26915,7 +26917,7 @@ const data2: Protocol[] = [
   {
     id: "2564",
     name: "OraiDEX",
-    address: null,
+    address: "0x2d869ae129e308f94cc47e66eaefb448cee0d03e",
     symbol: "ORAIX",
     url: "https://oraidex.io",
     description:
@@ -27968,8 +27970,8 @@ const data2: Protocol[] = [
   {
     id: "2610",
     name: "ZORA Marketplace",  // previous ZORA , cant use the previous name field cause parent will have that name
-    address: null,
-    symbol: "-",
+    address: "base:0x1111111111166b7fe7bd91427724b487980afc69",
+    symbol: "ZORA",
     url: "https://market.zora.co",
     description: "The NFT Marketplace Protocol",
     chain: "Ethereum",

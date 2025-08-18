@@ -486,7 +486,7 @@ export default {
         id: "731"
     },
     "pandora": {
-        id: "1698"
+        id: "1777"
     },
     "paycash": {
         id: "1452"
@@ -2947,5 +2947,94 @@ export default {
     },
     "spookyswap-v3": {
         id: "5272"
+    },
+    "stellaswap-v4": {
+        id: "5802"
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
+    },
+    "fluxbeam": {
+        id: "3053"
+    },
+    "obric-v2": {
+        id: "2474"
+    },
+    "solfi": {
+        id: "6553"
+    },
+    "humidifi": {
+        id: "6554",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1755129600": true
+            }
+        },
+    },
+    "zerofi": {
+        id: "6555"
+    },
+    "goonfi": {
+        id: "6556"
+    },
+    "tessera": {
+        id: "6557"
+    },
+    // "hyperunit": { not tracking this for bridges
+    //     id: "5788"
+    // },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
+    "cl-dex": {
+        id: "6533"
+    },
+    "swapr-v3": {
+        id: "4057"
+    },
+    "etherex-legacy": {
+        id: "6501"
+    },
+    "etherex": {
+        id: "6502"
+    },
+    "earnium": {
+        id: "6568"
+    },
+    "aquabot": {
+        id: "6575"
+    },
+    "hybra-v2": {
+        id: "6255"
+    },
+    "hybra-v3": {
+        id: "6350"
+    },
+    "quickswap-v4": {
+        id: "6576"
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
+    "renegade": {
+        id: "5103"
     },
 } as AdaptorsConfig

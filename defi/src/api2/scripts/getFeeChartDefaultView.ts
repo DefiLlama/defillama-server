@@ -33,6 +33,7 @@ async function _call() {
     if (!protocolAdaptors[id])
       return removeProtocol(id)
     const { defaultChartView } = protocolAdaptors[id]
+    if (defaultChartView) console.log('removing protocol', id, 'with defaultChartView', defaultChartView)
     if (defaultChartView) return removeProtocol(id)
   })
 
@@ -57,13 +58,9 @@ async function _call() {
 
       arr = arr.map(getValue)
       const sorted = arr.slice().sort((a, b) => a - b);
-      const mid = Math.floor(sorted.length / 2);
-      const median = sorted.length % 2 === 0
-        ? (sorted[mid - 1] + sorted[mid]) / 2
-        : sorted[mid];
-      const thirdHighest = sorted[sorted.length - 3];
+      const thirdHighest = sorted[sorted.length - 4];
       const highest = sorted[sorted.length - 1];
-      return highest >= 4 * median && highest >= 3 * thirdHighest;
+      return highest >= 3 * thirdHighest;
     }
   })
   return results

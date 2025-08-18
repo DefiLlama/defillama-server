@@ -1134,7 +1134,7 @@ export const chainCoingeckoIds = {
     twitter: "EvmosOrg",
     url: "https://evmos.org/"
   },
-  "Proton": {
+  "XPR Network": {
     geckoId: "proton",
     github: ['ProtonProtocol', 'XPRNetwork'],
     symbol: "XPR",
@@ -4226,7 +4226,7 @@ export const chainCoingeckoIds = {
     twitter: "OpenGPUfndn",
     url: "https://opengpu.network/",
   },
-  "Echelon Chain": {
+  "Echelon Initia": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4482,6 +4482,40 @@ export const chainCoingeckoIds = {
     twitter: "EveDexOfficial",
     url: "https://evedex.com/en-US/",
   },
+  "Bitcichain": {
+    geckoId: "bitcicoin",
+    symbol: "BITCI",
+    cmcId: "8357",
+    categories: ["EVM"],
+    twitter: "BitciChain",
+    url: "https://bitcichain.com/",
+    chainId: 1907,
+  },
+  "ENI": {
+    geckoId: null,
+    symbol: "ENI",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "ENI__Official",
+    url: "https://eni.top/",
+    chainId: 173,
+  },
+  "soonBase": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["SVM"],
+    twitter: "soon_svm",
+    url: "https://soo.network/",
+  },
+  "svmBNB": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["SVM"],
+    twitter: "soon_svm",
+    url: "https://soo.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4684,6 +4718,11 @@ const chainLabelMap = {
   "soon": "Soon Network",
   "tac": "TAC",
   "hydragon": "Hydra Chain",
+  "bitci": "Bitcichain",
+  "eni": "ENI",
+  "proton": "Proton",
+  "soon_bsc": "svmBNB",
+  "soon_base": "soonBase"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4730,7 +4769,9 @@ const newChainLabelMap = {
   "unit0": "Unit Zero",
   "eos": "Vaulta",
   "gravity": "Gravity by Galxe",
-  "idex": "XCHAIN"
+  "idex": "XCHAIN",
+  "echelon_initia": "Echelon Initia",
+  "proton": "XPR Network"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

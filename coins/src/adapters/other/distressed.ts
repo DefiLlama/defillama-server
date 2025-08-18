@@ -49,7 +49,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
     clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911", // IS NOT BACKED
     NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
-    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f"  // BACKED BY THE ABOVE, SO SAME 
+    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f",  // BACKED BY THE ABOVE, SO SAME 
+    crvPlain3andSUSD: '0xC25a3A3b969415c80451098fa907EC722572917F', // sunset 
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

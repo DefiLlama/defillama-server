@@ -296,14 +296,15 @@ export default {
         id: "2396"
     },
     "hegic": {
-        id: "128"
+        id: "128",
+        defaultChartView: "weekly",
     },
     "el-dorado-exchange": {
         id: "2356"
     },
-    "gearbox": {
-        id: "1108"
-    },
+    // "gearbox": {
+    //     id: "1108"
+    // },
     "verse": {
         id: "1732"
     },
@@ -1142,7 +1143,12 @@ export default {
         id: "4235"
     },
     "ethena": {
-        id: "4133"
+        id: "4133",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1754524800": true
+            },
+        }
     },
     "avantis": {
         id: "4108"
@@ -1202,7 +1208,8 @@ export default {
         id: "4449",
         cleanRecordsConfig: {
             genuineSpikes: {
-                "1752537600": true
+                "1752537600": true,
+                "1754956800": true
             },
         }
     },
@@ -1258,7 +1265,7 @@ export default {
         id: "4215"
     },
     "jito": {
-        id: "2308"
+        id: "6571"
     },
     "vfat": {
         id: "4602"
@@ -2074,7 +2081,8 @@ export default {
         id: "5813"
     },
     "beradrome": {
-        id: "5798"
+        id: "5798",
+        defaultChartView: "weekly",
     },
     "rings": {
         id: "5526"
@@ -3706,7 +3714,7 @@ export default {
     "apertureSwap": {
         id: "3554"
     },
-    "definitive-v2": {
+    "definitive": {
         id: "4257"
     },
     "bybit-staked-sol": {
@@ -3738,5 +3746,233 @@ export default {
     },
     "netswap": {
         id: "1140"
+    },
+    "stellaswap-v4": {
+        id: "5802"
+    },
+    "based-app": {
+        id: "6521"
+    },
+    "imx-seaport": {
+        id: "6522"
+    },
+    "yo-protocol": {
+        id: "5915"
+    },
+    "edge-capital": {
+        id: "6528"
+    },
+    "dexari": {
+        id: "6531"
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "hyperunit": {
+        id: "5788"
+    },
+    "omni-exchange-flux": {
+        id: "6540"
+    },
+    "omni-exchange-v2": {
+        id: "6539"
+    },
+    "omni-exchange-v3": {
+        id: "6506"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
+    },
+    "sendshot": {
+        id: "6551"
+    },
+    "kura-v2": {
+        id: "6549"
+    },
+    "kura-v3": {
+        id: "6548"
+    },
+    "dextrabot": {
+        id: "6558"
+    },
+    "hyperdash": {
+        id: "6559"
+    },
+    "kinto-xyz": {
+        id: "6560"
+    },
+    "superx": {
+        id: "6561"
+    },
+    "wallet-v": {
+        id: "6562"
+    },
+    "kinetiq-staked-hype": {
+        id: "6447"
+    },
+    "resolv": {
+        id: "5655"
+    },
+    "jito-staked-sol": {
+        id: "2308"
+    },
+    "cl-dex": {
+        id: "6533"
+    },
+    "swapr-v3": {
+        id: "4057"
+    },
+    "swapr": {
+        id: "292"
+    },
+    "etherex-legacy": {
+        id: "6501"
+    },
+    "etherex": {
+        id: "6502"
+    },
+    "earnium": {
+        id: "6568"
+    },
+    "teleswap": {
+        id: "5350"
+    },
+    "aquabot": {
+        id: "6575"
+    },
+    "hybra-v2": {
+        id: "6255"
+    },
+    "hybra-v3": {
+        id: "6350"
+    },
+    "superstate-uscc": {
+        id: "5120"
+    },
+    "alienfi": {
+        id: "2603"
+    },
+    "jetswap": {
+        id: "659"
+    },
+    "solarflare": {
+        id: "1269"
+    },
+    "subzero-zswap": {
+        id: "2556"
+    },
+    "swappi": {
+        id: "1660"
+    },
+    "swapsicle": {
+        id: "1824"
+    },
+    "quickswap-v4": {
+        id: "6576"
+    },
+    "odyssey-finance": {
+        id: "6529"
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
+    "dsx": {
+        id: "6585"
+    },
+    "cometh": {
+        id: "261"
+    },
+    "crodex": {
+        id: "828"
+    },
+    "fenix-finance-v3": {
+        id: "4775"
+    },
+    "fenix-finance": {
+        id: "4563"
+    },
+    "huckleberry": {
+        id: "630"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "oolongswap": {
+        id: "794"
+    },
+    "pandora": {
+        id: "1777"
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "titano-swych": {
+        id: "2102"
+    },
+    "zebra-v1": {
+        id: "3668"
+    },
+    "zebra-v2": {
+        id: "3901"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
+    "noon": {
+        id: "5721"
+    },
+    "bim": {
+        id: "6402"
+    },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
+    "autoshark": {
+        id: "1074"
+    },
+    "babyswap": {
+        id: "597"
+    },
+    "blue-planet": {
+        id: "2158"
+    },
+    "complus-network": {
+        id: "471"
+    },
+    "dinosaur-eggs": {
+        id: "695"
+    },
+    "empiredex": {
+        id: "812"
+    },
+    "gin-finance": {
+        id: "1795"
+    },
+    "gravis": {
+        id: "2195"
+    },
+    "gravity-finance": {
+        id: "351"
+    },
+    "horizondex": {
+        id: "3255"
+    },
+    "zapfi": {
+        id: "6588"
+    },
+    "superfund": {
+        id: "6292"
     }
 } as AdaptorsConfig

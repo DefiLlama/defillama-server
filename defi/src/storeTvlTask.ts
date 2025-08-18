@@ -265,7 +265,7 @@ setTimeout(async () => {
   console.log('Timeout! Shutting down...');
   preExit()
   process.exit(1);
-}, 1000 * 60 * 40); // 40 minutes
+}, 1000 * 60 * 45); // 45 minutes
 
 function getErrorString(e: any) {
   try {

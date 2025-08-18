@@ -668,4 +668,43 @@ export default {
     "okto-wallet": {
         id: "6513"
     },
+    "based-app": {
+        id: "6521"
+    },
+    "dexari": {
+        id: "6531"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
+    },
+    "dextrabot": {
+        id: "6558"
+    },
+    "hyperdash": {
+        id: "6559"
+    },
+    "kinto-xyz": {
+        id: "6560"
+    },
+    "superX": {
+        id: "6561"
+    },
+    "wallet-v": {
+        id: "6562"
+    },
+    "rollx": {
+        id: "5973"
+    },
+    "aden": {
+        id: "6567"
+    }
 } as AdaptorsConfig

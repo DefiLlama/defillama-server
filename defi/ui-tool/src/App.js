@@ -1039,6 +1039,8 @@ const App = () => {
       case 'get-fee-chart-default-view-response':
         const tableData1 = miscOutputTableData.data.map(record => {
           const shallowCopy = { ...record }
+          shallowCopy.isWeekly = record.isWeekly ? 'Yes' : 'No';
+          shallowCopy.isMonthly = record.isMonthly ? 'Yes' : 'No';
           return shallowCopy
         })
 

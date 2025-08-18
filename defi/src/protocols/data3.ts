@@ -50286,6 +50286,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.ostium.io/",
+    referralUrl: "https://app.ostium.com/trade?from=SPX&to=USD&ref=6X17X",
     description: "Trade FX, metals, energy, & RWAs from your wallet",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ostium.png`,

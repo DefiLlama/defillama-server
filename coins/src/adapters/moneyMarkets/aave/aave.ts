@@ -106,7 +106,7 @@ export default async function getTokenPrices(
       tokenInfo.symbols[i].output,
       timestamp,
       "aave",
-      1,
+      0.99,
       redirect,
     );
   });

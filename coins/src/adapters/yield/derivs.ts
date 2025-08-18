@@ -306,6 +306,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "hyperliquid",
     underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
     address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
+    confidence: 1
   },
   sUSDa: {
     rate: async ({ api }) => {

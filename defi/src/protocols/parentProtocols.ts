@@ -7689,6 +7689,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SuperlendHQ",
   },
+  {
+    id: "parent#solidex-finance",
+    name: "SoliDex Finance",
+    url: "https://www.superlend.xyz/",
+    description: "A next-gen ve(3,3)-powered DEX built for Cronos",
+    logo: `${baseIconsUrl}/solidex-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SoliDexCro",
+  },
+  {
+    id: "parent#nemo",
+    name: "Nemo",
+    url: "https://www.nemoprotocol.com/",
+    description: "Nemo Protocol is a yield trading protocol on Sui Network",
+    logo: `${baseIconsUrl}/nemo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "nemoprotocol",
+  },
 ];
 
 export default parentProtocols;

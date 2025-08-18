@@ -1962,6 +1962,16 @@
     }
   },
   "avax": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0xfd2c2A98009d0cBed715882036e43d26C4289053": {
       "decimals": "18",
       "symbol": "avBTC",

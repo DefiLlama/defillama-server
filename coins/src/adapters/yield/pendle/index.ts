@@ -1,8 +1,7 @@
-
 import getTokenPrices from "./pendle";
 import { getPenpiePrices } from "./penpie";
 
-const config: { [chain: string]: {pendleOracle: string} } = {
+const config: { [chain: string]: { pendleOracle: string } } = {
   ethereum: {
     pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
   },
@@ -25,6 +24,9 @@ const config: { [chain: string]: {pendleOracle: string} } = {
     pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
   },
   berachain: {
+    pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
+  },
+  hyperliquid: {
     pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
   },
 };

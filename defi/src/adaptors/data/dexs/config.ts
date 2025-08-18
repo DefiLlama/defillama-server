@@ -3034,7 +3034,7 @@ export default {
     "fluid-dex-lite": {
         id: "6586"
     },
-    "renegade": {
+    "renegade-fi": {
         id: "5103"
     },
     "heaven-dex": {

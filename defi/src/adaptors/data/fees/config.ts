@@ -3977,5 +3977,8 @@ export default {
     },
     "walrus": {
         id: "5968"
+    },
+    "heaven-dex": {
+        id: "6592"
     }
 } as AdaptorsConfig

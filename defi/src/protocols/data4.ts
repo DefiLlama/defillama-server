@@ -22879,5 +22879,24 @@ const data4: Protocol[] = [
     github: ["hxfinance"],
     listedAt: 1755530145
   },
+  { 
+    id: "6592",
+    name: "Heaven",
+    address: "solana:LiGHtkg3uTa9836RaNkKLLriqTNRcMdRAhqjGWNv777",
+    symbol: "LIGHT",
+    url: "https://heaven.xyz/",
+    description: "Heaven is an AMM and launchpad on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/heaven.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "heaven",
+    cmcId: "37986",
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "dummy.js",
+    audit_links: ["https://docs.heaven.xyz/certora"],
+    twitter: "heavendex",
+  },
 ];
 export default data4;

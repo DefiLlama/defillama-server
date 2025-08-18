@@ -3037,4 +3037,7 @@ export default {
     "renegade": {
         id: "5103"
     },
+    "heaven-dex": {
+        id: "6592"
+    }
 } as AdaptorsConfig

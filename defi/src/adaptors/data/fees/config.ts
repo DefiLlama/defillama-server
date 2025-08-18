@@ -3976,7 +3976,7 @@ export default {
         id: "6292"
     },
     "walrus": {
-        id: "5968"
+        id: "6598"
     },
     "heaven-dex": {
         id: "6592"

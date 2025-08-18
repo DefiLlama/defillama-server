@@ -23003,5 +23003,23 @@ const data4: Protocol[] = [
     twitter: "hypervaultfi",
     listedAt: 1755534171
   },
+  { 
+    id: "6598",
+    name: "Walrus",
+    address: "sui:0x356a26eb9e012a68958082340d4c4116e7f55615cf27affcff209cf0ae544f59::wal::WAL",
+    symbol: "WAL",
+    url: "https://www.walrus.xyz/",
+    description: "Walrus is a decentralized storage and data availability protocol that uses erasure coding and staking-based node committees to store and serve verifiable large binary files (blobs) efficiently across a distributed network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/walrus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "walrus-2",
+    cmcId: "36119",
+    category: "Developer Tools",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "WalrusProtocol",
+  },
 ];
 export default data4;

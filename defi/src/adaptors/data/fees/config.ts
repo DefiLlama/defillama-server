@@ -3974,5 +3974,8 @@ export default {
     },
     "superfund": {
         id: "6292"
+    },
+    "walrus": {
+        id: "5968"
     }
 } as AdaptorsConfig

@@ -18869,6 +18869,7 @@ const data4: Protocol[] = [
     module: "bim/index.js",
     twitter: "Bim_Exchange",
     forkedFromIds: [],
+    treasury: "bim.js",
     audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
     listedAt: 1751920749
   },

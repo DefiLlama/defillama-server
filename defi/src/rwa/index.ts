@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import protocols from "../protocols/data";
 import { CategoryTagMap } from "../protocols/tags";
-import { successResponse, wrap, IResponse, errorResponse } from "../utils/shared";
 
 type Stats = {
   volumeUsd1d: number;
@@ -103,16 +102,9 @@ async function fetchStats(symbols: { [id: string]: string }) {
   return res;
 }
 
-const handler = async (_event: any): Promise<IResponse> => {
-  try {
-    const rwaSymbols = await fetchSymbols();
-    const stats = await fetchStats(rwaSymbols);
-    return successResponse(stats, 10 * 60); // 10 mins cache
-  } catch (e: any) {
-    return errorResponse({ message: e.message });
-  }
-};
-
-export default wrap(handler);
+export default async function main() {
+  const rwaSymbols = await fetchSymbols();
+  return await fetchStats(rwaSymbols);
+}
 
 // handler({});

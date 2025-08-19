@@ -2225,7 +2225,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/biswap.jpg`,
     gecko_id: "biswap",
     cmcId: "10746",
-    chains: ["Binance", "Ethereum", "Arbitrum", "Base"],
+    chains: [],
     twitter: "Biswap_Dex",
     github: ["biswap-org"],
     governanceID: ["snapshot:biswap-org.eth"],
@@ -7710,6 +7710,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "nemoprotocol",
+  },
+  {
+    id: "parent#okieswap",
+    name: "OkieSwap",
+    url: "https://okiedokie.fun/",
+    description: "Community-first DEX + Launchpad built on X Layer",
+    logo: `${baseIconsUrl}/okieswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "okiedokie_fun",
   },
 ];
 

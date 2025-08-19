@@ -3983,5 +3983,8 @@ export default {
     },
     "hx-finance": {
         id: "6591"
+    },
+    "binance-alpha": {
+        id: "6599"
     }
 } as AdaptorsConfig

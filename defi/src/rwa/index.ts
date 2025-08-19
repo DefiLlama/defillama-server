@@ -61,6 +61,7 @@ async function fetchSymbols() {
     .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY
   const res: { [id: string]: string } = {};
   rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbol));
+
   return res;
 }
 

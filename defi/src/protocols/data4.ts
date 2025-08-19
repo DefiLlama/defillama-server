@@ -8602,8 +8602,8 @@ const data4: Protocol[] = [
       },
       {
         name: "RedStone",
-        type: "Fallback",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
+        type: "Primary",
+        proof: https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D
       }
     ],
     twitter: "hyperlendx",

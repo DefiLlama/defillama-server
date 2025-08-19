@@ -12651,7 +12651,6 @@ const data2: Protocol[] = [
     module: "timeless/index.js",
     twitter: "Timeless_Fi",
     audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
-    parentProtocol: "parent#timeless",
     listedAt: 1658931496,
   },
   {
@@ -24518,7 +24517,7 @@ const data2: Protocol[] = [
   */
   {
     id: "2456",
-    name: "Bunni",
+    name: "Bunni v1",
     address: "0xfd0205066521550d7d7ab19da8f72bb004b4c341",
     symbol: "LIT",
     url: "https://bunni.pro",
@@ -24526,17 +24525,17 @@ const data2: Protocol[] = [
       "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bunni.png`,
-    audits: "2",
+    audits: "3",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "timeless",
     cmcId: null,
     category: "Liquidity manager",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     module: "bunni/index.js",
     twitter: "bunni_xyz",
     forkedFrom: [],
-    parentProtocol: "parent#timeless",
-    audit_links: ["https://reports.yaudit.dev/reports/08-2022-Bunni/"],
+    parentProtocol: "parent#bunni",
+    audit_links: ["https://reports.yaudit.dev/reports/08-2022-Bunni/", "https://reports.yaudit.dev/reports/03-2022-Bunni-Zap/", "https://reports.yaudit.dev/reports/05-2023-timeless-gauges/"],
     listedAt: 1674140788,
   },
   {

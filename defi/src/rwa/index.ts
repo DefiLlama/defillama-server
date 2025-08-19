@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import protocols from "../protocols/data";
 import { CategoryTagMap } from "../protocols/tags";
-import { successResponse, wrap, IResponse } from "../utils/shared";
+import { successResponse, wrap, IResponse, errorResponse } from "../utils/shared";
 
 type Stats = {
   volumeUsd1d: number;
@@ -11,6 +11,7 @@ type Stats = {
 
 type Characteristics = {
   symbol: string;
+  matchExact: boolean;
   redeemable: boolean;
   attestations: boolean;
   cexListed: boolean;
@@ -19,9 +20,22 @@ type Characteristics = {
   selfCustody: boolean;
 };
 
+const faultyIds: { [id: string]: string } = { "415": "NAOS" };
+
 const metadata: { [id: string]: Characteristics } = {
+  "753": {
+    symbol: "REALTOKEN", // need to match on inclusion
+    matchExact: false,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: false, // true but user needs pre - KYC
+    selfCustody: true,
+  },
   "5506": {
     symbol: "USDtb",
+    matchExact: true,
     redeemable: true,
     attestations: true,
     cexListed: true, // in earn product
@@ -31,6 +45,7 @@ const metadata: { [id: string]: Characteristics } = {
   },
   "4853": {
     symbol: "BUIDL",
+    matchExact: true,
     redeemable: true,
     attestations: true,
     cexListed: false,
@@ -46,11 +61,11 @@ async function fetchSymbols() {
     .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY
   const res: { [id: string]: string } = {};
   rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbol));
-
   return res;
 }
 
 async function fetchStats(symbols: { [id: string]: string }) {
+  if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
   const { data } = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) =>
     r.json()
   );
@@ -61,10 +76,11 @@ async function fetchStats(symbols: { [id: string]: string }) {
     const symbol = symbols[id];
     if (!symbol) return;
 
-    const rwa = lps.filter(
-      (item: any) =>
-        item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}-`) ||
-        item.symbol.toLowerCase().endsWith(`-${symbol.toLowerCase()}`)
+    const rwa = lps.filter((item: any) =>
+      item.matchExact
+        ? item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}-`) ||
+          item.symbol.toLowerCase().endsWith(`-${symbol.toLowerCase()}`)
+        : item.symbol.toLowerCase().includes(symbol.toLowerCase())
     );
 
     res[id] = rwa.reduce(
@@ -86,10 +102,16 @@ async function fetchStats(symbols: { [id: string]: string }) {
   return res;
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const rwaSymbols = await fetchSymbols();
-  const stats = await fetchStats(rwaSymbols);
-  return successResponse(stats, 10 * 60); // 10 mins cache
+const handler = async (_event: any): Promise<IResponse> => {
+  try {
+    const rwaSymbols = await fetchSymbols();
+    const stats = await fetchStats(rwaSymbols);
+    return successResponse(stats, 10 * 60); // 10 mins cache
+  } catch (e: any) {
+    return errorResponse({ message: e.message });
+  }
 };
 
 export default wrap(handler);
+
+// handler({});

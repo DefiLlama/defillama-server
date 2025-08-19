@@ -23094,5 +23094,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#okieswap",
     listedAt: 1755585797
   },
+  { 
+    id: "6603",
+    name: "TidalDex",
+    address: "bsc:0xD963b2236D227a0302E19F2f9595F424950dc186",
+    symbol: "CZB",
+    url: "https://TidalDex.com",
+    description: "TidalDex is a DEX on BSC. Built as a Uniswap V2 fork, it operates with zero trading fees, making it bot- and arbitrage-friendly. This design lowers the cost of arbitrage, which can help keep prices aligned across pairs",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/tidaldex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Binance"],
+    module: "tidaldex/index.js",
+    twitter: "zodiacs_c",
+    github: ["chinese-zodiac"],
+    listedAt: 1755623124
+  },
 ];
 export default data4;

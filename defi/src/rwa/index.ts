@@ -9,7 +9,7 @@ type Stats = {
 };
 
 type Characteristics = {
-  symbol: string;
+  symbols: string[];
   matchExact: boolean;
   redeemable: boolean;
   attestations: boolean;
@@ -19,11 +19,13 @@ type Characteristics = {
   selfCustody: boolean;
 };
 
-const faultyIds: { [id: string]: string } = { "415": "NAOS" };
+const faultyIds: { [id: string]: string } = { "415": "NAOS", "1459": "ELYFI", "1667": "Solv Vesting" };
 
+// KYC is true where required for mint / redeem.
+// transferable is true where transfer doesnt require KYC.
 const metadata: { [id: string]: Characteristics } = {
   "753": {
-    symbol: "REALTOKEN", // need to match on inclusion
+    symbols: ["REALTOKEN"], // need to match on inclusion
     matchExact: false,
     redeemable: true,
     attestations: true,
@@ -32,18 +34,58 @@ const metadata: { [id: string]: Characteristics } = {
     transferable: false, // true but user needs pre - KYC
     selfCustody: true,
   },
-  "5506": {
-    symbol: "USDtb",
+  "781": {
+    symbols: ["KLIMA", "kVCM"],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
+    cexListed: true, // poloniex
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "1952": {
+    symbols: [], // no open market
     matchExact: true,
     redeemable: true,
     attestations: true,
-    cexListed: true, // in earn product
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: true,
+  },
+  "1953": {
+    symbols: ["CHAR"],
+    matchExact: true,
+    redeemable: false,
+    attestations: true,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "2002": {
+    symbols: ["CGT", ""], // no open market
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "5506": {
+    symbols: ["USDtb"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: true, // Bybit earn product
     kyc: true,
     transferable: true,
     selfCustody: true,
   },
   "4853": {
-    symbol: "BUIDL",
+    symbols: ["BUIDL"],
     matchExact: true,
     redeemable: true,
     attestations: true,
@@ -57,14 +99,14 @@ const metadata: { [id: string]: Characteristics } = {
 async function fetchSymbols() {
   const rwaProtocols = protocols
     .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
-    .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY
-  const res: { [id: string]: string } = {};
-  rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbol));
+    .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY // !Object.keys(faultyIds).includes(p.id)
+  const res: { [id: string]: string[] } = {};
+  rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbols));
 
   return res;
 }
 
-async function fetchStats(symbols: { [id: string]: string }) {
+async function fetchStats(symbols: { [id: string]: string[] }) {
   if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
   const { data } = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) =>
     r.json()
@@ -73,30 +115,30 @@ async function fetchStats(symbols: { [id: string]: string }) {
 
   const res: { [id: string]: Stats } = {};
   Object.keys(symbols).map((id: string) => {
-    const symbol = symbols[id];
-    if (!symbol) return;
+    let sum = {
+      volumeUsd1d: 0,
+      volumeUsd7d: 0,
+      tvlUsd: 0,
+      ...metadata[id],
+    };
 
-    const rwa = lps.filter((item: any) =>
-      item.matchExact
-        ? item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}-`) ||
-          item.symbol.toLowerCase().endsWith(`-${symbol.toLowerCase()}`)
-        : item.symbol.toLowerCase().includes(symbol.toLowerCase())
-    );
+    symbols[id].map((symbol: string) => {
+      const rwa = lps.filter((item: any) =>
+        item.matchExact
+          ? item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}-`) ||
+            item.symbol.toLowerCase().endsWith(`-${symbol.toLowerCase()}`)
+          : item.symbol.toLowerCase().includes(symbol.toLowerCase())
+      );
 
-    res[id] = rwa.reduce(
-      (acc: any, { volumeUsd1d, volumeUsd7d, tvlUsd }: any) => {
+      sum = rwa.reduce((acc: any, { volumeUsd1d, volumeUsd7d, tvlUsd }: any) => {
         acc.volumeUsd1d += volumeUsd1d;
         acc.volumeUsd7d += volumeUsd7d;
         acc.tvlUsd += tvlUsd;
         return acc;
-      },
-      {
-        volumeUsd1d: 0,
-        volumeUsd7d: 0,
-        tvlUsd: 0,
-        ...metadata[id],
-      }
-    );
+      }, sum);
+    });
+
+    res[id] = sum;
   });
 
   return res;
@@ -107,4 +149,4 @@ export default async function main() {
   return await fetchStats(rwaSymbols);
 }
 
-// handler({});
+// main(); // ts-node defi/src/rwa/index.ts

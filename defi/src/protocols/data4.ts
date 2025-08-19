@@ -23016,5 +23016,23 @@ const data4: Protocol[] = [
     parentProtocol: "parent#frax-finance",
     listedAt: 1755567417
   },
+  { 
+    id: "6599",
+    name: "Binance Alpha",
+    address: "0xb8c77482e45f1f44de1745f52c74426c631bdd52",
+    symbol: "BNB",
+    url: "https://www.binance.com/en/alpha/",
+    description: "Binance Alpha is a curated early-token discovery platform offering quick access, reward mechanics, and potential listings",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/binance-alpha.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "binance",
+  },
 ];
 export default data4;

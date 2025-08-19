@@ -10690,7 +10690,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "walrus-2",
     cmcId: "36119",
-    category: "Chain",
+    category: "Developer Tools",
     chains: ["Sui"],
     forkedFrom: [],
     module: "dummy.js",

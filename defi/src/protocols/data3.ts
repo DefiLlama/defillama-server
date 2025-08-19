@@ -30765,6 +30765,7 @@ const data3_1: Protocol[] = [
     address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
     symbol: "dYdX",
     url: "https://dydx.trade",
+    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
     description:
       " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
     chain: "dYdX",
@@ -38960,8 +38961,8 @@ const data3_2: Protocol[] = [
   {
     id: "4423",
     name: "Frax AMO",
-    address: null,
-    symbol: "-",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
     url: "https://facts.frax.finance/fraxlend/amo",
     description:
       "Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
@@ -50286,6 +50287,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.ostium.io/",
+    referralUrl: "https://app.ostium.com/trade?from=SPX&to=USD&ref=6X17X",
     description: "Trade FX, metals, energy, & RWAs from your wallet",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ostium.png`,
@@ -52294,7 +52296,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "RayBot_sol",
   },
-  {
+  /*{
     id: "5023",
     name: "Manta MYield",
     address: null,
@@ -52313,7 +52315,7 @@ const data3_2: Protocol[] = [
     module: "manta-myield/index.js",
     twitter: "CedefiYield",
     listedAt: 1724242037,
-  },
+  },*/
   {
     id: "5024",
     name: "Double",

@@ -11170,6 +11170,11 @@
       "decimals": "18",
       "symbol": "wstUSR",
       "to": "coingecko#resolv-wstusr"
+    },
+    "0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894": {
+      "to": "coingecko#universal-btc",
+      "decimals": 8,
+      "symbol": "uniBTC"
     }
   },
   "initia": {

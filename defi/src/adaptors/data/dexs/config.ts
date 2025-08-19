@@ -3034,7 +3034,13 @@ export default {
     "fluid-dex-lite": {
         id: "6586"
     },
-    "renegade": {
+    "renegade-fi": {
         id: "5103"
     },
+    "heaven-dex": {
+        id: "6592"
+    },
+    "hx-finance": {
+        id: "6591"
+    }
 } as AdaptorsConfig

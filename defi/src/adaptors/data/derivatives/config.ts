@@ -706,5 +706,8 @@ export default {
     },
     "aden": {
         id: "6567"
-    }
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
 } as AdaptorsConfig

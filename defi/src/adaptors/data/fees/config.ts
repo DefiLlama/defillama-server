@@ -302,9 +302,9 @@ export default {
     "el-dorado-exchange": {
         id: "2356"
     },
-    // "gearbox": {
-    //     id: "1108"
-    // },
+    "gearbox": {
+        id: "1108"
+    },
     "verse": {
         id: "1732"
     },
@@ -3974,5 +3974,17 @@ export default {
     },
     "superfund": {
         id: "6292"
+    },
+    "walrus": {
+        id: "6032"
+    },
+    "heaven-dex": {
+        id: "6592"
+    },
+    "hx-finance": {
+        id: "6591"
+    },
+    "binance-alpha": {
+        id: "6599"
     }
 } as AdaptorsConfig

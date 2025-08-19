@@ -23,6 +23,7 @@ import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getCexs } from "../../getCexs";
+import getRwaStats from "../../rwa";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -67,6 +68,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/hacks", defaultFileHandler);
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
+  router.get("/rwa", rwaHandler)
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
@@ -426,6 +428,16 @@ async function _getChainChartData(name: string) {
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
+
+async function rwaHandler(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  try {
+    const stats = await getRwaStats();
+    return successResponse(res, stats, 10);
+  } catch (e: any) {
+    return errorResponse(res, e.message);
+  }
 }
 
 /* 

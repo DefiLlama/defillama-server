@@ -630,13 +630,6 @@ functions:
   #     - http:
   #         path: deposited-contracts/{addresses}/{threshold}
   #         method: get
-  rwaFilters: 
-    handler: src/rwa/index.default
-    timeout: 30
-    events:
-      - http:
-          path: rwa
-          method: get
 
 resources:
   # CORS for api gateway errors

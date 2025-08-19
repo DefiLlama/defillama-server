@@ -15880,8 +15880,8 @@ const data2: Protocol[] = [
   {
     id: "2076",
     name: "Fraxlend",
-    address: null,
-    symbol: "-",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
     url: "https://app.frax.finance/fraxlend/available-pairs",
     description:
       "Fraxlend is a lending platform that allows anyone to create a market between a pair of ERC-20 tokens. Any token part of a Chainlink data feed can be lent to borrowers or used as collateral",
@@ -16935,8 +16935,8 @@ const data2: Protocol[] = [
   {
     id: "2121",
     name: "Frax Swap",
-    address: null,
-    symbol: "-",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
     url: "https://app.frax.finance/swap/main",
     description:
       "Fraxswap is the first constant product automated market maker with an embedded time-weighted average market maker (TWAMM) for conducting large trades over long periods of time trustlessly. It is fully permissionless and the core AMM is based on Uniswap V2.",
@@ -19228,8 +19228,8 @@ const data2: Protocol[] = [
   {
     id: "2221",
     name: "Frax Ether",
-    address: null,
-    symbol: "-",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
     assetToken: "FRXETH",
     url: "https://app.frax.finance/frxeth/mint",
     description:

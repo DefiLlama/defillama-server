@@ -693,7 +693,7 @@ const data4: Protocol[] = [
     description:
       "dTRINITY is a decentralized and community-governed on-chain replication of the US Federal Reserve, operating under a full-reserve model for enhanced stability and sustainability. It features three core DeFi primitives: a native stablecoin (dUSD) serving as a unified liquidity layer, money markets (dLEND), and integrations with external liquidity pools like Curve",
     chain: "Fraxtal",
-    logo: `${baseIconsUrl}/dtrinity.png`,
+    logo: `${baseIconsUrl}/dtrinity-dusd.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -1494,7 +1494,7 @@
   },
   "stacks": {
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststxbtc-token-v2::ststxbtc": {
-      "decimals": "8",
+      "decimals": "6",
       "symbol": "stSTXbtc",
       "to": "coingecko#blockstack"
     },

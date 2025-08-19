@@ -485,9 +485,15 @@ async function run() {
 
         // average1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
-          if (summary.total1y && _protocolData.lastOneYearData?.length > 0)
-            summary.average1y = summary.total1y / _protocolData.lastOneYearData.length
-        })
+          if (summary.total1y && _protocolData.lastOneYearData?.length > 0) {
+            if (_protocolData.lastOneYearData.length >= 360) {
+              summary.average1y = summary.total1y / 12
+            } else {
+              // For protocols with less than 1 year, scale to monthly
+              summary.average1y = (summary.total1y / _protocolData.lastOneYearData.length) * 30.44
+            }
+          }
+        });
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)

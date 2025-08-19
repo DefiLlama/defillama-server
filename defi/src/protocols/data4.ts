@@ -22698,13 +22698,6 @@ const data4: Protocol[] = [
     tags: ["Private Credit"], 
     chains: ["Ethereum", "Aptos", "Avalanche", "Ink", "Polygon", "Solana"],
     module: "acred/index.js",
-    oraclesBreakdown: [
-      {
-      name: "RedStone",
-      type: "Primary",
-      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15387"],
-      }
-    ],
     twitter: "securitize",
     listedAt:1755190033
   },

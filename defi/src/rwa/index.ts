@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import protocols from "../protocols/data";
 import { CategoryTagMap } from "../protocols/tags";
+import { successResponse, wrap, IResponse } from "../utils/shared";
 
 type Stats = {
   volumeUsd1d: number;
@@ -8,15 +9,43 @@ type Stats = {
   tvlUsd: number;
 };
 
-const testSymbols: { [id: string]: string } = {
-  "5506": "USDtb",
-  "4853": "BUIDL",
+type Characteristics = {
+  symbol: string;
+  redeemable: boolean;
+  attestations: boolean;
+  cexListed: boolean;
+  kyc: boolean;
+  transferable: boolean;
+  selfCustody: boolean;
+};
+
+const metadata: { [id: string]: Characteristics } = {
+  "5506": {
+    symbol: "USDtb",
+    redeemable: true,
+    attestations: true,
+    cexListed: true, // in earn product
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "4853": {
+    symbol: "BUIDL",
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
 };
 
 async function fetchSymbols() {
-  const rwaProtocols = protocols.filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)));
+  const rwaProtocols = protocols
+    .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
+    .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY
   const res: { [id: string]: string } = {};
-  rwaProtocols.map((p) => (res[p.id] = testSymbols[p.id]));
+  rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbol));
   return res;
 }
 
@@ -48,6 +77,7 @@ async function fetchStats(symbols: { [id: string]: string }) {
         volumeUsd1d: 0,
         volumeUsd7d: 0,
         tvlUsd: 0,
+        ...metadata[id],
       }
     );
   });
@@ -55,9 +85,10 @@ async function fetchStats(symbols: { [id: string]: string }) {
   return res;
 }
 
-async function main() {
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const rwaSymbols = await fetchSymbols();
-  return fetchStats(rwaSymbols);
-}
+  const stats = await fetchStats(rwaSymbols);
+  return successResponse(stats, 10 * 60); // 10 mins cache
+};
 
-main(); // ts-node defi/src/rwa/index.ts
+export default wrap(handler);

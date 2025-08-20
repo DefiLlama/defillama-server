@@ -22644,7 +22644,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield", // cant be cdp since no liq
+    category: "Lending", 
     chains: ["Ethereum"],
     module: "cap-money/index.js",
     twitter: "capmoney_",

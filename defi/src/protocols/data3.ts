@@ -58647,7 +58647,7 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: []} ], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",

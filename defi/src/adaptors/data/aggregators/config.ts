@@ -377,5 +377,8 @@ export default {
   },
   "nordstern-finance": {
     id: "6552"
+  },
+  "superboring": {
+    id: "6606"
   }
 } as AdaptorsConfig;

@@ -17393,7 +17393,7 @@ const data2: Protocol[] = [
     description:
       "The best swap aggregator & infrastructure for Solana -  powering best price, token selection and UX for all users and devs",
     chain: "Solana",
-    logo: `${baseIconsUrl}/jupiter-aggregator.png`,
+    logo: `${baseIconsUrl}/jupiter-aggregator.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "jupiter-exchange-solana",

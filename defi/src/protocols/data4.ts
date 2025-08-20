@@ -8603,7 +8603,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Fallback",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
+        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"]
       }
     ],
     twitter: "hyperlendx",

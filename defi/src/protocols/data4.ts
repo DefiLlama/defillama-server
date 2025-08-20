@@ -5987,7 +5987,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5828",
-    name: "Canary Protocol Legacy",
+    name: "Legacy Canary Protocol",
     address: null,
     symbol: "-",
     url: "https://www.canaryprotocol.com/",

@@ -15231,6 +15231,13 @@ const data4: Protocol[] = [
     module: "felix-vaults/index.js",
     twitter: "felixprotocol",
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://usefelix.gitbook.io/docs/advanced/risk-management#redstone-oracles"]
+      }
+    ],
     parentProtocol: "parent#felix",
     listedAt: 1748421637,
     tokensExcludedFromParent: {

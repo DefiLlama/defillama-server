@@ -23,6 +23,7 @@ import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
 import { RUN_TYPE } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
+import { fetchRWAStats } from "../../rwa";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -68,6 +69,9 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
+
+  await storeRWAStats()
+
   // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 
   // await writeRaises() // moved to different cron task
@@ -375,7 +379,7 @@ async function run() {
   async function addProtocolAppMetadataToCache() {
     console.time('addProtocolAppMetadataToCache')
     try {
-      
+
       cache.metadata.protocolAppMetadata = await readRouteData('/config/smol/appMetadata-protocols.json') ?? {}
 
     } catch (e) {
@@ -393,6 +397,22 @@ async function getChainData(isV2: boolean) {
   })
 
 }
+
+
+async function storeRWAStats() {
+  try {
+
+    const debugString = 'write /config/smol/rwa-stats'
+    console.time(debugString)
+    const data = await fetchRWAStats()
+    await storeRouteData('/rwa/stats', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+
 run()
   .then(genFormattedChains)
   .catch(console.error)

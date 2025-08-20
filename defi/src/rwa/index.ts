@@ -97,7 +97,7 @@ const metadata: { [id: string]: Characteristics } = {
   },
 };
 
-async function fetchSymbols() {
+function fetchSymbols() {
   const rwaProtocols = protocols
     .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
     .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY // !Object.keys(faultyIds).includes(p.id)
@@ -107,10 +107,10 @@ async function fetchSymbols() {
   return res;
 }
 
-async function fetchStats(symbols: { [id: string]: string[] }) {
-  // if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
-  // `https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`
-  const data = await fetch(`https://pro-api.llama.fi//yields/pools`).then((r) => r.json());
+export async function fetchRWAStats() {
+  const symbols = fetchSymbols();
+  if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
+  const data = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) => r.json());
   if (!data.data) throw new Error(`No data: ${JSON.stringify(data)}`);
   const lps = data.data.filter((item: any) => item.exposure == "multi");
 
@@ -144,10 +144,3 @@ async function fetchStats(symbols: { [id: string]: string[] }) {
 
   return res;
 }
-
-export default async function main() {
-  const rwaSymbols = await fetchSymbols();
-  return await fetchStats(rwaSymbols);
-}
-
-// main(); // ts-node defi/src/rwa/index.ts

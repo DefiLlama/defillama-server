@@ -23121,5 +23121,26 @@ const data4: Protocol[] = [
     github: ["chinese-zodiac"],
     listedAt: 1755623124
   },
+  {
+    id: "6604",
+    name: "LFGSwap XLayer",
+    address: "xlayer:0xF7a0b80681eC935d6dd9f3Af9826E68B99897d6D",
+    symbol: "LFG",
+    url: "https://app.lfgswap.finance/swap?chainId=196",
+    description: "AMM DEX on X Layer",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/lfgswap-xlayer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["X Layer"],
+    forkedFromIds: ["2197"],
+    module: "lfgswap-xlayer/index.js",
+    twitter: "LfgSwap",
+    parentProtocol: "parent#lfgswap",
+    listedAt: 1755665769,
+  },
 ];
 export default data4;

@@ -17011,7 +17011,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     twitter: "danogo_2023",
     github: ["danogo2023"],
-    audit_links: ["https://github.com/Danogo2023/bond-dex/tree/master/audits"],
+    audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
     listedAt: 1693321887,
   },
   /*

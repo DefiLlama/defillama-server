@@ -63,6 +63,7 @@ const config = {
   shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8' },
   hyperswapv2: { chain: 'hyperliquid', factory: '0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48' },
   etherex: { chain: "linea", factory: "0xC0b920f6f1d6122B8187c031554dc8194F644592", hasStablePools: true },
+  pulsex2: { chain: 'pulse', factory: '0x29eA7545DEf87022BAdc76323F373EA1e707C523' },
 };
 
 export function extraUniV2Lps(timestamp: number = 0) {

@@ -23142,5 +23142,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#lfgswap",
     listedAt: 1755665769,
   },
+  {
+    id: "6605",
+    name: "ETH Strategy",
+    address: null,
+    symbol: "-",
+    url: "https://www.ethstrat.xyz/",
+    description: "ETH Strategy is a treasury accumulation protocol designed to provide leveraged exposure to Ethereum (ETH) without the traditional risks associated with margin liquidations or volatility decay",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eth-strategy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "EthStrategy.js",
+    twitter: "eth_strategy",
+  },
+
 ];
 export default data4;

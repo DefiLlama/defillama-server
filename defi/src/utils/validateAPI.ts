@@ -257,10 +257,10 @@ Examples:
   try {
     const report = await validateAllEndpoints(apiType, specificEndpoint, specificDomain, isDebug, retryCount, retryDelay, requestDelay, requestTimeout);
     await generateReport(report, outputFile);
-    await sendNotification(report, isDryRun);
     
     if (report.summary.failed > 0) {
       console.log(`\nvalidation failed with ${report.summary.failed} endpoint failures`);
+      await sendNotification(report, isDryRun);
       process.exit(1);
     } else {
       console.log('\nall validations passed');

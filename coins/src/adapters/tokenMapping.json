@@ -3116,6 +3116,11 @@
     }
   },
   "solana": {
+    "GyWgeqpy5GueU2YbkE8xqUeVEokCMMCEeUrfbtMw6phr": {
+      "decimals": "6",
+      "symbol": "BUIDL",
+      "to": "coingecko#blackrock-usd-institutional-digital-liquidity-fund"
+    },
     "GBWAm6UZfWEb3PA3nEouKrQ7vyyzhF2EQCFW3VVZEeYo": {
       "decimals": "9",
       "symbol": "uSEI",
@@ -11171,7 +11176,7 @@
       "symbol": "wstUSR",
       "to": "coingecko#resolv-wstusr"
     },
-    "0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894": {
+    "0xF9775085d726E782E83585033B58606f7731AB18": {
       "to": "coingecko#universal-btc",
       "decimals": 8,
       "symbol": "uniBTC"

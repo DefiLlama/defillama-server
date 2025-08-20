@@ -3042,5 +3042,14 @@ export default {
     },
     "hx-finance": {
         id: "6591"
-    }
+    },
+    "okie-launch": {
+        id: "6612"
+    },
+    "okieswap-v2": {
+        id: "6601"
+    },
+    "okieswap-v3": {
+        id: "6602"
+    },
 } as AdaptorsConfig

@@ -23,6 +23,7 @@ const faultyIds: { [id: string]: string } = { "415": "NAOS", "1459": "ELYFI", "1
 
 // KYC is true where required for mint / redeem.
 // transferable is true where transfer doesnt require KYC.
+// WIP: 2181
 const metadata: { [id: string]: Characteristics } = {
   "753": {
     symbols: ["REALTOKEN"], // need to match on inclusion
@@ -96,7 +97,7 @@ const metadata: { [id: string]: Characteristics } = {
   },
 };
 
-async function fetchSymbols() {
+function fetchSymbols() {
   const rwaProtocols = protocols
     .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
     .filter((p) => Object.keys(metadata).includes(p.id)); // THIS IS FOR TESTING ONLY // !Object.keys(faultyIds).includes(p.id)
@@ -106,12 +107,12 @@ async function fetchSymbols() {
   return res;
 }
 
-async function fetchStats(symbols: { [id: string]: string[] }) {
+export async function fetchRWAStats() {
+  const symbols = fetchSymbols();
   if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
-  const { data } = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) =>
-    r.json()
-  );
-  const lps = data.filter((item: any) => item.exposure == "multi");
+  const data = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) => r.json());
+  if (!data.data) throw new Error(`No data: ${JSON.stringify(data)}`);
+  const lps = data.data.filter((item: any) => item.exposure == "multi");
 
   const res: { [id: string]: Stats } = {};
   Object.keys(symbols).map((id: string) => {
@@ -143,10 +144,3 @@ async function fetchStats(symbols: { [id: string]: string[] }) {
 
   return res;
 }
-
-export default async function main() {
-  const rwaSymbols = await fetchSymbols();
-  return await fetchStats(rwaSymbols);
-}
-
-// main(); // ts-node defi/src/rwa/index.ts

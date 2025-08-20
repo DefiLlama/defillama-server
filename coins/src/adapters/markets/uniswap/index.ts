@@ -63,6 +63,7 @@ const config = {
   shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8' },
   hyperswapv2: { chain: 'hyperliquid', factory: '0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48' },
   etherex: { chain: "linea", factory: "0xC0b920f6f1d6122B8187c031554dc8194F644592", hasStablePools: true },
+  pulsex2: { chain: 'pulse', factory: '0x29eA7545DEf87022BAdc76323F373EA1e707C523' },
 };
 
 export function extraUniV2Lps(timestamp: number = 0) {
@@ -96,6 +97,24 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "0x3A0eF60e803aae8e94f741E7F61c7CBe9501e569",
       "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "ethereum",
+    ),
+    getExtras(
+      timestamp,
+      "0xdca85EFDCe177b24DE8B17811cEC007FE5098586",
+      "0xA1077a294dDE1B09bB078844df40758a5D0f9a27",
+      "pulse",
+    ),
+    getExtras(
+      timestamp,
+      "0xA0126Ac1364606BAfb150653c7Bc9f1af4283DFa",
+      "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "pulse",
+    ),
+    getExtras(
+      timestamp,
+      "0x24264d580711474526e8f2a8ccb184f6438bb95c",
+      "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
+      "pulse",
     ),
   ]);
 }

@@ -29,7 +29,12 @@ interface ValidationReport {
 async function validateAllEndpoints(
   apiType: 'free' | 'pro' = 'free',
   specificEndpoint?: string,
-  specificDomain?: string
+  specificDomain?: string,
+  isDebug: boolean = false,
+  retryCount: number = 3,
+  retryDelay: number = 1000,
+  requestDelay: number = 500,
+  requestTimeout: number = 45000
 ): Promise<ValidationReport> {
   console.log(`validating ${apiType} API...`);
   
@@ -57,7 +62,7 @@ async function validateAllEndpoints(
       process.stdout.write(`\rprogress: ${progress}% (${index + 1}/${endpoints.length}) - Testing ${endpoint.path}`);
       
       try {
-        const result = await testEndpoint(endpoint);
+        const result = await testEndpoint(endpoint, isDebug, retryCount, retryDelay, requestTimeout);
         results.push(result);
         
         if (result.responseTime) {
@@ -70,7 +75,7 @@ async function validateAllEndpoints(
           result.errors.forEach(error => console.log(`   • ${error}`));
         }
         
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise(resolve => setTimeout(resolve, requestDelay));
         
       } catch (error: any) {
         const failedResult: ValidationResult = {
@@ -180,6 +185,11 @@ async function main(): Promise<void> {
   let specificDomain: string | undefined;
   let outputFile: string | undefined;
   let isDryRun = false;
+  let isDebug = false;
+  let retryCount = 3;
+  let retryDelay = 1000;
+  let requestDelay = 500;
+  let requestTimeout = 45000;
   
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -199,6 +209,21 @@ async function main(): Promise<void> {
       case '--dry-run':
         isDryRun = true;
         break;
+      case '--debug':
+        isDebug = true;
+        break;
+      case '--retry-count':
+        retryCount = parseInt(args[++i]) || 3;
+        break;
+      case '--retry-delay':
+        retryDelay = parseInt(args[++i]) || 1000;
+        break;
+      case '--request-delay':
+        requestDelay = parseInt(args[++i]) || 500;
+        break;
+      case '--timeout':
+        requestTimeout = parseInt(args[++i]) || 45000;
+        break;
       case '--help':
         console.log(`
 Usage: npx ts-node validate-base.ts [options]
@@ -209,6 +234,11 @@ Options:
   --domain <domain>        Filter to specific domain (e.g., coins, stablecoins)
   --output <file>          Output file for JSON report
   --dry-run               Skip Discord notifications
+  --debug                 Enable detailed debugging output
+  --retry-count <number>  Number of retry attempts (default: 3)
+  --retry-delay <ms>      Base delay between retries in ms (default: 1000)
+  --request-delay <ms>    Delay between requests in ms (default: 500)
+  --timeout <ms>          Request timeout in ms (default: 45000)
   --help                  Show this help message
 
 Examples:
@@ -225,7 +255,7 @@ Examples:
   console.log('api validation\n');
   
   try {
-    const report = await validateAllEndpoints(apiType, specificEndpoint, specificDomain);
+    const report = await validateAllEndpoints(apiType, specificEndpoint, specificDomain, isDebug, retryCount, retryDelay, requestDelay, requestTimeout);
     await generateReport(report, outputFile);
     await sendNotification(report, isDryRun);
     

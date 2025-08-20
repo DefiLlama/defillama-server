@@ -59,29 +59,89 @@ export const ENDPOINT_OVERRIDES: Record<string, EndpointOverride> = {
 export async function fetchWithRetry(
   url: string, 
   retries: number = 3,
-  delay: number = 1000
+  delay: number = 1000,
+  timeout: number = 45000
 ): Promise<AxiosResponse> {
   for (let i = 0; i <= retries; i++) {
     try {
       const response = await axios.get(url, {
-        timeout: 30000,
+        timeout,
         headers: {
           'User-Agent': 'DefiLlama-API-Validator/1.0'
         }
       });
       return response;
     } catch (error: any) {
-      if (i === retries) {
+      const isLastAttempt = i === retries;
+      const shouldRetry = shouldRetryError(error);
+      
+      if (isLastAttempt || !shouldRetry) {
         throw error;
       }
-      if (error.response && error.response.status >= 500) {
-        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
-      } else {
-        throw error;
-      }
+      
+      const backoffDelay = calculateBackoffDelay(delay, i, error);
+      await new Promise(resolve => setTimeout(resolve, backoffDelay));
     }
   }
   throw new Error('Unexpected error in fetchWithRetry');
+}
+
+function shouldRetryError(error: any): boolean {
+  if (error.code) {
+    const retryableCodes = [
+      'ECONNRESET',     
+      'ETIMEDOUT',      
+      'ENOTFOUND',      
+      'ECONNREFUSED',   
+      'EHOSTUNREACH',   
+      'EPIPE',          
+      'EAI_AGAIN'       
+    ];
+    
+    if (retryableCodes.includes(error.code)) {
+      return true;
+    }
+  }
+  
+  if (error.response?.status) {
+    const retryableStatuses = [
+      429,
+      502,
+      503,
+      504,
+      520,
+      521,
+      522,
+      523,
+      524 
+    ];
+    
+    return retryableStatuses.includes(error.response.status);
+  }
+  
+  if (error.message?.toLowerCase().includes('timeout')) {
+    return true;
+  }
+  
+  return false;
+}
+
+function calculateBackoffDelay(baseDelay: number, attempt: number, error: any): number {
+  let backoffDelay = baseDelay * Math.pow(2, attempt);
+  if (error.response?.status === 429) {
+    const retryAfter = error.response.headers['retry-after'];
+    if (retryAfter) {
+      const retryAfterMs = parseInt(retryAfter) * 1000;
+      backoffDelay = Math.max(backoffDelay, retryAfterMs);
+    } else {
+      backoffDelay = baseDelay * Math.pow(3, attempt);
+    }
+  }
+  
+  const jitter = backoffDelay * 0.25 * (Math.random() - 0.5);
+  backoffDelay += jitter;
+  
+  return Math.min(backoffDelay, 30000);
 }
 
 export async function loadOpenApiSpec(apiType: 'free' | 'pro' = 'free'): Promise<any> {
@@ -505,21 +565,64 @@ export function getAllEndpoints(spec: any, includeParameterized: boolean = true,
 
 export async function validateResponseAgainstSchema(
   response: any, 
-  schema: any
+  schema: any,
+  isDebug: boolean = false
 ): Promise<{ valid: boolean; errors: string[] }> {
   try {
+    if (isDebug) {
+      console.log('\n=== VALIDATION DEBUG ===');
+      console.log('Response type:', typeof response);
+      console.log('Response keys:', response && typeof response === 'object' ? Object.keys(response) : 'N/A');
+      console.log('Response preview:', JSON.stringify(response, null, 2).slice(0, 500) + '...');
+    }
+    
+    let actualData = response;
+    if (response && typeof response === 'object' && response.body && typeof response.body === 'string') {
+      if (isDebug) {
+        console.log('Detected escaped JSON in "body" field!');
+      }
+      try {
+        const parsedBody = JSON.parse(response.body);
+        if (isDebug) {
+          console.log('Successfully parsed body:', JSON.stringify(parsedBody, null, 2).slice(0, 300) + '...');
+        }
+        actualData = parsedBody;
+      } catch (parseError) {
+        if (isDebug) {
+          console.log('Failed to parse body as JSON:', parseError);
+        }
+      }
+    }
+    
+    if (isDebug) {
+      console.log('Schema expects type:', schema.type || 'Any');
+      console.log('Schema properties:', schema.properties ? Object.keys(schema.properties) : 'N/A');
+      console.log('========================\n');
+    }
+    
     const validate = ajv.compile(schema);
-    const valid = validate(response);
+    const valid = validate(actualData);
     
     if (valid) {
       return { valid: true, errors: [] };
     } else {
-      const errors = validate.errors?.map(error => 
-        `${error.instancePath || 'root'}: ${error.message}`
-      ) || ['Unknown validation error'];
+      const errors = validate.errors?.map(error => {
+        const errorMsg = `${error.instancePath || '/body'}: ${error.message}`;
+        if (isDebug) {
+          console.log('Validation error details:', {
+            path: error.instancePath || '/body',
+            message: error.message,
+            data: error.data
+          });
+        }
+        return errorMsg;
+      }) || ['Unknown validation error'];
       return { valid: false, errors };
     }
   } catch (error: any) {
+    if (isDebug) {
+      console.log('Schema validation exception:', error.message);
+    }
     return { 
       valid: false, 
       errors: [`Schema validation error: ${error.message}`] 
@@ -527,13 +630,19 @@ export async function validateResponseAgainstSchema(
   }
 }
 
-export async function testEndpoint(endpointInfo: EndpointInfo): Promise<ValidationResult> {
+export async function testEndpoint(
+  endpointInfo: EndpointInfo, 
+  isDebug: boolean = false,
+  retryCount: number = 3,
+  retryDelay: number = 1000,
+  requestTimeout: number = 45000
+): Promise<ValidationResult> {
   const baseUrl = `${endpointInfo.serverUrl}${endpointInfo.path}`;
   const fullUrl = buildUrlWithQueryParams(baseUrl, endpointInfo.queryParams || {});
   const startTime = Date.now();
   
   try {
-    const response = await fetchWithRetry(fullUrl);
+    const response = await fetchWithRetry(fullUrl, retryCount, retryDelay, requestTimeout);
     const responseTime = Date.now() - startTime;
     
     if (response.status !== 200) {
@@ -560,7 +669,17 @@ export async function testEndpoint(endpointInfo: EndpointInfo): Promise<Validati
       };
     }
     
-    const validation = await validateResponseAgainstSchema(response.data, endpointInfo.schema);
+    if (isDebug) {
+      console.log(`\n--- ENDPOINT DEBUG: ${endpointInfo.path} ---`);
+      console.log('Raw response status:', response.status);
+      console.log('Raw response headers content-type:', response.headers['content-type']);
+      console.log('Raw response data type:', typeof response.data);
+      console.log('Raw response data preview:', JSON.stringify(response.data, null, 2).slice(0, 400) + '...');
+      console.log('Expected schema type:', endpointInfo.schema?.type);
+      console.log('--- END ENDPOINT DEBUG ---\n');
+    }
+    
+    const validation = await validateResponseAgainstSchema(response.data, endpointInfo.schema, isDebug);
     
     return {
       endpoint: endpointInfo.path,

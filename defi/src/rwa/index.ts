@@ -110,7 +110,7 @@ async function fetchSymbols() {
 async function fetchStats(symbols: { [id: string]: string[] }) {
   // if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
   // `https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`
-  const { data } = await fetch(`https://api.llama.fi/yields/pools`).then((r) => r.json());
+  const { data } = await fetch(`https://pro-api.llama.fi//yields/pools`).then((r) => r.json());
   const lps = data.filter((item: any) => item.exposure == "multi");
 
   const res: { [id: string]: Stats } = {};

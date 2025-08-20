@@ -23161,6 +23161,23 @@ const data4: Protocol[] = [
     treasury: "EthStrategy.js",
     twitter: "eth_strategy",
   },
-
+  {
+    id: "6606",
+    name: "SuperBoring",
+    address: null,
+    symbol: "-",
+    url: "https://app.superboring.xyz/en",
+    description: "A streaming DEX. Built by Superfluid Labs",
+    chain: "Base",
+    logo: `${baseIconsUrl}/superboring.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Base", "Optimism", "Arbitrum"],
+    module: "dummy.js",
+    twitter: "SuperBoring_xyz",
+  },
 ];
 export default data4;

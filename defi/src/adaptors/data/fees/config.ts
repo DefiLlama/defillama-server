@@ -3986,5 +3986,8 @@ export default {
     },
     "binance-alpha": {
         id: "6599"
+    },
+    "peapods-finance": {
+        id: "4063"
     }
 } as AdaptorsConfig

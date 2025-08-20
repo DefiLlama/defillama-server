@@ -7722,6 +7722,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "okiedokie_fun",
   },
+  {
+    id: "parent#zerolend",
+    name: "ZeroLend",
+    url: "https://zerolend.xyz/",
+    description: "Lending market for L2s, LRTs, RWAs, & BTCFi",
+    logo: `${baseIconsUrl}/zerolend.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "zerolendxyz",
+    github: ["zerolend"],
+    treasury: "zerolend.js",
+  },
 ];
 
 export default parentProtocols;

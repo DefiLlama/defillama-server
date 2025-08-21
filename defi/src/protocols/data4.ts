@@ -1372,6 +1372,13 @@ const data4: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20-%20SlowMist%20Audit%20Report.pdf",
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20Phase2%20-%20SlowMist%20Audit%20Report.pdf"
     ],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://sosovalue.gitbook.io/sosovalue-indices/solution-design/overview"],
+      }
+    ],
     parentProtocol: "parent#sosovalue",
     listedAt: 1736793641,
   },

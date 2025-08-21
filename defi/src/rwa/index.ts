@@ -291,7 +291,7 @@ const metadata: { [id: string]: Characteristics } = {
 function fetchSymbols() {
   const rwaProtocols = protocols
     .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
-    .filter((p) => !Object.keys(metadata).includes(p.id) && !Object.keys(faultyIds).includes(p.id)); // ! FOR TESTING ONLY
+    .filter((p) => Object.keys(metadata).includes(p.id) && !Object.keys(faultyIds).includes(p.id)); // ! FOR TESTING ONLY
   const res: { [id: string]: string[] } = {};
   const a = Object.keys(metadata).length;
   rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbols));
@@ -339,4 +339,4 @@ export async function fetchRWAStats() {
   return res;
 }
 
-fetchRWAStats(); // ts-node defi/src/rwa/index.ts
+// fetchRWAStats(); // ts-node defi/src/rwa/index.ts

@@ -23317,5 +23317,30 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "livepeer",
   },
+  {
+    id: "6614",
+    name: "Fiamma",
+    address: null,
+    symbol: "-",
+    url: "https://www.fiammalabs.io/",
+    description: "Fiamma BTC is a 1:1 pegged wrapped BTC, which is minted by a trust-minimized BTC bridge Powered by BitVM2 protocol. It enables universal cross‑chain interoperability, allowing native Bitcoin liquidity to be safely unlocked and utilized across multiple blockchain ecosystems. By verifying zero‑knowledge proofs on Bitcoin via the BitVM2 protocol to minimize trust assumptions, Fiamma BTC provides a secure and scalable pathway for integrating Bitcoin into DeFi applications",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/fiamma.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "fiamma/index.js",
+    twitter: "Fiamma_labs",
+    audit_links: [
+      "https://github.com/fiamma-chain/fiamma-audit/blob/main/BitLabs-Bridge-script.pdf",
+      "https://github.com/fiamma-chain/fiamma-audit/blob/main/MoveBits-Bridge-Aptos-Contract.pdf",
+      "https://github.com/fiamma-chain/fiamma-audit/blob/main/Zenith-Bridge-Cairo-Contract.pdf"
+    ],
+    github: ["fiamma-chain"],
+    listedAt: 1755792897
+  },
 ];
 export default data4;

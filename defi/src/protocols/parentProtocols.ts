@@ -7735,6 +7735,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["zerolend"],
     treasury: "zerolend.js",
   },
+  {
+    id: "parent#garden",
+    name: "Garden.Finance",
+    url: "https://garden.finance/",
+    description: "Garden is a decentralized, intents-based Bitcoin bridge using atomic swaps and HTLCs to transfer BTC across multiple chains instantly, powered by SEED-governed liquidity solvers",
+    logo: `${baseIconsUrl}/garden.finance.jpg`,
+    gecko_id: "garden-2",
+    cmcId: null,
+    chains: [],
+    twitter: "garden_finance",
+  },
 ];
 
 export default parentProtocols;

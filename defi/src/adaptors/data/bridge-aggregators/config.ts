@@ -39,5 +39,8 @@ export default {
     },
     "orbiter-finance": {
         id: "6520"
+    },
+    "garden": {
+        id: "6615"
     }
 } as AdaptorsConfig

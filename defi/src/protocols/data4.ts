@@ -23356,5 +23356,27 @@ const data4: Protocol[] = [
     github: ["fiamma-chain"],
     listedAt: 1755792897
   },
+  {
+    id: "6615",
+    name: "Garden Bridge Aggregator",
+    address: "0x5eed99d066a8caf10f3e4327c1b3d8b673485eed",
+    symbol: "SEED",
+    url: "https://app.garden.finance/",
+    description:
+      "Garden is a decentralized, intents-based Bitcoin bridge using atomic swaps and HTLCs to transfer BTC across multiple chains instantly, powered by SEED-governed liquidity solvers.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/garden-bridge-aggregator.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregator",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "garden_finance",
+    audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
+    parentProtocol: "parent#garden",
+  },
 ];
 export default data4;

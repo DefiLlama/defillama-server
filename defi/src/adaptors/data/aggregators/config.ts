@@ -380,5 +380,8 @@ export default {
   },
   "superboring": {
     id: "6606"
-  }
+  },
+  "dedust": {
+    id: "2617"
+},
 } as AdaptorsConfig;

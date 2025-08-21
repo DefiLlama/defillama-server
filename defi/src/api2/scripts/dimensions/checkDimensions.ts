@@ -1,14 +1,13 @@
 import '../../utils/failOnError'
 
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE, } from "../../../adaptors/handlers/getOverviewProcess";
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../../adaptors/data"
-import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsAfter, } from "../../../adaptors/db-utils/db2";
 import { getTimeSDaysAgo, } from "../../utils/time";
 import { roundVaules, tableToString, } from "../../utils";
 import * as sdk from "@defillama/sdk";
 import { sendMessage } from '../../../utils/discord';
+import { ADAPTER_TYPES, DEFAULT_CHART_BY_ADAPTOR_TYPE } from '../../../adaptors/data/types';
 
 let esClient: any
 async function initES() {
@@ -95,8 +94,6 @@ async function run() {
 
     const summaries = [] as any
     for (const protocolInfo of Object.values(dimensionProtocolMap) as any) {
-      if (protocolInfo.enabled === false || protocolInfo.disabled) continue; // we skip protocols that are disabled
-
       const summary = {} as any
       summaries.push(summary)
       const keys = ['id', 'id2', 'name', 'versionKey', 'protocolType', 'category', 'chain', 'chains', 'module', 'defillamaId']

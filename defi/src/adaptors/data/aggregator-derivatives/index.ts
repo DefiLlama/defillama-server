@@ -1,5 +1,5 @@
 import aggregators_derivatives_imports from "../../../utils/imports/aggregator-derivatives_adapters"
-import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record";
+import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../types";
 
 export const importModule = (module: string) => aggregators_derivatives_imports[module].module
 

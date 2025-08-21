@@ -14,7 +14,9 @@ import { nullAddress } from "../../../utils/shared/constants";
 
 const metaRegistryContracts: {[chain: string]: string } = {
   ethereum: '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC', 
-  fraxtal: '0xd125E7a0cEddF89c6473412d85835450897be6Dc'
+  fraxtal: '0xd125E7a0cEddF89c6473412d85835450897be6Dc', 
+  sonic: '0x1764ee18e8B3ccA4787249Ceb249356192594585', 
+  base: '0x5ffe7FB82894076ECB99A30D6A32e969e6e35E98'
 }
 
 async function getPools(

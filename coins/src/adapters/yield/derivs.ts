@@ -306,6 +306,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "hyperliquid",
     underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
     address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
+    confidence: 1,
   },
   sUSDa: {
     rate: async ({ api }) => {
@@ -414,6 +415,69 @@ const configs: { [adapter: string]: Config } = {
     chain: "plume_mainnet",
     underlying: "0x78adD880A697070c1e765Ac44D65323a0DcCE913",
     address: "0x508c74Ba01cDa8Bf088969398d18e7Ab1ec3B6AA",
+  },
+  "stk-ePendle": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRate",
+        target: "0xd302d7fd2c9375a433018fdfa5613be6ad3f18e3",
+      });
+      return rate / 1e18;
+    },
+    chain: "arbitrum",
+    underlying: "0x3EaBE18eAE267D1B57f917aBa085bb5906114600",
+    address: "0x37227785a1f4545ed914690e395e4CFE96B8319f",
+  },
+  vkHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0x74392Fa56405081d5C7D93882856c245387Cece2",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x9BA2EDc44E0A4632EB4723E81d4142353e1bB160",
+  },
+  HiHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function kHYPEToHYPE(uint256) external view returns (uint256)",
+        target: "0x62E6fa898761dE2345aB3d507b72c422a2829733",
+        params: "1000000000000000000",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x4f322145abedb2b39f69e7d4531ab4b2e6483154",
+  },
+  "SJ-wartBTC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function underlyingToWrapper(uint256) external view returns (uint256)",
+        target: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+        params: 1e6,
+      });
+      return rate / 1e6;
+    },
+    chain: "goat",
+    underlying: "0x02F294cC9Ceb2c80FbA3fD779e17FE191Cc360C4",
+    address: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+  },
+  AA_FalconXUSDC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function virtualPrice(address) external view returns (uint256)",
+        target: "0x433D5B175148dA32Ffe1e1A37a939E1b7e79be4d",
+        params: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
   },
 };
 

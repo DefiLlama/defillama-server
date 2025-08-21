@@ -6063,7 +6063,7 @@ const parentProtocols: IParentProtocol[] = [
     description: "Ubeswap is the leading DEX on Celo network",
     logo: `${baseIconsUrl}/ubeswap.png`,
     gecko_id: "ubeswap",
-    cmcId: "1339",
+    cmcId: "30225",
     chains: [],
     twitter: "ubeswap",
     github: ["Ubeswap"],

@@ -14875,6 +14875,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Avalanche"],
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     forkedFrom: [],
     module: "avant/index.js",
     twitter: "avantprotocol",
@@ -17179,6 +17180,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator", // since the assets are redeposited into lending (euler) protocols not CEXs
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     chains: ["Avalanche"],
     module: "avant-avbtc/index.js",
     twitter: "avantprotocol",

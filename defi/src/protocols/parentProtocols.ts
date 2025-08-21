@@ -7265,7 +7265,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Saros",
     url: "https://saros.finance",
     description: "Saros is a decentralized exchange protocol on Solana that allows users to swap, pool, and earn yield on their assets.",
-    logo: `${baseIconsUrl}/saros.jpg`,
+    logo: `${baseIconsUrl}/saros.png`,
     gecko_id: "saros-finance",
     cmcId: "29082",
     chains: [],

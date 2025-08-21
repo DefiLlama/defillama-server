@@ -12,6 +12,7 @@ const baseTokens: { [symbol: string]: string } = {
   JLP: "jupiter-perpetuals-liquidity-provider-token",
   ETH: "ethereum",
   MXN: "real-mxn",
+  "FLP.1": "flash-liquidity-token",
 };
 
 type MarketInfo = {
@@ -171,9 +172,36 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "hzmYvfvU9LNc7eUVwRNFyDhQ1W3faXVpC8CAn76z3cj",
-    mintAddress: "CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
+    mintAddress: "52EBWh8t1yHK5AA7RsKVaCU44YpgGsatbDSNPSbBpWUr",
     symbol: "CRT",
     unit: "USDC",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "CZnZHPw7fjHA54WHxvNdr1dNweceVT7HwYi4WWZ77N5y",
+    mintAddress: "7sxrDsyfuEryDsHurLi4Fkd8RitkmbojQZFELfR1QcKQ",
+    symbol: "FLP.1",
+    unit: "FLP.1",
+    decimals: 6,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "EZcRjKu1TpXA1kozWxwAgJ9YpWdW74irMpWyN6cuVNmH",
+    mintAddress: "6SK4WhZTD3fwpkYzE4oaGyqfPU9367MCWPYeNBLrrt1S",
+    symbol: "kySOL",
+    unit: "SOL",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "GpkBYWjccrT1e1T5TJKA15CmSeMNkbANvEfQUCnWGSn9",
+    mintAddress: "EbSf4fhDBDw137wLxfjAitf4p6M43VmkpFk6AZGMJo5M",
+    symbol: "kyJTO",
+    unit: "JTO",
     decimals: 9,
     oracleDecimals: 0,
     chain: "solana",

@@ -5438,6 +5438,7 @@
   "flash-3-0": "FLASH",
   "flashdash": "FLASHDASH",
   "flashpad-token": "FLASH",
+  "flash-liquidity-token": "FLP.1",
   "flash-protocol": "FLASH",
   "flash-technologies": "FTT",
   "flat-money": "UNIT",
@@ -14761,5 +14762,6 @@
   "zynergy": "ZYN",
   "zyrri": "ZYR",
   "zzz": "ZZZ",
-  "z-z-z-z-z-fehu-z-z-z-z-z": "ᚠ"
+  "z-z-z-z-z-fehu-z-z-z-z-z": "ᚠ",
+  "auro": "AURO"
 }

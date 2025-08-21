@@ -7,8 +7,8 @@ import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
-import { ADAPTER_TYPES } from '../triggerStoreAdaptorData';
 import PromisePool from '@supercharge/promise-pool';
+import { ADAPTER_TYPES } from '../../data/types';
 
 
 // ================== Script Config ==================
@@ -74,7 +74,7 @@ async function refillAdapter() {
   }
 
   protocolToRun = protocol.displayName
-  const adaptor: Adapter = (await importModule(protocol.module)).default;
+  const adaptor: Adapter = await importModule(protocol.module)
   const adapterVersion = adaptor.version
   const isVersion2 = adapterVersion === 2
 
@@ -246,6 +246,7 @@ async function refillAllProtocols() {
     const timeSWithData = adaptorDataMap[protocolId] || new Set()
     let currentDayEndTimestamp = yesterday
     let i = 0
+    let errorCount = 0
     while (currentDayEndTimestamp > startTime) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
@@ -258,7 +259,20 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
         }
-        await handler2(eventObj)
+        try {
+          await handler2(eventObj)
+        } catch (error: any) {
+          errorCount++
+          let errorString = ''
+          try {
+            errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
+          } catch (e) { }
+          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
+          if (errorCount > 7) {
+            console.error('Too many errors, stopping the script')
+            return
+          }
+        }
       }
       currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }

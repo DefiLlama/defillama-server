@@ -15,21 +15,11 @@ export default function getDuplicatesBetweenAdapterTypes() {
     const _ids = [] as string[]
     const { protocolMap } = getAdapterConfig(aType)
     for (const protocol of Object.values(protocolMap) as any[]) {
-      if (protocol.protocolsData) {
-        Object.values(protocol.protocolsData).forEach((p: any) => {
-          if (!_protocolMap[p.id]) {
-            console.log('Dimensions: protocol data id not found in protocols/data.ts file', p.id, typeof p.id, aType, p, protocol.id, protocol.name, _protocolMap[p.id])
-            response.push({ aType, protocol, protocolData: p })
-          }
-          _ids.push(p.id)
-        })
-      } else {
-        if (!_protocolMap[protocol.id]) {
-          console.log('Dimensions protocol id not found in protocols/data.ts file', protocol.id, protocol.name, aType)
-          response.push({ aType, protocol })
-        }
-        _ids.push(protocol.id)
+      if (!_protocolMap[protocol.id]) {
+        console.log('Dimensions protocol id not found in protocols/data.ts file', protocol.id, protocol.name, aType)
+        response.push({ aType, protocol })
       }
+      _ids.push(protocol.id)
     }
 
     ids[aType] = _ids

@@ -66,10 +66,28 @@ async function main() {
 
 }
 
+let data: any
+export async function getMissingData() {
+  if (!data) data = _getMissingData()
+  return data;
+}
 
-main().catch(err => {
-  console.error('Error:', err);
-}).then(() => process.exit(0))
+
+async function _getMissingData() {
+  await init()
+  return {
+    coingecko: await getCoinTableData('cg'),
+    coinmarketcap: await getCoinTableData('cmc'),
+    protocolsMissingSymbols: getMissingSymbols(),
+    protocolsMissingAddresses: getMissingAddresses(),
+  }
+}
+
+
+if (!process.env.IS_NOT_SCRIPT_MODE)
+  main().catch(err => {
+    console.error('Error:', err);
+  }).then(() => process.exit(0))
 
 
 async function getCoinTableData(coinType: string) {

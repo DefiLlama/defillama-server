@@ -22654,7 +22654,6 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.cap.app/concepts/oracles"],
-        chains: ["Ethereum"]
       }
     ],
     github: ["cap-labs-dev"],

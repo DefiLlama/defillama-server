@@ -4006,5 +4006,8 @@ export default {
     },
     "livepeer": {
         id: "6613"
-    }
+    },
+    "saddle-finance": {
+        id: "202"
+    },
 } as AdaptorsConfig

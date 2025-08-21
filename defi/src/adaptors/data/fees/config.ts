@@ -3999,4 +3999,7 @@ export default {
     "okieswap-v3": {
         id: "6602"
     },
+    "livepeer": {
+        id: "6613"
+    }
 } as AdaptorsConfig

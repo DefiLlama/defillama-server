@@ -23299,5 +23299,23 @@ const data4: Protocol[] = [
     parentProtocol: "parent#okieswap",
     listedAt: 1755705650
   },
+  {
+    id: "6613",
+    name: "Livepeer",
+    address: "0x58b6a8a3302369daec383334672404ee733ab239",
+    symbol: "LPT",
+    url: "https://www.livepeer.org/",
+    description: "Livepeer is a decentralized video infrastructure that lets developers stream live or on-demand video and run AI-powered processing at lower cost than centralized platforms",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/livepeer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Video Infrastructure",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "livepeer",
+  },
 ];
 export default data4;

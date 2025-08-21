@@ -176,6 +176,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sanko",
     "Scroll",
     "ShimmerEVM",
+    "Stacks",
     "Taiko",
     "TON",
     "Viction",

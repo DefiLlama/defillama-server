@@ -6358,14 +6358,9 @@ const data4: Protocol[] = [
     chains: ["Base"],
     oraclesBreakdown: [
       {
-        name: "Pyth",
-        type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
-      },
-      {
         name: "Chainlink",
-        type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
+        type: "Primary",
+        proof: ["https://docs.flex.trade/oracles"]
       }
     ],
     forkedFromIds: ["2296"],

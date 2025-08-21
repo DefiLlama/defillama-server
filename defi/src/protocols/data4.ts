@@ -22649,6 +22649,14 @@ const data4: Protocol[] = [
     module: "cap-money/index.js",
     twitter: "capmoney_",
     audit_links: ["https://github.com/cap-labs-dev/cap-audits"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.cap.app/concepts/oracles"],
+        chains: ["Ethereum"]
+      }
+    ],
     github: ["cap-labs-dev"],
     listedAt:1755167300
   },

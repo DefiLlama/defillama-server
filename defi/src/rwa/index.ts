@@ -215,6 +215,57 @@ const metadata: { [id: string]: Characteristics } = {
     transferable: true,
     selfCustody: true,
   },
+  "3795": {
+    symbols: ["SWEEP"],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "3831": {
+    symbols: [], // no liq
+    matchExact: true,
+    redeemable: true,
+    attestations: false,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "3886": {
+    symbols: ["fBILL", "fCOIN", "fHOOD", "dSPQQQ", "fHV1"],
+    matchExact: false,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: true,
+  },
+  "3960": {
+    symbols: ["xSOY", "xWHEAT", "xCORN", "xRICE"],
+    matchExact: true,
+    redeemable: false,
+    attestations: true,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "4003": {
+    symbols: ["EGK", "FRK", "USK"],
+    matchExact: false,
+    redeemable: false,
+    attestations: true,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+
   "5506": {
     symbols: ["USDtb"],
     matchExact: true,
@@ -242,6 +293,7 @@ function fetchSymbols() {
     .filter((p) => p.tags?.some((t) => CategoryTagMap.RWA.includes(t)))
     .filter((p) => Object.keys(metadata).includes(p.id) && !Object.keys(faultyIds).includes(p.id)); // ! FOR TESTING ONLY
   const res: { [id: string]: string[] } = {};
+  const a = Object.keys(metadata).length;
   rwaProtocols.map((p) => (res[p.id] = metadata[p.id].symbols));
 
   return res;
@@ -268,8 +320,8 @@ export async function fetchRWAStats() {
     symbols[id].map((symbol: string) => {
       const rwa = lps.filter((item: any) =>
         item.matchExact
-          ? item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}`) ||
-            item.symbol.toLowerCase().endsWith(`${symbol.toLowerCase()}`)
+          ? item.symbol.toLowerCase().startsWith(`${symbol.toLowerCase()}-`) ||
+            item.symbol.toLowerCase().endsWith(`-${symbol.toLowerCase()}`)
           : item.symbol.toLowerCase().includes(symbol.toLowerCase())
       );
 

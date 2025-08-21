@@ -159,6 +159,20 @@ async function generateSearchList() {
     type: "Tool",
   }));
 
+  const otherPages = []
+  for (const category in frontendPages) {
+    if (['Metrics', 'Tools'].includes(category)) continue;
+    for (const page of frontendPages[category]) {
+      otherPages.push({
+        id: `page_${normalize(page.name)}`,
+        name: page.name,
+        route: page.route,
+        v: tastyMetrics[page.route] ?? 0,
+        type: "Insight",
+      });
+    }
+  }
+
   const cexs = cexsData
     .filter((c) => c.slug)
     .map((c) => ({
@@ -179,6 +193,7 @@ async function generateSearchList() {
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
     cexs: cexs.sort((a, b) => b.v - a.v),
+    otherPages: otherPages.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -191,6 +206,7 @@ async function generateSearchList() {
       ...results.categories,
       ...results.tags,
       ...results.cexs,
+      ...results.otherPages,
     ],
     topResults: [
       ...results.chains.slice(0, 3),

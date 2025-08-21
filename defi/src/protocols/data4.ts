@@ -667,10 +667,10 @@ const data4: Protocol[] = [
     chains: ["Ethereum","Optimism","Arbitrum","Base"],
     oraclesBreakdown: [
       {
-        name: "Api3",
+        name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
-        chains: [{chain: "Arbitrum"}]
+        proof: ["https://docs.yield.fi/resources/oracles#chainlink-oracles"],
+        chains: [{chain: "Ethereum","Arbitrum","Base","Optimism","Katana","Binance","Sonic"}]
       }
     ],
     forkedFrom: [],

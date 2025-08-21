@@ -1849,6 +1849,11 @@ export default {
     },
     "meteora-dlmm": {
         id: "4148",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1755734400": true, // Kanye West token YZY launch
+            }
+        }
     },
     "meteora": {
         id: "385",

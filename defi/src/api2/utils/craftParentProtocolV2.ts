@@ -10,12 +10,14 @@ type CraftParentProtocolV2Options = {
   parentProtocol: IParentProtocol;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  feMini?: boolean; // for fetching only aggregated tvl data without token breakdown & without raw token balances
 }
 
 export async function craftParentProtocolV2({
   parentProtocol,
   useHourlyData,
   skipAggregatedTvl,
+  feMini = false, 
 }: CraftParentProtocolV2Options) {
   const debug_t0 = performance.now(); // start the timer
   const childProtocols = cache.childProtocols[parentProtocol.id] ?? []
@@ -26,18 +28,29 @@ export async function craftParentProtocolV2({
     });
   }
 
-  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, restrictResponseSize: false })
+  const getProtocolData = (protocolData: any) => {
+    let fetchMini = feMini
+    if (feMini) {
+      // for child protocols with excluded tokens, we need to fetch the full protocol data
+      if (protocolData.excludeTvlFromParent) fetchMini = false
+    }
+    return cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, restrictResponseSize: false, skipFeMiniTransform: true, feMini: fetchMini })
+  }
+
+  const hasMisrepresentedTokens = childProtocols.some((i: IProtocol) => i.misrepresentedTokens)
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.filter((i: IProtocol) => !i.excludeTvlFromParent).map(getProtocolData));
 
   const debug_t1 = performance.now(); // start the timer
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
-    tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
+    tvl.length < 2 || tvl[1]?.date - tvl[0]?.date < 86400 ? true : false;
 
-  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises: [] })
+  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises: [], feMini, })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]
+
+  if (hasMisrepresentedTokens) res.misrepresentedTokens = true;
 
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0

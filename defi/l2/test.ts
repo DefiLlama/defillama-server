@@ -28,7 +28,7 @@ export async function verifyChanges(chains: FinalData) {
     const backwardChange = totalNew != 0 ? (100 * Math.abs(totalNew - totalOld)) / totalNew : 0;
     if (forwardChange < 100 && backwardChange < 100) return;
 
-    message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
+    if (Number(hours) < 6) message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
       0
     )}% in ${hours}`;
   });

@@ -20,8 +20,8 @@ const dexValidKeySet = new Set(['dv', 'tv'])
 const keysFound = new Set()
 
 async function run() {
-  const allDexRecords = await getAllItemsAfter({ adapterType: AdapterType.DEXS })
-  const allFeesRecords = await getAllItemsAfter({ adapterType: AdapterType.FEES })
+  // const allDexRecords = await getAllItemsAfter({ adapterType: AdapterType.DEXS })
+  // const allFeesRecords = await getAllItemsAfter({ adapterType: AdapterType.FEES })
   const allProtocolRecords = await getAllItemsAfter({ adapterType: AdapterType.PROTOCOLS })
   const stats: any = []
 

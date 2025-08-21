@@ -52,5 +52,3 @@ export async function xlpt(timestamp: number = 0): Promise<Write[]> {
     projectName: "xLPT",
   });
 }
-
-xlpt(); // ts-node coins/src/adapters/markets/xlpt.ts

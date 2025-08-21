@@ -1,5 +1,5 @@
-import { cache, initCache, checkModuleDoubleCounted, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
-import { storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
+import { cache, initCache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
+import { readRouteData, storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
@@ -22,6 +22,8 @@ import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
 import { RUN_TYPE } from "../utils";
+import { genFormattedChains } from "./genFormattedChains";
+import { fetchRWAStats } from "../../rwa";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -31,8 +33,14 @@ let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMont
 
 async function run() {
   await initializeTVLCacheDB()
-  await initCache({ cacheType: RUN_TYPE.CRON  })
+  await initCache({ cacheType: RUN_TYPE.CRON })
+
+  console.time('init protocol data map')
   await initializeProtocolDataMap()
+  console.timeEnd('init protocol data map')
+
+  await addProtocolAppMetadataToCache()
+
   await storeTvlCacheAllFile(cache)
 
 
@@ -41,9 +49,6 @@ async function run() {
     protocolList: cache.metadata.protocols,
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
-    getModule: (protocol: any) => ({
-      doublecounted: checkModuleDoubleCounted(protocol),
-    })
   }
 
   // await writeProtocolTvlData()  // to be served from rest api instead
@@ -64,6 +69,9 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
+
+  await storeRWAStats()
+
   // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 
   // await writeRaises() // moved to different cron task
@@ -126,9 +134,8 @@ async function run() {
     getLastWeekTokensUsd = (protocol: any) => latestProtocolTokensUSDWeekAgoMap[protocol.id] ?? {}
     getLastMonthTokensUsd = (protocol: any) => latestProtocolTokensUSDMonthAgoMap[protocol.id] ?? {}
 
-    await PromisePool.withConcurrency(20)
-      .for(cache.metadata.protocols)
-      .process(async (protocol: any) => {
+    cache.metadata.protocols
+      .map((protocol: any) => {
         try {
           const dataObj: any = {}
           protocolDataMap[protocol.id] = dataObj
@@ -368,14 +375,45 @@ async function run() {
       console.error(e)
     }
   }
+
+  async function addProtocolAppMetadataToCache() {
+    console.time('addProtocolAppMetadataToCache')
+    try {
+
+      cache.metadata.protocolAppMetadata = await readRouteData('/config/smol/appMetadata-protocols.json') ?? {}
+
+    } catch (e) {
+      console.error('Error reading appMetadata-protocols.json:', e)
+      cache.metadata.protocolAppMetadata = {}
+    }
+    console.timeEnd('addProtocolAppMetadataToCache')
+  }
 }
 
 async function getChainData(isV2: boolean) {
   return craftChainsResponse(isV2, isV2, {
     protocolList: cache.metadata.protocols,
     getLastHourlyRecord: getLastHourlyRecord as any,
-    checkModuleDoubleCounted: checkModuleDoubleCounted as any,
   })
 
 }
-run().catch(console.error).then(() => process.exit(0))
+
+
+async function storeRWAStats() {
+  try {
+
+    const debugString = 'write /config/smol/rwa-stats'
+    console.time(debugString)
+    const data = await fetchRWAStats()
+    await storeRouteData('/rwa/stats', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+
+run()
+  .then(genFormattedChains)
+  .catch(console.error)
+  .then(() => process.exit(0))

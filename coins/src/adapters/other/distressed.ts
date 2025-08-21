@@ -49,7 +49,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
     clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911", // IS NOT BACKED
     NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
-    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f"  // BACKED BY THE ABOVE, SO SAME 
+    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f",  // BACKED BY THE ABOVE, SO SAME 
+    crvPlain3andSUSD: '0xC25a3A3b969415c80451098fa907EC722572917F', // sunset 
+    MSTR: '0x306227d964511a260d14563fbfa82aa75db404b2'
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -316,6 +318,20 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
     CUTEPURR: "0xc9dfbbb952fd91ed37978907ce158575afac2d5a"
+  },
+  goat: {
+    UBTC: "0x78e26e8b953c7c78a58d69d8b9a91745c2bbb258",
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f"
+  },
+  hemi: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+    UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258"
+  },
+ plume: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+  },
+  xsat: {
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   }
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"

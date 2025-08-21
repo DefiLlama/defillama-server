@@ -1,0 +1,14 @@
+{
+    "getAllEndorsedVaults": {
+        "stateMutability": "view",
+        "type": "function",
+        "name": "getAllEndorsedVaults",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "allEndorsedVaults",
+                "type": "address[][]"
+            }
+        ]
+    }
+}

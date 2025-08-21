@@ -44,6 +44,7 @@ import sophon from "./sophon";
 import unichan from "./unichain";
 import flow from "./flow";
 import layerzero from "./layerzero";
+import initia from "./initia";
 
 export type Token =
   | {
@@ -88,7 +89,7 @@ export const bridges = [
   // brc20,
   //bsc,
   fantom,
-  era,
+  // era,
   gasTokens,
   //harmony,
   // polygon,
@@ -116,6 +117,7 @@ export const bridges = [
   unichan,
   flow,
   // layerzero,
+  initia
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

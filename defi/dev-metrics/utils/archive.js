@@ -9,7 +9,7 @@ const { Op } = require('sequelize');
 
 const { addArchiveData, addRawCommit, archiveExists } = require('../db')
 
-const getUrl = (date) => `http://data.gharchive.org/${date}.json.gz`
+const getUrl = (date) => `https://data.gharchive.org/${date}.json.gz`
 
 async function getRawCommits(archiveFile) {
   const url = getUrl(archiveFile)

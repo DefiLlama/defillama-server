@@ -1,21 +1,23 @@
-import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { IImportObj } from "../../cli/buildRequires"
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { Protocol } from "../../protocols/types"
-import { ICleanRecordsConfig } from "../handlers/helpers/generateCleanRecords"
 
+export interface ICleanRecordsConfig {
+    genuineSpikes: IJSON<boolean> | boolean
+}
+
+type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
+    defaultChartView?: ChartBreakdownOptions
     config?: IConfig
     id2: string
-    disabled: boolean
-    enabled?: boolean
     isProtocolInOtherCategories?: boolean
     protocolType?: ProtocolType
     adapterType?: ProtocolType
     versionKey?: string
     methodologyURL: string
-    methodology?: string | IJSON<string>
+    methodology?: string | IJSON<string> | any
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
@@ -24,18 +26,12 @@ export interface ProtocolAdaptor extends Protocol {
 
 export interface IConfig {
     id: string
-    parentId?: string
-    latestFetchIsOk?: boolean
-    enabled?: boolean
-    includedVolume?: string[]
     startFrom?: number
-    disabled?: boolean
     displayName?: string
+    defaultChartView?: ChartBreakdownOptions
     cleanRecordsConfig?: ICleanRecordsConfig
     isChain?: boolean
-    protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
-
 
 export interface IJSON<T> {
     [key: string]: T
@@ -53,3 +49,132 @@ export type AdaptorData = {
     rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>,
     protocolMap: IJSON<ProtocolAdaptor>
 }
+
+export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []
+
+export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
+export const getAdapterRecordTypes = (type: AdapterType) => {
+    return [DEFAULT_CHART_BY_ADAPTOR_TYPE[type], ...getExtraTypes(type)]
+}
+
+export type ExtraTypes = {
+    dailyRevenue?: number | null
+    dailyUserFees?: number | null
+    dailyHoldersRevenue?: number | null
+    dailyCreatorRevenue?: number | null
+    dailySupplySideRevenue?: number | null
+    dailyProtocolRevenue?: number | null
+    dailyPremiumVolume?: number | null
+}
+
+
+export enum AdaptorRecordType {
+    dailyVolume = "dv",
+    totalVolume = "tv",
+    totalPremiumVolume = "tpv",
+    totalNotionalVolume = "tnv",
+    dailyPremiumVolume = "dpv",
+    dailyNotionalVolume = "dnv",
+    tokenIncentives = "ti",
+    // fees & revenue
+    dailyFees = "df",
+    dailyBribesRevenue = "dbr",
+    dailyTokenTaxes = "dtt",
+    shortOpenInterestAtEnd = "dsoi",
+    longOpenInterestAtEnd = "dloi",
+    openInterestAtEnd = "doi",
+    dailyRevenue = "dr",
+    dailyUserFees = "duf",
+    dailySupplySideRevenue = "dssr",
+    dailyProtocolRevenue = "dpr",
+    dailyHoldersRevenue = "dhr",
+    dailyCreatorRevenue = "dcr",
+    totalFees = "tf",
+    totalRevenue = "tr",
+    totalUserFees = "tuf",
+    totalSupplySideRevenue = "tssr",
+    totalProtocolRevenue = "tpr",
+    totalHoldersRevenue = "thr",
+    totalCreatorRevenue = "tcr",
+    totalBribesRevenue = "tbr",
+    totalTokenTaxes = "ttt",
+
+    dailyBridgeVolume = "dbv",
+    totalBridgeVolume = "tbv",
+
+    dailyAppRevenue = "dar",
+    dailyAppFees = "daf",
+}
+
+export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
+    [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
+    [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyVolume,
+    [AdapterType.FEES]: AdaptorRecordType.dailyFees,
+    [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
+    [AdapterType.OPTIONS]: AdaptorRecordType.dailyPremiumVolume,
+    [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
+    // [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
+    [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
+    [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
+}
+
+export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
+    [AdaptorRecordType.dailyVolume]: AdaptorRecordType.totalVolume,
+    [AdaptorRecordType.dailyFees]: AdaptorRecordType.totalFees,
+    [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordType.totalNotionalVolume,
+    [AdaptorRecordType.dailyPremiumVolume]: AdaptorRecordType.totalPremiumVolume,
+    [AdaptorRecordType.dailyRevenue]: AdaptorRecordType.totalRevenue,
+    [AdaptorRecordType.dailyUserFees]: AdaptorRecordType.totalUserFees,
+    [AdaptorRecordType.dailyHoldersRevenue]: AdaptorRecordType.totalHoldersRevenue,
+    [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordType.totalCreatorRevenue,
+    [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordType.totalSupplySideRevenue,
+    [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
+    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordType.totalBribesRevenue,
+    [AdaptorRecordType.dailyTokenTaxes]: AdaptorRecordType.totalTokenTaxes,
+    [AdaptorRecordType.dailyBridgeVolume]: AdaptorRecordType.totalBridgeVolume,
+}
+
+
+const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
+    [AdapterType.FEES]: [
+        AdaptorRecordType.dailyRevenue,
+        AdaptorRecordType.dailyUserFees,
+        AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyCreatorRevenue,
+        AdaptorRecordType.dailySupplySideRevenue,
+        AdaptorRecordType.dailyProtocolRevenue,
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes,
+        AdaptorRecordType.dailyAppRevenue,
+        AdaptorRecordType.dailyAppFees,
+    ],
+    /* [AdapterType.ROYALTIES]: [
+        AdaptorRecordType.dailyRevenue,
+        AdaptorRecordType.dailyUserFees,
+        AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyCreatorRevenue,
+        AdaptorRecordType.dailySupplySideRevenue,
+        AdaptorRecordType.dailyProtocolRevenue
+    ], */
+    [AdapterType.OPTIONS]: [
+        AdaptorRecordType.dailyNotionalVolume,
+    ],
+    [AdapterType.DERIVATIVES]: [
+        AdaptorRecordType.shortOpenInterestAtEnd,
+        AdaptorRecordType.longOpenInterestAtEnd,
+        AdaptorRecordType.openInterestAtEnd
+    ]
+}
+
+const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
+    [AdapterType.FEES]: [
+        AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes,
+    ],
+}
+
+export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)
+export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
+
+export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any) => adapterType !== AdapterType.PROTOCOLS)

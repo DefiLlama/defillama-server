@@ -23393,7 +23393,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: ["Arbitrum", "Base", "Berachain", "HyperLiquid L1"],
+    chains: ["Arbitrum", "Base", "Berachain", "Hyperliquid L1"],
     forkedFromIds: ["2197"],
     module: "brownfi/index.js",
     twitter: "BrownFidex",

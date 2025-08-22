@@ -63696,10 +63696,10 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://lagoon.finance",
     description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-7540 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
+      "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
-    audits: "2",
+    audits: "5",
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",

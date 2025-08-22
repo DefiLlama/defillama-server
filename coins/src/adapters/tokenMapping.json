@@ -6253,6 +6253,11 @@
     }
   },
   "sei": {
+    "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#lorenzo-stbtc"
+    },
     "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
       "decimals": "18",
       "symbol": "M-BTC",

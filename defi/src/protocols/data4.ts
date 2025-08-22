@@ -22652,7 +22652,6 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending", 
-    chains: ["Ethereum"],
     module: "cap-money/index.js",
     twitter: "capmoney_",
     audit_links: ["https://github.com/cap-labs-dev/cap-audits"],

@@ -63712,7 +63712,7 @@ const data3_2: Protocol[] = [
       "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
-    audits: "5",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",

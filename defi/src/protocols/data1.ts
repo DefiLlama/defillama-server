@@ -8721,17 +8721,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://celo.org/audits"],
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
-    oracles: ["cLabs", "RedStone"], // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145
+    oracles: ["cLabs", "RedStone", "Chainlink"], // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145, Chainlink is an official oracle provider: https://www.mento.org/blog/mento-adopts-the-chainlink-data-standard-to-power-decentralized-stablecoins
     oraclesBreakdown: [
       {
         name: "cLabs",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
       {
         name: "RedStone",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://celo.stake.id/#/proposal/145"]
+      },
+       {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://docs.mento.org/mento/overview/core-concepts/oracles-and-price-feeds#oracle-providers"]
       }
     ],
   },

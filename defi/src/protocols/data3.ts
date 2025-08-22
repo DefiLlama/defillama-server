@@ -52919,7 +52919,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/8889
+    oraclesBreakdown: [
+		{ 
+			name: "Chainlink", type: "Primary", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/chainlink"],
+			startDate: '2025-08-22'
+		},
+        { 
+		   name: "Pyth", type: "Fallback", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/pyth"] ,
+		   startDate: '2025-08-22' 
+	    },
+		{ 
+		  name: "Pyth", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/8889"] ,
+		  endDate: '2025-08-22' 
+	    }
+	], 
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",

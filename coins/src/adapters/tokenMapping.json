@@ -1309,7 +1309,7 @@
       "to": "coingecko#ethereum"
     }
   },
-  "bsc": {  
+  "bsc": {
     "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
       "decimals": "18",
       "symbol": "yUSD",
@@ -11213,6 +11213,58 @@
       "decimals": 6,
       "symbol": "cBABY",
       "to": "coingecko#cube-staked-baby"
+    }
+  },
+  "peaq": {
+    "0xf4d9235269a96aadafc9adae454a0618ebe37949": {
+      "decimals": 6,
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xbba60da06c2c5424f03f7434542280fcad453d10": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xe4103e80c967f58591a1d7ca443ed7e392fed862": {
+      "to": "coingecko#peaq-2",
+      "decimals": 18,
+      "symbol": "PEAQ"
+    },
+    "0x1eef208926667594e5136e89d0e9dd6907959197": {
+      "to": "coingecko#peaq-2",
+      "decimals": 18,
+      "symbol": "PEAQ"
+    },
+    "0x3cd66d2e1fac1751b0a20bebf6ca4c9699bb12d7": {
+      "to": "coingecko#peaq-2",
+      "decimals": 18,
+      "symbol": "PEAQ"
+    },
+    "0xF67Db9d00401D9e883208882F5c100d7482b083D": {
+      "to": "coingecko#auki-labs",
+      "decimals": 18,
+      "symbol": "AUKI"
+    },
+    "0x5c3126bfb9a68a7021d461230127470b3824886b": {
+      "to": "coingecko#silencio",
+      "decimals": 18,
+      "symbol": "SLC"
+    },
+    "0x08e6d50169863fd9beb88687ce1573cf9d6d1484": {
+      "to": "coingecko#ovr",
+      "decimals": 18,
+      "symbol": "OVR"
+    },
+    "0xe67f39fbe8c24ef8b3542efed1ee9963cefc1f2a": {
+      "to": "coingecko#airtor-protocol",
+      "decimals": 18,
+      "symbol": "ANYONE"
+    },
+    "0xe5330a9fba99504c534127d39727729899c9a506": {
+      "to": "coingecko#peaq-2",
+      "decimals": 18,
+      "symbol": "PEAQ"
     }
   }
 }

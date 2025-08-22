@@ -2628,7 +2628,7 @@ const data4: Protocol[] = [
       {
         message: "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2025-08-21",
       }
     ],
     listedAt: 1737988177

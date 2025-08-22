@@ -7,7 +7,7 @@ for (const protocol of protocols) {
 }
 
 export default function getDuplicatesBetweenAdapterTypes() {
-  const aTypes: AdapterType[] = Object.values(AdapterType).filter((aType) => ![AdapterType.PROTOCOLS, AdapterType.FEES].includes(aType))
+  const aTypes: AdapterType[] = Object.values(AdapterType).filter((aType) => ![AdapterType.FEES].includes(aType))
   const ids: any = {}
   const response: any = []
 
@@ -15,21 +15,11 @@ export default function getDuplicatesBetweenAdapterTypes() {
     const _ids = [] as string[]
     const { protocolMap } = getAdapterConfig(aType)
     for (const protocol of Object.values(protocolMap) as any[]) {
-      if (protocol.protocolsData) {
-        Object.values(protocol.protocolsData).forEach((p: any) => {
-          if (!_protocolMap[p.id]) {
-            console.log('Dimensions: protocol data id not found in protocols/data.ts file', p.id, typeof p.id, aType, p, protocol.id, protocol.name, _protocolMap[p.id])
-            response.push({ aType, protocol, protocolData: p })
-          }
-          _ids.push(p.id)
-        })
-      } else {
-        if (!_protocolMap[protocol.id]) {
-          console.log('Dimensions protocol id not found in protocols/data.ts file', protocol.id, protocol.name, aType)
-          response.push({ aType, protocol })
-        }
-        _ids.push(protocol.id)
+      if (!_protocolMap[protocol.id]) {
+        console.log('Dimensions protocol id not found in protocols/data.ts file', protocol.id, protocol.name, aType)
+        response.push({ aType, protocol })
       }
+      _ids.push(protocol.id)
     }
 
     ids[aType] = _ids
@@ -44,7 +34,7 @@ export default function getDuplicatesBetweenAdapterTypes() {
       const aType2 = aTypes[j]
       const dups = findDups(ids[aType], ids[aType2])
       if (dups.length) {
-        console.log(`Dimensions: uplicates between ${aType} and ${aType2}:`, dups.join(', '), 'count:', dups.length)
+        console.log(`Dimensions: duplicates between ${aType} and ${aType2}:`, dups.join(', '), 'count:', dups.length)
         response.push({ aType, aType2, dups })
       }
     }

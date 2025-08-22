@@ -1,22 +1,13 @@
 import { craftProtocolsResponse } from "./getProtocols";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
-import { storeR2 } from "./utils/r2";
 import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
-import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
-
-function compress(data: string) {
-  return brotliCompressSync(data, {
-    [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-    [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-  });
-}
+import { excludeProtocolInCharts, hiddenCategoriesFromUISet, } from "./utils/excludeProtocols";
+import protocols from "./protocols/data";
 
 export async function storeGetProtocols({
   getCoinMarkets,
@@ -29,6 +20,14 @@ export async function storeGetProtocols({
   getLastWeekTokensUsd,
   getLastMonthTokensUsd,
 }: any = {}) {
+  const idToName: Record<string, string> = {};
+  for (const p of protocols) {
+    if (p.id && p.name) idToName[p.id] = p.name;
+  }
+  for (const parent of parentProtocolsList) {
+    if (parent.id && parent.name) idToName[parent.id] = parent.name;
+  }
+
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
     getLastHourlyRecord,
@@ -48,12 +47,19 @@ export async function storeGetProtocols({
           getLastWeekTokensUsd,
           getLastMonthTokensUsd,
         });
+        let forkedFrom = protocol.forkedFrom;
+        if (Array.isArray(protocol.forkedFromIds)) {
+          forkedFrom = protocol.forkedFromIds.map((id) => idToName[id] || id);
+        }
         return {
           category: protocol.category,
+          ...(protocol.tags ? { tags: protocol.tags } : {}),
           chains: protocol.chains,
-          oracles: protocol.oracles,
+          oracles: protocol.oraclesBreakdown && protocol.oraclesBreakdown.length > 0
+            ? protocol.oraclesBreakdown.map((x) => x.name)
+            : protocol.oracles,
           oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
-          forkedFrom: protocol.forkedFrom,
+          forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,
           name: protocol.name,
@@ -70,11 +76,11 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
-        ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
+          ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
         };
       })
     )
-  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
+  ).filter((p) => !hiddenCategoriesFromUISet.has(p.category ?? ""));
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -83,7 +89,7 @@ export async function storeGetProtocols({
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (includeCategoryIntoChainTvl(p.category)) {
+    if (!excludeProtocolInCharts(p.category)) {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 
@@ -163,12 +169,13 @@ export async function storeGetProtocols({
   };
 
   const v2ProtocolData = response
-    .filter((p) => p.category !== "Chain" && p.category !== "CEX")
+    .filter((p) => !hiddenCategoriesFromUISet.has(p.category ?? ""))
     .map((protocol) => ({
       id: protocol.id,
       name: protocol.name,
       symbol: protocol.symbol,
       category: protocol.category,
+      ...(protocol.tags ? { tags: protocol.tags } : {}),
       tvl: protocol.tvl,
       chainTvls: Object.fromEntries(
         Object.entries(protocol.chainTvls).filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
@@ -176,18 +183,9 @@ export async function storeGetProtocols({
       mcap: protocol.mcap,
       gecko_id: protocol.gecko_id,
       parent: protocol.parentProtocol,
-      ...(protocol.deprecated ? {deprecated: true} : {})
+      ...(protocol.deprecated ? { deprecated: true } : {})
     }))
     .concat(extendedParentProtocols);
 
   return { protocols2Data, v2ProtocolData };
 }
-
-const handler = async (_event: any) => {
-  const { protocols2Data, v2ProtocolData } = await storeGetProtocols();
-  const compressedV2Response = compress(JSON.stringify(protocols2Data));
-  await storeR2("lite/protocols2", compressedV2Response, true);
-  await storeR2("lite/v2/protocols", JSON.stringify(v2ProtocolData), true, false);
-};
-
-export default wrapScheduledLambda(handler);

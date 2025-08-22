@@ -25,4 +25,22 @@ export default {
     "socket": {
         id: "6097"
     },
+    "bungee-bridge": {
+        id: "6188"
+    },
+    "rango": {
+        id: "6382"
+    },
+    "dzap": {
+        id: "6435"
+    },
+    "opensea": {
+        id: "2258"
+    },
+    "orbiter-finance": {
+        id: "6520"
+    },
+    "garden": {
+        id: "6615"
+    }
 } as AdaptorsConfig

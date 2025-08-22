@@ -1,7 +1,6 @@
 import type { Protocol } from "../../protocols/types";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
-import { getAvailableMetricsById } from "../../adaptors/data/configs";
 import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, getLastHourlyRecord, getLastHourlyTokensUsd, getLastHourlyTokens } from "../cache/index";
 import { getAllProtocolItems, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
@@ -11,17 +10,24 @@ import {
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
 import { getObjectKeyCount } from ".";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import sluggify from "../../utils/sluggify";
+import { _InternalProtocolMetadataMap } from "../../protocols/data";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
   restrictResponseSize?: boolean;
+  skipCachedHourlyData?: boolean;
+  feMini?: boolean; // for fetching only aggregated tvl data without token breakdown & without raw token balancesMi
+  skipFeMiniTransform?: boolean; // for feMini we return data in ([date, usdValue]: [number, number]) instead of default { date: number, totalLiquidityUSD: number } format
 }
 
 
 export type CraftProtocolV2Options = CraftProtocolV2Common & {
   protocolData: Protocol;
+  getCachedProtocolData?: Function;
 }
 
 export async function craftProtocolV2({
@@ -30,30 +36,52 @@ export async function craftProtocolV2({
   useHourlyData,
   skipAggregatedTvl,
   restrictResponseSize,
+  getCachedProtocolData = getProtocolAllTvlData,
+  skipCachedHourlyData = false,
+  feMini = false,
+  skipFeMiniTransform = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
+  const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
   const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
 
   if (!useHourlyData)
-    protocolCache = await getProtocolAllTvlData(protocolData, true)
+    protocolCache = await getCachedProtocolData(protocolData, true)
+
+  let _getLastHourlyRecord: any = null
+  let _getLastHourlyTokensUsd: any = null
+  let _getLastHourlyTokens: any = null
+
+  if (!isDeadProtocolOrHourly && !skipCachedHourlyData) {
+    _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
+    _getLastHourlyTokensUsd = getLastHourlyTokensUsd(protocolData as any)
+    _getLastHourlyTokens = getLastHourlyTokens(protocolData as any)
+  }
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
+    useHourlyData ? getAllProtocolItems(hourlyTvl, protocolData.id) : null,
+    useHourlyData ? getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id) : null,
+    useHourlyData ? getAllProtocolItems(hourlyTokensTvl, protocolData.id) : null,
     getCachedMCap(protocolData.gecko_id),
-    isDeadProtocolOrHourly ? null : getLastHourlyRecord(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokensUsd(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokens(protocolData as any),
+    _getLastHourlyRecord,
+    _getLastHourlyTokensUsd,
+    _getLastHourlyTokens,
   ]);
 
   if (!useHourlyData) {
     historicalUsdTvl = protocolCache[0]
     historicalUsdTokenTvl = protocolCache[1]
     historicalTokenTvl = protocolCache[2]
+  }
+
+  if (feMini) {
+    historicalUsdTokenTvl = []
+    historicalTokenTvl = []
+    lastUsdTokenHourlyRecord = null
+    lastTokenHourlyRecord = null
   }
   const debug_dbTimeAll = performance.now() - debug_t0
 
@@ -66,7 +94,6 @@ export async function craftProtocolV2({
     chains: [],
     currentChainTvls: {},
     raises: getRaises(protocolData.id),
-    metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
 
@@ -107,34 +134,34 @@ export async function craftProtocolV2({
         tokens: [],
       };
     }
+
+    
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
+    
+    if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
+      for (const item of historicalUsdTvl) {
+        let usdValue = selectChainFromItem(item, chain)
+        if (typeof usdValue === 'number') {
+          usdValue = Math.floor(usdValue)
+          if (feMini && !skipFeMiniTransform) container.tvl.push([item.SK, usdValue] as any)
+          else container.tvl.push({ date: item.SK, totalLiquidityUSD: usdValue })
+        }
+      }
+    }
+    
+    if (Array.isArray(container?.tokensInUsd) && Array.isArray(historicalUsdTokenTvl)) {
+      for (const item of historicalUsdTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokensInUsd.push({ date: item.SK, tokens })
+      }
+    }
 
-    container?.tvl?.push(
-      ...historicalUsdTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
-        }))
-        .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
-    );
-
-    container?.tokensInUsd?.push(
-      ...historicalUsdTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
-
-    container?.tokens?.push(
-      ...historicalTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
+    if (Array.isArray(container?.tokens) && Array.isArray(historicalTokenTvl)) {
+      for (const item of historicalTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokens.push({ date: item.SK, tokens })
+      }
+    }
   });
 
   const singleChain = transformNewChainName(protocolData.chain);
@@ -167,8 +194,10 @@ export async function craftProtocolV2({
   let childProtocolsNames: string[] = [];
   let parentProtocolId = protocolData.parentProtocol;
 
-  if (parentProtocolId) {
-    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
+  if (parentProtocolId && parentProtocolsById[parentProtocolId]) {
+    const parent = parentProtocolsById[parentProtocolId]
+    response.parentProtocolSlug = sluggify(parent as any);
+    parentName = parent.name ?? null;
     childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 
@@ -176,19 +205,30 @@ export async function craftProtocolV2({
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (methodology)
-    response.methodology = methodology;
+  if (restProtocolData.methodology) {
+    response.methodology = restProtocolData.methodology;
+  }
 
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
 
   if (Array.isArray(hallmarks) && hallmarks.length > 0) {
-    response.hallmarks = hallmarks;
-    response.hallmarks?.sort((a, b) => a[0] - b[0]);
+    response.hallmarks = hallmarks as any
   }
 
-  if (deprecated) {
+  if (restProtocolData.deprecated) {
     response.deprecated = true
+  }
+
+  if (restProtocolData.warningBanners) {
+    response.warningBanners = restProtocolData.warningBanners;
+  }
+
+  if (restProtocolData.rugged) {
+    response.rugged = true;
+  }
+  if (restProtocolData.deadUrl) {
+    response.deadUrl = true;
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
@@ -196,7 +236,7 @@ export async function craftProtocolV2({
   // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
 
 
-  if (restrictResponseSize) {
+  if (!feMini && restrictResponseSize) {
     const keyCount = getObjectKeyCount(response)
     if (keyCount > 1.5e5) { // there are more than 150k keys
       // console.log(`${response.name} Response size is too large: ${keyCount} keys. Limiting response size.`)

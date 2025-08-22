@@ -1,11 +1,11 @@
 import '../../../api2/utils/failOnError'
 
 import { handler2 } from ".";
-import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
 import { getUnixTimeNow } from '../../../api2/utils/time';
 import { elastic } from '@defillama/sdk';
 import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
+import { ADAPTER_TYPES } from '../../data/types';
 
 async function run() {
   const startTimeAll = getUnixTimeNow()
@@ -20,7 +20,6 @@ async function run() {
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
-    if (adapterType === AdapterType.PROTOCOLS) return;
     // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
@@ -87,7 +86,7 @@ run().catch((e) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 90 minutes
+}, 1000 * 60 * 50) // 50 minutes
 
 
 function getYesterdayTimeS() {

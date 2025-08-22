@@ -21,6 +21,7 @@ type ProtocolData = {
   gecko_id?: string;
   mcap?: any;
   events?: any;
+  unlockEvents?: any;
   unlocksPerDay: number;
 };
 
@@ -73,14 +74,14 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       let nextEvent;
       if (!rawNextEvent) {
         nextEvent = undefined;
-      } else if ((rawNextEvent.noOfTokens.length = 1)) {
+      } else if ((rawNextEvent.noOfTokens.length === 1)) {
         nextEvent = {
           date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[0], 0),
         };
       } else {
         nextEvent = {
-          date: Math.ceil(now / 86400) * 86400,
+          date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[1], 0),
         };
       }
@@ -115,6 +116,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         maxSupply,
         gecko_id: res.gecko_id,
         events: res.metadata.events,
+        unlockEvents: res.metadata.unlockEvents,
         nextEvent,
         unlocksPerDay,
       });

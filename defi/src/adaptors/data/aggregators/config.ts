@@ -3,19 +3,16 @@ import { AdaptorsConfig } from "../types";
 export default {
   "jupiter-aggregator": {
     id: "2141",
-  },
-  "dexible": {
-    disabled: true,
-    startFrom: 1630022400,
-    id: "2249",
-    parentId: "2249",
-    protocolsData: {
-      Dexible_v2: {
-        disabled: true,
-        id: "2249",
-        displayName: "Dexible V2",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1741564800": true,
       },
     },
+  },
+  "dexible": {
+    startFrom: 1630022400,
+    id: "2249",
+    displayName: "Dexible V2",
   },
   "deflex": {
     id: "2420",
@@ -26,18 +23,17 @@ export default {
   "plexus": {
     id: "2740",
     cleanRecordsConfig: {
-        genuineSpikes: {
-          1706313600: false
-        }
+      genuineSpikes: {
+        1706313600: false
+      }
     }
   },
   "avnu": {
     id: "3154",
   },
-  "bitkeep": {
-    enabled: false,
-    id: "3207",
-  },
+  // "bitkeep": {
+  //   id: "3207", // duplicate with bitgetwallet
+  // },
   "jumper-exchange": {
     id: "3524",
     cleanRecordsConfig: {
@@ -49,43 +45,46 @@ export default {
   "slingshot": {
     id: "3681",
   },
-  "caviarnine": {
-    parentId: "CaviarNine",
-    id: "3645",
-    protocolsData: {
-      aggregator: {
-        id: "5064",
-      },
-    },
+  "caviarnine-agg": {
+    id: "5064",
   },
   "aggre": {
     id: "3809",
   },
-  "llamaswap": {
-    enabled: false,
-    id: "3847",
-  },
-  // "openocean": {
-  //   enabled: false,
-  //   id: "533",
+  // "llamaswap": { // duplicate with volume with other aggregators
+  //   id: "3847",
   // },
+  "openocean": {
+    id: "533",
+  },
   "arcane-dex": {
     id: "3885",
   },
   "1inch-agg": {
     id: "189",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1747699200": true,
+      },
+    },
   },
   "zrx": {
     id: "4628",
     cleanRecordsConfig: {
       genuineSpikes: {
         1674172800: true,
-        1680739200: true
+        1680739200: true,
+        1678492800: true,
       }
-  }
+    }
   },
   "cowswap": {
     id: "2643",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1722816000": true,
+      },
+    },
   },
   "kyberswap": {
     id: "3982",
@@ -108,16 +107,10 @@ export default {
   "paraswap": {
     id: "894",
   },
-  "tokenlon": {
-    id: "405",
-    "protocolsData": {
-      "tokenlon-agg": {
-        id: "5063",
-      }
-    }
+  "tokenlon-agg": {
+    id: "5063",
   },
   "aftermath-aggregator": {
-    parentId: "Aftermath Finance",
     id: "3981",
   },
   "dexhunter": {
@@ -126,17 +119,13 @@ export default {
   "conveyor": {
     id: "3980",
     cleanRecordsConfig: {
-        genuineSpikes: {
-          1722729600: false
-        }
+      genuineSpikes: {
+        1722729600: false
+      }
     }
   },
   // "unidex": {
   //   "id": "1833",
-  //   protocolsData: {
-  //       "unidex-dexs-agg": {
-  //           "id": "1833"
-  //       }
   //   }
   // },
   "swapgpt": {
@@ -166,8 +155,6 @@ export default {
     "id": "4278"
   },
   "aperture-swap": {
-    parentId: "Aperture Finance",
-    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -197,23 +184,16 @@ export default {
   "hallswap": {
     id: "4824",
     cleanRecordsConfig: {
-        genuineSpikes: {
-          1724457600: true
-        }
+      genuineSpikes: {
+        1724457600: true
+      }
     }
   },
   "flowx-aggregator": {
-    parentId: "FlowX Finance",
     id: "4825",
   },
-  "sushiswap": {
-    "id": "119",
-    parentId: "Sushi",
-    protocolsData: {
-        "agg-dex": {
-            id: "5061"
-        }
-    }
+  "sushiswap-agg": {
+    id: "5061"
   },
   "7k-aggregator": {
     id: "4868",
@@ -222,19 +202,17 @@ export default {
     id: "4926",
   },
   "cetus-aggregator": {
-      parentId: "Cetus",
-      "id": "4958",
-      cleanRecordsConfig: {
-          genuineSpikes: {
-            1724803200: true
-          }
+    "id": "4958",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1724803200: true
       }
+    }
   },
   "chainspot": {
     id: "5028",
   },
   "scallop": {
-    parentId: "Scallop",
     id: "5087",
   },
   "lumia": {
@@ -254,12 +232,17 @@ export default {
   },
   "okx": {
     id: "5201",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1746403200: true
+      }
+    }
   },
   "jeton": {
     id: "5213",
   },
   "hinkal": {
-      id: "4487"
+    id: "4487"
   },
   "unizen": {
     id: "1336",
@@ -277,17 +260,16 @@ export default {
     id: "3207",
   },
   "thetis-market": {
-    parentId: "Thetis Market",
     id: "5483"
   },
   "swing": {
-      id: "5474"
+    id: "5474"
   },
   "anqa": {
-      id: "5621"
+    id: "5621"
   },
   "joe-agg": {
-      id: "5618"
+    id: "5618"
   },
   "ooia": {
     id: "5630"
@@ -303,6 +285,14 @@ export default {
   },
   "enso": {
     id: "5741",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1738540800": true,
+        "1738627200": true,
+        "1738713600": true,
+        "1746489600": true
+      },
+    },
   },
   "1delta": {
     id: "5740",
@@ -311,7 +301,7 @@ export default {
     id: "5819",
   },
   "erc-burner": {
-      id: "5859"
+    id: "5859"
   },
   "oogabooga": {
     id: "5880"
@@ -328,4 +318,70 @@ export default {
   "kame-aggregator": {
     id: "6064"
   },
+  "holdstation-agg": {
+    id: "6178"
+  },
+  "bungee-dex": {
+    id: "6187"
+  },
+  "lifi": {
+    id: "6233"
+  },
+  "mimboku-aggregator": {
+    id: "6252"
+  },
+  "vetrade": {
+    id: "6253"
+  },
+  // "dzap": {  // wash trading?, re-enabled with new listing 6435
+  //   id: "6259"
+  // },
+  "haiku": {
+    id: "6266"
+  },
+  "bluefin7k-aggregator": {
+    id: "6322"
+  },
+  "hyperbloom": {
+    id: "6329"
+  },
+  "gluex-protocol": {
+    id: "6334"
+  },
+  "liquidswap": {
+    id: "6374"
+  },
+  "obsidian": {
+    id: "6393"
+  },
+  "apstation": {
+    id: "6416"
+  },
+  "dzap": {
+    id: "6435"
+  },
+  "rango": {
+    id: "6382"
+  },
+  "metamask": {
+    id: "3031"
+  },
+  "opensea": {
+    id: "2258"
+  },
+  "orbiter-finance": {
+    id: "6520"
+  },
+  "hyperflow": {
+    id: "6538"
+  },
+  "nordstern-finance": {
+    id: "6552"
+  },
+  "superboring": {
+    id: "6606"
+  },
+  "dedust": {
+    id: "2617"
+},
 } as AdaptorsConfig;

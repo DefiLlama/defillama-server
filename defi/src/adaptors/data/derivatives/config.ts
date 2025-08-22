@@ -1,178 +1,49 @@
-import { getCachedHistoricalTvlForAllProtocols } from "../../../storeGetCharts"
 import { AdaptorsConfig } from "../types"
 
 export default {
     "emdx": {
-        "id": "2299"
-    },
-    "gmx": {
-        parentId: "GMX",
-        "protocolsData": {
-            "derivatives": {
-                displayName: "GMX - Derivatives V1",
-                "id": "337",
-                "enabled": true
-            }
-        },
-        "id": "337"
+        id: "2299"
     },
     "jojo": {
-        "id": "2320"
+        id: "2320"
     },
     "kperp-exchange": {
-        "id": "2326"
-    },
-    "metavault.trade": {
-        parentId: "Metavault",
-        "id": "1801",
-        "protocolsData": {
-            "metavault-derivative": {
-                "id": "1801",
-            }
-        }
+        id: "2326"
     },
     "synfutures-v1": {
-        parentId: "SynFutures",
-        "id": "2328"
+        id: "2328"
     },
     "vela": {
-        "id": "2548"
-    },
-    "morphex": {
-        parentId: "Morphex",
-        "protocolsData": {
-            "derivatives": {
-                displayName: "Morphex - Derivatives",
-                "id": "2662",
-                "enabled": true
-            }
-        },
-        "id": "2662"
-    },
-    "covo-v2": {
-        "id": "2730",
-        parentId: "Covo Finance",
-        "protocolsData": {
-            "derivatives": {
-                displayName: "Covo V2 - Derivatives",
-                "id": "2730",
-                cleanRecordsConfig: {
-                    genuineSpikes: true
-                }
-            }
-        },
-    },
-    "spacedex": {
-        parentId: "2814",
-        "protocolsData": {
-            "derivatives": {
-                "id": "2814",
-                "displayName": "SpaceDex - Derivatives"
-            }
-        },
-        "id": "2814"
+        id: "2548"
     },
     "hyperliquid-perp": {
-        parentId: "Hyperliquid",
-        "id": "5507",
-        "enabled": true
+        id: "5507",
     },
     "dydx": {
-        parentId: "dYdX",
-        "id": "144",
-        disabled: true
+        id: "144",
     },
-    "level-finance": {
-        "id": "2395",
-        "displayName": "Level Finance - Derivatives",
-        "protocolsData": {
-            "level-finance-derivative": {
-                "id": "2395",
-                "enabled": true
+    "mux-protocol-perps": {
+        id: "2254",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746489600": true,
             }
         }
-    },
-    "mux-protocol": {
-        "id": "2254",
-        "protocolsData": {
-            "mux-protocol": {
-                "id": "2254",
-            }
-        },
     },
     "polynomial-trade": {
-        "id": "2848"
+        id: "2848"
     },
     "pika-protocol": {
-        parentId: "Pika Protocol",
-        "id": "916"
-    },
-    "el-dorado-exchange": {
-        "id": "2356",
-        "protocolsData": {
-            "derivatives": {
-                "id": "2356",
-                "category": "Dexs",
-                "displayName": "El Dorado Exchange - Derivatives"
-            }
-        },
-    },
-    "fulcrom-finance": {
-        "id": "2641",
-        "protocolsData": {
-            "derivatives": {
-                "id": "2641",
-                "displayName": "Fulcrom - Derivatives",
-            }
-        },
-    },
-    "vertex-protocol": {
-        "id": "2899",
-        "protocolsData": {
-            "derivatives": {
-                "id": "2899",
-                "enabled": true
-            }
-        },
+        id: "916"
     },
     "urdex": {
-        "id": "3085",
-        "enabled": true
-    },
-    "voodoo-trade": {
-        id: "3792",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3792",
-                "enabled": true
-            }
-        },
-    },
-    "pinnako": {
-        id: "3209",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3209",
-                "category": "Dexs",
-            }
-        },
+        id: "3085",
     },
     "hmx": {
-        "id": "2296"
-    },
-    "y2k": {
-        "id": "2375",
-        protocolsData: {
-            v1: {
-                "id": "2375",
-            },
-            v2: {
-                "id": "3056",
-            }
-        }
+        id: "2296"
     },
     "synthetix": {
-        "id": "115",
+        id: "115",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1689292800": true,
@@ -184,59 +55,30 @@ export default {
         }
     },
     "pika-protocol-v4": {
-        parentId: "Pika Protocol",
-        "id": "3281"
+        id: "3281"
     },
     "gains-network": {
-        "id": "1018"
+        id: "1018"
     },
-    "palmswap": {
-        "enabled": false,
-        "id": "3279"
-    },
-    "drift-protocol": {
-        "id": "970",
-        "protocolsData": {
-            "derivatives": {
-                "id": "970",
-            }
-        },
-    },
+    // "palmswap": {
+    //     id: "3279"
+    // },
     "aevo": {
-        "id": "2797"
-    },
-    "grizzly-trade": {
-        disabled: true,
-        "id": "3301",
-        "protocolsData": {
-            "derivatives": {
-                disabled: true,
-                "id": "3301",
-            }
-        },
-    },
-    "rollup-finace": {
-        "id": "2889",
-        "protocolsData": {
-            "derivatives": {
-                "id": "2889",
-            }
-        },
-    },
-    "ktx": {
-        "id": "3025",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3025",
+        id: "2797",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
             }
         }
     },
-    "metavault-derivative": {
-        "enabled": false,
-        "id": "1801"
+    "rollup-finace-perps": {
+        id: "2889",
     },
+    // "metavault-derivative": {
+    //     id: "1801"
+    // },
     "satori": {
-        "id": "2982",
+        id: "2982",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1691625600": true,
@@ -244,7 +86,7 @@ export default {
         }
     },
     "aark": {
-        "id": "3376",
+        id: "3376",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1691971200": true,
@@ -253,125 +95,50 @@ export default {
         }
     },
     "apex": {
-        parentId: "ApeX Protocol",
-        "id": "1878",
+        id: "1878",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,
-                "1697328000": true
+                "1697328000": true,
+                "1722816000": true,
+                "1738540800": true,
             },
         }
-    },
-    "gmx-v2": {
-        parentId: "GMX",
-        "id": "3365",
-        displayName: "GMX - Derivatives V2",
-        protocolsData: {
-            "gmx-v2-trade": {
-                "id": "3365",
-            }
-        }
-    },
-    "meridian-trade": {
-        "enabled": false,
-        "id": "3386",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3386",
-                "enabled": false,
-            }
-        }
-    },
-    "morphex-old": {
-        parentId: "Morphex",
-        "protocolsData": {
-            "derivatives": {
-                displayName: "Morphex - Derivatives",
-                "id": "3483",
-                "enabled": true
-            }
-        },
-        "id": "3483"
     },
     "zeta": {
-        "id": "1804",
-        "protocolsData": {
-            "derivatives": {
-                "id": "1804",
-            }
-        }
-    },
-    "nether-fi": {
-        "protocolsData": {
-            "derivatives": {
-                "id": "3509",
-            }
-        },
-        "id": "3509"
-    },
-    "bmx": {
-        parentId: "BMX",
-        "id": "3530",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3530",
-            },
-        }
-    },
-    "mango-v4": {
-        parentId: "Mango Markets",
-        "id": "3174",
-        protocolsData: {
-            "perp": {
-                "id": "3174",
-            }
-        },
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1695081600": true,
-            },
-        }
+        id: "1804",
     },
     "thena-perp": {
-        parentId: "Thena",
-        "id": "3537",
+        id: "3537",
     },
     "panacakeswap-perp": {
-        "id": "3538",
+        id: "3538",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1736640000": true,
+            },
+        }
     },
     "apollox": {
-        "id": "1772"
+        id: "1772"
     },
     "based-markets": {
-        "id": "3609"
-    },
-    "blex": {
-        "id": "3605",
-        protocolsData: {
-            "derivatives": {
-                "id": "3605",
-            }
-        }
+        id: "3609"
     },
     "xena-finance-derivative": {
-        "id": "3620"
+        id: "3620"
     },
     "gambit": {
-        "id": "3325"
+        id: "3325"
     },
     "bluefin": {
-        "id": "2625",
-        protocolsData: {
-            "derivatives": {
-                "id": "2625",
-            }
-        }
+        id: "2625",
     },
     "holdstation-defutures": {
-        "id": "2959"
+        id: "2959"
     },
     "contango": {
-        "id": "3602",
+        id: "3602",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,
@@ -379,142 +146,91 @@ export default {
             },
         }
     },
-    "tigris": {
-        "enabled": false,
-        "id": "3129"
-    },
+    // "tigris": {
+    //     id: "3129"
+    // },
     "paradex": {
-        "id": "3648"
-    },
-    "swapbased": {
-        parentId: "SwapBased",
-        "id": "3328",
-        protocolsData: {
-            "perps": {
-                "id": "3373",
+        id: "3648",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
             },
-        },
+        }
     },
     "levana": {
-        "id": "3474"
+        id: "3474"
     },
     "intent-x": {
-        "id": "3747"
+        id: "3747"
     },
     "equation": {
-        parentId: "Equation",
-        "id": "3726",
+        id: "3726",
         cleanRecordsConfig: {
             genuineSpikes: {
                 1707782400: false
             }
         }
     },
-    "derivio": {
-        "enabled": false,
-        parentId: "Deri",
-        "id": "3759",
-        protocolsData: {
-            "derivatives": {
-                "id": "3759",
-            }
-        }
-    },
     "mu-exchange": {
-        "id": "3763"
+        id: "3763"
     },
     "perennial-v2": {
-        "id": "3599",
-        protocolsData: {
-            "derivatives": {
-                "id": "3599",
-            }
-        }
+        id: "3599",
     },
     "rabbitx": {
-        enabled: true,
-        "id": "2886",
-        parentId: "RabbitX Fusion",
+        id: "2886",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1700524800": true,
                 "1700438400": true,
                 "1700352000": true,
                 "1700265600": true,
-                "1700179200": true
+                "1700179200": true,
+                "1749600000": true,
             },
         }
 
     },
     "SubstanceX": {
-        "id": "3835"
+        id: "3835"
     },
     "stormtrade": {
-        "id": "3883"
+        id: "3883"
     },
     "goosefx": {
-        "id": "2175"
+        id: "2175"
     },
     "synfutures-v2": {
-        parentId: "SynFutures",
-        "id": "3061"
+        id: "3061"
     },
     "metavault-derivatives-v2": {
-        parentId: "Metavault",
-        "id": "3911"
+        id: "3911"
     },
     "kiloex": {
-        "id": "3329"
+        id: "3329"
     },
     "surfone": {
-        "id": "3954"
-    },
-    "beamex": {
-        parentId: "BeamSwap",
-        "id": "3251",
-        protocolsData: {
-            "beamex-perps": {
-                "id": "3251",
-            }
-        }
+        id: "3954"
     },
     "merkle-trade": {
-        "id": "3678"
+        id: "3678"
     },
     "immortalx": {
-        "id": "3983"
+        id: "3983"
     },
     "fwx": {
-        "id": "4026"
-    },
-    "orderly-network": {
-        "id": "2264",
-        protocolsData: {
-            "orderly-network-derivatives": {
-                "id": "2264",
-            }
-        }
+        id: "4026"
     },
     "dydx-v4": {
-        parentId: "dYdX",
-        "id": "4067",
+        id: "4067",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1706140800": true,
             },
         }
     },
-    "helix": {
-        "id": "2259",
-        protocolsData: {
-            "helix-perp": {
-                "id": "5074",
-            }
-        }
-    },
     "equation-v2": {
-        parentId: "Equation",
-        "id": "4074",
+        id: "4074",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1706400000": true,
@@ -524,43 +240,21 @@ export default {
         }
     },
     "jupiter-perpetual": {
-        "id": "4077",
-        "protocolsData": {
-            "derivatives": {
-                "id": "4077",
-            }
-        }
-    },
-    "lexer": {
-        "id": "4087",
-        protocolsData: {
-            "derivatives": {
-                "id": "4087",
-            }
-        }
+        id: "4077",
     },
     "hyperionx": {
-        "id": "4094",
+        id: "4094",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1706832000": true,
             },
         }
     },
-    "demex": {
-        "id": "2001",
-        protocolsData: {
-            "demex-perp": {
-                "id": "2001",
-            }
-        }
-    },
     "kinetix-derivatives-v2": {
-        parentId: "Kinetix",
-        "id": "4110"
+        id: "4110"
     },
     "pingu": {
-        "id": "4102",
+        id: "4102",
         cleanRecordsConfig: {
             genuineSpikes: {
                 1716422400: true
@@ -568,69 +262,54 @@ export default {
         }
     },
     "ipor": {
-        "id": "2147",
-        protocolsData: {
-            "derivatives": {
-                "id": "2147",
-            }
-        },
+        id: "2147",
         cleanRecordsConfig: {
             genuineSpikes: {
                 1715126400: true,
                 1716336000: true,
                 1717718400: true,
                 1722297600: true,
-                1724457600: true
+                1724457600: true,
+                1676678400: true,
             }
         }
     },
     "sudofinance": {
-        "id": "4045"
+        id: "4045"
     },
-    "blastfutures": {
-        enabled: false,
-        "id": "4221",
-        parentId: "RabbitX Fusion",
+    // "blastfutures": { // duplicate with rabbitx fusion
+    //     id: "4221",
+    //     cleanRecordsConfig: {
+    //         genuineSpikes: {
+    //             "1709337600": true,
+    //             "1709251200": true,
+    //             "1709164800": true,
+    //             "1709078400": true,
+    //         },
+    //     }
+    // },
+    "synfutures-v3": {
+        id: "4215"
+    },
+    "avantis": {
+        id: "4108",
         cleanRecordsConfig: {
             genuineSpikes: {
-                "1709337600": true,
-                "1709251200": true,
-                "1709164800": true,
-                "1709078400": true,
+                "1743552000": true,
             },
         }
     },
-    "synfutures-v3": {
-        parentId: "SynFutures",
-        "id": "4215"
-    },
-    "avantis": {
-        "id": "4108"
-    },
     "flashtrade": {
-        "id": "4107",
-        protocolsData: {
-            "perp": {
-                "id": "4107",
-            }
-        }
+        id: "4107",
     },
     "wefi": {
-        "id": "2666"
+        id: "2666"
     },
     "anyhedge": {
-        "id": "2633"
-    },
-    "blitz": {
-        id: "4214",
-        protocolsData: {
-            "derivatives": {
-                "id": "4214",
-            }
-        }
+        id: "2633"
     },
     "myx-finance": {
-        "id": "4319",
+        id: "4319",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1712620800": true,
@@ -639,7 +318,6 @@ export default {
         }
     },
     "logx": {
-        parentId: "LogX",
         id: "5137"
     },
     "swych": {
@@ -660,24 +338,11 @@ export default {
     "grizzly-trade-derivatives-v2": {
         id: "4506",
     },
-    "unidex": {
-        "id": "1833",
-        protocolsData: {
-            "unidex": {
-                "id": "1833"
-            }
-        }
+    "unidex-perps": {
+        id: "1833",
     },
     "bsx": {
         id: "4458",
-    },
-    "nlx": {
-        id: "4568",
-        protocolsData: {
-            "nlx-trade": {
-                "id": "4568",
-            }
-        }
     },
     "rollie-finance": {
         id: "4636",
@@ -686,16 +351,18 @@ export default {
         id: "4555"
     },
     "linehub-perps": {
-        parentId: "LineHub",
         id: "4842"
     },
     "apex-omni": {
-        parentId: "ApeX Protocol",
-        id: "4822"
+        id: "4822",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            },
+        }
     },
     "edgeX": {
         id: "4954",
-        "enabled": true,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -707,8 +374,7 @@ export default {
         id: "5016",
     },
     "bmx-freestyle": {
-        parentId: "BMX",
-        "id": "4903"
+        id: "4903"
     },
     "tradoor": {
         id: "4738",
@@ -729,11 +395,9 @@ export default {
         id: "5208",
     },
     "quickswap-perps": {
-        parentId: "QuickSwap",
         id: "2980",
     },
     "capybara-perp": {
-        parentId: "Capybara Exchange",
         id: "5257",
     },
     "defx": {
@@ -744,11 +408,6 @@ export default {
     },
     "optim-finance": {
         id: "2380",
-        protocolsData: {
-            "derivatives": {
-                "id": "2380",
-            }
-        }
     },
     "quenta": {
         id: "5314"
@@ -760,25 +419,13 @@ export default {
         id: "5353"
     },
     "thetis-market": {
-        parentId: "Thetis Market",
         id: "5469"
     },
     "mars-perp": {
-        parentId: "Mars Protocol",
         id: "5498",
-        protocolsData: {
-            "derivatives": {
-                "id": "5498",
-            }
-        }
     },
     "satoshi-perps": {
-        id: "5571",
-        protocolsData: {
-            "derivatives": {
-                "id": "5571",
-            }
-        }
+        id: "5571"
     },
     "lnexchange-perp": {
         id: "5639",
@@ -786,33 +433,11 @@ export default {
     "cvex": {
         id: "5610"
     },
-    "amped": {
-        id: "3833",
-        protocolsData: {
-            "derivatives": {
-                id: "3833",
-            }
-        }
-    },
     "raydium-perps": {
         id: "5729",
     },
-    "wavex": {
-        id: "5737",
-        protocolsData: {
-            "derivatives": {
-                id: "5737",
-            }
-        }
-    },
     "citrex-markets": {
         id: "5641",
-        protocolsData: {
-            "derivatives": {
-                id: "5641",
-            }
-        }
-
     },
     "flexperp": {
         id: "5843"
@@ -823,14 +448,6 @@ export default {
     "desk": {
         id: "5813"
     },
-    "rfx": {
-        id: "5406",
-        protocolsData: {
-            "rfx-trade": {
-                id: "5406"
-            }
-        }
-    },
     "extended": {
         id: "5887"
     },
@@ -840,10 +457,9 @@ export default {
     "vest": {
         id: "4400"
     },
-    "goosefx_v2": {
-        enabled: false, // team asked to have adapter moved to dexs config
-        id: "5998"
-    },
+    // "goosefx_v2": { // team asked to have adapter moved to dexs config
+    //     id: "5998"
+    // },
     "zo": {
         id: "6018"
     },
@@ -868,4 +484,233 @@ export default {
     "vanilla-finance-perps": {
         id: "6079",
     },
+
+    "gmx-derivatives": {
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1692230400": true
+            }
+        },
+        "displayName": "GMX - Derivatives V1",
+        id: "337",
+    },
+    "metavault_trade-metavault-derivative": {
+        id: "1801"
+    },
+    "morphex-derivatives": {
+        "displayName": "Morphex - Derivatives",
+        id: "2662",
+    },
+    "covo-v2-derivatives": {
+        "displayName": "Covo V2 - Derivatives",
+        id: "2730",
+        "cleanRecordsConfig": {
+            "genuineSpikes": true
+        }
+    },
+    "spacedex-derivatives": {
+        id: "2814",
+        "displayName": "SpaceDex - Derivatives"
+    },
+    "level-finance-level-finance-derivative": {
+        "displayName": "Level Finance - Derivatives",
+        id: "2395",
+    },
+    "el-dorado-exchange-derivatives": {
+        id: "2356",
+        "category": "Dexs",
+        "displayName": "El Dorado Exchange - Derivatives"
+    },
+    "fulcrom-finance-derivatives": {
+        id: "2641",
+        "displayName": "Fulcrom - Derivatives"
+    },
+    "vertex-protocol-derivatives": {
+        id: "2899",
+    },
+    "voodoo-trade-derivatives": {
+        id: "3792",
+    },
+    "pinnako-derivatives": {
+        id: "3209",
+        "category": "Dexs"
+    },
+    "y2k-v1": {
+        id: "2375"
+    },
+    "y2k-v2": {
+        id: "3056"
+    },
+    "drift-protocol-derivatives": {
+        id: "970"
+    },
+    "grizzly-trade-derivatives": {
+        id: "3301"
+    },
+    "ktx-derivatives": {
+        id: "3025"
+    },
+    "gmx-v2-gmx-v2-trade": {
+        "displayName": "GMX - Derivatives V2",
+        id: "3365"
+    },
+    // "meridian-trade-derivatives": {
+    //     id: "3386"
+    // },
+    "morphex-old-derivatives": {
+        "displayName": "Morphex - Derivatives",
+        id: "3483",
+    },
+    "nether-fi-derivatives": {
+        id: "3509"
+    },
+    "bmx-derivatives": {
+        id: "3530"
+    },
+    "mango-v4-perp": {
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1695081600": true
+            }
+        },
+        id: "3174"
+    },
+    "blex-derivatives": {
+        id: "3605"
+    },
+    "swapbased-perps": {
+        id: "3373"
+    },
+    // "derivio-derivatives": {
+    //     id: "3759"
+    // },
+    "beamex-beamex-perps": {
+        id: "3251"
+    },
+    "orderly-network-orderly-network-derivatives": {
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1722816000": true
+            }
+        },
+        id: "2264"
+    },
+    "helix-helix-perp": {
+        id: "5074"
+    },
+    "lexer-derivatives": {
+        id: "4087"
+    },
+    "demex-demex-perp": {
+        id: "2001"
+    },
+    "blitz-derivatives": {
+        id: "4214"
+    },
+    "nlx-nlx-trade": {
+        id: "4568"
+    },
+    "amped-derivatives": {
+        id: "3833"
+    },
+    "wavex-derivatives": {
+        id: "5737"
+    },
+    "rfx-rfx-trade": {
+        id: "5406"
+    },
+    "moonlander": {
+        id: "5658"
+    },
+    "kanalabs-perp": {
+        id: "6175"
+    },
+    "grvt-perps": {
+        id: "5599"
+    },
+    "rho-protocol": {
+        id: "6226"
+    },
+    "strike-finance": {
+        id: "6173"
+    },
+    "reya-dex": { id: '4978' },
+    "alkimiya": {
+        id: "6344"
+    },
+    "privex": {
+        id: "6419"
+    },
+    "k-bit": {
+        id: "6446"
+    },
+    "elys-perp": {
+        id: "6450"
+    },
+    "bluefin-pro": {
+        id: "6451"
+    },
+    "ostrich": {
+        id: "6442"
+    },
+    "hibachi": {
+        id: "6467"
+    },
+    "axiom-perps": {
+        id: "6511"
+    },
+    "phantom-perps": {
+        id: "6512"
+    },
+    "pvp-trade": {
+        id: "6510"
+    },
+    "okto-wallet": {
+        id: "6513"
+    },
+    "based-app": {
+        id: "6521"
+    },
+    "dexari": {
+        id: "6531"
+    },
+    "insilico": {
+        id: "6543"
+    },
+    "liquid-perps": {
+        id: "6544"
+    },
+    "lootbase": {
+        id: "6545"
+    },
+    "mass-dot-money": {
+        id: "6546"
+    },
+    "dextrabot": {
+        id: "6558"
+    },
+    "hyperdash": {
+        id: "6559"
+    },
+    "kinto-xyz": {
+        id: "6560"
+    },
+    "superX": {
+        id: "6561"
+    },
+    "wallet-v": {
+        id: "6562"
+    },
+    "rollx": {
+        id: "5973"
+    },
+    "aden": {
+        id: "6567"
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
+    "clob": {
+        id: "6607"
+    }
 } as AdaptorsConfig

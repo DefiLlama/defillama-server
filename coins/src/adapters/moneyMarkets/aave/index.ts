@@ -57,6 +57,12 @@ export function hyperlend(timestamp: number = 0) {
   return getTokenPrices("hyperliquid", "0x24E301BcBa5C098B3b41eA61a52bFe95Cb728b20", null, "v3", timestamp);
 }
 
+export function hypurrfi(timestamp: number = 0) {
+  return getTokenPrices("hyperliquid", "0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594", null, "v3", timestamp, {
+    lendingPool: "0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b",
+  });
+}
+
 export function sparkLend(timestamp: number = 0) {
   return Promise.all([
      getTokenPrices("ethereum", "0x03cFa0C4622FF84E50E75062683F44c9587e6Cc1", null, "v3", timestamp),
@@ -73,5 +79,6 @@ export const adapters = {
   //klap,
   //valas,
   hyperlend, 
+  hypurrfi, 
   sparkLend
 };

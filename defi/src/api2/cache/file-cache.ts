@@ -76,7 +76,12 @@ async function storeData(subPath: string, data: any) {
   const filePath = path.join(CACHE_DIR!, subPath)
   const dirPath = path.dirname(filePath)
   await ensureDirExists(dirPath)
-  return fs.promises.writeFile(filePath, JSON.stringify(data))
+  try {
+    return await fs.promises.writeFile(filePath, JSON.stringify(data))
+  } catch (e) {
+    log(`Error storing data to ${filePath}:`, (e as any)?.message)
+    return null
+  }
 }
 
 async function readFileData(subPath: string) {
@@ -111,8 +116,9 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
+// it is no longer needed thanks to change to deleteFromPGCache
 // ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
-let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.8'  // update the version number to reset the cache
+let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.9'  // update the version number to reset the cache
 if (process.env.LLAMA_RUN_LOCAL === 'true') {
   TVL_CACHE_FOLDER = 'tvl-cache-daily'
 }
@@ -144,6 +150,12 @@ export function getDailyTvlCacheId(id: string) {
 
 export async function deleteFromPGCache(key: string) {
   log('Deleting from db cache:', key)
+  let keySplit = key.split('/')
+  if (typeof keySplit[1] === 'string' && keySplit[1].startsWith('tvl-cache-daily')) {
+    keySplit[1] = TVL_CACHE_FOLDER
+    key = keySplit.join('/');
+    log("delete key changed to:", key)
+  }
   const id = getCacheFile(key)
   return deleteFileData(id)
 }
@@ -184,4 +196,38 @@ export async function readTvlCacheAllFile() {
   }
 
   return { ...restCache, allTvlData }
+}
+
+
+export async function readHistoricalTVLMetadataFile() {
+  const restCache = await readFromPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META)
+  if (!restCache) return {}
+  const { tvlEntryCount } = restCache
+  const historicalProtocolTvls: any = []
+  for (let i = 0; i < tvlEntryCount; i++) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    const chunk = await readFromPGCache(key)
+    historicalProtocolTvls.push(...chunk)
+  }
+
+  return { ...restCache, historicalProtocolTvls }
+}
+
+// allTvlData is quite big, so we need to chunk it
+// into smaller pieces to avoid hitting the file size limit, json.stringify error
+export async function storeHistoricalTVLMetadataFile(data: any) {
+  if (typeof data !== 'object') {
+    throw new Error('Invalid data type. Expected an object.')
+  }
+  const { historicalProtocolTvls = {}, ...restCache } = data
+  const chunkedTvlEntries = sliceIntoChunks(historicalProtocolTvls, 1000)
+  restCache.tvlEntryCount = chunkedTvlEntries.length
+
+  await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, restCache)
+  let i = 0
+  for (const chunk of chunkedTvlEntries) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    await writeToPGCache(key, chunk)
+    i++
+  }
 }

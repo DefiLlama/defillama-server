@@ -1,4 +1,3 @@
-
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
@@ -6,19 +5,18 @@ import { getTimestampString } from "../../src/api2/utils";
 import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
-
-const adapterTypes = Object.values(AdapterType)
+import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 const recordItems: any = {}
 
 export const dimensionFormChoices: any = {
-  adapterTypes,
+  adapterTypes: ADAPTER_TYPES,
   adapterTypeChoices: {},
 }
 
-adapterTypes.forEach((adapterType: any) => {
+ADAPTER_TYPES.forEach((adapterType: any) => {
   const { protocolAdaptors } = loadAdaptorsData(adapterType)
   dimensionFormChoices.adapterTypeChoices[adapterType] = protocolAdaptors.map((p: any) => p.displayName)
 })
@@ -40,8 +38,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
   let protocol = protocolAdaptors.find(p => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
 
   if (!protocol) {
-    console.error('Protocol not found')
-    return;
+    throw new Error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
   }
 
   if (fromTimestamp > toTimestamp) {
@@ -49,16 +46,12 @@ export async function runDimensionsRefill(ws: any, args: any) {
     return;
   }
 
-
   let i = 0
-  const items: any = []
+  let items: IStoreAdaptorDataHandlerEvent[] = []
   let timeSWithData = new Set()
   let days = getDaysBetweenTimestamps(fromTimestamp, toTimestamp)
 
-
   if (args.onlyMissing) {
-
-
     const allTimeSData = await getAllDimensionsRecordsTimeS({ adapterType: adapterType as any, id: protocol.id2 })
     timeSWithData = new Set(allTimeSData.map((d: any) => d.timeS))
     allTimeSData.sort((a: any, b: any) => a.timestamp - b.timestamp)
@@ -82,10 +75,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
       }
       lastTimestamp -= ONE_DAY_IN_SECONDS
     } while (lastTimestamp > firstTimestamp)
-
-
   } else {
-
     let currentDayEndTimestamp = toTimestamp
 
     while (days >= 0) {
@@ -102,14 +92,12 @@ export async function runDimensionsRefill(ws: any, args: any) {
       days--
       currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
-
   }
 
   const { errors } = await PromisePool
     .withConcurrency(args.parallelCount)
     .for(items)
     .process(async (eventObj: any) => {
-
       console.log(++i, 'refilling data on', new Date((eventObj.timestamp) * 1000).toLocaleDateString())
       const response = await handler2(eventObj)
       if (checkBeforeInsert && response?.length)
@@ -117,8 +105,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
           if (!r) return;
           recordItems[r.id] = r
         })
+      sendWaitingRecords(ws)
     })
-
 
   const runTime = ((+(new Date) - start) / 1e3).toFixed(1)
   console.log(`[Done] | runtime: ${runTime}s  `)
@@ -133,7 +121,6 @@ export async function runDimensionsRefill(ws: any, args: any) {
   }
 }
 
-
 function getDaysBetweenTimestamps(from: number, to: number): number {
   return Math.round((to - from) / ONE_DAY_IN_SECONDS)
 }
@@ -145,7 +132,6 @@ export function removeWaitingRecords(ws: any, ids: any) {
 }
 
 export async function storeAllWaitingRecords(ws: any) {
-
   const allRecords = Object.entries(recordItems)
   // randomize the order of the records
   allRecords.sort(() => Math.random() - 0.5)
@@ -154,7 +140,7 @@ export async function storeAllWaitingRecords(ws: any) {
     .withConcurrency(11)
     .for(allRecords)
     .process(async ([id, record]: any) => {
-      if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
+      // if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
       const { storeRecordV2Function, storeDDBFunctions } = record as any
       if (storeRecordV2Function) await storeRecordV2Function()
       if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))
@@ -169,7 +155,7 @@ export async function storeAllWaitingRecords(ws: any) {
   sendWaitingRecords(ws)
 }
 
-function sendWaitingRecords(ws: any) {
+export function sendWaitingRecords(ws: any) {
   ws.send(JSON.stringify({
     type: 'waiting-records',
     data: Object.values(recordItems).map(getRecordItem),

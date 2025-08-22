@@ -1,25 +1,38 @@
 import dimensionConfigs from "../adaptors/data/configs";
-import { baseIconsUrl } from "../constants";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
-import protocols from "./data";
+import protocols, { protocolsById } from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
+import { sluggifyString } from "../utils/sluggify";
+import { AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
+  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
   for (const [metric, map] of Object.entries(dimensionConfigs)) {
     const ids = new Set();
     for (const value of Object.values(map)) {
-      if (!value.enabled) continue;
-      const id = value.isChain ? 'chain#'+value.id : value.id
-      if (ids.has(id)) console.log(`Dimensions: Repeated id ${id} in ${metric}`)
-      expect(ids).not.toContain(id);
-      ids.add(id);
+      if (chainIdSet.has(value.id)) continue;
+      if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
+      expect(ids).not.toContain(value.id);
+      ids.add(value.id);
     }
   }
+})
+test("Dimensions: no unknown ids", async () => {
+  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
+  let failed = false;
+  for (const [metric, map] of Object.entries(dimensionConfigs)) {
+    for (const value of Object.values(map)) {
+      if (chainIdSet.has(value.id) || protocolsById[value.id]) continue;
+      console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
+      failed = true
+    }
+  }
+  expect(failed).toBeFalsy();
 })
 
 test("operational expenses: script has been run", async () => {
@@ -91,7 +104,7 @@ test("valid treasury fields", async () => {
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function'  && _module !== '_lmtf')|| !treasuryKeys.has(key))
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
       }
     }
@@ -173,6 +186,16 @@ test("no name is repeated", async () => {
   }
 });
 
+test("no slug is repeated", async () => {
+  const slugs = new Set();
+  for (const protocol of (protocols).concat(parentProtocols as any)) {
+    const slug = sluggifyString(protocol.name.trim());
+    expect(slugs).not.toContain(slug);
+    slugs.add(slug);
+  }
+});
+
+
 test("all oracle names match exactly", async () => {
   const oracles = {} as any;
   for (const protocol of (protocols).concat(parentProtocols as any)) {
@@ -198,6 +221,21 @@ test("no coingeckoId is repeated", async () => {
   }
 });
 
+test("forkedFromIds are valid protocol ids", async () => {
+  const existingIds = new Set(protocols.map(p => p.id));
+  for (const protocol of protocols) {
+    if (protocol.forkedFromIds) {
+      for (const forkedId of protocol.forkedFromIds) {
+        // Check that forkedId is a string number
+        expect(typeof forkedId).toBe('string');
+        expect(isNaN(Number(forkedId))).toBe(false);
+        // Check that forkedId exists as a protocol id
+        expect(existingIds).toContain(forkedId);
+      }
+    }
+  }
+});
+
 
 test("no surprise category", async () => {
   const whitelistedCategories = [
@@ -215,7 +253,6 @@ test("no surprise category", async () => {
     'Derivatives',
     'Payments',
     'Privacy',
-    'Staking',
     'Yield',
     'RWA',
     'Indexes',
@@ -279,7 +316,14 @@ test("no surprise category", async () => {
     'DOR',
     'Collateral Management',
     'Meme',
-    'Private Investment Platform'
+    'Private Investment Platform',
+    'Risk Curators',
+    'Chain Bribes',
+    'DAO Service Provider',
+    'Staking Rental',
+    'Canonical Bridge',
+    'Interface',
+    "Video Infrastructure"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -310,3 +354,10 @@ test("icon exists", async () => {
   }
 });
 */
+
+
+const isArrayUnique = (arr: any[]) => Array.isArray(arr) && new Set(arr).size === arr.length;
+test("No duplicated adapter type", async () => {
+    const values = Object.values(AdaptorRecordType)
+    expect(isArrayUnique(values)).toBeTruthy();
+});

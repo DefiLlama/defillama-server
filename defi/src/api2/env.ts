@@ -27,6 +27,7 @@ export default function getTvlCacheEnv() {
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
 
   if (ENV.DEV_METRICS_DB_CONFIG) {
+    console.log("Loading DEV_METRICS_DB_CONFIG from JSON config", ENV.DEV_METRICS_DB_CONFIG);
     const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG);
     ENV.DEV_METRICS_DB_NAME = metricsConfig.db_name;
     ENV.DEV_METRICS_DB_HOST = metricsConfig.host;

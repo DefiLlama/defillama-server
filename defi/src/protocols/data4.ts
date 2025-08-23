@@ -8612,7 +8612,7 @@ const data4: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Fallback",
+        type: "Secondary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       },
       {

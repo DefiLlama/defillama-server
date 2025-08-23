@@ -217,6 +217,8 @@ export function getBetaServerUrl(prodServerUrl: string): string {
       betaBaseUrl = process.env.BETA_YIELDS_URL || process.env.BETA_API_URL || '';
     } else if (prodUrl.hostname === 'api.llama.fi') {
       betaBaseUrl = process.env.BETA_API_URL || '';
+    } else if (prodUrl.hostname === 'pro-api.llama.fi') {
+      betaBaseUrl = process.env.BETA_PRO_API_URL || process.env.BETA_API_URL || '';
     } else if (prodUrl.hostname === 'bridges.llama.fi') {
       betaBaseUrl = process.env.BETA_BRIDGES_URL || process.env.BETA_API_URL || '';
     } else {
@@ -936,6 +938,7 @@ export function validateBetaConfiguration(): { isValid: boolean; warnings: strin
     { key: 'BETA_COINS_URL', domain: 'coins.llama.fi' },
     { key: 'BETA_STABLECOINS_URL', domain: 'stablecoins.llama.fi' },
     { key: 'BETA_YIELDS_URL', domain: 'yields.llama.fi' },
+    { key: 'BETA_PRO_API_URL', domain: 'pro-api.llama.fi' },
     { key: 'BETA_BRIDGES_URL', domain: 'bridges.llama.fi' }
   ];
   

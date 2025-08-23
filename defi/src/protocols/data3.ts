@@ -33942,7 +33942,7 @@ const data3_2: Protocol[] = [
     name: "Pond0x",
     address: "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
     symbol: "PNDC",
-    url: "https://www.pondcoin.com/",
+    url: "http://pond0x.com/",
     description:
       "Pond DEX is a platform that aggregates liquidity for swaps at optimal rates, returning generated fees as claimable rewards",
     chain: "Ethereum",

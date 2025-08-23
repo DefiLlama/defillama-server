@@ -2,7 +2,7 @@ const ENV = process.env
 
 
 if (ENV.DEV_METRICS_DB_CONFIG) {
-  const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG.replace(/\\"/g, '"')) // replace escaped quotes
+  const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG.replace(/(\\)+"/g, '"')) // replace escaped quotes
   ENV.DEV_METRICS_DB_NAME = metricsConfig.db_name;
   ENV.DEV_METRICS_DB_HOST = metricsConfig.host;
   ENV.DEV_METRICS_DB_PORT = metricsConfig.port;

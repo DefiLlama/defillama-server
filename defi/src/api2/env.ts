@@ -28,8 +28,8 @@ export default function getTvlCacheEnv() {
 
   if (ENV.DEV_METRICS_DB_CONFIG) {
     console.log('debug', ENV.DEV_METRICS_DB_CONFIG)
-    console.log('debug', ENV.DEV_METRICS_DB_CONFIG.replace(/\\"/g, '"'))
-    const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG.replace(/\\"/g, '"')) // replace escaped quotes
+    console.log('debug', ENV.DEV_METRICS_DB_CONFIG.replace(/(\\)+"/g, '"'))
+    const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG.replace(/(\\)+"/g, '"')) // replace escaped quotes
     ENV.DEV_METRICS_DB_NAME = metricsConfig.db_name;
     ENV.DEV_METRICS_DB_HOST = metricsConfig.host;
     ENV.DEV_METRICS_DB_PORT = metricsConfig.port;
@@ -40,8 +40,8 @@ export default function getTvlCacheEnv() {
 
   if (ENV.TVL_CACHE_DB_CONFIG) {
     console.log('debug', ENV.TVL_CACHE_DB_CONFIG)
-    console.log('debug', ENV.TVL_CACHE_DB_CONFIG.replace(/\\"/g, '"'))
-    const tvlCacheConfig = JSON.parse(ENV.TVL_CACHE_DB_CONFIG.replace(/\\"/g, '"')) // replace escaped quotes
+    console.log('debug', ENV.TVL_CACHE_DB_CONFIG.replace(/(\\)+"/g, '"'))
+    const tvlCacheConfig = JSON.parse(ENV.TVL_CACHE_DB_CONFIG.replace(/(\\)+"/g, '"')) // replace escaped quotes
     ENV.TVL_CACHE_DB_NAME = tvlCacheConfig.db_name;
     ENV.TVL_CACHE_DB_HOST = tvlCacheConfig.host;
     ENV.TVL_CACHE_DB_PORT = tvlCacheConfig.port;

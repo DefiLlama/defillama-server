@@ -8612,13 +8612,13 @@ const data4: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Fallback",
+        type: "Secondary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       },
       {
         name: "RedStone",
-        type: "Fallback",
-        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"]
+        type: "Primary",
+        proof: ["https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D","https://github.com/DefiLlama/defillama-server/pull/10443/"]
       }
     ],
     twitter: "hyperlendx",

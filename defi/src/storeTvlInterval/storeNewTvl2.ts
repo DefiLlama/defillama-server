@@ -106,6 +106,7 @@ export default async function (
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
       if (
+        !process.env.UI_TOOL_MODE && // skip check if it run from the UI tool
         timeElapsed < (timeLimitDisableHours * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
@@ -148,7 +149,7 @@ export default async function (
       })
       if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
         console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
-        if (lastHourlyTVL > 1e5) {
+        if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
           const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
           await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
           throw new Error(errorMessage);

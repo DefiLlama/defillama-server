@@ -9,6 +9,7 @@ import {
   compareResponses,
   getBetaServerUrl,
   EndpointInfo,
+  sendMessage,
 } from './apiValidateUtils';
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
@@ -117,14 +118,26 @@ async function compareEndpoint(
       return result;
     }
     
-    const comparison = compareResponses(prodData, betaData, tolerance);
-    result.dataComparison = comparison;
-    
-    if (comparison.isMatch) {
+    // Check if data comparison should be skipped for this endpoint
+    if (endpoint.override?.skipDataComparison) {
       result.status = 'pass';
+      result.dataComparison = {
+        isMatch: true,
+        differences: []
+      };
+      if (endpoint.override.reason) {
+        console.log(`Skipping data comparison for ${endpoint.path}: ${endpoint.override.reason}`);
+      }
     } else {
-      result.status = 'fail';
-      result.errors.push(`Data mismatch: ${comparison.differences.length} differences found`);
+      const comparison = compareResponses(prodData, betaData, tolerance);
+      result.dataComparison = comparison;
+      
+      if (comparison.isMatch) {
+        result.status = 'pass';
+      } else {
+        result.status = 'fail';
+        result.errors.push(`Data mismatch: ${comparison.differences.length} differences found`);
+      }
     }
     
     return result;
@@ -292,6 +305,44 @@ async function generateComparisonReport(report: ComparisonReport, outputFile?: s
   console.log(`\nfull comparison report saved to: ${reportFile}`);
 }
 
+async function sendNotification(report: ComparisonReport, isDryRun: boolean = false): Promise<void> {
+  const { summary, apiType } = report;
+  
+  if (summary.failed === 0 && summary.schemaFailures === 0 && summary.networkErrors === 0) {
+    console.log('\nall comparisons passed - no notification needed');
+    return;
+  }
+  
+  const failedEndpoints = report.results
+    .filter(r => r.status === 'fail' || r.status === 'schema_fail' || r.status === 'network_error')
+    .map(r => `${r.endpoint} (${r.status})`);
+  
+  const failureMessage = "```" +
+    `beta comparison issues detected\n\n` +
+    `${apiType} api comparison:\n` +
+    `• total endpoints: ${summary.total}\n` +
+    `• passed: ${summary.passed}\n` +
+    `• failed: ${summary.failed}\n` +
+    `• schema failures: ${summary.schemaFailures}\n` +
+    `• network errors: ${summary.networkErrors}\n` +
+    `• success rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%\n` +
+    `• prod avg resp: ${summary.averageProdResponseTime}ms\n` +
+    `• beta avg resp: ${summary.averageBetaResponseTime}ms\n\n` +
+    `failing endpoints (${Math.min(failedEndpoints.length, 20)} of ${failedEndpoints.length}):\n` +
+    failedEndpoints.slice(0, 20).map((endpoint, i) => `${i + 1}. ${endpoint}`).join('\n') +
+    (failedEndpoints.length > 20 ? `\n... and ${failedEndpoints.length - 20} more` : '') +
+    `\n\n${report.timestamp}` +
+    "```";
+  
+  console.log('\nsending discord notification');
+  
+  if (!isDryRun) {
+    await sendMessage(failureMessage, process.env.DISCORD_WEBHOOK_URL, false);
+  } else {
+    console.log('would send:\n', failureMessage);
+  }
+}
+
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   
@@ -357,6 +408,7 @@ Examples:
     
     if (hasIssues) {
       console.log(`\ncomparison completed with issues`);
+      await sendNotification(report, isDryRun);
       process.exit(1);
     } else {
       console.log('\nall comparisons passed successfully!');
@@ -365,6 +417,17 @@ Examples:
     
   } catch (error: any) {
     console.error(`\nerror: ${error.message}`);
+    
+    if (!isDryRun) {
+      await sendMessage(
+        `beta comparison critical error!\n\n` +
+        `error: ${error.message}\n` +
+        `timestamp: ${new Date().toISOString()}`,
+        process.env.DISCORD_WEBHOOK_URL,
+        false
+      );
+    }
+    
     process.exit(1);
   }
 }

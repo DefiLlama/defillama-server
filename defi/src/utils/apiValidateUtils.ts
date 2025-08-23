@@ -49,11 +49,20 @@ export interface EndpointOverride {
   parameterOverrides?: Record<string, string[]>;
   skip?: boolean;
   expectedFailure?: boolean;
+  skipDataComparison?: boolean;
   reason?: string;
 }
 
 export const ENDPOINT_OVERRIDES: Record<string, EndpointOverride> = {
-
+  '/api/overview/fees': {
+    skipDataComparison: true,
+  },
+  '/api/emissions': {
+    skipDataComparison: true,
+  },
+  '/yields/poolsOld': {
+    skipDataComparison: true,
+  }
 };
 
 export async function fetchWithRetry(

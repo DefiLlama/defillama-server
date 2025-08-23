@@ -8603,7 +8603,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D
+        proof: ["https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D","https://github.com/DefiLlama/defillama-server/pull/10443/"]
       }
     ],
     twitter: "hyperlendx",

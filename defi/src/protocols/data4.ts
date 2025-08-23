@@ -6357,15 +6357,23 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     oraclesBreakdown: [
-      {
+       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
+        proof: ["https://docs.flex.trade/#product-features"],
+        endDate: '2025-08-15'
       },
       {
         name: "Chainlink",
         type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
+        proof: ["https://docs.flex.trade/#product-features"],
+        endDate: '2025-08-15'
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.flex.trade/oracles"],
+        startDate: '2025-08-15'
       }
     ],
     forkedFromIds: ["2296"],

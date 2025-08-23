@@ -6942,6 +6942,7 @@ const data3_1: Protocol[] = [
       "https://uswap.me/modules/site/main/assets/audit2.pdf",
     ],
     listedAt: 1684767925,
+    deadUrl: true
   },
   {
     id: "3008",

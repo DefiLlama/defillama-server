@@ -6368,11 +6368,11 @@ const data4: Protocol[] = [
         type: "Aggregator",
         proof: ["https://docs.flex.trade/#product-features"],
         endDate: '2025-08-15'
-      }
+      },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.flex.trade/oracles"]
+        proof: ["https://docs.flex.trade/oracles"],
         startDate: '2025-08-15'
       }
     ],

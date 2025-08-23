@@ -24,6 +24,7 @@ import * as sdk from '@defillama/sdk'
 import { RUN_TYPE } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
+import { getDALayersInternal } from "../../getDALayers";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -58,6 +59,7 @@ async function run() {
   await writeOracles()
   await writeForks()
   await writeCategories()
+  await writeDALayers()
 
   console.time('write /langs')
   await storeLangs(processProtocolsOptions)
@@ -334,6 +336,14 @@ async function run() {
     console.time(debugString)
     const data = await getOraclesInternal(processProtocolsOptions)
     await storeRouteData('oracles', data)
+    console.timeEnd(debugString)
+  }
+
+  async function writeDALayers() {
+    const debugString = 'write /da-layers'
+    console.time(debugString)
+    const data = await getDALayersInternal(processProtocolsOptions)
+    await storeRouteData('da-layers', data)
     console.timeEnd(debugString)
   }
 

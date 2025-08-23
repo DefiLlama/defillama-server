@@ -1,3 +1,6 @@
+import { setConfig } from './utils/config';
+await setConfig();
+
 process.env.IS_NOT_SCRIPT_MODE = 'TRUE'
 const path = require('path');
 

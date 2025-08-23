@@ -5,11 +5,11 @@ const requiredEnvVars = ['TVL_CACHE_DB_NAME', 'TVL_CACHE_DB_HOST', 'TVL_CACHE_DB
 
 export function validateEnv() {
   const ENV = process.env
-  const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
+  // const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
 
   // if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
 
-  if (requiredEnvVars.some((envVar) => !ENV[envVar]))
+  if (requiredEnvVars.some((envVar) => !ENV[envVar]) && !ENV.TVL_CACHE_DB_CONFIG)
     throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)
 }
 
@@ -25,6 +25,26 @@ export default function getTvlCacheEnv() {
   if (!process.env.API2_CACHE_DIR) process.env.API2_CACHE_DIR = __dirname + '/.api2-cache'
 
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
+
+  if (ENV.DEV_METRICS_DB_CONFIG) {
+    const metricsConfig = JSON.parse(ENV.DEV_METRICS_DB_CONFIG);
+    ENV.DEV_METRICS_DB_NAME = metricsConfig.db_name;
+    ENV.DEV_METRICS_DB_HOST = metricsConfig.host;
+    ENV.DEV_METRICS_DB_PORT = metricsConfig.port;
+    ENV.DEV_METRICS_DB_USERNAME = metricsConfig.user;
+    ENV.DEV_METRICS_DB_PASSWORD = metricsConfig.password;
+    ENV.DEV_METRICS_DB_HOST_INTERNAL = metricsConfig.internalHost;
+  }
+
+  if (ENV.TVL_CACHE_DB_CONFIG) {
+    const tvlCacheConfig = JSON.parse(ENV.TVL_CACHE_DB_CONFIG);
+    ENV.TVL_CACHE_DB_NAME = tvlCacheConfig.db_name;
+    ENV.TVL_CACHE_DB_HOST = tvlCacheConfig.host;
+    ENV.TVL_CACHE_DB_PORT = tvlCacheConfig.port;
+    ENV.TVL_CACHE_DB_USERNAME = tvlCacheConfig.user;
+    ENV.TVL_CACHE_DB_PASSWORD = tvlCacheConfig.password;
+    ENV.TVL_CACHE_DB_HOST_INTERNAL = tvlCacheConfig.internalHost;
+  }
 
   return {
     tableName: ENV.tableName,

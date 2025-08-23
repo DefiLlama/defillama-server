@@ -53,8 +53,7 @@ async function compareEndpoint(
   tolerance: number = 0.1
 ): Promise<ComparisonResult> {
   const prodUrl = `${endpoint.serverUrl}${endpoint.path}`;
-  const betaServerUrl = getBetaServerUrl(endpoint.serverUrl);
-  const betaUrl = `${betaServerUrl}${endpoint.path}`;
+  const betaUrl = getBetaServerUrl(prodUrl);
   
   const result: ComparisonResult = {
     endpoint: endpoint.path,
@@ -198,7 +197,7 @@ async function compareAllEndpoints(
         const failedResult: ComparisonResult = {
           endpoint: endpoint.path,
           prodUrl: `${endpoint.serverUrl}${endpoint.path}`,
-          betaUrl: `${getBetaServerUrl(endpoint.serverUrl)}${endpoint.path}`,
+          betaUrl: getBetaServerUrl(`${endpoint.serverUrl}${endpoint.path}`),
           status: 'network_error',
           schemaValidation: {
             prod: { valid: false, errors: [] },

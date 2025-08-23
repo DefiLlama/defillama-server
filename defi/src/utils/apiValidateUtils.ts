@@ -203,11 +203,41 @@ export function getServerUrl(endpoint: string, spec: any, apiType: 'free' | 'pro
 }
 
 export function getBetaServerUrl(prodServerUrl: string): string {
-  if (prodServerUrl.includes('api.llama.fi')) {
-    return prodServerUrl.replace('api.llama.fi', process.env.BETA_API_URL?.replace('https://', '') || '');
+  try {
+    const prodUrl = new URL(prodServerUrl);
+    const path = prodUrl.pathname;
+    
+    let betaBaseUrl = '';
+    
+    if (prodUrl.hostname === 'coins.llama.fi') {
+      betaBaseUrl = process.env.BETA_COINS_URL || process.env.BETA_API_URL || '';
+    } else if (prodUrl.hostname === 'stablecoins.llama.fi') {
+      betaBaseUrl = process.env.BETA_STABLECOINS_URL || process.env.BETA_API_URL || '';
+    } else if (prodUrl.hostname === 'yields.llama.fi') {
+      betaBaseUrl = process.env.BETA_YIELDS_URL || process.env.BETA_API_URL || '';
+    } else if (prodUrl.hostname === 'api.llama.fi') {
+      betaBaseUrl = process.env.BETA_API_URL || '';
+    } else if (prodUrl.hostname === 'bridges.llama.fi') {
+      betaBaseUrl = process.env.BETA_BRIDGES_URL || process.env.BETA_API_URL || '';
+    } else {
+      console.warn(`No beta URL mapping found for domain: ${prodUrl.hostname}`);
+      betaBaseUrl = process.env.BETA_API_URL || '';
+    }
+    
+    if (!betaBaseUrl) {
+      console.warn(`Beta URL not configured for ${prodUrl.hostname}`);
+      return '';
+    }
+    
+    const cleanBaseUrl = betaBaseUrl.replace(/\/$/, '');
+    const cleanPath = path.startsWith('/') ? path : '/' + path;
+    
+    return cleanBaseUrl + cleanPath + prodUrl.search;
+    
+  } catch (error) {
+    console.error(`Error parsing URL ${prodServerUrl}:`, error);
+    return process.env.BETA_API_URL || '';
   }
-  
-  return process.env.BETA_API_URL || '';
 }
 
 function makeFieldsNullable(schema: any, isRoot: boolean = false): any {
@@ -706,11 +736,34 @@ export async function testEndpoint(
       };
     }
     
+    let errorMessage = error.message || 'Unknown error';
+    
+    if (error.code) {
+      errorMessage += ` (${error.code})`;
+    }
+    
+    if (error.response?.status) {
+      errorMessage += ` - HTTP ${error.response.status}`;
+      if (error.response.statusText) {
+        errorMessage += `: ${error.response.statusText}`;
+      }
+    }
+    
+    if (isDebug) {
+      console.log(`Network error for ${fullUrl}:`, errorMessage);
+      console.log('Error details:', {
+        code: error.code,
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        url: fullUrl
+      });
+    }
+    
     return {
       endpoint: endpointInfo.path,
       serverUrl: endpointInfo.serverUrl,
       status: 'fail',
-      errors: [error.message || 'Unknown error'],
+      errors: [errorMessage],
       responseTime,
       override: endpointInfo.override,
       queryParams: endpointInfo.queryParams
@@ -872,6 +925,36 @@ export function buildEndpointDisplayPath(endpoint: string, queryParams?: Record<
   
   const params = new URLSearchParams(queryParams);
   return `${endpoint}?${params.toString()}`;
+}
+
+export function validateBetaConfiguration(): { isValid: boolean; warnings: string[] } {
+  const warnings: string[] = [];
+  let isValid = true;
+  
+  const requiredBetaUrls = [
+    { key: 'BETA_API_URL', domain: 'api.llama.fi' },
+    { key: 'BETA_COINS_URL', domain: 'coins.llama.fi' },
+    { key: 'BETA_STABLECOINS_URL', domain: 'stablecoins.llama.fi' },
+    { key: 'BETA_YIELDS_URL', domain: 'yields.llama.fi' },
+    { key: 'BETA_BRIDGES_URL', domain: 'bridges.llama.fi' }
+  ];
+  
+  for (const { key, domain } of requiredBetaUrls) {
+    const url = process.env[key];
+    if (!url) {
+      warnings.push(`${key} not configured - ${domain} endpoints will fallback to BETA_API_URL`);
+    } else if (!url.startsWith('http')) {
+      warnings.push(`${key} should start with https:// - got: ${url}`);
+      isValid = false;
+    }
+  }
+  
+  if (!process.env.BETA_API_URL) {
+    warnings.push('BETA_API_URL not configured - beta comparison will fail');
+    isValid = false;
+  }
+  
+  return { isValid, warnings };
 }
 
 export { sendMessage } from '../../src/utils/discord';

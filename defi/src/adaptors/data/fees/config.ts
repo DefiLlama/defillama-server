@@ -1849,6 +1849,11 @@ export default {
     },
     "meteora-dlmm": {
         id: "4148",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1755734400": true, // Kanye West token YZY launch
+            }
+        }
     },
     "meteora": {
         id: "385",
@@ -3986,5 +3991,23 @@ export default {
     },
     "binance-alpha": {
         id: "6599"
-    }
+    },
+    "peapods-finance": {
+        id: "4063"
+    },
+    "okie-launch": {
+        id: "6612"
+    },
+    "okieswap-v2": {
+        id: "6601"
+    },
+    "okieswap-v3": {
+        id: "6602"
+    },
+    "livepeer": {
+        id: "6613"
+    },
+    "saddle-finance": {
+        id: "202"
+    },
 } as AdaptorsConfig

@@ -13,7 +13,7 @@ const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().spl
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData, insightsAndToolsData, tastyMetrics]: [
+  const [tvlData, stablecoinsData, frontendPages, tastyMetrics]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -26,10 +26,10 @@ async function generateSearchList() {
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
-    fetch("https://defillama.com/insights-and-tools.json")
+    fetch("https://defillama.com/pages.json")
       .then((r) => r.json())
       .catch((e) => {
-        console.log("Error fetching insights and tools", e);
+        console.log("Error fetching frontend pages", e);
         return {};
       }),
     fetch(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
@@ -144,20 +144,34 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
-  const insights = (insightsAndToolsData["Insights"] ?? []).map((i) => ({
+  const metrics = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `insight_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
     v: tastyMetrics[i.route] ?? 0,
-    type: "Insight",
+    type: "Metric",
   }));
-  const tools = (insightsAndToolsData["Tools"] ?? []).map((t) => ({
+  const tools = (frontendPages["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
     route: t.route,
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
+
+  const otherPages = []
+  for (const category in frontendPages) {
+    if (['Metrics', 'Tools'].includes(category)) continue;
+    for (const page of frontendPages[category]) {
+      otherPages.push({
+        id: `page_${normalize(page.name)}`,
+        name: page.name,
+        route: page.route,
+        v: tastyMetrics[page.route] ?? 0,
+        type: "Insight",
+      });
+    }
+  }
 
   const cexs = cexsData
     .filter((c) => c.slug)
@@ -174,11 +188,12 @@ async function generateSearchList() {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
     stablecoins: stablecoins.sort((a, b) => b.v - a.v),
-    insights: insights.sort((a, b) => b.v - a.v),
+    metrics: metrics.sort((a, b) => b.v - a.v),
     tools: tools.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
     cexs: cexs.sort((a, b) => b.v - a.v),
+    otherPages: otherPages.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -186,17 +201,18 @@ async function generateSearchList() {
       ...results.chains,
       ...results.protocols,
       ...results.stablecoins,
-      ...results.insights,
+      ...results.metrics,
       ...results.tools,
       ...results.categories,
       ...results.tags,
       ...results.cexs,
+      ...results.otherPages,
     ],
     topResults: [
       ...results.chains.slice(0, 3),
       ...results.protocols.slice(0, 3),
       ...results.stablecoins.slice(0, 3),
-      ...results.insights.slice(0, 3),
+      ...results.metrics.slice(0, 3),
       ...results.categories.slice(0, 3),
       ...results.tools.slice(0, 3),
       ...results.tags.slice(0, 3),

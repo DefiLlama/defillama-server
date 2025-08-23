@@ -12182,19 +12182,19 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3243",
-    name: "ZeroLend",
+    name: "ZeroLend Lending",
+    //previousNames: ["ZeroLend"],
     address: "linea:0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
     symbol: "ZERO",
     url: "https://zerolend.xyz/",
     description: `ZeroLend is a powerful decentralized lending protocol built on L2s. Based on Aave V3 and powered by Pyth and Chainlink`,
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/zerolend.png`,
+    logo: `${baseIconsUrl}/zerolend-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "zerolend",
     cmcId: "31076",
     category: "Lending",
-    treasury: "zerolend.js",
     chains: ["zkSync Era"],
     module: "zerolend/index.js",
     twitter: "zerolendxyz",
@@ -12232,7 +12232,7 @@ const data3_1: Protocol[] = [
     ],
     forkedFromIds: ["1599"],
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
-    github: ["zerolend"],
+    parentProtocol: "parent#zerolend",
     listedAt: 1689662621,
   },
   {
@@ -17011,7 +17011,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     twitter: "danogo_2023",
     github: ["danogo2023"],
-    audit_links: ["https://github.com/Danogo2023/bond-dex/tree/master/audits"],
+    audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
     listedAt: 1693321887,
   },
   /*
@@ -31116,22 +31116,21 @@ const data3_1: Protocol[] = [
     symbol: "BLB",
     url: "https://app.blueberry.garden",
     description:
-      "Blueberry allows borrowers to access up to 20x leverage on select DeFi strategies, including yield farming, arbitrage, and leveraged trading.",
-    chain: "Ethereum",
+      "Blueberry offers tokenized yield strategies and curated DeFi ecosystem on Hyperevm.",
+    chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/blueberry-lend.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "blueberry",
     cmcId: null,
-    category: "Leveraged Farming",
-    chains: ["Ethereum"],
+    category: "Yield",
+    chains: ["Hyperliquid L1", "Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "blueberry/index.js",
     twitter: "blueberryFDN",
-    audit_links: ["https://docs.blueberry.garden/security/audits"],
+    audit_links: ["https://docs.blueberry.garden/advanced/contracts-and-audits"],
     listedAt: 1706616985,
-    deadUrl: true,
   },
   {
     id: "4081",
@@ -31248,14 +31247,14 @@ const data3_1: Protocol[] = [
     name: "Garden",
     address: "0x5eed99d066a8caf10f3e4327c1b3d8b673485eed",
     symbol: "SEED",
-    url: "https://garden.finance",
+    url: "https://app.garden.finance/",
     description:
       "Garden is the fastest Bitcoin bridge, enabling cross-chain Bitcoin swaps in as little as 30 seconds. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk for the users.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/garden.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "garden-2",
+    gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
     chains: ["Bitcoin", "Arbitrum"],
@@ -31263,6 +31262,8 @@ const data3_1: Protocol[] = [
     module: "garden/index.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
+    parentProtocol: "parent#garden",
+    listedAt: 1706793085,
   },
   {
     id: "4087",
@@ -38680,10 +38681,16 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"},{chain:"Arbitrum"}]
+      },
+      {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bevm"}]
+        chains: [{chain: "BEVM"}]
       },
       {
         name: "Api3",
@@ -52918,7 +52925,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/8889
+    oraclesBreakdown: [
+		{ 
+			name: "Chainlink", type: "Primary", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/chainlink"],
+			startDate: '2025-08-22'
+		},
+        { 
+		   name: "Pyth", type: "Fallback", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/pyth"] ,
+		   startDate: '2025-08-22' 
+	    },
+		{ 
+		  name: "Pyth", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/8889"] ,
+		  endDate: '2025-08-22' 
+	    }
+	], 
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",
@@ -58647,7 +58667,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions
+    oraclesBreakdown: [ 
+      { 
+        name: "Chainlink", 
+        type: "Primary", 
+        proof: ["https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions"],
+        endDate: "2025-08-13"
+      },
+      { 
+        name: "RedStone", 
+        type: "Primary", 
+        proof: ["https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions"],
+        startDate: "2025-08-13"
+      }
+    ],
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",
@@ -61306,7 +61339,7 @@ const data3_2: Protocol[] = [
   {
     id: "5432",
     name: "Ubeswap V3",
-    address: "celo:0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
+    address: "celo:0x71e26d0E519D14591b9dE9a0fE9513A398101490",
     symbol: "UBE",
     url: "https://ubeswap.org",
     description: "Ubeswap is the leading DEX on Celo network",
@@ -63682,7 +63715,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://lagoon.finance",
     description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-7540 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
+      "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
     audits: "2",

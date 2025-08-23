@@ -710,4 +710,7 @@ export default {
     "bullbit-ai": {
         id: "6584"
     },
+    "clob": {
+        id: "6607"
+    }
 } as AdaptorsConfig

@@ -306,7 +306,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "hyperliquid",
     underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
     address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
-    confidence: 1
+    confidence: 1,
   },
   sUSDa: {
     rate: async ({ api }) => {
@@ -445,7 +445,7 @@ const configs: { [adapter: string]: Config } = {
       const rate = await api.call({
         abi: "function kHYPEToHYPE(uint256) external view returns (uint256)",
         target: "0x62E6fa898761dE2345aB3d507b72c422a2829733",
-        params: '1000000000000000000',
+        params: "1000000000000000000",
       });
       return rate / 1e18;
     },
@@ -465,6 +465,19 @@ const configs: { [adapter: string]: Config } = {
     chain: "goat",
     underlying: "0x02F294cC9Ceb2c80FbA3fD779e17FE191Cc360C4",
     address: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+  },
+  AA_FalconXUSDC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function virtualPrice(address) external view returns (uint256)",
+        target: "0x433D5B175148dA32Ffe1e1A37a939E1b7e79be4d",
+        params: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
   },
 };
 

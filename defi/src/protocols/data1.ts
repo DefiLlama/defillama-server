@@ -8337,7 +8337,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "488",
     name: "Ubeswap V2",
-    address: "celo:0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
+    address: "celo:0x71e26d0E519D14591b9dE9a0fE9513A398101490",
     symbol: "UBE",
     url: "https://ubeswap.org",
     description: "Ubeswap is the leading DEX on Celo network!",
@@ -8721,17 +8721,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://celo.org/audits"],
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
-    oracles: ["cLabs", "RedStone"], // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145
+    oracles: ["cLabs", "RedStone", "Chainlink"], // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145, Chainlink is an official oracle provider: https://www.mento.org/blog/mento-adopts-the-chainlink-data-standard-to-power-decentralized-stablecoins
     oraclesBreakdown: [
       {
         name: "cLabs",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
       {
         name: "RedStone",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://celo.stake.id/#/proposal/145"]
+      },
+       {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://docs.mento.org/mento/overview/core-concepts/oracles-and-price-feeds#oracle-providers"]
       }
     ],
   },
@@ -11006,14 +11011,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "608",
     name: "Cap Finance v1-v3",
-    previousNames: ["Cap"],
+    //previousNames: ["Cap"],
     address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://www.cap.io",
     description:
       "CAP lets you trade crypto markets like BTC/USD and ETH/USD with leverage. It is decentralized, open source, and accessible to everyone.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/cap.jpg`,
+    logo: `${baseIconsUrl}/cap-finance-v1-v3.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

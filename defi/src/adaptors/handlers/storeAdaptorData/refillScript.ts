@@ -263,8 +263,12 @@ async function refillAllProtocols() {
           await handler2(eventObj)
         } catch (error: any) {
           errorCount++
-          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message)
-          if (errorCount > 3) {
+          let errorString = ''
+          try {
+            errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
+          } catch (e) { }
+          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
+          if (errorCount > 7) {
             console.error('Too many errors, stopping the script')
             return
           }

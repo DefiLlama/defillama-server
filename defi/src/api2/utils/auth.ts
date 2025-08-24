@@ -67,21 +67,6 @@ export async function validateSubscriptionAuth(authHeader: string): Promise<{ su
       return { success: true };
     }
 
-    //try legacy just incase
-    if (result.statusCode === 404) {
-      result = await validateSubscriptionType(authHeader, 'legacy');
-      
-      if (result.success) {
-        return { success: true };
-      }
-      
-      return {
-        success: false,
-        error: 'No active subscription found',
-        statusCode: 403
-      };
-    }
-
     return {
       success: false,
       error: result.error || 'Authentication failed',

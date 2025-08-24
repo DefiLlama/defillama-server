@@ -23529,5 +23529,27 @@ const data4: Protocol[] = [
     parentProtocol: "parent#aave",
     listedAt: 1755874807
   },
+  {
+    id: "6622",
+    name: "Kittenswap Algebra",
+    address: null,
+    symbol: "-",
+    url: "https://kittenswap.finance",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/kittenswap-algebra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["3710"],
+    module: "kittenswap-algebra/index.js",
+    twitter: "kittenswaphype",
+    parentProtocol: "parent#kittenswap",
+    listedAt: 1756076063,
+  },
 ];
 export default data4;

@@ -516,14 +516,12 @@ async function _storeAppMetadata() {
     for (const protocol of optionsPremiumData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
-        options: true,
         optionsPremiumVolume: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          options: true,
           optionsPremiumVolume: true,
         };
       }
@@ -537,7 +535,6 @@ async function _storeAppMetadata() {
     for (const chain of optionsPremiumData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        options: true,
         optionsPremiumVolume: true,
       };
     }
@@ -545,14 +542,12 @@ async function _storeAppMetadata() {
     for (const protocol of optionsNotionalData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
-        options: true,
         optionsNotionalVolume: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          options: true,
           optionsNotionalVolume: true,
         };
       }
@@ -566,7 +561,6 @@ async function _storeAppMetadata() {
     for (const chain of optionsNotionalData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        options: true,
         optionsNotionalVolume: true,
       };
     }
@@ -729,21 +723,26 @@ async function _storeAppMetadata() {
       stablecoins: stablecoinsTracked,
       fees: { protocols: 0, chains: 0 },
       revenue: { protocols: 0, chains: 0 },
+      chainFees: { protocols: 0, chains: 0 },
+      chainRevenue: { protocols: 0, chains: 0 },
       holdersRevenue: { protocols: 0, chains: 0 },
       dexs: { protocols: 0, chains: 0 },
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
-      options: { protocols: 0, chains: 0 },
+      optionsPremiumVolume: { protocols: 0, chains: 0 },
+      optionsNotionalVolume: { protocols: 0, chains: 0 },
       bridgeAggregators: { protocols: 0, chains: 0 },
       lending: { protocols: lendingProtocols, chains: 0 },
       treasury: { protocols: 0, chains: 0 },
       emissions: { protocols: 0, chains: 0 },
+      incentives: { protocols: 0, chains: 0 },
       forks: { protocols: 0, chains: 0 },
       oracles: { protocols: 0, chains: 0 },
       cexs: { protocols: 0, chains: 0 },
       bridgedTVL: { protocols: 0, chains: 0 },
       nfts: { protocols: 0, chains: 0 },
+      yields: { protocols: 0, chains: 0 },
     };
 
     for (const p in sortedProtocolData) {
@@ -772,14 +771,20 @@ async function _storeAppMetadata() {
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
       }
-      if (protocol.options) {
-        totalTrackedByMetric.options.protocols += 1;
+      if (protocol.optionsPremiumVolume) {
+        totalTrackedByMetric.optionsPremiumVolume.protocols += 1;
+      }
+      if (protocol.optionsNotionalVolume) {
+        totalTrackedByMetric.optionsNotionalVolume.protocols += 1;
       }
       if (protocol.bridgeAggregators) {
         totalTrackedByMetric.bridgeAggregators.protocols += 1;
       }
       if (protocol.emissions) {
         totalTrackedByMetric.emissions.protocols += 1;
+      }
+      if (protocol.incentives) {
+        totalTrackedByMetric.incentives.protocols += 1;
       }
       if (protocol.treasury) {
         totalTrackedByMetric.treasury.protocols += 1;
@@ -789,6 +794,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.nfts) {
         totalTrackedByMetric.nfts.protocols += 1;
+      }
+      if (protocol.yields) {
+        totalTrackedByMetric.yields.protocols += 1;
       }
     }
 
@@ -806,8 +814,15 @@ async function _storeAppMetadata() {
       }
       if (chain.fees) {
         totalTrackedByMetric.fees.chains += 1;
+      }
+      if (chain.revenue) {
         totalTrackedByMetric.revenue.chains += 1;
-        totalTrackedByMetric.holdersRevenue.chains += 1;
+      }
+      if (chain.chainFees) {
+        totalTrackedByMetric.chainFees.chains += 1;
+      }
+      if (chain.chainRevenue) {
+        totalTrackedByMetric.chainRevenue.chains += 1;
       }
       if (chain.dexs) {
         totalTrackedByMetric.dexs.chains += 1;
@@ -821,14 +836,20 @@ async function _storeAppMetadata() {
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;
       }
-      if (chain.options) {
-        totalTrackedByMetric.options.chains += 1;
+      if (chain.optionsPremiumVolume) {
+        totalTrackedByMetric.optionsPremiumVolume.chains += 1;
+      }
+      if (chain.optionsNotionalVolume) {
+        totalTrackedByMetric.optionsNotionalVolume.chains += 1;
       }
       if (chain.bridgeAggregators) {
         totalTrackedByMetric.bridgeAggregators.chains += 1;
       }
       if (chain.chainAssets) {
         totalTrackedByMetric.bridgedTVL.chains += 1;
+      }
+      if (chain.incentives) {
+        totalTrackedByMetric.incentives.chains += 1;
       }
     }
 

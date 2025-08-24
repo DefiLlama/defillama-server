@@ -30,7 +30,8 @@ const getProtocolSubSections = (
   result: SearchResult,
   metadata: IProtocolMetadata,
   geckoId: string | null,
-  tastyMetrics: Record<string, number>
+  tastyMetrics: Record<string, number>,
+  name: string
 ) => {
   const subSections: Array<SearchResult> = [];
 
@@ -138,7 +139,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_bridgeVolume`,
       subName: "Bridge Volume",
-      route: `/bridge/${standardizeProtocolName(parent.name)}`,
+      route: `/bridge/${standardizeProtocolName(name)}`,
     });
   }
 
@@ -183,7 +184,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_unlocks`,
       subName: "Unlocks",
-      route: `/unlocks/${standardizeProtocolName(parent.name)}`,
+      route: `/unlocks/${standardizeProtocolName(name)}`,
     });
   }
 
@@ -202,7 +203,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_yields`,
       subName: "Yields",
-      route: `/yields?project=${parent.name}`,
+      route: `/yields?project=${name}`,
     });
     subSections.push({
       ...result,
@@ -217,7 +218,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_treasury`,
       subName: "Treasury",
-      route: `/protocol/treasury/${standardizeProtocolName(parent.name)}`,
+      route: `/protocol/treasury/${standardizeProtocolName(name)}`,
     });
   }
 
@@ -226,7 +227,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_forks`,
       subName: "Forks",
-      route: `/protocol/forks/${standardizeProtocolName(parent.name)}`,
+      route: `/protocol/forks/${standardizeProtocolName(name)}`,
     });
   }
 
@@ -321,7 +322,7 @@ async function generateSearchList() {
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
-    const subSections = getProtocolSubSections(result, metadata, parent.gecko_id ?? null, tastyMetrics);
+    const subSections = getProtocolSubSections(result, metadata, parent.gecko_id ?? null, tastyMetrics, parent.name);
     subProtocols.push(...subSections);
   }
 
@@ -342,7 +343,7 @@ async function generateSearchList() {
     protocols.push(result);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
-    const subSections = getProtocolSubSections(result, metadata, protocol.geckoId ?? null, tastyMetrics);
+    const subSections = getProtocolSubSections(result, metadata, protocol.geckoId ?? null, tastyMetrics, protocol.name);
     subProtocols.push(...subSections);
   }
 

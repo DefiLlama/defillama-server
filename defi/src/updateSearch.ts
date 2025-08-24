@@ -32,12 +32,14 @@ const getProtocolSubSections = ({
   geckoId,
   tastyMetrics,
   protocolData,
+  childProtocols,
 }: {
   result: SearchResult;
   metadata: IProtocolMetadata;
   geckoId: string | null;
   tastyMetrics: Record<string, number>;
   protocolData: { name: string; id?: string };
+  childProtocols?: Array<string>;
 }) => {
   const subSections: Array<SearchResult> = [];
 
@@ -208,7 +210,10 @@ const getProtocolSubSections = ({
       ...result,
       id: `${result.id}_yields`,
       subName: "Yields",
-      route: `/yields?project=${protocolData.name}`,
+      route:
+        childProtocols && childProtocols.length > 0
+          ? `/yields?${childProtocols.map((p) => `project=${p}`).join("&")}`
+          : `/yields?project=${protocolData.name}`,
     });
     if (!protocolData?.id?.startsWith("parent#")) {
       subSections.push({
@@ -329,12 +334,14 @@ async function generateSearchList() {
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
+    const childProtocols = tvlData.protocols.filter((p) => p.parentProtocol === parent.id).map((p) => p.name);
     const subSections = getProtocolSubSections({
       result,
       metadata,
       geckoId: parent.gecko_id ?? null,
       tastyMetrics,
       protocolData: parent,
+      childProtocols,
     });
     subProtocols.push(...subSections);
   }

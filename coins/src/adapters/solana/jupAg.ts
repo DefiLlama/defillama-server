@@ -11,7 +11,8 @@ import { addToDBWritesList } from '../utils/database';
 const additionalTokens = [
   'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx', 
   'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu', 
-  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj'
+  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj', 
+  'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o'
 ]
 
 async function getTokensWithCGMapping() {
@@ -20,6 +21,7 @@ async function getTokensWithCGMapping() {
 }
 
 export async function jupAg(timestamp: number) {
+  if (timestamp != 0) throw new Error('jupAg adapter only supports timestamp 0')
   const tokens = await getTokensWithCGMapping()
   let lavaTokens = await getLavaTokens()
   lavaTokens = [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]

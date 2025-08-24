@@ -509,12 +509,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         options: true,
+        optionsPremiumVolume: true
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           options: true,
+          optionsPremiumVolume: true
         };
       }
 
@@ -528,6 +530,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         options: true,
+        optionsPremiumVolume: true
       };
     }
 
@@ -535,12 +538,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         options: true,
+        optionsNotionalVolume: true
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           options: true,
+          optionsNotionalVolume: true
         };
       }
 
@@ -554,6 +559,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         options: true,
+        optionsNotionalVolume: true
       };
     }
 

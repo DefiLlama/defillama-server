@@ -14,6 +14,7 @@ const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().spl
 interface SearchResult {
   id: string;
   name: string;
+  subName?: string;
   symbol?: string;
   route: string;
   logo?: string;
@@ -24,6 +25,216 @@ interface SearchResult {
   hideType?: boolean;
   v: number;
 }
+
+const getProtocolSubSections = (
+  result: SearchResult,
+  metadata: IProtocolMetadata,
+  geckoId: string | null,
+  tastyMetrics: Record<string, number>
+) => {
+  const subSections: Array<SearchResult> = [];
+
+  if (result.tvl) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_tvl`,
+      subName: "TVL",
+      route: `${result.route}?tvl=true`,
+    });
+  }
+
+  if (metadata?.fees) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_fees`,
+      subName: "Fees",
+      route: `${result.route}?tvl=false&fees=true`,
+    });
+  }
+
+  if (metadata?.revenue) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_revenue`,
+      subName: "Revenue",
+      route: `${result.route}?tvl=false&revenue=true`,
+    });
+  }
+
+  if (metadata?.holdersRevenue) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_holdersRevenue`,
+      subName: "Holders Revenue",
+      route: `${result.route}?tvl=false&holdersRevenue=true`,
+    });
+  }
+
+  if (metadata?.dexs) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_dexVolume`,
+      subName: "DEX Volume",
+      route: `${result.route}?tvl=false&dexVolume=true`,
+    });
+  }
+
+  if (metadata?.perps) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_perpVolume`,
+      subName: "Perp Volume",
+      route: `${result.route}?tvl=false&perpVolume=true`,
+    });
+  }
+
+  if (metadata?.optionsPremiumVolume) {
+    subSections.push({
+      ...result,
+      id: `${result.id}optionsPremiumVolume`,
+      subName: "Options Premium Volume",
+      route: `${result.route}?tvl=false&optionsPremiumVolume=true`,
+    });
+  }
+
+  if (metadata?.optionsNotionalVolume) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_optionsNotionalVolume`,
+      subName: "Options Notional Volume",
+      route: `${result.route}?tvl=false&optionsNotionalVolume=true`,
+    });
+  }
+
+  if (metadata?.perpsAggregators) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_perpAggregatorVolume`,
+      subName: "Perp Aggregator Volume",
+      route: `${result.route}?tvl=false&perpAggregatorVolume=true`,
+    });
+  }
+
+  if (metadata?.bridgeAggregators) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_bridgeAggregatorVolume`,
+      subName: "Bridge Aggregator Volume",
+      route: `${result.route}?tvl=false&bridgeAggregatorVolume=true`,
+    });
+  }
+
+  if (metadata?.dexAggregators) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_dexAggregatorVolume`,
+      subName: "DEX Aggregator Volume",
+      route: `${result.route}?tvl=false&dexAggregatorVolume=true`,
+    });
+  }
+
+  if (metadata?.bridge) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_bridgeVolume`,
+      subName: "Bridge Volume",
+      route: `/bridge/${standardizeProtocolName(parent.name)}`,
+    });
+  }
+
+  if (geckoId) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_mcap`,
+      subName: "Mcap",
+      route: `${result.route}?tvl=false&mcap=true`,
+    });
+    subSections.push({
+      ...result,
+      id: `${result.id}_fdv`,
+      subName: "FDV",
+      route: `${result.route}?tvl=false&fdv=true`,
+    });
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenPrice`,
+      subName: "Token Price",
+      route: `${result.route}?tvl=false&tokenPrice=true`,
+    });
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenVolume`,
+      subName: "Token Volume",
+      route: `${result.route}?tvl=false&tokenVolume=true`,
+    });
+  }
+
+  if (metadata?.liquidity) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenLiquidity`,
+      subName: "Token Liquidity",
+      route: `${result.route}?tvl=false&tokenLiquidity=true`,
+    });
+  }
+
+  if (metadata?.emissions) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_unlocks`,
+      subName: "Unlocks",
+      route: `/unlocks/${standardizeProtocolName(parent.name)}`,
+    });
+  }
+
+  // TODO: Add incentives in metadata
+  // if (metadata?.incentives) {
+  //   subSections.push({
+  //     ...result,
+  //     id: `${result.id}_incentives`,
+  //     subName: "Incentives",
+  //     route: `${result.route}?tvl=false&incentives=true`,
+  //   });
+  // }
+
+  if (metadata?.yields) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_yields`,
+      subName: "Yields",
+      route: `/yields?project=${parent.name}`,
+    });
+    subSections.push({
+      ...result,
+      id: `${result.id}_medianApy`,
+      subName: "Median APY",
+      route: `${result.route}?tvl=false&medianApy=true`,
+    });
+  }
+
+  if (metadata?.treasury) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_treasury`,
+      subName: "Treasury",
+      route: `/protocol/treasury/${standardizeProtocolName(parent.name)}`,
+    });
+  }
+
+  if (metadata?.forks) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_forks`,
+      subName: "Forks",
+      route: `/protocol/forks/${standardizeProtocolName(parent.name)}`,
+    });
+  }
+
+  return subSections.map((result) => ({
+    ...result,
+    v: tastyMetrics[result.route] ?? 0,
+  }));
+};
 
 async function generateSearchList() {
   const endAt = Date.now();
@@ -94,8 +305,9 @@ async function generateSearchList() {
   }
 
   const protocols: Array<SearchResult> = [];
+  const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
-    protocols.push({
+    const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
       symbol: parent.symbol,
@@ -104,11 +316,18 @@ async function generateSearchList() {
       route: `/protocol/${standardizeProtocolName(parent.name)}`,
       v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
       type: "Protocol",
-    });
+    };
+
+    protocols.push(result);
+
+    const metadata = protocolsMetadata[parent.id];
+    const subSections = getProtocolSubSections(result, metadata, parent.gecko_id ?? null, tastyMetrics);
+    subProtocols.push(...subSections);
   }
+
   for (const protocol of tvlData.protocols) {
     if (protocol.name === "LlamaSwap") continue;
-    protocols.push({
+    const result = {
       id: `protocol_${normalize(protocol.name)}`,
       name: protocol.name,
       symbol: protocol.symbol,
@@ -118,12 +337,19 @@ async function generateSearchList() {
       ...(protocol.deprecated ? { deprecated: true } : {}),
       v: tastyMetrics[`/protocol/${standardizeProtocolName(protocol.name)}`] ?? 0,
       type: "Protocol",
-    });
+    };
+
+    protocols.push(result);
+
+    const metadata = protocolsMetadata[protocol.defillamaId];
+    const subSections = getProtocolSubSections(result, metadata, protocol.geckoId ?? null, tastyMetrics);
+    subProtocols.push(...subSections);
   }
 
   const chains: Array<SearchResult> = [];
+  const subChains: Array<SearchResult> = [];
   for (const chain of tvlData.chains) {
-    chains.push({
+    const result = {
       id: `chain_${normalize(chain)}`,
       name: chain,
       logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
@@ -131,7 +357,220 @@ async function generateSearchList() {
       route: `/chain/${standardizeProtocolName(chain)}`,
       v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
       type: "Chain",
-    });
+    };
+
+    chains.push(result);
+
+    const metadata = chainsMetadata[standardizeProtocolName(chain)];
+    const subSections: Array<SearchResult> = [];
+
+    if (metadata?.stablecoins) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_stablecoinsMcap`,
+        subName: "Stablecoins Mcap",
+        route: `${result.route}?tvl=false&stablecoinsMcap=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_stablecoinsSupplyRankings`,
+        subName: "Stablecoins Supply Rankings",
+        route: `/stablecoins/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.chainFees) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_chainFees`,
+        subName: "Chain Fees",
+        route: `${result.route}?tvl=false&chainFees=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_chainRevenue`,
+        subName: "Chain Revenue",
+        route: `${result.route}?tvl=false&chainRevenue=true`,
+      });
+    }
+
+    if (metadata?.fees) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_appFees`,
+        subName: "App Fees",
+        route: `${result.route}?tvl=false&appFees=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_appRevenue`,
+        subName: "App Revenue",
+        route: `${result.route}?tvl=false&appRevenue=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByFees`,
+        subName: "Protocols by Fees",
+        route: `/fees/chain/${standardizeProtocolName(chain)}`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByRevenue`,
+        subName: "Protocols by Revenue",
+        route: `/revenue/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.dexs) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_dexsVolume`,
+        subName: "DEXs Volume",
+        route: `${result.route}?tvl=false&dexsVolume=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByDexVolume`,
+        subName: "Protocols by DEX Volume",
+        route: `/dexs/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.perps) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_perpsVolume`,
+        subName: "Perps Volume",
+        route: `${result.route}?tvl=false&perpsVolume=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByPerpVolume`,
+        subName: "Protocols by Perp Volume",
+        route: `/perp/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.optionsPremiumVolume) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByOptionPremiumVolume`,
+        subName: "Protocols by Option Premium Volume",
+        route: `/options/premium-volume/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.optionsNotionalVolume) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByOptionNotionalVolume`,
+        subName: "Protocols by Option Notional Volume",
+        route: `/options/notional-volume/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.dexAggregators) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByDexAggregatorVolume`,
+        subName: "Protocols by DEX Aggregator Volume",
+        route: `/dex-aggregators/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.bridgeAggregators) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByBridgeAggregatorVolume`,
+        subName: "Protocols by Bridge Aggregator Volume",
+        route: `/bridge-aggregators/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.perpsAggregators) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByPerpAggregatorVolume`,
+        subName: "Protocols by Perp Aggregator Volume",
+        route: `/perps-aggregators/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.chainAssets) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_bridgedTvl`,
+        subName: "Bridged TVL",
+        route: `/bridged/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.inflows) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_netInflows`,
+        subName: "Net Inflows",
+        route: `${result.route}?tvl=false&netInflows=true`,
+      });
+    }
+
+    // TODO: Add incentives in metadata
+    // if (metadata?.incentives) {
+    //   subSections.push({
+    //     ...result,
+    //     id: `${result.id}_incentives`,
+    //     subName: "Incentives",
+    //     route: `${result.route}?tvl=false&tokenIncentives=true`,
+    //   });
+    // }
+
+    if (metadata?.activeUsers) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_activeAddresses`,
+        subName: "Active Addresses",
+        route: `${result.route}?tvl=false&activeAddresses=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_transactions`,
+        subName: "Transactions",
+        route: `${result.route}?tvl=false&transactions=true`,
+      });
+    }
+
+    if (metadata?.gecko_id) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_chainTokenPrice`,
+        subName: `${metadata.tokenSymbol ?? "Token"} Price`,
+        route: `${result.route}?tvl=false&chainTokenPrice=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_chainTokenMcap`,
+        subName: `${metadata.tokenSymbol ?? "Token"} Mcap`,
+        route: `${result.route}?tvl=false&chainTokenMcap=true`,
+      });
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_chainTokenVolume`,
+        subName: `${metadata.tokenSymbol ?? "Token"} Volume`,
+        route: `${result.route}?tvl=false&chainTokenVolume=true`,
+      });
+    }
+
+    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0 })));
   }
 
   const categories: Array<SearchResult> = [];
@@ -232,7 +671,9 @@ async function generateSearchList() {
       .concat(results.categories)
       .concat(results.tags)
       .concat(results.cexs)
-      .concat(results.otherPages),
+      .concat(results.otherPages)
+      .concat(subProtocols)
+      .concat(subChains),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))

@@ -8,6 +8,8 @@ export interface IChainMetadata {
 	perps?: boolean
 	dexAggregators?: boolean
 	options?: boolean
+	optionsPremiumVolume?: boolean
+	optionsNotionalVolume?: boolean
 	perpsAggregators?: boolean
 	bridgeAggregators?: boolean
 	inflows?: boolean
@@ -34,6 +36,8 @@ export interface IProtocolMetadata {
 	perps?: boolean
 	dexAggregators?: boolean
 	options?: boolean
+	optionsPremiumVolume?: boolean
+	optionsNotionalVolume?: boolean
 	perpsAggregators?: boolean
 	bridgeAggregators?: boolean
 	displayName?: string

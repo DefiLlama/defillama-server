@@ -667,11 +667,16 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Optimism", "Arbitrum", "Base"],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
+        proof: ["https://docs.yield.fi/resources/oracles"],
+      },
+      {
+        name: "eOracle",
+        type: "Secondary",
         proof: ["https://docs.yield.fi/resources/oracles"],
       }
     ],

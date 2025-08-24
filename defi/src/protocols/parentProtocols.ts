@@ -7354,7 +7354,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#river-inc",
     name: "River",
     url: "https://river.inc/",
-    description: "River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol",
+    description: "River is building the first chain-abstraction stablecoin system that connects liquidity across ecosystems and channels it into new growth opportunities. Powered by the omni-CDP stablecoin satUSD, River allows users to collateralize assets on one chain and mint on another — natively earning, leveraging, and scaling across networks",
     logo: `${baseIconsUrl}/river-inc.jpg`,
     gecko_id: null,
     cmcId: null,

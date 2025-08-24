@@ -26,13 +26,19 @@ interface SearchResult {
   v: number;
 }
 
-const getProtocolSubSections = (
-  result: SearchResult,
-  metadata: IProtocolMetadata,
-  geckoId: string | null,
-  tastyMetrics: Record<string, number>,
-  name: string
-) => {
+const getProtocolSubSections = ({
+  result,
+  metadata,
+  geckoId,
+  tastyMetrics,
+  protocolData,
+}: {
+  result: SearchResult;
+  metadata: IProtocolMetadata;
+  geckoId: string | null;
+  tastyMetrics: Record<string, number>;
+  protocolData: { name: string; id?: string };
+}) => {
   const subSections: Array<SearchResult> = [];
 
   if (result.tvl) {
@@ -139,7 +145,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_bridgeVolume`,
       subName: "Bridge Volume",
-      route: `/bridge/${standardizeProtocolName(name)}`,
+      route: `/bridge/${standardizeProtocolName(protocolData.name)}`,
     });
   }
 
@@ -184,33 +190,34 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_unlocks`,
       subName: "Unlocks",
-      route: `/unlocks/${standardizeProtocolName(name)}`,
+      route: `/unlocks/${standardizeProtocolName(protocolData.name)}`,
     });
   }
 
-  // TODO: Add incentives in metadata
-  // if (metadata?.incentives) {
-  //   subSections.push({
-  //     ...result,
-  //     id: `${result.id}_incentives`,
-  //     subName: "Incentives",
-  //     route: `${result.route}?tvl=false&incentives=true`,
-  //   });
-  // }
+  if (metadata?.incentives) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_incentives`,
+      subName: "Incentives",
+      route: `${result.route}?tvl=false&incentives=true`,
+    });
+  }
 
   if (metadata?.yields) {
     subSections.push({
       ...result,
       id: `${result.id}_yields`,
       subName: "Yields",
-      route: `/yields?project=${name}`,
+      route: `/yields?project=${protocolData.name}`,
     });
-    subSections.push({
-      ...result,
-      id: `${result.id}_medianApy`,
-      subName: "Median APY",
-      route: `${result.route}?tvl=false&medianApy=true`,
-    });
+    if (!protocolData?.id?.startsWith("parent#")) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_medianApy`,
+        subName: "Median APY",
+        route: `${result.route}?tvl=false&medianApy=true`,
+      });
+    }
   }
 
   if (metadata?.treasury) {
@@ -218,7 +225,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_treasury`,
       subName: "Treasury",
-      route: `/protocol/treasury/${standardizeProtocolName(name)}`,
+      route: `/protocol/treasury/${standardizeProtocolName(protocolData.name)}`,
     });
   }
 
@@ -227,7 +234,7 @@ const getProtocolSubSections = (
       ...result,
       id: `${result.id}_forks`,
       subName: "Forks",
-      route: `/protocol/forks/${standardizeProtocolName(name)}`,
+      route: `/protocol/forks/${standardizeProtocolName(protocolData.name)}`,
     });
   }
 
@@ -322,7 +329,13 @@ async function generateSearchList() {
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
-    const subSections = getProtocolSubSections(result, metadata, parent.gecko_id ?? null, tastyMetrics, parent.name);
+    const subSections = getProtocolSubSections({
+      result,
+      metadata,
+      geckoId: parent.gecko_id ?? null,
+      tastyMetrics,
+      protocolData: parent,
+    });
     subProtocols.push(...subSections);
   }
 
@@ -343,7 +356,13 @@ async function generateSearchList() {
     protocols.push(result);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
-    const subSections = getProtocolSubSections(result, metadata, protocol.geckoId ?? null, tastyMetrics, protocol.name);
+    const subSections = getProtocolSubSections({
+      result,
+      metadata,
+      geckoId: protocol.geckoId ?? null,
+      tastyMetrics,
+      protocolData: protocol,
+    });
     subProtocols.push(...subSections);
   }
 
@@ -522,15 +541,14 @@ async function generateSearchList() {
       });
     }
 
-    // TODO: Add incentives in metadata
-    // if (metadata?.incentives) {
-    //   subSections.push({
-    //     ...result,
-    //     id: `${result.id}_incentives`,
-    //     subName: "Incentives",
-    //     route: `${result.route}?tvl=false&tokenIncentives=true`,
-    //   });
-    // }
+    if (metadata?.incentives) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_incentives`,
+        subName: "Incentives",
+        route: `${result.route}?tvl=false&tokenIncentives=true`,
+      });
+    }
 
     if (metadata?.activeUsers) {
       subSections.push({

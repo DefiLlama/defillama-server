@@ -12,6 +12,7 @@ import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
+import { IChainMetadata, IProtocolMetadata } from "./types";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -50,7 +51,7 @@ const slugMap: any = {
 
 const slug = (tokenName = "") => {
   if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return slugMap[tokenName]
+  return slugMap[tokenName];
 };
 
 export async function storeAppMetadata() {
@@ -83,8 +84,8 @@ async function pullRaisesDataIfMissing() {
 }
 
 async function _storeAppMetadata() {
-  const finalProtocols: any = {};
-  const finalChains: any = {};
+  const finalProtocols: Record<string, IProtocolMetadata> = {};
+  const finalChains: Record<string, IChainMetadata> = {};
   let lendingProtocols = 0;
 
   const [
@@ -157,31 +158,30 @@ async function _storeAppMetadata() {
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
-      finalChains[slug(chain)] = { name: chain };
+      finalChains[slug(chain)] = { name: chain, id: chain };
     }
-
 
     const parentToChildProtocols: any = {};
     for (const protocol of tvlData.protocols) {
-      const protocolInfo = protocolInfoMap[protocol.defillamaId]
+      const protocolInfo = protocolInfoMap[protocol.defillamaId];
       if (!protocolInfo) {
         console.warn(`Protocol ${protocol.defillamaId} not found in protocolInfoMap`);
         continue;
       }
-      const name = slug(protocol.name);
+      const slugName: string = slug(protocol.name);
       finalProtocols[protocol.defillamaId] = {
-        name,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== 'dummy.js' ? true : false,
-        yields: yieldsData.find((pool: any) => pool.project === name) ? true : false,
+        name: slugName,
+        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(bridgeCategoriesSet.has(protocol.category) ? { bridges: true } : {}),
+        ...(bridgeCategoriesSet.has(protocol.category) ? { bridge: true } : {}),
       };
 
       if (protocol.parentProtocol) {
         parentToChildProtocols[protocol.parentProtocol] = [
           ...(parentToChildProtocols[protocol.parentProtocol] ?? []),
-          name,
+          slugName,
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
@@ -193,23 +193,25 @@ async function _storeAppMetadata() {
         lendingProtocols += 1;
       }
 
-      const chainTvls = Object.entries(protocol.chainTvls ?? {}).map((p: any) => [p[0], p[1]?.tvl ?? 0]).sort((a: any, b: any) => b[1] - a[1]);
+      const chainTvls = Object.entries(protocol.chainTvls ?? {})
+        .map((p: any) => [p[0], p[1]?.tvl ?? 0])
+        .sort((a: any, b: any) => b[1] - a[1]);
       for (const [chain] of chainTvls) {
         if (chain.includes("-") || allExtraSections.includes(chain)) continue;
         protocolChainSetMap[protocol.defillamaId].add(chain);
       }
     }
     for (const protocol of tvlData.parentProtocols) {
-
-      const name = slug(protocol.name);
+      const { name: _, ...rest } = finalProtocols[protocol.id];
+      const slugName: string = slug(protocol.name);
       finalProtocols[protocol.id] = {
-        name,
+        name: slugName,
         yields: yieldsData.find(
-          (pool: any) => pool.project === name || parentToChildProtocols[protocol.id]?.includes(pool.project)
+          (pool: any) => pool.project === slugName || parentToChildProtocols[protocol.id]?.includes(pool.project)
         )
           ? true
           : false,
-        ...finalProtocols[protocol.id],
+        ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
@@ -377,7 +379,6 @@ async function _storeAppMetadata() {
     for (const chain of chainsWithFees) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
-        displayName: chain,
         chainFees: true,
       };
     }
@@ -618,7 +619,6 @@ async function _storeAppMetadata() {
       }
     }
 
-
     const bridges = bridgesData.bridges.map((b: any) => b.displayName);
 
     for (const protocolNameAndId of nameAndIds) {
@@ -641,7 +641,7 @@ async function _storeAppMetadata() {
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
 
           r[k].chains.forEach((chain: any) => {
-            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1
+            chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1;
           });
         }
         if (parentProtocolsInfoMap[k]) {
@@ -681,8 +681,8 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {}
-    })
+      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
+    });
 
     const sortedChainData = Object.keys(finalChains)
       .sort()
@@ -816,7 +816,10 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
 
-    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", { categories: Array.from(categoriesSet), tags: Array.from(tagsSet) });
+    await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
+      categories: Array.from(categoriesSet),
+      tags: Array.from(tagsSet),
+    });
 
     console.log("finished building metadata");
   }

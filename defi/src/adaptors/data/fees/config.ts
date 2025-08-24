@@ -4010,4 +4010,7 @@ export default {
     "saddle-finance": {
         id: "202"
     },
+    "thirdfy": {
+        id: "6620"
+    },
 } as AdaptorsConfig

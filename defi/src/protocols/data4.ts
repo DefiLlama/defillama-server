@@ -667,13 +667,18 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Optimism", "Arbitrum", "Base"],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.yield.fi/resources/oracles#chainlink-oracles"],
         chains: [{chain: "Ethereum"},{chain: "Arbitrum"},{chain: "Base"},{chain: "Optimism"},{chain: "Katana"},{chain: "Binance"},{chain: "Sonic"}]
+      },
+      {
+        name: "eOracle",
+        type: "Secondary",
+        proof: ["https://docs.yield.fi/resources/oracles"],
       }
     ],
     forkedFrom: [],
@@ -2629,7 +2634,7 @@ const data4: Protocol[] = [
       {
         message: "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2025-08-21",
       }
     ],
     listedAt: 1737988177
@@ -6358,15 +6363,23 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     oraclesBreakdown: [
-      {
+       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
+        proof: ["https://docs.flex.trade/#product-features"],
+        endDate: '2025-08-15'
       },
       {
         name: "Chainlink",
         type: "Aggregator",
-        proof: ["https://docs.flex.trade/#product-features"]
+        proof: ["https://docs.flex.trade/#product-features"],
+        endDate: '2025-08-15'
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.flex.trade/oracles"],
+        startDate: '2025-08-15'
       }
     ],
     forkedFromIds: ["2296"],
@@ -8605,13 +8618,13 @@ const data4: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Fallback",
+        type: "Secondary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       },
       {
         name: "RedStone",
-        type: "Fallback",
-        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"]
+        type: "Primary",
+        proof: ["https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D","https://github.com/DefiLlama/defillama-server/pull/10443/"]
       }
     ],
     twitter: "hyperlendx",
@@ -14876,6 +14889,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Avalanche"],
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     forkedFrom: [],
     module: "avant/index.js",
     twitter: "avantprotocol",
@@ -17180,6 +17194,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator", // since the assets are redeposited into lending (euler) protocols not CEXs
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     chains: ["Avalanche"],
     module: "avant-avbtc/index.js",
     twitter: "avantprotocol",
@@ -22813,7 +22828,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Meme",
     chains: ["Cronos"],
-    module: "dummy.js",
+    module: "turtle/index.js",
     treasury: "turtle.js",
     twitter: "TurtleonCro",
     listedAt:1755319281
@@ -23378,6 +23393,164 @@ const data4: Protocol[] = [
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
     parentProtocol: "parent#garden",
+  },
+  {
+    id: "6616",
+    name: "BrownFi",
+    address: null,
+    symbol: "-",
+    url: "https://brownfi.io/",
+    description:
+      "A renovated AMM derived from Elastic Parameterized Limit Order Book",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/brownfi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Arbitrum", "Base", "Berachain", "Hyperliquid L1"],
+    forkedFromIds: ["2197"],
+    module: "brownfi/index.js",
+    twitter: "BrownFidex",
+    audit_links: [
+      "https://skynet.certik.com/projects/brownfi",
+      "https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20BrownFi%20AMM%20Smartcontracts%20-%20v1.0.pdf"
+    ],
+    listedAt: 1755874767
+  },
+  {
+    id: "6617",
+    name: "Weero V2",
+    address: null,
+    symbol: "-",
+    url: "http://weero.finance",
+    description:
+      "AMM DEX on Kaia",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/weero-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Klaytn"],
+    forkedFromIds: ["2197"],
+    module: "weero-v2/index.js",
+    twitter: "weerofinance",
+    parentProtocol: "parent#weero",
+    listedAt: 1755874773
+  },
+  {
+    id: "6618",
+    name: "Weero V3",
+    address: null,
+    symbol: "-",
+    url: "http://weero.finance",
+    description:
+      "CLMM DEX on Kaia",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/weero-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Klaytn"],
+    forkedFromIds: ["2198"],
+    module: "weero-v3/index.js",
+    twitter: "weerofinance",
+    parentProtocol: "parent#weero",
+    listedAt: 1755874781
+  },
+  {
+    id: "6619",
+    name: "zuno",
+    address: null,
+    symbol: "-",
+    url: "https://zunodex.xyz",
+    description:
+      "DEX on ZetaChain",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/zuno.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["ZetaChain"],
+    forkedFromIds: ["2198"],
+    module: "zuno/index.js",
+    twitter: "zuno_dex",
+    listedAt: 1755874788
+  },
+  {
+    id: "6620",
+    name: "Thirdfy",
+    address: null,
+    symbol: "TFY",
+    url: "https://thirdfy.com/",
+    description:
+      "Thirdfy is a decentralized exchange platform on Base that aims to simplify DeFi with autonomous, AI-powered automation.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/thirdfy.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    forkedFromIds: ["3710"],
+    module: "thirdfy/index.js",
+    audit_links: [
+      "https://docs.thirdfy.com/documentation/resources/audits"
+    ],
+    twitter: "Thirdfy_",
+    github: ["thirdfy"],
+    listedAt: 1755874797
+  },
+  {
+    id: "6621",
+    name: "Aave Aptos",
+    address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    symbol: "AAVE",
+    url: "https://aave.com",
+    description: "Earn interest, borrow assets, and build applications",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/aave-aptos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Aptos"],
+    forkedFromIds: [],
+    module: "aave-aptos/index.js",
+    twitter: "aave",
+    parentProtocol: "parent#aave",
+    listedAt: 1755874807
+  },
+  {
+    id: "6622",
+    name: "Kittenswap Algebra",
+    address: null,
+    symbol: "-",
+    url: "https://kittenswap.finance",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/kittenswap-algebra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["3710"],
+    module: "kittenswap-algebra/index.js",
+    twitter: "kittenswaphype",
+    parentProtocol: "parent#kittenswap",
+    listedAt: 1756076063,
   },
 ];
 export default data4;

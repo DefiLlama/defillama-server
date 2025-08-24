@@ -6942,6 +6942,7 @@ const data3_1: Protocol[] = [
       "https://uswap.me/modules/site/main/assets/audit2.pdf",
     ],
     listedAt: 1684767925,
+    deadUrl: true
   },
   {
     id: "3008",
@@ -31116,22 +31117,21 @@ const data3_1: Protocol[] = [
     symbol: "BLB",
     url: "https://app.blueberry.garden",
     description:
-      "Blueberry allows borrowers to access up to 20x leverage on select DeFi strategies, including yield farming, arbitrage, and leveraged trading.",
-    chain: "Ethereum",
+      "Blueberry offers tokenized yield strategies and curated DeFi ecosystem on Hyperevm.",
+    chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/blueberry-lend.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "blueberry",
     cmcId: null,
-    category: "Leveraged Farming",
-    chains: ["Ethereum"],
+    category: "Yield",
+    chains: ["Hyperliquid L1", "Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "blueberry/index.js",
     twitter: "blueberryFDN",
-    audit_links: ["https://docs.blueberry.garden/security/audits"],
+    audit_links: ["https://docs.blueberry.garden/advanced/contracts-and-audits"],
     listedAt: 1706616985,
-    deadUrl: true,
   },
   {
     id: "4081",
@@ -33943,7 +33943,7 @@ const data3_2: Protocol[] = [
     name: "Pond0x",
     address: "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
     symbol: "PNDC",
-    url: "https://www.pondcoin.com/",
+    url: "http://pond0x.com/",
     description:
       "Pond DEX is a platform that aggregates liquidity for swaps at optimal rates, returning generated fees as claimable rewards",
     chain: "Ethereum",
@@ -38682,10 +38682,16 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"},{chain:"Arbitrum"}]
+      },
+      {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bevm"}]
+        chains: [{chain: "BEVM"}]
       },
       {
         name: "Api3",
@@ -52920,7 +52926,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/8889
+    oraclesBreakdown: [
+		{ 
+			name: "Chainlink", type: "Primary", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/chainlink"],
+			startDate: '2025-08-22'
+		},
+        { 
+		   name: "Pyth", type: "Fallback", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/pyth"] ,
+		   startDate: '2025-08-22' 
+	    },
+		{ 
+		  name: "Pyth", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/8889"] ,
+		  endDate: '2025-08-22' 
+	    }
+	], 
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",
@@ -63697,7 +63716,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://lagoon.finance",
     description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-7540 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
+      "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
     audits: "2",

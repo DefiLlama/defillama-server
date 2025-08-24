@@ -672,7 +672,8 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.yield.fi/resources/oracles"],
+        proof: ["https://docs.yield.fi/resources/oracles#chainlink-oracles"],
+        chains: [{chain: "Ethereum"},{chain: "Arbitrum"},{chain: "Base"},{chain: "Optimism"},{chain: "Katana"},{chain: "Binance"},{chain: "Sonic"}]
       },
       {
         name: "eOracle",

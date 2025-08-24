@@ -396,6 +396,23 @@ async function _storeAppMetadata() {
       }
     }
 
+    for (const chain of revenueData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        revenue: true,
+      };
+    }
+
+    const chainsWithRevenue = revenueData.protocols
+      .filter((i: any) => i.defillamaId.startsWith("chain#"))
+      .map((i: any) => i.name);
+    for (const chain of chainsWithRevenue) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        chainRevenue: true,
+      };
+    }
+
     for (const protocol of holdersRevenueData.protocols) {
       if (!protocol.totalAllTime && protocol.totalAllTime !== 0) continue; // skip if this totalAllTime field is missing
 

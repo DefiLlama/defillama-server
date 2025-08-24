@@ -414,7 +414,9 @@ async function generateSearchList() {
         subName: "Chain Fees",
         route: `${result.route}?tvl=false&chainFees=true`,
       });
+    }
 
+    if (metadata?.chainRevenue) {
       subSections.push({
         ...result,
         id: `${result.id}_chainRevenue`,
@@ -433,16 +435,18 @@ async function generateSearchList() {
 
       subSections.push({
         ...result,
-        id: `${result.id}_appRevenue`,
-        subName: "App Revenue",
-        route: `${result.route}?tvl=false&appRevenue=true`,
-      });
-
-      subSections.push({
-        ...result,
         id: `${result.id}_protocolsByFees`,
         subName: "Protocols by Fees",
         route: `/fees/chain/${standardizeProtocolName(chain)}`,
+      });
+    }
+
+    if (metadata?.revenue) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_appRevenue`,
+        subName: "App Revenue",
+        route: `${result.route}?tvl=false&appRevenue=true`,
       });
 
       subSections.push({
@@ -483,7 +487,6 @@ async function generateSearchList() {
         subName: "Protocols by Perp Volume",
         route: `/perps/chain/${standardizeProtocolName(chain)}`,
       });
-
 
       subSections.push({
         ...result,

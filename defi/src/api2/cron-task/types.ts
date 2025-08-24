@@ -5,6 +5,8 @@ export interface IChainMetadata {
 	activeUsers?: boolean
 	fees?: boolean
 	chainFees?: boolean
+	revenue?: boolean
+	chainRevenue?: boolean
 	perps?: boolean
 	dexAggregators?: boolean
 	options?: boolean

@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
+import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 
 const normalize = (str: string) =>
   sluggifyString(str)
@@ -27,7 +28,7 @@ interface SearchResult {
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData, frontendPages, tastyMetrics]: [
+  const [tvlData, stablecoinsData, frontendPages, tastyMetrics, protocolsMetadata, chainsMetadata]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -36,7 +37,9 @@ async function generateSearchList() {
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
     Record<string, Array<{ name: string; route: string }>>,
-    Record<string, number>
+    Record<string, number>,
+    Record<string, IProtocolMetadata>,
+    Record<string, IChainMetadata>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
@@ -63,6 +66,8 @@ async function generateSearchList() {
         console.log("Error fetching tasty metrics", e);
         return {};
       }),
+    fetch("https://api.llama.fi/config/smol/appMetadata-protocols.json").then((res) => res.json()),
+    fetch("https://api.llama.fi/config/smol/appMetadata-chains.json").then((res) => res.json()),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;

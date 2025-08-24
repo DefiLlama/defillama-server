@@ -75,5 +75,6 @@ curl \
     "logo",
     "route",
     "deprecated",
-    "hideType
+    "hideType",
+    "subName"
   ]'

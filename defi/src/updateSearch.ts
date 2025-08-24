@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
+import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 
 const normalize = (str: string) =>
   sluggifyString(str)
@@ -27,7 +28,7 @@ interface SearchResult {
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData, frontendPages, tastyMetrics]: [
+  const [tvlData, stablecoinsData, frontendPages, tastyMetrics, protocolsMetadata, chainsMetadata]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -36,7 +37,9 @@ async function generateSearchList() {
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
     Record<string, Array<{ name: string; route: string }>>,
-    Record<string, number>
+    Record<string, number>,
+    Record<string, IProtocolMetadata>,
+    Record<string, IChainMetadata>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
@@ -63,6 +66,8 @@ async function generateSearchList() {
         console.log("Error fetching tasty metrics", e);
         return {};
       }),
+    fetch("https://api.llama.fi/config/smol/appMetadata-protocols.json").then((res) => res.json()),
+    fetch("https://api.llama.fi/config/smol/appMetadata-chains.json").then((res) => res.json()),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -88,8 +93,9 @@ async function generateSearchList() {
     }
   }
 
-  const protocols: Array<SearchResult> = tvlData.parentProtocols
-    .map((parent) => ({
+  const protocols: Array<SearchResult> = [];
+  for (const parent of tvlData.parentProtocols) {
+    protocols.push({
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
       symbol: parent.symbol,
@@ -98,32 +104,35 @@ async function generateSearchList() {
       route: `/protocol/${standardizeProtocolName(parent.name)}`,
       v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
       type: "Protocol",
-    }))
-    .concat(
-      tvlData.protocols
-        .filter((p) => p.name !== "LlamaSwap")
-        .map((p) => ({
-          id: `protocol_${normalize(p.name)}`,
-          name: p.name,
-          symbol: p.symbol,
-          tvl: p.tvl,
-          logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-          route: `/protocol/${standardizeProtocolName(p.name)}`,
-          ...(p.deprecated ? { deprecated: true } : {}),
-          v: tastyMetrics[`/protocol/${standardizeProtocolName(p.name)}`] ?? 0,
-          type: "Protocol",
-        }))
-    );
+    });
+  }
+  for (const protocol of tvlData.protocols) {
+    if (protocol.name === "LlamaSwap") continue;
+    protocols.push({
+      id: `protocol_${normalize(protocol.name)}`,
+      name: protocol.name,
+      symbol: protocol.symbol,
+      tvl: protocol.tvl,
+      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(protocol.name)}?w=48&h=48`,
+      route: `/protocol/${standardizeProtocolName(protocol.name)}`,
+      ...(protocol.deprecated ? { deprecated: true } : {}),
+      v: tastyMetrics[`/protocol/${standardizeProtocolName(protocol.name)}`] ?? 0,
+      type: "Protocol",
+    });
+  }
 
-  const chains: Array<SearchResult> = tvlData.chains.map((chain) => ({
-    id: `chain_${normalize(chain)}`,
-    name: chain,
-    logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
-    tvl: chainTvl[chain],
-    route: `/chain/${standardizeProtocolName(chain)}`,
-    v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
-    type: "Chain",
-  }));
+  const chains: Array<SearchResult> = [];
+  for (const chain of tvlData.chains) {
+    chains.push({
+      id: `chain_${normalize(chain)}`,
+      name: chain,
+      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+      tvl: chainTvl[chain],
+      route: `/chain/${standardizeProtocolName(chain)}`,
+      v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+      type: "Chain",
+    });
+  }
 
   const categories: Array<SearchResult> = [];
   for (const category in categoryTvl) {
@@ -161,7 +170,7 @@ async function generateSearchList() {
   }));
 
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
-    id: `insight_${normalize(i.name)}`,
+    id: `metric_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
     v: tastyMetrics[i.route] ?? 0,
@@ -232,7 +241,10 @@ async function generateSearchList() {
       .concat(results.categories.slice(0, 3))
       .concat(results.tools.slice(0, 3))
       .concat(results.tags.slice(0, 3))
-      .map(({ v, ...r }) => r),
+      .map((r) => ({
+        ...r,
+        v: 0,
+      })),
   };
 }
 

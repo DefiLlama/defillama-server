@@ -481,7 +481,15 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByPerpVolume`,
         subName: "Protocols by Perp Volume",
-        route: `/perp/chain/${standardizeProtocolName(chain)}`,
+        route: `/perps/chain/${standardizeProtocolName(chain)}`,
+      });
+
+
+      subSections.push({
+        ...result,
+        id: `${result.id}_protocolsByOpenInterest`,
+        subName: "Protocols by Open Interest",
+        route: `/open-interest/chain/${standardizeProtocolName(chain)}`,
       });
     }
 

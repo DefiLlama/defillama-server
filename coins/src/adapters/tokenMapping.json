@@ -244,6 +244,11 @@
     }
   },
   "sui": {
+    "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
       "decimals": "8",
       "symbol": "BNB",
@@ -1370,11 +1375,6 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
-    "0xe552fb52a4f19e44ef5a967632dbc320b0820639": {
-      "decimals": "18",
-      "symbol": "METIS",
-      "to": "coingecko#metis-token"
-    },
     "0x9029fdfae9a03135846381c7ce16595c3554e10a": {
       "decimals": "18",
       "symbol": "OOE",
@@ -1900,6 +1900,11 @@
     }
   },
   "goat": {
+    "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xd93cC64F0A64044790268C1117BdC7A26A872d2c": {
       "decimals": "18",
       "symbol": "nETH",
@@ -6253,6 +6258,11 @@
     }
   },
   "sei": {
+    "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
       "decimals": "18",
       "symbol": "M-BTC",
@@ -10159,6 +10169,11 @@
     }
   },
   "plume_mainnet": {
+    "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xCCA84731C19EB911C985E9d1892E0935C104Abce": {
       "decimals": "18",
       "symbol": "pUSDT",

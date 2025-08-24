@@ -23,7 +23,6 @@ import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getCexs } from "../../getCexs";
-import { authWrapper } from "../utils/auth";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -80,8 +79,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/charts/tags/:tag", ew(getTagChartByChainData));
   router.get("/charts/tags/:tag/:chain", ew(getTagChartByChainData));
 
-  router.get("/simpleChainDataset/:chain", authWrapper(getSimpleChainDataset));
-  router.get("/dataset/:protocol", authWrapper(getDataset));
+  router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
+  router.get("/dataset/:protocol", ew(getDataset));
 
   router.get("/cexs", ew(getCexs));
 

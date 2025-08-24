@@ -112,6 +112,7 @@ async function _storeAppMetadata() {
     perpsAggregatorsData,
     bridgeAggregatorsData,
     emmissionsData,
+    incentivesData,
     bridgesData,
     chainAssetsData,
     chainsData,
@@ -143,6 +144,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
+    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => {}),
     fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [] })),
     fetchJson(CHAINS_ASSETS).catch(() => ({})),
     readRouteData("/chains").catch(() => []),
@@ -261,17 +263,6 @@ async function _storeAppMetadata() {
         finalProtocols[protocol.defillamaId.toString()] = {
           ...finalProtocols[protocol.defillamaId.toString()],
           hacks: true,
-        };
-      }
-    }
-
-    const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
-    for (const protocolNameAndId of nameAndIds) {
-      const [protocolName, protocolId] = protocolNameAndId.split("+");
-      if (allNftMarketplaces.includes(protocolName)) {
-        finalProtocols[protocolId] = {
-          ...finalProtocols[protocolId],
-          nfts: true,
         };
       }
     }
@@ -509,14 +500,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         options: true,
-        optionsPremiumVolume: true
+        optionsPremiumVolume: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           options: true,
-          optionsPremiumVolume: true
+          optionsPremiumVolume: true,
         };
       }
 
@@ -530,7 +521,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         options: true,
-        optionsPremiumVolume: true
+        optionsPremiumVolume: true,
       };
     }
 
@@ -538,14 +529,14 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
         options: true,
-        optionsNotionalVolume: true
+        optionsNotionalVolume: true,
       };
 
       if (protocol.parentProtocol) {
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
           options: true,
-          optionsNotionalVolume: true
+          optionsNotionalVolume: true,
         };
       }
 
@@ -559,7 +550,7 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         options: true,
-        optionsNotionalVolume: true
+        optionsNotionalVolume: true,
       };
     }
 
@@ -615,6 +606,8 @@ async function _storeAppMetadata() {
       };
     }
 
+    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
+    const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
     for (const protocolNameAndId of nameAndIds) {
       const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (emmissionsData.includes(slug(protocolName))) {
@@ -623,16 +616,25 @@ async function _storeAppMetadata() {
           emissions: true,
         };
       }
-    }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
+      if (incentivesData?.[slug(protocolName)]) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
+          incentives: true,
+        };
+      }
 
-    for (const protocolNameAndId of nameAndIds) {
-      const [protocolName, protocolId] = protocolNameAndId.split("+");
       if (bridges.includes(protocolName)) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           bridge: true,
+        };
+      }
+
+      if (allNftMarketplaces.includes(protocolName)) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
+          nfts: true,
         };
       }
     }
@@ -682,6 +684,7 @@ async function _storeAppMetadata() {
           ...(finalChains[slug(chain.name)] ?? { name: chain.name }),
           gecko_id: chain.gecko_id,
           tokenSymbol: chain.tokenSymbol,
+          ...(incentivesData?.[slug(chain.name)] ? { incentives: true } : {}),
         };
       }
     }

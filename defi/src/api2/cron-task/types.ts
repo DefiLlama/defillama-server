@@ -20,6 +20,7 @@ export interface IChainMetadata {
 	id: string
 	protocolCount?: number
     dimAgg?: any
+	incentives?: boolean
 }
 
 export interface IProtocolMetadata {
@@ -53,4 +54,5 @@ export interface IProtocolMetadata {
 	tokenTax?: boolean
 	bridge?: boolean
 	stablecoins?: boolean
+	incentives?: boolean
 }

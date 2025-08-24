@@ -7746,6 +7746,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "garden_finance",
   },
+  {
+    id: "parent#weero",
+    name: "Weero",
+    url: "http://weero.finance",
+    description: "Weero by KaiaFun — The Native Liquidity Hub and DEX Aggregator, proudly built on the Kaia blockchain",
+    logo: `${baseIconsUrl}/weero.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "weerofinance",
+    github: ["weero-finance"]
+  },
 ];
 
 export default parentProtocols;

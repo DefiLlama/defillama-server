@@ -10,6 +10,20 @@ const normalize = (str: string) =>
     .replace(/[^a-zA-Z0-9_-]/, "");
 const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
 
+interface SearchResult {
+  id: string;
+  name: string;
+  symbol?: string;
+  route: string;
+  logo?: string;
+  tvl?: number;
+  mcap?: number;
+  deprecated?: boolean;
+  type: string;
+  hideType?: boolean;
+  v: number;
+}
+
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
@@ -74,8 +88,9 @@ async function generateSearchList() {
     }
   }
 
-  const protocols = tvlData.parentProtocols
-    .map((parent) => ({
+  const protocols: Array<SearchResult> = [];
+  for (const parent of tvlData.parentProtocols) {
+    protocols.push({
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
       symbol: parent.symbol,
@@ -84,32 +99,37 @@ async function generateSearchList() {
       route: `/protocol/${standardizeProtocolName(parent.name)}`,
       v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
       type: "Protocol",
-    }))
-    .concat(
-      tvlData.protocols.filter(p => p.name !== 'LlamaSwap').map((p) => ({
-        id: `protocol_${normalize(p.name)}`,
-        name: p.name,
-        symbol: p.symbol,
-        tvl: p.tvl,
-        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(p.name)}`,
-        ...(p.deprecated ? { deprecated: true } : {}),
-        v: tastyMetrics[`/protocol/${standardizeProtocolName(p.name)}`] ?? 0,
-        type: "Protocol",
-      }))
-    );
+    });
+  }
+  for (const protocol of tvlData.protocols) {
+    if (protocol.name === "LlamaSwap") continue;
+    protocols.push({
+      id: `protocol_${normalize(protocol.name)}`,
+      name: protocol.name,
+      symbol: protocol.symbol,
+      tvl: protocol.tvl,
+      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(protocol.name)}?w=48&h=48`,
+      route: `/protocol/${standardizeProtocolName(protocol.name)}`,
+      ...(protocol.deprecated ? { deprecated: true } : {}),
+      v: tastyMetrics[`/protocol/${standardizeProtocolName(protocol.name)}`] ?? 0,
+      type: "Protocol",
+    });
+  }
 
-  const chains = tvlData.chains.map((chain) => ({
-    id: `chain_${normalize(chain)}`,
-    name: chain,
-    logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
-    tvl: chainTvl[chain],
-    route: `/chain/${standardizeProtocolName(chain)}`,
-    v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
-    type: "Chain",
-  }));
+  const chains: Array<SearchResult> = [];
+  for (const chain of tvlData.chains) {
+    chains.push({
+      id: `chain_${normalize(chain)}`,
+      name: chain,
+      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+      tvl: chainTvl[chain],
+      route: `/chain/${standardizeProtocolName(chain)}`,
+      v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+      type: "Chain",
+    });
+  }
 
-  const categories = [] as any[];
+  const categories: Array<SearchResult> = [];
   for (const category in categoryTvl) {
     categories.push({
       id: `category_${normalize(category)}`,
@@ -121,7 +141,7 @@ async function generateSearchList() {
     });
   }
 
-  const tags = [] as any[];
+  const tags: Array<SearchResult> = [];
   for (const tag in tagTvl) {
     tags.push({
       id: `tag_${normalize(tag)}`,
@@ -133,7 +153,7 @@ async function generateSearchList() {
     });
   }
 
-  const stablecoins = stablecoinsData.peggedAssets.map((stablecoin) => ({
+  const stablecoins: Array<SearchResult> = stablecoinsData.peggedAssets.map((stablecoin) => ({
     id: `stablecoin_${normalize(stablecoin.name)}_${normalize(stablecoin.symbol)}`,
     name: stablecoin.name,
     symbol: stablecoin.symbol,
@@ -144,14 +164,15 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
-  const metrics = (frontendPages["Metrics"] ?? []).map((i) => ({
-    id: `insight_${normalize(i.name)}`,
+  const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
+    id: `metric_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
     v: tastyMetrics[i.route] ?? 0,
     type: "Metric",
   }));
-  const tools = (frontendPages["Tools"] ?? []).map((t) => ({
+
+  const tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
     route: t.route,
@@ -159,21 +180,22 @@ async function generateSearchList() {
     type: "Tool",
   }));
 
-  const otherPages = []
+  const otherPages: Array<SearchResult> = [];
   for (const category in frontendPages) {
-    if (['Metrics', 'Tools'].includes(category)) continue;
+    if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
       otherPages.push({
-        id: `page_${normalize(page.name)}`,
+        id: `others_${normalize(page.name)}`,
         name: page.name,
         route: page.route,
         v: tastyMetrics[page.route] ?? 0,
-        type: "Insight",
+        type: "Others",
+        hideType: true,
       });
     }
   }
 
-  const cexs = cexsData
+  const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
     .map((c) => ({
       id: `cex_${normalize(c.name)}`,
@@ -197,29 +219,27 @@ async function generateSearchList() {
   };
 
   return {
-    results: [
-      ...results.chains,
-      ...results.protocols,
-      ...results.stablecoins,
-      ...results.metrics,
-      ...results.tools,
-      ...results.categories,
-      ...results.tags,
-      ...results.cexs,
-      ...results.otherPages,
-    ],
-    topResults: [
-      ...results.chains.slice(0, 3),
-      ...results.protocols.slice(0, 3),
-      ...results.stablecoins.slice(0, 3),
-      ...results.metrics.slice(0, 3),
-      ...results.categories.slice(0, 3),
-      ...results.tools.slice(0, 3),
-      ...results.tags.slice(0, 3),
-    ].map((r) => ({
-      ...r,
-      v: 0,
-    })),
+    results: results.chains
+      .concat(results.protocols)
+      .concat(results.stablecoins)
+      .concat(results.metrics)
+      .concat(results.tools)
+      .concat(results.categories)
+      .concat(results.tags)
+      .concat(results.cexs)
+      .concat(results.otherPages),
+    topResults: results.chains
+      .slice(0, 3)
+      .concat(results.protocols.slice(0, 3))
+      .concat(results.stablecoins.slice(0, 3))
+      .concat(results.metrics.slice(0, 3))
+      .concat(results.categories.slice(0, 3))
+      .concat(results.tools.slice(0, 3))
+      .concat(results.tags.slice(0, 3))
+      .map((r) => ({
+        ...r,
+        v: 0,
+      })),
   };
 }
 

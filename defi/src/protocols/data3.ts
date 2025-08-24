@@ -6942,6 +6942,7 @@ const data3_1: Protocol[] = [
       "https://uswap.me/modules/site/main/assets/audit2.pdf",
     ],
     listedAt: 1684767925,
+    deadUrl: true
   },
   {
     id: "3008",
@@ -33942,7 +33943,7 @@ const data3_2: Protocol[] = [
     name: "Pond0x",
     address: "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
     symbol: "PNDC",
-    url: "https://www.pondcoin.com/",
+    url: "http://pond0x.com/",
     description:
       "Pond DEX is a platform that aggregates liquidity for swaps at optimal rates, returning generated fees as claimable rewards",
     chain: "Ethereum",
@@ -38681,10 +38682,16 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"},{chain:"Arbitrum"}]
+      },
+      {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bevm"}]
+        chains: [{chain: "BEVM"}]
       },
       {
         name: "Api3",
@@ -52919,7 +52926,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/8889
+    oraclesBreakdown: [
+		{ 
+			name: "Chainlink", type: "Primary", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/chainlink"],
+			startDate: '2025-08-22'
+		},
+        { 
+		   name: "Pyth", type: "Fallback", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/pyth"] ,
+		   startDate: '2025-08-22' 
+	    },
+		{ 
+		  name: "Pyth", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/8889"] ,
+		  endDate: '2025-08-22' 
+	    }
+	], 
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",
@@ -63696,7 +63716,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://lagoon.finance",
     description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-7540 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
+      "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
     audits: "2",

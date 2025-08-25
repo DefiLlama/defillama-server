@@ -7758,6 +7758,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "weerofinance",
     github: ["weero-finance"]
   },
+  {
+    id: "parent#mystic-finance",
+    name: "Mystic Finance",
+    url: "https://www.mysticfinance.xyz/",
+    description: "The RWAfi money market: lend, borrow and leverage your assets on Plume Network's native money market",
+    logo: `${baseIconsUrl}/mystic-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mystic_finance",
+  },
 ];
 
 export default parentProtocols;

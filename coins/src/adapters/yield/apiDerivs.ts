@@ -158,6 +158,17 @@ const configs: { [adapter: string]: Config } = {
     decimals: "8",
     symbol: "wfragBTC",
   },
+  sHYUSD: {
+    rate: async () => {
+      const res = await fetch("https://api.hylo.so/stats").then((r) => r.json());
+      return res.stabilityPoolStats.lpTokenNav;
+    },
+    chain: "solana",
+    address: "HnnGv3HrSqjRpgdFmx7vQGjntNEoex1SU4e9Lxcxuihz",
+    underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
+    decimals: "6",
+    symbol: "sHYUSD",
+  }
 };
 
 export async function apiDerivs(timestamp: number) {

@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { setTimer } from "../utils/shared/coingeckoLocks";
 import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
 import {
@@ -21,6 +20,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
+import axios from "axios";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -357,9 +357,9 @@ async function fetchCoingeckoData(
 
   if (hourly) {
     // COMMENTS HERE ARE USEFUL FOR BACKFILLING CG DATA!!!!
-    // let start = 1696786585;
+    // let start = 1755989400;
     // const timestamps: number[] = [];
-    // while (start < 1696877028) {
+    // while (start < 1756041435) {
     //   timestamps.push(start);
     //   start += 3600;
     // }
@@ -398,9 +398,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
     await cacheSolanaTokens();
     const step = 500;
-    let coins = (await fetch(
+    let coins = (await axios.get(
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
-    ).then((r) => r.json())) as Coin[];
+    ).then((r) => r.data)) as Coin[];
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

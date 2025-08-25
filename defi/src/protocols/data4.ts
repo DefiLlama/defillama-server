@@ -23594,5 +23594,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "squaretower_",
   },
+  {
+    id: "6625",
+    name: "Football.Fun",
+    address: null,
+    symbol: "-",
+    url: "https://www.football.fun/",
+    description:
+      "Football.Fun is a Base chain fantasy soccer protocol where users trade fractional player shares backed by actual football performance, using Gold pegged to USDC, with limited-use contracts and active market-driven gameplay",
+    chain: "Base",
+    logo: `${baseIconsUrl}/football.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    forkedFromIds: [],
+    module: "footballdotfun/index.js",
+    twitter: "footballdotfun",
+    listedAt: 1756147631,
+  },
 ];
 export default data4;

@@ -4016,4 +4016,10 @@ export default {
     "catfee": {
         id: "6623"
     },
+    "aden": {
+        id: "6567"
+    },
+    "footballdotfun": {
+        id: "6625"
+    },
 } as AdaptorsConfig

@@ -3055,4 +3055,7 @@ export default {
     "thirdfy": {
         id: "6620"
     },
+    "footballdotfun": {
+        id: "6625"
+    },
 } as AdaptorsConfig

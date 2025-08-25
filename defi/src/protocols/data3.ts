@@ -53653,7 +53653,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.lucidly.finance",
-    description: "Lucidly Finance is an onchain credit protocol creating a frictionless market to negotiate liquidity demands. Lucidly gives LPs the access to negotiate liquidity incentives for locking up capital. MasterVaults are fully permissionless simple weighted stableswap pools that allow configurable distribution of liquidity.",
+    description: "Lucidly is an onchain capital deployment engine designed to create and aggregate complex yield strategies and account for them in one place. It is run by plug-and-play design readily usable by risk curators, yield farmers and asset management firms. syTokens are the first products built and curated on the Lucidly stack and curated by Lucidly Labs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lucidly-finance.jpg`,
     audits: "2",

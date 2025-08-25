@@ -3121,6 +3121,16 @@
     }
   },
   "solana": {
+    "9iq5Q33RSiz1WcupHAQKbHBZkpn92UxBG2HfPWAZhMCa": {
+      "decimals": "6",
+      "symbol": "sUSDu",
+      "to": "coingecko#usd-coin"
+    },
+    "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E": {
+      "decimals": "6",
+      "symbol": "hyUSD",
+      "to": "coingecko#usd-coin"
+    },
     "GyWgeqpy5GueU2YbkE8xqUeVEokCMMCEeUrfbtMw6phr": {
       "decimals": "6",
       "symbol": "BUIDL",

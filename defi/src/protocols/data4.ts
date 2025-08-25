@@ -10441,7 +10441,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Plume Mainnet", "Plume (Deprecated)"],
+    chains: ["Plume Mainnet"],
     forkedFromIds: ["1599"],
     oraclesBreakdown: [
       {

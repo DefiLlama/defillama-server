@@ -400,7 +400,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     const step = 500;
     let coins = (await axios.get(
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
-    ).then((r) => r.data)) as Coin[];
+    ).catch((e: any) => {
+       throw e.message
+      }).then((r) => r.data)) as Coin[];
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

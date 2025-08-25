@@ -4013,4 +4013,7 @@ export default {
     "thirdfy": {
         id: "6620"
     },
+    "catfee": {
+        id: "6623"
+    },
 } as AdaptorsConfig

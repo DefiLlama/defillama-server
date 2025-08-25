@@ -712,5 +712,8 @@ export default {
     },
     "clob": {
         id: "6607"
+    },
+    "squaretower": {
+        id: "6624"
     }
 } as AdaptorsConfig

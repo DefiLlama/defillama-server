@@ -4022,4 +4022,13 @@ export default {
     "footballdotfun": {
         id: "6625"
     },
+    "helium": {
+        id: "5665" // cmc id
+    },
+    "axie-infinity": {
+        id: "6102"
+    },
+    "vexy": {
+        id: "6629"
+    }
 } as AdaptorsConfig

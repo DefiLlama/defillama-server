@@ -23682,5 +23682,25 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.goblin.fi/security/audit"],
     listedAt: 1756149467,
   },
+  {
+    id: "6629",
+    name: "Vexy",
+    address: null,
+    symbol: "-",
+    url: "https://vexy.fi/",
+    description:
+      "Vexy is a specialized NFT marketplace aggregator for vote‑escrowed tokens (like veAERO and veVELO), enabling unified listings, global buy offers, and smooth custodial workflows across Base and Optimism",
+    chain: "Base",
+    logo: `${baseIconsUrl}/vexy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Base", "Optimism"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "VexyFinance",
+  },
 ];
 export default data4;

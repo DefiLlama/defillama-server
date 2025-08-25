@@ -86,7 +86,11 @@ export async function validateSubscriptionAuth(authHeader: string): Promise<{ su
 export function authWrapper(routeHandler: (req: HyperExpress.Request, res: HyperExpress.Response) => Promise<any>) {
   return ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
     const authHeader = req.headers.authorization;
-    
+    const internalKey = req.headers['x-internal-key'];
+    if (internalKey && internalKey === process.env.INTERNAL_API_KEY) {
+      return routeHandler(req, res);
+    }
+
     const authResult = await validateSubscriptionAuth(authHeader);
     
     if (!authResult.success) {

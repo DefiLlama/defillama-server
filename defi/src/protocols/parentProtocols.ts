@@ -6850,6 +6850,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sparkdotfi",
     github: ["marsfoundation"],
+    treasury: "spark.js",
   },
   {
     id: "parent#goatswap",

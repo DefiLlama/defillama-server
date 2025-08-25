@@ -4023,7 +4023,8 @@ export default {
         id: "6625"
     },
     "helium": {
-        id: "5665" // cmc id
+        id: "5665", // cmc id
+        "isChain": true
     },
     "axie-infinity": {
         id: "6102"

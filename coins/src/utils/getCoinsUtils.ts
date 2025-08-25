@@ -54,9 +54,7 @@ export async function retryCoingeckoRequest(
     try {
       const fetched = await fetch(
         `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
-      ).catch((e: any) => {
-        throw e.message
-      });
+      );
       if (log) console.log(fetched);
       const res = (await fetched.json()) as CoingeckoResponse;
       if (log) console.log(res);

@@ -100,7 +100,7 @@ const getProtocolSubSections = ({
   if (metadata?.optionsPremiumVolume) {
     subSections.push({
       ...result,
-      id: `${result.id}optionsPremiumVolume`,
+      id: `${result.id}_optionsPremiumVolume`,
       subName: "Options Premium Volume",
       route: `${result.route}?tvl=false&optionsPremiumVolume=true`,
     });
@@ -729,23 +729,24 @@ async function generateSearchList() {
 const main = async () => {
   const { results, topResults } = await generateSearchList();
 
-  await fetch(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-    },
-  }).then((r) => r.json());
+  if (results.length === 0) {
+    console.log("No results to submit");
+    return;
+  }
+
+  // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
   const submit = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(results),
   }).then((r) => r.json());
+
   const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
   }).then((r) => r.json());
 

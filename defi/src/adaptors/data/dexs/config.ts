@@ -259,9 +259,9 @@ export default {
     "terraswap": {
         id: "491"
     },
-    "saros": {
-        id: "1262"
-    },
+    // "saros": {
+    //     id: "1262"
+    // },
     "vvs-finance": {
         id: "831"
     },

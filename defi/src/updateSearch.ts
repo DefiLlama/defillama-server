@@ -4,6 +4,29 @@ import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 
+import allProtocols from "./protocols/data";
+import { CategoryTagMap } from "./protocols/tags";
+import parentProtocols from "./protocols/parentProtocols";
+import { getChainDisplayName } from "./utils/normalizeChain";
+
+const protocolNamesSet = new Set<string>();
+const categoriesSet = new Set<string>();
+const tagsSet = new Set<string>();
+
+allProtocols.forEach((protocol) => {
+  protocolNamesSet.add(protocol.name);
+  if (protocol.category) {
+    categoriesSet.add(protocol.category);
+  }
+  if (protocol.tags) {
+    protocol.tags.forEach((tag) => tagsSet.add(tag));
+  }
+});
+
+parentProtocols.forEach((parentProtocol) => {
+  protocolNamesSet.add(parentProtocol.name);
+});
+
 const normalize = (str: string) =>
   sluggifyString(str)
     .replace(/[^a-zA-Z0-9_-]/, "")
@@ -252,7 +275,15 @@ const getProtocolSubSections = ({
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
-  const [tvlData, stablecoinsData, frontendPages, tastyMetrics, protocolsMetadata, chainsMetadata]: [
+  const [
+    tvlData,
+    stablecoinsData,
+    frontendPages,
+    tastyMetrics,
+    protocolsMetadata,
+    chainsMetadata,
+    currentSearchResults,
+  ]: [
     {
       chains: string[];
       parentProtocols: any[];
@@ -263,7 +294,8 @@ async function generateSearchList() {
     Record<string, Array<{ name: string; route: string }>>,
     Record<string, number>,
     Record<string, IProtocolMetadata>,
-    Record<string, IChainMetadata>
+    Record<string, IChainMetadata>,
+    Array<SearchResult>
   ] = await Promise.all([
     fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
     fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
@@ -292,6 +324,11 @@ async function generateSearchList() {
       }),
     fetch("https://api.llama.fi/config/smol/appMetadata-protocols.json").then((res) => res.json()),
     fetch("https://api.llama.fi/config/smol/appMetadata-chains.json").then((res) => res.json()),
+    fetch("https://search.defillama.com/indexes/pages/documents?limit=100000", {
+      headers: {
+        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      },
+    }).then((r) => r.json()),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -319,6 +356,7 @@ async function generateSearchList() {
 
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
+  const protocolsIds = new Set<string>();
   for (const parent of tvlData.parentProtocols) {
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
@@ -332,6 +370,7 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
+    protocolsIds.add(result.id);
 
     const metadata = protocolsMetadata[parent.id];
     const childProtocols = tvlData.protocols.filter((p) => p.parentProtocol === parent.id).map((p) => p.name);
@@ -343,6 +382,7 @@ async function generateSearchList() {
       protocolData: parent,
       childProtocols,
     });
+    subSections.forEach((s) => protocolsIds.add(s.id));
     subProtocols.push(...subSections);
   }
 
@@ -361,6 +401,7 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
+    protocolsIds.add(result.id);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
     const subSections = getProtocolSubSections({
@@ -370,11 +411,13 @@ async function generateSearchList() {
       tastyMetrics,
       protocolData: protocol,
     });
+    subSections.forEach((s) => protocolsIds.add(s.id));
     subProtocols.push(...subSections);
   }
 
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
+  const chainsIds = new Set<string>();
   for (const chain of tvlData.chains) {
     const result = {
       id: `chain_${normalize(chain)}`,
@@ -387,6 +430,7 @@ async function generateSearchList() {
     };
 
     chains.push(result);
+    chainsIds.add(result.id);
 
     const metadata = chainsMetadata[standardizeProtocolName(chain)];
     const subSections: Array<SearchResult> = [];
@@ -607,10 +651,12 @@ async function generateSearchList() {
       });
     }
 
+    subSections.forEach((s) => chainsIds.add(s.id));
     subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0 })));
   }
 
   const categories: Array<SearchResult> = [];
+  const categoriesIds = new Set<string>();
   for (const category in categoryTvl) {
     categories.push({
       id: `category_${normalize(category)}`,
@@ -621,8 +667,10 @@ async function generateSearchList() {
       type: "Category",
     });
   }
+  categories.forEach((c) => categoriesIds.add(c.id));
 
   const tags: Array<SearchResult> = [];
+  const tagsIds = new Set<string>();
   for (const tag in tagTvl) {
     tags.push({
       id: `tag_${normalize(tag)}`,
@@ -633,7 +681,9 @@ async function generateSearchList() {
       type: "Tag",
     });
   }
+  tags.forEach((t) => tagsIds.add(t.id));
 
+  const stablecoinsIds = new Set<string>();
   const stablecoins: Array<SearchResult> = stablecoinsData.peggedAssets.map((stablecoin) => ({
     id: `stablecoin_${normalize(stablecoin.name)}_${normalize(stablecoin.symbol)}`,
     name: stablecoin.name,
@@ -644,7 +694,9 @@ async function generateSearchList() {
     v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
+  stablecoins.forEach((s) => stablecoinsIds.add(s.id));
 
+  const metricsIds = new Set<string>();
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,
     name: i.name,
@@ -652,7 +704,9 @@ async function generateSearchList() {
     v: tastyMetrics[i.route] ?? 0,
     type: "Metric",
   }));
+  metrics.forEach((m) => metricsIds.add(m.id));
 
+  const toolsIds = new Set<string>();
   const tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
@@ -660,8 +714,10 @@ async function generateSearchList() {
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
+  tools.forEach((t) => toolsIds.add(t.id));
 
   const otherPages: Array<SearchResult> = [];
+  const otherPagesIds = new Set<string>();
   for (const category in frontendPages) {
     if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
@@ -675,7 +731,9 @@ async function generateSearchList() {
       });
     }
   }
+  otherPages.forEach((o) => otherPagesIds.add(o.id));
 
+  const cexsIds = new Set<string>();
   const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
     .map((c) => ({
@@ -686,6 +744,75 @@ async function generateSearchList() {
       v: tastyMetrics[`/cex/${standardizeProtocolName(c.slug)}`] ?? 0,
       type: "CEX",
     }));
+  cexs.forEach((c) => cexsIds.add(c.id));
+
+  const resultsToDelete = new Set<string>();
+
+  for (const currentResult of currentSearchResults) {
+    if (currentResult.type === "Protocol" && !protocolsIds.has(currentResult.id)) {
+      // can delete as the protocol is no longer in the list (maybe delisted or renamed)
+      if (!protocolNamesSet.has(currentResult.name)) {
+        resultsToDelete.add(currentResult.id);
+      }
+
+      // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this protocol
+      if (currentResult.subName) {
+        resultsToDelete.add(currentResult.id);
+      }
+    }
+
+    if (currentResult.type === "Chain" && !chainsIds.has(currentResult.id)) {
+      const newChainName = getChainDisplayName(currentResult.name, true);
+      // delete if the chain name has changed
+      if (newChainName !== currentResult.name) {
+        resultsToDelete.add(currentResult.id);
+      }
+
+      // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this chain
+      if (currentResult.subName) {
+        resultsToDelete.add(currentResult.id);
+      }
+    }
+
+    // only delete if no protocols are in this category
+    if (
+      currentResult.type === "Category" &&
+      !categoriesIds.has(currentResult.id) &&
+      !categoriesSet.has(currentResult.name) &&
+      !(CategoryTagMap as any)[currentResult.name]
+    ) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    // only delete if no protocols are in this tag
+    if (currentResult.type === "Tag" && !tagsIds.has(currentResult.id) && !tagsSet.has(currentResult.name)) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    if (currentResult.type === "Stablecoin" && !stablecoinsIds.has(currentResult.id)) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+    if (currentResult.type === "Metric" && !metricsIds.has(currentResult.id)) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+    if (currentResult.type === "Tool" && !toolsIds.has(currentResult.id)) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+    if (currentResult.type === "Others" && !otherPagesIds.has(currentResult.id)) {
+      resultsToDelete.add(currentResult.id);
+    }
+
+    // it is okay to delete as cex data does not rely on any api , maybe renamed
+    if (currentResult.type === "CEX" && !cexsIds.has(currentResult.id)) {
+      resultsToDelete.add(currentResult.id);
+    }
+  }
 
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
@@ -723,15 +850,29 @@ async function generateSearchList() {
         ...r,
         v: 0,
       })),
+    resultsToDelete: Array.from(resultsToDelete),
   };
 }
 
 const main = async () => {
-  const { results, topResults } = await generateSearchList();
+  const { results, topResults, resultsToDelete } = await generateSearchList();
 
   if (results.length === 0) {
     console.log("No results to submit");
     return;
+  }
+
+  const deletedResults = await fetch(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+    },
+    body: JSON.stringify(resultsToDelete),
+  }).then((r) => r.json());
+
+  const deletedResultsErrorMessage = deletedResults?.details?.error?.message;
+  if (deletedResultsErrorMessage) {
+    console.log(deletedResultsErrorMessage);
   }
 
   // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
@@ -746,7 +887,7 @@ const main = async () => {
 
   const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
   }).then((r) => r.json());
 
@@ -754,9 +895,9 @@ const main = async () => {
     console.log("Error storing top results search list", e);
   });
 
-  const errorMessage = status?.details?.error?.message;
-  if (errorMessage) {
-    console.log(errorMessage);
+  const submitErrorMessage = status?.details?.error?.message;
+  if (submitErrorMessage) {
+    console.log(submitErrorMessage);
   }
   console.log(status);
 };

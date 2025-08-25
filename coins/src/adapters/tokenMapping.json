@@ -1,14 +1,19 @@
 {
   "haven1": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "H1",
+      "to": "coingecko#haven1"
+    },
     "0xB041be50694f3018912c18c710e7BBB931002598": {
       "decimals": "18",
       "symbol": "WH1",
-      "to": "coingecko#haven1"
+      "to": "coingecko#wrapped-h1"
     },
     "0xa4E7604d7A3f9f7A2eE79723cae4122a72Bc6984": {
       "decimals": "18",
       "symbol": "hETH",
-      "to": "coingecko#ethereum"
+      "to": "coingecko#haven1-bridged-wrapped-eth"
     },
     "0x73A6258c102c636A1b54F400637018cE0E984825": {
       "decimals": "6",
@@ -18,17 +23,17 @@
     "0x33B67ED2b733576572C19D744a365181d97f936c": {
       "decimals": "6",
       "symbol": "hUSDC",
-      "to": "coingecko#usd-coin"
+      "to": "coingecko#haven1-bridged-usdc-haven1"
     },
     "0x61cd868eE83319dbc16616D34084904a369D5338": {
       "decimals": "8",
       "symbol": "cbBTC",
-      "to": "coingecko#coinbase-wrapped-btc"
+      "to": "coingecko#haven1haven1-bridged-coinbase-wrapped-staked-eth"
     },
     "0x750008544Ce5a197eA88A6679962ADA79210c194": {
       "decimals": "18",
       "symbol": "hsETH",
-      "to": "coingecko#hseth"
+      "to": "coingecko#haven1-bridged-staked-eth"
     },
     "0x0A7a6384E0640C3Efd5587635E201cb960819456": {
       "decimals": "18",

@@ -895,6 +895,20 @@ const parentProtocols: IParentProtocol[] = [
     github: ["timeless-fi"],
   },
   {
+    id: "parent#bunni",
+    name: "Bunni",
+    url: "https://bunni.xyz",
+    description:
+      "Bunni v2 is the leading Uniswap V4 hook, a shapeshifting DEX that maximizes LP yields via dynamic, automated pools combining swap fees with lending APYs (e.g., 13% on USDC-USDT). Features: LDFs for gas-efficient custom liquidity shapes, Shapeshifting for market adaptation, autonomous rebalancing, rehypothecation to Aave/Yearn, volatility-based fees, Surge Fee MEV protection, am-AMM auctions, auto-compounding.",
+    logo: `${baseIconsUrl}/bunni-v2.png`,
+    gecko_id: "bunni",
+    cmcId: "23236",
+    chains: [],
+    twitter: "bunni_xyz",
+    governanceID: ["snapshot:bunni.eth"],
+    github: ["Bunniapp"],
+  },
+  {
     id: "parent#cap-finance",
     name: "Cap Finance",
     url: "https://www.cap.io",

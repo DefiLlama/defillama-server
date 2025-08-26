@@ -4022,9 +4022,9 @@ export default {
     "footballdotfun": {
         id: "6625"
     },
-    // "helium": {
-    //     id: "5665", // cmc id
-    // },
+    "helium": {
+        id: "6631",
+    },
     "axie-infinity": {
         id: "6102"
     },

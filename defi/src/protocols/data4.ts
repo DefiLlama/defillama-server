@@ -17986,7 +17986,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://tr.energy",
-    description: `The most secure and multifunctional wallet in the #TRON ecosystem`,
+    description: `TR.ENERGY is an innovative service for energy delegation, fee savings, and blockchain optimization in TRON`,
     chain: "Tron",
     logo: `${baseIconsUrl}/tr-energy.jpg`,
     audits: "0",

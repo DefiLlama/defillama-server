@@ -3936,7 +3936,6 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Arbitrum", "Base", "Unichain", "BSC"],
     module: "bunni-v2/index.js",
     twitter: "bunni_xyz",
-    github: ["Bunniapp"],
     forkedFrom: [],
     parentProtocol: "parent#bunni",
     audit_links: ["https://docs.bunni.xyz/docs/v2/audits/"],

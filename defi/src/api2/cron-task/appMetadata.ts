@@ -5,6 +5,7 @@
  */
 
 import { readRouteData, storeRouteData } from "../cache/file-cache";
+import * as sdk from '@defillama/sdk'
 
 import fetch from "node-fetch";
 // import { pullDevMetricsData } from "./githubMetrics";
@@ -13,6 +14,7 @@ import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
+import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -120,6 +122,7 @@ async function _storeAppMetadata() {
     stablecoinsTracked,
     oraclesData,
     chainNftsData,
+    safeHarborData,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
     readRouteData("/dimensions/chain-agg-data"),
@@ -154,9 +157,11 @@ async function _storeAppMetadata() {
       .catch(() => ({ protocols: 0, chains: 0 })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
+    sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY).catch(() => ({})),
   ]);
 
   await _storeMetadataFile();
+  await storeRouteData('/_fe/static/safe-harbor-projects', safeHarborData);
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
@@ -662,6 +667,9 @@ async function _storeAppMetadata() {
           r[k].chains.forEach((chain: any) => {
             chainProtocolCount[chain] = (chainProtocolCount[chain] || 0) + 1;
           });
+
+          // if protocol has signed safe harbor agreement
+          if (safeHarborData?.[k]) r[k].safeHarbor = true
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
@@ -671,6 +679,9 @@ async function _storeAppMetadata() {
             chains.forEach((chain: any) => chainSet.add(chain));
           });
           r[k].chains = Array.from(chainSet);
+
+          // if protocol has signed safe harbor agreement
+          if (safeHarborData?.[k]) r[k].safeHarbor = true
         }
         return r;
       }, {});

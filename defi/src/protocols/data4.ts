@@ -3933,7 +3933,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: ["Ethereum", "Arbitrum", "Base", "Unichain", "BSC"],
+    chains: ["Ethereum", "Arbitrum", "Base", "Unichain", "Binance"],
     module: "bunni-v2/index.js",
     twitter: "bunni_xyz",
     forkedFrom: [],

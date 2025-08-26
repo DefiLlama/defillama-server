@@ -42832,6 +42832,13 @@ const data3_2: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Arbitrum", "Optimism"],
     forkedFrom: [],
+	oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["Mitosis team will comment on PR"]
+      },
+    ],
     module: "mitosis/index.js",
     twitter: "MitosisOrg",
     audit_links: ["https://omniscia.io/reports/mitosis-core-protocol-65d72c4f31a85a00186cf5f8"],

@@ -18212,6 +18212,13 @@ const data4: Protocol[] = [
       Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
     },
     listedAt: 1751313277,
+    oraclesBreakdown: [
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations"]
+      }
+    ]
   },
   {
     id: "6373",

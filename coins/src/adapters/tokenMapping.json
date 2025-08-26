@@ -7169,6 +7169,21 @@
     }
   },
   "etlk": {
+    "0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x2247b5a46bb79421a314ab0f0b67ffd11dd37ee4": {
+      "to": "coingecko#midas-basis-trading-token",
+      "decimals": 18,
+      "symbol": "mBASIS"
+    },
+    "0xdd629e5241cbc5919847783e6c96b2de4754e438": {
+      "to": "coingecko#midas-mtbill",
+      "decimals": 18,
+      "symbol": "mTBILL"
+    },
     "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
       "to": "coingecko#lombard-staked-btc",
       "decimals": 8,

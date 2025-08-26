@@ -293,7 +293,7 @@ function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Arr
   return currentResults
     .filter((item) => {
       if (newResultsSet.has(item.route)) {
-        return true;
+        return false;
       }
 
       if (item.type === "Protocol") {

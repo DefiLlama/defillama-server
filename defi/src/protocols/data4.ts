@@ -17993,7 +17993,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Wallets",
+    category: "Services",
     chains: ["Tron"],
     forkedFromIds: [],
     module: "dummy.js",

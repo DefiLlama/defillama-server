@@ -12,6 +12,7 @@ import { getChainDisplayName } from "./utils/normalizeChain";
 const protocolNamesSet = new Set<string>();
 const categoriesSet = new Set<string>();
 const tagsSet = new Set<string>();
+const cexsSet = new Set<string>(cexsData.map((c) => c.name));
 
 allProtocols.forEach((protocol) => {
   protocolNamesSet.add(protocol.name);
@@ -351,9 +352,11 @@ function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Arr
       }
 
       // it is okay to delete as cex data does not rely on any api , maybe renamed
-      if (item.type === "CEX") {
+      if (item.type === "CEX" && !cexsSet.has(item.name)) {
         return true;
       }
+
+      return false
     })
     .map((item) => item.id);
 }

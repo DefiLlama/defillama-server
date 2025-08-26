@@ -15,7 +15,6 @@ import getTvlCacheEnv from '../../src/api2/env';
 
 async function start() {
   await setConfig()
-  console.log('Configuration loaded.', process.env);
 
   const isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
 

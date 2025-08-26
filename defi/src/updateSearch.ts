@@ -27,12 +27,7 @@ parentProtocols.forEach((parentProtocol) => {
   protocolNamesSet.add(parentProtocol.name);
 });
 
-const normalize = (str: string) =>
-  sluggifyString(str)
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "")
-    .replace(/[^a-zA-Z0-9_-]/, "");
-const standardizeProtocolName = (tokenName = "") => tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
+const normalize = (str: string) => str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "";
 
 interface SearchResult {
   id: string;
@@ -170,7 +165,7 @@ const getProtocolSubSections = ({
       ...result,
       id: `${result.id}_bridgeVolume`,
       subName: "Bridge Volume",
-      route: `/bridge/${standardizeProtocolName(protocolData.name)}`,
+      route: `/bridge/${sluggifyString(protocolData.name)}`,
     });
   }
 
@@ -215,7 +210,7 @@ const getProtocolSubSections = ({
       ...result,
       id: `${result.id}_unlocks`,
       subName: "Unlocks",
-      route: `/unlocks/${standardizeProtocolName(protocolData.name)}`,
+      route: `/unlocks/${sluggifyString(protocolData.name)}`,
     });
   }
 
@@ -253,7 +248,7 @@ const getProtocolSubSections = ({
       ...result,
       id: `${result.id}_treasury`,
       subName: "Treasury",
-      route: `/protocol/treasury/${standardizeProtocolName(protocolData.name)}`,
+      route: `/protocol/treasury/${sluggifyString(protocolData.name)}`,
     });
   }
 
@@ -262,7 +257,7 @@ const getProtocolSubSections = ({
       ...result,
       id: `${result.id}_forks`,
       subName: "Forks",
-      route: `/protocol/forks/${standardizeProtocolName(protocolData.name)}`,
+      route: `/protocol/forks/${sluggifyString(protocolData.name)}`,
     });
   }
 
@@ -363,9 +358,9 @@ async function generateSearchList() {
       name: parent.name,
       symbol: parent.symbol,
       tvl: parentTvl[parent.id] ?? 0,
-      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
-      route: `/protocol/${standardizeProtocolName(parent.name)}`,
-      v: tastyMetrics[`/protocol/${standardizeProtocolName(parent.name)}`] ?? 0,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
+      route: `/protocol/${sluggifyString(parent.name)}`,
+      v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
 
@@ -393,10 +388,10 @@ async function generateSearchList() {
       name: protocol.name,
       symbol: protocol.symbol,
       tvl: protocol.tvl,
-      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(protocol.name)}?w=48&h=48`,
-      route: `/protocol/${standardizeProtocolName(protocol.name)}`,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
+      route: `/protocol/${sluggifyString(protocol.name)}`,
       ...(protocol.deprecated ? { deprecated: true } : {}),
-      v: tastyMetrics[`/protocol/${standardizeProtocolName(protocol.name)}`] ?? 0,
+      v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
 
@@ -422,17 +417,17 @@ async function generateSearchList() {
     const result = {
       id: `chain_${normalize(chain)}`,
       name: chain,
-      logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+      logo: `https://icons.llamao.fi/icons/chains/rsz_${sluggifyString(chain)}?w=48&h=48`,
       tvl: chainTvl[chain],
-      route: `/chain/${standardizeProtocolName(chain)}`,
-      v: tastyMetrics[`/chain/${standardizeProtocolName(chain)}`] ?? 0,
+      route: `/chain/${sluggifyString(chain)}`,
+      v: tastyMetrics[`/chain/${sluggifyString(chain)}`] ?? 0,
       type: "Chain",
     };
 
     chains.push(result);
     chainsIds.add(result.id);
 
-    const metadata = chainsMetadata[standardizeProtocolName(chain)];
+    const metadata = chainsMetadata[sluggifyString(chain)];
     const subSections: Array<SearchResult> = [];
 
     if (metadata?.stablecoins) {
@@ -447,7 +442,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_stablecoinsSupplyRankings`,
         subName: "Stablecoins Supply Rankings",
-        route: `/stablecoins/${standardizeProtocolName(chain)}`,
+        route: `/stablecoins/${sluggifyString(chain)}`,
       });
     }
 
@@ -481,7 +476,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByFees`,
         subName: "Protocols by Fees",
-        route: `/fees/chain/${standardizeProtocolName(chain)}`,
+        route: `/fees/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -497,7 +492,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByRevenue`,
         subName: "Protocols by Revenue",
-        route: `/revenue/chain/${standardizeProtocolName(chain)}`,
+        route: `/revenue/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -513,7 +508,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByDexVolume`,
         subName: "Protocols by DEX Volume",
-        route: `/dexs/chain/${standardizeProtocolName(chain)}`,
+        route: `/dexs/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -529,14 +524,14 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByPerpVolume`,
         subName: "Protocols by Perp Volume",
-        route: `/perps/chain/${standardizeProtocolName(chain)}`,
+        route: `/perps/chain/${sluggifyString(chain)}`,
       });
 
       subSections.push({
         ...result,
         id: `${result.id}_protocolsByOpenInterest`,
         subName: "Protocols by Open Interest",
-        route: `/open-interest/chain/${standardizeProtocolName(chain)}`,
+        route: `/open-interest/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -545,7 +540,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByOptionPremiumVolume`,
         subName: "Protocols by Option Premium Volume",
-        route: `/options/premium-volume/${standardizeProtocolName(chain)}`,
+        route: `/options/premium-volume/${sluggifyString(chain)}`,
       });
     }
 
@@ -554,7 +549,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByOptionNotionalVolume`,
         subName: "Protocols by Option Notional Volume",
-        route: `/options/notional-volume/chain/${standardizeProtocolName(chain)}`,
+        route: `/options/notional-volume/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -563,7 +558,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByDexAggregatorVolume`,
         subName: "Protocols by DEX Aggregator Volume",
-        route: `/dex-aggregators/chain/${standardizeProtocolName(chain)}`,
+        route: `/dex-aggregators/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -572,7 +567,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByBridgeAggregatorVolume`,
         subName: "Protocols by Bridge Aggregator Volume",
-        route: `/bridge-aggregators/chain/${standardizeProtocolName(chain)}`,
+        route: `/bridge-aggregators/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -581,7 +576,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_protocolsByPerpAggregatorVolume`,
         subName: "Protocols by Perp Aggregator Volume",
-        route: `/perps-aggregators/chain/${standardizeProtocolName(chain)}`,
+        route: `/perps-aggregators/chain/${sluggifyString(chain)}`,
       });
     }
 
@@ -590,7 +585,7 @@ async function generateSearchList() {
         ...result,
         id: `${result.id}_bridgedTvl`,
         subName: "Bridged TVL",
-        route: `/bridged/${standardizeProtocolName(chain)}`,
+        route: `/bridged/${sluggifyString(chain)}`,
       });
     }
 
@@ -662,8 +657,8 @@ async function generateSearchList() {
       id: `category_${normalize(category)}`,
       name: category,
       tvl: categoryTvl[category],
-      route: `/protocols/${standardizeProtocolName(category)}`,
-      v: tastyMetrics[`/protocols/${standardizeProtocolName(category)}`] ?? 0,
+      route: `/protocols/${sluggifyString(category)}`,
+      v: tastyMetrics[`/protocols/${sluggifyString(category)}`] ?? 0,
       type: "Category",
     });
   }
@@ -676,8 +671,8 @@ async function generateSearchList() {
       id: `tag_${normalize(tag)}`,
       name: tag,
       tvl: tagTvl[tag],
-      route: `/protocols/${standardizeProtocolName(tag)}`,
-      v: tastyMetrics[`/protocols/${standardizeProtocolName(tag)}`] ?? 0,
+      route: `/protocols/${sluggifyString(tag)}`,
+      v: tastyMetrics[`/protocols/${sluggifyString(tag)}`] ?? 0,
       type: "Tag",
     });
   }
@@ -689,9 +684,9 @@ async function generateSearchList() {
     name: stablecoin.name,
     symbol: stablecoin.symbol,
     mcap: stablecoin.circulating.peggedUSD,
-    logo: `https://icons.llamao.fi/icons/pegged/${standardizeProtocolName(stablecoin.name)}?w=48&h=48`,
-    route: `/stablecoin/${standardizeProtocolName(stablecoin.name)}`,
-    v: tastyMetrics[`/stablecoin/${standardizeProtocolName(stablecoin.name)}`] ?? 0,
+    logo: `https://icons.llamao.fi/icons/pegged/${sluggifyString(stablecoin.name)}?w=48&h=48`,
+    route: `/stablecoin/${sluggifyString(stablecoin.name)}`,
+    v: tastyMetrics[`/stablecoin/${sluggifyString(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
   stablecoins.forEach((s) => stablecoinsIds.add(s.id));
@@ -739,9 +734,9 @@ async function generateSearchList() {
     .map((c) => ({
       id: `cex_${normalize(c.name)}`,
       name: c.name,
-      route: `/cex/${standardizeProtocolName(c.slug)}`,
-      logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(c.slug)}?w=48&h=48`,
-      v: tastyMetrics[`/cex/${standardizeProtocolName(c.slug)}`] ?? 0,
+      route: `/cex/${sluggifyString(c.slug!)}`,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(c.slug!)}?w=48&h=48`,
+      v: tastyMetrics[`/cex/${sluggifyString(c.slug!)}`] ?? 0,
       type: "CEX",
     }));
   cexs.forEach((c) => cexsIds.add(c.id));

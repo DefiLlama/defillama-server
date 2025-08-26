@@ -287,6 +287,77 @@ async function getAllCurrentSearchResults() {
   return finalRes.results;
 }
 
+function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Array<SearchResult>) {
+  const newResultsSet = new Set(newResults.map((r) => r.route));
+
+  return currentResults
+    .filter((item) => {
+      if (newResultsSet.has(item.route)) {
+        return true;
+      }
+
+      if (item.type === "Protocol") {
+        // can delete as the protocol is no longer in the list (maybe delisted or renamed)
+        if (!protocolNamesSet.has(item.name)) {
+          return true;
+        }
+
+        // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this protocol
+        if (item.subName) {
+          return true;
+        }
+      }
+
+      if (item.type === "Chain") {
+        const newChainName = getChainDisplayName(item.name, true);
+        // delete if the chain name has changed
+        if (newChainName !== item.name) {
+          return true;
+        }
+
+        // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this chain
+        if (item.subName) {
+          return true;
+        }
+      }
+
+      // only delete if no protocols are in this category
+      if (item.type === "Category" && !categoriesSet.has(item.name) && !(CategoryTagMap as any)[item.name]) {
+        return true;
+      }
+
+      // only delete if no protocols are in this tag
+      if (item.type === "Tag" && !tagsSet.has(item.name)) {
+        return true;
+      }
+
+      if (item.type === "Stablecoin") {
+        return true;
+      }
+
+      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+      if (item.type === "Metric") {
+        return true;
+      }
+
+      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+      if (item.type === "Tool") {
+        return true;
+      }
+
+      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
+      if (item.type === "Others") {
+        return true;
+      }
+
+      // it is okay to delete as cex data does not rely on any api , maybe renamed
+      if (item.type === "CEX") {
+        return true;
+      }
+    })
+    .map((item) => item.id);
+}
+
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
@@ -367,7 +438,6 @@ async function generateSearchList() {
 
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
-  const protocolsIds = new Set<string>();
   for (const parent of tvlData.parentProtocols) {
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
@@ -381,7 +451,6 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
-    protocolsIds.add(result.id);
 
     const metadata = protocolsMetadata[parent.id];
     const childProtocols = tvlData.protocols.filter((p) => p.parentProtocol === parent.id).map((p) => p.name);
@@ -393,7 +462,6 @@ async function generateSearchList() {
       protocolData: parent,
       childProtocols,
     });
-    subSections.forEach((s) => protocolsIds.add(s.id));
     subProtocols.push(...subSections);
   }
 
@@ -412,7 +480,6 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
-    protocolsIds.add(result.id);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
     const subSections = getProtocolSubSections({
@@ -422,13 +489,11 @@ async function generateSearchList() {
       tastyMetrics,
       protocolData: protocol,
     });
-    subSections.forEach((s) => protocolsIds.add(s.id));
     subProtocols.push(...subSections);
   }
 
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
-  const chainsIds = new Set<string>();
   for (const chain of tvlData.chains) {
     const result = {
       id: `chain_${normalize(chain)}`,
@@ -441,7 +506,6 @@ async function generateSearchList() {
     };
 
     chains.push(result);
-    chainsIds.add(result.id);
 
     const metadata = chainsMetadata[sluggifyString(chain)];
     const subSections: Array<SearchResult> = [];
@@ -662,7 +726,6 @@ async function generateSearchList() {
       });
     }
 
-    subSections.forEach((s) => chainsIds.add(s.id));
     subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0 })));
   }
 
@@ -694,7 +757,6 @@ async function generateSearchList() {
   }
   tags.forEach((t) => tagsIds.add(t.id));
 
-  const stablecoinsIds = new Set<string>();
   const stablecoins: Array<SearchResult> = stablecoinsData.peggedAssets.map((stablecoin) => ({
     id: `stablecoin_${normalize(stablecoin.name)}_${normalize(stablecoin.symbol)}`,
     name: stablecoin.name,
@@ -705,9 +767,7 @@ async function generateSearchList() {
     v: tastyMetrics[`/stablecoin/${sluggifyString(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
-  stablecoins.forEach((s) => stablecoinsIds.add(s.id));
 
-  const metricsIds = new Set<string>();
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,
     name: i.name,
@@ -715,9 +775,7 @@ async function generateSearchList() {
     v: tastyMetrics[i.route] ?? 0,
     type: "Metric",
   }));
-  metrics.forEach((m) => metricsIds.add(m.id));
 
-  const toolsIds = new Set<string>();
   const tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
@@ -725,10 +783,8 @@ async function generateSearchList() {
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
-  tools.forEach((t) => toolsIds.add(t.id));
 
   const otherPages: Array<SearchResult> = [];
-  const otherPagesIds = new Set<string>();
   for (const category in frontendPages) {
     if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
@@ -742,9 +798,7 @@ async function generateSearchList() {
       });
     }
   }
-  otherPages.forEach((o) => otherPagesIds.add(o.id));
 
-  const cexsIds = new Set<string>();
   const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
     .map((c) => ({
@@ -755,75 +809,6 @@ async function generateSearchList() {
       v: tastyMetrics[`/cex/${sluggifyString(c.slug!)}`] ?? 0,
       type: "CEX",
     }));
-  cexs.forEach((c) => cexsIds.add(c.id));
-
-  const resultsToDelete = new Set<string>();
-
-  for (const currentResult of currentSearchResults) {
-    if (currentResult.type === "Protocol" && !protocolsIds.has(currentResult.id)) {
-      // can delete as the protocol is no longer in the list (maybe delisted or renamed)
-      if (!protocolNamesSet.has(currentResult.name)) {
-        resultsToDelete.add(currentResult.id);
-      }
-
-      // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this protocol
-      if (currentResult.subName) {
-        resultsToDelete.add(currentResult.id);
-      }
-    }
-
-    if (currentResult.type === "Chain" && !chainsIds.has(currentResult.id)) {
-      const newChainName = getChainDisplayName(currentResult.name, true);
-      // delete if the chain name has changed
-      if (newChainName !== currentResult.name) {
-        resultsToDelete.add(currentResult.id);
-      }
-
-      // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this chain
-      if (currentResult.subName) {
-        resultsToDelete.add(currentResult.id);
-      }
-    }
-
-    // only delete if no protocols are in this category
-    if (
-      currentResult.type === "Category" &&
-      !categoriesIds.has(currentResult.id) &&
-      !categoriesSet.has(currentResult.name) &&
-      !(CategoryTagMap as any)[currentResult.name]
-    ) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    // only delete if no protocols are in this tag
-    if (currentResult.type === "Tag" && !tagsIds.has(currentResult.id) && !tagsSet.has(currentResult.name)) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    if (currentResult.type === "Stablecoin" && !stablecoinsIds.has(currentResult.id)) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-    if (currentResult.type === "Metric" && !metricsIds.has(currentResult.id)) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-    if (currentResult.type === "Tool" && !toolsIds.has(currentResult.id)) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-    if (currentResult.type === "Others" && !otherPagesIds.has(currentResult.id)) {
-      resultsToDelete.add(currentResult.id);
-    }
-
-    // it is okay to delete as cex data does not rely on any api , maybe renamed
-    if (currentResult.type === "CEX" && !cexsIds.has(currentResult.id)) {
-      resultsToDelete.add(currentResult.id);
-    }
-  }
 
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
@@ -861,17 +846,19 @@ async function generateSearchList() {
         ...r,
         v: 0,
       })),
-    resultsToDelete: Array.from(resultsToDelete),
+    currentSearchResults,
   };
 }
 
 const main = async () => {
-  const { results, topResults, resultsToDelete } = await generateSearchList();
+  const { results, topResults, currentSearchResults } = await generateSearchList();
 
   if (results.length === 0) {
     console.log("No results to submit");
     return;
   }
+
+  const resultsToDelete = getResultsToDelete(currentSearchResults, results);
 
   const deletedResults = await fetch(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
     method: "POST",

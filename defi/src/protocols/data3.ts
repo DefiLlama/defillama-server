@@ -58586,7 +58586,7 @@ const data3_2: Protocol[] = [
   {
     id: "5309",
     name: "Nabla Finance",
-    address: null,
+    address: "base:0x01ed85d73645523b0d62c7a8e35d03601cfd679b",
     symbol: "NABLA",
     url: "https://nabla.fi",
     description:

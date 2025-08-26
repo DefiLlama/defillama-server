@@ -23229,9 +23229,10 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Interface",
     chains: ["Arbitrum"],
-    module: "dummy.js",
+    module: "clob/index.js",
     twitter: "TradeOnDESK",
     parentProtocol: "parent#desk",
+    listedAt: 1756218144
   },
   {
     id: "6608",

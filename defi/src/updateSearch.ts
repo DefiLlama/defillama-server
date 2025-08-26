@@ -27,7 +27,7 @@ parentProtocols.forEach((parentProtocol) => {
   protocolNamesSet.add(parentProtocol.name);
 });
 
-const normalize = (str: string) => str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "";
+const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
 interface SearchResult {
   id: string;
@@ -267,6 +267,26 @@ const getProtocolSubSections = ({
   }));
 };
 
+async function getAllCurrentSearchResults() {
+  const res: { total: number; results: Array<SearchResult> } = await fetch(
+    "https://search.defillama.com/indexes/pages/documents",
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      },
+    }
+  ).then((res) => res.json());
+  const finalRes: { total: number; results: Array<SearchResult> } = await fetch(
+    `https://search.defillama.com/indexes/pages/documents?limit=${res.total}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      },
+    }
+  ).then((res) => res.json());
+  return finalRes.results;
+}
+
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
@@ -319,11 +339,7 @@ async function generateSearchList() {
       }),
     fetch("https://api.llama.fi/config/smol/appMetadata-protocols.json").then((res) => res.json()),
     fetch("https://api.llama.fi/config/smol/appMetadata-chains.json").then((res) => res.json()),
-    fetch("https://search.defillama.com/indexes/pages/documents?limit=100000", {
-      headers: {
-        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      },
-    }).then((r) => r.json()),
+    getAllCurrentSearchResults(),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;

@@ -14971,7 +14971,7 @@ const data2: Protocol[] = [
     url: "https://app.ola.finance/networks/0x892701d128d63c9856A9Eb5d967982F78FD3F2AE/markets",
     description: "Decentralised Lending platform",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/spiritswap.jpg`,
+    logo: `${baseIconsUrl}/spiritswap-lending.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

@@ -1,4 +1,5 @@
 import * as HyperExpress from "hyper-express";
+import * as path from "path";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, } from "../cache/file-cache";
 import sluggify from "../../utils/sluggify";
@@ -116,7 +117,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 
 
-  router.get("/_fe/static", defaultFileHandler)
+  router.get("/_fe/static/*", defaultFileHandler)
 
   router.get("/_fe/protocol-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
     dataType: 'protocol', skipAggregatedTvl: false, restrictResponseSize: false, feMini: true,
@@ -147,11 +148,27 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
    */
 
-
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
     const routerPath = fullPath.replace(routerBasePath, '');
-    return fileResponse(routerPath, res);
+    const sanitizedPath = sanitizePath(routerPath);
+    if (!sanitizedPath) {
+      return errorResponse(res, 'Invalid path', { statusCode: 400 });
+    }
+    return fileResponse(sanitizedPath, res);
+
+
+    function sanitizePath(filePath: string): string | null {
+      // Remove leading slash and normalize the path
+      const normalizedPath = path.normalize(filePath.replace(/^\/+/, ''));
+
+      // Check for path traversal attempts
+      if (normalizedPath.includes('..') || normalizedPath.startsWith('/') || path.isAbsolute(normalizedPath)) {
+        return null;
+      }
+
+      return normalizedPath;
+    }
   }
 
   function configRouteResponse(_req: HyperExpress.Request, res: HyperExpress.Response) {

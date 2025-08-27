@@ -19,7 +19,7 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
-    if (chain.toLowerCase() == "solana" && allNew.canonical.total < 1000) throw new Error(`Missing Solana TVL`);
+    if (chain.toLowerCase() == "solana" && allNew.total.total < 1000) throw new Error(`Missing Solana TVL`);
     if (chain.toLowerCase() == "tron" && totalNew < 15_000_000_000) {
       chains;
       allNew;

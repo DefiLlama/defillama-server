@@ -147,7 +147,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => {}),
+    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => { }),
     fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [] })),
     fetchJson(CHAINS_ASSETS).catch(() => ({})),
     readRouteData("/chains").catch(() => []),
@@ -157,7 +157,7 @@ async function _storeAppMetadata() {
       .catch(() => ({ protocols: 0, chains: 0 })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
-    sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY).catch(() => ({})),
+    sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true, }).catch(() => ({})),
   ]);
 
   await _storeMetadataFile();

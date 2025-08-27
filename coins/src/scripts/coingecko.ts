@@ -400,15 +400,29 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     console.log("solana tokens received")
     const step = 500;
     
-    let coins = (await axios.get(
-      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`
-    ).catch((e: any) => {
-       console.error("/coins/list error details:", e);
-       if (e.response) {
-         throw new Error(`HTTP ${e.response.status}: ${e.response.statusText}`);
-       }
-       throw new Error(`Request failed: ${e.message}`);
-      }).then((r) => r.data)) as Coin[];
+          // Retry logic for the coins list request
+      let coins: Coin[] = [];
+      let retryCount = 0;
+      const maxRetries = 3;
+      
+      while (retryCount < maxRetries) {
+        try {
+          console.log(`Attempting to fetch coins list (attempt ${retryCount + 1}/${maxRetries})`);
+          const response = await fetch(
+            `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`
+          ).then(r=>r.json());
+          coins = response as Coin[];
+          console.log(`Successfully fetched ${coins.length} coins`);
+          break;
+        } catch (e: any) {
+          retryCount++;
+          console.error(`/coins/list error details (attempt ${retryCount}):`, e.message);
+          
+          if (retryCount >= maxRetries) {
+            throw new Error(`Failed to fetch coins list after ${maxRetries} attempts: ${e.message}`);
+          }
+        }
+      }
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

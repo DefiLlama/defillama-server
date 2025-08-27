@@ -2210,7 +2210,7 @@ const data4: Protocol[] = [
         type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
         proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       }
-    ]
+    ],
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553

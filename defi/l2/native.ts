@@ -21,8 +21,8 @@ export async function fetchMinted(params: {
 
   await Promise.all(
     Object.keys(params.chains).map(async (chain: Chain) => {
-      await withTimeout(1000 * 60 * 15, minted(chain)).catch(() => {
-        console.error(`fetchMinted() timed out for ${chain}`);
+      await withTimeout(1000 * 60 * 20, minted(chain)).catch(() => {
+        throw new Error(`fetchMinted() timed out for ${chain}`);
       });
 
       async function minted(chain: Chain) {

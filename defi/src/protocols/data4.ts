@@ -23095,6 +23095,9 @@ const data4: Protocol[] = [
     module: "jupiter-lend/index.js",
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",
+    tokensExcludedFromParent: {
+      Solana: ["JUPSOL", "JLP"],
+    },
     listedAt: 1755585345
   },
   { 

@@ -35,7 +35,7 @@ export default {
         id: "6435"
     },
     "opensea": {
-        id: "2258"
+        id: "6635"
     },
     "orbiter-finance": {
         id: "6520"

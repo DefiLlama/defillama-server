@@ -16586,6 +16586,7 @@ const data4: Protocol[] = [
     twitter: "Almanak__",
     forkedFromIds: [],
     github: ["almanak-co"],
+    audit_links: ["https://zokyo.io/reports/almanak"],
     listedAt: 1749770193,
   },
   {

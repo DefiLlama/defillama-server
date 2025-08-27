@@ -15491,7 +15491,7 @@ const data4: Protocol[] = [
     name: "Saros DLMM",
     address: "solana:SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
     symbol: "SAROS",
-    url: "https://dex.saros.xyz/",
+    url: "https://dlmm.saros.xyz/",
     description:
       "Saros DLMM is a concentrated liquidity AMM on Solana that uses a bin-based Liquidity Book model to enable zero-slippage swaps and dynamic pricing, optimizing capital efficiency for traders and liquidity providers",
     chain: "Solana",

@@ -397,11 +397,17 @@ function shuffleArray(array: any[]) {
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
     await cacheSolanaTokens();
+    console.log("solana tokens received")
     const step = 500;
+    
     let coins = (await axios.get(
-      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
+      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`
     ).catch((e: any) => {
-       throw e.message
+       console.error("/coins/list error details:", e);
+       if (e.response) {
+         throw new Error(`HTTP ${e.response.status}: ${e.response.statusText}`);
+       }
+       throw new Error(`Request failed: ${e.message}`);
       }).then((r) => r.data)) as Coin[];
 
     if (coinType || hourly) {
@@ -436,16 +442,21 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     await Promise.all(promises);
   } catch (e) {
     console.error("Error in coingecko script");
-    console.error(e);
+    console.error("Error type:", typeof e);
+    console.error("Error message:", e instanceof Error ? e.message : e);
+    console.error("Error stack:", e instanceof Error ? e.stack : "No stack trace");
+    
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    
     if (process.env.URGENT_COINS_WEBHOOK)
       await sendMessage(
-        `coingecko ${hourly} ${coinType} failed with: ${e}`,
+        `coingecko ${hourly} ${coinType} failed with: ${errorMessage}`,
         process.env.URGENT_COINS_WEBHOOK,
         true,
       );
     else
       await sendMessage(
-        `coingecko error but missing urgent webhook`,
+        `coingecko error but missing urgent webhook: ${errorMessage}`,
         process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
         true,
       );
@@ -486,17 +497,24 @@ async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {
   try {
     const redis = await getRedisConnection();
     const res = await redis.mget(coinIds.map((id) => `cgMetadata:${id}`));
-    const jsonData = res.map((i: any) => JSON.parse(i));
+    const jsonData = res.map((i: any) => {
+      try {
+        return JSON.parse(i);
+      } catch (parseError) {
+        console.error("Failed to parse JSON from Redis:", parseError);
+        throw parseError;
+      }
+    });
     jsonData.map((data: any) => {
       if (!data) return;
       idResponse[data.id] = data;
     });
   } catch (e) {
     console.error("Error reading CG metadata to redis");
-    console.error(e);
+    console.error("Redis error details:", e);
     if (coinType === COIN_TYPES.over100m)
       // if we can't read from redis, we can't filter by coinType and since over100m runs too frequently, we should throw an error and not proceed
-      throw e;
+      throw new Error(`Redis connection failed: ${e instanceof Error ? e.message : String(e)}`);
   }
   return idResponse;
 }

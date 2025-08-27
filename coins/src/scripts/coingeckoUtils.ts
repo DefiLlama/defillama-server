@@ -12,8 +12,11 @@ let _solanaTokens: Promise<any>;
 export async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
-      "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-    );
+      "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
+    ).catch((e) => {
+      console.error("Failed to fetch Solana token list:", e);
+      throw new Error(`Failed to fetch Solana token list: ${e.message}`);
+    });
     solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;

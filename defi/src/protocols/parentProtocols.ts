@@ -7784,6 +7784,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mystic_finance",
   },
+  {
+    id: "parent#upheaval-finance",
+    name: "Upheaval Finance",
+    url: "https://upheaval.fi",
+    description: "Upheaval is a DeFi platform on HyperliquidEVM, featuring a Hyper efficient AMM DEX",
+    logo: `${baseIconsUrl}/upheaval-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Upheavalfi",
+  },
 ];
 
 export default parentProtocols;

@@ -37706,8 +37706,17 @@ const data3_2: Protocol[] = [
     chains: ["Aptos", "Movement"],
     oraclesBreakdown: [
       {
-        name: "Pyth",
+        name: "Chainlink",
         type: "Primary",
+        proof: ["https://docs.echelon.market/echelon/core/oracles"],
+          chains: [
+          {chain: "Aptos"},
+          {chain: "Move"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
         chains: [
           {chain: "Aptos"},

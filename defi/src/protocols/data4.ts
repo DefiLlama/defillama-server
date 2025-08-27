@@ -2191,14 +2191,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
-        name: "RedStone",
-        type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
-      },
-      {
         name: "Pyth",
-        type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
+        type: "Primary",
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
       },
     ],
     stablecoins: ["resolv-usd"],
@@ -23091,6 +23086,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
+    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://dev.jup.ag/docs/lend-api/oracle#hop-based-oracle-system"] }],
     module: "jupiter-lend/index.js",
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",

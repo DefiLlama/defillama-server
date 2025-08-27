@@ -2191,16 +2191,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
-        name: "RedStone",
-        type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
+        name: "Pyth",
+        type: "Primary", // provides both market feeds and is the source for Fundamental oracle USD valuations
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
       {
-        name: "Pyth",
-        type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296", "https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool", "https://docs.resolv.xyz/litepaper/for-developers/smart-contracts"]
+        name: "Chainlink",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
-    ],
+      {
+        name: "Chronicle",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      }
+    ]
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553
@@ -23092,6 +23102,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
+    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://dev.jup.ag/docs/lend-api/oracle#hop-based-oracle-system"] }],
     module: "jupiter-lend/index.js",
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",

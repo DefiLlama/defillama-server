@@ -2192,10 +2192,25 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
+        type: "Primary", // provides both market feeds and is the source for Fundamental oracle USD valuations
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
-    ],
+      {
+        name: "Chainlink",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      },
+      {
+        name: "Chronicle",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      }
+    ]
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553

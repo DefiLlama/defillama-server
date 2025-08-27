@@ -36,7 +36,7 @@ export async function generateSafeHarborProjectList() {
     }
 
     results[protocolId] = true
-    const protocol = protocolsById[protocolId];
+    /* const protocol = protocolsById[protocolId];
     const parentProtocol = parentProtocolsById[protocolId]
 
     if (protocol && protocol.parentProtocol) {
@@ -50,7 +50,7 @@ export async function generateSafeHarborProjectList() {
       protocolsByParentId[protocolId]?.forEach((childId) => {
         results[childId] = true;
       });
-    }
+    } */
   })
 
   await sdk.cache.writeCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, results)

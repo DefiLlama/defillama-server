@@ -23871,7 +23871,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://tac.build",
-    description: `TAC Asset Custody is a cross-chain messaging and custody layer connecting TON and TAC EVM, locking native TON assets and minting wrapped tokens for use in TAC miniapps`,
+    description: `TAC Cross Chain Layer is a messaging and custody layer connecting TON and TAC EVM, locking native TON assets and minting wrapped tokens for use in TAC miniapps`,
     chain: "TON",
     logo: `${baseIconsUrl}/tac-cross-chain-layer.jpg`,
     audits: "0",

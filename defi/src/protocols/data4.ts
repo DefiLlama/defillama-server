@@ -7848,14 +7848,14 @@ const data4: Protocol[] = [
     symbol: "TUNA",
     url: "https://defituna.com",
     description:
-      "DefiTuna is a decentralized finance (DeFi) platform offering concentrated liquidity market making (CLMM) with leveraged positions. DefiTuna allows users to open positions with leverage. Initially, we will support some of the most liquid pairs but later we plan on expanding to a more permission-less approach.",
+      "DefiTuna is unique in that it is the only AMM that has built-in on-chain limit orders integrated with the ability to also use leverage for providing liquidity. Its technology utilizes limit orders and concentrated liquidity and makes it available in orderbook style, making it a unique AMM design.",
     chain: "Solana",
     logo: `${baseIconsUrl}/defituna.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "defituna",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Dexs",
     chains: ["Solana"],
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks

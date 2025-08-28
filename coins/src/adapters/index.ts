@@ -163,4 +163,5 @@ export default {
   harvest: require("./yield/harvest"),
   opensea: require("./nft/opensea"),
   brkteth: require("./yield/brkteth"),
+  vbill: require("./rwa/vbill"),
 };

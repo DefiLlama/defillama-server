@@ -302,9 +302,9 @@ export default {
     "el-dorado-exchange": {
         id: "2356"
     },
-    // "gearbox": {
-    //     id: "1108"
-    // },
+    "gearbox": {
+        id: "1108"
+    },
     "verse": {
         id: "1732"
     },
@@ -1849,6 +1849,11 @@ export default {
     },
     "meteora-dlmm": {
         id: "4148",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1755734400": true, // Kanye West token YZY launch
+            }
+        }
     },
     "meteora": {
         id: "385",
@@ -3878,5 +3883,152 @@ export default {
     },
     "swapsicle": {
         id: "1824"
+    },
+    "quickswap-v4": {
+        id: "6576"
+    },
+    "odyssey-finance": {
+        id: "6529"
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
+    "dsx": {
+        id: "6585"
+    },
+    "cometh": {
+        id: "261"
+    },
+    "crodex": {
+        id: "828"
+    },
+    "fenix-finance-v3": {
+        id: "4775"
+    },
+    "fenix-finance": {
+        id: "4563"
+    },
+    "huckleberry": {
+        id: "630"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "oolongswap": {
+        id: "794"
+    },
+    "pandora": {
+        id: "1777"
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "titano-swych": {
+        id: "2102"
+    },
+    "zebra-v1": {
+        id: "3668"
+    },
+    "zebra-v2": {
+        id: "3901"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
+    "noon": {
+        id: "5721"
+    },
+    "bim": {
+        id: "6402"
+    },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
+    "autoshark": {
+        id: "1074"
+    },
+    "babyswap": {
+        id: "597"
+    },
+    "blue-planet": {
+        id: "2158"
+    },
+    "complus-network": {
+        id: "471"
+    },
+    "dinosaur-eggs": {
+        id: "695"
+    },
+    "empiredex": {
+        id: "812"
+    },
+    "gin-finance": {
+        id: "1795"
+    },
+    "gravis": {
+        id: "2195"
+    },
+    "gravity-finance": {
+        id: "351"
+    },
+    "horizondex": {
+        id: "3255"
+    },
+    "zapfi": {
+        id: "6588"
+    },
+    "superfund": {
+        id: "6292"
+    },
+    "walrus": {
+        id: "6032"
+    },
+    "heaven-dex": {
+        id: "6592"
+    },
+    "hx-finance": {
+        id: "6591"
+    },
+    "binance-alpha": {
+        id: "6599"
+    },
+    "peapods-finance": {
+        id: "4063"
+    },
+    "okie-launch": {
+        id: "6612"
+    },
+    "okieswap-v2": {
+        id: "6601"
+    },
+    "okieswap-v3": {
+        id: "6602"
+    },
+    "livepeer": {
+        id: "6613"
+    },
+    "saddle-finance": {
+        id: "202"
+    },
+    "thirdfy": {
+        id: "6620"
+    },
+    "catfee": {
+        id: "6623"
+    },
+    "aden": {
+        id: "6567"
+    },
+    "footballdotfun": {
+        id: "6625"
+    },
+    "helium": {
+        id: "6631",
+    },
+    "axie-infinity": {
+        id: "6102"
+    },
+    "vexy": {
+        id: "6629"
     }
 } as AdaptorsConfig

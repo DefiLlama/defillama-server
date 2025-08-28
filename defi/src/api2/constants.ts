@@ -1,4 +1,6 @@
 const METADATA_FILE = __dirname + '/metadata.json'
+const SAFE_HARBOR_PROJECTS_CACHE_KEY = 'safe-harbor-projects'
+
 
 const PG_CACHE_KEYS = {
   CACHE_DATA_ALL: 'cache-data-all',
@@ -11,4 +13,5 @@ const PG_CACHE_KEYS = {
 export {
   METADATA_FILE,
   PG_CACHE_KEYS,
+  SAFE_HARBOR_PROJECTS_CACHE_KEY,
 }

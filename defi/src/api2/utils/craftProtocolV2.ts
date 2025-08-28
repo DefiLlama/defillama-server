@@ -54,7 +54,6 @@ export async function craftProtocolV2({
   let _getLastHourlyRecord: any = null
   let _getLastHourlyTokensUsd: any = null
   let _getLastHourlyTokens: any = null
-  const skipTokenAndTokenUsdData = useHourlyData || feMini
 
   if (!isDeadProtocolOrHourly && !skipCachedHourlyData) {
     _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
@@ -139,12 +138,6 @@ export async function craftProtocolV2({
     
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
     
-    // we return empty response for chainTvls if feMini is true
-    if (feMini && chain !== 'tvl') {
-      response.chainTvls = {}
-      return;
-    } 
-
     if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
       for (const item of historicalUsdTvl) {
         let usdValue = selectChainFromItem(item, chain)

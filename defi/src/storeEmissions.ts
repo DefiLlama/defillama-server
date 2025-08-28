@@ -41,12 +41,16 @@ export async function processProtocolList() {
     protocols,
     emission24h: 0,
     emission7d: 0,
-    emission30d: 0
+    emission30d: 0,
+    emissionsMonthlyAverage1y: 0
   };
   protocols.forEach((protocol: any) => {
     aggregated.emission24h += protocol.emission24h;
     aggregated.emission7d += protocol.emission7d;
     aggregated.emission30d += protocol.emission30d;
+    if (protocol.emissionsMonthlyAverage1y) {
+      aggregated.emissionsMonthlyAverage1y += protocol.emissionsMonthlyAverage1y;
+    }
   });
   await storeR2JSONString("emissionsBreakdownAggregated", JSON.stringify(aggregated));
   await storeR2JSONString("emissionsSupplyMetrics", JSON.stringify(supplyMetricsBreakdown));

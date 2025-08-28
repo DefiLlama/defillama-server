@@ -16,10 +16,8 @@ export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
 }
 
 
-export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
     let methodology = (moduleObject as any).methodology
-    if (!methodology)
-        methodology = Object.values(adapter).map((a: any) => a?.meta?.methodology).find((m: any) => m)
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
     if (typeof methodology === 'string') return methodology
     return {

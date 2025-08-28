@@ -486,7 +486,7 @@ export default {
         id: "731"
     },
     "pandora": {
-        id: "1698"
+        id: "1777"
     },
     "paycash": {
         id: "1452"
@@ -2970,7 +2970,12 @@ export default {
         id: "6553"
     },
     "humidifi": {
-        id: "6554"
+        id: "6554",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1755129600": true
+            }
+        },
     },
     "zerofi": {
         id: "6555"
@@ -3013,5 +3018,44 @@ export default {
     },
     "hybra-v3": {
         id: "6350"
-    }
+    },
+    "quickswap-v4": {
+        id: "6576"
+    },
+    "pandoraswap": {
+        id: "1698"
+    },
+    "ocelex-v1": {
+        id: "5378"
+    },
+    "spectra-v2": {
+        id: "4725"
+    },
+    "fluid-dex-lite": {
+        id: "6586"
+    },
+    "renegade-fi": {
+        id: "5103"
+    },
+    "heaven-dex": {
+        id: "6592"
+    },
+    "hx-finance": {
+        id: "6591"
+    },
+    "okie-launch": {
+        id: "6612"
+    },
+    "okieswap-v2": {
+        id: "6601"
+    },
+    "okieswap-v3": {
+        id: "6602"
+    },
+    "thirdfy": {
+        id: "6620"
+    },
+    "footballdotfun": {
+        id: "6625"
+    },
 } as AdaptorsConfig

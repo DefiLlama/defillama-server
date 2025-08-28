@@ -485,9 +485,16 @@ async function run() {
 
         // average1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
-          if (summary.total1y && _protocolData.lastOneYearData?.length > 0)
+          if (summary.total1y && _protocolData.lastOneYearData?.length > 0) {
             summary.average1y = summary.total1y / _protocolData.lastOneYearData.length
-        })
+          }
+        });
+        // monthlyAverage1y
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+        if (summary.total1y && _protocolData.lastOneYearData?.length >= 30) {
+            summary.monthlyAverage1y = (summary.total1y / _protocolData.lastOneYearData.length) * 30.44
+        }
+      });
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)
@@ -715,6 +722,7 @@ type ProtocolSummary = RecordSummary & {
   change_1m?: number
   change_7dover7d?: number
   average1y?: number
+  monthlyAverage1y?: number
   totalAllTime?: number
   breakdown24h?: any
   breakdown30d?: any

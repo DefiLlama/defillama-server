@@ -98,7 +98,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             methodologyURL: adapterObj.codePath,
             methodology: undefined
           }
-          const methodology = getMethodologyDataByBaseAdapter(moduleObject as SimpleAdapter, baseModuleObject, type, infoItem.category)
+          const methodology = getMethodologyDataByBaseAdapter(moduleObject as SimpleAdapter, type, infoItem.category)
           if (methodology)
             infoItem.methodology = methodology
           if (versionKey)
@@ -185,7 +185,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey
 
-      const methodology = getMethodologyDataByBaseAdapter(moduleObject, baseModuleObject, adapterType, infoItem.category)
+      const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 

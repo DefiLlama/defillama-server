@@ -6942,6 +6942,7 @@ const data3_1: Protocol[] = [
       "https://uswap.me/modules/site/main/assets/audit2.pdf",
     ],
     listedAt: 1684767925,
+    deadUrl: true
   },
   {
     id: "3008",
@@ -11472,8 +11473,8 @@ const data3_1: Protocol[] = [
   {
     id: "3210",
     name: "Arcadia V1",
-    address: null,
-    symbol: "-",
+    address: "0xaaa843fb2916c0b57454270418e121c626402aaa",
+    symbol: "AAA",
     url: "https://arcadia.finance",
     description: `Arcadia is a non-custodial protocol enabling composable cross-margin accounts on-chain. Margin account users can collateralize entire portfolios, access up to 10x more capital than their initial collateral value, and use their deposited collateral and the borrowed capital to permissionless interact with any other protocol from a single cross-margin account. Lenders supply assets to Arcadia's lending pools, earning passive yields for providing liquidity to margin account users.`,
     chain: "Ethereum",
@@ -12182,19 +12183,19 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3243",
-    name: "ZeroLend",
+    name: "ZeroLend Lending",
+    //previousNames: ["ZeroLend"],
     address: "linea:0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
     symbol: "ZERO",
     url: "https://zerolend.xyz/",
     description: `ZeroLend is a powerful decentralized lending protocol built on L2s. Based on Aave V3 and powered by Pyth and Chainlink`,
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/zerolend.png`,
+    logo: `${baseIconsUrl}/zerolend-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "zerolend",
     cmcId: "31076",
     category: "Lending",
-    treasury: "zerolend.js",
     chains: ["zkSync Era"],
     module: "zerolend/index.js",
     twitter: "zerolendxyz",
@@ -12232,7 +12233,7 @@ const data3_1: Protocol[] = [
     ],
     forkedFromIds: ["1599"],
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
-    github: ["zerolend"],
+    parentProtocol: "parent#zerolend",
     listedAt: 1689662621,
   },
   {
@@ -17011,7 +17012,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     twitter: "danogo_2023",
     github: ["danogo2023"],
-    audit_links: ["https://github.com/Danogo2023/bond-dex/tree/master/audits"],
+    audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
     listedAt: 1693321887,
   },
   /*
@@ -22467,14 +22468,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3698",
-    name: "Hashnote USYC",
+    name: "Circle USYC",
+    previousNames: ["Hashnote USYC"],
     address: null,
     symbol: "-",
-    url: "https://usyc.hashnote.com/",
+    url: "https://www.circle.com/usyc",
     description:
-      "Hashnote is a regulated DeFi platform with permissioned smart contracts, on-chain transparency, and customizable investment strategies for optimized risk-reward profiles.  USYC is a Hashnote product which provides exposure to short duration US Treasuries and Reverse Repo on US Treasuries",
+      "Circle USYC is a regulated DeFi platform with permissioned smart contracts, on-chain transparency, and customizable investment strategies for optimized risk-reward profiles.  USYC is a Hashnote product which provides exposure to short duration US Treasuries and Reverse Repo on US Treasuries",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hashnote-usyc.png`,
+    logo: `${baseIconsUrl}/circle-usyc.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null, //
@@ -22482,7 +22484,7 @@ const data3_1: Protocol[] = [
     tags: ["Treasury Bills"],
     chains: ["Ethereum"],
     module: "hashnote/index.js",
-    twitter: "Hashnote_Labs",
+    twitter: "circle",
     forkedFrom: [],
     listedAt: 1698280827,
   },
@@ -30764,6 +30766,7 @@ const data3_1: Protocol[] = [
     address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
     symbol: "dYdX",
     url: "https://dydx.trade",
+    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
     description:
       " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
     chain: "dYdX",
@@ -31114,22 +31117,21 @@ const data3_1: Protocol[] = [
     symbol: "BLB",
     url: "https://app.blueberry.garden",
     description:
-      "Blueberry allows borrowers to access up to 20x leverage on select DeFi strategies, including yield farming, arbitrage, and leveraged trading.",
-    chain: "Ethereum",
+      "Blueberry offers tokenized yield strategies and curated DeFi ecosystem on Hyperevm.",
+    chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/blueberry-lend.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "blueberry",
     cmcId: null,
-    category: "Leveraged Farming",
-    chains: ["Ethereum"],
+    category: "Yield",
+    chains: ["Hyperliquid L1", "Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "blueberry/index.js",
     twitter: "blueberryFDN",
-    audit_links: ["https://docs.blueberry.garden/security/audits"],
+    audit_links: ["https://docs.blueberry.garden/advanced/contracts-and-audits"],
     listedAt: 1706616985,
-    deadUrl: true,
   },
   {
     id: "4081",
@@ -31246,14 +31248,14 @@ const data3_1: Protocol[] = [
     name: "Garden",
     address: "0x5eed99d066a8caf10f3e4327c1b3d8b673485eed",
     symbol: "SEED",
-    url: "https://garden.finance",
+    url: "https://app.garden.finance/",
     description:
       "Garden is the fastest Bitcoin bridge, enabling cross-chain Bitcoin swaps in as little as 30 seconds. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk for the users.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/garden.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "garden-2",
+    gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
     chains: ["Bitcoin", "Arbitrum"],
@@ -31261,6 +31263,8 @@ const data3_1: Protocol[] = [
     module: "garden/index.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
+    parentProtocol: "parent#garden",
+    listedAt: 1706793085,
   },
   {
     id: "4087",
@@ -33939,7 +33943,7 @@ const data3_2: Protocol[] = [
     name: "Pond0x",
     address: "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
     symbol: "PNDC",
-    url: "https://www.pondcoin.com/",
+    url: "http://pond0x.com/",
     description:
       "Pond DEX is a platform that aggregates liquidity for swaps at optimal rates, returning generated fees as claimable rewards",
     chain: "Ethereum",
@@ -38678,10 +38682,16 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.river.inc/outro/oracle"],
+        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"},{chain:"Arbitrum"}]
+      },
+      {
         name: "DIA",
         type: "Primary",
         proof: ["https://docs.satoshiprotocol.org/outro/oracle"],
-        chains: [{chain: "bevm"}]
+        chains: [{chain: "BEVM"}]
       },
       {
         name: "Api3",
@@ -38959,8 +38969,8 @@ const data3_2: Protocol[] = [
   {
     id: "4423",
     name: "Frax AMO",
-    address: null,
-    symbol: "-",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
     url: "https://facts.frax.finance/fraxlend/amo",
     description:
       "Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
@@ -39664,8 +39674,8 @@ const data3_2: Protocol[] = [
   {
     id: "4455",
     name: "Arcadia V2",
-    address: null,
-    symbol: "-",
+    address: "0xaaa843fb2916c0b57454270418e121c626402aaa",
+    symbol: "AAA",
     url: "https://arcadia.finance",
     description: "Leverage farming protocol on base",
     chain: "Base",
@@ -50285,6 +50295,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.ostium.io/",
+    referralUrl: "https://app.ostium.com/trade?from=SPX&to=USD&ref=6X17X",
     description: "Trade FX, metals, energy, & RWAs from your wallet",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ostium.png`,
@@ -52293,7 +52304,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "RayBot_sol",
   },
-  {
+  /*{
     id: "5023",
     name: "Manta MYield",
     address: null,
@@ -52312,7 +52323,7 @@ const data3_2: Protocol[] = [
     module: "manta-myield/index.js",
     twitter: "CedefiYield",
     listedAt: 1724242037,
-  },
+  },*/
   {
     id: "5024",
     name: "Double",
@@ -52915,7 +52926,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/defillama-server/pull/8889
+    oraclesBreakdown: [
+		{ 
+			name: "Chainlink", type: "Primary", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/chainlink"],
+			startDate: '2025-08-22'
+		},
+        { 
+		   name: "Pyth", type: "Fallback", proof: ["https://echo-protocol.gitbook.io/echo-protocol/echo-integration/oracle-overview/pyth"] ,
+		   startDate: '2025-08-22' 
+	    },
+		{ 
+		  name: "Pyth", type: "Primary", proof: ["https://github.com/DefiLlama/defillama-server/pull/8889"] ,
+		  endDate: '2025-08-22' 
+	    }
+	], 
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",
@@ -53629,7 +53653,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.lucidly.finance",
-    description: "Lucidly Finance is an onchain credit protocol creating a frictionless market to negotiate liquidity demands. Lucidly gives LPs the access to negotiate liquidity incentives for locking up capital. MasterVaults are fully permissionless simple weighted stableswap pools that allow configurable distribution of liquidity.",
+    description: "Lucidly is an onchain capital deployment engine designed to create and aggregate complex yield strategies and account for them in one place. It is run by plug-and-play design readily usable by risk curators, yield farmers and asset management firms. syTokens are the first products built and curated on the Lucidly stack and curated by Lucidly Labs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lucidly-finance.jpg`,
     audits: "2",
@@ -56844,6 +56868,7 @@ const data3_2: Protocol[] = [
         proof: ["https://docs.superlend.xyz/superlend-markets/superlend-features/oracle"]
       }
     ],
+    parentProtocol: "parent#superlend-xyz",
     listedAt: 1728536649
   },
   {
@@ -58004,13 +58029,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5284",
-    name: "Nest Staking",
+    name: "Nest Credit",
+    previousNames: ["Nest Staking"],
     address: null,
     symbol: "-",
     url: "https://nest.credit/",
-    description: "Nest Staking provides native yield from tokenized RWAs on Plume Network",
+    description: "Nest Credit provides native yield from tokenized RWAs on Plume Network",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/nest-staking.png`,
+    logo: `${baseIconsUrl}/nest-credit.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -58560,19 +58586,19 @@ const data3_2: Protocol[] = [
   {
     id: "5309",
     name: "Nabla Finance",
-    address: null,
-    symbol: "-",
+    address: "base:0x01ed85d73645523b0d62c7a8e35d03601cfd679b",
+    symbol: "NABLA",
     url: "https://nabla.fi",
     description:
-      "Nabla Finance is a yield bearing token protocol where the organic yield is generated by the hyper-efficient Nabla AMM",
+      "Nabla Finance is a yield protocol where the yield is generated by the hyper-efficient Nabla AMM.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/nabla-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "nabla",
     cmcId: null,
     category: "Dexs",
-    chains: ["Arbitrum", "Base"],
+    chains: ["Arbitrum", "Base", "Berachain"],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12127
     forkedFrom: [],
     module: "nabla/index.js",
@@ -58642,7 +58668,20 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions
+    oraclesBreakdown: [ 
+      { 
+        name: "Chainlink", 
+        type: "Primary", 
+        proof: ["https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions"],
+        endDate: "2025-08-13"
+      },
+      { 
+        name: "RedStone", 
+        type: "Primary", 
+        proof: ["https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions"],
+        startDate: "2025-08-13"
+      }
+    ],
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",
@@ -61301,7 +61340,7 @@ const data3_2: Protocol[] = [
   {
     id: "5432",
     name: "Ubeswap V3",
-    address: "celo:0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
+    address: "celo:0x71e26d0E519D14591b9dE9a0fE9513A398101490",
     symbol: "UBE",
     url: "https://ubeswap.org",
     description: "Ubeswap is the leading DEX on Celo network",
@@ -63677,7 +63716,7 @@ const data3_2: Protocol[] = [
     symbol: "-",
     url: "https://lagoon.finance",
     description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-7540 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
+      "LAGOON provides open, general-purpose, secure vault infrastructure to build and scale on-chain yield products. Powered by the ERC-7540 standard, curators manage deposits and withdrawals asynchronously, while users can join any public vault to start earning on their assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lagoon.jpg`,
     audits: "2",

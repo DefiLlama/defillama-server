@@ -37,6 +37,8 @@ export async function craftParentProtocolV2({
     return cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, restrictResponseSize: false, skipFeMiniTransform: true, feMini: fetchMini })
   }
 
+  const hasMisrepresentedTokens = childProtocols.some((i: IProtocol) => i.misrepresentedTokens)
+
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.filter((i: IProtocol) => !i.excludeTvlFromParent).map(getProtocolData));
 
   const debug_t1 = performance.now(); // start the timer
@@ -47,6 +49,8 @@ export async function craftParentProtocolV2({
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]
+
+  if (hasMisrepresentedTokens) res.misrepresentedTokens = true;
 
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0

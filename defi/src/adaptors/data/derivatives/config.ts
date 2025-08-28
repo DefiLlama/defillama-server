@@ -706,5 +706,14 @@ export default {
     },
     "aden": {
         id: "6567"
+    },
+    "bullbit-ai": {
+        id: "6584"
+    },
+    "clob": {
+        id: "6607"
+    },
+    "squaretower": {
+        id: "6624"
     }
 } as AdaptorsConfig

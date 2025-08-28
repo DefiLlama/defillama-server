@@ -367,7 +367,7 @@ export default {
     id: "3031"
   },
   "opensea": {
-    id: "2258"
+    id: "6634"
   },
   "orbiter-finance": {
     id: "6520"
@@ -377,5 +377,11 @@ export default {
   },
   "nordstern-finance": {
     id: "6552"
-  }
+  },
+  "superboring": {
+    id: "6606"
+  },
+  "dedust": {
+    id: "2617"
+},
 } as AdaptorsConfig;

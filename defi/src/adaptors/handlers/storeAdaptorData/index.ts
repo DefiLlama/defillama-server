@@ -40,7 +40,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 21
+  const defaultMaxConcurrency = 13
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
     throwError = false, checkBeforeInsert = false,

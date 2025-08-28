@@ -31,6 +31,8 @@ const faultyIds: { [id: string]: string } = {
   "3573": "Solv RWA",
   "3598": "Mountain Protocol",
   "5481": "Anemoy Capital",
+  "4058": "Brickken",
+  "4879": "Clearpool TPool",
 };
 
 // KYC is true where required for mint / redeem.
@@ -267,6 +269,16 @@ const metadata: { [id: string]: Characteristics } = {
     selfCustody: true,
   },
 
+  "4196": {
+    symbols: [".d"],
+    matchExact: false,
+    redeemable: true,
+    attestations: true,
+    cexListed: true, // gemini
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
   "4265": {
     symbols: ["USCC", "USTB"],
     matchExact: true,
@@ -282,6 +294,26 @@ const metadata: { [id: string]: Characteristics } = {
     matchExact: true,
     redeemable: false,
     attestations: true,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
+  "4709": {
+    symbols: [],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "4801": {
+    symbols: ["USTB"],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
     cexListed: false,
     kyc: false,
     transferable: true,
@@ -438,6 +470,16 @@ const metadata: { [id: string]: Characteristics } = {
     transferable: true,
     selfCustody: true,
   },
+  "5983": {
+    symbols: [],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: true,
+  },
   "5995": {
     symbols: ["USDO"],
     matchExact: true,
@@ -469,6 +511,26 @@ const metadata: { [id: string]: Characteristics } = {
     transferable: false,
     selfCustody: true,
   },
+  "6378": {
+    symbols: [],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: true, // kraken etc
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "6432": {
+    symbols: ["ONyc"],
+    matchExact: true,
+    redeemable: true,
+    attestations: false,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
   "6535": {
     symbols: ["AID"],
     matchExact: true,
@@ -486,6 +548,16 @@ const metadata: { [id: string]: Characteristics } = {
     attestations: true,
     cexListed: false,
     kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "6598": {
+    symbols: ["frxUSD"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: false,
     transferable: true,
     selfCustody: true,
   },

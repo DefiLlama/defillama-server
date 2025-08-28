@@ -23807,23 +23807,22 @@ const data4: Protocol[] = [
     listedAt: 1756313595,
   },
   {
-    id: "solid-terra2",                         // 새 프로토콜이면 고유 문자열이면 됩니다(숫자 강제 아님)
-    name: "SOLID",
+    id: "6634",                         
     address: null,
     symbol: "-",
     url: "https://solid.online",
     description: "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets as collateral to mint SOLID. Governance token: CAPA.",
-    chain: "Terra2",                            // Phoenix 체인 표기
+    chain: "Terra2",                            
     logo: "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/solid.png",
-    audits: "2",                                // SCV Security 2건
+    audits: "2",                                
     audit_note: null,
     gecko_id: "solid-2",
-    cmcId: null,                                // CMC 미상장
+    cmcId: null,                                
     category: "Protocol",
     chains: ["Terra2"],
-    oracles: [],                                // 내부 LST 환산은 prices infra로 처리
+    oracles: [],                                
     forkedFrom: [],
-    module: "solid/index.js",                   // Adapters 쪽 경로 (projects/solid/index.js)
+    module: "solid/index.js",                   
     twitter: "solid_capa",
     audit_links: [
       "https://github.com/SCV-Security/PublicReports/blob/main/CW/Capapult/Capapult%20-%20Money%20Market%20Contracts%20-%20Audit%20Report%20v1.0%20.pdf",

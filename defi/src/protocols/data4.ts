@@ -14590,7 +14590,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume Mainnet"],
+    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume Mainnet", "TAC"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -14612,6 +14612,14 @@ const data4: Protocol[] = [
           "https://app.morpho.org/unichain/vault/0x6af5E46456A8ac80BB53a02799965DEF99c26e52/re7-weth", 
           "https://app.morpho.org/unichain/vault/0x2c0F7e917257926BA6233B20DE19d7fe3210858C/re7-usdt0",
           "https://oracles.euler.finance/130/"
+        ],
+        chains: [{chain: "Unichain"}]
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [
+          "https://app.euler.finance/?governor=re7-labs&network=tac"
         ],
         chains: [{chain: "Unichain"}]
       },

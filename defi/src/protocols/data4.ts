@@ -667,22 +667,42 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche"],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche", "TAC"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.yield.fi/resources/oracles#chainlink-oracles"],
-        chains: [{chain: "Ethereum"},{chain: "Arbitrum"},{chain: "Base"},{chain: "Optimism"},{chain: "Katana"},{chain: "Binance"},{chain: "Sonic"}]
-      },
-      {
-        name: "eOracle",
-        type: "Secondary",
         proof: ["https://docs.yield.fi/resources/oracles"],
+        chains: [{
+          chain: "Arbitrum",
+        },{
+          chain: "Base",
+        },{
+          chain: "Katana",
+        },{
+          chain: "Optimism",
+        },{
+          chain: "Sonic",
+        }],
       },
       {
         name: "eOracle",
-        type: "Secondary",
+        type: "Primary",
+        proof: ["https://docs.yield.fi/resources/oracles"],
+        chains: [
+          {
+            chain: "Ethereum",
+          },
+          {
+            chain: "Plume",
+          },
+          {
+            chain: "TAC",
+          }],
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
         proof: ["https://docs.yield.fi/resources/oracles"],
       }
     ],

@@ -14574,6 +14574,16 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "ouroboros/index.js",
     twitter: "OuroborosCap8",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/ethereum/vault/0x2F21c6499fa53a680120e654a27640Fc8Aa40BeD/openeden-usdc-vault",
+        ],
+        chains: [{chain: "Ethereum"}]
+      },
+    ],
     listedAt: 1747735650
   },
   {

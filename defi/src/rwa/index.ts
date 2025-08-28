@@ -358,6 +358,16 @@ const metadata: { [id: string]: Characteristics } = {
     selfCustody: true,
   },
 
+  "5182": {
+    symbols: ["FIUSD"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: false,
+  },
   "5241": {
     symbols: ["M", "WM"],
     matchExact: true,
@@ -367,6 +377,26 @@ const metadata: { [id: string]: Characteristics } = {
     kyc: false,
     transferable: true,
     selfCustody: true,
+  },
+  "5284": {
+    symbols: ["nALPHA", "nBASIS", "nTBILL", "nINSTO", "nCREDIT", "nELIXIR", "nRWA"],
+    matchExact: true,
+    redeemable: true,
+    attestations: false, //
+    cexListed: false,
+    kyc: false,
+    transferable: false,
+    selfCustody: true,
+  },
+  "5471": {
+    symbols: ["XMMF", "XFTB", "XTBT", "XEVT", "XHYC", "XEVT", "XHYCB"],
+    matchExact: true,
+    redeemable: true,
+    attestations: false,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: false,
   },
   "5506": {
     symbols: ["USDtb"],
@@ -386,6 +416,16 @@ const metadata: { [id: string]: Characteristics } = {
     cexListed: false,
     kyc: true,
     transferable: false,
+    selfCustody: true,
+  },
+  "5855": {
+    symbols: [],
+    matchExact: true,
+    redeemable: true,
+    attestations: false,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
     selfCustody: true,
   },
   "5948": {
@@ -414,6 +454,26 @@ const metadata: { [id: string]: Characteristics } = {
     matchExact: true,
     redeemable: true,
     attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "6330": {
+    symbols: ["XAUM"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: true,
+  },
+  "6535": {
+    symbols: ["AID"],
+    matchExact: true,
+    redeemable: true,
+    attestations: false,
     cexListed: false,
     kyc: true,
     transferable: true,
@@ -482,4 +542,4 @@ export async function fetchRWAStats() {
   return res;
 }
 
-// fetchRWAStats(); // ts-node defi/src/rwa/index.ts
+fetchRWAStats(); // ts-node defi/src/rwa/index.ts

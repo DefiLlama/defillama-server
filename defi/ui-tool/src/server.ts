@@ -252,7 +252,7 @@ async function start() {
       onAuthentication(ws);
   }
 
-  await setConfig();
+  console.log('Starting server in', isProductionMode ? 'production' : 'development', 'mode');
 
   if (isProductionMode)
     startProdWebServer();

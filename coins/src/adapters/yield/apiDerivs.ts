@@ -63,11 +63,9 @@ const configs: { [adapter: string]: Config } = {
         "https://api.superstate.co/v1/funds/2/nav-daily",
       ).then((r) => r.json());
       const { net_asset_value, net_asset_value_date } = res[0];
-
       const [month, day, year] = net_asset_value_date.split("/");
       const date = new Date(`${year}-${month}-${day}T00:00:00.000Z`);
       const timestamp = Math.floor(date.getTime() / 1000);
-
       const margin = 7 * 24 * 60 * 60; // use this margin since no data over weekends
       if (t - timestamp > margin) throw new Error(`USCC stale rate`);
       return net_asset_value;
@@ -158,6 +156,41 @@ const configs: { [adapter: string]: Config } = {
     decimals: "8",
     symbol: "wfragBTC",
   },
+  sHYUSD: {
+    rate: async () => {
+      const res = await fetch("https://api.hylo.so/stats").then((r) =>
+        r.json(),
+      );
+      return res.stabilityPoolStats.lpTokenNav;
+    },
+    chain: "solana",
+    address: "HnnGv3HrSqjRpgdFmx7vQGjntNEoex1SU4e9Lxcxuihz",
+    underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
+    decimals: "6",
+    symbol: "sHYUSD",
+  },
+  ampLUNA: {
+    rate: async () => {
+      const { data } = await fetch(
+        "https://api.erisprotocol.com/terra/amplifier/LUNA",
+      ).then((r) => r.json());
+      return data.exchange_rate;
+    },
+    chain: "terra2",
+    address: "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
+    underlying: "terra-luna-2",
+    underlyingChain: "coingecko",
+    decimals: "6",
+    symbol: "ampLUNA",
+  },
+  // bLUNA: {
+  //   chain: "terra2",
+  //   address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
+  //   underlying: "terra-luna-2",
+  //   underlyingChain: 'coingecko',
+  //   decimals: "6",
+  //   symbol: "bLUNA",
+  // },
 };
 
 export async function apiDerivs(timestamp: number) {

@@ -48,10 +48,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
     clBTC: "0xe7ae30c03395d66f30a26c49c91edae151747911", // IS NOT BACKED
-    NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
-    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f",  // BACKED BY THE ABOVE, SO SAME 
-    crvPlain3andSUSD: '0xC25a3A3b969415c80451098fa907EC722572917F', // sunset 
-    MSTR: '0x306227d964511a260d14563fbfa82aa75db404b2'
+    NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED
+    MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f", // BACKED BY THE ABOVE, SO SAME
+    crvPlain3andSUSD: "0xC25a3A3b969415c80451098fa907EC722572917F", // sunset
+    MSTR: "0x306227d964511a260d14563fbfa82aa75db404b2",
+    yieldETH: "0xb5b29320d2dde5ba5bafa1ebcd270052070483ec",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -85,7 +86,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
     KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
     clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
-    MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b"
+    MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -130,7 +131,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "PENDLE-LPT": "0x0921ccc98956b1599003fd9739d5e66bf319a161",
     coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
     ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
-    MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878"
+    MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -229,7 +230,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   optimism: {
     MIM: "0xb153fb3d196a8eb25522705560ac152eeec57901",
     GRAIN: "0xfd389dc9533717239856190f42475d3f263a270d",
-    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d" // IS NOT BACKED
+    clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
   },
   era: {
     MVX: "0xc8ac6191cdc9c7bf846ad6b52aaaa7a0757ee305",
@@ -307,35 +308,44 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
     WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
-    clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5" // IS NOT BACKED
+    clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
   },
   sonic: {
-    wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"
+    wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",
   },
   bera: {
-    "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E"
+    "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
-    CUTEPURR: "0xc9dfbbb952fd91ed37978907ce158575afac2d5a"
+    CUTEPURR: "0xc9dfbbb952fd91ed37978907ce158575afac2d5a",
   },
   goat: {
     UBTC: "0x78e26e8b953c7c78a58d69d8b9a91745c2bbb258",
-    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f"
+    ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   },
   hemi: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
-    UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258"
+    UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258",
+    hemiBTC: "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28", // IS NOT BACKED
   },
- plume: {
+  plume: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   },
   xsat: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
-  }
+  },
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
   // }
+  onus: {
+    WONUS: "0x4c761e48d1e735af551cc38abcbdce1d7faac6e4",
+    BUSD: "0xdfB5E8a4AC08E46258A12AbE737bba5D8c452508",
+    BNB: "0xbdce8c50c1e6f6501c2af8232d2d76ec75cda51d",
+    USDT: "0xff276c6bca1f66fd54a8915e830735d6ab0c7b09",
+    BTC: "0x935765ad27a1af00f73097c998a9fb721d2d7790",
+    ETH: "0xb4373ebb073a4dcba47e567d075a9583fa3c763e",
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

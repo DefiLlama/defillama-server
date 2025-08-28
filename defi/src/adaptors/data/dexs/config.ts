@@ -3052,4 +3052,10 @@ export default {
     "okieswap-v3": {
         id: "6602"
     },
+    "thirdfy": {
+        id: "6620"
+    },
+    "footballdotfun": {
+        id: "6625"
+    },
 } as AdaptorsConfig

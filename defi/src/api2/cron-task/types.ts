@@ -5,9 +5,12 @@ export interface IChainMetadata {
 	activeUsers?: boolean
 	fees?: boolean
 	chainFees?: boolean
+	revenue?: boolean
+	chainRevenue?: boolean
 	perps?: boolean
 	dexAggregators?: boolean
-	options?: boolean
+	optionsPremiumVolume?: boolean
+	optionsNotionalVolume?: boolean
 	perpsAggregators?: boolean
 	bridgeAggregators?: boolean
 	inflows?: boolean
@@ -18,6 +21,7 @@ export interface IChainMetadata {
 	id: string
 	protocolCount?: number
     dimAgg?: any
+	incentives?: boolean
 }
 
 export interface IProtocolMetadata {
@@ -33,7 +37,8 @@ export interface IProtocolMetadata {
 	dexs?: boolean
 	perps?: boolean
 	dexAggregators?: boolean
-	options?: boolean
+	optionsPremiumVolume?: boolean
+	optionsNotionalVolume?: boolean
 	perpsAggregators?: boolean
 	bridgeAggregators?: boolean
 	displayName?: string
@@ -49,4 +54,5 @@ export interface IProtocolMetadata {
 	tokenTax?: boolean
 	bridge?: boolean
 	stablecoins?: boolean
+	incentives?: boolean
 }

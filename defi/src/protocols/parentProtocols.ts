@@ -880,19 +880,33 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "tethysfinance",
     governanceID: ["snapshot:tethysswap.eth"],
   },
+  // { rebranded to bunni
+  //   id: "parent#timeless",
+  //   name: "Timeless",
+  //   url: "https://timelessfi.com",
+  //   description:
+  //     "Timeless is powered by yield tokens, specially designed ERC-20 tokens whose values are related to yield rates. Each farm corresponds to a set of three yield tokens.",
+  //   logo: `${baseIconsUrl}/timeless.jpg`,
+  //   gecko_id: "timeless",
+  //   cmcId: "23236",
+  //   chains: [],
+  //   twitter: "Timeless_Fi",
+  //   governanceID: ["snapshot:timelessfi.eth"],
+  //   github: ["timeless-fi"],
+  // },
   {
-    id: "parent#timeless",
-    name: "Timeless",
-    url: "https://timelessfi.com",
+    id: "parent#bunni",
+    name: "Bunni",
+    url: "https://bunni.xyz",
     description:
-      "Timeless is powered by yield tokens, specially designed ERC-20 tokens whose values are related to yield rates. Each farm corresponds to a set of three yield tokens.",
-    logo: `${baseIconsUrl}/timeless.jpg`,
-    gecko_id: "timeless",
+      "Bunni v2 is the leading Uniswap V4 hook, a shapeshifting DEX that maximizes LP yields via dynamic, automated pools combining swap fees with lending APYs (e.g., 13% on USDC-USDT). Features: LDFs for gas-efficient custom liquidity shapes, Shapeshifting for market adaptation, autonomous rebalancing, rehypothecation to Aave/Yearn, volatility-based fees, Surge Fee MEV protection, am-AMM auctions, auto-compounding.",
+    logo: `${baseIconsUrl}/bunni-v2.png`,
+    gecko_id: "bunni",
     cmcId: "23236",
     chains: [],
-    twitter: "Timeless_Fi",
-    governanceID: ["snapshot:timelessfi.eth"],
-    github: ["timeless-fi"],
+    twitter: "bunni_xyz",
+    governanceID: ["snapshot:bunni.eth"],
+    github: ["Bunniapp"],
   },
   {
     id: "parent#cap-finance",
@@ -6850,6 +6864,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sparkdotfi",
     github: ["marsfoundation"],
+    treasury: "spark.js",
   },
   {
     id: "parent#goatswap",
@@ -7294,7 +7309,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "thevaultfinance",
   },
-  /*{
+  {
     id: "parent#solido-money",
     name: "Solido",
     url: "https://solido.money/",
@@ -7305,7 +7320,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SolidoMoney",
     github: ["Solido-Money"],
-  }*/
+  },
    {
     id: "parent#avant-protocol",
     name: "Avant Protocol",
@@ -7354,7 +7369,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#river-inc",
     name: "River",
     url: "https://river.inc/",
-    description: "River is building the circulatory system for crypto, connecting assets, liquidity, and yield across chains. Powered by the omni-CDP stablecoin protocol",
+    description: "River is building the first chain-abstraction stablecoin system that connects liquidity across ecosystems and channels it into new growth opportunities. Powered by the omni-CDP stablecoin satUSD, River allows users to collateralize assets on one chain and mint on another — natively earning, leveraging, and scaling across networks",
     logo: `${baseIconsUrl}/river-inc.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -7757,6 +7772,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "weerofinance",
     github: ["weero-finance"]
+  },
+  {
+    id: "parent#mystic-finance",
+    name: "Mystic Finance",
+    url: "https://www.mysticfinance.xyz/",
+    description: "The RWAfi money market: lend, borrow and leverage your assets on Plume Network's native money market",
+    logo: `${baseIconsUrl}/mystic-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mystic_finance",
+  },
+  {
+    id: "parent#upheaval-finance",
+    name: "Upheaval Finance",
+    url: "https://upheaval.fi",
+    description: "Upheaval is a DeFi platform on HyperliquidEVM, featuring a Hyper efficient AMM DEX",
+    logo: `${baseIconsUrl}/upheaval-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Upheavalfi",
   },
 ];
 

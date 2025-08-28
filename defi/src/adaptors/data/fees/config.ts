@@ -4010,4 +4010,25 @@ export default {
     "saddle-finance": {
         id: "202"
     },
+    "thirdfy": {
+        id: "6620"
+    },
+    "catfee": {
+        id: "6623"
+    },
+    "aden": {
+        id: "6567"
+    },
+    "footballdotfun": {
+        id: "6625"
+    },
+    "helium": {
+        id: "6631",
+    },
+    "axie-infinity": {
+        id: "6102"
+    },
+    "vexy": {
+        id: "6629"
+    }
 } as AdaptorsConfig

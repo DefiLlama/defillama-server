@@ -90,7 +90,9 @@ export default async function (
         await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
-    if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
+    if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0
+      && !process.env.UI_TOOL_MODE // skip check if it run from the UI tool
+    ) {
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl
       )}`;
@@ -106,7 +108,6 @@ export default async function (
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
       if (
-        !process.env.UI_TOOL_MODE && // skip check if it run from the UI tool
         timeElapsed < (timeLimitDisableHours * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
@@ -124,7 +125,7 @@ export default async function (
           errorMessage
         );
       } else {
-        const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
+        const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
         if (currentTvl > 100e6) {
           await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
         }

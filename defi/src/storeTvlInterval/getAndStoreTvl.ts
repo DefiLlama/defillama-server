@@ -252,7 +252,7 @@ export async function storeTvl(
   const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
   const rawTokenBalances: tvlsObject<TokensValueLocked> = {};
   const chainTvlsToAdd: {
-    [name: string]: string[]
+    [name: string]: Set<string>
   } = {}
   try {
     let tvlPromises = Object.entries(module).map(async ([chain, value]) => {
@@ -284,11 +284,10 @@ export async function storeTvl(
         if (tvlType === "tvl" || tvlType === "fetch") {
           keyToAddChainBalances = "tvl"
         }
-        if (chainTvlsToAdd[keyToAddChainBalances] === undefined) {
-          chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
-        } else {
-          chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
+        if (!chainTvlsToAdd[keyToAddChainBalances]) {
+          chainTvlsToAdd[keyToAddChainBalances] = new Set();
         }
+        chainTvlsToAdd[keyToAddChainBalances].add(storedKey);
         const currentTime = getCurrentUnixTimestamp()
         insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
@@ -305,8 +304,9 @@ export async function storeTvl(
       tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
-    Object.entries(chainTvlsToAdd).map(([tvlType, storedKeys]) => {
+    Object.entries(chainTvlsToAdd).map(([tvlType, keySet]) => {
       if (usdTvls[tvlType] === undefined) {
+        const storedKeys = Array.from(keySet)
         usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
         mergeBalances(tvlType, storedKeys, tokensBalances)
         mergeBalances(tvlType, storedKeys, usdTokenBalances)

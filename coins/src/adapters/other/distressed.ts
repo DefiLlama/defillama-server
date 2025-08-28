@@ -51,7 +51,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     NBTC: "0x8bb97a618211695f5a6a889fac3546d1a573ea77", // RESERVES NEVER MATCH THE SUPPLY, DELISTED 
     MBTC: "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f",  // BACKED BY THE ABOVE, SO SAME 
     crvPlain3andSUSD: '0xC25a3A3b969415c80451098fa907EC722572917F', // sunset 
-    MSTR: '0x306227d964511a260d14563fbfa82aa75db404b2'
+    MSTR: '0x306227d964511a260d14563fbfa82aa75db404b2',
+    yieldETH: '0xb5b29320d2dde5ba5bafa1ebcd270052070483ec'
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

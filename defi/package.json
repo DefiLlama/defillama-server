@@ -56,7 +56,14 @@
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
-    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server"
+    "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server",
+    "api-validate": "ts-node --transpile-only src/api-validation/cli.ts",
+    "api-validate:example": "ts-node --transpile-only src/api-validation/example.ts",
+    "api-validate:validate": "ts-node --transpile-only src/api-validation/cli.ts validate",
+    "api-validate:compare": "ts-node --transpile-only src/api-validation/cli.ts compare",
+    "api-validate:schemas": "ts-node --transpile-only src/api-validation/cli.ts schemas",
+    "api-validate:health": "ts-node --transpile-only src/api-validation/cli.ts health",
+    "api-validate:test": "ts-node --transpile-only src/api-validation/test.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -114,6 +121,10 @@
     "promise.allsettled": "^1.0.5",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
-    "typeorm": "^0.3.11"
+    "typeorm": "^0.3.11",
+    "ajv": "^8.12.0",
+    "json-schema": "^0.4.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.0.1"
   }
 }

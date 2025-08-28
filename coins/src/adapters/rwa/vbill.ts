@@ -19,7 +19,7 @@ export async function vbill(timestamp: number = 0) {
 
   if (
     priceData.updatedAt <
-    (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 3 * 60 * 60
+    (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 27 * 60 * 60
   )
     throw new Error("VBILL price is stale");
 

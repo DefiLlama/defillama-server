@@ -7795,6 +7795,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Upheavalfi",
   },
+  {
+    id: "parent#cove-finance",
+    name: "Cove Finance",
+    url: "https://www.cove.finance/",
+    description: "Cove is the first onchain portfolio manager. Traditional AMMs are not well suited for portfolio or index construction because they suffer from loss-versus-rebalancing (LVR). This is because of toxic order flow: all trades execute at worse-than-market prices. Cove proposes an innovative new approach that eliminates LVR and earns more for liquidity providers. Cove is optimized by Gauntlet and audited by Trail of Bits, Quantstamp, and yAudit",
+    logo: `${baseIconsUrl}/cove-finance.jpg`,
+    gecko_id: "cove-dao",
+    cmcId: null,
+    chains: [],
+    twitter: "cove_fi",
+  },
 ];
 
 export default parentProtocols;

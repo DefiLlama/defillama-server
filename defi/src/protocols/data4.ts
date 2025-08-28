@@ -23806,5 +23806,30 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1756313595,
   },
+  {
+    id: "solid-terra2",                         // 새 프로토콜이면 고유 문자열이면 됩니다(숫자 강제 아님)
+    name: "SOLID",
+    address: null,
+    symbol: "-",
+    url: "https://solid.online",
+    description: "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets as collateral to mint SOLID. Governance token: CAPA.",
+    chain: "Terra2",                            // Phoenix 체인 표기
+    logo: "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/solid.png",
+    audits: "2",                                // SCV Security 2건
+    audit_note: null,
+    gecko_id: "solid-2",
+    cmcId: null,                                // CMC 미상장
+    category: "Protocol",
+    chains: ["Terra2"],
+    oracles: [],                                // 내부 LST 환산은 prices infra로 처리
+    forkedFrom: [],
+    module: "solid/index.js",                   // Adapters 쪽 경로 (projects/solid/index.js)
+    twitter: "solid_capa",
+    audit_links: [
+      "https://github.com/SCV-Security/PublicReports/blob/main/CW/Capapult/Capapult%20-%20Money%20Market%20Contracts%20-%20Audit%20Report%20v1.0%20.pdf",
+      "https://github.com/SCV-Security/PublicReports/blob/fa51bf944593bf18d128b4f812b3150b218f0d25/Capapult%2FCapapult%20Finance%20-%20Oracle%20Contract%20-%20Audit%20Report%20v1.0.pdf"
+      ],
+    methodology: "TVL counts only SOLID collateral vault balances (ampLUNA, bLUNA, USDC (Noble IBC), axl.WETH, axl.WBTC, wSOL (Wormhole), wBNB (Wormhole)). Borrowed (minted SOLID) exposed separately by the adapter. Pricing, including LST exchange rates, is handled by DefiLlama prices infra.",,
+  },
 ];
 export default data4;

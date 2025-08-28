@@ -7898,7 +7898,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "benqi/index.js",
     twitter: "BenqiFinance",
     audit_links: ["https://docs.benqi.fi/risks#audits"],
-    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
+    oraclesBreakdown: [
+      { name: "Edge", type: "Primary", proof: ["https://docs.benqi.fi/resources/contracts/price-feeds"] },
+      { name: "Chainlink", type: "Fallback", proof: ["https://docs.benqi.fi/resources/contracts/price-feeds"] }
+    ],
     forkedFromIds: ["114"],
     parentProtocol: "parent#benqi",
     tokensExcludedFromParent: {

@@ -1127,9 +1127,9 @@ export default {
     "furucombo": {
         id: "742"
     },
-    "instadapp": {
-        id: "4742" // old id: 120
-    },
+    // "instadapp": {
+    //     id: "4742" // old id: 120
+    // },
     "summer.fi": {
         id: "4741"  // old id: 3284
     },
@@ -4036,5 +4036,8 @@ export default {
     },
     "cattos": {
         id: "6641"
+    },
+    "fluid-lite": {
+        id: "4742" 
     },
 } as AdaptorsConfig

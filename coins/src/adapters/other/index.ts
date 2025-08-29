@@ -125,6 +125,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     ethereum: [
       { pool: "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7", unknown: "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", },
+      { pool: "0x14D7AAB5b4bca6a02E52aC22520B033bF35F4091", unknown: "0x6fA0BE17e4beA2fCfA22ef89BF8ac9aab0AB0fc9", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", confidence: 1 },
     ],
     arbitrum: [
       { pool: "0xC977492506E6516102a5687154394Ed747A617ff", unknown: "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", known: "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B", },
@@ -193,7 +194,7 @@ export async function unknownTokens2(timestamp: number = 0) {
       const token = unknowns[i].toLowerCase()
       let underlying = knowns[i]
       let price = (knownBals[i] / unknownBals[i]) * 10 ** (unknownDecimals[i] - knownDecimals[i])
-      pricesObject[token] = { underlying, price }
+      pricesObject[token] = { underlying, price, confidence: data[i].confidence }
     })
     return getWrites({ chain, timestamp, pricesObject, projectName, })
   }

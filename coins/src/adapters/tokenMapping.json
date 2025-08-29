@@ -2653,6 +2653,11 @@
     }
   },
   "aptos": {
+    "0x6dba1728c73363be1bdd4d504844c40fbb893e368ccbeff1d1bd83497dbc756d": {
+      "decimals": "8",
+      "symbol": "PROPS",
+      "to": "coingecko#propbase"
+    },
     "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
       "decimals": "6",
       "symbol": "GUI",

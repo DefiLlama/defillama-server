@@ -22860,7 +22860,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/turtle.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "turtle-2",
     cmcId: null,
     category: "Meme",
     chains: ["Cronos"],

@@ -50525,6 +50525,13 @@ const data3_2: Protocol[] = [
     category: "Yield Aggregator",
     forkedFrom: [],
     chains: ["Arbitrum"],
+    oraclesBreakdown: [
+      {
+        name: "Quex",
+        type: "Primary",
+        proof: ["https://ufarm.digital/blog/all-articles/scaling-ufarm-with-quex"]
+      }
+    ],
     module: "ufarm-digital/index.js",
     twitter: "UFarmDigital",
     audit_links: ["https://github.com/Decurity/audits/blob/master/UFarm/ufarm-audit-report-2023-1.1.pdf"],

@@ -327,7 +327,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   hemi: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
     UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258",
-    hemiBTC: "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28", // IS NOT BACKED
+    // hemiBTC: "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28", // IS NOT BACKED
   },
   plume: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",

@@ -4040,4 +4040,10 @@ export default {
     "fluid-lite": {
         id: "4742" 
     },
+    "fraxlend": {
+        id: "2076"
+    },
+    "tonstakers-lsd": {
+        id: "3542"
+    },
 } as AdaptorsConfig

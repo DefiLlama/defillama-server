@@ -4046,4 +4046,7 @@ export default {
     "tonstakers-lsd": {
         id: "3542"
     },
+    "swap-coffee": {
+        id: "5150"
+    }
 } as AdaptorsConfig

@@ -3058,4 +3058,7 @@ export default {
     "footballdotfun": {
         id: "6625"
     },
+    "swap-coffee": {
+        id: "5150"
+    }
 } as AdaptorsConfig

@@ -35,6 +35,7 @@ export default async function getWrites(params: {
       underlying: normalize(obj.underlying, chain),
       symbol: obj.symbol ?? undefined,
       decimals: obj.decimals ?? undefined,
+      confidence: obj.confidence ?? undefined,
     };
   });
 
@@ -53,7 +54,7 @@ export default async function getWrites(params: {
     ),
   ]);
 
-  entries.map(({ token, price, underlying, symbol, decimals }, i) => {
+  entries.map(({ token, price, underlying, symbol, decimals, confidence }, i) => {
     const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
     const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
     let coinData: CoinData | undefined = coinsData[underlying];

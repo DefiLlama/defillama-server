@@ -18281,6 +18281,13 @@ const data4: Protocol[] = [
       Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
     },
     listedAt: 1751313277,
+    oraclesBreakdown: [
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations"]
+      }
+    ]
   },
   {
     id: "6373",
@@ -18303,6 +18310,13 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#etherfi-cash",
     listedAt: 1751313285,
+    oraclesBreakdown: [
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations"]
+      }
+    ]
   },
   {
     id: "6374",

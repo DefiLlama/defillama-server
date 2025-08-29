@@ -1988,18 +1988,26 @@ const data3_1: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink"]
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink"],
+		startDate: "2025-08-28"
       },
       {
         name: "Pyth",
         type: "Secondary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#pyth"]
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#pyth"],
+		startDate: "2025-08-28"
       },
       {
         name: "Switchboard",
         type: "Secondary",
         proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
-      }
+      },
+	  {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"],
+		endDate: "2025-08-28"
+      },
     ],
     forkedFrom: [],
     module: "move-dollar/index.js",

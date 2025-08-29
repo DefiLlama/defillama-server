@@ -1988,7 +1988,7 @@ const data3_1: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink"],
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink","https://x.com/ThalaLabs/status/1961217234988089815"],
 		startDate: "2025-08-28"
       },
       {

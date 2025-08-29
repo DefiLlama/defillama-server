@@ -69,7 +69,7 @@ export const metadata: { [id: string]: Characteristics } = {
     selfCustody: true,
   },
   "2002": {
-    symbols: ["CGT", ""], // no open market
+    symbols: ["CGT"], // no open market
     matchExact: true,
     redeemable: true,
     attestations: true,
@@ -391,7 +391,7 @@ export const metadata: { [id: string]: Characteristics } = {
     selfCustody: false,
   },
   "5241": {
-    symbols: ["M", "WM"],
+    symbols: ["WM"],
     matchExact: true,
     redeemable: false,
     attestations: true,

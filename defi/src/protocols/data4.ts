@@ -14580,6 +14580,7 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://app.morpho.org/ethereum/vault/0x2F21c6499fa53a680120e654a27640Fc8Aa40BeD/openeden-usdc-vault",
+          "https://github.com/DefiLlama/defillama-server/pull/10516/files"
         ],
         chains: [{chain: "Ethereum"}]
       },

@@ -14601,7 +14601,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume Mainnet"],
+    chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume Mainnet", "TAC"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -14625,6 +14625,15 @@ const data4: Protocol[] = [
           "https://oracles.euler.finance/130/"
         ],
         chains: [{chain: "Unichain"}]
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [
+          "https://app.euler.finance/?governor=re7-labs&network=tac",
+          "https://github.com/DefiLlama/defillama-server/pull/10515"
+        ],
+        chains: [{chain: "TAC"}]
       },
     ],
     module: "re7/index.js",

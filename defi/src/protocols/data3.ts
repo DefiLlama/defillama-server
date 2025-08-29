@@ -1986,15 +1986,28 @@ const data3_1: Protocol[] = [
     chains: ["Aptos"],
     oraclesBreakdown: [
       {
-        name: "Pyth",
+        name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink","https://x.com/ThalaLabs/status/1961217234988089815"],
+		startDate: "2025-08-28"
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#pyth"],
+		startDate: "2025-08-28"
       },
       {
         name: "Switchboard",
         type: "Secondary",
         proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
-      }
+      },
+	  {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"],
+		endDate: "2025-08-28"
+      },
     ],
     forkedFrom: [],
     module: "move-dollar/index.js",
@@ -41868,6 +41881,7 @@ const data3_2: Protocol[] = [
     module: "cove-boosties/index.js",
     twitter: "cove_fi",
     audit_links: ["https://github.com/Storm-Labs-Inc/cove-audits"],
+    parentProtocol: "parent#cove-finance",
     listedAt: 1714563592,
   },
   {
@@ -50511,6 +50525,13 @@ const data3_2: Protocol[] = [
     category: "Yield Aggregator",
     forkedFrom: [],
     chains: ["Arbitrum"],
+    oraclesBreakdown: [
+      {
+        name: "Quex",
+        type: "Primary",
+        proof: ["https://ufarm.digital/blog/all-articles/scaling-ufarm-with-quex"]
+      }
+    ],
     module: "ufarm-digital/index.js",
     twitter: "UFarmDigital",
     audit_links: ["https://github.com/Decurity/audits/blob/master/UFarm/ufarm-audit-report-2023-1.1.pdf"],
@@ -50785,7 +50806,8 @@ const data3_2: Protocol[] = [
     name: "edgeX",
     address: null,
     symbol: "-",
-    url: "https://www.edgex.exchange",
+    url: "https://pro.edgex.exchange/referral/196451583",
+    referralUrl: "https://pro.edgex.exchange/referral/196451583",
     description: "A high-performance, orderbook-based perpetual DEX with native trading experience",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/edgex.jpg`,
@@ -53543,14 +53565,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5079",
-    name: "Kuma",
+    name: "Kuma Perpetuals DEX",
     previousNames: ["IDEX V4", "Kuma V1"],
     address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
     symbol: "IDEX",
     url: "https://kuma.bid/",
     description: "Proof-of-Liquidity Perpetuals DEX.",
     chain: "IDEX",
-    logo: `${baseIconsUrl}/kuma.jpg`,
+    logo: `${baseIconsUrl}/kuma-perpetuals-dex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

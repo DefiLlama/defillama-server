@@ -4030,5 +4030,11 @@ export default {
     },
     "vexy": {
         id: "6629"
-    }
+    },
+    "vibes-meme": {
+        id: "6636"
+    },
+    "cattos": {
+        id: "6641"
+    },
 } as AdaptorsConfig

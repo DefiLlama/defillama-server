@@ -14619,9 +14619,10 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: [
-          "https://app.euler.finance/?governor=re7-labs&network=tac"
+          "https://app.euler.finance/?governor=re7-labs&network=tac",
+          "https://github.com/DefiLlama/defillama-server/pull/10515"
         ],
-        chains: [{chain: "Unichain"}]
+        chains: [{chain: "TAC"}]
       },
     ],
     module: "re7/index.js",

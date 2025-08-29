@@ -1163,7 +1163,7 @@ const data2: Protocol[] = [
   {
     id: "1430",
     name: "Kommunitas",
-    address: "polygon:0xC004e2318722EA2b15499D6375905d75Ee5390B8",
+    address: "bsc:0x3cd886be588685484528cbf6494729922e4e89c6",
     symbol: "KOM",
     url: "https://kommunitas.net",
     description:
@@ -1172,7 +1172,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/kommunitas.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "kommunitas",
+    gecko_id: "kommunitas-2",
     cmcId: "10403",
     category: "Launchpad",
     chains: ["Polygon"],

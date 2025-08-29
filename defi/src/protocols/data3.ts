@@ -1986,15 +1986,28 @@ const data3_1: Protocol[] = [
     chains: ["Aptos"],
     oraclesBreakdown: [
       {
-        name: "Pyth",
+        name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink","https://x.com/ThalaLabs/status/1961217234988089815"],
+		startDate: "2025-08-28"
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#pyth"],
+		startDate: "2025-08-28"
       },
       {
         name: "Switchboard",
         type: "Secondary",
         proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
-      }
+      },
+	  {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"],
+		endDate: "2025-08-28"
+      },
     ],
     forkedFrom: [],
     module: "move-dollar/index.js",

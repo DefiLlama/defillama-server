@@ -1986,9 +1986,14 @@ const data3_1: Protocol[] = [
     chains: ["Aptos"],
     oraclesBreakdown: [
       {
-        name: "Pyth",
+        name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink"]
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#pyth"]
       },
       {
         name: "Switchboard",

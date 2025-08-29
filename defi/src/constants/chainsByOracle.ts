@@ -515,6 +515,9 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Unichain",
     "OP Mainnet",
   ],
+  "Quex": [
+    "Arbitrum",
+  ]
 };
 
 export { chainsByOracle };

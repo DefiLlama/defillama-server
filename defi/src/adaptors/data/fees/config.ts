@@ -4063,5 +4063,8 @@ export default {
     },
     "pancakeswap-prediction": {
         id: "6643"
+    },
+    "privacy-cash": {
+        id: "6642"
     }
 } as AdaptorsConfig

@@ -3060,5 +3060,11 @@ export default {
     },
     "swap-coffee": {
         id: "5150"
-    }
+    },
+    "kittenswap-algebra": {
+        id: "6622"
+    },
+    "haven1-hswap": {
+        id: "6089"
+    },
 } as AdaptorsConfig

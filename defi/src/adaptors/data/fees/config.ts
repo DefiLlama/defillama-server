@@ -4048,5 +4048,17 @@ export default {
     },
     "swap-coffee": {
         id: "5150"
-    }
+    },
+    "kittenswap-algebra": {
+        id: "6622"
+    },
+    "nemo-vault": {
+        id: "6595"
+    },
+    "nemo-yield-trading": {
+        id: "6313"
+    },
+    "haven1-hswap": {
+        id: "6089"
+    },
 } as AdaptorsConfig

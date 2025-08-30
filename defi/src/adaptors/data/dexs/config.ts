@@ -3072,5 +3072,8 @@ export default {
     },
     "xrpl-dex": {
         id: "4924"
+    },
+    "brownfi": {
+        id: "6616"
     }
 } as AdaptorsConfig

@@ -4066,5 +4066,8 @@ export default {
     },
     "privacy-cash": {
         id: "6642"
+    },
+    "brownfi": {
+        id: "6616"
     }
 } as AdaptorsConfig

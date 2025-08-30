@@ -7813,7 +7813,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://amberfi.io",
     description:
       "Amber Finance is a credit protocol enabling borrowing and lending Bitcoin Related Tokens (BRTs) on Neutron. Deposit BRTs to earn yield, swap between tokens, deploy leverage strategies with up to 10x leverage, and track your positions performance with real-time analytics.",
-    logo: `${baseIconsUrl}/amber.png`,
+    logo: `${baseIconsUrl}/amber-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

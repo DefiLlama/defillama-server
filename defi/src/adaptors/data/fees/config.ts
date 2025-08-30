@@ -4061,4 +4061,7 @@ export default {
     "haven1-hswap": {
         id: "6089"
     },
+    "pancakeswap-prediction": {
+        id: "6643"
+    }
 } as AdaptorsConfig

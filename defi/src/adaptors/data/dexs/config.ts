@@ -3067,4 +3067,10 @@ export default {
     "haven1-hswap": {
         id: "6089"
     },
+    "pancakeswap-prediction": {
+        id: "6643"
+    },
+    "xrpl-dex": {
+        id: "4924"
+    }
 } as AdaptorsConfig

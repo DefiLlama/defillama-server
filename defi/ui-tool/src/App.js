@@ -414,9 +414,10 @@ const App = () => {
           <Switch checkedChildren="Yes" unCheckedChildren="No" />
         </Form.Item>
 
-        {!dimRefillOnlyMissing && <Form.Item
+        <Form.Item
           label="Date Range"
           name="dateRange"
+          style={{ display: dimRefillOnlyMissing ? 'none' : 'block' }}
           rules={[
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -429,7 +430,7 @@ const App = () => {
           ]}
         >
           <DatePicker.RangePicker />
-        </Form.Item>}
+        </Form.Item>
 
         <Form.Item
           label="Parallel Count"

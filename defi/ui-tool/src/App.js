@@ -38,6 +38,8 @@ const App = () => {
 
   // dimensions tab
   const [dimensionRefillForm] = Form.useForm();
+    const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
+
   const [adapterTypes, setAdapterTypes] = useState([]);
   const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
   const [dimRefillWaitingRecords, setDimRefillWaitingRecords] = useState([]);
@@ -68,7 +70,6 @@ const App = () => {
 
   // misc tab
   const [miscForm] = Form.useForm();
-  const miscAction = Form.useWatch('action', miscForm);
   const [miscOutputTableData, setMiscOutputTableData] = useState({});
 
   function addWebSocketConnection() {
@@ -413,7 +414,7 @@ const App = () => {
           <Switch checkedChildren="Yes" unCheckedChildren="No" />
         </Form.Item>
 
-        <Form.Item
+        {!dimRefillOnlyMissing && <Form.Item
           label="Date Range"
           name="dateRange"
           rules={[
@@ -428,7 +429,7 @@ const App = () => {
           ]}
         >
           <DatePicker.RangePicker />
-        </Form.Item>
+        </Form.Item>}
 
         <Form.Item
           label="Parallel Count"

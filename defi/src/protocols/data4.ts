@@ -9465,8 +9465,8 @@ const data4: Protocol[] = [
   {
     id: "5980",
     name: "LiquidOps",
-    address: null,
-    symbol: "-",
+    address: "n2MhPK0O3yEvY2zW73sqcmWqDktJxAifJDrri4qireI",
+    symbol: "LQD",
     url: "https://liquidops.io",
     description:
       "LiquidOps is an over collateralized lending and borrowing protocol built on ao.arweave.dev and arweave.org",
@@ -9477,7 +9477,7 @@ const data4: Protocol[] = [
       "https://docs.liquidops.io/security/audits",
     ],
     audit_note: null,
-    gecko_id: null,
+    gecko_id: 'liquidops',
     cmcId: null,
     category: "Lending",
     chains: ["AO"],

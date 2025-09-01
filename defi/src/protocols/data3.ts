@@ -31755,7 +31755,8 @@ const data3_1: Protocol[] = [
     name: "Avantis",
     address: null,
     symbol: "-",
-    url: "https://www.avantisfi.com",
+    url: "https://www.avantisfi.com/referral?code=DefiLlama",
+    referralUrl: "https://www.avantisfi.com/referral?code=DefiLlama",
     description:
       "Avantis is a onchain perpetuals DEX built offering advanced risk management for LPs, loss protection for traders, and access to trading leverage crypto and synthetic real world assets. Avantis is built on and backed Base, and other investors such as Pantera Capital and Galaxy Digital.",
     chain: "Base",
@@ -32417,7 +32418,7 @@ const data3_1: Protocol[] = [
     name: "Ethena USDe", // previous Ethena
     address: "0x57e114b691db790c35207b2e685d4a43181e6061",
     symbol: "ENA",
-    url: "https://www.ethena.fi/",
+    url: "app.ethena.fi/join/3y20d",
     description: "Ethena is a synthetic dollar protocol built on Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ethena-usde.png`,

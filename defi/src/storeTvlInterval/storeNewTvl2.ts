@@ -115,7 +115,7 @@ export default async function (
       ) {
         const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
         if (timeElapsed > (5 * HOUR)) {
-          if (currentTvl > 100e6) {
+          if (currentTvl > 10e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           }
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
@@ -126,7 +126,7 @@ export default async function (
         );
       } else {
         const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
-        if (currentTvl > 100e6) {
+        if (currentTvl > 10e6) {
           await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
         }
         reportError(

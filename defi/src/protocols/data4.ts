@@ -20244,7 +20244,7 @@ const data4: Protocol[] = [
     name: "Ethena tsUSDe",
     address: null,
     symbol: "-",
-    url: "https://ethena.fi/",
+    url: "app.ethena.fi/join/3y20d",
     description: "tsUSDe is a special version of sUSDe deployed on TON",
     chain: "TON",
     logo: `${baseIconsUrl}/ethena-tsusde.jpg`,

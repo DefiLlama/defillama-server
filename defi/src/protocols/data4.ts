@@ -24062,5 +24062,33 @@ const data4: Protocol[] = [
     github: ["AggreLend"],
     listedAt: 1756577348,
   },
+  {
+    id: "6645",
+    name: "Amber Finance",
+    address: null,
+    symbol: "-",
+    url: "https://amberfi.io",
+    description: `Amber Finance is a credit protocol enabling borrowing and lending Bitcoin Related Tokens (BRTs) on Neutron. Deposit BRTs to earn yield, swap between tokens, deploy leverage strategies with up to 10x leverage, and track your positions performance with real-time analytics`,
+    chain: "Neutron",
+    logo: `${baseIconsUrl}/amber-finance.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Neutron"],
+    forkedFromIds: ["1524"],
+    module: "amber-finance/index.js",
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.amberfi.io"],
+      },
+    ],
+    twitter: "amberfi_io",
+    github: ["Amber-Finance"],
+    listedAt: 1756753051,
+  },
 ];
 export default data4;

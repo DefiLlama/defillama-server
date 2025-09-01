@@ -4069,5 +4069,8 @@ export default {
     },
     "brownfi": {
         id: "6616"
-    }
+    },
+    "hyperlend-isolated": {
+        id: "6395"
+    },
 } as AdaptorsConfig

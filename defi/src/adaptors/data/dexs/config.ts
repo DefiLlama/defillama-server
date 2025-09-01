@@ -3075,5 +3075,8 @@ export default {
     },
     "brownfi": {
         id: "6616"
+    },
+    "mintiq-market": {
+        id: "6646"
     }
 } as AdaptorsConfig

@@ -10,7 +10,9 @@ import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
-import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
+import chainToCoingeckoId, {
+  cgPlatformtoChainId,
+} from "../../../common/chainToCoingeckoId";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
   fetchCgPriceData,
@@ -20,7 +22,9 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
-import axios from "axios";
+import { writeVolumesToJson } from "./writeVolumesToJson";
+
+const volumes: { [symbol: string]: number } = {};
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -50,11 +54,16 @@ async function storeCoinData(coinData: Write[]) {
       volume: c.volume,
     }))
     .filter((c: Write) => c.symbol != null);
+
+  coinData.map((i: Write) => {
+    if (i.symbol && i.volume) volumes[i.symbol] = i.volume;
+  });
+
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
-        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+        return { adapter: "coingecko", decimals: 0, ...rest } as Dynamo;
       }),
     ),
     batchWrite(items, false),
@@ -84,7 +93,29 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 
 const aggregatedPlatforms: string[] = [];
 
-const ignoredChainSet = new Set(['sora', 'hydration', 'polkadot', 'osmosis', 'xrp', 'sonic-svm', 'vechain', 'cosmos', 'binancecoin', 'ordinals', 'saga-2', 'mantra', 'thorchain', 'initia', 'xcc', 'secret', 'icp', 'bittensor', 'kasplex', 'terra-2', 'bittorrent-old']);
+const ignoredChainSet = new Set([
+  "sora",
+  "hydration",
+  "polkadot",
+  "osmosis",
+  "xrp",
+  "sonic-svm",
+  "vechain",
+  "cosmos",
+  "binancecoin",
+  "ordinals",
+  "saga-2",
+  "mantra",
+  "thorchain",
+  "initia",
+  "xcc",
+  "secret",
+  "icp",
+  "bittensor",
+  "kasplex",
+  "terra-2",
+  "bittorrent-old",
+]);
 
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await fetchCgPriceData(coins.map((c) => c.id));
@@ -234,20 +265,36 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             return;
           }
           try {
-
             const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
             if (ignoredChainSet.has(chain)) return;
-            const normalizedPK = !chainsThatShouldNotBeLowerCased.includes(chain) ? PK.toLowerCase() : PK;
-            const platformData = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
+            const normalizedPK = !chainsThatShouldNotBeLowerCased.includes(
+              chain,
+            )
+              ? PK.toLowerCase()
+              : PK;
+            const platformData =
+              coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {};
             if (platformData && platformData?.confidence > 0.99) return;
 
             const created = getCurrentUnixTimestamp();
             const address = PK.substring(PK.indexOf(":") + 1);
-            let { decimals, symbol } = platformData as any
+            let { decimals, symbol } = platformData as any;
             if (decimals == undefined || symbol == undefined) {
-              const symbolAndDecimals = await getSymbolAndDecimals(address, chain, coin.symbol, coin.platforms[(chainToCoingeckoId as any)[chain] || chain]);
-              if (symbolAndDecimals) console.log(`Found symbol and decimals for ${coin.id} on ${chain}:`, symbolAndDecimals);
-              else console.log(`Couldn't find symbol and decimals for ${coin.id} on ${chain} ${PK}`)
+              const symbolAndDecimals = await getSymbolAndDecimals(
+                address,
+                chain,
+                coin.symbol,
+                coin.platforms[(chainToCoingeckoId as any)[chain] || chain],
+              );
+              if (symbolAndDecimals)
+                console.log(
+                  `Found symbol and decimals for ${coin.id} on ${chain}:`,
+                  symbolAndDecimals,
+                );
+              else
+                console.log(
+                  `Couldn't find symbol and decimals for ${coin.id} on ${chain} ${PK}`,
+                );
 
               if (!symbolAndDecimals) return;
               decimals = symbolAndDecimals.decimals;
@@ -397,7 +444,7 @@ function shuffleArray(array: any[]) {
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
     await cacheSolanaTokens();
-    console.log("solana tokens received")
+    console.log("solana tokens received");
     const step = 500;
     
           // Retry logic for the coins list request
@@ -454,6 +501,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
     }
     await Promise.all(promises);
+    await writeVolumesToJson(volumes);
   } catch (e) {
     console.error("Error in coingecko script");
     console.error("Error type:", typeof e);

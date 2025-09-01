@@ -3820,8 +3820,8 @@ const data2: Protocol[] = [
     id: "1546",
     name: "Rhea Lend",
     previousNames: ["Burrow"],
-    address: null,
-    symbol: "BRRR",
+    address: "near:token.rhealab.near",
+    symbol: "RHEA",
     url: "https://lending.rhea.finance/",
     description:
       "Rhea Lending is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",

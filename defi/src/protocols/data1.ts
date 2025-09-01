@@ -9528,8 +9528,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "541",
     name: "Rhea Dex",
     previousNames: ["Ref Finance"],
-    address: "near:token.v2.ref-finance.near",
-    symbol: "REF",
+    address: "near:token.rhealab.near",
+    symbol: "RHEA",
     url: "https://dex.rhea.finance/",
     description:
       "Rhea Finance merges Ref Finance and Burrow Finance to create NEAR’s most powerful DeFi hub, connecting Bitcoin, NEAR, and EVM ecosystems. By consolidating liquidity, lending, and trading under one entity, Rhea Finance unlocks a seamless DeFi experience for institutional and retail users alike.",

@@ -2029,8 +2029,8 @@ const data2: Protocol[] = [
   {
     id: "1468",
     name: "Pact",
-    address: null,
-    symbol: "-",
+    address: 'algorand:2994233666',
+    symbol: "POW",
     url: "https://app.pact.fi",
     description:
       "Pact is a decentralised Automated Market Maker (AMM) built on the Algorand protocol, offering deep liquidity and low transaction fees.",

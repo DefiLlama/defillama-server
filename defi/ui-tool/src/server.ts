@@ -2,6 +2,7 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 process.env.IS_NOT_SCRIPT_MODE = 'TRUE'
 process.env.UI_TOOL_MODE = 'TRUE'
+process.env.LLAMA_DEBUG_MODE = 'TRUE'
 
 const WS = require('ws');
 const { spawn, } = require('child_process');

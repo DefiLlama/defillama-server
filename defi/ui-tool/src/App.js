@@ -251,7 +251,7 @@ const App = () => {
                 console.error('WebSocket is not connected');
               }
             }}
-            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+            style={{ display: (process.env.REACT_APP_WS_AUTH_PASSWORD && isConnected) ? 'block' : 'none' }}
           >
             Restart Server
           </Button>

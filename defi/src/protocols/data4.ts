@@ -678,6 +678,8 @@ const data4: Protocol[] = [
         },{
           chain: "Base",
         },{
+          chain: "Binance",
+        },{
           chain: "Katana",
         },{
           chain: "Optimism",
@@ -694,7 +696,7 @@ const data4: Protocol[] = [
             chain: "Ethereum",
           },
           {
-            chain: "Plume",
+            chain: "Plume Mainnet",
           },
           {
             chain: "TAC",

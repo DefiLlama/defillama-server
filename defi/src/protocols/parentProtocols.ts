@@ -618,7 +618,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#woofi",
     name: "WOOFi",
-    url: "https://fi.woo.org",
+    url: "https://woofi.com/en/trade?ref=DEFILLAMA",
+    referralUrl: "https://woofi.com/en/trade?ref=DEFILLAMA",
     description:
       "One DEX to rule all chains  - trade and earn like royalty with unmatched execution, cross-chain swaps, and single-sided yields.",
     logo: `${baseIconsUrl}/woofi.png`,

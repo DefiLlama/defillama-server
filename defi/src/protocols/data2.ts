@@ -1859,7 +1859,7 @@ const data2: Protocol[] = [
     name: "WOOFi Swap",
     address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
     symbol: "WOO",
-    url: "http://fi.woo.org/",
+    url: "https://woofi.com/en/trade?ref=DEFILLAMA",
     description:
       "One DEX to rule all chains - trade and earn like royalty with unmatched execution, cross-chain swaps, and single-sided yields.",
     chain: "Binance",

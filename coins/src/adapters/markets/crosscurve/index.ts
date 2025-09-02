@@ -111,15 +111,14 @@ export async function crosscurve(timestamp: number = 0) {
               params: portal,
               chain: chainIdMap[orig.chainId],
               abi: "erc20:balanceOf",
-            }).catch((err) => {
-              console.log("erc20:balanceOf", err);
-              return 0;
-            })
+            }).catch(() => 0)
           )
         );
 
         const supplies: number[] = synths.map(() => 0);
 
+        // Original may have synths across different chains,
+        // so we aggregate them to calculate total supply.
         await Promise.all(
           synths.map(async (synth, i) => {
             const allSynths = allTokens.filter(
@@ -134,10 +133,7 @@ export async function crosscurve(timestamp: number = 0) {
                   target: s.address,
                   chain: chainIdMap[s.chainId],
                   abi: "erc20:totalSupply",
-                }).catch((err) => {
-                  console.log("erc20:totalSupply", err);
-                  return 0;
-                });
+                }).catch(() => 0);
 
                 supplies[i] += Number(supply);
               })
@@ -305,6 +301,8 @@ export async function crosscurve(timestamp: number = 0) {
 
   calculateSynthPrices();
   calculateLpPrices();
+  // Price is calculated twice because some synths may be LP tokens,
+  // and some LP tokens may depend on synth prices.
   calculateSynthPrices();
   calculateLpPrices();
 
@@ -328,7 +326,7 @@ export async function crosscurve(timestamp: number = 0) {
             1
           );
         } else {
-          console.log("Price not found for:", synth.address);
+          // console.warn("Price not found for:", synth.address);
         }
       });
     }
@@ -350,13 +348,11 @@ export async function crosscurve(timestamp: number = 0) {
             1
           );
         } else {
-          console.log("Price not found for LP:", lp.address);
+          // console.warn("Price not found for LP:", lp.address);
         }
       });
     }
   });
-
-  console.log(writes, "writes", writes.length);
 
   return writes;
 }

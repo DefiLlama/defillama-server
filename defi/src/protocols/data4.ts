@@ -20922,13 +20922,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6493",
-    name: "Hylo",
+    name: "Hylo CDP",
     address: null,
     symbol: "-",
     url: "https://hylo.so/",
     description: "Hylo splits yield-bearing assets into two complementary products: hyUSD - a stable USD-denominated asset with access to sustainable yield, and xSOL - leveraged SOL exposure with zero liquidation risk and no funding costs. Users can deposit LSTs to mint either asset",
     chain: "Solana",
-    logo: `${baseIconsUrl}/hylo.jpg`,
+    logo: `${baseIconsUrl}/hylo-cdp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -20946,6 +20946,7 @@ const data4: Protocol[] = [
       }
     ],
     audit_links: ["https://docs.hylo.so/security/audits"],
+    parentProtocol: "parent#hylo",
     listedAt: 1753802383
   },
   {
@@ -24197,6 +24198,7 @@ const data4: Protocol[] = [
     module: "hyloSOL/index.js",
     twitter: "hylo_so",
     forkedFrom: [], 
+    parentProtocol: "parent#hylo",
     listedAt: 1756830317,
   },
 ];

@@ -7823,6 +7823,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ethos_network",
   },
+  {
+    id: "parent#hylo",
+    name: "Hylo",
+    url: "https://www.hylo.so/",
+    description: "Hylo is a suite of Decentralized Finance (DeFi) products on the Solana blockchain, engineered for scalability and independence from traditional financial infrastructure",
+    logo: `${baseIconsUrl}/hylo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hylo_so",
+  },
 ];
 
 export default parentProtocols;

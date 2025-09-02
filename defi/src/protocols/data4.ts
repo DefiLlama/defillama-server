@@ -20923,6 +20923,7 @@ const data4: Protocol[] = [
   {
     id: "6493",
     name: "Hylo CDP",
+    //previousNames: ["Hylo"],
     address: null,
     symbol: "-",
     url: "https://hylo.so/",

@@ -6713,7 +6713,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#axion-finance",
     name: "Axion Finance",
-    url: "https://axion.finance",
+    url: "https://axiom.trade/@defillama",
+    referralUrl: "https://axiom.trade/@defillama",
     description: "AMM + Perp + AI-Agent launchpad on Taiko",
     logo: `${baseIconsUrl}/axion-finance.jpg`,
     gecko_id: null,

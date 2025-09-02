@@ -717,5 +717,8 @@ export default {
     },
     "squaretower": {
         id: "6624"
-    }
+    },
+    "orderly-perps-new": {
+        id: "6647"
+    },
 } as AdaptorsConfig

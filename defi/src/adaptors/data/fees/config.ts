@@ -4075,4 +4075,7 @@ export default {
     "hyperlend-isolated": {
         id: "6395"
     },
+    "orderly-perps-new": {
+        id: "6647"
+    },
 } as AdaptorsConfig

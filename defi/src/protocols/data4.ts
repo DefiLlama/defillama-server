@@ -24157,7 +24157,24 @@ const data4: Protocol[] = [
     twitter: "OrderlyNetwork",
     forkedFrom: [], 
     parentProtocol: "parent#orderly-network",
-    listedAt: 1756818123
+    listedAt: 1756818123,
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Fallback",
+        proof: ["https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price"],
+        startDate: "2025-05-22"
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: [
+          "https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price",
+          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update"
+          ],
+        startDate: "2025-02-25"
+      }
+    ],
   },
 ];
 export default data4;

@@ -2141,6 +2141,14 @@ const data3_1: Protocol[] = [
     cmcId: "24268",
     category: "Dexs",
     chains: ["Aptos"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink","https://x.com/ThalaLabs/status/1961217234988089815"],
+		startDate: "2025-08-28"
+      },
+    ],
     forkedFrom: [],
     module: "thalaswap/index.js",
     twitter: "ThalaLabs",
@@ -59088,6 +59096,14 @@ const data3_2: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Aptos"],
+     oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#chainlink","https://x.com/ThalaLabs/status/1961217234988089815"],
+		startDate: "2025-08-28"
+      },
+    ],
     module: "thalaswap-v2/index.js",
     twitter: "ThalaLabs",
     forkedFrom: [],

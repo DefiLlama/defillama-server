@@ -768,6 +768,7 @@ async function _storeAppMetadata() {
       dexs: { protocols: 0, chains: 0 },
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
+      openInterest: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -806,6 +807,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.perps) {
         totalTrackedByMetric.perps.protocols += 1;
+      }
+      if (protocol.openInterest) {
+        totalTrackedByMetric.openInterest.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -871,6 +875,9 @@ async function _storeAppMetadata() {
       }
       if (chain.perps) {
         totalTrackedByMetric.perps.chains += 1;
+      }
+      if (chain.openInterest) {
+        totalTrackedByMetric.openInterest.chains += 1;
       }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;

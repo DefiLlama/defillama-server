@@ -11723,7 +11723,7 @@
     },
     "FIGR_HELOC": {
       "to": "coingecko#figure-heloc",
-      "decimals": 3,
+      "decimals": 0,
       "symbol": "FIGR_HELOC"
     }
   },

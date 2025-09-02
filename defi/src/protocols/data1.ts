@@ -7704,7 +7704,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#save-protocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
     oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://docs.save.finance/protocol/oracles"] },
+      { name: "Pyth", type: "Primary", proof: ["https://docs.save.finance/protocol/oracles","https://github.com/DefiLlama/defillama-server/pull/10534","Confirmed by the Save team"] },
       { name: "Switchboard", type: "Fallback", proof: ["https://docs.save.finance/protocol/oracles"] }
     ],
   },

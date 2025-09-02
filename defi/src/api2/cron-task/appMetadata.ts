@@ -108,6 +108,7 @@ async function _storeAppMetadata() {
     feeTokenTaxData,
     volumeData,
     perpsData,
+    openInterestData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -141,6 +142,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/fees/dtt-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/dexs/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/derivatives/dv-lite").catch(() => ({ protocols: {} })),
+    readRouteData("/dimensions/derivatives/doi-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/aggregators/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dnv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dpv-lite").catch(() => ({ protocols: {} })),
@@ -489,6 +491,32 @@ async function _storeAppMetadata() {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
         perps: true,
+      };
+    }
+
+    for (const protocol of openInterestData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        openInterest: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          openInterest: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of openInterestData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        openInterest: true,
       };
     }
 

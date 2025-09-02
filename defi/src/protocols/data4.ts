@@ -2352,7 +2352,6 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     forkedFrom: [],
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
-    parentProtocol: "parent#ethos",
     listedAt: 1737664915
   },
   {
@@ -3326,7 +3325,6 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     forkedFrom: [],
-    parentProtocol: "parent#ethos",
     listedAt: 1738204217
   },
   {
@@ -10943,8 +10941,8 @@ const data4: Protocol[] = [
     name: "Lighter V2",
     address: null,
     symbol: "-",
-    url: "https://app.lighter.xyz/trade/ETH?referral=6LDDVDU738MW",
-    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=6LDDVDU738MW",
+    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
     description: "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lighter-v2.jpg`,
@@ -20922,14 +20920,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6493",
-    name: "Hylo CDP",
-    //previousNames: ["Hylo"],
+    name: "Hylo",
     address: null,
     symbol: "-",
     url: "https://hylo.so/",
     description: "Hylo splits yield-bearing assets into two complementary products: hyUSD - a stable USD-denominated asset with access to sustainable yield, and xSOL - leveraged SOL exposure with zero liquidation risk and no funding costs. Users can deposit LSTs to mint either asset",
     chain: "Solana",
-    logo: `${baseIconsUrl}/hylo-cdp.jpg`,
+    logo: `${baseIconsUrl}/hylo.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -20947,7 +20944,6 @@ const data4: Protocol[] = [
       }
     ],
     audit_links: ["https://docs.hylo.so/security/audits"],
-    parentProtocol: "parent#hylo",
     listedAt: 1753802383
   },
   {
@@ -24161,46 +24157,7 @@ const data4: Protocol[] = [
     twitter: "OrderlyNetwork",
     forkedFrom: [], 
     parentProtocol: "parent#orderly-network",
-    oraclesBreakdown: [
-      {
-        name: "Stork",
-        type: "Fallback",
-        proof: ["https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price"],
-        startDate: "2025-05-22"
-      },
-      {
-        name: "Pyth",
-        type: "Fallback",
-        proof: [
-          "https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/mark-price-index-price-and-last-price",
-          "https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update"
-          ],
-        startDate: "2025-02-25"
-      }
-    ],
-  },
-  {
-    id: "6648",
-    name: "Hylo LSTs",
-    address: null,
-    symbol: "-",
-    assetToken: "hyloSOL",
-    url: "https://hylo.so/",
-    description:
-      "Liquid staking on Solana",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/hylo-lsts.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Liquid Staking",
-    chains: ["Solana"],
-    module: "hyloSOL/index.js",
-    twitter: "hylo_so",
-    forkedFrom: [], 
-    parentProtocol: "parent#hylo",
-    listedAt: 1756830317,
+    listedAt: 1756818123
   },
 ];
 export default data4;

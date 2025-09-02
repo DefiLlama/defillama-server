@@ -2352,6 +2352,7 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     forkedFrom: [],
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
+    parentProtocol: "parent#ethos",
     listedAt: 1737664915
   },
   {
@@ -3325,6 +3326,7 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     forkedFrom: [],
+    parentProtocol: "parent#ethos",
     listedAt: 1738204217
   },
   {

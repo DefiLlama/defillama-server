@@ -7812,6 +7812,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "cove_fi",
   },
+  {
+    id: "parent#ethos",
+    name: "Ethos",
+    url: "https://www.ethos.network/",
+    description: "Reputation & Credibility, Onchain",
+    logo: `${baseIconsUrl}/ethos.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ethos_network",
+  },
 ];
 
 export default parentProtocols;

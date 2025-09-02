@@ -667,7 +667,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche", /*"TAC"*/],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Sonic", "Plume Mainnet", "Katana", "BSC", "Avalanche", "TAC"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -698,9 +698,9 @@ const data4: Protocol[] = [
           {
             chain: "Plume Mainnet",
           },
-          /*{
+          {
             chain: "TAC",
-          }*/],
+          }],
       },
       {
         name: "Pyth",

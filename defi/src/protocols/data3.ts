@@ -35642,12 +35642,11 @@ const data3_2: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.suilend.fi/security/risks"]
+        proof: ["https://docs.suilend.fi/security/risks","https://github.com/DefiLlama/defillama-server/pull/10533","Confirmed by Suilend team"]
       }
     ],
     forkedFrom: [],

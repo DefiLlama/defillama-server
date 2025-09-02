@@ -6201,8 +6201,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ethena",
     name: "Ethena",
-    url: "app.ethena.fi/join/3y20d",
-    referralUrl: "app.ethena.fi/join/3y20d",
+    url: "https://www.app.ethena.fi/join/3y20d",
+    referralUrl: "https://www.app.ethena.fi/join/3y20d",
     description: "Ethena is a synthetic dollar protocol built on Ethereum",
     logo: `${baseIconsUrl}/ethena.png`,
     gecko_id: "ethena",

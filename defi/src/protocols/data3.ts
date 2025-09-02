@@ -32418,7 +32418,7 @@ const data3_1: Protocol[] = [
     name: "Ethena USDe", // previous Ethena
     address: "0x57e114b691db790c35207b2e685d4a43181e6061",
     symbol: "ENA",
-    url: "app.ethena.fi/join/3y20d",
+    url: "https://www.app.ethena.fi/join/3y20d",
     description: "Ethena is a synthetic dollar protocol built on Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ethena-usde.png`,

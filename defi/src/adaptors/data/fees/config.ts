@@ -1417,9 +1417,11 @@ export default {
     "dedust": {
         id: "2617"
     },
+    /*
     "orderly": {
         id: "2264"
     },
+    */
     "spacewhale": {
         id: "4930"
     },

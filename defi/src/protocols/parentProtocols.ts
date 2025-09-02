@@ -7350,7 +7350,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hybra",
     name: "Hybra",
-    url: "https://www.hybra.finance",
+    url: "https://www.hybra.finance?code=GRYN2U",
+    referralUrl: "https://www.hybra.finance?code=GRYN2U",
     description: "Public liquidity layer on Hyperliquid · Upgraded ve(3,3) flywheel · CL & intent-based gasless trades",
     logo: `${baseIconsUrl}/hybra.jpg`,
     gecko_id: null,

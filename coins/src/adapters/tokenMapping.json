@@ -11717,9 +11717,9 @@
       "symbol": "YLDS"
     },
     "pm.sale.pool.3dxq3fk9llvhrqqwhodiap": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#figure-heloc",
       "decimals": 0,
-      "symbol": "USDC"
+      "symbol": "FIGR_HELOC"
     },
     "FIGR_HELOC": {
       "to": "coingecko#figure-heloc",

@@ -37708,7 +37708,7 @@ const data3_2: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.echelon.market/echelon/core/oracles"],
+        proof: ["https://docs.echelon.market/echelon/core/oracles","https://github.com/DefiLlama/defillama-server/pull/10509"],
           chains: [
           {chain: "Aptos"},
         ]
@@ -37716,7 +37716,11 @@ const data3_2: Protocol[] = [
 	  {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk"
+		],
         chains: [
           {chain: "Move"},
         ]
@@ -37724,7 +37728,12 @@ const data3_2: Protocol[] = [
       {
         name: "Pyth",
         type: "Secondary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk",
+			"https://github.com/DefiLlama/defillama-server/pull/10509"
+		],
         chains: [
           {chain: "Aptos"},
         ]

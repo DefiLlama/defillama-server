@@ -35,7 +35,7 @@ export default async function getWrites(params: {
       underlying: normalize(obj.underlying, chain),
       symbol: obj.symbol ?? undefined,
       decimals: obj.decimals ?? undefined,
-      confidence: obj.confidence ?? undefined,
+      confidence: confidence ?? obj.confidence,
     };
   });
 

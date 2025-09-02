@@ -8057,7 +8057,7 @@ const data3_1: Protocol[] = [
     symbol: "-",
     url: "https://app.openeden.com/",
     description:
-      "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+      "A Moody's A-rated smart contract vault offering 24/7 and direct access to U.S. Treasury Bills, with BNY as Manager and Custodian",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/openeden-tbill.jpg`,
     audits: "2",

@@ -6757,6 +6757,11 @@
       "to": "coingecko#babylon",
       "decimals": 6,
       "symbol": "BABY"
+    },
+    "0x6b062aa7f5fc52b530cb13967ae2e6bc0d8dd3e4": {
+      "to": "coingecko#solv-protocol-solvbtc-jupiter",
+      "decimals": 18,
+      "symbol": "SolvBTC.JUP"
     }
   },
   "xlayer": {

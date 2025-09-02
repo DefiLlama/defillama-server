@@ -35642,15 +35642,10 @@ const data3_2: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: ["Pyth", "Switchboard"],
+    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.suilend.fi/security/risks"]
-      },
-      {
-        name: "Switchboard",
         type: "Primary",
         proof: ["https://docs.suilend.fi/security/risks"]
       }

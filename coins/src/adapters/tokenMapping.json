@@ -11632,7 +11632,7 @@
       "symbol": "uusdc.figure"
     },
     "uylds.fcc": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#ylds",
       "decimals": 6,
       "symbol": "uylds.fcc"
     },
@@ -11712,7 +11712,7 @@
       "symbol": "USD"
     },
     "YLDS": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#ylds",
       "decimals": 0,
       "symbol": "YLDS"
     },
@@ -11720,6 +11720,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 0,
       "symbol": "USDC"
+    },
+    "FIGR_HELOC": {
+      "to": "coingecko#figure-heloc",
+      "decimals": 3,
+      "symbol": "FIGR_HELOC"
     }
   },
   "bitci": {

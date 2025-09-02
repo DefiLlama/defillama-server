@@ -20240,19 +20240,19 @@ const data2: Protocol[] = [
   },
   {
     id: "2264",
-    name: "Orderly Perps",
+    name: "Orderly Bridge", // previous Orderly Perps 
     address: "0xabd4c63d2616a5201454168269031355f4764337",
     symbol: "ORDER",
     url: "https://orderly.network",
     description:
       "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
     chain: "Near",
-    logo: `${baseIconsUrl}/orderly-perps.jpg`,
+    logo: `${baseIconsUrl}/orderly-bridge.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Near"],
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",

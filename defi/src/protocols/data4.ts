@@ -24137,5 +24137,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "MintiqMarket",
   },
+  {
+    id: "6647",
+    name: "Orderly Perps",
+    address: "0xabd4c63d2616a5201454168269031355f4764337",
+    symbol: "ORDER",
+    url: "https://orderly.network",
+    description:
+      "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/orderly-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Near"],
+    module: "dummy.js",
+    twitter: "OrderlyNetwork",
+    forkedFrom: [], 
+    parentProtocol: "parent#orderly-network",
+    listedAt: 1756818123
+  },
 ];
 export default data4;

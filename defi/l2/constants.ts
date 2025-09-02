@@ -250,4 +250,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "ao": { ticker: "AO", address: "coingecko:ao-computers" },
   // embr: {}
   "xion": { ticker: "XION", address: "coingecko:xion-2" },
+  "hemi-l2": { ticker: "HEMI", address: "coingecko:hemi" },
 };

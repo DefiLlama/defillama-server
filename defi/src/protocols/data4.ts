@@ -24157,7 +24157,6 @@ const data4: Protocol[] = [
     twitter: "OrderlyNetwork",
     forkedFrom: [], 
     parentProtocol: "parent#orderly-network",
-    listedAt: 1756818123,
     oraclesBreakdown: [
       {
         name: "Stork",
@@ -24175,6 +24174,28 @@ const data4: Protocol[] = [
         startDate: "2025-02-25"
       }
     ],
+  },
+  {
+    id: "6648",
+    name: "Hylo LSTs",
+    address: null,
+    symbol: "-",
+    assetToken: "hyloSOL",
+    url: "https://hylo.so/",
+    description:
+      "Liquid staking on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/hylo-lsts.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "hyloSOL/index.js",
+    twitter: "hylo_so",
+    forkedFrom: [], 
+    listedAt: 1756830317,
   },
 ];
 export default data4;

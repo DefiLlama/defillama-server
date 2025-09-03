@@ -7038,7 +7038,7 @@ const data4: Protocol[] = [
     name: "Looped Hype",
     address: "hyperliquid:0x5748ae796AE46A4F1348a1693de4b50560485562",
     symbol: "LHYPE",
-    url: "https://loopedhype.com/",
+    url: "https://www.loopingcollective.org/",
     description:
       "Looped Hype (LHYPE) is an automated looping protocol that maximizes yield on staked HYPE and other yield bearing tokens. Users simply deposit HYPE to get LHYPE, then behind the scenes the protocol uses an automated looping strategy to generate additional yield, on top of any network rewards earned from staking",
     chain: "Hyperliquid L1",

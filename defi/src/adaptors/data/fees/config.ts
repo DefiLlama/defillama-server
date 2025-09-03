@@ -4092,5 +4092,8 @@ export default {
     },
     "standard-spot": {
         id: "6651"
+    },
+    "spark-liquidity-layer": {
+        id: "5989",
     }
 } as AdaptorsConfig

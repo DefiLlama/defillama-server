@@ -5093,6 +5093,18 @@ const data: Protocol[] = [
     audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"],
     github: ["OlympusDAO"],
+    hallmarks: [
+      ['2021-03-24', 'Olympus Launch'],
+      ['2021-10-19', 'OHM v2 Migration begins'],
+      ['2022-01-21', 'Inverse Bonds'],
+      ['2022-04-30', 'Fei Protocol Hack'],
+      ['2022-11-17', 'Range-Bound Stability Launch'],
+      ['2023-07-23', 'Cooler Loans Launch'],
+      ['2024-09-20', 'Yield Repurchase Facility'],
+      ['2024-10-01', 'On-Chain Governance'],
+      ['2024-11-19', 'Emissions Manager Launch'],
+      ['2025-05-15', 'Cooler v2 Launch'],
+    ]
   },
   {
     id: "341",

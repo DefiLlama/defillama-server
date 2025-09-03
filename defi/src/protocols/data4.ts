@@ -9947,6 +9947,9 @@ const data4: Protocol[] = [
       Ethereum: ["TBILL"],
       Arbitrum: ["TBILL"],
       Ripple: ["TBILL"],
+      Polygon: ["TBILL"],
+      Base: ["TBILL"],
+      BSC: ["TBILL"],
     },
     listedAt: 1743761401
   },

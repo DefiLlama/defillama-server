@@ -3078,5 +3078,8 @@ export default {
     },
     "mintiq-market": {
         id: "6646"
+    },
+    "myriadmarkets": {
+        id: "6649"
     }
 } as AdaptorsConfig

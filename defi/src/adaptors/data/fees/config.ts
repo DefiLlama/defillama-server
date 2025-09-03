@@ -4078,4 +4078,7 @@ export default {
     "orderly-perps-new": {
         id: "6647"
     },
+    "myriadmarkets": {
+        id: "6649"
+    }
 } as AdaptorsConfig

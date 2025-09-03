@@ -11460,6 +11460,7 @@ const data2: Protocol[] = [
     module: "toros/index.js",
     twitter: "torosfinance",
     audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
+    parentProtocol: "parent#dhedge",
     listedAt: 1657055333,
   },
   {

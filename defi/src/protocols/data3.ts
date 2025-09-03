@@ -24511,6 +24511,12 @@ const data3_1: Protocol[] = [
     github: ["Frankencoin-ZCHF"],
     treasury: "frankencoin.js",
     stablecoins: ["frankencoin"],
+    audit_links: [
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/ChainSecurity-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/blockbite-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/ChainSecurity_Frankencoin_Frankencoin_v2024.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/frankencoin-audit-report-2024-1.1.pdf"
+    ],
     listedAt: 1699970045,
   },
   {

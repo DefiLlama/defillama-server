@@ -7834,6 +7834,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hylo_so",
   },
+  {
+    id: "parent#ondo-finance",
+    name: "Ondo Finance",
+    url: "https://ondo.finance",
+    description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+    logo: `${baseIconsUrl}/ondo-finance.png`,
+    gecko_id: "ondo-finance",
+    cmcId: "21159",
+    chains: [],
+    twitter: "OndoFinance",
+    github: ["ondoprotocol"],
+  },
 ];
 
 export default parentProtocols;

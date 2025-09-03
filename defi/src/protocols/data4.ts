@@ -24208,5 +24208,27 @@ const data4: Protocol[] = [
     treasury: "myriad-markets.js",
     listedAt: 1756873217,
   },
+  {
+    id: "6650",
+    name: "Ondo Global Markets",
+    address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    symbol: "ONDO",
+    url: "https://ondo.finance",
+    description:"Stocks on chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ondo-global-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Stocks & ETFs"],
+    chains: ["Ethereum"],
+    module: "ondo-global-markets/index.js",
+    twitter: "OndoFinance",
+    forkedFrom: [], 
+    parentProtocol: "parent#ondo-finance",
+    listedAt: 1756900783,
+  },
+
 ];
 export default data4;

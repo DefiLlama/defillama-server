@@ -24159,5 +24159,27 @@ const data4: Protocol[] = [
     parentProtocol: "parent#orderly-network",
     listedAt: 1756818123
   },
+  {
+    id: "6649",
+    name: "Myriad Markets",
+    address: null,
+    symbol: "-",
+    url: "https://myriad.markets/markets",
+    description:
+      "Prediction Markets for everything! From crypto, politics and sports to gaming, culture and technology",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/myriad-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Linea", "Abstract"],
+    module: "myriad-markets/index.js",
+    twitter: "MyriadMarkets",
+    forkedFrom: [], 
+    treasury: "myriad-markets.js",
+    listedAt: 1756873217,
+  },
 ];
 export default data4;

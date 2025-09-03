@@ -786,6 +786,7 @@ async function _storeAppMetadata() {
     };
 
     for (const p in sortedProtocolData) {
+      if (p.startsWith("parent#")) continue;
       const protocol = sortedProtocolData[p];
       if (protocol.tvl) {
         totalTrackedByMetric.tvl.protocols += 1;

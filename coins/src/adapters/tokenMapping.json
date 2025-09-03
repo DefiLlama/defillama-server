@@ -1545,6 +1545,11 @@
     }
   },
   "arbitrum": {
+    "0x66CFbD79257dC5217903A36293120282548E2254": {
+      "decimals": "18",
+      "symbol": "wstUSR",
+      "to": "coingecko#resolv-wstusr"
+    },
     "0x3EaBE18eAE267D1B57f917aBa085bb5906114600": {
       "decimals": "18",
       "symbol": "ePendle",

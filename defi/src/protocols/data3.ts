@@ -45243,6 +45243,10 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://basin.exchange/halborn-basin-audit.pdf, https://basin.exchange/cyfrin-basin-audit.pdf"],
     listedAt: 1717320411,
+    tokensExcludedFromParent: {
+      Ethereum:  ["BEAN"], Arbitrum: ["BEAN"]
+    }, 
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "4704",

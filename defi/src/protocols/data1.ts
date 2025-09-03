@@ -7920,7 +7920,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     parentProtocol: "parent#benqi",
     tokensExcludedFromParent: {
-      Avalanche: ["SAVAX"],
+      Avalanche: ["SAVAX", "QI"],
     }
   },
   {
@@ -11585,6 +11585,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     // treasury: "beanstalk.js", // treasury is owned by Beanstalk farms, the entity not the dao
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "632",

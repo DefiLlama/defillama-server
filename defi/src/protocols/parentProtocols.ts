@@ -7833,6 +7833,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "hylo_so",
   },
   {
+    id: "parent#beanstalk",
+    name: "Beanstalk",
+    url: "https://bean.money/",
+    description: "A permissionless fiat stablecoin protocol.",
+    logo: `${baseIconsUrl}/beanstalk.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: ["Ethereum", "Arbitrum"],
+    twitter: "BeanstalkFarms",
+  },
+  {
     id: "parent#ondo-finance",
     name: "Ondo Finance",
     url: "https://ondo.finance",

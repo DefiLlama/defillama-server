@@ -11755,5 +11755,27 @@
       "decimals": 6,
       "symbol": "USDC"
     }
+  },
+  "camp": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#camp-network",
+      "decimals": 18,
+      "symbol": "CAMP"
+    },
+    "0x3bd5C81a8Adf3355078Dc5F73c41d3194B316690": {
+      "to": "coingecko#camp-network",
+      "decimals": 18,
+      "symbol": "WCAMP"
+    },
+    "0x977fdEF62CE095Ae8750Fd3496730F24F60dea7a": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
+    },
+    "0xb55066f2793773B3784f8c57c415a8b5932B33Cd": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    }
   }
 }

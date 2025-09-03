@@ -7513,8 +7513,8 @@
     },
     "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
       "to": "coingecko#openeden-tbill",
-      "decimals": 0,
-      "symbol": "TB"
+      "decimals": 6,
+      "symbol": "TBILL"
     }
   },
   "reya": {

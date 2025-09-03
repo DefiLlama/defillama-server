@@ -4525,6 +4525,15 @@ export const chainCoingeckoIds = {
     url: "https://somnia.network/",
     chainId: 5031,
   },
+  "Orderly": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "OrderlyNetwork",
+    url: "https://orderly.network/",
+    chainId: 291,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

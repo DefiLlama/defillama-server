@@ -4104,5 +4104,11 @@ export default {
     },
     "eaglefi": {
         id: "6399"
+    },
+    "what-exchange": {
+        id: "6657"
+    },
+    "woofi-pro-perp": {
+        id: "6658"
     }
 } as AdaptorsConfig

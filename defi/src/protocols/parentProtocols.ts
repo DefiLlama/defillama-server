@@ -7454,7 +7454,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperlend",
     name: "HyperLend",
-    url: "https://hyperlend.finance",
+    url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
+    referralUrl: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description: "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
     logo: `${baseIconsUrl}/hyperlend.jpg`,
     gecko_id: null,

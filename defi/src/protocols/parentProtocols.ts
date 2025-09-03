@@ -7867,6 +7867,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DeFiTuna",
     github: ["DefiTuna"],
   },
+  {
+    id: "parent#rabby",
+    name: "Rabby",
+    url: "https://rabby.io/",
+    description: "Rabby is a wallet for Ethereum and all EVM chains By DeBank",
+    logo: `${baseIconsUrl}/rabby.jpg`,
+    gecko_id: "rabby",
+    cmcId: null,
+    chains: [],
+    twitter: "Rabby_io",
+    github: ["RabbyHub"]
+  },
 ];
 
 export default parentProtocols;

@@ -4095,5 +4095,14 @@ export default {
     },
     "spark-liquidity-layer": {
         id: "5989",
+    },
+    "rip-fun": {
+        id: "6655"
+    },
+    "rabby-perps": {
+        id: "6656"
+    },
+    "eaglefi": {
+        id: "6399"
     }
 } as AdaptorsConfig

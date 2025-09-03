@@ -721,4 +721,7 @@ export default {
     "orderly-perps-new": {
         id: "6647"
     },
+    "rabby-perps": {
+        id: "6656"
+    }
 } as AdaptorsConfig

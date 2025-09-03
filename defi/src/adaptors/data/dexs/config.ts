@@ -3084,5 +3084,8 @@ export default {
     },
     "standard-spot": {
         id: "6651"
+    },
+    "eaglefi": {
+        id: "6399"
     }
 } as AdaptorsConfig

@@ -4456,7 +4456,6 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "abracadabra.js",
     github: ["Abracadabra-money"],
   },
-  /*
   {
     id: "parent#dhedge",
     name: "dHEDGE",
@@ -4471,7 +4470,6 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"]
   },
-  */
   {
     id: "parent#aerodrome",
     name: "Aerodrome",
@@ -7811,6 +7809,51 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cove_fi",
+  },
+  {
+    id: "parent#ethos",
+    name: "Ethos",
+    url: "https://www.ethos.network/",
+    description: "Reputation & Credibility, Onchain",
+    logo: `${baseIconsUrl}/ethos.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ethos_network",
+  },
+  {
+    id: "parent#hylo",
+    name: "Hylo",
+    url: "https://www.hylo.so/",
+    description: "Hylo is a suite of Decentralized Finance (DeFi) products on the Solana blockchain, engineered for scalability and independence from traditional financial infrastructure",
+    logo: `${baseIconsUrl}/hylo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hylo_so",
+  },
+  {
+    id: "parent#beanstalk",
+    name: "Beanstalk",
+    url: "https://bean.money/",
+    description: "A permissionless fiat stablecoin protocol.",
+    logo: `${baseIconsUrl}/beanstalk.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: ["Ethereum", "Arbitrum"],
+    twitter: "BeanstalkFarms",
+  },
+  {
+    id: "parent#ondo-finance",
+    name: "Ondo Finance",
+    url: "https://ondo.finance",
+    description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+    logo: `${baseIconsUrl}/ondo-finance.png`,
+    gecko_id: "ondo-finance",
+    cmcId: "21159",
+    chains: [],
+    twitter: "OndoFinance",
+    github: ["ondoprotocol"],
   },
 ];
 

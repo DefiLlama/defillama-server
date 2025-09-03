@@ -1830,24 +1830,23 @@ const data: Protocol[] = [
   },
   {
     id: "190",
-    name: "dHEDGE",
+    name: "dHEDGE Vaults",
     address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
     symbol: "DHT",
     url: "https://www.dhedge.org/",
     description: "Explore the universe of top-tier tokenized vaults.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dhedge.png`,
+    logo: `${baseIconsUrl}/dhedge-vaults.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "dhedge-dao",
-    cmcId: "7094",
+    gecko_id: null,
+    cmcId: null,
     category: "Indexes",
     chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "dhedge.js",
     twitter: "dHedgeOrg",
-    governanceID: ["snapshot:gov.dhedge.eth"],
-    github: ["dhedge"],
     audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
+    parentProtocol: "parent#dhedge",
   },
   {
     id: "191",
@@ -5093,6 +5092,18 @@ const data: Protocol[] = [
     audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"],
     github: ["OlympusDAO"],
+    hallmarks: [
+      ['2021-03-24', 'Olympus Launch'],
+      ['2021-10-19', 'OHM v2 Migration begins'],
+      ['2022-01-21', 'Inverse Bonds'],
+      ['2022-04-30', 'Fei Protocol Hack'],
+      ['2022-11-17', 'Range-Bound Stability Launch'],
+      ['2023-07-23', 'Cooler Loans Launch'],
+      ['2024-09-20', 'Yield Repurchase Facility'],
+      ['2024-10-01', 'On-Chain Governance'],
+      ['2024-11-19', 'Emissions Manager Launch'],
+      ['2025-05-15', 'Cooler v2 Launch'],
+    ]
   },
   {
     id: "341",
@@ -7908,7 +7919,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     parentProtocol: "parent#benqi",
     tokensExcludedFromParent: {
-      Avalanche: ["SAVAX"],
+      Avalanche: ["SAVAX", "QI"],
     }
   },
   {
@@ -11573,6 +11584,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     // treasury: "beanstalk.js", // treasury is owned by Beanstalk farms, the entity not the dao
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "632",

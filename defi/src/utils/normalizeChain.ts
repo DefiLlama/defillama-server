@@ -4516,6 +4516,15 @@ export const chainCoingeckoIds = {
     twitter: "soon_svm",
     url: "https://soo.network/",
   },
+  "Somnia": {
+    geckoId: "somnia",
+    symbol: "SOMI",
+    cmcId: "37637",
+    categories: ["EVM"],
+    twitter: "Somnia_Network",
+    url: "https://somnia.network/",
+    chainId: 5031,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

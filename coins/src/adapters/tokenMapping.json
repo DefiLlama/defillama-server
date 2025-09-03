@@ -1545,6 +1545,11 @@
     }
   },
   "arbitrum": {
+    "0x66CFbD79257dC5217903A36293120282548E2254": {
+      "decimals": "18",
+      "symbol": "wstUSR",
+      "to": "coingecko#resolv-wstusr"
+    },
     "0x3EaBE18eAE267D1B57f917aBa085bb5906114600": {
       "decimals": "18",
       "symbol": "ePendle",
@@ -1794,6 +1799,11 @@
       "to": "coingecko#umoja-ybtc",
       "decimals": 18,
       "symbol": "YBTC"
+    },
+    "0x41CA7586cC1311807B4605fBB748a3B8862b42b5": {
+      "to": "coingecko#syrupusdc",
+      "decimals": 6,
+      "symbol": "syrupUSDC"
     }
   },
   "tezos": {
@@ -1977,6 +1987,11 @@
     }
   },
   "avax": {
+    "0x2f643d728926C20269f0A04931dd7b4b6B650204": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
     "0x4baB31D6c557F8285eccB5167095147a36D9BaFa": {
       "decimals": "18",
       "symbol": "SPECTRA",
@@ -7503,8 +7518,8 @@
     },
     "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
       "to": "coingecko#openeden-tbill",
-      "decimals": 0,
-      "symbol": "TB"
+      "decimals": 6,
+      "symbol": "TBILL"
     }
   },
   "reya": {
@@ -11762,6 +11777,23 @@
       "to": "coingecko#mclaren-f1-fan-token",
       "decimals": 18,
       "symbol": "MCL"
+    }
+  },
+  "somnia": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#somnia",
+      "decimals": 18,
+      "symbol": "SOMI"
+    },
+    "0x046EDe9564A72571df6F5e44d0405360c0f4dCab": {
+      "to": "coingecko#somnia",
+      "decimals": 18,
+      "symbol": "WSOMI"
+    },
+    "0x28BEc7E30E6faee657a03e19Bf1128AaD7632A00": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   }
 }

@@ -1417,9 +1417,11 @@ export default {
     "dedust": {
         id: "2617"
     },
+    /*
     "orderly": {
         id: "2264"
     },
+    */
     "spacewhale": {
         id: "4930"
     },
@@ -4073,4 +4075,19 @@ export default {
     "hyperlend-isolated": {
         id: "6395"
     },
+    "orderly-perps-new": {
+        id: "6647"
+    },
+    "myriadmarkets": {
+        id: "6649"
+    },
+    "zyfai": {
+        id: "6088"
+    },
+    "cap": {
+        id: "6579"
+    },
+    "openeden-usdo": {
+        id: "5995"
+    }
 } as AdaptorsConfig

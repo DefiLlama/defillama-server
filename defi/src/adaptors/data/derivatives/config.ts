@@ -587,6 +587,7 @@ export default {
     "beamex-beamex-perps": {
         id: "3251"
     },
+    /*
     "orderly-network-orderly-network-derivatives": {
         "cleanRecordsConfig": {
             "genuineSpikes": {
@@ -595,6 +596,7 @@ export default {
         },
         id: "2264"
     },
+    */
     "helix-helix-perp": {
         id: "5074"
     },
@@ -715,5 +717,8 @@ export default {
     },
     "squaretower": {
         id: "6624"
-    }
+    },
+    "orderly-perps-new": {
+        id: "6647"
+    },
 } as AdaptorsConfig

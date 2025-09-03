@@ -24511,6 +24511,12 @@ const data3_1: Protocol[] = [
     github: ["Frankencoin-ZCHF"],
     treasury: "frankencoin.js",
     stablecoins: ["frankencoin"],
+    audit_links: [
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/ChainSecurity-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/blockbite-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/ChainSecurity_Frankencoin_Frankencoin_v2024.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/frankencoin-audit-report-2024-1.1.pdf"
+    ],
     listedAt: 1699970045,
   },
   {
@@ -37715,12 +37721,36 @@ const data3_2: Protocol[] = [
     chains: ["Aptos", "Movement"],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.echelon.market/echelon/core/oracles","https://github.com/DefiLlama/defillama-server/pull/10509"],
+          chains: [
+          {chain: "Aptos"},
+        ]
+      },
+	  {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk"
+		],
+        chains: [
+          {chain: "Move"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk",
+			"https://github.com/DefiLlama/defillama-server/pull/10509"
+		],
         chains: [
           {chain: "Aptos"},
-          {chain: "Move"},
         ]
       },
       {
@@ -45213,6 +45243,10 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://basin.exchange/halborn-basin-audit.pdf, https://basin.exchange/cyfrin-basin-audit.pdf"],
     listedAt: 1717320411,
+    tokensExcludedFromParent: {
+      Ethereum:  ["BEAN"], Arbitrum: ["BEAN"]
+    }, 
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "4704",

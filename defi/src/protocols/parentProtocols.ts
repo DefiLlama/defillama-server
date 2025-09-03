@@ -4456,7 +4456,6 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "abracadabra.js",
     github: ["Abracadabra-money"],
   },
-  /*
   {
     id: "parent#dhedge",
     name: "dHEDGE",
@@ -4471,7 +4470,6 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"]
   },
-  */
   {
     id: "parent#aerodrome",
     name: "Aerodrome",
@@ -7844,6 +7842,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: ["Ethereum", "Arbitrum"],
     twitter: "BeanstalkFarms",
+  },
+  {
+    id: "parent#ondo-finance",
+    name: "Ondo Finance",
+    url: "https://ondo.finance",
+    description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+    logo: `${baseIconsUrl}/ondo-finance.png`,
+    gecko_id: "ondo-finance",
+    cmcId: "21159",
+    chains: [],
+    twitter: "OndoFinance",
+    github: ["ondoprotocol"],
   },
 ];
 

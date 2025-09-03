@@ -7038,7 +7038,7 @@ const data4: Protocol[] = [
     name: "Looped Hype",
     address: "hyperliquid:0x5748ae796AE46A4F1348a1693de4b50560485562",
     symbol: "LHYPE",
-    url: "https://loopedhype.com/",
+    url: "https://www.loopingcollective.org/",
     description:
       "Looped Hype (LHYPE) is an automated looping protocol that maximizes yield on staked HYPE and other yield bearing tokens. Users simply deposit HYPE to get LHYPE, then behind the scenes the protocol uses an automated looping strategy to generate additional yield, on top of any network rewards earned from staking",
     chain: "Hyperliquid L1",
@@ -9947,6 +9947,9 @@ const data4: Protocol[] = [
       Ethereum: ["TBILL"],
       Arbitrum: ["TBILL"],
       Ripple: ["TBILL"],
+      Polygon: ["TBILL"],
+      Base: ["TBILL"],
+      BSC: ["TBILL"],
     },
     listedAt: 1743761401
   },
@@ -24194,7 +24197,7 @@ const data4: Protocol[] = [
     url: "https://myriad.markets/markets",
     description:
       "Prediction Markets for everything! From crypto, politics and sports to gaming, culture and technology",
-    chain: "Linea",
+    chain: "Abstract",
     logo: `${baseIconsUrl}/myriad-markets.jpg`,
     audits: "0",
     audit_note: null,
@@ -24208,5 +24211,27 @@ const data4: Protocol[] = [
     treasury: "myriad-markets.js",
     listedAt: 1756873217,
   },
+  {
+    id: "6650",
+    name: "Ondo Global Markets",
+    address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    symbol: "ONDO",
+    url: "https://ondo.finance",
+    description:"Stocks on chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ondo-global-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Stocks & ETFs"],
+    chains: ["Ethereum"],
+    module: "ondo-global-markets/index.js",
+    twitter: "OndoFinance",
+    forkedFrom: [], 
+    parentProtocol: "parent#ondo-finance",
+    listedAt: 1756900783,
+  },
+
 ];
 export default data4;

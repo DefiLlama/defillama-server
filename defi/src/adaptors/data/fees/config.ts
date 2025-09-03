@@ -4080,5 +4080,14 @@ export default {
     },
     "myriadmarkets": {
         id: "6649"
+    },
+    "zyfai": {
+        id: "6088"
+    },
+    "cap": {
+        id: "6579"
+    },
+    "openeden-usdo": {
+        id: "5995"
     }
 } as AdaptorsConfig

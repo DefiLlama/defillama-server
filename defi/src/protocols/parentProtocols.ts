@@ -7855,6 +7855,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "OndoFinance",
     github: ["ondoprotocol"],
   },
+  {
+    id: "parent#defituna",
+    name: "DefiTuna",
+    url: "https://defituna.com",
+    description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+    logo: `${baseIconsUrl}/defituna.jpg`,
+    gecko_id: "defituna",
+    cmcId: null,
+    chains: [],
+    twitter: "DeFiTuna",
+    github: ["DefiTuna"],
+  },
 ];
 
 export default parentProtocols;

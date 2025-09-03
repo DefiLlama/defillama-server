@@ -2352,6 +2352,7 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     forkedFrom: [],
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
+    parentProtocol: "parent#ethos",
     listedAt: 1737664915
   },
   {
@@ -3325,6 +3326,7 @@ const data4: Protocol[] = [
     twitter: "ethos_network",
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     forkedFrom: [],
+    parentProtocol: "parent#ethos",
     listedAt: 1738204217
   },
   {
@@ -20920,13 +20922,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6493",
-    name: "Hylo",
+    name: "Hylo CDP",
+    //previousNames: ["Hylo"],
     address: null,
     symbol: "-",
     url: "https://hylo.so/",
     description: "Hylo splits yield-bearing assets into two complementary products: hyUSD - a stable USD-denominated asset with access to sustainable yield, and xSOL - leveraged SOL exposure with zero liquidation risk and no funding costs. Users can deposit LSTs to mint either asset",
     chain: "Solana",
-    logo: `${baseIconsUrl}/hylo.jpg`,
+    logo: `${baseIconsUrl}/hylo-cdp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -20944,6 +20947,7 @@ const data4: Protocol[] = [
       }
     ],
     audit_links: ["https://docs.hylo.so/security/audits"],
+    parentProtocol: "parent#hylo",
     listedAt: 1753802383
   },
   {
@@ -24158,6 +24162,29 @@ const data4: Protocol[] = [
     forkedFrom: [], 
     parentProtocol: "parent#orderly-network",
     listedAt: 1756818123
+  },
+  {
+    id: "6648",
+    name: "Hylo LSTs",
+    address: null,
+    symbol: "-",
+    assetToken: "hyloSOL",
+    url: "https://hylo.so/",
+    description:
+      "Liquid staking on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/hylo-lsts.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "hyloSOL/index.js",
+    twitter: "hylo_so",
+    forkedFrom: [], 
+    parentProtocol: "parent#hylo",
+    listedAt: 1756830317,
   },
   {
     id: "6649",

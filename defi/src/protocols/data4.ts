@@ -24197,7 +24197,7 @@ const data4: Protocol[] = [
     url: "https://myriad.markets/markets",
     description:
       "Prediction Markets for everything! From crypto, politics and sports to gaming, culture and technology",
-    chain: "Linea",
+    chain: "Abstract",
     logo: `${baseIconsUrl}/myriad-markets.jpg`,
     audits: "0",
     audit_note: null,

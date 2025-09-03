@@ -3,7 +3,7 @@ import * as path from "path";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, } from "../cache/file-cache";
 import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { cachedCraftProtocolV2, craftProtocolV2Test } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { get20MinDate } from "../../utils/shared";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
@@ -44,6 +44,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // add secret route to delete from PG cache
 
   router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
+    dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false'
+  })));
+  router.get("/protocolTest/:name", ew(async (req: any, res: any) => getProtocolishDataTest(req, res, {
     dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false'
   })));
   router.get("/treasury/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury' })));
@@ -280,6 +283,48 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   });
   return res.json(responseData);
 }
+
+async function getProtocolishDataTest(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false }: GetProtocolishOptions) {
+  let name = decodeURIComponent(req.path_parameters.name);
+  name = sluggify({ name } as any);
+  const protocolData = (cache as any)[dataType + 'SlugMap'][name];
+  res.setHeaders({
+    "Expires": get20MinDate()
+  })
+
+  // check if it is a parent protocol
+  if (!protocolData && dataType === 'protocol') {
+    const parentProtocol = (cache as any)['parentProtocolSlugMap'][name];
+    if (parentProtocol) {
+      const responseData = await cachedCraftParentProtocolV2({
+        parentProtocol: parentProtocol,
+        useHourlyData,
+        skipAggregatedTvl,
+        feMini,
+      });
+      return res.json(responseData);
+    }
+  }
+
+  if (!protocolData)
+    return errorResponse(res, 'Protocol not found')
+
+  if (protocolData.category === 'CEX')
+    restrictResponseSize = false
+
+  restrictResponseSize = false // hack to revert to old behavior
+
+  const responseData = await craftProtocolV2Test({
+    protocolData,
+    useNewChainNames,
+    useHourlyData,
+    skipAggregatedTvl,
+    restrictResponseSize,
+    feMini,
+  });
+  return res.json(responseData);
+}
+
 
 async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.Response) {
   let symbol = req.path_parameters.symbol

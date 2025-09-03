@@ -7259,7 +7259,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#felix",
     name: "Felix",
-    url: "https://usefelix.xyz",
+    url: "https://www.usefelix.xyz?ref=4BF702FF",
+    referralUrl: "https://www.usefelix.xyz?ref=4BF702FF",
     description: "Borrow against blue-chip collateral and earn native yield with the Felix stablecoin, feUSD",
     logo: `${baseIconsUrl}/felix.jpg`,
     gecko_id: null, 

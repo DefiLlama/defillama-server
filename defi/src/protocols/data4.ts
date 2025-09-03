@@ -10382,7 +10382,7 @@ const data4: Protocol[] = [
     name: "Felix CDP",
     address: null,
     symbol: "-",
-    url: "https://usefelix.xyz/borrow",
+    url: "https://www.usefelix.xyz?ref=4BF702FF",
     description:
       "Felix is a synthetic dollar protocol on Hyperliquid L1",
     chain: "Hyperliquid L1",
@@ -15309,7 +15309,7 @@ const data4: Protocol[] = [
     name: "Felix Vaults",
     address: null,
     symbol: "-",
-    url: "https://usefelix.xyz/earn",
+    url: "https://www.usefelix.xyz?ref=4BF702FF",
     description: `Deposit assets to be lent via Morpho Vaults to earn interest.`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/felix-vaults.jpg`,
@@ -19001,7 +19001,7 @@ const data4: Protocol[] = [
     name: "Felix USDhl",
     address: null,
     symbol: "-",
-    url: "https://usdhl.xyz/",
+    url: "https://www.usefelix.xyz?ref=4BF702FF",
     description:
       "USDhl is a fiat stable custom-built for the Hyperliquid ecosystem, serving as a building block for HIP-3, fx, payments, and more",
     chain: "Hyperliquid L1",

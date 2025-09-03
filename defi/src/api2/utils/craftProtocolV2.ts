@@ -141,7 +141,7 @@ export async function craftProtocolV2({
     if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
       for (const item of historicalUsdTvl) {
         let usdValue = selectChainFromItem(item, chain)
-        if (typeof usdValue === 'number') {
+        if (typeof Math.floor(usdValue) === 'number') {
           usdValue = Math.floor(usdValue)
           if (feMini && !skipFeMiniTransform) container.tvl.push([item.SK, usdValue] as any)
           else container.tvl.push({ date: item.SK, totalLiquidityUSD: usdValue })

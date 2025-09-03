@@ -788,7 +788,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         }
 
         if (isSpike) {
-          if (NOTIFY_ON_DISCORD)
+          if (NOTIFY_ON_DISCORD && isLessThanThreeMonthsAgo(timeS))
             spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]

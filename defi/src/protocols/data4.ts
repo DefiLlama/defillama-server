@@ -24232,6 +24232,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#ondo-finance",
     listedAt: 1756900783,
   },
-
+  {
+    id: "6651",
+    name: "Standard Protocol Somnia",
+    address: "0x9040e237c3bf18347bb00957dc22167d0f2b999d",
+    symbol: "STND",
+    url: "https://app.standard.im/somnia-mainnet",
+    description: "Fully Decentralized Orderbook Exchange",
+    chain: "Somnia",
+    logo: `${baseIconsUrl}/standard-protocol-somnia.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Somnia"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "standarddotim",
+    parentProtocol: "parent#standard-protocol",
+  },
 ];
 export default data4;

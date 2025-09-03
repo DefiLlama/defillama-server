@@ -33654,7 +33654,7 @@ const data3_2: Protocol[] = [
     chains: ["Mode"],
     forkedFrom: [],
     module: "standard-mode/index.js",
-    twitter: "standardweb3",
+    twitter: "standarddotim",
     parentProtocol: "parent#standard-protocol",
     listedAt: 1709077732,
   },

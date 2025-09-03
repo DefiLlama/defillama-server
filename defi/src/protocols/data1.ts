@@ -15607,7 +15607,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexs",
     chains: ["Shiden"],
     module: "standard-tech/index.js",
-    twitter: "standarddefi",
+    twitter: "standarddotim",
     forkedFromIds: ["2197"],
     listedAt: 1636671594,
     parentProtocol: "parent#standard-protocol",

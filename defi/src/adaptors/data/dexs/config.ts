@@ -3081,5 +3081,8 @@ export default {
     },
     "myriadmarkets": {
         id: "6649"
+    },
+    "standard-spot": {
+        id: "6651"
     }
 } as AdaptorsConfig

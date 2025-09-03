@@ -4089,5 +4089,8 @@ export default {
     },
     "openeden-usdo": {
         id: "5995"
+    },
+    "standard-spot": {
+        id: "6651"
     }
 } as AdaptorsConfig

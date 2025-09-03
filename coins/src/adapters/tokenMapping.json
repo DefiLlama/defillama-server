@@ -1982,6 +1982,11 @@
     }
   },
   "avax": {
+    "0x2f643d728926C20269f0A04931dd7b4b6B650204": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
     "0x4baB31D6c557F8285eccB5167095147a36D9BaFa": {
       "decimals": "18",
       "symbol": "SPECTRA",

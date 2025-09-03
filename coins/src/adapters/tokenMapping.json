@@ -11773,5 +11773,22 @@
       "decimals": 18,
       "symbol": "MCL"
     }
+  },
+  "somnia": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#somnia",
+      "decimals": 18,
+      "symbol": "SOMI"
+    },
+    "0x046EDe9564A72571df6F5e44d0405360c0f4dCab": {
+      "to": "coingecko#somnia",
+      "decimals": 18,
+      "symbol": "WSOMI"
+    },
+    "0x28BEc7E30E6faee657a03e19Bf1128AaD7632A00": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
   }
 }

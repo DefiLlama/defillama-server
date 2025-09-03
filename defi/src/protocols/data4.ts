@@ -23482,7 +23482,7 @@ const data4: Protocol[] = [
     chains: ["Arbitrum", "Base", "Berachain", "Hyperliquid L1"],
     forkedFromIds: ["2197"],
     module: "brownfi/index.js",
-    twitter: "BrownFidex",
+    twitter: "brownfiamm",
     audit_links: [
       "https://skynet.certik.com/projects/brownfi",
       "https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20BrownFi%20AMM%20Smartcontracts%20-%20v1.0.pdf"

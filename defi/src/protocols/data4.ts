@@ -24395,5 +24395,28 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#woofi",
   },
+  {
+    id: "6659",
+    name: "3jane Lending",
+    address: null,
+    symbol: "-",
+    url: "https://www.3jane.xyz/",
+    description:
+      "3Jane protocol is a peer-to-pool credit-based money market enabling algorithmic, real-time uncollateralized USDC credit lines for yield farmers, traders, businesses, and/or AI agents",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/3jane-lending.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    module: "3jane-lending/index.js",
+    twitter: "3janexyz",
+    audit_links: ["https://docs.3jane.xyz/resources/audits"],
+    parentProtocol: "parent#3jane",
+    listedAt: 1756929047,
+  },
 ];
 export default data4;

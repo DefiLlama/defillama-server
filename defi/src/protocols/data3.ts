@@ -46708,14 +46708,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4770",
-    name: "3Jane",
+    name: "3jane Options",
     address: null,
     symbol: "-",
     url: "https://www.3jane.xyz/",
     description:
       "3Jane is a crypto-native derivatives protocol leveraging restaking and cash-and-carry to offer novel derivatives yields, enabling collateralization of exotic ETH and BTC yield variants in options contracts",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/3jane.png`,
+    logo: `${baseIconsUrl}/3jane-options.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -46733,6 +46733,7 @@ const data3_2: Protocol[] = [
     module: "3jane/index.js",
     twitter: "3janexyz",
     audit_links: ["https://github.com/3jane-protocol/audit"],
+    parentProtocol: "parent#3jane",
     listedAt: 1718296117,
   },
   {

@@ -12370,7 +12370,8 @@ const data4: Protocol[] = [
     name: "Hyperbeat",
     address: null,
     symbol: "-",
-    url: "https://hyperbeat.org/",
+    url: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    referralUrl: "https://app.hyperbeat.org/earn?referral=5C37264D",
     description:
       "Automated vaults that optimize your returns from top DeFi protocols with just one click",
     chain: "Hyperliquid L1",

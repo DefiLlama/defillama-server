@@ -4542,6 +4542,22 @@ export const chainCoingeckoIds = {
     twitter: "campnetworkxyz",
     url: "https://www.campnetwork.xyz/",
   },
+  "Paradex": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "tradeparadex",
+    url: "https://app.paradex.trade/r/defillama",
+  },
+  "edgeX": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "edgeX_exchange",
+    url: "https://pro.edgex.exchange/referral/196451583",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

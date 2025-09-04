@@ -20694,9 +20694,10 @@ const data2: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://docs.sentiment.xyz/contracts/v2/Deployments#oracles"]
+        proof: ["https://docs.sentiment.xyz/contracts/v2/Deployments#oracles"],
         chains: [{ chain: "Hyperliquid L1" }]
       }
+    ],
     audit_links: [
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Protocol_20220727.pdf",
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Oracle_20220727.pdf",
@@ -21028,7 +21029,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "emdx/index.js",
-    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://twitter.com/emdx_io/status/1772968245407916052
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: ["https://twitter.com/emdx_io/status/1772968245407916052"] } ], // 
     twitter: "emdx_io",
     audit_links: [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf",

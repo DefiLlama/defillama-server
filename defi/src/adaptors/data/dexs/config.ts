@@ -3095,5 +3095,8 @@ export default {
     },
     "drip-trade": {
         id: "6662"
+    },
+    "summitx-fi": {
+        id: "6661"
     }
 } as AdaptorsConfig

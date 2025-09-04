@@ -4136,4 +4136,7 @@ export default {
     "drip-trade": {
         id: "6662"
     },
+    "w-dex": {
+        id: "6660"
+    },
 } as AdaptorsConfig

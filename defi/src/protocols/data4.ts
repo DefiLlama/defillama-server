@@ -24540,5 +24540,47 @@ const data4: Protocol[] = [
     parentProtocol: "parent#paradex",
     listedAt: 1756994785
   },
+  {
+    id: "6665",
+    name: "SQD.ai",
+    address: "arbitrum:0x1337420ded5adb9980cfc35f8f2b054ea86f8ab1",
+    symbol: "SQD",
+    url: "https://www.sqd.ai/",
+    description:
+      "SQD.ai is a decentralized, scalable blockchain data network offering fast, maintained access to on-chain data via the SQD Network infrastructure, powered by developer tools like the Squid SDK and backed by a hosted solution, SQD Cloud",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sqd.ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Developer Tools",
+    chains: ["Arbitrum"],
+    module: "sqd-dev/index.js",
+    twitter: "helloSQD",
+    listedAt: 1757011155
+  },
+  {
+    id: "6666",
+    name: "WinnieSwap",
+    address: null,
+    symbol: "-",
+    url: "https://winnieswap.com",
+    description:
+      "Supercharging DeFi with Berachain Proof of Liquidity - enjoy deeper liquidity, smarter capital efficiency & sky-high APRs",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/winnieswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Berachain"],
+    module: "winnieswap/index.js",
+    forkedFromIds: ["2198"],
+    twitter: "WinnieSwap",
+    github: ["StakeLab-Zone"],
+    listedAt: 1757011164
+  },
 ];
 export default data4;

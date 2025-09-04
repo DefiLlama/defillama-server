@@ -3098,5 +3098,8 @@ export default {
     },
     "summitx-fi": {
         id: "6661"
-    }
+    },
+    "w-dex": {
+        id: "6660"
+    },
 } as AdaptorsConfig

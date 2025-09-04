@@ -47,7 +47,8 @@ const doublecountedCategorySet = new Set([
   "CeDeFi",
   "RWA Lending",
   "RWA",
-  "Farm"
+  "Farm",
+  "Liquid Restaking",
 ].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {

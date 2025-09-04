@@ -7872,7 +7872,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5907",
-    name: "DefiTuna Dex",
+    name: "DefiTuna AMM",
     address: "TUNAfXDZEdQizTMTh3uEvNvYqJmqFHZbEJt8joP4cyx",
     symbol: "TUNA",
     url: "https://defituna.com",
@@ -7890,7 +7890,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks"] }], //
     module: "defituna.js",
     twitter: "DeFiTuna",
-    audit_links: ["https://github.com/Torii-Security/audits/blob/main/solana/torii-defituna-report.pdf"],
+    audit_links: ["https://github.com/DefiTuna/fusionamm-sdk/blob/main/audit/OShield-fusionamm-report-23-July-2025.md", "https://raw.githubusercontent.com/DefiTuna/fusionamm-sdk/main/audit/sec3-fusionamm-report-23-July-2025.pdf"],
     parentProtocol: "parent#defituna",
     listedAt: 1741969773
   },
@@ -24292,7 +24292,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "defituna_lending.js",
     twitter: "DeFiTuna",
-    audit_links: ["https://raw.githubusercontent.com/Torii-Security/audits/main/solana/torii-defituna-report.pdf"],
+    audit_links: ["https://raw.githubusercontent.com/Torii-Security/audits/main/solana/torii-defituna-report.pdf", "https://raw.githubusercontent.com/DefiTuna/tuna-sdk/main/audit/sec3-defituna-report-14-Mar-2025.pdf"],
     parentProtocol: "parent#defituna",
     listedAt: 1756916931,
   },

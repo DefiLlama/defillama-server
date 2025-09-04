@@ -7863,7 +7863,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#defituna",
     name: "DefiTuna",
     url: "https://defituna.com",
-    description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+    description: "DefiTuna DEX is an advanced on-chain liquidity protocol. It supports Orca AMM alongside native DefiTuna AMM - the first automated market maker on Solana to natively support on-chain limit orders.",
     logo: `${baseIconsUrl}/defituna.jpg`,
     gecko_id: "defituna",
     cmcId: null,

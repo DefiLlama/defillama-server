@@ -11,8 +11,6 @@ export async function reportError(body: any, contentType: string) {
       },
       body: body
   })
-
-  console.log(frontResponse, contentType)
   
   if(frontResponse.url !== "https://defillama.com/support?code=ok") {
     throw new Error(`Failed to send a front message`)
@@ -21,7 +19,6 @@ export async function reportError(body: any, contentType: string) {
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   try {
-    console.log("req", event.body, event.headers)
     await reportError(event.body, event.headers['content-type']!);
     return successResponse({ message: "success" });
   } catch (e) {

@@ -2213,7 +2213,12 @@ export default {
     },
     "quickswap-v2": {
         id: "306",
-        "displayName": "Quickswap V2"
+        "displayName": "Quickswap V2",
+        "cleanRecordsConfig": {
+            "genuineSpikes": {
+                "1706918400": true
+            }
+        }
     },
     "quickswap-v3": {
         id: "2239",

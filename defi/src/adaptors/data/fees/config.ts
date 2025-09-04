@@ -2702,7 +2702,12 @@ export default {
         id: "6003"
     },
     "eigenlayer": {
-        id: "3107"
+        id: "3107",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1729209600": true, // https://etherscan.io/advanced-filter?fadd=0x7750d328b314effa365a0402ccfd489b80b0adda&tadd=!0x7750d328b314EfFa365A0402CcfD489B80B0adda&age=2024-10-18%7e2024-10-18&qt=1&tkn=0xec53bf9167f50cdeb3ae105f56099aaab9061f83
+            },
+        }
     },
     "kittypunch": {
         id: "5203"

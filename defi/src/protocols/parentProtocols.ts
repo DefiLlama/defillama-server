@@ -7844,6 +7844,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: ["Ethereum", "Arbitrum"],
     twitter: "BeanstalkFarms",
+    github: ["BeanstalkFarms"],
+    governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
   },
   {
     id: "parent#ondo-finance",

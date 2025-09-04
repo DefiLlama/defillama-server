@@ -18,12 +18,10 @@ async function getCollectionPrice(
   collection: string,
 ) {
   const address = collections[chain][collection];
-  const dateTime = new Date(
-    (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) * 1000,
-  ).toISOString();
 
-  const { orders } = await fetch(
-    `https://api.opensea.io//api/v2/orders/${chain}/seaport/offers?asset_contract_address=${address}&limit=50&listed_before=${dateTime}`,
+  const time = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
+  const { asset_events } = await fetch(
+    `https://api.opensea.io/api/v2/events/collection/${collection}?event_type=sale&limit=50&before=${time}`,
     {
       headers: {
         "x-api-key": process.env.OPENSEA_API_KEY,
@@ -32,47 +30,25 @@ async function getCollectionPrice(
     },
   );
 
-  if (!orders.length) return [];
+  if (!asset_events.length) return [];
 
-  const bidValues: any[] = [];
-  const bidAssets: string[] = [];
-  orders.map(
-    ({
-      cancelled,
-      expiration_time,
-      side,
-      current_price,
-      maker_asset_bundle,
-    }: any) => {
-      if (cancelled) return;
-      if (side != "bid") return;
-      if (expiration_time < timestamp) return;
+  const {
+    payment: { token_address, quantity },
+    event_timestamp,
+  } = asset_events[0];
 
-      const asset = maker_asset_bundle.assets[0].asset_contract.address;
-      bidValues.push({
-        asset,
-        current_price,
-      });
+  if (time - event_timestamp > 60 * 60 * 24) return [];
 
-      if (!bidAssets.includes(asset.toLowerCase()))
-        bidAssets.push(asset.toLowerCase());
-    },
-  );
-
-  const bidAssetsPrices = await getTokenAndRedirectDataMap(
-    bidAssets,
+  const bidAssetValue = await getTokenAndRedirectDataMap(
+    [token_address],
     chain,
     timestamp,
   );
 
-  let price = 0;
-  bidValues.map(({ asset, current_price }) => {
-    const token = bidAssetsPrices[asset.toLowerCase()];
-    if (!token) return;
-    const bidUsdValue = (token.price * current_price) / 10 ** token.decimals;
-    price = Math.max(price, bidUsdValue);
-  });
+  const token = bidAssetValue[token_address.toLowerCase()];
+  if (!token) return [];
 
+  const price = (token.price * quantity) / 10 ** token.decimals;
   if (price == 0) return [];
 
   const writes: Write[] = [];

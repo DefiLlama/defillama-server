@@ -3087,5 +3087,8 @@ export default {
     },
     "eaglefi": {
         id: "6399"
+    },
+    "drip-trade": {
+        id: "6662"
     }
 } as AdaptorsConfig

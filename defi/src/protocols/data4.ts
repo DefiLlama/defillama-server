@@ -24463,5 +24463,26 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1756962678,
   },
+  {
+    id: "6662",
+    name: "Drip.Trade",
+    address: null,
+    symbol: "-",
+    url: "https://drip.trade/",
+    description:
+      "The first high frequency NFT exchange, on Hyperliquid",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/drip.trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "drip__trade",
+    audit_links: [],
+  },
 ];
 export default data4;

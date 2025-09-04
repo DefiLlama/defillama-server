@@ -7840,9 +7840,9 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://bean.money/",
     description: "A permissionless fiat stablecoin protocol.",
     logo: `${baseIconsUrl}/beanstalk.jpg`,
-    gecko_id: null,
-    cmcId: null,
-    chains: ["Ethereum", "Arbitrum"],
+    gecko_id: "bean",
+    cmcId: "12503",
+    chains: [],
     twitter: "BeanstalkFarms",
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?

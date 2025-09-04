@@ -11569,8 +11569,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/beanstalk.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "bean",
-    cmcId: "12503",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Ethereum"],
     module: "bean/index.js",
@@ -11582,8 +11582,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     oraclesBreakdown: [{ name: "TWAP", type: "Primary", proof: [] }],
     // treasury: "beanstalk.js", // treasury is owned by Beanstalk farms, the entity not the dao
-    github: ["BeanstalkFarms"],
-    governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
     parentProtocol: "parent#beanstalk",
   },
   {

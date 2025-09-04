@@ -37,7 +37,7 @@ https://defillama.com/protocol/${sluggifyString(protocol)}`
       body: formData
   })
   
-  if(frontResponse.url !== "https://defillama.com/errors?code=ok") {
+  if(frontResponse.url !== "https://defillama.com/error?code=ok") {
     throw new Error(`Failed to send a front message for ${protocol} (${dataType})`)
   }
 }

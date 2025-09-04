@@ -20690,6 +20690,13 @@ const data2: Protocol[] = [
     module: "sentiment/index.js",
     twitter: "sentimentxyz",
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.sentiment.xyz/contracts/v2/Deployments#oracles"]
+        chains: [{ chain: "Hyperliquid L1" }]
+      }
     audit_links: [
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Protocol_20220727.pdf",
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Oracle_20220727.pdf",

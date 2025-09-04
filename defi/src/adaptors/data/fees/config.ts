@@ -4133,4 +4133,7 @@ export default {
     "ambient": {
         id: "3104"
     },
+    "drip-trade": {
+        id: "6662"
+    },
 } as AdaptorsConfig

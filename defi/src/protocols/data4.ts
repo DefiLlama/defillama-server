@@ -24484,5 +24484,29 @@ const data4: Protocol[] = [
     twitter: "drip__trade",
     audit_links: [],
   },
+  {
+    id: "6663",
+    name: "edgeX Perps",
+    address: null,
+    symbol: "-",
+    url: "https://pro.edgex.exchange/referral/196451583",
+    description:
+      "A high-performance, orderbook-based perpetual DEX with native trading experience",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/edgex-perps.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "edgeX_exchange",
+    parentProtocol: "parent#edgex",
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11217  , https://docs.starkware.co/starkex/perpetual/oracle-price-tick.html
+    audit_links: [],
+    listedAt: 1756993634
+  },
+
 ];
 export default data4;

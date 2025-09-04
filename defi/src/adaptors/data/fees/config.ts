@@ -2483,7 +2483,7 @@ export default {
         id: "4779"
     },
     "edgex": {
-        id: "4954"
+        id: "6663" // previous 4954
     },
     "royco": {
         id: "5337"

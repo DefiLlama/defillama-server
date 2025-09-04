@@ -7894,6 +7894,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "3janexyz",
   },
+  {
+    id: "parent#edgex",
+    name: "edgeX",
+    url: "https://pro.edgex.exchange/referral/196451583",
+    referralUrl: "https://pro.edgex.exchange/referral/196451583",
+    description: "A high-performance, orderbook-based perpetual DEX with native trading experience",
+    logo: `${baseIconsUrl}/edgex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "edgeX_exchange",
+    github: ["edgex-Tech"],
+  },
 ];
 
 export default parentProtocols;

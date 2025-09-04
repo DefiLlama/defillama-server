@@ -362,7 +362,7 @@ export default {
         }
     },
     "edgeX": {
-        id: "4954",
+        id: "6663", // previous 4954
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,

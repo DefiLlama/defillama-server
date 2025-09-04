@@ -4110,5 +4110,8 @@ export default {
     },
     "woofi-pro-perp": {
         id: "6658"
+    },
+    "pooltogether-v5": {
+        id: "3693"
     }
 } as AdaptorsConfig

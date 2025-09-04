@@ -27999,7 +27999,7 @@ const data3_1: Protocol[] = [
     description:
       "Kelp is the second largest liquid restaking protocol with ~$2B+ in TVL. Its liquid restaked token, rsETH, is live across 10+ major L2s and 40+ DeFi platforms, allowing users to restake while maintaining full liquidity.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kelp-dao.png`,
+    logo: `${baseIconsUrl}/kelp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -57218,7 +57218,7 @@ const data3_2: Protocol[] = [
     description:
       "Gain is an actively managed vaults program with $150M+ in TVL, designed for users to maximise their earning potential through tokenized rewards, supported by a seamless user experience. Its flagship products are Airdrop Gain, High Gain and Grizzly Gain.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kelp-gain.png`,
+    logo: `${baseIconsUrl}/gain.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -2429,7 +2429,7 @@ export default {
         id: "1452"
     },
     "paradex": {
-        id: "3648"
+        id: "6664" // prevvious 3648
     },
     "tornado": {
         id: "148"

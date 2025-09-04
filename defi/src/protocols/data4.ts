@@ -24494,7 +24494,7 @@ const data4: Protocol[] = [
       "A high-performance, orderbook-based perpetual DEX with native trading experience",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/edgex-perps.jpg`,
-    audits: "3",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -24507,6 +24507,38 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1756993634
   },
-
+  {
+    id: "6664",
+    name: "Paradex Perps",
+    address: null,
+    symbol: "-",
+    url: "https://app.paradex.trade/r/defillama",
+    description:
+      "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paradex-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "tradeparadex",
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      },
+      {
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      }
+    ],
+    parentProtocol: "parent#paradex",
+    listedAt: 1756994785
+  },
 ];
 export default data4;

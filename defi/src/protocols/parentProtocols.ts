@@ -7907,6 +7907,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "edgeX_exchange",
     github: ["edgex-Tech"],
   },
+  {
+    id: "parent#paradex",
+    name: "Paradex",
+    url: "https://app.paradex.trade/r/defillama",
+    referralUrl: "https://app.paradex.trade/r/defillama",
+    description: "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
+    logo: `${baseIconsUrl}/paradex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "tradeparadex",
+  },
 ];
 
 export default parentProtocols;

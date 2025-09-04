@@ -42836,7 +42836,7 @@ const data3_2: Protocol[] = [
       {
         name: "Stork",
         type: "Primary",
-        proof: ["Mitosis team will comment on PR"]
+        proof: ["Mitosis team will comment on PR", "https://github.com/DefiLlama/defillama-server/pull/10500]
       },
     ],
     module: "mitosis/index.js",

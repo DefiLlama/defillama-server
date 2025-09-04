@@ -2813,7 +2813,13 @@ export default {
     },
     "aave-v3": {
         "startFrom": 1647648000,
-        id: "1599"
+        id: "1599",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+                "1738540800": true,
+            },
+        }
     },
     "balancer-v1": {
         id: "116",

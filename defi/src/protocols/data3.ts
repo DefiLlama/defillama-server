@@ -48602,6 +48602,7 @@ const data3_2: Protocol[] = [
     module: "securitize/index.js",
     twitter: "BlackRock",
     stablecoins: ["blackrock-usd"],
+    parentProtocol: "parent#securitize",
     listedAt: 1720292439,
   },
   {

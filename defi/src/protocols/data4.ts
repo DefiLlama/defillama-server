@@ -22810,6 +22810,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Aptos", "Avalanche", "Ink", "Polygon", "Solana"],
     module: "acred/index.js",
     twitter: "securitize",
+    parentProtocol: "parent#securitize",
     listedAt:1755190033
   },
   { // this listing will be for slasher yields dashboard , they are making the adapter
@@ -23995,6 +23996,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "vbill/index.js",
     twitter: "vaneck_us",
+    parentProtocol: "parent#securitize",
     listedAt: 1756395301,
   },
   {

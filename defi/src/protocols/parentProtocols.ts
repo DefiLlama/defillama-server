@@ -7919,6 +7919,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tradeparadex",
   },
+  {
+    id: "parent#securitize",
+    name: "Securitize",
+    url: "https://securitize.io/",
+    description: "Securitize is making real-world assets available to institutions and investors through tokenization, a process that registers ownership rights on the blockchain",
+    logo: `${baseIconsUrl}/securitize.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Securitize",
+  },
 ];
 
 export default parentProtocols;

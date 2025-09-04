@@ -721,6 +721,12 @@ export default {
     "orderly-perps-new": {
         id: "6647"
     },
+    "what-exchange": {
+        id: "6657"
+    },
+    "woofi-pro-perp": {
+        id: "6658"
+    },
     "rabby-perps": {
         id: "6656"
     }

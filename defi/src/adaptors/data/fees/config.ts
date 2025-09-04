@@ -4113,5 +4113,8 @@ export default {
     },
     "pooltogether-v5": {
         id: "3693"
-    }
+    },
+    "ambient": {
+        id: "3104"
+    },
 } as AdaptorsConfig

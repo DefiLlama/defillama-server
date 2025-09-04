@@ -1,0 +1,44 @@
+{
+    "provenance": {
+        "SOL": {
+            "to": "coingecko#solana",
+            "decimals": 0,
+            "symbol": "SOL"
+        },
+        "ETH": {
+            "to": "coingecko#ethereum",
+            "decimals": 0,
+            "symbol": "ETH"
+        },
+        "USDT": {
+            "to": "coingecko#tether",
+            "decimals": 0,
+            "symbol": "USDT"
+        },
+        "BTC": {
+            "to": "coingecko#bitcoin",
+            "decimals": 0,
+            "symbol": "BTC"
+        },
+        "USDC": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "USDC"
+        },
+        "USD": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "USD"
+        },
+        "YLDS": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "YLDS"
+        },
+        "pm.sale.pool.3dxq3fk9llvhrqqwhodiap": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "USDC"
+        }
+    }
+}

@@ -1417,9 +1417,11 @@ export default {
     "dedust": {
         id: "2617"
     },
+    /*
     "orderly": {
         id: "2264"
     },
+    */
     "spacewhale": {
         id: "4930"
     },
@@ -4069,5 +4071,47 @@ export default {
     },
     "brownfi": {
         id: "6616"
+    },
+    "hyperlend-isolated": {
+        id: "6395"
+    },
+    "orderly-perps-new": {
+        id: "6647"
+    },
+    "myriadmarkets": {
+        id: "6649"
+    },
+    "zyfai": {
+        id: "6088"
+    },
+    "cap": {
+        id: "6579"
+    },
+    "openeden-usdo": {
+        id: "5995"
+    },
+    "standard-spot": {
+        id: "6651"
+    },
+    "spark-liquidity-layer": {
+        id: "5989",
+    },
+    "rip-fun": {
+        id: "6655"
+    },
+    "rabby-perps": {
+        id: "6656"
+    },
+    "eaglefi": {
+        id: "6399"
+    },
+    "what-exchange": {
+        id: "6657"
+    },
+    "woofi-pro-perp": {
+        id: "6658"
+    },
+    "pooltogether-v5": {
+        id: "3693"
     }
 } as AdaptorsConfig

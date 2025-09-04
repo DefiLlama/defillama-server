@@ -108,6 +108,7 @@ async function _storeAppMetadata() {
     feeTokenTaxData,
     volumeData,
     perpsData,
+    openInterestData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -141,6 +142,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/fees/dtt-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/dexs/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/derivatives/dv-lite").catch(() => ({ protocols: {} })),
+    readRouteData("/dimensions/derivatives/doi-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/aggregators/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dnv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dpv-lite").catch(() => ({ protocols: {} })),
@@ -492,6 +494,32 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol of openInterestData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        openInterest: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          openInterest: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of openInterestData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        openInterest: true,
+      };
+    }
+
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -740,6 +768,7 @@ async function _storeAppMetadata() {
       dexs: { protocols: 0, chains: 0 },
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
+      openInterest: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -757,6 +786,7 @@ async function _storeAppMetadata() {
     };
 
     for (const p in sortedProtocolData) {
+      if (p.startsWith("parent#")) continue;
       const protocol = sortedProtocolData[p];
       if (protocol.tvl) {
         totalTrackedByMetric.tvl.protocols += 1;
@@ -778,6 +808,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.perps) {
         totalTrackedByMetric.perps.protocols += 1;
+      }
+      if (protocol.openInterest) {
+        totalTrackedByMetric.openInterest.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -843,6 +876,9 @@ async function _storeAppMetadata() {
       }
       if (chain.perps) {
         totalTrackedByMetric.perps.chains += 1;
+      }
+      if (chain.openInterest) {
+        totalTrackedByMetric.openInterest.chains += 1;
       }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;

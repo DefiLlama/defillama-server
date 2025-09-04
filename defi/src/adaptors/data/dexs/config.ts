@@ -3075,5 +3075,20 @@ export default {
     },
     "brownfi": {
         id: "6616"
+    },
+    "mintiq-market": {
+        id: "6646"
+    },
+    "myriadmarkets": {
+        id: "6649"
+    },
+    "standard-spot": {
+        id: "6651"
+    },
+    "eaglefi": {
+        id: "6399"
+    },
+    "drip-trade": {
+        id: "6662"
     }
 } as AdaptorsConfig

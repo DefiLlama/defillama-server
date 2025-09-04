@@ -4516,6 +4516,32 @@ export const chainCoingeckoIds = {
     twitter: "soon_svm",
     url: "https://soo.network/",
   },
+  "Somnia": {
+    geckoId: "somnia",
+    symbol: "SOMI",
+    cmcId: "37637",
+    categories: ["EVM"],
+    twitter: "Somnia_Network",
+    url: "https://somnia.network/",
+    chainId: 5031,
+  },
+  "Orderly": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "OrderlyNetwork",
+    url: "https://orderly.network/",
+    chainId: 291,
+  },
+  "Camp Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "campnetworkxyz",
+    url: "https://www.campnetwork.xyz/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4722,7 +4748,8 @@ const chainLabelMap = {
   "eni": "ENI",
   "proton": "Proton",
   "soon_bsc": "svmBNB",
-  "soon_base": "soonBase"
+  "soon_base": "soonBase",
+  "camp": "Camp"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4771,7 +4798,8 @@ const newChainLabelMap = {
   "gravity": "Gravity by Galxe",
   "idex": "XCHAIN",
   "echelon_initia": "Echelon Initia",
-  "proton": "XPR Network"
+  "proton": "XPR Network",
+  "camp": "Camp Network"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

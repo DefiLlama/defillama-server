@@ -5183,7 +5183,8 @@ const data3_1: Protocol[] = [
     //previousNames: ["Spark"],
     address: "0xc20059e0317de91738d13af027dfc4a50781b066",
     symbol: "SPK",
-    url: "https://www.spark.fi/",
+    url: "https://app.spark.fi/points/KNQ5HD",
+    referralUrl: "https://app.spark.fi/points/KNQ5HD",
     description:
       "SparkLend is a stablecoin lending market. Unlike other lending protocols where rates fluctuate based on utilization or loan size, SparkLend offers governance-defined rates that do not vary based on those factors. This is made possible by Spark’s Liquidity Layer (SLL), which supplies consistent stablecoin liquidity to the protocol",
     chain: "Ethereum",
@@ -8056,7 +8057,7 @@ const data3_1: Protocol[] = [
     symbol: "-",
     url: "https://app.openeden.com/",
     description:
-      "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+      "A Moody's A-rated smart contract vault offering 24/7 and direct access to U.S. Treasury Bills, with BNY as Manager and Custodian",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/openeden-tbill.jpg`,
     audits: "2",
@@ -24510,6 +24511,12 @@ const data3_1: Protocol[] = [
     github: ["Frankencoin-ZCHF"],
     treasury: "frankencoin.js",
     stablecoins: ["frankencoin"],
+    audit_links: [
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/ChainSecurity-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/blockbite-audit.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/ChainSecurity_Frankencoin_Frankencoin_v2024.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/frankencoin-audit-report-2024-1.1.pdf"
+    ],
     listedAt: 1699970045,
   },
   {
@@ -26726,7 +26733,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "lumi-finance",
     cmcId: "30333",
-    category: "Prediction Market",
+    category: "Algo-Stables",
     forkedFrom: [],
     chains: ["Arbitrum"],
     module: "lumi-finance/index.js",
@@ -30778,8 +30785,8 @@ const data3_1: Protocol[] = [
     name: "dYdX V4",
     address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
     symbol: "dYdX",
-    url: "https://dydx.trade",
-    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
+    url: "https://dydx.trade/?ref=DefiLlama",
+    referralUrl: "https://dydx.trade/?ref=DefiLlama",
     description:
       " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
     chain: "dYdX",
@@ -31754,7 +31761,8 @@ const data3_1: Protocol[] = [
     name: "Avantis",
     address: null,
     symbol: "-",
-    url: "https://www.avantisfi.com",
+    url: "https://www.avantisfi.com/referral?code=DefiLlama",
+    referralUrl: "https://www.avantisfi.com/referral?code=DefiLlama",
     description:
       "Avantis is a onchain perpetuals DEX built offering advanced risk management for LPs, loss protection for traders, and access to trading leverage crypto and synthetic real world assets. Avantis is built on and backed Base, and other investors such as Pantera Capital and Galaxy Digital.",
     chain: "Base",
@@ -32416,7 +32424,7 @@ const data3_1: Protocol[] = [
     name: "Ethena USDe", // previous Ethena
     address: "0x57e114b691db790c35207b2e685d4a43181e6061",
     symbol: "ENA",
-    url: "https://www.ethena.fi/",
+    url: "https://www.app.ethena.fi/join/3y20d",
     description: "Ethena is a synthetic dollar protocol built on Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ethena-usde.png`,
@@ -33646,7 +33654,7 @@ const data3_2: Protocol[] = [
     chains: ["Mode"],
     forkedFrom: [],
     module: "standard-mode/index.js",
-    twitter: "standardweb3",
+    twitter: "standarddotim",
     parentProtocol: "parent#standard-protocol",
     listedAt: 1709077732,
   },
@@ -35640,17 +35648,11 @@ const data3_2: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: ["Pyth", "Switchboard"],
     oraclesBreakdown: [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.suilend.fi/security/risks"]
-      },
-      {
-        name: "Switchboard",
-        type: "Primary",
-        proof: ["https://docs.suilend.fi/security/risks"]
+        proof: ["https://docs.suilend.fi/security/risks","https://github.com/DefiLlama/defillama-server/pull/10533","Confirmed by Suilend team"]
       }
     ],
     forkedFrom: [],
@@ -37719,12 +37721,36 @@ const data3_2: Protocol[] = [
     chains: ["Aptos", "Movement"],
     oraclesBreakdown: [
       {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.echelon.market/echelon/core/oracles","https://github.com/DefiLlama/defillama-server/pull/10509"],
+          chains: [
+          {chain: "Aptos"},
+        ]
+      },
+	  {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk"
+		],
+        chains: [
+          {chain: "Move"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: [
+			"https://app.echelon.market/markets?network=aptos_mainnet", 
+			"https://app.echelon.market/markets?network=movement_mainnet", 
+			"https://docs.echelon.market/echelon-v1/risks#oracle-risk",
+			"https://github.com/DefiLlama/defillama-server/pull/10509"
+		],
         chains: [
           {chain: "Aptos"},
-          {chain: "Move"},
         ]
       },
       {
@@ -42846,6 +42872,13 @@ const data3_2: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Arbitrum", "Optimism"],
     forkedFrom: [],
+	oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["Mitosis team will comment on PR", "https://github.com/DefiLlama/defillama-server/pull/10500"]
+      },
+    ],
     module: "mitosis/index.js",
     twitter: "MitosisOrg",
     audit_links: ["https://omniscia.io/reports/mitosis-core-protocol-65d72c4f31a85a00186cf5f8"],
@@ -45217,6 +45250,10 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://basin.exchange/halborn-basin-audit.pdf, https://basin.exchange/cyfrin-basin-audit.pdf"],
     listedAt: 1717320411,
+    tokensExcludedFromParent: {
+      Ethereum:  ["BEAN"], Arbitrum: ["BEAN"]
+    }, 
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "4704",
@@ -46678,14 +46715,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4770",
-    name: "3Jane",
+    name: "3jane Options",
     address: null,
     symbol: "-",
     url: "https://www.3jane.xyz/",
     description:
       "3Jane is a crypto-native derivatives protocol leveraging restaking and cash-and-carry to offer novel derivatives yields, enabling collateralization of exotic ETH and BTC yield variants in options contracts",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/3jane.png`,
+    logo: `${baseIconsUrl}/3jane-options.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -46703,6 +46740,7 @@ const data3_2: Protocol[] = [
     module: "3jane/index.js",
     twitter: "3janexyz",
     audit_links: ["https://github.com/3jane-protocol/audit"],
+    parentProtocol: "parent#3jane",
     listedAt: 1718296117,
   },
   {

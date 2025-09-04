@@ -289,7 +289,7 @@ async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.
   res.setHeaders({ "Expires": get20MinDate() })
 
   const responseData = await getTokensInProtocolsInternal(symbol, {
-    protocolList: cache.metadata.protocols,
+    //protocolList: cache.metadata.protocols,
     protocolHasMisrepresentedTokens: protocolHasMisrepresentedTokens as any,
     getLastHourlyTokensUsd: getLastHourlyTokensUsd as any,
   });

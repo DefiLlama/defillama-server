@@ -38,6 +38,8 @@ const App = () => {
 
   // dimensions tab
   const [dimensionRefillForm] = Form.useForm();
+    const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
+
   const [adapterTypes, setAdapterTypes] = useState([]);
   const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
   const [dimRefillWaitingRecords, setDimRefillWaitingRecords] = useState([]);
@@ -68,7 +70,6 @@ const App = () => {
 
   // misc tab
   const [miscForm] = Form.useForm();
-  const miscAction = Form.useWatch('action', miscForm);
   const [miscOutputTableData, setMiscOutputTableData] = useState({});
 
   function addWebSocketConnection() {
@@ -250,7 +251,7 @@ const App = () => {
                 console.error('WebSocket is not connected');
               }
             }}
-            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+            style={{ display: (process.env.REACT_APP_WS_AUTH_PASSWORD && isConnected) ? 'block' : 'none' }}
           >
             Restart Server
           </Button>
@@ -416,6 +417,7 @@ const App = () => {
         <Form.Item
           label="Date Range"
           name="dateRange"
+          style={{ display: dimRefillOnlyMissing ? 'none' : 'block' }}
           rules={[
             ({ getFieldValue }) => ({
               validator(_, value) {

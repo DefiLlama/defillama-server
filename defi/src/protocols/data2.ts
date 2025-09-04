@@ -1859,7 +1859,7 @@ const data2: Protocol[] = [
     name: "WOOFi Swap",
     address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
     symbol: "WOO",
-    url: "http://fi.woo.org/",
+    url: "https://woofi.com/en/trade?ref=DEFILLAMA",
     description:
       "One DEX to rule all chains - trade and earn like royalty with unmatched execution, cross-chain swaps, and single-sided yields.",
     chain: "Binance",
@@ -2029,8 +2029,8 @@ const data2: Protocol[] = [
   {
     id: "1468",
     name: "Pact",
-    address: null,
-    symbol: "-",
+    address: 'algorand:2994233666',
+    symbol: "POW",
     url: "https://app.pact.fi",
     description:
       "Pact is a decentralised Automated Market Maker (AMM) built on the Algorand protocol, offering deep liquidity and low transaction fees.",
@@ -3820,8 +3820,8 @@ const data2: Protocol[] = [
     id: "1546",
     name: "Rhea Lend",
     previousNames: ["Burrow"],
-    address: null,
-    symbol: "BRRR",
+    address: "near:token.rhealab.near",
+    symbol: "RHEA",
     url: "https://lending.rhea.finance/",
     description:
       "Rhea Lending is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
@@ -11460,6 +11460,7 @@ const data2: Protocol[] = [
     module: "toros/index.js",
     twitter: "torosfinance",
     audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
+    parentProtocol: "parent#dhedge",
     listedAt: 1657055333,
   },
   {
@@ -20240,19 +20241,19 @@ const data2: Protocol[] = [
   },
   {
     id: "2264",
-    name: "Orderly Perps",
+    name: "Orderly Bridge", // previous Orderly Perps 
     address: "0xabd4c63d2616a5201454168269031355f4764337",
     symbol: "ORDER",
     url: "https://orderly.network",
     description:
       "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
     chain: "Near",
-    logo: `${baseIconsUrl}/orderly-perps.jpg`,
+    logo: `${baseIconsUrl}/orderly-bridge.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Near"],
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
@@ -20689,6 +20690,14 @@ const data2: Protocol[] = [
     module: "sentiment/index.js",
     twitter: "sentimentxyz",
     forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.sentiment.xyz/contracts/v2/Deployments#oracles"],
+        chains: [{ chain: "Hyperliquid L1" }]
+      }
+    ],
     audit_links: [
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Protocol_20220727.pdf",
       "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Oracle_20220727.pdf",
@@ -21020,7 +21029,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "emdx/index.js",
-    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], // https://twitter.com/emdx_io/status/1772968245407916052
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: ["https://twitter.com/emdx_io/status/1772968245407916052"] } ], // 
     twitter: "emdx_io",
     audit_links: [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf",
@@ -26440,23 +26449,23 @@ const data2: Protocol[] = [
   },
   {
     id: "2542",
-    name: "Ondo Finance",
+    name: "Ondo Yield Assets", // previous Ondo Finance
     address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
     symbol: "ONDO",
     url: "https://ondo.finance",
     description: "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ondo-finance.png`,
+    logo: `${baseIconsUrl}/ondo-yield-assets.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ondo-finance",
-    cmcId: "21159",
+    gecko_id: null,
+    cmcId: null,
     tags: ["Treasury Bills", "Other Fixed Income"],
     chains: ["Ethereum"],
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
+    parentProtocol: "parent#ondo-finance",
     audit_links: ["https://www.certik.org/projects/ondofinance"],
-    github: ["ondoprotocol"],
   },
   {
     id: "2543",

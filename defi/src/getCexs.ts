@@ -565,6 +565,10 @@ export const cexsData: Array<ICex> = [
     name: "Deepcoin",
     cgId: "deepcoin",
   },
+  {
+    name: "CEX.IO",
+    cgId: "cex",
+  },
 ];
 
 const cg_volume_cexs = Object.values({

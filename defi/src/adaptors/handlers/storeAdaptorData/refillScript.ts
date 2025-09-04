@@ -268,7 +268,7 @@ async function refillAllProtocols() {
             errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
           } catch (e) { }
           console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
-          if (errorCount > 7) {
+          if (errorCount > 3) {
             console.error('Too many errors, stopping the script')
             return
           }

@@ -872,8 +872,8 @@ const data: Protocol[] = [
     name: "dYdX V3",
     address: "0x92d6c1e31e14520e676a687f0a93788b716beff5",
     symbol: "DYDX",
-    url: "https://dydx.exchange/",
-    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
+    url: "https://dydx.trade/?ref=DefiLlama",
+    referralUrl: "https://dydx.trade/?ref=DefiLlama",
     description:
       "The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.",
     chain: "Ethereum",
@@ -1830,24 +1830,23 @@ const data: Protocol[] = [
   },
   {
     id: "190",
-    name: "dHEDGE",
+    name: "dHEDGE Vaults",
     address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
     symbol: "DHT",
     url: "https://www.dhedge.org/",
     description: "Explore the universe of top-tier tokenized vaults.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dhedge.png`,
+    logo: `${baseIconsUrl}/dhedge-vaults.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "dhedge-dao",
-    cmcId: "7094",
+    gecko_id: null,
+    cmcId: null,
     category: "Indexes",
     chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "dhedge.js",
     twitter: "dHedgeOrg",
-    governanceID: ["snapshot:gov.dhedge.eth"],
-    github: ["dhedge"],
     audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
+    parentProtocol: "parent#dhedge",
   },
   {
     id: "191",
@@ -5093,6 +5092,18 @@ const data: Protocol[] = [
     audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"],
     github: ["OlympusDAO"],
+    hallmarks: [
+      ['2021-03-24', 'Olympus Launch'],
+      ['2021-10-19', 'OHM v2 Migration begins'],
+      ['2022-01-21', 'Inverse Bonds'],
+      ['2022-04-30', 'Fei Protocol Hack'],
+      ['2022-11-17', 'Range-Bound Stability Launch'],
+      ['2023-07-23', 'Cooler Loans Launch'],
+      ['2024-09-20', 'Yield Repurchase Facility'],
+      ['2024-10-01', 'On-Chain Governance'],
+      ['2024-11-19', 'Emissions Manager Launch'],
+      ['2025-05-15', 'Cooler v2 Launch'],
+    ]
   },
   {
     id: "341",
@@ -7703,7 +7714,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "save_finance",
     parentProtocol: "parent#save-protocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
-    oracles: ["Pyth", "Switchboard"], // https://github.com/DefiLlama/defillama-server/pull/5174
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.save.finance/protocol/oracles","https://github.com/DefiLlama/defillama-server/pull/10534","Confirmed by the Save team"] },
+      { name: "Switchboard", type: "Fallback", proof: ["https://docs.save.finance/protocol/oracles"] }
+    ],
   },
   {
     id: "459",
@@ -7905,7 +7919,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     parentProtocol: "parent#benqi",
     tokensExcludedFromParent: {
-      Avalanche: ["SAVAX"],
+      Avalanche: ["SAVAX", "QI"],
     }
   },
   {
@@ -9528,8 +9542,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "541",
     name: "Rhea Dex",
     previousNames: ["Ref Finance"],
-    address: "near:token.v2.ref-finance.near",
-    symbol: "REF",
+    address: "near:token.rhealab.near",
+    symbol: "RHEA",
     url: "https://dex.rhea.finance/",
     description:
       "Rhea Finance merges Ref Finance and Burrow Finance to create NEAR’s most powerful DeFi hub, connecting Bitcoin, NEAR, and EVM ecosystems. By consolidating liquidity, lending, and trading under one entity, Rhea Finance unlocks a seamless DeFi experience for institutional and retail users alike.",
@@ -11555,8 +11569,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/beanstalk.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "bean",
-    cmcId: "12503",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Ethereum"],
     module: "bean/index.js",
@@ -11568,8 +11582,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     oraclesBreakdown: [{ name: "TWAP", type: "Primary", proof: [] }],
     // treasury: "beanstalk.js", // treasury is owned by Beanstalk farms, the entity not the dao
-    github: ["BeanstalkFarms"],
-    governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
+    parentProtocol: "parent#beanstalk",
   },
   {
     id: "632",
@@ -15592,7 +15605,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexs",
     chains: ["Shiden"],
     module: "standard-tech/index.js",
-    twitter: "standarddefi",
+    twitter: "standarddotim",
     forkedFromIds: ["2197"],
     listedAt: 1636671594,
     parentProtocol: "parent#standard-protocol",

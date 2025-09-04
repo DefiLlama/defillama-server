@@ -7836,7 +7836,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#beanstalk",
-    name: "Beanstalk",
+    name: "Beanstalk Farms",
     url: "https://bean.money/",
     description: "A permissionless fiat stablecoin protocol.",
     logo: `${baseIconsUrl}/beanstalk.jpg`,

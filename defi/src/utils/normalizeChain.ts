@@ -4532,8 +4532,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "OrderlyNetwork",
     url: "https://orderly.network/",
+    chainId: 291,
   },
-  "Camp": {
+  "Camp Network": {
     geckoId: null,
     symbol: null,
     cmcId: null,

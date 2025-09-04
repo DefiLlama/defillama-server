@@ -4082,7 +4082,12 @@ export default {
         id: "6649"
     },
     "zyfai": {
-        id: "6088"
+        id: "6088",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1756166400": true, // https://basescan.org/advanced-filter?fadd=!0x62BE78705295cA9FfdAc410B4a9B6101983a7c3B&tadd=0x62BE78705295cA9FfdAc410B4a9B6101983a7c3B&age=2025-08-26%7e2025-08-26&qt=1
+            },
+        }
     },
     "cap": {
         id: "6579"

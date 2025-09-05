@@ -14,6 +14,7 @@ export async function fetchMinted(params: {
   chains: TokenTvlData;
   timestamp?: number;
   searchWidth?: number;
+  override?: boolean;
 }): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const tvlData: TokenTvlData = {};
@@ -21,7 +22,7 @@ export async function fetchMinted(params: {
 
   await Promise.all(
     Object.keys(params.chains).map(async (chain: Chain) => {
-      await withTimeout(1000 * 60 * 20, minted(chain)).catch(() => {
+      await withTimeout(1000 * 60 * (params.override ? 60 : 20), minted(chain)).catch(() => {
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
 

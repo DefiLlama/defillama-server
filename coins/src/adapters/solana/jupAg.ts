@@ -12,7 +12,12 @@ const additionalTokens = [
   'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx', 
   'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu', 
   '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj', 
-  'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o'
+  'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o', 
+  '5fKr9joRHpioriGmMgRVFdmZge8EVUTbrWyxDVdSrcuG', 
+  'B8GKqTDGYc7F6udTHjYeazZ4dFCRkrwK2mBQNS4igqTv', 
+  'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu', 
+  'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit', 
+  'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe'
 ]
 
 async function getTokensWithCGMapping() {
@@ -24,7 +29,7 @@ export async function jupAg(timestamp: number) {
   if (timestamp != 0) throw new Error('jupAg adapter only supports timestamp 0')
   const tokens = await getTokensWithCGMapping()
   let lavaTokens = await getLavaTokens()
-  lavaTokens = [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]
+  lavaTokens = additionalTokens // [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]
   const lavaTokensPK = lavaTokens.map(i => new PublicKey(i))
   const symbolMap = await getTokenSymbolMap(lavaTokens)
 

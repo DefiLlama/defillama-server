@@ -16,6 +16,7 @@ export default async function main(override?: boolean, timestamp?: number) {
     fetchMinted({
       chains: canonical,
       timestamp,
+      override,
     }),
     fetchIncoming({ canonical, timestamp }),
     fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),

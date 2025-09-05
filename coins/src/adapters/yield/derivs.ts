@@ -479,6 +479,30 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
   },
+  bravUSDC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:assetsPerShare",
+        target: "0x9f96E4B65059b0398B922792d3fF9F10B4567533",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x9f96E4B65059b0398B922792d3fF9F10B4567533",
+  },
+  brETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:assetsPerShare",
+        target: "0x3588e6Cb5DCa99E35bA2E2a5D42cdDb46365e71B",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    address: "0x3588e6Cb5DCa99E35bA2E2a5D42cdDb46365e71B",
+  },
 };
 
 export async function derivs(timestamp: number) {

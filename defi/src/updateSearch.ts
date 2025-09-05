@@ -4,29 +4,6 @@ import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 
-import allProtocols from "./protocols/data";
-import { CategoryTagMap } from "./protocols/tags";
-import parentProtocols from "./protocols/parentProtocols";
-import { getChainDisplayName } from "./utils/normalizeChain";
-
-const protocolNamesSet = new Set<string>();
-const categoriesSet = new Set<string>();
-const tagsSet = new Set<string>();
-const cexsSet = new Set<string>(cexsData.map((c) => c.name));
-
-allProtocols.forEach((protocol) => {
-  protocolNamesSet.add(protocol.name);
-  if (protocol.category) {
-    categoriesSet.add(protocol.category);
-  }
-  if (protocol.tags) {
-    protocol.tags.forEach((tag) => tagsSet.add(tag));
-  }
-});
-
-parentProtocols.forEach((parentProtocol) => {
-  protocolNamesSet.add(parentProtocol.name);
-});
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -269,96 +246,42 @@ const getProtocolSubSections = ({
 };
 
 async function getAllCurrentSearchResults() {
-  const res: { total: number; results: Array<SearchResult> } = await fetch(
-    "https://search.defillama.com/indexes/pages/documents",
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      },
+  const allResults: Array<SearchResult> = [];
+  let offset = 0;
+  const limit = 100e3;
+  let hasMore = true;
+
+  while (hasMore) {
+    const res: { total: number; results: Array<SearchResult> } = await fetch(
+      `https://search.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        },
+      }
+    ).then((res) => res.json());
+
+    allResults.push(...res.results);
+    
+    // Check if we've fetched all results
+    if (res.results.length < limit || allResults.length >= res.total) {
+      hasMore = false;
+    } else {
+      offset += limit;
     }
-  ).then((res) => res.json());
-  const finalRes: { total: number; results: Array<SearchResult> } = await fetch(
-    `https://search.defillama.com/indexes/pages/documents?limit=${res.total}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      },
-    }
-  ).then((res) => res.json());
-  return finalRes.results;
+  }
+
+  return allResults;
 }
 
 function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Array<SearchResult>) {
-  const newResultsSet = new Set(newResults.map((r) => r.route));
+  const newResultsSet = new Set(newResults.map((r) => r.id));
 
   return currentResults
-    .filter((item) => {
-      if (newResultsSet.has(item.route)) {
-        return false;
-      }
-
-      if (item.type === "Protocol") {
-        // can delete as the protocol is no longer in the list (maybe delisted or renamed)
-        if (!protocolNamesSet.has(item.name)) {
-          return true;
-        }
-
-        // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this protocol
-        if (item.subName) {
-          return true;
-        }
-      }
-
-      if (item.type === "Chain") {
-        const newChainName = getChainDisplayName(item.name, true);
-        // delete if the chain name has changed
-        if (newChainName !== item.name) {
-          return true;
-        }
-
-        // it is okay to delete if it is a sub section page, maybe we no longer track some metric for this chain
-        if (item.subName) {
-          return true;
-        }
-      }
-
-      // only delete if no protocols are in this category
-      if (item.type === "Category" && !categoriesSet.has(item.name) && !(CategoryTagMap as any)[item.name]) {
-        return true;
-      }
-
-      // only delete if no protocols are in this tag
-      if (item.type === "Tag" && !tagsSet.has(item.name)) {
-        return true;
-      }
-
-      if (item.type === "Stablecoin") {
-        return true;
-      }
-
-      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-      if (item.type === "Metric") {
-        return true;
-      }
-
-      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-      if (item.type === "Tool") {
-        return true;
-      }
-
-      // it is okay to delete as this relies on frontend pages, can't really be sure if it is still valid
-      if (item.type === "Others") {
-        return true;
-      }
-
-      // it is okay to delete as cex data does not rely on any api , maybe renamed
-      if (item.type === "CEX" && !cexsSet.has(item.name)) {
-        return true;
-      }
-
-      return false
+    .map((item) => item.id)
+    .filter((itemId) => {
+      return !newResultsSet.has(itemId)
     })
-    .map((item) => item.id);
 }
 
 async function generateSearchList() {

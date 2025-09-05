@@ -4137,4 +4137,7 @@ export default {
     "winnieswap": {
         id: "6666"
     },
+    "botanix-stBTC": {
+        id: "6667"
+    },
 } as AdaptorsConfig

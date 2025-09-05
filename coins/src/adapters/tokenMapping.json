@@ -1545,6 +1545,11 @@
     }
   },
   "arbitrum": {
+    "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
+      "decimals": "18",
+      "symbol": "RLP",
+      "to": "coingecko#resolv-rlp"
+    },
     "0x66CFbD79257dC5217903A36293120282548E2254": {
       "decimals": "18",
       "symbol": "wstUSR",

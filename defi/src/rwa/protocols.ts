@@ -665,4 +665,14 @@ export const metadata: { [id: string]: Characteristics } = {
     transferable: true,
     selfCustody: true,
   },
+  "6654": {
+    symbols: ["CANA"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: false,
+    transferable: true,
+    selfCustody: true,
+  },
 };

@@ -3115,4 +3115,7 @@ export default {
     "hyperpie-v2-dex": {
         id: "6672"
     },
+    "galaswap-v3": {
+        id: "6673"
+    },
 } as AdaptorsConfig

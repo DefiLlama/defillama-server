@@ -24694,7 +24694,7 @@ listedAt: 1757083191
   category: "Launchpad",
   chains: ["Hyperliquid L1"],
   module: "hyperpie-launchpad/index.js",
-  forkedFrom: [],
+  forkedFromIds: [],
   twitter: "Hyperpiexyz_io",
   parentProtocol: "parent#magpie-ecosystem",
   listedAt: 1757103078
@@ -24716,10 +24716,31 @@ listedAt: 1757083191
   category: "Dexs",
   chains: ["Hyperliquid L1"],
   module: "hyperpie-v2-dex/index.js",
-  forkedFrom: ["1407"],
+  forkedFromIds: ["1407"],
   twitter: "Hyperpiexyz_io",
   parentProtocol: "parent#magpie-ecosystem",
   listedAt: 1757103085
+},
+{
+  id: "6673",
+  name: "Gala Swap",
+  address: null,
+  symbol: "-",
+  url: "https://swap.gala.com/",
+  description:
+    "Gala Swap is a decentralized exchange (DEX) built on the Gala network",
+  chain: "Gala",
+  logo: `${baseIconsUrl}/gala-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Gala"],
+  module: "galaswap-v3/index.js",
+  forkedFrom: [],
+  twitter: "GoGalaGames",
+  listedAt: 1757103588
 },
 ];
 export default data4;

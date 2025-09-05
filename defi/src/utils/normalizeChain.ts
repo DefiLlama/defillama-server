@@ -4559,6 +4559,14 @@ export const chainCoingeckoIds = {
     twitter: "edgeX_exchange",
     url: "https://pro.edgex.exchange/referral/196451583",
   },
+  "Gala": {
+    geckoId: "gala",
+    symbol: "GALA",
+    cmcId: "7080",
+    categories: [],
+    twitter: "GoGalaGames",
+    url: "https://www.galachain.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

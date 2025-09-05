@@ -3109,4 +3109,10 @@ export default {
     "defituna-amm": {
         id: "5907"
     },
+    "hyperpie-launchpad": {
+        id: "6671"
+    },
+    "hyperpie-v2-dex": {
+        id: "6672"
+    },
 } as AdaptorsConfig

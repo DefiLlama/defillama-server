@@ -4146,4 +4146,10 @@ export default {
     "aqua-network": {
         id: "5035"
     },
+    "hyperpie-launchpad": {
+        id: "6671"
+    },
+    "hyperpie-v2-dex": {
+        id: "6672"
+    },
 } as AdaptorsConfig

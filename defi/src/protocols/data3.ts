@@ -14579,7 +14579,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "fxn-token",
     cmcId: null,
-    category: "CDP",
+    category: "Partially Algorithmic Stablecoin",
     chains: ["Ethereum"],
     module: "fx-Protocol/index.js",
     twitter: "protocol_fx",

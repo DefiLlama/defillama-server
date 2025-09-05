@@ -24677,5 +24677,49 @@ audit_links: [
 ],
 listedAt: 1757083191
 },
+{
+  id: "6671",
+  name: "Hyperpie Launchpad",
+  address: null,
+  symbol: "-",
+  url: "https://www.hyperliquid.magpiexyz.io/meme",
+  description:
+    "One-Click MEME Launch",
+  chain: "Hyperliquid L1",
+  logo: `${baseIconsUrl}/hyperpie-launchpad.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Hyperliquid L1"],
+  module: "hyperpie-launchpad/index.js",
+  forkedFrom: [],
+  twitter: "Hyperpiexyz_io",
+  parentProtocol: "parent#magpie-ecosystem",
+  listedAt: 1757103078
+},
+{
+  id: "6672",
+  name: "Hyperpie DEX",
+  address: null,
+  symbol: "-",
+  url: "https://www.hyperliquid.magpiexyz.io/dex/swap",
+  description:
+    "Hyperpie DEX is a MEME DEX built on Hyperliquid designed around a ve(3,3) tokenomics model",
+  chain: "Hyperliquid L1",
+  logo: `${baseIconsUrl}/hyperpie-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Hyperliquid L1"],
+  module: "hyperpie-v2-dex/index.js",
+  forkedFrom: ["1407"],
+  twitter: "Hyperpiexyz_io",
+  parentProtocol: "parent#magpie-ecosystem",
+  listedAt: 1757103085
+},
 ];
 export default data4;

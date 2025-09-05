@@ -4143,4 +4143,7 @@ export default {
     "defituna-amm": {
         id: "5907"
     },
+    "aqua-network": {
+        id: "5035"
+    },
 } as AdaptorsConfig

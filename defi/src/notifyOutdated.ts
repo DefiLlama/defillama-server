@@ -74,6 +74,13 @@ export async function notifyOutdatedPG() {
 
   const outdated = await findOutdatedPG(maxDrift);
   const message = buildOutdatedMessage(outdated)
+
+  const cexOutdated = await findOutdatedPG(maxDrift, { categories: ['CEX'] })
+  const cexOver100m = cexOutdated.filter((o: any) => o[1]?.tvl > 100_000_000);
+  if (cexOver100m.length > 0) {
+    await sendMessage(buildOutdatedMessage(cexOver100m) as any, teamwebhookUrl)
+  }
+
   if (message !== null) {
     if (message.length >= 16000) {
       await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl, false)

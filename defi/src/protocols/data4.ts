@@ -15401,7 +15401,7 @@ const data4: Protocol[] = [
     category: "Chain",
     chains: ["Berachain"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "berachain-bribes/index.js",
     twitter: "berachain",
   },
   {

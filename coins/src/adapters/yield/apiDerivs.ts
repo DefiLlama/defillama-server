@@ -183,14 +183,96 @@ const configs: { [adapter: string]: Config } = {
     decimals: "6",
     symbol: "ampLUNA",
   },
-  // bLUNA: {
-  //   chain: "terra2",
-  //   address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
-  //   underlying: "terra-luna-2",
-  //   underlyingChain: 'coingecko',
-  //   decimals: "6",
-  //   symbol: "bLUNA",
-  // },
+  bLUNA: {
+    rate: async () => {
+      const LCD = "https://terra-api.cosmosrescue.dev:8443";
+      const bLUNA =
+        "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml";
+      const pairs = [
+        "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9", // Astroport
+        "terra1j5znhs9jeyty9u9jcagl3vefkvzwqp6u9tq9a3e5qrz4gmj2udyqp0z0xc", // White Whale
+      ];
+
+      async function smartQuery(contract: string, msg: Object) {
+        const base64 = Buffer.from(JSON.stringify(msg)).toString("base64");
+        const url = `${LCD}/cosmwasm/wasm/v1/contract/${contract}/smart/${encodeURIComponent(
+          base64,
+        )}`;
+        const { data } = await fetch(url).then((r) => r.json());
+        return data.data || data;
+      }
+
+      async function cw20TokenInfo(tokenAddr: string) {
+        const r = await smartQuery(tokenAddr, { token_info: {} });
+        if (r.token_info) return r.token_info;
+        return r;
+      }
+
+      async function fetchPoolReserves(poolAddr: string, blunaToken: string) {
+        const r = await smartQuery(poolAddr, { pool: {} });
+        const assets = r.assets || r.result?.assets;
+        if (!assets || assets.length !== 2)
+          throw new Error("Unexpected pool format");
+
+        const parseAmt = (x: any) => BigInt(x?.amount || "0");
+        const isLuna = (info: any) =>
+          !!info?.native_token && info.native_token.denom === "uluna";
+        const isBLuna = (info: any) =>
+          !!info?.token && info.token.contract_addr === blunaToken;
+
+        const [a, b] = assets;
+        let luna = BigInt("0"),
+          bluna = BigInt("0");
+
+        if (isLuna(a.info) && isBLuna(b.info)) {
+          luna = parseAmt(a);
+          bluna = parseAmt(b);
+        } else if (isLuna(b.info) && isBLuna(a.info)) {
+          luna = parseAmt(b);
+          bluna = parseAmt(a);
+        } else {
+          throw new Error(
+            "Pool does not contain the expected uluna + bLUNA pair",
+          );
+        }
+
+        return { luna, bluna };
+      }
+
+      const info = await cw20TokenInfo(bLUNA);
+      const blunaDecimals = Number(info.decimals ?? 6);
+      const scale = 10 ** 6;
+
+      let weightedNum = 0;
+      let weightedDen = 0;
+
+      for (const pool of pairs) {
+        try {
+          const { luna, bluna } = await fetchPoolReserves(pool, bLUNA);
+          const lunaFloat = Number(luna) / scale;
+          const blunaFloat = Number(bluna) / 10 ** blunaDecimals;
+          if (!lunaFloat || !blunaFloat) throw new Error("Zero reserve");
+
+          const priceInLuna = lunaFloat / blunaFloat;
+
+          weightedNum += lunaFloat * priceInLuna;
+          weightedDen += lunaFloat;
+        } catch (e: any) {
+          console.log(`  Error reading pool ${pool}: ${e.message}`);
+        }
+      }
+
+      if (!weightedDen)
+        throw new Error("No eligible pools (after filter/fetch)");
+      return weightedNum / weightedDen;
+    },
+    chain: "terra2",
+    address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
+    underlying: "terra-luna-2",
+    underlyingChain: "coingecko",
+    decimals: "6",
+    symbol: "bLUNA",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {

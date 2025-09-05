@@ -383,5 +383,8 @@ export default {
   },
   "dedust": {
     id: "2617"
-},
+  },
+  "3route": {
+    id: "6674"
+  },
 } as AdaptorsConfig;

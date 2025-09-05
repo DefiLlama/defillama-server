@@ -4155,4 +4155,7 @@ export default {
     "galaswap-v3": {
         id: "6673"
     },
+    "collector-crypt": {
+        id: "6675"
+    },
 } as AdaptorsConfig

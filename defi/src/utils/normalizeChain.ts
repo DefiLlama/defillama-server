@@ -47,7 +47,8 @@ const doublecountedCategorySet = new Set([
   "CeDeFi",
   "RWA Lending",
   "RWA",
-  "Farm"
+  "Farm",
+  "Liquid Restaking",
 ].map(c => c.toLowerCase()));
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
@@ -4541,6 +4542,22 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "campnetworkxyz",
     url: "https://www.campnetwork.xyz/",
+  },
+  "Paradex": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "tradeparadex",
+    url: "https://app.paradex.trade/r/defillama",
+  },
+  "edgeX": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "edgeX_exchange",
+    url: "https://pro.edgex.exchange/referral/196451583",
   },
 } as unknown as ChainCoinGekcoIds
 

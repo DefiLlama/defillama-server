@@ -2429,7 +2429,7 @@ export default {
         id: "1452"
     },
     "paradex": {
-        id: "3648"
+        id: "6664" // prevvious 3648
     },
     "tornado": {
         id: "148"
@@ -2483,7 +2483,7 @@ export default {
         id: "4779"
     },
     "edgex": {
-        id: "4954"
+        id: "6663" // previous 4954
     },
     "royco": {
         id: "5337"
@@ -3450,11 +3450,11 @@ export default {
     "haedal-protocol": {
         id: "3489"
     },
-    "reya-dex": { 
-        id: '4978' 
+    "reya-dex": {
+        id: '4978'
     },
-    "bodega-market": { 
-        id: '6012' 
+    "bodega-market": {
+        id: '6012'
     },
     "tbtc": {
         id: "2535"
@@ -4051,7 +4051,7 @@ export default {
         id: "6641"
     },
     "fluid-lite": {
-        id: "4742" 
+        id: "4742"
     },
     "fraxlend": {
         id: "2076"
@@ -4094,11 +4094,6 @@ export default {
     },
     "zyfai": {
         id: "6088",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1756166400": true, // https://basescan.org/advanced-filter?fadd=!0x62BE78705295cA9FfdAc410B4a9B6101983a7c3B&tadd=0x62BE78705295cA9FfdAc410B4a9B6101983a7c3B&age=2025-08-26%7e2025-08-26&qt=1
-            },
-        }
     },
     "cap": {
         id: "6579"
@@ -4132,5 +4127,14 @@ export default {
     },
     "ambient": {
         id: "3104"
+    },
+    "drip-trade": {
+        id: "6662"
+    },
+    "w-dex": {
+        id: "6660"
+    },
+    "winnieswap": {
+        id: "6666"
     },
 } as AdaptorsConfig

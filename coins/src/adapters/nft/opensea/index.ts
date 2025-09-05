@@ -37,7 +37,7 @@ async function getCollectionPrice(
     event_timestamp,
   } = asset_events[0];
 
-  if (time - event_timestamp > 60 * 60 * 24) return [];
+  if (time - event_timestamp > 60 * 60 * 24 * 7) return [];
 
   const bidAssetValue = await getTokenAndRedirectDataMap(
     [token_address],

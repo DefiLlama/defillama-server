@@ -660,7 +660,7 @@ export const metadata: { [id: string]: Characteristics } = {
     matchExact: true,
     redeemable: true,
     attestations: false,
-    cexListed: false,
+    cexListed: true,
     kyc: true,
     transferable: true,
     selfCustody: true,

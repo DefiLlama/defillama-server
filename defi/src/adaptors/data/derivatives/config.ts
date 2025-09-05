@@ -150,7 +150,7 @@ export default {
     //     id: "3129"
     // },
     "paradex": {
-        id: "3648",
+        id: "6664", // previous 3648
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1722816000": true,
@@ -362,7 +362,7 @@ export default {
         }
     },
     "edgeX": {
-        id: "4954",
+        id: "6663", // previous 4954
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,

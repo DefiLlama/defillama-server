@@ -3095,5 +3095,15 @@ export default {
     },
     "drip-trade": {
         id: "6662"
-    }
+    },
+    "summitx-fi": {
+        id: "6661"
+    },
+    "w-dex": {
+        id: "6660"
+    },
+    "winnieswap": {
+        id: "6666"
+    },
+
 } as AdaptorsConfig

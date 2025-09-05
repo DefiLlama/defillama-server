@@ -3106,4 +3106,7 @@ export default {
         id: "6666"
     },
 
+    "defituna-amm": {
+        id: "5907"
+    },
 } as AdaptorsConfig

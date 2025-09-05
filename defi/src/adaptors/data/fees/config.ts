@@ -4140,4 +4140,7 @@ export default {
     "botanix-stBTC": {
         id: "6667"
     },
+    "defituna-amm": {
+        id: "5907"
+    },
 } as AdaptorsConfig

@@ -46265,6 +46265,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "jigsaw/index.js",
     twitter: "jigsawdefi",
+    stablecoins: ["jigsaw-usd"],
     listedAt: 1718069543,
   },
   {

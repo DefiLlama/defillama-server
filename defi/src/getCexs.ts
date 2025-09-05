@@ -568,6 +568,9 @@ export const cexsData: Array<ICex> = [
   {
     name: "CEX.IO",
     cgId: "cex",
+    slug: "cex.io",
+    coin: null,
+    walletsLink: null,
   },
 ];
 

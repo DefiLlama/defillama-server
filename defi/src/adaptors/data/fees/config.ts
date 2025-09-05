@@ -4134,4 +4134,7 @@ export default {
     "w-dex": {
         id: "6660"
     },
+    "winnieswap": {
+        id: "6666"
+    },
 } as AdaptorsConfig

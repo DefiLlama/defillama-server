@@ -19123,7 +19123,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Telegram Bot",
+    category: "Derivatives",
     chains: ["Base"],
     module: "dummy.js",
     forkedFrom: [],

@@ -24786,12 +24786,12 @@ const data4: Protocol[] = [
   id: "6676",
   name: "ThalaSwap V3",
   address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
-  symbol: "THLA",
+  symbol: "THL",
   url: "https://www.thala.fi/",
   description:
     "ThalaSwap V3 is a CLMM DEX built on the Aptos blockchain",
   chain: "Aptos",
-  logo: `${baseIconsUrl}/thalaswap-v3.png`,
+  logo: `${baseIconsUrl}/thalaswap-v3.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,
@@ -24806,6 +24806,26 @@ const data4: Protocol[] = [
   },
   parentProtocol: "parent#thala-labs",
   listedAt: 1757194284
+},
+{
+  id: "6677",
+  name: "Zapzy",
+  address: null,
+  symbol: "-",
+  url: "https://zapzy.io/",
+  description:
+    "Zapzy is an all-in-one platform on Solana for creating, trading, and earning with memecoins",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/zapzy.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Solana"],
+  module: "dummy.js",
+  twitter: "zapzyio",
+  forkedFrom: [],
 },
 ];
 export default data4;

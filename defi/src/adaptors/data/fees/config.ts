@@ -4158,4 +4158,7 @@ export default {
     "collector-crypt": {
         id: "6675"
     },
+    "hydration-dex": {
+        id: "3439"
+    },
 } as AdaptorsConfig

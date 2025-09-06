@@ -24782,5 +24782,30 @@ const data4: Protocol[] = [
   forkedFrom: [],
   twitter: "Collector_Crypt",
 },
+{
+  id: "6676",
+  name: "ThalaSwap V3",
+  address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+  symbol: "THLA",
+  url: "https://www.thala.fi/",
+  description:
+    "ThalaSwap V3 is a CLMM DEX built on the Aptos blockchain",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/thalaswap-v3.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Aptos"],
+  module: "thalaswap-v3/index.js",
+  twitter: "ThalaLabs",
+  forkedFrom: [],
+  tokensExcludedFromParent: {
+    Aptos: ["STHAPT", "THAPT", "VETHL"],
+  },
+  parentProtocol: "parent#thala-labs",
+  listedAt: 1757194284
+},
 ];
 export default data4;

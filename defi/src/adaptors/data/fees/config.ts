@@ -4161,4 +4161,13 @@ export default {
     "hydration-dex": {
         id: "3439"
     },
+    "3jane-lending": {
+        id: "6659"
+    },
+    "boros": {
+        id: "6536"
+    },
+    "thalaswap-v3": {
+        id: "6676"
+    }
 } as AdaptorsConfig

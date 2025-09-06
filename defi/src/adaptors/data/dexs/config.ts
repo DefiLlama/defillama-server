@@ -3118,4 +3118,7 @@ export default {
     "galaswap-v3": {
         id: "6673"
     },
+    "thalaswap-v3": {
+        id: "6676"
+    },
 } as AdaptorsConfig

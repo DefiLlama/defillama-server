@@ -729,5 +729,8 @@ export default {
     },
     "rabby-perps": {
         id: "6656"
+    },
+    "boros": {
+        id: "6536"
     }
 } as AdaptorsConfig

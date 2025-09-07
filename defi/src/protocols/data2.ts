@@ -24527,8 +24527,8 @@ const data2: Protocol[] = [
   {
     id: "2456",
     name: "Bunni v1",
-    address: "0xfd0205066521550d7d7ab19da8f72bb004b4c341",
-    symbol: "LIT",
+    address: "0x000000c396558ffbab5ea628f39658bdf61345b3",
+    symbol: "BUNNI",
     url: "https://bunni.pro",
     description:
       "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",
@@ -24536,7 +24536,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/bunni.png`,
     audits: "3",
     audit_note: null,
-    gecko_id: "timeless",
+    gecko_id: "bunni",
     cmcId: null,
     category: "Liquidity manager",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],

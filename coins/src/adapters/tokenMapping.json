@@ -66,10 +66,25 @@
       "symbol": "hOHM",
       "to": "coingecko#origami-hohm"
     },
+    "0x225B86198ba36321a8A840291416aEd62494043f": {
+      "decimals": "18",
+      "symbol": "SOL",
+      "to": "coingecko#wrapped-sol-2"
+    },
+    "0x7e768f47dfDD5DAe874Aac233f1Bc5817137E453": {
+      "decimals": "18",
+      "symbol": "yBGT",
+      "to": "coingecko#ybgt"
+    },
     "0xD2C41BF4033A83C0FC3A7F58a392Bf37d6dCDb58": {
       "decimals": "18",
       "symbol": "osBGT",
-      "to": "coingecko#infrafred-bgt"
+      "to": "coingecko#infrared-bgt"
+    },
+    "0x1b25ca174c158440621ff96e4b1262cb5cc8942f": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BNB",
+      "to": "coingecko#solv-protocol-solvbtc-bnb"
     },
     "0x656b95E550C07a9ffe548bd4085c72418Ceb1dba": {
       "decimals": "18",

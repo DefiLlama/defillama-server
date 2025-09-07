@@ -67,7 +67,7 @@
       "to": "coingecko#origami-hohm"
     },
     "0x225B86198ba36321a8A840291416aEd62494043f": {
-      "decimals": "18",
+      "decimals": "9",
       "symbol": "SOL",
       "to": "coingecko#wrapped-sol-2"
     },

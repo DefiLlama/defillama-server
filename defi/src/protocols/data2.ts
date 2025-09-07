@@ -24533,7 +24533,7 @@ const data2: Protocol[] = [
     description:
       "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bunni.png`,
+    logo: `${baseIconsUrl}/bunni-v1.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "bunni",

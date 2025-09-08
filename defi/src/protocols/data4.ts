@@ -21867,7 +21867,7 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "boros/index.js",
     forkedFromIds: [],
-    twitter: "pendle_fi",
+    twitter: "boros_fi",
     listedAt: 1754577595
   },
   {

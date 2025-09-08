@@ -22859,6 +22859,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "KintoXYZ",
     forkedFromIds: [],
+    parentProtocol: "parent#kinto",
   },
   {
     id: "6561",

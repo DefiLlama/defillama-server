@@ -7941,6 +7941,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "0xflatmoney",
   },
+  {
+    id: "parent#kinto",
+    name: "Kinto",
+    url: "https://www.kinto.xyz/",
+    description: "Kinto's on-chain perpetual futures DEX, integrated into its modular exchange platform, allowing users to trade up to 75 assets with up to 50x leverage directly from their non-custodial Kinto smart wallet",
+    logo: `${baseIconsUrl}/kinto.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KintoXYZ",
+  },
 ];
 
 export default parentProtocols;

@@ -37029,6 +37029,7 @@ const data3_2: Protocol[] = [
     module: "kinto/index.js",
     audit_links: ["https://github.com/KintoXYZ/security/tree/main/audits"],
     twitter: "KintoXYZ",
+    parentProtocol: "parent#kinto",
   },
   {
     id: "4337",

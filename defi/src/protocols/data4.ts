@@ -22326,6 +22326,7 @@ const data4: Protocol[] = [
     twitter: "hypurrdash",
     forkedFromIds: [],
   },
+  /*
   {
     id: "6560",
     name: "Kinto Hyperliquid",
@@ -22345,6 +22346,7 @@ const data4: Protocol[] = [
     twitter: "KintoXYZ",
     forkedFromIds: [],
   },
+  */
   {
     id: "6561",
     name: "SuperX",

@@ -3881,6 +3881,11 @@
     }
   },
   "ibc": {
+    "05D299885B07905B6886F554B39346EA6761246076A1120B1950049B92B922DD": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
     "694A6B26A43A2FBECCFFEAC022DEACB39578E54207FDD32005CD976B57B98004": {
       "to": "coingecko#weth",
       "decimals": 18,
@@ -11781,6 +11786,13 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    }
+  }, 
+  "terra2": {
+    "terra1ctelwayk6t2zu30a8v9kdg3u2gr0slpjdfny5pjp7m3tuquk32ysugyjdg": {
+      "to": "coingecko#solana",
+      "decimals": 9,
+      "symbol": "WSOL"
     }
   }
 }

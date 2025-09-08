@@ -21529,7 +21529,8 @@ const data4: Protocol[] = [
     name: "BasedApp",
     address: null,
     symbol: "-",
-    url: "https://www.basedapp.io/",
+    url: "https://app.based.one/r/DEFILLAMA",
+    referralUrl: "https://app.based.one/r/DEFILLAMA",
     description:
       "Buy, Sell and Spend Crypto. Powered by Hyperliquid",
     chain: "Hyperliquid L1",

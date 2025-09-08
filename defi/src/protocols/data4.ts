@@ -24830,5 +24830,29 @@ const data4: Protocol[] = [
   twitter: "zapzyio",
   forkedFrom: [],
 },
+{
+  id: "6678",
+  name: "SOLID",
+  address: null,
+  symbol: "-",
+  url: "https://solid.online",
+  description: "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
+  chain: "Terra2",
+  logo: "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/solid.png",
+  audits: "2",
+  audit_note: null,
+  gecko_id: "solid-2",
+  cmcId: null,
+  category: "CDP",
+  chains: ["Terra2"],
+  forkedFromIds: [],
+  module: "solid/index.js",
+  twitter: "solid_capa",
+  audit_links: [
+    "https://github.com/SCV-Security/PublicReports/blob/main/CW/Capapult/Capapult%20-%20Money%20Market%20Contracts%20-%20Audit%20Report%20v1.0%20.pdf",
+    "https://github.com/SCV-Security/PublicReports/blob/fa51bf944593bf18d128b4f812b3150b218f0d25/Capapult%2FCapapult%20Finance%20-%20Oracle%20Contract%20-%20Audit%20Report%20v1.0.pdf"
+  ],
+  listedAt: 1757342107
+},
 ];
 export default data4;

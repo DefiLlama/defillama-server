@@ -7930,6 +7930,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Securitize",
   },
+  {
+    id: "parent#flat-money",
+    name: "Flat Money",
+    url: "https://flat.money/",
+    description: "Flat Money is a smart contract protocol that allows users to mint UNIT, an on-chain flatcoin backed by liquid staking ETH",
+    logo: `${baseIconsUrl}/flat-money.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xflatmoney",
+  },
 ];
 
 export default parentProtocols;

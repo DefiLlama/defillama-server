@@ -61,6 +61,11 @@
     }
   },
   "berachain": {
+    "0x118D2cEeE9785eaf70C15Cd74CD84c9f8c3EeC9a": {
+      "decimals": "18",
+      "symbol": "sWBERA",
+      "to": "coingecko#pol-staked-wbera"
+    },
     "0x5bad2b7a0a2eee88a4ef05d5470cdedb0ff948ea": {
       "decimals": "18",
       "symbol": "hOHM",

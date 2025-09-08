@@ -7721,7 +7721,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SoliDexCro",
   },
-  {
+/*   {
     id: "parent#nemo",
     name: "Nemo",
     url: "https://www.nemoprotocol.com/",
@@ -7731,7 +7731,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "nemoprotocol",
-  },
+  }, */
   {
     id: "parent#okieswap",
     name: "OkieSwap",

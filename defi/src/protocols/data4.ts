@@ -23071,7 +23071,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#nemo",
     listedAt: 1755533932
   },
-  { 
+/*   { 
     id: "6596",
     name: "Nemo Floating Assets",
     address: null,
@@ -23091,7 +23091,7 @@ const data4: Protocol[] = [
     twitter: "nemoprotocol",
     parentProtocol: "parent#nemo",
     listedAt: 1755533939
-  },
+  }, */
   { 
     id: "6597",
     name: "HyperVault",

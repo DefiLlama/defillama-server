@@ -675,4 +675,14 @@ export const metadata: { [id: string]: Characteristics } = {
     transferable: true,
     selfCustody: true,
   },
+  "6669": {
+    symbols: [],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
 };

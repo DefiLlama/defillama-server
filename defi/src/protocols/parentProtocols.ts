@@ -4013,8 +4013,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "standard-protocol",
     cmcId: "9251",
     chains: [],
-    twitter: "standardweb3",
-    github: ["standardweb3"],
+    twitter: "standarddotim",
+    github: ["standardweb3", "standarddotim"],
   },
   {
     id: "parent#crunchy-network",

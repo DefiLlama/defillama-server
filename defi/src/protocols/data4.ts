@@ -24967,5 +24967,24 @@ const data4: Protocol[] = [
   parentProtocol: "parent#standard-protocol",
   listedAt: 1757349881
 },
+{
+  id: "6684",
+  name: "Phygitals",
+  address: null,
+  symbol: "-",
+  url: "https://phygitals.com/",
+  description: "Phygitals is a Solana marketplace for trading digitized versions of vaulted collectible cards, with built-in royalties and portfolio tracking.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/phygitals.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Solana"],
+  forkedFromIds: [],
+  module: "dummy.js",
+  twitter: "phygitals",
+},
 ];
 export default data4;

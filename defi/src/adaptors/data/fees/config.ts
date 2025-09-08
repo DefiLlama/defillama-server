@@ -4172,5 +4172,8 @@ export default {
     },
     "zapzy": {
         id: "6677"
+    },
+    "phygitals": {
+        id: "6684"
     }
 } as AdaptorsConfig

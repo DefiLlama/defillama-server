@@ -24963,7 +24963,6 @@ const data4: Protocol[] = [
   module: "standard-spot/index.js",
   twitter: "standarddotim",
   audit_links: ["https://github.com/standarddotim/standard3.0-contracts/tree/main/audits"],
-  github: ["standarddotim"],
   parentProtocol: "parent#standard-protocol",
   listedAt: 1757349881
 },

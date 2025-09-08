@@ -68,13 +68,18 @@
     },
     "0x9b6761bf2397bb5a6624a856cc84a3a14dcd3fe5": {
       "decimals": "18",
-      "symbol": "sWBERA",
+      "symbol": "iBERA",
       "to": "coingecko#infrared-bera"
     },
     "0xd77552d3849ab4d8c3b189a9582d0ba4c1f4f912": {
       "decimals": "18",
       "symbol": "wgBERA",
       "to": "coingecko#wrapped-gbera"
+    },
+    "0x0f81001ef0a83ecce5ccebf63eb302c70a39a654": {
+      "decimals": "18",
+      "symbol": "DOLO",
+      "to": "coingecko#dolomite"
     },
     "0x5bad2b7a0a2eee88a4ef05d5470cdedb0ff948ea": {
       "decimals": "18",

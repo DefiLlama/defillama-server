@@ -24838,7 +24838,7 @@ const data4: Protocol[] = [
   url: "https://solid.online",
   description: "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
   chain: "Terra2",
-  logo: "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/solid.png",
+  logo: `${baseIconsUrl}/solid.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "solid-2",

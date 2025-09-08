@@ -103,7 +103,7 @@ const data4: Protocol[] = [
     twitter: "nirvana_fi",
     parentProtocol: "parent#nirvana",
     audit_links: ["https://scalebit.xyz/reports/20241216-Nirvana-Smart-Contract-Final-Audit-Report.pdf"],
-    listedAt: 1735321151,
+    listedAt: 1735321151
   },
   {
     id: "5564",
@@ -209,13 +209,10 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["TON"],
     forkedFrom: [],
-    audit_links: [
-      "https://github.com/trailofbits/publications/blob/master/reviews/2025-05-FIVA-yieldtokenizationprotocol-securityreview.pdf",
-      "https://www.thefiva.com/fiva_audit_report_032025.pdf",
-    ],
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2025-05-FIVA-yieldtokenizationprotocol-securityreview.pdf", "https://www.thefiva.com/fiva_audit_report_032025.pdf"],
     module: "fiva/index.js",
     twitter: "FivaProtocol",
-    listedAt: 1735573225,
+    listedAt: 1735573225
   },
   {
     id: "5569",
@@ -223,7 +220,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bitusd.finance",
-    description: "A decentralized Multichain CDP that includes advanced privacy features.",
+    description:
+      "A decentralized Multichain CDP that includes advanced privacy features.",
     chain: "Sapphire",
     logo: `${baseIconsUrl}/bitusd.jpg`,
     audits: "0",
@@ -236,7 +234,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["270"],
     module: "bitusd/index.js",
     twitter: "BitUSD_finance",
-    listedAt: 1735573542,
+    listedAt: 1735573542
   },
   {
     id: "5570",
@@ -244,7 +242,8 @@ const data4: Protocol[] = [
     address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
     symbol: "SHADOW",
     url: "https://www.shadow.so",
-    description: "Sonic-native concentrated liquidity layer and exchange.",
+    description:
+      "Sonic-native concentrated liquidity layer and exchange.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/shadow-exchange.jpg`,
     audits: "0",
@@ -257,7 +256,7 @@ const data4: Protocol[] = [
     module: "shadow-cl/index.js",
     twitter: "ShadowOnSonic",
     parentProtocol: "parent#shadow-exchange",
-    listedAt: 1735573781,
+    listedAt: 1735573781
   },
   {
     id: "5571",
@@ -278,11 +277,9 @@ const data4: Protocol[] = [
     forkedFromIds: ["3365"],
     module: "satoshi-perps/index.js",
     twitter: "SatoshiAppXYZ",
-    audit_links: [
-      "https://github.com/NLX-Protocol/shatoshi-perps/blob/main/audits/Verichains%20Public%20Report%20-%20Satoshi%20Perp.pdf",
-    ],
+    audit_links: ["https://github.com/NLX-Protocol/shatoshi-perps/blob/main/audits/Verichains%20Public%20Report%20-%20Satoshi%20Perp.pdf"],
     github: ["NLX-Protocol"],
-    listedAt: 1735583371,
+    listedAt: 1735583371
   },
   {
     id: "5572",
@@ -304,7 +301,7 @@ const data4: Protocol[] = [
     module: "run-money/index.js",
     twitter: "runmoney_app",
     github: ["Run-Money"],
-    listedAt: 1735660151,
+    listedAt: 1735660151
   },
   {
     id: "5573",
@@ -312,7 +309,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.machfi.xyz/",
-    description: "Native Sonic Borrow / Lending dApp",
+    description:
+      "Native Sonic Borrow / Lending dApp",
     chain: "Sonic",
     logo: `${baseIconsUrl}/machfi.jpg`,
     audits: "2",
@@ -325,19 +323,19 @@ const data4: Protocol[] = [
       {
         name: "Api3",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"]
       },
       {
         name: "Pyth",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9280"],
-      },
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9280"]
+      }
     ],
     forkedFromIds: ["114"],
     module: "machfi/index.js",
     twitter: "machfi_xyz",
     audit_links: ["https://github.com/sherlock-audit/2024-12-mach-finance-judging"],
-    listedAt: 1735660157,
+    listedAt: 1735660157
   },
   {
     id: "5574",
@@ -345,7 +343,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://duckswap.xyz/home",
-    description: "The first DEX on Duck Chain",
+    description:
+      "The first DEX on Duck Chain",
     chain: "DuckChain",
     logo: `${baseIconsUrl}/duckswap.jpg`,
     audits: "0",
@@ -357,7 +356,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1883"],
     module: "duckswap/index.js",
     twitter: "DuckSwap_TON",
-    listedAt: 1735835859,
+    listedAt: 1735835859
   },
   {
     id: "5575",
@@ -365,7 +364,8 @@ const data4: Protocol[] = [
     address: "solana:3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y",
     symbol: "VIRTUAL",
     url: "https://app.virtuals.io",
-    description: "Society of AI Agents base",
+    description:
+      "Society of AI Agents base",
     chain: "Solana",
     logo: `${baseIconsUrl}/virtuals-protocol.jpg`,
     audits: "0",
@@ -385,7 +385,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xswap.ms/swap/",
-    description: "Exchange tokens issued on the CrossFi Chain",
+    description:
+      "Exchange tokens issued on the CrossFi Chain",
     chain: "CrossFi",
     logo: `${baseIconsUrl}/xswap-dex.png`,
     audits: "0",
@@ -397,7 +398,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "xswap/index.js",
     twitter: "xswapms",
-    listedAt: 1735955529,
+    listedAt: 1735955529
   },
   {
     id: "5577",
@@ -405,7 +406,8 @@ const data4: Protocol[] = [
     address: "bsc:0x4b0f1812e5df2a09796481ff14017e6005508003",
     symbol: "TWT",
     url: "https://trustwallet.com/download",
-    description: "Non-custodial crypto wallet",
+    description:
+      "Non-custodial crypto wallet",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/trust-wallet.jpg`,
     audits: "0",
@@ -441,9 +443,9 @@ const data4: Protocol[] = [
     parentProtocol: "parent#swapx",
     audit_links: [
       "https://swapx.fi/Bailsec_SwapX_Exchange_Final_Report.pdf",
-      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf",
+      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf"
     ],
-    listedAt: 1735971714,
+    listedAt: 1735971714
   },
   {
     id: "5579",
@@ -468,9 +470,9 @@ const data4: Protocol[] = [
     audit_links: [
       "https://swapx.fi/Bailsec_SwapX_Exchange_Final_Report.pdf",
       "https://swapx.fi/Bailsec_Algebra_Finance_SwapX_Fee_Plugin_Final_Report.pdf",
-      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf",
+      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf"
     ],
-    listedAt: 1735971859,
+    listedAt: 1735971859
   },
   {
     id: "5580",
@@ -478,7 +480,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://savings.latch.io/",
-    description: "Deposit idle tokens, select a preferred vault, and earn yield and points",
+    description:
+      "Deposit idle tokens, select a preferred vault, and earn yield and points",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/latch.jpg`,
     audits: "2",
@@ -491,7 +494,7 @@ const data4: Protocol[] = [
     module: "latch/index.js",
     twitter: "UseLatch",
     audit_links: ["https://docs.latch.io/overview/contracts-audit"],
-    listedAt: 1736110559,
+    listedAt: 1736110559
   },
   {
     id: "5581",
@@ -499,7 +502,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://aquadex.co/swap",
-    description: "Decentralized exchange on Waterfall Network",
+    description:
+      "Decentralized exchange on Waterfall Network",
     chain: "Waterfall",
     logo: `${baseIconsUrl}/aquadex.jpg`,
     audits: "0",
@@ -512,7 +516,7 @@ const data4: Protocol[] = [
     module: "aquadex-v3/index.js",
     twitter: "waterfall_dag",
     github: ["AquaDEX"],
-    listedAt: 1736174541,
+    listedAt: 1736174541
   },
   {
     id: "5582",
@@ -520,7 +524,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mantra.zone/liquidity-pools",
-    description: "Decentralized exchange on Mantra chain",
+    description:
+      "Decentralized exchange on Mantra chain",
     chain: "Mantra",
     logo: `${baseIconsUrl}/mantra-swap.jpg`,
     audits: "0",
@@ -532,7 +537,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "mantra-amm/index.js",
     twitter: "MANTRA_Chain",
-    listedAt: 1736174547,
+    listedAt: 1736174547
   },
   {
     id: "5583",
@@ -554,7 +559,7 @@ const data4: Protocol[] = [
     module: "iloop/index.js",
     twitter: "iLoop_HQ",
     audit_links: ["https://github.com/user-attachments/files/18279096/Iloop-contract.-.SlowMist.Audit.Report.pdf"],
-    listedAt: 1736175355,
+    listedAt: 1736175355
   },
   {
     id: "5584",
@@ -562,7 +567,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://astrol.io/",
-    description: "Lend, Borrow & Earn with ease on Eclipse",
+    description:
+      "Lend, Borrow & Earn with ease on Eclipse",
     chain: "Eclipse",
     logo: `${baseIconsUrl}/astrol.jpg`,
     audits: "2",
@@ -577,7 +583,7 @@ const data4: Protocol[] = [
     twitter: "AstrolFinance",
     audit_links: ["https://doc.astrol.io/astrolend/security"],
     github: ["Astrol-Finance"],
-    listedAt: 1736175355,
+    listedAt: 1736175355
   },
   {
     id: "5585",
@@ -598,7 +604,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["4208"],
     module: "omega/index.js",
     twitter: "omega_infra",
-    listedAt: 1736176657,
+    listedAt: 1736176657
   },
   {
     id: "5586",
@@ -622,9 +628,9 @@ const data4: Protocol[] = [
     github: ["satlayer"],
     audit_links: [
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/Satlayer_audit_report_2024-08-15.pdf",
-      "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf",
+      "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf"
     ],
-    listedAt: 1736176895,
+    listedAt: 1736176895
   },
   {
     id: "5587",
@@ -632,7 +638,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://wallet.coinbase.com/",
-    description: "Crypto wallet and dapp browser",
+    description:
+      "Crypto wallet and dapp browser",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/coinbase-wallet.jpg`,
     audits: "0",
@@ -651,7 +658,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://yield.fi/",
-    description: "YieldFi: The First Streamlined Asset Management Platform",
+    description:
+      "YieldFi: The First Streamlined Asset Management Platform",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yieldfi.jpg`,
     audits: "2",
@@ -665,26 +673,19 @@ const data4: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.yield.fi/resources/oracles"],
-        chains: [
-          {
-            chain: "Arbitrum",
-          },
-          {
-            chain: "Base",
-          },
-          {
-            chain: "Binance",
-          },
-          {
-            chain: "Katana",
-          },
-          {
-            chain: "Optimism",
-          },
-          {
-            chain: "Sonic",
-          },
-        ],
+        chains: [{
+          chain: "Arbitrum",
+        },{
+          chain: "Base",
+        },{
+          chain: "Binance",
+        },{
+          chain: "Katana",
+        },{
+          chain: "Optimism",
+        },{
+          chain: "Sonic",
+        }],
       },
       {
         name: "eOracle",
@@ -699,21 +700,22 @@ const data4: Protocol[] = [
           },
           {
             chain: "TAC",
-          },
-        ],
+          }],
       },
       {
         name: "Pyth",
         type: "Fallback",
         proof: ["https://docs.yield.fi/resources/oracles"],
-      },
+      }
     ],
     forkedFrom: [],
     module: "yield-fi/index.js",
     twitter: "getyieldfi",
     github: ["YieldFiLabs"],
-    audit_links: ["https://docs.yield.fi/resources/audits"],
-    listedAt: 1736184965,
+    audit_links: [
+      "https://docs.yield.fi/resources/audits"
+    ],
+    listedAt: 1736184965
   },
   {
     id: "5589",
@@ -735,7 +737,7 @@ const data4: Protocol[] = [
     module: "dtrinity/index.js",
     twitter: "dtrinity_defi",
     parentProtocol: "parent#dtrinity",
-    listedAt: 1736185537,
+    listedAt: 1736185537
   },
   {
     id: "5590",
@@ -758,7 +760,7 @@ const data4: Protocol[] = [
     module: "dtrinity-dlend/index.js",
     twitter: "dtrinity_defi",
     parentProtocol: "parent#dtrinity",
-    listedAt: 1736185543,
+    listedAt: 1736185543
   },
   {
     id: "5591",
@@ -785,7 +787,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://primestaking.xyz/",
-    description: "Liquid staking on XDC",
+    description:
+      "Liquid staking on XDC",
     chain: "XDC",
     logo: `${baseIconsUrl}/prime-staking.jpg`,
     audits: "0",
@@ -797,7 +800,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "primestaking-xyz/index.js",
     twitter: "PrimeNumbersFi",
-    listedAt: 1736202245,
+    listedAt: 1736202245
   },
   {
     id: "5593",
@@ -805,7 +808,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://inkyswap.com/",
-    description: "The decentralized exchange on Ink, where InkyPump's tokens get their liquidity once they are bonded.",
+    description:
+      "The decentralized exchange on Ink, where InkyPump's tokens get their liquidity once they are bonded.",
     chain: "Ink",
     logo: `${baseIconsUrl}/inkyswap.jpg`,
     audits: "0",
@@ -818,7 +822,7 @@ const data4: Protocol[] = [
     module: "inkyswap/index.js",
     twitter: "inkyswap",
     github: ["InkySwap"],
-    listedAt: 1736202627,
+    listedAt: 1736202627
   },
   {
     id: "5594",
@@ -826,7 +830,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://v2.monstro.fun",
-    description: "Protocol on base chain",
+    description:
+      "Protocol on base chain",
     chain: "Base",
     logo: `${baseIconsUrl}/monstro.jpg`,
     audits: "0",
@@ -839,7 +844,7 @@ const data4: Protocol[] = [
     module: "monstro-fun/index.js",
     treasury: "monstro-fun.js",
     twitter: "monstrosuni",
-    listedAt: 1736249582,
+    listedAt: 1736249582
   },
   {
     id: "5595",
@@ -847,7 +852,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://goldstation.io",
-    description: "Your Gateway to Decentralized Finance with Real Asset Integration",
+    description:
+      "Your Gateway to Decentralized Finance with Real Asset Integration",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/goldstation-dex-v3.jpg`,
     audits: "0",
@@ -863,7 +869,7 @@ const data4: Protocol[] = [
     tokensExcludedFromParent: {
       Avalanche: ["GPC"],
     },
-    listedAt: 1736249628,
+    listedAt: 1736249628
   },
   {
     id: "5596",
@@ -871,7 +877,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://nep.finance/",
-    description: "The Premier DEX on Swellchain",
+    description:
+      "The Premier DEX on Swellchain",
     chain: "Swellchain",
     logo: `${baseIconsUrl}/neptune.jpg`,
     audits: "0",
@@ -883,7 +890,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1407"],
     module: "neptune/index.js",
     twitter: "NepFinance",
-    listedAt: 1736278247,
+    listedAt: 1736278247
   },
   {
     id: "5597",
@@ -892,7 +899,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dappos.com/",
-    description: "dappOS is an intent execution network",
+    description:
+      "dappOS is an intent execution network",
     chain: "Op_Bnb",
     logo: `${baseIconsUrl}/dappos-intentex.jpg`,
     audits: "0",
@@ -911,7 +919,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://volboost.com/",
-    description: "Boost your token's volume, liquidity and visibility in one click",
+    description:
+      "Boost your token's volume, liquidity and visibility in one click",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/volboost.jpg`,
     audits: "0",
@@ -930,7 +939,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://grvt.io",
-    description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    description:
+      "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt.jpg`,
     audits: "0",
@@ -942,7 +952,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "grvt-io/index.js",
     twitter: "grvt_io",
-    listedAt: 1736334414,
+    listedAt: 1736334414
   },
   {
     id: "5600",
@@ -950,7 +960,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://creator.bid/agents",
-    description: "Create and tokenize AI agents , AI Launchpad on base",
+    description:
+      "Create and tokenize AI agents , AI Launchpad on base",
     chain: "Base",
     logo: `${baseIconsUrl}/creator-bid.jpg`,
     audits: "0",
@@ -969,7 +980,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://eth.verusbridge.io/",
-    description: "Dex on Verus chain",
+    description:
+      "Dex on Verus chain",
     chain: "Verus",
     logo: `${baseIconsUrl}/verus-market.jpg`,
     audits: "0",
@@ -981,7 +993,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "verus-market/index.js",
     twitter: "VerusCoin",
-    listedAt: 1736335147,
+    listedAt: 1736335147
   },
   {
     id: "5602",
@@ -1004,7 +1016,7 @@ const data4: Protocol[] = [
     module: "nodo/index.js",
     twitter: "Official_NODO",
     github: ["NODO-xyz"],
-    listedAt: 1736335147,
+    listedAt: 1736335147
   },
   {
     id: "5603",
@@ -1027,7 +1039,7 @@ const data4: Protocol[] = [
     module: "equalizer-cl/index.js",
     twitter: "FTM1337",
     parentProtocol: "parent#guru-network-dao",
-    listedAt: 1736387589,
+    listedAt: 1736387589
   },
   {
     id: "5604",
@@ -1035,7 +1047,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://memebox.fi/#/swap",
-    description: "A decentralized exchange on Sonic",
+    description:
+      "A decentralized exchange on Sonic",
     chain: "Sonic",
     logo: `${baseIconsUrl}/memebox.jpg`,
     audits: "0",
@@ -1047,7 +1060,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "memebox-fi/index.js",
     twitter: "MemeboxFi",
-    listedAt: 1736387595,
+    listedAt: 1736387595
   },
   {
     id: "5605",
@@ -1055,7 +1068,8 @@ const data4: Protocol[] = [
     address: "sonic:0xf3969639AE1f2716568eDBd0420153a6709f6e7b",
     symbol: "MDEX",
     url: "https://mobiusdex.xyz/",
-    description: "A decentralized exchange on Sonic",
+    description:
+      "A decentralized exchange on Sonic",
     chain: "Sonic",
     logo: `${baseIconsUrl}/mobiusdex.jpg`,
     audits: "0",
@@ -1068,7 +1082,7 @@ const data4: Protocol[] = [
     module: "mobiusdex-xyz/index.js",
     twitter: "planetmobiusfun",
     github: ["planetmobius"],
-    listedAt: 1736387601,
+    listedAt: 1736387601
   },
   {
     id: "5606",
@@ -1076,7 +1090,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://wavesbridge.io/",
-    description: "Connecting Waves assets across blockchains",
+    description:
+      "Connecting Waves assets across blockchains",
     chain: "UNIT0",
     logo: `${baseIconsUrl}/wavesbridge.jpg`,
     audits: "0",
@@ -1089,7 +1104,7 @@ const data4: Protocol[] = [
     module: "wavesbridge/index.js",
     twitter: "wavesbridge",
     github: ["WavesBridge"],
-    listedAt: 1736387607,
+    listedAt: 1736387607
   },
   {
     id: "5607",
@@ -1097,7 +1112,8 @@ const data4: Protocol[] = [
     address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
     symbol: "POND",
     url: "https://marlinprotocol.fi/relay/operator",
-    description: "TEE coprocessors for decentralized AI",
+    description:
+      "TEE coprocessors for decentralized AI",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/marlin-protocol.png`,
     audits: "0",
@@ -1109,7 +1125,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "marlinprotocol/index.js",
     twitter: "MarlinProtocol",
-    listedAt: 1736432811,
+    listedAt: 1736432811
   },
   {
     id: "5608",
@@ -1131,7 +1147,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "navigator/index.js",
     twitter: "NaviExSonic",
-    listedAt: 1736432817,
+    listedAt: 1736432817
   },
   {
     id: "5609",
@@ -1139,7 +1155,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sophon.xyz/",
-    description: "Sophon is a ZK chain",
+    description:
+      "Sophon is a ZK chain",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sophon.png`,
     audits: "0",
@@ -1151,7 +1168,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "sophon/index.js",
     twitter: "sophon",
-    listedAt: 1736469229,
+    listedAt: 1736469229
   },
   {
     id: "5610",
@@ -1170,13 +1187,11 @@ const data4: Protocol[] = [
     cmcId: "30714",
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oraclesBreakdown: [
-      { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046"] },
-    ],
+    oraclesBreakdown: [{ name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046"] }],
     forkedFrom: [],
     module: "cvex/index.js",
     twitter: "Jetstreamtrade",
-    listedAt: 1736469235,
+    listedAt: 1736469235
   },
   {
     id: "5611",
@@ -1202,8 +1217,8 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388", "https://silopedia.silo.finance/oracles"],
-      },
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388", "https://silopedia.silo.finance/oracles"]
+      }
     ],
     forkedFrom: [],
     module: "silo-v2/index.js",
@@ -1218,7 +1233,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.marginzero.xyz/",
-    description: "MarginZero is an omni-chain, oracle-less and permission-less options & protected perpetual protocol",
+    description:
+      "MarginZero is an omni-chain, oracle-less and permission-less options & protected perpetual protocol",
     chain: "Sonic",
     logo: `${baseIconsUrl}/margin-zero.png`,
     audits: "2",
@@ -1229,12 +1245,10 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     forkedFrom: [],
     module: "margin-zero/index.js",
-    audit_links: [
-      "https://github.com/marginzero-xyz/contracts/blob/main/audits/yAudits/MarginZero_yAudits_December2024_OptionsOTM.pdf",
-    ],
+    audit_links: ["https://github.com/marginzero-xyz/contracts/blob/main/audits/yAudits/MarginZero_yAudits_December2024_OptionsOTM.pdf"],
     twitter: "marginzero_xyz",
     github: ["marginzero-xyz"],
-    listedAt: 1736470171,
+    listedAt: 1736470171
   },
   {
     id: "5613",
@@ -1275,7 +1289,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://skynet.certik.com/projects/PRYZM"],
     parentProtocol: "parent#pryzm",
-    listedAt: 1736533711,
+    listedAt: 1736533711
   },
   {
     id: "5615",
@@ -1297,7 +1311,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.zoth.io/zoth/resources/audits"],
     parentProtocol: "parent#zoth",
-    listedAt: 1736774553,
+    listedAt: 1736774553
   },
   {
     id: "5616",
@@ -1318,7 +1332,7 @@ const data4: Protocol[] = [
     twitter: "republicnote",
     forkedFrom: [],
     audit_links: [],
-    listedAt: 1736775042,
+    listedAt: 1736775042
   },
   {
     id: "5617",
@@ -1341,7 +1355,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1599"],
     audit_links: ["https://github.com/aave/aave-v3-core/tree/master/audits"],
     github: ["aurum-protocol"],
-    listedAt: 1736775047,
+    listedAt: 1736775047
   },
   {
     id: "5618",
@@ -1349,7 +1363,8 @@ const data4: Protocol[] = [
     address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
     symbol: "JOE",
     url: "https://lfj.gg/arbitrum/trade",
-    description: "DEX Aggregator by LFJ",
+    description:
+      "DEX Aggregator by LFJ",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/lfj-aggregator.png`,
     audits: "0",
@@ -1388,14 +1403,14 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_sosovaluelabs_ssi_v1.0-signed.pdf",
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20-%20SlowMist%20Audit%20Report.pdf",
-      "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20Phase2%20-%20SlowMist%20Audit%20Report.pdf",
+      "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20Phase2%20-%20SlowMist%20Audit%20Report.pdf"
     ],
     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
         proof: ["https://sosovalue.gitbook.io/sosovalue-indices/solution-design/overview"],
-      },
+      }
     ],
     parentProtocol: "parent#sosovalue",
     listedAt: 1736793641,
@@ -1406,7 +1421,8 @@ const data4: Protocol[] = [
     address: "0x9DFAD1b7102D46b1b197b90095B5c4E9f5845BBA",
     symbol: "BOTTO",
     url: "https://botto.com/",
-    description: "Botto is a decentralized autonomous artist",
+    description:
+      "Botto is a decentralized autonomous artist",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/botto.png`,
     audits: "0",
@@ -1428,7 +1444,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.anqa.ag/",
-    description: "DEX Aggregator on Aptos",
+    description:
+      "DEX Aggregator on Aptos",
     chain: "Aptos",
     logo: `${baseIconsUrl}/anqa.png`,
     audits: "0",
@@ -1449,7 +1466,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.kyo.finance",
-    description: "The Most Innovative Liquidity Hub on soneium",
+    description:
+      "The Most Innovative Liquidity Hub on soneium",
     chain: "Soneium",
     logo: `${baseIconsUrl}/kyo-finance.jpg`,
     audits: "0",
@@ -1462,7 +1480,7 @@ const data4: Protocol[] = [
     twitter: "kyofinance",
     forkedFromIds: ["2198"],
     audit_links: [],
-    listedAt: 1736851067,
+    listedAt: 1736851067
   },
   {
     id: "5623",
@@ -1470,7 +1488,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sonefi.xyz",
-    description: "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    description:
+      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/sonefi.jpg`,
     audits: "2",
@@ -1484,7 +1503,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2728"],
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
-    listedAt: 1736851567,
+    listedAt: 1736851567
   },
   {
     id: "5624",
@@ -1492,7 +1511,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://superbridge.app/soneium",
-    description: "Bridge between Ethereum and Soneium",
+    description:
+      "Bridge between Ethereum and Soneium",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/soneium-bridge.jpg`,
     audits: "0",
@@ -1527,10 +1547,10 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [
       "https://github.com/Zellic/publications/blob/master/PDT%20Staking%20V2%20-%20Zellic%20Audit%20Report.pdf",
-      "https://hashlock.com/audits/paragonsdao",
+      "https://hashlock.com/audits/paragonsdao"
     ],
     github: ["ParagonsDAO"],
-    listedAt: 1736886545,
+    listedAt: 1736886545
   },
   {
     id: "5626",
@@ -1553,7 +1573,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     parentProtocol: "parent#untangled",
-    listedAt: 1736886549,
+    listedAt: 1736886549
   },
   {
     id: "5627",
@@ -1576,7 +1596,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1599"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }], // https://docs.sakefinance.com/sake-finance/resources/oracles
     audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
-    listedAt: 1736960282,
+    listedAt: 1736960282
   },
   {
     id: "5628",
@@ -1599,7 +1619,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // Pyth currently used for majority of deposited value, usdc.e, astr & weth // https://docs.untitledbank.co/
     audit_links: ["https://beosin.com/audits/Untitled-Bank_202501101523.pdf"],
-    listedAt: 1736960289,
+    listedAt: 1736960289
   },
   {
     id: "5629",
@@ -1622,7 +1642,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     audit_links: [],
     github: ["squidswap-ink"],
-    listedAt: 1736960299,
+    listedAt: 1736960299
   },
   {
     id: "5630",
@@ -1701,7 +1721,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://momodrome.io",
-    description: "The exclusive and only ve33 DEX of the Morph ecosystem.",
+    description:
+      "The exclusive and only ve33 DEX of the Morph ecosystem.",
     chain: "Morph",
     logo: `${baseIconsUrl}/momodrome.jpg`,
     audits: "0",
@@ -1713,7 +1734,7 @@ const data4: Protocol[] = [
     module: "momodrome/index.js",
     twitter: "momodrome_io",
     forkedFrom: [],
-    listedAt: 1737059541,
+    listedAt: 1737059541
   },
   {
     id: "5634",
@@ -1735,7 +1756,7 @@ const data4: Protocol[] = [
     twitter: "neemofinance",
     forkedFrom: [],
     audit_links: ["https://audits.hacken.io/neemo-finance/"],
-    listedAt: 1737088474,
+    listedAt: 1737088474
   },
   {
     id: "5635",
@@ -1756,7 +1777,7 @@ const data4: Protocol[] = [
     module: "omniyield/index.js",
     twitter: "OmniYield",
     forkedFrom: [],
-    listedAt: 1737088481,
+    listedAt: 1737088481
   },
   {
     id: "5636",
@@ -1781,7 +1802,7 @@ const data4: Protocol[] = [
     audit_links: ["https://www.auditone.io/audit-report/zarban"],
     treasury: "zarban.js",
     github: ["zarbanio"],
-    listedAt: 1737088495,
+    listedAt: 1737088495
   },
   {
     id: "5637",
@@ -1809,7 +1830,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.ln.exchange/",
-    description: "Orderbook Exchange on Lightning Network",
+    description:
+      "Orderbook Exchange on Lightning Network",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/ln-exchange.png`,
     audits: "0",
@@ -1829,7 +1851,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.ln.exchange/",
-    description: "Spot & Perpetual Trading for Bitcoins TaprootAssets",
+    description:
+      "Spot & Perpetual Trading for Bitcoins TaprootAssets",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/ln-exchange.png`,
     audits: "0",
@@ -1863,7 +1886,7 @@ const data4: Protocol[] = [
     twitter: "OopsItsSONEX",
     forkedFromIds: ["2198"],
     github: ["sonex-dex"],
-    listedAt: 1737126167,
+    listedAt: 1737126167
   },
   {
     id: "5641",
@@ -1889,9 +1912,9 @@ const data4: Protocol[] = [
         name: "Stork",
         type: "Primary",
         proof: ["https://citrex.gitbook.io/citrex-markets/citrex-markets/funding-and-pricing"],
-      },
+      }
     ],
-    listedAt: 1737129117,
+    listedAt: 1737129117
   },
   {
     id: "5642",
@@ -1913,7 +1936,7 @@ const data4: Protocol[] = [
     twitter: "edbankDao",
     forkedFrom: [],
     audit_links: ["https://edbank.gitbook.io/edbank-docs/security/audit"],
-    listedAt: 1737129301,
+    listedAt: 1737129301
   },
   {
     id: "5643",
@@ -1921,7 +1944,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sailfish.finance",
-    description: "SailFish is the first DEX on Opencampus EDUCHAIN",
+    description:
+      "SailFish is the first DEX on Opencampus EDUCHAIN",
     chain: "EDU Chain",
     logo: `${baseIconsUrl}/sailfish-finance.png`,
     audits: "0",
@@ -1933,7 +1957,7 @@ const data4: Protocol[] = [
     module: "sailfish-v3/index.js",
     twitter: "SailFishFinance",
     forkedFromIds: ["2198"],
-    listedAt: 1737129307,
+    listedAt: 1737129307
   },
   {
     id: "5644",
@@ -1962,7 +1986,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mstable.io",
-    description: "A decentralized stablecoin built on Sui",
+    description:
+      "A decentralized stablecoin built on Sui",
     chain: "Sui",
     logo: `${baseIconsUrl}/metastable.png`,
     audits: "0",
@@ -1975,7 +2000,7 @@ const data4: Protocol[] = [
     twitter: "MetaStables",
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.mstable.io/developers/contracts, https://github.com/DefiLlama/DefiLlama-Adapters/pull/13154
-    listedAt: 1737379687,
+    listedAt: 1737379687
   },
   {
     id: "5646",
@@ -1983,7 +2008,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sonefi.xyz/#/trade",
-    description: "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    description:
+      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/sonefi.jpg`,
     audits: "2",
@@ -1998,7 +2024,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
-    listedAt: 1737379697,
+    listedAt: 1737379697
   },
   {
     id: "5647",
@@ -2006,7 +2032,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sailor.finance/",
-    description: "High-Capital Efficiency AMM DEX & Launchpad built on Sei Network",
+    description:
+      "High-Capital Efficiency AMM DEX & Launchpad built on Sei Network",
     chain: "Sei",
     logo: `${baseIconsUrl}/sailor.png`,
     audits: "2",
@@ -2018,10 +2045,8 @@ const data4: Protocol[] = [
     module: "sailor-finance/index.js",
     twitter: "SailorFi",
     forkedFromIds: ["2198"],
-    audit_links: [
-      "https://storage.googleapis.com/ktx-data/data/Verichains%20Public%20Report%20-%20Sailor%20Finance.pdf",
-    ],
-    listedAt: 1737379699,
+    audit_links: ["https://storage.googleapis.com/ktx-data/data/Verichains%20Public%20Report%20-%20Sailor%20Finance.pdf"],
+    listedAt: 1737379699
   },
   {
     id: "5648",
@@ -2041,10 +2066,8 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "olab/index.js",
     twitter: "opinionlabsxyz",
-    audit_links: [
-      "https://pub-d9508a69438c476b87530c53cfa2910c.r2.dev/Prediction%20Market%20-%20Zellic%20Audit%20Report.pdf",
-    ],
-    listedAt: 1737379705,
+    audit_links: ["https://pub-d9508a69438c476b87530c53cfa2910c.r2.dev/Prediction%20Market%20-%20Zellic%20Audit%20Report.pdf"],
+    listedAt: 1737379705
   },
   {
     id: "5649",
@@ -2052,7 +2075,8 @@ const data4: Protocol[] = [
     address: "sonic:0x59524d5667b299c0813ba3c99a11c038a3908fbc",
     symbol: "YOKO",
     url: "https://yoko.live/",
-    description: "Yoko is a no-code platform for launching AI Agents",
+    description:
+      "Yoko is a no-code platform for launching AI Agents",
     chain: "Sonic",
     logo: `${baseIconsUrl}/yoko.png`,
     audits: "0",
@@ -2064,7 +2088,7 @@ const data4: Protocol[] = [
     module: "yoko-live/index.js",
     twitter: "yokodotlive",
     forkedFrom: [],
-    listedAt: 1737416137,
+    listedAt: 1737416137
   },
   {
     id: "5650",
@@ -2086,7 +2110,7 @@ const data4: Protocol[] = [
     twitter: "FilamentFinance",
     forkedFrom: [],
     parentProtocol: "parent#filament",
-    listedAt: 1737482577,
+    listedAt: 1737482577
   },
   {
     id: "5651",
@@ -2094,7 +2118,8 @@ const data4: Protocol[] = [
     address: "0x3bd7d4f524d09f4e331577247a048d56e4b67a7f",
     symbol: "5IRE",
     url: "https://www.5ire.org",
-    description: "Stake 5ire tokens to earn a yield",
+    description:
+      "Stake 5ire tokens to earn a yield",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/5ire-dapp-staking.png`,
     audits: "0",
@@ -2106,7 +2131,7 @@ const data4: Protocol[] = [
     module: "5ire-dapp-staking/index.js",
     twitter: "5ireChain",
     forkedFrom: [],
-    listedAt: 1737483187,
+    listedAt: 1737483187
   },
   {
     id: "5652",
@@ -2127,10 +2152,8 @@ const data4: Protocol[] = [
     module: "atoll/index.js",
     twitter: "atoll_protocol",
     forkedFrom: [],
-    audit_links: [
-      "https://github.com/Marvin051499/atoll-smart-contracts/blob/main/PeckShield-Audit-Report-Atoll-v1.0.pdf",
-    ],
-    listedAt: 1737560233,
+    audit_links: ["https://github.com/Marvin051499/atoll-smart-contracts/blob/main/PeckShield-Audit-Report-Atoll-v1.0.pdf"],
+    listedAt: 1737560233
   },
   {
     id: "5653",
@@ -2138,7 +2161,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.vector.fun/",
-    description: "APE MEMES WITH FRENS • LIVE ON APPLE + GOOGLE PLAY STORES",
+    description:
+      "APE MEMES WITH FRENS • LIVE ON APPLE + GOOGLE PLAY STORES",
     chain: "Solana",
     logo: `${baseIconsUrl}/vector.fun.png`,
     audits: "0",
@@ -2171,7 +2195,7 @@ const data4: Protocol[] = [
     twitter: "UmojaProtocol",
     forkedFrom: [],
     parentProtocol: "parent#umoja-protocol",
-    listedAt: 1737625162,
+    listedAt: 1737625162
   },
   {
     id: "5655",
@@ -2196,27 +2220,27 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary", // provides both market feeds and is the source for Fundamental oracle USD valuations
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
       {
         name: "Chainlink",
         type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
       {
         name: "Chronicle",
         type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
       },
       {
         name: "RedStone",
         type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
+        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"]
+      }
     ],
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
-    listedAt: 1737626553,
+    listedAt: 1737626553
   },
   {
     id: "5656",
@@ -2239,7 +2263,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#liquity",
     audit_links: ["https://docs.liquity.org/v2-documentation/technical-resources"],
-    listedAt: 1737631098,
+    listedAt: 1737631098
   },
   {
     id: "5657",
@@ -2247,7 +2271,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://zoth.io/",
-    description: "Zoth is a community-first restaking ecosystem for RWAFi.",
+    description:
+      "Zoth is a community-first restaking ecosystem for RWAFi.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ztln-p.png`,
     audits: "0",
@@ -2261,7 +2286,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#zoth",
     audit_links: [],
-    listedAt: 1737640913,
+    listedAt: 1737640913
   },
   {
     id: "5658",
@@ -2283,7 +2308,7 @@ const data4: Protocol[] = [
     twitter: "MoonlanderTrade",
     forkedFromIds: ["1772"],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.moonlander.trade/
-    listedAt: 1737641003,
+    listedAt: 1737641003
   },
   {
     id: "5659",
@@ -2305,7 +2330,7 @@ const data4: Protocol[] = [
     twitter: "TrebleSwap",
     forkedFromIds: ["3710"],
     github: ["trebleswap"],
-    listedAt: 1737647275,
+    listedAt: 1737647275
   },
   {
     id: "5660",
@@ -2313,7 +2338,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ethos.network/",
-    description: "Ethos is a credibility platform that creates a more trusted web3 ecosystem",
+    description:
+      "Ethos is a credibility platform that creates a more trusted web3 ecosystem",
     chain: "Base",
     logo: `${baseIconsUrl}/ethos-network.png`,
     audits: "2",
@@ -2327,7 +2353,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     parentProtocol: "parent#ethos",
-    listedAt: 1737664915,
+    listedAt: 1737664915
   },
   {
     id: "5661",
@@ -2335,7 +2361,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.starbase.ag/",
-    description: "Advanced DEX Aggregator on Base",
+    description:
+      "Advanced DEX Aggregator on Base",
     chain: "Base",
     logo: `${baseIconsUrl}/starbase.png`,
     audits: "2",
@@ -2370,7 +2397,7 @@ const data4: Protocol[] = [
     twitter: "Infpools",
     forkedFrom: [],
     audit_links: ["https://docs.infinitypools.finance/protocol-overview/security#audits"],
-    listedAt: 1737725805,
+    listedAt: 1737725805
   },
   {
     id: "5663",
@@ -2378,7 +2405,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.eddy.finance/",
-    description: "EddyFinance is a dex built on top of ZetaChain",
+    description:
+      "EddyFinance is a dex built on top of ZetaChain",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/eddyfinance.png`,
     audits: "0",
@@ -2392,7 +2420,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     audit_links: [],
     parentProtocol: "parent#eddyfinance",
-    listedAt: 1737725817,
+    listedAt: 1737725817
   },
   {
     id: "5664",
@@ -2414,7 +2442,7 @@ const data4: Protocol[] = [
     twitter: "txnlab",
     forkedFrom: [],
     audit_links: ["https://github.com/algorandfoundation/reti/tree/main/contracts/contracts/audit"],
-    listedAt: 1737725853,
+    listedAt: 1737725853
   },
   {
     id: "5665",
@@ -2422,7 +2450,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.artexswap.xyz/#/swap",
-    description: "The Leading Native Artela_Network DEX Powered by Artela EVM++",
+    description:
+      "The Leading Native Artela_Network DEX Powered by Artela EVM++",
     chain: "Artela",
     logo: `${baseIconsUrl}/artexswap.png`,
     audits: "0",
@@ -2434,7 +2463,7 @@ const data4: Protocol[] = [
     module: "artexswap_xyz/index.js",
     twitter: "artexswap",
     forkedFromIds: ["2197"],
-    listedAt: 1737725859,
+    listedAt: 1737725859
   },
   /* DELISTED - SUPPLY OF MBTC DOES NOT MATCH SUPPLY OF NBTC THAT IT SELF DONT MATCH THE NTBTC RESERVERS. 
   {
@@ -2466,7 +2495,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://farm.sophon.xyz/",
-    description: "Deposit tokens to start farming Sophon Points (SP) which can later be redeemed for $SOPH",
+    description:
+      "Deposit tokens to start farming Sophon Points (SP) which can later be redeemed for $SOPH",
     chain: "Sophon",
     logo: `${baseIconsUrl}/sophon-farm.png`,
     audits: "2",
@@ -2479,7 +2509,7 @@ const data4: Protocol[] = [
     twitter: "sophon",
     forkedFrom: [],
     audit_links: ["https://docs.sophon.xyz/links/audits"],
-    listedAt: 1737831373,
+    listedAt: 1737831373
   },
   {
     id: "5668",
@@ -2507,7 +2537,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.tribe.run/",
-    description: "Crypto social on Solana  ",
+    description:
+      "Crypto social on Solana  ",
     chain: "Solana",
     logo: `${baseIconsUrl}/tribe.run.png`,
     audits: "0",
@@ -2519,7 +2550,7 @@ const data4: Protocol[] = [
     module: "tribe-run/index.js",
     twitter: "tribedotrun",
     forkedFrom: [],
-    listedAt: 1737921131,
+    listedAt: 1737921131
   },
   {
     id: "5670",
@@ -2527,7 +2558,8 @@ const data4: Protocol[] = [
     address: "pulse:0xF2Da3942616880E52e841E5C504B5A9Fba23FFF0",
     symbol: "NEON",
     url: "https://nexionpulse.com/",
-    description: "NEXION is a dApp ecosystem that offers users a variety of ways to participate and earn rewards",
+    description:
+      "NEXION is a dApp ecosystem that offers users a variety of ways to participate and earn rewards",
     chain: "Pulse",
     logo: `${baseIconsUrl}/nexion.png`,
     audits: "0",
@@ -2539,7 +2571,7 @@ const data4: Protocol[] = [
     module: "nexion/index.js",
     twitter: "nexionpulse",
     forkedFrom: [],
-    listedAt: 1737921507,
+    listedAt: 1737921507
   },
   {
     id: "5671",
@@ -2584,16 +2616,16 @@ const data4: Protocol[] = [
       {
         name: "Api3",
         type: "Primary",
-        proof: ["https://vicuna-finance.gitbook.io/vicuna-finance-sonic/other-info/integrations#api3"],
+        proof: ["https://vicuna-finance.gitbook.io/vicuna-finance-sonic/other-info/integrations#api3"]
       },
       {
         name: "Pyth",
         type: "Fallback",
-        proof: ["https://vicuna-finance.gitbook.io/vicuna-finance-sonic/other-info/integrations#pyth"],
-      },
+        proof: ["https://vicuna-finance.gitbook.io/vicuna-finance-sonic/other-info/integrations#pyth"]
+      }
     ],
     parentProtocol: "parent#vicuna",
-    listedAt: 1737981273,
+    listedAt: 1737981273
   },
   {
     id: "5673",
@@ -2614,7 +2646,7 @@ const data4: Protocol[] = [
     module: "coin8-cex/index.js",
     twitter: "Coin8_Exchange",
     forkedFrom: [],
-    listedAt: 1737981973,
+    listedAt: 1737981973
   },
   {
     id: "5674",
@@ -2622,7 +2654,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.coffer.network",
-    description: "Coffer Network is a decentralized programmable Smart Account infrastructure for Bitcoin",
+    description:
+      "Coffer Network is a decentralized programmable Smart Account infrastructure for Bitcoin",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/coffer-network.jpg`,
     audits: "0",
@@ -2637,13 +2670,12 @@ const data4: Protocol[] = [
     github: ["coffer-network"],
     warningBanners: [
       {
-        message:
-          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        message: "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
         until: "2025-08-21",
-      },
+      }
     ],
-    listedAt: 1737988177,
+    listedAt: 1737988177
   },
   {
     id: "5675",
@@ -2665,7 +2697,7 @@ const data4: Protocol[] = [
     twitter: "SonusExchange",
     forkedFromIds: ["1407"],
     parentProtocol: "parent#sonus",
-    listedAt: 1738001611,
+    listedAt: 1738001611
   },
   {
     id: "5676",
@@ -2687,7 +2719,7 @@ const data4: Protocol[] = [
     twitter: "SonusExchange",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#sonus",
-    listedAt: 1738001617,
+    listedAt: 1738001617
   },
   {
     id: "5677",
@@ -2695,7 +2727,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dex.noxa.fi/#/swap",
-    description: "Decentralized exchange on Abstract",
+    description:
+      "Decentralized exchange on Abstract",
     chain: "Abstract",
     logo: `${baseIconsUrl}/noxa.png`,
     audits: "0",
@@ -2707,7 +2740,7 @@ const data4: Protocol[] = [
     module: "noxa-fi/index.js",
     twitter: "Noxa_Fi",
     forkedFromIds: ["2197"],
-    listedAt: 1738007747,
+    listedAt: 1738007747
   },
   {
     id: "5678",
@@ -2715,7 +2748,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.reservoir.tools/#/swap",
-    description: "Uniswap V2 fork",
+    description:
+      "Uniswap V2 fork",
     chain: "Abstract",
     logo: `${baseIconsUrl}/reservoir-tools.png`,
     audits: "0",
@@ -2728,7 +2762,7 @@ const data4: Protocol[] = [
     twitter: "reservoir0x",
     forkedFromIds: ["2197"],
     parentProtocol: "parent#reservoir-tools",
-    listedAt: 1738007753,
+    listedAt: 1738007753
   },
   {
     id: "5679",
@@ -2736,7 +2770,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.reservoir.tools/#/swap",
-    description: "Uniswap V3 fork",
+    description:
+      "Uniswap V3 fork",
     chain: "Abstract",
     logo: `${baseIconsUrl}/reservoir-tools.png`,
     audits: "0",
@@ -2749,7 +2784,7 @@ const data4: Protocol[] = [
     twitter: "reservoir0x",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#reservoir-tools",
-    listedAt: 1738007759,
+    listedAt: 1738007759
   },
   {
     id: "5680",
@@ -2771,7 +2806,7 @@ const data4: Protocol[] = [
     twitter: "beets_fi",
     forkedFromIds: ["5491"],
     parentProtocol: "parent#beethoven-x",
-    listedAt: 1738009211,
+    listedAt: 1738009211
   },
   {
     id: "5681",
@@ -2779,7 +2814,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://raccoonswap.finance/",
-    description: "DEX Platform for the Parex Ecosystem",
+    description:
+      "DEX Platform for the Parex Ecosystem",
     chain: "Parex",
     logo: `${baseIconsUrl}/raccoonswap.png`,
     audits: "0",
@@ -2791,7 +2827,7 @@ const data4: Protocol[] = [
     module: "raccoonswap/index.js",
     twitter: "raccoonswap",
     forkedFromIds: ["2197"],
-    listedAt: 1738079995,
+    listedAt: 1738079995
   },
   {
     id: "5682",
@@ -2799,7 +2835,8 @@ const data4: Protocol[] = [
     address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
     symbol: "SHADOW",
     url: "https://www.shadow.so/",
-    description: "Native DEX on Sonic",
+    description:
+      "Native DEX on Sonic",
     chain: "Sonic",
     logo: `${baseIconsUrl}/shadow-exchange.jpg`,
     audits: "0",
@@ -2812,7 +2849,7 @@ const data4: Protocol[] = [
     twitter: "ShadowOnSonic",
     forkedFromIds: ["1407"],
     parentProtocol: "parent#shadow-exchange",
-    listedAt: 1738081015,
+    listedAt: 1738081015
   },
   {
     id: "5683",
@@ -2820,7 +2857,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://gateway.soniclabs.com/ethereum/sonic/s",
-    description: "Canonical Bridge for Sonic chain",
+    description:
+      "Canonical Bridge for Sonic chain",
     chain: "Sonic",
     logo: `${baseIconsUrl}/sonic-gateway.png`,
     audits: "0",
@@ -2832,7 +2870,7 @@ const data4: Protocol[] = [
     module: "sonic-gateway/index.js",
     twitter: "SonicLabs",
     forkedFrom: [],
-    listedAt: 1738081153,
+    listedAt: 1738081153
   },
   {
     id: "5684",
@@ -2840,7 +2878,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.zoo.fun/",
-    description: "Platform for new coin launches on Abstract chain",
+    description:
+      "Platform for new coin launches on Abstract chain",
     chain: "Abstract",
     logo: `${baseIconsUrl}/zoo.fun.png`,
     audits: "0",
@@ -2852,7 +2891,7 @@ const data4: Protocol[] = [
     module: "zoodotfun/index.js",
     twitter: "zoodotfun",
     forkedFrom: [],
-    listedAt: 1738095359,
+    listedAt: 1738095359
   },
   {
     id: "5685",
@@ -2860,7 +2899,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.quill.finance/",
-    description: "Quill Finance: An over-collateralized stablecoin protocol on Scroll's zk-Rollup network",
+    description:
+      "Quill Finance: An over-collateralized stablecoin protocol on Scroll's zk-Rollup network",
     chain: "Scroll",
     logo: `${baseIconsUrl}/quill-finance.jpg`,
     audits: "3",
@@ -2873,19 +2913,19 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"],
+        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"]
       },
       {
         name: "Pyth",
         type: "Fallback",
-        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"],
-      },
+        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"]
+      }
     ],
     module: "quill-fi/index.js",
     twitter: "QuillFi",
     forkedFromIds: ["5656"],
     stablecoins: ["quill-usd"],
-    listedAt: 1738101111,
+    listedAt: 1738101111
   },
   {
     id: "5686",
@@ -2893,7 +2933,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xpressprotocol.com",
-    description: "On-chain CLOB dex on Sonic.",
+    description:
+      "On-chain CLOB dex on Sonic.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/xpress-protocol.jpg`,
     audits: "0",
@@ -2905,7 +2946,7 @@ const data4: Protocol[] = [
     module: "xpress/index.js",
     twitter: "XPRESSprotocol",
     forkedFrom: [],
-    listedAt: 1738146854,
+    listedAt: 1738146854
   },
   {
     id: "5687",
@@ -2926,7 +2967,7 @@ const data4: Protocol[] = [
     module: "moose/index.js",
     twitter: "moose_market",
     forkedFrom: [],
-    listedAt: 1738147302,
+    listedAt: 1738147302
   },
   {
     id: "5688",
@@ -2935,7 +2976,8 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "OS",
     url: "https://www.originprotocol.com",
-    description: "Liquid staking for Sonic with boosted yield and peg stability",
+    description:
+      "Liquid staking for Sonic with boosted yield and peg stability",
     chain: "Sonic",
     logo: `${baseIconsUrl}/origin-sonic.jpg`,
     audits: "2",
@@ -2949,7 +2991,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#origin-defi",
     audit_links: ["https://docs.originprotocol.com/security-and-risk/audits"],
-    listedAt: 1738147902,
+    listedAt: 1738147902
   },
   {
     id: "5689",
@@ -2970,7 +3012,7 @@ const data4: Protocol[] = [
     module: "libre-capital/index.js",
     twitter: "librecap",
     forkedFrom: [],
-    listedAt: 1738172664,
+    listedAt: 1738172664
   },
   {
     id: "5690",
@@ -2978,8 +3020,7 @@ const data4: Protocol[] = [
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
     url: "https://uniswap.org/",
-    description:
-      "Uniswap v4 inherits all of the capital efficiency gains of Uniswap v3, but provides flexibility via hooks and gas optimizations across the entire lifecycle",
+    description: "Uniswap v4 inherits all of the capital efficiency gains of Uniswap v3, but provides flexibility via hooks and gas optimizations across the entire lifecycle",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v4.png`,
     audits: "2",
@@ -2987,19 +3028,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: [
-      "Ethereum",
-      "Optimism",
-      "Base",
-      "Arbitrum",
-      "Polygon",
-      "Blast",
-      "Zora",
-      "Ink",
-      "Soneium",
-      "Avalanche",
-      "Binance",
-    ],
+    chains: ["Ethereum", "Optimism", "Base", "Arbitrum", "Polygon", "Blast", "Zora", "Ink", "Soneium", "Avalanche", "Binance"],
     module: "uniswap-v4/index.js",
     twitter: "Uniswap",
     audit_links: [
@@ -3015,8 +3044,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.abs.xyz/",
-    description:
-      "Abstract is a Layer 2 on Ethereum using zero-knowledge (ZK) rollups to scale by batching off-chain transactions and verifying them on-chain with ZK proofs, while remaining EVM-compatible for easy smart contract deployment",
+    description: "Abstract is a Layer 2 on Ethereum using zero-knowledge (ZK) rollups to scale by batching off-chain transactions and verifying them on-chain with ZK proofs, while remaining EVM-compatible for easy smart contract deployment",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/abstract.png`,
     audits: "0",
@@ -3035,8 +3063,7 @@ const data4: Protocol[] = [
     address: "0x3e5a19c91266ad8ce2477b91585d1856b84062df",
     symbol: "A8",
     url: "https://ancient8.gg/",
-    description:
-      "Ancient8 Chain is a gaming-focused community-driven Ethereum Layer 2, powered by the OP Stack and enhanced with Celestia, designed to address the scalability and adoption challenges faced by web3 gaming and consumer DApps",
+    description: "Ancient8 Chain is a gaming-focused community-driven Ethereum Layer 2, powered by the OP Stack and enhanced with Celestia, designed to address the scalability and adoption challenges faced by web3 gaming and consumer DApps",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ancient8.png`,
     audits: "0",
@@ -3055,8 +3082,7 @@ const data4: Protocol[] = [
     address: "0x14778860e937f509e651192a90589de711fb88a9",
     symbol: "CYBER",
     url: "https://cyber.co/",
-    description:
-      "Cyber is an L2 built on the OP stack, designed for social interactions. It offers native yield from Ethereum restaking, native smart accounts, seedless wallets, a social graph protocol and decentralized storage via CyberDB",
+    description: "Cyber is an L2 built on the OP stack, designed for social interactions. It offers native yield from Ethereum restaking, native smart accounts, seedless wallets, a social graph protocol and decentralized storage via CyberDB",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cyber.png`,
     audits: "0",
@@ -3075,8 +3101,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "FXTL",
     url: "https://frax.finance",
-    description:
-      "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
+    description: "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fraxtal.png`,
     audits: "0",
@@ -3096,8 +3121,7 @@ const data4: Protocol[] = [
     address: "0x9c7beba8f6ef6643abd725e45a4e8387ef260649",
     symbol: "G",
     url: "https://gravity.xyz/",
-    description:
-      "Gravity, built by Galxe, is an omnichannel settlement layer designed for mass adoption. It uses Zero-Knowledge Proofs, staking architecture, and advanced consensus mechanisms for high performance.",
+    description: "Gravity, built by Galxe, is an omnichannel settlement layer designed for mass adoption. It uses Zero-Knowledge Proofs, staking architecture, and advanced consensus mechanisms for high performance.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gravity-by-galxe.png`,
     audits: "0",
@@ -3116,8 +3140,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://karak.network/",
-    description:
-      "Karak Network is a universal restaking layer that enables the use of staked assets from various blockchains to secure new protocols, reducing the need for their own validator rewards",
+    description: "Karak Network is a universal restaking layer that enables the use of staked assets from various blockchains to secure new protocols, reducing the need for their own validator rewards",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/k2.png`,
     audits: "0",
@@ -3136,8 +3159,7 @@ const data4: Protocol[] = [
     address: "kroma:0x25500000d700bbe27104577cccce8eabcc96c8ad",
     symbol: "KRO",
     url: "https://kroma.network/",
-    description:
-      "Kroma is developing a universal ZK Rollup on the Optimism Bedrock architecture, currently using an Optimistic Rollup with ZK fault proofs and a Scroll-based zkEVM. It aims to switch to a ZK Rollup as proof generation becomes faster and cheaper",
+    description: "Kroma is developing a universal ZK Rollup on the Optimism Bedrock architecture, currently using an Optimistic Rollup with ZK fault proofs and a Scroll-based zkEVM. It aims to switch to a ZK Rollup as proof generation becomes faster and cheaper",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kroma.png`,
     audits: "0",
@@ -3156,8 +3178,7 @@ const data4: Protocol[] = [
     address: "0xabd4c63d2616a5201454168269031355f4764337",
     symbol: "ORDER",
     url: "https://orderly.network/",
-    description:
-      "Orderly Chain is a blockchain that uses the OP Stack to enable fast, secure, and scalable trading across multiple blockchains by recording and settling transactions",
+    description: "Orderly Chain is a blockchain that uses the OP Stack to enable fast, secure, and scalable trading across multiple blockchains by recording and settling transactions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/orderly-chain.png`,
     audits: "0",
@@ -3176,8 +3197,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://rarichain.org/",
-    description:
-      "RARI Chain is an EVM-equivalent Layer 3 blockchain powered by Arbitrum, featuring embedded royalties at the node level, low transaction costs, fast transaction times, and advanced developer tooling, designed to support NFT creators and their ecosystems",
+    description: "RARI Chain is an EVM-equivalent Layer 3 blockchain powered by Arbitrum, featuring embedded royalties at the node level, low transaction costs, fast transaction times, and advanced developer tooling, designed to support NFT creators and their ecosystems",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/rari-chain.png`,
     audits: "0",
@@ -3196,8 +3216,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://redstone.xyz/",
-    description:
-      "Redstone is an Optimistic Rollup on the OP Stack, reducing costs with Plasma mode for data availability, posting input commitments to Ethereum (L1) while ensuring data integrity via offchain availability, DA challenges, and fault-proof mechanisms",
+    description: "Redstone is an Optimistic Rollup on the OP Stack, reducing costs with Plasma mode for data availability, posting input commitments to Ethereum (L1) while ensuring data integrity via offchain availability, DA challenges, and fault-proof mechanisms",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/redstone.png`,
     audits: "0",
@@ -3216,8 +3235,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://world.org/",
-    description:
-      "World Chain is a permissionless Layer 2 blockchain on Ethereum, built with the OP Stack, offering scalability, security, Sybil resistance, community governance, and is part of the OP Superchain ecosystem",
+    description: "World Chain is a permissionless Layer 2 blockchain on Ethereum, built with the OP Stack, offering scalability, security, Sybil resistance, community governance, and is part of the OP Superchain ecosystem",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/world-chain.png`,
     audits: "0",
@@ -3236,8 +3254,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://zero.network/",
-    description:
-      "Zero Network is an EVM-compatible, gasless rollup built on the ZK Stack, enabling onchain interactions by using a custom paymaster to cover transaction costs and allowing dApps to be easily ported from Ethereum and other L2 networks",
+    description: "Zero Network is an EVM-compatible, gasless rollup built on the ZK Stack, enabling onchain interactions by using a custom paymaster to cover transaction costs and allowing dApps to be easily ported from Ethereum and other L2 networks",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zero-network.png`,
     audits: "0",
@@ -3256,8 +3273,7 @@ const data4: Protocol[] = [
     address: "zkfair:0x1cD3E2A23C45A690a18Ed93FD1412543f464158F",
     symbol: "ZKF",
     url: "https://zkfair.io/",
-    description:
-      "ZKFair is the a community ZK-L2 based on Polygon CDK and Celestia DA, powered by Lumoz, a ZK-RaaS provider. ZKFair utilizes the stablecoin USDC as the gas token and is 100% EVM compatible, has minimal fees, and a robust security",
+    description: "ZKFair is the a community ZK-L2 based on Polygon CDK and Celestia DA, powered by Lumoz, a ZK-RaaS provider. ZKFair utilizes the stablecoin USDC as the gas token and is 100% EVM compatible, has minimal fees, and a robust security",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zkfair.png`,
     audits: "0",
@@ -3276,8 +3292,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-", // none (pre-tge)
     url: "https://www.rooster-protocol.xyz/",
-    description:
-      "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
+    description: "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume (Deprecated)",
     logo: `${baseIconsUrl}/rooster-protocol.png`,
     audits: "2",
@@ -3288,11 +3303,9 @@ const data4: Protocol[] = [
     chains: ["Plume (Deprecated)"],
     module: "rooster/index.js",
     twitter: "roosterprotocol",
-    audit_links: [
-      "https://github.com/shieldify-security/audits-portfolio/blob/main/reports/RoosterProtocol-Security-Review.pdf",
-    ],
+    audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/RoosterProtocol-Security-Review.pdf"],
     forkedFromIds: ["4752"],
-    listedAt: 1738203899,
+    listedAt: 1738203899
   },
   {
     id: "5705",
@@ -3300,8 +3313,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ethos.markets/",
-    description:
-      "Ethos Markets provides reputation markets, allowing you to trade both trust and distrust on someone's reputation",
+    description: "Ethos Markets provides reputation markets, allowing you to trade both trust and distrust on someone's reputation",
     chain: "Base",
     logo: `${baseIconsUrl}/ethos-markets.png`,
     audits: "2",
@@ -3315,7 +3327,7 @@ const data4: Protocol[] = [
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     forkedFrom: [],
     parentProtocol: "parent#ethos",
-    listedAt: 1738204217,
+    listedAt: 1738204217
   },
   {
     id: "5706",
@@ -3338,16 +3350,16 @@ const data4: Protocol[] = [
       {
         name: "Supra",
         type: "Primary",
-        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"],
+        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"]
       },
       {
         name: "TWAP",
         type: "Fallback",
-        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"],
-      },
+        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"]
+      }
     ],
     forkedFrom: [],
-    listedAt: 1738233223,
+    listedAt: 1738233223
   },
   {
     id: "5707",
@@ -3355,8 +3367,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bondlink.finance",
-    description:
-      "An Omnichain stable coin infrastructure that aggregates private lending opportunities in emerging economies combined with DeFi.",
+    description: "An Omnichain stable coin infrastructure that aggregates private lending opportunities in emerging economies combined with DeFi.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bondlink-finance.png`,
     audits: "2",
@@ -3369,7 +3380,7 @@ const data4: Protocol[] = [
     twitter: "BondlinkFinance",
     forkedFrom: [],
     audit_links: ["https://beosin.com/audits/Bondlink_202412031841.pdf"],
-    listedAt: 1738233515,
+    listedAt: 1738233515
   },
   {
     id: "5708",
@@ -3390,7 +3401,7 @@ const data4: Protocol[] = [
     twitter: "EnclabsFi",
     forkedFrom: [],
     audit_links: [],
-    listedAt: 1738260859,
+    listedAt: 1738260859
   },
   {
     id: "5709",
@@ -3398,8 +3409,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://angles.fi/stake",
-    description:
-      "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
     chain: "Sonic",
     logo: `${baseIconsUrl}/angles-stake.png`,
     audits: "0",
@@ -3413,7 +3423,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     parentProtocol: "parent#angles",
-    listedAt: 1738269622,
+    listedAt: 1738269622
   },
   {
     id: "5710",
@@ -3421,8 +3431,7 @@ const data4: Protocol[] = [
     address: "optimism:0x3b08fcd15280e7b5a6e404c4abb87f7c774d1b2e",
     symbol: "OVN",
     url: "https://overnight.fi",
-    description:
-      "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
+    description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/overnight-finance.jpg`,
     audits: "2",
@@ -3440,7 +3449,7 @@ const data4: Protocol[] = [
       "https://github.com/ovnstable/ovnstable-core/blob/master/audits/ackee_2023-03-03.pdf",
     ],
     github: ["ovnstable"],
-    listedAt: 1738320172,
+    listedAt: 1738320172
   },
   {
     id: "5711",
@@ -3448,8 +3457,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://perena.org",
-    description:
-      "Perena is building the infrastructure for stablecoins on Solana, starting with a novel AMM, Numéraire.",
+    description: "Perena is building the infrastructure for stablecoins on Solana, starting with a novel AMM, Numéraire.",
     chain: "Solana",
     logo: `${baseIconsUrl}/perena.jpg`,
     audits: "0",
@@ -3461,7 +3469,7 @@ const data4: Protocol[] = [
     module: "perena/index.js",
     twitter: "Perena__",
     forkedFrom: [],
-    listedAt: 1738322143,
+    listedAt: 1738322143
   },
   {
     id: "5712",
@@ -3481,7 +3489,7 @@ const data4: Protocol[] = [
     module: "eth-strategy/index.js",
     twitter: "ethstrateg",
     forkedFrom: [],
-    listedAt: 1738322943,
+    listedAt: 1738322943
   },
   {
     id: "5713",
@@ -3489,8 +3497,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.createmytoken.com/",
-    description:
-      "Create your own token in just 1 minute and deploy it on Solana, Ethereum, Base, BNB Smart Chain and more! No code, no setup, no login, and free.",
+    description: "Create your own token in just 1 minute and deploy it on Solana, Ethereum, Base, BNB Smart Chain and more! No code, no setup, no login, and free.",
     chain: "Base",
     logo: `${baseIconsUrl}/createmytoken.png`,
     audits: "0",
@@ -3502,7 +3509,7 @@ const data4: Protocol[] = [
     module: "createmytoken/index.js",
     twitter: "CreateMyToken",
     forkedFrom: [],
-    listedAt: 1738346891,
+    listedAt: 1738346891
   },
   {
     id: "5714",
@@ -3543,7 +3550,7 @@ const data4: Protocol[] = [
     module: "flaunch/index.js",
     twitter: "flaunchgg",
     forkedFrom: [],
-    listedAt: 1738497748,
+    listedAt: 1738497748
   },
   {
     id: "5716",
@@ -3552,8 +3559,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "sS",
     url: "https://suprafi.app/",
-    description:
-      "SupraFi is a cutting-edge platform offering seamless liquid staking solutions, enabling users to stake their $S tokens, earn substantial rewards, and maintain liquidity.",
+    description: "SupraFi is a cutting-edge platform offering seamless liquid staking solutions, enabling users to stake their $S tokens, earn substantial rewards, and maintain liquidity.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/suprafi.jpg`,
     audits: "0",
@@ -3565,7 +3571,7 @@ const data4: Protocol[] = [
     module: "suprafi/index.js",
     twitter: "SupraFi_Sonic",
     forkedFrom: [],
-    listedAt: 1738581869,
+    listedAt: 1738581869
   },
   {
     id: "5717",
@@ -3584,8 +3590,8 @@ const data4: Protocol[] = [
     chains: ["VinuChain"],
     module: "vinufinance/index.js",
     twitter: "VinuChain",
-    forkedFrom: [], // added the github in the chain instead of here
-    listedAt: 1738582017,
+    forkedFrom: [],   // added the github in the chain instead of here
+    listedAt: 1738582017
   },
   {
     id: "5718",
@@ -3593,8 +3599,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.sonic.market/trade",
-    description:
-      "Sonic Market is a decentralized exchange (DEX) built on the Sonic blockchain, designed to bring a fully on-chain Central Limit Order Book (CLOB) experience. Unlike traditional Automated Market Makers (AMMs), Sonic Market leverages its advanced order book technology, LOBSTER (Limit Order Book with Segment Tree for Efficient oRder-matching), to provide fast, gas-efficient order matching directly on the Sonic blockchain.",
+    description: "Sonic Market is a decentralized exchange (DEX) built on the Sonic blockchain, designed to bring a fully on-chain Central Limit Order Book (CLOB) experience. Unlike traditional Automated Market Makers (AMMs), Sonic Market leverages its advanced order book technology, LOBSTER (Limit Order Book with Segment Tree for Efficient oRder-matching), to provide fast, gas-efficient order matching directly on the Sonic blockchain.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/sonic-market-liquidity-vault.jpg`,
     audits: "2",
@@ -3606,12 +3611,11 @@ const data4: Protocol[] = [
     module: "sonic-market-liquidity-vault/index.js",
     twitter: "sonic_market",
     forkedFrom: [],
-    audit_links: [
-      "https://docs.clober.io/assets/files/Clober_Liquidity_Vault_v2_Audit_Report_by_Trust_Security-7d8bcf5e7f6b488122f7974aef1d70c7.pdf",
-      "https://docs.clober.io/assets/files/2025_1_Clober_LiquidityVault-50ac1ebac2c19b9449389bcdf1c788bf.pdf",
+    audit_links: ["https://docs.clober.io/assets/files/Clober_Liquidity_Vault_v2_Audit_Report_by_Trust_Security-7d8bcf5e7f6b488122f7974aef1d70c7.pdf",
+      "https://docs.clober.io/assets/files/2025_1_Clober_LiquidityVault-50ac1ebac2c19b9449389bcdf1c788bf.pdf"
     ],
     parentProtocol: "parent#sonic-market",
-    listedAt: 1738582281,
+    listedAt: 1738582281
   },
   {
     id: "5719",
@@ -3619,8 +3623,7 @@ const data4: Protocol[] = [
     address: "polygon:0x8c3441e7b9aa8a30a542dde048dd067de2802e9b",
     symbol: "WINK",
     url: "https://wink.finance",
-    description:
-      "WINK Finance is the Web3 division of the WINK project, offering a comprehensive ecosystem that includes staking, farming, lending, and DEX aggregation for both tokens and NFTs. Designed to enhance accessibility and efficiency across multiple blockchains, WINK Finance provides seamless DeFi solutions within the broader WINK ecosystem.",
+    description: "WINK Finance is the Web3 division of the WINK project, offering a comprehensive ecosystem that includes staking, farming, lending, and DEX aggregation for both tokens and NFTs. Designed to enhance accessibility and efficiency across multiple blockchains, WINK Finance provides seamless DeFi solutions within the broader WINK ecosystem.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/wink-finance.jpg`,
     audits: "2",
@@ -3633,7 +3636,7 @@ const data4: Protocol[] = [
     twitter: "WinkFinance",
     forkedFrom: [],
     audit_links: ["https://skynet.certik.com/projects/wink"],
-    listedAt: 1738582660,
+    listedAt: 1738582660
   },
   {
     id: "5720",
@@ -3655,7 +3658,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#bounceclub",
     audit_links: [],
-    listedAt: 1738617392,
+    listedAt: 1738617392
   },
   {
     id: "5721",
@@ -3663,8 +3666,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.noon.capital",
-    description:
-      "Noon is a yield optimization protocol that generates delta-neutral returns, maximizes governance token utility, and ensures fair, sustainable value distribution",
+    description: "Noon is a yield optimization protocol that generates delta-neutral returns, maximizes governance token utility, and ensures fair, sustainable value distribution",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/noon.png`,
     audits: "2",
@@ -3678,7 +3680,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.noon.capital/security/smart-contract-audits"],
     stablecoins: ["noon-usn"],
-    listedAt: 1738617865,
+    listedAt: 1738617865
   },
   {
     id: "5722",
@@ -3706,9 +3708,9 @@ const data4: Protocol[] = [
       "https://github.com/exponent-finance/exponent-audits/blob/main/kamino_lend_integration_ottersec_audit.pdf",
       "https://github.com/exponent-finance/exponent-audits/blob/main/marginifi_integration_ottersec_audit.pdf",
       "https://github.com/exponent-finance/exponent-audits/blob/main/Exponent-JitoRestakingStandard-Dec-2024-OffsideLabs.pdf",
-      "https://github.com/exponent-finance/exponent-audits/blob/main/jito_restaking_integration_ottersec_audit.pdf",
+      "https://github.com/exponent-finance/exponent-audits/blob/main/jito_restaking_integration_ottersec_audit.pdf"
     ],
-    listedAt: 1738617871,
+    listedAt: 1738617871
   },
   {
     id: "5723",
@@ -3731,17 +3733,17 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
+        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"]
       },
       {
         name: "Switchboard",
         type: "Fallback",
-        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
-      },
+        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"]
+      }
     ],
     forkedFromIds: ["1916"],
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
-    listedAt: 1738617883,
+    listedAt: 1738617883
   },
   {
     id: "5724",
@@ -3762,7 +3764,7 @@ const data4: Protocol[] = [
     twitter: "sx_bet",
     forkedFrom: [],
     audit_links: [],
-    listedAt: 1738617887,
+    listedAt: 1738617887
   },
   {
     id: "5725",
@@ -3782,7 +3784,7 @@ const data4: Protocol[] = [
     module: "passdex/index.js",
     twitter: "PassDEX",
     forkedFromIds: ["2198"],
-    listedAt: 1738668464,
+    listedAt: 1738668464
   },
   {
     id: "5726",
@@ -3791,8 +3793,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://affluent.org",
-    description:
-      "Affluent is the infrastructure built for trustless asset management. Affluent’s goal is to bring professional yet trustless yield strategies to everyday users through Telegram-based experiences that abstract away DeFi complexity for seamless financial empowerment.",
+    description: "Affluent is the infrastructure built for trustless asset management. Affluent’s goal is to bring professional yet trustless yield strategies to everyday users through Telegram-based experiences that abstract away DeFi complexity for seamless financial empowerment.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/affluent.jpg`,
     audits: "0",
@@ -3805,7 +3806,7 @@ const data4: Protocol[] = [
     twitter: "AffluentOrg",
     oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], // https://docs.factorial.finance/oracle
     forkedFrom: [],
-    listedAt: 1738669030,
+    listedAt: 1738669030
   },
   {
     id: "5727",
@@ -3826,7 +3827,7 @@ const data4: Protocol[] = [
     twitter: "elys_network",
     forkedFrom: [],
     parentProtocol: "parent#elys-protocol",
-    listedAt: 1738669189,
+    listedAt: 1738669189
   },
   {
     id: "5728",
@@ -3853,8 +3854,7 @@ const data4: Protocol[] = [
     address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://perps.raydium.io/",
-    description:
-      "Raydium Perpetual is a gasless Central Limit Order Book (CLOB) perps protocol with up to 50x leverage",
+    description: "Raydium Perpetual is a gasless Central Limit Order Book (CLOB) perps protocol with up to 50x leverage",
     chain: "Solana",
     logo: `${baseIconsUrl}/raydium.jpg`,
     audits: "0",
@@ -3865,7 +3865,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "RaydiumProtocol",
-    parentProtocol: "parent#raydium",
+    parentProtocol: "parent#raydium"
   },
   {
     id: "5730",
@@ -3873,8 +3873,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://angles.fi",
-    description:
-      "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
     chain: "Sonic",
     logo: `${baseIconsUrl}/angles-liquid.png`,
     audits: "0",
@@ -3888,7 +3887,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     parentProtocol: "parent#angles",
-    listedAt: 1738689725,
+    listedAt: 1738689725
   },
   {
     id: "5731",
@@ -3896,8 +3895,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bitrue.com",
-    description:
-      "Bitrue was established by a group of blockchain enthusiasts with a goal of providing complete financial services for the currencies of the future.",
+    description: "Bitrue was established by a group of blockchain enthusiasts with a goal of providing complete financial services for the currencies of the future.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/bitrue.jpg`,
     audits: "0",
@@ -3909,7 +3907,7 @@ const data4: Protocol[] = [
     module: "bitrue-cex/index.js",
     twitter: "BitrueOfficial",
     forkedFrom: [],
-    listedAt: 1738755255,
+    listedAt: 1738755255
   },
   {
     id: "5732",
@@ -3955,9 +3953,9 @@ const data4: Protocol[] = [
     audit_links: [
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2FLPus8JS8WGA5412Nf2eH%2FSolera%20-%20Zenith%20Audit%20Report%20-%2012-18-2024.pdf?alt=media&token=ade0f7c6-2105-422f-8411-f099cf71e00f",
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2FtSEQnq1GRItGbgiUcoFm%2FSolera%20-%20Zellic%20Audit%20Report%20-%2002-04-2025.pdf?alt=media&token=f5b48e43-6c77-4591-ac94-3a0754c54ca9",
-      "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2F4UT7XaqETfzun5TSBrKU%2FSolera%20-%20Zellic%20Audit%20Report%20-%2005-19-2025.pdf?alt=media&token=065cf5fc-0f75-4e83-b061-c12e251c8c79",
+      "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2F4UT7XaqETfzun5TSBrKU%2FSolera%20-%20Zellic%20Audit%20Report%20-%2005-19-2025.pdf?alt=media&token=065cf5fc-0f75-4e83-b061-c12e251c8c79"
     ],
-    listedAt: 1738784157,
+    listedAt: 1738784157
   },
   {
     id: "5734",
@@ -4019,7 +4017,7 @@ const data4: Protocol[] = [
     module: "diesel-dex/index.js",
     twitter: "DieselDex_Fuel",
     forkedFrom: [],
-    listedAt: 1738813273,
+    listedAt: 1738813273
   },
   {
     id: "5737",
@@ -4027,8 +4025,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://wavex.fi",
-    description:
-      "Trade with high leverage, zero price impact, and access deep liquidity. Earn potential yields by simply depositing assets as a liquidity provider.",
+    description: "Trade with high leverage, zero price impact, and access deep liquidity. Earn potential yields by simply depositing assets as a liquidity provider.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/wavex.png`,
     audits: "0",
@@ -4043,18 +4040,16 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: [
-          "https://soneium.blockscout.com/address/0x580DD7a2CfC523347F15557ad19f736F74D5677c?tab=read_contract#0x741bef1a",
-        ],
+        proof: ["https://soneium.blockscout.com/address/0x580DD7a2CfC523347F15557ad19f736F74D5677c?tab=read_contract#0x741bef1a"]
       },
       {
         name: "Chainlink",
         type: "Fallback",
-        proof: ["https://soneium.blockscout.com/address/0xE71E8c6FF0066F712F885d2c3866Fdc22E3C7E4E?tab=contract_code"],
+        proof: ["https://soneium.blockscout.com/address/0xE71E8c6FF0066F712F885d2c3866Fdc22E3C7E4E?tab=contract_code"]
       },
     ],
     forkedFromIds: ["3365"],
-    listedAt: 1738844419,
+    listedAt: 1738844419
   },
   {
     id: "5738",
@@ -4062,8 +4057,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://magsin.io/",
-    description:
-      "Magsinio is Sonic's native money market. Lend and borrow your favorite Sonic assets through Magsinio including our proprietary cUSD stablecoin!",
+    description: "Magsinio is Sonic's native money market. Lend and borrow your favorite Sonic assets through Magsinio including our proprietary cUSD stablecoin!",
     chain: "Sonic",
     logo: `${baseIconsUrl}/magsinio.png`,
     audits: "0",
@@ -4075,7 +4069,7 @@ const data4: Protocol[] = [
     module: "magsinio/index.js",
     twitter: "magsinio",
     forkedFromIds: ["1599"],
-    listedAt: 1738844659,
+    listedAt: 1738844659
   },
   {
     id: "5739",
@@ -4083,8 +4077,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dex.penumbra.zone/explore",
-    description:
-      "A fully private, cross-chain proof-of-stake network and decentralized exchange for the Cosmos and beyond. PENUMBRA IS HERE.",
+    description: "A fully private, cross-chain proof-of-stake network and decentralized exchange for the Cosmos and beyond. PENUMBRA IS HERE.",
     chain: "Penumbra",
     logo: `${baseIconsUrl}/penumbra-dex.jpg`,
     audits: "0",
@@ -4096,7 +4089,7 @@ const data4: Protocol[] = [
     module: "penumbra-dex/index.js",
     twitter: "penumbrazone",
     forkedFrom: [],
-    listedAt: 1738852769,
+    listedAt: 1738852769
   },
   {
     id: "5740",
@@ -4104,8 +4097,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.1delta.io/markets",
-    description:
-      "1delta is your gateway to DeFi, offering swap aggregation, spot-margin trading, and leveraged yield farming through an intuitive, non-custodial platform.",
+    description: "1delta is your gateway to DeFi, offering swap aggregation, spot-margin trading, and leveraged yield farming through an intuitive, non-custodial platform.",
     chain: "Fuel",
     logo: `${baseIconsUrl}/1delta.png`,
     audits: "0",
@@ -4208,8 +4200,7 @@ const data4: Protocol[] = [
     address: "berachain:0x28e0e3B9817012b356119dF9e217c25932D609c2",
     symbol: "BURR",
     url: "https://app.burrbear.io/",
-    description:
-      "BurrBear is a stablecoin-focused DEX on Berachain, featuring multi-stable pools, 20x capital-efficient Burr Pools, and generalized token swaps",
+    description: "BurrBear is a stablecoin-focused DEX on Berachain, featuring multi-stable pools, 20x capital-efficient Burr Pools, and generalized token swaps",
     chain: "Berachain",
     logo: `${baseIconsUrl}/burrbear.png`,
     audits: "2",
@@ -4231,8 +4222,7 @@ const data4: Protocol[] = [
     address: "berachain:0xC99e948E9D183848a6c4F5E6C1d225F02f171d79",
     symbol: "POLLEN",
     url: "https://app.beraborrow.com/",
-    description:
-      "Beraborrow unlocks instant liquidity against Berachain assets through the first PoL powered stablecoin, NECT",
+    description: "Beraborrow unlocks instant liquidity against Berachain assets through the first PoL powered stablecoin, NECT",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beraborrow.png`,
     audits: "2",
@@ -4245,15 +4235,12 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: [
-          "https://app.redstone.finance/app/feeds/?page=1&sortBy=popularity&sortDesc=false&perPage=32&networks=80094",
-          "https://berascan.com//address/0x83c6f7F61A55Fc7A1337AbD45733AD9c1c68076D",
-        ],
+        proof: ["https://app.redstone.finance/app/feeds/?page=1&sortBy=popularity&sortDesc=false&perPage=32&networks=80094", "https://berascan.com//address/0x83c6f7F61A55Fc7A1337AbD45733AD9c1c68076D"]
       },
       {
         name: "Chronicle",
         type: "Secondary",
-        proof: ["https://beraborrow.gitbook.io/docs/pricing-assets#single-sided-assets"],
+        proof: ["https://beraborrow.gitbook.io/docs/pricing-assets#single-sided-assets"]
       },
     ],
     forkedFrom: [],
@@ -4301,7 +4288,7 @@ const data4: Protocol[] = [
     module: "fizzswap-v2/index.js",
     twitter: "FizzswapDex",
     parentProtocol: "parent#fizzswap",
-    listedAt: 1738926377,
+    listedAt: 1738926377
   },
   {
     id: "5749",
@@ -4322,7 +4309,7 @@ const data4: Protocol[] = [
     module: "fizzswap-v3/index.js",
     twitter: "FizzswapDex",
     parentProtocol: "parent#fizzswap",
-    listedAt: 1738926977,
+    listedAt: 1738926977
   },
   {
     id: "5750",
@@ -4330,8 +4317,7 @@ const data4: Protocol[] = [
     address: "bsc:0x1865dc79a9e4b5751531099057d7ee801033d268",
     symbol: "LKI",
     url: "https://www.laikalabs.ai",
-    description:
-      "Laika AI is building the comprehensive AI layer for Web3, combining enterprise RAG infrastructure, developer APIs, and analytics tools. With our multi-chain super-app chrome extension, Ai Agent Infrastructure, Telegram AI analytics, and verified ChatGPT plugins, delivering advanced blockchain intelligence and automated market analysis.",
+    description: "Laika AI is building the comprehensive AI layer for Web3, combining enterprise RAG infrastructure, developer APIs, and analytics tools. With our multi-chain super-app chrome extension, Ai Agent Infrastructure, Telegram AI analytics, and verified ChatGPT plugins, delivering advanced blockchain intelligence and automated market analysis.",
     chain: "Binance",
     logo: `${baseIconsUrl}/laika-ai.jpg`,
     audits: "0",
@@ -4343,7 +4329,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "laika-ai/index.js",
     twitter: "Laika_ai",
-    listedAt: 1738937447,
+    listedAt: 1738937447
   },
   {
     id: "5751",
@@ -4351,8 +4337,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ethena.concrete.xyz",
-    description:
-      "Access automated DeFi yields on Berachain while earning rewards from Ethena, Concrete and the Berachain ecosystem",
+    description: "Access automated DeFi yields on Berachain while earning rewards from Ethena, Concrete and the Berachain ecosystem",
     chain: "Berachain",
     logo: `${baseIconsUrl}/concrete.png`,
     audits: "0",
@@ -4364,7 +4349,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "concrete-xyz/index.js",
     twitter: "ConcreteXYZ",
-    listedAt: 1738937447,
+    listedAt: 1738937447
   },
   {
     id: "5752",
@@ -4385,7 +4370,7 @@ const data4: Protocol[] = [
     module: "goldilocks/index.js",
     twitter: "goldilocksmoney",
     audit_links: ["https://goldilocks.gitbook.io/docs/info/audits"],
-    listedAt: 1738953564,
+    listedAt: 1738953564
   },
   {
     id: "5753",
@@ -4407,7 +4392,7 @@ const data4: Protocol[] = [
     twitter: "moveflowlabs_",
     audit_links: ["https://github.com/Move-Flow/Audit_report"],
     github: ["Move-Flow"],
-    listedAt: 1738953574,
+    listedAt: 1738953574
   },
   {
     id: "5754",
@@ -4429,7 +4414,7 @@ const data4: Protocol[] = [
     twitter: "voltfinance",
     forkedFromIds: ["3710"],
     parentProtocol: "parent#voltage",
-    listedAt: 1738953582,
+    listedAt: 1738953582
   },
   {
     id: "5755",
@@ -4437,8 +4422,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://vicunafinance.com/borrow",
-    description:
-      "Vicuna Finance operates as a native borrow/lending protocol, facilitating leveraged yield farming on the Sonic Blockchain. Lenders can earn yields on their tokens, while borrowers gain access to capital-efficient, undercollateralized loans for leveraged yield farming positions",
+    description: "Vicuna Finance operates as a native borrow/lending protocol, facilitating leveraged yield farming on the Sonic Blockchain. Lenders can earn yields on their tokens, while borrowers gain access to capital-efficient, undercollateralized loans for leveraged yield farming positions",
     chain: "Sonic",
     logo: `${baseIconsUrl}/vicuna-finance.png`,
     audits: "0",
@@ -4451,7 +4435,7 @@ const data4: Protocol[] = [
     module: "vicuna-lending/index.js",
     twitter: "VicunaFinance",
     parentProtocol: "parent#vicuna",
-    listedAt: 1738953589,
+    listedAt: 1738953589
   },
   {
     id: "5756",
@@ -4459,8 +4443,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://krystal.app",
-    description:
-      "Krystal ALM (Automated Liquidity Management) is a one-stop shop for liquidity providers, covering every aspect of their LP journey—from exploration and provisioning to tracking and management",
+    description: "Krystal ALM (Automated Liquidity Management) is a one-stop shop for liquidity providers, covering every aspect of their LP journey—from exploration and provisioning to tracking and management",
     chain: "Solana",
     logo: `${baseIconsUrl}/krystal.png`,
     audits: "0",
@@ -4473,7 +4456,7 @@ const data4: Protocol[] = [
     module: "krystal/index.js",
     twitter: "KrystalDeFi",
     github: ["KrystalDeFi"],
-    listedAt: 1738953599,
+    listedAt: 1738953599
   },
   {
     id: "5757",
@@ -4494,10 +4477,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "stratis-liquid-staking/index.js",
     twitter: "stratisplatform",
-    audit_links: [
-      "https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf",
-    ],
-    listedAt: 1738964031,
+    audit_links: ["https://github.com/stafiprotocol/security/blob/main/audits/202304_BlockSec_StaFi-ETHWithdraw/blocksec_stafi_v1.0-signed.pdf"],
+    listedAt: 1738964031
   },
   {
     id: "5758",
@@ -4523,8 +4504,8 @@ const data4: Protocol[] = [
       {
         message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
-      },
-    ],
+      }
+    ]
   },
   {
     id: "5759",
@@ -4550,8 +4531,8 @@ const data4: Protocol[] = [
       {
         message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
-      },
-    ],
+      }
+    ]
   },
   {
     id: "5760",
@@ -4559,8 +4540,7 @@ const data4: Protocol[] = [
     address: "sonic:0x3a516e01f82c1e18916ED69a81Dd498eF64bB157",
     symbol: "SNAKE",
     url: "https://snake.finance",
-    description:
-      "Snake Finance, an Algorithmic Stablecoin where 1 $SNAKE is equivalent to 1 $S. Algorithmic stablecoins are non-collateralized tokens designed to follow the price of their pegged asset, offering greater capital efficiency than traditional collateralized stablecoins",
+    description: "Snake Finance, an Algorithmic Stablecoin where 1 $SNAKE is equivalent to 1 $S. Algorithmic stablecoins are non-collateralized tokens designed to follow the price of their pegged asset, offering greater capital efficiency than traditional collateralized stablecoins",
     chain: "Sonic",
     logo: `${baseIconsUrl}/snake-finance.png`,
     audits: "0",
@@ -4572,7 +4552,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["376"],
     module: "snake/index.js",
     twitter: "SnakeOnSonic",
-    listedAt: 1738964053,
+    listedAt: 1738964053
   },
   {
     id: "5761",
@@ -4594,7 +4574,7 @@ const data4: Protocol[] = [
     module: "hyperliquid-spot-orderbook/index.js",
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
-    listedAt: 1738964061,
+    listedAt: 1738964061
   },
   {
     id: "5762",
@@ -4615,7 +4595,7 @@ const data4: Protocol[] = [
     treasury: "zoofi-io.js",
     module: "zoofi-io/index.js",
     twitter: "ZooFinanceIO",
-    listedAt: 1739186083,
+    listedAt: 1739186083
   },
   {
     id: "5763",
@@ -4637,7 +4617,7 @@ const data4: Protocol[] = [
     module: "multichainz/index.js",
     twitter: "MultichainZ_",
     audit_links: ["https://skynet.certik.com/projects/multichainz"],
-    listedAt: 1739208685,
+    listedAt: 1739208685
   },
   {
     id: "5764",
@@ -4657,7 +4637,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "beracaine/index.js",
     twitter: "beracaine",
-    listedAt: 1739208691,
+    listedAt: 1739208691
   },
   {
     id: "5765",
@@ -4665,8 +4645,7 @@ const data4: Protocol[] = [
     address: "abstract:0x61c0940b2760C7B64aD8fd775c12D1f11c73deb2",
     symbol: "MOND",
     url: "https://www.mondrianswap.xyz",
-    description:
-      "Mondrian Swap is the first community-driven Decentralized Exchange (DEX) on the Abstract Blockchain, leveraging the Balancer V2 framework and featuring a custom vote escrow governance model designed to create a self-sustaining liquidity ecosystem. Unlike traditional DEXes that rely on unsustainable emissions and mercenary capital, Mondrian Swap leverages veNFT-powered gauge voting to ensure that incentives flow toward long-term liquidity providers and projects that contribute real value to the ecosystem.",
+    description: "Mondrian Swap is the first community-driven Decentralized Exchange (DEX) on the Abstract Blockchain, leveraging the Balancer V2 framework and featuring a custom vote escrow governance model designed to create a self-sustaining liquidity ecosystem. Unlike traditional DEXes that rely on unsustainable emissions and mercenary capital, Mondrian Swap leverages veNFT-powered gauge voting to ensure that incentives flow toward long-term liquidity providers and projects that contribute real value to the ecosystem.",
     chain: "Abstract",
     logo: `${baseIconsUrl}/mondrian-swap.jpg`,
     audits: "0",
@@ -4679,7 +4658,7 @@ const data4: Protocol[] = [
     module: "mondrian/index.js",
     github: ["mondrian-swap"],
     twitter: "MondrianSwap",
-    listedAt: 1739273754,
+    listedAt: 1739273754
   },
   {
     id: "5766",
@@ -4700,7 +4679,7 @@ const data4: Protocol[] = [
     module: "bullaexchange/index.js",
     twitter: "BullaExchange",
     audit_links: ["https://docs.bulla.exchange/information/audits"],
-    listedAt: 1739274028,
+    listedAt: 1739274028
   },
   {
     id: "5767",
@@ -4720,7 +4699,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ucs-finance/index.js",
     twitter: null, // account disable i think https://x.com/UniChainSwap
-    listedAt: 1739284494,
+    listedAt: 1739284494
   },
   {
     id: "5768",
@@ -4728,8 +4707,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.arkis.xyz/",
-    description:
-      "Arkis is a DeFi Prime Broker that acts as a credit protocol by providing on-chain loans to institutional asset managers from the protocol lenders.",
+    description: "Arkis is a DeFi Prime Broker that acts as a credit protocol by providing on-chain loans to institutional asset managers from the protocol lenders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arkis.jpg`,
     audits: "2",
@@ -4741,17 +4719,14 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "arkis/index.js",
     twitter: "ArkisXYZ",
-    audit_links: [
-      "https://github.com/ArkisXYZ/audits/blob/main/Arkis_Quantstamp_Report.pdf",
-      "https://github.com/ArkisXYZ/audits/blob/main/Arkis_Prime_Brokerage_Final_Report_With_Fix_Review_Final_Edit.pdf",
-    ],
+    audit_links: ["https://github.com/ArkisXYZ/audits/blob/main/Arkis_Quantstamp_Report.pdf", "https://github.com/ArkisXYZ/audits/blob/main/Arkis_Prime_Brokerage_Final_Report_With_Fix_Review_Final_Edit.pdf"],
     github: ["ArkisXYZ"],
-    listedAt: 1739284994,
+    listedAt: 1739284994
   },
   {
     id: "5769",
     name: "Polyhedra Network",
-    address: "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+    address: '0xc71b5f631354be6853efe9c3ab6b9590f8302e81',
     symbol: "ZKJ",
     url: "https://www.polyhedra.network/",
     description: "Trust, safety, and data privacy at the core of every decision.",
@@ -4759,7 +4734,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/polyhedra.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "polyhedra-network",
+    gecko_id: 'polyhedra-network',
     cmcId: "29779",
     category: "Chain",
     chains: ["Ethereum"],
@@ -4779,7 +4754,7 @@ const data4: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "berachain-bera",
-    cmcId: "24647",
+    cmcId: '24647',
     category: "Chain Bribes",
     chains: ["Berachain"],
     forkedFrom: [],
@@ -4792,8 +4767,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.hashport.network",
-    description:
-      "Hashport is an enterprise-grade public bridging utility that facilitates the movement of digital assets between distributed networks, helping them to extend their functionality in a quick, secure, and cost-effective way.",
+    description: "Hashport is an enterprise-grade public bridging utility that facilitates the movement of digital assets between distributed networks, helping them to extend their functionality in a quick, secure, and cost-effective way.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashport.jpg`,
     audits: "2",
@@ -4806,7 +4780,7 @@ const data4: Protocol[] = [
     module: "hashport/index.js",
     twitter: "HashportNetwork",
     audit_links: ["https://omniscia.io/limechain-hashport/", "https://omniscia.io/limechain-hashport-round-2"],
-    listedAt: 1739362932,
+    listedAt: 1739362932
   },
   {
     id: "5772",
@@ -4833,8 +4807,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.aarna.ai",
-    description:
-      "aarnâ is an advanced decentralized asset management platform, developed by integrating AI quant strategies with advanced on-chain tokenization, providing a fully permissionless, transparent and self-custodial platform for high-value investors, to manage their digital assets' lifecycle.",
+    description: "aarnâ is an advanced decentralized asset management platform, developed by integrating AI quant strategies with advanced on-chain tokenization, providing a fully permissionless, transparent and self-custodial platform for high-value investors, to manage their digital assets' lifecycle.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aarna-protocol.jpg`,
     audits: "2",
@@ -4847,7 +4820,7 @@ const data4: Protocol[] = [
     module: "aarna/index.js",
     twitter: "aarnasays",
     audit_links: ["https://skynet.certik.com/projects/aarna-protocol"],
-    listedAt: 1739442586,
+    listedAt: 1739442586
   },
   {
     id: "5774",
@@ -4867,11 +4840,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "magma-finance/index.js",
     twitter: "Magma_Finance",
-    audit_links: [
-      "https://github.com/Zellic/publications/blob/master/Magma%20Finance%20-%20Zellic%20Audit%20Report.pdf",
-    ],
+    audit_links: ["https://github.com/Zellic/publications/blob/master/Magma%20Finance%20-%20Zellic%20Audit%20Report.pdf"],
     github: ["MagmaFinanceIO"],
-    listedAt: 1739442886,
+    listedAt: 1739442886
   },
   {
     id: "5775",
@@ -4880,8 +4851,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "iBERA",
     url: "https://infrared.finance",
-    description:
-      "Infrared Finance is a BERA liquid staking protocol which utilizes proof of liquidity to maximize yields",
+    description: "Infrared Finance is a BERA liquid staking protocol which utilizes proof of liquidity to maximize yields",
     chain: "Berachain",
     logo: `${baseIconsUrl}/infrared-finance.jpg`,
     audits: "0",
@@ -4894,7 +4864,7 @@ const data4: Protocol[] = [
     module: "infrared-finance/index.js",
     twitter: "InfraredFinance",
     github: ["infrared-dao"],
-    listedAt: 1739442996,
+    listedAt: 1739442996
   },
   {
     id: "5776",
@@ -4923,8 +4893,7 @@ const data4: Protocol[] = [
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
     url: "https://ssi.sosovalue.com",
-    description:
-      "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
+    description: "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
     chain: "Base",
     logo: `${baseIconsUrl}/sosovalue-basis.jpg`,
     audits: "0",
@@ -4937,7 +4906,7 @@ const data4: Protocol[] = [
     module: "ssi-basis-trading/index.js",
     twitter: "SoSoValueCrypto",
     parentProtocol: "parent#sosovalue",
-    listedAt: 1739444198,
+    listedAt: 1739444198
   },
   {
     id: "5778",
@@ -4950,7 +4919,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/story.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "story-2",
+    gecko_id: 'story-2',
     cmcId: "35626",
     category: "Chain",
     chains: ["Ethereum"],
@@ -4977,7 +4946,7 @@ const data4: Protocol[] = [
     module: "piperx-v2/index.js",
     twitter: "PiperxProtocol",
     parentProtocol: "parent#piperx",
-    listedAt: 1739459267,
+    listedAt: 1739459267
   },
   {
     id: "5780",
@@ -4998,7 +4967,7 @@ const data4: Protocol[] = [
     module: "piperx-v3/index.js",
     twitter: "PiperxProtocol",
     parentProtocol: "parent#piperx",
-    listedAt: 1739459418,
+    listedAt: 1739459418
   },
   {
     id: "5781",
@@ -5018,7 +4987,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "storyhunt-v3/index.js",
     twitter: "0xStoryHunt",
-    listedAt: 1739459427,
+    listedAt: 1739459427
   },
   {
     id: "5782",
@@ -5039,7 +5008,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "verio/index.js",
     twitter: "verio_story",
-    listedAt: 1739459432,
+    listedAt: 1739459432
   },
   {
     id: "5783",
@@ -5060,33 +5029,24 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: [
-          "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
-          "https://app.takaralend.com/market/WSEI",
-        ],
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures", "https://app.takaralend.com/market/WSEI"]
       },
       {
         name: "Pyth",
         type: "Fallback",
-        proof: [
-          "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
-          "https://app.takaralend.com/market/WSEI",
-        ],
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures", "https://app.takaralend.com/market/WSEI"]
       },
       {
         name: "Api3",
         type: "Fallback",
-        proof: [
-          "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
-          "https://app.takaralend.com/market/WSEI",
-        ],
-      },
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures", "https://app.takaralend.com/market/WSEI"]
+      }
     ],
     forkedFromIds: ["114"],
     module: "takara/index.js",
     twitter: "TakaraLend",
     audit_links: ["https://takara.gitbook.io/takara-lend/protocol-information/audits"],
-    listedAt: 1739459439,
+    listedAt: 1739459439
   },
   {
     id: "5784",
@@ -5107,7 +5067,7 @@ const data4: Protocol[] = [
     module: "haedal-amm/index.js",
     twitter: "haedalprotocol",
     parentProtocol: "parent#haedal",
-    listedAt: 1739465147,
+    listedAt: 1739465147
   },
   {
     id: "5785",
@@ -5115,8 +5075,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bitfi.one",
-    description:
-      "Reliable returns with bfUSD, our yield-bearing stablecoin that fuels stability while amplifying your earnings in a dynamic ecosystem.",
+    description: "Reliable returns with bfUSD, our yield-bearing stablecoin that fuels stability while amplifying your earnings in a dynamic ecosystem.",
     chain: "Binance",
     logo: `${baseIconsUrl}/bitfi-basis.jpg`,
     audits: "0",
@@ -5125,12 +5084,12 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Binance"],
-    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
+    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }],//https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     forkedFrom: [],
     module: "bitfi-cedefi/index.js",
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
-    listedAt: 1739530444,
+    listedAt: 1739530444
   },
   {
     id: "5786",
@@ -5151,7 +5110,7 @@ const data4: Protocol[] = [
     module: "doppler-finance/index.js",
     twitter: "doppler_fi",
     github: ["girin-app"],
-    listedAt: 1739555054,
+    listedAt: 1739555054
   },
   {
     id: "5787",
@@ -5173,10 +5132,8 @@ const data4: Protocol[] = [
     module: "metapool-stip/index.js",
     twitter: "meta_pool",
     parentProtocol: "parent#meta-pool",
-    audit_links: [
-      "https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FOaz0PbKGiCBzBI2hKZcv%2FNM_0434_METAPOOL_FINAL.pdf?alt=media&token=73e9bebd-0716-4fbd-b3cf-f935f3973275",
-    ],
-    listedAt: 1739555061,
+    audit_links: ["https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FOaz0PbKGiCBzBI2hKZcv%2FNM_0434_METAPOOL_FINAL.pdf?alt=media&token=73e9bebd-0716-4fbd-b3cf-f935f3973275"],
+    listedAt: 1739555061
   },
   {
     id: "5788",
@@ -5196,7 +5153,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "unit-btc/index.js",
     twitter: "hyperunit",
-    listedAt: 1739557972,
+    listedAt: 1739557972
   },
   {
     id: "5789",
@@ -5204,8 +5161,7 @@ const data4: Protocol[] = [
     address: "sonic:0xf26Ff70573ddc8a90Bd7865AF8d7d70B8Ff019bC",
     symbol: "EGGS",
     url: "https://eggs.finance/",
-    description:
-      "Eggs Finance is a protocol on the Sonic blockchain that allows users to mint $EGGS tokens using $S, use $EGGS as collateral to borrow more $S, and participate in leveraged financial strategies",
+    description: "Eggs Finance is a protocol on the Sonic blockchain that allows users to mint $EGGS tokens using $S, use $EGGS as collateral to borrow more $S, and participate in leveraged financial strategies",
     chain: "Sonic",
     logo: `${baseIconsUrl}/eggs-finance.png`,
     audits: "2",
@@ -5218,7 +5174,7 @@ const data4: Protocol[] = [
     module: "eggsfinance/index.js",
     twitter: "eggsonsonic",
     audit_links: ["https://eggs-finance.gitbook.io/docs/audit"],
-    listedAt: 1739556355,
+    listedAt: 1739556355
   },
   {
     id: "5790",
@@ -5226,7 +5182,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://stable.kittypunch.xyz/",
-    description: "KittyPunch StableKitty, a low slippage stableswap",
+    description:
+      "KittyPunch StableKitty, a low slippage stableswap",
     chain: "Flow",
     logo: `${baseIconsUrl}/kittypunch-stablekitty.png`,
     audits: "0",
@@ -5239,7 +5196,7 @@ const data4: Protocol[] = [
     twitter: "KittyPunchXYZ",
     forkedFromIds: ["3"],
     parentProtocol: "parent#kittypunch",
-    listedAt: 1739584037,
+    listedAt: 1739584037
   },
   {
     id: "5791",
@@ -5248,8 +5205,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "KING",
     url: "https://kingprotocol.org/",
-    description:
-      "King Protocol, (formerly LRT²) is a unified restaking rewards protocol acting as a vault that holds the rewards tokens as underlying assets. Through King Protocol, LRT projects can pool restaking network protocol rewards into a single vault and issue vault share tokens to their stakers (or distributor contract). This system cuts transaction costs and streamlines the rewards process, great for those with smaller stakes who might find it easier to manage and trade their shares collectively",
+    description: "King Protocol, (formerly LRT²) is a unified restaking rewards protocol acting as a vault that holds the rewards tokens as underlying assets. Through King Protocol, LRT projects can pool restaking network protocol rewards into a single vault and issue vault share tokens to their stakers (or distributor contract). This system cuts transaction costs and streamlines the rewards process, great for those with smaller stakes who might find it easier to manage and trade their shares collectively",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/king-protocol.png`,
     audits: "2",
@@ -5262,18 +5218,18 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13523"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13523"]
+      }
     ],
     forkedFrom: [],
     module: "king/index.js",
     twitter: "thekingprotocol",
     audit_links: [
       "https://github.com/King-Protocol/king-cross-chain/blob/master/audit/NM_0452_King_Cross_Chain_FINAL.pdf",
-      "https://github.com/King-Protocol/king-protocol-sc/tree/master/audits",
+      "https://github.com/King-Protocol/king-protocol-sc/tree/master/audits"
     ],
     github: ["King-Protocol"],
-    listedAt: 1739584043,
+    listedAt: 1739584043
   },
   {
     id: "5792",
@@ -5315,19 +5271,19 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"]
       },
       {
         name: "RedStone",
         type: "Fallback",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"]
+      }
     ],
     forkedFromIds: ["1599"],
     module: "unleash/index.js",
     twitter: "UnleashProtocol",
     audit_links: ["https://github.com/unleash-protocol/unleash-audit/tree/main/audit-reports"],
-    listedAt: 1739648145,
+    listedAt: 1739648145
   },
   {
     id: "5794",
@@ -5335,8 +5291,7 @@ const data4: Protocol[] = [
     address: "berachain:0xDAd7898717AdE066E1114E6bdbFaFd8A6F378B7b",
     symbol: "AZT",
     url: "https://azex.io/",
-    description:
-      "AZEx is a decentralized peer-to-pool perpetual DEX (Perp DEX) deeply integrated with blockchain mechanisms. AZEx achieves decentralization, transparency, and automation to efficiently connect traders and liquidity providers (LPs). Funds within the platform are intelligently routed to top DeFi protocols in the Berachain ecosystem—such as DEXs, lending platforms, perpetuals, and yield aggregators—for farming opportunities. This approach fully unlocks the potential of on-chain assets, while AZEx incentivizes participants with validator rewards and AZT, its native platform token, maximizing user profits",
+    description: "AZEx is a decentralized peer-to-pool perpetual DEX (Perp DEX) deeply integrated with blockchain mechanisms. AZEx achieves decentralization, transparency, and automation to efficiently connect traders and liquidity providers (LPs). Funds within the platform are intelligently routed to top DeFi protocols in the Berachain ecosystem—such as DEXs, lending platforms, perpetuals, and yield aggregators—for farming opportunities. This approach fully unlocks the potential of on-chain assets, while AZEx incentivizes participants with validator rewards and AZT, its native platform token, maximizing user profits",
     chain: "Berachain",
     logo: `${baseIconsUrl}/azex.png`,
     audits: "0",
@@ -5349,13 +5304,13 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.azex.io/core-features-and-mechanisms/trading-features#id-2-smart-price-aggregation"],
-      },
+        proof: ["https://docs.azex.io/core-features-and-mechanisms/trading-features#id-2-smart-price-aggregation"]
+      }
     ],
     forkedFrom: [],
     module: "azex/index.js",
     twitter: "azex_io",
-    listedAt: 1739648151,
+    listedAt: 1739648151
   },
   {
     id: "5795",
@@ -5377,7 +5332,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     parentProtocol: "parent#pulsex",
-    listedAt: 1742452505,
+    listedAt: 1742452505
   },
   {
     id: "5796",
@@ -5385,8 +5340,7 @@ const data4: Protocol[] = [
     address: "base:0x194f360d130f2393a5e9f3117a6a1b78abea1624",
     symbol: "SUMR",
     url: "https://summer.fi",
-    description:
-      "The Lazy Summer Protocol offers Automated Yield across DeFi's highest quality protocols on Ethereum, Base and Arbitrum. It uses AI Powered Keepers to continually monitor and rebalance the supported Vaults offering users the best available yields within strict risk parameters, set and managed by leading risk management firm BlockAnalitica.",
+    description: "The Lazy Summer Protocol offers Automated Yield across DeFi's highest quality protocols on Ethereum, Base and Arbitrum. It uses AI Powered Keepers to continually monitor and rebalance the supported Vaults offering users the best available yields within strict risk parameters, set and managed by leading risk management firm BlockAnalitica.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lazy-summer-protocol.png`,
     audits: "0",
@@ -5399,7 +5353,7 @@ const data4: Protocol[] = [
     module: "lazy-summer-protocol/index.js",
     twitter: "summerfinance_",
     parentProtocol: "parent#summer.fi",
-    listedAt: 1739789703,
+    listedAt: 1739789703
   },
   {
     id: "5797",
@@ -5407,8 +5361,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://knightrade.io/",
-    description:
-      "Knightrade is the on-chain, multi-strategy hedge fund platform, run by verified traders from top hedge funds and investment banks",
+    description: "Knightrade is the on-chain, multi-strategy hedge fund platform, run by verified traders from top hedge funds and investment banks",
     chain: "Solana",
     logo: `${baseIconsUrl}/knightrade.png`,
     audits: "0",
@@ -5420,7 +5373,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "knightrade/index.js",
     twitter: "KnightradeTeam",
-    listedAt: 1739812839,
+    listedAt: 1739812839
   },
   {
     id: "5798",
@@ -5428,8 +5381,7 @@ const data4: Protocol[] = [
     address: "berachain:0x7838CEc5B11298Ff6a9513Fa385621B765C74174",
     symbol: "BERO",
     url: "https://www.beradrome.com",
-    description:
-      "Beradrome is the prime restaking and liquidity marketplace on Berachain. Beradrome combines features from top DeFi models into one power house, allowing ve(3,3) for any yield bearing asset on Berachain",
+    description: "Beradrome is the prime restaking and liquidity marketplace on Berachain. Beradrome combines features from top DeFi models into one power house, allowing ve(3,3) for any yield bearing asset on Berachain",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beradrome.png`,
     audits: "2",
@@ -5444,11 +5396,11 @@ const data4: Protocol[] = [
     audit_links: [
       "https://3573018453-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzEE4RoSkf1KPe6qHUHZb%2Fuploads%2F9amf3oq6oU9WdNOvESyc%2FPeckShield-Audit-Report-LilToken-v1.0rc%20(1).pdf?alt=media&token=9dc3fc64-8cf7-4961-84b3-8977ecc373ee",
       "https://3573018453-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzEE4RoSkf1KPe6qHUHZb%2Fuploads%2FBU79KHmtxM1caLQzs1CE%2FZokyoAudit.pdf?alt=media&token=f08e5730-c823-4344-8fc8-be74b5e084a4",
-      "https://3573018453-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzEE4RoSkf1KPe6qHUHZb%2Fuploads%2FUFxBvo4XJlvkU9Fzh8nH%2FAstraSec-AuditReport-Beradrome.pdf?alt=media&token=18a51c47-3e95-4340-9a1b-96502c76c590",
+      "https://3573018453-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzEE4RoSkf1KPe6qHUHZb%2Fuploads%2FUFxBvo4XJlvkU9Fzh8nH%2FAstraSec-AuditReport-Beradrome.pdf?alt=media&token=18a51c47-3e95-4340-9a1b-96502c76c590"
     ],
     github: ["BeraLabs"],
     treasury: "beradrome",
-    listedAt: 1739812845,
+    listedAt: 1739812845
   },
   {
     id: "5799",
@@ -5469,7 +5421,7 @@ const data4: Protocol[] = [
     module: "liquidity-house/index.js",
     twitter: null,
     github: ["liquidityhouse"],
-    listedAt: 1739812851,
+    listedAt: 1739812851
   },
   {
     id: "5800",
@@ -5477,8 +5429,7 @@ const data4: Protocol[] = [
     address: "chiliz:0x60F397acBCfB8f4e3234C659A3E10867e6fA6b67",
     symbol: "PEPPER",
     url: "https://www.peppercoin.com",
-    description:
-      "Peppercoin is the home of Pepper Inc., empowering the community to stake, vote, and shape the future of PEPPER",
+    description: "Peppercoin is the home of Pepper Inc., empowering the community to stake, vote, and shape the future of PEPPER",
     chain: "Chiliz",
     logo: `${baseIconsUrl}/peppercoin.png`,
     audits: "0",
@@ -5490,7 +5441,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "chiliz-peppercoin/index.js",
     twitter: "PepperChain",
-    listedAt: 1739812859,
+    listedAt: 1739812859
   },
   {
     id: "5801",
@@ -5498,8 +5449,7 @@ const data4: Protocol[] = [
     address: "bsc:0xcA1c644704feBf4ab81f85daca488d1623C28e63",
     symbol: "ABRA",
     url: "https://cadabra.finance/",
-    description:
-      "Cadabra is a cutting-edge yield aggregator designed to align the incentives of all key players in the DeFi ecosystem: liquidity providers (LPs), protocols and their teams/investors, yield-speculators seeking alpha, and influential community members. With innovative strategies and a new approach to yield speculation, Cadabra provides a win-win experience for everyone involved",
+    description: "Cadabra is a cutting-edge yield aggregator designed to align the incentives of all key players in the DeFi ecosystem: liquidity providers (LPs), protocols and their teams/investors, yield-speculators seeking alpha, and influential community members. With innovative strategies and a new approach to yield speculation, Cadabra provides a win-win experience for everyone involved",
     chain: "Binance",
     logo: `${baseIconsUrl}/cadabra-finance.png`,
     audits: "2",
@@ -5513,7 +5463,7 @@ const data4: Protocol[] = [
     twitter: "CadabraFinance",
     audit_links: [],
     github: ["cadabra-finance"],
-    listedAt: 1739812869,
+    listedAt: 1739812869
   },
   {
     id: "5802",
@@ -5555,7 +5505,7 @@ const data4: Protocol[] = [
     module: "ginsengswap/index.js",
     twitter: "ginsengswap",
     audit_links: ["https://github.com/ginsengswap/ginsengswapaudit/tree/main/auditreports"],
-    listedAt: 1739890021,
+    listedAt: 1739890021
   },
   {
     id: "5804",
@@ -5576,7 +5526,7 @@ const data4: Protocol[] = [
     module: "chiliz-fan-token-staking/index.js",
     twitter: "Socios",
     audit_links: [],
-    listedAt: 1739890032,
+    listedAt: 1739890032
   },
   {
     id: "5805",
@@ -5584,8 +5534,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://rplanet.io",
-    description:
-      "R-Planet is a free-to-play strategy game where players own and use game assets across multiple purposes, build bases, mine resources, train armies, and strategize for survival and rewards",
+    description: "R-Planet is a free-to-play strategy game where players own and use game assets across multiple purposes, build bases, mine resources, train armies, and strategize for survival and rewards",
     chain: "Wax",
     logo: `${baseIconsUrl}/r-planet.png`,
     audits: "0",
@@ -5598,7 +5547,7 @@ const data4: Protocol[] = [
     module: "rplanet/index.js",
     twitter: "RPLANETio",
     audit_links: [],
-    listedAt: 1739890039,
+    listedAt: 1739890039
   },
   {
     id: "5806",
@@ -5606,8 +5555,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bloombot.app/",
-    description:
-      "Bloom is a cross-chain trading bot offering fast, automated trading with features like sniping, AFK trading, spot buys, quick sells, and limit orders",
+    description: "Bloom is a cross-chain trading bot offering fast, automated trading with features like sniping, AFK trading, spot buys, quick sells, and limit orders",
     chain: "Base",
     logo: `${baseIconsUrl}/bloom-trading-bot.png`,
     audits: "0",
@@ -5620,7 +5568,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "BloomTradingBot",
     audit_links: [],
-    listedAt: 1739891207,
+    listedAt: 1739891207
   },
   {
     id: "5807",
@@ -5629,7 +5577,8 @@ const data4: Protocol[] = [
     address: "base:0x0c1dc73159e30c4b06170f2593d3118968a0dca5",
     symbol: "GPS",
     url: "https://gopluslabs.io",
-    description: "A multi-chain token and liquidity locker by GoPlus Security.",
+    description:
+      "A multi-chain token and liquidity locker by GoPlus Security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/goplus-locker-v2.jpg`,
     audits: "0",
@@ -5643,7 +5592,7 @@ const data4: Protocol[] = [
     twitter: "GoPlusSecurity",
     parentProtocol: "parent#goplus-security",
     audit_links: [],
-    listedAt: 1741988372,
+    listedAt: 1741988372
   },
   {
     id: "5808",
@@ -5652,8 +5601,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "mpSOL",
     url: "https://www.metapool.app/es/restake/",
-    description:
-      "mpSOL is the first Restaking Aggregator for the Solana blockchain. mpSOL is being deployed in Solana by the Meta Pool DAO, in order to provide users early easy access to the benefits of all restaking projects in Solana.",
+    description: "mpSOL is the first Restaking Aggregator for the Solana blockchain. mpSOL is being deployed in Solana by the Meta Pool DAO, in order to provide users early easy access to the benefits of all restaking projects in Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/meta-pool-mpsol.png`,
     audits: "2",
@@ -5667,9 +5615,9 @@ const data4: Protocol[] = [
     twitter: "meta_pool",
     parentProtocol: "parent#meta-pool",
     audit_links: [
-      "https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FUMkSZziqO0AyoCGzxE7D%2Ftpyrced_blocksec_metapool_restaking_v1.0-signed.pdf?alt=media&token=890ab4b0-4ed1-48e9-8478-d114eb44c447",
+      "https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FUMkSZziqO0AyoCGzxE7D%2Ftpyrced_blocksec_metapool_restaking_v1.0-signed.pdf?alt=media&token=890ab4b0-4ed1-48e9-8478-d114eb44c447"
     ],
-    listedAt: 1739904991,
+    listedAt: 1739904991
   },
   {
     id: "5809",
@@ -5691,7 +5639,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: null,
     audit_links: [],
-    github: ["flashbots"],
+    github: ["flashbots"]
   },
   {
     id: "5810",
@@ -5711,7 +5659,7 @@ const data4: Protocol[] = [
     chains: ["Litecoin", "Bitcoin", "Cardano", "Ripple"],
     module: "coinbase-btc/index.js",
     twitter: "coinbase",
-    listedAt: 1739912521,
+    listedAt: 1739912521
   },
   {
     id: "5811",
@@ -5777,18 +5725,18 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"],
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
       },
       {
         name: "Stork",
         type: "Aggregator",
-        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"],
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
       },
       {
         name: "RedStone",
         type: "Aggregator",
-        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"],
-      },
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
+      }
     ],
     module: "DESK/index.js",
     twitter: "TradeOnDESK",
@@ -5874,9 +5822,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "electra/index.js",
     twitter: "ElectraTrade",
-    audit_links: [
-      "https://github.com/EXVUL-Sec/AuditReport/blob/main/Smartcontract/Electra%20Smart%20Contract%20Audit%20Report-Exvul.pdf",
-    ],
+    audit_links: ["https://github.com/EXVUL-Sec/AuditReport/blob/main/Smartcontract/Electra%20Smart%20Contract%20Audit%20Report-Exvul.pdf"],
     github: ["ElectraFinance"],
     listedAt: 1740008953,
   },
@@ -5941,7 +5887,7 @@ const data4: Protocol[] = [
     twitter: "memeswapfi",
     audit_links: ["https://github.com/memeswapfi/memeswap-contracts/tree/main/audits"],
     github: ["memeswapfi"],
-    listedAt: 1740078089,
+    listedAt: 1740078089
   },
   {
     id: "5821",
@@ -5982,7 +5928,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "meme-wallet/index.js",
     twitter: null,
-    listedAt: 1740078109,
+    listedAt: 1740078109
   },
   {
     id: "5823",
@@ -6005,7 +5951,7 @@ const data4: Protocol[] = [
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
     stablecoins: ["hermetica-usdh"],
-    listedAt: 1740083754,
+    listedAt: 1740083754
   },
   {
     id: "5824",
@@ -6026,7 +5972,7 @@ const data4: Protocol[] = [
     module: "steamm/index.js",
     twitter: "steammfi",
     parentProtocol: "parent#suilend-protocol",
-    listedAt: 1740083754,
+    listedAt: 1740083754
   },
   {
     id: "5825",
@@ -6046,14 +5992,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "veda/index.js",
     twitter: "veda_labs",
-    audit_links: [
-      "https://github.com/Se7en-Seas/boring-vault/tree/main/audit",
-      "https://0xmacro.com/library/audits/sevenSeas-1.html",
-      "https://0xmacro.com/library/audits/sevenSeas-2.html",
-      "https://0xmacro.com/library/audits/sevenSeas-3.html",
-    ],
+    audit_links: ["https://github.com/Se7en-Seas/boring-vault/tree/main/audit", "https://0xmacro.com/library/audits/sevenSeas-1.html", "https://0xmacro.com/library/audits/sevenSeas-2.html", "https://0xmacro.com/library/audits/sevenSeas-3.html"],
     github: ["Veda-Labs"],
-    listedAt: 1740088552,
+    listedAt: 1740088552
   },
   {
     id: "5826",
@@ -6074,7 +6015,7 @@ const data4: Protocol[] = [
     module: "frax-bamm/index.js",
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
-    listedAt: 1740100371,
+    listedAt: 1740100371
   },
   {
     id: "5827",
@@ -6094,7 +6035,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["5789"],
     module: "beratlas-finance/index.js",
     twitter: "BerAtlasFi",
-    listedAt: 1740149948,
+    listedAt: 1740149948
   },
   {
     id: "5828",
@@ -6116,7 +6057,7 @@ const data4: Protocol[] = [
     module: "canaryprotocol/index.js",
     twitter: "canary_proto",
     audit_links: ["https://canary-protocol-public.s3.eu-west-2.amazonaws.com/Halborn+-+Canary+EVM+review.pdf"],
-    listedAt: 1740149948,
+    listedAt: 1740149948
   },
   {
     id: "5829",
@@ -6138,12 +6079,12 @@ const data4: Protocol[] = [
       {
         name: "Uniswap V3",
         type: "Primary",
-        proof: [],
-      },
+        proof: []
+      }
     ],
     module: "OneDollarDCAE/index.js",
     twitter: null,
-    listedAt: 1740166867,
+    listedAt: 1740166867
   },
   {
     id: "5830",
@@ -6163,10 +6104,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "astake/index.js",
     twitter: "Astake_Official",
-    audit_links: [
-      "https://2158577729-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZvrQzyC6CUbKT18tX4R4%2Fuploads%2FHXCRcpbI42eZkcc28q71%2FPeckShield-Audit-Report-Astake-v1.0.pdf?alt=media&token=c0227917-bb21-4927-8e08-8a1525586533",
-    ],
-    listedAt: 1740192797,
+    audit_links: ["https://2158577729-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZvrQzyC6CUbKT18tX4R4%2Fuploads%2FHXCRcpbI42eZkcc28q71%2FPeckShield-Audit-Report-Astake-v1.0.pdf?alt=media&token=c0227917-bb21-4927-8e08-8a1525586533"],
+    listedAt: 1740192797
   },
   {
     id: "5831",
@@ -6186,7 +6125,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "curves/index.js",
     twitter: "0xForm",
-    listedAt: 1740338327,
+    listedAt: 1740338327
   },
   {
     id: "5832",
@@ -6229,7 +6168,7 @@ const data4: Protocol[] = [
     module: "form-l2/index.js",
     twitter: "0xForm",
     audit_links: [],
-    listedAt: 1740338348,
+    listedAt: 1740338348
   },
   {
     id: "5834",
@@ -6251,9 +6190,9 @@ const data4: Protocol[] = [
     twitter: "etherealdex",
     audit_links: [
       "https://drive.google.com/file/d/1HMihTcqKwt75pTAct9F0H3noqDtCJ3u3/view?usp=sharing",
-      "https://docs.ethereal.trade/resources/audits-and-addresses",
+      "https://docs.ethereal.trade/resources/audits-and-addresses"
     ],
-    listedAt: 1740338355,
+    listedAt: 1740338355
   },
   {
     id: "5835",
@@ -6273,9 +6212,11 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "laraProtocol/index.js",
     twitter: "LaraProtocol",
-    audit_links: ["https://github.com/Lara-staking/liquid-staking/tree/develop/audits"],
+    audit_links: [
+      "https://github.com/Lara-staking/liquid-staking/tree/develop/audits"
+    ],
     github: ["Lara-staking"],
-    listedAt: 1740356469,
+    listedAt: 1740356469
   },
   {
     id: "5836",
@@ -6296,7 +6237,7 @@ const data4: Protocol[] = [
     module: "hyperswap-v2/index.js",
     twitter: "HyperSwapX",
     parentProtocol: "parent#hyperswap",
-    listedAt: 1740357231,
+    listedAt: 1740357231
   },
   {
     id: "5837",
@@ -6317,7 +6258,7 @@ const data4: Protocol[] = [
     module: "hyperswap-v3/index.js",
     twitter: "HyperSwapX",
     parentProtocol: "parent#hyperswap",
-    listedAt: 1740357237,
+    listedAt: 1740357237
   },
   {
     id: "5838",
@@ -6340,19 +6281,19 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"]
       },
       {
         name: "RedStone",
         type: "Aggregator",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"]
+      }
     ],
     module: "hypurrfi/index.js",
     twitter: "hypurrfi",
     audit_links: ["https://docs.hypurr.fi/introduction/security"],
     parentProtocol: "parent#hypurfi",
-    listedAt: 1740357778,
+    listedAt: 1740357778
   },
   {
     id: "5839",
@@ -6374,13 +6315,13 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13597"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13597"]
+      }
     ],
     module: "Vingt.io/index.js",
     twitter: "vingtofficial",
     audit_links: ["https://vingt-io.gitbook.io/vingt.io/miscellaneous/audit-and-security-visp"],
-    listedAt: 1740401623,
+    listedAt: 1740401623
   },
   {
     id: "5840",
@@ -6400,7 +6341,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "roll-fun/index.js",
     twitter: "tryrollhq",
-    listedAt: 1740408830,
+    listedAt: 1740408830
   },
   {
     id: "5841",
@@ -6430,8 +6371,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.sir.trading",
-    description:
-      "SIR is a decentralized trading protocol designed for leveraged positions with a focus on long-term investing. Key features include a one-time fee for opening positions (no recurring funding costs), no liquidations, and no volatility decay (returns aren't eroded by market fluctuations). By eliminating these traditional risks and costs, SIR offers a sustainable way to maintain leveraged exposure over extended periods, making it ideal for investors seeking leveraged assets without the stress of daily fees, margin calls, or compounding price instability.",
+    description: "SIR is a decentralized trading protocol designed for leveraged positions with a focus on long-term investing. Key features include a one-time fee for opening positions (no recurring funding costs), no liquidations, and no volatility decay (returns aren't eroded by market fluctuations). By eliminating these traditional risks and costs, SIR offers a sustainable way to maintain leveraged exposure over extended periods, making it ideal for investors seeking leveraged assets without the stress of daily fees, margin calls, or compounding price instability.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sir.jpg`,
     audits: "2",
@@ -6445,7 +6385,7 @@ const data4: Protocol[] = [
     twitter: "leveragesir",
     audit_links: ["https://github.com/Egis-Security/audits/blob/main/reports/SIR-Trading.pdf"],
     github: ["SIR-trading"],
-    listedAt: 1740490512,
+    listedAt: 1740490512
   },
   {
     id: "5843",
@@ -6453,8 +6393,7 @@ const data4: Protocol[] = [
     address: "base:0xe248c0bce837b8dfb21fdfa51fb31d22fbbb4380",
     symbol: "FDX",
     url: "https://flex.trade",
-    description:
-      "Flex Perpetuals is a next-gen decentralized perpetual protocol with cross-margin and multi-asset collateral support on BASE chain",
+    description: "Flex Perpetuals is a next-gen decentralized perpetual protocol with cross-margin and multi-asset collateral support on BASE chain",
     chain: "Base",
     logo: `${baseIconsUrl}/flex-perpetuals.png`,
     audits: "2",
@@ -6464,30 +6403,30 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     oraclesBreakdown: [
-      {
+       {
         name: "Pyth",
         type: "Aggregator",
         proof: ["https://docs.flex.trade/#product-features"],
-        endDate: "2025-08-15",
+        endDate: '2025-08-15'
       },
       {
         name: "Chainlink",
         type: "Aggregator",
         proof: ["https://docs.flex.trade/#product-features"],
-        endDate: "2025-08-15",
+        endDate: '2025-08-15'
       },
       {
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.flex.trade/oracles"],
-        startDate: "2025-08-15",
-      },
+        startDate: '2025-08-15'
+      }
     ],
     forkedFromIds: ["2296"],
     module: "flexperp/index.js",
     twitter: "Flexperpetuals",
     audit_links: ["https://code4rena.com/audits/2024-12-flex-perpetuals"],
-    listedAt: 1740493613,
+    listedAt: 1740493613
   },
   {
     id: "5844",
@@ -6495,8 +6434,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.aquabera.com",
-    description:
-      "AquaBera is the beary best way to optimize and sustain your token’s liquidity on Berachain. Our automated vaults deploy, adjust, and manage liquidity dynamically, ensuring deep markets, efficient price action, and yield opportunities for your community.",
+    description: "AquaBera is the beary best way to optimize and sustain your token’s liquidity on Berachain. Our automated vaults deploy, adjust, and manage liquidity dynamically, ensuring deep markets, efficient price action, and yield opportunities for your community.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/aquabera.jpg`,
     audits: "2",
@@ -6509,7 +6447,7 @@ const data4: Protocol[] = [
     module: "aquabera/index.js",
     twitter: "aqua_bera",
     audit_links: ["https://docs.aquabera.com/Security-Audits/Audit-Reports-Summaries/"],
-    listedAt: 1740493794,
+    listedAt: 1740493794
   },
   {
     id: "5845",
@@ -6529,7 +6467,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     module: "wasabee/index.js",
     twitter: "WasabeeFi",
-    listedAt: 1740493964,
+    listedAt: 1740493964
   },
   {
     id: "5846",
@@ -6537,8 +6475,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hedgey.finance/",
-    description:
-      "Hedgey helps teams create & manage employee token vesting, investor lockups, & community token claims",
+    description: "Hedgey helps teams create & manage employee token vesting, investor lockups, & community token claims",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hedgey.png`,
     audits: "2",
@@ -6546,19 +6483,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    chains: [
-      "Ethereum",
-      "Optimism",
-      "Arbitrum",
-      "Base",
-      "Binance",
-      "Polygon",
-      "Mode",
-      "zkSync Era",
-      "Avalanche",
-      "Linea",
-      "Berachain",
-    ],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Binance", "Polygon", "Mode", "zkSync Era", "Avalanche", "Linea", "Berachain"],
     forkedFrom: [],
     module: "hedgey/index.js",
     twitter: "hedgeyfinance",
@@ -6570,8 +6495,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.webera.finance/",
-    description:
-      "WeBera is a permissionless yield abstraction layer designed to simplify participation in DeFi on the Berachain ecosystem.",
+    description: "WeBera is a permissionless yield abstraction layer designed to simplify participation in DeFi on the Berachain ecosystem.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/webera-finance.jpg`,
     audits: "0",
@@ -6584,7 +6508,7 @@ const data4: Protocol[] = [
     module: "webera/index.js",
     twitter: "WeberaFinance",
     github: ["webera-dev"],
-    listedAt: 1740574389,
+    listedAt: 1740574389
   },
   {
     id: "5848",
@@ -6592,8 +6516,7 @@ const data4: Protocol[] = [
     address: "bsc:0xd9e90df21f4229249e8841580cde7048bf935710",
     symbol: "SHIELD",
     url: "https://www.shieldprotocol.net",
-    description:
-      "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
+    description: "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
     chain: "Binance",
     logo: `${baseIconsUrl}/shield-protocol.jpg`,
     audits: "2",
@@ -6606,7 +6529,7 @@ const data4: Protocol[] = [
     module: "shield-protocol/index.js",
     twitter: "ShieldProtocols",
     audit_links: ["https://spywolf.co/audits/Shield_Protocol_0xD9E90DF21F4229249E8841580cDE7048bF935710.pdf"],
-    listedAt: 1740574589,
+    listedAt: 1740574589
   },
   {
     id: "5849",
@@ -6614,8 +6537,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.handofgod.app",
-    description:
-      "Hand of God is a next-generation DeFi protocol built on the Sonic blockchain, inspired by the original Tomb Finance model but significantly enhanced with AI-driven automation. By integrating real-time on-chain analysis, Hand of God dynamically manages supply expansion and contraction, ensuring a sustainable, transparent, and data-driven approach to liquidity incentives and ecosystem health.",
+    description: "Hand of God is a next-generation DeFi protocol built on the Sonic blockchain, inspired by the original Tomb Finance model but significantly enhanced with AI-driven automation. By integrating real-time on-chain analysis, Hand of God dynamically manages supply expansion and contraction, ensuring a sustainable, transparent, and data-driven approach to liquidity incentives and ecosystem health.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/hand-of-god.jpg`,
     audits: "0",
@@ -6627,7 +6549,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "handofgod/index.js",
     twitter: "HandofGodSonic",
-    listedAt: 1740574596,
+    listedAt: 1740574596
   },
   {
     id: "5850",
@@ -6635,8 +6557,7 @@ const data4: Protocol[] = [
     address: "0x24fcFC492C1393274B6bcd568ac9e225BEc93584",
     symbol: "MAVIA",
     url: "https://www.mavia.com",
-    description:
-      "Heroes of Mavia is a mobile multiplayer Web3 strategy game where players use their base and army to battle other players. Players are able to earn in-game “Legendary Items” through our “Mass Ownership” model, powered by Ruby - our flagship premium earn-only currency.",
+    description: "Heroes of Mavia is a mobile multiplayer Web3 strategy game where players use their base and army to battle other players. Players are able to earn in-game “Legendary Items” through our “Mass Ownership” model, powered by Ruby - our flagship premium earn-only currency.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/heroes-of-mavia.jpg`,
     audits: "2",
@@ -6648,10 +6569,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "heroes-of-mavia/index.js",
     twitter: "MaviaGame",
-    audit_links: [
-      "https://certificate.quantstamp.com/full/mavia-token/c5aa6f84-0a01-4b9e-813d-6aa7201646dd/index.html",
-    ],
-    listedAt: 1740574696,
+    audit_links: ["https://certificate.quantstamp.com/full/mavia-token/c5aa6f84-0a01-4b9e-813d-6aa7201646dd/index.html"],
+    listedAt: 1740574696
   },
   {
     id: "5851",
@@ -6673,7 +6592,7 @@ const data4: Protocol[] = [
     module: "caviarnine-simplepools/index.js",
     twitter: "CaviarNine",
     parentProtocol: "parent#caviarnine",
-    listedAt: 1740675637,
+    listedAt: 1740675637
   },
   {
     id: "5852",
@@ -6695,13 +6614,13 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13683"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13683"]
+      }
     ],
     forkedFromIds: ["111"],
     module: "pholend/index.js",
     twitter: "pholend_",
-    listedAt: 1740675989,
+    listedAt: 1740675989
   },
   {
     id: "5853",
@@ -6722,7 +6641,7 @@ const data4: Protocol[] = [
     twitter: "maplefinance",
     forkedFrom: [],
     parentProtocol: "parent#maple-finance",
-    listedAt: 1741015414,
+    listedAt: 1741015414
   },
   {
     id: "5854",
@@ -6744,7 +6663,7 @@ const data4: Protocol[] = [
     module: "hemi-l2/index.js",
     twitter: "hemi_xyz",
     github: ["hemilabs"],
-    listedAt: 1741017065,
+    listedAt: 1741017065
   },
   {
     id: "5855",
@@ -6767,7 +6686,7 @@ const data4: Protocol[] = [
     twitter: "origyntech",
     github: ["origyn-sa"],
     audit_links: ["https://www.vibraniumaudits.com/project/origyn"],
-    listedAt: 1741017537,
+    listedAt: 1741017537
   },
   {
     id: "5856",
@@ -6789,7 +6708,7 @@ const data4: Protocol[] = [
     module: "jpow/index.js",
     twitter: "jpow_ai",
     github: ["hemilabs"],
-    listedAt: 1741018983,
+    listedAt: 1741018983
   },
   {
     id: "5857",
@@ -6810,7 +6729,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "degen-launchpad/index.js",
     twitter: "degenexpress69",
-    listedAt: 1741019001,
+    listedAt: 1741019001
   },
   {
     id: "5858",
@@ -6818,7 +6737,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://spice.so",
-    description: "Algorithmic DEX with single-sided liquidity pools",
+    description:
+      "Algorithmic DEX with single-sided liquidity pools",
     chain: "Solana",
     logo: `${baseIconsUrl}/spice.png`,
     audits: "2",
@@ -6841,7 +6761,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ercburner.xyz/app",
-    description: "A tool to convert small assets to native currency on EVM compatible chains.",
+    description:
+      "A tool to convert small assets to native currency on EVM compatible chains.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/erc-burner.jpg`,
     audits: "0",
@@ -6875,28 +6796,26 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.synnax.fi/security/oracles"],
+        proof: ["https://docs.synnax.fi/security/oracles"]
       },
       {
         name: "RedStone",
         type: "Secondary",
-        proof: ["https://docs.synnax.fi/security/oracles"],
+        proof: ["https://docs.synnax.fi/security/oracles"]
       },
       {
         name: "Api3",
         type: "Secondary",
-        proof: ["https://docs.synnax.fi/security/oracles"],
+        proof: ["https://docs.synnax.fi/security/oracles"]
       },
     ],
     forkedFrom: [],
     module: "synnax/index.js",
     twitter: "synnax_labs",
-    audit_links: [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Synnax-v1.0.pdf",
-    ],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Synnax-v1.0.pdf"],
     github: ["Synnax-Protocol"],
     stablecoins: ["synnax-stablecoin"],
-    listedAt: 1741083240,
+    listedAt: 1741083240
   },
   {
     id: "5861",
@@ -6910,7 +6829,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/hedera.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "hedera-hashgraph",
+    gecko_id: 'hedera-hashgraph',
     cmcId: "4642",
     category: "Chain",
     chains: ["Hedera"],
@@ -6924,7 +6843,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hyperyield.com/",
-    description: "Lend, Borrow, Earn at Hyper Speed on HyperLiquid L1",
+    description:
+      "Lend, Borrow, Earn at Hyper Speed on HyperLiquid L1",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperyield.png`,
     audits: "2",
@@ -6938,7 +6858,7 @@ const data4: Protocol[] = [
     twitter: "hyperyieldx",
     audit_links: ["https://x.com/zokyo_io/status/1892273487009763528"],
     github: ["hyperyieldevm"],
-    listedAt: 1741119943,
+    listedAt: 1741119943
   },
   {
     id: "5863",
@@ -6959,7 +6879,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "zino-finance/index.js",
     twitter: "zinoprotocol",
-    listedAt: 1741174839,
+    listedAt: 1741174839
   },
   {
     id: "5864",
@@ -7001,7 +6921,7 @@ const data4: Protocol[] = [
     module: "flrbank/index.js",
     treasury: "flrbank.js",
     twitter: "FlareBank",
-    listedAt: 1741195062,
+    listedAt: 1741195062
   },
   {
     id: "5866",
@@ -7024,7 +6944,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "zeus/index.js",
     twitter: "ZeusNetworkHQ",
-    listedAt: 1741269324,
+    listedAt: 1741269324
   },
   {
     id: "5867",
@@ -7088,7 +7008,7 @@ const data4: Protocol[] = [
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
     tokensExcludedFromParent: {
-      Ethereum: ["PUFETH"],
+      Ethereum: ["PUFETH"]
     },
     listedAt: 1741275363,
   },
@@ -7175,8 +7095,8 @@ const data4: Protocol[] = [
       {
         name: "Uniswap V3",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13772"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13772"]
+      }
     ],
     module: "unihedge/index.js",
     twitter: "UnihedgeOrg",
@@ -7230,7 +7150,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kittenswap.finance",
-    description: "The community owned DEX for seamless trading on HyperEVM",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kittenswap-amm.jpg`,
     audits: "0",
@@ -7252,7 +7173,8 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "ftOM",
     url: "https://fluxtra.xyz/",
-    description: "The pioneer Liquid Staking Protocol on Mantra. Stake OM to receive ftOM",
+    description:
+      "The pioneer Liquid Staking Protocol on Mantra. Stake OM to receive ftOM",
     chain: "Mantra",
     logo: `${baseIconsUrl}/fluxtra.jpg`,
     audits: "0",
@@ -7272,7 +7194,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://axion.finance",
-    description: "AMM Dex on Taiko",
+    description:
+      "AMM Dex on Taiko",
     chain: "Taiko",
     logo: `${baseIconsUrl}/axion-finance-v2.jpg`,
     audits: "0",
@@ -7293,7 +7216,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://axion.finance",
-    description: "CLMM Dex on Taiko",
+    description:
+      "CLMM Dex on Taiko",
     chain: "Taiko",
     logo: `${baseIconsUrl}/axion-finance-v3.jpg`,
     audits: "0",
@@ -7314,7 +7238,8 @@ const data4: Protocol[] = [
     address: "berachain:0x009af46df68db0e76bfe9ea35663f6ed17877956",
     symbol: "OOGA",
     url: "https://app.oogabooga.io",
-    description: "Berachain's native liquidity aggregator.",
+    description:
+      "Berachain's native liquidity aggregator.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/ooga-booga.jpg`,
     audits: "0",
@@ -7334,7 +7259,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.hemi.xyz/en/tunnel/",
-    description: "Hemi's native BTC representation.",
+    description:
+      "Hemi's native BTC representation.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/hemibtc.jpg`,
     audits: "0",
@@ -7346,7 +7272,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hemi-btc/index.js",
     twitter: "hemi_xyz",
-    listedAt: 1741547481,
+    listedAt: 1741547481
   },
   {
     id: "5882",
@@ -7367,13 +7293,10 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "csigma-finance/index.js",
     twitter: "csigmafinance",
-    audit_links: [
-      "https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Edge%20Audit%20Report%20-%20QuillAudits.pdf",
-      "https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Institutional%20Audit%20Report%20-%20Immunebytes.pdf",
-    ],
+    audit_links: ["https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Edge%20Audit%20Report%20-%20QuillAudits.pdf", "https://github.com/csigma-labs/audit-reports/blob/main/cSigma%20Institutional%20Audit%20Report%20-%20Immunebytes.pdf"],
     github: ["csigma-labs"],
     wrongLiquidity: true,
-    listedAt: 1741612942,
+    listedAt: 1741612942
   },
   {
     id: "5883",
@@ -7395,7 +7318,7 @@ const data4: Protocol[] = [
     module: "growi-hf/index.js",
     twitter: "GrowiFinance",
     github: ["Growi-DeFi"],
-    listedAt: 1741613264,
+    listedAt: 1741613264
   },
   {
     id: "5884",
@@ -7403,7 +7326,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://lendonape.com/markets",
-    description: "ApeBank is a decentralized, user-driven borrowing and lending liquidity market inspired by AAVE.",
+    description:
+      "ApeBank is a decentralized, user-driven borrowing and lending liquidity market inspired by AAVE.",
     chain: "ApeChain",
     logo: `${baseIconsUrl}/apebank.jpg`,
     audits: "0",
@@ -7415,7 +7339,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["111"],
     module: "apebank/index.js",
     twitter: "LendOnApe",
-    listedAt: 1741613364,
+    listedAt: 1741613364
   },
   {
     id: "5885",
@@ -7423,7 +7347,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.meridian.money",
-    description: "The Central Liquidity Hub on Movement chain.",
+    description:
+      "The Central Liquidity Hub on Movement chain.",
     chain: "Movement",
     logo: `${baseIconsUrl}/meridian-amm.jpg`,
     audits: "0",
@@ -7435,7 +7360,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "meridian-amm/index.js",
     twitter: "meridian_money",
-    listedAt: 1741693564,
+    listedAt: 1741693564
   },
   {
     id: "5886",
@@ -7443,7 +7368,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.fastradewiz.com",
-    description: "Fastest Copy Trading Bot on Solana",
+    description:
+      "Fastest Copy Trading Bot on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/tradewiz.jpg`,
     audits: "0",
@@ -7477,12 +7403,12 @@ const data4: Protocol[] = [
       {
         name: "Stork",
         type: "Primary",
-        proof: ["https://docs.extended.exchange/extended-resources/trading/oracle-prices"],
-      },
+        proof: ["https://docs.extended.exchange/extended-resources/trading/oracle-prices"]
+      }
     ],
     module: "extended/index.js",
     twitter: "extendedapp",
-    listedAt: 1741703740,
+    listedAt: 1741703740
   },
   {
     id: "5888",
@@ -7504,7 +7430,7 @@ const data4: Protocol[] = [
     module: "magnify-cash/index.js",
     twitter: "MagnifyCash",
     github: ["Magnify-Cash"],
-    listedAt: 1741725771,
+    listedAt: 1741725771
   },
   {
     id: "5889",
@@ -7512,7 +7438,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.hemi.xyz/en/stake/dashboard/",
-    description: "Stake your assets to earn rewards and boost your points",
+    description:
+      "Stake your assets to earn rewards and boost your points",
     chain: "Hemi",
     logo: `${baseIconsUrl}/hemi-staking.jpg`,
     audits: "0",
@@ -7524,7 +7451,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hemi-staking/index.js",
     twitter: "hemi_xyz",
-    listedAt: 1741734255,
+    listedAt: 1741734255
   },
   {
     id: "5890",
@@ -7548,7 +7475,7 @@ const data4: Protocol[] = [
     twitter: "mosaicagg",
     audit_links: ["https://github.com/MosaicAG/mosaic-audits"],
     parentProtocol: "parent#mosaic",
-    listedAt: 1744384037,
+    listedAt: 1744384037
   },
   {
     id: "5891",
@@ -7556,7 +7483,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.interest.xyz/",
-    description: "Interest DEX on Movement.",
+    description:
+      "Interest DEX on Movement.",
     chain: "Movement",
     logo: `${baseIconsUrl}/interest-dex.jpg`,
     audits: "2",
@@ -7569,10 +7497,8 @@ const data4: Protocol[] = [
     module: "interest-dex/index.js",
     twitter: "InterestDEX",
     parentProtocol: "parent#interest-labs",
-    audit_links: [
-      "https://3796248018-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKUfXlMmOziV2mgIVI8u1%2Fuploads%2FDyGupOLvySXT30oJT3M6%2FInterest%20Protocol%20Audit%20Report.pdf?alt=media",
-    ],
-    listedAt: 1741789559,
+    audit_links: ["https://3796248018-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKUfXlMmOziV2mgIVI8u1%2Fuploads%2FDyGupOLvySXT30oJT3M6%2FInterest%20Protocol%20Audit%20Report.pdf?alt=media"],
+    listedAt: 1741789559
   },
   {
     id: "5892",
@@ -7594,7 +7520,7 @@ const data4: Protocol[] = [
     module: "canopy/index.js",
     twitter: "canopyxyz",
     audit_links: ["https://docs.canopyhub.xyz/audits/audit-reports"],
-    listedAt: 1741789722,
+    listedAt: 1741789722
   },
   {
     id: "5893",
@@ -7617,31 +7543,23 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: [
-          "https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine",
-        ],
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
       {
         name: "Switchboard",
         type: "Aggregator",
-        proof: [
-          "https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine",
-        ],
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
       {
         name: "Coingecko",
         type: "Aggregator",
-        proof: [
-          "https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine",
-        ],
+        proof: ["https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine"]
       },
     ],
     module: "moveposition/index.js",
     twitter: "MovePosition",
-    audit_links: [
-      "https://cdn.prod.website-files.com/667eba24a3bcd02c2396724a/67a1e1fe8acfd2fc8bf1668d_MovePosition%20Audit%20Report.pdf",
-    ],
-    listedAt: 1741790210,
+    audit_links: ["https://cdn.prod.website-files.com/667eba24a3bcd02c2396724a/67a1e1fe8acfd2fc8bf1668d_MovePosition%20Audit%20Report.pdf"],
+    listedAt: 1741790210
   },
   {
     id: "5894",
@@ -7649,7 +7567,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://waxdeer.com",
-    description: "Embark on a legendary journey. Collect, explore, and shape the destiny of the Deer Chronicles.",
+    description:
+      "Embark on a legendary journey. Collect, explore, and shape the destiny of the Deer Chronicles.",
     chain: "Wax",
     logo: `${baseIconsUrl}/wdjc.jpg`,
     audits: "0",
@@ -7661,7 +7580,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "wdjc/index.js",
     twitter: "WAXDEER",
-    listedAt: 1741790267,
+    listedAt: 1741790267
   },
   {
     id: "5895",
@@ -7669,7 +7588,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://puppy.fun",
-    description: "Launchpad on BNB Chain",
+    description:
+      "Launchpad on BNB Chain",
     chain: "Binance",
     logo: `${baseIconsUrl}/puppyfun.png`,
     audits: "0",
@@ -7681,7 +7601,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "puppyfun/index.js",
     twitter: "puppydotfun",
-    listedAt: 1741790269,
+    listedAt: 1741790269
   },
   {
     id: "5896",
@@ -7689,7 +7609,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://superhedge.com/",
-    description: "100% Principal-Protected Defi Structured Products, built on Pendle Finance",
+    description:
+      "100% Principal-Protected Defi Structured Products, built on Pendle Finance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/superhedge.jpg`,
     audits: "0",
@@ -7703,7 +7624,7 @@ const data4: Protocol[] = [
     twitter: "superhedgeio",
     audit_links: ["https://www.halborn.com/audits/superhedge-finance/superhedge-v1-core"],
     github: ["superhedge-finance"],
-    listedAt: 1741815021,
+    listedAt: 1741815021
   },
   /*
     {
@@ -7748,25 +7669,18 @@ const data4: Protocol[] = [
       {
         name: "WINkLink",
         type: "Primary",
-        proof: [
-          "https://juststable.tronscan.org/?lang=en-US#/home",
-          "https://x.com/justinsuntron/status/1851885789116039226",
-        ],
-        endDate: "2025-05-15",
+        proof: ["https://juststable.tronscan.org/?lang=en-US#/home", "https://x.com/justinsuntron/status/1851885789116039226"],
+        endDate: '2025-05-15',
       },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: [
-          "https://docs.usdd.io/developers/oraclehome",
-          "https://x.com/justinsuntron/status/1851885789116039226",
-          "https://docs.usdd.io/developers/oracle",
-        ],
-        startDate: "2025-05-15",
+        proof: ["https://docs.usdd.io/developers/oraclehome", "https://x.com/justinsuntron/status/1851885789116039226", "https://docs.usdd.io/developers/oracle"],
+        startDate: '2025-05-15',
       },
     ],
     listedAt: 1741877201,
-    stablecoins: ["usdd"],
+    stablecoins: ["usdd"]
   },
   {
     id: "5899",
@@ -7774,7 +7688,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://tokentool.bitbond.com/",
-    description: "Lock team and liquidity tokens in a few clicks - no coding required",
+    description:
+      "Lock team and liquidity tokens in a few clicks - no coding required",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bitbond-lockers.jpg`,
     audits: "2",
@@ -7788,7 +7703,7 @@ const data4: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/bitbond"],
     twitter: "Bitbond",
     parentProtocol: "parent#token-tool",
-    listedAt: 1741877311,
+    listedAt: 1741877311
   },
   {
     id: "5900",
@@ -7796,7 +7711,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://tokentool.bitbond.com/",
-    description: "Launch your crowdsale in a few clicks - no coding required",
+    description:
+      "Launch your crowdsale in a few clicks - no coding required",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bitbond-sales.jpg`,
     audits: "2",
@@ -7810,7 +7726,7 @@ const data4: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/bitbond"],
     twitter: "Bitbond",
     parentProtocol: "parent#token-tool",
-    listedAt: 1741877319,
+    listedAt: 1741877319
   },
   {
     id: "5901",
@@ -7818,7 +7734,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://usdt0.to",
-    description: "USDT0 is a one stop solution for Tether’s Interoperability and Expansion.",
+    description:
+      "USDT0 is a one stop solution for Tether’s Interoperability and Expansion.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/usdt0.jpg`,
     audits: "2",
@@ -7833,9 +7750,9 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/Everdawn-Labs/usdt0-audit-reports/blob/main/Guardian/2025-01-14_USDT0.pdf",
       "https://github.com/Everdawn-Labs/usdt0-audit-reports/blob/main/ChainSecurity/ChainSecurity_USDT0_audit.pdf",
-      "https://github.com/Everdawn-Labs/usdt0-audit-reports/blob/main/Paladin/20250110_Paladin_Everdawn_Final_Report.pdf",
+      "https://github.com/Everdawn-Labs/usdt0-audit-reports/blob/main/Paladin/20250110_Paladin_Everdawn_Final_Report.pdf"
     ],
-    listedAt: 1741877325,
+    listedAt: 1741877325
   },
   {
     id: "5902",
@@ -7858,13 +7775,13 @@ const data4: Protocol[] = [
       {
         name: "Api3",
         type: "Primary",
-        proof: ["https://stout.gitbook.io/docs/ecosystem/oracles"],
-      },
+        proof: ["https://stout.gitbook.io/docs/ecosystem/oracles"]
+      }
     ],
     treasury: "stout.js",
     module: "stout/index.js",
     twitter: "stout_fi",
-    listedAt: 1741885291,
+    listedAt: 1741885291
   },
   {
     id: "5903",
@@ -7872,7 +7789,8 @@ const data4: Protocol[] = [
     address: "0x915424ac489433130d92b04096f3b96c82e92a9d",
     symbol: "PROS",
     url: "https://www.prosper-fi.com",
-    description: "Prosper is building the largest RWA protocol for Bitcoin hashrate and treasury.",
+    description:
+      "Prosper is building the largest RWA protocol for Bitcoin hashrate and treasury.",
     chain: "Binance",
     logo: `${baseIconsUrl}/prosper.jpg`,
     audits: "2",
@@ -7886,7 +7804,7 @@ const data4: Protocol[] = [
     module: "prosper/index.js",
     twitter: "Prosperfi_BTC",
     audit_links: ["https://docs.prosper-fi.com/app-overview/security"],
-    listedAt: 1741944904,
+    listedAt: 1741944904
   },
   {
     id: "5904",
@@ -7906,7 +7824,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "legacynetworkio",
-    audit_links: [],
+    audit_links: []
   },
   {
     id: "5905",
@@ -7927,7 +7845,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "multipli/index.js",
     twitter: "multiplifi",
-    listedAt: 1741969274,
+    listedAt: 1741969274
   },
   {
     id: "5906",
@@ -7935,7 +7853,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.yuzu.finance/",
-    description: "Yuzu is a permissionless Concentrated Liquidity Marketmaker on the Movement Network.",
+    description:
+      "Yuzu is a permissionless Concentrated Liquidity Marketmaker on the Movement Network.",
     chain: "Movement",
     logo: `${baseIconsUrl}/yuzu-finance.jpg`,
     audits: "2",
@@ -7949,7 +7868,7 @@ const data4: Protocol[] = [
     twitter: "YuzuFinance",
     audit_links: ["https://github.com/YuzuFinance/Audits"],
     github: ["YuzuFinance"],
-    listedAt: 1741969294,
+    listedAt: 1741969294
   },
   {
     id: "5907",
@@ -7968,21 +7887,12 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     forkedFrom: [],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks"],
-      },
-    ], //
+    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks"] }], //
     module: "defituna.js",
     twitter: "DeFiTuna",
-    audit_links: [
-      "https://github.com/DefiTuna/fusionamm-sdk/blob/main/audit/OShield-fusionamm-report-23-July-2025.md",
-      "https://raw.githubusercontent.com/DefiTuna/fusionamm-sdk/main/audit/sec3-fusionamm-report-23-July-2025.pdf",
-    ],
+    audit_links: ["https://github.com/DefiTuna/fusionamm-sdk/blob/main/audit/OShield-fusionamm-report-23-July-2025.md", "https://raw.githubusercontent.com/DefiTuna/fusionamm-sdk/main/audit/sec3-fusionamm-report-23-July-2025.pdf"],
     parentProtocol: "parent#defituna",
-    listedAt: 1741969773,
+    listedAt: 1741969773
   },
   {
     id: "5908",
@@ -8004,7 +7914,7 @@ const data4: Protocol[] = [
     module: "witty/index.js",
     twitter: "play_witty",
     github: ["maketh-labs"],
-    listedAt: 1741969793,
+    listedAt: 1741969793
   },
   {
     id: "5909",
@@ -8012,7 +7922,8 @@ const data4: Protocol[] = [
     address: "base:0x0c1dc73159e30c4b06170f2593d3118968a0dca5",
     symbol: "GPS",
     url: "https://gopluslabs.io",
-    description: "A multi-chain token and liquidity locker by GoPlus Security.",
+    description:
+      "A multi-chain token and liquidity locker by GoPlus Security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/goplus-locker-v3.jpg`,
     audits: "0",
@@ -8026,7 +7937,7 @@ const data4: Protocol[] = [
     twitter: "GoPlusSecurity",
     parentProtocol: "parent#goplus-security",
     audit_links: [],
-    listedAt: 1741988038,
+    listedAt: 1741988038
   },
   {
     id: "5910",
@@ -8051,17 +7962,17 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.rfx.exchange/oracle-system"],
+        proof: ["https://docs.rfx.exchange/oracle-system"]
       },
       {
         name: "Stork",
         type: "Primary",
-        proof: ["https://docs.rfx.exchange/oracle-system"],
-      },
+        proof: ["https://docs.rfx.exchange/oracle-system"]
+      }
     ],
     audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
     parentProtocol: "parent#rfx-exchange",
-    listedAt: 1742218425,
+    listedAt: 1742218425
   },
   {
     id: "5911",
@@ -8069,7 +7980,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.clamm.io",
-    description: "Concentrated liquidity AMM with Plugins (v4).",
+    description:
+      "Concentrated liquidity AMM with Plugins (v4).",
     chain: "Base",
     logo: `${baseIconsUrl}/clamm.jpg`,
     audits: "3",
@@ -8082,7 +7994,7 @@ const data4: Protocol[] = [
     module: "clamm/index.js",
     twitter: "clamm_dex",
     audit_links: [],
-    listedAt: 1742218435,
+    listedAt: 1742218435
   },
   {
     id: "5912",
@@ -8090,7 +8002,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://chedda.finance/",
-    description: "Chedda Finance is the lending platform for AI, Meme Coins and GameFi tokens",
+    description:
+      "Chedda Finance is the lending platform for AI, Meme Coins and GameFi tokens",
     chain: "Base",
     logo: `${baseIconsUrl}/chedda-finance.jpg`,
     audits: "2",
@@ -8103,17 +8016,15 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13883"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13883"]
+      }
     ],
     forkedFrom: [],
     module: "chedda-finance/index.js",
     twitter: "chedda_finance",
-    audit_links: [
-      "https://github.com/chedda-tech/chedda-protocol/blob/develop/audit/Chedda%20Finance%20Smart%20Contract%20Audit%20Report%20-%20Final%20Report.pdf",
-    ],
+    audit_links: ["https://github.com/chedda-tech/chedda-protocol/blob/develop/audit/Chedda%20Finance%20Smart%20Contract%20Audit%20Report%20-%20Final%20Report.pdf"],
     github: ["chedda-tech"],
-    listedAt: 1742218445,
+    listedAt: 1742218445
   },
   {
     id: "5913",
@@ -8135,10 +8046,8 @@ const data4: Protocol[] = [
     module: "exit-tech/index.js",
     twitter: "exit_tech_",
     parentProtocol: "parent#bonsaidao-ecosystem",
-    audit_links: [
-      "https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FU7Q6UV6CGLwU33vLuGwo%2Fuploads%2FtzTGuvytvqAikGukksoj%2FeGMX%20Exit%20Tech%20Audit%20Report.pdf?alt=media&token=9b9afe04-c6ab-431b-9075-d9d9d6517e4b",
-    ],
-    listedAt: 1742305759,
+    audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FU7Q6UV6CGLwU33vLuGwo%2Fuploads%2FtzTGuvytvqAikGukksoj%2FeGMX%20Exit%20Tech%20Audit%20Report.pdf?alt=media&token=9b9afe04-c6ab-431b-9075-d9d9d6517e4b"],
+    listedAt: 1742305759
   },
   /*{ // merged both into ekubo
     id: "5914",
@@ -8182,11 +8091,8 @@ const data4: Protocol[] = [
     module: "yo/index.js",
     twitter: "yield",
     github: ["yoprotocol"],
-    audit_links: [
-      "https://www.yo.xyz/files/Yo-Protocol-Hunter-Security-Audit-Report.pdf",
-      "https://www.yo.xyz/files/Yo-Protocol-Offbeat-Security-Review.pdf",
-    ],
-    listedAt: 1742382739,
+    audit_links: ["https://www.yo.xyz/files/Yo-Protocol-Hunter-Security-Audit-Report.pdf", "https://www.yo.xyz/files/Yo-Protocol-Offbeat-Security-Review.pdf"],
+    listedAt: 1742382739
   },
   {
     id: "5916",
@@ -8209,7 +8115,7 @@ const data4: Protocol[] = [
     twitter: "BumpinTrade",
     github: ["bumpin-exchange"],
     audit_links: ["https://skynet.certik.com/projects/bumpin-trade"],
-    listedAt: 1742382941,
+    listedAt: 1742382941
   },
   {
     id: "5917",
@@ -8231,7 +8137,7 @@ const data4: Protocol[] = [
     module: "unchain-x/index.js",
     twitter: "Unchain_X",
     audit_links: ["https://skynet.certik.com/projects/unchain-x"],
-    listedAt: 1742383265,
+    listedAt: 1742383265
   },
   {
     id: "5918",
@@ -8252,7 +8158,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["3365"],
     module: "golden-finance/index.js",
     twitter: "0xGoldenFinance",
-    listedAt: 1742386544,
+    listedAt: 1742386544
   },
   {
     id: "5919",
@@ -8260,7 +8166,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hanji.io",
-    description: "On-chain CLOB dex on Etherlink.",
+    description:
+      "On-chain CLOB dex on Etherlink.",
     chain: "Etherlink",
     logo: `${baseIconsUrl}/hanji-protocol.jpg`,
     audits: "0",
@@ -8272,7 +8179,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hanji/index.js",
     twitter: "HanjiProtocol",
-    listedAt: 1742386774,
+    listedAt: 1742386774
   },
   {
     id: "5920",
@@ -8294,7 +8201,7 @@ const data4: Protocol[] = [
     module: "tearex/index.js",
     audit_links: ["ttps://github.com/TeahouseFinance/Tea-REX/blob/master/audit.pdf"],
     twitter: "0xteaRex",
-    listedAt: 1742416571,
+    listedAt: 1742416571
   },
   {
     id: "5921",
@@ -8302,7 +8209,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://squadswap.com/",
-    description: "SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token.",
+    description:
+      "SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token.",
     chain: "Binance",
     logo: `${baseIconsUrl}/squadswap-dynamo.jpg`,
     audits: "2",
@@ -8315,10 +8223,8 @@ const data4: Protocol[] = [
     module: "SquadSwap-Dynamo/index.js",
     twitter: "Squad_Swap",
     parentProtocol: "parent#squadswap",
-    audit_links: [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SquadSwap-Dynamo-Wow-v1.0.pdf",
-    ],
-    listedAt: 1742416583,
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SquadSwap-Dynamo-Wow-v1.0.pdf"],
+    listedAt: 1742416583
   },
   {
     id: "5922",
@@ -8326,7 +8232,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://squadswap.com/",
-    description: "SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token",
+    description:
+      "SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token",
     chain: "Binance",
     logo: `${baseIconsUrl}/squadswap-wow.jpg`,
     audits: "2",
@@ -8339,10 +8246,8 @@ const data4: Protocol[] = [
     module: "SquadSwap-WOW/index.js",
     twitter: "Squad_Swap",
     parentProtocol: "parent#squadswap",
-    audit_links: [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SquadSwap-Dynamo-Wow-v1.0.pdf",
-    ],
-    listedAt: 1742416591,
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SquadSwap-Dynamo-Wow-v1.0.pdf"],
+    listedAt: 1742416591
   },
   {
     id: "5923",
@@ -8364,7 +8269,7 @@ const data4: Protocol[] = [
     module: "powadap/index.js",
     twitter: "powabit",
     github: ["Powabit"],
-    listedAt: 1742416601,
+    listedAt: 1742416601
   },
   {
     id: "5924",
@@ -8385,7 +8290,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     module: "atlas-exchange/index.js",
     twitter: "_atlasexchange_",
-    listedAt: 1742416611,
+    listedAt: 1742416611
   },
   {
     id: "5925",
@@ -8407,7 +8312,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "MayanFinance",
     audit_links: ["https://docs.mayan.finance/resources/audits"],
-    github: ["mayan-finance"],
+    github: ["mayan-finance"]
   },
   {
     id: "5926",
@@ -8415,7 +8320,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://apps.aavechan.com/",
-    description: "Aave DAO Delegate & service provider",
+    description:
+      "Aave DAO Delegate & service provider",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aave-chan.jpg`,
     audits: "0",
@@ -8448,15 +8354,15 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.dahlia.xyz/", "https://docs.dahlia.xyz/key-concepts/oracles"],
-      },
+        proof: ["https://app.dahlia.xyz/", "https://docs.dahlia.xyz/key-concepts/oracles"]
+      }
     ],
     forkedFrom: [],
     module: "dahlia/index.js",
     twitter: "DahliaProtocol",
     audit_links: ["https://docs.dahlia.xyz/security/cantina-audit-report"],
     github: ["dahlia-xyz"],
-    listedAt: 1742469757,
+    listedAt: 1742469757
   },
   {
     id: "5928",
@@ -8464,7 +8370,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.quokkalend.xyz/",
-    description: "Quokkalend is the lending market of Morph chain",
+    description:
+      "Quokkalend is the lending market of Morph chain",
     chain: "Morph",
     logo: `${baseIconsUrl}/quokkalend.jpg`,
     audits: "0",
@@ -8477,13 +8384,13 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://explorer.morphl2.io/address/0x36DD706E3ca705A63d4281831B351b6f7B568319?tab=txs"],
-      },
+        proof: ["https://explorer.morphl2.io/address/0x36DD706E3ca705A63d4281831B351b6f7B568319?tab=txs"]
+      }
     ],
     forkedFromIds: ["1599"],
     module: "quokkalend/index.js",
     twitter: "QuokkaLend",
-    listedAt: 1742469797,
+    listedAt: 1742469797
   },
   {
     id: "5929",
@@ -8491,7 +8398,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.getheminames.me/",
-    description: "Digital identities natively issued on Hemi Chain to connect you with all the chains across Web3.",
+    description:
+      "Digital identities natively issued on Hemi Chain to connect you with all the chains across Web3.",
     chain: "Hemi",
     logo: `${baseIconsUrl}/getheminames.png`,
     audits: "0",
@@ -8524,14 +8432,14 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://x.com/sedge_fi/status/1892327685067583561"],
-      },
+        proof: ["https://x.com/sedge_fi/status/1892327685067583561"]
+      }
     ],
     forkedFrom: [],
     module: "sedge/index.js",
     twitter: "sedge_fi",
     parentProtocol: "parent#dfx-finance",
-    listedAt: 1755011597,
+    listedAt: 1755011597
   },
   {
     id: "5931",
@@ -8539,7 +8447,8 @@ const data4: Protocol[] = [
     address: "fantom:0x248cb87dda803028dfead98101c9465a2fbda0d4",
     symbol: "CHARM",
     url: "https://spartacadabra.money/",
-    description: "Spartacadabra unlocks yield bearing assets and conjures magic crypto money Lambda (λ)",
+    description:
+      "Spartacadabra unlocks yield bearing assets and conjures magic crypto money Lambda (λ)",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spartacadabra.jpg`,
     audits: "0",
@@ -8551,7 +8460,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["347"],
     module: "spartacadabra/index.js",
     twitter: "spartacadabra",
-    listedAt: 1742497621,
+    listedAt: 1742497621
   },
   // {
   //   id: "5932",
@@ -8569,7 +8478,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "Chain",
   //   chains: ["Ethereum"],
-  //
+  //   
   //   forkedFrom: [],
   //   module: "dummy.js",
   //   twitter: "energywebx",
@@ -8633,7 +8542,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "qearn/index.js",
     twitter: "_Qubic_",
-    listedAt: 1742505841,
+    listedAt: 1742505841
   },
   {
     id: "5936",
@@ -8641,7 +8550,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.pump.fun",
-    description: "The native dex for pump.fun",
+    description:
+      "The native dex for pump.fun",
     chain: "Solana",
     logo: `${baseIconsUrl}/pumpswap.jpg`,
     audits: "0",
@@ -8654,7 +8564,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "pumpdotfun",
     parentProtocol: "parent#pump",
-    listedAt: 1742516927,
+    listedAt: 1742516927
   },
   {
     id: "5937",
@@ -8676,10 +8586,8 @@ const data4: Protocol[] = [
     module: "cyber-staking/index.js",
     forkedFrom: [],
     twitter: "BuildOnCyber",
-    audit_links: [
-      "https://github.com/cyberconnecthq/cyber-token-bridges/blob/main/audit/SlowMist%20Audit%20Report%20-%20Cyber%20Token%20Bridges.pdf",
-    ],
-    listedAt: 1742570617,
+    audit_links: ["https://github.com/cyberconnecthq/cyber-token-bridges/blob/main/audit/SlowMist%20Audit%20Report%20-%20Cyber%20Token%20Bridges.pdf"],
+    listedAt: 1742570617
   },
   {
     id: "5938",
@@ -8687,7 +8595,8 @@ const data4: Protocol[] = [
     address: "secret1qfql357amn448duf5gvp9gr48sxx9tsnhupu3d",
     symbol: "SHD",
     url: "https://app.shadeprotocol.io/lend",
-    description: "Shade Protocol's native lending market",
+    description:
+      "Shade Protocol's native lending market",
     chain: "Secret",
     logo: `${baseIconsUrl}/shadex.jpg`,
     audits: "0",
@@ -8701,7 +8610,7 @@ const data4: Protocol[] = [
     twitter: "Shade_Protocol",
     audit_links: [],
     parentProtocol: "parent#shade-protocol",
-    listedAt: 1742570633,
+    listedAt: 1742570633
   },
   {
     id: "5939",
@@ -8709,7 +8618,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://baseswap.blog/",
-    description: "V2 AMM | keeper-less limit orders",
+    description:
+      "V2 AMM | keeper-less limit orders",
     chain: "Base",
     logo: `${baseIconsUrl}/basefinance.jpg`,
     audits: "0",
@@ -8721,7 +8631,7 @@ const data4: Protocol[] = [
     module: "basefinance-v1/index.js",
     forkedFromIds: ["2197"],
     twitter: "BaseFinanceLabs",
-    listedAt: 1742570641,
+    listedAt: 1742570641
   },
   {
     id: "5940",
@@ -8745,26 +8655,23 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"],
+        proof: ["https://docs.hyperlend.finance/hyperlend-1/oracle"]
       },
       {
         name: "Pyth",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
       },
       {
         name: "RedStone",
         type: "Primary",
-        proof: [
-          "https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D",
-          "https://github.com/DefiLlama/defillama-server/pull/10443/",
-        ],
-      },
+        proof: ["https://app.hyperlend.finance/markets/0xfD739d4e423301CE9385c1fb8850539D657C296D","https://github.com/DefiLlama/defillama-server/pull/10443/"]
+      }
     ],
     twitter: "hyperlendx",
     audit_links: ["https://github.com/hyperlendx/audits"],
     parentProtocol: "parent#hyperlend",
-    listedAt: 1742675675,
+    listedAt: 1742675675
   },
   {
     id: "5941",
@@ -8772,7 +8679,8 @@ const data4: Protocol[] = [
     address: "sonic:0x4931CE8f4130a723cC6fF8A0B23B7F33550aB3a4",
     symbol: "RING",
     url: "https://ringswap.finance",
-    description: "Farming protocol on Sonic",
+    description:
+      "Farming protocol on Sonic",
     chain: "Sonic",
     logo: `${baseIconsUrl}/ringswap.jpg`,
     audits: "0",
@@ -8793,7 +8701,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://gacha.game/",
-    description: "A new super app making crypto fun, simple, and accessible for everyone",
+    description:
+      "A new super app making crypto fun, simple, and accessible for everyone",
     chain: "Abstract",
     logo: `${baseIconsUrl}/gacha.jpg`,
     audits: "0",
@@ -8805,7 +8714,7 @@ const data4: Protocol[] = [
     module: "gacha/index.js",
     forkedFrom: [],
     twitter: "gacha_game_",
-    listedAt: 1742726734,
+    listedAt: 1742726734
   },
   {
     id: "5943",
@@ -8813,7 +8722,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://umbra.finance/swap",
-    description: "Dexs on Eclipse Chain",
+    description:
+      "Dexs on Eclipse Chain",
     chain: "Eclipse",
     logo: `${baseIconsUrl}/umbra.jpg`,
     audits: "0",
@@ -8826,7 +8736,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     github: ["UmbraDEX"],
     twitter: "UmbraFi",
-    listedAt: 1742845591,
+    listedAt: 1742845591
   },
   {
     id: "5944",
@@ -8850,15 +8760,12 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13997"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13997"]
+      }
     ],
     twitter: "DegenPrimeDefi",
-    audit_links: [
-      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/tree/dev/main/audits",
-      "https://drive.google.com/file/d/1ysFrJhsnwFu5QmngrcQIHefG9Kx3rj5J/view",
-    ],
-    listedAt: 1742826681,
+    audit_links: ["https://github.com/DeltaPrimeLabs/deltaprime-primeloans/tree/dev/main/audits", "https://drive.google.com/file/d/1ysFrJhsnwFu5QmngrcQIHefG9Kx3rj5J/view"],
+    listedAt: 1742826681
   },
   {
     id: "5945",
@@ -8866,7 +8773,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://magnum.trade/",
-    description: "Magnum is the on-chain Automated Trading Platform with web and mobile app interfaces",
+    description:
+      "Magnum is the on-chain Automated Trading Platform with web and mobile app interfaces",
     chain: "Solana",
     logo: `${baseIconsUrl}/magnum-bot.jpg`,
     audits: "0",
@@ -8885,7 +8793,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.term.finance",
-    description: "Fixed-rate lending via on-chain auctions",
+    description:
+      "Fixed-rate lending via on-chain auctions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/termfinance-vaults.jpg`,
     audits: "0",
@@ -8898,7 +8807,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "term_labs",
     parentProtocol: "parent#termfinance",
-    listedAt: 1742831758,
+    listedAt: 1742831758
   },
   {
     id: "5947",
@@ -8907,7 +8816,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.mtt.network/",
-    description: "Dex on MTT Network",
+    description:
+      "Dex on MTT Network",
     chain: "MTT Network",
     logo: `${baseIconsUrl}/mtt-dex.png`,
     audits: "0",
@@ -8919,7 +8829,7 @@ const data4: Protocol[] = [
     module: "mtt-dex/index.js",
     forkedFromIds: ["2198"],
     twitter: "MTT_NETWORK",
-    listedAt: 1742832184,
+    listedAt: 1742832184
   },
   {
     id: "5948",
@@ -8942,7 +8852,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.centrifuge.io/developer/security/"],
     twitter: "centrifuge",
     parentProtocol: "parent#centrifuge",
-    listedAt: 1722495600,
+    listedAt: 1722495600
   },
   {
     id: "5949",
@@ -8950,7 +8860,8 @@ const data4: Protocol[] = [
     address: "cronos:0xB3551aCf805D5F90A1Fd7444B6571BdC069F40b2",
     symbol: "LUME",
     url: "https://www.lume.finance/",
-    description: "The Next Generation of DeFi",
+    description:
+      "The Next Generation of DeFi",
     chain: "Cronos",
     logo: `${baseIconsUrl}/lume-finance.jpg`,
     audits: "0",
@@ -8962,7 +8873,7 @@ const data4: Protocol[] = [
     module: "lume/index.js",
     forkedFrom: [],
     twitter: "LumeonCro",
-    listedAt: 1742911826,
+    listedAt: 1742911826
   },
   {
     id: "5950",
@@ -8983,7 +8894,7 @@ const data4: Protocol[] = [
     module: "justbet/index.js",
     forkedFrom: [],
     twitter: "JustBetOfficial",
-    listedAt: 1742911896,
+    listedAt: 1742911896
   },
   {
     id: "5951",
@@ -9004,12 +8915,9 @@ const data4: Protocol[] = [
     module: "arbius/index.js",
     forkedFrom: [],
     twitter: "arbius_ai",
-    audit_links: [
-      "https://docs.arbius.ai/Arbius-V4-audit.pdf",
-      "https://docs.arbius.ai/Arbius-Protocol_final-audit.pdf",
-    ],
+    audit_links: ["https://docs.arbius.ai/Arbius-V4-audit.pdf", "https://docs.arbius.ai/Arbius-Protocol_final-audit.pdf"],
     github: ["semperai"],
-    listedAt: 1742912328,
+    listedAt: 1742912328
   },
   {
     id: "5952",
@@ -9030,10 +8938,8 @@ const data4: Protocol[] = [
     module: "corepound/index.js",
     forkedFrom: [],
     twitter: "corepoundxyz",
-    audit_links: [
-      "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf",
-    ],
-    listedAt: 1743001221,
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1743001221
   },
   {
     id: "5953",
@@ -9055,7 +8961,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PicWeGlobal",
     audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
-    listedAt: 1743002205,
+    listedAt: 1743002205
   },
   {
     id: "5954",
@@ -9063,7 +8969,8 @@ const data4: Protocol[] = [
     address: "solana:FkqvTmDNgxgcdS7fPbZoQhPVuaYJPwSsP8mm4p7oNgf6",
     symbol: "DTR",
     url: "https://www.dextoro.com/",
-    description: "Discover, Buy, and Sell Memecoins & Altcoins on Solana with Apple Pay",
+    description:
+      "Discover, Buy, and Sell Memecoins & Altcoins on Solana with Apple Pay",
     chain: "Solana",
     logo: `${baseIconsUrl}/dextoro.jpg`,
     audits: "0",
@@ -9095,10 +9002,8 @@ const data4: Protocol[] = [
     module: "keiko/index.js",
     forkedFromIds: ["270"],
     twitter: "KeikoFinance",
-    audit_links: [
-      "https://868243508-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FX9T1gtc0GaUwKt6nB7re%2Fuploads%2FtlH8qUSse1o03zsH2WVm%2FKeiko_audit_report.pdf?alt=media&token=e5b0fc71-ca73-4be5-a1c3-c8d9862d28ec",
-    ],
-    listedAt: 1743074842,
+    audit_links: ["https://868243508-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FX9T1gtc0GaUwKt6nB7re%2Fuploads%2FtlH8qUSse1o03zsH2WVm%2FKeiko_audit_report.pdf?alt=media&token=e5b0fc71-ca73-4be5-a1c3-c8d9862d28ec"],
+    listedAt: 1743074842
   },
   {
     id: "5956",
@@ -9106,7 +9011,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bearn.sucks/home",
-    description: "BGT liquid locker and autocompounder.",
+    description:
+      "BGT liquid locker and autocompounder.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/bearn.jpg`,
     audits: "0",
@@ -9119,7 +9025,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "Bearnsucks",
     github: ["Bearn-Sucks"],
-    listedAt: 1743074892,
+    listedAt: 1743074892
   },
   {
     id: "5957",
@@ -9127,7 +9033,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.usdfc.net/#/",
-    description: "USDFC is a Filecoin-backed Stablecoin.",
+    description:
+      "USDFC is a Filecoin-backed Stablecoin.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/usdfc.jpg`,
     audits: "2",
@@ -9142,21 +9049,21 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
       },
       {
         name: "Tellor",
         type: "Fallback",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      }
     ],
     twitter: "USDFC_Protocol",
     audit_links: [
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-01-Hexens.pdf",
-      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf",
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf"
     ],
     parentProtocol: "parent#secured-finance",
-    listedAt: 1743107377,
+    listedAt: 1743107377
   },
   {
     id: "5958",
@@ -9164,7 +9071,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://goldminer.finance/",
-    description: "First miner on Sonic. Earn up to 8% daily on your staked $S and earn 15% referral rewards.",
+    description:
+      "First miner on Sonic. Earn up to 8% daily on your staked $S and earn 15% referral rewards.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/goldminer.jpg`,
     audits: "0",
@@ -9200,10 +9108,10 @@ const data4: Protocol[] = [
     twitter: "Evoq_Finance",
     audit_links: [
       "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",
-      "https://github.com/zokyo-sec/audit-reports/blob/main/Evoq%20Finance/Evoq%20Finance_Zokyo_audit_report_Jan9th_2025.pdf",
+      "https://github.com/zokyo-sec/audit-reports/blob/main/Evoq%20Finance/Evoq%20Finance_Zokyo_audit_report_Jan9th_2025.pdf"
     ],
     github: ["evoqfinance"],
-    listedAt: 1743107397,
+    listedAt: 1743107397
   },
   {
     id: "5960",
@@ -9228,16 +9136,16 @@ const data4: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.hyperpiexyz.io/tech-stack-and-media-kit/oracle/pyth"],
-        startDate: "2025-05-19",
+        startDate: "2025-05-19"
       },
     ],
     twitter: "Hyperpiexyz_io",
     audit_links: [
       "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
-      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf",
+      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
     ],
     parentProtocol: "parent#magpie-ecosystem",
-    listedAt: 1743107407,
+    listedAt: 1743107407
   },
   {
     id: "5961",
@@ -9245,7 +9153,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://qx.qubic.org/",
-    description: "QX is a decentralized exchange running as a smart contract on the Qubic network.",
+    description:
+      "QX is a decentralized exchange running as a smart contract on the Qubic network.",
     chain: "Qubic",
     logo: `${baseIconsUrl}/qx.jpg`,
     audits: "0",
@@ -9257,7 +9166,7 @@ const data4: Protocol[] = [
     module: "qx/index.js",
     forkedFrom: [],
     twitter: "_Qubic_",
-    listedAt: 1743107417,
+    listedAt: 1743107417
   },
   {
     id: "5962",
@@ -9285,7 +9194,8 @@ const data4: Protocol[] = [
     address: "0x419905009e4656fdc02418c7df35b1e61ed5f726",
     symbol: "RSUP",
     url: "https://resupply.fi/",
-    description: "A decentralized stablecoin protocol, leveraging the liquidity and stability of lending markets",
+    description:
+      "A decentralized stablecoin protocol, leveraging the liquidity and stability of lending markets",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/resupply.jpg`,
     audits: "2",
@@ -9300,7 +9210,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.resupply.fi/faq/audits"],
     github: ["resupplyfi"],
     treasury: "resupply.js",
-    listedAt: 1743178567,
+    listedAt: 1743178567
   },
   {
     id: "5964",
@@ -9322,7 +9232,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["5789"],
     twitter: "BakerDAO420",
     audit_links: ["https://documentation.bakerdao.io/security"],
-    listedAt: 1744062627,
+    listedAt: 1744062627
   },
   {
     id: "5965",
@@ -9330,7 +9240,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sandglass.so/markets",
-    description: "Solana's yield trading protocol. Built by the Lifinity team",
+    description:
+      "Solana's yield trading protocol. Built by the Lifinity team",
     chain: "Solana",
     logo: `${baseIconsUrl}/sandglass.jpg`,
     audits: "0",
@@ -9363,7 +9274,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     twitter: "SaucerSwapLabs",
     parentProtocol: "parent#saucerswap",
-    listedAt: 1743419207,
+    listedAt: 1743419207
   },
   {
     id: "5967",
@@ -9371,7 +9282,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://haedal.xyz",
-    description: "Simple, automated and powerful. Maximize your yields like a pro.",
+    description:
+      "Simple, automated and powerful. Maximize your yields like a pro.",
     chain: "Sui",
     logo: `${baseIconsUrl}/haedal-vault.jpg`,
     audits: "0",
@@ -9384,7 +9296,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "HaedalProtocol",
     parentProtocol: "parent#haedal",
-    listedAt: 1743419307,
+    listedAt: 1743419307
   },
   {
     id: "5968",
@@ -9392,7 +9304,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.winterwalrus.com/",
-    description: "Winter Walrus is a liquid staking protocol securing Walrus",
+    description:
+      "Winter Walrus is a liquid staking protocol securing Walrus",
     chain: "Sui",
     logo: `${baseIconsUrl}/winter-walrus.jpg`,
     audits: "2",
@@ -9404,10 +9317,8 @@ const data4: Protocol[] = [
     module: "winter-walrus/index.js",
     forkedFrom: [],
     twitter: "WalrusLST",
-    audit_links: [
-      "https://3796248018-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKUfXlMmOziV2mgIVI8u1%2Fuploads%2FPJFVy9lD4VSDhQE10llx%2FBlizzard%20Audit%20Report.pdf?alt=media&token=c8dbc05f-396c-4ab7-964c-23d5f981ee04",
-    ],
-    listedAt: 1743432249,
+    audit_links: ["https://3796248018-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKUfXlMmOziV2mgIVI8u1%2Fuploads%2FPJFVy9lD4VSDhQE10llx%2FBlizzard%20Audit%20Report.pdf?alt=media&token=c8dbc05f-396c-4ab7-964c-23d5f981ee04"],
+    listedAt: 1743432249
   },
   {
     id: "5969",
@@ -9429,7 +9340,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "Boltzhq",
     github: ["BoltzExchange"],
-    listedAt: 1743432777,
+    listedAt: 1743432777
   },
   {
     id: "5970",
@@ -9450,11 +9361,9 @@ const data4: Protocol[] = [
     module: "jpgstore/index.js",
     forkedFrom: [],
     twitter: "jpgstoreNFT",
-    audit_links: [
-      "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Jpg.Store-audit-report.pdf",
-    ],
+    audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Jpg.Store-audit-report.pdf"],
     github: ["NFT Marketplace"],
-    listedAt: 1743432881,
+    listedAt: 1743432881
   },
   {
     id: "5971",
@@ -9477,10 +9386,10 @@ const data4: Protocol[] = [
     twitter: "orcfax",
     audit_links: [
       "https://docs.orcfax.io/f12-audit",
-      "https://drive.google.com/file/d/1o0Zq0q1RUbYLra3yI6mYQy7yNMqCLTK9/view",
+      "https://drive.google.com/file/d/1o0Zq0q1RUbYLra3yI6mYQy7yNMqCLTK9/view"
     ],
     github: ["orcfax"],
-    listedAt: 1743432887,
+    listedAt: 1743432887
   },
   {
     id: "5972",
@@ -9488,7 +9397,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.roninchain.com/swap#/swap",
-    description: "Katana a DEX For Ronin.",
+    description:
+      "Katana a DEX For Ronin.",
     chain: "Ronin",
     logo: `${baseIconsUrl}/katana-dex-v3.jpg`,
     audits: "0",
@@ -9501,7 +9411,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     twitter: "AxieInfinity",
     parentProtocol: "parent#katana-ronin-dex",
-    listedAt: 1743432895,
+    listedAt: 1743432895
   },
   {
     id: "5973",
@@ -9524,7 +9434,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "rollxfi",
     audit_links: ["https://skynet.certik.com/zh-CN/projects/rolldex"],
-    listedAt: 1743442067,
+    listedAt: 1743442067
   },
   {
     id: "5974",
@@ -9532,7 +9442,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.alfafrens.com",
-    description: "Social subscriptions app that helps content creators connect with their fans",
+    description:
+      "Social subscriptions app that helps content creators connect with their fans",
     chain: "Base",
     logo: `${baseIconsUrl}/alfafrens.jpg`,
     audits: "0",
@@ -9544,7 +9455,7 @@ const data4: Protocol[] = [
     module: "alfafrens/index.js",
     forkedFrom: [],
     twitter: "alfafrens_",
-    listedAt: 1743442075,
+    listedAt: 1743442075
   },
   {
     id: "5975",
@@ -9552,7 +9463,8 @@ const data4: Protocol[] = [
     address: "arbitrum:0x05905af7933f89280aB258919F0dFA056CeD8e43",
     symbol: "CLUTCH",
     url: "https://clutch.market",
-    description: "The first fully on-chain decentralized parlay platform. Bet on sports , crypto and politics",
+    description:
+      "The first fully on-chain decentralized parlay platform. Bet on sports , crypto and politics",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/clutch-markets.jpg`,
     audits: "0",
@@ -9564,7 +9476,7 @@ const data4: Protocol[] = [
     module: "clutch-market/index.js",
     forkedFrom: [],
     twitter: "clutchmarkets",
-    listedAt: 1743442083,
+    listedAt: 1743442083
   },
   {
     id: "5976",
@@ -9585,7 +9497,7 @@ const data4: Protocol[] = [
     module: "spindash/index.js",
     forkedFrom: [],
     twitter: "spindash_sonic",
-    listedAt: 1743456601,
+    listedAt: 1743456601
   },
   {
     id: "5977",
@@ -9606,7 +9518,7 @@ const data4: Protocol[] = [
     module: "privacypools/index.js",
     forkedFrom: [],
     twitter: "0xbowio",
-    listedAt: 1743456615,
+    listedAt: 1743456615
   },
   {
     id: "5978",
@@ -9628,7 +9540,7 @@ const data4: Protocol[] = [
     treasury: "polkadot.js",
     forkedFrom: [],
     twitter: "Polkadot",
-    listedAt: 1743470333,
+    listedAt: 1743470333
   },
   {
     id: "5979",
@@ -9636,7 +9548,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.hyperindex.trade",
-    description: "Hybrid crypto and stablecoin exchange and Hashkey on-chain DEX supporting Orderbook",
+    description:
+      "Hybrid crypto and stablecoin exchange and Hashkey on-chain DEX supporting Orderbook",
     chain: "HashKey Chain",
     logo: `${baseIconsUrl}/hyperindex.jpg`,
     audits: "0",
@@ -9648,7 +9561,7 @@ const data4: Protocol[] = [
     module: "in_dex/index.js",
     forkedFrom: [],
     twitter: "hyperindex_",
-    listedAt: 1743520357,
+    listedAt: 1743520357
   },
   {
     id: "5980",
@@ -9661,9 +9574,11 @@ const data4: Protocol[] = [
     chain: "AO",
     logo: `${baseIconsUrl}/liquidops.jpg`,
     audits: "2",
-    audit_links: ["https://docs.liquidops.io/security/audits"],
+    audit_links: [
+      "https://docs.liquidops.io/security/audits",
+    ],
     audit_note: null,
-    gecko_id: "liquidops",
+    gecko_id: 'liquidops',
     cmcId: null,
     category: "Lending",
     chains: ["AO"],
@@ -9674,11 +9589,11 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.liquidops.io/protocol/oracle"],
-      },
+      }
     ],
     twitter: "Liquid_Ops",
     github: ["useLiquidOps"],
-    listedAt: 1743528701,
+    listedAt: 1743528701
   },
   {
     id: "5981",
@@ -9686,7 +9601,8 @@ const data4: Protocol[] = [
     address: "0xf655c8567e0f213e6c634cd2a68d992152161dc6",
     symbol: "IBEX",
     url: "https://impermax.finance",
-    description: "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
+    description:
+      "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
     chain: "Base",
     logo: `${baseIconsUrl}/impermax-v3.jpg`,
     audits: "0",
@@ -9699,11 +9615,11 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [
       "https://github.com/GuardianAudits/Audits/blob/main/Impermax/2025-02-08_Impermax.pdf",
-      "https://github.com/bailsec/BailSec/blob/main/Bailsec%20-%20Impermax%20-%20V3%20Core%20-%20Final%20Report.pdf",
+      "https://github.com/bailsec/BailSec/blob/main/Bailsec%20-%20Impermax%20-%20V3%20Core%20-%20Final%20Report.pdf"
     ],
     twitter: "ImpermaxFinance",
     parentProtocol: "parent#impermax-finance",
-    listedAt: 1743529344,
+    listedAt: 1743529344
   },
   {
     id: "5982",
@@ -9723,7 +9639,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "syncswap",
-    parentProtocol: "parent#syncswap-protocol",
+    parentProtocol: "parent#syncswap-protocol"
   },
   {
     id: "5983",
@@ -9731,8 +9647,7 @@ const data4: Protocol[] = [
     address: "base:0x9818b6c09f5ecc843060927e8587c427c7c93583",
     symbol: "RIZE",
     url: "https://www.t-rize.io",
-    description:
-      "T-RIZE is an institutional-grade RWA tokenization platform enhanced by decentralized machine learning.",
+    description: "T-RIZE is an institutional-grade RWA tokenization platform enhanced by decentralized machine learning.",
     chain: "Base",
     logo: `${baseIconsUrl}/t-rize.jpg`,
     audits: "0",
@@ -9745,7 +9660,7 @@ const data4: Protocol[] = [
     module: "T-RIZE/index.js",
     twitter: "trize_io",
     github: ["T-RIZE-Group"],
-    listedAt: 1743588008,
+    listedAt: 1743588008
   },
   {
     id: "5984",
@@ -9753,8 +9668,7 @@ const data4: Protocol[] = [
     address: "0x2Ca9242c1810029Efed539F1c60D68B63AD01BFc",
     symbol: "ANVL",
     url: "https://anvil.xyz/",
-    description:
-      "Anvil is a DeFi protocol for onchain collateral management that allows users to issue fully secured credit.",
+    description: "Anvil is a DeFi protocol for onchain collateral management that allows users to issue fully secured credit.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/anvil.jpg`,
     audits: "2",
@@ -9769,10 +9683,10 @@ const data4: Protocol[] = [
     audit_links: [
       "https://blog.openzeppelin.com/anvil-audit",
       "https://blog.openzeppelin.com/anvil-protocol-audit",
-      "https://github.com/trailofbits/publications/blob/master/reviews/2023-12-acronym-foundation-securityreview.pdf",
+      "https://github.com/trailofbits/publications/blob/master/reviews/2023-12-acronym-foundation-securityreview.pdf"
     ],
     github: ["AcronymFoundation"],
-    listedAt: 1743588194,
+    listedAt: 1743588194
   },
   {
     id: "5985",
@@ -9780,8 +9694,7 @@ const data4: Protocol[] = [
     address: "0x467719ad09025fcc6cf6f8311755809d45a5e5f3",
     symbol: "AXL",
     url: "https://axelar.network",
-    description:
-      "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+    description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/axelar-cross-chain.jpg`,
     audits: "2",
@@ -9794,7 +9707,7 @@ const data4: Protocol[] = [
     module: "axelar-its/index.js",
     twitter: "axelar",
     parentProtocol: "parent#axelar-network",
-    listedAt: 1743588590,
+    listedAt: 1743588590
   },
   {
     id: "5986",
@@ -9814,7 +9727,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "bitzap-yusd/index.js",
     twitter: "Bitzap_",
-    listedAt: 1743672779,
+    listedAt: 1743672779
   },
   {
     id: "5987",
@@ -9836,7 +9749,7 @@ const data4: Protocol[] = [
     twitter: "ValantisLabs",
     audit_links: ["https://docs.valantis.xyz/resources/audits"],
     github: ["ValantisLabs"],
-    listedAt: 1743672976,
+    listedAt: 1743672976
   },
   {
     id: "5988",
@@ -9856,7 +9769,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hotcoin/index.js",
     twitter: "HotcoinGlobal",
-    listedAt: 1743673056,
+    listedAt: 1743673056
   },
   {
     id: "5989",
@@ -9883,7 +9796,7 @@ const data4: Protocol[] = [
     tokensExcludedFromParent: {
       Ethereum: ["SPDAI"],
     },
-    listedAt: 1743696229,
+    listedAt: 1743696229
   },
   {
     id: "5990",
@@ -9891,8 +9804,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "http://mirage.money/",
-    description:
-      "Mirage is a composable liquidity layer. Users can deposit collateral and borrow a self-repaying stablecoin loan powered by perps",
+    description: "Mirage is a composable liquidity layer. Users can deposit collateral and borrow a self-repaying stablecoin loan powered by perps",
     chain: "Movement",
     logo: `${baseIconsUrl}/mirage-protocol.jpg`,
     audits: "2",
@@ -9905,15 +9817,15 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14149"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14149"]
+      }
     ],
     forkedFrom: [],
     module: "mirage-protocol/index.js",
     twitter: "mirage_protocol",
     audit_links: ["https://github.com/movebit/Sampled-Audit-Reports"],
     github: ["mirage-protocol"],
-    listedAt: 1743696237,
+    listedAt: 1743696237
   },
   {
     id: "5991",
@@ -9921,8 +9833,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dexlyn.com/",
-    description:
-      "Dexlyn is a decentralized exchange on Supra Network for token trading, liquidity pools, cross-chain bridging, and IDO launches",
+    description: "Dexlyn is a decentralized exchange on Supra Network for token trading, liquidity pools, cross-chain bridging, and IDO launches",
     chain: "Supra",
     logo: `${baseIconsUrl}/dexlyn-labs.jpg`,
     audits: "2",
@@ -9936,11 +9847,11 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/CDSecurity/audits/blob/main/audit%20reports/DexlynBridge%20-%20report.pdf",
       "https://hacken.io/audits/dexlyn/",
-      "https://hackenproof.com/audit-programs/dexlyn-sca-dualdefense-audit",
+      "https://hackenproof.com/audit-programs/dexlyn-sca-dualdefense-audit"
     ],
     twitter: "DexlynLabs",
     github: ["DexlynLabs"],
-    listedAt: 1743696245,
+    listedAt: 1743696245
   },
   {
     id: "5992",
@@ -9948,8 +9859,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://goatswap.fi/",
-    description:
-      "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
+    description: "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
     chain: "Goat",
     logo: `${baseIconsUrl}/goatswap-v2.jpg`,
     audits: "2",
@@ -9960,10 +9870,12 @@ const data4: Protocol[] = [
     chains: ["Goat"],
     forkedFromIds: ["2197"],
     module: "goatswap-v2/index.js",
-    audit_links: ["https://skynet.certik.com/projects/spookyswap"],
+    audit_links: [
+      "https://skynet.certik.com/projects/spookyswap"
+    ],
     twitter: "Goatswap_fi",
     parentProtocol: "parent#goatswap",
-    listedAt: 1743712405,
+    listedAt: 1743712405
   },
   {
     id: "5993",
@@ -9971,8 +9883,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://goatswap.fi/",
-    description:
-      "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
+    description: "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
     chain: "Goat",
     logo: `${baseIconsUrl}/goatswap-v3.jpg`,
     audits: "2",
@@ -9983,10 +9894,12 @@ const data4: Protocol[] = [
     chains: ["Goat"],
     forkedFromIds: ["2198"],
     module: "goatswap-v3/index.js",
-    audit_links: ["https://skynet.certik.com/projects/spookyswap"],
+    audit_links: [
+      "https://skynet.certik.com/projects/spookyswap"
+    ],
     twitter: "Goatswap_fi",
     parentProtocol: "parent#goatswap",
-    listedAt: 1743712413,
+    listedAt: 1743712413
   },
   {
     id: "5994",
@@ -9994,8 +9907,7 @@ const data4: Protocol[] = [
     address: "bsc:0xaec945e04baf28b135fa7c640f624f8d90f1c3a6",
     symbol: "C98",
     url: "https://coin98.com/",
-    description:
-      "Pave the way to a world where everyone can easily capture new opportunities to build their own future with Coin98 Super Wallet.",
+    description: "Pave the way to a world where everyone can easily capture new opportunities to build their own future with Coin98 Super Wallet.",
     chain: "TomoChain",
     logo: `${baseIconsUrl}/coin98.jpg`,
     audits: "0",
@@ -10007,7 +9919,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "coin98/index.js",
     twitter: "coin98_wallet",
-    listedAt: 1743757586,
+    listedAt: 1743757586
   },
   {
     id: "5995",
@@ -10016,12 +9928,13 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "USDO",
     url: "https://openeden.com/usdo",
-    description:
-      "USDO is collateralized by tokenized U.S. Treasury Bills and money market funds (such as OpenEden’s TBILL), from which USDO’s yield is generated. The reserves serve as the foundation for maintaining a minimum 100% collateralization ratio, meaning every USDO token in circulation is fully backed by equivalent assets",
+    description: "USDO is collateralized by tokenized U.S. Treasury Bills and money market funds (such as OpenEden’s TBILL), from which USDO’s yield is generated. The reserves serve as the foundation for maintaining a minimum 100% collateralization ratio, meaning every USDO token in circulation is fully backed by equivalent assets",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/openeden-usdo.jpg`,
     audits: "2",
-    audit_links: ["https://www.chainsecurity.com/security-audit/openeden-usdoexpress"],
+    audit_links: [
+      "https://www.chainsecurity.com/security-audit/openeden-usdoexpress",
+    ],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10039,7 +9952,7 @@ const data4: Protocol[] = [
       Base: ["TBILL"],
       BSC: ["TBILL"],
     },
-    listedAt: 1743761401,
+    listedAt: 1743761401
   },
   {
     id: "5996",
@@ -10047,8 +9960,7 @@ const data4: Protocol[] = [
     address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     symbol: "JTO",
     url: "https://jito.network",
-    description:
-      "Jito Restaking is a multi-asset staking protocol for node consensus networks. The protocol tokenizes staked assets as vault receipt tokens for enhanced liquidity and composability",
+    description: "Jito Restaking is a multi-asset staking protocol for node consensus networks. The protocol tokenizes staked assets as vault receipt tokens for enhanced liquidity and composability",
     chain: "Solana",
     logo: `${baseIconsUrl}/jito-restaking.png`,
     audits: "2",
@@ -10076,8 +9988,7 @@ const data4: Protocol[] = [
     address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
     symbol: "STRIKE",
     url: "https://www.strikefinance.org/",
-    description:
-      "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading",
+    description: "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading",
     chain: "Cardano",
     logo: `${baseIconsUrl}/strike-finance-forwards.jpg`,
     audits: "2",
@@ -10089,8 +10000,10 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "strikecardano",
     forkedFrom: [],
-    audit_links: ["https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf"],
-    parentProtocol: "parent#strike-finance",
+    audit_links: [
+      "https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf",
+    ],
+    parentProtocol: 'parent#strike-finance',
     listedAt: 1743787721,
   },
   {
@@ -10112,7 +10025,7 @@ const data4: Protocol[] = [
     twitter: "GooseFX1",
     forkedFrom: [],
     parentProtocol: "parent#goosefx",
-    listedAt: 1743849733,
+    listedAt: 1743849733
   },
   {
     id: "5999",
@@ -10120,8 +10033,7 @@ const data4: Protocol[] = [
     address: "kava:0x25e9171C98Fc1924Fa9415CF50750274F0664764",
     symbol: "HARD",
     url: "https://swap.hard.fun/",
-    description:
-      "HARD Swap is Kava’s AI-powered DEX, using historical trading data and machine learning to optimize yields, improve trading strategies, and manage risk. Integrated with HARD.fun and Kava Lend, and governed by HARD token holders, it advances secure and efficient DeFi trading.",
+    description: "HARD Swap is Kava’s AI-powered DEX, using historical trading data and machine learning to optimize yields, improve trading strategies, and manage risk. Integrated with HARD.fun and Kava Lend, and governed by HARD token holders, it advances secure and efficient DeFi trading.",
     chain: "Kava",
     logo: `${baseIconsUrl}/hard-swap.jpg`,
     audits: "0",
@@ -10133,7 +10045,7 @@ const data4: Protocol[] = [
     module: "hardswap/index.js",
     twitter: "hard_protocol",
     forkedFromIds: ["2198"],
-    listedAt: 1743978301,
+    listedAt: 1743978301
   },
   {
     id: "6000",
@@ -10141,8 +10053,7 @@ const data4: Protocol[] = [
     address: "base:0x1c7a460413dd4e964f96d8dfc56e7223ce88cd85",
     symbol: "SEAM",
     url: "https://www.seamlessprotocol.com",
-    description:
-      "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
+    description: "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
     chain: "Base",
     logo: `${baseIconsUrl}/seamless-vaults.jpg`,
     audits: "0",
@@ -10155,7 +10066,7 @@ const data4: Protocol[] = [
     twitter: "SeamlessFi",
     forkedFrom: [],
     parentProtocol: "parent#seamless-protocol",
-    listedAt: 1744029272,
+    listedAt: 1744029272
   },
   {
     id: "6001",
@@ -10177,7 +10088,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docsend.com/view/xd2ijhvvnngc92ai"],
     github: ["arbera-io"],
-    listedAt: 1744029735,
+    listedAt: 1744029735
   },
   {
     id: "6002",
@@ -10185,8 +10096,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.twinfinance.io",
-    description:
-      "Twin Finance is a DeFi protocol on Berachain mainnet, allowing users to deposit USDC.e and mint synthetic assets. Collateral is deposited into a yield farm, which deposits into Dolomite lending protocol. For each 1 USDC.e that is deposited, i twinUSDC is issued.",
+    description: "Twin Finance is a DeFi protocol on Berachain mainnet, allowing users to deposit USDC.e and mint synthetic assets. Collateral is deposited into a yield farm, which deposits into Dolomite lending protocol. For each 1 USDC.e that is deposited, i twinUSDC is issued.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/twin-finance.jpg`,
     audits: "2",
@@ -10199,7 +10109,7 @@ const data4: Protocol[] = [
     twitter: "TwinFinance",
     forkedFrom: [],
     audit_links: ["https://github.com/TWIN-Protocol/Audits/blob/main/TwinFinance%20Audit%20-%20Report.pdf"],
-    listedAt: 1744041325,
+    listedAt: 1744041325
   },
   {
     id: "6003",
@@ -10207,8 +10117,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://1dex.com",
-    description:
-      "1DEX is a decentralized exchange committed to redefining finance and reshaping trust and freedom. With security, reliability, openness, and transparency as our foundation, we aim to create a next-generation platform that empowers users and fosters a vibrant, community-driven DeFi ecosystem.",
+    description: "1DEX is a decentralized exchange committed to redefining finance and reshaping trust and freedom. With security, reliability, openness, and transparency as our foundation, we aim to create a next-generation platform that empowers users and fosters a vibrant, community-driven DeFi ecosystem.",
     chain: "EOS",
     logo: `${baseIconsUrl}/1dex.jpg`,
     audits: "2",
@@ -10221,7 +10130,7 @@ const data4: Protocol[] = [
     twitter: "1DEX_COM",
     forkedFrom: [],
     audit_links: ["https://docsend.com/view/xd2ijhvvnngc92ai"],
-    listedAt: 1744041503,
+    listedAt: 1744041503
   },
   {
     id: "6004",
@@ -10229,7 +10138,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kittenswap.finance",
-    description: "The community owned DEX for seamless trading on HyperEVM",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kittenswap-cl.jpg`,
     audits: "0",
@@ -10328,9 +10238,7 @@ const data4: Protocol[] = [
     module: "dEURO/index.js",
     twitter: "dEURO_com",
     github: ["d-EURO"],
-    audit_links: [
-      "https://github.com/d-EURO/landingPage/blob/develop/audits/ChainSecurity_dEURO_intermediate_report.pdf",
-    ],
+    audit_links: ["https://github.com/d-EURO/landingPage/blob/develop/audits/ChainSecurity_dEURO_intermediate_report.pdf"],
     listedAt: 1744062991,
   },
   {
@@ -10339,7 +10247,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.stablejack.xyz",
-    description: "Stable Jack provide a high-yield, principal-protected stablecoin offering on Sonic though scUSD",
+    description:
+      "Stable Jack provide a high-yield, principal-protected stablecoin offering on Sonic though scUSD",
     chain: "Sonic",
     logo: `${baseIconsUrl}/stable-jack-v2.jpg`,
     audits: "0",
@@ -10373,7 +10282,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "orangex-cex/index.js",
     twitter: "OrangeXExchange",
-    listedAt: 1744103517,
+    listedAt: 1744103517
   },
   {
     id: "6011",
@@ -10381,7 +10290,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.fuel.network/staking/on-fuel",
-    description: "Help secure the FUEL network by delegating your tokens to Fuel validators.",
+    description:
+      "Help secure the FUEL network by delegating your tokens to Fuel validators.",
     chain: "Fuel",
     logo: `${baseIconsUrl}/fuel-staking.jpg`,
     audits: "0",
@@ -10414,7 +10324,7 @@ const data4: Protocol[] = [
     module: "bodega-market/index.js",
     twitter: "BodegaCardano",
     github: ["bodega-market"],
-    listedAt: 1744113522,
+    listedAt: 1744113522
   },
   {
     id: "6013",
@@ -10422,7 +10332,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://moar.market",
-    description: "Moar Market - the Credit Layer for Move DeFi",
+    description:
+      "Moar Market - the Credit Layer for Move DeFi",
     chain: "Aptos",
     logo: `${baseIconsUrl}/moar-market.jpg`,
     audits: "2",
@@ -10435,7 +10346,7 @@ const data4: Protocol[] = [
     module: "moar/index.js",
     twitter: "MoarMarket",
     audit_links: ["https://movebit.xyz/reports/20241211-Moar-Market-Final-Audit-Report.pdf"],
-    listedAt: 1744113622,
+    listedAt: 1744113622
   },
   {
     id: "6014",
@@ -10461,10 +10372,10 @@ const data4: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.typus.finance/typus-perps#nGTof"],
-      },
+      }
     ],
     parentProtocol: "parent#typus-finance",
-    listedAt: 1744133053,
+    listedAt: 1744133053
   },
   {
     id: "6015",
@@ -10472,7 +10383,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.usefelix.xyz?ref=4BF702FF",
-    description: "Felix is a synthetic dollar protocol on Hyperliquid L1",
+    description:
+      "Felix is a synthetic dollar protocol on Hyperliquid L1",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/felix-cdp.jpg`,
     audits: "2",
@@ -10493,7 +10405,7 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#felix",
     audit_links: ["https://usefelix.gitbook.io/felix-docs/advanced/smart-contract-audits#felix-audits"],
-    listedAt: 1744135586,
+    listedAt: 1744135586
   },
   {
     id: "6016",
@@ -10501,8 +10413,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "DOGE",
     url: "https://dogecoin.com",
-    description:
-      "Dogecoin is a cryptocurrency that was created as a joke, but has since gained a large following and is used for various purposes, including tipping and charitable donations.",
+    description: "Dogecoin is a cryptocurrency that was created as a joke, but has since gained a large following and is used for various purposes, including tipping and charitable donations.",
     chain: "Doge",
     logo: `${baseIconsUrl}/dogecoin.jpg`,
     audits: "0",
@@ -10514,7 +10425,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "dogecoin",
-    audit_links: [],
+    audit_links: []
   },
   {
     id: "6017",
@@ -10522,8 +10433,7 @@ const data4: Protocol[] = [
     address: "solana:6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
     symbol: "TRUMP",
     url: "https://gettrumpmemes.com/",
-    description:
-      "The Official Trump token, also known as TRUMP, is a meme token launched by President-elect Donald Trump on his Truth Social account. It is a Solana meme coin that allows users to trade and invest in it.",
+    description: "The Official Trump token, also known as TRUMP, is a meme token launched by President-elect Donald Trump on his Truth Social account. It is a Solana meme coin that allows users to trade and invest in it.",
     chain: "Solana",
     logo: `${baseIconsUrl}/official-trump.jpg`,
     audits: "0",
@@ -10535,7 +10445,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "GetTrumpMemes",
-    audit_links: [],
+    audit_links: []
   },
   {
     id: "6018",
@@ -10543,8 +10453,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://zofai.io",
-    description:
-      "ZO is the first intelligent perpetual protocol built on Sui that offers you agent enhanced and automated perpetual trading experience",
+    description: "ZO is the first intelligent perpetual protocol built on Sui that offers you agent enhanced and automated perpetual trading experience",
     chain: "Sui",
     logo: `${baseIconsUrl}/zo-perps.jpg`,
     audits: "2",
@@ -10553,15 +10462,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Sui"],
-    oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://docs.zofinance.io/sudo-sdk/core-concepts#price-oracles"] },
-    ],
+    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://docs.zofinance.io/sudo-sdk/core-concepts#price-oracles"] }],
     forkedFromIds: ["4045"],
     module: "zo/index.js",
     twitter: "zofaiperps",
     audit_links: ["https://info.asymptotic.tech/sudo-audit-report"],
     parentProtocol: "parent#sudo-finance",
-    listedAt: 1744213568,
+    listedAt: 1744213568
   },
   {
     id: "6019",
@@ -10590,13 +10497,13 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Aggregator",
         proof: ["https://docs.mysticfinance.xyz/overview/oracles"],
-      },
+      }
     ],
     module: "mystic-finance/index.js",
     twitter: "mystic_finance",
     audit_links: [],
     parentProtocol: "parent#mystic-finance",
-    listedAt: 1744213581,
+    listedAt: 1744213581
   },
   {
     id: "6020",
@@ -10619,7 +10526,7 @@ const data4: Protocol[] = [
     twitter: "Ronin_Network",
     audit_links: ["https://code4rena.com/reports/2025-01-liquid-ron"],
     github: ["OwlOfMoistness"],
-    listedAt: 1744229587,
+    listedAt: 1744229587
   },
   {
     id: "6021",
@@ -10639,7 +10546,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "TradeOgre/index.js",
     twitter: "TradeOgre",
-    listedAt: 1744280790,
+    listedAt: 1744280790
   },
   {
     id: "6022",
@@ -10659,7 +10566,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "mainstreet/index.js",
     twitter: "Main_St_Finance",
-    listedAt: 1744280825,
+    listedAt: 1744280825
   },
   {
     id: "6023",
@@ -10667,8 +10574,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://brunch.finance",
-    description:
-      "Brunch is a CDP protocol that is designed specifically to enable borrowing for mid market cap tokens that typically don’t have access to lending markets.",
+    description: "Brunch is a CDP protocol that is designed specifically to enable borrowing for mid market cap tokens that typically don’t have access to lending markets.",
     chain: "Sonic",
     logo: `${baseIconsUrl}/brunch.jpg`,
     audits: "0",
@@ -10680,7 +10586,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "brunch/index.js",
     twitter: "BrunchFinance",
-    listedAt: 1744284066,
+    listedAt: 1744284066
   },
   {
     id: "6024",
@@ -10688,8 +10594,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.aegis.im",
-    description:
-      "Aegis performs funding rate arbitrage through delta-neutral trades in spot and perpetual markets, effectively generating profits from funding fees. These fees, disbursed three times daily, align perpetual contract and spot prices, ultimately rewarding YUSD holders.",
+    description: "Aegis performs funding rate arbitrage through delta-neutral trades in spot and perpetual markets, effectively generating profits from funding fees. These fees, disbursed three times daily, align perpetual contract and spot prices, ultimately rewarding YUSD holders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aegis.jpg`,
     audits: "0",
@@ -10702,7 +10607,7 @@ const data4: Protocol[] = [
     module: "aegis-yusd/index.js",
     twitter: "aegis_im",
     github: ["Aegis-im"],
-    listedAt: 1744284096,
+    listedAt: 1744284096
   },
   {
     id: "6025",
@@ -10710,8 +10615,7 @@ const data4: Protocol[] = [
     address: "algorand:2614577662",
     symbol: "ATARD",
     url: "https://algotard.io",
-    description:
-      "The Tardly No Loss Lottery is a yield lottery utilizing an on-chain verifiable random function to select a winner. Users stake ALGO into a pool that accumulates yield to a smart contract over an epoch. At the end of an epoch, the smart contract uses Algorand's Randomness Beacon to trustlessly select a winner of accumulated reward based on users' weighted stake. Users can withdraw their initial deposit at any time.",
+    description: "The Tardly No Loss Lottery is a yield lottery utilizing an on-chain verifiable random function to select a winner. Users stake ALGO into a pool that accumulates yield to a smart contract over an epoch. At the end of an epoch, the smart contract uses Algorand's Randomness Beacon to trustlessly select a winner of accumulated reward based on users' weighted stake. Users can withdraw their initial deposit at any time.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/tardly.jpg`,
     audits: "0",
@@ -10724,7 +10628,7 @@ const data4: Protocol[] = [
     module: "tardly/index.js",
     treasury: "tardly-treasury.js",
     twitter: "ALGOTARDIO69",
-    listedAt: 1744305284,
+    listedAt: 1744305284
   },
   {
     id: "6026",
@@ -10732,8 +10636,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://cro.ag/",
-    description:
-      "Cro Protocol is a super aggregator in the Sui ecosystem that optimizes swap and yield paths, helping users discover the best investment opportunities",
+    description: "Cro Protocol is a super aggregator in the Sui ecosystem that optimizes swap and yield paths, helping users discover the best investment opportunities",
     chain: "Sui",
     logo: `${baseIconsUrl}/cro.ag.jpg`,
     audits: "0",
@@ -10745,7 +10648,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "cro_aggregator",
-    listedAt: 1744329003,
+    listedAt: 1744329003
   },
   {
     id: "6027",
@@ -10753,8 +10656,7 @@ const data4: Protocol[] = [
     address: "0xf944e35f95e819e752f3ccb5faf40957d311e8c5",
     symbol: "MOCA",
     url: "https://www.moca.network",
-    description:
-      "Building the largest consumer network via an interoperable infra layer of Account, Identity, Reputation & PointFi,",
+    description: "Building the largest consumer network via an interoperable infra layer of Account, Identity, Reputation & PointFi,",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/moca-network.jpg`,
     audits: "0",
@@ -10792,8 +10694,7 @@ const data4: Protocol[] = [
     address: "solana:MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
     symbol: "ME",
     url: "https://magiceden.io",
-    description:
-      "The largest NFT marketplace and Runes platform. Buy, sell and discover Ordinals and NFTs across Solana, Bitcoin, Ethereum, Base, ApeChain, Abstract, Berachain, Monad Testnet, Arbitrum, Sei, BNB Chain, and Polygon.",
+    description: "The largest NFT marketplace and Runes platform. Buy, sell and discover Ordinals and NFTs across Solana, Bitcoin, Ethereum, Base, ApeChain, Abstract, Berachain, Monad Testnet, Arbitrum, Sei, BNB Chain, and Polygon.",
     chain: "Solana",
     logo: `${baseIconsUrl}/magic-eden.jpg`,
     audits: "0",
@@ -10812,8 +10713,7 @@ const data4: Protocol[] = [
     address: "avax:0x26deBD39D5eD069770406FCa10A0E4f8d2c743eB",
     symbol: "GUN",
     url: "https://gunbygunz.com",
-    description:
-      "Get in-game items while playing battle royale 2.0 Off The Grid (OTG). Make them your own and trade with other players — but only if you want to.",
+    description: "Get in-game items while playing battle royale 2.0 Off The Grid (OTG). Make them your own and trade with other players — but only if you want to.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gunz.jpg`,
     audits: "0",
@@ -10870,8 +10770,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://uranium.io/en",
-    description:
-      "Uranium.io enables investors to own and trade Uranium ore concentrate (U3O8), also known as ‘yellowcake; in an investment friendly and transparent manner by administering fractional ownership of physical uranium in the form of a smart contract ledger.",
+    description: "Uranium.io enables investors to own and trade Uranium ore concentrate (U3O8), also known as ‘yellowcake; in an investment friendly and transparent manner by administering fractional ownership of physical uranium in the form of a smart contract ledger.",
     chain: "Etherlink",
     logo: `${baseIconsUrl}/uranium.io.jpg`,
     audits: "0",
@@ -10883,7 +10782,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "uranium.io/index.js",
     twitter: "uranium_io",
-    listedAt: 1744378473,
+    listedAt: 1744378473
   },
   {
     id: "6034",
@@ -10905,7 +10804,7 @@ const data4: Protocol[] = [
     module: "interest-protocol-stable-swap/index.js",
     twitter: "IPXLabs",
     parentProtocol: "parent#interest-labs",
-    listedAt: 1744378493,
+    listedAt: 1744378493
   },
   {
     id: "6035",
@@ -10932,8 +10831,7 @@ const data4: Protocol[] = [
     address: "solana:FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
     symbol: "MELANIA",
     url: "https://melaniameme.com/",
-    description:
-      "Melania memes are digital collectibles intended to function as an expression of support for and engagement with the values embodied by the symbol MELANIA",
+    description: "Melania memes are digital collectibles intended to function as an expression of support for and engagement with the values embodied by the symbol MELANIA",
     chain: "Solana",
     logo: `${baseIconsUrl}/melania-meme.jpg`,
     audits: "0",
@@ -10990,8 +10888,7 @@ const data4: Protocol[] = [
     address: "0xcb21311d3b91b5324f6c11b4f5a656fcacbff122",
     symbol: "QAI",
     url: "https://quantixai.io/",
-    description:
-      "QuantixAI is an advanced AI-driven trading software designed to optimize investment strategies through sophisticated algorithms and data analysis.",
+    description: "QuantixAI is an advanced AI-driven trading software designed to optimize investment strategies through sophisticated algorithms and data analysis.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/quantixai.jpg`,
     audits: "2",
@@ -11031,8 +10928,7 @@ const data4: Protocol[] = [
     address: "celo:0x471ece3750da237f93b8e339c536989b8978a438",
     symbol: "CELO",
     url: "https://celo.org/",
-    description:
-      "Celo is an Ethereum L2, scaling real-world solutions & leading a thriving new digital economy for all",
+    description: "Celo is an Ethereum L2, scaling real-world solutions & leading a thriving new digital economy for all",
     chain: "Celo",
     logo: `${baseIconsUrl}/celo.jpg`,
     audits: "2",
@@ -11053,8 +10949,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
     referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
-    description:
-      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
+    description: "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lighter-v2.jpg`,
     audits: "0",
@@ -11069,12 +10964,12 @@ const data4: Protocol[] = [
         name: "Stork",
         type: "Primary",
         proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
-      },
+      }
     ],
     module: "lighter-v2/index.js",
     twitter: "Lighter_xyz",
     //parentProtocol: "parent#lighter",
-    listedAt: 1744624979,
+    listedAt: 1744624979
   },
   {
     id: "6043",
@@ -11095,7 +10990,7 @@ const data4: Protocol[] = [
     module: "encoins/index.js",
     twitter: "ENCOINS1",
     github: ["encryptedcoins"],
-    listedAt: 1744637031,
+    listedAt: 1744637031
   },
   {
     id: "6044",
@@ -11115,7 +11010,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "taparoo/index.js",
     twitter: "TaparooSwap",
-    listedAt: 1744637091,
+    listedAt: 1744637091
   },
   {
     id: "6045",
@@ -11123,8 +11018,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://laminar.xyz",
-    description:
-      "Laminar is a liquidity engine and aggregator connecting disparate liquidity on both HyperEVM and HyperCore to provide simple, optimally priced swaps.",
+    description: "Laminar is a liquidity engine and aggregator connecting disparate liquidity on both HyperEVM and HyperCore to provide simple, optimally priced swaps.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/laminar.jpg`,
     audits: "2",
@@ -11138,7 +11032,7 @@ const data4: Protocol[] = [
     twitter: "laminar_xyz",
     audit_links: ["https://github.com/laminar-xyz/amm-contracts/tree/main/audits"],
     github: ["laminar-xyz"],
-    listedAt: 1744637191,
+    listedAt: 1744637191
   },
   {
     id: "6046",
@@ -11146,8 +11040,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://stakin.gg",
-    description:
-      "Bullrun-oriented ETH Staking: prebook before the Official Launch to get Leader Bonus & User Cashback!",
+    description: "Bullrun-oriented ETH Staking: prebook before the Official Launch to get Leader Bonus & User Cashback!",
     chain: "Base",
     logo: `${baseIconsUrl}/stakin.jpg`,
     audits: "0",
@@ -11159,7 +11052,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "stakin-gg/index.js",
     twitter: "stakin_gg",
-    listedAt: 1744637565,
+    listedAt: 1744637565
   },
   {
     id: "6047",
@@ -11180,7 +11073,7 @@ const data4: Protocol[] = [
     module: "berapaw/index.js",
     twitter: "0xBeraPaw",
     audit_links: ["https://docs.berapaw.com/audits"],
-    listedAt: 1744638088,
+    listedAt: 1744638088
   },
   {
     id: "6048",
@@ -11188,8 +11081,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://datamine-crypto.github.io/realtime-decentralized-dashboard/",
-    description:
-      "Datamine Ecosystem is DeFi's first inflation-resistant cryptocurrency designed to lock-in liquidity through innovative Proof-of-Burn mechanism.",
+    description: "Datamine Ecosystem is DeFi's first inflation-resistant cryptocurrency designed to lock-in liquidity through innovative Proof-of-Burn mechanism.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/datamine-network.jpg`,
     audits: "0",
@@ -11202,7 +11094,7 @@ const data4: Protocol[] = [
     module: "datamine/index.js",
     twitter: "dataminenetwork",
     github: ["datamine-crypto"],
-    listedAt: 1744638390,
+    listedAt: 1744638390
   },
   {
     id: "6049",
@@ -11210,8 +11102,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://axiom.trade/@defillama",
-    description:
-      "A decentralized trading platform designed to offer a comprehensive suite of tools for on-chain trading",
+    description: "A decentralized trading platform designed to offer a comprehensive suite of tools for on-chain trading",
     chain: "Solana",
     logo: `${baseIconsUrl}/axiom.jpg`,
     audits: "0",
@@ -11231,8 +11122,7 @@ const data4: Protocol[] = [
     address: "base:0xa88594d404727625a9437c3f886c7643872296ae",
     symbol: "WELL",
     url: "https://moonwell.fi/vaults",
-    description:
-      "Moonwell is an open lending and borrowing protocol on Optimism, Base, Moonbeam, and Moonriver. Moonwell`s intuitive interface simplifies the lending experience for everyone, from newcomers to crypto experts.",
+    description: "Moonwell is an open lending and borrowing protocol on Optimism, Base, Moonbeam, and Moonriver. Moonwell`s intuitive interface simplifies the lending experience for everyone, from newcomers to crypto experts.",
     chain: "Base",
     logo: `${baseIconsUrl}/moonwell-vaults.jpg`,
     audits: "0",
@@ -11245,7 +11135,7 @@ const data4: Protocol[] = [
     module: "moonwell-vaults/index.js",
     twitter: "MoonwellDeFi",
     parentProtocol: "parent#moonwell",
-    listedAt: 1744712150,
+    listedAt: 1744712150
   },
   {
     id: "6051",
@@ -11253,7 +11143,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.kittypunch.xyz/",
-    description: "KittyPunch PunchSwap V3, is a CLMM style decentralized exchange on Flow.",
+    description:
+      "KittyPunch PunchSwap V3, is a CLMM style decentralized exchange on Flow.",
     chain: "Flow",
     logo: `${baseIconsUrl}/kittypunch-punchswap-v3.png`,
     audits: "0",
@@ -11266,7 +11157,7 @@ const data4: Protocol[] = [
     twitter: "KittyPunchXYZ",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#kittypunch",
-    listedAt: 1744732310,
+    listedAt: 1744732310
   },
   {
     id: "6052",
@@ -11288,7 +11179,7 @@ const data4: Protocol[] = [
     twitter: "Catex_Fi",
     forkedFrom: [],
     audit_links: ["https://catex.gitbook.io/catex/info-and-security/audits"],
-    listedAt: 1744732824,
+    listedAt: 1744732824
   },
   {
     id: "6053",
@@ -11310,14 +11201,14 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.hypurr.fi/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
+        proof: ["https://app.hypurr.fi/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"]
       },
     ],
     module: "hypurrfi-isolated/index.js",
     twitter: "hypurrfi",
     audit_links: ["https://docs.hypurr.fi/introduction/security"],
     parentProtocol: "parent#hypurfi",
-    listedAt: 1744734037,
+    listedAt: 1744734037
   },
   {
     id: "6054",
@@ -11345,7 +11236,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.interest.xyz/",
-    description: "Interest DEX on Movement.",
+    description:
+      "Interest DEX on Movement.",
     chain: "Movement",
     logo: `${baseIconsUrl}/interest-curve.jpg`,
     audits: "0",
@@ -11359,7 +11251,7 @@ const data4: Protocol[] = [
     twitter: "InterestDEX",
     parentProtocol: "parent#interest-labs",
     audit_links: [],
-    listedAt: 1744827640,
+    listedAt: 1744827640
   },
   {
     id: "6056",
@@ -11386,22 +11278,22 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"],
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
       {
         name: "Binance Oracle",
         type: "Secondary",
-        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"],
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
       {
         name: "RedStone",
         type: "Secondary",
-        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"],
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
       {
         name: "API3",
         type: "Secondary",
-        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"],
+        proof: ["https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle"]
       },
     ],
     tokensExcludedFromParent: {
@@ -11450,7 +11342,7 @@ const data4: Protocol[] = [
       {
         name: "Supra",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14321"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14321"]
       },
     ],
     module: "solido/index.js",
@@ -11493,28 +11385,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Binance",
-      "xDai",
-      "Optimism",
-      "Polygon",
-      "Avalanche",
-      "Base",
-      "Blast",
-      "Linea",
-      "Abstract",
-      "Berachain",
-      "Scroll",
-      "Chiliz",
-      "IoTeX",
-      "Mode",
-      "Sei",
-      "XDC",
-      "Unichain",
-      "zkSync Era",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Binance", "xDai", "Optimism", "Polygon", "Avalanche", "Base", "Blast", "Linea", "Abstract", "Berachain", "Scroll", "Chiliz", "IoTeX", "Mode", "Sei", "XDC", "Unichain", "zkSync Era"],
     module: "sablier-flow/index.js",
     twitter: "Sablier",
     audit_links: ["https://github.com/sablier-labs/audits"],
@@ -11527,8 +11398,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.40acres.finance/",
-    description:
-      "40acres is a pioneering DeFi platform and community DAO that empowers users to unlock the potential of their assets through Self-Repaying, non-liquidating loans",
+    description: "40acres is a pioneering DeFi platform and community DAO that empowers users to unlock the potential of their assets through Self-Repaying, non-liquidating loans",
     chain: "Base",
     logo: `${baseIconsUrl}/40-acres.jpg`,
     audits: "2",
@@ -11536,7 +11406,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Base", "Optimism"],
+    chains: ["Base", "Optimism",],
     module: "40acres/index.js",
     twitter: "40acres_Finance",
     treasury: "40acres.js",
@@ -11558,7 +11428,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexs",
-    chains: ["Moonchain"],
+    chains: ["Moonchain",],
     module: "moonchainswap/index.js",
     twitter: "Moonchain_com",
     listedAt: 1744906979,
@@ -11588,8 +11458,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kame.ag/",
-    description:
-      "Kame Aggregator scours all liquidity sources on Sei Ecosystem to secure the best exchange rates for users",
+    description: "Kame Aggregator scours all liquidity sources on Sei Ecosystem to secure the best exchange rates for users",
     chain: "Sei",
     logo: `${baseIconsUrl}/kame-aggregator.jpg`,
     audits: "0",
@@ -11648,7 +11517,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.udonswap.io/",
-    description: "Seamless DEX on KUB",
+    description:
+      "Seamless DEX on KUB",
     chain: "Bitkub",
     logo: `${baseIconsUrl}/udonswap.jpg`,
     audits: "0",
@@ -11690,7 +11560,8 @@ const data4: Protocol[] = [
     address: "base:0x1111111111166b7fe7bd91427724b487980afc69",
     symbol: "ZORA",
     url: "https://zora.co/explore",
-    description: "A social network where every post is a coin.",
+    description:
+      "A social network where every post is a coin.",
     chain: "Zora",
     logo: `${baseIconsUrl}/zora-coins.jpg`,
     audits: "0",
@@ -11710,7 +11581,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://copump.xyz/",
-    description: "Meme launchpad on multiple EVM chains",
+    description:
+      "Meme launchpad on multiple EVM chains",
     chain: "CORE",
     logo: `${baseIconsUrl}/copump.jpg`,
     audits: "2",
@@ -11722,7 +11594,10 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "copump/index.js",
     twitter: "ConftApp",
-    audit_links: ["https://copump.xyz/audits/aura.pdf", "https://copump.xyz/audits/hashlock.pdf"],
+    audit_links: [
+      "https://copump.xyz/audits/aura.pdf",
+      "https://copump.xyz/audits/hashlock.pdf"
+    ],
     listedAt: 1745245591,
   },
   {
@@ -11745,9 +11620,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1599"],
     module: "lndfi/index.js",
     twitter: "Lnd_fi",
-    audit_links: [
-      "https://github.com/LNDfi/LNDfi-Salus-Audit-Report/blob/main/LNDfi-V3-core_report_2025-03-14%20(1).pdf",
-    ],
+    audit_links: ["https://github.com/LNDfi/LNDfi-Salus-Audit-Report/blob/main/LNDfi-V3-core_report_2025-03-14%20(1).pdf"],
     listedAt: 1745245775,
     github: ["LNDfi"],
   },
@@ -11793,7 +11666,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
     forkedFrom: [],
     audit_links: ["https://github.com/arche-labs/assets/blob/main/audits/Arche%20Protocol%20Audit%20Report.pdf"],
-    listedAt: 1745249658,
+    listedAt: 1745249658
   },
   {
     id: "6074",
@@ -11853,7 +11726,7 @@ const data4: Protocol[] = [
     twitter: "TitanAggregator",
     forkedFrom: [],
     parentProtocol: "parent#titan-protocol",
-    listedAt: 1745329325,
+    listedAt: 1745329325
   },
   {
     id: "6077",
@@ -11875,7 +11748,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/SolomonLabs/solana-program-audits-public"],
     github: ["SolomonLabs"],
-    listedAt: 1745349218,
+    listedAt: 1745349218
   },
   {
     id: "6078",
@@ -11896,7 +11769,7 @@ const data4: Protocol[] = [
     twitter: "ponderdex",
     forkedFromIds: ["2197"],
     github: ["ponderfinance"],
-    listedAt: 1745349225,
+    listedAt: 1745349225
   },
   {
     id: "6079",
@@ -11918,7 +11791,7 @@ const data4: Protocol[] = [
     twitter: "Superp_xyz",
     forkedFrom: [],
     github: ["VanillaDevTeam"],
-    listedAt: 1745416525,
+    listedAt: 1745416525
   },
   {
     id: "6080",
@@ -11940,7 +11813,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/Universal-Page/contracts/tree/main/audits"],
     github: ["Universal-Page"],
-    listedAt: 1745416702,
+    listedAt: 1745416702
   },
   {
     id: "6081",
@@ -11962,7 +11835,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://www.halborn.com/audits/fan-fun/fan-fun---evm-contracts-96ad13"],
     github: ["fandotfun"],
-    listedAt: 1745424763,
+    listedAt: 1745424763
   },
   {
     id: "6082",
@@ -11985,7 +11858,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/Stakingverse/pool-contracts/tree/main/audits"],
     github: ["Stakingverse"],
-    listedAt: 1745425044,
+    listedAt: 1745425044
   },
   {
     id: "6083",
@@ -12007,7 +11880,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     audit_links: ["https://github.com/expelee-co/Smart-Contract-Audit/tree/main/SonicxSwap%20Contracts%20Audit"],
     github: ["Universal-Page"],
-    listedAt: 1745425049,
+    listedAt: 1745425049
   },
   {
     id: "6084",
@@ -12028,7 +11901,7 @@ const data4: Protocol[] = [
     twitter: "ranktrading",
     forkedFrom: [],
     audit_links: ["https://hashlock.com/audits/rank-trading"],
-    listedAt: 1745437977,
+    listedAt: 1745437977
   },
   {
     id: "6085",
@@ -12050,7 +11923,7 @@ const data4: Protocol[] = [
     twitter: "save_finance",
     forkedFrom: [],
     parentProtocol: "parent#save-protocol",
-    listedAt: 1745485876,
+    listedAt: 1745485876
   },
   {
     id: "6086",
@@ -12071,7 +11944,7 @@ const data4: Protocol[] = [
     twitter: "cryptopepeteam",
     forkedFrom: [],
     parentProtocol: "parent#pepeteam",
-    listedAt: 1745492701,
+    listedAt: 1745492701
   },
   // { temp delisting while they PR work for their dex product (didnt like ponzi category)
   //   id: "6087",
@@ -12090,7 +11963,7 @@ const data4: Protocol[] = [
   //   chains: ["Ethereum", "Binance"],
   //   module: "Magic-Fi/index.js",
   //   twitter: "marbletoken",
-  //
+  //    
   //   forkedFrom: [],
   //   listedAt: 1745492824
   // },
@@ -12113,7 +11986,7 @@ const data4: Protocol[] = [
     twitter: "ZyfAI_",
     forkedFrom: [],
     audit_links: ["https://docs.zyf.ai/audits"],
-    listedAt: 1745493197,
+    listedAt: 1745493197
   },
   {
     id: "6089",
@@ -12134,7 +12007,7 @@ const data4: Protocol[] = [
     module: "haven1/index.js",
     twitter: "Haven1official",
     forkedFromIds: ["2198"],
-    listedAt: 1745493830,
+    listedAt: 1745493830
   },
   {
     id: "6090",
@@ -12154,7 +12027,7 @@ const data4: Protocol[] = [
     module: "excellar/index.js",
     twitter: "excellarfinance",
     forkedFrom: [],
-    listedAt: 1745516313,
+    listedAt: 1745516313
   },
   {
     id: "6091",
@@ -12208,48 +12081,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge Aggregator",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Base",
-      "Avalanche",
-      "Binance",
-      "Sonic",
-      "Blast",
-      "Swellchain",
-      "Abstract",
-      "Berachain",
-      "Scroll",
-      "xDai",
-      "Soneium",
-      "Aurora",
-      "Sei",
-      "Fuse",
-      "Unichain",
-      "zkSync Era",
-      "ApeChain",
-      "Cronos",
-      "Evmos",
-      "Velas",
-      "Taiko",
-      "Superposition",
-      "RSK",
-      "Moonbeam",
-      "Moonriver",
-      "Boba",
-      "Celo",
-      "Mantle",
-      "Ink",
-      "Gravity",
-      "Polygon zkEVM",
-      "Fraxtal",
-      "Fantom",
-      "Lisk",
-      "Metis",
-      "Mode",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Sonic", "Blast", "Swellchain", "Abstract", "Berachain", "Scroll", "xDai", "Soneium", "Aurora", "Sei", "Fuse", "Unichain", "zkSync Era", "ApeChain", "Cronos", "Evmos", "Velas", "Taiko", "Superposition", "RSK", "Moonbeam", "Moonriver", "Boba", "Celo", "Mantle", "Ink", "Gravity", "Polygon zkEVM", "Fraxtal", "Fantom", "Lisk", "Metis", "Mode"],
     module: "dummy.js",
     twitter: "lifiprotocol",
     forkedFrom: [],
@@ -12295,7 +12127,7 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14442"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14442"]
       },
     ],
     forkedFrom: [],
@@ -12339,25 +12171,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge Aggregator",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Base",
-      "Avalanche",
-      "Binance",
-      "Fantom",
-      "Blast",
-      "Aurora",
-      "Scroll",
-      "xDai",
-      "Polygon zkEVM",
-      "Mode",
-      "zkSync Era",
-      "Mantle",
-      "Linea",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Fantom", "Blast", "Aurora", "Scroll", "xDai", "Polygon zkEVM", "Mode", "zkSync Era", "Mantle", "Linea"],
     module: "dummy.js",
     twitter: "SOCKETProtocol",
     forkedFrom: [],
@@ -12383,7 +12197,7 @@ const data4: Protocol[] = [
     twitter: "mosaicagg",
     audit_links: ["https://github.com/MosaicAG/mosaic-audits"],
     parentProtocol: "parent#mosaic",
-    listedAt: 1744384037,
+    listedAt: 1744384037
   },
   {
     id: "6099",
@@ -12471,7 +12285,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "TRX",
     url: "https://tron.network",
-    description: "TRON is dedicated to building the infrastructure for a decentralized internet. ",
+    description:
+      "TRON is dedicated to building the infrastructure for a decentralized internet. ",
     chain: "Tron",
     logo: `${baseIconsUrl}/tron.jpg`,
     audits: "0",
@@ -12490,7 +12305,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "FLOW",
     url: "https://flow.com",
-    description: "Launch frictionless Web3 apps with low fees and instant transactions",
+    description:
+      "Launch frictionless Web3 apps with low fees and instant transactions",
     chain: "Flow",
     logo: `${baseIconsUrl}/flow.jpg`,
     audits: "0",
@@ -12544,7 +12360,7 @@ const data4: Protocol[] = [
     twitter: "cyclofinance",
     audit_links: [
       "https://github.com/cyclofinance/cyclo.sol/blob/266f013e9c55061ece0b37c6eac4407c4ea71f4a/audit/Cyclo%20audit%20report%20dev%20v.1.0.pdf",
-      "https://raw.githubusercontent.com/cyclofinance/cyclo.sol/main/audit/Cyclo%20audit%20report%20dev%20v.1.0.pdf",
+      "https://raw.githubusercontent.com/cyclofinance/cyclo.sol/main/audit/Cyclo%20audit%20report%20dev%20v.1.0.pdf"
     ],
     github: ["cyclofinance"],
     listedAt: 1745849221,
@@ -12555,8 +12371,9 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.hyperbeat.org/earn?referral=5C37264D",
-    referralUrl: "https://app.hyperbeat.org/earn?referral=5C37264D",
-    description: "Automated vaults that optimize your returns from top DeFi protocols with just one click",
+    referralUrl: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    description:
+      "Automated vaults that optimize your returns from top DeFi protocols with just one click",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperbeat.jpg`,
     audits: "0",
@@ -12733,8 +12550,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.compound.blue/",
-    description:
-      "Compound Blue is a community-built interface for the Compound DAO. Earn yield on assets by lending them out",
+    description: "Compound Blue is a community-built interface for the Compound DAO. Earn yield on assets by lending them out",
     chain: "Polygon",
     logo: `${baseIconsUrl}/compound-blue.png`,
     audits: "0",
@@ -12755,8 +12571,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.eden-finance.xyz",
-    description:
-      "Eden Finance combines yield-bearing stablecoins, decentralized lending, and AI risk management to create a more secure, efficient, and accessible DeFi ecosystem.",
+    description: "Eden Finance combines yield-bearing stablecoins, decentralized lending, and AI risk management to create a more secure, efficient, and accessible DeFi ecosystem.",
     chain: "Asset Chain",
     logo: `${baseIconsUrl}/eden-finance.jpg`,
     audits: "0",
@@ -12768,7 +12583,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "Eden-finance/index.js",
     twitter: "0xEdenFi",
-    listedAt: 1746007739,
+    listedAt: 1746007739
   },
   {
     id: "6117",
@@ -12776,8 +12591,7 @@ const data4: Protocol[] = [
     address: "base:0x767A739D1A152639e9Ea1D8c1BD55FDC5B217D7f",
     symbol: "VEIL",
     url: "https://www.veil.cash/",
-    description:
-      "Veil Cash is a privacy application leveraging zk-SNARKs on Base L2, enabling verified depositors to achieve privacy and anonymity within a pool of trusted users.",
+    description: "Veil Cash is a privacy application leveraging zk-SNARKs on Base L2, enabling verified depositors to achieve privacy and anonymity within a pool of trusted users.",
     chain: "Base",
     logo: `${baseIconsUrl}/veil-cash.jpg`,
     audits: "0",
@@ -12789,7 +12603,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "veil/index.js",
     twitter: "Veildotcash",
-    listedAt: 1746008028,
+    listedAt: 1746008028
   },
   {
     id: "6118",
@@ -12797,8 +12611,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.betterswap.io",
-    description:
-      "BetterSwap is a Decentralized Exchange (DEX) on the VeChainThor Blockchain. Using BetterSwap is the way to guarantee you make the best swap possible. Our",
+    description: "BetterSwap is a Decentralized Exchange (DEX) on the VeChainThor Blockchain. Using BetterSwap is the way to guarantee you make the best swap possible. Our",
     chain: "VeChain",
     logo: `${baseIconsUrl}/betterswap-v2.jpg`,
     audits: "2",
@@ -12811,7 +12624,7 @@ const data4: Protocol[] = [
     module: "BetterSwap/index.js",
     twitter: "BetterSwap_io",
     audit_links: ["https://hacken.io/audits/betterswap/sca-betterswap-diff-check-jan2025/"],
-    listedAt: 1746008439,
+    listedAt: 1746008439
   },
   {
     id: "6119",
@@ -12831,7 +12644,14 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "unilend-protocol/index.js",
     twitter: "Unilendone",
-    listedAt: 1746008832,
+    listedAt: 1746008832
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://x.com/Unilendone/status/1964976269772071391"]
+      }
+    ],
   },
   /*
   {
@@ -12894,7 +12714,9 @@ const data4: Protocol[] = [
     twitter: null,
     forkedFrom: [],
     parentProtocol: "parent#blend",
-    audit_links: ["https://github.com/blend-capital/blend-contracts-v2/tree/main/audits"],
+    audit_links: [
+      "https://github.com/blend-capital/blend-contracts-v2/tree/main/audits",
+    ],
     listedAt: 1746030822,
     oraclesBreakdown: [
       {
@@ -12902,10 +12724,10 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://docs.blend.capital/pool-creators/selecting-an-oracle#well-known-oracles",
-          "https://github.com/blend-capital/oracle-aggregator#supported-oracles",
-        ],
-      },
-    ],
+          "https://github.com/blend-capital/oracle-aggregator#supported-oracles"
+        ]
+      }
+    ]
   },
   {
     id: "6123",
@@ -12913,8 +12735,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.tower.fi",
-    description:
-      "Tower is Babylon's native DEX built for BTCfi. Swap, LP, and stack sats while making your Bitcoin work",
+    description: "Tower is Babylon's native DEX built for BTCfi. Swap, LP, and stack sats while making your Bitcoin work",
     chain: "Babylon Genesis",
     logo: `${baseIconsUrl}/tower-dex.jpg`,
     audits: "2",
@@ -12926,9 +12747,7 @@ const data4: Protocol[] = [
     module: "TowerDEX/index.js",
     twitter: "Tower",
     forkedFrom: [],
-    audit_links: [
-      "https://github.com/quasar-finance/babydex/blob/main/Tower_BabyDEX%20_Smart_Contract_Security_Assessment_Report_Halborn.pdf",
-    ],
+    audit_links: ["https://github.com/quasar-finance/babydex/blob/main/Tower_BabyDEX%20_Smart_Contract_Security_Assessment_Report_Halborn.pdf"],
     listedAt: 1746089713,
   },
   {
@@ -12937,8 +12756,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.subunit.xyz",
-    description:
-      "Subunit is an on-chain real-estate tokenization protocol on a mission to tokenize the $400T real-estate industry. Subunit enables USDC staking in its Subvault for fractional property exposure and pro-rata yields—unlocking real assets. Real value. Real liquidity. Subunit.",
+    description: "Subunit is an on-chain real-estate tokenization protocol on a mission to tokenize the $400T real-estate industry. Subunit enables USDC staking in its Subvault for fractional property exposure and pro-rata yields—unlocking real assets. Real value. Real liquidity. Subunit.",
     chain: "Base",
     logo: `${baseIconsUrl}/subunit.jpg`,
     audits: "0",
@@ -12950,7 +12768,7 @@ const data4: Protocol[] = [
     module: "subunit/index.js",
     twitter: "subunit_xyz",
     forkedFrom: [],
-    listedAt: 1746099238,
+    listedAt: 1746099238
   },
   {
     id: "6125",
@@ -12958,8 +12776,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://common.fi",
-    description:
-      "Common Web App is a dapp that allows users to break the traceability of their crypto activity — without using centralized exchanges. In just a few clicks, anyone can connect any wallet, deposit into a private shielder contract, and withdraw to a new, unlinkable wallet address.",
+    description: "Common Web App is a dapp that allows users to break the traceability of their crypto activity — without using centralized exchanges. In just a few clicks, anyone can connect any wallet, deposit into a private shielder contract, and withdraw to a new, unlinkable wallet address.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/common.jpg`,
     audits: "0",
@@ -12971,7 +12788,7 @@ const data4: Protocol[] = [
     module: "common/index.js",
     twitter: "Common__App",
     forkedFrom: [],
-    listedAt: 1746099752,
+    listedAt: 1746099752
   },
   {
     id: "6126",
@@ -12979,8 +12796,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://uniderp.fun",
-    description:
-      "Launch a coin that is instantly tradeable in one click for free. Make EVM Degen Again! Building on unichain.",
+    description: "Launch a coin that is instantly tradeable in one click for free. Make EVM Degen Again! Building on unichain.",
     chain: "Unichain",
     logo: `${baseIconsUrl}/uniderp.jpg`,
     audits: "0",
@@ -12993,7 +12809,7 @@ const data4: Protocol[] = [
     twitter: "UniDerpFun",
     forkedFrom: [],
     github: ["uniderp-fun"],
-    listedAt: 1746099860,
+    listedAt: 1746099860
   },
   {
     id: "6127",
@@ -13001,8 +12817,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xassets.ms/mint",
-    description:
-      "xAssets is an RWA protocol on CrossFi that tokenizes real-world assets and securities, giving users exposure via its USD-pegged stablecoin, XUSD",
+    description: "xAssets is an RWA protocol on CrossFi that tokenizes real-world assets and securities, giving users exposure via its USD-pegged stablecoin, XUSD",
     chain: "CrossFi",
     logo: `${baseIconsUrl}/xassets.jpg`,
     audits: "0",
@@ -13014,7 +12829,7 @@ const data4: Protocol[] = [
     module: "xAssets/index.js",
     twitter: null,
     forkedFrom: [],
-    listedAt: 1746126133,
+    listedAt: 1746126133
   },
   {
     id: "6128",
@@ -13035,7 +12850,7 @@ const data4: Protocol[] = [
     twitter: "MeteraProtocol",
     forkedFrom: [],
     audit_links: ["https://cdn.sundaeswap.finance/audits/metera.pdf"],
-    listedAt: 1746126325,
+    listedAt: 1746126325
   },
   {
     id: "6129",
@@ -13043,8 +12858,7 @@ const data4: Protocol[] = [
     address: "solana:boopkpWqe68MSxLqBGogs8ZbUDN4GXaLhFwNP7mpP1i",
     symbol: "BOOP",
     url: "https://boop.fun/",
-    description:
-      "A Solana-based memecoin launchpad that incentivizes influencers and creators with BOOP tokens for deploying tokens meeting market cap thresholds",
+    description: "A Solana-based memecoin launchpad that incentivizes influencers and creators with BOOP tokens for deploying tokens meeting market cap thresholds",
     chain: "Solana",
     logo: `${baseIconsUrl}/boop.fun.jpg`,
     audits: "0",
@@ -13056,7 +12870,7 @@ const data4: Protocol[] = [
     module: "boop-fun/index.js",
     twitter: "boopdotfun",
     forkedFrom: [],
-    listedAt: 1746147057,
+    listedAt: 1746147057
   },
   {
     id: "6130",
@@ -13064,8 +12878,7 @@ const data4: Protocol[] = [
     address: "solana:GVeaBeaHZDJHji4UTzaPJgB1PRiVeCV2EaArjYyiwNdT",
     symbol: "SENTBOT",
     url: "https://www.sentineltraderbot.com/",
-    description:
-      "Sentinel Trader Bot is a next-generation automated trading platform that leverages artificial intelligence and blockchain technology",
+    description: "Sentinel Trader Bot is a next-generation automated trading platform that leverages artificial intelligence and blockchain technology",
     chain: "Solana",
     logo: `${baseIconsUrl}/sentinel-trader-bot.jpg`,
     audits: "0",
@@ -13078,7 +12891,7 @@ const data4: Protocol[] = [
     twitter: "sentbottrader",
     forkedFrom: [],
     github: ["sentineltraderbot"],
-    listedAt: 1746193445,
+    listedAt: 1746193445
   },
   {
     id: "6131",
@@ -13086,8 +12899,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xapp.ms/",
-    description:
-      "xApp - is a core foundation protocol lets you swap, bridge assets, acquire tokens, add liquidity and join our staking program for CrossFi Chain rewards. Earn extra platform crypto rewards from network transaction fees",
+    description: "xApp - is a core foundation protocol lets you swap, bridge assets, acquire tokens, add liquidity and join our staking program for CrossFi Chain rewards. Earn extra platform crypto rewards from network transaction fees",
     chain: "CrossFi",
     logo: `${baseIconsUrl}/xapp.jpg`,
     audits: "0",
@@ -13099,7 +12911,7 @@ const data4: Protocol[] = [
     module: "xApp/index.js",
     twitter: null,
     forkedFrom: [],
-    listedAt: 1746193727,
+    listedAt: 1746193727
   },
   {
     id: "6132",
@@ -13107,8 +12919,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xficonsole.com/",
-    description:
-      "Native Staking is a protocol that enables users to stake XFI connecting EVM and Cosmos parts of CrossFI Ecosystem",
+    description: "Native Staking is a protocol that enables users to stake XFI connecting EVM and Cosmos parts of CrossFI Ecosystem",
     chain: "CrossFi",
     logo: `${baseIconsUrl}/xfi-native-staking-protocol.jpg`,
     audits: "0",
@@ -13120,7 +12931,7 @@ const data4: Protocol[] = [
     module: "xfi-native-staking/index.js",
     twitter: null,
     forkedFrom: [],
-    listedAt: 1746202669,
+    listedAt: 1746202669
   },
   {
     id: "6133",
@@ -13141,7 +12952,7 @@ const data4: Protocol[] = [
     twitter: "PancakeSwap",
     forkedFromIds: ["5690"],
     parentProtocol: "parent#pancakeswap",
-    listedAt: 1746445592,
+    listedAt: 1746445592
   },
   {
     id: "6134",
@@ -13149,8 +12960,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.justlock.io",
-    description:
-      "JustLock is an open source locker that advertises that you can Lock Your Digital Assets on #Radix with Confidence",
+    description: "JustLock is an open source locker that advertises that you can Lock Your Digital Assets on #Radix with Confidence",
     chain: "Radix",
     logo: `${baseIconsUrl}/justlock.jpg`,
     audits: "0",
@@ -13163,7 +12973,7 @@ const data4: Protocol[] = [
     twitter: "JustLockRadix",
     forkedFrom: [],
     github: ["just-lock"],
-    listedAt: 1746445901,
+    listedAt: 1746445901
   },
   {
     id: "6135",
@@ -13171,14 +12981,11 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://torch.finance",
-    description:
-      "Telegram USD is a blue-chip-backed stablecoin on the TON blockchain, designed for cross-chain yield and seamless payments. It’s easy to mint, secure, and optimized for DeFi on Telegram.",
+    description: "Telegram USD is a blue-chip-backed stablecoin on the TON blockchain, designed for cross-chain yield and seamless payments. It’s easy to mint, secure, and optimized for DeFi on Telegram.",
     chain: "TON",
     logo: `${baseIconsUrl}/telegram-usd.jpg`,
     audits: "1",
-    audit_links: [
-      "https://certificate.quantstamp.com/full/torch-finance/9edd725c-737d-4273-b2ca-6e65ce7b7575/index.html",
-    ],
+    audit_links: ["https://certificate.quantstamp.com/full/torch-finance/9edd725c-737d-4273-b2ca-6e65ce7b7575/index.html"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -13188,7 +12995,7 @@ const data4: Protocol[] = [
     twitter: "TorchTon",
     parentProtocol: "parent#torch",
     forkedFrom: [],
-    listedAt: 1746445991,
+    listedAt: 1746445991
   },
   {
     id: "6136",
@@ -13196,8 +13003,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://solv.finance",
-    description:
-      "Solv Strategies simplifies DeFi with automated solutions that put your Bitcoin to work. From liquidity provision to sophisticated yield farming, these curated strategies make it easy to earn rewards across DeFi protocols—no expertise required.",
+    description: "Solv Strategies simplifies DeFi with automated solutions that put your Bitcoin to work. From liquidity provision to sophisticated yield farming, these curated strategies make it easy to earn rewards across DeFi protocols—no expertise required.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/solv-strategies.jpg`,
     audits: "0",
@@ -13217,7 +13023,7 @@ const data4: Protocol[] = [
       Bob: ["SOLVBTC"],
       Berachain: ["SOLVBTC"],
     },
-    listedAt: 1746523182,
+    listedAt: 1746523182
   },
   {
     id: "6137",
@@ -13239,7 +13045,7 @@ const data4: Protocol[] = [
     twitter: "turtleclubhouse",
     forkedFrom: [],
     github: ["Turtle-DAO"],
-    listedAt: 1746529678,
+    listedAt: 1746529678
   },
   {
     id: "6138",
@@ -13247,8 +13053,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.initia.xyz/swap",
-    description:
-      "The InitiaDEX is a decentralized exchange (DEX) built on the Initia L1. It serves as a Balancer-style weighted pool for diverse asset pairs and a StableSwap pool for assets with closely correlated prices. This design ensures an optimal trading experience across various asset types.",
+    description: "The InitiaDEX is a decentralized exchange (DEX) built on the Initia L1. It serves as a Balancer-style weighted pool for diverse asset pairs and a StableSwap pool for assets with closely correlated prices. This design ensures an optimal trading experience across various asset types.",
     chain: "Initia",
     logo: `${baseIconsUrl}/initiadex.jpg`,
     audits: "0",
@@ -13260,7 +13065,7 @@ const data4: Protocol[] = [
     module: "initia-dex/index.js",
     twitter: "initia",
     forkedFrom: [],
-    listedAt: 1746530574,
+    listedAt: 1746530574
   },
   {
     id: "6139",
@@ -13269,8 +13074,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "KTON",
     url: "https://app.kton.io",
-    description:
-      "KTON is a next-generation liquid staking protocol for the TON ecosystem, designed to unlock liquidity for both institutional and retail users. With its liquid staking token $KTON, users earn staking rewards while accessing TON’s expanding DeFi landscape. Backed by institutional-grade security, decentralized governance, and seamless DeFi integration, KTON is driving the next wave of growth in Telegram Finance and accelerating mass adoption.",
+    description: "KTON is a next-generation liquid staking protocol for the TON ecosystem, designed to unlock liquidity for both institutional and retail users. With its liquid staking token $KTON, users earn staking rewards while accessing TON’s expanding DeFi landscape. Backed by institutional-grade security, decentralized governance, and seamless DeFi integration, KTON is driving the next wave of growth in Telegram Finance and accelerating mass adoption.",
     chain: "TON",
     logo: `${baseIconsUrl}/kton.jpg`,
     audits: "0",
@@ -13282,7 +13086,7 @@ const data4: Protocol[] = [
     module: "kton/index.js",
     twitter: "kton_io",
     forkedFrom: [],
-    listedAt: 1746530626,
+    listedAt: 1746530626
   },
   {
     id: "6140",
@@ -13302,7 +13106,7 @@ const data4: Protocol[] = [
     module: "cmswap/index.js",
     twitter: "CMswap",
     forkedFromIds: ["2198"],
-    listedAt: 1746552214,
+    listedAt: 1746552214
   },
   {
     id: "6141",
@@ -13322,7 +13126,7 @@ const data4: Protocol[] = [
     module: "TAKOSWAP/index.js",
     twitter: "takoswap",
     forkedFromIds: ["2197"],
-    listedAt: 1746560861,
+    listedAt: 1746560861
   },
   {
     id: "6142",
@@ -13387,8 +13191,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "VANA",
     url: "https://www.vana.org",
-    description:
-      "The first open network for data sovereignty and user-owned AI data layer. Growing the DataDAO ecosystem.",
+    description: "The first open network for data sovereignty and user-owned AI data layer. Growing the DataDAO ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/vana.jpg`,
     audits: "0",
@@ -13407,8 +13210,7 @@ const data4: Protocol[] = [
     address: "solana:2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
     symbol: "PENGU",
     url: "https://pudgypenguins.com",
-    description:
-      "PENGU allows for the ever-expanding Pudgy Penguin fanbase and the hundreds of millions of people outside of crypto that see and share the Pudgy Penguin everyday, to join The Huddle. PENGU is a symbol for community, memes, and good vibes.",
+    description: "PENGU allows for the ever-expanding Pudgy Penguin fanbase and the hundreds of millions of people outside of crypto that see and share the Pudgy Penguin everyday, to join The Huddle. PENGU is a symbol for community, memes, and good vibes.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/pudgy-penguins.jpg`,
     audits: "0",
@@ -13442,7 +13244,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }], // https://github.com/DefiLlama/defillama-server/pull/9788
     github: ["yalaorg"],
     audit_links: ["https://docs.yala.org/security-audits"],
-    listedAt: 1746625641,
+    listedAt: 1746625641
   },
   {
     id: "6148",
@@ -13469,8 +13271,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.openzk.net",
-    description:
-      "OpenZK is the first Layer 2 solution on ZK rollup technology to unite native ETH staking, liquid restaking, and stablecoin staking in one seamless platform. Built for superior performance in DeFi, Real-Word Assets, and trading applications.",
+    description: "OpenZK is the first Layer 2 solution on ZK rollup technology to unite native ETH staking, liquid restaking, and stablecoin staking in one seamless platform. Built for superior performance in DeFi, Real-Word Assets, and trading applications.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/openzk.jpg`,
     audits: "0",
@@ -13527,8 +13328,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.caviarnine.com/earn/hyper-stake",
-    description:
-      "HyperStake's self-adjusting LSULP/ XRD pool delivers high rewards with zero upkeep, earning fees from instant unstakers and 7-day depositors.",
+    description: "HyperStake's self-adjusting LSULP/ XRD pool delivers high rewards with zero upkeep, earning fees from instant unstakers and 7-day depositors.",
     chain: "Radix",
     logo: `${baseIconsUrl}/caviarnine-hyperstake.jpg`,
     audits: "0",
@@ -13541,7 +13341,7 @@ const data4: Protocol[] = [
     twitter: "CaviarNine",
     forkedFrom: [],
     parentProtocol: "parent#caviarnine",
-    listedAt: 1746711348,
+    listedAt: 1746711348
   },
   {
     id: "6153",
@@ -13549,8 +13349,7 @@ const data4: Protocol[] = [
     address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
     symbol: "BLUE",
     url: "https://trade.bluefin.io/lend",
-    description:
-      "AlphaLend is a decentralized, non-custodial lending and borrowing protocol built on the SUI blockchain. It allows users to earn interest on deposited assets and borrow against their deposited assets without intermediaries. The protocol is designed to be composable, efficient, and secure, enabling developers and users to access core DeFi primitives in a trustless manner.",
+    description: "AlphaLend is a decentralized, non-custodial lending and borrowing protocol built on the SUI blockchain. It allows users to earn interest on deposited assets and borrow against their deposited assets without intermediaries. The protocol is designed to be composable, efficient, and secure, enabling developers and users to access core DeFi primitives in a trustless manner.",
     chain: "Sui",
     logo: `${baseIconsUrl}/alphalend.png`,
     audits: "0",
@@ -13564,7 +13363,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }],
     parentProtocol: "parent#bluefin",
-    listedAt: 1746735537,
+    listedAt: 1746735537
   },
   {
     id: "6154",
@@ -13572,7 +13371,8 @@ const data4: Protocol[] = [
     address: "avax:0xb8d7710f7d8349a506b75dd184f05777c82dad0c",
     symbol: "ARENA",
     url: "https://arena.social/",
-    description: "A DEX for The Arena ecosystem",
+    description:
+      "A DEX for The Arena ecosystem",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arena-dex.jpg`,
     audits: "0",
@@ -13585,7 +13385,7 @@ const data4: Protocol[] = [
     twitter: "TheArenaApp",
     forkedFromIds: ["2197"],
     listedAt: 1746742252,
-    parentProtocol: "parent#the-arena",
+    parentProtocol: "parent#the-arena"
   },
   {
     id: "6155",
@@ -13594,7 +13394,8 @@ const data4: Protocol[] = [
     address: "avax:0xb8d7710f7d8349a506b75dd184f05777c82dad0c",
     symbol: "ARENA",
     url: "https://arena.social/",
-    description: "A Launchpad for The Arena ecosystem",
+    description:
+      "A Launchpad for The Arena ecosystem",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arena-launch.jpg`,
     audits: "0",
@@ -13607,7 +13408,7 @@ const data4: Protocol[] = [
     twitter: "TheArenaApp",
     forkedFrom: [],
     listedAt: 1746742259,
-    parentProtocol: "parent#the-arena",
+    parentProtocol: "parent#the-arena"
   },
   {
     id: "6156",
@@ -13615,7 +13416,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://coin.nani.ooo",
-    description: "Simplest Swapping with Best LP UX.",
+    description:
+      "Simplest Swapping with Best LP UX.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zamm.jpg`,
     audits: "0",
@@ -13627,7 +13429,7 @@ const data4: Protocol[] = [
     module: "zamm/index.js",
     twitter: "ZAMM_DEFI",
     forkedFrom: [],
-    listedAt: 1746799038,
+    listedAt: 1746799038
   },
   {
     id: "6157",
@@ -13635,7 +13437,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.thereactor.in/",
-    description: "SimplesDeFi automation with Reactive Smart Contracts for developers and non-technical users alike.",
+    description:
+      "SimplesDeFi automation with Reactive Smart Contracts for developers and non-technical users alike.",
     chain: "Blast",
     logo: `${baseIconsUrl}/reactor.jpg`,
     audits: "0",
@@ -13647,7 +13450,7 @@ const data4: Protocol[] = [
     module: "reactor/index.js",
     twitter: "0xReactor",
     forkedFromIds: ["2198"],
-    listedAt: 1746799138,
+    listedAt: 1746799138
   },
   {
     id: "6158",
@@ -13669,7 +13472,7 @@ const data4: Protocol[] = [
     twitter: "beracana",
     forkedFrom: [],
     audit_links: ["https://app.beracana.com/beracana-audit.pdf"],
-    listedAt: 1746799138,
+    listedAt: 1746799138
   },
   {
     id: "6159",
@@ -13710,7 +13513,7 @@ const data4: Protocol[] = [
     module: "palm-economy/index.js",
     twitter: "palmeconomy",
     forkedFrom: [],
-    listedAt: 1747046753,
+    listedAt: 1747046753
   },
   {
     id: "6161",
@@ -13732,7 +13535,7 @@ const data4: Protocol[] = [
     twitter: "dripit_io",
     forkedFrom: [],
     github: ["dripit-io"],
-    listedAt: 1747046774,
+    listedAt: 1747046774
   },
   {
     id: "6162",
@@ -13754,11 +13557,11 @@ const data4: Protocol[] = [
     twitter: "0xBerancia",
     forkedFrom: [],
     audit_links: ["https://barencias-organization.gitbook.io/berancia"],
-    listedAt: 1747046911,
+    listedAt: 1747046911
   },
-  // { Commented because funds sent to EOA
+  // { Commented because funds sent to EOA 
   //   id: "6163",
-  //   name: "Neutrl",
+  //   name: "Neutrl", 
   //   address: null,
   //   symbol: "-",
   //   url: "https://www.neutrl.fi/",
@@ -13775,7 +13578,7 @@ const data4: Protocol[] = [
   //   module: "neutrl/index.js",
   //   twitter: "neutrl_labs",
   //   forkedFrom: [],
-  //
+  //   
   //   listedAt: 1747077131
   // },
   {
@@ -13784,7 +13587,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://supra.com/data/validators",
-    description: "Staking provides users with 8% APY",
+    description:
+      "Staking provides users with 8% APY",
     chain: "Supra",
     logo: `${baseIconsUrl}/supra-staking.jpg`,
     audits: "0",
@@ -13796,7 +13600,7 @@ const data4: Protocol[] = [
     module: "supra-staking/index.js",
     twitter: "SUPRA_Labs",
     forkedFrom: [],
-    listedAt: 1747077322,
+    listedAt: 1747077322
   },
   {
     id: "6165",
@@ -13804,7 +13608,8 @@ const data4: Protocol[] = [
     address: "mantle:0x25356aeca4210ef7553140edb9b8026089e49396",
     symbol: "LEND",
     url: "https://app.lendle.xyz/yields",
-    description: "TVL accounts for all assets deposited into the Vaults",
+    description:
+      "TVL accounts for all assets deposited into the Vaults",
     chain: "Mantle",
     logo: `${baseIconsUrl}/lendle-earn.jpg`,
     audits: "0",
@@ -13817,7 +13622,7 @@ const data4: Protocol[] = [
     twitter: "lendlexyz",
     forkedFrom: [],
     parentProtocol: "parent#lendle",
-    listedAt: 1747077329,
+    listedAt: 1747077329
   },
   {
     id: "6166",
@@ -13825,7 +13630,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://rootsfi.com/",
-    description: "Collateralize Berachain LP tokens, Mint MEAD stablecoin, retain all your BGT faming upside",
+    description:
+      "Collateralize Berachain LP tokens, Mint MEAD stablecoin, retain all your BGT faming upside",
     chain: "Berachain",
     logo: `${baseIconsUrl}/roots.jpg`,
     audits: "2",
@@ -13841,12 +13647,12 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14591"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14591"]
+      }
     ],
     audit_links: ["https://docs.rootsfi.com/essentials/audits"],
     github: ["roots-fi"],
-    listedAt: 1747077337,
+    listedAt: 1747077337
   },
   {
     id: "6167",
@@ -13871,13 +13677,13 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"],
-      },
+        proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"]
+      }
     ],
     audit_links: ["https://github.com/Hexens/Smart-Contract-Review-Public-Reports/blob/main/BasisOS-nov-24(Final).pdf"],
     github: ["Logarithm-Labs"],
     listedAt: 1747156379,
-    wrongLiquidity: true,
+    wrongLiquidity: true
   },
   {
     id: "6168",
@@ -13900,7 +13706,7 @@ const data4: Protocol[] = [
     twitter: "XoxnoNetwork",
     forkedFrom: [],
     parentProtocol: "parent#xoxno",
-    listedAt: 1747156831,
+    listedAt: 1747156831
   },
   {
     id: "6169",
@@ -13963,7 +13769,7 @@ const data4: Protocol[] = [
     module: "MAYZ/index.js",
     twitter: "MAYZProtocol",
     forkedFrom: [],
-    listedAt: 1747233546,
+    listedAt: 1747233546
   },
   {
     id: "6172",
@@ -13984,7 +13790,7 @@ const data4: Protocol[] = [
     module: "GainzSwap/index.js",
     twitter: "GainzSwap",
     forkedFrom: [],
-    listedAt: 1747233946,
+    listedAt: 1747233946
   },
   {
     id: "6173",
@@ -13992,21 +13798,22 @@ const data4: Protocol[] = [
     address: "cardano:f13ac4d66b3ee19a6aa0f2a22298737bd907cc95121662fc971b5275.535452494b45",
     symbol: "STRIKE",
     url: "https://www.strikefinance.org/",
-    description:
-      "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading",
+    description: "Strike Finance is an open-source derivatives protocol built on top of Cardano offering options, forwards, and perpetual contract trading",
     chain: "Cardano",
     logo: `${baseIconsUrl}/strike-finance-perpetuals.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: 'Derivatives',
     chains: ["Cardano"],
     module: "strike-finance/index.js",
     twitter: "strikecardano",
     forkedFrom: [],
-    audit_links: ["https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf"],
-    parentProtocol: "parent#strike-finance",
+    audit_links: [
+      "https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf",
+    ],
+    parentProtocol: 'parent#strike-finance',
   },
   {
     id: "6174",
@@ -14014,21 +13821,20 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://solv.finance",
-    description:
-      "Solv Protocol is the on-chain Bitcoin Reserve, bridging TradFi, CeFi, and DeFi to unlock the full potential of over $1 trillion in Bitcoin. Through SolvBTC and SolvBTC.LSTs (Liquid Staking Tokens)",
+    description: "Solv Protocol is the on-chain Bitcoin Reserve, bridging TradFi, CeFi, and DeFi to unlock the full potential of over $1 trillion in Bitcoin. Through SolvBTC and SolvBTC.LSTs (Liquid Staking Tokens)",
     chain: "Merlin",
     logo: `${baseIconsUrl}/solv-others.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Anchor BTC",
+    category: 'Anchor BTC',
     chains: ["Merlin"],
     module: "solv-others/index.js",
     twitter: "SolvProtocol",
     forkedFrom: [],
     parentProtocol: "parent#solv-protocol",
-    listedAt: 1747252621,
+    listedAt: 1747252621
   },
   {
     id: "6175",
@@ -14057,21 +13863,20 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "kAPT",
     url: "https://kofi.finance",
-    description:
-      "Kofi Finance is transforming staking on Aptos by introducing MEV revenue sharing, ensuring that stakers earn enhanced rewards while maintaining full liquidity. Unlike traditional staking, where assets are locked, Kofi issues a liquid staking token (LST) that can be freely traded, used in DeFi, or redeemed for the underlying staked assets—allowing users to earn staking rewards without sacrificing liquidity.",
+    description: "Kofi Finance is transforming staking on Aptos by introducing MEV revenue sharing, ensuring that stakers earn enhanced rewards while maintaining full liquidity. Unlike traditional staking, where assets are locked, Kofi issues a liquid staking token (LST) that can be freely traded, used in DeFi, or redeemed for the underlying staked assets—allowing users to earn staking rewards without sacrificing liquidity.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/kofi-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: 'Liquid Staking',
     chains: ["Aptos"],
     module: "kofi-finance/index.js",
     twitter: "kofi_finance",
     forkedFrom: [],
     github: ["KofiFinance"],
-    listedAt: 1747319273,
+    listedAt: 1747319273
   },
   {
     id: "6177",
@@ -14079,20 +13884,19 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://diem.ivx.fi/trade",
-    description:
-      "IVX is the hub of Berivatives on Berachain, offering Diem, a fully fledged liquid 0dte options market for $BERA, $ETH and $BTC",
+    description: "IVX is the hub of Berivatives on Berachain, offering Diem, a fully fledged liquid 0dte options market for $BERA, $ETH and $BTC",
     chain: "Berachain",
     logo: `${baseIconsUrl}/ivx-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: 'Options',
     chains: ["Berachain"],
     module: "ivx/index.js",
     twitter: "ivx_fi",
     forkedFrom: [],
-    listedAt: 1747319373,
+    listedAt: 1747319373
   },
   {
     id: "6178",
@@ -14121,8 +13925,7 @@ const data4: Protocol[] = [
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://www.thena.fi",
-    description:
-      "THENA Integral is a concentrated liquidity management infrastructure, utilized with plugins on BSC chain, powered by Algebra Protocol",
+    description: "THENA Integral is a concentrated liquidity management infrastructure, utilized with plugins on BSC chain, powered by Algebra Protocol",
     chain: "Binance",
     logo: `${baseIconsUrl}/thena-integral.jpg`,
     audits: "0",
@@ -14135,7 +13938,7 @@ const data4: Protocol[] = [
     module: "thena-integral/index.js",
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",
-    listedAt: 1751488349,
+    listedAt: 1751488349
   },
   {
     id: "6180",
@@ -14178,8 +13981,8 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://orki-finance.gitbook.io/orki-finance-docs/infra/redstone-oracle"],
-      },
+        proof: ["https://orki-finance.gitbook.io/orki-finance-docs/infra/redstone-oracle"]
+      }
     ],
     forkedFromIds: ["5656"],
     module: "orki-usd/index.js",
@@ -14289,8 +14092,8 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14638"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14638"]
+      }
     ],
     forkedFrom: [],
     module: "hyperstable/index.js",
@@ -14313,25 +14116,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Base",
-      "Avalanche",
-      "Binance",
-      "Fantom",
-      "Blast",
-      "Aurora",
-      "Scroll",
-      "xDai",
-      "Polygon zkEVM",
-      "Mode",
-      "zkSync Era",
-      "Mantle",
-      "Linea",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Fantom", "Blast", "Aurora", "Scroll", "xDai", "Polygon zkEVM", "Mode", "zkSync Era", "Mantle", "Linea"],
     module: "dummy.js",
     twitter: "BungeeExchange",
     parentProtocol: "parent#bungee",
@@ -14350,25 +14135,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge Aggregator",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Base",
-      "Avalanche",
-      "Binance",
-      "Fantom",
-      "Blast",
-      "Aurora",
-      "Scroll",
-      "xDai",
-      "Polygon zkEVM",
-      "Mode",
-      "zkSync Era",
-      "Mantle",
-      "Linea",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Fantom", "Blast", "Aurora", "Scroll", "xDai", "Polygon zkEVM", "Mode", "zkSync Era", "Mantle", "Linea"],
     module: "dummy.js",
     twitter: "BungeeExchange",
     parentProtocol: "parent#bungee",
@@ -14490,18 +14257,15 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "9summits/index.js",
     twitter: "nine_summits",
-    oraclesBreakdown: [
+      oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
-        proof: [
-          "https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth",
-          "https://oracles.euler.finance/130/",
-        ],
-        chains: [{ chain: "Unichain" }],
+        proof: ["https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth","https://oracles.euler.finance/130/"],
+        chains: [{chain: "Unichain"}]
       },
     ],
-    listedAt: 1747733002,
+    listedAt: 1747733002
   },
   {
     id: "6195",
@@ -14521,7 +14285,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "alphaping/index.js",
     twitter: "0xAlphaping",
-    listedAt: 1747733028,
+    listedAt: 1747733028
   },
   {
     id: "6196",
@@ -14541,7 +14305,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "apostro/index.js",
     twitter: "apostroxyz",
-    listedAt: 1747733258,
+    listedAt: 1747733258
   },
   {
     id: "6197",
@@ -14561,7 +14325,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "b-protocol/index.js",
     twitter: "bprotocoleth",
-    listedAt: 1747733358,
+    listedAt: 1747733358
   },
   {
     id: "6198",
@@ -14581,7 +14345,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "block-analitica/index.js",
     twitter: "BlockAnalitica",
-    listedAt: 1747733666,
+    listedAt: 1747733666
   },
   {
     id: "6199",
@@ -14601,7 +14365,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "clearstar/index.js",
     twitter: "ClearstarLabs",
-    listedAt: 1747733862,
+    listedAt: 1747733862
   },
   {
     id: "6200",
@@ -14625,19 +14389,18 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://oracles.euler.finance/130/", "https://oracles.euler.finance/1923/"],
-        chains: [{ chain: "Unichain" }, { chain: "Swellchain" }],
+        proof: ["https://oracles.euler.finance/130/","https://oracles.euler.finance/1923/"],
+        chains: [{chain: "Unichain"},{chain: "Swellchain"}]
       },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: [
-          "https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349",
-        ],
-        chains: [{ chain: "Ethereum" }, { chain: "Base" }],
+        proof: ["https://forum.euler.finance/t/eip-18-move-all-asset-price-oracles-to-chainlink-where-available-ahead-of-the-merge/349"],
+        chains: [{chain: "Ethereum"},{chain: "Base"}]
       },
+    
     ],
-    listedAt: 1747734034,
+    listedAt: 1747734034
   },
   {
     id: "6201",
@@ -14657,7 +14420,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "fence/index.js",
     twitter: "fence_finance",
-    listedAt: 1747734127,
+    listedAt: 1747734127
   },
   {
     id: "6202",
@@ -14677,21 +14440,21 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "gauntlet/index.js",
     twitter: "gauntlet_xyz",
-    oraclesBreakdown: [
+     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
         proof: [
-          "https://app.morpho.org/unichain/market/0xdacbdd711936b4f4bd789f0f7111e36e925d730ebd41178e36e705efd78a4aa1/weeth-weth",
-          "https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth",
-          "https://app.morpho.org/unichain/market/0xb98720c2275d134e04e37c94e2f82d0078b6b44f7d588cd2554353f45684c3ba/ezeth-weth",
+          "https://app.morpho.org/unichain/market/0xdacbdd711936b4f4bd789f0f7111e36e925d730ebd41178e36e705efd78a4aa1/weeth-weth", 
+          "https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth", 
+          "https://app.morpho.org/unichain/market/0xb98720c2275d134e04e37c94e2f82d0078b6b44f7d588cd2554353f45684c3ba/ezeth-weth", 
           "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
-          "https://oracles.euler.finance/130/",
+          "https://oracles.euler.finance/130/"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{chain: "Unichain"}]
       },
     ],
-    listedAt: 1747734127,
+    listedAt: 1747734127
   },
   {
     id: "6203",
@@ -14711,7 +14474,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hakutora/index.js",
     twitter: "0xhakutora",
-    listedAt: 1747734346,
+    listedAt: 1747734346
   },
   {
     id: "6204",
@@ -14731,7 +14494,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hyperithm/index.js",
     twitter: "hyperithm",
-    listedAt: 1747734486,
+    listedAt: 1747734486
   },
   {
     id: "6205",
@@ -14757,12 +14520,12 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://app.morpho.org/unichain/vault/0xfA355999c12C63c465c591daf9C462e14ACf470b/k3-capital-eth-maxi",
-          "https://oracles.euler.finance/130/",
+          "https://oracles.euler.finance/130/"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{chain: "Unichain"}]
       },
     ],
-    listedAt: 1747734980,
+    listedAt: 1747734980
   },
   {
     id: "6206",
@@ -14782,7 +14545,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "llamarisk/index.js",
     twitter: "LlamaRisk",
-    listedAt: 1747735108,
+    listedAt: 1747735108
   },
   {
     id: "6207",
@@ -14802,7 +14565,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "m11c/index.js",
     twitter: "M11Credit",
-    listedAt: 1747735163,
+    listedAt: 1747735163
   },
   {
     id: "6208",
@@ -14828,12 +14591,12 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://app.morpho.org/unichain/vault/0xc063181747E56c034ac14dC82DB663409566Fdf6/mev-capital-usdc",
-          "https://oracles.euler.finance/130/",
+          "https://oracles.euler.finance/130/"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{chain: "Unichain"}]
       },
     ],
-    listedAt: 1747735411,
+    listedAt: 1747735411
   },
   {
     id: "6209",
@@ -14859,12 +14622,12 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://app.morpho.org/ethereum/vault/0x2F21c6499fa53a680120e654a27640Fc8Aa40BeD/openeden-usdc-vault",
-          "https://github.com/DefiLlama/defillama-server/pull/10516/files",
+          "https://github.com/DefiLlama/defillama-server/pull/10516/files"
         ],
-        chains: [{ chain: "Ethereum" }],
+        chains: [{chain: "Ethereum"}]
       },
     ],
-    listedAt: 1747735650,
+    listedAt: 1747735650
   },
   {
     id: "6210",
@@ -14887,37 +14650,37 @@ const data4: Protocol[] = [
         name: "Stork",
         type: "Primary",
         proof: [
-          "https://lite.morpho.org/plume/earn",
-          "https://explorer.plume.org/address/0xcEedB1173F4D3db19288b4913335CB2d44BEb175?tab=internal_txns",
-          "https://explorer.plume.org/address/0x7824e4B3E21678f143Ce22308ADfd48d1D3160FB?tab=internal_txns",
-          "https://explorer.plume.org/address/0xDF16567dA7d2F5Fec172DDFe42036976C6e7D95F?tab=internal_txns",
+          "https://lite.morpho.org/plume/earn", 
+          "https://explorer.plume.org/address/0xcEedB1173F4D3db19288b4913335CB2d44BEb175?tab=internal_txns", 
+          "https://explorer.plume.org/address/0x7824e4B3E21678f143Ce22308ADfd48d1D3160FB?tab=internal_txns", 
+          "https://explorer.plume.org/address/0xDF16567dA7d2F5Fec172DDFe42036976C6e7D95F?tab=internal_txns"
         ],
-        chains: [{ chain: "Plume Mainnet" }],
+        chains: [{ chain: "Plume Mainnet"}]
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [
-          "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
-          "https://app.morpho.org/unichain/vault/0x6af5E46456A8ac80BB53a02799965DEF99c26e52/re7-weth",
+          "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0", 
+          "https://app.morpho.org/unichain/vault/0x6af5E46456A8ac80BB53a02799965DEF99c26e52/re7-weth", 
           "https://app.morpho.org/unichain/vault/0x2c0F7e917257926BA6233B20DE19d7fe3210858C/re7-usdt0",
-          "https://oracles.euler.finance/130/",
+          "https://oracles.euler.finance/130/"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{chain: "Unichain"}]
       },
       {
         name: "eOracle",
         type: "Primary",
         proof: [
           "https://app.euler.finance/?governor=re7-labs&network=tac",
-          "https://github.com/DefiLlama/defillama-server/pull/10515",
+          "https://github.com/DefiLlama/defillama-server/pull/10515"
         ],
-        chains: [{ chain: "TAC" }],
+        chains: [{chain: "TAC"}]
       },
     ],
     module: "re7/index.js",
     twitter: "Re7Labs",
-    listedAt: 1747735814,
+    listedAt: 1747735814
   },
   {
     id: "6211",
@@ -14937,7 +14700,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "relend/index.js",
     twitter: "relend_network",
-    listedAt: 1747735979,
+    listedAt: 1747735979
   },
   {
     id: "6212",
@@ -14965,25 +14728,23 @@ const data4: Protocol[] = [
       {
         name: "Edge",
         type: "Primary",
-        proof: [
-          "https://cornscan.io/address/0xFe423163bfEe287a132E656D5EC4a363B8A2B4f3/contract/21000000/readContract#F1",
-        ],
+        proof: ["https://cornscan.io/address/0xFe423163bfEe287a132E656D5EC4a363B8A2B4f3/contract/21000000/readContract#F1"],
         chains: [{ chain: "Corn" }],
       },
       {
         name: "RedStone",
         type: "Primary",
         proof: [
-          "https://app.morpho.org/unichain/vault/0x0993Ae24a988c6925d80aD61344a76B81aA0D34c/steakhouse-eth",
+          "https://app.morpho.org/unichain/vault/0x0993Ae24a988c6925d80aD61344a76B81aA0D34c/steakhouse-eth", 
           "https://app.morpho.org/unichain/market/0x665c97ec413f4371e1c30c71153757e9b9144dfbe4284a3e910f85dedba6527d/wsteth-weth",
-          "https://oracles.euler.finance/130/",
+          "https://oracles.euler.finance/130/"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{chain: "Unichain"}]
       },
     ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
-    listedAt: 1747736199,
+    listedAt: 1747736199
   },
   {
     id: "6213",
@@ -15003,7 +14764,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "tulip-capital/index.js",
     twitter: "tulipacapital",
-    listedAt: 1747736624,
+    listedAt: 1747736624
   },
   {
     id: "6214",
@@ -15023,7 +14784,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "AIDApp/index.js",
     twitter: "aidappcom",
-    listedAt: 1747803309,
+    listedAt: 1747803309
   },
   {
     id: "6215",
@@ -15043,7 +14804,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "alterscope/index.js",
     twitter: "Alterscope",
-    listedAt: 1747803319,
+    listedAt: 1747803319
   },
   {
     id: "6216",
@@ -15063,11 +14824,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "revert-lend/index.js",
     twitter: "revertfinance",
-    audit_links: [
-      "https://docs.revert.finance/revert/resources/security#revert-lend-v3utils-v1.1-auto-compound-auto-exit-and-auto-range-v3",
-    ],
+    audit_links: ["https://docs.revert.finance/revert/resources/security#revert-lend-v3utils-v1.1-auto-compound-auto-exit-and-auto-range-v3"],
     parentProtocol: "parent#revert",
-    listedAt: 1747803327,
+    listedAt: 1747803327
   },
   {
     id: "6217",
@@ -15089,7 +14848,7 @@ const data4: Protocol[] = [
     twitter: "silentdao_",
     treasury: "silent-protocol.js",
     audit_links: ["https://silent-protocol.gitbook.io/silent-protocol-1/miscellaneous/audits-and-security"],
-    listedAt: 1747865417,
+    listedAt: 1747865417
   },
   {
     id: "6218",
@@ -15110,7 +14869,7 @@ const data4: Protocol[] = [
     module: "spice-protocol/index.js",
     twitter: "SpiceProtocol",
     github: ["spice-protocol"],
-    listedAt: 1747867094,
+    listedAt: 1747867094
   },
   {
     id: "6219",
@@ -15130,7 +14889,7 @@ const data4: Protocol[] = [
     module: "voltage-lending/index.js",
     twitter: "voltfinance",
     parentProtocol: "parent#voltage",
-    listedAt: 1747867101,
+    listedAt: 1747867101
   },
   {
     id: "6220",
@@ -15150,7 +14909,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "goldenasset/index.js",
     twitter: "GLDSWN",
-    listedAt: 1747867109,
+    listedAt: 1747867109
   },
   {
     id: "6221",
@@ -15170,7 +14929,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["182"],
     module: "lis/index.js",
     twitter: "impactstake",
-    listedAt: 1747922925,
+    listedAt: 1747922925
   },
   // {
   //   id: "6222",
@@ -15207,15 +14966,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Avalanche"],
-    oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] },
-    ],
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     forkedFrom: [],
     module: "avant/index.js",
     twitter: "avantprotocol",
     parentProtocol: "parent#avant-protocol",
     audit_links: ["https://docs.avantprotocol.com/security/audits"],
-    listedAt: 1747939430,
+    listedAt: 1747939430
   },
   {
     id: "6224",
@@ -15277,7 +15034,7 @@ const data4: Protocol[] = [
     twitter: "Rho_xyz",
     audit_links: ["https://audits.oxor.io/reports/-NsF0vIwYyzQJhrgL2nf"],
     parentProtocol: "parent#rho",
-    listedAt: 1747966841,
+    listedAt: 1747966841
   },
   {
     id: "6227",
@@ -15299,7 +15056,7 @@ const data4: Protocol[] = [
     twitter: "Rho_xyz",
     audit_links: ["https://audits.oxor.io/reports/-NsF0vIwYyzQJhrgL2nf"],
     parentProtocol: "parent#rho",
-    listedAt: 1747966849,
+    listedAt: 1747966849
   },
   {
     id: "6228",
@@ -15320,7 +15077,7 @@ const data4: Protocol[] = [
     module: "p2p-lending/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
-    listedAt: 1747967378,
+    listedAt: 1747967378
   },
   {
     id: "6229",
@@ -15348,8 +15105,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://panoptic.xyz",
-    description:
-      "Panoptic is the first on-chain, permissionless options protocol, revolutionizing trading and liquidity provision.",
+    description: "Panoptic is the first on-chain, permissionless options protocol, revolutionizing trading and liquidity provision.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/panoptic-v1.1.jpg`,
     audits: "2",
@@ -15363,7 +15119,7 @@ const data4: Protocol[] = [
     twitter: "Panoptic_xyz",
     audit_links: ["https://panoptic.xyz/docs/security/security_audits"],
     parentProtocol: "parent#panoptic",
-    listedAt: 1748034447,
+    listedAt: 1748034447
   },
   {
     id: "6231",
@@ -15383,7 +15139,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "omniswap/index.js",
     twitter: "Omnipumpdotio",
-    listedAt: 1748034612,
+    listedAt: 1748034612
   },
   {
     id: "6232",
@@ -15418,48 +15174,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Base",
-      "Avalanche",
-      "Binance",
-      "Sonic",
-      "Blast",
-      "Swellchain",
-      "Abstract",
-      "Berachain",
-      "Scroll",
-      "xDai",
-      "Soneium",
-      "Aurora",
-      "Sei",
-      "Fuse",
-      "Unichain",
-      "zkSync Era",
-      "ApeChain",
-      "Cronos",
-      "Evmos",
-      "Velas",
-      "Taiko",
-      "Superposition",
-      "RSK",
-      "Moonbeam",
-      "Moonriver",
-      "Boba",
-      "Celo",
-      "Mantle",
-      "Ink",
-      "Gravity",
-      "Polygon zkEVM",
-      "Fraxtal",
-      "Fantom",
-      "Lisk",
-      "Metis",
-      "Mode",
-    ],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Sonic", "Blast", "Swellchain", "Abstract", "Berachain", "Scroll", "xDai", "Soneium", "Aurora", "Sei", "Fuse", "Unichain", "zkSync Era", "ApeChain", "Cronos", "Evmos", "Velas", "Taiko", "Superposition", "RSK", "Moonbeam", "Moonriver", "Boba", "Celo", "Mantle", "Ink", "Gravity", "Polygon zkEVM", "Fraxtal", "Fantom", "Lisk", "Metis", "Mode"],
     module: "dummy.js",
     twitter: "lifiprotocol",
     forkedFrom: [],
@@ -15484,7 +15199,7 @@ const data4: Protocol[] = [
     module: "zoomex-cex/index.js",
     twitter: "ZoomexOfficial",
     forkedFrom: [],
-    listedAt: 1748270471,
+    listedAt: 1748270471
   },
   {
     id: "6235",
@@ -15575,7 +15290,7 @@ const data4: Protocol[] = [
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
-    listedAt: 1748362857,
+    listedAt: 1748362857
   },
   {
     id: "6239",
@@ -15619,14 +15334,14 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://usefelix.gitbook.io/docs/advanced/risk-management#redstone-oracles"],
-      },
+        proof: ["https://usefelix.gitbook.io/docs/advanced/risk-management#redstone-oracles"]
+      }
     ],
     parentProtocol: "parent#felix",
     listedAt: 1748421637,
     tokensExcludedFromParent: {
-      "Hyperliquid L1": ["USDHL"],
-    },
+      "Hyperliquid L1": ["USDHL"]
+    }
   },
   {
     id: "6241",
@@ -15647,7 +15362,7 @@ const data4: Protocol[] = [
     twitter: "superseedfi",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#seedfi",
-    listedAt: 1748423362,
+    listedAt: 1748423362
   },
   {
     id: "6242",
@@ -15675,7 +15390,7 @@ const data4: Protocol[] = [
     ],
     forkedFrom: [],
     parentProtocol: "parent#seedfi",
-    listedAt: 1748423362,
+    listedAt: 1748423362
   },
   {
     id: "6243",
@@ -15683,8 +15398,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "BERA",
     url: "https://www.berachain.com/",
-    description:
-      "Tracks bribes paid by protocols in Berachain's PoL system to attract BGT delegation, based on on-chain incentive distribution events.",
+    description: "Tracks bribes paid by protocols in Berachain's PoL system to attract BGT delegation, based on on-chain incentive distribution events.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/berachain-bribes.jpg`,
     audits: "0",
@@ -15717,25 +15431,19 @@ const data4: Protocol[] = [
       {
         name: "Stork",
         type: "Primary",
-        proof: [
-          "https://docs.bima.money/security/mainnet-addresses",
-          "https://github.com/DefiLlama/defillama-server/pull/10068",
-        ],
-        chains: [{ chain: "Hemi" }, { chain: "CORE" }, { chain: "Goat" }],
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Hemi" }, { chain: "CORE" }, { chain: "Goat" }]
       },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: [
-          "https://docs.bima.money/security/mainnet-addresses",
-          "https://github.com/DefiLlama/defillama-server/pull/10068",
-        ],
-        chains: [{ chain: "Ethereum" }, { chain: "Binance" }, { chain: "Sonic" }],
-      },
+        proof: ["https://docs.bima.money/security/mainnet-addresses", "https://github.com/DefiLlama/defillama-server/pull/10068"],
+        chains: [{ chain: "Ethereum" }, { chain: "Binance" }, { chain: "Sonic" },]
+      }
     ],
     module: "bima-labs-cdp/index.js",
     twitter: "BimaBTC",
-    listedAt: 1748465209,
+    listedAt: 1748465209
   },
   {
     id: "6245",
@@ -15743,8 +15451,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://infinifi.xyz/",
-    description:
-      "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure—on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers superior yields to depositors without increasing systemic risk. Founded in 2024, infiniFi is backed by top Web3 investors and is integrated with major protocols like AAVE, Pendle, and Ethena.",
+    description: "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure—on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers superior yields to depositors without increasing systemic risk. Founded in 2024, infiniFi is backed by top Web3 investors and is integrated with major protocols like AAVE, Pendle, and Ethena.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/infinifi.jpg`,
     audits: "2",
@@ -15760,9 +15467,9 @@ const data4: Protocol[] = [
     audit_links: [
       "https://docsend.com/view/vxet6fdzgb6zhfnn",
       "https://docsend.com/view/qtz5tmdi35d7f5si",
-      "https://docsend.com/view/8nw9dtr9qhssndzw",
+      "https://docsend.com/view/8nw9dtr9qhssndzw"
     ],
-    listedAt: 1748465947,
+    listedAt: 1748465947
   },
   {
     id: "6246",
@@ -15770,8 +15477,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://amm.skatechain.org/swap",
-    description:
-      "The Skate AMM is Skate's flagship product that enables a shared liquidity pool across different blockchain ecosystems, agnostic of their underlying VM environments, creating a unified pricing curve.",
+    description: "The Skate AMM is Skate's flagship product that enables a shared liquidity pool across different blockchain ecosystems, agnostic of their underlying VM environments, creating a unified pricing curve.",
     chain: "Skate",
     logo: `${baseIconsUrl}/skate-amm.jpg`,
     audits: "0",
@@ -15783,7 +15489,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "skate-amm/index.js",
     twitter: "skate_chain",
-    listedAt: 1748466187,
+    listedAt: 1748466187
   },
   {
     id: "6247",
@@ -15791,8 +15497,7 @@ const data4: Protocol[] = [
     address: "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
     symbol: "ASF",
     url: "https://usdaf.asymmetry.finance/",
-    description:
-      "USDaf is a synthetic stablecoin by Asymmetry Finance allowing users to open CDPs with BTC and yield-bearing stablecoins to borrow fixed-rate, immutable loans.",
+    description: "USDaf is a synthetic stablecoin by Asymmetry Finance allowing users to open CDPs with BTC and yield-bearing stablecoins to borrow fixed-rate, immutable loans.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/asymmetry-usdaf.jpg`,
     audits: "0",
@@ -15806,7 +15511,7 @@ const data4: Protocol[] = [
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
     parentProtocol: "parent#asymmetry",
-    listedAt: 1748466717,
+    listedAt: 1748466717
   },
   {
     id: "6248",
@@ -15814,8 +15519,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://liq.ag/",
-    description:
-      "Liquid Agents LST is a platform in the Sui ecosystem that leverages AI agents to manage liquid staking tokens, automating asset allocation and optimizing yields while ensuring continuous liquidity for users.",
+    description: "Liquid Agents LST is a platform in the Sui ecosystem that leverages AI agents to manage liquid staking tokens, automating asset allocation and optimizing yields while ensuring continuous liquidity for users.",
     chain: "Sui",
     logo: `${baseIconsUrl}/liquid-agents.jpg`,
     audits: "0",
@@ -15828,7 +15532,7 @@ const data4: Protocol[] = [
     module: "liquidagents/index.js",
     twitter: "LiqAgLST",
     github: ["JugemuAI"],
-    listedAt: 1748466723,
+    listedAt: 1748466723
   },
   {
     id: "6249",
@@ -15836,8 +15540,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.beraji.com/",
-    description:
-      "JIKO is a yield optimizer powering a PvP idle card game. With single-staked pools, we maximize yields via Proof of Liquidity (PoL) on Berachain, making finance both fun and profitable",
+    description: "JIKO is a yield optimizer powering a PvP idle card game. With single-staked pools, we maximize yields via Proof of Liquidity (PoL) on Berachain, making finance both fun and profitable",
     chain: "Berachain",
     logo: `${baseIconsUrl}/jiko.png`,
     audits: "2",
@@ -15851,9 +15554,9 @@ const data4: Protocol[] = [
     twitter: "Jikofunfinance",
     audit_links: [
       "https://github.com/shieldify-security/audits-portfolio/blob/main/reports/Beraji-KO-Security-Review.pdf",
-      "https://drive.google.com/file/d/1tFJoTo-qdlND-1m7cdwAFKkd_M4TfHyR/view",
+      "https://drive.google.com/file/d/1tFJoTo-qdlND-1m7cdwAFKkd_M4TfHyR/view"
     ],
-    listedAt: 1748531889,
+    listedAt: 1748531889
   },
   {
     id: "6250",
@@ -15884,8 +15587,7 @@ const data4: Protocol[] = [
     address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
     symbol: "YFI",
     url: "https://yearn.fi/",
-    description:
-      "Yearn Finance is DeFi's premier yield aggregator. Giving individuals, DAOs and other protocols a way to deposit digital assets and receive yield",
+    description: "Yearn Finance is DeFi's premier yield aggregator. Giving individuals, DAOs and other protocols a way to deposit digital assets and receive yield",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yearn-curating.jpg`,
     audits: "0",
@@ -15898,7 +15600,7 @@ const data4: Protocol[] = [
     module: "yearn-curating/index.js",
     twitter: "yearnfi",
     parentProtocol: "parent#yearn",
-    listedAt: 1748533355,
+    listedAt: 1748533355
   },
   {
     id: "6252",
@@ -15925,8 +15627,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://vetrade.vet/swap",
-    description:
-      "VeTrade is VeChain’s first DEX aggregator and limit order platform, routing trades across all pools to secure the best on-chain price for users",
+    description: "VeTrade is VeChain’s first DEX aggregator and limit order platform, routing trades across all pools to secure the best on-chain price for users",
     chain: "VeChain",
     logo: `${baseIconsUrl}/vetrade.jpg`,
     audits: "0",
@@ -15945,8 +15646,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.mintpark.io/",
-    description:
-      "NFT marketplace built for Bitcoin L2 networks. launching, trading, and bridging NFTs across BTC L2 networks",
+    description: "NFT marketplace built for Bitcoin L2 networks. launching, trading, and bridging NFTs across BTC L2 networks",
     chain: "Hemi",
     logo: `${baseIconsUrl}/mint-park.jpg`,
     audits: "0",
@@ -15979,7 +15679,7 @@ const data4: Protocol[] = [
     module: "hybra-v2/index.js",
     twitter: "HybraFinance",
     parentProtocol: "parent#hybra",
-    listedAt: 1748622421,
+    listedAt: 1748622421
   },
   {
     id: "6256",
@@ -15987,8 +15687,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bitcoinbridge.app/",
-    description:
-      "BitcoinBridge.app is a web app that lets users transfer assets between Ethereum and Bitcoin by connecting their wallets and initiating cross-chain transactions",
+    description: "BitcoinBridge.app is a web app that lets users transfer assets between Ethereum and Bitcoin by connecting their wallets and initiating cross-chain transactions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bitcoinbridge.app.jpg`,
     audits: "0",
@@ -16044,7 +15743,7 @@ const data4: Protocol[] = [
     twitter: "SuiRewardsMe",
     audit_links: [
       "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewards.me.pdf",
-      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewardsMe_%24SRM.pdf",
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewardsMe_%24SRM.pdf"
     ],
     listedAt: 1748884884,
   },
@@ -16077,7 +15776,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://reachme.io/",
-    description: "ReachMe is a BSC project connecting fans with KOLs through paid messaging",
+    description:
+      "ReachMe is a BSC project connecting fans with KOLs through paid messaging",
     chain: "Binance",
     logo: `${baseIconsUrl}/reachme.jpg`,
     audits: "0",
@@ -16111,7 +15811,7 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14883"],
-      },
+      }
     ],
     forkedFrom: [],
     module: "drefinance/index.js",
@@ -16168,7 +15868,8 @@ const data4: Protocol[] = [
     address: "0x9ad37205d608B8b219e6a2573f922094CEc5c200",
     symbol: "IZI",
     url: "https://izumi.finance/trade/swap",
-    description: "A decentralized exchange on Plume Mainnet",
+    description:
+      "A decentralized exchange on Plume Mainnet",
     chain: "Plume Mainnet",
     logo: `${baseIconsUrl}/iziswap-classic.jpg`,
     audits: "0",
@@ -16189,7 +15890,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.zerobase.pro/",
-    description: "ZEROBASE introduces the first zk-powered staking product on stablecoins",
+    description:
+      "ZEROBASE introduces the first zk-powered staking product on stablecoins",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zerobase-cedefi.jpg`,
     audits: "2",
@@ -16204,8 +15906,8 @@ const data4: Protocol[] = [
     listedAt: 1749017141,
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ZeroBase-Vault-v1.0.pdf",
-      "https://github.com/Salusec/Salus-audit/blob/main/2024/ZeroBase_report_2024-12-24.pdf",
-    ],
+      "https://github.com/Salusec/Salus-audit/blob/main/2024/ZeroBase_report_2024-12-24.pdf"
+    ]
   },
   {
     id: "6266",
@@ -16267,13 +15969,15 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "granite/index.js",
     twitter: "GraniteBTC",
-    audit_links: ["https://github.com/GraniteProtocol/core-v1/tree/master/audits"],
+    audit_links: [
+      "https://github.com/GraniteProtocol/core-v1/tree/master/audits"
+    ],
     oraclesBreakdown: [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14908"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14908"]
+      }
     ],
     listedAt: 1749019047,
   },
@@ -16300,8 +16004,8 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://docs.sypher.finance/#id-4.-minimal-price-impact-with-chainlink-oracles"],
-      },
+        proof: ["https://docs.sypher.finance/#id-4.-minimal-price-impact-with-chainlink-oracles"]
+      }
     ],
     listedAt: 1749019352,
   },
@@ -16326,8 +16030,8 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14915"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14915"]
+      }
     ],
     module: "indx/index.js",
     twitter: "indxsapp",
@@ -16339,7 +16043,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "HDX",
     url: "https://hydration.net/",
-    description: "Hydration Lending is a decentralized lending protocol on Hydration.",
+    description:
+      "Hydration Lending is a decentralized lending protocol on Hydration.",
     chain: "HydraDX",
     logo: `${baseIconsUrl}/hydration-lending.jpg`,
     audits: "0",
@@ -16356,11 +16061,8 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: [
-          "https://hydration.subsquare.io/treasury/proposals/23",
-          "https://github.com/DefiLlama/defillama-server/pull/10142",
-        ],
-      },
+        proof: ["https://hydration.subsquare.io/treasury/proposals/23", "https://github.com/DefiLlama/defillama-server/pull/10142"]
+      }
     ],
   },
   {
@@ -16404,7 +16106,7 @@ const data4: Protocol[] = [
     module: "swirl/index.js",
     twitter: "swirlstake",
     audit_links: [
-      "https://3016215816-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FabhwBr1MputApDFLHjT8%2Fuploads%2FvigeoQRK0tfHNpJqrp9F%2Fsmart-contract-audit-hacken.pdf?alt=media&token=884173a9-df69-419b-bde5-ff71ae0b4279",
+      "https://3016215816-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FabhwBr1MputApDFLHjT8%2Fuploads%2FvigeoQRK0tfHNpJqrp9F%2Fsmart-contract-audit-hacken.pdf?alt=media&token=884173a9-df69-419b-bde5-ff71ae0b4279"
     ],
     listedAt: 1749156585,
   },
@@ -16499,7 +16201,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.nebulalending.io/",
-    description: "Nebula is the leading lending protocol built on Nibiru Chain designed to maximize your asset value",
+    description:
+      "Nebula is the leading lending protocol built on Nibiru Chain designed to maximize your asset value",
     chain: "Nibiru",
     logo: `${baseIconsUrl}/nebula-lending.jpg`,
     audits: "0",
@@ -16519,7 +16222,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.yieldoor.com/",
-    description: "Platform for Leveraged Yield Farming",
+    description:
+      "Platform for Leveraged Yield Farming",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yieldoor.jpg`,
     audits: "2",
@@ -16532,12 +16236,14 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14830"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14830"]
+      }
     ],
     module: "yieldoor/index.js",
     twitter: "YieldoorFi",
-    audit_links: ["https://audits.sherlock.xyz/contests/791"],
+    audit_links: [
+      "https://audits.sherlock.xyz/contests/791"
+    ],
     listedAt: 1749247235,
   },
   {
@@ -16546,7 +16252,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://taraperps.com/",
-    description: "Perpetual Exchange on Taraxa",
+    description:
+      "Perpetual Exchange on Taraxa",
     chain: "Taraxa",
     logo: `${baseIconsUrl}/taraperps.jpg`,
     audits: "0",
@@ -16559,8 +16266,8 @@ const data4: Protocol[] = [
       {
         name: "Stork",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14942"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14942"]
+      }
     ],
     forkedFromIds: ["337"],
     module: "taraperps/index.js",
@@ -16587,7 +16294,7 @@ const data4: Protocol[] = [
     module: "Atlantis-algebra/index.js",
     twitter: "atlantisonsonic",
     audit_links: [
-      "https://3468129680-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKboRABceyMllFm7vMRLZ%2Fuploads%2FschKQ6l6avq9x3Aldvfd%2FBailsec%20-%20Atlantis%20-%20Final%20Report.pdf?alt=media&token=522bce14-bf50-44ce-bad4-48cd92108d83",
+      "https://3468129680-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FKboRABceyMllFm7vMRLZ%2Fuploads%2FschKQ6l6avq9x3Aldvfd%2FBailsec%20-%20Atlantis%20-%20Final%20Report.pdf?alt=media&token=522bce14-bf50-44ce-bad4-48cd92108d83"
     ],
     listedAt: 1749247251,
   },
@@ -16597,7 +16304,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://letsbonk.fun/",
-    description: "Meme token launchpad",
+    description:
+      "Meme token launchpad",
     chain: "Solana",
     logo: `${baseIconsUrl}/letsbonk.fun.jpg`,
     audits: "0",
@@ -16610,10 +16318,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "bonk_fun",
     hallmarks: [
-      [
-        1749513600,
-        "BuyBack and burn increased from 35% to 50% of total revenue, Letsbonk share increased from 45% to 60%",
-      ], // https://x.com/bonk_fun/status/1932242245970747708
+      [1749513600, 'BuyBack and burn increased from 35% to 50% of total revenue, Letsbonk share increased from 45% to 60%'], // https://x.com/bonk_fun/status/1932242245970747708
     ],
   },
   {
@@ -16636,7 +16341,7 @@ const data4: Protocol[] = [
     module: "bookusd/index.js",
     twitter: "BookMemeBsc",
     audit_links: [
-      "https://github.com/BookMemeBsc/bookusd-contracts/blob/main/PeckShield-Audit-Report-BookUSD-v1.0.pdf",
+      "https://github.com/BookMemeBsc/bookusd-contracts/blob/main/PeckShield-Audit-Report-BookUSD-v1.0.pdf"
     ],
     listedAt: 1749412532,
   },
@@ -16665,8 +16370,7 @@ const data4: Protocol[] = [
     address: "ink:0x0c5e2d1c98cd265c751e02f8f3293bc5764f9111",
     symbol: "SHROOMY",
     url: "https://app.shroomy.io/",
-    description:
-      "Shroomy Protocol is a decentralized, non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn passive income, while borrowers can borrow in an overcollateralized manner.",
+    description: "Shroomy Protocol is a decentralized, non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn passive income, while borrowers can borrow in an overcollateralized manner.",
     chain: "Ink",
     logo: `${baseIconsUrl}/shroomy-protocol.jpg`,
     audits: "2",
@@ -16680,12 +16384,14 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14988"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14988"]
+      }
     ],
     module: "shroomy-protocol/index.js",
     twitter: "ShroomyProject",
-    audit_links: ["https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"],
+    audit_links: [
+      "https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"
+    ],
     listedAt: 1749484357,
   },
   {
@@ -16717,8 +16423,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://realtyx.co/",
-    description:
-      "RealtyX is building an RWAfi platform that brings real estate onchain, offering yield-generating opportunities backed by real assets and connecting users to RWA, DeFi, and Web3 with improved capital efficiency.",
+    description: "RealtyX is building an RWAfi platform that brings real estate onchain, offering yield-generating opportunities backed by real assets and connecting users to RWA, DeFi, and Web3 with improved capital efficiency.",
     chain: "Base",
     logo: `${baseIconsUrl}/realtyx.jpg`,
     audits: "2",
@@ -16805,7 +16510,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://thevault.finance/dapp/unstakePool/",
-    description: "Earn yield without staking SOL by providing liquidity to our instant unstake pool",
+    description:
+      "Earn yield without staking SOL by providing liquidity to our instant unstake pool",
     chain: "Solana",
     logo: `${baseIconsUrl}/the-vault-unstake-pool.jpg`,
     audits: "0",
@@ -16872,7 +16578,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.gliquid.xyz/swap",
-    description: "Next-Gen V4 AMM unlocking hyper-efficient liquidity on Hyperliquid L1",
+    description:
+      "Next-Gen V4 AMM unlocking hyper-efficient liquidity on Hyperliquid L1",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/gliquid.jpg`,
     audits: "2",
@@ -16978,7 +16685,7 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
-      },
+      }
     ],
     audit_links: ["https://github.com/ambitlabsxyz/hyperdrive-audits"],
     listedAt: 1749840745,
@@ -17029,17 +16736,14 @@ const data4: Protocol[] = [
         name: "eOracle",
         type: "Primary",
         proof: ["https://rezerve.gitbook.io/protocol/security/oracles"],
-        endDate: "2025-08-12",
+        endDate: '2025-08-12',
       },
       {
         name: "DIA",
         type: "Primary",
-        proof: [
-          "https://rezerve.gitbook.io/protocol/security/oracles",
-          "https://github.com/DefiLlama/defillama-server/pull/10385",
-        ],
-        startDate: "2025-08-12",
-      },
+        proof: ["https://rezerve.gitbook.io/protocol/security/oracles","https://github.com/DefiLlama/defillama-server/pull/10385"],
+        startDate: '2025-08-12',
+      }
     ],
     audit_links: ["https://rezerve.gitbook.io/protocol/security/audits"],
     github: ["rezervemoney"],
@@ -17051,7 +16755,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://oxium.xyz/",
-    description: "Capital-efficient and modular CLOB DEX",
+    description:
+      "Capital-efficient and modular CLOB DEX",
     chain: "Sei",
     logo: `${baseIconsUrl}/oxium.jpg`,
     audits: "3",
@@ -17109,7 +16814,7 @@ const data4: Protocol[] = [
         name: "Morpher",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15067"],
-      },
+      }
     ],
     twitter: "ilisdao",
     forkedFromIds: [],
@@ -17141,7 +16846,7 @@ const data4: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15063"],
-      },
+      }
     ],
     listedAt: 1749936061,
   },
@@ -17165,7 +16870,7 @@ const data4: Protocol[] = [
     treasury: "request-network.js",
     twitter: "RequestNetwork",
     forkedFromIds: [],
-    listedAt: 1750064824,
+    listedAt: 1750064824
   },
   {
     id: "6306",
@@ -17187,7 +16892,7 @@ const data4: Protocol[] = [
     treasury: "realms.js",
     twitter: "LootRealms",
     forkedFromIds: [],
-    listedAt: 1750065734,
+    listedAt: 1750065734
   },
   {
     id: "6307",
@@ -17195,7 +16900,8 @@ const data4: Protocol[] = [
     address: "sonic:0xc263D9B606F1551950a712D66A5F5e7dEBe3AEfa",
     symbol: "GLOOM",
     url: "https://www.gloom.finance",
-    description: "Liquidity marketplace on Sonic",
+    description:
+      "Liquidity marketplace on Sonic",
     chain: "Sonic",
     logo: `${baseIconsUrl}/gloom-finance.jpg`,
     audits: "0",
@@ -17207,7 +16913,7 @@ const data4: Protocol[] = [
     module: "gloom/index.js",
     twitter: "GloomOnSonic",
     forkedFromIds: ["2197"],
-    listedAt: 1750066146,
+    listedAt: 1750066146
   },
   {
     id: "6308",
@@ -17229,7 +16935,7 @@ const data4: Protocol[] = [
     twitter: "PoweredByNEXUS",
     forkedFromIds: ["2197"],
     github: ["nexusportal"],
-    listedAt: 1750066218,
+    listedAt: 1750066218
   },
   /*{
     id: "6309",
@@ -17273,7 +16979,7 @@ const data4: Protocol[] = [
     module: "tezos-btc/index.js",
     twitter: "tzBTC_io",
     forkedFromIds: [],
-    listedAt: 1750066318,
+    listedAt: 1750066318
   },
   {
     id: "6311",
@@ -17294,7 +17000,7 @@ const data4: Protocol[] = [
     module: "jolt/index.js",
     twitter: "jolt_finance",
     forkedFromIds: ["111"],
-    listedAt: 1750066518,
+    listedAt: 1750066518
   },
   {
     id: "6312",
@@ -17302,8 +17008,7 @@ const data4: Protocol[] = [
     address: "injective:factory/inj1etz0laas6h7vemg3qtd67jpr6lh8v7xz7gfzqw/hdro",
     symbol: "HDRO",
     url: "https://app.hydroprotocol.finance/lending",
-    description:
-      "Hydro Lending is a decentralized, non-custodial money market built on the Injective Network and part of the Hydro Protocol DeFi suite",
+    description: "Hydro Lending is a decentralized, non-custodial money market built on the Injective Network and part of the Hydro Protocol DeFi suite",
     chain: "Injective",
     logo: `${baseIconsUrl}/hydro-lending.jpg`,
     audits: "0",
@@ -17316,7 +17021,7 @@ const data4: Protocol[] = [
     module: "hydro-lending/index.js",
     twitter: "hydro_fi",
     parentProtocol: "parent#hydro-protocol",
-    listedAt: 1750086961,
+    listedAt: 1750086961
   },
   {
     id: "6313",
@@ -17325,8 +17030,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.nemoprotocol.com/",
-    description:
-      "Nemo enables yield trading by splitting yield-bearing assets into principal and yield components. This lets users lock in fixed yields, speculate on future yield rates, or provide liquidity to earn fees — all while maintaining full composability with the DeFi ecosystem.",
+    description: "Nemo enables yield trading by splitting yield-bearing assets into principal and yield components. This lets users lock in fixed yields, speculate on future yield rates, or provide liquidity to earn fees — all while maintaining full composability with the DeFi ecosystem.",
     chain: "Sui",
     logo: `${baseIconsUrl}/nemo-yield-trading.jpg`,
     audits: "2",
@@ -17340,7 +17044,7 @@ const data4: Protocol[] = [
     twitter: "Nemoprotocol",
     audit_links: ["https://movebit.xyz/reports/20250217-Nemo-Final-Audit-Report.pdf"],
     parentProtocol: "parent#nemo",
-    listedAt: 1750092892,
+    listedAt: 1750092892
   },
   {
     id: "6314",
@@ -17348,8 +17052,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.denario.swiss",
-    description:
-      "Denario Silver (DSC) is a digital token that represents direct, legally secured co-ownership of real physical silver. Each token is backed 1:1 by one ounce of 999.9-purity silver granules stored in high-security, duty-free Swiss vaults.",
+    description: "Denario Silver (DSC) is a digital token that represents direct, legally secured co-ownership of real physical silver. Each token is backed 1:1 by one ounce of 999.9-purity silver granules stored in high-security, duty-free Swiss vaults.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/denario.jpg`,
     audits: "0",
@@ -17367,9 +17070,9 @@ const data4: Protocol[] = [
         name: "DIA",
         type: "Primary",
         proof: ["https://polygonscan.com/token/0x5D4E735784293a0A8D37761AD93C13A0DD35c7E7#readProxyContract#F13"],
-      },
+      }
     ],
-    listedAt: 1750166486,
+    listedAt: 1750166486
   },
   {
     id: "6315",
@@ -17378,8 +17081,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "vltCORE",
     url: "https://vaultlayer.xyz/",
-    description:
-      "VaultLayer enables cross-chain liquidity for Bitcoin staked via CoreDAO, unlocking capital efficiency and optimized yield for the BTCfi ecosystem.",
+    description: "VaultLayer enables cross-chain liquidity for Bitcoin staked via CoreDAO, unlocking capital efficiency and optimized yield for the BTCfi ecosystem.",
     chain: "CORE",
     logo: `${baseIconsUrl}/vaultlayer.jpg`,
     audits: "2",
@@ -17393,7 +17095,7 @@ const data4: Protocol[] = [
     twitter: "VaultLayer",
     github: ["VaultLayer"],
     audit_links: ["https://docs.vaultlayer.xyz/smart-contracts/security-audits"],
-    listedAt: 1750181253,
+    listedAt: 1750181253
   },
   {
     id: "6316",
@@ -17401,8 +17103,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.votre.xyz/",
-    description:
-      "Votre is a next-gen crypto lending platform offering liquidation-free loans with up to 90% LTV and 2–3% rates on Base using cbBTC.",
+    description: "Votre is a next-gen crypto lending platform offering liquidation-free loans with up to 90% LTV and 2–3% rates on Base using cbBTC.",
     chain: "Base",
     logo: `${baseIconsUrl}/votre.jpg`,
     audits: "2",
@@ -17419,11 +17120,11 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14950"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14950"]
+      }
     ],
     audit_links: ["https://github.com/CollarNetworks/protocol-core/tree/develop/audits"],
-    listedAt: 1750181738,
+    listedAt: 1750181738
   },
   {
     id: "6317",
@@ -17431,8 +17132,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xflows.wanchain.org",
-    description:
-      "XFlows is a cross-chain DEX developed by the Wanchain team, combining Uniswap V3's concentrated liquidity features with cross-chain bridge functionality to enable seamless trading across multiple blockchains.",
+    description: "XFlows is a cross-chain DEX developed by the Wanchain team, combining Uniswap V3's concentrated liquidity features with cross-chain bridge functionality to enable seamless trading across multiple blockchains.",
     chain: "Wanchain",
     logo: `${baseIconsUrl}/xflows.jpg`,
     audits: "0",
@@ -17444,7 +17144,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "xflows/index.js",
     twitter: "wanchain_org",
-    listedAt: 1750181745,
+    listedAt: 1750181745
   },
   {
     id: "6318",
@@ -17465,7 +17165,7 @@ const data4: Protocol[] = [
     module: "powerflow-bridge/index.js",
     twitter: "powerflow_titan",
     github: ["titantkx"],
-    listedAt: 1750181751,
+    listedAt: 1750181751
   },
   {
     id: "6319",
@@ -17473,8 +17173,7 @@ const data4: Protocol[] = [
     address: "bsc:0xe11F1D5EEE6BE945BeE3fa20dBF46FeBBC9F4A19",
     symbol: "NUSA",
     url: "https://nusa.io/",
-    description:
-      "Nusa Finance is an all-in-one DeFi platform that lets you trade, swap, and analyze tokens seamlessly across blockchains.",
+    description: "Nusa Finance is an all-in-one DeFi platform that lets you trade, swap, and analyze tokens seamlessly across blockchains.",
     chain: "Binance",
     logo: `${baseIconsUrl}/nusa.jpg`,
     audits: "0",
@@ -17487,9 +17186,9 @@ const data4: Protocol[] = [
     module: "nusa-finance/index.js",
     twitter: "nusa_finance",
     github: ["Nusa-finance"],
-    listedAt: 1750181757,
+    listedAt: 1750181757
   },
-  // { // users dont have custody of assets
+  // { // users dont have custody of assets 
   //   id: "6320",
   //   name: "Bosera USD Money Market ETF",
   //   address: null,
@@ -17516,15 +17215,14 @@ const data4: Protocol[] = [
   //   twitter: null,
   //   audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SlowMist%20Audit%20Report%20-%20Bosera%20USD%20Money%20Market%20ETF.pdf"],
   //   listedAt: 1750202581
-  // },
+  // },  
   {
     id: "6321",
     name: "Stobix",
     address: null,
     symbol: "-",
     url: "https://stobix.com",
-    description:
-      "Trade 200X onchain futures with intelligent assistance. AI Signals from chart analysis, real-time news, and market sentiment.",
+    description: "Trade 200X onchain futures with intelligent assistance. AI Signals from chart analysis, real-time news, and market sentiment.",
     chain: "Base",
     logo: `${baseIconsUrl}/stobix.jpg`,
     audits: "2",
@@ -17538,7 +17236,7 @@ const data4: Protocol[] = [
     twitter: "stobixcom",
     github: ["stobix-com"],
     audit_links: ["https://skynet.certik.com/projects/stobix"],
-    listedAt: 1750202587,
+    listedAt: 1750202587
   },
   {
     id: "6322",
@@ -17546,8 +17244,7 @@ const data4: Protocol[] = [
     address: "sui:0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca",
     symbol: "BLUE",
     url: "https://trade.bluefin.io/swap/",
-    description:
-      "A Sui-native aggregator that routes through a network of DEXs and Bluefin’s RFQ engine, offering users the best rates and the deepest liquidity on the Sui Network",
+    description: "A Sui-native aggregator that routes through a network of DEXs and Bluefin’s RFQ engine, offering users the best rates and the deepest liquidity on the Sui Network",
     chain: "Sui",
     logo: `${baseIconsUrl}/bluefin7k-aggregator.jpg`,
     audits: "0",
@@ -17567,8 +17264,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.avantprotocol.com",
-    description:
-      "Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through DeFi-powered stable-value tokens. The platform introduces avBTC, a bitcoin-pegged token, and savBTC, its staked, yield-bearing counterpart.",
+    description: "Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through DeFi-powered stable-value tokens. The platform introduces avBTC, a bitcoin-pegged token, and savBTC, its staked, yield-bearing counterpart.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/avant-avbtc.jpg`,
     audits: "0",
@@ -17576,15 +17272,13 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator", // since the assets are redeposited into lending (euler) protocols not CEXs
-    oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] },
-    ],
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] }],
     chains: ["Avalanche"],
     module: "avant-avbtc/index.js",
     twitter: "avantprotocol",
     forkedFromIds: [],
     parentProtocol: "parent#avant-protocol",
-    listedAt: 1750202587,
+    listedAt: 1750202587
   },
   {
     id: "6324",
@@ -17592,8 +17286,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://garuda-defi.org",
-    description:
-      "Garuda DeFi is an automated market maker (AMM) built on the Terra Classic blockchain which enables factory token, permissionless pool creation, staking token and farms for earning yield.",
+    description: "Garuda DeFi is an automated market maker (AMM) built on the Terra Classic blockchain which enables factory token, permissionless pool creation, staking token and farms for earning yield.",
     chain: "Terra",
     logo: `${baseIconsUrl}/garudadefi.jpg`,
     audits: "0",
@@ -17605,7 +17298,7 @@ const data4: Protocol[] = [
     module: "garuda-defi/index.js",
     twitter: "garuda_defi",
     forkedFromIds: [],
-    listedAt: 1750260883,
+    listedAt: 1750260883
   },
   {
     id: "6325",
@@ -17613,8 +17306,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.hypercat.exchange/",
-    description:
-      "HyperCat is a decentralized exchange (DEX) built on the Algebra Integral smart contracts. Leveraging a modular architecture powered by Algebra Integral’s V4 AMM, HyperCat enables flexible trading and liquidity management through the use of plugins, with support for custom hooks that will be available to extend on-chain functionality even further",
+    description: "HyperCat is a decentralized exchange (DEX) built on the Algebra Integral smart contracts. Leveraging a modular architecture powered by Algebra Integral’s V4 AMM, HyperCat enables flexible trading and liquidity management through the use of plugins, with support for custom hooks that will be available to extend on-chain functionality even further",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypercat.jpg`,
     audits: "2",
@@ -17628,9 +17320,9 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     audit_links: [
       "https://docs.gamma.xyz/gamma/learn/audits",
-      "https://docs.algebra.finance/algebra-integral-documentation/algebra-integral-technical-reference/audits",
+      "https://docs.algebra.finance/algebra-integral-documentation/algebra-integral-technical-reference/audits"
     ],
-    listedAt: 1750261449,
+    listedAt: 1750261449
   },
   {
     id: "6326",
@@ -17708,7 +17400,7 @@ const data4: Protocol[] = [
     twitter: "hyperbloomxyz",
     forkedFromIds: ["326"],
     audit_links: ["https://github.com/pashov/audits/blob/master/team/pdf/Hyperbloom-security-review_2025-06-24.pdf"],
-    listedAt: 1753371165,
+    listedAt: 1753371165
   },
   {
     id: "6330",
@@ -17716,8 +17408,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.matrixdock.com/home",
-    description:
-      "Launched in 2024, XAUm is a digital gold token issued by Matrixdock. XAUm provides investors with a secure and efficient way to own and trade gold digitally, with each token representing one fine troy ounce of LBMA-certified physical gold securely stored in vaults.",
+    description: "Launched in 2024, XAUm is a digital gold token issued by Matrixdock. XAUm provides investors with a secure and efficient way to own and trade gold digitally, with each token representing one fine troy ounce of LBMA-certified physical gold securely stored in vaults.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/matrixdock-xaum.jpg`,
     audits: "0",
@@ -17730,7 +17421,7 @@ const data4: Protocol[] = [
     twitter: "matrixdock",
     forkedFromIds: [],
     parentProtocol: "parent#matrixdock",
-    listedAt: 1750328350,
+    listedAt: 1750328350
   },
   {
     id: "6331",
@@ -17750,7 +17441,7 @@ const data4: Protocol[] = [
     module: "neptune-lsd/index.js",
     twitter: "Neptune_LSD",
     forkedFromIds: [],
-    listedAt: 1750337147,
+    listedAt: 1750337147
   },
   {
     id: "6332",
@@ -17778,8 +17469,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kgen.io/",
-    description:
-      "KGeN is building the world's largest Verified Distribution Protocol (VeriFi), which is designed to accelerate business growth through real, verified users.",
+    description: "KGeN is building the world's largest Verified Distribution Protocol (VeriFi), which is designed to accelerate business growth through real, verified users.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/kgen.jpg`,
     audits: "0",
@@ -17798,8 +17488,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://gluex.xyz/",
-    description:
-      "GlueX is the semantic and execution layer for DeFi, offering APIs for spot routing, lending, LPing and more — all powered by a network of optimizers and abstracted across 17+ blockchains..",
+    description: "GlueX is the semantic and execution layer for DeFi, offering APIs for spot routing, lending, LPing and more — all powered by a network of optimizers and abstracted across 17+ blockchains..",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gluex.jpg`,
     audits: "0",
@@ -17808,23 +17497,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: [
-      "Ethereum",
-      "Arbitrum",
-      "Base",
-      "xDai",
-      "Binance",
-      "Polygon",
-      "Avalanche",
-      "Optimism",
-      "Blast",
-      "Linea",
-      "Mantle",
-      "Scroll",
-      "Taiko",
-      "Berachain",
-      "Sonic",
-      "Unichain",
-      "Hyperliquid L1",
+      "Ethereum", "Arbitrum", "Base", "xDai", "Binance", "Polygon",
+      "Avalanche", "Optimism", "Blast", "Linea", "Mantle", "Scroll",
+      "Taiko", "Berachain", "Sonic", "Unichain", "Hyperliquid L1"
     ],
     module: "dummy.js",
     twitter: "GluexProtocol",
@@ -17836,8 +17511,7 @@ const data4: Protocol[] = [
     address: "alephium:258k9T6WqezTLdfGvHixXzK1yLATeSPuyhtcxzQ3V2pqV",
     symbol: "ABX",
     url: "https://app.alphbanx.com/",
-    description:
-      "AlphBanX is a decentralized platform that allows you to borrow AlphBanX Dollars by using Alephium native Token (Alph) as collateral. To ensure safety and stability, the system aims to keep the collateral value at least 200% of the amount borrowed.",
+    description: "AlphBanX is a decentralized platform that allows you to borrow AlphBanX Dollars by using Alephium native Token (Alph) as collateral. To ensure safety and stability, the system aims to keep the collateral value at least 200% of the amount borrowed.",
     chain: "Alephium",
     logo: `${baseIconsUrl}/alphbanx.jpg`,
     audits: "2",
@@ -17853,13 +17527,11 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15133"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15133"]
+      }
     ],
-    audit_links: [
-      "https://github.com/InferenceAG/ReportPublications/blob/master/Inference%20AG%20-%20AlphBanX%20on%20Alephium%20-%20v1.0.pdf",
-    ],
-    listedAt: 1750434493,
+    audit_links: ["https://github.com/InferenceAG/ReportPublications/blob/master/Inference%20AG%20-%20AlphBanX%20on%20Alephium%20-%20v1.0.pdf"],
+    listedAt: 1750434493
   },
   {
     id: "6336",
@@ -17868,8 +17540,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "stHSK",
     url: "https://www.hskhodlium.xyz/",
-    description:
-      "A secure, gas-optimized HSK staking platform with flexible staking options, reward mechanisms, and enterprise-grade security features.",
+    description: "A secure, gas-optimized HSK staking platform with flexible staking options, reward mechanisms, and enterprise-grade security features.",
     chain: "HashKey Chain",
     logo: `${baseIconsUrl}/hskhodlium.jpg`,
     audits: "0",
@@ -17881,7 +17552,7 @@ const data4: Protocol[] = [
     module: "hskhodlium/index.js",
     twitter: "HSKChain",
     forkedFromIds: [],
-    listedAt: 1750434503,
+    listedAt: 1750434503
   },
   {
     id: "6337",
@@ -17901,7 +17572,7 @@ const data4: Protocol[] = [
     module: "optfun/index.js",
     twitter: "opt_fun",
     forkedFromIds: [],
-    listedAt: 1750434513,
+    listedAt: 1750434513
   },
   {
     id: "6338",
@@ -17909,8 +17580,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.altitude.fi/",
-    description:
-      "Altitude is a DeFi lending protocol that makes sure users get the best interest rates and uses collateral efficiently to pay down your loan. It focus on keeping borrowing costs low and earning from collateral",
+    description: "Altitude is a DeFi lending protocol that makes sure users get the best interest rates and uses collateral efficiently to pay down your loan. It focus on keeping borrowing costs low and earning from collateral",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/altitude.fi.jpg`,
     audits: "2",
@@ -17926,12 +17596,12 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15154"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15154"]
+      }
     ],
     audit_links: ["https://docs.altitude.fi/smart-contracts/audits#completed-audits"],
     github: ["altitude-fi"],
-    listedAt: 1750434523,
+    listedAt: 1750434523
   },
   {
     id: "6339",
@@ -17939,8 +17609,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://matstake.io/",
-    description:
-      "MatStake is a staking protocol on Matchain that supports both delegate and liquid staking. Users can stake MAT tokens to earn rewards through validator pools or mint stMAT for liquid yield. It features auto-compounding, NFT-owned pools, and flexible unstaking options, enabling secure and efficient staking within the Matchain ecosystem",
+    description: "MatStake is a staking protocol on Matchain that supports both delegate and liquid staking. Users can stake MAT tokens to earn rewards through validator pools or mint stMAT for liquid yield. It features auto-compounding, NFT-owned pools, and flexible unstaking options, enabling secure and efficient staking within the Matchain ecosystem",
     chain: "Matchain",
     logo: `${baseIconsUrl}/matstake.jpg`,
     audits: "2",
@@ -17953,7 +17622,7 @@ const data4: Protocol[] = [
     twitter: "matchain_io",
     forkedFromIds: [],
     audit_links: ["https://docs.matstake.io/#contract-audit"],
-    listedAt: 1750696932,
+    listedAt: 1750696932
   },
   {
     id: "6340",
@@ -17961,8 +17630,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://unitas.so/",
-    description:
-      "Unitas is a decentralized, yield-bearing stablecoin protocol built for the next generation of finance. It issues stablecoins that earn yield natively — no reliance on traditional banks. Powered by Solana, it's fast, scalable, and censorship-resistant",
+    description: "Unitas is a decentralized, yield-bearing stablecoin protocol built for the next generation of finance. It issues stablecoins that earn yield natively — no reliance on traditional banks. Powered by Solana, it's fast, scalable, and censorship-resistant",
     chain: "Solana",
     logo: `${baseIconsUrl}/unitas.jpg`,
     audits: "2",
@@ -17976,7 +17644,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     treasury: "unitas.js",
     audit_links: ["http://github.com/UnipayFi/Audit"],
-    listedAt: 1750434543,
+    listedAt: 1750434543
   },
   {
     id: "6341",
@@ -17984,8 +17652,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.katana.network/krates?p=deposit",
-    description:
-      "Katana Pre-Launch lets users deposit eligible tokens into Yearn vaults to earn randomized reward NFTs called Krates, while securing a pro-rata share of 70M KAT, with deposits remaining user-owned and withdrawable after mainnet",
+    description: "Katana Pre-Launch lets users deposit eligible tokens into Yearn vaults to earn randomized reward NFTs called Krates, while securing a pro-rata share of 70M KAT, with deposits remaining user-owned and withdrawable after mainnet",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/katana-pre-launch.jpg`,
     audits: "0",
@@ -17997,7 +17664,7 @@ const data4: Protocol[] = [
     module: "katana-prelaunch/index.js",
     twitter: "katana",
     forkedFromIds: [],
-    listedAt: 1750619365,
+    listedAt: 1750619365
   },
   {
     id: "6342",
@@ -18006,8 +17673,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "kKAVA",
     url: "https://kavalake.xyz",
-    description:
-      "KavaLake is a liquid staking protocol on Kava EVM that mints kKAVA in exchange for WKAVA. It allows users to earn staking rewards while remaining liquid and composable across DeFi.",
+    description: "KavaLake is a liquid staking protocol on Kava EVM that mints kKAVA in exchange for WKAVA. It allows users to earn staking rewards while remaining liquid and composable across DeFi.",
     chain: "Kava",
     logo: `${baseIconsUrl}/kavalake.jpg`,
     audits: "0",
@@ -18020,7 +17686,7 @@ const data4: Protocol[] = [
     twitter: "LakeKava",
     forkedFromIds: [],
     github: ["kavablue"],
-    listedAt: 1750619885,
+    listedAt: 1750619885
   },
   {
     id: "6343",
@@ -18028,8 +17694,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://stablehodl.com/",
-    description:
-      "StableHodl is a Stablecoin Yield Generation platform powered by HeLa Network. StableHodl leverages funding arbitrage within crypto exchanges to optimize returns and generates yields, rewards stakers with HLUSD, the native stable coin of HeLa network.",
+    description: "StableHodl is a Stablecoin Yield Generation platform powered by HeLa Network. StableHodl leverages funding arbitrage within crypto exchanges to optimize returns and generates yields, rewards stakers with HLUSD, the native stable coin of HeLa network.",
     chain: "HeLa",
     logo: `${baseIconsUrl}/stablehodl.jpg`,
     audits: "0",
@@ -18041,7 +17706,7 @@ const data4: Protocol[] = [
     module: "stablehodl/index.js",
     twitter: "StableHodl",
     forkedFromIds: [],
-    listedAt: 1750697565,
+    listedAt: 1750697565
   },
   {
     id: "6344",
@@ -18049,8 +17714,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://alkimiya.io/",
-    description:
-      "Alkimiya is a decentralized blockspace derivatives protocol that lets users create and trade tokenized contracts based on future blockchain metrics like Bitcoin transaction fees, using bounded payoff structures and on-chain settlement.",
+    description: "Alkimiya is a decentralized blockspace derivatives protocol that lets users create and trade tokenized contracts based on future blockchain metrics like Bitcoin transaction fees, using bounded payoff structures and on-chain settlement.",
     chain: "Base",
     logo: `${baseIconsUrl}/alkimiya.jpg`,
     audits: "0",
@@ -18063,7 +17727,7 @@ const data4: Protocol[] = [
     twitter: "alkimiya_io",
     forkedFromIds: [],
     treasury: "alkimiya.js",
-    listedAt: 1750782967,
+    listedAt: 1750782967
   },
   {
     id: "6345",
@@ -18071,8 +17735,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://trade.volta.markets/",
-    description:
-      "Volta Markets is the flagship Perpetual DEX on Core. Volta is designed to help derivatives traders grow their BTC stack through leverage trading. Users are rewarded with Bitcoin-denominated incentives and Core Ignition Sparks with their engagement. The platform is audited by Halborn and supported by the Core ecosystem partners.",
+    description: "Volta Markets is the flagship Perpetual DEX on Core. Volta is designed to help derivatives traders grow their BTC stack through leverage trading. Users are rewarded with Bitcoin-denominated incentives and Core Ignition Sparks with their engagement. The platform is audited by Halborn and supported by the Core ecosystem partners.",
     chain: "CORE",
     logo: `${baseIconsUrl}/volta-markets.jpg`,
     audits: "0",
@@ -18088,10 +17751,10 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://volta-3.gitbook.io/volta-market/behind-the-scene/price-feeds-and-oracles"],
-      },
+        proof: ["https://volta-3.gitbook.io/volta-market/behind-the-scene/price-feeds-and-oracles"]
+      }
     ],
-    listedAt: 1750783001,
+    listedAt: 1750783001
   },
   {
     id: "6346",
@@ -18099,8 +17762,7 @@ const data4: Protocol[] = [
     address: "arbitrum:0x3D75F2BB8aBcDBd1e27443cB5CBCE8A668046C81",
     symbol: "HLP0",
     url: "https://www.hlp0.to/",
-    description:
-      "Allows users to deposit USDC on Arbitrum in exchange for HLP0, an interest-bearing representation of their HLP shares. HLP0 is natively cross-chain using LayerZero's OFT Standard.",
+    description: "Allows users to deposit USDC on Arbitrum in exchange for HLP0, an interest-bearing representation of their HLP shares. HLP0 is natively cross-chain using LayerZero's OFT Standard.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/hlp0.jpg`,
     audits: "0",
@@ -18112,7 +17774,7 @@ const data4: Protocol[] = [
     module: "hlp0/index.js",
     twitter: "HLP0_to",
     forkedFromIds: [],
-    listedAt: 1750783411,
+    listedAt: 1750783411
   },
   {
     id: "6347",
@@ -18132,7 +17794,7 @@ const data4: Protocol[] = [
     module: "inertia/index.js",
     twitter: "Inertia_fi",
     forkedFromIds: [],
-    listedAt: 1750783907,
+    listedAt: 1750783907
   },
   {
     id: "6348",
@@ -18140,8 +17802,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.kamigotchi.io/",
-    description:
-      "Kamigotchi is a fully on-chain MMORPG where players mint, raise, and interact with NFT virtual pets called Kamis on the Yominet blockchain",
+    description: "Kamigotchi is a fully on-chain MMORPG where players mint, raise, and interact with NFT virtual pets called Kamis on the Yominet blockchain",
     chain: "Yominet",
     logo: `${baseIconsUrl}/kamigotchi.jpg`,
     audits: "0",
@@ -18153,7 +17814,7 @@ const data4: Protocol[] = [
     module: "kamigotchi/index.js",
     twitter: "kamigotchiworld",
     forkedFromIds: [],
-    listedAt: 1750783915,
+    listedAt: 1750783915
   },
   {
     id: "6349",
@@ -18193,7 +17854,7 @@ const data4: Protocol[] = [
     module: "hybra-v3/index.js",
     twitter: "HybraFinance",
     parentProtocol: "parent#hybra",
-    listedAt: 1750812759,
+    listedAt: 1750812759
   },
   {
     id: "6351",
@@ -18201,8 +17862,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mana.win/app/dex",
-    description:
-      "ManaSwap is the decentralized exchange of the Mana ecosystem. Trade bonded tokens from mana.win, stablecoins and more on ManaSwap",
+    description: "ManaSwap is the decentralized exchange of the Mana ecosystem. Trade bonded tokens from mana.win, stablecoins and more on ManaSwap",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/manaswap.jpg`,
     audits: "0",
@@ -18214,7 +17874,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ManaSwap/index.js",
     twitter: "manadotwin",
-    listedAt: 1750885251,
+    listedAt: 1750885251
   },
   {
     id: "6352",
@@ -18234,7 +17894,7 @@ const data4: Protocol[] = [
     audit_links: ["https://tapp-exchange.gitbook.io/tapp-exchange/brand-and-security/audit-report"],
     module: "tapp-exchange/index.js",
     twitter: "TappExchange",
-    listedAt: 1750885257,
+    listedAt: 1750885257
   },
   {
     id: "6353",
@@ -18242,8 +17902,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://weiss.finance",
-    description:
-      "Weiss Finance - Unlock liquidity without selling your assets. Mint DORI, a powerful stablecoin backed by your SUI",
+    description: "Weiss Finance - Unlock liquidity without selling your assets. Mint DORI, a powerful stablecoin backed by your SUI",
     chain: "Sui",
     logo: `${baseIconsUrl}/weiss-finance.jpg`,
     audits: "0",
@@ -18256,23 +17915,23 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
       },
       {
         name: "Stork",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
       },
       {
         name: "Switchboard",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15212"]
+      }
     ],
     module: "weissFinance/index.js",
     twitter: "weiss_fi",
     listedAt: 1750885265,
-    openSource: false,
+    openSource: false
   },
   {
     id: "6354",
@@ -18280,8 +17939,7 @@ const data4: Protocol[] = [
     address: "avax:0x4CB85e39d5622Af604405077A589c3078F3A59b2",
     symbol: "CROC",
     url: "https://crocodile.finance",
-    description:
-      "Crocodile Finance, an Algorithmic Stablecoin where 1 $CROC is equivalent to 1 $AVAX. Algorithmic stablecoins are non-collateralized tokens designed to follow the price of their pegged asset, offering greater capital efficiency than traditional collateralized stablecoins",
+    description: "Crocodile Finance, an Algorithmic Stablecoin where 1 $CROC is equivalent to 1 $AVAX. Algorithmic stablecoins are non-collateralized tokens designed to follow the price of their pegged asset, offering greater capital efficiency than traditional collateralized stablecoins",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/crocodile-finance.jpg`,
     audits: "0",
@@ -18321,8 +17979,7 @@ const data4: Protocol[] = [
     address: "0x744d70fdbe2ba4cf95131626614a1763df805b9e",
     symbol: "SNT",
     url: "https://status.app/",
-    description:
-      "Status is an open-source messaging platform, crypto wallet, and web3 browser focused on privacy and decentralization, built on the Ethereum network",
+    description: "Status is an open-source messaging platform, crypto wallet, and web3 browser focused on privacy and decentralization, built on the Ethereum network",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/status.jpg`,
     audits: "0",
@@ -18343,8 +18000,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "stFUEL",
     url: "https://rig.st/",
-    description:
-      "The Rig is a native liquid staking protocol on Ignition, enabling instant stFUEL issuance for seamless DeFi participation and maximized staking yields",
+    description: "The Rig is a native liquid staking protocol on Ignition, enabling instant stFUEL issuance for seamless DeFi participation and maximized staking yields",
     chain: "Fuel",
     logo: `${baseIconsUrl}/the-rig.jpg`,
     audits: "0",
@@ -18435,7 +18091,7 @@ const data4: Protocol[] = [
     module: "myth-dualSTAKE/index.js",
     twitter: "Myth_Finance",
     github: ["MythFinance"],
-    listedAt: 1751045469,
+    listedAt: 1751045469
   },
   {
     id: "6362",
@@ -18456,7 +18112,7 @@ const data4: Protocol[] = [
     module: "auro-finance/index.js",
     twitter: "AuroFinance_",
     audit_links: ["http://movebit.xyz/reports/20250430-Auro-Finance-Final-Audit-Report.pdf"],
-    listedAt: 1751045483,
+    listedAt: 1751045483
   },
   {
     id: "6363",
@@ -18476,7 +18132,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "crovegas/index.js",
     twitter: "crovegasfun",
-    listedAt: 1751045489,
+    listedAt: 1751045489
   },
   {
     id: "6364",
@@ -18496,7 +18152,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "mineral-vault/index.js",
     twitter: "MineralVault_",
-    listedAt: 1751133823,
+    listedAt: 1751133823
   },
   {
     id: "6365",
@@ -18518,7 +18174,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hydrex",
     twitter: "hydrexfi",
     audit_links: ["https://hydrex.gitbook.io/home/resources/security-and-audits"],
-    listedAt: 1751133829,
+    listedAt: 1751133829
   },
   {
     id: "6366",
@@ -18540,7 +18196,7 @@ const data4: Protocol[] = [
     twitter: "hydrexfi",
     audit_links: ["https://hydrex.gitbook.io/home/resources/security-and-audits"],
     parentProtocol: "parent#hydrex",
-    listedAt: 1751133837,
+    listedAt: 1751133837
   },
   {
     id: "6367",
@@ -18601,7 +18257,7 @@ const data4: Protocol[] = [
     module: "universal/index.js",
     twitter: "universaldotxyz",
     forkedFrom: [],
-    listedAt: 1751297732,
+    listedAt: 1751297732
   },
   {
     id: "6370",
@@ -18621,7 +18277,7 @@ const data4: Protocol[] = [
     module: "moneyfi/index.js",
     twitter: "MoneyFiHub",
     forkedFrom: [],
-    listedAt: 1751311042,
+    listedAt: 1751311042
   },
   {
     id: "6371",
@@ -18641,7 +18297,7 @@ const data4: Protocol[] = [
     module: "terminal-fi-predeposit/index.js",
     twitter: "Terminal_fi",
     forkedFrom: [],
-    listedAt: 1751311049,
+    listedAt: 1751311049
   },
   {
     id: "6372",
@@ -18649,7 +18305,8 @@ const data4: Protocol[] = [
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
     url: "https://ether.fi/",
-    description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
+    description:
+      "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-borrowing-market.fi.jpg`,
     audits: "0",
@@ -18673,7 +18330,8 @@ const data4: Protocol[] = [
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
     url: "https://ether.fi/",
-    description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
+    description:
+      "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-cash-liquid.fi.jpg`,
     audits: "0",
@@ -18726,7 +18384,7 @@ const data4: Protocol[] = [
     chains: ["Story"],
     module: "aria-protocol/index.js",
     twitter: "Aria_Protocol",
-    listedAt: 1751365071,
+    listedAt: 1751365071
   },
   {
     id: "6376",
@@ -18748,7 +18406,7 @@ const data4: Protocol[] = [
     twitter: "MoaiFinance",
     forkedFromIds: ["2197"],
     parentProtocol: "parent#moai-finance",
-    listedAt: 1751364850,
+    listedAt: 1751364850
   },
   {
     id: "6377",
@@ -18770,7 +18428,7 @@ const data4: Protocol[] = [
     twitter: "MoaiFinance",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#moai-finance",
-    listedAt: 1751364850,
+    listedAt: 1751364850
   },
   {
     id: "6378",
@@ -18791,7 +18449,7 @@ const data4: Protocol[] = [
     module: "xstocks/index.js",
     twitter: "xStocksFi",
     forkedFromIds: [],
-    listedAt: 1751380114,
+    listedAt: 1751380114
   },
   {
     id: "6379",
@@ -18812,7 +18470,7 @@ const data4: Protocol[] = [
     module: "cronosbet/index.js",
     twitter: "CronosBetAI",
     forkedFromIds: [],
-    listedAt: 1751380514,
+    listedAt: 1751380514
   },
   {
     id: "6380",
@@ -18820,7 +18478,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://moonshot.com/",
-    description: "The easiest way for anyone to launch a memecoin with Apple Pay",
+    description:
+      "The easiest way for anyone to launch a memecoin with Apple Pay",
     chain: "Solana",
     logo: `${baseIconsUrl}/moonshot-create.jpg`,
     audits: "0",
@@ -18853,7 +18512,7 @@ const data4: Protocol[] = [
     module: "amana-defi/index.js",
     twitter: "Amana_DeFi",
     forkedFromIds: [],
-    listedAt: 1751393433,
+    listedAt: 1751393433
   },
   {
     id: "6382",
@@ -18871,38 +18530,10 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Bridge Aggregator",
     chains: [
-      "Solana",
-      "Ethereum",
-      "Arbitrum",
-      "Base",
-      "Optimism",
-      "Polygon",
-      "Avalanche",
-      "Fantom",
-      "BSC",
-      "Scroll",
-      "Bitcoin",
-      "Binance",
-      "Linea",
-      "Celo",
-      "zkSync Era",
-      "Mode",
-      "Tron",
-      "Zora",
-      "Blast",
-      "Fantom",
-      "Moonriver",
-      "Taiko",
-      "Starknet",
-      "Polygon zkEVM",
-      "Sui",
-      "Cronos",
-      "Noble",
-      "Boba",
-      "Fuse",
-      "xDai",
-      "Harmony",
-      "Moonbeam",
+      "Solana", "Ethereum", "Arbitrum", "Base", "Optimism", "Polygon", "Avalanche", "Fantom",
+      "BSC", "Scroll", "Bitcoin", "Binance", "Linea", "Celo", "zkSync Era", "Mode", "Tron", "Zora", "Blast",
+      "Fantom", "Moonriver", "Taiko", "Starknet", "Polygon zkEVM", "Sui", "Cronos", "Noble", "Boba", "Fuse",
+      "xDai", "Harmony", "Moonbeam"
     ],
     module: "dummy.js",
     twitter: "RangoExchange",
@@ -18915,7 +18546,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hyperiondex.com/",
-    description: "The first Decentralized Exchange on Titan chain",
+    description:
+      "The first Decentralized Exchange on Titan chain",
     chain: "Titan",
     logo: `${baseIconsUrl}/hyperion-dex.jpg`,
     audits: "0",
@@ -18927,7 +18559,7 @@ const data4: Protocol[] = [
     module: "hyperiondex/index.js",
     twitter: null,
     forkedFromIds: [],
-    listedAt: 1751458815,
+    listedAt: 1751458815
   },
   {
     id: "6384",
@@ -18935,7 +18567,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://arch.fi/swap",
-    description: "Deeper liquidity, efficient incentives and lower fees.",
+    description:
+      "Deeper liquidity, efficient incentives and lower fees.",
     chain: "Botanix",
     logo: `${baseIconsUrl}/arch-swap.jpg`,
     audits: "0",
@@ -18947,7 +18580,7 @@ const data4: Protocol[] = [
     module: "arch-fi/index.js",
     twitter: "arch_swap",
     forkedFromIds: ["3710"],
-    listedAt: 1751458815,
+    listedAt: 1751458815
   },
   {
     id: "6385",
@@ -18955,7 +18588,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://unicornx.ai/app/download",
-    description: "The singular trading ecosystem, more than a DEX.",
+    description:
+      "The singular trading ecosystem, more than a DEX.",
     chain: "Solana",
     logo: `${baseIconsUrl}/unicornx.jpg`,
     audits: "0",
@@ -18987,7 +18621,7 @@ const data4: Protocol[] = [
     module: "p2pflip/index.js",
     forkedFromIds: [],
     twitter: null,
-    listedAt: 1751490093,
+    listedAt: 1751490093
   },
   {
     id: "6387",
@@ -19031,10 +18665,10 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [
       "https://github.com/itos-finance/Burve/blob/Dev.20250528/audits/2025.06.18%20-%20Final%20-%20Burve%20Public%20Best%20Efforts%20Audit%20Contest%20Report.pdf",
-      "https://github.com/itos-finance/Burve/blob/Dev.20250528/audits/Itos-security-review_2025-05-24.pdf",
+      "https://github.com/itos-finance/Burve/blob/Dev.20250528/audits/Itos-security-review_2025-05-24.pdf"
     ],
     twitter: "Burve_fi",
-    listedAt: 1751553474,
+    listedAt: 1751553474
   },
   {
     id: "6389",
@@ -19057,7 +18691,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://skynet.certik.com/projects/yieldflow"],
     parentProtocol: "parent#yieldflow",
-    listedAt: 1751554109,
+    listedAt: 1751554109
   },
   {
     id: "6390",
@@ -19079,7 +18713,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "zkp2p",
     github: ["zkp2p"],
-    listedAt: 1751554434,
+    listedAt: 1751554434
   },
   {
     id: "6391",
@@ -19087,7 +18721,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://rddl.fun/",
-    description: "Riddle is the first dedicated meme token launchpad built specifically for the XRPL EVM ecosystem.",
+    description:
+      "Riddle is the first dedicated meme token launchpad built specifically for the XRPL EVM ecosystem.",
     chain: "XRPL EVM",
     logo: `${baseIconsUrl}/riddle.jpg`,
     audits: "0",
@@ -19099,7 +18734,7 @@ const data4: Protocol[] = [
     module: "riddle/index.js",
     forkedFromIds: [],
     twitter: "rddldotfun",
-    listedAt: 1751554664,
+    listedAt: 1751554664
   },
   {
     id: "6392",
@@ -19107,7 +18742,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bagel-finance-omniston.0xbagel.com/",
-    description: "Bagel Finance is a DeFi protocol for index-style portfolio investing on TON.",
+    description:
+      "Bagel Finance is a DeFi protocol for index-style portfolio investing on TON.",
     chain: "TON",
     logo: `${baseIconsUrl}/bagel-finance-v2.jpg`,
     audits: "0",
@@ -19120,7 +18756,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "bagel_fi_ton",
     parentProtocol: "parent#bagel-finance",
-    listedAt: 1751554883,
+    listedAt: 1751554883
   },
   {
     id: "6393",
@@ -19141,7 +18777,7 @@ const data4: Protocol[] = [
     module: "obsidian/index.js",
     forkedFromIds: [],
     twitter: "ObsidianSwap",
-    listedAt: 1751623842,
+    listedAt: 1751623842
   },
   {
     id: "6394",
@@ -19162,19 +18798,16 @@ const data4: Protocol[] = [
     module: "palladium/index.js",
     forkedFromIds: [],
     twitter: "PalladiumLabs",
-    audit_links: [
-      "https://scalebit.xyz/reports/20250617-Palladium-Labs-Final-Audit-Report.pdf",
-      "https://hacken.io/audits/palladium/",
-    ],
+    audit_links: ["https://scalebit.xyz/reports/20250617-Palladium-Labs-Final-Audit-Report.pdf", "https://hacken.io/audits/palladium/"],
     github: ["PalladiumLabs"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15365"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15365"]
       },
     ],
-    listedAt: 1751623942,
+    listedAt: 1751623942
   },
   {
     id: "6395",
@@ -19197,7 +18830,7 @@ const data4: Protocol[] = [
     twitter: "hyperlendx",
     audit_links: ["https://github.com/hyperlendx/audits"],
     parentProtocol: "parent#hyperlend",
-    listedAt: 1751644953,
+    listedAt: 1751644953
   },
   {
     id: "6396",
@@ -19218,7 +18851,7 @@ const data4: Protocol[] = [
     module: "1776meme/index.js",
     twitter: "1776meme_",
     forkedFromIds: [],
-    listedAt: 1751660645,
+    listedAt: 1751660645
   },
   {
     id: "6397",
@@ -19240,7 +18873,7 @@ const data4: Protocol[] = [
     twitter: "MORE_DeFi",
     forkedFromIds: [],
     parentProtocol: "parent#more-markets",
-    listedAt: 1751893629,
+    listedAt: 1751893629
   },
   {
     id: "6398",
@@ -19283,7 +18916,7 @@ const data4: Protocol[] = [
     twitter: "Eaglefi_Massa",
     audit_links: ["https://sayfer.io/audits/smart-contract-audit-eagle-finance/"],
     forkedFromIds: [],
-    listedAt: 1751899162,
+    listedAt: 1751899162
   },
   {
     id: "6400",
@@ -19305,7 +18938,7 @@ const data4: Protocol[] = [
     twitter: "YeiFinance",
     forkedFromIds: [],
     parentProtocol: "parent#yei-finance",
-    listedAt: 1751919841,
+    listedAt: 1751919841
   },
   {
     id: "6401",
@@ -19325,7 +18958,7 @@ const data4: Protocol[] = [
     chains: ["Embr"],
     module: "embr-bridge/index.js",
     twitter: "embrdotfun",
-    forkedFromIds: [],
+    forkedFromIds: []
   },
   {
     id: "6402",
@@ -19348,7 +18981,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     treasury: "bim.js",
     audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
-    listedAt: 1751920749,
+    listedAt: 1751920749
   },
   {
     id: "6403",
@@ -19369,7 +19002,7 @@ const data4: Protocol[] = [
     module: "xsui/index.js",
     twitter: "MMTFinance",
     forkedFromIds: ["5311"],
-    listedAt: 1751930263,
+    listedAt: 1751930263
   },
   {
     id: "6404",
@@ -19391,7 +19024,7 @@ const data4: Protocol[] = [
     twitter: "usd_hl",
     forkedFromIds: [],
     parentProtocol: "parent#felix",
-    listedAt: 1751964664,
+    listedAt: 1751964664
   },
   {
     id: "6405",
@@ -19416,11 +19049,8 @@ const data4: Protocol[] = [
       {
         name: "DIA",
         type: "Primary",
-        proof: [
-          "https://forum.diadata.org/t/cdr-094-international-meme-fund-token-price-feed/1028",
-          "https://github.com/DefiLlama/defillama-server/pull/10130",
-        ],
-      },
+        proof: ["https://forum.diadata.org/t/cdr-094-international-meme-fund-token-price-feed/1028", "https://github.com/DefiLlama/defillama-server/pull/10130"]
+      }
     ],
   },
   {
@@ -19430,8 +19060,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "eBABY",
     url: "https://www.escher.finance/",
-    description:
-      "Escher.Finance is redefining liquid staking and cross-chain interaction with its innovative chain-abstracted solution. Built on Union, Escher enables users to stake, liquid stake, and re-stake assets across multiple blockchain ecosystems—all without leaving their native chain. By removing the complexities of managing multiple wallets and gas tokens, Escher delivers a seamless user experience, making decentralized finance more accessible for individuals and institutions alike",
+    description: "Escher.Finance is redefining liquid staking and cross-chain interaction with its innovative chain-abstracted solution. Built on Union, Escher enables users to stake, liquid stake, and re-stake assets across multiple blockchain ecosystems—all without leaving their native chain. By removing the complexities of managing multiple wallets and gas tokens, Escher delivers a seamless user experience, making decentralized finance more accessible for individuals and institutions alike",
     chain: "Babylon Genesis",
     logo: `${baseIconsUrl}/escher.jpg`,
     audits: "2",
@@ -19445,7 +19074,7 @@ const data4: Protocol[] = [
     twitter: "escher_fi",
     audit_links: ["https://github.com/oak-security/audit-reports/tree/main/Escher"],
     github: ["Escher-finance"],
-    listedAt: 1752001067,
+    listedAt: 1752001067
   },
   {
     id: "6407",
@@ -19453,8 +19082,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.hyperwavefi.xyz/assets/hwhlp",
-    description:
-      "Hyperwave is the first liquid HLP primitive on the market, designed to bridge yield generated in Hypercore directly into the HyperEVM. By tokenizing HLP deposits, Hyperwave is bringing one of the most powerful, community-driven yield-bearing instruments into HyperEVM.",
+    description: "Hyperwave is the first liquid HLP primitive on the market, designed to bridge yield generated in Hypercore directly into the HyperEVM. By tokenizing HLP deposits, Hyperwave is bringing one of the most powerful, community-driven yield-bearing instruments into HyperEVM.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperwave.jpg`,
     audits: "2",
@@ -19467,7 +19095,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "hyperwavefi",
     audit_links: ["https://docs.hyperwavefi.xyz/references/audits"],
-    listedAt: 1752001287,
+    listedAt: 1752001287
   },
   {
     id: "6408",
@@ -19475,8 +19103,7 @@ const data4: Protocol[] = [
     address: "xrplevm:0xbf11bf1b83E7d1845A2b343D8F961C5461b27511",
     symbol: "XRISE",
     url: "https://xrise33.com",
-    description:
-      "XRiSE33 is the first DeFi hub on XRPL EVM—combining an AMM DEX, token-launchpad, and ve-token governance. Users earn XR Energy (XRE) on swaps & LP, and projects can bootstrap liquidity with a fair-launch launchpad",
+    description: "XRiSE33 is the first DeFi hub on XRPL EVM—combining an AMM DEX, token-launchpad, and ve-token governance. Users earn XR Energy (XRE) on swaps & LP, and projects can bootstrap liquidity with a fair-launch launchpad",
     chain: "XRPL EVM",
     logo: `${baseIconsUrl}/xrise33-network.jpg`,
     audits: "0",
@@ -19488,7 +19115,7 @@ const data4: Protocol[] = [
     module: "xrise33/index.js",
     forkedFrom: [],
     twitter: "XRiSE33",
-    listedAt: 1752001351,
+    listedAt: 1752001351
   },
   {
     id: "6409",
@@ -19515,8 +19142,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://createdao.org/",
-    description:
-      "CreateDAO is an open-source platform that democratizes DAO creation across multiple blockchains, featuring modular smart contracts for governance, token management, staking, and treasury operations—all upgradeable through community voting without technical expertise",
+    description: "CreateDAO is an open-source platform that democratizes DAO creation across multiple blockchains, featuring modular smart contracts for governance, token management, staking, and treasury operations—all upgradeable through community voting without technical expertise",
     chain: "Base",
     logo: `${baseIconsUrl}/createdao.jpg`,
     audits: "0",
@@ -19529,7 +19155,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "createdao",
     github: ["createdao"],
-    listedAt: 1752077819,
+    listedAt: 1752077819
   },
   {
     id: "6411",
@@ -19537,8 +19163,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.dipcoin.io/",
-    description:
-      "DipCoin DEX is a decentralized exchange on the SUI ecosystem offering swaps, liquidity pools, and perpetual trading.",
+    description: "DipCoin DEX is a decentralized exchange on the SUI ecosystem offering swaps, liquidity pools, and perpetual trading.",
     chain: "Sui",
     logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
     audits: "0",
@@ -19550,7 +19175,7 @@ const data4: Protocol[] = [
     module: "dipcoin/index.js",
     forkedFrom: [],
     twitter: "DipCoinOfficial",
-    listedAt: 1752078241,
+    listedAt: 1752078241
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",
@@ -19590,11 +19215,8 @@ const data4: Protocol[] = [
     module: "FullSailFinance/index.js",
     forkedFrom: [],
     twitter: "fullsailfi",
-    audit_links: [
-      "https://info.asymptotic.tech/full-sail-clmm-audit",
-      "https://app.fullsail.finance/static_files/plainshift_full_sail_audit.pdf",
-    ],
-    listedAt: 1752158182,
+    audit_links: ["https://info.asymptotic.tech/full-sail-clmm-audit", "https://app.fullsail.finance/static_files/plainshift_full_sail_audit.pdf"],
+    listedAt: 1752158182
   },
   {
     id: "6414",
@@ -19602,8 +19224,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://xion.burnt.com",
-    description:
-      "The First Walletless Blockchain Built For Main­stream Adoption. XION empowers developers to build, launch and scale consumer-ready products from the ground up, removing technical barriers for all users through its Chain Abstraction.",
+    description: "The First Walletless Blockchain Built For Main­stream Adoption. XION empowers developers to build, launch and scale consumer-ready products from the ground up, removing technical barriers for all users through its Chain Abstraction.",
     chain: "XION",
     logo: `${baseIconsUrl}/xion-finance.jpg`,
     audits: "0",
@@ -19615,7 +19236,7 @@ const data4: Protocol[] = [
     module: "xion/index.js",
     forkedFrom: [],
     twitter: "burnt_xion",
-    listedAt: 1752224648,
+    listedAt: 1752224648
   },
   {
     id: "6415",
@@ -19623,8 +19244,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.rysk.finance",
-    description:
-      "Rysk V12 introduces a new way to earn high, sustainable yield on ETH, BTC, and any volatile asset in DeFi. DeFi’s biggest gap has been obvious: scalable, efficient returns on its core assets. These assets are held by everyone, yet their yields remain low and unsustainable. Rysk fixes this by reimagining covered calls, a proven strategy from traditional finance, and making it work for DeFi.",
+    description: "Rysk V12 introduces a new way to earn high, sustainable yield on ETH, BTC, and any volatile asset in DeFi. DeFi’s biggest gap has been obvious: scalable, efficient returns on its core assets. These assets are held by everyone, yet their yields remain low and unsustainable. Rysk fixes this by reimagining covered calls, a proven strategy from traditional finance, and making it work for DeFi.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/rysk-v12.jpg`,
     audits: "0",
@@ -19640,11 +19260,11 @@ const data4: Protocol[] = [
         name: "Stork",
         type: "Primary",
         proof: ["https://docs.rysk.finance/resources/oracle"],
-      },
+      }
     ],
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
-    listedAt: 1752225071,
+    listedAt: 1752225071
   },
   {
     id: "6416",
@@ -19683,7 +19303,7 @@ const data4: Protocol[] = [
     module: "blazeswap-io/index.js",
     forkedFrom: [],
     twitter: "Blaze_Swap",
-    listedAt: 1752240991,
+    listedAt: 1752240991
   },
   {
     id: "6418",
@@ -19691,8 +19311,7 @@ const data4: Protocol[] = [
     address: "solana:CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
     symbol: "CRT",
     url: "https://boost.deficarrot.com/",
-    description:
-      "Carrot Lend is a peer-to-pool lending platform built for automation and designed to serve as a decentralized matchmaker between borrowers and lenders, powering leveraged and composable DeFi strategies.",
+    description: "Carrot Lend is a peer-to-pool lending platform built for automation and designed to serve as a decentralized matchmaker between borrowers and lenders, powering leveraged and composable DeFi strategies.",
     chain: "Solana",
     logo: `${baseIconsUrl}/carrot-lend.jpg`,
     audits: "0",
@@ -19705,7 +19324,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "DeFiCarrot",
     parentProtocol: "parent#carrot",
-    listedAt: 1752343187,
+    listedAt: 1752343187
   },
   {
     id: "6419",
@@ -19713,8 +19332,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://prvx.io",
-    description:
-      "A derivatives Privacy-enabled trading platform offering leveraged trading and Trading AI Agents on Base and Coti networks.",
+    description: "A derivatives Privacy-enabled trading platform offering leveraged trading and Trading AI Agents on Base and Coti networks.",
     chain: "Base",
     logo: `${baseIconsUrl}/privex.jpg`,
     audits: "0",
@@ -19733,8 +19351,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.apebotsol.io/",
-    description:
-      "ApeBot is the fastest and only Telegram trading bot on Solana letting users bundle trade, track, and copy while earning daily fee discounts.",
+    description: "ApeBot is the fastest and only Telegram trading bot on Solana letting users bundle trade, track, and copy while earning daily fee discounts.",
     chain: "Solana",
     logo: `${baseIconsUrl}/apebot.jpg`,
     audits: "0",
@@ -19766,7 +19383,7 @@ const data4: Protocol[] = [
     module: "vies-token/index.js",
     forkedFrom: [],
     twitter: "ViesCoin",
-    listedAt: 1752492370,
+    listedAt: 1752492370
   },
   {
     id: "6422",
@@ -19787,7 +19404,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "token_mill",
     parentProtocol: "parent#trader-joe",
-    listedAt: 1752492527,
+    listedAt: 1752492527
   },
   {
     id: "6423",
@@ -19810,16 +19427,8 @@ const data4: Protocol[] = [
     twitter: "Ebisu_Finance",
     audit_links: ["https://ebisu.money/audits/Ebisu-May-28-2025.pdf"],
     oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"],
-      },
-      {
-        name: "RedStone",
-        type: "Secondary",
-        proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"],
-      },
+      { name: "Chainlink", type: "Primary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] },
+      { name: "RedStone", type: "Secondary", proof: ["https://ebisu.gitbook.io/ebisu-money/developers/oracle-and-parameter-configuration"] }
     ],
     stablecoins: ["ebusd"],
     parentProtocol: "parent#ebisu-finance",
@@ -19852,7 +19461,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://cobaltx.io/swap",
-    description: "A Concentrated Liquidity AMM, Building DeFi Ecosystem on Soon Network",
+    description:
+      "A Concentrated Liquidity AMM, Building DeFi Ecosystem on Soon Network",
     chain: "Soon Network",
     logo: `${baseIconsUrl}/cobaltx.jpg`,
     audits: "0",
@@ -19963,7 +19573,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "BLACK",
     url: "https://blackhole.xyz/",
-    description: "Blackhole is a next-generation decentralized exchange (DEX) built on the Avalanche blockchain.",
+    description:
+      "Blackhole is a next-generation decentralized exchange (DEX) built on the Avalanche blockchain.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/blackhole-amm.jpg`,
     audits: "0",
@@ -19985,7 +19596,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "BLACK",
     url: "https://blackhole.xyz/",
-    description: "Blackhole is a next-generation decentralized exchange (DEX) built on the Avalanche blockchain.",
+    description:
+      "Blackhole is a next-generation decentralized exchange (DEX) built on the Avalanche blockchain.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/blackhole-clmm.jpg`,
     audits: "0",
@@ -20018,9 +19630,7 @@ const data4: Protocol[] = [
     category: "RWA",
     chains: ["Solana"],
     forkedFromIds: [],
-    oraclesBreakdown: [
-      { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15151"] },
-    ],
+    oraclesBreakdown: [{ name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15151"] }],
     module: "OnRe/index.js",
     twitter: "onrefinance",
     audit_links: [],
@@ -20044,9 +19654,7 @@ const data4: Protocol[] = [
     category: "RWA",
     chains: ["Kadena"],
     forkedFromIds: [],
-    oraclesBreakdown: [
-      { name: "DIA", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14301"] },
-    ],
+    oraclesBreakdown: [{ name: "DIA", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14301"] }],
     module: "chips/index.js",
     twitter: "Chips_Finance",
     audit_links: [],
@@ -20091,50 +19699,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: [
-      "Ethereum",
-      "Aurora",
-      "Arbitrum",
-      "Optimism",
-      "Flare",
-      "Cronos",
-      "RSK",
-      "Telos",
-      "Avalanche",
-      "BSC",
-      "Fantom",
-      "Solana",
-      "Story",
-      "Sui",
-      "Base",
-      "Fuse",
-      "Polygon",
-      "Sonic",
-      "Manta",
-      "Mint",
-      "Kroma",
-      "CORE",
-      "Sui",
-      "Sei",
-      "Polygon zkEVM",
-      "Metis",
-      "Gravity",
-      "Moonbeam",
-      "Moonriver",
-      "zkSync Era",
-      "Soneium",
-      "Kava",
-      "Morph",
-      "Merlin",
-      "Mantle",
-      "Mode",
-      "Celo",
-      "Ink",
-      "Linea",
-      "Blast",
-      "Berachain",
-      "Bitlayer",
-    ],
+    chains: ["Ethereum", "Aurora", "Arbitrum", "Optimism", "Flare", "Cronos", "RSK", "Telos", "Avalanche", "BSC", "Fantom", "Solana", "Story", "Sui", "Base", "Fuse", "Polygon", "Sonic", "Manta", "Mint", "Kroma", "CORE", "Sui", "Sei", "Polygon zkEVM", "Metis", "Gravity", "Moonbeam", "Moonriver", "zkSync Era", "Soneium", "Kava", "Morph", "Merlin", "Mantle", "Mode", "Celo", "Ink", "Linea", "Blast", "Berachain", "Bitlayer"],
     forkedFrom: [],
     module: "dummy.js",
     audit_links: ["https://docs.dzap.io/integration-fee-and-security/audit-reports"],
@@ -20165,8 +19730,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.harvestflow.io/?lng=en",
-    description:
-      "HARVEST FLOW is a real-world asset (RWA) lending protocol designed to bridge sustainable impact and yield. By channeling capital into mission-driven businesses in emerging markets, it offers stable returns backed by real economic activity—enabling lenders to grow their assets while driving measurable social change.",
+    description: "HARVEST FLOW is a real-world asset (RWA) lending protocol designed to bridge sustainable impact and yield. By channeling capital into mission-driven businesses in emerging markets, it offers stable returns backed by real economic activity—enabling lenders to grow their assets while driving measurable social change.",
     chain: "Plume Mainnet",
     logo: `${baseIconsUrl}/harvest-flow.jpg`,
     audits: "2",
@@ -20178,9 +19742,7 @@ const data4: Protocol[] = [
     module: "harvestflow/index.js",
     twitter: "HarvestFlow_io",
     forkedFrom: [],
-    audit_links: [
-      "https://github.com/shieldify-security/audits-portfolio/blob/main/reports/Harvest-Flow-V2-Security-Review.pdf",
-    ],
+    audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/Harvest-Flow-V2-Security-Review.pdf"],
     listedAt: 1752609742,
   },
   {
@@ -20227,8 +19789,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.milkyway.zone/",
-    description:
-      "The MilkyWay Rollup is the off-chain execution layer of the MilkyWay protocol—powered by Rollkit and supported by validators/operators—where users bridge tokens (like INIT), mint liquid staking assets (milkINIT, milkTIA), and enable restaking",
+    description: "The MilkyWay Rollup is the off-chain execution layer of the MilkyWay protocol—powered by Rollkit and supported by validators/operators—where users bridge tokens (like INIT), mint liquid staking assets (milkINIT, milkTIA), and enable restaking",
     chain: "MilkyWay Rollup",
     logo: `${baseIconsUrl}/milkyway-rollup-bridge.jpg`,
     audits: "0",
@@ -20266,8 +19827,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.ostrich.exchange/explore",
-    description:
-      "Global Exchange Onchain. Trade stocks from the US, China, Japan, Germany, UK straight from your wallet with upto 50x leverage.",
+    description: "Global Exchange Onchain. Trade stocks from the US, China, Japan, Germany, UK straight from your wallet with upto 50x leverage.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ostrich.jpg`,
     audits: "2",
@@ -20280,7 +19840,7 @@ const data4: Protocol[] = [
     twitter: "Ostrich_HQ",
     forkedFrom: [],
     audit_links: ["https://docs.ostrich.exchange/platform/audit-reports"],
-    listedAt: 1752655880,
+    listedAt: 1752655880
   },
   {
     id: "6443",
@@ -20300,7 +19860,7 @@ const data4: Protocol[] = [
     module: "indodax/index.js",
     twitter: "indodax",
     forkedFrom: [],
-    listedAt: 1752664331,
+    listedAt: 1752664331
   },
   {
     id: "6444",
@@ -20308,8 +19868,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.prjx.com",
-    description:
-      "Project X is built on the belief that tech is becoming increasingly commoditized and the next era of DeFi will be won by innovating on distribution, incentive design and UX.",
+    description: "Project X is built on the belief that tech is becoming increasingly commoditized and the next era of DeFi will be won by innovating on distribution, incentive design and UX.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/project-x.jpg`,
     audits: "0",
@@ -20321,7 +19880,7 @@ const data4: Protocol[] = [
     module: "prjx/index.js",
     twitter: "prjx_hl",
     forkedFromIds: ["2198"],
-    listedAt: 1752664531,
+    listedAt: 1752664531
   },
   /*{ // unified under coinbase-btc adapter
     id: "6445",
@@ -20363,7 +19922,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [
       "https://www.halborn.com/audits/k-bit/perpdex",
-      "https://hacken.io/audits/k-bit/sca-k-bit-k-bit-contracts-jan2025/",
+      "https://hacken.io/audits/k-bit/sca-k-bit-k-bit-contracts-jan2025/"
     ],
     listedAt: 1752694922,
   },
@@ -20374,8 +19933,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "kHYPE",
     url: "https://kinetiq.xyz/stake",
-    description:
-      "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
+    description: "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kinetiq.jpg`,
     audits: "0",
@@ -20439,8 +19997,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.elys.network/perpetual",
-    description:
-      "The Elys Network's perpetual trading is a system designed to facilitate leveraged trading on various assets within the blockchain",
+    description: "The Elys Network's perpetual trading is a system designed to facilitate leveraged trading on various assets within the blockchain",
     chain: "Elys",
     logo: `${baseIconsUrl}/elys-perpetual.jpg`,
     audits: "0",
@@ -20453,7 +20010,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "elys_network",
     parentProtocol: "parent#elys-protocol",
-    listedAt: 1752775682,
+    listedAt: 1752775682
   },
   {
     id: "6451",
@@ -20478,7 +20035,7 @@ const data4: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price"],
-        chains: [{ chain: "Sui" }],
+        chains: [{ chain: "Sui" }]
       },
     ],
     forkedFrom: [],
@@ -20512,8 +20069,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.thedeep.ink/",
-    description:
-      "The Deep is a cross-chain platform that automates DeFi liquidity strategies for protocols. Its integrated rewards engine deepens TVL and amplifies trading volume",
+    description: "The Deep is a cross-chain platform that automates DeFi liquidity strategies for protocols. Its integrated rewards engine deepens TVL and amplifies trading volume",
     chain: "Base",
     logo: `${baseIconsUrl}/thedeep.jpg`,
     audits: "0",
@@ -20525,7 +20081,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "thedeep/index.js",
     twitter: "TheDeep_xyz",
-    listedAt: 1752861093,
+    listedAt: 1752861093
   },
   {
     id: "6454",
@@ -20546,7 +20102,7 @@ const data4: Protocol[] = [
     module: "echo-strategy/index.js",
     twitter: "EchoProtocol_",
     parentProtocol: "parent#echo-protocol",
-    listedAt: 1752861434,
+    listedAt: 1752861434
   },
   {
     id: "6455",
@@ -20574,7 +20130,7 @@ const data4: Protocol[] = [
     module: "virtue/index.js",
     twitter: "Virtue_Money",
     audit_links: ["https://github.com/Virtue-CDP/virtue-audits"],
-    listedAt: 1752861823,
+    listedAt: 1752861823
   },
   {
     id: "6456",
@@ -20582,8 +20138,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://tothemoon.com",
-    description:
-      "Founded in 2018, Tothemoon is a global cryptocurrency platform serving users in over 100 countries. It offers trading for more than 300 cryptocurrencies, including BTC, ETH, DOT, SOL, and AVAX",
+    description: "Founded in 2018, Tothemoon is a global cryptocurrency platform serving users in over 100 countries. It offers trading for more than 300 cryptocurrencies, including BTC, ETH, DOT, SOL, and AVAX",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tothemoon.jpg`,
     audits: "0",
@@ -20615,7 +20170,7 @@ const data4: Protocol[] = [
     module: "staked-hype/index.js",
     twitter: "stakedhype",
     audit_links: ["https://docs.stakedhype.fi/technical/audits"],
-    listedAt: 1753110072,
+    listedAt: 1753110072
   },
   {
     id: "6458",
@@ -20636,7 +20191,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["5690"],
     module: "fpex/index.js",
     twitter: "Nexapia_",
-    listedAt: 1753110172,
+    listedAt: 1753110172
   },
   {
     id: "6459",
@@ -20655,7 +20210,7 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "hits4fun/index.js",
     twitter: "hits4fun",
-    listedAt: 1753110715,
+    listedAt: 1753110715
   },
   {
     id: "6460",
@@ -20676,7 +20231,7 @@ const data4: Protocol[] = [
     module: "laine-sol/index.js",
     twitter: "laine_sa_",
     github: ["laine-sa"],
-    listedAt: 1753110915,
+    listedAt: 1753110915
   },
   {
     id: "6461",
@@ -20684,8 +20239,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://loopscale.com",
-    description:
-      "Loopscale is a modular lending platform for the next-generation of onchain assets. Markets for any asset, at the best rate, with less risk",
+    description: "Loopscale is a modular lending platform for the next-generation of onchain assets. Markets for any asset, at the best rate, with less risk",
     chain: "Solana",
     logo: `${baseIconsUrl}/loopscale.jpg`,
     audits: "2",
@@ -20700,12 +20254,12 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14278"],
-      },
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14278"]
+      }
     ],
     audit_links: ["https://github.com/oshieldio/Publications/blob/main/Loopscale/loopscale-v1.md"],
     github: ["LoopscaleLabs"],
-    listedAt: 1753201144,
+    listedAt: 1753201144
   },
   {
     id: "6462",
@@ -20713,8 +20267,7 @@ const data4: Protocol[] = [
     address: "core:0x05f4d7571DA2C5bcD02Ca10cc0599f9bCfd29DB8",
     symbol: "BITS",
     url: "https://www.bits.financial/",
-    description:
-      "BITS combines real yield, institutional grade custody, and cross ecosystem utility, turning your BTC or wBTC into a powerful on-chain asset",
+    description: "BITS combines real yield, institutional grade custody, and cross ecosystem utility, turning your BTC or wBTC into a powerful on-chain asset",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bits.jpg`,
     audits: "0",
@@ -20725,7 +20278,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "bits/index.js",
     twitter: "bits_financial",
-    listedAt: 1753201151,
+    listedAt: 1753201151
   },
   {
     id: "6463",
@@ -20745,7 +20298,7 @@ const data4: Protocol[] = [
     module: "ethena-tsusde/index.js",
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
-    listedAt: 1753201159,
+    listedAt: 1753201159
   },
   {
     id: "6464",
@@ -20753,8 +20306,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.surgedefi.com/",
-    description:
-      "Surge is the first native DEX on XRPL-EVM, that delivers frictionless token swaps, hyper-efficient concentrated liquidity, and near-zero gas fees",
+    description: "Surge is the first native DEX on XRPL-EVM, that delivers frictionless token swaps, hyper-efficient concentrated liquidity, and near-zero gas fees",
     chain: "XRPL EVM",
     logo: `${baseIconsUrl}/surgedefi.jpg`,
     audits: "0",
@@ -20767,7 +20319,7 @@ const data4: Protocol[] = [
     module: "surgedefi/index.js",
     twitter: "SurgeDEX",
     github: ["syv-labs"],
-    listedAt: 1753201165,
+    listedAt: 1753201165
   },
   {
     id: "6465",
@@ -20775,8 +20327,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sigma.money",
-    description:
-      "Sigma.Money is a DeFi protocol on BNB Chain that splits yield-bearing assets into two parts: a stable tranche for steady returns and a volatile tranche for leveraged exposure. This structure allows users to choose between safety and risk in a single system",
+    description: "Sigma.Money is a DeFi protocol on BNB Chain that splits yield-bearing assets into two parts: a stable tranche for steady returns and a volatile tranche for leveraged exposure. This structure allows users to choose between safety and risk in a single system",
     chain: "Binance",
     logo: `${baseIconsUrl}/sigma-money.jpg`,
     audits: "2",
@@ -20789,7 +20340,7 @@ const data4: Protocol[] = [
     module: "sigma-protocol/index.js",
     twitter: "sigmadotmoney",
     audit_links: ["https://docs.sigma.money/risk-management/audit-reports"],
-    listedAt: 1753201182,
+    listedAt: 1753201182
   },
   {
     id: "6466",
@@ -20797,8 +20348,7 @@ const data4: Protocol[] = [
     address: "avax:0x60781C2586D68229fde47564546784ab3fACA982",
     symbol: "PANG",
     url: "https://app.pangolin.exchange/",
-    description:
-      "Pangolin V3 is the latest version of the Pangolin DEX, featuring Concentrated Liquidity and Dynamic Fees to boost capital efficiency and rewards.",
+    description: "Pangolin V3 is the latest version of the Pangolin DEX, featuring Concentrated Liquidity and Dynamic Fees to boost capital efficiency and rewards.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/pangolin-v3.jpg`,
     audits: "0",
@@ -20833,12 +20383,12 @@ const data4: Protocol[] = [
       {
         name: "Stork",
         type: "Aggregator",
-        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"],
+        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"]
       },
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"],
+        proof: ["https://docs.hibachi.xyz/hibachi-docs/trading/pricing"]
       },
     ],
     forkedFromIds: [],
@@ -20868,8 +20418,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.gemini.com",
-    description:
-      "We build crypto products that are simple, elegant, and secure. Whether you are an individual or an institution, we want to help you buy, sell, and store your bitcoin and cryptocurrency.",
+    description: "We build crypto products that are simple, elegant, and secure. Whether you are an individual or an institution, we want to help you buy, sell, and store your bitcoin and cryptocurrency.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/gemini.jpg`,
     audits: "0",
@@ -20881,7 +20430,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "gemini/index.js",
     twitter: "Gemini",
-    listedAt: 1753349019,
+    listedAt: 1753349019
   },
   {
     id: "6470",
@@ -20889,8 +20438,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sparklex.ai/",
-    description:
-      "SparkleX is an intelligent omnichain yield network that leverages AI to maximize your yields effortlessly across all blockchains.",
+    description: "SparkleX is an intelligent omnichain yield network that leverages AI to maximize your yields effortlessly across all blockchains.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sparklex.jpg`,
     audits: "2",
@@ -20902,19 +20450,19 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [
       "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-SparkleX-Farming-v1.0.pdf",
-      "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-SparkleX-Earning-v1.0.pdf",
+      "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-SparkleX-Earning-v1.0.pdf"
     ],
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15627"],
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15627"]
       },
     ],
     module: "sparklex/index.js",
     twitter: "sparklexai",
     github: ["sparklexai"],
-    listedAt: 1753367597,
+    listedAt: 1753367597
   },
   {
     id: "6471",
@@ -20935,7 +20483,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "stronghold-staked-sol/index.js",
     twitter: "StrongholdSOL",
-    listedAt: 1753367603,
+    listedAt: 1753367603
   },
   {
     id: "6472",
@@ -20956,7 +20504,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "dfdv-staked-sol/index.js",
     twitter: "defidevcorp",
-    listedAt: 1753367611,
+    listedAt: 1753367611
   },
   {
     id: "6473",
@@ -20964,8 +20512,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://strata.money",
-    description:
-      "Users can deposit USDe/eUSDe into the Strata Points Farm on Ethereum Mainnet to mint pUSDe and start accruing Strata Points, unlocking early access, referral rewards, and boosted multipliers.",
+    description: "Users can deposit USDe/eUSDe into the Strata Points Farm on Ethereum Mainnet to mint pUSDe and start accruing Strata Points, unlocking early access, referral rewards, and boosted multipliers.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strata-season-0.jpg`,
     audits: "2",
@@ -20978,7 +20525,7 @@ const data4: Protocol[] = [
     module: "strata/index.js",
     twitter: "Strata_Money",
     audit_links: ["https://strata-money.gitbook.io/docs/security/audits"],
-    listedAt: 1753367619,
+    listedAt: 1753367619
   },
   {
     id: "6474",
@@ -20986,8 +20533,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.bitlayer.org/",
-    description:
-      "YBTC.B is a wrapped version of Bitlayer's Native BTC, designed to function as a universal cross-chain liquidity standard across both EVM and non-EVM chains.",
+    description: "YBTC.B is a wrapped version of Bitlayer's Native BTC, designed to function as a universal cross-chain liquidity standard across both EVM and non-EVM chains.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/ybtc.b.jpg`,
     audits: "0",
@@ -20999,7 +20545,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "bitlayer-ybtc_b/index.js",
     twitter: "BitlayerLabs",
-    listedAt: 1753368932,
+    listedAt: 1753368932
   },
   {
     id: "6475",
@@ -21007,8 +20553,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.vaquita.fi/",
-    description:
-      "Vaquita is a platform that encourages long-term saving through dynamic rewards. We gamify saving by awarding additional interest to those who keep their commitment and penalizing early withdrawals, thereby ensuring higher returns.",
+    description: "Vaquita is a platform that encourages long-term saving through dynamic rewards. We gamify saving by awarding additional interest to those who keep their commitment and penalizing early withdrawals, thereby ensuring higher returns.",
     chain: "Base",
     logo: `${baseIconsUrl}/vaquita-protocol.jpg`,
     audits: "0",
@@ -21020,7 +20565,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "vaquita-protocol/index.js",
     twitter: "VaquitaProtocol",
-    listedAt: 1753368942,
+    listedAt: 1753368942
   },
   {
     id: "6476",
@@ -21028,8 +20573,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mobius.exchange/",
-    description:
-      "Möbius Exchange, a single-sided Automated Market Maker (AMM) Decentralized Exchange (DEX) designed to enable efficient trading of pegged assets, including stablecoins, Liquid Staking Tokens (LSTs), Liquid Restaking Tokens (LRTs), and more, built natively on the Mantle network.",
+    description: "Möbius Exchange, a single-sided Automated Market Maker (AMM) Decentralized Exchange (DEX) designed to enable efficient trading of pegged assets, including stablecoins, Liquid Staking Tokens (LSTs), Liquid Restaking Tokens (LRTs), and more, built natively on the Mantle network.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/mobius-exchange.jpg`,
     audits: "2",
@@ -21041,11 +20585,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "mobius-exchange/index.js",
     twitter: "Mobius_Exchange",
-    audit_links: [
-      "https://github.com/shieldify-security/audits-portfolio/blob/main/reports/M%C3%B6biusExchange-Security-Review.pdf",
-    ],
+    audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/M%C3%B6biusExchange-Security-Review.pdf"],
     github: ["MobiusExchange"],
-    listedAt: 1753371391,
+    listedAt: 1753371391
   },
   {
     id: "6477",
@@ -21053,8 +20595,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.pools.finance",
-    description:
-      "Pools Protocol is a next-generation decentralized exchange (DEX) built on the IOTA network using the Move programming language. It combines the best of classic v2-style AMMs and stable liquidity pools, enabling users to swap tokens, provide liquidity, and stake LP tokens for additional rewards — all through a lightweight and auditable on-chain architecture.",
+    description: "Pools Protocol is a next-generation decentralized exchange (DEX) built on the IOTA network using the Move programming language. It combines the best of classic v2-style AMMs and stable liquidity pools, enabling users to swap tokens, provide liquidity, and stake LP tokens for additional rewards — all through a lightweight and auditable on-chain architecture.",
     chain: "IOTA",
     logo: `${baseIconsUrl}/pools-finance.jpg`,
     audits: "2",
@@ -21068,7 +20609,7 @@ const data4: Protocol[] = [
     twitter: "PoolsFinance",
     audit_links: ["https://hacken.io/audits/pools-finance/"],
     github: ["Pools-Finance"],
-    listedAt: 1753371397,
+    listedAt: 1753371397
   },
   {
     id: "6478",
@@ -21089,10 +20630,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "GraphiteProto",
     hallmarks: [
-      [
-        1749513600,
-        "Graphite Protocol share reduced from 57.68% to 40% of total fees, BONKsol staking reduced from 30% to 15%",
-      ], // https://x.com/bonk_fun/status/1932242245970747708
+      [1749513600, 'Graphite Protocol share reduced from 57.68% to 40% of total fees, BONKsol staking reduced from 30% to 15%'], // https://x.com/bonk_fun/status/1932242245970747708
     ],
   },
   {
@@ -21114,7 +20652,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "zeus-btcsol/index.js",
     twitter: "btcsol_co",
-    listedAt: 1753462435,
+    listedAt: 1753462435
   },
   {
     id: "6480",
@@ -21122,8 +20660,7 @@ const data4: Protocol[] = [
     address: "cardano:03b6ddacd60cc1ebd9ed4041d0c298c4c6f48ab61e04fdad4d915cfa",
     symbol: "PBG",
     url: "https://www.pbg.io/",
-    description:
-      "A DeFi platform on Cardano offering Decentralized Vault Portfolios (DVPs) for digital asset management, where the native PBG token represents fully backed shares of the reserve assets locked in the vault.",
+    description: "A DeFi platform on Cardano offering Decentralized Vault Portfolios (DVPs) for digital asset management, where the native PBG token represents fully backed shares of the reserve assets locked in the vault.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/pbg.jpg`,
     audits: "0",
@@ -21137,7 +20674,7 @@ const data4: Protocol[] = [
     twitter: "PBGtoken",
     github: ["PBGToken"],
     audit_links: ["https://www.pbg.io/wp-content/uploads/2025/02/PBG-DVP-Audit-Report.pdf"],
-    listedAt: 1753462453,
+    listedAt: 1753462453
   },
   {
     id: "6481",
@@ -21145,9 +20682,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hyperbrick.xyz/point?ref=DEFILLAMA",
-    referralUrl: "https://hyperbrick.xyz/point?ref=DEFILLAMA",
-    description:
-      "HyperBrick is an AMM offering low-cost trading, higher fee potential for providers, and requires less capital. It features zero slippage, surge pricing, and high efficiency",
+    referralUrl: "https://hyperbrick.xyz/point?ref=DEFILLAMA",
+    description: "HyperBrick is an AMM offering low-cost trading, higher fee potential for providers, and requires less capital. It features zero slippage, surge pricing, and high efficiency",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperbrick.jpg`,
     audits: "3",
@@ -21160,7 +20696,7 @@ const data4: Protocol[] = [
     module: "hyperbrick/index.js",
     twitter: "HyperBrickX",
     github: ["HyperBrickLabs"],
-    listedAt: 1753462461,
+    listedAt: 1753462461
   },
   {
     id: "6482",
@@ -21168,8 +20704,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://liminal.money/",
-    description:
-      "Liminal is a DeFi protocol on Hyperliquid that offers stable, delta-neutral yields from funding rates, allowing users to earn returns without market exposure",
+    description: "Liminal is a DeFi protocol on Hyperliquid that offers stable, delta-neutral yields from funding rates, allowing users to earn returns without market exposure",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/liminal.jpg`,
     audits: "0",
@@ -21181,7 +20716,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "liminal-money/index.js",
     twitter: "liminalmoney",
-    listedAt: 1753556072,
+    listedAt: 1753556072
   },
   {
     id: "6483",
@@ -21189,8 +20724,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://angstrom.xyz/",
-    description:
-      "Angstrom is a hybrid DEX built on Uniswap V4 that uses app-level sequencing to internalize MEV, allowing LPs to earn arbitrage profits instead of external actors",
+    description: "Angstrom is a hybrid DEX built on Uniswap V4 that uses app-level sequencing to internalize MEV, allowing LPs to earn arbitrage profits instead of external actors",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/angstrom.jpg`,
     audits: "0",
@@ -21203,7 +20737,7 @@ const data4: Protocol[] = [
     module: "angstrom/index.js",
     twitter: "angstromxyz",
     github: ["SorellaLabs"],
-    listedAt: 1753556082,
+    listedAt: 1753556082
   },
   {
     id: "6484",
@@ -21211,8 +20745,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://thecabal.xyz",
-    description:
-      "Cabal is an incentive layer that automates governance, staking, and reward capture. Users deposit base assets such as INIT or LP tokens to earn boosted yields from governance bribes and staking",
+    description: "Cabal is an incentive layer that automates governance, staking, and reward capture. Users deposit base assets such as INIT or LP tokens to earn boosted yields from governance bribes and staking",
     chain: "Initia",
     logo: `${baseIconsUrl}/cabal.jpg`,
     audits: "0",
@@ -21225,7 +20758,7 @@ const data4: Protocol[] = [
     module: "cabal/index.js",
     twitter: "CabalVIP",
     github: ["Cabal-VIP"],
-    listedAt: 1753650153,
+    listedAt: 1753650153
   },
   /* {  // duplicate of glyph v4
     id: "6485",
@@ -21271,7 +20804,7 @@ const data4: Protocol[] = [
     twitter: "splashing_xyz",
     audit_links: ["https://splashing-xyz.gitbook.io/splashing/audit/peckshield"],
     github: ["SplashingStaking"],
-    listedAt: 1753724993,
+    listedAt: 1753724993
   },
   {
     id: "6487",
@@ -21279,8 +20812,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://varlamore.capital/",
-    description:
-      "Varlamore Capital is a DeFi risk manager that provides catered yield opportunities for different risk profiles while enhancing liquidity for protocols",
+    description: "Varlamore Capital is a DeFi risk manager that provides catered yield opportunities for different risk profiles while enhancing liquidity for protocols",
     chain: "Sonic",
     logo: `${baseIconsUrl}/varlamore-capital.jpg`,
     audits: "2",
@@ -21293,7 +20825,7 @@ const data4: Protocol[] = [
     module: "varlamore-capital/index.js",
     twitter: "VarlamoreCap",
     audit_links: ["https://docs.silo.finance/docs/audits"],
-    listedAt: 1753725001,
+    listedAt: 1753725001
   },
   {
     id: "6488",
@@ -21313,7 +20845,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["190"],
     module: "elyx/index.js",
     twitter: "ElyxFinance",
-    listedAt: 1753725007,
+    listedAt: 1753725007
   },
   {
     id: "6489",
@@ -21333,10 +20865,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "bitzy/index.js",
     twitter: "bitzy_app",
-    audit_links: [
-      "https://github.com/bitzy-app/audit-reports/blob/main/Bailsec%20-%20Bitzy%20-%20Update%20Audit%20(differential)%20-%20Final%20Report.pdf",
-    ],
-    listedAt: 1753725965,
+    audit_links: ["https://github.com/bitzy-app/audit-reports/blob/main/Bailsec%20-%20Bitzy%20-%20Update%20Audit%20(differential)%20-%20Final%20Report.pdf"],
+    listedAt: 1753725965
   },
   {
     id: "6490",
@@ -21344,8 +20874,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://namifi.app/nami-index",
-    description:
-      "Nami Index is a decentralized protocol on Thorchain, built for issuing fully backed on-chain asset indexes",
+    description: "Nami Index is a decentralized protocol on Thorchain, built for issuing fully backed on-chain asset indexes",
     chain: "Thorchain",
     logo: `${baseIconsUrl}/nami-index.jpg`,
     audits: "2",
@@ -21359,7 +20888,7 @@ const data4: Protocol[] = [
     twitter: "Nami_Index_",
     audit_links: ["https://www.halborn.com/audits/thorchain/nami-protocol-rujira-index-product-0612c8"],
     github: ["NAMIProtocol"],
-    listedAt: 1753725971,
+    listedAt: 1753725971
   },
   {
     id: "6491",
@@ -21367,8 +20896,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.figuremarkets.com/crypto-exchange/",
-    description:
-      "A crypto exchange designed for traders who demand more. Benefit from the security and asset control of decentralized custody with the ease and liquidity of a centralized exchange",
+    description: "A crypto exchange designed for traders who demand more. Benefit from the security and asset control of decentralized custody with the ease and liquidity of a centralized exchange",
     chain: "Provenance",
     logo: `${baseIconsUrl}/figure-markets-exchange.jpg`,
     audits: "0",
@@ -21381,7 +20909,7 @@ const data4: Protocol[] = [
     module: "figure-markets/index.js",
     twitter: "figuremarkets",
     parentProtocol: "parent#figure-markets",
-    listedAt: 1753725971,
+    listedAt: 1753725971
   },
   {
     id: "6492",
@@ -21402,7 +20930,7 @@ const data4: Protocol[] = [
     module: "figure-markets-democratized-prime/index.js",
     twitter: "figuremarkets",
     parentProtocol: "parent#figure-markets",
-    listedAt: 1753725971,
+    listedAt: 1753725971
   },
   {
     id: "6493",
@@ -21411,8 +20939,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hylo.so/",
-    description:
-      "Hylo splits yield-bearing assets into two complementary products: hyUSD - a stable USD-denominated asset with access to sustainable yield, and xSOL - leveraged SOL exposure with zero liquidation risk and no funding costs. Users can deposit LSTs to mint either asset",
+    description: "Hylo splits yield-bearing assets into two complementary products: hyUSD - a stable USD-denominated asset with access to sustainable yield, and xSOL - leveraged SOL exposure with zero liquidation risk and no funding costs. Users can deposit LSTs to mint either asset",
     chain: "Solana",
     logo: `${baseIconsUrl}/hylo-protocol.jpg`,
     audits: "2",
@@ -21426,14 +20953,14 @@ const data4: Protocol[] = [
     twitter: "hylo_so",
     oraclesBreakdown: [
       {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.hylo.so/technical-addendum/hylo-equations#sol-usd-oracle"],
-      },
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://docs.hylo.so/technical-addendum/hylo-equations#sol-usd-oracle"],
+      }
     ],
     audit_links: ["https://docs.hylo.so/security/audits"],
     parentProtocol: "parent#hylo",
-    listedAt: 1753802383,
+    listedAt: 1753802383
   },
   {
     id: "6494",
@@ -21441,8 +20968,7 @@ const data4: Protocol[] = [
     address: "cardano:2d9db8a89f074aa045eab177f23a3395f62ced8b53499a9e4ad46c80.464c4f57",
     symbol: "FLOW",
     url: "https://flowcardano.org/app",
-    description:
-      "Flow is a capital-efficient pooled lending protocol enabling investors to earn interest and borrowers to obtain instant loans on Cardano",
+    description: "Flow is a capital-efficient pooled lending protocol enabling investors to earn interest and borrowers to obtain instant loans on Cardano",
     chain: "Cardano",
     logo: `${baseIconsUrl}/flow-lending.jpg`,
     audits: "2",
@@ -21454,11 +20980,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "flow/index.js",
     twitter: "flowdefi",
-    audit_links: [
-      "https://github.com/flow-lending/flow-lending-smart-contracts/blob/main/audits/flow_lending_audit-2025-07-07.pdf",
-    ],
+    audit_links: ["https://github.com/flow-lending/flow-lending-smart-contracts/blob/main/audits/flow_lending_audit-2025-07-07.pdf"],
     github: ["flow-lending"],
-    listedAt: 1753802389,
+    listedAt: 1753802389
   },
   {
     id: "6495",
@@ -21466,8 +20990,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://prophet.fun/",
-    description:
-      "Prophet.fun is a fast, on-chain prediction platform built on Solana. Bet on crypto price swings, whale wallet moves, narrative shifts on Crypto Twitter, and degen roulette-style markets",
+    description: "Prophet.fun is a fast, on-chain prediction platform built on Solana. Bet on crypto price swings, whale wallet moves, narrative shifts on Crypto Twitter, and degen roulette-style markets",
     chain: "Solana",
     logo: `${baseIconsUrl}/prophet.fun.jpg`,
     audits: "0",
@@ -21479,7 +21002,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "prophet-fun/index.js",
     twitter: "Prophet_fun",
-    listedAt: 1753802395,
+    listedAt: 1753802395
   },
   {
     id: "6496",
@@ -21499,7 +21022,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "honeypop/index.js",
     twitter: "honeypop_app",
-    listedAt: 1753803213,
+    listedAt: 1753803213
   },
   {
     id: "6497",
@@ -21519,7 +21042,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "evedex/index.js",
     twitter: "EveDexOfficial",
-    listedAt: 1753803222,
+    listedAt: 1753803222
   },
   {
     id: "6498",
@@ -21546,8 +21069,7 @@ const data4: Protocol[] = [
     address: "solana:orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
     symbol: "ORCA",
     url: "https://www.orca.so/tokens",
-    description:
-      "Wavebreak is Orca’s user-friendly launchpad on Solana that sells new tokens using a transparent bonding curve, where prices rise with demand. After launch, tokens move into Orca Whirlpools for deep, permissionless liquidity, and traders earn points during the sale that convert into daily rewards",
+    description: "Wavebreak is Orca’s user-friendly launchpad on Solana that sells new tokens using a transparent bonding curve, where prices rise with demand. After launch, tokens move into Orca Whirlpools for deep, permissionless liquidity, and traders earn points during the sale that convert into daily rewards",
     chain: "Solana",
     logo: `${baseIconsUrl}/orca-wavebreak.jpg`,
     audits: "0",
@@ -21567,8 +21089,7 @@ const data4: Protocol[] = [
     address: "0x6c0aeceeDc55c9d55d8B99216a670D85330941c3",
     symbol: "PRL",
     url: "https://parallel.best/",
-    description:
-      "Parallel is an over-collateralized, decentralized, modular & capital-efficient stablecoins protocol deployed on several chains. Each stablecoin can be minted against an approved basket of yield generating correlated assets at the oracle price and redeemed for it without cooldown",
+    description: "Parallel is an over-collateralized, decentralized, modular & capital-efficient stablecoins protocol deployed on several chains. Each stablecoin can be minted against an approved basket of yield generating correlated assets at the oracle price and redeemed for it without cooldown",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/parallel-protocol-v3.jpg`,
     audits: "2",
@@ -21582,7 +21103,7 @@ const data4: Protocol[] = [
     twitter: "ParallelMoney",
     audit_links: ["https://docs.parallel.best/resources/security-audits"],
     parentProtocol: "parent#parallel-protocol",
-    listedAt: 1753821437,
+    listedAt: 1753821437
   },
   {
     id: "6501",
@@ -21590,8 +21111,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://etherex.finance/",
-    description:
-      "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
+    description: "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Linea",
     logo: `${baseIconsUrl}/etherex-legacy.jpg`,
     audits: "2",
@@ -21605,7 +21125,7 @@ const data4: Protocol[] = [
     twitter: "etherexfi",
     audit_links: ["https://docs.etherex.finance/pages/audits"],
     parentProtocol: "parent#etherex",
-    listedAt: 1753887091,
+    listedAt: 1753887091
   },
   {
     id: "6502",
@@ -21613,8 +21133,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://etherex.finance/",
-    description:
-      "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
+    description: "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Linea",
     logo: `${baseIconsUrl}/etherex-cl.jpg`,
     audits: "2",
@@ -21628,7 +21147,7 @@ const data4: Protocol[] = [
     twitter: "etherexfi",
     audit_links: ["https://docs.etherex.finance/pages/audits"],
     parentProtocol: "parent#etherex",
-    listedAt: 1753887097,
+    listedAt: 1753887097
   },
   {
     id: "6503",
@@ -21637,8 +21156,7 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "brktETH",
     url: "https://app.bracket.fi/",
-    description:
-      "brktETH: a composite token backed by a mix of underlying liquid staking tokens, fungible, and accrues underlying LST/LRT reward points",
+    description: "brktETH: a composite token backed by a mix of underlying liquid staking tokens, fungible, and accrues underlying LST/LRT reward points",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bracket-lst.jpg`,
     audits: "2",
@@ -21652,7 +21170,7 @@ const data4: Protocol[] = [
     twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket-protocol",
-    listedAt: 1753887804,
+    listedAt: 1753887804
   },
   {
     id: "6504",
@@ -21660,8 +21178,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.bracket.fi/",
-    description:
-      "Bracket’s vaults are tokenized investment vehicles that follow predefined strategies and constraints, offering users exposure to actively managed portfolios with transparent NAV and accounting",
+    description: "Bracket’s vaults are tokenized investment vehicles that follow predefined strategies and constraints, offering users exposure to actively managed portfolios with transparent NAV and accounting",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bracket-vaults.jpg`,
     audits: "2",
@@ -21675,7 +21192,7 @@ const data4: Protocol[] = [
     twitter: "bracket_fi",
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket-protocol",
-    listedAt: 1753887812,
+    listedAt: 1753887812
   },
   {
     id: "6505",
@@ -21696,7 +21213,7 @@ const data4: Protocol[] = [
     twitter: "iguanadex",
     forkedFromIds: [],
     parentProtocol: "parent#iguanadex",
-    listedAt: 1753892205,
+    listedAt: 1753892205
   },
   {
     id: "6506",
@@ -21717,7 +21234,7 @@ const data4: Protocol[] = [
     twitter: "Omni_Exchange",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#omni-exchange",
-    listedAt: 1753925483,
+    listedAt: 1753925483
   },
   {
     id: "6507",
@@ -21725,8 +21242,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sprinter.tech/",
-    description:
-      "Built by the team behind ChainSafe, Sprinter combines solving-as-a-service with credit-based liquidity, enabling protocols, dApps, and wallets to access optimal execution routes without requiring pre-funded capital. Through its core products, Sprinter Solve and Sprinter Stash, the platform unlocks seamless, collateral-free liquidity for solvers and high rewards for LPs. Sprinter is on a mission to power the next era of crosschain DeFi with faster, smarter, and more capital-efficient infrastructure.",
+    description: "Built by the team behind ChainSafe, Sprinter combines solving-as-a-service with credit-based liquidity, enabling protocols, dApps, and wallets to access optimal execution routes without requiring pre-funded capital. Through its core products, Sprinter Solve and Sprinter Stash, the platform unlocks seamless, collateral-free liquidity for solvers and high rewards for LPs. Sprinter is on a mission to power the next era of crosschain DeFi with faster, smarter, and more capital-efficient infrastructure.",
     chain: "Base",
     logo: `${baseIconsUrl}/sprinter.jpg`,
     audits: "2",
@@ -21740,7 +21256,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/sprintertech/sprinter-stash-contracts/tree/main/audits"],
     github: ["sprintertech"],
-    listedAt: 1753971659,
+    listedAt: 1753971659
   },
   {
     id: "6508",
@@ -21748,8 +21264,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "PRINT",
     url: "https://incprinter.com/",
-    description:
-      "Incprinter.com is a fork of liquity V1 on Pulsechain blockchain, chain ID 369, it uses $INC as collateral to mint $INCD stable coint and has $PRINT as the staking token.",
+    description: "Incprinter.com is a fork of liquity V1 on Pulsechain blockchain, chain ID 369, it uses $INC as collateral to mint $INCD stable coint and has $PRINT as the staking token.",
     chain: "Pulse",
     logo: `${baseIconsUrl}/incprinter.jpg`,
     audits: "0",
@@ -21761,7 +21276,7 @@ const data4: Protocol[] = [
     module: "Incprinter/index.js",
     twitter: null,
     forkedFromIds: ["270"],
-    listedAt: 1753971689,
+    listedAt: 1753971689
   },
   {
     id: "6509",
@@ -21782,18 +21297,18 @@ const data4: Protocol[] = [
     twitter: "DeFiDollarIO",
     oraclesBreakdown: [
       {
-        name: "Pyth",
-        type: "Secondary",
-        proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
+      name: "Pyth",
+      type: "Secondary",
+      proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
       },
       {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
-      },
+      name: "Chainlink",
+      type: "Primary",
+      proof: ["https://docs.defidollar.io/documentation/risk-disclosure"],
+      }
     ],
     forkedFromIds: ["5656"],
-    listedAt: 1753985702,
+    listedAt: 1753985702
   },
   {
     id: "6510",
@@ -21801,8 +21316,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://pvp.trade/",
-    description:
-      "pvp.trade is a Telegram-based trading bot built into Hyperliquid’s ecosystem. It enables users to execute spot and perpetual futures trades directly from their Telegram groups, without visiting Hyperliquid’s native UI",
+    description: "pvp.trade is a Telegram-based trading bot built into Hyperliquid’s ecosystem. It enables users to execute spot and perpetual futures trades directly from their Telegram groups, without visiting Hyperliquid’s native UI",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/pvp-trade.jpg`,
     audits: "0",
@@ -21841,8 +21355,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://phantom.com/",
-    description:
-      "Phantom Perps is an interface for trading long or short across 100+ markets with up to 40x leverage, using HyperliquidX.",
+    description: "Phantom Perps is an interface for trading long or short across 100+ markets with up to 40x leverage, using HyperliquidX.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/phantom-perps.jpg`,
     audits: "0",
@@ -21881,8 +21394,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.cronews.fun/",
-    description:
-      "Cronews is a decentralized news platform powered by community. Users can break news, shape narratives, and earn rewards. It's where community-driven journalism meets blockchain innovation.",
+    description: "Cronews is a decentralized news platform powered by community. Users can break news, shape narratives, and earn rewards. It's where community-driven journalism meets blockchain innovation.",
     chain: "Cronos",
     logo: `${baseIconsUrl}/cronews.jpg`,
     audits: "0",
@@ -21894,7 +21406,7 @@ const data4: Protocol[] = [
     module: "cronews/index.js",
     twitter: "cronewsfun",
     forkedFromIds: [],
-    listedAt: 1754058864,
+    listedAt: 1754058864
   },
   {
     id: "6515",
@@ -21910,7 +21422,7 @@ const data4: Protocol[] = [
     gecko_id: "tree-capital",
     cmcId: "35511",
     category: "SoFi",
-    chains: ["Ethereum", "Base", "Solana"],
+    chains: ["Ethereum", "Base",  "Solana"],
     module: "dummy.js",
     twitter: "TreeNewsFeed",
     forkedFromIds: [],
@@ -21932,7 +21444,7 @@ const data4: Protocol[] = [
     tags: ["Other Fixed Income", "Onchain Equity", "Money Market Funds"],
     chains: ["Ethereum", "Stellar"],
     module: "wisdomtree/index.js",
-    forkedFromIds: [],
+    forkedFromIds: []
   },
   {
     id: "6517",
@@ -21940,7 +21452,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://teralend.finance/",
-    description: "Teralend is an open lending and borrowing protocol on Flare",
+    description:
+      "Teralend is an open lending and borrowing protocol on Flare",
     chain: "Flare",
     logo: `${baseIconsUrl}/teralend.jpg`,
     audits: "0",
@@ -21952,7 +21465,7 @@ const data4: Protocol[] = [
     module: "teralend/index.js",
     forkedFromIds: [],
     twitter: "TeralendFinance",
-    listedAt: 1754325942,
+    listedAt: 1754325942
   },
   {
     id: "6518",
@@ -21960,7 +21473,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://warp.finance",
-    description: "Deploy Tokens in Seconds on Warp Finance",
+    description:
+      "Deploy Tokens in Seconds on Warp Finance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/warp-finance.jpg`,
     audits: "0",
@@ -21972,7 +21486,7 @@ const data4: Protocol[] = [
     module: "warpfinance/index.js",
     forkedFromIds: [],
     twitter: "WarpEvm",
-    listedAt: 1754325949,
+    listedAt: 1754325949
   },
   {
     id: "6519",
@@ -21994,7 +21508,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "vechainofficial",
     audit_links: ["https://hacken.io/audits/vechain-foundation/sca-vechain-stargate-may2025/"],
-    listedAt: 1754325955,
+    listedAt: 1754325955
   },
   {
     id: "6520",
@@ -22002,7 +21516,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.orbiter.finance/",
-    description: "Orbiter Finance is a ZK-tech based cross-chain protocol offers fast, secure, and instant transfer",
+    description:
+      "Orbiter Finance is a ZK-tech based cross-chain protocol offers fast, secure, and instant transfer",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/orbiter-finance.jpg`,
     audits: "0",
@@ -22010,30 +21525,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: [
-      "Ethereum",
-      "Base",
-      "Arbitrum",
-      "Optimism",
-      "Polygon",
-      "Avalanche",
-      "Sonic",
-      "Scroll",
-      "Linea",
-      "Unichain",
-      "Berachain",
-      "Ink",
-      "Blast",
-      "Mantle",
-      "Mode",
-      "Fraxtal",
-      "Fuse",
-      "Celo",
-      "Soneium",
-      "World Chain",
-      "Binance",
-      "Solana",
-    ],
+    chains: ["Ethereum", "Base", "Arbitrum", "Optimism", "Polygon", "Avalanche", "Sonic", "Scroll", "Linea", "Unichain", "Berachain", "Ink", "Blast", "Mantle", "Mode", "Fraxtal", "Fuse", "Celo", "Soneium", "World Chain", "Binance", "Solana"],
     module: "dummy.js",
     forkedFromIds: [],
     twitter: "Orbiter_Finance",
@@ -22046,7 +21538,8 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://app.based.one/r/DEFILLAMA",
     referralUrl: "https://app.based.one/r/DEFILLAMA",
-    description: "Buy, Sell and Spend Crypto. Powered by Hyperliquid",
+    description:
+      "Buy, Sell and Spend Crypto. Powered by Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/basedapp.jpg`,
     audits: "0",
@@ -22099,7 +21592,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "paint_swap",
     parentProtocol: "parent#paintswap",
-    listedAt: 1754371199,
+    listedAt: 1754371199
   },
   {
     id: "6524",
@@ -22121,7 +21614,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "eightlends",
     audit_links: ["https://skynet.certik.com/projects/8lends"],
-    listedAt: 1754371223,
+    listedAt: 1754371223
   },
   {
     id: "6525",
@@ -22129,7 +21622,8 @@ const data4: Protocol[] = [
     address: "lisk:0xdF92bA28D17329a7284A5eC230967768D4cb7A89",
     symbol: "FAET",
     url: "https://faet.io",
-    description: "Faet is a decentralized metaverse engine with modular NFT and staking contracts built on Ethereum",
+    description:
+      "Faet is a decentralized metaverse engine with modular NFT and staking contracts built on Ethereum",
     chain: "Lisk",
     logo: `${baseIconsUrl}/faet.jpg`,
     audits: "0",
@@ -22142,7 +21636,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "FaetStudio",
     github: ["FaetStudio"],
-    listedAt: 1754371231,
+    listedAt: 1754371231
   },
   {
     id: "6526",
@@ -22164,7 +21658,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "AmplifyFinance_",
     audit_links: ["https://amplifyfinance.gitbook.io/docs/security-and-audits"],
-    listedAt: 1754371237,
+    listedAt: 1754371237
   },
   {
     id: "6527",
@@ -22186,7 +21680,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "gloopfinance",
     audit_links: ["https://docs.gloop.finance/security-and-risk/audits"],
-    listedAt: 1754371245,
+    listedAt: 1754371245
   },
   {
     id: "6528",
@@ -22194,7 +21688,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.euler.finance/governor/edge-capital?network=tac",
-    description: "Crypto hedge fund & largest liquidity provider to early-stage protocols",
+    description:
+      "Crypto hedge fund & largest liquidity provider to early-stage protocols",
     chain: "TAC",
     logo: `${baseIconsUrl}/edge-capital.jpg`,
     audits: "0",
@@ -22206,7 +21701,7 @@ const data4: Protocol[] = [
     module: "edge-capital/index.js",
     forkedFromIds: [],
     twitter: "EdgeCapitalMgmt",
-    listedAt: 1754418907,
+    listedAt: 1754418907
   },
   {
     id: "6529",
@@ -22228,7 +21723,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "0xOdysseyApp",
     audit_links: ["https://docs.odyssey.finance/resources/audits"],
-    listedAt: 1754418913,
+    listedAt: 1754418913
   },
   {
     id: "6530",
@@ -22249,7 +21744,7 @@ const data4: Protocol[] = [
     module: "verified/index.js",
     forkedFromIds: [],
     twitter: "veridefi",
-    listedAt: 1754418921,
+    listedAt: 1754418921
   },
   {
     id: "6531",
@@ -22257,7 +21752,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dexari.com/",
-    description: "Trade perps & spot with CEX-like UX, advanced charts, and full self-custody. Powered by Hyperliquid",
+    description:
+      "Trade perps & spot with CEX-like UX, advanced charts, and full self-custody. Powered by Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/dexari.jpg`,
     audits: "0",
@@ -22277,7 +21773,8 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "adraSOL",
     url: "https://app.adrastea.fi/staking",
-    description: "LST for Solana",
+    description:
+      "LST for Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/adrastea-lst.jpg`,
     audits: "0",
@@ -22290,7 +21787,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "AdrasteaFinance",
     parentProtocol: "parent#adrastea",
-    listedAt: 1754499345,
+    listedAt: 1754499345
   },
   {
     id: "6533",
@@ -22312,7 +21809,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "KaiaChain",
     audit_links: [],
-    listedAt: 1754499355,
+    listedAt: 1754499355
   },
   {
     id: "6534",
@@ -22320,7 +21817,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://stabil.finance",
-    description: "Compound APR to APY on Stabil Finance",
+    description:
+      "Compound APR to APY on Stabil Finance",
     chain: "Cronos",
     logo: `${baseIconsUrl}/stabil-finance.jpg`,
     audits: "0",
@@ -22333,7 +21831,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "StabilFinance",
     audit_links: [],
-    listedAt: 1754501732,
+    listedAt: 1754501732
   },
   {
     id: "6535",
@@ -22356,7 +21854,7 @@ const data4: Protocol[] = [
     twitter: "gaib_ai",
     audit_links: ["https://docs.gaib.ai/audits"],
     github: ["gaib-ai"],
-    listedAt: 1754501739,
+    listedAt: 1754501739
   },
   {
     id: "6536",
@@ -22364,7 +21862,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://boros.pendle.finance/markets",
-    description: "Boros is a yield-trading platform on margin by Pendle",
+    description:
+      "Boros is a yield-trading platform on margin by Pendle",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/boros.jpg`,
     audits: "0",
@@ -22376,7 +21875,7 @@ const data4: Protocol[] = [
     module: "boros/index.js",
     forkedFromIds: [],
     twitter: "boros_fi",
-    listedAt: 1754577595,
+    listedAt: 1754577595
   },
   {
     id: "6537",
@@ -22398,7 +21897,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "HyperstableX",
     parentProtocol: "parent#hyperstable",
-    listedAt: 1754578412,
+    listedAt: 1754578412
   },
   {
     id: "6538",
@@ -22406,7 +21905,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hyperflow.fun/",
-    description: "Hyperflow is a DEX and bridge aggregator for swapping and transferring assets to Hyperliquid",
+    description:
+      "Hyperflow is a DEX and bridge aggregator for swapping and transferring assets to Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperflow.jpg`,
     audits: "0",
@@ -22418,7 +21918,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     forkedFromIds: [],
     twitter: "HyperFlow_fun",
-    listedAt: 1754580149,
+    listedAt: 1754580149
   },
   {
     id: "6539",
@@ -22439,7 +21939,7 @@ const data4: Protocol[] = [
     twitter: "Omni_Exchange",
     forkedFromIds: ["2197"],
     parentProtocol: "parent#omni-exchange",
-    listedAt: 1753925483,
+    listedAt: 1753925483
   },
   {
     id: "6540",
@@ -22460,7 +21960,7 @@ const data4: Protocol[] = [
     twitter: "Omni_Exchange",
     forkedFromIds: [],
     parentProtocol: "parent#omni-exchange",
-    listedAt: 1753925483,
+    listedAt: 1753925483
   },
   {
     id: "6541",
@@ -22468,8 +21968,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://vedelegate.vet/",
-    description:
-      "veDelegate is a DeFi application within the VeChain B3TR ecosystem, designed to simplify and optimize governance participation. It allows users to stake their tokens to earn voting rewards without the need for weekly manual voting.",
+    description: "veDelegate is a DeFi application within the VeChain B3TR ecosystem, designed to simplify and optimize governance participation. It allows users to stake their tokens to earn voting rewards without the need for weekly manual voting.",
     chain: "VeChain",
     logo: `${baseIconsUrl}/vedelegate.jpg`,
     audits: "2",
@@ -22482,7 +21981,7 @@ const data4: Protocol[] = [
     twitter: "veDelegate",
     forkedFromIds: [],
     audit_links: ["https://hacken.io/audits/vedelegate-vet/sca-vedelegate-vet-contracts-feb2025/"],
-    listedAt: 1754593961,
+    listedAt: 1754593961
   },
   {
     id: "6542",
@@ -22502,7 +22001,7 @@ const data4: Protocol[] = [
     module: "simitci-v3/index.js",
     twitter: "Simitci_Swap",
     forkedFromIds: ["2198"],
-    listedAt: 1754593967,
+    listedAt: 1754593967
   },
   {
     id: "6543",
@@ -22567,8 +22066,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mass.money/",
-    description:
-      "Mass is a mobile-first DeFi aggregator that uses account abstraction to unify spot, perpetual, and RWA trading across multiple chains within a single interface",
+    description: "Mass is a mobile-first DeFi aggregator that uses account abstraction to unify spot, perpetual, and RWA trading across multiple chains within a single interface",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/mass.jpg`,
     audits: "0",
@@ -22599,7 +22097,7 @@ const data4: Protocol[] = [
     module: "mjolnir-exchange/index.js",
     twitter: "MjolnirExchange",
     forkedFromIds: ["337"],
-    listedAt: 1754658041,
+    listedAt:1754658041
   },
   {
     id: "6548",
@@ -22607,8 +22105,7 @@ const data4: Protocol[] = [
     address: "sei:0x4b416A45e1f26a53D2ee82a50a4C7D7bE9EdA9E4",
     symbol: "KURA",
     url: "https://kuraswap.org",
-    description:
-      "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
+    description: "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
     chain: "Sei",
     logo: `${baseIconsUrl}/kuraswap-cl.jpg`,
     audits: "0",
@@ -22621,7 +22118,7 @@ const data4: Protocol[] = [
     twitter: "Kura_Dex",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#kuraswap",
-    listedAt: 1754658688,
+    listedAt:1754658688
   },
   {
     id: "6549",
@@ -22629,8 +22126,7 @@ const data4: Protocol[] = [
     address: "sei:0x4b416A45e1f26a53D2ee82a50a4C7D7bE9EdA9E4",
     symbol: "KURA",
     url: "https://kuraswap.org",
-    description:
-      "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
+    description: "Welcome to Kura, a decentralized spot DEX built on Sei, designed to unify performance, decentralization, and usability into a seamless onchain experience",
     chain: "Sei",
     logo: `${baseIconsUrl}/kuraswap-legacy.jpg`,
     audits: "0",
@@ -22643,7 +22139,7 @@ const data4: Protocol[] = [
     twitter: "Kura_Dex",
     forkedFromIds: ["2197"],
     parentProtocol: "parent#kuraswap",
-    listedAt: 1754658694,
+    listedAt:1754658694
   },
   {
     id: "6550",
@@ -22651,8 +22147,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://asseto.finance/product",
-    description:
-      "AoABT is a token under the AoABT token series supported and operated by Asseto, backed 1:1 by Class C Shares of the Underlying Fund",
+    description: "AoABT is a token under the AoABT token series supported and operated by Asseto, backed 1:1 by Class C Shares of the Underlying Fund",
     chain: "HashKey Chain",
     logo: `${baseIconsUrl}/asseto-aoabt.jpg`,
     audits: "0",
@@ -22665,7 +22160,7 @@ const data4: Protocol[] = [
     twitter: "AssetoFinance",
     forkedFromIds: [],
     audit_links: ["https://asseto.gitbook.io/asseto/technical-documents/audits"],
-    listedAt: 1754658791,
+    listedAt:1754658791
   },
   {
     id: "6551",
@@ -22692,8 +22187,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "http://nordstern.finance/",
-    description:
-      "Nordstern.Finance has a built-in and home-grown DEX aggregator that employs algorithms and smart order routing techniques powered by artificial intelligence (AI)",
+    description: "Nordstern.Finance has a built-in and home-grown DEX aggregator that employs algorithms and smart order routing techniques powered by artificial intelligence (AI)",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/nordstern.finance.jpg`,
     audits: "0",
@@ -22807,8 +22301,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.dextrabot.com/",
-    description:
-      "Enables users to discover and track profitable wallets on Hyperliquid that align with your strategy, and instantly copy trade their positions",
+    description: "Enables users to discover and track profitable wallets on Hyperliquid that align with your strategy, and instantly copy trade their positions",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/dextrabot.jpg`,
     audits: "0",
@@ -22827,8 +22320,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://hyperdash.info/",
-    description:
-      "Hyperdash empowers traders with real-time analytics and insights by tracking the most successful derivatives traders on Hyperliquid",
+    description: "Hyperdash empowers traders with real-time analytics and insights by tracking the most successful derivatives traders on Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperdash.jpg`,
     audits: "0",
@@ -22868,8 +22360,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://trysuper.co/",
-    description:
-      "SuperX is a dual-interface trading tool (Telegram bot and a web-based dashboard) that enables users to discover, follow, and copy top-performing traders on the Hyperliquid",
+    description: "SuperX is a dual-interface trading tool (Telegram bot and a web-based dashboard) that enables users to discover, follow, and copy top-performing traders on the Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/superx.jpg`,
     audits: "0",
@@ -22888,8 +22379,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dl.walletv.io/",
-    description:
-      "Trade Hyperliquid perps, swap cross-chain, access pumpdotfun, track smart money, and invest in tokenized xStocksFi. All-in-One Wallet",
+    description: "Trade Hyperliquid perps, swap cross-chain, access pumpdotfun, track smart money, and invest in tokenized xStocksFi. All-in-One Wallet",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/wallet-v.jpg`,
     audits: "0",
@@ -22922,7 +22412,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/choice-exchange/choice_exchange/blob/main/audit/audit_v1.0.pdf"],
     github: ["choice-exchange"],
-    listedAt: 1754929429,
+    listedAt:1754929429
   },
   {
     id: "6564",
@@ -22930,8 +22420,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://fomo.biz/app/dex/v4",
-    description:
-      "FomoSwap V4 is powered by Algebra Integral, a cutting-edge decentralized exchange designed to provide efficient and secure trading of bonded tokens, stablecoins, and more. Built on Taraxa, FomoSwap V4 leverages the strength of Algebra Integral to deliver fast, scalable, and seamless trading experiences within the Fomo ecosystem",
+    description: "FomoSwap V4 is powered by Algebra Integral, a cutting-edge decentralized exchange designed to provide efficient and secure trading of bonded tokens, stablecoins, and more. Built on Taraxa, FomoSwap V4 leverages the strength of Algebra Integral to deliver fast, scalable, and seamless trading experiences within the Fomo ecosystem",
     chain: "Taraxa",
     logo: `${baseIconsUrl}/fomoswap-v4.jpg`,
     audits: "0",
@@ -22944,7 +22433,7 @@ const data4: Protocol[] = [
     twitter: "fomodotbiz",
     forkedFromIds: ["3710"],
     parentProtocol: "parent#fomoswap",
-    listedAt: 1754929587,
+    listedAt:1754929587
   },
   {
     id: "6565",
@@ -22952,8 +22441,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://theautopilot.xyz/app",
-    description:
-      " Autopilot is an on-chain automation system for veAERO holders.It manages voting, claiming, and swapping across epochs with no manual input required",
+    description: " Autopilot is an on-chain automation system for veAERO holders.It manages voting, claiming, and swapping across epochs with no manual input required",
     chain: "Base",
     logo: `${baseIconsUrl}/autopilot.jpg`,
     audits: "2",
@@ -22966,7 +22454,7 @@ const data4: Protocol[] = [
     twitter: "AutoPilot_xyz",
     forkedFromIds: [],
     audit_links: ["https://autopilot-5.gitbook.io/autopilot/protocol/audit-and-security"],
-    listedAt: 1754929597,
+    listedAt:1754929597
   },
   {
     id: "6566",
@@ -22974,8 +22462,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://daoaas.io/explore",
-    description:
-      "DAOaaS is a decentralised DAO platform on ENI, combining governance, operations, and traffic. It empowers communities with cross-chain tech, AI tools, and incentive models to enable efficient, transparent collaboration",
+    description: "DAOaaS is a decentralised DAO platform on ENI, combining governance, operations, and traffic. It empowers communities with cross-chain tech, AI tools, and incentive models to enable efficient, transparent collaboration",
     chain: "ENI",
     logo: `${baseIconsUrl}/daoaas.jpg`,
     audits: "0",
@@ -22987,7 +22474,7 @@ const data4: Protocol[] = [
     module: "daoaas-swap/index.js",
     twitter: "DAOaaS_Official",
     forkedFromIds: [],
-    listedAt: 1754929605,
+    listedAt:1754929605
   },
   {
     id: "6567",
@@ -23027,9 +22514,9 @@ const data4: Protocol[] = [
     twitter: "earnium_io",
     forkedFromIds: [],
     audit_links: [
-      "https://1273222962-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FwGVcxDIYKUfc2IcujBZO%2Fuploads%2FCTMVlklHys0xsNUkNKMt%2FEarnium%20Audit%20Report-2025-7-25.pdf?alt=media&token=264c6245-06e6-42fc-8f6e-8adc5fa7ad97",
+      "https://1273222962-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FwGVcxDIYKUfc2IcujBZO%2Fuploads%2FCTMVlklHys0xsNUkNKMt%2FEarnium%20Audit%20Report-2025-7-25.pdf?alt=media&token=264c6245-06e6-42fc-8f6e-8adc5fa7ad97"
     ],
-    listedAt: 1755011581,
+    listedAt:1755011581
   },
   {
     id: "6569",
@@ -23050,7 +22537,7 @@ const data4: Protocol[] = [
     twitter: "GammaSwapLabs",
     forkedFromIds: [],
     parentProtocol: "parent#gammaswaplabs",
-    listedAt: 1755011589,
+    listedAt:1755011589
   },
   {
     id: "6570",
@@ -23058,8 +22545,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.templarfi.org/",
-    description:
-      "Templar is the first Cypher Lending protocol that enables borrowing stablecoins against Bitcoin, or any asset on any chain, without trusting centralized intermediaries. No wrapping, no bridging, no KYC necessary",
+    description: "Templar is the first Cypher Lending protocol that enables borrowing stablecoins against Bitcoin, or any asset on any chain, without trusting centralized intermediaries. No wrapping, no bridging, no KYC necessary",
     chain: "Near",
     logo: `${baseIconsUrl}/templar-protocol.jpg`,
     audits: "0",
@@ -23073,17 +22559,17 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: [
       "https://github.com/Templar-Protocol/contracts/blob/dev/audits/2025-07-01/guvenkaya/Templar-NEAR-Smart-Contract-Security-Review-Final-Report.pdf",
-      "https://github.com/Templar-Protocol/contracts/blob/dev/audits/2025-07-01/thesis_defense/250701_Defense_by_Thesis_Templar_Smart_Contracts_Final_Security.pdf",
+      "https://github.com/Templar-Protocol/contracts/blob/dev/audits/2025-07-01/thesis_defense/250701_Defense_by_Thesis_Templar_Smart_Contracts_Final_Security.pdf"
     ],
     oraclesBreakdown: [
       {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15879"],
-      },
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15879"],
+      }
     ],
     github: ["Templar-Protocol"],
-    listedAt: 1755011603,
+    listedAt:1755011603
   },
   {
     id: "6571",
@@ -23091,8 +22577,7 @@ const data4: Protocol[] = [
     address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     symbol: "JTO",
     url: "https://jito.network",
-    description:
-      "Tracks fees and revenue collected by the Jito DAO from MEV and other network sources, excluding liquid staking rewards",
+    description: "Tracks fees and revenue collected by the Jito DAO from MEV and other network sources, excluding liquid staking rewards",
     chain: "Solana",
     logo: `${baseIconsUrl}/jito-dao.jpg`,
     audits: "0",
@@ -23112,8 +22597,7 @@ const data4: Protocol[] = [
     address: "sei:0x5b8203e65aA5Be3F1CF53FD7fa21b91BA4038ECC",
     symbol: "APO",
     url: "https://www.apollon.fi/",
-    description:
-      "Apollon is a decentralized protocol for synthetic assets on Sei, enabling seamless on-chain trading of stocks, ETFs, commodities, and other real-world assets. Designed for efficiency and scalability, Apollon aims to be the leading platform for synthetic asset trading, providing users with full control, security, and real-time market access",
+    description: "Apollon is a decentralized protocol for synthetic assets on Sei, enabling seamless on-chain trading of stocks, ETFs, commodities, and other real-world assets. Designed for efficiency and scalability, Apollon aims to be the leading platform for synthetic asset trading, providing users with full control, security, and real-time market access",
     chain: "Sei",
     logo: `${baseIconsUrl}/apollon.jpg`,
     audits: "0",
@@ -23127,12 +22611,12 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     oraclesBreakdown: [
       {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15788"],
-      },
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15788"],
+      }
     ],
-    listedAt: 1755096289,
+    listedAt:1755096289
   },
   {
     id: "6573",
@@ -23140,8 +22624,7 @@ const data4: Protocol[] = [
     address: "cronos:0xe1f864ae527d3646c222fe1b65460db2d6e62228",
     symbol: "NFX",
     url: "https://www.novalaunch.app",
-    description:
-      "Nova is a next-generation multichain Web3 ecosystem, combining a powerful Launchpad and immersive GameFi platform — all built around the utility-rich, deflationary token $NFX",
+    description: "Nova is a next-generation multichain Web3 ecosystem, combining a powerful Launchpad and immersive GameFi platform — all built around the utility-rich, deflationary token $NFX",
     chain: "Cronos",
     logo: `${baseIconsUrl}/nova-fox.jpg`,
     audits: "2",
@@ -23153,8 +22636,10 @@ const data4: Protocol[] = [
     module: "novafox/index.js",
     twitter: "NovaLabs_X",
     forkedFromIds: [],
-    audit_links: ["https://skynet.certik.com/projects/nova-fox"],
-    listedAt: 1755096295,
+    audit_links: [
+      "https://skynet.certik.com/projects/nova-fox"
+    ],
+    listedAt:1755096295
   },
   {
     id: "6574",
@@ -23162,8 +22647,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.superreturn.ai/",
-    description:
-      "SuperReturn is the intelligent asset manager that will help you allocate your capital in the most efficient way across the entire web3 space",
+    description: "SuperReturn is the intelligent asset manager that will help you allocate your capital in the most efficient way across the entire web3 space",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/superreturn.jpg`,
     audits: "0",
@@ -23174,7 +22658,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Soneium", "Plume Mainnet"],
     module: "superReturn/index.js",
     twitter: "superreturnai",
-    listedAt: 1755108027,
+    listedAt:1755108027
   },
   {
     id: "6575",
@@ -23200,8 +22684,7 @@ const data4: Protocol[] = [
     address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
     symbol: "QUICK",
     url: "https://dapp.quickswap.exchange/",
-    description:
-      "QuickSwap V4 leverages Algebra Integral for customizable liquidity pools, enhancing efficiency with lower gas costs and supports features like dynamic fees.",
+    description: "QuickSwap V4 leverages Algebra Integral for customizable liquidity pools, enhancing efficiency with lower gas costs and supports features like dynamic fees.",
     chain: "Base",
     logo: `${baseIconsUrl}/quickswap-v4.jpg`,
     audits: "0",
@@ -23214,7 +22697,7 @@ const data4: Protocol[] = [
     twitter: "QuickswapDEX",
     forkedFromIds: ["3710"],
     parentProtocol: "parent#quickswap",
-    listedAt: 1755166370,
+    listedAt:1755166370
   },
   {
     id: "6577",
@@ -23222,8 +22705,7 @@ const data4: Protocol[] = [
     address: "arbitrum:0x1114982539a2bfb84e8b9e4e320bbc04532a9e44",
     symbol: "TRN",
     url: "https://www.t3rn.io",
-    description:
-      "t3rn is a Universal Execution Protocol that turns today’s fragmented blockchains into a single, programmable environment. Rather than just passing messages or locking assets, t3rn atomically bundles calldata, proofs, liquidity and settlement into one verifiable transaction executed by a decentralized network of Executors",
+    description: "t3rn is a Universal Execution Protocol that turns today’s fragmented blockchains into a single, programmable environment. Rather than just passing messages or locking assets, t3rn atomically bundles calldata, proofs, liquidity and settlement into one verifiable transaction executed by a decentralized network of Executors",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/t3rn-bridge.jpg`,
     audits: "2",
@@ -23235,7 +22717,7 @@ const data4: Protocol[] = [
     module: "t3rn/index.js",
     twitter: "t3rn_io",
     audit_links: ["https://docs.t3rn.io/resources/security#halborns-smart-contract-security-audit"],
-    listedAt: 1755166445,
+    listedAt:1755166445
   },
   {
     id: "6578",
@@ -23243,8 +22725,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://world.org/ecosystem/app_bf747d63b2fe4b537e4a91ae48ac3aed",
-    description:
-      "Predict the result and get paid from the pool prize if correct! Provably fair and verified on-chain. Only on World Chain",
+    description: "Predict the result and get paid from the pool prize if correct! Provably fair and verified on-chain. Only on World Chain",
     chain: "World Chain",
     logo: `${baseIconsUrl}/r3r.jpg`,
     audits: "0",
@@ -23255,7 +22736,7 @@ const data4: Protocol[] = [
     chains: ["World Chain"],
     module: "r3r/index.js",
     twitter: "x3x_studio",
-    listedAt: 1755166445,
+    listedAt:1755166445
   },
   {
     id: "6579",
@@ -23263,15 +22744,14 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://cap.app/",
-    description:
-      "Cap is a stablecoin protocol that provides credible financial guarantees via two products: the dollar-denominated cUSD and the yield-bearing stcUSD.",
+    description: "Cap is a stablecoin protocol that provides credible financial guarantees via two products: the dollar-denominated cUSD and the yield-bearing stcUSD.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Lending", 
     chains: ["Ethereum"],
     module: "cap-money/index.js",
     twitter: "capmoney_",
@@ -23281,10 +22761,10 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.cap.app/concepts/oracles"],
-      },
+      }
     ],
     github: ["cap-labs-dev"],
-    listedAt: 1755167300,
+    listedAt:1755167300
   },
   {
     id: "6580",
@@ -23292,19 +22772,18 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.raga.finance/",
-    description:
-      "Raga Finance brings institutional-grade structured products to help DeFi users maximize returns. Our one-click vaults simplify access to advanced yield strategies like autocompounding, looping, and more.",
+    description: "Raga Finance brings institutional-grade structured products to help DeFi users maximize returns. Our one-click vaults simplify access to advanced yield strategies like autocompounding, looping, and more.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/raga-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Yield Aggregator", 
     chains: ["Berachain"],
     module: "raga-finance/index.js",
     twitter: "ragafinance",
-    listedAt: 1755167300,
+    listedAt:1755167300
   },
   {
     id: "6581",
@@ -23319,7 +22798,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Canonical Bridge",
+    category: "Canonical Bridge", 
     chains: ["Ethereum"],
     module: "enibridge/index.js",
     twitter: "ENI__Official",
@@ -23330,51 +22809,47 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://securitize.io/primary-market/apollo-diversified-credit-securitize-fund",
-    description:
-      "Earn attractive yield with a fund that provides access to diversified securitized credit. This fund primarily invests in structured credit across multiple sectors.",
+    description: "Earn attractive yield with a fund that provides access to diversified securitized credit. This fund primarily invests in structured credit across multiple sectors.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/apollo-diversified-credit-securitize-fund.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Private Credit"],
+    tags: ["Private Credit"], 
     chains: ["Ethereum", "Aptos", "Avalanche", "Ink", "Polygon", "Solana"],
     module: "acred/index.js",
     twitter: "securitize",
     parentProtocol: "parent#securitize",
-    listedAt: 1755190033,
+    listedAt:1755190033
   },
-  {
-    // this listing will be for slasher yields dashboard , they are making the adapter
+  { // this listing will be for slasher yields dashboard , they are making the adapter
     id: "6583",
     name: "KyberSwap FairFlow",
     address: "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
     symbol: "KNC",
     url: "https://kyberswap.com/earn/pools?protocol=uniswap-v4-fairflow",
-    description:
-      "FairFlow is a swap hook that enhances liquidity pools, built on Uniswap V4 and similar protocols. It is designed to help LPs earn additional yields from arbitrage value besides LP fees, while maintaining top tier security",
+    description: "FairFlow is a swap hook that enhances liquidity pools, built on Uniswap V4 and similar protocols. It is designed to help LPs earn additional yields from arbitrage value besides LP fees, while maintaining top tier security",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kyberswap-fairflow.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Yield Aggregator", 
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "KyberNetwork",
     parentProtocol: "parent#kyberswap",
     audit_links: ["https://github.com/KyberNetwork/kyber-exclusive-amm-sc/tree/main/audits"],
   },
-  {
+  { 
     id: "6584",
     name: "Bullbit",
     address: null,
     symbol: "-",
     url: "https://bullbit.ai/",
-    description:
-      "Bullbit is an on-chain derivatives platform with AI tools that allow users to create agents, launch tokens, and trade assets.",
+    description: "Bullbit is an on-chain derivatives platform with AI tools that allow users to create agents, launch tokens, and trade assets.",
     chain: "Binance",
     logo: `${baseIconsUrl}/bullbit.jpg`,
     audits: "0",
@@ -23386,14 +22861,13 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "Bullbitai",
   },
-  {
+  { 
     id: "6585",
     name: "DSX",
     address: null,
     symbol: "-",
     url: "https://dsx.ag/",
-    description:
-      "DSX is a Telegram-based trading bot. It's designed as a crypto trading platform with features like auto-sell rules, hidden orders, per-wallet strategies, rakeback rewards, and points for an upcoming airdrop",
+    description: "DSX is a Telegram-based trading bot. It's designed as a crypto trading platform with features like auto-sell rules, hidden orders, per-wallet strategies, rakeback rewards, and points for an upcoming airdrop",
     chain: "Solana",
     logo: `${baseIconsUrl}/dsx.jpg`,
     audits: "0",
@@ -23405,14 +22879,13 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "DSXTrade",
   },
-  {
+  { 
     id: "6586",
     name: "Fluid DEX Lite",
     address: null,
     symbol: "-",
     url: "https://fluid.io/",
-    description:
-      "Fluid DEX Lite is a highly gas-optimized decentralized exchange specially designed for small, frequent swaps of correlated asset pairs",
+    description: "Fluid DEX Lite is a highly gas-optimized decentralized exchange specially designed for small, frequent swaps of correlated asset pairs",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fluid-dex-lite.jpg`,
     audits: "0",
@@ -23425,14 +22898,13 @@ const data4: Protocol[] = [
     twitter: "0xfluid",
     parentProtocol: "parent#fluid",
   },
-  {
+  { 
     id: "6587",
     name: "Turtle",
     address: "cronos:0x8C9E2bEf2962CE302ef578113eebEc62920B7e57",
     symbol: "TURTLE",
     url: "https://turtleoncro.com/",
-    description:
-      "Turtle on Cronos is a memecoin and that is driven by the community. Our focuses are onboarding, spreading awareness, and welcoming people to the cronos blockchain through NFTs, memes, good vibes, and safe trading",
+    description: "Turtle on Cronos is a memecoin and that is driven by the community. Our focuses are onboarding, spreading awareness, and welcoming people to the cronos blockchain through NFTs, memes, good vibes, and safe trading",
     chain: "Cronos",
     logo: `${baseIconsUrl}/turtle.jpg`,
     audits: "0",
@@ -23444,16 +22916,15 @@ const data4: Protocol[] = [
     module: "turtle/index.js",
     treasury: "turtle.js",
     twitter: "TurtleonCro",
-    listedAt: 1755319281,
+    listedAt:1755319281
   },
-  {
+  { 
     id: "6588",
     name: "Zapfi",
     address: null,
     symbol: "-",
     url: "https://zapfi.fi/",
-    description:
-      "Zapfi is a decentralized, non-custodial privacy protocol that allows users to send, deposit, and withdraw cryptocurrency without revealing their transaction",
+    description: "Zapfi is a decentralized, non-custodial privacy protocol that allows users to send, deposit, and withdraw cryptocurrency without revealing their transaction",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/zapfi.jpg`,
     audits: "0",
@@ -23465,14 +22936,13 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "Zapfi_Finance",
   },
-  {
+  { 
     id: "6589",
     name: "TurtleSwap",
     address: null,
     symbol: "-",
     url: "https://turtleswap.turtlelabs.finance/",
-    description:
-      "TurtleSwap is a decentralized exchange on VeChain operated by Turtle Labs. It provides token swaps and liquidity provisioning with a streamlined UX and straightforward AMM primitives",
+    description: "TurtleSwap is a decentralized exchange on VeChain operated by Turtle Labs. It provides token swaps and liquidity provisioning with a streamlined UX and straightforward AMM primitives",
     chain: "VeChain",
     logo: `${baseIconsUrl}/turtleswap.jpg`,
     audits: "0",
@@ -23483,16 +22953,15 @@ const data4: Protocol[] = [
     chains: ["VeChain"],
     module: "turtleswap/index.js",
     twitter: "Turtlelabsv",
-    listedAt: 1755530131,
+    listedAt: 1755530131
   },
-  {
+  { 
     id: "6590",
     name: "Atrium",
     address: null,
     symbol: "-",
     url: "https://atrium.io/",
-    description:
-      "Atrium offers smart contract powered staking baskets, enabling users to delegate their stake to multiple stake pool operators simultaneously",
+    description: "Atrium offers smart contract powered staking baskets, enabling users to delegate their stake to multiple stake pool operators simultaneously",
     chain: "Cardano",
     logo: `${baseIconsUrl}/atrium.jpg`,
     audits: "0",
@@ -23504,16 +22973,15 @@ const data4: Protocol[] = [
     module: "atrium/index.js",
     twitter: "atrium_lab",
     github: ["atma-community"],
-    listedAt: 1755530137,
+    listedAt: 1755530137
   },
-  {
+  { 
     id: "6591",
     name: "HX Finance",
     address: null,
     symbol: "-",
     url: "https://app.hx.finance",
-    description:
-      "HX Finance is a privacy focused decentralized exchange (DEX) built on Hyperliquid using Algebra's concentrated liquidity AMM technology, offering efficient token swaps with dynamic fees and concentrated liquidity positions",
+    description: "HX Finance is a privacy focused decentralized exchange (DEX) built on Hyperliquid using Algebra's concentrated liquidity AMM technology, offering efficient token swaps with dynamic fees and concentrated liquidity positions",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hx-finance.jpg`,
     audits: "3",
@@ -23526,9 +22994,9 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     twitter: "hx_finance",
     github: ["hxfinance"],
-    listedAt: 1755530145,
+    listedAt: 1755530145
   },
-  {
+  { 
     id: "6592",
     name: "Heaven",
     address: "solana:LiGHtkg3uTa9836RaNkKLLriqTNRcMdRAhqjGWNv777",
@@ -23547,7 +23015,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.heaven.xyz/certora"],
     twitter: "heavendex",
   },
-  {
+  { 
     id: "6593",
     name: "SoliDex Finance V2",
     address: null,
@@ -23566,9 +23034,9 @@ const data4: Protocol[] = [
     forkedFromIds: ["1407"],
     twitter: "SoliDexCro",
     parentProtocol: "parent#solidex-finance",
-    listedAt: 1755532711,
+    listedAt: 1755532711
   },
-  {
+  { 
     id: "6594",
     name: "SoliDex Finance V3",
     address: null,
@@ -23587,16 +23055,15 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     twitter: "SoliDexCro",
     parentProtocol: "parent#solidex-finance",
-    listedAt: 1755532719,
+    listedAt: 1755532719
   },
-  {
+  { 
     id: "6595",
     name: "Nemo Vault",
     address: null,
     symbol: "-",
     url: "https://www.nemoprotocol.com/",
-    description:
-      "Nemo Vaults lower the barrier to entry for users in DeFi, offering advanced asset management tools through smart rebalancing and auto-compounding",
+    description: "Nemo Vaults lower the barrier to entry for users in DeFi, offering advanced asset management tools through smart rebalancing and auto-compounding",
     chain: "Sui",
     logo: `${baseIconsUrl}/nemo-vault.jpg`,
     audits: "2",
@@ -23609,9 +23076,9 @@ const data4: Protocol[] = [
     audit_links: ["https://movebit.xyz/reports/20250217-Nemo-Final-Audit-Report.pdf"],
     twitter: "nemoprotocol",
     parentProtocol: "parent#nemo",
-    listedAt: 1755533932,
+    listedAt: 1755533932
   },
-  /*   { 
+/*   { 
     id: "6596",
     name: "Nemo Floating Assets",
     address: null,
@@ -23632,14 +23099,13 @@ const data4: Protocol[] = [
     parentProtocol: "parent#nemo",
     listedAt: 1755533939
   }, */
-  {
+  { 
     id: "6597",
     name: "HyperVault",
     address: null,
     symbol: "-",
     url: "https://app.hypervault.finance/",
-    description:
-      "Hypervault Finance is the premier multichain DeFi hub for yield. Hypervault allows users to deposit capital which is then deployed by Hypervault across various different DeFi protocols in order to deliver the best yield to the end user",
+    description: "Hypervault Finance is the premier multichain DeFi hub for yield. Hypervault allows users to deposit capital which is then deployed by Hypervault across various different DeFi protocols in order to deliver the best yield to the end user",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypervault.jpg`,
     audits: "0",
@@ -23650,16 +23116,15 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "hypervault/index.js",
     twitter: "hypervaultfi",
-    listedAt: 1755534171,
+    listedAt: 1755534171
   },
-  {
+  { 
     id: "6598",
     name: "Frax USD",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
     symbol: "FXS",
     url: "https://frax.com/",
-    description:
-      "Frax USD (frxUSD) is a fully collateralized stablecoin issued by Frax Finance, combining off-chain custodians holding cash-equivalent reserves with on-chain minting and redemption mechanisms",
+    description: "Frax USD (frxUSD) is a fully collateralized stablecoin issued by Frax Finance, combining off-chain custodians holding cash-equivalent reserves with on-chain minting and redemption mechanisms",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/frax-usd.jpg`,
     audits: "0",
@@ -23671,16 +23136,15 @@ const data4: Protocol[] = [
     module: "frax-rwa/index.js",
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
-    listedAt: 1755567417,
+    listedAt: 1755567417
   },
-  {
+  { 
     id: "6599",
     name: "Binance Alpha",
     address: "0xb8c77482e45f1f44de1745f52c74426c631bdd52",
     symbol: "BNB",
     url: "https://www.binance.com/en/alpha/",
-    description:
-      "Binance Alpha is a curated early-token discovery platform offering quick access, reward mechanics, and potential listings",
+    description: "Binance Alpha is a curated early-token discovery platform offering quick access, reward mechanics, and potential listings",
     chain: "Binance",
     logo: `${baseIconsUrl}/binance-alpha.jpg`,
     audits: "0",
@@ -23692,7 +23156,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "binance",
   },
-  {
+  { 
     id: "6600",
     name: "Jupiter Lend",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
@@ -23707,18 +23171,16 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://dev.jup.ag/docs/lend-api/oracle#hop-based-oracle-system"] },
-    ],
+    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: ["https://dev.jup.ag/docs/lend-api/oracle#hop-based-oracle-system"] }],
     module: "jupiter-lend/index.js",
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",
     tokensExcludedFromParent: {
       Solana: ["JUPSOL", "JLP"],
     },
-    listedAt: 1755585345,
+    listedAt: 1755585345
   },
-  {
+  { 
     id: "6601",
     name: "OkieSwap V2",
     address: null,
@@ -23736,9 +23198,9 @@ const data4: Protocol[] = [
     module: "okieswap-v2/index.js",
     twitter: "okiedokie_fun",
     parentProtocol: "parent#okieswap",
-    listedAt: 1755585345,
+    listedAt: 1755585345
   },
-  {
+  { 
     id: "6602",
     name: "OkieSwap V3",
     address: null,
@@ -23756,16 +23218,15 @@ const data4: Protocol[] = [
     module: "okieswap-v3/index.js",
     twitter: "okiedokie_fun",
     parentProtocol: "parent#okieswap",
-    listedAt: 1755585797,
+    listedAt: 1755585797
   },
-  {
+  { 
     id: "6603",
     name: "TidalDex",
     address: "bsc:0xD963b2236D227a0302E19F2f9595F424950dc186",
     symbol: "CZB",
     url: "https://TidalDex.com",
-    description:
-      "TidalDex is a DEX on BSC. Built as a Uniswap V2 fork, it operates with zero trading fees, making it bot- and arbitrage-friendly. This design lowers the cost of arbitrage, which can help keep prices aligned across pairs",
+    description: "TidalDex is a DEX on BSC. Built as a Uniswap V2 fork, it operates with zero trading fees, making it bot- and arbitrage-friendly. This design lowers the cost of arbitrage, which can help keep prices aligned across pairs",
     chain: "Binance",
     logo: `${baseIconsUrl}/tidaldex.jpg`,
     audits: "0",
@@ -23777,7 +23238,7 @@ const data4: Protocol[] = [
     module: "tidaldex/index.js",
     twitter: "zodiacs_c",
     github: ["chinese-zodiac"],
-    listedAt: 1755623124,
+    listedAt: 1755623124
   },
   {
     id: "6604",
@@ -23806,8 +23267,7 @@ const data4: Protocol[] = [
     address: "0x14cF922aa1512Adfc34409b63e18D391e4a86A2f",
     symbol: "STRAT",
     url: "https://www.ethstrat.xyz/",
-    description:
-      "ETH Strategy is a treasury accumulation protocol designed to provide leveraged exposure to Ethereum (ETH) without the traditional risks associated with margin liquidations or volatility decay",
+    description: "ETH Strategy is a treasury accumulation protocol designed to provide leveraged exposure to Ethereum (ETH) without the traditional risks associated with margin liquidations or volatility decay",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/eth-strategy.jpg`,
     audits: "0",
@@ -23856,7 +23316,7 @@ const data4: Protocol[] = [
     module: "clob/index.js",
     twitter: "TradeOnDESK",
     parentProtocol: "parent#desk",
-    listedAt: 1756218144,
+    listedAt: 1756218144
   },
   {
     id: "6608",
@@ -23876,7 +23336,7 @@ const data4: Protocol[] = [
     module: "zerolend-vaults/index.js",
     twitter: "zerolendxyz",
     parentProtocol: "parent#zerolend",
-    listedAt: 1755704679,
+    listedAt: 1755704679
   },
   {
     id: "6609",
@@ -23896,7 +23356,7 @@ const data4: Protocol[] = [
     module: "onionswap/index.js",
     forkedFromIds: ["2197"],
     twitter: "Onion_Fi",
-    listedAt: 1755705197,
+    listedAt: 1755705197
   },
   {
     id: "6610",
@@ -23904,8 +23364,7 @@ const data4: Protocol[] = [
     address: "base:0xb1599cde32181f48f89683d3c5db5c5d2c7c93cc",
     symbol: "DCA",
     url: "https://superdca.org",
-    description:
-      "Super DCA is a zero-fee, onchain dollar-cost averaging (DCA) platform powered by Uniswap v4 Hooks. Users stream USDC to accumulate blue-chip tokens over time and earn a 0.50% rebate on every dollar DCA’ed, claimable biweekly if the stream remains active. Instead of charging fees, Super DCA uses a Pay-For-Order-Flow (PFOF) model to generate revenue from arbitrage and spreads. Execution is automated via Gelato, and liquidity is concentrated via Uniswap v4, ensuring low slippage",
+    description: "Super DCA is a zero-fee, onchain dollar-cost averaging (DCA) platform powered by Uniswap v4 Hooks. Users stream USDC to accumulate blue-chip tokens over time and earn a 0.50% rebate on every dollar DCA’ed, claimable biweekly if the stream remains active. Instead of charging fees, Super DCA uses a Pay-For-Order-Flow (PFOF) model to generate revenue from arbitrage and spreads. Execution is automated via Gelato, and liquidity is concentrated via Uniswap v4, ensuring low slippage",
     chain: "Base",
     logo: `${baseIconsUrl}/super-dca.jpg`,
     audits: "0",
@@ -23917,7 +23376,7 @@ const data4: Protocol[] = [
     module: "super-dca/index.js",
     twitter: "super_dca",
     github: ["Super-DCA-Tech"],
-    listedAt: 1755705633,
+    listedAt: 1755705633
   },
   {
     id: "6611",
@@ -23925,8 +23384,7 @@ const data4: Protocol[] = [
     address: "pulse:0xdbB8Fd196E804d05bb8047Dd3e91a9245B7819a7",
     symbol: "ESTEEM",
     url: "https://betterbank.io/",
-    description:
-      "BetterBank is a DeFi protocol that blends seigniorage and lending, live on PulseChain, offering utility alongside lending and borrowing features",
+    description: "BetterBank is a DeFi protocol that blends seigniorage and lending, live on PulseChain, offering utility alongside lending and borrowing features",
     chain: "Pulse",
     logo: `${baseIconsUrl}/betterbank.jpg`,
     audits: "2",
@@ -23939,7 +23397,7 @@ const data4: Protocol[] = [
     twitter: "betterbank_io",
     audit_links: ["https://betterbanks-organization.gitbook.io/better-bank/audit-by-zokyo-audits"],
     github: ["BetterBankDefi"],
-    listedAt: 1755705642,
+    listedAt: 1755705642
   },
   {
     id: "6612",
@@ -23947,8 +23405,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://okiedokie.fun/launch",
-    description:
-      "OkieLaunch is an open platform for permissionless creation and discovery of both trendy memes and on-chain AI agents",
+    description: "OkieLaunch is an open platform for permissionless creation and discovery of both trendy memes and on-chain AI agents",
     chain: "X Layer",
     logo: `${baseIconsUrl}/okie-launch.jpg`,
     audits: "0",
@@ -23960,7 +23417,7 @@ const data4: Protocol[] = [
     module: "okie-launch/index.js",
     twitter: "okiedokie_fun",
     parentProtocol: "parent#okieswap",
-    listedAt: 1755705650,
+    listedAt: 1755705650
   },
   {
     id: "6613",
@@ -23968,8 +23425,7 @@ const data4: Protocol[] = [
     address: "0x58b6a8a3302369daec383334672404ee733ab239",
     symbol: "LPT",
     url: "https://www.livepeer.org/",
-    description:
-      "Livepeer is a decentralized video infrastructure that lets developers stream live or on-demand video and run AI-powered processing at lower cost than centralized platforms",
+    description: "Livepeer is a decentralized video infrastructure that lets developers stream live or on-demand video and run AI-powered processing at lower cost than centralized platforms",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/livepeer.jpg`,
     audits: "0",
@@ -23987,8 +23443,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.fiammalabs.io/",
-    description:
-      "Fiamma BTC is a 1:1 pegged wrapped BTC, which is minted by a trust-minimized BTC bridge Powered by BitVM2 protocol. It enables universal cross‑chain interoperability, allowing native Bitcoin liquidity to be safely unlocked and utilized across multiple blockchain ecosystems. By verifying zero‑knowledge proofs on Bitcoin via the BitVM2 protocol to minimize trust assumptions, Fiamma BTC provides a secure and scalable pathway for integrating Bitcoin into DeFi applications",
+    description: "Fiamma BTC is a 1:1 pegged wrapped BTC, which is minted by a trust-minimized BTC bridge Powered by BitVM2 protocol. It enables universal cross‑chain interoperability, allowing native Bitcoin liquidity to be safely unlocked and utilized across multiple blockchain ecosystems. By verifying zero‑knowledge proofs on Bitcoin via the BitVM2 protocol to minimize trust assumptions, Fiamma BTC provides a secure and scalable pathway for integrating Bitcoin into DeFi applications",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/fiamma.jpg`,
     audits: "2",
@@ -24002,10 +23457,10 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/fiamma-chain/fiamma-audit/blob/main/BitLabs-Bridge-script.pdf",
       "https://github.com/fiamma-chain/fiamma-audit/blob/main/MoveBits-Bridge-Aptos-Contract.pdf",
-      "https://github.com/fiamma-chain/fiamma-audit/blob/main/Zenith-Bridge-Cairo-Contract.pdf",
+      "https://github.com/fiamma-chain/fiamma-audit/blob/main/Zenith-Bridge-Cairo-Contract.pdf"
     ],
     github: ["fiamma-chain"],
-    listedAt: 1755792897,
+    listedAt: 1755792897
   },
   {
     id: "6615",
@@ -24035,7 +23490,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://brownfi.io/",
-    description: "A renovated AMM derived from Elastic Parameterized Limit Order Book",
+    description:
+      "A renovated AMM derived from Elastic Parameterized Limit Order Book",
     chain: "Berachain",
     logo: `${baseIconsUrl}/brownfi.jpg`,
     audits: "2",
@@ -24049,9 +23505,9 @@ const data4: Protocol[] = [
     twitter: "brownfiamm",
     audit_links: [
       "https://skynet.certik.com/projects/brownfi",
-      "https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20BrownFi%20AMM%20Smartcontracts%20-%20v1.0.pdf",
+      "https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20BrownFi%20AMM%20Smartcontracts%20-%20v1.0.pdf"
     ],
-    listedAt: 1755874767,
+    listedAt: 1755874767
   },
   {
     id: "6617",
@@ -24059,7 +23515,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "http://weero.finance",
-    description: "AMM DEX on Kaia",
+    description:
+      "AMM DEX on Kaia",
     chain: "Klaytn",
     logo: `${baseIconsUrl}/weero-v2.jpg`,
     audits: "0",
@@ -24072,7 +23529,7 @@ const data4: Protocol[] = [
     module: "weero-v2/index.js",
     twitter: "weerofinance",
     parentProtocol: "parent#weero",
-    listedAt: 1755874773,
+    listedAt: 1755874773
   },
   {
     id: "6618",
@@ -24080,7 +23537,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "http://weero.finance",
-    description: "CLMM DEX on Kaia",
+    description:
+      "CLMM DEX on Kaia",
     chain: "Klaytn",
     logo: `${baseIconsUrl}/weero-v3.jpg`,
     audits: "0",
@@ -24093,7 +23551,7 @@ const data4: Protocol[] = [
     module: "weero-v3/index.js",
     twitter: "weerofinance",
     parentProtocol: "parent#weero",
-    listedAt: 1755874781,
+    listedAt: 1755874781
   },
   {
     id: "6619",
@@ -24101,7 +23559,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://zunodex.xyz",
-    description: "DEX on ZetaChain",
+    description:
+      "DEX on ZetaChain",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/zuno.jpg`,
     audits: "0",
@@ -24113,7 +23572,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "zuno/index.js",
     twitter: "zuno_dex",
-    listedAt: 1755874788,
+    listedAt: 1755874788
   },
   {
     id: "6620",
@@ -24133,10 +23592,12 @@ const data4: Protocol[] = [
     chains: ["Base"],
     forkedFromIds: ["3710"],
     module: "thirdfy/index.js",
-    audit_links: ["https://docs.thirdfy.com/documentation/resources/audits"],
+    audit_links: [
+      "https://docs.thirdfy.com/documentation/resources/audits"
+    ],
     twitter: "Thirdfy_",
     github: ["thirdfy"],
-    listedAt: 1755874797,
+    listedAt: 1755874797
   },
   {
     id: "6621",
@@ -24157,7 +23618,7 @@ const data4: Protocol[] = [
     module: "aave-aptos/index.js",
     twitter: "aave",
     parentProtocol: "parent#aave",
-    listedAt: 1755874807,
+    listedAt: 1755874807
   },
   {
     id: "6622",
@@ -24165,7 +23626,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kittenswap.finance",
-    description: "The community owned DEX for seamless trading on HyperEVM",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kittenswap-algebra.jpg`,
     audits: "0",
@@ -24290,7 +23752,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://goblin.fi/",
-    description: "Goblin is the native yield layer for Aptos Defi",
+    description:
+      "Goblin is the native yield layer for Aptos Defi",
     chain: "Aptos",
     logo: `${baseIconsUrl}/goblin.png`,
     audits: "2",
@@ -24713,9 +24176,9 @@ const data4: Protocol[] = [
     chains: ["Near"],
     module: "dummy.js",
     twitter: "OrderlyNetwork",
-    forkedFrom: [],
+    forkedFrom: [], 
     parentProtocol: "parent#orderly-network",
-    listedAt: 1756818123,
+    listedAt: 1756818123
   },
   {
     id: "6648",
@@ -24724,7 +24187,8 @@ const data4: Protocol[] = [
     symbol: "-",
     assetToken: "hyloSOL",
     url: "https://hylo.so/",
-    description: "Liquid staking on Solana",
+    description:
+      "Liquid staking on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/hylo-lsts.jpg`,
     audits: "0",
@@ -24735,7 +24199,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "hyloSOL/index.js",
     twitter: "hylo_so",
-    forkedFrom: [],
+    forkedFrom: [], 
     parentProtocol: "parent#hylo",
     listedAt: 1756830317,
   },
@@ -24757,7 +24221,7 @@ const data4: Protocol[] = [
     chains: ["Linea", "Abstract"],
     module: "myriad-markets/index.js",
     twitter: "MyriadMarkets",
-    forkedFrom: [],
+    forkedFrom: [], 
     treasury: "myriad-markets.js",
     listedAt: 1756873217,
   },
@@ -24767,7 +24231,7 @@ const data4: Protocol[] = [
     address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
     symbol: "ONDO",
     url: "https://ondo.finance",
-    description: "Stocks on chain",
+    description:"Stocks on chain",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ondo-global-markets.jpg`,
     audits: "0",
@@ -24778,7 +24242,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "ondo-global-markets/index.js",
     twitter: "OndoFinance",
-    forkedFrom: [],
+    forkedFrom: [], 
     parentProtocol: "parent#ondo-finance",
     listedAt: 1756900783,
   },
@@ -24808,8 +24272,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "http://cex.io/",
-    description:
-      "CEX.IO, established in 2013 and registered in the UK, is a trusted global cryptocurrency exchange known for its regulatory compliance, deep liquidity, and security-first approach. The platform offers a comprehensive range of services, including spot and margin trading, instant purchases, staking, and crypto card payments",
+    description: "CEX.IO, established in 2013 and registered in the UK, is a trusted global cryptocurrency exchange known for its regulatory compliance, deep liquidity, and security-first approach. The platform offers a comprehensive range of services, including spot and margin trading, instant purchases, staking, and crypto card payments",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/cex.io.jpg`,
     audits: "0",
@@ -24817,19 +24280,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: [
-      "Bitcoin",
-      "Ethereum",
-      "Polkadot",
-      "Litecoin",
-      "Ripple",
-      "Sui",
-      "Polygon",
-      "Tron",
-      "Binance",
-      "Stellar",
-      "Cardano",
-    ],
+    chains: ["Bitcoin", "Ethereum", "Polkadot", "Litecoin", "Ripple", "Sui", "Polygon", "Tron", "Binance", "Stellar", "Cardano"],
     forkedFrom: [],
     module: "cex-io/index.js",
     twitter: "cex_io",
@@ -24841,8 +24292,7 @@ const data4: Protocol[] = [
     address: "TUNAfXDZEdQizTMTh3uEvNvYqJmqFHZbEJt8joP4cyx",
     symbol: "TUNA",
     url: "https://defituna.com",
-    description:
-      "DefiTuna Lending is part of the DefiTuna ecosystem. Lending allows Liquidity providers to use leverage when providing liquidity to DefiTuna DEX / Orca DEX to increase capital efficiency",
+    description: "DefiTuna Lending is part of the DefiTuna ecosystem. Lending allows Liquidity providers to use leverage when providing liquidity to DefiTuna DEX / Orca DEX to increase capital efficiency",
     chain: "Solana",
     logo: `${baseIconsUrl}/defituna-lending.jpg`,
     audits: "2",
@@ -24854,10 +24304,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "defituna_lending.js",
     twitter: "DeFiTuna",
-    audit_links: [
-      "https://raw.githubusercontent.com/Torii-Security/audits/main/solana/torii-defituna-report.pdf",
-      "https://raw.githubusercontent.com/DefiTuna/tuna-sdk/main/audit/sec3-defituna-report-14-Mar-2025.pdf",
-    ],
+    audit_links: ["https://raw.githubusercontent.com/Torii-Security/audits/main/solana/torii-defituna-report.pdf", "https://raw.githubusercontent.com/DefiTuna/tuna-sdk/main/audit/sec3-defituna-report-14-Mar-2025.pdf"],
     parentProtocol: "parent#defituna",
     listedAt: 1756916931,
   },
@@ -24867,8 +24314,7 @@ const data4: Protocol[] = [
     address: "0x01995A697752266d8E748738aAa3F06464B8350B",
     symbol: "CANA",
     url: "https://maseer.finance/",
-    description:
-      "CANA gives DeFi users direct exposure to California Carbon Allowances—a $78B regulated commodity—with a CPI+5% rising price floor. Fully tradable ERC-20. Offers inflation protection, uncorrelated returns, and full DeFi composability",
+    description: "CANA gives DeFi users direct exposure to California Carbon Allowances—a $78B regulated commodity—with a CPI+5% rising price floor. Fully tradable ERC-20. Offers inflation protection, uncorrelated returns, and full DeFi composability",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cana-holdings-california-carbon-credits.jpg`,
     audits: "2",
@@ -24880,9 +24326,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "cana-holdings-california-carbon-credits/index.js",
     twitter: "defimaseer",
-    audit_links: [
-      "https://github.com/maseer-finance/maseer-one/blob/master/docs/audits/Prototech%20Labs%20-%20Maseer%20Security%20Report.pdf",
-    ],
+    audit_links: ["https://github.com/maseer-finance/maseer-one/blob/master/docs/audits/Prototech%20Labs%20-%20Maseer%20Security%20Report.pdf"],
     github: ["maseer-finance"],
     listedAt: 1756916937,
   },
@@ -25015,7 +24459,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://summitx.finance/",
-    description: "All in one DeFi Super Dapp of Camp Network",
+    description:
+      "All in one DeFi Super Dapp of Camp Network",
     chain: "Camp",
     logo: `${baseIconsUrl}/summitx-finance.jpg`,
     audits: "3",
@@ -25036,7 +24481,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://drip.trade/",
-    description: "The first high frequency NFT exchange, on Hyperliquid",
+    description:
+      "The first high frequency NFT exchange, on Hyperliquid",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/drip.trade.jpg`,
     audits: "0",
@@ -25056,7 +24502,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://pro.edgex.exchange/referral/196451583",
-    description: "A high-performance, orderbook-based perpetual DEX with native trading experience",
+    description:
+      "A high-performance, orderbook-based perpetual DEX with native trading experience",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/edgex-perps.jpg`,
     audits: "0",
@@ -25068,9 +24515,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "edgeX_exchange",
     parentProtocol: "parent#edgex",
-    oraclesBreakdown: [{ name: "Stork", type: "Primary", proof: [] }], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11217  , https://docs.starkware.co/starkex/perpetual/oracle-price-tick.html
+    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11217  , https://docs.starkware.co/starkex/perpetual/oracle-price-tick.html
     audit_links: [],
-    listedAt: 1756993634,
+    listedAt: 1756993634
   },
   {
     id: "6664",
@@ -25078,7 +24525,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.paradex.trade/r/defillama",
-    description: "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
+    description:
+      "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/paradex-perps.jpg`,
     audits: "0",
@@ -25091,18 +24539,18 @@ const data4: Protocol[] = [
     twitter: "tradeparadex",
     oraclesBreakdown: [
       {
-        name: "Stork",
-        type: "Aggregator",
-        proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
       },
       {
-        name: "Pyth",
-        type: "Aggregator",
-        proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
-      },
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      }
     ],
     parentProtocol: "parent#paradex",
-    listedAt: 1756994785,
+    listedAt: 1756994785
   },
   {
     id: "6665",
@@ -25122,7 +24570,7 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "sqd-dev/index.js",
     twitter: "helloSQD",
-    listedAt: 1757011155,
+    listedAt: 1757011155
   },
   {
     id: "6666",
@@ -25144,7 +24592,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     twitter: "WinnieSwap",
     github: ["StakeLab-Zone"],
-    listedAt: 1757011164,
+    listedAt: 1757011164
   },
   {
     id: "6667",
@@ -25152,8 +24600,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://yield.botanixlabs.com/",
-    description:
-      "Bitcoin stBTC is a staking protocol on Botanix's Spiderchain Layer 2, where users deposit BTC and receive stBTC, a token that increases in value based on network fee distributions",
+    description: "Bitcoin stBTC is a staking protocol on Botanix's Spiderchain Layer 2, where users deposit BTC and receive stBTC, a token that increases in value based on network fee distributions",
     chain: "Botanix",
     logo: `${baseIconsUrl}/botanix-stbtc.jpg`,
     audits: "0",
@@ -25165,386 +24612,385 @@ const data4: Protocol[] = [
     module: "botanix-stBTC/index.js",
     twitter: "BotanixLabs",
     forkedFromIds: [],
-    listedAt: 1757082971,
+    listedAt: 1757082971
   },
   {
-    id: "6668",
-    name: "Belief Market",
-    address: null,
-    symbol: "-",
-    url: "https://www.belief.market/",
-    description: "Opinion markets where users can bet on various beliefs using stablecoins",
-    chain: "Binance",
-    logo: `${baseIconsUrl}/belief-market.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Prediction Market",
-    chains: ["Binance", "Base"],
-    module: "belief-market/index.js",
-    twitter: "BeliefMarket_",
-    forkedFromIds: [],
-    audit_links: ["https://www.belief.market/s/4-1-25-Belief-Market-Report.pdf"],
-    listedAt: 1757083174,
-  },
-  {
-    id: "6669",
-    name: "Remora Markets",
-    address: null,
-    symbol: "-",
-    url: "https://remoramarkets.xyz/",
-    description:
-      "Remora Markets is a tokenized stock marketplace on Solana that allows users to trade blockchain-based representations of global equities",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/remora-markets.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    tags: ["Stocks & ETFs"],
-    chains: ["Solana"],
-    module: "remora-markets/index.js",
-    twitter: "RemoraMarkets",
-    forkedFromIds: [],
-    listedAt: 1757083183,
-  },
-  {
-    id: "6670",
-    name: "Singularity Finance",
-    address: "0x7636D8722Fdf7cd34232a915E48e96aA3eB386BF",
-    symbol: "SFI",
-    url: "https://singularityfinance.ai/",
-    description:
-      "Singularity Finance is a DeFi platform of the Artificial Superintelligence Alliance that connects capital, AI-agent startups, and ASI:Chain Pods, serving as its financial layer for discovery, yield, investment, and autonomous trading",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/singularity-finance.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: "singularity-finance",
-    cmcId: "35732",
-    category: "Yield",
-    chains: ["Ethereum", "Binance", "Base"],
-    module: "singularityFinance/index.js",
-    treasury: "singularity-finance.js",
-    twitter: "Singularity_Fi",
-    forkedFromIds: [],
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16169"],
-      },
-    ],
-    audit_links: ["https://paladinsec.co/projects/singularitydao/", "https://hacken.io/audits/singularitydao/"],
-    listedAt: 1757083191,
-  },
-  {
-    id: "6671",
-    name: "Hyperpie Launchpad",
-    address: null,
-    symbol: "-",
-    url: "https://www.hyperliquid.magpiexyz.io/meme",
-    description: "One-Click MEME Launch",
-    chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/hyperpie-launchpad.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Launchpad",
-    chains: ["Hyperliquid L1"],
-    module: "hyperpie-launchpad/index.js",
-    forkedFromIds: [],
-    twitter: "Hyperpiexyz_io",
-    parentProtocol: "parent#magpie-ecosystem",
-    listedAt: 1757103078,
-  },
-  {
-    id: "6672",
-    name: "Hyperpie DEX",
-    address: null,
-    symbol: "-",
-    url: "https://www.hyperliquid.magpiexyz.io/dex/swap",
-    description: "Hyperpie DEX is a MEME DEX built on Hyperliquid designed around a ve(3,3) tokenomics model",
-    chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/hyperpie-dex.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Hyperliquid L1"],
-    module: "hyperpie-v2-dex/index.js",
-    forkedFromIds: ["1407"],
-    twitter: "Hyperpiexyz_io",
-    parentProtocol: "parent#magpie-ecosystem",
-    listedAt: 1757103085,
-  },
-  {
-    id: "6673",
-    name: "Gala Swap",
-    address: null,
-    symbol: "-",
-    url: "https://swap.gala.com/",
-    description: "Gala Swap is a decentralized exchange (DEX) built on the Gala network",
-    chain: "Gala",
-    logo: `${baseIconsUrl}/gala-swap.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Gala"],
-    module: "galaswap-v3/index.js",
-    forkedFrom: [],
-    twitter: "GoGalaGames",
-    listedAt: 1757103588,
-  },
-  {
-    id: "6674",
-    name: "3route",
-    address: null,
-    symbol: "-",
-    url: "https://3route.io/",
-    description:
-      "A Tezos DEX aggregator that combines liquidity from multiple Tezos DEXs into a single swap interface, developed by TezosBakingBad",
-    chain: "Tezos",
-    logo: `${baseIconsUrl}/3route.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "DEX Aggregator",
-    chains: ["Tezos"],
-    module: "dummy.js",
-    forkedFrom: [],
-    twitter: "3route_io",
-  },
-  {
-    id: "6675",
-    name: "Collector Crypt",
-    address: null,
-    symbol: "-",
-    url: "https://collector.crypt/",
-    description: "A protocol to sell RWA Pokemon cards on Solana",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/collector-crypt.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "NFT Marketplace",
-    chains: ["Solana"],
-    module: "dummy.js",
-    forkedFrom: [],
-    twitter: "Collector_Crypt",
-  },
-  {
-    id: "6676",
-    name: "ThalaSwap V3",
-    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
-    symbol: "THL",
-    url: "https://www.thala.fi/",
-    description: "ThalaSwap V3 is a CLMM DEX built on the Aptos blockchain",
-    chain: "Aptos",
-    logo: `${baseIconsUrl}/thalaswap-v3.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Aptos"],
-    module: "thalaswap-v3/index.js",
-    twitter: "ThalaLabs",
-    forkedFrom: [],
-    tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "VETHL"],
+  id: "6668",
+  name: "Belief Market",
+  address: null,
+  symbol: "-",
+  url: "https://www.belief.market/",
+  description: "Opinion markets where users can bet on various beliefs using stablecoins",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/belief-market.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Binance", "Base"],
+  module: "belief-market/index.js",
+  twitter: "BeliefMarket_",
+  forkedFromIds: [],
+  audit_links: ["https://www.belief.market/s/4-1-25-Belief-Market-Report.pdf"],
+  listedAt: 1757083174
+},
+{
+  id: "6669",
+  name: "Remora Markets",
+  address: null,
+  symbol: "-",
+  url: "https://remoramarkets.xyz/",
+  description: "Remora Markets is a tokenized stock marketplace on Solana that allows users to trade blockchain-based representations of global equities",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/remora-markets.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  tags: ["Stocks & ETFs"],
+  chains: ["Solana"],
+  module: "remora-markets/index.js",
+  twitter: "RemoraMarkets",
+  forkedFromIds: [],
+  listedAt: 1757083183
+},
+{
+  id: "6670",
+  name: "Singularity Finance",
+  address: "0x7636D8722Fdf7cd34232a915E48e96aA3eB386BF",
+  symbol: "SFI",
+  url: "https://singularityfinance.ai/",
+  description: "Singularity Finance is a DeFi platform of the Artificial Superintelligence Alliance that connects capital, AI-agent startups, and ASI:Chain Pods, serving as its financial layer for discovery, yield, investment, and autonomous trading",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/singularity-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "singularity-finance",
+  cmcId: "35732",
+  category: "Yield",
+  chains: ["Ethereum", "Binance", "Base"],
+  module: "singularityFinance/index.js",
+  treasury: "singularity-finance.js",
+  twitter: "Singularity_Fi",
+  forkedFromIds: [],
+  oraclesBreakdown: [
+    {
+      name: "Chainlink",
+      type: "Primary",
+      proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16169"]
     },
-    parentProtocol: "parent#thala-labs",
-    listedAt: 1757194284,
+  ],
+  audit_links: [
+    "https://paladinsec.co/projects/singularitydao/",
+    "https://hacken.io/audits/singularitydao/",
+  ],
+  listedAt: 1757083191
+},
+{
+  id: "6671",
+  name: "Hyperpie Launchpad",
+  address: null,
+  symbol: "-",
+  url: "https://www.hyperliquid.magpiexyz.io/meme",
+  description:
+    "One-Click MEME Launch",
+  chain: "Hyperliquid L1",
+  logo: `${baseIconsUrl}/hyperpie-launchpad.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Hyperliquid L1"],
+  module: "hyperpie-launchpad/index.js",
+  forkedFromIds: [],
+  twitter: "Hyperpiexyz_io",
+  parentProtocol: "parent#magpie-ecosystem",
+  listedAt: 1757103078
+},
+{
+  id: "6672",
+  name: "Hyperpie DEX",
+  address: null,
+  symbol: "-",
+  url: "https://www.hyperliquid.magpiexyz.io/dex/swap",
+  description:
+    "Hyperpie DEX is a MEME DEX built on Hyperliquid designed around a ve(3,3) tokenomics model",
+  chain: "Hyperliquid L1",
+  logo: `${baseIconsUrl}/hyperpie-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Hyperliquid L1"],
+  module: "hyperpie-v2-dex/index.js",
+  forkedFromIds: ["1407"],
+  twitter: "Hyperpiexyz_io",
+  parentProtocol: "parent#magpie-ecosystem",
+  listedAt: 1757103085
+},
+{
+  id: "6673",
+  name: "Gala Swap",
+  address: null,
+  symbol: "-",
+  url: "https://swap.gala.com/",
+  description:
+    "Gala Swap is a decentralized exchange (DEX) built on the Gala network",
+  chain: "Gala",
+  logo: `${baseIconsUrl}/gala-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Gala"],
+  module: "galaswap-v3/index.js",
+  forkedFrom: [],
+  twitter: "GoGalaGames",
+  listedAt: 1757103588
+},
+{
+  id: "6674",
+  name: "3route",
+  address: null,
+  symbol: "-",
+  url: "https://3route.io/",
+  description:
+    "A Tezos DEX aggregator that combines liquidity from multiple Tezos DEXs into a single swap interface, developed by TezosBakingBad",
+  chain: "Tezos",
+  logo: `${baseIconsUrl}/3route.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "DEX Aggregator",
+  chains: ["Tezos"],
+  module: "dummy.js",
+  forkedFrom: [],
+  twitter: "3route_io",
+},
+{
+  id: "6675",
+  name: "Collector Crypt",
+  address: null,
+  symbol: "-",
+  url: "https://collector.crypt/",
+  description:
+    "A protocol to sell RWA Pokemon cards on Solana",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/collector-crypt.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Solana"],
+  module: "dummy.js",
+  forkedFrom: [],
+  twitter: "Collector_Crypt",
+},
+{
+  id: "6676",
+  name: "ThalaSwap V3",
+  address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+  symbol: "THL",
+  url: "https://www.thala.fi/",
+  description:
+    "ThalaSwap V3 is a CLMM DEX built on the Aptos blockchain",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/thalaswap-v3.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Aptos"],
+  module: "thalaswap-v3/index.js",
+  twitter: "ThalaLabs",
+  forkedFrom: [],
+  tokensExcludedFromParent: {
+    Aptos: ["STHAPT", "THAPT", "VETHL"],
   },
-  {
-    id: "6677",
-    name: "Zapzy",
-    address: null,
-    symbol: "-",
-    url: "https://zapzy.io/",
-    description: "Zapzy is an all-in-one platform on Solana for creating, trading, and earning with memecoins",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/zapzy.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Launchpad",
-    chains: ["Solana"],
-    module: "dummy.js",
-    twitter: "zapzyio",
-    forkedFrom: [],
-  },
-  {
-    id: "6678",
-    name: "SOLID",
-    address: null,
-    symbol: "-",
-    url: "https://solid.online",
-    description:
-      "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
-    chain: "Terra2",
-    logo: `${baseIconsUrl}/solid.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: "solid-2",
-    cmcId: null,
-    category: "CDP",
-    chains: ["Terra2"],
-    forkedFromIds: [],
-    module: "solid/index.js",
-    twitter: "solid_capa",
-    audit_links: [
-      "https://github.com/SCV-Security/PublicReports/blob/main/CW/Capapult/Capapult%20-%20Money%20Market%20Contracts%20-%20Audit%20Report%20v1.0%20.pdf",
-      "https://github.com/SCV-Security/PublicReports/blob/fa51bf944593bf18d128b4f812b3150b218f0d25/Capapult%2FCapapult%20Finance%20-%20Oracle%20Contract%20-%20Audit%20Report%20v1.0.pdf",
-    ],
-    listedAt: 1757342107,
-  },
-  {
-    id: "6679",
-    name: "Mansory",
-    address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
-    symbol: "MNSRY",
-    url: "https://mansorytoken.io/",
-    description:
-      "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
-    chain: "Binance",
-    logo: `${baseIconsUrl}/mansory.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: "mansory-token",
-    cmcId: null,
-    tags: ["Collectibles"],
-    chains: ["Binance", "Solana"],
-    forkedFromIds: [],
-    module: "mansory/index.js",
-    twitter: "MANSORYofficial",
-    listedAt: 1757348655,
-  },
-  {
-    id: "6680",
-    name: "Yield Millionaire",
-    address: null,
-    symbol: "-",
-    url: "https://www.yieldmillionaire.com/",
-    description:
-      "Yield Millionaire is a DeFi platform where users can deposit USDC to earn yield, using a gasless mechanism",
-    chain: "Base",
-    logo: `${baseIconsUrl}/yield-millionaire.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Base"],
-    forkedFromIds: [],
-    module: "yield-millionaire/index.js",
-    twitter: "yieldmillion",
-    listedAt: 1757348895,
-  },
-  {
-    id: "6681",
-    name: "AImstrong",
-    address: null,
-    symbol: "-",
-    url: "https://www.aimstrong.ai/",
-    description:
-      "AImstrong is an omnichain lending protocol with two integrated features: cross-chain lending that allows users to supply collateral on one blockchain and borrow on another, and smart lending vault that interfaces with multiple lending protocols to provide real-time APR optimization.",
-    chain: "Base",
-    logo: `${baseIconsUrl}/aimstrong.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Lending",
-    chains: ["Base", "Arbitrum"],
-    forkedFromIds: [],
-    module: "aimstrong/index.js",
-    treasury: "aimstrong.js",
-    twitter: "AImstrong_ai",
-    audit_links: [
-      "https://128740385-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FrkrREcPFpTTgFuPim3df%2Fuploads%2FQMwySJTkLhLR3mPixKNw%2Freport-aimstrong-ai.pdf?alt=media&token=c7b5a43f-dc84-4e65-b909-40a071b12f50",
-    ],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.aimstrong.ai/technical-overview/omni-lending-protocol"],
-      },
-    ],
-    listedAt: 1757349051,
-  },
-  {
-    id: "6682",
-    name: "Pacifica",
-    address: null,
-    symbol: "-",
-    url: "https://pacifica.fi",
-    description:
-      "Pacifica is a decentralized perpetual futures exchange offering leverage trading through advanced order types and APIs",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/pacifica.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Derivatives",
-    chains: ["Solana"],
-    forkedFromIds: [],
-    module: "pacifica/index.js",
-    twitter: "pacifica_fi",
-    audit_links: ["https://docs.pacifica.fi/other/audits"],
-    listedAt: 1757349667,
-  },
-  {
-    id: "6683",
-    name: "Standard Spot CLOB",
-    address: null,
-    symbol: "STND",
-    url: "https://standard.im",
-    description: "Standard is the first fully onchain CLOB and perp with full self-custody.",
-    chain: "Somnia",
-    logo: `${baseIconsUrl}/standard-spot-clob.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexs",
-    chains: ["Somnia"],
-    forkedFromIds: [],
-    module: "standard-spot/index.js",
-    twitter: "standarddotim",
-    audit_links: ["https://github.com/standarddotim/standard3.0-contracts/tree/main/audits"],
-    parentProtocol: "parent#standard-protocol",
-    listedAt: 1757349881,
-  },
-  {
-    id: "6684",
-    name: "Phygitals",
-    address: null,
-    symbol: "-",
-    url: "https://phygitals.com/",
-    description:
-      "Phygitals is a Solana marketplace for trading digitized versions of vaulted collectible cards, with built-in royalties and portfolio tracking.",
-    chain: "Solana",
-    logo: `${baseIconsUrl}/phygitals.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "NFT Marketplace",
-    chains: ["Solana"],
-    forkedFromIds: [],
-    module: "dummy.js",
-    twitter: "phygitals",
-  },
+  parentProtocol: "parent#thala-labs",
+  listedAt: 1757194284
+},
+{
+  id: "6677",
+  name: "Zapzy",
+  address: null,
+  symbol: "-",
+  url: "https://zapzy.io/",
+  description:
+    "Zapzy is an all-in-one platform on Solana for creating, trading, and earning with memecoins",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/zapzy.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Solana"],
+  module: "dummy.js",
+  twitter: "zapzyio",
+  forkedFrom: [],
+},
+{
+  id: "6678",
+  name: "SOLID",
+  address: null,
+  symbol: "-",
+  url: "https://solid.online",
+  description: "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
+  chain: "Terra2",
+  logo: `${baseIconsUrl}/solid.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "solid-2",
+  cmcId: null,
+  category: "CDP",
+  chains: ["Terra2"],
+  forkedFromIds: [],
+  module: "solid/index.js",
+  twitter: "solid_capa",
+  audit_links: [
+    "https://github.com/SCV-Security/PublicReports/blob/main/CW/Capapult/Capapult%20-%20Money%20Market%20Contracts%20-%20Audit%20Report%20v1.0%20.pdf",
+    "https://github.com/SCV-Security/PublicReports/blob/fa51bf944593bf18d128b4f812b3150b218f0d25/Capapult%2FCapapult%20Finance%20-%20Oracle%20Contract%20-%20Audit%20Report%20v1.0.pdf"
+  ],
+  listedAt: 1757342107
+},
+{
+  id: "6679",
+  name: "Mansory",
+  address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
+  symbol: "MNSRY",
+  url: "https://mansorytoken.io/",
+  description: "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/mansory.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "mansory-token",
+  cmcId: null,
+  tags: ["Collectibles"],
+  chains: ["Binance", "Solana"],
+  forkedFromIds: [],
+  module: "mansory/index.js",
+  twitter: "MANSORYofficial",
+  listedAt: 1757348655
+},
+{
+  id: "6680",
+  name: "Yield Millionaire",
+  address: null,
+  symbol: "-",
+  url: "https://www.yieldmillionaire.com/",
+  description: "Yield Millionaire is a DeFi platform where users can deposit USDC to earn yield, using a gasless mechanism",
+  chain: "Base",
+  logo: `${baseIconsUrl}/yield-millionaire.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Base"],
+  forkedFromIds: [],
+  module: "yield-millionaire/index.js",
+  twitter: "yieldmillion",
+  listedAt: 1757348895
+},
+{
+  id: "6681",
+  name: "AImstrong",
+  address: null,
+  symbol: "-",
+  url: "https://www.aimstrong.ai/",
+  description: "AImstrong is an omnichain lending protocol with two integrated features: cross-chain lending that allows users to supply collateral on one blockchain and borrow on another, and smart lending vault that interfaces with multiple lending protocols to provide real-time APR optimization.",
+  chain: "Base",
+  logo: `${baseIconsUrl}/aimstrong.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Base", "Arbitrum"],
+  forkedFromIds: [],
+  module: "aimstrong/index.js",
+  treasury: "aimstrong.js",
+  twitter: "AImstrong_ai",
+  audit_links: ["https://128740385-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FrkrREcPFpTTgFuPim3df%2Fuploads%2FQMwySJTkLhLR3mPixKNw%2Freport-aimstrong-ai.pdf?alt=media&token=c7b5a43f-dc84-4e65-b909-40a071b12f50"],
+  oraclesBreakdown: [
+    {
+      name: "Pyth",
+      type: "Primary",
+      proof: ["https://docs.aimstrong.ai/technical-overview/omni-lending-protocol"]
+    },
+  ],
+  listedAt: 1757349051
+},
+{
+  id: "6682",
+  name: "Pacifica",
+  address: null,
+  symbol: "-",
+  url: "https://pacifica.fi",
+  description: "Pacifica is a decentralized perpetual futures exchange offering leverage trading through advanced order types and APIs",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/pacifica.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Solana"],
+  forkedFromIds: [],
+  module: "pacifica/index.js",
+  twitter: "pacifica_fi",
+  audit_links: ["https://docs.pacifica.fi/other/audits"],
+  listedAt: 1757349667
+},
+{
+  id: "6683",
+  name: "Standard Spot CLOB",
+  address: null,
+  symbol: "STND",
+  url: "https://standard.im",
+  description: "Standard is the first fully onchain CLOB and perp with full self-custody.",
+  chain: "Somnia",
+  logo: `${baseIconsUrl}/standard-spot-clob.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexs",
+  chains: ["Somnia"],
+  forkedFromIds: [],
+  module: "standard-spot/index.js",
+  twitter: "standarddotim",
+  audit_links: ["https://github.com/standarddotim/standard3.0-contracts/tree/main/audits"],
+  parentProtocol: "parent#standard-protocol",
+  listedAt: 1757349881
+},
+{
+  id: "6684",
+  name: "Phygitals",
+  address: null,
+  symbol: "-",
+  url: "https://phygitals.com/",
+  description: "Phygitals is a Solana marketplace for trading digitized versions of vaulted collectible cards, with built-in royalties and portfolio tracking.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/phygitals.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Solana"],
+  forkedFromIds: [],
+  module: "dummy.js",
+  twitter: "phygitals",
+},
 ];
 export default data4;

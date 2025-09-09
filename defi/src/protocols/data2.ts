@@ -11925,7 +11925,6 @@ const data2: Protocol[] = [
       "Polygon",
       "Avalanche",
       "Fantom",
-      "Heco",
       "OKExChain",
       "Kucoin",
       "Arbitrum",

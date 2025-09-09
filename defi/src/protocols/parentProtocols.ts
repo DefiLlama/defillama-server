@@ -4013,8 +4013,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "standard-protocol",
     cmcId: "9251",
     chains: [],
-    twitter: "standardweb3",
-    github: ["standardweb3"],
+    twitter: "standarddotim",
+    github: ["standardweb3", "standarddotim"],
   },
   {
     id: "parent#crunchy-network",
@@ -7731,7 +7731,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "nemoprotocol",
-  },
+  }, 
   {
     id: "parent#okieswap",
     name: "OkieSwap",
@@ -7929,6 +7929,28 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Securitize",
+  },
+  {
+    id: "parent#flat-money",
+    name: "Flat Money",
+    url: "https://flat.money/",
+    description: "Flat Money is a smart contract protocol that allows users to mint UNIT, an on-chain flatcoin backed by liquid staking ETH",
+    logo: `${baseIconsUrl}/flat-money.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xflatmoney",
+  },
+  {
+    id: "parent#kinto",
+    name: "Kinto",
+    url: "https://www.kinto.xyz/",
+    description: "Kinto's on-chain perpetual futures DEX, integrated into its modular exchange platform, allowing users to trade up to 75 assets with up to 50x leverage directly from their non-custodial Kinto smart wallet",
+    logo: `${baseIconsUrl}/kinto.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KintoXYZ",
   },
 ];
 

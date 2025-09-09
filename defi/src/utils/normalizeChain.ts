@@ -1157,7 +1157,7 @@ export const chainCoingeckoIds = {
     twitter: "vitelabs",
     url: "https://vite.org/"
   },
-  "Milkomeda C1": {
+  "Milkomeda C1 (Deprecated)": {
     geckoId: null,
     github: ['dcSpark'],
     symbol: null,
@@ -4791,7 +4791,7 @@ const newChainLabelMap = {
   "wemix": "WEMIX3.0",
   "persistence": "Persistence One",
   "ripple": "XRPL",
-  "milkomeda": "Milkomeda C1",
+  "milkomeda": "Milkomeda C1 (Deprecated)",
   "zksync": "ZKsync Lite",
   "era": "ZKsync Era",
   "tomochain": "Viction",
@@ -4824,7 +4824,7 @@ const newChainLabelMap = {
   "idex": "XCHAIN",
   "echelon_initia": "Echelon Initia",
   "proton": "XPR Network",
-  "camp": "Camp Network"
+  "camp": "Camp Network",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

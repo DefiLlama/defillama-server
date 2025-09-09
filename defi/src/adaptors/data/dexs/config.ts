@@ -3121,4 +3121,7 @@ export default {
     "thalaswap-v3": {
         id: "6676"
     },
+    "pacifica": {
+        id: "6682",
+    },
 } as AdaptorsConfig

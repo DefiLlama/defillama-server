@@ -694,9 +694,9 @@ export default {
     "hyperdash": {
         id: "6559"
     },
-    "kinto-xyz": {
-        id: "6560"
-    },
+    // "kinto-xyz": { commented out because listing in data4 was commented out
+    //     id: "6560"
+    // },
     "superX": {
         id: "6561"
     },

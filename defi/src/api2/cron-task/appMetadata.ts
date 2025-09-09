@@ -137,6 +137,7 @@ async function _storeAppMetadata() {
     chainNftsData,
     safeHarborData,
     entitiesData,
+    nftStatsData,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
     readRouteData("/dimensions/chain-agg-data"),
@@ -174,6 +175,7 @@ async function _storeAppMetadata() {
     fetchJson(CHAIN_NFTS).catch(() => ({})),
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
     fetchJson("https://api.llama.fi/entities").catch(() => []),
+    getNftStats(),
   ]);
 
   await _storeMetadataFile();
@@ -795,18 +797,17 @@ async function _storeAppMetadata() {
       optionsNotionalVolume: { protocols: 0, chains: 0 },
       bridgeAggregators: { protocols: 0, chains: 0 },
       lending: { protocols: lendingProtocols, chains: 0 },
-      treasury: { protocols: 0, chains: 0 },
+      treasury: { protocols: 0, chains: 0, entities: entitiesData.length },
       emissions: { protocols: 0, chains: 0 },
       incentives: { protocols: 0, chains: 0 },
       forks: { protocols: 0, chains: 0 },
       oracles: { protocols: 0, chains: 0 },
       cexs: { protocols: 0, chains: 0 },
       bridgedTVL: { protocols: 0, chains: 0 },
-      nfts: { protocols: 0, chains: 0 },
-      yields: { protocols: 0, chains: 0 },
+      nfts: { ...nftStatsData, protocols: 0, chains: 0 },
+      yields: { protocols: 0, chains: 0, pools: yieldsData.length },
       bridges: { protocols: bridgesData.bridges.length, chains: bridgesData.chains.length },
-      entities: entitiesData.length,
-      raises: { raises: raisesData.raises.length, investors: investors.size },
+      raises: { total: raisesData.raises.length, investors: investors.size },
       safeHarbor: { protocols: 0, chains: 0 },
       hacks: { total: hacksData.length, protocols: 0, chains: 0 },
       categories: categoriesSet.size,
@@ -815,6 +816,8 @@ async function _storeAppMetadata() {
       tokenlessProtocols: tokenlessProtocolsSet.size,
       pf: { protocols: 0, chains: 0 },
       ps: { protocols: 0, chains: 0 },
+      expenses: { protocols: 0, chains: 0 },
+      governance: { protocols: 0, chains: 0 },
     };
 
     for (const p in sortedProtocolData) {
@@ -885,6 +888,12 @@ async function _storeAppMetadata() {
       }
       if (protocol.hacks) {
         totalTrackedByMetric.hacks.protocols += 1;
+      }
+      if (protocol.expenses) {
+        totalTrackedByMetric.expenses.protocols += 1;
+      }
+      if (protocol.governance) {
+        totalTrackedByMetric.governance.protocols += 1;
       }
     }
 
@@ -978,3 +987,25 @@ const CHAINS_ASSETS = "https://api.llama.fi/chain-assets/chains";
 const LIQUIDITY_API = "https://defillama-datasets.llama.fi/liquidity.json";
 const CHAIN_NFTS = "https://defillama-datasets.llama.fi/temp/chainNfts";
 const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
+
+async function getNftStats() {
+  const [collections, marketplaces, chains] = await Promise.all([
+    fetchJson("https://nft.llama.fi/collections")
+      .then((res) => res.length)
+      .catch(() => 0),
+    fetchJson("https://nft.llama.fi/exchangeStats")
+      .then((res) => res.length)
+      .catch(() => 0),
+    fetchJson("https://nft.llama.fi/mints")
+      .then((res) => res.length)
+      .catch(() => 0),
+    fetchJson(CHAIN_NFTS)
+      .then((res) => Object.keys(res).length)
+      .catch(() => 0),
+  ]);
+  return {
+    collections,
+    marketplaces,
+    chains,
+  };
+}

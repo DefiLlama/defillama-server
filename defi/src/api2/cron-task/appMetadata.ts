@@ -50,11 +50,12 @@ protocols.forEach((protocol: any) => {
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
-  }
-  if (protocol.gecko_id) {
-    protocolsWithGeckoIdSet.add(protocol.id);
   } else {
-    tokenlessProtocolsSet.add(protocol.id);
+    if (protocol.gecko_id) {
+      protocolsWithGeckoIdSet.add(protocol.id);
+    } else {
+      tokenlessProtocolsSet.add(protocol.id);
+    }
   }
 });
 

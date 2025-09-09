@@ -5,7 +5,7 @@
  */
 
 import { readRouteData, storeRouteData } from "../cache/file-cache";
-import * as sdk from '@defillama/sdk'
+import * as sdk from "@defillama/sdk";
 
 import fetch from "node-fetch";
 // import { pullDevMetricsData } from "./githubMetrics";
@@ -24,6 +24,8 @@ const parentProtocolsInfoMap: any = {};
 const protocolChainSetMap: {
   [key: string]: Set<string>;
 } = {};
+const protocolsWithGeckoIdSet = new Set<string>();
+const tokenlessProtocolsSet = new Set<string>();
 const categoriesSet = new Set<string>();
 const tagsSet = new Set<string>();
 const nameAndIds: any = [];
@@ -33,6 +35,11 @@ parentProtocols.forEach((protocol: any) => {
   nameAndIds.push(`${protocol.name}+${protocol.id}`);
   protocolChainSetMap[protocol.id] = new Set();
   protocol.childProtocols = [];
+  if (protocol.gecko_id) {
+    protocolsWithGeckoIdSet.add(protocol.id);
+  } else {
+    tokenlessProtocolsSet.add(protocol.id);
+  }
 });
 
 protocols.forEach((protocol: any) => {
@@ -43,6 +50,11 @@ protocols.forEach((protocol: any) => {
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
+  }
+  if (protocol.gecko_id) {
+    protocolsWithGeckoIdSet.add(protocol.id);
+  } else {
+    tokenlessProtocolsSet.add(protocol.id);
   }
 });
 
@@ -124,6 +136,7 @@ async function _storeAppMetadata() {
     oraclesData,
     chainNftsData,
     safeHarborData,
+    entitiesData,
   ] = await Promise.all([
     readRouteData("/lite/protocols2"),
     readRouteData("/dimensions/chain-agg-data"),
@@ -149,8 +162,8 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => { }),
-    fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [] })),
+    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => {}),
+    fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [], bridges: [] })),
     fetchJson(CHAINS_ASSETS).catch(() => ({})),
     readRouteData("/chains").catch(() => []),
     readRouteData("/forks").catch(() => ({ forks: {} })),
@@ -159,11 +172,12 @@ async function _storeAppMetadata() {
       .catch(() => ({ protocols: 0, chains: 0 })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
-    sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true, }).catch(() => ({})),
+    sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
+    fetchJson("https://api.llama.fi/entities").catch(() => []),
   ]);
 
   await _storeMetadataFile();
-  await storeRouteData('/_fe/static/safe-harbor-projects', safeHarborData);
+  await storeRouteData("/_fe/static/safe-harbor-projects", safeHarborData);
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
@@ -650,11 +664,12 @@ async function _storeAppMetadata() {
       };
     }
 
-    const bridges = bridgesData.bridges.map((b: any) => b.displayName);
-    const allNftMarketplaces = nftMarketplacesData.map((market: any) => market.exchangeName);
+    const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+    const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
+    const allEmissionsProtocols = new Set(emmissionsData);
     for (const protocolNameAndId of nameAndIds) {
       const [protocolName, protocolId] = protocolNameAndId.split("+");
-      if (emmissionsData.includes(slug(protocolName))) {
+      if (allEmissionsProtocols.has(slug(protocolName))) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           emissions: true,
@@ -668,14 +683,14 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.includes(protocolName)) {
+      if (bridges.has(protocolName)) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           bridge: true,
         };
       }
 
-      if (allNftMarketplaces.includes(protocolName)) {
+      if (allNftMarketplaces.has(protocolName)) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           nfts: true,
@@ -697,7 +712,7 @@ async function _storeAppMetadata() {
           });
 
           // if protocol has signed safe harbor agreement
-          if (safeHarborData?.[k]) r[k].safeHarbor = true
+          if (safeHarborData?.[k]) r[k].safeHarbor = true;
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
@@ -709,7 +724,7 @@ async function _storeAppMetadata() {
           r[k].chains = Array.from(chainSet);
 
           // if protocol has signed safe harbor agreement
-          if (safeHarborData?.[k]) r[k].safeHarbor = true
+          if (safeHarborData?.[k]) r[k].safeHarbor = true;
         }
         return r;
       }, {});
@@ -757,6 +772,12 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-chains.json", sortedChainData);
 
+    const investors = new Set(
+      raisesData.raises
+        .flatMap((raise: any) => raise.leadInvestors)
+        .concat(raisesData.raises.flatMap((raise: any) => raise.otherInvestors))
+    );
+
     const totalTrackedByMetric = {
       tvl: { protocols: 0, chains: 0 },
       stablecoins: stablecoinsTracked,
@@ -783,6 +804,17 @@ async function _storeAppMetadata() {
       bridgedTVL: { protocols: 0, chains: 0 },
       nfts: { protocols: 0, chains: 0 },
       yields: { protocols: 0, chains: 0 },
+      bridges: { protocols: bridgesData.bridges.length, chains: bridgesData.chains.length },
+      entities: entitiesData.length,
+      raises: { raises: raisesData.raises.length, investors: investors.size },
+      safeHarbor: { protocols: 0, chains: 0 },
+      hacks: { total: hacksData.length, protocols: 0, chains: 0 },
+      categories: categoriesSet.size,
+      tags: tagsSet.size,
+      protocolsWithGeckoId: protocolsWithGeckoIdSet.size,
+      tokenlessProtocols: tokenlessProtocolsSet.size,
+      pf: { protocols: 0, chains: 0 },
+      ps: { protocols: 0, chains: 0 },
     };
 
     for (const p in sortedProtocolData) {
@@ -793,9 +825,15 @@ async function _storeAppMetadata() {
       }
       if (protocol.fees) {
         totalTrackedByMetric.fees.protocols += 1;
+        if (protocolsWithGeckoIdSet.has(p)) {
+          totalTrackedByMetric.pf.protocols += 1;
+        }
       }
       if (protocol.revenue) {
         totalTrackedByMetric.revenue.protocols += 1;
+        if (protocolsWithGeckoIdSet.has(p)) {
+          totalTrackedByMetric.ps.protocols += 1;
+        }
       }
       if (protocol.holdersRevenue) {
         totalTrackedByMetric.holdersRevenue.protocols += 1;
@@ -842,6 +880,12 @@ async function _storeAppMetadata() {
       if (protocol.yields) {
         totalTrackedByMetric.yields.protocols += 1;
       }
+      if (protocol.safeHarbor) {
+        totalTrackedByMetric.safeHarbor.protocols += 1;
+      }
+      if (protocol.hacks) {
+        totalTrackedByMetric.hacks.protocols += 1;
+      }
     }
 
     for (const oracle in oraclesData?.oracles ?? []) {
@@ -858,9 +902,12 @@ async function _storeAppMetadata() {
       }
       if (chain.fees) {
         totalTrackedByMetric.fees.chains += 1;
+
+        totalTrackedByMetric.pf.chains += 1;
       }
       if (chain.revenue) {
         totalTrackedByMetric.revenue.chains += 1;
+        totalTrackedByMetric.ps.chains += 1;
       }
       if (chain.chainFees) {
         totalTrackedByMetric.chainFees.chains += 1;

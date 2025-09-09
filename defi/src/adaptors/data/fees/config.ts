@@ -4175,5 +4175,8 @@ export default {
     },
     "phygitals": {
         id: "6684"
-    }
+    },
+    "skate-amm": {
+        id: "6246"
+    },
 } as AdaptorsConfig

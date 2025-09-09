@@ -7741,7 +7741,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "okiedokie_fun",
+    twitter: "okiefinance",
   },
   {
     id: "parent#zerolend",

@@ -42,5 +42,8 @@ export default {
     },
     "garden": {
         id: "6615"
-    }
+    },
+    "virtus": {
+        id: "6698"
+    },
 } as AdaptorsConfig

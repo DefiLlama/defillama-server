@@ -735,5 +735,8 @@ export default {
     },
     "toros": {
         id: "1881"
-    }
+    },
+    "pacifica": {
+        id: "6682",
+    },
 } as AdaptorsConfig

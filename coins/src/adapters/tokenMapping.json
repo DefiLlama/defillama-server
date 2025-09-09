@@ -3535,6 +3535,11 @@
     }
   },
   "mantle": {
+    "0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2": {
+      "decimals": "18",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#mantle",
       "decimals": "18",
@@ -11792,13 +11797,13 @@
       "decimals": 18,
       "symbol": "ETH"
     }
-  }, 
+  },
   "terra2": {
     "terra1ctelwayk6t2zu30a8v9kdg3u2gr0slpjdfny5pjp7m3tuquk32ysugyjdg": {
       "to": "coingecko#solana",
       "decimals": 9,
       "symbol": "WSOL"
-    }, 
+    },
     "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct": {
       "to": "coingecko#eris-amplified-luna",
       "decimals": 6,

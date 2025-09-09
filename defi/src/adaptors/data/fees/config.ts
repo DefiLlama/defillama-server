@@ -4184,5 +4184,11 @@ export default {
     },
     "stakeee": {
         id: "3964"
+    },
+    "pancakeswap-lottery": {
+        id: "6694"
+    },
+    "colorpool": {
+        id: "6693"
     }
 } as AdaptorsConfig

@@ -4575,6 +4575,14 @@ export const chainCoingeckoIds = {
     twitter: "Kalshi",
     url: "https://kalshi.com/",
   },
+  "Chromia": {
+    geckoId: "chromaway",
+    symbol: "CHR",
+    cmcId: "3978",
+    categories: [],
+    twitter: "Chromia",
+    url: "https://chromia.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

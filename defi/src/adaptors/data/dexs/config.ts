@@ -3130,4 +3130,7 @@ export default {
     "kalshi": {
         id: "6689"
     },
+    "colorpool": {
+        id: "6693"
+    }
 } as AdaptorsConfig

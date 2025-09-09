@@ -4579,6 +4579,7 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://x.com/SnakeOnSonic/status/194843031691111238"]
       }
+    ]
   },
   {
     id: "5761",

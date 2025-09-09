@@ -1545,6 +1545,11 @@
     }
   },
   "arbitrum": {
+    "0xc26af85ede9cc25d449bcebef866bb85afd5d346": {
+      "decimals": "6",
+      "symbol": "ULTRA",
+      "to": "asset#ethereum:0x50293DD8889B931EB3441d2664dce8396640B419"
+    },
     "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
       "decimals": "18",
       "symbol": "RLP",

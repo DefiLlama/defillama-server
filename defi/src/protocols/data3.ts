@@ -31747,8 +31747,8 @@ const data3_1: Protocol[] = [
   {
     id: "4108",
     name: "Avantis",
-    address: null,
-    symbol: "-",
+    address: "base:0x696f9436b67233384889472cd7cd58a6fb5df4f1",
+    symbol: "AVNT",
     url: "https://www.avantisfi.com/referral?code=DefiLlama",
     referralUrl: "https://www.avantisfi.com/referral?code=DefiLlama",
     description:
@@ -31757,8 +31757,8 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/avantis.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: 'avantis',
+    cmcId: '38299',
     category: "Derivatives",
     chains: ["Base"],
     oracles: ["Pyth", "Chainlink"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8865

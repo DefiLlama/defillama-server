@@ -4182,7 +4182,7 @@ export default {
     "okie-stableswap": {
         id: "6688"
     },
-    "stakeee": {
+    "stakee": {
         id: "3964"
     },
     "pancakeswap-lottery": {

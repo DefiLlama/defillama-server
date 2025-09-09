@@ -25855,7 +25855,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Leverage Farming",
+    category: "Leveraged Farming",
     chains: ["Unichain"],
     forkedFromIds: [],
     module: "vii-finance/index.js",

@@ -4179,7 +4179,7 @@ export default {
     "skate-amm": {
         id: "6246"
     },
-    "okieswap-stableswap": {
+    "okie-stableswap": {
         id: "6688"
     },
     "stakeee": {

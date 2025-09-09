@@ -732,5 +732,8 @@ export default {
     },
     "boros": {
         id: "6536"
+    },
+    "toros": {
+        id: "1881"
     }
 } as AdaptorsConfig

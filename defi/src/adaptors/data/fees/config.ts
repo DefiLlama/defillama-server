@@ -4179,4 +4179,7 @@ export default {
     "skate-amm": {
         id: "6246"
     },
+    "okieswap-stableswap": {
+        id: "6688"
+    },
 } as AdaptorsConfig

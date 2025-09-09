@@ -3124,4 +3124,10 @@ export default {
     "pacifica": {
         id: "6682",
     },
+    "okieswap-stableswap": {
+        id: "6688"
+    },
+    "ondo-global-markets": {
+        id: "6650"
+    },
 } as AdaptorsConfig

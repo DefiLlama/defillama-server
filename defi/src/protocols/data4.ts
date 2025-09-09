@@ -25653,5 +25653,23 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "Kalshi",
   },
+  {
+    id: "6690",
+    name: "bytzz",
+    address: null,
+    symbol: "-",
+    url: "https://www.bytzz.xyz/",
+    description: "DEX Aggregator on X Layer",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/bytzz.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["X Layer"],
+    module: "dummy.js",
+    twitter: "bytzz_xyz",
+  },
 ];
 export default data4;

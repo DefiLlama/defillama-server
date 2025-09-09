@@ -387,4 +387,7 @@ export default {
   "3route": {
     id: "6674"
   },
+  "bytzz": {
+    id: "6690"
+  },
 } as AdaptorsConfig;

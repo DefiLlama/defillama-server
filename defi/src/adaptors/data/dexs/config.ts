@@ -3130,4 +3130,7 @@ export default {
     "ondo-global-markets": {
         id: "6650"
     },
+    "kalshi": {
+        id: "6689"
+    },
 } as AdaptorsConfig

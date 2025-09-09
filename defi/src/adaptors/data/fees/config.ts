@@ -4182,4 +4182,7 @@ export default {
     "okieswap-stableswap": {
         id: "6688"
     },
+    "stakeee": {
+        id: "3964"
+    }
 } as AdaptorsConfig

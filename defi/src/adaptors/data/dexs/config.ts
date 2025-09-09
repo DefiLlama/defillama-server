@@ -3121,7 +3121,7 @@ export default {
     "thalaswap-v3": {
         id: "6676"
     },
-    "okieswap-stableswap": {
+    "okie-stableswap": {
         id: "6688"
     },
     "ondo-global-markets": {

@@ -4567,7 +4567,7 @@ export const chainCoingeckoIds = {
     twitter: "GoGalaGames",
     url: "https://www.galachain.com/",
   },
-  "Kalshi ": {
+  "Kalshi": {
     geckoId: null,
     symbol: null,
     cmcId: null,

@@ -12839,6 +12839,12 @@ const data4: Protocol[] = [
     module: "unilend-protocol/index.js",
     twitter: "Unilendone",
     listedAt: 1746008832,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://x.com/Unilendone/status/1964976269772071391"]
+      }
   },
   /*
   {

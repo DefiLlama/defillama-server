@@ -4573,6 +4573,12 @@ const data4: Protocol[] = [
     module: "snake/index.js",
     twitter: "SnakeOnSonic",
     listedAt: 1738964053,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://x.com/SnakeOnSonic/status/194843031691111238"]
+      }
   },
   {
     id: "5761",

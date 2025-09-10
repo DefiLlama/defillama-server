@@ -703,8 +703,8 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sperax",
     url: "http://sperax.io",
     description:
-      "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy",
-    logo: `${baseIconsUrl}/sperax.png`,
+      "SperaxOS is a programmable agent layer for DeFi, enabling autonomous capital execution, dynamic yield optimization, and onchain risk defense",
+    logo: `${baseIconsUrl}/sperax.jpg`,
     gecko_id: "sperax",
     cmcId: "6715",
     chains: [],

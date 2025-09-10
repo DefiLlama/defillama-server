@@ -22987,7 +22987,7 @@ const data2: Protocol[] = [
     description:
       "Farming-as-a-service infrastructure on UniswapV3. Demeter protocol is a new protocol for DAOs to launch and manage decentralized exchange liquidity - without needing to know how to code",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/sperax-demeter.png`,
+    logo: `${baseIconsUrl}/sperax-demeter.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -503,6 +503,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     address: "0x3588e6Cb5DCa99E35bA2E2a5D42cdDb46365e71B",
   },
+  hwHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0xCf9be8BF79ad26fdD7aA73f3dd5bA73eCDee2a32",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x5555555555555555555555555555555555555555",
+    address: "0x4DE03cA1F02591B717495cfA19913aD56a2f5858",
+  },
 };
 
 export async function derivs(timestamp: number) {

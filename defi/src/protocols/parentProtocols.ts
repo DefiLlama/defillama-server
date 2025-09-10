@@ -7963,6 +7963,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Theo_Network",
   },
+  {
+    id: "parent#machinex",
+    name: "MachineX",
+    url: "https://www.machinex.xyz/",
+    description: "The Machine Economy's DEX.",
+    logo: `${baseIconsUrl}/machinex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "machinedex",
+  },
 ];
 
 export default parentProtocols;

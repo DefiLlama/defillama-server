@@ -3142,4 +3142,10 @@ export default {
     "upheaval-v3": {
         id: "6633",
     },
+    "machinex-legacy": {
+        id: "6704"
+    },
+    "machinex-cl": {
+        id: "6705"
+    },
 } as AdaptorsConfig

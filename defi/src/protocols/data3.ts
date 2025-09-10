@@ -63718,13 +63718,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5545",
-    name: "Theo",
+    name: "Theo Straddle Vaults",
     address: null,
     symbol: "-",
     url: "https://theo.xyz/",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/theo.png`,
+    logo: `${baseIconsUrl}/theo-straddle-vaults.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -63738,6 +63738,7 @@ const data3_2: Protocol[] = [
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit.md",
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit_2.md"
     ],
+    parentProtocol: "parent#theo",
     listedAt: 1734734529
   },
   {

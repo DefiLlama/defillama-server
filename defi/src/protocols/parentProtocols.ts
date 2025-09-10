@@ -7952,6 +7952,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "KintoXYZ",
   },
+  {
+    id: "parent#theo",
+    name: "Theo",
+    url: "https://theo.xyz/",
+    description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
+    logo: `${baseIconsUrl}/theo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Theo_Network",
+  },
 ];
 
 export default parentProtocols;

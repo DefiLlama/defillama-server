@@ -4190,5 +4190,11 @@ export default {
     },
     "colorpool": {
         id: "6693"
+    },
+    "enosys-v2": {
+        id: "885"
+    },
+    "enosys": {
+        id: "5158"
     }
 } as AdaptorsConfig

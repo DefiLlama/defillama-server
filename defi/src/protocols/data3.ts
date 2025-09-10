@@ -30773,8 +30773,8 @@ const data3_1: Protocol[] = [
     name: "dYdX V4",
     address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
     symbol: "dYdX",
-    url: "https://dydx.trade/?ref=DefiLlama",
-    referralUrl: "https://dydx.trade/?ref=DefiLlama",
+    url: "https://dydx.trade?ref=LoneHull0UN",
+    referralUrl: "https://dydx.trade?ref=LoneHull0UN",
     description:
       " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
     chain: "dYdX",

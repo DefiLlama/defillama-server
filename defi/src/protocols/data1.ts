@@ -872,8 +872,8 @@ const data: Protocol[] = [
     name: "dYdX V3",
     address: "0x92d6c1e31e14520e676a687f0a93788b716beff5",
     symbol: "DYDX",
-    url: "https://dydx.trade/?ref=DefiLlama",
-    referralUrl: "https://dydx.trade/?ref=DefiLlama",
+    url: "https://dydx.trade?ref=LoneHull0UN",
+    referralUrl: "https://dydx.trade?ref=LoneHull0UN",
     description:
       "The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.",
     chain: "Ethereum",

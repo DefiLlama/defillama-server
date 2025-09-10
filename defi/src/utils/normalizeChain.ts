@@ -4567,6 +4567,22 @@ export const chainCoingeckoIds = {
     twitter: "GoGalaGames",
     url: "https://www.galachain.com/",
   },
+  "Kalshi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "Kalshi",
+    url: "https://kalshi.com/",
+  },
+  "Chromia": {
+    geckoId: "chromaway",
+    symbol: "CHR",
+    cmcId: "3978",
+    categories: [],
+    twitter: "Chromia",
+    url: "https://chromia.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

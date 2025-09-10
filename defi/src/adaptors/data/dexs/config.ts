@@ -3121,7 +3121,25 @@ export default {
     "thalaswap-v3": {
         id: "6676"
     },
-    "pacifica": {
-        id: "6682",
+    "okie-stableswap": {
+        id: "6688"
+    },
+    "ondo-global-markets": {
+        id: "6650"
+    },
+    "kalshi": {
+        id: "6689"
+    },
+    "colorpool": {
+        id: "6693"
+    },
+    "enosys-v2": {
+        id: "885"
+    },
+    "upheaval-v2": {
+        id: "6632",
+    },
+    "upheaval-v3": {
+        id: "6633",
     },
 } as AdaptorsConfig

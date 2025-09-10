@@ -4175,5 +4175,32 @@ export default {
     },
     "phygitals": {
         id: "6684"
-    }
+    },
+    "skate-amm": {
+        id: "6246"
+    },
+    "okie-stableswap": {
+        id: "6688"
+    },
+    "stakee": {
+        id: "3964"
+    },
+    "pancakeswap-lottery": {
+        id: "6694"
+    },
+    "colorpool": {
+        id: "6693"
+    },
+    "enosys-v2": {
+        id: "885"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "upheaval-v2": {
+        id: "6632",
+    },
+    "upheaval-v3": {
+        id: "6633",
+    },
 } as AdaptorsConfig

@@ -30773,8 +30773,8 @@ const data3_1: Protocol[] = [
     name: "dYdX V4",
     address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
     symbol: "dYdX",
-    url: "https://dydx.trade/?ref=DefiLlama",
-    referralUrl: "https://dydx.trade/?ref=DefiLlama",
+    url: "https://dydx.trade?ref=LoneHull0UN",
+    referralUrl: "https://dydx.trade?ref=LoneHull0UN",
     description:
       " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
     chain: "dYdX",
@@ -31747,8 +31747,8 @@ const data3_1: Protocol[] = [
   {
     id: "4108",
     name: "Avantis",
-    address: null,
-    symbol: "-",
+    address: "base:0x696f9436b67233384889472cd7cd58a6fb5df4f1",
+    symbol: "AVNT",
     url: "https://www.avantisfi.com/referral?code=DefiLlama",
     referralUrl: "https://www.avantisfi.com/referral?code=DefiLlama",
     description:
@@ -31757,8 +31757,8 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/avantis.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: 'avantis',
+    cmcId: '38299',
     category: "Derivatives",
     chains: ["Base"],
     oracles: ["Pyth", "Chainlink"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8865
@@ -63718,13 +63718,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5545",
-    name: "Theo",
+    name: "Theo Straddle Vaults",
     address: null,
     symbol: "-",
     url: "https://theo.xyz/",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/theo.png`,
+    logo: `${baseIconsUrl}/theo-straddle-vaults.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -63738,6 +63738,7 @@ const data3_2: Protocol[] = [
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit.md",
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit_2.md"
     ],
+    parentProtocol: "parent#theo",
     listedAt: 1734734529
   },
   {

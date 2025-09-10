@@ -725,12 +725,23 @@ export default {
         id: "6657"
     },
     "woofi-pro-perp": {
-        id: "6658"
+        id: "6658",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            },
+        }
     },
     "rabby-perps": {
         id: "6656"
     },
     "boros": {
         id: "6536"
-    }
+    },
+    "toros": {
+        id: "1881"
+    },
+    "pacifica": {
+        id: "6682",
+    },
 } as AdaptorsConfig

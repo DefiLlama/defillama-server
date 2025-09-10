@@ -703,8 +703,8 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sperax",
     url: "http://sperax.io",
     description:
-      "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy",
-    logo: `${baseIconsUrl}/sperax.png`,
+      "SperaxOS is a programmable agent layer for DeFi, enabling autonomous capital execution, dynamic yield optimization, and onchain risk defense",
+    logo: `${baseIconsUrl}/sperax.jpg`,
     gecko_id: "sperax",
     cmcId: "6715",
     chains: [],
@@ -3742,8 +3742,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dydx",
     name: "dYdX",
-    url: "https://dydx.trade/?ref=DefiLlama",
-    referralUrl: "https://dydx.trade/?ref=DefiLlama",
+    url: "https://dydx.trade?ref=LoneHull0UN",
+    referralUrl: "https://dydx.trade?ref=LoneHull0UN",
     description: `The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.`,
     logo: `${baseIconsUrl}/dydx.jpg`,
     gecko_id: "dydx-chain",
@@ -7741,7 +7741,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "okiedokie_fun",
+    twitter: "okiefinance",
   },
   {
     id: "parent#zerolend",
@@ -7951,6 +7951,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "KintoXYZ",
+  },
+  {
+    id: "parent#theo",
+    name: "Theo",
+    url: "https://theo.xyz/",
+    description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
+    logo: `${baseIconsUrl}/theo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Theo_Network",
   },
 ];
 

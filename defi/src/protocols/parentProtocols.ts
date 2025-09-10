@@ -7974,6 +7974,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "machinedex",
   },
+  {
+    id: "parent#somnex",
+    name: "Somnex",
+    url: "https://somnex.xyz/",
+    description: "One-stop trading Platform on Somnia Network, offering AMM, Perp, AI Agent launch, and Meme Launch.",
+    logo: `${baseIconsUrl}/somnex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SomnexXYZ",
+  },
 ];
 
 export default parentProtocols;

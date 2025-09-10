@@ -11837,7 +11837,7 @@
   },
   "chromia": {
     "5f16d1545a0881f971b164f1601cbbf51c29efd0633b2730da18c403c3b428b5": {
-      "to": "coingecko#chromia",
+      "to": "coingecko#chromaway",
       "decimals": 6,
       "symbol": "CHR"
     },

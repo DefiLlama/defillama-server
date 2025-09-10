@@ -25915,7 +25915,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://theo.xyz/",
-    description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
+    description: "thBILL is a yield-bearing basket of tokenized U.S. Treasury bills from regulated issuers, designed as a stable core asset within the Theo ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/theo-network-thbill.jpg`,
     audits: "0",

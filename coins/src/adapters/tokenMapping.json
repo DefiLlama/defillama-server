@@ -11814,5 +11814,22 @@
       "decimals": 6,
       "symbol": "ampLUNA"
     }
+  },
+  "chromia": {
+    "5f16d1545a0881f971b164f1601cbbf51c29efd0633b2730da18c403c3b428b5": {
+      "to": "coingecko#chromia",
+      "decimals": 6,
+      "symbol": "CHR"
+    },
+    "9084de203ef2afc7c6bfd647660aa3265d3b9ef1105139077ed3c81b26e2976e": {
+      "to": "coingecko#my-neighbor-alice",
+      "decimals": 6,
+      "symbol": "ALICE"
+    },
+    "d85153c53bc78c6bf177113c5da873669f97bd46db1ab7411e2f8932c7cdd0a8": {
+      "to": "coingecko#dar-open-network",
+      "decimals": 6,
+      "symbol": "D"
+    }
   }
 }

@@ -1283,6 +1283,11 @@
       "to": "coingecko#coinbase-wrapped-btc",
       "decimals": 18,
       "symbol": "cbBTC18"
+    },
+    "0xaf6186b3521b60e27396b5d23b48abc34bf585c5": {
+      "to": "coingecko#gusd",
+      "decimals": 6,
+      "symbol": "GUSD"
     }
   },
   "fantom": {

@@ -7912,6 +7912,11 @@
     }
   },
   "stellar": {
+    "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6": {
+      "to": "coingecko#ondo-finance-us-dollar-yield",
+      "decimals": 7,
+      "symbol": "USDY"
+    },
     "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA": {
       "to": "coingecko#stellar",
       "decimals": 7,

@@ -24503,7 +24503,9 @@ const data3_1: Protocol[] = [
       "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/ChainSecurity-audit.pdf",
       "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V1/blockbite-audit.pdf",
       "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/ChainSecurity_Frankencoin_Frankencoin_v2024.pdf",
-      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/frankencoin-audit-report-2024-1.1.pdf"
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/blob/main/audits/V2/frankencoin-audit-report-2024-1.1.pdf",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/tree/main/audits/V1",
+      "https://github.com/Frankencoin-ZCHF/Frankencoin/tree/main/audits/V2"
     ],
     listedAt: 1699970045,
   },

@@ -3135,5 +3135,11 @@ export default {
     },
     "enosys-v2": {
         id: "885"
-    }
+    },
+    "upheaval-v2": {
+        id: "6632",
+    },
+    "upheaval-v3": {
+        id: "6633",
+    },
 } as AdaptorsConfig

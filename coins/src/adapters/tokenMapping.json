@@ -899,6 +899,11 @@
     }
   },
   "ethereum": {
+    "0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186": {
+      "decimals": "18",
+      "symbol": "MUSD",
+      "to": "coingecko#mezo-usd"
+    },
     "0xdde3eC717f220Fc6A29D6a4Be73F91DA5b718e55": {
       "decimals": "18",
       "symbol": "USDU",

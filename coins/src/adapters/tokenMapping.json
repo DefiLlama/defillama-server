@@ -909,6 +909,11 @@
       "symbol": "USDU",
       "to": "coingecko#usd-coin"
     },
+    "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#lorenzo-stbtc"
+    },
     "0x6b6b870c7f449266a9f40f94eca5a6ff9b0857e4": {
       "decimals": "18",
       "symbol": "tBTC",

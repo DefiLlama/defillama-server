@@ -13571,14 +13571,14 @@ const data3_1: Protocol[] = [
     deadUrl: true,  },
   {
     id: "3300",
-    name: "Lendle Lend",
+    name: "Lendle Pooled Markets",
     //previousNames: ["Lendle"]
     address: "mantle:0x25356aeca4210ef7553140edb9b8026089e49396",
     symbol: "LEND",
     url: "https://app.lendle.xyz/markets",
     description: "Decentralized, non-custodial lending and borrowing market on MantleNetwork.",
     chain: "Mantle",
-    logo: `${baseIconsUrl}/lendle-lend.jpg`,
+    logo: `${baseIconsUrl}/lendle-pooled-markets.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

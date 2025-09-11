@@ -50591,6 +50591,12 @@ const data3_2: Protocol[] = [
     twitter: "Protocol_Blend",
     github: ["Blend-Blend"],
     listedAt: 1722858892,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://x.com/DIAdata_org/status/1963603033688011073"]
+      }
   },
   {
     id: "4943",

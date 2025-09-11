@@ -35,7 +35,13 @@ export default {
         id: "6435"
     },
     "opensea": {
-        id: "6635"
+        id: "6635",
+        cleanRecordsConfig: {
+          genuineSpikes: {
+            "1751414400": true,
+            "1752105600": true
+          }
+        }
     },
     "orbiter-finance": {
         id: "6520"

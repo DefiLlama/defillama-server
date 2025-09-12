@@ -302,7 +302,7 @@
     "0x960b531667636f39e85867775f52f6b1f220a058c4de786905bdf761e06a56bb::usdy::USDY": {
       "decimals": "6",
       "symbol": "USDY",
-      "to": "coingecko#ondo-finance-us-dollar-yield"
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     },
     "0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX": {
       "decimals": "9",
@@ -2736,7 +2736,7 @@
     "0xcfea864b32833f157f042618bd845145256b1bf4c0da34a7013b76e42daa53cc::usdy::USDY": {
       "decimals": "6",
       "symbol": "USDY",
-      "to": "ethereum:0x96F6eF951840721AdBF46Ac996b59E0235CB985C"
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     },
     "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T": {
       "decimals": "6",
@@ -3479,7 +3479,7 @@
     "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6": {
       "decimals": "6",
       "symbol": "USDY",
-      "to": "coingecko#ondo-finance-us-dollar-yield"
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     },
     "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR": {
       "decimals": "5",
@@ -4279,7 +4279,7 @@
     "925137DE4F77A2F26A5FA5051200437F43AFBBC39A4F443968C8E93B756AFB3B": {
       "decimals": "18",
       "symbol": "USDY",
-      "to": "coingecko#ondo-finance-us-dollar-yield"
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     },
     "C9D6B804F68F218448D7D2AF5D26C0E6E93CD16F99D1695E77B5BE5CBD7D5ADB": {
       "decimals": "18",
@@ -7933,7 +7933,7 @@
   },
   "stellar": {
     "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6": {
-      "to": "coingecko#ondo-finance-us-dollar-yield",
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
       "decimals": 7,
       "symbol": "USDY"
     },
@@ -9919,6 +9919,11 @@
     }
   },
   "hyperliquid": {
+    "0x6d1e7cde53ba9467b783cb7c530ce054": {
+      "to": "coingecko#usd-coin",
+      "decimals": 8,
+      "symbol": "USDC"
+    },
     "0x6bd93ee39bcc7b9baba122c2ba65246e4347bbf9": {
       "decimals": "18",
       "symbol": "SPECTRA",

@@ -24671,6 +24671,7 @@ const data3_1: Protocol[] = [
     twitter: "rakeoff_app",
     github: ["rakeoff-labs"],
     listedAt: 1700144845,
+    deprecated: true
   },
   {
     id: "3798",

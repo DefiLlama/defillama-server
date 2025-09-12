@@ -1,4 +1,5 @@
 import { cgPlatformtoChainId as platformMap } from "../../../common/chainToCoingeckoId";
+import { CgEntry } from "../adapters/utils/dbInterfaces";
 import { getCurrentUnixTimestamp } from "./date";
 import {
   chainsThatShouldNotBeLowerCased,
@@ -45,6 +46,7 @@ export function lowercase(address: string, chain: string) {
 
 export async function iterateOverPlatforms(
   coin: Coin,
+  redirectData: { [key: string]: CgEntry },
   iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
   aggregatedPlatforms: string[],
@@ -73,9 +75,13 @@ export async function iterateOverPlatforms(
             : lowercase(platforms[platform]!, chain).trim())
         }`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
+
+        const timestamp = coinPlatformData[DBPK].redirect
+          ? redirectData[coinPlatformData[DBPK].redirect].timestamp
+          : coinPlatformData[DBPK].timestamp;
         if (
           !coinPlatformData[DBPK] ||
-          coinPlatformData[DBPK].timestamp < margin ||
+          timestamp < margin ||
           coinPlatformData[DBPK].confidence < 0.99
         ) {
           await iterator(PK);

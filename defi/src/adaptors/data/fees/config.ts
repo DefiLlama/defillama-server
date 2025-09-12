@@ -4209,4 +4209,7 @@ export default {
     "machinex-cl": {
         id: "6705"
     },
+    "hylo-protocol": {
+        id: "6493"
+    },
 } as AdaptorsConfig

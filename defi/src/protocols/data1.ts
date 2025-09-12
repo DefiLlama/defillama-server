@@ -21782,11 +21782,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
           },
         ],
       },
-       {
-        name: "Chainlink",
-        type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388", "https://silopedia.silo.finance/oracles"],
-      },
     ],
   },
   {

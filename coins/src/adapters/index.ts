@@ -105,6 +105,7 @@ export default {
   apiDerivs: require("./yield/apiDerivs"),
   pxeth: require("./liquidStaking/pxeth"),
   // sthApt: require("./liquidStaking/sthapt"),
+  truAPT: require("./liquidStaking/truapt"),
   mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),

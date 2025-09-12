@@ -8298,6 +8298,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Sei"],
+    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: ["https://docs.trex.trade/more-about-the-jungle/jungle-scouts-oracles#our-jungle-scouts-oracle-sources"] }],
     forkedFrom: [],
     module: "tearex/index.js",
     audit_links: ["ttps://github.com/TeahouseFinance/Tea-REX/blob/master/audit.pdf"],

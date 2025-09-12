@@ -4,11 +4,10 @@ require("dotenv").config();
 import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data";
 import { getAllItemsForProtocol, getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
-// import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
+import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
 import * as sdk from '@defillama/sdk';
@@ -20,6 +19,9 @@ import { sluggifyString } from "../../utils/sluggify";
 import { storeRouteData } from "../cache/file-cache";
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions";
 import { storeAppMetadata } from './appMetadata';
+
+import * as fs from 'fs';
+import * as path from 'path';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -103,13 +105,213 @@ function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string, in
   return { labelSeries, labelByChainSeries }
 }
 
+type MQ = { monthly: Record<string, number>; quarterly: Record<string, number> }
+type MQByLabel = { monthly: Record<string, Record<string, number>>, quarterly: Record<string, Record<string, number>> }
+type AggregatedProtocolOut = { generatedAt: number, adapterType: string, slug: string, metrics: Record<string, MQ | MQByLabel> }
+
+function monthKeyFromUnix(ts: number) {
+  const d = new Date(ts * 1000)
+  const y = d.getUTCFullYear()
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0')
+  return `${y}-${m}`
+}
+
+function quarterKeyFromUnix(ts: number) {
+  const d = new Date(ts * 1000)
+  const y = d.getUTCFullYear()
+  const q = Math.floor(d.getUTCMonth() / 3) + 1
+  return `${y}-Q${q}`
+}
+
+function rollupFromChart(chart: Array<[number, number]>): MQ {
+  const monthly: Record<string, number> = {}
+  const quarterly: Record<string, number> = {}
+  for (const [ts, val] of chart || []) {
+    if (typeof ts !== 'number' || typeof val !== 'number') continue
+    const mk = monthKeyFromUnix(ts)
+    const qk = quarterKeyFromUnix(ts)
+    monthly[mk] = (monthly[mk] ?? 0) + val
+    quarterly[qk] = (quarterly[qk] ?? 0) + val
+  }
+  return { monthly, quarterly }
+}
+
+function rollupFromLabelChart(series: Array<[number, Record<string, number>]>): MQByLabel {
+  const monthly: Record<string, Record<string, number>> = {}
+  const quarterly: Record<string, Record<string, number>> = {}
+  for (const [ts, labels] of series || []) {
+    if (typeof ts !== 'number' || typeof labels !== 'object') continue
+    const mk = monthKeyFromUnix(ts)
+    const qk = quarterKeyFromUnix(ts)
+    for (const [label, v] of Object.entries(labels || {})) {
+      const val = typeof v === 'number' ? v : Number(v) || 0
+      if (!monthly[label]) monthly[label] = {}
+      if (!quarterly[label]) quarterly[label] = {}
+      monthly[label][mk] = (monthly[label][mk] ?? 0) + val
+      quarterly[label][qk] = (quarterly[label][qk] ?? 0) + val
+    }
+  }
+  return { monthly, quarterly }
+}
+
+function readJSONSafe(fp: string): any | null {
+  try { return JSON.parse(fs.readFileSync(fp, 'utf-8')) } catch { return null }
+}
+
+function slugFromAllFile(filename: string) {
+  return filename.endsWith('all') ? filename.slice(0, -3) : filename
+}
+
+function slugFromBlFile(filename: string) {
+  if (filename.endsWith('-bl')) return filename.slice(0, -3)
+  if (filename.endsWith('bl')) return filename.slice(0, -2)
+  return filename
+}
+
+function findBuildDir(): string | null {
+  const candidates = [
+    path.resolve(process.cwd(), '.api2-cache/build'),
+    path.resolve(process.cwd(), 'src/api2/.api2-cache/build'),
+    path.resolve(__dirname, '../../.api2-cache/build'),
+    path.resolve(__dirname, '../../../.api2-cache/build'),
+    path.resolve(__dirname, '../../../../.api2-cache/build'),
+  ]
+  for (const p of candidates) if (fs.existsSync(p)) return p
+  return null
+}
+
+function applyProtocolMetaFromProtoFile(target: any, src: any) {
+  if (!src) return
+  target.info = target.info || {}
+
+  const KEYS = [
+    'id',
+    'defillamaId',
+    'name',
+    'displayName',
+    'slug',
+    'symbol',
+    'url',
+    'logo',
+    'module',
+    'category',
+    'chains',
+    'methodologyURL',
+    'methodology',
+    'gecko_id',
+    'forkedFrom',
+    'twitter',
+    'audits',
+    'audit_links',
+    'description',
+    'address',
+    'cmcId',
+    'github',
+    'governanceID',
+    'treasury',
+    'parentProtocol',
+    'previousNames',
+    'hallmarks',
+    'defaultChartView',
+    'protocolType',
+    'linkedProtocols',
+    'versionKey'
+  ]
+
+  for (const k of KEYS) {
+    if (src[k] !== undefined && target.info[k] === undefined) target.info[k] = src[k]
+  }
+
+  if (!target.slug && (target.info.slug || src.slug)) target.slug = (target.info.slug || src.slug)
+}
+
+async function generateAggregatesFromBuild() {
+  const buildDir = findBuildDir()
+  if (!buildDir) return
+  const dimRoot = path.join(buildDir, 'dimensions')
+  if (!fs.existsSync(dimRoot)) return
+
+  const adapterTypes = fs
+    .readdirSync(dimRoot)
+    .filter((d) => {
+      try { return fs.statSync(path.join(dimRoot, d)).isDirectory() } catch { return false }
+    })
+
+  for (const adapterType of adapterTypes) {
+    const adapterPath = path.join(dimRoot, adapterType)
+    const recordTypeDirs = fs
+      .readdirSync(adapterPath)
+      .filter((d) => /[a-z]+protocol$/i.test(d))
+      .map((d) => ({ abbr: d.replace(/protocol$/i, ''), dir: path.join(adapterPath, d) }))
+
+    if (!recordTypeDirs.length) continue
+
+    const protoMap: Record<string, AggregatedProtocolOut> = {}
+
+    for (const { abbr, dir } of recordTypeDirs) {
+      let files: string[] = []
+      try { files = fs.readdirSync(dir) } catch { files = [] }
+
+      // *.all -> standard series (sum series)
+      const allFiles = files.filter((f) => f.endsWith('all'))
+      for (const fname of allFiles) {
+        const data = readJSONSafe(path.join(dir, fname))
+        if (!data || !Array.isArray(data.totalDataChart) || data.totalDataChart.length === 0) continue
+
+        const slug = slugFromAllFile(fname)
+        if (!protoMap[slug]) {
+          protoMap[slug] = {
+            generatedAt: Math.floor(Date.now() / 1000),
+            adapterType,
+            slug,
+            metrics: {},
+          }
+        }
+        applyProtocolMetaFromProtoFile(protoMap[slug], data)
+
+        const mq = rollupFromChart(data.totalDataChart)
+        protoMap[slug].metrics[abbr] = mq
+      }
+
+      // *bl / *-bl -> label breakdown series
+      const blFiles = files.filter((f) => f.endsWith('bl') || f.endsWith('-bl'))
+      const abbrBL = `${abbr}bl`
+      for (const fname of blFiles) {
+        const data = readJSONSafe(path.join(dir, fname))
+        const series = data?.totalDataChartBreakdownLabel
+        if (!Array.isArray(series) || series.length === 0) continue
+
+        const slug = slugFromBlFile(fname)
+        if (!protoMap[slug]) {
+          protoMap[slug] = {
+            generatedAt: Math.floor(Date.now() / 1000),
+            adapterType,
+            slug,
+            metrics: {},
+          }
+        }
+        applyProtocolMetaFromProtoFile(protoMap[slug], data)
+
+        const mqLabel = rollupFromLabelChart(series)
+        protoMap[slug].metrics[abbrBL] = mqLabel
+      }
+    }
+
+    // one file per protocol
+    const now = Math.floor(Date.now() / 1000)
+    for (const [slug, proto] of Object.entries(protoMap)) {
+      proto.generatedAt = now
+      await storeRouteData(`dimensions/aggregates/${adapterType}/${slug}`, proto)
+    }
+  }
+}
+
 
 async function run() {
   // Go over all types
   const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
   await storeDimensionsCacheV2(allCache) // store the updated cache
-
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
@@ -156,6 +358,8 @@ async function run() {
   // // store the data as files to be used by the rest api
   await generateDimensionsResponseFiles(allCache)
 
+  // build monthly/quarterly aggregates (one file per protocol) using the generated protocol files
+  await generateAggregatesFromBuild()
 
   async function updateAdapterData(adapterType: AdapterType) {
     // if (adapterType !== AdapterType.DERIVATIVES) return;
@@ -169,7 +373,6 @@ async function run() {
     if (!adapterData.blHistoryFetched) adapterData.blHistoryFetched = {}
 
     await pullChangedFromDBAndAddToCache()
-
 
     async function pullChangedFromDBAndAddToCache() {
       let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 1 * 60 * 60 : 0 // 1 hour ago
@@ -226,12 +429,10 @@ async function run() {
             }
           })
           adapterData.blHistoryFetched[pid] = getUnixTimeNow()
-          console.log(`BL backfill done for protocol ${pid} (${adapterType}) with ${merged} records`)
         } catch (e) {
           console.error(`BL backfill failed for protocol ${pid} (${adapterType})`, e)
         }
       }
-
 
       // remove empty records at the start of each protocol
       Object.keys(adapterData.protocols).forEach((protocolId) => {
@@ -267,7 +468,6 @@ async function run() {
         }
       })
 
-
       adapterData.lastUpdated = getUnixTimeNow()
     }
   }
@@ -284,7 +484,6 @@ async function run() {
     const adapterData = allCache[adapterType]
     const timeKey3 = `summary ${adapterType}`
 
-
     console.time(timeKey3)
 
     const protocolSummaries = {} as any
@@ -296,7 +495,6 @@ async function run() {
     const parentProtocolsData: { [id: string]: any } = {}
     adapterData.protocolSummaries = protocolSummaries
     adapterData.parentProtocolSummaries = parentProtocolSummaries
-
 
     for (const [_dimensionProtocolId, dimensionProtocolInfo] of Object.entries(dimensionProtocolMap) as any) {
       const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
@@ -331,7 +529,6 @@ async function run() {
       if (isParentProtocol) skipChainSummary = true
       if (dimensionProtocolInfo.doublecounted) skipChainSummary = true
 
-
       if (!protocolId) {
         console.log('protocolId is missing', dimensionProtocolInfo)
         return;
@@ -344,7 +541,6 @@ async function run() {
         console.log('Unable to find protocol in data.ts', protocolId, dimensionProtocolInfo?.name, isParentProtocol, adapterType)
       }
       const info = { ...dimensionProtocolInfo }
-
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
       const protocol = {} as any
@@ -374,7 +570,6 @@ async function run() {
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
 
-
       const isBreakdownAdapter = !isParentProtocol && (dimensionProtocolInfo?.childProtocols ?? []).length > 0
 
       if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
@@ -401,9 +596,7 @@ async function run() {
         // we dont create summary for items in protocols instead use the fetched records for others
         let { aggregated, } = record
         const timestamp = timeSToUnix(timeS)
-
         // if (timestamp > startOfDayTimestamp) return; // skip today's data
-
 
         Object.entries(aggregated).forEach(addRecordData)
 
@@ -417,7 +610,6 @@ async function run() {
 
         function addRecordData([recordType, aggData]: any) {
           let { chains, value } = aggData
-
           // if (value === 0) return; // skip zero values
 
           if (!summaries[recordType]) summaries[recordType] = initSummaryItem()
@@ -478,8 +670,6 @@ async function run() {
             if (!chainSummary.earliestTimestamp || timestamp < chainSummary.earliestTimestamp)
               chainSummary.earliestTimestamp = timestamp
 
-
-
             chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
             if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
             chainSummary.chartBreakdown[timeS][protocolName] = value
@@ -532,7 +722,6 @@ async function run() {
           })
         })
 
-
         // totalAllTime
         const acumulativeRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
         if (acumulativeRecordType) {
@@ -556,11 +745,8 @@ async function run() {
             if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
             protocolSummary.totalAllTime += value
 
-
             if (totalValue)
               protocolSummary.totalAllTime = totalValue
-
-
 
             Object.entries(chains).forEach(([chain, value]: any) => {
               if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
@@ -618,7 +804,6 @@ async function run() {
         addBreakdownData({ recordType, record: todayRecord, storeKey: 'breakdown24h', skipChainSummary: false })
         addBreakdownData({ recordType, records: _protocolData.last30DaysData, storeKey: 'breakdown30d' })
 
-
         function addBreakdownData({ recordType, record, storeKey, skipChainSummary = true, records, }: { recordType: string, record?: any, records?: any[], storeKey: string, skipChainSummary?: boolean }) {
 
           if (records) {
@@ -649,12 +834,10 @@ async function run() {
             (protocolSummary as any)[storeKey] = result
           }
         }
-
       }
 
       if (!isParentProtocol) {
         protocolSummaries[protocolId] = protocol
-
 
         const parentId = protocol.info.parentProtocol
         if (!parentId) return;
@@ -675,7 +858,6 @@ async function run() {
     }
 
     function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, protocolLatestRecord, debugParams, }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, protocolLatestRecord?: any, debugParams?: any }) {
-
       // protocolLatestRecord ?? record is a hack to show latest data as protocol's 24h data but not use that record for computing chain/global summary
       if (protocolSummary) _addToSummary({ record: protocolLatestRecord ?? record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary, debugParams, })
       // we need to skip updating summary because underlying child data is already used to update the summary

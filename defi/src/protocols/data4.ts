@@ -14848,6 +14848,14 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Unichain" }],
       },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [
+          "https://app.euler.finance/?governor=mev-capital&network=sonic",
+        ],
+        chains: [{ chain: "Sonic" }],
+      },
     ],
     listedAt: 1747735411,
   },

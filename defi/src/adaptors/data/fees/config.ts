@@ -4215,4 +4215,10 @@ export default {
     "akash-network": {
         id: "7431"
     },
+    "geckoterminal": {
+        id: "6724"
+    },
+    "idex-v1": {
+        id: "3998",
+    },
 } as AdaptorsConfig

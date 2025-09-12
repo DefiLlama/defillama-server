@@ -3148,4 +3148,7 @@ export default {
     "machinex-cl": {
         id: "6705"
     },
+    "idex-v1": {
+        id: "3998",
+    },
 } as AdaptorsConfig

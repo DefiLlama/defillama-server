@@ -26396,5 +26396,25 @@ const data4: Protocol[] = [
     twitter: "AlkimiExchange",
     listedAt: 1757693764
   },
+  {
+    id: "6724",
+    name: "GeckoTerminal",
+    address: null,
+    symbol: "-",
+    url: "https://www.geckoterminal.com/",
+    description:
+      "GeckoTerminal is a multi-chain analytics dashboard that tracks DEX prices, liquidity, trading volume, and new pool activity across blockchains",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/geckoterminal.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "GeckoTerminal",
+  },
 ];
 export default data4;

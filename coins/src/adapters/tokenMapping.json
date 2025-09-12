@@ -9919,6 +9919,11 @@
     }
   },
   "hyperliquid": {
+    "0x6d1e7cde53ba9467b783cb7c530ce054": {
+      "to": "coingecko#usd-coin",
+      "decimals": 8,
+      "symbol": "USDC"
+    },
     "0x6bd93ee39bcc7b9baba122c2ba65246e4347bbf9": {
       "decimals": "18",
       "symbol": "SPECTRA",

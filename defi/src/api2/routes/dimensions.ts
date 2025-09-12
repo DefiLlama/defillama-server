@@ -273,7 +273,7 @@ export async function getDimensionBreakdownProtocolFileRoute(req: HyperExpress.R
     dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown,
   } = getEventParameters(req, false)
   
-  const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-breakdown'
+  const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-bl'
   const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
   const routeFile = `dimensions/${routeSubPath}`
   const errorMessage = `Breakdown data for ${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} protocol ${protocolName} not found`

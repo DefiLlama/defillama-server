@@ -3,7 +3,7 @@ require("dotenv").config();
 
 import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data";
-import { getAllItemsAfter, getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
+import { getAllItemsForProtocol, getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
@@ -176,6 +176,8 @@ async function run() {
 
       const protocolsWithBlDataInRecentUpdates = new Set<string>()
       
+      adapterData.blHistoryFetched = adapterData.blHistoryFetched ?? {}
+
       results.forEach((result: any) => {
         const { id, timestamp, data, timeS } = result
 
@@ -183,12 +185,6 @@ async function run() {
         const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
 
         if (bl || blc) {
-          console.log(`Found bl/blc data in recent updates for protocol ${id} (${adapterType}):`, { 
-            hasBl: !!bl, 
-            hasBlc: !!blc,
-            blKeys: bl ? Object.keys(bl) : [],
-            blcKeys: blc ? Object.keys(blc) : []
-          })
           protocolsWithBlDataInRecentUpdates.add(id)
         }
 
@@ -204,16 +200,13 @@ async function run() {
         adapterData.protocols[id].records[timeS] = finalRecord
       })
 
-      const testProtocolId = "1599"
-      if (protocolsWithBlDataInRecentUpdates.has(testProtocolId)) {
-        console.log(`TEST MODE: Found protocol ${testProtocolId} with bl/blc in recent updates. Fetching its full history...`)
-        
+      const toBackfill = Array.from(protocolsWithBlDataInRecentUpdates).filter((pid: string) => !adapterData.blHistoryFetched[pid])
+
+      for (const pid of toBackfill) {
+        console.log(`BL backfill start for protocol ${pid} (${adapterType})`)
         try {
-          const allHistory = await getAllItemsAfter({ adapterType, timestamp: 0 })
-          const protocolHistory = allHistory.filter((item: any) => item.id === testProtocolId)
-          
-          console.log(`Found ${protocolHistory.length} historical records for test protocol ${testProtocolId}`)
-          
+          const protocolHistory = await getAllItemsForProtocol({ adapterType, id: pid, timestamp: 0 })
+          let loaded = 0
           protocolHistory.forEach((result: any) => {
             const { id, timestamp, data, timeS } = result
             const bl  = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
@@ -224,17 +217,18 @@ async function run() {
               if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
 
               const finalRecord: any = { ...data, timestamp }
-              if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
+              if (bl)  { finalRecord.bl = bl;  finalRecord.breakdownLabel = bl }
               if (blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
 
               adapterData.protocols[id].records[timeS] = finalRecord
+              loaded++
             }
           })
+          adapterData.blHistoryFetched[pid] = getUnixTimeNow()
+          console.log(`BL backfill done for protocol ${pid} (${adapterType}) with ${loaded} records`)
         } catch (error) {
-          console.error(`Error fetching history for test protocol ${testProtocolId}:`, error)
+          console.error(`Error fetching BL history for protocol ${pid} (${adapterType}):`, error)
         }
-      } else {
-        console.log(`TEST MODE: Protocol ${testProtocolId} not found in recent updates for ${adapterType}`)
       }
 
 
@@ -1074,7 +1068,7 @@ async function generateDimensionsResponseFiles(cache: any) {
           totalDataChartBreakdownLabelByChain: labelByChainSeries,
         }
         for (const fileLabel of fileLabels)
-          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-breakdown`, breakdownData)
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-bl`, breakdownData)
 
         data.totalDataChart = []
         data.totalDataChartBreakdown = []

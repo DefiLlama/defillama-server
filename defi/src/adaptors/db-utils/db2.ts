@@ -179,3 +179,52 @@ export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp 
 
   return result
 }
+
+export async function getAllItemsForProtocol({
+  adapterType,
+  id,
+  timestamp = 0,
+  labelsOnly = process.env.DIM_SQL_LABELS_ONLY === 'true',
+}: {
+  adapterType: AdapterType,
+  id: string,
+  timestamp?: number,
+  labelsOnly?: boolean,
+}) {
+  await init()
+  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+
+  const where: any = { type: adapterType, id, timestamp: { [Op.gte]: timestamp } }
+
+  if (labelsOnly) {
+    where[Op.or] = [
+      { bl:  { [Op.ne]: null } },
+      { blc: { [Op.ne]: null } },
+    ]
+  }
+
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+  const label = `getAllItemsForProtocol(${adapterType}, ${id}, labelsOnly=${!!labelsOnly})`
+  console.time(label)
+
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where,
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch)
+    sdk.log(`getAllItemsForProtocol(${adapterType}, ${id}) fetched ${batch.length} (total ${result.length})`)
+    if (batch.length < limit) break
+    offset += limit
+  }
+
+  console.timeEnd(label)
+  return result
+}

@@ -213,7 +213,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   });
 
 
-  const redirectKeys = coinPlatformDataArray.map((c: any) => c.redirect);
+  const redirectKeys = [
+    ...new Set(
+      coinPlatformDataArray
+        .map((c: any) => c.redirect)
+        .filter((c: string) => c != undefined),
+    ),
+  ];
   const redirectDataArray: CgEntry[] = await batchGet(
     redirectKeys.map((PK: string) => ({ PK, SK: 0 })),
   );

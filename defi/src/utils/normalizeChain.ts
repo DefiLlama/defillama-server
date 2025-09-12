@@ -4583,6 +4583,14 @@ export const chainCoingeckoIds = {
     twitter: "Chromia",
     url: "https://chromia.com/",
   },
+  "Akash": {
+    geckoId: "akash-network",
+    symbol: "AKT",
+    cmcId: "7431",
+    categories: ["Cosmos"],
+    twitter: "akashnet_",
+    url: "https://akash.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

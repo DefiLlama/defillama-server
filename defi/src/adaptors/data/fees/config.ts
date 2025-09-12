@@ -4213,6 +4213,6 @@ export default {
         id: "6493"
     },
     "akash-network": {
-        id: "7431" // cmc id
+        id: "7431"
     },
 } as AdaptorsConfig

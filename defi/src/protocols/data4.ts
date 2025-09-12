@@ -26375,5 +26375,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#ultrasolid",
     listedAt: 1757693515
   },
+  {
+    id: "6723",
+    name: "Alkimi",
+    address: "sui:0x1a8f4bc33f8ef7fbc851f156857aa65d397a6a6fd27a7ac2ca717b51f2fd9489",
+    symbol: "ALKIMI",
+    url: "https://labs.alkimi.org/",
+    description:
+      "Alkimi is a decentralized advertising exchange that records ad impressions and spend data on-chain",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/alkimi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "alkimi-2",
+    cmcId: "38131",
+    category: "Services",
+    chains: ["Sui"],
+    forkedFromIds: [],
+    module: "alkimi/index.js",
+    twitter: "AlkimiExchange",
+    listedAt: 1757693764
+  },
 ];
 export default data4;

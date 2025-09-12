@@ -1199,9 +1199,8 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://app.silo.finance", "https://github.com/DefiLlama/defillama-server/pull/9560"],
         chains: [
-          {
-            chain: "Sonic",
-          },
+          {chain: "Sonic"},
+          {chain: "Ethereum"}
         ],      
       },
       {
@@ -1209,12 +1208,8 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://app.silo.finance/markets/avalanche/xbtc-btcb-130?action=deposit&token=0", "https://app.silo.finance/markets/avalanche/xusd-usdc-129?action=deposit&token=0", "https://app.silo.finance/markets/arbitrum/xusd-usdc-146?action=deposit", "https://app.silo.finance/markets/arbitrum/xusd-usdc-146?action=deposit"],
         chains: [
-          {
-            chain: "Avalanche",
-          },
-          {
-            chain: "Arbitrum",
-          },
+          {chain: "Avalanche"},
+          {chain: "Arbitrum"},
         ],
       },
        {

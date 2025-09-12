@@ -26135,6 +26135,13 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Chromia"],
     forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://udonfi.gitbook.io/docs/udon-protocol-primitives/oracles#why-stork-oracle-a-chromia-extension-is-udons-go-to-for-price-feeds"],
+      },
+    ],
     module: "udon/index.js",
     twitter: "udonfi_chromia",
     listedAt: 1757530151,

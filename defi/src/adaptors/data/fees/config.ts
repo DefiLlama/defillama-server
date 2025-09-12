@@ -1518,7 +1518,7 @@ export default {
     "franklin-templeton": {
         id: "4878"
     },
-    "hashnote-usyc": {
+    "circle-usyc": {
         id: "3698"
     },
     "farcaster": {
@@ -2453,7 +2453,7 @@ export default {
         id: "5982"
     },
     // "oxfun": {  // it is a cex and fees cant be verified on chain
-    //     id: "6699" // chainId  
+    //     id: "6699" // chainId
     // },
     "verus": {
         id: "5601"

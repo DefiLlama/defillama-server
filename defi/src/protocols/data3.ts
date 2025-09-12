@@ -50597,6 +50597,7 @@ const data3_2: Protocol[] = [
         type: "Primary",
         proof: ["https://x.com/DIAdata_org/status/1963603033688011073"]
       }
+    ],
   },
   {
     id: "4943",
@@ -50761,7 +50762,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], //https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options
+    oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: ["https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options"] } ], //
     forkedFrom: [],
     chains: ["TON"],
     module: "tonhedge/index.js",

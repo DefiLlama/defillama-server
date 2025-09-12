@@ -14853,6 +14853,7 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: [
           "https://app.euler.finance/?governor=mev-capital&network=sonic",
+          "https://github.com/DefiLlama/defillama-server/pull/10599"
         ],
         chains: [{ chain: "Sonic" }],
       },

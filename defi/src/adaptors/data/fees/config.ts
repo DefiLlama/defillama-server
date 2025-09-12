@@ -4212,4 +4212,7 @@ export default {
     "hylo-protocol": {
         id: "6493"
     },
+    "akash-network": {
+        id: "7431" // cmc id
+    },
 } as AdaptorsConfig

@@ -2,12 +2,12 @@
 import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
-import { errorResponse, successResponse } from "./utils";
+import { readRouteData } from "../cache/file-cache";
 import { timeSToUnix, } from "../utils/time";
-import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
-import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
+import { errorResponse, successResponse } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
@@ -262,5 +262,25 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 
   if (excludeTotalDataChart) data.totalDataChart = []
   if (excludeTotalDataChartBreakdown) data.totalDataChartBreakdown = []
+  return successResponse(res, data)
+}
+
+export async function getDimensionBreakdownProtocolFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
+  const {
+    dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown,
+  } = getEventParameters(req, false)
+  
+  const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-breakdown'
+  const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
+  const routeFile = `dimensions/${routeSubPath}`
+  const errorMessage = `Breakdown data for ${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} protocol ${protocolName} not found`
+
+  const data = await readRouteData(routeFile)
+  if (!data)
+    return errorResponse(res, errorMessage)
+
   return successResponse(res, data)
 }

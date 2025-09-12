@@ -1,25 +1,25 @@
-import '../utils/failOnError'
+import '../utils/failOnError';
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import loadAdaptorsData from "../../adaptors/data"
+import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import loadAdaptorsData from "../../adaptors/data";
+import { getAllItemsAfter, getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
-import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
-import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
 import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
-import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
+import * as sdk from '@defillama/sdk';
 import { RUN_TYPE, roundVaules, } from "../utils";
-import * as sdk from '@defillama/sdk'
 
-import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
-import { storeRouteData } from "../cache/file-cache"
-import { sluggifyString } from "../../utils/sluggify"
-import { storeAppMetadata } from './appMetadata';
+import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, ProtocolAdaptor, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
-import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
+import { sluggifyString } from "../../utils/sluggify";
+import { storeRouteData } from "../cache/file-cache";
+import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions";
+import { storeAppMetadata } from './appMetadata';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -61,6 +61,46 @@ const todayTimestring = getTimeSDaysAgo(0)
 const timeData = {
   today: getTimeData(),
   yesterday: getTimeData(true),
+}
+
+function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string) {
+  const labelSeries: Array<[number, IJSON<number>]> = []
+  const labelByChainSeries: Array<[number, IJSON<IJSON<number>>]> = []
+  const days = Object.keys(records || {}).sort()
+  for (const timeS of days) {
+    const rec = records[timeS] || {}
+    const bl = rec.bl?.[recordType]  ?? rec.breakdownLabel?.[recordType]
+    const blc = rec.blc?.[recordType] ?? rec.breakdownLabelByChain?.[recordType]
+    if (!bl && !blc) continue
+    const ts = timeSToUnix(timeS)
+
+    const byLabel: any = {}
+    const byChain: any = {}
+
+    if (blc) {
+      Object.entries(blc).forEach(([label, chains]: any) => {
+        let sum = 0
+        Object.entries(chains || {}).forEach(([chain, v]: any) => {
+          const n = +v || 0
+          sum += n
+          if (!byChain[chain]) byChain[chain] = {}
+          byChain[chain][label] = (byChain[chain][label] ?? 0) + n
+        })
+        byLabel[label] = (byLabel[label] ?? 0) + sum
+      })
+    }
+
+    if (bl) {
+      Object.entries(bl).forEach(([label, v]: any) => {
+        const n = +v || 0
+        byLabel[label] = n || byLabel[label] || 0
+      })
+    }
+
+    labelSeries.push([ts, byLabel])
+    labelByChainSeries.push([ts, byChain])
+  }
+  return { labelSeries, labelByChainSeries }
 }
 
 
@@ -131,16 +171,71 @@ async function run() {
 
     async function pullChangedFromDBAndAddToCache() {
       let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 1 * 60 * 60 : 0 // 1 hour ago
+      
       const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
 
+      const protocolsWithBlDataInRecentUpdates = new Set<string>()
+      
       results.forEach((result: any) => {
-        const { id, timestamp, data, timeS, } = result
-        roundVaules(data)
-        if (!adapterData.protocols[id]) adapterData.protocols[id] = {
-          records: {}
+        const { id, timestamp, data, timeS } = result
+
+        const bl = (result as any).bl ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
+        const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
+
+        if (bl || blc) {
+          console.log(`Found bl/blc data in recent updates for protocol ${id} (${adapterType}):`, { 
+            hasBl: !!bl, 
+            hasBlc: !!blc,
+            blKeys: bl ? Object.keys(bl) : [],
+            blcKeys: blc ? Object.keys(blc) : []
+          })
+          protocolsWithBlDataInRecentUpdates.add(id)
         }
-        adapterData.protocols[id].records[timeS] = { ...data, timestamp, }
+
+        roundVaules(data)
+
+        if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
+
+        const finalRecord: any = { ...data, timestamp }
+
+        if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
+        if (blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
+
+        adapterData.protocols[id].records[timeS] = finalRecord
       })
+
+      const testProtocolId = "1599"
+      if (protocolsWithBlDataInRecentUpdates.has(testProtocolId)) {
+        console.log(`TEST MODE: Found protocol ${testProtocolId} with bl/blc in recent updates. Fetching its full history...`)
+        
+        try {
+          const allHistory = await getAllItemsAfter({ adapterType, timestamp: 0 })
+          const protocolHistory = allHistory.filter((item: any) => item.id === testProtocolId)
+          
+          console.log(`Found ${protocolHistory.length} historical records for test protocol ${testProtocolId}`)
+          
+          protocolHistory.forEach((result: any) => {
+            const { id, timestamp, data, timeS } = result
+            const bl  = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
+            const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
+
+            if (bl || blc) {
+              roundVaules(data)
+              if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
+
+              const finalRecord: any = { ...data, timestamp }
+              if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
+              if (blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
+
+              adapterData.protocols[id].records[timeS] = finalRecord
+            }
+          })
+        } catch (error) {
+          console.error(`Error fetching history for test protocol ${testProtocolId}:`, error)
+        }
+      } else {
+        console.log(`TEST MODE: Protocol ${testProtocolId} not found in recent updates for ${adapterType}`)
+      }
 
 
       // remove empty records at the start of each protocol
@@ -971,6 +1066,15 @@ async function generateDimensionsResponseFiles(cache: any) {
         fileLabels = [...new Set(fileLabels)]
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-all`, data)
+
+        const { labelSeries, labelByChainSeries } = buildLabelChartsFromRecords(protocol.records, recordType)
+        const breakdownData = {
+          ...data,
+          totalDataChartBreakdownLabel: labelSeries,
+          totalDataChartBreakdownLabelByChain: labelByChainSeries,
+        }
+        for (const fileLabel of fileLabels)
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-breakdown`, breakdownData)
 
         data.totalDataChart = []
         data.totalDataChartBreakdown = []

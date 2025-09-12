@@ -1,12 +1,12 @@
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import * as sdk from "@defillama/sdk"
+import { sliceIntoChunks } from "@defillama/sdk/build/util"
+import { Op, } from "sequelize"
+import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
-import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import { Op, } from "sequelize"
-import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { IJSON } from "../data/types"
+import { AdapterRecord2 } from "./AdapterRecord2"
 
 let isInitialized: any
 
@@ -101,7 +101,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
-      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,
@@ -135,7 +135,7 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: filterCondition,
-      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,

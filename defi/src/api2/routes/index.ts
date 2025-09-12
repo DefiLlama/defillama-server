@@ -1,29 +1,29 @@
 import * as HyperExpress from "hyper-express";
 import * as path from "path";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
-import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
-import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { get20MinDate } from "../../utils/shared";
-import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
-import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
-import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getCurrentUnixTimestamp } from "../../utils/date";
-import { getTweetStats } from "../../twitter/db";
-import { getClosestProtocolItem } from "../db";
-import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { computeInflowsData } from "../../getInflows";
-import { getFormattedChains } from "../../getFormattedChains";
-import { getR2 } from "../../utils/r2";
-import { getChainChartData } from "../../getChart";
-import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
-import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getCexs } from "../../getCexs";
+import { getChainChartData } from "../../getChart";
+import { getChainDefaultChartData } from "../../getDefaultChart";
+import { getFormattedChains } from "../../getFormattedChains";
+import { computeInflowsData } from "../../getInflows";
+import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
+import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
+import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getTweetStats } from "../../twitter/db";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import { chainNameToIdMap } from "../../utils/normalizeChain";
+import { getR2 } from "../../utils/r2";
+import { get20MinDate } from "../../utils/shared";
+import sluggify from "../../utils/sluggify";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { readRouteData, } from "../cache/file-cache";
+import { getClosestProtocolItem } from "../db";
+import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getDimensionBreakdownProtocolFileRoute, getDimensionProtocolFileRoute, getOverviewFileRoute } from "./dimensions";
+import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -113,6 +113,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
+  router.get("/breakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 

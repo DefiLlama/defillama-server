@@ -7612,7 +7612,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://etherex.finance/",
     description: "Etherex is a concentrated liquidity layer and exchange built on the Linea network, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model",
     logo: `${baseIconsUrl}/etherex.jpg`,
-    gecko_id: null,
+    gecko_id: "etherex",
     cmcId: null,
     chains: [],
     twitter: "etherexfi",

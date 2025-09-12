@@ -7985,6 +7985,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SomnexXYZ",
   },
+  {
+    id: "parent#ultrasolid",
+    name: "Ultrasolid",
+    url: "https://ultrasolid.xyz/",
+    description: "HyperEVM's Seamless core-aligned veDEX.",
+    logo: `${baseIconsUrl}/ultrasolid.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ultrasolid_hl",
+  },
 ];
 
 export default parentProtocols;

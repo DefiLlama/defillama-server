@@ -26331,5 +26331,49 @@ const data4: Protocol[] = [
     twitter: "koralfinance",
     listedAt: 1757693131
   },
+  {
+    id: "6721",
+    name: "Ultrasolid V2",
+    address: "0xae60eAfb73Eb0516951ab20089Cff32AC9DC63b7",
+    symbol: "US",
+    url: "https://ultrasolid.xyz/",
+    description:
+      "Ultrasolid V2 is an AMM DEX on Hyperliquid L1",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/ultrasolid-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["2197"],
+    module: "ultrasolid-v2/index.js",
+    twitter: "ultrasolid_hl",
+    parentProtocol: "parent#ultrasolid",
+    listedAt: 1757693509
+  },
+  {
+    id: "6722",
+    name: "Ultrasolid V3",
+    address: "0xae60eAfb73Eb0516951ab20089Cff32AC9DC63b7",
+    symbol: "US",
+    url: "https://ultrasolid.xyz/",
+    description:
+      "Ultrasolid V3 is a CLMM DEX on Hyperliquid L1",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/ultrasolid-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["2198"],
+    module: "ultrasolid-v3/index.js",
+    twitter: "ultrasolid_hl",
+    parentProtocol: "parent#ultrasolid",
+    listedAt: 1757693515
+  },
 ];
 export default data4;

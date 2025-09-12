@@ -153,33 +153,6 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
   return result
 }
 
-export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string }) {
-  await init()
-
-  const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, timeS: date },
-    attributes: ['timestamp', 'id', 'timeS'],
-    raw: true,
-  })
-
-  return result
-}
-export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
-  await init()
-
-  const where: any = { type: adapterType, }
-  if (id) where['id'] = id
-  if (timestamp) where['timestamp'] = { [Op.gte]: timestamp }
-
-  const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where,
-    attributes: ['timestamp', 'id', 'timeS'],
-    raw: true,
-  })
-
-  return result
-}
-
 export async function getAllItemsForProtocol({
   adapterType,
   id,
@@ -226,5 +199,32 @@ export async function getAllItemsForProtocol({
   }
 
   console.timeEnd(label)
+  return result
+}
+
+export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string }) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timeS: date },
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
+  return result
+}
+export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
+  await init()
+
+  const where: any = { type: adapterType, }
+  if (id) where['id'] = id
+  if (timestamp) where['timestamp'] = { [Op.gte]: timestamp }
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where,
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
   return result
 }

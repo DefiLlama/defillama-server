@@ -39,7 +39,7 @@ function getProtocolAppMetricsFlag(info: any) {
   return true
 }
 
-
+const STORE_BLC = process.env.DIM_STORE_BLC === 'true'
 
 function getTimeData(moveADayBack = false) {
 
@@ -63,21 +63,28 @@ const timeData = {
   yesterday: getTimeData(true),
 }
 
-function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string) {
+function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string, includeByChain = false) {
   const labelSeries: Array<[number, IJSON<number>]> = []
   const labelByChainSeries: Array<[number, IJSON<IJSON<number>>]> = []
   const days = Object.keys(records || {}).sort()
   for (const timeS of days) {
     const rec = records[timeS] || {}
     const bl = rec.bl?.[recordType]  ?? rec.breakdownLabel?.[recordType]
-    const blc = rec.blc?.[recordType] ?? rec.breakdownLabelByChain?.[recordType]
+    const blc = includeByChain ? (rec.blc?.[recordType] ?? rec.breakdownLabelByChain?.[recordType]) : undefined
     if (!bl && !blc) continue
     const ts = timeSToUnix(timeS)
 
     const byLabel: any = {}
     const byChain: any = {}
 
-    if (blc) {
+    if (bl) {
+      Object.entries(bl).forEach(([label, v]: any) => {
+        const n = +v || 0
+        byLabel[label] = n || byLabel[label] || 0
+      })
+    }
+
+    if (includeByChain && blc) {
       Object.entries(blc).forEach(([label, chains]: any) => {
         let sum = 0
         Object.entries(chains || {}).forEach(([chain, v]: any) => {
@@ -90,15 +97,8 @@ function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string) {
       })
     }
 
-    if (bl) {
-      Object.entries(bl).forEach(([label, v]: any) => {
-        const n = +v || 0
-        byLabel[label] = n || byLabel[label] || 0
-      })
-    }
-
     labelSeries.push([ts, byLabel])
-    labelByChainSeries.push([ts, byChain])
+    if (includeByChain) labelByChainSeries.push([ts, byChain])
   }
   return { labelSeries, labelByChainSeries }
 }
@@ -165,6 +165,8 @@ async function run() {
       protocols: {},
     }
     const adapterData = allCache[adapterType]
+    // init per-protocol backfill flags map
+    if (!adapterData.blHistoryFetched) adapterData.blHistoryFetched = {}
 
     await pullChangedFromDBAndAddToCache()
 
@@ -176,12 +178,10 @@ async function run() {
 
       const protocolsWithBlDataInRecentUpdates = new Set<string>()
       
-      adapterData.blHistoryFetched = adapterData.blHistoryFetched ?? {}
-
       results.forEach((result: any) => {
         const { id, timestamp, data, timeS } = result
 
-        const bl = (result as any).bl ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
+        const bl = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
         const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
 
         if (bl || blc) {
@@ -195,19 +195,20 @@ async function run() {
         const finalRecord: any = { ...data, timestamp }
 
         if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
-        if (blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
+        if (STORE_BLC && blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
 
         adapterData.protocols[id].records[timeS] = finalRecord
       })
 
-      const toBackfill = Array.from(protocolsWithBlDataInRecentUpdates).filter((pid: string) => !adapterData.blHistoryFetched[pid])
+      // backfill full history ONLY for protocols that newly emitted bl/blc and have not been backfilled
+      const toBackfill = Array.from(protocolsWithBlDataInRecentUpdates)
+        .filter((pid: string) => !adapterData.blHistoryFetched[pid])
 
       for (const pid of toBackfill) {
-        console.log(`BL backfill start for protocol ${pid} (${adapterType})`)
         try {
-          const protocolHistory = await getAllItemsForProtocol({ adapterType, id: pid, timestamp: 0 })
-          let loaded = 0
-          protocolHistory.forEach((result: any) => {
+          const history = await getAllItemsForProtocol({ adapterType, id: pid, timestamp: 0 })
+          let merged = 0
+          history.forEach((result: any) => {
             const { id, timestamp, data, timeS } = result
             const bl  = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
             const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
@@ -217,17 +218,17 @@ async function run() {
               if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
 
               const finalRecord: any = { ...data, timestamp }
-              if (bl)  { finalRecord.bl = bl;  finalRecord.breakdownLabel = bl }
-              if (blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
+              if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
+              if (STORE_BLC && blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
 
               adapterData.protocols[id].records[timeS] = finalRecord
-              loaded++
+              merged++
             }
           })
           adapterData.blHistoryFetched[pid] = getUnixTimeNow()
-          console.log(`BL backfill done for protocol ${pid} (${adapterType}) with ${loaded} records`)
-        } catch (error) {
-          console.error(`Error fetching BL history for protocol ${pid} (${adapterType}):`, error)
+          console.log(`BL backfill done for protocol ${pid} (${adapterType}) with ${merged} records`)
+        } catch (e) {
+          console.error(`BL backfill failed for protocol ${pid} (${adapterType})`, e)
         }
       }
 
@@ -1061,12 +1062,14 @@ async function generateDimensionsResponseFiles(cache: any) {
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-all`, data)
 
-        const { labelSeries, labelByChainSeries } = buildLabelChartsFromRecords(protocol.records, recordType)
-        const breakdownData = {
+        const { labelSeries, labelByChainSeries } = buildLabelChartsFromRecords(protocol.records, recordType, STORE_BLC)
+        const breakdownData: any = {
           ...data,
           totalDataChartBreakdownLabel: labelSeries,
-          totalDataChartBreakdownLabelByChain: labelByChainSeries,
         }
+        if (STORE_BLC)
+          breakdownData.totalDataChartBreakdownLabelByChain = labelByChainSeries
+
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-bl`, breakdownData)
 

@@ -12416,7 +12416,8 @@ const data3_1: Protocol[] = [
           "https://docs.layerbank.finance/protocol/lending/oracles",
           "https://github.com/DefiLlama/defillama-server/pull/9219",
           "https://github.com/DefiLlama/defillama-server/pull/9533",
-          "https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0"
+          "https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0",
+          "https://github.com/DefiLlama/defillama-server/pull/10610"
         ],
         chains: [
           {

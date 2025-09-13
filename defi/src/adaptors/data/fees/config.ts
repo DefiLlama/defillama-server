@@ -1515,9 +1515,9 @@ export default {
     "chainflip": {
         id: "3853"
     },
-    "franklin-templeton": {
-        id: "4878"
-    },
+    // "franklin-templeton": { tvl listing was commented out in data3.ts
+    //     id: "4878"
+    // },
     "hashnote-usyc": {
         id: "3698"
     },

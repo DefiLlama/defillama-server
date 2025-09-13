@@ -49149,6 +49149,7 @@ const data3_2: Protocol[] = [
     github: ["vesuxyz"],
     listedAt: 1720781277,
   },
+/*
   {
     id: "4878",
     name: "Franklin Templeton",
@@ -49170,6 +49171,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1720781977,
   },
+*/
   {
     id: "4879",
     name: "Clearpool TPOOL",

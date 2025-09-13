@@ -4221,4 +4221,10 @@ export default {
     "idex-v1": {
         id: "3998",
     },
+    "somnex-v3": {
+        id: "6725",
+    },
+    "somnex-xyz": {
+        id: "6709",
+    }, 
 } as AdaptorsConfig

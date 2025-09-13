@@ -28,7 +28,7 @@ type MarketInfo = {
 const marketInfos: MarketInfo[] = [
   {
     address: "6SbYW288Kje2WD6TRRcAmikhA76cijBi36y1wYt4RsdN",
-    mintAddress: "2Pepgww4TndN5QsvodbyjVCjUEcmPnxzq5dqsbmdtQdT",
+    mintAddress: "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
     symbol: "JLP",
     decimals: 6,
     unit: "JLP",
@@ -64,7 +64,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "B4mgGx4HHYMsWYv2dbJyNHtCNFx5dfUUt1EJYicEMNPp",
-    mintAddress: "FVfGSJ6VGwpbfUEjpMs6rHE8mXaLrUi5ByPR66MsQqKs",
+    mintAddress: "2RxduzB4xWZRBm5PpdBZmDfVbGFiGD2BJcGSaVZ3tQ8K",
     symbol: "cUSDC",
     decimals: 6,
     unit: "USDC",
@@ -73,7 +73,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "5ofpU1rU4ajg3LuHKSMBBWHDubTW1XF7x6tCAXsk5Gju",
-    mintAddress: "9RSDq7sd7VZygdDAH4rRuL5dWWatJEMPe5pbwGSKKhr8",
+    mintAddress: "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
     symbol: "JitoSOL",
     decimals: 9,
     unit: "SOL",
@@ -91,7 +91,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "Amu99crLdqbfpzrBbfrXHu1myWoCNXrSu7RRkHZJ1Ymv",
-    mintAddress: "3Kwsdqgxp5c6yQQLVU3L6LC9LWThwvPr1urwc9UhqH2P",
+    mintAddress: "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
     symbol: "mSOL",
     unit: "SOL",
     decimals: 9,
@@ -100,7 +100,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "4K9VeqpZNCVHtZN9mKJpTihp4N8a9LeS35qBnqqM83Et",
-    mintAddress: "FMDHLQDh9gWnnZQN9CYNViau7D9M4ggpFMqk8uybPttc",
+    mintAddress: "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
     symbol: "bSOL",
     unit: "SOL",
     decimals: 9,
@@ -109,7 +109,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "GLbDcuvEB2TLPQrAH6aG9tfRTkUeTHW9Nher2bsLVDu4",
-    mintAddress: "5cPbK3BdrUVMUoe2wXppLH32tu5WFzW4cxjfLKsrF3yx",
+    mintAddress: "kySo1nETpsZE2NWe5vj2C64mPSciH1SppmHb4XieQ7B",
     symbol: "kySOL",
     unit: "SOL",
     decimals: 9,
@@ -118,7 +118,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "FaZ6MkHZxU9D8nbbT6FjzzeYC4bevQq3ZNnzmLQEZY8G",
-    mintAddress: "5386v6tbgEMrA5sX5sLGYTEAjpZ5fsMaLDkBbxawnnqD",
+    mintAddress: "4tARAT4ssRYhrENCTxxZrmjL741eE2G23Q1zLPDW2ipf",
     symbol: "lrtsSOL",
     unit: "SOL",
     decimals: 9,
@@ -127,7 +127,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "7Rywj5jGRqHr4YHPPoMUUZ1MSZPQzUVrVvZVUiKxaWnj",
-    mintAddress: "AM8LKTfzZ5KUxviB7faYh5kFdnJhWgGVoRrZpfmi37ms",
+    mintAddress: "kyJtowDDACsJDm2jr3VZdpCA6pZcKAaNftQwrJ8KBQP",
     symbol: "kyJTO",
     unit: "JTO",
     decimals: 9,
@@ -145,7 +145,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "GrzLxEjHk4suuE7EjZwsJpXwagpGVffQVPvGBCqat8tk",
-    mintAddress: "B9XrZdPhbPi5FZXgpReHzDY5bkF18aRxtkgXzDmZz8uw",
+    mintAddress: "CETES7CKqqKQizuSN6iWQwmTeFRjbJR6Vw2XRKfEDR8f",
     symbol: "CETES",
     unit: "MXN",
     decimals: 6,
@@ -154,7 +154,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "8BTZiJ5G8SkB69bPtGfA2eiyYhkqbDhf8ryxovJFVnuJ",
-    mintAddress: "EETKGUFiM5ihrtz4cCXZngMTyMxrk8WanUemDHX4BfVD",
+    mintAddress: "WFRGSWjaz8tbAxsJitmbfRuFV2mSNwy7BMWcCwaA28U",
     symbol: "fragSOL",
     unit: "SOL",
     decimals: 9,
@@ -163,7 +163,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "8FriGWLJ1NGXdtm9ow4SoFGMcidKGs5s81yRCG3YjVw2",
-    mintAddress: "9Mbo33isosQXQAg2VNTD4pobCDHtmFAkMwuUo3Vb11fh",
+    mintAddress: "WFRGJnQt5pK8Dv4cDAbrSsgPcmboysrmX3RYhmRRyTR",
     symbol: "fragJTO",
     unit: "JTO",
     decimals: 9,
@@ -172,7 +172,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "hzmYvfvU9LNc7eUVwRNFyDhQ1W3faXVpC8CAn76z3cj",
-    mintAddress: "52EBWh8t1yHK5AA7RsKVaCU44YpgGsatbDSNPSbBpWUr",
+    mintAddress: "CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
     symbol: "CRT",
     unit: "USDC",
     decimals: 9,
@@ -181,28 +181,10 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "CZnZHPw7fjHA54WHxvNdr1dNweceVT7HwYi4WWZ77N5y",
-    mintAddress: "7sxrDsyfuEryDsHurLi4Fkd8RitkmbojQZFELfR1QcKQ",
+    mintAddress: "NUZ3FDWTtN5SP72BsefbsqpnbAY5oe21LE8bCSkqsEK",
     symbol: "FLP.1",
     unit: "FLP.1",
     decimals: 6,
-    oracleDecimals: 0,
-    chain: "solana",
-  },
-  {
-    address: "EZcRjKu1TpXA1kozWxwAgJ9YpWdW74irMpWyN6cuVNmH",
-    mintAddress: "6SK4WhZTD3fwpkYzE4oaGyqfPU9367MCWPYeNBLrrt1S",
-    symbol: "kySOL",
-    unit: "SOL",
-    decimals: 9,
-    oracleDecimals: 0,
-    chain: "solana",
-  },
-  {
-    address: "GpkBYWjccrT1e1T5TJKA15CmSeMNkbANvEfQUCnWGSn9",
-    mintAddress: "EbSf4fhDBDw137wLxfjAitf4p6M43VmkpFk6AZGMJo5M",
-    symbol: "kyJTO",
-    unit: "JTO",
-    decimals: 9,
     oracleDecimals: 0,
     chain: "solana",
   },

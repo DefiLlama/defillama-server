@@ -40,5 +40,12 @@
             "decimals": 0,
             "symbol": "USDC"
         }
+    },
+    "ripple": {
+        "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
+            "to": "coingecko#openeden-tbill",
+            "decimals": 0,
+            "symbol": "TBILL"
+        }
     }
 }

@@ -7560,11 +7560,6 @@
       "to": "coingecko#ripple-usd",
       "decimals": 6,
       "symbol": "RLUSD"
-    },
-    "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
-      "to": "coingecko#openeden-tbill",
-      "decimals": 6,
-      "symbol": "TBILL"
     }
   },
   "reya": {

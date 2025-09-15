@@ -4607,6 +4607,15 @@ export const chainCoingeckoIds = {
     twitter: "Lighter_xyz",
     url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
   },
+  "Eteria": {
+    geckoId: null,
+    symbol: "ERA",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "eteriaio",
+    url: "https://eteria.io/",
+    chainId: 140,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

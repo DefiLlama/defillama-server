@@ -26538,7 +26538,6 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "eteria/index.js",
     twitter: "eteriaio",
-    github: ["https://github.com/eteriaio"],
     listedAt: 1757961371
   },
   {

@@ -26477,6 +26477,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
     twitter: "APX_Finance",
+    parentProtocol: "parent#astherus",
   },
 ];
 export default data4;

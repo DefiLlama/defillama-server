@@ -4403,7 +4403,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "BotanixLabs",
     url: "https://botanixlabs.com",
     chainId: 3637,

@@ -2843,6 +2843,11 @@
       "to": "coingecko#auro-finance",
       "decimals": 8,
       "symbol": "AURO"
+    },
+    "0x534e4c3dc0f038dab1a8259e89301c4da58779a5d482fb354a41c08147e6b9ec": {
+      "to": "coingecko#auro-usda",
+      "decimals": 8,
+      "symbol": "USDA"
     }
   },
   "velas": {

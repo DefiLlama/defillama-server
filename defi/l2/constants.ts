@@ -220,7 +220,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zircuit": { ticker: "ZRC", address: "0xfd418e42783382e86ae91e445406600ba144d162" },
   "core": { ticker: "CORE", address: "0x191e94fa59739e188dce837f7f6978d84727ad01" },
   "swellchain": { ticker: "SWELL", address: "coingecko:swell-network" },
-  "cronos_zkevm": { ticker: "CRO", address: "coingecko:crypto-com-chain" },
+  "cronos_zkevm": { ticker: "ZKCRO", address: "coingecko:cronos-zkevm-cro" },
   "sophon": { ticker: "SOPH", address: "coingecko:sophon" },
   "dydx": { ticker: "DYDX", address: "coingecko:dydx-chain" },
   "apex": { ticker: "APEX", address: "coingecko:apex-token-2" },

@@ -476,9 +476,9 @@ export default {
     "ostium": {
         id: "4932",
     },
-    "vanilla-finance-perps": {
-        id: "6079",
-    },
+    // "vanilla-finance-perps": { fake volume
+    //     id: "6079",
+    // },
 
     "gmx-derivatives": {
         "cleanRecordsConfig": {

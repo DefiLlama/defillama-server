@@ -4468,6 +4468,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dHedgeOrg",
     governanceID: ["snapshot:gov.dhedge.eth"],
+    treasury: "dhedge.js",
     github: ["dhedge"]
   },
   {

@@ -164,12 +164,7 @@ export default {
         id: "3747"
     },
     "equation": {
-        id: "3726",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1707782400: false
-            }
-        }
+        id: "3726"
     },
     "mu-exchange": {
         id: "3763"

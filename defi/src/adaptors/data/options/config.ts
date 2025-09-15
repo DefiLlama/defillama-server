@@ -4,8 +4,6 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
-        parentId: "Derive",
-        "startFrom": 1656460800,
         id: "5060"
     },
     "thales": {
@@ -33,15 +31,12 @@ export default {
         id: "3501"
     },
     // "derivio": {
-    //     parentId: "Deri",
     //     id: "3759",
     // },
     "dopex": {
-        parentId: "Dopex",
         id: "3817"
     },
     "lyra-v2": {
-        parentId: "Derive",
         id: "3923"
     },
     // "optionBlitz": { //sus behavior
@@ -63,7 +58,6 @@ export default {
         id: "4963"
     },
     "pancakeswap-options": {
-        parentId: "PancakeSwap",
         id: "4967"
     },
     "arrow-markets": {

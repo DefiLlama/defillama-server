@@ -3006,43 +3006,15 @@ export default {
         id: "2198"
     },
     "pancakeswap-v1": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "2590"
     },
     "pancakeswap-v2": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "194"
     },
     "pancakeswap-stableswap": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "2529"
     },
     "pancakeswap-v3": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "2769"
     },
     "swapmode-v2": {

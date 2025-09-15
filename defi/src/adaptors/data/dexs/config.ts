@@ -25,20 +25,9 @@ export default {
     //             id: "2769"
     //         }
     //     },
-    //     cleanRecordsConfig: {
-    //         genuineSpikes: {
-    //             1660176000: false,
-    //             1665014400: false
-    //         }
-    //     }
     // },
     "raydium": {
         id: "214",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1685318400: false
-            }
-        }
     },
     // "uniswap": {  // moved to protocol/config.ts
     //     id: "1",
@@ -116,11 +105,6 @@ export default {
     },
     "platypus": {
         id: "944",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1697068800: false
-            }
-        }
     },
     "yoshi-exchange": {
         id: "863"
@@ -178,11 +162,6 @@ export default {
     },
     "sunswap": {
         id: "690",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1689984000: false
-            }
-        }
     },
     "whaleswap": {
         id: "1884"
@@ -197,7 +176,6 @@ export default {
         id: "221",
         cleanRecordsConfig: {
             genuineSpikes: {
-                1683676800: false,
                 1700524800: true
             }
         }
@@ -347,11 +325,6 @@ export default {
     },
     "defi-kingdoms": {
         id: "556",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1656028800: false
-            }
-        }
     },
     "defiplaza": {
         id: "728"
@@ -421,12 +394,6 @@ export default {
     },
     "babyswap": {
         id: "597",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1705881600: false,
-                1712880000: false
-            }
-        }
     },
     "lifinity": {
         id: "2154"
@@ -442,12 +409,6 @@ export default {
     },
     "babydogeswap": {
         id: "2169",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1685232000: false,
-                1687305600: false
-            }
-        }
     },
     "wigoswap": {
         id: "1351"
@@ -1066,11 +1027,6 @@ export default {
     },
     "deepbook-sui": {
         id: "3268",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1706659200: false
-            }
-        }
     },
     "agni-fi": {
         id: "3265"
@@ -1291,12 +1247,6 @@ export default {
     },
     "zkswap": {
         id: "3280",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1703203200: false,
-                1704672000: false
-            }
-        }
     },
     "trisolaris": {
         id: "784"
@@ -1515,11 +1465,6 @@ export default {
     },
     "ston": {
         id: "2337",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                1704931200: false
-            }
-        }
     },
     "keller-cl": {
         id: "4583"
@@ -2183,27 +2128,12 @@ export default {
         id: "2393"
     },
     "sushiswap-classic": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1712793600": false
-            }
-        },
         id: "119"
     },
     "sushiswap-trident": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1712793600": false
-            }
-        },
         id: "2152"
     },
     "sushiswap-v3": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1712793600": false
-            }
-        },
         id: "2776"
     },
     "gmx-swap": {
@@ -2265,11 +2195,6 @@ export default {
         id: "2598"
     },
     "orderly-network-orderly-network": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1712188800": false
-            }
-        },
         id: "5088"
     },
     "vapordex-v1": {
@@ -2317,10 +2242,7 @@ export default {
     "covo-v2-swap": {
         id: "2730",
         "category": "Dexs",
-        "displayName": "Covo V2 - SWAP",
-        "cleanRecordsConfig": {
-            "genuineSpikes": true
-        }
+        "displayName": "Covo V2 - SWAP"
     },
     "hydradex-v2": {
         id: "1673",
@@ -2544,45 +2466,20 @@ export default {
         id: "2198"
     },
     "pancakeswap-v1": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "2590"
     },
     "pancakeswap-v2": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false
-            }
-        },
         id: "194"
     },
     "pancakeswap-stableswap": {
         "cleanRecordsConfig": {
             "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false,
                 "1747612800": true
             }
         },
         id: "2529"
     },
     "pancakeswap-v3": {
-        "cleanRecordsConfig": {
-            "genuineSpikes": {
-                "1660176000": false,
-                "1665014400": false,
-                "1684713600": false,
-                "1749340800": false,
-            }
-        },
         id: "2769"
     },
     "swapmode-v2": {

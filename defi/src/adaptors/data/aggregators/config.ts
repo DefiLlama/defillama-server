@@ -22,11 +22,6 @@ export default {
   // },
   "plexus": {
     id: "2740",
-    cleanRecordsConfig: {
-      genuineSpikes: {
-        1706313600: false
-      }
-    }
   },
   "avnu": {
     id: "3154",
@@ -118,11 +113,6 @@ export default {
   },
   "conveyor": {
     id: "3980",
-    cleanRecordsConfig: {
-      genuineSpikes: {
-        1722729600: false
-      }
-    }
   },
   // "unidex": {
   //   "id": "1833",

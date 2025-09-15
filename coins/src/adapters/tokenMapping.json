@@ -7560,11 +7560,6 @@
       "to": "coingecko#ripple-usd",
       "decimals": 6,
       "symbol": "RLUSD"
-    },
-    "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
-      "to": "coingecko#openeden-tbill",
-      "decimals": 6,
-      "symbol": "TBILL"
     }
   },
   "reya": {
@@ -11281,6 +11276,16 @@
     }
   },
   "tac": {
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc"
+    },
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
       "decimals": "18",
       "symbol": "TAC",

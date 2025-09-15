@@ -41,7 +41,7 @@ function getProtocolAppMetricsFlag(info: any) {
   return true
 }
 
-const STORE_BLC = process.env.DIM_STORE_BLC === 'true'
+const STORE_BLC = process.env.DIM_STORE_BLC === 'false'
 
 function getTimeData(moveADayBack = false) {
 
@@ -107,7 +107,7 @@ function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string, in
 
 type MQ = { monthly: Record<string, number>; quarterly: Record<string, number> }
 type MQByLabel = { monthly: Record<string, Record<string, number>>, quarterly: Record<string, Record<string, number>> }
-type AggregatedProtocolOut = { generatedAt: number, adapterType: string, slug: string, metrics: Record<string, MQ | MQByLabel> }
+type AggregatedProtocolOut = { generatedAt: number, adapterType: string, slug: string, metrics: Record<string, MQ | MQByLabel>, metadata?: Record<string, any> }
 
 function monthKeyFromUnix(ts: number) {
   const d = new Date(ts * 1000)
@@ -182,7 +182,7 @@ function findBuildDir(): string | null {
 
 function applyProtocolMetaFromProtoFile(target: any, src: any) {
   if (!src) return
-  target.info = target.info || {}
+  target.metadata  = target.metadata  || {}
 
   const KEYS = [
     'id',
@@ -219,10 +219,10 @@ function applyProtocolMetaFromProtoFile(target: any, src: any) {
   ]
 
   for (const k of KEYS) {
-    if (src[k] !== undefined && target.info[k] === undefined) target.info[k] = src[k]
+    if (src[k] !== undefined && target.metadata[k] === undefined) target.metadata[k] = src[k]
   }
 
-  if (!target.slug && (target.info.slug || src.slug)) target.slug = (target.info.slug || src.slug)
+  if (!target.slug && (target.metadata.slug || src.slug)) target.slug = (target.metadata.slug || src.slug)
 }
 
 async function generateAggregatesFromBuild() {

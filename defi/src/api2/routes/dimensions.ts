@@ -269,9 +269,7 @@ export async function getDimensionBreakdownProtocolFileRoute(req: HyperExpress.R
   const protocolName = req.path_parameters.name?.toLowerCase()
   const protocolSlug = sluggifyString(protocolName)
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
-  const {
-    dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown,
-  } = getEventParameters(req, false)
+  const { dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown } = getEventParameters(req, false)
   
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-bl'
   const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
@@ -279,8 +277,57 @@ export async function getDimensionBreakdownProtocolFileRoute(req: HyperExpress.R
   const errorMessage = `Breakdown data for ${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} protocol ${protocolName} not found`
 
   const data = await readRouteData(routeFile)
-  if (!data)
-    return errorResponse(res, errorMessage)
-
+  if (!data) return errorResponse(res, errorMessage)
   return successResponse(res, data)
+}
+
+async function getAggregatesProtocolData(req: HyperExpress.Request, res: HyperExpress.Response, includeBreakdown: boolean) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
+  
+  if (!adaptorType) throw new Error("Missing parameter")
+  if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
+  
+  const routeFile = `dimensions/aggregates/${adaptorType}/${protocolSlug}`
+  const dataType = includeBreakdown ? 'breakdown' : 'data'
+  const errorMessage = `Aggregates ${dataType} for ${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} protocol ${protocolName} not found`
+
+  const data = await readRouteData(routeFile)
+  if (!data) return errorResponse(res, errorMessage)
+  
+  const response: any = {}
+  
+  const baseMeta = data.metadata ?? data.info ?? {}
+  if (baseMeta && typeof baseMeta === 'object') {
+    Object.assign(response, baseMeta)
+  }
+  
+  const filteredMetrics: any = {}
+  Object.keys(data.metrics || {}).forEach(key => {
+    const isBreakdownMetric = key.endsWith('bl')
+    if (includeBreakdown ? isBreakdownMetric : !isBreakdownMetric) {
+      filteredMetrics[key] = data.metrics[key]
+    }
+  })
+  
+  response.metrics = filteredMetrics
+  
+  if (data.adapterType) response.adapterType = data.adapterType
+  if (data.generatedAt) response.generatedAt = data.generatedAt
+  response.slug = data.slug ?? baseMeta.slug ?? protocolSlug
+  
+  const cleanResponse = JSON.parse(JSON.stringify(response))
+  delete cleanResponse.metadata
+  delete cleanResponse.info
+  
+  return successResponse(res, cleanResponse)
+}
+
+export async function getAggregatesProtocolFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  return getAggregatesProtocolData(req, res, false)
+}
+
+export async function getAggregatesBreakdownProtocolFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  return getAggregatesProtocolData(req, res, true)
 }

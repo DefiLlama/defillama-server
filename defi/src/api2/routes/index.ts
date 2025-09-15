@@ -22,7 +22,7 @@ import { getClosestProtocolItem } from "../db";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionBreakdownProtocolFileRoute, getDimensionProtocolFileRoute, getOverviewFileRoute } from "./dimensions";
+import { getAggregatesBreakdownProtocolFileRoute, getAggregatesProtocolFileRoute, getDimensionBreakdownProtocolFileRoute, getDimensionProtocolFileRoute, getOverviewFileRoute } from "./dimensions";
 import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -113,7 +113,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
-  router.get("/breakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
+  router.get("/summaryBreakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
+  router.get("/aggregates/:type/:name", ew(getAggregatesProtocolFileRoute))
+  router.get("/aggregatesBreakdown/:type/:name", ew(getAggregatesBreakdownProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 

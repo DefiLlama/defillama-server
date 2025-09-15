@@ -25748,6 +25748,7 @@ const data4: Protocol[] = [
     chains: ["zkSync Era"],
     module: "bcap/index.js",
     twitter: "blockchaincap",
+    parentProtocol: "parent#securitize",
     listedAt: 1757440977,
   },
   {

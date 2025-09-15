@@ -7826,7 +7826,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hylo",
     name: "Hylo",
-    url: "https://www.hylo.so/",
+    url: "https://hylo.so/leverage?ref=XG3NTI",
+    referralUrl: "https://hylo.so/leverage?ref=XG3NTI",
     description: "Hylo is a suite of Decentralized Finance (DeFi) products on the Solana blockchain, engineered for scalability and independence from traditional financial infrastructure",
     logo: `${baseIconsUrl}/hylo.jpg`,
     gecko_id: null,

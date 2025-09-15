@@ -120,7 +120,7 @@ export default {
         }
     },
     "apollox": {
-        id: "1772"
+        id: "6726"
     },
     "based-markets": {
         id: "3609"

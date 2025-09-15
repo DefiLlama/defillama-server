@@ -78,6 +78,7 @@ async function translateToChainData(
   let translatedData: any = {};
   aggregateNativeTokens();
 
+  console.log(nativeTokenTotalValues.BNB);
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
   // processProperty(data, "metadata");
   combineThirdPartyFlows();

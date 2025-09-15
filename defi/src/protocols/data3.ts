@@ -48467,21 +48467,20 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4847",
-    name: "Aster Perps",
+    name: "Aster Bridge", // previous aster perps
     address: null,
     symbol: "-",
     url: "https://www.asterdex.com/en",
     description:
       "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aster-perps.jpg`,
+    logo: `${baseIconsUrl}/aster-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Ethereum", "Binance"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.astherus.com/overview/astherusex/trading-on-astherusex-onchain-perp/powered-by-pyth-oracle-and-chainlink, https://github.com/DefiLlama/defillama-server/pull/9067
     forkedFrom: [],
     module: "astherus/index.js",
     twitter: "Aster_DEX",

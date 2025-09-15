@@ -26459,5 +26459,24 @@ const data4: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.astherus.com/overview/astherusex/trading-on-astherusex-onchain-perp/powered-by-pyth-oracle-and-chainlink, https://github.com/DefiLlama/defillama-server/pull/9067
     parentProtocol: "parent#astherus",
   },
+  {
+    id: "6727",
+    name: "APX Finance",
+    address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
+    symbol: "APX",
+    url: "https://www.apollox.finance/en",
+    description: "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
+    chain: "Off Chain",
+    logo: `${baseIconsUrl}/apx-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Off Chain"],
+    module: "dummy.js",
+    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
+    twitter: "APX_Finance",
+  },
 ];
 export default data4;

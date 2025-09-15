@@ -197,6 +197,7 @@ function prompt(query: string): Promise<string> {
 }
 
 async function refillAllProtocols() {
+  process.env.DUNE_BULK_MODE = 'true' // improve efficiency of dune queries when fetching missing data points
 
   setTimeout(() => {
     console.error("Timeout reached, exiting from refillAllProtocols...")
@@ -247,6 +248,8 @@ async function refillAllProtocols() {
     let currentDayEndTimestamp = yesterday
     let i = 0
     let errorCount = 0
+    let parallelCount = 5
+    let runner = []
     while (currentDayEndTimestamp > startTime) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
@@ -259,10 +262,23 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
         }
+        runner.push(handler2(eventObj))
+        currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
         try {
-          await handler2(eventObj)
+          if (runner.length >= parallelCount || (currentDayEndTimestamp <= startTime && runner.length > 0)) {
+             let firstError: any = null
+            await Promise.all(runner.map(p => p.catch((e) => {
+              if (e) {
+                if (!firstError) firstError = e
+                errorCount++
+              }
+            })))
+
+            runner = []
+            if (firstError) throw firstError
+          }
         } catch (error: any) {
-          errorCount++
+          // errorCount++
           let errorString = ''
           try {
             errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
@@ -274,7 +290,6 @@ async function refillAllProtocols() {
           }
         }
       }
-      currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
   }
 }

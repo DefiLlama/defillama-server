@@ -8947,7 +8947,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1772",
-    name: "APX Finance", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
+    name: "APX Bridge", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
     previousNames: ["ApolloX"],
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
@@ -8955,14 +8955,13 @@ const data2: Protocol[] = [
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apx-finance.jpg`,
+    logo: `${baseIconsUrl}/apx-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Binance"],
-    oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
     forkedFrom: [],
     module: "apollox/index.js",
     twitter: "APX_Finance",

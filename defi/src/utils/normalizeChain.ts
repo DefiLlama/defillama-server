@@ -4599,6 +4599,14 @@ export const chainCoingeckoIds = {
     twitter: null,
     url: null,
   },
+  "zkLighter": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "Lighter_xyz",
+    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4807,7 +4815,8 @@ const chainLabelMap = {
   "soon_bsc": "svmBNB",
   "soon_base": "soonBase",
   "camp": "Camp",
-  "off_chain": "Off Chain"
+  "off_chain": "Off Chain",
+  "zklighter": "zkLighter"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

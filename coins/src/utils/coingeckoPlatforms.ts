@@ -76,9 +76,12 @@ export async function iterateOverPlatforms(
         }`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
 
-        const timestamp = coinPlatformData[DBPK].redirect
-          ? redirectData[coinPlatformData[DBPK].redirect].timestamp
-          : coinPlatformData[DBPK].timestamp;
+        const timestamp = coinPlatformData[DBPK]
+          ? coinPlatformData[DBPK].redirect
+            ? redirectData[coinPlatformData[DBPK].redirect].timestamp
+            : coinPlatformData[DBPK].timestamp
+          : 0;
+          
         if (
           !coinPlatformData[DBPK] ||
           timestamp < margin ||

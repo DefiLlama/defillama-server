@@ -26459,5 +26459,25 @@ const data4: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.astherus.com/overview/astherusex/trading-on-astherusex-onchain-perp/powered-by-pyth-oracle-and-chainlink, https://github.com/DefiLlama/defillama-server/pull/9067
     parentProtocol: "parent#astherus",
   },
+  {
+    id: "6727",
+    name: "Somnia Exchange",
+    address: null,
+    symbol: "NIA",
+    url: "https://somnia.exchange/",
+    description: "Somnia Exchange is an AMM decentralized exchange on Somnia Network",
+    chain: "Somnia",
+    logo: `${baseIconsUrl}/somnia-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Somnia"],
+    forkedFromIds: ["2197"],
+    module: "somnia-exchange/index.js",
+    twitter: "somniaexchange",
+    listedAt: 1757952267
+  },
 ];
 export default data4;

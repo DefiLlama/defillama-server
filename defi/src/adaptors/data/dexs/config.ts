@@ -3054,4 +3054,7 @@ export default {
     "somnex-xyz": {
         id: "6709"
     }, 
+    "somnia-exchange": {
+        id: "6727",
+    },
 } as AdaptorsConfig

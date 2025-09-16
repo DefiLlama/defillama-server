@@ -67,7 +67,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl', 'blc']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
@@ -101,7 +101,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
-      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,
@@ -135,7 +135,7 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: filterCondition,
-      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,
@@ -169,12 +169,7 @@ export async function getAllItemsForProtocol({
 
   const where: any = { type: adapterType, id, timestamp: { [Op.gte]: timestamp } }
 
-  if (labelsOnly) {
-    where[Op.or] = [
-      { bl:  { [Op.ne]: null } },
-      { blc: { [Op.ne]: null } },
-    ]
-  }
+  if (labelsOnly) where[Op.or] = [{ bl:  { [Op.ne]: null } }]
 
   let result: any = []
   let offset = 0
@@ -185,7 +180,7 @@ export async function getAllItemsForProtocol({
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where,
-      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl', 'blc'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,

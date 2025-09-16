@@ -113,9 +113,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
-  router.get("/summaryBreakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
-  router.get("/aggregates/:type/:name", ew(getAggregatesProtocolFileRoute))
-  router.get("/aggregatesBreakdown/:type/:name", ew(getAggregatesBreakdownProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 
@@ -447,6 +444,12 @@ async function _getChainChartData(name: string) {
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
+export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
+  router.get("/summaryBreakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
+  router.get("/aggregates/:type/:name", ew(getAggregatesProtocolFileRoute))
+  router.get("/aggregatesBreakdown/:type/:name", ew(getAggregatesBreakdownProtocolFileRoute))
 }
 
 /* 

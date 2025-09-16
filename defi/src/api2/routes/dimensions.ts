@@ -296,12 +296,7 @@ async function getAggregatesProtocolData(req: HyperExpress.Request, res: HyperEx
   const data = await readRouteData(routeFile)
   if (!data) return errorResponse(res, errorMessage)
   
-  const response: any = {}
-  
-  const baseMeta = data.metadata ?? data.info ?? {}
-  if (baseMeta && typeof baseMeta === 'object') {
-    Object.assign(response, baseMeta)
-  }
+  const response: any = { ...data }
   
   const filteredMetrics: any = {}
   Object.keys(data.metrics || {}).forEach(key => {
@@ -313,13 +308,7 @@ async function getAggregatesProtocolData(req: HyperExpress.Request, res: HyperEx
   
   response.metrics = filteredMetrics
   
-  if (data.adapterType) response.adapterType = data.adapterType
-  if (data.generatedAt) response.generatedAt = data.generatedAt
-  response.slug = data.slug ?? baseMeta.slug ?? protocolSlug
-  
   const cleanResponse = JSON.parse(JSON.stringify(response))
-  delete cleanResponse.metadata
-  delete cleanResponse.info
   
   return successResponse(res, cleanResponse)
 }

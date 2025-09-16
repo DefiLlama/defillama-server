@@ -14,7 +14,7 @@ export type ProtocolDimensionsExtraConfig = {
 }
 
 export type DimensionsConfig = {
-  [K in AdapterType]?: ProtocolDimensionsExtraConfig;
+  [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
 }
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string

@@ -26660,5 +26660,32 @@ const data4: Protocol[] = [
     twitter: "cashmerelabs",
     audit_links: ["https://github.com/cashmere-prod/contracts-prod/tree/main/audits"],
   },
+  {
+    id: "6737",
+    name: "XSY",
+    address: null,
+    symbol: "-",
+    url: "https://xsy.fi",
+    description: "$UTY, also known as Unity, is a digital synthetic dollar (DSD). Unity is a delta-neutral asset and serves as the synthetic dollar at the center of XSY's ecosystem of decentralized financial products.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/xsy.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Avalanche"],
+    module: "xsy/index.js",
+    twitter: "xsy_fi",
+    audit_links: ["https://xsy-1.gitbook.io/xsy-main/audits"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14996"]
+      }
+    ],
+    listedAt: 1758064577
+  },
 ];
 export default data4;

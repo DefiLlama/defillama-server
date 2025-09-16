@@ -1,3 +1,4 @@
+import { DimensionsConfig } from "../adaptors/data/types";
 
 export const normalizedChainReplacements = {
   // keys should be full lowercase
@@ -78,7 +79,8 @@ export type ChainCoinGekcoId = {
     chain: string,
     types: string[],
     da?: string
-  }
+  },
+  dimensions?: DimensionsConfig
 }
 
 export type ChainCoinGekcoIds = {
@@ -4439,7 +4441,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Cosmos"],
     parent: {
-      chain: "Initia", 
+      chain: "Initia",
       types: ["L2", "gas"],
       da: 'Celestia',
     },

@@ -4208,4 +4208,7 @@ export default {
     "flamingo-finance": {
         id: "304"
     },
+    "potatoswap": {
+        id: "4512",
+    },
 } as AdaptorsConfig

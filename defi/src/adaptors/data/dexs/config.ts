@@ -3057,4 +3057,7 @@ export default {
     "somnia-exchange": {
         id: "6727",
     },
+    "potatoswap": {
+        id: "4512",
+    },
 } as AdaptorsConfig

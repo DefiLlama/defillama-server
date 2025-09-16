@@ -4211,4 +4211,7 @@ export default {
     "potatoswap": {
         id: "4512",
     },
+    "moonlander": {
+        id: "5658"
+    },
 } as AdaptorsConfig

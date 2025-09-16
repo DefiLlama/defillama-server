@@ -3060,4 +3060,7 @@ export default {
     "potatoswap": {
         id: "4512",
     },
+    "aster-spot": {
+        id: "6735",
+    },
 } as AdaptorsConfig

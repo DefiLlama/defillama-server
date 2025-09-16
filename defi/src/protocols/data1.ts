@@ -4294,13 +4294,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/flamingo-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "flamingo-finance",
-    cmcId: "7150",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["NEO"],
     module: "flamingo.js",
     twitter: "FlamingoFinance",
     audit_links: ["https://github.com/flamingo-finance/flamingo-audit"],
+    parentProtocol: "parent#flamingo",
   },
   /*
   {

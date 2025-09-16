@@ -7998,6 +7998,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ultrasolid_hl",
   },
+  {
+    id: "parent#rezerve",
+    name: "Rezerve",
+    url: "https://rezerve.money",
+    description: "RZR is a decentralized treasury accumulation protocol with one mission to accumulate 1 million ETH. With the power of Community & DeFi.",
+    logo: `${baseIconsUrl}/rezerve.jpg`,
+    gecko_id: "rezerve-money",
+    cmcId: "37291",
+    chains: [],
+    twitter: "rezervemoney",
+    github: ["rezervemoney"],
+    treasury: "rezerve.js",
+  },
+  {
+    id: "parent#flamingo",
+    name: "Flamingo",
+    url: "https://flamingo.finance/lend/overview",
+    description: "Flamingo Lend is a lending protocol on NEO",
+    logo: `${baseIconsUrl}/flamingo.jpg`,
+    gecko_id: "flamingo-finance",
+    cmcId: "7150",
+    chains: [],
+    twitter: "FlamingoFinance",
+  },
 ];
 
 export default parentProtocols;

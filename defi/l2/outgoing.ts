@@ -14,6 +14,7 @@ import {
 import BigNumber from "bignumber.js";
 import { getR2JSONString } from "../src/utils/r2";
 import { sendMessage } from "../src/utils/discord";
+import { getExcludedTvl } from "./excluded";
 
 let allProtocols: AllProtocols = {};
 let failedDeps: string[] = [];
@@ -44,6 +45,8 @@ export default async function fetchBridgeUsdTokenTvls(
       getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
+
+  tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
 
   let errorString = `canonical bridge issue around:`;
   filteredIds.map((id: string, i: number) => {

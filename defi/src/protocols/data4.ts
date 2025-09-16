@@ -11095,7 +11095,7 @@ const data4: Protocol[] = [
     ],
     module: "lighter-v2/index.js",
     twitter: "Lighter_xyz",
-    //parentProtocol: "parent#lighter",
+    parentProtocol: "parent#lighter",
     listedAt: 1744624979,
   },
   {

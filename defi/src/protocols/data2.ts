@@ -28566,7 +28566,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "Lighter_xyz",
     audit_links: ["https://www.certik.com/projects/lighter"],
-    //parentProtocol: "parent#lighter",
+    parentProtocol: "parent#lighter",
     deprecated: true,
     listedAt: 1678136619,
   },

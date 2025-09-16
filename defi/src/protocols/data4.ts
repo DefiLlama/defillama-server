@@ -26534,7 +26534,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Canonical Bridge",
+    category: "Dexs",
     chains: ["Eteria"],
     forkedFromIds: [],
     module: "eteria/index.js",

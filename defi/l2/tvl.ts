@@ -9,10 +9,11 @@ import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./test";
+import { getExcludedTvl } from "./excluded";
 
 export default async function main(override?: boolean, timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
-  let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
+  let [{ tvlData: native, mcapData }, incoming, { data: protocols }, excludedTvls] = await Promise.all([
     fetchMinted({
       chains: canonical,
       timestamp,
@@ -20,8 +21,15 @@ export default async function main(override?: boolean, timestamp?: number) {
     }),
     fetchIncoming({ canonical, timestamp }),
     fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),
+    getExcludedTvl(timestamp ?? getCurrentUnixTimestamp()),
   ]);
-  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native, timestamp });
+
+  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({
+    mcapData,
+    native,
+    timestamp,
+    excludedTvls,
+  });
 
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;
@@ -80,7 +88,6 @@ async function translateToChainData(
 
   console.log(JSON.stringify(nativeTokenTotalValues.BNB));
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
-  // processProperty(data, "metadata");
   combineThirdPartyFlows();
   processNetFlows();
 

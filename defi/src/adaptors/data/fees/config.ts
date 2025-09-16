@@ -4205,4 +4205,7 @@ export default {
     "lab-terminal": {
         id: "6732",
     },
+    "flamingo-finance": {
+        id: "304"
+    },
 } as AdaptorsConfig

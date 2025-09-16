@@ -4202,4 +4202,7 @@ export default {
     "somnia-exchange": {
         id: "6727",
     },
+    "lab-terminal": {
+        id: "6732",
+    },
 } as AdaptorsConfig

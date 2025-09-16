@@ -26562,5 +26562,24 @@ const data4: Protocol[] = [
     parentProtocol: "parent#adrastea",
     listedAt: 1757961377
   },
+  {
+    id: "6732",
+    name: "LAB Terminal",
+    address: null,
+    symbol: "LAB",
+    url: "https://lab.pro/",
+    description: "LAB Terminal is a trading platform that lets users execute advanced order types (limit, stop-loss, Smart Order), customize trade settings, and use overlays/extensions to trade more efficiently",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lab-terminal.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "LABtrade_",
+  },
 ];
 export default data4;

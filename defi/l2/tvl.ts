@@ -89,13 +89,11 @@ async function translateToChainData(
       allChainKeys.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
+          if (key == "outgoing") return;
           const unwrappedGas =
             symbol.startsWith("W") && nativeTokenSymbols.includes(symbol.substring(1)) ? symbol.substring(1) : symbol;
           if (!(unwrappedGas in nativeTokenTotalValues)) nativeTokenTotalValues[unwrappedGas] = zero;
-          nativeTokenTotalValues[unwrappedGas] =
-            key == "outgoing"
-              ? nativeTokenTotalValues[unwrappedGas].minus(data[key][chain][symbol])
-              : nativeTokenTotalValues[unwrappedGas].plus(data[key][chain][symbol]);
+          nativeTokenTotalValues[unwrappedGas] = nativeTokenTotalValues[unwrappedGas].plus(data[key][chain][symbol]);
         });
       });
     });

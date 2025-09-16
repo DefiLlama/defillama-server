@@ -17027,8 +17027,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.civitia.org/",
-    description:
-      "Civitia is a decentralized game that invites users to collaborate and interact within a unique social and financial ecosystem, leveraging Initia modular blockchain and Celestia modular data availability network",
+    description: "A yield strategy appchain inspired by Monopoly.",
     chain: "Civitia",
     logo: `${baseIconsUrl}/civitia-game.jpg`,
     audits: "0",

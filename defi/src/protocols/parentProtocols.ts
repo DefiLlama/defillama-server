@@ -6322,7 +6322,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Silo Finance creates permissionless and risk-isolated lending markets",
     logo: `${baseIconsUrl}/silo-finance.png`,
-    gecko_id: "silo-finance",
+    gecko_id: "silo-finance-2",
     cmcId: "16010",
     chains: [],
     twitter: "SiloFinance",

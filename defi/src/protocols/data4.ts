@@ -1181,7 +1181,7 @@ const data4: Protocol[] = [
   {
     id: "5611",
     name: "Silo V2",
-    address: "0x6f80310ca7f2c654691d1383149fa1a57d8ab1f8",
+    address: "0xf0b2dd79324a66d2108c961d680f7616e1486bb0",
     symbol: "SILO",
     url: "https://app.silo.finance",
     description: "Silo Finance creates permissionless and risk-isolated lending markets.",

@@ -739,4 +739,7 @@ export default {
     "pacifica": {
         id: "6682",
     },
+    "lighter-v2": {
+        id: "6042",
+    },
 } as AdaptorsConfig

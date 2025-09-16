@@ -11850,7 +11850,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Collectibles"],
+    category: "Physical TCG",
     chains: ["Flow"],
     module: "dummy.js",
     twitter: "beezie_io",

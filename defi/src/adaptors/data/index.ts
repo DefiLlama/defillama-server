@@ -92,13 +92,8 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     KEYS_TO_STORE,
     importModule: importModule(adapterType),
     config,
-    rules: getRules(adapterType),
     protocolAdaptors,
     childProtocolAdaptors,
     protocolMap,
   }
-}
-
-export const getRules = (adapterType: AdapterType): AdaptorData['rules'] => {
-  return (mapping[adapterType] as any).rules
 }

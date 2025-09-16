@@ -5,7 +5,17 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
-type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
+export type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
+
+export type ProtocolDimensionsExtraConfig = {
+  defaultChartView?: ChartBreakdownOptions;
+  adapter: string;
+  genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
+}
+
+export type DimensionsConfig = {
+  [K in AdapterType]?: ProtocolDimensionsExtraConfig;
+}
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
@@ -46,7 +56,6 @@ export type AdaptorData = {
     importModule: (module: string) => any
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
-    rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>,
     protocolMap: IJSON<ProtocolAdaptor>
 }
 

@@ -1,3 +1,4 @@
+import { DimensionsConfig } from "../adaptors/data/types";
 
 type DateString = string | number;
 export type Hallmark = [DateString, string] | [[DateString, DateString], string];
@@ -70,6 +71,7 @@ export interface Protocol {
   misrepresentedTokens?: boolean;
   doublecounted?: boolean;
   methodology?: string;
+  dimensions?: DimensionsConfig;
 }
 export interface Banner {
   message: string;

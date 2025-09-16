@@ -4214,4 +4214,7 @@ export default {
     "moonlander": {
         id: "5658"
     },
+    "cashmere": {
+        id: "6736",
+    },
 } as AdaptorsConfig

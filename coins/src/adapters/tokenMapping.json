@@ -9988,6 +9988,11 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "UETH"
+    },
+    "0xb88339CB7199b77E23DB6E890353E22632Ba630f": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   },
   "hemi": {

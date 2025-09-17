@@ -21,7 +21,7 @@ export default async function main(override?: boolean, timestamp?: number) {
     }),
     fetchIncoming({ canonical, timestamp }),
     fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),
-    getExcludedTvl(timestamp ?? getCurrentUnixTimestamp()),
+    getExcludedTvl(timestamp ?? (getCurrentUnixTimestamp() - 10)),
   ]);
 
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({

@@ -4229,4 +4229,16 @@ export default {
     "babydoge-algebra": {
         id: "6738",
     },
+    "yieldfi": {
+        id: "5588",
+    },
+    "emporium": {
+        id: "6742",
+    },
+    "hypertek": {
+        id: "6743",
+    },
+    "interface-app": {
+        id: "6744",
+    },
 } as AdaptorsConfig

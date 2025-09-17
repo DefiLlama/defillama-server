@@ -3063,4 +3063,7 @@ export default {
     "aster-spot": {
         id: "6735",
     },
+    "ring-dex": {
+        id: "4222"
+    },
 } as AdaptorsConfig

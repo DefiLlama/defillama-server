@@ -4217,4 +4217,7 @@ export default {
     "cashmere": {
         id: "6736",
     },
+    "ring-dex": {
+        id: "4222"
+    },
 } as AdaptorsConfig

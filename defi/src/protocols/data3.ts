@@ -47406,11 +47406,13 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+		End Date: "2025-09-17"
       },
       {
         name: "RedStone",
-        type: "Secondary",
-        proof: ["https://docs.ts.finance/protocol-spec/fixed-rate-borrowing-lending-prev-primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+        type: "Primary",
+        proof: ["https://docs.ts.finance/technical-details/oracles"]
+		Start Date: "2025-09-17"  
       },
       {
         name: "eOracle",

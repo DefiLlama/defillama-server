@@ -17,8 +17,8 @@ type StoreTvlOptions = {
   overwriteExistingData?: boolean,
 }
 
-function compressTVL(obj: tvlsObject<TokensValueLocked>, hourlyPK: string) {
-  const isUSDValue = /usd/i.test(hourlyPK);
+function compressTVL(obj: tvlsObject<TokensValueLocked>, _hourlyPK: string) {
+  // const isUSDValue = /usd/i.test(hourlyPK);
   Object.keys(obj).forEach((key) => {
     Object.keys(obj[key]).forEach((coinKey) => {
       let value = obj[key][coinKey]
@@ -47,7 +47,8 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
   compressTVL(tvl, hourlyPK);
 
   try {
-    await dynamodb.put({ PK: hourlyPK, SK: unixTimestamp, ...tvl, });
+    await dynamodb.put({ PK: hourlyPK, SK: unixTimestamp, ...tvl, })
+    await dynamodb.putEventData({ PK: hourlyPK, SK: unixTimestamp, ...tvl, source: 'tvl-adapter', });
   } catch (e) {
     if (!isDDBFailOK) {
       throw e;

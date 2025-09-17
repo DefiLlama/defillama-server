@@ -4,8 +4,6 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
-        parentId: "Derive",
-        "startFrom": 1656460800,
         id: "5060"
     },
     "thales": {
@@ -14,10 +12,9 @@ export default {
     "hegic": {
         id: "128"
     },
-    "opyn": {
-        "enabled": false,
-        id: "285",
-    },
+    // "opyn": {
+    //     id: "285",
+    // },
     "aevo": {
         id: "5059"
     },
@@ -27,30 +24,24 @@ export default {
     "rysk-finance": {
         id: "2605"
     },
-    "tigris": {
-        "enabled": false,
-        id: "3129"
-    },
+    // "tigris": {
+    //     id: "3129"
+    // },
     "valorem": {
         id: "3501"
     },
-    "derivio": {
-        parentId: "Deri",
-        "enabled": false,
-        id: "3759",
-    },
+    // "derivio": {
+    //     id: "3759",
+    // },
     "dopex": {
-        parentId: "Dopex",
         id: "3817"
     },
     "lyra-v2": {
-        parentId: "Derive",
         id: "3923"
     },
-    "optionBlitz": {
-        enabled: false, //sus behavior
-        id: "4396"
-    },
+    // "optionBlitz": { //sus behavior
+    //     id: "4396"
+    // },
     "smilee-finance": {
         id: "4350"
     },
@@ -67,7 +58,6 @@ export default {
         id: "4963"
     },
     "pancakeswap-options": {
-        parentId: "PancakeSwap",
         id: "4967"
     },
     "arrow-markets": {
@@ -93,5 +83,8 @@ export default {
     },
     "sofa-org": {
         id: "4779"
+    },
+    "optfun": {
+        id: "6337"
     }
 } as AdaptorsConfig

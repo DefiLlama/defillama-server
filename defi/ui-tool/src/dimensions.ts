@@ -5,7 +5,7 @@ import { getTimestampString } from "../../src/api2/utils";
 import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
-import { ADAPTER_TYPES } from "../../src/adaptors/handlers/triggerStoreAdaptorData";
+import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
@@ -31,6 +31,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const adapterType = args.adapterType
   const protocolToRun = args.protocol
   const checkBeforeInsert = args.checkBeforeInsert
+  const delayBetweenRuns = args.delayBetweenRuns ?? 0
   const protocolNames = new Set([protocolToRun])
   if (checkBeforeInsert) args.dryRun = true
 
@@ -69,6 +70,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
           isDryRun: args.dryRun,
           protocolNames,
           isRunFromRefillScript: true,
+          delayBetweenRuns,
           checkBeforeInsert,
         }
         items.push(eventObj)
@@ -85,6 +87,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
         isDryRun: args.dryRun,
         protocolNames,
         isRunFromRefillScript: true,
+        delayBetweenRuns,
         checkBeforeInsert,
       }
       items.push(eventObj)

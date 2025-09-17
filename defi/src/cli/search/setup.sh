@@ -8,28 +8,73 @@ curl \
   --data-binary '{
     "description": "Search for frontend",
     "actions": ["search"],
-    "indexes": ["protocols"],
+    "indexes": ["pages"],
     "expiresAt": null
   }'
 
 curl \
-  -X POST 'https://search.defillama.com/indexes/protocols/documents'\
+  -X POST 'https://search.defillama.com/indexes/pages/documents'\
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $MASTER_KEY" \
-  --data-binary @searchProtocols.json
+  --data-binary @searchlist.json
 
 curl -X GET 'https://search.defillama.com/tasks/0' -H "Authorization: Bearer $MASTER_KEY"
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/protocols/settings/ranking-rules' \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/searchable-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
-	"words",
-  "tvl:desc",
-	"typo",
-	"proximity",
-	"attribute",
-	"sort",
-	"exactness"
-]'
+    "name",
+    "symbol",
+    "type"
+  ]'
+
+curl \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/ranking-rules' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "words",
+    "v:desc",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+    "deprecated:asc
+  ]'
+
+curl \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/filterable-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "type"
+  ]'
+
+curl \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/sortable-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "v",
+    "tvl",
+    "name",
+    "deprecated"
+  ]'
+
+curl \
+  -X PUT 'https://search.defillama.com/indexes/pages/settings/displayed-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "id",
+    "name",
+    "type",
+    "logo",
+    "route",
+    "deprecated",
+    "hideType",
+    "subName"
+  ]'

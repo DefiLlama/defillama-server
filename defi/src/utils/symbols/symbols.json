@@ -5438,6 +5438,7 @@
   "flash-3-0": "FLASH",
   "flashdash": "FLASHDASH",
   "flashpad-token": "FLASH",
+  "flash-liquidity-token": "FLP.1",
   "flash-protocol": "FLASH",
   "flash-technologies": "FTT",
   "flat-money": "UNIT",
@@ -10915,6 +10916,7 @@
   "reallink": "REAL",
   "realm": "REALM",
   "realmoneyworld": "RMW",
+  "real-mxn": "MXN",
   "real-realm": "REAL",
   "real-smurf-cat": "SMURFCAT",
   "real-smurf-cat-2": "SMURF",
@@ -14760,5 +14762,6 @@
   "zynergy": "ZYN",
   "zyrri": "ZYR",
   "zzz": "ZZZ",
-  "z-z-z-z-z-fehu-z-z-z-z-z": "ᚠ"
+  "z-z-z-z-z-fehu-z-z-z-z-z": "ᚠ",
+  "auro": "AURO"
 }

@@ -16,6 +16,7 @@ import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
 import { saveProtocolItem, getClosestProtocolItem, getLatestProtocolItem, } from "../api2/db";
+import { excludedTvlId } from "../../l2/constants";
 
 
 const { humanizeNumber: { humanizeNumber, } } = util
@@ -74,8 +75,8 @@ export default async function (
 
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
-    if (currentTvl > 200e9) {
-      let errorMessage = `TVL of ${protocol.name} is over 200bn`
+    if (currentTvl > 300e9 && excludedTvlId != protocol.id) {
+      let errorMessage = `TVL of ${protocol.name} is over 300bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {
@@ -84,10 +85,14 @@ export default async function (
       })
       console.log(errorMessage, usdTokenBalances, currentTvl, tvl, debugData)
 
-      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+
+      if (currentTvl < 2e12) // less than 2 trillion
+        await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
-    if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
+    if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0
+      && !process.env.UI_TOOL_MODE // skip check if it run from the UI tool
+    ) {
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl
       )}`;
@@ -110,7 +115,7 @@ export default async function (
       ) {
         const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
         if (timeElapsed > (5 * HOUR)) {
-          if (currentTvl > 100e6) {
+          if (currentTvl > 10e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           }
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
@@ -120,7 +125,10 @@ export default async function (
           errorMessage
         );
       } else {
-        const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
+        const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
+        if (currentTvl > 10e6) {
+          await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+        }
         reportError(
           errorMessage,
           protocol.name
@@ -142,7 +150,7 @@ export default async function (
       })
       if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
         console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
-        if (lastHourlyTVL > 1e5) {
+        if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
           const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
           await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
           throw new Error(errorMessage);
@@ -178,6 +186,12 @@ export default async function (
     SK: unixTimestamp,
     ...hourlyData,
   });
+  await dynamodb.putEventData({
+    PK: hourlyPK,
+    SK: unixTimestamp,
+    ...hourlyData,
+    source: 'tvl-adapter',
+  })
 
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 

@@ -2,7 +2,7 @@ import protocols from '../../src/protocols/data'
 import treasuries from '../../src/protocols/treasury'
 import entities from '../../src/protocols/entities'
 import { IProtocol } from '../../src/types';
-import { clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
+import { clearAllDimensionsCache, clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
 import { storeTvl2, storeTvl2Options } from '../../src/storeTvlInterval/getAndStoreTvl';
 import { humanizeNumber } from '@defillama/sdk';
 import evmChainProvidersList from '@defillama/sdk/build/providers.json';
@@ -10,7 +10,6 @@ import PromisePool from '@supercharge/promise-pool';
 import { deleteProtocolItems, getProtocolItems, initializeTVLCacheDB } from '../../src/api2/db';
 import dynamodb from '../../src/utils/shared/dynamodb';
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl, } from '../../src/utils/getLastRecord';
-import { Op } from 'sequelize';
 import { getClosestDayStartTimestamp } from '@defillama/dimension-adapters/utils/date';
 import { importAdapterDynamic } from '../../src/utils/imports/importAdapter';
 
@@ -19,6 +18,7 @@ const allItems = [...protocols, ...treasuries, ...entities]
 
 allItems.forEach((protocol: any) => tvlNameMap[protocol.name] = protocol)
 export const tvlProtocolList = allItems.filter(i => i.module !== 'dummy.js').map(i => i.name)
+import {  } from "../../src/cli/utils/clearProtocolCache";
 
 
 export async function runTvlAction(ws: any, data: any) {
@@ -37,6 +37,9 @@ export async function runTvlAction(ws: any, data: any) {
     case 'clear-cache':
       await clearProtocolCacheById(protocol.id)
       console.log('Cache cleared for protocol:', protocol.name);
+      break;
+    case 'clear-all-dimensions-cache':
+      await clearAllDimensionsCache()
       break;
     case 'refill-last':
       await fillLast(ws, protocol, options)
@@ -253,17 +256,18 @@ function getRecordItem(record: any) {
 const deleteRecordsList: any = {}
 
 async function tvlDeleteGetList(ws: any, protocol: IProtocol, data: any) {
+  await initializeTVLCacheDB()
 
-  const usdTvlRecords = await dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": dailyTvl(protocol.id),
-      ":from": data.dateFrom - 1, // -1 to include the from date
-      ":to": data.dateTo + 1, // +1 to include the to date
-    },
-    KeyConditionExpression: "PK = :pk AND SK BETWEEN :from AND :to",
-  });
 
-  (usdTvlRecords.Items ?? []).forEach((item: any) => {
+  const usdTvlRecords = await getProtocolItems(dailyTvl, protocol.id, {
+    timestampFrom: data.dateFrom - 86400,
+    timestampTo: data.dateTo + 86400,
+  })
+
+  console.log('Pulled ', usdTvlRecords.length || 0, 'tvl records for protocol:', protocol.name, 'from:', new Date(data.dateFrom * 1000).toDateString(), 'to:', new Date(data.dateTo * 1000).toDateString())
+
+
+  usdTvlRecords.forEach((item: any) => {
     const id = `${protocol.id}-${item.SK}`
     const res = { id, protocol, usdTvls: item, unixTimestamp: item.SK }
     delete item.PK
@@ -308,8 +312,8 @@ async function _deleteTvlRecords(ws: any, ids?: any) {
 
         try {
 
-          await deleteProtocolItems(tvlFunc, { id: protocol.id, timestamp: { [Op.lte]: deleteFrom, [Op.gte]: deleteTo } })
-          console.log('Deleting data for protocol:', protocol.name, 'from:', new Date(deleteFrom * 1000).toDateString(), 'to:', new Date(deleteTo * 1000).toDateString(), tvlFunc(protocol.id))
+          await deleteProtocolItems(tvlFunc, { id: protocol.id, timestamp: unixTimestamp })
+          console.log('Deleting data for protocol:', protocol.name, 'from:', new Date(deleteFrom * 1000).toDateString(), deleteFrom, 'to:', new Date(deleteTo * 1000).toDateString(), deleteTo, tvlFunc(protocol.id))
           const data = await dynamodb.query({
             ExpressionAttributeValues: {
               ":pk": tvlFunc(protocol.id),

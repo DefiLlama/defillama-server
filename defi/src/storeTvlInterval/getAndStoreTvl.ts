@@ -61,7 +61,7 @@ async function getTvl(
     try {
       chain = storedKey.split('-')[0]
       const block = chainBlocks[chain]
-      const params: any = { chain, block, timestamp: unixTimestamp, storedKey }
+      const params: any = { chain, block, timestamp: unixTimestamp, storedKey, protocol: protocol.name }
       const api: any = new sdk.ChainApi(params)
       api.api = api
       api.storedKey = storedKey
@@ -168,7 +168,7 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
 }
 
-const deadChains = new Set(['heco', 'astrzk'])
+const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

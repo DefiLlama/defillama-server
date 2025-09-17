@@ -36,13 +36,15 @@ const handler = async (
         return;
         // }
       }
-      response[PKTransforms[coin.PK]] = {
-        decimals: coin.decimals,
-        symbol: coin.symbol,
-        price: finalCoin.price,
-        timestamp: finalCoin.SK,
-        confidence: finalCoin.confidence
-      };
+      PKTransforms[coin.PK].forEach((coinName) => {
+        response[coinName] = {
+          decimals: coin.decimals,
+          symbol: coin.symbol,
+          price: finalCoin.price,
+          timestamp: finalCoin.SK,
+          confidence: finalCoin.confidence
+        };
+      });
     })
   );
   return successResponse(

@@ -1,3 +1,7 @@
+
+type DateString = string | number;
+export type Hallmark = [DateString, string] | [[DateString, DateString], string];
+
 export interface Protocol {
   id: string;
   name: string;
@@ -35,8 +39,9 @@ export interface Protocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   rugged?: boolean;
-  deadUrl?: boolean;
-  deadFrom?: number | string;
+  excludeTvlFromParent?: boolean;
+  deadUrl?: boolean; // for all domains that stopped being used, to avoid scammers registering there for a scam page
+  deadFrom?: number | string; // for protocols that are dead, will trigger less frequent TVL updates
   tokensExcludedFromParent?: {
     [chain:string]: string[];
   },
@@ -60,7 +65,18 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<Banner>;
+  hallmarks?: Hallmark[];
+  misrepresentedTokens?: boolean;
+  doublecounted?: boolean;
+  methodology?: string;
 }
+export interface Banner {
+  message: string;
+  until?: number|string; // unix timestamp or "forever" or date string  in 'YYYY-MM-DD' format, 'forever' if the field is not set
+  level: "low" | "alert" | "rug";
+}
+
 
 export interface IParentProtocol {
   id: string;
@@ -84,4 +100,7 @@ export interface IParentProtocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<Banner>;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }

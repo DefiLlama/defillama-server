@@ -2,17 +2,15 @@ import { AdaptorsConfig } from "../types";
 
 export default {
   // "logx": {
-  //   enabled: false,
   //   id: "3396",
-  //   protocolsData: {
-  //     "logx-aggregator": {
-  //       enabled: false,
-  //       id: "3396",
-  //     }
-  //   }
   // },
   "mux-protocol-agge": {
     "id": "5054",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1749686400": true,
+      }
+    }
   },
   "rage-trade": {
     "id": "4447",
@@ -47,5 +45,8 @@ export default {
   },
   "sharpe-perp": {
     "id": "5165"
-  }
+  },
+  "defiapp": {
+    id: "5819",
+  },
 } as AdaptorsConfig;

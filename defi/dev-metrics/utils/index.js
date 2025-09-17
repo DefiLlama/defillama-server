@@ -80,10 +80,26 @@ function getAuthorsFromCommit(authorName, commitMessage = '') {
 
 const coAuthorRegex = /Co-authored-by:\s+([^<]+)\s+<([^>]+)>/gi;
 
+/* 
+to get list of top 20 repositories by commit count
+
+SELECT repo, COUNT(*) AS record_count
+FROM git_commit_raw gcr 
+GROUP BY repo
+ORDER BY record_count DESC
+LIMIT 20;
+ */
+
+
+const blacklistedRepos = new Set([
+  'algotables/algotables.github.io', 'exorde-labs/TestnetProtocol', 'neutral-trade/vaults-data',
+  '0xPolygonHermez/rust', 'bsc-predict/bsc-predict-updater', 'protocol/upptime-pln', 'dolomite-exchange/liquidity-mining-data',
+])
+
 function filterCommit(commit) {
   const botRegex = /\b(bot)\b/i
-  const { authors, } = commit
-  return !authors.some(i => botRegex.test(i.name) || botRegex.test(i.email) || i.email.endsWith('@github.com'))
+  const { authors, repo } = commit
+  return blacklistedRepos.has(repo) && !authors.some(i => botRegex.test(i.name) || botRegex.test(i.email) || i.email.endsWith('@github.com'))
 }
 
 function extractCommitsFromPushEvent(pushEvent) {

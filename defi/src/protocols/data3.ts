@@ -48103,7 +48103,7 @@ const data3_2: Protocol[] = [
       "Stargate V2 offers reduced bridging costs, expands chain connectivity, and improves capital efficiency using transaction batching, Hydra, and an AI-driven Planning Module (AIPM).",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stargate-v2.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -48126,8 +48126,8 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "stargatefinance-v2/index.js",
     twitter: "StargateFinance",
-    audit_links: [],
     parentProtocol: "parent#stargate-finance",
+    audit_links: ["https://github.com/LayerZero-Labs/Audits/blob/main/audits/OApp%26OFT-Zellic-12JUN2024.pdf"],
     listedAt: 1719902937,
   },
   {

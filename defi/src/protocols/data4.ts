@@ -21204,7 +21204,8 @@ const data4: Protocol[] = [
     name: "Liminal",
     address: null,
     symbol: "-",
-    url: "https://liminal.money/",
+    url: "https://liminal.money/join/DEFILLAMA",
+    referralUrl: "https://liminal.money/join/DEFILLAMA",
     description:
       "Liminal is a DeFi protocol on Hyperliquid that offers stable, delta-neutral yields from funding rates, allowing users to earn returns without market exposure",
     chain: "Hyperliquid L1",

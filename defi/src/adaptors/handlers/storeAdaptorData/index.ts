@@ -189,8 +189,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
       if (adaptor.deadFrom) {
-        console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
-        return;
+        const isDeadNow = !isRunFromRefillScript || (startTime * 1e3 > +new Date(adaptor.deadFrom).getTime())
+        if (isDeadNow) {
+          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
+          return;
+        }
       }
 
       let endTimestamp = toTimestamp

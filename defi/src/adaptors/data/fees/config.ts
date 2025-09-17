@@ -4220,4 +4220,10 @@ export default {
     "ring-dex": {
         id: "4222"
     },
+    "treehouse-protocol": {
+        id: "5131",
+    },
+    "alkimi": {
+        id: "6723",
+    },
 } as AdaptorsConfig

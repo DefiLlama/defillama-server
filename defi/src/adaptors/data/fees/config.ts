@@ -4226,4 +4226,7 @@ export default {
     "alkimi": {
         id: "6723",
     },
+    "babydoge-algebra": {
+        id: "6738",
+    },
 } as AdaptorsConfig

@@ -3066,4 +3066,7 @@ export default {
     "ring-dex": {
         id: "4222"
     },
+    "babydoge-algebra": {
+        id: "6738",
+    },
 } as AdaptorsConfig

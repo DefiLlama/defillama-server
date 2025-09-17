@@ -468,7 +468,7 @@ const data: Protocol[] = [
     module: "mstable/index.js",
     twitter: "mstable_",
     audit_links: ["https://developers.mstable.org/security/security-audits"],
-    parentProtocol: "parent#mstable",
+    parentProtocol: "parent#dhedge",
   },
   {
     id: "126",

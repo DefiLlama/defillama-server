@@ -22153,7 +22153,7 @@ const data2: Protocol[] = [
     module: "mstable-yield/index.js",
     twitter: "mstable_",
     audit_links: ["https://developers.mstable.org/security/security-audits"],
-    parentProtocol: "parent#mstable",
+    parentProtocol: "parent#dhedge",
     listedAt: 1670692797,
   },
   {

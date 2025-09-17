@@ -25654,7 +25654,7 @@ const data4: Protocol[] = [
     ], 
     module: "flat-money-v2/index.js",
     twitter: "0xflatmoney",
-    parentProtocol: "parent#flat-money",
+    parentProtocol: "parent#dhedge",
     audit_links: ["https://github.com/flat-money/flat-money-v2/blob/main/audits/audit-2025-09-08.pdf"],
     listedAt: 1757358315,
   },

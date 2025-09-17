@@ -7485,6 +7485,11 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 18,
       "symbol": "WBTC"
+    },
+    "0x7923C0f6FA3d1BA6EAFCAedAaD93e737Fd22FC4F": {
+      "to": "coingecko#compliant-naira",
+      "decimals": 6,
+      "symbol": "CNGN"
     }
   },
   "aeternity": {

@@ -8025,6 +8025,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FlamingoFinance",
   },
+  {
+    id: "parent#babydogecoin",
+    name: "BabyDogeCoin",
+    url: "https://babydogeswap.com",
+    description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap.",
+    logo: `${baseIconsUrl}/babydoge.jpg`,
+    gecko_id: "baby-doge-coin",
+    cmcId: "10407",
+    chains: [],
+    twitter: "BabyDogeCoin",
+    governanceID: ["snapshot:babydogevote.eth"],
+  },
 ];
 
 export default parentProtocols;

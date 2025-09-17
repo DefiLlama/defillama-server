@@ -191,7 +191,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (adaptor.deadFrom) {
         const isDeadNow = !isRunFromRefillScript || (startTime * 1e3 > +new Date(adaptor.deadFrom).getTime())
         if (isDeadNow) {
-          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
+          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`, isRunFromRefillScript, startTime * 1e3 , +new Date(adaptor.deadFrom).getTime())
           return;
         }
       }

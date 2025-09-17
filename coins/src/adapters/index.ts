@@ -166,4 +166,5 @@ export default {
   brkteth: require("./yield/brkteth"),
   vbill: require("./rwa/vbill"),
   ondo_equity: require("./rwa/ondo_equity"),
+  stakingPools: require("./solana/stakingPools"),
 };

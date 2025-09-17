@@ -188,19 +188,19 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const isAdapterVersionV1 = adapterVersion === 1
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
-      if (adaptor.deadFrom) {
-        const isDeadNow = !isRunFromRefillScript || (startTime * 1e3 > +new Date(adaptor.deadFrom).getTime())
-        if (isDeadNow) {
-          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`, isRunFromRefillScript, startTime * 1e3 , +new Date(adaptor.deadFrom).getTime())
-          return;
-        }
-      }
 
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp
       if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
       // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC) - this led to record being stored on the next day of the 24 hour range?
 
+      if (adaptor.deadFrom) {
+        const isDeadNow = !isRunFromRefillScript || (endTimestamp * 1e3 > +new Date(adaptor.deadFrom).getTime())
+        if (isDeadNow) {
+          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
+          return;
+        }
+      }
 
       if ("adapter" in adaptor) {
       } else if ("breakdown" in adaptor) {

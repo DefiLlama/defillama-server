@@ -16,7 +16,7 @@ export async function fetchMinted(params: {
   searchWidth?: number;
   override?: boolean;
 }): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
-  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
+  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp() - 10;
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
@@ -89,8 +89,6 @@ export async function fetchMinted(params: {
                 console.log(`token ${t} on ${chain} has over a trillion usdValue LOL`);
                 return;
               }
-              if (["BNB", "WBNB"].includes(symbol))
-                console.log(`${symbol} on ${chain} has ${usdValue.toString()}$ at ${priceInfo.PK}`);
               mcapData[chain][symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
               if (symbol in mcapData.total)
                 mcapData.total[symbol].native = mcapData.total[symbol].native.plus(usdValue);

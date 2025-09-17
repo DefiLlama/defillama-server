@@ -446,7 +446,7 @@ const App = () => {
           name="delayBetweenRuns"
           rules={[{ required: false, message: 'Please enter delay between runs' }]}
         >
-          <InputNumber min={1} max={100} />
+          <InputNumber min={0} max={1000} />
         </Form.Item>
 
         {/*       <Form.Item

@@ -62861,10 +62861,10 @@ const data3_2: Protocol[] = [
     deadUrl: true,  },
   {
     id: "5502",
-    name: "BBBPump",
+    name: "BBBFI",
     address: null,
     symbol: "-",
-    url: "https://bbbpump.fun",
+    url: "https://bbbfi.com",
     description: "BBBPump is the First Meme Fair Launch Platform on XDC Network:swap,earn,meme culture,instantly tradable without having to seed liquidity",
     chain: "XDC",
     logo: `${baseIconsUrl}/bbbpump.jpg`,

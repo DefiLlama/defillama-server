@@ -7792,7 +7792,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#upheaval-finance",
     name: "Upheaval Finance",
-    url: "https://upheaval.fi",
+    url: "https://upheaval.fi/portfolio?ref=674574",
+    referralUrl: "https://upheaval.fi/portfolio?ref=674574",
     description: "Upheaval is a DeFi platform on HyperliquidEVM, featuring a Hyper efficient AMM DEX",
     logo: `${baseIconsUrl}/upheaval-finance.jpg`,
     gecko_id: null,

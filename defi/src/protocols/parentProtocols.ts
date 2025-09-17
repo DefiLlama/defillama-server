@@ -7513,7 +7513,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#carrot",
     name: "Carrot",
-    url: "https://deficarrot.com/",
+    url: "https://use.deficarrot.com?code=0eb6b6",
+    referralUrl: "https://use.deficarrot.com?code=0eb6b6",
     description: "Carrot is Yield Made Simple.",
     logo: `${baseIconsUrl}/carrot.jpg`,
     gecko_id: "carrot-2",

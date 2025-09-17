@@ -3060,4 +3060,10 @@ export default {
     "potatoswap": {
         id: "4512",
     },
+    "aster-spot": {
+        id: "6735",
+    },
+    "ring-dex": {
+        id: "4222"
+    },
 } as AdaptorsConfig

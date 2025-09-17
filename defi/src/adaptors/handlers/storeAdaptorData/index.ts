@@ -14,6 +14,7 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
+import sleep from "../../../utils/shared/sleep";
 
 
 const blockChains = Object.keys(providers)
@@ -35,6 +36,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   runType?: 'store-all' | 'default'
   throwError?: boolean
   checkBeforeInsert?: boolean
+  delayBetweenRuns?: number
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -43,9 +45,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 13
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false,
+    throwError = false, checkBeforeInsert = false, delayBetweenRuns = 0
 
   } = event
+
+  if (delayBetweenRuns > 0) maxConcurrency = 1 // if there is a delay between runs, we can only run one at a time
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Get clean day
@@ -188,16 +192,19 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const isAdapterVersionV1 = adapterVersion === 1
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
-      if (adaptor.deadFrom) {
-        console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
-        return;
-      }
 
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp
       if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
       // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC) - this led to record being stored on the next day of the 24 hour range?
 
+      if (adaptor.deadFrom) {
+        const isDeadNow = !isRunFromRefillScript || (endTimestamp * 1e3 > +new Date(adaptor.deadFrom).getTime())
+        if (isDeadNow) {
+          console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
+          return;
+        }
+      }
 
       if ("adapter" in adaptor) {
       } else if ("breakdown" in adaptor) {
@@ -346,6 +353,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       success = false
       errorObject = error
     }
+
+    if (delayBetweenRuns > 0)
+      await sleep(delayBetweenRuns * 1000)
 
     const endTime = getUnixTimeNow()
     await elastic.addRuntimeLog({ runtime: endTime - startTime, success, metadata, })

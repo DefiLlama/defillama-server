@@ -4211,4 +4211,13 @@ export default {
     "potatoswap": {
         id: "4512",
     },
+    "moonlander": {
+        id: "5658"
+    },
+    "cashmere": {
+        id: "6736",
+    },
+    "ring-dex": {
+        id: "4222"
+    },
 } as AdaptorsConfig

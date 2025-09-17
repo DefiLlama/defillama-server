@@ -3384,7 +3384,6 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DeriProtocol",
     github: ["deri-protocol"],
   },
-  /*
   {
     id: "parent#lighter",
     name: "Lighter",
@@ -3397,7 +3396,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lighter_xyz",
   },
-  */
   {
     id: "parent#dfx-finance",
     name: "DFX Finance",
@@ -5314,7 +5312,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#drift",
     name: "Drift",
-    url: "https://www.drift.trade/",
+    url: "https://app.drift.trade/ref/defillama",
+    referralUrl: "https://app.drift.trade/ref/defillama",
     description:
       "Drift brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.",
     logo: `${baseIconsUrl}/drift-trade.jpg`,
@@ -7515,7 +7514,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#carrot",
     name: "Carrot",
-    url: "https://deficarrot.com/",
+    url: "https://use.deficarrot.com?code=0eb6b6",
+    referralUrl: "https://use.deficarrot.com?code=0eb6b6",
     description: "Carrot is Yield Made Simple.",
     logo: `${baseIconsUrl}/carrot.jpg`,
     gecko_id: "carrot-2",
@@ -7794,7 +7794,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#upheaval-finance",
     name: "Upheaval Finance",
-    url: "https://upheaval.fi",
+    url: "https://upheaval.fi/portfolio?ref=674574",
+    referralUrl: "https://upheaval.fi/portfolio?ref=674574",
     description: "Upheaval is a DeFi platform on HyperliquidEVM, featuring a Hyper efficient AMM DEX",
     logo: `${baseIconsUrl}/upheaval-finance.jpg`,
     gecko_id: null,
@@ -7990,13 +7991,38 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ultrasolid",
     name: "Ultrasolid",
-    url: "https://ultrasolid.xyz/",
+    url: "https://app.ultrasolid.xyz/@DEFILLAMA",
+    referralUrl: "https://app.ultrasolid.xyz/@DEFILLAMA",
     description: "HyperEVM's Seamless core-aligned veDEX.",
     logo: `${baseIconsUrl}/ultrasolid.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "ultrasolid_hl",
+  },
+  {
+    id: "parent#rezerve",
+    name: "Rezerve",
+    url: "https://rezerve.money",
+    description: "RZR is a decentralized treasury accumulation protocol with one mission to accumulate 1 million ETH. With the power of Community & DeFi.",
+    logo: `${baseIconsUrl}/rezerve.jpg`,
+    gecko_id: "rezerve-money",
+    cmcId: "37291",
+    chains: [],
+    twitter: "rezervemoney",
+    github: ["rezervemoney"],
+    treasury: "rezerve.js",
+  },
+  {
+    id: "parent#flamingo",
+    name: "Flamingo",
+    url: "https://flamingo.finance/lend/overview",
+    description: "Flamingo Lend is a lending protocol on NEO",
+    logo: `${baseIconsUrl}/flamingo.jpg`,
+    gecko_id: "flamingo-finance",
+    cmcId: "7150",
+    chains: [],
+    twitter: "FlamingoFinance",
   },
 ];
 

@@ -1890,7 +1890,8 @@ const data2: Protocol[] = [
     previousNames: ["DLN"],
     address: "solana:DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
     symbol: "DBR",
-    url: "https://debridge.finance",
+    url: "https://app.debridge.finance/r/32425",
+    referralUrl: "https://app.debridge.finance/r/32425",
     description:
       "deBridge is a cross-chain interoperability and liquidity transfer protocol that allows the decentralized transfer of arbitrary data and assets between various blockchains",
     chain: "Ethereum",
@@ -28566,7 +28567,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "Lighter_xyz",
     audit_links: ["https://www.certik.com/projects/lighter"],
-    //parentProtocol: "parent#lighter",
+    parentProtocol: "parent#lighter",
     deprecated: true,
     listedAt: 1678136619,
   },

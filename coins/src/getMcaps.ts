@@ -35,7 +35,9 @@ const handler = async (
           formattedCoin.mcap = redirectedCoin.Item?.mcap;
         formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
       }
-      response[PKTransforms[coin.PK]] = formattedCoin;
+      PKTransforms[coin.PK].forEach((coinName) => {
+        response[coinName] = formattedCoin; 
+      });
     }),
   );
   return successResponse(response);

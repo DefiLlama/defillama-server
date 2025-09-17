@@ -16,6 +16,7 @@ import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
 import { saveProtocolItem } from "../api2/db";
+import { excludedTvlId } from "../../l2/constants";
 
 
 const { humanizeNumber: { humanizeNumber, } } = util
@@ -92,8 +93,8 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
-    if (currentTvl > 200e9) {
-      let errorMessage = `TVL of ${protocol.name} is over 200bn`
+    if (currentTvl > 300e9 && excludedTvlId != protocol.id) {
+      let errorMessage = `TVL of ${protocol.name} is over 300bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {

@@ -10,10 +10,8 @@ export default {
     },
   },
   "dexible": {
-    disabled: true,
     startFrom: 1630022400,
     id: "2249",
-    parentId: "2249",
     displayName: "Dexible V2",
   },
   "deflex": {
@@ -24,19 +22,13 @@ export default {
   // },
   "plexus": {
     id: "2740",
-    cleanRecordsConfig: {
-      genuineSpikes: {
-        1706313600: false
-      }
-    }
   },
   "avnu": {
     id: "3154",
   },
-  "bitkeep": {
-    enabled: false,
-    id: "3207",
-  },
+  // "bitkeep": {
+  //   id: "3207", // duplicate with bitgetwallet
+  // },
   "jumper-exchange": {
     id: "3524",
     cleanRecordsConfig: {
@@ -49,20 +41,17 @@ export default {
     id: "3681",
   },
   "caviarnine-agg": {
-    parentId: "CaviarNine",
     id: "5064",
   },
   "aggre": {
     id: "3809",
   },
-  "llamaswap": {
-    enabled: false,
-    id: "3847",
-  },
-  // "openocean": {
-  //   enabled: false,
-  //   id: "533",
+  // "llamaswap": { // duplicate with volume with other aggregators
+  //   id: "3847",
   // },
+  "openocean": {
+    id: "533",
+  },
   "arcane-dex": {
     id: "3885",
   },
@@ -117,7 +106,6 @@ export default {
     id: "5063",
   },
   "aftermath-aggregator": {
-    parentId: "Aftermath Finance",
     id: "3981",
   },
   "dexhunter": {
@@ -125,18 +113,9 @@ export default {
   },
   "conveyor": {
     id: "3980",
-    cleanRecordsConfig: {
-      genuineSpikes: {
-        1722729600: false
-      }
-    }
   },
   // "unidex": {
   //   "id": "1833",
-  //   protocolsData: {
-  //       "unidex-dexs-agg": {
-  //           "id": "1833"
-  //       }
   //   }
   // },
   "swapgpt": {
@@ -166,8 +145,6 @@ export default {
     "id": "4278"
   },
   "aperture-swap": {
-    parentId: "Aperture Finance",
-    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -203,7 +180,6 @@ export default {
     }
   },
   "flowx-aggregator": {
-    parentId: "FlowX Finance",
     id: "4825",
   },
   "sushiswap-agg": {
@@ -216,7 +192,6 @@ export default {
     id: "4926",
   },
   "cetus-aggregator": {
-    parentId: "Cetus",
     "id": "4958",
     cleanRecordsConfig: {
       genuineSpikes: {
@@ -228,7 +203,6 @@ export default {
     id: "5028",
   },
   "scallop": {
-    parentId: "Scallop",
     id: "5087",
   },
   "lumia": {
@@ -276,7 +250,6 @@ export default {
     id: "3207",
   },
   "thetis-market": {
-    parentId: "Thetis Market",
     id: "5483"
   },
   "swing": {
@@ -350,10 +323,64 @@ export default {
   "vetrade": {
     id: "6253"
   },
-  "dzap": {
-    id: "6259"
-  },
+  // "dzap": {  // wash trading?, re-enabled with new listing 6435
+  //   id: "6259"
+  // },
   "haiku": {
     id: "6266"
-  }
+  },
+  "bluefin7k-aggregator": {
+    id: "6322"
+  },
+  "hyperbloom": {
+    id: "6329"
+  },
+  "gluex-protocol": {
+    id: "6334"
+  },
+  "liquidswap": {
+    id: "6374"
+  },
+  "obsidian": {
+    id: "6393"
+  },
+  "apstation": {
+    id: "6416"
+  },
+  "dzap": {
+    id: "6435"
+  },
+  "rango": {
+    id: "6382"
+  },
+  "metamask": {
+    id: "3031"
+  },
+  "opensea": {
+    id: "6634"
+  },
+  "orbiter-finance": {
+    id: "6520"
+  },
+  "hyperflow": {
+    id: "6538"
+  },
+  "nordstern-finance": {
+    id: "6552"
+  },
+  "superboring": {
+    id: "6606"
+  },
+  "dedust": {
+    id: "2617"
+  },
+  "3route": {
+    id: "6674"
+  },
+  "bytzz": {
+    id: "6690"
+  },
+  // "virtus": {
+  //   id: "6697"
+  // },
 } as AdaptorsConfig;

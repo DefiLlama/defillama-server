@@ -28,4 +28,28 @@ export default {
     "bungee-bridge": {
         id: "6188"
     },
+    "rango": {
+        id: "6382"
+    },
+    "dzap": {
+        id: "6435"
+    },
+    "opensea": {
+        id: "6635",
+        cleanRecordsConfig: {
+          genuineSpikes: {
+            "1751414400": true,
+            "1752105600": true
+          }
+        }
+    },
+    "orbiter-finance": {
+        id: "6520"
+    },
+    "garden": {
+        id: "6615"
+    },
+    // "virtus": {
+    //     id: "6698"
+    // },
 } as AdaptorsConfig

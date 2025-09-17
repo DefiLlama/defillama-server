@@ -5,7 +5,7 @@ import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { padAddress } from "../../utils/coingeckoPlatforms";
 
 function normalize(addr: string, chain?: string) {
-  if (chain == 'starknet') return padAddress(addr.toLowerCase())
+  if (chain == "starknet") return padAddress(addr.toLowerCase());
   if (!addr || chainsThatShouldNotBeLowerCased.includes(chain as any))
     return addr;
   return addr.toLowerCase();
@@ -32,9 +32,10 @@ export default async function getWrites(params: {
     return {
       token: normalize(token, chain),
       price: obj.price,
-      underlying: normalize(obj.underlying, chain),
+      underlying: normalize(obj.underlying, underlyingChain ?? chain),
       symbol: obj.symbol ?? undefined,
       decimals: obj.decimals ?? undefined,
+      confidence: obj.confidence ?? confidence,
     };
   });
 
@@ -53,29 +54,36 @@ export default async function getWrites(params: {
     ),
   ]);
 
-  entries.map(({ token, price, underlying, symbol, decimals }, i) => {
-    const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
-    const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
-    let coinData: CoinData | undefined = coinsData[underlying];
-    if (!underlying)
-      coinData = {
-        price: 1,
-        confidence: 0.98,
-      } as CoinData;
-    if (!coinData) return;
+  entries.map(
+    ({ token, price, underlying, symbol, decimals, confidence }, i) => {
+      const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
+      const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
+      let coinData: CoinData | undefined =
+        coinsData[
+          underlyingChain ?? chain == "coingecko"
+            ? `coingecko#${underlying}`
+            : underlying
+        ];
+      if (!underlying)
+        coinData = {
+          price: 1,
+          confidence: 0.98,
+        } as CoinData;
+      if (!coinData) return;
 
-    addToDBWritesList(
-      writes,
-      chain,
-      token,
-      coinData.price * price,
-      finalDecimals,
-      finalSymbol,
-      timestamp,
-      params.projectName,
-      confidence ?? Math.min(0.98, coinData.confidence as number),
-    );
-  });
+      addToDBWritesList(
+        writes,
+        chain,
+        token,
+        coinData.price * price,
+        finalDecimals,
+        finalSymbol,
+        timestamp,
+        params.projectName,
+        confidence ?? Math.min(0.98, coinData.confidence as number),
+      );
+    },
+  );
 
   const writesObject: any = {};
   writes.forEach((i: any) => (writesObject[i.symbol] = i.price));

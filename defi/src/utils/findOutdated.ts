@@ -45,10 +45,13 @@ function printOutdated(outdated: [string, InfoProtocol, boolean, number][], maxL
 
 const _getLatestTvl = async (protocol: any) => getLastRecord(hourlyTvl(protocol.id))
 
-export async function getOutdated(maxDrift: number, getLatestTvl = _getLatestTvl) {
+export async function getOutdated(maxDrift: number, getLatestTvl = _getLatestTvl, options: { categories?: string[] } = {}) {
   const now = toUNIXTimestamp(Date.now());
   const outdated = [] as [string, InfoProtocol, boolean, number][];
   await Promise.all(protocols.concat(treasuries).map(async (protocol, index) => {
+    if (options.categories && protocol.category && !options.categories.includes(protocol.category)) {
+      return
+    }
     if (protocol.rugged === true || protocol.module === "dummy.js") {
       return
     }
@@ -95,7 +98,7 @@ export default async function findOutdated(maxDrift: number) {
   return buildOutdatedMessage(outdated)
 }
 
-export async function findOutdatedPG(maxDrift: number) {
+export async function findOutdatedPG(maxDrift: number, options: { categories?: string[] } = {}) {
   await initializeTVLCacheDB()
   const latestProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
   const latestProtocolItemsDaily = await getLatestProtocolItems(dailyTvl)
@@ -107,5 +110,5 @@ export async function findOutdatedPG(maxDrift: number) {
     if (!latestProtocolItemsMap[data.id])
       latestProtocolItemsMap[data.id] = data.data
   })
-  return getOutdated(maxDrift, async (protocol: any) => latestProtocolItemsMap[protocol.id])
+  return getOutdated(maxDrift, async (protocol: any) => latestProtocolItemsMap[protocol.id], options)
 }

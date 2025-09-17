@@ -8,7 +8,17 @@ import { sliceIntoChunks } from '@defillama/sdk/build/util';
 import axios from 'axios'
 import { addToDBWritesList } from '../utils/database';
 
-
+const additionalTokens = [
+  'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx', 
+  'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu', 
+  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj', 
+  'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o', 
+  '5fKr9joRHpioriGmMgRVFdmZge8EVUTbrWyxDVdSrcuG', 
+  'B8GKqTDGYc7F6udTHjYeazZ4dFCRkrwK2mBQNS4igqTv', 
+  'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu', 
+  'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit', 
+  'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe'
+]
 
 async function getTokensWithCGMapping() {
   const tokens = (await bridgedTokens()).map((token) => token.from.replace('solana:', ''));
@@ -16,9 +26,10 @@ async function getTokensWithCGMapping() {
 }
 
 export async function jupAg(timestamp: number) {
+  if (timestamp != 0) throw new Error('jupAg adapter only supports timestamp 0')
   const tokens = await getTokensWithCGMapping()
   let lavaTokens = await getLavaTokens()
-  lavaTokens = lavaTokens.filter((token) => !tokens.has(token))
+  lavaTokens = additionalTokens // [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]
   const lavaTokensPK = lavaTokens.map(i => new PublicKey(i))
   const symbolMap = await getTokenSymbolMap(lavaTokens)
 
@@ -28,7 +39,7 @@ export async function jupAg(timestamp: number) {
   for (const chunk of chunks) {
     const { value } = await connection.getMultipleParsedAccounts(chunk)
     const keyStr = chunk.join(',')
-    const jupCall = `https://api.jup.ag/price/v2?ids=${keyStr}&showExtraInfo=true`
+    const jupCall = `https://lite-api.jup.ag/price/v2?ids=${keyStr}&showExtraInfo=true`
     const { data: { data } } = await axios.get(jupCall)
     const tokenData = [] as any
     chunk.forEach((pk, i) => {
@@ -48,8 +59,8 @@ export async function jupAg(timestamp: number) {
         sol10Sell: priceData.extraInfo.depth.sellPriceImpactRatio.depth['10'],
       })
 
-      if (priceData.extraInfo.confidenceLevel === 'high' && priceData.extraInfo.depth.sellPriceImpactRatio.depth['10'] < 5)  // less than 5% slippage
-        addToDBWritesList(writes, 'solana', token, +priceData.price, info.decimals, symbol, timestamp, 'jup-ag', 0.9)
+      if (priceData.extraInfo.depth.sellPriceImpactRatio.depth['10'] < 5)  // less than 5% slippage
+        addToDBWritesList(writes, 'solana', token, +priceData.price, info.decimals, symbol, timestamp, 'jup-ag', priceData.extraInfo.confidenceLevel === 'high' ? 0.9 : 0.6)
     })
 
   }
@@ -57,4 +68,3 @@ export async function jupAg(timestamp: number) {
 
   return writes;
 }
-

@@ -33,7 +33,7 @@ import linea from "./linea";
 import manta from "./manta";
 import astrzk from "./astrzk";
 import zklink from "./zklink";
-import celer from "./celer";
+// import celer from "./celer";
 import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
@@ -43,6 +43,9 @@ import aptos from "./aptosFa";
 import sophon from "./sophon";
 import unichan from "./unichain";
 import flow from "./flow";
+import layerzero from "./layerzero";
+import initia from "./initia";
+import zeroDecimalMappings from "./zeroDecimalMappings";
 
 export type Token =
   | {
@@ -80,6 +83,7 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
+  zeroDecimalMappings, // THIS SHOULD BE AT INDEX 0
   optimism,
   // anyswap,
   arbitrum,
@@ -87,7 +91,7 @@ export const bridges = [
   // brc20,
   //bsc,
   fantom,
-  era,
+  // era,
   gasTokens,
   //harmony,
   // polygon,
@@ -104,7 +108,7 @@ export const bridges = [
   manta,
   astrzk,
   zklink,
-  celer,
+  // celer,
   fraxtal,
   symbiosis,
   fuel,
@@ -114,6 +118,8 @@ export const bridges = [
   // sophon,
   unichan,
   flow,
+  layerzero,
+  initia
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -126,7 +132,7 @@ const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
 async function storeTokensOfBridge(bridge: Bridge, i: number) {
   try {
-    const res = await _storeTokensOfBridge(bridge);
+    const res = await _storeTokensOfBridge(bridge, i);
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
@@ -145,7 +151,7 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
   }
 }
 
-async function _storeTokensOfBridge(bridge: Bridge) {
+async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   const tokens = await bridge();
 
   const alreadyLinked = (
@@ -215,6 +221,10 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         decimals = token.decimals;
         symbol = token.symbol;
       }
+
+      if (i && !decimals) return;
+      if (!symbol) return;
+
       writes.push({
         PK: `asset#${token.from}`,
         SK: 0,
@@ -223,7 +233,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         symbol,
         redirect: finalPK,
         confidence: 0.97,
-        adapter: "bridges",
+        adapter: `bridges ${i}`,
       });
     }),
   );

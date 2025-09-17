@@ -44,7 +44,7 @@ function formParamsObject(event: any): QueryParams {
 async function fetchDBData(
   timestamps: number[],
   coins: any[],
-  PKTransforms: any,
+  PKTransforms: { [key: string]: string[] },
   searchWidth: number,
 ) {
   let response = {} as any;
@@ -61,18 +61,20 @@ async function fetchDBData(
         if (finalCoin.SK === undefined) {
           return;
         }
-        if (response[PKTransforms[coin.PK]] == undefined) {
-          response[PKTransforms[coin.PK]] = {
-            symbol: coin.symbol,
-            confidence: coin.confidence,
-            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
-          };
-        } else {
-          response[PKTransforms[coin.PK]].prices.push({
-            timestamp: finalCoin.SK,
-            price: finalCoin.price,
-          });
-        }
+        PKTransforms[coin.PK].forEach((coinName) => {
+          if (response[coinName] == undefined) {
+            response[coinName] = {
+              symbol: coin.symbol,
+              confidence: coin.confidence,
+              prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
+            };
+          } else {
+            response[coinName].prices.push({
+              timestamp: finalCoin.SK,
+              price: finalCoin.price,
+            });
+          }
+        });
       }),
     );
   });

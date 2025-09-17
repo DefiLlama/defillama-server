@@ -1,1 +1,41 @@
-../defi/tsconfig.json
+{
+    "ts-node": {
+      "compilerOptions": {
+        "module": "commonjs"
+      }
+    },
+    "compilerOptions": {
+      "target": "es2019",
+      "skipLibCheck": false,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "strictPropertyInitialization": false,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "noEmit": false,
+      "jsx": "preserve",
+      "allowJs": true,
+      "noImplicitThis": false,
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "lib": [
+        "ES2019",
+        "DOM"
+      ]
+    },
+    "include": [
+      "src",
+      "/**/*.ts"
+    ],
+    "exclude": [
+      "src/setupTestEnv.js",
+      "DefiLlama-Adapters/**/*.js",
+      "src/**/*js",
+      "src/cli/backfillDexVolumes"
+    ]
+  }

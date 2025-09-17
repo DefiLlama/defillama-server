@@ -28,5 +28,5 @@ export async function calculate4626Prices(
     if (isNaN(price) || !isFinite(price)) return; // Skip if price is not a number
     pricesObject[token] = { underlying: uTokens[i], price }
   })
-  return getWrites({ chain, timestamp, pricesObject, projectName, })
+  return await getWrites({ chain, timestamp, pricesObject, projectName, confidence: 1 })
 }

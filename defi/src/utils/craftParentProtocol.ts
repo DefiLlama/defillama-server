@@ -1,13 +1,13 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
+import * as fs from "fs";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -72,7 +72,7 @@ export default async function craftParentProtocol({
       : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
-    childProtocols.map((protocolData) =>
+    childProtocols.filter(i => !i.excludeTvlFromParent).map((protocolData) =>
       fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
     )
   );
@@ -118,6 +118,7 @@ export async function craftParentProtocolInternal({
   isHourlyTvl,
   fetchMcap,
   parentRaises,
+  feMini = false,
 }: {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
@@ -125,10 +126,49 @@ export async function craftParentProtocolInternal({
   fetchMcap?: Function;
   childProtocolsTvls: Array<IProtocolResponse>;
   parentRaises: IRaise[];
+  feMini?: boolean;
 }) {
   if (!fetchMcap) fetchMcap = protocolMcap;
 
+
+
+  // debug to find bad data
+  // -- debug start
+  const isBadDataFormat = (data: any) => {
+    if (typeof data !== "object" || !data) return true;
+    const { tvl, tokensInUsd, tokens } = data;
+    if (!Array.isArray(tvl)) return 'tvl'
+    if (!Array.isArray(tokensInUsd)) return 'tokensInUsd'
+    if (!Array.isArray(tokens)) return 'tokens'
+    return false;
+  }
+  childProtocolsTvls.forEach((protocolData: any) => {
+    if (protocolData.message) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for message ${protocolData.name}: ${protocolData.message}`);
+      return;
+    }
+
+    const badData = isBadDataFormat(protocolData);
+    if (badData) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for ${protocolData.name}: ${badData}`)
+    }
+
+    Object.entries(protocolData.chainTvls ?? {}).forEach(([chain, chainData]: any) => {
+      const badChainData = isBadDataFormat(chainData);
+      if (badChainData) {
+        console.error(`Error building parent protocol: ${parentProtocol.name}`);
+        console.error(`Error in chain data for ${chain} in protocol ${protocolData.name}: ${badChainData}`)
+      }
+    });
+  })
+  // -- debug end
+
+
+
   let { chainTvls, tokensInUsd, tokens, tvl } = mergeChildProtocolData(childProtocolsTvls, isHourlyTvl);
+
 
   if (skipAggregatedTvl) {
     tvl = []
@@ -157,7 +197,6 @@ export async function craftParentProtocolInternal({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, parentRaises as Array<IRaise>),
-    metrics: getAvailableMetricsById(parentProtocol.id),
     symbol:
       parentProtocol.symbol ??
       (parentProtocol.gecko_id
@@ -165,15 +204,42 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
-  // Filter overall tokens, tokens in usd by date if data is more than 6MB
-  let keyCount = getObjectKeyCount(response);
-  if (keyCount >= 1.5e5) { // there are more than 150k keys
+  if (feMini) {
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;
+
+      if (Array.isArray(response.chainTvls[chain].tvl)) {
+        const transformedTvl: any = []
+        for (const record of response.chainTvls[chain].tvl) {
+          transformedTvl.push([record.date, record.totalLiquidityUSD])
+        }
+        response.chainTvls[chain].tvl = transformedTvl;
+      }
+    }
+
+    response.tokensInUsd = null
+    response.tokens = null
+
+    if (Array.isArray(response.tvl)) {
+      const transformedTvl: any = []
+      for (const record of response.tvl) {
+        transformedTvl.push([record.date, record.totalLiquidityUSD])
+      }
+      response.tvl = transformedTvl;
+    }
+
+  } else {
+    // Filter overall tokens, tokens in usd by date if data is more than 6MB
+    let keyCount = getObjectKeyCount(response);
+    if (keyCount >= 1.5e5) { // there are more than 150k keys
+      for (const chain in response.chainTvls) {
+        response.chainTvls[chain].tokens = null;
+        response.chainTvls[chain].tokensInUsd = null;
+      }
     }
   }
 
@@ -181,20 +247,14 @@ export async function craftParentProtocolInternal({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    const hallmarks: { [date: number]: string } = {};
+    const hallmarks: any = []
     childProtocolsTvls.forEach((module) => {
-      if (module.hallmarks) {
-        module.hallmarks.forEach(([date, desc]: [number, string]) => {
-          if (!hallmarks[date] || hallmarks[date] !== desc) {
-            hallmarks[date] = desc;
-          }
-        });
-      }
+      if (module.hallmarks)
+        hallmarks.push(...module.hallmarks);
     });
 
-    response.hallmarks = Object.entries(hallmarks)
-      .map(([date, desc]) => [Number(date), desc])
-      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
+    sortHallmarks(hallmarks);
+    response.hallmarks = hallmarks
   }
 
   return response;

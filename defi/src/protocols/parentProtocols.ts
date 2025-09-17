@@ -7989,7 +7989,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ultrasolid",
     name: "Ultrasolid",
-    url: "https://ultrasolid.xyz/",
+    url: "https://app.ultrasolid.xyz/@DEFILLAMA",
+    referralUrl: "https://app.ultrasolid.xyz/@DEFILLAMA",
     description: "HyperEVM's Seamless core-aligned veDEX.",
     logo: `${baseIconsUrl}/ultrasolid.jpg`,
     gecko_id: null,

@@ -26340,7 +26340,8 @@ const data4: Protocol[] = [
     name: "Ultrasolid V2",
     address: "0xae60eAfb73Eb0516951ab20089Cff32AC9DC63b7",
     symbol: "US",
-    url: "https://ultrasolid.xyz/",
+    url: "https://app.ultrasolid.xyz/@DEFILLAMA",
+    referralUrl: "https://app.ultrasolid.xyz/@DEFILLAMA",
     description:
       "Ultrasolid V2 is an AMM DEX on Hyperliquid L1",
     chain: "Hyperliquid L1",
@@ -26362,7 +26363,8 @@ const data4: Protocol[] = [
     name: "Ultrasolid V3",
     address: "0xae60eAfb73Eb0516951ab20089Cff32AC9DC63b7",
     symbol: "US",
-    url: "https://ultrasolid.xyz/",
+    url: "https://app.ultrasolid.xyz/@DEFILLAMA",
+    referralUrl: "https://app.ultrasolid.xyz/@DEFILLAMA",
     description:
       "Ultrasolid V3 is a CLMM DEX on Hyperliquid L1",
     chain: "Hyperliquid L1",

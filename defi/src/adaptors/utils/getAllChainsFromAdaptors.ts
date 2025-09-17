@@ -11,11 +11,6 @@ export function getDisplayChainNameCached(chain: string) {
   return chainNameCache[chain]
 }
 
-export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
-    return Object.keys(moduleAdapter)
-}
-
-
 export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
     let methodology = (moduleObject as any).methodology
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }

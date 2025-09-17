@@ -25,7 +25,6 @@ export interface ProtocolAdaptor extends Protocol {
     isProtocolInOtherCategories?: boolean
     protocolType?: ProtocolType
     adapterType?: ProtocolType
-    versionKey?: string
     methodologyURL: string
     methodology?: string | IJSON<string> | any
     allAddresses?: Array<string>
@@ -52,7 +51,6 @@ export type AdaptorsConfig = IJSON<IConfig>
 export type AdaptorData = {
     default: ProtocolAdaptor[]
     protocolAdaptors: ProtocolAdaptor[]
-    childProtocolAdaptors: ProtocolAdaptor[]
     importModule: (module: string) => any
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>

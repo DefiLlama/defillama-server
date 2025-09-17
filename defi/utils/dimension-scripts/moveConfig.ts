@@ -2,9 +2,7 @@ import { parse, print, types as R } from "recast";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import * as path from "path";
 import { visit } from "ast-types";
-import { getChainDisplayName } from "../../src/utils/normalizeChain";
 import loadAdaptorsData from "../../src/adaptors/data";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
 
 const TS_PARSER = require("recast/parsers/typescript");
@@ -33,9 +31,8 @@ let matchingProtocolCount = 0;
 transformChainSource()
 for (const fileName of FILES) {
   const filePath = path.join(SRC_DIR, fileName);
-  console.log(filePath);
   if (!existsSync(filePath)) continue;
-  console.log(`processing ${filePath}`);
+  console.log(`processing ${path.relative(ROOT, filePath)}`);
   const src = readFileSync(filePath, "utf8");
   const out = transformSource(src)
   writeFile(path.join(OUT_DIR, fileName), out);
@@ -116,7 +113,7 @@ function initData() {
 function transformChainSource() {
 
   const CHAIN_FILE = path.join(ROOT, "utils/normalizeChain.ts");
-  console.log(`processing ${CHAIN_FILE}`);
+  console.log(`processing ${path.relative(ROOT, CHAIN_FILE)}`);
   const chainData = readFileSync(CHAIN_FILE, "utf8");
   const ast = parse(chainData, { parser: TS_PARSER });
   visit(ast, {
@@ -251,7 +248,7 @@ function toValidKeyNode(name: string): R.namedTypes.Identifier | R.namedTypes.St
 }
 
 function writeFile(filePath: string, content: string) {
-  content = content.replace(/,\n+/g, ',\n');
-  console.log('Writing to', filePath);
+  content = content.replace(/,\n+/g, ',\n')
+  console.log('Writing to', path.relative(ROOT, filePath));
   if (WRITE_OUTPUT) writeFileSync(filePath, content, "utf8");
 }

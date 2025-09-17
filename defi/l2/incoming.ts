@@ -5,7 +5,11 @@ import { DollarValues, TokenTvlData } from "./types";
 import { geckoSymbols, zero } from "./constants";
 import { fetchBridgeTokenList, fetchSupplies, getPrices } from "./utils";
 
-export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp?: number }): Promise<TokenTvlData> {
+export async function fetchIncoming(params: {
+  canonical: TokenTvlData;
+  timestamp?: number;
+  symbolMap: { [pk: string]: string | null };
+}): Promise<TokenTvlData> {
   const canonicalTvls: TokenTvlData = params.canonical;
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const data: TokenTvlData = {};
@@ -39,6 +43,7 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
             const supply = supplies[t];
             if (!priceInfo || !supply) return;
             const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+            if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = priceInfo.symbol;
             if (symbol in canonicalTvls[chain]) return;
             if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));

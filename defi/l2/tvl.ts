@@ -10,18 +10,21 @@ import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./test";
 import { getExcludedTvl } from "./excluded";
+import { saveRawBridgedTvls } from "./raw";
 
 export default async function main(override?: boolean, timestamp?: number) {
-  const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
+  let symbolMap: { [pk: string]: string | null } = {};
+  const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp, symbolMap });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }, excludedTvls] = await Promise.all([
     fetchMinted({
       chains: canonical,
       timestamp,
       override,
+      symbolMap,
     }),
-    fetchIncoming({ canonical, timestamp }),
+    fetchIncoming({ canonical, timestamp, symbolMap }),
     fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),
-    getExcludedTvl(timestamp ?? (getCurrentUnixTimestamp() - 10)),
+    getExcludedTvl(timestamp ?? getCurrentUnixTimestamp() - 10),
   ]);
 
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({
@@ -62,6 +65,8 @@ export default async function main(override?: boolean, timestamp?: number) {
   });
 
   if (!timestamp && override != true) await verifyChanges(chains);
+
+  await saveRawBridgedTvls(chains, symbolMap);
 
   return chains;
 }

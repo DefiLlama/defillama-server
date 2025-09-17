@@ -5312,7 +5312,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#drift",
     name: "Drift",
-    url: "https://www.drift.trade/",
+    url: "https://app.drift.trade/ref/defillama",
+    referralUrl: "https://app.drift.trade/ref/defillama",
     description:
       "Drift brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.",
     logo: `${baseIconsUrl}/drift-trade.jpg`,

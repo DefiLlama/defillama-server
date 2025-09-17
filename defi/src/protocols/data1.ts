@@ -18713,7 +18713,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Drift Trade",
     address: "solana:DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
     symbol: "DRIFT",
-    url: "https://www.drift.trade",
+    url: "https://app.drift.trade/ref/defillama",
+    referralUrl: "https://app.drift.trade/ref/defillama",
     description:
       "Drift brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.",
     chain: "Solana",

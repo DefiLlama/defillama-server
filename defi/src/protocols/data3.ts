@@ -40822,7 +40822,7 @@ const data3_2: Protocol[] = [
     twitter: "0xflatmoney",
     forkedFrom: [],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: ["https://docs.flat.money/pyth-network-price-oracle"] } ], 
-    parentProtocol: "parent#flat-money",
+    parentProtocol: "parent#dhedge",
     listedAt: 1713802587,
   },
   {

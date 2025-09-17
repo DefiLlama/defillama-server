@@ -22095,7 +22095,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     forkedFromIds: [],
-    twitter: "basedappHQ",
+    twitter: "BasedOneX",
   },
   {
     id: "6522",

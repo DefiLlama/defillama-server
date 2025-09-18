@@ -692,9 +692,6 @@ const data4: Protocol[] = [
         proof: ["https://docs.yield.fi/resources/oracles"],
         chains: [
           {
-            chain: "Ethereum",
-          },
-          {
             chain: "Plume Mainnet",
           },
           {

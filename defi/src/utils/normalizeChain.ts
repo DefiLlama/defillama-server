@@ -1875,6 +1875,11 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "Injective_",
     url: "https://injective.com/",
+    dimensions: {
+      fees: {
+        adapter: "injective"
+      }
+    }
   },
   "Step": {
     geckoId: "stepex",

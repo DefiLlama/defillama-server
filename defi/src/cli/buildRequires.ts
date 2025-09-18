@@ -125,8 +125,10 @@ async function createTVLImportsFile() {
 async function createTvlAdapterDataJSON() {
   const adaptersFile = __dirname + "/../utils/imports/tvlAdapterData.json"
   let data: any = {}
+  console.log('debug: ', protocols.length)
   protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
   await writeFile(adaptersFile, JSON.stringify(data))
+  console.log('debug, wrote to' + adaptersFile)
   // we are running this as JS file because it is faster than compiling as ts
   await new Promise((resolve, reject) => {
     const childProcess = spawn('node', [__dirname + "/buildTvlModuleData.js", adaptersFile], {

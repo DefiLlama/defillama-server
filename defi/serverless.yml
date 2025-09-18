@@ -605,14 +605,6 @@ functions:
       - http:
           path: chain-assets/chains
           method: get
-  chainAssetsRaw:
-    handler: src/getChainAssetsRaw.default
-    timeout: 30
-    memorySize: 1000
-    events:
-      - http:
-          path: chain-assets/raw
-          method: get
   chainAssetsChart: 
     handler: src/getChainAssetsChart.default
     timeout: 30

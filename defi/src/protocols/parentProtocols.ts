@@ -3591,8 +3591,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "yearnfi",
     treasury: "yearn.js",
-    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
-    github: ["iearn-finance", "yearn"],
+    governanceID: ["snapshot:veyfi.eth"],
+    github: ["yearn"],
   },
   {
     id: "parent#orion-protocol",

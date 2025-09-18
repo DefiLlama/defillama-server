@@ -1,3 +1,8 @@
+import { DimensionsConfig } from "../adaptors/data/types";
+
+type DateString = string | number;
+export type Hallmark = [DateString, string] | [[DateString, DateString], string];
+
 export interface Protocol {
   id: string;
   name: string;
@@ -61,7 +66,19 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<Banner>;
+  hallmarks?: Hallmark[];
+  misrepresentedTokens?: boolean;
+  doublecounted?: boolean;
+  methodology?: string;
+  dimensions?: DimensionsConfig;
 }
+export interface Banner {
+  message: string;
+  until?: number|string; // unix timestamp or "forever" or date string  in 'YYYY-MM-DD' format, 'forever' if the field is not set
+  level: "low" | "alert" | "rug";
+}
+
 
 export interface IParentProtocol {
   id: string;
@@ -85,4 +102,7 @@ export interface IParentProtocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<Banner>;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }

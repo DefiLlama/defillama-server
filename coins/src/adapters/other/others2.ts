@@ -7,6 +7,7 @@ import { getLogs } from "../../utils/cache/getLogs";
 import { getObject, } from "../utils/sui";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { CoinData, Write } from "../utils/dbInterfaces";
+import axios from "axios";
 
 
 async function solanaAVS(timestamp: number = 0) {
@@ -70,7 +71,7 @@ async function feUBTC(timestamp: number = 0) {
   const supply = (await api.call({ abi: "uint256:totalSupply", target: feUBTC })) / 1e18;
   const balance = (await api.call({ abi: "erc20:balanceOf", params: feUBTC, target: UBTC })) / 1e8
   pricesObject[feUBTC] = { price: balance / supply, underlying: UBTC };
-  
+
   // wHLP
   const wHLP = "0x1359b05241cA5076c9F59605214f4F84114c0dE8";
   const wHLPRate = (await api.call({ abi: "uint256:getRate", target: '0x470bd109a24f608590d85fc1f5a4b6e625e8bdff' })) / 1e18;
@@ -104,9 +105,46 @@ async function beraborrow(timestamp: number = 0) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
+async function cabal(timestamp: number = 0) {
+  const chain = "initia";
+  if (timestamp > 0 && Date.now() / 1000 - timestamp > 3600)
+    throw new Error("Timestamp is more than an hour old, this adapter does not support historical prices")
+
+  const REST_URL = 'https://rest.initia.xyz/initia/move/v1/view/json'
+  const CABAL_MODULE_ADDRESS = '0x53c3f5d8e11844ba3747ebaec1b2d25051574ffbeedc69d72068395991e3ea28'
+  const USDC_INIT_LP_METADATA_ADDRESS = '0x543b35a39cfadad3da3c23249c474455d15efd2f94f849473226dee8a3c7a9e1'
+
+  function toNum(str: any) {
+    const clean = String(str).replace(/[^\d.]/g, '');
+    return parseFloat(clean);
+  }
+  async function fetchView(functionName: any, moduleName: any, args: any) {
+    const { data: { data }} = await axios.post(REST_URL, {
+      address: CABAL_MODULE_ADDRESS,
+      module_name: moduleName,
+      function_name: functionName,
+      args: args,
+      typeArgs: []
+    });
+    return data
+  }
+
+  const price = toNum(await fetchView('get_lp_token_value_in_usd', 'utils', [`"${USDC_INIT_LP_METADATA_ADDRESS}"`, '"1000000"']))
+
+  return getWrites({
+    chain, timestamp, pricesObject: {
+      [USDC_INIT_LP_METADATA_ADDRESS]: {
+        price,
+        symbol: 'USDC-INIT',
+        decimals: 6,
+      }
+    }, projectName: "other2",
+  });
+}
+
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT, beraborrow, feUBTC,
+  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal,
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
       throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");

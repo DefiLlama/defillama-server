@@ -105,6 +105,16 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
     data: {
       type: DataTypes.JSON,
     },
+    bl: { // Breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true, // Assuming 'breakdownByLabel' can be null
+      defaultValue: null, // Ensure it defaults to null if not provided
+    },
+    blc: { // Breakdown by label by chain
+      type: DataTypes.JSON,
+      allowNull: true, // Assuming 'breakdownByLabelByChain' can be null
+      defaultValue: null, // Ensure it defaults to null if not provided
+    },
     timeS: {
       type: DataTypes.STRING,
       primaryKey: true,

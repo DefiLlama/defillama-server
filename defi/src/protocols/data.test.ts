@@ -1,4 +1,3 @@
-import dimensionConfigs from "../adaptors/data/configs";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
@@ -7,32 +6,8 @@ import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
 import { sluggifyString } from "../utils/sluggify";
+import { AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
-
-test("Dimensions: no repeated ids", async () => {
-  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
-  for (const [metric, map] of Object.entries(dimensionConfigs)) {
-    const ids = new Set();
-    for (const value of Object.values(map)) {
-      if (value.enabled === false || chainIdSet.has(value.id)) continue;
-      if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
-      expect(ids).not.toContain(value.id);
-      ids.add(value.id);
-    }
-  }
-})
-test("Dimensions: no unknown ids", async () => {
-  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
-  let failed = false;
-  for (const [metric, map] of Object.entries(dimensionConfigs)) {
-    for (const value of Object.values(map)) {
-      if (value.enabled === false ||  chainIdSet.has(value.id) || protocolsById[value.id]) continue;
-      console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
-      failed = true
-    }
-  }
-  expect(failed).toBeFalsy();
-})
 
 test("operational expenses: script has been run", async () => {
   const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
@@ -72,7 +47,7 @@ test("all chains are on chainMap", async () => {
 test("there are no repeated values in unlock adapters", async () => {
   const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
   for (const [protocolName, protocolFile] of Object.entries(emissionsAdapters)) {
-    if(protocolName === "daomaker"){
+    if(protocolName === "daomaker" || protocolName === "streamflow"){
       continue
     }
     const rawProtocol = protocolFile.default
@@ -103,7 +78,7 @@ test("valid treasury fields", async () => {
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function'  && _module !== '_lmtf')|| !treasuryKeys.has(key))
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
       }
     }
@@ -319,7 +294,13 @@ test("no surprise category", async () => {
     'Risk Curators',
     'Chain Bribes',
     'DAO Service Provider',
-    'Staking Rental'
+    'Staking Rental',
+    'Canonical Bridge',
+    'Interface',
+    "Video Infrastructure",
+    "DePIN",
+    "Dual-Token Stablecoin",
+    "Physical TCG"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -350,3 +331,10 @@ test("icon exists", async () => {
   }
 });
 */
+
+
+const isArrayUnique = (arr: any[]) => Array.isArray(arr) && new Set(arr).size === arr.length;
+test("No duplicated adapter type", async () => {
+    const values = Object.values(AdaptorRecordType)
+    expect(isArrayUnique(values)).toBeTruthy();
+});

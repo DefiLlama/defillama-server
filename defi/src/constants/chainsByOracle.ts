@@ -176,6 +176,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sanko",
     "Scroll",
     "ShimmerEVM",
+    "Stacks",
     "Taiko",
     "TON",
     "Viction",
@@ -412,6 +413,22 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Vara",
     "Velas",
     "Wanchain",
+    "BEVM",
+    "BOB",
+    "CrossFi",
+    "EDU Chain",
+    "Goat",
+    "Hydration",
+    "Kadena",
+    "Linea",
+    "Lukso",
+    "Plume Mainnet",
+    "Sonic",
+    "Stacks",
+    "Superseed",
+    "Swellchain",
+    "Unichain",
+    "Ripple"
   ],
   "Witnet": [
     "Arbitrum",
@@ -477,6 +494,9 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Berachain",
     "Plume Mainnet",
     "Corn",
+    "Unichain",
+    "Avalanche",
+    "Linea",
   ],
   "eOracle": [
     "Base",
@@ -498,6 +518,9 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Unichain",
     "OP Mainnet",
   ],
+  "Quex": [
+    "Arbitrum",
+  ]
 };
 
 export { chainsByOracle };

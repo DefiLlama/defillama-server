@@ -59,6 +59,18 @@ const config: any = {
     "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a":
       "0x42514fa59DD4689573D35119CF9E0bda218e15ee", // aUSD
   },
+  scroll: {
+    "0xdb9E8F82D6d45fFf803161F2a5f75543972B229a":
+      "0xb17ccD860337209e2665afD5E7eAE9c0e5716b48", // USDQ
+  },
+  base: {
+    "0xf7178122A087eF8F5c7BeA362b7DaBE38F20Bf05":
+      "0x2019DEB4E18107A2FD8B4acBC7e3878037336fc2", // OMNI
+  },
+  hyperliquid: {
+    "0x876e7F2f30935118a654fc0E1f807aFc49EFe500":
+      "0xe9c02ca07931f9670fa87217372b3c9aa5a8a934", // PUP
+  },
 };
 
 export function unknownTokensV3(timestamp: number = 0) {

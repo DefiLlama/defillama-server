@@ -7658,7 +7658,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperstable",
     name: "Hyperstable",
-    url: "https://hyperstable.xyz/",
+    url: "https://app.hyperstable.xyz/r/DEFILLAMA",
+    referralUrl: "https://app.hyperstable.xyz/r/DEFILLAMA",
     description: "Hyperstable is a crypto-backed, over-collateralized and decentralized stablecoin that's designed to trade at one US Dollar. Built on HyperEVM",
     logo: `${baseIconsUrl}/hyperstable.jpg`,
     gecko_id: null,

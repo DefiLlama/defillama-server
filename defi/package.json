@@ -31,7 +31,6 @@
     "update-submodules": "git submodule update --init --recursive --remote --merge && npm run prebuild ",
     "update-metadata-file": "bash src/api2/scripts/updateMetadataScript.sh",
     "get-snapshot-ids": "npx ts-node --logError src/governance/getSnapshotIds.ts",
-    "get-overview-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node --logError --transpile-only src/adaptors/cli/runGetOverview.ts",
     "interactive": "npx ts-node --logError --transpile-only src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && NODE_OPTIONS=\"--max-old-space-size=10144\" npx ts-node --logError --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/storeChainAssets.ts",

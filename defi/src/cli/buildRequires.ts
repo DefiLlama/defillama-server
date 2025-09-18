@@ -10,6 +10,7 @@ import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/
 import { ADAPTER_TYPES } from "../adaptors/data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { readdir, writeFile } from "fs/promises";
+import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeHashToFile } from "../adaptors/utils";
 
 const extensions = ['ts', 'md', 'js']
 
@@ -23,7 +24,7 @@ async function run() {
     'dimensions import': createDimensionsImports,
   }
 
-  await runModule(['tvl import', createTVLImportsFile]) // run first
+  await runModule(['tvl import', createTVLImportsFile]) // run first, running in parallel with dimensions makes it slower for some reason
   const promises = Object.entries(buildFunctions).map(runModule)
   await Promise.all(promises)
 
@@ -44,6 +45,13 @@ function createLiquidationImportsFile() {
 
 
 async function createDimensionsImports() {
+  const outputFile = "./src/utils/imports/dimensions_adapters.json"
+  const lastHash = readHashFromFile('dimensionAdapters')
+  const dimRepoHash = getDimensionsRepoCommitHash()
+  if (lastHash === dimRepoHash && fileExists(outputFile)) {
+    console.log('No changes in dimension-adapters repo, skipping dimensions imports generation')
+    return
+  }
 
   const excludeKeys = new Set(["index", "README", '.gitkeep'])
   const baseFolderPath = "./dimension-adapters" // path relative to current working directory -> `cd /defi`
@@ -54,7 +62,8 @@ async function createDimensionsImports() {
     await addAdapterType(folderPath)
 
 
-  return writeFile("./src/utils/imports/dimensions_adapters.json", JSON.stringify(dimensionsImports))
+  await writeFile(outputFile, JSON.stringify(dimensionsImports))
+  writeHashToFile('dimensionAdapters', dimRepoHash)
 
   async function addAdapterType(folderPath: string) {
     if (folderPath === AdapterType.DERIVATIVES) {

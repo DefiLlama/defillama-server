@@ -33,7 +33,7 @@ jobs:
       - name: Get Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '20'
+          node-version: '16'
       - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
       - name: Get jest cache
         uses: actions/cache@v3

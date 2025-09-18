@@ -5998,7 +5998,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#astherus",
     name: "Aster",
-    url: "https://www.asterdex.com/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
+    referralUrl: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
     logo: `${baseIconsUrl}/aster.jpg`,

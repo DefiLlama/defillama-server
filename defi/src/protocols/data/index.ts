@@ -5,10 +5,24 @@ import { sluggifyString } from "../../utils/sluggify";
 import { importAdapter } from "../../utils/imports/importAdapter";
 import { isDoubleCounted } from "../../utils/normalizeChain";
 
-import dataAll from "../../utils/imports/protocols.json";
+import fs from 'fs';
+import path from 'path';
+
+// Check if protocols.json exists
+const protocolsJsonPath = path.resolve(__dirname, '../../utils/imports/protocols.json');
+let protocols: Protocol[] = [];
+
+if (fs.existsSync(protocolsJsonPath)) {
+  protocols =require(protocolsJsonPath)
+} else {
+  const dataFiles = ['data1', 'data2', 'data3', 'data4'];
+  for (const file of dataFiles) {
+    const module = require(`../${file}.ts`);
+    protocols = protocols.concat(module.default);
+  }
+}
 
 export type { Protocol };
-const protocols = dataAll as Protocol[];
 
 protocols.forEach(setProtocolCategory)
 

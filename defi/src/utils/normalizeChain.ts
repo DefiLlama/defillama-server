@@ -1877,8 +1877,6 @@ export const chainCoingeckoIds = {
     url: "https://injective.com/",
     dimensions: {
       fees: "injective",
-      dexs: "injective-spot",
-      derivatives: "injective-derivatives"
     }
   },
   "Step": {

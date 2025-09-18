@@ -8040,6 +8040,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BabyDogeCoin",
     governanceID: ["snapshot:babydogevote.eth"],
   },
+  {
+    id: "parent#injective-orderbook",
+    name: "Injective Orderbook",
+    url: "https://injective.com/",
+    description: "Injective Orderbook is a fully on-chain central limit order book and the liquidity layer of Injective.",
+    logo: `${baseIconsUrl}/injective-orderbook.jpg`,
+    gecko_id: "injective-protocol",
+    cmcId: "7226",
+    chains: [],
+    twitter: "Injective_",
+  },
 ];
 
 export default parentProtocols;

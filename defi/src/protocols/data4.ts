@@ -28577,5 +28577,51 @@ const data4: Protocol[] = [
     audit_links: ["https://hashlock.com/audits/moria"],
     listedAt: 1758219601
   },
+  {
+    id: "6749",
+    name: "Injective Perps",
+    address: "ethereum:0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    symbol: "INJ",
+    url: "https://injective.com",
+    description: "Injective Perps is a fully on-chain derivatives protocol on Injective.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injective-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Injective"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "Injective_",
+    dimensions: {
+      derivatives: "injective-derivatives"
+    },
+    parentProtocol: "parent#injective-orderbook",
+  },
+  {
+    id: "6750",
+    name: "Injective Spot",
+    address: "ethereum:0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    symbol: "INJ",
+    url: "https://injective.com",
+    description: "Injective Spot is tracks spot trading on Injective orderbook.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injective-spot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Injective"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "Injective_",
+    dimensions: {
+      dexs: "injective-spot"
+    },
+    parentProtocol: "parent#injective-orderbook",
+  },
 ];
 export default data4;

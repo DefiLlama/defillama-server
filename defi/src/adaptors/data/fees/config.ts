@@ -1937,9 +1937,9 @@ export default {
     "berachain-hub": {
         id: "5742"
     },
-    // "polymarket": { // fees value is wrong, protocol does not charge fees
-    //     id: "711"
-    // },
+    "polymarket": { // fees value is wrong, protocol does not charge fees
+        id: "711"
+    },
     "velar": {
         id: "4339"
     },

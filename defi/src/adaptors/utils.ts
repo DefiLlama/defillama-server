@@ -83,14 +83,14 @@ export function getCurrentCommitHash(repoPath: string): string {
     const command = `cd ${repoPath} && git rev-parse --short HEAD`;
     const hash = execSync(command).toString().trim();
     return hash;
-  } catch (error) {
-    console.error('Error getting current commit hash:', error);
+  } catch (error: any) {
+    console.error('Error getting current commit hash:',   error?.message || error);
     return 'unknown'+Math.random().toString(36).substring(2, 8); // return a random string to avoid caching
   }
 }
 
 export function getDimensionsRepoCommitHash(): string {
-  return getCurrentCommitHash('../../dimension-adapters')
+  return getCurrentCommitHash(path.join(__dirname, '../../dimension-adapters'));
 }
 
 /**
@@ -101,8 +101,8 @@ export function getDimensionsRepoCommitHash(): string {
 export function fileExists(filePath: string): boolean {
   try {
     return fs.existsSync(filePath);
-  } catch (error) {
-    console.error(`Error checking if file exists ${filePath}:`, error);
+  } catch (error: any) {
+    console.error(`Error checking if file exists ${filePath}:`, error?.message || error);
     return false;
   }
 }

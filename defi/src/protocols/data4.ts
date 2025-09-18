@@ -11690,23 +11690,13 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Ethereum", "Arbitrum"],
     forkedFrom: [],
-    oraclesBreakdown: [
-      {
-        name: "Stork",
-        type: "Primary",
-        proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
-      },
-    ],
     module: "lighter-v2/index.js",
     twitter: "Lighter_xyz",
     parentProtocol: "parent#lighter",
     listedAt: 1744624979,
-    dimensions: {
-      derivatives: "lighterv2"
-    }
   },
   {
     id: "6043",
@@ -28622,6 +28612,38 @@ const data4: Protocol[] = [
       dexs: "injective-spot"
     },
     parentProtocol: "parent#injective-orderbook",
+  },
+  {
+    id: "6751",
+    name: "Lighter V2 Perps",
+    address: null,
+    symbol: "-",
+    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    description:
+      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
+    chain: "zkLighter",
+    logo: `${baseIconsUrl}/lighter-v2-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkLighter"],
+    forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
+      },
+    ],
+    module: "dummy.js",
+    twitter: "Lighter_xyz",
+    parentProtocol: "parent#lighter",
+    dimensions: {
+      derivatives: "lighterv2"
+    }
   },
 ];
 export default data4;

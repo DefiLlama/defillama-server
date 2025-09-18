@@ -19489,7 +19489,8 @@ const data4: Protocol[] = [
     name: "HyperWave",
     address: null,
     symbol: "-",
-    url: "https://app.hyperwavefi.xyz/assets/hwhlp",
+    url: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
+    referralUrl: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
     description:
       "Hyperwave is the first liquid HLP primitive on the market, designed to bridge yield generated in Hypercore directly into the HyperEVM. By tokenizing HLP deposits, Hyperwave is bringing one of the most powerful, community-driven yield-bearing instruments into HyperEVM.",
     chain: "Hyperliquid L1",

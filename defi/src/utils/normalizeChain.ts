@@ -750,7 +750,7 @@ export const chainCoingeckoIds = {
     symbol: "KAI",
     cmcId: "5453",
     categories: ["EVM"],
-    chainId: 0,
+    // chainId: 0,
     twitter: "KardiaChain",
     url: "https://kardiachain.io/",
     dimensions: {

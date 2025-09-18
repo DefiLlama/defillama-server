@@ -30,16 +30,15 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
-      if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
-      if (!protocolId) throw new Error(`No protocol id found for ${adapterKey}`)
-
-      const protocolType = (moduleObject as any).protocolType
-      let protocol: Protocol | IParentProtocol
+      let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []
       let childProtocols: ProtocolAdaptor[] = []
 
-      protocol = configMetadataMap[adapterKey]
+      if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
+      if (!protocolId) throw new Error(`No protocol id found for ${adapterKey}` + JSON.stringify(protocol))
+
+      const protocolType = (moduleObject as any).protocolType
       baseModuleObject = moduleObject.adapter!
 
       if (!protocol!) throw new Error(`No protocol found for ${adapterKey}`)

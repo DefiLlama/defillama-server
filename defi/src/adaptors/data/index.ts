@@ -1,13 +1,14 @@
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
-import dimensions_imports from "../../utils/imports/bridge-aggregators_adapters"
+import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import protocols from "../../protocols/data";
 import { chainCoingeckoIds, getChainDisplayName } from "../../utils/normalizeChain";
 import { baseIconsUrl } from "../../constants";
 
-const dimensionsConfig: any = getDimensionsConfig()
+let dimensionsConfig: any
+getDimensionsConfig()
 
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
   const { default: module } = await import('@defillama/dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
@@ -46,27 +47,28 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   Object.entries(chainCoingeckoIds).forEach(([chainName, obj]) => {
     if (!obj.dimensions?.[adapterType]) return;
 
+    // let id = obj.chainId ?? obj.cmcId  // NOTE: we are instead using adapterKey as id because it is safer than when chain first has cmcId but we end up adding chainId
 
-    let id = obj.chainId ?? obj.cmcId
+    // switch (chainName) {
+    //   case 'Ethereum': // because ethereum chain id clashes with bitcoin cmcId
+    //   case 'Kardia':  // kardia has chainId 0
+    //     id = '' + obj.cmcId;
+    //     break;
+    // }
+    let { adapterKey, dimConfig } = getDimensionsConfigAndKey(obj.dimensions[adapterType])
 
-    switch (chainName) {
-      case 'Ethereum': // because ethereum chain id clashes with bitcoin cmcId
-      case 'Kardia':
-        id = '' + obj.cmcId;
-        break;
-    }
     const objClone = {
       ...obj,
       displayName: getChainDisplayName(chainName, true),
       name: chainName,
-      id: 'chain#'  + id,
+      id: 'chain#'  + adapterKey,
       gecko_id: obj.geckoId,
       isChain: true,
       protocolType: ProtocolType.CHAIN,
       logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(chainName)}.jpg`
     }
-    let { adapterKey, dimConfig } = getDimensionsConfigAndKey(obj.dimensions[adapterType])
-    dimConfig.id = obj.chainId ?? obj.cmcId
+
+    dimConfig.id = objClone.id
     config[adapterKey] = dimConfig
     configMetadataMap[adapterKey] = objClone
   })
@@ -123,7 +125,7 @@ function addImportsDataToMapping() {
 }
 
 function getDimensionsConfig() {
-  const mappings: any = {
+  dimensionsConfig = {
     [AdapterType.DEXS]: {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
@@ -195,7 +197,6 @@ function getDimensionsConfig() {
 
 
   addImportsDataToMapping()
-  return mappings
 }
 
 function getLogoKey(key: string) {

@@ -74,12 +74,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   // Import data list to be used
   const dataModule = loadAdaptorsData(adapterType)
   // Import some utils
-  const { importModule, KEYS_TO_STORE, config, protocolAdaptors } = dataModule
-  const configIdMap: any = {}
-  Object.entries(config).forEach(([key, i]) => {
-    const id = config[key].isChain ? 'chain#' + i.id : i.id
-    configIdMap[id] = i
-  })
+  const { importModule, KEYS_TO_STORE, protocolAdaptors } = dataModule
 
   // Get list of adaptors to run
   let protocols = protocolAdaptors

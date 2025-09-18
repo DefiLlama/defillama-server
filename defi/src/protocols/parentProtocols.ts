@@ -7504,7 +7504,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#rysk-finance",
     name: "Rysk Finance",
-    url: "https://www.rysk.finance",
+    url: "https://app.rysk.finance/join?code=DEFILLAMA",
+    referralUrl: "https://app.rysk.finance/join?code=DEFILLAMA",
     description: "Crypto uncorrelated returns.",
     logo: `${baseIconsUrl}/rysk-finance.jpg`,
     gecko_id: null,

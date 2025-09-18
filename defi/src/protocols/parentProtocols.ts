@@ -5998,7 +5998,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#astherus",
     name: "Aster",
-    url: "https://www.asterdex.com/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
+    referralUrl: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
     logo: `${baseIconsUrl}/aster.jpg`,
@@ -7503,7 +7504,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#rysk-finance",
     name: "Rysk Finance",
-    url: "https://www.rysk.finance",
+    url: "https://app.rysk.finance/join?code=DEFILLAMA",
+    referralUrl: "https://app.rysk.finance/join?code=DEFILLAMA",
     description: "Crypto uncorrelated returns.",
     logo: `${baseIconsUrl}/rysk-finance.jpg`,
     gecko_id: null,
@@ -7657,7 +7659,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperstable",
     name: "Hyperstable",
-    url: "https://hyperstable.xyz/",
+    url: "https://app.hyperstable.xyz/r/DEFILLAMA",
+    referralUrl: "https://app.hyperstable.xyz/r/DEFILLAMA",
     description: "Hyperstable is a crypto-backed, over-collateralized and decentralized stablecoin that's designed to trade at one US Dollar. Built on HyperEVM",
     logo: `${baseIconsUrl}/hyperstable.jpg`,
     gecko_id: null,
@@ -8024,6 +8027,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7150",
     chains: [],
     twitter: "FlamingoFinance",
+  },
+  {
+    id: "parent#babydogecoin",
+    name: "BabyDogeCoin",
+    url: "https://babydogeswap.com",
+    description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap.",
+    logo: `${baseIconsUrl}/babydoge.jpg`,
+    gecko_id: "baby-doge-coin",
+    cmcId: "10407",
+    chains: [],
+    twitter: "BabyDogeCoin",
+    governanceID: ["snapshot:babydogevote.eth"],
   },
 ];
 

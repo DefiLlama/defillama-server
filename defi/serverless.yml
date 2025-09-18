@@ -611,7 +611,7 @@ functions:
     memorySize: 1000
     events:
       - http:
-          path: chain-assets-raw/chains
+          path: chain-assets/raw
           method: get
   chainAssetsChart: 
     handler: src/getChainAssetsChart.default

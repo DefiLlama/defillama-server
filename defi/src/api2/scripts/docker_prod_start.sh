@@ -5,6 +5,7 @@ ROOT_DIR=$SCRIPT_DIR/../../..
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
+git checkout api2-test
 git pull
 git submodule update --init --recursive
 git submodule update --remote --merge

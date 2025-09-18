@@ -48667,7 +48667,8 @@ const data3_2: Protocol[] = [
     name: "Harmonix Finance",
     address: null,
     symbol: "-",
-    url: "https://harmonix.fi/",
+    url: "https://app.harmonix.fi/?ref=s4rk2Hrs",
+    referralUrl: "https://app.harmonix.fi/?ref=s4rk2Hrs",
     description:
       "Harmonix Finance is where TradFi meets DeFi: automated vaults, smart strategies, and max gains with min risk. We are building efficient hedge fund on-chain derivatives pools using hedge fund strategies (like options wheel & delta neutral) where users deposit fund and receive high yield & multiple tokens airdrop",
     chain: "Ethereum",

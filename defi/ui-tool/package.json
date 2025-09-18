@@ -8,7 +8,7 @@
     "antd": "^5.24.7",
     "express": "^5.1.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react-dom": "^19.1.1",
     "react-scripts": "5.0.1",
     "ws": "^8.18.1"
   },

@@ -4912,6 +4912,16 @@ export const chainCoingeckoIds = {
     url: "https://eteria.io/",
     chainId: 140,
   },
+  "Plasma": {
+    geckoId: "plasma",
+    symbol: "XPL",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "PlasmaFDN",
+    url: "https://www.plasma.to/",
+    github: ["PlasmaLaboratories"],
+    chainId: 9745,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

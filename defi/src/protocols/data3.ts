@@ -57637,7 +57637,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Arbitrum", "Ethereum", "Base"],
+    chains: ["Arbitrum", "Ethereum", "Base", "Unichain", "TAC", "Ink", "Plasma", "Avalanche"],
     oraclesBreakdown: [
       {
         name: "Chainlink",

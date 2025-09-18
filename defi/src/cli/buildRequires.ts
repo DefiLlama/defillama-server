@@ -3,7 +3,7 @@
 console.time('build time')
 import protocols from "../protocols/data";
 import treasuries from "../protocols/treasury";
-import { writeFileSync, readdirSync, readFileSync } from "fs"
+import { writeFileSync, readdirSync, } from "fs"
 import { spawn } from "child_process"
 import entities from "../protocols/entities";
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
@@ -125,13 +125,9 @@ async function createTVLImportsFile() {
 async function createTvlAdapterDataJSON() {
   const adaptersFile = __dirname + "/../utils/imports/tvlAdapterData.json"
   let data: any = {}
-  console.log('debug protocols# ', protocols.length)
   protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
   await writeFile(adaptersFile, JSON.stringify(data))
-  console.log('debug, wrote to' + adaptersFile)
-  const jsonData = readFileSync(adaptersFile, "utf8")
-  const adaptersData = JSON.parse(jsonData)
-  console.log('debug, read back', Object.keys(adaptersData).length, 'adapters')
+
   // we are running this as JS file because it is faster than compiling as ts
   await new Promise((resolve, reject) => {
     const childProcess = spawn('node', [__dirname + "/buildTvlModuleData.js", adaptersFile], {

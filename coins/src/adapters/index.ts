@@ -165,4 +165,7 @@ export default {
   opensea: require("./nft/opensea"),
   brkteth: require("./yield/brkteth"),
   vbill: require("./rwa/vbill"),
+  ondo_equity: require("./rwa/ondo_equity"),
+  stakingPools: require("./solana/stakingPools"),
+  fluidSmartLending: require("./markets/fluidSmartLending"),
 };

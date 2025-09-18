@@ -7,6 +7,7 @@ import { isDoubleCounted } from "../../utils/normalizeChain";
 
 import fs from 'fs';
 import path from 'path';
+import { DATA_FILES } from "../../constants";
 
 // Check if protocols.json exists
 const protocolsJsonPath = path.resolve(__dirname, '../../utils/imports/protocols.json');
@@ -15,9 +16,9 @@ let protocols: Protocol[] = [];
 if (fs.existsSync(protocolsJsonPath)) {
   protocols =require(protocolsJsonPath)
 } else {
-  const dataFiles = ['data1', 'data2', 'data3', 'data4'];
-  for (const file of dataFiles) {
-    const module = require(`../${file}.ts`);
+  console.log('hmmm, looks like prebuild step was not run, falling back to data.ts')
+  for (const file of DATA_FILES) {
+    const module = require(`../${file}`);
     protocols = protocols.concat(module.default);
   }
 }

@@ -21244,6 +21244,9 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Arbitrum"],
     forkedFromIds: ["5656"],
+    oraclesBreakdown: [
+      { name: "Api3", type: "Primary", proof: ["https://github.com/NeriteOrg/docs/blob/main/docs/technical-documentation/oracles.md"] },
+    ],
     module: "nerite/index.js",
     twitter: "NeriteOrg",
     audit_links: [],

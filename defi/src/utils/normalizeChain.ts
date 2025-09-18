@@ -4883,6 +4883,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "akashnet_",
     url: "https://akash.network/",
+    dimensions: {
+      fees: "akash-network"
+    }
   },
   "Off Chain": {
     geckoId: null,

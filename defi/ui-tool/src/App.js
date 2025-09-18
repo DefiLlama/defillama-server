@@ -344,6 +344,7 @@ const App = () => {
           dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
+          delayBetweenRuns: values.delayBetweenRuns || 0,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,

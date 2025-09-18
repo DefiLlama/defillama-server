@@ -14,8 +14,6 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
-import sleep from "../../../utils/shared/sleep";
-
 
 const blockChains = Object.keys(providers)
 
@@ -36,7 +34,6 @@ export type IStoreAdaptorDataHandlerEvent = {
   runType?: 'store-all' | 'default'
   throwError?: boolean
   checkBeforeInsert?: boolean
-  delayBetweenRuns?: number
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -45,11 +42,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 13
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, delayBetweenRuns = 0
+    throwError = false, checkBeforeInsert = false,
 
   } = event
 
-  if (delayBetweenRuns > 0) maxConcurrency = 1 // if there is a delay between runs, we can only run one at a time
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Get clean day
@@ -352,9 +348,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       success = false
       errorObject = error
     }
-
-    if (delayBetweenRuns > 0)
-      await sleep(delayBetweenRuns * 1000)
 
     const endTime = getUnixTimeNow()
     await elastic.addRuntimeLog({ runtime: endTime - startTime, success, metadata, })

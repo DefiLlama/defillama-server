@@ -57,6 +57,11 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     // }
     let { adapterKey, dimConfig } = getDimensionsConfigAndKey(obj.dimensions[adapterType])
 
+    if (config[adapterKey]) {
+      // you can reach here because there are two labels for the same chain: like Optimism & 'OP Mainnet'
+      return;
+    }
+
     const objClone = {
       ...obj,
       displayName: getChainDisplayName(chainName, true),

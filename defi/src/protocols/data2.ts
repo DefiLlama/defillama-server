@@ -22808,8 +22808,8 @@ const data2: Protocol[] = [
   {
     id: "2349",
     name: "mStable Yield",
-    address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
-    symbol: "MTA",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://yield.mstable.org/metavaults",
     description: "Yield app by mStable",
     chain: "Ethereum",

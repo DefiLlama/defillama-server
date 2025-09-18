@@ -492,8 +492,8 @@ const data: Protocol[] = [
   {
     id: "125",
     name: "mStable CDP",
-    address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
-    symbol: "MTA",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://mstable.org/",
     description: "mStable unites stablecoins, lending and swapping into one standard.",
     chain: "Ethereum",

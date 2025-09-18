@@ -42604,8 +42604,8 @@ const data3_2: Protocol[] = [
     id: "4503",
     name: "Flat Money V1",
     //previousNames: ["Flat Money"],
-    address: null,
-    symbol: "-",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://flat.money",
     description:
       "New money with Flatcoin — 100% capital efficient, amplified purchasing power, backed by staked $rETH.",

@@ -27211,8 +27211,8 @@ const data4: Protocol[] = [
   {
     id: "6687",
     name: "Flat Money V2",
-    address: null,
-    symbol: "-",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://flat.money",
     description:
       "Flat Money is a smart contract protocol that allows users to mint UNIT, an on-chain flatcoin backed by liquid staking ETH.",

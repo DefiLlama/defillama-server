@@ -77,24 +77,21 @@ test("there are no repeated values in unlock adapters", async () => {
       continue
     }
     const rawProtocol = protocolFile.default
-    // Handle case where protocol exports a function (like daomaker, streamflow)
-    const protocol = typeof rawProtocol === 'function' ? await rawProtocol() : rawProtocol;
-    const meta = Array.isArray(protocol) ? protocol[0]?.meta : protocol.meta;
-    expect(meta).not.toBe(undefined);
-    expect(meta.token).not.toBe(undefined)
-    expect(tokens).not.toContain(meta.token);
-    tokens.push(meta.token);
-    if(meta.protocolIds){
-      expect(protocolIds).not.toContain(meta.protocolIds);
-      protocolIds.push(meta.protocolIds);
+    const protocol = rawProtocol.meta;
+    expect(protocol.token).not.toBe(undefined)
+    expect(tokens).not.toContain(protocol.token);
+    tokens.push(protocol.token);
+    if(protocol.protocolIds){
+      expect(protocolIds).not.toContain(protocol.protocolIds);
+      protocolIds.push(protocol.protocolIds);
     }
-    if(meta.notes){
-      expect(notes).not.toContain(meta.notes);
-      notes.push(meta.notes);
+    if(protocol.notes){
+      expect(notes).not.toContain(protocol.notes);
+      notes.push(protocol.notes);
     }
-    if(meta.sources){
-      expect(sources).not.toContain(meta.sources);
-      sources.push(meta.sources);
+    if(protocol.sources){
+      expect(sources).not.toContain(protocol.sources);
+      sources.push(protocol.sources);
     }
   }
 })

@@ -7909,8 +7909,8 @@ const data4: Protocol[] = [
     name: "Extended",
     address: null,
     symbol: "-",
-    url: "https://app.extended.exchange/join/DEFILLAMAO",
-    referralUrl: "https://app.extended.exchange/join/DEFILLAMAO",
+    url: "https://app.extended.exchange",
+    referralUrl: "https://app.extended.exchange",
     description:
       "Extended is a perp DEX, built by ex-Revolut team, on a mission to offer the most extensive product portfolio in DeFi—featuring cross-asset collateral, unified margin, perps, spot, and lending markets.",
     chain: "Ethereum",

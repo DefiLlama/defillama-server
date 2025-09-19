@@ -43762,11 +43762,12 @@ const data3_2: Protocol[] = [
   {
     id: "4553",
     name: "MorpheusAI",
-    address: "arbitrum:0x092baadb7def4c3981454dd9c0a0d7ff07bcfc86",
+    address: "arbitrum:0x092baadb7def4c3981454dd9c0a0d7ff07bcfc86", "ethereum:0xcbb8f1bda10b9696c57e13bc128fe674769dcec0", "base:0x7431ada8a591c955a994a21710752ef9b882b8e3"
     symbol: "MOR",
     url: "https://mor.org",
     description:
-      "Morpheus is the first incentivized peer-to-peer network of personal general purpose AIs that can execute Smart Contracts on behalf of a user, known as Smart Agents as well as global web3 infrastructure for decentralized AI solutions. Providing users open-source Smart Agents to connect to their wallets, Dapps, & smart contracts promises to open the world of Web3 to everyone.",
+      "Morpheus is the decentralized infrastructure layer where anyone can build, deploy, and scale AI without gatekeepers.
+It combines yield-powered tokenomics, decentralized compute, and open-source code into a permissionless network — with the native token MOR aligning incentives through daily emissions to four contributor groups: Capital, Compute, Code, and Builders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpheusai.jpg`,
     audits: "2",
@@ -43774,7 +43775,7 @@ const data3_2: Protocol[] = [
     gecko_id: "morpheusai",
     cmcId: "31656",
     category: "AI Agents",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum", "Base"],
     forkedFrom: [],
     module: "MorpheusAI/index.js",
     twitter: "MorpheusAIs",

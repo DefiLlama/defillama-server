@@ -26297,7 +26297,7 @@ const data4: Protocol[] = [
     description: "Stocks on chain",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ondo-global-markets.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -26306,6 +26306,7 @@ const data4: Protocol[] = [
     module: "ondo-global-markets/index.js",
     twitter: "OndoFinance",
     forkedFrom: [],
+    audit_links: ["https://docs.ondo.finance/ondo-global-markets/trust-and-transparency"],
     parentProtocol: "parent#ondo-finance",
     listedAt: 1756900783,
     dimensions: {

@@ -7626,6 +7626,48 @@
       "decimals": 8,
       "symbol": "whSOL",
       "to": "coingecko#solana"
+    },
+    "2EB30350120BBAFC168F55D0E65551A27A724175E8FBCC7B37F9A71618FE136B": {
+      "name": "function-fbtc",
+      "symbol": "FBTC",
+      "decimals": 8,
+      "to": "coingecko#ignition-fbtc"
+    },
+    "B7BF60BB54433071B49D586F54BD4DED5E20BEFBBA91958E87488A761115106B": {
+      "name": "lombard-staked-btc",
+      "symbol": "LBTC",
+      "decimals": 8,
+      "to": "coingecko#lombard-staked-btc"
+    },
+    "C0F284F165E6152F6DDDA900537C1BC8DA1EA00F03B9C9EC1841FA7E004EF7A3": {
+      "name": "solv-protocol-btc",
+      "symbol": "solvBTC",
+      "decimals": 18,
+      "to": "coingecko#solv-btc"
+    },
+    "E2A000FD3EDD91C9429B473995CE2C7C555BCC8CFC1D0A3D02F514392B7A80E8": {
+      "name": "ether-fi-staked-btc",
+      "symbol": "eBTC",
+      "decimals": 8,
+      "to": "coingecko#ether-fi-staked-btc"
+    },
+    "1075520501498E008B02FD414CD8079C0A2BAF9657278F8FB8F7D37A857ED668": {
+      "name": "pumpbtc",
+      "symbol": "pumpBTC",
+      "decimals": 8,
+      "to": "coingecko#pumpbtc"
+    },
+    "3F1D988D9EEA19EB0F3950B4C19664218031D8BCE68CE7DE30F187D5ACEA0463": {
+      "name": "universal-btc",
+      "symbol": "uniBTC",
+      "decimals": 8,
+      "to": "coingecko#universal-btc"
+    },
+    "0E293A7622DC9A6439DB60E6D234B5AF446962E27CA3AB44D0590603DFF6968E": {
+      "name": "wrapped-bitcoin",
+      "symbol": "wBTC",
+      "decimals": 8,
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "bitindi": {

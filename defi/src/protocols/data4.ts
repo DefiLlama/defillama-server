@@ -28584,7 +28584,7 @@ const data4: Protocol[] = [
     chains: ["Injective"],
     forkedFromIds: [],
     module: "dummy.js",
-    twitter: "Injective_",
+    twitter: "injective",
     dimensions: {
       derivatives: "injective-derivatives"
     },
@@ -28607,7 +28607,7 @@ const data4: Protocol[] = [
     chains: ["Injective"],
     forkedFromIds: [],
     module: "dummy.js",
-    twitter: "Injective_",
+    twitter: "injective",
     dimensions: {
       dexs: "injective-spot"
     },

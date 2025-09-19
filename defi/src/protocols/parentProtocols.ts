@@ -8049,7 +8049,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "injective-protocol",
     cmcId: "7226",
     chains: [],
-    twitter: "Injective_",
+    twitter: "injective",
   },
 ];
 

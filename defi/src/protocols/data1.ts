@@ -5542,7 +5542,7 @@ const data: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "injective/index.js",
-    twitter: "injective_",
+    twitter: "injective",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
     oracles: ["Chainlink", "Band", "DIA"],
   },

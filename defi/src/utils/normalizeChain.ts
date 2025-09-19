@@ -1873,7 +1873,7 @@ export const chainCoingeckoIds = {
     symbol: "INJ",
     cmcId: null,
     categories: ["Cosmos"],
-    twitter: "Injective_",
+    twitter: "injective",
     url: "https://injective.com/",
     dimensions: {
       fees: "injective",

@@ -30807,7 +30807,7 @@ const data3_1: Protocol[] = [
     chains: ["Injective"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "Injective_",
+    twitter: "injective",
   },
   {
     id: "4012",

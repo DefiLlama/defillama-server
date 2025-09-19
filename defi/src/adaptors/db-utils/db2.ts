@@ -1,12 +1,12 @@
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import * as sdk from "@defillama/sdk"
+import { sliceIntoChunks } from "@defillama/sdk/build/util"
+import { Op, } from "sequelize"
+import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
-import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import { Op, } from "sequelize"
-import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { IJSON } from "../data/types"
+import { AdapterRecord2 } from "./AdapterRecord2"
 
 let isInitialized: any
 
@@ -67,7 +67,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl', 'blc']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
@@ -101,7 +101,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
-      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,
@@ -135,7 +135,7 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
   while (true) {
     const batch: any = await Tables.DIMENSIONS_DATA.findAll({
       where: filterCondition,
-      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
       raw: true,
       order: [['timestamp', 'ASC']],
       offset,
@@ -150,6 +150,50 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
 
   console.timeEnd(label)
 
+  return result
+}
+
+export async function getAllItemsForProtocol({
+  adapterType,
+  id,
+  timestamp = 0,
+  labelsOnly = process.env.DIM_SQL_LABELS_ONLY === 'true',
+}: {
+  adapterType: AdapterType,
+  id: string,
+  timestamp?: number,
+  labelsOnly?: boolean,
+}) {
+  await init()
+  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+
+  const where: any = { type: adapterType, id, timestamp: { [Op.gte]: timestamp } }
+
+  if (labelsOnly) where[Op.or] = [{ bl:  { [Op.ne]: null } }]
+
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+  const label = `getAllItemsForProtocol(${adapterType}, ${id}, labelsOnly=${!!labelsOnly})`
+  console.time(label)
+
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where,
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch)
+    sdk.log(`getAllItemsForProtocol(${adapterType}, ${id}) fetched ${batch.length} (total ${result.length})`)
+    if (batch.length < limit) break
+    offset += limit
+  }
+
+  console.timeEnd(label)
   return result
 }
 

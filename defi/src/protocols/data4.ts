@@ -16937,14 +16937,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6256",
-    name: "BitcoinBridge.app",
+    name: "Permute",
+    previousNames: ["BitcoinBridge.app"],
     address: null,
     symbol: "-",
-    url: "https://www.bitcoinbridge.app/",
+    url: "https://permute.finance/",
     description:
-      "BitcoinBridge.app is a web app that lets users transfer assets between Ethereum and Bitcoin by connecting their wallets and initiating cross-chain transactions",
+      "Permute is a native Bitcoin bridge that enables BTC holders to move liquidity directly into DeFi ecosystems such as Ethereum, Avalanche, Arbitrum, BNB and more at ultra-low fees. Native BTC can finally move seamlessly across chains, unlocking lending, yield, and utility that was once out of reach",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitcoinbridge.app.jpg`,
+    logo: `${baseIconsUrl}/permute.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -16953,7 +16954,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Bitcoin"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "BitcoinBridge_",
+    twitter: "permute_finance",
     dimensions: {
       fees: "bitcoin-bridge",
       dexs: "bitcoin-bridge"

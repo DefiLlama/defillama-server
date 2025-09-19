@@ -13,8 +13,7 @@ npm i
 git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
 
 
-IS_API2_SERVER=true  npm run prebuild
-SKIP_CAHE_WRITE_R2=true npm run cache-config
+npm run prebuild
 npm run api2-cron-task
 npm run cron-dimensions
 

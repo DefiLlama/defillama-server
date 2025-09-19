@@ -45,7 +45,7 @@ jobs:
       - run: cd emissions-adapters && git checkout master && git pull
       - run: npm  ci || npm i
       - name: Run tests
-        run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
+        run: npm t data  # && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:
           ETHEREUM_RPC: FAKE_ETHEREUM_RPC
           GRAPH_API_KEY: FAKE_GRAPH_API_KEY

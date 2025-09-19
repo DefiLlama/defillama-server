@@ -18,6 +18,7 @@ import { getExcludedTvl } from "./excluded";
 
 let allProtocols: AllProtocols = {};
 let failedDeps: string[] = [];
+let rawTokenBalances: any[] = [];
 
 export default async function fetchBridgeUsdTokenTvls(
   timestamp: number,
@@ -45,6 +46,13 @@ export default async function fetchBridgeUsdTokenTvls(
       getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
+
+  if (!rawTokenBalances.length)
+    rawTokenBalances = await Promise.all(
+      filteredIds.map((i: string) =>
+        getTVLOfRecordClosestToTimestamp(`hourlyRawTokensTvl#${i}`, timestamp, searchWidth)
+      )
+    );
 
   tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
 
@@ -82,6 +90,8 @@ export async function fetchTvls(
     isProtocol?: boolean;
     mcapData?: McapData;
     native?: TokenTvlData;
+    excludedTvls?: any;
+    symbolMap?: { [pk: string]: string | null };
   } = {}
 ): Promise<{ data: TokenTvlData; native?: TokenTvlData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
@@ -90,13 +100,23 @@ export async function fetchTvls(
   const isProtocol: boolean = params.isProtocol ?? false;
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
 
+  if (params.symbolMap) digestAndAddToSymbolMap(rawTokenBalances, params.symbolMap);
   if (isCanonical) return sortCanonicalBridgeBalances(isProtocol);
   const aggregate = await aggregateChainTokenBalances(allProtocols);
 
-  if (params.mcapData && params.native) return addOutgoingToMcapData(aggregate, params.mcapData);
+  if (params.mcapData && params.native && params.excludedTvls)
+    return addOutgoingToMcapData(aggregate, params.mcapData, params.excludedTvls);
   return { data: aggregate };
 }
 
+function digestAndAddToSymbolMap(rawTokenBalances: any[], symbolMap: { [pk: string]: string | null }) {
+  rawTokenBalances.map((rawTokenBalance: any) => {
+    if (!rawTokenBalance.SK) return;
+    Object.keys(rawTokenBalance.tvl).map((pk: string) => {
+      symbolMap[pk] = null;
+    });
+  });
+}
 function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData; native?: TokenTvlData } {
   const ids = isProtocol ? protocolBridgeIds : canonicalBridgeIds;
   const canonicalBridgeTokenBalances: TokenTvlData = {};
@@ -136,7 +156,8 @@ function sortChains(chains: string[]) {
 
 function addOutgoingToMcapData(
   allOutgoing: TokenTvlData,
-  allMcapData: McapData
+  allMcapData: McapData,
+  excluded: any
 ): { data: TokenTvlData; native: TokenTvlData } {
   // use mcap data to find more realistic values on each chain
   const chains = sortChains(Object.keys(allMcapData));
@@ -152,8 +173,15 @@ function addOutgoingToMcapData(
         if (!searchKey) return;
         interchainMcap = allMcapData.total[searchKey].native;
       }
-      const percOnThisChain = chainMcap.div(interchainMcap);
+      let deductions = zero;
+      try {
+        deductions = BigNumber(excluded[chain]?.[symbol] ?? zero);
+        if (!deductions.isNaN()) allMcapData.total[symbol].native = allMcapData.total[symbol].native.minus(deductions);
+      } catch (e) {}
+
+      const percOnThisChain = chainMcap.minus(deductions).div(interchainMcap);
       const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+
       allMcapData[chain][symbol].native = thisAssetMcap;
     });
   });

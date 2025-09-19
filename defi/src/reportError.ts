@@ -13,6 +13,9 @@ What's wrong: ${message}
 Correct data: ${correctSource}
 https://defillama.com/protocol/${sluggifyString(protocol)}`
 
+await sendMessage(formattedMessage, process.env.ERROR_REPORTS_WEBHOOK, false)
+    .catch(e => console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
+
   const formData = new FormData();
   formData.append('name', `${protocol} (${dataType})`);
   formData.append('email', contact ?? `anon@defillama.com`);
@@ -24,9 +27,6 @@ https://defillama.com/protocol/${sluggifyString(protocol)}`
   ) values (
     ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType ?? null}, ${message ?? null}, ${correctSource ?? null}, ${contact ?? null}
   )`
-  
-  await sendMessage(formattedMessage, process.env.ERROR_REPORTS_WEBHOOK, false)
-    .catch(e => console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
 
   const frontResponse = await fetch(`https://webhook.frontapp.com/forms/0f7e04ca1380d461a597/LKbySkFsuoKOT3u3tAzk45SYm8cWIPVJb2zipokH6m-bzllqmtpfU_X7vmTO4rSaEzyqaVIB04K-TMAmXLFd7SDvKyDyUm1-zkjkycK6KPhEe4fZaa9q2KK95l-Ju8A`, {
       method: 'POST',

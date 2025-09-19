@@ -55,7 +55,8 @@ export interface Protocol {
       | "Secondary" // Oracle that is actively used but secures less than 50% of TVL
       | "Fallback" // Oracle that isn't actively used and is just there in case the primary or secondary oracles fail
       | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
-      | "Aggregator", // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
+      | "Aggregator" // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
+      | "Reference" // Used as a reference price for comparison or validation purposes. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
       // pls add more as needed
     proof: Array<string>,
     startDate?: string, // YYYY-MM-DD

@@ -14644,7 +14644,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Chainlink",
-        type: "Primary",
+        type: "Reference",
         proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"],
       },
     ],

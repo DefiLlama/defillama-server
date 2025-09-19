@@ -28648,5 +28648,52 @@ const data4: Protocol[] = [
       derivatives: "lighterv2"
     }
   },
+  {
+    id: "6752",
+    name: "Lit.Trade",
+    address: null,
+    symbol: "-",
+    url: "https://app.lit.trade/spot",
+    description:
+      "Lit is a no-KYC crypto exchange powered by Hyperliquid, offering spot and perpetual trading with advanced order types, modular UI tools, and instant, zero-fee USDC deposits",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/lit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "lit_trade",
+    dimensions: {
+      fees: "lit-trade"
+    }
+  },
+  {
+    id: "6753",
+    name: "Migrate.Fun",
+    address: null,
+    symbol: "-",
+    url: "https://migrate.fun/",
+    description:
+      "migrate.fun is a migrations platform that allows for locked liquidity to migrate to new AMMS and launchpads through their automated protocol",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/migrate.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Solana"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "MigrateFun",
+    dimensions: {
+      fees: "migrate-fun"
+    }
+  },
+  
 ];
 export default data4;

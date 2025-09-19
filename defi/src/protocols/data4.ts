@@ -28005,7 +28005,7 @@ const data4: Protocol[] = [
     symbol: "ALKIMI",
     url: "https://labs.alkimi.org/",
     description:
-      "Alkimi is a decentralized advertising exchange that records ad impressions and spend data on-chain",
+      "Alkimi is a decentralised Ad Platform that records ad impressions and spend data on-chain. Alkimi is building AdFi or Decentralised Advertising Finance",
     chain: "Sui",
     logo: `${baseIconsUrl}/alkimi.jpg`,
     audits: "0",
@@ -28017,6 +28017,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "alkimi/index.js",
     twitter: "AlkimiExchange",
+	discord: "sQEkBSZbd7"
+	telegram: "Alkimi_Exchange"
     listedAt: 1757693764,
     dimensions: {
       fees: "alkimi"

@@ -572,6 +572,13 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
   },
+  {
+    name: "Bitlo",
+    cgId: "bitlo",
+    slug: "bitlo",
+    coin: null,
+    walletsLink: null,
+  }
 ];
 
 const cg_volume_cexs = Object.values({

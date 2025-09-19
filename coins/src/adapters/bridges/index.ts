@@ -118,7 +118,7 @@ export const bridges = [
   // sophon,
   unichan,
   flow,
-  // layerzero,
+  layerzero,
   initia
 ].map(normalizeBridgeResults) as Bridge[];
 

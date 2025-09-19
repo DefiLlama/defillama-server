@@ -12,7 +12,7 @@ try {
     console.error("Error loading adapter data:", error?.message)
 }
 
-
+let missingAdapterErrorCount = 0
 /**
  * 
  * @param protocol 
@@ -21,8 +21,11 @@ try {
 export function importAdapter(protocol: Protocol) {
     let adapterModule = (adaptersData as any)[protocol.module]
     if (!adapterModule) {
-        // throw new Error(`Could not find adapter for ${protocol.module}`)
-        console.error(`Could not find adapter for ${protocol.module}`)
+        missingAdapterErrorCount++
+        if (missingAdapterErrorCount <= 3) {
+            // throw new Error(`Could not find adapter for ${protocol.module}`)
+            console.error(`Could not find adapter for ${protocol.module} ${missingAdapterErrorCount === 3 ? '(Last warning)' : ''}`)
+        }
         return {}
     }
     return mockFunctions(adapterModule)

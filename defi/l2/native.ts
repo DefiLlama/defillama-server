@@ -15,8 +15,9 @@ export async function fetchMinted(params: {
   timestamp?: number;
   searchWidth?: number;
   override?: boolean;
+  symbolMap?: { [pk: string]: string | null };
 }): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
-  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
+  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp() - 10;
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
@@ -75,6 +76,8 @@ export async function fetchMinted(params: {
               if (!priceInfo || !supply || !mcapInfo) return;
 
               const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+
+              if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol
               const canonicalSymbols = Object.keys(params.chains[chain]);
               if (
                 canonicalSymbols.includes(symbol) &&

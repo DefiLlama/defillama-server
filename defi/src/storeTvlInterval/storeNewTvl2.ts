@@ -75,8 +75,8 @@ export default async function (
 
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
-    if (currentTvl > 200e9 && excludedTvlId != protocol.id) {
-      let errorMessage = `TVL of ${protocol.name} is over 200bn`
+    if (currentTvl > 300e9 && excludedTvlId != protocol.id) {
+      let errorMessage = `TVL of ${protocol.name} is over 300bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {

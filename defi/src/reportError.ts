@@ -18,7 +18,7 @@ await sendMessage(formattedMessage, process.env.ERROR_REPORTS_WEBHOOK, false)
 
   const formData = new FormData();
   formData.append('name', `${protocol} (${dataType})`);
-  formData.append('email', contact ?? `anon@defillama.com`);
+  formData.append('email', !contact || contact === "" ? `anon@defillama.com` : contact);
   formData.append('body', formattedMessage);
   
   await getErrorDBConnection()`

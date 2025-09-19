@@ -6377,7 +6377,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Basis Trading",
-    chains: ["Bitcoin"],
+    chains: ["Bitcoin","Stacks"],
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",

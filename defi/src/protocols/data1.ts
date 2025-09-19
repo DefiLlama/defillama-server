@@ -22466,8 +22466,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "gearbox",
     cmcId: "16360",
     category: "Lending",
-    chains: ["Ethereum"],
-    oracles: ["Chainlink", "RedStone"],
+    chains: ["Ethereum", "Hemi"],
     module: "gearbox/index.js",
     treasury: "gearbox.js",
     twitter: "GearboxProtocol",
@@ -22475,6 +22474,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     governanceID: ["snapshot:gearbox.eth"],
     listedAt: 1640629561,
     github: ["Gearbox-protocol"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],      
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10609"],
+        chains: [{chain: "Hemi"}],
+      },
+    ],
     dimensions: {
       fees: "gearbox"
     }

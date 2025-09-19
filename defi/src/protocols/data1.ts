@@ -21755,32 +21755,20 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       {
         name: "RedStone",
         type: "Primary",
-        proof: [],
-        chains: [
-          {
-            chain: "Ethereum",
-          },
-        ],      
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],      
       },
       {
         name: "Chainlink",
         type: "Primary",
-        proof: [],
-        chains: [
-          {
-            chain: "Ethereum",
-          },
-        ],
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],
       },
       {
         name: "eOracle",
         type: "Primary",
-        proof: [],
-        chains: [
-          {
-            chain: "Hemi",
-          },
-        ],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10609"],
+        chains: [{chain: "Hemi"}],
       },
     ],
   },

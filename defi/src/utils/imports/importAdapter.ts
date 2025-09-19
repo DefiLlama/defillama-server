@@ -44,7 +44,7 @@ function mockTvlFunction() {
 function mockFunctions(obj: any) {
     // disabling the unmocking block as we never use it
 
-    /* if (obj === "_lmtf") {  // llamaMockedTVLFunction
+    /* if (obj === "_f") {  // llamaMockedTVLFunction
         return mockTvlFunction
     } else if (typeof obj === "object") {
         Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))

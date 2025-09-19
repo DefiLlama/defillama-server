@@ -155,7 +155,7 @@ async function createTvlAdapterDataJSON() {
 //Replace all fuctions with mock functions in an object all the way down
 function mockFunctions(obj: any) {
   if (typeof obj === "function") {
-    return '_lmtf'  // llamaMockedTVLFunction
+    return '_f'  // llamaMockedTVLFunction
   } else if (typeof obj === "object") {
     Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
   }

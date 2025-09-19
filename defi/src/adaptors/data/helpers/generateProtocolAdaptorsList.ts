@@ -22,7 +22,8 @@ type IImportsMap = IJSON<IImportObj>
 
 
 export function generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap }: { allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, configMetadataMap: IJSON<any> }): ProtocolAdaptor[] {
-  return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
+  const response = [] as ProtocolAdaptor[]
+  Object.entries(allImports).forEach(([adapterKey, adapterObj]) => {
 
     try {
       let configObj = config[adapterKey]
@@ -73,14 +74,13 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 
-      return infoItem
+      response.push(infoItem)
 
-    } catch (e) {
-      console.error(e)
-      console.error(`Missing info for ${adapterKey} on ${adapterType}`)
-      return undefined
+    } catch (e: any) {
+      console.error(`Missing info for ${adapterKey} on ${adapterType}, skipping... error: ${e?.message ?? e}`)
     }
-  }).filter(notUndefined);
+  })
+  return response
 }
 
 const getLlamaoLogo = (logo: string | null) => {

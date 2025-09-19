@@ -28525,6 +28525,7 @@ const data4: Protocol[] = [
     twitter: "gardens_fund", 
     listedAt: 1758218847
   },
+  /* we track this already https://defillama.com/protocol/felix-vaults
   {
     id: "6747",
     name: "Felix Vanilla",
@@ -28546,6 +28547,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#felix",
     listedAt: 1758219341
   },
+  */
   {
     id: "6748",
     name: "Moria Protocol",

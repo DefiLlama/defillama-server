@@ -9455,7 +9455,7 @@ const data4: Protocol[] = [
   {
     id: "5948",
     name: "Centrifuge Protocol",
-    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    address: "0xcccccccccc33d538dbc2ee4feab0a7a1ff4e8a94",
     symbol: "CFG",
     url: "https://centrifuge.io",
     description:
@@ -20641,7 +20641,7 @@ const data4: Protocol[] = [
     twitter: "CarbonTerminal",
     dimensions: {
       fees: "carbon",
-      derivatives: "carbon"
+      derivatives: "carbon" 
     }
   },
   {

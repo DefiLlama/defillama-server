@@ -6776,7 +6776,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://centrifuge.io/",
     description: "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
     logo: `${baseIconsUrl}/centrifuge.jpg`,
-    gecko_id: "centrifuge",
+    gecko_id: "centrifuge-2",
     cmcId: "6748",
     chains: [],
     twitter: "centrifuge",

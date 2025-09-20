@@ -28525,6 +28525,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "Gardens/index.js",
     twitter: "gardens_fund", 
+    treasury: "gardens.js",
     listedAt: 1758218847
   },
   /* we track this already https://defillama.com/protocol/felix-vaults

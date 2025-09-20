@@ -43766,8 +43766,7 @@ const data3_2: Protocol[] = [
     symbol: "MOR",
     url: "https://mor.org",
     description:
-      "Morpheus is the decentralized infrastructure layer where anyone can build, deploy, and scale AI without gatekeepers.
-It combines yield-powered tokenomics, decentralized compute, and open-source code into a permissionless network — with the native token MOR aligning incentives through daily emissions to four contributor groups: Capital, Compute, Code, and Builders.",
+      "Morpheus is the decentralized infrastructure layer where anyone can build, deploy, and scale AI without gatekeepers. It combines yield-powered tokenomics, decentralized compute, and open-source code into a permissionless network — with the native token MOR aligning incentives through daily emissions to four contributor groups: Capital, Compute, Code, and Builders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpheusai.jpg`,
     audits: "2",

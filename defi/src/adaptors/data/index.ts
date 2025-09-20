@@ -70,6 +70,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
       gecko_id: obj.geckoId,
       isChain: true,
       protocolType: ProtocolType.CHAIN,
+      category: 'Chain',
       logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(chainName)}.jpg`
     }
 

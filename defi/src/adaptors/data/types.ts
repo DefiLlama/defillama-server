@@ -170,6 +170,11 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,
         AdaptorRecordType.openInterestAtEnd
+    ],
+    [AdapterType.OPEN_INTEREST]: [
+        AdaptorRecordType.shortOpenInterestAtEnd,
+        AdaptorRecordType.longOpenInterestAtEnd,
+        AdaptorRecordType.openInterestAtEnd
     ]
 }
 

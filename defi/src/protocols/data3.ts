@@ -15743,7 +15743,8 @@ const data3_1: Protocol[] = [
     listedAt: 1691622170,
     dimensions: {
       fees: "gmx-v2",
-      derivatives: "gmx-v2-gmx-v2-trade"
+      derivatives: "gmx-v2-gmx-v2-trade",
+      "open-interest": "gmx-v2-gmx-v2-trade"
     }
   },
   {
@@ -35900,7 +35901,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709324603,
     dimensions: {
       fees: "synfutures-v3",
-      derivatives: "synfutures-v3"
+      derivatives: "synfutures-v3",
+      "open-interest": "synfutures-v3"
     }
   },
   {
@@ -41277,7 +41279,8 @@ const data3_2: Protocol[] = [
     listedAt: 1712327109,
     dimensions: {
       fees: "synthetix-v3",
-      derivatives: "synthetix-v3"
+      derivatives: "synthetix-v3",
+      "open-interest": "synthetix-v3"
     }
   },
   {

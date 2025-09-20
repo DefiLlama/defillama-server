@@ -28647,7 +28647,8 @@ const data4: Protocol[] = [
     twitter: "Lighter_xyz",
     parentProtocol: "parent#lighter",
     dimensions: {
-      derivatives: "lighterv2"
+      derivatives: "lighterv2",
+      "open-interest": "lighter-v2"
     }
   },
   {

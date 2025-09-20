@@ -70,6 +70,10 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         doublecounted: moduleObject.doublecounted ?? false,
       } as any
 
+      // mark all interface volume as doublecounted
+      if ((adapterType === AdapterType.DERIVATIVES || adapterType === AdapterType.DEXS) && infoItem.category === 'Interface') 
+        infoItem.doublecounted = true
+
       const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols

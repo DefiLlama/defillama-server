@@ -66,7 +66,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
       ...obj,
       displayName: getChainDisplayName(chainName, true),
       name: chainName,
-      id: 'chain#'  + adapterKey,
+      id: 'chain#' + adapterKey,
       gecko_id: obj.geckoId,
       isChain: true,
       protocolType: ProtocolType.CHAIN,
@@ -93,7 +93,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     return { adapterKey, dimConfig }
   }
 
-  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap,})
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap, })
   const protocolMap = protocolAdaptors.reduce((acc, curr) => {
     acc[curr.id2] = curr
     return acc

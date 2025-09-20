@@ -28009,8 +28009,6 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "alkimi/index.js",
     twitter: "AlkimiExchange",
-	discord: "sQEkBSZbd7"
-	telegram: "Alkimi_Exchange"
     listedAt: 1757693764,
     dimensions: {
       fees: "alkimi"

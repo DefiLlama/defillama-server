@@ -43762,7 +43762,7 @@ const data3_2: Protocol[] = [
   {
     id: "4553",
     name: "MorpheusAI",
-    address: "arbitrum:0x092baadb7def4c3981454dd9c0a0d7ff07bcfc86", "ethereum:0xcbb8f1bda10b9696c57e13bc128fe674769dcec0", "base:0x7431ada8a591c955a994a21710752ef9b882b8e3"
+    address: "arbitrum:0x092baadb7def4c3981454dd9c0a0d7ff07bcfc86",
     symbol: "MOR",
     url: "https://mor.org",
     description:
@@ -43775,7 +43775,7 @@ It combines yield-powered tokenomics, decentralized compute, and open-source cod
     gecko_id: "morpheusai",
     cmcId: "31656",
     category: "AI Agents",
-    chains: ["Ethereum", "Arbitrum", "Base"],
+    chains: ["Ethereum"],
     forkedFrom: [],
     module: "MorpheusAI/index.js",
     twitter: "MorpheusAIs",

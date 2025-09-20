@@ -241,7 +241,8 @@ const data: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1689292800", "1689379200", "1689465600", "1689638400", "1689811309"],
         adapter: "synthetix"
-      }
+      },
+      "open-interest": "synthetix"
     }
   },
   {

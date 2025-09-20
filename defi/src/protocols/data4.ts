@@ -20641,7 +20641,7 @@ const data4: Protocol[] = [
     twitter: "CarbonTerminal",
     dimensions: {
       fees: "carbon",
-      dexs: "carbon"
+      derivatives: "carbon"
     }
   },
   {

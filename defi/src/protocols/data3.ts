@@ -63286,8 +63286,8 @@ const data3_2: Protocol[] = [
   {
     id: "5386",
     name: "Aster USDF",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     assetToken: "USDF",
     url: "https://www.asterdex.com/en/usdf",
     description:
@@ -64061,8 +64061,8 @@ const data3_2: Protocol[] = [
   {
     id: "5418",
     name: "Aster asBTC",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBTC is a BTC liquid staking token that accrue APY from stable trading strategies",
     chain: "Binance",
@@ -67130,8 +67130,8 @@ const data3_2: Protocol[] = [
   {
     id: "5558",
     name: "Aster asBNB",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBNB is a BNB liquid staking derivative that accrue rewards from Binance Launchpools, HODLer airdrops and Megadrops",
     chain: "Binance",

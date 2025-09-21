@@ -6003,8 +6003,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
     logo: `${baseIconsUrl}/aster.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "aster-2",
+    cmcId: "36341",
     chains: [],
     twitter: "Aster_DEX",
   },

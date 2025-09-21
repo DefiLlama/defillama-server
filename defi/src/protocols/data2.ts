@@ -9106,8 +9106,8 @@ const data2: Protocol[] = [
     id: "1772",
     name: "APX Bridge", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
     previousNames: ["ApolloX"],
-    address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
-    symbol: "APX",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.apollox.finance/en",
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",

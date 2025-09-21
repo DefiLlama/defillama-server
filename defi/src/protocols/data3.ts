@@ -50684,6 +50684,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "astherus/index.js",
     twitter: "Aster_DEX",
+    parentProtocol: "parent#astherus",
     listedAt: 1720175975,
   },
   {

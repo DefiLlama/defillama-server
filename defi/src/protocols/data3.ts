@@ -42113,6 +42113,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://hyperliquid.gitbook.io/hyperliquid-docs/audits"],
     twitter: "HyperliquidX",
     listedAt: 1713225288,
+    parentProtocol: "parent#hyperliquid",
   },
   /*{ // Delisted and re-listed under new listing id:5761
     id: "4482",

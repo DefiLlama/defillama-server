@@ -33,6 +33,10 @@ export async function bracket(timestamp: number = 0) {
       underlying: assets[i],
       price: balances[i] / 1e12,
     };
+    pricesObject[wrapped[i]] = {
+      underlying: assets[i],
+      price: balances[i] / 1e12,
+    };
   });
 
   return getWrites({

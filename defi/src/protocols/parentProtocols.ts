@@ -3591,8 +3591,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "yearnfi",
     treasury: "yearn.js",
-    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
-    github: ["iearn-finance", "yearn"],
+    governanceID: ["snapshot:veyfi.eth"],
+    github: ["yearn"],
   },
   {
     id: "parent#orion-protocol",
@@ -6003,8 +6003,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
     logo: `${baseIconsUrl}/aster.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "aster-2",
+    cmcId: "36341",
     chains: [],
     twitter: "Aster_DEX",
   },
@@ -6776,7 +6776,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://centrifuge.io/",
     description: "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
     logo: `${baseIconsUrl}/centrifuge.jpg`,
-    gecko_id: "centrifuge",
+    gecko_id: "centrifuge-2",
     cmcId: "6748",
     chains: [],
     twitter: "centrifuge",
@@ -8039,6 +8039,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BabyDogeCoin",
     governanceID: ["snapshot:babydogevote.eth"],
+  },
+  {
+    id: "parent#injective-orderbook",
+    name: "Injective Orderbook",
+    url: "https://injective.com/",
+    description: "Injective Orderbook is a fully on-chain central limit order book and the liquidity layer of Injective.",
+    logo: `${baseIconsUrl}/injective-orderbook.jpg`,
+    gecko_id: "injective-protocol",
+    cmcId: "7226",
+    chains: [],
+    twitter: "injective",
   },
 ];
 

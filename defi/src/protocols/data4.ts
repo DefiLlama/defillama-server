@@ -6377,7 +6377,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Basis Trading",
-    chains: ["Bitcoin"],
+    chains: ["Bitcoin","Stacks"],
     forkedFrom: [],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",
@@ -7909,8 +7909,8 @@ const data4: Protocol[] = [
     name: "Extended",
     address: null,
     symbol: "-",
-    url: "https://app.extended.exchange/join/DEFILLAMAO",
-    referralUrl: "https://app.extended.exchange/join/DEFILLAMAO",
+    url: "https://app.extended.exchange/join/LLAMAS123",
+    referralUrl: "https://app.extended.exchange/join/LLAMAS123",
     description:
       "Extended is a perp DEX, built by ex-Revolut team, on a mission to offer the most extensive product portfolio in DeFi—featuring cross-asset collateral, unified margin, perps, spot, and lending markets.",
     chain: "Ethereum",
@@ -9455,7 +9455,7 @@ const data4: Protocol[] = [
   {
     id: "5948",
     name: "Centrifuge Protocol",
-    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    address: "0xcccccccccc33d538dbc2ee4feab0a7a1ff4e8a94",
     symbol: "CFG",
     url: "https://centrifuge.io",
     description:
@@ -11690,23 +11690,13 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Ethereum", "Arbitrum"],
     forkedFrom: [],
-    oraclesBreakdown: [
-      {
-        name: "Stork",
-        type: "Primary",
-        proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
-      },
-    ],
     module: "lighter-v2/index.js",
     twitter: "Lighter_xyz",
     parentProtocol: "parent#lighter",
     listedAt: 1744624979,
-    dimensions: {
-      derivatives: "lighterv2"
-    }
   },
   {
     id: "6043",
@@ -14654,7 +14644,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Chainlink",
-        type: "Primary",
+        type: "Reference",
         proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"],
       },
     ],
@@ -16947,14 +16937,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6256",
-    name: "BitcoinBridge.app",
+    name: "Permute",
+    previousNames: ["BitcoinBridge.app"],
     address: null,
     symbol: "-",
-    url: "https://www.bitcoinbridge.app/",
+    url: "https://permute.finance/",
     description:
-      "BitcoinBridge.app is a web app that lets users transfer assets between Ethereum and Bitcoin by connecting their wallets and initiating cross-chain transactions",
+      "Permute is a native Bitcoin bridge that enables BTC holders to move liquidity directly into DeFi ecosystems such as Ethereum, Avalanche, Arbitrum, BNB and more at ultra-low fees. Native BTC can finally move seamlessly across chains, unlocking lending, yield, and utility that was once out of reach",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitcoinbridge.app.jpg`,
+    logo: `${baseIconsUrl}/permute.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -16963,7 +16954,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Bitcoin"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "BitcoinBridge_",
+    twitter: "permute_finance",
     dimensions: {
       fees: "bitcoin-bridge",
       dexs: "bitcoin-bridge"
@@ -20650,7 +20641,7 @@ const data4: Protocol[] = [
     twitter: "CarbonTerminal",
     dimensions: {
       fees: "carbon",
-      dexs: "carbon"
+      derivatives: "carbon" 
     }
   },
   {
@@ -26306,7 +26297,7 @@ const data4: Protocol[] = [
     description: "Stocks on chain",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ondo-global-markets.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -26315,6 +26306,7 @@ const data4: Protocol[] = [
     module: "ondo-global-markets/index.js",
     twitter: "OndoFinance",
     forkedFrom: [],
+    audit_links: ["https://docs.ondo.finance/ondo-global-markets/trust-and-transparency"],
     parentProtocol: "parent#ondo-finance",
     listedAt: 1756900783,
     dimensions: {
@@ -27221,8 +27213,8 @@ const data4: Protocol[] = [
   {
     id: "6687",
     name: "Flat Money V2",
-    address: null,
-    symbol: "-",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://flat.money",
     description:
       "Flat Money is a smart contract protocol that allows users to mint UNIT, an on-chain flatcoin backed by liquid staking ETH.",
@@ -28005,7 +27997,7 @@ const data4: Protocol[] = [
     symbol: "ALKIMI",
     url: "https://labs.alkimi.org/",
     description:
-      "Alkimi is a decentralized advertising exchange that records ad impressions and spend data on-chain",
+      "Alkimi is a decentralised Ad Platform that records ad impressions and spend data on-chain. Alkimi is building AdFi or Decentralised Advertising Finance",
     chain: "Sui",
     logo: `${baseIconsUrl}/alkimi.jpg`,
     audits: "0",
@@ -28073,8 +28065,8 @@ const data4: Protocol[] = [
   {
     id: "6726",
     name: "Aster Perps",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/referral/c6eF10",
     referralUrl: "https://www.asterdex.com/en/referral/c6eF10",
     description: "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
@@ -28270,8 +28262,8 @@ const data4: Protocol[] = [
   {
     id: "6735",
     name: "Aster Spot",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/referral/c6eF10",
     referralUrl: "https://www.asterdex.com/en/referral/c6eF10",
     description: "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
@@ -28494,5 +28486,281 @@ const data4: Protocol[] = [
       fees: "interface-app"
     }
   },
+  {
+    id: "6745",
+    name: "Adrastea Restaking Operator",
+    address: null,
+    symbol: "-",
+    url: "https://adrastea.fi/",
+    description: "On-chain staking of user deposits with the Adrastea restaking operator",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/adrastea-restaking-operator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "adrastea-restaking-operator/index.js",
+    twitter: "AdrasteaFinance",
+    parentProtocol: "parent#adrastea",
+    listedAt: 1758218631
+  },
+  {
+    id: "6746",
+    name: "Gardens",
+    address: null,
+    symbol: "-",
+    url: "https://app.gardens.fund/",
+    description: "Gardens is a community governance platform optimized for bottom-up decision-making. Built using an enforceable Covenant tied to modular conviction voting pools, Gardens can source decisions and allocates resources to communities and ecosystems securely and intelligently",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/gardens.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Governance Incentives",
+    chains: ["Celo", "xDai", "Arbitrum", "Base", "Optimism", "Polygon"],
+    forkedFromIds: [],
+    module: "Gardens/index.js",
+    twitter: "gardens_fund", 
+    treasury: "gardens.js",
+    listedAt: 1758218847
+  },
+  /* we track this already https://defillama.com/protocol/felix-vaults
+  {
+    id: "6747",
+    name: "Felix Vanilla",
+    address: null,
+    symbol: "-",
+    url: "https://www.usefelix.xyz?ref=4BF702FF",
+    description: "Felix Vanilla provides a direct interface to Morpho Blue markets, allowing users to lend and borrow without the vault abstraction",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/felix-vanilla.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    module: "felix-vanilla/index.js",
+    twitter: "felixprotocol",
+    parentProtocol: "parent#felix",
+    listedAt: 1758219341
+  },
+  */
+  {
+    id: "6748",
+    name: "Moria Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://moria.money",
+    description: "Moria is a stablecoin protocol for secure, oracle-based borrowing against BCH collateral with 100% transparency of Proof-of-reserves MUSD",
+    chain: "Bitcoincash",
+    logo: `${baseIconsUrl}/moria-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Bitcoincash"],
+    forkedFromIds: [],
+    module: "moria/index.js",
+    twitter: "MoriaMoney",
+    audit_links: ["https://hashlock.com/audits/moria"],
+    listedAt: 1758219601
+  },
+  {
+    id: "6749",
+    name: "Injective Perps",
+    address: "ethereum:0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    symbol: "INJ",
+    url: "https://injective.com",
+    description: "Injective Perps is a fully on-chain derivatives protocol on Injective.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injective-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Injective"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "injective",
+    dimensions: {
+      derivatives: "injective-derivatives"
+    },
+    parentProtocol: "parent#injective-orderbook",
+  },
+  {
+    id: "6750",
+    name: "Injective Spot",
+    address: "ethereum:0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    symbol: "INJ",
+    url: "https://injective.com",
+    description: "Injective Spot is tracks spot trading on Injective orderbook.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injective-spot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Injective"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "injective",
+    dimensions: {
+      dexs: "injective-spot"
+    },
+    parentProtocol: "parent#injective-orderbook",
+  },
+  {
+    id: "6751",
+    name: "Lighter V2 Perps",
+    address: null,
+    symbol: "-",
+    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    description:
+      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
+    chain: "zkLighter",
+    logo: `${baseIconsUrl}/lighter-v2-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkLighter"],
+    forkedFrom: [],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.lighter.xyz/perpetual-futures/fair-price-marking"],
+      },
+    ],
+    module: "dummy.js",
+    twitter: "Lighter_xyz",
+    parentProtocol: "parent#lighter",
+    dimensions: {
+      derivatives: "lighterv2"
+    }
+  },
+  {
+    id: "6752",
+    name: "Lit.Trade",
+    address: null,
+    symbol: "-",
+    url: "https://app.lit.trade/spot",
+    description:
+      "Lit is a no-KYC crypto exchange powered by Hyperliquid, offering spot and perpetual trading with advanced order types, modular UI tools, and instant, zero-fee USDC deposits",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/lit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "lit_trade",
+    dimensions: {
+      fees: "lit-trade"
+    }
+  },
+  {
+    id: "6753",
+    name: "Migrate.Fun",
+    address: null,
+    symbol: "-",
+    url: "https://migrate.fun/",
+    description:
+      "migrate.fun is a migrations platform that allows for locked liquidity to migrate to new AMMS and launchpads through their automated protocol",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/migrate.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Solana"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "MigrateFun",
+    dimensions: {
+      fees: "migrate-fun"
+    }
+  },
+  {
+    id: "6754",
+    name: "OKX xBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.okx.com/xbtc#transparency",
+    description:
+      "xBTC is a wrapped token issued by OKX that strictly follows a 1:1 reserve mechanism",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/okx-xbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "okx-xbtc/index.js",
+    twitter: "okx",
+    listedAt: 1758557147
+  },
+  {
+    id: "6755",
+    name: "Vishwa",
+    address: null,
+    symbol: "-",
+    url: "https://vishwanetwork.xyz/",
+    description:
+      "An AI-Powered Orchestration Engine for Digital Finance — a single intelligent API enabling institutions and agents to seamlessly discover and execute optimal omni-chain strategies for liquidity, yield, and credit. All executions are supported by 1:1 hard-pegged proofs of assets generated through zk proofs",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/vishwa.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "vishwa/index.js",
+    twitter: "Vishwa_xyz",
+    audit_links: ["https://docs.vishwanetwork.xyz/security/audits-and-compliance"],
+    listedAt: 1758557154
+  },
+  {
+    id: "6756",
+    name: "Clovis",
+    address: null,
+    symbol: "-",
+    url: "https://clovis.network/",
+    description:
+      "Deposit once, earn everywhere. Earn real yields and Clovis points while supporting liquidity across chains",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/clovis.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Sei", "Ethereum", "Optimism", "Polygon", "Base", "Arbitrum", "Binance", "Avalanche", "Swellchain", "Hyperliquid L1"],
+    forkedFrom: [],
+    module: "clovis/index.js",
+    twitter: "YeiFinance",
+    audit_links: ["https://docs.clovis.network/security/audits"],
+    listedAt: 1758557164
+  },
+  
 ];
 export default data4;

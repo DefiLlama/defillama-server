@@ -1873,8 +1873,11 @@ export const chainCoingeckoIds = {
     symbol: "INJ",
     cmcId: null,
     categories: ["Cosmos"],
-    twitter: "Injective_",
+    twitter: "injective",
     url: "https://injective.com/",
+    dimensions: {
+      fees: "injective",
+    }
   },
   "Step": {
     geckoId: "stepex",
@@ -4923,6 +4926,9 @@ export const chainCoingeckoIds = {
     chainId: 9745,
   },
 } as unknown as ChainCoinGekcoIds
+
+// We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
+export const currentChainLabelsList = Object.keys(chainCoingeckoIds)
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 

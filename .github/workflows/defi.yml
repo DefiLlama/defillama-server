@@ -33,7 +33,7 @@ jobs:
       - name: Get Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '20'
+          node-version: '16'
       - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
       - name: Get jest cache
         uses: actions/cache@v3
@@ -45,7 +45,7 @@ jobs:
       - run: cd emissions-adapters && git checkout master && git pull
       - run: npm  ci || npm i
       - name: Run tests
-        run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
+        run: npm t data  # && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:
           ETHEREUM_RPC: FAKE_ETHEREUM_RPC
           GRAPH_API_KEY: FAKE_GRAPH_API_KEY

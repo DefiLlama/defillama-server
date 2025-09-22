@@ -492,8 +492,8 @@ const data: Protocol[] = [
   {
     id: "125",
     name: "mStable CDP",
-    address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
-    symbol: "MTA",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://mstable.org/",
     description: "mStable unites stablecoins, lending and swapping into one standard.",
     chain: "Ethereum",
@@ -5542,7 +5542,7 @@ const data: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "injective/index.js",
-    twitter: "injective_",
+    twitter: "injective",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
     oracles: ["Chainlink", "Band", "DIA"],
   },
@@ -9258,7 +9258,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "509",
     name: "Tinlake",
     //  previousNames: ["Centrifuge"],
-    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    address: "0xcccccccccc33d538dbc2ee4feab0a7a1ff4e8a94",
     symbol: "CFG",
     url: "https://tinlake.centrifuge.io",
     description: "Centrifuge is an open market place of real-world asset pools. Investments earn rewards in CFG token.",
@@ -22466,8 +22466,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "gearbox",
     cmcId: "16360",
     category: "Lending",
-    chains: ["Ethereum"],
-    oracles: ["Chainlink", "RedStone"],
+    chains: ["Ethereum", "Hemi"],
     module: "gearbox/index.js",
     treasury: "gearbox.js",
     twitter: "GearboxProtocol",
@@ -22475,6 +22474,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     governanceID: ["snapshot:gearbox.eth"],
     listedAt: 1640629561,
     github: ["Gearbox-protocol"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],      
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.gearbox.finance/risk-and-security/risks-terms"],
+        chains: [{chain: "Ethereum"}],
+      },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10609"],
+        chains: [{chain: "Hemi"}],
+      },
+    ],
     dimensions: {
       fees: "gearbox"
     }

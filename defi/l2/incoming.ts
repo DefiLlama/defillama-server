@@ -59,6 +59,5 @@ export async function fetchIncoming(params: {
     })
   );
 
-  console.log("DBUG incoming done");
   return data;
 }

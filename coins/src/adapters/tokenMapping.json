@@ -421,7 +421,7 @@
     "0x84f682626302EA7BCA2A7c338b84863292131319": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0xf4e097E36d2064E2bDCA96e60439f3A369522003": {
       "decimals": "18",
@@ -962,7 +962,7 @@
       "symbol": "TARA",
       "to": "coingecko#taraxa"
     }
-  }, 
+  },
   "ethereum": {
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
@@ -2918,7 +2918,7 @@
       "to": "coingecko#auro-usda",
       "decimals": 8,
       "symbol": "USDA"
-     },
+    },
     "0x81214a80d82035a190fcb76b6ff3c0145161c3a9f33d137f2bbaee4cfec8a387": {
       "to": "coingecko#okx-wrapped-btc",
       "decimals": 8,

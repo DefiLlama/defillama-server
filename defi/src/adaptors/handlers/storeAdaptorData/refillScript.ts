@@ -206,7 +206,7 @@ async function refillAllProtocols() {
     console.error("Timeout reached, exiting from refillAllProtocols...")
     process.exit(1)
   }, 1000 * 60 * 60 * 4) // 4 hours
-  let timeRange = 90 // 3 months
+  let timeRange = 365 // 1 year
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange
   const startTime = Math.floor(Date.now() / 1000) - timeRange * 24 * 60 * 60
@@ -235,7 +235,7 @@ async function refillAllProtocols() {
     let { protocolAdaptors } = dataModule
 
     // randomize the order of execution
-    protocolAdaptors = protocolAdaptors.sort(() => Math.random() - 0.5)
+    protocolAdaptors = protocolAdaptors.filter((protocol: any) => !protocol.isDead && !protocol._stat_runAtCurrTime).sort(() => Math.random() - 0.5)
 
     await PromisePool
       .withConcurrency(5)
@@ -250,9 +250,9 @@ async function refillAllProtocols() {
     let currentDayEndTimestamp = yesterday
     let i = 0
     let errorCount = 0
-    let parallelCount = 9
+    let parallelCount = 7
     let runner = []
-    while (currentDayEndTimestamp > startTime) {
+    while (currentDayEndTimestamp > startTime && errorCount < 5) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
@@ -285,9 +285,9 @@ async function refillAllProtocols() {
           try {
             errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
           } catch (e) { }
-          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
+          console.log(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
           if (errorCount > 3) {
-            console.error('Too many errors, stopping the script')
+            console.log('Too many errors, stopping the script', protocolName, errorCount)
             return
           }
         }

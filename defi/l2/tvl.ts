@@ -15,6 +15,7 @@ import { saveRawBridgedTvls } from "./raw";
 export default async function main(override?: boolean, timestamp?: number) {
   let symbolMap: { [pk: string]: string | null } = {};
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp, symbolMap });
+  console.log("DBUG canonical done");
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }, excludedTvls] = await Promise.all([
     fetchMinted({
       chains: canonical,
@@ -67,8 +68,11 @@ export default async function main(override?: boolean, timestamp?: number) {
   });
 
   if (!timestamp && override != true) await verifyChanges(chains);
+  console.log("DBUG verify changes done");
 
   await saveRawBridgedTvls(chains, symbolMap);
+
+  console.log("DBUG save raw done");
 
   return chains;
 }

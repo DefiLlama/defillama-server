@@ -35,6 +35,7 @@ export async function fetchMinted(params: {
 
           let storedTokens = await fetchAllTokens(chain);
 
+          console.log(`DBUG storedTokens done for ${chain}`);
           // filter any tokens that arent natively minted
           incomingTokens.map((t: Address) => {
             const i = storedTokens.indexOf(t);
@@ -43,6 +44,7 @@ export async function fetchMinted(params: {
           });
 
           if (chain == "cardano") storedTokens = await fetchAdaTokens();
+          console.log(`DBUG adaTokens done for ${chain}`);
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address
@@ -116,6 +118,8 @@ export async function fetchMinted(params: {
           console.log(`DBUG finding dollar values for ${chain}`);
 
           findDollarValues();
+
+          console.log(`DBUG dollar values done for ${chain}`);
 
           tvlData[chain] = dollarValues;
         } catch (e) {

@@ -32,6 +32,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
       const isDead = moduleObject.deadFrom || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.deadFrom)
+      const runAtCurrentTime = moduleObject.runAtCurrTime || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.runAtCurrTime)
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []
@@ -67,7 +68,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         methodologyURL: 'https://github.com/DefiLlama/dimension-adapters/blob/master/' + adapterObj.codePath,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
-        _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
+        _stat_runAtCurrTime: runAtCurrentTime,
         _stat_allowNegative: !!adapterObj.module.default?.allowNegativeValue,
         doublecounted: moduleObject.doublecounted ?? false,
       } as any

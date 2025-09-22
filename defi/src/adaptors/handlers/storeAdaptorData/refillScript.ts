@@ -235,7 +235,7 @@ async function refillAllProtocols() {
     let { protocolAdaptors } = dataModule
 
     // randomize the order of execution
-    protocolAdaptors = protocolAdaptors.filter(protocol => !protocol.isDead).sort(() => Math.random() - 0.5)
+    protocolAdaptors = protocolAdaptors.filter((protocol: any) => !protocol.isDead && !protocol._stat_runAtCurrTime).sort(() => Math.random() - 0.5)
 
     await PromisePool
       .withConcurrency(5)

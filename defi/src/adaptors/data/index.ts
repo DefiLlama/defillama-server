@@ -210,14 +210,19 @@ function getLogoKey(key: string) {
   else return key.toLowerCase()
 }
 
-/* 
+/*
 
+const statsTable: any = {}
 ADAPTER_TYPES.forEach((adapterType) => {
   const { protocolAdaptors } = loadAdaptorsData(adapterType)
   const totalCount = protocolAdaptors.length
   const deadCount = protocolAdaptors.filter(p => p.isDead).length
   const liveCount = totalCount - deadCount
-  console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}`)
+  const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
+  // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
+  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime }
 })
+
+console.table(statsTable)
 
 */

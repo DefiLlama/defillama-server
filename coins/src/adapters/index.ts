@@ -169,4 +169,5 @@ export default {
   stakingPools: require("./solana/stakingPools"),
   fluidSmartLending: require("./markets/fluidSmartLending"),
   rhea: require("./markets/rhea"),
+  bracket: require("./yield/bracket"),
 };

@@ -348,6 +348,11 @@
       "to": "coingecko#dinero-staked-eth",
       "decimals": 8,
       "symbol": "pxETH"
+    },
+    "0x876a4b7bce8aeaef60464c11f4026903e9afacab79b9b142686158aa86560b50::xbtc::XBTC": {
+      "to": "coingecko#okx-wrapped-btc",
+      "decimals": 8,
+      "symbol": "xBTC"
     }
   },
   "neutron": {
@@ -2903,6 +2908,11 @@
       "to": "coingecko#auro-finance",
       "decimals": 8,
       "symbol": "AURO"
+    },
+    "0x81214a80d82035a190fcb76b6ff3c0145161c3a9f33d137f2bbaee4cfec8a387": {
+      "to": "coingecko#okx-wrapped-btc",
+      "decimals": 8,
+      "symbol": "xBTC"
     }
   },
   "velas": {
@@ -3545,6 +3555,11 @@
       "decimals": "5",
       "symbol": "GUAC",
       "to": "coingecko#guacamole"
+    },
+    "CtzPWv73Sn1dMGVU3ZtLv9yWSyUAanBni19YWDaznnkn": {
+      "decimals": "8",
+      "symbol": "xBTC",
+      "to": "coingecko#okx-wrapped-btc"
     }
   },
   "ton": {

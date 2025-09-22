@@ -515,6 +515,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x5555555555555555555555555555555555555555",
     address: "0x4DE03cA1F02591B717495cfA19913aD56a2f5858",
   },
+  sigmaSP: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:nav",
+        target: "0x2b9c1f069ddcd873275b3363986081bda94a3aa3",
+      });
+      return rate / 1e18;
+    },
+    chain: "bsc",
+    underlying: "0x55d398326f99059fF775485246999027B3197955",
+    address: "0x2b9c1f069ddcd873275b3363986081bda94a3aa3",
+  },
 };
 
 export async function derivs(timestamp: number) {

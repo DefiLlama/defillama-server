@@ -286,6 +286,20 @@ const configs: { [adapter: string]: Config } = {
     decimals: "6",
     symbol: "bLUNA",
   },
+  ALP: {
+    rate: async () => {
+      const data = await fetch(
+        "https://lite-api.jup.ag/price/v3?ids=4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+      ).then((r) => r.json());
+      return data["4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj"].usdPrice;
+    },
+    chain: "solana",
+    address: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+    underlying: "usd-coin",
+    underlyingChain: "coingecko",
+    decimals: "6",
+    symbol: "ALP",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {

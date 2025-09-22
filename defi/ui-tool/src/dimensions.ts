@@ -6,6 +6,7 @@ import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/hand
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
+import sleep from "../../src/utils/shared/sleep";
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
@@ -70,7 +71,6 @@ export async function runDimensionsRefill(ws: any, args: any) {
           isDryRun: args.dryRun,
           protocolNames,
           isRunFromRefillScript: true,
-          delayBetweenRuns,
           checkBeforeInsert,
         }
         items.push(eventObj)
@@ -87,7 +87,6 @@ export async function runDimensionsRefill(ws: any, args: any) {
         isDryRun: args.dryRun,
         protocolNames,
         isRunFromRefillScript: true,
-        delayBetweenRuns,
         checkBeforeInsert,
       }
       items.push(eventObj)
@@ -103,6 +102,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
     .process(async (eventObj: any) => {
       console.log(++i, 'refilling data on', new Date((eventObj.timestamp) * 1000).toLocaleDateString())
       const response = await handler2(eventObj)
+      if (delayBetweenRuns > 0) await sleep(delayBetweenRuns * 1000)
       if (checkBeforeInsert && response?.length)
         response.forEach((r: any) => {
           if (!r) return;

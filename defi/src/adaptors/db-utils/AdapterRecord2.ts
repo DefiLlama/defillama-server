@@ -20,11 +20,6 @@ type DataJSON = {
   aggregated: {
     [key in AdaptorRecordType]?: IRecordAdaptorRecordData
   },
-  breakdown?: {
-    [versionKey: string]: {
-      [key in AdaptorRecordType]?: IRecordAdaptorRecordData
-    }
-  }
 }
 
 export class AdapterRecord2 {

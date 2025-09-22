@@ -8,6 +8,7 @@ docker
 .esbuild
 src/utils/imports/adapters.ts
 src/utils/imports/tvlAdapterData.json
+src/utils/imports/protocols.json
 src/utils/imports/adapters_volumes.ts
 src/utils/imports/adapters_fees.ts
 src/utils/imports/aggregator-derivatives_adapters.ts
@@ -19,6 +20,7 @@ src/utils/imports/aggregators_adapters.ts
 src/utils/imports/incentives_adapters.ts
 src/utils/imports/protocols_adapters.ts
 src/utils/imports/emissions_adapters.ts
+src/utils/imports/dimensions_adapters.json
 src/utils/imports/bridge-aggregators_adapters.ts
 src/emissions/utils/*.png
 .vscode

@@ -235,7 +235,7 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
 
     const baseTokenInfo =
       marketInfo.symbol === "ALP"
-        ? baseTokenPricesFromSolana[`solana#${ALP_MINT}`]
+        ? baseTokenPricesFromSolana[marketInfo.mintAddress]
         : baseTokenPricesFromCoingecko[
             `coingecko#${baseTokens[marketInfo.unit]}`
           ];

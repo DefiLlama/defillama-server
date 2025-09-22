@@ -356,7 +356,7 @@
     "nibi1cehpv50vl90g9qkwwny8mw7txw79zs6f7wsfe8ey7dgp238gpy4qhdqjhm": {
       "decimals": "6",
       "symbol": "xNIBI",
-      "to": "coingecko#astrovault-xnibi"
+      "to": "coingecko#nibiru"
     },
     "0x0CaCF669f8446BeCA826913a3c6B96aCD4b02a97": {
       "decimals": "18",
@@ -378,6 +378,16 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
+    "0x84f682626302EA7BCA2A7c338b84863292131319": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
+    },
+    "0xf4e097E36d2064E2bDCA96e60439f3A369522003": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#tether"
+    },
     "0xfCfc58685101e2914cBCf7551B432500db84eAa8": {
       "decimals": "18",
       "symbol": "MIM",
@@ -397,6 +407,21 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0x1d1715ecE22A6Ab6349196e7054E61de3Ac2Ea3D": {
+      "decimals": "18",
+      "symbol": "ynETHx",
+      "to": "coingecko#yneth-max"
+    },
+    "0x9568F2AFd09D845D48Cf999244e18B1a9467eAdB": {
+      "decimals": "8",
+      "symbol": "cbBTC",
+      "to": "coingecko#coinbase-wrapped-btc"
+    },
+    "0xd59be1Da2e9B30b6f7aB27b2D08f841B39c349fa": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#ubtc"
     },
     "0x7168634Dd1ee48b1C5cC32b27fD8Fc84E12D00E6": {
       "decimals": "6",

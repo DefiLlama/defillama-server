@@ -255,7 +255,7 @@ async function refillAllProtocols() {
     while (currentDayEndTimestamp > startTime && errorCount < 5) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
-        console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
+        // console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
         const eventObj: IStoreAdaptorDataHandlerEvent = {
           timestamp: currentDayEndTimestamp,
           adapterType,

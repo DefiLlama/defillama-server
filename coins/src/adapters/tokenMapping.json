@@ -9417,6 +9417,11 @@
     }
   },
   "soneium": {
+    "0xBC63230d1C4d0Cd241D66F5AaE75f3D1d6C0949a": {
+      "to": "coingecko#elysia",
+      "decimals": 18,
+      "symbol": "EL"
+    },
     "0x2a52b289ba68bbd02676640aa9f605700c9e5699": {
       "to": "coingecko#resolv-wstusr",
       "decimals": 18,

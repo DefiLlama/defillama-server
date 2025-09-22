@@ -103,6 +103,9 @@ export async function getPrices(
         "coin prices"
       );
       tokenData.push(res);
+    })
+    .catch((e) => {
+      throw new Error(`coin prices call failed with ${e}`);
     });
 
   const aggregatedRes: { [address: string]: CoinsApiData } = {};
@@ -148,6 +151,9 @@ export async function getMcaps(
         "mcaps"
       );
       tokenData.push(res);
+    })
+    .catch((e) => {
+      throw new Error(`coin mcaps call failed with ${e}`);
     });
 
   const aggregatedRes: { [address: string]: any } = {};

@@ -962,8 +962,13 @@
       "symbol": "TARA",
       "to": "coingecko#taraxa"
     }
-  },
+  }, 
   "ethereum": {
+    "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
+      "decimals": "6",
+      "symbol": "MoreXRP",
+      "to": "coingecko#ripple"
+    },
     "0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186": {
       "decimals": "18",
       "symbol": "MUSD",

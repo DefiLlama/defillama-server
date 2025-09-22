@@ -96,7 +96,7 @@ async function run() {
     for (const protocolInfo of Object.values(dimensionProtocolMap) as any) {
       const summary = {} as any
       summaries.push(summary)
-      const keys = ['id', 'id2', 'name', 'versionKey', 'protocolType', 'category', 'chain', 'chains', 'module', 'defillamaId']
+      const keys = ['id', 'id2', 'name', 'protocolType', 'category', 'chain', 'chains', 'module', 'defillamaId']
       keys.forEach(key => summary[key] = protocolInfo[key] ?? null)
       if (protocolInfo.childProtocols?.length)
         summary.childProtocols = protocolInfo.childProtocols.map((child: any) => {

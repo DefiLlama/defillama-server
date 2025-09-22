@@ -53,6 +53,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     crvPlain3andSUSD: "0xC25a3A3b969415c80451098fa907EC722572917F", // sunset
     MSTR: "0x306227d964511a260d14563fbfa82aa75db404b2",
     yieldETH: "0xb5b29320d2dde5ba5bafa1ebcd270052070483ec",
+    "crvCRVETH-gauge": "0x1cebdb0856dd985fae9b8fea2262469360b8a3a6",
+    crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

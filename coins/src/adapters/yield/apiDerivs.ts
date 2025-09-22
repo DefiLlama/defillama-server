@@ -46,7 +46,8 @@ const configs: { [adapter: string]: Config } = {
       ).then((r) => r.json());
       if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
       const { timestamp, price } = res.data.prices[0];
-      if (t - timestamp > margin) throw new Error(`LiNEAR subgraph stale rate`);
+      if (t - timestamp.substring(0, 10) > margin)
+        throw new Error(`LiNEAR subgraph stale rate`);
       return price;
     },
     underlyingChain: "ethereum",

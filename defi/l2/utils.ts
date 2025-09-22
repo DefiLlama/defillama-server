@@ -65,7 +65,7 @@ export async function getPrices(
   timestamp: number | "now"
 ): Promise<{ [address: string]: CoinsApiData }> {
   if (!readKeys.length) return {};
-  const readRequests: any[] = [];
+  const bodies: string[] = [];
   for (let i = 0; i < readKeys.length; i += 100) {
     const body = {
       coins: readKeys.slice(i, i + 100),
@@ -73,8 +73,14 @@ export async function getPrices(
     if (timestamp !== "now") {
       body.timestamp = timestamp;
     }
-    readRequests.push(
-      restCallWrapper(
+    bodies.push(JSON.stringify(body));
+  }
+
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(bodies)
+    .process(async (body) => {
+      const res = await restCallWrapper(
         () =>
           fetch(
             `https://coins.llama.fi/prices?source=internal${
@@ -82,7 +88,7 @@ export async function getPrices(
             }`,
             {
               method: "POST",
-              body: JSON.stringify(body),
+              body,
               headers: { "Content-Type": "application/json" },
             }
           )
@@ -95,17 +101,9 @@ export async function getPrices(
             ),
         undefined,
         "coin prices"
-      )
-    );
-  }
-
-  const tokenData = await Promise.all(readRequests);
-  // const tokenData: any[] = [];
-  // await PromisePool.withConcurrency(10)
-  //   .for(readRequests)
-  //   .process(async (request) => {
-  //     tokenData.push(await request());
-  //   });
+      );
+      tokenData.push(res);
+    });
 
   const aggregatedRes: { [address: string]: CoinsApiData } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
@@ -127,7 +125,7 @@ export async function getMcaps(
   timestamp: number | "now"
 ): Promise<{ [address: string]: McapsApiData }> {
   if (!readKeys.length) return {};
-  const readRequests: any[] = [];
+  const bodies: string[] = [];
   for (let i = 0; i < readKeys.length; i += 100) {
     const body = {
       coins: readKeys.slice(i, i + 100),
@@ -135,27 +133,25 @@ export async function getMcaps(
     if (timestamp !== "now") {
       body.timestamp = timestamp;
     }
-    readRequests.push(
-      restCallWrapper(
+    bodies.push(JSON.stringify(body));
+  }
+
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(bodies)
+    .process(async (body) => {
+      const res = await restCallWrapper(
         () =>
           fetch(`https://coins.llama.fi/mcaps${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""}`, {
             method: "POST",
-            body: JSON.stringify(body),
+            body,
             headers: { "Content-Type": "application/json" },
           }).then((r) => r.json()),
         undefined,
         "mcaps"
-      )
-    );
-  }
-
-  const tokenData = await Promise.all(readRequests);
-  // const tokenData: any[] = [];
-  // await PromisePool.withConcurrency(10)
-  //   .for(readRequests)
-  //   .process(async (request) => {
-  //     tokenData.push(await request());
-  //   });
+      );
+      tokenData.push(res);
+    });
 
   const aggregatedRes: { [address: string]: any } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());

@@ -35,6 +35,7 @@ export async function fetchMinted(params: {
 
           let storedTokens = await fetchAllTokens(chain);
 
+          console.log(`DBUG storedTokens done for ${chain}`);
           // filter any tokens that arent natively minted
           incomingTokens.map((t: Address) => {
             const i = storedTokens.indexOf(t);
@@ -43,6 +44,7 @@ export async function fetchMinted(params: {
           });
 
           if (chain == "cardano") storedTokens = await fetchAdaTokens();
+          console.log(`DBUG adaTokens done for ${chain}`);
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address
@@ -54,16 +56,23 @@ export async function fetchMinted(params: {
             storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
             timestamp
           );
+
+          console.log(`DBUG prices done for ${chain}`);
+
           Object.keys(prices).map((p: string) => {
             if (p.startsWith("coingecko:")) prices[p].decimals = 0;
           });
           const mcaps = await getMcaps(Object.keys(prices), timestamp);
+
+          console.log(`DBUG mcaps done for ${chain}`);
 
           const supplies = await fetchSupplies(
             chain,
             Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
             params.timestamp
           );
+
+          console.log(`DBUG supplies done for ${chain}`);
 
           if ("tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" in supplies) console.log("tron USDT has a supply");
 
@@ -104,7 +113,12 @@ export async function fetchMinted(params: {
 
           const dollarValues: DollarValues = {};
           mcapData[chain] = {};
+
+          console.log(`DBUG finding dollar values for ${chain}`);
+
           findDollarValues();
+
+          console.log(`DBUG dollar values done for ${chain}`);
 
           tvlData[chain] = dollarValues;
         } catch (e) {

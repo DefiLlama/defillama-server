@@ -115,9 +115,6 @@ export async function getPrices(
     });
   });
 
-  const notPricedTokens = filterForNotTokens(readKeys, Object.keys(aggregatedRes));
-  await storeNotTokens(notPricedTokens);
-
   return aggregatedRes;
 }
 export async function getMcaps(
@@ -167,7 +164,6 @@ export async function getMcaps(
 async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Osmosis adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(3)
     .for(tokens)
@@ -177,19 +173,16 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
           (r) => r.json()
         );
         if (res && res.amount) supplies[`osmosis:${token}`] = res.amount.amount;
-        else notTokens.push(token);
       } catch (e) {
         // console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(1)
     .for(tokens)
@@ -203,13 +196,11 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
         ).then((r) => r.json());
         if (res && res.data && res.data.supply)
           supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
-        else notTokens.push(`aptos:${token}`);
       } catch (e) {
         console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 
@@ -294,7 +285,6 @@ async function getSolanaTokenSupply(
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(5)
     .for(tokens)
@@ -311,13 +301,11 @@ async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ 
           headers: { "Content-Type": "application/json" },
         }).then((r) => r.json());
         if (res && res.result && res.result.value) supplies[`sui:${token}`] = res.result.value;
-        else notTokens.push(`sui:${token}`);
       } catch (e) {
         console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 async function getEVMSupplies(
@@ -369,19 +357,13 @@ async function getEVMSupplies(
 
   return supplies;
 }
-export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Address[] {
-  const map: { [token: string]: boolean } = {};
-  notTokens.map((item) => (map[item] = true));
-  return tokens.filter((item) => !map[item]);
-}
+
 export async function fetchSupplies(
   chain: Chain,
-  contracts: Address[],
+  tokens: Address[],
   timestamp: number | undefined
 ): Promise<{ [token: string]: number }> {
   try {
-    const notTokens: string[] = []; //await fetchNotTokens(chain);
-    const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "osmosis") return await getOsmosisSupplies(tokens, timestamp);
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);

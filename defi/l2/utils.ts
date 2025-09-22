@@ -171,7 +171,7 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
         if (res && res.amount) supplies[`osmosis:${token}`] = res.amount.amount;
         else notTokens.push(token);
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 

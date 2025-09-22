@@ -28696,6 +28696,71 @@ const data4: Protocol[] = [
       fees: "migrate-fun"
     }
   },
+  {
+    id: "6754",
+    name: "OKX xBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.okx.com/xbtc#transparency",
+    description:
+      "xBTC is a wrapped token issued by OKX that strictly follows a 1:1 reserve mechanism",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/okx-xbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "okx-xbtc/index.js",
+    twitter: "okx",
+    listedAt: 1758557147
+  },
+  {
+    id: "6755",
+    name: "Vishwa",
+    address: null,
+    symbol: "-",
+    url: "https://vishwanetwork.xyz/",
+    description:
+      "An AI-Powered Orchestration Engine for Digital Finance — a single intelligent API enabling institutions and agents to seamlessly discover and execute optimal omni-chain strategies for liquidity, yield, and credit. All executions are supported by 1:1 hard-pegged proofs of assets generated through zk proofs",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/vishwa.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "vishwa/index.js",
+    twitter: "Vishwa_xyz",
+    audit_links: ["https://docs.vishwanetwork.xyz/security/audits-and-compliance"],
+    listedAt: 1758557154
+  },
+  {
+    id: "6756",
+    name: "Clovis",
+    address: null,
+    symbol: "-",
+    url: "https://clovis.network/",
+    description:
+      "Deposit once, earn everywhere. Earn real yields and Clovis points while supporting liquidity across chains",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/clovis.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Sei", "Ethereum", "Optimism", "Polygon", "Base", "Arbitrum", "Binance", "Avalanche", "Swellchain", "Hyperliquid L1"],
+    forkedFrom: [],
+    module: "clovis/index.js",
+    twitter: "YeiFinance",
+    audit_links: ["https://docs.clovis.network/security/audits"],
+    listedAt: 1758557164
+  },
   
 ];
 export default data4;

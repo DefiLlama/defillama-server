@@ -76,5 +76,6 @@ export async function getExcludedTvl(timestamp: number) {
     })
   );
 
+  console.log("DBUG excluded done");
   return TvlRecord;
 }

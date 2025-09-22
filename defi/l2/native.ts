@@ -1,6 +1,6 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
-import { McapData, TokenTvlData, DollarValues } from "./types";
+import { McapData, TokenTvlData, DollarValues, CoinsApiData } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
@@ -9,6 +9,7 @@ import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./util
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
 import { withTimeout } from "../src/utils/shared/withTimeout";
+import PromisePool from "@supercharge/promise-pool";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;
@@ -21,8 +22,9 @@ export async function fetchMinted(params: {
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
-  await Promise.all(
-    Object.keys(params.chains).map(async (chain: Chain) => {
+  await PromisePool.withConcurrency(5)
+    .for(Object.keys(params.chains))
+    .process(async (chain: Chain) => {
       await withTimeout(1000 * 60 * (params.override ? 120 : 20), minted(chain)).catch(() => {
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
@@ -77,7 +79,7 @@ export async function fetchMinted(params: {
 
               const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
 
-              if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol
+              if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol;
               const canonicalSymbols = Object.keys(params.chains[chain]);
               if (
                 canonicalSymbols.includes(symbol) &&
@@ -109,8 +111,8 @@ export async function fetchMinted(params: {
           console.error(`fetchMinted() failed for ${chain} with ${e}`);
         }
       }
-    })
-  );
+    });
 
+  console.log("DBUG minted done");
   return { tvlData, mcapData };
 }

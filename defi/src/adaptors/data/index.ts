@@ -1,5 +1,5 @@
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
@@ -209,3 +209,15 @@ function getLogoKey(key: string) {
   if (key.toLowerCase() === 'bsc') return 'binance'
   else return key.toLowerCase()
 }
+
+/* 
+
+ADAPTER_TYPES.forEach((adapterType) => {
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const totalCount = protocolAdaptors.length
+  const deadCount = protocolAdaptors.filter(p => p.isDead).length
+  const liveCount = totalCount - deadCount
+  console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}`)
+})
+
+*/

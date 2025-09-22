@@ -206,7 +206,7 @@ async function refillAllProtocols() {
     console.error("Timeout reached, exiting from refillAllProtocols...")
     process.exit(1)
   }, 1000 * 60 * 60 * 4) // 4 hours
-  let timeRange = 90 // 3 months
+  let timeRange = 365 // 1 year
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange
   const startTime = Math.floor(Date.now() / 1000) - timeRange * 24 * 60 * 60
@@ -235,7 +235,7 @@ async function refillAllProtocols() {
     let { protocolAdaptors } = dataModule
 
     // randomize the order of execution
-    protocolAdaptors = protocolAdaptors.sort(() => Math.random() - 0.5)
+    protocolAdaptors = protocolAdaptors.filter(protocol => !protocol.isDead).sort(() => Math.random() - 0.5)
 
     await PromisePool
       .withConcurrency(5)

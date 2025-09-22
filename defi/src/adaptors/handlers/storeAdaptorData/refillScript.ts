@@ -250,9 +250,9 @@ async function refillAllProtocols() {
     let currentDayEndTimestamp = yesterday
     let i = 0
     let errorCount = 0
-    let parallelCount = 9
+    let parallelCount = 7
     let runner = []
-    while (currentDayEndTimestamp > startTime) {
+    while (currentDayEndTimestamp > startTime && errorCount < 5) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
@@ -285,9 +285,9 @@ async function refillAllProtocols() {
           try {
             errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
           } catch (e) { }
-          console.error(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
+          console.log(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
           if (errorCount > 3) {
-            console.error('Too many errors, stopping the script')
+            console.log('Too many errors, stopping the script', protocolName, errorCount)
             return
           }
         }

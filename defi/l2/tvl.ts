@@ -15,7 +15,6 @@ import { saveRawBridgedTvls } from "./raw";
 export default async function main(override?: boolean, timestamp?: number) {
   let symbolMap: { [pk: string]: string | null } = {};
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp, symbolMap });
-  console.log("DBUG canonical done");
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }, excludedTvls] = await Promise.all([
     fetchMinted({
       chains: canonical,
@@ -34,7 +33,6 @@ export default async function main(override?: boolean, timestamp?: number) {
     timestamp,
     excludedTvls,
   });
-  console.log("DBUG native adjust done");
 
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;
@@ -57,7 +55,6 @@ export default async function main(override?: boolean, timestamp?: number) {
     native,
     ownTokens: {},
   });
-  console.log("DBUG translate done");
 
   // const displayChains: FinalData = {};
   Object.keys(chains).map((c: string) => {
@@ -71,8 +68,6 @@ export default async function main(override?: boolean, timestamp?: number) {
   console.log("DBUG verify changes done");
 
   await saveRawBridgedTvls(chains, symbolMap);
-
-  console.log("DBUG save raw done");
 
   return chains;
 }

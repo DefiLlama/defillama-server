@@ -2909,6 +2909,11 @@
       "decimals": 8,
       "symbol": "AURO"
     },
+    "0x534e4c3dc0f038dab1a8259e89301c4da58779a5d482fb354a41c08147e6b9ec": {
+      "to": "coingecko#auro-usda",
+      "decimals": 8,
+      "symbol": "USDA"
+     },
     "0x81214a80d82035a190fcb76b6ff3c0145161c3a9f33d137f2bbaee4cfec8a387": {
       "to": "coingecko#okx-wrapped-btc",
       "decimals": 8,

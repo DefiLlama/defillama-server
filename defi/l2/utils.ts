@@ -99,7 +99,12 @@ export async function getPrices(
     );
   }
 
-  const tokenData = await Promise.all(readRequests);
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(readRequests)
+    .process(async (request) => {
+      tokenData.push(await request());
+    });
 
   const aggregatedRes: { [address: string]: CoinsApiData } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
@@ -143,7 +148,12 @@ export async function getMcaps(
     );
   }
 
-  const tokenData = await Promise.all(readRequests);
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(readRequests)
+    .process(async (request) => {
+      tokenData.push(await request());
+    });
 
   const aggregatedRes: { [address: string]: any } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());

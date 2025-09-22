@@ -51,6 +51,7 @@ export async function fetchMinted(params: {
             : undefined;
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
+          console.log(`DBUG start for ${chain}`);
           // do these in order to lighten rpc, rest load
           const prices = await getPrices(
             storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),

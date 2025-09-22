@@ -13,7 +13,6 @@ import { ADAPTER_TYPES } from '../../data/types';
 
 // ================== Script Config ==================
 
-console.log(process.env.type, process.env.protocol, process.env.to, process.env.from, process.env.days, process.env.dry_run, process.env.confirm)
 let adapterType = process.env.type ?? AdapterType.DERIVATIVES
 let protocolToRun = process.env.protocol ?? 'bluefin' // either protocol display name, module name or id
 
@@ -42,8 +41,12 @@ DRY_RUN = false
  */
 let run = refillAdapter
 
-if (refillAllProtocolsMissing)
+if (refillAllProtocolsMissing) {
+  console.log('Refilling all protocols with missing data')
   run = refillAllProtocols
+} else {
+  console.log(process.env.type, process.env.protocol, process.env.to, process.env.from, process.env.days, process.env.dry_run, process.env.confirm)
+}
 
 
 // ================== Script Config end ==================
@@ -214,12 +217,11 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
-  for (const adapterType of aTypes) {
-    await runAdapterType(adapterType)
-  }
+  await Promise.all(aTypes.map(runAdapterType))
 
 
   async function runAdapterType(adapterType: AdapterType) {
+    console.log('Refilling missing datapoints for adapter type:', adapterType)
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {
       if (!adaptorDataMap[data.id]) adaptorDataMap[data.id] = new Set()
@@ -236,7 +238,7 @@ async function refillAllProtocols() {
     protocolAdaptors = protocolAdaptors.sort(() => Math.random() - 0.5)
 
     await PromisePool
-      .withConcurrency(10)
+      .withConcurrency(5)
       .for(protocolAdaptors)
       .process((protocol: any) => refillProtocol(protocol, adapterType))
   }
@@ -248,7 +250,7 @@ async function refillAllProtocols() {
     let currentDayEndTimestamp = yesterday
     let i = 0
     let errorCount = 0
-    let parallelCount = 5
+    let parallelCount = 9
     let runner = []
     while (currentDayEndTimestamp > startTime) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
@@ -266,7 +268,7 @@ async function refillAllProtocols() {
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
         try {
           if (runner.length >= parallelCount || (currentDayEndTimestamp <= startTime && runner.length > 0)) {
-             let firstError: any = null
+            let firstError: any = null
             await Promise.all(runner.map(p => p.catch((e) => {
               if (e) {
                 if (!firstError) firstError = e
@@ -289,6 +291,8 @@ async function refillAllProtocols() {
             return
           }
         }
+      } else {
+        currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
       }
     }
   }

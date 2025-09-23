@@ -46,7 +46,8 @@ const configs: { [adapter: string]: Config } = {
       ).then((r) => r.json());
       if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
       const { timestamp, price } = res.data.prices[0];
-      if (t - timestamp > margin) throw new Error(`LiNEAR subgraph stale rate`);
+      if (t - timestamp.substring(0, 10) > margin)
+        throw new Error(`LiNEAR subgraph stale rate`);
       return price;
     },
     underlyingChain: "ethereum",
@@ -285,6 +286,20 @@ const configs: { [adapter: string]: Config } = {
     underlyingChain: "coingecko",
     decimals: "6",
     symbol: "bLUNA",
+  },
+  ALP: {
+    rate: async () => {
+      const data = await fetch(
+        "https://lite-api.jup.ag/price/v3?ids=4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+      ).then((r) => r.json());
+      return data["4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj"].usdPrice;
+    },
+    chain: "solana",
+    address: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+    underlying: "usd-coin",
+    underlyingChain: "coingecko",
+    decimals: "6",
+    symbol: "ALP",
   },
 };
 

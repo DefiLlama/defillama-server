@@ -3,7 +3,7 @@ import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
-import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
+import { currentChainLabelsList, replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { excludeProtocolInCharts, hiddenCategoriesFromUISet, } from "./utils/excludeProtocols";
@@ -76,7 +76,7 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
-          ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
+          ...(protocol.deprecated ? { deprecated: protocol.deprecated } : {})
         };
       })
     )
@@ -159,11 +159,21 @@ export async function storeGetProtocols({
     };
   });
 
+
+  const chainsOutput = Object.entries(chains)
+    .sort((a, b) => b[1] - a[1])
+    .map((c) => c[0])
+
+  // includes chains that are not linked to any protocol but are in chainCoingeckoIds
+  const addedChainsSet = new Set(chainsOutput)
+  currentChainLabelsList.forEach((chain) => {
+    if (!addedChainsSet.has(chain)) chainsOutput.push(chain)
+  })
+
+
   const protocols2Data = {
     protocols: trimmedResponse,
-    chains: Object.entries(chains)
-      .sort((a, b) => b[1] - a[1])
-      .map((c) => c[0]),
+    chains: chainsOutput,
     protocolCategories: [...protocolCategoriesSet].filter((category) => category),
     parentProtocols,
   };

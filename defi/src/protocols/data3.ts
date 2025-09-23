@@ -32660,7 +32660,7 @@ const data3_1: Protocol[] = [
     category: "Cross Chain Bridge",
     chains: ["Bitcoin", "Arbitrum"],
     forkedFrom: [],
-    module: "garden/index.js",
+    module: "dummy.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
     parentProtocol: "parent#garden",
@@ -36079,7 +36079,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Dexs",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",
@@ -42113,6 +42113,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://hyperliquid.gitbook.io/hyperliquid-docs/audits"],
     twitter: "HyperliquidX",
     listedAt: 1713225288,
+    parentProtocol: "parent#hyperliquid",
   },
   /*{ // Delisted and re-listed under new listing id:5761
     id: "4482",
@@ -43766,7 +43767,7 @@ const data3_2: Protocol[] = [
     symbol: "MOR",
     url: "https://mor.org",
     description:
-      "Morpheus is the first incentivized peer-to-peer network of personal general purpose AIs that can execute Smart Contracts on behalf of a user, known as Smart Agents as well as global web3 infrastructure for decentralized AI solutions. Providing users open-source Smart Agents to connect to their wallets, Dapps, & smart contracts promises to open the world of Web3 to everyone.",
+      "Morpheus is the decentralized infrastructure layer where anyone can build, deploy, and scale AI without gatekeepers. It combines yield-powered tokenomics, decentralized compute, and open-source code into a permissionless network — with the native token MOR aligning incentives through daily emissions to four contributor groups: Capital, Compute, Code, and Builders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpheusai.jpg`,
     audits: "2",
@@ -63287,8 +63288,8 @@ const data3_2: Protocol[] = [
   {
     id: "5386",
     name: "Aster USDF",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     assetToken: "USDF",
     url: "https://www.asterdex.com/en/usdf",
     description:
@@ -64062,8 +64063,8 @@ const data3_2: Protocol[] = [
   {
     id: "5418",
     name: "Aster asBTC",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBTC is a BTC liquid staking token that accrue APY from stable trading strategies",
     chain: "Binance",
@@ -67131,8 +67132,8 @@ const data3_2: Protocol[] = [
   {
     id: "5558",
     name: "Aster asBNB",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBNB is a BNB liquid staking derivative that accrue rewards from Binance Launchpools, HODLer airdrops and Megadrops",
     chain: "Binance",

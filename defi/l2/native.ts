@@ -1,6 +1,6 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
-import { McapData, TokenTvlData, DollarValues } from "./types";
+import { McapData, TokenTvlData, DollarValues, CoinsApiData } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
@@ -9,6 +9,7 @@ import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./util
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
 import { withTimeout } from "../src/utils/shared/withTimeout";
+import PromisePool from "@supercharge/promise-pool";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;
@@ -21,8 +22,9 @@ export async function fetchMinted(params: {
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
-  await Promise.all(
-    Object.keys(params.chains).map(async (chain: Chain) => {
+  await PromisePool.withConcurrency(5)
+    .for(Object.keys(params.chains))
+    .process(async (chain: Chain) => {
       await withTimeout(1000 * 60 * (params.override ? 120 : 20), minted(chain)).catch(() => {
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
@@ -47,21 +49,29 @@ export async function fetchMinted(params: {
             : undefined;
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
+          console.log(`DBUG start for ${chain}`);
           // do these in order to lighten rpc, rest load
           const prices = await getPrices(
             storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
             timestamp
           );
+
+          console.log(`DBUG prices done for ${chain}`);
+
           Object.keys(prices).map((p: string) => {
             if (p.startsWith("coingecko:")) prices[p].decimals = 0;
           });
           const mcaps = await getMcaps(Object.keys(prices), timestamp);
+
+          console.log(`DBUG mcaps done for ${chain}`);
 
           const supplies = await fetchSupplies(
             chain,
             Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
             params.timestamp
           );
+
+          console.log(`DBUG supplies done for ${chain}`);
 
           if ("tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" in supplies) console.log("tron USDT has a supply");
 
@@ -77,7 +87,7 @@ export async function fetchMinted(params: {
 
               const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
 
-              if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol
+              if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol;
               const canonicalSymbols = Object.keys(params.chains[chain]);
               if (
                 canonicalSymbols.includes(symbol) &&
@@ -102,15 +112,17 @@ export async function fetchMinted(params: {
 
           const dollarValues: DollarValues = {};
           mcapData[chain] = {};
+
           findDollarValues();
+
+          console.log(`DBUG dollar values done for ${chain}`);
 
           tvlData[chain] = dollarValues;
         } catch (e) {
           console.error(`fetchMinted() failed for ${chain} with ${e}`);
         }
       }
-    })
-  );
+    });
 
   return { tvlData, mcapData };
 }

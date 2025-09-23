@@ -30,7 +30,8 @@ export interface ProtocolAdaptor extends Protocol {
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
-    doublecounted?: boolean
+    doublecounted?: boolean,
+    isDead?: boolean,
 }
 
 export interface IConfig {

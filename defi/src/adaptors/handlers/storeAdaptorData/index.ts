@@ -57,11 +57,18 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     fromTimestamp = getTimestampAtStartOfDayUTC(timestamp!)
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
 
-    if (toTimestamp * 1000 > Date.now()) {
-      console.log(`[${adapterType}] - cant refill data for today, it's not over yet`)
-      return;
-    }
+    const isEndInTheFuture = toTimestamp * 1000 > Date.now()
 
+    // we are making an exception for refilling adapters for today from the refill script
+    if (isEndInTheFuture) {
+      if (fromTimestamp * 1000 >= Date.now())
+        return;
+      else {
+        console.log(`Refilling today for ${adapterType}, but endTimestamp is in the future, adjusting to current time (10 minutes ago)`)
+        toTimestamp = Math.floor(Date.now() / 1000) - 10 * 60 // 10 minutes ago to avoid running for current hour which may be incomplete
+        fromTimestamp = toTimestamp - ONE_DAY_IN_SECONDS + 1
+      }
+    }
   } else if (runType === 'store-all') {
     fromTimestamp = timestampAnHourAgo - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
@@ -185,7 +192,16 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp
-      if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
+
+      if (isRunFromRefillScript) {
+        recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
+        const todayStartOfDay = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000))
+        if (toTimestamp >= todayStartOfDay) {
+          if (isAdapterVersionV1) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
+          recordTimestamp = toTimestamp
+        }
+      }
+
       // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC) - this led to record being stored on the next day of the 24 hour range?
 
       if (adaptor.deadFrom) {
@@ -291,7 +307,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
       if (noDataReturned) noDataReturned = Object.keys(adaptorRecordV2JSON.aggregated).length === 0
       if (noDataReturned && isRunFromRefillScript) {
-        console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        // console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
         return;
       }
 

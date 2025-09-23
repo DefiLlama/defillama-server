@@ -9258,7 +9258,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "509",
     name: "Tinlake",
     //  previousNames: ["Centrifuge"],
-    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    address: "0xcccccccccc33d538dbc2ee4feab0a7a1ff4e8a94",
     symbol: "CFG",
     url: "https://tinlake.centrifuge.io",
     description: "Centrifuge is an open market place of real-world asset pools. Investments earn rewards in CFG token.",

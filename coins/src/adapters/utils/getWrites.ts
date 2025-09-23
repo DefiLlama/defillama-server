@@ -60,7 +60,7 @@ export default async function getWrites(params: {
       const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
       let coinData: CoinData | undefined =
         coinsData[
-          underlyingChain ?? chain == "coingecko"
+          (underlyingChain ?? chain) == "coingecko"
             ? `coingecko#${underlying}`
             : underlying
         ];

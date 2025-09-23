@@ -17,9 +17,9 @@ export function cutStartWord(text: string, startWord: string) {
 
 export function coinToPK(coin: string) {
   const normalized = lowercaseAddress(coin);
-  if (distressedAssets[normalized] === true) {
-    return "distressed#invalid";
-  }
+  // if (distressedAssets[normalized] === true) {
+  //   return "distressed#invalid";
+  // }
   return coin.startsWith("coingecko:")
     ? `coingecko#${cutStartWord(coin, "coingecko:")}`
     : `asset#${normalized}`;

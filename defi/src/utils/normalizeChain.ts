@@ -3518,7 +3518,7 @@ export const chainCoingeckoIds = {
       types: ["L2"]
     },
   },
-  "Reya Network": {
+  "ReyaChain": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4927,6 +4927,9 @@ export const chainCoingeckoIds = {
   },
 } as unknown as ChainCoinGekcoIds
 
+// We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
+export const currentChainLabelsList = Object.keys(chainCoingeckoIds)
+
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
@@ -5185,6 +5188,7 @@ const newChainLabelMap = {
   "echelon_initia": "Echelon Initia",
   "proton": "XPR Network",
   "camp": "Camp Network",
+  "reya": "ReyaChain",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

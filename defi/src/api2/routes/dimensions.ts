@@ -322,4 +322,39 @@ export async function getProFeesRoute(req: HyperExpress.Request, res: HyperExpre
   return successResponse(res, data)
 }
 
+export async function getAggregatesFeesRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const includeBl = req.query_parameters.bl?.toLowerCase() === 'true'
+  
+  // Fetch aggregates data (monthly/quarterly)
+  const routeFile = `dimensions/aggregates/${protocolSlug}`
+  const data = await readRouteData(routeFile)
+  
+  if (!data) return errorResponse(res, `Aggregates fees data for protocol ${protocolName} not found`)
+  
+  const feesMetrics = [
+    'df', 'dr', 'duf', 'dhr', 'dcr', 'dssr', 'dpr', 'dbr', 'dtt', 'dar', 'daf'
+  ]
+  
+  const filteredMetrics: any = {}
+  Object.keys(data.metrics || {}).forEach(key => {
+    const baseKey = key.replace('bl', '')
+    const isBlMetric = key.endsWith('bl')
+    
+    if (feesMetrics.includes(baseKey)) {
+      if (includeBl || !isBlMetric) {
+        filteredMetrics[key] = data.metrics[key]
+      }
+    }
+  })
+  
+  if (!Object.keys(filteredMetrics).length) {
+    return errorResponse(res, `Aggregates fees data for protocol ${protocolName} not found`)
+  }
+  
+  const response = {...data, metrics: filteredMetrics }
+  return successResponse(res, response)
+}
+
 

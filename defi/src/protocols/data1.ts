@@ -241,7 +241,8 @@ const data: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1689292800", "1689379200", "1689465600", "1689638400", "1689811309"],
         adapter: "synthetix"
-      }
+      },
+      "open-interest": "synthetix"
     }
   },
   {
@@ -947,7 +948,8 @@ const data: Protocol[] = [
     language: "Cairo",
     dimensions: {
       fees: "dydx",
-      derivatives: "dydx"
+      derivatives: "dydx",
+      "open-interest": "dydx"
     }
   },
   {
@@ -5252,7 +5254,8 @@ const data: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1692230400"],
         adapter: "gmx-derivatives"
-      }
+      },
+      "open-interest": "gmx-derivatives"
     }
   },
   {
@@ -19407,7 +19410,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1638568951,
     dimensions: {
       fees: "drift-protocol-derivatives",
-      derivatives: "drift-protocol-derivatives"
+      derivatives: "drift-protocol-derivatives",
+      "open-interest": "drift-protocol-derivatives"
     }
   },
   {

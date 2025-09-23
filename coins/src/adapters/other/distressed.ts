@@ -89,6 +89,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
     clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
     MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
+    UXLINK:"0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1"
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",

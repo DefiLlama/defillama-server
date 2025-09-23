@@ -159,7 +159,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/fees/dtt-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/dexs/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/derivatives/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/derivatives/doi-lite").catch(() => ({ protocols: {} })),
+    readRouteData("/dimensions/open-interest/doi-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/aggregators/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dnv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/options/dpv-lite").catch(() => ({ protocols: {} })),

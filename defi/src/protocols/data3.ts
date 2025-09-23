@@ -4377,7 +4377,8 @@ const data3_1: Protocol[] = [
           "1749600000"
         ],
         adapter: "rabbitx"
-      }
+      },
+      "open-interest": "rabbitx"
     }
   },
   {
@@ -15929,7 +15930,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#swapbased",
     listedAt: 1691759429,
     dimensions: {
-      derivatives: "swapbased-perps"
+      derivatives: "swapbased-perps",
+      "open-interest": "swapbased-perps"
     }
   },
   {
@@ -19563,7 +19565,8 @@ const data3_1: Protocol[] = [
     listedAt: 1695037950,
     dimensions: {
       fees: "bmx",
-      derivatives: "bmx-derivatives"
+      derivatives: "bmx-derivatives",
+      "open-interest": "bmx-derivatives"
     }
   },
   {
@@ -21295,7 +21298,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1697328000", "1697414400"],
         adapter: "contango"
-      }
+      },
+      "open-interest": "contango"
     }
   },
   {
@@ -31170,7 +31174,8 @@ const data3_1: Protocol[] = [
     listedAt: 1705261389,
     dimensions: {
       fees: "fwx",
-      derivatives: "fwx"
+      derivatives: "fwx",
+      "open-interest": "fwx"
     }
   },
   {
@@ -32163,7 +32168,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1706140800"],
         adapter: "dydx-v4"
-      }
+      },
+      "open-interest": "dydx-v4"
     }
   },
   {
@@ -32458,7 +32464,8 @@ const data3_1: Protocol[] = [
     listedAt: 1706560048,
     dimensions: {
       fees: "jupiter-perpetual",
-      derivatives: "jupiter-perpetual"
+      derivatives: "jupiter-perpetual",
+      "open-interest": "jupiter-perpetual"
     }
   },
   {
@@ -33201,7 +33208,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1743552000"],
         adapter: "avantis"
-      }
+      },
+      "open-interest": "avantis"
     }
   },
   {
@@ -43057,7 +43065,7 @@ const data3_2: Protocol[] = [
     twitter: "HelixMarkets",
     forkedFrom: [],
     dimensions: {
-      dexs: "helix-markets"
+      dexs: "helix-markets",
     }
   },
   {
@@ -50074,7 +50082,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "apex-omni"
-      }
+      },
+      "open-interest": "apex-omni"
     }
   },
   {
@@ -52643,7 +52652,8 @@ const data3_2: Protocol[] = [
     listedAt: 1722042021,
     dimensions: {
       fees: "ostium",
-      derivatives: "ostium"
+      derivatives: "ostium",
+      "open-interest": "ostium"
     }
   },
   /*
@@ -56022,7 +56032,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp"
+      derivatives: "helix-helix-perp",
+      "open-interest": "helix-helix-perp"
     }
   },
   {
@@ -65835,7 +65846,8 @@ const data3_2: Protocol[] = [
     listedAt: 1734099051,
     dimensions: {
       fees: "mars-perp",
-      derivatives: "mars-perp"
+      derivatives: "mars-perp",
+      "open-interest": "mars-perp"
     }
   },
   {
@@ -66033,7 +66045,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1681846146,
     dimensions: {
-      derivatives: "hyperliquid-perp"
+      derivatives: "hyperliquid-perp",
+      "open-interest": "hyperliquid-perp"
     }
   },
   {

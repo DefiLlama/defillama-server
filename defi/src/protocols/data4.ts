@@ -289,7 +289,8 @@ const data4: Protocol[] = [
     listedAt: 1735583371,
     dimensions: {
       fees: "satoshi-perps",
-      derivatives: "satoshi-perps"
+      derivatives: "satoshi-perps",
+      "open-interest": "satoshi-perps"
     }
   },
   {
@@ -982,7 +983,8 @@ const data4: Protocol[] = [
     twitter: "grvt_io",
     listedAt: 1736334414,
     dimensions: {
-      derivatives: "grvt-perps"
+      derivatives: "grvt-perps",
+      "open-interest": "grvt-perps"
     }
   },
   {
@@ -2435,7 +2437,8 @@ const data4: Protocol[] = [
     listedAt: 1737641003,
     dimensions: {
       fees: "moonlander",
-      derivatives: "moonlander"
+      derivatives: "moonlander",
+      "open-interest": "moonlander"
     }
   },
   {
@@ -4294,7 +4297,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "wavex",
       dexs: "wavex-swap",
-      derivatives: "wavex-derivatives"
+      derivatives: "wavex-derivatives",
+      "open-interest": "wavex-derivatives"
     }
   },
   {
@@ -7933,7 +7937,8 @@ const data4: Protocol[] = [
     twitter: "extendedapp",
     listedAt: 1741703740,
     dimensions: {
-      derivatives: "extended"
+      derivatives: "extended",
+      "open-interest": "extended"
     }
   },
   {
@@ -26644,7 +26649,8 @@ const data4: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722988800", "1723075200"],
         adapter: "edgeX"
-      }
+      },
+      "open-interest": "edgex"
     }
   },
   {
@@ -27118,7 +27124,8 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.pacifica.fi/other/audits"],
     listedAt: 1757349667,
     dimensions: {
-      derivatives: "pacifica"
+      derivatives: "pacifica",
+      "open-interest": "pacifica"
     }
   },
   {
@@ -27278,7 +27285,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "Kalshi",
     dimensions: {
-      dexs: "kalshi"
+      dexs: "kalshi",
+      "open-interest": "kalshi"
     }
   },
   {
@@ -28085,7 +28093,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#astherus",
     dimensions: {
       fees: "apollox",
-      derivatives: "apollox"
+      derivatives: "apollox",
+      "open-interest": "apollox"
     }
   },
   {
@@ -28591,7 +28600,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "injective",
     dimensions: {
-      derivatives: "injective-derivatives"
+      derivatives: "injective-derivatives",
+      "open-interest": "injective-derivatives"
     },
     parentProtocol: "parent#injective-orderbook",
   },

@@ -11614,7 +11614,8 @@ const data2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1697328000", "1697414400", "1722816000", "1738540800"],
         adapter: "apex"
-      }
+      },
+      "open-interest": "apex"
     }
   },
   {

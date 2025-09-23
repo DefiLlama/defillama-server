@@ -36079,7 +36079,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Dexs",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",

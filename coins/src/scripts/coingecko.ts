@@ -22,6 +22,15 @@ import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import axios from "axios";
 
+// Kill the script after 5 minutes to prevent infinite execution
+const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
+const killTimeout = setTimeout(() => {
+  console.log(`Script execution exceeded ${TIMEOUT_MS/1000} seconds. Forcefully terminating.`);
+  process.exit(1); // Exit with error code 1 to indicate abnormal termination
+}, TIMEOUT_MS);
+// Make sure the timeout doesn't prevent the Node.js process from exiting naturally
+killTimeout.unref();
+
 enum COIN_TYPES {
   over100m = "over100m",
   over10m = "over10m",

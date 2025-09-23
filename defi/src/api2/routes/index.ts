@@ -24,6 +24,7 @@ import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getCexs } from "../../getCexs";
+import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -69,7 +70,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/rwa/stats", defaultFileHandler);
-  router.get("/chain-assets/raw", r2Wrapper({ endpoint: 'chainAssetsRaw' }));
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
@@ -101,7 +101,13 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/emissionsBreakdownAggregated", r2Wrapper({ endpoint: 'emissionsBreakdownAggregated' }))
   router.get("/emissionsSupplyMetrics", r2Wrapper({ endpoint: 'emissionsSupplyMetrics' }))
   router.get("/emission/:name", emissionProtocolHandler)
-  router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
+
+  router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }));
+  router.get("/chain-assets/chains", r2Wrapper({ endpoint: 'chainAssets' }));
+  router.get("/chain-assets/raw", r2Wrapper({ endpoint: 'chainAssetsRaw' }));
+  router.get("/chain-assets/chart/:chain", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: false, isHistorical: true })));
+  router.get("/chain-assets/flows/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: false })));
+  router.get("/chain-assets/historical-flows/:chain/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: true })));
 
   router.get("/twitter/overview", ew(getTwitterOverview))
   router.get("/twitter/user/:handle", ew(getTwitterData))
@@ -416,6 +422,22 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
   const name = req.path_parameters.name
   return returnR2Data({ endpoint: `emissions/${name}`, errorMessage: `protocol '${name}' has no chart to fetch`, res, parseJson: false })
 }
+
+async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.Response, params?: { isFlows: boolean, isHistorical: boolean }) {
+  let data;
+  try {
+    if (params?.isFlows) {
+      data = params?.isHistorical ? await chainAssetHistoricalFlows(req.path_parameters) : await chainAssetFlows();
+    } else {
+      data = await chainAssetChart(req.path_parameters);
+    }
+  } catch (e: any) {
+    return errorResponse(res, e.message)
+  }
+
+  return successResponse(res, data, 60);
+}
+
 
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')

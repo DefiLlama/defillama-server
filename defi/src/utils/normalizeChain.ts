@@ -5073,7 +5073,7 @@ const chainLabelMap = {
   "ailayer": "AILayer",
   "ox_chain": "OXFUN",
   "etlk": "Etherlink",
-  "reya": " Reya Network",
+  "reya": "Reya Network",
   "cronos_zkevm": "Cronos zkEVM",
   "band": "BandChain",
   "immutablex": "Immutable X",

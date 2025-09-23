@@ -212,6 +212,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     coinPlatformData[d.PK] = d;
   });
 
+
+  const redirectKeys = [
+    ...new Set(
+      coinPlatformDataArray
+        .map((c: any) => c.redirect)
+        .filter((c: string) => c != undefined),
+    ),
+  ];
+  const redirectDataArray: CgEntry[] = await batchGet(
+    redirectKeys.map((PK: string) => ({ PK, SK: 0 })),
+  );
+  const redirectData: { [key: string]: CgEntry } = {};
+  redirectDataArray.map((d: CgEntry) => {
+    redirectData[d.PK] = d;
+  });
+
   const pricesAndMcaps: {
     [key: string]: { price: number; mcap?: number };
   } = {};
@@ -225,6 +241,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
         coin,
+        redirectData,
         async (PK) => {
 
           if (!pricesAndMcaps[cgPK(coin.id)]) {

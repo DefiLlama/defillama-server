@@ -685,4 +685,14 @@ export const metadata: { [id: string]: Characteristics } = {
     transferable: true,
     selfCustody: true,
   },
+  "6692": {
+    symbols: ["BCAP"],
+    matchExact: true,
+    redeemable: false,
+    attestations: false,
+    cexListed: false,
+    kyc: true,
+    transferable: false,
+    selfCustody: true,
+  },
 };

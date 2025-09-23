@@ -70,6 +70,7 @@ const slug = (tokenName = "") => {
 };
 
 export async function storeAppMetadata() {
+  console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
   try {
     await pullRaisesDataIfMissing();
@@ -79,6 +80,7 @@ export async function storeAppMetadata() {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
   }
+  console.timeEnd("storeAppMetadata");
 }
 
 async function pullRaisesDataIfMissing() {

@@ -69,6 +69,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/rwa/stats", defaultFileHandler);
+  router.get("/chain-assets/raw", r2Wrapper({ endpoint: 'chainAssetsRaw' }));
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);

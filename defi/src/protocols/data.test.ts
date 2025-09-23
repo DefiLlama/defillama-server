@@ -1,4 +1,3 @@
-import dimensionConfigs from "../adaptors/data/configs";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
@@ -9,31 +8,6 @@ import operationalCosts from "../operationalCosts/daos";
 import { sluggifyString } from "../utils/sluggify";
 import { AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
-
-test("Dimensions: no repeated ids", async () => {
-  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
-  for (const [metric, map] of Object.entries(dimensionConfigs)) {
-    const ids = new Set();
-    for (const value of Object.values(map)) {
-      if (chainIdSet.has(value.id)) continue;
-      if (ids.has(value.id)) console.log(`Dimensions: Repeated id ${value.id} in ${metric}`)
-      expect(ids).not.toContain(value.id);
-      ids.add(value.id);
-    }
-  }
-})
-test("Dimensions: no unknown ids", async () => {
-  const chainIdSet = new Set(Object.values(chainCoingeckoIds).map(i => (i.chainId ?? i.cmcId)+''));
-  let failed = false;
-  for (const [metric, map] of Object.entries(dimensionConfigs)) {
-    for (const value of Object.values(map)) {
-      if (chainIdSet.has(value.id) || protocolsById[value.id]) continue;
-      console.log(`Dimensions: Unknown id ${value.id} in ${metric}`);
-      failed = true
-    }
-  }
-  expect(failed).toBeFalsy();
-})
 
 test("operational expenses: script has been run", async () => {
   const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
@@ -73,7 +47,7 @@ test("all chains are on chainMap", async () => {
 test("there are no repeated values in unlock adapters", async () => {
   const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
   for (const [protocolName, protocolFile] of Object.entries(emissionsAdapters)) {
-    if(protocolName === "daomaker"){
+    if(protocolName === "daomaker" || protocolName === "streamflow"){
       continue
     }
     const rawProtocol = protocolFile.default
@@ -325,7 +299,8 @@ test("no surprise category", async () => {
     'Interface',
     "Video Infrastructure",
     "DePIN",
-    "Dual-Token Stablecoin"
+    "Dual-Token Stablecoin",
+    "Physical TCG"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

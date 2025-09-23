@@ -344,6 +344,7 @@ const App = () => {
           dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
+          delayBetweenRuns: values.delayBetweenRuns || 0,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -371,7 +372,8 @@ const App = () => {
         initialValues={{
           parallelCount: 3,
           onlyMissing: false,
-          dryRun: false
+          dryRun: false,
+          delayBetweenRuns: 0,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -438,6 +440,14 @@ const App = () => {
           rules={[{ required: true, message: 'Please enter parallel count' }]}
         >
           <InputNumber min={1} max={100} />
+        </Form.Item>
+
+        <Form.Item
+          label="Delay Between Runs (seconds)"
+          name="delayBetweenRuns"
+          rules={[{ required: false, message: 'Please enter delay between runs' }]}
+        >
+          <InputNumber min={0} max={1000} />
         </Form.Item>
 
         {/*       <Form.Item

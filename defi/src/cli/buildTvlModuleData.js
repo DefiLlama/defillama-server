@@ -10,7 +10,7 @@ Object.keys(data).forEach((key) => {
       data[key].hallmarks = convertHallmarkStrings(data[key].hallmarks)
     }
   } catch (e) {
-    console.error(`Error processing ${key}:`, e)
+    console.info(`Error processing ${key}: skipping...`)
   }
 })
 fs.writeFileSync(adaptersFile, JSON.stringify(data))

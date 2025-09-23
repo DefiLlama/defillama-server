@@ -188,7 +188,18 @@ const marketInfos: MarketInfo[] = [
     oracleDecimals: 0,
     chain: "solana",
   },
+  {
+    address: "9KTy4xyUjjcg18U8FUco7xYYU1U2Abanu8D2xWhSFp2E",
+    mintAddress: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+    symbol: "ALP",
+    unit: "ALP",
+    decimals: 6,
+    oracleDecimals: 0,
+    chain: "solana",
+  },
 ];
+
+const ALP_MINT = "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj";
 
 export async function sandglass(timestamp: number = 0): Promise<Write[]> {
   if (timestamp != 0) return [];
@@ -203,9 +214,15 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
     }
   );
 
-  const baseTokenPrices = await getTokenAndRedirectDataMap(
+  const baseTokenPricesFromCoingecko = await getTokenAndRedirectDataMap(
     Object.values(baseTokens),
     "coingecko",
+    timestamp
+  );
+
+  const baseTokenPricesFromSolana = await getTokenAndRedirectDataMap(
+    [ALP_MINT],
+    "solana",
     timestamp
   );
 
@@ -217,7 +234,11 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
     );
 
     const baseTokenInfo =
-      baseTokenPrices[`coingecko#${baseTokens[marketInfo.unit]}`];
+      marketInfo.symbol === "ALP"
+        ? baseTokenPricesFromSolana[marketInfo.mintAddress]
+        : baseTokenPricesFromCoingecko[
+            `coingecko#${baseTokens[marketInfo.unit]}`
+          ];
     if (!baseTokenInfo) return;
 
     const decimals = 10 ** marketInfo.oracleDecimals;

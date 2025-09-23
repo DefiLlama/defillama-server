@@ -4377,7 +4377,8 @@ const data3_1: Protocol[] = [
           "1749600000"
         ],
         adapter: "rabbitx"
-      }
+      },
+      "open-interest": "rabbitx"
     }
   },
   {
@@ -15743,7 +15744,8 @@ const data3_1: Protocol[] = [
     listedAt: 1691622170,
     dimensions: {
       fees: "gmx-v2",
-      derivatives: "gmx-v2-gmx-v2-trade"
+      derivatives: "gmx-v2-gmx-v2-trade",
+      "open-interest": "gmx-v2-gmx-v2-trade"
     }
   },
   {
@@ -15928,7 +15930,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#swapbased",
     listedAt: 1691759429,
     dimensions: {
-      derivatives: "swapbased-perps"
+      derivatives: "swapbased-perps",
+      "open-interest": "swapbased-perps"
     }
   },
   {
@@ -19562,7 +19565,8 @@ const data3_1: Protocol[] = [
     listedAt: 1695037950,
     dimensions: {
       fees: "bmx",
-      derivatives: "bmx-derivatives"
+      derivatives: "bmx-derivatives",
+      "open-interest": "bmx-derivatives"
     }
   },
   {
@@ -21294,7 +21298,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1697328000", "1697414400"],
         adapter: "contango"
-      }
+      },
+      "open-interest": "contango"
     }
   },
   {
@@ -30801,13 +30806,13 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/injective.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "injective-protocol",
-    cmcId: "7226",
+    gecko_id: null,
+    cmcId: null,
     category: "Chain",
     chains: ["Injective"],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "Injective_",
+    twitter: "injective",
   },
   {
     id: "4012",
@@ -31169,7 +31174,8 @@ const data3_1: Protocol[] = [
     listedAt: 1705261389,
     dimensions: {
       fees: "fwx",
-      derivatives: "fwx"
+      derivatives: "fwx",
+      "open-interest": "fwx"
     }
   },
   {
@@ -32162,7 +32168,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1706140800"],
         adapter: "dydx-v4"
-      }
+      },
+      "open-interest": "dydx-v4"
     }
   },
   {
@@ -32457,7 +32464,8 @@ const data3_1: Protocol[] = [
     listedAt: 1706560048,
     dimensions: {
       fees: "jupiter-perpetual",
-      derivatives: "jupiter-perpetual"
+      derivatives: "jupiter-perpetual",
+      "open-interest": "jupiter-perpetual"
     }
   },
   {
@@ -32660,7 +32668,7 @@ const data3_1: Protocol[] = [
     category: "Cross Chain Bridge",
     chains: ["Bitcoin", "Arbitrum"],
     forkedFrom: [],
-    module: "garden/index.js",
+    module: "dummy.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
     parentProtocol: "parent#garden",
@@ -33200,7 +33208,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1743552000"],
         adapter: "avantis"
-      }
+      },
+      "open-interest": "avantis"
     }
   },
   {
@@ -35900,7 +35909,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709324603,
     dimensions: {
       fees: "synfutures-v3",
-      derivatives: "synfutures-v3"
+      derivatives: "synfutures-v3",
+      "open-interest": "synfutures-v3"
     }
   },
   {
@@ -36079,7 +36089,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Dexs",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",
@@ -41277,7 +41287,8 @@ const data3_2: Protocol[] = [
     listedAt: 1712327109,
     dimensions: {
       fees: "synthetix-v3",
-      derivatives: "synthetix-v3"
+      derivatives: "synthetix-v3",
+      "open-interest": "synthetix-v3"
     }
   },
   {
@@ -42113,6 +42124,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://hyperliquid.gitbook.io/hyperliquid-docs/audits"],
     twitter: "HyperliquidX",
     listedAt: 1713225288,
+    parentProtocol: "parent#hyperliquid",
   },
   /*{ // Delisted and re-listed under new listing id:5761
     id: "4482",
@@ -42604,8 +42616,8 @@ const data3_2: Protocol[] = [
     id: "4503",
     name: "Flat Money V1",
     //previousNames: ["Flat Money"],
-    address: null,
-    symbol: "-",
+    address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
+    symbol: "DHT",
     url: "https://flat.money",
     description:
       "New money with Flatcoin — 100% capital efficient, amplified purchasing power, backed by staked $rETH.",
@@ -43054,7 +43066,7 @@ const data3_2: Protocol[] = [
     twitter: "HelixMarkets",
     forkedFrom: [],
     dimensions: {
-      dexs: "helix-markets"
+      dexs: "helix-markets",
     }
   },
   {
@@ -43766,7 +43778,7 @@ const data3_2: Protocol[] = [
     symbol: "MOR",
     url: "https://mor.org",
     description:
-      "Morpheus is the first incentivized peer-to-peer network of personal general purpose AIs that can execute Smart Contracts on behalf of a user, known as Smart Agents as well as global web3 infrastructure for decentralized AI solutions. Providing users open-source Smart Agents to connect to their wallets, Dapps, & smart contracts promises to open the world of Web3 to everyone.",
+      "Morpheus is the decentralized infrastructure layer where anyone can build, deploy, and scale AI without gatekeepers. It combines yield-powered tokenomics, decentralized compute, and open-source code into a permissionless network — with the native token MOR aligning incentives through daily emissions to four contributor groups: Capital, Compute, Code, and Builders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpheusai.jpg`,
     audits: "2",
@@ -50071,7 +50083,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "apex-omni"
-      }
+      },
+      "open-interest": "apex-omni"
     }
   },
   {
@@ -52640,7 +52653,8 @@ const data3_2: Protocol[] = [
     listedAt: 1722042021,
     dimensions: {
       fees: "ostium",
-      derivatives: "ostium"
+      derivatives: "ostium",
+      "open-interest": "ostium"
     }
   },
   /*
@@ -56019,7 +56033,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp"
+      derivatives: "helix-helix-perp",
+      "open-interest": "helix-helix-perp"
     }
   },
   {
@@ -57637,7 +57652,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Arbitrum", "Ethereum", "Base"],
+    chains: ["Arbitrum", "Ethereum", "Base", "Unichain", "TAC", "Ink"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -63287,8 +63302,8 @@ const data3_2: Protocol[] = [
   {
     id: "5386",
     name: "Aster USDF",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     assetToken: "USDF",
     url: "https://www.asterdex.com/en/usdf",
     description:
@@ -64062,8 +64077,8 @@ const data3_2: Protocol[] = [
   {
     id: "5418",
     name: "Aster asBTC",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBTC is a BTC liquid staking token that accrue APY from stable trading strategies",
     chain: "Binance",
@@ -65832,7 +65847,8 @@ const data3_2: Protocol[] = [
     listedAt: 1734099051,
     dimensions: {
       fees: "mars-perp",
-      derivatives: "mars-perp"
+      derivatives: "mars-perp",
+      "open-interest": "mars-perp"
     }
   },
   {
@@ -65903,9 +65919,9 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bbbfi.com",
-    description: "BBBPump is the First Meme Fair Launch Platform on XDC Network:swap,earn,meme culture,instantly tradable without having to seed liquidity",
+    description: "BBB is no longer “just a meme.It’s evolving into an all-in-one DeFi hub:Meme launch Trading Lending Stablecoin GameFi http://bbbfi.com",
     chain: "XDC",
-    logo: `${baseIconsUrl}/bbbpump.jpg`,
+    logo: `${baseIconsUrl}/bbbfi.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -66030,7 +66046,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1681846146,
     dimensions: {
-      derivatives: "hyperliquid-perp"
+      derivatives: "hyperliquid-perp",
+      "open-interest": "hyperliquid-perp"
     }
   },
   {
@@ -67131,8 +67148,8 @@ const data3_2: Protocol[] = [
   {
     id: "5558",
     name: "Aster asBNB",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
+    symbol: "ASTER",
     url: "https://www.asterdex.com/en/earn",
     description: "Aster's asBNB is a BNB liquid staking derivative that accrue rewards from Binance Launchpools, HODLer airdrops and Megadrops",
     chain: "Binance",

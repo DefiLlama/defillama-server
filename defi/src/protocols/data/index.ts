@@ -18,7 +18,7 @@ if (fs.existsSync(protocolsJsonPath)) {
 } else {
   console.log('hmmm, looks like prebuild step was not run, falling back to data.ts')
   for (const file of DATA_FILES) {
-    const module = require(path.resolve(__dirname, `../${file}`));
+    const module = require(path.join(__dirname, `../${file}`));
     protocols = protocols.concat(module.default);
   }
 }

@@ -1,5 +1,5 @@
 import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
@@ -57,14 +57,20 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     // }
     let { adapterKey, dimConfig } = getDimensionsConfigAndKey(obj.dimensions[adapterType])
 
+    if (config[adapterKey]) {
+      // you can reach here because there are two labels for the same chain: like Optimism & 'OP Mainnet'
+      return;
+    }
+
     const objClone = {
       ...obj,
       displayName: getChainDisplayName(chainName, true),
       name: chainName,
-      id: 'chain#'  + adapterKey,
+      id: 'chain#' + adapterKey,
       gecko_id: obj.geckoId,
       isChain: true,
       protocolType: ProtocolType.CHAIN,
+      category: 'Chain',
       logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(chainName)}.jpg`
     }
 
@@ -88,7 +94,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     return { adapterKey, dimConfig }
   }
 
-  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap,})
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap, })
   const protocolMap = protocolAdaptors.reduce((acc, curr) => {
     acc[curr.id2] = curr
     return acc
@@ -136,9 +142,13 @@ function getDimensionsConfig() {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
         [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume],
+      },
+    },
+    [AdapterType.OPEN_INTEREST]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd],
         [AdaptorRecordType.shortOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.shortOpenInterestAtEnd],
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
-        [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd]
       },
     },
     [AdapterType.FEES]: {
@@ -203,3 +213,20 @@ function getLogoKey(key: string) {
   if (key.toLowerCase() === 'bsc') return 'binance'
   else return key.toLowerCase()
 }
+
+/*
+
+const statsTable: any = {}
+ADAPTER_TYPES.forEach((adapterType) => {
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const totalCount = protocolAdaptors.length
+  const deadCount = protocolAdaptors.filter(p => p.isDead).length
+  const liveCount = totalCount - deadCount
+  const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
+  // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
+  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime }
+})
+
+console.table(statsTable)
+
+*/

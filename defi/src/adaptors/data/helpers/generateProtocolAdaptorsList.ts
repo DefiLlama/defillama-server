@@ -22,7 +22,8 @@ type IImportsMap = IJSON<IImportObj>
 
 
 export function generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap }: { allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, configMetadataMap: IJSON<any> }): ProtocolAdaptor[] {
-  return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
+  const response = [] as ProtocolAdaptor[]
+  Object.entries(allImports).forEach(([adapterKey, adapterObj]) => {
 
     try {
       let configObj = config[adapterKey]
@@ -30,6 +31,8 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
+      const isDead = moduleObject.deadFrom || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.deadFrom)
+      const runAtCurrentTime = moduleObject.runAtCurrTime || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.runAtCurrTime)
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []
@@ -61,26 +64,30 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         logo: getLlamaoLogo(protocol!.logo),
         displayName: (protocol as any).displayName ?? protocol!.name,
         protocolType,
+        isDead,
         methodologyURL: 'https://github.com/DefiLlama/dimension-adapters/blob/master/' + adapterObj.codePath,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
-        _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
+        _stat_runAtCurrTime: runAtCurrentTime,
         _stat_allowNegative: !!adapterObj.module.default?.allowNegativeValue,
         doublecounted: moduleObject.doublecounted ?? false,
       } as any
+
+      // mark all interface volume as doublecounted
+      if ((adapterType === AdapterType.DERIVATIVES || adapterType === AdapterType.DEXS) && infoItem.category === 'Interface') 
+        infoItem.doublecounted = true
 
       const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 
-      return infoItem
+      response.push(infoItem)
 
-    } catch (e) {
-      console.error(e)
-      console.error(`Missing info for ${adapterKey} on ${adapterType}`)
-      return undefined
+    } catch (e: any) {
+      console.error(`Missing info for ${adapterKey} on ${adapterType}, skipping... error: ${e?.message ?? e}`)
     }
-  }).filter(notUndefined);
+  })
+  return response
 }
 
 const getLlamaoLogo = (logo: string | null) => {

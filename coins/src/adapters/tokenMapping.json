@@ -421,7 +421,7 @@
     "0x84f682626302EA7BCA2A7c338b84863292131319": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0xf4e097E36d2064E2bDCA96e60439f3A369522003": {
       "decimals": "18",

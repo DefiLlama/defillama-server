@@ -3,7 +3,7 @@ require("dotenv").config();
 
 import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data";
-import { getAllItemsForProtocol, getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
+import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
@@ -752,8 +752,6 @@ async function run() {
       protocols: {},
     }
     const adapterData = allCache[adapterType]
-    // init per-protocol backfill flags map
-    if (!adapterData.blHistoryFetched) adapterData.blHistoryFetched = {}
 
     await pullChangedFromDBAndAddToCache()
 
@@ -761,17 +759,11 @@ async function run() {
       let lastUpdated = allCache[adapterType].lastUpdated ? allCache[adapterType].lastUpdated - 1 * 60 * 60 : 0 // 1 hour ago
       
       const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
-
-      const protocolsWithBlDataInRecentUpdates = new Set<string>()
       
       results.forEach((result: any) => {
         const { id, timestamp, data, timeS } = result
 
         const bl = (result as any).bl ?? (result as any).breakdownLabel ?? (result as any).data?.bl ?? (result as any).data?.breakdownLabel
-
-        if (bl) {
-          protocolsWithBlDataInRecentUpdates.add(id)
-        }
 
         roundVaules(data)
 
@@ -787,37 +779,6 @@ async function run() {
         fillDerivedOnDailyRecord(finalRecord)
         adapterData.protocols[id].records[timeS] = finalRecord
       })
-
-      // backfill full history ONLY for protocols that newly emitted bl and have not been backfilled
-      const toBackfill = Array.from(protocolsWithBlDataInRecentUpdates)
-        .filter((pid: string) => !adapterData.blHistoryFetched[pid])
-
-      for (const pid of toBackfill) {
-        try {
-          const history = await getAllItemsForProtocol({ adapterType, id: pid, timestamp: 0 })
-          let merged = 0
-          history.forEach((result: any) => {
-            const { id, timestamp, data, timeS } = result
-            const bl = (result as any).bl ?? (result as any).breakdownLabel ?? (result as any).data?.bl ?? (result as any).data?.breakdownLabel
-
-            if (bl) {
-              roundVaules(data)
-              if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
-
-              const finalRecord: any = { ...data, timestamp }
-              finalRecord.bl = bl;
-              finalRecord.breakdownLabel = bl;
-              adapterData.protocols[id].hasBreakdownData = true;
-              fillDerivedOnDailyRecord(finalRecord)
-              adapterData.protocols[id].records[timeS] = finalRecord
-              merged++
-            }
-          })
-          adapterData.blHistoryFetched[pid] = getUnixTimeNow()
-        } catch (e) {
-          console.error(`BL backfill failed for protocol ${pid} (${adapterType})`, e)
-        }
-      }
 
       // remove empty records at the start of each protocol
       Object.keys(adapterData.protocols).forEach((protocolId) => {

@@ -3518,7 +3518,7 @@ export const chainCoingeckoIds = {
       types: ["L2"]
     },
   },
-  "Reya Network": {
+  "ReyaChain": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5188,6 +5188,7 @@ const newChainLabelMap = {
   "echelon_initia": "Echelon Initia",
   "proton": "XPR Network",
   "camp": "Camp Network",
+  "reya": "ReyaChain",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

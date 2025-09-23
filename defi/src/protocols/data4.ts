@@ -8762,6 +8762,10 @@ const data4: Protocol[] = [
     module: "hanji/index.js",
     twitter: "HanjiProtocol",
     listedAt: 1742386774,
+    dimensions: {
+      fees: "hanji",
+      dexs: "hanji",
+    }
   },
   {
     id: "5920",

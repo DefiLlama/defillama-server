@@ -17952,6 +17952,9 @@ const data4: Protocol[] = [
     github: ["almanak-co"],
     audit_links: ["https://zokyo.io/reports/almanak"],
     listedAt: 1749770193,
+    dimensions: {
+      fees: "almanak",
+    }
   },
   {
     id: "6298",
@@ -28760,6 +28763,51 @@ const data4: Protocol[] = [
     twitter: "YeiFinance",
     audit_links: ["https://docs.clovis.network/security/audits"],
     listedAt: 1758557164
+  },
+  {
+    id: "6757",
+    name: "8DX",
+    address: null,
+    symbol: "-",
+    url: "https://8dx.io/",
+    description:
+      "8DX - a multi-chain DEX aggregator offering best-price routing and real-time analytics",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/8dx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "8dx_me",
+    dimensions: {
+      aggregators: "8dx-aggregator"
+    }
+  },
+  {
+    id: "6758",
+    name: "MaxShot",
+    address: null,
+    symbol: "-",
+    url: "https://maxshot.ai/",
+    description:
+      "Maxshot AI is dForce's omni-chain yield optimizer, powered by the DeFAI Agent Framework. It functions as a fully autonomous autopilot for DeFi vaults, where AI agents continuously monitor markets, deploy capital, and rebalance positions to optimize returns. Operating without human intervention, Maxshot is governed by transparent on-chain rules and enhanced by adaptive off-chain intelligence, ensuring efficient, secure, and scalable yield generation across chains",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maxshot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum", "Base", "Arbitrum"],
+    forkedFrom: [],
+    module: "maxshot/index.js",
+    twitter: null,
+    audit_links: [],
+    listedAt: 1758641734
   },
   
 ];

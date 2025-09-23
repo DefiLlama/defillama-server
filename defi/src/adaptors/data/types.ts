@@ -168,11 +168,11 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyNotionalVolume,
     ],
-    [AdapterType.DERIVATIVES]: [
-        AdaptorRecordType.shortOpenInterestAtEnd,
-        AdaptorRecordType.longOpenInterestAtEnd,
-        AdaptorRecordType.openInterestAtEnd
-    ],
+    // [AdapterType.DERIVATIVES]: [
+    //     AdaptorRecordType.shortOpenInterestAtEnd,
+    //     AdaptorRecordType.longOpenInterestAtEnd,
+    //     AdaptorRecordType.openInterestAtEnd
+    // ],
     [AdapterType.OPEN_INTEREST]: [
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,

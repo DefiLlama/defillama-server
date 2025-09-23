@@ -320,6 +320,7 @@ const App = () => {
 
               {output && showDebugLogs && (<Divider>Console Output</Divider>)}
               <div
+                style={{ display: output && showDebugLogs ? 'block' : 'none' }}
                 ref={outputRef}
                 className="output-container"
               >

@@ -22,7 +22,7 @@ import { getClosestProtocolItem } from "../db";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getAggregatesBreakdownProtocolFileRoute, getAggregatesProtocolFileRoute, getDimensionBreakdownProtocolFileRoute, getDimensionProtocolFileRoute, getOverviewFileRoute } from "./dimensions";
+import { getDimensionProtocolFileRoute, getFinancialStatementRoute, getOverviewFileRoute, getProFeesRoute } from "./dimensions";
 import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -447,9 +447,8 @@ async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: Hyper
 }
 
 export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
-  router.get("/summaryBreakdown/:type/:name", ew(getDimensionBreakdownProtocolFileRoute))
-  router.get("/aggregates/:type/:name", ew(getAggregatesProtocolFileRoute))
-  router.get("/aggregatesBreakdown/:type/:name", ew(getAggregatesBreakdownProtocolFileRoute))
+  router.get("/financial-statement/:name", ew(getFinancialStatementRoute))
+  router.get("/fees/:recordType/:name", ew(getProFeesRoute))
 }
 
 /* 

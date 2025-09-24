@@ -25,6 +25,7 @@ import type { Protocol } from "./types";
   tokensExcludedFromParent: {
       Avalanche: ["GPC"],    // ADD ALL TIME WITH BIG LETTER, NOT SMALL LETTER
     },
+  excludeTvlFromParent?: boolean;
 },
 */
 /* Audits: Please follow this legend
@@ -8458,7 +8459,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "defituna-amm",
       dexs: "defituna-amm"
-    }
+    }, 
+    excludeTvlFromParent: true,
   },
   {
     id: "5908",

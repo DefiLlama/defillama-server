@@ -57,8 +57,9 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
       Object.keys(chains[chain][section as keyof FinalChainData].breakdown).map((symbol: string) => {
         if (!invertedMap[chain]) return;
         let address = invertedMap[chain][symbol];
-        if (section == 'ownTokens' && !address) address = ownTokens[chain].address;
+        if (section == 'ownTokens' && !address) address = ownTokens[chain]?.address;
         if (!address) return;
+        
         rawBridgedTvls[chain][section].breakdown[address] =
           chains[chain][section as keyof FinalChainData].breakdown[symbol];
       });

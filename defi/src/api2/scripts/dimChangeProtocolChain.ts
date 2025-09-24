@@ -12,6 +12,7 @@ async function changeProtocolChain({
   const data = await TABLES.DIMENSIONS_DATA.findAll({
     where: {
       id: oldId,
+      type: 'fees',
       // timeS: '2024-08-07'
     }
   })
@@ -19,32 +20,46 @@ async function changeProtocolChain({
   const unixTS = Date.now()
   fs.writeFileSync(`changeProtocolChain_backup_${unixTS}.log`, JSON.stringify(data))
 
+  let updateCount = 0
+
   for (const record of data) {
     let updateNeeded = oldId !== newId
     // Update chain name in each key of 'data' field
     if (record.dataValues.data && typeof record.dataValues.data === 'object') {
-      const aggData = Object.values(record.dataValues.data.aggregated) as any
-      for (const dimItem of aggData) {
-        if (dimItem.chains && dimItem.chains[oldChain] !== undefined) {
-          updateNeeded = true
-          dimItem.chains[newChain] = dimItem.chains[oldChain]
-          delete dimItem.chains[oldChain]
-        }
+      if (record.dataValues.data.aggregated.dr) {
+        delete record.dataValues.data.aggregated.dr
+        updateNeeded = true
+        updateCount++
       }
+      /* 
+     const aggData = Object.values(record.dataValues.data.aggregated) as any
+  for (const dimItem of aggData) {
+     if (dimItem.chains && dimItem.chains[oldChain] !== undefined) {
+       updateNeeded = true
+       dimItem.chains[newChain] = dimItem.chains[oldChain]
+       delete dimItem.chains[oldChain]
+     }
+   } */
     }
 
     if (!updateNeeded) continue;
 
     // If you need to change the primary key, create a new record and delete the old one
-    await record.destroy();
-    const newRecord = await TABLES.DIMENSIONS_DATA.create({
-      ...record.dataValues,
-      id: newId,
-      data: record.dataValues.data,
-      updatedAt: new Date(),
-    });
-    console.log('replaced record:', newRecord.dataValues.timeS);
+
+    await upsertRecord();
+    async function upsertRecord() {
+
+      await record.destroy();
+      const newRecord = await TABLES.DIMENSIONS_DATA.create({
+        ...record.dataValues,
+        id: newId,
+        data: record.dataValues.data,
+        updatedAt: new Date(),
+      });
+      console.log('replaced record:', newRecord.dataValues.timeS);
+    }
   }
+  console.log(`Updated ${updateCount} records`)
   await TABLES.DIMENSIONS_DATA.sequelize?.close()
 }
 
@@ -53,17 +68,16 @@ function cleanUp() {
   process.exit(0)
 }
 
-/* changeProtocolChain({
-  oldId: '6664',
-  newId: '6664',
+changeProtocolChain({
+  oldId: '6726',
+  newId: '6726',
   oldChain: 'ethereum',
   newChain: 'paradex'
 }).catch(console.error).then(cleanUp)
- */
 
 
 
-createUpdateOIData().catch(console.error).then(cleanUp)
+// createUpdateOIData().catch(console.error).then(cleanUp)
 
 
 async function createUpdateOIData() {

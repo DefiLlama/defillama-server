@@ -28917,7 +28917,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Partially Algorithmic Stablecoin",
     chains: ["Saga"],
-    forkedFromIds: [],
+    forkedFromIds: ["5589"],
     module: "colt/index.js",
     twitter: "ColtProtocol",
     listedAt: 1758724539

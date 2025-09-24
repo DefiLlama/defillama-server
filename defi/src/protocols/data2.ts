@@ -3555,8 +3555,11 @@ const data2: Protocol[] = [
       {
         message: "01 Exchange was winded down. Please withdraw your remaining assets.",
         level: "alert",
-      }
-    ]
+      },
+    ],
+    dimensions: {
+      derivatives: "01-exchange"
+    },
   },
   {
     id: "1532",

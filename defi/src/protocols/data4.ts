@@ -28103,7 +28103,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "apollox",
       derivatives: "apollox",
-      // "open-interest": "apollox"
+      "open-interest": "apollox"
     }
   },
   {

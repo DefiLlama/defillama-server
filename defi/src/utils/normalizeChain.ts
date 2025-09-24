@@ -4407,7 +4407,7 @@ export const chainCoingeckoIds = {
     url: "https://prom.io/",
     chainId: 277
   },
-  "Goat": {
+  "GOAT": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5137,7 +5137,8 @@ const chainLabelMap = {
   "soon_base": "soonBase",
   "camp": "Camp",
   "off_chain": "Off Chain",
-  "zklighter": "zkLighter"
+  "zklighter": "zkLighter",
+  "goat": "Goat"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5189,6 +5190,7 @@ const newChainLabelMap = {
   "proton": "XPR Network",
   "camp": "Camp Network",
   "reya": "ReyaChain",
+  "goat": "GOAT"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

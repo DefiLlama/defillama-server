@@ -8762,6 +8762,10 @@ const data4: Protocol[] = [
     module: "hanji/index.js",
     twitter: "HanjiProtocol",
     listedAt: 1742386774,
+    dimensions: {
+      fees: "hanji",
+      dexs: "hanji",
+    }
   },
   {
     id: "5920",
@@ -28819,6 +28823,28 @@ const data4: Protocol[] = [
     twitter: null,
     audit_links: [],
     listedAt: 1758641734
+  },
+  {
+    id: "6759",
+    name: "Greenhouse Finance",
+    address: null,
+    symbol: "-",
+    url: "https://greenhouse.finance/",
+    description:
+      "Greenhouse Finance delivers high-yield, low-risk vaults on leading DeFi protocols, combining rigorous asset management with secure handling to maximize capital efficiency",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/greenhouse-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Sonic", "Arbitrum"],
+    forkedFrom: [],
+    module: "Greenhouse-Finance/index.js",
+    twitter: null,
+    audit_links: ["https://docs.silo.finance/docs/audits/"],
+    listedAt: 1758657937
   },
   
 ];

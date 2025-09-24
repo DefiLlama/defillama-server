@@ -24,7 +24,7 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
       })
         .then((res) =>
           res.map((symbol, i) => {
-            symbolMap[`${chain}:${chainQueries[chain][i]}`] = symbol;
+            symbolMap[`${chain}:${chainQueries[chain][i]}`] = symbol.toUpperCase();
           })
         )
         .catch((e) => {
@@ -45,6 +45,8 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
     invertedMap[displayName][symbol] = address;
   });
 
+  const storeMapPromise = storeR2JSONString("chainAssetsSymbolMap", JSON.stringify(invertedMap));
+
   const rawBridgedTvls: any = {};
   Object.keys(chains).map((chain) => {
     rawBridgedTvls[chain] = { canonical: {}, thirdParty: {}, native: {}, ownTokens: {}, total: {} };
@@ -62,5 +64,8 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
   });
 
   rawBridgedTvls.timestamp = getCurrentUnixTimestamp();
-  await storeR2JSONString("chainAssetsRaw", JSON.stringify(rawBridgedTvls));
+  await Promise.all([
+    storeR2JSONString("chainAssetsRaw", JSON.stringify(rawBridgedTvls)), 
+    storeMapPromise
+  ])
 }

@@ -28947,6 +28947,73 @@ const data4: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1758724545
   },
+  {
+    id: "6764",
+    name: "Courtyard",
+    address: null,
+    symbol: "-",
+    url: "https://courtyard.io/",
+    description:
+      "Courtyard.io is a marketplace and tokenization service that enables anyone to easily own and trade physical collectibles on the blockchain, unlocking transparency, liquidity, and a new form of ownership for collectors.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/courtyard.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Physical TCG",
+    chains: ["Polygon"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "Courtyard_io",
+    dimensions: {
+      fees: "courtyard"
+    }
+  },
+  {
+    id: "6765",
+    name: "Surf Liquid",
+    address: null,
+    symbol: "-",
+    url: "https://surfliquid.com/",
+    description:
+      "Liquid staking protocol on Base chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/surf-liquid.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Base"],
+    forkedFromIds: [],
+    module: "surf-liquid/index.js",
+    twitter: "Surf_Liquid",
+    audit_links: [],
+    listedAt: 1758736221
+  },
+  {
+    id: "6766",
+    name: "set.wtf",
+    address: null,
+    symbol: "-",
+    url: "https://www.set.wtf",
+    description:
+      "set.wtf is a USDT staking protocol offering 20.00% APY, compounded daily. Simply stake your USDT to start earning passive rewards - paid out daily and claimable anytime.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/set.wtf.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    module: "set-wtf/index.js",
+    twitter: "set_wtf",
+    audit_links: [],
+    listedAt: 1758736229
+  },
   
 ];
 export default data4;

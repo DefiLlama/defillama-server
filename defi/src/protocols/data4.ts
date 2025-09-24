@@ -28848,6 +28848,106 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.silo.finance/docs/audits/"],
     listedAt: 1758657937
   },
+  {
+    id: "6760",
+    name: "DefiTuna Liquidity",
+    address: "solana:TUNAfXDZEdQizTMTh3uEvNvYqJmqFHZbEJt8joP4cyx",
+    symbol: "TUNA",
+    url: "https://defituna.com/",
+    description:
+      "DefiTuna Liquidity is a layer built on top of DefiTuna AMM, you can supercharge your earnings by providing leveraged liquidity to DefiTuna AMM",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/defituna-liquidity.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "defituna_liquidity.js",
+    twitter: "DeFiTuna",
+    audit_links: [
+      "https://github.com/DefiTuna/tuna-sdk/blob/main/audit/oshield-defituna-report-01-Sep-2025.md",
+      "https://github.com/DefiTuna/tuna-sdk/blob/main/audit/sec3-defituna-report-14-Mar-2025.pdf",
+      "https://github.com/DefiTuna/tuna-sdk/blob/main/audit/torii-defituna-report-27-Jan-2025.pdf"
+    ],
+    parentProtocol: "parent#defituna",
+    listedAt: 1758723382
+  },
+  {
+    id: "6761",
+    name: "Sendit",
+    address: null,
+    symbol: "-",
+    url: "https://sendit.fun",
+    description:
+      "Sendit is a fully permissionless money market protocol and margin trading platform, purpose-built to serve the high-velocity world of memecoins and long-tail assets on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/sendit.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    forkedFromIds: ["458"],
+    module: "sendit/index.js",
+    twitter: "senditfun",
+    audit_links: ["https://docs.sendit.fun/security/audits"],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Secondary", proof: ["https://docs.sendit.fun/security/oracles"] },
+      { name: "Switchboard", type: "Primary", proof: ["https://docs.sendit.fun/security/oracles"] }
+    ],
+    listedAt: 1758723389
+  },
+  {
+    id: "6762",
+    name: "Colt",
+    address: null,
+    symbol: "-",
+    url: "https://coltstable.com/",
+    description:
+      "Colt is a next-generation stablecoin protocol engineered to create and sustain high-velocity DeFi ecosystems. Its suite of fully-backed, yield-generating stablecoins (e.g. $D, $SETH) is powered by reserves that earn yield from external assets. Colt then recycles that yield into the system as adoption subsidies.",
+    chain: "Saga",
+    logo: `${baseIconsUrl}/colt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Partially Algorithmic Stablecoin",
+    chains: ["Saga"],
+    forkedFromIds: [],
+    module: "colt/index.js",
+    twitter: "ColtProtocol",
+    listedAt: 1758724539
+  },
+  {
+    id: "6763",
+    name: "SunPerp",
+    address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
+    symbol: "SUN",
+    url: "https://www.sunperp.com/",
+    description:
+      "SunPerp is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/sunperp.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Tron"],
+    forkedFromIds: [],
+    module: "sunperp/index.js",
+    twitter: "SunPerp_DEX",
+    audit_links: [
+      "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Sunperp%20Dex%20-%20SlowMist%20Audit%20Report.pdf"
+    ],
+    github: ["SunPerp-DEX"],
+    parentProtocol: "parent#sun",
+    listedAt: 1758724545
+  },
   
 ];
 export default data4;

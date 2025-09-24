@@ -4,6 +4,7 @@ import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { storeR2JSONString } from "../src/utils/r2";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import { ownTokens } from "./constants";
 
 export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: string]: string | null }) {
   const chainQueries: { [chain: string]: string[] } = {};
@@ -55,7 +56,8 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
       rawBridgedTvls[chain][section].breakdown = {};
       Object.keys(chains[chain][section as keyof FinalChainData].breakdown).map((symbol: string) => {
         if (!invertedMap[chain]) return;
-        const address = invertedMap[chain][symbol];
+        let address = invertedMap[chain][symbol];
+        if (section == 'ownTokens' && !address) address = ownTokens[chain].address;
         if (!address) return;
         rawBridgedTvls[chain][section].breakdown[address] =
           chains[chain][section as keyof FinalChainData].breakdown[symbol];

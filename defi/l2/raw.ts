@@ -1,7 +1,7 @@
 import PromisePool from "@supercharge/promise-pool";
 import { FinalChainData, FinalData } from "./types";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import { getChainDisplayName } from "../src/utils/normalizeChain";
+import { getChainDisplayName, getChainIdFromDisplayName } from "../src/utils/normalizeChain";
 import { storeR2JSONString } from "../src/utils/r2";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { ownTokens } from "./constants";
@@ -57,7 +57,7 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
       Object.keys(chains[chain][section as keyof FinalChainData].breakdown).map((symbol: string) => {
         if (!invertedMap[chain]) return;
         let address = invertedMap[chain][symbol];
-        if (section == 'ownTokens' && !address) address = ownTokens[chain]?.address;
+        if (section == 'ownTokens' && !address) address = ownTokens[getChainIdFromDisplayName(chain)]?.address;
         if (!address) return;
         
         rawBridgedTvls[chain][section].breakdown[address] =

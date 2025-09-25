@@ -90,7 +90,10 @@ const data: Protocol[] = [
     },
     dimensions: {
       fees: "curve",
-      dexs: "curve"
+      dexs: {
+        genuineSpikes: ["1758758400"],
+        adapter: "curve"
+      }
     }
   },
   {

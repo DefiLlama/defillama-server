@@ -29038,6 +29038,27 @@ const data4: Protocol[] = [
       fees: "qubic-mining"
     }
   },
+  {
+    id: "6768",
+    name: "Kona V2",
+    address: null,
+    symbol: "-",
+    url: "https://kona.surf/",
+    description: "Kona's DEX infrastructure is built on top of KittyPunch's PunchSwap and StableKitty protocols.",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/kona-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Abstract"],
+    module: "kittypunch-kona-v2/index.js",
+    twitter: "KonaDeFi",
+    forkedFromIds: ["2197"],
+    parentProtocol: "parent#kittypunch",
+    listedAt: 1758814504,
+  },
   
 ];
 export default data4;

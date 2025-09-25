@@ -18945,11 +18945,11 @@ const data4: Protocol[] = [
   },
   {
     id: "6337",
-    name: "optfun",
+    name: "Racks",
     address: null,
     symbol: "-",
-    url: "https://opt.fun/",
-    description: "optfun is a platform for 1000x leverage trading on HyperEVM via 1-minute expiry options",
+    url: "https://racks.win/",
+    description: "Racks is a platform for 1000x leverage trading on HyperEVM via 1-minute expiry options",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/optfun.jpg`,
     audits: "0",
@@ -18959,7 +18959,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
     module: "optfun/index.js",
-    twitter: "opt_fun",
+    twitter: "racksdotwin",
     forkedFromIds: [],
     listedAt: 1750434513,
     dimensions: {

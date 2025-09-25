@@ -33,7 +33,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   isRunFromRefillScript?: boolean
   yesterdayIdSet?: Set<string>
   todayIdSet?: Set<string>
-  runType?: 'store-all' | 'refill-all' | 'default'
+  runType?: 'store-all' | 'refill-all' | 'default' | 'refill-yesterday'
   throwError?: boolean
   checkBeforeInsert?: boolean
 }
@@ -53,7 +53,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   let recentData: any = {}
 
-  const checkAgainstRecentData = runType === 'store-all' || runType === 'refill-all'
+  const checkAgainstRecentData = runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday'
 
   if (checkAgainstRecentData)
     recentData = await getRecentData(adapterType)
@@ -260,7 +260,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
                 adapterType,
                 protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
-                runType,
+                runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
               })
             } catch (e) {
               console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)

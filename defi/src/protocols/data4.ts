@@ -985,7 +985,7 @@ const data4: Protocol[] = [
     listedAt: 1736334414,
     dimensions: {
       derivatives: "grvt-perps",
-      "open-interest": "grvt-perps"
+      //"open-interest": "grvt-perps" too high
     }
   },
   {

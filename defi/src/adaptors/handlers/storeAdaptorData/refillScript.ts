@@ -265,6 +265,7 @@ async function refillAllProtocols() {
           protocolNames: new Set([protocolName]),
           isRunFromRefillScript: true,
           throwError: true,
+          runType: 'refill-all',
         }
         runner.push(handler2(eventObj))
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS

@@ -18952,7 +18952,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://racks.win/",
-    description: "Racks is a platform for 1000x leverage trading on HyperEVM via 1-minute expiry options",
+    description: "Racks is a platform for fast paced 1000x leveraged trading on HyperEVM via 1-minute expiry options",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/racks.jpg`,
     audits: "0",

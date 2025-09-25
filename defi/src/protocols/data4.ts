@@ -1187,6 +1187,9 @@ const data4: Protocol[] = [
     module: "navigator/index.js",
     twitter: "NaviExSonic",
     listedAt: 1736432817,
+    dimensions: {
+      fees: "navigator"
+    }
   },
   {
     id: "5609",

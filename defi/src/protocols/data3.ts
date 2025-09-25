@@ -12953,6 +12953,18 @@ const data3_1: Protocol[] = [
             startDate: "2025-07-04"
           },	
         ]
+      },
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: [
+          "https://github.com/DefiLlama/defillama-server/pull/10022",
+        ],
+        chains: [
+          {
+            chain: "Movement",
+          }
+        ]
       }
     ],
     listedAt: 1689773129,

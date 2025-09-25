@@ -1373,6 +1373,16 @@
       "to": "coingecko#gusd",
       "decimals": 6,
       "symbol": "GUSD"
+    },
+    "0x5422374b27757da72d5265cc745ea906e0446634": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDCV"
+    },
+    "0x5F7827FDeb7c20b443265Fc2F40845B715385Ff2": {
+      "to": "coingecko#societe-generale-forge-eurcv",
+      "decimals": 18,
+      "symbol": "EURCV"
     }
   },
   "fantom": {
@@ -3570,6 +3580,16 @@
       "decimals": "8",
       "symbol": "xBTC",
       "to": "coingecko#okx-wrapped-btc"
+    },
+    "8smindLdDuySY6i2bStQX9o8DVhALCXCMbNxD98unx35": {
+      "decimals": "2",
+      "symbol": "USDCV",
+      "to": "coingecko#usd-coin"
+    },
+    "DghpMkatCiUsofbTmid3M3kAbDTPqDwKiYHnudXeGG52": {
+      "decimals": "2",
+      "symbol": "EURCV",
+      "to": "coingecko#societe-generale-forge-eurcv"
     }
   },
   "ton": {

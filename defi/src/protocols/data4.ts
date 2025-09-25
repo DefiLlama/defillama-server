@@ -29021,19 +29021,22 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://qpools.qubicdisciple.info/",
     description:
-      "This revenue comes from mining of Monero. Revenue will be burned totally.",
+      "A mining pool for Monero that generates revenue from mining and directs the proceeds to token burns.",
     chain: "Qubic",
     logo: `${baseIconsUrl}/qubic-mining.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Mining Pools",
     chains: ["Qubic"],
     forkedFromIds: [],
     module: "dummy.js",
     twitter: "_Qubic_",
     audit_links: [],
+    dimensions: {
+      fees: "qubic-mining"
+    }
   },
   
 ];

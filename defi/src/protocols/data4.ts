@@ -26945,7 +26945,7 @@ const data4: Protocol[] = [
     name: "Collector Crypt",
     address: null,
     symbol: "-",
-    url: "https://collector.crypt/",
+    url: "https://collectorcrypt.com/",
     description: "A protocol to sell RWA Pokemon cards on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/collector-crypt.jpg`,

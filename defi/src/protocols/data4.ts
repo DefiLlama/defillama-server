@@ -18951,7 +18951,7 @@ const data4: Protocol[] = [
     url: "https://racks.win/",
     description: "Racks is a platform for 1000x leverage trading on HyperEVM via 1-minute expiry options",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/optfun.jpg`,
+    logo: `${baseIconsUrl}/racks.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

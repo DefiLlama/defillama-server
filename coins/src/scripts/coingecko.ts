@@ -57,13 +57,14 @@ async function storeCoinData(coinData: Write[]) {
       symbol: c.symbol,
       confidence: c.confidence,
       volume: c.volume,
+      adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
-        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+        return ({ decimals: 0, ...rest } as Dynamo)
       }),
     ),
     batchWrite(items, false),
@@ -289,6 +290,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,
+              adapter: 'coingecko'
             };
             kafkaItems.push(item);
             await ddb.put(item);
@@ -449,6 +451,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
           }
         }
       }
+
+    // coins = coins.filter((coin) => coin.id == 'euro-coin');
+    // if (!coins.length) process.exit(0)
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

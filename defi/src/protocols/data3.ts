@@ -59901,7 +59901,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Treasury Bills"],
+    category: "Stablecoin Issuer",
     chains: ["Ethereum"],
     module: "m0/index.js",
     twitter: "m0foundation",

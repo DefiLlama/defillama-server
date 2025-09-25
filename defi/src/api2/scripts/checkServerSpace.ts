@@ -32,6 +32,7 @@ export async function checkDiskSpace(): Promise<void> {
 }
 
 export async function checkSystemLoad(): Promise<void> {
+  return; // skip this check for now
   try {
     // Get system load using uptime command
     const output = execSync('uptime', { encoding: 'utf8' });

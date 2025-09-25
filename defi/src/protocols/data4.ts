@@ -7925,7 +7925,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Starknet"],
     forkedFrom: [],
     oraclesBreakdown: [
       {

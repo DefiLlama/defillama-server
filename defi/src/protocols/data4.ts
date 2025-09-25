@@ -29014,6 +29014,27 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1758736229
   },
+  {
+    id: "6767",
+    name: "Qubic Mining",
+    address: null,
+    symbol: "-",
+    url: "https://qpools.qubicdisciple.info/",
+    description:
+      "This revenue comes from mining of Monero. Revenue will be burned totally.",
+    chain: "Qubic",
+    logo: `${baseIconsUrl}/qubic-mining.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Qubic"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "_Qubic_",
+    audit_links: [],
+  },
   
 ];
 export default data4;

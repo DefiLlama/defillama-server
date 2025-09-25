@@ -24106,7 +24106,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: null,
+    twitter: "humidifi_",
     forkedFromIds: [],
     dimensions: {
       dexs: {

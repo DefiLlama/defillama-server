@@ -191,7 +191,7 @@ export class AdapterRecord2 {
 
         if (value >= triggerValue) {
           return this.getValidationError({
-            message: `Spike detected for ${dataType}: ${humanizeNumber(value)} >= ${humanizeNumber(triggerValue)} (default threshold)`,
+            message: `${dataType}: ${humanizeNumber(value)} >= ${humanizeNumber(triggerValue)} (default threshold)`,
             type: 'spike',
             metadata: {
               hasRecentData: recentData,
@@ -231,7 +231,7 @@ export class AdapterRecord2 {
 
       if (currentRatio >= spikeThresholdRatio) {
         return this.getValidationError({
-          message: `Spike detected for ${dataType}: ${humanizeNumber(value)} > ${humanizeNumber(monthStats.highest)} (highest) (ratio: ${Number(currentRatio).toFixed(2)}x)`,
+          message: `${dataType}: ${humanizeNumber(value)} > ${humanizeNumber(monthStats.highest)} (highest) (ratio: ${Number(currentRatio).toFixed(2)}x)`,
           type: 'spike',
         })
       }
@@ -269,7 +269,7 @@ export class AdapterRecord2 {
 
       if (isDrop) {
         return this.getValidationError({
-          message: `Drop detected for ${dataType}: ${humanizeNumber(value)} < ${humanizeNumber(monthStats.lowest)} (ratio: ${Number(value/monthStats.lowest).toFixed(2)}x)`,
+          message: `${dataType}: ${humanizeNumber(value)} < ${humanizeNumber(monthStats.lowest)} (ratio: ${Number(value/monthStats.lowest).toFixed(2)}x)`,
           type: 'drop',
         })
       }

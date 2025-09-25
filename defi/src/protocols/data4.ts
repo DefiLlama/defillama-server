@@ -29138,7 +29138,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Synthetics",
     chains: ["Flare"],
     module: "flare-asset/index.js",
     twitter: "FlareNetworks",

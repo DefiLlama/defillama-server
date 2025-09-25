@@ -40686,7 +40686,12 @@ const data3_2: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
-      }
+      },
+      {
+        name: "DIA",
+        type: "Secondary",
+        proof: ["https://explorer.hiro.so/txid/SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.alex-oracle-v1-1?chain=mainnet"]
+      },
     ],
     listedAt: 1712075269,
   },

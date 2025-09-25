@@ -8051,6 +8051,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "injective",
   },
+  {
+    id: "parent#hyperbeat",
+    name: "Hyperbeat",
+    url: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    referralUrl: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    description: "Powered by Hyperliquid, Hyperbeat utilizes smart contracts to automate strategies that generate real and sustainable returns through Meta-Yield vaults, Delta-Neutral strategies, HYPE liquid staking, money-markets and onchain payment rails",
+    logo: `${baseIconsUrl}/hyperbeat.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xhyperbeat",
+  },
 ];
 
 export default parentProtocols;

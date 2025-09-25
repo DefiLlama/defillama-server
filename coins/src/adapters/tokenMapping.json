@@ -7534,6 +7534,11 @@
     }
   },
   "flare": {
+    "0xAd552A648C74D49E10027AB8a618A3ad4901c5bE": {
+      "decimals": "6",
+      "symbol": "FXRP",
+      "to": "coingecko#ripple"
+    },
     "0xFE2907DFa8DB6e320cDbF45f0aa888F6135ec4f8": {
       "to": "coingecko#hex-trust-usdx",
       "decimals": 6,

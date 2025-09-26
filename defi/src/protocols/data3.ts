@@ -66053,7 +66053,7 @@ const data3_2: Protocol[] = [
     listedAt: 1681846146,
     dimensions: {
       derivatives: "hyperliquid-perp",
-      fees: "hyperliquid-perp",
+      // fees: "hyperliquid-perp",   // is already counted under spot
       "open-interest": "hyperliquid-perp"
     }
   },

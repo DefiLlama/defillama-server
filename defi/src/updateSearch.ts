@@ -242,6 +242,7 @@ const getProtocolSubSections = ({
   return subSections.map((result) => ({
     ...result,
     v: tastyMetrics[result.route] ?? 0,
+    r: 0,
   }));
 };
 
@@ -400,7 +401,7 @@ async function generateSearchList() {
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,
-      ...(protocol.deprecated ? { deprecated: true } : {}),
+      ...(protocol.deprecated ? { deprecated: true , r : -1 } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -652,7 +653,7 @@ async function generateSearchList() {
       });
     }
 
-    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0 })));
+    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
   }
 
   const categories: Array<SearchResult> = [];
@@ -759,7 +760,10 @@ async function generateSearchList() {
       .concat(results.cexs)
       .concat(results.otherPages)
       .concat(subProtocols)
-      .concat(subChains),
+      .concat(subChains).map((result: any) => ({
+        ...result,
+        r: result.r ?? 1,
+      })),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))

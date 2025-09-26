@@ -4920,7 +4920,7 @@ export const chainCoingeckoIds = {
     symbol: "XPL",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "PlasmaFDN",
+    twitter: "Plasma",
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,

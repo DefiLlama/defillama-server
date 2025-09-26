@@ -18000,8 +18000,8 @@ const data2: Protocol[] = [
   {
     id: "2149",
     name: "Based Next Generation",
-    address: "fantom:0x1539C63037D95f84A5981F96e43850d1451b6216",
-    symbol: "OBOL",
+    address: null,
+    symbol: "-", // dead toekn
     url: "https://next-gen.basedfinance.io",
     description:
       "BASED Next Generation protocol is the first pegless seigniorage protocol exploring DeFi on the FTM Network. We are introducing innovative yield strategies whilst providing inclusivity for Based Finance (V1), that successfully finished emissions. Based Next Gen is a multi-token protocol that consists of the following tokens: $OBOL - PEGLESS token with elastic supply. $SMELT - protocol’s underlying Perpetual Print (PP) mechanism emitting OBOL.",
@@ -18009,8 +18009,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/based-next-generation.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "obol",
-    cmcId: "21167",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield",
     chains: ["Fantom"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],

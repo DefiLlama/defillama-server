@@ -18004,7 +18004,7 @@ const data2: Protocol[] = [
     symbol: "-", // dead toekn
     url: "https://next-gen.basedfinance.io",
     description:
-      "BASED Next Generation protocol is the first pegless seigniorage protocol exploring DeFi on the FTM Network. We are introducing innovative yield strategies whilst providing inclusivity for Based Finance (V1), that successfully finished emissions. Based Next Gen is a multi-token protocol that consists of the following tokens: $OBOL - PEGLESS token with elastic supply. $SMELT - protocol’s underlying Perpetual Print (PP) mechanism emitting OBOL.",
+      "BASED Next Generation protocol is the first pegless seigniorage protocol exploring DeFi on the FTM Network. We are introducing innovative yield strategies whilst providing inclusivity for Based Finance (V1), that successfully finished emissions.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/based-next-generation.jpg`,
     audits: "2",

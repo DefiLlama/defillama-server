@@ -13303,6 +13303,7 @@ const data4: Protocol[] = [
     module: "hyperbeat/index.js",
     twitter: "0xhyperbeat",
     audit_links: [],
+    parentProtocol: "parent#hyperbeat",
     oraclesBreakdown: [
       {
         name: "RedStone",

@@ -3,6 +3,8 @@ import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
+import { sendMessage } from "./utils/discord";
+import sleep from "./utils/shared/sleep";
 
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
@@ -850,14 +852,12 @@ const executeWithRetry = async () => {
       
       if (attempts < maxAttempts) {
         console.log(`Waiting 3 minutes before retry...`);
-        return new Promise(resolve => {
-          setTimeout(async () => {
-            const result = await tryMain();
-            resolve(result);
-          }, 3 * 60 * 1000); // 3 minutes in milliseconds
-        });
+        await sleep(3 * 60 * 1000); // 3 minutes in milliseconds
       } else {
         console.error("Maximum retry attempts reached. Giving up.");
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("Final error message:", errorMessage)
+        sendMessage(`Update Search process failed after ${maxAttempts} attempts. Error: ${errorMessage}`, process.env.UPDATE_SEARCH_WEBHOOK_URL!);
         return false;
       }
     }

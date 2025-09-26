@@ -1645,6 +1645,11 @@
     }
   },
   "arbitrum": {
+    "0x6eaf19b2fc24552925db245f9ff613157a7dbb4c": {
+      "decimals": "6",
+      "symbol": "xUSD",
+      "to": "asset#ethereum:0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94"
+    },
     "0xc26af85ede9cc25d449bcebef866bb85afd5d346": {
       "decimals": "6",
       "symbol": "ULTRA",

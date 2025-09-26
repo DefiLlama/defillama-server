@@ -1,12 +1,12 @@
-import './utils/failOnError'
+import fs from 'fs';
 import * as HyperExpress from "hyper-express";
+import process from "process";
 import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";
-import setTvlRoutes from "./routes";
-import process from "process";
-import fs from 'fs'
-import { RUN_TYPE } from "./utils";
+import setTvlRoutes, { setProRoutes } from "./routes";
 import { setInternalRoutes } from './routes/internalRoutes';
+import { RUN_TYPE } from "./utils";
+import './utils/failOnError';
 
 const webserver = new HyperExpress.Server()
 
@@ -45,6 +45,13 @@ async function main() {
     const subPath = '/' + process.env.API2_SUBPATH + '_internal'
     webserver.use(subPath, router)
     setInternalRoutes(router, subPath)
+  }
+
+  if (process.env.API2_SUBPATH) {
+    const proRouter = new HyperExpress.Router()
+    const proSubPath = '/' + process.env.API2_SUBPATH + '_pro'
+    webserver.use(proSubPath, proRouter)
+    setProRoutes(proRouter, proSubPath)
   }
 
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))

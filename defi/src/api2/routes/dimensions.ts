@@ -2,12 +2,12 @@
 import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
-import { errorResponse, successResponse } from "./utils";
+import { readRouteData } from "../cache/file-cache";
 import { timeSToUnix, } from "../utils/time";
-import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
-import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
+import { errorResponse, successResponse } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
@@ -154,15 +154,16 @@ export async function getProtocolDataHandler2({
     throw new Error("missing protocol data")
 
 
-  const { records, summaries, info } = protocolData
+  const { records: _records, summaries, info } = protocolData
   if (!summaries) {
-    console.log('missing summaries', info.name)
+    console.log('missing summaries', info?.name)
     return {}
   }
   let summary = summaries[recordType] ?? {}
   // if (!summary) throw new Error("Missing protocol summary")
 
   const response: any = { ...info }
+  const records = _records ?? {}
 
   const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'total30d' , 'totalAllTime',]
   summaryKeys.forEach(key => response[key] = summary[key])
@@ -170,8 +171,8 @@ export async function getProtocolDataHandler2({
   if (!excludeTotalDataChart) {
     const chart = {} as any
 
-    Object.entries(records).forEach(([date, value]: any) => {
-      if (!value.aggregated[recordType]) return;
+    Object.entries(records || {}).forEach(([date, value]: any) => {
+      if (!value?.aggregated?.[recordType]) return;
       chart[date] = value.aggregated[recordType]?.value
     })
     response.totalDataChart = formatChartData(chart)
@@ -179,12 +180,12 @@ export async function getProtocolDataHandler2({
 
   if (!excludeTotalDataChartBreakdown) {
     const chartBreakdown = {} as any
-    Object.entries(records).forEach(([date, value]: any) => {
-      let breakdown = value.breakdown?.[recordType]
+    Object.entries(records || {}).forEach(([date, value]: any) => {
+      let breakdown = value?.breakdown?.[recordType]
       if (!breakdown) {
-        breakdown = value.aggregated[recordType]
-        if (!breakdown) return;
-        breakdown = { [info.name]: breakdown }
+        const agg = value?.aggregated?.[recordType]
+        if (!agg) return;
+        breakdown = { [info?.name ?? 'Unknown']: agg }
       }
       chartBreakdown[date] = formatBreakDownData(breakdown)
     })
@@ -194,7 +195,7 @@ export async function getProtocolDataHandler2({
   response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
   if (response.totalDataChartBreakdown) {
     response.totalDataChartBreakdown.forEach(([_, chart]: any) => {
-      Object.entries(chart).forEach(([chain, value]: any) => {
+      Object.entries(chart ?? {}).forEach(([chain, value]: any) => {
         delete chart[chain]
         chart[getDisplayChainNameCached(chain)] = value
       })
@@ -207,10 +208,10 @@ export async function getProtocolDataHandler2({
 
   function formatBreakDownData(data: any) {
     const res = {} as any
-    Object.entries(data).forEach(([version, { chains }]: any) => {
+    Object.entries(data ?? {}).forEach(([version, { chains }]: any) => {
       if (!chains) return;
       const label = version
-      Object.entries(chains).forEach(([chain, value]: any) => {
+      Object.entries(chains ?? {}).forEach(([chain, value]: any) => {
         if (!res[chain]) res[chain] = {}
         res[chain][label] = value
       })
@@ -264,3 +265,96 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   if (excludeTotalDataChartBreakdown) data.totalDataChartBreakdown = []
   return successResponse(res, data)
 }
+
+export async function getFinancialStatementRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const includeBl = req.query_parameters.bl?.toLowerCase() === 'true'
+  
+  // Fetch aggregates data (monthly/quarterly)
+  const routeFile = `dimensions/aggregates/${protocolSlug}`
+  const data = await readRouteData(routeFile)
+  
+  if (!data) return errorResponse(res, `Financial statement data for protocol ${protocolName} not found`)
+  
+  // Include all financial metrics: fees, revenue, and incentives
+  const financialMetrics = [
+    // Fees and Revenue metrics
+    'df', 'dr', 'duf', 'dhr', 'dcr', 'dssr', 'dpr', 'dbr', 'dtt', 'dar', 'daf',
+    // Incentives metrics
+    'du', 'di'
+  ]
+  
+  const filteredMetrics: any = {}
+  Object.keys(data.metrics || {}).forEach(key => {
+    const baseKey = key.replace('bl', '')
+    const isBlMetric = key.endsWith('bl')
+    
+    if (financialMetrics.includes(baseKey)) {
+      // bl=true: include ALL metrics (both bl and non-bl)
+      // bl=false: include only non-bl metrics
+      if (includeBl || !isBlMetric) {
+        filteredMetrics[key] = data.metrics[key]
+      }
+    }
+  })
+  
+  if (!Object.keys(filteredMetrics).length) {
+    return errorResponse(res, `Financial statement data for protocol ${protocolName} not found`)
+  }
+  
+  const response = {...data, metrics: filteredMetrics }
+  return successResponse(res, response)
+}
+
+export async function getProFeesRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const recordType = req.path_parameters.recordType?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const includeBl = req.query_parameters.bl?.toLowerCase() === 'true'
+  
+  if (!recordType) return errorResponse(res, "Missing recordType parameter")
+  const fileSuffix = includeBl ? '-bl' : '-all'
+  const routeFile = `dimensions/fees/${recordType}-protocol/${protocolSlug}${fileSuffix}`
+  
+  const data = await readRouteData(routeFile)
+  if (!data) return errorResponse(res, `${recordType} data for protocol ${protocolName} not found`)
+  return successResponse(res, data)
+}
+
+export async function getAggregatesFeesRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase()
+  const protocolSlug = sluggifyString(protocolName)
+  const includeBl = req.query_parameters.bl?.toLowerCase() === 'true'
+  
+  // Fetch aggregates data (monthly/quarterly)
+  const routeFile = `dimensions/aggregates/${protocolSlug}`
+  const data = await readRouteData(routeFile)
+  
+  if (!data) return errorResponse(res, `Aggregates fees data for protocol ${protocolName} not found`)
+  
+  const feesMetrics = [
+    'df', 'dr', 'duf', 'dhr', 'dcr', 'dssr', 'dpr', 'dbr', 'dtt', 'dar', 'daf'
+  ]
+  
+  const filteredMetrics: any = {}
+  Object.keys(data.metrics || {}).forEach(key => {
+    const baseKey = key.replace('bl', '')
+    const isBlMetric = key.endsWith('bl')
+    
+    if (feesMetrics.includes(baseKey)) {
+      if (includeBl || !isBlMetric) {
+        filteredMetrics[key] = data.metrics[key]
+      }
+    }
+  })
+  
+  if (!Object.keys(filteredMetrics).length) {
+    return errorResponse(res, `Aggregates fees data for protocol ${protocolName} not found`)
+  }
+  
+  const response = {...data, metrics: filteredMetrics }
+  return successResponse(res, response)
+}
+
+

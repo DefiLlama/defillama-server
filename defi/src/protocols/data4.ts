@@ -29021,13 +29021,14 @@ const data4: Protocol[] = [
   {
     id: "6767",
     name: "Idle Mining",
+    previousNames: ["Qubic Mining"],
     address: null,
     symbol: "-",
     url: "https://qpools.qubicdisciple.info/",
     description:
       "A mining pool for Monero that generates revenue from mining and directs the proceeds to token burns.",
     chain: "Qubic",
-    logo: `${baseIconsUrl}/qubic-mining.jpg`,
+    logo: `${baseIconsUrl}/idle-mining.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

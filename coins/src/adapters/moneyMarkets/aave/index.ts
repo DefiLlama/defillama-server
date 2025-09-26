@@ -22,6 +22,7 @@ export function aave(timestamp: number = 0) {
     getTokenPrices("xdai", "0x1236010CECea55998384e795B59815D871f5f94d", "0x02e9b27599C4Bf8f789d34b6E65C51092c3d9FA6", "v3", timestamp,),
     getTokenPrices("era", "0x0753E3637ddC6efc40759D9c347251046644F25F", "0x1Bc8dbF1f5aF8094Aa166098131116CaAd6B22F9", "v3", timestamp,),
     getTokenPrices("sonic", "0x5E5D87858592d211fdb4503F09FB2B5cf805cB51", null, "v3", timestamp,),
+    getTokenPrices("plasma", "0xeE8Ba3464abcEeA6E34554d174DCbdd66083641b", null, "v3", timestamp,),
   ]);
 }
 export function geist(timestamp: number = 0) {

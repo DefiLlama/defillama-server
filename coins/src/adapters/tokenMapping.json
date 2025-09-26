@@ -11885,6 +11885,46 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "ureit.figure"
+    },
+    "SOL": {
+      "to": "coingecko#solana",
+      "decimals": 0,
+      "symbol": "SOL"
+    },
+    "ETH": {
+      "to": "coingecko#ethereum",
+      "decimals": 0,
+      "symbol": "ETH"
+    },
+    "USDT": {
+      "to": "coingecko#tether",
+      "decimals": 0,
+      "symbol": "USDT"
+    },
+    "BTC": {
+      "to": "coingecko#bitcoin",
+      "decimals": 0,
+      "symbol": "BTC"
+    },
+    "USDC": {
+      "to": "coingecko#usd-coin",
+      "decimals": 0,
+      "symbol": "USDC"
+    },
+    "USD": {
+      "to": "coingecko#usd-coin",
+      "decimals": 0,
+      "symbol": "USD"
+    },
+    "YLDS": {
+      "to": "coingecko#usd-coin",
+      "decimals": 0,
+      "symbol": "YLDS"
+    },
+    "pm.sale.pool.3dxq3fk9llvhrqqwhodiap": {
+      "to": "coingecko#usd-coin",
+      "decimals": 0,
+      "symbol": "pm.sale.pool.3dxq3fk9llvhrqqwhodiap"
     }
   },
   "bitci": {
@@ -12042,6 +12082,11 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": 18,
       "symbol": "weETH"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#plasma",
+      "decimals": 18,
+      "symbol": "XPL"
     }
   },
   "xone": {
@@ -12074,6 +12119,28 @@
       "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
+    }
+  },
+  "neo": {
+    "0x68b938cc42b6a2d54fb9040f5facf4290ebb8c5f": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "0x68b938cc42b6a2d54fb9040f5facf4290ebb8c5f"
+    },
+    "0xd3a41b53888a733b549f5d4146e7a98d3285fa21": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "0xd3a41b53888a733b549f5d4146e7a98d3285fa21"
+    },
+    "0xd2a4cff31913016155e38e474a2c06d08be276cf": {
+      "to": "coingecko#gas",
+      "decimals": 8,
+      "symbol": "0xd2a4cff31913016155e38e474a2c06d08be276cf"
+    },
+    "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0"
     }
   }
 }

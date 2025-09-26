@@ -29019,7 +29019,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6767",
-    name: "Qubic Mining",
+    name: "Idle Mining",
     address: null,
     symbol: "-",
     url: "https://qpools.qubicdisciple.info/",

@@ -831,4 +831,46 @@ const main = async () => {
 };
 
 //export default main
-main();
+// main()
+
+// Add retry logic to main function
+const executeWithRetry = async () => {
+  let attempts = 0;
+  const maxAttempts = 3;
+  
+  const tryMain = async () => {
+    try {
+      attempts++;
+      console.log(`Attempt ${attempts} of ${maxAttempts}`);
+      await main();
+      console.log("Successfully completed main execution");
+      return true;
+    } catch (error) {
+      console.error(`Error on attempt ${attempts}:`, error);
+      
+      if (attempts < maxAttempts) {
+        console.log(`Waiting 3 minutes before retry...`);
+        return new Promise(resolve => {
+          setTimeout(async () => {
+            const result = await tryMain();
+            resolve(result);
+          }, 3 * 60 * 1000); // 3 minutes in milliseconds
+        });
+      } else {
+        console.error("Maximum retry attempts reached. Giving up.");
+        return false;
+      }
+    }
+  };
+  
+  return tryMain();
+};
+
+executeWithRetry().then(success => {
+  if (success) {
+    console.log("Process completed successfully");
+  } else {
+    console.log("Process failed after all retry attempts");
+    process.exit(1);
+  }
+});

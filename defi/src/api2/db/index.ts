@@ -71,7 +71,7 @@ async function withPgRetries<T>(fn: () => Promise<T>, retries = 2, baseDelayMs =
         msg.includes('ECONNRESET')
       if (!retriable || attempt === retries) break
       const delay = baseDelayMs * Math.pow(2, attempt) // 2000ms, 4000ms
-      try { log?.(`PG retry #${attempt + 1} in ${delay}ms -> ${err?.name}`) } catch {}
+      log(`PG retry #${attempt + 1} in ${delay}ms -> ${err?.name}`)
       await sleep(delay)
     }
   }

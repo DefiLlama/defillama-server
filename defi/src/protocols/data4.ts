@@ -29212,6 +29212,27 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1758903939
   },
-  
+  {
+    id: "6776",
+    name: "XTrade Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://xtrade.gg/",
+    description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/xtrade-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "xtrade_gg",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "xtrade-protocol"
+    }
+  },
 ];
 export default data4;

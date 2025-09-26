@@ -28949,7 +28949,10 @@ const data4: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Sunperp%20Dex%20-%20SlowMist%20Audit%20Report.pdf"
     ],
     parentProtocol: "parent#sun",
-    listedAt: 1758724545
+    listedAt: 1758724545,
+    dimensions: {
+      derivatives: "sunperp"
+    }
   },
   {
     id: "6764",

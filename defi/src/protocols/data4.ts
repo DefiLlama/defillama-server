@@ -29125,6 +29125,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#curve-finance",
     listedAt: 1758821541,
+    excludeTvlFromParent: true, // tokens are deposited into curve pools
   },
   {
     id: "6772",

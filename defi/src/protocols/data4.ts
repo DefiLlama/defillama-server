@@ -9583,6 +9583,7 @@ const data4: Protocol[] = [
       "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf",
     ],
     listedAt: 1743001221,
+    hallmarks: [[1758585600, "Rug Pull"]],
   },
   {
     id: "5953",

@@ -3387,7 +3387,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lighter",
     name: "Lighter",
-    url: "https://lighter.xyz",
+    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,

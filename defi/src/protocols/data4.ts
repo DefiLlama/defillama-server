@@ -11694,8 +11694,8 @@ const data4: Protocol[] = [
     name: "Lighter V2",
     address: null,
     symbol: "-",
-    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
-    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
@@ -28646,8 +28646,8 @@ const data4: Protocol[] = [
     name: "Lighter V2 Perps",
     address: null,
     symbol: "-",
-    url: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
-    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=WYFC9LBPCPMN",
+    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "zkLighter",

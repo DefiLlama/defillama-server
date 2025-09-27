@@ -135,7 +135,7 @@ async function _storeAppMetadata() {
     chainAssetsData,
     chainsData,
     forksData,
-    stablecoinsTracked,
+    stablecoinsData,
     oraclesData,
     chainNftsData,
     safeHarborData,
@@ -172,8 +172,7 @@ async function _storeAppMetadata() {
     readRouteData("/chains").catch(() => []),
     readRouteData("/forks").catch(() => ({ forks: {} })),
     fetchJson(STABLECOINS_API)
-      .then((res) => ({ protocols: res.peggedAssets.length, chains: res.chains.length }))
-      .catch(() => ({ protocols: 0, chains: 0 })),
+      .catch(() => ({ peggedAssets: [], chains: [] })),
     readRouteData("/oracles").catch(() => ({ oracles: {} })),
     fetchJson(CHAIN_NFTS).catch(() => ({})),
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
@@ -748,6 +747,12 @@ async function _storeAppMetadata() {
       }
     }
 
+    for (const chain of stablecoinsData.chains) {
+      if (finalChains[slug(chain)]) {
+        finalChains[slug(chain)] = { ...(finalChains[slug(chain)] ?? { name: chain }), stablecoins: true };
+      }
+    }
+
     for (const chain of chainsData) {
       if (finalChains[slug(chain.name)] && chain.gecko_id) {
         finalChains[slug(chain.name)] = {
@@ -785,7 +790,7 @@ async function _storeAppMetadata() {
 
     const totalTrackedByMetric = {
       tvl: { protocols: 0, chains: 0 },
-      stablecoins: stablecoinsTracked,
+      stablecoins: { protocols: stablecoinsData.peggedAssets.length, chains: stablecoinsData.chains.length },
       fees: { protocols: 0, chains: 0 },
       revenue: { protocols: 0, chains: 0 },
       chainFees: { protocols: 0, chains: 0 },

@@ -42,7 +42,7 @@ curl \
     "attribute",
     "sort",
     "exactness",
-    "r:asc
+    "r:desc
   ]'
 
 curl \

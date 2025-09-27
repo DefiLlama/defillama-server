@@ -8063,6 +8063,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "0xhyperbeat",
   },
+  {
+    id: "parent#pacaswap",
+    name: "PacaSwap",
+    url: "https://pacaswap.com/dashboard",
+    description: "Pacaswap is a decentralized exchange (DEX) on Constellation",
+    logo: `${baseIconsUrl}/pacaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PacaSwap",
+  },
 ];
 
 export default parentProtocols;

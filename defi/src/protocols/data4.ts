@@ -29256,5 +29256,50 @@ const data4: Protocol[] = [
       fees: "xdock-meme"
     }
   },
+  {
+    id: "6778",
+    name: "PacaSwap Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://pacaswap.com/dashboard",
+    description: "Bridge for PacaSwap on Constellation",
+    chain: "Constellation",
+    logo: `${baseIconsUrl}/pacaswap-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Constellation"],
+    module: "pacaswap-bridge/index.js",
+    twitter: "PacaSwap",
+    forkedFromIds: [],
+    parentProtocol: "parent#pacaswap",
+    listedAt: 1759000102,
+  },
+  {
+    id: "6779",
+    name: "PacaSwap DEX",
+    address: null,
+    symbol: "-",
+    url: "https://pacaswap.com/dashboard",
+    description: "PacaSwap is a decentralized exchange (DEX) on Constellation Network",
+    chain: "Constellation",
+    logo: `${baseIconsUrl}/pacaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Constellation"],
+    module: "dummy.js",
+    twitter: "PacaSwap",
+    forkedFromIds: [],
+    parentProtocol: "parent#pacaswap",
+    dimensions: {
+      dexs: "pacaswap",
+      fees: "pacaswap"
+    }
+  },
 ];
 export default data4;

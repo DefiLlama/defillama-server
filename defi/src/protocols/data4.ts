@@ -25103,7 +25103,7 @@ const data4: Protocol[] = [
     id: "6598",
     name: "Frax USD",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://frax.com/",
     description:
       "Frax USD (frxUSD) is a fully collateralized stablecoin issued by Frax Finance, combining off-chain custodians holding cash-equivalent reserves with on-chain minting and redemption mechanisms",

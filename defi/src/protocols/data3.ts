@@ -64749,6 +64749,9 @@ const data3_2: Protocol[] = [
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
     listedAt: 1733089195,
+    dimensions: {
+      fees: "hyperliquid-hlp"
+    },
     excludeTvlFromParent: true,  // it is doublecounted because hl bridge tvl is included in the parent protcols
   },
   {

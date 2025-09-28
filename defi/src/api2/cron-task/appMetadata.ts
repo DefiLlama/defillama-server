@@ -65,8 +65,14 @@ const slugMap: any = {
 };
 
 const slug = (tokenName = "") => {
-  if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return slugMap[tokenName];
+  try {
+    if (!slugMap[tokenName]) slugMap[tokenName] = (tokenName ?? '')?.toLowerCase().split(" ").join("-").split("'").join("");
+    return slugMap[tokenName];
+  } catch (e: any) {
+    const errorMsg = `Error in slug for tokenName=${tokenName}, ${e.message}`;
+    console.error(errorMsg);
+    return '';
+  }
 };
 
 export async function storeAppMetadata() {
@@ -166,7 +172,7 @@ async function _storeAppMetadata() {
     readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
     readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
     fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => {}),
+    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => { }),
     fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [], bridges: [] })),
     fetchJson(CHAINS_ASSETS).catch(() => ({})),
     readRouteData("/chains").catch(() => []),
@@ -747,7 +753,8 @@ async function _storeAppMetadata() {
       }
     }
 
-    for (const chain of stablecoinsData.chains) {
+    for (let chain of stablecoinsData.chains) {
+      chain = chain.name
       if (finalChains[slug(chain)]) {
         finalChains[slug(chain)] = { ...(finalChains[slug(chain)] ?? { name: chain }), stablecoins: true };
       }

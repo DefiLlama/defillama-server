@@ -374,7 +374,7 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
     return errorResponse(res, 'No data at that timestamp')
 
   const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, 2 * 3600))
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, { searchWidth: 2 * 3600 }))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)

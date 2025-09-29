@@ -19734,7 +19734,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#thena",
     dimensions: {
       fees: "thena-perp",
-      derivatives: "thena-perp"
+      derivatives: "thena-perp",
+      'open-interest': "thena-perp",
     }
   },
   {

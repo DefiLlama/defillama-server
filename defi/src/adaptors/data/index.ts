@@ -124,7 +124,10 @@ function addImportsDataToMapping() {
 
   Object.keys(dimensionsConfig).forEach((adapterType) => {
     if (adapterType === AdapterType.DERIVATIVES) return; // derivatives use dexs imports
-    dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
+    if (adapterType === AdapterType.OPEN_INTEREST) {  // open interest should prefer derivatives imports if available over other imports (well except oi adapter file itself)
+      dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DERIVATIVES].imports, ...dimensionsConfig[adapterType].imports }
+    } else
+      dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
   })
 
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports

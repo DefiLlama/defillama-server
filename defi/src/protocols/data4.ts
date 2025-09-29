@@ -29309,5 +29309,25 @@ const data4: Protocol[] = [
       fees: "pacaswap"
     }
   },
+  {
+    id: "6780",
+    name: "Magic Square",
+    address: "bsc:0x2B72867c32CF673F7b02d208B26889fEd353B1f8",
+    symbol: "SQR",
+    url: "https://magicsquare.io/",
+    description: "Magic Square is the official Web3 app store, fundamentally changing how users discover and interact with apps and games in the Web3 space",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/magic-square.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "magic-square",
+    cmcId: "16882",
+    category: "Farm",
+    chains: ["Ethereum", "Base", "Avalanche", "Optimism", "Binance"],
+    module: "magic-farm/index.js",
+    twitter: "MagicSquareio",
+    forkedFromIds: [],
+    listedAt: 1759156769
+  },
 ];
 export default data4;

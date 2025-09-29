@@ -547,7 +547,7 @@ const configs: { [adapter: string]: Config } = {
   sGHO: {
     rate: async ({ api }) => {
       const rate = await api.call({
-        abi: "uint216:getExchangeRate",
+        abi: "function getExchangeRate() external view returns (uint216)",
         target: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
       });
       return rate / 1e18;

@@ -19713,14 +19713,15 @@ const data3_1: Protocol[] = [
     deadUrl: true,  },
   {
     id: "3537",
-    name: "THENA ALPHA",
+    name: "THENA PERPS",
+    previousNames: ["THENA ALPHA"],
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://alpha.thena.fi",
     description:
       "ALPHA is THENA's intent-based derivatives trading platform powered by SYMMIO, offering over 100 crypto assets for trading with up to 60x leverage.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena-alpha.jpg`,
+    logo: `${baseIconsUrl}/thena-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

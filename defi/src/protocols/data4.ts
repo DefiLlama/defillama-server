@@ -29350,5 +29350,25 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1759165241
   },
+  {
+    id: "6782",
+    name: "GOATUP",
+    address: null,
+    symbol: "-",
+    url: "https://dapp.goatup.io/",
+    description: "A native perps dapp on GOAT Network — trade 50+ tokens with up to 50x leverage, powered by native BTC as lossless collateral.",
+    chain: "Goat",
+    logo: `${baseIconsUrl}/goatup.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Goat"],
+    module: "goatup/index.js",
+    twitter: "goatup_",
+    forkedFromIds: [],
+    listedAt: 1759165728
+  },
 ];
 export default data4;

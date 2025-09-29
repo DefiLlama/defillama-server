@@ -29330,5 +29330,25 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1759156769
   },
+  {
+    id: "6781",
+    name: "VALR",
+    address: null,
+    symbol: "-",
+    url: "https://valr.com/",
+    description: "VALR is a regulated crypto exchange offering spot, margin, perpetuals, staking, lending, and institutional APIs, serving retail and institutional clients across Africa and abroad.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/valr.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin","Ethereum", "Solana", "Avalanche", "Tron", "Binance"],
+    module: "valr-cex/index.js",
+    twitter: "VALRdotcom",
+    forkedFromIds: [],
+    listedAt: 1759165241
+  },
 ];
 export default data4;

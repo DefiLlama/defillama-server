@@ -19713,14 +19713,15 @@ const data3_1: Protocol[] = [
     deadUrl: true,  },
   {
     id: "3537",
-    name: "THENA ALPHA",
+    name: "THENA PERPS",
+    previousNames: ["THENA ALPHA"],
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://alpha.thena.fi",
     description:
       "ALPHA is THENA's intent-based derivatives trading platform powered by SYMMIO, offering over 100 crypto assets for trading with up to 60x leverage.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena-alpha.jpg`,
+    logo: `${baseIconsUrl}/thena-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19734,7 +19735,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#thena",
     dimensions: {
       fees: "thena-perp",
-      derivatives: "thena-perp"
+      derivatives: "thena-perp",
+      'open-interest': "thena-perp",
     }
   },
   {
@@ -40686,7 +40688,12 @@ const data3_2: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
-      }
+      },
+      {
+        name: "DIA",
+        type: "Secondary",
+        proof: ["https://explorer.hiro.so/txid/SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.alex-oracle-v1-1?chain=mainnet","https://github.com/DefiLlama/defillama-server/pull/10672"]
+      },
     ],
     listedAt: 1712075269,
   },
@@ -40739,7 +40746,7 @@ const data3_2: Protocol[] = [
     id: "4423",
     name: "Frax AMO",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://facts.frax.finance/fraxlend/amo",
     description:
       "Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
@@ -59901,7 +59908,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Treasury Bills"],
+    category: "Stablecoin Issuer",
     chains: ["Ethereum"],
     module: "m0/index.js",
     twitter: "m0foundation",
@@ -64744,6 +64751,10 @@ const data3_2: Protocol[] = [
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
     listedAt: 1733089195,
+    dimensions: {
+      fees: "hyperliquid-hlp"
+    },
+    excludeTvlFromParent: true,  // it is doublecounted because hl bridge tvl is included in the parent protcols
   },
   {
     id: "5449",
@@ -66047,6 +66058,7 @@ const data3_2: Protocol[] = [
     listedAt: 1681846146,
     dimensions: {
       derivatives: "hyperliquid-perp",
+      fees: "hyperliquid-perp",   // now we count separately perps and spot
       "open-interest": "hyperliquid-perp"
     }
   },

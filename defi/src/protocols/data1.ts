@@ -90,7 +90,10 @@ const data: Protocol[] = [
     },
     dimensions: {
       fees: "curve",
-      dexs: "curve"
+      dexs: {
+        genuineSpikes: ["1758758400"],
+        adapter: "curve"
+      }
     }
   },
   {
@@ -5756,7 +5759,7 @@ const data: Protocol[] = [
     id: "359",
     name: "Frax",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://frax.finance/",
     description:
       "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",

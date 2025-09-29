@@ -12,9 +12,7 @@ import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { getTweetStats } from "../../twitter/db";
-import { getClosestProtocolItem } from "../db";
-import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { computeInflowsData } from "../../getInflows";
+import { ddbGetInflows } from "../../getInflows";
 import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
@@ -357,18 +355,26 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
   if (!protocolData)
     return errorResponse(res, 'Protocol not found')
 
-  const protocolId = protocolData.id
+  // const protocolId = protocolData.id
   const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
   const timestamp = Number(req.path_parameters.timestamp)
   const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp());
 
-  const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
+  await ddbGetInflows({
+    errorResponse: (message: string) => errorResponse(res, message),
+    successResponse: (data: any) => successResponse(res, data, 10),
+    protocolData, tokensToExclude,
+    skipTokenLogs: true, timestamp, endTimestamp,
+  })
+
+  /*
+   const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
 
   if (old.SK === undefined)
     return errorResponse(res, 'No data at that timestamp')
 
   const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, 2 * 3600))
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, { searchWidth: 2 * 3600 }))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)
@@ -376,7 +382,8 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
 
   const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
 
-  return successResponse(res, responseData, 1);
+  return successResponse(res, responseData, 1); 
+  */
 }
 
 async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {

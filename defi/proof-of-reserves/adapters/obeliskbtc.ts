@@ -29,4 +29,7 @@ const mintedTokens = [
   },
 ]
 
-export default getBitcoinReservesAdapter(protocolId, mintedTokens);
+export default {
+  whitelisted: true, // dead project
+  ...getBitcoinReservesAdapter(protocolId, mintedTokens),
+};

@@ -205,7 +205,7 @@ async function refillAllProtocols() {
   setTimeout(() => {
     console.error("Timeout reached, exiting from refillAllProtocols...")
     process.exit(1)
-  }, 1000 * 60 * 60 * 4) // 4 hours
+  }, 1000 * 60 * 60 * 6) // 6 hours
   let timeRange = 365 // 1 year
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange
@@ -217,7 +217,13 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
-  await Promise.all(aTypes.map(runAdapterType))
+  const tasks = await Promise.all(aTypes.map(runAdapterType))
+  const allTasks = tasks.flat()
+  console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)
+  await PromisePool
+    .withConcurrency(5)
+    .for(allTasks)
+    .process(async (protocolFunc: any) => protocolFunc())
 
 
   async function runAdapterType(adapterType: AdapterType) {
@@ -236,11 +242,7 @@ async function refillAllProtocols() {
 
     // randomize the order of execution
     protocolAdaptors = protocolAdaptors.filter((protocol: any) => !protocol.isDead && !protocol._stat_runAtCurrTime).sort(() => Math.random() - 0.5)
-
-    await PromisePool
-      .withConcurrency(5)
-      .for(protocolAdaptors)
-      .process((protocol: any) => refillProtocol(protocol, adapterType))
+    return protocolAdaptors.map((protocol: any) => async () => refillProtocol(protocol, adapterType))
   }
 
   async function refillProtocol(protocol: any, adapterType: AdapterType) {
@@ -263,6 +265,7 @@ async function refillAllProtocols() {
           protocolNames: new Set([protocolName]),
           isRunFromRefillScript: true,
           throwError: true,
+          runType: 'refill-all',
         }
         runner.push(handler2(eventObj))
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS

@@ -262,7 +262,7 @@ async function run() {
       const protocolData: any = {}
       protocol.summaries = {} as any
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
-      protocol.misc = {      };
+      protocol.misc = {};
       const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
@@ -489,10 +489,10 @@ async function run() {
         });
         // monthlyAverage1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
-        if (summary.total1y && _protocolData.lastOneYearData?.length >= 30) {
+          if (summary.total1y && _protocolData.lastOneYearData?.length >= 30) {
             summary.monthlyAverage1y = (summary.total1y / _protocolData.lastOneYearData.length) * 30.44
-        }
-      });
+          }
+        });
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)
@@ -727,8 +727,12 @@ type ProtocolSummary = RecordSummary & {
 }
 
 run()
-  .catch(console.error)
   .then(storeAppMetadata)
+  .catch(async e => {
+    console.error(e)
+    const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
+    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+  })
   .then(() => process.exit(0))
 
 const spikeRecords = [] as any[]
@@ -757,7 +761,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     }
     const dataKeys = Object.keys(record.aggregated ?? {}).filter(key => ACCOMULATIVE_ADAPTOR_TYPE[key]) // we care about only base keys
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
-    const improbableValue = 5e10 // 50 billion
+    const improbableValue = 2e11 // 200 billion
     if (values.some((i: any) => i > improbableValue)) {
       if (NOTIFY_ON_DISCORD)
         invalidDataRecords.push([adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue)].map(i => i + ' ').join(' '))

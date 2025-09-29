@@ -44,11 +44,14 @@ export async function craftProtocolV2({
   const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
   const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
+  // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
+  const isDummyProtocol = protocolData.module === "dummy.js";
+
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
-  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
+  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData || isDummyProtocol
 
-  if (!useHourlyData)
+  if (!useHourlyData && !isDummyProtocol)
     protocolCache = await getCachedProtocolData(protocolData, true)
 
   let _getLastHourlyRecord: any = null
@@ -72,9 +75,9 @@ export async function craftProtocolV2({
   ]);
 
   if (!useHourlyData) {
-    historicalUsdTvl = protocolCache[0]
-    historicalUsdTokenTvl = protocolCache[1]
-    historicalTokenTvl = protocolCache[2]
+    historicalUsdTvl = protocolCache[0] ?? []
+    historicalUsdTokenTvl = protocolCache[1] ?? []
+    historicalTokenTvl = protocolCache[2] ?? []
   }
 
   if (feMini) {
@@ -98,21 +101,21 @@ export async function craftProtocolV2({
   };
 
   if (!lastUsdHourlyRecord)
-    lastUsdHourlyRecord = historicalUsdTvl[historicalUsdTvl.length - 1]
+    lastUsdHourlyRecord = historicalUsdTvl?.[historicalUsdTvl.length - 1]
   if (!lastUsdTokenHourlyRecord)
-    lastUsdTokenHourlyRecord = historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]
+    lastUsdTokenHourlyRecord = historicalUsdTokenTvl?.[historicalUsdTokenTvl.length - 1]
   if (!lastTokenHourlyRecord)
-    lastTokenHourlyRecord = historicalTokenTvl[historicalTokenTvl.length - 1]
+    lastTokenHourlyRecord = historicalTokenTvl?.[historicalTokenTvl.length - 1]
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
-    lastUsdHourlyRecord &&
+    lastUsdHourlyRecord && historicalUsdTvl &&
       lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1]?.SK &&
       historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord &&
+    lastUsdTokenHourlyRecord && historicalUsdTokenTvl &&
       lastUsdTokenHourlyRecord.SK !== historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]?.SK &&
       historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord &&
+    lastTokenHourlyRecord && historicalTokenTvl &&
       lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK &&
       historicalTokenTvl.push(lastTokenHourlyRecord);
   }

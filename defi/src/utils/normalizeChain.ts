@@ -4920,10 +4920,19 @@ export const chainCoingeckoIds = {
     symbol: "XPL",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "PlasmaFDN",
+    twitter: "Plasma",
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,
+  },
+  "Constellation": {
+    geckoId: "constellation-labs",
+    symbol: "DAG",
+    cmcId: "2868",
+    categories: [],
+    twitter: "Conste11ation",
+    url: "https://constellationnetwork.io/",
+    github: ["Constellation-Labs"],
   },
 } as unknown as ChainCoinGekcoIds
 

@@ -7,7 +7,7 @@ const DATA_FEED_ABI =
 const AGGREGATOR_ABI =
   "function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
 
-type Denomination = "USD" | "BTC" | "SOL";
+type Denomination = "USD" | "BTC" | "SOL" | "XRP";
 
 interface TokenConfig {
   name: string;
@@ -16,10 +16,23 @@ interface TokenConfig {
   denomination?: Denomination;
 }
 
-// Base asset price oracles on Ethereum
+// Base asset price oracles configuration
 const BASE_ASSET_ORACLES = {
-  BTC: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c", // BTC/USD on Ethereum
-  SOL: "0x4ffC43a60e009B551865A93d232E33Fce9f01507", // SOL/USD on Ethereum
+  BTC: {
+    address: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+    chain: "ethereum",
+    decimals: 8,
+  }, // BTC/USD on Ethereum
+  SOL: {
+    address: "0x4ffC43a60e009B551865A93d232E33Fce9f01507",
+    chain: "ethereum",
+    decimals: 8,
+  }, // SOL/USD on Ethereum
+  XRP: {
+    address: "0xb549a837f95a79b83B3DA47fb64aAa9507Ee799C",
+    chain: "xrplevm",
+    decimals: 18,
+  }, // XRP/USD on Xrplevm
 } as const;
 
 const contracts: Record<string, TokenConfig[]> = {
@@ -56,6 +69,12 @@ const contracts: Record<string, TokenConfig[]> = {
       oracle: "0x7E8C632ab231479886AF1Bc02B9D646e4634Da93",
     },
     {
+      name: "mRe7BTC",
+      token: "0x9FB442d6B612a6dcD2acC67bb53771eF1D9F661A",
+      oracle: "0xB5D6483c556Bc6810b55B983315016Fcb374186D",
+      denomination: "BTC",
+    },
+    {
       name: "mF-ONE",
       token: "0x238a700eD6165261Cf8b2e544ba797BC11e466Ba",
       oracle: "0xCF4e49f5e750Af8F2f9Aa1642B68E5839D9c1C00",
@@ -80,6 +99,21 @@ const contracts: Record<string, TokenConfig[]> = {
       name: "mFARM",
       token: "0xA19f6e0dF08a7917F2F8A33Db66D0AF31fF5ECA6",
       oracle: "0x9f49B0980B141b539e2A94Ec0864Faf699fF9524",
+    },
+    {
+      name: "msyrupUSD",
+      token: "0x20226607b4fa64228ABf3072Ce561d6257683464",
+      oracle: "0x81c097e86842051B1ED4299a9E4d213Cb07f6f42",
+    },
+    {
+      name: "msyrupUSDp",
+      token: "0x2fE058CcF29f123f9dd2aEC0418AA66a877d8E50",
+      oracle: "0x7833397dA276d6B588e76466C14c82b2d733Cfb6",
+    },
+    {
+      name: "mWildUSD",
+      token: "0x605A84861EE603e385b01B9048BEa6A86118DB0a",
+      oracle: "0xe604a420388Fbf2693F2250db0DC84488EE99aA1",
     },
   ],
   base: [
@@ -135,10 +169,18 @@ const contracts: Record<string, TokenConfig[]> = {
   ],
   katana: [
     {
-      name: "mRE7SOL",
+      name: "mRe7SOL",
       token: "0xC6135d59F8D10c9C035963ce9037B3635170D716",
       oracle: "0x001b3731c706fEd93BDA240A5BF848C28ae1cC12",
       denomination: "SOL",
+    },
+  ],
+  xrplevm: [
+    {
+      name: "mXRP",
+      token: "0x06e0B0F1A644Bb9881f675Ef266CeC15a63a3d47",
+      oracle: "0xed4ff96DAF37a0A44356E81A3cc22908B3f06B40",
+      denomination: "XRP",
     },
   ],
 };
@@ -146,19 +188,44 @@ const contracts: Record<string, TokenConfig[]> = {
 async function getBaseAssetPrices(
   timestamp: number
 ): Promise<Record<string, number>> {
-  const api = await getApi("ethereum", timestamp);
   const prices: Record<string, number> = {};
 
-  const calls = await api.multiCall({
-    abi: AGGREGATOR_ABI,
-    calls: Object.values(BASE_ASSET_ORACLES),
+  // Group oracles by chain
+  const oraclesByChain: Record<
+    string,
+    { asset: string; address: string; decimals: number }[]
+  > = {};
+  Object.entries(BASE_ASSET_ORACLES).forEach(([asset, config]) => {
+    if (!oraclesByChain[config.chain]) {
+      oraclesByChain[config.chain] = [];
+    }
+    oraclesByChain[config.chain].push({
+      asset,
+      address: config.address,
+      decimals: config.decimals,
+    });
   });
 
-  Object.keys(BASE_ASSET_ORACLES).forEach((asset, i) => {
-    if (calls[i]?.answer) {
-      prices[asset] = Number(calls[i].answer) / 1e8;
-    }
-  });
+  // Fetch prices from each chain
+  for (const [chain, oracles] of Object.entries(oraclesByChain)) {
+    const api = await getApi(chain, timestamp);
+    const calls = await api.multiCall({
+      abi: AGGREGATOR_ABI,
+      calls: oracles.map((o) => o.address),
+      permitFailure: true,
+    });
+
+    oracles.forEach((oracle, i) => {
+      if (calls[i]?.answer) {
+        prices[oracle.asset] =
+          Number(calls[i].answer) / Math.pow(10, oracle.decimals);
+      } else {
+        console.warn(
+          `Failed to fetch base asset price for ${oracle.asset} from oracle ${oracle.address} on ${chain}`
+        );
+      }
+    });
+  }
 
   return prices;
 }
@@ -181,6 +248,7 @@ async function getTokenPrices(
     const oracleResponses = await api.multiCall({
       abi: DATA_FEED_ABI,
       calls: tokensWithOracles.map((t) => t.oracle as string),
+      permitFailure: true,
     });
 
     tokensWithOracles.forEach((token, i) => {
@@ -202,6 +270,10 @@ async function getTokenPrices(
         if (chain === "ethereum") {
           ethereumPrices[token.name] = usdPrice;
         }
+      } else {
+        console.warn(
+          `Failed to fetch price for ${token.name} (${token.token}) from oracle ${token.oracle} on ${chain}`
+        );
       }
     });
   }

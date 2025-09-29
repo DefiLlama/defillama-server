@@ -3387,7 +3387,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lighter",
     name: "Lighter",
-    url: "https://lighter.xyz",
+    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
@@ -8050,6 +8050,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7226",
     chains: [],
     twitter: "injective",
+  },
+  {
+    id: "parent#hyperbeat",
+    name: "Hyperbeat",
+    url: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    referralUrl: "https://app.hyperbeat.org/earn?referral=5C37264D",
+    description: "Powered by Hyperliquid, Hyperbeat utilizes smart contracts to automate strategies that generate real and sustainable returns through Meta-Yield vaults, Delta-Neutral strategies, HYPE liquid staking, money-markets and onchain payment rails",
+    logo: `${baseIconsUrl}/hyperbeat.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xhyperbeat",
+  },
+  {
+    id: "parent#pacaswap",
+    name: "PacaSwap",
+    url: "https://pacaswap.com/dashboard",
+    description: "Pacaswap is a decentralized exchange (DEX) on Constellation",
+    logo: `${baseIconsUrl}/pacaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PacaSwap",
   },
 ];
 

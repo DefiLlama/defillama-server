@@ -13305,6 +13305,10 @@ const data4: Protocol[] = [
     twitter: "0xhyperbeat",
     audit_links: [],
     parentProtocol: "parent#hyperbeat",
+    tokensExcludedFromParent: {
+      Hyperliquid: ["BEHYPE"],
+    },
+
     oraclesBreakdown: [
       {
         name: "RedStone",

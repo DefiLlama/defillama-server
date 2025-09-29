@@ -9,6 +9,14 @@ import { AdapterRecord2 } from '../../adaptors/db-utils/AdapterRecord2';
 import { getTimestampAtStartOfDay } from '../../utils/date';
 import { storeAdapterRecord } from '../../adaptors/db-utils/db2';
 
+let action = () => changeProtocolChain({
+  oldId: '6726',
+  newId: '6726',
+  oldChain: 'ethereum',
+  newChain: 'paradex'
+})
+action = insertRecord
+
 async function changeProtocolChain({
   oldId, newId, oldChain, newChain,
 }: { oldId: string, newId: string, oldChain: string, newChain: string }) {
@@ -73,18 +81,8 @@ function cleanUp() {
   process.exit(0)
 }
 
-/* 
-changeProtocolChain({
-  oldId: '6726',
-  newId: '6726',
-  oldChain: 'ethereum',
-  newChain: 'paradex'
-}).catch(console.error).then(cleanUp)
 
- */
-
-// createUpdateOIData().catch(console.error).then(cleanUp)
-storeFromFile().catch(console.error).then(cleanUp)
+action().catch(console.error).then(cleanUp)
 
 
 async function createUpdateOIData() {
@@ -228,4 +226,34 @@ async function storeFromFile() {
     console.error('Error reading or parsing CSV file:', error);
   }
 
+}
+
+async function insertRecord() {
+  const protocolId = '6726'
+  const adapterType = AdapterType.DERIVATIVES
+  const protocolType = ProtocolType.PROTOCOL
+  const field = 'dv'
+  const chain = 'off_chain'
+  const value = 85547024232
+  // const timestamp = getTimestampAtStartOfDay(+Date.now() / 1000 - 86400)
+  const timestamp = 1759100400
+
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const protocol = protocolAdaptors.find(p => p.id === protocolId)
+  const record = AdapterRecord2.formAdaptarRecord2({
+    jsonData: {
+      timestamp,
+      aggregated: {
+        [field]: {
+          value,
+          chains: {
+            [chain]: value
+          }
+        },
+      }
+    }, protocolType, adapterType, protocol: protocol!,
+  })
+
+  console.log('Storing record for date:', new Date(record!.timestamp * 1000).toISOString().split('T')[0], 'value:', record!.data.aggregated[field].value)
+  await storeAdapterRecord(record as any)
 }

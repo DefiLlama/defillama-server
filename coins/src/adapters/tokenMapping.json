@@ -9589,7 +9589,7 @@
     },
     "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
       "to": "coingecko#wrapped-bitcoin",
-      "decimals": 18,
+      "decimals": 8,
       "symbol": "WBTC"
     },
     "0x3b0dc2dac9498a024003609031d973b1171de09e": {

@@ -173,7 +173,7 @@ async function _getCachedData(params: {
   if (!cacheObject[cacheKey])
     cacheObject[cacheKey] = await getCache(key, chain);
 
-  const cache: any = {} // cacheObject[cacheKey];
+  const cache = cacheObject[cacheKey];
   targets = targets.map((i) => i.toLowerCase());
   const missing = targets.filter((i) => !cache[i]);
   const decimals = await api.multiCall({

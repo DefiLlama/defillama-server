@@ -203,7 +203,7 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
         if (res && res.data && res.data.supply)
           supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 
@@ -308,7 +308,7 @@ async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ 
         }).then((r) => r.json());
         if (res && res.result && res.result.value) supplies[`sui:${token}`] = res.result.value;
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 

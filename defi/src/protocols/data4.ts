@@ -27348,7 +27348,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#somnex",
     listedAt: 1757439601,
     dimensions: {
-      derivatives: "somnex-perps"
+      derivatives: "somnex-perps",
+      fees: "somnex-perps"
     }
   },
   {

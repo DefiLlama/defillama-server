@@ -124,13 +124,17 @@ function addImportsDataToMapping() {
 
   Object.keys(dimensionsConfig).forEach((adapterType) => {
     if (adapterType === AdapterType.DERIVATIVES) return; // derivatives use dexs imports
-    if (adapterType === AdapterType.OPEN_INTEREST) {  // open interest should prefer derivatives imports if available over other imports (well except oi adapter file itself)
-      dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DERIVATIVES].imports, ...dimensionsConfig[adapterType].imports }
-    } else
-      dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
+    if (adapterType === AdapterType.OPEN_INTEREST) return; // OI prioritizes dexs imports (if present) over rest (other than oi itself), so first, we need to build dex imports
+
+    dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
   })
 
+
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
+
+  // the order matters, wait for other importd to be built before running this
+  dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
+
 }
 
 function getDimensionsConfig() {

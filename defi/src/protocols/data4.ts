@@ -26668,7 +26668,7 @@ const data4: Protocol[] = [
         genuineSpikes: ["1722988800", "1723075200"],
         adapter: "edgeX"
       },
-      "open-interest": "edgex"
+      "open-interest": "edgeX"
     }
   },
   {

@@ -761,7 +761,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     }
     const dataKeys = Object.keys(record.aggregated ?? {}).filter(key => ACCOMULATIVE_ADAPTOR_TYPE[key]) // we care about only base keys
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
-    const improbableValue = 5e10 // 50 billion
+    const improbableValue = 2e11 // 200 billion
     if (values.some((i: any) => i > improbableValue)) {
       if (NOTIFY_ON_DISCORD)
         invalidDataRecords.push([adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue)].map(i => i + ' ').join(' '))

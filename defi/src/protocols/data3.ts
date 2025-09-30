@@ -43141,7 +43141,10 @@ const data3_2: Protocol[] = [
     listedAt: 1714088562,
     dimensions: {
       fees: "aerodrome-slipstream",
-      dexs: "aerodrome-slipstream"
+      dexs: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"]
+      }
     }
   },
   {

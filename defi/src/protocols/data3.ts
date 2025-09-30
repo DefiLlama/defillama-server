@@ -63120,7 +63120,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Trading App",
-    chains: ["Ethereum", "Base", "Binance", "Solana", "Sonic", "Berachain", "Avalanche", "Story"],
+    chains: ["Ethereum", "Base", "Binance", "Solana", "Sonic", "Berachain", "Avalanche"],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "blazingapp",

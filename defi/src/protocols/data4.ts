@@ -28628,7 +28628,10 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "injective",
     dimensions: {
-      derivatives: "injective-derivatives",
+      derivatives: {
+        adapter: "injective-derivatives",
+        genuineSpikes: ["1759104000"],
+      },
       "open-interest": "injective-derivatives"
     },
     parentProtocol: "parent#injective-orderbook",

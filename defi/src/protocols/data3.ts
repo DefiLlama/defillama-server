@@ -54456,7 +54456,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "circle",
     audit_links: [],
-    stablecoins: ["usdc"],
+    stablecoins: ["usd-coin"],
     dimensions: {
       fees: "circle"
     }
@@ -54481,7 +54481,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "Tether_to",
     audit_links: [],
-    stablecoins: ["usdt"],
+    stablecoins: ["tether"],
     dimensions: {
       fees: "tether"
     }

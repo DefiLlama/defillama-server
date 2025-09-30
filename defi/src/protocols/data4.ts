@@ -6697,7 +6697,10 @@ const data4: Protocol[] = [
     listedAt: 1740357231,
     dimensions: {
       fees: "hyperswap-v2",
-      dexs: "hyperswap-v2"
+      dexs: {
+        adapter: "hyperswap-v2",
+        genuineSpikes: ["1759104000"],
+      },
     }
   },
   {

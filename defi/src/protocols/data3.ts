@@ -56026,7 +56026,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Injective"],
     module: "injective-orderbook/index.js",
-    twitter: "HelixApp_",
+    twitter: "HelixMarkets",
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -56043,7 +56043,10 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp",
+      derivatives: {
+        adapter: "helix-helix-perp",
+        genuineSpikes: ["1759104000"],
+      },
       "open-interest": "helix-helix-perp"
     }
   },

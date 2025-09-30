@@ -24198,7 +24198,8 @@ const data4: Protocol[] = [
     name: "dextrabot",
     address: null,
     symbol: "-",
-    url: "https://app.dextrabot.com/",
+    url: "https://app.dextrabot.com/referral/DEFILLAMA",
+    referralUrl: "https://app.dextrabot.com/referral/DEFILLAMA",
     description:
       "Enables users to discover and track profitable wallets on Hyperliquid that align with your strategy, and instantly copy trade their positions",
     chain: "Hyperliquid L1",

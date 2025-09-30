@@ -6663,7 +6663,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1691625600"],
         adapter: "satori"
-      }
+      },
+      "open-interest": "satori"
     }
   },
   {
@@ -38312,7 +38313,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1712534400", "1712620800"],
         adapter: "myx-finance"
-      }
+      },
+      "open-interest": "myx-finance"
     }
   },
   {
@@ -53728,7 +53730,8 @@ const data3_2: Protocol[] = [
     listedAt: 1723560145,
     dimensions: {
       fees: "reya-dex",
-      derivatives: "reya-dex"
+      derivatives: "reya-dex",
+      "open-interest": "reya-dex"
     }
   },
   {

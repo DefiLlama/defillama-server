@@ -1,27 +1,27 @@
 import * as HyperExpress from "hyper-express";
 import * as path from "path";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
-import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
-import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { get20MinDate } from "../../utils/shared";
-import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
-import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
-import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getCurrentUnixTimestamp } from "../../utils/date";
-import { getTweetStats } from "../../twitter/db";
-import { ddbGetInflows } from "../../getInflows";
-import { getFormattedChains } from "../../getFormattedChains";
-import { getR2 } from "../../utils/r2";
-import { getChainChartData } from "../../getChart";
-import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
-import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
 import { getCexs } from "../../getCexs";
+import { getChainChartData } from "../../getChart";
+import { getChainDefaultChartData } from "../../getDefaultChart";
+import { getFormattedChains } from "../../getFormattedChains";
+import { ddbGetInflows } from "../../getInflows";
+import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
+import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
+import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getTweetStats } from "../../twitter/db";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import { chainNameToIdMap } from "../../utils/normalizeChain";
+import { getR2 } from "../../utils/r2";
+import { get20MinDate } from "../../utils/shared";
+import sluggify from "../../utils/sluggify";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { readRouteData, } from "../cache/file-cache";
+import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getAggregatesFeesRoute, getDimensionProtocolFileRoute, getFinancialStatementRoute, getOverviewFileRoute, getProFeesRoute } from "./dimensions";
+import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -452,6 +452,12 @@ async function _getChainChartData(name: string) {
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
+export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
+  router.get("/financial-statement/:name", ew(getFinancialStatementRoute))
+  router.get("/fees/:recordType/:name", ew(getProFeesRoute))
+  router.get("/aggregates/fees/:name", ew(getAggregatesFeesRoute))
 }
 
 /* 

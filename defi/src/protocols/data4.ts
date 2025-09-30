@@ -22710,7 +22710,7 @@ const data4: Protocol[] = [
     description:
       "Surf Lending is a capital-efficient pooled lending protocol enabling investors to earn interest and borrowers to obtain instant loans on Cardano",
     chain: "Cardano",
-    logo: `${baseIconsUrl}/surf-lending.jpg`,
+    logo: `${baseIconsUrl}/surf-lending.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "flow-lending",

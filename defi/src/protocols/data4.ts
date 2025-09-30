@@ -22085,7 +22085,8 @@ const data4: Protocol[] = [
     ],
     forkedFromIds: [],
     dimensions: {
-      derivatives: "hibachi"
+      derivatives: "hibachi",
+      "open-interest": "hibachi"
     }
   },
   {
@@ -26708,7 +26709,8 @@ const data4: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "paradex"
-      }
+      },
+      "open-interest": "paradex"
     }
   },
   {

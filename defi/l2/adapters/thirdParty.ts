@@ -48,7 +48,8 @@ const axelar = async (): Promise<void> => {
       let normalizedChain: string = chain;
       if (chain in chainMap) normalizedChain = chainMap[chain];
       if (!allChainKeys.includes(normalizedChain)) return;
-      if (!("address" in token.addresses[chain])) return;
+      if (!("address" in token.addresses[chain] && "symbol" in token.addresses[chain])) return;
+      if (!token.addresses[chain].symbol.startsWith("axl")) return;
       addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
     });
   });

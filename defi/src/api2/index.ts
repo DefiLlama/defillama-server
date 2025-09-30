@@ -49,6 +49,18 @@ async function main() {
 
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
 
+  webserver.options('/*', (req, res) => {
+    const origin = req.headers.origin;
+
+    const isFromDefiLlama = origin === 'https://defillama.com'
+    
+    if (req.headers.authorization && !isFromDefiLlama) {
+      res.status(403).send();
+    } else {
+      res.status(200).send();
+    }
+  });
+
   webserver.listen(port)
     .then(() => {
       console.timeEnd('Api Server init')

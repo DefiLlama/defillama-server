@@ -260,8 +260,8 @@ async function initializePriceQueryFilter() {
         });
       }
 
-    } catch (e) {
-      console.error("Error fetching coins metadata:", e);
+    } catch (e: any) {
+      console.error("Error fetching coins metadata:", e.message);
       return;
     }
 

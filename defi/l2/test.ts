@@ -19,6 +19,9 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
+
+    if (chain.toLowerCase() == "bsc") console.log(`BSC own tokens: ${allNew.ownTokens.total}`);
+    if (chain.toLowerCase() == "solana" && allNew.total.total < 1000) throw new Error(`Missing Solana TVL`);
     if (chain.toLowerCase() == "tron" && totalNew < 15_000_000_000) {
       chains;
       allNew;
@@ -28,9 +31,10 @@ export async function verifyChanges(chains: FinalData) {
     const backwardChange = totalNew != 0 ? (100 * Math.abs(totalNew - totalOld)) / totalNew : 0;
     if (forwardChange < 100 && backwardChange < 100) return;
 
-    message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
-      0
-    )}% in ${hours}`;
+    if (Number(hours) < 6)
+      message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
+        0
+      )}% in ${hours}`;
   });
 
   const rawFailedDeps = fetchFailedDeps();

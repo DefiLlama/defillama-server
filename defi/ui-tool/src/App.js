@@ -8,7 +8,7 @@ import {
   Input,
   Flex,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 import './App.css';
@@ -23,6 +23,7 @@ const App = () => {
 
   const [output, setOutput] = useState('');
   const [isConnected, setIsConnected] = useState(false);
+  const [showDebugLogs, setShowDebugLogs] = useState(true);
   const wsRef = useRef(null);
   const outputRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -38,6 +39,8 @@ const App = () => {
 
   // dimensions tab
   const [dimensionRefillForm] = Form.useForm();
+  const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
+
   const [adapterTypes, setAdapterTypes] = useState([]);
   const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
   const [dimRefillWaitingRecords, setDimRefillWaitingRecords] = useState([]);
@@ -68,7 +71,6 @@ const App = () => {
 
   // misc tab
   const [miscForm] = Form.useForm();
-  const miscAction = Form.useWatch('action', miscForm);
   const [miscOutputTableData, setMiscOutputTableData] = useState({});
 
   function addWebSocketConnection() {
@@ -250,18 +252,26 @@ const App = () => {
                 console.error('WebSocket is not connected');
               }
             }}
-            style={{ display: process.env.REACT_APP_WS_AUTH_PASSWORD ? 'block' : 'none' }}
+            style={{ display: (process.env.REACT_APP_WS_AUTH_PASSWORD && isConnected) ? 'block' : 'none' }}
           >
             Restart Server
           </Button>
 
-
+{/* 
           <Button
             style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
             icon={<ClearOutlined />}
             onClick={clearOutput}
           >
             Clear Output
+          </Button> */}
+
+          <Button
+            style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
+            onClick={() => setShowDebugLogs(!showDebugLogs)}
+            icon={showDebugLogs ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+          >
+            {showDebugLogs ? 'Hide Output' : 'Show Output'}
           </Button>
 
           <Button
@@ -308,8 +318,9 @@ const App = () => {
               {activeTabKey === 'misc' && getMiscOutputTable()}
 
 
-              {output && (<Divider>Console Output</Divider>)}
+              {output && showDebugLogs && (<Divider>Console Output</Divider>)}
               <div
+                style={{ display: output && showDebugLogs ? 'block' : 'none' }}
                 ref={outputRef}
                 className="output-container"
               >
@@ -343,6 +354,7 @@ const App = () => {
           dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
+          delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -370,7 +382,9 @@ const App = () => {
         initialValues={{
           parallelCount: 3,
           onlyMissing: false,
-          dryRun: false
+          dryRun: false,
+          delayBetweenRuns: 0,
+          delayEnabled: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -416,6 +430,7 @@ const App = () => {
         <Form.Item
           label="Date Range"
           name="dateRange"
+          style={{ display: dimRefillOnlyMissing ? 'none' : 'block' }}
           rules={[
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -438,21 +453,25 @@ const App = () => {
           <InputNumber min={1} max={100} />
         </Form.Item>
 
-        {/*       <Form.Item
-        label="Dry Run"
-        name="dryRun"
-        valuePropName="checked"
-      >
-        <Switch checkedChildren="Yes" unCheckedChildren="No" />
-      </Form.Item>
+        <Form.Item
+          label="Enable Delay Between Runs"
+          name="delayEnabled"
+          valuePropName="checked"
+        >
+          <Switch
+            checkedChildren="Yes"
+            unCheckedChildren="No"
+          />
+        </Form.Item>
 
-      <Form.Item
-        label="Check before inserting data"
-        name="checkBeforeInsert"
-        valuePropName="checked"
-      >
-        <Switch checkedChildren="Yes" unCheckedChildren="No" />
-      </Form.Item> */}
+        <Form.Item
+          label="Delay Between Runs (seconds)"
+          name="delayBetweenRuns"
+          rules={[{ required: false, message: 'Please enter delay between runs' }]}
+          style={{ display: Form.useWatch('delayEnabled', dimensionRefillForm) ? 'block' : 'none' }}
+        >
+          <InputNumber min={0} max={1000} />
+        </Form.Item>
 
         <Form.Item>
           <Button

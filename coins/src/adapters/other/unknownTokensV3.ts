@@ -67,6 +67,10 @@ const config: any = {
     "0xf7178122A087eF8F5c7BeA362b7DaBE38F20Bf05":
       "0x2019DEB4E18107A2FD8B4acBC7e3878037336fc2", // OMNI
   },
+  hyperliquid: {
+    "0x876e7F2f30935118a654fc0E1f807aFc49EFe500":
+      "0xe9c02ca07931f9670fa87217372b3c9aa5a8a934", // PUP
+  },
 };
 
 export function unknownTokensV3(timestamp: number = 0) {

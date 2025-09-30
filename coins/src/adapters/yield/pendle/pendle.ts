@@ -197,6 +197,21 @@ export default async function getTokenPrices(
         0.9,
         undefined,
       );
+
+      if (info.lpWrapper) {
+        addToDBWritesList(
+          writes,
+          chain,
+          info.lpWrapper,
+          lpPrice,
+          18,
+          `${symbols[i]}-wrapper`,
+          timestamp,
+          "pendle-lp-wrapper",
+          0.9,
+          undefined,
+        );
+      }
     });
   }
 
@@ -293,6 +308,7 @@ async function getAllTokenInfos(chainId: number) {
     sy: string;
     pt: string;
     yt: string;
+    lpWrapper?: string;
   }[] = [];
 
   function formatPendleAddr(rawAddr: string): string {
@@ -307,6 +323,7 @@ async function getAllTokenInfos(chainId: number) {
         sy: formatPendleAddr(m.sy),
         pt: formatPendleAddr(m.pt),
         yt: formatPendleAddr(m.yt),
+        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
       }))
     )
   }
@@ -319,6 +336,7 @@ async function getAllTokenInfos(chainId: number) {
         sy: formatPendleAddr(m.sy),
         pt: formatPendleAddr(m.pt),
         yt: formatPendleAddr(m.yt),
+        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
       }))
     )
   }

@@ -15,7 +15,8 @@ export const CategoryTagMap = {
     "Commodities",
     "Collectibles",
     "Hedge Funds",
-    "Private Equity"
+    "Private Equity",
+    "Tokenized Trading Strategies"
   ],
 }
 

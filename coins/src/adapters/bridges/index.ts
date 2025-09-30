@@ -45,6 +45,7 @@ import unichan from "./unichain";
 import flow from "./flow";
 import layerzero from "./layerzero";
 import initia from "./initia";
+import zeroDecimalMappings from "./zeroDecimalMappings";
 
 export type Token =
   | {
@@ -82,6 +83,7 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
+  zeroDecimalMappings, // THIS SHOULD BE AT INDEX 0
   optimism,
   // anyswap,
   arbitrum,
@@ -116,7 +118,7 @@ export const bridges = [
   // sophon,
   unichan,
   flow,
-  // layerzero,
+  layerzero,
   initia
 ].map(normalizeBridgeResults) as Bridge[];
 
@@ -130,7 +132,7 @@ const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
 async function storeTokensOfBridge(bridge: Bridge, i: number) {
   try {
-    const res = await _storeTokensOfBridge(bridge);
+    const res = await _storeTokensOfBridge(bridge, i);
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
@@ -149,7 +151,7 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
   }
 }
 
-async function _storeTokensOfBridge(bridge: Bridge) {
+async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   const tokens = await bridge();
 
   const alreadyLinked = (
@@ -220,7 +222,8 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         symbol = token.symbol;
       }
 
-      if (!decimals || !symbol) return;
+      if (i && !decimals) return;
+      if (!symbol) return;
 
       writes.push({
         PK: `asset#${token.from}`,
@@ -230,7 +233,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         symbol,
         redirect: finalPK,
         confidence: 0.97,
-        adapter: "bridges",
+        adapter: `bridges ${i}`,
       });
     }),
   );

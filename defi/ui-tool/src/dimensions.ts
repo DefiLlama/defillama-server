@@ -6,6 +6,8 @@ import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/hand
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
+import sleep from "../../src/utils/shared/sleep";
+import { getTimestampAtStartOfDayUTC } from "../../src/utils/date";
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
@@ -31,8 +33,17 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const adapterType = args.adapterType
   const protocolToRun = args.protocol
   const checkBeforeInsert = args.checkBeforeInsert
+  const delayBetweenRuns = args.delayBetweenRuns ?? 0
   const protocolNames = new Set([protocolToRun])
   if (checkBeforeInsert) args.dryRun = true
+
+  if (delayBetweenRuns)
+    console.log(`Delay between runs is set to ${delayBetweenRuns} seconds`)
+
+  // const endOfToday = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) + ONE_DAY_IN_SECONDS - 1
+  // // skip if end date is in the future
+  // if (toTimestamp > endOfToday)
+  //   toTimestamp = endOfToday
 
   const { protocolAdaptors, } = loadAdaptorsData(adapterType as AdapterType)
   let protocol = protocolAdaptors.find(p => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
@@ -53,6 +64,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
 
   if (args.onlyMissing) {
     const allTimeSData = await getAllDimensionsRecordsTimeS({ adapterType: adapterType as any, id: protocol.id2 })
+    console.log('existing records in db:', allTimeSData.length)
     timeSWithData = new Set(allTimeSData.map((d: any) => d.timeS))
     allTimeSData.sort((a: any, b: any) => a.timestamp - b.timestamp)
     let firstTimestamp = allTimeSData[0]?.timestamp
@@ -93,6 +105,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
       currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
   }
+  let consoleDelayCounter = 0
 
   const { errors } = await PromisePool
     .withConcurrency(args.parallelCount)
@@ -100,6 +113,12 @@ export async function runDimensionsRefill(ws: any, args: any) {
     .process(async (eventObj: any) => {
       console.log(++i, 'refilling data on', new Date((eventObj.timestamp) * 1000).toLocaleDateString())
       const response = await handler2(eventObj)
+      if (delayBetweenRuns > 0) {
+        consoleDelayCounter++
+        if (consoleDelayCounter < 3)
+          console.log(`Waiting for ${delayBetweenRuns} seconds before next run...`)
+        await sleep(delayBetweenRuns * 1000)
+      }
       if (checkBeforeInsert && response?.length)
         response.forEach((r: any) => {
           if (!r) return;

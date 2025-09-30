@@ -5,7 +5,17 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
-type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
+export type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
+
+export type ProtocolDimensionsExtraConfig = {
+  defaultChartView?: ChartBreakdownOptions;
+  adapter: string;
+  genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
+}
+
+export type DimensionsConfig = {
+  [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
+}
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
@@ -15,13 +25,13 @@ export interface ProtocolAdaptor extends Protocol {
     isProtocolInOtherCategories?: boolean
     protocolType?: ProtocolType
     adapterType?: ProtocolType
-    versionKey?: string
     methodologyURL: string
     methodology?: string | IJSON<string> | any
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
-    doublecounted?: boolean
+    doublecounted?: boolean,
+    isDead?: boolean,
 }
 
 export interface IConfig {
@@ -42,11 +52,9 @@ export type AdaptorsConfig = IJSON<IConfig>
 export type AdaptorData = {
     default: ProtocolAdaptor[]
     protocolAdaptors: ProtocolAdaptor[]
-    childProtocolAdaptors: ProtocolAdaptor[]
     importModule: (module: string) => any
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
-    rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>,
     protocolMap: IJSON<ProtocolAdaptor>
 }
 
@@ -116,6 +124,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     // [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
+    [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -159,10 +168,14 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyNotionalVolume,
     ],
-    [AdapterType.DERIVATIVES]: [
+    // [AdapterType.DERIVATIVES]: [
+    //     AdaptorRecordType.shortOpenInterestAtEnd,
+    //     AdaptorRecordType.longOpenInterestAtEnd,
+    //     AdaptorRecordType.openInterestAtEnd
+    // ],
+    [AdapterType.OPEN_INTEREST]: [
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,
-        AdaptorRecordType.openInterestAtEnd
     ]
 }
 

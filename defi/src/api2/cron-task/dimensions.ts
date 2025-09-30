@@ -227,7 +227,7 @@ async function run() {
       addProtocolData({
         protocolId: parentId, dimensionProtocolInfo: {
           ...info,
-          cleanRecordsConfig: mergeSpikeConfigs(childDimensionsInfo)
+          genuineSpikes: mergeSpikeConfigs(childDimensionsInfo)
         }, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records
       }) // compute summary data
     }
@@ -262,10 +262,8 @@ async function run() {
       const protocolData: any = {}
       protocol.summaries = {} as any
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
-      protocol.misc = {
-        versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
-      };
-      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView']
+      protocol.misc = {};
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
 
@@ -280,7 +278,7 @@ async function run() {
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
-      protocol.info.defillamaId = protocol.info.protocolType === ProtocolType.CHAIN ? `chain#${protocol.info.defillamaId ?? info.id}` : protocol.info.defillamaId ?? info.id
+      protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
 
@@ -485,9 +483,16 @@ async function run() {
 
         // average1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
-          if (summary.total1y && _protocolData.lastOneYearData?.length > 0)
+          if (summary.total1y && _protocolData.lastOneYearData?.length > 0) {
             summary.average1y = summary.total1y / _protocolData.lastOneYearData.length
-        })
+          }
+        });
+        // monthlyAverage1y
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (summary.total1y && _protocolData.lastOneYearData?.length >= 30) {
+            summary.monthlyAverage1y = (summary.total1y / _protocolData.lastOneYearData.length) * 30.44
+          }
+        });
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)
@@ -628,13 +633,13 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   info.linkedProtocols = [info.name].concat(childProtocols)
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
-    const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
+    const childProtocolLabel = childData.name ?? childData.displayName
     childData.linkedProtocols = info.linkedProtocols
 
-    if (!versionKey) console.log('versionKey is missing', childData)
+    if (!childProtocolLabel) console.log('childProtocolLabel is missing', childData)
 
     // update child  metadata and chain info
-    // info.childProtocols.push({ ...childData, versionKey })
+    // info.childProtocols.push({ ...childData, childProtocolLabel })
     if (!info.chains) info.chains = []
     info.chains = Array.from(new Set(info.chains.concat(childData.chains ?? [])))
 
@@ -644,10 +649,10 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
       Object.entries(record.aggregated).forEach(([recordType, childAggData]: any) => {
         if (!parentRecords[timeS].aggregated[recordType]) parentRecords[timeS].aggregated[recordType] = { value: 0, chains: {} }
         if (!parentRecords[timeS].breakdown[recordType]) parentRecords[timeS].breakdown[recordType] = {}
-        if (!parentRecords[timeS].breakdown[recordType][versionKey]) parentRecords[timeS].breakdown[recordType][versionKey] = { value: 0, chains: {} }
+        if (!parentRecords[timeS].breakdown[recordType][childProtocolLabel]) parentRecords[timeS].breakdown[recordType][childProtocolLabel] = { value: 0, chains: {} }
 
         const aggItem = parentRecords[timeS].aggregated[recordType]
-        const breakdownItem = parentRecords[timeS].breakdown[recordType][versionKey]
+        const breakdownItem = parentRecords[timeS].breakdown[recordType][childProtocolLabel]
         aggItem.value += childAggData.value
         breakdownItem.value = childAggData.value
         Object.entries(childAggData.chains).forEach(([chain, value]: any) => {
@@ -715,14 +720,19 @@ type ProtocolSummary = RecordSummary & {
   change_1m?: number
   change_7dover7d?: number
   average1y?: number
+  monthlyAverage1y?: number
   totalAllTime?: number
   breakdown24h?: any
   breakdown30d?: any
 }
 
 run()
-  .catch(console.error)
   .then(storeAppMetadata)
+  .catch(async e => {
+    console.error(e)
+    const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
+    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+  })
   .then(() => process.exit(0))
 
 const spikeRecords = [] as any[]
@@ -734,8 +744,8 @@ const isLessThanThreeMonthsAgo = (timeS: string) => timeSToUnix(timeS) > ThreeMo
 
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
-function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, versionKey?: string }) {
-  const { allSpikesAreGenuine, whitelistedSpikeSet = new Set() } = getSpikeConfig(metadata)
+function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, }) {
+  const { whitelistedSpikeSet = new Set() } = getSpikeConfig(metadata)
   const allKeys = Object.keys(records)
 
   // there is no point in maintaining accumulative data for protocols on all the records
@@ -751,7 +761,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     }
     const dataKeys = Object.keys(record.aggregated ?? {}).filter(key => ACCOMULATIVE_ADAPTOR_TYPE[key]) // we care about only base keys
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
-    const improbableValue = 5e10 // 50 billion
+    const improbableValue = 2e11 // 200 billion
     if (values.some((i: any) => i > improbableValue)) {
       if (NOTIFY_ON_DISCORD)
         invalidDataRecords.push([adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue)].map(i => i + ' ').join(' '))
@@ -765,7 +775,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
       // code for logging spikes
       const currentValue = record.aggregated?.[key]?.value
       // we check if we have at least 7 days of data & value is higher than a million before checking if it is a spike
-      if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
+      if (idx > 7 && currentValue > 1e7 && !whitelistedSpikeSet.has(timeS)) {
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
         let isSpike = false
@@ -780,7 +790,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         }
 
         if (isSpike) {
-          if (NOTIFY_ON_DISCORD && isLessThanThreeMonthsAgo(timeS))
+          if (NOTIFY_ON_DISCORD)
             spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]
@@ -849,35 +859,26 @@ function getPercentage(a: number, b: number) {
 }
 
 type SpikeConfig = {
-  allSpikesAreGenuine?: boolean
   whitelistedSpikeSet?: Set<string>
 }
 
 function mergeSpikeConfigs(childProtocols: any[]) {
-  const cleanRecordsConfig: any = {}
-  childProtocols.forEach(({ cleanRecordsConfig: childConfig }: any = {}) => {
-    if (childConfig?.genuineSpikes === true) {
-      cleanRecordsConfig.genuineSpikes = true
-    } else if (typeof childConfig?.genuineSpikes === 'object') {
-      cleanRecordsConfig.genuineSpikes = cleanRecordsConfig.genuineSpikes ?? {}
-      Object.entries(childConfig.genuineSpikes).forEach(([key, value]: any) => {
-        if (!value) return;
-        cleanRecordsConfig.genuineSpikes[key] = value
+  const genuineSpikesSet = new Set<string>()
+  childProtocols.forEach((childConfig: any = {}) => {
+    if (Array.isArray(childConfig.genuineSpikes)) {
+      childConfig.genuineSpikes.forEach((key: any) => {
+        genuineSpikesSet.add(key)
       })
     }
   })
-  return cleanRecordsConfig
+  const response = [...genuineSpikesSet]
+  return response
 }
 
 function getSpikeConfig(protocol: any): SpikeConfig {
-  let info = (protocol as any)?.cleanRecordsConfig?.genuineSpikes ?? {}
-  if (info === true) return { allSpikesAreGenuine: true, }
-  const whitelistedSpikeSet = new Set() as Set<string>
-  Object.entries(info).forEach(([key, value]: any) => {
-    if (!value) return;
-    const timeS = unixTimeToTimeS(key)
-    whitelistedSpikeSet.add(timeS)
-  })
+  if (!protocol?.genuineSpikes) return {}
+  let info = (protocol as any)?.genuineSpikes ?? []
+  const whitelistedSpikeSet = new Set(info.map(unixTimeToTimeS)) as Set<string>
   return { whitelistedSpikeSet }
 }
 

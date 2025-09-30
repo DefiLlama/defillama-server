@@ -15,27 +15,39 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? [];
   const timestamp = Number(event.pathParameters?.timestamp);
   const endTimestamp = Number(event.queryStringParameters?.end ?? getCurrentUnixTimestamp());
-  const protocolData = protocols.find((prot) => sluggify(prot) === protocolName);
+  const protocolData = protocols.find((prot) => sluggify(prot) === protocolName) as IProtocol
   if (!protocolData) {
     return errorResponse({ message: "Protocol not found" });
   }
 
+  return ddbGetInflows({
+    errorResponse: (message: string) => errorResponse({ message }),
+    successResponse, tokensToExclude,
+    protocolData, skipTokenLogs: false, timestamp, endTimestamp,
+  }) as any
+}
+
+export async function ddbGetInflows({ errorResponse, successResponse, protocolData, tokensToExclude, skipTokenLogs, timestamp, endTimestamp, }: {
+  errorResponse: any, successResponse: any, protocolData: IProtocol, tokensToExclude: string[], skipTokenLogs: boolean, timestamp: number, endTimestamp: number,
+}) {
+
   const old = await getTVLOfRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
-  if (old.SK === undefined) {
-    return errorResponse({ message: "No data at that timestamp" });
-  }
+  if (old.SK === undefined)
+    return errorResponse("No data at that timestamp");
+
   const [currentTokens, currentUsdTokens] = await Promise.all(
     [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getTVLOfRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {
-    return errorResponse({ message: "No data" });
+    return errorResponse("No data");
   }
-  return successResponse(computeInflowsData(protocolData as IProtocol, currentTokens, currentUsdTokens, old, tokensToExclude))
-};
 
-export function computeInflowsData(protocolData: IProtocol, currentTokens: any, currentUsdTokens: any, old: any, tokensToExclude: string[]) {
-  
+  return successResponse(computeInflowsData(protocolData as IProtocol, currentTokens, currentUsdTokens, old, tokensToExclude, skipTokenLogs))
+}
+
+export function computeInflowsData(protocolData: IProtocol, currentTokens: any, currentUsdTokens: any, old: any, tokensToExclude: string[], skipTokenLogs = false) {
+
   const tokenDiff: { [token: string]: number } = {};
 
   for (const token in currentTokens.tvl) {
@@ -46,17 +58,18 @@ export function computeInflowsData(protocolData: IProtocol, currentTokens: any, 
     const formattedToken = tokenDiff[token]
       ? token
       : tokenDiff[geckoSymbols[token]]
-      ? geckoSymbols[token]
-      : tokenDiff[tokenMapping[token]]
-      ? tokenMapping[token]
-      : null;
+        ? geckoSymbols[token]
+        : tokenDiff[tokenMapping[token]]
+          ? tokenMapping[token]
+          : null;
 
     if (formattedToken) {
       tokenDiff[formattedToken] -= old.tvl[token];
     } else {
-      console.log(
-        `Inflows: Couldn't find ${token} in last tokens record of ${protocolData!.name}(id: ${protocolData!.id})`
-      );
+      if (!skipTokenLogs)
+        console.log(
+          `Inflows: Couldn't find ${token} in last tokens record of ${protocolData!.name}(id: ${protocolData!.id})`
+        );
 
       delete tokenDiff[token];
     }

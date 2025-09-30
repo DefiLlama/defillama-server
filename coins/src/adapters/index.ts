@@ -105,6 +105,7 @@ export default {
   apiDerivs: require("./yield/apiDerivs"),
   pxeth: require("./liquidStaking/pxeth"),
   // sthApt: require("./liquidStaking/sthapt"),
+  truAPT: require("./liquidStaking/truapt"),
   mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),
@@ -163,4 +164,10 @@ export default {
   harvest: require("./yield/harvest"),
   opensea: require("./nft/opensea"),
   brkteth: require("./yield/brkteth"),
+  vbill: require("./rwa/vbill"),
+  ondo_equity: require("./rwa/ondo_equity"),
+  stakingPools: require("./solana/stakingPools"),
+  fluidSmartLending: require("./markets/fluidSmartLending"),
+  rhea: require("./markets/rhea"),
+  bracket: require("./yield/bracket"),
 };

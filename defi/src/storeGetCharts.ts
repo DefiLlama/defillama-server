@@ -131,6 +131,10 @@ export async function getHistoricalTvlForAllProtocols(
         historicalTvl = getHistTvlOptions.getAllTvlData!(protocol);
       }
 
+      if(lastTvl) {
+        lastTvl = { ...lastTvl }
+      }
+
       if (lastTvl && !historicalTvl?.length) historicalTvl = [lastTvl];
 
       if (!historicalTvl || historicalTvl?.length < 1) {

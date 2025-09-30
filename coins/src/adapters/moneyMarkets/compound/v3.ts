@@ -8,6 +8,7 @@ import * as sdk from "@defillama/sdk";
 
 const assets: { [chain: string]: string } = {
   base: "0xb125E6687d4313864e53df431d5425969c15Eb2F",
+  arbitrum: "0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf",
 };
 
 async function getTokenPrices(chain: string, timestamp: number) {

@@ -7610,7 +7610,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "AUTOfinance maximizes returns through Autopools by autonomously routing liquidity across integrated DeFi destinations while preserving composability.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/tokemak.jpg`,
+    logo: `${baseIconsUrl}/autofinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "tokemak",

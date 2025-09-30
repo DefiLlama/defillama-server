@@ -2185,7 +2185,8 @@ const data4: Protocol[] = [
     dimensions: {
       dexs: "olab",
       options: "olab"
-    }
+    },
+    deprecated: true
   },
   {
     id: "5649",

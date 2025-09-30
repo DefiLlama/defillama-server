@@ -26713,7 +26713,10 @@ const data4: Protocol[] = [
         genuineSpikes: ["1722816000"],
         adapter: "paradex"
       },
-      "open-interest": "paradex"
+      "open-interest": {
+        genuineSpikes: ["1759190400"],
+        adapter: "paradex"
+      }
     }
   },
   {

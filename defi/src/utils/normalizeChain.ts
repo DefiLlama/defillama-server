@@ -4821,6 +4821,9 @@ export const chainCoingeckoIds = {
     twitter: "Somnia_Network",
     url: "https://somnia.network/",
     chainId: 5031,
+    dimensions: {
+      fees: "somnia"
+    }
   },
   "Orderly": {
     geckoId: null,

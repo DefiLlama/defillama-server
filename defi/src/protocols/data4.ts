@@ -11692,7 +11692,8 @@ const data4: Protocol[] = [
   },
   {
     id: "6042",
-    name: "Lighter V2",
+    name: "Lighter Bridge",
+    previousNames: ["Lighter V2"],
     address: null,
     symbol: "-",
     url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
@@ -11700,7 +11701,7 @@ const data4: Protocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lighter-v2.jpg`,
+    logo: `${baseIconsUrl}/lighter-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -20605,7 +20606,7 @@ const data4: Protocol[] = [
     url: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
     referralUrl: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
     description:
-      "Hyperwave is the first liquid HLP primitive on the market, designed to bridge yield generated in Hypercore directly into the HyperEVM. By tokenizing HLP deposits, Hyperwave is bringing one of the most powerful, community-driven yield-bearing instruments into HyperEVM.",
+      "Hyperwave is building the House of Payments—an onchain forex layer that reroutes global payments onto Hyperliquid. hwHLP is a tokenized form of the HLP vault, and hwHYPE is a vault that delivers the best risk-adjusted return for your HYPE.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperwave.jpg`,
     audits: "2",
@@ -22084,7 +22085,8 @@ const data4: Protocol[] = [
     ],
     forkedFromIds: [],
     dimensions: {
-      derivatives: "hibachi"
+      derivatives: "hibachi",
+      "open-interest": "hibachi"
     }
   },
   {
@@ -26668,7 +26670,7 @@ const data4: Protocol[] = [
         genuineSpikes: ["1722988800", "1723075200"],
         adapter: "edgeX"
       },
-      "open-interest": "edgex"
+      "open-interest": "edgeX"
     }
   },
   {
@@ -26707,7 +26709,8 @@ const data4: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "paradex"
-      }
+      },
+      "open-interest": "paradex"
     }
   },
   {
@@ -27347,6 +27350,10 @@ const data4: Protocol[] = [
     twitter: "SomnexXYZ",
     parentProtocol: "parent#somnex",
     listedAt: 1757439601,
+    dimensions: {
+      derivatives: "somnex-perps",
+      fees: "somnex-perps"
+    }
   },
   {
     id: "6692",
@@ -28648,7 +28655,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6751",
-    name: "Lighter V2 Perps",
+    name: "Lighter Perps",
     address: null,
     symbol: "-",
     url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
@@ -28656,7 +28663,7 @@ const data4: Protocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "zkLighter",
-    logo: `${baseIconsUrl}/lighter-v2-perps.jpg`,
+    logo: `${baseIconsUrl}/lighter-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29305,6 +29312,107 @@ const data4: Protocol[] = [
       dexs: "pacaswap",
       fees: "pacaswap"
     }
+  },
+  {
+    id: "6780",
+    name: "Magic Square",
+    address: "bsc:0x2B72867c32CF673F7b02d208B26889fEd353B1f8",
+    symbol: "SQR",
+    url: "https://magicsquare.io/",
+    description: "Magic Square is the official Web3 app store, fundamentally changing how users discover and interact with apps and games in the Web3 space",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/magic-square.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "magic-square",
+    cmcId: "16882",
+    category: "Farm",
+    chains: ["Ethereum", "Base", "Avalanche", "Optimism", "Binance"],
+    module: "magic-farm/index.js",
+    twitter: "MagicSquareio",
+    forkedFromIds: [],
+    listedAt: 1759156769
+  },
+  {
+    id: "6781",
+    name: "VALR",
+    address: null,
+    symbol: "-",
+    url: "https://valr.com/",
+    description: "VALR is a regulated crypto exchange offering spot, margin, perpetuals, staking, lending, and institutional APIs, serving retail and institutional clients across Africa and abroad.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/valr.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin","Ethereum", "Solana", "Avalanche", "Tron", "Binance"],
+    module: "valr-cex/index.js",
+    twitter: "VALRdotcom",
+    forkedFromIds: [],
+    listedAt: 1759165241
+  },
+  {
+    id: "6782",
+    name: "GOATUP",
+    address: null,
+    symbol: "-",
+    url: "https://dapp.goatup.io/",
+    description: "A native perps dapp on GOAT Network — trade 50+ tokens with up to 50x leverage, powered by native BTC as lossless collateral.",
+    chain: "Goat",
+    logo: `${baseIconsUrl}/goatup.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Goat"],
+    module: "goatup/index.js",
+    twitter: "goatup_",
+    forkedFromIds: [],
+    listedAt: 1759165728
+  },
+  {
+    id: "6783",
+    name: "SYMMIO",
+    address: null,
+    symbol: "-",
+    url: "https://www.symm.io/",
+    description: "Symmio is a hybrid derivatives clearing protocol that enables intent-based, symmetric, leveraged trading of any asset via solver-enabled bilateral agreements.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/symmio.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Mantle", "Binance", "Base", "Berachain", "Mode", "Sonic", "Coti", "IOTA EVM"],
+    module: "symm-io/index.js",
+    twitter: "symm_io",
+    forkedFromIds: [],
+    listedAt: 1759188001
+  },
+  {
+    id: "6784",
+    name: "Legion",
+    address: null,
+    symbol: "-",
+    url: "https://legion.cc/",
+    description: "Legion is a merit-based crypto fundraising platform that lets projects launch token sales and allocates access to users based on on-chain reputation (Legion Scores) and compliance criteria.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/legion.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    module: "legion/index.js",
+    twitter: "legiondotcc",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/Legion-Team/legion-protocol-contracts/tree/master/audits"],
+    listedAt: 1759188237
   },
 ];
 export default data4;

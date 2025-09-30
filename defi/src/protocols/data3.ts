@@ -6664,7 +6664,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1691625600"],
         adapter: "satori"
-      }
+      },
+      "open-interest": "satori"
     }
   },
   {
@@ -19713,14 +19714,15 @@ const data3_1: Protocol[] = [
     deadUrl: true,  },
   {
     id: "3537",
-    name: "THENA ALPHA",
+    name: "THENA PERPS",
+    previousNames: ["THENA ALPHA"],
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://alpha.thena.fi",
     description:
       "ALPHA is THENA's intent-based derivatives trading platform powered by SYMMIO, offering over 100 crypto assets for trading with up to 60x leverage.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena-alpha.jpg`,
+    logo: `${baseIconsUrl}/thena-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -38323,7 +38325,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1712534400", "1712620800"],
         adapter: "myx-finance"
-      }
+      },
+      "open-interest": "myx-finance"
     }
   },
   {
@@ -53748,7 +53751,8 @@ const data3_2: Protocol[] = [
     listedAt: 1723560145,
     dimensions: {
       fees: "reya-dex",
-      derivatives: "reya-dex"
+      derivatives: "reya-dex",
+      "open-interest": "reya-dex"
     }
   },
   {
@@ -63111,9 +63115,9 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://blazingapp.com",
-    description: "Buy/Sell any coin via WebApp or Telegram. Synced, Audited, Verified, Fast - The Ultimate Trading Suite",
+    description: "Buy/Sell any coin via WebApp or Telegram. Synced, audited, verified, multi-chain trading suite.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blazing-bot.jpg`,
+    logo: `${baseIconsUrl}/blazingapp.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

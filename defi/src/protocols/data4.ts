@@ -11692,7 +11692,8 @@ const data4: Protocol[] = [
   },
   {
     id: "6042",
-    name: "Lighter V2",
+    name: "Lighter Bridge",
+    previousNames: ["Lighter V2"],
     address: null,
     symbol: "-",
     url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
@@ -11700,7 +11701,7 @@ const data4: Protocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lighter-v2.jpg`,
+    logo: `${baseIconsUrl}/lighter-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28652,7 +28653,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6751",
-    name: "Lighter V2 Perps",
+    name: "Lighter Perps",
     address: null,
     symbol: "-",
     url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
@@ -28660,7 +28661,7 @@ const data4: Protocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "zkLighter",
-    logo: `${baseIconsUrl}/lighter-v2-perps.jpg`,
+    logo: `${baseIconsUrl}/lighter-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

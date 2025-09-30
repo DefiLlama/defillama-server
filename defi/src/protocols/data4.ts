@@ -29445,5 +29445,59 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1759244012
   },
+  {
+    id: "6786",
+    name: "Snowbl Capital",
+    address: null,
+    symbol: "-",
+    url: "https://snowbl.capital",
+    description: "Snowbl Capital is an on-chain capital allocator with an USDC vault diversifying across funding, lending, farming, and market-neutral arbitrage to pursue risk-managed yield.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/snowbl-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Base"],
+    module: "snowbl-capital.js",
+    twitter: "snowblcapital",
+    forkedFromIds: [],
+    github: ["snowbl-capital"],
+    listedAt: 1759245833
+  },
+  {
+    id: "6787",
+    name: "Blend Money",
+    address: null,
+    symbol: "-",
+    url: "https://blend.money/",
+    description: "Blend is the programmable savings layer for DeFi, powering safe, sustainable yield for chains, wallets, stablecoins, and on-chain apps. Every deposit lives in a signer-bound Safe with automated risk protections. There are no pooled vaults, no custodial risk, and no lockups. Just real-time routing, real yield, and full control. Curators plug in capital strategies through a modular strategy layer, and Blend orchestrates allocation across chains and protocols.",
+    chain: "Botanix",
+    logo: `${baseIconsUrl}/blend-money.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Botanix", "Scroll"],
+    module: "blend/index.js",
+    twitter: "blend_money",
+    forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/blendmoney/blend-contracts/blob/main/contracts/oracles/MorphoChainlinkOracleV2.sol"]
+      }
+    ],
+    audit_links: [
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-08-10-0.pdf", 
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-0.pdf", 
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-1.pdf"
+    ],
+    github: ["blendmoney"],
+    listedAt: 1759246067
+  },
 ];
 export default data4;

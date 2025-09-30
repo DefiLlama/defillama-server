@@ -132,6 +132,7 @@ export function curve5(timestamp: number = 0) {
 export function curve6(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices2("base", [], timestamp, "eth-custom", [
+      "0xd6c283655B42FA0eb2685F7AB819784F071459dc", 
       "0xf6c5f01c7f3148891ad0e19df78743d31e390d1f",
       "0x6e53131f68a034873b6bfa15502af094ef0c5854",
       "0x6dfe79cece4f64c1a34f48cf5802492ab595257e",

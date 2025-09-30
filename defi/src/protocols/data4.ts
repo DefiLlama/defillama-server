@@ -23499,7 +23499,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6528",
-    name: "Ultrayield by Edge Capital",
+    name: "UltraYield by Edge Capital",
     address: null,
     symbol: "-",
     url: "https://ultrayield.app/",

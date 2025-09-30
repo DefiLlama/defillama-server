@@ -29411,7 +29411,7 @@ const data4: Protocol[] = [
     description: "Legion is a merit-based crypto fundraising platform that lets projects launch token sales and allocates access to users based on on-chain reputation (Legion Scores) and compliance criteria.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/legion.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -29422,6 +29422,26 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/Legion-Team/legion-protocol-contracts/tree/master/audits"],
     listedAt: 1759188237
+  },
+  {
+    id: "6785",
+    name: "Telos Consilium",
+    address: null,
+    symbol: "-",
+    url: "https://telosc.com/",
+    description: "Telos Consilium (Telosc) is a Web3 advisory and treasury firm offering risk-curated vault allocations, tokenized equity, and capital structuring services.",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/telos-consilium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Plasma"],
+    module: "telosc/index.js",
+    twitter: "TelosConsilium",
+    forkedFromIds: [],
+    listedAt: 1759244012
   },
 ];
 export default data4;

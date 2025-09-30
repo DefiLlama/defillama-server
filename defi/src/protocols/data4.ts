@@ -23499,25 +23499,25 @@ const data4: Protocol[] = [
   },
   {
     id: "6528",
-    name: "Edge Capital",
+    name: "Ultrayield by Edge Capital",
     address: null,
     symbol: "-",
-    url: "https://app.euler.finance/governor/edge-capital?network=tac",
-    description: "Crypto hedge fund & largest liquidity provider to early-stage protocols",
-    chain: "TAC",
-    logo: `${baseIconsUrl}/edge-capital.jpg`,
+    url: "https://ultrayield.app/",
+    description: "Vault Curator & Infrastructure Provider",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ultrayield-by-edge-capital.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
     chains: ["TAC"],
-    module: "edge-capital/index.js",
+    module: "ultrayield-by-edge-capital/index.js",
     forkedFromIds: [],
-    twitter: "EdgeCapitalMgmt",
+    twitter: "ultrayieldapp",
     listedAt: 1754418907,
     dimensions: {
-      fees: "edge-capital"
+      fees: "ultrayield-by-edge-capital"
     }
   },
   {
@@ -29411,6 +29411,29 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/Legion-Team/legion-protocol-contracts/tree/master/audits"],
     listedAt: 1759188237
+  },
+    {
+    id: "6785",
+    name: "UltraYield",
+    address: null,
+    symbol: "-",
+    url: "https://ultrayield.app/",
+    description: "Vault Curator & Infrastructure Provider",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ultrayield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    module: "ultrayield/index.js",
+    forkedFromIds: [],
+    twitter: "ultrayieldapp",
+    listedAt: 1754418907,
+    dimensions: {
+      fees: "ultrayield"
+    }
   },
 ];
 export default data4;

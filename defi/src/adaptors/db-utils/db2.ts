@@ -87,7 +87,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 }
 
-export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number }) {
+export async function getAllItemsUpdatedAfter({ adapterType, timestamp, transform = a => a }: { adapterType: AdapterType, timestamp: number, transform?: (a: any) => any }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
@@ -108,7 +108,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
       limit,
     })
 
-    result = result.concat(batch)
+    result = result.concat(batch.map(transform))
     sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
     if (batch.length < limit) break
     offset += limit
@@ -120,7 +120,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
 }
 
 
-export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapterType: AdapterType, timestamp?: number }) {
+export async function getAllItemsAfter({ adapterType, timestamp = 0, transform = a => a }: { adapterType: AdapterType, timestamp?: number, transform?: (a: any) => any }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
   const filterCondition: any = { timestamp: { [Op.gte]: timestamp } }
@@ -142,7 +142,7 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
       limit,
     })
 
-    result = result.concat(batch)
+    result = result.concat(batch.map(transform))
     sdk.log(`getAllItemsAfter(${adapterType}, ${timestamp}) found ${batch.length} total fetched: ${result.length} items after ${new Date(timestamp * 1000)}`)
     if (batch.length < limit) break
     offset += limit
@@ -150,50 +150,6 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0 }: { adapter
 
   console.timeEnd(label)
 
-  return result
-}
-
-export async function getAllItemsForProtocol({
-  adapterType,
-  id,
-  timestamp = 0,
-  labelsOnly = process.env.DIM_SQL_LABELS_ONLY === 'true',
-}: {
-  adapterType: AdapterType,
-  id: string,
-  timestamp?: number,
-  labelsOnly?: boolean,
-}) {
-  await init()
-  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
-
-  const where: any = { type: adapterType, id, timestamp: { [Op.gte]: timestamp } }
-
-  if (labelsOnly) where[Op.or] = [{ bl:  { [Op.ne]: null } }]
-
-  let result: any = []
-  let offset = 0
-  const limit = 30000
-  const label = `getAllItemsForProtocol(${adapterType}, ${id}, labelsOnly=${!!labelsOnly})`
-  console.time(label)
-
-  while (true) {
-    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
-      where,
-      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
-      raw: true,
-      order: [['timestamp', 'ASC']],
-      offset,
-      limit,
-    })
-
-    result = result.concat(batch)
-    sdk.log(`getAllItemsForProtocol(${adapterType}, ${id}) fetched ${batch.length} (total ${result.length})`)
-    if (batch.length < limit) break
-    offset += limit
-  }
-
-  console.timeEnd(label)
   return result
 }
 

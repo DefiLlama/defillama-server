@@ -11,7 +11,7 @@ import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, 
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
 import * as sdk from '@defillama/sdk';
-import { RUN_TYPE, roundVaules, } from "../utils";
+import { RUN_TYPE, roundValues, } from "../utils";
 
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, ProtocolAdaptor, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
@@ -72,49 +72,13 @@ const timeData = {
   yesterday: getTimeData(true),
 }
 
-function buildLabelChartsFromRecords(records: IJSON<any>, recordType: string, includeByChain = false) {
-  const labelSeries: Array<[number, IJSON<number>]> = []
-  const labelByChainSeries: Array<[number, IJSON<IJSON<number>>]> = []
-  const days = Object.keys(records || {}).sort()
-  for (const timeS of days) {
-    const rec = records[timeS] || {}
-    const bl = rec.bl?.[recordType]  ?? rec.breakdownLabel?.[recordType]
-    const blc = includeByChain ? (rec.blc?.[recordType] ?? rec.breakdownLabelByChain?.[recordType]) : undefined
-    if (!bl && !blc) continue
-    const ts = timeSToUnix(timeS)
-
-    const byLabel: any = {}
-    const byChain: any = {}
-
-    if (bl) {
-      Object.entries(bl).forEach(([label, v]: any) => {
-        const n = +v || 0
-        byLabel[label] = n || byLabel[label] || 0
-      })
-    }
-
-    if (includeByChain && blc) {
-      Object.entries(blc).forEach(([label, chains]: any) => {
-        let sum = 0
-        Object.entries(chains || {}).forEach(([chain, v]: any) => {
-          const n = +v || 0
-          sum += n
-          if (!byChain[chain]) byChain[chain] = {}
-          byChain[chain][label] = (byChain[chain][label] ?? 0) + n
-        })
-        byLabel[label] = (byLabel[label] ?? 0) + sum
-      })
-    }
-
-    labelSeries.push([ts, byLabel])
-    if (includeByChain) labelByChainSeries.push([ts, byChain])
-  }
-  return { labelSeries, labelByChainSeries }
-}
-
 type MQ = { monthly: Record<string, number>; quarterly: Record<string, number> }
 type MQByLabel = { monthly: Record<string, Record<string, number>>, quarterly: Record<string, Record<string, number>> }
-type AggregatedProtocolOut = { generatedAt: number, adapterType: string, slug: string, metrics: Record<string, MQ | MQByLabel>, metadata?: Record<string, any> }
+type AggregatedProtocolOut = { adapterType: string, slug: string, metrics: Record<string, MQ | MQByLabel>, metadata?: Record<string, any> }
+
+type UECliff = { recipient?: string; category?: string; amount?: number }
+type UELinear = { recipient?: string; category?: string; previousRatePerWeek?: number; newRatePerWeek?: number; endTimestamp?: number; unlockType?: string }
+type UnlockEventRow = { timestamp: number; cliffAllocations?: UECliff[]; linearAllocations?: UELinear[]; summary?: { netChangeInWeeklyRate?: number; totalNewWeeklyRate?: number } }
 
 function monthKeyFromUnix(ts: number) {
   const d = new Date(ts * 1000)
@@ -229,136 +193,505 @@ function fillDerivedMetrics(proto: AggregatedProtocolOut) {
   deriveLabel('dhrbl', 'drbl', 'dssrbl') // dhrbl  = drbl - dssrbl
 }
 
-function applyProtocolMetaFromProtoFile(target: any, src: any) {
-  if (!src) return
-  target.metadata  = target.metadata  || {}
+function fillDerivedOnDailyRecord(rec: any) {
+  if (!rec) return rec
+  rec.aggregated = rec.aggregated || {}
+  const Agg = rec.aggregated
 
-  const KEYS = [
-    'id',
-    'defillamaId',
-    'name',
-    'displayName',
-    'slug',
-    'symbol',
-    'url',
-    'logo',
-    'module',
-    'category',
-    'chains',
-    'methodologyURL',
-    'methodology',
-    'gecko_id',
-    'forkedFrom',
-    'twitter',
-    'audits',
-    'audit_links',
-    'description',
-    'address',
-    'cmcId',
-    'github',
-    'governanceID',
-    'treasury',
-    'parentProtocol',
-    'previousNames',
-    'hallmarks',
-    'defaultChartView',
-    'protocolType',
-    'linkedProtocols',
-    'versionKey'
-  ]
+  // Plain
+  if (!Agg.dssr && Agg.df && Agg.dr) Agg.dssr = diffAggItem(Agg.df, Agg.dr)
+  if (!Agg.dr && Agg.df && Agg.dssr) Agg.dr = diffAggItem(Agg.df, Agg.dssr)
+  if (!Agg.dhr && Agg.dr && Agg.dssr) Agg.dhr = diffAggItem(Agg.dr, Agg.dssr)
 
-  for (const k of KEYS) {
-    if (src[k] !== undefined && target.metadata[k] === undefined) target.metadata[k] = src[k]
+  // By-label
+  const BL = rec.bl ?? rec.breakdownLabel
+  if (BL) {
+    if (!BL.dssr && BL.df && BL.dr) BL.dssr = diffNumMap(BL.df, BL.dr)
+    if (!BL.dr && BL.df && BL.dssr) BL.dr = diffNumMap(BL.df, BL.dssr)
+    if (!BL.dhr && BL.dr && BL.dssr) BL.dhr = diffNumMap(BL.dr, BL.dssr)
+    rec.bl = BL
+    rec.breakdownLabel = BL
   }
 
-  if (!target.slug && (target.metadata.slug || src.slug)) target.slug = (target.metadata.slug || src.slug)
+  return rec
 }
 
-async function generateAggregatesFromBuild() {
-  const buildDir = findBuildDir()
-  if (!buildDir) return
-  const dimRoot = path.join(buildDir, 'dimensions')
-  if (!fs.existsSync(dimRoot)) return
+function serializeAggregate(proto: AggregatedProtocolOut & { generatedAt?: number }) {
+  const { slug, metrics } = proto
+  const meta = proto.metadata || {}
+  return { slug, metrics, ...meta }
+}
 
-  const adapterTypes = fs
-    .readdirSync(dimRoot)
-    .filter((d) => {
-      try { return fs.statSync(path.join(dimRoot, d)).isDirectory() } catch { return false }
+const INCENTIVE_KEYS = new Set(['du','dubl','di'])
+const isIncentiveKey = (k: string) => INCENTIVE_KEYS.has(k)
+
+function collectProtocolSlugs(p: ProtocolAdaptor) {
+  const out = new Set<string>()
+  const main = sluggifyString(p.name ?? p.displayName ?? '')
+  if (main) out.add(main)
+  if (Array.isArray((p as any).previousNames)) (p as any).previousNames.forEach((n: any) => out.add(sluggifyString(String(n))))
+  return out
+}
+
+type RollKind = 'plain'|'label'
+
+async function readAndRollup(route: string, kind: RollKind): Promise<{ key: string, value: MQ | MQByLabel, raw: any } | null> {
+  const res = await readRouteData(route) as any
+  if (!res) return null
+
+  if (route.endsWith('-all')) {
+    const chart = res?.totalDataChart
+    if (!Array.isArray(chart) || !chart.length) return null
+    return {
+      key: route.includes('/df-') ? 'df'
+         : route.includes('/dr-') ? 'dr'
+         : route.includes('/dhr-') ? 'dhr'
+         : route.includes('/dssr-') ? 'dssr' : '',
+      value: rollupFromChart(chart),
+      raw: res,
+    }
+  }
+
+  if (kind === 'label') {
+    const series = res?.totalDataChartBreakdownLabel
+    if (!Array.isArray(series) || !series.length) return null
+    return {
+      key: route.includes('/df-') ? 'dfbl'
+         : route.includes('/dr-') ? 'drbl'
+         : route.includes('/dhr-') ? 'dhrbl'
+         : route.includes('/dssr-') ? 'dssrbl' : '',
+      value: rollupFromLabelChart(series),
+      raw: res,
+    }
+  }
+  return null
+}
+
+async function hydrateSlugMetricsFromFiles(slug: string, protoMap: Record<string, AggregatedProtocolOut & { generatedAt?: number }>, adapterType: AdapterType) {
+  const ensure = () => ensureProto(protoMap, slug, adapterType)
+
+  const bases = ['df','dr','dhr','dssr']
+  const routesAll = bases.map(k => `dimensions/fees/${k}-protocol/${slug}-all`)
+  const routesBL = bases.map(k => `dimensions/fees/${k}-protocol/${slug}-bl`)
+
+  for (const r of routesAll) {
+    const rolled = await readAndRollup(r, 'plain')
+    if (rolled && rolled.key) {
+      ensure()
+      applyProtocolMetaFromProtoFile(protoMap[slug], rolled.raw)
+      protoMap[slug].metrics[rolled.key] = rolled.value
+    }
+  }
+  for (const r of routesBL) {
+    const rolled = await readAndRollup(r, 'label')
+    if (rolled && rolled.key) {
+      ensure()
+      protoMap[slug].metrics[rolled.key] = rolled.value
+    }
+  }
+}
+
+function ensureProto(protoMap: Record<string, AggregatedProtocolOut & { generatedAt?: number }>, slug: string, adapterType: AdapterType) {
+  return (protoMap[slug] ||= {
+    generatedAt: Math.floor(Date.now() / 1000),
+    adapterType,
+    slug,
+    metrics: {},
+  })
+}
+
+function mergeIncentivesIntoProtoMap(protoMap: Record<string, AggregatedProtocolOut & { generatedAt?: number }>, incentivesAggMap?: Record<string, { metrics: Record<string, MQ|MQByLabel>, metadata?: any }>) {
+  if (!incentivesAggMap) return
+  for (const [slug, inc] of Object.entries(incentivesAggMap)) {
+    const p = ensureProto(protoMap, slug, AdapterType.FEES as any)
+    Object.entries(inc.metrics || {}).forEach(([k, v]) => {
+      if (isIncentiveKey(k)) p.metrics[k] = v as any
     })
-
-  for (const adapterType of adapterTypes) {
-    const adapterPath = path.join(dimRoot, adapterType)
-    const recordTypeDirs = fs
-      .readdirSync(adapterPath)
-      .filter((d) => /[a-z]+protocol$/i.test(d))
-      .map((d) => ({ abbr: d.replace(/protocol$/i, ''), dir: path.join(adapterPath, d) }))
-
-    if (!recordTypeDirs.length) continue
-
-    const protoMap: Record<string, AggregatedProtocolOut> = {}
-
-    for (const { abbr, dir } of recordTypeDirs) {
-      let files: string[] = []
-      try { files = fs.readdirSync(dir) } catch { files = [] }
-
-      // *.all -> standard series (sum series)
-      const allFiles = files.filter((f) => f.endsWith('all'))
-      for (const fname of allFiles) {
-        const data = readJSONSafe(path.join(dir, fname))
-        if (!data || !Array.isArray(data.totalDataChart) || data.totalDataChart.length === 0) continue
-
-        const slug = slugFromAllFile(fname)
-        if (!protoMap[slug]) {
-          protoMap[slug] = {
-            generatedAt: Math.floor(Date.now() / 1000),
-            adapterType,
-            slug,
-            metrics: {},
-          }
-        }
-        applyProtocolMetaFromProtoFile(protoMap[slug], data)
-
-        const mq = rollupFromChart(data.totalDataChart)
-        protoMap[slug].metrics[abbr] = mq
-      }
-
-      // *bl / *-bl -> label breakdown series
-      const blFiles = files.filter((f) => f.endsWith('bl') || f.endsWith('-bl'))
-      const abbrBL = `${abbr}bl`
-      for (const fname of blFiles) {
-        const data = readJSONSafe(path.join(dir, fname))
-        const series = data?.totalDataChartBreakdownLabel
-        if (!Array.isArray(series) || series.length === 0) continue
-
-        const slug = slugFromBlFile(fname)
-        if (!protoMap[slug]) {
-          protoMap[slug] = {
-            generatedAt: Math.floor(Date.now() / 1000),
-            adapterType,
-            slug,
-            metrics: {},
-          }
-        }
-        applyProtocolMetaFromProtoFile(protoMap[slug], data)
-
-        const mqLabel = rollupFromLabelChart(series)
-        protoMap[slug].metrics[abbrBL] = mqLabel
-      }
-    }
-
-    // one file per protocol
-    const now = Math.floor(Date.now() / 1000)
-    for (const [slug, proto] of Object.entries(protoMap)) {
-      proto.generatedAt = now
-      await storeRouteData(`dimensions/aggregates/${adapterType}/${slug}`, proto)
-    }
+    p.metadata = p.metadata || {}
+    Object.entries(inc.metadata || {}).forEach(([k, v]) => {
+      if (p.metadata![k] === undefined) p.metadata![k] = v
+    })
   }
 }
 
+function addIntoAccum(accum: any, key: string, val: MQ | MQByLabel) {
+  const dst = (accum[key] ||= { monthly: {}, quarterly: {} })
+  const isLabel = key.endsWith('bl')
+
+  const addNum = (a: Record<string, number>, b?: Record<string, number>) =>
+    Object.entries(b || {}).forEach(([k, v]) => a[k] = (a[k] ?? 0) + (v || 0))
+
+  if (isLabel) {
+    Object.entries((val as MQByLabel).monthly || {}).forEach(([label, mp]) => {
+      (dst.monthly[label] ||= {}); addNum(dst.monthly[label], mp)
+    })
+    Object.entries((val as MQByLabel).quarterly || {}).forEach(([label, mp]) => {
+      (dst.quarterly[label] ||= {}); addNum(dst.quarterly[label], mp)
+    })
+  } else {
+    addNum(dst.monthly, (val as MQ).monthly)
+    addNum(dst.quarterly, (val as MQ).quarterly)
+  }
+}
+
+function buildParentsFromChildren(protoMap: Record<string, AggregatedProtocolOut & { generatedAt?: number }>) {
+  const parentGroups: Record<string, string[]> = {}
+  Object.entries(protoMap).forEach(([slug, proto]) => {
+    const parentId = proto.metadata?.parentProtocol
+    if (!parentId) return
+    if (!parentGroups[parentId]) parentGroups[parentId] = []
+    parentGroups[parentId].push(slug)
+  })
+
+  for (const [parentId, childSlugs] of Object.entries(parentGroups)) {
+    const parentInfo = parentProtocolsById[parentId]
+    if (!parentInfo) continue
+
+    const parentSlug = sluggifyString(parentInfo.name || String(parentId))
+    const accum: Record<string, any> = {}
+
+    for (const slug of childSlugs) {
+      const child = protoMap[slug]
+      if (!child) continue
+      for (const [metricKey, val] of Object.entries(child.metrics || {})) {
+        if (isIncentiveKey(metricKey)) continue
+        addIntoAccum(accum, metricKey, val as any)
+      }
+    }
+
+    const existingParent = protoMap[parentSlug]
+    if (existingParent?.metrics) {
+      for (const [k, v] of Object.entries(existingParent.metrics)) {
+        if (isIncentiveKey(k)) accum[k] = v
+      }
+    }
+
+    const parentProto: AggregatedProtocolOut & { generatedAt?: number } = {
+      adapterType: AdapterType.FEES as any,
+      slug: parentSlug,
+      metrics: accum,
+      metadata: {
+        ...(existingParent?.metadata || {}),
+        ...parentInfo,
+        slug: parentSlug,
+        parentProtocol: null,
+        protocolType: ProtocolType.PROTOCOL,
+      }
+    }
+
+    fillDerivedMetrics(parentProto)
+
+    protoMap[parentSlug] = parentProto
+  }
+}
+
+async function generateAggregatesFromBuild(incentivesAggMap?: Record<string, { metrics: Record<string, MQ|MQByLabel>, metadata?: any }>) {
+  const adapterType = AdapterType.FEES
+  const { protocolMap } = loadAdaptorsData(adapterType)
+  const feeProtocols = Object.values(protocolMap || {}) as ProtocolAdaptor[]
+  if (!feeProtocols.length) return
+
+  const protoMap: Record<string, AggregatedProtocolOut & { generatedAt?: number }> = {}
+
+  for (const p of feeProtocols) {
+    const slugs = collectProtocolSlugs(p)
+    for (const slug of slugs) {
+      await hydrateSlugMetricsFromFiles(slug, protoMap, adapterType)
+    }
+  }
+
+  mergeIncentivesIntoProtoMap(protoMap, incentivesAggMap)
+
+  buildParentsFromChildren(protoMap)
+
+  for (const [slug, proto] of Object.entries(protoMap)) {
+    await storeRouteData(`dimensions/aggregates/${slug}`, serializeAggregate(proto))
+  }
+}
+
+const EMISSIONS_API = process.env.DIM_EMISSIONS_ENDPOINT || 'https://api.llama.fi/emissions'
+
+const BAD_SUFFIX = /(-all|-lite|-bl)$/i
+function cleanIncentiveSlug(s: string) {
+  if (!s) return s
+  return sluggifyString(s.replace(BAD_SUFFIX, ''))
+}
+
+type EmissionEntry = {
+  token?: string
+  sources?: string[]
+  protocolId?: any
+  name?: string
+  displayName?: string
+  chains?: string[]
+  gecko_id?: string
+  events?: any[]
+  unlockEvents?: any[]
+  nextEvent?: any
+}
+
+async function fetchEmissionsFull(): Promise<EmissionEntry[]> {
+  try {
+    const r = await fetch(`${EMISSIONS_API}?fullChart=true`)
+    if (r.ok) {
+      const arr = await r.json()
+      if (Array.isArray(arr)) return arr
+    }
+  } catch (e) { /* ignore */ }
+
+  try {
+    const r2 = await fetch(EMISSIONS_API)
+    if (!r2.ok) throw new Error(`/emissions ${r2.status}`)
+    const arr2 = await r2.json()
+    if (Array.isArray(arr2)) return arr2
+  } catch (e) {
+    console.error('Failed to fetch emissions', e)
+  }
+  return []
+}
+
+function chainFromTokenString(t?: string): string | null {
+  if (!t) return null
+  const ix = t.indexOf(':')
+  if (ix === -1) return null
+  return t.slice(0, ix)
+}
+
+function enrichWithKnownProtocolMeta(entry: any) {
+  const pid = entry?.protocolId
+  if (!pid) return
+
+  if (String(pid).startsWith('parent#')) {
+    const key = String(pid).slice('parent#'.length)
+    const parent = parentProtocolsById[key]
+    if (parent) {
+      META_KEYS.forEach((k) => {
+        if (entry[k] === undefined && (parent as any)[k] !== undefined) entry[k] = (parent as any)[k]
+      })
+      if (entry.parentProtocol === undefined) entry.parentProtocol = key
+    }
+    return
+  }
+
+  const p = protocolsById[pid]
+  if (p) {
+    META_KEYS.forEach((k) => {
+      if (entry[k] === undefined && (p as any)[k] !== undefined) entry[k] = (p as any)[k]
+    })
+  }
+}
+
+function dayUTC(ts: number) {
+  const d = new Date(ts * 1000)
+  d.setUTCHours(0, 0, 0, 0)
+  return Math.floor(d.getTime() / 1000)
+}
+
+function coerceNum(x: any): number { const n = Number(x); return Number.isFinite(n) ? n : 0 }
+const SECONDS_PER_DAY = 86400
+
+type DailyBreakdown = Record<number, Record<string, number>> // tsDay -> { label: amount }
+
+function labelFromUE(x: { recipient?: string; category?: string } = {} as any) {
+  const r = x?.recipient ? String(x.recipient).trim() : ''
+  if (r) return r
+  const c = x?.category ? String(x.category).trim() : ''
+  return c || 'Uncategorized'
+}
+
+function buildDailyFromUnlockEvents(unlockEvents: UnlockEventRow[]): DailyBreakdown {
+  const ues = Array.isArray(unlockEvents) ? unlockEvents.slice() : []
+  ues.sort((a, b) => coerceNum(a?.timestamp) - coerceNum(b?.timestamp))
+  if (!ues.length) return {}
+
+  const changesByDay: Record<number, Record<string, number>> = {}
+  const cliffsByDay: Record<number, Record<string, number>> = {}
+
+  let minDay = Number.POSITIVE_INFINITY
+  let maxDay = 0
+
+  for (const ev of ues) {
+    const tsDay = dayUTC(coerceNum(ev?.timestamp))
+    if (!Number.isFinite(tsDay)) continue
+    if (tsDay < minDay) minDay = tsDay
+    if (tsDay > maxDay) maxDay = tsDay
+
+    const cliffs = Array.isArray(ev?.cliffAllocations) ? ev.cliffAllocations : []
+    for (const c of cliffs) {
+      const lbl = labelFromUE(c || {})
+      const amt = coerceNum(c?.amount)
+      if (amt > 0) {
+        cliffsByDay[tsDay] = cliffsByDay[tsDay] || {}
+        cliffsByDay[tsDay][lbl] = (cliffsByDay[tsDay][lbl] ?? 0) + amt
+      }
+    }
+
+    const lins = Array.isArray(ev?.linearAllocations) ? ev.linearAllocations : []
+    for (const l of lins) {
+      const lbl = labelFromUE(l || {})
+      const newRate = Math.max(0, coerceNum(l?.newRatePerWeek))
+      changesByDay[tsDay] = changesByDay[tsDay] || {}
+      changesByDay[tsDay][lbl] = newRate
+
+      const end = l?.endTimestamp ? dayUTC(coerceNum(l.endTimestamp)) : 0
+      if (end && end >= tsDay) {
+        changesByDay[end] = changesByDay[end] || {}
+        if (changesByDay[end][lbl] === undefined) changesByDay[end][lbl] = 0
+      }
+      if (end > maxDay) maxDay = end
+    }
+  }
+
+  const todayDay = dayUTC(Math.floor(Date.now() / 1000))
+  const lastDay = todayDay
+
+  if (!Number.isFinite(minDay)) return {}
+
+  const currentWeeklyRateByLabel: Record<string, number> = {}
+  const daily: DailyBreakdown = {}
+
+  for (let d = minDay; d <= lastDay; d += SECONDS_PER_DAY) {
+    const sets = changesByDay[d]
+    if (sets) {
+      Object.entries(sets).forEach(([lbl, rate]) => {
+        currentWeeklyRateByLabel[lbl] = Math.max(0, coerceNum(rate))
+      })
+    }
+
+    const cliffs = cliffsByDay[d]
+    if (cliffs) {
+      daily[d] = daily[d] || {}
+      Object.entries(cliffs).forEach(([lbl, amt]) => {
+        const n = Math.max(0, coerceNum(amt))
+        if (n > 0) daily[d][lbl] = (daily[d][lbl] ?? 0) + n
+      })
+    }
+
+    const labels = Object.keys(currentWeeklyRateByLabel)
+    if (labels.length) {
+      const perLabel: Record<string, number> = {}
+      labels.forEach(lbl => {
+        const w = currentWeeklyRateByLabel[lbl] || 0
+        if (w > 0) perLabel[lbl] = w / 7
+      })
+      if (Object.keys(perLabel).length) {
+        daily[d] = daily[d] || {}
+        Object.entries(perLabel).forEach(([lbl, val]) => {
+          daily[d][lbl] = (daily[d][lbl] ?? 0) + val
+        })
+      }
+    }
+  }
+
+  return daily
+}
+
+function breakdownToSeries(
+  daily: DailyBreakdown
+): { total: Array<[number, number]>, byLabel: Array<[number, Record<string, number>]> } {
+  const days = Object.keys(daily).map(k => coerceNum(k)).sort((a, b) => a - b)
+  const total: Array<[number, number]> = []
+  const byLabel: Array<[number, Record<string, number>]> = []
+
+  for (const ts of days) {
+    const labels = daily[ts] || {}
+    let sum = 0
+    for (const v of Object.values(labels)) {
+      const n = coerceNum(v)
+      if (n > 0) sum += n
+    }
+    total.push([ts, sum])
+    byLabel.push([ts, labels])
+  }
+  return { total, byLabel }
+}
+
+async function fetchEmissionUsdChart(slug: string): Promise<{ totalUsd?: Array<[number, number]>, byLabelUsd?: Array<[number, Record<string, number>]> }> {
+  try {
+    const r = await fetch(`https://api.llama.fi/emission/${slug}`)
+    if (!r.ok) return {}
+    const outer = await r.json()
+    const payload = typeof outer?.body === 'string' ? JSON.parse(outer.body) : outer
+
+    const totalUsd: Array<[number, number]> | undefined = payload?.unlockUsdChart || payload?.usdChart || payload?.totalUsdChart
+    const byLabelUsd: Array<[number, Record<string, number>]> | undefined = payload?.unlockUsdByLabelChart || payload?.usdByLabelChart
+
+    return { totalUsd, byLabelUsd }
+  } catch {
+    return {}
+  }
+}
+
+function baseIncentivePayload(item: EmissionEntry, extra: any) {
+  const token = item.token || null
+  const chains = Array.isArray(item.chains) && item.chains.length
+    ? item.chains
+    : (chainFromTokenString(token || undefined) ? [chainFromTokenString(token!)!] : ['unknown'])
+  const displayName = item.displayName || item.name
+
+  return {
+    name: item.name,
+    displayName,
+    chains,
+    token,
+    sources: item.sources ?? [],
+    protocolId: item.protocolId ?? null,
+    gecko_id: item.gecko_id ?? null,
+    ...extra,
+  }
+}
+
+async function generateIncentivesFromEmissions(): Promise<Record<string, {metrics: Record<string, MQ|MQByLabel>, metadata?: any}>> {
+  const list = await fetchEmissionsFull()
+  const out: Record<string, {metrics: Record<string, MQ|MQByLabel>, metadata?: any}> = {}
+  if (!Array.isArray(list) || !list.length) return out
+
+  for (const item of list) {
+    if (!item?.name) continue
+    const slug = cleanIncentiveSlug(item.name)
+    if (!slug) continue
+
+    const dailyUE = buildDailyFromUnlockEvents((item.unlockEvents || []) as any)
+    const { total: dailyDU, byLabel: dailyDUBL } = breakdownToSeries(dailyUE)
+    const { totalUsd: dailyDIUSD } = await fetchEmissionUsdChart(slug)
+
+    const duPayload = baseIncentivePayload(item, {
+      totalDataChart: dailyDU,
+      totalDataChartBreakdownLabel: dailyDUBL,
+    })
+    enrichWithKnownProtocolMeta(duPayload)
+    await storeRouteData(`dimensions/incentives/duprotocol/${slug}`, duPayload)
+
+    const diPayload = baseIncentivePayload(item, {
+      totalDataChartUSD: dailyDIUSD,
+    })
+    enrichWithKnownProtocolMeta(diPayload)
+    await storeRouteData(`dimensions/incentives/diprotocol/${slug}`, diPayload)
+
+    out[slug] = {
+      metrics: {
+        du: rollupFromChart(dailyDU),
+        dubl: rollupFromLabelChart(dailyDUBL as any),
+        ...(dailyDIUSD ? { di: rollupFromChart(dailyDIUSD as any) } : {}),
+      },
+      metadata: {
+        name: duPayload.name,
+        displayName: duPayload.displayName,
+        chains: duPayload.chains,
+        token: duPayload.token,
+        gecko_id: duPayload.gecko_id,
+        protocolId: duPayload.protocolId,
+        sources: duPayload.sources,
+        parentProtocol: (duPayload as any).parentProtocol,
+      }
+    }
+  }
+  return out
+}
 
 async function run() {
   // Go over all types
-  const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
+  const allCache = await getDimensionsCacheV2()
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
   await storeDimensionsCacheV2(allCache) // store the updated cache
 
@@ -407,8 +740,9 @@ async function run() {
   // // store the data as files to be used by the rest api
   await generateDimensionsResponseFiles(allCache)
 
-  // build monthly/quarterly aggregates (one file per protocol) using the generated protocol files
-  await generateAggregatesFromBuild()
+  const incentivesAggMap = await generateIncentivesFromEmissions()
+
+  await generateAggregatesFromBuild(incentivesAggMap)
 
   async function updateAdapterData(adapterType: AdapterType) {
     // if (adapterType !== AdapterType.DERIVATIVES) return;
@@ -429,10 +763,9 @@ async function run() {
       results.forEach((result: any) => {
         const { id, timestamp, data, timeS } = result
 
-        const bl = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
-        const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
+        const bl = (result as any).bl ?? (result as any).breakdownLabel ?? (result as any).data?.bl ?? (result as any).data?.breakdownLabel
 
-        roundVaules(data)
+        roundValues(data)
 
         if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
 
@@ -443,46 +776,10 @@ async function run() {
           adapterData.protocols[id].hasBreakdownData = true;
         }
 
-        if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
-        if (STORE_BLC && blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
-
+        fillDerivedOnDailyRecord(finalRecord)
         adapterData.protocols[id].records[timeS] = finalRecord
       })
 
-<<<<<<< HEAD
-      // backfill full history ONLY for protocols that newly emitted bl and have not been backfilled
-      const toBackfill = Array.from(protocolsWithBlDataInRecentUpdates)
-        .filter((pid: string) => !adapterData.blHistoryFetched[pid])
-
-      for (const pid of toBackfill) {
-        try {
-          const history = await getAllItemsForProtocol({ adapterType, id: pid, timestamp: 0 })
-          let merged = 0
-          history.forEach((result: any) => {
-            const { id, timestamp, data, timeS } = result
-            const bl  = (result as any).bl  ?? (result as any).breakdownLabel ?? (result as any).data?.bl  ?? (result as any).data?.breakdownLabel
-            const blc = (result as any).blc ?? (result as any).breakdownLabelByChain ?? (result as any).data?.blc ?? (result as any).data?.breakdownLabelByChain
-
-            if (bl) {
-              roundVaules(data)
-              if (!adapterData.protocols[id]) adapterData.protocols[id] = { records: {} }
-
-              const finalRecord: any = { ...data, timestamp }
-              if (bl)  { finalRecord.bl  = bl;  finalRecord.breakdownLabel = bl }
-              if (STORE_BLC && blc) { finalRecord.blc = blc; finalRecord.breakdownLabelByChain = blc }
-
-              adapterData.protocols[id].records[timeS] = finalRecord
-              merged++
-            }
-          })
-          adapterData.blHistoryFetched[pid] = getUnixTimeNow()
-        } catch (e) {
-          console.error(`BL backfill failed for protocol ${pid} (${adapterType})`, e)
-        }
-      }
-
-=======
->>>>>>> 18ef55c55 (rm backfill only bl)
       // remove empty records at the start of each protocol
       Object.keys(adapterData.protocols).forEach((protocolId) => {
         const records = adapterData.protocols[protocolId]?.records
@@ -596,15 +893,8 @@ async function run() {
       const protocolData: any = {}
       protocol.summaries = {} as any
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
-<<<<<<< HEAD
-      protocol.misc = {
-        versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
-      };
-      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView']
-=======
       protocol.misc = {};
       const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted']
->>>>>>> 5a2056142 (notify build failures on discord)
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
 
@@ -1317,13 +1607,9 @@ async function generateDimensionsResponseFiles(cache: any) {
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-all`, data)
 
-        const { labelSeries, labelByChainSeries } = buildLabelChartsFromRecords(protocol.records, recordType, STORE_BLC)
-        const breakdownData: any = {
-          ...data,
-          totalDataChartBreakdownLabel: labelSeries,
-        }
-        if (STORE_BLC)
-          breakdownData.totalDataChartBreakdownLabelByChain = labelByChainSeries
+        // labels-only breakdown for -bl file
+        const labelSeries = protocol.precomputed?.labelSeriesByRecordType?.[recordType] ?? []
+        const breakdownData: any = { ...data, totalDataChartBreakdownLabel: labelSeries }
 
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-bl`, breakdownData)

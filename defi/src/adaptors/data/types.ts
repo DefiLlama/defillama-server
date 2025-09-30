@@ -191,3 +191,19 @@ export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((ac
 export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
 
 export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any) => adapterType !== AdapterType.PROTOCOLS)
+
+export type DIMENSIONS_DB_DataTypeRecord = {
+    value: number,
+    chains: IJSON<number>
+}
+
+export type DIMENSIONS_DB_RECORD = {
+    id: string,
+    timestamp: number,
+    timeS: string,
+    type: AdapterType,
+    data: {
+        aggregated: Record<AdaptorRecordType, DIMENSIONS_DB_DataTypeRecord>,
+    },
+    bl?: Record<AdaptorRecordType, IJSON<number>>
+}

@@ -20602,15 +20602,10 @@ const data4: Protocol[] = [
     name: "HyperWave",
     address: null,
     symbol: "-",
-<<<<<<< HEAD
-    url: "https://app.hyperwavefi.xyz/assets/hwhlp",
-    description: "Hyperwave is building the House of Payments—an onchain forex layer that reroutes global payments onto Hyperliquid. hwHLP is a tokenized form of the HLP vault, and hwHYPE is a vault that delivers the best risk-adjusted return for your HYPE.",
-=======
     url: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
     referralUrl: "https://app.hyperwavefi.xyz/hyperfren/DEFILLAMA",
     description:
       "Hyperwave is the first liquid HLP primitive on the market, designed to bridge yield generated in Hypercore directly into the HyperEVM. By tokenizing HLP deposits, Hyperwave is bringing one of the most powerful, community-driven yield-bearing instruments into HyperEVM.",
->>>>>>> master
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperwave.jpg`,
     audits: "2",

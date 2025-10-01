@@ -245,7 +245,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
             // poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
           } catch (e) {
             delete cPoolInfo[pool];
-            console.log('failed to get lp token', pool)
+            // console.log('failed to get lp token', pool)
             return;
           }
         }
@@ -256,7 +256,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
             poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
           } catch {
             delete cPoolInfo[pool];
-            console.log('failed to get pool underlyings', pool)
+            // console.log('failed to get pool underlyings', pool)
             return;
           }
 

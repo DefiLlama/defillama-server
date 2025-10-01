@@ -43140,7 +43140,10 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1714088562,
     dimensions: {
-      fees: "aerodrome-slipstream",
+      fees: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"],
+      },
       dexs: "aerodrome-slipstream"
     }
   },

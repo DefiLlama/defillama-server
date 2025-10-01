@@ -22718,7 +22718,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Cardano"],
     forkedFromIds: [],
-    module: "surf-lending/index.js",
+    module: "flow/index.js",
     twitter: "surfcardano",
     audit_links: [
       "https://github.com/flow-lending/flow-lending-smart-contracts/blob/main/audits/flow_lending_audit-2025-07-07.pdf",

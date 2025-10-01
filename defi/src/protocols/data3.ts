@@ -43140,8 +43140,14 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1714088562,
     dimensions: {
-      fees: "aerodrome-slipstream",
-      dexs: "aerodrome-slipstream"
+      fees: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"],
+      },
+      dexs: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"]
+      }
     }
   },
   {
@@ -54453,7 +54459,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "circle",
     audit_links: [],
-    stablecoins: ["usdc"],
+    stablecoins: ["usd-coin"],
     dimensions: {
       fees: "circle"
     }
@@ -54478,7 +54484,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "Tether_to",
     audit_links: [],
-    stablecoins: ["usdt"],
+    stablecoins: ["tether"],
     dimensions: {
       fees: "tether"
     }
@@ -56026,7 +56032,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Injective"],
     module: "injective-orderbook/index.js",
-    twitter: "HelixApp_",
+    twitter: "HelixMarkets",
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -56043,7 +56049,10 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp",
+      derivatives: {
+        adapter: "helix-helix-perp",
+        genuineSpikes: ["1759104000"],
+      },
       "open-interest": "helix-helix-perp"
     }
   },
@@ -66550,7 +66559,8 @@ const data3_2: Protocol[] = [
     module: "bucket-farm/index.js",
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
-    listedAt: 1734642540
+    listedAt: 1734642540,
+    deprecated: true,
   },
   {
     id: "5531",

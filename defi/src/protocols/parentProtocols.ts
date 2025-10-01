@@ -8074,6 +8074,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PacaSwap",
   },
+  {
+    id: "parent#xtrade-protocol",
+    name: "XTrade Protocol",
+    url: "https://xtrade.gg/",
+    description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
+    logo: `${baseIconsUrl}/xtrade-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "xtrade_gg",
+  },
 ];
 
 export default parentProtocols;

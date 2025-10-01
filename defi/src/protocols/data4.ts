@@ -2185,7 +2185,8 @@ const data4: Protocol[] = [
     dimensions: {
       dexs: "olab",
       options: "olab"
-    }
+    },
+    deprecated: true
   },
   {
     id: "5649",
@@ -6697,7 +6698,10 @@ const data4: Protocol[] = [
     listedAt: 1740357231,
     dimensions: {
       fees: "hyperswap-v2",
-      dexs: "hyperswap-v2"
+      dexs: {
+        adapter: "hyperswap-v2",
+        genuineSpikes: ["1759104000"],
+      },
     }
   },
   {
@@ -22699,14 +22703,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6494",
-    name: "Flow Lending",
+    name: "Surf Lending",
+    previousNames: ["Flow Lending"],
     address: "cardano:2d9db8a89f074aa045eab177f23a3395f62ced8b53499a9e4ad46c80.464c4f57",
-    symbol: "FLOW",
-    url: "https://flowcardano.org/app",
+    symbol: "SURF",
+    url: "https://surflending.org/",
     description:
-      "Flow is a capital-efficient pooled lending protocol enabling investors to earn interest and borrowers to obtain instant loans on Cardano",
+      "Surf Lending is a capital-efficient pooled lending protocol enabling investors to earn interest and borrowers to obtain instant loans on Cardano",
     chain: "Cardano",
-    logo: `${baseIconsUrl}/flow-lending.jpg`,
+    logo: `${baseIconsUrl}/surf-lending.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "flow-lending",
@@ -22715,7 +22720,7 @@ const data4: Protocol[] = [
     chains: ["Cardano"],
     forkedFromIds: [],
     module: "flow/index.js",
-    twitter: "flowdefi",
+    twitter: "surfcardano",
     audit_links: [
       "https://github.com/flow-lending/flow-lending-smart-contracts/blob/main/audits/flow_lending_audit-2025-07-07.pdf",
     ],
@@ -24194,7 +24199,8 @@ const data4: Protocol[] = [
     name: "dextrabot",
     address: null,
     symbol: "-",
-    url: "https://app.dextrabot.com/",
+    url: "https://app.dextrabot.com/referral/DEFILLAMA",
+    referralUrl: "https://app.dextrabot.com/referral/DEFILLAMA",
     description:
       "Enables users to discover and track profitable wallets on Hyperliquid that align with your strategy, and instantly copy trade their positions",
     chain: "Hyperliquid L1",
@@ -26710,7 +26716,10 @@ const data4: Protocol[] = [
         genuineSpikes: ["1722816000"],
         adapter: "paradex"
       },
-      "open-interest": "paradex"
+      "open-interest": {
+        genuineSpikes: ["1759190400"],
+        adapter: "paradex"
+      }
     }
   },
   {
@@ -28625,7 +28634,10 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "injective",
     dimensions: {
-      derivatives: "injective-derivatives",
+      derivatives: {
+        adapter: "injective-derivatives",
+        genuineSpikes: ["1759104000"],
+      },
       "open-interest": "injective-derivatives"
     },
     parentProtocol: "parent#injective-orderbook",
@@ -29226,13 +29238,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6776",
-    name: "XTrade Protocol",
+    name: "XTrade Protocol Spot",
     address: null,
     symbol: "-",
     url: "https://xtrade.gg/",
     description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
     chain: "Solana",
-    logo: `${baseIconsUrl}/xtrade-protocol.jpg`,
+    logo: `${baseIconsUrl}/xtrade-protocol-spot.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29242,8 +29254,10 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "xtrade_gg",
     forkedFromIds: [],
+    parentProtocol: "parent#xtrade-protocol",
     dimensions: {
-      fees: "xtrade-protocol"
+      fees: "xtrade-protocol",
+
     }
   },
   {
@@ -29309,8 +29323,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#pacaswap",
     dimensions: {
-      dexs: "pacaswap",
-      fees: "pacaswap"
+      // dexs: "pacaswap",  // disabled as the api was returning cummulative data
+      // fees: "pacaswap"
     }
   },
   {
@@ -29402,7 +29416,7 @@ const data4: Protocol[] = [
     description: "Legion is a merit-based crypto fundraising platform that lets projects launch token sales and allocates access to users based on on-chain reputation (Legion Scores) and compliance criteria.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/legion.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -29413,6 +29427,225 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/Legion-Team/legion-protocol-contracts/tree/master/audits"],
     listedAt: 1759188237
+  },
+  {
+    id: "6785",
+    name: "Telos Consilium",
+    address: null,
+    symbol: "-",
+    url: "https://telosc.com/",
+    description: "Telos Consilium (Telosc) is a Web3 advisory and treasury firm offering risk-curated vault allocations, tokenized equity, and capital structuring services.",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/telos-consilium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Plasma"],
+    module: "telosc/index.js",
+    twitter: "TelosConsilium",
+    forkedFromIds: [],
+    listedAt: 1759244012
+  },
+  {
+    id: "6786",
+    name: "Snowbl Capital",
+    address: null,
+    symbol: "-",
+    url: "https://snowbl.capital",
+    description: "Snowbl Capital is an on-chain capital allocator with an USDC vault diversifying across funding, lending, farming, and market-neutral arbitrage to pursue risk-managed yield.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/snowbl-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Base"],
+    module: "snowbl-capital.js",
+    twitter: "snowblcapital",
+    forkedFromIds: [],
+    github: ["snowbl-capital"],
+    listedAt: 1759245833
+  },
+  {
+    id: "6787",
+    name: "Blend Money",
+    address: null,
+    symbol: "-",
+    url: "https://blend.money/",
+    description: "Blend is the programmable savings layer for DeFi, powering safe, sustainable yield for chains, wallets, stablecoins, and on-chain apps. Every deposit lives in a signer-bound Safe with automated risk protections. There are no pooled vaults, no custodial risk, and no lockups. Just real-time routing, real yield, and full control. Curators plug in capital strategies through a modular strategy layer, and Blend orchestrates allocation across chains and protocols.",
+    chain: "Botanix",
+    logo: `${baseIconsUrl}/blend-money.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Botanix", "Scroll"],
+    module: "blend/index.js",
+    twitter: "blend_money",
+    forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/blendmoney/blend-contracts/blob/main/contracts/oracles/MorphoChainlinkOracleV2.sol"]
+      }
+    ],
+    audit_links: [
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-08-10-0.pdf", 
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-0.pdf", 
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-1.pdf"
+    ],
+    github: ["blendmoney"],
+    listedAt: 1759246067
+  },
+  {
+    id: "6788",
+    name: "246Club",
+    address: null,
+    symbol: "-",
+    url: "https://www.246club.xyz/",
+    description: "246 Club extends credit from lending protocols, allocates it to yield sources, and captures the spread.",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/246club.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Plasma"],
+    module: "246Club/index.js",
+    twitter: "246_club",
+    forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16460"]
+      }
+    ],
+    audit_links: ["https://docs.246club.xyz/docs/resources/security"],
+    github: ["246club"],
+    listedAt: 1759263432
+  },
+  {
+    id: "6789",
+    name: "Solstice USX",
+    address: null,
+    symbol: "-",
+    url: "https://solstice.finance/",
+    description: "Solstice is a synthetic stablecoin protocol built on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solstice-usx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Solana"],
+    module: "solstice-usx/index.js",
+    twitter: "solsticefi",
+    forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16456"]
+      }
+    ],
+    audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
+    listedAt: 1759263438
+  },
+  {
+    id: "6790",
+    name: "Falcon Finance",
+    address: null,
+    symbol: "-",
+    url: "https://falcon.finance/",
+    description: "Falcon Finance is the first universal collateralization infrastructure protocol that creates sustainable yield opportunities.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/falcon-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    module: "falcon-finance/index.js",
+    twitter: "falconstable",
+    forkedFromIds: [],
+    audit_links: ["https://docs.falcon.finance/resources/audits#smart-contract-audits"],
+    listedAt: 1759263444
+  },
+  {
+    id: "6791",
+    name: "Ionex",
+    address: "plasma:0x133a09Dd6169f6F0509658a911F2a82Fc8ab6A0D",
+    symbol: "INX",
+    url: "https://ionex.trade",
+    description: "Plasma's native on-chain liquidity marketplace for stablecoins, combining a capital-efficient AMM with integrated perpetual trading for next-gen DeFi.",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/ionex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Plasma"],
+    module: "ionex-v1/index.js",
+    twitter: "IonexTrade",
+    forkedFromIds: ["1407"],
+    audit_links: ["https://docs.ionex.trade/info-and-security/audits"],
+    listedAt: 1759263452
+  },
+  {
+    id: "6792",
+    name: "Ploutos Money",
+    address: null,
+    symbol: "-",
+    url: "https://ploutos.money/",
+    description: "Ploutos is a non-custodial money market and leveraged farming platform.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/ploutos-money.jpg`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon", "Katana", "Arbitrum", "Base", "Plasma"],
+    module: "ploutos/index.js",
+    twitter: "ploutos_money",
+    forkedFromIds: ["1599"],
+    audit_links: [],
+    github: ["ploutusFi"],
+    treasury: "ploutos-money.js",
+    listedAt: 1759263458
+  },
+  {
+    id: "6793",
+    name: "XTrade Protocol Perps",
+    address: null,
+    symbol: "-",
+    url: "https://xtrade.gg/",
+    description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/xtrade-protocol-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "xtrade_gg",
+    forkedFromIds: [],
+    parentProtocol: "parent#xtrade-protocol",
+    dimensions: {
+      fees: "xtrade-protocol-perps", 
+    }
   },
 ];
 export default data4;

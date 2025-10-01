@@ -12137,6 +12137,11 @@
       "to": "coingecko#plasma",
       "decimals": 18,
       "symbol": "XPL"
+    },
+    "0xc4374775489cb9c56003bf2c9b12495fc64f0771": {
+      "to": "coingecko#syrupusdt",
+      "decimals": 6,
+      "symbol": "syrupUSDT"
     }
   },
   "xone": {

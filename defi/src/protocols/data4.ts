@@ -29625,7 +29625,7 @@ const data4: Protocol[] = [
     listedAt: 1759263458
   },
   {
-    id: "6776",
+    id: "6793",
     name: "XTrade Protocol Perps",
     address: null,
     symbol: "-",

@@ -66556,7 +66556,8 @@ const data3_2: Protocol[] = [
     module: "bucket-farm/index.js",
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
-    listedAt: 1734642540
+    listedAt: 1734642540,
+    deprecated: true,
   },
   {
     id: "5531",

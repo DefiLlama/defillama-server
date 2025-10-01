@@ -29238,13 +29238,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6776",
-    name: "XTrade Protocol",
+    name: "XTrade Protocol Spot",
     address: null,
     symbol: "-",
     url: "https://xtrade.gg/",
     description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
     chain: "Solana",
-    logo: `${baseIconsUrl}/xtrade-protocol.jpg`,
+    logo: `${baseIconsUrl}/xtrade-protocol-spot.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29254,8 +29254,10 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "xtrade_gg",
     forkedFromIds: [],
+    parentProtocol: "parent#xtrade-protocol",
     dimensions: {
-      fees: "xtrade-protocol"
+      fees: "xtrade-protocol",
+
     }
   },
   {
@@ -29621,6 +29623,29 @@ const data4: Protocol[] = [
     github: ["ploutusFi"],
     treasury: "ploutos-money.js",
     listedAt: 1759263458
+  },
+  {
+    id: "6776",
+    name: "XTrade Protocol Perps",
+    address: null,
+    symbol: "-",
+    url: "https://xtrade.gg/",
+    description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/xtrade-protocol-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "xtrade_gg",
+    forkedFromIds: [],
+    parentProtocol: "parent#xtrade-protocol",
+    dimensions: {
+      fees: "xtrade-protocol-perps", 
+    }
   },
 ];
 export default data4;

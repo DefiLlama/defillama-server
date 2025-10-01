@@ -794,6 +794,7 @@ const main = async () => {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(resultsToDelete),
   });

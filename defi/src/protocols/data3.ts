@@ -44397,10 +44397,7 @@ const data3_2: Protocol[] = [
     deadUrl: true,
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
-    dimensions: {
-      derivatives: "limitless-exchange",
-      fees: "limitless-exchange",
-    }
+
   },
   {
     id: "4579",
@@ -58532,7 +58529,11 @@ const data3_2: Protocol[] = [
     twitter: "trylimitless",
     forkedFrom: [],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://x.com/kirkoyaa/status/1858123297788920123 , https://x.com/PythNetwork/status/1857445973431300419
-    listedAt: 1727294687
+    listedAt: 1727294687,
+    dimensions: {
+      derivatives: "limitless-exchange",
+      fees: "limitless-exchange",
+    }
   },
   {
     id: "5182",

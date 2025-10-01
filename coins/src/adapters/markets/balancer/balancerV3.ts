@@ -51,6 +51,7 @@ async function getPoolIds3(chain: string): Promise<string[]> {
     const { pools }: any = await request(graphs[chain], lpQuery);
     addresses.push(...pools.map((p: any) => p.address));
     hasMore = pools.length === size;
+    skip += size;
   } while (hasMore);
 
   return addresses;

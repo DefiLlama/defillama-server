@@ -879,13 +879,45 @@ executeWithRetry().then(success => {
 
 async function fetchJson(url: string, ...rest: any): Promise<any> {
   const response = await fetch(url, ...rest);
-  const strData = await response.text();
   try {
-    const json = JSON.parse(strData)
-    return json
+    if (response.ok) {
+			const data = await response.json()
+			return data
+		}
+
+		// Handle non-200 status codes
+		let errorMessage = `[HTTP] [error] [${response.status}] < ${response.url} >`
+
+		// Try to get error message from statusText first
+		if (response.statusText) {
+			errorMessage += ` : ${response.statusText}`
+		}
+
+		// Read response body only once
+		const responseText = await response.text()
+
+		if (responseText) {
+			// Try to parse as JSON first
+			try {
+				const errorResponse = JSON.parse(responseText)
+				if (errorResponse.error) {
+					errorMessage += ` : ${errorResponse.error}`
+				} else if (errorResponse.message) {
+					errorMessage += ` : ${errorResponse.message}`
+				} else {
+					// If JSON parsing succeeded but no error/message field, use the text
+					errorMessage += ` : ${responseText}`
+				}
+			} catch (jsonError) {
+				// If JSON parsing fails, use the text response
+				errorMessage += ` : ${responseText}`
+			}
+		}
+
+		throw new Error(errorMessage)
   } catch (error) {
-    console.log('response status:', response.status)
-    console.log('response text:', strData)
-    throw new Error('Failed to parse JSON response: ' + url)
+    const msg = error instanceof Error ? error.message : String(error)
+    console.log(msg)
+    throw new Error(msg)
   }
 }  

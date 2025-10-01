@@ -29426,7 +29426,11 @@ const data4: Protocol[] = [
     twitter: "legiondotcc",
     forkedFromIds: [],
     audit_links: ["https://github.com/Legion-Team/legion-protocol-contracts/tree/master/audits"],
-    listedAt: 1759188237
+    listedAt: 1759188237,
+    dimensions: {
+      fees: "legion",
+      dexs: "legion"
+    }
   },
   {
     id: "6785",

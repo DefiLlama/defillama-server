@@ -29692,6 +29692,7 @@ const data4: Protocol[] = [
     module: "kinetiq-earn/index.js",
     twitter: "kinetiq_xyz",
     forkedFromIds: [],
+    parentProtocol: "parent#kinetiq",
     listedAt: 1759338894
   },
   {

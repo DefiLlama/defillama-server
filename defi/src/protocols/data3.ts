@@ -44397,6 +44397,10 @@ const data3_2: Protocol[] = [
     deadUrl: true,
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
+    dimensions: {
+      derivatives: "limitless-exchange",
+      fees: "limitless-exchange",
+    }
   },
   {
     id: "4579",

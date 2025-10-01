@@ -29618,6 +29618,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1599"],
     audit_links: [],
     github: ["ploutusFi"],
+    treasury: "ploutos-money.js",
     listedAt: 1759263458
   },
 ];

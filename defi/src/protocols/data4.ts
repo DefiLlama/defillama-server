@@ -22704,6 +22704,7 @@ const data4: Protocol[] = [
   {
     id: "6494",
     name: "Surf Lending",
+    previousNames: ["Flow Lending"],
     address: "cardano:2d9db8a89f074aa045eab177f23a3395f62ced8b53499a9e4ad46c80.464c4f57",
     symbol: "SURF",
     url: "https://surflending.org/",

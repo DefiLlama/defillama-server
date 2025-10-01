@@ -29323,8 +29323,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#pacaswap",
     dimensions: {
-      // dexs: "pacaswap",  // disabled as the api was returning cummulative data
-      // fees: "pacaswap"
+      dexs: "pacaswap",
+      fees: "pacaswap"
     }
   },
   {

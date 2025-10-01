@@ -8,13 +8,13 @@ export interface ICleanRecordsConfig {
 export type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
 
 export type ProtocolDimensionsExtraConfig = {
-  defaultChartView?: ChartBreakdownOptions;
-  adapter: string;
-  genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
+    defaultChartView?: ChartBreakdownOptions;
+    adapter: string;
+    genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
 }
 
 export type DimensionsConfig = {
-  [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
+    [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
 }
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
@@ -195,6 +195,7 @@ export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any
 export type DIMENSIONS_DB_DataTypeRecord = {
     value: number,
     chains: IJSON<number>
+    labelBreakdown?: IJSON<number>  // it is not really stored in the db, but added in the transform function while reading from db
 }
 
 export type DIMENSIONS_DB_RECORD = {
@@ -206,4 +207,52 @@ export type DIMENSIONS_DB_RECORD = {
         aggregated: Record<AdaptorRecordType, DIMENSIONS_DB_DataTypeRecord>,
     },
     bl?: Record<AdaptorRecordType, IJSON<number>>
+}
+
+export type DIMENSIONS_ADAPTER_CACHE_RECORD = {
+    timestamp: number,
+    aggObject: IJSON<DIMENSIONS_DB_DataTypeRecord>,
+}
+
+export type DIMENSIONS_ADAPTER_CACHE = {
+    lastUpdated: number,  // cached
+    protocols: {  // cached
+        [id: string]: {
+            records: {
+                [timeS: string]: DIMENSIONS_ADAPTER_CACHE_RECORD
+            },
+        }
+    },
+    protocolSummaries?: any,
+    parentProtocolSummaries?: any,
+    summaries?: IJSON<RecordSummary>
+    allChains?: string[]
+}
+
+
+export type RecordSummary = {
+    total24h: number
+    total48hto24h: number
+    chart: IJSON<number>
+    chartBreakdown: IJSON<IJSON<number>>
+    earliestTimestamp?: number
+    chainSummary?: IJSON<RecordSummary>
+    total7d?: number
+    total30d?: number
+    total14dto7d?: number
+    total60dto30d?: number
+    total1y?: number
+    recordCount: number
+}
+
+export type ProtocolSummary = RecordSummary & {
+    change_1d?: number
+    change_7d?: number
+    change_1m?: number
+    change_7dover7d?: number
+    average1y?: number
+    monthlyAverage1y?: number
+    totalAllTime?: number
+    breakdown24h?: any
+    breakdown30d?: any
 }

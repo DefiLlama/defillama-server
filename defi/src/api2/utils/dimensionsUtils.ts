@@ -1,5 +1,5 @@
 import { roundValues } from "./index";
-import { ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_DB_RECORD, } from "../../adaptors/data/types";
+import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DIMENSIONS_DB_DataTypeRecord, DIMENSIONS_DB_RECORD, IJSON, } from "../../adaptors/data/types";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 
@@ -13,7 +13,10 @@ async function _getDimensionsCacheV2(adapterType: AdapterType) {
   console.time(timeKey)
 
   const fileKey = getFileCacheKeyV2(adapterType)
-  const adapterTypesMap = await readFromPGCache(fileKey).then(data => data ?? {})
+  let adapterTypesMap = await readFromPGCache(fileKey).then(data => data ?? {})
+
+  // decompress the data
+  adapterTypesMap = compressObject(adapterTypesMap, reverseCompressionMap) as DIMENSIONS_ADAPTER_CACHE
 
   console.timeEnd(timeKey)
 
@@ -36,7 +39,9 @@ export async function storeDimensionsCacheV2(data: any) {
   // store each adapter type separately, this way we avoid hitting the file size limit
   for (const adapterType of keys) {
     const fileKey = getFileCacheKeyV2(adapterType as AdapterType)
-    await writeToPGCache(fileKey, data[adapterType])
+    let adapterCacheData = data[adapterType] as DIMENSIONS_ADAPTER_CACHE
+    adapterCacheData = compressObject(adapterCacheData, compressionMap) 
+    await writeToPGCache(fileKey, adapterCacheData)
   }
 }
 
@@ -57,16 +62,21 @@ export async function storeDimensionsMetadata(data: any) {
   return writeToPGCache(dimensionsMetadataFile, data)
 }
 
+
+const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
+
 // transform the record to remove empty fields & and add fields that can be computed
 export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
-  const { timestamp, data, } = json
+  const { timestamp, data, bl, ...rest } = json
+  const aggObject = data.aggregated
+  if (!aggObject) return null;
 
   // json.data = json.data.aggregated  // turns out we cant get rid of 'aggregated' field just yet as later in the code 
 
   // reduce usd value precision to reduce storage size
   roundValues(data)
 
-  const finalRecord: any = { ...data, timestamp, }
+  const finalRecord: any = { aggObject, timestamp, }
 
   // check if breakdown label field is an empty object, if yes remove it
   if (!json.bl || typeof json.bl !== 'object') {
@@ -82,32 +92,41 @@ export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
     addDerivedField(AdaptorRecordType.dailyHoldersRevenue, AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyProtocolRevenue)
     addDerivedField(AdaptorRecordType.dailyProtocolRevenue, AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyHoldersRevenue)
 
-    let hasKeyWithValue = false
+    // let hasKeyWithValue = false
     const keys = Object.keys(json.bl) as AdaptorRecordType[]
 
     for (const key of keys) {
-      // iterate over each key, if the value is not an object or is an empty object, delete the key
-      if (typeof json.bl[key] !== 'object' || !Object.keys(json.bl[key] ?? {}).length) delete json.bl[key]
-      else hasKeyWithValue = true
+      // iterate over each key, if the value is not an object or is an empty object, or the item is missing in aggObject, delete the key
+      if (typeof json.bl[key] !== 'object' || !Object.keys(json.bl[key] ?? {}).length || !aggObject[key])
+        delete json.bl[key]
+      else {
+        aggObject[key].labelBreakdown = json.bl[key]
+        // hasKeyWithValue = true
+      }
     }
 
-    // if after cleanup, the bl object is not empty, add it to the final record
-    if (hasKeyWithValue) finalRecord.bl = json.bl
+    // // if after cleanup, the bl object is not empty, add it to the final record
+    // if (hasKeyWithValue) finalRecord.bl = json.bl
   }
 
-  return { ...json, finalRecord }
+  // reduce cummulative fields like totalVolume/totalFees etc these should be computed
+  Object.keys(aggObject).forEach(key => {
+    if (accumulativeRecordTypeSet.has(key as AdaptorRecordType)) delete aggObject[key as AdaptorRecordType]
+  })
+
+  return { ...rest, finalRecord }
 
   function addDerivedField(derivedField: AdaptorRecordType, parentField: AdaptorRecordType, otherField: AdaptorRecordType) {
     const agg = json.data.aggregated
 
     // If the derived field already exists or if either parent or other field is missing, do nothing
     if (agg[derivedField] || !agg[parentField] || !agg[otherField]) return;
-    
+
     let value = agg[parentField].value - agg[otherField].value
     if (value < 0) value = 0
     let chains: Record<string, number> = diffNumMap(agg[parentField].chains, agg[otherField].chains)
-    
-    
+
+
     agg[derivedField] = { value, chains }
   }
 
@@ -120,4 +139,36 @@ export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
     }
     return out
   }
+}
+
+const compressionMap: Record<string, string> = {
+  'aggObject': '_a',
+  'value': '_v',
+  'chains': '_c',
+  'labelBreakdown': '_b',
+  'timestamp': '_t',
+}
+
+const reverseCompressionMap: Record<string, string> = {}  // inverse of compressionMap used in decompressObject
+for (const key in compressionMap) {
+  reverseCompressionMap[compressionMap[key]] = key
+}
+
+// Recursively compress object keys using the compressionMap
+export function compressObject(obj: any, compressionMap: any): any {
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(item => compressObject(item, compressionMap));
+  }
+
+  const result: any = {};
+  for (const [key, value] of Object.entries(obj)) {
+    const newKey = compressionMap[key] || key;
+    result[newKey] = compressObject(value, compressionMap);
+  }
+
+  return result;
 }

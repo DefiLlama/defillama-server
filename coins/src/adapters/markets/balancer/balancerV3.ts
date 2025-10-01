@@ -41,7 +41,10 @@ async function getPoolIds3(chain: string): Promise<string[]> {
         skip: ${skip}
         orderBy: address
         orderDirection: desc 
-    ) {
+        where:{
+          isInitialized:true
+          isPaused:false
+      }) {
         address
     }}`;
 
@@ -60,6 +63,8 @@ async function getTokenPrices(
   let writes: Write[] = [];
   const api = await getApi(chain, timestamp);
   const pools: string[] = await getPoolIds3(chain);
+  // console.log(`Found ${pools.length} pools on ${chain}...`);
+
 
   const poolTokens: { tokens: string[]; balancesRaw: number[] }[] =
     await api.multiCall({

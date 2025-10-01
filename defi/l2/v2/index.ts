@@ -19,6 +19,7 @@ import { additional, excluded } from "../adapters/manual";
 import { storeHistoricalToDB } from "./storeToDb";
 import { stablecoins } from "../../src/getProtocols";
 import { metadata as rwaMetadata } from "../../src/rwa/protocols";
+import { verifyChanges } from "../test";
 
 const searchWidth = 10800; // 3hr
 
@@ -260,11 +261,20 @@ async function fetchLstSymbols() {
 }
 
 function fetchRwaSymbols() {
-  const symbols: string[] = [];
+  const allSymbols: {[symbol: string]: boolean } = {};
   Object.values(rwaMetadata).map(({ matchExact, symbols }: { matchExact: boolean; symbols: string[] }) => {
-    if (matchExact) symbols.push(...symbols);
+    symbols.map((symbol) => allSymbols[symbol] = matchExact)
   });
-  return symbols;
+  return allSymbols;
+}
+
+function isRwaSymbol(symbol: string, rwaSymbols: {[symbol: string]: boolean }) {
+  if (rwaSymbols[symbol]) return true;
+  Object.keys(rwaSymbols).map((s) => {
+    if (!rwaSymbols[s] && symbol.startsWith(s)) return true;
+  });
+
+  return false
 }
 
 function normalizeKey(key: string) {
@@ -374,7 +384,7 @@ async function main() {
         let section = "canonical";
         if (isOwnToken(chain, symbol)) section = "ownTokens";
         else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
-        else if (rwaSymbols.includes(symbol)) section = "rwa";
+        else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
         else if (lstSymbols.includes(symbol)) section = "lst";
         rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
         if (!isOwnToken(chain, symbol)) rawData[chain].total.breakdown[key] = amount;
@@ -390,7 +400,7 @@ async function main() {
       let section = "native";
       if (isOwnToken(chain, symbol)) section = "ownTokens";
       else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
-      else if (rwaSymbols.includes(symbol)) section = "rwa";
+      else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
       else if (lstSymbols.includes(symbol)) section = "lst";
       else if (incomingAssets[chain] && incomingAssets[chain].includes(key.substring(key.indexOf(":") + 1)))
         section = "thirdParty";
@@ -470,6 +480,8 @@ async function main() {
 
   const rawDataJson = JSON.parse(JSON.stringify(rawData));
   const symbolDataJson = JSON.parse(JSON.stringify(symbolData));
+
+  await verifyChanges(symbolData);
 
   await Promise.all([
     symbolMapPromise,

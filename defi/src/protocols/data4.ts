@@ -1286,6 +1286,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.silo.finance/audits-and-tests"],
     parentProtocol: "parent#silo-finance",
     listedAt: 1736470165,
+    dimensions: {
+      fees: "silo-finance-v2"
+    }
   },
   {
     id: "5612",

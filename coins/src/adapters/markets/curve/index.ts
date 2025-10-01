@@ -200,6 +200,14 @@ export function curve15(timestamp: number = 0) {
     // getGaugePrices("sonic", timestamp),
   ]);
 }
+export function curve16(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("plasma", [], timestamp, "eth-custom", [
+      "0x2D84D79C852f6842AbE0304b70bBaA1506AdD457",
+      '0x1e8d78e9b3f0152d54d32904b7933f1cfe439df1'
+    ]),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -218,4 +226,5 @@ export const adapters = {
   curve13,
   curve14,
   curve15,
+  curve16
 };

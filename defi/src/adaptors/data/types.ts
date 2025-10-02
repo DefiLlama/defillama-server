@@ -192,11 +192,13 @@ export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).red
 
 export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any) => adapterType !== AdapterType.PROTOCOLS)
 
-export type DIMENSIONS_DB_DataTypeRecord = {
+export type DimensionsDataRecord = {
     value: number,
     chains: IJSON<number>
     labelBreakdown?: IJSON<number>  // it is not really stored in the db, but added in the transform function while reading from db
 }
+
+export type DimensionsDataRecordMap = Partial<Record<AdaptorRecordType, DimensionsDataRecord>>
 
 export type DIMENSIONS_DB_RECORD = {
     id: string,
@@ -204,14 +206,22 @@ export type DIMENSIONS_DB_RECORD = {
     timeS: string,
     type: AdapterType,
     data: {
-        aggregated: Record<AdaptorRecordType, DIMENSIONS_DB_DataTypeRecord>,
+        aggregated: DimensionsDataRecordMap,
     },
-    bl?: Record<AdaptorRecordType, IJSON<number>>
+    bl?: Partial<Record<AdaptorRecordType, IJSON<number>>>
 }
 
-export type DIMENSIONS_ADAPTER_CACHE_RECORD = {
-    timestamp: number,
-    aggObject: IJSON<DIMENSIONS_DB_DataTypeRecord>,
+
+export type PROTOCOL_SUMMARY = {
+    records: IJSON<DimensionsDataRecordMap>, // key is timeS
+    aggregatedRecords: {
+        yearly: IJSON<DimensionsDataRecordMap>, // probably chain key is not needed/ignored
+        quarterly: IJSON<DimensionsDataRecordMap>,
+        monthly: IJSON<DimensionsDataRecordMap>,
+    },
+    info: Protocol,
+    misc?: IJSON<any>,  // not really used atm
+    summaries: Partial<Record<AdaptorRecordType, RecordSummary>>,
 }
 
 export type DIMENSIONS_ADAPTER_CACHE = {
@@ -219,13 +229,16 @@ export type DIMENSIONS_ADAPTER_CACHE = {
     protocols: {  // cached
         [id: string]: {
             records: {
-                [timeS: string]: DIMENSIONS_ADAPTER_CACHE_RECORD
+                [timeS: string]: {
+                    timestamp: number,
+                    aggObject: DimensionsDataRecordMap,
+                },
             },
         }
     },
-    protocolSummaries?: any,
-    parentProtocolSummaries?: any,
-    summaries?: IJSON<RecordSummary>
+    protocolSummaries?: IJSON<PROTOCOL_SUMMARY>, // key is protocol id
+    parentProtocolSummaries?: IJSON<PROTOCOL_SUMMARY>, // key is parent protocol id
+    summaries?: Partial<Record<AdaptorRecordType, RecordSummary>>,
     allChains?: string[]
 }
 

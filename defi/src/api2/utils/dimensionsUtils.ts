@@ -1,7 +1,8 @@
 import { roundValues } from "./index";
-import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DIMENSIONS_DB_DataTypeRecord, DIMENSIONS_DB_RECORD, IJSON, } from "../../adaptors/data/types";
+import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DIMENSIONS_DB_RECORD, DimensionsDataRecord, DimensionsDataRecordMap, IJSON, PROTOCOL_SUMMARY, } from "../../adaptors/data/types";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { getTimeSQuarter, timeSToUnix } from "./time";
 
 function getFileCacheKeyV2(adapterType: AdapterType) {
   return `dimensions-data-v3.0.0/${adapterType}`
@@ -40,7 +41,7 @@ export async function storeDimensionsCacheV2(data: any) {
   for (const adapterType of keys) {
     const fileKey = getFileCacheKeyV2(adapterType as AdapterType)
     let adapterCacheData = data[adapterType] as DIMENSIONS_ADAPTER_CACHE
-    adapterCacheData = compressObject(adapterCacheData, compressionMap) 
+    adapterCacheData = compressObject(adapterCacheData, compressionMap)
     await writeToPGCache(fileKey, adapterCacheData)
   }
 }
@@ -67,7 +68,7 @@ const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYP
 
 // transform the record to remove empty fields & and add fields that can be computed
 export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
-  const { timestamp, data, bl, ...rest } = json
+  const { timestamp, data, bl, timeS, ...rest } = json
   const aggObject = data.aggregated
   if (!aggObject) return null;
 
@@ -76,7 +77,7 @@ export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
   // reduce usd value precision to reduce storage size
   roundValues(data)
 
-  const finalRecord: any = { aggObject, timestamp, }
+  const finalRecord: any = { aggObject, timestamp: timeSToUnix(timeS), }
 
   // check if breakdown label field is an empty object, if yes remove it
   if (!json.bl || typeof json.bl !== 'object') {
@@ -171,4 +172,45 @@ export function compressObject(obj: any, compressionMap: any): any {
   }
 
   return result;
+}
+
+export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
+
+  if (!pSummary.aggregatedRecords) pSummary.aggregatedRecords = { yearly: {}, quarterly: {}, monthly: {} }
+
+  Object.entries(pSummary.records).forEach(([timeS, record]) => {
+
+    const month = timeS.slice(0, 7)
+    const quarter = getTimeSQuarter(timeS)
+    const year = timeS.slice(0, 4)
+
+    if (!pSummary.aggregatedRecords!.monthly[month]) pSummary.aggregatedRecords!.monthly[month] = {}
+    if (!pSummary.aggregatedRecords!.quarterly[quarter]) pSummary.aggregatedRecords!.quarterly[quarter] = {}
+    if (!pSummary.aggregatedRecords!.yearly[year]) pSummary.aggregatedRecords!.yearly[year] = {}
+
+    addAggregatedRecord(pSummary.aggregatedRecords!.monthly[month], record)
+    addAggregatedRecord(pSummary.aggregatedRecords!.quarterly[quarter], record)
+    addAggregatedRecord(pSummary.aggregatedRecords!.yearly[year], record)
+  })
+
+
+  function addAggregatedRecord(aggRecord: DimensionsDataRecordMap, record: DimensionsDataRecordMap) {
+    Object.entries(record).forEach((([dataType, {value, labelBreakdown}]: [AdaptorRecordType, DimensionsDataRecord]) => {
+
+      if (!aggRecord[dataType]) aggRecord[dataType] = { value: 0, chains: {} }
+      const aggDataRecordItem = aggRecord[dataType]
+      
+      aggDataRecordItem.value += value
+      
+      const haslabelBreakdown = typeof labelBreakdown === 'object' && Object.keys(labelBreakdown ?? {}).length
+
+      if (haslabelBreakdown) {
+        if (!aggDataRecordItem.labelBreakdown) aggDataRecordItem.labelBreakdown = {}
+        Object.entries(labelBreakdown!).forEach(([k, v]) => {
+          if (!aggDataRecordItem.labelBreakdown![k]) aggDataRecordItem.labelBreakdown![k] = 0
+          aggDataRecordItem.labelBreakdown![k] += v
+        })
+      }
+    }) as any)
+  }
 }

@@ -5389,11 +5389,16 @@ const data4: Protocol[] = [
     chains: ["Sei"],
     oraclesBreakdown: [
       {
-        name: "RedStone",
+        name: "Api3",
         type: "Primary",
         proof: [
           "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
           "https://app.takaralend.com/market/WSEI",
+          "https://app.takaralend.com/market/spSEI",
+          "https://app.takaralend.com/market/iSEI",
+          "https://app.takaralend.com/market/uBTC",
+          "https://app.takaralend.com/market/MBTC",
+          "https://app.takaralend.com/market/SBTC",
         ],
       },
       {
@@ -5405,7 +5410,7 @@ const data4: Protocol[] = [
         ],
       },
       {
-        name: "Api3",
+        name: "RedStone",
         type: "Fallback",
         proof: [
           "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",

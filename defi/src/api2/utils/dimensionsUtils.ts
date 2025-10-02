@@ -11,7 +11,7 @@ function getFileCacheKeyV2(adapterType: AdapterType) {
 async function _getDimensionsCacheV2(adapterType: AdapterType) {
   const timeKey = 'dimensions cache init:' + adapterType
 
-  console.time(timeKey)
+  // console.time(timeKey)
 
   const fileKey = getFileCacheKeyV2(adapterType)
   let adapterTypesMap = await readFromPGCache(fileKey).then(data => data ?? {})
@@ -19,7 +19,7 @@ async function _getDimensionsCacheV2(adapterType: AdapterType) {
   // decompress the data
   adapterTypesMap = compressObject(adapterTypesMap, reverseCompressionMap) as DIMENSIONS_ADAPTER_CACHE
 
-  console.timeEnd(timeKey)
+  // console.timeEnd(timeKey)
 
   return adapterTypesMap
 }
@@ -176,9 +176,12 @@ export function compressObject(obj: any, compressionMap: any): any {
 
 export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
 
+  const dataTypesSet = pSummary.dataTypes
+
+  // initialize aggregatedRecords if not present
   if (!pSummary.aggregatedRecords) pSummary.aggregatedRecords = { yearly: {}, quarterly: {}, monthly: {} }
 
-  Object.entries(pSummary.records).forEach(([timeS, record]) => {
+  Object.entries(pSummary.records).forEach(([timeS, { aggObject: record }]) => {
 
     const month = timeS.slice(0, 7)
     const quarter = getTimeSQuarter(timeS)
@@ -196,19 +199,21 @@ export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
 
   function addAggregatedRecord(aggRecord: DimensionsDataRecordMap, record: DimensionsDataRecordMap) {
     Object.entries(record).forEach((([dataType, { value, labelBreakdown }]: [AdaptorRecordType, DimensionsDataRecord]) => {
+      dataTypesSet.add(dataType)
 
-      if (!aggRecord[dataType]) aggRecord[dataType] = { value: 0, chains: {} }
-      const aggDataRecordItem = aggRecord[dataType]
+      if (!aggRecord[dataType]) aggRecord[dataType] = { value: 0, } as any // chains field is intentionally left out
+      const aggDataRecordItem: any = aggRecord[dataType]!
 
       aggDataRecordItem.value += value
 
       const haslabelBreakdown = typeof labelBreakdown === 'object' && Object.keys(labelBreakdown ?? {}).length
+      const labelKey = 'by-label'
 
       if (haslabelBreakdown) {
-        if (!aggDataRecordItem.labelBreakdown) aggDataRecordItem.labelBreakdown = {}
+        if (!aggDataRecordItem[labelKey]) aggDataRecordItem[labelKey] = {}
         Object.entries(labelBreakdown!).forEach(([k, v]) => {
-          if (!aggDataRecordItem.labelBreakdown![k]) aggDataRecordItem.labelBreakdown![k] = 0
-          aggDataRecordItem.labelBreakdown![k] += v
+          if (!aggDataRecordItem[labelKey]![k]) aggDataRecordItem[labelKey]![k] = 0
+          aggDataRecordItem[labelKey]![k] += v
         })
       }
     }) as any)

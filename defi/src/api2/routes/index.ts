@@ -20,8 +20,8 @@ import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getAggregatesFeesRoute, getDimensionProtocolFileRoute, getFinancialStatementRoute, getOverviewFileRoute, getProFeesRoute } from "./dimensions";
-import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
+import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -213,15 +213,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return fileResponse('config/smol/' + req.path_parameters.name, res);
   }
 
-  async function fileResponse(filePath: string, res: HyperExpress.Response) {
-    try {
-      res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
-      res.json(await readRouteData(filePath))
-    } catch (e) {
-      console.error(e);
-      return errorResponse(res, 'Internal server error', { statusCode: 500 })
-    }
-  }
 
 
   function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -455,9 +446,18 @@ async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: Hyper
 }
 
 export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
-  router.get("/financial-statement/:name", ew(getFinancialStatementRoute))
-  router.get("/fees/:recordType/:name", ew(getProFeesRoute))
-  router.get("/aggregates/fees/:name", ew(getAggregatesFeesRoute))
+
+  const proWrapper = (routeFn: any) => {  // inject isProRoute flag
+
+    return ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
+      (req as any).isProRoute = true
+      return routeFn(req, res)
+    })
+  }
+
+  router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
 }
 
 /* 

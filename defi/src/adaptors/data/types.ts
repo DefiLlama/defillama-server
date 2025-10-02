@@ -213,13 +213,16 @@ export type DIMENSIONS_DB_RECORD = {
 
 
 export type PROTOCOL_SUMMARY = {
-    records: IJSON<DimensionsDataRecordMap>, // key is timeS
+    records: IJSON<{
+        aggObject: DimensionsDataRecordMap,
+    }>, // key is timeS
     aggregatedRecords: {
         yearly: IJSON<DimensionsDataRecordMap>, // probably chain key is not needed/ignored
         quarterly: IJSON<DimensionsDataRecordMap>,
         monthly: IJSON<DimensionsDataRecordMap>,
     },
     info: Protocol,
+    dataTypes: Set<AdaptorRecordType>,  // set of all record types present in records
     misc?: IJSON<any>,  // not really used atm
     summaries: Partial<Record<AdaptorRecordType, RecordSummary>>,
 }

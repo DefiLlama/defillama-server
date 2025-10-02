@@ -4,7 +4,7 @@ require("dotenv").config();
 import { AdapterType, IJSON, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, } from "../utils/dimensionsUtils";
@@ -14,9 +14,7 @@ import * as sdk from '@defillama/sdk';
 
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DimensionsDataRecordMap, ProtocolAdaptor, ProtocolSummary, RecordSummary, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
-import { sluggifyString } from "../../utils/sluggify";
-import { storeRouteData } from "../cache/file-cache";
-import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions";
+import { generateDimensionsResponseFiles, } from "../routes/dimensions";
 import { storeAppMetadata } from './appMetadata';
 
 const blacklistedAppCategorySet = new Set([
@@ -58,6 +56,7 @@ const timeData = {
 async function run() {
   // Go over all types
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
+
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
   await storeDimensionsCacheV2(allCache) // store the updated cache
 
@@ -230,6 +229,7 @@ async function run() {
     console.timeEnd(timeKey3)
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
+
       if (isParentProtocol) skipChainSummary = true
       if (dimensionProtocolInfo.doublecounted) skipChainSummary = true
 
@@ -252,6 +252,7 @@ async function run() {
       protocol.summaries = {} as any
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
       protocol.misc = {};
+      protocol.dataTypes = new Set()
       const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
@@ -287,8 +288,8 @@ async function run() {
 
       // compute & add monthly/quarterly/annual aggregate records
       addAggregateRecords(protocol)
-      
-      
+
+
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ records, info: protocol.info, adapterType, metadata: dimensionProtocolInfo }) as any
       // const hasTodayData = !!protocol.records[todayTimestring]
       // const timeDataKey = hasTodayData ? 'today' : 'yesterday'
@@ -860,92 +861,4 @@ function getSurroundingKeysExcludingCurrent<T>(array: T[], currentIndex: number,
   const beforeCurrent = array.slice(startIndex, currentIndex);
   const afterCurrent = array.slice(currentIndex + 1, endIndex + 1);
   return beforeCurrent.concat(afterCurrent);
-}
-
-const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
-
-async function generateDimensionsResponseFiles(cache: any) {
-  const dimChainsAggData: any = {}
-  for (const adapterType of ADAPTER_TYPES) {
-    const cacheData = cache[adapterType]
-    const { protocolSummaries, parentProtocolSummaries, } = cacheData
-
-    const timeKey = `dimensions-gen-files ${adapterType}`
-    console.time(timeKey)
-
-    let recordTypes = getAdapterRecordTypes(adapterType)
-
-    for (const recordType of recordTypes) {
-      const timeKey = `dimensions-gen-files ${adapterType} ${recordType}`
-      console.time(timeKey)
-
-      // fetch and store overview of each record type
-      const allData = await getOverviewProcess2({ recordType, cacheData, })
-      await storeRouteData(`dimensions/${adapterType}/${recordType}-all`, allData)
-      allData.totalDataChart = []
-      allData.totalDataChartBreakdown = []
-      await storeRouteData(`dimensions/${adapterType}/${recordType}-lite`, allData)
-
-      // store per chain overview
-      const chains = allData.allChains ?? []
-      const totalDataChartByChain: any = {}
-
-      for (const chainLabel of chains) {
-        let chain = chainLabel.toLowerCase()
-        chain = sluggifiedNormalizedChains[chain] ?? chain
-        const data = await getOverviewProcess2({ recordType, cacheData, chain })
-        await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
-        for (const [date, value] of data.totalDataChart) {
-          totalDataChartByChain[date] = totalDataChartByChain[date] || {}
-          totalDataChartByChain[date][data.chain] = value
-        }
-        data.totalDataChart = []
-        data.totalDataChartBreakdown = []
-        await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-lite`, data)
-
-        if (!dimChainsAggData[chain]) dimChainsAggData[chain] = {}
-        if (!dimChainsAggData[chain][adapterType]) dimChainsAggData[chain][adapterType] = {}
-        dimChainsAggData[chain][adapterType][recordType] = {
-          '24h': data.total24h,
-          '7d': data.total7d,
-          '30d': data.total30d,
-        }
-      }
-
-      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-total-data-chart`, totalDataChartByChain)
-
-      // store protocol summary for each record type
-      const allProtocols: any = { ...protocolSummaries, ...parentProtocolSummaries }
-      for (let [id, protocol] of Object.entries(allProtocols) as any) {
-        if (!protocol.info) {
-          console.log('no info for protocol', id)
-          continue
-        }
-
-        const data = await getProtocolDataHandler2({ recordType, protocolData: protocol })
-        const protocolSlug = sluggifyString(data.name)
-        const protocolSlugDN = data.displayName ? sluggifyString(data.displayName) : null
-
-        if (!data.totalDataChart?.length) continue; // skip if there is no data
-
-        const differentDisplayName = protocolSlugDN && protocolSlug !== protocolSlugDN
-        let fileLabels = differentDisplayName ? [protocolSlugDN] : []
-        if (Array.isArray(data.previousNames)) fileLabels.push(...data.previousNames.map(sluggifyString))
-        fileLabels.push(protocolSlug)
-
-        fileLabels = [...new Set(fileLabels)]
-        for (const fileLabel of fileLabels)
-          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-all`, data)
-
-        data.totalDataChart = []
-        data.totalDataChartBreakdown = []
-
-        for (const fileLabel of fileLabels)
-          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-lite`, data)
-      }
-    }
-
-    console.timeEnd(timeKey)
-  }
-  await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
 }

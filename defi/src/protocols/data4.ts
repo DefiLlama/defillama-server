@@ -29790,5 +29790,54 @@ const data4: Protocol[] = [
     github: ["leadfi"],
     listedAt: 1759340419
   },
+  {
+    id: "6800",
+    name: "MetaMask USD",
+    address: null,
+    symbol: "-",
+    url: "https://metamask.io/price/metamask-usd",
+    description: "MetaMask USD (mUSD) is a self-custodial wallet-native stablecoin issued via Bridge and M0, fully backed by short-term Treasury and cash reserves, and integrated into MetaMask’s wallet for swaps, on-ramps, and spending",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metamask-usd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Stablecoin Issuer",
+    chains: ["Ethereum", "Linea"],
+    module: "dummy.js",
+    twitter: "MetaMask",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "metamask-musd"
+    }
+  },
+  {
+    id: "6801",
+    name: "Lotus Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.lotusfinance.io/",
+    description: "Lotus Finance is a liquidity provider protocol on Sui. It now runs market making strategy on Deepbook and other CLOB DEX's, generates yield from trading strategies and maker fees",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/lotus-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "Lotusfinance_io",
+    forkedFromIds: [],
+    audit_links: [
+      "https://app.lotusfinance.io/files/Lotus%20Finance%20Smart%20Contract%20Audit%20Report-2025-5-27.pdf",
+      "https://info.asymptotic.tech/lotus-protocol-audit"
+    ],
+    dimensions: {
+      fees: "metamask-musd"
+    },
+    github: ["lotus-finance-team"]
+  },
 ];
 export default data4;

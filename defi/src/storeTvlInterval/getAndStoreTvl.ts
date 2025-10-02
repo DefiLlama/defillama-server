@@ -78,6 +78,7 @@ async function getTvl(
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
+          if (prefixMalformed(key)) delete tvlBalances[key]
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
         })
         const isStandard = Object.entries(tvlBalances).every(
@@ -156,6 +157,14 @@ function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsOb
       });
     })
   }
+}
+
+function prefixMalformed(address: string) {
+  const parts = address.split(':')
+  if (parts.length < 3) return false
+  if (address.indexOf(':coingecko:') != -1) return true
+  if (parts.length > 2 &&parts[0] == parts[1]) return true
+  return false
 }
 
 type StoreTvlOptions = {

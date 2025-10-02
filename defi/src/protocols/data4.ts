@@ -28910,7 +28910,10 @@ const data4: Protocol[] = [
       "https://github.com/DefiTuna/tuna-sdk/blob/main/audit/torii-defituna-report-27-Jan-2025.pdf"
     ],
     parentProtocol: "parent#defituna",
-    listedAt: 1758723382
+    listedAt: 1758723382,
+    dimensions: {
+      fees: "defituna-liquidity"
+    }
   },
   {
     id: "6761",

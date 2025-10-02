@@ -60660,7 +60660,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/defxcode/defx-contract/blob/main/DefxBridgeAuditReport.pdf"],
     listedAt: 1729687090,
     dimensions: {
-      derivatives: "defx"
+      derivatives: "defx",
+      fees: "defx",
+      "open-interest": "defx"
     }
   },
   {

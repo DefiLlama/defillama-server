@@ -115,7 +115,7 @@ export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
     if (accumulativeRecordTypeSet.has(key as AdaptorRecordType)) delete aggObject[key as AdaptorRecordType]
   })
 
-  return { ...rest, finalRecord }
+  return { ...rest, timeS, finalRecord }
 
   function addDerivedField(derivedField: AdaptorRecordType, parentField: AdaptorRecordType, otherField: AdaptorRecordType) {
     const agg = json.data.aggregated
@@ -195,13 +195,13 @@ export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
 
 
   function addAggregatedRecord(aggRecord: DimensionsDataRecordMap, record: DimensionsDataRecordMap) {
-    Object.entries(record).forEach((([dataType, {value, labelBreakdown}]: [AdaptorRecordType, DimensionsDataRecord]) => {
+    Object.entries(record).forEach((([dataType, { value, labelBreakdown }]: [AdaptorRecordType, DimensionsDataRecord]) => {
 
       if (!aggRecord[dataType]) aggRecord[dataType] = { value: 0, chains: {} }
       const aggDataRecordItem = aggRecord[dataType]
-      
+
       aggDataRecordItem.value += value
-      
+
       const haslabelBreakdown = typeof labelBreakdown === 'object' && Object.keys(labelBreakdown ?? {}).length
 
       if (haslabelBreakdown) {

@@ -60,7 +60,6 @@ async function run() {
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
   await storeDimensionsCacheV2(allCache) // store the updated cache
-  console.log('dope, exitting now...', JSON.stringify(allCache[AdapterType.FEES].protocols['3946'].records['2025-03-20']))
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)

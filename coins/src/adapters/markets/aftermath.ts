@@ -34,7 +34,7 @@ async function getTokenPrices(timestamp: number) {
   }
   const tokens = Array.from(tokenSet)
   const tokenChunks = sliceIntoChunks(tokens, 10)
-  console.log('Token chunks', tokens.length)
+
   for (const chunk of tokenChunks) {
     const { data: coinPrices } = await axios.post('https://aftermath.finance/api/price-info', { coins: chunk })
     const { data: coinMetadata } = await axios.post('https://aftermath.finance/api/coins/metadata', { coins: chunk })

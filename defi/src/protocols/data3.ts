@@ -6664,7 +6664,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1691625600"],
         adapter: "satori"
-      }
+      },
+      "open-interest": "satori"
     }
   },
   {
@@ -38324,7 +38325,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1712534400", "1712620800"],
         adapter: "myx-finance"
-      }
+      },
+      "open-interest": "myx-finance"
     }
   },
   {
@@ -43138,8 +43140,14 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1714088562,
     dimensions: {
-      fees: "aerodrome-slipstream",
-      dexs: "aerodrome-slipstream"
+      fees: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"],
+      },
+      dexs: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"]
+      }
     }
   },
   {
@@ -44389,6 +44397,7 @@ const data3_2: Protocol[] = [
     deadUrl: true,
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
+
   },
   {
     id: "4579",
@@ -53733,7 +53742,7 @@ const data3_2: Protocol[] = [
     url: "https://app.reya.xyz/",
     description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
-    logo: `${baseIconsUrl}/reya-perps-dex.png`,
+    logo: `${baseIconsUrl}/reya-dex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -53749,7 +53758,8 @@ const data3_2: Protocol[] = [
     listedAt: 1723560145,
     dimensions: {
       fees: "reya-dex",
-      derivatives: "reya-dex"
+      derivatives: "reya-dex",
+      "open-interest": "reya-dex"
     }
   },
   {
@@ -54450,7 +54460,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "circle",
     audit_links: [],
-    stablecoins: ["usdc"],
+    stablecoins: ["usd-coin"],
     dimensions: {
       fees: "circle"
     }
@@ -54475,7 +54485,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "Tether_to",
     audit_links: [],
-    stablecoins: ["usdt"],
+    stablecoins: ["tether"],
     dimensions: {
       fees: "tether"
     }
@@ -56023,7 +56033,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Injective"],
     module: "injective-orderbook/index.js",
-    twitter: "HelixApp_",
+    twitter: "HelixMarkets",
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -56040,7 +56050,10 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp",
+      derivatives: {
+        adapter: "helix-helix-perp",
+        genuineSpikes: ["1759104000"],
+      },
       "open-interest": "helix-helix-perp"
     }
   },
@@ -58516,7 +58529,11 @@ const data3_2: Protocol[] = [
     twitter: "trylimitless",
     forkedFrom: [],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://x.com/kirkoyaa/status/1858123297788920123 , https://x.com/PythNetwork/status/1857445973431300419
-    listedAt: 1727294687
+    listedAt: 1727294687,
+    dimensions: {
+      dexs: "limitless-exchange",
+      fees: "limitless-exchange",
+    }
   },
   {
     id: "5182",
@@ -63112,9 +63129,9 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://blazingapp.com",
-    description: "Buy/Sell any coin via WebApp or Telegram. Synced, Audited, Verified, Fast - The Ultimate Trading Suite",
+    description: "Buy/Sell any coin via WebApp or Telegram. Synced, audited, verified, multi-chain trading suite.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blazing-bot.jpg`,
+    logo: `${baseIconsUrl}/blazingapp.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -66547,7 +66564,8 @@ const data3_2: Protocol[] = [
     module: "bucket-farm/index.js",
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
-    listedAt: 1734642540
+    listedAt: 1734642540,
+    deprecated: true,
   },
   {
     id: "5531",

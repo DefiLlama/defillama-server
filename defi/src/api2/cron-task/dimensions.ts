@@ -785,7 +785,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
             case 'dv':
             case 'dnv': currentValueisHigh = currentValue > 3e8; break; // 300 million
           }
-          let spikeRatio = currentValueisHigh ? 3 : 10
+          let spikeRatio = currentValueisHigh ? 5 : 10
           isSpike = currentValue > spikeRatio * highestCloseValue
         }
 

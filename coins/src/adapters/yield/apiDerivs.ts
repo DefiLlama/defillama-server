@@ -272,7 +272,7 @@ const configs: { [adapter: string]: Config } = {
           weightedNum += lunaFloat * priceInLuna;
           weightedDen += lunaFloat;
         } catch (e: any) {
-          console.log(`  Error reading pool ${pool}: ${e.message}`);
+          // console.log(`  Error reading pool ${pool}: ${e.message}`);
         }
       }
 
@@ -307,7 +307,7 @@ export async function apiDerivs(timestamp: number) {
   return Promise.all(
     Object.keys(configs).map((k: string) =>
       deriv(timestamp, k, configs[k]).catch((e) => {
-        console.log(e);
+        console.log(e?.message, k);
         return [];
       }),
     ),

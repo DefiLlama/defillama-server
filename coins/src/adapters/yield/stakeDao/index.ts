@@ -51,16 +51,15 @@ async function fetchStakeDaoData(protocol: Protocol): Promise<Strategy[]> {
   try {
     const { url } = PROTOCOLS[protocol];
     const response = await axios.get<ApiResponse>(url);
-    console.log(`Data retrieved from StakeDAO ${protocol} API`);
 
     if (!response.data?.deployed) {
       throw new Error(`Invalid response format from ${protocol} API`);
     }
 
     const strategies = response.data.deployed;
-    if (strategies.length === 0) {
-      console.log(`No deployed ${protocol} strategies available.`);
-    }
+    // if (strategies.length === 0) {
+    //   console.log(`No deployed ${protocol} strategies available.`);
+    // }
 
     return strategies;
   } catch (error) {
@@ -121,7 +120,6 @@ function formatStrategy(
 
 // Main function to be called by DefiLlama
 export async function stakeDao(timestamp: number) {
-  console.log("Calling getTokenPrices with timestamp:", timestamp);
 
   // Fetch data from all protocols concurrently
   const protocolResults = await Promise.all(
@@ -134,7 +132,7 @@ export async function stakeDao(timestamp: number) {
   const allStrategies = protocolResults.flat();
 
   if (allStrategies.length === 0) {
-    console.log("No strategies retrieved from StakeDAO.");
+    // console.log("No strategies retrieved from StakeDAO.");
     return [];
   }
 
@@ -144,8 +142,8 @@ export async function stakeDao(timestamp: number) {
     .map((strategy) => formatStrategy(strategy, timestamp, writes))
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
-  console.log(
-    `Successfully formatted ${writes.length} strategies for DefiLlama`,
-  );
+  // console.log(
+  //   `Successfully formatted ${writes.length} strategies for DefiLlama`,
+  // );
   return writes;
 }

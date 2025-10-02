@@ -22518,6 +22518,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1670348069,
     github: ["abelfinance"],
+    deadUrl: true,
   },
   {
     id: "2336",

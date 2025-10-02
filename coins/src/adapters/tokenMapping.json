@@ -499,6 +499,11 @@
     }
   },
   "polygon": {
+    "0x695a61817D468983fd32881ea4CE83E91eF2C11E": {
+      "decimals": 18,
+      "symbol": "RYT",
+      "to": "asset#ethereum:0x1d06aa46994f2aba30f6eed46b315664460a709a"
+    },
     "0xdbBC41FFD1e4D219E2cfd5Bfe9e4623cd4274532": {
       "decimals": "18",
       "symbol": "uRON",
@@ -1645,6 +1650,11 @@
     }
   },
   "arbitrum": {
+    "0x1759AEF9c1Ad57B2D16caEC43f451BA46D504fD7": {
+      "decimals": 18,
+      "symbol": "RYT",
+      "to": "asset#ethereum:0x1d06aa46994f2aba30f6eed46b315664460a709a"
+    },
     "0x6eaf19b2fc24552925db245f9ff613157a7dbb4c": {
       "decimals": "6",
       "symbol": "xUSD",
@@ -2107,6 +2117,11 @@
     }
   },
   "avax": {
+    "0xd09ACb80C1E8f2291862c4978A008791c9167003": {
+      "decimals": "18",
+      "symbol": "tETH",
+      "to": "coingecko#treehouse-eth"
+    },
     "0x2f643d728926C20269f0A04931dd7b4b6B650204": {
       "decimals": "18",
       "symbol": "SHIB",
@@ -5419,6 +5434,16 @@
     }
   },
   "starknet": {
+    "0x04be8945e61dc3e19ebadd1579a6bd53b262f51ba89e6f8b0c4bc9a7e3c633fc": {
+      "decimals": "18",
+      "symbol": "mRe7yield",
+      "to": "coingecko#midas-mre7yield"
+    },
+    "0x04e4fb1a9ca7e84bae609b9dc0078ad7719e49187ae7e425bb47d131710eddac": {
+      "decimals": "18",
+      "symbol": "mRe7BTC",
+      "to": "asset#ethereum:0x9fb442d6b612a6dcd2acc67bb53771ef1d9f661a"
+    },
     "0x0593e034dda23eea82d2ba9a30960ed42cf4a01502cc2351dc9b9881f9931a68": {
       "decimals": "18",
       "symbol": "SolvBTC",
@@ -5447,7 +5472,12 @@
     "0x43a35c1425a0125ef8c171f1a75c6f31ef8648edcc8324b55ce1917db3f9b91": {
       "decimals": "18",
       "symbol": "xtBTC",
-      "to": "coingecko#true-btc"
+      "to": "coingecko#tbtc"
+    },
+    "0x580f3dC564a7B82f21d40d404b3842D490aE7205e6ac07B1b7Af2b4A5183dC9":{
+      "decimals": "18",
+      "symbol": "xSBTC",
+      "to": "coingecko#solv-btc"
     },
     "0x7dd3c80de9fcc5545f0cb83678826819c79619ed7992cc06ff81fc67cd2efe0": {
       "decimals": "8",
@@ -9104,6 +9134,11 @@
     }
   },
   "sonic": {
+    "0x6202B9f02E30E5e1c62Cc01E4305450E5d83b926": {
+      "to": "coingecko#staked-stream-usd",
+      "decimals": 6,
+      "symbol": "xUSD"
+    },
     "0xb827e91c5cd4d6aca2fc0cd93a07db61896af40b": {
       "decimals": "18",
       "symbol": "SPECTRA",
@@ -9624,7 +9659,7 @@
     },
     "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
       "to": "coingecko#wrapped-bitcoin",
-      "decimals": 18,
+      "decimals": 8,
       "symbol": "WBTC"
     },
     "0x3b0dc2dac9498a024003609031d973b1171de09e": {
@@ -12073,6 +12108,21 @@
     }
   },
   "plasma": {
+    "0xC4374775489CB9C56003BF2C9b12495fC64F0771": {
+      "decimals": 6,
+      "symbol": "syrupUSDT",
+      "to": "coingecko#syrupusdt"
+    },
+    "0x2a52B289bA68bBd02676640aA9F605700c9e5699": {
+      "decimals": 18,
+      "symbol": "wstUSR",
+      "to": "coingecko#resolv-wstusr"
+    },
+    "0x6eaf19b2fc24552925db245f9ff613157a7dbb4c": {
+      "decimals": "6",
+      "symbol": "xUSD",
+      "to": "asset#ethereum:0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94"
+    },
     "0x0A1a1A107E45b7Ced86833863f482BC5f4ed82EF": {
       "to": "coingecko#usdai",
       "decimals": 18,
@@ -12122,6 +12172,11 @@
       "to": "coingecko#plasma",
       "decimals": 18,
       "symbol": "XPL"
+    },
+    "0xc4374775489cb9c56003bf2c9b12495fc64f0771": {
+      "to": "coingecko#syrupusdt",
+      "decimals": 6,
+      "symbol": "syrupUSDT"
     }
   },
   "xone": {

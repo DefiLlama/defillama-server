@@ -3387,7 +3387,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lighter",
     name: "Lighter",
-    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
+    url: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
@@ -8073,6 +8074,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PacaSwap",
+  },
+  {
+    id: "parent#xtrade-protocol",
+    name: "XTrade Protocol",
+    url: "https://xtrade.gg/",
+    description: "XTrade is a high-performance, all-in-one trading terminal for DeFi — currently supporting Solana Spot and Hyperliquid Perpetuals. Designed for both beginners and pros, XTrade removes the friction of decentralized finance while offering powerful tools once out of reach for the average trader",
+    logo: `${baseIconsUrl}/xtrade-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "xtrade_gg",
+  },
+  {
+    id: "parent#kinetiq",
+    name: "Kinetiq",
+    url: "https://kinetiq.xyz/",
+    description: "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
+    logo: `${baseIconsUrl}/kinetiq.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Kinetiq_xyz",
+    treasury: "kinetiq.js",
   },
 ];
 

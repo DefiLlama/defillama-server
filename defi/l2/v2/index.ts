@@ -16,6 +16,10 @@ import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../../src/utils/shared/constants";
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";
 import { additional, excluded } from "../adapters/manual";
+import { storeHistoricalToDB } from "./storeToDb";
+import { stablecoins } from "../../src/getProtocols";
+import { metadata as rwaMetadata } from "../../src/rwa/protocols";
+import { verifyChanges } from "../test";
 
 const searchWidth = 10800; // 3hr
 
@@ -65,16 +69,16 @@ async function fetchNativeAndMcaps(
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
           let prices: { [token: string]: CoinsApiData } = {};
-          // try {
-            // prices = await getR2JSONString(`prices/${chain}.json`);
-          // } catch (e) {
-          //   console.log(`${chain} prices not cached, fetching`);
+          try {
+            prices = await getR2JSONString(`prices/${chain}.json`);
+          } catch (e) {
+            console.log(`${chain} prices not cached, fetching`);
             prices = await getPrices(
               storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
               timestamp
             );
-          //   await storeR2JSONString(`prices/${chain}.json`, JSON.stringify(prices));
-          // }
+            await storeR2JSONString(`prices/${chain}.json`, JSON.stringify(prices));
+          }
 
           Object.keys(prices).map((p: string) => {
             if (p.startsWith("coingecko:")) prices[p].decimals = 0;
@@ -82,31 +86,33 @@ async function fetchNativeAndMcaps(
           });
 
           let mcaps: { [token: string]: McapsApiData } = {};
-          // try {
-            // mcaps = await getR2JSONString(`mcaps/${chain}.json`);
-          // } catch (e) {
-          //   console.log(`${chain} mcaps not cached, fetching`);
+          try {
+            mcaps = await getR2JSONString(`mcaps/${chain}.json`);
+          } catch (e) {
+            console.log(`${chain} mcaps not cached, fetching`);
             mcaps = await getMcaps(Object.keys(prices), timestamp);
-          //   await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
-          // }
+            await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
+          }
           Object.keys(mcaps).map((m: string) => {
             allMcaps[m] = mcaps[m];
           });
 
           let supplies;
-          // try {
-          //   supplies = await getR2JSONString(`supplies/${chain}.json`);
-          //   if (ownTokenCgid && mcaps[ownTokenCgid]) supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
-          // } catch (e) {
-          //   console.log(`${chain} supplies not cached, fetching`);
+          try {
+            supplies = await getR2JSONString(`supplies/${chain}.json`);
+            if (ownTokenCgid && mcaps[ownTokenCgid])
+              supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
+          } catch (e) {
+            console.log(`${chain} supplies not cached, fetching`);
             supplies = await fetchSupplies(
               chain,
               Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
               timestamp
             );
-            if (ownTokenCgid && mcaps[ownTokenCgid]) supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
+            if (ownTokenCgid && mcaps[ownTokenCgid])
+              supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
             await storeR2JSONString(`supplies/${chain}.json`, JSON.stringify(supplies));
-          // }
+          }
 
           chainData[chain] = { prices, mcaps, supplies };
 
@@ -241,6 +247,36 @@ async function fetchExcludedAmounts(timestamp: number) {
   return excludedAmounts;
 }
 
+async function fetchStablecoinSymbols() {
+  const { peggedAssets } = await fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json());
+  const symbols = peggedAssets.map((s: any) => s.symbol);
+  const allSymbols = [...new Set([...symbols, ...stablecoins].map((t) => t.toUpperCase()))];
+  return allSymbols;
+}
+
+async function fetchLstSymbols() {
+  const assets = await fetch("https://yields.llama.fi/lsdRates").then((r) => r.json());
+  const symbols = assets.map((s: any) => s.symbol.toUpperCase());
+  return symbols;
+}
+
+function fetchRwaSymbols() {
+  const allSymbols: {[symbol: string]: boolean } = {};
+  Object.values(rwaMetadata).map(({ matchExact, symbols }: { matchExact: boolean; symbols: string[] }) => {
+    symbols.map((symbol) => allSymbols[symbol] = matchExact)
+  });
+  return allSymbols;
+}
+
+function isRwaSymbol(symbol: string, rwaSymbols: {[symbol: string]: boolean }) {
+  if (rwaSymbols[symbol]) return true;
+  Object.keys(rwaSymbols).map((s) => {
+    if (!rwaSymbols[s] && symbol.startsWith(s)) return true;
+  });
+
+  return false
+}
+
 function normalizeKey(key: string) {
   if (key.startsWith("0x")) return `ethereum:${key.toLowerCase()}`;
   const [chain, address] = key.split(":");
@@ -249,10 +285,9 @@ function normalizeKey(key: string) {
   return key.toLowerCase();
 }
 
-function isOwnToken(chain: string, address: string, allPrices: { [token: string]: CoinsApiData }) {
+function isOwnToken(chain: string, symbol: string) {
   const ownToken = ownTokens[chain];
   if (!ownToken) return false;
-  const symbol = allPrices[address].symbol.toUpperCase();
 
   if (symbol.startsWith("W")) {
     const unwrappedSymbol = symbol.substring(1);
@@ -269,6 +304,9 @@ async function main() {
   const incomingAssets = await fetchIncomingAssetsList();
   const excludedAmounts = await fetchExcludedAmounts(timestamp);
   const { chainData, allPrices, allMcaps } = await fetchNativeAndMcaps(timestamp);
+  const stablecoinSymbols = await fetchStablecoinSymbols();
+  const lstSymbols = await fetchLstSymbols();
+  const rwaSymbols = fetchRwaSymbols();
 
   const nativeDataAfterDeductions: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   allChainKeys.map((chain: Chain) => {
@@ -324,6 +362,9 @@ async function main() {
       native: { breakdown: {} },
       ownTokens: { breakdown: {} },
       total: { breakdown: {} },
+      rwa: { breakdown: {} },
+      lst: { breakdown: {} },
+      stablecoins: { breakdown: {} },
     };
     if (Object.values(protocolBridgeIds).includes(chain)) {
       const protocolAmount = protocolAmounts[chain];
@@ -336,12 +377,17 @@ async function main() {
         const coinData = allPrices[key];
         if (!coinData || !coinData.price) return;
 
-        const finalAmount = BigNumber(coinData.price)
-          .times(protocolAmount[token])
-          .div(BigNumber(10).pow(coinData.decimals));
+        const amount = BigNumber(coinData.price).times(protocolAmount[token]).div(BigNumber(10).pow(coinData.decimals));
 
-        rawData[chain][isOwnToken(chain, key, allPrices) ? "ownTokens" : "canonical"].breakdown[key] = finalAmount;
-        if (!isOwnToken(chain, key, allPrices)) rawData[chain].total.breakdown[key] = finalAmount;
+        const symbol = allPrices[key].symbol.toUpperCase(); // filter for rwa, lst, stablecoins
+
+        let section = "canonical";
+        if (isOwnToken(chain, symbol)) section = "ownTokens";
+        else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
+        else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
+        else if (lstSymbols.includes(symbol)) section = "lst";
+        rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
+        if (!isOwnToken(chain, symbol)) rawData[chain].total.breakdown[key] = amount;
       });
 
       return;
@@ -349,21 +395,23 @@ async function main() {
 
     Object.keys(nativeDataAfterMcaps[chain]).map((key: string) => {
       if (!allPrices[key]) return;
+      const symbol = allPrices[key].symbol.toUpperCase();
 
       let section = "native";
-      if (isOwnToken(chain, key, allPrices)) section = "ownTokens";
+      if (isOwnToken(chain, symbol)) section = "ownTokens";
+      else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
+      else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
+      else if (lstSymbols.includes(symbol)) section = "lst";
       else if (incomingAssets[chain] && incomingAssets[chain].includes(key.substring(key.indexOf(":") + 1)))
         section = "thirdParty";
       else if (!key.startsWith("coingecko:") && !key.startsWith(chain)) section = "canonical";
       const amount = nativeDataAfterMcaps[chain][key];
-      if (section == 'ownTokens') {
-        amount
-      }
       rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
       if (section != "ownTokens") rawData[chain].total.breakdown[key] = amount;
     });
   });
 
+  const symbolMap: { [key: string]: string } = (await getR2JSONString("chainAssetsSymbolMap")) ?? {};
   const symbolData: FinalData = {};
   Object.keys(rawData).map((chain: Chain) => {
     symbolData[chain] = {
@@ -372,16 +420,21 @@ async function main() {
       native: { breakdown: {} },
       ownTokens: { breakdown: {} },
       total: { breakdown: {} },
+      rwa: { breakdown: {} },
+      lst: { breakdown: {} },
+      stablecoins: { breakdown: {} },
     };
     Object.keys(rawData[chain]).map((section: string) => {
       Object.keys(rawData[chain][section as keyof FinalChainData].breakdown).map((key: string) => {
         const symbol = allPrices[key].symbol.toUpperCase();
         symbolData[chain][section as keyof FinalChainData].breakdown[symbol] =
           rawData[chain][section as keyof FinalChainData].breakdown[key];
+        if (!symbolMap[key]) symbolMap[key] = symbol;
       });
     });
   });
 
+  const symbolMapPromise = storeR2JSONString("chainAssetsSymbolMap", JSON.stringify(symbolMap));
   [rawData, symbolData].map((allData) => {
     Object.keys(allData).map((chain: Chain) => {
       let totalTotal = zero;
@@ -405,6 +458,9 @@ async function main() {
       native: { breakdown: {} },
       ownTokens: { breakdown: {} },
       total: { breakdown: {} },
+      rwa: { breakdown: {} },
+      lst: { breakdown: {} },
+      stablecoins: { breakdown: {} },
     };
     Object.keys(symbolData[chain]).map((section: string) => {
       const a = Object.entries(symbolData[chain][section as keyof FinalChainData].breakdown).sort((a: any, b: any) =>
@@ -425,7 +481,13 @@ async function main() {
   const rawDataJson = JSON.parse(JSON.stringify(rawData));
   const symbolDataJson = JSON.parse(JSON.stringify(symbolData));
 
-  return { rawDataJson, symbolDataJson };
+  await verifyChanges(symbolData);
+
+  await Promise.all([
+    symbolMapPromise,
+    storeHistoricalToDB({ timestamp: getCurrentUnixTimestamp(), value: rawData }),
+    storeR2JSONString("chainAssets2", JSON.stringify({ timestamp: getCurrentUnixTimestamp(), value: symbolData })),
+  ]);
 }
 
 main(); // ts-node defi/l2/v2/index.ts

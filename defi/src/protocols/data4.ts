@@ -11708,8 +11708,8 @@ const data4: Protocol[] = [
     previousNames: ["Lighter V2"],
     address: null,
     symbol: "-",
-    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
-    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
+    url: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
@@ -21529,7 +21529,8 @@ const data4: Protocol[] = [
     name: "Project X",
     address: null,
     symbol: "-",
-    url: "https://www.prjx.com",
+    url: "https://www.prjx.com/@DEFILLAMA",
+    referralUrl: "https://www.prjx.com/@DEFILLAMA",
     description:
       "Project X is built on the belief that tech is becoming increasingly commoditized and the next era of DeFi will be won by innovating on distribution, incentive design and UX.",
     chain: "Hyperliquid L1",
@@ -28678,8 +28679,8 @@ const data4: Protocol[] = [
     name: "Lighter Perps",
     address: null,
     symbol: "-",
-    url: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
-    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=28HHQ5EZ22UR",
+    url: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "zkLighter",

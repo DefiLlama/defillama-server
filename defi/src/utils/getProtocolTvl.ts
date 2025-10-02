@@ -161,7 +161,7 @@ export async function getProtocolTvl(
                 tokensToExclude = protocol.tokensExcludedFromParent![chainDisplayName]
               }
               return Object.entries(usdTokensSection).reduce((sum, token) => {
-                if (tokensToExclude?.includes(token[0].toUpperCase())) {
+                if (protocol.excludeTvlFromParent || tokensToExclude?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number
                 }
                 return sum

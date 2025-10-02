@@ -12,7 +12,7 @@ try {
     console.error("Error loading adapter data:", error?.message)
 }
 
-
+let missingAdapterErrorCount = 0
 /**
  * 
  * @param protocol 
@@ -21,8 +21,11 @@ try {
 export function importAdapter(protocol: Protocol) {
     let adapterModule = (adaptersData as any)[protocol.module]
     if (!adapterModule) {
-        // throw new Error(`Could not find adapter for ${protocol.module}`)
-        console.error(`Could not find adapter for ${protocol.module}`)
+        missingAdapterErrorCount++
+        if (missingAdapterErrorCount <= 3) {
+            // throw new Error(`Could not find adapter for ${protocol.module}`)
+            console.error(`Could not find adapter for ${protocol.module} ${missingAdapterErrorCount === 3 ? '(Last warning)' : ''}`)
+        }
         return {}
     }
     return mockFunctions(adapterModule)
@@ -41,7 +44,7 @@ function mockTvlFunction() {
 function mockFunctions(obj: any) {
     // disabling the unmocking block as we never use it
 
-    /* if (obj === "_lmtf") {  // llamaMockedTVLFunction
+    /* if (obj === "_f") {  // llamaMockedTVLFunction
         return mockTvlFunction
     } else if (typeof obj === "object") {
         Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))

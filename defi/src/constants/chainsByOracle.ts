@@ -494,6 +494,9 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Berachain",
     "Plume Mainnet",
     "Corn",
+    "Unichain",
+    "Avalanche",
+    "Linea",
   ],
   "eOracle": [
     "Base",

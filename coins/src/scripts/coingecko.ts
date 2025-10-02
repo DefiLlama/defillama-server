@@ -22,6 +22,15 @@ import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import axios from "axios";
 
+// Kill the script after 5 minutes to prevent infinite execution
+const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
+const killTimeout = setTimeout(() => {
+  console.log(`Script execution exceeded ${TIMEOUT_MS/1000} seconds. Forcefully terminating.`);
+  process.exit(1); // Exit with error code 1 to indicate abnormal termination
+}, TIMEOUT_MS);
+// Make sure the timeout doesn't prevent the Node.js process from exiting naturally
+killTimeout.unref();
+
 enum COIN_TYPES {
   over100m = "over100m",
   over10m = "over10m",
@@ -48,13 +57,14 @@ async function storeCoinData(coinData: Write[]) {
       symbol: c.symbol,
       confidence: c.confidence,
       volume: c.volume,
+      adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
-        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+        return ({ decimals: 0, ...rest } as Dynamo)
       }),
     ),
     batchWrite(items, false),
@@ -122,7 +132,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         SK: 0,
       })),
     )
-  ).filter((c) => !c.adapter && c.confidence == 0.99);
+  ).filter((c) => c.confidence == 0.99);
 
   const deleteStaleKeysPromise = DELETE(
     staleEntries.map((e) => ({
@@ -212,6 +222,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     coinPlatformData[d.PK] = d;
   });
 
+
+  const redirectKeys = [
+    ...new Set(
+      coinPlatformDataArray
+        .map((c: any) => c.redirect)
+        .filter((c: string) => c != undefined),
+    ),
+  ];
+  const redirectDataArray: CgEntry[] = await batchGet(
+    redirectKeys.map((PK: string) => ({ PK, SK: 0 })),
+  );
+  const redirectData: { [key: string]: CgEntry } = {};
+  redirectDataArray.map((d: CgEntry) => {
+    redirectData[d.PK] = d;
+  });
+
   const pricesAndMcaps: {
     [key: string]: { price: number; mcap?: number };
   } = {};
@@ -225,6 +251,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
         coin,
+        redirectData,
         async (PK) => {
 
           if (!pricesAndMcaps[cgPK(coin.id)]) {
@@ -263,6 +290,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,
+              adapter: 'coingecko'
             };
             kafkaItems.push(item);
             await ddb.put(item);
@@ -424,22 +452,27 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
         }
       }
 
+    // coins = coins.filter((coin) => coin.id == 'euro-coin');
+    // if (!coins.length) process.exit(0)
+
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
         coins.map((coin) => coin.id),
         coinType,
       );
-      coins = coins.filter((coin) => {
-        const metadata = metadatas[coin.id];
-        if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
-        if (hourly) {
-          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
-        }
-        return (
-          metadata.coinType === coinType ||
-          metadata.coinType === COIN_TYPES.over100m
-        ); // always include over100m coins
-      });
+      coins = coins.filter((coin) => coin.id == 'ubtc');
+      if (!coins.length) process.exit(0)
+      // coins = coins.filter((coin) => {
+      //   const metadata = metadatas[coin.id];
+      //   if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+      //   if (hourly) {
+      //     return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+      //   }
+      //   return (
+      //     metadata.coinType === coinType ||
+      //     metadata.coinType === COIN_TYPES.over100m
+      //   ); // always include over100m coins
+      // });
     }
     console.log(
       `Fetching prices for ${coins.length} coins`,

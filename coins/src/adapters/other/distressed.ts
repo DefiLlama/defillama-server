@@ -2,6 +2,7 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
     hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
@@ -53,6 +54,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     crvPlain3andSUSD: "0xC25a3A3b969415c80451098fa907EC722572917F", // sunset
     MSTR: "0x306227d964511a260d14563fbfa82aa75db404b2",
     yieldETH: "0xb5b29320d2dde5ba5bafa1ebcd270052070483ec",
+    // "crvCRVETH-gauge": "0x1cebdb0856dd985fae9b8fea2262469360b8a3a6",
+    crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
+    SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -87,8 +91,12 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
     clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
     MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
+    UXLINK:"0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1",
+    SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
+    SFUND_1: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
     aBNBb: "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d",
     aBNBc: "0xe85afccdafbe7f2b096f268e31cce3da8da2990a",
@@ -167,6 +175,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MYD: "0xf3797a24dd0ced905e2d08b03cf364aac49caa6d",
     JLP: "0xa56d382c5aa9774d4eb98f1500670d3049fede9b",
     PARR: "0xf10b5a72f0abeb27a5ddba950082e4edff4c825d",
+    SFUND: "0xb02f37a282c028958de65711158422199a61e9ae",
   },
   oasis: {
     USDT: "0x6Cb9750a92643382e020eA9a170AbB83Df05F30B",
@@ -309,6 +318,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
     WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
+    SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
   },
   sonic: {

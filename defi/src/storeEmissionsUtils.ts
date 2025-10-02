@@ -165,10 +165,12 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
         .flat()
         .filter(Boolean);
 
+      const excludedSections = emissionData?.metadata?.excludeFromAdjustedSupply || [];
+      const allIncentiveSections = [...incentiveSections, ...excludedSections];
 
       emissionData.documentedData.data.forEach(
         (chart: { data: Array<{ timestamp: number; rawEmission: number }>; label: string }) => {
-          if (!incentiveSections?.includes(chart.label)) return;
+          if (!allIncentiveSections?.includes(chart.label)) return;
           
           chart.data
             .filter((val) => val.timestamp < currDate)

@@ -48,7 +48,8 @@ const axelar = async (): Promise<void> => {
       let normalizedChain: string = chain;
       if (chain in chainMap) normalizedChain = chainMap[chain];
       if (!allChainKeys.includes(normalizedChain)) return;
-      if (!("address" in token.addresses[chain])) return;
+      if (!("address" in token.addresses[chain] && "symbol" in token.addresses[chain])) return;
+      if (!token.addresses[chain].symbol.startsWith("axl")) return;
       addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
     });
   });
@@ -116,16 +117,43 @@ const celer = async (): Promise<void> => {
 const layerzero = async (): Promise<void> => {
   const bridge = "layerzero";
   if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch(
-      "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
-    ).then((r) => r.json());
+  if (!(bridge in bridgePromises)) {
+    bridgePromises[bridge] = Promise.all([
+      fetch(
+        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
+      ).then((r) => r.json()),
+      fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
+    ])
+  }
   const data = await bridgePromises[bridge];
 
-  data.map(({ to }: any) => {
+  data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
     if (!(chain in addresses)) addresses[chain] = [];
     if (!(address in addresses[chain])) addresses[chain].push(address);
+  });
+
+  const nonEvmMapping: { [key: string]: string } = {
+    solana: "solana",
+    aptos: "aptos",
+    ton: "ton",
+    movement: "move",
+    "sui-mainnet": "sui",
+  };
+
+  Object.keys(data[1]).map((chain: string) => {
+    if (chain.endsWith("-testnet")) return;
+    if (!data[1][chain].chainDetails) return;
+    
+    const { chainType, chainId, nativeChainId } = data[1][chain].chainDetails;
+    if (chainType != "evm" && !nonEvmMapping[chain]) return
+    const destinationChainSlug =
+      chainIdMap[chainId] ?? chainIdMap[nativeChainId] ?? nonEvmMapping[chain];
+    if (!destinationChainSlug) return;
+
+    if (!allChainKeys.includes(destinationChainSlug)) return;
+    if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
+    addresses[destinationChainSlug].push(...Object.keys(data[1][chain].tokens));
   });
 
   const staticTokens: { [chain: string]: string[] } = {

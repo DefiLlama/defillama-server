@@ -565,6 +565,27 @@ export const cexsData: Array<ICex> = [
     name: "Deepcoin",
     cgId: "deepcoin",
   },
+  {
+    name: "CEX.IO",
+    cgId: "cex",
+    slug: "cex.io",
+    coin: null,
+    walletsLink: null,
+  },
+  {
+    name: "Bitlo",
+    cgId: "bitlo",
+    slug: "bitlo",
+    coin: null,
+    walletsLink: null,
+  },
+  {
+    name: "VALR",
+    cgId: "valr",
+    slug: "valr",
+    coin: null,
+    walletsLink: null,
+  }
 ];
 
 const cg_volume_cexs = Object.values({
@@ -678,7 +699,7 @@ const cg_volume_cexs = Object.values({
   "zipmex": "zipmex",
 });
 
-export async function getCexs(req: HyperExpress.Request, res: HyperExpress.Response) {
+export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {
   res.setHeaders({
     Expires: get20MinDate(),
   });

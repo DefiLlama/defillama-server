@@ -42,7 +42,7 @@ curl \
     "attribute",
     "sort",
     "exactness",
-    "deprecated:asc
+    "r:desc
   ]'
 
 curl \

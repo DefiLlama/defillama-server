@@ -11,7 +11,6 @@ import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { getRaisesInternal } from "../../getRaises";
 import { getHacksInternal } from "../../getHacks";
 import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { log } from '@defillama/sdk'
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
 import { getOraclesInternal } from "../../getOracles";
 import { getForksInternal } from "../../getForks";
@@ -24,7 +23,7 @@ import * as sdk from '@defillama/sdk'
 import { RUN_TYPE } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
-// import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
+import { sendMessage } from "../../utils/discord";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -415,5 +414,9 @@ async function storeRWAStats() {
 
 run()
   .then(genFormattedChains)
-  .catch(console.error)
+  .catch(async e => {
+    console.error(e)
+    const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
+    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+  })
   .then(() => process.exit(0))

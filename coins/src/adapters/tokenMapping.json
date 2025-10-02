@@ -12108,6 +12108,16 @@
     }
   },
   "plasma": {
+    "0xC4374775489CB9C56003BF2C9b12495fC64F0771": {
+      "decimals": 6,
+      "symbol": "syrupUSDT",
+      "to": "coingecko#syrupusdt"
+    },
+    "0x2a52B289bA68bBd02676640aA9F605700c9e5699": {
+      "decimals": 18,
+      "symbol": "wstUSR",
+      "to": "coingecko#resolv-wstusr"
+    },
     "0x6eaf19b2fc24552925db245f9ff613157a7dbb4c": {
       "decimals": "6",
       "symbol": "xUSD",

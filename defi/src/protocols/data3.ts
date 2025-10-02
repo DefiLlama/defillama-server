@@ -58531,7 +58531,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://x.com/kirkoyaa/status/1858123297788920123 , https://x.com/PythNetwork/status/1857445973431300419
     listedAt: 1727294687,
     dimensions: {
-      derivatives: "limitless-exchange",
+      dexs: "limitless-exchange",
       fees: "limitless-exchange",
     }
   },

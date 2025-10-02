@@ -53742,7 +53742,7 @@ const data3_2: Protocol[] = [
     url: "https://app.reya.xyz/",
     description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
-    logo: `${baseIconsUrl}/reya-perps-dex.png`,
+    logo: `${baseIconsUrl}/reya-dex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

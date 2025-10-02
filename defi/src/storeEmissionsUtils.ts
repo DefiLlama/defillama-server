@@ -157,7 +157,7 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
           });
         }
       }
-    } else {      
+    } else {
       //v1
       const incentiveCategories = ["farming"];
       const incentiveSections = incentiveCategories
@@ -165,10 +165,12 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
         .flat()
         .filter(Boolean);
 
+      const excludedSections = emissionData?.metadata?.excludeFromAdjustedSupply || [];
+      const allIncentiveSections = [...incentiveSections, ...excludedSections];
 
       emissionData.documentedData.data.forEach(
         (chart: { data: Array<{ timestamp: number; rawEmission: number }>; label: string }) => {
-          if (!incentiveSections?.includes(chart.label)) return;
+          if (!allIncentiveSections?.includes(chart.label)) return;
           
           chart.data
             .filter((val) => val.timestamp < currDate)
@@ -484,7 +486,6 @@ export async function processSingleProtocol(
   const emissions1y = sum(year);
   const emissionsAllTime = sum(allTime);
   const emissionsAverage1y = year.length > 0 ? emissions1y / 12 : 0;
-  const emissionsMonthlyAverage1y = year.length >= 30 ? (emissions1y / year.length) * 30.44 : null;
 
   const breakdown = {
     name: data.name,
@@ -498,7 +499,6 @@ export async function processSingleProtocol(
     emissions1y,
     emissionsAllTime,
     emissionsAverage1y,
-    emissionsMonthlyAverage1y,
   };
 
   //if (sum([breakdown.emission24h, breakdown.emission7d, breakdown.emission30d]) > 0) 

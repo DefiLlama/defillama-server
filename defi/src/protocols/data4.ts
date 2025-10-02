@@ -29843,5 +29843,27 @@ const data4: Protocol[] = [
     },
     github: ["lotus-finance-team"]
   },
+  {
+    id: "6802",
+    name: "yieldEDU",
+    address: null,
+    symbol: "-",
+    url: "https://yieldedu.xyz",
+    description: "yieldEDU transforms education into an investable defi asset on-chain, where learners grow through verifiable progress and investors track funded impact",
+    chain: "Edu Chain",
+    logo: `${baseIconsUrl}/yieldedu.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Edu Chain"],
+    module: "yieldedu/index.js",
+    twitter: "yield_edu",
+    forkedFromIds: [],
+    audit_links: [],
+    github: ["YieldEdu"],
+    listedAt: 1759424411
+  },
 ];
 export default data4;

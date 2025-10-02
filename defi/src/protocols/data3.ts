@@ -53927,6 +53927,9 @@ const data3_2: Protocol[] = [
     twitter: "DSwap",
     audit_links: [],
     listedAt: 1723632346,
+    dimensions: {
+      dexs: "diviswap"
+    }
   },
   {
     id: "4986",

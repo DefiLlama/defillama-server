@@ -28040,7 +28040,11 @@ const data4: Protocol[] = [
     module: "ultrasolid-v3/index.js",
     twitter: "ultrasolid_hl",
     parentProtocol: "parent#ultrasolid",
-    listedAt: 1757693515
+    listedAt: 1757693515,
+    dimensions: {
+      fees: "ultrasolid-v3",
+      dexs: "ultrasolid-v3"
+    }
   },
   {
     id: "6723",

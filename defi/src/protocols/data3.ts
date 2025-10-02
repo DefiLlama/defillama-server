@@ -40076,7 +40076,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Gaming",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "etherflip/index.js",

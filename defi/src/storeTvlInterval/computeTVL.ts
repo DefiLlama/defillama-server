@@ -33,7 +33,7 @@ export default async function (balances: { [address: string]: string }, timestam
     .map((address) => {
       if (+balances[address] === 0) return undefined;
       let prefix = "";
-      if (prefixMalformed(address)) return undefined
+      // if (prefixMalformed(address)) return undefined
       if (address.startsWith("0x")) {
         prefix = "ethereum:"
       } else if (!address.includes(":")) {

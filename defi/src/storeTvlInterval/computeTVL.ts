@@ -13,6 +13,16 @@ type Balances = {
   [symbol: string]: number;
 };
 
+function prefixMalformed(address: string) {
+  const parts = address.split(':')
+  if (parts.length == 2) return false
+
+  if (parts.length == 1) return true
+  if (address.indexOf(':coingecko:') != -1) return true
+  if (parts[0] == parts[1]) return true
+  return false
+}
+
 export default async function (balances: { [address: string]: string }, timestamp: "now" | number, protocol: string, staleCoins: StaleCoins) {
   replaceETHwithWETH(balances)
 
@@ -23,6 +33,7 @@ export default async function (balances: { [address: string]: string }, timestam
     .map((address) => {
       if (+balances[address] === 0) return undefined;
       let prefix = "";
+      if (prefixMalformed(address)) return undefined
       if (address.startsWith("0x")) {
         prefix = "ethereum:"
       } else if (!address.includes(":")) {

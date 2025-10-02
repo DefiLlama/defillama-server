@@ -18985,7 +18985,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1750434513,
     dimensions: {
-      options: "optfun"
+      options: "optfun",
+      fees: "optfun"
     }
   },
   {

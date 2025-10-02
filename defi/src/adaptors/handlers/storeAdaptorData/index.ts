@@ -8,12 +8,14 @@ import { PromisePool } from '@supercharge/promise-pool';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import loadAdaptorsData from "../../data";
-import { IJSON, ProtocolAdaptor, } from "../../data/types";
+import { ADAPTER_TYPES, IJSON, ProtocolAdaptor, } from "../../data/types";
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
-import { storeAdapterRecord } from "../../db-utils/db2";
+import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
+
+const recentDataByAdapterType: { [adapterType: string]: any } = {}
 
 const blockChains = Object.keys(providers)
 
@@ -31,7 +33,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   isRunFromRefillScript?: boolean
   yesterdayIdSet?: Set<string>
   todayIdSet?: Set<string>
-  runType?: 'store-all' | 'default'
+  runType?: 'store-all' | 'refill-all' | 'default' | 'refill-yesterday'
   throwError?: boolean
   checkBeforeInsert?: boolean
 }
@@ -48,6 +50,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
+
+  let recentData: any = {}
+
+  const checkAgainstRecentData = runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday'
+
+  if (checkAgainstRecentData)
+    recentData = await getRecentData(adapterType)
+
+
   // Get clean day
   let toTimestamp: number
   let fromTimestamp: number
@@ -249,6 +260,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
                 adapterType,
                 protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
+                runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
               })
             } catch (e) {
               console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
@@ -332,6 +344,19 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       }
 
       if (adapterRecord) {
+
+
+        // validate against recent data if available
+        if (checkAgainstRecentData) {
+          const validationError = adapterRecord.validateWithRecentData({ recentData: recentData[adapterRecord.id], getSignificantValueThreshold, getSpikeThreshold, })
+          if (validationError) {
+            sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record')
+            await elastic.writeLog('dimension-blocked', validationError)
+            return; // skip storing possible invalid data
+          }
+        }
+
+
         if (!isDryRun) {
 
           await storeAdapterRecord(adapterRecord)
@@ -411,4 +436,126 @@ function printData(data: any, timestamp?: number, protocolName?: string) {
 
   console.log(sdk.util.tableToString(Object.values(chainInfo)))
   console.log('\n')
+}
+
+const minValues: { [key: string]: number } = {}
+const spikeThresholds: { [key: string]: number } = {}
+const highValueKeys = new Set(['dv', 'dbv', 'doi', 'dsoi', 'dloi',])
+function getSignificantValueThreshold(key: string) {
+  if (!minValues[key]) {
+    minValues[key] = highValueKeys.has(key) ? 1e6 : 1e4 // 10k for low value keys (like fees), 1M for high value keys (like volume/OI)
+  }
+  return minValues[key]
+}
+
+function getSpikeThreshold(key: string) {
+  if (!spikeThresholds[key]) {
+    spikeThresholds[key] = highValueKeys.has(key) ? 1e7 : 1e5 // need to check for values over 10M for volumes and 100k for fees and the like
+  }
+  return spikeThresholds[key]
+}
+
+async function getRecentData(adapterType: AdapterType) {
+  if (!recentDataByAdapterType[adapterType]) recentDataByAdapterType[adapterType] = _getData()
+  return recentDataByAdapterType[adapterType]
+
+  async function _getData() {
+    const aMonthAgo = getUnixTimeNow() - 60 * 60 * 24 * 31
+    const aWeekAgo = getUnixTimeNow() - 60 * 60 * 24 * 8
+
+    const recentData: any = {}
+    try {
+      const lastMonthData = await getAllItemsAfter({ adapterType, timestamp: aMonthAgo })
+      lastMonthData.forEach((d: any) => {
+        if (!recentData[d.id]) recentData[d.id] = { records: [], dimStats: {}, hasSignificantData: false }
+        recentData[d.id].records.push(d)
+      })
+      let ids = Object.keys(recentData)
+
+      for (const protocolId of ids) {
+        const dataItem = recentData[protocolId]
+        const { dimStats, records } = dataItem
+        let hasSignificantData = false
+        if (dataItem.records.length < 5) {
+          dataItem.tooFewRecords = true
+          delete dataItem.records
+          continue; // too little data
+        }
+        records.forEach((r: any) => {
+          const aggregated = r.data.aggregated
+          const keys = Object.keys(aggregated)
+          keys.forEach((key) => {
+            const { value } = aggregated[key]
+            if (isNaN(+value) || key.startsWith('t')) return;  // skip accumulative fields
+
+            if (value > getSignificantValueThreshold(key)) hasSignificantData = true
+
+            if (!dimStats[key])
+              dimStats[key] = { hasSignificantData: false, records: [], lastWeekRecords: [], monthStats: {}, weekStats: {}, }
+
+            const item = dimStats[key]
+            item.records.push(value)
+
+
+            if (!item.hasSignificantData && value > getSignificantValueThreshold(key)) item.hasSignificantData = true
+
+            if (r.timestamp >= aWeekAgo)
+              item.lastWeekRecords.push(value)
+          })
+        })
+
+        delete dataItem.records
+        dataItem.hasSignificantData = hasSignificantData
+
+        Object.keys(dimStats).forEach((key) => {
+          const item = dimStats[key]
+
+          if (hasSignificantData) {
+            item.monthStats = calculateStats(item.records)
+            item.weekStats = calculateStats(item.lastWeekRecords)
+          }
+
+          delete item.records
+          delete item.lastWeekRecords
+        })
+      }
+
+
+      console.log(`[db] Fetched ${lastMonthData.length} records for last 30 days for ${adapterType}, ${ids.length} unique ids`)
+    } catch (e) {
+      console.error("Error in getAllDimensionsRecordsOnDate", e)
+    }
+
+    return recentData
+  }
+}
+
+/**
+ * Calculates the sum, average, and median of an array of numbers
+ * @param numbers - Array of numbers to calculate statistics for
+ * @returns Object containing sum, average, and median values
+ */
+function calculateStats(numbers: number[]) {
+  if (!numbers?.length) return { sum: 0, average: 0, median: 0, size: 0 };
+
+  // Calculate sum
+  const sum = numbers.reduce((acc, val) => acc + val, 0);
+
+  // Calculate average
+  const average = sum / numbers.length;
+
+  // Calculate median
+  numbers.sort((a, b) => a - b);
+  let median;
+
+  const mid = Math.floor(numbers.length / 2);
+  if (numbers.length % 2 === 0) {
+    // Even number of elements
+    median = (numbers[mid - 1] + numbers[mid]) / 2;
+  } else {
+    // Odd number of elements
+    median = numbers[mid];
+  }
+
+  return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
 }

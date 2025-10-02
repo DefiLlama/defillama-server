@@ -3555,8 +3555,11 @@ const data2: Protocol[] = [
       {
         message: "01 Exchange was winded down. Please withdraw your remaining assets.",
         level: "alert",
-      }
-    ]
+      },
+    ],
+    dimensions: {
+      derivatives: "01-exchange"
+    },
   },
   {
     id: "1532",
@@ -11614,7 +11617,8 @@ const data2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1697328000", "1697414400", "1722816000", "1738540800"],
         adapter: "apex"
-      }
+      },
+      "open-interest": "apex"
     }
   },
   {
@@ -16218,7 +16222,7 @@ const data2: Protocol[] = [
     id: "2076",
     name: "Fraxlend",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://app.frax.finance/fraxlend/available-pairs",
     description:
       "Fraxlend is a lending platform that allows anyone to create a market between a pair of ERC-20 tokens. Any token part of a Chainlink data feed can be lent to borrowers or used as collateral",
@@ -17311,7 +17315,7 @@ const data2: Protocol[] = [
     id: "2121",
     name: "Frax Swap",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://app.frax.finance/swap/main",
     description:
       "Fraxswap is the first constant product automated market maker with an embedded time-weighted average market maker (TWAMM) for conducting large trades over long periods of time trustlessly. It is fully permissionless and the core AMM is based on Uniswap V2.",
@@ -17996,17 +18000,17 @@ const data2: Protocol[] = [
   {
     id: "2149",
     name: "Based Next Generation",
-    address: "fantom:0x1539C63037D95f84A5981F96e43850d1451b6216",
-    symbol: "OBOL",
+    address: null,
+    symbol: "-", // dead toekn
     url: "https://next-gen.basedfinance.io",
     description:
-      "BASED Next Generation protocol is the first pegless seigniorage protocol exploring DeFi on the FTM Network. We are introducing innovative yield strategies whilst providing inclusivity for Based Finance (V1), that successfully finished emissions. Based Next Gen is a multi-token protocol that consists of the following tokens: $OBOL - PEGLESS token with elastic supply. $SMELT - protocol’s underlying Perpetual Print (PP) mechanism emitting OBOL.",
+      "BASED Next Generation protocol is the first pegless seigniorage protocol exploring DeFi on the FTM Network. We are introducing innovative yield strategies whilst providing inclusivity for Based Finance (V1), that successfully finished emissions.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/based-next-generation.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "obol",
-    cmcId: "21167",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield",
     chains: ["Fantom"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
@@ -19775,7 +19779,7 @@ const data2: Protocol[] = [
     id: "2221",
     name: "Frax Ether",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     assetToken: "FRXETH",
     url: "https://app.frax.finance/frxeth/mint",
     description:
@@ -28823,6 +28827,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/streamflow-finance/rust-sdk/blob/main/protocol_audit.pdf"],
     listedAt: 1677586293,
     github: ["streamflow-finance"],
+    dimensions: {
+      fees: "streamflow"
+    }
   },
   {
     id: "2609",

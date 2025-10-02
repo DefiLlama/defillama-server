@@ -83,13 +83,19 @@ export function buildOutdatedMessage(outdated: [string, InfoProtocol, boolean, n
     return null
   }
   const maxLengthProtocolName = outdated.reduce((max, line) => Math.max(max, line[0].length), 0)
+  const maxDisplay = 101
+  const logViewer = process.env.LOG_VIEWER_URL
+
   return `REFILLABLE
-${printOutdated(outdated.filter(p => p[2]).slice(0, 25), maxLengthProtocolName, now)}
-${outdated.filter(p => p[2]).length > 25 ? `... and ${outdated.filter(p => p[2]).length - 25} more` : ""}
+${printOutdated(outdated.filter(p => p[2]).slice(0, maxDisplay), maxLengthProtocolName, now)}
+${outdated.filter(p => p[2]).length > maxDisplay ? `... and ${outdated.filter(p => p[2]).length - maxDisplay} more` : ""}
 
 CAN'T BE REFILLED (needs fixing asap)
-${printOutdated(outdated.filter(p => !p[2]).slice(0, 25), maxLengthProtocolName, now)}
-${outdated.filter(p => !p[2]).length > 25 ? `... and ${outdated.filter(p => !p[2]).length - 25} more` : ""}`
+${printOutdated(outdated.filter(p => !p[2]).slice(0, maxDisplay), maxLengthProtocolName, now)}
+${outdated.filter(p => !p[2]).length > maxDisplay ? `... and ${outdated.filter(p => !p[2]).length - maxDisplay} more` : ""}
+
+${logViewer ? `Check error logs at ${logViewer}` : ""}
+`
 
 }
 

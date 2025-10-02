@@ -32,7 +32,7 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await PromisePool.withConcurrency(5)
+  await PromisePool.withConcurrency(13)
     .for(protocolIndexes)
     .process(async (i) => {
       const adapterKey = a[i][0];

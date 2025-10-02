@@ -90,7 +90,10 @@ const data: Protocol[] = [
     },
     dimensions: {
       fees: "curve",
-      dexs: "curve"
+      dexs: {
+        genuineSpikes: ["1758758400"],
+        adapter: "curve"
+      }
     }
   },
   {
@@ -241,7 +244,8 @@ const data: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1689292800", "1689379200", "1689465600", "1689638400", "1689811309"],
         adapter: "synthetix"
-      }
+      },
+      "open-interest": "synthetix"
     }
   },
   {
@@ -947,7 +951,8 @@ const data: Protocol[] = [
     language: "Cairo",
     dimensions: {
       fees: "dydx",
-      derivatives: "dydx"
+      derivatives: "dydx",
+      "open-interest": "dydx"
     }
   },
   {
@@ -5252,7 +5257,8 @@ const data: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1692230400"],
         adapter: "gmx-derivatives"
-      }
+      },
+      "open-interest": "gmx-derivatives"
     }
   },
   {
@@ -5753,7 +5759,7 @@ const data: Protocol[] = [
     id: "359",
     name: "Frax",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://frax.finance/",
     description:
       "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",
@@ -7597,14 +7603,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "438",
-    name: "Tokemak",
+    name: "AUTOfinance",
     address: "0x2e9d63788249371f1dfc918a52f8d799f4a38c94",
     symbol: "TOKE",
-    url: "https://www.tokemak.xyz",
+    url: "https://www.auto.finance",
     description:
-      "Tokemak Autopilot offers a new way to provide liquidity. Autopools autonomously rebalance your LP positions across a set of DEXs and correlated-assets, while keeping you composable within DeFi.",
+      "AUTOfinance maximizes returns through Autopools by autonomously routing liquidity across integrated DeFi destinations while preserving composability.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/tokemak.jpg`,
+    logo: `${baseIconsUrl}/autofinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "tokemak",
@@ -7612,7 +7618,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum"],
     module: "tokemak/index.js",
-    twitter: "TokemakXYZ",
+    twitter: "autopools",
     audit_links: ["https://docs.tokemak.xyz/developer-docs/security-and-audits"],
     treasury: "tokemak.js",
     governanceID: ["snapshot:tokemak.eth"],
@@ -19407,7 +19413,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1638568951,
     dimensions: {
       fees: "drift-protocol-derivatives",
-      derivatives: "drift-protocol-derivatives"
+      derivatives: "drift-protocol-derivatives",
+      "open-interest": "drift-protocol-derivatives"
     }
   },
   {

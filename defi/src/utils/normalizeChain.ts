@@ -3518,7 +3518,7 @@ export const chainCoingeckoIds = {
       types: ["L2"]
     },
   },
-  "Reya Network": {
+  "ReyaChain": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4407,7 +4407,7 @@ export const chainCoingeckoIds = {
     url: "https://prom.io/",
     chainId: 277
   },
-  "Goat": {
+  "GOAT": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4821,6 +4821,9 @@ export const chainCoingeckoIds = {
     twitter: "Somnia_Network",
     url: "https://somnia.network/",
     chainId: 5031,
+    dimensions: {
+      fees: "somnia"
+    }
   },
   "Orderly": {
     geckoId: null,
@@ -4920,10 +4923,29 @@ export const chainCoingeckoIds = {
     symbol: "XPL",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "PlasmaFDN",
+    twitter: "Plasma",
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,
+  },
+  "Constellation": {
+    geckoId: "constellation-labs",
+    symbol: "DAG",
+    cmcId: "2868",
+    categories: [],
+    twitter: "Conste11ation",
+    url: "https://constellationnetwork.io/",
+    github: ["Constellation-Labs"],
+  },
+  "Mezo": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "MezoNetwork",
+    url: "https://mezo.org",
+    github: ["mezo-org"],
+    chainId: 31612,
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -5137,7 +5159,8 @@ const chainLabelMap = {
   "soon_base": "soonBase",
   "camp": "Camp",
   "off_chain": "Off Chain",
-  "zklighter": "zkLighter"
+  "zklighter": "zkLighter",
+  "goat": "Goat"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5188,6 +5211,8 @@ const newChainLabelMap = {
   "echelon_initia": "Echelon Initia",
   "proton": "XPR Network",
   "camp": "Camp Network",
+  "reya": "ReyaChain",
+  "goat": "GOAT"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

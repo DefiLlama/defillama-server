@@ -4377,7 +4377,8 @@ const data3_1: Protocol[] = [
           "1749600000"
         ],
         adapter: "rabbitx"
-      }
+      },
+      "open-interest": "rabbitx"
     }
   },
   {
@@ -6663,7 +6664,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1691625600"],
         adapter: "satori"
-      }
+      },
+      "open-interest": "satori"
     }
   },
   {
@@ -15743,7 +15745,8 @@ const data3_1: Protocol[] = [
     listedAt: 1691622170,
     dimensions: {
       fees: "gmx-v2",
-      derivatives: "gmx-v2-gmx-v2-trade"
+      derivatives: "gmx-v2-gmx-v2-trade",
+      "open-interest": "gmx-v2-gmx-v2-trade"
     }
   },
   {
@@ -15928,7 +15931,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#swapbased",
     listedAt: 1691759429,
     dimensions: {
-      derivatives: "swapbased-perps"
+      derivatives: "swapbased-perps",
+      "open-interest": "swapbased-perps"
     }
   },
   {
@@ -19562,7 +19566,8 @@ const data3_1: Protocol[] = [
     listedAt: 1695037950,
     dimensions: {
       fees: "bmx",
-      derivatives: "bmx-derivatives"
+      derivatives: "bmx-derivatives",
+      "open-interest": "bmx-derivatives"
     }
   },
   {
@@ -19709,14 +19714,15 @@ const data3_1: Protocol[] = [
     deadUrl: true,  },
   {
     id: "3537",
-    name: "THENA ALPHA",
+    name: "THENA PERPS",
+    previousNames: ["THENA ALPHA"],
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://alpha.thena.fi",
     description:
       "ALPHA is THENA's intent-based derivatives trading platform powered by SYMMIO, offering over 100 crypto assets for trading with up to 60x leverage.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena-alpha.jpg`,
+    logo: `${baseIconsUrl}/thena-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19730,7 +19736,8 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#thena",
     dimensions: {
       fees: "thena-perp",
-      derivatives: "thena-perp"
+      derivatives: "thena-perp",
+      'open-interest': "thena-perp",
     }
   },
   {
@@ -21294,7 +21301,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1697328000", "1697414400"],
         adapter: "contango"
-      }
+      },
+      "open-interest": "contango"
     }
   },
   {
@@ -31169,7 +31177,8 @@ const data3_1: Protocol[] = [
     listedAt: 1705261389,
     dimensions: {
       fees: "fwx",
-      derivatives: "fwx"
+      derivatives: "fwx",
+      "open-interest": "fwx"
     }
   },
   {
@@ -32162,7 +32171,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1706140800"],
         adapter: "dydx-v4"
-      }
+      },
+      "open-interest": "dydx-v4"
     }
   },
   {
@@ -32457,7 +32467,8 @@ const data3_1: Protocol[] = [
     listedAt: 1706560048,
     dimensions: {
       fees: "jupiter-perpetual",
-      derivatives: "jupiter-perpetual"
+      derivatives: "jupiter-perpetual",
+      "open-interest": "jupiter-perpetual"
     }
   },
   {
@@ -33200,7 +33211,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1743552000"],
         adapter: "avantis"
-      }
+      },
+      "open-interest": "avantis"
     }
   },
   {
@@ -35900,7 +35912,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709324603,
     dimensions: {
       fees: "synfutures-v3",
-      derivatives: "synfutures-v3"
+      derivatives: "synfutures-v3",
+      "open-interest": "synfutures-v3"
     }
   },
   {
@@ -38312,7 +38325,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1712534400", "1712620800"],
         adapter: "myx-finance"
-      }
+      },
+      "open-interest": "myx-finance"
     }
   },
   {
@@ -40676,7 +40690,12 @@ const data3_2: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
-      }
+      },
+      {
+        name: "DIA",
+        type: "Secondary",
+        proof: ["https://explorer.hiro.so/txid/SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.alex-oracle-v1-1?chain=mainnet","https://github.com/DefiLlama/defillama-server/pull/10672"]
+      },
     ],
     listedAt: 1712075269,
   },
@@ -40729,7 +40748,7 @@ const data3_2: Protocol[] = [
     id: "4423",
     name: "Frax AMO",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-    symbol: "FXS",
+    symbol: "FRAX",
     url: "https://facts.frax.finance/fraxlend/amo",
     description:
       "Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
@@ -41277,7 +41296,8 @@ const data3_2: Protocol[] = [
     listedAt: 1712327109,
     dimensions: {
       fees: "synthetix-v3",
-      derivatives: "synthetix-v3"
+      derivatives: "synthetix-v3",
+      "open-interest": "synthetix-v3"
     }
   },
   {
@@ -43055,7 +43075,7 @@ const data3_2: Protocol[] = [
     twitter: "HelixMarkets",
     forkedFrom: [],
     dimensions: {
-      dexs: "helix-markets"
+      dexs: "helix-markets",
     }
   },
   {
@@ -43120,8 +43140,14 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1714088562,
     dimensions: {
-      fees: "aerodrome-slipstream",
-      dexs: "aerodrome-slipstream"
+      fees: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"],
+      },
+      dexs: {
+        adapter: "aerodrome-slipstream",
+        genuineSpikes: ["1757548800"]
+      }
     }
   },
   {
@@ -44371,6 +44397,7 @@ const data3_2: Protocol[] = [
     deadUrl: true,
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
+
   },
   {
     id: "4579",
@@ -50072,7 +50099,8 @@ const data3_2: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "apex-omni"
-      }
+      },
+      "open-interest": "apex-omni"
     }
   },
   {
@@ -52641,7 +52669,8 @@ const data3_2: Protocol[] = [
     listedAt: 1722042021,
     dimensions: {
       fees: "ostium",
-      derivatives: "ostium"
+      derivatives: "ostium",
+      "open-interest": "ostium"
     }
   },
   /*
@@ -53713,7 +53742,7 @@ const data3_2: Protocol[] = [
     url: "https://app.reya.xyz/",
     description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
-    logo: `${baseIconsUrl}/reya-perps-dex.png`,
+    logo: `${baseIconsUrl}/reya-dex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -53729,7 +53758,8 @@ const data3_2: Protocol[] = [
     listedAt: 1723560145,
     dimensions: {
       fees: "reya-dex",
-      derivatives: "reya-dex"
+      derivatives: "reya-dex",
+      "open-interest": "reya-dex"
     }
   },
   {
@@ -54430,7 +54460,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "circle",
     audit_links: [],
-    stablecoins: ["usdc"],
+    stablecoins: ["usd-coin"],
     dimensions: {
       fees: "circle"
     }
@@ -54455,7 +54485,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "Tether_to",
     audit_links: [],
-    stablecoins: ["usdt"],
+    stablecoins: ["tether"],
     dimensions: {
       fees: "tether"
     }
@@ -56003,7 +56033,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Injective"],
     module: "injective-orderbook/index.js",
-    twitter: "HelixApp_",
+    twitter: "HelixMarkets",
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -56020,7 +56050,11 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#helix",
     listedAt: 1724923885,
     dimensions: {
-      derivatives: "helix-helix-perp"
+      derivatives: {
+        adapter: "helix-helix-perp",
+        genuineSpikes: ["1759104000"],
+      },
+      "open-interest": "helix-helix-perp"
     }
   },
   {
@@ -58495,7 +58529,11 @@ const data3_2: Protocol[] = [
     twitter: "trylimitless",
     forkedFrom: [],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://x.com/kirkoyaa/status/1858123297788920123 , https://x.com/PythNetwork/status/1857445973431300419
-    listedAt: 1727294687
+    listedAt: 1727294687,
+    dimensions: {
+      dexs: "limitless-exchange",
+      fees: "limitless-exchange",
+    }
   },
   {
     id: "5182",
@@ -59887,7 +59925,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Treasury Bills"],
+    category: "Stablecoin Issuer",
     chains: ["Ethereum"],
     module: "m0/index.js",
     twitter: "m0foundation",
@@ -63091,9 +63129,9 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://blazingapp.com",
-    description: "Buy/Sell any coin via WebApp or Telegram. Synced, Audited, Verified, Fast - The Ultimate Trading Suite",
+    description: "Buy/Sell any coin via WebApp or Telegram. Synced, audited, verified, multi-chain trading suite.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blazing-bot.jpg`,
+    logo: `${baseIconsUrl}/blazingapp.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -64730,6 +64768,10 @@ const data3_2: Protocol[] = [
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
     listedAt: 1733089195,
+    dimensions: {
+      fees: "hyperliquid-hlp"
+    },
+    excludeTvlFromParent: true,  // it is doublecounted because hl bridge tvl is included in the parent protcols
   },
   {
     id: "5449",
@@ -65833,7 +65875,8 @@ const data3_2: Protocol[] = [
     listedAt: 1734099051,
     dimensions: {
       fees: "mars-perp",
-      derivatives: "mars-perp"
+      derivatives: "mars-perp",
+      "open-interest": "mars-perp"
     }
   },
   {
@@ -66031,7 +66074,9 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1681846146,
     dimensions: {
-      derivatives: "hyperliquid-perp"
+      derivatives: "hyperliquid-perp",
+      fees: "hyperliquid-perp",   // now we count separately perps and spot
+      "open-interest": "hyperliquid-perp"
     }
   },
   {
@@ -66519,7 +66564,8 @@ const data3_2: Protocol[] = [
     module: "bucket-farm/index.js",
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
-    listedAt: 1734642540
+    listedAt: 1734642540,
+    deprecated: true,
   },
   {
     id: "5531",

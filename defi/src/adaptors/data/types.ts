@@ -124,6 +124,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     // [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
+    [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -167,10 +168,14 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyNotionalVolume,
     ],
-    [AdapterType.DERIVATIVES]: [
+    // [AdapterType.DERIVATIVES]: [
+    //     AdaptorRecordType.shortOpenInterestAtEnd,
+    //     AdaptorRecordType.longOpenInterestAtEnd,
+    //     AdaptorRecordType.openInterestAtEnd
+    // ],
+    [AdapterType.OPEN_INTEREST]: [
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,
-        AdaptorRecordType.openInterestAtEnd
     ]
 }
 

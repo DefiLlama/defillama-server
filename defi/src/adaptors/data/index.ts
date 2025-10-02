@@ -124,10 +124,17 @@ function addImportsDataToMapping() {
 
   Object.keys(dimensionsConfig).forEach((adapterType) => {
     if (adapterType === AdapterType.DERIVATIVES) return; // derivatives use dexs imports
+    if (adapterType === AdapterType.OPEN_INTEREST) return; // OI prioritizes dexs imports (if present) over rest (other than oi itself), so first, we need to build dex imports
+
     dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
   })
 
+
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
+
+  // the order matters, wait for other importd to be built before running this
+  dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
+
 }
 
 function getDimensionsConfig() {
@@ -142,9 +149,13 @@ function getDimensionsConfig() {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
         [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume],
+      },
+    },
+    [AdapterType.OPEN_INTEREST]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd],
         [AdaptorRecordType.shortOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.shortOpenInterestAtEnd],
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
-        [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd]
       },
     },
     [AdapterType.FEES]: {

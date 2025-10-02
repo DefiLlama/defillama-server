@@ -276,6 +276,7 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
   })
 
   childProtocolsTvls.map((protocolData: any) => {
+    if (protocolData.excludeTvlFromParent) return;
     const excludedSet = new Set<string>()
     if (protocolData.tokensExcludedFromParent) {
       Object.values(protocolData.tokensExcludedFromParent).flat().forEach((token: any) => {

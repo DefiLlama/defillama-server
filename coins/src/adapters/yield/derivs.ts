@@ -544,13 +544,37 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     address: "0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94",
   },
+  sGHO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getExchangeRate() external view returns (uint216)",
+        target: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+    address: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
+  }, 
+  RYT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:latestNAV",
+        target: "0x75bA0077D78c78e24018C2dFDC4722493b281014",
+      });
+      return rate / 1e4;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x1D06aa46994f2aba30F6eeD46b315664460a709A",
+  }
 };
 
 export async function derivs(timestamp: number) {
   return Promise.all(
     Object.keys(configs).map((k: string) =>
       deriv(timestamp, k, configs[k]).catch((e) => {
-        console.log(`API deriv ${k} failed with ${e}`);
+        console.log(`API deriv ${k} failed with ${e?.message ?? e}`);
       }),
     ),
   );

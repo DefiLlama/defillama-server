@@ -2,6 +2,8 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { AdaptorRecordType, IJSON, ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
+import { getUnixTimeNow } from "../../api2/utils/time"
+import { humanizeNumber } from "@defillama/sdk"
 
 export function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -22,6 +24,12 @@ type DataJSON = {
   },
 }
 
+type ValidationOptions = {
+  getSignificantValueThreshold: (s: string) => number,
+  getSpikeThreshold?: (s: string) => number,
+  recentData: any,
+}
+
 export class AdapterRecord2 {
   data: DataJSON
   timeS: string
@@ -31,8 +39,9 @@ export class AdapterRecord2 {
   breakdownByLabel?: IJSON<IJSON<number>>
   breakdownByLabelByChain?: IJSON<IJSON<IJSON<number>>>
   id: string
+  name?: string
 
-  constructor({ data, adaptorId, timestamp, adapterType, breakdownByLabel, breakdownByLabelByChain, }: {
+  constructor({ data, adaptorId, timestamp, adapterType, breakdownByLabel, breakdownByLabelByChain, name }: {
     data: DataJSON,
     adaptorId: string,
     timestamp: number,
@@ -40,6 +49,7 @@ export class AdapterRecord2 {
     protocolType?: ProtocolType,
     breakdownByLabel?: IJSON<IJSON<number>>
     breakdownByLabelByChain?: IJSON<IJSON<IJSON<number>>>
+    name?: string
   }) {
     this.data = data
     this.timeS = getTimestampString(timestamp)
@@ -48,6 +58,7 @@ export class AdapterRecord2 {
     this.id = adaptorId
     this.breakdownByLabel = breakdownByLabel
     this.breakdownByLabelByChain = breakdownByLabelByChain
+    this.name = name
   }
 
   static formAdaptarRecord2({ jsonData, protocolType, adapterType, protocol, }: {
@@ -80,7 +91,7 @@ export class AdapterRecord2 {
       return null
     }
 
-    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, breakdownByLabel: jsonData.breakdownByLabel, breakdownByLabelByChain: jsonData.breakdownByLabelByChain })
+    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, breakdownByLabel: jsonData.breakdownByLabel, breakdownByLabelByChain: jsonData.breakdownByLabelByChain, name: protocol.name })
 
 
     function validateRecord(record: any) {
@@ -155,5 +166,127 @@ export class AdapterRecord2 {
       bl: this.breakdownByLabel,
       blc: this.breakdownByLabelByChain,
     }
+  }
+
+  validateWithRecentData(options: ValidationOptions): any {
+    const spikeError = this.checkSpikes(options)
+    if (spikeError) return spikeError
+    return null
+  }
+
+  checkSpikes(options: ValidationOptions): any {
+    const { recentData, getSpikeThreshold, getSignificantValueThreshold, } = options
+    const aggData: any = this.data.aggregated
+    const isDatapointOlderThanAMonth = (getUnixTimeNow() - this.timestamp) > 31 * 24 * 60 * 60
+    const hasTooFewDatapoints = !recentData || recentData.tooFewRecords || isDatapointOlderThanAMonth
+
+    if (hasTooFewDatapoints) { // we dont have enough data to compare with, do general spike check
+
+
+      for (const dataType of Object.keys(aggData)) {
+        if (dataType.startsWith('t')) continue;  // skip accumulative types
+
+        const { value }: { value: number } = aggData[dataType]
+        const triggerValue = getSpikeThreshold!(dataType)
+
+        if (value >= triggerValue) {
+          return this.getValidationError({
+            message: `${dataType}: ${humanizeNumber(value)} >= ${humanizeNumber(triggerValue)} (default threshold)`,
+            type: 'spike',
+            metadata: {
+              hasRecentData: recentData,
+              tooFewDataPoints: recentData?.tooFewDataPoints,
+              isDatapointOlderThanAMonth,
+            }
+          })
+        }
+      }
+
+      return;
+    }
+
+
+    // validate using past data
+
+
+    for (const dataType of Object.keys(aggData)) {
+      if (dataType.startsWith('t')) continue;  // skip accumulative types
+
+      const { value }: { value: number } = aggData[dataType]
+      const triggerValue = getSpikeThreshold!(dataType)
+      const minSignificantValue = getSignificantValueThreshold(dataType)
+
+      if (value < minSignificantValue) continue; // no need to check for spikes if value is below base level
+
+      const monthStats = recentData?.dimStats?.[dataType]?.monthStats ?? {
+        highest: minSignificantValue
+      }
+
+
+      // normally, we call it a spike if it is 5x the highest datapoint in the last month
+      // but if value is higher than baseline spike config (say 10M for dex volume), then we treat 3x a spike
+      let spikeThresholdRatio = 5
+      let currentRatio = value / monthStats.highest
+      if (monthStats.highest > triggerValue) spikeThresholdRatio = 3
+
+      if (currentRatio >= spikeThresholdRatio) {
+        return this.getValidationError({
+          message: `${dataType}: ${humanizeNumber(value)} > ${humanizeNumber(monthStats.highest)} (highest) (ratio: ${Number(currentRatio).toFixed(2)}x)`,
+          type: 'spike',
+        })
+      }
+    }
+  }
+
+  checkDrop(options: ValidationOptions): any {
+    const { recentData, } = options
+    const aggData: any = this.data.aggregated
+    const isDatapointOlderThanAMonth = (getUnixTimeNow() - this.timestamp) > 31 * 24 * 60 * 60
+
+
+    // skip the drop check if:
+    //  - recent data is missing
+    //  - too few datapoints
+    //  - it is a small protocol 
+    //  - the datapoint is older than a month
+    const skipCheck = !recentData || recentData.tooFewRecords || !recentData.hasSignificantData ||isDatapointOlderThanAMonth
+
+    if (skipCheck) return;
+
+
+    // validate using past data
+
+
+    for (const dataType of Object.keys(aggData)) {
+      if (dataType.startsWith('t')) continue;  // skip accumulative types
+
+      let { value }: { value: number } = aggData[dataType]
+      const { monthStats, hasSignificantData } = recentData?.dimStats?.[dataType] ?? {}
+      if (!monthStats || !hasSignificantData || !monthStats.lowest || !monthStats.median) continue; // no data to compare with or no significant data for given metric in the past
+
+      if (value < 500) value = 500 // treat small values as 500 to avoid false positives
+      const isDrop = value / monthStats.lowest  < 1/3 // current value is less than 33% of the lowest value in the last month
+
+      if (isDrop) {
+        return this.getValidationError({
+          message: `${dataType}: ${humanizeNumber(value)} < ${humanizeNumber(monthStats.lowest)} (ratio: ${Number(value/monthStats.lowest).toFixed(2)}x)`,
+          type: 'drop',
+        })
+      }
+    }
+  }
+
+  getValidationError(data: { message: string, metadata?: any, type?: string }) {
+    return {
+      ...data,
+      reportTime: getUnixTimeNow() * 1000,  // easier to deal with ms in ES
+      adapterType: this.adapterType,
+      id: this.id,
+      timeS: this.timeS,
+      timestamp: this.timestamp,
+      name: this.name,
+      currentData: JSON.stringify({ data: this.data, blc: this.breakdownByLabelByChain, bl: this.breakdownByLabel }),
+    }
+
   }
 }

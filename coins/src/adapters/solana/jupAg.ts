@@ -8,38 +8,38 @@ import { sliceIntoChunks } from '@defillama/sdk/build/util';
 import axios from 'axios'
 import { addToDBWritesList } from '../utils/database';
 
-const additionalTokens = [
-  'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx', 
-  'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu', 
-  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj', 
-  'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o', 
-  '5fKr9joRHpioriGmMgRVFdmZge8EVUTbrWyxDVdSrcuG', 
-  'B8GKqTDGYc7F6udTHjYeazZ4dFCRkrwK2mBQNS4igqTv', 
-  'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu', 
-  'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit', 
+const whitelistedTokens = new Set([
+  'sctmB7GPi5L2Q5G9tUSzXvhZ4YiDMEGcRov9KfArQpx',
+  'roxDFxTFHufJBFy3PgzZcgz6kwkQNPZpi9RfpcAv4bu',
+  '4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj',
+  // 'HN8GGgzBFvuePPL3DGPg7uuq2dVgLApnNcW4pxY9a11o',
+  '5fKr9joRHpioriGmMgRVFdmZge8EVUTbrWyxDVdSrcuG',
+  'B8GKqTDGYc7F6udTHjYeazZ4dFCRkrwK2mBQNS4igqTv',
+  'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu',
+  'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit',
   'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe'
-]
+])
 
 async function getTokensWithCGMapping() {
   const tokens = (await bridgedTokens()).map((token) => token.from.replace('solana:', ''));
   return new Set(tokens)
 }
 
-export async function jupAg(timestamp: number) {
+async function _jupAg(timestamp: number) {
   if (timestamp != 0) throw new Error('jupAg adapter only supports timestamp 0')
-  const tokens = await getTokensWithCGMapping()
+  // const tokens = await getTokensWithCGMapping()
   let lavaTokens = await getLavaTokens()
-  lavaTokens = additionalTokens // [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]
+  lavaTokens = [...whitelistedTokens] // [...additionalTokens, ...lavaTokens.filter((token) => !tokens.has(token))]
   const lavaTokensPK = lavaTokens.map(i => new PublicKey(i))
   const symbolMap = await getTokenSymbolMap(lavaTokens)
 
   const writes: Write[] = [];
   const connection = await getConnection()
-  const chunks = sliceIntoChunks(lavaTokensPK, 99)
+  const chunks = sliceIntoChunks(lavaTokensPK, 49)
   for (const chunk of chunks) {
     const { value } = await connection.getMultipleParsedAccounts(chunk)
     const keyStr = chunk.join(',')
-    const jupCall = `https://lite-api.jup.ag/price/v2?ids=${keyStr}&showExtraInfo=true`
+    const jupCall = `https://lite-api.jup.ag/price/v3?ids=${keyStr}&showExtraInfo=true`
     const { data: { data } } = await axios.get(jupCall)
     const tokenData = [] as any
     chunk.forEach((pk, i) => {
@@ -55,7 +55,7 @@ export async function jupAg(timestamp: number) {
         symbol,
         price: +priceData.price,
         decimals: info.decimals,
-        confidence: priceData.extraInfo.confidenceLevel,
+        // confidence: priceData.extraInfo.confidenceLevel,
         sol10Sell: priceData.extraInfo.depth.sellPriceImpactRatio.depth['10'],
       })
 
@@ -64,6 +64,31 @@ export async function jupAg(timestamp: number) {
     })
 
   }
+
+
+  return writes;
+}
+
+
+export async function jupAg(timestamp: number) {
+  if (timestamp != 0) throw new Error('jupAg adapter only supports timestamp 0')
+
+  const writes: Write[] = []
+
+  const { data } = await axios.get('https://lite-api.jup.ag/tokens/v2/tag?query=verified')
+
+  data.forEach((i: any) => {
+    const isWhitelisted = whitelistedTokens.has(i.id) || i.tags?.includes('jup-lend-earn')
+    if (!isWhitelisted) {
+      if (!(i.mcap > 5_000_000)) return;  // minimum mcap 5M
+      if (!(i.liquidity > 50_000)) return; // minimum liquidity 50k
+      if (i.mcap > 5e7 && i.liquidity < 100_000) return; // if mcap > 50M, min liquidity 100k
+      if (i.mcap > 1e8 && i.liquidity < 200_000) return; // if mcap > 100M, min liquidity 200k
+      if (i.mcap > 2e8 && i.liquidity < 400_000) return; // if mcap > 200M, min liquidity 500k
+    }
+    addToDBWritesList(writes, 'solana', i.id, i.usdPrice, i.decimals, i.symbol, timestamp, 'jup-ag', 0.9)
+  })
+
 
 
   return writes;

@@ -8,7 +8,7 @@ import {
   Input,
   Flex,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 import './App.css';
@@ -23,6 +23,7 @@ const App = () => {
 
   const [output, setOutput] = useState('');
   const [isConnected, setIsConnected] = useState(false);
+  const [showDebugLogs, setShowDebugLogs] = useState(true);
   const wsRef = useRef(null);
   const outputRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -256,13 +257,21 @@ const App = () => {
             Restart Server
           </Button>
 
-
+{/* 
           <Button
             style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
             icon={<ClearOutlined />}
             onClick={clearOutput}
           >
             Clear Output
+          </Button> */}
+
+          <Button
+            style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
+            onClick={() => setShowDebugLogs(!showDebugLogs)}
+            icon={showDebugLogs ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+          >
+            {showDebugLogs ? 'Hide Output' : 'Show Output'}
           </Button>
 
           <Button
@@ -309,8 +318,9 @@ const App = () => {
               {activeTabKey === 'misc' && getMiscOutputTable()}
 
 
-              {output && (<Divider>Console Output</Divider>)}
+              {output && showDebugLogs && (<Divider>Console Output</Divider>)}
               <div
+                style={{ display: output && showDebugLogs ? 'block' : 'none' }}
                 ref={outputRef}
                 className="output-container"
               >

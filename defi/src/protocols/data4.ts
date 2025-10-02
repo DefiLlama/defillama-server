@@ -16255,7 +16255,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "p2p-lending/index.js",
+    module: "SMARDEX-P2P-Lending/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
     listedAt: 1747967378,

@@ -8,7 +8,10 @@ console.log(process.version);
 import adapters from "../adapters/index";
 console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";
-// import setEnvSecrets from "../utils/shared/setEnvSecrets";
+import { getR2JSONString, storeR2JSONString } from "../utils/r2";
+import { sendMessage } from "../../../defi/src/utils/discord";
+import { llamaRole } from "../utils/shared/constants";
+import { getCurrentUnixTimestamp } from "../utils/date";
 
 console.log("imports successful");
 
@@ -21,9 +24,9 @@ function shuffleArray(array: number[]) {
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
+const countCacheFilename = 'defiCoinsCount';
 
 async function storeDefiCoins() {
-  // await setEnvSecrets();
   process.env.tableName = "prod-coins-table";
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
@@ -32,6 +35,7 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
+  let count = 0
   await PromisePool.withConcurrency(13)
     .for(protocolIndexes)
     .process(async (i) => {
@@ -45,6 +49,7 @@ async function storeDefiCoins() {
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
+        count += resultsWithoutDuplicates.length;
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
             batchWriteWithAlerts(
@@ -73,6 +78,11 @@ async function storeDefiCoins() {
       }
       console.timeEnd(timeKey);
     });
+    const countCache = await getR2JSONString(countCacheFilename);
+    if (!countCache?.count || count < countCache.count * 1.1) {
+      await sendMessage(`${llamaRole} defi coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
+    }
+    await storeR2JSONString(countCacheFilename, JSON.stringify({ count, timestamp: getCurrentUnixTimestamp() }));
   console.log("All done");
   process.exit();
 }

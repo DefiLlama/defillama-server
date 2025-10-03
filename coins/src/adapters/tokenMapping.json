@@ -10869,6 +10869,11 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    },
+    "0x531a654d1696ed52e7275a8cede955e82620f99a": {
+      "to": "coingecko#hydrated-dollar",
+      "decimals": 18,
+      "symbol": "HOLLAR"
     }
   },
   "coti": {
@@ -11906,8 +11911,13 @@
       "decimals": 6,
       "symbol": "uusdc.figure"
     },
+    "ueur.trading": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "ueur.trading"
+    },
     "uylds.fcc": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#ylds",
       "decimals": 6,
       "symbol": "uylds.fcc"
     },
@@ -11956,45 +11966,10 @@
       "decimals": 6,
       "symbol": "ureit.figure"
     },
-    "SOL": {
-      "to": "coingecko#solana",
-      "decimals": 0,
-      "symbol": "SOL"
-    },
-    "ETH": {
-      "to": "coingecko#ethereum",
-      "decimals": 0,
-      "symbol": "ETH"
-    },
-    "USDT": {
-      "to": "coingecko#tether",
-      "decimals": 0,
-      "symbol": "USDT"
-    },
-    "BTC": {
-      "to": "coingecko#bitcoin",
-      "decimals": 0,
-      "symbol": "BTC"
-    },
-    "USDC": {
-      "to": "coingecko#usd-coin",
-      "decimals": 0,
-      "symbol": "USDC"
-    },
-    "USD": {
-      "to": "coingecko#usd-coin",
-      "decimals": 0,
-      "symbol": "USD"
-    },
-    "YLDS": {
-      "to": "coingecko#usd-coin",
-      "decimals": 0,
-      "symbol": "YLDS"
-    },
-    "pm.sale.pool.3dxq3fk9llvhrqqwhodiap": {
-      "to": "coingecko#usd-coin",
-      "decimals": 0,
-      "symbol": "pm.sale.pool.3dxq3fk9llvhrqqwhodiap"
+    "FIGR_HELOC": {
+      "to": "coingecko#figure-heloc",
+      "decimals": 3,
+      "symbol": "FIGR_HELOC"
     }
   },
   "bitci": {
@@ -12231,6 +12206,13 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0"
+    }
+  }, 
+  "gatelayer": {
+    "0x6803b8e93b13941f6b73b82e324b80251b3de338": {
+      "to": "coingecko#gatechain-token",
+      "decimals": 18,
+      "symbol": "WGT"
     }
   }
 }

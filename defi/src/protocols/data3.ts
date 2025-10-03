@@ -53927,6 +53927,9 @@ const data3_2: Protocol[] = [
     twitter: "DSwap",
     audit_links: [],
     listedAt: 1723632346,
+    dimensions: {
+      dexs: "diviswap"
+    }
   },
   {
     id: "4986",
@@ -60660,7 +60663,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/defxcode/defx-contract/blob/main/DefxBridgeAuditReport.pdf"],
     listedAt: 1729687090,
     dimensions: {
-      derivatives: "defx"
+      derivatives: "defx",
+      fees: "defx",
+      "open-interest": "defx"
     }
   },
   {

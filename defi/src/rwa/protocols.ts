@@ -724,7 +724,7 @@ export const metadata: { [id: string]: Characteristics } = {
     kyc: false,
     transferable: true,
     selfCustody: true,
-  }, 
+  },
   "6789": {
     symbols: ["USX"],
     matchExact: true,

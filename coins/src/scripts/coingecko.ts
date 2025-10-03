@@ -33,7 +33,7 @@ const killTimeout = setTimeout(() => {
 killTimeout.unref();
 
 let count = 0;
-enum COIN_TYPES {
+export enum COIN_TYPES {
   over100m = "over100m",
   over10m = "over10m",
   over1m = "over1m",
@@ -495,7 +495,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     if (!countCache?.count || count < countCache.count * 1.1) {
       await sendMessage(`${llamaRole} coingecko ${hourly} ${coinType} coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
     }
-    await storeR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`, JSON.stringify({ count }));
+    await storeR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`, JSON.stringify({ count, timestamp: getCurrentUnixTimestamp() }));
 
   } catch (e) {
     console.error("Error in coingecko script");

@@ -10869,6 +10869,11 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    },
+    "0x531a654d1696ed52e7275a8cede955e82620f99a": {
+      "to": "coingecko#hydrated-dollar",
+      "decimals": 18,
+      "symbol": "HOLLAR"
     }
   },
   "coti": {

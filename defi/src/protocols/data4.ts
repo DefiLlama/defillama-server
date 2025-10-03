@@ -16882,6 +16882,14 @@ const data4: Protocol[] = [
     twitter: "yearnfi",
     parentProtocol: "parent#yearn",
     listedAt: 1748533355,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/katana/earn"],
+        chains: [{chain: "Katana"}, {chain: "Base"}]
+      }
+    ],
     dimensions: {
       fees: "yearn-curating"
     }

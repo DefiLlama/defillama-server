@@ -21,6 +21,7 @@ import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import axios from "axios";
+import { getR2JSONString, storeR2JSONString } from "../utils/r2";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -31,6 +32,7 @@ const killTimeout = setTimeout(() => {
 // Make sure the timeout doesn't prevent the Node.js process from exiting naturally
 killTimeout.unref();
 
+let count = 0;
 enum COIN_TYPES {
   over100m = "over100m",
   over10m = "over10m",
@@ -60,6 +62,7 @@ async function storeCoinData(coinData: Write[]) {
       adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
+  count += items.length;
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
@@ -79,6 +82,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     confidence: c.confidence,
     volume: c.volume,
   }));
+  count += items.length;
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => ({
@@ -362,6 +366,7 @@ async function getAndStoreHourly(
       confidence: 0.99,
     }));
 
+    count += items.length;
   await Promise.all([
     produceKafkaTopics(
       items.map(
@@ -485,6 +490,13 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
     }
     await Promise.all(promises);
+
+    const countCache = await getR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`);
+    if (!countCache?.count || count < countCache.count * 0.9) {
+      await sendMessage(`Coingecko ${hourly} ${coinType} coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
+    }
+    await storeR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`, JSON.stringify({ count }));
+    
   } catch (e) {
     console.error("Error in coingecko script");
     console.error("Error type:", typeof e);

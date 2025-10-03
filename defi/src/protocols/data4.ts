@@ -15569,7 +15569,13 @@ const data4: Protocol[] = [
           "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
           "https://oracles.euler.finance/130/",
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{ chain: "Unichain" }, { chain: "Katana" }],
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/polygon/earn",],
+        chains: [{ chain: "Polygon" }],
       },
     ],
     listedAt: 1747734127,
@@ -15900,6 +15906,12 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Unichain" }],
       },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
+        chains: [{chain: "Katana"}]
+      }
     ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",

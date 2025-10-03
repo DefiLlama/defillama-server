@@ -12202,5 +12202,12 @@
       "decimals": 8,
       "symbol": "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0"
     }
+  }, 
+  "gatelayer": {
+    "0x6803b8e93b13941f6b73b82e324b80251b3de338": {
+      "to": "coingecko#gatechain-token",
+      "decimals": 18,
+      "symbol": "WGT"
+    }
   }
 }

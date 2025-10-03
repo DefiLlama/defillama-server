@@ -132,7 +132,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         SK: 0,
       })),
     )
-  ).filter((c) => c.confidence == 0.99);
+  ).filter((c) => !c.adapter && c.confidence == 0.99);
 
   const deleteStaleKeysPromise = DELETE(
     staleEntries.map((e) => ({
@@ -460,19 +460,17 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
         coins.map((coin) => coin.id),
         coinType,
       );
-      coins = coins.filter((coin) => coin.id == 'ubtc');
-      if (!coins.length) process.exit(0)
-      // coins = coins.filter((coin) => {
-      //   const metadata = metadatas[coin.id];
-      //   if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
-      //   if (hourly) {
-      //     return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
-      //   }
-      //   return (
-      //     metadata.coinType === coinType ||
-      //     metadata.coinType === COIN_TYPES.over100m
-      //   ); // always include over100m coins
-      // });
+      coins = coins.filter((coin) => {
+        const metadata = metadatas[coin.id];
+        if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+        if (hourly) {
+          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+        }
+        return (
+          metadata.coinType === coinType ||
+          metadata.coinType === COIN_TYPES.over100m
+        ); // always include over100m coins
+      });
     }
     console.log(
       `Fetching prices for ${coins.length} coins`,

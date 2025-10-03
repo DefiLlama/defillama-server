@@ -79,7 +79,7 @@ export async function fetchCgPriceData(
   return await retryCoingeckoRequest(
     `simple/price?ids=${coinIds.join(
       ",",
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true&precision=full`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
     10,
     log,
   );

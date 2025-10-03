@@ -29865,5 +29865,26 @@ const data4: Protocol[] = [
     github: ["YieldEdu"],
     listedAt: 1759424411
   },
+  {
+    id: "6803",
+    name: "Kona Stableswap",
+    address: null,
+    symbol: "-",
+    url: "https://kona.surf/",
+    description: "Kona's DEX infrastructure is built on top of KittyPunch's PunchSwap and StableKitty protocols.",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/kona-stableswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Abstract"],
+    module: "kittypunch-kona-stableswap/index.js",
+    twitter: "KonaDeFi",
+    forkedFromIds: [],
+    parentProtocol: "parent#kittypunch",
+    listedAt: 1759452565,
+  },
 ];
 export default data4;

@@ -15574,8 +15574,8 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://app.morpho.org/polygon/earn",],
-        chains: [{ chain: "Polygon" }],
+        proof: ["https://app.morpho.org/polygon/earn","https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Polygon" }, { chain: "Base" }],
       },
     ],
     listedAt: 1747734127,

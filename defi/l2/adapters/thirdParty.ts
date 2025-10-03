@@ -130,7 +130,7 @@ const layerzero = async (): Promise<void> => {
   data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
     if (!(chain in addresses)) addresses[chain] = [];
-    if (!(address in addresses[chain])) addresses[chain].push(address);
+    if (!(address in addresses[chain])) addresses[chain].push(address.toLowerCase());
   });
 
   const nonEvmMapping: { [key: string]: string } = {
@@ -153,15 +153,16 @@ const layerzero = async (): Promise<void> => {
 
     if (!allChainKeys.includes(destinationChainSlug)) return;
     if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
-    addresses[destinationChainSlug].push(...Object.keys(data[1][chain].tokens));
+    const tokens = Object.keys(data[1][chain].tokens).filter((t: string) => addresses[chain].indexOf(t.toLowerCase()) == -1 );
+    addresses[destinationChainSlug].push(...tokens);
   });
 
   const staticTokens: { [chain: string]: string[] } = {
-    morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    morph: ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34", "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7"],
     unichain: [
-      "0x2416092f143378750bb29b79eD961ab195CcEea5",
-      "0xc3eACf0612346366Db554C991D7858716db09f58",
-      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+      "0x2416092f143378750bb29b79ed961ab195cceea5",
+      "0xc3eacf0612346366db554c991d7858716db09f58",
+      "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7",
     ],
   };
 

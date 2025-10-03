@@ -464,7 +464,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
         const metadata = metadatas[coin.id];
         if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
         if (hourly) {
-          return metadata.usd_market_cap > 1e6 && metadata.usd_24h_vol > 1e6;
+          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
         }
         return (
           metadata.coinType === coinType ||

@@ -9,3 +9,5 @@ export const bridgedTvlMixedCaseChains: string[] = ["solana", "tron", "sui", "ap
 export const chainsWithCaseSensitiveDataProviders = ['aptos', 'stacks', 'sui']
 
 export const nullAddress = "0x0000000000000000000000000000000000000000";
+
+export const llamaRole = "<@&849669546448388107>"

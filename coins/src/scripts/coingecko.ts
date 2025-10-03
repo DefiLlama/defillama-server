@@ -18,7 +18,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import { chainsThatShouldNotBeLowerCased, llamaRole } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import axios from "axios";
 import { getR2JSONString, storeR2JSONString } from "../utils/r2";
@@ -493,10 +493,10 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
 
     const countCache = await getR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`);
     if (!countCache?.count || count < countCache.count * 0.9) {
-      await sendMessage(`Coingecko ${hourly} ${coinType} coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
+      await sendMessage(`${llamaRole} coingecko ${hourly} ${coinType} coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
     }
     await storeR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`, JSON.stringify({ count }));
-    
+
   } catch (e) {
     console.error("Error in coingecko script");
     console.error("Error type:", typeof e);

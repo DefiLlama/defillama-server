@@ -10,6 +10,7 @@ console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";
 import { getR2JSONString, storeR2JSONString } from "../utils/r2";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import { llamaRole } from "../utils/shared/constants";
 
 console.log("imports successful");
 
@@ -78,7 +79,7 @@ async function storeDefiCoins() {
     });
     const countCache = await getR2JSONString(countCacheFilename);
     if (!countCache?.count || count < countCache.count * 0.9) {
-      await sendMessage(`Defi coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
+      await sendMessage(`${llamaRole} defi coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
     }
     await storeR2JSONString(countCacheFilename, JSON.stringify({ count }));
   console.log("All done");

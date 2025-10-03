@@ -15354,8 +15354,17 @@ const data4: Protocol[] = [
         proof: [
           "https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth",
           "https://oracles.euler.finance/130/",
+          "https://app.morpho.org/ethereum/earn"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{ chain: "Unichain" }, { chain: "Ethereum" }],
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/base/earn",
+        ],
+        chains: [{ chain: "Base" }],
       },
     ],
     listedAt: 1747733002,
@@ -15405,6 +15414,14 @@ const data4: Protocol[] = [
     module: "apostro/index.js",
     twitter: "apostroxyz",
     listedAt: 1747733258,
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "apostro"
     }
@@ -15427,6 +15444,14 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "b-protocol/index.js",
     twitter: "bprotocoleth",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn","https://app.morpho.org/ethereum/earn"],
+        chains: [{ chain: "Base" }, { chain: "Ethereum" }],
+      },
+    ],
     listedAt: 1747733358,
     dimensions: {
       fees: "b-protocol"
@@ -15451,6 +15476,14 @@ const data4: Protocol[] = [
     module: "block-analitica/index.js",
     twitter: "BlockAnalitica",
     listedAt: 1747733666,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn","https://app.morpho.org/ethereum/earn"],
+        chains: [{ chain: "Base" }, { chain: "Ethereum" }],
+      },
+    ],
     dimensions: {
       fees: "block-analitica"
     }
@@ -15474,6 +15507,14 @@ const data4: Protocol[] = [
     module: "clearstar/index.js",
     twitter: "ClearstarLabs",
     listedAt: 1747733862,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "clearstar"
     }
@@ -15834,6 +15875,15 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "TAC" }],
       },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/polygon/earn",
+          "https://app.morpho.org/base/earn",
+        ],
+        chains: [{ chain: "Polygon" }, { chain: "Base" }],
+      },
     ],
     module: "re7/index.js",
     twitter: "Re7Labs",
@@ -15861,6 +15911,14 @@ const data4: Protocol[] = [
     module: "relend/index.js",
     twitter: "relend_network",
     listedAt: 1747735979,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "relend"
     }
@@ -15939,6 +15997,14 @@ const data4: Protocol[] = [
     module: "tulip-capital/index.js",
     twitter: "tulipacapital",
     listedAt: 1747736624,
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://app.morpho.org/ethereum/earn"],
+        chains: [ { chain: "Ethereum" }],
+      },
+    ],
     dimensions: {
       fees: "tulip-capital"
     }

@@ -10100,7 +10100,7 @@ const data4: Protocol[] = [
     url: "https://rollx.trade/",
     description:
       "RollX is the fastest-growing perpetual DEX on Base. Supporting multi-asset and BTC-native collateral, it serves the largest user base on Base. ",
-    chain: "Base",
+    chain: "Bitlayer",
     logo: `${baseIconsUrl}/rollx.jpg`,
     audits: "2",
     audit_note: null,

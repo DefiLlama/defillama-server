@@ -24,7 +24,7 @@ function getPercentage(a: number, b: number) {
   return +Number(((a - b) / b) * 100).toFixed(2)
 }
 
-const validMetricTypesSet = new Set(Object.values(AdaptorRecordType)) as Set<string>
+const validMetricTypesSet = new Set(Object.values(AdapterType)) as Set<string>
 const validRecordTypesSet = new Set(Object.values(AdaptorRecordType)) as Set<string>
 
 function getEventParameters(req: HyperExpress.Request, isSummary = true) {

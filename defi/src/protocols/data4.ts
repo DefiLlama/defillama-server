@@ -23720,8 +23720,14 @@ const data4: Protocol[] = [
     twitter: "boros_fi",
     listedAt: 1754577595,
     dimensions: {
-      fees: "boros",
-      derivatives: "boros"
+      fees: {
+        adapter: "boros",
+        genuineSpikes: ["1759449600"],
+      },
+      derivatives: {
+        adapter: "boros",
+        genuineSpikes: ["1759449600"],
+      },
     }
   },
   {

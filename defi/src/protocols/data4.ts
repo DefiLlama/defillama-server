@@ -10097,10 +10097,10 @@ const data4: Protocol[] = [
     previousNames: ["Rolldex"],
     address: null,
     symbol: "-",
-    url: "https://www.rolldex.io/",
+    url: "https://rollx.trade/",
     description:
-      "The first BitVM-powered multichain BTC-Fi-centric decentralized derivatives trading platform. 100% community-owned.",
-    chain: "Bitlayer",
+      "RollX is the fastest-growing perpetual DEX on Base. Supporting multi-asset and BTC-native collateral, it serves the largest user base on Base. ",
+    chain: "Base",
     logo: `${baseIconsUrl}/rollx.jpg`,
     audits: "2",
     audit_note: null,

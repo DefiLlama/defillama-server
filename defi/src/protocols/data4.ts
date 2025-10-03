@@ -29154,7 +29154,7 @@ const data4: Protocol[] = [
     id: "6771",
     name: "Yield Basis",
     address: null,
-    symbol: "-",
+    symbol: "YB",
     url: "https://yieldbasis.com/",
     description: "YieldBasis is an on-chain liquidity protocol solving Impermanent Loss problem in AMM pools. It turns crypto into productive assets starting from Bitcoin. Using Yield Basis, LPs have a direct spot exposure to an asset and earn organic yield with significantly improved risk/reward profile (compared to conventional AMMs).",
     chain: "Ethereum",

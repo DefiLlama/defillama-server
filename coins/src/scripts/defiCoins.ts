@@ -78,7 +78,7 @@ async function storeDefiCoins() {
       console.timeEnd(timeKey);
     });
     const countCache = await getR2JSONString(countCacheFilename);
-    if (!countCache?.count || count < countCache.count * 0.9) {
+    if (!countCache?.count || count < countCache.count * 1.1) {
       await sendMessage(`${llamaRole} defi coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
     }
     await storeR2JSONString(countCacheFilename, JSON.stringify({ count }));

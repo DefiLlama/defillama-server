@@ -492,7 +492,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     await Promise.all(promises);
 
     const countCache = await getR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`);
-    if (!countCache?.count || count < countCache.count * 0.9) {
+    if (!countCache?.count || count < countCache.count * 1.1) {
       await sendMessage(`${llamaRole} coingecko ${hourly} ${coinType} coins count is ${count} down from ${countCache?.count}`, process.env.TEAM_WEBHOOK!, true);
     }
     await storeR2JSONString(`coingeckoCoinsCount-${hourly}-${coinType}`, JSON.stringify({ count }));

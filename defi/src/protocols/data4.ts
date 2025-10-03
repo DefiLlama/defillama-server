@@ -21622,6 +21622,9 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1752719634,
     parentProtocol: "parent#kinetiq",
+    tokensExcludedFromParent: {
+      Hyperliquid: ["KHYPE"],
+    },
     dimensions: {
       fees: "kinetiq-staked-hype"
     }

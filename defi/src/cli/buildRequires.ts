@@ -10,7 +10,8 @@ import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/
 import { ADAPTER_TYPES } from "../adaptors/data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { readdir, writeFile } from "fs/promises";
-import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeHashToFile } from "../adaptors/utils";
+import * as sdk from '@defillama/sdk'
+import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeFromCache, writeHashToFile, writeToCache } from "../adaptors/utils";
 
 const extensions = ['ts', 'md', 'js']
 
@@ -53,6 +54,16 @@ async function createDimensionsImports() {
     return
   }
 
+
+  // check if we already have the data in 
+  const dimHashKey = 'dimensionAdaptersHash_' + dimRepoHash
+
+  const wroteFromCache = await writeFromCache(dimHashKey, outputFile, {
+    successMessage: '[DIMENSIONS] Using cached dimensions imports, skipping generation',
+    errorMessage: '[DIMENSIONS] Error reading from cache, proceeding to generate dimensions imports'
+  })
+  if (wroteFromCache) return;
+
   const excludeKeys = new Set(["index", "README", '.gitkeep'])
   const baseFolderPath = "./dimension-adapters" // path relative to current working directory -> `cd /defi`
   const basePackagePath = "@defillama/dimension-adapters" // how is defined in package.json
@@ -63,6 +74,8 @@ async function createDimensionsImports() {
 
 
   await writeFile(outputFile, JSON.stringify(dimensionsImports))
+
+  await writeToCache(dimHashKey, dimensionsImports)
   writeHashToFile('dimensionAdapters', dimRepoHash)
 
   async function addAdapterType(folderPath: string) {

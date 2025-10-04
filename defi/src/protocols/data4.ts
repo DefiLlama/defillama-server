@@ -29934,7 +29934,7 @@ const data4: Protocol[] = [
       "https://info.asymptotic.tech/lotus-protocol-audit"
     ],
     dimensions: {
-      fees: "metamask-musd"
+      dexs: "lotus-finance",
     },
     github: ["lotus-finance-team"]
   },

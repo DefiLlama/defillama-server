@@ -273,14 +273,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
-            return;
-          }
-
-          // Skip DUNE adapters before 6:00 UTC
-          if (dependencies?.includes('dune' as any)) {
-            if (hours < 6) {
-              console.log(`Skipping ${adapterType} - ${protocol.module} - DUNE adapter before 6:00 UTC`)
+            // If we have yesterday data, only run DUNE adapters between 6-7 AM (for refresh)
+            const isDuneAdapter = dependencies?.includes('dune' as any);
+            const isBetween6And7AM = hours === 6;
+            
+            if (isDuneAdapter && isBetween6And7AM) {
+              console.log(`Refreshing ${adapterType} - ${protocol.module} - DUNE adapter between 6-7 AM`)
+            } else {
+              console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
               return;
             }
           }

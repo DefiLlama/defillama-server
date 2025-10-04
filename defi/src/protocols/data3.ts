@@ -40076,7 +40076,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Gaming",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "etherflip/index.js",
@@ -53242,7 +53242,7 @@ const data3_2: Protocol[] = [
     symbol: "ARROW",
     url: "https://arrow.markets",
     description:
-      "Arrow Markets is a cutting-edge options platform that revolutionizes trading by seamlessly integrating an innovative RFQ system",
+      "We are the first Hybrid Options platform, seamlessly fusing CeFi convenience with DeFi transparency. NO complexity, ALL opportunity #CatchTheArrow",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arrow-markets.png`,
     audits: "0",

@@ -198,7 +198,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
       const adapterVersion = adaptor.version
       const isAdapterVersionV1 = adapterVersion === 1
-      const { isExpensiveAdapter, runAtCurrTime } = adaptor
+      const { isExpensiveAdapter, runAtCurrTime, dependencies } = adaptor
 
 
       let endTimestamp = toTimestamp
@@ -275,6 +275,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           if (haveYesterdayData) {
             console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
+          }
+
+          // Skip DUNE adapters before 6:00 UTC
+          if (dependencies?.includes('dune' as any)) {
+            if (hours < 6) {
+              console.log(`Skipping ${adapterType} - ${protocol.module} - DUNE adapter before 6:00 UTC`)
+              return;
+            }
           }
 
           endTimestamp = yesterdayEndTimestamp

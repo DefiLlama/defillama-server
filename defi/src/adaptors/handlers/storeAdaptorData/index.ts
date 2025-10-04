@@ -33,6 +33,8 @@ export type IStoreAdaptorDataHandlerEvent = {
   isRunFromRefillScript?: boolean
   yesterdayIdSet?: Set<string>
   todayIdSet?: Set<string>
+  yesterdayDataMap?: Map<string, any>  // New: contains full record data with timestamp
+  todayDataMap?: Map<string, any>      // New: contains full record data with timestamp
   runType?: 'store-all' | 'refill-all' | 'default' | 'refill-yesterday'
   throwError?: boolean
   checkBeforeInsert?: boolean
@@ -43,7 +45,7 @@ const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 13
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
-    runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
+    runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(), yesterdayDataMap = new Map(), todayDataMap = new Map(),
     throwError = false, checkBeforeInsert = false,
 
   } = event
@@ -267,18 +269,61 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
             }
           }
 
+          // Edge case: V2 adapter has yesterday data but it was updated before end of yesterday (incomplete day)
+          // Valid update window: 00:00 UTC (today) - 01:00 UTC (today) = fresh data, no refill needed
+          // If updatedAt < 00:00 UTC today (i.e., from yesterday), reload after 01:00 UTC today
+          if (!runAtCurrTime && haveYesterdayData && yesterdayDataMap.has(id2)) {
+            const yesterdayRecord = yesterdayDataMap.get(id2);
+            if (yesterdayRecord?.updatedAt) {
+              const lastUpdateTimestamp = yesterdayRecord.updatedAt;
+              const startOfTodayTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)); // 00:00 UTC today
+              const isAfter1AM = hours >= 1; // Current time >= 01:00 UTC
+
+              // Refill if: last update of yesterday data (before 00:00 UTC today) AND current time is >= 01:00 UTC
+              if (lastUpdateTimestamp < startOfTodayTimestamp && isAfter1AM) {
+                console.log(`Refill ${adapterType} - ${protocol.module} - V2 adapter yesterday data incomplete (last update of yesterday data: ${new Date(lastUpdateTimestamp * 1000).toISOString()}, before 00:00 UTC today)`)
+                  try {
+                  refillYesterdayPromise = handler2({
+                    timestamp: yesterdayEndTimestamp,
+                    adapterType,
+                    protocolNames: new Set([protocol.displayName]),
+                    isRunFromRefillScript: true,
+                    runType: 'refill-yesterday',
+                  })
+                } catch (e) {
+                  console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
+                }
+              }
+            }
+          }
+
           if (haveTodayData && !runNow) {
             console.log(`Skipping ${adapterType} - ${protocol.module} - already have today data for adapter running at current time`)
             return;
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            // If we have yesterday data, only run DUNE adapters between 6-7 AM (for refresh)
             const isDuneAdapter = dependencies?.includes('dune' as any);
-            const isBetween6And7AM = hours === 6;
+            const isMorethan8AM = hours >= 8;
             
-            if (isDuneAdapter && isBetween6And7AM) {
-              console.log(`Refreshing ${adapterType} - ${protocol.module} - DUNE adapter between 6-7 AM`)
+            // For DUNE adapters: check if last update was before 8 AM UTC (if we have the data map)
+            if (isDuneAdapter && yesterdayDataMap.has(id2)) {
+              const yesterdayRecord = yesterdayDataMap.get(id2);
+              if (yesterdayRecord?.updatedAt) {
+                const lastUpdateDate = new Date(yesterdayRecord.updatedAt * 1000);
+                const lastUpdateHourUTC = lastUpdateDate.getUTCHours();
+
+                // If last update was before 8 AM UTC and it is more than 8 AM UTC, allow refresh
+                if (lastUpdateHourUTC < 8 && isMorethan8AM) {
+                  console.log(`Refreshing ${adapterType} - ${protocol.module} - DUNE adapter (last update: ${lastUpdateDate.toISOString()}, before 8 AM UTC and it is more than 8 AM UTC)`)
+                } else {
+                  console.log(`Skipping ${adapterType} - ${protocol.module} - DUNE adapter already updated after 8 AM UTC and it is more than 8 AM UTC`)
+                  return;
+                }
+              } else {
+                console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+                return;
+              }
             } else {
               console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
               return;

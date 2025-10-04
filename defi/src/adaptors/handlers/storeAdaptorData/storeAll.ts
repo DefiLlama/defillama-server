@@ -29,16 +29,20 @@ async function run() {
 
       let yesterdayIdSet: Set<string> = new Set()
       let todayIdSet: Set<string> = new Set()
+      let yesterdayDataMap: Map<string, any> = new Map()
+      let todayDataMap: Map<string, any> = new Map()
 
       try {
         const yesterdayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getYesterdayTimeS() });
         const todayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getTodayTimeS() });
         yesterdayIdSet = new Set(yesterdayData.map((d: any) => d.id));
         todayIdSet = new Set(todayData.map((d: any) => d.id));
+        yesterdayDataMap = new Map(yesterdayData.map((d: any) => [d.id, d]));
+        todayDataMap = new Map(todayData.map((d: any) => [d.id, d]));
       } catch (e) {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
-      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, })
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, yesterdayDataMap, todayDataMap })
 
     } catch (e) {
       console.error("error", e)

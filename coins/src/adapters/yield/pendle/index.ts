@@ -29,6 +29,9 @@ const config: { [chain: string]: { pendleOracle: string } } = {
   hyperliquid: {
     pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
   },
+  plasma: {
+    pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
+  },
 };
 
 export async function pendle(timestamp: number = 0) {

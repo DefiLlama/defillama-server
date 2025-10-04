@@ -20907,6 +20907,9 @@ const data4: Protocol[] = [
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
+    dimensions: {
+      dexs: "rysk-v12"
+    }
   },
   {
     id: "6416",

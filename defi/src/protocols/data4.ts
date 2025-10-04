@@ -30001,7 +30001,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1759454377,
     dimensions: {
-      fees: "alphagrowth"
+      fees: "alpha-growth"
     }
   },
   {

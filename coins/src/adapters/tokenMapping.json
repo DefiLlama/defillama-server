@@ -11917,7 +11917,7 @@
       "symbol": "ueur.trading"
     },
     "uylds.fcc": {
-      "to": "coingecko#ylds",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "uylds.fcc"
     },

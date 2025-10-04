@@ -30096,5 +30096,50 @@ const data4: Protocol[] = [
       fees: "singularv"
     }
   },
+  {
+    id: "6809",
+    name: "TokenWorks",
+    address: null,
+    symbol: "-",
+    url: "https://www.nftstrategy.fun/",
+    description: "NFTStrategy is an on-chain protocol that creates strategy tokens for NFT collections, using trading fees to buy floor NFTs, relist them for profit, and burn supply while paying creator royalties",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenworks.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Automated Strategies",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "token_works",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "token-works"
+    }
+  },
+  {
+    id: "6810",
+    name: "Tokos",
+    address: null,
+    symbol: "-",
+    url: "https://app.tokos.fi/",
+    description: "Permissionless lending & borrowing on Somnia Network",
+    chain: "Somnia",
+    logo: `${baseIconsUrl}/tokos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Somnia"],
+    module: "tokos-fi/index.js",
+    twitter: "tokos_fi",
+    forkedFromIds: [],
+    listedAt: 1759603671,
+    dimensions: {
+      fees: "tokos-fi"
+    }
+  },
 ];
 export default data4;

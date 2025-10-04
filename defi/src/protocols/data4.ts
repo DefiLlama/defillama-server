@@ -20908,7 +20908,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
     dimensions: {
-      dexs: "rysk-v12"
+      derivatives: "rysk-v12"
     }
   },
   {

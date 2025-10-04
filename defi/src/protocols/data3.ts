@@ -18804,7 +18804,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "ekubo-protocol",
-    cmcId: ,
+    cmcId: null,
     category: "Dexs",
     chains: ["Starknet"],
     module: "ekubo/index.js",

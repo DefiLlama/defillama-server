@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-const DATA_FILE = 'data';
+const DATA_FILE = 'data4';
+
+const COINGECKO_API_KEY = undefined;
 
 interface Protocol {
   id: string;
@@ -44,7 +46,7 @@ async function searchCoingecko(tokenSymbol: string): Promise<any[]> {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': process.env.CG_API_KEY!
+        'x-cg-pro-api-key': COINGECKO_API_KEY || ''
       }
     });
     const json = await response.json();
@@ -68,7 +70,7 @@ async function fetchCoinDetails(
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': process.env.CG_API_KEY!
+        'x-cg-pro-api-key': COINGECKO_API_KEY || ''
       }
     });
     const data = await response.json();
@@ -119,37 +121,25 @@ async function fetchCoinDetails(
 }
 
 async function updateProtocolsData() {
-  const dataPath = path.join(__dirname, '../protocols', `${DATA_FILE}.ts`);
-  console.log('Working with file:', dataPath);
-
-  const fileContent = fs.readFileSync(dataPath, 'utf8');
-
-  // Import baseIconsUrl from the constants file
-  const { baseIconsUrl } = require('../constants');
-
-  const regex = new RegExp(`const ${DATA_FILE}: Protocol\\[\\] = (\\[[\\s\\S]*?\\]);`, 'm');
-  const match = fileContent.match(regex);
-  if (!match) {
-    console.error('Could not find protocols data in file');
+  if (!COINGECKO_API_KEY) {
+    console.error('Error: COINGECKO_API_KEY variable is required');
     return;
   }
+  
+  console.log('Loading protocols data...');
 
   let protocols: Protocol[];
   try {
-    const code = `
-      const baseIconsUrl = "${baseIconsUrl}";
-      return ${match[1]};
-    `;
-    const fn = new Function(code);
-    protocols = fn();
-    console.log('Successfully parsed protocols:', protocols.length);
+    // Import the data directly
+    protocols = require(`../protocols/${DATA_FILE}`).default;
+    console.log('Successfully loaded protocols:', protocols.length);
   } catch (error) {
-    console.error('Failed to parse protocols data:', error);
+    console.error('Failed to load protocols data:', error);
     return;
   }
 
   // Track updates for final report
-  const updatedProtocols: { name: string; symbol: string; gecko_id: string }[] = [];
+  const updatedProtocols: { name: string; twitter: string; gecko_id: string }[] = [];
 
   // Collect existing gecko_ids
   protocols.forEach((protocol) => {
@@ -195,14 +185,13 @@ async function updateProtocolsData() {
         protocol.url
       );
       if (coingeckoId) {
-        protocol.gecko_id = coingeckoId;
         usedGeckoIds.add(coingeckoId);
         updatedProtocols.push({
           name: protocol.name,
-          symbol: protocol.symbol,
+          twitter: protocol.twitter,
           gecko_id: coingeckoId
         });
-        console.log(`Added gecko_id ${coingeckoId} to ${protocol.name}\n`);
+        console.log(`Found gecko_id ${coingeckoId} for ${protocol.name}\n`);
         foundMatch = true;
         break;
       }
@@ -216,16 +205,29 @@ async function updateProtocolsData() {
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
 
-  console.log('\n=== Update Summary ===');
-  if (updatedProtocols.length === 0) {
-    console.log('No protocols were updated with new gecko_ids');
-  } else {
-    console.log('The following protocols were updated with gecko_ids:');
-    updatedProtocols.forEach((p) => {
-      console.log(`- ${p.name} (${p.symbol}): ${p.gecko_id}`);
-    });
+  // Write results to a new file
+  const outputPath = path.join(__dirname, 'temp', `${DATA_FILE}_new_gecko_id.json`);
+  const outputData = {
+    timestamp: new Date().toISOString(),
+    totalFound: updatedProtocols.length,
+    protocols: updatedProtocols
+  };
+
+  try {
+    fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
+    console.log(`\n=== Results Summary ===`);
+    console.log(`Found ${updatedProtocols.length} new gecko_ids`);
+    console.log(`Results written to: ${outputPath}`);
+    if (updatedProtocols.length > 0) {
+      console.log('\nFound gecko_ids:');
+      updatedProtocols.forEach((p) => {
+        console.log(`- ${p.name} (@${p.twitter}): ${p.gecko_id}`);
+      });
+    }
+    console.log('=====================\n');
+  } catch (error) {
+    console.error('Error writing output file:', error);
   }
-  console.log('===================\n');
 }
 
 updateProtocolsData().catch(console.error);

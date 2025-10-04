@@ -30000,6 +30000,9 @@ const data4: Protocol[] = [
     twitter: "alphagrowth1",
     forkedFromIds: [],
     listedAt: 1759454377,
+    dimensions: {
+      fees: "alphagrowth"
+    }
   },
   {
     id: "6805",
@@ -30020,6 +30023,9 @@ const data4: Protocol[] = [
     twitter: "avantgardefi",
     forkedFromIds: [],
     listedAt: 1759454384,
+    dimensions: {
+      fees: "avantgarde"
+    }
   },
   {
     id: "6806",
@@ -30040,6 +30046,9 @@ const data4: Protocol[] = [
     twitter: "KeyringNetwork",
     forkedFromIds: [],
     listedAt: 1759454392,
+    dimensions: {
+      fees: "keyring"
+    }
   },
   {
     id: "6807",
@@ -30060,6 +30069,9 @@ const data4: Protocol[] = [
     twitter: "SentoraHQ",
     forkedFromIds: [],
     listedAt: 1759454399,
+    dimensions: {
+      fees: "sentora"
+    }
   },
   {
     id: "6808",
@@ -30080,6 +30092,9 @@ const data4: Protocol[] = [
     twitter: "SingularV__",
     forkedFromIds: [],
     listedAt: 1759454407,
+    dimensions: {
+      fees: "singularv"
+    }
   },
 ];
 export default data4;

@@ -28238,7 +28238,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     parentProtocol: "parent#astherus",
     dimensions: {
-      fees: "apollox",
+      // fees: "apollox",
       // derivatives: "apollox",
       "open-interest": "apollox"
     }

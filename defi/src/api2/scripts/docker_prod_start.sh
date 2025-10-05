@@ -17,7 +17,7 @@ time npm run prebuild
 time npm run cron-raises
 time npm run api2-cron-task
 time npm run cron-dimensions
-# time npm run cron-app-metadata // enable after testing
+time npm run cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

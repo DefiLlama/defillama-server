@@ -727,7 +727,7 @@ type ProtocolSummary = RecordSummary & {
 }
 
 run()
-  .then(storeAppMetadata)
+  // .then(storeAppMetadata)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)

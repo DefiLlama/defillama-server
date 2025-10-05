@@ -28239,7 +28239,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#astherus",
     dimensions: {
       fees: "apollox",
-      derivatives: "apollox",
+      // derivatives: "apollox",
       "open-interest": "apollox"
     }
   },

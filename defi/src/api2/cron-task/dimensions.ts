@@ -20,6 +20,7 @@ import { sluggifyString } from "../../utils/sluggify"
 // import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
 import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
+import { cronNotifyOnDiscord, } from '../env';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -65,6 +66,8 @@ const timeData = {
 
 
 async function run() {
+  const startTime = getUnixTimeNow();
+
   // Go over all types
   const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
@@ -115,6 +118,19 @@ async function run() {
 
   // // store the data as files to be used by the rest api
   await generateDimensionsResponseFiles(allCache)
+
+
+  const endTime = getUnixTimeNow();
+
+  if (cronNotifyOnDiscord())
+    await sdk.elastic.addRuntimeLog({
+      runtime: endTime - startTime,
+      success: true,
+      metadata: {
+        application: "cron-task",
+        type: 'dimensions',
+      }
+    });
 
 
   async function updateAdapterData(adapterType: AdapterType) {
@@ -738,7 +754,7 @@ run()
 const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
 
-const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+const NOTIFY_ON_DISCORD = cronNotifyOnDiscord()
 const ThreeMonthsAgo = (Date.now() / 1000) - 3 * 30 * 24 * 60 * 60
 const isLessThanThreeMonthsAgo = (timeS: string) => timeSToUnix(timeS) > ThreeMonthsAgo
 

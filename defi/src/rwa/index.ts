@@ -63,3 +63,5 @@ export async function fetchRWAStats() {
 
   return res;
 }
+
+fetchRWAStats()

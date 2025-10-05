@@ -15,6 +15,8 @@ import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
+import { getUnixTimeNow } from "../utils/time";
+import { cronNotifyOnDiscord } from "../env";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -75,6 +77,8 @@ const slug = (tokenName = "") => {
 };
 
 export async function storeAppMetadata() {
+  const startTime = getUnixTimeNow();
+
   console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
   try {
@@ -82,7 +86,17 @@ export async function storeAppMetadata() {
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
 
-    //TODO: add code to send notification of success
+    const endTime = getUnixTimeNow();
+
+    if (cronNotifyOnDiscord())
+      await sdk.elastic.addRuntimeLog({
+        runtime: endTime - startTime,
+        success: true,
+        metadata: {
+          application: "cron-task",
+          type: 'app-metadata',
+        }
+      });
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);

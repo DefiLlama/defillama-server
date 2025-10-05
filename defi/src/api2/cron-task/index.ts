@@ -24,6 +24,8 @@ import { RUN_TYPE } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
+import { getUnixTimeNow } from "../utils/time";
+import { cronNotifyOnDiscord } from "../env";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -31,6 +33,9 @@ let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Functi
 let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
 async function run() {
+
+  const startTime = getUnixTimeNow();
+
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON })
 
@@ -70,6 +75,20 @@ async function run() {
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
   await storeRWAStats()
+
+
+
+  const endTime = getUnixTimeNow();
+
+  if (cronNotifyOnDiscord())
+    await sdk.elastic.addRuntimeLog({
+      runtime: endTime - startTime,
+      success: true,
+      metadata: {
+        application: "cron-task",
+        type: 'tvl-data',
+      }
+    });
 
   // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 

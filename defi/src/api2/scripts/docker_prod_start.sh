@@ -14,8 +14,10 @@ git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
 
 
 time npm run prebuild
+time npm run cron-raises
 time npm run api2-cron-task
 time npm run cron-dimensions
+# time npm run cron-app-metadata // enable after testing
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

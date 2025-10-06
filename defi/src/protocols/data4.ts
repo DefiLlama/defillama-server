@@ -30159,7 +30159,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["GateLayer"],
-    module: "woofswap/index.js",
+    module: "woofswapGL/index.js",
     forkedFromIds: ["1407"],
     twitter: "woofswap",
     parentProtocol: "parent#woofswap",

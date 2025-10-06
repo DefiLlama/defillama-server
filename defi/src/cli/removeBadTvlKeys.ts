@@ -1,6 +1,6 @@
-import { getAllProtocolItems, saveProtocolItem } from "./api2/db";
-import { dailyRawTokensTvl } from "./utils/getLastRecord";
-import { prefixMalformed } from "./storeTvlInterval/getAndStoreTvl";
+import { getAllProtocolItems, saveProtocolItem } from "../api2/db";
+import { dailyRawTokensTvl } from "../utils/getLastRecord";
+import { prefixMalformed } from "../storeTvlInterval/getAndStoreTvl";
 import { PromisePool } from "@supercharge/promise-pool";
 
 const protocols = ["1791", "1972", "529", "5773", "6202"];

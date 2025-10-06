@@ -29564,6 +29564,14 @@ const data4: Protocol[] = [
     chains: ["Plasma"],
     module: "telosc/index.js",
     twitter: "TelosConsilium",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [],
+        chains: [{ chain: "Plasma" }],
+      },
+    ],
     forkedFromIds: [],
     listedAt: 1759244012
   },

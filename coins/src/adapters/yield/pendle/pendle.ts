@@ -315,30 +315,25 @@ async function getAllTokenInfos(chainId: number) {
     return rawAddr.split('-')[1];
   }
 
+  function filterMarketData(resp: { markets: any[] }) {
+    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e5);
+    return markets.map((m: any) => ({
+      lp: m.address,
+      sy: formatPendleAddr(m.sy),
+      pt: formatPendleAddr(m.pt),
+      yt: formatPendleAddr(m.yt),
+      lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
+    }));
+  }
+
   {
     const resp = await getConfig(`pendle-v2/active-markets-${chainId}`, `https://api-v2.pendle.finance/core/v1/${chainId}/markets/active`)
-    markets.push(
-      ...resp.markets.map((m: any) => ({
-        lp: m.address,
-        sy: formatPendleAddr(m.sy),
-        pt: formatPendleAddr(m.pt),
-        yt: formatPendleAddr(m.yt),
-        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
-      }))
-    )
+    markets.push(...filterMarketData(resp))
   }
 
   {
     const resp = await getConfig(`pendle-v2/inactive-markets-${chainId}`, `https://api-v2.pendle.finance/core/v1/${chainId}/markets/inactive`)
-    markets.push(
-      ...resp.markets.map((m: any) => ({
-        lp: m.address,
-        sy: formatPendleAddr(m.sy),
-        pt: formatPendleAddr(m.pt),
-        yt: formatPendleAddr(m.yt),
-        lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
-      }))
-    )
+    markets.push(...filterMarketData(resp))
   }
   return markets;
 }

@@ -41322,6 +41322,9 @@ const data3_2: Protocol[] = [
     twitter: "rage_trade",
     github: ["RageTrade"],
     listedAt: 1712327109,
+    hallmarks: [
+      ['2025-10-06', 'Project winds down']
+    ],
     dimensions: {
       "aggregator-derivatives": "rage-trade"
     }

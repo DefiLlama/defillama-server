@@ -316,7 +316,7 @@ async function getAllTokenInfos(chainId: number) {
   }
 
   function filterMarketData(resp: { markets: any[] }) {
-    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e5);
+    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e5); // filtering out small markets
     return markets.map((m: any) => ({
       lp: m.address,
       sy: formatPendleAddr(m.sy),

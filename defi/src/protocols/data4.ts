@@ -30144,5 +30144,25 @@ const data4: Protocol[] = [
       fees: "tokos-fi"
     }
   },
+  {
+    id: "6811",
+    name: "Bitget bgBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitget.com/",
+    description: "bgBTC is Bitget Wrapped Bitcoin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitget-bgbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "bitget-bgBTC/index.js",
+    twitter: "Bitget",
+    listedAt: 1759765569
+  },
 ];
 export default data4;

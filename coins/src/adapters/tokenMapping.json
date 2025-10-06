@@ -1388,6 +1388,11 @@
       "to": "coingecko#societe-generale-forge-eurcv",
       "decimals": 18,
       "symbol": "EURCV"
+    },
+    "0x0520930F21b14Cafac7a27b102487beE7138a017": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "bgBTC"
     }
   },
   "fantom": {
@@ -10300,6 +10305,11 @@
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": 18,
       "symbol": "rsETH"
+    },
+    "0x5B6d6D09F425da2a816D1cDBabd049449Ae8d8e6": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "bgBTC"
     }
   },
   "oas": {

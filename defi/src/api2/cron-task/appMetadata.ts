@@ -1013,8 +1013,8 @@ async function getNftStats() {
       .then((res) => res.length),
     cachedJSONPull({ endpoint: "https://nft.llama.fi/exchangeStats", defaultResponse: [] })
       .then((res) => res.length),
-    cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
-      .then((res) => res.length),
+    // cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
+    //   .then((res) => res.length),  // this route doesnt work, plus we were reading only three items in the .all response
     cachedJSONPull({ endpoint: CHAIN_NFTS })
       .then((res) => Object.keys(res).length),
   ]);

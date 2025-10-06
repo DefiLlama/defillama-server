@@ -67,9 +67,13 @@ export async function storeRouteData(subPath: string, data: any) {
   return storeData(subPath, data)
 }
 
-export async function readRouteData(subPath: string) {
+export async function readRouteData(subPath: string, {
+  skipErrorLog = false
+}: {
+  skipErrorLog?: boolean
+} = {}) {
   subPath = fileNameNormalizer(`build/${subPath}`)
-  return readFileData(subPath)
+  return readFileData(subPath, { skipErrorLog })
 }
 
 async function storeData(subPath: string, data: any) {
@@ -84,13 +88,18 @@ async function storeData(subPath: string, data: any) {
   }
 }
 
-async function readFileData(subPath: string) {
+async function readFileData(subPath: string, {
+  skipErrorLog = false
+}: {
+  skipErrorLog?: boolean
+} = {}) {
   const filePath = path.join(CACHE_DIR!, subPath)
   try {
     const data = await fs.promises.readFile(filePath, 'utf8')
     return JSON.parse(data.toString())
   } catch (e) {
-    log((e as any)?.message)
+    if (!skipErrorLog)
+      log((e as any)?.message)
     return null
   }
 }
@@ -168,12 +177,12 @@ export async function storeTvlCacheAllFile(data: any) {
     throw new Error('Invalid data type. Expected an object.')
   }
   const { allTvlData = {}, ...restCache } = data
-  const  tvlEntries = Object.entries(allTvlData)
+  const tvlEntries = Object.entries(allTvlData)
   const chunkedTvlEntries = sliceIntoChunks(tvlEntries, 1000)
   restCache.tvlEntryCount = chunkedTvlEntries.length
 
   await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, restCache)
-  let i = 0 
+  let i = 0
   for (const chunk of chunkedTvlEntries) {
     const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
     await writeToPGCache(key, chunk)

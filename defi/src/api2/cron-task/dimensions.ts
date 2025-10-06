@@ -11,7 +11,7 @@ import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../a
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
-import { RUN_TYPE, roundVaules, } from "../utils";
+import { RUN_TYPE, roundVaules, runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
 import * as sdk from '@defillama/sdk'
 
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
@@ -20,7 +20,6 @@ import { sluggifyString } from "../../utils/sluggify"
 // import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
 import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
-import { cronNotifyOnDiscord, } from '../env';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -66,8 +65,6 @@ const timeData = {
 
 
 async function run() {
-  const startTime = getUnixTimeNow();
-
   // Go over all types
   const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
   await Promise.all(ADAPTER_TYPES.map(updateAdapterData))
@@ -118,19 +115,6 @@ async function run() {
 
   // // store the data as files to be used by the rest api
   await generateDimensionsResponseFiles(allCache)
-
-
-  const endTime = getUnixTimeNow();
-
-  if (cronNotifyOnDiscord())
-    await sdk.elastic.addRuntimeLog({
-      runtime: endTime - startTime,
-      success: true,
-      metadata: {
-        application: "cron-task",
-        type: 'dimensions',
-      }
-    });
 
 
   async function updateAdapterData(adapterType: AdapterType) {
@@ -205,7 +189,7 @@ async function run() {
 
     console.time(timeKey1)
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
-    console.timeEnd(timeKey1)
+    // console.timeEnd(timeKey1)
 
     const adapterData = allCache[adapterType]
     const timeKey3 = `summary ${adapterType}`
@@ -251,7 +235,7 @@ async function run() {
     adapterData.summaries = summaries
     adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b) => chainMappingToVal[b] - chainMappingToVal[a])
     adapterData.lastUpdated = getUnixTimeNow()
-    console.timeEnd(timeKey3)
+    // console.timeEnd(timeKey3)
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
@@ -742,7 +726,10 @@ type ProtocolSummary = RecordSummary & {
   breakdown30d?: any
 }
 
-run()
+runWithRuntimeLogging(run, {
+  application: 'cron-task',
+  type: 'dimensions',
+})
   // .then(storeAppMetadata)
   .catch(async e => {
     console.error(e)
@@ -989,7 +976,7 @@ async function generateDimensionsResponseFiles(cache: any) {
       }
     }
 
-    console.timeEnd(timeKey)
+    // console.timeEnd(timeKey)
   }
   await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
 }

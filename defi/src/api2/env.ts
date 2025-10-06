@@ -79,7 +79,3 @@ export function getEnv(env: string): string | boolean | undefined {
 
   return process.env[env]
 }
-
-export function cronNotifyOnDiscord(): boolean {
-  return getEnv('DIM_CRON_NOTIFY_ON_DISCORD') as boolean
-}

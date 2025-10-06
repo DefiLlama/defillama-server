@@ -15,8 +15,7 @@ import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
-import { getUnixTimeNow } from "../utils/time";
-import { cronNotifyOnDiscord } from "../env";
+import { runWithRuntimeLogging } from "../utils";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -77,7 +76,6 @@ const slug = (tokenName = "") => {
 };
 
 export async function storeAppMetadata() {
-  const startTime = getUnixTimeNow();
 
   console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
@@ -85,18 +83,7 @@ export async function storeAppMetadata() {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
-
-    const endTime = getUnixTimeNow();
-
-    if (cronNotifyOnDiscord())
-      await sdk.elastic.addRuntimeLog({
-        runtime: endTime - startTime,
-        success: true,
-        metadata: {
-          application: "cron-task",
-          type: 'app-metadata',
-        }
-      });
+    
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -1038,7 +1025,10 @@ async function getNftStats() {
   };
 }
 
-storeAppMetadata().catch(console.error).then(() => process.exit(0))
+runWithRuntimeLogging(storeAppMetadata, {
+  application: 'cron-task',
+  type: 'app-metadata',
+}).catch(console.error).then(() => process.exit(0))
 
 setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');

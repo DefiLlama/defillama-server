@@ -3,6 +3,7 @@ import { getRaisesInternal } from "../../getRaises";
 import { getHacksInternal } from "../../getHacks";
 // import { fetchArticles } from "../../getNewsArticles";
 import * as sdk from '@defillama/sdk'
+import { runWithRuntimeLogging } from "../utils";
 
 
 async function run() {
@@ -43,7 +44,11 @@ async function run() {
   } */
 }
 
-run().catch(console.error).then(() => process.exit(0))
+
+runWithRuntimeLogging(run, {
+  application: "cron-task",
+  type: 'raises',
+}).catch(console.error).then(() => process.exit(0))
 
 setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');

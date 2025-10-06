@@ -3196,18 +3196,6 @@
       "symbol": "BOLD"
     }
   },
-  "radixdlt": {
-    "resource_rdx1tknxxxxxxxxxradxrdxxxxxxxxx009923554798xxxxxxxxxradxrd": {
-      "decimals": "0",
-      "symbol": "XRD",
-      "to": "coingecko#radix"
-    },
-    "resource_rdx1th88qcj5syl9ghka2g9l7tw497vy5x6zaatyvgfkwcfe8n9jt2npww": {
-      "decimals": "0",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
-    }
-  },
   "darwinia": {
     "0xe7578598aac020abfb918f33a20fad5b71d670b4": {
       "to": "coingecko#darwinia-network-native-token",

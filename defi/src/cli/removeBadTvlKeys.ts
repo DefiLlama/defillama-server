@@ -1,12 +1,12 @@
 import { getAllProtocolItems, saveProtocolItem } from "../api2/db";
-import { dailyRawTokensTvl } from "../utils/getLastRecord";
+import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
 import { prefixMalformed } from "../storeTvlInterval/getAndStoreTvl";
 import { PromisePool } from "@supercharge/promise-pool";
 
 const protocols = ["1791", "1972", "529", "5773", "6202"];
 
-async function process(id: string) {
-  const rawTvls = await getAllProtocolItems(dailyRawTokensTvl, id);
+async function process(id: string, tvlFunc: Function) {
+  const rawTvls = await getAllProtocolItems(tvlFunc, id);
   const newTvls: any[] = [];
   rawTvls.map((rawTvl: any) => {
     const newTvl: any = { SK: rawTvl.SK };
@@ -24,17 +24,19 @@ async function process(id: string) {
     newTvls.push(newTvl);
   });
 
-  await PromisePool.withConcurrency(20)
+  await PromisePool.withConcurrency(5)
     .for(newTvls)
     .process(async (tvl) => {
-      await saveProtocolItem(dailyRawTokensTvl, { id, timestamp: tvl.SK, data: tvl, })
+      await saveProtocolItem(tvlFunc, { id, timestamp: tvl.SK, data: tvl, overwriteExistingData: true })
     })
 
   return;
 }
 
 async function main() {
-  await Promise.all(protocols.map(process));
+  await Promise.all(protocols.map(p => process(p, dailyRawTokensTvl)));
+  await Promise.all(protocols.map(p => process(p, hourlyRawTokensTvl)));
+
 }
 
 main(); // ts-node defi/src/cli/removeBadTvlKeys.ts

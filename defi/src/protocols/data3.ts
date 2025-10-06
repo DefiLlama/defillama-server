@@ -58520,7 +58520,7 @@ const data3_2: Protocol[] = [
     id: "5181",
     name: "Limitless Exchange",
     address: null,
-    symbol: "-",
+    symbol: "LMTS",
     url: "https://limitless.exchange/",
     description:
       "Prediction market on Base",

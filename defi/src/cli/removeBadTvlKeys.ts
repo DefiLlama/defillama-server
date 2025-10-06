@@ -27,8 +27,8 @@ async function process(id: string) {
   await PromisePool.withConcurrency(20)
     .for(newTvls)
     .process(async (tvl) => {
-      await saveProtocolItem(dailyRawTokensTvl, tvl);
-    });
+      await saveProtocolItem(dailyRawTokensTvl, { id, timestamp: tvl.SK, data: tvl, })
+    })
 
   return;
 }
@@ -37,4 +37,4 @@ async function main() {
   await Promise.all(protocols.map(process));
 }
 
-main(); // ts-node defi/src/removeBadTvlKeys.ts
+main(); // ts-node defi/src/cli/removeBadTvlKeys.ts

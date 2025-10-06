@@ -32679,7 +32679,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "garden",
       dexs: "garden",
-      "bridge-aggregators": "garden"
+      //"bridge-aggregators": "garden"
     }
   },
   {

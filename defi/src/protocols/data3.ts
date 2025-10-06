@@ -55576,7 +55576,8 @@ const data3_2: Protocol[] = [
     category: "Bridge",
     chains: ["Cosmos"],
     forkedFrom: [],
-    module: "osmosis-ibc/index.js",
+    // module: "osmosis-ibc/index.js",
+    module: "dummy.js", // we are not tracking bridged assets as tvl for any other ibc chain, why do it only for osmosis?
     twitter: "IBCProtocol",
     listedAt: 1724778968
   },

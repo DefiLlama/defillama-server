@@ -724,5 +724,25 @@ export const metadata: { [id: string]: Characteristics } = {
     kyc: false,
     transferable: true,
     selfCustody: true,
+  },
+  "6789": {
+    symbols: ["USX"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
+  },
+  "6790": {
+    symbols: ["USDf"],
+    matchExact: true,
+    redeemable: true,
+    attestations: true,
+    cexListed: false,
+    kyc: true,
+    transferable: true,
+    selfCustody: true,
   }
 };

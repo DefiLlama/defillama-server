@@ -65,3 +65,17 @@ export default function getTvlCacheEnv() {
     api2CacheDir: ENV.API2_CACHE_DIR,
   }
 }
+
+const booleanEnvVarsSet = new Set(['DIM_CRON_NOTIFY_ON_DISCORD'])
+const validEnvVarsSet = new Set([ ...requiredEnvVars, ...booleanEnvVarsSet, ])
+
+export function getEnv(env: string): string | boolean | undefined {
+  if (!validEnvVarsSet.has(env)) {
+    console.warn(`Warning: Accessing an environment variable that is not in the list of valid env vars: ${env}`);
+  }
+  if (booleanEnvVarsSet.has(env)) {
+    return process.env[env] === 'true'
+  }
+
+  return process.env[env]
+}

@@ -281,7 +281,7 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
     { type: QueryTypes.SELECT }
   )
 
-  log('[Postgres] fetch item count', table.getTableName(), items.length)
+  // log('[Postgres] fetch item count', table.getTableName(), items.length)
 
   items.forEach((i: any) => i.data.SK = i.timestamp)
   return items

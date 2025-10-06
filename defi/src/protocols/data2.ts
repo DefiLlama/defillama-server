@@ -16558,6 +16558,12 @@ const data2: Protocol[] = [
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9930"],
         chains: [{chain: "Unichain"}]
       },
+      {
+        name: "Api3",
+        type: "Primary",
+        proof: ["https://github.com/compound-finance/comet/pull/939"],
+        chains: [{chain: "Mantle"}]
+      },
     ],
     forkedFrom: [],
     module: "compound-v3/index.js",
@@ -22518,6 +22524,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1670348069,
     github: ["abelfinance"],
+    deadUrl: true,
   },
   {
     id: "2336",

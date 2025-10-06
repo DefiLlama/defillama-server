@@ -92,7 +92,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
   const label = `getAllItemsUpdatedAfter(${adapterType})`
-  console.time(label)
+  // console.time(label)
 
   let result: any = []
   let offset = 0
@@ -109,13 +109,13 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
     })
 
     result = result.concat(batch)
-    sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+    // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
     if (batch.length < limit) break
     offset += limit
   }
 
-  sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
-  console.timeEnd(label)
+  // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+  // console.timeEnd(label)
   return result
 }
 

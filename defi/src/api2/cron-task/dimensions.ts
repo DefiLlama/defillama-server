@@ -11,13 +11,13 @@ import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../a
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
-import { RUN_TYPE, roundVaules, } from "../utils";
+import { RUN_TYPE, roundVaules, runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
 import * as sdk from '@defillama/sdk'
 
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
 import { storeRouteData } from "../cache/file-cache"
 import { sluggifyString } from "../../utils/sluggify"
-import { storeAppMetadata } from './appMetadata';
+// import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
 import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
 
@@ -189,7 +189,7 @@ async function run() {
 
     console.time(timeKey1)
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
-    console.timeEnd(timeKey1)
+    // console.timeEnd(timeKey1)
 
     const adapterData = allCache[adapterType]
     const timeKey3 = `summary ${adapterType}`
@@ -235,7 +235,7 @@ async function run() {
     adapterData.summaries = summaries
     adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b) => chainMappingToVal[b] - chainMappingToVal[a])
     adapterData.lastUpdated = getUnixTimeNow()
-    console.timeEnd(timeKey3)
+    // console.timeEnd(timeKey3)
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
@@ -726,8 +726,11 @@ type ProtocolSummary = RecordSummary & {
   breakdown30d?: any
 }
 
-run()
-  .then(storeAppMetadata)
+runWithRuntimeLogging(run, {
+  application: 'cron-task',
+  type: 'dimensions',
+})
+  // .then(storeAppMetadata)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
@@ -738,7 +741,7 @@ run()
 const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
 
-const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+const NOTIFY_ON_DISCORD = cronNotifyOnDiscord()
 const ThreeMonthsAgo = (Date.now() / 1000) - 3 * 30 * 24 * 60 * 60
 const isLessThanThreeMonthsAgo = (timeS: string) => timeSToUnix(timeS) > ThreeMonthsAgo
 
@@ -973,7 +976,7 @@ async function generateDimensionsResponseFiles(cache: any) {
       }
     }
 
-    console.timeEnd(timeKey)
+    // console.timeEnd(timeKey)
   }
   await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
 }

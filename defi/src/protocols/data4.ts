@@ -10097,9 +10097,9 @@ const data4: Protocol[] = [
     previousNames: ["Rolldex"],
     address: null,
     symbol: "-",
-    url: "https://www.rolldex.io/",
+    url: "https://rollx.trade/",
     description:
-      "The first BitVM-powered multichain BTC-Fi-centric decentralized derivatives trading platform. 100% community-owned.",
+      "RollX is the fastest-growing perpetual DEX on Base. Supporting multi-asset and BTC-native collateral, it serves the largest user base on Base. ",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/rollx.jpg`,
     audits: "2",
@@ -12185,7 +12185,6 @@ const data4: Protocol[] = [
       "IoTeX",
       "Mode",
       "Sei",
-      "XDC",
       "Unichain",
       "zkSync Era",
     ],
@@ -15354,8 +15353,17 @@ const data4: Protocol[] = [
         proof: [
           "https://app.morpho.org/unichain/vault/0x4C91d8FBb468F2A318A16C95a9AE17dAe20d8328/9s-puncak-jaya-eth",
           "https://oracles.euler.finance/130/",
+          "https://app.morpho.org/ethereum/earn"
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{ chain: "Unichain" }, { chain: "Ethereum" }],
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/base/earn",
+        ],
+        chains: [{ chain: "Base" }],
       },
     ],
     listedAt: 1747733002,
@@ -15405,6 +15413,14 @@ const data4: Protocol[] = [
     module: "apostro/index.js",
     twitter: "apostroxyz",
     listedAt: 1747733258,
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "apostro"
     }
@@ -15427,6 +15443,14 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "b-protocol/index.js",
     twitter: "bprotocoleth",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn","https://app.morpho.org/ethereum/earn"],
+        chains: [{ chain: "Base" }, { chain: "Ethereum" }],
+      },
+    ],
     listedAt: 1747733358,
     dimensions: {
       fees: "b-protocol"
@@ -15451,6 +15475,14 @@ const data4: Protocol[] = [
     module: "block-analitica/index.js",
     twitter: "BlockAnalitica",
     listedAt: 1747733666,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn","https://app.morpho.org/ethereum/earn"],
+        chains: [{ chain: "Base" }, { chain: "Ethereum" }],
+      },
+    ],
     dimensions: {
       fees: "block-analitica"
     }
@@ -15474,6 +15506,14 @@ const data4: Protocol[] = [
     module: "clearstar/index.js",
     twitter: "ClearstarLabs",
     listedAt: 1747733862,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "clearstar"
     }
@@ -15569,7 +15609,13 @@ const data4: Protocol[] = [
           "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
           "https://oracles.euler.finance/130/",
         ],
-        chains: [{ chain: "Unichain" }],
+        chains: [{ chain: "Unichain" }, { chain: "Katana" }],
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/polygon/earn","https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Polygon" }, { chain: "Base" }],
       },
     ],
     listedAt: 1747734127,
@@ -15828,6 +15874,15 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "TAC" }],
       },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [
+          "https://app.morpho.org/polygon/earn",
+          "https://app.morpho.org/base/earn",
+        ],
+        chains: [{ chain: "Polygon" }, { chain: "Base" }],
+      },
     ],
     module: "re7/index.js",
     twitter: "Re7Labs",
@@ -15855,6 +15910,14 @@ const data4: Protocol[] = [
     module: "relend/index.js",
     twitter: "relend_network",
     listedAt: 1747735979,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/base/earn"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
     dimensions: {
       fees: "relend"
     }
@@ -15900,6 +15963,12 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Unichain" }],
       },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
+        chains: [{chain: "Katana"}]
+      }
     ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
@@ -15927,6 +15996,14 @@ const data4: Protocol[] = [
     module: "tulip-capital/index.js",
     twitter: "tulipacapital",
     listedAt: 1747736624,
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://app.morpho.org/ethereum/earn"],
+        chains: [ { chain: "Ethereum" }],
+      },
+    ],
     dimensions: {
       fees: "tulip-capital"
     }
@@ -16255,7 +16332,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "p2p-lending/index.js",
+    module: "SMARDEX-P2P-Lending/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
     listedAt: 1747967378,
@@ -16870,6 +16947,14 @@ const data4: Protocol[] = [
     twitter: "yearnfi",
     parentProtocol: "parent#yearn",
     listedAt: 1748533355,
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://app.morpho.org/katana/earn"],
+        chains: [{chain: "Katana"}, {chain: "Base"}]
+      }
+    ],
     dimensions: {
       fees: "yearn-curating"
     }
@@ -18985,7 +19070,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1750434513,
     dimensions: {
-      options: "optfun"
+      options: "optfun",
+      fees: "optfun"
     }
   },
   {
@@ -20821,6 +20907,9 @@ const data4: Protocol[] = [
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
+    dimensions: {
+      derivatives: "rysk-v12"
+    }
   },
   {
     id: "6416",
@@ -21621,6 +21710,9 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1752719634,
     parentProtocol: "parent#kinetiq",
+    tokensExcludedFromParent: {
+      Hyperliquid: ["KHYPE"],
+    },
     dimensions: {
       fees: "kinetiq-staked-hype"
     }
@@ -23716,8 +23808,14 @@ const data4: Protocol[] = [
     twitter: "boros_fi",
     listedAt: 1754577595,
     dimensions: {
-      fees: "boros",
-      derivatives: "boros"
+      fees: {
+        adapter: "boros",
+        genuineSpikes: ["1759449600"],
+      },
+      derivatives: {
+        adapter: "boros",
+        genuineSpikes: ["1759449600"],
+      },
     }
   },
   {
@@ -27146,7 +27244,8 @@ const data4: Protocol[] = [
     name: "Pacifica",
     address: null,
     symbol: "-",
-    url: "https://pacifica.fi",
+    url: "https://app.pacifica.fi?referral=defillama",
+    referralUrl: "https://app.pacifica.fi?referral=defillama",
     description:
       "Pacifica is a decentralized perpetual futures exchange offering leverage trading through advanced order types and APIs",
     chain: "Solana",
@@ -28039,7 +28138,11 @@ const data4: Protocol[] = [
     module: "ultrasolid-v3/index.js",
     twitter: "ultrasolid_hl",
     parentProtocol: "parent#ultrasolid",
-    listedAt: 1757693515
+    listedAt: 1757693515,
+    dimensions: {
+      fees: "ultrasolid-v3",
+      dexs: "ultrasolid-v3"
+    }
   },
   {
     id: "6723",
@@ -28136,7 +28239,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#astherus",
     dimensions: {
       fees: "apollox",
-      derivatives: "apollox",
+      // derivatives: "apollox",
       "open-interest": "apollox"
     }
   },
@@ -28910,7 +29013,10 @@ const data4: Protocol[] = [
       "https://github.com/DefiTuna/tuna-sdk/blob/main/audit/torii-defituna-report-27-Jan-2025.pdf"
     ],
     parentProtocol: "parent#defituna",
-    listedAt: 1758723382
+    listedAt: 1758723382,
+    dimensions: {
+      fees: "defituna-liquidity"
+    }
   },
   {
     id: "6761",
@@ -29056,15 +29162,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6767",
-    name: "Idle Mining",
-    previousNames: ["Qubic Mining"],
+    name: "Qubic Idle Compute",
+    previousNames: ["Qubic Mining", "Idle Mining"],
     address: null,
     symbol: "-",
     url: "https://qpools.qubicdisciple.info/",
     description:
       "A mining pool for Monero that generates revenue from mining and directs the proceeds to token burns.",
     chain: "Qubic",
-    logo: `${baseIconsUrl}/idle-mining.jpg`,
+    logo: `${baseIconsUrl}/qubic-idle-compute.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29146,7 +29252,7 @@ const data4: Protocol[] = [
     id: "6771",
     name: "Yield Basis",
     address: null,
-    symbol: "-",
+    symbol: "YB",
     url: "https://yieldbasis.com/",
     description: "YieldBasis is an on-chain liquidity protocol solving Impermanent Loss problem in AMM pools. It turns crypto into productive assets starting from Bitcoin. Using Yield Basis, LPs have a direct spot exposure to an asset and earn organic yield with significantly improved risk/reward profile (compared to conventional AMMs).",
     chain: "Ethereum",
@@ -29178,7 +29284,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Synthetics",
+    category: "Bridge",
     chains: ["Flare"],
     module: "flare-asset/index.js",
     twitter: "FlareNetworks",
@@ -29785,6 +29891,258 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     github: ["leadfi"],
     listedAt: 1759340419
+  },
+  {
+    id: "6800",
+    name: "MetaMask USD",
+    address: null,
+    symbol: "-",
+    url: "https://metamask.io/price/metamask-usd",
+    description: "MetaMask USD (mUSD) is a self-custodial wallet-native stablecoin issued via Bridge and M0, fully backed by short-term Treasury and cash reserves, and integrated into MetaMask’s wallet for swaps, on-ramps, and spending",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metamask-usd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Stablecoin Issuer",
+    chains: ["Ethereum", "Linea"],
+    module: "dummy.js",
+    twitter: "MetaMask",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "metamask-musd"
+    }
+  },
+  {
+    id: "6801",
+    name: "Lotus Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.lotusfinance.io/",
+    description: "Lotus Finance is a liquidity provider protocol on Sui. It now runs market making strategy on Deepbook and other CLOB DEX's, generates yield from trading strategies and maker fees",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/lotus-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "Lotusfinance_io",
+    forkedFromIds: [],
+    audit_links: [
+      "https://app.lotusfinance.io/files/Lotus%20Finance%20Smart%20Contract%20Audit%20Report-2025-5-27.pdf",
+      "https://info.asymptotic.tech/lotus-protocol-audit"
+    ],
+    dimensions: {
+      dexs: "lotus-finance",
+    },
+    github: ["lotus-finance-team"]
+  },
+  {
+    id: "6802",
+    name: "yieldEDU",
+    address: null,
+    symbol: "-",
+    url: "https://yieldedu.xyz",
+    description: "yieldEDU transforms education into an investable defi asset on-chain, where learners grow through verifiable progress and investors track funded impact",
+    chain: "EDU Chain",
+    logo: `${baseIconsUrl}/yieldedu.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["EDU Chain"],
+    module: "yieldedu/index.js",
+    twitter: "yield_edu",
+    forkedFromIds: [],
+    audit_links: [],
+    github: ["YieldEdu"],
+    listedAt: 1759424411
+  },
+  {
+    id: "6803",
+    name: "Kona Stableswap",
+    address: null,
+    symbol: "-",
+    url: "https://kona.surf/",
+    description: "Kona's DEX infrastructure is built on top of KittyPunch's PunchSwap and StableKitty protocols.",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/kona-stableswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Abstract"],
+    module: "kittypunch-kona-stableswap/index.js",
+    twitter: "KonaDeFi",
+    forkedFromIds: [],
+    parentProtocol: "parent#kittypunch",
+    listedAt: 1759452565,
+  },
+  {
+    id: "6804",
+    name: "alphagrowth",
+    address: null,
+    symbol: "-",
+    url: "https://app.euler.finance/governor/alphagrowth?network=unichain",
+    description: "AlphaGrowth is a blockchain consultancy focused on expanding token utility and accessibility through partnerships and integrations.",
+    chain: "Unichain",
+    logo: `${baseIconsUrl}/alphagrowth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Unichain"],
+    module: "alpha-growth/index.js",
+    twitter: "alphagrowth1",
+    forkedFromIds: [],
+    listedAt: 1759454377,
+    dimensions: {
+      fees: "alpha-growth"
+    }
+  },
+  {
+    id: "6805",
+    name: "Avantgarde",
+    address: null,
+    symbol: "-",
+    url: "https://app.morpho.org/ethereum/curator/avantgarde",
+    description: "Unleashing the potential of idle on-chain capital.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/avantgarde.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    module: "avantgarde/index.js",
+    twitter: "avantgardefi",
+    forkedFromIds: [],
+    listedAt: 1759454384,
+    dimensions: {
+      fees: "avantgarde"
+    }
+  },
+  {
+    id: "6806",
+    name: "Keyring",
+    address: null,
+    symbol: "-",
+    url: "https://app.euler.finance/governor/keyring?network=avalanche",
+    description: "Enhanced depositor protection with instant zkVerification.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/keyring.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Avalanche"],
+    module: "keyring/index.js",
+    twitter: "KeyringNetwork",
+    forkedFromIds: [],
+    listedAt: 1759454392,
+    dimensions: {
+      fees: "keyring"
+    }
+  },
+  {
+    id: "6807",
+    name: "Sentora",
+    address: null,
+    symbol: "-",
+    url: "https://app.euler.finance/governor/sentora?network=ethereum",
+    description: "Sentora provides the institutional-grade foundation for powering the next generation of DeFi solutions. Sentora's vault platform unlocks access to DeFi through sophisticated strategies, robust risk management, and enterprise-grade security.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sentora.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    module: "sentora/index.js",
+    twitter: "SentoraHQ",
+    forkedFromIds: [],
+    listedAt: 1759454399,
+    dimensions: {
+      fees: "sentora"
+    }
+  },
+  {
+    id: "6808",
+    name: "SingularV",
+    address: null,
+    symbol: "-",
+    url: "https://app.morpho.org/ethereum/curator/singularv",
+    description: "Onchain market making firm. Focusing on Optimization, and risk management on Ethereum & TON",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/singularv.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    module: "singularv/index.js",
+    twitter: "SingularV__",
+    forkedFromIds: [],
+    listedAt: 1759454407,
+    dimensions: {
+      fees: "singularv"
+    }
+  },
+  {
+    id: "6809",
+    name: "TokenWorks",
+    address: null,
+    symbol: "-",
+    url: "https://www.nftstrategy.fun/",
+    description: "NFTStrategy is an on-chain protocol that creates strategy tokens for NFT collections, using trading fees to buy floor NFTs, relist them for profit, and burn supply while paying creator royalties",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenworks.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Automated Strategies",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "token_works",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "token-works"
+    }
+  },
+  {
+    id: "6810",
+    name: "Tokos",
+    address: null,
+    symbol: "-",
+    url: "https://app.tokos.fi/",
+    description: "Permissionless lending & borrowing on Somnia Network",
+    chain: "Somnia",
+    logo: `${baseIconsUrl}/tokos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Somnia"],
+    module: "tokos-fi/index.js",
+    twitter: "tokos_fi",
+    forkedFromIds: [],
+    listedAt: 1759603671,
+    dimensions: {
+      fees: "tokos-fi"
+    }
   },
 ];
 export default data4;

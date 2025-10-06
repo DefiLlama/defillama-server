@@ -8098,6 +8098,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Kinetiq_xyz",
     treasury: "kinetiq.js",
   },
+  {
+    id: "parent#woofswap",
+    name: "WoofSwap",
+    url: "https://www.woofswap.finance/",
+    description: "WoofSwap is your all-in-one multichain DEX. - ve33 DEX.",
+    logo: `${baseIconsUrl}/woofswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "woofswap",
+  },
 ];
 
 export default parentProtocols;

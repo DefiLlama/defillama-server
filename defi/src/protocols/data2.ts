@@ -12412,7 +12412,7 @@ const data2: Protocol[] = [
     treasury: "betswirl.js",
     cmcId: "18453",
     category: "Prediction Market",
-    chains: ["Binance", "Ethereum", "Polygon", "Arbitrum", "Avalanche"],
+    chains: ["Binance", "Polygon", "Arbitrum", "Avalanche"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "betswirl/index.js",

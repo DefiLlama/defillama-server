@@ -43,7 +43,7 @@ async function getEulerV2Tokens(
     return vaultDeploy.args[0]; // proxy
   });
 
-  const [assets, sharePrice, symbols, dTokens] = await Promise.all([
+  const [assets, sharePrice, symbols, dTokens, amounts] = await Promise.all([
     sdk.api.abi.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
@@ -80,6 +80,14 @@ async function getEulerV2Tokens(
       chain,
       permitFailure: true,
     }),
+    sdk.api.abi.multiCall({
+      calls: vaultAddresses.map((address: any) => ({
+        target: address,
+      })),
+      abi: vaultAbi.find((m: any) => m.name === "totalAssets"),
+      chain,
+      permitFailure: true,
+    }),
   ]);
 
   const marketData = assets.output.map((asset: any, i: number) => {
@@ -89,6 +97,7 @@ async function getEulerV2Tokens(
       symbol: symbols.output[i].output,
       sharePrice: sharePrice.output[i].output / 1e18,
       dToken: dTokens.output[i].output,
+      amount: amounts.output[i].output,
     };
   });
 
@@ -106,7 +115,11 @@ function formWrites(
     const coinData: CoinData | undefined =
       underlyingPrices[m.underlying.toLowerCase()];
     const rate = m.sharePrice;
-    if (coinData == null || rate == null) return;
+    if (coinData == null || rate == null || !m.amount) return;
+
+    const tvl = m.amount * coinData.price / 10 ** coinData.decimals;
+    if (tvl < 1e5) return; // filtering out small markets
+
     const eTokenPrice: number = coinData.price * rate;
 
     if (eTokenPrice == 0) return;

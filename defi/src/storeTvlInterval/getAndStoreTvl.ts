@@ -159,7 +159,7 @@ function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsOb
   }
 }
 
-function prefixMalformed(address: string) {
+export function prefixMalformed(address: string) {
   const parts = address.split(':')
   if (parts.length < 3) return false
   if (address.indexOf(':coingecko:') != -1) return true

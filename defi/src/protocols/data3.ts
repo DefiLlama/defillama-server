@@ -32678,7 +32678,8 @@ const data3_1: Protocol[] = [
     listedAt: 1706793085,
     dimensions: {
       fees: "garden",
-      dexs: "garden"
+      dexs: "garden",
+      "bridge-aggregators": "garden"
     }
   },
   {

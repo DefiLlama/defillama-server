@@ -10310,6 +10310,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    },
+    "0x4Cda2D683E3AF90ea50855008BdB15D9454527B7": {
+      "to": "coingecko#bitcoin-usd-btcfi",
+      "decimals": 18,
+      "symbol": "BtcUSD"
     }
   },
   "hsk": {
@@ -12210,7 +12215,7 @@
       "decimals": 8,
       "symbol": "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0"
     }
-  }, 
+  },
   "gatelayer": {
     "0x6803b8e93b13941f6b73b82e324b80251b3de338": {
       "to": "coingecko#gatechain-token",

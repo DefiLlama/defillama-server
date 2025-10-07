@@ -30279,6 +30279,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.solid.xyz/safety-and-trust/security-and-audits#audits"],
     listedAt: 1759797789,
   },
+  /*
   {
     id: "6817",
     name: "PunkStrategy",
@@ -30302,5 +30303,6 @@ const data4: Protocol[] = [
    //   fees: "punk-strategy"
     }
   },
+  */
 ];
 export default data4;

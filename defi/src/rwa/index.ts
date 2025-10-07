@@ -22,8 +22,8 @@ function fetchSymbols() {
 
 export async function fetchRWAStats() {
   const symbols = fetchSymbols();
-  if (!process.env.INFINITE_INTERNAL_API_KEY) throw new Error("INFINITE_INTERNAL_API_KEY is not set");
-  const data = await fetch(`https://pro-api.llama.fi/${process.env.INFINITE_INTERNAL_API_KEY}/yields/pools`).then((r) =>
+  if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
+  const data = await fetch(`https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/yields/pools`).then((r) =>
     r.json()
   );
   if (!data.data) throw new Error(`No data: ${JSON.stringify(data)}`);
@@ -63,5 +63,3 @@ export async function fetchRWAStats() {
 
   return res;
 }
-
-fetchRWAStats(); // ts-node defi/src/rwa/index.ts

@@ -301,6 +301,17 @@ const configs: { [adapter: string]: Config } = {
     decimals: "6",
     symbol: "ALP",
   },
+  stSUPRA: {
+    rate: async () => {
+      const res = await fetch("https://api.solido.money/protocol/metrics").then((r) => r.json());
+      return res.pricestSUPRA;
+    },
+    chain: "supra",
+    address: "0x81846514536430ea934c7270f86cf5b067e2a2faef0e91379b4f284e91c7f53c::vault_core::VaultShare",
+    underlying: "0x1::supra_coin::SupraCoin",
+    decimals: "8",
+    symbol: "stSUPRA",
+  }
 };
 
 export async function apiDerivs(timestamp: number) {

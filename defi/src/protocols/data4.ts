@@ -20907,6 +20907,9 @@ const data4: Protocol[] = [
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
+    dimensions: {
+      derivatives: "rysk-v12"
+    }
   },
   {
     id: "6416",
@@ -25594,31 +25597,31 @@ const data4: Protocol[] = [
     github: ["fiamma-chain"],
     listedAt: 1755792897,
   },
-  {
-    id: "6615",
-    name: "Garden Bridge Aggregator",
-    address: "0x5eed99d066a8caf10f3e4327c1b3d8b673485eed",
-    symbol: "SEED",
-    url: "https://app.garden.finance/",
-    description:
-      "Garden is a decentralized, intents-based Bitcoin bridge using atomic swaps and HTLCs to transfer BTC across multiple chains instantly, powered by SEED-governed liquidity solvers.",
-    chain: "Bitcoin",
-    logo: `${baseIconsUrl}/garden-bridge-aggregator.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Bridge Aggregator",
-    chains: ["Bitcoin"],
-    forkedFrom: [],
-    module: "dummy.js",
-    twitter: "garden_finance",
-    audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
-    parentProtocol: "parent#garden",
-    dimensions: {
-      "bridge-aggregators": "garden"
-    }
-  },
+  // {
+  //   id: "6615",
+  //   name: "Garden Bridge Aggregator",
+  //   address: "0x5eed99d066a8caf10f3e4327c1b3d8b673485eed",
+  //   symbol: "SEED",
+  //   url: "https://app.garden.finance/",
+  //   description:
+  //     "Garden is a decentralized, intents-based Bitcoin bridge using atomic swaps and HTLCs to transfer BTC across multiple chains instantly, powered by SEED-governed liquidity solvers.",
+  //   chain: "Bitcoin",
+  //   logo: `${baseIconsUrl}/garden-bridge-aggregator.jpg`,
+  //   audits: "2",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Bridge Aggregator",
+  //   chains: ["Bitcoin"],
+  //   forkedFrom: [],
+  //   module: "dummy.js",
+  //   twitter: "garden_finance",
+  //   audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
+  //   parentProtocol: "parent#garden",
+  //   dimensions: {
+  //     "bridge-aggregators": "garden"
+  //   }
+  // },
   {
     id: "6616",
     name: "BrownFi",
@@ -28236,7 +28239,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#astherus",
     dimensions: {
       fees: "apollox",
-      derivatives: "apollox",
+      // derivatives: "apollox",
       "open-interest": "apollox"
     }
   },
@@ -29561,6 +29564,14 @@ const data4: Protocol[] = [
     chains: ["Plasma"],
     module: "telosc/index.js",
     twitter: "TelosConsilium",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10766"],
+        chains: [{ chain: "Plasma" }],
+      },
+    ],
     forkedFromIds: [],
     listedAt: 1759244012
   },
@@ -29934,7 +29945,7 @@ const data4: Protocol[] = [
       "https://info.asymptotic.tech/lotus-protocol-audit"
     ],
     dimensions: {
-      fees: "metamask-musd"
+      dexs: "lotus-finance",
     },
     github: ["lotus-finance-team"]
   },
@@ -30000,6 +30011,9 @@ const data4: Protocol[] = [
     twitter: "alphagrowth1",
     forkedFromIds: [],
     listedAt: 1759454377,
+    dimensions: {
+      fees: "alpha-growth"
+    }
   },
   {
     id: "6805",
@@ -30020,6 +30034,9 @@ const data4: Protocol[] = [
     twitter: "avantgardefi",
     forkedFromIds: [],
     listedAt: 1759454384,
+    dimensions: {
+      fees: "avantgarde"
+    }
   },
   {
     id: "6806",
@@ -30040,6 +30057,9 @@ const data4: Protocol[] = [
     twitter: "KeyringNetwork",
     forkedFromIds: [],
     listedAt: 1759454392,
+    dimensions: {
+      fees: "keyring"
+    }
   },
   {
     id: "6807",
@@ -30060,6 +30080,9 @@ const data4: Protocol[] = [
     twitter: "SentoraHQ",
     forkedFromIds: [],
     listedAt: 1759454399,
+    dimensions: {
+      fees: "sentora"
+    }
   },
   {
     id: "6808",
@@ -30080,6 +30103,204 @@ const data4: Protocol[] = [
     twitter: "SingularV__",
     forkedFromIds: [],
     listedAt: 1759454407,
+    dimensions: {
+      fees: "singularv"
+    }
+  },
+  {
+    id: "6809",
+    name: "TokenWorks",
+    address: null,
+    symbol: "-",
+    url: "https://www.nftstrategy.fun/",
+    description: "NFTStrategy is an on-chain protocol that creates strategy tokens for NFT collections, using trading fees to buy floor NFTs, relist them for profit, and burn supply while paying creator royalties",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenworks.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Automated Strategies",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "token_works",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "token-works"
+    }
+  },
+  {
+    id: "6810",
+    name: "Tokos",
+    address: null,
+    symbol: "-",
+    url: "https://app.tokos.fi/",
+    description: "Permissionless lending & borrowing on Somnia Network",
+    chain: "Somnia",
+    logo: `${baseIconsUrl}/tokos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Somnia"],
+    module: "tokos-fi/index.js",
+    twitter: "tokos_fi",
+    forkedFromIds: [],
+    listedAt: 1759603671,
+    dimensions: {
+      fees: "tokos-fi"
+    }
+  },
+  {
+    id: "6811",
+    name: "WoofSwap GateLayer",
+    address: null,
+    symbol: "WOOF",
+    url: "https://www.woofswap.finance",
+    description: "A ve(3,3) DEX on GateLayer.",
+    chain: "GateLayer",
+    logo: `${baseIconsUrl}/woofswap-gatelayer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["GateLayer"],
+    module: "woofswapGL/index.js",
+    forkedFromIds: ["1407"],
+    twitter: "woofswap",
+    parentProtocol: "parent#woofswap",
+    listedAt: 1759767459,
+  },
+  {
+    id: "6812",
+    name: "SwapX Xone Chain",
+    address: null,
+    symbol: "-",
+    url: "https://swapx.exchange/en",
+    description: "SwapX is a decentralized token exchange, providing users with a complete digital asset management solution.",
+    chain: "Xone Chain",
+    logo: `${baseIconsUrl}/swapx-xone-chain.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Xone Chain"],
+    module: "swapx/index.js",
+    forkedFromIds: ["2197"],
+    twitter: "SwapX009",
+    listedAt: 1759774769,
+  },
+  {
+    id: "6813",
+    name: "Salsadex",
+    address: null,
+    symbol: "-",
+    url: "https://salsadex.com/",
+    description: "Salsadex is an interface for trading perps via Orderly.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/salsadex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Orderly"],
+    module: "dummy.js",
+    forkedFromIds: [],
+    twitter: "Salsadex_",
+    dimensions: {
+      fees: "salsadex"
+    }
+  },
+  {
+    id: "6814",
+    name: "JUMPBOX.ETH",
+    address: "base:0x5B9957A7459347163881d19a87f6DC13291C2B07",
+    symbol: "JUMPBOX",
+    url: "https://www.jumpbox.tech/",
+    description: "JUMPBOX.ETH is a yield farming protocol on Base offering 124% APY through Uniswap V3 LP staking. Users provide JUMPBOX-WETH liquidity on Uniswap V3, deposit their positions into a Rebase-powered staking wrapper, and earn high yield.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/jumpbox.eth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    module: "jumpbox/index.js",
+    forkedFromIds: [],
+    twitter: "jumpbox_eth",
+    listedAt: 1759793858,
+  },
+  {
+    id: "6815",
+    name: "ShibaSwap V2",
+    address: "0x9813037ee2218799597d83d4a5b6f3b6778218d9",
+    symbol: "BONE",
+    url: "https://shibaswap.com",
+    description:
+      "SHIB, LEASH, and BONE, come together to create ShibaSwap, the next evolution in DeFi platforms. ShibaSwap gives users the ability to DIG (provide liquidity), BURY (stake), and SWAP tokens to gain WOOF Returns through our sophisticated and innovative passive income reward system.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/shibaswap-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum", "Shibarium"],
+    module: "shibaswap-v2/index.js",
+    twitter: "ShibaSwapDEX",
+    audit_links: ["https://www.certik.org/projects/shib"],
+    forkedFromIds: ["2198"],
+    parentProtocol: "parent#shibaswap",
+    listedAt: 1759797783,
+  },
+  {
+    id: "6816",
+    name: "Solid Yield",
+    address: null,
+    symbol: "-",
+    url: "https://solid.xyz",
+    description: "Decentralized banking platform that converts deposits into SoUSD, a yield-bearing digital dollar that automatically earns returns across trusted DeFi protocols.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/solid-yield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Fuse"],
+    module: "solid-yield/index.js",
+    forkedFromIds: ["5825"],
+    twitter: "SolidYield",
+    audit_links: ["https://docs.solid.xyz/safety-and-trust/security-and-audits#audits"],
+    listedAt: 1759797789,
+  },
+  {
+    id: "6817",
+    name: "PunkStrategy",
+    address: "0xc50673edb3a7b94e8cad8a7d4e0cd68864e33edf",
+    symbol: "PNKSTR",
+    url: "https://www.punkstrategy.fun/",
+    description: "PunkStrategy is an automated NFT-linked protocol where trading fees in PNKSTR fuel the purchase of CryptoPunks, which are relisted and, upon sale, recycled ETH to buy and burn PNKSTR, creating perpetual exposure to the Punk floor.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/punkstrategy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "punkstrategy",
+    cmcId: null,
+    category: "NFT Automated Strategies",
+    chains: ["Ethereum"],
+    module: "punk-strategy/index.js",
+    forkedFromIds: [],
+    twitter: "token_works",
+    listedAt: 1759798239,
+    dimensions: {
+      fees: "punk-strategy"
+    }
   },
 ];
 export default data4;

@@ -4947,6 +4947,26 @@ export const chainCoingeckoIds = {
     github: ["mezo-org"],
     chainId: 31612,
   },
+  "GateLayer": {
+    geckoId: null,
+    symbol: "GT",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    twitter: "gatechain_io",
+    url: "https://gatechain.io/gatelayer",
+    github: ["gatechain"],
+    chainId: 10088,
+  },
+  "Xone Chain": {
+    geckoId: "xoc",
+    symbol: "XOC",
+    cmcId: null,
+    categories: [],
+    twitter: "xone_chain",
+    url: "https://xone.org/",
+    github: ["hello-xone"],
+    chainId: 3721,
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5160,7 +5180,9 @@ const chainLabelMap = {
   "camp": "Camp",
   "off_chain": "Off Chain",
   "zklighter": "zkLighter",
-  "goat": "Goat"
+  "goat": "Goat",
+  "gatelayer": "GateLayer",
+  "xone": "Xone Chain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -1425,6 +1425,11 @@
     }
   },
   "bsc": {
+    "0x7cb8a5abf019983ed053484d5ad17f96fec56f28": {
+      "decimals": "8",
+      "symbol": "leadBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x4baB31D6c557F8285eccB5167095147a36D9BaFa": {
       "decimals": "18",
       "symbol": "SPECTRA",
@@ -3189,18 +3194,6 @@
       "to": "coingecko#liquity-bold",
       "decimals": 18,
       "symbol": "BOLD"
-    }
-  },
-  "radixdlt": {
-    "resource_rdx1tknxxxxxxxxxradxrdxxxxxxxxx009923554798xxxxxxxxxradxrd": {
-      "decimals": "0",
-      "symbol": "XRD",
-      "to": "coingecko#radix"
-    },
-    "resource_rdx1th88qcj5syl9ghka2g9l7tw497vy5x6zaatyvgfkwcfe8n9jt2npww": {
-      "decimals": "0",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
     }
   },
   "darwinia": {
@@ -6750,6 +6743,11 @@
     }
   },
   "bsquared": {
+    "0x796e4D53067FF374B89b2Ac101ce0c1f72ccaAc2": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "BTC",
@@ -11917,7 +11915,7 @@
       "symbol": "ueur.trading"
     },
     "uylds.fcc": {
-      "to": "coingecko#ylds",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "uylds.fcc"
     },

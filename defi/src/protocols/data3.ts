@@ -7384,14 +7384,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3014",
-    name: "Morpho AaveV3",
+    name: "Morpho V0 AaveV3",
+    previousNames: ["Morpho AaveV3"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev3.morpho.org/",
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-aavev3.png`,
+    logo: `${baseIconsUrl}/morpho-v0-aavev3.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -17845,13 +17846,13 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3458",
-    name: "WoofSwap",
+    name: "WoofSwap Shibarium",
     address: null,
     symbol: "WOOF",
     url: "https://www.woofswap.finance",
     description: "The first ve(3,3) DEX on #Shibarium.",
     chain: "Shibarium",
-    logo: `${baseIconsUrl}/woofswap.png`,
+    logo: `${baseIconsUrl}/woofswap-shibarium.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17859,8 +17860,9 @@ const data3_1: Protocol[] = [
     category: "Dexs",
     chains: ["Shibarium"],
     module: "woofswap/index.js",
-    forkedFromIds: ["2197"],
+    forkedFromIds: ["1407"],
     twitter: "woofswap",
+    parentProtocol: "parent#woofswap",
     listedAt: 1693328565,
   },
   {
@@ -31114,13 +31116,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4025",
-    name: "Morpho Blue",
+    name: "Morpho V1",
+    previousNames: ["Morpho Blue"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-blue.png`,
+    logo: `${baseIconsUrl}/morpho-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -32674,11 +32677,12 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
-    parentProtocol: "parent#garden",
+    //parentProtocol: "parent#garden",
     listedAt: 1706793085,
     dimensions: {
       fees: "garden",
-      dexs: "garden"
+      dexs: "garden",
+      //"bridge-aggregators": "garden"
     }
   },
   {
@@ -41322,6 +41326,9 @@ const data3_2: Protocol[] = [
     twitter: "rage_trade",
     github: ["RageTrade"],
     listedAt: 1712327109,
+    hallmarks: [
+      ['2025-10-06', 'Project winds down']
+    ],
     dimensions: {
       "aggregator-derivatives": "rage-trade"
     }
@@ -53242,7 +53249,7 @@ const data3_2: Protocol[] = [
     symbol: "ARROW",
     url: "https://arrow.markets",
     description:
-      "Arrow Markets is a cutting-edge options platform that revolutionizes trading by seamlessly integrating an innovative RFQ system",
+      "We are the first Hybrid Options platform, seamlessly fusing CeFi convenience with DeFi transparency. NO complexity, ALL opportunity #CatchTheArrow",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arrow-markets.png`,
     audits: "0",
@@ -55571,7 +55578,8 @@ const data3_2: Protocol[] = [
     category: "Bridge",
     chains: ["Cosmos"],
     forkedFrom: [],
-    module: "osmosis-ibc/index.js",
+    // module: "osmosis-ibc/index.js",
+    module: "dummy.js", // we are not tracking bridged assets as tvl for any other ibc chain, why do it only for osmosis?
     twitter: "IBCProtocol",
     listedAt: 1724778968
   },
@@ -58516,7 +58524,7 @@ const data3_2: Protocol[] = [
     id: "5181",
     name: "Limitless Exchange",
     address: null,
-    symbol: "-",
+    symbol: "LMTS",
     url: "https://limitless.exchange/",
     description:
       "Prediction market on Base",

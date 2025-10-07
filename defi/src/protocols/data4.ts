@@ -30453,7 +30453,7 @@ const data4: Protocol[] = [
     twitter: "BabyDogeCoin",
     forkedFromIds: [],
     dimensions: {
-      dexs: "babydoge-perps"
+      dexs: "bd-perps"
     },
     parentProtocol: "parent#babydogecoin",
   },

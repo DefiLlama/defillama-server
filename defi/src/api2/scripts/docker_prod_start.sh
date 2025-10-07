@@ -5,6 +5,18 @@ ROOT_DIR=$SCRIPT_DIR/../../..
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
+
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
+if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
+    echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Checkout the specified branch
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Pull latest code from the branch
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+else
+    # echo "Using default branch deployment: $(git branch --show-current)"
+fi
+
 git pull
 git submodule update --init --recursive
 git submodule update --remote --merge

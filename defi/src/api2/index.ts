@@ -55,6 +55,7 @@ async function main() {
   }
 
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
+  webserver.get('/branch', (_req, res) => res.send(process.env.CUSTOM_GIT_BRANCH_DEPLOYMENT ?? 'llama'))
 
   webserver.options('/*', (req, res) => {
     const origin = req.headers.origin;

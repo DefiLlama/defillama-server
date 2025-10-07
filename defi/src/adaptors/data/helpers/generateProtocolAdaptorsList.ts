@@ -79,6 +79,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
+      if (moduleObject.breakdownMethodology) infoItem.breakdownMethodology = moduleObject.breakdownMethodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 
       response.push(infoItem)

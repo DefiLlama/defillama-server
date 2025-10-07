@@ -10,12 +10,10 @@ import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, } from "../utils/dimensionsUtils";
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
-import {  runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
+import { runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
 import * as sdk from '@defillama/sdk'
 
-import { getOverviewProcess2, getProtocolDataHandler2, generateDimensionsResponseFiles } from "../routes/dimensions"
-import { storeRouteData } from "../cache/file-cache"
-import { sluggifyString } from "../../utils/sluggify"
+import { generateDimensionsResponseFiles } from "../routes/dimensions"
 
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DimensionsDataRecordMap, ProtocolAdaptor, ProtocolSummary, RecordSummary, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
@@ -256,7 +254,7 @@ async function run() {
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
       protocol.misc = {};
       protocol.dataTypes = new Set()
-      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted']
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted', 'breakdownMethodology', 'childMethodologies', 'childBreakdownMethodologies', ]
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
 
@@ -615,11 +613,21 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   const parentRecords: any = {}
   const { info, } = protocol
   const childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
+
+
   info.linkedProtocols = [info.name].concat(childProtocols)
+  info.childMethodologies = {}
+  info.childBreakdownMethodologies = {}
+
+
+
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const childProtocolLabel = childData.name ?? childData.displayName
     childData.linkedProtocols = info.linkedProtocols
+
+    if (childData.methodology) info.childMethodologies[childProtocolLabel] = childData.methodology
+    if (childData.breakdownMethodology) info.childBreakdownMethodologies[childProtocolLabel] = childData.breakdownMethodology
 
     if (!childProtocolLabel) console.log('childProtocolLabel is missing', childData)
 
@@ -644,6 +652,13 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
           aggItem.chains[chain] = (aggItem.chains[chain] ?? 0) + value
           breakdownItem.chains[chain] = value
         })
+
+        if (childAggData.labelBreakdown) {
+          if (!aggItem.labelBreakdown) aggItem.labelBreakdown = {}
+          Object.entries(childAggData.labelBreakdown).forEach(([label, labelValue]: any) => {
+            aggItem.labelBreakdown![label] = (aggItem.labelBreakdown![label] ?? 0) + labelValue
+          })
+        }
       })
     })
   })

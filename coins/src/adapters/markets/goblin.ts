@@ -4,6 +4,7 @@ import {
   getTokenAndRedirectDataMap,
 } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
+import { PromisePool } from "@supercharge/promise-pool";
 
 const decimals = 8;
 const supplyQuery = 1000000;
@@ -18,7 +19,7 @@ export async function goblin(timestamp: number = 0) {
     },
   } = await axios.post("https://api.hyperion.xyz/v1/graphql", {
     query: `query fetchAllVaultQuery {
-            vault { tokenA  tokenB  vaultId  vaultName  }  
+            vault { tokenA  tokenB  vaultId  vaultName }  
         }`,
   });
 
@@ -34,8 +35,9 @@ export async function goblin(timestamp: number = 0) {
   );
 
   const writes: Write[] = [];
-  await Promise.all(
-    vault.map(async (v: any) => {
+  await PromisePool.withConcurrency(5)
+    .for(vault)
+    .process(async (v: any) => {
       const balances = await fetch(
         `https://api.mainnet.aptoslabs.com/v1/view`,
         {
@@ -53,7 +55,6 @@ export async function goblin(timestamp: number = 0) {
 
       if (!balances.length) return;
 
-      console.log(v.vaultId);
       if (!underlyingTokenData[v.tokenA] || !underlyingTokenData[v.tokenB])
         return;
 
@@ -72,13 +73,14 @@ export async function goblin(timestamp: number = 0) {
         v.vaultId,
         price,
         decimals,
-        `GoblinLP-${underlyingTokenData[v.tokenA].symbol}-${underlyingTokenData[v.tokenB].symbol}-${v.vaultName}`,
+        `GoblinLP-${underlyingTokenData[v.tokenA].symbol}-${
+          underlyingTokenData[v.tokenB].symbol
+        }-${v.vaultName}`,
         timestamp,
         "goblin",
         0.9
       );
-    })
-  );
+    });
 
   return writes;
 }

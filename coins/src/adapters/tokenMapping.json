@@ -2808,6 +2808,21 @@
     }
   },
   "aptos": {
+    "0x000000000000000000000000000000000000000000000000000000000000000a": {
+      "decimals": "8",
+      "symbol": "APT",
+      "to": "coingecko#aptos"
+    },
+    "0xf764dbfd6999067ac052a8e722ae359bec389bd7dba19ead586801b99b81b075": {
+      "decimals": "8",
+      "symbol": "uniBTC",
+      "to": "coingecko#universal-btc"
+    },
+    "0xf599112bc3a5b6092469890d6a2f353f485a6193c9d36626b480704467d3f4c8": {
+      "decimals": "8",
+      "symbol": "aBTC",
+      "to": "coingecko#abtc"
+    },
     "0x5fabd1b12e39967a3c24e91b7b8f67719a6dacee74f3c8b9fb7d93e855437d2": {
       "decimals": "6",
       "symbol": "USD1",

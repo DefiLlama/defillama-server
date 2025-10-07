@@ -29899,7 +29899,10 @@ const data4: Protocol[] = [
     twitter: "LeadFiOfficial",
     forkedFromIds: [],
     github: ["leadfi"],
-    listedAt: 1759340419
+    listedAt: 1759340419,
+    dimensions: {
+      fees: "LeadFi-leadBTC"
+    }
   },
   {
     id: "6800",

@@ -30126,12 +30126,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "NFT Automated Strategies",
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "tokenworks/index.js",
     twitter: "token_works",
     forkedFromIds: [],
     dimensions: {
       fees: "token-works"
-    }
+    },
+    listedAt: 1759876225
   },
   {
     id: "6810",
@@ -30388,6 +30389,49 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1759875947
+  },
+  {
+    id: "6821",
+    name: "Giza",
+    address: null,
+    symbol: "-",
+    url: "https://www.gizatech.xyz/",
+    description:
+      "Giza is the infrastructure powering autonomous financial markets by enabling non-custodial algorithmic agents that execute sophisticated DeFi strategies around the clock",
+    chain: "Base",
+    logo: `${baseIconsUrl}/giza.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "AI Agents",
+    chains: ["Base", "Arbitrum", "Plasma"],
+    module: "giza/index.js",
+    twitter: "gizatechxyz",
+    audit_links: ["https://docs.usepulse.xyz/audit"],
+    forkedFromIds: [],
+    listedAt: 1759876671
+  },
+  {
+    id: "6822",
+    name: "Bitget bgBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitget.com/",
+    description:
+      "Backed 1:1 by Bitcoin (BTC) on Bitget, BGBTC is designed to help you earn more while keeping your assets flexible and secure. By staking BTC, you can earn stable returns and collect BGPoints, which can be used to claim airdrops from various Bitcoin ecosystem projects",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitget-bgbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "bitget-btc/index.js",
+    twitter: "bitgetglobal",
+    forkedFromIds: [],
+    listedAt: 1759876842
   },
 ];
 export default data4;

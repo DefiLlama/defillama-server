@@ -30290,6 +30290,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "token_works",
     listedAt: 1759798239,
+    dimensions: {
+      fees: "punk-strategy"
+    }
   },
 ];
 export default data4;

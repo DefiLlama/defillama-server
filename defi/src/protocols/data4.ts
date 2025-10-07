@@ -29564,6 +29564,14 @@ const data4: Protocol[] = [
     chains: ["Plasma"],
     module: "telosc/index.js",
     twitter: "TelosConsilium",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10766],
+        chains: [{ chain: "Plasma" }],
+      },
+    ],
     forkedFromIds: [],
     listedAt: 1759244012
   },

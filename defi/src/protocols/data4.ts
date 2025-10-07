@@ -30335,5 +30335,59 @@ const data4: Protocol[] = [
     listedAt: 1759848161,
     parentProtocol: "parent#rooster-protocol",
   },
+  {
+    id: "6819",
+    name: "Quanto",
+    address: null,
+    symbol: "-",
+    url: "https://quanto.trade/en",
+    description:
+      "Quanto is a derivatives exchange for memecoin futures and perpetuals, allowing up to 100x leverage and denominate/settle trades entirely using its native token QTO",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/quanto.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "quanto",
+    audit_links: [],
+    forkedFromIds: [],
+    dimensions: {
+      fees: "quanto"
+    }
+  },
+  {
+    id: "6820",
+    name: "BitFire",
+    address: null,
+    symbol: "-",
+    url: "https://bit-fire.xyz/",
+    description:
+      "Institutional BTC & Tokenized Stocks Yield & Lending Protocol for DATs (Digital Asset Treasuries)",
+    chain: "Mezo",
+    logo: `${baseIconsUrl}/bitfire.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Mezo"],
+    module: "bitfire/index.js",
+    twitter: "bit_fire_",
+    audit_links: ["https://github.com/BitFire-Lending/BitFire-audit-report"],
+    forkedFromIds: ["1599"],
+    github: ["BitFire-Lending"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://bitfire.gitbook.io/bitcoin-backed-loan"],
+      },
+    ],
+    listedAt: 1759875947
+  },
 ];
 export default data4;

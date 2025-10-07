@@ -30330,7 +30330,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Plume Mainnet"],
-    module: "rooster/index.js",
+    module: "rooster-protocol/index.js",
     twitter: "roosterprotocol",
     audit_links: [],
     forkedFromIds: ["3710"],

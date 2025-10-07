@@ -8109,6 +8109,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "woofswap",
   },
+  {
+    id: "parent#shibaswap",
+    name: "ShibaSwap",
+    url: "https://www.shibaswap.com/",
+    description: "SHIB, LEASH, and BONE, come together to create ShibaSwap, the next evolution in DeFi platforms. ShibaSwap gives users the ability to DIG (provide liquidity), BURY (stake), and SWAP tokens to gain WOOF Returns through our sophisticated and innovative passive income reward system..",
+    logo: `${baseIconsUrl}/shibaswap.jpg`,
+    gecko_id: "bone-shibaswap",
+    cmcId: "11865",
+    chains: [],
+    twitter: "ShibaSwapDEX",
+    governanceID: ["snapshot:shiba-swap.eth"],
+  },
 ];
 
 export default parentProtocols;

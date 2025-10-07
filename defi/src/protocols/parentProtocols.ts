@@ -8121,6 +8121,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ShibaSwapDEX",
     governanceID: ["snapshot:shiba-swap.eth"],
   },
+  {
+    id: "parent#rooster-protocol",
+    name: "Rooster Protocol",
+    url: "https://www.rooster-protocol.xyz/",
+    description: "SHIB, LEASH, and BONE, come together to create ShibaSwap, the next evolution in DeFi platforms. ShibaSwap gives users the ability to DIG (provide liquidity), BURY (stake), and SWAP tokens to gain WOOF Returns through our sophisticated and innovative passive income reward system..",
+    logo: `${baseIconsUrl}/rooster-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "roosterprotocol",
+  },
 ];
 
 export default parentProtocols;

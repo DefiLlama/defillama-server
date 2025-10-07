@@ -3491,7 +3491,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5704",
-    name: "Rooster Protocol",
+    name: "Rooster Protocol V1",
     address: null,
     // none (pre-tge)
     symbol: "-",
@@ -3499,7 +3499,7 @@ const data4: Protocol[] = [
     description:
       "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume (Deprecated)",
-    logo: `${baseIconsUrl}/rooster-protocol.png`,
+    logo: `${baseIconsUrl}/rooster-protocol-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -3513,6 +3513,7 @@ const data4: Protocol[] = [
     ],
     forkedFromIds: ["4752"],
     listedAt: 1738203899,
+    parentProtocol: "parent#rooster-protocol",
     dimensions: {
       fees: "rooster",
       dexs: "rooster"
@@ -30304,5 +30305,29 @@ const data4: Protocol[] = [
     }
   },
   */
+  {
+    id: "6818",
+    name: "Rooster Protocol V2",
+    address: null,
+    // none (pre-tge)
+    symbol: "-",
+    url: "https://www.rooster-protocol.xyz/",
+    description:
+      "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
+    chain: "Plume Mainnet",
+    logo: `${baseIconsUrl}/rooster-protocol-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Plume Mainnet"],
+    module: "rooster/index.js",
+    twitter: "roosterprotocol",
+    audit_links: [],
+    forkedFromIds: ["3710"],
+    listedAt: 1759848161,
+    parentProtocol: "parent#rooster-protocol",
+  },
 ];
 export default data4;

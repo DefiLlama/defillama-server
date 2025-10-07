@@ -3558,7 +3558,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange"
+      derivatives: "01-exchange",
+      fees: "o1-exchange"
     },
   },
   {
@@ -26806,6 +26807,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"],
     github: ["nounsDAO"],
+    dimensions: {
+      fees: "nouns"
+    }
   },
   {
     id: "2523",

@@ -30261,6 +30261,9 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#shibaswap",
     listedAt: 1759797783,
+    dimensions: {
+      dexs: "shibaswap-v2"
+    }
   },
   {
     id: "6816",

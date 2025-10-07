@@ -30263,7 +30263,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#shibaswap",
     listedAt: 1759797783,
     dimensions: {
-      dexs: "shibaswap-v2"
+      dexs: "shibaswap-v2",
+      fees: "shibaswap-v2"
     }
   },
   {
@@ -30456,6 +30457,31 @@ const data4: Protocol[] = [
       dexs: "bd-perps"
     },
     parentProtocol: "parent#babydogecoin",
+  },
+  {
+    id: "6824",
+    name: "Aspecta BuildKey",
+    address: "bsc:0xad8c787992428cD158E451aAb109f724B6bc36de",
+    symbol: "ASP",
+    url: "https://aspecta.ai/",
+    description:
+      "Aspecta is the blockchain infrastructure that facilitates intelligent attestation and price discovery for trillion illiquid assets. Unlock lifecycle liquidity for pre-TGE shares, locked tokens, private equities, RWAs and more",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/aspecta-buildkey.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "aspecta",
+    cmcId: "37453",
+    category: "SoFi",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "aspecta_ai",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/aspecta-ai/audit-report"],
+    dimensions: {
+      fees: "aspecta-ai"
+    },
+    github: ["aspecta-ai"],
   },
 ];
 export default data4;

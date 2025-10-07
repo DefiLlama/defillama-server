@@ -82,7 +82,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4124": "merlin",
   "4937": "reya",
   // "5011": "lisk l2",
-  "5055": "osmosis",
+  // "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui",
   "5218": "mint",

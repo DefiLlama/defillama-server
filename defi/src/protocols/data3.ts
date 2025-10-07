@@ -65055,7 +65055,10 @@ const data3_2: Protocol[] = [
     module: "upshift/index.js",
     twitter: "upshift_fi",
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
-    listedAt: 1733311923
+    listedAt: 1733311923,
+    dimensions: {
+      fees: "upshift"
+    }
   },
   {
     id: "5461",

@@ -28238,7 +28238,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     parentProtocol: "parent#astherus",
     dimensions: {
-      // fees: "apollox",
+      // fees: "apollox", atm there is no way to verify the fees, so delisting them until we can find some way to get the fees data
       // derivatives: "apollox",
       "open-interest": "apollox"
     }

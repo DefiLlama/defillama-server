@@ -15885,6 +15885,12 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Polygon" }, { chain: "Base" }],
       },
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [],
+        chains: [{ chain: "Plasma" }],
+      },
     ],
     module: "re7/index.js",
     twitter: "Re7Labs",

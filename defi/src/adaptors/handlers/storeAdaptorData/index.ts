@@ -177,7 +177,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     if (!isRunFromRefillScript)
       console.log(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
 
-
     const startTime = getUnixTimeNow()
     const metadata = {
       application: "dimensions",

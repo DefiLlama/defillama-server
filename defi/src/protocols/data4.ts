@@ -23621,12 +23621,21 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["TAC"],
     module: "edge-capital/index.js",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: [],
+        chains: [{ chain: "TAC" }],
+      },
+      ],
     forkedFromIds: [],
     twitter: "EdgeCapitalMgmt",
     listedAt: 1754418907,
     dimensions: {
       fees: "edge-capital"
-    }
+    },
+    
   },
   {
     id: "6529",

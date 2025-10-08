@@ -58364,7 +58364,8 @@ const data3_2: Protocol[] = [
     name: "four.meme",
     address: null,
     symbol: "-",
-    url: "https://four.meme/",
+    url: "https://four.meme?code=DZ9DF74J64FA",
+    referralUrl: "https://four.meme?code=DZ9DF74J64FA",
     description:
       "Four.meme is a premier fair launch platform for meme coins on the BSC chain. Our platform is dedicated to empowering creators and communities to launch successful meme coin projects with ease.",
     chain: "Binance",

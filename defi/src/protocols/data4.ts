@@ -10116,7 +10116,7 @@ const data4: Protocol[] = [
     audit_links: ["https://skynet.certik.com/zh-CN/projects/rolldex"],
     listedAt: 1743442067,
     dimensions: {
-      derivatives: "rollx"
+      // derivatives: "rollx"
     }
   },
   {

@@ -183,7 +183,13 @@ export default async function getTokenPrices(
       const syPrice = allSyPrices[i]
       const lpRate = allLpRates0[i] ?? allLpRates1800[i] ?? allLpRates3600[i]
       if (!syPrice || !lpRate) return;
-      const lpPrice = syPrice * (lpRate / (10 ** allSyDecimals[i]));
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+      if (assetExceptions.includes(info.sy) && !assetPrice) return;
+      const syRate = assetExceptions.includes(info.sy) ? syPrice / assetPrice : syPrice
+
+      const lpPrice = syRate * (lpRate / (10 ** allSyDecimals[i]));
 
       addToDBWritesList(
         writes,

@@ -40,29 +40,41 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")
   if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
-  
+
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
 
-  if (!isSummary) {
-    const protocolName = req.path_parameters.name?.toLowerCase()
-    return { adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, category, fullChart, protocolName }
-  }
-
-  const pathChain = req.path_parameters.chain?.toLowerCase()
-  const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
-  const chainFilter = sluggifiedNormalizedChains[chainFilterRaw] ?? chainFilterRaw
-
-  return {
+  const response: {
+    adaptorType: AdapterType,
+    excludeTotalDataChart: boolean,
+    excludeTotalDataChartBreakdown: boolean,
+    category?: CATEGORIES,
+    protocolName?: string,  // applicable only for protocol routes
+    chainFilter?: string,   // applicable only for summary routes
+    fullChart: boolean,
+    dataType: AdaptorRecordType,
+    includeLabelBreakdown: boolean,
+  } = {
     adaptorType,
     excludeTotalDataChart,
     excludeTotalDataChartBreakdown,
     category,
     fullChart,
     dataType,
-    chainFilter,
     includeLabelBreakdown,
   }
+
+  if (isSummary) {
+
+    const pathChain = req.path_parameters.chain?.toLowerCase()
+    const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
+    response.chainFilter = sluggifiedNormalizedChains[chainFilterRaw] ?? chainFilterRaw
+
+  } else {
+    response.protocolName = req.path_parameters.name?.toLowerCase()
+  }
+
+  return response
 }
 
 export async function getOverviewProcess2({
@@ -252,7 +264,7 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 
   if ((adaptorType as any) === 'financial-statement') // redirect to financial statement route handler
     return getProtocolFinancials(req, res)
-  
+
   const {
     dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, includeLabelBreakdown,
   } = getEventParameters(req, false)
@@ -274,7 +286,7 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 }
 
 async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const protocolSlug = sluggifyString( req.path_parameters.name?.toLowerCase())
+  const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
   return fileResponse(routeFile, res)

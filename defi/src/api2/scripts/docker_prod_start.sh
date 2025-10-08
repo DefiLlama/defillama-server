@@ -13,23 +13,22 @@ if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
     git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
     # Pull latest code from the branch
     git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
-else
+# else
     # echo "Using default branch deployment: $(git branch --show-current)"
 fi
 
-git pull
-git submodule update --init --recursive
-git submodule update --remote --merge
+git pull -q
+git submodule update --init --recursive --quiet
+git submodule update --remote --merge --quiet
 
-time npm i
+time npm i > /dev/null
 git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
 
-
-time npm run prebuild
-time npm run cron-raises
-time npm run api2-cron-task
-time npm run cron-dimensions
-time npm run cron-app-metadata
+time npm run --silent prebuild 
+time npm run --silent cron-raises
+time npm run --silent api2-cron-task
+time npm run --silent cron-dimensions
+time npm run --silent cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

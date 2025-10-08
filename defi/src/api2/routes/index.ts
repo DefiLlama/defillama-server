@@ -43,10 +43,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // add secret route to delete from PG cache
 
   router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
-    dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false'
+    dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: false
   })));
-  router.get("/treasury/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury' })));
-  router.get("/entity/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities' })));
+  router.get("/treasury/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury', restrictResponseSize: false })));
+  router.get("/entity/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities', restrictResponseSize: false })));
   router.get("/updatedProtocol/:name", (async (req, res) => getProtocolishData(req, res, {
     dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
     restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false',
@@ -272,8 +272,6 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
 
   if (protocolData.category === 'CEX')
     restrictResponseSize = false
-
-  restrictResponseSize = false // hack to revert to old behavior
 
   const responseData = await cachedCraftProtocolV2({
     protocolData,

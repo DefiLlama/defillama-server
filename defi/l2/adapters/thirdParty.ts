@@ -123,7 +123,7 @@ const layerzero = async (): Promise<void> => {
         "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
       ).then((r) => r.json()),
       fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
-    ])
+    ]);
   }
   const data = await bridgePromises[bridge];
 
@@ -134,26 +134,28 @@ const layerzero = async (): Promise<void> => {
   });
 
   const nonEvmMapping: { [key: string]: string } = {
-    solana: "solana",
-    aptos: "aptos",
-    ton: "ton",
-    movement: "move",
+    "solana": "solana",
+    "aptos": "aptos",
+    "ton": "ton",
+    "movement": "move",
     "sui-mainnet": "sui",
   };
 
   Object.keys(data[1]).map((chain: string) => {
     if (chain.endsWith("-testnet")) return;
     if (!data[1][chain].chainDetails || !data[1][chain].tokens) return;
-    
+
     const { chainType, chainId, nativeChainId } = data[1][chain].chainDetails;
-    if (chainType != "evm" && !nonEvmMapping[chain]) return
-    const destinationChainSlug =
-      chainIdMap[chainId] ?? chainIdMap[nativeChainId] ?? nonEvmMapping[chain];
+    if (chainType != "evm" && !nonEvmMapping[chain]) return;
+    const destinationChainSlug = chainIdMap[chainId] ?? chainIdMap[nativeChainId] ?? nonEvmMapping[chain];
     if (!destinationChainSlug) return;
 
     if (!allChainKeys.includes(destinationChainSlug)) return;
     if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
-    const tokens = Object.keys(data[1][chain].tokens).filter((t: string) => addresses[destinationChainSlug].indexOf(t.toLowerCase()) == -1 );
+    const tokens = Object.keys(data[1][chain].tokens).filter(
+      (t: string) =>
+        addresses[destinationChainSlug].indexOf(t.toLowerCase()) == -1 && !data[1][chain].tokens[t].canonicalAsset
+    );
     addresses[destinationChainSlug].push(...tokens);
   });
 
@@ -215,27 +217,27 @@ const unit = async (): Promise<void> => {
 };
 
 const adapters = [
-  axelar().catch((e) => {
-    throw new Error(`Axelar fails with: ${e}`);
-  }),
-  wormhole().catch((e) => {
-    throw new Error(`Wormhole fails with: ${e}`);
-  }),
-  celer().catch((e) => {
-    throw new Error(`Celer fails with: ${e}`);
-  }),
-  hyperlane().catch((e) => {
-    throw new Error(`Hyperlane fails with: ${e}`);
-  }),
+  // axelar().catch((e) => {
+  //   throw new Error(`Axelar fails with: ${e}`);
+  // }),
+  // wormhole().catch((e) => {
+  //   throw new Error(`Wormhole fails with: ${e}`);
+  // }),
+  // celer().catch((e) => {
+  //   throw new Error(`Celer fails with: ${e}`);
+  // }),
+  // hyperlane().catch((e) => {
+  //   throw new Error(`Hyperlane fails with: ${e}`);
+  // }),
   layerzero().catch((e) => {
     throw new Error(`Layerzero fails with: ${e}`);
   }),
-  flow().catch((e) => {
-    throw new Error(`flow fails with: ${e}`);
-  }),
-  unit().catch((e) => {
-    throw new Error(`unit fails with: ${e}`);
-  }),
+  // flow().catch((e) => {
+  //   throw new Error(`flow fails with: ${e}`);
+  // }),
+  // unit().catch((e) => {
+  //   throw new Error(`unit fails with: ${e}`);
+  // }),
 ];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
@@ -262,3 +264,4 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 };
 
 export default tokenAddresses;
+// ts-node defi/l2/adapters/thirdParty.ts

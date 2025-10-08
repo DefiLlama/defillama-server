@@ -254,7 +254,7 @@ async function run() {
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
       protocol.misc = {};
       protocol.dataTypes = new Set()
-      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted', 'breakdownMethodology', 'childMethodologies', 'childBreakdownMethodologies', ]
+      const infoKeys = ['name', 'defillamaId', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'cmcId', 'id', 'github', 'governanceID', 'treasury', 'parentProtocol', 'previousNames', 'hallmarks', 'defaultChartView', 'doublecounted', 'breakdownMethodology',]
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key] ?? protocol.info[key] ?? null)
 
@@ -616,18 +616,21 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
 
 
   info.linkedProtocols = [info.name].concat(childProtocols)
-  info.childMethodologies = {}
-  info.childBreakdownMethodologies = {}
-
+  info.childProtocols = []
+  
+  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', ]
 
 
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
+    // add child protocol metadata
+    const childProtocolInfo = {} as ProtocolAdaptor
+    childFieldsToCopy.filter(i => i !== undefined).forEach((field) => (childProtocolInfo as any)[field] = childData[field])
+    info.childProtocols.push(childProtocolInfo)
+
+
     const childProtocolLabel = childData.name ?? childData.displayName
     childData.linkedProtocols = info.linkedProtocols
-
-    if (childData.methodology) info.childMethodologies[childProtocolLabel] = childData.methodology
-    if (childData.breakdownMethodology) info.childBreakdownMethodologies[childProtocolLabel] = childData.breakdownMethodology
 
     if (!childProtocolLabel) console.log('childProtocolLabel is missing', childData)
 
@@ -656,7 +659,7 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
         if (childAggData.labelBreakdown) {
           if (!aggItem.labelBreakdown) aggItem.labelBreakdown = {}
           Object.entries(childAggData.labelBreakdown).forEach(([label, labelValue]: any) => {
-            
+
             if (!childData.hasLabelBreakdown) childData.hasLabelBreakdown = true
             if (!info.hasLabelBreakdown) info.hasLabelBreakdown = true
 

@@ -33,8 +33,6 @@ export interface ProtocolAdaptor extends Protocol {
     childProtocols?: Array<ProtocolAdaptor>
     doublecounted?: boolean,
     isDead?: boolean,
-    childMethodologies?: IJSON<any>  // applicable only for parent protocols, key is child protocol id
-    childBreakdownMethodologies?: IJSON<IJSON<IJSON<string>> | any>  // applicable only for parent protocols, key is child protocol id
 }
 
 export interface IConfig {

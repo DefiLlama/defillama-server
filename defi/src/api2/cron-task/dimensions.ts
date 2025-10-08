@@ -656,6 +656,10 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
         if (childAggData.labelBreakdown) {
           if (!aggItem.labelBreakdown) aggItem.labelBreakdown = {}
           Object.entries(childAggData.labelBreakdown).forEach(([label, labelValue]: any) => {
+            
+            if (!childData.hasLabelBreakdown) childData.hasLabelBreakdown = true
+            if (!info.hasLabelBreakdown) info.hasLabelBreakdown = true
+
             aggItem.labelBreakdown![label] = (aggItem.labelBreakdown![label] ?? 0) + labelValue
           })
         }

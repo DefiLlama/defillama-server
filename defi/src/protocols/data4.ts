@@ -985,7 +985,7 @@ const data4: Protocol[] = [
     listedAt: 1736334414,
     parentProtocol: "parent#grvt",
     dimensions: {
-      derivatives: "grvt-perps",
+      // derivatives: "grvt-perps", // moved to new perps listing
       //"open-interest": "grvt-perps" too high
     }
   },

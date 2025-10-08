@@ -70,7 +70,7 @@ async function run() {
             const adaptor = await importModule(protocol.module);
             const version = adaptor.version ?? 1;
             const runAtCurrTime = adaptor.runAtCurrTime ?? false;
-            const hasDune = adaptor.dependencies?.includes('dune' as any) ?? false;
+            const hasDuneDependency = adaptor.dependencies?.includes('dune' as any) ?? false;
             const isV1 = version === 1;
             const isV2 = !isV1;
 
@@ -85,7 +85,7 @@ async function run() {
             // Edge case 2: V1 DUNE adapters with data updated before 08:00 UTC
             // Only applies to V1 adapters with DUNE dependencies
             // Remove from set to trigger refill after 08:00 UTC
-            if (includeInSet && isV1 && hasDune && yesterdayRecord.updatedAt && isAfter8AM) {
+            if (includeInSet && isV1 && hasDuneDependency && yesterdayRecord.updatedAt && isAfter8AM) {
               const lastUpdateDate = new Date(yesterdayRecord.updatedAt * 1000);
               const lastUpdateHourUTC = lastUpdateDate.getUTCHours();
 
@@ -95,6 +95,7 @@ async function run() {
               }
             }
           } catch (e) {
+            console.error(`importModule error for ${id2} - ${protocol.module}: ${e}`)
             // If we can't load module, include by default to avoid breaking existing adapters
             includeInSet = true;
           }

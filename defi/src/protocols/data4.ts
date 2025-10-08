@@ -30491,10 +30491,10 @@ const data4: Protocol[] = [
     symbol: "NODE",
     url: "https://nodeops.network/",
     description:
-      "The leading AI-powered DePIN Orchestration Layer",
+      "NodeOps Network is a decentralized infrastructure stack powering compute and AI workloads. It enables developers and enterprises to deploy, manage, and monetize compute services seamlessly. The protocol generates on-chain revenue from product subscriptions, deployment fees, and automated $NODE-to-credits conversions for workloads",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/nodeops.jpg`,
-    audits: "0",
+    audits: "2",  
     audit_note: null,
     gecko_id: "node-2",
     cmcId: "36977",
@@ -30503,6 +30503,18 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "NodeOpsHQ",
     forkedFromIds: [],
+    audit_links: [
+      "https://github.com/oak-security/audit-reports/blob/main/NodeOps/2025-06-25%20Audit%20Report%20-%20NodeOps%20Network.pdf",
+      "https://www.halborn.com/audits/nodeops",
+      "https://drive.google.com/file/d/1mzRyqBnhNraU3CLebJxRU5Qm_ZhGbodo/view?usp=sharing"
+    ],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.nodeops.network","https://github.com/NodeOps-app"]
+      }
+    ],
     dimensions: {
       fees: "node-ops"
     },

@@ -34,9 +34,9 @@ update_npm_modules() {
 if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
     echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
     # Checkout the specified branch
-    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"  --quiet
     # Pull latest code from the branch
-    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"  --quiet
 # else
     # echo "Using default branch deployment: $(git branch --show-current)"
 fi

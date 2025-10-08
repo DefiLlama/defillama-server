@@ -10524,7 +10524,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "sunrise",
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     module: "sunrise-gaming-by-dao/index.js",
     twitter: "SunriseGaming_d",

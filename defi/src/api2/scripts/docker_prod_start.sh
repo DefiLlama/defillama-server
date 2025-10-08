@@ -12,9 +12,7 @@ llama_runner() {
     $command_to_run
     end_time=$(date +%s.%N)
     execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    term_width=$(tput cols)
-    message="npm script: $1 took $execution_time s"
-    printf "%*s\n" $term_width "$message"
+    echo "npm script: $1 took $execution_time s"
 }
 
 update_npm_modules() {
@@ -24,10 +22,7 @@ update_npm_modules() {
     git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
     end_time=$(date +%s.%N)
     execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    # Get terminal width and right-align the message
-    term_width=$(tput cols)
-    message="npm module update took $execution_time s"
-    printf "%*s\n" $term_width "$message"
+    echo "npm module update took $execution_time s"
 }
 
 # Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set

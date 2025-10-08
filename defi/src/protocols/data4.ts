@@ -11457,8 +11457,9 @@ const data4: Protocol[] = [
     category: "NFT Marketplace",
     chains: ["Solana"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "magic-eden/index.js",
     twitter: "MagicEden",
+    listedAt: 1759954535
   },
   {
     id: "6030",
@@ -30545,6 +30546,50 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "grvt-perps",
    }  
+  },
+  {
+    id: "6827",
+    name: "Friendly Market",
+    address: null,
+    symbol: "-",
+    url: "https://lending.friendly.market/",
+    description:
+      "Friendly Market is a decentralized lending protocol offering native markets on Nibiru Chain alongside cross-chain markets, enabling seamless borrowing and lending of assets across multiple blockchains with unified liquidity and efficient capital utilization",
+    chain: "Nibiru",
+    logo: `${baseIconsUrl}/friendly-market.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Nibiru"],
+    module: "friendly-market/index.js",
+    twitter: "friendlymarkets",
+    forkedFromIds: [],
+    listedAt: 1759961274
+  },
+  {
+    id: "6829",
+    name: "Swap.io CLMM",
+    address: null,
+    symbol: "-",
+    url: "https://swap.io",
+    description:
+      "Concentrated or Full Range Liquidity on Solana at lower fees for the LPs.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/swap.io-clmm.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "Swap-io/index.js",
+    twitter: "swapdotio",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/swap-dot-io/swap-io/blob/main/audit/swap-io-clmm/2025-Zenith/Swap.io-CLMM-Zenith-Audit-Report-April-2025.pdf"],
+    github: ["swap-dot-io"],
+    listedAt: 1759963801
   },
 ];
 export default data4;

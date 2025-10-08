@@ -966,23 +966,24 @@ const data4: Protocol[] = [
   },
   {
     id: "5599",
-    name: "GRVT",
+    name: "GRVT Bridge", // previous name GRVT
     address: null,
     symbol: "-",
     url: "https://grvt.io",
     description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/grvt.jpg`,
+    logo: `${baseIconsUrl}/grvt-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "grvt-io/index.js",
     twitter: "grvt_io",
     listedAt: 1736334414,
+    parentProtocol: "parent#grvt",
     dimensions: {
       derivatives: "grvt-perps",
       //"open-interest": "grvt-perps" too high
@@ -30505,6 +30506,30 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "node-ops"
     },
+  },
+  {
+    id: "6826",
+    name: "GRVT Perps",
+    address: null,
+    symbol: "-",
+    url: "https://grvt.io",
+    description:
+      "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/grvt-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "grvt_io",
+    forkedFromIds: [],
+    parentProtocol: "parent#grvt",
+    dimensions: {
+      derivatives: "grvt-perps",
+   }  
   },
 ];
 export default data4;

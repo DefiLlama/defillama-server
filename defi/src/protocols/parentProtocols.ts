@@ -8132,6 +8132,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "roosterprotocol",
   },
+  {
+    id: "parent#grvt",
+    name: "GRVT",
+    url: "https://grvt.io",
+    description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    logo: `${baseIconsUrl}/grvt.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "grvt_io",
+  },
 ];
 
 export default parentProtocols;

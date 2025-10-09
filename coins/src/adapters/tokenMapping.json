@@ -1703,7 +1703,12 @@
     "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
       "decimals": "18",
       "symbol": "vyUSD",
-      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc"
+    },
+    "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
+      "decimals": "18",
+      "symbol": "vyETH",
+      "to": "asset#arbitrum:0x1f52edf2815bfa625890b61d6bf43ddc24671fe8"
     },
     "0x437cc33344a0b27a429f795ff6b469c72698b291": {
       "decimals": "6",
@@ -2169,6 +2174,11 @@
     }
   },
   "base": {
+    "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
+      "decimals": "18",
+      "symbol": "vyETH",
+      "to": "asset#base:0x1f52edf2815bfa625890b61d6bf43ddc24671fe8"
+    },
     "0x9bba915f036158582c20b51113b925f243a1a1a1": {
       "decimals": "18",
       "symbol": "IMGN",

@@ -6,6 +6,7 @@ import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
+import PromisePool from "@supercharge/promise-pool";
 
 let bridgePromises: { [bridge: string]: Promise<any> } = {};
 const addresses: { [chain: Chain]: Address[] } = {};
@@ -216,47 +217,35 @@ const unit = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [
-  // axelar().catch((e) => {
-  //   throw new Error(`Axelar fails with: ${e}`);
-  // }),
-  // wormhole().catch((e) => {
-  //   throw new Error(`Wormhole fails with: ${e}`);
-  // }),
-  // celer().catch((e) => {
-  //   throw new Error(`Celer fails with: ${e}`);
-  // }),
-  // hyperlane().catch((e) => {
-  //   throw new Error(`Hyperlane fails with: ${e}`);
-  // }),
-  layerzero().catch((e) => {
-    throw new Error(`Layerzero fails with: ${e}`);
-  }),
-  // flow().catch((e) => {
-  //   throw new Error(`flow fails with: ${e}`);
-  // }),
-  // unit().catch((e) => {
-  //   throw new Error(`unit fails with: ${e}`);
-  // }),
-];
+const adapters = { axelar, wormhole, celer, hyperlane, layerzero, flow, unit };
+
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
-  await Promise.all(adapters);
-  if (adapters.length == doneAdapters.length && mappingDone) return filteredAddresses;
+  await PromisePool.withConcurrency(5)
+    .for(Object.entries(adapters))
+    .process(async ([key, adapter]: any) => {
+      try {
+        await adapter();
+      } catch (e: any) {
+        throw new Error(`${key} fails with  ${e.message}`);
+      }
+    });
+
+  if (Object.keys(adapters).length == doneAdapters.length && mappingDone) return filteredAddresses;
 
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
     if (!bridgedTvlMixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) {
-      filteredAddresses[chain] = chainAddresses;
+      filteredAddresses[chain] = [...new Set(chainAddresses)];
       return;
     }
     const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
-    filteredAddresses[chain] = [...chainAddresses, ...additionalTokens];
+    filteredAddresses[chain] = [...new Set([...chainAddresses, ...additionalTokens])];
   });
 
   mappingDone = true;
@@ -264,4 +253,3 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 };
 
 export default tokenAddresses;
-// ts-node defi/l2/adapters/thirdParty.ts

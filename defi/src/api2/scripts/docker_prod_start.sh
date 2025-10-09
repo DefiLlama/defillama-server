@@ -12,7 +12,7 @@ llama_runner() {
     $command_to_run
     end_time=$(date +%s.%N)
     execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    echo "npm script: $1 took $execution_time s"
+    echo "----|   npm script: $1 took $execution_time s"
 }
 
 update_npm_modules() {
@@ -22,7 +22,7 @@ update_npm_modules() {
     git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
     end_time=$(date +%s.%N)
     execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    echo "npm module update took $execution_time s"
+    echo "----|   npm module update took $execution_time s"
 }
 
 # Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set

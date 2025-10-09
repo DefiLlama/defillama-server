@@ -8143,6 +8143,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "grvt_io",
   },
+  {
+    id: "parent#metamask",
+    name: "MetaMask",
+    url: "https://metamask.io",
+    description: "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
+    logo: `${baseIconsUrl}/metamask.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MetaMask",
+    github: ["MetaMask"],
+  },
 ];
 
 export default parentProtocols;

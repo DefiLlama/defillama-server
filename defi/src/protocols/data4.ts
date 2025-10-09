@@ -29929,7 +29929,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     dimensions: {
       fees: "metamask-musd"
-    }
+    },
+    parentProtocol: "parent#metamask",
   },
   {
     id: "6801",
@@ -30590,6 +30591,31 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/swap-dot-io/swap-io/blob/main/audit/swap-io-clmm/2025-Zenith/Swap.io-CLMM-Zenith-Audit-Report-April-2025.pdf"],
     github: ["swap-dot-io"],
     listedAt: 1759963801
+  },
+  {
+    id: "6830",
+    name: "MetaMask Perps",
+    address: null,
+    symbol: "-",
+    url: "https://metamask.io/",
+    description:
+      "MetaMask Perps is an interface for trading perps via Hyperliquid.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/metamask-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "MetaMask",
+    forkedFrom: [],
+    dimensions: {
+      fees: "metamask-perps",
+      derivatives: "metamask-perps"
+    },
+    parentProtocol: "parent#metamask",
   },
 ];
 export default data4;

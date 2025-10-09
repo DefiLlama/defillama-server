@@ -7786,14 +7786,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3031",
-    name: "MetaMask",
+    name: "MetaMask Wallet",
     address: null,
     symbol: "-",
     url: "https://metamask.io/",
     description:
       "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask-wallet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7803,11 +7803,11 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "MetaMask",
     forkedFrom: [],
-    github: ["MetaMask"],
     dimensions: {
       fees: "metamask",
       aggregators: "metamask"
-    }
+    },
+    parentProtocol: "parent#metamask",
   },
   {
     id: "3032",

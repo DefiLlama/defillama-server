@@ -2827,6 +2827,9 @@ const data: Protocol[] = [
       "https://callisto.network/idex-security-audit/",
     ],
     parentProtocol: "parent#idex",
+    dimensions: {
+      dexs: "idex-classic"
+    }
   },
   {
     id: "231",

@@ -22956,7 +22956,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Hyperliquid L1", "Base", "Sonic", "Ethereum"],
+    chains: ["Hyperliquid L1", "Base", "Sonic", "Ethereum", "Avalanche"],
     forkedFromIds: ["756"],
     module: "parallel-protocol-v3/index.js",
     twitter: "ParallelMoney",

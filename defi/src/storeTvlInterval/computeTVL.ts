@@ -78,7 +78,7 @@ export default async function (balances: { [address: string]: string }, timestam
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
         }
         const usdAmount = amount * price;
-        if (!checkMcaps(address, mcapData, usdAmount, distressedCoinsPromises)) return;
+        checkMcaps(address, mcapData, usdAmount, distressedCoinsPromises)
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
@@ -98,6 +98,7 @@ export default async function (balances: { [address: string]: string }, timestam
 }
 
 function checkMcaps(address: string, mcapData: any, usdAmount: number, promises: Promise<void>[]) {
+  if (usdAmount < 1e7) return true;
   const mcap = mcapData[address];
   if (mcap && usdAmount > mcap) {
     promises.push(addToDistressedList(address));

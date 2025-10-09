@@ -30223,7 +30223,8 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "Salsadex_",
     dimensions: {
-      fees: "salsadex"
+      fees: "salsadex",
+      derivatives: "salsadex"
     }
   },
   {

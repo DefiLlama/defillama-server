@@ -171,4 +171,5 @@ export default {
   rhea: require("./markets/rhea"),
   bracket: require("./yield/bracket"),
   goblin: require("./markets/goblin"),
+  suzaku: require("./restaking/suzaku"),
 };

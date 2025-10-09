@@ -7786,14 +7786,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3031",
-    name: "MetaMask",
+    name: "MetaMask Wallet",
     address: null,
     symbol: "-",
     url: "https://metamask.io/",
     description:
       "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask-wallet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7803,11 +7803,11 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "MetaMask",
     forkedFrom: [],
-    github: ["MetaMask"],
     dimensions: {
       fees: "metamask",
       aggregators: "metamask"
-    }
+    },
+    parentProtocol: "parent#metamask",
   },
   {
     id: "3032",
@@ -10499,7 +10499,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Polygon"],
     module: "megamoon/index.js",
     twitter: "0xMegaMoon",
@@ -26703,6 +26703,10 @@ const data3_1: Protocol[] = [
     module: "dyorswap/index.js",
     twitter: "dyorswap",
     listedAt: 1700767143,
+    dimensions: {
+      dexs: "dyorswap",
+      fees: "dyorswap"
+    }
   },
   {
     id: "3838",
@@ -31719,7 +31723,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Avalanche", "Base"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -32604,7 +32608,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "ninjaroll",
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Injective"],
     forkedFrom: [],
     module: "ninjaroll/index.js",
@@ -40080,7 +40084,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "etherflip/index.js",
@@ -43500,7 +43504,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "ridotto",
     cmcId: "12465",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     forkedFrom: [],
     module: "ridotto/index.js",
@@ -44140,7 +44144,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "tg-casino",
     cmcId: "28919",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "tgcasino/index.js",
@@ -46655,7 +46659,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     module: "rollspace/index.js",
     twitter: "rollspacecom",
@@ -52558,7 +52562,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Mode"],
     module: "betmode/index.js",
     twitter: "BetMode_io",
@@ -58364,7 +58368,8 @@ const data3_2: Protocol[] = [
     name: "four.meme",
     address: null,
     symbol: "-",
-    url: "https://four.meme/",
+    url: "https://four.meme?code=DZ9DF74J64FA",
+    referralUrl: "https://four.meme?code=DZ9DF74J64FA",
     description:
       "Four.meme is a premier fair launch platform for meme coins on the BSC chain. Our platform is dedicated to empowering creators and communities to launch successful meme coin projects with ease.",
     chain: "Binance",
@@ -64642,7 +64647,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Neutron"],
     module: "ngmizone/index.js",
     twitter: "beam_dex",
@@ -65055,7 +65060,10 @@ const data3_2: Protocol[] = [
     module: "upshift/index.js",
     twitter: "upshift_fi",
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
-    listedAt: 1733311923
+    listedAt: 1733311923,
+    dimensions: {
+      fees: "upshift"
+    }
   },
   {
     id: "5461",

@@ -208,6 +208,15 @@ export function curve16(timestamp: number = 0) {
     ]),
   ]);
 }
+export function curve17(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("etlk", [], timestamp, "eth-custom", [
+      "0x0714027E44802b2Ff76389daF5371990CC3a4C24",
+      '0x5D37F9B272ca7cdA2A05245b9a503746EefAC88f',
+      "0x942644106B073E30D72c2C5D7529D5C296ea91ab"
+    ]),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -226,5 +235,6 @@ export const adapters = {
   curve13,
   curve14,
   curve15,
-  curve16
+  curve16,
+  curve17
 };

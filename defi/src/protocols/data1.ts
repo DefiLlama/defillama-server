@@ -9842,7 +9842,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     github: ["thales-markets"],
     dimensions: {
-      options: "thales"
+      options: "thales",
+      fees: "thales"
     }
   },
   {

@@ -26703,6 +26703,10 @@ const data3_1: Protocol[] = [
     module: "dyorswap/index.js",
     twitter: "dyorswap",
     listedAt: 1700767143,
+    dimensions: {
+      dexs: "dyorswap",
+      fees: "dyorswap"
+    }
   },
   {
     id: "3838",

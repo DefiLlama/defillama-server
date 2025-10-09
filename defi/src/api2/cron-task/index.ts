@@ -11,7 +11,6 @@ import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { getRaisesInternal } from "../../getRaises";
 import { getHacksInternal } from "../../getHacks";
 import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { log } from '@defillama/sdk'
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
 import { getOraclesInternal } from "../../getOracles";
 import { getForksInternal } from "../../getForks";
@@ -21,10 +20,10 @@ import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
-import { RUN_TYPE } from "../utils";
+import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
-// import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
+import { sendMessage } from "../../utils/discord";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -32,6 +31,7 @@ let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Functi
 let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
 async function run() {
+
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON })
 
@@ -72,6 +72,7 @@ async function run() {
 
   await storeRWAStats()
 
+
   // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 
   // await writeRaises() // moved to different cron task
@@ -86,44 +87,44 @@ async function run() {
     const latestProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
     const latestProtocolItemsMap: any = {}
     latestProtocolItems.forEach((data: any) => latestProtocolItemsMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterLast24Hours')
+    // console.timeEnd('getLatestProtocolItems filterLast24Hours')
 
 
     console.time('getLatestProtocolItems filterADayAgo')
     const latestProtocolItemsDayAgo = await getLatestProtocolItems(hourlyTvl, { filterADayAgo: true })
     const latestProtocolItemsDayAgoMap: any = {}
     latestProtocolItemsDayAgo.forEach((data: any) => latestProtocolItemsDayAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterADayAgo')
+    // console.timeEnd('getLatestProtocolItems filterADayAgo')
 
     console.time('getLatestProtocolItems filterAWeekAgo')
     const latestProtocolItemsWeekAgo = await getLatestProtocolItems(hourlyTvl, { filterAWeekAgo: true })
     const latestProtocolItemsWeekAgoMap: any = {}
     latestProtocolItemsWeekAgo.forEach((data: any) => latestProtocolItemsWeekAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAWeekAgo')
+    // console.timeEnd('getLatestProtocolItems filterAWeekAgo')
 
     console.time('getLatestProtocolItems filterAMonthAgo')
     const latestProtocolItemsMonthAgo = await getLatestProtocolItems(hourlyTvl, { filterAMonthAgo: true })
     const latestProtocolItemsMonthAgoMap: any = {}
     latestProtocolItemsMonthAgo.forEach((data: any) => latestProtocolItemsMonthAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAMonthAgo')
+    // console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
     console.time('getLatestProtocolTokensUSD filterADayAgo')
     const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true, })
     const latestProtocolTokensUSDMap: any = {}
     latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
 
     console.time('getLatestProtocolTokensUSD filterAWeekAgo')
     const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAWeekAgo: true })
     const latestProtocolTokensUSDWeekAgoMap: any = {}
     latestProtocolTokensUSDWeekAgo.forEach((data: any) => latestProtocolTokensUSDWeekAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
 
     console.time('getLatestProtocolTokensUSD filterAMonthAgo')
     const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAMonthAgo: true })
     const latestProtocolTokensUSDMonthAgoMap: any = {}
     latestProtocolTokensUSDMonthAgo.forEach((data: any) => latestProtocolTokensUSDMonthAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
 
 
     console.time('getAllProtocolItems')
@@ -413,7 +414,14 @@ async function storeRWAStats() {
 }
 
 
-run()
+runWithRuntimeLogging(run, {
+        application: "cron-task",
+        type: 'tvl-data',
+      })
   .then(genFormattedChains)
-  .catch(console.error)
+  .catch(async e => {
+    console.error(e)
+    const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
+    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+  })
   .then(() => process.exit(0))

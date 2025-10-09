@@ -3,6 +3,8 @@ import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./getCexs";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
+import { sendMessage } from "./utils/discord";
+import sleep from "./utils/shared/sleep";
 
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
@@ -242,6 +244,7 @@ const getProtocolSubSections = ({
   return subSections.map((result) => ({
     ...result,
     v: tastyMetrics[result.route] ?? 0,
+    r: 0,
   }));
 };
 
@@ -252,17 +255,17 @@ async function getAllCurrentSearchResults() {
   let hasMore = true;
 
   while (hasMore) {
-    const res: { total: number; results: Array<SearchResult> } = await fetch(
+    const res: { total: number; results: Array<SearchResult> } = await fetchJson(
       `https://search.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
         },
       }
-    ).then((res) => res.json());
+    )
 
     allResults.push(...res.results);
-    
+
     // Check if we've fetched all results
     if (res.results.length < limit || allResults.length >= res.total) {
       hasMore = false;
@@ -283,7 +286,6 @@ function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Arr
       return !newResultsSet.has(itemId)
     })
 }
-
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
@@ -296,48 +298,47 @@ async function generateSearchList() {
     chainsMetadata,
     currentSearchResults,
   ]: [
-    {
-      chains: string[];
-      parentProtocols: any[];
-      protocolCategories: string[];
-      protocols: any[];
-    },
-    { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
-    Record<string, Array<{ name: string; route: string }>>,
-    Record<string, number>,
-    Record<string, IProtocolMetadata>,
-    Record<string, IChainMetadata>,
-    Array<SearchResult>
-  ] = await Promise.all([
-    fetch("https://api.llama.fi/lite/protocols2").then((r) => r.json()),
-    fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json()),
-    fetch("https://defillama.com/pages.json")
-      .then((r) => r.json())
-      .catch((e) => {
-        console.log("Error fetching frontend pages", e);
-        return {};
-      }),
-    fetch(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
-      headers: {
-        Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
+      {
+        chains: string[];
+        parentProtocols: any[];
+        protocolCategories: string[];
+        protocols: any[];
       },
-    })
-      .then((r) => r.json())
-      .then((res: Array<{ x: string; y: number }>) => {
-        const final = {} as Record<string, number>;
-        for (const xy of res) {
-          final[xy.x] = xy.y;
-        }
-        return final;
+      { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+      Record<string, Array<{ name: string; route: string }>>,
+      Record<string, number>,
+      Record<string, IProtocolMetadata>,
+      Record<string, IChainMetadata>,
+      Array<SearchResult>
+    ] = await Promise.all([
+      fetchJson("https://api.llama.fi/lite/protocols2"),
+      fetchJson("https://stablecoins.llama.fi/stablecoins"),
+      fetchJson("https://defillama.com/pages.json")
+
+        .catch((e) => {
+          console.log("Error fetching frontend pages", e);
+          return {};
+        }),
+      fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
+        headers: {
+          Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
+        },
       })
-      .catch((e) => {
-        console.log("Error fetching tasty metrics", e);
-        return {};
-      }),
-    fetch("https://api.llama.fi/config/smol/appMetadata-protocols.json").then((res) => res.json()),
-    fetch("https://api.llama.fi/config/smol/appMetadata-chains.json").then((res) => res.json()),
-    getAllCurrentSearchResults(),
-  ]);
+        .then((res: Array<{ x: string; y: number }>) => {
+          const final = {} as Record<string, number>;
+          for (const xy of res) {
+            final[xy.x] = xy.y;
+          }
+          return final;
+        })
+        .catch((e) => {
+          console.log("Error fetching tasty metrics", e);
+          return {};
+        }),
+      fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
+      fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
+      getAllCurrentSearchResults(),
+    ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
   const categoryTvl = {} as any;
@@ -400,7 +401,7 @@ async function generateSearchList() {
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,
-      ...(protocol.deprecated ? { deprecated: true } : {}),
+      ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -652,7 +653,7 @@ async function generateSearchList() {
       });
     }
 
-    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0 })));
+    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
   }
 
   const categories: Array<SearchResult> = [];
@@ -759,7 +760,10 @@ async function generateSearchList() {
       .concat(results.cexs)
       .concat(results.otherPages)
       .concat(subProtocols)
-      .concat(subChains),
+      .concat(subChains).map((result: any) => ({
+        ...result,
+        r: result.r ?? 1,
+      })),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))
@@ -786,13 +790,14 @@ const main = async () => {
 
   const resultsToDelete = getResultsToDelete(currentSearchResults, results);
 
-  const deletedResults = await fetch(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
+  const deletedResults = await fetchJson(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(resultsToDelete),
-  }).then((r) => r.json());
+  });
 
   const deletedResultsErrorMessage = deletedResults?.details?.error?.message;
   if (deletedResultsErrorMessage) {
@@ -800,20 +805,20 @@ const main = async () => {
   }
 
   // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
-  const submit = await fetch(`https://search.defillama.com/indexes/pages/documents`, {
+  const submit = await fetchJson(`https://search.defillama.com/indexes/pages/documents`, {
     method: "PUT",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(results),
-  }).then((r) => r.json());
+  })
 
-  const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
+  const status = await fetchJson(`https://search.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },
-  }).then((r) => r.json());
+  })
 
   await storeR2("searchlist.json", JSON.stringify(topResults), true, false).catch((e) => {
     console.log("Error storing top results search list", e);
@@ -827,4 +832,93 @@ const main = async () => {
 };
 
 //export default main
-main();
+// main()
+
+// Add retry logic to main function
+const executeWithRetry = async () => {
+  let attempts = 0;
+  const maxAttempts = 3;
+
+  const tryMain = async (): Promise<any> => {
+    try {
+      attempts++;
+      console.log(`Attempt ${attempts} of ${maxAttempts}`);
+      await main();
+      console.log("Successfully completed main execution");
+      return true;
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(`Error on attempt ${attempts}:`, errorMessage);
+
+      if (attempts < maxAttempts) {
+        console.log(`Waiting 3 minutes before retry...`, attempts);
+        await sleep(3 * 60 * 1000); // 3 minutes in milliseconds
+        return tryMain();
+      } else {
+        console.error("Maximum retry attempts reached. Giving up.");
+        console.error("Final error message:", errorMessage)
+        if (process.env.UPDATE_SEARCH_WEBHOOK_URL) {
+          console.log('Notifying via webhook about failure...', `Update Search process failed after ${maxAttempts} attempts. Error: ${errorMessage}`);
+          await sendMessage(`Update Search process failed after ${maxAttempts} attempts. Error: ${errorMessage}`, process.env.UPDATE_SEARCH_WEBHOOK_URL!);
+        }
+        return false;
+      }
+    }
+  };
+
+  return tryMain();
+};
+
+executeWithRetry().then(success => {
+  if (success) {
+    console.log("Process completed successfully");
+  } else {
+    console.log("Process failed after all retry attempts");
+    process.exit(1);
+  }
+});
+
+async function fetchJson(url: string, ...rest: any): Promise<any> {
+  const response = await fetch(url, ...rest);
+  try {
+    if (response.ok) {
+			const data = await response.json()
+			return data
+		}
+
+		// Handle non-200 status codes
+		let errorMessage = `[HTTP] [error] [${response.status}] < ${response.url} >`
+
+		// Try to get error message from statusText first
+		if (response.statusText) {
+			errorMessage += ` : ${response.statusText}`
+		}
+
+		// Read response body only once
+		const responseText = await response.text()
+
+		if (responseText) {
+			// Try to parse as JSON first
+			try {
+				const errorResponse = JSON.parse(responseText)
+				if (errorResponse.error) {
+					errorMessage += ` : ${errorResponse.error}`
+				} else if (errorResponse.message) {
+					errorMessage += ` : ${errorResponse.message}`
+				} else {
+					// If JSON parsing succeeded but no error/message field, use the text
+					errorMessage += ` : ${responseText}`
+				}
+			} catch (jsonError) {
+				// If JSON parsing fails, use the text response
+				errorMessage += ` : ${responseText}`
+			}
+		}
+
+		throw new Error(errorMessage)
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.log(msg)
+    throw new Error(msg)
+  }
+}  

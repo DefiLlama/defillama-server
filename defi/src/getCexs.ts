@@ -578,6 +578,13 @@ export const cexsData: Array<ICex> = [
     slug: "bitlo",
     coin: null,
     walletsLink: null,
+  },
+  {
+    name: "VALR",
+    cgId: "valr",
+    slug: "valr",
+    coin: null,
+    walletsLink: null,
   }
 ];
 

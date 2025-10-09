@@ -6,7 +6,7 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs20.x
   lambdaHashingVersion: 20201221
   memorySize: 250
   region: eu-central-1
@@ -336,12 +336,12 @@ functions:
   #     - http:
   #         path: chains2/{category}
   #         method: get
-  inflows:
-    handler: src/getInflows.default
-    events:
-      - http:
-          path: inflows/{protocol}/{timestamp}
-          method: get
+  # inflows:  # moved to api2
+  #   handler: src/getInflows.default
+  #   events:
+  #     - http:
+  #         path: inflows/{protocol}/{timestamp}
+  #         method: get
   # langs:  # moved to api2
   #   handler: src/storeLangs.default
   #   timeout: 60

@@ -132,6 +132,7 @@ export function curve5(timestamp: number = 0) {
 export function curve6(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices2("base", [], timestamp, "eth-custom", [
+      "0xd6c283655B42FA0eb2685F7AB819784F071459dc", 
       "0xf6c5f01c7f3148891ad0e19df78743d31e390d1f",
       "0x6e53131f68a034873b6bfa15502af094ef0c5854",
       "0x6dfe79cece4f64c1a34f48cf5802492ab595257e",
@@ -199,6 +200,23 @@ export function curve15(timestamp: number = 0) {
     // getGaugePrices("sonic", timestamp),
   ]);
 }
+export function curve16(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("plasma", [], timestamp, "eth-custom", [
+      "0x2D84D79C852f6842AbE0304b70bBaA1506AdD457",
+      '0x1e8d78e9b3f0152d54d32904b7933f1cfe439df1'
+    ]),
+  ]);
+}
+export function curve17(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("etlk", [], timestamp, "eth-custom", [
+      "0x0714027E44802b2Ff76389daF5371990CC3a4C24",
+      '0x5D37F9B272ca7cdA2A05245b9a503746EefAC88f',
+      "0x942644106B073E30D72c2C5D7529D5C296ea91ab"
+    ]),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -217,4 +235,6 @@ export const adapters = {
   curve13,
   curve14,
   curve15,
+  curve16,
+  curve17
 };

@@ -117,24 +117,52 @@ const celer = async (): Promise<void> => {
 const layerzero = async (): Promise<void> => {
   const bridge = "layerzero";
   if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch(
-      "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
-    ).then((r) => r.json());
+  if (!(bridge in bridgePromises)) {
+    bridgePromises[bridge] = Promise.all([
+      fetch(
+        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
+      ).then((r) => r.json()),
+      fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
+    ])
+  }
   const data = await bridgePromises[bridge];
 
-  data.map(({ to }: any) => {
+  data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
     if (!(chain in addresses)) addresses[chain] = [];
-    if (!(address in addresses[chain])) addresses[chain].push(address);
+    if (!(address in addresses[chain])) addresses[chain].push(address.toLowerCase());
+  });
+
+  const nonEvmMapping: { [key: string]: string } = {
+    solana: "solana",
+    aptos: "aptos",
+    ton: "ton",
+    movement: "move",
+    "sui-mainnet": "sui",
+  };
+
+  Object.keys(data[1]).map((chain: string) => {
+    if (chain.endsWith("-testnet")) return;
+    if (!data[1][chain].chainDetails || !data[1][chain].tokens) return;
+    
+    const { chainType, chainId, nativeChainId } = data[1][chain].chainDetails;
+    if (chainType != "evm" && !nonEvmMapping[chain]) return
+    const destinationChainSlug =
+      chainIdMap[chainId] ?? chainIdMap[nativeChainId] ?? nonEvmMapping[chain];
+    if (!destinationChainSlug) return;
+
+    if (!allChainKeys.includes(destinationChainSlug)) return;
+    if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
+    const tokens = Object.keys(data[1][chain].tokens).filter((t: string) => addresses[destinationChainSlug].indexOf(t.toLowerCase()) == -1 );
+    addresses[destinationChainSlug].push(...tokens);
   });
 
   const staticTokens: { [chain: string]: string[] } = {
-    morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    morph: ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34", "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7"],
     unichain: [
-      "0x2416092f143378750bb29b79eD961ab195CcEea5",
-      "0xc3eACf0612346366Db554C991D7858716db09f58",
-      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+      "0x2416092f143378750bb29b79ed961ab195cceea5",
+      "0xc3eacf0612346366db554c991d7858716db09f58",
+      "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7",
     ],
   };
 

@@ -63,5 +63,3 @@ export async function fetchRWAStats() {
 
   return res;
 }
-
-fetchRWAStats(); // ts-node defi/src/rwa/index.ts

@@ -10,7 +10,7 @@ Object.keys(data).forEach((key) => {
       data[key].hallmarks = convertHallmarkStrings(data[key].hallmarks)
     }
   } catch (e) {
-    console.error(`Error processing ${key}:`, e)
+    console.info(`Error processing ${key}: skipping...`)
   }
 })
 fs.writeFileSync(adaptersFile, JSON.stringify(data))
@@ -18,7 +18,7 @@ fs.writeFileSync(adaptersFile, JSON.stringify(data))
 //Replace all fuctions with mock functions in an object all the way down
 function mockFunctions(obj) {
   if (typeof obj === "function") {
-    return '_lmtf'  // llamaMockedTVLFunction
+    return '_f'  // llamaMockedTVLFunction
   } else if (typeof obj === "object") {
     Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
   }

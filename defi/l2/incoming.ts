@@ -43,7 +43,7 @@ export async function fetchIncoming(params: {
             const supply = supplies[t];
             if (!priceInfo || !supply) return;
             const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
-            if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = priceInfo.symbol;
+            if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol;
             if (symbol in canonicalTvls[chain]) return;
             if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
@@ -58,5 +58,6 @@ export async function fetchIncoming(params: {
       }
     })
   );
+
   return data;
 }

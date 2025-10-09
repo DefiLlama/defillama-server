@@ -95,7 +95,7 @@ export async function fetchTvls(
   } = {}
 ): Promise<{ data: TokenTvlData; native?: TokenTvlData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const searchWidth: number = params.searchWidth ?? (params.timestamp ? 43200 : 10800); // 12,3hr either side
+  const searchWidth: number = params.searchWidth ?? 43200; // (params.timestamp ? 43200 : 10800); // 12,3hr either side
   const isCanonical: boolean = params.isCanonical ?? false;
   const isProtocol: boolean = params.isProtocol ?? false;
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
@@ -175,13 +175,13 @@ function addOutgoingToMcapData(
       }
       let deductions = zero;
       try {
-        deductions = BigNumber(excluded[chain][symbol]);
-        allMcapData.total[symbol].native = allMcapData.total[symbol].native.minus(deductions);
-      } catch (e) {
-        e;
-      }
+        deductions = BigNumber(excluded[chain]?.[symbol] ?? zero);
+        if (!deductions.isNaN()) allMcapData.total[symbol].native = allMcapData.total[symbol].native.minus(deductions);
+      } catch (e) {}
+
       const percOnThisChain = chainMcap.minus(deductions).div(interchainMcap);
       const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+
       allMcapData[chain][symbol].native = thisAssetMcap;
     });
   });

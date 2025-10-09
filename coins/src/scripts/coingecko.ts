@@ -22,6 +22,15 @@ import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import axios from "axios";
 
+// Kill the script after 5 minutes to prevent infinite execution
+const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
+const killTimeout = setTimeout(() => {
+  console.log(`Script execution exceeded ${TIMEOUT_MS/1000} seconds. Forcefully terminating.`);
+  process.exit(1); // Exit with error code 1 to indicate abnormal termination
+}, TIMEOUT_MS);
+// Make sure the timeout doesn't prevent the Node.js process from exiting naturally
+killTimeout.unref();
+
 enum COIN_TYPES {
   over100m = "over100m",
   over10m = "over10m",
@@ -48,13 +57,14 @@ async function storeCoinData(coinData: Write[]) {
       symbol: c.symbol,
       confidence: c.confidence,
       volume: c.volume,
+      adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
-        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+        return ({ decimals: 0, ...rest } as Dynamo)
       }),
     ),
     batchWrite(items, false),
@@ -280,6 +290,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,
+              adapter: 'coingecko'
             };
             kafkaItems.push(item);
             await ddb.put(item);
@@ -440,6 +451,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
           }
         }
       }
+
+    // coins = coins.filter((coin) => coin.id == 'euro-coin');
+    // if (!coins.length) process.exit(0)
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

@@ -1,3 +1,6 @@
+import { getEnv } from "../env";
+import * as sdk from "@defillama/sdk";
+
 export function unixTSToDateString(unixTimestamp: number) {
   return unixTSToHourString(unixTimestamp).slice(0, 10)
 }
@@ -103,7 +106,7 @@ export function tableToString(data: any, columns: any) {
   data.unshift(headerObject1)
   data.unshift(headerObject)
   // Calculate the maximum width for each column
-  const columnWidths = columns.map((col: any) => 
+  const columnWidths = columns.map((col: any) =>
     Math.max(col.length, ...data.map((row: any) => (row[col] !== undefined ? String(row[col]).length : 0)))
   );
 
@@ -119,4 +122,51 @@ export function tableToString(data: any, columns: any) {
   });
 
   return tableString;
+}
+
+export function cronNotifyOnDiscord(): boolean {
+  return getEnv('DIM_CRON_NOTIFY_ON_DISCORD') as boolean
+}
+
+export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
+  application: string;
+  type: string;
+}) {
+
+  let addRuntimeLog = true
+  if (metadata.application === 'cron-task') addRuntimeLog = cronNotifyOnDiscord()
+
+  if (!addRuntimeLog) return fn()
+
+
+  const startTime = Date.now()
+  try {
+
+
+    await fn()
+
+    const endTime = Date.now()
+    await sdk.elastic.addRuntimeLog({
+      metadata,
+      success: true,
+      runtime: (endTime - startTime) / 1e3,
+    })
+
+
+  } catch (e) {
+
+    const endTime = Date.now()
+
+    await sdk.elastic.addErrorLog({
+      error: (e as any)?.message ? (e as any).message : e,
+      metadata
+    })
+
+    await sdk.elastic.addRuntimeLog({
+      metadata,
+      success: false,
+      runtime: (endTime - startTime) / 1e3,
+    })
+    throw e
+  }
 }

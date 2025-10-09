@@ -91,7 +91,7 @@ const tokenAddresses: Array<string> = [
 
 const mintedTokens: Array<TokenConfig> = [];
 for (const tokenAddress of tokenAddresses) {
-  for (const chain of ['base', 'polygon', 'wc', 'katana']) {
+  for (const chain of ['base', 'polygon', 'wc']) {
     if (tokenAddress === '0x3EB097375fc2FC361e4a472f5E7067238c547c52' && chain === 'wc') {
       continue;
     }

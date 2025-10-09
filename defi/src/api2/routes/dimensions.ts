@@ -244,6 +244,15 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
   const {
     adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
   } = getEventParameters(req, true)
+
+  const isAllChainDataRequested =  chainFilter?.toLowerCase() === 'chain-breakdown'
+
+  if (isAllChainDataRequested && (req as any).isProRoute) {
+
+    const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
+    return fileResponse(routeFile, res)
+  }
+
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
   const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
   const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
@@ -359,7 +368,8 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
         }
       }
 
-      await storeRouteData(`/config/smol/dimensions-${adapterType}-${recordType}-total-data-chart`, totalDataChartByChain)
+      // sort by date
+      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, Object.entries(totalDataChartByChain).map(([date, value]) => ([+date, value ])).sort(([a]: any, [b]: any) => a - b))
 
       for (let [id, protocol] of Object.entries(allProtocols) as any) {
         if (!protocol.info) {

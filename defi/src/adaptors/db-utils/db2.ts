@@ -158,7 +158,7 @@ export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { ada
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
     where: { type: adapterType, timeS: date },
-    attributes: ['timestamp', 'id', 'timeS', 'updatedAt'],
+    attributes: ['timestamp', 'id', 'timeS', 'updatedat'],
     raw: true,
   })
 

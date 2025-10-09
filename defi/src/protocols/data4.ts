@@ -10365,7 +10365,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/anvil.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "anvil",
+    gecko_id: null,
     cmcId: null,
     category: "Collateral Management",
     chains: ["Ethereum"],

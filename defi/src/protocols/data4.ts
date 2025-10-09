@@ -30619,5 +30619,47 @@ const data4: Protocol[] = [
     },
     parentProtocol: "parent#metamask",
   },
+  {
+    id: "6831",
+    name: "BitKan",
+    address: "0x1410434b0346f5be678d0fb554e5c7ab620f8f4a",
+    symbol: "KAN",
+    url: "https://bitkan.com/",
+    description:
+      "BitKan is a centralized exchange and brokerage aggregator offering spot and derivatives trading by routing liquidity across major CEXs, powered by its native KAN token",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitkan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "kan",
+    cmcId: "2934",
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Polygon", "Tron", "Binance", "Solana"],
+    module: "bitkan/index.js",
+    twitter: "BitKanOfficial",
+    forkedFrom: [],
+    listedAt: 1760033298
+  },
+  {
+    id: "6832",
+    name: "OSL",
+    address: null,
+    symbol: "-",
+    url: "https://www.osl.com/en",
+    description:
+      "OSL is a regulated, Hong Kong-based digital asset platform offering exchange, custody, brokerage, OTC, and RWA tokenization services under institutional-grade compliance and infrastructure.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/osl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Ethereum", "Bitcoin", "Solana", "Avalanche", "Tron", "Litecoin", "TON", "Ripple", "Binance", "Doge"],
+    module: "osl/index.js",
+    twitter: "OSLdotcom",
+    forkedFrom: [],
+    listedAt: 1760034403
+  },
 ];
 export default data4;

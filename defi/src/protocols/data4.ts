@@ -30654,7 +30654,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Interface",
+    category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Solana", "Avalanche", "Tron", "Litecoin", "TON", "Ripple", "Binance", "Doge"],
     module: "osl/index.js",
     twitter: "OSLdotcom",

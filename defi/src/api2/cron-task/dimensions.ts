@@ -618,7 +618,7 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   info.linkedProtocols = [info.name].concat(childProtocols)
   info.childProtocols = []
   
-  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', ]
+  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', 'defaultChartView', ]
 
 
   childProtocolData.forEach(({ records, info: childData }: any) => {

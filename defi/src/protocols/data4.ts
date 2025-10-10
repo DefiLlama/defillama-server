@@ -16268,13 +16268,13 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Cross Chain Bridge",
+    category: "Bridge Aggregator",
     chains: ["Near"],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "NEARProtocol",
     dimensions: {
-      dexs: "near-intents"
+      "bridge-aggregators": "near-intents"
     }
   },
   {

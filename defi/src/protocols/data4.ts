@@ -29527,7 +29527,10 @@ const data4: Protocol[] = [
     module: "symm-io/index.js",
     twitter: "symm_io",
     forkedFromIds: [],
-    listedAt: 1759188001
+    listedAt: 1759188001,
+    dimensions: {
+      derivatives: "symmio"
+    }
   },
   {
     id: "6784",

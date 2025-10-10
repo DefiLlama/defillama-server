@@ -30871,7 +30871,6 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "dummy.js",
     twitter: "DYORSWAPDEX",
-    listedAt: 1700767143,
     parentProtocol: "parent#dyorswap",
     dimensions: {
       dexs: "dyorswap-launchpad",

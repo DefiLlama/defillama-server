@@ -23823,7 +23823,7 @@ const data4: Protocol[] = [
       {
         name: "Edge",
         type: "Primary",
-        proof: ["https://arbiscan.io/address/0x7b09d87945102d25069c173ee45db397c6e055b3#readContract#F4"],
+        proof: ["https://arbiscan.io/address/0x7b09d87945102d25069c173ee45db397c6e055b3#readContract#F4","https://github.com/DefiLlama/defillama-server/pull/10782],
       },
     ],
   },

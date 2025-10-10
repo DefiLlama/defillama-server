@@ -30730,6 +30730,10 @@ const data4: Protocol[] = [
     audit_links: ["https://threesigma.xyz/case-studies/dex/aborean-finance-audit"],
     listedAt: 1760108148,
     parentProtocol: "parent#aborean-finance",
+    dimensions: {
+      dexs: "aborean",
+      fees: "aborean",
+    },
   },
   {
     id: "6836",
@@ -30752,6 +30756,10 @@ const data4: Protocol[] = [
     forkedFrom: ["2198"],
     listedAt: 1760108151,
     parentProtocol: "parent#aborean-finance",
+    dimensions: {
+      dexs: "aborean-cl",
+      fees: "aborean-cl",
+    },
   },
   {
     id: "6837",

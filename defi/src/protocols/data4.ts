@@ -19885,7 +19885,7 @@ const data4: Protocol[] = [
       {
         name: "Edge",
         type: "Primary",
-        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations"],
+        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
     ],
   },
@@ -19913,7 +19913,7 @@ const data4: Protocol[] = [
       {
         name: "Edge",
         type: "Primary",
-        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations"],
+        proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
     ],
   },

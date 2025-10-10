@@ -937,6 +937,7 @@ const data4: Protocol[] = [
     chains: ["Op_Bnb"],
     forkedFrom: [],
     module: "dummy.js",
+    deprecated: true,
     twitter: "dappOS_com",
     dimensions: {
       fees: "dappos-intentEx",

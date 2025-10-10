@@ -8155,6 +8155,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MetaMask",
     github: ["MetaMask"],
   },
+  {
+    id: "parent#reya",
+    name: "Reya",
+    url: "https://reya.network",
+    description: "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
+    logo: `${baseIconsUrl}/reya.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "reya_xyz",
+  },
 ];
 
 export default parentProtocols;

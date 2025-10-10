@@ -9784,7 +9784,7 @@ const data4: Protocol[] = [
     description:
       "SpinUp is a DeFi ecosystem built on HyperEVM, bringing together liquid staking, a Meme Launchpad, a Meme DEX, and driving memes into perpetual market fire.",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/hyperpie.jpg`,
+    logo: `${baseIconsUrl}/spinup.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

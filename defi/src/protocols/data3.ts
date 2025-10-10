@@ -48074,7 +48074,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "doubleup",
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Sui"],
     // previous dummy.js
     module: "doubleup/index.js",

@@ -356,6 +356,26 @@
     }
   },
   "neutron": {
+    "factory:neutron17sp75wng9vl2hu3sf4ky86d7smmk3wle9gkts2gmedn9x4ut3xcqa5xp34:maxbtc": {
+      "to": "coingecko#maxbtc",
+      "decimals": 8,
+      "symbol": "maxBTC"
+    },
+    "factory:neutron1200577g2rywas6a0pnswe6wdgy4uqgjf0lymdkgq4uhjklej3ftsg4qs03:maxbtc": {
+      "to": "coingecko#maxbtc",
+      "decimals": 8,
+      "symbol": "maxBTC"
+    },
+    "factory:neutron1j4sl8nf7fkpsptqtcw6hmd6t27varth57gmjrrswfkr2t85sj8sqf6ncrh:maxbtc": {
+      "to": "coingecko#maxbtc",
+      "decimals": 8,
+      "symbol": "maxBTC"
+    },
+    "factory:neutron1frc0p5czd9uaaymdkug2njz7dc7j65jxukp9apmt9260a8egujkspms2t2:udntrn": {
+      "to": "coingecko#drop-staked-ntrn",
+      "decimals": 6,
+      "symbol": "dNTRN"
+    },
     "untrn": {
       "decimals": "6",
       "symbol": "NTRN",
@@ -4064,6 +4084,26 @@
     }
   },
   "ibc": {
+    "3F1D988D9EEA19EB0F3950B4C19664218031D8BCE68CE7DE30F187D5ACEA0463": {
+      "to": "coingecko#universal-btc",
+      "decimals": 8,
+      "symbol": "uniBTC"
+    },
+    "C0F284F165E6152F6DDDA900537C1BC8DA1EA00F03B9C9EC1841FA7E004EF7A3": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "solvBTC"
+    },
+    "E2A000FD3EDD91C9429B473995CE2C7C555BCC8CFC1D0A3D02F514392B7A80E8": {
+      "to": "coingecko#ether-fi-staked-btc",
+      "decimals": 8,
+      "symbol": "eBTC"
+    },
+    "B7BF60BB54433071B49D586F54BD4DED5E20BEFBBA91958E87488A761115106B": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
     "05D299885B07905B6886F554B39346EA6761246076A1120B1950049B92B922DD": {
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,

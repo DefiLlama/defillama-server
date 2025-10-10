@@ -15885,8 +15885,9 @@ const data4: Protocol[] = [
         proof: [
           "https://app.euler.finance/?governor=re7-labs&network=tac",
           "https://github.com/DefiLlama/defillama-server/pull/10515",
+          "https://github.com/DefiLlama/defillama-server/pull/10780" // plasma chain
         ],
-        chains: [{ chain: "TAC" }],
+        chains: [{ chain: "TAC" },{chain: "Plasma"}],
       },
       {
         name: "Chainlink",

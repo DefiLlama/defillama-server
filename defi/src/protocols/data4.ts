@@ -23625,7 +23625,7 @@ const data4: Protocol[] = [
       {
         name: "eOracle",
         type: "Primary",
-        proof: [],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10777"],
         chains: [{ chain: "TAC" }],
       },
       ],

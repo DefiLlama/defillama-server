@@ -9777,6 +9777,7 @@ const data4: Protocol[] = [
   {
     id: "5960",
     name: "SpinUp",
+    previousNames: ["Hyperpie"],
     address: null,
     symbol: "-",
     url: "https://www.spinup.zone/",

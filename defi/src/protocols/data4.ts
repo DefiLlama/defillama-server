@@ -24494,6 +24494,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://autopilot-5.gitbook.io/autopilot/protocol/audit-and-security"],
     listedAt: 1754929597,
+    dimensions: {
+      fees: "autopilot"
+    }
   },
   {
     id: "6566",

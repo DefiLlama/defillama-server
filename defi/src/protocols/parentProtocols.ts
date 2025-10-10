@@ -8166,6 +8166,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "reya_xyz",
   },
+  {
+    id: "parent#aborean-finance",
+    name: "Aborian Finance",
+    url: "https://aborean.finance",
+    description: "Aborean Finance is a decentralized exchange (DEX) and liquidity hub built on the Abstract blockchain, designed to power on-chain trading, liquidity incentives, and ecosystem growth through ABX, its native governance and reward token.",
+    logo: `${baseIconsUrl}/aborean-finance.jpg`,
+    gecko_id: "aborean",
+    cmcId: null,
+    chains: [],
+    twitter: "AboreanFi",
+  },
 ];
 
 export default parentProtocols;

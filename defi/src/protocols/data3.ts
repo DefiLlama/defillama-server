@@ -23791,7 +23791,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "curated risk management/liquid staking ",
+    category: "Risk Curators",
     chains: ["Sui"],
     module: "volo-vsui/index.js",
     twitter: "volo_sui",

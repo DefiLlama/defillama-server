@@ -9776,12 +9776,12 @@ const data4: Protocol[] = [
   },
   {
     id: "5960",
-    name: "Hyperpie",
+    name: "SpinUp",
     address: null,
     symbol: "-",
-    url: "https://www.hyperliquid.magpiexyz.io/stake",
+    url: "https://www.spinup.zone/",
     description:
-      "Hyperpie is an integrated DeFi ecosystem built on Hyperliquid, composed of a Liquid Staking platform, a MEME launchpad, and a MEME DEX. Designed around a ve(3,3) tokenomics model, it aligns incentives across HYPE stakers, meme project creators, liquidity providers, and HPP token holders. HPP is the governance token of Hyperpie",
+      "SpinUp is a DeFi ecosystem built on HyperEVM, bringing together liquid staking, a Meme Launchpad, a Meme DEX, and driving memes into perpetual market fire.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperpie.jpg`,
     audits: "2",
@@ -9796,17 +9796,22 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://docs.hyperpiexyz.io/tech-stack-and-media-kit/oracle/pyth"],
-        startDate: "2025-05-19",
+        proof: ["https://docs.spinup.zone/tech-stack-and-media-kit/oracle/pyth"],
+        startDate: "2025-05-19"
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.spinup.zone/tech-stack-and-media-kit/oracle/chainlink"],
+        startDate: "2025-06-05"
       },
     ],
-    twitter: "Hyperpiexyz_io",
+    twitter: "SpinUpZone",
     audit_links: [
-      "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
-      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf",
+      "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-SpinUp.pdf",
+      "https://github.com/SupremacyTeam/publications/blob/main/SpinUp/Supremacy-Audit-Report-SpinUp-v1.6.pdf"
     ],
-    parentProtocol: "parent#magpie-ecosystem",
-    listedAt: 1743107407,
+    listedAt: 1743107407
   },
   {
     id: "5961",

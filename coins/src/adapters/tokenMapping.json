@@ -356,21 +356,6 @@
     }
   },
   "neutron": {
-    "factory:neutron17sp75wng9vl2hu3sf4ky86d7smmk3wle9gkts2gmedn9x4ut3xcqa5xp34:maxbtc": {
-      "to": "coingecko#maxbtc",
-      "decimals": 8,
-      "symbol": "maxBTC"
-    },
-    "factory:neutron1200577g2rywas6a0pnswe6wdgy4uqgjf0lymdkgq4uhjklej3ftsg4qs03:maxbtc": {
-      "to": "coingecko#maxbtc",
-      "decimals": 8,
-      "symbol": "maxBTC"
-    },
-    "factory:neutron1j4sl8nf7fkpsptqtcw6hmd6t27varth57gmjrrswfkr2t85sj8sqf6ncrh:maxbtc": {
-      "to": "coingecko#maxbtc",
-      "decimals": 8,
-      "symbol": "maxBTC"
-    },
     "factory:neutron1frc0p5czd9uaaymdkug2njz7dc7j65jxukp9apmt9260a8egujkspms2t2:udntrn": {
       "to": "coingecko#drop-staked-ntrn",
       "decimals": 6,

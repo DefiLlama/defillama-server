@@ -30713,7 +30713,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6835",
-    name: "Aborigen AMM",
+    name: "Aborean AMM",
     address: "abstract:0x4c68e4102c0f120cce9f08625bd12079806b7c4d",
     symbol: "ABX",
     url: "https://aborean.finance",

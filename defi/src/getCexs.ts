@@ -585,6 +585,20 @@ export const cexsData: Array<ICex> = [
     slug: "valr",
     coin: null,
     walletsLink: null,
+  },
+  {
+    name: "BitKan",
+    cgId: "bitkan",
+    slug: "bitkan",
+    coin: "KAN",
+    coinSymbol: "KAN",
+    walletsLink: null,
+  },
+  {
+    name: "OSL",
+    slug: "osl",
+    coin: null,
+    walletsLink: null,
   }
 ];
 
@@ -697,6 +711,7 @@ const cg_volume_cexs = Object.values({
   "Foxbit": "foxbit",
   "ZBX": "zbx",
   "zipmex": "zipmex",
+  "OSL": "osl",
 });
 
 export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {

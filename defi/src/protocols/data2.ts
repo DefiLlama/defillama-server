@@ -18303,14 +18303,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2162",
-    name: "Ease.org",
+    name: "Easedefi.org",
     address: "0xEa5eDef1287AfDF9Eb8A46f9773AbFc10820c61c",
     symbol: "EASE",
     url: "https://easedefi.org",
     description:
       "Ease is a decentralized coverage protocol that enables users to protect their DeFi tokens without a premium while earning compounding yield.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ease.org.png`,
+    logo: `${baseIconsUrl}/easedefi.org.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "ease",

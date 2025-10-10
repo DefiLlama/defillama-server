@@ -30850,5 +30850,30 @@ const data4: Protocol[] = [
     parentProtocol: "parent#lorenzo-protocol",
     listedAt: 1760109435,
   },
+  {
+    id: "6841",
+    name: "DyorSwap Launchpad",
+    address: "mode:0x097de1ADe6D7b46540637935C88B489860D310A2",
+    symbol: "DYOR",
+    url: "https://dyorswap.finance/?chainId=34443",
+    description: "Decentralized exchange on Mode Mainnet",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/dyorswap-launchpad.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Mode"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "DYORSWAPDEX",
+    listedAt: 1700767143,
+    parentProtocol: "parent#dyorswap",
+    dimensions: {
+      dexs: "dyorswap-launchpad",
+      fees: "dyorswap-launchpad"
+    }
+  },
 ];
 export default data4;

@@ -8188,6 +8188,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ferra_protocol",
   },
+  {
+    id: "parent#dyorswap",
+    name: "DyorSwap",
+    url: "https://dyorswap.finance/?chainId=34443",
+    description: "Decentralized exchange on Mode Mainnet",
+    logo: `${baseIconsUrl}/dyorswap.png`,
+    gecko_id: "dyor",
+    cmcId: "13987",
+    chains: [],
+    twitter: "DYORSWAPDEX",
+  },
 ];
 
 export default parentProtocols;

@@ -26686,17 +26686,17 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3837",
-    name: "DyorSwap",
+    name: "DyorSwap AMM",
     address: "mode:0x097de1ADe6D7b46540637935C88B489860D310A2",
     symbol: "DYOR",
     url: "https://dyorswap.finance/?chainId=34443",
     description: "Decentralized exchange on Mode Mainnet",
     chain: "Mode",
-    logo: `${baseIconsUrl}/dyorswap.png`,
+    logo: `${baseIconsUrl}/dyorswap-amm.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "dyor",
-    cmcId: "13987",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Mode"],
     forkedFromIds: ["2197"],
@@ -26706,7 +26706,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       dexs: "dyorswap",
       fees: "dyorswap"
-    }
+    },
+    parentProtocol: "parent#dyorswap",
   },
   {
     id: "3838",

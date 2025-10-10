@@ -8177,6 +8177,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AboreanFi",
   },
+  {
+    id: "parent#ferra",
+    name: "Ferra",
+    url: "https://ferra.ag",
+    description: "Ferra is a dynamic liquidity platform on the SUI network, offering advanced AMM engines and tools for DeFi projects to efficiently launch, manage, and grow liquidity.",
+    logo: `${baseIconsUrl}/ferra.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ferra_protocol",
+  },
 ];
 
 export default parentProtocols;

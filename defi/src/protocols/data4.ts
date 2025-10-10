@@ -16268,7 +16268,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "AI Agents",
+    category: "Cross Chain Bridge",
     chains: ["Near"],
     forkedFrom: [],
     module: "dummy.js",

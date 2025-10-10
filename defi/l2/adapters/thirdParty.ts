@@ -143,7 +143,7 @@ const layerzero = async (): Promise<void> => {
 
   Object.keys(data[1]).map((chain: string) => {
     if (chain.endsWith("-testnet")) return;
-    if (!data[1][chain].chainDetails) return;
+    if (!data[1][chain].chainDetails || !data[1][chain].tokens) return;
     
     const { chainType, chainId, nativeChainId } = data[1][chain].chainDetails;
     if (chainType != "evm" && !nonEvmMapping[chain]) return
@@ -153,7 +153,7 @@ const layerzero = async (): Promise<void> => {
 
     if (!allChainKeys.includes(destinationChainSlug)) return;
     if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
-    const tokens = Object.keys(data[1][chain].tokens).filter((t: string) => addresses[chain].indexOf(t.toLowerCase()) == -1 );
+    const tokens = Object.keys(data[1][chain].tokens).filter((t: string) => addresses[destinationChainSlug].indexOf(t.toLowerCase()) == -1 );
     addresses[destinationChainSlug].push(...tokens);
   });
 

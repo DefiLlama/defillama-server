@@ -301,7 +301,9 @@ test("no surprise category", async () => {
     "DePIN",
     "Dual-Token Stablecoin",
     "Physical TCG",
-    "Mining Pools"
+    "Mining Pools",
+    "NFT Automated Strategies",
+    "Luck Games"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

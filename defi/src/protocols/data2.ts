@@ -1073,7 +1073,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "croissant-games",
     cmcId: "17465",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Cronos"],
     forkedFrom: [],
     module: "croissant/index.js",
@@ -2160,7 +2160,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EOS"],
     oracles: ["Internal"],
     forkedFrom: [],
@@ -3558,7 +3558,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange"
+      derivatives: "01-exchange",
+      fees: "o1-exchange"
     },
   },
   {
@@ -4383,7 +4384,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "luckychip",
     cmcId: "20170",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -12412,7 +12413,7 @@ const data2: Protocol[] = [
     treasury: "betswirl.js",
     cmcId: "18453",
     category: "Prediction Market",
-    chains: ["Binance", "Ethereum", "Polygon", "Arbitrum", "Avalanche"],
+    chains: ["Binance", "Polygon", "Arbitrum", "Avalanche"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "betswirl/index.js",
@@ -14370,14 +14371,15 @@ const data2: Protocol[] = [
   },
   {
     id: "1997",
-    name: "Morpho Compound",
+    name: "Morpho V0 CompoundV2",
+    previousNames: ["Morpho Compound"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
       "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-compound.png`,
+    logo: `${baseIconsUrl}/morpho-v0-compoundv2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -17679,7 +17681,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EthereumPoW"],
     forkedFrom: [],
     module: "Fliperino/index.js",
@@ -18446,14 +18448,15 @@ const data2: Protocol[] = [
   },
   {
     id: "2168",
-    name: "Morpho Aave",
+    name: "Morpho V0 AaveV2",
+    previousNames: ["Morpho Aave"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:
       "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-aave.png`,
+    logo: `${baseIconsUrl}/morpho-v0-aavev2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -21523,7 +21526,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["CSC"],
     module: "crypto-lottery/index.js",
     twitter: "__cryptolottery",
@@ -23756,7 +23759,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "freebie-life-finance",
     cmcId: "20870",
-    category: "Prediction Market",
+    category: "Yield Lottery",
     chains: ["Avalanche"],
     module: "freebie/index.js",
     twitter: "freebielifeme",
@@ -26804,6 +26807,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"],
     github: ["nounsDAO"],
+    dimensions: {
+      fees: "nouns"
+    }
   },
   {
     id: "2523",

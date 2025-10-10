@@ -2827,6 +2827,9 @@ const data: Protocol[] = [
       "https://callisto.network/idex-security-audit/",
     ],
     parentProtocol: "parent#idex",
+    dimensions: {
+      dexs: "idex-classic"
+    }
   },
   {
     id: "231",
@@ -6652,25 +6655,25 @@ const data: Protocol[] = [
   },
   {
     id: "397",
-    name: "ShibaSwap",
+    name: "ShibaSwap V1",
     address: "0x9813037ee2218799597d83d4a5b6f3b6778218d9",
     symbol: "BONE",
     url: "https://shibaswap.com",
     description:
       "SHIB, LEASH, and BONE, come together to create ShibaSwap, the next evolution in DeFi platforms. ShibaSwap gives users the ability to DIG (provide liquidity), BURY (stake), and SWAP tokens to gain WOOF Returns through our sophisticated and innovative passive income reward system.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/shibaswap.jpg`,
+    logo: `${baseIconsUrl}/shibaswap-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "bone-shibaswap",
-    cmcId: "11865",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Ethereum"],
     module: "shibaswap/index.js",
     twitter: "ShibaSwapDEX",
     audit_links: ["https://www.certik.org/projects/shib"],
     forkedFromIds: ["2197"],
-    governanceID: ["snapshot:shiba-swap.eth"],
+    parentProtocol: "parent#shibaswap",
     dimensions: {
       fees: "shibaswap",
       dexs: "shibaswap"
@@ -9842,7 +9845,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     github: ["thales-markets"],
     dimensions: {
-      options: "thales"
+      options: "thales",
+      fees: "thales"
     }
   },
   {
@@ -10524,7 +10528,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "sunrise",
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     module: "sunrise-gaming-by-dao/index.js",
     twitter: "SunriseGaming_d",

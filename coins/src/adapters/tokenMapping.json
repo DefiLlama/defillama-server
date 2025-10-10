@@ -1425,6 +1425,11 @@
     }
   },
   "bsc": {
+    "0x7cb8a5abf019983ed053484d5ad17f96fec56f28": {
+      "decimals": "8",
+      "symbol": "leadBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x4baB31D6c557F8285eccB5167095147a36D9BaFa": {
       "decimals": "18",
       "symbol": "SPECTRA",
@@ -2803,6 +2808,26 @@
     }
   },
   "aptos": {
+    "0x000000000000000000000000000000000000000000000000000000000000000a": {
+      "decimals": "8",
+      "symbol": "APT",
+      "to": "coingecko#aptos"
+    },
+    "0xf764dbfd6999067ac052a8e722ae359bec389bd7dba19ead586801b99b81b075": {
+      "decimals": "8",
+      "symbol": "uniBTC",
+      "to": "coingecko#universal-btc"
+    },
+    "0xf599112bc3a5b6092469890d6a2f353f485a6193c9d36626b480704467d3f4c8": {
+      "decimals": "8",
+      "symbol": "aBTC",
+      "to": "coingecko#abtc"
+    },
+    "0x5fabd1b12e39967a3c24e91b7b8f67719a6dacee74f3c8b9fb7d93e855437d2": {
+      "decimals": "6",
+      "symbol": "USD1",
+      "to": "coingecko#usd1-wlfi"
+    },
     "0x6dba1728c73363be1bdd4d504844c40fbb893e368ccbeff1d1bd83497dbc756d": {
       "decimals": "8",
       "symbol": "PROPS",
@@ -3189,18 +3214,6 @@
       "to": "coingecko#liquity-bold",
       "decimals": 18,
       "symbol": "BOLD"
-    }
-  },
-  "radixdlt": {
-    "resource_rdx1tknxxxxxxxxxradxrdxxxxxxxxx009923554798xxxxxxxxxradxrd": {
-      "decimals": "0",
-      "symbol": "XRD",
-      "to": "coingecko#radix"
-    },
-    "resource_rdx1th88qcj5syl9ghka2g9l7tw497vy5x6zaatyvgfkwcfe8n9jt2npww": {
-      "decimals": "0",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
     }
   },
   "darwinia": {
@@ -6570,8 +6583,8 @@
     },
     "0x5Bff88cA1442c2496f7E475E9e7786383Bc070c0": {
       "decimals": "18",
-      "symbol": "sFRAX",
-      "to": "coingecko#staked-frax"
+      "symbol": "sfrxUSD",
+      "to": "coingecko#staked-frax-usd"
     },
     "0xDD7d5e4Ea2125d43C16eEd8f1FFeFffa2F4b4aF6": {
       "decimals": "18",
@@ -6750,6 +6763,11 @@
     }
   },
   "bsquared": {
+    "0x796e4D53067FF374B89b2Ac101ce0c1f72ccaAc2": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "BTC",
@@ -6992,6 +7010,11 @@
       "to": "coingecko#babylon",
       "decimals": 6,
       "symbol": "BABY"
+    },
+    "0x6b062aa7f5fc52b530cb13967ae2e6bc0d8dd3e4": {
+      "to": "coingecko#solv-protocol-solvbtc-jupiter",
+      "decimals": 18,
+      "symbol": "SolvBTC.JUP"
     }
   },
   "xlayer": {
@@ -10307,6 +10330,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    },
+    "0x4Cda2D683E3AF90ea50855008BdB15D9454527B7": {
+      "to": "coingecko#bitcoin-usd-btcfi",
+      "decimals": 18,
+      "symbol": "BtcUSD"
     }
   },
   "hsk": {
@@ -11917,7 +11945,7 @@
       "symbol": "ueur.trading"
     },
     "uylds.fcc": {
-      "to": "coingecko#ylds",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "uylds.fcc"
     },
@@ -12207,7 +12235,7 @@
       "decimals": 8,
       "symbol": "0x4548a3bcb3c2b5ce42bf0559b1cf2f1ec97a51d0"
     }
-  }, 
+  },
   "gatelayer": {
     "0x6803b8e93b13941f6b73b82e324b80251b3de338": {
       "to": "coingecko#gatechain-token",

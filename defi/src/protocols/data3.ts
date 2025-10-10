@@ -7384,14 +7384,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3014",
-    name: "Morpho AaveV3",
+    name: "Morpho V0 AaveV3",
+    previousNames: ["Morpho AaveV3"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev3.morpho.org/",
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-aavev3.png`,
+    logo: `${baseIconsUrl}/morpho-v0-aavev3.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -7785,14 +7786,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3031",
-    name: "MetaMask",
+    name: "MetaMask Wallet",
     address: null,
     symbol: "-",
     url: "https://metamask.io/",
     description:
       "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask-wallet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7802,11 +7803,11 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "MetaMask",
     forkedFrom: [],
-    github: ["MetaMask"],
     dimensions: {
       fees: "metamask",
       aggregators: "metamask"
-    }
+    },
+    parentProtocol: "parent#metamask",
   },
   {
     id: "3032",
@@ -10498,7 +10499,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Polygon"],
     module: "megamoon/index.js",
     twitter: "0xMegaMoon",
@@ -17845,13 +17846,13 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3458",
-    name: "WoofSwap",
+    name: "WoofSwap Shibarium",
     address: null,
     symbol: "WOOF",
     url: "https://www.woofswap.finance",
     description: "The first ve(3,3) DEX on #Shibarium.",
     chain: "Shibarium",
-    logo: `${baseIconsUrl}/woofswap.png`,
+    logo: `${baseIconsUrl}/woofswap-shibarium.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17859,8 +17860,9 @@ const data3_1: Protocol[] = [
     category: "Dexs",
     chains: ["Shibarium"],
     module: "woofswap/index.js",
-    forkedFromIds: ["2197"],
+    forkedFromIds: ["1407"],
     twitter: "woofswap",
+    parentProtocol: "parent#woofswap",
     listedAt: 1693328565,
   },
   {
@@ -26699,8 +26701,12 @@ const data3_1: Protocol[] = [
     chains: ["Mode"],
     forkedFromIds: ["2197"],
     module: "dyorswap/index.js",
-    twitter: "dyorswap",
+    twitter: "DYORSWAPDEX",
     listedAt: 1700767143,
+    dimensions: {
+      dexs: "dyorswap",
+      fees: "dyorswap"
+    }
   },
   {
     id: "3838",
@@ -31114,13 +31120,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4025",
-    name: "Morpho Blue",
+    name: "Morpho V1",
+    previousNames: ["Morpho Blue"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-blue.png`,
+    logo: `${baseIconsUrl}/morpho-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -31716,7 +31723,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Avalanche", "Base"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -32601,7 +32608,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "ninjaroll",
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Injective"],
     forkedFrom: [],
     module: "ninjaroll/index.js",
@@ -32674,11 +32681,12 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
-    parentProtocol: "parent#garden",
+    //parentProtocol: "parent#garden",
     listedAt: 1706793085,
     dimensions: {
       fees: "garden",
-      dexs: "garden"
+      dexs: "garden",
+      //"bridge-aggregators": "garden"
     }
   },
   {
@@ -40076,7 +40084,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "etherflip/index.js",
@@ -41322,6 +41330,9 @@ const data3_2: Protocol[] = [
     twitter: "rage_trade",
     github: ["RageTrade"],
     listedAt: 1712327109,
+    hallmarks: [
+      ['2025-10-06', 'Project winds down']
+    ],
     dimensions: {
       "aggregator-derivatives": "rage-trade"
     }
@@ -43493,7 +43504,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "ridotto",
     cmcId: "12465",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     forkedFrom: [],
     module: "ridotto/index.js",
@@ -44133,7 +44144,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: "tg-casino",
     cmcId: "28919",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "tgcasino/index.js",
@@ -46648,7 +46659,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     module: "rollspace/index.js",
     twitter: "rollspacecom",
@@ -52551,7 +52562,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Mode"],
     module: "betmode/index.js",
     twitter: "BetMode_io",
@@ -52783,6 +52794,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "reya-bridge/index.js",
     twitter: "reya_xyz",
+    parentProtocol: "parent#reya",
     listedAt: 1722510263,
   },
   {
@@ -53242,7 +53254,7 @@ const data3_2: Protocol[] = [
     symbol: "ARROW",
     url: "https://arrow.markets",
     description:
-      "Arrow Markets is a cutting-edge options platform that revolutionizes trading by seamlessly integrating an innovative RFQ system",
+      "We are the first Hybrid Options platform, seamlessly fusing CeFi convenience with DeFi transparency. NO complexity, ALL opportunity #CatchTheArrow",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arrow-markets.png`,
     audits: "0",
@@ -53736,13 +53748,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4978",
-    name: "Reya DEX",
+    name: "Reya Perps",
+    previousNames: ["Reya DEX"],
     address: null,
     symbol: "-",
     url: "https://app.reya.xyz/",
     description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
-    logo: `${baseIconsUrl}/reya-dex.jpg`,
+    logo: `${baseIconsUrl}/reya-perps.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -53756,6 +53769,7 @@ const data3_2: Protocol[] = [
     twitter: "reya_xyz",
     audit_links: ["https://docs.reya.network/more-resources/technical-resources"],
     listedAt: 1723560145,
+    parentProtocol: "parent#reya",
     dimensions: {
       fees: "reya-dex",
       derivatives: "reya-dex",
@@ -55571,7 +55585,8 @@ const data3_2: Protocol[] = [
     category: "Bridge",
     chains: ["Cosmos"],
     forkedFrom: [],
-    module: "osmosis-ibc/index.js",
+    // module: "osmosis-ibc/index.js",
+    module: "dummy.js", // we are not tracking bridged assets as tvl for any other ibc chain, why do it only for osmosis?
     twitter: "IBCProtocol",
     listedAt: 1724778968
   },
@@ -58356,7 +58371,8 @@ const data3_2: Protocol[] = [
     name: "four.meme",
     address: null,
     symbol: "-",
-    url: "https://four.meme/",
+    url: "https://four.meme?code=DZ9DF74J64FA",
+    referralUrl: "https://four.meme?code=DZ9DF74J64FA",
     description:
       "Four.meme is a premier fair launch platform for meme coins on the BSC chain. Our platform is dedicated to empowering creators and communities to launch successful meme coin projects with ease.",
     chain: "Binance",
@@ -58516,7 +58532,7 @@ const data3_2: Protocol[] = [
     id: "5181",
     name: "Limitless Exchange",
     address: null,
-    symbol: "-",
+    symbol: "LMTS",
     url: "https://limitless.exchange/",
     description:
       "Prediction market on Base",
@@ -64634,7 +64650,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Neutron"],
     module: "ngmizone/index.js",
     twitter: "beam_dex",
@@ -65047,7 +65063,10 @@ const data3_2: Protocol[] = [
     module: "upshift/index.js",
     twitter: "upshift_fi",
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
-    listedAt: 1733311923
+    listedAt: 1733311923,
+    dimensions: {
+      fees: "upshift"
+    }
   },
   {
     id: "5461",
@@ -66432,7 +66451,8 @@ const data3_2: Protocol[] = [
     twitter: "vanadatadex",
     listedAt: 1734619406,
     dimensions: {
-      dexs: "datadex"
+      dexs: "datadex",
+      fees: "datadex"
     }
   },
   {

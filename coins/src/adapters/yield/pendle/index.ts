@@ -1,5 +1,6 @@
 import getTokenPrices from "./pendle";
 import { getPenpiePrices } from "./penpie";
+import { addPendleCrosschainPrices } from "./crosschain"
 
 const config: { [chain: string]: { pendleOracle: string } } = {
   ethereum: {
@@ -29,15 +30,19 @@ const config: { [chain: string]: { pendleOracle: string } } = {
   hyperliquid: {
     pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
   },
+  plasma: {
+    pendleOracle: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
+  },
 };
 
 export async function pendle(timestamp: number = 0) {
-  return Promise.all([
+  const ws = await Promise.all([
     ...Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),
     ),
-    // getApiPrices(timestamp),
   ]);
+  await addPendleCrosschainPrices(ws, timestamp);
+  return ws;
 }
 
 const masters: { [chain: string]: { target: string; fromBlock: number } } = {

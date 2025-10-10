@@ -8168,7 +8168,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#aborean-finance",
-    name: "Aborian Finance",
+    name: "Aborean Finance",
     url: "https://aborean.finance",
     description: "Aborean Finance is a decentralized exchange (DEX) and liquidity hub built on the Abstract blockchain, designed to power on-chain trading, liquidity incentives, and ecosystem growth through ABX, its native governance and reward token.",
     logo: `${baseIconsUrl}/aborean-finance.jpg`,

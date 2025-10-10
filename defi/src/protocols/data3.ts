@@ -46982,14 +46982,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4690",
-    name: "Lorenzo", // previous lorenzo-protocol
+    name: "Lorenzo stBTC", // previous lorenzo-protocol
     address: null,
     symbol: "-",
     url: "https://www.lorenzo-protocol.xyz",
     description:
       "Lorenzo is the Bitcoin Liquidity Finance Layer, creates an efficient market in which Bitcoin holders can easily find the best opportunities to invest their unused Bitcoin liquidity and serves as the premier DeFi ecosystem in which to finance Bitcoin restaking tokens.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/lorenzo.jpg`,
+    logo: `${baseIconsUrl}/lorenzo-stbtc.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

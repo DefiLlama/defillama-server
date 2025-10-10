@@ -1618,6 +1618,11 @@
     }
   },
   "stacks": {
+    "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.usdh-token-v1::usdh": {
+      "decimals": "8",
+      "symbol": "USDH",
+      "to": "coingecko#hermetica-usdh"
+    },
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststxbtc-token-v2::ststxbtc": {
       "decimals": "6",
       "symbol": "stSTXbtc",

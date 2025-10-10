@@ -26701,7 +26701,7 @@ const data3_1: Protocol[] = [
     chains: ["Mode"],
     forkedFromIds: ["2197"],
     module: "dyorswap/index.js",
-    twitter: "dyorswap",
+    twitter: "DYORSWAPDEX",
     listedAt: 1700767143,
     dimensions: {
       dexs: "dyorswap",

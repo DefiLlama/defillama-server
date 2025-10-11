@@ -10,6 +10,7 @@ import { baseIconsUrl } from "../../constants";
 let dimensionsConfig: any
 getDimensionsConfig()
 
+// TODO: reduce the places this is called to improve performance
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
   const { default: module } = await import('@defillama/dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
   setModuleDefaults(module)

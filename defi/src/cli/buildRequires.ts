@@ -28,7 +28,7 @@ async function run() {
   const promises = Object.entries(buildFunctions).map(runModule)
   await Promise.all(promises)
 
-  console.timeEnd('build time')
+  // console.timeEnd('build time')
 }
 
 run().catch(console.error).then(() => process.exit(0))
@@ -195,5 +195,7 @@ async function runModule([name, func]: [string, () => Promise<void> | any]) {
     let eMessage = e instanceof Error ? e.message : e
     console.error(`Error processing function ${name}:`, eMessage)
   }
-  console.timeEnd(name)
+
+  if (['tvl import', 'dimensions import'].includes(name))
+    console.timeEnd(name)
 }

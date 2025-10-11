@@ -20754,7 +20754,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.hyperwavefi.xyz/references/audits"],
     listedAt: 1752001287,
     dimensions: {
-      fees: "hyperwave"
+      fees: {
+        adapter: "hyperwave",
+        genuineSpikes: ["1760054400"],
+      }
     }
   },
   {

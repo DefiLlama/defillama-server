@@ -8211,6 +8211,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VelarBTC",
     github: ["Velar-co"],
   },
+  {
+    id: "parent#treble",
+    name: "Treble",
+    url: "https://trebleswap.com",
+    description: "Treble is the first modular V4 DEX on Base with a full-suite DeFi Hub offering cross-chain swaps, fiat on/off ramps, CEX onramps, no-KYC crypto spending, DeFAI integrations and passive income through farming and staking, bringing seamless accessibility to the Base ecosystem",
+    logo: `${baseIconsUrl}/treble.png`,
+    gecko_id: "treble",
+    cmcId: "35456",
+    chains: [],
+    twitter: "TrebleSwap",
+    github: ["trebleswap"],
+  },
 ];
 
 export default parentProtocols;

@@ -2457,24 +2457,24 @@ const data4: Protocol[] = [
   },
   {
     id: "5659",
-    name: "Treble",
+    name: "Treble Spot",
     address: "base:0xb96450dcb16e4a30b999cb5f4087bae9c0ffac4e",
     symbol: "TREB",
     url: "https://trebleswap.com",
     description:
       "Treble is the first modular V4 DEX on Base with a full-suite DeFi Hub offering cross-chain swaps, fiat on/off ramps, CEX onramps, no-KYC crypto spending, DeFAI integrations and passive income through farming and staking, bringing seamless accessibility to the Base ecosystem",
     chain: "Base",
-    logo: `${baseIconsUrl}/treble.png`,
+    logo: `${baseIconsUrl}/treble-spot.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "treble",
-    cmcId: "35456",
+    gecko_id: null,
+    cmcId: null,
+    parentProtocol: "parent#treble",
     category: "Dexs",
     chains: ["Base"],
     module: "trebleswap/index.js",
     twitter: "TrebleSwap",
     forkedFromIds: ["3710"],
-    github: ["trebleswap"],
     listedAt: 1737647275,
   },
   {
@@ -30965,6 +30965,97 @@ const data4: Protocol[] = [
     twitter: "liquidmesh_io",
     dimensions: {
       aggregators: "liquidmesh"
+    }
+  },
+  {
+    id: "6844",
+    name: "SpookySwap Perps",
+    address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
+    symbol: "BOO",
+    url: "https://perps.spooky.fi/trade/SUSDT",
+    description: "SpookySwap Perps is a cutting edge “Intent-Based” perpetual DEX powered by SYMMIO and hosted by SpookySwap that gives users access to (up to) 60x leverage trading over a range of more than 150 crypto assets",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/spookyswap-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Sonic"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "SpookySwap",
+    parentProtocol: "parent#spookyswap",
+    dimensions: {
+      derivatives: "spooky-perps"
+    }
+  },
+  /*{ // need to fix this if Horizon Protocol is rebranded to Xpanse
+    id: "6845",
+    name: "Xpanse Perps",
+    address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
+    symbol: "HZN",
+    url: "https://xpanse.trade/",
+    description: "Xpanse is an AI-powered, multi-layered liquidity perpetual exchange designed to empower traders for their various trading strategies.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/xpanse-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Base", "Mode", "Arbitrum"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "XpanseTrade",
+    dimensions: {
+      derivatives: "xpanse-perps"
+    }
+  },*/
+  {
+    id: "6846",
+    name: "LODE",
+    address: null,
+    symbol: "-",
+    url: "https://www.lode.trade/",
+    description: "Intents-Based Perps on Berachain",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/lode.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Berachain"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "LodeTrade",
+    dimensions: {
+      derivatives: "lode-perps"
+    }
+  },
+  {
+    id: "6847",
+    name: "Treble Perps",
+    address: "base:0xb96450dcb16e4a30b999cb5f4087bae9c0ffac4e",
+    symbol: "TREB",
+    url: "https://perps.trebleswap.com/trade",
+    description:
+      "Treble Perps is an perps platform powered by Symmio on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/treble-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    parentProtocol: "parent#treble",
+    category: "Interface",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "TrebleSwap",
+    forkedFromIds: [],
+    dimensions: {
+      derivatives: "treble-perps"
     }
   },
 ];

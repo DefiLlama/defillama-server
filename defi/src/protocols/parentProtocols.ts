@@ -8199,6 +8199,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DYORSWAPDEX",
   },
+  {
+    id: "parent#velar-protocol",
+    name: "Velar Protocol",
+    url: "https://www.velar.co",
+    description: "Decentralized exchange on Mode Mainnet",
+    logo: `${baseIconsUrl}/velar-protocol.jpg`,
+    gecko_id: "velar",
+    cmcId: "30074",
+    chains: [],
+    twitter: "VelarBTC",
+    github: ["Velar-co"],
+  },
 ];
 
 export default parentProtocols;

@@ -30915,5 +30915,26 @@ const data4: Protocol[] = [
       fees: "dyorswap-launchpad"
     }
   },
+  {
+    id: "6842",
+    name: "Velar Perps",
+    address: "stacks:SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.velar-token",
+    symbol: "VELAR",
+    url: "https://www.velar.co",
+    description: `DeFi Liquidity Protocol on Bitcoin`,
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/velar-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Stacks"],
+    forkedFrom: [],
+    module: "velar-perps/index.js",
+    twitter: "VelarBTC",
+    listedAt: 1760165283,
+    parentProtocol: "parent#velar-protocol",
+  },
 ];
 export default data4;

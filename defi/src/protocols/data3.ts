@@ -24613,7 +24613,10 @@ const data3_1: Protocol[] = [
     listedAt: 1700881008,
     dimensions: {
       fees: "intent-x",
-      derivatives: "intent-x"
+      derivatives: {
+        adapter: "intent-x",
+        genuineSpikes: ["1760054400"],
+      }
     }
   },
   {

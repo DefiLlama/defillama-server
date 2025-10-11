@@ -496,7 +496,10 @@ const data4: Protocol[] = [
     listedAt: 1735971859,
     dimensions: {
       fees: "SwapX-algebra",
-      dexs: "SwapX-algebra"
+      dexs: {
+        adapter: "SwapX-algebra",
+        genuineSpikes: ["1760054400"],
+      },
     }
   },
   {

@@ -6079,7 +6079,10 @@ const data4: Protocol[] = [
     audit_links: [],
     github: ["flashbots"],
     dimensions: {
-      fees: "flashbot"
+      fees: {
+        adapter: "flashbot",
+        genuineSpikes: ["1760054400"]
+      }
     }
   },
   {
@@ -20792,7 +20795,10 @@ const data4: Protocol[] = [
     twitter: "CarbonTerminal",
     dimensions: {
       fees: "carbon",
-      derivatives: "carbon" 
+      derivatives: {
+        adapter: "carbon",
+        genuineSpikes: ["1760054400"]
+      }
     }
   },
   {

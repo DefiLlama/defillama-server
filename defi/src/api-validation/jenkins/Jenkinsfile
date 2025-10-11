@@ -1,0 +1,223 @@
+pipeline {
+    agent any
+    
+    environment {
+        NODE_VERSION = '18'
+        VALIDATION_OUTPUT_DIR = './validation-reports'
+        DISCORD_WEBHOOK_URL = credentials('discord-webhook-url')
+        API_BASE_URL = 'https://api.llama.fi'
+        BETA_API_URL = 'https://beta-api.llama.fi' // Replace with actual beta URL when available
+    }
+    
+    triggers {
+        cron('0 * * * *') // Run every hour
+    }
+    
+    stages {
+        stage('Setup') {
+            steps {
+                echo '🚀 Setting up DeFiLlama API validation environment'
+                
+                // Checkout code
+                checkout scm
+                
+                // Setup Node.js
+                sh '''
+                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm install ${NODE_VERSION}
+                    nvm use ${NODE_VERSION}
+                    node --version
+                    npm --version
+                '''
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo '📦 Installing dependencies'
+                
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use ${NODE_VERSION}
+                    
+                    cd defi
+                    npm ci
+                    
+                    # Install additional validation dependencies if needed
+                    npm install ajv json-schema commander
+                '''
+            }
+        }
+        
+        stage('Run Base API Validation') {
+            steps {
+                echo '🔍 Running base API validation'
+                
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use ${NODE_VERSION}
+                    
+                    cd defi
+                    
+                    # Run base API validation
+                    npx ts-node --transpile-only src/api-validation/cli.ts validate \
+                        --url ${API_BASE_URL} \
+                        --discord ${DISCORD_WEBHOOK_URL} \
+                        --output ${VALIDATION_OUTPUT_DIR} \
+                        --validate-numerical \
+                        --tolerance 10 \
+                        --timeout 60000 \
+                        --retries 3
+                '''
+            }
+        }
+        
+        stage('Run Beta API Comparison') {
+            when {
+                expression { 
+                    return env.BETA_API_URL != 'https://beta-api.llama.fi' 
+                }
+            }
+            steps {
+                echo '🧪 Running beta API comparison'
+                
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use ${NODE_VERSION}
+                    
+                    cd defi
+                    
+                    # Run beta API comparison
+                    npx ts-node --transpile-only src/api-validation/cli.ts compare \
+                        --base ${API_BASE_URL} \
+                        --beta ${BETA_API_URL} \
+                        --discord ${DISCORD_WEBHOOK_URL} \
+                        --output ${VALIDATION_OUTPUT_DIR} \
+                        --tolerance 10 \
+                        --timeout 60000 \
+                        --retries 3
+                '''
+            }
+        }
+        
+        stage('Generate Reports') {
+            steps {
+                echo '📊 Generating validation reports'
+                
+                sh '''
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use ${NODE_VERSION}
+                    
+                    cd defi
+                    
+                    # Create summary report
+                    echo "DeFiLlama API Validation Report - $(date)" > ${VALIDATION_OUTPUT_DIR}/summary.txt
+                    echo "================================================" >> ${VALIDATION_OUTPUT_DIR}/summary.txt
+                    echo "" >> ${VALIDATION_OUTPUT_DIR}/summary.txt
+                    
+                    # List all report files
+                    ls -la ${VALIDATION_OUTPUT_DIR}/*.json >> ${VALIDATION_OUTPUT_DIR}/summary.txt
+                    
+                    # Archive reports
+                    tar -czf ${VALIDATION_OUTPUT_DIR}/validation-reports-$(date +%Y%m%d-%H%M%S).tar.gz ${VALIDATION_OUTPUT_DIR}/*.json ${VALIDATION_OUTPUT_DIR}/*.txt
+                '''
+            }
+        }
+        
+        stage('Archive Results') {
+            steps {
+                echo '📁 Archiving validation results'
+                
+                archiveArtifacts(
+                    artifacts: "${VALIDATION_OUTPUT_DIR}/**/*",
+                    fingerprint: true,
+                    allowEmptyArchive: true
+                )
+                
+                // Store test results for Jenkins test reporting
+                publishTestResults(
+                    testResultsPattern: "${VALIDATION_OUTPUT_DIR}/*.json",
+                    testDataPublishers: [
+                        [$class: 'JUnitResultArchiver', testResults: "${VALIDATION_OUTPUT_DIR}/*.json"]
+                    ]
+                )
+            }
+        }
+        
+        stage('Cleanup') {
+            steps {
+                echo '🧹 Cleaning up temporary files'
+                
+                sh '''
+                    # Keep only the latest reports and archives
+                    cd defi/${VALIDATION_OUTPUT_DIR}
+                    
+                    # Remove old JSON reports (keep last 5)
+                    ls -t *.json | tail -n +6 | xargs -r rm
+                    
+                    # Remove old archives (keep last 3)
+                    ls -t *.tar.gz | tail -n +4 | xargs -r rm
+                    
+                    # Remove summary files older than 1 day
+                    find . -name "summary.txt" -mtime +1 -delete
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo '🏁 DeFiLlama API validation pipeline completed'
+            
+            // Always archive results, even on failure
+            archiveArtifacts(
+                artifacts: "${VALIDATION_OUTPUT_DIR}/**/*",
+                fingerprint: true,
+                allowEmptyArchive: true
+            )
+        }
+        
+        success {
+            echo '✅ API validation completed successfully'
+            
+            // Send success notification to Discord
+            script {
+                if (env.DISCORD_WEBHOOK_URL) {
+                    sh '''
+                        curl -H "Content-Type: application/json" \
+                             -d '{"content":"✅ DeFiLlama API validation completed successfully! Check Jenkins for detailed reports."}' \
+                             ${DISCORD_WEBHOOK_URL}
+                    '''
+                }
+            }
+        }
+        
+        failure {
+            echo '❌ API validation failed'
+            
+            // Send failure notification to Discord
+            script {
+                if (env.DISCORD_WEBHOOK_URL) {
+                    sh '''
+                        curl -H "Content-Type: application/json" \
+                             -d '{"content":"❌ DeFiLlama API validation failed! Check Jenkins for error details."}' \
+                             ${DISCORD_WEBHOOK_URL}
+                    '''
+                }
+            }
+        }
+        
+        cleanup {
+            echo '🧹 Cleaning up workspace'
+            
+            // Clean up workspace
+            cleanWs()
+        }
+    }
+}

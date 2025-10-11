@@ -3306,7 +3306,7 @@ const data2: Protocol[] = [
   {
     id: "1521",
     name: "Horizon Protocol", // rebrand to Xpanse
-    previousNames: ["Horizon Protocol"],
+    //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
     url: "https://horizonprotocol.com/",

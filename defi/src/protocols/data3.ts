@@ -42310,6 +42310,12 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "ethereum",
     listedAt: 1713453599,
+    dimensions: {
+      fees: {
+        adapter: "ethereum",
+        genuineSpikes: ["1760054400"],
+      }
+    }
   },
   {
     id: "4489",
@@ -51548,7 +51554,10 @@ const data3_2: Protocol[] = [
     audit_links: ["https://tech.usual.money/security-and-audits/audits "],
     listedAt: 1721046229,
     dimensions: {
-      fees: "usual"
+      fees: {
+        adapter: "usual",
+        genuineSpikes: ["1760054400"],
+      }
     }
   },
   {

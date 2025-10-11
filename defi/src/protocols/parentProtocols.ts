@@ -7169,10 +7169,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#kana-labs",
-    name: "Kana Labs",
-    url: "https://kanalabs.io",
+    name: "Xyra Labs",
+    url: "https://www.xyralabs.io/",
     description: "Liquid stake. Swap tokens. Trade collectibles.",
-    logo: `${baseIconsUrl}/kana-labs.png`,
+    logo: `${baseIconsUrl}/xyra-labs.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

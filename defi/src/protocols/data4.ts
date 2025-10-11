@@ -30945,5 +30945,27 @@ const data4: Protocol[] = [
     listedAt: 1760165283,
     parentProtocol: "parent#velar-protocol",
   },
+  {
+    id: "6843",
+    name: "LiquidMesh",
+    address: null,
+    symbol: "-",
+    url: "https://liquidmesh.io/",
+    description: `LiquidMesh is a cutting-edge decentralized exchange aggregator, engineered for unparalleled speed, flexibility, and seamless crypto trading`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/liquidmesh.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Binance", "Solana", "Ethereum", "Base", "Sonic", "Tron"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "liquidmesh_io",
+    dimensions: {
+      aggregators: "liquidmesh"
+    }
+  },
 ];
 export default data4;

@@ -64803,7 +64803,10 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1733089195,
     dimensions: {
-      fees: "hyperliquid-hlp"
+      fees: {
+        adapter: "hyperliquid-hlp",
+        genuineSpikes: ["1760054400"],
+      }
     },
     excludeTvlFromParent: true,  // it is doublecounted because hl bridge tvl is included in the parent protcols
   },

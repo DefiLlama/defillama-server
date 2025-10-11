@@ -30926,7 +30926,7 @@ const data4: Protocol[] = [
     name: "Velar Perps",
     address: "stacks:SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.velar-token",
     symbol: "VELAR",
-    url: "https://www.velar.co",
+    url: "https://perpdex.velar.com/trades",
     description: `DeFi Liquidity Protocol on Bitcoin`,
     chain: "Stacks",
     logo: `${baseIconsUrl}/velar-perps.jpg`,

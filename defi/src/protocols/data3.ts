@@ -16296,7 +16296,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "sanctum",
       dexs: {
-        genuineSpikes: ["1704240000"],
+        genuineSpikes: ["1704240000", "1760054400"],
         adapter: "sanctum"
       }
     }
@@ -55564,7 +55564,7 @@ const data3_2: Protocol[] = [
     listedAt: 1724762254,
     dimensions: {
       "aggregator-derivatives": {
-        genuineSpikes: ["1749686400"],
+        genuineSpikes: ["1749686400", "1760054400"],
         adapter: "mux-protocol-agge"
       }
     }

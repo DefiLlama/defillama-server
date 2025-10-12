@@ -16815,7 +16815,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "risq-protocol",
     cmcId: "12467",
-    category: "Options",
+    category: "Prediction Market",
     chains: ["Binance"],
     module: "risq.js",
     twitter: "risqprotocol",

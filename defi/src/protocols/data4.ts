@@ -31058,5 +31058,76 @@ const data4: Protocol[] = [
       derivatives: "treble-perps"
     }
   },
+  {
+    id: "6848",
+    name: "BeFi Perps",
+    address: "0x8b9b95292f890df47fff5ac9cbe93d5fc242bd51",
+    symbol: "BEFI",
+    url: "https://perps.befilabs.com/",
+    description:
+      "Perps platform powered by Symmio on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/befi-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "BefiLabs",
+    forkedFromIds: [],
+    dimensions: {
+      derivatives: "befy-perps"
+    }
+  },
+  {
+    id: "6849",
+    name: "Gryps",
+    address: null,
+    symbol: "-",
+    url: "http://gryps.trade/",
+    description:
+      "Perps platform powered by Symmio on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gryps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "gryps_trade",
+    forkedFromIds: [],
+    dimensions: {
+      derivatives: "gryps-perps"
+    },
+    deadUrl: true
+  },
+  {
+    id: "6850",
+    name: "Vibe Trading",
+    address: null,
+    symbol: "-",
+    url: "https://vibe.trading/",
+    description:
+      "Perps platform powered by Symmio on Base & Arbitrum.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/vibe-trading.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Base","Arbitrum"],
+    module: "dummy.js",
+    twitter: "vibe_trading",
+    forkedFromIds: [],
+    dimensions: {
+      derivatives: "vibe-perps"
+    },
+    deadUrl: true
+  },
 ];
 export default data4;

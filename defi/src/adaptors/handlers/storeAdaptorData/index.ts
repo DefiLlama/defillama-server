@@ -475,7 +475,7 @@ async function getRecentData(adapterType: AdapterType) {
         const dataItem = recentData[protocolId]
         const { dimStats, records } = dataItem
         let hasSignificantData = false
-        if (dataItem.records.length < 5) {
+        if (dataItem.records.length < 3) {
           dataItem.tooFewRecords = true
           delete dataItem.records
           continue; // too little data

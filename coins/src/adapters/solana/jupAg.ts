@@ -80,7 +80,7 @@ export async function jupAg(timestamp: number) {
   data.forEach((i: any) => {
     const isWhitelisted = whitelistedTokens.has(i.id) || i.tags?.includes('jup-lend-earn')
     if (!isWhitelisted) {
-      if (!(i.mcap > 5_000_000)) return;  // minimum mcap 5M
+      if (!(i.mcap > 1_000_000)) return;  // minimum mcap 5M
       if (!(i.liquidity > 50_000)) return; // minimum liquidity 50k
       if (i.mcap > 5e7 && i.liquidity < 100_000) return; // if mcap > 50M, min liquidity 100k
       if (i.mcap > 1e8 && i.liquidity < 200_000) return; // if mcap > 100M, min liquidity 200k

@@ -85,6 +85,7 @@ export async function storeNotTokens(tokens: string[]) {
 
 export async function fetchAllTokens(chain: Chain): Promise<string[]> {
   const sql = await getPgConnection();
+  // QUESTION: how difficult would it be to replace this with ES, also have no clue on alltokens schema, same for nottokens
   const res = await queryPostgresWithRetry(
     sql`
       select token from alltokens

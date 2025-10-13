@@ -8,6 +8,7 @@ import { elastic } from '@defillama/sdk';
 import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
 import { ADAPTER_TYPES } from '../../data/types';
 import loadAdaptorsData from '../../data';
+const MAX_RUNTIME = 1000 * 60 * 50; // 50 minutes
 
 async function run() {
   const startTimeAll = getUnixTimeNow()
@@ -108,7 +109,7 @@ async function run() {
       } catch (e) {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
-      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet })
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, maxRunTime: MAX_RUNTIME - 60 * 1000 })
 
     } catch (e) {
       console.error("error", e)
@@ -156,7 +157,7 @@ run().catch((e) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 50) // 50 minutes
+}, MAX_RUNTIME)
 
 
 function getYesterdayTimeS() {

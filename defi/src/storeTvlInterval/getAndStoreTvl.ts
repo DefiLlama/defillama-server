@@ -1,26 +1,26 @@
-import * as sdk from "@defillama/sdk";
 import { Protocol } from "../protocols/data";
+import * as sdk from "@defillama/sdk";
 // import storeNewTvl from "./storeNewTvl";
-import { elastic } from '@defillama/sdk';
-import BigNumber from "bignumber.js";
-import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
-import { TABLES } from "../api2/db";
+import storeNewTvl2 from "./storeNewTvl2";
 import { TokensValueLocked, tvlsObject } from "../types";
-import { getCurrentUnixTimestamp } from "../utils/date";
+import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
-  dailyRawTokensTvl,
-  dailyTokensTvl,
-  dailyUsdTokensTvl,
-  hourlyRawTokensTvl,
   hourlyTokensTvl,
   hourlyUsdTokensTvl,
+  hourlyRawTokensTvl,
+  dailyTokensTvl,
+  dailyUsdTokensTvl,
+  dailyRawTokensTvl,
 } from "../utils/getLastRecord";
-import { importAdapterDynamic } from "../utils/imports/importAdapter";
-import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import computeTVL from "./computeTVL";
+import BigNumber from "bignumber.js";
+import { TABLES } from "../api2/db"
+import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
-import storeNewTvl2 from "./storeNewTvl2";
+import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
+import { elastic } from '@defillama/sdk';
+import { getBlocksRetry, getCurrentBlock } from "./blocks";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -177,7 +177,7 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
 }
 
-const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm'])
+const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos-evm'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

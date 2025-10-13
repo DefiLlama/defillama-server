@@ -17,7 +17,8 @@ const whitelistedTokens = new Set([
   'B8GKqTDGYc7F6udTHjYeazZ4dFCRkrwK2mBQNS4igqTv',
   'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu',
   'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit',
-  'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe'
+  'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe', 
+  'GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A'
 ])
 
 async function getTokensWithCGMapping() {
@@ -80,7 +81,7 @@ export async function jupAg(timestamp: number) {
   data.forEach((i: any) => {
     const isWhitelisted = whitelistedTokens.has(i.id) || i.tags?.includes('jup-lend-earn')
     if (!isWhitelisted) {
-      if (!(i.mcap > 1_000_000)) return;  // minimum mcap 5M
+      if (!(i.mcap > 5_000_000)) return;  // minimum mcap 5M
       if (!(i.liquidity > 50_000)) return; // minimum liquidity 50k
       if (i.mcap > 5e7 && i.liquidity < 100_000) return; // if mcap > 50M, min liquidity 100k
       if (i.mcap > 1e8 && i.liquidity < 200_000) return; // if mcap > 100M, min liquidity 200k

@@ -12151,6 +12151,11 @@
     }
   },
   "plasma": {
+    "0x6100E367285b01F48D07953803A2d8dCA5D19873": {
+      "to": "coingecko#wrapped-xpl",
+      "decimals": 18,
+      "symbol": "WXPL"
+    },
     "0xC4374775489CB9C56003BF2C9b12495fC64F0771": {
       "decimals": 6,
       "symbol": "syrupUSDT",

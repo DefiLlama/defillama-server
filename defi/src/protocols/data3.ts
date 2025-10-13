@@ -27896,7 +27896,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "lumi-finance",
     cmcId: "30333",
-    category: "Algo-Stables",
+    category: "Gaming",
     forkedFrom: [],
     chains: ["Arbitrum"],
     module: "lumi-finance/index.js",

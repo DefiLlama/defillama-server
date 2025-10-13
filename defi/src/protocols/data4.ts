@@ -24759,7 +24759,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum", "Soneium", "Plume Mainnet"],
+    chains: ["Ethereum", "Soneium", "Plume Mainnet", "Arbitrum"],
     module: "superReturn/index.js",
     twitter: "superreturnai",
     listedAt: 1755108027,

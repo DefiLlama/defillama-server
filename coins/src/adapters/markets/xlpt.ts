@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import getWrites from "../utils/getWrites";
 import { Write } from "../utils/dbInterfaces";
-import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 
 const assets: { [symbol: string]: string } = {
   "sUSDE/USDC.x":
@@ -17,7 +16,6 @@ const assets: { [symbol: string]: string } = {
 };
 
 export async function xlpt(timestamp: number = 0): Promise<Write[]> {
-  await setEnvSecrets();
   const pricesObject: any = {};
   await Promise.all(
     Object.keys(assets).map(async (symbol) => {

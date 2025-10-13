@@ -261,14 +261,14 @@ async function fetchLstSymbols() {
 }
 
 function fetchRwaSymbols() {
-  const allSymbols: {[symbol: string]: boolean } = {};
+  const allSymbols: { [symbol: string]: boolean } = {};
   Object.values(rwaMetadata).map(({ matchExact, symbols }: { matchExact: boolean; symbols: string[] }) => {
     symbols.map((symbol) => allSymbols[symbol] = matchExact)
   });
   return allSymbols;
 }
 
-function isRwaSymbol(symbol: string, rwaSymbols: {[symbol: string]: boolean }) {
+function isRwaSymbol(symbol: string, rwaSymbols: { [symbol: string]: boolean }) {
   if (rwaSymbols[symbol]) return true;
   Object.keys(rwaSymbols).map((s) => {
     if (!rwaSymbols[s] && symbol.startsWith(s)) return true;
@@ -478,9 +478,6 @@ async function main() {
     });
   });
 
-  const rawDataJson = JSON.parse(JSON.stringify(rawData));
-  const symbolDataJson = JSON.parse(JSON.stringify(symbolData));
-
   await verifyChanges(symbolData);
 
   await Promise.all([
@@ -490,4 +487,7 @@ async function main() {
   ]);
 }
 
-main(); // ts-node defi/l2/v2/index.ts
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+}).then(() => process.exit(0)); // ts-node defi/l2/v2/index.ts

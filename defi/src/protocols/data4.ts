@@ -31171,7 +31171,7 @@ const data4: Protocol[] = [
     twitter: "Infinit_Labs",
     forkedFromIds: [],
     audit_links: ["https://github.com/infinit-xyz/in-token-contract-audit"],
-    listedAt: 1760377213,
+    listedAt: 1760377663,
   },
   {
     id: "6853",
@@ -31192,7 +31192,7 @@ const data4: Protocol[] = [
     module: "pharaoh-exchange-v3-legacy/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
-    listedAt: 1702603157,
+    listedAt: 1760377677,
   },
   {
     id: "6854",
@@ -31213,7 +31213,7 @@ const data4: Protocol[] = [
     module: "pharaoh-exchange-v3/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
-    listedAt: 1702603157,
+    listedAt: 1760377684,
   },
 ];
 export default data4;

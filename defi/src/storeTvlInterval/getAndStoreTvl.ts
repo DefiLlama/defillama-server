@@ -177,7 +177,7 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
 }
 
-const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos-evm'])
+const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

@@ -359,6 +359,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BTC: "0x935765ad27a1af00f73097c998a9fb721d2d7790",
     ETH: "0xb4373ebb073a4dcba47e567d075a9583fa3c763e",
   },
+  plume_mainnet: {
+    BTC: '0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC',  // dunno the source/backing of these tokens
+    pUSDT: '0xCCA84731C19EB911C985E9d1892E0935C104Abce',  // dunno the source/backing of these tokens
+  }
 };
 
 export const distressedAssets = Object.fromEntries(

@@ -31128,28 +31128,28 @@ const data4: Protocol[] = [
       derivatives: "vibe-perps"
     },
   },
-  {
-    id: "6851",
-    name: "basedmarkets",
-    address: null,
-    symbol: "-",
-    url: "https://trade.based.markets/",
-    description:
-      "Perps platform powered by Symmio on Base.",
-    chain: "Base",
-    logo: `${baseIconsUrl}/basedmarkets.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Interface",
-    chains: ["Base"],
-    module: "dummy.js",
-    twitter: "basedmarkets",
-    forkedFromIds: [],
-    dimensions: {
-      derivatives: "based-perps"
-    },
-  },
+  // {
+  //   id: "6851",
+  //   name: "basedmarkets",
+  //   address: null,
+  //   symbol: "-",
+  //   url: "https://trade.based.markets/",
+  //   description:
+  //     "Perps platform powered by Symmio on Base.",
+  //   chain: "Base",
+  //   logo: `${baseIconsUrl}/basedmarkets.jpg`,
+  //   audits: "0",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Interface",
+  //   chains: ["Base"],
+  //   module: "dummy.js",
+  //   twitter: "basedmarkets",
+  //   forkedFromIds: [],
+  //   dimensions: {
+  //     derivatives: "based-perps"
+  //   },
+  // },
 ];
 export default data4;

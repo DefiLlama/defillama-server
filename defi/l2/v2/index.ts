@@ -12,7 +12,6 @@ import { McapsApiData } from "../types";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import BigNumber from "bignumber.js";
-import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../../src/utils/shared/constants";
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";
 import { additional, excluded } from "../adapters/manual";
@@ -298,7 +297,6 @@ function isOwnToken(chain: string, symbol: string) {
 }
 
 async function main() {
-  await setEnvSecrets();
   const timestamp = 0;
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
   const incomingAssets = await fetchIncomingAssetsList();

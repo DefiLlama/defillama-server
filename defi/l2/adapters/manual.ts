@@ -128,6 +128,7 @@ export const additional: { [chain: string]: string[] } = {
   ],
   unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
   reya: ["0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB"],
+  linea: ["0xaca92e438df0b2401ff60da7e4337b687a2435da"] // mUSD
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

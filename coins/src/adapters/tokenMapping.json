@@ -61,6 +61,11 @@
     }
   },
   "berachain": {
+    "0xDeadf18CB9233770FE8874c78D7483b4A126B34a": {
+      "to": "coingecko#berachain-bera",
+      "decimals": 18,
+      "symbol": "pBERA"
+    },
     "0x118D2cEeE9785eaf70C15Cd74CD84c9f8c3EeC9a": {
       "decimals": "18",
       "symbol": "sWBERA",
@@ -10592,11 +10597,6 @@
       "symbol": "pUSDT",
       "to": "coingecko#tether"
     },
-    "0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC": {
-      "decimals": "18",
-      "symbol": "BTC",
-      "to": "coingecko#bitcoin"
-    },
     "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
       "decimals": "18",
       "symbol": "yUSD",
@@ -10989,6 +10989,11 @@
     }
   },
   "katana": {
+    "0xcA52d08737E6Af8763a2bF6034B3B03868f24DDA": {
+      "to": "coingecko#dtrinity-usd",
+      "decimals": 18,
+      "symbol": "dUSD"
+    },
     "0xb77f1a8cb126d8567f226f990f84e2f698cc30f8": {
       "decimals": "18",
       "symbol": "SPECTRA",

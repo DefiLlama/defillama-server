@@ -10370,7 +10370,7 @@ const data4: Protocol[] = [
   {
     id: "5984",
     name: "Anvil",
-    address: "0xAEEAa594e7dc112D67b8547fe9767a02c15B5597", // new CA after passed proposal
+    address: "0xAEEAa594e7dc112D67b8547fe9767a02c15B5597", 
     symbol: "ANVL",
     url: "https://anvil.xyz/",
     description:
@@ -10379,7 +10379,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/anvil.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "anvil",
     cmcId: null,
     category: "Collateral Management",
     chains: ["Ethereum"],

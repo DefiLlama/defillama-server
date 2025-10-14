@@ -871,7 +871,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum"],
     forkedFrom: [],
     module: "teller/index.js",
     twitter: "useteller",

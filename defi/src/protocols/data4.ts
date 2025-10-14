@@ -25111,7 +25111,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://atrium.io/",
     description:
-      "Atrium offers smart contract powered staking baskets, enabling users to delegate their stake to multiple stake pool operators simultaneously",
+      "Atrium is a distributed staking protocol on Cardano that enables users to delegate stake across multiple pools via smart contract powered staking baskets. The Diffusion basket, Cardano's first staking basket, allows simultaneous delegation to 50 community-selected stake pool operators while earning ADA rewards and ATMA tokens.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/atrium.jpg`,
     audits: "0",

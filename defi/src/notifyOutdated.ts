@@ -130,15 +130,13 @@ async function notifyBlockedDimensionUpdates() {
     let message = tableToString(blockedDataSinceLastNotification.slice(0, 42), ['adapterType', 'name', 'id', 'type', 'timeS', 'message',])
     let trimmedMessage = ''
     if (blockedDataSinceLastNotification.length > 42) {
-      trimmedMessage = `\n... and ${blockedDataSinceLastNotification.length - 42} more`
+      trimmedMessage = `... and ${blockedDataSinceLastNotification.length - 42} more`
     }
 
 
     message = `These are the blocked dimension updates since the last notification:
     ${message}
-
-    ${trimmedMessage}   ${linkToKibana}
-    `
+    ${trimmedMessage} ${linkToKibana}`
     await sendMessage(message, process.env.DIM_CHANNEL_WEBHOOK!)
 
     const timeNow = Math.floor(Date.now() / 1000)

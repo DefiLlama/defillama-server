@@ -22065,7 +22065,8 @@ const data4: Protocol[] = [
     name: "Loopscale",
     address: null,
     symbol: "-",
-    url: "https://loopscale.com",
+    url: "https://loop.sl/i/AVxMN",
+    referralUrl: "https://loop.sl/i/AVxMN",
     description:
       "Loopscale is a modular lending platform for the next-generation of onchain assets. Markets for any asset, at the best rate, with less risk",
     chain: "Solana",

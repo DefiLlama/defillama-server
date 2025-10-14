@@ -2949,11 +2949,6 @@
       "symbol": "ABTC",
       "to": "coingecko#abtc"
     },
-    "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
-      "decimals": "10",
-      "symbol": "mBTC",
-      "to": "coingecko#mbtc"
-    },
     "0x357b0b74bc833e95a115ad22604854d6b0fca151cecd94111770e5d6ffc9dc2b": {
       "decimals": "6",
       "symbol": "USDt",
@@ -10541,6 +10536,11 @@
       "to": "coingecko#ignition-fbtc",
       "decimals": 8,
       "symbol": "FBTC"
+    },
+    "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
+      "decimals": "10",
+      "symbol": "mBTC",
+      "to": "coingecko#mbtc"
     }
   },
   "mtt_network": {

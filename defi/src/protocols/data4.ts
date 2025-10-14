@@ -31380,5 +31380,28 @@ const data4: Protocol[] = [
     github: ["Aryioshin"],
     listedAt: 1760475992,
   },
+  {
+    id: "6862",
+    name: "Strata Tranches",
+    parentProtocol: "parent#strata",
+    address: null,
+    symbol: "-",
+    url: "https://strata.money",
+    description:
+      "Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields. It allows investors to tailor their risk-reward preferences while earning yields through two risk tranches: Senior and Junior.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/strata-season-0.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    module: "strata-tranches/index.js",
+    twitter: "Strata_Money",
+    audit_links: ["https://docs.strata.money"],
+    listedAt: 1760450000,
+  },
 ];
 export default data4;

@@ -389,9 +389,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
         // validate against recent data if available
         if (checkAgainstRecentData) {
-          const validationError = adapterRecord.validateWithRecentData({ recentData: recentData[adapterRecord.id], getSignificantValueThreshold, getSpikeThreshold, })
+          const protocolRecentData = recentData[adapterRecord.id]
+          const validationError = adapterRecord.validateWithRecentData({ recentData: protocolRecentData, getSignificantValueThreshold, getSpikeThreshold, })
           if (validationError) {
-            sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record')
+            sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record', protocolRecentData?.tooFewRecords, protocolRecentData?.hasSignificantData, protocolRecentData?.records?.length, protocolRecentData?.dimStats)
             await elastic.writeLog('dimension-blocked', validationError)
             return; // skip storing possible invalid data
           }

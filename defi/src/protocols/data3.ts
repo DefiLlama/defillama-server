@@ -6665,7 +6665,7 @@ const data3_1: Protocol[] = [
         genuineSpikes: ["1691625600"],
         adapter: "satori"
       },
-      "open-interest": "satori"
+      "open-interest": "satori-oi"
     }
   },
   {
@@ -53786,7 +53786,7 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "reya-dex",
       derivatives: "reya-dex",
-      "open-interest": "reya-dex"
+      "open-interest": "reya-dex-oi"
     }
   },
   {

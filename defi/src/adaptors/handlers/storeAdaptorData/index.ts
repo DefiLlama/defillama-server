@@ -171,7 +171,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (!isRunFromRefillScript)
         await sendDiscordAlert(sdk.util.tableToString(logs), notificationType, true)
 
-      console.table(errorObjects)
+      if (errorObjects.length > 1)
+        console.table(errorObjects)
+      else
+        console.log('dim run error:', `${errorObjects[0].adapter} - ${errorObjects[0].message} - ${errorObjects[0].chain}`)
     }
 
     if (throwError && errorObjects.length)

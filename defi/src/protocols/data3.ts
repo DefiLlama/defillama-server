@@ -58828,8 +58828,8 @@ const data3_2: Protocol[] = [
   {
     id: "5193",
     name: "Suzaku",
-    address: null,
-    symbol: "-",
+    address: "avax:0x451532f1c9eb7e4dc2d493db52b682c0acf6f5ef",
+    symbol: "SUZ",
     url: "https://www.suzaku.network/",
     description:
       "Suzaku is the (re)staking protocol for sovereign networks. Stakers can help secure networks by providing them with cryptoeconomic security, either by (liquid) staking L1 native tokens or by restaking blue-chip tokens",
@@ -58837,7 +58837,7 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/suzaku.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "suzaku-token",
     cmcId: null,
     category: "Restaking",
     chains: ["Avalanche"],

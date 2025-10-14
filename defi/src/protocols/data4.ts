@@ -31174,7 +31174,6 @@ const data4: Protocol[] = [
     twitter: "Infinit_Labs",
     forkedFromIds: [],
     audit_links: ["https://github.com/infinit-xyz/in-token-contract-audit"],
-    listedAt: 1760377663,
   },
   {
     id: "6853",

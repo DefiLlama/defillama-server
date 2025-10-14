@@ -129,7 +129,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const result = await runAndStoreProtocol(protocol, index)
         results.push(result)
       } catch (e) {
-        errors.push(e)
+        errors.push({ raw: e, item: protocol })
       }
       if (!isRunFromRefillScript)
         console.log(`[${adapterType}] - ${protocol.module} done!`)
@@ -146,11 +146,13 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     if (onCompleteCalled) return results;
     onCompleteCalled = true;
 
-    const errorObjects = errors.map(({ raw, item, message }: any) => {
+    const errorObjects = errors.map(({ raw, item,  }: any) => {
+      let message = raw?.message || (raw && raw.toString()) || 'Unknown error'
+
       return {
-        adapter: item.name,
-        message: shortenString(message),
-        chain: raw.chain,
+        adapter: item?.name,
+        message: shortenString(typeof message === 'string' ? message : ''),
+        chain: raw?.chain,
         // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
       }
     })

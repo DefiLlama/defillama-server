@@ -31286,5 +31286,26 @@ const data4: Protocol[] = [
       fees: "rainbow-perps"
     }
   },
+  {
+    id: "6858",
+    name: "Fluxa",
+    address: null,
+    symbol: "-",
+    url: "https://fluxa.ag/",
+    description: "Fluxa is the premier decentralized exchange aggregator on the Sei Network, engineered to harness the chain's native infrastructure for superior trade execution. By leveraging Sei's parallel processing and industry-leading transaction finality, Fluxa's routing engine performs instantaneous, simultaneous liquidity checks across every major DEX on the network.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/fluxa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sei"],
+    module: "dummy.js",
+    twitter: "fluxaexchange",
+    dimensions: {
+      aggregators: "fluxa"
+    }
+  },
 ];
 export default data4;

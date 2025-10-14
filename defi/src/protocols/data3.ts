@@ -28694,7 +28694,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "lyra-v2",
       derivatives: "lyra",
-      options: "lyra-v2"
+      options: "lyra-v2",
+      "open-interest": "lyra-v2"
     }
   },
   {
@@ -55718,7 +55719,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#lyra",
     listedAt: 1724835641,
     dimensions: {
-      options: "lyra"
+      options: "lyra",
+      "open-interest": "derive-options"
     }
   },
   {

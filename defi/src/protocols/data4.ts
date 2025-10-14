@@ -29330,9 +29330,9 @@ const data4: Protocol[] = [
     module: "yield-basis/index.js",
     twitter: "yieldbasis",
     forkedFromIds: [],
-    parentProtocol: "parent#curve-finance",
+    // parentProtocol: "parent#curve-finance",  // they have their own token
     listedAt: 1758821541,
-    excludeTvlFromParent: true, // tokens are deposited into curve pools
+    // excludeTvlFromParent: true, // tokens are deposited into curve pools
   },
   {
     id: "6772",

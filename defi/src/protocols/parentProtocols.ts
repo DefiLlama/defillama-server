@@ -8223,6 +8223,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TrebleSwap",
     github: ["trebleswap"],
   },
+  {
+    id: "parent#rainbow",
+    name: "Rainbow",
+    url: "https://rainbow.me",
+    description: "The fun, simple, & secure way to explore Web3, NFTs, & Ethereum",
+    logo: `${baseIconsUrl}/rainbow.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "rainbowdotme",
+    github: ["rainbow-me"],
+  },
 ];
 
 export default parentProtocols;

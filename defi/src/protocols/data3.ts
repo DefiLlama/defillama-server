@@ -7949,13 +7949,13 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3038",
-    name: "Rainbow",
+    name: "Rainbow Wallet",
     address: null,
     symbol: "-",
     url: "https://rainbow.me",
     description: "The fun, simple, & secure way to explore Web3, NFTs, & Ethereum",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/rainbow.png`,
+    logo: `${baseIconsUrl}/rainbow-wallet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7964,7 +7964,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "rainbowdotme",
-    github: ["rainbow-me"],
+    parentProtocol: "parent#rainbow",
     dimensions: {
       fees: "rainbow-wallet"
     }

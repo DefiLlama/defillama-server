@@ -31264,5 +31264,27 @@ const data4: Protocol[] = [
     audit_links: ["https://cantina.xyz/portfolio/ef5a3868-95f7-4259-84a2-9b394ef4a5eb"],
     listedAt: 1760378121,
   },
+  {
+    id: "6857",
+    name: "Rainbow Perps",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me",
+    description: "Platform for trading perps via Hyperliquid.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/rainbow-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-perps"
+    }
+  },
 ];
 export default data4;

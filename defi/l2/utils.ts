@@ -380,9 +380,8 @@ export async function fetchSupplies(
   }
 }
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
-  const j = Object.keys(incomingAssets).indexOf(chain);
   try {
-    const tokens: Address[] = j == -1 ? [] : await Object.values(incomingAssets)[j]();
+    const tokens: Address[] = incomingAssets[chain as keyof typeof incomingAssets] ? await incomingAssets[chain as keyof typeof incomingAssets]() : []
     tokens.push(...((await fetchThirdPartyTokenList())[chain] ?? []));
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;

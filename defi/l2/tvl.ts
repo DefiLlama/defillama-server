@@ -8,7 +8,7 @@ import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
-import { verifyChanges } from "./test";
+import { verifyChanges } from "./verifyChanges";
 import { getExcludedTvl } from "./excluded";
 import { saveRawBridgedTvls } from "./raw";
 

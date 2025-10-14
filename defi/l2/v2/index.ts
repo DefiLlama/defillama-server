@@ -1,12 +1,9 @@
 import { canonicalBridgeIds, excludedTvlKeys, protocolBridgeIds, zero, ownTokens, allChainKeys } from "../constants";
-import getTVLOfRecordClosestToTimestamp from "../../src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "../../src/utils/date";
-import { fetchAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
 import { Chain } from "@defillama/sdk/build/types";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "../utils";
 import { fetchAdaTokens } from "../adapters/ada";
 import { withTimeout } from "../../src/utils/shared/withTimeout";
-import PromisePool from "@supercharge/promise-pool";
 import { CoinsApiData, FinalData, FinalChainData } from "../types";
 import { McapsApiData } from "../types";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
@@ -16,12 +13,300 @@ import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../.
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";
 import { additional, excluded } from "../adapters/manual";
 import { storeHistoricalToDB } from "./storeToDb";
-import { stablecoins } from "../../src/getProtocols";
+// import { stablecoins } from "../../src/getProtocols";
 import { metadata as rwaMetadata } from "../../src/rwa/protocols";
-import { verifyChanges } from "../test";
+import { verifyChanges } from "../verifyChanges";
+import { initializePriceQueryFilter, whitelistedTokenSet } from "../../src/storeTvlInterval/computeTVL";
+import { getClosestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
+import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
+import { Balances } from "@defillama/sdk";
+import runInPromisePool from "@defillama/sdk/build/util/promisePool";
+import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 
+const stablecoins = [
+  "USDT",
+  "USDC",
+  "DAI",
+  "FRAX",
+  "AUSDC",
+  "AMMUSDC",
+  "AETHUSDC",
+  "ADAI",
+  "AMMDAI",
+  "AETHDAI",
+  "AUSDT",
+  "AMMUSDT",
+  "LUSD",
+  "ALUSD",
+  "GUSD",
+  "AGUSD",
+  "TUSD",
+  "ATUSD",
+  "USDP",
+  "AUSDP",
+  "FEI",
+  "AFEI",
+  "BUSD",
+  "YYDAI+YUSDC+YUSDT+YTUSD",
+  "CDAI",
+  "BSC-USD",
+  "USD+",
+  "SUSD",
+  "DOLA",
+  "AMUSDC",
+  "AMDAI",
+  "AVUSDC",
+  "AVDAI",
+  "AAVAUSDC",
+  "AMUSDT",
+  "AAVAUSDT",
+  "AAVADAI",
+  "AVUSDT",
+  "AOPTUSDC",
+  "SUSDE",
+  "USDY",
+  "USTC",
+  "MIM",
+  "USDN",
+  "YUSD",
+  "USDD",
+  "PAI",
+  "HUSD",
+  "NUSD",
+  "FLEXUSD",
+  "OUSD",
+  "CUSD",
+  "RSV",
+  "MUSD",
+  "USDK",
+  "VAI",
+  "TOR",
+  "DOC",
+  "USDS",
+  "USDB",
+  "USDJ",
+  "STBL",
+  "VOLT",
+  "RAI",
+  "FLOAT",
+  "USDX",
+  "ZUSD",
+  "USX",
+  "ASEED",
+  "BAI",
+  "EURT",
+  "EURC",
+  "EURS",
+  "CEUR",
+  "SEUR",
+  "USN",
+  "EURA",
+  "PAR",
+  "USH",
+  "3USD",
+  "SIGUSD",
+  "HOME",
+  "FIAT",
+  "PUSD",
+  "FUSD",
+  "UXD",
+  "USDH",
+  "FPI",
+  "BEAN",
+  "USDL",
+  "DUSD",
+  "VST",
+  "KUSD",
+  "USDTZ",
+  "MONEY",
+  "UUSD",
+  "USDI",
+  "NOTE",
+  "LISUSD",
+  "USK",
+  "ARUSD",
+  "USDW",
+  "BOB",
+  "USDR",
+  "IUSD",
+  "XAI",
+  "RUSD",
+  "IBEUR",
+  "PINA",
+  "DJED",
+  "BAOUSD",
+  "USP",
+  "EUROE",
+  "CASH",
+  "DSU",
+  "EURE",
+  "ANONUSD",
+  "NXUSD",
+  "DCHF",
+  "EUSD",
+  "CZUSD",
+  "D2O",
+  "CRVUSD",
+  "DAI+",
+  "USDT+",
+  "SILK",
+  "CLEVUSD",
+  "R",
+  "GRAI",
+  "ERN",
+  "GHO",
+  "FDUSD",
+  "PYUSD",
+  "SLSD",
+  "GYEN",
+  "STAR",
+  "PEUSD",
+  "EUSD(V2)",
+  "MKUSD",
+  "LCNY",
+  "NEX",
+  "SVUSD",
+  "UAHT",
+  "USDM",
+  "NARS",
+  "IST",
+  "CDT",
+  "EEUR",
+  "EGBP",
+  "HYDT",
+  "USDV",
+  "HYUSD",
+  "CADC",
+  "USDE",
+  "AEUR",
+  "MYUSD",
+  "SCB",
+  "ZKUSD",
+  "BUCK",
+  "USDGLO",
+  "VCHF",
+  "VEUR",
+  "USDRIF",
+  "DLLR",
+  "EURD",
+  "XUSD",
+  "ULTRA",
+  "USDCB",
+  "AUDD",
+  "CGUSD",
+  "FETH",
+  "FXUSD",
+  "GAI",
+  "EURO3",
+  "HAI",
+  "BUIDL",
+  "PXDC",
+  "FXD",
+  "UNO",
+  "USD3",
+  "CJPY",
+  "BREAD",
+  "ZUNUSD",
+  "ZUNETH",
+  "BTCUSD",
+  "WEN",
+  "GYD",
+  "ISC",
+  "KNOX",
+  "USC",
+  "RGUSD",
+  "BITUSD",
+  "USDA",
+  "USD0",
+  "USR",
+  "AUSD",
+  "CREAL",
+  "HCHF",
+  "HEXDC",
+  "USDZ",
+  "BNUSD",
+  "DYAD",
+  "DCKUSD",
+  "DEUSD",
+  "THUSD",
+  "MOD",
+  "M",
+  "SATUSD",
+  "USDF",
+  "USDTB",
+  "PAUSD",
+  "XY",
+  "ZEUSD",
+  "ZCHF",
+  "BOLD",
+  "USDQ",
+  "LVLUSD",
+  "HONEY",
+  "PINTO",
+  "WUSD",
+  "FRXUSD",
+  "SYUSD",
+  "USYC",
+  "SCUSD",
+  "EURR",
+  "USDO",
+  "CSUSDL",
+  "EUROP",
+  "USDFC",
+  "BRZ",
+  "RLUSD",
+  "FEUSD",
+  "USBD",
+  "EURCV",
+  "REUSD",
+  "TBILL",
+  "A7A5",
+  "MSD",
+  "VUSD",
+  "USD1",
+  "MEAD",
+  "YU",
+  "BENJI",
+  "AVUSD",
+  "YLDS",
+  "USDAF",
+  "EURQ",
+  "WEUSD",
+  "PARAUSD",
+  "CNHT",
+  "MXNT",
+  "USDU",
+  "MNEE",
+  "GGUSD",
+  "USDG",
+  "USND",
+  "EBUSD",
+  "XSGD",
+  "VGBP",
+  "BNBUSD",
+  "USDA+",
+  "MSUSD",
+];
 const searchWidth = 10800; // 3hr
+const allTokens: { [chain: Chain]: string[] } = {};
 
+// fetch a list of all token addresses from ES
+async function fetchAllTokens() {
+  await initializePriceQueryFilter();
+
+  whitelistedTokenSet.forEach((t) => {
+    const seperater = t.indexOf(":");
+    const chain = t.substring(0, seperater);
+    const address = t.substring(seperater + 1);
+
+    if (!allTokens[chain]) allTokens[chain] = [];
+    allTokens[chain].push(address);
+  });
+
+  return allTokens;
+}
+
+// find the prices, mcaps and supplies of all tokens on all chains
 async function fetchNativeAndMcaps(
   timestamp: number,
   override: boolean = false
@@ -47,20 +332,21 @@ async function fetchNativeAndMcaps(
   const allPrices: { [token: string]: CoinsApiData } = {};
   const allMcaps: { [token: string]: McapsApiData } = {};
 
-  await PromisePool.withConcurrency(5)
-    .for(allChainKeys)
-    .process(async (chain: Chain) => {
+  await runInPromisePool({
+    items: allChainKeys,
+    concurrency: 5,
+    processor: async (chain: Chain) => {
+      // protocol bridge IDs are closed and have no native tvl
       if (Object.values(protocolBridgeIds).includes(chain)) return;
-      await withTimeout(1000 * 60 * (override ? 120 : 120), minted(chain)).catch(() => {
+      await withTimeout(1000 * 60 * (override ? 20 : 120), minted(chain)).catch(() => {
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
 
       async function minted(chain: Chain) {
         try {
           const start = new Date().getTime();
-          let storedTokens = await fetchAllTokens(chain);
 
-          if (chain == "cardano") storedTokens = await fetchAdaTokens();
+          const storedTokens = chain == "cardano" ? await fetchAdaTokens() : allTokens[chain];
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address
@@ -119,23 +405,29 @@ async function fetchNativeAndMcaps(
           const time = end - start;
           if (time > 60 * 1000) console.log(`${chain}: ${time}`);
         } catch (e) {
-          console.error(`fetchNativeAndMcaps() failed for ${chain} with ${e}`);
+          throw new Error(`fetchNativeAndMcaps() failed for ${chain} with ${e}`);
         }
       }
-    });
+    },
+  });
 
   return { chainData, allPrices, allMcaps };
 }
 
+// incoming asset lists are fetched from canonical bridge token mappings
 async function fetchIncomingAssetsList(): Promise<{ [chain: Chain]: string[] }> {
   const incomingAssets: { [chain: Chain]: string[] } = {};
 
-  await PromisePool.withConcurrency(5)
-    .for(allChainKeys)
-    .process(async (chain: Chain) => {
+  // fetch all canonical bridge incoming assets
+  await runInPromisePool({
+    items: allChainKeys,
+    concurrency: 5,
+    processor: async (chain: Chain) => {
       incomingAssets[chain] = await fetchBridgeTokenList(chain);
-    });
+    },
+  });
 
+  // add any additional hard coded
   Object.keys(additional).map((chain) => {
     if (!incomingAssets[chain]) incomingAssets[chain] = [];
     const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
@@ -144,6 +436,7 @@ async function fetchIncomingAssetsList(): Promise<{ [chain: Chain]: string[] }> 
     incomingAssets[chain].push(...additionalTokens);
   });
 
+  // exclude any unwanted assets
   const filteredIncomingAssets: { [chain: Chain]: string[] } = {};
   Object.keys(incomingAssets).filter((chain: Chain) => {
     filteredIncomingAssets[chain] =
@@ -155,40 +448,43 @@ async function fetchIncomingAssetsList(): Promise<{ [chain: Chain]: string[] }> 
   return incomingAssets;
 }
 
+// outgoing amounts from chains are derived from balances of canonical bridges of each chain
 async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   sourceChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } };
   protocolAmounts: { [protocolSlug: string]: { [token: string]: BigNumber } };
   destinationChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } };
 }> {
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
-  const tvls: any[] = await Promise.all(
-    ids.map((i: string) =>
-      getTVLOfRecordClosestToTimestamp(
-        `hourlyRawTokensTvl#${i}`,
-        timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-        searchWidth
-      )
-    )
-  );
+
+  await initializeTVLCacheDB();
+  const tvls =
+    timestamp == 0
+      ? await getLatestProtocolItems(hourlyRawTokensTvl, { filterLast24Hours: true })
+      : await runInPromisePool({
+          items: ids,
+          concurrency: 5,
+          processor: (i: string) =>
+            getClosestProtocolItem(hourlyRawTokensTvl, i, getCurrentUnixTimestamp(), { searchWidth }),
+        });
 
   const sourceChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const protocolAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const destinationChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
-  tvls.map((b: any, i: number) => {
-    Object.keys(b).map((chain: string) => {
+  tvls.map(({ data, id }: any, i: number) => {
+    if (!ids.includes(id)) return;
+    Object.keys(data).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
       if (!sourceChainAmounts[chain]) sourceChainAmounts[chain] = {};
-      Object.keys(b[chain]).map((token: string) => {
+      Object.keys(data[chain]).map((token: string) => {
         const key = normalizeKey(token);
         if (!sourceChainAmounts[chain][key]) sourceChainAmounts[chain][key] = zero;
-        sourceChainAmounts[chain][key] = sourceChainAmounts[chain][key].plus(b[chain][token]);
+        sourceChainAmounts[chain][key] = sourceChainAmounts[chain][key].plus(data[chain][token]);
 
-        const protocolId = b.PK.substring(b.PK.indexOf("#") + 1);
-        if (Object.keys(protocolBridgeIds).includes(protocolId)) {
-          const protocolSlug = protocolBridgeIds[protocolId];
+        if (Object.keys(protocolBridgeIds).includes(id)) {
+          const protocolSlug = protocolBridgeIds[id];
           if (!protocolAmounts[protocolSlug]) protocolAmounts[protocolSlug] = {};
           if (!protocolAmounts[protocolSlug][key]) protocolAmounts[protocolSlug][key] = zero;
-          protocolAmounts[protocolSlug][key] = protocolAmounts[protocolSlug][key].plus(b[chain][token]);
+          protocolAmounts[protocolSlug][key] = protocolAmounts[protocolSlug][key].plus(data[chain][token]);
           return;
         }
 
@@ -196,7 +492,7 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
         if (!destinationChainAmounts[destinationChain]) destinationChainAmounts[destinationChain] = {};
         if (!destinationChainAmounts[destinationChain][key]) destinationChainAmounts[destinationChain][key] = zero;
         destinationChainAmounts[destinationChain][key] = destinationChainAmounts[destinationChain][key].plus(
-          b[chain][token]
+          data[chain][token]
         );
       });
     });
@@ -205,6 +501,7 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   return { sourceChainAmounts, protocolAmounts, destinationChainAmounts };
 }
 
+// fetch amounts in hardcoded excluded wallets - eg pre mines etc
 async function fetchExcludedAmounts(timestamp: number) {
   const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
     base: [
@@ -223,9 +520,11 @@ async function fetchExcludedAmounts(timestamp: number) {
     ],
   };
 
-  const excludedAmounts: { [chain: string]: { [token: string]: BigNumber } } = {};
-  await Promise.all(
-    Object.keys(excludedTokensAndOwners).map(async (chain: string) => {
+  const excludedAmounts: { [chain: string]: Balances } = {};
+  await runInPromisePool({
+    items: Object.keys(excludedTokensAndOwners),
+    concurrency: 5,
+    processor: async (chain: string) => {
       const block = await getBlock(chain, (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 10);
 
       const balances = await multiCall({
@@ -235,17 +534,17 @@ async function fetchExcludedAmounts(timestamp: number) {
         block: block.number,
       });
 
+      excludedAmounts[chain] = new Balances({ chain });
       excludedTokensAndOwners[chain].map(([token, _], i) => {
-        if (!excludedAmounts[chain]) excludedAmounts[chain] = {};
-        if (!excludedAmounts[chain][token]) excludedAmounts[chain][token] = zero;
-        excludedAmounts[chain][token] = excludedAmounts[chain][token].plus(balances[i]);
+        excludedAmounts[chain].add(token, BigNumber(balances[i]));
       });
-    })
-  );
+    },
+  });
 
   return excludedAmounts;
 }
 
+// fetch stablecoin symbols
 async function fetchStablecoinSymbols() {
   const { peggedAssets } = await fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json());
   const symbols = peggedAssets.map((s: any) => s.symbol);
@@ -253,29 +552,33 @@ async function fetchStablecoinSymbols() {
   return allSymbols;
 }
 
+// fetch lst symbols
 async function fetchLstSymbols() {
   const assets = await fetch("https://yields.llama.fi/lsdRates").then((r) => r.json());
   const symbols = assets.map((s: any) => s.symbol.toUpperCase());
   return symbols;
 }
 
+// fetch rwa symbols
 function fetchRwaSymbols() {
   const allSymbols: { [symbol: string]: boolean } = {};
   Object.values(rwaMetadata).map(({ matchExact, symbols }: { matchExact: boolean; symbols: string[] }) => {
-    symbols.map((symbol) => allSymbols[symbol] = matchExact)
+    symbols.map((symbol) => (allSymbols[symbol] = matchExact));
   });
   return allSymbols;
 }
 
+// check if a symbol is an rwa symbol
 function isRwaSymbol(symbol: string, rwaSymbols: { [symbol: string]: boolean }) {
   if (rwaSymbols[symbol]) return true;
   Object.keys(rwaSymbols).map((s) => {
     if (!rwaSymbols[s] && symbol.startsWith(s)) return true;
   });
 
-  return false
+  return false;
 }
 
+// normalize a key to a standard format
 function normalizeKey(key: string) {
   if (key.startsWith("0x")) return `ethereum:${key.toLowerCase()}`;
   const [chain, address] = key.split(":");
@@ -284,6 +587,7 @@ function normalizeKey(key: string) {
   return key.toLowerCase();
 }
 
+// check if a symbol is an own token
 function isOwnToken(chain: string, symbol: string) {
   const ownToken = ownTokens[chain];
   if (!ownToken) return false;
@@ -296,8 +600,23 @@ function isOwnToken(chain: string, symbol: string) {
   return false;
 }
 
+// create a new chain assets object
+const newChainAssets = () => ({
+  canonical: { breakdown: {} },
+  thirdParty: { breakdown: {} },
+  native: { breakdown: {} },
+  ownTokens: { breakdown: {} },
+  total: { breakdown: {} },
+  rwa: { breakdown: {} },
+  lst: { breakdown: {} },
+  stablecoins: { breakdown: {} },
+});
+
+// main function
 async function main() {
+  await setEnvSecrets();
   const timestamp = 0;
+  await fetchAllTokens();
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
   const incomingAssets = await fetchIncomingAssetsList();
   const excludedAmounts = await fetchExcludedAmounts(timestamp);
@@ -306,6 +625,7 @@ async function main() {
   const lstSymbols = await fetchLstSymbols();
   const rwaSymbols = fetchRwaSymbols();
 
+  // adjust native asset balances by excluded and outgoing amounts
   const nativeDataAfterDeductions: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   allChainKeys.map((chain: Chain) => {
     if (Object.values(protocolBridgeIds).includes(chain)) return;
@@ -317,7 +637,7 @@ async function main() {
         const key = normalizeKey(token);
         const coinData = allPrices[key];
         if (!coinData || !coinData.price) return;
-        const excludedAmount = excludedAmounts[chain]?.[key] ?? zero;
+        const excludedAmount = excludedAmounts[chain]?._balances[key] ?? zero;
         const sourceChainAmount = sourceChainAmounts[chain]?.[key] ?? zero;
 
         const nativeAmount = BigNumber(supplies[token]);
@@ -342,6 +662,7 @@ async function main() {
     }
   });
 
+  // adjust balances for mcaps
   const nativeDataAfterMcaps: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   Object.keys(nativeDataAfterDeductions).map((chain: Chain) => {
     nativeDataAfterMcaps[chain] = {};
@@ -352,18 +673,10 @@ async function main() {
     });
   });
 
+  // split all chain balances into sections (canonical, thirdParty, native, ownTokens, stablecoins, rwa, lst)
   const rawData: FinalData = {};
   allChainKeys.map((chain: Chain) => {
-    rawData[chain] = {
-      canonical: { breakdown: {} },
-      thirdParty: { breakdown: {} },
-      native: { breakdown: {} },
-      ownTokens: { breakdown: {} },
-      total: { breakdown: {} },
-      rwa: { breakdown: {} },
-      lst: { breakdown: {} },
-      stablecoins: { breakdown: {} },
-    };
+    rawData[chain] = newChainAssets();
     if (Object.values(protocolBridgeIds).includes(chain)) {
       const protocolAmount = protocolAmounts[chain];
       if (!protocolAmount) {
@@ -409,19 +722,11 @@ async function main() {
     });
   });
 
+  // create a symbol map and symbol data for human readable data
   const symbolMap: { [key: string]: string } = (await getR2JSONString("chainAssetsSymbolMap")) ?? {};
   const symbolData: FinalData = {};
   Object.keys(rawData).map((chain: Chain) => {
-    symbolData[chain] = {
-      canonical: { breakdown: {} },
-      thirdParty: { breakdown: {} },
-      native: { breakdown: {} },
-      ownTokens: { breakdown: {} },
-      total: { breakdown: {} },
-      rwa: { breakdown: {} },
-      lst: { breakdown: {} },
-      stablecoins: { breakdown: {} },
-    };
+    symbolData[chain] = newChainAssets();
     Object.keys(rawData[chain]).map((section: string) => {
       Object.keys(rawData[chain][section as keyof FinalChainData].breakdown).map((key: string) => {
         const symbol = allPrices[key].symbol.toUpperCase();
@@ -432,6 +737,7 @@ async function main() {
     });
   });
 
+  // create symbol key data
   const symbolMapPromise = storeR2JSONString("chainAssetsSymbolMap", JSON.stringify(symbolMap));
   [rawData, symbolData].map((allData) => {
     Object.keys(allData).map((chain: Chain) => {
@@ -448,18 +754,10 @@ async function main() {
     });
   });
 
+  // sort symbol data for manual verifcation
   const sortedSymbolData: FinalData = {};
   Object.keys(symbolData).map((chain: Chain) => {
-    sortedSymbolData[chain] = {
-      canonical: { breakdown: {} },
-      thirdParty: { breakdown: {} },
-      native: { breakdown: {} },
-      ownTokens: { breakdown: {} },
-      total: { breakdown: {} },
-      rwa: { breakdown: {} },
-      lst: { breakdown: {} },
-      stablecoins: { breakdown: {} },
-    };
+    sortedSymbolData[chain] = newChainAssets();
     Object.keys(symbolData[chain]).map((section: string) => {
       const a = Object.entries(symbolData[chain][section as keyof FinalChainData].breakdown).sort((a: any, b: any) =>
         b[1].minus(a[1])
@@ -485,7 +783,9 @@ async function main() {
   ]);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-}).then(() => process.exit(0)); // ts-node defi/l2/v2/index.ts
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .then(() => process.exit(0)); // ts-node defi/l2/v2/index.ts

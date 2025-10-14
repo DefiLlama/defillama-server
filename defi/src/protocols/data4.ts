@@ -23874,7 +23874,7 @@ const data4: Protocol[] = [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://arbiscan.io/address/0x7b09d87945102d25069c173ee45db397c6e055b3#readContract#F4"],
+        proof: ["https://arbiscan.io/address/0x7b09d87945102d25069c173ee45db397c6e055b3#readContract#F4", "https://x.com/boros_fi/status/1957854003422707940"],
       },
     ],
   },

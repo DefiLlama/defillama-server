@@ -256,4 +256,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "hemi-l2": { ticker: "HEMI", address: "coingecko:hemi" },
   "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
   "plasma": { ticker: "XPL", address: "coingecko:plasma" },
+  "linea": { ticker: "LINEA", address: "coingecko:linea" },
 };

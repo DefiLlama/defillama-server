@@ -226,7 +226,8 @@ interface Counter {
 // some protocols have a lot of tokens, but we dont have price support for most of them, so we first fetch a list of tokens for which we do have price, then filter out the rest
 
 const priceQueryFilterCoins = !!process.env.PRICE_QUERY_FILTER_FOR_KNOWN_COINS
-export const whitelistedTokenSet = new Set() as Set<string>;
+const whitelistedTokenSet = new Set() as Set<string>;
+export const whitelistedTokenSetRawPids = new Set() as Set<string>;
 let priceQueryFilterInitializedPromise: any
 
 export async function initializePriceQueryFilter() {
@@ -251,6 +252,7 @@ export async function initializePriceQueryFilter() {
 
       while (response.hits.hits.length) {
         response.hits.hits.map((i: any) => {
+          whitelistedTokenSetRawPids.add(`${i._source.chain}:${i._source.address}`);
           whitelistedTokenSet.add(normalizeCoinId(i._source.pid));
         })
         sdk.log(`Fetched ${whitelistedTokenSet.size} records, ${response.hits.hits.length} in batch`);

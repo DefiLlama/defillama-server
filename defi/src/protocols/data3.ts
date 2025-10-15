@@ -42310,7 +42310,6 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "ethereum",
-    listedAt: 1713453599,
   },
   {
     id: "4489",

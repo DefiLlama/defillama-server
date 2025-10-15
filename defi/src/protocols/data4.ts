@@ -11919,6 +11919,9 @@ const data4: Protocol[] = [
     twitter: "MoonwellDeFi",
     parentProtocol: "parent#moonwell",
     listedAt: 1744712150,
+    dimensions: {
+      fees: "moonwell-vaults"
+    }
   },
   {
     id: "6051",
@@ -31505,6 +31508,32 @@ const data4: Protocol[] = [
     ],
     github: ["eq-lab"],
     listedAt: 1760500073
+  },
+  {
+    id: "6868",
+    name: "CheapGM",
+    address: null,
+    symbol: "-",
+    url: "https://www.gm.cheap/",
+    description:
+      "GM is a minimalist on-chain “gm/mint” service with referral logic and a fixed fee in the native token.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cheapgm.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Base", "Optimism", "Arbitrum", "Ethereum", "Binance", "Polygon", "Scroll", "Mantle", "Linea", "zkSync Era", "Taiko", "Blast", "Mode", "Zora", "Metis", "Cronos", "Celo", "Conflux", "Ronin", "Lisk", "Berachain", "CORE", "BOB", "Abstract", "Soneium", "Ink", "Unichain", "Sonic", "Plume Mainnet"],
+    module: "dummy.js",
+    twitter: "gmcheap",
+    forkedFrom: [],
+    audit_links: ["https://app.solidproof.io/projects/cheap-gm"],
+    github: ["CheapGM"],
+    treasury: "cheapgm.js",
+    dimensions: {
+      fees: "cheapgm"
+    }
   },
 ];
 export default data4;

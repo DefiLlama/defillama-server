@@ -13517,7 +13517,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "693",
     name: "Superfluid",
     address: null,
-    symbol: "-",
+    symbol: "SUP",
     url: "https://www.superfluid.finance/home",
     description:
       "Programmable Cashflows. Handle subscriptions, salaries, rewards and any composable stream of value, with continuous settlement and per-second netting for extreme capital efficiency.",
@@ -13525,7 +13525,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/superfluid.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "superfluid",
     cmcId: null,
     category: "Payments",
     chains: ["Polygon", "xDai"],

@@ -31503,7 +31503,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "enjoyoors/index.js",
     twitter: "enjoyoorsxyz",

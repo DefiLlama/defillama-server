@@ -42291,7 +42291,7 @@ const data3_2: Protocol[] = [
       aggregators: "hinkal"
     }
   },
-  {
+/*   {   // this is a chain listing, should only be in normalizeChain.ts
     id: "4488",
     name: "Ethereum",
     address: null,
@@ -42317,7 +42317,7 @@ const data3_2: Protocol[] = [
         genuineSpikes: ["1760054400"],
       }
     }
-  },
+  }, */
   {
     id: "4489",
     name: "GammaSwap",

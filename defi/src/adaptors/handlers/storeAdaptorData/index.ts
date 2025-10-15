@@ -251,7 +251,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
         const todayStartOfDay = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000))
         if (toTimestamp >= todayStartOfDay) {
-          if (isAdapterVersionV1) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
+          if (isAdapterVersionV1 && !runAtCurrTime) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
           recordTimestamp = toTimestamp
         }
       }

@@ -27047,7 +27047,7 @@ const data4: Protocol[] = [
     module: "hyperpie-launchpad/index.js",
     forkedFromIds: [],
     twitter: "SpinUpZone",
-    parentProtocol: "parent#spinup",
+    parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1757103078,
     dimensions: {
       fees: "hyperpie-launchpad",
@@ -27072,7 +27072,7 @@ const data4: Protocol[] = [
     module: "hyperpie-v2-dex/index.js",
     forkedFromIds: ["1407"],
     twitter: "SpinUpZone",
-    parentProtocol: "parent#spinup",
+    parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1757103085,
     dimensions: {
       fees: "hyperpie-v2-dex",

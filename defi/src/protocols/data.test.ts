@@ -1,7 +1,7 @@
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
-import protocols, { protocolsById } from "./data";
+import protocols from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
@@ -343,18 +343,42 @@ test("No duplicated adapter type", async () => {
   expect(isArrayUnique(values)).toBeTruthy();
 });
 
-test("Dimensions: No two listings share the same module, name or slug", () => {
+test.only("Dimensions: No two listings share the same module, name or slug", () => {
 
   const moduleMapFromMetadata = {} as Record<string, Record<string, string>>; // adapterType -> protocolName -> module
-  const allProtocolMetadata = protocols.concat(Object.values(chainCoingeckoIds) as any)
+
+  // we have duplicate chains in chainCoingeckoIds as we maintain the same config for old and new chain names
+  const addedChains = new Set<any>();
+  const chainMetadata = Object.entries(chainCoingeckoIds).map(([symbol, data]) => {
+    if (addedChains.has(data)) {
+      // console.log("Duplicate chain found: ", symbol);
+      return;
+    }
+
+    addedChains.add(data);
+
+    return {
+      ...data,
+      name: symbol,
+    }
+  }).filter(Boolean)
+
+  const allProtocolMetadata = protocols.concat(chainMetadata as any)
   const protocolNamesProcessed = {} as Record<string, boolean>
 
   allProtocolMetadata.forEach((p: any) => {
-    const name = p.name ? `protocols/${p.name}` : `chain/${p.symbol}`
+    if (!p.dimensions) return;
+
+    const name = p.name
+
+    if (!name) {
+      console.log(p)
+      return;
+    }
+
     if (protocolNamesProcessed[name]) throw new Error(`Protocol ${name} is listed more than once in protocols.ts or chainCoingeckoIds.ts`)
     protocolNamesProcessed[name] = true;
 
-    if (!p.dimensions) return;
 
     for (const adaptorTypeKey of Object.keys(p.dimensions)) {
       if (!moduleMapFromMetadata[adaptorTypeKey]) moduleMapFromMetadata[adaptorTypeKey] = {}

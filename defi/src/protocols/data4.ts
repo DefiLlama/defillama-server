@@ -23000,6 +23000,12 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.parallel.best/resources/security-audits"],
     parentProtocol: "parent#parallel-protocol",
     listedAt: 1753821437,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://gov.parallel.best/t/pgp-34-l-launch-parallel-stablecoins-price-feeds-using-dia/488"]
+      }
   },
   {
     id: "6501",

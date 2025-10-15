@@ -415,13 +415,14 @@ async function storeRWAStats() {
 
 
 runWithRuntimeLogging(run, {
-        application: "cron-task",
-        type: 'tvl-data',
-      })
+  application: "cron-task",
+  type: 'tvl-data',
+})
   .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))

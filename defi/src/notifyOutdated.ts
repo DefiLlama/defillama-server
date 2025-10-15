@@ -98,7 +98,7 @@ async function notifyBlockedDimensionUpdates() {
   try {
     const esClient = elastic.getClient()
     const aDayAgo = Math.floor(Date.now() / 1000) - 24 * 3600
-    let { lastCheckTS } = (await cache.readExpiringJsonCache('lastBlockedDimensionCheck')) || { lastCheckTS: 0 }
+    let { lastCheckTS } = (await cache.readExpiringJsonCache('lastBlockedDimensionCheck-v1')) || { lastCheckTS: 0 }
     if (!lastCheckTS || lastCheckTS < aDayAgo) lastCheckTS = aDayAgo - 1
 
 
@@ -137,7 +137,7 @@ async function notifyBlockedDimensionUpdates() {
     message = `These are the blocked dimension updates since the last notification:
     ${message}
     ${trimmedMessage} ${linkToKibana}`
-    await sendMessage(message, process.env.DIM_CHANNEL_WEBHOOK!)
+    await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
 
     const timeNow = Math.floor(Date.now() / 1000)
     await cache.writeExpiringJsonCache('lastBlockedDimensionCheck', { lastCheckTS: timeNow }, { expireAfter: 7 * 24 * 3600 })

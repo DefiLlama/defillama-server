@@ -274,8 +274,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
 
       if (isRunFromRefillScript && runAtCurrTime) {
-        if (Date.now() - fromTimestamp * 1000 > 1000 * 60 * 60 * 24) {
-          throw new Error(`${adapterType} - ${module} - runAtCurrTime is set, but the refill script is running for more than 24 hours`)
+        if (Date.now() - fromTimestamp * 1000 > 1000 * 60 * 60 * 24 * 2) {
+          throw new Error(`${adapterType} - ${module} - runAtCurrTime is set, but the refill script is running for more than 48 hours`)
         }
       }
 

@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
+import { AllProtocols, TokenTvlData } from "./types";
 import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, protocolBridgeIds, zero } from "./constants";
 import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
@@ -59,113 +59,6 @@ async function restCallWrapper(request: () => Promise<any>, retries: number = 8,
     }
   }
   throw new Error(`couldnt work ${name} call after retries!`);
-}
-export async function getPrices(
-  readKeys: string[],
-  timestamp: number | "now"
-): Promise<{ [address: string]: CoinsApiData }> {
-  if (!readKeys.length) return {};
-  const bodies: string[] = [];
-  for (let i = 0; i < readKeys.length; i += 100) {
-    const body = {
-      coins: readKeys.slice(i, i + 100),
-    } as any;
-    if (timestamp !== "now") {
-      body.timestamp = timestamp;
-    }
-    bodies.push(JSON.stringify(body));
-  }
-
-  const tokenData: any[] = [];
-  await PromisePool.withConcurrency(10)
-    .for(bodies)
-    .process(async (body) => {
-      const res = await restCallWrapper(
-        () =>
-          fetch(
-            `https://coins.llama.fi/prices?source=internal${
-              process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
-            }`,
-            {
-              method: "POST",
-              body,
-              headers: { "Content-Type": "application/json" },
-            }
-          )
-            .then((r) => r.json())
-            .then((r) =>
-              Object.entries(r.coins).map(([PK, value]) => ({
-                ...(value as any),
-                PK,
-              }))
-            ),
-        undefined,
-        "coin prices"
-      );
-      tokenData.push(res);
-    })
-    .catch((e) => {
-      throw new Error(`coin prices call failed with ${e}`);
-    });
-
-  const aggregatedRes: { [address: string]: CoinsApiData } = {};
-  const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
-  tokenData.map((batch: CoinsApiData[]) => {
-    batch.map((a: CoinsApiData) => {
-      if (!a.PK) return;
-      const i = normalizedReadKeys.indexOf(a.PK.toLowerCase());
-      aggregatedRes[readKeys[i]] = a;
-    });
-  });
-
-  return aggregatedRes;
-}
-export async function getMcaps(
-  readKeys: string[],
-  timestamp: number | "now"
-): Promise<{ [address: string]: McapsApiData }> {
-  if (!readKeys.length) return {};
-  const bodies: string[] = [];
-  for (let i = 0; i < readKeys.length; i += 100) {
-    const body = {
-      coins: readKeys.slice(i, i + 100),
-    } as any;
-    if (timestamp !== "now") {
-      body.timestamp = timestamp;
-    }
-    bodies.push(JSON.stringify(body));
-  }
-
-  const tokenData: any[] = [];
-  await PromisePool.withConcurrency(10)
-    .for(bodies)
-    .process(async (body) => {
-      const res = await restCallWrapper(
-        () =>
-          fetch(`https://coins.llama.fi/mcaps${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""}`, {
-            method: "POST",
-            body,
-            headers: { "Content-Type": "application/json" },
-          }).then((r) => r.json()),
-        undefined,
-        "mcaps"
-      );
-      tokenData.push(res);
-    })
-    .catch((e) => {
-      throw new Error(`coin mcaps call failed with ${e}`);
-    });
-
-  const aggregatedRes: { [address: string]: any } = {};
-  const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
-  tokenData.map((batch: { [address: string]: McapsApiData }[]) => {
-    Object.keys(batch).map((a: any) => {
-      if (!batch[a].mcap) return;
-      const i = normalizedReadKeys.indexOf(a.toLowerCase());
-      aggregatedRes[readKeys[i]] = batch[a];
-    });
-  });
-  return aggregatedRes;
 }
 async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Osmosis adapter!`);

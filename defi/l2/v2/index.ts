@@ -1,7 +1,7 @@
 import { canonicalBridgeIds, excludedTvlKeys, protocolBridgeIds, zero, ownTokens, allChainKeys } from "../constants";
 import { getCurrentUnixTimestamp } from "../../src/utils/date";
 import { Chain } from "@defillama/sdk/build/types";
-import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "../utils";
+import { fetchBridgeTokenList, fetchSupplies } from "../utils";
 import { fetchAdaTokens } from "../adapters/ada";
 import { withTimeout } from "../../src/utils/shared/withTimeout";
 import { CoinsApiData, FinalData, FinalChainData } from "../types";
@@ -22,6 +22,7 @@ import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
 import { Balances } from "@defillama/sdk";
 import runInPromisePool from "@defillama/sdk/build/util/promisePool";
 import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
+import { getPrices, getMcaps } from "@defillama/sdk/build/util/coinsApi";
 
 const stablecoins = [
   "USDT",
@@ -354,16 +355,16 @@ async function fetchNativeAndMcaps(
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
           let prices: { [token: string]: CoinsApiData } = {};
-          try {
-            prices = await getR2JSONString(`prices/${chain}.json`);
-          } catch (e) {
-            console.log(`${chain} prices not cached, fetching`);
+          // try {
+          //   prices = await getR2JSONString(`prices/${chain}.json`);
+          // } catch (e) {
+          //   console.log(`${chain} prices not cached, fetching`);
             prices = await getPrices(
               storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
               timestamp
             );
             await storeR2JSONString(`prices/${chain}.json`, JSON.stringify(prices));
-          }
+          // }
 
           Object.keys(prices).map((p: string) => {
             if (p.startsWith("coingecko:")) prices[p].decimals = 0;
@@ -371,13 +372,13 @@ async function fetchNativeAndMcaps(
           });
 
           let mcaps: { [token: string]: McapsApiData } = {};
-          try {
-            mcaps = await getR2JSONString(`mcaps/${chain}.json`);
-          } catch (e) {
-            console.log(`${chain} mcaps not cached, fetching`);
+          // try {
+          //   mcaps = await getR2JSONString(`mcaps/${chain}.json`);
+          // } catch (e) {
+          //   console.log(`${chain} mcaps not cached, fetching`);
             mcaps = await getMcaps(Object.keys(prices), timestamp);
-            await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
-          }
+          //   await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
+          // }
           Object.keys(mcaps).map((m: string) => {
             allMcaps[m] = mcaps[m];
           });
@@ -743,7 +744,7 @@ async function main() {
     Object.keys(allData).map((chain: Chain) => {
       let totalTotal = zero;
       Object.keys(allData[chain]).map((section: string) => {
-        if (section == "total") return;
+        if (['total', 'ownTokens'].includes(section)) return;
         const amounts = Object.values(allData[chain][section as keyof FinalChainData].breakdown);
         const total = amounts.length ? (amounts.reduce((p: any, c: any) => c.plus(p), zero) as BigNumber) : zero;
         allData[chain][section as keyof FinalChainData].total = total;

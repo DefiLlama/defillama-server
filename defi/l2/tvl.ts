@@ -5,12 +5,12 @@ import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
-import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./verifyChanges";
 import { getExcludedTvl } from "./excluded";
 import { saveRawBridgedTvls } from "./raw";
+import { getMcaps } from "@defillama/sdk/build/util/coinsApi";
 
 export default async function main(override?: boolean, timestamp?: number) {
   let symbolMap: { [pk: string]: string | null } = {};

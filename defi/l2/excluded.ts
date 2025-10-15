@@ -1,4 +1,4 @@
-import { getPrices } from "./utils";
+import { getPrices } from "@defillama/sdk/build/util/coinsApi";
 import { excludedTvlId } from "./constants";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { getBlock } from "@defillama/sdk/build/util/blocks";

@@ -31369,6 +31369,10 @@ const data4: Protocol[] = [
     twitter: "punkdotcoffee",
     github: ["0xPunkcoffee"],
     listedAt: 1760475695,
+    dimensions: {
+      fees: "punk.coffee",
+      dexs: "punk.coffee"
+    }
   },
   {
     id: "6861",
@@ -31488,6 +31492,10 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#cetus",
     listedAt: 1760499842,
+    dimensions: {
+      fees: "cetus-dlmm",
+      dexs: "cetus-dlmm"
+    }
   },
   {
     id: "6867",

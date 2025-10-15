@@ -23006,6 +23006,7 @@ const data4: Protocol[] = [
         type: "Primary",
         proof: ["https://gov.parallel.best/t/pgp-34-l-launch-parallel-stablecoins-price-feeds-using-dia/488"]
       }
+    ]
   },
   {
     id: "6501",

@@ -3189,7 +3189,7 @@ const data3_1: Protocol[] = [
       "Join thousands of projects using Juicebox to fund, operate, and scale their ideas & communities transparently on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/juicebox.png`,
-    audits: "6",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

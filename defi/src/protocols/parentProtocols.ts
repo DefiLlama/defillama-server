@@ -1123,7 +1123,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "OpenSea",
     url: "https://opensea.io/",
     description:
-      "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+      "The best place to discover, own, and trade onchain.",
     logo: `${baseIconsUrl}/opensea.png`,
     gecko_id: null,
     cmcId: null,

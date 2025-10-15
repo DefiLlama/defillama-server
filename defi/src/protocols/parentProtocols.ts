@@ -7803,7 +7803,7 @@ const parentProtocols: IParentProtocol[] = [
     referralUrl: "https://upheaval.fi/portfolio?ref=674574",
     description: "Upheaval is a DeFi platform on HyperliquidEVM, featuring a Hyper efficient AMM DEX",
     logo: `${baseIconsUrl}/upheaval-finance.jpg`,
-    gecko_id: null,
+    gecko_id: "upheaval",
     cmcId: null,
     chains: [],
     twitter: "Upheavalfi",

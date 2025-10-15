@@ -26059,8 +26059,8 @@ const data4: Protocol[] = [
   {
     id: "6632",
     name: "Upheaval V2",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x9c3bcc457862dd6d8907ba11f8c7fe7e43a8c08b",
+    symbol: "UPHL",
     url: "https://upheaval.fi/portfolio?ref=674574",
     referralUrl: "https://upheaval.fi/portfolio?ref=674574",
     description: `AMM DEX on Hyperliquid L1`,
@@ -26086,8 +26086,8 @@ const data4: Protocol[] = [
   {
     id: "6633",
     name: "Upheaval V3",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x9c3bcc457862dd6d8907ba11f8c7fe7e43a8c08b",
+    symbol: "UPHL",
     url: "https://upheaval.fi/portfolio?ref=674574",
     referralUrl: "https://upheaval.fi/portfolio?ref=674574",
     description: `CLMM DEX on Hyperliquid L1`,
@@ -31533,6 +31533,31 @@ const data4: Protocol[] = [
     treasury: "cheapgm.js",
     dimensions: {
       fees: "cheapgm"
+    }
+  },
+  {
+    id: "6869",
+    name: "Upheaval Spot AMM",
+    address: "hyperliquid:0x9c3bcc457862dd6d8907ba11f8c7fe7e43a8c08b",
+    symbol: "UPHL",
+    url: "https://upheaval.fi/portfolio?ref=674574",
+    referralUrl: "https://upheaval.fi/portfolio?ref=674574",
+    description: `AMM DEX and liquidity layer on Hyperliquid L1 where users earn spot fees in UP, the native token deployed by Upheaval`,
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/upheaval-spot-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "Upheavalfi",
+    parentProtocol: "parent#upheaval-finance",
+    audit_links: [],
+    dimensions: {
+      fees: "upheaval-spot",
     }
   },
 ];

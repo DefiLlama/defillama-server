@@ -20,7 +20,6 @@ async function run() {
   const buildFunctions = {
     // 'tvl import': createTVLImportsFile,
     'liquidation import': createLiquidationImportsFile,
-    'emissions import': createEmissionsImportsFile,
     'dimensions import': createDimensionsImports,
   }
 
@@ -112,16 +111,6 @@ async function createDimensionsImports() {
   }
 }
 
-
-
-// emissions-adapters
-function createEmissionsImportsFile() {
-  const emission_keys = getDirectories(`./emissions-adapters/protocols`)
-  writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
-    `export default {
-    ${emission_keys.map(k => `"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
-}`)
-}
 
 async function createTVLImportsFile() {
   await writeFile("./src/utils/imports/adapters.ts",

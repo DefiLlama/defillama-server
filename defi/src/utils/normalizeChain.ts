@@ -5301,6 +5301,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
   }
 }
 
+// NOTE: this only works if chain key and label are different, else capitalize the first character of the chain key
+export const chainKeyToLabelMap = allChainLabelMap
+
 export function getDisplayChain(chains: string[]) {
   if (chains.length > 1) {
     return "Multi-Chain";

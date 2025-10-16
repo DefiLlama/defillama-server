@@ -24,6 +24,7 @@ import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
+import { chainKeyToLabelMap } from "../../utils/normalizeChain";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -299,9 +300,12 @@ async function run() {
     console.time('write /config')
     const data = {
       protocols: cache.metadata.protocols,
+      parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)
+    await storeRouteData('/_fe/static/configs', data)
 
 
     // this is handled in rest server now

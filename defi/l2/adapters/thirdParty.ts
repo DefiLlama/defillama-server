@@ -3,11 +3,10 @@ import providers from "@defillama/sdk/build/providers.json";
 import { Address } from "@defillama/sdk/build/types";
 import { allChainKeys } from "../constants";
 import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
-import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
-import axios from "axios";
-import PromisePool from "@supercharge/promise-pool";
 import _ from "lodash";
+import { cachedFetch } from "@defillama/sdk/build/util/cache";
+import runInPromisePool from "@defillama/sdk/build/util/promisePool";
 
 const addresses: { [chain: Chain]: Address[] } = {};
 allChainKeys.map((c: string) => (addresses[c] = []));
@@ -23,15 +22,18 @@ Object.keys(providers).map((c: string) => {
 });
 
 const hyperlane = async (): Promise<void> => {
-  const data = await fetch(
-    "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
-  ).then((r) => r.json());
+  const data = await cachedFetch({
+    key: "hyperlane-assets",
+    endpoint: "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for hyperlane third party");
   if (!addresses.eclipse) addresses.eclipse = [];
   data.map(({ address }: any) => addresses.eclipse.push(address));
 };
 
 const axelar = async (): Promise<void> => {
-  const data = await fetch("https://api.axelarscan.io/api/getAssets").then((r) => r.json());
+  const data = await cachedFetch({ key: "axelar-assets", endpoint: "https://api.axelarscan.io/api/getAssets" });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for axelar third party");
   data.map((token: any) => {
     if (!token.addresses) return;
     Object.keys(token.addresses).map((chain: string) => {
@@ -46,9 +48,11 @@ const axelar = async (): Promise<void> => {
 };
 
 const wormhole = async (): Promise<void> => {
-  const data = await axios.get(
-    "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/content/by_dest.csv"
-  );
+  const data = await cachedFetch({
+    key: "wormhole-token-list",
+    endpoint: "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/content/by_dest.csv",
+  });
+  if (data.length == 0) throw new Error("No data or cache found for wormhole third party");
 
   const chainMap: { [ticker: string]: string } = {
     sol: "solana",
@@ -69,7 +73,7 @@ const wormhole = async (): Promise<void> => {
     base: "base",
   };
 
-  const lines = data.data.split("\n");
+  const lines = data.split("\n");
   lines.shift();
   lines.map((l: string) => {
     const rows = l.split(",");
@@ -81,7 +85,11 @@ const wormhole = async (): Promise<void> => {
 };
 
 const celer = async (): Promise<void> => {
-  const data = await fetch("https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll").then((r) => r.json());
+  const data = await cachedFetch({
+    key: "celer-transfer-configs",
+    endpoint: "https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for celer third party");
   data.pegged_pair_configs.map((pp: any) => {
     const chain = chainIdMap[pp.org_chain_id];
     let normalizedChain: string = chain;
@@ -94,11 +102,15 @@ const celer = async (): Promise<void> => {
 
 const layerzero = async (): Promise<void> => {
   const data = await Promise.all([
-    fetch(
-      "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
-    ).then((r) => r.json()),
-    fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
+    cachedFetch({
+      key: "layerzero-mappings",
+      endpoint:
+        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json",
+    }),
+    cachedFetch({ key: "layerzero-metadata", endpoint: "https://metadata.layerzero-api.com/v1/metadata" }),
   ]);
+  if (data[0].length == 0 || Object.keys(data[1]).length == 0)
+    throw new Error("No data or cache found for layerzero third party");
 
   data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
@@ -148,9 +160,11 @@ const layerzero = async (): Promise<void> => {
 };
 
 const flow = async (): Promise<void> => {
-  const data = await fetch(
-    "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
-  ).then((r) => r.json());
+  const data = await cachedFetch({
+    key: "flow-token-list",
+    endpoint: "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for flow third party");
   data.tokens.map(({ chainId, address, tags }: any) => {
     const chain = chainIdMap[chainId];
     if (!allChainKeys.includes(chain)) return;
@@ -181,15 +195,14 @@ const adapters = { axelar, wormhole, celer, hyperlane, layerzero, flow, unit };
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = _.once(async (): Promise<{ [chain: Chain]: Address[] }> => {
-  await PromisePool.withConcurrency(5)
-    .for(Object.entries(adapters))
-    .process(async ([key, adapter]: any) => {
-      try {
-        await adapter();
-      } catch (e: any) {
-        throw new Error(`${key} fails with ${e.message}`);
-      }
-    });
+  await runInPromisePool({
+    items: Object.entries(adapters),
+    concurrency: 5,
+    processor: async ([key, adapter]: any) => {
+        await adapter().catch((e: any) => {
+            throw new Error(`${key} fails with ${e.message}`);
+        });
+    }})
 
   // remove excluded assets and add additional assets, normalize case
   Object.keys(addresses).map((chain: string) => {

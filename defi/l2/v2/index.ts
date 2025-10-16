@@ -21,7 +21,7 @@ import { getClosestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } 
 import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
 import { Balances } from "@defillama/sdk";
 import runInPromisePool from "@defillama/sdk/build/util/promisePool";
-import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
+import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getPrices, getMcaps } from "@defillama/sdk/build/util/coinsApi";
 
 const searchWidth = 10800; // 3hr
@@ -36,7 +36,7 @@ async function fetchAllTokens() {
     const chain = t.substring(0, seperater);
 
     const address = t.substring(seperater + 1);
-    if (address == 'undefined') return;
+    if (address == "undefined") return;
 
     if (!allTokens[chain]) allTokens[chain] = [];
     allTokens[chain].push(address);
@@ -92,15 +92,15 @@ async function fetchNativeAndMcaps(
             : undefined;
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
-          let prices: { [token: string]: CoinsApiData } = {};
+          // let prices: { [token: string]: CoinsApiData } = {};
           // try {
           //   prices = await getR2JSONString(`prices/${chain}.json`);
           // } catch (e) {
           //   console.log(`${chain} prices not cached, fetching`);
-            prices = await getPrices(
-              storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
-              timestamp
-            );
+          const prices = await getPrices(
+            storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
+            timestamp
+          );
           //   await storeR2JSONString(`prices/${chain}.json`, JSON.stringify(prices));
           // }
 
@@ -109,33 +109,33 @@ async function fetchNativeAndMcaps(
             allPrices[p] = prices[p];
           });
 
-          let mcaps: { [token: string]: McapsApiData } = {};
+          // let mcaps: { [token: string]: McapsApiData } = {};
           // try {
           //   mcaps = await getR2JSONString(`mcaps/${chain}.json`);
           // } catch (e) {
-            // console.log(`${chain} mcaps not cached, fetching`);
-            mcaps = await getMcaps(Object.keys(prices), timestamp);
+          // console.log(`${chain} mcaps not cached, fetching`);
+          const mcaps = await getMcaps(Object.keys(prices), timestamp);
           //   await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
           // }
           Object.keys(mcaps).map((m: string) => {
             allMcaps[m] = mcaps[m];
           });
 
-          let supplies;
+          // let supplies;
           // try {
           //   supplies = await getR2JSONString(`supplies/${chain}.json`);
           //   if (ownTokenCgid && mcaps[ownTokenCgid])
           //     supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
           // } catch (e) {
           //   console.log(`${chain} supplies not cached, fetching`);
-            supplies = await fetchSupplies(
-              chain,
-              Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
-              timestamp
-            );
-            if (ownTokenCgid && mcaps[ownTokenCgid])
-              supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
-            // await storeR2JSONString(`supplies/${chain}.json`, JSON.stringify(supplies));
+          const supplies = await fetchSupplies(
+            chain,
+            Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
+            timestamp
+          );
+          if (ownTokenCgid && mcaps[ownTokenCgid])
+            supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
+          // await storeR2JSONString(`supplies/${chain}.json`, JSON.stringify(supplies));
           // }
 
           chainData[chain] = { prices, mcaps, supplies };
@@ -227,7 +227,7 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
           return;
         }
 
-        const destinationChain = canonicalBridgeIds[id]
+        const destinationChain = canonicalBridgeIds[id];
         if (!destinationChain) return;
         if (!destinationChainAmounts[destinationChain]) destinationChainAmounts[destinationChain] = {};
         if (!destinationChainAmounts[destinationChain][key]) destinationChainAmounts[destinationChain][key] = zero;
@@ -286,7 +286,10 @@ async function fetchExcludedAmounts(timestamp: number) {
 
 // fetch stablecoin symbols
 async function fetchStablecoinSymbols() {
-  const { peggedAssets } = await fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json());
+  const { peggedAssets } = await cachedFetch({
+    key: "stablecoin-symbols",
+    endpoint: "https://stablecoins.llama.fi/stablecoins",
+  });
   const symbols = peggedAssets.map((s: any) => s.symbol);
   const allSymbols = [...new Set([...symbols, ...stablecoins].map((t) => t.toUpperCase()))];
   return allSymbols;
@@ -294,7 +297,7 @@ async function fetchStablecoinSymbols() {
 
 // fetch lst symbols
 async function fetchLstSymbols() {
-  const assets = await fetch("https://yields.llama.fi/lsdRates").then((r) => r.json());
+  const assets = await cachedFetch({ key: "lst-symbols", endpoint: "https://yields.llama.fi/lsdRates" });
   const symbols = assets.map((s: any) => s.symbol.toUpperCase());
   return symbols;
 }
@@ -482,7 +485,7 @@ async function main() {
         const amounts = Object.values(allData[chain][section as keyof FinalChainData].breakdown);
         const total = amounts.length ? (amounts.reduce((p: any, c: any) => c.plus(p), zero) as BigNumber) : zero;
         allData[chain][section as keyof FinalChainData].total = total;
-        if (section == 'ownTokens') return;
+        if (section == "ownTokens") return;
         totalTotal = totalTotal.plus(total);
       });
 
@@ -495,8 +498,8 @@ async function main() {
   Object.keys(symbolData).map((chain: Chain) => {
     sortedSymbolData[chain] = newChainAssets();
     Object.keys(symbolData[chain]).map((section: string) => {
-      const orderedTokenAmounts = Object.entries(symbolData[chain][section as keyof FinalChainData].breakdown).sort((a: any, b: any) =>
-        b[1].minus(a[1])
+      const orderedTokenAmounts = Object.entries(symbolData[chain][section as keyof FinalChainData].breakdown).sort(
+        (a: any, b: any) => b[1].minus(a[1])
       );
 
       const top100Tokens = orderedTokenAmounts.slice(0, 100);

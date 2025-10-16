@@ -13346,7 +13346,9 @@ const data4: Protocol[] = [
     tokensExcludedFromParent: {
       Hyperliquid: ["BEHYPE"],
     },
-
+    dimensions: {
+      fees: "hyperbeat"
+    },
     oraclesBreakdown: [
       {
         name: "RedStone",
@@ -29325,6 +29327,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#hyperbeat",
     listedAt: 1758815485,
+    dimensions: {
+      fees: "hyperbeat-lst"
+    }
   },
   {
     id: "6771",

@@ -13,8 +13,7 @@ import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
-import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
-import { getDisplayChainNameCached } from "./adaptors/utils/getAllChainsFromAdaptors";
+import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)
@@ -37,6 +36,19 @@ interface SumDailyTvls {
       [timestamp: number]: number | undefined;
     };
   };
+}
+
+interface IChainTvlByCategoryOrTag {
+  [categoryOrTag: string]: {
+    [chain: string]: number;
+  };
+}
+
+function sumChainTvlByCategoryOrTag(sum: IChainTvlByCategoryOrTag, categoryOrTag: string, chain: string, tvl: number) {
+  if (!sum[categoryOrTag]) {
+    sum[categoryOrTag] = {};
+  }
+  sum[categoryOrTag][chain] = tvl + (sum[categoryOrTag][chain] ?? 0);
 }
 
 export interface IProtocol extends Protocol {
@@ -89,17 +101,15 @@ export async function getHistoricalTvlForAllProtocols(
       const isNormallyExcluded =
         !storeMeta &&
         excludeProtocolsFromCharts &&
-        (excludeProtocolInCharts(protocol, includeBridge) || isExcludedFromChainTvl(category));
+        (excludeProtocolInCharts(category, includeBridge));
       if (isNormallyExcluded && !isForcedInclude) {
         excludedProcolsIds[protocol.id] = true;
         excludedProcolsIdsExceptBridge[protocol.id] = true;
         return;
       }
 
-      excludedProcolsIds[protocol.id] =
-        excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(category);
-      excludedProcolsIdsExceptBridge[protocol.id] =
-        excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(category);
+      excludedProcolsIds[protocol.id] = excludeProtocolInCharts(category, false)
+      excludedProcolsIdsExceptBridge[protocol.id] = excludeProtocolInCharts(category, true)
 
       let lastTvl: any, historicalTvl: any;
       async function _getAllProtocolData(protocol: Protocol) {
@@ -119,6 +129,10 @@ export async function getHistoricalTvlForAllProtocols(
       } else {
         lastTvl = getHistTvlOptions.getLastTvl!(protocol);
         historicalTvl = getHistTvlOptions.getAllTvlData!(protocol);
+      }
+
+      if(lastTvl) {
+        lastTvl = { ...lastTvl }
       }
 
       if (lastTvl && !historicalTvl?.length) historicalTvl = [lastTvl];
@@ -285,7 +299,8 @@ export async function processProtocols(
 export async function storeGetCharts({ ...options }: any = {}) {
   // store overall tvl charts and individual chain charts
   const sumDailyTvls: SumDailyTvls = {};
-  const sumCategoryTvls: SumDailyTvls = {};
+  const chainTvlByCategory: IChainTvlByCategoryOrTag = {}
+  const chainTvlByTag: IChainTvlByCategoryOrTag = {}
 
   if (options.isApi2CronProcess) {
     const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
@@ -310,7 +325,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   }
 
   await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol, { categoryLowerCase, isLiquidStaking, isDoublecounted }: _InternalProtocolMetadata) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, { category, isLiquidStaking, isDoublecounted }: _InternalProtocolMetadata) => {
 
       // total - sum of all protocols on all chains
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
@@ -350,8 +365,14 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, categoryLowerCase.replace(" ", "_"), chain, timestamp, tvl);
-            if (protocol?.doublecounted) {
+            sumChainTvlByCategoryOrTag(chainTvlByCategory, category, chainName, tvl)
+            if (protocol.tags) {
+              protocol.tags.forEach((tag) => {
+                sumChainTvlByCategoryOrTag(chainTvlByTag, tag, chainName, tvl)
+              })
+            }
+
+            if (isDoublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
 
@@ -399,7 +420,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
   }
 
   await processProtocols(
-    async (timestamp: number, item: TvlItem, _protocol: IProtocol, { categoryLowerCase, }: _InternalProtocolMetadata) => {
+    async (timestamp: number, item: TvlItem, protocol: IProtocol, { category }: _InternalProtocolMetadata) => {
       Object.entries(item).forEach(([chain, tvl]) => {
         // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
         const formattedChainName = getChainDisplayName(chain, true);
@@ -418,14 +439,23 @@ export async function storeGetCharts({ ...options }: any = {}) {
         //  check if its a valid chain name and not extra tvl section like pool2, staking etc
         if (chainCoingeckoIds[chainName] !== undefined) {
           if (tvlSection === "tvl") {
-            sum(sumCategoryTvls, categoryLowerCase.replace(" ", "_"), chain, timestamp, tvl);
+            sumChainTvlByCategoryOrTag(chainTvlByCategory, category, chainName, tvl)
+            if (protocol.tags) {
+              protocol.tags.forEach((tag) => {
+                sumChainTvlByCategoryOrTag(chainTvlByTag, tag, chainName, tvl)
+              })
+            }
           }
         }
       });
-
     },
     { includeBridge: false, forceIncludeCategories: ['RWA'], protocolFilterFunction: filterForOnlyRWA, ...options }
   );
+
+  const compressionOptions = {
+    [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+    [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+  };
 
   await Promise.all(
     Object.entries(sumDailyTvls).map(async ([chain, chainDailyTvls]) => {
@@ -439,34 +469,38 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
         await storeRouteData(filename, roundNumbersInObject(chainResponse));
       } else {
-        const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
-          [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-          [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-        });
+        const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), compressionOptions);
         await storeR2(filename, compressedRespone, true);
       }
     })
   );
 
-  async function storeCategoryCharts([category, chainDailyTvls]: any) {
-    const chainResponse = Object.fromEntries(
-      Object.entries(chainDailyTvls).map(([section, tvls]: any) => [getDisplayChainNameCached(section), Object.entries(tvls)])
-    );
-    let filename = `lite/charts/categories/${category}`;
+  const chainsByCategory: Record<string, Array<string>> = {}
+  const chainsByTag: Record<string, Array<string>> = {}
 
-    if (options.isApi2CronProcess) {
-      await storeRouteData(filename, roundNumbersInObject(chainResponse));
-    }
-    else {
-      const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
-        [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-      });
-      await storeR2(filename, compressedRespone, true);
-    }
+  let chainsByCategoryFilename = 'lite/chains-by-categories'
+  let chainsByTagFilename = 'lite/chains-by-tags'
+
+  for (const category in chainTvlByCategory) {
+    chainsByCategory[category] = Object.entries(chainTvlByCategory[category]).sort((a, b) => b[1] - a[1]).map(([chain]) => chain)
   }
 
-  await Promise.all(Object.entries(sumCategoryTvls).map(storeCategoryCharts));
+  for (const tag in chainTvlByTag) {
+    chainsByTag[tag] = Object.entries(chainTvlByTag[tag]).sort((a, b) => b[1] - a[1]).map(([chain]) => chain)
+  }
+
+
+  if (options.isApi2CronProcess) {
+    await storeRouteData(chainsByCategoryFilename, roundNumbersInObject(chainsByCategory));
+    await storeRouteData(chainsByTagFilename, roundNumbersInObject(chainsByTag));
+  }
+  else {
+    const compressedCategoryRespone = await promisify(brotliCompress)(JSON.stringify(chainsByCategory), compressionOptions);
+    const compressedTagRespone = await promisify(brotliCompress)(JSON.stringify(chainsByTag), compressionOptions);
+    
+    await storeR2(chainsByCategoryFilename, compressedCategoryRespone, true);
+    await storeR2(chainsByTagFilename, compressedTagRespone, true);
+  }
 }
 
 function roundNumbersInObject(obj: any): any {

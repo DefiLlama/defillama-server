@@ -6,6 +6,7 @@ import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
+import PromisePool from "@supercharge/promise-pool";
 
 let bridgePromises: { [bridge: string]: Promise<any> } = {};
 const addresses: { [chain: Chain]: Address[] } = {};
@@ -48,7 +49,8 @@ const axelar = async (): Promise<void> => {
       let normalizedChain: string = chain;
       if (chain in chainMap) normalizedChain = chainMap[chain];
       if (!allChainKeys.includes(normalizedChain)) return;
-      if (!("address" in token.addresses[chain])) return;
+      if (!("address" in token.addresses[chain] && "symbol" in token.addresses[chain])) return;
+      if (!token.addresses[chain].symbol.startsWith("axl")) return;
       addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
     });
   });
@@ -116,24 +118,54 @@ const celer = async (): Promise<void> => {
 const layerzero = async (): Promise<void> => {
   const bridge = "layerzero";
   if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch(
-      "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
-    ).then((r) => r.json());
+  if (!(bridge in bridgePromises)) {
+    bridgePromises[bridge] = Promise.all([
+      fetch(
+        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
+      ).then((r) => r.json()),
+      fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
+    ]);
+  }
   const data = await bridgePromises[bridge];
 
-  data.map(({ to }: any) => {
+  data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
     if (!(chain in addresses)) addresses[chain] = [];
-    if (!(address in addresses[chain])) addresses[chain].push(address);
+    if (!(address in addresses[chain])) addresses[chain].push(address.toLowerCase());
+  });
+
+  const nonEvmMapping: { [key: string]: string } = {
+    "solana": "solana",
+    "aptos": "aptos",
+    "ton": "ton",
+    "movement": "move",
+    "sui-mainnet": "sui",
+  };
+
+  Object.keys(data[1]).map((chain: string) => {
+    if (chain.endsWith("-testnet")) return;
+    if (!data[1][chain].chainDetails || !data[1][chain].tokens) return;
+
+    const { chainType, chainId, nativeChainId } = data[1][chain].chainDetails;
+    if (chainType != "evm" && !nonEvmMapping[chain]) return;
+    const destinationChainSlug = chainIdMap[chainId] ?? chainIdMap[nativeChainId] ?? nonEvmMapping[chain];
+    if (!destinationChainSlug) return;
+
+    if (!allChainKeys.includes(destinationChainSlug)) return;
+    if (!addresses[destinationChainSlug]) addresses[destinationChainSlug] = [];
+    const tokens = Object.keys(data[1][chain].tokens).filter(
+      (t: string) =>
+        addresses[destinationChainSlug].indexOf(t.toLowerCase()) == -1 && !data[1][chain].tokens[t].canonicalAsset
+    );
+    addresses[destinationChainSlug].push(...tokens);
   });
 
   const staticTokens: { [chain: string]: string[] } = {
-    morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    morph: ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34", "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7"],
     unichain: [
-      "0x2416092f143378750bb29b79eD961ab195CcEea5",
-      "0xc3eACf0612346366Db554C991D7858716db09f58",
-      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+      "0x2416092f143378750bb29b79ed961ab195cceea5",
+      "0xc3eacf0612346366db554c991d7858716db09f58",
+      "0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7",
     ],
   };
 
@@ -185,47 +217,35 @@ const unit = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [
-  axelar().catch((e) => {
-    throw new Error(`Axelar fails with: ${e}`);
-  }),
-  wormhole().catch((e) => {
-    throw new Error(`Wormhole fails with: ${e}`);
-  }),
-  celer().catch((e) => {
-    throw new Error(`Celer fails with: ${e}`);
-  }),
-  hyperlane().catch((e) => {
-    throw new Error(`Hyperlane fails with: ${e}`);
-  }),
-  layerzero().catch((e) => {
-    throw new Error(`Layerzero fails with: ${e}`);
-  }),
-  flow().catch((e) => {
-    throw new Error(`flow fails with: ${e}`);
-  }),
-  unit().catch((e) => {
-    throw new Error(`unit fails with: ${e}`);
-  }),
-];
+const adapters = { axelar, wormhole, celer, hyperlane, layerzero, flow, unit };
+
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
-  await Promise.all(adapters);
-  if (adapters.length == doneAdapters.length && mappingDone) return filteredAddresses;
+  await PromisePool.withConcurrency(5)
+    .for(Object.entries(adapters))
+    .process(async ([key, adapter]: any) => {
+      try {
+        await adapter();
+      } catch (e: any) {
+        throw new Error(`${key} fails with  ${e.message}`);
+      }
+    });
+
+  if (Object.keys(adapters).length == doneAdapters.length && mappingDone) return filteredAddresses;
 
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
     if (!bridgedTvlMixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) {
-      filteredAddresses[chain] = chainAddresses;
+      filteredAddresses[chain] = [...new Set(chainAddresses)];
       return;
     }
     const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
-    filteredAddresses[chain] = [...chainAddresses, ...additionalTokens];
+    filteredAddresses[chain] = [...new Set([...chainAddresses, ...additionalTokens])];
   });
 
   mappingDone = true;

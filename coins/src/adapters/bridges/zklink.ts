@@ -32,7 +32,7 @@ export default async function bridge(): Promise<Token[]> {
         case 'optimism': sourceChain = 'optimism'; break;
         case 'primary': sourceChain = 'linea'; break;
         case 'scroll': sourceChain = 'scroll'; break;
-        default: console.log('zklink Unknown networkKey', token.networkKey)
+        // default: console.log('zklink Unknown networkKey', token.networkKey)
       }
       if (!sourceChain) return;
       tokens.push({

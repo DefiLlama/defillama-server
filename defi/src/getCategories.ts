@@ -3,6 +3,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
 import { DAY, getClosestDayStartTimestamp } from "./utils/date";
 import { _InternalProtocolMetadata, _InternalProtocolMetadataMap } from "./protocols/data";
+import { hiddenCategoriesFromUISet } from "./utils/excludeProtocols";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -80,8 +81,6 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
 
   const { historicalProtocolTvls, } = historicalProtocolTvlsData
 
-
-  const excludedCategorySet = new Set(["CEX", "Chain",])
   function addToChart(protocolTvl: IProtocolTvl, item: Item, timestamp: number, protocolMetadata: _InternalProtocolMetadata) {
     try {
       sum(sumDailyTvls, protocolMetadata.category, timestamp, item, categoryProtocols, protocolTvl.protocol, protocolMetadata);
@@ -100,7 +99,7 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
       return;
     }
 
-    if (excludedCategorySet.has(protocolMetadata.category)) {
+    if (hiddenCategoriesFromUISet.has(protocolMetadata.category)) {
       return;
     }
 

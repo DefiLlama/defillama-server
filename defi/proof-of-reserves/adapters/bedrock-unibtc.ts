@@ -51,10 +51,10 @@ const mintedTokens = [
     chain: 'btr',
     address: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
   },
-  {
-    chain: 'bsquared',
-    address: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
-  },
+  // {
+  //   chain: 'bsquared',
+  //   address: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
+  // },
   {
     chain: 'corn',
     address: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',

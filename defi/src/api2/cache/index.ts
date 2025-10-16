@@ -92,10 +92,7 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
     const _cache = await readTvlCacheAllFile()
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
-    // await getDimensionsCacheV2(cacheType) // initialize dimensions cache // no longer needed since we pre-generate the files
-
     await setHistoricalTvlForAllProtocols()
-    // await loadDimensionsCache()
 
 
     // dont run it for local dev env
@@ -328,7 +325,7 @@ async function tvlProtocolDataUpdate(cacheType?: string) {
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
-  return cache.tvlProtocol[protocol.id]  // TODO: should this be changed to latestHourlyData.tvl which returns latest hourly tvl record  (checking only the past 24 hours)
+  return cache.tvlProtocol[protocol.id]  
 }
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {

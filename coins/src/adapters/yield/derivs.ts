@@ -306,6 +306,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "hyperliquid",
     underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
     address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
+    confidence: 1,
   },
   sUSDa: {
     rate: async ({ api }) => {
@@ -427,14 +428,153 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x3EaBE18eAE267D1B57f917aBa085bb5906114600",
     address: "0x37227785a1f4545ed914690e395e4CFE96B8319f",
   },
+  vkHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0x74392Fa56405081d5C7D93882856c245387Cece2",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x9BA2EDc44E0A4632EB4723E81d4142353e1bB160",
+  },
+  HiHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function kHYPEToHYPE(uint256) external view returns (uint256)",
+        target: "0x62E6fa898761dE2345aB3d507b72c422a2829733",
+        params: "1000000000000000000",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0x4f322145abedb2b39f69e7d4531ab4b2e6483154",
+  },
+  "SJ-wartBTC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function underlyingToWrapper(uint256) external view returns (uint256)",
+        target: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+        params: 1e6,
+      });
+      return rate / 1e6;
+    },
+    chain: "goat",
+    underlying: "0x02F294cC9Ceb2c80FbA3fD779e17FE191Cc360C4",
+    address: "0x0238E736166e07D6F857A0E322dAd4e7C1AFF4F3",
+  },
+  AA_FalconXUSDC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function virtualPrice(address) external view returns (uint256)",
+        target: "0x433D5B175148dA32Ffe1e1A37a939E1b7e79be4d",
+        params: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xC26A6Fa2C37b38E549a4a1807543801Db684f99C",
+  },
+  bravUSDC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:assetsPerShare",
+        target: "0x9f96E4B65059b0398B922792d3fF9F10B4567533",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x9f96E4B65059b0398B922792d3fF9F10B4567533",
+  },
+  brETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:assetsPerShare",
+        target: "0x3588e6Cb5DCa99E35bA2E2a5D42cdDb46365e71B",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    address: "0x3588e6Cb5DCa99E35bA2E2a5D42cdDb46365e71B",
+  },
+  hwHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getRate",
+        target: "0xCf9be8BF79ad26fdD7aA73f3dd5bA73eCDee2a32",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x5555555555555555555555555555555555555555",
+    address: "0x4DE03cA1F02591B717495cfA19913aD56a2f5858",
+  },
+  sigmaSP: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:nav",
+        target: "0x2b9c1f069ddcd873275b3363986081bda94a3aa3",
+      });
+      return rate / 1e18;
+    },
+    chain: "bsc",
+    underlying: "0x55d398326f99059fF775485246999027B3197955",
+    address: "0x2b9c1f069ddcd873275b3363986081bda94a3aa3",
+  },
+  xUSD: {
+    rate: async ({ api }) => {
+      const round = await api.call({
+        abi: "uint256:round",
+        target: "0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94",
+      });
+      const rate = await api.call({
+        abi: "function roundPricePerShare(uint256) external view returns (uint256)",
+        target: "0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94",
+        params: round - 1,
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0xe2fc85bfb48c4cf147921fbe110cf92ef9f26f94",
+  },
+  sGHO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getExchangeRate() external view returns (uint216)",
+        target: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+    address: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
+  }, 
+  RYT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:latestNAV",
+        target: "0x75bA0077D78c78e24018C2dFDC4722493b281014",
+      });
+      return rate / 1e4;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x1D06aa46994f2aba30F6eeD46b315664460a709A",
+  }
 };
 
 export async function derivs(timestamp: number) {
   return Promise.all(
     Object.keys(configs).map((k: string) =>
       deriv(timestamp, k, configs[k]).catch((e) => {
-        k;
-        e;
+        console.log(`API deriv ${k} failed with ${e?.message ?? e}`);
       }),
     ),
   );

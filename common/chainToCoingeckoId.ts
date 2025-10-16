@@ -236,6 +236,9 @@ export const chainToCoingeckoId = {
   area: "areon-network ",
   zero_network: "zero-network",
   astrzk: "astar-zkevm",
+  tac: "tac", 
+  btnx: "botanix", 
+  plasma: 'plasma'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

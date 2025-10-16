@@ -34239,11 +34239,12 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Treasury Manager",
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "kpk/index.js",
     treasury: "karpatkey.js",
     twitter: "kpk_io",
     forkedFrom: [],
     github: ["karpatkey"],
+    listedAt: 1760637747
   },
   {
     id: "4147",

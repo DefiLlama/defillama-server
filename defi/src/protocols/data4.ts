@@ -16290,11 +16290,12 @@ const data4: Protocol[] = [
     category: "Cross Chain Bridge",
     chains: ["Near"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "near-intents/index.js",
     twitter: "NEARProtocol",
     dimensions: {
       "bridge-aggregators": "near-intents"
-    }
+    },
+    listedAt: 1760656359
   },
   {
     id: "6226",
@@ -31724,6 +31725,80 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "tydro"
     }
+  },
+  {
+    id: "6876",
+    name: "Sharwa.Finance",
+    address: null,
+    symbol: "-",
+    url: "https://sharwa.finance/",
+    description: `Sharwa is an on-chain portfolio margin trading protocol on Arbitrum. Traders can use any asset as collateral to trade leveraged positions and options in one account. Lenders earn fees from providing liquidity`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sharwa.finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    forkedFromIds: [],
+    module: "sharwa-finance/index.js",
+    twitter: "SharwaFinance",
+    audit_links: ["https://sharwa.gitbook.io/sharwa-docs/margin-account/security"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16700"],
+      },
+    ],
+    github: ["SharwaFinance"],
+    listedAt: 1760656075,
+  },
+  {
+    id: "6877",
+    name: "ZealousSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.zealousswap.com/swap",
+    description: `The first AMM-based DEX on the Kaspa ecosystem`,
+    chain: "Kasplex",
+    logo: `${baseIconsUrl}/zealousswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Kasplex"],
+    forkedFromIds: ["2197"],
+    module: "zealousswap/index.js",
+    twitter: "zealousswap",
+    audit_links: ["https://github.com/zealousswap/audits"],
+    listedAt: 1760656085,
+  },
+  {
+    id: "6878",
+    name: "Coinhain",
+    address: null,
+    symbol: "-",
+    url: "https://coinhain.fi/",
+    description: `Coinhain is a Balancer v3–powered DEX on BNB Chain. It features advanced pool tech that significantly improves the liquidity-provision experience on BNB, including Stable, reCLAMM, and Boosted pools. Beyond the classic AMM experience, a Margin Liquidity protocol is in development to let LPs leverage their positions for greater capital efficiency and flexibility`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/coinhain.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Binance"],
+    forkedFromIds: ["5491"],
+    module: "coinhain/index.js",
+    twitter: "coinhain",
+    audit_links: [
+      "https://github.com/balancer/balancer-v3-monorepo/tree/main/audits",
+      "https://docs.coinhain.fi/security/audits"
+    ],
+    listedAt: 1760656147,
   },
 ];
 export default data4;

@@ -4971,6 +4971,15 @@ export const chainCoingeckoIds = {
     github: ["hello-xone"],
     chainId: 3721,
   },
+  "Kasplex": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "kasplex",
+    url: "https://kasplex.org/",
+    github: ["kasplex"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

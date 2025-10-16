@@ -11116,6 +11116,9 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#typus-finance",
     listedAt: 1744133053,
+    hallmarks: [
+      [1760486400, "TLP contract exploited"],
+    ],
     dimensions: {
       fees: "typus-perp",
       derivatives: "typus-perp"

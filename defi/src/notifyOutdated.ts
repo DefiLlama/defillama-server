@@ -95,10 +95,12 @@ export async function notifyOutdatedPG() {
 }
 
 async function notifyBlockedDimensionUpdates() {
+  const cacheFileName = 'lastBlockedDimensionCheck'
+
   try {
     const esClient = elastic.getClient()
     const aDayAgo = Math.floor(Date.now() / 1000) - 24 * 3600
-    let { lastCheckTS } = (await cache.readExpiringJsonCache('lastBlockedDimensionCheck-v1')) || { lastCheckTS: 0 }
+    let { lastCheckTS } = (await cache.readExpiringJsonCache(cacheFileName)) || { lastCheckTS: 0 }
     if (!lastCheckTS || lastCheckTS < aDayAgo) lastCheckTS = aDayAgo - 1
 
 
@@ -140,7 +142,7 @@ async function notifyBlockedDimensionUpdates() {
     await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
 
     const timeNow = Math.floor(Date.now() / 1000)
-    await cache.writeExpiringJsonCache('lastBlockedDimensionCheck', { lastCheckTS: timeNow }, { expireAfter: 7 * 24 * 3600 })
+    await cache.writeExpiringJsonCache(cacheFileName, { lastCheckTS: timeNow }, { expireAfter: 7 * 24 * 3600 })
     await esClient?.close()
 
   } catch (e) {

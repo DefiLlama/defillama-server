@@ -28,6 +28,7 @@ type ValidationOptions = {
   getSignificantValueThreshold: (s: string) => number,
   getSpikeThreshold?: (s: string) => number,
   recentData: any,
+  skipDefaultSpikeCheck?: boolean,
 }
 
 export class AdapterRecord2 {
@@ -181,6 +182,8 @@ export class AdapterRecord2 {
     const hasTooFewDatapoints = !recentData || recentData.tooFewRecords || isDatapointOlderThanAMonth
 
     if (hasTooFewDatapoints) { // we dont have enough data to compare with, do general spike check
+
+      if (options.skipDefaultSpikeCheck) return; // skip the default spike check for this adapter
 
 
       for (const dataType of Object.keys(aggData)) {

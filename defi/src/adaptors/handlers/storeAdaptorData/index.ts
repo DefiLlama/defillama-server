@@ -24,6 +24,12 @@ const canGetBlock = (chain: Chain) => blockChains.includes(chain)
 const timestampAtStartofHour = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
 
+// some protocols have high value data from the moment we list, we add their id here to avoid them being blocked by validation
+const skipDefaultRecentDataCheckForAdapters = new Set([
+  '3923', // derive v2
+  '5060',  // derive options
+])
+
 export type IStoreAdaptorDataHandlerEvent = {
   timestamp?: number
   adapterType: AdapterType
@@ -392,7 +398,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         // validate against recent data if available
         if (checkAgainstRecentData) {
           const protocolRecentData = recentData[adapterRecord.id]
-          const validationError = adapterRecord.validateWithRecentData({ recentData: protocolRecentData, getSignificantValueThreshold, getSpikeThreshold, })
+          const validationError = adapterRecord.validateWithRecentData({ recentData: protocolRecentData, getSignificantValueThreshold, getSpikeThreshold, skipDefaultSpikeCheck: skipDefaultRecentDataCheckForAdapters.has(adapterRecord.id) })
           if (validationError) {
             sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record', protocolRecentData?.tooFewRecords, protocolRecentData?.hasSignificantData, protocolRecentData?.records?.length, protocolRecentData?.dimStats)
             await elastic.writeLog('dimension-blocked', validationError)

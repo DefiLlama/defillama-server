@@ -1902,7 +1902,7 @@ const data: Protocol[] = [
     url: "https://1inch.io",
     referralUrl: "https://app.1inch.io/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5",
     description:
-      "1inch unites decentralized protocols whose synergy enables the most lucrative, fastest and protected operations in the DeFi space.",
+      "1inch is the DeFi ecosystem building financial freedom for everyone",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/1inch.jpg`,
     audits: "2",

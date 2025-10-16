@@ -31663,5 +31663,67 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.strata.money/security/audits"],
     listedAt: 1760577905
   },
+  {
+    id: "6874",
+    name: "StratEx",
+    address: null,
+    symbol: "-",
+    url: "https://www.stratex.finance/",
+    description: `StratEx is an advanced decentralised finance (DeFi) protocol designed to revolutionise yield optimisation and risk management in the DeFi ecosystem. Built to cater to the needs of investors, StratEx addresses the critical challenges that currently hinder DeFi participation and capital efficiency`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/stratex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    forkedFromIds: [],
+    module: "stratex/index.js",
+    twitter: "StratEx_finance",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16683"],
+      },
+    ],
+    audit_links: [],
+    listedAt: 1760579697,
+    dimensions: {
+      fees: "stratex"
+    }
+  },
+  {
+    id: "6875",
+    name: "Tydro",
+    address: null,
+    symbol: "-",
+    url: "https://tydro.com/",
+    description: `Tydro is a non-custodial lending protocol for onchain capital markets. Powered by Aave and built on Ink`,
+    chain: "Ink",
+    logo: `${baseIconsUrl}/tydro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ink"],
+    forkedFromIds: [],
+    module: "tydro/index.js",
+    twitter: "tydrohq",
+    oraclesBreakdown: [
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://docs.tydro.com/primitives/oracle"],
+      },
+    ],
+    audit_links: [],
+    listedAt: 1760580111,
+    dimensions: {
+      fees: "tydro"
+    }
+  },
 ];
 export default data4;

@@ -106,6 +106,7 @@ export const chainCoingeckoIds = {
       fees: {
         genuineSpikes: [
           "1651449600",
+          "1651363200",  // otherside mint
           "1760054400",  // 2025-10-10 - sharp drop in the market - Black Friday
         ],
         adapter: "ethereum"

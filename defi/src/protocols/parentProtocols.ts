@@ -8235,6 +8235,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rainbowdotme",
     github: ["rainbow-me"],
   },
+  {
+    id: "parent#strata",
+    name: "Strata",
+    url: "https://strata.money",
+    description: "Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields",
+    logo: `${baseIconsUrl}/strata.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Strata_Money",
+    github: ["Strata-Money"],
+  },
 ];
 
 export default parentProtocols;

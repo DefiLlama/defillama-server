@@ -15973,7 +15973,7 @@ const data4: Protocol[] = [
         chains: [{ chain: "Base" }],
       },
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: [
           "https://cornscan.io/address/0xFe423163bfEe287a132E656D5EC4a363B8A2B4f3/contract/21000000/readContract#F1",
@@ -19896,7 +19896,7 @@ const data4: Protocol[] = [
     listedAt: 1751313277,
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
@@ -19924,7 +19924,7 @@ const data4: Protocol[] = [
     listedAt: 1751313285,
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
@@ -23881,7 +23881,7 @@ const data4: Protocol[] = [
     },
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://arbiscan.io/address/0x7b09d87945102d25069c173ee45db397c6e055b3#readContract#F4","https://github.com/DefiLlama/defillama-server/pull/10782"],
       },
@@ -31714,7 +31714,7 @@ const data4: Protocol[] = [
     twitter: "tydrohq",
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://docs.tydro.com/primitives/oracle"],
       },

@@ -15728,7 +15728,7 @@ const data3_1: Protocol[] = [
     twitter: "GMX_IO",
     forkedFrom: [],
     // https://x.com/GMX_IO/status/1866794916392874021 https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861
-    oracles: ["Chainlink","Edge"],
+    oracles: ["Chainlink","Chaos"],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -15736,7 +15736,7 @@ const data3_1: Protocol[] = [
         proof: ["https://docs.gmx.io/docs/intro"]
       },
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://x.com/GMX_IO/status/1866794916392874021", "https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861"]
       }
@@ -32451,10 +32451,10 @@ const data3_1: Protocol[] = [
     category: "Derivatives",
     chains: ["Solana"],
     // https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles
-    oracles: ["Edge"],
+    oracles: ["Chaos"],
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
@@ -62593,7 +62593,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       {
-        name: "Edge",
+        name: "Chaos",
         type: "Primary",
         proof: ["https://x.com/AdrenaProtocol/status/1925828470573076631"],
         startDate: "2025-05-23"

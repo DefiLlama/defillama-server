@@ -10,6 +10,7 @@ export interface GetPoROptions {}
 export interface IPoRAdapter {
   protocolId: string;
   whitelisted?: boolean;
+  disabled?: boolean;
   minted: (options: GetPoROptions) => Promise<number>;
   reserves: () => Promise<number>;
 }

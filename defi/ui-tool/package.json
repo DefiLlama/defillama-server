@@ -16,7 +16,7 @@
     "start-react": "react-scripts start",
     "start-server": "npx ts-node --transpile-only --logError src/server.ts",
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "build": "npx ts-node --transpile-only --logError buildScript.ts",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

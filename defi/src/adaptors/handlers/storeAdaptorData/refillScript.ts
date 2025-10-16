@@ -7,13 +7,12 @@ import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
-import { ADAPTER_TYPES } from '../triggerStoreAdaptorData';
 import PromisePool from '@supercharge/promise-pool';
+import { ADAPTER_TYPES } from '../../data/types';
 
 
 // ================== Script Config ==================
 
-console.log(process.env.type, process.env.protocol, process.env.to, process.env.from, process.env.days, process.env.dry_run, process.env.confirm)
 let adapterType = process.env.type ?? AdapterType.DERIVATIVES
 let protocolToRun = process.env.protocol ?? 'bluefin' // either protocol display name, module name or id
 
@@ -42,8 +41,12 @@ DRY_RUN = false
  */
 let run = refillAdapter
 
-if (refillAllProtocolsMissing)
+if (refillAllProtocolsMissing) {
+  console.log('Refilling all protocols with missing data')
   run = refillAllProtocols
+} else {
+  console.log(process.env.type, process.env.protocol, process.env.to, process.env.from, process.env.days, process.env.dry_run, process.env.confirm)
+}
 
 
 // ================== Script Config end ==================
@@ -74,7 +77,7 @@ async function refillAdapter() {
   }
 
   protocolToRun = protocol.displayName
-  const adaptor: Adapter = (await importModule(protocol.module)).default;
+  const adaptor: Adapter = await importModule(protocol.module)
   const adapterVersion = adaptor.version
   const isVersion2 = adapterVersion === 2
 
@@ -197,12 +200,13 @@ function prompt(query: string): Promise<string> {
 }
 
 async function refillAllProtocols() {
+  process.env.DUNE_BULK_MODE = 'true' // improve efficiency of dune queries when fetching missing data points
 
   setTimeout(() => {
     console.error("Timeout reached, exiting from refillAllProtocols...")
     process.exit(1)
-  }, 1000 * 60 * 60 * 4) // 4 hours
-  let timeRange = 90 // 3 months
+  }, 1000 * 60 * 60 * 6) // 6 hours
+  let timeRange = 365 // 1 year
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange
   const startTime = Math.floor(Date.now() / 1000) - timeRange * 24 * 60 * 60
@@ -213,12 +217,17 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
-  for (const adapterType of aTypes) {
-    await runAdapterType(adapterType)
-  }
+  const tasks = await Promise.all(aTypes.map(runAdapterType))
+  const allTasks = tasks.flat()
+  console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)
+  await PromisePool
+    .withConcurrency(5)
+    .for(allTasks)
+    .process(async (protocolFunc: any) => protocolFunc())
 
 
   async function runAdapterType(adapterType: AdapterType) {
+    console.log('Refilling missing datapoints for adapter type:', adapterType)
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {
       if (!adaptorDataMap[data.id]) adaptorDataMap[data.id] = new Set()
@@ -232,12 +241,8 @@ async function refillAllProtocols() {
     let { protocolAdaptors } = dataModule
 
     // randomize the order of execution
-    protocolAdaptors = protocolAdaptors.sort(() => Math.random() - 0.5)
-
-    await PromisePool
-      .withConcurrency(10)
-      .for(protocolAdaptors)
-      .process((protocol: any) => refillProtocol(protocol, adapterType))
+    protocolAdaptors = protocolAdaptors.filter((protocol: any) => !protocol.isDead && !protocol._stat_runAtCurrTime).sort(() => Math.random() - 0.5)
+    return protocolAdaptors.map((protocol: any) => async () => refillProtocol(protocol, adapterType))
   }
 
   async function refillProtocol(protocol: any, adapterType: AdapterType) {
@@ -246,10 +251,13 @@ async function refillAllProtocols() {
     const timeSWithData = adaptorDataMap[protocolId] || new Set()
     let currentDayEndTimestamp = yesterday
     let i = 0
-    while (currentDayEndTimestamp > startTime) {
+    let errorCount = 0
+    let parallelCount = 7
+    let runner = []
+    while (currentDayEndTimestamp > startTime && errorCount < 5) {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
-        console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
+        // console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
         const eventObj: IStoreAdaptorDataHandlerEvent = {
           timestamp: currentDayEndTimestamp,
           adapterType,
@@ -257,10 +265,38 @@ async function refillAllProtocols() {
           protocolNames: new Set([protocolName]),
           isRunFromRefillScript: true,
           throwError: true,
+          runType: 'refill-all',
         }
-        await handler2(eventObj)
+        runner.push(handler2(eventObj))
+        currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
+        try {
+          if (runner.length >= parallelCount || (currentDayEndTimestamp <= startTime && runner.length > 0)) {
+            let firstError: any = null
+            await Promise.all(runner.map(p => p.catch((e) => {
+              if (e) {
+                if (!firstError) firstError = e
+                errorCount++
+              }
+            })))
+
+            runner = []
+            if (firstError) throw firstError
+          }
+        } catch (error: any) {
+          // errorCount++
+          let errorString = ''
+          try {
+            errorString = JSON.stringify(error, Object.getOwnPropertyNames(error), 2).slice(0, 1000)
+          } catch (e) { }
+          console.log(`Error#${errorCount} refilling data for ${protocolName} on ${new Date((currentDayEndTimestamp) * 1000).toLocaleDateString()}:`, error?.message, errorString)
+          if (errorCount > 3) {
+            console.log('Too many errors, stopping the script', protocolName, errorCount)
+            return
+          }
+        }
+      } else {
+        currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
       }
-      currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
   }
 }

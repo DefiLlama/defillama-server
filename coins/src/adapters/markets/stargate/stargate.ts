@@ -28,9 +28,9 @@ async function processDbData(
       const coinData: CoinData = coinsData[token];
 
       if (coinData == undefined) {
-        console.log(
-          `Couldn't find underlying data for ${chain}:${token} on stargate`,
-        );
+        // console.log(
+        //   `Couldn't find underlying data for ${chain}:${token} on stargate`,
+        // );
         return;
       }
       return {

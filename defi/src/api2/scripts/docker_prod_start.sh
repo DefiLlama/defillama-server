@@ -5,18 +5,30 @@ ROOT_DIR=$SCRIPT_DIR/../../..
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
-git pull
-git submodule update --init --recursive
-git submodule update --remote --merge
 
-npm i
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
+if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
+    echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Checkout the specified branch
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Pull latest code from the branch
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+# else
+    # echo "Using default branch deployment: $(git branch --show-current)"
+fi
+
+git pull -q
+git submodule update --init --recursive --quiet
+git submodule update --remote --merge --quiet
+
+time npm i > /dev/null
 git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
 
-
-IS_API2_SERVER=true  npm run prebuild
-SKIP_CAHE_WRITE_R2=true npm run cache-config
-npm run api2-cron-task
-npm run cron-dimensions
+time npm run --silent prebuild 
+time npm run --silent cron-raises
+time npm run --silent api2-cron-task
+time npm run --silent cron-dimensions
+time npm run --silent cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js
@@ -50,16 +62,16 @@ handle_error_and_rollback() {
 if [ $exit_status -eq 124 ]
 then
     MESSAGE="pm2 command was terminated because it ran for more than 4 minutes."
-    handle_error_and_rollback
+    time handle_error_and_rollback
 elif [ $exit_status -ne 0 ]
 then
     MESSAGE="pm2 command exited with an error. Exit status: $exit_status"
-    handle_error_and_rollback
+    time handle_error_and_rollback
 else
     SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
     if [[ $SAFE_COMMIT_HASH != $CURRENT_COMMIT_HASH ]]; then
         MESSAGE="Current commit hash does not match safe commit hash"
-        handle_error_and_rollback
+        time handle_error_and_rollback
     else
         echo "API2 rest server started without issue: $SAFE_COMMIT_HASH"
     fi

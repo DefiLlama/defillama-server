@@ -61,7 +61,7 @@ async function getTvl(
     try {
       chain = storedKey.split('-')[0]
       const block = chainBlocks[chain]
-      const params: any = { chain, block, timestamp: unixTimestamp, storedKey }
+      const params: any = { chain, block, timestamp: unixTimestamp, storedKey, protocol: protocol.name }
       const api: any = new sdk.ChainApi(params)
       api.api = api
       api.storedKey = storedKey
@@ -78,6 +78,7 @@ async function getTvl(
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
+          if (prefixMalformed(key)) delete tvlBalances[key]
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
         })
         const isStandard = Object.entries(tvlBalances).every(
@@ -158,6 +159,14 @@ function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsOb
   }
 }
 
+export function prefixMalformed(address: string) {
+  const parts = address.split(':')
+  if (parts.length < 3) return false
+  if (address.indexOf(':coingecko:') != -1) return true
+  if (parts.length > 2 &&parts[0] == parts[1]) return true
+  return false
+}
+
 type StoreTvlOptions = {
   returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
@@ -168,7 +177,7 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
 }
 
-const deadChains = new Set(['heco', 'astrzk'])
+const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

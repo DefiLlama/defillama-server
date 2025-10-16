@@ -29,6 +29,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "aurora",
   "berachain",
   "flow",
+  "somnia", 
+  "plasma"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -80,7 +82,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4124": "merlin",
   "4937": "reya",
   // "5011": "lisk l2",
-  "5055": "osmosis",
+  // "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui",
   "5218": "mint",
@@ -124,6 +126,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6151": "zkcandy",
   "6284": "ao",
   "6424": "soon",
+  "6468": "btnx",
+  "6498": "eventum",
+  "6581": "eni",
+  //"6730": "eteria",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -217,7 +223,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zircuit": { ticker: "ZRC", address: "0xfd418e42783382e86ae91e445406600ba144d162" },
   "core": { ticker: "CORE", address: "0x191e94fa59739e188dce837f7f6978d84727ad01" },
   "swellchain": { ticker: "SWELL", address: "coingecko:swell-network" },
-  "cronos_zkevm": { ticker: "CRO", address: "coingecko:crypto-com-chain" },
+  "cronos_zkevm": { ticker: "ZKCRO", address: "coingecko:cronos-zkevm-cro" },
   "sophon": { ticker: "SOPH", address: "coingecko:sophon" },
   "dydx": { ticker: "DYDX", address: "coingecko:dydx-chain" },
   "apex": { ticker: "APEX", address: "coingecko:apex-token-2" },
@@ -247,4 +253,8 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "ao": { ticker: "AO", address: "coingecko:ao-computers" },
   // embr: {}
   "xion": { ticker: "XION", address: "coingecko:xion-2" },
+  "hemi-l2": { ticker: "HEMI", address: "coingecko:hemi" },
+  "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
+  "plasma": { ticker: "XPL", address: "coingecko:plasma" },
+  "linea": { ticker: "LINEA", address: "coingecko:linea" },
 };

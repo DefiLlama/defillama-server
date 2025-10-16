@@ -166,4 +166,6 @@ export const nativeWhitelist: { [chain: string]: string[] } = {
   ],
   unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
   osmosis: ["uosmo"],
+  degen: ["degen-base"],
+  linea: ["0xaca92e438df0b2401ff60da7e4337b687a2435da"]
 };

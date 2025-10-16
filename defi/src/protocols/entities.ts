@@ -1,4 +1,5 @@
 import { baseIconsUrl } from "../constants";
+import { setProtocolMetadata } from "./data";
 import treasuries from "./treasury";
 
 const entities = [
@@ -352,12 +353,14 @@ const entities = [
         module: "entities/abraxas-capital.js",
         twitter: null
     },
-].map(entity=>({
+].map(entity => ({
     ...entity,
     id: `entity-${entity.id}`,
     logo: `${baseIconsUrl}/${entity.logo}`,
-    symbol: "", chain: "", gecko_id:null, cmcId:null, chains:[]
+    symbol: "", chain: "", gecko_id: null, cmcId: null, chains: []
 }))
+
+entities.forEach(setProtocolMetadata)
 
 export default entities;
 export const treasuriesAndEntities = treasuries.concat(entities)

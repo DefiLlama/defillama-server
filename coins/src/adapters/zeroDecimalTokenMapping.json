@@ -1,0 +1,68 @@
+{
+    "provenance": {
+        "SOL": {
+            "to": "coingecko#solana",
+            "decimals": 0,
+            "symbol": "SOL"
+        },
+        "ETH": {
+            "to": "coingecko#ethereum",
+            "decimals": 0,
+            "symbol": "ETH"
+        },
+        "USDT": {
+            "to": "coingecko#tether",
+            "decimals": 0,
+            "symbol": "USDT"
+        },
+        "BTC": {
+            "to": "coingecko#bitcoin",
+            "decimals": 0,
+            "symbol": "BTC"
+        },
+        "USDC": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "USDC"
+        },
+        "USD": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "USD"
+        },
+        "YLDS": {
+            "to": "coingecko#usd-coin",
+            "decimals": 0,
+            "symbol": "YLDS"
+        },
+        "pm.sale.pool.3dxq3fk9llvhrqqwhodiap": {
+            "to": "coingecko#figure-heloc",
+            "decimals": 0,
+            "symbol": "FIGR_HELOC"
+        }
+    },
+    "ripple": {
+        "TBL.rJNE2NNz83GJYtWVLwMvchDWEon3huWnFn": {
+            "to": "coingecko#openeden-tbill",
+            "decimals": 0,
+            "symbol": "TBILL"
+        }
+    }, 
+    "radixdlt": {
+        "resource_rdx1thksg5ng70g9mmy9ne7wz0sc7auzrrwy7fmgcxzel2gvp8pj0xxfmf": {
+          "decimals": "0",
+          "symbol": "LSULP",
+          "to": "coingecko#caviarnine-lsu-pool-lp"
+        },
+        "resource_rdx1tknxxxxxxxxxradxrdxxxxxxxxx009923554798xxxxxxxxxradxrd": {
+          "decimals": "0",
+          "symbol": "XRD",
+          "to": "coingecko#radix"
+        },
+        "resource_rdx1th88qcj5syl9ghka2g9l7tw497vy5x6zaatyvgfkwcfe8n9jt2npww": {
+          "decimals": "0",
+          "symbol": "ETH",
+          "to": "coingecko#ethereum"
+        }
+    }
+}

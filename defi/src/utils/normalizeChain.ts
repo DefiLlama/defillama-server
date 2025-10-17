@@ -4980,6 +4980,16 @@ export const chainCoingeckoIds = {
     url: "https://kasplex.org/",
     github: ["kasplex"],
   },
+  "0G": {
+    geckoId: "zero-gravity",
+    symbol: "0G",
+    cmcId: "38337",
+    categories: ["EVM"],
+    twitter: "0G_Foundation",
+    url: "https://www.0gfoundation.ai/",
+    github: ["0gfoundation"],
+    chainId: 16661,
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5195,7 +5205,8 @@ const chainLabelMap = {
   "zklighter": "zkLighter",
   "goat": "Goat",
   "gatelayer": "GateLayer",
-  "xone": "Xone Chain"
+  "xone": "Xone Chain",
+  "0g": "0G"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

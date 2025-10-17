@@ -179,7 +179,7 @@ export class AdapterRecord2 {
     const { recentData, getSpikeThreshold, getSignificantValueThreshold, } = options
     const aggData: any = this.data.aggregated
     const isDatapointOlderThanAMonth = (getUnixTimeNow() - this.timestamp) > 31 * 24 * 60 * 60
-    const hasTooFewDatapoints = !recentData || recentData.tooFewRecords || isDatapointOlderThanAMonth
+    const hasTooFewDatapoints = !recentData || recentData.tooFewRecords
 
     if (hasTooFewDatapoints) { // we dont have enough data to compare with, do general spike check
 
@@ -216,8 +216,13 @@ export class AdapterRecord2 {
       if (dataType.startsWith('t')) continue;  // skip accumulative types
 
       const { value }: { value: number } = aggData[dataType]
-      const triggerValue = getSpikeThreshold!(dataType)
-      const minSignificantValue = getSignificantValueThreshold(dataType)
+      let triggerValue = getSpikeThreshold!(dataType)
+      let minSignificantValue = getSignificantValueThreshold(dataType)
+
+      if (isDatapointOlderThanAMonth) {
+        minSignificantValue *= 5 // for old datapoints, we increase the base level to avoid false positives
+        triggerValue *= 5  // for old datapoints, we increase the spike trigger level to avoid false positives
+      }
 
       if (value < minSignificantValue) continue; // no need to check for spikes if value is below base level
 

@@ -34235,7 +34235,7 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/kpk.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: kpk,
+    gecko_id: "kpk",
     cmcId: null,
     category: "Risk Curators",
     chains: ["Ethereum"],

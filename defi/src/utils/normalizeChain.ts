@@ -2353,8 +2353,8 @@ export const chainCoingeckoIds = {
     }
   },
   "Linea": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "linea",
+    symbol: "LINEA",
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["ConsenSys"],

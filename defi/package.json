@@ -62,8 +62,8 @@
     "ui-tool": "npm run update-submodules; cd ui-tool; npm run start-server",
     "validate-api": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts",
     "validate-api-pro": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts --api-type pro",
-    "compare-beta": "npx ts-node --logError --transpile-only src/utils/compareBeta.ts",
-    "compare-beta-pro": "npx ts-node --logError --transpile-only src/utils/compareBeta.ts --api-type pro"
+    "compare-api": "npx ts-node --logError --transpile-only src/utils/compareAPI.ts",
+    "compare-api-pro": "npx ts-node --logError --transpile-only src/utils/compareAPI.ts --api-type pro"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

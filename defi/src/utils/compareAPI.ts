@@ -1,3 +1,22 @@
+/**
+ * compareAPI.ts - API Comparison Tool
+ * 
+ * Compares two API environments (e.g., production vs beta) for deployment validation.
+ * Tests both schema compliance AND actual data values.
+ * 
+ * Why data comparison works: Both environments use the same database.
+ * When called simultaneously, they query the same data snapshot.
+ * Any differences indicate bugs in the candidate deployment.
+ * 
+ * Supports both free and pro API testing.
+ * 
+ * Usage:
+ *   npm run compare-api          # Compare free API
+ *   npm run compare-api -- --api-type pro  # Compare pro API
+ * 
+ * See API_VALIDATION_README.md for full documentation.
+ */
+
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -42,11 +61,13 @@ interface ComparisonReport {
     failed: number;
     schemaFailures: number;
     networkErrors: number;
+    skippedDataComparison: number;
     averageProdResponseTime: number;
     averageBetaResponseTime: number;
   };
-  results: ComparisonResult[];
+  failedEndpoints: ComparisonResult[];
   significantDifferences: string[];
+  passedEndpoints?: ComparisonResult[];
 }
 
 async function compareEndpoint(
@@ -69,16 +90,17 @@ async function compareEndpoint(
   };
   
   try {
+    // Fetch from both prod and beta in parallel with 5 retries
     const [prodResponse, betaResponse] = await Promise.allSettled([
       (async () => {
         const start = Date.now();
-        const response = await fetchWithRetry(prodUrl);
+        const response = await fetchWithRetry(prodUrl, 5, 1000, 45000);
         const responseTime = Date.now() - start;
         return { data: response.data, responseTime };
       })(),
       (async () => {
         const start = Date.now();
-        const response = await fetchWithRetry(betaUrl);
+        const response = await fetchWithRetry(betaUrl, 5, 1000, 45000);
         const responseTime = Date.now() - start;
         return { data: response.data, responseTime };
       })()
@@ -101,6 +123,7 @@ async function compareEndpoint(
     result.prodResponseTime = prodResponse.value.responseTime;
     result.betaResponseTime = betaResponse.value.responseTime;
     
+    // Validate both responses against OpenAPI schema
     const prodValidation = await validateResponseAgainstSchema(prodData, endpoint.schema);
     const betaValidation = await validateResponseAgainstSchema(betaData, endpoint.schema);
     
@@ -118,26 +141,17 @@ async function compareEndpoint(
       return result;
     }
     
-    // Check if data comparison should be skipped for this endpoint
-    if (endpoint.override?.skipDataComparison) {
+    // Both schemas are valid - now compare the actual data
+    // Since prod and beta use the same DB and are called simultaneously,
+    // they should return the same (or very similar) values
+    const comparison = compareResponses(prodData, betaData, tolerance);
+    result.dataComparison = comparison;
+    
+    if (comparison.isMatch) {
       result.status = 'pass';
-      result.dataComparison = {
-        isMatch: true,
-        differences: []
-      };
-      if (endpoint.override.reason) {
-        console.log(`Skipping data comparison for ${endpoint.path}: ${endpoint.override.reason}`);
-      }
     } else {
-      const comparison = compareResponses(prodData, betaData, tolerance);
-      result.dataComparison = comparison;
-      
-      if (comparison.isMatch) {
-        result.status = 'pass';
-      } else {
-        result.status = 'fail';
-        result.errors.push(`Data mismatch: ${comparison.differences.length} differences found`);
-      }
+      result.status = 'fail';
+      result.errors.push(`Data mismatch: ${comparison.differences.length} differences found`);
     }
     
     return result;
@@ -153,9 +167,9 @@ async function compareAllEndpoints(
   apiType: 'free' | 'pro' = 'free',
   tolerance: number = 0.1,
   specificEndpoint?: string,
-  specificDomain?: string
+  specificDomain?: string,
+  includeSuccess: boolean = false
 ): Promise<ComparisonReport> {
-  console.log(`🔄 beta comparison for ${apiType} api (tolerance: ${tolerance * 100}%)...`);
   
   try {
     const spec = await loadOpenApiSpec(apiType);
@@ -189,7 +203,7 @@ async function compareAllEndpoints(
         if (result.betaResponseTime) betaResponseTimes.push(result.betaResponseTime);
         
         if (result.status === 'fail') {
-          console.log(`\nfailed: ${endpoint.path}`);
+          console.log(`\n❌ DATA MISMATCH: ${endpoint.path}`);
           result.errors.forEach(error => console.log(`   • ${error}`));
           
           if (result.dataComparison && result.dataComparison.differences.length > 0) {
@@ -229,6 +243,7 @@ async function compareAllEndpoints(
     const failed = results.filter(r => r.status === 'fail').length;
     const schemaFailures = results.filter(r => r.status === 'schema_fail').length;
     const networkErrors = results.filter(r => r.status === 'network_error').length;
+    const skippedDataComparison = 0; // We compare data for all endpoints
     
     const avgProdResponseTime = prodResponseTimes.length > 0 
       ? Math.round(prodResponseTimes.reduce((a, b) => a + b, 0) / prodResponseTimes.length)
@@ -248,6 +263,9 @@ async function compareAllEndpoints(
       }
     });
     
+    const failedResults = results.filter(r => r.status !== 'pass');
+    const passedResults = results.filter(r => r.status === 'pass');
+    
     const report: ComparisonReport = {
       timestamp: new Date().toISOString(),
       apiType,
@@ -258,12 +276,18 @@ async function compareAllEndpoints(
         failed,
         schemaFailures,
         networkErrors,
+        skippedDataComparison,
         averageProdResponseTime: avgProdResponseTime,
         averageBetaResponseTime: avgBetaResponseTime
       },
-      results,
+      failedEndpoints: failedResults,
       significantDifferences: significantDifferences.slice(0, 20)
     };
+    
+    // Only include successful results if requested
+    if (includeSuccess) {
+      report.passedEndpoints = passedResults;
+    }
     
     return report;
     
@@ -276,21 +300,21 @@ async function compareAllEndpoints(
 async function generateComparisonReport(report: ComparisonReport, outputFile?: string): Promise<void> {
   const { summary, significantDifferences, apiType, tolerance } = report;
   
-  console.log('\ncomparasion summary');
+  console.log('\ncomparison summary');
   console.log('='.repeat(50));
   console.log(`api: ${apiType}`);
   console.log(`total endpoints: ${summary.total}`);
-  console.log(`passed: ${summary.passed}`);
-  console.log(`failed: ${summary.failed}`);
-  console.log(`schema fail: ${summary.schemaFailures}`);
+  console.log(`passed (schema + data): ${summary.passed}`);
+  console.log(`data mismatch: ${summary.failed}`);
+  console.log(`schema failed: ${summary.schemaFailures}`);
   console.log(`network errors: ${summary.networkErrors}`);
   console.log(`success rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%`);
   console.log(`prod avg resp: ${summary.averageProdResponseTime}ms`);
   console.log(`beta avg resp: ${summary.averageBetaResponseTime}ms`);
-  console.log(`tolerance set: ${tolerance * 100}%`);
+  console.log(`tolerance: ${tolerance * 100}%`);
   
   if (significantDifferences.length > 0) {
-    console.log('\ntop diff:');
+    console.log('\nTop differences found:');
     significantDifferences.slice(0, 10).forEach((diff, index) => {
       console.log(`${index + 1}. ${diff}`);
     });
@@ -299,7 +323,7 @@ async function generateComparisonReport(report: ComparisonReport, outputFile?: s
       console.log(`... and ${significantDifferences.length - 10} more difference patterns`);
     }
   }
-  
+
   const reportFile = outputFile || path.join(__dirname, '../beta_comparison_report.json');
   fs.writeFileSync(reportFile, JSON.stringify(report, null, 2));
   console.log(`\nfull comparison report saved to: ${reportFile}`);
@@ -313,24 +337,22 @@ async function sendNotification(report: ComparisonReport, isDryRun: boolean = fa
     return;
   }
   
-  const failedEndpoints = report.results
-    .filter(r => r.status === 'fail' || r.status === 'schema_fail' || r.status === 'network_error')
-    .map(r => `${r.endpoint} (${r.status})`);
+  const failedEndpointsList = report.failedEndpoints.map(r => `${r.endpoint} (${r.status})`);
   
   const failureMessage = "```" +
-    `beta comparison issues detected\n\n` +
-    `${apiType} api comparison:\n` +
+    `beta comparison - issues detected\n\n` +
+    `${apiType} api:\n` +
     `• total endpoints: ${summary.total}\n` +
     `• passed: ${summary.passed}\n` +
-    `• failed: ${summary.failed}\n` +
-    `• schema failures: ${summary.schemaFailures}\n` +
+    `• data mismatch: ${summary.failed}\n` +
+    `• schema failed: ${summary.schemaFailures}\n` +
     `• network errors: ${summary.networkErrors}\n` +
     `• success rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%\n` +
     `• prod avg resp: ${summary.averageProdResponseTime}ms\n` +
     `• beta avg resp: ${summary.averageBetaResponseTime}ms\n\n` +
-    `failing endpoints (${Math.min(failedEndpoints.length, 20)} of ${failedEndpoints.length}):\n` +
-    failedEndpoints.slice(0, 20).map((endpoint, i) => `${i + 1}. ${endpoint}`).join('\n') +
-    (failedEndpoints.length > 20 ? `\n... and ${failedEndpoints.length - 20} more` : '') +
+    `failing endpoints (${Math.min(failedEndpointsList.length, 20)} of ${failedEndpointsList.length}):\n` +
+    failedEndpointsList.slice(0, 20).map((endpoint, i) => `${i + 1}. ${endpoint}`).join('\n') +
+    (failedEndpointsList.length > 20 ? `\n... and ${failedEndpointsList.length - 20} more` : '') +
     `\n\n${report.timestamp}` +
     "```";
   
@@ -352,6 +374,7 @@ async function main(): Promise<void> {
   let specificDomain: string | undefined;
   let outputFile: string | undefined;
   let isDryRun = false;
+  let includeSuccess = false;
   
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -374,25 +397,72 @@ async function main(): Promise<void> {
       case '--dry-run':
         isDryRun = true;
         break;
+      case '--include-success':
+        includeSuccess = true;
+        break;
       case '--help':
         console.log(`
-Usage: npx ts-node compare-beta.ts [options]
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                 compareAPI.ts - API Comparison Tool                       ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-Options:
+PURPOSE:
+  Compares production vs beta API responses for deployment validation.
+  Tests: Schema compliance + Actual data values.
+  
+  Why it works: Prod and beta share the same database. When called
+  simultaneously, they query the same data. Any differences = bugs in beta!
+
+USAGE:
+  npx ts-node src/utils/compareBeta.ts [options]
+
+OPTIONS:
   --api-type <free|pro>    API type to compare (default: free)
   --tolerance <number>     Tolerance for numerical differences (default: 0.1 = 10%)
   --endpoint <pattern>     Filter endpoints containing this pattern
-  --domain <domain>        Filter to specific domain (e.g., coins, stablecoins)
-  --output <file>          Output file for JSON report
+  --domain <domain>        Filter to specific domain (e.g., stablecoins.llama.fi)
+  --output <file>          Custom output file for JSON report
   --dry-run               Skip Discord notifications
+  --include-success       Include successful endpoints in JSON report (default: false)
   --help                  Show this help message
 
-Examples:
-  npx ts-node compare-beta.ts
-  npx ts-node compare-beta.ts --api-type pro --tolerance 0.05
-  npx ts-node compare-beta.ts --endpoint protocols
-  npx ts-node compare-beta.ts --domain coins.llama.fi
-  npx ts-node compare-beta.ts --dry-run
+TOLERANCE EXPLAINED:
+  0.0  = Exact match required
+  0.05 = 5% difference allowed
+  0.1  = 10% difference allowed (default)
+  0.2  = 20% difference allowed
+
+EXAMPLES:
+  # Compare all free API endpoints (prod vs beta)
+  npm run compare-api
+
+  # Compare pro API with strict tolerance
+  npm run compare-api -- --api-type pro --tolerance 0.05
+
+  # Test specific protocol endpoints
+  npm run compare-api -- --endpoint /protocol
+
+  # Test stablecoins domain only
+  npm run compare-api -- --domain stablecoins.llama.fi
+
+  # CI/CD: Run without Discord notification
+  npm run compare-api -- --dry-run
+
+OUTPUT:
+  ✅ Pass         - Schema valid + data matches (within tolerance)
+  ❌ Data mismatch - Values differ between prod and beta
+  🔧 Schema fail   - Response doesn't match OpenAPI schema
+  ⚠️  Network error - Unable to reach endpoint
+
+TYPICAL WORKFLOW:
+  1. Deploy new code to beta environment
+  2. Run: npm run compare-api
+  3. Review differences (if any)
+  4. Fix bugs in beta
+  5. Repeat until all tests pass
+  6. Promote beta to production
+
+See API_VALIDATION_README.md for full documentation.
         `);
         process.exit(0);
     }
@@ -401,7 +471,7 @@ Examples:
   console.log('api compare tool\n');
   
   try {
-    const report = await compareAllEndpoints(apiType, tolerance, specificEndpoint, specificDomain);
+    const report = await compareAllEndpoints(apiType, tolerance, specificEndpoint, specificDomain, includeSuccess);
     await generateComparisonReport(report, outputFile);
     
     const hasIssues = report.summary.failed > 0 || report.summary.schemaFailures > 0 || report.summary.networkErrors > 0;

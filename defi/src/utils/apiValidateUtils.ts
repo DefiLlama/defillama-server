@@ -53,16 +53,12 @@ export interface EndpointOverride {
   reason?: string;
 }
 
+// Endpoint overrides for special cases
+// Note: For compareBeta (prod vs beta), data comparison is enabled by default
+// since both environments use the same DB and should return matching values.
+// For validateAPI (single environment), only schema is validated.
 export const ENDPOINT_OVERRIDES: Record<string, EndpointOverride> = {
-  '/api/overview/fees': {
-    skipDataComparison: true,
-  },
-  '/api/emissions': {
-    skipDataComparison: true,
-  },
-  '/yields/poolsOld': {
-    skipDataComparison: true,
-  }
+  // Add specific overrides here if needed (e.g., skip certain endpoints entirely)
 };
 
 export async function fetchWithRetry(
@@ -150,7 +146,8 @@ function calculateBackoffDelay(baseDelay: number, attempt: number, error: any): 
   const jitter = backoffDelay * 0.25 * (Math.random() - 0.5);
   backoffDelay += jitter;
   
-  return Math.min(backoffDelay, 30000);
+  // Ensure delay is between 1-5 seconds
+  return Math.max(1000, Math.min(backoffDelay, 5000));
 }
 
 export async function loadOpenApiSpec(apiType: 'free' | 'pro' = 'free'): Promise<any> {
@@ -547,9 +544,20 @@ export function substituteParameters(endpoint: string, spec: any, parameterValue
 
 export function getAllEndpoints(spec: any, includeParameterized: boolean = true, apiType: 'free' | 'pro' = 'free'): EndpointInfo[] {
   const endpoints: EndpointInfo[] = [];
+  let skippedProEndpoints = 0;
   
   Object.entries(spec.paths).forEach(([path, methods]: [string, any]) => {
     if (methods.get) {
+      // Filter endpoints based on API type
+      const endpointSecurity = methods.get.security;
+      const isPro = endpointSecurity && endpointSecurity.length > 0;
+      
+      // Skip pro endpoints when testing free API
+      if (apiType === 'free' && isPro) {
+        skippedProEndpoints++;
+        return;
+      }
+      
       const serverUrl = getServerUrl(path, spec, apiType);
       const schema = extractSchemaFromOpenApi(path, spec);
       const { queryParams, hasRequiredParams } = extractQueryParameters(methods.get);
@@ -601,6 +609,10 @@ export function getAllEndpoints(spec: any, includeParameterized: boolean = true,
     }
   });
   
+  if (apiType === 'free' && skippedProEndpoints > 0) {
+    console.log(`Skipped ${skippedProEndpoints} pro-only endpoints (testing free API)`);
+  }
+  
   return endpoints;
 }
 
@@ -618,20 +630,46 @@ export async function validateResponseAgainstSchema(
     }
     
     let actualData = response;
-    if (response && typeof response === 'object' && response.body && typeof response.body === 'string') {
-      if (isDebug) {
-        console.log('Detected escaped JSON in "body" field!');
-      }
+    
+    // Handle stringified entire response
+    if (typeof response === 'string') {
       try {
-        const parsedBody = JSON.parse(response.body);
+        actualData = JSON.parse(response);
         if (isDebug) {
-          console.log('Successfully parsed body:', JSON.stringify(parsedBody, null, 2).slice(0, 300) + '...');
+          console.log('Parsed stringified response');
+        }
+      } catch (parseError) {
+        if (isDebug) {
+          console.log('Response is string but not valid JSON:', parseError);
+        }
+      }
+    }
+    
+    // Handle stringified JSON in body field
+    if (actualData && typeof actualData === 'object' && actualData.body && typeof actualData.body === 'string') {
+      try {
+        const parsedBody = JSON.parse(actualData.body);
+        if (isDebug) {
+          console.log('Parsed body field');
         }
         actualData = parsedBody;
       } catch (parseError) {
         if (isDebug) {
-          console.log('Failed to parse body as JSON:', parseError);
+          console.log('Failed to parse body field:', parseError);
         }
+      }
+    }
+    
+    // Handle double-escaped JSON (fallback for when actualData is still a string)
+    if (typeof actualData === 'string') {
+      try {
+        // Try to parse again in case of double-escaping
+        actualData = JSON.parse(actualData);
+        if (isDebug) {
+          console.log('Parsed double-escaped JSON');
+        }
+      } catch (parseError) {
+        // Keep as is
       }
     }
     
@@ -642,7 +680,22 @@ export async function validateResponseAgainstSchema(
     }
     
     const validate = ajv.compile(schema);
-    const valid = validate(actualData);
+    let valid = validate(actualData);
+    
+    // If validation failed and data is still a string, try one more unescape attempt
+    if (!valid && typeof actualData === 'string') {
+      try {
+        const unescaped = actualData.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        const parsedUnescaped = JSON.parse(unescaped);
+        actualData = parsedUnescaped;
+        valid = validate(actualData);
+        if (valid && isDebug) {
+          console.log('Successfully validated after unescaping');
+        }
+      } catch (e) {
+        // Keep original validation result
+      }
+    }
     
     if (valid) {
       return { valid: true, errors: [] };
@@ -658,6 +711,14 @@ export async function validateResponseAgainstSchema(
         }
         return errorMsg;
       }) || ['Unknown validation error'];
+      
+      // DEBUG: Log full response on validation failure
+      console.log('\n[DEBUG] Schema validation failed. Full response data:');
+      console.log(JSON.stringify(actualData, null, 2));
+      console.log('\n[DEBUG] Expected schema:');
+      console.log(JSON.stringify(schema, null, 2));
+      console.log('[DEBUG] End of validation failure data\n');
+      
       return { valid: false, errors };
     }
   } catch (error: any) {
@@ -869,7 +930,7 @@ export function compareResponses(
         } catch (error) {
         }
         
-        const availableIndices = [];
+        const availableIndices: number[] = [];
         for (let i = 0; i < minLength; i++) {
           if (!indicesToCompare.has(i)) {
             availableIndices.push(i);

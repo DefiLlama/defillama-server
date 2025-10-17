@@ -22940,6 +22940,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     module: "evedex/index.js",
     twitter: "EveDexOfficial",
+    treasury: "evedex.js",
     listedAt: 1753803222,
   },
   {
@@ -30375,6 +30376,9 @@ const data4: Protocol[] = [
     twitter: "SolidYield",
     audit_links: ["https://docs.solid.xyz/safety-and-trust/security-and-audits#audits"],
     listedAt: 1759797789,
+    dimensions: {
+      fees: "solid-yield"
+    }
   },
   /*
   {
@@ -31870,6 +31874,49 @@ const data4: Protocol[] = [
     audit_links: [],
     github: ["bio-xyz"],
     listedAt: 1760735837,
+  },
+  {
+    id: "6882",
+    name: "FlowX Perps",
+    address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
+    symbol: "FLX",
+    url: "https://flowx.finance/perp",
+    description: "FlowX Perps is the perpetual futures exchange built on the Sui Blockchain.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/flowx-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Sui"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "FlowX_finance",
+    parentProtocol: "parent#flowx-finance",
+    dimensions: {
+      derivatives: "flowx-perps"
+    }
+  },
+  {
+    id: "6883",
+    name: "YieldBricks",
+    address: "arbitrum:0x11920f139a3121c2836e01551d43f95b3c31159c",
+    symbol: "YBR",
+    url: "https://yieldbricks.com/",
+    description: "Your Trusted Web3 Gateway to Premium Real Estate Yield | Seamless RWA Hub for Global Retail.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/yieldbricks.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "yieldbricks",
+    cmcId: "34385",
+    tags: ["Real Estate"],
+    chains: ["Arbitrum"],
+    forkedFrom: [],
+    module: "yieldbricks/index.js",
+    twitter: "YieldBricks",
+    listedAt: 1760736594,
   },
 ];
 export default data4;

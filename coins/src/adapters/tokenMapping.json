@@ -10442,6 +10442,11 @@
     }
   },
   "move": {
+    "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
+      "to": "coingecko#mbtc",
+      "decimals": 10,
+      "symbol": "MBTC"
+    },
     "0x51ffc9885233adf3dd411078cad57535ed1982013dc82d9d6c433a55f2e0035d": {
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": 8,

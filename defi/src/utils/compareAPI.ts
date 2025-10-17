@@ -33,6 +33,13 @@ import {
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
+// DEBUG: Set specific endpoint to test only that endpoint (for debugging)
+// Example: '/api/v2/chains' or '/api/oracles'
+// Set to null to test all endpoints
+// const DEBUG_ENDPOINT: string | null = null;
+const DEBUG_ENDPOINT = '/api/v2/chains';
+// const DEBUG_ENDPOINT = '/api/oracles';
+
 interface ComparisonResult {
   endpoint: string;
   prodUrl: string;
@@ -49,6 +56,9 @@ interface ComparisonResult {
     differences: string[];
   };
   errors: string[];
+  // TEMP DEBUG: Store actual responses for debugging
+  prodResponse?: any;
+  betaResponse?: any;
 }
 
 interface ComparisonReport {
@@ -123,6 +133,12 @@ async function compareEndpoint(
     result.prodResponseTime = prodResponse.value.responseTime;
     result.betaResponseTime = betaResponse.value.responseTime;
     
+    // TEMP DEBUG: Store responses in result for JSON report
+    if (DEBUG_ENDPOINT) {
+      result.prodResponse = prodData;
+      result.betaResponse = betaData;
+    }
+    
     // Validate both responses against OpenAPI schema
     const prodValidation = await validateResponseAgainstSchema(prodData, endpoint.schema);
     const betaValidation = await validateResponseAgainstSchema(betaData, endpoint.schema);
@@ -174,6 +190,15 @@ async function compareAllEndpoints(
   try {
     const spec = await loadOpenApiSpec(apiType);
     let endpoints = getAllEndpoints(spec, true, apiType);
+    
+    // DEBUG: Filter to specific endpoint if DEBUG_ENDPOINT is set
+    if (DEBUG_ENDPOINT) {
+      endpoints = endpoints.filter(ep => ep.path === DEBUG_ENDPOINT);
+      console.log(`[DEBUG MODE] Testing only endpoint: ${DEBUG_ENDPOINT}`);
+      if (endpoints.length === 0) {
+        console.log(`[DEBUG MODE] No endpoint found matching: ${DEBUG_ENDPOINT}`);
+      }
+    }
     
     if (specificEndpoint) {
       endpoints = endpoints.filter(ep => ep.path.includes(specificEndpoint));

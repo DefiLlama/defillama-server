@@ -8,7 +8,6 @@
  * Usage:
  *   npx ts-node src/utils/validateAPI.ts [--api-type free|pro] [--endpoint pattern]
  * 
- * See API_VALIDATION_README.md for full documentation.
  */
 
 import fs from 'fs';
@@ -26,9 +25,16 @@ import {
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
+// DEBUG: Set specific endpoint to test only that endpoint (for debugging)
+// Example: '/api/v2/chains' or '/api/oracles'
+// Set to null to test all endpoints
+const DEBUG_ENDPOINT: string | null = null;
+// const DEBUG_ENDPOINT = 'protocol/aave';
+// const DEBUG_ENDPOINT = '/api/oracles';
+
 interface ValidationReport {
   timestamp: string;
-  apiType: 'free' | 'pro';
+  environment: string;
   summary: {
     total: number;
     passed: number;
@@ -41,47 +47,74 @@ interface ValidationReport {
     errors: string[];
     responseTime?: number;
   }>;
-  passedEndpoints?: ValidationResult[];
 }
 
 async function validateAllEndpoints(
-  apiType: 'free' | 'pro' = 'free',
   specificEndpoint?: string,
   specificDomain?: string,
-  isDebug: boolean = false,
-  retryCount: number = 3,
-  retryDelay: number = 1000,
-  requestDelay: number = 500,
-  requestTimeout: number = 45000,
-  includeSuccess: boolean = false
+  useBeta: boolean = false
 ): Promise<ValidationReport> {
-  console.log(`validating ${apiType} API...`);
+  const envLabel = useBeta ? 'BETA' : 'PRODUCTION';
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`API Validation - ${envLabel}`);
+  console.log('='.repeat(60));
   
   try {
-    const spec = await loadOpenApiSpec(apiType);
-    let endpoints = getAllEndpoints(spec, true, apiType);
+    // Load both free and pro specs and merge endpoints
+    const freeSpec = await loadOpenApiSpec('free');
+    const proSpec = await loadOpenApiSpec('pro');
+    let endpoints = [
+      ...getAllEndpoints(freeSpec, true, 'free'),
+      ...getAllEndpoints(proSpec, true, 'pro')
+    ];
+    
+    console.log(`Loaded ${endpoints.length} total endpoints (free + pro)`);
+    
+    // DEBUG: Filter to specific endpoint if DEBUG_ENDPOINT is set
+    if (DEBUG_ENDPOINT) {
+      endpoints = endpoints.filter(ep => ep.path === DEBUG_ENDPOINT);
+      console.log(`[DEBUG MODE] Testing only endpoint: ${DEBUG_ENDPOINT}`);
+      if (endpoints.length === 0) {
+        console.log(`[DEBUG MODE] No endpoint found matching: ${DEBUG_ENDPOINT}`);
+      }
+    }
     
     if (specificEndpoint) {
       endpoints = endpoints.filter(ep => ep.path.includes(specificEndpoint));
-      console.log(`filtering to endpoints containing: ${specificEndpoint}`);
+      console.log(`Filtering to endpoints containing: ${specificEndpoint}`);
     }
     
     if (specificDomain) {
       endpoints = endpoints.filter(ep => ep.serverUrl.includes(specificDomain));
-      console.log(`filtering to domain: ${specificDomain}`);
+      console.log(`Filtering to domain: ${specificDomain}`);
     }
     
-    console.log(`testing ${endpoints.length} endpoints...`);
+    // If using beta, map URLs to beta environment
+    if (useBeta) {
+      const { getBetaServerUrl } = require('./apiValidateUtils');
+      endpoints = endpoints.map(ep => ({
+        ...ep,
+        serverUrl: getBetaServerUrl(`${ep.serverUrl}${ep.path}`).replace(ep.path, '')
+      }));
+    }
+    
+    console.log(`Testing ${endpoints.length} endpoints...\n`);
     
     const results: ValidationResult[] = [];
     const totalResponseTimes: number[] = [];
     
+    // Use defaults: retryCount=5, retryDelay=1000, requestTimeout=45000, requestDelay=500
+    const retryCount = 5;
+    const retryDelay = 1000;
+    const requestTimeout = 45000;
+    const requestDelay = 500;
+    
     for (const [index, endpoint] of endpoints.entries()) {
       const progress = ((index + 1) / endpoints.length * 100).toFixed(1);
-      process.stdout.write(`\rprogress: ${progress}% (${index + 1}/${endpoints.length}) - Testing ${endpoint.path}`);
+      process.stdout.write(`\rProgress: ${progress}% (${index + 1}/${endpoints.length}) - Testing ${endpoint.path}`);
       
       try {
-        const result = await testEndpoint(endpoint, isDebug, retryCount, retryDelay, requestTimeout);
+        const result = await testEndpoint(endpoint, false, retryCount, retryDelay, requestTimeout);
         results.push(result);
         
         if (result.responseTime) {
@@ -90,8 +123,8 @@ async function validateAllEndpoints(
         
         if (result.status === 'fail') {
           const displayPath = buildEndpointDisplayPath(result.endpoint, result.queryParams);
-          console.log(`\nfailed: ${displayPath} on ${sanitizeUrlForDisplay(endpoint.serverUrl)}`);
-          result.errors.forEach(error => console.log(`   • ${error}`));
+          // console.log(`\nFailed: ${displayPath} on ${sanitizeUrlForDisplay(endpoint.serverUrl)}`);
+          // result.errors.forEach(error => console.log(`   • ${error}`));
         }
         
         await new Promise(resolve => setTimeout(resolve, requestDelay));
@@ -106,7 +139,7 @@ async function validateAllEndpoints(
         };
         results.push(failedResult);
         const displayPath = buildEndpointDisplayPath(endpoint.path, endpoint.queryParams);
-        console.log(`\nerror: ${displayPath} - ${error.message}`);
+        console.log(`\nError: ${displayPath} - ${error.message}`);
       }
     }
     
@@ -115,15 +148,14 @@ async function validateAllEndpoints(
     const passed = results.filter(r => r.status === 'pass').length;
     const failed = results.filter(r => r.status === 'fail').length;
     const averageResponseTime = totalResponseTimes.length > 0 
-      ? Math.round(totalResponseTimes.reduce((a, b) => a + b, 0) / totalResponseTimes.length)
+      ? Math.round(totalResponseTimes.reduce((a, b) => a + b, 0) / totalResponseTimes.length) 
       : 0;
     
     const failedResults = results.filter(r => r.status === 'fail');
-    const passedResults = results.filter(r => r.status === 'pass');
     
     const report: ValidationReport = {
       timestamp: new Date().toISOString(),
-      apiType,
+      environment: envLabel,
       summary: {
         total: results.length,
         passed,
@@ -138,96 +170,83 @@ async function validateAllEndpoints(
       }))
     };
     
-    // Only include successful results if requested
-    if (includeSuccess) {
-      report.passedEndpoints = passedResults;
-    }
-    
     return report;
     
   } catch (error: any) {
-    console.error('error during validation:', error.message);
+    console.error('Error during validation:', error.message);
     throw error;
   }
 }
 
-async function generateReport(report: ValidationReport, outputFile?: string): Promise<void> {
-  const { summary, failedEndpoints, apiType } = report;
+async function generateReport(
+  report: ValidationReport, 
+  outputFile?: string
+): Promise<void> {
+  const { summary, failedEndpoints, environment } = report;
   
-  console.log('\nvalidation summary');
-  console.log('='.repeat(50));
-  console.log(`api: ${apiType}`);
-  console.log(`total endpoints: ${summary.total}`);
-  console.log(`passed: ${summary.passed}`);
-  console.log(`failed: ${summary.failed}`);
-  console.log(`avg resp time: ${summary.averageResponseTime}ms`);
-  console.log(`success rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%`);
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`VALIDATION SUMMARY - ${environment}`);
+  console.log('='.repeat(60));
   
+  console.log(`\nTotal Endpoints: ${summary.total}`);
+  console.log(`Passed: ${summary.passed}`);
+  console.log(`Failed: ${summary.failed}`);
+  console.log(`Avg Response Time: ${summary.averageResponseTime}ms`);
+  console.log(`Success Rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%`);
+  
+  // Show failed endpoints
   if (failedEndpoints.length > 0) {
-    console.log('\nFAILED ENDPOINTS:');
+    console.log(`\n❌ FAILED ENDPOINTS (${failedEndpoints.length}):`);
     failedEndpoints.forEach((item, index) => {
-      console.log(`${index + 1}. ${sanitizeUrlForDisplay(item.endpoint)}`);
-      item.errors.forEach(error => console.log(`   • ${error}`));
+      console.log(`  ${index + 1}. ${sanitizeUrlForDisplay(item.endpoint)}`);
+      item.errors.forEach(error => console.log(`     • ${error}`));
     });
   }
   
   const reportFile = outputFile || path.join(__dirname, '../validation_report.json');
   fs.writeFileSync(reportFile, JSON.stringify(report, null, 2));
-  console.log(`\nfull report saved to: ${reportFile}`);
+  console.log(`\n📄 Full report saved to: ${reportFile}`);
 }
 
-async function sendNotification(report: ValidationReport, isDryRun: boolean = false): Promise<void> {
-  const { summary, failedEndpoints, apiType } = report;
+async function sendNotification(report: ValidationReport): Promise<void> {
+  const { summary, failedEndpoints, environment } = report;
   
   if (summary.failed === 0) {
-    console.log('\neverything isoke');
+    console.log('\n✅ All validations passed - no notification needed');
     return;
   }
   
- const failureMessage = "```" +
-  `api validation error\n\n` +
-  `${apiType} api:\n` +
-  `• total endpoints: ${summary.total}\n` +
-  `• pass: ${summary.passed}\n` +
-  `• fail: ${summary.failed}\n` +
-  `• success rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%\n` +
-  `• avg resp time: ${summary.averageResponseTime}ms\n\n` +
-  `failed endpoints (${Math.min(failedEndpoints.length, 10)} of ${failedEndpoints.length}):\n` +
-  failedEndpoints.slice(0, 20).map((item, i) => `${i + 1}. ${sanitizeUrlForDisplay(item.endpoint)}`).join('\n') +
-  (failedEndpoints.length > 20 ? `\n... and ${failedEndpoints.length - 10} more` : '') +
-  `\n\n${report.timestamp}` +
-  "```";
+  const failureMessage = "```" +
+    `API Validation ${environment} - Issues Detected\n\n` +
+    `Total Endpoints: ${summary.total}\n` +
+    `Passed: ${summary.passed}\n` +
+    `Failed: ${summary.failed}\n` +
+    `Success Rate: ${((summary.passed / summary.total) * 100).toFixed(1)}%\n` +
+    `Avg Response: ${summary.averageResponseTime}ms\n\n` +
+    `Failed Endpoints (${Math.min(failedEndpoints.length, 20)} of ${failedEndpoints.length}):\n` +
+    failedEndpoints.slice(0, 20).map((item, i) => 
+      `${i + 1}. ${sanitizeUrlForDisplay(item.endpoint)}`
+    ).join('\n') +
+    (failedEndpoints.length > 20 ? `\n... and ${failedEndpoints.length - 20} more` : '') +
+    `\n\n${report.timestamp}` +
+    "```";
   
-  console.log('\nsend discord notification');
+  console.log('\n📤 Sending Discord notification...');
   
-  if (!isDryRun) {
-    await sendMessage(failureMessage, process.env.DISCORD_WEBHOOK_URL, false);
-  } else {
-    console.log('would send:\n', failureMessage);
-  }
+  await sendMessage(failureMessage, process.env.DISCORD_WEBHOOK_URL, false);
 }
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   
-  let apiType: 'free' | 'pro' = 'free';
   let specificEndpoint: string | undefined;
   let specificDomain: string | undefined;
   let outputFile: string | undefined;
-  let isDryRun = false;
-  let isDebug = false;
-  let retryCount = 5;
-  let retryDelay = 1000;
-  let requestDelay = 500;
-  let requestTimeout = 45000;
-  let includeSuccess = false;
+  let useBeta = false;
   
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
     switch (arg) {
-      case '--api-type':
-        apiType = args[++i] as 'free' | 'pro';
-        break;
       case '--endpoint':
         specificEndpoint = args[++i];
         break;
@@ -237,26 +256,8 @@ async function main(): Promise<void> {
       case '--output':
         outputFile = args[++i];
         break;
-      case '--dry-run':
-        isDryRun = true;
-        break;
-      case '--debug':
-        isDebug = true;
-        break;
-      case '--retry-count':
-        retryCount = parseInt(args[++i]) || 3;
-        break;
-      case '--retry-delay':
-        retryDelay = parseInt(args[++i]) || 1000;
-        break;
-      case '--request-delay':
-        requestDelay = parseInt(args[++i]) || 500;
-        break;
-      case '--timeout':
-        requestTimeout = parseInt(args[++i]) || 45000;
-        break;
-      case '--include-success':
-        includeSuccess = true;
+      case '--beta':
+        useBeta = true;
         break;
       case '--help':
         console.log(`
@@ -266,46 +267,41 @@ async function main(): Promise<void> {
 
 PURPOSE:
   Validates API responses match the OpenAPI specification.
+  Merges and tests ALL endpoints (free + pro) in a single run.
   Tests: Schema structure, required fields, data types.
-  Does NOT compare actual values (use compareAPI.ts for that).
   
-  Supports both free and pro API testing.
+  Defaults: 5 retries, 1-5s backoff, 45s timeout, 500ms request delay
 
 USAGE:
-  npm run validate-api          # Validate free API
-  npm run validate-api -- --api-type pro  # Validate pro API
+  npm run validate-api              # Validate production (default)
+  npm run validate-api-beta         # Validate beta environment
 
 OPTIONS:
-  --api-type <free|pro>    API type to validate (default: free)
+  --beta                   Test beta URLs instead of production
   --endpoint <pattern>     Filter endpoints containing this pattern
   --domain <domain>        Filter to specific domain (e.g., coins.llama.fi)
   --output <file>          Custom output file for JSON report
-  --dry-run               Skip Discord notifications
-  --debug                 Enable detailed debugging output
-  --retry-count <number>  Number of retry attempts (default: 5)
-  --retry-delay <ms>      Base delay between retries in ms (default: 1000)
-  --request-delay <ms>    Delay between requests in ms (default: 500)
-  --timeout <ms>          Request timeout in ms (default: 45000)
-  --include-success       Include successful endpoints in JSON report (default: false)
-  --help                  Show this help message
+  --help                   Show this help message
 
 EXAMPLES:
-  # Validate all free API endpoints
+  # Validate production (all endpoints)
   npm run validate-api
 
-  # Validate pro API with custom timeout
-  npm run validate-api -- --api-type pro --timeout 60000
+  # Validate beta (all endpoints)
+  npm run validate-api-beta
 
-  # Debug specific endpoint
-  npm run validate-api -- --endpoint /protocol/aave --debug
+  # Test specific endpoint
+  npm run validate-api -- --endpoint /protocol/aave
 
   # Test coins domain only
   npm run validate-api -- --domain coins.llama.fi
 
 OUTPUT:
+  All endpoints tested together (no free/pro separation)
   ✅ Pass  - Response matches OpenAPI schema
   ❌ Fail  - Response doesn't match schema
-  ⚠️  Error - Network or other error
+  
+  Report: defi/src/validation_report.json
 
 See API_VALIDATION_README.md for full documentation.
         `);
@@ -313,33 +309,31 @@ See API_VALIDATION_README.md for full documentation.
     }
   }
   
-  console.log('api validation\n');
+  console.log('🔍 API Validation Tool\n');
   
   try {
-    const report = await validateAllEndpoints(apiType, specificEndpoint, specificDomain, isDebug, retryCount, retryDelay, requestDelay, requestTimeout, includeSuccess);
+    const report = await validateAllEndpoints(specificEndpoint, specificDomain, useBeta);
     await generateReport(report, outputFile);
     
     if (report.summary.failed > 0) {
-      console.log(`\nvalidation failed with ${report.summary.failed} endpoint failures`);
-      await sendNotification(report, isDryRun);
+      console.log(`\n❌ Validation failed with ${report.summary.failed} endpoint failures`);
+      await sendNotification(report);
       process.exit(1);
     } else {
-      console.log('\nall validations passed');
+      console.log('\n✅ All validations passed!');
       process.exit(0);
     }
     
   } catch (error: any) {
-    console.error(`\ncritical error: ${error.message}`);
+    console.error(`\n💥 Critical error: ${error.message}`);
     
-    if (!isDryRun) {
-      await sendMessage(
-        `api validation error!\n\n` +
-        `error: ${error.message}\n` +
-        `timestamp: ${new Date().toISOString()}`,
-        process.env.DISCORD_WEBHOOK_URL,
-        false
-      );
-    }
+    await sendMessage(
+      `API Validation Critical Error!\n\n` +
+      `Error: ${error.message}\n` +
+      `Timestamp: ${new Date().toISOString()}`,
+      process.env.DISCORD_WEBHOOK_URL,
+      false
+    );
     
     process.exit(1);
   }

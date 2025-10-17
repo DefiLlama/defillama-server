@@ -6,6 +6,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
 import { sendMessage } from "../../defi/src/utils/discord";
 import { DAY } from "./utils/processCoin";
+import { createCachedProvider } from "./utils/cachedProvider";
 
 interface TimestampBlock {
   height: number;
@@ -113,7 +114,11 @@ function getExtraProvider(chain: string | undefined) {
     return cosmosBlockProvider(chain)
   }
   if (["lite"].includes(chain as any)) return zkSyncBlockProvider();
-  return getProvider(chain as any);
+  const provider = getProvider(chain as any);
+  if (provider && chain) {
+    return createCachedProvider(provider, chain);
+  }
+  return provider;
 }
 
 function isAValidBlockAtThisTimestamp(timestamp: number, chain: string) {

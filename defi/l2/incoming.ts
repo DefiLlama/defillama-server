@@ -3,7 +3,8 @@ import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { DollarValues, TokenTvlData } from "./types";
 import { geckoSymbols, zero } from "./constants";
-import { fetchBridgeTokenList, fetchSupplies, getPrices } from "./utils";
+import { fetchBridgeTokenList, fetchSupplies } from "./utils";
+import { getPrices } from "@defillama/sdk/build/util/coinsApi";
 
 export async function fetchIncoming(params: {
   canonical: TokenTvlData;

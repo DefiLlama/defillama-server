@@ -3,16 +3,13 @@ import providers from "@defillama/sdk/build/providers.json";
 import { Address } from "@defillama/sdk/build/types";
 import { allChainKeys } from "../constants";
 import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
-import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
-import axios from "axios";
-import PromisePool from "@supercharge/promise-pool";
+import _ from "lodash";
+import { cachedFetch } from "@defillama/sdk/build/util/cache";
+import runInPromisePool from "@defillama/sdk/build/util/promisePool";
 
-let bridgePromises: { [bridge: string]: Promise<any> } = {};
 const addresses: { [chain: Chain]: Address[] } = {};
 allChainKeys.map((c: string) => (addresses[c] = []));
-let doneAdapters: string[] = [];
-let mappingDone: boolean = false;
 
 const chainMap: { [chain: string]: string } = {
   binance: "bsc",
@@ -25,24 +22,18 @@ Object.keys(providers).map((c: string) => {
 });
 
 const hyperlane = async (): Promise<void> => {
-  const bridge = "hyperlane";
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch(
-      "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
-    ).then((r) => r.json());
-  const data = await bridgePromises[bridge];
+  const data = await cachedFetch({
+    key: "hyperlane-assets",
+    endpoint: "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for hyperlane third party");
   if (!addresses.eclipse) addresses.eclipse = [];
   data.map(({ address }: any) => addresses.eclipse.push(address));
-  doneAdapters.push(bridge);
 };
 
 const axelar = async (): Promise<void> => {
-  const bridge = "axelar";
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch("https://api.axelarscan.io/api/getAssets").then((r) => r.json());
-  const data = await bridgePromises[bridge];
+  const data = await cachedFetch({ key: "axelar-assets", endpoint: "https://api.axelarscan.io/api/getAssets" });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for axelar third party");
   data.map((token: any) => {
     if (!token.addresses) return;
     Object.keys(token.addresses).map((chain: string) => {
@@ -51,22 +42,18 @@ const axelar = async (): Promise<void> => {
       if (!allChainKeys.includes(normalizedChain)) return;
       if (!("address" in token.addresses[chain] && "symbol" in token.addresses[chain])) return;
       if (!token.addresses[chain].symbol.startsWith("axl")) return;
-      addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
+      addresses[normalizedChain].push(token.addresses[chain].address);
     });
   });
-  doneAdapters.push(bridge);
 };
 
 const wormhole = async (): Promise<void> => {
-  const bridge = "wormhole";
+  const data = await cachedFetch({
+    key: "wormhole-token-list",
+    endpoint: "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/content/by_dest.csv",
+  });
+  if (data.length == 0) throw new Error("No data or cache found for wormhole third party");
 
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = axios.get(
-      "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/content/by_dest.csv"
-    );
-
-  const data = (await bridgePromises[bridge]).data;
   const chainMap: { [ticker: string]: string } = {
     sol: "solana",
     eth: "ethereum",
@@ -95,43 +82,40 @@ const wormhole = async (): Promise<void> => {
     if (!addresses[chain]) addresses[chain] = [];
     addresses[chain].push(rows[3]);
   });
-  doneAdapters.push(bridge);
 };
 
 const celer = async (): Promise<void> => {
-  const bridge = "celer";
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch("https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll").then((r) => r.json());
-  const data = await bridgePromises[bridge];
+  const data = await cachedFetch({
+    key: "celer-transfer-configs",
+    endpoint: "https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for celer third party");
   data.pegged_pair_configs.map((pp: any) => {
     const chain = chainIdMap[pp.org_chain_id];
     let normalizedChain: string = chain;
     if (chain in chainMap) normalizedChain = chainMap[chain];
     if (!allChainKeys.includes(normalizedChain)) return;
     if (!addresses[normalizedChain]) addresses[normalizedChain] = [];
-    addresses[normalizedChain].push(pp.pegged_token.token.address.toLowerCase());
+    addresses[normalizedChain].push(pp.pegged_token.token.address);
   });
-  doneAdapters.push(bridge);
 };
 
 const layerzero = async (): Promise<void> => {
-  const bridge = "layerzero";
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises)) {
-    bridgePromises[bridge] = Promise.all([
-      fetch(
-        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json"
-      ).then((r) => r.json()),
-      fetch("https://metadata.layerzero-api.com/v1/metadata").then((r) => r.json()),
-    ]);
-  }
-  const data = await bridgePromises[bridge];
+  const data = await Promise.all([
+    cachedFetch({
+      key: "layerzero-mappings",
+      endpoint:
+        "https://gist.githubusercontent.com/vrtnd/02b1125edf1afe2baddbf1027157aa31/raw/5cab2009357b1acb8982e6a80e66b64ab7ea1251/mappings.json",
+    }),
+    cachedFetch({ key: "layerzero-metadata", endpoint: "https://metadata.layerzero-api.com/v1/metadata" }),
+  ]);
+  if (data[0].length == 0 || Object.keys(data[1]).length == 0)
+    throw new Error("No data or cache found for layerzero third party");
 
   data[0].map(({ to }: any) => {
     const [chain, address] = to.split(":");
     if (!(chain in addresses)) addresses[chain] = [];
-    if (!(address in addresses[chain])) addresses[chain].push(address.toLowerCase());
+    if (!(address in addresses[chain])) addresses[chain].push(address);
   });
 
   const nonEvmMapping: { [key: string]: string } = {
@@ -173,18 +157,14 @@ const layerzero = async (): Promise<void> => {
     if (!(chain in addresses)) addresses[chain] = [];
     addresses[chain].push(...staticTokens[chain]);
   });
-
-  doneAdapters.push(bridge);
 };
 
 const flow = async (): Promise<void> => {
-  const bridge = "flow";
-  if (doneAdapters.includes(bridge)) return;
-  if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch(
-      "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
-    ).then((r) => r.json());
-  const data = await bridgePromises[bridge];
+  const data = await cachedFetch({
+    key: "flow-token-list",
+    endpoint: "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json",
+  });
+  if (Object.keys(data).length == 0) throw new Error("No data or cache found for flow third party");
   data.tokens.map(({ chainId, address, tags }: any) => {
     const chain = chainIdMap[chainId];
     if (!allChainKeys.includes(chain)) return;
@@ -192,14 +172,9 @@ const flow = async (): Promise<void> => {
     if (!(chain in addresses)) addresses[chain] = [];
     addresses[chain].push(address);
   });
-
-  doneAdapters.push(bridge);
 };
 
 const unit = async (): Promise<void> => {
-  const bridge = "unit";
-  if (doneAdapters.includes(bridge)) return;
-
   const staticTokens: { [chain: string]: string[] } = {
     hyperliquid: [
       "0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463",
@@ -213,27 +188,23 @@ const unit = async (): Promise<void> => {
     if (!(chain in addresses)) addresses[chain] = [];
     addresses[chain].push(...staticTokens[chain]);
   });
-
-  doneAdapters.push(bridge);
 };
 
 const adapters = { axelar, wormhole, celer, hyperlane, layerzero, flow, unit };
 
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
-const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
-  await PromisePool.withConcurrency(5)
-    .for(Object.entries(adapters))
-    .process(async ([key, adapter]: any) => {
-      try {
-        await adapter();
-      } catch (e: any) {
-        throw new Error(`${key} fails with  ${e.message}`);
-      }
-    });
+const tokenAddresses = _.once(async (): Promise<{ [chain: Chain]: Address[] }> => {
+  await runInPromisePool({
+    items: Object.entries(adapters),
+    concurrency: 5,
+    processor: async ([key, adapter]: any) => {
+        await adapter().catch((e: any) => {
+            throw new Error(`${key} fails with ${e.message}`);
+        });
+    }})
 
-  if (Object.keys(adapters).length == doneAdapters.length && mappingDone) return filteredAddresses;
-
+  // remove excluded assets and add additional assets, normalize case
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
@@ -248,8 +219,7 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
     filteredAddresses[chain] = [...new Set([...chainAddresses, ...additionalTokens])];
   });
 
-  mappingDone = true;
   return filteredAddresses;
-};
+});
 
 export default tokenAddresses;

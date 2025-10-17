@@ -5,11 +5,12 @@ import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
 import { geckoSymbols, ownTokens, zero } from "./constants";
-import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
+import { fetchBridgeTokenList, fetchSupplies } from "./utils";
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
 import { withTimeout } from "../src/utils/shared/withTimeout";
 import PromisePool from "@supercharge/promise-pool";
+import { getPrices, getMcaps } from "@defillama/sdk/build/util/coinsApi";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;

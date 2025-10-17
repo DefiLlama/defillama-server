@@ -1,18 +1,20 @@
 import * as sdk from "@defillama/sdk"
-import allChains from '../../../defi/DefiLlama-Adapters/projects/helper/chains.json'
 import axios from "axios";
-
-const evmChains = allChains.filter((i: any) => {
-  const provider = sdk.getProvider(i)
-  // if (!provider) console.log(i, 'is not an evm chain')
-  return !!provider
-})
-
-console.log('# of chains:', allChains.length)
-console.log('# of evm chains:', evmChains.length)
 
 async function run() {
   const nullAddress = '0x0000000000000000000000000000000000000000'
+  const allChains = await fetch('https://raw.githubusercontent.com/DefiLlama/DefiLlama-Adapters/refs/heads/main/projects/helper/chains.json').then(res => res.json())
+  console.log('# of all chains from github:', allChains.length)
+
+  const evmChains = allChains.filter((i: any) => {
+    const provider = sdk.getProvider(i)
+    // if (!provider) console.log(i, 'is not an evm chain')
+    return !!provider
+  })
+
+  console.log('# of chains:', allChains.length)
+  console.log('# of evm chains:', evmChains.length)
+
 
   const chunks = sdk.util.sliceIntoChunks(evmChains, 40)
   let missingTokens: string[] = []
@@ -20,7 +22,7 @@ async function run() {
     const chunk = chunks[i]
     const tokens = chunk.map((i: any) => `${i}:${nullAddress}`)
     console.log('checking chunk', i + 1, 'of', chunks.length, '...')
-    const res = (await axios.get('https://coins.llama.fi/prices/current/'+tokens.join(','))).data
+    const res = (await axios.get('https://coins.llama.fi/prices/current/' + tokens.join(','))).data
     const missingInChunk = tokens.filter((k: string) => {
       // console.log(k, res.coins[k]?.symbol)
       return !res.coins[k]

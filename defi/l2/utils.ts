@@ -10,13 +10,12 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { storeNotTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
-import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { storeR2JSONString } from "../src/utils/r2";
+import { struct, u64 } from "buffer-layout";
 
 export async function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Promise<TokenTvlData> {
   const chainUsdTokenTvls: TokenTvlData = {};

@@ -127,10 +127,11 @@ async function createDimensionsImports() {
 
 
 async function createTVLImportsFile() {
-  await writeFile("./src/utils/imports/adapters.ts",
-    `export default {
-    ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
-}`)
+  // we no longer need the imports/adapters.ts file
+//   await writeFile("./src/utils/imports/adapters.ts",
+//     `export default {
+//     ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
+// }`)
   return createTvlAdapterDataJSON()
 }
 

@@ -1,5 +1,4 @@
 import { Protocol } from "../../protocols/types";
-// import adapters from "./adapters"
 import fs from "fs";
 import path from "path";
 

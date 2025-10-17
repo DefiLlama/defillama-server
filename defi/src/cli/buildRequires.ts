@@ -20,7 +20,7 @@ async function run() {
 
   const buildFunctions = {
     // 'tvl import': createTVLImportsFile,
-    'liquidation import': createLiquidationImportsFile,
+    // 'liquidation import': createLiquidationImportsFile,
     'dimensions import': createDimensionsImports,
   }
 
@@ -33,6 +33,7 @@ async function run() {
 
 run().catch(console.error).then(() => process.exit(0))
 
+/* Liquidations is disabled for now
 function createLiquidationImportsFile() {
   const excludeLiquidation = ["test.ts", "utils", "README.md"]
   writeFileSync("./src/utils/imports/adapters_liquidations.ts",
@@ -42,7 +43,7 @@ function createLiquidationImportsFile() {
 }`)
 }
 
-
+ */
 
 async function createDimensionsImports() {
   const outputFile = "./src/utils/imports/dimensions_adapters.json"

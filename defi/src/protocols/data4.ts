@@ -31224,6 +31224,9 @@ const data4: Protocol[] = [
     module: "pharaoh-exchange-v3-legacy/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
+    dimensions: {
+      dexs: "pharaoh-v3-legacy"
+    },
     listedAt: 1760377677,
   },
   {
@@ -31245,6 +31248,9 @@ const data4: Protocol[] = [
     module: "pharaoh-exchange-v3/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
+    dimensions: {
+      dexs: "pharaoh-v3"
+    },
     listedAt: 1760377684,
   },
   {

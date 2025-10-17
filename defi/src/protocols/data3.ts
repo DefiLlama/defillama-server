@@ -16009,6 +16009,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ],
     listedAt: 1691812695,
     dimensions: {
+      fees: "aark",
       derivatives: {
         genuineSpikes: ["1691884800", "1691971200"],
         adapter: "aark"

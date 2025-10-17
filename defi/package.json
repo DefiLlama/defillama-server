@@ -89,7 +89,6 @@
     "@aws-sdk/client-s3": "^3.245.0",
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/dimension-adapters": "file:./dimension-adapters",
-    "@defillama/emissions-adapters": "file:./emissions-adapters",
     "@defillama/sdk": "^5.0.172",
     "@elastic/elasticsearch": "^8.13.1",
     "@supercharge/promise-pool": "^2.3.2",

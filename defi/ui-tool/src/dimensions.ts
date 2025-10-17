@@ -1,5 +1,5 @@
 import loadAdaptorsData from "../../src/adaptors/data"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../../src/adaptors/data/types";
 import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
 import { getTimestampString } from "../../src/api2/utils";
 import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/handlers/storeAdaptorData";

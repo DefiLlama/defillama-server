@@ -1,6 +1,5 @@
 
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { AdaptorRecordType, IJSON, ProtocolAdaptor } from "../data/types"
+import { AdapterType, ProtocolType, AdaptorRecordType, IJSON, ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
 import { getUnixTimeNow } from "../../api2/utils/time"
 import { humanizeNumber } from "@defillama/sdk"

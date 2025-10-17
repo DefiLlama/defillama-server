@@ -8,7 +8,7 @@ import { spawn } from "child_process"
 import entities from "../protocols/entities";
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import { ADAPTER_TYPES } from "../adaptors/data/types";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../adaptors/data/types"
 import { readdir, writeFile } from "fs/promises";
 import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeHashToFile } from "../adaptors/utils";
 

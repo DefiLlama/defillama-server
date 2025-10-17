@@ -1,7 +1,7 @@
 import '../utils/failOnError'
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";

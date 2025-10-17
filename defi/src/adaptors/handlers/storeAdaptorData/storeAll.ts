@@ -1,7 +1,7 @@
 import '../../../api2/utils/failOnError'
 
 import { handler2 } from ".";
-import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
+import { AdapterType } from "../../data/types"
 import { getUnixTimeNow } from '../../../api2/utils/time';
 import { getTimestampAtStartOfDayUTC } from '../../../utils/date';
 import { elastic } from '@defillama/sdk';

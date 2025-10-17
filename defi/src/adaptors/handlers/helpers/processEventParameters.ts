@@ -1,4 +1,4 @@
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType } from "../../data/types"
 import { sluggifyString } from "../../../utils/sluggify"
 import { CATEGORIES } from "../../data/helpers/categories"
 import { normalizeDimensionChainsMap } from "../../utils/getAllChainsFromAdaptors"

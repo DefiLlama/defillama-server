@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 import '../../../api2/utils/failOnError'
-import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { Adapter, AdapterType } from "../../data/types"
 import loadAdaptorsData from "../../data"
 import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';

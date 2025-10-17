@@ -1,4 +1,4 @@
-import { Adapter, AdapterType, BaseAdapter, SimpleAdapter, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, SimpleAdapter, } from "../../data/types"
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';

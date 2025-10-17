@@ -302,6 +302,8 @@ async function run() {
       protocols: cache.metadata.protocols,
       parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      treasuries: cache.metadata.treasuries,
+      entities: cache.metadata.entities,
       chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)

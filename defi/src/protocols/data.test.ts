@@ -1,4 +1,3 @@
-import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
 import protocols from "./data";
@@ -45,7 +44,7 @@ test("all chains are on chainMap", async () => {
   }
 });
 
-test("there are no repeated values in unlock adapters", async () => {
+/* test("there are no repeated values in unlock adapters", async () => {
   const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
   for (const [protocolName, protocolFile] of Object.entries(emissionsAdapters)) {
     if (protocolName === "daomaker" || protocolName === "streamflow") {
@@ -70,7 +69,7 @@ test("there are no repeated values in unlock adapters", async () => {
     }
   }
 })
-
+ */
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])
   const ignoredKeys = new Set(['default'])

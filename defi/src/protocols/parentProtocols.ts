@@ -8247,6 +8247,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Strata_Money",
     github: ["Strata-Money"],
   },
+  {
+    id: "parent#spinup",
+    name: "SpinUp",
+    url: "https://www.spinup.zone/",
+    description: "SpinUp is a DeFi ecosystem built on HyperEVM, bringing together liquid staking, a Meme Launchpad, a Meme DEX, and driving memes into perpetual market fire",
+    logo: `${baseIconsUrl}/spinup.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SpinUpZone",
+  },
 ];
 
 export default parentProtocols;

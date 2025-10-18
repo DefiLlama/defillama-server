@@ -1,6 +1,6 @@
 require("dotenv").config();
-import chainAdapters from "../../../dimension-adapters/users/chains";
-import { queryAllium } from "../../../dimension-adapters/helpers/allium";
+import chainAdapters from "../../dimension_migration/users/chains";
+import { queryAllium } from "../../dimension_migration/helpers/allium";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeNewUsers } from "../../users/storeUsers";
 

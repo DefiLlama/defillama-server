@@ -1,6 +1,6 @@
 require("dotenv").config();
-import { convertChainToFlipside, isAcceptedChain } from "../../../../dimension-adapters/users/utils/convertChain";
-import { queryFlipside } from "../../../../dimension-adapters/helpers/flipsidecrypto";
+import { convertChainToFlipside, isAcceptedChain } from "../../../dimension_migration/users/utils/convertChain";
+import { queryFlipside } from "../../../dimension_migration/helpers/flipsidecrypto";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeTxs } from "../../../users/storeUsers";
 

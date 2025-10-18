@@ -1,4 +1,4 @@
-import { chainConfigMap } from '@defillama/dimension-adapters/helpers/blockscoutFees'
+import { chainConfigMap } from '../../../../../dimension-adapters/helpers/blockscoutFees'
 import { PromisePool } from '@supercharge/promise-pool'
 
 const axios = require('axios')

@@ -30,3 +30,6 @@ src/api2/metadata.json
 .cache
 src/api2/.api2-cache
 *._lhash
+
+dimensions-adapters
+DefiLlama-Adapters

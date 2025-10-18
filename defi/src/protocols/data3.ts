@@ -49579,16 +49579,24 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+		End Date: "2025-09-17"
       },
       {
         name: "RedStone",
-        type: "Secondary",
-        proof: ["https://docs.ts.finance/protocol-spec/fixed-rate-borrowing-lending-prev-primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+        type: "Primary",
+        proof: ["https://docs.ts.finance/technical-details/oracles","https://github.com/DefiLlama/defillama-server/pull/10632/files"]
+		Start Date: "2025-09-17"  
       },
       {
         name: "eOracle",
         type: "Secondary",
         proof: ["https://docs.ts.finance/technical-details/deployments"]
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+		End Date: "2025-09-17"
       },
     ],
     audit_links: ["https://github.com/term-structure/audits"],

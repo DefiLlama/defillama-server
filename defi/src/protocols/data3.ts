@@ -47419,6 +47419,12 @@ const data3_2: Protocol[] = [
         type: "Secondary",
         proof: ["https://docs.ts.finance/technical-details/deployments"]
       },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+		End Date: "2025-09-17"
+      },
     ],
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],

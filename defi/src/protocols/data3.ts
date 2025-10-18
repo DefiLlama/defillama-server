@@ -40708,7 +40708,7 @@ const data3_2: Protocol[] = [
       },
       {
         name: "DIA",
-        type: "Secondary",
+        type: "Primary",
         proof: ["https://explorer.hiro.so/txid/SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.alex-oracle-v1-1?chain=mainnet","https://github.com/DefiLlama/defillama-server/pull/10672"]
       },
     ],

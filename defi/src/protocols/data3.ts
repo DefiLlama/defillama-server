@@ -47411,7 +47411,7 @@ const data3_2: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://docs.ts.finance/technical-details/oracles"]
+        proof: ["https://docs.ts.finance/technical-details/oracles","https://github.com/DefiLlama/defillama-server/pull/10632/files"]
 		Start Date: "2025-09-17"  
       },
       {

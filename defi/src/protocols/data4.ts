@@ -31938,5 +31938,27 @@ const data4: Protocol[] = [
     twitter: "YieldBricks",
     listedAt: 1760736594,
   },
+  {
+    id: "6884",
+    name: "Aquifer",
+    address: null,
+    symbol: "-",
+    url: "https://aquiferdex.io/",
+    description: "Prop AMM on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/aquifer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "_aquifer_",
+    dimensions: {
+      dexs: "aquifer"
+    }
+  },
 ];
 export default data4;

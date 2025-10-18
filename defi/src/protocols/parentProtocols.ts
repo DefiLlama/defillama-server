@@ -6869,7 +6869,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "36569",
     chains: [],
     twitter: "sparkdotfi",
-    github: ["marsfoundation"],
+    github: ["sparkdotfi"],
     treasury: "spark.js",
   },
   {

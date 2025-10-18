@@ -40467,7 +40467,7 @@ const data3_2: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://docs.river.inc/outro/oracle"],
-        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"},{chain:"Arbitrum"}]
+        chains: [{chain: "BOB"},{chain: "Binance"},{chain: "Arbitrum"}]
       },
       {
         name: "DIA",
@@ -49595,7 +49595,8 @@ const data3_2: Protocol[] = [
       {
         name: "Chainlink",
         type: "Secondary",
-        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"],
+        startDate: "2025-09-17",
       },
     ],
     audit_links: ["https://github.com/term-structure/audits"],

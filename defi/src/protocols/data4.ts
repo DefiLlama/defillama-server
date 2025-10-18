@@ -22375,6 +22375,7 @@ const data4: Protocol[] = [
   {
     id: "6473",
     name: "Strata Season 0",
+    parentProtocol: "parent#strata",
     address: null,
     symbol: "-",
     url: "https://strata.money",

@@ -1,6 +1,5 @@
 import { AdapterType, SimpleAdapter, } from "../../data/types"
-import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
-import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
+import { getBlock } from "../../../dimension_migration/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { Chain, providers } from "@defillama/sdk/build/general";
@@ -8,7 +7,7 @@ import { PromisePool } from '@supercharge/promise-pool';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import loadAdaptorsData from "../../data";
-import { ADAPTER_TYPES, IJSON, ProtocolAdaptor, } from "../../data/types";
+import { IJSON, ProtocolAdaptor, } from "../../data/types";
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
@@ -152,7 +151,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     if (onCompleteCalled) return results;
     onCompleteCalled = true;
 
-    const errorObjects = errors.map(({ raw, item,  }: any) => {
+    const errorObjects = errors.map(({ raw, item, }: any) => {
       let message = raw?.message || (raw && raw.toString()) || 'Unknown error'
 
       return {
@@ -343,6 +342,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+
+      // dynamically import runAdapter so we import it only if needed and after the repo is setup
+      const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default
 
       const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all' },) as any
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names

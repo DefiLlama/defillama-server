@@ -28376,7 +28376,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://muschairs.com",
-    description: "A high-stakes on-chain game of reaction and skill, built on Arbitrum. Players stake ETH to join a game of musical chairs; the last one to react when the music stops loses their stake to the winners",
+    description: "Musical Chairs is a provably fair on-chain game of reaction and skill on Arbitrum, designed for Web3 mass adoption. It features a radically accessible stake of ~$8, a low commission, and a high 4-to-1 winner-to-loser ratio, creating a positive first experience for new users.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/musical-chairs.jpg`,
     audits: "0",

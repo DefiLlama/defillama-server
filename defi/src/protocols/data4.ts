@@ -15872,6 +15872,19 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Base", "Sonic", "Berachain", "Binance", "Plume Mainnet", "TAC", "Plasma"],
     forkedFrom: [],
     oraclesBreakdown: [
+         {
+        name: "Chronicle",
+        type: "Primary",
+        proof: [
+          "https://berascan.com/address/0x83348bef4994abfc11af0790ca83fa5f582b77ae",
+          "https://berascan.com/address/0x4d210d0d7cb11eae6f3b970cfa68594a71564310",
+          "https://berascan.com/address/0x7614a738accc2ed7234638250e769f72bcbc3880",
+          "https://berascan.com/address/0x9fbecbf8cb18170ae52cd5bbde09fe918d1dbbf9",
+          "https://berascan.com/address/0xe3822ff32fdb60a263df046f5bee6c3cb51e3e1b",
+          "https://berascan.com/address/0x6d34d7b10ddfc1875da4455ce58f90ca97b4e669"
+        ],
+        chains: [{ chain: "Berachain" }],
+      },
       {
         name: "Stork",
         type: "Primary",

@@ -31248,7 +31248,7 @@ const data4: Protocol[] = [
     name: "Pharaoh V3",
     address: "avax:0x13A466998Ce03Db73aBc2d4DF3bBD845Ed1f28E7",
     symbol: "PHAR",
-      url: "https://pharaoh.exchange/swap/",
+      url: "https://www.phar.gg/trade",
       description: `Pharaoh is a concentrated liquidity layer and exchange built on the Avalanche C-Chain, powered by the latest metaDEX x(3,3) methodology—a more fluid and accessible version of the popular ve(3,3) model.`,
     chain: "Avalanche",
     logo: `${baseIconsUrl}/pharaoh-v3.jpg`,

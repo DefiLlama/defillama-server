@@ -19,10 +19,7 @@ fi
 
 git pull -q
 
-time pnpm i > /dev/null
-git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
-
-time pnpm run --silent prebuild 
+time pnpm run --silent init-defi
 time pnpm run --silent cron-raises
 time pnpm run --silent api2-cron-task
 time pnpm run --silent cron-dimensions

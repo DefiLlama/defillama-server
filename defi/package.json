@@ -58,7 +58,7 @@
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
     "ui-tool": "pnpm -s run load-all-repos; pnpm -s run init; cd ui-tool; pnpm -s i; pnpm run start-server",
-    "init": "git pull -q && pnpm i -s && pnpm -s run prebuild",
+    "init-defi": "pnpm i -s && pnpm -s run prebuild",
     "load-tvl-repo": "bash src/cli/loadTvlRepo.sh",
     "load-dimensions-repo": "bash src/cli/loadDimensionsRepo.sh",
     "load-all-repos": "npm run load-tvl-repo --silent && npm run load-dimensions-repo --silent",

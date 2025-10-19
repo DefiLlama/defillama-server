@@ -29,9 +29,10 @@ function pre_init_server() {
 
   # start un-tool server
   echo "current directory: $(pwd)"
-
+  
+  git pull -q
   pnpm -s run load-all-repos
-  pnpm -s run init
+  pnpm -s run init-defi
 
   CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
   echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash

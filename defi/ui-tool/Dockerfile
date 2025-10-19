@@ -8,12 +8,10 @@ ENV CUSTOM_GIT_BRANCH_DEPLOYMENT=${CUSTOM_GIT_BRANCH_DEPLOYMENT}
 
 # Set the working directory in the container to /app
 WORKDIR /app
-RUN echo "deploying... $CUSTOM_GIT_BRANCH_DEPLOYMENT"
 
 # Clone your repo
 RUN git clone https://github.com/DefiLlama/defillama-server /app/repo
 
-RUN echo "test... $CUSTOM_GIT_BRANCH_DEPLOYMENT"
 # Check if CUSTOM_GIT_BRANCH_DEPLOYMENT is set and checkout that branch if it exists
 RUN if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then \
   cd /app/repo && \

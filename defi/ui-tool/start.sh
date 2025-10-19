@@ -7,6 +7,18 @@ cd $( dirname "$0" )
 SCRIPT_DIR="$(pwd)"
 ROOT_DIR=$SCRIPT_DIR/..
 
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
+if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
+    echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Checkout the specified branch
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Pull latest code from the branch
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+# else
+    # echo "Using default branch deployment: $(git branch --show-current)"
+fi
+
+
 function pre_init_server() {
   unset NODE_ENV  # else dev dependencies wont be installed
 

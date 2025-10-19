@@ -31960,5 +31960,50 @@ const data4: Protocol[] = [
       dexs: "aquifer"
     }
   },
+  {
+    id: "6885",
+    name: "Variational",
+    address: null,
+    symbol: "-",
+    url: "https://variational.io/",
+    description: "Variational is a protocol that provides infrastructure for peer-to-peer trading, clearing, and settlement of perpetuals and generalized derivatives. The Variational Protocol enables safe and efficient bilateral trading of options, futures, perpetuals, exotics, and more. Multiple apps have been built on the Variational Protocol, including Omni for perpetuals trading and Pro for institutions to trade customizable OTC derivatives.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/variational.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "variational_io",
+    dimensions: {
+      fees: "variational"
+    },
+    github: ["variational-research"],
+  },
+  {
+    id: "6886",
+    name: "Open Stablecoin Index",
+    address: "0x7ebab7190d3d574ce82d29f2fa1422f18e29969c",
+    symbol: "SQUILL",
+    url: "https://www.openstablecoinindex.com/",
+    description: "Open stablecoin index is an equal-weight index tracking leading stablecoin-networks advancing transparency, composability, and user-led governance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/open-stablecoin-index.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "squill",
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "OpenStableIndex",
+    dimensions: {
+      fees: "open-stablecoin-index"
+    }
+  },
 ];
 export default data4;

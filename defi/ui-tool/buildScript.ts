@@ -11,10 +11,7 @@ async function run() {
     return;
   }
 
-  execSync(
-    'GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build',
-    { cwd: __dirname, stdio: 'pipe' }
-  )
+  execSync('npm run build', { cwd: __dirname, stdio: 'pipe' })
 
   writeHashToFile('ui-tool.app.js', dataHash);
 }

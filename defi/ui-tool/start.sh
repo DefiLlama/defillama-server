@@ -42,7 +42,7 @@ function pre_init_server() {
   cd ui-tool
   pnpm i
   export REACT_APP_WSS_PORT=5001
-  pnpm run build
+  pnpm run cached_build
 }
 
 while true;

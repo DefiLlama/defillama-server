@@ -2,7 +2,7 @@ import loadAdaptorsData from "../../../data"
 import { chainConfigMap, gasData } from '@defillama/dimension-adapters/helpers/blockscoutFees'
 
 import { PromisePool } from '@supercharge/promise-pool';
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType } from "../../../data/types"
 import { getChainDisplayName } from "../../../../utils/normalizeChain";
 import { httpGet } from "@defillama/dimension-adapters/utils/fetchURL";
 import { handler2, IStoreAdaptorDataHandlerEvent } from "..";

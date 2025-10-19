@@ -4,7 +4,7 @@ import { TABLES, initializeTVLCacheDB } from '../db/index'
 import * as fs from 'fs'
 import { id } from 'ethers';
 import loadAdaptorsData from '../../adaptors/data';
-import { AdapterType, ProtocolType } from '@defillama/dimension-adapters/adapters/types';
+import { AdapterType, ProtocolType } from "../../adaptors/data/types"
 import { AdapterRecord2 } from '../../adaptors/db-utils/AdapterRecord2';
 import { getTimestampAtStartOfDay } from '../../utils/date';
 import { storeAdapterRecord } from '../../adaptors/db-utils/db2';

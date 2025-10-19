@@ -1,7 +1,7 @@
 import '../utils/failOnError'
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
@@ -74,18 +74,18 @@ async function run() {
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
 
-  if (NOTIFY_ON_DISCORD) {
+  if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     if (spikeRecords.length) {
       await sendMessage(`
         Spikes detected and removed:
       ${spikeRecords.join('\n')}
-        `, process.env.DIM_CHANNEL_WEBHOOK!)
+        `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
     if (invalidDataRecords.length) {
       await sendMessage(`
         Invalid records detected and removed:
       ${invalidDataRecords.join('\n')}
-        `, process.env.DIM_CHANNEL_WEBHOOK!)
+        `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
 
@@ -734,7 +734,8 @@ runWithRuntimeLogging(run, {
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))
 

@@ -61,6 +61,11 @@
     }
   },
   "berachain": {
+    "0xDeadf18CB9233770FE8874c78D7483b4A126B34a": {
+      "to": "coingecko#berachain-bera",
+      "decimals": 18,
+      "symbol": "pBERA"
+    },
     "0x118D2cEeE9785eaf70C15Cd74CD84c9f8c3EeC9a": {
       "decimals": "18",
       "symbol": "sWBERA",
@@ -356,6 +361,11 @@
     }
   },
   "neutron": {
+    "factory:neutron1frc0p5czd9uaaymdkug2njz7dc7j65jxukp9apmt9260a8egujkspms2t2:udntrn": {
+      "to": "coingecko#drop-staked-ntrn",
+      "decimals": 6,
+      "symbol": "dNTRN"
+    },
     "untrn": {
       "decimals": "6",
       "symbol": "NTRN",
@@ -1613,6 +1623,11 @@
     }
   },
   "stacks": {
+    "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.usdh-token-v1::usdh": {
+      "decimals": "8",
+      "symbol": "USDH",
+      "to": "coingecko#hermetica-usdh"
+    },
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststxbtc-token-v2::ststxbtc": {
       "decimals": "6",
       "symbol": "stSTXbtc",
@@ -1703,7 +1718,12 @@
     "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
       "decimals": "18",
       "symbol": "vyUSD",
-      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc"
+    },
+    "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
+      "decimals": "18",
+      "symbol": "vyETH",
+      "to": "asset#arbitrum:0x1f52edf2815bfa625890b61d6bf43ddc24671fe8"
     },
     "0x437cc33344a0b27a429f795ff6b469c72698b291": {
       "decimals": "6",
@@ -2169,6 +2189,11 @@
     }
   },
   "base": {
+    "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
+      "decimals": "18",
+      "symbol": "vyETH",
+      "to": "asset#base:0x1f52edf2815bfa625890b61d6bf43ddc24671fe8"
+    },
     "0x9bba915f036158582c20b51113b925f243a1a1a1": {
       "decimals": "18",
       "symbol": "IMGN",
@@ -2824,6 +2849,11 @@
       "to": "coingecko#abtc"
     },
     "0x5fabd1b12e39967a3c24e91b7b8f67719a6dacee74f3c8b9fb7d93e855437d2": {
+      "decimals": "6",
+      "symbol": "USD1",
+      "to": "coingecko#usd1-wlfi"
+    },
+    "0x05fabd1b12e39967a3c24e91b7b8f67719a6dacee74f3c8b9fb7d93e855437d2": {
       "decimals": "6",
       "symbol": "USD1",
       "to": "coingecko#usd1-wlfi"
@@ -4054,6 +4084,26 @@
     }
   },
   "ibc": {
+    "3F1D988D9EEA19EB0F3950B4C19664218031D8BCE68CE7DE30F187D5ACEA0463": {
+      "to": "coingecko#universal-btc",
+      "decimals": 8,
+      "symbol": "uniBTC"
+    },
+    "C0F284F165E6152F6DDDA900537C1BC8DA1EA00F03B9C9EC1841FA7E004EF7A3": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "solvBTC"
+    },
+    "E2A000FD3EDD91C9429B473995CE2C7C555BCC8CFC1D0A3D02F514392B7A80E8": {
+      "to": "coingecko#ether-fi-staked-btc",
+      "decimals": 8,
+      "symbol": "eBTC"
+    },
+    "B7BF60BB54433071B49D586F54BD4DED5E20BEFBBA91958E87488A761115106B": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
     "05D299885B07905B6886F554B39346EA6761246076A1120B1950049B92B922DD": {
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
@@ -10392,6 +10442,11 @@
     }
   },
   "move": {
+    "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
+      "to": "coingecko#mbtc",
+      "decimals": 10,
+      "symbol": "MBTC"
+    },
     "0x51ffc9885233adf3dd411078cad57535ed1982013dc82d9d6c433a55f2e0035d": {
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": 8,
@@ -10551,11 +10606,6 @@
       "decimals": "18",
       "symbol": "pUSDT",
       "to": "coingecko#tether"
-    },
-    "0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC": {
-      "decimals": "18",
-      "symbol": "BTC",
-      "to": "coingecko#bitcoin"
     },
     "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
       "decimals": "18",
@@ -10949,6 +10999,11 @@
     }
   },
   "katana": {
+    "0xcA52d08737E6Af8763a2bF6034B3B03868f24DDA": {
+      "to": "coingecko#dtrinity-usd",
+      "decimals": 18,
+      "symbol": "dUSD"
+    },
     "0xb77f1a8cb126d8567f226f990f84e2f698cc30f8": {
       "decimals": "18",
       "symbol": "SPECTRA",
@@ -11551,7 +11606,7 @@
     },
     "0x51A30E647D33A044967FA3DBb04d6ED6F45455F6": {
       "decimals": "18",
-      "symbol": "USDN",
+      "symbol": "USN",
       "to": "coingecko#noon-usn"
     },
     "0x5Ced7F73B76A555CCB372cc0F0137bEc5665F81E": {
@@ -12111,6 +12166,11 @@
     }
   },
   "plasma": {
+    "0x6100E367285b01F48D07953803A2d8dCA5D19873": {
+      "to": "coingecko#wrapped-xpl",
+      "decimals": 18,
+      "symbol": "WXPL"
+    },
     "0xC4374775489CB9C56003BF2C9b12495fC64F0771": {
       "decimals": 6,
       "symbol": "syrupUSDT",

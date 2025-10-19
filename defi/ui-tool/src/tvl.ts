@@ -10,7 +10,6 @@ import PromisePool from '@supercharge/promise-pool';
 import { deleteProtocolItems, getProtocolItems, initializeTVLCacheDB } from '../../src/api2/db';
 import dynamodb from '../../src/utils/shared/dynamodb';
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl, } from '../../src/utils/getLastRecord';
-import { getClosestDayStartTimestamp } from '@defillama/dimension-adapters/utils/date';
 import { importAdapterDynamic } from '../../src/utils/imports/importAdapter';
 
 const tvlNameMap: Record<string, IProtocol> = {}
@@ -18,7 +17,6 @@ const allItems = [...protocols, ...treasuries, ...entities]
 
 allItems.forEach((protocol: any) => tvlNameMap[protocol.name] = protocol)
 export const tvlProtocolList = allItems.filter(i => i.module !== 'dummy.js').map(i => i.name)
-import {  } from "../../src/cli/utils/clearProtocolCache";
 
 
 export async function runTvlAction(ws: any, data: any) {
@@ -103,7 +101,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
 
     if (!skipBlockFetch) {
 
-      if (adapter.timetravel === false) {
+      if (adapter.timetravel === false && !chains?.length) {  // if we are delibrately passing chains, we assume user knows what they are doing
         console.error("Adapter doesn't support refilling");
         return;
       }
@@ -377,4 +375,25 @@ export function sendTvlDeleteWaitingRecords(ws: any) {
     type: 'tvl-delete-waiting-records',
     data: Object.values(deleteRecordsList).map(getRecordItem),
   }))
+}
+
+
+function toUNIXTimestamp(ms: number) {
+  return Math.round(ms / 1000);
+}
+
+function getClosestDayStartTimestamp(timestamp: number) {
+  const dt = new Date(timestamp * 1000);
+  dt.setUTCHours(0, 0, 0, 0);
+  const prevDayTimestamp = toUNIXTimestamp(dt.getTime());
+  dt.setUTCHours(24);
+  const nextDayTimestamp = toUNIXTimestamp(dt.getTime());
+  if (
+    Math.abs(prevDayTimestamp - timestamp) <
+    Math.abs(nextDayTimestamp - timestamp)
+  ) {
+    return prevDayTimestamp;
+  } else {
+    return nextDayTimestamp;
+  }
 }

@@ -104,7 +104,11 @@ export const chainCoingeckoIds = {
     url: "https://ethereum.foundation/",
     dimensions: {
       fees: {
-        genuineSpikes: ["1651449600"],
+        genuineSpikes: [
+          "1651449600",
+          "1651363200",  // otherside mint
+          "1760054400",  // 2025-10-10 - sharp drop in the market - Black Friday
+        ],
         adapter: "ethereum"
       }
     }
@@ -2349,8 +2353,8 @@ export const chainCoingeckoIds = {
     }
   },
   "Linea": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "linea",
+    symbol: "LINEA",
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["ConsenSys"],
@@ -3161,7 +3165,10 @@ export const chainCoingeckoIds = {
     cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
-    url: "https://hyperliquid.xyz/"
+    url: "https://hyperliquid.xyz/",
+    dimensions: {
+      fees: "hyperevm"
+    }
   },
   "Nibiru": {
     geckoId: "nibiru",
@@ -4927,6 +4934,9 @@ export const chainCoingeckoIds = {
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,
+    dimensions: {
+      fees: "plasma"
+    }
   },
   "Constellation": {
     geckoId: "constellation-labs",
@@ -4966,6 +4976,25 @@ export const chainCoingeckoIds = {
     url: "https://xone.org/",
     github: ["hello-xone"],
     chainId: 3721,
+  },
+  "Kasplex": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "kasplex",
+    url: "https://kasplex.org/",
+    github: ["kasplex"],
+  },
+  "0G": {
+    geckoId: "zero-gravity",
+    symbol: "0G",
+    cmcId: "38337",
+    categories: ["EVM"],
+    twitter: "0G_Foundation",
+    url: "https://www.0gfoundation.ai/",
+    github: ["0gfoundation"],
+    chainId: 16661,
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -5182,7 +5211,8 @@ const chainLabelMap = {
   "zklighter": "zkLighter",
   "goat": "Goat",
   "gatelayer": "GateLayer",
-  "xone": "Xone Chain"
+  "xone": "Xone Chain",
+  "0g": "0G"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5296,6 +5326,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }
 }
+
+// NOTE: this only works if chain key and label are different, else capitalize the first character of the chain key
+export const chainKeyToLabelMap = allChainLabelMap
 
 export function getDisplayChain(chains: string[]) {
   if (chains.length > 1) {

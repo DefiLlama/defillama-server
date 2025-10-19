@@ -10,13 +10,45 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { storeNotTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
-import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { storeR2JSONString } from "../src/utils/r2";
+const BufferLayout = require("buffer-layout");
+
+const uint64 = (property = "uint64") => {
+  const layout = BufferLayout.blob(8, property);
+
+  const _decode = layout.decode.bind(layout);
+  const _encode = layout.encode.bind(layout);
+
+  layout.decode = (buffer: any, offset: any) => {
+    const data = _decode(buffer, offset);
+    return new BigNumber(
+      [...data]
+        .reverse()
+        .map((i) => `00${i.toString(16)}`.slice(-2))
+        .join(""),
+      16
+    );
+  };
+
+  layout.encode = (num: any, buffer: any, offset: any) => {
+    const a = num.toArray().reverse();
+    let b = Buffer.from(a);
+    if (b.length !== 8) {
+      const zeroPad = Buffer.alloc(8);
+      b.copy(zeroPad);
+      b = zeroPad;
+    }
+    return _encode(b, buffer, offset);
+  };
+
+  return layout;
+};
+
+const u64 = uint64
 
 export async function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Promise<TokenTvlData> {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -236,7 +268,7 @@ async function getSolanaTokenSupply(
 ): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with ${chain} adapter!`);
 
-  const solanaMintLayout = struct([u64("supply")]);
+  const solanaMintLayout = BufferLayout.struct([u64("supply")]);
 
   const sleepTime = tokens.length > 2000 ? 2000 : 200;
   const tokensPK: PublicKey[] = [];

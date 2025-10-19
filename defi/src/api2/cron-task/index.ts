@@ -24,6 +24,7 @@ import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
+import { chainKeyToLabelMap } from "../../utils/normalizeChain";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -299,9 +300,14 @@ async function run() {
     console.time('write /config')
     const data = {
       protocols: cache.metadata.protocols,
+      parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      treasuries: cache.metadata.treasuries,
+      entities: cache.metadata.entities,
+      chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)
+    await storeRouteData('/_fe/static/configs', data)
 
 
     // this is handled in rest server now
@@ -415,13 +421,14 @@ async function storeRWAStats() {
 
 
 runWithRuntimeLogging(run, {
-        application: "cron-task",
-        type: 'tvl-data',
-      })
+  application: "cron-task",
+  type: 'tvl-data',
+})
   .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))

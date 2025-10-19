@@ -8,9 +8,10 @@ import { spawn } from "child_process"
 import entities from "../protocols/entities";
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import { ADAPTER_TYPES } from "../adaptors/data/types";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../adaptors/data/types"
 import { readdir, writeFile } from "fs/promises";
-import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeHashToFile } from "../adaptors/utils";
+import * as sdk from '@defillama/sdk'
+import { fileExists, getDimensionsRepoCommitHash, readHashFromFile, writeFromCache, writeHashToFile, writeToCache } from "../adaptors/utils";
 
 const extensions = ['ts', 'md', 'js']
 
@@ -19,8 +20,7 @@ async function run() {
 
   const buildFunctions = {
     // 'tvl import': createTVLImportsFile,
-    'liquidation import': createLiquidationImportsFile,
-    'emissions import': createEmissionsImportsFile,
+    // 'liquidation import': createLiquidationImportsFile,
     'dimensions import': createDimensionsImports,
   }
 
@@ -33,6 +33,7 @@ async function run() {
 
 run().catch(console.error).then(() => process.exit(0))
 
+/* Liquidations is disabled for now
 function createLiquidationImportsFile() {
   const excludeLiquidation = ["test.ts", "utils", "README.md"]
   writeFileSync("./src/utils/imports/adapters_liquidations.ts",
@@ -42,7 +43,7 @@ function createLiquidationImportsFile() {
 }`)
 }
 
-
+ */
 
 async function createDimensionsImports() {
   const outputFile = "./src/utils/imports/dimensions_adapters.json"
@@ -52,6 +53,16 @@ async function createDimensionsImports() {
     console.log('No changes in dimension-adapters repo, skipping dimensions imports generation')
     return
   }
+
+
+  // check if we already have the data in 
+  const dimHashKey = 'dimensionAdaptersHash_' + dimRepoHash
+
+  const wroteFromCache = await writeFromCache(dimHashKey, outputFile, {
+    successMessage: '[DIMENSIONS] Using cached dimensions imports, skipping generation',
+    errorMessage: '[DIMENSIONS] Error reading from cache, proceeding to generate dimensions imports'
+  })
+  if (wroteFromCache) return;
 
   const excludeKeys = new Set(["index", "README", '.gitkeep'])
   const baseFolderPath = "./dimension-adapters" // path relative to current working directory -> `cd /defi`
@@ -63,6 +74,8 @@ async function createDimensionsImports() {
 
 
   await writeFile(outputFile, JSON.stringify(dimensionsImports))
+
+  await writeToCache(dimHashKey, dimensionsImports)
   writeHashToFile('dimensionAdapters', dimRepoHash)
 
   async function addAdapterType(folderPath: string) {
@@ -113,21 +126,12 @@ async function createDimensionsImports() {
 }
 
 
-
-// emissions-adapters
-function createEmissionsImportsFile() {
-  const emission_keys = getDirectories(`./emissions-adapters/protocols`)
-  writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
-    `export default {
-    ${emission_keys.map(k => `"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
-}`)
-}
-
 async function createTVLImportsFile() {
-  await writeFile("./src/utils/imports/adapters.ts",
-    `export default {
-    ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
-}`)
+  // we no longer need the imports/adapters.ts file
+//   await writeFile("./src/utils/imports/adapters.ts",
+//     `export default {
+//     ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
+// }`)
   return createTvlAdapterDataJSON()
 }
 

@@ -1,6 +1,6 @@
 import { AdaptorRecordType, ProtocolAdaptor } from "../../adaptors/data/types";
 import { readFromPGCache, writeToPGCache } from "../db";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../../adaptors/data/types"
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from ".";
 

@@ -1,6 +1,6 @@
 import '../../utils/failOnError'
 
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType, } from "../../../adaptors/data/types"
 import loadAdaptorsData from "../../../adaptors/data"
 import { getAllItemsAfter, } from "../../../adaptors/db-utils/db2";
 import { getTimeSDaysAgo, } from "../../utils/time";

@@ -9,5 +9,5 @@ cd $ROOT_DIR
 cd dimension-adapters
 git checkout master -q
 git pull -q
-npm i
+pnpm install --prefer-offline --frozen-lockfile
 git stash -q

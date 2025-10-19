@@ -1,5 +1,5 @@
 import { AdapterType, SimpleAdapter, } from "../../data/types"
-import { getBlock } from "../../../dimension_migration/helpers/getBlock";
+import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { Chain, providers } from "@defillama/sdk/build/general";

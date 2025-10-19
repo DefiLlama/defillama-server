@@ -1,6 +1,9 @@
 # Use an official Node.js runtime as a parent image
 FROM node:20
 
+# Install pnpm globally
+RUN npm install -g pnpm
+
 # Set the working directory in the container to /app
 WORKDIR /app
 

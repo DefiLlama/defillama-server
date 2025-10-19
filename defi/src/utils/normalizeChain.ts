@@ -3165,7 +3165,10 @@ export const chainCoingeckoIds = {
     cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
-    url: "https://hyperliquid.xyz/"
+    url: "https://hyperliquid.xyz/",
+    dimensions: {
+      fees: "hyperevm"
+    }
   },
   "Nibiru": {
     geckoId: "nibiru",
@@ -4931,6 +4934,9 @@ export const chainCoingeckoIds = {
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,
+    dimensions: {
+      fees: "plasma"
+    }
   },
   "Constellation": {
     geckoId: "constellation-labs",

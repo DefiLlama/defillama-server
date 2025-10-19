@@ -26892,7 +26892,7 @@ const data3_1: Protocol[] = [
     previousNames: ["DLN"],
     address: null,
     symbol: "-",
-    url: "https://debridge.finance",
+    url: "https://debridge.com",
     description: "The bridge that moves at lightspeed. Because DeFi doesn't wait.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/debridge.jpg`,
@@ -40214,10 +40214,11 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4400",
-    name: "Vest Exchange",
+    name: "Vest Markets",
+    previousNames: ["Vest Exchange"],
     address: null,
     symbol: "-",
-    url: "https://www.vest.exchange",
+    url: "https://vestmarkets.com/",
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
@@ -40231,7 +40232,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "vest/index.js",
     twitter: "VestExchange",
-    audit_links: ["https://docs.vest.exchange/audits"],
+    audit_links: ["https://docs.vestmarkets.com/audits"],
     listedAt: 1711709964,
     dimensions: {
       derivatives: "vest"

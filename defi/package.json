@@ -26,7 +26,7 @@
     "delete-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/cli/deleteTvl.ts",
     "displayData": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/cli/displayData.ts",
     "customFill": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/cli/customFill.ts",
-    "update-submodules": "npm run prebuild ",
+    "update-submodules": "npm run prebuild",
     "update-metadata-file": "node -e \"console.log('Deprecated: not used in long time')\"",
     "get-snapshot-ids": "npx ts-node --logError src/governance/getSnapshotIds.ts",
     "interactive": "npx ts-node --logError --transpile-only src/cli/interactive.ts",
@@ -58,7 +58,7 @@
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
     "ui-tool": "pnpm -s run load-all-repos; pnpm -s run init; cd ui-tool; pnpm -s i; pnpm run start-server",
-    "init": "git pull -q && pnpm i  -s && pnpm -s run prebuild",
+    "init": "git pull -q && pnpm i -s && pnpm -s run prebuild",
     "load-tvl-repo": "bash src/cli/loadTvlRepo.sh",
     "load-dimensions-repo": "bash src/cli/loadDimensionsRepo.sh",
     "load-all-repos": "npm run load-tvl-repo --silent && npm run load-dimensions-repo --silent"

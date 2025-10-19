@@ -31,5 +31,5 @@ src/api2/metadata.json
 src/api2/.api2-cache
 *._lhash
 
-dimensions-adapters
+dimension-adapters
 DefiLlama-Adapters

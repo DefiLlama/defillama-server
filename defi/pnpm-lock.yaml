@@ -20,6 +20,9 @@ importers:
       '@supercharge/promise-pool':
         specifier: ^2.3.2
         version: 2.4.0
+      '@types/ajv':
+        specifier: ^0.0.5
+        version: 0.0.5
       '@types/async-retry':
         specifier: ^1.4.8
         version: 1.4.9
@@ -44,6 +47,9 @@ importers:
       '@types/promise.allsettled':
         specifier: ^1.0.6
         version: 1.0.6
+      ajv:
+        specifier: ^8.17.1
+        version: 8.17.1
       aws-sdk:
         specifier: ^2.1692.0
         version: 2.1692.0
@@ -1642,6 +1648,9 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+
+  '@types/ajv@0.0.5':
+    resolution: {integrity: sha512-0UD98SZLwPk6cTMZoLs8W4XSAWgqT9nyoZiBw+uXEPf1u5h+Dn2ztMG4Is9pDA+9D7GKbCTfIkQK/hNgoWVQcQ==}
 
   '@types/async-retry@1.4.9':
     resolution: {integrity: sha512-s1ciZQJzRh3708X/m3vPExr5KJlzlZJvXsKpbtE2luqNcbROr64qU+3KpJsYHqWMeaxI839OvXf9PrUSw1Xtyg==}
@@ -8472,6 +8481,8 @@ snapshots:
   '@tsconfig/node14@1.0.3': {}
 
   '@tsconfig/node16@1.0.4': {}
+
+  '@types/ajv@0.0.5': {}
 
   '@types/async-retry@1.4.9':
     dependencies:

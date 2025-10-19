@@ -111,6 +111,12 @@ async function validateAllEndpoints(
     
     for (const [index, endpoint] of endpoints.entries()) {
       const progress = ((index + 1) / endpoints.length * 100).toFixed(1);
+      
+      if (!endpoint.serverUrl) {
+        console.log(`\nSkipping endpoint with missing server URL: ${endpoint.path}`);
+        continue;
+      }
+
       process.stdout.write(`\rProgress: ${progress}% (${index + 1}/${endpoints.length}) - Testing ${endpoint.path}`);
       
       try {

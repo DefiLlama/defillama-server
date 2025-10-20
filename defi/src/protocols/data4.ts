@@ -16162,6 +16162,7 @@ const data4: Protocol[] = [
     module: "spice-protocol/index.js",
     twitter: "SpiceProtocol",
     github: ["spice-protocol"],
+    audit_links: ["https://hashlock.com/wp-content/uploads/2025/08/Spice-Smart-Contract-Audit-Report-Final-Report-v7.pdf"],
     listedAt: 1747867094,
   },
   {

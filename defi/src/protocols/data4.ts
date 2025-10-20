@@ -20970,8 +20970,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
     dimensions: {
-      derivatives: "rysk-v12",
-      fees: "rysk-v12",
+      // derivatives: "rysk-v12",  # why is it under derivaties, it is options?
+      // fees: "rysk-v12", # do not track premium paid as fees, check how we track fees of other options protocols
     }
   },
   {

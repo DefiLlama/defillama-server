@@ -30,6 +30,7 @@ const DEFAULTS: any = {
   TAC_RPC_MULTICALL: "0xcA11bde05977b3631167028862bE2a173976CA11",
   SOLANA_RPC: "https://api.mainnet-beta.solana.com",
   VIRTUS_BACKEND_BASE: 'https://back.virtus-protocol.com/api',
+  KASPLEX_RPC: "https://evmrpc.kasplex.org",
 }
 
 export const ENV_KEYS = new Set([

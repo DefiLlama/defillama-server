@@ -15809,6 +15809,15 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Unichain" }],
       },
+         {
+        name: "Chronicle",
+        type: "Primary",
+        proof: [
+          "https://arbiscan.io/address/0x69a351bf446b5997642477bcb95979a89ac78c17#code",
+          "https://arbiscan.io/address/0x8db25afe02c20783c7d4b52c738f8a560d53cdf9#code"
+        ],
+        chains: [{ chain: "Arbitrum" }],
+      },
       {
         name: "eOracle",
         type: "Primary",

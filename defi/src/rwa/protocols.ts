@@ -749,7 +749,7 @@ export const metadata: { [id: string]: Characteristics } = {
     symbols: ["BRLT"],
     matchExact: true, 
     redeemable: false,
-    attestations: true,
+    attestations: false,
     cexListed: false,
     kyc: true,
     transferable: true,

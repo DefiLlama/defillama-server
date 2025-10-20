@@ -123,5 +123,10 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
     "typeorm": "^0.3.11"
+  },
+  "pnpm": {
+    "overrides": {
+      "pg-cursor": "^2.15.3"
+    }
   }
 }

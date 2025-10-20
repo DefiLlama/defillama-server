@@ -8872,8 +8872,11 @@ const data4: Protocol[] = [
     ],
     listedAt: 1742416591,
     dimensions: {
-      fees: "squadswap-wow",
-      dexs: "squadswap-wow"
+      // wash trading, check from these two address
+      // https://bscscan.com/address/0x4db4c2b2c67256d4ea029e624b478555cd49a118
+      // https://bscscan.com/address/0xaabbcc932c7141a016fa08b514ec10bd1db89702
+      // fees: "squadswap-wow",
+      // dexs: "squadswap-wow", 
     }
   },
   {

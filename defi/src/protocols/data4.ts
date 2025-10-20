@@ -15649,7 +15649,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1747734127,
     dimensions: {
-      // fees: "gauntlet" # incorrect fees on sol, fix it and re-enable #10843
+      fees: "gauntlet"
     }
   },
   {

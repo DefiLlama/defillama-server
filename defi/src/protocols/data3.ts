@@ -21322,7 +21322,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "savings-xdai",
     cmcId: "28356",
-    category: "CDP",
+    category: "Yield",
     chains: ["xDai"],
     module: "sdai/index.js",
     twitter: null,

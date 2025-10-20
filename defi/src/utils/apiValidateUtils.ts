@@ -208,32 +208,38 @@ export function getServerUrl(endpoint: string, spec: any, apiType: 'free' | 'pro
   }
 }
 
+const messagesWarned = new Set<string>();
+
 export function getBetaServerUrl(prodServerUrl: string): string {
   try {
     const prodUrl = new URL(prodServerUrl);
     const path = prodUrl.pathname;
     
-    let betaBaseUrl = '';
+    let betaBaseUrl: any = '';
     
     if (prodUrl.hostname === 'coins.llama.fi') {
-      betaBaseUrl = process.env.BETA_COINS_URL || process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_COINS_URL
     } else if (prodUrl.hostname === 'stablecoins.llama.fi') {
-      betaBaseUrl = process.env.BETA_STABLECOINS_URL || process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_STABLECOINS_URL
     } else if (prodUrl.hostname === 'yields.llama.fi') {
-      betaBaseUrl = process.env.BETA_YIELDS_URL || process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_YIELDS_URL
     } else if (prodUrl.hostname === 'api.llama.fi') {
-      betaBaseUrl = process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_API_URL
     } else if (prodUrl.hostname === 'pro-api.llama.fi') {
-      betaBaseUrl = process.env.BETA_PRO_API_URL || process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_PRO_API_URL
     } else if (prodUrl.hostname === 'bridges.llama.fi') {
-      betaBaseUrl = process.env.BETA_BRIDGES_URL || process.env.BETA_API_URL || '';
+      betaBaseUrl = process.env.BETA_BRIDGES_URL
     } else {
       console.warn(`No beta URL mapping found for domain: ${prodUrl.hostname}`);
-      betaBaseUrl = process.env.BETA_API_URL || '';
+      betaBaseUrl = '';
     }
     
     if (!betaBaseUrl) {
-      console.warn(`Beta URL not configured for ${prodUrl.hostname}`);
+      const warning = `Beta URL not configured for ${prodUrl.hostname}`;
+      if (!messagesWarned.has(warning)) {
+        messagesWarned.add(warning);
+        console.warn(warning);
+      }
       return '';
     }
     

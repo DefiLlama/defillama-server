@@ -9,9 +9,6 @@ This server does verify these assets.
 In the `defillama-server/defi` folder:
 
 ```bash
-# you should always do it to update new codes
-git submodule update --init --recursive --remote --merge
-
 # run the checking script locally
 npm run local-test-por wbtc
 

@@ -1,4 +1,4 @@
-import userAdapters from "../dimension-adapters/users/list";
+import userAdapters from "./dimension_migration/users/list";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { PromisePool } from '@supercharge/promise-pool'
 import { shuffleArray } from "./utils/shared/shuffleArray";
@@ -6,7 +6,7 @@ import { storeGas, storeTxs, storeUsers } from "./users/storeUsers";
 import { getGasPrice } from "./users/utils";
 import { storeR2JSONString } from "./utils/r2";
 import { storeNewUsers } from "./users/storeUsers";
-import { countNewUsers } from "@defillama/dimension-adapters/users/utils/countUsers";
+import { countNewUsers } from "./dimension_migration/users/utils/countUsers";
 
 export function storeUserInfo(users:any, start:number, end:number, id:string) {
     return Promise.all(Object.entries(users).map(async ([chain, metrics]: [string, any]) => {

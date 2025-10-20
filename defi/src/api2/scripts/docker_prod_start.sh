@@ -18,17 +18,12 @@ if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
 fi
 
 git pull -q
-git submodule update --init --recursive --quiet
-git submodule update --remote --merge --quiet
 
-time npm i > /dev/null
-git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
-
-time npm run --silent prebuild 
-time npm run --silent cron-raises
-time npm run --silent api2-cron-task
-time npm run --silent cron-dimensions
-time npm run --silent cron-app-metadata
+time pnpm run --silent init-defi
+time pnpm run --silent cron-raises
+time pnpm run --silent api2-cron-task
+time pnpm run --silent cron-dimensions
+time pnpm run --silent cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

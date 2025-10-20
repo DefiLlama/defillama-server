@@ -32011,7 +32011,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
     module: "ultrayield/index.js",
     forkedFromIds: [],
     twitter: "ultrayieldapp",

@@ -25079,14 +25079,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6587",
-    name: "Turtle",
+    name: "Turtle Cronos", // previous name turtle
     address: "cronos:0x8C9E2bEf2962CE302ef578113eebEc62920B7e57",
     symbol: "TURTLE",
     url: "https://turtleoncro.com/",
     description:
       "Turtle on Cronos is a memecoin and that is driven by the community. Our focuses are onboarding, spreading awareness, and welcoming people to the cronos blockchain through NFTs, memes, good vibes, and safe trading",
     chain: "Cronos",
-    logo: `${baseIconsUrl}/turtle.jpg`,
+    logo: `${baseIconsUrl}/turtle-cronos.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "turtle-2",

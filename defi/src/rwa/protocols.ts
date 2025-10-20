@@ -758,7 +758,7 @@ export const metadata: { [id: string]: Characteristics } = {
   "6856": {
     symbols: ["GOLD"],
     matchExact: true, 
-    redeemable: false,
+    redeemable: true,
     attestations: true, 
     cexListed: false,
     kyc: true, 

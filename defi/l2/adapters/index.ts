@@ -59,7 +59,7 @@ export const linea = async (): Promise<Address[]> => {
   const data = await fetch(
     "https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-shortlist.json"
   );
-  addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
+  addresses.linea = data.tokens.filter((t: any) => !t.tokenType.includes("native")).map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
 export const metis = async (): Promise<Address[]> => {

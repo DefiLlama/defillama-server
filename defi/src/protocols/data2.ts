@@ -1073,7 +1073,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "croissant-games",
     cmcId: "17465",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Cronos"],
     forkedFrom: [],
     module: "croissant/index.js",
@@ -1932,8 +1932,8 @@ const data2: Protocol[] = [
     previousNames: ["DLN"],
     address: "solana:DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
     symbol: "DBR",
-    url: "https://app.debridge.finance/r/32425",
-    referralUrl: "https://app.debridge.finance/r/32425",
+    url: "https://app.debridge.com/r/32425",
+    referralUrl: "https://app.debridge.com/r/32425",
     description:
       "deBridge is a cross-chain interoperability and liquidity transfer protocol that allows the decentralized transfer of arbitrary data and assets between various blockchains",
     chain: "Ethereum",
@@ -2160,7 +2160,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EOS"],
     oracles: ["Internal"],
     forkedFrom: [],
@@ -3305,7 +3305,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1521",
-    name: "Horizon Protocol",
+    name: "Horizon Protocol", // rebrand to Xpanse
+    //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
     url: "https://horizonprotocol.com/",
@@ -3558,7 +3559,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange"
+      derivatives: "01-exchange",
+      fees: "o1-exchange"
     },
   },
   {
@@ -4383,7 +4385,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "luckychip",
     cmcId: "20170",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -12412,7 +12414,7 @@ const data2: Protocol[] = [
     treasury: "betswirl.js",
     cmcId: "18453",
     category: "Prediction Market",
-    chains: ["Binance", "Ethereum", "Polygon", "Arbitrum", "Avalanche"],
+    chains: ["Binance", "Polygon", "Arbitrum", "Avalanche"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "betswirl/index.js",
@@ -14370,14 +14372,15 @@ const data2: Protocol[] = [
   },
   {
     id: "1997",
-    name: "Morpho Compound",
+    name: "Morpho V0 CompoundV2",
+    previousNames: ["Morpho Compound"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
       "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-compound.png`,
+    logo: `${baseIconsUrl}/morpho-v0-compoundv2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -16558,6 +16561,12 @@ const data2: Protocol[] = [
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9930"],
         chains: [{chain: "Unichain"}]
       },
+      {
+        name: "Api3",
+        type: "Primary",
+        proof: ["https://github.com/compound-finance/comet/pull/939"],
+        chains: [{chain: "Mantle"}]
+      },
     ],
     forkedFrom: [],
     module: "compound-v3/index.js",
@@ -17673,7 +17682,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EthereumPoW"],
     forkedFrom: [],
     module: "Fliperino/index.js",
@@ -18295,14 +18304,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2162",
-    name: "Ease.org",
+    name: "Easedefi.org",
     address: "0xEa5eDef1287AfDF9Eb8A46f9773AbFc10820c61c",
     symbol: "EASE",
-    url: "https://ease.org",
+    url: "https://easedefi.org",
     description:
       "Ease is a decentralized coverage protocol that enables users to protect their DeFi tokens without a premium while earning compounding yield.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ease.org.png`,
+    logo: `${baseIconsUrl}/easedefi.org.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "ease",
@@ -18440,14 +18449,15 @@ const data2: Protocol[] = [
   },
   {
     id: "2168",
-    name: "Morpho Aave",
+    name: "Morpho V0 AaveV2",
+    previousNames: ["Morpho Aave"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:
       "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-aave.png`,
+    logo: `${baseIconsUrl}/morpho-v0-aavev2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -21517,7 +21527,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["CSC"],
     module: "crypto-lottery/index.js",
     twitter: "__cryptolottery",
@@ -22518,6 +22528,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1670348069,
     github: ["abelfinance"],
+    deadUrl: true,
   },
   {
     id: "2336",
@@ -23749,7 +23760,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "freebie-life-finance",
     cmcId: "20870",
-    category: "Prediction Market",
+    category: "Yield Lottery",
     chains: ["Avalanche"],
     module: "freebie/index.js",
     twitter: "freebielifeme",
@@ -26797,6 +26808,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"],
     github: ["nounsDAO"],
+    dimensions: {
+      fees: "nouns"
+    }
   },
   {
     id: "2523",
@@ -28595,7 +28609,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Polygon"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -28964,7 +28978,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],

@@ -1,4 +1,4 @@
-import { Adapter, BaseAdapter, AdapterType, SimpleAdapter } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, BaseAdapter, AdapterType, SimpleAdapter } from "../data/types"
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { getChainDisplayName, normalizedChainReplacements } from "../../utils/normalizeChain";
 import { getMethodologyByType as getDefaultMethodologyByCategory, } from "../data/helpers/methodology";

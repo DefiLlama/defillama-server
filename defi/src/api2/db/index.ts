@@ -1,14 +1,21 @@
-import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions, QueryTypes } from 'sequelize'
+import { Model, ModelStatic, Op, QueryTypes, Sequelize, Options as SequelizeOptions } from 'sequelize'
 
+import { log } from '@defillama/sdk'
 import getEnv, { validateEnv } from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
-import { log } from '@defillama/sdk'
 
 import {
-  dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
+  dailyRawTokensTvl,
+  dailyTokensTvl,
+  dailyTvl,
+  dailyUsdTokensTvl,
+  hourlyRawTokensTvl,
+  hourlyTokensTvl,
+  hourlyTvl,
+  hourlyUsdTokensTvl,
 } from "../../utils/getLastRecord"
+import { deleteFromPGCache, getDailyTvlCacheId, readFromPGCache, writeToPGCache } from '../cache/file-cache'
 import { getTimestampString } from '../utils'
-import { readFromPGCache, writeToPGCache, getDailyTvlCacheId, deleteFromPGCache } from '../cache/file-cache'
 
 const dummyId = 'dummyId'
 
@@ -42,6 +49,33 @@ function getTVLCacheTable(ddbPKFunction: Function): ModelStatic<Model<any, any>>
 function isHourlyDDBPK(ddbPKFunction: Function) {
   const key = ddbPKFunction(dummyId)
   return key.includes('hourly')
+}
+
+function sleep(ms: number) {
+  return new Promise((res) => setTimeout(res, ms))
+}
+
+async function withPgRetries<T>(fn: () => Promise<T>, retries = 2, baseDelayMs = 2000): Promise<T> {
+  let lastErr: unknown
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await fn()
+    } catch (err: any) {
+      lastErr = err
+      const msg = `${err?.name ?? ''} ${err?.message ?? ''}`
+      const retriable =
+        msg.includes('SequelizeConnectionAcquireTimeoutError') ||
+        msg.includes('SequelizeConnectionError') ||
+        msg.includes('TimeoutError') ||
+        msg.includes('ETIMEDOUT') ||
+        msg.includes('ECONNRESET')
+      if (!retriable || attempt === retries) break
+      const delay = baseDelayMs * Math.pow(2, attempt) // 2000ms, 4000ms
+      log(`PG retry #${attempt + 1} in ${delay}ms -> ${err?.name}`)
+      await sleep(delay)
+    }
+  }
+  throw lastErr
 }
 
 let sequelize: Sequelize | null = null
@@ -132,12 +166,14 @@ async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string,
 
 async function _getLatestProtocolItem(ddbPKFunction: Function, protocolId: string) {
   const table = getTVLCacheTable(ddbPKFunction)
-  const item: any = await table.findOne({
-    where: { id: protocolId },
-    attributes: ['data', 'timestamp'],
-    raw: true,
-    order: [['timestamp', 'DESC']],
-  })
+  const item: any = await withPgRetries(() =>
+    table.findOne({
+      where: { id: protocolId },
+      attributes: ['data', 'timestamp'],
+      raw: true,
+      order: [['timestamp', 'DESC']],
+    })
+  )
   if (!item) return null
   item.data.SK = item.timestamp
   return item.data
@@ -153,13 +189,14 @@ async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: stri
   if (searchWidth) {
     timestampFilter = { [Op.gte]: timestampTo - searchWidth, [Op.lte]: timestampTo + searchWidth }
 
-    const items: any = await table.findAll({
-      where: { id: protocolId, timestamp: timestampFilter },
-      attributes: ['data', 'timestamp'],
-      raw: true,
-      order: [['timestamp', 'DESC']],
-    })
-
+    const items: any = await withPgRetries(() =>
+      table.findAll({
+        where: { id: protocolId, timestamp: timestampFilter },
+        attributes: ['data', 'timestamp'],
+        raw: true,
+        order: [['timestamp', 'DESC']],
+      })
+    )
     if (!items.length) return null
 
     let closest = items[0];
@@ -174,12 +211,14 @@ async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: stri
   } else if (timestampFrom)
     timestampFilter = { [Op.gte]: timestampFrom, [Op.lte]: timestampTo }
 
-  const item: any = await table.findOne({
-    where: { id: protocolId, timestamp: timestampFilter },
-    attributes: ['data', 'timestamp'],
-    raw: true,
-    order: [['timestamp', 'DESC']],
-  })
+  const item: any = await withPgRetries(() =>
+    table.findOne({
+      where: { id: protocolId, timestamp: timestampFilter },
+      attributes: ['data', 'timestamp'],
+      raw: true,
+      order: [['timestamp', 'DESC']],
+    })
+  )
   if (!item) return null
   item.data.SK = item.timestamp
   return item.data
@@ -191,14 +230,16 @@ async function _saveProtocolItem(ddbPKFunction: Function, record: TVLCacheRecord
 
   const table = getTVLCacheTable(ddbPKFunction)
 
-  if (options.overwriteExistingData) {
-    await table.upsert(record)
-  } else {
-    await table.findOrCreate({
-      where: { id: record.id, timeS: record.timeS },
-      defaults: record,
-    })
-  }
+  return withPgRetries(async () => {
+    if (options.overwriteExistingData) {
+      await table.upsert(record)
+    } else {
+      await table.findOrCreate({
+        where: { id: record.id, timeS: record.timeS },
+        defaults: record,
+      })
+    }
+  }, 2, 2000)
 }
 
 async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
@@ -240,7 +281,7 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
     { type: QueryTypes.SELECT }
   )
 
-  log('[Postgres] fetch item count', table.getTableName(), items.length)
+  // log('[Postgres] fetch item count', table.getTableName(), items.length)
 
   items.forEach((i: any) => i.data.SK = i.timestamp)
   return items
@@ -334,25 +375,8 @@ function getPGConnection() {
 }
 
 export {
-  TABLES,
-  sequelize,
-  getLatestProtocolItem,
-  getAllProtocolItems,
-  getClosestProtocolItem,
-  saveProtocolItem,
-  getPGConnection,
-  initializeTVLCacheDB,
-  closeConnection,
-  deleteProtocolItems,
-  readFromPGCache,
-  writeToPGCache,
-  deleteFromPGCache,
-  getDailyTvlCacheId,
-  getLatestProtocolItems,
-  getHourlyTvlUpdatedRecordsCount,
-  getDimensionsUpdatedRecordsCount,
-  getTweetsPulledCount,
-  getProtocolItems,
+  closeConnection, deleteFromPGCache, deleteProtocolItems, getAllProtocolItems,
+  getClosestProtocolItem, getDailyTvlCacheId, getDimensionsUpdatedRecordsCount, getHourlyTvlUpdatedRecordsCount, getLatestProtocolItem, getLatestProtocolItems, getPGConnection, getProtocolItems, getTweetsPulledCount, initializeTVLCacheDB, readFromPGCache, saveProtocolItem, sequelize, TABLES, writeToPGCache
 }
 
 // Add a process exit hook to close the database connection

@@ -3,7 +3,7 @@ import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
 import { initializeTVLCacheDB } from "../../api2/db"
 import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType } from "../data/types"
 import { Op, } from "sequelize"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { IJSON } from "../data/types"
@@ -92,7 +92,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
   const label = `getAllItemsUpdatedAfter(${adapterType})`
-  console.time(label)
+  // console.time(label)
 
   let result: any = []
   let offset = 0
@@ -109,13 +109,13 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
     })
 
     result = result.concat(batch)
-    sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+    // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
     if (batch.length < limit) break
     offset += limit
   }
 
-  sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
-  console.timeEnd(label)
+  // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+  // console.timeEnd(label)
   return result
 }
 
@@ -158,7 +158,7 @@ export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { ada
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
     where: { type: adapterType, timeS: date },
-    attributes: ['timestamp', 'id', 'timeS'],
+    attributes: ['timestamp', 'id', 'timeS', 'updatedat'],
     raw: true,
   })
 

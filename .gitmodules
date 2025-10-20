@@ -5,6 +5,3 @@
 [submodule "defi/dimension-adapters"]
 	path = defi/dimension-adapters
 	url = https://github.com/DefiLlama/dimension-adapters.git
-[submodule "defi/emissions-adapters"]
-	path = defi/emissions-adapters
-	url = https://github.com/DefiLlama/emissions-adapters.git

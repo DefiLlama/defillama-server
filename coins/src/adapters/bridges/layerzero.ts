@@ -3,7 +3,6 @@ import {
   getSymbolAndDecimals,
 } from "../../scripts/coingeckoUtils";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
-import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 import { fetch } from "../utils";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { chainIdMap } from "./celer";
@@ -112,7 +111,6 @@ export default async function main() {
 }
 
 async function getMoreLayerZeroMappings(mappings: any[]) {
-  await setEnvSecrets();
   const solanaTokensPromise = cacheSolanaTokens();
 
   const res = await fetch(

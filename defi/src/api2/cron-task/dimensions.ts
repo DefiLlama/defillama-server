@@ -1,7 +1,7 @@
 import '../utils/failOnError'
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
@@ -11,13 +11,13 @@ import { getDisplayChainNameCached, normalizeDimensionChainsMap, } from "../../a
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
-import { RUN_TYPE, roundVaules, } from "../utils";
+import { RUN_TYPE, roundVaules, runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
 import * as sdk from '@defillama/sdk'
 
 import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
 import { storeRouteData } from "../cache/file-cache"
 import { sluggifyString } from "../../utils/sluggify"
-import { storeAppMetadata } from './appMetadata';
+// import { storeAppMetadata } from './appMetadata';
 import { sendMessage } from '../../utils/discord';
 import { ProtocolAdaptor, AdaptorRecordType, ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, ADAPTER_TYPES, } from '../../adaptors/data/types';
 
@@ -74,18 +74,18 @@ async function run() {
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
 
-  if (NOTIFY_ON_DISCORD) {
+  if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     if (spikeRecords.length) {
       await sendMessage(`
         Spikes detected and removed:
       ${spikeRecords.join('\n')}
-        `, process.env.DIM_CHANNEL_WEBHOOK!)
+        `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
     if (invalidDataRecords.length) {
       await sendMessage(`
         Invalid records detected and removed:
       ${invalidDataRecords.join('\n')}
-        `, process.env.DIM_CHANNEL_WEBHOOK!)
+        `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
 
@@ -189,7 +189,7 @@ async function run() {
 
     console.time(timeKey1)
     let { protocolMap: dimensionProtocolMap } = loadAdaptorsData(adapterType)
-    console.timeEnd(timeKey1)
+    // console.timeEnd(timeKey1)
 
     const adapterData = allCache[adapterType]
     const timeKey3 = `summary ${adapterType}`
@@ -235,7 +235,7 @@ async function run() {
     adapterData.summaries = summaries
     adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b) => chainMappingToVal[b] - chainMappingToVal[a])
     adapterData.lastUpdated = getUnixTimeNow()
-    console.timeEnd(timeKey3)
+    // console.timeEnd(timeKey3)
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
@@ -726,19 +726,23 @@ type ProtocolSummary = RecordSummary & {
   breakdown30d?: any
 }
 
-run()
-  .then(storeAppMetadata)
+runWithRuntimeLogging(run, {
+  application: 'cron-task',
+  type: 'dimensions',
+})
+  // .then(storeAppMetadata)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))
 
 const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
 
-const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+const NOTIFY_ON_DISCORD = cronNotifyOnDiscord()
 const ThreeMonthsAgo = (Date.now() / 1000) - 3 * 30 * 24 * 60 * 60
 const isLessThanThreeMonthsAgo = (timeS: string) => timeSToUnix(timeS) > ThreeMonthsAgo
 
@@ -785,7 +789,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
             case 'dv':
             case 'dnv': currentValueisHigh = currentValue > 3e8; break; // 300 million
           }
-          let spikeRatio = currentValueisHigh ? 3 : 10
+          let spikeRatio = currentValueisHigh ? 5 : 10
           isSpike = currentValue > spikeRatio * highestCloseValue
         }
 
@@ -973,7 +977,7 @@ async function generateDimensionsResponseFiles(cache: any) {
       }
     }
 
-    console.timeEnd(timeKey)
+    // console.timeEnd(timeKey)
   }
   await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
 }

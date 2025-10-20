@@ -29,6 +29,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "aurora",
   "berachain",
   "flow",
+  "somnia", 
+  "plasma"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -80,7 +82,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4124": "merlin",
   "4937": "reya",
   // "5011": "lisk l2",
-  "5055": "osmosis",
+  // "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui",
   "5218": "mint",
@@ -252,4 +254,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // embr: {}
   "xion": { ticker: "XION", address: "coingecko:xion-2" },
   "hemi-l2": { ticker: "HEMI", address: "coingecko:hemi" },
+  "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
+  "plasma": { ticker: "XPL", address: "coingecko:plasma" },
+  "linea": { ticker: "LINEA", address: "coingecko:linea" },
 };

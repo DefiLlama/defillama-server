@@ -1,5 +1,4 @@
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { ADAPTER_TYPES, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdapterType, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor, ProtocolType } from "./types";
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";

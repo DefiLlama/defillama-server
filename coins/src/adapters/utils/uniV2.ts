@@ -91,11 +91,10 @@ export function getUniV2Adapter({
         pairs (where: { 
             reserveUSD_gt: ${minLiquidity}
             ${lastId == "" ? "" : `id_gt: "${lastId}"`}
-            ${
-              timestamp == 0
-                ? ``
-                : `createdAtTimestamp_lt: ${(timestamp * 1000).toString()}`
-            }
+            ${timestamp == 0
+          ? ``
+          : `createdAtTimestamp_lt: ${(timestamp * 1000).toString()}`
+        }
             volumeUSD_gt: ${minVolume}
           } 
         block: { number: ${block} } 
@@ -197,14 +196,7 @@ export function getUniV2Adapter({
         const confidence = calculateConfidence(liquidity, minLiquidity / 2);
         const price = liquidity / supply;
         if (isNaN(price)) {
-          console.log("bug in uni v2 pricing", {
-            id,
-            symbol,
-            supply,
-            liquidity,
-            price,
-            decimals,
-          });
+          // console.log("bug in uni v2 pricing", { id, symbol, supply, liquidity, price, decimals, });
           return;
         }
         if (confidence > 0.8)

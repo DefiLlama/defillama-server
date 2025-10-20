@@ -1,5 +1,7 @@
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "@defillama/dimension-adapters/adapters/types"
 import { Protocol } from "../../protocols/types"
+
+export { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, }
 
 export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
@@ -8,13 +10,13 @@ export interface ICleanRecordsConfig {
 export type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
 
 export type ProtocolDimensionsExtraConfig = {
-  defaultChartView?: ChartBreakdownOptions;
-  adapter: string;
-  genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
+    defaultChartView?: ChartBreakdownOptions;
+    adapter: string;
+    genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
 }
 
 export type DimensionsConfig = {
-  [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
+    [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
 }
 export interface ProtocolAdaptor extends Protocol {
     defillamaId: string

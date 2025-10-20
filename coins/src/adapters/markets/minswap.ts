@@ -311,6 +311,6 @@ async function getTokenPrices(timestamp: number): Promise<Write[]> {
 
   appendAdaPrices();
 
-  console.log(`${calls} bitfrost calls were made`);
+  // console.log(`${calls} bitfrost calls were made`);
   return writes;
 }

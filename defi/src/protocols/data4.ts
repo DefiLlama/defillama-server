@@ -971,11 +971,11 @@ const data4: Protocol[] = [
   },
   {
     id: "5599",
-    name: "GRVT Bridge", // previous name GRVT
+    name: "Grvt Bridge", // previous name GRVT
     address: null,
     symbol: "-",
     url: "https://grvt.io",
-    description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt-bridge.jpg`,
     audits: "0",
@@ -30643,12 +30643,12 @@ const data4: Protocol[] = [
   },
   {
     id: "6826",
-    name: "GRVT Perps",
+    name: "Grvt Perps",
     address: null,
     symbol: "-",
     url: "https://grvt.io",
     description:
-      "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+      "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt-perps.jpg`,
     audits: "0",

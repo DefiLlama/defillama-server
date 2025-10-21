@@ -8134,9 +8134,9 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#grvt",
-    name: "GRVT",
+    name: "Grvt",
     url: "https://grvt.io",
-    description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     logo: `${baseIconsUrl}/grvt.jpg`,
     gecko_id: null,
     cmcId: null,

@@ -1,6 +1,6 @@
 import { baseIconsUrl } from "../constants";
 import type { Protocol } from "./types";
-/*
+/* 
 {
   id: string;
   name: string;
@@ -1932,8 +1932,8 @@ const data2: Protocol[] = [
     previousNames: ["DLN"],
     address: "solana:DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
     symbol: "DBR",
-    url: "https://app.debridge.finance/r/32425",
-    referralUrl: "https://app.debridge.finance/r/32425",
+    url: "https://app.debridge.com/r/32425",
+    referralUrl: "https://app.debridge.com/r/32425",
     description:
       "deBridge is a cross-chain interoperability and liquidity transfer protocol that allows the decentralized transfer of arbitrary data and assets between various blockchains",
     chain: "Ethereum",
@@ -3305,7 +3305,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1521",
-    name: "Horizon Protocol",
+    name: "Horizon Protocol", // rebrand to Xpanse
+    //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
     url: "https://horizonprotocol.com/",
@@ -18303,14 +18304,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2162",
-    name: "Ease.org",
+    name: "Easedefi.org",
     address: "0xEa5eDef1287AfDF9Eb8A46f9773AbFc10820c61c",
     symbol: "EASE",
-    url: "https://ease.org",
+    url: "https://easedefi.org",
     description:
       "Ease is a decentralized coverage protocol that enables users to protect their DeFi tokens without a premium while earning compounding yield.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ease.org.png`,
+    logo: `${baseIconsUrl}/easedefi.org.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "ease",
@@ -28608,7 +28609,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Polygon"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -28977,7 +28978,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],

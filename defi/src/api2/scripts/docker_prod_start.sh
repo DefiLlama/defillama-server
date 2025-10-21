@@ -6,23 +6,13 @@ CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
 llama_runner() {
-    command_to_run="npm run --silent $1"
+    command_to_run="pnpm run --silent $1"
     # echo "Running npm script: $command_to_run"
     start_time=$(date +%s.%N)
     $command_to_run
     end_time=$(date +%s.%N)
     execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    echo "----|   npm script: $1 took $execution_time s"
-}
-
-update_npm_modules() {
-    # echo "Running npm script: $command_to_run"
-    start_time=$(date +%s.%N)
-    npm i > /dev/null
-    git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
-    end_time=$(date +%s.%N)
-    execution_time=$(awk "BEGIN {print $end_time - $start_time}")
-    echo "----|   npm module update took $execution_time s"
+    echo "----|   pnpm script: $1 took $execution_time s"
 }
 
 # Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
@@ -37,16 +27,12 @@ if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
 fi
 
 git pull -q
-git submodule update --init --recursive --quiet
-git submodule update --remote --merge --quiet
 
-update_npm_modules
-
-llama_runner prebuild
-llama_runner cron-raises
-llama_runner api2-cron-task
-llama_runner cron-dimensions
-llama_runner cron-app-metadata
+llama_runner --silent init-defi
+llama_runner --silent cron-raises
+llama_runner --silent api2-cron-task
+llama_runner --silent cron-dimensions
+llama_runner --silent cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

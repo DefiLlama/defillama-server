@@ -1,8 +1,8 @@
 import { roundValues } from "./index";
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DIMENSIONS_DB_RECORD, DimensionsDataRecord, DimensionsDataRecordMap, IJSON, PROTOCOL_SUMMARY, } from "../../adaptors/data/types";
 import { readFromPGCache, writeToPGCache } from "../db";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getTimeSQuarter, timeSToUnix } from "./time";
+import { AdapterType } from "../../adaptors/data/types"
 
 function getFileCacheKeyV2(adapterType: AdapterType) {
   return `dimensions-data-v3.0.0/${adapterType}`

@@ -11,10 +11,9 @@ import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "./utils/importAdapter";
-import { log } from '../../DefiLlama-Adapters/projects/helper/utils'
 import axios from 'axios'
 
+const log = console.log
 const secondsInDay = 24 * 3600;
 
 /// ---------------- Protocol specfic code ----------------- 

@@ -1,5 +1,5 @@
 
-import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";

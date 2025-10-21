@@ -1,12 +1,12 @@
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import * as sdk from "@defillama/sdk"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { Op, } from "sequelize"
-import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
-import { IJSON } from "../data/types"
+import { initializeTVLCacheDB } from "../../api2/db"
 import { AdapterRecord2 } from "./AdapterRecord2"
+import { AdapterType } from "../data/types"
+import { IJSON } from "../data/types"
 
 let isInitialized: any
 

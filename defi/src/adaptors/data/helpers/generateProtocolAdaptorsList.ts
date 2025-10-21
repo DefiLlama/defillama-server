@@ -2,7 +2,7 @@ import { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { Adapter, AdapterType, BaseAdapter, } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, AdapterType, BaseAdapter, } from "../types";
 import { IParentProtocol } from "../../../protocols/types";
 
 export function notUndefined<T>(x: T | undefined): x is T {

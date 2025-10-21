@@ -1,5 +1,7 @@
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "../../dimension_migration/adapters/types"
 import { Protocol } from "../../protocols/types"
+
+export { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, }
 
 export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean

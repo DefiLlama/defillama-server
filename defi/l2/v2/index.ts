@@ -12,7 +12,6 @@ import { McapsApiData } from "../types";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import BigNumber from "bignumber.js";
-import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../../src/utils/shared/constants";
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";
 import { additional, excluded } from "../adapters/manual";
@@ -261,14 +260,14 @@ async function fetchLstSymbols() {
 }
 
 function fetchRwaSymbols() {
-  const allSymbols: {[symbol: string]: boolean } = {};
+  const allSymbols: { [symbol: string]: boolean } = {};
   Object.values(rwaMetadata).map(({ matchExact, symbols }: { matchExact: boolean; symbols: string[] }) => {
     symbols.map((symbol) => allSymbols[symbol] = matchExact)
   });
   return allSymbols;
 }
 
-function isRwaSymbol(symbol: string, rwaSymbols: {[symbol: string]: boolean }) {
+function isRwaSymbol(symbol: string, rwaSymbols: { [symbol: string]: boolean }) {
   if (rwaSymbols[symbol]) return true;
   Object.keys(rwaSymbols).map((s) => {
     if (!rwaSymbols[s] && symbol.startsWith(s)) return true;
@@ -298,7 +297,6 @@ function isOwnToken(chain: string, symbol: string) {
 }
 
 async function main() {
-  await setEnvSecrets();
   const timestamp = 0;
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
   const incomingAssets = await fetchIncomingAssetsList();
@@ -478,9 +476,6 @@ async function main() {
     });
   });
 
-  const rawDataJson = JSON.parse(JSON.stringify(rawData));
-  const symbolDataJson = JSON.parse(JSON.stringify(symbolData));
-
   await verifyChanges(symbolData);
 
   await Promise.all([
@@ -490,4 +485,7 @@ async function main() {
   ]);
 }
 
-main(); // ts-node defi/l2/v2/index.ts
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+}).then(() => process.exit(0)); // ts-node defi/l2/v2/index.ts

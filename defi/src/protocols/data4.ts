@@ -16022,7 +16022,7 @@ const data4: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
-        chains: [{chain: "Katana"}]
+        chains: [{chain: "Katana"},{ chain: "Ethereum"}]
       }
     ],
     module: "steakhouse/index.js",

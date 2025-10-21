@@ -7963,6 +7963,7 @@ const data4: Protocol[] = [
     twitter: "extendedapp",
     listedAt: 1741703740,
     dimensions: {
+      fees: "extended",
       derivatives: "extended",
       "open-interest": "extended"
     }

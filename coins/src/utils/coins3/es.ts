@@ -147,7 +147,7 @@ async function fetchAllRecords(index: string): Promise<MetadataRecord[]> {
       },
       size: 100000,
     },
-  });
+  } as any);
 
   while (response.hits.hits.length) {
     allRecords.push(

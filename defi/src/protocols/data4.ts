@@ -26484,7 +26484,8 @@ const data4: Protocol[] = [
     listedAt: 1756818123,
     dimensions: {
       fees: "orderly-perps-new",
-      derivatives: "orderly-perps-new"
+      derivatives: "orderly-perps-new",
+      "open-interest": "orderly-perps-oi"
     }
   },
   {
@@ -29993,7 +29994,11 @@ const data4: Protocol[] = [
     forkedFromIds: ["1407"],
     audit_links: ["https://docs.lithos.to/security/security"],
     github: ["LithosDex"],
-    listedAt: 1759340413
+    listedAt: 1759340413,
+    dimensions: {
+      fees: "lithos",
+      dexs: "lithos"
+    }
   },
   {
     id: "6799",
@@ -31843,6 +31848,10 @@ const data4: Protocol[] = [
       "https://docs.coinhain.fi/security/audits"
     ],
     listedAt: 1760656147,
+    dimensions: {
+      fees: "coinhain",
+      dexs: "coinhain"
+    }
   },
   {
     id: "6879",

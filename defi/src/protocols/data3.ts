@@ -2286,7 +2286,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "aevo"
-      }
+      },
+      "open-interest": "aevo-perps-oi"
     }
   },
   {
@@ -40235,7 +40236,8 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.vestmarkets.com/audits"],
     listedAt: 1711709964,
     dimensions: {
-      derivatives: "vest"
+      derivatives: "vest",
+      "open-interest": "vest-markets"
     }
   },
   {
@@ -55696,7 +55698,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aevo",
     listedAt: 1724835441,
     dimensions: {
-      options: "aevo"
+      options: "aevo",
+      "open-interest": "aevo-options-oi"
     }
   },
   {

@@ -61,6 +61,11 @@
     }
   },
   "berachain": {
+    "0x316cd39632Cac4F4CdfC21757c4500FE12f64514": {
+      "decimals": "18",
+      "symbol": "wsrUSD",
+      "to": "coingecko#wrapped-savings-rusd"
+    },
     "0xDeadf18CB9233770FE8874c78D7483b4A126B34a": {
       "to": "coingecko#berachain-bera",
       "decimals": 18,

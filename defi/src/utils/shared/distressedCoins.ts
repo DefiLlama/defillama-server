@@ -1,32 +1,91 @@
-import { storeR2JSONString, getR2JSONString } from "../../utils/r2";
+import { getUnixTimeNow } from "../../api2/utils/time";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { elastic, cache } from "@defillama/sdk";
 
-const r2Key = "distressedAssetsList.json";
-
-export async function isDistressed(key: string) {
+function sanitizeKey(key: string) {
   const chain = key.split(":")[0];
   const address = key.substring(chain.length + 1);
-  const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain)
-    ? address
-    : address.toLowerCase();
-  const data = await getR2JSONString(r2Key);
-
-  if (!data[chain]) return false;
-  if (data[chain][normalizedAddress]) return true;
-
-  return false;
+  const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain) ? address : address.toLowerCase();
+  return `${chain}:${normalizedAddress}`;
 }
 
-export async function addToDistressedList(key: string) {
-  const chain = key.split(":")[0];
-  const address = key.substring(chain.length + 1);
-  const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain)
-    ? address
-    : address.toLowerCase();
-  const data = await getR2JSONString(r2Key);
+export async function isDistressed(key: string, client?: any) {
+  const isLocalClient: boolean = client == undefined
+  if (isLocalClient) client = elastic.getClient();
 
-  if (!data[chain]) data[chain] = {};
-  data[chain].push(normalizedAddress);
+  const _id = sanitizeKey(key)
+  const { hits } = await client.search({
+    index: "distressed-assets-store*",
+    body: {
+      query: {
+        match: { _id },
+      },
+    },
+  });
 
-  await storeR2JSONString(r2Key, JSON.stringify(data));
+  if (isLocalClient) await client?.close();
+
+  return hits?.hits?.length > 0;
+}
+
+export async function addToDistressed(keys: string[], client?: any) {
+  const isLocalClient: boolean = client == undefined
+  if (isLocalClient) client = elastic.getClient();
+
+  const body: any[] = [];
+  keys.map((key: string) => {
+    const _id = sanitizeKey(key)
+    body.push({ index: { _index: "distressed-assets-store", _id } });
+  });
+
+  await client.bulk({ body });
+
+  if (isLocalClient) await client?.close();
+}
+
+export async function logDistressedCoins(keys: string[], protocol: string) {
+  await elastic.writeLog("distressed-assets", { keys, protocol, reportTime: getUnixTimeNow() });
+}
+
+export async function readDistressedLogs() {
+  const esClient = elastic.getClient();
+  const hourAgo = Math.floor(Date.now() / 1000) - 3600;
+  let { lastCheckTS } = (await cache.readExpiringJsonCache("distressed-assets-last-check")) || { lastCheckTS: 0 };
+  if (!lastCheckTS || lastCheckTS < hourAgo) lastCheckTS = hourAgo - 1;
+
+  let {
+    hits: { hits },
+  }: any = await esClient?.search({
+    index: "distressed-assets*",
+    size: 9999,
+    body: {
+      query: {
+        range: {
+          // find records with reportTime > lastCheckTS
+          reportTime: {
+            gt: lastCheckTS, // reportTime is in ms
+          },
+        },
+      },
+    },
+  });
+
+  if (!hits?.length) return;
+
+  const newDistressedCoins: string[] = [];
+  hits.map(({ _source: { keys } }: any) => {
+    newDistressedCoins.push(...keys);
+  });
+
+  await addToDistressed(newDistressedCoins, esClient);
+
+  const timeNow = Math.floor(Date.now() / 1000);
+
+  await cache.writeExpiringJsonCache(
+    "distressed-assets-last-check",
+    { lastCheckTS: timeNow },
+    { expireAfter: 7 * 24 * 3600 }
+  );
+
+  await esClient?.close();
 }

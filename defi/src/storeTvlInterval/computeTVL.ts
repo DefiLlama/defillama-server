@@ -5,7 +5,7 @@ import * as sdk from '@defillama/sdk'
 import { once, EventEmitter } from 'events'
 import { searchWidth } from "../utils/shared/constants";
 import { Client } from "@elastic/elasticsearch";
-import { addToDistressedList } from "../utils/shared/distressedCoins";
+import { logDistressedCoins } from "../utils/shared/distressedCoins";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -62,7 +62,7 @@ export default async function (balances: { [address: string]: string }, timestam
   const tokenData = await getTokenData(readKeys, timestamp)
   const mcapData = await getMcapData(readKeys, timestamp);
   const staleCoinsInclusive: any = {};
-  const distressedCoinsPromises: Promise<void>[] = [];
+  const distressedCoins: string[] = []
   tokenData.forEach((response: any) => {
     if (Math.abs(response.timestamp - now) < searchWidth) {
       PKsToTokens[response.PK].forEach((address) => {
@@ -78,7 +78,7 @@ export default async function (balances: { [address: string]: string }, timestam
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
         }
         const usdAmount = amount * price;
-        checkMcaps(address, mcapData, usdAmount, distressedCoinsPromises)
+        checkMcaps(address, mcapData, usdAmount, distressedCoins)
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
@@ -88,8 +88,9 @@ export default async function (balances: { [address: string]: string }, timestam
   });
 
   appendToStaleCoins(usdTvl, staleCoinsInclusive, staleCoins);
-  await Promise.all(distressedCoinsPromises);
 
+  if (distressedCoins.length) await logDistressedCoins(distressedCoins, protocol);
+  
   return {
     usdTvl,
     tokenBalances,
@@ -97,14 +98,10 @@ export default async function (balances: { [address: string]: string }, timestam
   };
 }
 
-function checkMcaps(address: string, mcapData: any, usdAmount: number, promises: Promise<void>[]) {
+function checkMcaps(address: string, mcapData: any, usdAmount: number, distressedCoins: string[]) {
   if (usdAmount < 1e7) return true;
   const mcap = mcapData[address];
-  if (mcap && usdAmount > mcap) {
-    promises.push(addToDistressedList(address));
-    return false;
-  }
-  return true;
+  if (mcap && usdAmount > mcap) distressedCoins.push(address);
 }
 
 function replaceETHwithWETH(balances: { [address: string]: string }) {

@@ -117,7 +117,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     allChains.map(async (chain) => {
       try {
         await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-      } catch (e) { console.log('error fetching block, chain:', chain, (e as any)?.message) }
+      } catch (e) { 
+        // console.log('error fetching block, chain:', chain, (e as any)?.message) 
+      }
     })
   );
 
@@ -207,7 +209,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   // i.e we log the results we have so far and exit
   return new Promise(async (resolve, reject) => {
     const timeout = setTimeout(() => {
-      console.log(`Max run time exceeded: ${maxRunTime / 1000}s`)
+      console.log(`Max run time exceeded: ${maxRunTime / 1000}s AdapterType: ${adapterType}, exiting...`)
       resolve(onComplete())
     }, maxRunTime)
 
@@ -321,7 +323,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            // console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 

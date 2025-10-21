@@ -4642,8 +4642,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ethena.concrete.xyz",
-    description:
-      "Access automated DeFi yields on Berachain while earning rewards from Ethena, Concrete and the Berachain ecosystem",
+    description: "Concrete provides full-stack yield infrastructure for DeFi, powering automated, risk-managed vault products across major ecosystems. Concrete combines quantitative modeling, modular architecture, and cross-chain integrations to deliver institutional-grade vaults with transparent, sustainable performance.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/concrete.png`,
     audits: "0",

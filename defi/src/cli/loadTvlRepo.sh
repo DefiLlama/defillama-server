@@ -9,5 +9,5 @@ cd $ROOT_DIR
 cd DefiLlama-Adapters
 git checkout main -q
 git pull -q
-pnpm install --prefer-offline --frozen-lockfile
+pnpm install --prefer-offline
 git stash -q

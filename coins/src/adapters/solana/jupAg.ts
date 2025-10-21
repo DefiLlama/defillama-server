@@ -18,7 +18,8 @@ const whitelistedTokens = new Set([
   'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu',
   'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit',
   'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe', 
-  'GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A'
+  'GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A', 
+  '2HehXG149TXuVptQhbiWAWDjbbuCsXSAtLTB5wc2aajK'
 ])
 
 async function getTokensWithCGMapping() {

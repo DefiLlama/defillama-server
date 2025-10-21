@@ -56609,7 +56609,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5097",
-    name: "Lombard",
+    name: "Lombard ",
     address: null,
     symbol: "-",
     assetToken: "LBTC",
@@ -57649,7 +57649,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5143",
-    name: "Lombard Vault",
+    name: "Lombard Vaults",
     address: null,
     symbol: "-",
     url: "https://www.lombard.finance/app/vault",
@@ -57660,8 +57660,8 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
-    chains: ["Ethereum"],
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum", "Base", "Binance"],
     module: "lombard-vault/index.js",
     twitter: "Lombard_Finance",
     forkedFrom: [],

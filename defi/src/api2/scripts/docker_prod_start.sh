@@ -28,11 +28,11 @@ fi
 
 git pull -q
 
-llama_runner --silent init-defi
-llama_runner --silent cron-raises
-llama_runner --silent api2-cron-task
-llama_runner --silent cron-dimensions
-llama_runner --silent cron-app-metadata
+llama_runner init-defi
+llama_runner cron-raises
+llama_runner api2-cron-task
+llama_runner cron-dimensions
+llama_runner cron-app-metadata
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

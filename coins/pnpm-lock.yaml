@@ -12,8 +12,8 @@ importers:
         specifier: ^3.354.0
         version: 3.913.0
       '@defillama/sdk':
-        specifier: ^5.0.152
-        version: 5.0.175(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^5.0.177
+        version: 5.0.177(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@ethersproject/bignumber':
         specifier: ^5.5.0
         version: 5.8.0
@@ -923,8 +923,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@defillama/sdk@5.0.175':
-    resolution: {integrity: sha512-o6ZiDxEi7ev9C74c8FgSPqc1f+EGi/H+HMz5FJRlTCAeBOiLkMo6N9NfY6Xwhs+nrBqN7PyFR8hXD3tgXQprTQ==}
+  '@defillama/sdk@5.0.177':
+    resolution: {integrity: sha512-H2TdjkO11ofgFq16ioYNgfh+tXMcMHW4fGPGaKlCZp0O4Q8ci09M+0OaajdyyTWY146GnD5ioor7WE9bxou8gw==}
 
   '@effect/platform-node-shared@0.15.5':
     resolution: {integrity: sha512-PXFdIHMNzv19+aaKBo99KVsqJ65il8j7ejze/srkzOkNu4WK/GGpQuYF32NZLirFgXJe/4aYMRgwD+uJ4mCyuw==}
@@ -7219,7 +7219,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@defillama/sdk@5.0.175(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@defillama/sdk@5.0.177(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@aws-sdk/client-s3': 3.913.0
       '@elastic/elasticsearch': 8.19.1

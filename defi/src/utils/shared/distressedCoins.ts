@@ -10,8 +10,7 @@ function sanitizeKey(key: string) {
 }
 
 export async function isDistressed(key: string, client?: any) {
-  const isLocalClient: boolean = client == undefined
-  if (isLocalClient) client = elastic.getClient();
+  if (!client) client = elastic.getClient();
 
   const _id = sanitizeKey(key)
   const { hits } = await client.search({
@@ -23,14 +22,11 @@ export async function isDistressed(key: string, client?: any) {
     },
   });
 
-  if (isLocalClient) await client?.close();
-
   return hits?.hits?.length > 0;
 }
 
 export async function addToDistressed(keys: string[], client?: any) {
-  const isLocalClient: boolean = client == undefined
-  if (isLocalClient) client = elastic.getClient();
+  if (!client) client = elastic.getClient();
 
   const body: any[] = [];
   keys.map((key: string) => {
@@ -39,8 +35,6 @@ export async function addToDistressed(keys: string[], client?: any) {
   });
 
   await client.bulk({ body });
-
-  if (isLocalClient) await client?.close();
 }
 
 export async function logDistressedCoins(keys: string[], protocol: string) {
@@ -86,6 +80,4 @@ export async function readDistressedLogs() {
     { lastCheckTS: timeNow },
     { expireAfter: 7 * 24 * 3600 }
   );
-
-  await esClient?.close();
 }

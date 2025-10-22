@@ -9,6 +9,7 @@ import PromisePool from "@supercharge/promise-pool";
 const r2Key = "distressedAssetsList.json";
 
 export default async function getTokenPrices(timestamp: number) {
+  // TODO: this method neeeds to re-writted, instead of a function running every hour, this should be trigged a function triggerable from the UI tool that takes coin list as input and marks all of them as distressed in the DB
   const writes: Write[] = [];
   const assets = await getR2JSONString(r2Key);
 

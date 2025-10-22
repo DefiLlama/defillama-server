@@ -62,7 +62,7 @@ export default async function (balances: { [address: string]: string }, timestam
   const tokenData = await getTokenData(readKeys, timestamp)
   const mcapData = await getMcapData(readKeys, timestamp);
   const staleCoinsInclusive: any = {};
-  const distressedCoins: string[] = []
+  const distressedCoins: any[] = []
   tokenData.forEach((response: any) => {
     if (Math.abs(response.timestamp - now) < searchWidth) {
       PKsToTokens[response.PK].forEach((address) => {
@@ -78,7 +78,7 @@ export default async function (balances: { [address: string]: string }, timestam
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
         }
         const usdAmount = amount * price;
-        checkMcaps(address, mcapData, usdAmount, distressedCoins)
+        checkMcaps(address, mcapData, usdAmount, distressedCoins, protocol)
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
@@ -89,8 +89,8 @@ export default async function (balances: { [address: string]: string }, timestam
 
   appendToStaleCoins(usdTvl, staleCoinsInclusive, staleCoins);
 
-  if (distressedCoins.length) await logDistressedCoins(distressedCoins, protocol);
-  
+  if (distressedCoins.length) await logDistressedCoins(distressedCoins);
+
   return {
     usdTvl,
     tokenBalances,
@@ -98,10 +98,10 @@ export default async function (balances: { [address: string]: string }, timestam
   };
 }
 
-function checkMcaps(address: string, mcapData: any, usdAmount: number, distressedCoins: string[]) {
+function checkMcaps(address: string, mcapData: any, usdAmount: number, distressedCoins: any[], protocol: string) {
   if (usdAmount < 1e7) return true;
   const mcap = mcapData[address];
-  if (mcap && usdAmount > mcap) distressedCoins.push(address);
+  if (mcap && usdAmount > mcap) distressedCoins.push({ address, usdAmount, mcap, protocol });
 }
 
 function replaceETHwithWETH(balances: { [address: string]: string }) {
@@ -268,7 +268,7 @@ async function getMcapData(readKeys: string[], timestamp: string | number): Prom
 
   async function _getMcapData() {
     let cachedMcapData: { [PK: string]: number } = {}
-  
+
     // read data from cache where possible
     readKeys = readKeys.filter((PK: string) => {
       if (timestamp !== 'now') return true;
@@ -278,9 +278,9 @@ async function getMcapData(readKeys: string[], timestamp: string | number): Prom
       }
       return true;
     })
-  
+
     if (!readKeys.length) return cachedMcapData;
-  
+
     const readRequests: any[] = [];
     sdk.log(`mcap request count:  ${readKeys.length}`)
     for (let i = 0; i < readKeys.length; i += 100) {

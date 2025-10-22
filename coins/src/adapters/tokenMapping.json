@@ -266,12 +266,12 @@
     "0x7bbc63d01ca42491c3e084c941c3e86e55951404": {
       "decimals": "18",
       "symbol": "st0G",
-      "to": "coingecko#zero-gravity"
+      "to": "coingecko#gimo-staked-0g"
     },
     "0x9cc1d782e6dfe5936204c3295cb430e641dcf300": {
       "decimals": "18",
       "symbol": "WETH",
-      "to": "coingecko#ethereum"
+      "to": "coingecko#weth"
     },
     "0x1f3aa82227281ca364bfb3d253b0f1af1da6473e": {
       "decimals": "6",

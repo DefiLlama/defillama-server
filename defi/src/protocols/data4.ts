@@ -32162,7 +32162,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6893",
-    name: "ORE",
+    name: "ORE Protocol",
     address: "solana:oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
     symbol: "ORE",
     url: "https://ore.supply",

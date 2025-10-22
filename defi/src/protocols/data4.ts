@@ -971,11 +971,11 @@ const data4: Protocol[] = [
   },
   {
     id: "5599",
-    name: "GRVT Bridge", // previous name GRVT
+    name: "Grvt Bridge", // previous name GRVT
     address: null,
     symbol: "-",
     url: "https://grvt.io",
-    description: "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+    description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt-bridge.jpg`,
     audits: "0",
@@ -4641,17 +4641,17 @@ const data4: Protocol[] = [
     name: "Concrete",
     address: null,
     symbol: "-",
-    url: "https://ethena.concrete.xyz",
-    description:
-      "Access automated DeFi yields on Berachain while earning rewards from Ethena, Concrete and the Berachain ecosystem",
+    url: "https://app.concrete.xyz",
+    description: "Concrete provides full-stack yield infrastructure for DeFi, powering automated, risk-managed vault products across major ecosystems. Concrete combines quantitative modeling, modular architecture, and cross-chain integrations to deliver institutional-grade vaults with transparent, sustainable performance.",
     chain: "Berachain",
     logo: `${baseIconsUrl}/concrete.png`,
-    audits: "0",
+    audits: "2",
+    audit_links: ["https://docs.concrete.xyz/assets/files/Standard-Implementation-9948d7fcebb518e5c29051bc2326b5ec.pdf/", "https://docs.concrete.xyz/assets/files/Zellic-Audit-Report-5dbb9d52d444adcd197dfbaa941a86ab.pdf/"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Berachain"],
+    chains: ["Ethereum", "Berachain", "Arbitrum", "Katana"],
     forkedFrom: [],
     module: "concrete-xyz/index.js",
     twitter: "ConcreteXYZ",
@@ -7963,6 +7963,7 @@ const data4: Protocol[] = [
     twitter: "extendedapp",
     listedAt: 1741703740,
     dimensions: {
+      fees: "extended",
       derivatives: "extended",
       "open-interest": "extended"
     }
@@ -8872,8 +8873,11 @@ const data4: Protocol[] = [
     ],
     listedAt: 1742416591,
     dimensions: {
-      fees: "squadswap-wow",
-      dexs: "squadswap-wow"
+      // wash trading, check from these two address
+      // https://bscscan.com/address/0x4db4c2b2c67256d4ea029e624b478555cd49a118
+      // https://bscscan.com/address/0xaabbcc932c7141a016fa08b514ec10bd1db89702
+      // fees: "squadswap-wow",
+      // dexs: "squadswap-wow", 
     }
   },
   {
@@ -15806,6 +15810,15 @@ const data4: Protocol[] = [
         ],
         chains: [{ chain: "Unichain" }],
       },
+         {
+        name: "Chronicle",
+        type: "Primary",
+        proof: [
+          "https://arbiscan.io/address/0x69a351bf446b5997642477bcb95979a89ac78c17#code",
+          "https://arbiscan.io/address/0x8db25afe02c20783c7d4b52c738f8a560d53cdf9#code"
+        ],
+        chains: [{ chain: "Arbitrum" }],
+      },
       {
         name: "eOracle",
         type: "Primary",
@@ -16010,7 +16023,7 @@ const data4: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
-        chains: [{chain: "Katana"}]
+        chains: [{chain: "Katana"},{ chain: "Ethereum"}]
       }
     ],
     module: "steakhouse/index.js",
@@ -16331,7 +16344,7 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     forkedFrom: [],
     module: "rho-protocol/index.js",
-    twitter: "Rho_xyz",
+    twitter: "Rho_Labs",
     audit_links: ["https://audits.oxor.io/reports/-NsF0vIwYyzQJhrgL2nf"],
     parentProtocol: "parent#rho",
     listedAt: 1747966841,
@@ -16356,7 +16369,7 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     forkedFrom: [],
     module: "rho-vaults/index.js",
-    twitter: "Rho_xyz",
+    twitter: "Rho_Labs",
     audit_links: ["https://audits.oxor.io/reports/-NsF0vIwYyzQJhrgL2nf"],
     parentProtocol: "parent#rho",
     listedAt: 1747966849,
@@ -20970,8 +20983,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rysk-finance",
     listedAt: 1752225071,
     dimensions: {
-      derivatives: "rysk-v12",
-      fees: "rysk-v12",
+      // derivatives: "rysk-v12",  # why is it under derivaties, it is options?
+      // fees: "rysk-v12", # do not track premium paid as fees, check how we track fees of other options protocols
     }
   },
   {
@@ -23679,26 +23692,35 @@ const data4: Protocol[] = [
   },
   {
     id: "6528",
-    name: "UltraYield by Edge Capital",
+    name: "Edge Capital",
     address: null,
     symbol: "-",
-    url: "https://ultrayield.app/",
-    description: "Vault Curator & Infrastructure Provider",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/ultrayield-by-edge-capital.jpg`,
+    url: "https://app.euler.finance/governor/edge-capital?network=tac",
+    description: "Crypto hedge fund & largest liquidity provider to early-stage protocols",
+    chain: "TAC",
+    logo: `${baseIconsUrl}/edge-capital.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
     chains: ["TAC"],
-    module: "ultrayield-by-edge-capital/index.js",
+    module: "edge-capital/index.js",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10777"],
+        chains: [{ chain: "TAC" }],
+      },
+      ],
     forkedFromIds: [],
-    twitter: "ultrayieldapp",
+    twitter: "EdgeCapitalMgmt",
     listedAt: 1754418907,
     dimensions: {
-      fees: "ultrayield-by-edge-capital"
-    }
+      fees: "edge-capital"
+    },
+    
   },
   {
     id: "6529",
@@ -25067,14 +25089,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6587",
-    name: "Turtle",
+    name: "Turtle Cronos", // previous name turtle
     address: "cronos:0x8C9E2bEf2962CE302ef578113eebEc62920B7e57",
     symbol: "TURTLE",
     url: "https://turtleoncro.com/",
     description:
       "Turtle on Cronos is a memecoin and that is driven by the community. Our focuses are onboarding, spreading awareness, and welcoming people to the cronos blockchain through NFTs, memes, good vibes, and safe trading",
     chain: "Cronos",
-    logo: `${baseIconsUrl}/turtle.jpg`,
+    logo: `${baseIconsUrl}/turtle-cronos.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "turtle-2",
@@ -26462,7 +26484,8 @@ const data4: Protocol[] = [
     listedAt: 1756818123,
     dimensions: {
       fees: "orderly-perps-new",
-      derivatives: "orderly-perps-new"
+      derivatives: "orderly-perps-new",
+      "open-interest": "orderly-perps-oi"
     }
   },
   {
@@ -29971,7 +29994,11 @@ const data4: Protocol[] = [
     forkedFromIds: ["1407"],
     audit_links: ["https://docs.lithos.to/security/security"],
     github: ["LithosDex"],
-    listedAt: 1759340413
+    listedAt: 1759340413,
+    dimensions: {
+      fees: "lithos",
+      dexs: "lithos"
+    }
   },
   {
     id: "6799",
@@ -30621,12 +30648,12 @@ const data4: Protocol[] = [
   },
   {
     id: "6826",
-    name: "GRVT Perps",
+    name: "Grvt Perps",
     address: null,
     symbol: "-",
     url: "https://grvt.io",
     description:
-      "World's first licensed DEX, redesigning finance. Building true CeDeFi. Mainnet Alpha LIVE.",
+      "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt-perps.jpg`,
     audits: "0",
@@ -31821,6 +31848,10 @@ const data4: Protocol[] = [
       "https://docs.coinhain.fi/security/audits"
     ],
     listedAt: 1760656147,
+    dimensions: {
+      fees: "coinhain",
+      dexs: "coinhain"
+    }
   },
   {
     id: "6879",
@@ -31997,13 +32028,75 @@ const data4: Protocol[] = [
       fees: "open-stablecoin-index"
     }
   },
-    {
+  {
     id: "6887",
-    name: "UltraYield",
+    name: "Liquify Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.liquifyxrd.app/",
+    description: "Liquify provides instant access to staked liquidity for any native Radix liquid staking unit.",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/liquify-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Radix"],
+    forkedFrom: [],
+    module: "liquify-protocol/index.js",
+    twitter: "ilisdao",
+    listedAt: 1761017821
+  },
+  {
+    id: "6888",
+    name: "Molecular",
+    address: null,
+    symbol: "-",
+    url: "https://molecular.finance/",
+    description: "Molecular Protocol ($MOLE) is a modularized leveraged farming protocol that finances leveraged LP positions with organically raised bluechip assets to realize amplified yield.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/molecular.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Arbitrum"],
+    forkedFrom: [],
+    module: "molecular/index.js",
+    twitter: "molecular_fi",
+    audit_links: ["https://beosin.com/audits/Molecular-Protocol_202509161103.pdf"],
+    listedAt: 1761018029
+  },
+  {
+    id: "6889",
+    name: "Hybra V4",
+    address: null,
+    symbol: "-",
+    url: "https://www.hybra.finance?code=GRYN2U",
+    description: "Hybra V4 is a concentrated liquidity AMM on HyperEVM that implements dynamic fee adjustment based on volatility and volume, Uniswap V4-inspired hooks for custom swap logic, and a ve(3,3) emissions model to incentivize long-term liquidity provision and real yield distribution",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hybra-v4.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: ["5690"],
+    module: "hybra-v4/index.js",
+    twitter: "HybraFinance",
+    parentProtocol: "parent#hybra",
+    listedAt: 1761018035,
+  },
+  {
+    id: "6890",
+    name: "UltraYield Vaults",
     address: null,
     symbol: "-",
     url: "https://ultrayield.app/",
-    description: "Vault Curator & Infrastructure Provider",
+    description: "UltraYield, created by leading crypto hedge fund Edge Capital, offers sophisticated yield-generating vaults that make institutional-grade strategies accessible to everyone.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ultrayield.jpg`,
     audits: "0",
@@ -32012,12 +32105,189 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Onchain Capital Allocator",
     chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
+    forkedFromIds: [],
     module: "ultrayield/index.js",
+    twitter: "ultrayieldapp",
+    listedAt: 1761083071,
+  },
+  {
+    id: "6891",
+    name: "Streme",
+    address: "base:0x3b3cd21242ba44e9865b066e5ef5d1cc1030cc58",
+    symbol: "STREME",
+    url: "https://streme.fun",
+    description: "An AI Agent token launcher that deploys streamable tokens with built-in staking rewards and automatic liquidity provision",
+    chain: "Base",
+    logo: `${baseIconsUrl}/streme.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "streme",
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    forkedFromIds: [],
+    module: "streme/index.js",
+    twitter: "stremefun",
+    github: ["streme-fun"],
+    listedAt: 1761083991,
+  },
+  {
+    id: "6892",
+    name: "PrimeFi",
+    address: "base:0x7bbcf1b600565ae023a1806ef637af4739de3255",
+    symbol: "PRFI",
+    url: "https://primefi.xyz/",
+    description: "PrimeFi Protocol is an omnichain lending and borrowing platform developed by Prime Numbers Labs, designed to unify liquidity across multiple blockchains and solve the problem of fragmented DeFi capital. It launched on mainnet in September 2025, initially on Hyperliquid EVM, Base and XDC, with planned expansion to more chains in near future",
+    chain: "Base",
+    logo: `${baseIconsUrl}/primefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "primefi",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base", "XDC", "Hyperliquid L1"],
+    forkedFromIds: [],
+    module: "primefi-xyz/index.js",
+    twitter: "PrimeFiXYZ",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://www.chainlinkecosystem.com/ecosystem/prime-numbers-labs"]
+      }
+    ],
+    audit_links: ["https://docs.primefi.xyz/audits"],
+    github: ["PrimeNumbersLabs"],
+    listedAt: 1761083999,
+  },
+  {
+    id: "6893",
+    name: "ORE protocol",
+    address: "solana:oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
+    symbol: "ORE",
+    url: "https://ore.supply",
+    description: "ORE is a digital store of value on the Solana blockchain",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/ore-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "ore",
+    cmcId: "32782",
+    category: "Mining Pools",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "OREsupply",
+    dimensions: {
+      fees: "ore"
+    }
+  },
+  {
+    id: "6894",
+    name: "Rho X",
+    address: null,
+    symbol: "-",
+    url: "https://www.rho.trading/",
+    description: `Rho Protocol is a cryptonative interest rates market. The platform uniquely offers trading of staking, lending, and perpetual future funding rates all in one venue, as well as allowing users to passively earn yield by depositing into Rho's vaults`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rho-x.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "rho-x/index.js",
+    twitter: "Rho_Labs",
+    audit_links: [],
+    parentProtocol: "parent#rho",
+    listedAt: 1761100587,
+  },
+  // { duplicate listing: Counts LPs for Skate AMM on 0G
+  //   id: "6895",
+  //   name: "Skatechain",
+  //   address: null,
+  //   symbol: "-",
+  //   url: "https://amm.skatechain.org/swap",
+  //   description: `Interact with applications from any VM while staying on your favorite chain`,
+  //   chain: "0G",
+  //   logo: `${baseIconsUrl}/skatechain.jpg`,
+  //   audits: "0",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Dexs",
+  //   chains: ["0G"],
+  //   forkedFrom: [],
+  //   module: "skatechain/index.js",
+  //   twitter: "skate_chain",
+  //   audit_links: [],
+  //   listedAt: 1761111387,
+  // },
+  {
+    id: "6896",
+    name: "TradeGPT",
+    address: null,
+    symbol: "-",
+    url: "https://tradegpt.finance/",
+    description: `Prompt to trade with TradeGPT, a natural language DEX native to 0G`,
+    chain: "0G",
+    logo: `${baseIconsUrl}/tradegpt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["0G"],
+    forkedFrom: ["2198"],
+    module: "tradegpt/index.js",
+    twitter: "zia_finance",
+    audit_links: [],
+    listedAt: 1761111395,
+  },
+  {
+    id: "6897",
+    name: "BEND",
+    address: null,
+    symbol: "-",
+    url: "https://bend.berachain.com",
+    description: `Bend is a decentralized lending protocol forked from Morpho, designed to enable efficient lending and borrowing with native Proof-of-Liquidity (PoL) on Berachain. As a lending primitive layer, Bend allows the creation of immutable and efficient lending markets in a permissionless way`,
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/bend.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Berachain"],
+    forkedFrom: ["4025"],
+    module: "berachain-bend/index.js",
+    twitter: "berachain",
+    audit_links: ["https://github.com/berachain/security-audits"],
+    listedAt: 1761111893,
+  },
+    {
+    id: "6898",
+    name: "UltraYield by Edge",
+    address: null,
+    symbol: "-",
+    url: "https://ultrayield.app/",
+    description: "UltraYield, created by leading crypto hedge fund Edge Capital, offers sophisticated yield-generating vaults that make institutional-grade strategies accessible to everyone.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ultrayield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
+    module: "ultrayield-by-edge-capital/index.js",
     forkedFromIds: [],
     twitter: "ultrayieldapp",
     listedAt: 1754418907,
     dimensions: {
-      fees: "ultrayield"
+      fees: "edge-capital"
     }
   },
 ];

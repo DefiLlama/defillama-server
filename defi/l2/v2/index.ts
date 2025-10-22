@@ -18,7 +18,7 @@ import { additional, excluded } from "../adapters/manual";
 import { storeHistoricalToDB } from "./storeToDb";
 import { stablecoins } from "../../src/getProtocols";
 import { metadata as rwaMetadata } from "../../src/rwa/protocols";
-import { verifyChanges } from "../test";
+import { verifyChanges } from "../test";  // TODO: rename this  file, misleading name
 
 const searchWidth = 10800; // 3hr
 
@@ -47,18 +47,19 @@ async function fetchNativeAndMcaps(
   const allPrices: { [token: string]: CoinsApiData } = {};
   const allMcaps: { [token: string]: McapsApiData } = {};
 
+  // QUESTION: how are errors here handled?
   await PromisePool.withConcurrency(5)
     .for(allChainKeys)
     .process(async (chain: Chain) => {
-      if (Object.values(protocolBridgeIds).includes(chain)) return;
-      await withTimeout(1000 * 60 * (override ? 120 : 120), minted(chain)).catch(() => {
+      if (Object.values(protocolBridgeIds).includes(chain)) return; // TODO: why, can you add a comment here?
+      await withTimeout(1000 * 60 * (override ? 120 : 120), minted(chain)).catch(() => { // QUERSTION: why is the timeout so high? 2 hours? and why have the override condition and not use it?
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
 
       async function minted(chain: Chain) {
         try {
           const start = new Date().getTime();
-          let storedTokens = await fetchAllTokens(chain);
+          let storedTokens = await fetchAllTokens(chain); // TODO: if cardano has special fetch, why do generic fetch for it here?
 
           if (chain == "cardano") storedTokens = await fetchAdaTokens();
 
@@ -69,8 +70,11 @@ async function fetchNativeAndMcaps(
 
           let prices: { [token: string]: CoinsApiData } = {};
           try {
-            prices = await getR2JSONString(`prices/${chain}.json`);
+             // QUESTION: how often is this script run? if hourly we might have to find a different solution for files here
+             // isnt this a lot of writes?
+            prices = await getR2JSONString(`prices/${chain}.json`); 
           } catch (e) {
+            // QUESTION: hmm, what does happen if the price is already cached? are you deleting old prices somewhere else in the code?
             console.log(`${chain} prices not cached, fetching`);
             prices = await getPrices(
               storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
@@ -88,6 +92,7 @@ async function fetchNativeAndMcaps(
           try {
             mcaps = await getR2JSONString(`mcaps/${chain}.json`);
           } catch (e) {
+            // QUESTION: hmm, what does happen if the mcap is already cached? are you deleting old mcaps somewhere else in the code?
             console.log(`${chain} mcaps not cached, fetching`);
             mcaps = await getMcaps(Object.keys(prices), timestamp);
             await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
@@ -127,9 +132,11 @@ async function fetchNativeAndMcaps(
   return { chainData, allPrices, allMcaps };
 }
 
+// TODO: please add comments explaining the logic, else it is impossible to follow
 async function fetchIncomingAssetsList(): Promise<{ [chain: Chain]: string[] }> {
   const incomingAssets: { [chain: Chain]: string[] } = {};
 
+  // QUESTION: how are errors here handled?
   await PromisePool.withConcurrency(5)
     .for(allChainKeys)
     .process(async (chain: Chain) => {
@@ -161,6 +168,8 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   destinationChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } };
 }> {
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
+  // TODO: use promisepool here
+  // QUESTION: why is data being pulled from ddb instead of postgres? especially for latest protocol data, it can be fetched for all the ids with a single query
   const tvls: any[] = await Promise.all(
     ids.map((i: string) =>
       getTVLOfRecordClosestToTimestamp(
@@ -174,6 +183,8 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   const sourceChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const protocolAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const destinationChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
+
+  // TODO: add comments here or at the top of the function explaining the logic, so it will be easier for future llamas to understand
   tvls.map((b: any, i: number) => {
     Object.keys(b).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
@@ -205,6 +216,7 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   return { sourceChainAmounts, protocolAmounts, destinationChainAmounts };
 }
 
+// TODO: please add comments explaining the logic here
 async function fetchExcludedAmounts(timestamp: number) {
   const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
     base: [
@@ -224,6 +236,8 @@ async function fetchExcludedAmounts(timestamp: number) {
   };
 
   const excludedAmounts: { [chain: string]: { [token: string]: BigNumber } } = {};
+  
+  // TODO use PromisePool here to be future proof, again errors are not handled here, a bug here will fail the whole run
   await Promise.all(
     Object.keys(excludedTokensAndOwners).map(async (chain: string) => {
       const block = await getBlock(chain, (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 10);
@@ -235,6 +249,8 @@ async function fetchExcludedAmounts(timestamp: number) {
         block: block.number,
       });
 
+      // QUESTION: should you start creating sdk.Balances object and start using it here? instead of directly using BigNumber // this is a suggestion, might make the code easier to read
+      // single balances object can have all the tokens of all chains, easier to pass around and subtract as well, it is inbuilt
       excludedTokensAndOwners[chain].map(([token, _], i) => {
         if (!excludedAmounts[chain]) excludedAmounts[chain] = {};
         if (!excludedAmounts[chain][token]) excludedAmounts[chain][token] = zero;
@@ -247,6 +263,7 @@ async function fetchExcludedAmounts(timestamp: number) {
 }
 
 async function fetchStablecoinSymbols() {
+  // TODO: failure is not handled here
   const { peggedAssets } = await fetch("https://stablecoins.llama.fi/stablecoins").then((r) => r.json());
   const symbols = peggedAssets.map((s: any) => s.symbol);
   const allSymbols = [...new Set([...symbols, ...stablecoins].map((t) => t.toUpperCase()))];
@@ -254,6 +271,8 @@ async function fetchStablecoinSymbols() {
 }
 
 async function fetchLstSymbols() {
+  // TODO: failure is not handled here
+  // what I would do for these two cases is, use a cached fetch, so if the fetch fails, we read from the local cache, so we are fine even if the api goes down
   const assets = await fetch("https://yields.llama.fi/lsdRates").then((r) => r.json());
   const symbols = assets.map((s: any) => s.symbol.toUpperCase());
   return symbols;
@@ -307,6 +326,8 @@ async function main() {
   const rwaSymbols = fetchRwaSymbols();
 
   const nativeDataAfterDeductions: { [chain: Chain]: { [token: string]: BigNumber } } = {};
+
+  // TODO: please add comment for each block of code explaining the logic, so future llamas can understand, it would help you as well
   allChainKeys.map((chain: Chain) => {
     if (Object.values(protocolBridgeIds).includes(chain)) return;
     nativeDataAfterDeductions[chain] = {};
@@ -354,6 +375,7 @@ async function main() {
 
   const rawData: FinalData = {};
   allChainKeys.map((chain: Chain) => {
+    // TODO: this structure is repeated multiple times in the code, can you create a function for it
     rawData[chain] = {
       canonical: { breakdown: {} },
       thirdParty: { breakdown: {} },

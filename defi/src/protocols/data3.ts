@@ -16685,6 +16685,9 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#meta-pool",
     listedAt: 1692266928,
+    dimensions: {
+      fees: "meta-pool-eth"
+    }
   },
   {
     id: "3406",
@@ -25575,6 +25578,9 @@ const data3_1: Protocol[] = [
       "https://github.com/Frankencoin-ZCHF/Frankencoin/tree/main/audits/V2"
     ],
     listedAt: 1699970045,
+    dimensions: {
+      fees: "frankencoin"
+    }
   },
   {
     id: "3791",
@@ -59048,7 +59054,8 @@ const data3_2: Protocol[] = [
         genuineSpikes: ["1746403200"],
         adapter: "okx"
       },
-      "bridge-aggregators": "okx"
+      "bridge-aggregators": "okx",
+      fees: "okx-swap"
     }
   },
   {

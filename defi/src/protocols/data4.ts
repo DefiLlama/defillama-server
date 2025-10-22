@@ -10325,6 +10325,9 @@ const data4: Protocol[] = [
     twitter: "ImpermaxFinance",
     parentProtocol: "parent#impermax-finance",
     listedAt: 1743529344,
+    dimensions: {
+      fees: "impermax-finance-v3"
+    }
   },
   {
     id: "5982",
@@ -31523,6 +31526,10 @@ const data4: Protocol[] = [
     module: "foxify/index.js",
     twitter: "foxifytrade",
     listedAt: 1760475992,
+    dimensions: {
+      derivatives: "foxify",
+      fees: "foxify"
+    }
   },
   {
     id: "6866",
@@ -32203,6 +32210,9 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#rho",
     listedAt: 1761100587,
+    dimensions: {
+      dexs: "rho-x"
+    }
   },
   // { duplicate listing: Counts LPs for Skate AMM on 0G
   //   id: "6895",

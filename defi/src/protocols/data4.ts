@@ -32159,5 +32159,27 @@ const data4: Protocol[] = [
     github: ["PrimeNumbersLabs"],
     listedAt: 1761083999,
   },
+  {
+    id: "6893",
+    name: "ORE protocol",
+    address: "solana:oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
+    symbol: "ORE",
+    url: "https://ore.supply",
+    description: "ORE is a digital store of value on the Solana blockchain",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/ore-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "ore",
+    cmcId: "32782",
+    category: "Mining Pools",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "OREsupply",
+    dimensions: {
+      fees: "ore"
+    }
+  },
 ];
 export default data4;

@@ -257,6 +257,33 @@
       "to": "coingecko#ignition-fbtc"
     }
   },
+  "0g": {
+    "0x1cd0690ff9a693f5ef2dd976660a8dafc81a109c": {
+      "decimals": "18",
+      "symbol": "W0G",
+      "to": "coingecko#zero-gravity"
+    },
+    "0x7bbc63d01ca42491c3e084c941c3e86e55951404": {
+      "decimals": "18",
+      "symbol": "st0G",
+      "to": "coingecko#zero-gravity"
+    },
+    "0x9cc1d782e6dfe5936204c3295cb430e641dcf300": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x1f3aa82227281ca364bfb3d253b0f1af1da6473e": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
+    "0x1217bfe6c773eec6cc4a38b5dc45b92292b6e189": {
+      "decimals": "6",
+      "symbol": "oUSDT",
+      "to": "coingecko#tether"
+    }
+  },
   "alephium": {
     "19246e8c2899bc258a1156e08466e3cdd3323da756d8a543c7fc911847b96f00": {
       "decimals": "18",

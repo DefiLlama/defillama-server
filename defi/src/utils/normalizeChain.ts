@@ -1572,9 +1572,6 @@ export const chainCoingeckoIds = {
     github: ['Open-Rights-Exchange'],
     symbol: "ORE",
     cmcId: "12743",
-    dimensions: {
-      fees: "ore"
-    }
   },
   "LBRY": {
     geckoId: "lbry-credits",

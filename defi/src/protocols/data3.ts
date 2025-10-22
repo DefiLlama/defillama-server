@@ -40223,7 +40223,7 @@ const data3_2: Protocol[] = [
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/vest-exchange.jpg`,
+    logo: `${baseIconsUrl}/vest-markets.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

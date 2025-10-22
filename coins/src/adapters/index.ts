@@ -11,7 +11,7 @@ import * as graphCoins from "./markets/graphCoins";
 export default {
   ...compound.adapters,
   ...aave.adapters,
-  ...euler.adapters,
+  ...euler.adapters, 
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,

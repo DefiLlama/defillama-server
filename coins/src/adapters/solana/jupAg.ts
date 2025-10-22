@@ -18,7 +18,8 @@ const whitelistedTokens = new Set([
   'ALTP6gug9wv5mFtx2tSU1YYZ1NrEc2chDdMPoJA8f8pu',
   'AVw2QGVkXJPRPRjLAceXVoLqU5DVtJ53mdgMXp14yGit',
   'FJug3z58gssSTDhVNkTse5fP8GRZzuidf9SRtfB2RhDe', 
-  'GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A'
+  'GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A', 
+  '2HehXG149TXuVptQhbiWAWDjbbuCsXSAtLTB5wc2aajK'
 ])
 
 async function getTokensWithCGMapping() {
@@ -87,7 +88,7 @@ export async function jupAg(timestamp: number) {
       if (i.mcap > 1e8 && i.liquidity < 200_000) return; // if mcap > 100M, min liquidity 200k
       if (i.mcap > 2e8 && i.liquidity < 400_000) return; // if mcap > 200M, min liquidity 500k
     }
-    addToDBWritesList(writes, 'solana', i.id, i.usdPrice, i.decimals, i.symbol, timestamp, 'jup-ag', 0.9)
+    if (i.usdPrice) addToDBWritesList(writes, 'solana', i.id, i.usdPrice, i.decimals, i.symbol, timestamp, 'jup-ag', 0.9)
   })
 
 

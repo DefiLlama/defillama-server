@@ -1,4 +1,4 @@
-import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "../../dimension_migration/adapters/types"
 import { Protocol } from "../../protocols/types"
 
 export { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, }

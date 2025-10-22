@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.354.0",
-    "@defillama/sdk": "^5.0.152",
+    "@defillama/sdk": "^5.0.177",
+    "@elastic/elasticsearch": "^8.19.1",
     "@ethersproject/bignumber": "^5.5.0",
     "@project-serum/anchor": "^0.26.0",
     "@sentry/serverless": "^6.19.7",

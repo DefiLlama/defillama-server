@@ -2286,7 +2286,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "aevo"
-      }
+      },
+      "open-interest": "aevo-perps-oi"
     }
   },
   {
@@ -21322,7 +21323,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "savings-xdai",
     cmcId: "28356",
-    category: "CDP",
+    category: "Yield",
     chains: ["xDai"],
     module: "sdai/index.js",
     twitter: null,
@@ -29190,7 +29191,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui"],
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui", "Unichain", "Sonic"],
     forkedFrom: [],
     module: "allbridge-core/index.js",
     twitter: "Allbridge_io",
@@ -40222,7 +40223,7 @@ const data3_2: Protocol[] = [
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/vest-exchange.jpg`,
+    logo: `${baseIconsUrl}/vest-markets.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -40235,7 +40236,8 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.vestmarkets.com/audits"],
     listedAt: 1711709964,
     dimensions: {
-      derivatives: "vest"
+      derivatives: "vest",
+      "open-interest": "vest-markets"
     }
   },
   {
@@ -55696,7 +55698,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aevo",
     listedAt: 1724835441,
     dimensions: {
-      options: "aevo"
+      options: "aevo",
+      "open-interest": "aevo-options-oi"
     }
   },
   {

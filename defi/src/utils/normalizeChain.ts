@@ -917,7 +917,7 @@ export const chainCoingeckoIds = {
     github: ['XDCFoundation'],
     symbol: "XDC",
     cmcId: "2634",
-    twitter: "XinFin_Official",
+    twitter: "XDCNetwork",
     url: "https://xinfin.org/"
   },
   "Velas": {
@@ -4415,9 +4415,9 @@ export const chainCoingeckoIds = {
     chainId: 277
   },
   "GOAT": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "goat-network",
+    symbol: "GOATED",
+    cmcId: "38494",
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "GOATRollup",
     url: "https://www.goat.network/",

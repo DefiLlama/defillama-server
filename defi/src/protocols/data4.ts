@@ -22115,7 +22115,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Solana"],
     module: "loopscale/index.js",
-    twitter: "LoopscaleLabs",
+    twitter: "Loopscale",
     oraclesBreakdown: [
       {
         name: "Pyth",

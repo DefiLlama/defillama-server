@@ -137,7 +137,7 @@ export default async function (
       }
     }
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
-      if (lastHourlyTVL > 1e6) {
+      if (lastHourlyTVL > 50e6) {
         await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVL} to ${currentTvl}`, process.env.TEAM_WEBHOOK!)
       } else {
         console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}`)

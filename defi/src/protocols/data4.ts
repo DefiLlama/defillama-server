@@ -32181,5 +32181,27 @@ const data4: Protocol[] = [
       fees: "ore"
     }
   },
+  {
+    id: "6894",
+    name: "Rho X",
+    address: null,
+    symbol: "-",
+    url: "https://www.rho.trading/",
+    description: `Rho Protocol is a cryptonative interest rates market. The platform uniquely offers trading of staking, lending, and perpetual future funding rates all in one venue, as well as allowing users to passively earn yield by depositing into Rho's vaults`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rho-x.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "rho-x/index.js",
+    twitter: "Rho_xyz",
+    audit_links: [],
+    parentProtocol: "parent#rho",
+    listedAt: 1761100587,
+  },
 ];
 export default data4;

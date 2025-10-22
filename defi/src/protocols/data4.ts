@@ -4643,7 +4643,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://app.concrete.xyz",
     description: "Concrete provides full-stack yield infrastructure for DeFi, powering automated, risk-managed vault products across major ecosystems. Concrete combines quantitative modeling, modular architecture, and cross-chain integrations to deliver institutional-grade vaults with transparent, sustainable performance.",
-    chain: "Ethereum",
+    chain: "Berachain",
     logo: `${baseIconsUrl}/concrete.png`,
     audits: "2",
     audit_links: ["https://docs.concrete.xyz/assets/files/Standard-Implementation-9948d7fcebb518e5c29051bc2326b5ec.pdf/", "https://docs.concrete.xyz/assets/files/Zellic-Audit-Report-5dbb9d52d444adcd197dfbaa941a86ab.pdf/"],

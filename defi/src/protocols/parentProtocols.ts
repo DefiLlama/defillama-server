@@ -7221,7 +7221,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null, 
     cmcId: null,
     chains: [],
-    twitter: "Rho_xyz",
+    twitter: "Rho_Labs",
     github: ["RhoLabs"],
   },
   {

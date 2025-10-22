@@ -32166,7 +32166,7 @@ const data4: Protocol[] = [
     address: "solana:oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
     symbol: "ORE",
     url: "https://ore.supply",
-    description: "ORE is a fair-launch, Solana-native store of value.",
+    description: "ORE is a fair-launch, Solana-native store of value",
     chain: "Solana",
     logo: `${baseIconsUrl}/ore-protocol.jpg`,
     audits: "0",

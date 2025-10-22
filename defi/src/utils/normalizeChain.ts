@@ -917,7 +917,7 @@ export const chainCoingeckoIds = {
     github: ['XDCFoundation'],
     symbol: "XDC",
     cmcId: "2634",
-    twitter: "XinFin_Official",
+    twitter: "XDCNetwork",
     url: "https://xinfin.org/"
   },
   "Velas": {

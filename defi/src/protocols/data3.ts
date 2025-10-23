@@ -40225,7 +40225,8 @@ const data3_2: Protocol[] = [
     previousNames: ["Vest Exchange"],
     address: null,
     symbol: "-",
-    url: "https://vestmarkets.com/",
+    url: "https://alpha.vestmarkets.com/join/LLAMA",
+    referralUrl: "https://alpha.vestmarkets.com/join/LLAMA",
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",

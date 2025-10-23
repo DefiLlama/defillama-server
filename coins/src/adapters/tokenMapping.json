@@ -10573,6 +10573,11 @@
       "to": "coingecko#ignition-fbtc",
       "decimals": 8,
       "symbol": "FBTC"
+    },
+    "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
+      "decimals": "10",
+      "symbol": "mBTC",
+      "to": "coingecko#mbtc"
     }
   },
   "mtt_network": {

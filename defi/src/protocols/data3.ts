@@ -59054,7 +59054,6 @@ const data3_2: Protocol[] = [
         genuineSpikes: ["1746403200"],
         adapter: "okx"
       },
-      "bridge-aggregators": "okx",
       fees: "okx-swap"
     }
   },
@@ -65884,6 +65883,9 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "okx",
     parentProtocol: "parent#okx-dex",
+    dimensions: {
+      "bridge-aggregators": "okx",
+    }
   },
   {
     id: "5497",

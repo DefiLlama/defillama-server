@@ -32360,5 +32360,53 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/SHIFT-NebulaLabs/shift-contracts/blob/main/audits/shift-sbsecurity-audit-2025.pdf"],
     listedAt: 1761171899,
   },
+   {
+    id: "6739",
+    name: "DFSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://dfs.fun/",
+    description: "Community-first DEX + Launchpad built on X Layer",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/dfs-network.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["X Layer"],
+    module: "dfs-v2/index.js",
+    twitter: "dfsdotfun",
+    parentProtocol: "parent#dfsdotfun",
+    listedAt: 1761194258,
+    dimensions: {
+      fees: "dfs-v2",
+      dexs: "dfs-v2"
+    }
+  },
+   {
+    id: "6740",
+    name: "DFSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://dfs.fun/",
+    description: "Community-first DEX + Launchpad built on X Layer",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/dfs-network.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["X Layer"],
+    module: "dfs-v3/index.js",
+    twitter: "dfsdotfun",
+    parentProtocol: "parent#dfsdotfun",
+    listedAt: 1761194258,
+    dimensions: {
+      fees: "dfs-v3",
+      dexs: "dfs-v3"
+    }
+  },
 ];
 export default data4;

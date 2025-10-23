@@ -8258,6 +8258,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SpinUpZone",
   },
+  {
+    id: "parent#dfsdotfun",
+    name: "DFS Network",
+    url: "https://dfs.fun/",
+    description: "Community-first DEX + Launchpad built on X Layer",
+    logo: `${baseIconsUrl}/dfs-network.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dfsdotfun",
+  },
 ];
 
 export default parentProtocols;

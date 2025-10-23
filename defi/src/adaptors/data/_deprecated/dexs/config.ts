@@ -3069,4 +3069,10 @@ export default {
     "babydoge-algebra": {
         id: "6738",
     },
+    "dfs-swap-v2": {
+        id: "6739"
+    },
+    "dfs-swap-v3": {
+        id: "6740",
+    },
 } as AdaptorsConfig

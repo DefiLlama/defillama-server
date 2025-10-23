@@ -4228,6 +4228,7 @@ const data4: Protocol[] = [
     twitter: "bunni_xyz",
     forkedFrom: [],
     parentProtocol: "parent#bunni",
+    deprecated: true,
     audit_links: ["https://docs.bunni.xyz/docs/v2/audits/"],
     listedAt: 1738784161,
     dimensions: {

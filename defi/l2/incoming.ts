@@ -4,7 +4,7 @@ import BigNumber from "bignumber.js";
 import { DollarValues, TokenTvlData } from "./types";
 import { geckoSymbols, zero } from "./constants";
 import { fetchBridgeTokenList, fetchSupplies } from "./utils";
-import { getPrices } from "@defillama/sdk/build/util/coinsApi";
+import { coins } from "@defillama/sdk";
 
 export async function fetchIncoming(params: {
   canonical: TokenTvlData;
@@ -24,7 +24,7 @@ export async function fetchIncoming(params: {
           return;
         }
 
-        const prices = await getPrices(
+        const prices = await coins.getPrices(
           tokens.map((t: string) => `${chain}:${t}`),
           timestamp
         );

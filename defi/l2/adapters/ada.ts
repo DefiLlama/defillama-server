@@ -1,7 +1,7 @@
-import { cachedFetch } from "@defillama/sdk/build/util/cache";
+import { cache } from "@defillama/sdk";
 
 export async function fetchAdaTokens(): Promise<any[]> {
-  const res = await cachedFetch({key: "muesliswap-token-list", endpoint: "https://api.muesliswap.com/token-list"})
+  const res = await cache.cachedFetch({key: "muesliswap-token-list", endpoint: "https://api.muesliswap.com/token-list"})
   const coins = res
     .filter((c: any) => c.supply.circulating != null)
     .map((c: any) => ({

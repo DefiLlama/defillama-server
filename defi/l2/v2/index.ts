@@ -22,7 +22,7 @@ import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
 import { Balances } from "@defillama/sdk";
 import runInPromisePool from "@defillama/sdk/build/util/promisePool";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
-import { getPrices, getMcaps } from "@defillama/sdk/build/util/coinsApi";
+import { coins } from "@defillama/sdk";
 
 const searchWidth = 10800; // 3hr
 const allTokens: { [chain: Chain]: string[] } = {};
@@ -97,7 +97,7 @@ async function fetchNativeAndMcaps(
           //   prices = await getR2JSONString(`prices/${chain}.json`);
           // } catch (e) {
           //   console.log(`${chain} prices not cached, fetching`);
-          const prices = await getPrices(
+          const prices = await coins.getPrices(
             storedTokens.map((t: string) => normalizeKey(t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
             timestamp
           );
@@ -114,7 +114,7 @@ async function fetchNativeAndMcaps(
           //   mcaps = await getR2JSONString(`mcaps/${chain}.json`);
           // } catch (e) {
           // console.log(`${chain} mcaps not cached, fetching`);
-          const mcaps = await getMcaps(Object.keys(prices), timestamp);
+          const mcaps = await coins.getMcaps(Object.keys(prices), timestamp);
           //   await storeR2JSONString(`mcaps/${chain}.json`, JSON.stringify(mcaps));
           // }
           Object.keys(mcaps).map((m: string) => {

@@ -8,6 +8,7 @@ import { baseIconsUrl } from "../../constants";
 let dimensionsConfig: any
 getDimensionsConfig()
 
+// TODO: reduce the places this is called to improve performance
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
   // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
   const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')

@@ -15,7 +15,7 @@ async function run() {
   const overallStats = [] as any
   const protocolDataMap = {} as any
   // Go over all types
-  const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
+  const allCache = await getDimensionsCacheV2()
   for (const adapterType of ADAPTER_TYPES) {
   // for (const adapterType of ['bridge-aggregators']) {
     const { protocolMap } = loadAdaptorsData(adapterType)

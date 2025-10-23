@@ -8,7 +8,7 @@ import { elastic } from '@defillama/sdk';
 import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
 import { ADAPTER_TYPES } from '../../data/types';
 import loadAdaptorsData from '../../data';
-const MAX_RUNTIME = 1000 * +(process.env.MAX_RUNTIME_MINUTES ?? 50); // 50 minutes default
+const MAX_RUNTIME = 1000 * 60 * +(process.env.MAX_RUNTIME_MINUTES ?? 50); // 50 minutes default
 const onlyYesterday = process.env.ONLY_YESTERDAY === 'true';  // if set, we refill only yesterday's missing data
 
 console.log('This will run with MAX_RUNTIME:', MAX_RUNTIME / 60000, 'minutes');

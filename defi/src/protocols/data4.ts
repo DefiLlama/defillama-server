@@ -23693,38 +23693,37 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.gloop.finance/security-and-risk/audits"],
     listedAt: 1754371245,
   },
-  {
-    id: "6528",
-    name: "Edge Capital",
-    address: null,
-    symbol: "-",
-    url: "https://app.euler.finance/governor/edge-capital?network=tac",
-    description: "Crypto hedge fund & largest liquidity provider to early-stage protocols",
-    chain: "TAC",
-    logo: `${baseIconsUrl}/edge-capital.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Risk Curators",
-    chains: ["TAC"],
-    module: "edge-capital/index.js",
-    oraclesBreakdown: [
-      {
-        name: "eOracle",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/10777"],
-        chains: [{ chain: "TAC" }],
-      },
-      ],
-    forkedFromIds: [],
-    twitter: "EdgeCapitalMgmt",
-    listedAt: 1754418907,
-    dimensions: {
-      fees: "edge-capital"
-    },
-    
-  },
+  // {
+  //   id: "6528",
+  //   name: "Edge Capital",
+  //   address: null,
+  //   symbol: "-",
+  //   url: "https://app.euler.finance/governor/edge-capital?network=tac",
+  //   description: "Crypto hedge fund & largest liquidity provider to early-stage protocols",
+  //   chain: "TAC",
+  //   logo: `${baseIconsUrl}/edge-capital.jpg`,
+  //   audits: "0",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Risk Curators",
+  //   chains: ["TAC"],
+  //   module: "edge-capital/index.js",
+  //   oraclesBreakdown: [
+  //     {
+  //       name: "eOracle",
+  //       type: "Primary",
+  //       proof: ["https://github.com/DefiLlama/defillama-server/pull/10777"],
+  //       chains: [{ chain: "TAC" }],
+  //     },
+  //     ],
+  //   forkedFromIds: [],
+  //   twitter: "EdgeCapitalMgmt",
+  //   listedAt: 1754418907,
+  //   dimensions: {
+  //     fees: "edge-capital"
+  //   },
+  // },
   {
     id: "6529",
     name: "Odyssey Finance",
@@ -32655,9 +32654,20 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
     module: "ultrayield-by-edge-capital/index.js",
+    oraclesBreakdown: [
+      {
+        name: "eOracle",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/10777"],
+        chains: [{ chain: "TAC" }],
+      },
+    ],
     forkedFromIds: [],
     twitter: "ultrayieldapp",
     listedAt: 1761342069,
+    dimensions: {
+      fees: "edge-capital"
+    },
   },
 ];
 export default data4;

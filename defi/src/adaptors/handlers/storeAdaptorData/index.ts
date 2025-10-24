@@ -530,7 +530,7 @@ function getSignificantValueThreshold(key: string) {
 
 function getSpikeThreshold(key: string) {
   if (!spikeThresholds[key]) {
-    spikeThresholds[key] = highValueKeys.has(key) ? 1e7 : 1e5 // need to check for values over 10M for volumes and 100k for fees and the like
+    spikeThresholds[key] = highValueKeys.has(key) ? 1e8 : 5e5 // need to check for values over 100M for volumes and 500k for fees and the like
   }
   return spikeThresholds[key]
 }

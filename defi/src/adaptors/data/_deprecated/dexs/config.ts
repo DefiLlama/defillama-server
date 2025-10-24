@@ -3070,9 +3070,9 @@ export default {
         id: "6738",
     },
     "dfs-swap-v2": {
-        id: "6739"
+        id: "6906"
     },
     "dfs-swap-v3": {
-        id: "6740",
+        id: "6907",
     },
 } as AdaptorsConfig

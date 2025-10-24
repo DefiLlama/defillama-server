@@ -5,6 +5,7 @@ import * as sdk from '@defillama/sdk'
 import { once, EventEmitter } from 'events'
 import { searchWidth } from "../utils/shared/constants";
 import { Client } from "@elastic/elasticsearch";
+import { logDistressedCoins } from "../utils/shared/distressedCoins";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -59,7 +60,9 @@ export default async function (balances: { [address: string]: string }, timestam
   const usdTokenBalances = {} as Balances;
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   const tokenData = await getTokenData(readKeys, timestamp)
+  const mcapData = await getMcapData(readKeys, timestamp);
   const staleCoinsInclusive: any = {};
+  const distressedCoins: any[] = []
   tokenData.forEach((response: any) => {
     if (Math.abs(response.timestamp - now) < searchWidth) {
       PKsToTokens[response.PK].forEach((address) => {
@@ -75,6 +78,7 @@ export default async function (balances: { [address: string]: string }, timestam
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
         }
         const usdAmount = amount * price;
+        checkMcaps(address, mcapData, usdAmount, distressedCoins, protocol)
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
@@ -85,11 +89,19 @@ export default async function (balances: { [address: string]: string }, timestam
 
   appendToStaleCoins(usdTvl, staleCoinsInclusive, staleCoins);
 
+  if (distressedCoins.length) await logDistressedCoins(distressedCoins);
+
   return {
     usdTvl,
     tokenBalances,
     usdTokenBalances,
   };
+}
+
+function checkMcaps(address: string, mcapData: any, usdAmount: number, distressedCoins: any[], protocol: string) {
+  if (usdAmount < 1e7) return true;
+  const mcap = mcapData[address];
+  if (mcap && usdAmount > mcap) distressedCoins.push({ address, usdAmount, mcap, protocol });
 }
 
 function replaceETHwithWETH(balances: { [address: string]: string }) {
@@ -212,6 +224,100 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
     }
     const tokenData = cachedTokenData.concat(...(await Promise.all(readRequests)));
     return tokenData
+  }
+}
+
+const mcapCache: { [PK: string]: any } = {}
+
+async function getMcapData(readKeys: string[], timestamp: string | number): Promise<any> {
+  if (!readKeys.length) return []
+
+
+  const currentId = counter.requestCount++
+  const eventId = `${currentId}`
+
+  if (counter.activeWorkers > maxParallelCalls) {
+    counter.queue.push(eventId)
+    await once(emitter, eventId)
+  }
+
+  counter.activeWorkers++
+
+  const showEveryX = counter.queue.length > 100 ? 30 : 10 // show log fewer times if lot more are queued up
+  if (currentId % showEveryX === 0) sdk.log(`request #: ${currentId} queue: ${counter.queue.length} active requests: ${counter.activeWorkers}`)
+
+  let response
+  try {
+    response = await _getMcapData()
+    onComplete()
+  } catch (e) {
+    onComplete()
+    throw e
+  }
+
+  return response
+
+  function onComplete() {
+    counter.activeWorkers--
+    if (counter.queue.length) {
+      const nextRequestId = counter.pickFromTop ? counter.queue.shift() : counter.queue.pop()
+      counter.pickFromTop = !counter.pickFromTop
+      emitter.emit(<string>nextRequestId)
+    }
+  }
+
+  async function _getMcapData() {
+    let cachedMcapData: { [PK: string]: number } = {}
+
+    // read data from cache where possible
+    readKeys = readKeys.filter((PK: string) => {
+      if (timestamp !== 'now') return true;
+      if (mcapCache[PK]) {
+        cachedMcapData[PK] = mcapCache[PK];
+        return false;
+      }
+      return true;
+    })
+
+    if (!readKeys.length) return cachedMcapData;
+
+    const readRequests: any[] = [];
+    sdk.log(`mcap request count:  ${readKeys.length}`)
+    for (let i = 0; i < readKeys.length; i += 100) {
+      const body = {
+        "coins": readKeys.slice(i, i + 100),
+      } as any
+      if (timestamp !== "now") {
+        body.timestamp = timestamp;
+      }
+      readRequests.push(
+        fetch(`https://coins.llama.fi/mcaps${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""}`, {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: { "Content-Type": "application/json" },
+        }).then((r) => r.json()).then(r => {
+          const mcaps: { [PK: string]: number } = {}
+          Object.keys(r).map((PK) => {
+            const mcap = r[PK].mcap
+            if (!mcap) return;
+            mcapCache[PK] = mcap
+            mcaps[PK] = mcap
+          })
+
+          return mcaps;
+        })
+      );
+    }
+    const tokenData = [cachedMcapData].concat(...(await Promise.all(readRequests)));
+
+    const mcapObject: { [PK: string]: number } = {}
+    tokenData.map((mcaps) => {
+      Object.entries(mcaps).forEach(([PK, mcap]: any) => {
+        mcapObject[PK] = mcap
+      })
+    })
+
+    return mcapObject;
   }
 }
 

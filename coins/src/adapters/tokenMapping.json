@@ -10324,6 +10324,11 @@
     }
   },
   "hyperliquid": {
+    "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": {
+      "to": "coingecko#hyperliquid",
+      "decimals": 18,
+      "symbol": "HYPE"
+    },
     "0x6d1e7cde53ba9467b783cb7c530ce054": {
       "to": "coingecko#usd-coin",
       "decimals": 8,

@@ -12484,6 +12484,11 @@
     }
   },
   "gatelayer": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#gatechain-token",
+      "decimals": 18,
+      "symbol": "GT"
+    },
     "0x6803b8e93b13941f6b73b82e324b80251b3de338": {
       "to": "coingecko#gatechain-token",
       "decimals": 18,

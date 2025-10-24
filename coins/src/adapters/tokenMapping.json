@@ -2184,6 +2184,16 @@
     }
   },
   "avax": {
+    "0xAB4fBa02a2905a03adA8BD3d493FB289Dcf84024": {
+      "decimals": "18",
+      "symbol": "WAVAX",
+      "to": "coingecko#avalanche-2"
+    },
+    "0x3C594084dC7AB1864AC69DFd01AB77E8f65B83B7": {
+      "decimals": "6",
+      "symbol": "bUSDT",
+      "to": "coingecko#tether"
+    },
     "0xd09ACb80C1E8f2291862c4978A008791c9167003": {
       "decimals": "18",
       "symbol": "tETH",

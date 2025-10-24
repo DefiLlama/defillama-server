@@ -42,6 +42,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   throwError?: boolean
   checkBeforeInsert?: boolean
   maxRunTime?: number // in milliseconds
+  onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -50,7 +51,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 13
   let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, maxRunTime,
+    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false,
 
   } = event
 
@@ -117,7 +118,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     allChains.map(async (chain) => {
       try {
         await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-      } catch (e) { 
+      } catch (e) {
         // console.log('error fetching block, chain:', chain, (e as any)?.message) 
       }
     })
@@ -312,6 +313,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
                 isRunFromRefillScript: true,
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
               })
+              if (onlyYesterday)
+                return await refillYesterdayPromise
             } catch (e) {
               console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
             }
@@ -340,7 +343,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
            recordTimestamp: new Date(recordTimestamp * 1e3).toISOString(),
          })
          return; */
+
       }
+      
+      if (onlyYesterday)  // we should never reach this point if we are only refilling yesterday
+        return refillYesterdayPromise
 
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date

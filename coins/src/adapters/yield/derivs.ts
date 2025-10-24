@@ -579,7 +579,7 @@ const configs: { [adapter: string]: Config } = {
       return res.answer / 1e6;
     },
     chain: "etlk",
-    underlying: "0x0000000000000000000000000000000000000000",
+    underlying: "0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab",
     address: "0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854",
   },
 };

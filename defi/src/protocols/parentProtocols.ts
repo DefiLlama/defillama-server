@@ -8269,6 +8269,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dfsdotfun",
   },
+  {
+    id: "parent#pyth",
+    name: "Pyth",
+    url: "https://www.pyth.network/",
+    description: "Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems",
+    logo: `${baseIconsUrl}/pyth.jpg`,
+    gecko_id: "pyth-network",
+    cmcId: "28177",
+    chains: [],
+    twitter: "PythNetwork",
+    github: ["pyth-network"],
+  },
 ];
 
 export default parentProtocols;

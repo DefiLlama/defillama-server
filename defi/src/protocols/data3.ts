@@ -31080,14 +31080,14 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/pyth-network.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "pyth-network",
-    cmcId: "28177",
+    gecko_id: null,
+    cmcId: null,
     category: "Oracle",
     chains: ["Solana"],
     forkedFrom: [],
     module: "pyth/index.js",
     twitter: "PythNetwork",
-    github: ["pyth-network"],
+    parentProtocol: "parent#pyth",
   },
   {
     id: "4023",
@@ -40225,7 +40225,8 @@ const data3_2: Protocol[] = [
     previousNames: ["Vest Exchange"],
     address: null,
     symbol: "-",
-    url: "https://vestmarkets.com/",
+    url: "https://alpha.vestmarkets.com/join/LLAMA",
+    referralUrl: "https://alpha.vestmarkets.com/join/LLAMA",
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
@@ -59054,7 +59055,6 @@ const data3_2: Protocol[] = [
         genuineSpikes: ["1746403200"],
         adapter: "okx"
       },
-      "bridge-aggregators": "okx",
       fees: "okx-swap"
     }
   },
@@ -65884,6 +65884,9 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "okx",
     parentProtocol: "parent#okx-dex",
+    dimensions: {
+      "bridge-aggregators": "okx",
+    }
   },
   {
     id: "5497",

@@ -32446,7 +32446,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "avant-aveth/index.js",
-    twitter: "shiftprotocol_",
+    twitter: "avantprotocol",
     audit_links: ["https://docs.avantprotocol.com/security/contract-and-opsec-audits"],
     parentProtocol: "parent#avant-protocol",
     listedAt: 1761266699,

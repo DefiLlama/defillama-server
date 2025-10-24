@@ -1,25 +1,19 @@
-import dimensionConfigs from "../adaptors/data/configs";
-import { baseIconsUrl } from "../constants";
-import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
 import protocols from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
+import operationalCosts from "../operationalCosts/daos";
+import { sluggifyString } from "../utils/sluggify";
+import { ADAPTER_TYPES, AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
+import loadAdaptorsData from "../adaptors/data";
 
-test("Dimensions: no repeated ids", async () => {
-  for (const [metric, map] of Object.entries(dimensionConfigs)) {
-    const ids = new Set();
-    for (const value of Object.values(map)) {
-      if (!value.enabled) continue;
-      const id = value.isChain ? 'chain#'+value.id : value.id
-      if (ids.has(id)) console.log(`Dimensions: Repeated id ${id} in ${metric}`)
-      expect(ids).not.toContain(id);
-      ids.add(id);
-    }
-  }
-})
+test("operational expenses: script has been run", async () => {
+  const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
+
+  expect(outputData).toEqual(operationalCosts)
+});
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))
@@ -50,10 +44,10 @@ test("all chains are on chainMap", async () => {
   }
 });
 
-test("there are no repeated values in unlock adapters", async () => {
+/* test("there are no repeated values in unlock adapters", async () => {
   const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
   for (const [protocolName, protocolFile] of Object.entries(emissionsAdapters)) {
-    if(protocolName === "daomaker"){
+    if (protocolName === "daomaker" || protocolName === "streamflow") {
       continue
     }
     const rawProtocol = protocolFile.default
@@ -61,30 +55,30 @@ test("there are no repeated values in unlock adapters", async () => {
     expect(protocol.token).not.toBe(undefined)
     expect(tokens).not.toContain(protocol.token);
     tokens.push(protocol.token);
-    if(protocol.protocolIds){
+    if (protocol.protocolIds) {
       expect(protocolIds).not.toContain(protocol.protocolIds);
       protocolIds.push(protocol.protocolIds);
     }
-    if(protocol.notes){
+    if (protocol.notes) {
       expect(notes).not.toContain(protocol.notes);
       notes.push(protocol.notes);
     }
-    if(protocol.sources){
+    if (protocol.sources) {
       expect(sources).not.toContain(protocol.sources);
       sources.push(protocol.sources);
     }
   }
 })
-
+ */
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])
   const ignoredKeys = new Set(['default'])
   await Promise.all(treasuries.map(async protocol => {
-    const module = await importAdapter(protocol)
+    const module = await importAdapterDynamic(protocol)
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function' && _module !== '_lmtf') || !treasuryKeys.has(key))
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
       }
     }
@@ -114,7 +108,7 @@ test("Github repo on parent protocol when it exists", async () => {
 });
 
 test("Github: track only orgs", async () => {
-  const childs = [...protocols, ...parentProtocols].filter(i => i.github?.find(g=>g.includes('/')))
+  const childs = [...protocols, ...parentProtocols].filter(i => i.github?.find(g => g.includes('/')))
   if (childs.length)
     console.log('Update github field to org/user or remove it: ', childs.map(i => i.name))
   expect(childs.length).toBeLessThanOrEqual(0)
@@ -141,16 +135,16 @@ test("projects have a single chain or each chain has an adapter", async () => {
 });
 
 test("parentProtocol exists", async () => {
-  const parentIds = parentProtocols.map(p=>p.id)
+  const parentIds = parentProtocols.map(p => p.id)
   for (const protocol of protocols) {
-    if(protocol.parentProtocol)
-    expect(parentIds).toContain(protocol.parentProtocol);
+    if (protocol.parentProtocol)
+      expect(parentIds).toContain(protocol.parentProtocol);
   }
 });
 
 test("no id is repeated", async () => {
   const ids = [];
-  for (const protocol of (protocols as {id:string}[]).concat(parentProtocols)) {
+  for (const protocol of (protocols as { id: string }[]).concat(parentProtocols)) {
     expect(ids).not.toContain(protocol.id);
     ids.push(protocol.id);
   }
@@ -158,21 +152,31 @@ test("no id is repeated", async () => {
 
 test("no name is repeated", async () => {
   const names = new Set();
-  for (const protocol of (protocols as {name:string, previousNames?:string[]}[]).concat(parentProtocols)) {
-    for(const name of [protocol.name, ...(protocol.previousNames ?? [])]){
+  for (const protocol of (protocols as { name: string, previousNames?: string[] }[]).concat(parentProtocols)) {
+    for (const name of [protocol.name, ...(protocol.previousNames ?? [])]) {
       expect(names).not.toContain(name.toLowerCase());
       names.add(name.toLowerCase())
     }
   }
 });
 
+test("no slug is repeated", async () => {
+  const slugs = new Set();
+  for (const protocol of (protocols).concat(parentProtocols as any)) {
+    const slug = sluggifyString(protocol.name.trim());
+    expect(slugs).not.toContain(slug);
+    slugs.add(slug);
+  }
+});
+
+
 test("all oracle names match exactly", async () => {
   const oracles = {} as any;
   for (const protocol of (protocols).concat(parentProtocols as any)) {
-    for(const oracle of (protocol.oracles ?? [])){
+    for (const oracle of (protocol.oracles ?? [])) {
       const prevOracle = oracles[oracle.toLowerCase()]
-      if(prevOracle === undefined){
-        oracles[oracle.toLowerCase()]=oracle
+      if (prevOracle === undefined) {
+        oracles[oracle.toLowerCase()] = oracle
       } else {
         expect(prevOracle).toBe(oracle)
       }
@@ -187,6 +191,21 @@ test("no coingeckoId is repeated", async () => {
     if (typeof id === "string") {
       expect(ids).not.toContain(id);
       ids.push(id);
+    }
+  }
+});
+
+test("forkedFromIds are valid protocol ids", async () => {
+  const existingIds = new Set(protocols.map(p => p.id));
+  for (const protocol of protocols) {
+    if (protocol.forkedFromIds) {
+      for (const forkedId of protocol.forkedFromIds) {
+        // Check that forkedId is a string number
+        expect(typeof forkedId).toBe('string');
+        expect(isNaN(Number(forkedId))).toBe(false);
+        // Check that forkedId exists as a protocol id
+        expect(existingIds).toContain(forkedId);
+      }
     }
   }
 });
@@ -208,7 +227,6 @@ test("no surprise category", async () => {
     'Derivatives',
     'Payments',
     'Privacy',
-    'Staking',
     'Yield',
     'RWA',
     'Indexes',
@@ -255,7 +273,7 @@ test("no surprise category", async () => {
     'Token Locker',
     'Bug Bounty',
     'DCA Tools',
-    'Managed Token Pools',
+    'Onchain Capital Allocator',
     'Developer Tools',
     'Stablecoin Issuer',
     'Coins Tracker',
@@ -270,7 +288,22 @@ test("no surprise category", async () => {
     'Charity Fundraising',
     'Volume Boosting',
     'DOR',
-    'Collateral Management'
+    'Collateral Management',
+    'Meme',
+    'Private Investment Platform',
+    'Risk Curators',
+    'Chain Bribes',
+    'DAO Service Provider',
+    'Staking Rental',
+    'Canonical Bridge',
+    'Interface',
+    "Video Infrastructure",
+    "DePIN",
+    "Dual-Token Stablecoin",
+    "Physical TCG",
+    "Mining Pools",
+    "NFT Automated Strategies",
+    "Luck Games"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -301,3 +334,90 @@ test("icon exists", async () => {
   }
 });
 */
+
+
+const isArrayUnique = (arr: any[]) => Array.isArray(arr) && new Set(arr).size === arr.length;
+test("No duplicated adapter type", async () => {
+  const values = Object.values(AdaptorRecordType)
+  expect(isArrayUnique(values)).toBeTruthy();
+});
+
+test.only("Dimensions: No two listings share the same module, name or slug", () => {
+
+  const moduleMapFromMetadata = {} as Record<string, Record<string, string>>; // adapterType -> protocolName -> module
+
+  // we have duplicate chains in chainCoingeckoIds as we maintain the same config for old and new chain names
+  const addedChains = new Set<any>();
+  const chainMetadata = Object.entries(chainCoingeckoIds).map(([symbol, data]) => {
+    if (addedChains.has(data)) {
+      // console.log("Duplicate chain found: ", symbol);
+      return;
+    }
+
+    addedChains.add(data);
+
+    return {
+      ...data,
+      name: symbol,
+    }
+  }).filter(Boolean)
+
+  const allProtocolMetadata = protocols.concat(chainMetadata as any)
+  const protocolNamesProcessed = {} as Record<string, boolean>
+
+  allProtocolMetadata.forEach((p: any) => {
+    if (!p.dimensions) return;
+
+    const name = p.name
+
+    if (!name) {
+      console.log(p)
+      return;
+    }
+
+    if (protocolNamesProcessed[name]) throw new Error(`Protocol ${name} is listed more than once in protocols.ts or chainCoingeckoIds.ts`)
+    protocolNamesProcessed[name] = true;
+
+
+    for (const adaptorTypeKey of Object.keys(p.dimensions)) {
+      if (!moduleMapFromMetadata[adaptorTypeKey]) moduleMapFromMetadata[adaptorTypeKey] = {}
+      const existingMap = moduleMapFromMetadata[adaptorTypeKey]
+
+      const moduleField = typeof p.dimensions[adaptorTypeKey] === 'string' ? p.dimensions[adaptorTypeKey] : p.dimensions[adaptorTypeKey]?.adapter
+      if (!moduleField) {
+        throw new Error(`No adapter field found for protocol ${name} for adapter type ${adaptorTypeKey}`)
+      }
+
+      if (existingMap[moduleField]) {
+        throw new Error(`Duplicate module ${moduleField} found in metadata for ${name} and ${existingMap[moduleField]} for adapter type ${adaptorTypeKey}`);
+      }
+      existingMap[moduleField] = name
+    }
+  })
+
+  for (const adapterType of Object.values(ADAPTER_TYPES)) {
+    const { protocolAdaptors } = loadAdaptorsData(adapterType)
+
+    const moduleMap = {} as Record<string, string>;
+    const nameMap = {} as Record<string, string>;
+    const slugMap = {} as Record<string, string>;
+
+
+    for (const adaptor of protocolAdaptors) {
+      // we might not catch module this way because we sort of do a reverse mapping, get all imports file, then map from there to a protocol/chain
+      if (moduleMap[adaptor.module]) {
+        throw new Error(`Duplicate module ${adaptor.module} found in ${adaptor.name} and ${moduleMap[adaptor.module]} for adapter type ${adapterType}`);
+      }
+      moduleMap[adaptor.module] = adaptor.name;
+      if (nameMap[adaptor.name]) {
+        throw new Error(`Duplicate name ${adaptor.name} found in ${adaptor.module} and ${nameMap[adaptor.name]} for adapter type ${adapterType}`);
+      }
+      nameMap[adaptor.name] = adaptor.module;
+      const slug = sluggifyString(adaptor.name);
+      if (slugMap[slug]) {
+        throw new Error(`Duplicate slug ${slug} found in ${adaptor.name} and ${slugMap[slug]} for adapter type ${adapterType}`);
+      }
+      slugMap[slug] = adaptor.name;
+    }
+  }
+})

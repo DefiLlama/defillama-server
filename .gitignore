@@ -16,3 +16,4 @@ defi/.safe_commit_hash
 defi/.current_commit_hash
 */api2-cache
 *.log
+temp/

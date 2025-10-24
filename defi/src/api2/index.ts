@@ -6,6 +6,7 @@ import setTvlRoutes from "./routes";
 import process from "process";
 import fs from 'fs'
 import { RUN_TYPE } from "./utils";
+import { setInternalRoutes } from './routes/internalRoutes';
 
 const webserver = new HyperExpress.Server()
 
@@ -38,7 +39,27 @@ async function main() {
 
     setTvlRoutes(router, subPath)
   }
+
+  if (process.env.API2_SUBPATH) {
+    const router = new HyperExpress.Router()
+    const subPath = '/' + process.env.API2_SUBPATH + '_internal'
+    webserver.use(subPath, router)
+    setInternalRoutes(router, subPath)
+  }
+
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
+
+  webserver.options('/*', (req, res) => {
+    const origin = req.headers.origin;
+
+    const isFromDefiLlama = origin === 'https://defillama.com'
+    
+    if (req.headers.authorization && !isFromDefiLlama) {
+      res.status(403).send();
+    } else {
+      res.status(200).send();
+    }
+  });
 
   webserver.listen(port)
     .then(() => {

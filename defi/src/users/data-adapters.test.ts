@@ -1,4 +1,4 @@
-import userAdapters from "@defillama/dimension-adapters/users/list";
+import userAdapters from "../dimension_migration/users/list";
 
 test("no id is repeated in user adapters", async () => {
     const ids = [];

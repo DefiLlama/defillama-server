@@ -31,6 +31,9 @@ export type FinalChainData = {
   native: any;
   ownTokens: any;
   total: any;
+  rwa?: any;
+  lst?: any;
+  stablecoins?: any
   // metadata: any;
 };
 export type FinalData = {

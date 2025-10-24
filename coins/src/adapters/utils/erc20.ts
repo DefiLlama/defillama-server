@@ -152,6 +152,7 @@ export async function listUnknownTokens(
   unknownTokens = unknownTokens.map(
     (t, i) => `${unknownSymbols[i].output}-${t}`,
   );
+  if (!unknownTokens.length) return;
   console.log(chain);
   console.log(unknownTokens);
 }

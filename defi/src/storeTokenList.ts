@@ -48,7 +48,8 @@ const handler = async () => {
         "xdai",
         "meter",
         "metis-andromeda",
-        "base"
+        "base",
+        "plume-network",
     ].map(async chain => {
         const chainCoins = cgCoins
             .filter(coin => coin.platforms[chain] !== undefined && coin.platforms[chain] !== "")

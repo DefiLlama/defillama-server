@@ -20,9 +20,8 @@ export async function fxsp(timestamp: number): Promise<Write[]> {
   const { token0, token1, sp } = addresses;
   const [tokens0, tokens1, supply] = await Promise.all([
     api.call({
-      abi: "erc20:balanceOf",
-      target: token0,
-      params: sp,
+      abi: "uint256:totalStableToken",
+      target: sp,
     }),
     api.call({
       abi: "erc20:balanceOf",

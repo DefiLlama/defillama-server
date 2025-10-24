@@ -42,6 +42,9 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   }
 }
 
+const compensateMissingData = process.env.COMPENSATE_MISSING_DATA === "true";
+
+
 type ChainBlocks = {
   [chain: string]: number;
 }
@@ -57,9 +60,40 @@ async function getAndStore(
   }
 ) {
   const { chainsToRefill, rawTokenTvl = [] } = options
-  const cacheData = rawTokenTvl.find(
+  let cacheData = rawTokenTvl.find(
     (item) => getClosestDayStartTimestamp(item.SK) === timestamp
   )
+
+  if (compensateMissingData) {
+
+    let closestData = undefined
+    let closestDataTimestamp = undefined
+    for (let i = 1; i <= 5 && !closestData; i++) {
+      const nextDay = getClosestDayStartTimestamp(timestamp + secondsInDay * i)
+      const previousDay = getClosestDayStartTimestamp(timestamp - secondsInDay * i)
+      const nextDayData = rawTokenTvl.find((item) => getClosestDayStartTimestamp(item.SK) === nextDay)
+      const previousDayData = rawTokenTvl.find((item) => getClosestDayStartTimestamp(item.SK) === previousDay)
+      closestData = nextDayData ?? previousDayData
+      closestDataTimestamp = nextDayData ? nextDay : previousDay
+    }
+
+    if (closestData) {
+      if (!cacheData) {
+        console.log('No data for: ', new Date(timestamp * 1000).toDateString(), ' but found data for: ', new Date(closestDataTimestamp! * 1000).toDateString(), 'using that for partial refill')
+        cacheData = closestData
+      } else {
+        const keys = Object.keys(cacheData)
+        for (const key of keys) {
+          if (!cacheData[key] && closestData[key]) {
+            console.log('key:' + key + 'not found for: ', new Date(timestamp * 1000).toDateString(), ' but found data for: ', new Date(closestDataTimestamp! * 1000).toDateString(), 'using that for partial refill')
+            cacheData[key] = closestData[key]
+          }
+        }
+      }
+    }
+  }
+
+
   if (!cacheData) {
     console.log('Unable to find cached data for: ', new Date(timestamp * 1000).toDateString())
     process.exit(0)

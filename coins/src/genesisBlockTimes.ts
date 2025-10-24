@@ -85,6 +85,7 @@ const times: { [chains: string]: number } = {
   godwoken: 1635653867,
   lite: 1612884498,
   era: 1676384520,
+  plume_mainnet: 1740047951,
 };
 
 export default times;

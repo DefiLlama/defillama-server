@@ -1,13 +1,13 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
+import * as fs from "fs";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -72,7 +72,7 @@ export default async function craftParentProtocol({
       : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
-    childProtocols.map((protocolData) =>
+    childProtocols.filter(i => !i.excludeTvlFromParent).map((protocolData) =>
       fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
     )
   );
@@ -118,6 +118,7 @@ export async function craftParentProtocolInternal({
   isHourlyTvl,
   fetchMcap,
   parentRaises,
+  feMini = false,
 }: {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
@@ -125,10 +126,49 @@ export async function craftParentProtocolInternal({
   fetchMcap?: Function;
   childProtocolsTvls: Array<IProtocolResponse>;
   parentRaises: IRaise[];
+  feMini?: boolean;
 }) {
   if (!fetchMcap) fetchMcap = protocolMcap;
 
+
+
+  // debug to find bad data
+  // -- debug start
+  const isBadDataFormat = (data: any) => {
+    if (typeof data !== "object" || !data) return true;
+    const { tvl, tokensInUsd, tokens } = data;
+    if (!Array.isArray(tvl)) return 'tvl'
+    if (!Array.isArray(tokensInUsd)) return 'tokensInUsd'
+    if (!Array.isArray(tokens)) return 'tokens'
+    return false;
+  }
+  childProtocolsTvls.forEach((protocolData: any) => {
+    if (protocolData.message) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for message ${protocolData.name}: ${protocolData.message}`);
+      return;
+    }
+
+    const badData = isBadDataFormat(protocolData);
+    if (badData) {
+      console.error(`Error building parent protocol: ${parentProtocol.name}`);
+      console.error(`Error in protocol data for ${protocolData.name}: ${badData}`)
+    }
+
+    Object.entries(protocolData.chainTvls ?? {}).forEach(([chain, chainData]: any) => {
+      const badChainData = isBadDataFormat(chainData);
+      if (badChainData) {
+        console.error(`Error building parent protocol: ${parentProtocol.name}`);
+        console.error(`Error in chain data for ${chain} in protocol ${protocolData.name}: ${badChainData}`)
+      }
+    });
+  })
+  // -- debug end
+
+
+
   let { chainTvls, tokensInUsd, tokens, tvl } = mergeChildProtocolData(childProtocolsTvls, isHourlyTvl);
+
 
   if (skipAggregatedTvl) {
     tvl = []
@@ -157,7 +197,6 @@ export async function craftParentProtocolInternal({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, parentRaises as Array<IRaise>),
-    metrics: getAvailableMetricsById(parentProtocol.id),
     symbol:
       parentProtocol.symbol ??
       (parentProtocol.gecko_id
@@ -165,15 +204,42 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
   };
 
-  // Filter overall tokens, tokens in usd by date if data is more than 6MB
-  let keyCount = getObjectKeyCount(response);
-  if (keyCount >= 1.5e5) { // there are more than 150k keys
+  if (feMini) {
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;
+
+      if (Array.isArray(response.chainTvls[chain].tvl)) {
+        const transformedTvl: any = []
+        for (const record of response.chainTvls[chain].tvl) {
+          transformedTvl.push([record.date, record.totalLiquidityUSD])
+        }
+        response.chainTvls[chain].tvl = transformedTvl;
+      }
+    }
+
+    response.tokensInUsd = null
+    response.tokens = null
+
+    if (Array.isArray(response.tvl)) {
+      const transformedTvl: any = []
+      for (const record of response.tvl) {
+        transformedTvl.push([record.date, record.totalLiquidityUSD])
+      }
+      response.tvl = transformedTvl;
+    }
+
+  } else {
+    // Filter overall tokens, tokens in usd by date if data is more than 6MB
+    let keyCount = getObjectKeyCount(response);
+    if (keyCount >= 1.5e5) { // there are more than 150k keys
+      for (const chain in response.chainTvls) {
+        response.chainTvls[chain].tokens = null;
+        response.chainTvls[chain].tokensInUsd = null;
+      }
     }
   }
 
@@ -181,20 +247,14 @@ export async function craftParentProtocolInternal({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    const hallmarks: { [date: number]: string } = {};
+    const hallmarks: any = []
     childProtocolsTvls.forEach((module) => {
-      if (module.hallmarks) {
-        module.hallmarks.forEach(([date, desc]: [number, string]) => {
-          if (!hallmarks[date] || hallmarks[date] !== desc) {
-            hallmarks[date] = desc;
-          }
-        });
-      }
+      if (module.hallmarks)
+        hallmarks.push(...module.hallmarks);
     });
 
-    response.hallmarks = Object.entries(hallmarks)
-      .map(([date, desc]) => [Number(date), desc])
-      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
+    sortHallmarks(hallmarks);
+    response.hallmarks = hallmarks
   }
 
   return response;
@@ -216,6 +276,7 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
   })
 
   childProtocolsTvls.map((protocolData: any) => {
+    if (protocolData.excludeTvlFromParent) return;
     const excludedSet = new Set<string>()
     if (protocolData.tokensExcludedFromParent) {
       Object.values(protocolData.tokensExcludedFromParent).flat().forEach((token: any) => {
@@ -308,36 +369,50 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
 
   function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
     const dateMap: { [date: number]: any } = {}
+    data.sort((a, b) => a.date - b.date) // sort by date
 
     const recordCount = data.length
     if (recordCount === 0) return dateMap;
 
+
+    // for daily tvl data, the last entry is the latest hourly record. if that is the case, we need to align that timestamp with latest hourly record of other child protocols
+    if (!isTvlDataHourly) {
+      let newestRecord = data[data.length - 1]
+      const currentDayStartUTC = getStartOfDayTimestamp(Math.floor(Date.now() / 1000))
+      const isTodayHourlyData = newestRecord.date >= currentDayStartUTC
+      if (isTodayHourlyData) {
+        newestRecord.date = latestTS
+      } else {  // if the lastst hourly record is not for today, we need to align it with the start of the day of the last record
+        newestRecord.date = getStartOfDayTimestamp(newestRecord.date)
+      }
+    }
+
+
+    // turn the data into a map
     let lastRecordWithDate = data[0]
     data.forEach((record, idx) => {
+      const isLastRecord = idx === recordCount - 1
 
       // if it is not an hourly tvl data, we need to round the timestamp to the start of the day, we leave the last record as is (as it can be the latest hourly record)
-      if (!isTvlDataHourly && idx < recordCount - 1) {
+      if (!isTvlDataHourly && !isLastRecord) {
         record.date = getStartOfDayTimestamp(record.date)
-      }
-
-      if (record.date < lastRecordWithDate.date) {
-        lastRecordWithDate = record
       }
 
       dateMap[record.date] = record
     })
 
-    let lastDate = lastRecordWithDate.date
-    // // round it to the nearest start of the day
-    // lastDate = Math.floor(lastDate / 86400) * 86400
+
     // we fill missing data only for daily tvl data
-    while (lastDate < latestTS && !isTvlDataHourly) {
-      lastDate += 86400
-      if (!dateMap[lastDate]) dateMap[lastDate] = { ...clone(lastRecordWithDate), date: lastDate }  // to avoid mutating the same object, can turn into a bug in the case of excluding tvl if we operate on the same record again and again
-      lastRecordWithDate = dateMap[lastDate]
+    let nextDateTS = lastRecordWithDate.date + 86400
+    while (nextDateTS < latestTS && !isTvlDataHourly) {
+      if (!dateMap[nextDateTS]) dateMap[nextDateTS] = { ...clone(lastRecordWithDate), date: nextDateTS }  // to avoid mutating the same object, can turn into a bug in the case of excluding tvl if we operate on the same record again and again
+      lastRecordWithDate = dateMap[nextDateTS]
+      nextDateTS += 86400
     }
 
+    // if the last record is not the latest timestamp, we need to add that too
     if (!dateMap[latestTS] && !isTvlDataHourly) dateMap[latestTS] = { ...clone(lastRecordWithDate), date: latestTS }
+
 
     return dateMap;
   }

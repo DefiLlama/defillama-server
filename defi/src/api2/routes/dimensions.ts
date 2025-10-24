@@ -1,22 +1,23 @@
 
-import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
-import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
 import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
+import { AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/data/types";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 // const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
 
 function formatChartData(data: any = {}) {
-  return Object.entries(data)
-    // .filter(([_key, val]: any) => val) // we want to keep 0 values
-    .map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
+  const result = [];
+  for (const key in data) {
+    result.push([timeSToUnix(key), data[key]]);
+  }
+  return result.sort(([a]: any, [b]: any) => a - b);
 }
 
 function getPercentage(a: number, b: number) {
@@ -70,7 +71,7 @@ export async function getOverviewProcess2({
   const { summaries, allChains, protocolSummaries = {} } = cacheData
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
-      chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+    chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
@@ -93,11 +94,12 @@ export async function getOverviewProcess2({
   response.allChains = allChains
 
   // TODO: missing average1y
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'total7DaysAgo', 'total30DaysAgo']
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'monthlyAverage1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'total7DaysAgo', 'total30DaysAgo', 'totalAllTime']
 
   responseKeys.forEach(key => {
     response[key] = summary[key]
   })
+  let protocolTotalAllTimeSum = 0
 
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
   response.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
@@ -105,8 +107,8 @@ export async function getOverviewProcess2({
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
-  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols',]
-  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'breakdown30d', 'total14dto7d', 'total7DaysAgo', 'total30DaysAgo']  // TODO: missing breakdown24h/fix it?
+  const protocolInfoKeys = ['defillamaId', 'name', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols', 'doublecounted']
+  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'monthlyAverage1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'breakdown30d', 'total14dto7d', 'total7DaysAgo', 'total30DaysAgo']  // TODO: missing breakdown24h/fix it?
 
   response.protocols = Object.entries(protocolSummaries).map(([_id, { summaries, info }]: any) => {
     const res: any = {}
@@ -127,10 +129,14 @@ export async function getOverviewProcess2({
       return null
     }
 
+    if (!summary?.recordCount) return null; // if there are no data points, we should filter out the protocol
+    if (summary?.totalAllTime) protocolTotalAllTimeSum += summary.totalAllTime
+
     protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])
     res.id = res.defillamaId ?? res.id
     return res
   }).filter((i: any) => i)
+  if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
 
   return response
 }
@@ -158,7 +164,7 @@ export async function getProtocolDataHandler2({
 
   const response: any = { ...info }
 
-  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
+  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'total30d' , 'totalAllTime',]
   summaryKeys.forEach(key => response[key] = summary[key])
 
   if (!excludeTotalDataChart) {
@@ -186,6 +192,14 @@ export async function getProtocolDataHandler2({
   }
 
   response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
+  if (response.totalDataChartBreakdown) {
+    response.totalDataChartBreakdown.forEach(([_, chart]: any) => {
+      Object.entries(chart).forEach(([chain, value]: any) => {
+        delete chart[chain]
+        chart[getDisplayChainNameCached(chain)] = value
+      })
+    })
+  }
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   return response

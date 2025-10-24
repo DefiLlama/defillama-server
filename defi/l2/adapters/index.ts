@@ -59,7 +59,7 @@ export const linea = async (): Promise<Address[]> => {
   const data = await fetch(
     "https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-shortlist.json"
   );
-  addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
+  addresses.linea = data.tokens.filter((t: any) => !t.tokenType.includes("native")).map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
 export const metis = async (): Promise<Address[]> => {
@@ -242,4 +242,17 @@ export const eclipse = async (): Promise<Address[]> => {
   addresses.eclipse = [];
   res.map(({ address }: any) => addresses.eclipse.push(address));
   return addresses.eclipse;
+};
+export const flow = async (): Promise<Address[]> => {
+  if (addresses.flow) return addresses.flow;
+  const res: { tokens: { address: string; tags: string[] }[] } = await fetch(
+    "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+  );
+
+  addresses.flow = [];
+  res.tokens.map(({ address, tags }: any) => {
+    if (!tags.includes("bridged-coin")) addresses.flow.push(address);
+  });
+
+  return addresses.flow;
 };

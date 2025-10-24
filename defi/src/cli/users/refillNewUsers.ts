@@ -1,6 +1,6 @@
 require("dotenv").config();
-import protocolAddresses from "../../../dimension-adapters/users/routers/routerAddresses";
-import { isAcceptedChain } from "../../../dimension-adapters/users/utils/convertChain";
+import protocolAddresses from "../../dimension_migration/users/routers/routerAddresses";
+import { isAcceptedChain } from "../../dimension_migration/users/utils/convertChain";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeAllNewUsers } from "./queries/newUsers";
 

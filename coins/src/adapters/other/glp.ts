@@ -54,8 +54,9 @@ export default function glp(timestamp: number = 0) {
     ])
     const pricesObject: any = {}
     aums.forEach((aum, i) => {
+      aum
       if (!aums[i] || !pricePrecisions[i] || !supplies[i] || !decimals[i]) return
-      pricesObject[glps[i]] = { price: aum[0] * 10 ** decimals[i] / (supplies[i] * pricePrecisions[i]) }
+      pricesObject[glps[i]] = { price: 0 }
     })
     return getWrites({ chain, timestamp, pricesObject, projectName: 'glp' })
   }

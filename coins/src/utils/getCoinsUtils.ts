@@ -33,11 +33,11 @@ export const batchGetLatest = (pks: string[]) =>
   );
 
 export async function getBasicCoins(requestedCoins: string[]) {
-  const PKTransforms = {} as { [pk: string]: string };
+  const PKTransforms = {} as { [pk: string]: string[] };
   const pks: string[] = [];
   requestedCoins.forEach((coin) => {
     const pk = coinToPK(coin);
-    PKTransforms[pk] = coin;
+    (PKTransforms[pk]) ? PKTransforms[pk].push(coin) : PKTransforms[pk] = [coin]
     pks.push(pk);
   });
   const coins = await batchGetLatest(pks);
@@ -79,7 +79,7 @@ export async function fetchCgPriceData(
   return await retryCoingeckoRequest(
     `simple/price?ids=${coinIds.join(
       ",",
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true&precision=full`,
     10,
     log,
   );

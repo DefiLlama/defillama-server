@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, protocolBridgeIds, zero } from "./constants";
 import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
@@ -10,25 +10,62 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { storeNotTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
-import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
+import { storeR2JSONString } from "../src/utils/r2";
+const BufferLayout = require("buffer-layout");
 
-export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
+const uint64 = (property = "uint64") => {
+  const layout = BufferLayout.blob(8, property);
+
+  const _decode = layout.decode.bind(layout);
+  const _encode = layout.encode.bind(layout);
+
+  layout.decode = (buffer: any, offset: any) => {
+    const data = _decode(buffer, offset);
+    return new BigNumber(
+      [...data]
+        .reverse()
+        .map((i) => `00${i.toString(16)}`.slice(-2))
+        .join(""),
+      16
+    );
+  };
+
+  layout.encode = (num: any, buffer: any, offset: any) => {
+    const a = num.toArray().reverse();
+    let b = Buffer.from(a);
+    if (b.length !== 8) {
+      const zeroPad = Buffer.alloc(8);
+      b.copy(zeroPad);
+      b = zeroPad;
+    }
+    return _encode(b, buffer, offset);
+  };
+
+  return layout;
+};
+
+const u64 = uint64
+
+export async function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Promise<TokenTvlData> {
   const chainUsdTokenTvls: TokenTvlData = {};
+  const dependancies: { [chain: string]: string[] } = {};
 
   Object.keys(usdTokenBalances).map((id: string) => {
     const bridge = usdTokenBalances[id];
     Object.keys(bridge).map((chain: string) => {
-      if (chain == "tron") {
-        id;
-        bridge;
-      }
       if (canonicalBridgeIds[id] == chain) return;
       if (excludedTvlKeys.includes(chain)) return;
+
+      const dependancy = canonicalBridgeIds[id] ?? protocolBridgeIds[id];
+
+      if (dependancy) {
+        if (!(dependancy in dependancies)) dependancies[dependancy] = [];
+        dependancies[dependancy].push(chain);
+      }
 
       if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
       Object.keys(bridge[chain]).map((rawSymbol: string) => {
@@ -38,6 +75,8 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
       });
     });
   });
+
+  await storeR2JSONString("L2-dependancies", JSON.stringify(dependancies));
 
   return chainUsdTokenTvls;
 }
@@ -58,7 +97,7 @@ export async function getPrices(
   timestamp: number | "now"
 ): Promise<{ [address: string]: CoinsApiData }> {
   if (!readKeys.length) return {};
-  const readRequests: any[] = [];
+  const bodies: string[] = [];
   for (let i = 0; i < readKeys.length; i += 100) {
     const body = {
       coins: readKeys.slice(i, i + 100),
@@ -66,8 +105,14 @@ export async function getPrices(
     if (timestamp !== "now") {
       body.timestamp = timestamp;
     }
-    readRequests.push(
-      restCallWrapper(
+    bodies.push(JSON.stringify(body));
+  }
+
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(bodies)
+    .process(async (body) => {
+      const res = await restCallWrapper(
         () =>
           fetch(
             `https://coins.llama.fi/prices?source=internal${
@@ -75,7 +120,7 @@ export async function getPrices(
             }`,
             {
               method: "POST",
-              body: JSON.stringify(body),
+              body,
               headers: { "Content-Type": "application/json" },
             }
           )
@@ -88,11 +133,12 @@ export async function getPrices(
             ),
         undefined,
         "coin prices"
-      )
-    );
-  }
-
-  const tokenData = await Promise.all(readRequests);
+      );
+      tokenData.push(res);
+    })
+    .catch((e) => {
+      throw new Error(`coin prices call failed with ${e}`);
+    });
 
   const aggregatedRes: { [address: string]: CoinsApiData } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
@@ -104,9 +150,6 @@ export async function getPrices(
     });
   });
 
-  const notPricedTokens = filterForNotTokens(readKeys, Object.keys(aggregatedRes));
-  await storeNotTokens(notPricedTokens);
-
   return aggregatedRes;
 }
 export async function getMcaps(
@@ -114,7 +157,7 @@ export async function getMcaps(
   timestamp: number | "now"
 ): Promise<{ [address: string]: McapsApiData }> {
   if (!readKeys.length) return {};
-  const readRequests: any[] = [];
+  const bodies: string[] = [];
   for (let i = 0; i < readKeys.length; i += 100) {
     const body = {
       coins: readKeys.slice(i, i + 100),
@@ -122,21 +165,28 @@ export async function getMcaps(
     if (timestamp !== "now") {
       body.timestamp = timestamp;
     }
-    readRequests.push(
-      restCallWrapper(
+    bodies.push(JSON.stringify(body));
+  }
+
+  const tokenData: any[] = [];
+  await PromisePool.withConcurrency(10)
+    .for(bodies)
+    .process(async (body) => {
+      const res = await restCallWrapper(
         () =>
           fetch(`https://coins.llama.fi/mcaps${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""}`, {
             method: "POST",
-            body: JSON.stringify(body),
+            body,
             headers: { "Content-Type": "application/json" },
           }).then((r) => r.json()),
         undefined,
         "mcaps"
-      )
-    );
-  }
-
-  const tokenData = await Promise.all(readRequests);
+      );
+      tokenData.push(res);
+    })
+    .catch((e) => {
+      throw new Error(`coin mcaps call failed with ${e}`);
+    });
 
   const aggregatedRes: { [address: string]: any } = {};
   const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
@@ -152,7 +202,6 @@ export async function getMcaps(
 async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Osmosis adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(3)
     .for(tokens)
@@ -162,19 +211,16 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
           (r) => r.json()
         );
         if (res && res.amount) supplies[`osmosis:${token}`] = res.amount.amount;
-        else notTokens.push(token);
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(1)
     .for(tokens)
@@ -188,13 +234,11 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
         ).then((r) => r.json());
         if (res && res.data && res.data.supply)
           supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
-        else notTokens.push(`aptos:${token}`);
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 
@@ -224,7 +268,7 @@ async function getSolanaTokenSupply(
 ): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with ${chain} adapter!`);
 
-  const solanaMintLayout = struct([u64("supply")]);
+  const solanaMintLayout = BufferLayout.struct([u64("supply")]);
 
   const sleepTime = tokens.length > 2000 ? 2000 : 200;
   const tokensPK: PublicKey[] = [];
@@ -279,7 +323,6 @@ async function getSolanaTokenSupply(
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
-  const notTokens: string[] = [];
 
   await PromisePool.withConcurrency(5)
     .for(tokens)
@@ -296,13 +339,11 @@ async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ 
           headers: { "Content-Type": "application/json" },
         }).then((r) => r.json());
         if (res && res.result && res.result.value) supplies[`sui:${token}`] = res.result.value;
-        else notTokens.push(`sui:${token}`);
       } catch (e) {
-        console.log(token);
+        // console.log(token);
       }
     });
 
-  await storeNotTokens(notTokens);
   return supplies;
 }
 async function getEVMSupplies(
@@ -354,19 +395,13 @@ async function getEVMSupplies(
 
   return supplies;
 }
-export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Address[] {
-  const map: { [token: string]: boolean } = {};
-  notTokens.map((item) => (map[item] = true));
-  return tokens.filter((item) => !map[item]);
-}
+
 export async function fetchSupplies(
   chain: Chain,
-  contracts: Address[],
+  tokens: Address[],
   timestamp: number | undefined
 ): Promise<{ [token: string]: number }> {
   try {
-    const notTokens: string[] = []; //await fetchNotTokens(chain);
-    const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "osmosis") return await getOsmosisSupplies(tokens, timestamp);
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);

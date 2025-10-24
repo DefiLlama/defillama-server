@@ -7,6 +7,9 @@ export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 export const excludedTvlId = "5897";
 
+let notifs: number = 0;
+export const fetchNotifsSent = () => (notifs += 1);
+
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
 export const chainsWithoutCanonicalBridges: string[] = [
@@ -24,6 +27,10 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "filecoin",
   // "near",
   // "aurora",
+  "berachain",
+  "flow",
+  "somnia", 
+  "plasma"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -75,7 +82,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4124": "merlin",
   "4937": "reya",
   // "5011": "lisk l2",
-  "5055": "osmosis",
+  // "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui",
   "5218": "mint",
@@ -106,12 +113,23 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5700": "redstone",
   "5701": "wc",
   "5702": "zero_network",
-  "5703": "zkfair",
+  // "5703": "zkfair",
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
-  "5833": "formnetwork",
+  // "5833": "formnetwork",
   "5854": "hemi-l2",
+  "6063": "mxczkevm",
+  "6148": "lens",
+  "6149": "openzk",
+  "6150": "treasure",
+  "6151": "zkcandy",
+  "6284": "ao",
+  "6424": "soon",
+  "6468": "btnx",
+  "6498": "eventum",
+  "6581": "eni",
+  //"6730": "eteria",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -121,9 +139,14 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
-  "5323": "exSat",
+  // "5323": "exSat",
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
+  "6401": "embr",
+  "6414": "xion",
+  "6438": "echelon_initia",
+  "6439": "inertia",
+  "6440": "milkyway_rollup",
 };
 
 export const allChainKeys: string[] = [
@@ -200,7 +223,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zircuit": { ticker: "ZRC", address: "0xfd418e42783382e86ae91e445406600ba144d162" },
   "core": { ticker: "CORE", address: "0x191e94fa59739e188dce837f7f6978d84727ad01" },
   "swellchain": { ticker: "SWELL", address: "coingecko:swell-network" },
-  "cronos_zkevm": { ticker: "CRO", address: "coingecko:crypto-com-chain" },
+  "cronos_zkevm": { ticker: "ZKCRO", address: "coingecko:cronos-zkevm-cro" },
   "sophon": { ticker: "SOPH", address: "coingecko:sophon" },
   "dydx": { ticker: "DYDX", address: "coingecko:dydx-chain" },
   "apex": { ticker: "APEX", address: "coingecko:apex-token-2" },
@@ -220,4 +243,18 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zkfair": { ticker: "ZKF", address: "coingecko:zkfair" },
   "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
+  "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
+  "flow": { ticker: "FLOW", address: "coingecko:flow" },
+  "mxczkevm": { ticker: "MXC", address: "coingecko:mxc" },
+  // "lens": { ticker: "gho", address: "coingecko:gho" },
+  "openzk": { ticker: "OZK", address: "coingecko:openzk-network" },
+  "treasure": { ticker: "MAGIC", address: "coingecko:magic" },
+  // "zkcandy": {}
+  "ao": { ticker: "AO", address: "coingecko:ao-computers" },
+  // embr: {}
+  "xion": { ticker: "XION", address: "coingecko:xion-2" },
+  "hemi-l2": { ticker: "HEMI", address: "coingecko:hemi" },
+  "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
+  "plasma": { ticker: "XPL", address: "coingecko:plasma" },
+  "linea": { ticker: "LINEA", address: "coingecko:linea" },
 };

@@ -6,7 +6,7 @@ import { getCache } from '../../utils/cache';
 
 export function alex(timestamp: number) {
   return Promise.all([
-    getTokenPrices(timestamp),
+    // getTokenPrices(timestamp),  // alex lab is hacked
   ])
 }
 const chain = 'stacks'

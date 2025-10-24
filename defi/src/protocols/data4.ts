@@ -32563,7 +32563,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "",
     cmcId: "",
-    category: "Dexes",
+    category: "Yield",
     chains: ["Avalanche"],
     module: "aquaspace/index.js",
     twitter: "Aquabank2025",

@@ -4996,6 +4996,15 @@ export const chainCoingeckoIds = {
     github: ["0gfoundation"],
     chainId: 16661,
   },
+  "Ethereal": {
+    geckoId: "ethena-usde",
+    symbol: "USDe",
+    cmcId: "29470",
+    categories: ["EVM"],
+    twitter: "etherealdex",
+    url: "https://www.ethereal.trade/",
+    chainId: 5064014,
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

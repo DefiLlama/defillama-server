@@ -8270,6 +8270,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "PythNetwork",
     github: ["pyth-network"],
   },
+  {
+    id: "parent#dfs.fun",
+    name: "DFS.fun",
+    url: "https://dfs.fun",
+    description: "DFS.fun is a decentralized exchange built on the XLayer Network.",
+    logo: `${baseIconsUrl}/dfs.fun.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dfsdotfun",
+  },
 ];
 
 export default parentProtocols;

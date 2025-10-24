@@ -47,6 +47,21 @@ export type IStoreAdaptorDataHandlerEvent = {
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
+
+const humanizeDuration = (ms: number) => {
+  const totalSeconds = Math.floor(ms / 1000)
+  if (totalSeconds < 1) return '<1s'
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const parts: string[] = []
+  if (hours) parts.push(`${hours}h`)
+  if (minutes) parts.push(`${minutes}m`)
+  if (seconds) parts.push(`${seconds}s`)
+  return parts.join(' ')
+}
+
+
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 13
   let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
@@ -133,15 +148,17 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     .withConcurrency(maxConcurrency)
     .for(protocols)
     .process(async (protocol: ProtocolAdaptor, index: number) => {
+      const startTime = Date.now()
       try {
         const result = await runAndStoreProtocol(protocol, index)
         results.push(result)
       } catch (e) {
         errors.push({ raw: e, item: protocol })
       }
-      if (!isRunFromRefillScript)
-        console.log(`[${adapterType}] - ${protocol.module} done!`)
-
+      if (!isRunFromRefillScript) {
+        const durationMs = Date.now() - startTime
+        console.log(`[${adapterType}] - ${protocol.module} done! | Time taken: ${humanizeDuration(durationMs)} | chains: ${protocol.chains.join(', ')} | timeTakenMs: ${durationMs}`)
+      }
     })
 
   const shortenString = (str: string, length: number = 250) => {
@@ -280,6 +297,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } else
         throw new Error("Invalid adapter")
 
+      protocol.chains = Object.keys(adaptor.adapter ?? {})
+
 
       if (isRunFromRefillScript && runAtCurrTime) {
         if (Date.now() - fromTimestamp * 1000 > 1000 * 60 * 60 * 24 * 2) {
@@ -345,7 +364,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
          return; */
 
       }
-      
+
       if (onlyYesterday)  // we should never reach this point if we are only refilling yesterday
         return refillYesterdayPromise
 

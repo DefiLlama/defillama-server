@@ -31507,6 +31507,9 @@ const data4: Protocol[] = [
     twitter: "mstable_",
     parentProtocol: "parent#dhedge",
     listedAt: 1760493167,
+    dimensions: {
+      fees: "mstable-v2"
+    }
   },
   {
     id: "6865",

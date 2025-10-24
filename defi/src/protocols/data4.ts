@@ -32459,7 +32459,7 @@ const data4: Protocol[] = [
     url: "https://pumpspace.io/",
     description: "PumpSpace is a decentralized liquidity platform on Avalanche supporting both V2 and V3 (Trident) AMM models, offering multi-token farms and on-chain yield optimization for community-driven tokens.",
     chain: "Avalanche",
-    logo: "https://img.pumpspace.io/aquaspace_logo.png",
+    logo: `${baseIconsUrl}/pumpspace.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "",
@@ -32469,7 +32469,7 @@ const data4: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Uniswap V2", "Sushi Trident"],
     module: "pumpspace/index.js",
-    twitter: "https://x.com/pumpspace10000",
+    twitter: "pumpspace10000",
     audit_links: ["https://www.cyberscope.io/audits/pumpspace?assessmentIndex=1https://github.com/cyberscope-io/audits/blob/main/pumpspace/dexAudit.pdf"],
   },
 ];

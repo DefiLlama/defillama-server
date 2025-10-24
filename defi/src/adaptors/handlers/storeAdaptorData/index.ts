@@ -63,7 +63,7 @@ const humanizeDuration = (ms: number) => {
 
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 13
+  const defaultMaxConcurrency = 21
   let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
     throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false,
@@ -188,7 +188,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     const timeTakenSeconds = Math.floor((debugTimeEnd - _debugTimeStart) / 1000)
 
     if (!isRunFromRefillScript) {
-      console.log(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+      console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
       await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
     }
 

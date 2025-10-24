@@ -11,6 +11,14 @@ import loadAdaptorsData from '../../data';
 const MAX_RUNTIME = 1000 * 60 * +(process.env.MAX_RUNTIME_MINUTES ?? 50); // 50 minutes default
 const onlyYesterday = process.env.ONLY_YESTERDAY === 'true';  // if set, we refill only yesterday's missing data
 
+let maxConcurrency = 21; // default
+if (process.env.DIM_RUN_MAX_CONCURRENCY) {
+  const parsed = parseInt(process.env.DIM_RUN_MAX_CONCURRENCY);
+  if (!isNaN(parsed)) {
+    maxConcurrency = parsed;
+  }
+}
+
 console.log('This will run with MAX_RUNTIME:', MAX_RUNTIME / 60000, 'minutes');
 
 async function run() {
@@ -112,7 +120,7 @@ async function run() {
       } catch (e) {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
-      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, maxRunTime: MAX_RUNTIME - 2 * 60 * 1000, onlyYesterday, })
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, maxRunTime: MAX_RUNTIME - 2 * 60 * 1000, onlyYesterday, maxConcurrency })
 
     } catch (e) {
       console.error("error", e)

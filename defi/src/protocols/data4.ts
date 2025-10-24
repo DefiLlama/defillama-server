@@ -16853,7 +16853,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "infiniFi/index.js",
-    twitter: "infinifilabs",
+    twitter: "infiniFi",
     github: ["InfiniFi-Labs"],
     audit_links: [
       "https://docsend.com/view/vxet6fdzgb6zhfnn",
@@ -32200,7 +32200,7 @@ const data4: Protocol[] = [
     name: "Rho X",
     address: null,
     symbol: "-",
-    url: "https://www.rho.trading/",
+    url: "https://x.rho.trading/",
     description: `Rho Protocol is a cryptonative interest rates market. The platform uniquely offers trading of staking, lending, and perpetual future funding rates all in one venue, as well as allowing users to passively earn yield by depositing into Rho's vaults`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/rho-x.jpg`,
@@ -32208,7 +32208,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "rho-x/index.js",
@@ -32217,7 +32217,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#rho",
     listedAt: 1761100587,
     dimensions: {
-      dexs: "rho-x"
+      derivatives: "rho-x"
     }
   },
   // { duplicate listing: Counts LPs for Skate AMM on 0G
@@ -32528,6 +32528,27 @@ const data4: Protocol[] = [
     audit_links: [],
     github: ["Terrestrials"],
     listedAt: 1761284804,
+  },
+  {
+    id: "6909",
+    name: "CRIPTO NO PIX",
+    address: "0xBe96fcF736AD906b1821Ef74A0e4e346C74e6221",
+    symbol: "NIX",
+    url: "https://criptonopix.app.br",
+    description: `FOOM Cash is a privacy-focused game built on Ethereum and Base. It uses advanced zk-SNARK cryptography to allow users to play for three simultaneous prizes—without revealing the user's identity`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/crypto-no-pix.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "nix",
+    cmcId: "27220",
+    category: "CeDeFi",
+    chains: ["Binance"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "criptonopix",
+    audit_links: [],
+    treasury: "cryptonopix.js"
   },
 ];
 export default data4;

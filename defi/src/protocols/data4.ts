@@ -32098,6 +32098,10 @@ const data4: Protocol[] = [
     twitter: "HybraFinance",
     parentProtocol: "parent#hybra",
     listedAt: 1761018035,
+    dimensions: {
+      dexs: "hybra-v4",
+      fees: "hybra-v4"
+    }
   },
   {
     id: "6890",
@@ -32278,6 +32282,9 @@ const data4: Protocol[] = [
     twitter: "berachain",
     audit_links: ["https://github.com/berachain/security-audits"],
     listedAt: 1761111893,
+    dimensions: {
+      fees: "bend"
+    }
   },
   {
     id: "6898",

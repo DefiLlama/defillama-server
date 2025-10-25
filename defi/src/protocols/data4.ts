@@ -29124,6 +29124,13 @@ const data4: Protocol[] = [
     category: "Liquidity manager",
     chains: ["Solana"],
     forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks","https://defillama.com/protocol/defituna-liquidity"], 
+      },
+    ],
     module: "defituna_liquidity.js",
     twitter: "DeFiTuna",
     audit_links: [

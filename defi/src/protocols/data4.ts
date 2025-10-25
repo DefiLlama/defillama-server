@@ -27669,6 +27669,9 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Mantle"],
     forkedFromIds: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] }, //https://defillama.com/protocol/lendle-isolated-markets
+    ],
     module: "lendle-isolated-markets/index.js",
     twitter: "lendlexyz",
     parentProtocol: "parent#lendle",

@@ -63662,7 +63662,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5397",
-    name: "Bitlayer Bridge",
+    name: "Bitlayer YBTC Family",
     address: null,
     symbol: "-",
     url: "https://www.bitlayer.org/bridge",
@@ -63674,7 +63674,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Anchor BTC",
     chains: ["Bitcoin"],
     module: "bitlayer-btc/index.js",
     twitter: "BitlayerLabs",

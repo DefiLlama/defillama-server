@@ -27754,6 +27754,9 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/Cyfrin/cyfrin-audit-reports/blob/main/reports/2025-07-15-cyfrin-vii-v2.0.pdf"],
     github: ["VII-Finance"],
     listedAt: 1757444547,
+    dimensions: {
+      fees: "vii-finance"
+    }
   },
   {
     id: "6700",
@@ -30904,6 +30907,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.ferra.ag/resources/audit"],
     listedAt: 1760109413,
     parentProtocol: "parent#ferra",
+    dimensions: {
+      dexs: "ferra-clmm",
+      fees: "ferra-clmm"
+    }
   },
   {
     id: "6838",
@@ -30927,6 +30934,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.ferra.ag/resources/audit"],
     listedAt: 1760109421,
     parentProtocol: "parent#ferra",
+    dimensions: {
+      dexs: "ferra-dlmm",
+      fees: "ferra-dlmm"
+    }
   },
   {
     id: "6839",
@@ -31701,7 +31712,10 @@ const data4: Protocol[] = [
     module: "element/index.js",
     twitter: "Element_Market",
     audit_links: [],
-    listedAt: 1760577897
+    listedAt: 1760577897,
+    dimensions: {
+      fees: "element"
+    }
   },
   {
     id: "6873",
@@ -32311,6 +32325,10 @@ const data4: Protocol[] = [
     twitter: "elix_fi",
     audit_links: [],
     listedAt: 1761170279,
+    dimensions: {
+      dexs: "elix-fi",
+      fees: "elix-fi"
+    }
   },
   {
     id: "6899",

@@ -34249,11 +34249,23 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     oraclesBreakdown: [
       {
-        name: "Chainlink",
+        name: "Internal",
         type: "Primary",
         proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
-        chains: [{chain: "Ethereum"}]
+        chains: [{ chain: "Ethereum" }]
       },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{ chain: "Ethereum" }]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{ chain: "Ethereum" }]
+      }
     ],
     module: "kpk/index.js",
     treasury: "karpatkey.js",

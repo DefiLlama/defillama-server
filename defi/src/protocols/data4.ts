@@ -27690,6 +27690,9 @@ const data4: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Mantle"],
     forkedFromIds: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] }, //https://defillama.com/protocol/lendle-earn
+    ],
     module: "lendle-vault-allocator/index.js",
     twitter: "lendlexyz",
     parentProtocol: "parent#lendle",

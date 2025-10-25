@@ -34247,6 +34247,14 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Risk Curators",
     chains: ["Ethereum"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{chain: "Ethereum"}]
+      },
+    ],
     module: "kpk/index.js",
     treasury: "karpatkey.js",
     twitter: "kpk_io",

@@ -27756,7 +27756,10 @@ const data3_1: Protocol[] = [
     listedAt: 1701706347,
     dimensions: {
       fees: "stormtrade",
-      derivatives: "stormtrade"
+      derivatives: {
+        adapter: "stormtrade",
+        genuineSpikes: ["1761350400"],
+      }
     }
   },
   {

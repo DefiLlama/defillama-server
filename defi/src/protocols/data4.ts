@@ -27579,6 +27579,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Somnia"],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.somnex.xyz/product-guides/perpetual-trade#key-concepts "] },
+    ],
     module: "somnex-perp/index.js",
     twitter: "SomnexXYZ",
     parentProtocol: "parent#somnex",

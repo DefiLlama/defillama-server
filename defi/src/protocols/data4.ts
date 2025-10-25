@@ -23696,7 +23696,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.gloop.finance/security-and-risk/audits"],
     listedAt: 1754371245,
   },
-  // {
+  // { // combined with ultrayield-by-edge-capital
   //   id: "6528",
   //   name: "Edge Capital",
   //   address: null,

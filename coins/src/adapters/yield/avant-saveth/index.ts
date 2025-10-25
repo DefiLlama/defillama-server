@@ -29,7 +29,5 @@ export async function avantSavETH(timestamp: number) {
     projectName,
   };
 
-  console.log(writeData);
-
   return getWrites(writeData);
 }

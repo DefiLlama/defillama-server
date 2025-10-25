@@ -32540,7 +32540,7 @@ const data4: Protocol[] = [
     address: "0xBe96fcF736AD906b1821Ef74A0e4e346C74e6221",
     symbol: "NIX",
     url: "https://criptonopix.app.br",
-    description: `FOOM Cash is a privacy-focused game built on Ethereum and Base. It uses advanced zk-SNARK cryptography to allow users to play for three simultaneous prizes—without revealing the user's identity`,
+    description: `Cripto no Pix is a Brazil-based crypto brokerage platform that allows purchases of crypto via PIX, backed by the NIX token as a utility/reward mechanism`,
     chain: "Binance",
     logo: `${baseIconsUrl}/crypto-no-pix.jpg`,
     audits: "0",

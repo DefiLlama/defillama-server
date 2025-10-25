@@ -14658,6 +14658,9 @@ const data4: Protocol[] = [
     module: "lendle-earn/index.js",
     twitter: "lendlexyz",
     forkedFrom: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] },
+    ],
     parentProtocol: "parent#lendle",
     listedAt: 1747077329,
   },

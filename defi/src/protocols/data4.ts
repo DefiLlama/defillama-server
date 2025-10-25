@@ -31341,6 +31341,9 @@ const data4: Protocol[] = [
     module: "oro-finance/index.js",
     twitter: "orogoldapp",
     audit_links: ["https://cantina.xyz/portfolio/ef5a3868-95f7-4259-84a2-9b394ef4a5eb"],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://orogold-1.gitbook.io/oro/9.-faqs"] },
+    ],
     listedAt: 1760378121,
   },
   {

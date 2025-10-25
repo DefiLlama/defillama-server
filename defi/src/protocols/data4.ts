@@ -27964,6 +27964,9 @@ const data4: Protocol[] = [
     url: "https://somnex.xyz/",
     description: "One-stop trading Platform on Somnia Network, offering AMM, Perp, AI Agent launch, and Meme Launch.",
     chain: "Somnia",
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.somnex.xyz/product-guides/perpetual-trade#key-concepts "] },
+    ],
     logo: `${baseIconsUrl}/somnex-dex.jpg`,
     audits: "0",
     audit_note: null,

@@ -28325,6 +28325,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Somnia"],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.somnex.xyz/product-guides/perpetual-trade#key-concepts "] },
+    ],
     forkedFromIds: ["2198"],
     module: "somnex-v3/index.js",
     twitter: "SomnexXYZ",

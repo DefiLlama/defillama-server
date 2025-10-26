@@ -12163,7 +12163,10 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1689081238,
     dimensions: {
-      dexs: "swaap-v2"
+      dexs: {
+        adapter: "swaap-v2",
+        genuineSpikes: ["1761350400"],
+      }
     }
   },
   {
@@ -27756,7 +27759,10 @@ const data3_1: Protocol[] = [
     listedAt: 1701706347,
     dimensions: {
       fees: "stormtrade",
-      derivatives: "stormtrade"
+      derivatives: {
+        adapter: "stormtrade",
+        genuineSpikes: ["1761350400"],
+      }
     }
   },
   {

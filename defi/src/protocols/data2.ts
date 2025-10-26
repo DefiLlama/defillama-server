@@ -30998,32 +30998,31 @@ const data2: Protocol[] = [
 {
   id: "2701", // This should match your adapter folder name
   name: "Juris Protocol",
-  address: "terra1rta0rnaxz9ww6hnrj9347vdn66gkgxcmcwgpm2jj6qulv8adc52s95qa5y",
-  symbol: "JRS", // If you have a governance token
+  address: "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2",
+  symbol: "JURIS", // If you have a governance token
   url: "https://jurisprotocol.com", // Your website
   description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development.",
   chain: "Terra Classic",
-  logo: "https://your-logo-url.com/juris-logo.png", // 64x64px logo recommended
+  logo:  `${baseIconsUrl}/juris.png`,
   audits: "1", // Number of audits (if any)
-  audit_note: "Audited by [Audit Firm Name]", // Optional audit details
+  audit_note: "Audited by [SolidProof]", // Optional audit details
   gecko_id: "juris-protocol", // CoinGecko ID if listed
-  cmcId: "12345", // CoinMarketCap ID if listed
+  cmcId: "", // CoinMarketCap ID if listed
   category: "Lending", // Primary category: Lending, Staking, DEX, etc.
-  chains: ["Terra Classic"],
+  chains: ["Terra Classic","Osmosis"],
   module: "jurisprotocol/index.js",
   
   // Social Media Links (This is what you need!)
   twitter: "jurisprotocol", // Twitter handle without @
-  discord: "https://discord.gg/jurisprotocol", // Full Discord invite link
-  telegram: "https://t.me/jurisprotocol", // Telegram group/channel link
+  discord: "https://discord.com/invite/FzQwHYgjAd", // Full Discord invite link
+  telegram: "https://t.me/JurisProtocol", // Telegram group/channel link
   github: ["https://github.com/jurisprotocol"], // GitHub repositories
   
   // Optional additional socials
-  medium: "https://medium.com/@jurisprotocol",
+  medium: "https://solidproof-io.medium.com/juris-protocol-revitalizing-terra-classic-f874441b6086",
   youtube: "https://youtube.com/@jurisprotocol",
-  linkedin: "https://linkedin.com/company/jurisprotocol",
-  reddit: "https://reddit.com/r/jurisprotocol",
-  
+  linkedin: "",
+  reddit: "",
   listedAt: Math.floor(Date.now() / 1000), // Current timestamp
   slug: "jurisprotocol"
 }

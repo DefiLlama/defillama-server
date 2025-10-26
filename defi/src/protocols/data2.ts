@@ -30995,5 +30995,38 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true,
   },
+{
+  id: "2701", // This should match your adapter folder name
+  name: "Juris Protocol",
+  address: "terra1rta0rnaxz9ww6hnrj9347vdn66gkgxcmcwgpm2jj6qulv8adc52s95qa5y",
+  symbol: "JRS", // If you have a governance token
+  url: "https://jurisprotocol.com", // Your website
+  description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development.",
+  chain: "Terra Classic",
+  logo: "https://your-logo-url.com/juris-logo.png", // 64x64px logo recommended
+  audits: "1", // Number of audits (if any)
+  audit_note: "Audited by [Audit Firm Name]", // Optional audit details
+  gecko_id: "juris-protocol", // CoinGecko ID if listed
+  cmcId: "12345", // CoinMarketCap ID if listed
+  category: "Lending", // Primary category: Lending, Staking, DEX, etc.
+  chains: ["Terra Classic"],
+  module: "jurisprotocol/index.js",
+  
+  // Social Media Links (This is what you need!)
+  twitter: "jurisprotocol", // Twitter handle without @
+  discord: "https://discord.gg/jurisprotocol", // Full Discord invite link
+  telegram: "https://t.me/jurisprotocol", // Telegram group/channel link
+  github: ["https://github.com/jurisprotocol"], // GitHub repositories
+  
+  // Optional additional socials
+  medium: "https://medium.com/@jurisprotocol",
+  youtube: "https://youtube.com/@jurisprotocol",
+  linkedin: "https://linkedin.com/company/jurisprotocol",
+  reddit: "https://reddit.com/r/jurisprotocol",
+  
+  listedAt: Math.floor(Date.now() / 1000), // Current timestamp
+  slug: "jurisprotocol"
+}
+
 ];
 export default data2;

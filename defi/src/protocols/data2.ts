@@ -31003,7 +31003,7 @@ const data2: Protocol[] = [
   url: "https://jurisprotocol.com", // Your website
   description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development.",
   chain: "Terra Classic",
-  logo:  `${baseIconsUrl}/juris.png`,
+  logo:  `https://github.com/JurisProtocol/assets/blob/main/jurislogo.png`,
   audits: "1", // Number of audits (if any)
   audit_note: "Audited by [SolidProof]", // Optional audit details
   gecko_id: "juris-protocol", // CoinGecko ID if listed

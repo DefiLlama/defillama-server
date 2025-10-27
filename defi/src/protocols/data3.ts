@@ -41339,7 +41339,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     module: "synthetix-v3/index.js",
-    twitter: "synthetix_io",
+    twitter: "synthetix",
     forkedFrom: [],
     // https://docs.synthetix.io/v/v3
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],

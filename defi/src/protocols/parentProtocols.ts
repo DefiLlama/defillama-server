@@ -1409,7 +1409,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "havven",
     cmcId: "2586",
     chains: [],
-    twitter: "synthetix_io",
+    twitter: "synthetix",
     governanceID: ["snapshot:synthetix-stakers-poll.eth"],
     stablecoins: ["susd", "seur"],
     github: ["Synthetixio"],

@@ -32593,6 +32593,10 @@ const data4: Protocol[] = [
     twitter: "etherealdex",
     audit_links: ["https://docs.ethereal.trade/protocol-reference/audits"],
     listedAt: 1761325469,
+    dimensions: {
+      derivatives: "ethereal-dex",
+      fees: "ethereal-dex"
+    }
   },
   {
     id: "6911",

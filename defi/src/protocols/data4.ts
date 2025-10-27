@@ -32595,7 +32595,8 @@ const data4: Protocol[] = [
     listedAt: 1761325469,
     dimensions: {
       derivatives: "ethereal-dex",
-      fees: "ethereal-dex"
+      fees: "ethereal-dex",
+      "open-interest": "ethereal-dex",
     }
   },
   {

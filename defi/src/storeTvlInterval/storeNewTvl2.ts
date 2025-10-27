@@ -42,7 +42,8 @@ export default async function (
 
   if (currentTvl < 0) {
     const errorMessage = `TVL for ${protocol.name} is negative TVL(${currentTvl}), fix the adapter.`
-    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+    if (!(tvl?.bitcoin < 0))   // TODO: there is some bitcoin bug that cause negative tvl sometimes, this needs to be fixed, but it is known issue so not spamming the team webhook for now
+      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
     throw new Error(errorMessage);
   }
 

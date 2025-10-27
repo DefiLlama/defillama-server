@@ -4992,7 +4992,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#apex-protocol",
     name: "ApeX Protocol",
-    url: "https://www.apex.exchange/",
+    url: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
+    referralUrl: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
     description:
       "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience",
     logo: `${baseIconsUrl}/apex-protocol.png`,

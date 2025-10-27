@@ -32864,5 +32864,24 @@ const data4: Protocol[] = [
     twitter: "PalominoFi",
     listedAt: 1761585807,
   },
+  {
+    id: "6922",
+    name: "fomo",
+    address: null,
+    symbol: "-",
+    url: "https://fomo.family/",
+    description: "Fomo is a social trading app that enables self-custodial, gasless token swaps on mobile, combining social feeds and copy-trading features.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/fomo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFromIds: [],
+    twitter: "tryfomo"
+  },
 ];
 export default data4;

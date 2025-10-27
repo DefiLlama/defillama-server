@@ -3523,7 +3523,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lyra",
     name: "Derive", // rebrand from Lyra
-    url: "https://derive.xyz",
+    url: "https://app.derive.xyz?ref=defillama",
+    referralUrl: "https://app.derive.xyz?ref=defillama",
     description: `Trade options & perps. Earn yield with restaking derivatives.`,
     logo: `${baseIconsUrl}/derive.png`,
     gecko_id: "derive",

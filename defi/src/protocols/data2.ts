@@ -30996,35 +30996,36 @@ const data2: Protocol[] = [
     rugged: true,
   },
 {
-  id: "2701", // This should match your adapter folder name
+  id: "jurisprotocol",
   name: "Juris Protocol",
   address: "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2",
-  symbol: "JURIS", // If you have a governance token
-  url: "https://jurisprotocol.com", // Your website
-  description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development.",
-  chain: "Terra Classic",
-  logo:  "https://raw.githubusercontent.com/JurisProtocol/assets/main/jurislogo.png",
-  audits: "1", // Number of audits (if any)
-  audit_note: "Audited by [SolidProof]", // Optional audit details
-  gecko_id: "juris-protocol", // CoinGecko ID if listed
-  cmcId: "", // CoinMarketCap ID if listed
-  category: "Lending", // Primary category: Lending, Staking, DEX, etc.
-  chains: ["Terra Classic","Osmosis"],
+  symbol: "JURIS",
+  url: "https://www.jurisprotocol.com",
+  description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development",
+  chain: "Terra",
+  logo: "https://raw.githubusercontent.com/JurisProtocol/assets/main/jurislogo.png",
+  audits: "2",
+  audit_note: null,
+  audit_links: [
+    "https://app.solidproof.io/projects/juris-protocol?audit=963e1452-fcff-4a08-9618-72cf949c9419"
+  ],
+  gecko_id: "juris-protocol",
+  cmcId: null,
+  category: "Lending",
+  categories: [
+    "Lending",
+    "Staking",
+    "Yield",
+    "Moneymarket"
+  ],
+  chains: ["Terra"],
+  oracles: ["Terra Classic Oracle"],
+  forkedFrom: [],
   module: "jurisprotocol/index.js",
-  
-  // Social Media Links (This is what you need!)
-  twitter: "jurisprotocol", // Twitter handle without @
-  discord: "https://discord.com/invite/FzQwHYgjAd", // Full Discord invite link
-  telegram: "https://t.me/JurisProtocol", // Telegram group/channel link
-  github: ["https://github.com/jurisprotocol"], // GitHub repositories
-  
-  // Optional additional socials
-  medium: "https://solidproof-io.medium.com/juris-protocol-revitalizing-terra-classic-f874441b6086",
-  youtube: "https://youtube.com/@jurisprotocol",
-  linkedin: "",
-  reddit: "",
-  listedAt: Math.floor(Date.now() / 1000), // Current timestamp
-  slug: "jurisprotocol"
+  twitter: "JurisProtocol",
+  language: "Rust",
+  github: ["jurisprotocol"],
+  treasury: "jurisprotocol.js"
 }
 
 ];

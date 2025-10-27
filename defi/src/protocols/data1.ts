@@ -573,7 +573,8 @@ const data: Protocol[] = [
     name: "Hegic",
     address: "0x584bC13c7D411c00c01A62e8019472dE68768430",
     symbol: "HEGIC",
-    url: "https://www.hegic.co/ ",
+    url: "https://www.hegic.co/?ref=0x798ff1e6d7afd28c333ee6ebe03125d30ec6ef10",
+    referralUrl: "https://www.hegic.co/?ref=0x798ff1e6d7afd28c333ee6ebe03125d30ec6ef10",
     description:
       "Hegic is an on-chain peer-to-pool options trading protocol on Arbitrum. You can trade ETH and WBTC ATM / OTM Calls / Puts & One-click Option Strategies on Hegic",
     chain: "Ethereum",

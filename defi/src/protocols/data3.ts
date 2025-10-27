@@ -2286,7 +2286,8 @@ const data3_1: Protocol[] = [
       derivatives: {
         genuineSpikes: ["1722816000"],
         adapter: "aevo"
-      }
+      },
+      "open-interest": "aevo-perps-oi"
     }
   },
   {
@@ -12162,7 +12163,10 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1689081238,
     dimensions: {
-      dexs: "swaap-v2"
+      dexs: {
+        adapter: "swaap-v2",
+        genuineSpikes: ["1761350400"],
+      }
     }
   },
   {
@@ -16684,6 +16688,9 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#meta-pool",
     listedAt: 1692266928,
+    dimensions: {
+      fees: "meta-pool-eth"
+    }
   },
   {
     id: "3406",
@@ -25574,6 +25581,9 @@ const data3_1: Protocol[] = [
       "https://github.com/Frankencoin-ZCHF/Frankencoin/tree/main/audits/V2"
     ],
     listedAt: 1699970045,
+    dimensions: {
+      fees: "frankencoin"
+    }
   },
   {
     id: "3791",
@@ -27749,7 +27759,10 @@ const data3_1: Protocol[] = [
     listedAt: 1701706347,
     dimensions: {
       fees: "stormtrade",
-      derivatives: "stormtrade"
+      derivatives: {
+        adapter: "stormtrade",
+        genuineSpikes: ["1761350400"],
+      }
     }
   },
   {
@@ -29190,7 +29203,7 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui"],
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui", "Unichain", "Sonic"],
     forkedFrom: [],
     module: "allbridge-core/index.js",
     twitter: "Allbridge_io",
@@ -31073,14 +31086,14 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/pyth-network.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "pyth-network",
-    cmcId: "28177",
+    gecko_id: null,
+    cmcId: null,
     category: "Oracle",
     chains: ["Solana"],
     forkedFrom: [],
     module: "pyth/index.js",
     twitter: "PythNetwork",
-    github: ["pyth-network"],
+    parentProtocol: "parent#pyth",
   },
   {
     id: "4023",
@@ -34240,6 +34253,26 @@ const data3_1: Protocol[] = [
     cmcId: null,
     category: "Risk Curators",
     chains: ["Ethereum"],
+    oraclesBreakdown: [
+      {
+        name: "Internal",
+        type: "Primary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{ chain: "Ethereum" }]
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{ chain: "Ethereum" }]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://handbook.kpk.io/gearbox-pools/gearbox-weth-ethereum/"],
+        chains: [{ chain: "Ethereum" }]
+      }
+    ],
     module: "kpk/index.js",
     treasury: "karpatkey.js",
     twitter: "kpk_io",
@@ -40218,11 +40251,12 @@ const data3_2: Protocol[] = [
     previousNames: ["Vest Exchange"],
     address: null,
     symbol: "-",
-    url: "https://vestmarkets.com/",
+    url: "https://alpha.vestmarkets.com/join/LLAMA",
+    referralUrl: "https://alpha.vestmarkets.com/join/LLAMA",
     description:
       "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/vest-exchange.jpg`,
+    logo: `${baseIconsUrl}/vest-markets.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -40235,7 +40269,8 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.vestmarkets.com/audits"],
     listedAt: 1711709964,
     dimensions: {
-      derivatives: "vest"
+      derivatives: "vest",
+      "open-interest": "vest-markets"
     }
   },
   {
@@ -41304,7 +41339,7 @@ const data3_2: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     module: "synthetix-v3/index.js",
-    twitter: "synthetix_io",
+    twitter: "synthetix",
     forkedFrom: [],
     // https://docs.synthetix.io/v/v3
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
@@ -50104,7 +50139,8 @@ const data3_2: Protocol[] = [
     name: "Apex Omni",
     address: null,
     symbol: "-",
-    url: "https://omni.apex.exchange",
+    url: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
+    referralUrl: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
     description: "Engineered for high-performing precision trades in a decentralized ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/apex-omni.jpg`,
@@ -53770,7 +53806,8 @@ const data3_2: Protocol[] = [
     previousNames: ["Reya DEX"],
     address: null,
     symbol: "-",
-    url: "https://app.reya.xyz/",
+    url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
+    referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
     logo: `${baseIconsUrl}/reya-perps.jpg`,
@@ -55696,7 +55733,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#aevo",
     listedAt: 1724835441,
     dimensions: {
-      options: "aevo"
+      options: "aevo",
+      "open-interest": "aevo-options-oi"
     }
   },
   {
@@ -59045,7 +59083,7 @@ const data3_2: Protocol[] = [
         genuineSpikes: ["1746403200"],
         adapter: "okx"
       },
-      "bridge-aggregators": "okx"
+      fees: "okx-swap"
     }
   },
   {
@@ -65874,6 +65912,9 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "okx",
     parentProtocol: "parent#okx-dex",
+    dimensions: {
+      "bridge-aggregators": "okx",
+    }
   },
   {
     id: "5497",

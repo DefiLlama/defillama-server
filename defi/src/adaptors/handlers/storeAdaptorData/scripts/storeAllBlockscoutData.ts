@@ -5,7 +5,7 @@ import { PromisePool } from '@supercharge/promise-pool';
 import { AdapterType, ProtocolType } from "../../../data/types"
 import { getChainDisplayName } from "../../../../utils/normalizeChain";
 import { httpGet } from "../../../../../dimension-adapters/utils/fetchURL";
-import { handler2, IStoreAdaptorDataHandlerEvent } from "..";
+import { handler2, DimensionRunOptions } from "..";
 
 process.env.BLOCKSCOUT_BULK_MODE = "true"
 
@@ -46,7 +46,7 @@ async function refillAllProtocols() {
         console.log('# records ', chart.length, chainKey)
 
         for (const { date } of chart) {
-          const eventObj: IStoreAdaptorDataHandlerEvent = {
+          const eventObj: DimensionRunOptions = {
             timestamp: Math.floor(+new Date(date) / 1e3),
             adapterType: AdapterType.FEES,
             isDryRun: false,

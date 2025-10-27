@@ -917,7 +917,7 @@ export const chainCoingeckoIds = {
     github: ['XDCFoundation'],
     symbol: "XDC",
     cmcId: "2634",
-    twitter: "XinFin_Official",
+    twitter: "XDCNetwork",
     url: "https://xinfin.org/"
   },
   "Velas": {
@@ -4995,6 +4995,15 @@ export const chainCoingeckoIds = {
     url: "https://www.0gfoundation.ai/",
     github: ["0gfoundation"],
     chainId: 16661,
+  },
+  "Ethereal": {
+    geckoId: "ethena-usde",
+    symbol: "USDe",
+    cmcId: "29470",
+    categories: ["EVM"],
+    twitter: "etherealdex",
+    url: "https://www.ethereal.trade/",
+    chainId: 5064014,
   },
 } as unknown as ChainCoinGekcoIds
 

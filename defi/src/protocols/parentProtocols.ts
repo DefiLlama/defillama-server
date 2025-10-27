@@ -1409,7 +1409,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "havven",
     cmcId: "2586",
     chains: [],
-    twitter: "synthetix_io",
+    twitter: "synthetix",
     governanceID: ["snapshot:synthetix-stakers-poll.eth"],
     stablecoins: ["susd", "seur"],
     github: ["Synthetixio"],
@@ -4992,7 +4992,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#apex-protocol",
     name: "ApeX Protocol",
-    url: "https://www.apex.exchange/",
+    url: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
+    referralUrl: "https://omni.apex.exchange/referral?referralCode=T0S8V482",
     description:
       "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience",
     logo: `${baseIconsUrl}/apex-protocol.png`,
@@ -6869,7 +6870,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "36569",
     chains: [],
     twitter: "sparkdotfi",
-    github: ["marsfoundation"],
+    github: ["sparkdotfi"],
     treasury: "spark.js",
   },
   {
@@ -7221,7 +7222,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null, 
     cmcId: null,
     chains: [],
-    twitter: "Rho_xyz",
+    twitter: "Rho_Labs",
     github: ["RhoLabs"],
   },
   {
@@ -8158,7 +8159,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#reya",
     name: "Reya",
-    url: "https://reya.network",
+    url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
+    referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description: "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
     logo: `${baseIconsUrl}/reya.jpg`,
     gecko_id: null,
@@ -8257,6 +8259,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SpinUpZone",
+  },
+  {
+    id: "parent#pyth",
+    name: "Pyth",
+    url: "https://www.pyth.network/",
+    description: "Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems",
+    logo: `${baseIconsUrl}/pyth.jpg`,
+    gecko_id: "pyth-network",
+    cmcId: "28177",
+    chains: [],
+    twitter: "PythNetwork",
+    github: ["pyth-network"],
+  },
+  {
+    id: "parent#dfs.fun",
+    name: "DFS.fun",
+    url: "https://dfs.fun",
+    description: "DFS.fun is a decentralized exchange built on the XLayer Network.",
+    logo: `${baseIconsUrl}/dfs.fun.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dfsdotfun",
   },
 ];
 

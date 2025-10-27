@@ -555,7 +555,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
     address: "0x1a88Df1cFe15Af22B3c4c783D4e6F7F9e0C1885d",
-  }, 
+  },
   RYT: {
     rate: async ({ api }) => {
       const rate = await api.call({
@@ -567,7 +567,21 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     address: "0x1D06aa46994f2aba30F6eeD46b315664460a709A",
-  }
+  },
+  stXTZ: {
+    rate: async ({ api, timestamp }) => {
+      const res = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0x4Bf5C46Ee59a1110c2a242715f9c3b548A14ee02",
+      });
+      if (res.updatedAt / 1000 < timestamp - 3 * 60 * 60)
+        throw new Error(`stXTZ stale rate`);
+      return res.answer / 1e6;
+    },
+    chain: "etlk",
+    underlying: "0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab",
+    address: "0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854",
+  },
 };
 
 export async function derivs(timestamp: number) {
@@ -575,8 +589,8 @@ export async function derivs(timestamp: number) {
     Object.keys(configs).map((k: string) =>
       deriv(timestamp, k, configs[k]).catch((e) => {
         console.log(`API deriv ${k} failed with ${e?.message ?? e}`);
-      }),
-    ),
+      })
+    )
   );
 }
 

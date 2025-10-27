@@ -397,6 +397,16 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
 
       if (noDataReturned) noDataReturned = Object.keys(adaptorRecordV2JSON.aggregated).length === 0
+
+      if (noDataReturned) {
+        const chains = Object.keys(adaptor.adapter || {})
+        const allChainsAreDead = chains.every(chain => deadChains?.has(chain))
+        if (allChainsAreDead) {
+          console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
+          return;
+        }
+      }
+
       if (noDataReturned && isRunFromRefillScript) {
         // console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
         return;

@@ -32837,5 +32837,32 @@ const data4: Protocol[] = [
     twitter: "exotic_markets_",
     listedAt: 1761584433,
   },
+  {
+    id: "6921",
+    name: "Palomino Finance",
+    address: null,
+    symbol: "-",
+    url: "https://palomino.fi/",
+    description: "Palomino is Saga's native lending market, built to maximize capital velocity. By combining overcollateralized borrowing with Colt's subsidy mechanism, Palomino creates a lending environment where lenders earn more and borrowers pay less.",
+    chain: "Saga",
+    logo: `${baseIconsUrl}/palomino-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Saga"],
+    module: "palomino-finance/index.js",
+    forkedFromIds: ["1599"],
+    oraclesBreakdown: [
+      {
+        name: "Tellor",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16859"],
+      },
+    ],
+    twitter: "PalominoFi",
+    listedAt: 1761585807,
+  },
 ];
 export default data4;

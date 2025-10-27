@@ -36,7 +36,6 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []
-      let childProtocols: ProtocolAdaptor[] = []
 
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
       if (!protocolId) throw new Error(`No protocol id found for ${adapterKey}` + JSON.stringify(protocol))
@@ -79,7 +78,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
-      if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
+      if (moduleObject.breakdownMethodology) infoItem.breakdownMethodology = moduleObject.breakdownMethodology
 
       response.push(infoItem)
 

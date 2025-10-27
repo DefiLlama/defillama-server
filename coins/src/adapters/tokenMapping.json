@@ -1021,6 +1021,11 @@
     }
   },
   "ethereum": {
+    "0x9469470C9878bf3d6d0604831d9A3A366156f7EE": {
+      "decimals": "18",
+      "symbol": "avETH",
+      "to": "coingecko#ethereum"
+    },
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
       "symbol": "MoreXRP",

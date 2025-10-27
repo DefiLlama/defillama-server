@@ -8159,7 +8159,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#reya",
     name: "Reya",
-    url: "https://reya.network",
+    url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
+    referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description: "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
     logo: `${baseIconsUrl}/reya.jpg`,
     gecko_id: null,

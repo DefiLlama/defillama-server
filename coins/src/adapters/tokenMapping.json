@@ -1477,6 +1477,11 @@
     }
   },
   "bsc": {
+    "0x1775504c5873e179Ea2f8ABFcE3861EC74D159bc": {
+      "decimals": "18",
+      "symbol": "CASH+",
+      "to": "asset#ethereum:0x498d9329555471bf6073a5f2d047f746d522a373"
+    },
     "0x7cb8a5abf019983ed053484d5ad17f96fec56f28": {
       "decimals": "8",
       "symbol": "leadBTC",

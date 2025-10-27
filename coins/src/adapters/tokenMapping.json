@@ -12338,6 +12338,13 @@
       "symbol": "ETH"
     }
   },
+  "terra": {
+    "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2": {
+      "to": "coingecko#juris-protocol",
+      "decimals": 6,
+      "symbol": "JURIS"
+    }
+  },
   "terra2": {
     "terra1ctelwayk6t2zu30a8v9kdg3u2gr0slpjdfny5pjp7m3tuquk32ysugyjdg": {
       "to": "coingecko#solana",

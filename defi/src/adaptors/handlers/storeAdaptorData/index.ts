@@ -29,7 +29,7 @@ const skipDefaultRecentDataCheckForAdapters = new Set([
   '5060',  // derive options
 ])
 
-export type IStoreAdaptorDataHandlerEvent = {
+export type DimensionRunOptions = {
   timestamp?: number
   adapterType: AdapterType
   protocolNames?: Set<string>
@@ -43,6 +43,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   checkBeforeInsert?: boolean
   maxRunTime?: number // in milliseconds
   onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
+  deadChains?: Set<string>
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -62,13 +63,12 @@ const humanizeDuration = (ms: number) => {
 }
 
 
-export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
+export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
   let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false,
-
-  } = event
+    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false, deadChains,
+  } = options
 
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
@@ -126,18 +126,17 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = protocols.reduce((acc, { chains }) => {
+    chains = chains.filter((chain) => !deadChains || !deadChains.has(chain))  // filter out dead chains
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
-  await Promise.all(
-    allChains.map(async (chain) => {
-      try {
-        await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-      } catch (e) {
-        // console.log('error fetching block, chain:', chain, (e as any)?.message) 
-      }
-    })
-  );
+
+  await sdk.util.runInPromisePool({
+    concurrency: 10,
+    items: allChains,
+    permitFailure: true,
+    processor: async (chain: string) => getBlock(toTimestamp, chain, {}),
+  })
 
   // const timeTable: any = []
   const results: any = []
@@ -331,6 +330,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
                 protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
+                deadChains,
               })
               if (onlyYesterday)
                 return await refillYesterdayPromise
@@ -374,7 +374,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // dynamically import runAdapter so we import it only if needed and after the repo is setup
       const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default
 
-      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all' },) as any
+      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all', deadChains, },) as any
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
 
 

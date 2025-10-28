@@ -813,8 +813,9 @@ const data4: Protocol[] = [
     category: "Chain",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "aethir/index.js",
     twitter: "AethirCloud",
+    listedAt: 1761694475,
   },
   {
     id: "5592",

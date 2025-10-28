@@ -63679,7 +63679,7 @@ const data3_2: Protocol[] = [
     description:
       "Bridge between Bitcoin and Bitlayer chain",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/bitlayer-bridge.jpg`,
+    logo: `${baseIconsUrl}/bitlayer-ybtc-family.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

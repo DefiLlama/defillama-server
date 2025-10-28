@@ -23919,6 +23919,7 @@ const data4: Protocol[] = [
         adapter: "boros",
         genuineSpikes: ["1759449600"],
       },
+      "open-interest": "boros-oi"
     },
     oraclesBreakdown: [
       {

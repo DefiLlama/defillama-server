@@ -28641,7 +28641,7 @@ const data3_1: Protocol[] = [
   {
     id: "3921",
     name: "Pharaoh CL",
-    address: "avax:0xAAAB9D12A30504559b0C5a9A5977fEE4A6081c6b",
+    address: "avax:0x13a466998ce03db73abc2d4df3bbd845ed1f28e7",
     symbol: "PHAR",
     url: "https://pharaoh.exchange/swap/",
     description: `Pharaoh is a next-generation AMM designed to serve as Avalanche's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.`,
@@ -37616,7 +37616,7 @@ const data3_2: Protocol[] = [
   {
     id: "4287",
     name: "Pharaoh Legacy",
-    address: "avax:0xAAAB9D12A30504559b0C5a9A5977fEE4A6081c6b",
+    address: "avax:0x13a466998ce03db73abc2d4df3bbd845ed1f28e7",
     symbol: "PHAR",
     url: "https://pharaoh.exchange/swap/",
     description:

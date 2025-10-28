@@ -92,6 +92,9 @@ async function restCallWrapper(request: () => Promise<any>, retries: number = 8,
   }
   throw new Error(`couldnt work ${name} call after retries!`);
 }
+
+// TODO: I am very unhappy that we keep repeating the price fetch code everywhere, it is there in coins part of the repo, here, in tvl repo, in dimensions, in defi/storeTvl, can you check if the one in sdk is adequate/else update it to something that can be used all these places
+//  I am also thinking of adding a  pull all method, which will pull all token prices from ES, so we get all the prices in a single call for current timestamp
 export async function getPrices(
   readKeys: string[],
   timestamp: number | "now"
@@ -152,6 +155,8 @@ export async function getPrices(
 
   return aggregatedRes;
 }
+
+// TODO: same point as as getToken prices
 export async function getMcaps(
   readKeys: string[],
   timestamp: number | "now"
@@ -411,10 +416,12 @@ export async function fetchSupplies(
     throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);
   }
 }
+
+// TODO: please add comments explaining the logic here
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   const j = Object.keys(incomingAssets).indexOf(chain);
   try {
-    const tokens: Address[] = j == -1 ? [] : await Object.values(incomingAssets)[j]();
+    const tokens: Address[] = j == -1 ? [] : await Object.values(incomingAssets)[j](); // QUESTION: why not  check incomingAssets[chain] directly? what s the rationale behind using indexOf and Object.values?
     tokens.push(...((await fetchThirdPartyTokenList())[chain] ?? []));
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;

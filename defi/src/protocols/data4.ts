@@ -32884,6 +32884,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     forkedFromIds: [],
+    twitter: "tryfomo",
     dimensions: {
       fees: "fomo",
     }

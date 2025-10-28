@@ -60240,7 +60240,7 @@ const data3_2: Protocol[] = [
     chains: ["Base"],
     forkedFrom: [],
     module: "truemarkets/index.js",
-    twitter: "Truemarketsorg",
+    twitter: "truemarkets",
     listedAt: 1729254083,
     treasury: 'truemarkets.js'
   },

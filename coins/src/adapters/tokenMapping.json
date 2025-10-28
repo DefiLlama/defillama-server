@@ -1021,6 +1021,11 @@
     }
   },
   "ethereum": {
+    "0x9469470C9878bf3d6d0604831d9A3A366156f7EE": {
+      "decimals": "18",
+      "symbol": "avETH",
+      "to": "coingecko#ethereum"
+    },
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
       "symbol": "MoreXRP",
@@ -1477,6 +1482,11 @@
     }
   },
   "bsc": {
+    "0x1775504c5873e179Ea2f8ABFcE3861EC74D159bc": {
+      "decimals": "18",
+      "symbol": "CASH+",
+      "to": "asset#ethereum:0x498d9329555471bf6073a5f2d047f746d522a373"
+    },
     "0x7cb8a5abf019983ed053484d5ad17f96fec56f28": {
       "decimals": "8",
       "symbol": "leadBTC",
@@ -12326,6 +12336,13 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    }
+  },
+  "terra": {
+    "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2": {
+      "to": "coingecko#juris-protocol",
+      "decimals": 6,
+      "symbol": "JURIS"
     }
   },
   "terra2": {

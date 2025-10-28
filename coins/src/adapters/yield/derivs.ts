@@ -582,6 +582,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab",
     address: "0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854",
   },
+  "CASH+": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x66C0dB1A21047f0c156d2F39b33B1A47E9fE4583",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x498D9329555471bF6073A5f2D047F746d522A373",
+  },
 };
 
 export async function derivs(timestamp: number) {

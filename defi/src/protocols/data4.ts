@@ -16326,7 +16326,8 @@ const data4: Protocol[] = [
     category: "Cross Chain Bridge",
     chains: ["Near"],
     forkedFrom: [],
-    module: "near-intents/index.js",
+    // module: "near-intents/index.js",  // bad adapter - we cant treat it as if it supports all chains
+    module: "dummy.js",
     twitter: "NEARProtocol",
     dimensions: {
       "bridge-aggregators": "near-intents"

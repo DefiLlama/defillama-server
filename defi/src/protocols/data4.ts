@@ -31281,7 +31281,8 @@ const data4: Protocol[] = [
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
     dimensions: {
-      dexs: "pharaoh-v3-legacy"
+      dexs: "pharaoh-v3-legacy",  
+      fees: "pharaoh-v3-legacy"
     },
     listedAt: 1760377677,
   },
@@ -31305,7 +31306,8 @@ const data4: Protocol[] = [
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
     dimensions: {
-      dexs: "pharaoh-v3"
+      dexs: "pharaoh-v3",
+      fees: "pharaoh-v3"
     },
     listedAt: 1760377684,
   },

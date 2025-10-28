@@ -8,6 +8,7 @@ console.log(process.version);
 import adapters from "../adapters/index";
 console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";
+import { batchIsDistressed } from "../utils/shared/distressedCoins";
 // import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 console.log("imports successful");
@@ -27,7 +28,7 @@ async function storeDefiCoins() {
   process.env.tableName = "prod-coins-table";
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
-    Array(adaptersArray.length).keys(),
+    Array(adaptersArray.length).keys()
   );
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
@@ -42,14 +43,22 @@ async function storeDefiCoins() {
       try {
         const adapterFn = typeof b === "function" ? b : b[adapterKey];
         const results = await withTimeout(timeout, adapterFn(timestamp));
+        const blacklist = await batchIsDistressed(
+          results.flat().map((c: any) => c.PK)
+        );
+
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
+          results
+            .flat()
+            .filter(
+              (c: any) => (c.symbol != null || c.SK != 0) && !blacklist[c.PK]
+            )
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
             batchWriteWithAlerts(
               resultsWithoutDuplicates.slice(i, i + step),
-              true,
+              true
             ),
           ]);
           // await batchWrite2WithAlerts(
@@ -78,3 +87,4 @@ async function storeDefiCoins() {
 }
 storeDefiCoins();
 // ts-node coins/src/scripts/defiCoins.ts
+

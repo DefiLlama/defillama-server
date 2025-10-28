@@ -56609,7 +56609,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5097",
-    name: "Lombard ",
+    name: "Lombard",
     address: null,
     symbol: "-",
     assetToken: "LBTC",
@@ -56623,13 +56623,13 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Restaked BTC",
-    chains: ["Bitcoin"],
+    chains: ["Bitcoin", "Ethereum", "Base", "Solana", "Sui", "Katana", "Starknet", "Sonic", "Berachain", "Binance"],
     module: "lombard/index.js",
      // https://github.com/DefiLlama/defillama-server/pull/8419
     forkedFrom: [],
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
-    audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
+    audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf", "https://github.com/lombard-finance/evm-smart-contracts/tree/main/docs/audit"],
     listedAt: 1725449393
   },
   {
@@ -57653,7 +57653,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.lombard.finance/app/vault",
-    description: `Lombard’s DeFi Vault is designed to bridge the gap between bitcoin and DeFi, by offering LBTC holders one-click access to DeFi yields without any of the complexities. It accepts LBTC, a liquid staked token representation of Bitcoin, as well WBTC and seeks to capture the highest risk-adjusted yields derived from multiple DeFi strategies. `,
+    description: `Lombard’s DeFi Vault is designed to bridge the gap between bitcoin and DeFi, by offering LBTC holders one-click access to DeFi yields without any of the complexities. It accepts LBTC, a liquid staked token representation of Bitcoin, as well WBTC and seeks to capture the highest risk-adjusted yields derived from multiple DeFi strategies.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lombard-vault.jpg`,
     audits: "0",
@@ -57661,7 +57661,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum", "Base", "Binance"],
+    chains: ["Ethereum", "Base", "Binance", "Sonic"],
     module: "lombard-vault/index.js",
     twitter: "Lombard_Finance",
     forkedFrom: [],

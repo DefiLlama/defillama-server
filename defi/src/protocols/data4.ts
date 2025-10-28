@@ -32821,6 +32821,9 @@ const data4: Protocol[] = [
     twitter: "looping_col",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1761584418,
+    dimensions: {
+      fees: "wrapped-hlp",
+    },
   },
   {
     id: "6920",

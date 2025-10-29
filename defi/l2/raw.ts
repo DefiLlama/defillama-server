@@ -10,7 +10,8 @@ export async function saveRawBridgedTvls(chains: FinalData, symbolMap: { [pk: st
   const chainQueries: { [chain: string]: string[] } = {};
   Object.keys(symbolMap).filter((pk) => {
     if (symbolMap[pk] != null) return;
-    const [chain, address] = pk.split(":");
+    const chain = pk.split(":")[0];
+    const address = pk.substring(chain.length + 1);
     if (!chainQueries[chain]) chainQueries[chain] = [];
     chainQueries[chain].push(address);
   });

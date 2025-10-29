@@ -711,7 +711,7 @@ runWithRuntimeLogging(run, {
   application: 'cron-task',
   type: 'dimensions',
 })
-  // .then(storeAppMetadata)
+  // .then(storeAppMetadata) // we run this in a separate script now
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)

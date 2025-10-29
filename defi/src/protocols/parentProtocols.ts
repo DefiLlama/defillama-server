@@ -8284,6 +8284,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dfsdotfun",
   },
+  {
+    id: "parent#milkyway-protocol",
+    name: "MilkyWay Protocol",
+    url: "https://milkyway.finance",
+    description: "MilkyWay Protocol is a staking protocol on the MilkyWay Network.",
+    logo: `${baseIconsUrl}/milkyway-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "milky_way_zone",
+  },
 ];
 
 export default parentProtocols;

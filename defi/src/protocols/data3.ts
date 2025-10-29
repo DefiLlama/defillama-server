@@ -29426,14 +29426,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3953",
-    name: "MilkyWay Protocol",
+    name: "MilkyWay Liquid Staking",
+    // previousNames: ["Milkyway Protocol"]
     address: "osmosis:ibc/9D8D4CAE9D8F15B69E93969304AF3878D14BDED39FEAF0060566D6AC22288779",
     symbol: "MILK",
     assetToken: "umilkTIA",
     url: "https://www.milkyway.zone/",
     description: "MilkyWay offers a liquid staking solution for Celestia's TIA",
     chain: "Osmosis",
-    logo: `${baseIconsUrl}/milkyway-protocol.jpg`,
+    logo: `${baseIconsUrl}/milkyway-liquid-staking.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -29448,6 +29449,7 @@ const data3_1: Protocol[] = [
       "https://github.com/oak-security/audit-reports/blob/master/MilkyWay/2023-12-12%20Audit%20Report%20-%20MilkyWay%20Staking%20v1.0.pdf",
     ],
     github: ["milkyway-labs"],
+    parentProtocol: "parent#milkyway-protocol",
     listedAt: 1703359758,
     dimensions: {
       fees: "milkyway"

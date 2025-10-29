@@ -32959,7 +32959,7 @@ const data4: Protocol[] = [
     module: "milky-way-restaking/index.js",
     forkedFromIds: [],
     twitter: "milkywayzone",
-    // parentProtocol: "parent#milkyway",
+    parentProtocol: "parent#milkyway-protocol",
     tokensExcludedFromParent: {
       milkyway:["milkTIA"],
     },

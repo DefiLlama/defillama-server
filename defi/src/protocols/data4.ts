@@ -800,7 +800,7 @@ const data4: Protocol[] = [
   {
     id: "5591",
     name: "Aethir",
-    address: "arbitrum:0xbe0Ed4138121EcFC5c0E56B40517da27E6c5226B",
+    address: "0xbe0ed4138121ecfc5c0e56b40517da27e6c5226b",
     symbol: "ATH",
     url: "https://aethir.com/",
     description: "Powerful GPU compute solutions on-demand.",

@@ -1026,6 +1026,11 @@
       "symbol": "avETH",
       "to": "coingecko#ethereum"
     },
+    "0x76589A6707a765f499BBF33C7be4db41C1Db7f58": {
+      "decimals": "18",
+      "symbol": "stakedao-llsreUSD",
+      "to": "asset#ethereum:0xc32b0cf36e06c790a568667a17de80cba95a5aad"
+    },
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
       "symbol": "MoreXRP",
@@ -5113,6 +5118,16 @@
     }
   },
   "linea": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0xC7346783f5e645aa998B106Ef9E7f499528673D8": {
       "decimals": "18",
       "symbol": "frxUSD",
@@ -12375,6 +12390,16 @@
     }
   },
   "plasma": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x6100E367285b01F48D07953803A2d8dCA5D19873": {
       "to": "coingecko#wrapped-xpl",
       "decimals": 18,

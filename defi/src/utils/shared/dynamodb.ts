@@ -1,33 +1,38 @@
-import AWS from "aws-sdk";
+import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
+import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput  } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
 
-const client = new AWS.DynamoDB.DocumentClient({
+const ddbClient = new DynamoDBClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
     sslEnabled: false,
     region: "local"
   })
 });
+
+const client = DynamoDBDocument.from(ddbClient)
 export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
+
+export type DynamoDBItemKey = GetCommandInput["Key"]
 
 const dynamodb = {
   get: (
-    key: AWS.DynamoDB.DocumentClient.Key,
-    params?: Omit<AWS.DynamoDB.DocumentClient.GetItemInput, "TableName">
-  ) => client.get({ TableName, ...params, Key: key }).promise(),
+    key: DynamoDBItemKey,
+    params?: Omit<GetCommandInput, "TableName">
+  ) => client.get({ TableName, ...params, Key: key }),
   put: (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
-    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
-  ) => client.put({ TableName, ...params, Item: item }).promise(),
-  query: (params: Omit<AWS.DynamoDB.DocumentClient.QueryInput, "TableName">) =>
-    client.query({ TableName, ...params }).promise(),
+    item: PutCommandInput["Item"],
+    params?: Partial<PutCommandInput>
+  ) => client.put({ TableName, ...params, Item: item }),
+  query: (params: Omit<QueryCommandInput, "TableName">) =>
+    client.query({ TableName, ...params }),
   update: (
-    params: Omit<AWS.DynamoDB.DocumentClient.UpdateItemInput, "TableName">
-  ) => client.update({ TableName, ...params }).promise(),
+    params: Omit<UpdateCommandInput, "TableName">
+  ) => client.update({ TableName, ...params }),
   delete: (
-    params: Omit<AWS.DynamoDB.DocumentClient.DeleteItemInput, "TableName">
-  ) => client.delete({ TableName, ...params }).promise(),
-  batchGet: (keys: AWS.DynamoDB.DocumentClient.KeyList) =>
+    params: Omit<DeleteCommandInput, "TableName">
+  ) => client.delete({ TableName, ...params }),
+  batchGet: (keys: any) =>
     client
       .batchGet({
         RequestItems: {
@@ -36,22 +41,22 @@ const dynamodb = {
           }
         }
       })
-      .promise(),
-  scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
-    client.scan({ TableName, ...params }).promise(),
-  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
-  getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+      ,
+  scan: (params: Omit<ScanCommandInput, "TableName">) =>
+    client.scan({ TableName, ...params }),
+  getEnvSecrets: (key: DynamoDBItemKey = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }),
+  getExtensionTwitterConfig: (key: DynamoDBItemKey = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }),
   putDimensionsData: (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
-    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
-  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
+    item: PutCommandInput["Item"],
+    params?: Partial<PutCommandInput>
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }),
   putDimensionsDataBulk: (
-    items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
+    items: PutCommandInput["Item"][],
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }),
   putEventData: async (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+    item: PutCommandInput["Item"],
   ) => {
-    if (!item.PK) {
+    if (!item?.PK) {
       throw new Error("Item must have a PK");
     }
     if (!item.source) {
@@ -64,7 +69,7 @@ const dynamodb = {
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
     try {
-      let response = await client.put({ TableName: 'prod-event-table', Item: item }).promise()
+      let response = await client.put({ TableName: 'prod-event-table', Item: item })
       return response;
     } catch (e: any) {
       console.error("Failed to put event data", item.PK, item.source, e?.message || e);
@@ -103,7 +108,7 @@ async function underlyingBatchWrite(
         [TableName]: items
       }
     })
-    .promise();
+    ;
   const unprocessed = output.UnprocessedItems?.[TableName] ?? [];
   if (unprocessed.length > 0) {
     // Retry algo
@@ -120,23 +125,25 @@ async function underlyingBatchWrite(
 }
 
 function removeDuplicateKeys(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]
+  items: PutCommandInput["Item"][]
 ) {
-  return items.filter((item, index) =>
-    // Could be optimized to O(nlogn) but not worth it
-    items
-      .slice(0, index)
-      .every(
-        (checkedItem) =>
-          !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
-      )
-  );
+  const seenKeys = new Set<string>();
+  return items.filter((item) => {
+    if (!item?.PK) return false
+
+    const key = `${item.PK}#${item.SK}`;
+    if (seenKeys.has(key)) {
+      return false;
+    }
+    seenKeys.add(key);
+    return true;
+  });
 }
 
 const batchWriteStep = 25; // Max items written at once are 25
 // IMPORTANT: Duplicated items will be pruned
 export async function batchWrite(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: PutCommandInput["Item"][],
   failOnError: boolean
 ) {
   const writeRequests = [];

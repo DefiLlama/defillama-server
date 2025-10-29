@@ -1,12 +1,11 @@
 import * as HyperExpress from "hyper-express";
 import * as path from "path";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
-import { getCexs } from "../../getCexs";
 import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getFormattedChains } from "../../getFormattedChains";
-import { ddbGetInflows } from "../../getInflows";
+import { ddbGetInflows } from "../db/inflows";
 import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
@@ -23,6 +22,7 @@ import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
+import { cexsData, cg_volume_cexs } from "../../protocols/cex";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -480,6 +480,16 @@ export function setProRoutes(router: HyperExpress.Router, _routerBasePath: strin
   router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
   router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
 }
+
+
+export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  res.setHeaders({
+    Expires: get20MinDate(),
+  });
+
+  return successResponse(res, { cexs: cexsData, cg_volume_cexs });
+}
+
 
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {

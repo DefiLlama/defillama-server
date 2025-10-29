@@ -10,7 +10,6 @@ import {
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
-import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import axios from 'axios'
 
 const log = console.log
@@ -51,12 +50,12 @@ function dateInSec(str: any) {
   return (+new Date(str)) / 1000
 }
 
-type DailyItems = (DocumentClient.ItemList | undefined)[];
+type DailyItems = (any)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   for (const items of dailyItems) {
     const itemsOnSameDay =
       items?.filter(
-        (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+        (item: any) => getClosestDayStartTimestamp(item.SK) === timestamp
       ) ?? [];
     for (const item of itemsOnSameDay) {
       await dynamodb.delete({

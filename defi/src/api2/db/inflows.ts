@@ -1,12 +1,12 @@
-import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
-import protocols from "./protocols/data";
-import sluggify from "./utils/sluggify";
-import getTVLOfRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
-import { hourlyTokensTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
-import cgSymbols from "./utils/symbols/symbols.json";
-import { getCurrentUnixTimestamp } from "./utils/date";
-import { IProtocol } from "./types";
-import { normalizeCgIds } from "./utils/symbols/convert";
+import { wrap, IResponse, successResponse, errorResponse } from "../../utils/shared";
+import protocols from "../../protocols/data";
+import sluggify from "../../utils/sluggify";
+import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import cgSymbols from "../../utils/symbols/symbols.json";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import { IProtocol } from "../../types";
+import { normalizeCgIds } from "../../utils/symbols/convert";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -31,7 +31,7 @@ export async function ddbGetInflows({ errorResponse, successResponse, protocolDa
   errorResponse: any, successResponse: any, protocolData: IProtocol, tokensToExclude: string[], skipTokenLogs: boolean, timestamp: number, endTimestamp: number,
 }) {
 
-  const old = await getTVLOfRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+  const old = await getTVLOfRecordClosestToTimestamp (hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
   if (old.SK === undefined)
     return errorResponse("No data at that timestamp");
 

@@ -1,7 +1,3 @@
-import { successResponse } from "./api2/routes/utils";
-import * as HyperExpress from "hyper-express";
-import { get20MinDate } from "./utils/shared";
-
 interface ICex {
   name: string;
   slug?: string;
@@ -602,7 +598,7 @@ export const cexsData: Array<ICex> = [
   }
 ];
 
-const cg_volume_cexs = Object.values({
+export const cg_volume_cexs = Object.values({
   "Bybit": "bybit-spot",
   "Coinbase": "gdax",
   "Huobi": "huobi",
@@ -713,11 +709,3 @@ const cg_volume_cexs = Object.values({
   "zipmex": "zipmex",
   "OSL": "osl",
 });
-
-export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {
-  res.setHeaders({
-    Expires: get20MinDate(),
-  });
-
-  return successResponse(res, { cexs: cexsData, cg_volume_cexs });
-}

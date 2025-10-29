@@ -11092,6 +11092,9 @@ const data4: Protocol[] = [
     category: "Leveraged Farming",
     chains: ["Aptos"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] }, 
+    ],
     module: "moar/index.js",
     twitter: "MoarMarket",
     audit_links: ["https://movebit.xyz/reports/20241211-Moar-Market-Final-Audit-Report.pdf"],

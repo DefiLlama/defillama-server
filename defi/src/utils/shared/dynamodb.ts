@@ -1,5 +1,5 @@
 import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
-import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput  } from "@aws-sdk/lib-dynamodb"
+import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
 
 const ddbClient = new DynamoDBClient({
@@ -19,13 +19,19 @@ const dynamodb = {
   get: (
     key: DynamoDBItemKey,
     params?: Omit<GetCommandInput, "TableName">
-  ) => client.get({ TableName, ...params, Key: key }),
+  ) => client.get({ TableName, ...params, Key: key }).then((value) => {
+    if (value.Item) fixDDBRecords(value.Item)
+    return value
+  }),
   put: (
     item: PutCommandInput["Item"],
     params?: Partial<PutCommandInput>
   ) => client.put({ TableName, ...params, Item: item }),
   query: (params: Omit<QueryCommandInput, "TableName">) =>
-    client.query({ TableName, ...params }),
+    client.query({ TableName, ...params }).then((value) => {
+      if (value.Items?.length) fixDDBRecords(value.Items)
+      return value
+    }),
   update: (
     params: Omit<UpdateCommandInput, "TableName">
   ) => client.update({ TableName, ...params }),
@@ -40,8 +46,11 @@ const dynamodb = {
             Keys: keys
           }
         }
+      }).then((value) => {
+        if (value.Responses) fixDDBRecords(value.Responses)
+        return value
       })
-      ,
+  ,
   scan: (params: Omit<ScanCommandInput, "TableName">) =>
     client.scan({ TableName, ...params }),
   getEnvSecrets: (key: DynamoDBItemKey = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }),
@@ -191,6 +200,25 @@ export async function DELETE(keys: { PK: string; SK: number }[]): Promise<void> 
     // console.log('deleting', item.PK, item.SK)
     if (item.PK && (item.SK == 0 || item.SK)) requests.push(dynamodb.delete({ Key: { PK: item.PK, SK: item.SK } }));
   }
-  const a = await Promise.all(requests);
+  await Promise.all(requests);
   return;
+}
+
+/**
+ * when we switched to using aws sdk v3, it started converting numbers into bigint, this reverts that
+ * @param item
+ */
+export function fixDDBRecords(item: any) {
+  if (Array.isArray(item)) {
+    item.forEach(fixDDBRecords)
+    return item
+  } else if (typeof item === 'bigint') {
+    return Number(item)
+  } else if (typeof item === 'object' && item) {
+    Object.entries(item).forEach(([key, value]) => {
+      item[key] = fixDDBRecords(value)
+    })
+  }
+
+  return item
 }

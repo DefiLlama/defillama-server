@@ -33010,5 +33010,26 @@ const data4: Protocol[] = [
     github: ["jurisprotocol"],
     listedAt: 1761694872,
   },
+  {
+    id: "6928",
+    name: "Titan Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://titan.exchange/",
+    description: "Meta DEX Aggregator on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/titan-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "Titan_Exchange",
+    dimensions: {
+      aggregators: "titan-exchange",
+    },
+  },
 ];
 export default data4;

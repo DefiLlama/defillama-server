@@ -138,21 +138,12 @@ export default async function (
       }
     }
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
-      let tvlFromMissingTokens = 0;
-      let missingTokens = '';
-      [...extraSections, "tvl"].forEach(section => {
-        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
-        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
-          if (usdTokenBalances[section]?.[coin] === undefined) {
-            tvlFromMissingTokens += Number(tvl)
-            missingTokens += `${coin},`
-          }
-        })
-      })
-      if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
-        console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
+      if (lastHourlyTVL > 50e6) {
+        await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVL} to ${currentTvl}`, process.env.TEAM_WEBHOOK!)
+      } else {
+        console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}`)
         if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
-          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
+          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled.`
           await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
           throw new Error(errorMessage);
         }

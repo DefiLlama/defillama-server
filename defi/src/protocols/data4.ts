@@ -12165,6 +12165,9 @@ const data4: Protocol[] = [
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14321"],
       },
     ],
+    tokensExcludedFromParent: {
+      BSC: ["stSUPRA"],
+    },
     module: "solido/index.js",
     twitter: "SolidoMoney",
     audit_links: ["https://movebit.xyz/reports/20250414-Solido-Money-Final-Audit-Report.pdf"],

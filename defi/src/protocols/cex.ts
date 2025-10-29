@@ -6,6 +6,7 @@ interface ICex {
   walletsLink?: string | null;
   cgId?: string | null;
   cgDeriv?: string | null;
+  cgSpotId?: string | null;
   lastAuditDate?: number;
   auditor?: string | null;
   auditLink?: string | null;
@@ -62,7 +63,7 @@ export const cexsData: Array<ICex> = [
     cgId: "bybit_spot",
     cgDeriv: "bybit",
   },
-  /*
+  /* */
 	{
 		name: 'Kraken',
 		slug: 'kraken',
@@ -71,7 +72,7 @@ export const cexsData: Array<ICex> = [
 		cgId: 'kraken',
 		cgDeriv: 'kraken_futures'
 	},
-	*/
+	/**/
   {
     name: "Crypto.com",
     slug: "Crypto-com",
@@ -595,10 +596,16 @@ export const cexsData: Array<ICex> = [
     slug: "osl",
     coin: null,
     walletsLink: null,
+  },
+  {
+    name: "Voyager",
+    slug: "voyager",
+    coin: null,
+    walletsLink: null,
   }
 ];
 
-export const cg_volume_cexs = Object.values({
+const cgNameListingIdMap: { [name: string]: string } = {
   "Bybit": "bybit-spot",
   "Coinbase": "gdax",
   "Huobi": "huobi",
@@ -708,4 +715,12 @@ export const cg_volume_cexs = Object.values({
   "ZBX": "zbx",
   "zipmex": "zipmex",
   "OSL": "osl",
-});
+}
+
+cexsData.forEach(c => {
+  if (cgNameListingIdMap[c.name]) {
+    c.cgSpotId = cgNameListingIdMap[c.name];
+  }
+})
+
+export const cg_volume_cexs = Object.values(cgNameListingIdMap);

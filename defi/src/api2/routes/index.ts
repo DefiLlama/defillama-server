@@ -22,7 +22,6 @@ import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
-import { cexsData, cg_volume_cexs } from "../../protocols/cex";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -82,7 +81,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
 
-  router.get("/cexs", ew(getCexs));
+  router.get("/cexs", (_: any, res: HyperExpress.Response) => fileResponse('cex_agg', res));
 
 
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
@@ -479,15 +478,6 @@ export function setProRoutes(router: HyperExpress.Router, _routerBasePath: strin
   router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
   router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
   router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
-}
-
-
-export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {
-  res.setHeaders({
-    Expires: get20MinDate(),
-  });
-
-  return successResponse(res, { cexs: cexsData, cg_volume_cexs });
 }
 
 

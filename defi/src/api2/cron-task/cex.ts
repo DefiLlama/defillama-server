@@ -11,18 +11,30 @@ const cacheKey = 'cron-task/cex-last-update';
 const updatePeriodMs = 15 * 60 * 1000; // 15 minutes
 
 const cexDataNameMap: { [name: string]: any } = {}
+const cexIdMap2: { [id: string]: any } = {}
+const cexCgIdMap: { [id: string]: any } = {}
+const cexCgDerivIdMap: { [id: string]: any } = {}
 cexsData.forEach(c => {
   cexDataNameMap[c.name] = c
+  if (c.cgId) cexCgIdMap[c.cgId] = c
+  if (c.slug) cexCgIdMap[c.slug] = c
+  if (c.cgSpotId) {
+    cexCgIdMap[c.cgSpotId] = c
+  }
+  if (c.cgDeriv) cexCgDerivIdMap[c.cgDeriv] = c
 })
 
 const cexes = protocols.filter(p => p.category === 'CEX')
 const cexNameMap: { [name: string]: any } = {}
-const cexIdMap: { [id: string]: any } = {}
+const cexMetadataIdMap: { [id: string]: any } = {}
+
+
+
 cexes.forEach(c => {
   let name = c.name
 
   cexNameMap[c.name] = c
-  cexIdMap[c.id] = c
+  cexMetadataIdMap[c.id] = c
 
   switch (name) {
     case 'Binance CEX': name = 'Binance'; break;
@@ -37,6 +49,8 @@ cexes.forEach(c => {
   if (!cexExtraData) {
     console.warn(`CEX ${name} not found in cexsData`)
   } else {
+    cexIdMap2[c.id] = cexExtraData
+
     // const { name, ...rest } = cexExtraData
     Object.assign(c, cexExtraData)
   }
@@ -48,12 +62,21 @@ const cexesWithTvl = cexes.filter(p => p.module && p.module !== 'dummy.js')
 // console.log(`CEX counts: total=${cexes.length}, withTvl=${cexesWithTvl.length}`)
 
 async function _run() {
-
-
   const responseData: any = {
-    cexs: cexsData, cg_volume_cexs, cex_data: cexes,
+    cexs: cexsData, cg_volume_cexs,
   }
 
+  // Add asset data: tvl, inflows
+  await addAssetData()
+
+  // Add cex spot and deriv volume
+  await addSpotAndDerivData()
+
+
+  await storeRouteData('cex_agg', responseData)
+}
+
+async function addAssetData() {
   console.time('Fetching CEX TVL data for aggregation from db')
 
   const cexTvlIds = cexesWithTvl.map(c => c.id)
@@ -85,10 +108,10 @@ async function _run() {
 
   // add current tvl to cex data
   tvlData.forEach((item: any) => {
-    const cex = cexIdMap[item.id] as any
-    
+    const cex = cexIdMap2[item.id] as any
+
     if (!cex) {
-      console.warn(`CEX with id ${item.id} not found in protocols data`)
+      console.warn(`CEX with id ${item.id} not found in protocols data tvl name: ${cexMetadataIdMap[item.id]?.name}`)
       return
     }
 
@@ -97,10 +120,10 @@ async function _run() {
 
   // add current usd tokens tvl && clean assets tvl to cex data
   usdTokensTvl.forEach((item: any) => {
-    const cex = cexIdMap[item.id] as any
+    const cex = cexIdMap2[item.id] as any
 
     if (!cex) {
-      console.warn(`CEX with id ${item.id} not found in protocols data`)
+      console.warn(`CEX with id ${item.id} not found in protocols data usd tokens tvl: ${cexMetadataIdMap[item.id]?.name}`)
       return
     }
 
@@ -119,20 +142,52 @@ async function _run() {
   Object.entries(inflows1w).map(addInflowsDataToCex('inflows_1w'))
   Object.entries(inflows1m).map(addInflowsDataToCex('inflows_1m'))
 
-  await storeRouteData('cex_agg', responseData)
-
   function addInflowsDataToCex(fieldName: string) {
     return ([id, item]: any) => {
-      const cex = cexIdMap[id] as any
+      const cex = cexIdMap2[id] as any
 
       if (!cex) {
-        console.warn(`CEX with id ${id} not found in protocols data`)
+        console.warn(`CEX with id ${id} not found in protocols data: ${fieldName} ${cexMetadataIdMap[item.id]?.name}`)
         return
       }
 
       cex[fieldName] = item
     }
   }
+
+}
+
+async function addSpotAndDerivData() {
+  const SPOT_DATA_URL = 'https://api.coingecko.com/api/v3/exchanges?per_page=1000'
+  const DERIV_DATA_URL = "https://api.coingecko.com/api/v3/derivatives/exchanges?per_page=1000"
+
+  const spotData = await sdk.cache.cachedFetch({ endpoint: SPOT_DATA_URL, key: 'cex/cex-cg-spot-data', }) as any[]
+  const derivData = await sdk.cache.cachedFetch({ endpoint: DERIV_DATA_URL, key: 'cex/cex-cg-deriv-data', }) as any[]
+  const { ['coingecko:bitcoin']: { price: btcPrice } } = await sdk.coins.getPrices(['coingecko:bitcoin'], 'now') as any
+
+
+  spotData.forEach((item: any) => {
+    const cex = cexCgIdMap[item.id] as any
+    if (!cex) {
+      // console.warn(`CEX with cgId ${item.id} not found in protocols data spot volume: ${item.name}`)
+      return
+    }
+
+    cex.spotVolume = item.trade_volume_24h_btc * btcPrice
+  })
+
+  derivData.forEach((item: any) => {
+    const cex = cexCgDerivIdMap[item.id] as any
+    if (!cex) {
+      // console.warn(`CEX with cgDeriv ${item.id} not found in protocols data deriv volume: ${item.name}`)
+      return
+    }
+
+    cex.oi = item.open_interest_btc * btcPrice
+    cex.derivVolume = item.trade_volume_24h_btc * btcPrice
+    if (cex.cleanAssetsTvl)
+      cex.leverage = cex.oi / cex.cleanAssetsTvl
+  })
 }
 
 async function run() {
@@ -152,4 +207,4 @@ async function run() {
   await sdk.cache.writeExpiringJsonCache(cacheKey, { lastUpdateTS: now }, { expireAfter: updatePeriodMs })
 }
 
-_run().catch(console.error).then(() => process.exit(0))
+run().catch(console.error).then(() => process.exit(0))

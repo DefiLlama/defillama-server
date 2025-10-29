@@ -12667,6 +12667,11 @@
       "to": "coingecko#bittensor",
       "decimals": 18,
       "symbol": "WTAO"
+    }, 
+    "0xB833E8137FEDf80de7E908dc6fea43a029142F20": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   }
 }

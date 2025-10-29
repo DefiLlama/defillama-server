@@ -6783,7 +6783,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6748",
     chains: [],
     twitter: "centrifuge",
-    github: ["centrifuge"]
+    github: ["centrifuge"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#secured-finance",

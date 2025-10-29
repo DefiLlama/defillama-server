@@ -5,7 +5,7 @@ import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getFormattedChains } from "../../getFormattedChains";
-import { ddbGetInflows } from "../db/inflows";
+import { pgGetInflows } from "../db/inflows";
 import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
@@ -353,32 +353,31 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
   // const protocolId = protocolData.id
   const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
   const timestamp = Number(req.path_parameters.timestamp)
-  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp());
+  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp())
 
-  await ddbGetInflows({
-    errorResponse: (message: string) => errorResponse(res, message),
-    successResponse: (data: any) => successResponse(res, data, 10),
-    protocolData, tokensToExclude,
-    skipTokenLogs: true, timestamp, endTimestamp,
+  const response = await pgGetInflows({
+    ids: [{
+      id: protocolData.id, tokensToExclude
+    }],
+    startTimestamp: timestamp,
+    endTimestamp,
   })
 
-  /*
-   const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
+  const inflowData = response?.[protocolData.id]
 
-  if (old.SK === undefined)
-    return errorResponse(res, 'No data at that timestamp')
-
-  const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, { searchWidth: 2 * 3600 }))
-  );
-
-  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)
+  if (!inflowData)
     return errorResponse(res, 'No data')
 
-  const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
+  return successResponse(res, inflowData, 60)
 
-  return successResponse(res, responseData, 1); 
-  */
+
+  /*  switch back to pg for inflows data
+    await ddbGetInflows({
+      errorResponse: (message: string) => errorResponse(res, message),
+      successResponse: (data: any) => successResponse(res, data, 10),
+      protocolData, tokensToExclude,
+      skipTokenLogs: true, timestamp, endTimestamp,
+    }) */
 }
 
 async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {

@@ -33072,5 +33072,38 @@ const data4: Protocol[] = [
     twitter: "_taofi_",
     listedAt: 1761770951
   },
+  {
+    id: "6931",
+    name: "MoneyX",
+    address: "bsc:0x4ffe5ec4d8b9822e01c9e49678884baec17f60d9",
+    symbol: "MONEY",
+    url: "https://moneyxpro.com",
+    description: "MoneyX is a derivatives and perpetuals exchange under the BESC ecosystem, offering 100x leveraged trading, swap markets, and yield vaults powered by BESC infrastructure.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/moneyx.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/dimension-adapters/pull/4544"],
+      },
+      {
+        name: "BESC Oracle",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/dimension-adapters/pull/4544"],
+      },
+    ],
+    module: "dummy.js",
+    twitter: "BESCLLC",
+    dimensions: {
+      fees: "moneyx-pro",
+      derivatives: "moneyx-pro",
+    },
+  },
 ];
 export default data4;

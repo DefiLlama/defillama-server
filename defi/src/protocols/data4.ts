@@ -33001,7 +33001,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Terra"],
-    module: "juris-protocol/index.js",
+    module: "jurisprotocol/index.js",
     forkedFromIds: [],
     audit_links: [
       "https://app.solidproof.io/projects/juris-protocol?audit=963e1452-fcff-4a08-9618-72cf949c9419",

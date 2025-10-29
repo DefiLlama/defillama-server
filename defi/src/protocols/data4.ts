@@ -19135,6 +19135,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.racks.win/#id-1.-cycle-initiation"]
+      },
+    ],
     module: "optfun/index.js",
     twitter: "racksdotwin",
     forkedFromIds: [],

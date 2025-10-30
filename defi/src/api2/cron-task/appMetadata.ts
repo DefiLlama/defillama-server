@@ -206,10 +206,12 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
+      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
+      const hasBorrowed = protocol.currentChainTvls?.borrowed != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
-        ...(protocol.currentChainTvls?.borrowed != null ? { borrowed: true } : {}),
+        tvl: hasTvl,
+        ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -223,7 +225,8 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl != null ? { tvl: true } : {}),
+          ...(hasTvl ? { tvl: true } : {}),
+          ...(hasBorrowed ? { borrowed: true } : {}),
         };
       }
 

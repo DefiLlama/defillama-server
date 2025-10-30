@@ -8302,7 +8302,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "FlowSwap",
     url: "https://flowswap.io",
     description: "Trade crypto and NFTs safely on the top DeFi platform",
-    logo: `${baseIconsUrl}/flow.jpg`,
+    logo: `${baseIconsUrl}/flow.png`,
     gecko_id: "flow",
     cmcId: "4558",
     chains: ["Flow"],

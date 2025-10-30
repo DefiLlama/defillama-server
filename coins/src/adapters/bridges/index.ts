@@ -107,7 +107,7 @@ export const bridges = [
   linea,
   manta,
   astrzk,
-  zklink,
+  // zklink,
   // celer,
   fraxtal,
   symbiosis,

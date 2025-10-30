@@ -6783,7 +6783,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6748",
     chains: [],
     twitter: "centrifuge",
-    github: ["centrifuge"]
+    github: ["centrifuge"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#secured-finance",
@@ -8283,6 +8284,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "dfsdotfun",
+  },
+  {
+    id: "parent#milkyway-protocol",
+    name: "MilkyWay Protocol",
+    url: "https://milkyway.finance",
+    description: "MilkyWay Protocol is a staking protocol on the MilkyWay Network.",
+    logo: `${baseIconsUrl}/milkyway-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "milky_way_zone",
   },
 ];
 

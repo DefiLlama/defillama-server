@@ -7596,6 +7596,7 @@ const data4: Protocol[] = [
     twitter: "Looped_HYPE",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1741357944,
+    parentProtocol: "parent#looping-collective",
     dimensions: {
       fees: "looped-hype"
     }
@@ -32830,6 +32831,7 @@ const data4: Protocol[] = [
     twitter: "looping_col",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1761584418,
+    parentProtocol: "parent#looping-collective",
     dimensions: {
       fees: "wrapped-hlp",
     },

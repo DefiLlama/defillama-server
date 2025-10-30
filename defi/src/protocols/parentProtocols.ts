@@ -8296,6 +8296,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "milky_way_zone",
   },
+  {
+    id: "parent#looping-collective",
+    name: "Looping Collective",
+    url: "https://www.loopingcollective.org/",
+    description: "Earn a higher yield on your HYPE, USD, BTC & more via liquid, tokenized DeFi strategies built for reliable, risk-adjusted returns.",
+    logo: `${baseIconsUrl}/looping-collective.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "looping_col",
+  },
 ];
 
 export default parentProtocols;

@@ -8307,6 +8307,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "looping_col",
   },
+  {
+    id: "parent#farcaster",
+    name: "Farcaster",
+    url: "https://www.farcaster.xyz/",
+    description: "A sufficiently decentralized social network.",
+    logo: `${baseIconsUrl}/farcaster.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "farcaster_xyz",
+  },
 ];
 
 export default parentProtocols;

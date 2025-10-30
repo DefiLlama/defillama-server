@@ -1,6 +1,6 @@
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
-import protocols from "./protocols/data";
+import protocols, { _InternalProtocolMetadataMap } from "./protocols/data";
 import entities from "./protocols/entities";
 import treasuries from "./protocols/treasury";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
@@ -221,14 +221,16 @@ async function saveSdkInternalCache() {
 
 
 function filterProtocol(adapterModule: any, protocol: any) {
+  const { hasTvl } = _InternalProtocolMetadataMap[protocol.id] || {};
+
   // skip running protocols that are dead/rugged or dont have tvl
-  if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
+  if (!hasTvl || protocol.rugged || adapterModule.deadFrom)
     return false;
 
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
   const getMax = ((i: any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
-  const lastRecord = allProtocolData[protocol.id] 
+  const lastRecord = allProtocolData[protocol.id]
   // for whatever reason if latest tvl record is not found, run tvl adapter
   if (!lastRecord)
     return true

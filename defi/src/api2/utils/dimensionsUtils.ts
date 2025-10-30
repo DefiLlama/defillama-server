@@ -3,9 +3,11 @@ import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS
 import { readFromPGCache, writeToPGCache } from "../db";
 import { getTimeSQuarter, timeSToUnix } from "./time";
 import { AdapterType } from "../../adaptors/data/types"
+import { protocolsById } from "../../protocols/data";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
 
 function getFileCacheKeyV2(adapterType: AdapterType) {
-  return `dimensions-data-v3.0.0/${adapterType}`
+  return `dimensions-data-v3.0.1/${adapterType}`
 }
 
 async function _getDimensionsCacheV2(adapterType: AdapterType) {
@@ -66,9 +68,29 @@ export async function storeDimensionsMetadata(data: any) {
 
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 
+const protocolCoinInfoCache: Record<string, boolean> = {}
+
+function protocolHasToken(protocolId: string) {
+  if (!protocolCoinInfoCache.hasOwnProperty(protocolId)) {
+    const protocol = protocolsById[protocolId]
+    if (!protocol) {
+      protocolCoinInfoCache[protocolId] = false
+    } else if (protocol.address || protocol.gecko_id || protocol.cmcId) {
+      protocolCoinInfoCache[protocolId] = true
+    } else if (protocol.parentProtocol) {
+      const parentProtocol = parentProtocolsById[protocol.parentProtocol]
+      protocolCoinInfoCache[protocolId] = !!(parentProtocol && (parentProtocol.address || parentProtocol.gecko_id || parentProtocol.cmcId))
+    }
+  }
+
+  return protocolCoinInfoCache[protocolId]
+}
+
 // transform the record to remove empty fields & and add fields that can be computed
 export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
   const { timestamp, data, bl, timeS, ...rest } = json
+  const protocolId = json.id
+  const hasTokenInfo = protocolHasToken(protocolId)
   const aggObject = data.aggregated
   if (!aggObject) return null;
 
@@ -90,7 +112,9 @@ export function transformDimensionRecord(json: DIMENSIONS_DB_RECORD) {
     addDerivedField(AdaptorRecordType.dailySupplySideRevenue, AdaptorRecordType.dailyFees, AdaptorRecordType.dailyRevenue)
     addDerivedField(AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyFees, AdaptorRecordType.dailySupplySideRevenue)
 
-    addDerivedField(AdaptorRecordType.dailyHoldersRevenue, AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyProtocolRevenue)
+    if (hasTokenInfo)  // only add holders revenue derived field if the protocol has token info
+      addDerivedField(AdaptorRecordType.dailyHoldersRevenue, AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyProtocolRevenue)
+
     addDerivedField(AdaptorRecordType.dailyProtocolRevenue, AdaptorRecordType.dailyRevenue, AdaptorRecordType.dailyHoldersRevenue)
 
     // let hasKeyWithValue = false

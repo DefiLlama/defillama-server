@@ -1021,6 +1021,11 @@
     }
   },
   "ethereum": {
+    "0x1feCF3d9d4Fee7f2c02917A66028a48C6706c179": {
+      "decimals": "18",
+      "symbol": "WTGXX",
+      "to": "coingecko#usd-coin"
+    },
     "0x9469470C9878bf3d6d0604831d9A3A366156f7EE": {
       "decimals": "18",
       "symbol": "avETH",

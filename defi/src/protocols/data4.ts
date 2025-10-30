@@ -816,6 +816,9 @@ const data4: Protocol[] = [
     module: "aethir/index.js",
     twitter: "AethirCloud",
     listedAt: 1761694475,
+    dimensions: {
+      fees: "aethir"
+    }
   },
   {
     id: "5592",
@@ -7593,6 +7596,7 @@ const data4: Protocol[] = [
     twitter: "Looped_HYPE",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1741357944,
+    parentProtocol: "parent#looping-collective",
     dimensions: {
       fees: "looped-hype"
     }
@@ -32762,6 +32766,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "collexdotfun",
     listedAt: 1761581955,
+    dimensions: {
+      fees: "collex"
+    }
   },
   {
     id: "6917",
@@ -32824,6 +32831,7 @@ const data4: Protocol[] = [
     twitter: "looping_col",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1761584418,
+    parentProtocol: "parent#looping-collective",
     dimensions: {
       fees: "wrapped-hlp",
     },
@@ -32987,6 +32995,9 @@ const data4: Protocol[] = [
     ],
     twitter: "opinionlabsxyz",
     listedAt: 1761694223,
+    dimensions: {
+      dexs: "opinion"
+    }
   },
   {
     id: "6927",

@@ -8308,6 +8308,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: ["Flow"],
     twitter: "flow_blockchain",
   },
+  {
+    id: "parent#looping-collective",
+    name: "Looping Collective",
+    url: "https://www.loopingcollective.org/",
+    description: "Earn a higher yield on your HYPE, USD, BTC & more via liquid, tokenized DeFi strategies built for reliable, risk-adjusted returns.",
+    logo: `${baseIconsUrl}/looping-collective.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "looping_col",
+  },
+  {
+    id: "parent#farcaster",
+    name: "Farcaster",
+    url: "https://www.farcaster.xyz/",
+    description: "A sufficiently decentralized social network.",
+    logo: `${baseIconsUrl}/farcaster.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "farcaster_xyz",
+  },
 ];
 
 export default parentProtocols;

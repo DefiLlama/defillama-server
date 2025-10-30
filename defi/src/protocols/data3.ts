@@ -53681,6 +53681,7 @@ const data3_2: Protocol[] = [
     module: "avalance-btc/index.js",
     audit_links: [],
     twitter: "@avax",
+    parentProtocol: "parent#lombard-finance",
     listedAt: 1723313207,
   },
   {
@@ -55465,14 +55466,15 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5049",
-    name: "Farcaster",
+    name: "Farcaster SoFi",
+    //previousNames: ["Farcaster"],
     address: null,
     symbol: "-",
     url: "https://www.farcaster.xyz/",
     description:
       "A sufficiently decentralized social network",
     chain: "Optimism",
-    logo: `${baseIconsUrl}/farcaster.png`,
+    logo: `${baseIconsUrl}/farcaster-sofi.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -55483,6 +55485,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "farcaster_xyz",
     listedAt: 1724701123,
+    parentProtocol: "parent#farcaster",
     dimensions: {
       fees: "farcaster"
     }
@@ -64800,6 +64803,7 @@ const data3_2: Protocol[] = [
     module: "dummy.js",
     twitter: "_proxystudio",
     forkedFrom: [],
+    parentProtocol: "parent#farcaster",
     dimensions: {
       fees: "clanker"
     }

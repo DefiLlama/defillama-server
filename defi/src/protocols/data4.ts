@@ -32622,7 +32622,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "ethereal-dex",
       fees: "ethereal-dex",
-      "open-interest": "ethereal-dex",
+      "open-interest": "ethereal-oi",
     }
   },
   {

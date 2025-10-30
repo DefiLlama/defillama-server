@@ -120,6 +120,16 @@ const contracts: Record<string, TokenConfig[]> = {
       token: "0x548857309BEfb6Fb6F20a9C5A56c9023D892785B",
       oracle: "0x508Fe9556C7919E64406bB4042760d7Bb1F40fC9",
     },
+    {
+      name: "mHyperETH",
+      token: "0x5a42864b14C0C8241EF5ab62Dae975b163a2E0C1",
+      oracle: "0xbD560c1E87752717C34912D128168BfE26021EA2",
+    },
+    {
+      name: "mHyperBTC",
+      token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
+      oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
+    },
   ],
   base: [
     {

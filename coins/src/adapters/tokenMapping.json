@@ -5589,6 +5589,46 @@
     }
   },
   "starknet": {
+    "0x02f5eb9a4f77b6c7c83488418e77329d31eb43219745959948a0fce9580905d9": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0x019110887221c1cb3fa95bbbfce818c88bfd6a74af2c4574b6455dd1bdc9a974": {
+      "decimals": "18",
+      "symbol": "ENA",
+      "to": "coingecko#ethena"
+    },
+    "0x02650ea9af204ba33d4e743ee8ff826b5bec3f5ce497efed832e5c3794483e3c": {
+      "decimals": "18",
+      "symbol": "POL",
+      "to": "coingecko#polygon-ecosystem-token"
+    },
+    "0x03070d5cbd310edc0b2cfe8b11d132e67718b16c7fbfd536ee74ec54a4307ba2": {
+      "decimals": "18",
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "0x02119755fad7cbf637d80cae5d3e8e12487befe6653ddd04432a73f6f569f46b": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
+    "0x01e77aec81ef65db5fb788a5a04fd9d23f6f4c860eb2fb0e99ace5c45b021071": {
+      "decimals": "18",
+      "symbol": "ZRO",
+      "to": "coingecko#layerzero"
+    },
+    "0x060f47b96b525c1014fed595e87e98edc3ce0731627a0670e1804ee1a3ca0ee9": {
+      "decimals": "18",
+      "symbol": "LINK",
+      "to": "coingecko#chainlink"
+    },
+    "0x01E70AeDFfd376afe33CEbdF51ED5365131Dccb2A5B2cb36d02B785442912B9b": {
+      "decimals": "18",
+      "symbol": "SOL",
+      "to": "coingecko#solana"
+    },
     "0x04be8945e61dc3e19ebadd1579a6bd53b262f51ba89e6f8b0c4bc9a7e3c633fc": {
       "decimals": "18",
       "symbol": "mRe7yield",

@@ -3789,6 +3789,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/SECURITY.md"],
     listedAt: 1647148275,
     github: ["wormhole-foundation"],
+    dimensions: {
+      fees: "wormhole",
+    },
   },
   // {
   //   id: "1542",

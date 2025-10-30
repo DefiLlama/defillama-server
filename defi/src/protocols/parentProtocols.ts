@@ -4134,7 +4134,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Pharaoh is a next-generation AMM designed to serve as Avalanche's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/pharaoh-exchange.png`,
-    gecko_id: "pharaoh",
+    gecko_id: "pharaoh-2",
     cmcId: null,
     chains: [],
     twitter: "PharaohExchange",
@@ -6783,7 +6783,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6748",
     chains: [],
     twitter: "centrifuge",
-    github: ["centrifuge"]
+    github: ["centrifuge"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#secured-finance",
@@ -8283,6 +8284,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "dfsdotfun",
+  },
+  {
+    id: "parent#milkyway-protocol",
+    name: "MilkyWay Protocol",
+    url: "https://milkyway.finance",
+    description: "MilkyWay Protocol is a staking protocol on the MilkyWay Network.",
+    logo: `${baseIconsUrl}/milkyway-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "milky_way_zone",
   },
 ];
 

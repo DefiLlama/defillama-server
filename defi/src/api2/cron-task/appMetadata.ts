@@ -209,6 +209,7 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        ...(protocol.currentChainTvls?.borrowed != null ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),

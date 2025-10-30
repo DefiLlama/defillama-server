@@ -1,3 +1,4 @@
+import abi from "./abi.json"
 import { call } from "@defillama/sdk/build/abi/index";
 import { Write, } from "../../utils/dbInterfaces";
 import { addToDBWritesList, } from "../../utils/database";
@@ -17,7 +18,7 @@ async function contractCalls(
         const amlpPrice = await call({
             target: item.amlp.stakingContract,
             chain: item.chain,
-            abi: "function price() external view override returns (uint256)"
+            abi: abi.getPrice
         })
         const mPrice = amlpPrice.output / 10 ** 18
 
@@ -26,7 +27,7 @@ async function contractCalls(
         const ahlpPrice = await call({
             target: item.ahlp.stakingContract,
             chain: item.chain,
-            abi: "function price() external view override returns (uint256)"
+            abi: abi.getPrice
         })
         const hPrice = ahlpPrice.output / 10 ** 18
         addToDBWritesList(writes, item.chain, item.ahlp.token, hPrice, 18, item.ahlp.symbol, timestamp, 'ahlp', item.ahlp.rate)

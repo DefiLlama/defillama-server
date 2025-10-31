@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import protocols, { _InternalProtocolMetadataMap, Protocol } from "../protocols/data";
+import protocols, { Protocol } from "../protocols/data";
 import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { hourlyTvl, getLastRecord } from "../utils/getLastRecord";
@@ -21,9 +21,7 @@ async function cacheProtocolData() {
     .process(async (protocol: any) => {
       const startTime = +Date.now()
       const adapterModule = importAdapter(protocol)
-      let { hasTvl } = _InternalProtocolMetadataMap[protocol.id] || {};
-
-      if (!hasTvl || protocol.rugged || adapterModule.deadFrom) {
+      if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom) {
         i++
         protocol.skipped = true
         res.push(protocol)

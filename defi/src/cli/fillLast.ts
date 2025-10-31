@@ -29,7 +29,7 @@ const main = async () => {
     4,
     false,
     true,
-    !!protocol.module,
+    protocol.module !== "dummy.js",
     undefined,
     { overwriteExistingData: true }
   );

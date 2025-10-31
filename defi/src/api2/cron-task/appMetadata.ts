@@ -9,7 +9,7 @@ import * as sdk from "@defillama/sdk";
 
 // import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
-import protocols, { _InternalProtocolMetadataMap } from "../../protocols/data";
+import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
@@ -83,7 +83,7 @@ export async function storeAppMetadata() {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
-
+    
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -206,9 +206,7 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
-      let { hasTvl } = _InternalProtocolMetadataMap[protocol.id] || {};
-
-      hasTvl = protocol.tvl != null && hasTvl
+      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
       const hasBorrowed = protocol.currentChainTvls?.borrowed != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,

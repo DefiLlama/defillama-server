@@ -1,4 +1,4 @@
-import protocols, { _InternalProtocolMetadataMap, Protocol } from "./protocols/data";
+import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -377,9 +377,7 @@ export async function craftProtocolsResponseInternal(
           includeTokenBreakdowns ? getLastHourlyTokensUsd(protocol) : {},
         ]);
 
-          const { hasTvl } = _InternalProtocolMetadataMap[protocol.id] || {};
-
-        if (!lastHourlyRecord && hasTvl) {
+        if (!lastHourlyRecord && protocol.module !== "dummy.js") {
           return null;
         }
 
@@ -389,7 +387,7 @@ export async function craftProtocolsResponseInternal(
         const chainTvls: ITvlsByChain = {};
         const chains: string[] = [];
 
-        if (hasTvl && lastHourlyRecord) {
+        if (protocol.module !== "dummy.js" && lastHourlyRecord) {
           Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
             if (nonChains.includes(chain)) {
               return;

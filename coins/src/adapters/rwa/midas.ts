@@ -124,11 +124,13 @@ const contracts: Record<string, TokenConfig[]> = {
       name: "mHyperETH",
       token: "0x5a42864b14C0C8241EF5ab62Dae975b163a2E0C1",
       oracle: "0xbD560c1E87752717C34912D128168BfE26021EA2",
+      denomination: "ETH",
     },
     {
       name: "mHyperBTC",
       token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
       oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
+      denomination: "BTC",
     },
   ],
   base: [

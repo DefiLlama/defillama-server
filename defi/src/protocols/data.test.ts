@@ -128,7 +128,7 @@ test("Github: track only orgs", async () => {
 
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
-    if (protocol.module === 'dummy.js') continue;
+    if (!protocol.module) continue;
     const module = await importAdapterDynamic(protocol)
     const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
@@ -326,7 +326,6 @@ test("no module repeated", async () => {
   const ids = [];
   for (const protocol of protocols) {
     const script = protocol.module
-    if (script === 'dummy.js') continue; // dummy.js is an exception
     if (script === 'anyhedge/index.js') continue; // anyhedge/index.js is an exception, used as short hand for skipping tvl update
     expect(ids).not.toContain(script);
     ids.push(script);

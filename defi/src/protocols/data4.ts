@@ -32636,6 +32636,9 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereal"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.ethereal.trade/trading/perpetual-futures/price-oracles"] }, 
+    ],
     module: "ethereal-dex/index.js",
     twitter: "etherealdex",
     audit_links: ["https://docs.ethereal.trade/protocol-reference/audits"],

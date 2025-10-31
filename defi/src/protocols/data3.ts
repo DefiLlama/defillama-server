@@ -39535,7 +39535,10 @@ const data3_2: Protocol[] = [
     listedAt: 1711395350,
     dimensions: {
       fees: "sanctum-infinity",
-      dexs: "sanctum-infinity"
+      dexs: {
+        adapter: "sanctum-infinity",
+        genuineSpikes: ["1761782400"]
+      }
     }
   },
   {

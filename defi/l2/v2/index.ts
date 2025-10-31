@@ -3,13 +3,18 @@ import { getCurrentUnixTimestamp } from "../../src/utils/date";
 import { Chain } from "@defillama/sdk/build/types";
 import { fetchBridgeTokenList, fetchSupplies } from "../utils";
 import { fetchAdaTokens } from "../adapters/ada";
+import { fetchAllTokens as fetchAllTokensFromDB } from "../../src/utils/shared/bridgedTvlPostgres";
 import { withTimeout } from "../../src/utils/shared/withTimeout";
 import { CoinsApiData, FinalData, FinalChainData } from "../types";
 import { McapsApiData } from "../types";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import BigNumber from "bignumber.js";
-import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../../src/utils/shared/constants";
+import {
+  bridgedTvlMixedCaseChains,
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "../../src/utils/shared/constants";
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";
 import { additional, excluded } from "../adapters/manual";
 import { storeHistoricalToDB } from "./storeToDb";
@@ -85,7 +90,12 @@ async function fetchNativeAndMcaps(
         try {
           const start = new Date().getTime();
 
-          const storedTokens = chain == "cardano" ? await fetchAdaTokens() : allTokens[chain];
+          const storedTokens =
+            chain == "cardano"
+              ? await fetchAdaTokens()
+              : [...chainsThatShouldNotBeLowerCased, ...chainsWithCaseSensitiveDataProviders].includes(chain)
+              ? await fetchAllTokensFromDB(chain)
+              : allTokens[chain];
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address
@@ -327,6 +337,7 @@ function normalizeKey(key: string) {
   const [chain, address] = key.split(":");
   if (!address) return `coingecko:${key}`;
   if (chainsThatShouldNotBeLowerCased.includes(chain)) return key;
+  if (chainsWithCaseSensitiveDataProviders.includes(chain)) return key;
   return key.toLowerCase();
 }
 
@@ -434,31 +445,35 @@ async function main() {
         const symbol = allPrices[key].symbol.toUpperCase(); // filter for rwa, lst, stablecoins
 
         let section = "canonical";
-        if (isOwnToken(chain, symbol)) section = "ownTokens";
-        else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
+        if (isOwnToken(chain, symbol)) {
+          if (ownTokens[chain].address.startsWith("coingecko:") && !key.startsWith("coingecko:")) return;
+          section = "ownTokens";
+        } else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
         else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
         else if (lstSymbols.includes(symbol)) section = "lst";
         rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
         if (!isOwnToken(chain, symbol)) rawData[chain].total.breakdown[key] = amount;
       });
+    } else {
+      Object.keys(nativeDataAfterMcaps[chain]).map((key: string) => {
+        if (!allPrices[key]) return;
+        const symbol = allPrices[key].symbol.toUpperCase();
+
+        let section = "native";
+        if (isOwnToken(chain, symbol)) {
+          if (ownTokens[chain].address.startsWith("coingecko:") && !key.startsWith("coingecko:")) return;
+          section = "ownTokens";
+        } else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
+        else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
+        else if (lstSymbols.includes(symbol)) section = "lst";
+        else if (incomingAssets[chain] && incomingAssets[chain].includes(key.substring(key.indexOf(":") + 1)))
+          section = "thirdParty";
+        else if (!key.startsWith("coingecko:") && !key.startsWith(chain)) section = "canonical";
+        const amount = nativeDataAfterMcaps[chain][key];
+        rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
+        if (section != "ownTokens") rawData[chain].total.breakdown[key] = amount;
+      });
     }
-
-    Object.keys(nativeDataAfterMcaps[chain]).map((key: string) => {
-      if (!allPrices[key]) return;
-      const symbol = allPrices[key].symbol.toUpperCase();
-
-      let section = "native";
-      if (isOwnToken(chain, symbol)) section = "ownTokens";
-      else if (stablecoinSymbols.includes(symbol)) section = "stablecoins";
-      else if (isRwaSymbol(symbol, rwaSymbols)) section = "rwa";
-      else if (lstSymbols.includes(symbol)) section = "lst";
-      else if (incomingAssets[chain] && incomingAssets[chain].includes(key.substring(key.indexOf(":") + 1)))
-        section = "thirdParty";
-      else if (!key.startsWith("coingecko:") && !key.startsWith(chain)) section = "canonical";
-      const amount = nativeDataAfterMcaps[chain][key];
-      rawData[chain][section as keyof FinalChainData].breakdown[key] = amount;
-      if (section != "ownTokens") rawData[chain].total.breakdown[key] = amount;
-    });
   });
 
   // create a symbol map and symbol data for human readable data
@@ -469,8 +484,11 @@ async function main() {
     Object.keys(rawData[chain]).map((section: string) => {
       Object.keys(rawData[chain][section as keyof FinalChainData].breakdown).map((key: string) => {
         const symbol = allPrices[key].symbol.toUpperCase();
-        symbolData[chain][section as keyof FinalChainData].breakdown[symbol] =
-          rawData[chain][section as keyof FinalChainData].breakdown[key];
+        if (!symbolData[chain][section as keyof FinalChainData].breakdown[symbol])
+          symbolData[chain][section as keyof FinalChainData].breakdown[symbol] = zero;
+        symbolData[chain][section as keyof FinalChainData].breakdown[symbol] = symbolData[chain][
+          section as keyof FinalChainData
+        ].breakdown[symbol].plus(rawData[chain][section as keyof FinalChainData].breakdown[key]);
         if (!symbolMap[key]) symbolMap[key] = symbol;
       });
     });
@@ -485,7 +503,7 @@ async function main() {
         const amounts = Object.values(allData[chain][section as keyof FinalChainData].breakdown);
         const total = amounts.length ? (amounts.reduce((p: any, c: any) => c.plus(p), zero) as BigNumber) : zero;
         allData[chain][section as keyof FinalChainData].total = total;
-        if (section == "ownTokens") return;
+        if (["ownTokens", "total"].includes(section)) return;
         totalTotal = totalTotal.plus(total);
       });
 

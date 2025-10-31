@@ -225,15 +225,15 @@ async function getEVMSupplies(
         })),
         abi: "erc20:totalSupply",
         permitFailure: true,
-        block: block.block,
+        block: block?.block,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
         if (res[i]) supplies[`${chain}:${bridgedTvlMixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
       });
-    } catch {
+    } catch (e) {
       try {
         process.env.TRON_RPC = process.env.TRON_RPC?.substring(process.env.TRON_RPC.indexOf(",") + 1);
-        await PromisePool.withConcurrency(2)
+        await PromisePool.withConcurrency(5)
           .for(contracts.slice(i, i + step))
           .process(async (target) => {
             const res = await call({
@@ -242,7 +242,7 @@ async function getEVMSupplies(
               abi: "erc20:totalSupply",
               block,
             }).catch(async (e) => {
-              await sleep(2000);
+              await sleep(1000);
               if (chain == "tron") console.log(`${target}:: \t ${e.message}`);
             });
             if (res)

@@ -25757,7 +25757,7 @@ const data4: Protocol[] = [
   //   chains: ["Bitcoin"],
   //   forkedFrom: [],
   //   module: "dummy.js",
-  //   twitter: "garden_finance",
+  //   twitter: "gardenfi",
   //   audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
   //   parentProtocol: "parent#garden",
   //   dimensions: {

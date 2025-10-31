@@ -7775,7 +7775,7 @@ const parentProtocols: IParentProtocol[] = [
   //   gecko_id: "garden-2",
   //   cmcId: null,
   //   chains: [],
-  //   twitter: "garden_finance",
+  //   twitter: "gardenfi",
   // },
   {
     id: "parent#weero",

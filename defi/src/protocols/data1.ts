@@ -2074,6 +2074,7 @@ const data: Protocol[] = [
     cmcId: null, //"3513",
     category: "Chain",
     chains: ["Fantom"],
+    module: "dummy.js",
     twitter: "FantomFDN",
   },
   {
@@ -4281,6 +4282,7 @@ const data: Protocol[] = [
     category: "Chain",
     chains: ["Stacks"],
     // module: "stacks/index.js",
+    module: "dummy.js",
     twitter: "Stacks",
     github: ["stacks-network"],
   },

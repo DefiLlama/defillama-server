@@ -42,9 +42,10 @@ export async function craftProtocolV2({
   skipFeMiniTransform = false,
 }: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
-  const { hallmarks, hasTvl } = _InternalProtocolMetadataMap[protocolData.id] || {};
+  const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
-  const isDummyProtocol = !hasTvl
+  // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
+  const isDummyProtocol = protocolData.module === "dummy.js";
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}

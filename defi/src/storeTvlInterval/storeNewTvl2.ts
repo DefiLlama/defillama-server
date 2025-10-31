@@ -139,14 +139,13 @@ export default async function (
     }
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
       if (lastHourlyTVL > 50e6) {
-        await sendMessage(`TVL of ${protocol.name} has dropped from ${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(currentTvl)}`, process.env.TEAM_WEBHOOK!)
-      } else {
-        console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${humanizeNumber(currentTvl)}, previous tvl: ${humanizeNumber(lastHourlyTVL)}`)
-        if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
-          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled.`
-          await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-          throw new Error(errorMessage);
-        }
+        await sendMessage(`TVL of ${protocol.name} has dropped from ${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(currentTvl)}. check this asap`, process.env.TEAM_WEBHOOK!)
+      }
+      console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${humanizeNumber(currentTvl)}, previous tvl: ${humanizeNumber(lastHourlyTVL)}`)
+      if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled.`
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(errorMessage);
       }
     }
   }

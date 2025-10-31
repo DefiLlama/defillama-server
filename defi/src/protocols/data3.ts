@@ -44052,7 +44052,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "RedStone",
-        type: "Primary",
+        type: "Secondary",
         proof: ["https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles"]
       },
       {

@@ -9,7 +9,7 @@ const oBTCConfig = {
 }
 
 
-export async function oBTC(timestamp: number) {
+export async function obtc(timestamp: number) {
     const writes: Write[] = [];
 
     const price = await getBtcToUsdPrice(timestamp);
@@ -30,5 +30,5 @@ export async function oBTC(timestamp: number) {
 }
 
 export const adapters = {
-    oBTC,
+    obtc,
 }

@@ -29843,6 +29843,7 @@ const data4: Protocol[] = [
       }
     ],
     audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
+    stablecoins: ["solstice-usx"],
     listedAt: 1759263438
   },
   {

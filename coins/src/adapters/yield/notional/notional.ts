@@ -14,6 +14,10 @@ query AllVaults($skip: Int) {
       symbol
       decimals
     }
+    yieldToken {
+      id
+      decimals
+    }
     asset {
       id
       decimals
@@ -37,6 +41,10 @@ async function getVaults(subgraphURL: string) {
       symbol: string
       decimals: number
     }
+    yieldToken: {
+      id: string
+      decimals: number
+    }
     asset: {
       id: string
       decimals: number
@@ -54,7 +62,24 @@ async function getVaults(subgraphURL: string) {
   return results
 }
 
-export async function getVaultPrices(chain: string, vaults: string[]) {
+async function getYieldTokens(chain: string, vaults: Awaited<ReturnType<typeof getVaults>>) {
+  const yieldTokens = await multiCall({
+    chain,
+    calls: vaults.filter((vault) => vault.strategyType === "CurveConvex2Token").map((vault) => ({
+      target: vault.id,
+    })),
+    abi: "function CURVE_POOL_TOKEN() view returns (address)",
+  })
+
+  return vaults.map((v) => {
+    return {
+      vault: v.id,
+      yieldToken: (yieldTokens.output.find((y: any) => y.input.target === v.id)?.output || v.yieldToken.id).toLowerCase(),
+    }
+  })
+}
+
+async function getVaultPrices(chain: string, vaults: string[]) {
   const prices = await multiCall({
     chain,
     calls: vaults.map((vault) => ({
@@ -65,19 +90,43 @@ export async function getVaultPrices(chain: string, vaults: string[]) {
   return prices.output.map((p: { output: string }) => p.output)
 }
 
+async function getConvertSharesToYieldTokens(chain: string, vaults: string[]) {
+  const convertYieldTokenToShares = await multiCall({
+    chain,
+    calls: vaults.map((v) => ({
+      target: v,
+      params: [BigInt(10) ** BigInt(24)],
+    })),
+    abi: "function convertSharesToYieldToken(uint256 amount) view returns (uint256)",
+  })
+
+  return convertYieldTokenToShares.output.map((c: { output: string }) => c.output)
+}
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const vaults = await getVaults(subgraphURL[chain])
+  const yieldTokens = await getYieldTokens(chain, vaults)
+  const yieldTokenPrices = await getTokenAndRedirectDataMap(yieldTokens.map((y) => y.yieldToken), chain, timestamp)
   const underlyingPrices = await getTokenAndRedirectDataMap(
     vaults.map((vault) => vault.asset.id),
     chain,
     timestamp,
   )
+  const sharesPrices = await getConvertSharesToYieldTokens(chain, vaults.map((vault) => vault.id))
   const vaultPrices = await getVaultPrices(chain, vaults.map((vault) => vault.id))
+
   const writes: Write[] = [];
   vaults.forEach((vault, index) => {
-    const assetDecimals = vault.asset.decimals
-    const vaultPrice = vaultPrices[index] / (10 ** (assetDecimals + 12))
-    const price = vaultPrice * underlyingPrices[vault.asset.id].price
+    let price: number;
+    const yieldToken = yieldTokens.find((y) => y.vault === vault.id)?.yieldToken
+    if (yieldTokenPrices[yieldToken]) {
+      price = yieldTokenPrices[yieldToken].price * sharesPrices[index] / 10 ** (yieldTokenPrices[yieldToken].decimals)
+    } else {
+      const assetDecimals = vault.asset.decimals
+      const vaultPrice = vaultPrices[index] / (10 ** (assetDecimals + 12))
+      price = vaultPrice * underlyingPrices[vault.asset.id].price
+    }
+
     addToDBWritesList(
       writes,
       chain,

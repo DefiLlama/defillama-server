@@ -51,10 +51,7 @@ async function fetchAllTokens() {
 }
 
 // find the prices, mcaps and supplies of all tokens on all chains
-async function fetchNativeAndMcaps(
-  timestamp: number,
-  override: boolean = false
-): Promise<{
+async function fetchNativeAndMcaps(timestamp: number): Promise<{
   chainData: {
     [chain: Chain]: {
       prices: { [token: string]: CoinsApiData };
@@ -82,7 +79,7 @@ async function fetchNativeAndMcaps(
     processor: async (chain: Chain) => {
       // protocol bridge IDs are closed and have no native tvl
       if (Object.values(protocolBridgeIds).includes(chain)) return;
-      await withTimeout(1000 * 60 * (override ? 20 : 120), minted(chain)).catch(() => {
+      await withTimeout(1000 * 60 * 20, minted(chain)).catch(() => {
         throw new Error(`fetchMinted() timed out for ${chain}`);
       });
 
@@ -367,7 +364,7 @@ const newChainAssets = () => ({
 });
 
 // main function
-async function main() {
+export async function storeChainAssetsV2(override: boolean = false) {
   const timestamp = 0;
   await fetchAllTokens();
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
@@ -533,7 +530,7 @@ async function main() {
     });
   });
 
-  await verifyChanges(symbolData);
+  if (!override) await verifyChanges(symbolData);
 
   await Promise.all([
     symbolMapPromise,
@@ -541,10 +538,3 @@ async function main() {
     storeR2JSONString("chainAssets2", JSON.stringify({ timestamp: getCurrentUnixTimestamp(), value: symbolData })),
   ]);
 }
-
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .then(() => process.exit(0)); // ts-node defi/l2/v2/index.ts

@@ -7,10 +7,12 @@ import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
 import * as others2 from "./other/others2";
 import * as graphCoins from "./markets/graphCoins";
+import * as optimex from "./moneyMarkets/optimex";
 
 export default {
   ...compound.adapters,
   ...aave.adapters,
+  ...optimex.adapters,
   ...euler.adapters, 
   ...uniswap.adapters,
   ...curve.adapters,

@@ -18,6 +18,8 @@ let missingAdapterErrorCount = 0
  * @returns re-created adapter module object with mock tvl functions
  */
 export function importAdapter(protocol: Protocol) {
+    if (!protocol.module) return {}
+
     let adapterModule = (adaptersData as any)[protocol.module]
     if (!adapterModule) {
         missingAdapterErrorCount++

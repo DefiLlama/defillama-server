@@ -3620,6 +3620,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://enclabs.gitbook.io/enclabs-documentation/lending-markets/openapi#resilientoracle"]
+      },
+    ],
     module: "enclabs/index.js",
     twitter: "EnclabsFi",
     forkedFrom: [],
@@ -19142,6 +19149,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.racks.win/#id-1.-cycle-initiation"]
+      },
+    ],
     module: "optfun/index.js",
     twitter: "racksdotwin",
     forkedFromIds: [],

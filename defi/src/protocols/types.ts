@@ -23,7 +23,7 @@ export interface Protocol {
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
   forkedFromIds?: Array<string>;
-  module: string;
+  module?: string;
   twitter?: string | null;
   language?: string;
   audit_links?: Array<string>;

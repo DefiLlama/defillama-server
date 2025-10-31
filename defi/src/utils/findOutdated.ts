@@ -63,7 +63,7 @@ export async function getOutdated(maxDrift: number, getLatestTvl: any, options: 
     if (options.categories && protocol.category && !options.categories.includes(protocol.category)) {
       return
     }
-    if (protocol.rugged === true || protocol.module === "dummy.js") {
+    if (protocol.rugged === true || !protocol.module) {
       return
     }
     const item = await getLatestTvl(protocol);

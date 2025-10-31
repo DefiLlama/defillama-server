@@ -127,7 +127,8 @@ async function addAssetData() {
       return
     }
 
-    cex.currentUsdTokensTvl = item.data.tvl
+
+    // cex.currentUsdTokensTvl = item.data.tvl
 
     // clean assets tvl
     if (!cex.coinSymbol) cex.cleanAssetsTvl = cex.currentTvl
@@ -151,7 +152,7 @@ async function addAssetData() {
         return
       }
 
-      cex[fieldName] = item
+      cex[fieldName] = item.outflows
     }
   }
 

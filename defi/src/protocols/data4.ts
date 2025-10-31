@@ -1268,7 +1268,7 @@ const data4: Protocol[] = [
         chains: [
           {chain: "Sonic"},
           {chain: "Ethereum"}
-        ],      
+        ],
       },
       {
         name: "eOracle",
@@ -2603,7 +2603,7 @@ const data4: Protocol[] = [
       dexs: "artexswap"
     }
   },
-  /* DELISTED - SUPPLY OF MBTC DOES NOT MATCH SUPPLY OF NBTC THAT IT SELF DONT MATCH THE NTBTC RESERVERS. 
+  /* DELISTED - SUPPLY OF MBTC DOES NOT MATCH SUPPLY OF NBTC THAT IT SELF DONT MATCH THE NTBTC RESERVERS.
   {
     id: "5666",
     name: "Babypie",
@@ -3602,6 +3602,12 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
+    oraclesBreakdown: [
+      { name: "Chainlink",type: "Aggregator",proof: ["https://enclabs.gitbook.io/enclabs-documentation/lending-markets/openapi#resilientoracle"]},
+      { name: "RedStone",type: "Aggregator",proof: ["https://enclabs.gitbook.io/enclabs-documentation/lending-markets/openapi#resilientoracle"]},
+      { name: "Pyth",type: "Aggregator",proof: ["https://enclabs.gitbook.io/enclabs-documentation/lending-markets/openapi#resilientoracle"]},
+      { name: "Api3",type: "Aggregator",proof: ["https://enclabs.gitbook.io/enclabs-documentation/lending-markets/openapi#resilientoracle"]},
+    ],
     module: "enclabs/index.js",
     twitter: "EnclabsFi",
     forkedFrom: [],
@@ -8455,7 +8461,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "defituna-amm",
       dexs: "defituna-amm"
-    }, 
+    },
     excludeTvlFromParent: true,
   },
   {
@@ -8847,7 +8853,7 @@ const data4: Protocol[] = [
       // https://bscscan.com/address/0x4db4c2b2c67256d4ea029e624b478555cd49a118
       // https://bscscan.com/address/0xaabbcc932c7141a016fa08b514ec10bd1db89702
       // fees: "squadswap-wow",
-      // dexs: "squadswap-wow", 
+      // dexs: "squadswap-wow",
     }
   },
   {
@@ -10099,7 +10105,7 @@ const data4: Protocol[] = [
     dimensions: {
       // fake trades to pump metrics, check these addresses
       // https://basescan.org/address/0x9393a4c8b46a4f796af876a7b782f9400862ff1f
-      // https://basescan.org/address/b62ee1e0ad72e1dc0a0bd41c9488de3327c41712 
+      // https://basescan.org/address/b62ee1e0ad72e1dc0a0bd41c9488de3327c41712
       // derivatives: "rollx"
     }
   },
@@ -10338,7 +10344,7 @@ const data4: Protocol[] = [
   {
     id: "5984",
     name: "Anvil",
-    address: "0xAEEAa594e7dc112D67b8547fe9767a02c15B5597", 
+    address: "0xAEEAa594e7dc112D67b8547fe9767a02c15B5597",
     symbol: "ANVL",
     url: "https://anvil.xyz/",
     description:
@@ -11046,6 +11052,10 @@ const data4: Protocol[] = [
     category: "Leveraged Farming",
     chains: ["Aptos"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] }, 
+      { name: "Switchboard", type: "Fallback", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] },
+    ],
     module: "moar/index.js",
     twitter: "MoarMarket",
     audit_links: ["https://movebit.xyz/reports/20241211-Moar-Market-Final-Audit-Report.pdf"],
@@ -19007,6 +19017,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.racks.win/#id-1.-cycle-initiation"]
+      },
+    ],
     module: "optfun/index.js",
     twitter: "racksdotwin",
     forkedFromIds: [],
@@ -25113,7 +25130,7 @@ const data4: Protocol[] = [
       fees: "nemo-vault"
     }
   },
-  /*   { 
+  /*   {
     id: "6596",
     name: "Nemo Floating Assets",
     address: null,
@@ -25547,6 +25564,7 @@ const data4: Protocol[] = [
   //   chains: ["Bitcoin"],
   //   forkedFrom: [],
   //   twitter: "garden_finance",
+  //   twitter: "gardenfi",
   //   audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
   //   parentProtocol: "parent#garden",
   //   dimensions: {
@@ -27280,10 +27298,10 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Partially Algorithmic Stablecoin",
     chains: ["Optimism","Arbitrum"],
-    oraclesBreakdown: [ 
+    oraclesBreakdown: [
       { name: "Pyth", type: "Primary", proof: ["https://docs.flat.money/pyth-network-price-oracle"] },
       { name: "Chainlink", type: "Fallback", proof: ["https://docs.flat.money/protocol-security#exposure-to-third-party-infrastructure"] }
-    ], 
+    ],
     module: "flat-money-v2/index.js",
     twitter: "0xflatmoney",
     parentProtocol: "parent#dhedge",
@@ -28583,7 +28601,7 @@ const data4: Protocol[] = [
     chains: ["Celo", "xDai", "Arbitrum", "Base", "Optimism", "Polygon"],
     forkedFromIds: [],
     module: "Gardens/index.js",
-    twitter: "gardens_fund", 
+    twitter: "gardens_fund",
     treasury: "gardens.js",
     listedAt: 1758218847
   },
@@ -29521,8 +29539,8 @@ const data4: Protocol[] = [
       }
     ],
     audit_links: [
-      "https://docs.blend.money/static/audits/cantinacode-blend-25-08-10-0.pdf", 
-      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-0.pdf", 
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-08-10-0.pdf",
+      "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-0.pdf",
       "https://docs.blend.money/static/audits/cantinacode-blend-25-09-29-1.pdf"
     ],
     github: ["blendmoney"],
@@ -29669,7 +29687,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#xtrade-protocol",
     dimensions: {
-      fees: "xtrade-protocol-perps", 
+      fees: "xtrade-protocol-perps",
     }
   },
   {
@@ -30396,7 +30414,7 @@ const data4: Protocol[] = [
       "NodeOps Network is a decentralized infrastructure stack powering compute and AI workloads. It enables developers and enterprises to deploy, manage, and monetize compute services seamlessly. The protocol generates on-chain revenue from product subscriptions, deployment fees, and automated $NODE-to-credits conversions for workloads",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/nodeops.jpg`,
-    audits: "2",  
+    audits: "2",
     audit_note: null,
     gecko_id: "node-2",
     cmcId: "36977",
@@ -30441,7 +30459,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#grvt",
     dimensions: {
       derivatives: "grvt-perps",
-   }  
+   }
   },
   {
     id: "6827",
@@ -31028,7 +31046,7 @@ const data4: Protocol[] = [
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
     dimensions: {
-      dexs: "pharaoh-v3-legacy",  
+      dexs: "pharaoh-v3-legacy",
       fees: "pharaoh-v3-legacy"
     },
     listedAt: 1760377677,
@@ -32346,6 +32364,9 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereal"],
     forkedFrom: [],
+    oraclesBreakdown: [
+      { name: "Pyth", type: "Primary", proof: ["https://docs.ethereal.trade/trading/perpetual-futures/price-oracles"] }, 
+    ],
     module: "ethereal-dex/index.js",
     twitter: "etherealdex",
     audit_links: ["https://docs.ethereal.trade/protocol-reference/audits"],
@@ -32838,6 +32859,68 @@ const data4: Protocol[] = [
       fees: "moneyx-pro",
       derivatives: "moneyx-pro",
     },
+  },
+  {
+    id: "6932",
+    name: "FlowSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://flowswap.io",
+    description: "Uniswap V2 fork",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/flowswap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Flow"],
+    module: "flow-swap-v2/index.js",
+    twitter: "flow_blockchain",
+    forkedFromIds: ["2197"],
+    parentProtocol: "parent#flow-swap",
+    listedAt: 1761871975,
+  },
+  {
+    id: "6933",
+    name: "FlowSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://flowswap.io",
+    description: "Uniswap V3 fork",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/flowswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Flow"],
+    module: "flow-swap-v3/index.js",
+    twitter: "flow_blockchain",
+    forkedFromIds: ["2198"],
+    parentProtocol: "parent#flow-swap",
+    listedAt: 1761871981,
+  },
+  {
+    id: "6934",
+    name: "Tanken Capital",
+    address: null,
+    symbol: "-",
+    url: "https://tankencapital.notion.site/Tanken-Capital-1841505ced0680d88c31feb5f6f83433",
+    description: "Tanken Capital operates on-chain vaults that allocate assets across multiple DeFi protocols. Strategies follow risk and allocation frameworks based on on-chain data and quantitative analysis.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/tanken-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Base", "Ethereum"],
+    module: "tanken-capital/index.js",
+    twitter: "tankencapital",
+    forkedFromIds: [],
+    listedAt: 1761880281,
   },
 ];
 export default data4;

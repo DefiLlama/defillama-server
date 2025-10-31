@@ -393,7 +393,7 @@ async function run() {
         let yesterdayRecord = _protocolData.yesterday
         let protocolLatestRecord = undefined
 
-        // sometimes around midnight, we still wont have today's data, if we have previous day's data, use that
+        // sometimes like immediately after midnight, we still wont have today's data, if we have previous day's data, use that
         if (!todayRecord && yesterdayRecord) 
           todayRecord = yesterdayRecord
 

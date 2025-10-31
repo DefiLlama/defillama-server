@@ -181,7 +181,7 @@ const configs: { [adapter: string]: Config } = {
     address: "4sWNB8zGWHkh6UnmwiEtzNxL4XrN7uK9tosbESbJFfVs",
     underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
     decimals: "6",
-    symbol: "sHYUSD",
+    symbol: "xSOL",
   },
   ampLUNA: {
     rate: async () => {

@@ -11098,6 +11098,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oraclesBreakdown: [
       { name: "Pyth", type: "Primary", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] }, 
+      { name: "Switchboard", type: "Fallback", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] },
     ],
     module: "moar/index.js",
     twitter: "MoarMarket",

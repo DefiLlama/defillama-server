@@ -33270,5 +33270,25 @@ const data4: Protocol[] = [
       fees: "shroomy-protocol",
     }
   },
+  {
+    id: "6938",
+    name: "Movement Bridge",
+    address: "0x3073f7aaa4db83f95e9fff17424f71d4751a3073",
+    symbol: "MOVE",
+    url: "https://bridge.movementnetwork.xyz/",
+    description:
+      "Movement Bridge is a bridge that allows you to move your tokens between the Movement and Ethereum chains.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/movement-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Movement"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "MoveIndFDN",
+  },
 ];
 export default data4;

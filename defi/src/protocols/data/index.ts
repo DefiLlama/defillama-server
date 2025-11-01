@@ -111,7 +111,7 @@ export function setProtocolMetadata(protocol: Protocol) {
       slugTagSet,
       isDoublecounted,
       isDead: !!module.deadFrom,
-      hasTvl: protocol.module !== 'dummy.js',
+      hasTvl: !!(protocol.module && protocol.module !== 'dummy.js'),
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
       hallmarks: module.hallmarks,

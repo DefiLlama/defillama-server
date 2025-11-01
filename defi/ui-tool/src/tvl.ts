@@ -16,7 +16,7 @@ const tvlNameMap: Record<string, IProtocol> = {}
 const allItems = [...protocols, ...treasuries, ...entities]
 
 allItems.forEach((protocol: any) => tvlNameMap[protocol.name] = protocol)
-export const tvlProtocolList = allItems.filter(i => i.module !== 'dummy.js').map(i => i.name)
+export const tvlProtocolList = allItems.filter(i => i.module).map(i => i.name)
 
 
 export async function runTvlAction(ws: any, data: any) {

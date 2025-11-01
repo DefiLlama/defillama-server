@@ -207,7 +207,7 @@ async function _storeAppMetadata() {
       }
       const slugName: string = slug(protocol.name);
       const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
-      const hasBorrowed = protocol.currentChainTvls?.borrowed != null ? true : false
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,

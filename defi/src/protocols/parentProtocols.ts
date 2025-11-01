@@ -8330,6 +8330,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "farcaster_xyz",
   },
+  {
+    id: "parent#shroomy-protocol",
+    name: "Shroomy Protocol",
+    url: "https://www.shroomy.io/",
+    description: "Shroomy Protocol is a decentralized, non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn passive income, while borrowers can borrow in an overcollateralized manner.",
+    logo: `${baseIconsUrl}/shroomy-protocol.jpg`,
+    gecko_id: "shroomy",
+    cmcId: "36732",
+    chains: [],
+    twitter: "ShroomyProject",
+  },
 ];
 
 export default parentProtocols;

@@ -17843,18 +17843,19 @@ const data4: Protocol[] = [
   },
   {
     id: "6285",
-    name: "Shroomy Protocol",
+    name: "Shroomy Protocol Lending",
+    //previousNames: ["Shroomy Protocol"],
     address: "ink:0x0c5e2d1c98cd265c751e02f8f3293bc5764f9111",
     symbol: "SHROOMY",
     url: "https://app.shroomy.io/",
     description:
       "Shroomy Protocol is a decentralized, non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn passive income, while borrowers can borrow in an overcollateralized manner.",
     chain: "Ink",
-    logo: `${baseIconsUrl}/shroomy-protocol.jpg`,
+    logo: `${baseIconsUrl}/shroomy-protocol-lending.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "shroomy",
-    cmcId: "36732",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ink"],
     forkedFromIds: ["1599"],
@@ -17868,6 +17869,7 @@ const data4: Protocol[] = [
     module: "shroomy-protocol/index.js",
     twitter: "ShroomyProject",
     audit_links: ["https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"],
+    parentProtocol: "parent#shroomy-protocol",
     listedAt: 1749484357,
   },
   {
@@ -33241,6 +33243,31 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "superstack",
       derivatives: "superstack",
+    }
+  },
+  {
+    id: "6937",
+    name: "Shroomy Protocol Swap",
+    address: "ink:0x0c5e2d1c98cd265c751e02f8f3293bc5764f9111",
+    symbol: "SHROOMY",
+    url: "https://app.shroomy.io/",
+    description:
+      "Shroomy Protocol is a decentralized, non-custodial liquidity protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn passive income, while borrowers can borrow in an overcollateralized manner.",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/shroomy-protocol-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ink"],
+    forkedFromIds: ["2116"],
+    module: "dummy.js",
+    twitter: "ShroomyProject",
+    parentProtocol: "parent#shroomy-protocol",
+    dimensions: {
+      dexs: "shroomy-protocol",
+      fees: "shroomy-protocol",
     }
   },
 ];

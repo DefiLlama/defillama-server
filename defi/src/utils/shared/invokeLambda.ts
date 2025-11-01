@@ -1,17 +1,17 @@
-import aws from "aws-sdk";
+import { Lambda } from "@aws-sdk/client-lambda"
+let lambdaClient: Lambda | null = null
 
-export default async function invokeLambda(functioName: string, event: any) {
-  return new Promise((resolve, _reject) => {
-    new aws.Lambda().invoke(
-      {
-        FunctionName: functioName,
-        InvocationType: "Event",
-        Payload: JSON.stringify(event, null, 2), // pass params
-      },
-      function (error, data) {
-        console.log(error, data);
-        resolve(data);
-      }
-    );
+export default async function invokeLambda(functionName: string, event: any) {
+  if (!lambdaClient)
+    lambdaClient = new Lambda()
+  return lambdaClient.invoke({
+    FunctionName: functionName,
+    InvocationType: "Event",
+    Payload: JSON.stringify(event, null, 2), // pass params
+  }).then((res) => {
+    console.log(`Invoked lambda ${functionName}`, res.StatusCode);
+    return res;
+  }).catch((e) => {
+    console.error(`Error invoking lambda ${functionName}`, e);
   });
 }

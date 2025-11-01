@@ -30,9 +30,10 @@ git pull -q
 
 llama_runner init-defi
 llama_runner cron-raises
-llama_runner api2-cron-task
+llama_runner cron-tvl
 llama_runner cron-dimensions
 llama_runner cron-app-metadata
+llama_runner cron-cex
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

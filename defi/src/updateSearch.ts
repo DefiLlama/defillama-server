@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
-import { cexsData } from "./getCexs";
+import { cexsData } from "./protocols/cex";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";

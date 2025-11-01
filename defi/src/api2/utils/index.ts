@@ -143,7 +143,7 @@ export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
   try {
 
 
-    await fn()
+    const response = await fn()
 
     const endTime = Date.now()
     await sdk.elastic.addRuntimeLog({
@@ -152,6 +152,7 @@ export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
       runtime: (endTime - startTime) / 1e3,
     })
 
+    return response
 
   } catch (e) {
 

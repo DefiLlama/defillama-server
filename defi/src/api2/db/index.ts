@@ -46,6 +46,34 @@ function getTVLCacheTable(ddbPKFunction: Function): ModelStatic<Model<any, any>>
   return tableMapping[key]
 }
 
+export enum TVLRecordType {
+  TVL = 'tvl',
+  TOKEN = 'token',
+  USD_TOKEN = 'usdToken',
+}
+
+const keyMapDaily: { [key: string]: Function } = {
+  [TVLRecordType.TVL]: dailyTvl,
+  [TVLRecordType.TOKEN]: dailyTokensTvl,
+  [TVLRecordType.USD_TOKEN]: dailyUsdTokensTvl,
+}
+
+const keyMapHourly: { [key: string]: Function } = {
+  [TVLRecordType.TVL]: hourlyTvl,
+  [TVLRecordType.TOKEN]: hourlyTokensTvl,
+  [TVLRecordType.USD_TOKEN]: hourlyUsdTokensTvl,
+}
+
+// Use daily table if timestamp is older than 2 days, else use hourly table
+export function getTVLCacheTableNameForTimestamp(key: TVLRecordType, unixTS: number) {
+
+  const twoDaysAgo = Date.now() / 1000 - 2 * 24 * 3600
+  const keyMap = unixTS < twoDaysAgo ? keyMapDaily : keyMapHourly
+  const ddbPKFunction = keyMap[key]
+
+  return getTVLCacheTable(ddbPKFunction)
+}
+
 function isHourlyDDBPK(ddbPKFunction: Function) {
   const key = ddbPKFunction(dummyId)
   return key.includes('hourly')
@@ -249,7 +277,7 @@ async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
 }
 
 
-async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, } = {}) {
+async function _getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, ids = [] } = {}) {
   const table = getTVLCacheTable(ddbPKFunction)
   let whereClause = '';
 
@@ -276,6 +304,11 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
     whereClause = ` WHERE timestamp BETWEEN '${fromTime}' AND '${toTime}'`;
   }
 
+  if (ids.length > 0) {
+    const idsList = ids.map(id => `'${id}'`).join(', ');
+    whereClause += whereClause ? ` AND id IN (${idsList})` : ` WHERE id IN (${idsList})`;
+  }
+
   const items = await table.sequelize!.query(
     `SELECT DISTINCT ON (id) id, "data" , "timestamp" FROM "${table.getTableName()}" ${whereClause} ORDER BY id, timestamp DESC`,
     { type: QueryTypes.SELECT }
@@ -288,6 +321,62 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
 
   function getUnixTime(date: Date) {
     return Math.floor(+date / 1e3)
+  }
+}
+
+const ONE_HOUR = 3600
+const ONE_DAY = 24 * ONE_HOUR
+
+type InflowRecord = {
+  oldTokens?: { date: number, tvl: { [token: string]: number } },
+  currentTokens?: { date: number, tvl: { [token: string]: number } },
+  currentUsdTokens?: { date: number, tvl: { [token: string]: number } },
+}
+
+async function _getInflowRecords({ startTimestamp, endTimestamp, ids, bufferTimeAfter = ONE_HOUR, bufferTimeBefore = ONE_DAY * 2 }: {
+  startTimestamp: number,
+  endTimestamp: number,
+  ids: string[],
+  bufferTimeAfter?: number,
+  bufferTimeBefore?: number,
+}): Promise<{ [id: string]:  InflowRecord}> {
+  if (!ids?.length) return {}
+
+  const currentTokensTable = getTVLCacheTableNameForTimestamp(TVLRecordType.TOKEN, endTimestamp)
+  const currentUsdTokensTable = getTVLCacheTableNameForTimestamp(TVLRecordType.USD_TOKEN, endTimestamp)
+  const oldTokensTable = getTVLCacheTableNameForTimestamp(TVLRecordType.TOKEN, startTimestamp)
+
+  const idQuery =  ` AND id IN (${ids.map(id => `'${id}'`).join(', ')})`
+  const commonSelectQueryStart = `SELECT DISTINCT ON (id) id, "data"->'tvl' as tvl , "timestamp" as date FROM `
+  const commonSelectQueryEnd = `ORDER BY id, timestamp DESC`
+
+  const currentTokensQuery = `${commonSelectQueryStart} "${currentTokensTable.getTableName()}"
+   WHERE timestamp BETWEEN '${endTimestamp - bufferTimeBefore}' AND '${endTimestamp + bufferTimeAfter}' ${idQuery}
+    ${commonSelectQueryEnd}`
+
+  const currentUsdTokensQuery = `${commonSelectQueryStart}  "${currentUsdTokensTable.getTableName()}"
+   WHERE timestamp BETWEEN '${endTimestamp - bufferTimeBefore}' AND '${endTimestamp + bufferTimeAfter}' ${idQuery}
+    ${commonSelectQueryEnd}`
+
+  const oldTokensQuery = `${commonSelectQueryStart} "${oldTokensTable.getTableName()}"
+   WHERE timestamp BETWEEN '${startTimestamp - bufferTimeBefore}' AND '${startTimestamp + bufferTimeAfter}' ${idQuery}
+    ${commonSelectQueryEnd}`
+
+  const [oldTokensItems, currentTokensItems, currentUsdTokensItems] = await Promise.all([oldTokensQuery, currentTokensQuery, currentUsdTokensQuery].map(query => oldTokensTable.sequelize!.query(query, { type: QueryTypes.SELECT })))
+
+  const response: { [id: string]: InflowRecord } = {}
+
+  oldTokensItems.forEach((addField('oldTokens')))
+  currentTokensItems.forEach((addField('currentTokens')))
+  currentUsdTokensItems.forEach((addField('currentUsdTokens')))
+  
+  return response
+
+  function addField(field: string) {
+    return (item: any) => {
+      if (!response[item.id]) response[item.id] = {};
+      (response as any)[item.id][field] = { date: item.date, tvl: item.tvl }
+    }
   }
 }
 
@@ -369,6 +458,8 @@ const getAllProtocolItems = callWrapper(_getAllProtocolItems)
 const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
 const saveProtocolItem = callWrapper(_saveProtocolItem)
 const getProtocolItems = callWrapper(_getProtocolItems)
+const getLatestProtocolItems = callWrapper(_getLatestProtocolItems)
+const getInflowRecords = callWrapper(_getInflowRecords)
 
 function getPGConnection() {
   return sequelize
@@ -376,7 +467,8 @@ function getPGConnection() {
 
 export {
   closeConnection, deleteFromPGCache, deleteProtocolItems, getAllProtocolItems,
-  getClosestProtocolItem, getDailyTvlCacheId, getDimensionsUpdatedRecordsCount, getHourlyTvlUpdatedRecordsCount, getLatestProtocolItem, getLatestProtocolItems, getPGConnection, getProtocolItems, getTweetsPulledCount, initializeTVLCacheDB, readFromPGCache, saveProtocolItem, sequelize, TABLES, writeToPGCache
+  getClosestProtocolItem, getDailyTvlCacheId, getDimensionsUpdatedRecordsCount, getHourlyTvlUpdatedRecordsCount, getLatestProtocolItem, getLatestProtocolItems, getPGConnection, getProtocolItems, getTweetsPulledCount, initializeTVLCacheDB, readFromPGCache, saveProtocolItem, sequelize, TABLES, writeToPGCache,
+  getInflowRecords,
 }
 
 // Add a process exit hook to close the database connection

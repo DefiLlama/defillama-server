@@ -7,7 +7,7 @@ const DATA_FEED_ABI =
 const AGGREGATOR_ABI =
   "function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
 
-type Denomination = "USD" | "BTC" | "SOL" | "XRP";
+type Denomination = "USD" | "BTC" | "SOL" | "XRP" | "ETH";
 
 interface TokenConfig {
   name: string;
@@ -33,6 +33,11 @@ const BASE_ASSET_ORACLES = {
     chain: "xrplevm",
     decimals: 18,
   }, // XRP/USD on Xrplevm
+  ETH: {
+    address: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+    chain: "ethereum",
+    decimals: 8,
+  }, // ETH/USD on Ethereum
 } as const;
 
 const contracts: Record<string, TokenConfig[]> = {

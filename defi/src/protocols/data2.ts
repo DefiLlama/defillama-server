@@ -5123,7 +5123,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Optimism"],
-    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []},{ name: "Chaos", type: "Primary", proof: []}  ],
     forkedFrom: [],
     module: "aave-v3/index.js",
     twitter: "aave",

@@ -33290,5 +33290,28 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "MoveIndFDN",
   },
+  {
+    id: "6939",
+    name: "DoubleZero",
+    address: "solana:J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+    symbol: "2Z",
+    url: "https://doublezero.xyz/",
+    description:
+      "DoubleZero is a permissionless global infrastructure network for blockchains and distributed systems, enabling contributors to stake assets and provide high-performance bandwidth/fiber links in exchange for utility tokens that power the network.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/doublezero.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "doublezero",
+    cmcId: "38515",
+    category: "Developer Tools",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "doublezero",
+    dimensions: {
+      fees: "doublezero"
+    }
+  },
 ];
 export default data4;

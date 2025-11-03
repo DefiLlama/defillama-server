@@ -420,10 +420,10 @@ export async function batchWriteWithAlerts(
       await checkMovement(items, previousItems);
     const writeItems = [...filteredItems, ...redirectChanges]
     const AWS3WriteItems: any[] = writeItems.map((item) => {
-      if (!item.price) return item;
+      if (item.price == null) return item;
       return {
-        price: NumberValue.from(item.price.toString()),
         ...item,
+        price: NumberValue.from(item.price.toString()),
       }
     });
     await batchWrite(AWS3WriteItems, failOnError);

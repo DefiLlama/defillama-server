@@ -25,7 +25,6 @@ import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensio
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
-import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
 import { getHistory } from "../../dexAggregators/db/getHistory";
@@ -135,12 +134,13 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   })));
 
 
+  router.get("/activeUsers", defaultFileHandler)
+
 
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
     router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
-    router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
   
     router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
     router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set

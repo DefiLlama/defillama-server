@@ -1,8 +1,8 @@
-import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
-import { getLatestUsersData } from "./users/storeUsers";
-import { getCurrentUnixTimestamp } from "./utils/date";
-import protocols from "./protocols/data";
-import parentProtocols from "./protocols/parentProtocols";
+import { cache20MinResponse, wrap, IResponse } from "../../utils/shared";
+import { getLatestUsersData } from "../../users/storeUsers";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import protocols from "../../protocols/data";
+import parentProtocols from "../../protocols/parentProtocols";
 
 type userTypes = "users" | "newUsers" | "txs" | "gasUsd"
 

@@ -9789,7 +9789,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "OOE",
     url: "https://openocean.finance",
     description:
-      "OpenOcean is the world's first full aggregation protocol for crypto trading that source liquidity from DeFi and CeFi, and enable cross-chain swaps.",
+      "OpenOcean is the world’s leading DeFi trading aggregator, offering a full suite of trading tools and a powerful API. With the deepest liquidity across 40+ chains, from EVM-compatible to non-EVM chains like Solana, OpenOcean enables seamless swaps with optimal prices for users worldwide.",
     chain: "Binance",
     logo: `${baseIconsUrl}/openocean.jpg`,
     audits: "2",

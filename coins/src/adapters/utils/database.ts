@@ -422,8 +422,8 @@ export async function batchWriteWithAlerts(
     const AWS3WriteItems: any[] = writeItems.map((item) => {
       if (!item.price) return item;
       return {
-        ...item,
         price: NumberValue.from(item.price.toString()),
+        ...item,
       }
     });
     await batchWrite(AWS3WriteItems, failOnError);

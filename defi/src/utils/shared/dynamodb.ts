@@ -1,5 +1,5 @@
 import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
-import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput } from "@aws-sdk/lib-dynamodb"
+import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput, NumberValue } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
 
 const ddbClient = new DynamoDBClient({
@@ -31,7 +31,7 @@ const dynamodb = {
   put: (
     item: PutCommandInput["Item"],
     params?: Partial<PutCommandInput>
-  ) => client.put({ TableName, ...params, Item: item }),
+  ) => client.put({ TableName, ...params, Item: sanitizeForDDBWrite(item) }),
   query: (params: Omit<QueryCommandInput, "TableName">) =>
     client.query({ TableName, ...params }).then((value) => {
       if (value.Items?.length) fixDDBRecords(value.Items)
@@ -39,7 +39,13 @@ const dynamodb = {
     }),
   update: (
     params: Omit<UpdateCommandInput, "TableName">
-  ) => client.update({ TableName, ...params }),
+  ) => client.update({ 
+    TableName, 
+    ...params, 
+    ...(params.ExpressionAttributeValues && {
+      ExpressionAttributeValues: sanitizeForDDBWrite(params.ExpressionAttributeValues)
+    })
+  }),
   delete: (
     params: Omit<DeleteCommandInput, "TableName">
   ) => client.delete({ TableName, ...params }),
@@ -63,10 +69,10 @@ const dynamodb = {
   putDimensionsData: (
     item: PutCommandInput["Item"],
     params?: Partial<PutCommandInput>
-  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }),
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: sanitizeForDDBWrite(item) }),
   putDimensionsDataBulk: (
     items: PutCommandInput["Item"][],
-  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }),
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })) } }),
   putEventData: async (
     item: PutCommandInput["Item"],
   ) => {
@@ -83,7 +89,7 @@ const dynamodb = {
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
     try {
-      let response = await client.put({ TableName: 'prod-event-table', Item: item })
+      let response = await client.put({ TableName: 'prod-event-table', Item: sanitizeForDDBWrite(item) })
       return response;
     } catch (e: any) {
       console.error("Failed to put event data", item.PK, item.source, e?.message || e);
@@ -166,7 +172,7 @@ export async function batchWrite(
     const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite);
     writeRequests.push(
       underlyingBatchWrite(
-        nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
+        nonDuplicatedItems.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })),
         0,
         failOnError
       )
@@ -213,10 +219,9 @@ export async function DELETE(keys: { PK: string; SK: number }[]): Promise<void> 
  * when we switched to using aws sdk v3, it started converting numbers into bigint, this reverts that
  * @param item
  */
-export function fixDDBRecords(item: any) {
+export function fixDDBRecords(item: any): any {
   if (Array.isArray(item)) {
-    item.forEach(fixDDBRecords)
-    return item
+    return item.map(fixDDBRecords)
   } else if (typeof item === 'bigint') {
     return Number(item)
   } else if (typeof item === 'object' && item) {
@@ -226,4 +231,28 @@ export function fixDDBRecords(item: any) {
   }
 
   return item
+}
+
+function sanitizeForDDBWrite(value: any): any {
+  if (value === null || value === undefined) return value;
+  if (value instanceof NumberValue) return value;
+  if (Array.isArray(value)) return value.map(sanitizeForDDBWrite);
+  
+  const type = typeof value;
+  
+  if (type=== "bigint") return NumberValue.from(value.toString());
+  
+  if (type === "number") {
+    if (!Number.isFinite(value)) return value.toString();
+    if (Math.abs(value) > Number.MAX_SAFE_INTEGER) return NumberValue.from(value.toString());
+    return value;
+  }
+  
+  if (type === "object") {
+    const out: any = {};
+    for (const [k, val] of Object.entries(value)) out[k] = sanitizeForDDBWrite(val);
+    return out;
+  }
+  
+  return value;
 }

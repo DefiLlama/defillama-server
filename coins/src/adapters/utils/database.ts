@@ -19,7 +19,6 @@ import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
-import { NumberValue } from "@aws-sdk/lib-dynamodb";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -419,14 +418,7 @@ export async function batchWriteWithAlerts(
     const filteredItems: any[] =
       await checkMovement(items, previousItems);
     const writeItems = [...filteredItems, ...redirectChanges]
-    const AWS3WriteItems: any[] = writeItems.map((item) => {
-      if (!item.price) return item;
-      return {
-        price: NumberValue.from(item.price.toString()),
-        ...item,
-      }
-    });
-    await batchWrite(AWS3WriteItems, failOnError);
+    await batchWrite(writeItems, failOnError);
     await produceKafkaTopics(writeItems as any[]);
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;

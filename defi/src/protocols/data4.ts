@@ -33335,7 +33335,28 @@ const data4: Protocol[] = [
     module: "volo-lst/index.js",
     parentProtocol: "parent#navi-protocol",
     twitter: "volo_sui",
-    listedAt: 1762192101
+  },
+  {
+    id: "6941",
+    name: "THORSwap",
+    address: "0xa5f2211b9b8170f694421f2046281775e8468044",
+    symbol: "THOR",
+    url: "https://www.thorswap.finance/",
+    description:
+      "Established in 2021, THORSwap is the leading multi-chain Bitcoin decentralized exchange (DEX) aggregator. Swap cross-chain to and from Native Bitcoin in a non-KYC and non-custodial manner.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/thorswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "thorswap",
+    cmcId: "12942",
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-THORSwap-v1.0.pdf"],
+    module: "thorswap/index.js",
+    twitter: "thorswap",
+    listedAt: 1762192599
   },
 ];
 export default data4;

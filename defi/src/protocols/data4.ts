@@ -16348,7 +16348,7 @@ const data4: Protocol[] = [
     module: "near-intents/index.js",
     twitter: "NEARProtocol",
     dimensions: {
-      "bridge-aggregators": "near-intents"
+      "dexs": "near-intents"
     },
     listedAt: 1760656359
   },

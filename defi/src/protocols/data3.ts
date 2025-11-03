@@ -46937,7 +46937,8 @@ const data3_2: Protocol[] = [
     module: "taikoswap/index.js",
     twitter: "TaikoSwap_",
     listedAt: 1716819156,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
   {
     id: "4685",
     name: "Bitparty",

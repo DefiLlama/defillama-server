@@ -33382,5 +33382,99 @@ const data4: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1762203887
   },
+  {
+    id: "6943",
+    name: "Brotocol",
+    address: null,
+    symbol: "-",
+    url: "https://brotocol.xyz/bridge/cross-bridge",
+    description: "Brotocol Bridge is a MPC-based hybrid bi-directional bridge that acts as a 'connector' between Bitcoin and other blockchains, enabling seamless asset transfers and swaps between Bitcoin and its Layer 2 networks (L2s) as well as other blockchain ecosystems",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/brotocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregator",
+    chains: ["Bitcoin", "AILayer", "Arbitrum", "Aurora", "Avalanche", "Base", "Bitlayer", "Binance", "BOB", "Bsquared", "CORE", "Ethereum", "Linea", "Manta", "Merlin", "Mezo", "Mode", "Solana", "Stacks", "X Layer"],
+    forkedFromIds: [],
+    audit_links: ["https://docs.brotocol.xyz/developers/brotocol-contracts/security-audits"],
+    module: "brotocol/index.js",
+    twitter: "Brotocol_xyz",
+    dimensions: {
+      "bridge-aggregators": "brotocol"
+    }
+  },
+  {
+    id: "6944",
+    name: "Kensei",
+    address: null,
+    symbol: "-",
+    url: "https://www.kensei.one/",
+    description: "Reputation-powered memecoin launchpad on Katana.",
+    chain: "Katana",
+    logo: `${baseIconsUrl}/kensei.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Katana"],
+    forkedFromIds: [],
+    audit_links: ["https://github.com/kenseionkatana/home/tree/main/audit"],
+    module: "dummy.js",
+    twitter: "kenseionkatana",
+    dimensions: {
+      fees: "kensei"
+    }
+  },
+  {
+    id: "6945",
+    name: "Unlock Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://unlock-protocol.com/",
+    description: "Unlock is an open source protocol for onchain memberships & subscriptions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unlock-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Ethereum", "Optimism", "Binance", "xDai", "Polygon", "Base", "Arbitrum", "Celo", "Avalance", "Linea", "zkSync Era", "Polygon zkEVM", "Scroll"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "UnlockProtocol",
+    dimensions: {
+      fees: "unlock-protocol"
+    }
+  },
+  {
+    id: "6946",
+    name: "Carina Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://app.carina.finance/",
+    description: "Carina is an intent-based DEX aggregator that turns routing into a solver competition — delivering best execution, and no platform fees",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/carina-aggregator.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sei"],
+    forkedFromIds: [],
+    audit_links: [
+      "https://github.com/CODESPECT-security/audit-reports/blob/main/038_CODESPECT_CARINA.pdf",
+      "https://github.com/Zellic/publications/blob/master/Carina%20Smart%20Contracts%20-%20Zellic%20Audit%20Report.pdf"
+    ],
+    module: "dummy.js",
+    twitter: "carina_finance",
+    dimensions: {
+      aggregators: "carina-aggregator"
+    }
+  },
 ];
 export default data4;

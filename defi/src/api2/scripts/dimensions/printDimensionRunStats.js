@@ -280,7 +280,7 @@ function printAdapterStats() {
   const statsArray = Object.values(stats)
   statsArray.sort((a, b) => b.started - a.started)
   statsArray.forEach(i => {
-    i.notFinished = Array.from(i.notFinished)
+    i.notFinished = Array.from(i.notFinished).join(',').slice(0, 1000)
     i.running = i.notFinished.length
   })
 

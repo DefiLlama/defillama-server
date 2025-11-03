@@ -1,6 +1,12 @@
-import aws from "aws-sdk";
-import axios from "axios";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import type { Readable } from "stream";
+
+let client: S3Client | null = null;
+
+function getClient() {
+  if (!client) client = new S3Client({});
+  return client;
+}
 
 const datasetBucket = "defillama-datasets";
 
@@ -17,8 +23,7 @@ export async function store(
   hourlyCache = false,
   compressed = true
 ) {
-  await new aws.S3()
-    .upload({
+  const command = new PutObjectCommand({
       Bucket: datasetBucket,
       Key: filename,
       Body: body,
@@ -30,20 +35,20 @@ export async function store(
         }),
         ContentType: "application/json",
       }),
-    })
-    .promise();
+  })
+  await getClient().send(command);
 }
 
 export async function storeDataset(filename: string, body: string | Readable, contentType = "text/csv") {
-  await new aws.S3()
-    .upload({
+  const command = new PutObjectCommand({
       Bucket: datasetBucket,
       Key: `temp/${filename}`,
       Body: body,
       ACL: "public-read",
       ContentType: contentType,
     })
-    .promise();
+    
+  await getClient().send(command);
 }
 
 export function buildRedirect(filename: string, cache?: number) {

@@ -144,6 +144,7 @@ export default async function (
       console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${humanizeNumber(currentTvl)}, previous tvl: ${humanizeNumber(lastHourlyTVL)}`)
       if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
         const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled.`
+        console.log(errorMessage, 'skipping db update')
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
         throw new Error(errorMessage);
       }

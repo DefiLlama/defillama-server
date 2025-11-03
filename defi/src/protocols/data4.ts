@@ -33335,6 +33335,7 @@ const data4: Protocol[] = [
     module: "volo-lst/index.js",
     parentProtocol: "parent#navi-protocol",
     twitter: "volo_sui",
+    listedAt: 1762192101
   },
 ];
 export default data4;

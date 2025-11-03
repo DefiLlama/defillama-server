@@ -427,6 +427,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     console.log("solana tokens received")
     const step = 500;
 
+    setTimer();
     let coins: any = await retryCoingeckoRequest('coins/list?include_platform=true', 5)
     // coins = coins.filter((coin) => coin.id == 'euro-coin');
     // if (!coins.length) process.exit(0)

@@ -33314,5 +33314,27 @@ const data4: Protocol[] = [
       fees: "doublezero"
     }
   },
+  {
+    id: "6940",
+    name: "Volo LST",
+    address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    symbol: "NAVX",
+    assetToken: "vSUI",
+    url: "https://www.volo.fi/",
+    description:
+      "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/volo-lst.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    forkedFromIds: [],
+    module: "volo-lst/index.js",
+    parentProtocol: "parent#navi-protocol",
+    twitter: "volo_sui",
+  },
 ];
 export default data4;

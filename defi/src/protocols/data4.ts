@@ -6708,8 +6708,8 @@ const data4: Protocol[] = [
   {
     id: "5836",
     name: "HyperSwap V2",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
     url: "https://app.hyperswap.exchange/#/swap?referral=defillama",
     description: `Explore token swaps, liquidity management and easy token launches`,
     chain: "Hyperliquid L1",
@@ -6736,8 +6736,8 @@ const data4: Protocol[] = [
   {
     id: "5837",
     name: "HyperSwap V3",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
     url: "https://app.hyperswap.exchange/#/swap?referral=defillama",
     description: `Explore token swaps, liquidity management and easy token launches`,
     chain: "Hyperliquid L1",
@@ -16348,7 +16348,7 @@ const data4: Protocol[] = [
     module: "near-intents/index.js",
     twitter: "NEARProtocol",
     dimensions: {
-      "bridge-aggregators": "near-intents"
+      "dexs": "near-intents"
     },
     listedAt: 1760656359
   },
@@ -33022,7 +33022,8 @@ const data4: Protocol[] = [
     twitter: "opinionlabsxyz",
     listedAt: 1761694223,
     dimensions: {
-      dexs: "opinion"
+      dexs: "opinion",
+      fees: "opinion"
     }
   },
   {
@@ -33337,6 +33338,28 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "DipCoinOfficial",
     listedAt: 1761820189,
+  },
+  {
+    id: "6941",
+    name: "Volo LST",
+    address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    symbol: "NAVX",
+    assetToken: "vSUI",
+    url: "https://www.volo.fi/",
+    description:
+      "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/volo-lst.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    forkedFromIds: [],
+    module: "volo-lst/index.js",
+    parentProtocol: "parent#navi-protocol",
+    twitter: "volo_sui",
   },
 ];
 export default data4;

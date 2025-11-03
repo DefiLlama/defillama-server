@@ -33360,5 +33360,26 @@ const data4: Protocol[] = [
     twitter: "thorswap",
     listedAt: 1762192599
   },
+  {
+    id: "6942",
+    name: "Aerodrome Ignition",
+    address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+    symbol: "AERO",
+    url: "https://aerodrome.finance/",
+    description: "Aerodrome Ignition is a DEX-native token launch mechanism on Base that bootstraps liquidity by depositing 10-20% of a project's token supply into Aerodrome pools, allowing veAERO holders to direct emissions incentives and enabling fair, market-driven price discovery and distribution without presales or private allocations",
+    chain: "Base",
+    logo: `${baseIconsUrl}/aerodrome-ignition.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    forkedFromIds: [],
+    module: "aerodrome-ignition/index.js",
+    twitter: "aerodromefi",
+    parentProtocol: "parent#aerodrome",
+    listedAt: 1762203887
+  },
 ];
 export default data4;

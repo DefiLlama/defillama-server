@@ -10,7 +10,12 @@ const ddbClient = new DynamoDBClient({
   })
 });
 
-const client = DynamoDBDocument.from(ddbClient)
+const client = DynamoDBDocument.from(ddbClient, {
+  marshallOptions: {
+    convertClassInstanceToMap: true,
+  }
+})
+
 export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
 
 export type DynamoDBItemKey = GetCommandInput["Key"]

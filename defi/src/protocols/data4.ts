@@ -33020,7 +33020,8 @@ const data4: Protocol[] = [
     twitter: "opinionlabsxyz",
     listedAt: 1761694223,
     dimensions: {
-      dexs: "opinion"
+      dexs: "opinion",
+      fees: "opinion"
     }
   },
   {

@@ -33476,5 +33476,28 @@ const data4: Protocol[] = [
       aggregators: "carina-aggregator"
     }
   },
+  {
+    id: "6947",
+    name: "P2P.me",
+    address: null,
+    symbol: "-",
+    url: "https://www.p2p.me/en",
+    description: "P2P.me is a decentralized, non-custodial platform that enables users to swap fiat and USDC using QR codes",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/p2p.me.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Polygon"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "P2Pdotme",
+    dimensions: {
+      fees: "p2pme"
+    }
+  },
 ];
 export default data4;

@@ -6708,8 +6708,8 @@ const data4: Protocol[] = [
   {
     id: "5836",
     name: "HyperSwap V2",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
     url: "https://app.hyperswap.exchange/#/swap?referral=defillama",
     description: `Explore token swaps, liquidity management and easy token launches`,
     chain: "Hyperliquid L1",
@@ -6736,8 +6736,8 @@ const data4: Protocol[] = [
   {
     id: "5837",
     name: "HyperSwap V3",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
     url: "https://app.hyperswap.exchange/#/swap?referral=defillama",
     description: `Explore token swaps, liquidity management and easy token launches`,
     chain: "Hyperliquid L1",

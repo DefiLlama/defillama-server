@@ -6686,7 +6686,7 @@ const parentProtocols: IParentProtocol[] = [
     referralUrl: "https://app.hyperswap.exchange/#/swap?referral=defillama",
     description: "Explore token swaps, liquidity management and easy token launches",
     logo: `${baseIconsUrl}/hyperswap.png`,
-    gecko_id: null,
+    gecko_id: "hyperswap",
     cmcId: null,
     chains: [],
     twitter: "HyperSwapX",

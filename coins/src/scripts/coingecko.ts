@@ -20,7 +20,6 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
-import axios from "axios";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds

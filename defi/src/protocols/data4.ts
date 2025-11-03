@@ -19790,7 +19790,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6365",
-    name: "Hydrex V3",
+    name: "Hydrex Integral",
     address: null,
     symbol: "HYDX",
     url: "https://hydrex.fi",
@@ -19812,7 +19812,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6366",
-    name: "Hydrex V4",
+    name: "Hydrex Omni",
     address: null,
     symbol: "HYDX",
     url: "https://hydrex.fi",

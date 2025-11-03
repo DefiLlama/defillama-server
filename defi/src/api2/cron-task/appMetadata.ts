@@ -207,7 +207,7 @@ async function _storeAppMetadata() {
       }
       const slugName: string = slug(protocol.name);
       const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
-      const hasBorrowed = protocol.currentChainTvls?.borrowed != null ? true : false
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,
@@ -683,6 +683,20 @@ async function _storeAppMetadata() {
     }
 
     const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+    const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
+
+    for (const protocolId in finalProtocols) {
+      const pInfo = protocolInfoMap[protocolId] ?? parentProtocolsInfoMap[protocolId];
+      const protocolName = pInfo?.name as string | undefined;
+      if (!protocolName) continue;
+
+      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
+          bridge: true,
+        };
+      }
+    }
     const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
     const allEmissionsProtocols = new Set(emmissionsData);
     for (const protocolNameAndId of nameAndIds) {
@@ -701,7 +715,7 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.has(protocolName)) {
+      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           bridge: true,
@@ -1038,4 +1052,3 @@ setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');
   process.exit(1);
 }, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises
-

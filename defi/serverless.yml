@@ -339,7 +339,7 @@ functions:
   #         path: chains2/{category}
   #         method: get
   # inflows:  # moved to api2
-  #   handler: src/getInflows.default
+  #   handler: src/api2/db/inflows.default
   #   events:
   #     - http:
   #         path: inflows/{protocol}/{timestamp}

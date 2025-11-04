@@ -242,22 +242,15 @@ export const chainToCoingeckoId = {
   vana: "vana",
   peaq: "peaq",
   saakuru: "saakuru",
-  zedxion: "zedxion",
   somnia: "somnia",
   mezo: "mezo",
   supra: "supra",
-  voi_network: "voi-network",
   initia: "initia",
   haven1: "haven1",
-  graphite_network: "graphite-network",
   crossfi: "crossfi",
-  sonic_svm: "sonic-svm",
   provenance: "provenance",
-  chia: "chia",
   qubic: "qubic",
   redstone: "redstone",
-  combo: "combo",
-  graphlinq_chain: "graphlinq-chain",
   plasma: 'plasma'
 };
 

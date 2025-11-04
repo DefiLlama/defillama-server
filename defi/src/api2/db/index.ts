@@ -361,12 +361,17 @@ async function _getInflowRecords({ startTimestamp, endTimestamp, ids, bufferTime
   const oldTokensQuery = `${commonSelectQueryStart} "${oldTokensTable.getTableName()}"
    WHERE timestamp BETWEEN '${startTimestamp - bufferTimeBefore}' AND '${startTimestamp + bufferTimeAfter}' ${idQuery}
     ${commonSelectQueryEnd}`
+  
+  const oldUsdTokensQuery = `${commonSelectQueryStart} "${currentUsdTokensTable.getTableName()}"
+   WHERE timestamp BETWEEN '${startTimestamp - bufferTimeBefore}' AND '${startTimestamp + bufferTimeAfter}' ${idQuery}
+    ${commonSelectQueryEnd}`
 
-  const [oldTokensItems, currentTokensItems, currentUsdTokensItems] = await Promise.all([oldTokensQuery, currentTokensQuery, currentUsdTokensQuery].map(query => oldTokensTable.sequelize!.query(query, { type: QueryTypes.SELECT })))
+  const [oldTokensItems, currentTokensItems, currentUsdTokensItems, oldUsdTokensItems] = await Promise.all([oldTokensQuery, currentTokensQuery, currentUsdTokensQuery, oldUsdTokensQuery].map(query => oldTokensTable.sequelize!.query(query, { type: QueryTypes.SELECT })))
 
   const response: { [id: string]: InflowRecord } = {}
 
   oldTokensItems.forEach((addField('oldTokens')))
+  oldUsdTokensItems.forEach((addField('oldUsdTokens')))
   currentTokensItems.forEach((addField('currentTokens')))
   currentUsdTokensItems.forEach((addField('currentUsdTokens')))
   

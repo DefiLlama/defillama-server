@@ -33499,5 +33499,62 @@ const data4: Protocol[] = [
       fees: "p2pme"
     }
   },
+  {
+    id: "6948",
+    name: "Obol",
+    address: null,
+    symbol: "-",
+    url: "https://obol.org/",
+    description: "The Obol Collective is the largest Decentralized Operator Ecosystem. Powered by Obol Distributed Validators, the end game of Ethereum staking.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/obol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "obol/index.js",
+    twitter: "Obol_Collective",
+    listedAt: 1762287672
+  },
+  {
+    id: "6949",
+    name: "Vaultedge",
+    address: null,
+    symbol: "-",
+    url: "https://www.vaultedge.fi/",
+    description: "Vaultedge is a decentralized borrowing protocol built around yield-generating vaults that optimize returns across the deployed chain. Users can borrow the protocol’s stablecoin, USDVE, against crypto collateral with 0% interest and a one-time borrow fee, while their assets continue to earn yield",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/vaultedge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Plasma"],
+    forkedFromIds: ["270"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16915", "https://docs.vaultedge.fi/the-protocol/info-and-security/oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16915"]
+      }
+    ],
+    audit_links: [
+      "https://www.gravitaprotocol.com/audits/gravita-audit-report-dedaub-apr-23-2023.pdf",
+      "https://www.gravitaprotocol.com/audits/gravita-audit-report-omniscia-may-17-2023.pdf"
+    ],
+    module: "vaultedge/index.js",
+    twitter: "VaultedgeFi",
+    listedAt: 1762287949
+  },
 ];
 export default data4;

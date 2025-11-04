@@ -33163,6 +33163,10 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#flow-swap",
     listedAt: 1761871975,
+    dimensions: {
+      fees: "flowswap-v2",
+      dexs: "flowswap-v2"
+    }
   },
   {
     id: "6933",
@@ -33184,6 +33188,10 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#flow-swap",
     listedAt: 1761871981,
+    dimensions: {
+      fees: "flowswap-v3",
+      dexs: "flowswap-v3"
+    }
   },
   {
     id: "6934",

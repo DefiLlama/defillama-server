@@ -29109,7 +29109,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://maxshot.ai/",
     description:
-      "Maxshot AI is dForce's omni-chain yield optimizer, powered by the DeFAI Agent Framework. It functions as a fully autonomous autopilot for DeFi vaults, where AI agents continuously monitor markets, deploy capital, and rebalance positions to optimize returns. Operating without human intervention, Maxshot is governed by transparent on-chain rules and enhanced by adaptive off-chain intelligence, ensuring efficient, secure, and scalable yield generation across chains",
+      "Maxshot AI is an AI Agent Factory that builds an open network of autonomous agents. These agents specialize in DeFi strategies and other automatable tasks, forming a collaborative network that efficiently deploys capital, executes trading strategies, and automates complex workflows. By continuously optimizing both processes and agent-to-agent collaboration, Maxshot AI empowers users to achieve effortless returns and let intelligent agents work for them.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/maxshot.jpg`,
     audits: "0",

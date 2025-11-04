@@ -46919,13 +46919,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4684",
-    name: "TaikoSwap",
+    name: "Tkoswap", // name change requested by the taiko team
+    previousNames: ["taikoSwap"],
     address: null,
     symbol: "-",
     url: "https://tkoswap.xyz",
     description: "The go-to DEX for degens built on taikoxyz.",
     chain: "Taiko",
-    logo: `${baseIconsUrl}/taikoswap.jpg`,
+    logo: `${baseIconsUrl}/tkoswap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -46936,7 +46937,8 @@ const data3_2: Protocol[] = [
     module: "taikoswap/index.js",
     twitter: "TaikoSwap_",
     listedAt: 1716819156,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
   {
     id: "4685",
     name: "Bitparty",

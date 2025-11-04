@@ -33556,5 +33556,26 @@ const data4: Protocol[] = [
     twitter: "VaultedgeFi",
     listedAt: 1762287949
   },
+  {
+    id: "6950",
+    name: "BESCSWAP DEX",
+    address: null,
+    symbol: "-",
+    url: "https://bescswap.com/",
+    description: "BESCSWAP DEX is a decentralized exchange on BESC Hyperchain that allows users to swap tokens with low fees and high liquidity.",
+    chain: "BESC Hyperchain",
+    logo: `${baseIconsUrl}/bescswap-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["BESC Hyperchain"],
+    forkedFromIds: ["2197"],
+    audit_links: [],
+    module: "bescswap/index.js",
+    twitter: "BESCLLC",
+    listedAt: 1762288314
+  },
 ];
 export default data4;

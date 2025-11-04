@@ -20918,7 +20918,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Sui"],
-    module: "dipcoin-spot/index.js",
+    module: "dipcoin/index.js",
     forkedFrom: [],
     twitter: "DipCoinOfficial",
     listedAt: 1752078241,

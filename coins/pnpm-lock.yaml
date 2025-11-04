@@ -24,8 +24,8 @@ importers:
         specifier: ^3.918.0
         version: 3.918.0(@aws-sdk/client-dynamodb@3.918.0)
       '@defillama/sdk':
-        specifier: ^5.0.182
-        version: 5.0.182(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^5.0.184
+        version: 5.0.184(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@elastic/elasticsearch':
         specifier: ^8.19.1
         version: 8.19.1
@@ -1055,8 +1055,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@defillama/sdk@5.0.182':
-    resolution: {integrity: sha512-+3DywoXLpuWzDOkU0eyt8cquUijr68BITCHSXcpRSTPKhdxEX3qrzbcBlU3VlTPycXqF4iuQrfuD8g6GA8ajaQ==}
+  '@defillama/sdk@5.0.184':
+    resolution: {integrity: sha512-Sv17OjfT6bbFOTcmiGlO70bmXozLd1fI0IjtUu4f4a6ZpCQg8WhHvudrRHAmVFIJns4ZvL2pf9nlrl03Uepv2w==}
 
   '@effect/platform-node-shared@0.15.5':
     resolution: {integrity: sha512-PXFdIHMNzv19+aaKBo99KVsqJ65il8j7ejze/srkzOkNu4WK/GGpQuYF32NZLirFgXJe/4aYMRgwD+uJ4mCyuw==}
@@ -7841,7 +7841,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@defillama/sdk@5.0.182(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@defillama/sdk@5.0.184(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@aws-sdk/client-s3': 3.913.0
       '@elastic/elasticsearch': 8.19.1

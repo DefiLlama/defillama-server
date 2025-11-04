@@ -1,7 +1,3 @@
-import { successResponse } from "./api2/routes/utils";
-import * as HyperExpress from "hyper-express";
-import { get20MinDate } from "./utils/shared";
-
 interface ICex {
   name: string;
   slug?: string;
@@ -10,6 +6,7 @@ interface ICex {
   walletsLink?: string | null;
   cgId?: string | null;
   cgDeriv?: string | null;
+  cgSpotId?: string | null;
   lastAuditDate?: number;
   auditor?: string | null;
   auditLink?: string | null;
@@ -66,7 +63,7 @@ export const cexsData: Array<ICex> = [
     cgId: "bybit_spot",
     cgDeriv: "bybit",
   },
-  /*
+  /* */
 	{
 		name: 'Kraken',
 		slug: 'kraken',
@@ -75,7 +72,7 @@ export const cexsData: Array<ICex> = [
 		cgId: 'kraken',
 		cgDeriv: 'kraken_futures'
 	},
-	*/
+	/**/
   {
     name: "Crypto.com",
     slug: "Crypto-com",
@@ -514,10 +511,6 @@ export const cexsData: Array<ICex> = [
     name: "NEXO",
   },
   {
-    name: "Gemini",
-    cgId: "gemini",
-  },
-  {
     name: "Coincheck",
     cgId: "coincheck",
   },
@@ -585,10 +578,30 @@ export const cexsData: Array<ICex> = [
     slug: "valr",
     coin: null,
     walletsLink: null,
+  },
+  {
+    name: "BitKan",
+    cgId: "bitkan",
+    slug: "bitkan",
+    coin: "KAN",
+    coinSymbol: "KAN",
+    walletsLink: null,
+  },
+  {
+    name: "OSL",
+    slug: "osl",
+    coin: null,
+    walletsLink: null,
+  },
+  {
+    name: "Voyager",
+    slug: "voyager",
+    coin: null,
+    walletsLink: null,
   }
 ];
 
-const cg_volume_cexs = Object.values({
+const cgNameListingIdMap: { [name: string]: string } = {
   "Bybit": "bybit-spot",
   "Coinbase": "gdax",
   "Huobi": "huobi",
@@ -697,12 +710,13 @@ const cg_volume_cexs = Object.values({
   "Foxbit": "foxbit",
   "ZBX": "zbx",
   "zipmex": "zipmex",
-});
-
-export async function getCexs(_req: HyperExpress.Request, res: HyperExpress.Response) {
-  res.setHeaders({
-    Expires: get20MinDate(),
-  });
-
-  return successResponse(res, { cexs: cexsData, cg_volume_cexs });
+  "OSL": "osl",
 }
+
+cexsData.forEach(c => {
+  if (cgNameListingIdMap[c.name]) {
+    c.cgSpotId = cgNameListingIdMap[c.name];
+  }
+})
+
+export const cg_volume_cexs = Object.values(cgNameListingIdMap);

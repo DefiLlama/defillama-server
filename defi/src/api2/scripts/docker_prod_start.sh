@@ -5,19 +5,35 @@ ROOT_DIR=$SCRIPT_DIR/../../..
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
-git pull
-git submodule update --init --recursive
-git submodule update --remote --merge
+llama_runner() {
+    command_to_run="pnpm run --silent $1"
+    # echo "Running npm script: $command_to_run"
+    start_time=$(date +%s.%N)
+    $command_to_run
+    end_time=$(date +%s.%N)
+    execution_time=$(awk "BEGIN {print $end_time - $start_time}")
+    echo "----|   pnpm script: $1 took $execution_time s"
+}
 
-time npm i
-git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
+if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
+    echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Checkout the specified branch
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"  --quiet
+    # Pull latest code from the branch
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"  --quiet
+# else
+    # echo "Using default branch deployment: $(git branch --show-current)"
+fi
 
+git pull -q
 
-time npm run prebuild
-time npm run cron-raises
-time npm run api2-cron-task
-time npm run cron-dimensions
-time npm run cron-app-metadata
+llama_runner init-defi
+llama_runner cron-raises
+llama_runner cron-tvl
+llama_runner cron-dimensions
+llama_runner cron-app-metadata
+llama_runner cron-cex
 
 # start API2 server
 timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js

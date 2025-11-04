@@ -48,6 +48,13 @@ export function curve(timestamp: number = 0) {
       "0x5bA541585D6297B756F08B7c61a7E37752123B4F",
       "0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6",
       "0x30bf3E17CAD0baF1d6B64079Ec219808d2708fEb",
+      "0x5a6A4D54456819380173272A5E8E9B9904BdF41B", 
+      "0xC32B0Cf36e06c790A568667A17DE80cba95A5Aad", 
+      "0x4b5E827F4C0a1042272a11857a355dA1F4Ceebae", 
+      "0x64273624eb57c5cA961d366CBF3968e760Bf0452", 
+      "0x765Cbd88947fcBc5df1F763d02E384B0a2DD285E", 
+      "0x2c7A1b4950Fe369e79fB3471284d4a4E66fbEA76",
+      "0x46f27BD3eC8f8D602F7ce85D312F4387FBdA7b16", 
     ]),
     getGaugePrices("ethereum", timestamp),
   ]);
@@ -95,6 +102,7 @@ export function curve2(timestamp: number = 0) {
       "0x590f7e2b211fa5ff7840dd3c425b543363797701",
       "0x78483d06a82ae76e0ff9c72afd80e5b2cea3b2a0",
       "0x747a547e48ee52491794b8ea01cd81fc5d59ad84",
+      "0x5C959D2c1a49B637Fb988c40d663265F8Bf6d289"
     ]),
     getGaugePrices("arbitrum", timestamp),
   ]);
@@ -192,6 +200,11 @@ export function curve14(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices2("fraxtal", defaultRegistries, timestamp),
     getGaugePrices("fraxtal", timestamp),
+    getTokenPrices2("fraxtal", [], timestamp, "eth-custom", [
+      '0x15d1ed4418da1f268bcad5ba7c8d06bb3c3081ed', 
+      '0x4cfc391d75c43cf1bdb368e8bf680aed1228df39',
+      '0xee454138083b9b9714cac3c7cf12560248d76d6b'
+    ]),
   ]);
 }
 export function curve15(timestamp: number = 0) {
@@ -205,6 +218,15 @@ export function curve16(timestamp: number = 0) {
     getTokenPrices2("plasma", [], timestamp, "eth-custom", [
       "0x2D84D79C852f6842AbE0304b70bBaA1506AdD457",
       '0x1e8d78e9b3f0152d54d32904b7933f1cfe439df1'
+    ]),
+  ]);
+}
+export function curve17(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("etlk", [], timestamp, "eth-custom", [
+      "0x0714027E44802b2Ff76389daF5371990CC3a4C24",
+      '0x5D37F9B272ca7cdA2A05245b9a503746EefAC88f',
+      "0x942644106B073E30D72c2C5D7529D5C296ea91ab"
     ]),
   ]);
 }
@@ -226,5 +248,6 @@ export const adapters = {
   curve13,
   curve14,
   curve15,
-  curve16
+  curve16,
+  curve17
 };

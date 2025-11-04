@@ -57,6 +57,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // "crvCRVETH-gauge": "0x1cebdb0856dd985fae9b8fea2262469360b8a3a6",
     crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
+    NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C"
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -95,6 +96,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
     SFUND_1: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -140,6 +142,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
     ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
     MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
+    NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -357,6 +360,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BTC: "0x935765ad27a1af00f73097c998a9fb721d2d7790",
     ETH: "0xb4373ebb073a4dcba47e567d075a9583fa3c763e",
   },
+  plume_mainnet: {
+    BTC: '0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC',  // dunno the source/backing of these tokens
+    pUSDT: '0xCCA84731C19EB911C985E9d1892E0935C104Abce',  // dunno the source/backing of these tokens
+  },
+  cardano: {
+    SUPERIOR: 'a967738feca0f92afa0f781f2db4ec318ee6f06cb515fecf988fabfb0014df105355504552494f52'
+  }
 };
 
 export const distressedAssets = Object.fromEntries(

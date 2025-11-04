@@ -6,7 +6,7 @@ import * as childProcess from 'child_process'
 import * as sdk from '@defillama/sdk'
 import inquirerPrompt from 'inquirer-autocomplete-prompt'
 import loadAdaptorsData from "../adaptors/data"
-import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { Adapter, AdapterType } from "../adaptors/data/types"
 // @ts-ignore
 import inquirerSearchPrompt from 'inquirer-search-list'
 

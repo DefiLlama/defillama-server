@@ -1,6 +1,6 @@
 import { baseIconsUrl } from "../constants";
 import type { Protocol } from "./types";
-/*
+/* 
 {
   id: string;
   name: string;
@@ -1073,7 +1073,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "croissant-games",
     cmcId: "17465",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Cronos"],
     forkedFrom: [],
     module: "croissant/index.js",
@@ -1932,8 +1932,8 @@ const data2: Protocol[] = [
     previousNames: ["DLN"],
     address: "solana:DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
     symbol: "DBR",
-    url: "https://app.debridge.finance/r/32425",
-    referralUrl: "https://app.debridge.finance/r/32425",
+    url: "https://app.debridge.com/r/32425",
+    referralUrl: "https://app.debridge.com/r/32425",
     description:
       "deBridge is a cross-chain interoperability and liquidity transfer protocol that allows the decentralized transfer of arbitrary data and assets between various blockchains",
     chain: "Ethereum",
@@ -2160,7 +2160,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EOS"],
     oracles: ["Internal"],
     forkedFrom: [],
@@ -3305,7 +3305,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1521",
-    name: "Horizon Protocol",
+    name: "Horizon Protocol", // rebrand to Xpanse
+    //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
     url: "https://horizonprotocol.com/",
@@ -3558,7 +3559,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange"
+      derivatives: "01-exchange",
+      fees: "o1-exchange"
     },
   },
   {
@@ -3787,6 +3789,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/SECURITY.md"],
     listedAt: 1647148275,
     github: ["wormhole-foundation"],
+    dimensions: {
+      fees: "wormhole",
+    },
   },
   // {
   //   id: "1542",
@@ -4383,7 +4388,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "luckychip",
     cmcId: "20170",
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -17680,7 +17685,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["EthereumPoW"],
     forkedFrom: [],
     module: "Fliperino/index.js",
@@ -18302,14 +18307,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2162",
-    name: "Ease.org",
+    name: "Easedefi.org",
     address: "0xEa5eDef1287AfDF9Eb8A46f9773AbFc10820c61c",
     symbol: "EASE",
-    url: "https://ease.org",
+    url: "https://easedefi.org",
     description:
       "Ease is a decentralized coverage protocol that enables users to protect their DeFi tokens without a premium while earning compounding yield.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ease.org.png`,
+    logo: `${baseIconsUrl}/easedefi.org.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "ease",
@@ -19351,8 +19356,8 @@ const data2: Protocol[] = [
   {
     id: "2202",
     name: "PRDT",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x854b5f2bfcc5b7cd05d6259cf5d035af57cfa301",
+    symbol: "PRDT",
     url: "https://prdt.finance",
     description:
       "Know where the Market is going? The First Fully Decentralized Cross-Chain Prediction Platform On The Binance Smart Chain and Polygon Network.",
@@ -19360,7 +19365,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/prdt.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "predictions",
     cmcId: null,
     category: "Prediction Market",
     chains: ["Binance", "Polygon"],
@@ -21394,14 +21399,15 @@ const data2: Protocol[] = [
   */
   {
     id: "2289",
-    name: "Cetus AMM",
+    name: "Cetus CLMM",
+    previousNames: ["Cetus AMM"],
     address: "sui:0x6864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS",
     symbol: "CETUS",
     url: "https://www.cetus.zone",
     description:
       "Cetus is a pioneer DEX and concentrated liquidity protocol focusing on Move-based ecosystems like Aptos and Sui. It works as a crucial part of the ecosystem infrastructure to satisfy the comprehensive needs of traders, LPs, upper applications and an increasing DeFi population.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/cetus-amm.png`,
+    logo: `${baseIconsUrl}/cetus-clmm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -21525,7 +21531,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Luck Games",
     chains: ["CSC"],
     module: "crypto-lottery/index.js",
     twitter: "__cryptolottery",
@@ -23758,7 +23764,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "freebie-life-finance",
     cmcId: "20870",
-    category: "Prediction Market",
+    category: "Yield Lottery",
     chains: ["Avalanche"],
     module: "freebie/index.js",
     twitter: "freebielifeme",
@@ -26806,6 +26812,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"],
     github: ["nounsDAO"],
+    dimensions: {
+      fees: "nouns"
+    }
   },
   {
     id: "2523",
@@ -28604,7 +28613,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Polygon"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
@@ -28973,7 +28982,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Options Vault",
     chains: ["Ethereum"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],

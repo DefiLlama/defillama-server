@@ -7,7 +7,7 @@ import { Address } from "@defillama/sdk/build/types";
 import { geckoSymbols, ownTokens, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import { fetchAdaTokens } from "./adapters/ada";
-import { nativeWhitelist } from "./adapters/manual";
+import { nativeBlacklist, nativeWhitelist } from "./adapters/manual";
 import { withTimeout } from "../src/utils/shared/withTimeout";
 import PromisePool from "@supercharge/promise-pool";
 
@@ -48,6 +48,8 @@ export async function fetchMinted(params: {
             ? ownTokens[chain].address
             : undefined;
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
+
+          storedTokens = storedTokens.filter((t: string) => !nativeBlacklist[chain]?.includes(t));
 
           console.log(`DBUG start for ${chain}`);
           // do these in order to lighten rpc, rest load

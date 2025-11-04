@@ -111,6 +111,8 @@ custom:
     exclude:
       - pg-native
       - pg-hstore
+      - pg
+      - pg-cursor
     # for debugging
     #keepOutputDirectory: true
   prune:
@@ -337,7 +339,7 @@ functions:
   #         path: chains2/{category}
   #         method: get
   # inflows:  # moved to api2
-  #   handler: src/getInflows.default
+  #   handler: src/api2/db/inflows.default
   #   events:
   #     - http:
   #         path: inflows/{protocol}/{timestamp}
@@ -392,13 +394,13 @@ functions:
   #     - http:
   #         path: categories
   #         method: get
-  storeLiquidations:
-    handler: src/storeLiquidations.default
-    timeout: 900
-    memorySize: 4500
-    events:
-      # update latest every 20 minutes
-      - schedule: cron(0/20 * * * ? *)
+  # storeLiquidations:
+  #   handler: src/storeLiquidations.default
+  #   timeout: 900
+  #   memorySize: 4500
+  #   events:
+  #     # update latest every 20 minutes
+  #     - schedule: cron(0/20 * * * ? *)
   # fetchLiquidations:
   #   handler: src/fetchLiquidations.default
   #   timeout: 900
@@ -551,15 +553,15 @@ functions:
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-  activeUsers:
-    handler: src/getActiveUsers.default
-    timeout: 90
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-    events:
-      - http:
-          path: activeUsers
-          method: get
+  # activeUsers:  # moved to api2
+  #   handler: src/api2/routes/getActiveUsers.default
+  #   timeout: 90
+  #   environment:
+  #     ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  #   events:
+  #     - http:
+  #         path: activeUsers
+  #         method: get
   protocolActiveUsers:
     handler: src/getProtocolUsers.default
     timeout: 90

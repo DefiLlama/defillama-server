@@ -238,7 +238,8 @@ export const chainToCoingeckoId = {
   astrzk: "astar-zkevm",
   tac: "tac", 
   btnx: "botanix", 
-  plasma: 'plasma'
+  plasma: 'plasma', 
+  kasplex: 'kasplex'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

@@ -5005,6 +5005,15 @@ export const chainCoingeckoIds = {
     url: "https://www.ethereal.trade/",
     chainId: 5064014,
   },
+  "Bittensor EVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "opentensor",
+    url: "https://bittensor.com/",
+    chainId: 964,
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5221,7 +5230,8 @@ const chainLabelMap = {
   "goat": "Goat",
   "gatelayer": "GateLayer",
   "xone": "Xone Chain",
-  "0g": "0G"
+  "0g": "0G",
+  "bittensor_evm_mainnet": "Bittensor EVM"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

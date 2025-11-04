@@ -6,7 +6,7 @@ import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_B
 import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
-import { timeSToUnix, } from "../utils/time";
+import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
@@ -26,6 +26,7 @@ function getPercentage(a: number, b: number) {
 
 const validMetricTypesSet = new Set(Object.values(AdapterType)) as Set<string>
 const validRecordTypesSet = new Set(Object.values(AdaptorRecordType)) as Set<string>
+const unixStartOfTodayTimestamp = timeSToUnix(getTimeSDaysAgo(0))
 
 function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const isProRoute = !!(req as any).isProRoute as boolean
@@ -77,7 +78,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   return response
 }
 
-export async function getOverviewProcess2({
+async function getOverviewProcess({
   recordType, cacheData, chain,
 }: {
   recordType: AdaptorRecordType,
@@ -96,6 +97,7 @@ export async function getOverviewProcess2({
 
   response.totalDataChart = formatChartData(summary.chart)
   response.totalDataChartBreakdown = formatChartData(summary.chartBreakdown)
+  fixChartLastRecord()
 
   response.breakdown24h = null
   response.breakdown30d = null
@@ -151,9 +153,36 @@ export async function getOverviewProcess2({
   if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
 
   return response
+
+  // some protocols dont support pulling current day data (can only pull daily data after the day is complete instead of past 24 hours)
+  // so we fix the last record to be the same as previous day if the last record is for today
+  function fixChartLastRecord() {
+    // nothing to fix if there are less than 2 records
+    if (!(response?.totalDataChart?.length > 1)) return;
+    if (!(response?.totalDataChartBreakdown?.length > 1)) return;
+
+    const lastChartRecord = response.totalDataChart[response.totalDataChart.length - 1]
+    const lastChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 1]
+    const yesterdayChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 2]
+
+    // nothing to fix if the last record is not for today
+    if (lastChartRecord[0] !== unixStartOfTodayTimestamp || lastChartBreakdownRecord[0] !== unixStartOfTodayTimestamp) return;
+
+    const todayBreakdown = lastChartBreakdownRecord[1]
+    const yesterdayBreakdown = yesterdayChartBreakdownRecord[1]
+    let todayTotalValue = lastChartRecord[1]
+
+    Object.entries(yesterdayBreakdown).forEach(([key, value]: any) => {
+      if (todayBreakdown.hasOwnProperty(key)) return;
+      todayBreakdown[key] = value // add missing key from yesterday
+      todayTotalValue += value
+    })
+
+    lastChartRecord[1] = todayTotalValue
+  }
 }
 
-export async function getProtocolDataHandler2({
+async function getProtocolDataHandler({
   protocolData, recordType,
 }: {
   protocolData?: any,
@@ -245,7 +274,7 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
     adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
   } = getEventParameters(req, true)
 
-  const isAllChainDataRequested =  chainFilter?.toLowerCase() === 'chain-breakdown'
+  const isAllChainDataRequested = chainFilter?.toLowerCase() === 'chain-breakdown'
 
   if (isAllChainDataRequested && (req as any).isProRoute) {
 
@@ -336,7 +365,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       console.time(timeKey)
 
       // fetch and store overview of each record type
-      const allData = await getOverviewProcess2({ recordType, cacheData, })
+      const allData = await getOverviewProcess({ recordType, cacheData, })
       await storeRouteData(`dimensions/${adapterType}/${recordType}-all`, allData)
       allData.totalDataChart = []
       allData.totalDataChartBreakdown = []
@@ -349,7 +378,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       for (const chainLabel of chains) {
         let chain = chainLabel.toLowerCase()
         chain = sluggifiedNormalizedChains[chain] ?? chain
-        const data = await getOverviewProcess2({ recordType, cacheData, chain })
+        const data = await getOverviewProcess({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
         for (const [date, value] of data.totalDataChart) {
           totalDataChartByChain[date] = totalDataChartByChain[date] || {}
@@ -369,7 +398,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       }
 
       // sort by date
-      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, Object.entries(totalDataChartByChain).map(([date, value]) => ([+date, value ])).sort(([a]: any, [b]: any) => a - b))
+      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, Object.entries(totalDataChartByChain).map(([date, value]) => ([+date, value])).sort(([a]: any, [b]: any) => a - b))
 
       for (let [id, protocol] of Object.entries(allProtocols) as any) {
         if (!protocol.info) {
@@ -379,7 +408,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
 
         if (!protocol.dataTypes?.has(recordType)) continue; // skip if the protocol does not have data for this record type
 
-        const data = await getProtocolDataHandler2({ recordType, protocolData: protocol })
+        const data = await getProtocolDataHandler({ recordType, protocolData: protocol })
 
         if (!data.totalDataChart?.length) continue; // skip if there is no data
 

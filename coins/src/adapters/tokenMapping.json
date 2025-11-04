@@ -12732,7 +12732,7 @@
       "symbol": "ETH"
     }
   }, 
-  "bittensor_evm_mainnet": {
+  "bittensor_evm": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#bittensor",
       "decimals": 18,

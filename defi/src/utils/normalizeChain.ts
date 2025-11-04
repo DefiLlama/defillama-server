@@ -5231,7 +5231,7 @@ const chainLabelMap = {
   "gatelayer": "GateLayer",
   "xone": "Xone Chain",
   "0g": "0G",
-  "bittensor_evm_mainnet": "Bittensor EVM"
+  "bittensor_evm": "Bittensor EVM"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

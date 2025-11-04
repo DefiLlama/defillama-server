@@ -24281,7 +24281,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["Tokenized Trading Strategies"],
-    chains: ["HashKey Chain"],
+    chains: ["HashKey Chain", "Avalanche"],
     module: "aoabt/index.js",
     twitter: "AssetoFinance",
     forkedFromIds: [],

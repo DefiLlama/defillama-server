@@ -32934,7 +32934,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6923",
-    name: "CASH+",
+    name: "Asseto CASH+",
     address: null,
     symbol: "-",
     url: "https://asseto.finance/#invest",

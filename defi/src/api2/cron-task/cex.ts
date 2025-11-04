@@ -58,6 +58,21 @@ cexes.forEach(c => {
 })
 const cexesWithTvl = cexes.filter(p => p.module && p.module !== 'dummy.js')
 
+function getTokensToExclude(cex: any) {
+  const tokensToExclude: string[] = []
+  if (cex.coinSymbol)
+    tokensToExclude.push(cex.coinSymbol)
+
+  if (Array.isArray(cex.ownTokens) && cex.ownTokens.length > 0) {
+    for (const token of cex.ownTokens) {
+      if (!tokensToExclude.includes(token))
+        tokensToExclude.push(token)
+    }
+  }
+
+  return tokensToExclude
+}
+
 
 // console.log(`CEX counts: total=${cexes.length}, withTvl=${cexesWithTvl.length}`)
 
@@ -87,7 +102,7 @@ async function addAssetData() {
 
   const inflowIds = cexesWithTvl.map((c: any) => {
     const id: any = { id: c.id }
-    if (c.coinSymbol) id.tokensToExclude = [c.coinSymbol]
+    id.tokensToExclude = getTokensToExclude(c)
     return id
   })
 
@@ -131,10 +146,17 @@ async function addAssetData() {
     // cex.currentUsdTokensTvl = item.data.tvl
 
     // clean assets tvl
-    if (!cex.coinSymbol) cex.cleanAssetsTvl = cex.currentTvl
-    else {
-      const coinTvl = item.data.tvl[cex.coinSymbol] || 0
-      cex.cleanAssetsTvl = cex.currentTvl - coinTvl
+    const tokensToExclude = getTokensToExclude(cex)
+    if (tokensToExclude.length === 0) {
+      cex.cleanAssetsTvl = cex.currentTvl
+    } else {
+      let excludedTvl = 0
+      tokensToExclude.forEach((token: string) => {
+        const tokenTvl = item.data.tvl[token] || 0
+        excludedTvl += tokenTvl
+      })
+      cex.cleanAssetsTvl = cex.currentTvl - excludedTvl
+      // console.log(`CEX ${cex.name} clean assets tvl: ${sdk.humanizeNumber(cex.cleanAssetsTvl)} (excluded: ${sdk.humanizeNumber(excludedTvl)})`)
     }
   })
 

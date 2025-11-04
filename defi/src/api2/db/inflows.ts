@@ -71,7 +71,8 @@ export function computeInflowsData({
   oldTokens,
   oldUsdTokens,
   tokensToExclude = [],
-  skipTokenLogs = true
+  skipTokenLogs = true,
+  withMetadata = false,
 }: {
   protocolData?: IProtocol,
   currentTokens: any,
@@ -79,7 +80,8 @@ export function computeInflowsData({
   oldTokens: any,
   oldUsdTokens?: any,
   tokensToExclude?: string[],
-  skipTokenLogs?: boolean
+  skipTokenLogs?: boolean,
+  withMetadata?: boolean,
 }) {
   const tokenExcludeSet = new Set(tokensToExclude.map(formatToken));
   type tvlData = { [token: string]: number };
@@ -123,9 +125,10 @@ export function computeInflowsData({
   })
 
 
+  const tokenDiffUSD: { [token: string]: string } = {}
+
   let response: any = {
     outflows: 0,
-    // tokenDiffUSD: {},
     oldTokens: { date: oldTokens.SK, tvl: {} },
     currentTokens: { date: currentTokens.SK, tvl: {} },
   }
@@ -139,10 +142,10 @@ export function computeInflowsData({
     if (!priceInfo) continue;
 
     const usdDiff = diff * priceInfo.value
-    if (usdDiff * 2 > priceInfo.totalUSD) { // ignore if diff is more than 200% of total usd value (probably data issue)
-      if (!skipTokenLogs)
+    if (usdDiff / 2 > priceInfo.totalUSD) { // ignore if diff is more than 200% of total usd value (probably data issue)
+      if (!skipTokenLogs && !withMetadata)
         console.log(
-          `Inflows: Ignoring ${token} diff for ${protocolData?.name}(id: ${protocolData?.id}) as usd diff ${usdDiff} is more than 200% of total usd value ${priceInfo.totalUSD}`
+          `Inflows: Ignoring ${token} diff for ${protocolData?.name}(id: ${protocolData?.id}) as usd diff ${humanizeNumber(usdDiff)} is more than 200% of total usd value ${humanizeNumber(priceInfo.totalUSD)}`
         );
       continue;
     }
@@ -150,8 +153,13 @@ export function computeInflowsData({
     response.outflows += usdDiff
     response.oldTokens.tvl[token] = oldAmount
     response.currentTokens.tvl[token] = currentAmount
-    // response.tokenDiffUSD[token] = humanizeNumber(usdDiff)
+
+    if (withMetadata)
+      tokenDiffUSD[token] = humanizeNumber(usdDiff)
   }
+
+  if (withMetadata)
+    response.tokenDiffUSD = tokenDiffUSD
 
   // delete response.tokenDiffUSD
 
@@ -188,13 +196,14 @@ type InflowsResponse = {
 
 
 // this method uses Postgres to get inflows data, is more lenient to missing data, and faster for bulk requests
-export async function pgGetInflows({ ids, startTimestamp, endTimestamp, }: {
+export async function pgGetInflows({ ids, startTimestamp, endTimestamp, withMetadata = false, }: {
   ids: string[] | {
     id: string,
     tokensToExclude: string[]
   }[],
   startTimestamp: number,
   endTimestamp?: number,  // defaults to now
+  withMetadata?: boolean,
 }): Promise<{ [protocolId: string]: InflowsResponse }> {
 
 
@@ -236,6 +245,7 @@ export async function pgGetInflows({ ids, startTimestamp, endTimestamp, }: {
       currentTokens,
       currentUsdTokens,
       tokensToExclude: tokenExcludeConfig[protocolId],
+      withMetadata,
     })
   }
 

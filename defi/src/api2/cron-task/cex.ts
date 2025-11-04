@@ -7,6 +7,7 @@ import { getLatestProtocolItems } from "../db";
 import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { pgGetInflows } from "../db/inflows";
 
+const isTESTMode = process.env.CEX_TEST_MODE === 'true'
 const cacheKey = 'cron-task/cex-last-update';
 const updatePeriodMs = 15 * 60 * 1000; // 15 minutes
 
@@ -73,8 +74,8 @@ function getTokensToExclude(cex: any) {
   return tokensToExclude
 }
 
-
-// console.log(`CEX counts: total=${cexes.length}, withTvl=${cexesWithTvl.length}`)
+if (isTESTMode)
+  console.log(`CEX counts: total=${cexes.length}, withTvl=${cexesWithTvl.length}`)
 
 async function _run() {
   const responseData: any = {
@@ -112,9 +113,9 @@ async function addAssetData() {
   ] = await Promise.all([
     getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true, ids: cexTvlIds }),
     getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true, ids: cexTvlIds }),
-    pgGetInflows({ ids: inflowIds, startTimestamp: tsDayAgo }),
-    pgGetInflows({ ids: inflowIds, startTimestamp: tsWeekAgo }),
-    pgGetInflows({ ids: inflowIds, startTimestamp: tsMonthAgo }),
+    pgGetInflows({ ids: inflowIds, startTimestamp: tsDayAgo, withMetadata: isTESTMode }),
+    pgGetInflows({ ids: inflowIds, startTimestamp: tsWeekAgo, withMetadata: isTESTMode }),
+    pgGetInflows({ ids: inflowIds, startTimestamp: tsMonthAgo, withMetadata: isTESTMode }),
   ])
 
   // console.log(JSON.stringify({ tvlData, usdTokensTvl, inflows1d, inflows1w, inflows1m }))
@@ -156,7 +157,9 @@ async function addAssetData() {
         excludedTvl += tokenTvl
       })
       cex.cleanAssetsTvl = cex.currentTvl - excludedTvl
-      // console.log(`CEX ${cex.name} clean assets tvl: ${sdk.humanizeNumber(cex.cleanAssetsTvl)} (excluded: ${sdk.humanizeNumber(excludedTvl)})`)
+
+      if (isTESTMode)
+        console.log(`CEX ${cex.name} clean assets tvl: ${sdk.humanizeNumber(cex.cleanAssetsTvl)} (excluded: ${sdk.humanizeNumber(excludedTvl)})`)
     }
   })
 
@@ -175,9 +178,31 @@ async function addAssetData() {
       }
 
       cex[fieldName] = item.outflows
+
+      if (isTESTMode) {
+        const newField = fieldName + '_detailed'
+        cex[newField] = JSON.parse(JSON.stringify(item)) // deep clone
+
+        // format numbers
+        cex[newField].outflows = sdk.humanizeNumber(cex[newField].outflows)
+        cex[newField].oldTokens.tvl = sortDataAndFormatNumbers(cex[newField].oldTokens.tvl)
+        cex[newField].currentTokens.tvl = sortDataAndFormatNumbers(cex[newField].currentTokens.tvl)
+      }
     }
   }
 
+}
+
+function sortDataAndFormatNumbers(src: any) {
+  if (!src) return {}
+  const sorted = Object.fromEntries(
+    Object.entries(src).sort(([, a]: any, [, b]: any) => {
+      if (b < 0) b *= -1
+      if (a < 0) a *= -1
+      return b - a
+    }).map(([k, v]: any) => [k, sdk.humanizeNumber(v)])
+  )
+  return sorted
 }
 
 async function addSpotAndDerivData() {
@@ -230,4 +255,8 @@ async function run() {
   await sdk.cache.writeExpiringJsonCache(cacheKey, { lastUpdateTS: now }, { expireAfter: updatePeriodMs })
 }
 
-run().catch(console.error).then(() => process.exit(0))
+if (isTESTMode) {
+  console.log('CEX cron-task running in TEST mode')
+  _run().catch(console.error).then(() => process.exit(0))
+} else
+  run().catch(console.error).then(() => process.exit(0))

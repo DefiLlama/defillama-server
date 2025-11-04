@@ -7,6 +7,7 @@ import cgSymbols from "../../utils/symbols/symbols.json";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { IProtocol } from "../../types";
 import { getInflowRecords } from ".";
+import { humanizeNumber } from "@defillama/sdk";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -35,6 +36,8 @@ export async function ddbGetInflows({ errorResponse, successResponse, protocolDa
   if (oldTokens.SK === undefined)
     return errorResponse("No data at that timestamp");
 
+  const oldUsdTokens = await getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+
   const [currentTokens, currentUsdTokens] = await Promise.all(
     [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getTVLOfRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
   );
@@ -48,6 +51,7 @@ export async function ddbGetInflows({ errorResponse, successResponse, protocolDa
     currentTokens,
     currentUsdTokens,
     oldTokens,
+    oldUsdTokens,
     tokensToExclude,
     skipTokenLogs
   }))
@@ -65,23 +69,113 @@ export function computeInflowsData({
   currentTokens,
   currentUsdTokens,
   oldTokens,
+  oldUsdTokens,
   tokensToExclude = [],
-  skipTokenLogs = true
+  skipTokenLogs = true,
+  withMetadata = false,
 }: {
   protocolData?: IProtocol,
   currentTokens: any,
   currentUsdTokens: any,
   oldTokens: any,
+  oldUsdTokens?: any,
   tokensToExclude?: string[],
-  skipTokenLogs?: boolean
+  skipTokenLogs?: boolean,
+  withMetadata?: boolean,
 }) {
-  const tokenExcludeSet = new Set(tokensToExclude.map(formatToken).concat(tokensToExclude));  // normalize excluded tokens and to be safe, also include original versions
+  const tokenExcludeSet = new Set(tokensToExclude.map(formatToken));
   type tvlData = { [token: string]: number };
-  const tokenDiff: tvlData = {};
-  const currentTvl: tvlData = {}
-  const currentUSDTvl: tvlData = {}
-  const oldTvl: tvlData = {}
+  const currentTvl: tvlData = transformTokenMap(currentTokens);
+  const currentUSDTvl: tvlData = transformTokenMap(currentUsdTokens);
+  const oldTvl: tvlData = transformTokenMap(oldTokens);
+  const oldUSDTvl: tvlData = transformTokenMap(oldUsdTokens)
+  const priceMap: { [token: string]: { value: number, totalUSD: number } } = {}
+  const whitelistedTokens = new Set() as Set<string>
 
+  let minValueToConsiderToken = 10_000  // default to 10k USD
+  const oldTotalTvlUSD = Object.values(oldUSDTvl).reduce((acc, value) => acc + value, 0)
+  const currentTotalTvlUSD = Object.values(currentUSDTvl).reduce((acc, value) => acc + value, 0)
+  const lowestTotalTvlUSD = Math.min(oldTotalTvlUSD, currentTotalTvlUSD) / 10000 // set 0.01% of total tvl as minUSDValue
+
+  minValueToConsiderToken = Math.max(minValueToConsiderToken, lowestTotalTvlUSD)  // use the higher of 10k or 0.01% of total tvl
+
+  // build price map from current and old usd tvl data
+  Object.entries(currentUSDTvl).forEach(([token, usdValue]) => {
+    const currentAmount = currentTvl[token]
+    if (currentAmount && currentAmount > 0) {
+      priceMap[token] = { value: usdValue / currentAmount, totalUSD: usdValue };
+
+      if (usdValue >= minValueToConsiderToken)
+        whitelistedTokens.add(token);
+
+    }
+  })
+
+  Object.entries(oldUSDTvl).forEach(([token, usdValue]) => {
+    const oldAmount = oldTvl[token]
+    if (oldAmount && oldAmount > 0) {
+      if (!priceMap[token] || priceMap[token].totalUSD < usdValue) {
+        priceMap[token] = { value: usdValue / oldAmount, totalUSD: usdValue };
+      }
+
+      if (usdValue >= minValueToConsiderToken)
+        whitelistedTokens.add(token);
+
+    }
+  })
+
+
+  const tokenDiffUSD: { [token: string]: string } = {}
+
+  let response: any = {
+    outflows: 0,
+    oldTokens: { date: oldTokens.SK, tvl: {} },
+    currentTokens: { date: currentTokens.SK, tvl: {} },
+  }
+
+  // compute inflows / outflows based on whitelisted tokens only
+  for (const token of whitelistedTokens) {
+    const currentAmount = currentTvl[token] || 0
+    const oldAmount = oldTvl[token] || 0
+    const diff = currentAmount - oldAmount
+    const priceInfo = priceMap[token]
+    if (!priceInfo) continue;
+
+    const usdDiff = diff * priceInfo.value
+    if (usdDiff / 2 > priceInfo.totalUSD) { // ignore if diff is more than 200% of total usd value (probably data issue)
+      if (!skipTokenLogs && !withMetadata)
+        console.log(
+          `Inflows: Ignoring ${token} diff for ${protocolData?.name}(id: ${protocolData?.id}) as usd diff ${humanizeNumber(usdDiff)} is more than 200% of total usd value ${humanizeNumber(priceInfo.totalUSD)}`
+        );
+      continue;
+    }
+
+    response.outflows += usdDiff
+    response.oldTokens.tvl[token] = oldAmount
+    response.currentTokens.tvl[token] = currentAmount
+
+    if (withMetadata)
+      tokenDiffUSD[token] = humanizeNumber(usdDiff)
+  }
+
+  if (withMetadata)
+    response.tokenDiffUSD = tokenDiffUSD
+
+  // delete response.tokenDiffUSD
+
+  // standarize the tokens used as key and merge values into a new object
+  function transformTokenMap(source: any = {}): tvlData {
+    const result: tvlData = {}
+    for (const [token, value] of Object.entries(source.tvl)) {
+      const formattedToken = formatToken(token);
+
+      // skip excluded tokens
+      if (tokenExcludeSet.has(formattedToken)) continue;
+
+      addValuesToTvlMap(result, formattedToken, value);
+    }
+    return result
+  }
 
   function addValuesToTvlMap(tvlMap: tvlData, token: string, amount: any, subtract = false) {
     const ratio = subtract ? -1 : 1;
@@ -91,62 +185,7 @@ export function computeInflowsData({
     tvlMap[token] += amount * ratio;
   }
 
-  for (const [token, value] of Object.entries(currentTokens.tvl)) {
-    const formattedToken = formatToken(token);
-    addValuesToTvlMap(tokenDiff, formattedToken, value);
-    addValuesToTvlMap(currentTvl, formattedToken, value) // add to new object with formatted tokens
-  }
-
-  for (const [token, value] of Object.entries(currentUsdTokens.tvl)) {
-    const formattedToken = formatToken(token);
-    addValuesToTvlMap(currentUSDTvl, formattedToken, value) // add to new object with formatted tokens
-  }
-
-  for (const [token, value] of Object.entries(oldTokens.tvl)) {
-    const formattedToken = formatToken(token)
-    addValuesToTvlMap(oldTvl, formattedToken, value)// add to new object with formatted tokens
-
-    if (tokenDiff.hasOwnProperty(formattedToken)) {
-      addValuesToTvlMap(tokenDiff, formattedToken, value, true);
-
-    } else {
-
-
-      if (!skipTokenLogs)
-        console.log(
-          `Inflows: Couldn't find ${token} in last tokens record of ${protocolData?.name}(id: ${protocolData?.id})`
-        );
-
-      delete tokenDiff[token];
-    }
-  }
-
-  let outflows = 0;
-
-  // console.log(JSON.stringify({ tokenDiff, tokenExcludeSet, currentTokens, oldTokens, currentUsdTokens }))
-
-  const table = []
-  for (const token in tokenDiff) {
-    if (!tokenExcludeSet.has(token)) {
-      const currentAmount = currentTvl[token]
-      const currentUSDValue = currentUSDTvl[token]
-
-      if (!currentAmount || currentAmount === 0) continue;
-
-      const currentPrice = currentUSDValue / currentAmount;
-
-      const diff = tokenDiff[token];
-      table.push({ token, diff, currentPrice, currentAmount, value: diff * currentPrice });
-
-      outflows += diff * currentPrice;
-    }
-  }
-
-  return {
-    outflows,
-    oldTokens: { date: oldTokens.SK, tvl: oldTvl },
-    currentTokens: { date: currentTokens.SK, tvl: currentTvl },
-  }
+  return response;
 }
 
 type InflowsResponse = {
@@ -157,13 +196,14 @@ type InflowsResponse = {
 
 
 // this method uses Postgres to get inflows data, is more lenient to missing data, and faster for bulk requests
-export async function pgGetInflows({ ids, startTimestamp, endTimestamp, }: {
+export async function pgGetInflows({ ids, startTimestamp, endTimestamp, withMetadata = false, }: {
   ids: string[] | {
     id: string,
     tokensToExclude: string[]
   }[],
   startTimestamp: number,
   endTimestamp?: number,  // defaults to now
+  withMetadata?: boolean,
 }): Promise<{ [protocolId: string]: InflowsResponse }> {
 
 
@@ -195,14 +235,17 @@ export async function pgGetInflows({ ids, startTimestamp, endTimestamp, }: {
   const response: { [protocolId: string]: InflowsResponse } = {};
 
   for (const protocolId of Object.keys(inflowRecords)) {
-    const { oldTokens, currentTokens, currentUsdTokens } = inflowRecords[protocolId]
+    const { oldTokens, currentTokens, currentUsdTokens, oldUsdTokens } = inflowRecords[protocolId]
     if (!oldTokens || !currentTokens || !currentUsdTokens) continue;
 
+
     response[protocolId] = computeInflowsData({
+      oldUsdTokens,
       oldTokens,
       currentTokens,
       currentUsdTokens,
       tokensToExclude: tokenExcludeConfig[protocolId],
+      withMetadata,
     })
   }
 

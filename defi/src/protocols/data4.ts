@@ -28720,7 +28720,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ember.so/",
-    description: "Ember Protocol is the first Structured Vaults Product on Sui, incubated by Bluewater Labs and Upshift. These vaults are non-custodial, permissionless, and managed by top-tier curators in Web3, running DeFi, cross-chain and CeDeFi strategies across lending markets, Spot AMMs, Perps DEXs and many more protocols to unlock the highest risk-adjusted returns for users, Everything Vaults for Everything Liquidity.",
+    description: "Ember Protocol is the leading Structured Vaults Product on Sui. The vaults are non-custodial, permissionless, and managed by top-tier curators, running DeFi, cross-chain, and CeDeFi strategies across lending markets, Spot AMMs, Perps DEXs, and many more protocols to unlock the highest risk-adjusted returns for users. Everything Vaults for Everything Liquidity.",
     chain: "Sui",
     logo: `${baseIconsUrl}/ember-protocol.jpg`,
     audits: "2",
@@ -33523,6 +33523,84 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "p2pme"
     }
+  },
+  {
+    id: "6948",
+    name: "Obol",
+    address: null,
+    symbol: "-",
+    url: "https://obol.org/",
+    description: "The Obol Collective is the largest Decentralized Operator Ecosystem. Powered by Obol Distributed Validators, the end game of Ethereum staking.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/obol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "obol/index.js",
+    twitter: "Obol_Collective",
+    listedAt: 1762287672
+  },
+  {
+    id: "6949",
+    name: "Vaultedge",
+    address: null,
+    symbol: "-",
+    url: "https://www.vaultedge.fi/",
+    description: "Vaultedge is a decentralized borrowing protocol built around yield-generating vaults that optimize returns across the deployed chain. Users can borrow the protocol’s stablecoin, USDVE, against crypto collateral with 0% interest and a one-time borrow fee, while their assets continue to earn yield",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/vaultedge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Plasma"],
+    forkedFromIds: ["270"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16915", "https://docs.vaultedge.fi/the-protocol/info-and-security/oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16915"]
+      }
+    ],
+    audit_links: [
+      "https://www.gravitaprotocol.com/audits/gravita-audit-report-dedaub-apr-23-2023.pdf",
+      "https://www.gravitaprotocol.com/audits/gravita-audit-report-omniscia-may-17-2023.pdf"
+    ],
+    module: "vaultedge/index.js",
+    twitter: "VaultedgeFi",
+    listedAt: 1762287949
+  },
+  {
+    id: "6950",
+    name: "BESCSWAP DEX",
+    address: null,
+    symbol: "-",
+    url: "https://bescswap.com/",
+    description: "BESCSWAP DEX is a decentralized exchange on BESC Hyperchain that allows users to swap tokens with low fees and high liquidity.",
+    chain: "BESC Hyperchain",
+    logo: `${baseIconsUrl}/bescswap-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["BESC Hyperchain"],
+    forkedFromIds: ["2197"],
+    audit_links: [],
+    module: "bescswap/index.js",
+    twitter: "BESCLLC",
+    listedAt: 1762288314
   },
 ];
 export default data4;

@@ -23802,6 +23802,9 @@ const data3_1: Protocol[] = [
     category: "Risk Curators",
     chains: ["Sui"],
     module: "volo-vsui/index.js",
+    tokensExcludedFromParent: {
+      Sui: ["XBTC", "USDC", "BTC"],
+    },
     twitter: "volo_sui",
     forkedFrom: [],
     audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf", "https://volosui.gitbook.io/volo/audit"],

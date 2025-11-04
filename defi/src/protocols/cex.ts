@@ -511,10 +511,6 @@ export const cexsData: Array<ICex> = [
     name: "NEXO",
   },
   {
-    name: "Gemini",
-    cgId: "gemini",
-  },
-  {
     name: "Coincheck",
     cgId: "coincheck",
   },

@@ -238,6 +238,19 @@ export const chainToCoingeckoId = {
   astrzk: "astar-zkevm",
   tac: "tac", 
   btnx: "botanix", 
+  fuel: "fuel-ignition",
+  vana: "vana",
+  peaq: "peaq",
+  saakuru: "saakuru",
+  somnia: "somnia",
+  mezo: "mezo",
+  supra: "supra",
+  initia: "initia",
+  haven1: "haven1",
+  crossfi: "crossfi",
+  provenance: "provenance",
+  qubic: "qubic",
+  redstone: "redstone",
   plasma: 'plasma', 
   kasplex: 'kasplex'
 };
@@ -273,3 +286,4 @@ export default chainToCoingeckoId;
 // }
 // generateNewObject();
 // ts-node common/chainToCoingeckoId.ts
+

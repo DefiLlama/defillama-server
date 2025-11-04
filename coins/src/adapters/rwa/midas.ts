@@ -7,7 +7,7 @@ const DATA_FEED_ABI =
 const AGGREGATOR_ABI =
   "function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
 
-type Denomination = "USD" | "BTC" | "SOL" | "XRP";
+type Denomination = "USD" | "BTC" | "SOL" | "XRP" | "ETH";
 
 interface TokenConfig {
   name: string;
@@ -33,6 +33,11 @@ const BASE_ASSET_ORACLES = {
     chain: "xrplevm",
     decimals: 18,
   }, // XRP/USD on Xrplevm
+  ETH: {
+    address: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+    chain: "ethereum",
+    decimals: 8,
+  }, // ETH/USD on Ethereum
 } as const;
 
 const contracts: Record<string, TokenConfig[]> = {
@@ -119,6 +124,18 @@ const contracts: Record<string, TokenConfig[]> = {
       name: "mEVUSD",
       token: "0x548857309BEfb6Fb6F20a9C5A56c9023D892785B",
       oracle: "0x508Fe9556C7919E64406bB4042760d7Bb1F40fC9",
+    },
+    {
+      name: "mHyperETH",
+      token: "0x5a42864b14C0C8241EF5ab62Dae975b163a2E0C1",
+      oracle: "0xbD560c1E87752717C34912D128168BfE26021EA2",
+      denomination: "ETH",
+    },
+    {
+      name: "mHyperBTC",
+      token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
+      oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
+      denomination: "BTC",
     },
   ],
   base: [

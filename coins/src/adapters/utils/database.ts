@@ -410,15 +410,16 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
   return coinData;
 }
 export async function batchWriteWithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   failOnError: boolean,
 ): Promise<void> {
   try {
     const { previousItems, redirectChanges } = await readPreviousValues(items);
-    const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    const filteredItems: any[] =
       await checkMovement(items, previousItems);
-    await batchWrite([...filteredItems, ...redirectChanges], failOnError);
-    await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
+    const writeItems = [...filteredItems, ...redirectChanges]
+    await batchWrite(writeItems, failOnError);
+    await produceKafkaTopics(writeItems as any[]);
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;
     console.log(`batchWriteWithAlerts failed with: ${e}`);
@@ -437,10 +438,10 @@ export async function batchWriteWithAlerts(
   }
 }
 export async function batchWrite2WithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
 ) {
   const { previousItems, redirectChanges } = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+  const filteredItems: any[] =
     await checkMovement(items, previousItems);
 
   await batchWrite2(
@@ -451,12 +452,12 @@ export async function batchWrite2WithAlerts(
   );
 }
 async function readPreviousValues(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   latencyHours: number = 6,
 ): Promise<{ previousItems: DbEntry[]; redirectChanges: any[] }> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
-    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
+    (t: any, i: number) => {
       if (i % 2) return;
       queries.push({
         PK: t.PK,
@@ -503,11 +504,11 @@ function findRedirectChanges(items: any[], results: any[]): any[] {
   return redirectChanges;
 }
 async function checkMovement(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   previousItems: DbEntry[],
   margin: number = 0.5,
-): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+): Promise<any[]> {
+  const filteredItems: any[] =
     [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";

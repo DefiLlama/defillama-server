@@ -11,7 +11,7 @@ import PromisePool from "@supercharge/promise-pool";
 let bridgePromises: { [bridge: string]: Promise<any> } = {};
 const addresses: { [chain: Chain]: Address[] } = {};
 allChainKeys.map((c: string) => (addresses[c] = []));
-let doneAdapters: string[] = [];
+let doneAdapters: string[] = []; // TODO: no, this is not how you track whether a function is called because of async nature of the calls, you need to use lodash.once or similar
 let mappingDone: boolean = false;
 
 const chainMap: { [chain: string]: string } = {
@@ -222,6 +222,8 @@ const adapters = { axelar, wormhole, celer, hyperlane, layerzero, flow, unit };
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
+//QUESTION: how are the errors here handled? 
+// TODO: you were right, now the code calls the same adapter list each time for each chain, need to use lodash.once or similar to ensure each adapter is called only once/we pull the list only once
   await PromisePool.withConcurrency(5)
     .for(Object.entries(adapters))
     .process(async ([key, adapter]: any) => {
@@ -234,6 +236,8 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 
   if (Object.keys(adapters).length == doneAdapters.length && mappingDone) return filteredAddresses;
 
+
+  // TODO: please add comments explaining the logic here
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];

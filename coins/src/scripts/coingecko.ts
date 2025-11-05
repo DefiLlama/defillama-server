@@ -279,7 +279,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               decimals = symbolAndDecimals.decimals;
               symbol = symbolAndDecimals.symbol;
             }
-            if (decimals == undefined) return;
+            if (isNaN(decimals) || decimals == '' || decimals == null) return;
 
             const item = {
               PK: normalizedPK,

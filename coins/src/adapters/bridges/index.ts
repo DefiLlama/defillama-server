@@ -209,7 +209,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
+      let decimals: any, symbol: string;
       if ("getAllInfo" in token) {
         try {
           const newToken = await token.getAllInfo();
@@ -224,6 +224,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         symbol = token.symbol;
       }
 
+      if (isNaN(decimals) || decimals == '' || decimals == null) return;
       if (i && !decimals) return;
       if (!symbol) return;
       decimals = Number(decimals)

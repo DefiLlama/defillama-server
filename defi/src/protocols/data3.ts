@@ -23786,20 +23786,20 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3711",
-    name: "Volo",
+    name: "Volo Liquid Staking",
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX", // parentProtocol governance token
     assetToken: "vSUI",
     url: "https://www.volo.fi/",
     description:
-      "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
+      'Volo is a decentralized liquid staking platform dedicated to offering vSUI as a fully decentralized LST for SUI and supporting the ecosystem\'s growth with LSDFi yield strategies.',
     chain: "Sui",
     logo: `${baseIconsUrl}/volo.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Risk Curators",
+    category: "Liquid Staking",
     chains: ["Sui"],
     module: "volo-vsui/index.js",
     tokensExcludedFromParent: {
@@ -23807,7 +23807,7 @@ const data3_1: Protocol[] = [
     },
     twitter: "volo_sui",
     forkedFrom: [],
-    audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf", "https://volosui.gitbook.io/volo/audit"],
+    audit_links: ["https://hacken.io/audits/volo/","https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf",],
     parentProtocol: "parent#navi-protocol",
     listedAt: 1698603343,
   },

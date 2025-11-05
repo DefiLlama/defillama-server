@@ -1695,6 +1695,29 @@ const data5: Protocol[] = [
     twitter: "TurboFlow_xyz",
     listedAt: 1762370757,
   },
+    {
+    id: "6967",
+    name: "Volo Vault",
+    address: null,
+    symbol: "-",
+    url: "https://www.volo.fi/",
+    description:
+      "Volo Vault is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/volo.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Sui"],
+    module: "volo-vault/index.js",
+    twitter: "https://x.com/volo_sui",
+    forkedFrom: [],
+    audit_links: ["https://volosui.gitbook.io/volo/audit"],
+    parentProtocol: "parent#navi-protocol",
+    listedAt: 0,
+  },
 ];
 export default data5;
 

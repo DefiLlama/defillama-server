@@ -22014,7 +22014,7 @@ const data2: Protocol[] = [
     symbol: "GT",
     url: "https://www.gate.com",
     description:
-      "Established in 2013, Gate is a cryptocurrency exchange serving over 23 million global users. The platform supports spot trading, futures contracts, margin trading, and wealth management products for more than 3,800 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets. Various Gate entities have obtained or completed regulatory registrations, licences, authorizations, or approvals across various jurisdictions, such as Lithuania, Argentina, Malta, Italy, Gibraltar, Bahamas, and Hong Kong.",
+      "Established in 2013, Gate is a cryptocurrency exchange serving over 23 million global users. The platform supports spot trading, futures contracts, margin trading, and wealth management products for more than 3,800 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets. Various Gate entities have obtained or completed regulatory registrations, licences, authorizations, or approvals across various dictions, such as Lithuania, Argentina, Malta, Italy, Gibraltar, Bahamas, and Hong Kong.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gate.jpg`,
     audits: "0",
@@ -31001,5 +31001,38 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true,
   },
+{
+  id: "jurisprotocol",
+  name: "Juris Protocol",
+  address: "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2",
+  symbol: "JURIS",
+  url: "https://www.jurisprotocol.com",
+  description: "A comprehensive DeFi protocol on Terra Classic offering staking and lending services with a focus on LUNC ecosystem development",
+  chain: "Terra",
+  logo: "https://raw.githubusercontent.com/JurisProtocol/assets/main/jurislogo.png",
+  audits: "2",
+  audit_note: null,
+  audit_links: [
+    "https://app.solidproof.io/projects/juris-protocol?audit=963e1452-fcff-4a08-9618-72cf949c9419"
+  ],
+  gecko_id: "juris-protocol",
+  cmcId: null,
+  category: "Lending",
+  categories: [
+    "Lending",
+    "Staking",
+    "Yield",
+    "Moneymarket"
+  ],
+  chains: ["Terra"],
+  oracles: ["Terra Classic Oracle"],
+  forkedFrom: [],
+  module: "jurisprotocol/index.js",
+  twitter: "JurisProtocol",
+  language: "Rust",
+  github: ["jurisprotocol"],
+  treasury: "jurisprotocol/index.js"
+}
+
 ];
 export default data2;

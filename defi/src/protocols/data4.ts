@@ -33004,7 +33004,8 @@ const data4: Protocol[] = [
     name: "OPINION",
     address: null,
     symbol: "-",
-    url: "https://app.opinion.trade",
+    url: "https://app.opinion.trade?code=hV0KVj",
+    referralUrl: "https://app.opinion.trade?code=hV0KVj",
     description: "Opinion is building a prediction exchange that enables direct trading of macroeconomic data, predictions, and news as standardized assets, leveraging proprietary on-chain infrastructure, AI Oracle, and trading tools to create new opportunities for retail users, institutions, and global decision makers in democratizing economic insights and risk management.",
     chain: "Binance",
     logo: `${baseIconsUrl}/opinion.jpg`,
@@ -33695,30 +33696,6 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "bullpenfi-perps",
       derivatives: "bullpenfi-perps"
-    }
-  },
-  {
-    id: "6956",
-    name: "Infinex",
-    address: null,
-    symbol: "-",
-    url: "https://infinex.xyz/",
-    description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
-    chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/infinex.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Interface",
-    chains: ["Hyperliquid L1"],
-    forkedFromIds: [],
-    audit_links: [],
-    module: "dummy.js",
-    twitter: "infinex",
-    dimensions: {
-      fees: "infinex-perps",
-      derivatives: "infinex-perps"
     }
   },
   // Please don't add new listings here; please use data5.ts

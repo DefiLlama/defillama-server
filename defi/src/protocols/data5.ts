@@ -42,6 +42,30 @@ import type { Protocol } from "./types";
 */
 const data5: Protocol[] = [
   {
+    id: "6956",
+    name: "Infinex",
+    address: null,
+    symbol: "-",
+    url: "https://infinex.xyz/",
+    description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/infinex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "infinex",
+    dimensions: {
+      fees: "infinex-perps",
+      derivatives: "infinex-perps"
+    }
+  },
+  {
     id: "6957",
     name: "Clarity",
     address: "cardano:1e76aaec4869308ef5b61e81ebf229f2e70f75a50223defa087f807b",

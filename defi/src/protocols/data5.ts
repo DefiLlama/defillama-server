@@ -153,6 +153,29 @@ const data5: Protocol[] = [
     github: ["oroswap"],
     listedAt: 1762322081,
   },
+  {
+    id: "6962",
+    name: "DFlow",
+    address: null,
+    symbol: "-",
+    url: "https://dflow.net/",
+    description: "High-precision, low-latency Solana DEX aggregator.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dflow.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "DFlowProtocol",
+    dimensions: {
+      aggregators: "dflow"
+    }
+  },
 ];
 export default data5;
 

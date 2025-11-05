@@ -1,5 +1,7 @@
 const abi = require("./abi.json");
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import getBlock from "../../utils/block";
 import { Result } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";

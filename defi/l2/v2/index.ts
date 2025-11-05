@@ -2,15 +2,16 @@ import { canonicalBridgeIds, excludedTvlKeys, protocolBridgeIds, zero, ownTokens
 import getTVLOfRecordClosestToTimestamp from "../../src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "../../src/utils/date";
 import { fetchAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
-import { Chain } from "@defillama/sdk/build/types";
+type Chain = string;
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "../utils";
 import { fetchAdaTokens } from "../adapters/ada";
 import { withTimeout } from "../../src/utils/shared/withTimeout";
 import PromisePool from "@supercharge/promise-pool";
 import { CoinsApiData, FinalData, FinalChainData } from "../types";
 import { McapsApiData } from "../types";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { getBlock, } = sdk.util.blocks
+const { multiCall, } = sdk.api2.abi
 import BigNumber from "bignumber.js";
 import { bridgedTvlMixedCaseChains, chainsThatShouldNotBeLowerCased } from "../../src/utils/shared/constants";
 import { getR2JSONString, storeR2JSONString } from "../../src/utils/r2";

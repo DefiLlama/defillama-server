@@ -1,8 +1,10 @@
 import protocols from "../protocols/data";
-import { getCurrentUnixTimestamp, secondsBetweenCallsExtra, secondsInDay } from "../utils/date";
-import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, getLastRecord, hourlyUsdTokensTvl } from "../utils/getLastRecord";
+import { getCurrentUnixTimestamp, secondsInDay } from "../utils/date";
+import { getLastRecord, hourlyUsdTokensTvl } from "../utils/getLastRecord";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+
+import * as sdk from '@defillama/sdk'
+const { humanizeNumber, } = sdk
 
 async function main() {
     await Promise.all(

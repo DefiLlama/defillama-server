@@ -2,7 +2,9 @@
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
 import { Write } from "../utils/dbInterfaces";
-import { getUniqueAddresses } from "@defillama/sdk/build/generalUtil";
+import * as sdk from '@defillama/sdk'
+const { getUniqueAddresses, } = sdk.util
+
 
 const config = {
   ethereum: [

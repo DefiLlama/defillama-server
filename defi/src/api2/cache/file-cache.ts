@@ -3,7 +3,8 @@ import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
 import { log, } from '@defillama/sdk'
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 export { PG_CACHE_KEYS }
 
 const CACHE_DIR = getEnv().api2CacheDir;

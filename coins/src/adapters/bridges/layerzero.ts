@@ -4,7 +4,8 @@ import {
 } from "../../scripts/coingeckoUtils";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { fetch } from "../utils";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import { chainIdMap } from "./celer";
 
 export const layerZeroChainMapping: { [key: string]: string } = {

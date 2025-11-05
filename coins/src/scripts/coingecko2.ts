@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
-import { decimals, symbol } from "@defillama/sdk/build/erc20";
+import * as sdk from '@defillama/sdk'
+const { decimals, symbol, } = sdk.erc20
 import ddb, { batchWrite, batchGet } from "../utils/shared/dynamodb";
 import { getCoinPlatformData } from "../utils/coingeckoPlatforms";
 import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";

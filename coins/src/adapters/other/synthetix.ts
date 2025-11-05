@@ -3,7 +3,9 @@ import { Write } from "../utils/dbInterfaces";
 import axios from "axios";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
-import { multiCall } from "@defillama/sdk/build/abi";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import {
   readFromPGCache,
   writeToPGCache,

@@ -1,5 +1,5 @@
 import { util } from "@defillama/sdk";
-import { Chain, } from "@defillama/sdk/build/general";
+type Chain = string
 import providers from "@defillama/sdk/build/providers.json";
 
 const { blocks: { getBlocks, getCurrentBlocks, } } = util

@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
-import { Address } from "@defillama/sdk/build/types";
-import { Chain } from "@defillama/sdk/build/general";
+type Address = string;
+type Chain = string;
 
 export type DollarValues = { [asset: string]: BigNumber };
 export type TokenInsert = {

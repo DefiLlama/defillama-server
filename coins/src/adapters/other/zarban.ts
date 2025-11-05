@@ -1,5 +1,6 @@
 import { Write } from "../utils/dbInterfaces";
-import { call } from "@defillama/sdk/build/abi";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi
 import { addToDBWritesList } from "../utils/database";
 
 const UNISWAP_V3_POOL_ABI = {

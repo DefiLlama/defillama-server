@@ -1,5 +1,5 @@
 import * as sdk from "@defillama/sdk"
-import { sliceIntoChunks } from "@defillama/sdk/build/util"
+const { sliceIntoChunks, } = sdk.util
 import { Op, } from "sequelize"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"

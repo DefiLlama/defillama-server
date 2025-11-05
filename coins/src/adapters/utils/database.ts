@@ -14,7 +14,10 @@ import {
 import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";

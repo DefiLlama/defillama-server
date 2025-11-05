@@ -15,7 +15,7 @@ import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import * as sdk from '@defillama/sdk'
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 import { closeConnection } from "../api2/db";
 

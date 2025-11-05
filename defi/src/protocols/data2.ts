@@ -29106,6 +29106,9 @@ const data2: Protocol[] = [
     twitter: "MetalXApp",
     listedAt: 1677755490,
     parentProtocol: "parent#metalx",
+    dimensions: {
+      dexs: "proton-dex"
+    }
   },
   {
     id: "2620",

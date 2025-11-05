@@ -5023,6 +5023,14 @@ export const chainCoingeckoIds = {
     url: "https://besc.llc/",
     chainId: 2372,
   },
+  "ZIGChain": {
+    geckoId: "zignaly",
+    symbol: "ZIG",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "ZIGChain",
+    url: "https://zigchain.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5241,7 +5249,8 @@ const chainLabelMap = {
   "xone": "Xone Chain",
   "0g": "0G",
   "bittensor_evm": "Bittensor EVM",
-  "besc": "BESC Hyperchain"
+  "besc": "BESC Hyperchain",
+  "zigchain": "ZIGChain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

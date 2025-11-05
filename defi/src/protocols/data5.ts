@@ -107,6 +107,28 @@ const data5: Protocol[] = [
     github: ["luckypeachxyz"],
     listedAt: 1762301789,
   },
+  {
+    id: "6961",
+    name: "OroSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.oroswap.org",
+    description: "OroSwap is an AI-powered automated market maker (AMM) DEX on ZigChain with multiple pool types and fee tiers.",
+    chain: "ZIGChain",
+    logo: `${baseIconsUrl}/oroswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["ZIGChain"],
+    forkedFromIds: [],
+    audit_links: ["https://www.halborn.com/audits/oroswap/cosmwasm-contracts-632648"],
+    module: "oroswap/index.js",
+    twitter: "oroswap",
+    github: ["oroswap"],
+    listedAt: 1762322081,
+  },
 ];
 export default data5;
 

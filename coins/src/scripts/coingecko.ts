@@ -285,7 +285,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               PK: normalizedPK,
               SK: 0,
               created,
-              decimals,
+              decimals: Number(decimals),
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,

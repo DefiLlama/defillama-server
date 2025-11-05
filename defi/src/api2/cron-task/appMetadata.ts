@@ -206,9 +206,12 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
+      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        tvl: hasTvl,
+        ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
@@ -222,7 +225,8 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl != null ? { tvl: true } : {}),
+          ...(hasTvl ? { tvl: true } : {}),
+          ...(hasBorrowed ? { borrowed: true } : {}),
         };
       }
 
@@ -679,6 +683,20 @@ async function _storeAppMetadata() {
     }
 
     const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+    const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
+
+    for (const protocolId in finalProtocols) {
+      const pInfo = protocolInfoMap[protocolId] ?? parentProtocolsInfoMap[protocolId];
+      const protocolName = pInfo?.name as string | undefined;
+      if (!protocolName) continue;
+
+      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
+        finalProtocols[protocolId] = {
+          ...finalProtocols[protocolId],
+          bridge: true,
+        };
+      }
+    }
     const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
     const allEmissionsProtocols = new Set(emmissionsData);
     for (const protocolNameAndId of nameAndIds) {
@@ -697,7 +715,7 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.has(protocolName)) {
+      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
           bridge: true,
@@ -1034,4 +1052,3 @@ setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');
   process.exit(1);
 }, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises
-

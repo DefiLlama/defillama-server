@@ -19356,8 +19356,8 @@ const data2: Protocol[] = [
   {
     id: "2202",
     name: "PRDT",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x854b5f2bfcc5b7cd05d6259cf5d035af57cfa301",
+    symbol: "PRDT",
     url: "https://prdt.finance",
     description:
       "Know where the Market is going? The First Fully Decentralized Cross-Chain Prediction Platform On The Binance Smart Chain and Polygon Network.",
@@ -19365,7 +19365,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/prdt.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "predictions",
     cmcId: null,
     category: "Prediction Market",
     chains: ["Binance", "Polygon"],
@@ -29106,6 +29106,9 @@ const data2: Protocol[] = [
     twitter: "MetalXApp",
     listedAt: 1677755490,
     parentProtocol: "parent#metalx",
+    dimensions: {
+      dexs: "proton-dex"
+    }
   },
   {
     id: "2620",

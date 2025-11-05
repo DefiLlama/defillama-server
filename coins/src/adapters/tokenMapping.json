@@ -1021,10 +1021,20 @@
     }
   },
   "ethereum": {
+    "0x1feCF3d9d4Fee7f2c02917A66028a48C6706c179": {
+      "decimals": "18",
+      "symbol": "WTGXX",
+      "to": "coingecko#usd-coin"
+    },
     "0x9469470C9878bf3d6d0604831d9A3A366156f7EE": {
       "decimals": "18",
       "symbol": "avETH",
       "to": "coingecko#ethereum"
+    },
+    "0x76589A6707a765f499BBF33C7be4db41C1Db7f58": {
+      "decimals": "18",
+      "symbol": "stakedao-llsreUSD",
+      "to": "asset#ethereum:0xc32b0cf36e06c790a568667a17de80cba95a5aad"
     },
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
@@ -2251,6 +2261,11 @@
     }
   },
   "base": {
+    "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
       "decimals": "18",
       "symbol": "vyETH",
@@ -5113,6 +5128,16 @@
     }
   },
   "linea": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0xC7346783f5e645aa998B106Ef9E7f499528673D8": {
       "decimals": "18",
       "symbol": "frxUSD",
@@ -5574,6 +5599,46 @@
     }
   },
   "starknet": {
+    "0x02f5eb9a4f77b6c7c83488418e77329d31eb43219745959948a0fce9580905d9": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0x019110887221c1cb3fa95bbbfce818c88bfd6a74af2c4574b6455dd1bdc9a974": {
+      "decimals": "18",
+      "symbol": "ENA",
+      "to": "coingecko#ethena"
+    },
+    "0x02650ea9af204ba33d4e743ee8ff826b5bec3f5ce497efed832e5c3794483e3c": {
+      "decimals": "18",
+      "symbol": "POL",
+      "to": "coingecko#polygon-ecosystem-token"
+    },
+    "0x03070d5cbd310edc0b2cfe8b11d132e67718b16c7fbfd536ee74ec54a4307ba2": {
+      "decimals": "18",
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "0x02119755fad7cbf637d80cae5d3e8e12487befe6653ddd04432a73f6f569f46b": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
+    "0x01e77aec81ef65db5fb788a5a04fd9d23f6f4c860eb2fb0e99ace5c45b021071": {
+      "decimals": "18",
+      "symbol": "ZRO",
+      "to": "coingecko#layerzero"
+    },
+    "0x060f47b96b525c1014fed595e87e98edc3ce0731627a0670e1804ee1a3ca0ee9": {
+      "decimals": "18",
+      "symbol": "LINK",
+      "to": "coingecko#chainlink"
+    },
+    "0x01E70AeDFfd376afe33CEbdF51ED5365131Dccb2A5B2cb36d02B785442912B9b": {
+      "decimals": "18",
+      "symbol": "SOL",
+      "to": "coingecko#solana"
+    },
     "0x04be8945e61dc3e19ebadd1579a6bd53b262f51ba89e6f8b0c4bc9a7e3c633fc": {
       "decimals": "18",
       "symbol": "mRe7yield",
@@ -10617,7 +10682,7 @@
     "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
       "to": "coingecko#mbtc",
       "decimals": 10,
-      "symbol": "MBTC"
+      "symbol": "mBTC"
     },
     "0x51ffc9885233adf3dd411078cad57535ed1982013dc82d9d6c433a55f2e0035d": {
       "to": "coingecko#kelp-dao-restaked-eth",
@@ -12375,6 +12440,16 @@
     }
   },
   "plasma": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x6100E367285b01F48D07953803A2d8dCA5D19873": {
       "to": "coingecko#wrapped-xpl",
       "decimals": 18,
@@ -12657,7 +12732,7 @@
       "symbol": "ETH"
     }
   }, 
-  "bittensor_evm_mainnet": {
+  "bittensor_evm": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#bittensor",
       "decimals": 18,

@@ -17,6 +17,10 @@ const handler = async (
     if (coin === undefined) {
         return errorResponse({ message: "Coin doesn't exist" })
     }
+
+    if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+
     const response = {
         decimals: coin.decimals,
         symbol: coin.symbol,

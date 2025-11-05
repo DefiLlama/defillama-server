@@ -1,9 +1,9 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { McapData, TokenTvlData, DollarValues } from "./types";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import BigNumber from "bignumber.js";
-import { Address } from "@defillama/sdk/build/types";
+type Address = string;
 import { geckoSymbols, ownTokens, zero } from "./constants";
 import { fetchBridgeTokenList, fetchSupplies } from "./utils";
 import { fetchAdaTokens } from "./adapters/ada";

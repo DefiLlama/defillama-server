@@ -1,6 +1,7 @@
 import PromisePool from "@supercharge/promise-pool";
 import { FinalChainData, FinalData } from "./types";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import { getChainDisplayName, getChainIdFromDisplayName } from "../src/utils/normalizeChain";
 import { storeR2JSONString } from "../src/utils/r2";
 import { getCurrentUnixTimestamp } from "../src/utils/date";

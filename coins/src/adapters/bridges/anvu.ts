@@ -1,3 +1,4 @@
+import { lowercaseAddress } from "../../utils/processCoin";
 import { fetch } from "../utils";
 import { Token } from "./index";
 
@@ -10,10 +11,9 @@ export default async function bridge() {
 
   bridge.map((token) => {
     const { address, symbol, decimals, extensions: { coingeckoId} } = token;
-    if (!coingeckoId) return
     tokens.push({
-      from: `starknet:${address}`,
-      to: `coingecko:${coingeckoId}`,
+      from: lowercaseAddress(`starknet:${address}`),
+      to: `coingecko#${coingeckoId}`,
       symbol,
       decimals,
     });

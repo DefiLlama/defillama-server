@@ -25556,7 +25556,7 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3790",
-    name: "FrankenCoin",
+    name: "Frankencoin",
     address: "0xB58E61C3098d85632Df34EecfB899A1Ed80921cB",
     symbol: "ZCHF",
     url: "https://frankencoin.com",
@@ -42905,14 +42905,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4512",
-    name: "PotatoSwap",
+    name: "PotatoSwap V2",
     address: null,
     symbol: "-",
     url: "https://potatoswap.finance",
     description:
       "Discover Liquidity. Or Potatoes. Or a DEX + Launchpad natively built for the XLayerOfficial ecosystem.",
     chain: "X Layer",
-    logo: `${baseIconsUrl}/potatoswap.jpg`,
+    logo: `${baseIconsUrl}/potatoswap-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -42923,6 +42923,7 @@ const data3_2: Protocol[] = [
     twitter: "PotatoSwap_Fi",
     forkedFromIds: ["2197"],
     listedAt: 1713867184,
+    parentProtocol: "parent#potatoswap",
     dimensions: {
       fees: "potatoswap",
       dexs: "potatoswap"

@@ -6348,7 +6348,7 @@ const data: Protocol[] = [
     category: "Dexs",
     chains: ["Osmosis"],
     module: "osmosis.js",
-    twitter: "osmosiszone",
+    twitter: "osmosis",
     github: ["osmosis-labs"],
     dimensions: {
       fees: "osmosis",
@@ -13935,7 +13935,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Polymarket",
     address: null,
     symbol: "-",
-    url: "https://polymarket.com",
+    url: "https://polymarket.com?via=defi-llama",
+    referralUrl: "https://polymarket.com?via=defi-llama",
     description:
       "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right.",
     chain: "Polygon",

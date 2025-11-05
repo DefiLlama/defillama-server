@@ -10,6 +10,7 @@ interface ICex {
   lastAuditDate?: number;
   auditor?: string | null;
   auditLink?: string | null;
+  ownTokens?: string[] | null;
 }
 
 export const cexsData: Array<ICex> = [
@@ -62,6 +63,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://twitter.com/benbybit/status/1592797790518018048",
     cgId: "bybit_spot",
     cgDeriv: "bybit",
+    ownTokens: ['MNT'],
   },
   /* */
 	{

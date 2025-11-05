@@ -8341,6 +8341,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ShroomyProject",
   },
+  {
+    id: "parent#potatoswap",
+    name: "PotatoSwap",
+    url: "https://potatoswap.finance",
+    description: "Discover Liquidity. Or Potatoes. Or a DEX + Launchpad natively built for the XLayerOfficial ecosystem.",
+    logo: `${baseIconsUrl}/potatoswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PotatoSwap_Fi",
+  },
 ];
 
 export default parentProtocols;

@@ -6348,7 +6348,7 @@ const data: Protocol[] = [
     category: "Dexs",
     chains: ["Osmosis"],
     module: "osmosis.js",
-    twitter: "osmosiszone",
+    twitter: "osmosis",
     github: ["osmosis-labs"],
     dimensions: {
       fees: "osmosis",

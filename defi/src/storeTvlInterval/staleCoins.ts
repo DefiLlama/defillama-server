@@ -112,17 +112,17 @@ export async function notifyStaleCoins() {
   let teamMessage: string = "";
   stored.forEach((d: StaleCoinData) => {
     if (d.usd_amount > 1e11) {
-      console.log(`Skipping ${d.key} with TVL ${d.usd_amount} - too large for stale coin alert`);
+      console.log(`Skipping ${d.key} (${d.symbol}) with TVL ${d.usd_amount} - too large for stale coin alert`);
       return; // ignore 100B+ coins
     }
     let readableTvl: string = humanizeNumber(d.usd_amount);
     message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
       d.percentage
-    }%) because ${d.key} is ${d.latency}h stale`;
+    }%) because ${d.key} (${d.symbol}) is ${d.latency}h stale`;
     if (d.usd_amount > 1e8 && timeout - d.latency < 13) {
       teamMessage += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
         d.percentage
-      }%) because ${d.key} is ${d.latency}h stale`;
+      }%) because ${d.key} (${d.symbol}) is ${d.latency}h stale`;
     }
   });
 

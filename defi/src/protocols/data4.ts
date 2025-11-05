@@ -33721,5 +33721,6 @@ const data4: Protocol[] = [
       derivatives: "infinex-perps"
     }
   },
+  // Please don't add new listings here; please use data5.ts
 ];
 export default data4;

@@ -460,7 +460,7 @@ export const chainCoingeckoIds = {
     symbol: "OSMO",
     cmcId: "12220",
     categories: ["Cosmos"],
-    twitter: "osmosiszone",
+    twitter: "osmosis",
     url: "https://osmosis.zone/"
   },
   "Thorchain": {

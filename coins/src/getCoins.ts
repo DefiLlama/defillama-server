@@ -14,6 +14,10 @@ const handler = async (event: any): Promise<IResponse> => {
   const response = {} as CoinsResponse;
   await Promise.all(
     coins.map(async (coin) => {
+
+    if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+      
       let formattedCoin = {
         decimals: coin.decimals,
         price: coin.price,

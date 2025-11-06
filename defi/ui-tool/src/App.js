@@ -257,14 +257,14 @@ const App = () => {
             Restart Server
           </Button>
 
-{/* 
+
           <Button
             style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
             icon={<ClearOutlined />}
             onClick={clearOutput}
           >
             Clear Output
-          </Button> */}
+          </Button> 
 
           <Button
             style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
@@ -292,7 +292,7 @@ const App = () => {
                   {
                     label: 'dimensions',
                     key: 'dimensions',
-                    children: <div>{getDimensionsRefillForm()}</div>,
+                    children: <div>{GetDimensionsRefillForm()}</div>,
                   },
                   {
                     label: 'tvl',
@@ -333,7 +333,7 @@ const App = () => {
     </ConfigProvider >
   );
 
-  function getDimensionsRefillForm() {
+  function GetDimensionsRefillForm() {
 
 
     // Handle adapter type change

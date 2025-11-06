@@ -1206,7 +1206,8 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "kenseionkatana",
     dimensions: {
-      fees: "kensei"
+      fees: "kensei",
+      dexs: "kensei",
     }
   },
   {

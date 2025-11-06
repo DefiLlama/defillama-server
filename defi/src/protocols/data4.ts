@@ -28738,7 +28738,10 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "EmberProtocol_",
     audit_links: ["https://ember.so/documents/ember_protocol_audit.pdf"],
-    listedAt: 1758144089
+    listedAt: 1758144089,
+    dimensions: {
+      fees: "ember-protocol",
+    }
   },
   {
     id: "6742",

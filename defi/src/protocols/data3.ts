@@ -53624,14 +53624,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4972",
-    name: "Core Bitcoin Bridge",
+    name: "Lombard BTC.b",
     address: null,
     symbol: "-",
-    url: "https://core.app/bridge",
+    url: "https://www.lombard.finance/products-btcb/",
     description:
-      "The Avalanche Bridge™ protocol can be used to transfer BTC or ERC-20s from the Bitcoin or Ethereum networks to the Avalanche® C-Chain and vice versa",
+      "BTC.b — is Bitcoin, bridged — decentralized, non-custodial, permissionless Bitcoin for DeFi.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/core-bitcoin-bridge.png`,
+    logo: `${baseIconsUrl}/lombard.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -53641,7 +53641,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "avalance-btc/index.js",
     audit_links: [],
-    twitter: "@avax",
+    twitter: "@Lombard_Finance",
     listedAt: 1723313207,
   },
   {
@@ -56609,7 +56609,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5097",
-    name: "Lombard",
+    name: "Lombard LBTC",
     address: null,
     symbol: "-",
     assetToken: "LBTC",
@@ -56623,7 +56623,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Restaked BTC",
-    chains: ["Bitcoin", "Ethereum", "Base", "Solana", "Sui", "Katana", "Starknet", "Sonic", "Berachain", "Binance"],
+    chains: ["Bitcoin", "Ethereum"],
     module: "lombard/index.js",
      // https://github.com/DefiLlama/defillama-server/pull/8419
     forkedFrom: [],

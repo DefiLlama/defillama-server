@@ -20903,16 +20903,14 @@ const data4: Protocol[] = [
   {
     id: "6411",
     name: "DipCoin Spot",
-    parentProtocol: "parent#dipcoin",
     address: null,
     symbol: "-",
     url: "https://www.dipcoin.io/swap/",
     description:
       "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
-    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
-    audits: "1",
+    logo: `${baseIconsUrl}/dipcoin-spot.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20920,12 +20918,14 @@ const data4: Protocol[] = [
     chains: ["Sui"],
     module: "dipcoin/index.js",
     forkedFrom: [],
+    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
     twitter: "DipCoinOfficial",
+    parentProtocol: "parent#dipcoin",
     listedAt: 1752078241,
-    dimensions: {
-      fees: "dipcoin",
-      dexs: "dipcoin",
-    }
+    // dimensions: {
+    //   fees: "dipcoin",
+    //   dexs: "dipcoin",
+    // }
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",

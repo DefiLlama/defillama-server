@@ -1695,6 +1695,32 @@ const data5: Protocol[] = [
     twitter: "TurboFlow_xyz",
     listedAt: 1762370757,
   },
+  {
+    id: "6967",
+    name: "DipCoin Perps",
+    parentProtocol: "parent#dipcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.dipcoin.io/perp/",
+    description:
+      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
+    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sui"],
+    module: "dipcoin-perps/index.js",
+    forkedFrom: [],
+    twitter: "DipCoinOfficial",
+    listedAt: 1761820189,
+    dimensions: {
+      fees: "dipcoin-perps",
+      dexs: "dipcoin-perps",
+    }
+  },
 ];
 export default data5;
-

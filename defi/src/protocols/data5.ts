@@ -1096,33 +1096,6 @@ const data5: Protocol[] = [
   },
   {
     id: "6940",
-    name: "DipCoin Perps",
-    parentProtocol: "parent#dipcoin",
-    address: null,
-    symbol: "-",
-    url: "https://www.dipcoin.io/perp/",
-    description:
-      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
-    chain: "Sui",
-    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
-    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
-    audits: "1",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Derivatives",
-    chains: ["Sui"],
-    module: "dipcoin-perps/index.js",
-    forkedFrom: [],
-    twitter: "DipCoinOfficial",
-    listedAt: 1761820189,
-    dimensions: {
-      fees: "dipcoin-perps",
-      dexs: "dipcoin-perps",
-    }
-  },
-  {
-    id: "6941",
     name: "Volo LST",
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX",
@@ -1144,7 +1117,7 @@ const data5: Protocol[] = [
     twitter: "volo_sui",
   },
   {
-    id: "6942",
+    id: "6941",
     name: "THORSwap",
     address: "0xa5f2211b9b8170f694421f2046281775e8468044",
     symbol: "THOR",
@@ -1166,7 +1139,7 @@ const data5: Protocol[] = [
     listedAt: 1762192599
   },
   {
-    id: "6943",
+    id: "6942",
     name: "Aerodrome Ignition",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
@@ -1187,7 +1160,7 @@ const data5: Protocol[] = [
     listedAt: 1762203887
   },
   {
-    id: "6944",
+    id: "6943",
     name: "Brotocol",
     address: null,
     symbol: "-",
@@ -1210,7 +1183,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6945",
+    id: "6944",
     name: "Kensei",
     address: null,
     symbol: "-",
@@ -1233,7 +1206,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6946",
+    id: "6945",
     name: "Unlock Protocol",
     address: null,
     symbol: "-",
@@ -1255,7 +1228,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6947",
+    id: "6946",
     name: "Carina Aggregator",
     address: null,
     symbol: "-",
@@ -1281,7 +1254,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6948",
+    id: "6947",
     name: "P2P.me",
     address: null,
     symbol: "-",
@@ -1304,7 +1277,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6949",
+    id: "6948",
     name: "Obol",
     address: "0x0b010000b7624eb9b3dfbc279673c76e9d29d5f7",
     symbol: "OBOL",
@@ -1325,7 +1298,7 @@ const data5: Protocol[] = [
     listedAt: 1762287672
   },
   {
-    id: "6950",
+    id: "6949",
     name: "Vaultedge",
     address: null,
     symbol: "-",
@@ -1361,7 +1334,7 @@ const data5: Protocol[] = [
     listedAt: 1762287949
   },
   {
-    id: "6951",
+    id: "6950",
     name: "BESCSWAP DEX",
     address: null,
     symbol: "-",
@@ -1382,7 +1355,7 @@ const data5: Protocol[] = [
     listedAt: 1762288314
   },
   {
-    id: "6952",
+    id: "6951",
     name: "Dreamcash",
     address: null,
     symbol: "-",
@@ -1406,7 +1379,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6953",
+    id: "6952",
     name: "HyperSignals",
     address: null,
     symbol: "-",
@@ -1430,7 +1403,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6954",
+    id: "6953",
     name: "Liminal Perps",
     address: null,
     symbol: "-",
@@ -1454,7 +1427,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6955",
+    id: "6954",
     name: "Supercexy",
     address: null,
     symbol: "-",
@@ -1478,7 +1451,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6956",
+    id: "6955",
     name: "Bullpen",
     address: null,
     symbol: "-",
@@ -1502,7 +1475,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6957",
+    id: "6956",
     name: "Infinex",
     address: null,
     symbol: "-",
@@ -1526,7 +1499,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6958",
+    id: "6957",
     name: "Clarity",
     address: "cardano:1e76aaec4869308ef5b61e81ebf229f2e70f75a50223defa087f807b",
     symbol: "CLARITY",
@@ -1548,7 +1521,7 @@ const data5: Protocol[] = [
     listedAt: 1762301111,
   },
   {
-    id: "6959",
+    id: "6958",
     name: "PotatoSwap V3",
     address: null,
     symbol: "-",
@@ -1570,7 +1543,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#potatoswap",
   },
   {
-    id: "6960",
+    id: "6959",
     name: "Lucky Peaches",
     address: null,
     symbol: "-",
@@ -1722,6 +1695,32 @@ const data5: Protocol[] = [
     twitter: "TurboFlow_xyz",
     listedAt: 1762370757,
   },
+  {
+    id: "6967",
+    name: "DipCoin Perps",
+    parentProtocol: "parent#dipcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.dipcoin.io/perp/",
+    description:
+      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
+    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sui"],
+    module: "dipcoin-perps/index.js",
+    forkedFrom: [],
+    twitter: "DipCoinOfficial",
+    listedAt: 1761820189,
+    dimensions: {
+      fees: "dipcoin-perps",
+      dexs: "dipcoin-perps",
+    }
+  },
 ];
 export default data5;
-

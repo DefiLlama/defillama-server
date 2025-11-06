@@ -1762,7 +1762,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Avalanche"],
-    module: "aquaspace/index.js",
+    module: "aquabank/index.js",
     twitter: "Aquabank2025",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/ab/audit.pdf"],
     listedAt: 1762462187,

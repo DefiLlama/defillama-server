@@ -30,6 +30,7 @@
   },
   "include": [
     "src",
+    "api-tests",
     "/**/*.ts"
   ],
   "exclude": [

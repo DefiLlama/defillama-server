@@ -24146,7 +24146,7 @@ const data4: Protocol[] = [
     category: "Interface",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
-    twitter: "liquidperps",
+    twitter: "liquidtrading",
     forkedFromIds: [],
     dimensions: {
       fees: "liquid-perps",
@@ -24287,7 +24287,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["Tokenized Trading Strategies"],
-    chains: ["HashKey Chain"],
+    chains: ["HashKey Chain", "Avalanche"],
     module: "aoabt/index.js",
     twitter: "AssetoFinance",
     forkedFromIds: [],
@@ -25547,9 +25547,10 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "EthStrategy/index.js",
     treasury: "EthStrategy.js",
     twitter: "eth_strategy",
+    listedAt: 1762392113
   },
   {
     id: "6606",
@@ -32272,7 +32273,7 @@ const data4: Protocol[] = [
     twitter: "OREsupply",
     dimensions: {
       fees: "ore"
-    }
+    },
   },
   // Please don't add new listings here; please use data5.ts
 ];

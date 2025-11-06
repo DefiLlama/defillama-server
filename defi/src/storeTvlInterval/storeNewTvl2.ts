@@ -138,12 +138,44 @@ export default async function (
       }
     }
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
+      let tvlFromMissingTokens = 0;
+      let missingTokens: { coin: string, value: number, valueHN: string }[] = [];
+      let highValueDrop: { coin: string, value: number, valueHN: string }[] = [];
+      [...extraSections, "tvl"].forEach(section => {
+        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
+        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
+          const currentTokenUSDTvl = usdTokenBalances[section]?.[coin]
+          if (currentTokenUSDTvl === undefined) {
+            tvlFromMissingTokens += Number(tvl)
+            missingTokens.push({ coin, valueHN: humanizeNumber(tvl as any), value: tvl as number })
+          }
+
+          if (tvl as number > 10e6 && typeof +currentTokenUSDTvl === 'number' && (tvl as number) / 4 > +currentTokenUSDTvl) {
+            const diff = (tvl as number) - (+currentTokenUSDTvl || 0)
+            highValueDrop.push({ coin, valueHN: humanizeNumber(diff as any), value: diff as number })
+          }
+        })
+      })
+
+      missingTokens = missingTokens.sort((a, b) => b.value - a.value)
+      let missingTokenString = missingTokens.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+      missingTokenString = missingTokenString.length ? `missing tokens: ${missingTokenString}` : ""
+      highValueDrop = highValueDrop.sort((a, b) => b.value - a.value)
+      const highValueDropString = highValueDrop.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+      if (highValueDrop.length)
+        missingTokenString += ` high drop: ${highValueDropString}`
+      const lastHourlyTVLHN = humanizeNumber(lastHourlyTVL)
+      const currentTvlHN = humanizeNumber(currentTvl)
+
+      // if tvl was more than 50M send an high severity alert
       if (lastHourlyTVL > 50e6) {
-        await sendMessage(`TVL of ${protocol.name} has dropped from ${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(currentTvl)}. check this asap`, process.env.TEAM_WEBHOOK!)
+        await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVLHN} to ${currentTvlHN}. ${missingTokenString}`, process.env.TEAM_WEBHOOK!)
       }
-      console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${humanizeNumber(currentTvl)}, previous tvl: ${humanizeNumber(lastHourlyTVL)}`)
+
+      console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN} . ${missingTokenString}`)
+
       if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
-        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled.`
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN}. ${missingTokenString}`
         console.log(errorMessage, 'skipping db update')
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
         throw new Error(errorMessage);

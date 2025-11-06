@@ -777,7 +777,8 @@ const data5: Protocol[] = [
     name: "OPINION",
     address: null,
     symbol: "-",
-    url: "https://app.opinion.trade",
+    url: "https://app.opinion.trade?code=hV0KVj",
+    referralUrl: "https://app.opinion.trade?code=hV0KVj",
     description: "Opinion is building a prediction exchange that enables direct trading of macroeconomic data, predictions, and news as standardized assets, leveraging proprietary on-chain infrastructure, AI Oracle, and trading tools to create new opportunities for retail users, institutions, and global decision makers in democratizing economic insights and risk management.",
     chain: "Binance",
     logo: `${baseIconsUrl}/opinion.jpg`,
@@ -936,6 +937,9 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#flow-swap",
     listedAt: 1761871975,
+    dimensions: {
+      dexs: "flowswap-v2"
+    },
   },
   {
     id: "6933",
@@ -1140,7 +1144,7 @@ const data5: Protocol[] = [
     twitter: "volo_sui",
   },
   {
-    id: "6941",
+    id: "6942",
     name: "THORSwap",
     address: "0xa5f2211b9b8170f694421f2046281775e8468044",
     symbol: "THOR",
@@ -1162,7 +1166,7 @@ const data5: Protocol[] = [
     listedAt: 1762192599
   },
   {
-    id: "6942",
+    id: "6943",
     name: "Aerodrome Ignition",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
@@ -1183,7 +1187,7 @@ const data5: Protocol[] = [
     listedAt: 1762203887
   },
   {
-    id: "6943",
+    id: "6944",
     name: "Brotocol",
     address: null,
     symbol: "-",
@@ -1206,7 +1210,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6944",
+    id: "6945",
     name: "Kensei",
     address: null,
     symbol: "-",
@@ -1229,7 +1233,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6945",
+    id: "6946",
     name: "Unlock Protocol",
     address: null,
     symbol: "-",
@@ -1251,7 +1255,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6946",
+    id: "6947",
     name: "Carina Aggregator",
     address: null,
     symbol: "-",
@@ -1277,7 +1281,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6947",
+    id: "6948",
     name: "P2P.me",
     address: null,
     symbol: "-",
@@ -1300,18 +1304,18 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6948",
+    id: "6949",
     name: "Obol",
-    address: null,
-    symbol: "-",
+    address: "0x0b010000b7624eb9b3dfbc279673c76e9d29d5f7",
+    symbol: "OBOL",
     url: "https://obol.org/",
     description: "The Obol Collective is the largest Decentralized Operator Ecosystem. Powered by Obol Distributed Validators, the end game of Ethereum staking.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/obol.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "obol-2",
+    cmcId: "36278",
     category: "Staking Pool",
     chains: ["Ethereum"],
     forkedFromIds: [],
@@ -1321,7 +1325,7 @@ const data5: Protocol[] = [
     listedAt: 1762287672
   },
   {
-    id: "6949",
+    id: "6950",
     name: "Vaultedge",
     address: null,
     symbol: "-",
@@ -1357,7 +1361,7 @@ const data5: Protocol[] = [
     listedAt: 1762287949
   },
   {
-    id: "6950",
+    id: "6951",
     name: "BESCSWAP DEX",
     address: null,
     symbol: "-",
@@ -1378,7 +1382,7 @@ const data5: Protocol[] = [
     listedAt: 1762288314
   },
   {
-    id: "6951",
+    id: "6952",
     name: "Dreamcash",
     address: null,
     symbol: "-",
@@ -1402,7 +1406,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6952",
+    id: "6953",
     name: "HyperSignals",
     address: null,
     symbol: "-",
@@ -1426,7 +1430,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6953",
+    id: "6954",
     name: "Liminal Perps",
     address: null,
     symbol: "-",
@@ -1450,7 +1454,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6954",
+    id: "6955",
     name: "Supercexy",
     address: null,
     symbol: "-",
@@ -1474,7 +1478,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6955",
+    id: "6956",
     name: "Bullpen",
     address: null,
     symbol: "-",
@@ -1498,7 +1502,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6956",
+    id: "6957",
     name: "Infinex",
     address: null,
     symbol: "-",
@@ -1522,7 +1526,7 @@ const data5: Protocol[] = [
     }
   },
   {
-    id: "6957",
+    id: "6958",
     name: "Clarity",
     address: "cardano:1e76aaec4869308ef5b61e81ebf229f2e70f75a50223defa087f807b",
     symbol: "CLARITY",
@@ -1544,7 +1548,7 @@ const data5: Protocol[] = [
     listedAt: 1762301111,
   },
   {
-    id: "6958",
+    id: "6959",
     name: "PotatoSwap V3",
     address: null,
     symbol: "-",
@@ -1566,7 +1570,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#potatoswap",
   },
   {
-    id: "6959",
+    id: "6960",
     name: "Lucky Peaches",
     address: null,
     symbol: "-",
@@ -1586,6 +1590,137 @@ const data5: Protocol[] = [
     twitter: "luckypeachxyz",
     github: ["luckypeachxyz"],
     listedAt: 1762301789,
+  },
+  {
+    id: "6961",
+    name: "OroSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.oroswap.org",
+    description: "OroSwap is an AI-powered automated market maker (AMM) DEX on ZigChain with multiple pool types and fee tiers.",
+    chain: "ZIGChain",
+    logo: `${baseIconsUrl}/oroswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["ZIGChain"],
+    forkedFromIds: [],
+    audit_links: ["https://www.halborn.com/audits/oroswap/cosmwasm-contracts-632648"],
+    module: "oroswap/index.js",
+    twitter: "oroswap",
+    github: ["oroswap"],
+    listedAt: 1762322081,
+  },
+  {
+    id: "6962",
+    name: "DFlow",
+    address: null,
+    symbol: "-",
+    url: "https://dflow.net/",
+    description: "High-precision, low-latency Solana DEX aggregator.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dflow.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "DFlowProtocol",
+    dimensions: {
+      aggregators: "dflow"
+    }
+  },
+  {
+    id: "6963",
+    name: "RockSolid Network",
+    address: null,
+    symbol: "-",
+    url: "https://rocksolid.network/",
+    description: "RockSolid is a single-click integrated DeFi Vault platform that makes it simple for users to access the best DeFi rewards.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rocksolid-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "RockSolid/index.js",
+    twitter: "rocksolidhq",
+    listedAt: 1762370739,
+  },
+  {
+    id: "6964",
+    name: "Makina Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.makina.finance/",
+    description: "Makina the most advanced DeFi Execution Engine empowering sophisticated Operators to execute onchain yield strategies which maximize risk-adjusted return.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/makina-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: ["https://docs.makina.finance/concepts/security/audits"],
+    module: "makina-finance/index.js",
+    twitter: "makinafi",
+    github: ["MakinaHQ"],
+    listedAt: 1762370744,
+  },
+  {
+    id: "6965",
+    name: "KaspaCom Dex",
+    address: null,
+    symbol: "-",
+    url: "https://defi.kaspa.com/swap",
+    description: "KaspaCom, The Leading Kaspa DEX & Token Launchpad for the Community, by the Community.",
+    chain: "Kasplex",
+    logo: `${baseIconsUrl}/kaspacom-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Kasplex"],
+    forkedFromIds: ["2197"],
+    audit_links: [],
+    module: "kaspacom-dex/index.js",
+    twitter: "KaspaCom",
+    github: ["KASPACOM"],
+    listedAt: 1762370751,
+  },
+  {
+    id: "6966",
+    name: "TurboFlow",
+    address: null,
+    symbol: "-",
+    url: "https://www.turboflow.xyz/home",
+    description: "The most retail-friendly PerpDEX, where retail trades like pros.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/turboflow.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance", "Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "turboflow/index.js",
+    twitter: "TurboFlow_xyz",
+    listedAt: 1762370757,
   },
 ];
 export default data5;

@@ -1632,7 +1632,7 @@ const data5: Protocol[] = [
   },
   {
     id: "6964",
-    name: "Makina Finance",
+    name: "Makina",
     address: null,
     symbol: "-",
     url: "https://app.makina.finance/",

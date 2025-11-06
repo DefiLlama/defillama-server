@@ -1695,6 +1695,29 @@ const data5: Protocol[] = [
     twitter: "TurboFlow_xyz",
     listedAt: 1762370757,
   },
+  {
+    id: "6967",
+    name: "Lombard BTC.b",
+    address: null,
+    symbol: "-",
+    url: "https://www.lombard.finance/products-btcb/",
+    description:
+      "BTC.b — is Bitcoin, bridged — decentralized, non-custodial, permissionless Bitcoin for DeFi",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lombard.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "lombard-btcb/index.js",
+    audit_links: [],
+    twitter: "Lombard_Finance",
+    parentProtocol: "parent#lombard-finance",
+    listedAt: 1762387200, // Nov 06 2025
+  },
 ];
 export default data5;
 

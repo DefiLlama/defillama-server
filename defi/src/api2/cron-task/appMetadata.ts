@@ -215,7 +215,6 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(bridgeCategoriesSet.has(protocol.category) ? { bridge: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -682,19 +681,13 @@ async function _storeAppMetadata() {
       };
     }
 
-    const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+    
     const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
 
     for (const protocolId in finalProtocols) {
-      const pInfo = protocolInfoMap[protocolId] ?? parentProtocolsInfoMap[protocolId];
-      const protocolName = pInfo?.name as string | undefined;
-      if (!protocolName) continue;
-
-      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
-        finalProtocols[protocolId] = {
-          ...finalProtocols[protocolId],
-          bridge: true,
-        };
+      const protocolSlug = (finalProtocols[protocolId] as any)?.name;
+      if (protocolSlug && bridgesBySlug.has(protocolSlug)) {
+        finalProtocols[protocolId] = { ...finalProtocols[protocolId], bridge: true };
       }
     }
     const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
@@ -715,12 +708,6 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.has(protocolName) || bridgesBySlug.has(slug(protocolName))) {
-        finalProtocols[protocolId] = {
-          ...finalProtocols[protocolId],
-          bridge: true,
-        };
-      }
 
       if (allNftMarketplaces.has(protocolName)) {
         finalProtocols[protocolId] = {

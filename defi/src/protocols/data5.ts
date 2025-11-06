@@ -417,7 +417,7 @@ const data5: Protocol[] = [
     chains: ["Ethereal"],
     forkedFrom: [],
     oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://docs.ethereal.trade/trading/perpetual-futures/price-oracles"] }, 
+      { name: "Pyth", type: "Primary", proof: ["https://docs.ethereal.trade/trading/perpetual-futures/price-oracles"] },
     ],
     module: "ethereal-dex/index.js",
     twitter: "etherealdex",
@@ -961,6 +961,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#flow-swap",
     listedAt: 1761871981,
+    dimensions: {
+      dexs: "flowswap-v3",
+      fees: "flowswap-v3",
+    }
   },
   {
     id: "6934",

@@ -34,6 +34,5 @@ src/api2/.api2-cache
 dimension-adapters
 DefiLlama-Adapters
 
-validation_report.json
-coverage/
+test-results
 junit.xml

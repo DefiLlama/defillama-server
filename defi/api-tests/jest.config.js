@@ -16,11 +16,12 @@ module.exports = {
   detectOpenHandles: true,
   forceExit: true,
   maxWorkers: 1,
+  randomize: true,
   reporters: [
-    'default',
-    ['jest-junit', {
+    "default", "jest-junit",
+    ['./discord-reporter.js', {
       outputDirectory: './test-results',
-      outputName: 'junit.xml',
+      outputName: 'junit-discord.xml',
     }]
   ],
   coverageDirectory: './coverage',

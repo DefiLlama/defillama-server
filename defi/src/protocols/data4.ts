@@ -21710,7 +21710,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.ostrich.exchange/platform/audit-reports"],
     listedAt: 1752655880,
     dimensions: {
-      derivatives: "ostrich"
+      // derivatives: "ostrich", // fake, unverified volume, last check 08-11-2025
     }
   },
   {

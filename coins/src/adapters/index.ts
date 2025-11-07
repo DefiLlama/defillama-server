@@ -106,6 +106,7 @@ export default {
   pxeth: require("./liquidStaking/pxeth"),
   // sthApt: require("./liquidStaking/sthapt"),
   truAPT: require("./liquidStaking/truapt"),
+  suiLST: require("./liquidStaking/sui-lst"),
   mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),

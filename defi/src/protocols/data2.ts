@@ -428,7 +428,10 @@ const data2: Protocol[] = [
     treasury: "kromatika.js",
     listedAt: 1644597183,
     github: ["Kromatika-Finance"],
-    audit_links: ["https://skynet.certik.com/projects/kromatika"]
+    audit_links: ["https://skynet.certik.com/projects/kromatika"],
+    dimensions: {
+      fees: "kromatika",
+    }
   },
   {
     id: "1398",

@@ -9,7 +9,6 @@ type Config = {
   rate: (params: any) => Promise<number>;
   address: string;
   underlying?: string;
-  underlyingChain?: string;
   symbol?: string;
   decimals?: number;
   confidence?: number;
@@ -41,24 +40,6 @@ const configs: { [adapter: string]: Config } = {
     address: "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
     underlying: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
   },
-  weETHarb: {
-    rate: async ({ timestamp }) => {
-      const api = await getApi("ethereum", timestamp, true);
-      const raw = await api.call({
-        abi: "function getEETHByWeETH(uint256) view returns (uint256)",
-        target: "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-        params: [1e10],
-        chain: "ethereum",
-      });
-      return raw / 10 ** 10;
-    },
-    chain: "arbitrum",
-    address: "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
-    underlying: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
-    underlyingChain: "ethereum",
-    symbol: "weETH",
-    decimals: 18,
-  },
   wstmtrg: {
     rate: async ({ api }) => {
       const raw = await api.call({
@@ -75,8 +56,7 @@ const configs: { [adapter: string]: Config } = {
     },
     chain: "meter",
     address: "0xe2de616fbd8cb9180b26fcfb1b761a232fe56717",
-    underlying: "0xbd2949f67dcdc549c6ebe98696449fa79d988a9f",
-    underlyingChain: "bsc",
+    underlying: "0x0000000000000000000000000000000000000000",
     symbol: "wstMTRG",
     decimals: 18,
   },
@@ -611,7 +591,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     chain,
     underlying,
     address,
-    underlyingChain,
     symbol,
     decimals,
     confidence,
@@ -629,7 +608,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
 
   const writes: Write[] = [];
   return await getWrites({
-    underlyingChain,
     chain,
     timestamp,
     pricesObject,

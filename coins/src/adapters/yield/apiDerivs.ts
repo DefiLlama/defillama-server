@@ -11,7 +11,6 @@ type Config = {
   rate: (params: any) => Promise<number>;
   address: string;
   underlying: string;
-  underlyingChain?: string;
   symbol?: string;
   decimals?: string;
   confidence?: number;
@@ -50,11 +49,10 @@ const configs: { [adapter: string]: Config } = {
         throw new Error(`LiNEAR subgraph stale rate`);
       return price;
     },
-    underlyingChain: "ethereum",
     decimals: "0",
     chain: "coingecko",
     address: "linear-protocol",
-    underlying: "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
+    underlying: "wrap.near",
     symbol: "LINEAR",
     confidence: 1.01,
   },
@@ -191,9 +189,8 @@ const configs: { [adapter: string]: Config } = {
       return data.exchange_rate;
     },
     chain: "terra2",
-    address: "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
+    address: "uluna",
     underlying: "terra-luna-2",
-    underlyingChain: "coingecko",
     decimals: "6",
     symbol: "ampLUNA",
   },
@@ -282,8 +279,7 @@ const configs: { [adapter: string]: Config } = {
     },
     chain: "terra2",
     address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
-    underlying: "terra-luna-2",
-    underlyingChain: "coingecko",
+    underlying: "uluna",
     decimals: "6",
     symbol: "bLUNA",
   },
@@ -296,8 +292,7 @@ const configs: { [adapter: string]: Config } = {
     },
     chain: "solana",
     address: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
-    underlying: "usd-coin",
-    underlyingChain: "coingecko",
+    underlying: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     decimals: "6",
     symbol: "ALP",
   },
@@ -330,7 +325,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     chain,
     underlying,
     address,
-    underlyingChain,
     symbol,
     decimals,
     confidence,
@@ -349,7 +343,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   const writes: Write[] = [];
   return (
     await getWrites({
-      underlyingChain,
       chain,
       timestamp,
       pricesObject,

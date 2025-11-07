@@ -20902,15 +20902,15 @@ const data4: Protocol[] = [
   },
   {
     id: "6411",
-    name: "DipCoin AMM",
+    name: "DipCoin Spot",
     address: null,
     symbol: "-",
-    url: "https://www.dipcoin.io/",
+    url: "https://www.dipcoin.io/swap/",
     description:
-      "DipCoin DEX is a decentralized exchange on the SUI ecosystem offering swaps, liquidity pools, and perpetual trading.",
+      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/dipcoin-spot.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20918,8 +20918,14 @@ const data4: Protocol[] = [
     chains: ["Sui"],
     module: "dipcoin/index.js",
     forkedFrom: [],
+    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
     twitter: "DipCoinOfficial",
+    parentProtocol: "parent#dipcoin",
     listedAt: 1752078241,
+    // dimensions: {
+    //   fees: "dipcoin",
+    //   dexs: "dipcoin",
+    // }
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",
@@ -28732,7 +28738,10 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     twitter: "EmberProtocol_",
     audit_links: ["https://ember.so/documents/ember_protocol_audit.pdf"],
-    listedAt: 1758144089
+    listedAt: 1758144089,
+    dimensions: {
+      fees: "ember-protocol",
+    }
   },
   {
     id: "6742",

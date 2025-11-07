@@ -5,7 +5,6 @@ type Config = {
   rate: () => Promise<number>;
   address: string;
   underlying?: string;
-  underlyingChain?: string;
   decimals: number;
 };
 
@@ -49,9 +48,8 @@ const configs: { [adapter: string]: Config } = {
       });
       return res[1] / 10 ** 9;
     },
-    underlyingChain: "ethereum",
     address: "EQCup4xxCulCcNwmOocM9HtDYPU8xe0449tQLp6a-5BLEegW",
-    underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    underlying: "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
     decimals: 9,
   },
   TON_STORM: {
@@ -62,9 +60,8 @@ const configs: { [adapter: string]: Config } = {
       });
       return res[1] / 10 ** 9;
     },
-    underlyingChain: "ethereum",
     address: "EQCNY2AQ3ZDYwJAqx_nzl9i9Xhd_Ex7izKJM6JTxXRnO6n1F",
-    underlying: "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+    underlying: "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c",
     decimals: 9,
   },
 };
@@ -77,15 +74,13 @@ export async function tonDerivs(timestamp: number) {
 }
 
 async function deriv(symbol: string, config: Config) {
-  const { rate, underlying, address, underlyingChain, decimals } = config;
+  const { rate, underlying, address, decimals } = config;
 
   return await getWrites({
-    underlyingChain,
     chain: "ton",
     timestamp: 0,
     pricesObject: {
       [address]: {
-        underlyingChain,
         underlying,
         symbol,
         decimals,

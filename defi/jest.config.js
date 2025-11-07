@@ -1,16 +1,13 @@
 
+// Jest config
 module.exports = {
-  roots: ['<rootDir>/src', '<rootDir>/api-tests/src'],
+  roots: ['<rootDir>/src', '<rootDir>/api-tests'],
   testRegex: '(.*\\.test\\.(tsx?|jsx?))$',
   transform: {
-    '^.+\\.ts$': ['ts-jest', {
-      tsconfig: {
-        isolatedModules: true,
-      },
-      diagnostics: false,
-    }],
+    '^.+\\.ts$': 'ts-jest',
     '^.+\\.js$': 'babel-jest',
   },
+  // preset: "jest-dynalite",
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   transformIgnorePatterns: [
     '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
@@ -22,4 +19,11 @@ module.exports = {
   ci: false,
   cacheDirectory: '/tmp/jest-cache',
   testEnvironment: "node",
+  globals: {
+    "ts-jest": {
+      transpileOnly: true,
+      isolatedModules: true,
+      diagnostics: false,
+    }
+  }
 }

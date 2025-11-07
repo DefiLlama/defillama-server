@@ -6,74 +6,49 @@ Type-safe API testing framework for DefiLlama endpoints using Jest and TypeScrip
 
 ```
 api-tests/
+├── jest.config.js
 ├── src/
-│   ├── tvl/              # TVL category
-│   │   ├── setup.ts      # Shared client initialization
-│   │   ├── types.ts      # Category-specific types
-│   │   ├── protocols.test.ts
-│   │   └── charts.test.ts
-│   ├── stablecoins/      # Add tests here
-│   └── ...
+│   ├── tvl/          # Example: TVL category
+│   │   ├── setup.ts
+│   │   ├── types.ts
+│   │   └── protocols.test.ts
+│   └── ...           # Add more categories
 └── utils/
-    ├── config/           # API client & endpoints config
-    ├── testHelpers.ts    # Common assertions
-    └── validators.ts     # Response validators
+    ├── config/
+    ├── testHelpers.ts
+    └── validators.ts
 ```
 
-Uses parent `defi` folder configurations (jest.config.js, tsconfig.json, .gitignore, .env).
+## Test Structure
 
-## Category Pattern
+Each test file follows this pattern:
 
-Each category follows this structure:
+### 1. Basic Response Validation (Common)
+- Successful response with valid structure
+- Required fields present
+- Consistent data structure
+- Unique identifiers
 
-**setup.ts** - Initialize and cache API client
-```typescript
-import { createApiClient, ApiClient } from '../../utils/config/apiClient';
-import { TVL_ENDPOINTS } from '../../utils/config/endpoints';
+### 2. Data Validation (Endpoint-specific)
+- Core data fields validation
+- Sorting/ordering checks
+- Nested data structures
 
-let apiClient: ApiClient | null = null;
+### 3. Metadata (Endpoint-specific)
+- Categories, chains, timestamps
+- URLs, logos, external links
+- Relationships (parent protocols, etc.)
 
-export function initializeTvlTests(): ApiClient {
-  if (!apiClient) {
-    apiClient = createApiClient(TVL_ENDPOINTS.BASE_URL);
-  }
-  return apiClient;
-}
-
-export { TVL_ENDPOINTS };
-```
-
-**types.ts** - Category-specific TypeScript types
-```typescript
-export interface Protocol {
-  id: string;
-  name: string;
-  tvl: number;
-}
-```
-
-**\*.test.ts** - Test files using setup and types
-```typescript
-import { initializeTvlTests, TVL_ENDPOINTS } from './setup';
-import { Protocol } from './types';
-
-describe('TVL API - Protocols', () => {
-  const apiClient = initializeTvlTests();
-
-  it('should return protocols', async () => {
-    const response = await apiClient.get<Protocol[]>(TVL_ENDPOINTS.PROTOCOLS);
-    expect(response.status).toBe(200);
-  });
-});
-```
+### 4. Edge Cases (Endpoint-specific)
+- Null/empty values
+- Optional fields
+- Extreme values (very large/small)
 
 ## Environment Setup
 
-Add these variables to `defi/.env`:
-
+Add to `defi/.env`:
 ```bash
 BASE_API_URL='https://api.llama.fi'
-BETA_API_URL='https://api.llama.fi'
 BETA_COINS_URL='https://coins.llama.fi'
 BETA_STABLECOINS_URL='https://stablecoins.llama.fi'
 BETA_YIELDS_URL='https://yields.llama.fi'
@@ -83,26 +58,20 @@ BETA_PRO_API_URL='https://pro-api.llama.fi'
 
 ## Running Tests
 
-From `defi` directory:
 ```bash
-npm run test:api              # Run all API tests
+# From defi directory
+npm run test:api              # All tests
 npm run test:api:watch        # Watch mode
 npm run test:api:coverage     # With coverage
+
+# From api-tests directory
+npm test                      # All tests
+npm test -- src/tvl           # Specific category
 ```
 
-## Adding New Category
+## Adding New Endpoint Tests
 
-1. **Create folder**: `src/your-category/`
-
-2. **Add endpoint** in `utils/config/endpoints.ts`:
-```typescript
-export const YOUR_ENDPOINTS = {
-  BASE_URL: BASE_URLS.YOUR_CATEGORY,
-  ENDPOINT: '/path',
-} as const;
-```
-
-3. **Create `setup.ts`**:
+### 1. Create setup.ts
 ```typescript
 import { createApiClient, ApiClient } from '../../utils/config/apiClient';
 import { YOUR_ENDPOINTS } from '../../utils/config/endpoints';
@@ -119,28 +88,63 @@ export function initializeYourTests(): ApiClient {
 export { YOUR_ENDPOINTS };
 ```
 
-4. **Create `types.ts`** with category-specific types
+### 2. Create types.ts
+```typescript
+export interface YourType {
+  id: string;
+  name: string;
+  // ... fields
+}
+```
 
-5. **Write tests** using the setup and types
+### 3. Create endpoint.test.ts
+```typescript
+describe('Category - Endpoint', () => {
+  const apiClient = initializeYourTests();
+  let response: ApiResponse<YourType[]>;
+
+  beforeAll(async () => {
+    response = await apiClient.get(YOUR_ENDPOINTS.ENDPOINT);
+  });
+
+  describe('Basic Response Validation', () => {
+    it('should return successful response with valid structure', () => {
+      expectSuccessfulResponse(response);
+      expectArrayResponse(response);
+      expectNonEmptyArray(response.data);
+    });
+
+    it('should have required fields', () => {
+      expectArrayItemsHaveKeys(response.data, ['id', 'name']);
+    });
+  });
+
+  describe('Data Validation', () => {
+    // Add endpoint-specific validation
+  });
+
+  describe('Edge Cases', () => {
+    // Add endpoint-specific edge cases
+  });
+});
+```
 
 ## Available Helpers
 
 **utils/testHelpers.ts**
-- `expectSuccessfulResponse(response)` - Check 2xx status
-- `expectArrayResponse(response)` - Validate array response
-- `expectNonEmptyArray(data)` - Check array has items
-- `expectValidNumber(value)` - Validate number
-- `expectNonNegativeNumber(value)` - Check value >= 0
-- `expectValidTimestamp(timestamp)` - Validate Unix timestamp
+- `expectSuccessfulResponse(response)` - Check 2xx
+- `expectArrayResponse(response)` - Validate array
+- `expectValidNumber(value)` - Check valid number
+- `expectNonNegativeNumber(value)` - Check >= 0
+- `expectNonEmptyString(value)` - Check non-empty string
 
 **utils/validators.ts**
-- `validateProtocol(protocol)` - Validate protocol structure
-- `validateChartDataPoint(point)` - Validate chart data
-- `validateArray(data, validator)` - Validate array with custom validator
+- `validateProtocol(protocol)` - Validate structure
+- `validateArray(data, validator)` - Validate all items
 
 ## CI/CD
 
-**Jenkins**
+### Jenkins
 ```groovy
 stage('API Tests') {
   steps {
@@ -149,10 +153,18 @@ stage('API Tests') {
 }
 ```
 
-**GitHub Actions**
+### GitHub Actions
 ```yaml
 - run: cd defi && npm run test:api
 ```
+
+## Best Practices
+
+1. **Cache responses** - Use `beforeAll` to fetch once
+2. **Group by purpose** - Basic → Data → Metadata → Edge Cases
+3. **Test samples** - Don't iterate all items (use `.slice(0, 10)`)
+4. **Combine similar checks** - Don't create separate tests for each field
+5. **Keep it simple** - Avoid over-engineering
 
 ## API Docs
 

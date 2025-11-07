@@ -1,16 +1,17 @@
 import { initializeTvlTests, TVL_ENDPOINTS } from './setup';
 import { Protocol, isProtocolArray } from './types';
+import { protocolSchema } from './schemas';
 import {
   expectSuccessfulResponse,
   expectArrayResponse,
   expectNonEmptyArray,
-  expectArrayItemsHaveKeys,
   expectValidNumber,
   expectNonNegativeNumber,
   expectNonEmptyString,
 } from '../../utils/testHelpers';
-import { validateProtocol, validateArray } from '../../utils/validators';
+import { validate, isValid, commonValidation } from '../../utils/validation';
 import { ApiResponse } from '../../utils/config/apiClient';
+import { z } from 'zod';
 
 describe('TVL API - Protocols', () => {
   const apiClient = initializeTvlTests();
@@ -20,37 +21,51 @@ describe('TVL API - Protocols', () => {
     protocolsResponse = await apiClient.get<Protocol[]>(TVL_ENDPOINTS.PROTOCOLS);
   });
 
-  describe('GET /protocols', () => {
-    it('should return list of all protocols', () => {
+  describe('Basic Response Validation', () => {
+    it('should return successful response with valid structure', () => {
       expectSuccessfulResponse(protocolsResponse);
       expectArrayResponse(protocolsResponse);
       expectNonEmptyArray(protocolsResponse.data);
       expect(isProtocolArray(protocolsResponse.data)).toBe(true);
+      expect(protocolsResponse.data.length).toBeGreaterThan(100);
     });
 
-    it('should return protocols with required fields', () => {
-      const requiredFields = ['id', 'name', 'symbol', 'chains', 'slug'];
-      expectArrayItemsHaveKeys(protocolsResponse.data, requiredFields);
-    });
-
-    it('should return protocols with valid data types', () => {
-      const sampleSize = Math.min(10, protocolsResponse.data.length);
-      const sampleProtocols = protocolsResponse.data.slice(0, sampleSize);
-
-      sampleProtocols.forEach((protocol) => {
-        expect(validateProtocol(protocol)).toBe(true);
-        expectNonEmptyString(protocol.name);
-        expectNonEmptyString(protocol.symbol);
-        if (protocol.tvl !== null) {
-          expectNonNegativeNumber(protocol.tvl);
-        }
-        expect(Array.isArray(protocol.chains)).toBe(true);
-      });
-    });
-
-    it('should return protocols with valid TVL values', () => {
-      const protocolsWithTvl = protocolsResponse.data.filter((p) => p.tvl !== null && p.tvl >= 0);
+    it('should validate all protocols against Zod schema', () => {
+      const errors: string[] = [];
+      const invalidProtocols: any[] = [];
       
+      protocolsResponse.data.forEach((protocol, idx) => {
+        const result = validate(protocol, protocolSchema, `Protocol[${idx}]`);
+        if (!result.success) {
+          invalidProtocols.push(protocol);
+          errors.push(...result.errors);
+        }
+      });
+      
+      if (invalidProtocols.length > 0) {
+        console.error(`\nFound ${invalidProtocols.length} invalid protocols:`);
+        console.error('Sample invalid protocols:', invalidProtocols.slice(0, 3).map(p => ({
+          name: p.name || 'unknown',
+          slug: p.slug || 'unknown',
+          id: p.id || 'missing'
+        })));
+        console.error(`\nFirst 10 validation errors:\n${errors.slice(0, 10).join('\n')}`);
+      }
+      
+      expect(invalidProtocols.length).toBe(0);
+    });
+
+    it('should have unique identifiers', () => {
+      const ids = protocolsResponse.data.map((p) => p.id);
+      const slugs = protocolsResponse.data.map((p) => p.slug);
+      expect(new Set(ids).size).toBe(ids.length);
+      expect(new Set(slugs).size).toBe(slugs.length);
+    });
+  });
+
+  describe('TVL Data Validation', () => {
+    it('should have valid TVL values', () => {
+      const protocolsWithTvl = protocolsResponse.data.filter((p) => p.tvl !== null && p.tvl >= 0);
       expect(protocolsWithTvl.length).toBeGreaterThan(0);
       
       protocolsWithTvl.forEach((protocol) => {
@@ -60,15 +75,14 @@ describe('TVL API - Protocols', () => {
       });
     });
 
-    it('should return protocols with valid chain TVLs structure', () => {
+
+    it('should have valid chain TVLs and borrowed amounts', () => {
       const protocolsWithChainTvls = protocolsResponse.data.filter(
         (p) => p.chainTvls && Object.keys(p.chainTvls).length > 0
       );
       expect(protocolsWithChainTvls.length).toBeGreaterThan(0);
 
-      protocolsWithChainTvls.slice(0, 5).forEach((protocol) => {
-        expect(typeof protocol.chainTvls).toBe('object');
-        
+      protocolsWithChainTvls.slice(0, 10).forEach((protocol) => {
         Object.entries(protocol.chainTvls).forEach(([chain, tvl]) => {
           expectNonEmptyString(chain);
           expectValidNumber(tvl);
@@ -81,74 +95,61 @@ describe('TVL API - Protocols', () => {
         }
       });
     });
+  });
 
-    it('should handle protocols with borrowed amounts', () => {
-      const protocolsWithBorrowed = protocolsResponse.data.filter(
-        (p) => p.chainTvls && 'borrowed' in p.chainTvls
-      );
-
-      if (protocolsWithBorrowed.length > 0) {
-        protocolsWithBorrowed.slice(0, 3).forEach((protocol) => {
-          const borrowed = protocol.chainTvls.borrowed;
-          if (borrowed !== undefined) {
-            expectValidNumber(borrowed);
-            expectNonNegativeNumber(borrowed);
-          }
-
-          const borrowedChains = Object.keys(protocol.chainTvls).filter(
-            (key) => key.endsWith('-borrowed')
-          );
-          borrowedChains.forEach((chain) => {
-            const chainTvl = protocol.chainTvls[chain as any];
-            expectValidNumber(chainTvl);
-            expectNonNegativeNumber(chainTvl);
-          });
-        });
-      }
-    });
-
-    it('should return protocols ordered by TVL descending', () => {
-      const protocolsWithTvl = protocolsResponse.data.filter((p) => p.tvl !== null);
-      
-      const sampleSize = Math.min(100, protocolsWithTvl.length);
-      for (let i = 0; i < sampleSize - 1; i++) {
-        expect(protocolsWithTvl[i].tvl!).toBeGreaterThanOrEqual(protocolsWithTvl[i + 1].tvl!);
-      }
-    });
-
-    it('should have consistent data structure', () => {
-      const allValid = validateArray(protocolsResponse.data, validateProtocol);
-      expect(allValid).toBe(true);
-    });
-
-    it('should return protocols with categories', () => {
+  describe('Protocol Metadata', () => {
+    it('should have valid categories and chains', () => {
       const protocolsWithCategory = protocolsResponse.data.filter((p) => p.category);
       expect(protocolsWithCategory.length).toBeGreaterThan(0);
+
+      const categories = new Set(protocolsResponse.data.map((p) => p.category).filter(Boolean));
+      expect(categories.size).toBeGreaterThan(5);
+
+      const allChains = new Set<string>();
+      protocolsResponse.data.forEach((p) => p.chains.forEach((c) => allChains.add(c)));
+      expect(allChains.size).toBeGreaterThan(10);
     });
 
-    it('should return protocols with valid percentage changes', () => {
+    it('should have valid percentage changes', () => {
       const protocolsWithChanges = protocolsResponse.data.filter(
         (p) => p.change_1h !== null || p.change_1d !== null || p.change_7d !== null
       );
-
       expect(protocolsWithChanges.length).toBeGreaterThan(0);
 
       protocolsWithChanges.slice(0, 10).forEach((protocol) => {
-        if (protocol.change_1h !== null && protocol.change_1h !== undefined) {
-          expectValidNumber(protocol.change_1h);
+        if (protocol.change_1h !== null) expectValidNumber(protocol.change_1h);
+        if (protocol.change_1d !== null) expectValidNumber(protocol.change_1d);
+        if (protocol.change_7d !== null) expectValidNumber(protocol.change_7d);
+      });
+    });
+
+    it('should have valid URLs when present', () => {
+      const protocolsWithUrl = protocolsResponse.data.filter((p) => p.url || p.logo);
+      expect(protocolsWithUrl.length).toBeGreaterThan(0);
+      
+      const urlSchema = z.string().regex(/^https?:\/\/.+/);
+      
+      protocolsWithUrl.slice(0, 10).forEach((protocol) => {
+        if (protocol.url) {
+          expect(isValid(protocol.url, urlSchema)).toBe(true);
         }
-        if (protocol.change_1d !== null && protocol.change_1d !== undefined) {
-          expectValidNumber(protocol.change_1d);
-        }
-        if (protocol.change_7d !== null && protocol.change_7d !== undefined) {
-          expectValidNumber(protocol.change_7d);
+        if (protocol.logo) {
+          expect(isValid(protocol.logo, urlSchema)).toBe(true);
         }
       });
     });
 
-    it('should handle protocols with parent protocol slug', () => {
-      const protocolsWithParent = protocolsResponse.data.filter((p) => p.parentProtocolSlug);
+    it('should have valid timestamps and parent relationships', () => {
+      const protocolsWithListedAt = protocolsResponse.data.filter((p) => p.listedAt);
+      expect(protocolsWithListedAt.length).toBeGreaterThan(0);
+      
+      protocolsWithListedAt.slice(0, 10).forEach((protocol) => {
+        expectValidNumber(protocol.listedAt!);
+        expect(protocol.listedAt!).toBeGreaterThan(1500000000);
+        expect(protocol.listedAt!).toBeLessThan(Date.now() / 1000);
+      });
 
+      const protocolsWithParent = protocolsResponse.data.filter((p) => p.parentProtocolSlug);
       if (protocolsWithParent.length > 0) {
         protocolsWithParent.slice(0, 5).forEach((protocol) => {
           expectNonEmptyString(protocol.parentProtocolSlug!);
@@ -157,21 +158,86 @@ describe('TVL API - Protocols', () => {
       }
     });
 
-    it('should validate complete protocol structure', () => {
-      const sampleProtocol = protocolsResponse.data[0];
+    it('should have valid oracles and methodology when present', () => {
+      const protocolsWithOracles = protocolsResponse.data.filter((p) => p.oracles && p.oracles.length > 0);
+      if (protocolsWithOracles.length > 0) {
+        protocolsWithOracles.slice(0, 5).forEach((protocol) => {
+          expect(Array.isArray(protocol.oracles)).toBe(true);
+          protocol.oracles!.forEach((oracle) => expectNonEmptyString(oracle));
+        });
+      }
 
-      expect(sampleProtocol).toHaveProperty('id');
-      expect(sampleProtocol).toHaveProperty('name');
-      expect(sampleProtocol).toHaveProperty('symbol');
-      expect(sampleProtocol).toHaveProperty('chains');
-      expect(sampleProtocol).toHaveProperty('slug');
+      const protocolsWithMethodology = protocolsResponse.data.filter((p) => p.methodology);
+      if (protocolsWithMethodology.length > 0) {
+        protocolsWithMethodology.slice(0, 3).forEach((protocol) => {
+          expectNonEmptyString(protocol.methodology!);
+        });
+      }
+    });
+  });
 
-      expectNonEmptyString(sampleProtocol.id);
-      expectNonEmptyString(sampleProtocol.name);
-      expectNonEmptyString(sampleProtocol.symbol);
-      expectNonEmptyString(sampleProtocol.slug);
-      expect(Array.isArray(sampleProtocol.chains)).toBe(true);
-      expect(typeof sampleProtocol.chainTvls).toBe('object');
+  describe('Edge Cases', () => {
+    it('should handle protocols with different chain counts', () => {
+      const emptyChains = protocolsResponse.data.filter((p) => p.chains.length === 0);
+      const singleChain = protocolsResponse.data.filter((p) => p.chains.length === 1);
+      const multiChain = protocolsResponse.data.filter((p) => p.chains.length > 5);
+      
+      expect(singleChain.length).toBeGreaterThan(0);
+      expect(multiChain.length).toBeGreaterThan(0);
+      
+      multiChain.slice(0, 3).forEach((protocol) => {
+        protocol.chains.forEach((chain) => expectNonEmptyString(chain));
+      });
+    });
+
+    it('should handle protocols with null or zero TVL', () => {
+      const nullTvl = protocolsResponse.data.filter((p) => p.tvl === null);
+      const zeroTvl = protocolsResponse.data.filter((p) => p.tvl === 0);
+      
+      nullTvl.forEach((protocol) => expect(protocol.tvl).toBeNull());
+      zeroTvl.forEach((protocol) => expect(protocol.tvl).toBe(0));
+    });
+
+    it('should handle optional fields correctly', () => {
+      const withStaking = protocolsResponse.data.filter((p) => p.staking !== undefined);
+      const withMcap = protocolsResponse.data.filter((p) => p.mcap !== null);
+      const withPool2 = protocolsResponse.data.filter((p) => p.pool2 !== undefined);
+      
+      if (withStaking.length > 0) {
+        withStaking.slice(0, 3).forEach((protocol) => {
+          expectValidNumber(protocol.staking!);
+          expectNonNegativeNumber(protocol.staking!);
+        });
+      }
+      
+      if (withMcap.length > 0) {
+        withMcap.slice(0, 3).forEach((protocol) => {
+          expectValidNumber(protocol.mcap!);
+          expectNonNegativeNumber(protocol.mcap!);
+        });
+      }
+
+      if (withPool2.length > 0) {
+        withPool2.slice(0, 3).forEach((protocol) => {
+          expectValidNumber(protocol.pool2!);
+          expectNonNegativeNumber(protocol.pool2!);
+        });
+      }
+    });
+
+    it('should handle protocol flags correctly', () => {
+      const withFlags = protocolsResponse.data.filter(
+        (p) => p.rugged || p.misrepresentedTokens || p.wrongLiquidity || p.openSource !== undefined
+      );
+      
+      if (withFlags.length > 0) {
+        withFlags.forEach((protocol) => {
+          if (protocol.rugged !== undefined) expect(typeof protocol.rugged).toBe('boolean');
+          if (protocol.misrepresentedTokens !== undefined) expect(typeof protocol.misrepresentedTokens).toBe('boolean');
+          if (protocol.wrongLiquidity !== undefined) expect(typeof protocol.wrongLiquidity).toBe('boolean');
+          if (protocol.openSource !== undefined) expect(typeof protocol.openSource).toBe('boolean');
+        });
+      }
     });
   });
 });

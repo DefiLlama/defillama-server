@@ -16,9 +16,9 @@
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:api": "jest --testPathPattern=api-tests --maxWorkers=1",
-    "test:api:watch": "jest --testPathPattern=api-tests --maxWorkers=1 --watch",
-    "test:api:coverage": "jest --testPathPattern=api-tests --maxWorkers=1 --coverage",
+    "test:api": "cd api-tests && jest",
+    "test:api:watch": "cd api-tests && jest --watch",
+    "test:api:coverage": "cd api-tests && jest --coverage",
     "pretest": "npm run prebuild",
     "build": "sls package",
     "updateAdapters": "node -e \"console.log('No longer needed')\"",
@@ -130,7 +130,8 @@
     "promise.allsettled": "^1.0.5",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
-    "typeorm": "^0.3.11"
+    "typeorm": "^0.3.11",
+    "zod": "^4.1.12"
   },
   "pnpm": {
     "overrides": {

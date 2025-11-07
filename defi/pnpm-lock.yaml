@@ -122,6 +122,9 @@ importers:
       typeorm:
         specifier: ^0.3.11
         version: 0.3.27(pg-query-stream@4.10.3(pg@8.16.3))(pg@8.16.3)(reflect-metadata@0.1.14)(ts-node@10.9.2(@types/node@18.19.130)(typescript@5.9.3))
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.18.2
@@ -6132,6 +6135,9 @@ packages:
   zip-stream@4.1.1:
     resolution: {integrity: sha512-9qv4rlDiopXg4E69k+vMHjNN63YFMe9sZMrdlvKnCjlCRWeCBswPPMPUfx+ipsAWq1LXHe70RcbaHdJJpS6hyQ==}
     engines: {node: '>= 10'}
+
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
 snapshots:
 
@@ -14214,3 +14220,5 @@ snapshots:
       archiver-utils: 3.0.4
       compress-commons: 4.1.2
       readable-stream: 3.6.2
+
+  zod@4.1.12: {}

@@ -1,99 +1,53 @@
-export interface ChainTvl {
-  [chain: number]: number;
-  borrowed?: number;
+// TypeScript types for TVL API endpoints
+// These types are inferred from Zod schemas to ensure consistency
+// Source reference: defi/src/protocols/types.ts
+
+import { z } from 'zod';
+import {
+  protocolSchema,
+  protocolDetailsSchema,
+  chartDataPointSchema,
+  historicalDataPointSchema,
+  historicalTvlPointSchema,
+  chainSchema,
+  chainTvlSchema,
+  tokenTvlSchema,
+} from './schemas';
+
+export type Protocol = z.infer<typeof protocolSchema>;
+export type ProtocolDetails = z.infer<typeof protocolDetailsSchema>;
+export type ChartDataPoint = z.infer<typeof chartDataPointSchema>;
+export type HistoricalDataPoint = z.infer<typeof historicalDataPointSchema>;
+export type HistoricalTvlPoint = z.infer<typeof historicalTvlPointSchema>;
+export type Chain = z.infer<typeof chainSchema>;
+export type ChainTvl = z.infer<typeof chainTvlSchema>;
+export type TokenTvl = z.infer<typeof tokenTvlSchema>;
+
+
+// ============================================================================
+// Type Guards
+// ============================================================================
+
+export function isProtocol(data: unknown): data is Protocol {
+  return protocolSchema.safeParse(data).success;
 }
 
-export interface TokenTvl {
-  [token: string]: number;
+export function isProtocolArray(data: unknown): data is Protocol[] {
+  return Array.isArray(data) && (data.length === 0 || isProtocol(data[0]));
 }
 
-export interface ProtocolTvl {
-  tvl: number;
-  chainTvls?: ChainTvl;
-  tokens?: TokenTvl;
-  tokensInUsd?: TokenTvl;
+export function isProtocolDetails(data: unknown): data is ProtocolDetails {
+  return protocolDetailsSchema.safeParse(data).success;
 }
 
-export interface Protocol {
-  id: string;
-  name: string;
-  address?: string | null;
-  symbol: string;
-  url?: string;
-  description?: string;
-  chain?: string;
-  logo?: string;
-  gecko_id?: string | null;
-  cmcId?: string | null;
-  category?: string;
-  chains: string[];
-  module?: string;
-  twitter?: string;
-  forkedFrom?: string[];
-  oracles?: string[];
-  listedAt?: number;
-  slug: string;
-  tvl: number | null;
-  chainTvls: ChainTvl;
-  change_1h?: number | null;
-  change_1d?: number | null;
-  change_7d?: number | null;
-  tokenBreakdowns?: Record<string, TokenTvl>;
-  mcap?: number | null;
-  parentProtocolSlug?: string;
-  staking?: number;
-  dimensions?: any;
+export function isChartDataPoint(data: unknown): data is ChartDataPoint {
+  return chartDataPointSchema.safeParse(data).success;
 }
 
-export interface HistoricalDataPoint {
-  date: number;
-  totalLiquidityUSD: number;
+export function isChartDataArray(data: unknown): data is ChartDataPoint[] {
+  return Array.isArray(data) && (data.length === 0 || isChartDataPoint(data[0]));
 }
 
-export interface ProtocolDetails extends Omit<Protocol, 'tvl' | 'chainTvls'> {
-  otherProtocols?: string[];
-  hallmarks?: Array<[number, string]>;
-  currentChainTvls?: ChainTvl;
-  chainTvls?: Record<string, any>;
-  tokensInUsd?: any[];
-  tokens?: any[];
-  tvl?: HistoricalDataPoint[] | number;
-  methodology?: string;
-  misrepresentedTokens?: boolean;
-  raises?: Array<{
-    date?: string;
-    round?: string;
-    amount?: number;
-  }>;
-}
-
-export interface ChartDataPoint {
-  date: string | number;
-  totalLiquidityUSD: number;
-}
-
-export interface HistoricalTvlPoint {
-  date: number;
-  tvl: number;
-}
-
-export interface Chain {
-  gecko_id: string | null;
-  tvl: number;
-  tokenSymbol: string | null;
-  cmcId: string | null;
-  name: string;
-  chainId?: number;
-}
-
-export function isProtocolArray(data: any): data is Protocol[] {
-  return Array.isArray(data) && (data.length === 0 || ('name' in data[0] && 'tvl' in data[0]));
-}
-
-export function isProtocolDetails(data: any): data is ProtocolDetails {
-  return data && typeof data === 'object' && 'name' in data && 'tvl' in data;
-}
-
-export function isChartData(data: any): data is ChartDataPoint[] {
-  return Array.isArray(data) && (data.length === 0 || ('date' in data[0] && 'totalLiquidityUSD' in data[0]));
+export function isChain(data: unknown): data is Chain {
+  return chainSchema.safeParse(data).success;
 }

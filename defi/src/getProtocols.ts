@@ -51,6 +51,8 @@ const majors = [
   "mETH",
 ].map((t) => t.toUpperCase());
 export const stablecoins = [
+  "USD₮0", 
+  "USD₮",
   "USDT",
   "USDC",
   "DAI",

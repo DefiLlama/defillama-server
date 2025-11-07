@@ -122,9 +122,6 @@ importers:
       typeorm:
         specifier: ^0.3.11
         version: 0.3.27(pg-query-stream@4.10.3(pg@8.16.3))(pg@8.16.3)(reflect-metadata@0.1.14)(ts-node@10.9.2(@types/node@18.19.130)(typescript@5.9.3))
-      zod:
-        specifier: ^4.1.12
-        version: 4.1.12
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.18.2
@@ -195,6 +192,9 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.9.3
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
 
 packages:
 

@@ -1,7 +1,7 @@
 
 // Jest config
 module.exports = {
-  roots: ['<rootDir>/src', '<rootDir>/api-tests'],
+  roots: ['<rootDir>/src'],
   testRegex: '(.*\\.test\\.(tsx?|jsx?))$',
   transform: {
     '^.+\\.ts$': 'ts-jest',

@@ -1868,7 +1868,7 @@ const data5: Protocol[] = [
     description:
       "BTC.b — is Bitcoin, bridged — decentralized, non-custodial, permissionless Bitcoin for DeFi",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/lombard.jpg`,
+    logo: `${baseIconsUrl}/lombard-btc.b.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

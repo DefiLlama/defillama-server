@@ -1881,6 +1881,29 @@ const data5: Protocol[] = [
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
     listedAt: 1762584613, 
-   }
+   },
+   {
+    id: "6975",
+    name: "Astros Perp",
+    address: null,
+    symbol: "-",
+    url: "https://astros.ag/perp",
+    description:
+      "Astros Perp DEX is the next-generation on-chain perp dex on the Sui Network to deliver unmatched performance and scalability.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/astros-perp.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sui"],
+    module: "astros-perp/index.js",
+    twitter: "astros_ag",
+    forkedFromIds: [],
+    audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FEagmjVMVJsuZQ0TvRYt7%2Fuploads%2Fg2IKp2ER5qhU3uX1Nr85%2F20250311-Navi-Perp-Vault-Final-Audit-Report.pdf?alt=media&token=34b676be-3da6-4be3-bce5-7a31bd214d5f"],
+    listedAt: 1762584873,
+    parentProtocol: "parent#navi-protocol",
+  },
 ];
 export default data5;

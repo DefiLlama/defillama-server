@@ -177,6 +177,9 @@ const data5: Protocol[] = [
     twitter: "Marquee_fi",
     audit_links: ["https://docs.marquee.fi/audit"],
     listedAt: 1761170602,
+    dimensions: {
+      fees: "marquee",
+    }
   },
   {
     id: "6900",
@@ -1722,10 +1725,10 @@ const data5: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
-    // dimensions: {
-    //   fees: "dipcoin-perps",
-    //   dexs: "dipcoin-perps",
-    // }
+    dimensions: {
+      fees: "dipcoin-perps",
+      derivatives: "dipcoin-perps",
+    }
   },
   {
     id: "6968",

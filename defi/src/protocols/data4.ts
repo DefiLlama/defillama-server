@@ -20922,10 +20922,10 @@ const data4: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1752078241,
-    // dimensions: {
-    //   fees: "dipcoin",
-    //   dexs: "dipcoin",
-    // }
+    dimensions: {
+      fees: "dipcoin-spot",
+      dexs: "dipcoin-spot",
+    }
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",

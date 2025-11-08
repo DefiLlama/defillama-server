@@ -1905,5 +1905,27 @@ const data5: Protocol[] = [
     listedAt: 1762584873,
     parentProtocol: "parent#navi-protocol",
   },
+  {
+    id: "6975",
+    name: "B-Lucky",
+    address: "bsc:0x67b47971426bb2180453b3993ff2ec319e704444",
+    symbol: "LUCKY",
+    url: "https://b-lucky.gg/",
+    description:
+      "B-Lucky is revolutionizing the lottery industry by bringing it fully on-chain. Unlike traditional lotteries that operate behind closed doors, our protocol is completely transparent, trustless, and permissionless. Built on the Binance Smart Chain, B-Lucky leverages blockchain technology to ensure fairness, transparency, and instant payouts. Every draw, every ticket, and every prize is verifiable on-chain.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/b-lucky.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "lucky",
+    cmcId: null,
+    category: "Luck Games",
+    chains: ["Binance"],
+    module: "b-lucky/index.js",
+    twitter: "BLuckygg",
+    forkedFromIds: [],
+    audit_links: ["https://b-lucky.gg/audit/bailsec.pdf"],
+    listedAt: 1762585347,
+  },
 ];
 export default data5;

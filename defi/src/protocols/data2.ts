@@ -15115,6 +15115,9 @@ const data2: Protocol[] = [
       "https://tokeninsight.com/zh/report/2558",
     ],
     listedAt: 1661595828,
+    dimensions: {
+      dexs: "bifrost-dex"
+    }
   },
   {
     id: "2029",

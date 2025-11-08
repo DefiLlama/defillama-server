@@ -1406,6 +1406,9 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
     twitter: "BifrostFinance",
+    dimensions: {
+      fees: "bifrost-chain"
+    },
     url: "https://bifrost.finance/"
   },
   "Stafi": {

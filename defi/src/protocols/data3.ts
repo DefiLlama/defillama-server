@@ -56689,7 +56689,7 @@ const data3_2: Protocol[] = [
     description:
       "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/lombard.jpg`,
+    logo: `${baseIconsUrl}/lombard-lbtc.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

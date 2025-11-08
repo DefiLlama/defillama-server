@@ -5031,6 +5031,15 @@ export const chainCoingeckoIds = {
     twitter: "ZIGChain",
     url: "https://zigchain.com/"
   },
+  "Zenrock": {
+    geckoId: "zenrock",
+    symbol: "ROCK",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "zenrock",
+    url: "https://www.zenrocklabs.io/",
+    github: ["Zenrock-Foundation"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

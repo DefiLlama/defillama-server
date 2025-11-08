@@ -177,6 +177,9 @@ const data5: Protocol[] = [
     twitter: "Marquee_fi",
     audit_links: ["https://docs.marquee.fi/audit"],
     listedAt: 1761170602,
+    dimensions: {
+      fees: "marquee",
+    }
   },
   {
     id: "6900",
@@ -1721,10 +1724,10 @@ const data5: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
-    // dimensions: {
-    //   fees: "dipcoin-perps",
-    //   dexs: "dipcoin-perps",
-    // }
+    dimensions: {
+      fees: "dipcoin-perps",
+      derivatives: "dipcoin-perps",
+    }
   },
   {
     id: "6968",
@@ -1836,6 +1839,27 @@ const data5: Protocol[] = [
   },
   {
     id: "6973",
+    name: "Zenrock Bridge",
+    address: "solana:5VsPJ2EG7jjo3k2LPzQVriENKKQkNUTzujEzuaj4Aisf",
+    symbol: "ROCK",
+    url: "https://www.zenrocklabs.io/",
+    description: "Zenrock is building the decentralized custody standard for the onchain economy, replacing centralized vaults with distributed multi-party computation (dMPC) that eliminates single points of failure. Through its Decentralized Custody Token (DCT) standard and purpose-built zrChain Layer 1, Zenrock creates secure, yield-bearing wrapped assets like zenBTC and zenZEC that are issued on Solana. By anchoring custody to simple wallet infrastructure secured by cryptography rather than trusted intermediaries, Zenrock transforms custody from crypto's most fragile layer into its strongest.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/zenrock.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFromIds: [],
+    module: "inswap/index.js",
+    twitter: "zenrock",
+    audit_links: [],
+    listedAt: 1762582037,
+  },
+  {
+    id: "6974",
     name: "Lombard BTC.b",
     address: null,
     symbol: "-",
@@ -1850,12 +1874,12 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Bitcoin"],
-    forkedFrom: [],
+    forkedFromIds: [],
     module: "lombard-btcb/index.js",
     audit_links: [],
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
     listedAt: 1762387200, // Nov 06 2025
-  },
+   }
 ];
 export default data5;

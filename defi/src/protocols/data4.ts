@@ -20922,10 +20922,10 @@ const data4: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1752078241,
-    // dimensions: {
-    //   fees: "dipcoin",
-    //   dexs: "dipcoin",
-    // }
+    dimensions: {
+      fees: "dipcoin-spot",
+      dexs: "dipcoin-spot",
+    }
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",
@@ -21710,7 +21710,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.ostrich.exchange/platform/audit-reports"],
     listedAt: 1752655880,
     dimensions: {
-      derivatives: "ostrich"
+      // derivatives: "ostrich", // fake, unverified volume, last check 08-11-2025
     }
   },
   {

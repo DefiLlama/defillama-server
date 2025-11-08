@@ -63,7 +63,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#rho",
     listedAt: 1761100587,
     dimensions: {
-      derivatives: "rho-x"
+      derivatives: "rho-x",
+      "open-interest": "rho-trading"
     }
   },
   // { duplicate listing: Counts LPs for Skate AMM on 0G

@@ -23786,7 +23786,7 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3711",
-    name: "Volo",
+    name: "Volo Vault",
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX", // parentProtocol governance token
     assetToken: "vSUI",
@@ -23794,7 +23794,7 @@ const data3_1: Protocol[] = [
     description:
       "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/volo.png`,
+    logo: `${baseIconsUrl}/volo-vaults.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

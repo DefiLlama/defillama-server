@@ -30726,6 +30726,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#grvt",
     dimensions: {
       derivatives: "grvt-perps",
+      "open-interest": "grvt-perps"
    }
   },
   {

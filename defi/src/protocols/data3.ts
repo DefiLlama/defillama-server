@@ -57727,7 +57727,7 @@ const data3_2: Protocol[] = [
     url: "https://www.lombard.finance/app/vault",
     description: `Lombard’s DeFi Vault is designed to bridge the gap between bitcoin and DeFi, by offering LBTC holders one-click access to DeFi yields without any of the complexities. It accepts LBTC, a liquid staked token representation of Bitcoin, as well WBTC and seeks to capture the highest risk-adjusted yields derived from multiple DeFi strategies. `,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lombard-vault.jpg`,
+    logo: `${baseIconsUrl}/lombard-vaults.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

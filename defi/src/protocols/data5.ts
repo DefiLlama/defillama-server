@@ -1927,5 +1927,30 @@ const data5: Protocol[] = [
     audit_links: ["https://b-lucky.gg/audit/bailsec.pdf"],
     listedAt: 1762585347,
   },
+  {
+    id: "6976",
+    name: "DoubleZero Staked SOL",
+    address: "solana:J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+    symbol: "2Z",
+    assetToken: "dzSOL",
+    url: "https://doublezero.xyz/",
+    description:
+      "DoubleZero Staked SOL is a staking pool on the Solana network that allows users to stake their SOL and earn rewards.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/doublezero-staked-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "doublezero",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "doublezero-staked-sol",
+    }
+  },
 ];
 export default data5;

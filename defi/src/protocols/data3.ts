@@ -53708,7 +53708,7 @@ const data3_2: Protocol[] = [
     module: "avalance-btc/index.js",
     audit_links: [],
     twitter: "@avax",
-    parentProtocol: "",
+    //parentProtocol: "",
     listedAt: 1723313207,
   },
   {

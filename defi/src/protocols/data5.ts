@@ -1704,6 +1704,7 @@ const data5: Protocol[] = [
     listedAt: 1762370757,
   },
   {
+    id: "6967",
     name: "DipCoin Perps",
     address: null,
     symbol: "-",
@@ -1853,7 +1854,7 @@ const data5: Protocol[] = [
     category: "Bridge",
     chains: ["Bitcoin"],
     forkedFromIds: [],
-    module: "inswap/index.js",
+    module: "zenrock/index.js",
     twitter: "zenrock",
     audit_links: [],
     listedAt: 1762582037,
@@ -1879,7 +1880,7 @@ const data5: Protocol[] = [
     audit_links: [],
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
-    listedAt: 1762387200, // Nov 06 2025
+    listedAt: 1762584613, 
    }
 ];
 export default data5;

@@ -8347,7 +8347,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.dipcoin.io",
     description:
       "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
-    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
+    logo: `${baseIconsUrl}/dipcoin.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

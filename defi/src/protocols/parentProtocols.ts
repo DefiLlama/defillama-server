@@ -1549,6 +1549,7 @@ const parentProtocols: IParentProtocol[] = [
       //  "snapshot:sovrynbitocracy.eth",
     ],
     github: ["DistributedCollective"],
+    stablecoins: ["sovryn-dollar"],
   },
   {
     id: "parent#polynomial-protocol",
@@ -3069,6 +3070,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "22743",
     chains: [],
     twitter: "nostrafinance",
+    stablecoins: ["uno"],
   },
   {
     id: "parent#vapordex",
@@ -3095,7 +3097,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SkyEcosystem",
     treasury: "maker.js",
-    stablecoins: ["dai"],
+    stablecoins: ["dai", "sky-dollar"],
     github: ["makerdao"],
   },
   {
@@ -5964,6 +5966,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35429",
     chains: [],
     twitter: "solayer_labs",
+    stablecoins: ["solayer-usd"],
   },
   {
     id: "parent#swapmode",
@@ -7268,6 +7271,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SmarDex",
+    stablecoins: ["smardex-usdn"],
   },
   {
     id: "parent#felix",
@@ -7597,6 +7601,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "figuremarkets",
+    stablecoins: ["ylds"],
   },
   {
     id: "parent#orca",
@@ -7881,6 +7886,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OndoFinance",
     github: ["ondoprotocol"],
+    stablecoins: ["ondo-us-dollar-yield"],
   },
   {
     id: "parent#defituna",
@@ -8169,6 +8175,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MetaMask",
     github: ["MetaMask"],
+    stablecoins: ["metamask-usd"],
   },
   {
     id: "parent#reya",

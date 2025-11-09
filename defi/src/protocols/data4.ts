@@ -9646,6 +9646,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PicWeGlobal",
     audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
+    stablecoins: ["weusd"],
     listedAt: 1743002205,
   },
   {
@@ -9902,6 +9903,7 @@ const data4: Protocol[] = [
     github: ["resupplyfi"],
     treasury: "resupply.js",
     listedAt: 1743178567,
+    stablecoins: ["resupply-usd"],
     dimensions: {
       fees: "resupply"
     }
@@ -11355,6 +11357,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "mainstreet/index.js",
     twitter: "Main_St_Finance",
+    stablecoins: ["main-street-usd"],
     listedAt: 1744280825,
   },
   {
@@ -12639,6 +12642,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/SolomonLabs/solana-program-audits-public"],
     github: ["SolomonLabs"],
+    stablecoins: ["solomon-usdv"],
     listedAt: 1745349218,
   },
   {
@@ -14288,6 +14292,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     github: ["yalaorg"],
     audit_links: ["https://docs.yala.org/security-audits"],
+    stablecoins: ["yu"],
     listedAt: 1746625641,
     dimensions: {
       fees: "yala"
@@ -14710,6 +14715,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rootsfi.com/essentials/audits"],
     github: ["roots-fi"],
     listedAt: 1747077337,
+    stablecoins: ["mead"],
     dimensions: {
       fees: "roots"
     }
@@ -15325,6 +15331,7 @@ const data4: Protocol[] = [
     module: "usdai/index.js",
     twitter: "USDai_Official",
     audit_links: ["https://docs.usd.ai/technical-overview/audits"],
+    stablecoins: ["usdai"],
     listedAt: 1747659245,
   },
   {
@@ -16857,6 +16864,7 @@ const data4: Protocol[] = [
     ],
     module: "bima-labs-cdp/index.js",
     twitter: "BimaBTC",
+    stablecoins: ["usbd"],
     listedAt: 1748465209,
   },
   {
@@ -19244,6 +19252,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     treasury: "unitas.js",
     audit_links: ["http://github.com/UnipayFi/Audit"],
+    stablecoins: ["unitas"],
     listedAt: 1750434543,
   },
   {
@@ -22257,6 +22266,7 @@ const data4: Protocol[] = [
     module: "sigma-protocol/index.js",
     twitter: "sigmadotmoney",
     audit_links: ["https://docs.sigma.money/risk-management/audit-reports"],
+    stablecoins: ["sigma-money-bnbusd"],
     listedAt: 1753201182,
   },
   {
@@ -28653,6 +28663,7 @@ const data4: Protocol[] = [
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14996"]
       }
     ],
+    stablecoins: ["xsy-uty"],
     listedAt: 1758064577
   },
   {

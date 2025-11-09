@@ -26571,6 +26571,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFromIds: ["114"],
     listedAt: 1642626305,
+    stablecoins: ["agora-dollar"],
     warningBanners: [
       {
         message: "Agora has some red flags and multiple users have reported concerns. Be careful.",

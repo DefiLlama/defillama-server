@@ -23966,6 +23966,7 @@ const data2: Protocol[] = [
     twitter: "GyroStable",
     forkedFrom: [],
     oracles: ["Chainlink", "TWAP", "Balancer Pool LP token"],
+    stablecoins: ["gyroscope-gyd"],
     audit_links: ["https://docs.gyro.finance/gyroscope-protocol/audit-reports"],
     listedAt: 1672424905,
     dimensions: {

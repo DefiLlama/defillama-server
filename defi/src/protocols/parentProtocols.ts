@@ -1481,6 +1481,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThalaLabs",
     github: ["ThalaLabs"],
+    stablecoins: ["move-dollar"],
   },
   {
     id: "parent#stake.link",

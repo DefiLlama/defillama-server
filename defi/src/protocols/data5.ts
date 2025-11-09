@@ -1793,7 +1793,7 @@ const data5: Protocol[] = [
     chains: ["Binance"],
     module: "utopia/index.js",
     twitter: "UtopiaBNB",
-    audit_links: [],
+    audit_links: ["https://github.com/cyberscope-io/audits/blob/main/1-utopia/miner.pdf"],
     listedAt: 1762462477,
   },
   {

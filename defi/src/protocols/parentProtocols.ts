@@ -24,6 +24,7 @@ const parentProtocols: IParentProtocol[] = [
     ],
     wrongLiquidity: true, // missing balancer v1 pool
     github: ["aave", "bgd-labs"],
+    stablecoins: ["gho"]
   },
   {
     id: "parent#sushi",
@@ -241,6 +242,7 @@ const parentProtocols: IParentProtocol[] = [
       "compound:ethereum:0xd74034c6109a23b6c7657144cacbbbb82bdcb00e", //FXS
     ],
     github: ["FraxFinance"],
+    stablecoins: ["frax-usd"],
   },
   {
     id: "parent#compound-finance",
@@ -4854,6 +4856,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35577",
     chains: [],
     twitter: "AnzenFinance",
+    stablecoins: ["anzen-usdz"],
   },
   {
     id: "parent#bladeswap",
@@ -5553,6 +5556,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["avalonfinancexyz"],
     twitter: "avalonfinance_",
+    stablecoins: ["avalon-usda"]
   },
   /*
   {
@@ -6010,6 +6014,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "36341",
     chains: [],
     twitter: "Aster_DEX",
+    stablecoins: ["astherus"],
   },
   {
     id: "parent#zkswap-finance",
@@ -6318,6 +6323,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dtrinity_defi",
     github: ["dtrinity"],
+    stablecoins: ["dtrinity-usd"],
   },
   {
     id: "parent#silo-finance",
@@ -7274,6 +7280,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "felixprotocol",
+    stablecoins: ["felix-feusd"],
   },
     {
     id: "parent#seedfi",
@@ -7308,6 +7315,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "asymmetryfin",
     github: ["asymmetryfinance"],
+    stablecoins: ["asymmetry-usdaf","asymmetry-usdaf-v2"],
   },
   {
     id: "parent#the-vault",
@@ -7342,6 +7350,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "avantprotocol",
+    stablecoins: ["avant-usd"],
   },
   {
     id: "parent#matrixdock",
@@ -7845,6 +7854,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "hylo_so",
+    stablecoins: ["hylo-hyusd"],
   },
   {
     id: "parent#beanstalk",
@@ -7858,6 +7868,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BeanstalkFarms",
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
+    stablecoins: ["bean"],
   },
   {
     id: "parent#ondo-finance",

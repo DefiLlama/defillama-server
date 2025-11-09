@@ -23289,6 +23289,7 @@ const data3_1: Protocol[] = [
     module: "hydt/index.js",
     twitter: "HydtProtocol",
     audit_links: ["https://www.cyberscope.io/audits/hydt"],
+    stablecoins: ["hydt"],
     listedAt: 1698157836,
   },
   {
@@ -23512,7 +23513,8 @@ const data3_1: Protocol[] = [
     listedAt: 1698280827,
     dimensions: {
       fees: "hashnote-usyc"
-    }
+    },
+    stablecoins: ["circle-usyc"],
   },
   {
     id: "3699",
@@ -37843,6 +37845,7 @@ const data3_2: Protocol[] = [
     twitter: "letsgethai",
     audit_links: ["https://github.com/hai-on-op/audit-reports"],
     github: ["hai-on-op"],
+    stablecoins: ["lets-get-hai"],
     listedAt: 1710426403,
   },
   {
@@ -66568,6 +66571,7 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     module: "agoric/index.js",
     twitter: "inter_protocol",
+    stablecoins: ["inter-stable-token"],
     listedAt: 1734620794
   },
   {

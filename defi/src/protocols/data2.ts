@@ -948,6 +948,7 @@ const data2: Protocol[] = [
     twitter: "babelfishmoney",
     language: "Solidity",
     listedAt: 1644988202,
+    stablecoins: ["xusd"],
     github: ["BabelFishProtocol"],
   },
   {
@@ -7662,6 +7663,7 @@ const data2: Protocol[] = [
       "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_CLever_Report_v1.1.pdf",
     ],
     listedAt: 1651168503,
+    stablecoins: ["rusd"],
     governanceID: ["snapshot:clevercvx.eth", "snapshot:veclev.eth"],
     github: ["AladdinDAO"],
     dimensions: {

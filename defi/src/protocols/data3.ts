@@ -18930,6 +18930,7 @@ const data3_1: Protocol[] = [
     twitter: "thestandard_io",
     audit_links: ["https://solidityscan.com/published-report/project/4ad1cae336c45bb1"],
     github: ["the-standard"],
+    stablecoins: ["thestandard-usd"],
     listedAt: 1694174275,
   },
   {
@@ -31059,6 +31060,7 @@ const data3_1: Protocol[] = [
     twitter: "rocprotocol",
     forkedFrom: [],
     audit_links: ["https://github.com/money-on-chain/Audits"],
+    stablecoins: ["rif-us-dollar"],
     listedAt: 1705099381,
   },
   {
@@ -34491,6 +34493,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["270"],
     //https://doc.orby.network/additional-info/price-oracle
     oracles: ["Internal"],
+    stablecoins: ["orby-usc"],
     audit_links: ["https://doc.orby.network/overview/security-and-audits"],
     listedAt: 1708475032,
     dimensions: {
@@ -59891,6 +59894,7 @@ const data3_2: Protocol[] = [
     //https://docs.usdx.money/informaiton/oracles
     oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],
     audit_links: ["https://docs.usdx.money/informaiton/audit"],
+    stablecoins: ["usdx-money-usdx"],
     listedAt: 1728645744,
     dimensions: {
       fees: "usdx"
@@ -60046,6 +60050,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chronicle", type: "Primary", proof: ["https://www.m0.org/press-releases/chronicle-launches-real-world-asset-oracle-with-initial-integration-on-m-0-building-infrastructure-for-transformation-of-digital-money"] } ],
     audit_links: ["https://docs.m0.org/portal/technical/audits"],
     listedAt: 1728953339,
+    stablecoins: ["m-by-m0"],
     dimensions: {
       fees: "m0"
     }
@@ -62442,6 +62447,7 @@ const data3_2: Protocol[] = [
     twitter: "reservoir_xyz",
     forkedFrom: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
+    stablecoins: ["reservoir-stablecoin"],
     listedAt: 1731322673
   },
   {
@@ -65111,6 +65117,7 @@ const data3_2: Protocol[] = [
     twitter: "pintodotmoney",
     github: ["pinto-org"],
     listedAt: 1739209111,
+    stablecoins: ["pinto"],
     dimensions: {
       dexs: "pinto"
     }

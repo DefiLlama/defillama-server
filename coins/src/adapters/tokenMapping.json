@@ -9259,6 +9259,12 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
+    },
+    "0x2689fAabe22Ec4516d716Da5B5f81e7e3aE379c3": {
+      "name": "Koala Governance Token",
+      "decimals": "18",
+      "symbol": "koala",
+      "to": "coingecko#koala-governance-token"
     }
   },
   "rbn": {

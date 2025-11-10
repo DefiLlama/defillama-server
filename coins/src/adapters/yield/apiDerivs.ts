@@ -52,7 +52,7 @@ const configs: { [adapter: string]: Config } = {
     decimals: "0",
     chain: "coingecko",
     address: "linear-protocol",
-    underlying: "wrap.near",
+    underlying: "near",
     symbol: "LINEAR",
     confidence: 1.01,
   },

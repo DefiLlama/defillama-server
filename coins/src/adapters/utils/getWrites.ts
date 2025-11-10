@@ -46,7 +46,7 @@ export default async function getWrites(params: {
     ({ token, price, underlying, symbol, decimals, confidence }, i) => {
       const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
       const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
-      let coinData: CoinData | undefined = coinsData[underlying ?? 'missing'];
+      let coinData: CoinData | undefined = coinsData[chain == 'coingecko' ? `coingecko#${underlying}` :underlying ?? 'missing'];
       if (!underlying)
         coinData = {
           price: 1,

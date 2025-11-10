@@ -1976,5 +1976,27 @@ const data5: Protocol[] = [
     listedAt: 1762584873,
     parentProtocol: "parent#navi-protocol",
   },
+  {
+    id: "6978",
+    name: "BounceBit Prime",
+    address: null,
+    symbol: "-",
+    url: "https://prime.bouncebit.io/",
+    description:
+      "Build structured positions in Franklin's Benji & BlackRock BUIDL. Holdings remain in custody while Prime deploys them as collateral and runs delta-neutral strategies for you across approved venues.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bouncebit-prime.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Binance", "Ethereum"],
+    module: "bouncebit-prime/index.js",
+    twitter: "bounce_bit",
+    forkedFromIds: [],
+    audit_links: [],
+    listedAt: 1762794529,
+  },
 ];
 export default data5;

@@ -18,44 +18,6 @@ type Config = {
 const margin = 3 * 60 * 60; // 3hrs
 
 const configs: { [adapter: string]: Config } = {
-  LiNEAR: {
-    rate: async ({ t }) => {
-      const res = await fetch(
-        `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_API_KEY}/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg`,
-        {
-          headers: {
-            accept: "*/*",
-            "accept-language": "en-GB,en;q=0.8",
-            "content-type": "application/json",
-            priority: "u=1, i",
-            "sec-ch-ua":
-              '"Not/A)Brand";v="8", "Chromium";v="126", "Brave";v="126"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": '"macOS"',
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            Referer: "https://app.linearprotocol.org/",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-          },
-          body: '{"query":"{\\n  prices(first: 1, orderBy: timestamp, orderDirection: desc) {\\n    id\\n    timestamp\\n    price\\n    __typename\\n  }\\n}","variables":{}}',
-          method: "POST",
-        },
-      ).then((r) => r.json());
-      if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
-      const { timestamp, price } = res.data.prices[0];
-      if (t - timestamp.substring(0, 10) > margin)
-        throw new Error(`LiNEAR subgraph stale rate`);
-      return price;
-    },
-    decimals: "0",
-    chain: "coingecko",
-    address: "linear-protocol",
-    underlying: "near",
-    symbol: "LINEAR",
-    confidence: 1.01,
-  },
   USCC: {
     rate: async ({ t }) => {
       const res = await fetch(

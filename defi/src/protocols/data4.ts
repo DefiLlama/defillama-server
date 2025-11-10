@@ -18200,7 +18200,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     oraclesBreakdown: [
       {
-        name: "RedStone",
+        name: "Chainlink",
         type: "Primary",
         proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
       },

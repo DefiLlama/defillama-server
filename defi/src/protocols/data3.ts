@@ -61545,6 +61545,14 @@ const data3_2: Protocol[] = [
     twitter: "max_apy",
     audit_links: ["https://github.com/UnlockdFinance/maxapy/tree/development/audits"],
     treasury: "maxapy.js",
+    warningBanners: [
+      {
+        message:
+          "Users report they are unable to withdraw funds",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     listedAt: 1730369397,
     dimensions: {
       fees: "maxapy"

@@ -40513,6 +40513,14 @@ const data3_2: Protocol[] = [
     module: "satoshi-protocol/index.js",
     twitter: "RiverdotInc",
     forkedFrom: [],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -47221,7 +47229,7 @@ const data3_2: Protocol[] = [
       {
         message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2025-12-30",
       }
     ]
   },

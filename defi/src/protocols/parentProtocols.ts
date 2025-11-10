@@ -7402,6 +7402,14 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RiverdotInc",
     github: ["Satoshi-Protocol"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     stablecoins: ["river-stablecoin"],
   },
   {

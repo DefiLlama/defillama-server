@@ -650,6 +650,14 @@ const data4: Protocol[] = [
     module: "satlayer/index.js",
     twitter: "satlayer",
     github: ["satlayer"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     audit_links: [
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/Satlayer_audit_report_2024-08-15.pdf",
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf",

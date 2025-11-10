@@ -280,7 +280,7 @@ async function getTokenAndRedirectDataDB(
           dbEntry.symbol = latestDbEntry?.symbol;
         }
         let redirect = timedRedirects.find((e: any) => {
-          if (e != null) return e.PK == ld.redirect;
+          if (e != null) return e.PK == ld.redirect && e.PK != null;
         });
 
         if (dbEntry == null && redirect == null)

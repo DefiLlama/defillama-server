@@ -58,6 +58,20 @@ describe('TVL API - Protocols', () => {
     it('should have unique identifiers', () => {
       const ids = protocolsResponse.data.map((p) => p.id);
       const slugs = protocolsResponse.data.map((p) => p.slug);
+      const slugSet = new Set<string>();
+      const idSet = new Set<number>();
+  
+      protocolsResponse.data.forEach((protocol: any) => {
+        if (slugSet.has(protocol.slug)) {
+          throw new Error(`Duplicate slug found: ${protocol.slug} ${protocol.name}`);
+        }
+        slugSet.add(protocol.slug);
+  
+        if (idSet.has(protocol.id)) {
+          throw new Error(`Duplicate id found: ${protocol.id} ${protocol.name}`);
+        }
+        idSet.add(protocol.id);
+      });
       expect(new Set(ids).size).toBe(ids.length);
       expect(new Set(slugs).size).toBe(slugs.length);
     });

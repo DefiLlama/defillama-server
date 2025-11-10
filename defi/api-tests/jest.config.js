@@ -19,9 +19,13 @@ module.exports = {
   randomize: true,
   reporters: [
     "default", "jest-junit",
-    ['./discord-reporter.js', {
+    ['./reporters/discord-reporter.js', {
       outputDirectory: './test-results',
       outputName: 'junit-discord.xml',
+    }],
+    ['./reporters/json-reporter.js', {
+      outputDirectory: './test-results',
+      outputName: 'junit.json',
     }]
   ],
   coverageDirectory: './coverage',

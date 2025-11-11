@@ -60605,7 +60605,10 @@ const data3_2: Protocol[] = [
     module: "rate-x/index.js",
     twitter: "RateX_Dex",
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateX-Sep-2024-OffsideLabs.final.pdf"],
-    listedAt: 1729682377
+    listedAt: 1729682377,
+    dimensions: {
+      dexs: "rate-x"
+    }
   },
   {
     id: "5266",
@@ -63373,7 +63376,10 @@ const data3_2: Protocol[] = [
     module: "lavarage/index.js",
     twitter: "Lavaragexyz",
     forkedFrom: [],
-    listedAt: 1731991972
+    listedAt: 1731991972,
+    dimensions: {
+      fees: "lavarage"
+    }
   },
   {
     id: "5382",

@@ -1210,7 +1210,10 @@ export const chainCoingeckoIds = {
     cmcId: "5691",
     categories: ["EVM"],
     twitter: "SkaleNetwork",
-    url: "https://skale.space/"
+    url: "https://skale.space/",
+    dimensions: {
+      fees: "skale"
+    }
   },
   "Bittorrent": {
     geckoId: "bittorrent",

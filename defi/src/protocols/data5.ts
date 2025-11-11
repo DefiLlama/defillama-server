@@ -1550,6 +1550,10 @@ const data5: Protocol[] = [
     twitter: "PotatoSwap_Fi",
     listedAt: 1762301497,
     parentProtocol: "parent#potatoswap",
+    dimensions: {
+      dexs: "potatoswap-v3",
+      fees: "potatoswap-v3",
+    }
   },
   {
     id: "6959",

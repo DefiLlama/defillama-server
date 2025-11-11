@@ -2068,5 +2068,29 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/ourzora/zora-token/blob/main/audit/Zora%20Token%20-%20Zellic%20Audit%20Report.pdf"],
     listedAt: 1762822889,
   },
+  {
+    id: "6982",
+    name: "Perpmate",
+    address: null,
+    symbol: "-",
+    url: "https://perpmate.com/",
+    description:
+      "Trade on-chain perpetuals. Stake, trade and earn. Powered by Hyperliquid.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/perpmate.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "perpmate",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "perpmate",
+    }
+  },
 ];
 export default data5;

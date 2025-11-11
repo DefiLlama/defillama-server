@@ -657,7 +657,7 @@ async function generateSearchList() {
   }
 
   const categories: Array<SearchResult> = [];
-  const categoriesIds = new Set<string>();
+
   for (const category in categoryTvl) {
     categories.push({
       id: `category_${normalize(category)}`,
@@ -668,10 +668,9 @@ async function generateSearchList() {
       type: "Category",
     });
   }
-  categories.forEach((c) => categoriesIds.add(c.id));
 
   const tags: Array<SearchResult> = [];
-  const tagsIds = new Set<string>();
+
   for (const tag in tagTvl) {
     tags.push({
       id: `tag_${normalize(tag)}`,
@@ -682,7 +681,6 @@ async function generateSearchList() {
       type: "Tag",
     });
   }
-  tags.forEach((t) => tagsIds.add(t.id));
 
   const stablecoins: Array<SearchResult> = stablecoinsData.peggedAssets.map((stablecoin) => ({
     id: `stablecoin_${normalize(stablecoin.name)}_${normalize(stablecoin.symbol)}`,
@@ -740,7 +738,7 @@ async function generateSearchList() {
   const coins: Array<SearchResult> = [];
   for (const coin of coinsData) {
     coins.push({
-      id: `${coin.token_nk.replace(":", "_")}_token_usage`,
+      id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_usage`,
       name: coin.symbol,
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
@@ -749,7 +747,7 @@ async function generateSearchList() {
     });
     if (coin.on_yields) {
       coins.push({
-        id: `${coin.token_nk.replace(":", "_")}_token_yields`,
+        id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_yields`,
         name: coin.symbol,
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,

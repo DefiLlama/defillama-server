@@ -62,7 +62,7 @@ async function handler(adapterTorefill: string, timestamp: number) {
     //       .map((t) => getHistoricalValues(t.PK, start)),
     //   );
 
-    //   await DELETE(current.flat());
+    //   await deleteCoins(current.flat());
     // }
 
     for (let i = 0; i < resultsWithoutDuplicates.length; i += batchStep) {

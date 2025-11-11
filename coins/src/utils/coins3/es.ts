@@ -224,6 +224,24 @@ export function getMetadataRecord(json: any): MetadataRecord | undefined {
   return recordClone;
 }
 
+// deletes records
+export async function deleteRecords(index: string,keys: string[]): Promise<void> {
+  const client = getClient();
+  if (!client) throw new Error("Elasticsearch client not configured");
+
+  try {
+    const body: any[] = [];
+    for (const pid of keys) {
+      body.push({ delete: { _index: index, _id: pid } });
+    }
+    
+    if (body.length) await esClient.bulk({ body });
+  } catch (err) {
+    console.error("Bulk delete from coins-metadata failed:", err);
+    throw err;
+  }
+}
+
 function normalizeRecord(record: any): MetadataRecord {
   const pid = normalizeCoinId(record.PK);
   if (record.redirect) {

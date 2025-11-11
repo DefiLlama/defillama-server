@@ -1,5 +1,5 @@
 import { setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
+import ddb, { batchGet, batchWrite } from "../utils/shared/dynamodb";
 import {
   Coin,
   CoinMetadata,
@@ -20,6 +20,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
+import { deleteCoins } from "../cli/editEntry";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -131,9 +132,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         SK: 0,
       })),
     )
-  ).filter((c) => !c.adapter && c.confidence == 0.99);
+  ).filter((c) => c.adapter == 'coingecko');
 
-  const deleteStaleKeysPromise = DELETE(
+  const deleteStaleKeysPromise = deleteCoins(
     staleEntries.map((e) => ({
       PK: e.PK,
       SK: 0,
@@ -434,10 +435,10 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
-        coins.map((coin) => coin.id),
+        coins.map((coin: any) => coin.id),
         coinType,
       );
-      coins = coins.filter((coin) => {
+      coins = coins.filter((coin: any) => {
         const metadata = metadatas[coin.id];
         if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
         if (hourly) {

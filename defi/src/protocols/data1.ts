@@ -8056,6 +8056,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "458",
     // previous Solend
     name: "Save",
+    previousNames: ["Solend"],
     address: "solana:SAVEaeeqeXNKYb4Lyx28DkUms5gyZ76vGa6fCfdzWfK",
     symbol: "SAVE",
     url: "https://www.save.finance/",

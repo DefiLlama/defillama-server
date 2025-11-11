@@ -1408,7 +1408,7 @@ export const chainCoingeckoIds = {
       chain: "Kusama",
       types: ["parachain"]
     },
-    twitter: "BifrostFinance",
+    twitter: "Bifrost",
     dimensions: {
       fees: "bifrost-chain"
     },

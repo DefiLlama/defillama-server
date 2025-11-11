@@ -15112,7 +15112,7 @@ const data2: Protocol[] = [
     chains: ["Bifrost"],
     forkedFrom: [],
     module: "bifrost-dex/index.js",
-    twitter: "bifrost_finance",
+    twitter: "Bifrost",
     parentProtocol: "parent#zenlink",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",

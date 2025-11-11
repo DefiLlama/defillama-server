@@ -374,7 +374,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Luck Games",
+    category: "Privacy",
     chains: ["Ethereum", "Base"],
     forkedFrom: [],
     module: "foom-cash/index.js",

@@ -13967,7 +13967,10 @@ const data2: Protocol[] = [
     listedAt: 1660728743,
     dimensions: {
       fees: "saucerswap",
-      dexs: "saucerswap"
+      dexs: {
+        adapter: "saucerswap",
+        genuineSpikes: ["1760400000"],
+      },
     }
   },
   {

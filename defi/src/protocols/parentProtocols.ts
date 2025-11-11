@@ -8392,6 +8392,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PotatoSwap_Fi",
   },
+  {
+    id: "parent#doublezero",
+    name: "DoubleZero",
+    url: "https://doublezero.xyz/",
+    description: "DoubleZero is a permissionless global infrastructure network for blockchains and distributed systems, enabling contributors to stake assets and provide high-performance bandwidth/fiber links in exchange for utility tokens that power the network.",
+    logo: `${baseIconsUrl}/doublezero-network.jpg`,
+    gecko_id: "doublezero",
+    cmcId: "38515",
+    chains: [],
+    twitter: "doublezero",
+  },
 ];
 
 export default parentProtocols;

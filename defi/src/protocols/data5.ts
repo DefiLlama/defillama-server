@@ -1081,23 +1081,24 @@ const data5: Protocol[] = [
   },
   {
     id: "6939",
-    name: "DoubleZero",
+    name: "DoubleZero Network",
     address: "solana:J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
     symbol: "2Z",
     url: "https://doublezero.xyz/",
     description:
       "DoubleZero is a permissionless global infrastructure network for blockchains and distributed systems, enabling contributors to stake assets and provide high-performance bandwidth/fiber links in exchange for utility tokens that power the network.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/doublezero.jpg`,
+    logo: `${baseIconsUrl}/doublezero-network.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "doublezero",
-    cmcId: "38515",
+    gecko_id: null,
+    cmcId: null,
     category: "Developer Tools",
     chains: ["Solana"],
     forkedFromIds: [],
     module: "dummy.js",
     twitter: "doublezero",
+    parentProtocol: "parent#doublezero",
     dimensions: {
       fees: "doublezero"
     }
@@ -1952,6 +1953,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "doublezero",
     forkedFromIds: [],
+    parentProtocol: "parent#doublezero",
     audit_links: [],
     dimensions: {
       fees: "doublezero-staked-sol",

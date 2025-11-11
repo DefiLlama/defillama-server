@@ -2042,5 +2042,27 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1762801829,
   },
+  {
+    id: "6981",
+    name: "Mr. Lightspeed Creator Coin",
+    address: "base:0xf0cb96a4011a0a6f73d100c7080bf8020d10f87a",
+    symbol: "MRLIGHTSPEED",
+    url: "https://zora.co/mr_lightspeed",
+    description:
+      "Mr Lightspeed is a creator-issued token on the Zora Coins Protocol (on the Base network) where the creator issues a fixed 1 billion supply, splits it into a tradable pool and a five-year vesting schedule, and integrates with Uniswap v4 liquidity pools so that trades generate fees, deepen liquidity, and provide community access and content-linked incentives.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/mr.-lightspeed-creator-coin.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "mr-lightspeed-creator-coin",
+    cmcId: "38857",
+    category: "SoFi",
+    chains: ["Base"],
+    module: "mr-lightspeed/index.js",
+    twitter: "Mr_Lightspeed",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/ourzora/zora-token/blob/main/audit/Zora%20Token%20-%20Zellic%20Audit%20Report.pdf"],
+    listedAt: 1762822889,
+  },
 ];
 export default data5;

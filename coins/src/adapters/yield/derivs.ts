@@ -574,6 +574,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0x498D9329555471bF6073A5f2D047F746d522A373",
   },
+  strETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getReport(address asset) external view returns (tuple(uint224 priceD18, uint32 timestamp, bool isSuspicious))",
+        target: "0x8a78e6b7E15C4Ae3aeAeE3bf0DE4F2de4078c1cD",
+        params: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      });
+      return 1e18 / rate.priceD18;
+    },
+    chain: "ethereum",
+    underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    address: "0xcd3c0F51798D1daA92Fb192E57844Ae6cEE8a6c7",
+  },
 };
 
 export async function derivs(timestamp: number) {
@@ -587,14 +600,7 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const {
-    chain,
-    underlying,
-    address,
-    symbol,
-    decimals,
-    confidence,
-  } = config;
+  const { chain, underlying, address, symbol, decimals, confidence } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {

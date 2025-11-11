@@ -1026,6 +1026,11 @@
     }
   },
   "ethereum": {
+    "0xe74dd7525663193b5e5e596b581b5343735a585c": {
+      "decimals": "18",
+      "symbol": "USDCUSDU",
+      "to": "asset#ethereum:0x6c5ff8dce52be77b4ece6b51996018f0c1713ba9"
+    },
     "0x1Ee774B40eECef1ed4BB702C83A97dc949c900e5": {
       "decimals": "8",
       "symbol": "oBTC",

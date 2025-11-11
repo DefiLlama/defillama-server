@@ -740,7 +740,7 @@ async function generateSearchList() {
   const coins: Array<SearchResult> = [];
   for (const coin of coinsData) {
     coins.push({
-      id: `${coin.token_nk}_token_usage`,
+      id: `${coin.token_nk.replace(":", "_")}_token_usage`,
       name: coin.symbol,
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
@@ -749,7 +749,7 @@ async function generateSearchList() {
     });
     if (coin.on_yields) {
       coins.push({
-        id: `${coin.token_nk}_token_yields`,
+        id: `${coin.token_nk.replace(":", "_")}_token_yields`,
         name: coin.symbol,
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,

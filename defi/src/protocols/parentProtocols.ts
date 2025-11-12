@@ -8403,6 +8403,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "doublezero",
   },
+  {
+    id: "parent#blast-l2",
+    name: "Blast L2",
+    url: "https://blast.io/",
+    description: "Blast is a Layer 2 network for Ethereum that aims to improve scalability and security.",
+    logo: `${baseIconsUrl}/blast-l2.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Blast_L2",
+    stablecoins: ["usdb-blast"],
+  },
 ];
 
 export default parentProtocols;

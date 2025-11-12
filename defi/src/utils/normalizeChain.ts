@@ -1408,7 +1408,7 @@ export const chainCoingeckoIds = {
       chain: "Kusama",
       types: ["parachain"]
     },
-    twitter: "BifrostFinance",
+    twitter: "Bifrost",
     dimensions: {
       fees: "bifrost-chain"
     },
@@ -4090,6 +4090,9 @@ export const chainCoingeckoIds = {
     url: "https://www.fluence.network",
     github: ["fluencelabs"],
     chainId: 9999999,
+    dimensions: {
+      fees: "fluence",
+    }
   },
   "Swan": {
     geckoId: "swan-chain",

@@ -8031,7 +8031,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "houdini-swap",
     cmcId: "23396",
-    category: "Privacy",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "houdiniswap/index.js",
     twitter: "HoudiniSwap",
@@ -26421,6 +26421,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "blast/index.js",
     twitter: "Blast_L2",
+    parentProtocol: "parent#blast-l2",
     listedAt: 1700619267,
   },
   {
@@ -36446,6 +36447,7 @@ const data3_2: Protocol[] = [
     module: "blast-bridge/index.js",
     twitter: "Blast_L2",
     forkedFrom: [],
+    parentProtocol: "parent#blast-l2",
   },
   {
     id: "4237",
@@ -40508,7 +40510,7 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "CeDeFi",
     chains: [ "Bitlayer", "BOB", "Binance", "Hemi"],
     module: "satoshi-protocol/index.js",
     twitter: "RiverdotInc",
@@ -51392,6 +51394,7 @@ const data3_2: Protocol[] = [
     github: ["palmy-finance"],
     listedAt: 1720774933,
   },
+  /* // delist 
   {
     id: "4873",
     name: "Midas RWA",
@@ -51414,6 +51417,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.midas.app/resources/audits"],
     listedAt: 1720775830,
   },
+  */
   {
     id: "4874",
     name: "re.al protocol",
@@ -60294,13 +60298,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5252",
-    name: "Mira Protocol",
+    name: "Microchain",
     address: null,
     symbol: "-",
-    url: "https://mira.ly",
-    description: "MIRA is an open-source, decentralized platform designed to seamlessly match traders, liquidity providers (LPs), and protocols. Launching initially as a basic Automated Market Maker (AMM), MIRA will evolve into a ve(3,3) model to maximize capital efficiency and user incentives.",
+    url: "https://www.microchain.systems",
+    description: "Discover seamless crypto swaps with Microchain DEX. Swap your digital assets instantly and securely on the Fuel blockchain. Enjoy best rates and minimal slippage with our optimized trading protocol",
     chain: "Fuel",
-    logo: `${baseIconsUrl}/mira-protocol.jpg`,
+    logo: `${baseIconsUrl}/microchain.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -60309,7 +60313,7 @@ const data3_2: Protocol[] = [
     chains: ["Fuel"],
     forkedFrom: [],
     module: "mira-ly/index.js",
-    twitter: "MiraProtocol",
+    twitter: "MicrochainDLM",
     github: ["mira-amm"],
     listedAt: 1729254583,
     dimensions: {

@@ -2094,5 +2094,31 @@ const data5: Protocol[] = [
       fees: "perpmate",
     }
   },
+  {
+    id: "6983",
+    name: "Luna.fun",
+    address: "bsc:0x55cD6469F597452B5A7536e2CD98fDE4c1247ee4",
+    symbol: "LUNA",
+    url: "https://luna.fun/",
+    description:
+      "Luna.fun is a meme launchpad with built-in AI-generated content (AIGC). Each token includes its own AI content engine, where agents automatically create and post memes across X to promote on-chain engagement. Powered by Virtuals Protocol’s Agent Commerce Protocol (ACP), Luna.fun connects token minting, AI content generation, and social distribution in one workflow on BNB Chain.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/luna.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "luna_virtuals",
+    forkedFromIds: [],
+    audit_links: [],
+    treasury: "luna-fun.js",
+    dimensions: {
+      fees: "luna-fun",
+      dexs: "luna-fun", 
+    }
+  },
 ];
 export default data5;

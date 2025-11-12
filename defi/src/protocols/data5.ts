@@ -2211,5 +2211,31 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1762925487,
   },
+  {
+    id: "6988",
+    name: "Baumz",
+    address: null,
+    symbol: "-",
+    url: "https://baumz.com",
+    description:
+      "Baumz is a next-generation decentralized Perp Exchange with profit-based fees only (no maker/taker fees). Traders only pay when they win.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/baumz.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Orderly"],
+    module: "dummy.js",
+    twitter: "Baumztrade",
+    forkedFromIds: ["6647"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://github.com/DefiLlama/dimension-adapters/pull/4620"]} ],
+    audit_links: [],
+    dimensions: {
+      fees: "baumz",
+      derivatives: "baumz",
+    }
+  },
 ];
 export default data5;

@@ -17942,8 +17942,8 @@ const data4: Protocol[] = [
   {
     id: "6288",
     name: "Meteora DAMM V2",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Constant-product AMM pools with configurable features such as dynamic fees, fee scheduling, and token-based fee selection, designed to support liquidity provision and token launches with minimal maintenance",
@@ -17992,8 +17992,8 @@ const data4: Protocol[] = [
   {
     id: "6290",
     name: "Meteora Dynamic Bonding Curve",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Meteora's Dynamic Bonding Curve is a permissionless token launch protocol that allows platforms to create customizable bonding curve pools for new tokens, enabling immediate trading, flexible fee structures, and automated migration to AMMs",

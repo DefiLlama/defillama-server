@@ -538,8 +538,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
     logo: `${baseIconsUrl}/meteora.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "meteora",
+    cmcId: "38353",
     chains: [],
     twitter: "MeteoraAG",
     github: ["mercurial-finance"],

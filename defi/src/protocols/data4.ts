@@ -26581,6 +26581,9 @@ const data4: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "hyloSOL/index.js",
+    tokensExcludedFromParent: {
+      Solana: ["HYLOSOL"],
+    },
     twitter: "hylo_so",
     forkedFrom: [],
     parentProtocol: "parent#hylo",

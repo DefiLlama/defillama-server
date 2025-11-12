@@ -4090,6 +4090,9 @@ export const chainCoingeckoIds = {
     url: "https://www.fluence.network",
     github: ["fluencelabs"],
     chainId: 9999999,
+    dimensions: {
+      fees: "fluence",
+    }
   },
   "Swan": {
     geckoId: "swan-chain",

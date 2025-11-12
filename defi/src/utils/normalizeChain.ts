@@ -81,6 +81,7 @@ export type ChainCoinGekcoId = {
     da?: string
   },
   dimensions?: DimensionsConfig
+  stablecoins?: string[]
 }
 
 export type ChainCoinGekcoIds = {
@@ -1711,6 +1712,7 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    stablecoins: ['ripple-usd'],
   },
   "GodwokenV1": {
     geckoId: null,
@@ -2922,6 +2924,7 @@ export const chainCoingeckoIds = {
     chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
+    stablecoins: ["usdb"],
     dimensions: {
       fees: "blast"
     }

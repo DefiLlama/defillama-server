@@ -21893,7 +21893,7 @@ const data4: Protocol[] = [
   {
     id: "6449",
     name: "KoalaSwap",
-    address: "unit:0x2689faabe22ec4516d716da5b5f81e7e3ae379c3",
+    address: "unit0:0x2689faabe22ec4516d716da5b5f81e7e3ae379c3",
     symbol: "KOALA",
     url: "https://koalaswap.app/",
     description: "Swap tokens and provide liquidity on a fast, secure and user-friendly DEX for everyone.",

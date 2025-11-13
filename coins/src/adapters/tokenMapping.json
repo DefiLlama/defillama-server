@@ -47,11 +47,6 @@
       "symbol": "SUPRA",
       "to": "coingecko#supra"
     },
-    "0xa": {
-      "decimals": "8",
-      "symbol": "SUPRA",
-      "to": "coingecko#supra"
-    },
     "0x1::supra_coin::SupraCoin": {
       "decimals": "8",
       "symbol": "SUPRA",

@@ -4433,7 +4433,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "GOATRollup",
     url: "https://www.goat.network/",
-    chainId: 2345
+    chainId: 2345,
+    dimensions: {
+      fees: "goat"
+    }
   },
   "Plume Mainnet": {
     geckoId: "plume",

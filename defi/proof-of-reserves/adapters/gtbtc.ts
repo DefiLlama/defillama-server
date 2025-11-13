@@ -1,6 +1,6 @@
 import { getBitcoinReservesAdapter } from '../utils/bitcoin';
 
-const protocolId = 'gate-btc';
+const protocolId = 'gtbtc';
 
 const mintedTokens = [
   {

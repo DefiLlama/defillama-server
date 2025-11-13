@@ -393,6 +393,10 @@ async function run() {
         let yesterdayRecord = _protocolData.yesterday
         let protocolLatestRecord = undefined
 
+        // sometimes like immediately after midnight, we still wont have today's data, if we have previous day's data, use that
+        if (!todayRecord && yesterdayRecord) 
+          todayRecord = yesterdayRecord
+
         // all summary data is computed using records upto yesterday, but to show past 24h data we need to use today's data if it exists, so we are doing this hack
         if (_protocolData.latest && todayRecord && _protocolData.latest.timestamp > todayRecord.timestamp) {
           // console.log('Using latest record for today', protocolId, protocolName, _protocolData.latest.timestamp, todayRecord.timestamp, protocolLatestRecord)

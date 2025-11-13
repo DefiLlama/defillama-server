@@ -267,6 +267,15 @@ export const handler2 = async (options: DimensionRunOptions) => {
       const isAdapterVersionV1 = adapterVersion === 1
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
+      const blacklistedRefillAllChains = new Set([
+        'winr', // winr has issues when refilling all as it pulls a lot of logs and process runs out of memory
+      ])
+
+      if (runType === 'refill-all' && Object.keys(adaptor.adapter ?? {}).some(chain => blacklistedRefillAllChains.has(chain))) {
+        console.log(`Skipping refill-all for adapter ${adapterType} - ${module} with problematic chains`)
+        return;
+      }
+
 
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp

@@ -81,6 +81,7 @@ export type ChainCoinGekcoId = {
     da?: string
   },
   dimensions?: DimensionsConfig
+  stablecoins?: string[]
 }
 
 export type ChainCoinGekcoIds = {
@@ -460,7 +461,7 @@ export const chainCoingeckoIds = {
     symbol: "OSMO",
     cmcId: "12220",
     categories: ["Cosmos"],
-    twitter: "osmosiszone",
+    twitter: "osmosis",
     url: "https://osmosis.zone/"
   },
   "Thorchain": {
@@ -1210,7 +1211,10 @@ export const chainCoingeckoIds = {
     cmcId: "5691",
     categories: ["EVM"],
     twitter: "SkaleNetwork",
-    url: "https://skale.space/"
+    url: "https://skale.space/",
+    dimensions: {
+      fees: "skale"
+    }
   },
   "Bittorrent": {
     geckoId: "bittorrent",
@@ -1405,7 +1409,10 @@ export const chainCoingeckoIds = {
       chain: "Kusama",
       types: ["parachain"]
     },
-    twitter: "BifrostFinance",
+    twitter: "Bifrost",
+    dimensions: {
+      fees: "bifrost-chain"
+    },
     url: "https://bifrost.finance/"
   },
   "Stafi": {
@@ -1705,6 +1712,7 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    stablecoins: ['ripple-usd'],
   },
   "GodwokenV1": {
     geckoId: null,
@@ -2916,6 +2924,7 @@ export const chainCoingeckoIds = {
     chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
+    stablecoins: ["usdb"],
     dimensions: {
       fees: "blast"
     }
@@ -4084,6 +4093,9 @@ export const chainCoingeckoIds = {
     url: "https://www.fluence.network",
     github: ["fluencelabs"],
     chainId: 9999999,
+    dimensions: {
+      fees: "fluence",
+    }
   },
   "Swan": {
     geckoId: "swan-chain",
@@ -5014,6 +5026,32 @@ export const chainCoingeckoIds = {
     url: "https://bittensor.com/",
     chainId: 964,
   },
+  "BESC Hyperchain": {
+    geckoId: null,
+    symbol: "BESC",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "BESCLLC",
+    url: "https://besc.llc/",
+    chainId: 2372,
+  },
+  "ZIGChain": {
+    geckoId: "zignaly",
+    symbol: "ZIG",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "ZIGChain",
+    url: "https://zigchain.com/"
+  },
+  "Zenrock": {
+    geckoId: "zenrock",
+    symbol: "ROCK",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "zenrock",
+    url: "https://www.zenrocklabs.io/",
+    github: ["Zenrock-Foundation"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5231,7 +5269,9 @@ const chainLabelMap = {
   "gatelayer": "GateLayer",
   "xone": "Xone Chain",
   "0g": "0G",
-  "bittensor_evm_mainnet": "Bittensor EVM"
+  "bittensor_evm": "Bittensor EVM",
+  "besc": "BESC Hyperchain",
+  "zigchain": "ZIGChain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

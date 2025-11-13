@@ -28,6 +28,7 @@ export interface IChainMetadata {
 export interface IProtocolMetadata {
     name: string
 	tvl?: boolean
+	borrowed?: boolean
 	yields?: boolean
 	forks?: boolean
 	liquidity?: boolean

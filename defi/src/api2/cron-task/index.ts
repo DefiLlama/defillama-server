@@ -25,6 +25,7 @@ import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
 import { chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { getActiveUsers } from "../routes/getActiveUsers";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -70,7 +71,8 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
-
+  
+  await storeActiveUsers()
   await storeRWAStats()
 
 
@@ -419,6 +421,19 @@ async function storeRWAStats() {
   }
 }
 
+
+async function storeActiveUsers() {
+  try {
+
+    const debugString = 'write /activeUsers'
+    console.time(debugString)
+    const data = await getActiveUsers()
+    await storeRouteData('/activeUsers', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 runWithRuntimeLogging(run, {
   application: "cron-task",

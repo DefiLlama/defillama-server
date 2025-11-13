@@ -726,6 +726,15 @@ const data4: Protocol[] = [
           {
             chain: "Sonic",
           },
+          {
+            chain: "Linea",
+          },
+          {
+            chain: "Saga",
+          },
+          {
+            chain: "Plasma",
+          }
         ],
       },
       {

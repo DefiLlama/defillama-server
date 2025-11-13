@@ -32,8 +32,19 @@ export class ApiClient {
         'Content-Type': 'application/json',
         ...(API_CONFIG.apiKey && { 'X-API-Key': API_CONFIG.apiKey }),
       },
-      httpAgent: new (require('http').Agent)({ keepAlive: false }),
-      httpsAgent: new (require('https').Agent)({ keepAlive: false }),
+      // Disable keep-alive to prevent hanging connections
+      httpAgent: new (require('http').Agent)({ 
+        keepAlive: false,
+        timeout: API_CONFIG.timeout,
+      }),
+      httpsAgent: new (require('https').Agent)({ 
+        keepAlive: false,
+        timeout: API_CONFIG.timeout,
+        rejectUnauthorized: true,
+      }),
+      // Additional robustness settings
+      maxRedirects: 5,
+      validateStatus: (status) => status < 600, // Don't reject on any status code
       ...config,
     });
 
@@ -57,6 +68,7 @@ export class ApiClient {
 
   private handleError(error: AxiosError): ApiErrorResponse {
     if (error.response) {
+      // HTTP error response (4xx, 5xx)
       return {
         message: error.message,
         status: error.response.status,
@@ -65,14 +77,33 @@ export class ApiClient {
         details: error.response.data,
       };
     } else if (error.request) {
+      // Network error (no response received)
+      let message = 'No response received from server';
+      let statusText = 'Network Error';
+      
+      if (error.code === 'ECONNABORTED') {
+        message = 'Request timeout - server took too long to respond';
+        statusText = 'Timeout Error';
+      } else if (error.code === 'ENOTFOUND') {
+        message = 'DNS lookup failed - unable to resolve server address';
+        statusText = 'DNS Error';
+      } else if (error.code === 'ECONNREFUSED') {
+        message = 'Connection refused - server is not accepting connections';
+        statusText = 'Connection Refused';
+      } else if (error.code === 'ETIMEDOUT') {
+        message = 'Connection timeout - unable to establish connection';
+        statusText = 'Connection Timeout';
+      }
+      
       return {
-        message: 'No response received from server',
+        message,
         status: 0,
-        statusText: 'Network Error',
+        statusText,
         url: error.config?.url,
-        details: error.message,
+        details: { code: error.code, message: error.message },
       };
     } else {
+      // Request setup error
       return {
         message: error.message,
         status: 0,
@@ -84,16 +115,31 @@ export class ApiClient {
 
   private async retryRequest<T>(
     requestFn: () => Promise<AxiosResponse<T>>,
-    retries: number = this.retryCount
+    retries: number = this.retryCount,
+    attempt: number = 0
   ): Promise<AxiosResponse<T>> {
     try {
       return await requestFn();
     } catch (error) {
+      const axiosError = error as AxiosError;
+      
       // Only retry on network errors, not HTTP errors
-      if (retries > 0 && !(error as AxiosError).response) {
-        await new Promise((resolve) => setTimeout(resolve, this.retryDelay));
-        return this.retryRequest(requestFn, retries - 1);
+      const isNetworkError = !axiosError.response;
+      const shouldRetry = retries > 0 && isNetworkError;
+      
+      if (shouldRetry) {
+        // Exponential backoff: base delay * (2 ^ attempt)
+        // attempt 0: 1000ms, attempt 1: 2000ms, attempt 2: 4000ms
+        const backoffDelay = this.retryDelay * Math.pow(2, attempt);
+        const jitter = Math.random() * 1000; // Add random jitter (0-1000ms)
+        const totalDelay = backoffDelay + jitter;
+        
+        console.log(`Network error, retrying in ${Math.round(totalDelay)}ms (attempt ${attempt + 1}/${this.retryCount})...`);
+        
+        await new Promise((resolve) => setTimeout(resolve, totalDelay));
+        return this.retryRequest(requestFn, retries - 1, attempt + 1);
       }
+      
       throw error;
     }
   }

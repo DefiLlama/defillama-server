@@ -2338,7 +2338,7 @@ const data5: Protocol[] = [
   {
     id: "6993",
     name: "Ramses HL",
-    address: "arbitrum:0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418",
+    address: "hyperliquid:0x555570a286F15EbDFE42B66eDE2f724Aa1AB5555",
     symbol: "RAM",
     url: "https://ramses.xyz",
     description:
@@ -2361,7 +2361,7 @@ const data5: Protocol[] = [
   {
     id: "6994",
     name: "Ramses HL Legacy",
-    address: "arbitrum:0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418",
+    address: "hyperliquid:0x555570a286F15EbDFE42B66eDE2f724Aa1AB5555",
     symbol: "RAM",
     url: "https://ramses.xyz",
     description:

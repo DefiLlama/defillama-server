@@ -8031,7 +8031,7 @@ const data3_1: Protocol[] = [
     audit_note: null,
     gecko_id: "houdini-swap",
     cmcId: "23396",
-    category: "Privacy",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "houdiniswap/index.js",
     twitter: "HoudiniSwap",
@@ -26421,6 +26421,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "blast/index.js",
     twitter: "Blast_L2",
+    parentProtocol: "parent#blast-l2",
     listedAt: 1700619267,
   },
   {
@@ -34314,8 +34315,8 @@ const data3_1: Protocol[] = [
   {
     id: "4148",
     name: "Meteora DLMM",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://app.meteora.ag/",
     description:
       "Meteora's DLMM introduces a zero-slippage, bin-based concentrated liquidity AMM on Solana, enhancing LP profitability with dynamic fees and enabling precise liquidity strategies and shapes for deeper market liquidity",
@@ -36446,6 +36447,7 @@ const data3_2: Protocol[] = [
     module: "blast-bridge/index.js",
     twitter: "Blast_L2",
     forkedFrom: [],
+    parentProtocol: "parent#blast-l2",
   },
   {
     id: "4237",
@@ -36931,7 +36933,7 @@ const data3_2: Protocol[] = [
     cmcId: "36288",
     category: "DEX Aggregator",
     chains: ["Arbitrum", "Polygon", "Optimism", "Base", "Avalanche"],
-    module: "definitive/index.js",
+    module: "dummy.js",
     twitter: "DefinitiveFi",
     forkedFrom: [],
     github: ["DefinitiveCo"],
@@ -40285,7 +40287,8 @@ const data3_2: Protocol[] = [
     listedAt: 1711709964,
     dimensions: {
       derivatives: "vest",
-      "open-interest": "vest-markets"
+      "open-interest": "vest-markets",
+      fees: "vest-markets"
     }
   },
   {
@@ -40508,11 +40511,19 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "CeDeFi",
     chains: [ "Bitlayer", "BOB", "Binance", "Hemi"],
     module: "satoshi-protocol/index.js",
     twitter: "RiverdotInc",
     forkedFrom: [],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -47221,7 +47232,7 @@ const data3_2: Protocol[] = [
       {
         message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2025-12-30",
       }
     ]
   },
@@ -51384,6 +51395,7 @@ const data3_2: Protocol[] = [
     github: ["palmy-finance"],
     listedAt: 1720774933,
   },
+  /* // delist 
   {
     id: "4873",
     name: "Midas RWA",
@@ -51406,6 +51418,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.midas.app/resources/audits"],
     listedAt: 1720775830,
   },
+  */
   {
     id: "4874",
     name: "re.al protocol",
@@ -60286,13 +60299,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5252",
-    name: "Mira Protocol",
+    name: "Microchain",
     address: null,
     symbol: "-",
-    url: "https://mira.ly",
-    description: "MIRA is an open-source, decentralized platform designed to seamlessly match traders, liquidity providers (LPs), and protocols. Launching initially as a basic Automated Market Maker (AMM), MIRA will evolve into a ve(3,3) model to maximize capital efficiency and user incentives.",
+    url: "https://www.microchain.systems",
+    description: "Discover seamless crypto swaps with Microchain DEX. Swap your digital assets instantly and securely on the Fuel blockchain. Enjoy best rates and minimal slippage with our optimized trading protocol",
     chain: "Fuel",
-    logo: `${baseIconsUrl}/mira-protocol.jpg`,
+    logo: `${baseIconsUrl}/microchain.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -60301,7 +60314,7 @@ const data3_2: Protocol[] = [
     chains: ["Fuel"],
     forkedFrom: [],
     module: "mira-ly/index.js",
-    twitter: "MiraProtocol",
+    twitter: "MicrochainDLM",
     github: ["mira-amm"],
     listedAt: 1729254583,
     dimensions: {
@@ -60597,7 +60610,10 @@ const data3_2: Protocol[] = [
     module: "rate-x/index.js",
     twitter: "RateX_Dex",
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateX-Sep-2024-OffsideLabs.final.pdf"],
-    listedAt: 1729682377
+    listedAt: 1729682377,
+    dimensions: {
+      dexs: "rate-x"
+    }
   },
   {
     id: "5266",
@@ -63365,7 +63381,10 @@ const data3_2: Protocol[] = [
     module: "lavarage/index.js",
     twitter: "Lavaragexyz",
     forkedFrom: [],
-    listedAt: 1731991972
+    listedAt: 1731991972,
+    dimensions: {
+      fees: "lavarage"
+    }
   },
   {
     id: "5382",
@@ -65881,7 +65900,11 @@ const data3_2: Protocol[] = [
     oracles: ["Flare FTSO"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12676
     audit_links: ["https://github.com/SparkDEX/perp-smart-contracts/blob/main/audit"],
     parentProtocol: "parent#sparkdex",
-    listedAt: 1734027989
+    listedAt: 1734027989,
+    dimensions: {
+      fees: "sparkdex-perps",
+      derivatives: "sparkdex-perps"
+    }
   },
   {
     id: "5493",

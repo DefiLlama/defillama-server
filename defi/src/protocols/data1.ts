@@ -6389,8 +6389,8 @@ const data: Protocol[] = [
     id: "385",
     name: "Meteora DAMM V1",
     previousNames: ["Meteora pools"],
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://app.meteora.ag/",
     description: "Meteora Pools is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",
@@ -8057,6 +8057,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "458",
     // previous Solend
     name: "Save",
+    previousNames: ["Solend"],
     address: "solana:SAVEaeeqeXNKYb4Lyx28DkUms5gyZ76vGa6fCfdzWfK",
     symbol: "SAVE",
     url: "https://www.save.finance/",

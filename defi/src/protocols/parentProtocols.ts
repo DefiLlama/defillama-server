@@ -538,8 +538,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
     logo: `${baseIconsUrl}/meteora.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "meteora",
+    cmcId: "38353",
     chains: [],
     twitter: "MeteoraAG",
     github: ["mercurial-finance"],
@@ -7402,6 +7402,14 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RiverdotInc",
     github: ["Satoshi-Protocol"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     stablecoins: ["river-stablecoin"],
   },
   {
@@ -8383,6 +8391,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PotatoSwap_Fi",
+  },
+  {
+    id: "parent#doublezero",
+    name: "DoubleZero",
+    url: "https://doublezero.xyz/",
+    description: "DoubleZero is a permissionless global infrastructure network for blockchains and distributed systems, enabling contributors to stake assets and provide high-performance bandwidth/fiber links in exchange for utility tokens that power the network.",
+    logo: `${baseIconsUrl}/doublezero-network.jpg`,
+    gecko_id: "doublezero",
+    cmcId: "38515",
+    chains: [],
+    twitter: "doublezero",
+  },
+  {
+    id: "parent#blast-l2",
+    name: "Blast L2",
+    url: "https://blast.io/",
+    description: "Blast is a Layer 2 network for Ethereum that aims to improve scalability and security.",
+    logo: `${baseIconsUrl}/blast-l2.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Blast_L2",
+    stablecoins: ["usdb-blast"],
   },
 ];
 

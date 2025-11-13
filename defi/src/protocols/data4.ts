@@ -650,6 +650,14 @@ const data4: Protocol[] = [
     module: "satlayer/index.js",
     twitter: "satlayer",
     github: ["satlayer"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     audit_links: [
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/Satlayer_audit_report_2024-08-15.pdf",
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf",
@@ -13646,14 +13654,14 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://unilend.io/dashboard/",
     description: "Decentralized lending and borrowing protocol deployed on the Unit Zero blockchain.",
-    chain: "Unit Zero",
+    chain: "UNIT0",
     logo: `${baseIconsUrl}/unilend-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Unit Zero"],
+    chains: ["UNIT0"],
     forkedFrom: [],
     module: "unilend-protocol/index.js",
     twitter: "Unilendone",
@@ -16357,9 +16365,10 @@ const data4: Protocol[] = [
     module: "near-intents/index.js",
     twitter: "NEARProtocol",
     dimensions: {
-      "dexs": "near-intents"
+      "dexs": "near-intents",
+      "fees": "near-intents"
     },
-    listedAt: 1760656359
+    listedAt: 1760656359,
   },
   {
     id: "6226",
@@ -17933,8 +17942,8 @@ const data4: Protocol[] = [
   {
     id: "6288",
     name: "Meteora DAMM V2",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Constant-product AMM pools with configurable features such as dynamic fees, fee scheduling, and token-based fee selection, designed to support liquidity provision and token launches with minimal maintenance",
@@ -17983,8 +17992,8 @@ const data4: Protocol[] = [
   {
     id: "6290",
     name: "Meteora Dynamic Bonding Curve",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Meteora's Dynamic Bonding Curve is a permissionless token launch protocol that allows platforms to create customizable bonding curve pools for new tokens, enabling immediate trading, flexible fee structures, and automated migration to AMMs",
@@ -18144,6 +18153,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/agglayer/vault-bridge/tree/v0.5.0/audits"],
     listedAt: 1749770022,
+    dimensions: {
+      fees: "vault-bridge"
+    }
   },
   {
     id: "6297",
@@ -18195,6 +18207,13 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
+        endDate: "2025-11-08"
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
+        startDate: "2025-11-08"
       },
     ],
     audit_links: ["https://github.com/ambitlabsxyz/hyperdrive-audits"],
@@ -21877,15 +21896,15 @@ const data4: Protocol[] = [
   {
     id: "6449",
     name: "KoalaSwap",
-    address: null,
-    symbol: "-",
+    address: "unit0:0x2689faabe22ec4516d716da5b5f81e7e3ae379c3",
+    symbol: "KOALA",
     url: "https://koalaswap.app/",
     description: "Swap tokens and provide liquidity on a fast, secure and user-friendly DEX for everyone.",
     chain: "UNIT0",
     logo: `${baseIconsUrl}/koalaswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "koala-governance-token",
     cmcId: null,
     category: "Dexs",
     chains: ["UNIT0"],
@@ -25629,6 +25648,9 @@ const data4: Protocol[] = [
     twitter: "zerolendxyz",
     parentProtocol: "parent#zerolend",
     listedAt: 1755704679,
+    dimensions: {
+      fees: "zerolend-vaults"
+    }
   },
   {
     id: "6609",
@@ -29455,6 +29477,10 @@ const data4: Protocol[] = [
     // parentProtocol: "parent#curve-finance",  // they have their own token
     listedAt: 1758821541,
     // excludeTvlFromParent: true, // tokens are deposited into curve pools
+    dimensions: {
+      fees: "yield-basis",
+      dexs: "yield-basis"
+    }
   },
   {
     id: "6772",
@@ -29762,7 +29788,10 @@ const data4: Protocol[] = [
       },
     ],
     forkedFromIds: [],
-    listedAt: 1759244012
+    listedAt: 1759244012,
+    dimensions: {
+      fees: "telosc"
+    }
   },
   {
     id: "6786",

@@ -13967,7 +13967,10 @@ const data2: Protocol[] = [
     listedAt: 1660728743,
     dimensions: {
       fees: "saucerswap",
-      dexs: "saucerswap"
+      dexs: {
+        adapter: "saucerswap",
+        genuineSpikes: ["1760400000"],
+      },
     }
   },
   {
@@ -15109,7 +15112,7 @@ const data2: Protocol[] = [
     chains: ["Bifrost"],
     forkedFrom: [],
     module: "bifrost-dex/index.js",
-    twitter: "bifrost_finance",
+    twitter: "Bifrost",
     parentProtocol: "parent#zenlink",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
@@ -19850,8 +19853,8 @@ const data2: Protocol[] = [
   {
     id: "2223",
     name: "Meteora vaults",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://app.meteora.ag/vaults",
     description:
       "Meteora Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
@@ -24089,6 +24092,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://veno-finance.gitbook.io/veno-finance/protocol/security-and-audits"],
     listedAt: 1672703979,
+    dimensions: {
+      fees: "veno-finance"
+    }
   },
   {
     id: "2403",

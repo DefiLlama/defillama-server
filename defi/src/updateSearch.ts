@@ -368,6 +368,7 @@ async function generateSearchList() {
   }
 
   const protocols: Array<SearchResult> = [];
+  const protocolNameSet = new Set<String>();
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
     const result = {
@@ -381,6 +382,7 @@ async function generateSearchList() {
       type: "Protocol",
     };
 
+    protocolNameSet.add(parent.name);
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
@@ -411,6 +413,7 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
+    protocolNameSet.add(protocol.name);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
     const subSections = getProtocolSubSections({
@@ -697,15 +700,19 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
-  const bridges: Array<SearchResult> = bridgesData.bridges.map((brg) => ({
-    id: `bridge_${normalize(brg.name)}`,
-    name: brg.displayName,
-    volume: brg.monthlyVolume,
-    logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
-    route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
-    v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
-    type: "Bridge",
-  }));
+  const bridges: Array<SearchResult> = [];
+  for (const brg of bridgesData.bridges) {
+    if (protocolNameSet.has(brg.displayName)) continue;
+    bridges.push({
+      id: `bridge_${normalize(brg.name)}`,
+      name: brg.displayName,
+      volume: brg.monthlyVolume,
+      logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
+      route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
+      v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
+      type: "Bridge",
+    });
+  }
 
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,

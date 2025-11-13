@@ -2333,6 +2333,7 @@ const data5: Protocol[] = [
     github: [],
     audit_links: ["https://github.com/DefinitiveCo/definitive-public/tree/main/audits"],
     listedAt: 1709828870,
+    deprecated: true,
   },
 ];
 export default data5;

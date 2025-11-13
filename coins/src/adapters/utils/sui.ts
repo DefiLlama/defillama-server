@@ -1,9 +1,15 @@
 
 import axios from "axios";
 import { graph, util } from "@defillama/sdk";
+import { getCache, setCache } from "../../utils/cache";
 
 const endpoint = () => process.env.SUI_RPC ?? 'https://sui-rpc.publicnode.com'
 export const graphEndpoint = (): string => "https://sui-mainnet.mystenlabs.com/graphql";
+
+const chain = 'sui'
+const project = "coins/sui-data";
+const cacheKey = `${project}/${chain}`;
+let cache = {} as any;
 
 export async function getObject(objectId: any) {
   return (await call('sui_getObject', [objectId, {
@@ -39,6 +45,12 @@ export async function getTokenSupply(token: string) {
 
 
 export async function getTokenInfo(token: string) {
+  if (!Object.keys(cache).length) cache = await getCache(cacheKey, chain);
+
+  if (cache[token]) {
+    return { decimals: cache[token].decimals, symbol: cache[token].symbol }
+  }
+
   const query = `{
   coinMetadata(coinType:"${token}") {
     decimals
@@ -46,6 +58,10 @@ export async function getTokenInfo(token: string) {
   }
 }`
   const { coinMetadata: { symbol, decimals } } = await graph.request(graphEndpoint(), query)
+  cache[token] = { decimals, symbol }
+
+  await setCache(cacheKey, chain, cache);
+
   return { decimals, symbol }
 }
 

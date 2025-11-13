@@ -172,4 +172,6 @@ export default {
   rhea: require("./markets/rhea"),
   bracket: require("./yield/bracket"),
   goblin: require("./markets/goblin"),
+  ember: require("./yield/ember"),
+  suirewards: require("./markets/suirewards"),
 };

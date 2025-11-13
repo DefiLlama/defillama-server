@@ -806,7 +806,6 @@ async function generateSearchList() {
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))
       .concat(results.stablecoins.slice(0, 3))
-      .concat(results.bridges.slice(0, 3))
       .concat(results.metrics.slice(0, 3))
       .concat(results.categories.slice(0, 3))
       .concat(results.tools.slice(0, 3))

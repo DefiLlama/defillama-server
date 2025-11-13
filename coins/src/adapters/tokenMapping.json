@@ -12806,5 +12806,32 @@
       "decimals": 18,
       "symbol": "MONEY"
     }
+  }, 
+  "kasplex": {
+    "0xb7a95035618354d9adfc49eca49f38586b624040": {
+      "to": "coingecko#zeal",
+      "decimals": 18,
+      "symbol": "ZEAL"
+    }, 
+    "0x9a5a144290dffa24c6c7aa8ca9a62319e60973d8": {
+      "to": "coingecko#nacho-the-kat",
+      "decimals": 18,
+      "symbol": "NACHO"
+    }, 
+    "0x1f3ce97f8118035dba7fbcd5398005491cf45603": {
+      "to": "coingecko#kasper",
+      "decimals": 18,
+      "symbol": "KASPER"
+    }, 
+    "0x98508da68180e3c23bee5685f14ad2da5195da12": {
+      "to": "coingecko#keiro",
+      "decimals": 18,
+      "symbol": "KEIRO"
+    }, 
+    "0x0fd8d408ce707f4e4f8e54193c4c55a3b969834b": {
+      "to": "coingecko#krex",
+      "decimals": 18,
+      "symbol": "KREX"
+    }
   }
 }

@@ -17,6 +17,7 @@ interface SearchResult {
   logo?: string;
   tvl?: number;
   mcap?: number;
+  volume?: number;
   deprecated?: boolean;
   type: string;
   hideType?: boolean;
@@ -292,6 +293,7 @@ async function generateSearchList() {
   const [
     tvlData,
     stablecoinsData,
+    bridgesData,
     frontendPages,
     tastyMetrics,
     protocolsMetadata,
@@ -306,6 +308,7 @@ async function generateSearchList() {
       protocols: any[];
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+    { bridges: Array<{ name: string; displayName: string; icon: string; monthlyVolume: number; slug?: string }> },
     Record<string, Array<{ name: string; route: string }>>,
     Record<string, number>,
     Record<string, IProtocolMetadata>,
@@ -315,6 +318,7 @@ async function generateSearchList() {
   ] = await Promise.all([
     fetchJson("https://api.llama.fi/lite/protocols2"),
     fetchJson("https://stablecoins.llama.fi/stablecoins"),
+    fetchJson("https://bridges.llama.fi/bridges"),
     fetchJson("https://defillama.com/pages.json").catch((e) => {
       console.log("Error fetching frontend pages", e);
       return {};
@@ -365,6 +369,7 @@ async function generateSearchList() {
   }
 
   const protocols: Array<SearchResult> = [];
+  const protocolNameSet = new Set<String>();
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
     const result = {
@@ -378,6 +383,7 @@ async function generateSearchList() {
       type: "Protocol",
     };
 
+    protocolNameSet.add(parent.name);
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
@@ -408,6 +414,7 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
+    protocolNameSet.add(protocol.name);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
     const subSections = getProtocolSubSections({
@@ -694,6 +701,20 @@ async function generateSearchList() {
     type: "Stablecoin",
   }));
 
+  const bridges: Array<SearchResult> = [];
+  for (const brg of bridgesData.bridges) {
+    if (protocolNameSet.has(brg.displayName)) continue;
+    bridges.push({
+      id: `bridge_${normalize(brg.name)}`,
+      name: brg.displayName,
+      volume: brg.monthlyVolume,
+      logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
+      route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
+      v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
+      type: "Bridge",
+    });
+  }
+
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,
     name: i.name,
@@ -764,6 +785,7 @@ async function generateSearchList() {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
     stablecoins: stablecoins.sort((a, b) => b.v - a.v),
+    bridges: bridges.sort((a, b) => b.v - a.v),
     metrics: metrics.sort((a, b) => b.v - a.v),
     tools: tools.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
@@ -776,6 +798,7 @@ async function generateSearchList() {
     results: results.chains
       .concat(results.protocols)
       .concat(results.stablecoins)
+      .concat(results.bridges)
       .concat(results.metrics)
       .concat(results.tools)
       .concat(results.categories)

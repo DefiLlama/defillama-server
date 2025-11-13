@@ -81,6 +81,7 @@ export type ChainCoinGekcoId = {
     da?: string
   },
   dimensions?: DimensionsConfig
+  stablecoins?: string[]
 }
 
 export type ChainCoinGekcoIds = {
@@ -1711,6 +1712,7 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    stablecoins: ['ripple-usd'],
   },
   "GodwokenV1": {
     geckoId: null,
@@ -2922,6 +2924,7 @@ export const chainCoingeckoIds = {
     chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
+    stablecoins: ["usdb"],
     dimensions: {
       fees: "blast"
     }
@@ -4090,6 +4093,9 @@ export const chainCoingeckoIds = {
     url: "https://www.fluence.network",
     github: ["fluencelabs"],
     chainId: 9999999,
+    dimensions: {
+      fees: "fluence",
+    }
   },
   "Swan": {
     geckoId: "swan-chain",
@@ -4427,7 +4433,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "GOATRollup",
     url: "https://www.goat.network/",
-    chainId: 2345
+    chainId: 2345,
+    dimensions: {
+      fees: "goat"
+    }
   },
   "Plume Mainnet": {
     geckoId: "plume",

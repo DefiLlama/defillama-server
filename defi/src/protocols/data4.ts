@@ -24683,7 +24683,7 @@ const data4: Protocol[] = [
     description:
       "Dswap is the built-in token swap feature of DAOaaS. DAOaaS is a decentralised DAO platform on ENI, combining governance, operations, and traffic. It empowers communities with cross-chain tech, AI tools, and incentive models to enable efficient, transparent collaboration",
     chain: "ENI",
-    logo: `${baseIconsUrl}/daoaas.jpg`,
+    logo: `${baseIconsUrl}/dswap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

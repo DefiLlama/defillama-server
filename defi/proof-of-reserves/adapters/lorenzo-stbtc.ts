@@ -1,7 +1,7 @@
 import { getBitcoinReservesAdapter } from '../utils/bitcoin';
 
 // lorenzo stBTC
-const protocolId = 'lorenzo';
+const protocolId = 'lorenzo-stbtc';
 
 const mintedTokens = [
   {

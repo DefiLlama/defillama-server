@@ -1,8 +1,8 @@
 import loadAdaptorsData from "../../src/adaptors/data"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../../src/adaptors/data/types";
 import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
 import { getTimestampString } from "../../src/api2/utils";
-import { handler2, IStoreAdaptorDataHandlerEvent } from "../../src/adaptors/handlers/storeAdaptorData";
+import { handler2, DimensionRunOptions } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
 import { humanizeNumber } from "@defillama/sdk";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
@@ -58,7 +58,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
   }
 
   let i = 0
-  let items: IStoreAdaptorDataHandlerEvent[] = []
+  let items: DimensionRunOptions[] = []
   let timeSWithData = new Set()
   let days = getDaysBetweenTimestamps(fromTimestamp, toTimestamp)
 
@@ -75,7 +75,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
       const currentTimeS = getTimestampString(lastTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         console.log('missing data on', new Date((lastTimestamp) * 1000).toLocaleDateString())
-        const eventObj: IStoreAdaptorDataHandlerEvent = {
+        const eventObj: DimensionRunOptions = {
           timestamp: lastTimestamp,
           adapterType: adapterType as any,
           isDryRun: args.dryRun,
@@ -91,7 +91,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
     let currentDayEndTimestamp = toTimestamp
 
     while (days >= 0) {
-      const eventObj: IStoreAdaptorDataHandlerEvent = {
+      const eventObj: DimensionRunOptions = {
         timestamp: currentDayEndTimestamp,
         adapterType: adapterType as any,
         isDryRun: args.dryRun,

@@ -2,6 +2,7 @@ import adaptersModules from "./utils/imports/adapters_liquidations";
 import { performance } from "perf_hooks";
 import { storeCachedLiqsR2 } from "./utils/r2";
 
+// WARNING: This is deprecated, the feature is scraped.
 const handler = async (event: any, _context: AWSLambda.Context) => {
   const protocol = event.protocol as keyof typeof adaptersModules;
   const module = adaptersModules[protocol];

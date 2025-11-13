@@ -1,13 +1,9 @@
 import adapters from "../adapters/index";
 import {
-  batchGet,
   batchWrite,
-  DELETE,
-  getHistoricalValues,
 } from "../utils/shared/dynamodb";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { withTimeout } from "../utils/shared/withTimeout";
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
 import PromisePool from "@supercharge/promise-pool";
 import { getCurrentUnixTimestamp } from "../utils/date";
 
@@ -83,7 +79,6 @@ async function handler(adapterTorefill: string, timestamp: number) {
   }
 } // ts-node coins/src/cli/refill.ts
 async function main() {
-  await setEnvSecrets();
   const timestampArray = createTimestampArray();
   for (let i of timestampArray) {
     await PromisePool.withConcurrency(10)

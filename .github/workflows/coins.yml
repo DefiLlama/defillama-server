@@ -26,29 +26,44 @@ jobs:
     if: ${{ needs.changes.outputs.coins == 'true' }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Get Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-    - run: (npm ci || npm i) && ln -s ../coins/node_modules/ ../defi/node_modules
-    - name: Deploy infrastructure stack
-      run: npm run deploy:prod
-      env:
-        ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
-        POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
-        BSC_RPC: ${{ secrets.BSC_RPC }}
-        FANTOM_RPC: ${{ secrets.FANTOM_RPC }}
-        ARBITRUM_RPC: ${{ secrets.ARBITRUM_RPC }}
-        OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
-        XDAI_RPC: ${{ secrets.XDAI_RPC }}
-        HARMONY_RPC: ${{ secrets.HARMONY_RPC }}
-        SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
-        CG_KEY: ${{ secrets.CG_KEY }}
-        MISSING_COINS_DB_PWD: ${{ secrets.MISSING_COINS_DB_PWD }}
-        STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
-        R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-        R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-        R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: 'coins/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install  --no-frozen-lockfile && ln -s ../coins/node_modules/ ../defi/node_modules
+
+      - name: Deploy infrastructure stack
+        run: pnpm run deploy:prod
+        env:
+          ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
+          POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
+          BSC_RPC: ${{ secrets.BSC_RPC }}
+          FANTOM_RPC: ${{ secrets.FANTOM_RPC }}
+          ARBITRUM_RPC: ${{ secrets.ARBITRUM_RPC }}
+          OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
+          XDAI_RPC: ${{ secrets.XDAI_RPC }}
+          HARMONY_RPC: ${{ secrets.HARMONY_RPC }}
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
+          CG_KEY: ${{ secrets.CG_KEY }}
+          MISSING_COINS_DB_PWD: ${{ secrets.MISSING_COINS_DB_PWD }}
+          STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -7,7 +7,7 @@ const DATA_FEED_ABI =
 const AGGREGATOR_ABI =
   "function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
 
-type Denomination = "USD" | "BTC" | "SOL" | "XRP";
+type Denomination = "USD" | "BTC" | "SOL" | "XRP" | "ETH";
 
 interface TokenConfig {
   name: string;
@@ -33,6 +33,11 @@ const BASE_ASSET_ORACLES = {
     chain: "xrplevm",
     decimals: 18,
   }, // XRP/USD on Xrplevm
+  ETH: {
+    address: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+    chain: "ethereum",
+    decimals: 8,
+  }, // ETH/USD on Ethereum
 } as const;
 
 const contracts: Record<string, TokenConfig[]> = {
@@ -115,6 +120,23 @@ const contracts: Record<string, TokenConfig[]> = {
       token: "0x605A84861EE603e385b01B9048BEa6A86118DB0a",
       oracle: "0xe604a420388Fbf2693F2250db0DC84488EE99aA1",
     },
+    {
+      name: "mEVUSD",
+      token: "0x548857309BEfb6Fb6F20a9C5A56c9023D892785B",
+      oracle: "0x508Fe9556C7919E64406bB4042760d7Bb1F40fC9",
+    },
+    {
+      name: "mHyperETH",
+      token: "0x5a42864b14C0C8241EF5ab62Dae975b163a2E0C1",
+      oracle: "0xbD560c1E87752717C34912D128168BfE26021EA2",
+      denomination: "ETH",
+    },
+    {
+      name: "mHyperBTC",
+      token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
+      oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
+      denomination: "BTC",
+    },
   ],
   base: [
     {
@@ -183,6 +205,20 @@ const contracts: Record<string, TokenConfig[]> = {
       denomination: "XRP",
     },
   ],
+  plasma: [
+    { name: 'mHyper', token: '0xb31BeA5c2a43f942a3800558B1aa25978da75F8a', oracle: '0x2EB410e4cb94E2E9E3cdE3F7b405BE4fCC076Bc9' },
+  ],
+  bsc: [{
+    name: 'mXRP',
+    token: "0xc8739fbBd54C587a2ad43b50CbcC30ae34FE9e34",
+    oracle: "0x583970971EFcEBfcebD3b530E436B8fEEb3D43C7",
+    denomination: "XRP",
+  }],
+  "0g": [{
+    name: 'mEDGE',
+    token: "0xA1027783fC183A150126b094037A5Eb2F5dB30BA",
+    oracle: "0xcbf46Aa4b5bAe5850038D9dF4661a58e85CEDC7e",
+  }]
 };
 
 async function getBaseAssetPrices(

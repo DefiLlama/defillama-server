@@ -2,7 +2,6 @@ import { getCurrentUnixTimestamp, secondsInDay } from "../../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
 import findTvls from "../tvl";
 import { overwrite } from "../storeToDb";
-import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 
 const end = getCurrentUnixTimestamp();
 const start = getStart("2024-01-01");
@@ -28,7 +27,6 @@ async function proc(timestamp: number) {
   await overwrite(res);
 }
 async function backfill() {
-  await setEnvSecrets();
   const errors: number[] = [];
   let successCount: number = 0;
   await PromisePool.withConcurrency(1)

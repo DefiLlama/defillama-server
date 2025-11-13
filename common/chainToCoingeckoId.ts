@@ -237,7 +237,22 @@ export const chainToCoingeckoId = {
   zero_network: "zero-network",
   astrzk: "astar-zkevm",
   tac: "tac", 
-  btnx: "botanix"
+  btnx: "botanix", 
+  fuel: "fuel-ignition",
+  vana: "vana",
+  peaq: "peaq",
+  saakuru: "saakuru",
+  somnia: "somnia",
+  mezo: "mezo",
+  supra: "supra",
+  initia: "initia",
+  haven1: "haven1",
+  crossfi: "crossfi",
+  provenance: "provenance",
+  qubic: "qubic",
+  redstone: "redstone",
+  plasma: 'plasma', 
+  kasplex: 'kasplex'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(
@@ -271,3 +286,4 @@ export default chainToCoingeckoId;
 // }
 // generateNewObject();
 // ts-node common/chainToCoingeckoId.ts
+

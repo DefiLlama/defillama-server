@@ -1,6 +1,6 @@
 import '../utils/failOnError'
 
-import { roundVaules, } from "../utils";
+import { roundValues, } from "../utils";
 import * as sdk from "@defillama/sdk";
 // import { sendMessage } from '../../utils/discord';
 import axios from 'axios';
@@ -125,7 +125,7 @@ const hn = (n: number) => n ? sdk.humanizeNumber(Math.round(n)) : '0'
 run().catch(console.error).then(() => process.exit(0))
 
 function getDiffPercentage(current: number, other: number) {
-  return roundVaules(current * 100 / other - 100)
+  return roundValues(current * 100 / other - 100)
 }
 
 function getAverageOfObject(obj: Record<string, number> = {}) {

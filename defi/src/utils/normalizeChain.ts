@@ -81,6 +81,7 @@ export type ChainCoinGekcoId = {
     da?: string
   },
   dimensions?: DimensionsConfig
+  stablecoins?: string[]
 }
 
 export type ChainCoinGekcoIds = {
@@ -104,7 +105,11 @@ export const chainCoingeckoIds = {
     url: "https://ethereum.foundation/",
     dimensions: {
       fees: {
-        genuineSpikes: ["1651449600"],
+        genuineSpikes: [
+          "1651449600",
+          "1651363200",  // otherside mint
+          "1760054400",  // 2025-10-10 - sharp drop in the market - Black Friday
+        ],
         adapter: "ethereum"
       }
     }
@@ -456,7 +461,7 @@ export const chainCoingeckoIds = {
     symbol: "OSMO",
     cmcId: "12220",
     categories: ["Cosmos"],
-    twitter: "osmosiszone",
+    twitter: "osmosis",
     url: "https://osmosis.zone/"
   },
   "Thorchain": {
@@ -913,7 +918,7 @@ export const chainCoingeckoIds = {
     github: ['XDCFoundation'],
     symbol: "XDC",
     cmcId: "2634",
-    twitter: "XinFin_Official",
+    twitter: "XDCNetwork",
     url: "https://xinfin.org/"
   },
   "Velas": {
@@ -1206,7 +1211,10 @@ export const chainCoingeckoIds = {
     cmcId: "5691",
     categories: ["EVM"],
     twitter: "SkaleNetwork",
-    url: "https://skale.space/"
+    url: "https://skale.space/",
+    dimensions: {
+      fees: "skale"
+    }
   },
   "Bittorrent": {
     geckoId: "bittorrent",
@@ -1401,7 +1409,10 @@ export const chainCoingeckoIds = {
       chain: "Kusama",
       types: ["parachain"]
     },
-    twitter: "BifrostFinance",
+    twitter: "Bifrost",
+    dimensions: {
+      fees: "bifrost-chain"
+    },
     url: "https://bifrost.finance/"
   },
   "Stafi": {
@@ -1701,6 +1712,7 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    stablecoins: ['ripple-usd'],
   },
   "GodwokenV1": {
     geckoId: null,
@@ -2349,8 +2361,8 @@ export const chainCoingeckoIds = {
     }
   },
   "Linea": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "linea",
+    symbol: "LINEA",
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["ConsenSys"],
@@ -2912,6 +2924,7 @@ export const chainCoingeckoIds = {
     chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
+    stablecoins: ["usdb"],
     dimensions: {
       fees: "blast"
     }
@@ -3161,7 +3174,10 @@ export const chainCoingeckoIds = {
     cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
-    url: "https://hyperliquid.xyz/"
+    url: "https://hyperliquid.xyz/",
+    dimensions: {
+      fees: "hyperevm"
+    }
   },
   "Nibiru": {
     geckoId: "nibiru",
@@ -4077,6 +4093,9 @@ export const chainCoingeckoIds = {
     url: "https://www.fluence.network",
     github: ["fluencelabs"],
     chainId: 9999999,
+    dimensions: {
+      fees: "fluence",
+    }
   },
   "Swan": {
     geckoId: "swan-chain",
@@ -4408,9 +4427,9 @@ export const chainCoingeckoIds = {
     chainId: 277
   },
   "GOAT": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "goat-network",
+    symbol: "GOATED",
+    cmcId: "38494",
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "GOATRollup",
     url: "https://www.goat.network/",
@@ -4927,6 +4946,9 @@ export const chainCoingeckoIds = {
     url: "https://www.plasma.to/",
     github: ["PlasmaLaboratories"],
     chainId: 9745,
+    dimensions: {
+      fees: "plasma"
+    }
   },
   "Constellation": {
     geckoId: "constellation-labs",
@@ -4966,6 +4988,69 @@ export const chainCoingeckoIds = {
     url: "https://xone.org/",
     github: ["hello-xone"],
     chainId: 3721,
+  },
+  "Kasplex": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "kasplex",
+    url: "https://kasplex.org/",
+    github: ["kasplex"],
+  },
+  "0G": {
+    geckoId: "zero-gravity",
+    symbol: "0G",
+    cmcId: "38337",
+    categories: ["EVM"],
+    twitter: "0G_Foundation",
+    url: "https://www.0gfoundation.ai/",
+    github: ["0gfoundation"],
+    chainId: 16661,
+  },
+  "Ethereal": {
+    geckoId: "ethena-usde",
+    symbol: "USDe",
+    cmcId: "29470",
+    categories: ["EVM"],
+    twitter: "etherealdex",
+    url: "https://www.ethereal.trade/",
+    chainId: 5064014,
+  },
+  "Bittensor EVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "opentensor",
+    url: "https://bittensor.com/",
+    chainId: 964,
+  },
+  "BESC Hyperchain": {
+    geckoId: null,
+    symbol: "BESC",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "BESCLLC",
+    url: "https://besc.llc/",
+    chainId: 2372,
+  },
+  "ZIGChain": {
+    geckoId: "zignaly",
+    symbol: "ZIG",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "ZIGChain",
+    url: "https://zigchain.com/"
+  },
+  "Zenrock": {
+    geckoId: "zenrock",
+    symbol: "ROCK",
+    cmcId: "9260",
+    categories: ["Cosmos"],
+    twitter: "zenrock",
+    url: "https://www.zenrocklabs.io/",
+    github: ["Zenrock-Foundation"],
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -5182,7 +5267,11 @@ const chainLabelMap = {
   "zklighter": "zkLighter",
   "goat": "Goat",
   "gatelayer": "GateLayer",
-  "xone": "Xone Chain"
+  "xone": "Xone Chain",
+  "0g": "0G",
+  "bittensor_evm": "Bittensor EVM",
+  "besc": "BESC Hyperchain",
+  "zigchain": "ZIGChain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5296,6 +5385,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }
 }
+
+// NOTE: this only works if chain key and label are different, else capitalize the first character of the chain key
+export const chainKeyToLabelMap = allChainLabelMap
 
 export function getDisplayChain(chains: string[]) {
   if (chains.length > 1) {

@@ -1,14 +1,15 @@
 require("dotenv").config();
 
 import '../../../api2/utils/failOnError'
-import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { Adapter, AdapterType } from "../../data/types"
 import loadAdaptorsData from "../../data"
-import { handler2, IStoreAdaptorDataHandlerEvent } from "."
+import { handler2, DimensionRunOptions } from "."
 import readline from 'readline';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
 import PromisePool from '@supercharge/promise-pool';
 import { ADAPTER_TYPES } from '../../data/types';
+import { deadChains } from '../../../storeTvlInterval/getAndStoreTvl';
 
 
 // ================== Script Config ==================
@@ -126,7 +127,7 @@ async function refillAdapter() {
       const currentTimeS = getTimestampString(lastTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         console.log('missing data on', new Date((lastTimestamp) * 1000).toLocaleDateString())
-        const eventObj: IStoreAdaptorDataHandlerEvent = {
+        const eventObj: DimensionRunOptions = {
           timestamp: lastTimestamp,
           adapterType: adapterType as any,
           isDryRun: DRY_RUN,
@@ -145,7 +146,7 @@ async function refillAdapter() {
     // if (!isVersion2) currentDayEndTimestamp += ONE_DAY_IN_SECONDS 
 
     while (days > 0) {
-      const eventObj: IStoreAdaptorDataHandlerEvent = {
+      const eventObj: DimensionRunOptions = {
         timestamp: currentDayEndTimestamp,
         adapterType: adapterType as any,
         isDryRun: DRY_RUN,
@@ -258,7 +259,7 @@ async function refillAllProtocols() {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         // console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
-        const eventObj: IStoreAdaptorDataHandlerEvent = {
+        const eventObj: DimensionRunOptions = {
           timestamp: currentDayEndTimestamp,
           adapterType,
           isDryRun: false,
@@ -266,6 +267,7 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
           runType: 'refill-all',
+          deadChains,
         }
         runner.push(handler2(eventObj))
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS

@@ -12,7 +12,6 @@ import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
-import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapterDynamic } from "../utils/imports/importAdapter"; 
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
@@ -22,12 +21,12 @@ import { closeConnection } from "../api2/db";
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
 
-type DailyItems = (DocumentClient.ItemList | undefined)[];
+type DailyItems = (any)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   for (const items of dailyItems) {
     const itemsOnSameDay =
       items?.filter(
-        (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+        (item: any) => getClosestDayStartTimestamp(item.SK) === timestamp
       ) ?? [];
     for (const item of itemsOnSameDay) {
       await dynamodb.delete({

@@ -11,7 +11,7 @@ import * as graphCoins from "./markets/graphCoins";
 export default {
   ...compound.adapters,
   ...aave.adapters,
-  ...euler.adapters,
+  ...euler.adapters, 
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,
@@ -106,6 +106,7 @@ export default {
   pxeth: require("./liquidStaking/pxeth"),
   // sthApt: require("./liquidStaking/sthapt"),
   truAPT: require("./liquidStaking/truapt"),
+  suiLST: require("./liquidStaking/sui-lst"),
   mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),

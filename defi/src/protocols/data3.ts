@@ -36933,7 +36933,7 @@ const data3_2: Protocol[] = [
     cmcId: "36288",
     category: "DEX Aggregator",
     chains: ["Arbitrum", "Polygon", "Optimism", "Base", "Avalanche"],
-    module: "definitive/index.js",
+    module: "dummy.js",
     twitter: "DefinitiveFi",
     forkedFrom: [],
     github: ["DefinitiveCo"],

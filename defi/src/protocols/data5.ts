@@ -2311,5 +2311,28 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.valdora.finance/security"],
     listedAt: 1762998474,
   },
+  {
+    id: "6992",
+    name: "Legacy Definitive Vaults",
+    address: "base:0xED6E000dEF95780fb89734c07EE2ce9F6dcAf110",
+    symbol: "EDGE",
+    url: "https://www.definitive.fi",
+    description:
+      "Definitive is the premier non-custodial platform for advanced DeFi yield and on-chain trade execution.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/definitive.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum", "Polygon", "Optimism", "Base", "Avalanche"],
+    module: "definitive/index.js",
+    twitter: "DefinitiveFi",
+    forkedFrom: [],
+    github: [],
+    audit_links: ["https://github.com/DefinitiveCo/definitive-public/tree/main/audits"],
+    listedAt: 1709828870,
+  },
 ];
 export default data5;

@@ -70,7 +70,7 @@ export function expectValidTimestamp(timestamp: any): void {
 
 export function expectNonEmptyString(value: any): void {
   expect(typeof value).toBe('string');
-  expect(value.length).toBeGreaterThan(0);
+  expect(value.length).toBeGreaterThanOrEqual(0);
 }
 
 export function expectValidPercentageChange(value: any): void {

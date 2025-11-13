@@ -1,24 +1,30 @@
-import { initializeTvlTests, TVL_ENDPOINTS } from './setup';
-import { Protocol, isProtocolArray } from './types';
-import { protocolSchema } from './schemas';
+import { createApiClient } from '../../utils/config/apiClient';
+import { endpoints } from '../../utils/config/endpoints';
+import { Protocol, ProtocolDetails, isProtocolArray, isProtocolDetails } from './types';
+import { protocolSchema, protocolDetailsSchema } from './schemas';
 import {
   expectSuccessfulResponse,
   expectArrayResponse,
+  expectObjectResponse,
   expectNonEmptyArray,
   expectValidNumber,
   expectNonNegativeNumber,
   expectNonEmptyString,
+  expectValidTimestamp,
 } from '../../utils/testHelpers';
-import { validate, isValid, commonValidation } from '../../utils/validation';
+import { validate, isValid } from '../../utils/validation';
 import { ApiResponse } from '../../utils/config/apiClient';
 import { z } from 'zod';
 
+const apiClient = createApiClient(endpoints.TVL.BASE_URL);
+const TVL_ENDPOINTS = endpoints.TVL;
+
 describe('TVL API - Protocols', () => {
-  const apiClient = initializeTvlTests();
+  const PROTOCOLS_ENDPOINT = TVL_ENDPOINTS.PROTOCOLS;
   let protocolsResponse: ApiResponse<Protocol[]>;
 
   beforeAll(async () => {
-    protocolsResponse = await apiClient.get<Protocol[]>(TVL_ENDPOINTS.PROTOCOLS);
+    protocolsResponse = await apiClient.get<Protocol[]>(PROTOCOLS_ENDPOINT);
   });
 
   describe('Basic Response Validation', () => {
@@ -252,6 +258,340 @@ describe('TVL API - Protocols', () => {
           if (protocol.openSource !== undefined) expect(typeof protocol.openSource).toBe('boolean');
         });
       }
+    });
+  });
+});
+
+describe('TVL API - Protocol Details', () => {
+  // Configure test protocols - add more to test multiple protocols, or keep just one for speed
+  const testProtocols = ['aave-v3'];
+  const protocolResponses: Record<string, ApiResponse<ProtocolDetails>> = {};
+
+  beforeAll(async () => {
+    await Promise.all(
+      testProtocols.map(async (slug) => {
+        try {
+          protocolResponses[slug] = await apiClient.get<ProtocolDetails>(TVL_ENDPOINTS.PROTOCOL(slug));
+        } catch (error: any) {
+          console.error(`Failed to fetch protocol ${slug}:`, error.message, error.details);
+          throw error;
+        }
+      })
+    );
+  }, 60000);
+
+  describe('Basic Response Validation', () => {
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should return successful response with valid structure', () => {
+          expectSuccessfulResponse(protocolResponses[slug]);
+          expectObjectResponse(protocolResponses[slug]);
+          expect(isProtocolDetails(protocolResponses[slug].data)).toBe(true);
+        });
+
+        it('should validate against Zod schema', () => {
+          const result = validate(protocolResponses[slug].data, protocolDetailsSchema, 'ProtocolDetails');
+          expect(result.success).toBe(true);
+          if (!result.success) {
+            console.error('Validation errors:', result.errors);
+          }
+        });
+
+        it('should have required fields', () => {
+          const requiredFields = ['id', 'name', 'chains', 'chainTvls'];
+          requiredFields.forEach((field) => {
+            expect(protocolResponses[slug].data).toHaveProperty(field);
+          });
+        });
+
+        it('should have valid identifiers', () => {
+          expectNonEmptyString(protocolResponses[slug].data.id);
+          expectNonEmptyString(protocolResponses[slug].data.name);
+          if (protocolResponses[slug].data.slug) {
+            expectNonEmptyString(protocolResponses[slug].data.slug);
+          }
+        });
+
+        it('should have valid chains array', () => {
+          expect(Array.isArray(protocolResponses[slug].data.chains)).toBe(true);
+          protocolResponses[slug].data.chains.forEach((chain) => {
+            expectNonEmptyString(chain);
+          });
+        });
+      });
+    });
+  });
+
+  describe('Historical TVL Data', () => {
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should have valid TVL array structure', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tvl !== null) {
+            expect(Array.isArray(response.data.tvl)).toBe(true);
+            
+            if (response.data.tvl.length > 0) {
+              response.data.tvl.slice(0, 10).forEach((point) => {
+                expectValidTimestamp(point.date);
+                expectValidNumber(point.totalLiquidityUSD);
+                expectNonNegativeNumber(point.totalLiquidityUSD);
+              });
+            }
+          }
+        });
+
+        it('should have TVL data points in chronological order', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tvl && response.data.tvl.length > 1) {
+            const dates = response.data.tvl.map((p) => p.date);
+            const sortedDates = [...dates].sort((a, b) => a - b);
+            expect(dates).toEqual(sortedDates);
+          }
+        });
+      });
+    });
+  });
+
+  describe('Chain TVL Breakdowns', () => {
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should have valid chainTvls structure', () => {
+          const response = protocolResponses[slug];
+          expect(typeof response.data.chainTvls).toBe('object');
+          expect(response.data.chainTvls).not.toBeNull();
+
+          const chainKeys = Object.keys(response.data.chainTvls);
+          expect(chainKeys.length).toBeGreaterThan(0);
+
+          chainKeys.slice(0, 5).forEach((chain) => {
+            expectNonEmptyString(chain);
+            const chainData = response.data.chainTvls[chain];
+            expect(chainData).toHaveProperty('tvl');
+            expect(Array.isArray(chainData.tvl)).toBe(true);
+
+            if (chainData.tvl.length > 0) {
+              chainData.tvl.slice(0, 5).forEach((point) => {
+                expectValidTimestamp(point.date);
+                expectValidNumber(point.totalLiquidityUSD);
+                expectNonNegativeNumber(point.totalLiquidityUSD);
+              });
+            }
+          });
+        });
+
+        it('should have chainTvls matching protocol chains', () => {
+          const response = protocolResponses[slug];
+          const chainTvlKeys = Object.keys(response.data.chainTvls);
+          const protocolChains = response.data.chains;
+
+          if (protocolChains.length > 0) {
+            chainTvlKeys.forEach((chain) => {
+              if (!chain.includes('-') && !chain.includes('borrowed') && !chain.includes('staking') && !chain.includes('pool2')) {
+                expect(protocolChains).toContain(chain);
+              }
+            });
+          }
+        });
+
+        it('should have valid currentChainTvls if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.currentChainTvls) {
+            Object.entries(response.data.currentChainTvls).forEach(([chain, tvl]) => {
+              expectNonEmptyString(chain);
+              expectValidNumber(tvl);
+              expectNonNegativeNumber(tvl);
+            });
+          }
+        });
+      });
+    });
+  });
+
+  describe('Token Breakdowns', () => {
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should have valid tokensInUsd structure if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tokensInUsd && response.data.tokensInUsd.length > 0) {
+            expect(Array.isArray(response.data.tokensInUsd)).toBe(true);
+
+            response.data.tokensInUsd.slice(0, 5).forEach((point) => {
+              expectValidTimestamp(point.date);
+              expect(typeof point.tokens).toBe('object');
+              expect(point.tokens).not.toBeNull();
+
+              Object.entries(point.tokens).forEach(([token, amount]) => {
+                expectNonEmptyString(token);
+                expectValidNumber(amount);
+                expectNonNegativeNumber(amount);
+              });
+            });
+          }
+        });
+
+        it('should have valid tokens structure if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tokens && response.data.tokens.length > 0) {
+            expect(Array.isArray(response.data.tokens)).toBe(true);
+
+            response.data.tokens.slice(0, 5).forEach((point) => {
+              expectValidTimestamp(point.date);
+              expect(typeof point.tokens).toBe('object');
+              expect(point.tokens).not.toBeNull();
+
+              Object.entries(point.tokens).forEach(([token, amount]) => {
+                expectNonEmptyString(token);
+                expectValidNumber(amount);
+                expectNonNegativeNumber(amount);
+              });
+            });
+          }
+        });
+
+        it('should have token breakdowns in chainTvls if present', () => {
+          const response = protocolResponses[slug];
+          Object.entries(response.data.chainTvls).slice(0, 3).forEach(([, chainData]) => {
+            if (chainData.tokensInUsd && chainData.tokensInUsd !== null && chainData.tokensInUsd.length > 0) {
+              chainData.tokensInUsd.slice(0, 3).forEach((point) => {
+                expectValidTimestamp(point.date);
+                expect(typeof point.tokens).toBe('object');
+              });
+            }
+
+            if (chainData.tokens && chainData.tokens !== null && chainData.tokens.length > 0) {
+              chainData.tokens.slice(0, 3).forEach((point) => {
+                expectValidTimestamp(point.date);
+                expect(typeof point.tokens).toBe('object');
+              });
+            }
+          });
+        });
+      });
+    });
+  });
+
+  describe('Metadata Fields', () => {
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should have valid optional metadata fields', () => {
+          const response = protocolResponses[slug];
+          if (response.data.category) {
+            expectNonEmptyString(response.data.category);
+          }
+
+          if (response.data.url) {
+            expect(response.data.url).toMatch(/^https?:\/\//);
+          }
+
+          if (response.data.logo) {
+            expect(response.data.logo).toMatch(/^https?:\/\//);
+          }
+
+          if (response.data.description) {
+            expect(typeof response.data.description).toBe('string');
+          }
+
+          if (response.data.methodology) {
+            expectNonEmptyString(response.data.methodology);
+          }
+        });
+
+        it('should have valid raises array if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.raises && response.data.raises.length > 0) {
+            expect(Array.isArray(response.data.raises)).toBe(true);
+
+            response.data.raises.slice(0, 3).forEach((raise) => {
+              if (raise.date) expectNonEmptyString(raise.date);
+              if (raise.round) expectNonEmptyString(raise.round);
+              if (raise.amount !== undefined) {
+                expectValidNumber(raise.amount);
+                expectNonNegativeNumber(raise.amount);
+              }
+              if (raise.valuation !== undefined) {
+                expectValidNumber(raise.valuation);
+                expectNonNegativeNumber(raise.valuation);
+              }
+            });
+          }
+        });
+
+        it('should have valid hallmarks if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.hallmarks && response.data.hallmarks.length > 0) {
+            expect(Array.isArray(response.data.hallmarks)).toBe(true);
+
+            response.data.hallmarks.slice(0, 5).forEach((hallmark) => {
+              if (Array.isArray(hallmark) && hallmark.length >= 2) {
+                expectValidTimestamp(hallmark[0]);
+                expect(typeof hallmark[1]).toBe('string');
+              }
+            });
+          }
+        });
+
+        it('should have valid token metrics if present', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tokenPrice !== null && response.data.tokenPrice !== undefined) {
+            expectValidNumber(response.data.tokenPrice);
+            expectNonNegativeNumber(response.data.tokenPrice);
+          }
+
+          if (response.data.tokenMcap !== null && response.data.tokenMcap !== undefined) {
+            expectValidNumber(response.data.tokenMcap);
+            expectNonNegativeNumber(response.data.tokenMcap);
+          }
+
+          if (response.data.tokenSupply !== null && response.data.tokenSupply !== undefined) {
+            expectValidNumber(response.data.tokenSupply);
+            expectNonNegativeNumber(response.data.tokenSupply);
+          }
+
+          if (response.data.mcap !== null && response.data.mcap !== undefined) {
+            expectValidNumber(response.data.mcap);
+            expectNonNegativeNumber(response.data.mcap);
+          }
+        });
+      });
+    });
+  });
+
+  describe('Edge Cases', () => {
+    it('should handle non-existent protocol gracefully', async () => {
+      const NONEXISTENT_ENDPOINT = TVL_ENDPOINTS.PROTOCOL('non-existent-protocol-xyz-123');
+      const response = await apiClient.get<ProtocolDetails>(NONEXISTENT_ENDPOINT);
+      expect(response.status).toBeGreaterThanOrEqual(400);
+    });
+
+    testProtocols.forEach((slug) => {
+      describe(`Protocol: ${slug}`, () => {
+        it('should handle protocol with null TVL', () => {
+          const response = protocolResponses[slug];
+          if (response.data.tvl === null) {
+            expect(response.data.tvl).toBeNull();
+          }
+        });
+
+        it('should handle protocol with empty chainTvls', () => {
+          const response = protocolResponses[slug];
+          expect(typeof response.data.chainTvls).toBe('object');
+        });
+
+        it('should handle protocol with parent/child relationships', () => {
+          const response = protocolResponses[slug];
+
+          if (response.data.otherProtocols) {
+            expect(Array.isArray(response.data.otherProtocols)).toBe(true);
+            response.data.otherProtocols.forEach((name) => {
+              expectNonEmptyString(name);
+            });
+          }
+
+          if (response.data.parentProtocolSlug) {
+            expectNonEmptyString(response.data.parentProtocolSlug);
+          }
+        });
+      });
     });
   });
 });

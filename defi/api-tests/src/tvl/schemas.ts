@@ -83,21 +83,49 @@ export const historicalDataPointSchema = z.object({
   totalLiquidityUSD: z.number().finite().nonnegative(),
 });
 
+const chainTvlDetailSchema = z.object({
+  tvl: z.array(historicalDataPointSchema),
+  tokensInUsd: z.array(z.object({
+    date: z.number(),
+    tokens: z.record(z.string(), z.number()),
+  })).nullable().optional(),
+  tokens: z.array(z.object({
+    date: z.number(),
+    tokens: z.record(z.string(), z.number()),
+  })).nullable().optional(),
+});
+
 export const protocolDetailsSchema = protocolSchema.extend({
   // Override tvl and chainTvls for details endpoint
-  tvl: z.union([z.array(historicalDataPointSchema), z.number()]).optional(),
-  chainTvls: z.record(z.string(), z.any()).optional(),
+  tvl: z.array(historicalDataPointSchema).nullable(),
+  chainTvls: z.record(z.string(), chainTvlDetailSchema),
   currentChainTvls: chainTvlSchema.optional(),
+  
+  // slug is not returned in protocol details endpoint
+  slug: z.string().optional(),
   
   // Additional fields in details
   otherProtocols: z.array(z.string()).optional(),
-  tokensInUsd: z.array(z.any()).optional(),
-  tokens: z.array(z.any()).optional(),
+  tokensInUsd: z.array(z.object({
+    date: z.number(),
+    tokens: z.record(z.string(), z.number()),
+  })).optional(),
+  tokens: z.array(z.object({
+    date: z.number(),
+    tokens: z.record(z.string(), z.number()),
+  })).optional(),
   raises: z.array(z.object({
-    date: z.string().optional(),
+    date: z.union([z.string(), z.number()]).optional(),
     round: z.string().optional(),
     amount: z.number().optional(),
+    valuation: z.number().nullable().optional(),
+    otherInvestors: z.array(z.string()).optional(),
   })).optional(),
+  isParentProtocol: z.boolean().optional(),
+  metrics: z.record(z.string(), z.boolean()).optional(),
+  tokenPrice: z.number().nullable().optional(),
+  tokenMcap: z.number().nullable().optional(),
+  tokenSupply: z.number().nullable().optional(),
 });
 
 // ============================================================================
@@ -115,6 +143,17 @@ export const historicalTvlPointSchema = z.object({
 });
 
 // ============================================================================
+// Historical Chain TVL Schema
+// ============================================================================
+
+export const historicalChainTvlPointSchema = z.object({
+  date: z.number(),
+  tvl: z.number().finite().nonnegative(),
+});
+
+export const historicalChainTvlArraySchema = z.array(historicalChainTvlPointSchema);
+
+// ============================================================================
 // Chain Schema
 // ============================================================================
 
@@ -124,7 +163,66 @@ export const chainSchema = z.object({
   tokenSymbol: z.string().nullable(),
   cmcId: z.string().nullable(),
   name: z.string(),
-  chainId: z.number().optional(),
+  chainId: z.union([
+    z.number(),
+    z.string().transform(Number),
+    z.null()
+  ]).optional(),
+});
+
+// ============================================================================
+// Protocol TVL Schema (from /tvl/{protocol} endpoint)
+// ============================================================================
+
+export const protocolTvlSchema = z.number().finite().nonnegative();
+
+// ============================================================================
+// Chains V2 Schema (from /v2/chains endpoint)
+// ============================================================================
+
+export const chainsV2ArraySchema = z.array(chainSchema);
+
+// ============================================================================
+// Chain Assets Schema (from /chainAssets endpoint)
+// ============================================================================
+
+const chainAssetSectionSchema = z.object({
+  total: z.string(),
+  breakdown: z.record(z.string(), z.string()),
+});
+
+const chainAssetDataSchema = z.record(z.string(), chainAssetSectionSchema);
+
+export const chainAssetsSchema = z.object({
+  timestamp: z.number(),
+}).catchall(chainAssetDataSchema);
+
+// ============================================================================
+// Token Protocols Schema (from /tokenProtocols/{symbol} endpoint)
+// ============================================================================
+
+export const tokenProtocolSchema = z.object({
+  name: z.string().min(1),
+  category: z.string(),
+  amountUsd: z.record(z.string(), z.number().finite()), // Can be negative (debt protocols)
+  misrepresentedTokens: z.boolean(),
+});
+
+export const tokenProtocolsArraySchema = z.array(tokenProtocolSchema);
+
+// ============================================================================
+// Inflows Schema (from /inflows/{protocol}/{timestamp} endpoint)
+// ============================================================================
+
+export const tokenTvlDataSchema = z.object({
+  date: z.string(),
+  tvl: z.record(z.string(), z.number().finite().nonnegative()),
+});
+
+export const inflowsSchema = z.object({
+  outflows: z.number().finite(),
+  oldTokens: tokenTvlDataSchema,
+  currentTokens: tokenTvlDataSchema,
 });
 
 // ============================================================================

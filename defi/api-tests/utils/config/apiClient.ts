@@ -41,9 +41,17 @@ export class ApiClient {
   }
 
   private setupInterceptors(): void {
+    // Don't reject on error responses - we want to handle them gracefully
     this.client.interceptors.response.use(
       (response) => response,
-      (error) => Promise.reject(this.handleError(error))
+      (error) => {
+        // For HTTP error responses (4xx, 5xx), return a response-like object
+        if (error.response) {
+          return Promise.resolve(error.response);
+        }
+        // For network errors, reject
+        return Promise.reject(error);
+      }
     );
   }
 
@@ -81,7 +89,8 @@ export class ApiClient {
     try {
       return await requestFn();
     } catch (error) {
-      if (retries > 0) {
+      // Only retry on network errors, not HTTP errors
+      if (retries > 0 && !(error as AxiosError).response) {
         await new Promise((resolve) => setTimeout(resolve, this.retryDelay));
         return this.retryRequest(requestFn, retries - 1);
       }
@@ -90,13 +99,23 @@ export class ApiClient {
   }
 
   async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    const response = await this.retryRequest<T>(() => this.client.get<T>(url, config));
-    return this.formatResponse(response);
+    try {
+      const response = await this.retryRequest<T>(() => this.client.get<T>(url, config));
+      return this.formatResponse(response);
+    } catch (error) {
+      // Network or request setup errors - throw them
+      throw this.handleError(error as AxiosError);
+    }
   }
 
   async post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    const response = await this.retryRequest<T>(() => this.client.post<T>(url, data, config));
-    return this.formatResponse(response);
+    try {
+      const response = await this.retryRequest<T>(() => this.client.post<T>(url, data, config));
+      return this.formatResponse(response);
+    } catch (error) {
+      // Network or request setup errors - throw them
+      throw this.handleError(error as AxiosError);
+    }
   }
 
   private formatResponse<T>(response: AxiosResponse<T>): ApiResponse<T> {

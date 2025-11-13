@@ -31,7 +31,8 @@
   "include": [
     "src",
     "api-tests",
-    "/**/*.ts"
+    "/**/*.ts",
+    "**/*.test.ts"
   ],
   "exclude": [
     "src/setupTestEnv.js",

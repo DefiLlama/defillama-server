@@ -33,3 +33,5 @@ src/api2/.api2-cache
 
 dimension-adapters
 DefiLlama-Adapters
+
+validation_report.json

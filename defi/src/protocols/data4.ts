@@ -18153,6 +18153,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/agglayer/vault-bridge/tree/v0.5.0/audits"],
     listedAt: 1749770022,
+    dimensions: {
+      fees: "vault-bridge"
+    }
   },
   {
     id: "6297",
@@ -25645,6 +25648,9 @@ const data4: Protocol[] = [
     twitter: "zerolendxyz",
     parentProtocol: "parent#zerolend",
     listedAt: 1755704679,
+    dimensions: {
+      fees: "zerolend-vaults"
+    }
   },
   {
     id: "6609",
@@ -29471,6 +29477,10 @@ const data4: Protocol[] = [
     // parentProtocol: "parent#curve-finance",  // they have their own token
     listedAt: 1758821541,
     // excludeTvlFromParent: true, // tokens are deposited into curve pools
+    dimensions: {
+      fees: "yield-basis",
+      dexs: "yield-basis"
+    }
   },
   {
     id: "6772",
@@ -29778,7 +29788,10 @@ const data4: Protocol[] = [
       },
     ],
     forkedFromIds: [],
-    listedAt: 1759244012
+    listedAt: 1759244012,
+    dimensions: {
+      fees: "telosc"
+    }
   },
   {
     id: "6786",

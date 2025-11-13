@@ -24092,6 +24092,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://veno-finance.gitbook.io/veno-finance/protocol/security-and-audits"],
     listedAt: 1672703979,
+    dimensions: {
+      fees: "veno-finance"
+    }
   },
   {
     id: "2403",

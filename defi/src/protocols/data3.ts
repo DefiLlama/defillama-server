@@ -40287,7 +40287,8 @@ const data3_2: Protocol[] = [
     listedAt: 1711709964,
     dimensions: {
       derivatives: "vest",
-      "open-interest": "vest-markets"
+      "open-interest": "vest-markets",
+      fees: "vest-markets"
     }
   },
   {
@@ -65899,7 +65900,11 @@ const data3_2: Protocol[] = [
     oracles: ["Flare FTSO"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12676
     audit_links: ["https://github.com/SparkDEX/perp-smart-contracts/blob/main/audit"],
     parentProtocol: "parent#sparkdex",
-    listedAt: 1734027989
+    listedAt: 1734027989,
+    dimensions: {
+      fees: "sparkdex-perps",
+      derivatives: "sparkdex-perps"
+    }
   },
   {
     id: "5493",

@@ -497,6 +497,9 @@ const data5: Protocol[] = [
     twitter: "Featherlend",
     audit_links: [],
     listedAt: 1761326231,
+    dimensions: {
+      fees: "feather"
+    }
   },
   {
     id: "6914",
@@ -1950,14 +1953,15 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "dz-sol/index.js",
     twitter: "doublezero",
     forkedFromIds: [],
     parentProtocol: "parent#doublezero",
     audit_links: [],
     dimensions: {
       fees: "doublezero-staked-sol",
-    }
+    },
+    listedAt: 1762996533,
   },
   {
     id: "6977",

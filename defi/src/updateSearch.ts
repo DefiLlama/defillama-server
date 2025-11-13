@@ -20,6 +20,7 @@ interface SearchResult {
   deprecated?: boolean;
   type: string;
   hideType?: boolean;
+  mcapRank?: number;
   v: number;
 }
 
@@ -742,6 +743,7 @@ async function generateSearchList() {
       name: coin.symbol,
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
+      mcapRank: coin.mcap_rank ?? 0,
       v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
       type: "Token Usage",
     });
@@ -751,6 +753,7 @@ async function generateSearchList() {
         name: coin.symbol,
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,
+        mcapRank: coin.mcap_rank ?? 0,
         v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
         type: "Token Yields",
       });

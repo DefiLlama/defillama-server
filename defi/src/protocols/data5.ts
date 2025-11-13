@@ -2280,7 +2280,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Other Fixed Income"],
+    tags: ["Treasury Bills"],
     chains: ["Solana"],
     module: "etherfuse/index.js",
     twitter: "etherfuse",

@@ -10678,6 +10678,21 @@
     }
   },
   "saga": {
+    "0xA6F89de43315B444114258f6E6700765D08bcd56": {
+      "to": "coingecko#yieldfi-yeth",
+      "decimals": 18,
+      "symbol": "yETH"
+    },
+    "0x704a58f888f18506C9Fc199e53AE220B5fdCaEd8": {
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc",
+      "decimals": 18,
+      "symbol": "vyUSD"
+    },
+    "0x839e7e610108Cf3DCc9b40329db33b6E6bc9baCE": {
+      "to": "coingecko#yieldfi-ytoken",
+      "decimals": 18,
+      "symbol": "yUSD"
+    },
     "0xfc960c233b8e98e0cf282e29bde8d3f105fc24d5": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

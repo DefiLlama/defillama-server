@@ -8422,10 +8422,22 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
     logo: `${baseIconsUrl}/ramses-exchange-hl.jpg`,
-    gecko_id: "ramses-exchange",
-    cmcId: "23858",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "RamsesExchange",
+  },
+  {
+    id: "parent#fufuture",
+    name: "Fufuture",
+    url: "https://www.fufuture.io",
+    description:
+      "Decentralization Coin-based Perpetual Options Trading Agreement",
+    logo: `${baseIconsUrl}/fufuture.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fufuture_io",
   },
 ];
 

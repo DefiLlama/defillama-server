@@ -41266,13 +41266,13 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4442",
-    name: "Fufuture",
+    name: "Fufuture V1",
     address: null,
     symbol: "-",
     url: "https://www.fufuture.io",
     description: "Perpetual options, 0 slippage, never liquidate, dual pools.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/fufuture.jpg`,
+    logo: `${baseIconsUrl}/fufuture-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -41282,6 +41282,7 @@ const data3_2: Protocol[] = [
     module: "fufuture/index.js",
     twitter: "fufuture_io",
     forkedFrom: [],
+    parentProtocol: "parent#fufuture",
     listedAt: 1712318938,
   },
   {

@@ -754,6 +754,9 @@ const data5: Protocol[] = [
     twitter: "Rain__Protocol",
     github: ["rain1-labs"],
     listedAt: 1761692153,
+    dimensions: {
+      fees: "rain-one",
+    }
   },
   {
     id: "6925",
@@ -2357,6 +2360,10 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.ramses.xyz/pages/audits"],
     parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010949,
+    dimensions: {
+      fees: "ramses-hl-cl",
+      dexs: "ramses-hl-cl",
+    }
   },
   {
     id: "6994",
@@ -2379,6 +2386,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198", "1407"],
     parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010955,
+    dimensions: {
+      fees: "ramses-hl-legacy",
+      dexs: "ramses-hl-legacy",
+    }
   },
   {
     id: "6995",

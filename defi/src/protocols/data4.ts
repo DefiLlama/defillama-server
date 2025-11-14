@@ -5426,6 +5426,17 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Sei"],
     oraclesBreakdown: [
+       {
+        name: "RedStone",
+        type: "Primary",
+        proof: [
+         "https://app.takaralend.com/market/enzoBTC",
+"https://app.takaralend.com/market/uBTC",
+"https://app.takaralend.com/market/USD%E2%82%AE0",
+"https://app.takaralend.com/market/MBTC",
+"https://app.takaralend.com/market/USDC",
+        ],
+         startDate: "2025-11-12",
       {
         name: "Api3",
         type: "Primary",
@@ -5438,6 +5449,7 @@ const data4: Protocol[] = [
           "https://app.takaralend.com/market/MBTC",
           "https://app.takaralend.com/market/SBTC",
         ],
+         endDate: "2025-11-12",
       },
       {
         name: "Pyth",

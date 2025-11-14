@@ -15223,7 +15223,7 @@ const data3_1: Protocol[] = [
     symbol: "FXN",
     url: "https://fx.aladdin.club",
     description:
-      "f(x) splits ETH into a mix of low-volatility “floating stablecoins” called fETH and high volatility “leveraged ETH” tokens called xETH. Users can supply ETH or stETH to mint either one (pure ETH is zapped into stETH before deposit)",
+      "f(x) Protocol is a decentralized on-chain trading platform that enables stress-free leverage on ETH and WBTC while delivering the highest organic & sustainable yield on stablecoins. By utilizing an innovative mechanism, we offer up to 7X long or short exposure with minimum liquidation risk & funding costs. To fuel the leverage positions, the protocol mints fxUSD, a scalable & decentralized stablecoin with a strong peg to the dollar and backed by wstETH and WBTC.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fx-protocol.jpg`,
     audits: "2",

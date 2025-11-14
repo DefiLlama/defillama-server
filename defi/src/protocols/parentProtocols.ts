@@ -8415,6 +8415,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Blast_L2",
     stablecoins: ["usdb-blast"],
   },
+  {
+    id: "parent#ramses-exchange-hl",
+    name: "Ramses Exchange HL",
+    url: "https://ramses.xyz",
+    description:
+      "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
+    logo: `${baseIconsUrl}/ramses-exchange-hl.jpg`,
+    gecko_id: "ramses-exchange",
+    cmcId: "23858",
+    chains: [],
+    twitter: "RamsesExchange",
+  },
 ];
 
 export default parentProtocols;

@@ -2355,7 +2355,7 @@ const data5: Protocol[] = [
     twitter: "RamsesExchange",
     forkedFromIds: ["2198", "1407"],
     audit_links: ["https://docs.ramses.xyz/pages/audits"],
-    parentProtocol: "parent#ramses-exchange",
+    parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010949,
   },
   {
@@ -2377,7 +2377,7 @@ const data5: Protocol[] = [
     module: "ramses-hl-legacy/index.js",
     twitter: "RamsesExchange",
     forkedFromIds: ["2198", "1407"],
-    parentProtocol: "parent#ramses-exchange",
+    parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010955,
   },
 ];

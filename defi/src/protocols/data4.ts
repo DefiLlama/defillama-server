@@ -650,6 +650,14 @@ const data4: Protocol[] = [
     module: "satlayer/index.js",
     twitter: "satlayer",
     github: ["satlayer"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     audit_links: [
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/Satlayer_audit_report_2024-08-15.pdf",
       "https://github.com/satlayer/deposit-contract-public/blob/main/audits/SatLayer%20Pool%20-%20Zellic%20Audit%20Report.pdf",
@@ -718,6 +726,15 @@ const data4: Protocol[] = [
           {
             chain: "Sonic",
           },
+          {
+            chain: "Linea",
+          },
+          {
+            chain: "Saga",
+          },
+          {
+            chain: "Plasma",
+          }
         ],
       },
       {
@@ -9646,6 +9663,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PicWeGlobal",
     audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
+    stablecoins: ["weusd"],
     listedAt: 1743002205,
   },
   {
@@ -9902,6 +9920,7 @@ const data4: Protocol[] = [
     github: ["resupplyfi"],
     treasury: "resupply.js",
     listedAt: 1743178567,
+    stablecoins: ["resupply-usd"],
     dimensions: {
       fees: "resupply"
     }
@@ -10654,6 +10673,7 @@ const data4: Protocol[] = [
     module: "coin98/index.js",
     twitter: "coin98_wallet",
     listedAt: 1743757586,
+    stablecoins: ["coin98-dollar"]
   },
   {
     id: "5995",
@@ -11354,6 +11374,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "mainstreet/index.js",
     twitter: "Main_St_Finance",
+    stablecoins: ["main-street-usd"],
     listedAt: 1744280825,
   },
   {
@@ -11397,6 +11418,7 @@ const data4: Protocol[] = [
     module: "aegis-yusd/index.js",
     twitter: "aegis_im",
     github: ["Aegis-im"],
+    stablecoins: ["aegis-yusd"],
     listedAt: 1744284096,
   },
   {
@@ -12637,6 +12659,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/SolomonLabs/solana-program-audits-public"],
     github: ["SolomonLabs"],
+    stablecoins: ["solomon-usdv"],
     listedAt: 1745349218,
   },
   {
@@ -13640,14 +13663,14 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://unilend.io/dashboard/",
     description: "Decentralized lending and borrowing protocol deployed on the Unit Zero blockchain.",
-    chain: "Unit Zero",
+    chain: "UNIT0",
     logo: `${baseIconsUrl}/unilend-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Unit Zero"],
+    chains: ["UNIT0"],
     forkedFrom: [],
     module: "unilend-protocol/index.js",
     twitter: "Unilendone",
@@ -14286,6 +14309,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     github: ["yalaorg"],
     audit_links: ["https://docs.yala.org/security-audits"],
+    stablecoins: ["yu"],
     listedAt: 1746625641,
     dimensions: {
       fees: "yala"
@@ -14708,6 +14732,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rootsfi.com/essentials/audits"],
     github: ["roots-fi"],
     listedAt: 1747077337,
+    stablecoins: ["mead"],
     dimensions: {
       fees: "roots"
     }
@@ -15323,6 +15348,7 @@ const data4: Protocol[] = [
     module: "usdai/index.js",
     twitter: "USDai_Official",
     audit_links: ["https://docs.usd.ai/technical-overview/audits"],
+    stablecoins: ["usdai"],
     listedAt: 1747659245,
   },
   {
@@ -16348,9 +16374,10 @@ const data4: Protocol[] = [
     module: "near-intents/index.js",
     twitter: "NEARProtocol",
     dimensions: {
-      "dexs": "near-intents"
+      "dexs": "near-intents",
+      "fees": "near-intents"
     },
-    listedAt: 1760656359
+    listedAt: 1760656359,
   },
   {
     id: "6226",
@@ -16855,6 +16882,7 @@ const data4: Protocol[] = [
     ],
     module: "bima-labs-cdp/index.js",
     twitter: "BimaBTC",
+    stablecoins: ["usbd"],
     listedAt: 1748465209,
   },
   {
@@ -16882,6 +16910,7 @@ const data4: Protocol[] = [
       "https://docsend.com/view/qtz5tmdi35d7f5si",
       "https://docsend.com/view/8nw9dtr9qhssndzw",
     ],
+    stablecoins: ["infinifi-usd"],
     listedAt: 1748465947,
   },
   {
@@ -17529,6 +17558,7 @@ const data4: Protocol[] = [
         ],
       },
     ],
+    stablecoins: ["hydrated-dollar"],
     dimensions: {
       fees: "hydradx"
     }
@@ -17921,8 +17951,8 @@ const data4: Protocol[] = [
   {
     id: "6288",
     name: "Meteora DAMM V2",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Constant-product AMM pools with configurable features such as dynamic fees, fee scheduling, and token-based fee selection, designed to support liquidity provision and token launches with minimal maintenance",
@@ -17971,8 +18001,8 @@ const data4: Protocol[] = [
   {
     id: "6290",
     name: "Meteora Dynamic Bonding Curve",
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://v2.meteora.ag/",
     description:
       "Meteora's Dynamic Bonding Curve is a permissionless token launch protocol that allows platforms to create customizable bonding curve pools for new tokens, enabling immediate trading, flexible fee structures, and automated migration to AMMs",
@@ -18132,6 +18162,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/agglayer/vault-bridge/tree/v0.5.0/audits"],
     listedAt: 1749770022,
+    dimensions: {
+      fees: "vault-bridge"
+    }
   },
   {
     id: "6297",
@@ -18183,6 +18216,13 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
+        endDate: "2025-11-08"
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://hyperdrive-2.gitbook.io/hyperdrive/borrowing/oracles"],
+        startDate: "2025-11-08"
       },
     ],
     audit_links: ["https://github.com/ambitlabsxyz/hyperdrive-audits"],
@@ -19240,6 +19280,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     treasury: "unitas.js",
     audit_links: ["http://github.com/UnipayFi/Audit"],
+    stablecoins: ["unitas"],
     listedAt: 1750434543,
   },
   {
@@ -20922,10 +20963,10 @@ const data4: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1752078241,
-    // dimensions: {
-    //   fees: "dipcoin",
-    //   dexs: "dipcoin",
-    // }
+    dimensions: {
+      fees: "dipcoin-spot",
+      dexs: "dipcoin-spot",
+    }
   },
   /*{ // unified under coinbase-btc adapter
     id: "6412",
@@ -21710,7 +21751,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.ostrich.exchange/platform/audit-reports"],
     listedAt: 1752655880,
     dimensions: {
-      derivatives: "ostrich"
+      // derivatives: "ostrich", // fake, unverified volume, last check 08-11-2025
     }
   },
   {
@@ -21864,15 +21905,15 @@ const data4: Protocol[] = [
   {
     id: "6449",
     name: "KoalaSwap",
-    address: null,
-    symbol: "-",
+    address: "unit0:0x2689faabe22ec4516d716da5b5f81e7e3ae379c3",
+    symbol: "KOALA",
     url: "https://koalaswap.app/",
     description: "Swap tokens and provide liquidity on a fast, secure and user-friendly DEX for everyone.",
     chain: "UNIT0",
     logo: `${baseIconsUrl}/koalaswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "koala-governance-token",
     cmcId: null,
     category: "Dexs",
     chains: ["UNIT0"],
@@ -22253,6 +22294,7 @@ const data4: Protocol[] = [
     module: "sigma-protocol/index.js",
     twitter: "sigmadotmoney",
     audit_links: ["https://docs.sigma.money/risk-management/audit-reports"],
+    stablecoins: ["sigma-money-bnbusd"],
     listedAt: 1753201182,
   },
   {
@@ -24643,19 +24685,19 @@ const data4: Protocol[] = [
   },
   {
     id: "6566",
-    name: "DAOaaS",
+    name: "Dswap",
     address: null,
     symbol: "-",
-    url: "https://daoaas.io/explore",
+    url: "https://daoaas.io/swap",
     description:
-      "DAOaaS is a decentralised DAO platform on ENI, combining governance, operations, and traffic. It empowers communities with cross-chain tech, AI tools, and incentive models to enable efficient, transparent collaboration",
+      "Dswap is the built-in token swap feature of DAOaaS. DAOaaS is a decentralised DAO platform on ENI, combining governance, operations, and traffic. It empowers communities with cross-chain tech, AI tools, and incentive models to enable efficient, transparent collaboration",
     chain: "ENI",
-    logo: `${baseIconsUrl}/daoaas.jpg`,
+    logo: `${baseIconsUrl}/dswap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "DAO Service Provider",
+    category: "Dexs",
     chains: ["ENI"],
     module: "daoaas-swap/index.js",
     twitter: "DAOaaS_Official",
@@ -25615,6 +25657,9 @@ const data4: Protocol[] = [
     twitter: "zerolendxyz",
     parentProtocol: "parent#zerolend",
     listedAt: 1755704679,
+    dimensions: {
+      fees: "zerolend-vaults"
+    }
   },
   {
     id: "6609",
@@ -26551,6 +26596,9 @@ const data4: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "hyloSOL/index.js",
+    tokensExcludedFromParent: {
+      Solana: ["HYLOSOL"],
+    },
     twitter: "hylo_so",
     forkedFrom: [],
     parentProtocol: "parent#hylo",
@@ -28649,6 +28697,7 @@ const data4: Protocol[] = [
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14996"]
       }
     ],
+    stablecoins: ["xsy-uty"],
     listedAt: 1758064577
   },
   {
@@ -29440,6 +29489,10 @@ const data4: Protocol[] = [
     // parentProtocol: "parent#curve-finance",  // they have their own token
     listedAt: 1758821541,
     // excludeTvlFromParent: true, // tokens are deposited into curve pools
+    dimensions: {
+      fees: "yield-basis",
+      dexs: "yield-basis"
+    }
   },
   {
     id: "6772",
@@ -29747,7 +29800,10 @@ const data4: Protocol[] = [
       },
     ],
     forkedFromIds: [],
-    listedAt: 1759244012
+    listedAt: 1759244012,
+    dimensions: {
+      fees: "telosc"
+    }
   },
   {
     id: "6786",
@@ -29880,6 +29936,7 @@ const data4: Protocol[] = [
     twitter: "falconstable",
     forkedFromIds: [],
     audit_links: ["https://docs.falcon.finance/resources/audits#smart-contract-audits"],
+    stablecoins: ["falcon-usd"],
     listedAt: 1759263444
   },
   {
@@ -30726,6 +30783,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#grvt",
     dimensions: {
       derivatives: "grvt-perps",
+      "open-interest": "grvt-perps"
    }
   },
   {
@@ -31898,14 +31956,14 @@ const data4: Protocol[] = [
     id: "6877",
     name: "ZealousSwap",
     address: null,
-    symbol: "-",
+    symbol: "ZEAL",
     url: "https://app.zealousswap.com/swap",
     description: `The first AMM-based DEX on the Kaspa ecosystem`,
     chain: "Kasplex",
     logo: `${baseIconsUrl}/zealousswap.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "zeal",
     cmcId: null,
     category: "Dexs",
     chains: ["Kasplex"],

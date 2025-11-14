@@ -169,7 +169,9 @@ export default async function (
 
       // if tvl was more than 50M send an high severity alert
       if (lastHourlyTVL > 50e6) {
-        await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVLHN} to ${currentTvlHN}. ${missingTokenString}`, process.env.TEAM_WEBHOOK!)
+        const ignoredTvl = new Set(['Olympus DAO'])
+        if (!ignoredTvl.has(protocol.name))
+          await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVLHN} to ${currentTvlHN}. ${missingTokenString}`, process.env.TEAM_WEBHOOK!)
       }
 
       console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN} . ${missingTokenString}`)

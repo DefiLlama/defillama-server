@@ -24,6 +24,7 @@ const parentProtocols: IParentProtocol[] = [
     ],
     wrongLiquidity: true, // missing balancer v1 pool
     github: ["aave", "bgd-labs"],
+    stablecoins: ["gho"]
   },
   {
     id: "parent#sushi",
@@ -241,6 +242,7 @@ const parentProtocols: IParentProtocol[] = [
       "compound:ethereum:0xd74034c6109a23b6c7657144cacbbbb82bdcb00e", //FXS
     ],
     github: ["FraxFinance"],
+    stablecoins: ["frax-usd"],
   },
   {
     id: "parent#compound-finance",
@@ -536,8 +538,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
     logo: `${baseIconsUrl}/meteora.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "meteora",
+    cmcId: "38353",
     chains: [],
     twitter: "MeteoraAG",
     github: ["mercurial-finance"],
@@ -1479,6 +1481,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThalaLabs",
     github: ["ThalaLabs"],
+    stablecoins: ["move-dollar"],
   },
   {
     id: "parent#stake.link",
@@ -1547,6 +1550,7 @@ const parentProtocols: IParentProtocol[] = [
       //  "snapshot:sovrynbitocracy.eth",
     ],
     github: ["DistributedCollective"],
+    stablecoins: ["sovryn-dollar"],
   },
   {
     id: "parent#polynomial-protocol",
@@ -3067,6 +3071,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "22743",
     chains: [],
     twitter: "nostrafinance",
+    stablecoins: ["uno"],
   },
   {
     id: "parent#vapordex",
@@ -3093,7 +3098,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SkyEcosystem",
     treasury: "maker.js",
-    stablecoins: ["dai"],
+    stablecoins: ["dai", "sky-dollar"],
     github: ["makerdao"],
   },
   {
@@ -4854,6 +4859,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35577",
     chains: [],
     twitter: "AnzenFinance",
+    stablecoins: ["anzen-usdz"],
   },
   {
     id: "parent#bladeswap",
@@ -5553,6 +5559,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["avalonfinancexyz"],
     twitter: "avalonfinance_",
+    stablecoins: ["avalon-usda"]
   },
   /*
   {
@@ -5620,7 +5627,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#lombard-finance",
-    name: "Lombard Finance",
+    name: "Lombard",
     url: "https://www.lombard.finance",
     description:
       "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
@@ -5960,6 +5967,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35429",
     chains: [],
     twitter: "solayer_labs",
+    stablecoins: ["solayer-usd"],
   },
   {
     id: "parent#swapmode",
@@ -6010,6 +6018,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "36341",
     chains: [],
     twitter: "Aster_DEX",
+    stablecoins: ["astherus"],
   },
   {
     id: "parent#zkswap-finance",
@@ -6318,6 +6327,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dtrinity_defi",
     github: ["dtrinity"],
+    stablecoins: ["dtrinity-usd"],
   },
   {
     id: "parent#silo-finance",
@@ -7262,6 +7272,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SmarDex",
+    stablecoins: ["smardex-usdn"],
   },
   {
     id: "parent#felix",
@@ -7274,6 +7285,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "felixprotocol",
+    stablecoins: ["felix-feusd"],
   },
     {
     id: "parent#seedfi",
@@ -7308,6 +7320,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "asymmetryfin",
     github: ["asymmetryfinance"],
+    stablecoins: ["asymmetry-usdaf","asymmetry-usdaf-v2"],
   },
   {
     id: "parent#the-vault",
@@ -7342,6 +7355,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "avantprotocol",
+    stablecoins: ["avant-usd"],
   },
   {
     id: "parent#matrixdock",
@@ -7388,6 +7402,14 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RiverdotInc",
     github: ["Satoshi-Protocol"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2025-12-30",
+      },
+    ],
     stablecoins: ["river-stablecoin"],
   },
   {
@@ -7588,6 +7610,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "figuremarkets",
+    stablecoins: ["ylds"],
   },
   {
     id: "parent#orca",
@@ -7845,6 +7868,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "hylo_so",
+    stablecoins: ["hylo-hyusd"],
   },
   {
     id: "parent#beanstalk",
@@ -7858,6 +7882,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BeanstalkFarms",
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"], //Add sub-spaces?
+    stablecoins: ["bean"],
   },
   {
     id: "parent#ondo-finance",
@@ -7870,6 +7895,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OndoFinance",
     github: ["ondoprotocol"],
+    stablecoins: ["ondo-us-dollar-yield"],
   },
   {
     id: "parent#defituna",
@@ -8158,6 +8184,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MetaMask",
     github: ["MetaMask"],
+    stablecoins: ["metamask-usd"],
   },
   {
     id: "parent#reya",
@@ -8347,7 +8374,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.dipcoin.io",
     description:
       "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
-    logo: `${baseIconsUrl}/dipcoin-amm.jpg`,
+    logo: `${baseIconsUrl}/dipcoin.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -8364,6 +8391,53 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PotatoSwap_Fi",
+  },
+  {
+    id: "parent#doublezero",
+    name: "DoubleZero",
+    url: "https://doublezero.xyz/",
+    description: "DoubleZero is a permissionless global infrastructure network for blockchains and distributed systems, enabling contributors to stake assets and provide high-performance bandwidth/fiber links in exchange for utility tokens that power the network.",
+    logo: `${baseIconsUrl}/doublezero-network.jpg`,
+    gecko_id: "doublezero",
+    cmcId: "38515",
+    chains: [],
+    twitter: "doublezero",
+  },
+  {
+    id: "parent#blast-l2",
+    name: "Blast L2",
+    url: "https://blast.io/",
+    description: "Blast is a Layer 2 network for Ethereum that aims to improve scalability and security.",
+    logo: `${baseIconsUrl}/blast-l2.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Blast_L2",
+    stablecoins: ["usdb-blast"],
+  },
+  {
+    id: "parent#ramses-exchange-hl",
+    name: "Ramses Exchange HL",
+    url: "https://ramses.xyz",
+    description:
+      "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
+    logo: `${baseIconsUrl}/ramses-exchange-hl.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RamsesExchange",
+  },
+  {
+    id: "parent#fufuture",
+    name: "Fufuture",
+    url: "https://www.fufuture.io",
+    description:
+      "Decentralization Coin-based Perpetual Options Trading Agreement",
+    logo: `${baseIconsUrl}/fufuture.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fufuture_io",
   },
 ];
 

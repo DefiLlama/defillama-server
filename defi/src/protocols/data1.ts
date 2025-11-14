@@ -6389,8 +6389,8 @@ const data: Protocol[] = [
     id: "385",
     name: "Meteora DAMM V1",
     previousNames: ["Meteora pools"],
-    address: null,
-    symbol: "-",
+    address: "solana:METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+    symbol: "MET",
     url: "https://app.meteora.ag/",
     description: "Meteora Pools is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",
@@ -8057,6 +8057,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "458",
     // previous Solend
     name: "Save",
+    previousNames: ["Solend"],
     address: "solana:SAVEaeeqeXNKYb4Lyx28DkUms5gyZ76vGa6fCfdzWfK",
     symbol: "SAVE",
     url: "https://www.save.finance/",
@@ -15011,7 +15012,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink", "TWAP", "RedStone", "Pyth"],
     listedAt: 1635962344,
     governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"],
-    stablecoins: ["eura"],
+    stablecoins: ["eura","usda"],
     github: ["AngleProtocol"],
     dimensions: {
       fees: "angle"
@@ -26571,6 +26572,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFromIds: ["114"],
     listedAt: 1642626305,
+    stablecoins: ["agora-dollar"],
     warningBanners: [
       {
         message: "Agora has some red flags and multiple users have reported concerns. Be careful.",

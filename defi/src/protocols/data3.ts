@@ -48874,6 +48874,7 @@ const data3_2: Protocol[] = [
   {
     id: "4767",
     name: "Brotocol",
+    previousNames: ["XLink"],
     address: null,
     symbol: "-",
     url: "https://brotocol.xyz/",

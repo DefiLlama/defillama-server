@@ -2313,14 +2313,14 @@ const data5: Protocol[] = [
   },
   {
     id: "6992",
-    name: "Legacy Definitive Vaults",
+    name: "Definitive Yield Vaults",
     address: "base:0xED6E000dEF95780fb89734c07EE2ce9F6dcAf110",
     symbol: "EDGE",
     url: "https://www.definitive.fi",
     description:
       "Definitive is the premier non-custodial platform for advanced DeFi yield and on-chain trade execution.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/definitive.png`,
+    logo: `${baseIconsUrl}/definitive-yield-vaults.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

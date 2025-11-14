@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../../.env') });
 
 const PRO_API_KEY = process.env.PRO_API_KEY || 'api-key';
 

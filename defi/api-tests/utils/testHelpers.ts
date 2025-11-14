@@ -80,3 +80,32 @@ export function expectValidPercentageChange(value: any): void {
   expect(value).toBeLessThan(1000000);
 }
 
+/**
+ * Checks if data is fresh by verifying the most recent timestamp is within 1 day
+ * @param timestamps - Array of timestamps (can be numbers or strings)
+ * @param maxAgeInSeconds - Maximum age in seconds (default: 86400 = 1 day)
+ */
+export function expectFreshData(
+  timestamps: (number | string)[],
+  maxAgeInSeconds: number = 86400
+): void {
+  expect(timestamps.length).toBeGreaterThan(0);
+
+  // Convert all timestamps to numbers
+  const numericTimestamps = timestamps.map((ts) => {
+    return typeof ts === 'string' ? Number(ts) : ts;
+  });
+
+  // Find the most recent timestamp
+  const mostRecentTimestamp = Math.max(...numericTimestamps);
+  
+  // Current time in seconds
+  const nowInSeconds = Math.floor(Date.now() / 1000);
+  
+  // Check if most recent data is within the specified age
+  const ageInSeconds = nowInSeconds - mostRecentTimestamp;
+  
+  expect(ageInSeconds).toBeLessThanOrEqual(maxAgeInSeconds);
+  expect(mostRecentTimestamp).toBeGreaterThan(0);
+}
+

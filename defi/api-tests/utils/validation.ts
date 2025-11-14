@@ -50,7 +50,12 @@ export function validate<T>(
   });
   
   if (context && errors.length > 0) {
-    errors.forEach((err: string) => console.error(err));
+    // Only log first 5 errors to prevent console spam
+    const errorsToLog = errors.slice(0, 5);
+    errorsToLog.forEach((err: string) => console.error(err));
+    if (errors.length > 5) {
+      console.error(`... and ${errors.length - 5} more validation errors`);
+    }
   }
   
   return { success: false, errors };

@@ -29024,7 +29024,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#lighter",
     dimensions: {
       derivatives: "lighterv2",
-      "open-interest": "lighter-v2"
+      "open-interest": "lighter-v2",
+      fees: "lighterv2"
     }
   },
   {

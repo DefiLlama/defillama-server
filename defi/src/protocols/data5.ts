@@ -382,6 +382,9 @@ const data5: Protocol[] = [
     audit_links: [],
     github: ["Terrestrials"],
     listedAt: 1761284804,
+    dimensions: {
+      fees: "foom-cash"
+    }
   },
   {
     id: "6909",

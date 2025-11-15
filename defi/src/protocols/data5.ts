@@ -2536,7 +2536,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://rubyscore.io/",
     description: "RubyScore is a decentralized reputation and identity protocol that aggregates users' onchain activity across multiple networks and forms a unified reputation layer",
-    chain: "Abstract",
+    chain: "Base",
     logo: `${baseIconsUrl}/rubyscore.jpg`,
     audits: "0",
     audit_note: null,

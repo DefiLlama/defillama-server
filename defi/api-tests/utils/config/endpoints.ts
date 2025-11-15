@@ -16,6 +16,15 @@ function getBaseUrl(url: string, category: string): string {
   return url;
 }
 
+// Helper to get Pro API base URL with API key
+function getProApiBaseUrl(): string {
+  const proUrl = process.env.BETA_PRO_API_URL || 'https://pro-api.llama.fi';
+  if (proUrl.includes('/api-key/')) {
+    return proUrl;
+  }
+  return `${proUrl}/${PRO_API_KEY}`;
+}
+
 export const BASE_URLS = {
   TVL: getBaseUrl(process.env.BETA_API_URL || process.env.BASE_API_URL || 'https://api.llama.fi', 'tvl'),
   COINS: getBaseUrl(process.env.BETA_COINS_URL || 'https://coins.llama.fi', 'coins'),
@@ -24,6 +33,7 @@ export const BASE_URLS = {
   BRIDGES: getBaseUrl(process.env.BETA_BRIDGES_URL || 'https://bridges.llama.fi', 'bridges'),
   VOLUMES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'volumes'),
   FEES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'fees'),
+  USERS: getProApiBaseUrl(),
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;
@@ -92,6 +102,12 @@ export const BRIDGES = {
   BRIDGE: (bridge: string) => `/bridge/${bridge}`,
 } as const;
 
+export const USERS = {
+  BASE_URL: BASE_URLS.USERS,
+  ACTIVE_USERS: '/api/activeUsers',
+  USER_DATA: (type: string, protocolId: string) => `/api/userData/${type}/${protocolId}`,
+} as const;
+
 export const endpoints = {
   TVL,
   STABLECOINS,
@@ -100,6 +116,7 @@ export const endpoints = {
   VOLUMES,
   FEES,
   BRIDGES,
+  USERS,
 } as const;
 
 export const API_CONFIG = {

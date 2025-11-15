@@ -345,7 +345,12 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         if (!p.tokens.includes(t)) return;
         const uTokenIndex = p.tokens.indexOf(t)
         p.poolComponents.forEach((c: any) => {
-          if (!c || c.token === t || c.value < 20000) return; // ignore tokens with less than $20k
+          
+          const unknownTokenWhitelist: string[] = [
+            '0x8e7801bac71e92993f6924e7d767d7dbc5fce0ae'
+          ]
+
+          if (!c || c.token === t || (c.value < 20000 && !unknownTokenWhitelist.includes(t))) return; // ignore tokens with less than $20k
           if (!knownTokenInfo || knownTokenInfo.value < c.value) {
             const realQuantity = usdSwapSize
             const decimalFactor = 10 ** decimals

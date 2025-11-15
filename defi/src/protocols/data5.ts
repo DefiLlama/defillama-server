@@ -2564,7 +2564,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Launchpad",
     chains: ["GateLayer"],
     forkedFromIds: [],
     module: "gatefun/index.js",

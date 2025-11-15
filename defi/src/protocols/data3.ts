@@ -57609,7 +57609,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum"],
+    chains: ["LogX Network"],
     forkedFrom: [],
     module: "logx-v2/index.js",
     twitter: "LogX_trade",

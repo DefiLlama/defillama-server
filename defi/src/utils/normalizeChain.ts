@@ -5251,7 +5251,7 @@ const chainLabelMap = {
   "xp": "Xphere",
   "milkyway_rollup": "MilkyWay Rollup",
   "iota": "IOTA",
-  "logx": "LogX Network",
+  "logx_network": "LogX Network",
   "yomi": "Yominet",
   "xrplevm": "XRPL EVM",
   "btnx": "Botanix",

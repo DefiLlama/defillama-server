@@ -2594,5 +2594,58 @@ const data5: Protocol[] = [
     twitter: "MiningGPU",
     listedAt: 1763158389,
   },
+  {
+    id: "7004",
+    name: "Rush",
+    address: null,
+    symbol: "-",
+    url: "https://rushbot.io",
+    description: "Trade any memecoin from your phone. Rush is an innovative Telegram trading bot built to be the fastest and most rewarding",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/rush.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "RushTradingBot",
+    dimensions: {
+      dexs: "rush",
+    }
+  },
+  {
+    id: "7005",
+    name: "Neverland",
+    address: "monad:0xAD96C3dffCD6374294e2573A7fBBA96097CC8d7c",
+    symbol: "DUST",
+    url: "https://neverland.money",
+    description: "Neverland is a next-generation, Monad-native lending protocol fusing the most secure, battle-tested lending technology with proprietary veTokenomics that allow users to direct 100% of protocol revenue. Featuring self-repaying loans, flexible and tradable governance locks, and automated yield strategies, each designed to maximize capital efficiency and long-term alignment",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/neverland.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Monad"],
+    forkedFromIds: ["1599"],
+    audit_links: ["https://github.com/Neverland-Money/security-audits"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.neverland.money","https://github.com/DefiLlama/DefiLlama-Adapters/pull/17018"],
+      }
+    ],
+    module: "dummy.js",
+    twitter: "Neverland_Money",
+    github: ["0xCatalyst"],
+    dimensions: {
+      fees: "neverland",
+    }
+  },
 ];
 export default data5;

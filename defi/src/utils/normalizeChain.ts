@@ -5055,6 +5055,38 @@ export const chainCoingeckoIds = {
     url: "https://www.zenrocklabs.io/",
     github: ["Zenrock-Foundation"],
   },
+  "Pacaswap": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "PacaSwap",
+    url: "https://www.pacaswap.com/",
+  },
+  "GRVT": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "grvt_io",
+    url: "https://grvt.io",
+  },
+  "Hibachi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "hibachi_xyz",
+    url: "https://hibachi.xyz",
+  },
+  "Satori": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "SatoriFinance",
+    url: "https://satori.finance",
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

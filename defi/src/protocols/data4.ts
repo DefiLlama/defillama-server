@@ -29335,28 +29335,6 @@ const data4: Protocol[] = [
     }
   },
   {
-    id: "6765",
-    name: "Surf Liquid",
-    address: null,
-    symbol: "-",
-    url: "https://surfliquid.com/",
-    description:
-      "SurfLiquid is an AI-powered DeFi platform designed to automate and optimise yield generation across the most profitable opportunities in decentralised finance.",
-    chain: "Base",
-    logo: `${baseIconsUrl}/surf-liquid.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Base"],
-    forkedFromIds: [],
-    module: "surf-liquid/index.js",
-    twitter: "Surf_Liquid",
-    audit_links: [],
-    listedAt: 1758736221
-  },
-  {
     id: "6766",
     name: "set.wtf",
     address: null,

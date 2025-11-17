@@ -2655,5 +2655,29 @@ const data5: Protocol[] = [
       fees: "neverland",
     }
   },
+  {
+    id: "7006",
+    name: "SpeedTrading",
+    address: null,
+    symbol: "-",
+    url: "https://speedtrading.pandora.fun/",
+    description: "SpeedTrading Micro-perps turns perpetual trading into a short, social, high-energy experience. Built by Pandora.fun",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/speedtrading.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Abstract"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "pandoradotfun",
+    dimensions: {
+      derivatives: "pandora-speed-trading",
+      fees: "pandora-speed-trading",
+    }
+  },
 ];
 export default data5;

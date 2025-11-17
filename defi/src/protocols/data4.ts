@@ -4034,6 +4034,10 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1738617887,
+    dimensions: {
+      dexs: "sxbet",
+      "open-interest": "sxbet",
+    }
   },
   {
     id: "5725",
@@ -31814,7 +31818,11 @@ const data4: Protocol[] = [
     module: "GateSwap/index.js",
     twitter: "Gate_Fun",
     audit_links: [],
-    listedAt: 1760577888
+    listedAt: 1760577888,
+    dimensions: {
+      fees: "gateswap",
+      dexs: "gateswap"
+    }
   },
   {
     id: "6872",

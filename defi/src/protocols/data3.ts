@@ -42126,6 +42126,10 @@ const data3_2: Protocol[] = [
     twitter: "_Loxodrome",
     parentProtocol: "parent#loxodrome",
     listedAt: 1713193262,
+    dimensions: {
+      dexs: "loxodrome-amm",
+      fees: "loxodrome-amm",
+    }
   },
   /*
   {

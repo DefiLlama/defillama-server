@@ -1698,6 +1698,9 @@ const data5: Protocol[] = [
     twitter: "KaspaCom",
     github: ["KASPACOM"],
     listedAt: 1762370751,
+    dimensions: {
+      dexs: "kaspacom-dex",
+    }
   },
   {
     id: "6966",
@@ -2575,6 +2578,9 @@ const data5: Protocol[] = [
     module: "gatefun/index.js",
     twitter: "Gate_Fun",
     listedAt: 1763158382,
+    dimensions: {
+      dexs: "gatefun",
+    }
   },
   {
     id: "7003",

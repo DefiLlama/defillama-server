@@ -174,4 +174,5 @@ export default {
   goblin: require("./markets/goblin"),
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
+  axlp: require("./liquidStaking/axlp"),
 };

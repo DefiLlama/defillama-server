@@ -52152,13 +52152,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4904",
-    name: "Size Credit",
+    name: "Rheo",
+    previousNames: ["Size Credit"],
     address: null,
     symbol: "-",
-    url: "https://size.credit/",
-    description: "Size is a credit marketplace with unified liquidity across maturities.",
+    url: "https://app.rheo.xyz/",
+    description: "A peer-to-peer credit marketplace. Built on Mainnet and Base.",
     chain: "Base",
-    logo: `${baseIconsUrl}/size-credit.jpg`,
+    logo: `${baseIconsUrl}/rheo.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -52168,12 +52169,12 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "size-credit/index.js",
-    twitter: "SizeCredit",
+    twitter: "rheo_xyz",
     audit_links: [
       "https://github.com/spearbit/portfolio/blob/master/pdfs/Size-Spearbit-Security-Review.pdf",
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Size%20Lending.pdf",
     ],
-    github: ["SizeCredit"],
+    github: ["SizeCredit", "rheo-xyz"],
     listedAt: 1721383932,
     dimensions: {
       fees: "size-credit"

@@ -33319,6 +33319,9 @@ const data3_1: Protocol[] = [
       "https://1437394138-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FcYvodOcCalriGDOIk0m4%2Fuploads%2F2aV2FDinQ3TxtFSRRnqN%2FSegment_Finance_-_Public_Report.pdf?alt=media&token=f87acc83-c3b7-4caa-a5d4-cbc7d68dc21d",
     ],
     listedAt: 1707231018,
+    dimensions: {
+      fees: "segment-finance"
+    }
   },
   {
     id: "4110",

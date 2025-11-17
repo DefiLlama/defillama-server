@@ -52423,6 +52423,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/bosonprotocol/boson-protocol-contracts/blob/main/docs/audits.md"],
     github: ["bosonprotocol"],
     listedAt: 1721821003,
+	dimensions: {
+      fees: "boson"
+    }
   },
   {
     id: "4917",

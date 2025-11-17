@@ -1700,6 +1700,7 @@ const data5: Protocol[] = [
     listedAt: 1762370751,
     dimensions: {
       dexs: "kaspacom-dex",
+      fees: "kaspacom-dex",
     }
   },
   {

@@ -2685,5 +2685,27 @@ const data5: Protocol[] = [
       fees: "pandora-speed-trading",
     }
   },
+  {
+    id: "7007",
+    name: "LiveArt",
+    address: "base:0x4DEC3139f4A6c638E26452d32181fe87A7530805",
+    symbol: "ART",
+    url: "https://liveart.io/",
+    description: "LiveArt is the first AI-powered RWA protocol tokenizing fine art and luxury assets into programmable finance. Backed by Binance Labs, Animoca Brands, and HashKey, LiveArt fractionalizes investment-grade assets and powers onchain liquidity, governance, and DeFi yield through its native token, $ART",
+    chain: "Base",
+    logo: `${baseIconsUrl}/liveart.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Collectibles"],
+    chains: ["Base", "Binance"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "liveart/index.js",
+    twitter: "LiveArtX",
+    github: ["LiveArtx"],
+    listedAt: 1763415671,
+  },
 ];
 export default data5;

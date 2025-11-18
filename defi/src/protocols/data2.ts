@@ -17783,6 +17783,9 @@ const data2: Protocol[] = [
       "https://github.com/PeggyJV/cellar-contracts/tree/main/audits",
     ],
     listedAt: 1664536707,
+    dimensions: {
+      fees: "sommelier",
+    }
   },
   {
     id: "2140",

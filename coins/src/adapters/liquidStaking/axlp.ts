@@ -40,7 +40,7 @@ export async function axlp(timestamp: number = 0) {
         amlp.symbol,
         timestamp,
         "amlp",
-        amlp.rate
+        1
       );
 
       const ahlpPrice = await api.call({

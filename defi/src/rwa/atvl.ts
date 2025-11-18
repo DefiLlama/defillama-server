@@ -11,6 +11,12 @@ const rwaTokens: { [protocol: string]: string[] } = {
     "plasma:0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2",
     "solana:Eh6XEPhSwoLv5wFApukmnaVSHQ6sAnoD9BmgmwQoN2sN",
   ],
+  "100001": [
+    "ethereum:0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
+    "base:0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
+    "avax:0x5a0f93d040de44e78f251b03c43be9cf317dcf64", 
+    "bsc:0x58f93d6b1ef2f44ec379cb975657c132cbed3b6b"
+  ]
 };
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
@@ -89,9 +95,12 @@ async function main() {
 main(); // ts-node defi/src/rwa/atvl.ts
 
 const res = {
-  "4133": {
-    ethereum: "2641804943",
-    plasma: "1076949976",
-    solana: "173924",
-  },
-};
+    "4133": {
+      ethereum: "2641803784",
+      plasma: "1077200339",
+      solana: "173965",
+    },
+    "100001": {
+      ethereum: "2516674",
+    },
+  }

@@ -175,4 +175,6 @@ export default {
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
   axlp: require("./liquidStaking/axlp"),
+  morphoBlue: require("./moneyMarkets/morpho"),
+  lista: require("./moneyMarkets/morpho"),
 };

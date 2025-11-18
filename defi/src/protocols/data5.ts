@@ -2707,5 +2707,29 @@ const data5: Protocol[] = [
     github: ["LiveArtx"],
     listedAt: 1763415671,
   },
+  {
+    id: "7008",
+    name: "Aura Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://app.aur.ag/",
+    description: "Aura is a decentralized exchange (DEX) aggregation protocol built on the Plasma blockchain. It consolidates liquidity from multiple decentralized exchanges and market makers into a single interface and API",
+    chain: "Plasma",
+    logo: `${baseIconsUrl}/aura-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Plasma"],
+    forkedFromIds: ["4628"],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "aura_aggr",
+    dimensions: {
+      aggregators: "aura-agg",
+      fees: "aura-agg",
+    }
+  },
 ];
 export default data5;

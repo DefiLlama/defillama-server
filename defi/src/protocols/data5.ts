@@ -208,7 +208,8 @@ const data5: Protocol[] = [
     name: "Shift Protocol",
     address: null,
     symbol: "-",
-    url: "https://shiftprotocol.xyz/",
+    url: "https://shiftprotocol.xyz/?ref=c534997d-771b-4e83-b1fb-918421c64383",
+    referralUrl: "https://shiftprotocol.xyz/?ref=c534997d-771b-4e83-b1fb-918421c64383",
     description: `Shift is a DeFi protocol offering a suite of yield products built on top of leading on-chain perpetual futures exchanges (Perp DEXs). Our mission is to make high-yield strategies available to anyone through transparent, on-chain vaults`,
     chain: "Base",
     logo: `${baseIconsUrl}/shift-protocol.jpg`,
@@ -382,6 +383,9 @@ const data5: Protocol[] = [
     audit_links: [],
     github: ["Terrestrials"],
     listedAt: 1761284804,
+    dimensions: {
+      fees: "foom-cash"
+    }
   },
   {
     id: "6909",
@@ -754,6 +758,9 @@ const data5: Protocol[] = [
     twitter: "Rain__Protocol",
     github: ["rain1-labs"],
     listedAt: 1761692153,
+    dimensions: {
+      fees: "rain-one",
+    }
   },
   {
     id: "6925",
@@ -837,7 +844,8 @@ const data5: Protocol[] = [
     name: "Titan Exchange",
     address: null,
     symbol: "-",
-    url: "https://titan.exchange/",
+    url: "titan.exchange/@defillama",
+    referralUrl: "titan.exchange/@defillama",
     description: "Meta DEX Aggregator on Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/titan-exchange.jpg`,
@@ -1690,6 +1698,10 @@ const data5: Protocol[] = [
     twitter: "KaspaCom",
     github: ["KASPACOM"],
     listedAt: 1762370751,
+    dimensions: {
+      dexs: "kaspacom-dex",
+      fees: "kaspacom-dex",
+    }
   },
   {
     id: "6966",
@@ -1988,6 +2000,11 @@ const data5: Protocol[] = [
     audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FEagmjVMVJsuZQ0TvRYt7%2Fuploads%2Fg2IKp2ER5qhU3uX1Nr85%2F20250311-Navi-Perp-Vault-Final-Audit-Report.pdf?alt=media&token=34b676be-3da6-4be3-bce5-7a31bd214d5f"],
     listedAt: 1762584873,
     parentProtocol: "parent#navi-protocol",
+    dimensions: {
+      derivatives: "astro-perp",
+      "open-interest": "astro-perp-oi",
+      fees: "astro-perp",
+    }
   },
   {
     id: "6978",
@@ -2357,6 +2374,10 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.ramses.xyz/pages/audits"],
     parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010949,
+    dimensions: {
+      fees: "ramses-hl-cl",
+      dexs: "ramses-hl-cl",
+    }
   },
   {
     id: "6994",
@@ -2379,6 +2400,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198", "1407"],
     parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1763010955,
+    dimensions: {
+      fees: "ramses-hl-legacy",
+      dexs: "ramses-hl-legacy",
+    }
   },
   {
     id: "6995",
@@ -2494,6 +2519,171 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1763103013,
     parentProtocol: "parent#fufuture",
+  },
+  {
+    id: "7000",
+    name: "Kodiak Perps",
+    address: null,
+    symbol: "-",
+    url: "https://perps.kodiak.finance/",
+    description: "Kodiak's Perps DEX",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/kodiak-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Orderly"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "KodiakFi",
+    parentProtocol: "parent#kodiak",
+    dimensions: {
+      fees: "kodiak-perps",
+    }
+  },
+  {
+    id: "7001",
+    name: "RubyScore",
+    address: null,
+    symbol: "-",
+    url: "https://rubyscore.io/",
+    description: "RubyScore is a decentralized reputation and identity protocol that aggregates users' onchain activity across multiple networks and forms a unified reputation layer",
+    chain: "Base",
+    logo: `${baseIconsUrl}/rubyscore.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Abstract", "ApeChain", "Arbitrum", "Avalanche", "Base", "Berachain", "Binance", "BOB", "Boba", "Celo", "Corn", "Flare", "Flow", "Hemi", "Ink", "Katana", "Linea", "Mode", "Optimism", "Plasma", "Polygon", "Scroll", "Shape", "Somnia", "Sonic", "TAC", "Taiko", "Unichain", "zkSync Era"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "rubyscore_io",
+    dimensions: {
+      fees: "rubyscore",
+    }
+  },
+  {
+    id: "7002",
+    name: "GateFun",
+    address: null,
+    symbol: "-",
+    url: "https://web3.gate.com/en/gatefun",
+    description: "Gate Fun, built on Gate Layer, is a creator-friendly launchpad that offers no-code token issuance, low-cost deployment, and seamless liquidity building",
+    chain: "GateLayer",
+    logo: `${baseIconsUrl}/gatefun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["GateLayer"],
+    forkedFromIds: [],
+    module: "gatefun/index.js",
+    twitter: "Gate_Fun",
+    listedAt: 1763158382,
+    dimensions: {
+      dexs: "gatefun",
+    }
+  },
+  {
+    id: "7003",
+    name: "Mining Tycoon",
+    address: null,
+    symbol: "-",
+    url: "https://miningtycoon.fun",
+    description: "Mining Tycoon is a dual-currency mining pool where users buy mining power with SOL or GPU tokens and earn proportional rewards from both vaults",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/mining-tycoon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "mining-tycoon/index.js",
+    twitter: "MiningGPU",
+    listedAt: 1763158389,
+  },
+  {
+    id: "7004",
+    name: "Rush",
+    address: null,
+    symbol: "-",
+    url: "https://rushbot.io",
+    description: "Trade any memecoin from your phone. Rush is an innovative Telegram trading bot built to be the fastest and most rewarding",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/rush.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "RushTradingBot",
+    dimensions: {
+      dexs: "rush",
+    }
+  },
+  {
+    id: "7005",
+    name: "Neverland",
+    address: "monad:0xAD96C3dffCD6374294e2573A7fBBA96097CC8d7c",
+    symbol: "DUST",
+    url: "https://neverland.money",
+    description: "Neverland is a next-generation, Monad-native lending protocol fusing the most secure, battle-tested lending technology with proprietary veTokenomics that allow users to direct 100% of protocol revenue. Featuring self-repaying loans, flexible and tradable governance locks, and automated yield strategies, each designed to maximize capital efficiency and long-term alignment",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/neverland.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Monad"],
+    forkedFromIds: ["1599"],
+    audit_links: ["https://github.com/Neverland-Money/security-audits"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.neverland.money","https://github.com/DefiLlama/DefiLlama-Adapters/pull/17018"],
+      }
+    ],
+    module: "dummy.js",
+    twitter: "Neverland_Money",
+    github: ["0xCatalyst"],
+    dimensions: {
+      fees: "neverland",
+    }
+  },
+  {
+    id: "7006",
+    name: "SpeedTrading",
+    address: null,
+    symbol: "-",
+    url: "https://speedtrading.pandora.fun/",
+    description: "SpeedTrading Micro-perps turns perpetual trading into a short, social, high-energy experience. Built by Pandora.fun",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/speedtrading.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Abstract"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "pandoradotfun",
+    dimensions: {
+      derivatives: "pandora-speed-trading",
+      fees: "pandora-speed-trading",
+    }
   },
 ];
 export default data5;

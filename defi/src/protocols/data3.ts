@@ -33319,6 +33319,9 @@ const data3_1: Protocol[] = [
       "https://1437394138-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FcYvodOcCalriGDOIk0m4%2Fuploads%2F2aV2FDinQ3TxtFSRRnqN%2FSegment_Finance_-_Public_Report.pdf?alt=media&token=f87acc83-c3b7-4caa-a5d4-cbc7d68dc21d",
     ],
     listedAt: 1707231018,
+    dimensions: {
+      fees: "segment-finance"
+    }
   },
   {
     id: "4110",
@@ -42123,6 +42126,10 @@ const data3_2: Protocol[] = [
     twitter: "_Loxodrome",
     parentProtocol: "parent#loxodrome",
     listedAt: 1713193262,
+    dimensions: {
+      dexs: "loxodrome-amm",
+      fees: "loxodrome-amm",
+    }
   },
   /*
   {
@@ -48873,15 +48880,17 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4767",
-    name: "XLink",
+    name: "Brotocol",
+    previousNames: ["XLink"],
     address: null,
     symbol: "-",
-    url: "https://www.xlink.network",
+    url: "https://brotocol.xyz/",
     description:
-      "Bitcoin Bridge aggregates liquidity across Bitcoin L2s, with an aim to bringing native-like DeFi experience to Bitcoin.",
+      "Brotocol aggregates liquidity across Bitcoin L2s, with an aim to bringing native-like DeFi experience to Bitcoin.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/xlink.png`,
-    audits: "0",
+    audits: "1",
+    audit_links: ["https://docs.brotocol.xyz/developers/brotocol-contracts/security-audits"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -48889,7 +48898,7 @@ const data3_2: Protocol[] = [
     chains: ["Bitcoin", "Binance", "Stacks", "Ethereum"],
     forkedFrom: [],
     module: "xlink/index.js",
-    twitter: "XLinkbtc",
+    twitter: "Brotocol_xyz",
     listedAt: 1718188954,
   },
   {
@@ -52143,13 +52152,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4904",
-    name: "Size Credit",
+    name: "Rheo",
+    previousNames: ["Size Credit"],
     address: null,
     symbol: "-",
-    url: "https://size.credit/",
-    description: "Size is a credit marketplace with unified liquidity across maturities.",
+    url: "https://app.rheo.xyz/",
+    description: "A peer-to-peer credit marketplace. Built on Mainnet and Base.",
     chain: "Base",
-    logo: `${baseIconsUrl}/size-credit.jpg`,
+    logo: `${baseIconsUrl}/rheo.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -52159,12 +52169,12 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     forkedFrom: [],
     module: "size-credit/index.js",
-    twitter: "SizeCredit",
+    twitter: "rheo_xyz",
     audit_links: [
       "https://github.com/spearbit/portfolio/blob/master/pdfs/Size-Spearbit-Security-Review.pdf",
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Size%20Lending.pdf",
     ],
-    github: ["SizeCredit"],
+    github: ["SizeCredit", "rheo-xyz"],
     listedAt: 1721383932,
     dimensions: {
       fees: "size-credit"
@@ -57607,7 +57617,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum"],
+    chains: ["LogX Network"],
     forkedFrom: [],
     module: "logx-v2/index.js",
     twitter: "LogX_trade",

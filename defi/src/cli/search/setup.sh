@@ -42,7 +42,7 @@ curl \
     "attribute",
     "sort",
     "exactness",
-    "r:desc
+    "r:desc"
   ]'
 
 curl \
@@ -61,7 +61,8 @@ curl \
     "v",
     "tvl",
     "name",
-    "deprecated"
+    "deprecated",
+    "mcapRank"
   ]'
 
 curl \

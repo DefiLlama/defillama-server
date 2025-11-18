@@ -21,6 +21,7 @@ interface SearchResult {
   deprecated?: boolean;
   type: string;
   hideType?: boolean;
+  mcapRank?: number;
   v: number;
 }
 
@@ -368,7 +369,6 @@ async function generateSearchList() {
   }
 
   const protocols: Array<SearchResult> = [];
-  const protocolNameSet = new Set<String>();
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
     const result = {
@@ -382,7 +382,6 @@ async function generateSearchList() {
       type: "Protocol",
     };
 
-    protocolNameSet.add(parent.name);
     protocols.push(result);
 
     const metadata = protocolsMetadata[parent.id];
@@ -413,7 +412,6 @@ async function generateSearchList() {
     };
 
     protocols.push(result);
-    protocolNameSet.add(protocol.name);
 
     const metadata = protocolsMetadata[protocol.defillamaId];
     const subSections = getProtocolSubSections({
@@ -702,7 +700,7 @@ async function generateSearchList() {
 
   const bridges: Array<SearchResult> = [];
   for (const brg of bridgesData.bridges) {
-    if (protocolNameSet.has(brg.displayName)) continue;
+    if (brg.slug) continue;
     bridges.push({
       id: `bridge_${normalize(brg.name)}`,
       name: brg.displayName,
@@ -763,6 +761,7 @@ async function generateSearchList() {
       name: coin.symbol,
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
+      mcapRank: coin.mcap_rank ?? 0,
       v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
       type: "Token Usage",
     });
@@ -772,6 +771,7 @@ async function generateSearchList() {
         name: coin.symbol,
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,
+        mcapRank: coin.mcap_rank ?? 0,
         v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
         type: "Token Yields",
       });

@@ -600,6 +600,13 @@ export const cexsData: Array<ICex> = [
     slug: "voyager",
     coin: null,
     walletsLink: null,
+  },
+  {
+    name: "Gate US",
+    cgId: "gate-us",
+    slug: "gate-us",
+    coin: null,
+    walletsLink: null,
   }
 ];
 
@@ -713,6 +720,7 @@ const cgNameListingIdMap: { [name: string]: string } = {
   "ZBX": "zbx",
   "zipmex": "zipmex",
   "OSL": "osl",
+  "Gate US": "gate-us",
 }
 
 cexsData.forEach(c => {

@@ -2,6 +2,7 @@ import { getProvider } from "@defillama/sdk";
 import PromisePool from "@supercharge/promise-pool";
 import { adaptersRepoChainsJson as chains } from "../getChains";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import { createCachedProvider } from "../utils/cachedProvider";
 
 type Rpc = {
   rpc: string;
@@ -30,15 +31,16 @@ async function collectHeights(results: Results) {
   await Promise.all(
     chains.map(async (chain: string) => {
       results[chain] = [];
-      const provider: any = getProvider(chain);
-      if (!provider) return;
+      const baseProvider: any = getProvider(chain);
+      if (!baseProvider) return;
 
-      await PromisePool.for(provider.rpcs)
+      await PromisePool.for(baseProvider.rpcs)
         .withConcurrency(1)
         .process(async (rpc: any) => {
-          let thisProvider = provider;
+          let thisProvider = baseProvider;
           thisProvider.rpcs = [rpc];
-          const block = await provider.getBlock("latest");
+          const cachedProvider = createCachedProvider(thisProvider, chain);
+          const block = await cachedProvider.getBlock("latest");
           results[chain].push({ rpc: rpc.url, block: block.number });
         });
     }),

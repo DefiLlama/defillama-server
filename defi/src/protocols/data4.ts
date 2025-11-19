@@ -27670,7 +27670,7 @@ const data4: Protocol[] = [
     chains: ["Mantle"],
     forkedFromIds: [],
     oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] }, //https://defillama.com/protocol/lendle-isolated-markets
+      { name: "Chainlink", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] }, //https://defillama.com/protocol/lendle-isolated-markets
     ],
     module: "lendle-isolated-markets/index.js",
     twitter: "lendlexyz",

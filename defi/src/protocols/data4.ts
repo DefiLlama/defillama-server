@@ -19963,6 +19963,9 @@ const data4: Protocol[] = [
     twitter: "MoneyFiHub",
     forkedFrom: [],
     listedAt: 1751311042,
+    dimensions: {
+      fees: "moneyfi"
+    }
   },
   {
     id: "6371",

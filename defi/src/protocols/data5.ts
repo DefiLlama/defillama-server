@@ -2455,7 +2455,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://yuzu.money/",
     description:
-      "An overcollateralized stablecoin backed by curated on-chain strategies that aims to offer some of the highest yields in DeFi. Users can stake yzUSD to obtain the yield-bearing syzUSD. Depositors in the yzPP accept first loss risk on the underlying strategies in exchange for higher target yield, funded partly by a Reserve Fund",
+      "An overcollateralized stablecoin backed by curated on-chain strategies designed to offer some of the highest yields in DeFi. Users can stake yzUSD to receive the yield-bearing syzUSD. Depositors in yzPP accept first-loss risk on the underlying strategies in exchange for a higher target yield, which is partially funded by a Reserve Fund.",
     chain: "Plasma",
     logo: `${baseIconsUrl}/yuzu-money.jpg`,
     audits: "2",

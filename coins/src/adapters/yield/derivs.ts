@@ -587,6 +587,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     address: "0xcd3c0F51798D1daA92Fb192E57844Ae6cEE8a6c7",
   },
+  ankrFLOWEVM: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function sharesToBonds(uint256) external view returns (uint256)",
+        target: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+        params: "1000000",
+      });
+      return 1e6 / rate;
+    },
+    chain: "flow",
+    underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
+    address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+  }
 };
 
 export async function derivs(timestamp: number) {

@@ -207,6 +207,7 @@ const contracts: Record<string, TokenConfig[]> = {
   ],
   plasma: [
     { name: 'mHyper', token: '0xb31BeA5c2a43f942a3800558B1aa25978da75F8a', oracle: '0x2EB410e4cb94E2E9E3cdE3F7b405BE4fCC076Bc9' },
+    { name: 'mXRP', token: '0xc8739fbBd54C587a2ad43b50CbcC30ae34FE9e34', oracle: '0x3BdE0b7B59769Ec00c44C77090D88feB4516E731', denomination: 'XRP' },
   ],
   bsc: [{
     name: 'mXRP',

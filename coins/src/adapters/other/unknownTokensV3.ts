@@ -1,5 +1,6 @@
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 const projectName = "unknownTokensV3";
 
 const slot0Abi =
@@ -73,6 +74,15 @@ const config: any = {
   },
 };
 
+const configCustomAbi: any = {
+  base: {
+    "0xe66E3A37C3274Ac24FE8590f7D84A2427194DC17": { 
+      pool: "0x9d228792a392838be03293ba93f406f3e8077b8d", // stkWELL
+      abi: "function slot0() view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, bool unlocked)"
+    }
+  },
+}
+
 export function unknownTokensV3(timestamp: number = 0) {
   return Promise.all(
     Object.keys(config).map((chain) => getTokenPrice(chain, timestamp)),
@@ -82,11 +92,21 @@ export function unknownTokensV3(timestamp: number = 0) {
 async function getTokenPrice(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);
   const pricesObject: any = {};
+
   const pools: any = Object.values(config[chain]);
-  const tokens = Object.keys(config[chain]);
-  const token0s = await api.multiCall({ abi: "address:token0", calls: pools });
-  const token1s = await api.multiCall({ abi: "address:token1", calls: pools });
-  const slot0s = await api.multiCall({ abi: slot0Abi, calls: pools });
+  const customAbiPools: any = Object.values(configCustomAbi[chain] ?? {});
+
+  const tokens = [...Object.keys(config[chain]), ...Object.keys(configCustomAbi[chain])];
+  const token0s = await api.multiCall({ abi: "address:token0", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
+  const token1s = await api.multiCall({ abi: "address:token1", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
+
+  const regularSlot0s = await api.multiCall({ abi: slot0Abi, calls: pools });
+  const customSlot0s: any[] = await runInPromisePool({
+    items: customAbiPools,
+    concurrency: 5,
+    processor: async (p: any) =>  api.call({ abi: p.abi, target: p.pool })
+  })
+
   const tokens0Decimals = await api.multiCall({
     abi: "erc20:decimals",
     calls: token0s,
@@ -96,7 +116,7 @@ async function getTokenPrice(chain: string, timestamp: number) {
     calls: token1s,
   });
 
-  slot0s.forEach((v: any, i: number) => {
+  [...regularSlot0s, ...customSlot0s].forEach((v: any, i: number) => {
     const token = tokens[i].toLowerCase();
     let token0 = token0s[i].toLowerCase();
     let price =

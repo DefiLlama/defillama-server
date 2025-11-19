@@ -7,6 +7,7 @@ import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
 import * as others2 from "./other/others2";
 import * as graphCoins from "./markets/graphCoins";
+import * as morpho from "./moneyMarkets/morpho";
 
 export default {
   ...compound.adapters,
@@ -18,6 +19,7 @@ export default {
   ...others.adapters,
   ...others2.adapters,
   ...graphCoins.adapters,
+  ...morpho.adapters,
   fraxtalGas: require("./other/fraxtalGas"),
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   trize: require("./rwa/t-rize"),
@@ -174,4 +176,5 @@ export default {
   goblin: require("./markets/goblin"),
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
+  axlp: require("./liquidStaking/axlp"),
 };

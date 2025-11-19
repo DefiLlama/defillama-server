@@ -12833,5 +12833,42 @@
       "decimals": 18,
       "symbol": "KREX"
     }
+  }, 
+  "mon": {
+    "0xea17E5a9efEBf1477dB45082d67010E2245217f1": {
+      "to": "coingecko#solana", 
+      "decimals": 9,
+      "symbol": "SOL"
+    },
+    "0x754704Bc059F8C67012fEd69BC8A327a5aafb603": {
+      "to": "coingecko#usd-coin", 
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xe7cd86e13AC4309349F30B3435a9d337750fC82D": {
+      "to": "coingecko#tether", 
+      "decimals": 6,
+      "symbol": "USDT0"
+    }, 
+    "0xEE8c0E9f1BFFb4Eb878d8f15f368A02a35481242": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A": {
+      "to": "coingecko#monad", 
+      "decimals": 18,
+      "symbol": "WMON"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#monad", 
+      "decimals": 18,
+      "symbol": "MON"
+    }, 
+    "0x01bFF41798a0BcF287b996046Ca68b395DbC1071": {
+      "to": "coingecko#tether-gold", 
+      "decimals": 6,
+      "symbol": "XAUt0"
+    }
   }
 }

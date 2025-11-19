@@ -30886,7 +30886,7 @@ const data2: Protocol[] = [
   {
     id: "2695",
     name: "SMARDEX AMM",
-    previousNames: ["SmarDex"],
+   // previousNames: ["SmarDex"],
     address: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
     symbol: "SDEX",
     url: "https://smardex.io",

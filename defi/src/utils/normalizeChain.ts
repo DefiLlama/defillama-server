@@ -3464,6 +3464,20 @@ export const chainCoingeckoIds = {
     url: "https://anvm.io/",
     chainId: 2649
   },
+  "ANDE": {
+    geckoId: null,
+    symbol: "ANDE",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Celestia',
+    },
+    twitter: "AndeNetwork",
+    url: "https://ande.network/",
+    chainId: 6174
+  },
   "Mint": {
     geckoId: null,
     symbol: null,

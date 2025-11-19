@@ -27781,7 +27781,7 @@ const data4: Protocol[] = [
     chains: ["Mantle"],
     forkedFromIds: [],
     oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles"] }, //https://defillama.com/protocol/lendle-isolated-markets
+      { name: "Chainlink", type: "Primary", proof: ["https://docs.lendle.xyz/key-protocol-insights/liquidations-and-flashloans#oracles","https://github.com/DefiLlama/defillama-server/pull/10886"] }, //https://defillama.com/protocol/lendle-isolated-markets
     ],
     module: "lendle-isolated-markets/index.js",
     twitter: "lendlexyz",

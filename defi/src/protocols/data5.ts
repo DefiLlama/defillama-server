@@ -2752,8 +2752,8 @@ const data5: Protocol[] = [
     twitter: "felixprotocol",
     parentProtocol: "parent#felix",
     dimensions: {
-      derivatives: "felix-perps",
-      fees: "felix-perps",
+      derivatives: "felix-perp",
+      fees: "felix-perp",
     }
   },
   {

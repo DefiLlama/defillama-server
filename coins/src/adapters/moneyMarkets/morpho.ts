@@ -221,7 +221,7 @@ async function morpho(
   const metadata = await getTokenInfoMap(api.chain, problemVaultList);
 
   const writes: Write[] = [];
-  problemVaultList.map(async (vault: string) => {
+  problemVaultList.forEach(async (vault: string) => {
     const { symbol, decimals } = metadata[vault];
     if (!symbol || !decimals) return;
     addToDBWritesList(

@@ -2804,5 +2804,27 @@ const data5: Protocol[] = [
       fees: "ventuals",
     }
   },
+  {
+    id: "7012",
+    name: "Piku",
+    address: "0x2e4039e8e31475d65dc00293c366fdbfbbc02dc3",
+    symbol: "PIKU",
+    url: "https://piku.co/",
+    description: "USP is a yield-optimized stablecoin governed by PikuDAO. It launches fully backed 1:1 by USD-denominated stablecoins, and over time the backing is diversified into a basket of on-chain and off-chain yield-generating assets. The yield from these assets increases the underlying value of USP, allowing it to appreciate above its initial $1.00 launch value. USP functions as a savings-oriented asset with simplified access.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/piku.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "piku-utility-token",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    module: "piku-dao/index.js",
+    twitter: "piku_dao",
+    audit_links: ["https://docs.piku.co/piku/piku/security-and-risks/audits",],
+    github: ["piku-co"],
+    listedAt: 1763513599
+  },
 ];
 export default data5;

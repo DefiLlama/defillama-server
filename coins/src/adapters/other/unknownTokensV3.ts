@@ -96,7 +96,7 @@ async function getTokenPrice(chain: string, timestamp: number) {
   const pools: any = Object.values(config[chain]);
   const customAbiPools: any = Object.values(configCustomAbi[chain] ?? {});
 
-  const tokens = [...Object.keys(config[chain]), ...Object.keys(configCustomAbi[chain])];
+  const tokens = [...Object.keys(config[chain]), ...Object.keys(configCustomAbi[chain] ?? [])];
   const token0s = await api.multiCall({ abi: "address:token0", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
   const token1s = await api.multiCall({ abi: "address:token1", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
 

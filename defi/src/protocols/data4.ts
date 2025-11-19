@@ -5441,6 +5441,7 @@ const data4: Protocol[] = [
 "https://app.takaralend.com/market/USDC",
         ],
          startDate: "2025-11-12",
+      },
       {
         name: "Api3",
         type: "Primary",

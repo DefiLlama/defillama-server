@@ -55,12 +55,12 @@ export enum RUN_TYPE {
   API_SERVER = 'api-server',
 }
 
-export function roundVaules(obj: any) {
+export function roundValues(obj: any) {
   if (!obj) return obj;
   if (typeof obj === 'number') return Math.round(obj)
   if (typeof obj === 'object') {
     Object.entries(obj).forEach(([key, value]) => {
-      obj[key] = roundVaules(value)
+      obj[key] = roundValues(value)
     })
   }
   return obj
@@ -143,7 +143,7 @@ export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
   try {
 
 
-    await fn()
+    const response = await fn()
 
     const endTime = Date.now()
     await sdk.elastic.addRuntimeLog({
@@ -152,6 +152,7 @@ export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
       runtime: (endTime - startTime) / 1e3,
     })
 
+    return response
 
   } catch (e) {
 

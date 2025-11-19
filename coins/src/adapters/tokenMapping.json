@@ -42,6 +42,11 @@
     }
   },
   "supra": {
+    "0xa": {
+      "decimals": "8",
+      "symbol": "SUPRA",
+      "to": "coingecko#supra"
+    },
     "0x1::supra_coin::SupraCoin": {
       "decimals": "8",
       "symbol": "SUPRA",
@@ -1021,6 +1026,31 @@
     }
   },
   "ethereum": {
+    "0xe74dd7525663193b5e5e596b581b5343735a585c": {
+      "decimals": "18",
+      "symbol": "USDCUSDU",
+      "to": "asset#ethereum:0x6c5ff8dce52be77b4ece6b51996018f0c1713ba9"
+    },
+    "0x1Ee774B40eECef1ed4BB702C83A97dc949c900e5": {
+      "decimals": "8",
+      "symbol": "oBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x1feCF3d9d4Fee7f2c02917A66028a48C6706c179": {
+      "decimals": "18",
+      "symbol": "WTGXX",
+      "to": "coingecko#usd-coin"
+    },
+    "0x9469470C9878bf3d6d0604831d9A3A366156f7EE": {
+      "decimals": "18",
+      "symbol": "avETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x76589A6707a765f499BBF33C7be4db41C1Db7f58": {
+      "decimals": "18",
+      "symbol": "stakedao-llsreUSD",
+      "to": "asset#ethereum:0xc32b0cf36e06c790a568667a17de80cba95a5aad"
+    },
     "0xB6900cF5572B73A4Fef7c86E88d8d9A681cf2EaB": {
       "decimals": "6",
       "symbol": "MoreXRP",
@@ -1477,6 +1507,11 @@
     }
   },
   "bsc": {
+    "0x1775504c5873e179Ea2f8ABFcE3861EC74D159bc": {
+      "decimals": "18",
+      "symbol": "CASH+",
+      "to": "asset#ethereum:0x498d9329555471bf6073a5f2d047f746d522a373"
+    },
     "0x7cb8a5abf019983ed053484d5ad17f96fec56f28": {
       "decimals": "8",
       "symbol": "leadBTC",
@@ -2241,6 +2276,11 @@
     }
   },
   "base": {
+    "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
       "decimals": "18",
       "symbol": "vyETH",
@@ -5103,6 +5143,16 @@
     }
   },
   "linea": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0xC7346783f5e645aa998B106Ef9E7f499528673D8": {
       "decimals": "18",
       "symbol": "frxUSD",
@@ -5564,6 +5614,46 @@
     }
   },
   "starknet": {
+    "0x02f5eb9a4f77b6c7c83488418e77329d31eb43219745959948a0fce9580905d9": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0x019110887221c1cb3fa95bbbfce818c88bfd6a74af2c4574b6455dd1bdc9a974": {
+      "decimals": "18",
+      "symbol": "ENA",
+      "to": "coingecko#ethena"
+    },
+    "0x02650ea9af204ba33d4e743ee8ff826b5bec3f5ce497efed832e5c3794483e3c": {
+      "decimals": "18",
+      "symbol": "POL",
+      "to": "coingecko#polygon-ecosystem-token"
+    },
+    "0x03070d5cbd310edc0b2cfe8b11d132e67718b16c7fbfd536ee74ec54a4307ba2": {
+      "decimals": "18",
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "0x02119755fad7cbf637d80cae5d3e8e12487befe6653ddd04432a73f6f569f46b": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
+    "0x01e77aec81ef65db5fb788a5a04fd9d23f6f4c860eb2fb0e99ace5c45b021071": {
+      "decimals": "18",
+      "symbol": "ZRO",
+      "to": "coingecko#layerzero"
+    },
+    "0x060f47b96b525c1014fed595e87e98edc3ce0731627a0670e1804ee1a3ca0ee9": {
+      "decimals": "18",
+      "symbol": "LINK",
+      "to": "coingecko#chainlink"
+    },
+    "0x01E70AeDFfd376afe33CEbdF51ED5365131Dccb2A5B2cb36d02B785442912B9b": {
+      "decimals": "9",
+      "symbol": "SOL",
+      "to": "coingecko#solana"
+    },
     "0x04be8945e61dc3e19ebadd1579a6bd53b262f51ba89e6f8b0c4bc9a7e3c633fc": {
       "decimals": "18",
       "symbol": "mRe7yield",
@@ -9174,6 +9264,12 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
+    },
+    "0x2689fAabe22Ec4516d716Da5B5f81e7e3aE379c3": {
+      "name": "Koala Governance Token",
+      "decimals": "18",
+      "symbol": "koala",
+      "to": "coingecko#koala-governance-token"
     }
   },
   "rbn": {
@@ -10334,6 +10430,11 @@
     }
   },
   "hyperliquid": {
+    "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b": {
+      "to": "asset#ethereum:0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b",
+      "decimals": 6,
+      "symbol": "M"
+    },
     "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": {
       "to": "coingecko#hyperliquid",
       "decimals": 18,
@@ -10577,6 +10678,21 @@
     }
   },
   "saga": {
+    "0xA6F89de43315B444114258f6E6700765D08bcd56": {
+      "to": "coingecko#yieldfi-yeth",
+      "decimals": 18,
+      "symbol": "yETH"
+    },
+    "0x704a58f888f18506C9Fc199e53AE220B5fdCaEd8": {
+      "to": "asset#ethereum:0x2e3c5e514eef46727de1fe44618027a9b70d92fc",
+      "decimals": 18,
+      "symbol": "vyUSD"
+    },
+    "0x839e7e610108Cf3DCc9b40329db33b6E6bc9baCE": {
+      "to": "coingecko#yieldfi-ytoken",
+      "decimals": 18,
+      "symbol": "yUSD"
+    },
     "0xfc960c233b8e98e0cf282e29bde8d3f105fc24d5": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -10607,7 +10723,7 @@
     "0xb7400b60e249c92b6b97717e29915474d90eec3e8c510bf5675628367d39e35": {
       "to": "coingecko#mbtc",
       "decimals": 10,
-      "symbol": "MBTC"
+      "symbol": "mBTC"
     },
     "0x51ffc9885233adf3dd411078cad57535ed1982013dc82d9d6c433a55f2e0035d": {
       "to": "coingecko#kelp-dao-restaked-eth",
@@ -12328,6 +12444,13 @@
       "symbol": "ETH"
     }
   },
+  "terra": {
+    "terra1vhgq25vwuhdhn9xjll0rhl2s67jzw78a4g2t78y5kz89q9lsdskq2pxcj2": {
+      "to": "coingecko#juris-protocol",
+      "decimals": 6,
+      "symbol": "JURIS"
+    }
+  },
   "terra2": {
     "terra1ctelwayk6t2zu30a8v9kdg3u2gr0slpjdfny5pjp7m3tuquk32ysugyjdg": {
       "to": "coingecko#solana",
@@ -12358,6 +12481,16 @@
     }
   },
   "plasma": {
+    "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
+      "decimals": "18",
+      "symbol": "yUSD",
+      "to": "coingecko#yieldfi-ytoken"
+    },
+    "0xF4F447E6AFa04c9D11Ef0e2fC0d7f19C24Ee55de": {
+      "decimals": "18",
+      "symbol": "vyUSD",
+      "to": "asset#ethereum:0x2e3C5e514EEf46727DE1FE44618027A9b70D92FC"
+    },
     "0x6100E367285b01F48D07953803A2d8dCA5D19873": {
       "to": "coingecko#wrapped-xpl",
       "decimals": 18,
@@ -12638,6 +12771,67 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    }
+  }, 
+  "bittensor_evm": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#bittensor",
+      "decimals": 18,
+      "symbol": "TAO"
+    }, 
+    "0x9Dc08C6e2BF0F1eeD1E00670f80Df39145529F81": {
+      "to": "coingecko#bittensor",
+      "decimals": 18,
+      "symbol": "WTAO"
+    }, 
+    "0xB833E8137FEDf80de7E908dc6fea43a029142F20": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  }, 
+  "besc": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#wrapped-besc-2",
+      "decimals": 18,
+      "symbol": "BESC"
+    }, 
+    "0x33e22F85CC1877697773ca5c85988663388883A0": {
+      "to": "coingecko#wrapped-besc-2",
+      "decimals": 18,
+      "symbol": "WBESC"
+    },
+    "0xf794E0B0c0a91099ccAcac296193e04Fb860442a": {
+      "to": "coingecko#besc-money",
+      "decimals": 18,
+      "symbol": "MONEY"
+    }
+  }, 
+  "kasplex": {
+    "0xb7a95035618354d9adfc49eca49f38586b624040": {
+      "to": "coingecko#zeal",
+      "decimals": 18,
+      "symbol": "ZEAL"
+    }, 
+    "0x9a5a144290dffa24c6c7aa8ca9a62319e60973d8": {
+      "to": "coingecko#nacho-the-kat",
+      "decimals": 18,
+      "symbol": "NACHO"
+    }, 
+    "0x1f3ce97f8118035dba7fbcd5398005491cf45603": {
+      "to": "coingecko#kasper",
+      "decimals": 18,
+      "symbol": "KASPER"
+    }, 
+    "0x98508da68180e3c23bee5685f14ad2da5195da12": {
+      "to": "coingecko#keiro",
+      "decimals": 18,
+      "symbol": "KEIRO"
+    }, 
+    "0x0fd8d408ce707f4e4f8e54193c4c55a3b969834b": {
+      "to": "coingecko#krex",
+      "decimals": 18,
+      "symbol": "KREX"
     }
   }
 }

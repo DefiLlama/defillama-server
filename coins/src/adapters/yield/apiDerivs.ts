@@ -11,7 +11,6 @@ type Config = {
   rate: (params: any) => Promise<number>;
   address: string;
   underlying: string;
-  underlyingChain?: string;
   symbol?: string;
   decimals?: string;
   confidence?: number;
@@ -19,45 +18,6 @@ type Config = {
 const margin = 3 * 60 * 60; // 3hrs
 
 const configs: { [adapter: string]: Config } = {
-  LiNEAR: {
-    rate: async ({ t }) => {
-      const res = await fetch(
-        `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_API_KEY}/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg`,
-        {
-          headers: {
-            accept: "*/*",
-            "accept-language": "en-GB,en;q=0.8",
-            "content-type": "application/json",
-            priority: "u=1, i",
-            "sec-ch-ua":
-              '"Not/A)Brand";v="8", "Chromium";v="126", "Brave";v="126"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": '"macOS"',
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            Referer: "https://app.linearprotocol.org/",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-          },
-          body: '{"query":"{\\n  prices(first: 1, orderBy: timestamp, orderDirection: desc) {\\n    id\\n    timestamp\\n    price\\n    __typename\\n  }\\n}","variables":{}}',
-          method: "POST",
-        },
-      ).then((r) => r.json());
-      if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
-      const { timestamp, price } = res.data.prices[0];
-      if (t - timestamp.substring(0, 10) > margin)
-        throw new Error(`LiNEAR subgraph stale rate`);
-      return price;
-    },
-    underlyingChain: "ethereum",
-    decimals: "0",
-    chain: "coingecko",
-    address: "linear-protocol",
-    underlying: "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
-    symbol: "LINEAR",
-    confidence: 1.01,
-  },
   USCC: {
     rate: async ({ t }) => {
       const res = await fetch(
@@ -181,7 +141,7 @@ const configs: { [adapter: string]: Config } = {
     address: "4sWNB8zGWHkh6UnmwiEtzNxL4XrN7uK9tosbESbJFfVs",
     underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
     decimals: "6",
-    symbol: "sHYUSD",
+    symbol: "xSOL",
   },
   ampLUNA: {
     rate: async () => {
@@ -191,9 +151,8 @@ const configs: { [adapter: string]: Config } = {
       return data.exchange_rate;
     },
     chain: "terra2",
-    address: "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
+    address: "uluna",
     underlying: "terra-luna-2",
-    underlyingChain: "coingecko",
     decimals: "6",
     symbol: "ampLUNA",
   },
@@ -282,8 +241,7 @@ const configs: { [adapter: string]: Config } = {
     },
     chain: "terra2",
     address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
-    underlying: "terra-luna-2",
-    underlyingChain: "coingecko",
+    underlying: "uluna",
     decimals: "6",
     symbol: "bLUNA",
   },
@@ -296,8 +254,7 @@ const configs: { [adapter: string]: Config } = {
     },
     chain: "solana",
     address: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
-    underlying: "usd-coin",
-    underlyingChain: "coingecko",
+    underlying: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     decimals: "6",
     symbol: "ALP",
   },
@@ -330,7 +287,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     chain,
     underlying,
     address,
-    underlyingChain,
     symbol,
     decimals,
     confidence,
@@ -349,7 +305,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   const writes: Write[] = [];
   return (
     await getWrites({
-      underlyingChain,
       chain,
       timestamp,
       pricesObject,

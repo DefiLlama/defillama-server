@@ -5,39 +5,32 @@ type Config = {
   rate: () => Promise<number>;
   address: string;
   underlying?: string;
-  underlyingChain?: string;
   decimals: number;
 };
 
-async function call({ target, abi, params = [], rawStack = false }: any) {
-  const body = JSON.stringify({
-    address: target,
-    method: abi,
-    stack: params,
-  });
-
-  const { ok, result } = await fetch("https://ton.drpc.org/rest/runGetMethod", {
+async function call({ target, abi, rawStack = false }: any) {
+  const { status_code, json } = await fetch(`https://api.tonscan.com/api/bt/runGetMethod/${target}/${abi}`, {
     method: "POST",
-    body,
   }).then((r) => r.json());
 
-  if (!ok) {
+  if (status_code != 200) {
     throw new Error("Unknown");
   }
-  const { exit_code, stack } = result;
+  const { exit_code, raw } = json.data;
   if (exit_code !== 0) {
     throw new Error("Expected a zero exit code, but got " + exit_code);
   }
 
-  if (rawStack) return stack;
+  if (rawStack) return raw;
 
-  stack.forEach((i: any, idx: number) => {
+  const decoded: any[] = [];
+  raw.forEach((i: any, idx: number) => {
     if (i[0] === "num") {
-      stack[idx] = parseInt(i[1], 16);
+      decoded[idx] = parseInt(i[1], 16);
     }
   });
 
-  return stack;
+  return decoded;
 }
 
 const configs: { [adapter: string]: Config } = {
@@ -49,9 +42,8 @@ const configs: { [adapter: string]: Config } = {
       });
       return res[1] / 10 ** 9;
     },
-    underlyingChain: "ethereum",
     address: "EQCup4xxCulCcNwmOocM9HtDYPU8xe0449tQLp6a-5BLEegW",
-    underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    underlying: "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
     decimals: 9,
   },
   TON_STORM: {
@@ -62,9 +54,20 @@ const configs: { [adapter: string]: Config } = {
       });
       return res[1] / 10 ** 9;
     },
-    underlyingChain: "ethereum",
     address: "EQCNY2AQ3ZDYwJAqx_nzl9i9Xhd_Ex7izKJM6JTxXRnO6n1F",
-    underlying: "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+    underlying: "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c",
+    decimals: 9,
+  },
+  TLP_TON: {
+    rate: async () => {
+      const res = await call({
+        target: "EQANNroxzBXXdt1Sm5kIcnNZcrDEzux3dB-e0zROSOGQhPdm",
+        abi: "tlpPrice",
+      });
+      return res[0] / 10 ** 18;
+    },
+    address: "EQDYELRHe6sNcHEKX53qWdXG37OK9VEdDWSX1NcubtcYS2KH",
+    underlying: "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c",
     decimals: 9,
   },
 };
@@ -77,15 +80,13 @@ export async function tonDerivs(timestamp: number) {
 }
 
 async function deriv(symbol: string, config: Config) {
-  const { rate, underlying, address, underlyingChain, decimals } = config;
+  const { rate, underlying, address, decimals } = config;
 
   return await getWrites({
-    underlyingChain,
     chain: "ton",
     timestamp: 0,
     pricesObject: {
       [address]: {
-        underlyingChain,
         underlying,
         symbol,
         decimals,

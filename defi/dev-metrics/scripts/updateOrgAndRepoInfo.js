@@ -6,7 +6,6 @@ const { getTempFolder,  deleteFolder, } = require('../utils/cache')
 const sdk = require('@defillama/sdk')
 const simpleGit = require('simple-git')
 const path = require('path')
-const { sliceIntoChunks } = require('@defillama/sdk/build/util')
 const { Op } = require('sequelize');
 const { GITHUB_API_KEY } = require('../env')
 
@@ -33,7 +32,7 @@ async function main() {
   let i = 0
   const aMonthAgo = new Date();
   aMonthAgo.setDate(aMonthAgo.getDate() - 31);
-  const OrgArrayChunks = sliceIntoChunks(OrgArray, 1000)
+  const OrgArrayChunks = sdk.util.sliceIntoChunks(OrgArray, 1000)
   for (let chunk of OrgArrayChunks) {
     const existingOrgs = await GitOwner.findAll({
       where: {

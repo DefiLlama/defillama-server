@@ -2786,7 +2786,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ventuals.com/trade",
-    description: "Aura is a decentralized exchange (DEX) aggregation protocol built on the Plasma blockchain. It consolidates liquidity from multiple decentralized exchanges and market makers into a single interface and API",
+    description: "Ventuals is a decentralized trading protocol that creates perpetual futures markets on private-company valuations, powered by Hyperliquid’s HIP-3 infrastructure",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/ventuals.jpg`,
     audits: "0",

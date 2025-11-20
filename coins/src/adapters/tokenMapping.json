@@ -7252,6 +7252,16 @@
       "to": "coingecko#solv-protocol-solvbtc-jupiter",
       "decimals": 18,
       "symbol": "SolvBTC.JUP"
+    },
+    "0xB0BD54846a92b214C04A63B26AD7Dc5e19A60808": {
+      "to": "coingecko#bob-build-on-bitcoin",
+      "decimals": 18,
+      "symbol": "BOB"
+    },
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "xlayer": {

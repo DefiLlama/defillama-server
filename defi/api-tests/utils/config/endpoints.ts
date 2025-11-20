@@ -30,10 +30,16 @@ export const BASE_URLS = {
   COINS: getBaseUrl(process.env.BETA_COINS_URL || 'https://coins.llama.fi', 'coins'),
   STABLECOINS: getBaseUrl(process.env.BETA_STABLECOINS_URL || 'https://stablecoins.llama.fi', 'stablecoins'),
   YIELDS: getBaseUrl(process.env.BETA_YIELDS_URL || 'https://yields.llama.fi', 'yields'),
-  BRIDGES: getBaseUrl(process.env.BETA_BRIDGES_URL || 'https://bridges.llama.fi', 'bridges'),
+  BRIDGES: process.env.BETA_BRIDGES_URL || 'https://bridges.llama.fi',
   VOLUMES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'volumes'),
   FEES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'fees'),
   USERS: getProApiBaseUrl(),
+  MAIN_PAGE: getProApiBaseUrl(),
+  UNLOCKS: getProApiBaseUrl(),
+  YIELDS_PRO: getProApiBaseUrl(),
+  PERPS: getProApiBaseUrl(),
+  ETFS: getProApiBaseUrl(),
+  NARRATIVES: getProApiBaseUrl(),
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;
@@ -82,30 +88,92 @@ export const COINS = {
   PRICES_CURRENT: (coins: string) => `/prices/current/${coins}`,
   PRICES_HISTORICAL: (timestamp: number, coins: string) => `/prices/historical/${timestamp}/${coins}`,
   CHART: (coins: string) => `/chart/${coins}`,
+  PERCENTAGE: (coins: string) => `/percentage/${coins}`,
+  PRICES_FIRST: (coins: string) => `/prices/first/${coins}`,
+  BLOCK: (chain: string, timestamp: number) => `/block/${chain}/${timestamp}`,
 } as const;
 
 export const VOLUMES = {
   BASE_URL: BASE_URLS.VOLUMES,
-  OVERVIEW: (type: string) => `/overview/${type}`,
-  SUMMARY: (type: string, protocol: string) => `/summary/${type}/${protocol}`,
+  OVERVIEW_DEXS: '/overview/dexs',
+  OVERVIEW_DEXS_CHAIN: (chain: string) => `/overview/dexs/${chain}`,
+  SUMMARY_DEXS: (protocol: string) => `/summary/dexs/${protocol}`,
+  OVERVIEW_OPTIONS: '/overview/options',
+  OVERVIEW_OPTIONS_CHAIN: (chain: string) => `/overview/options/${chain}`,
+  SUMMARY_OPTIONS: (protocol: string) => `/summary/options/${protocol}`,
 } as const;
 
 export const FEES = {
   BASE_URL: BASE_URLS.FEES,
-  OVERVIEW: (type: string) => `/overview/${type}`,
-  SUMMARY: (type: string, protocol: string) => `/summary/${type}/${protocol}`,
+  OVERVIEW_FEES: '/overview/fees',
+  OVERVIEW_FEES_CHAIN: (chain: string) => `/overview/fees/${chain}`,
+  SUMMARY_FEES: (protocol: string) => `/summary/fees/${protocol}`,
 } as const;
 
 export const BRIDGES = {
   BASE_URL: BASE_URLS.BRIDGES,
   BRIDGES: '/bridges',
-  BRIDGE: (bridge: string) => `/bridge/${bridge}`,
+  BRIDGE: (id: string) => `/bridge/${id}`,
+  BRIDGE_VOLUME: (chain: string) => `/bridgevolume/${chain}`,
+  BRIDGE_DAY_STATS: (timestamp: number, chain: string) => `/bridgedaystats/${timestamp}/${chain}`,
+  TRANSACTIONS: (id: string) => `/transactions/${id}`,
 } as const;
 
 export const USERS = {
   BASE_URL: BASE_URLS.USERS,
   ACTIVE_USERS: '/api/activeUsers',
   USER_DATA: (type: string, protocolId: string) => `/api/userData/${type}/${protocolId}`,
+} as const;
+
+export const MAIN_PAGE = {
+  BASE_URL: getProApiBaseUrl(),
+  CATEGORIES: '/api/categories',
+  FORKS: '/api/forks',
+  ORACLES: '/api/oracles',
+  HACKS: '/api/hacks',
+  RAISES: '/api/raises',
+  TREASURIES: '/api/treasuries',
+  ENTITIES: '/api/entities',
+} as const;
+
+export const UNLOCKS = {
+  BASE_URL: getProApiBaseUrl(),
+  EMISSIONS: '/api/emissions',
+  EMISSION: (protocol: string) => `/api/emission/${protocol}`,
+} as const;
+
+export const YIELDS_PRO = {
+  BASE_URL: getProApiBaseUrl(),
+  POOLS: '/yields/pools',
+  CHART: (pool: string) => `/yields/chart/${pool}`,
+  POOLS_OLD: '/yields/poolsOld',
+  POOLS_BORROW: '/yields/poolsBorrow',
+  CHART_LEND_BORROW: (pool: string) => `/yields/chartLendBorrow/${pool}`,
+  PERPS: '/yields/perps',
+  LSD_RATES: '/yields/lsdRates',
+} as const;
+
+export const PERPS = {
+  BASE_URL: getProApiBaseUrl(),
+  OVERVIEW_OPEN_INTEREST: '/api/overview/open-interest',
+  OVERVIEW_DERIVATIVES: '/api/overview/derivatives',
+  SUMMARY_DERIVATIVES: (protocol: string) => `/api/summary/derivatives/${protocol}`,
+} as const;
+
+export const ETFS = {
+  BASE_URL: getProApiBaseUrl(),
+  SNAPSHOT: '/etfs/snapshot',
+  FLOWS: '/etfs/flows',
+} as const;
+
+export const NARRATIVES = {
+  BASE_URL: getProApiBaseUrl(),
+  FDV_PERFORMANCE: (period: string) => `/fdv/performance/${period}`,
+} as const;
+
+export const TOKEN_LIQUIDITY = {
+  BASE_URL: getProApiBaseUrl(),
+  HISTORICAL_LIQUIDITY: (token: string) => `/api/historicalLiquidity/${token}`,
 } as const;
 
 export const endpoints = {
@@ -117,6 +185,13 @@ export const endpoints = {
   FEES,
   BRIDGES,
   USERS,
+  MAIN_PAGE,
+  UNLOCKS,
+  YIELDS_PRO,
+  PERPS,
+  ETFS,
+  NARRATIVES,
+  TOKEN_LIQUIDITY,
 } as const;
 
 export const API_CONFIG = {

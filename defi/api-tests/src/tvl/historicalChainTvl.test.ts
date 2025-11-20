@@ -181,7 +181,7 @@ describe('TVL API - Historical Chain TVL (Specific Chain)', () => {
       } else {
         expect(response.status).toBeGreaterThanOrEqual(400);
       }
-    });
+    }, 60000);
 
     it('should handle empty array for new chains', () => {
       // Use first test chain

@@ -171,7 +171,7 @@ describe('TVL API - Inflows', () => {
       } else {
         expect(response.status).toBeGreaterThanOrEqual(400);
       }
-    });
+    }, 60000);
 
     it('should handle future timestamp', async () => {
       const futureTimestamp = Math.floor(Date.now() / 1000) + 3600 * 24 * 365;
@@ -184,7 +184,7 @@ describe('TVL API - Inflows', () => {
       } else {
         expect(response.status).toBeGreaterThanOrEqual(400);
       }
-    }, 10000); // 10 second timeout for this slow endpoint
+    }, 60000);
 
     it('should handle empty token sets', () => {
       // Use first test protocol

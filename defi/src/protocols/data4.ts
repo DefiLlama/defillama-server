@@ -29308,12 +29308,12 @@ const data4: Protocol[] = [
   },
   {
     id: "6763",
-    name: "SunPerp",
+    name: "SunX",
     address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
     symbol: "SUN",
-    url: "https://www.sunperp.com/",
+    url: "https://www.sunx.io/",
     description:
-      "SunPerp is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
+      "SunX is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
     chain: "Tron",
     logo: `${baseIconsUrl}/sunperp.jpg`,
     audits: "2",
@@ -29324,14 +29324,14 @@ const data4: Protocol[] = [
     chains: ["Tron"],
     forkedFromIds: [],
     module: "sunperp/index.js",
-    twitter: "SunPerp_DEX",
+    twitter: "SunX_DEX",
     audit_links: [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Sunperp%20Dex%20-%20SlowMist%20Audit%20Report.pdf"
     ],
     parentProtocol: "parent#sun",
     listedAt: 1758724545,
     dimensions: {
-      derivatives: "sunperp"
+      derivatives: "sunx"
     }
   },
   {

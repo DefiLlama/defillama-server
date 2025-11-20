@@ -29332,7 +29332,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1758724545,
     dimensions: {
-      derivatives: "sunperp"
+      derivatives: "sunperp",
+      "open-interest": "sunperp-oi"
     }
   },
   {

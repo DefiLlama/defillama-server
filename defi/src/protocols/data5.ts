@@ -2116,6 +2116,7 @@ const data5: Protocol[] = [
     audit_links: [],
     dimensions: {
       fees: "perpmate",
+      derivatives: "perpmate",
     }
   },
   {

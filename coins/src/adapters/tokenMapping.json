@@ -12834,7 +12834,7 @@
       "symbol": "KREX"
     }
   }, 
-  "mon": {
+  "monad": {
     "0xea17E5a9efEBf1477dB45082d67010E2245217f1": {
       "to": "coingecko#solana", 
       "decimals": 9,

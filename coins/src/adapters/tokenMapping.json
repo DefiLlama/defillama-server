@@ -7163,6 +7163,11 @@
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
     },
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x05d032ac25d322df992303dca074ee7392c117b9": {
       "decimals": "6",
       "symbol": "USDT",
@@ -7214,12 +7219,12 @@
       "to": "coingecko#ignition-fbtc"
     },
     "0x541fd749419ca806a8bc7da8ac23d346f2df8b77": {
-      "to": "coingecko#solv-btc",
+      "to": "coingecko#solv-protocol-btc",
       "decimals": 18,
       "symbol": "SolvBTC"
     },
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
-      "to": "coingecko#solv-protocol-solvbtc-bbn",
+      "to": "coingecko#solv-protocol-staked-btc",
       "decimals": 18,
       "symbol": "xSolvBTC"
     },
@@ -7252,6 +7257,11 @@
       "to": "coingecko#solv-protocol-solvbtc-jupiter",
       "decimals": 18,
       "symbol": "SolvBTC.JUP"
+    },
+    "0xB0BD54846a92b214C04A63B26AD7Dc5e19A60808": {
+      "to": "coingecko#bob-build-on-bitcoin",
+      "decimals": 18,
+      "symbol": "BOB"
     }
   },
   "xlayer": {
@@ -12772,30 +12782,30 @@
       "decimals": 18,
       "symbol": "ETH"
     }
-  }, 
+  },
   "bittensor_evm": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#bittensor",
       "decimals": 18,
       "symbol": "TAO"
-    }, 
+    },
     "0x9Dc08C6e2BF0F1eeD1E00670f80Df39145529F81": {
       "to": "coingecko#bittensor",
       "decimals": 18,
       "symbol": "WTAO"
-    }, 
+    },
     "0xB833E8137FEDf80de7E908dc6fea43a029142F20": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
     }
-  }, 
+  },
   "besc": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#wrapped-besc-2",
       "decimals": 18,
       "symbol": "BESC"
-    }, 
+    },
     "0x33e22F85CC1877697773ca5c85988663388883A0": {
       "to": "coingecko#wrapped-besc-2",
       "decimals": 18,
@@ -12806,67 +12816,67 @@
       "decimals": 18,
       "symbol": "MONEY"
     }
-  }, 
+  },
   "kasplex": {
     "0xb7a95035618354d9adfc49eca49f38586b624040": {
       "to": "coingecko#zeal",
       "decimals": 18,
       "symbol": "ZEAL"
-    }, 
+    },
     "0x9a5a144290dffa24c6c7aa8ca9a62319e60973d8": {
       "to": "coingecko#nacho-the-kat",
       "decimals": 18,
       "symbol": "NACHO"
-    }, 
+    },
     "0x1f3ce97f8118035dba7fbcd5398005491cf45603": {
       "to": "coingecko#kasper",
       "decimals": 18,
       "symbol": "KASPER"
-    }, 
+    },
     "0x98508da68180e3c23bee5685f14ad2da5195da12": {
       "to": "coingecko#keiro",
       "decimals": 18,
       "symbol": "KEIRO"
-    }, 
+    },
     "0x0fd8d408ce707f4e4f8e54193c4c55a3b969834b": {
       "to": "coingecko#krex",
       "decimals": 18,
       "symbol": "KREX"
     }
-  }, 
+  },
   "monad": {
     "0xea17E5a9efEBf1477dB45082d67010E2245217f1": {
-      "to": "coingecko#solana", 
+      "to": "coingecko#solana",
       "decimals": 9,
       "symbol": "SOL"
     },
     "0x754704Bc059F8C67012fEd69BC8A327a5aafb603": {
-      "to": "coingecko#usd-coin", 
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
     },
     "0xe7cd86e13AC4309349F30B3435a9d337750fC82D": {
-      "to": "coingecko#tether", 
+      "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT0"
-    }, 
+    },
     "0xEE8c0E9f1BFFb4Eb878d8f15f368A02a35481242": {
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
     },
     "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A": {
-      "to": "coingecko#monad", 
+      "to": "coingecko#monad",
       "decimals": 18,
       "symbol": "WMON"
     },
     "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#monad", 
+      "to": "coingecko#monad",
       "decimals": 18,
       "symbol": "MON"
-    }, 
+    },
     "0x01bFF41798a0BcF287b996046Ca68b395DbC1071": {
-      "to": "coingecko#tether-gold", 
+      "to": "coingecko#tether-gold",
       "decimals": 6,
       "symbol": "XAUt0"
     }

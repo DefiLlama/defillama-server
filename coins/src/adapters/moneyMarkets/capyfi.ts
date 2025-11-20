@@ -27,7 +27,7 @@ const ethereumFeeds: { symbol: string; token: string; cToken: string }[] = [
 
 // World Chain configuration
 const WORLD_CHAIN = "wc";
-const WC_CAPYFI_ORACLE_CONTRACT = "0x9E60d50407520eD4b6d47906B6c74Bc5D99aD282"; // TODO: Enter World Chain Oracle
+const WC_CAPYFI_ORACLE_CONTRACT = "0x9E60d50407520eD4b6d47906B6c74Bc5D99aD282";
 
 const worldChainFeeds: { symbol: string; token: string; cToken: string }[] = [
   { symbol: "WARS", token: "0x0DC4F92879B7670e5f4e4e6e3c801D229129D90D", cToken: "0xF36749472Ad6dA1CcF9eDe8ff321654990635FfA" }, 

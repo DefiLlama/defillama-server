@@ -5316,7 +5316,6 @@ const chainLabelMap = {
   "bittensor_evm": "Bittensor EVM",
   "besc": "BESC Hyperchain",
   "zigchain": "ZIGChain",
-  "mon": "Monad"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

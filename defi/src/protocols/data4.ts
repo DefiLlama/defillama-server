@@ -11520,8 +11520,9 @@ const data4: Protocol[] = [
     category: "Services",
     chains: ["Ethereum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "kaito/index.js",
     twitter: "KaitoAI",
+    listedAt: 1763667137,
   },
   {
     id: "6029",

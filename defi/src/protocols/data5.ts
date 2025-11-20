@@ -2897,5 +2897,27 @@ const data5: Protocol[] = [
     github: ["LayerAkira"],
     listedAt: 1763561075,
   },
+  {
+    id: "7016",
+    name: "Antarctic Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.antarctic.exchange/",
+    description:
+      "Antarctic Exchange (AX) is a high-performance decentralized perpetual futures DEX delivering CEX-grade trading with deep liquidity, low fees, and a clean, self-custodial UX.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/antarctic-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "axlp/index.js",
+    twitter: "Antarctic_EX",
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1763667147,
+  },
 ];
 export default data5;

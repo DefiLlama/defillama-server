@@ -31823,7 +31823,8 @@ const data4: Protocol[] = [
   },
   {
     id: "6871",
-    name: "GateSwap",
+    name: "Gate Swap",
+    previousNames: ["GateSwap"],
     address: null,
     symbol: "-",
     url: "https://web3.gate.com/en/swap",

@@ -12880,5 +12880,62 @@
       "decimals": 6,
       "symbol": "XAUt0"
     }
+  }, 
+  "stable": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#tether", 
+      "decimals": 18,
+      "symbol": "gUSDT"
+    }, 
+    "0x779Ded0c9e1022225f8E0630b35a9b54bE713736": {
+      "to": "coingecko#tether", 
+      "decimals": 18,
+      "symbol": "USDT0"
+    },
+    "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
+      "to": "coingecko#tether-gold-tokens", 
+      "decimals": 6,
+      "symbol": "XAUT0"
+    },
+    "0x80Eede496655FB9047dd39d9f418d5483ED600df": {
+      "to": "coingecko#frax-usd", 
+      "decimals": 18,
+      "symbol": "frxUSD"
+    }, 
+    "0x5Bff88cA1442c2496f7E475E9e7786383Bc070c0": {
+      "to": "coingecko#staked-frax-usd", 
+      "decimals": 18,
+      "symbol": "sfrxUSD"
+    }, 
+    "0x43eDD7f3831b08FE70B7555ddD373C8bF65a9050": {
+      "to": "coingecko#frax-ether", 
+      "decimals": 18,
+      "symbol": "frxETH"
+    }, 
+    "0x3Ec3849C33291a9eF4c5dB86De593EB4A37fDe45": {
+      "to": "coingecko#staked-frax-ether", 
+      "decimals": 18,
+      "symbol": "sfrxETH"
+    }, 
+    "0x64445f0aecC51E94aD52d8AC56b7190e764E561a": {
+      "to": "coingecko#frax-share", 
+      "decimals": 18,
+      "symbol": "WFRAX"
+    }, 
+    "0x90581eCa9469D8D7F5D3B60f4715027aDFCf7927": {
+      "to": "coingecko#frax-price-index", 
+      "decimals": 18,
+      "symbol": "FPI"
+    }, 
+    "0x2690a0D32FF9aE0cBD0cb537DB207016da851f48": {
+      "to": "coingecko#chainlink", 
+      "decimals": 18,
+      "symbol": "LINK"
+    }, 
+    "0xfDD22Ce6D1F66bc0Ec89b20BF16CcB6670F55A5a": {
+      "to": "coingecko#theo-short-duration-us-treasury-fund", 
+      "decimals": 6,
+      "symbol": "thBILL"
+    }
   }
 }

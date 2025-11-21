@@ -2569,7 +2569,8 @@ const data5: Protocol[] = [
   },
   {
     id: "7002",
-    name: "GateFun",
+    name: "Gate Fun",
+    previousNames: ["GateFun"],
     address: null,
     symbol: "-",
     url: "https://web3.gate.com/en/gatefun",
@@ -2899,7 +2900,8 @@ const data5: Protocol[] = [
   },
   {
     id: "7016",
-    name: "Antarctic Exchange",
+    name: "Antarctic",
+    previousNames: ["Antarctic Exchange"],
     address: null,
     symbol: "-",
     url: "https://www.antarctic.exchange/",

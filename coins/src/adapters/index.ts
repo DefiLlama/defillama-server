@@ -8,11 +8,13 @@ import * as others from "./other/index";
 import * as others2 from "./other/others2";
 import * as graphCoins from "./markets/graphCoins";
 import * as morpho from "./moneyMarkets/morpho";
+import * as pyth from "./oracles/pyth";
 
 export default {
   ...compound.adapters,
   ...aave.adapters,
   ...euler.adapters, 
+  ...pyth.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,

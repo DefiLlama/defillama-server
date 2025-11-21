@@ -2900,6 +2900,7 @@ const data5: Protocol[] = [
   {
     id: "7016",
     name: "Antarctic",
+    previousNames: ["Antarctic Exchange"],
     address: null,
     symbol: "-",
     url: "https://www.antarctic.exchange/",

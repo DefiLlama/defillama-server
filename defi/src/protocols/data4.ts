@@ -3715,7 +3715,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Solana"],
+    chains: ["Onchain Capital Allocator"],
     module: "perena/index.js",
     twitter: "Perena",
     audit_links: [

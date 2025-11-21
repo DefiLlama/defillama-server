@@ -179,4 +179,5 @@ export default {
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
   axlp: require("./liquidStaking/axlp"),
+  altai: require("./rwa/altai"),
 };

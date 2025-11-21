@@ -12883,9 +12883,9 @@
   }, 
   "stable": {
     "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#stablecoin", 
+      "to": "coingecko#tether", 
       "decimals": 18,
-      "symbol": "STABLE"
+      "symbol": "gUSDT"
     }, 
     "0x779Ded0c9e1022225f8E0630b35a9b54bE713736": {
       "to": "coingecko#tether", 

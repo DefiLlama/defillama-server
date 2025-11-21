@@ -20,6 +20,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
+import { batchIsDistressed, isDistressed } from "../utils/shared/distressedCoins";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -46,6 +47,8 @@ interface IdToSymbol {
 }
 
 async function storeCoinData(coinData: Write[]) {
+  const distressedIds = await batchIsDistressed(coinData.map((i) => i.PK));
+
   const items = coinData
     .map((c) => ({
       PK: c.PK,
@@ -58,7 +61,8 @@ async function storeCoinData(coinData: Write[]) {
       volume: c.volume,
       adapter: 'coingecko'
     }))
-    .filter((c: Write) => c.symbol != null);
+    .filter((c: Write) => c.symbol != null && !distressedIds[c.PK]);
+
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
@@ -71,13 +75,16 @@ async function storeCoinData(coinData: Write[]) {
 }
 
 async function storeHistoricalCoinData(coinData: Write[]) {
+  const distressedIds = await batchIsDistressed(coinData.map((i) => i.PK));
+
   const items = coinData.map((c) => ({
     SK: c.SK,
     PK: c.PK,
     price: c.price,
     confidence: c.confidence,
     volume: c.volume,
-  }));
+  })).filter((c: Write) => !distressedIds[c.PK]);
+
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => ({
@@ -334,6 +341,8 @@ async function getAndStoreHourly(
     return;
   }
   const PK = cgPK(coin.id);
+
+  if (await isDistressed(PK)) return;
 
   const prevWritenItems = await batchReadPostgres(
     `coingecko:${coin.id}`,

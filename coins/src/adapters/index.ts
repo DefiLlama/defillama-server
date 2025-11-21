@@ -31,7 +31,7 @@ export default {
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
-  pyth: require("./oracles/pyth"),
+  // pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),

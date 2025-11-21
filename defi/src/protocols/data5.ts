@@ -2569,7 +2569,8 @@ const data5: Protocol[] = [
   },
   {
     id: "7002",
-    name: "GateFun",
+    name: "Gate Fun",
+    previousNames: ["GateFun"],
     address: null,
     symbol: "-",
     url: "https://web3.gate.com/en/gatefun",

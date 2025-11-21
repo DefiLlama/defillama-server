@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start-react": "react-scripts start",
+    "start-dev-server": "UI_TOOL_FORCE_DEV_MODE=true npm run start-server",
     "start-server": "npx ts-node --transpile-only --logError src/server.ts",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build",

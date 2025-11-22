@@ -12845,6 +12845,21 @@
     }
   }, 
   "monad": {
+    "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a": {
+      "to": "coingecko#agora-dollar",
+      "decimals": 18,
+      "symbol": "aUSD"
+    },
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
+    },
+    "0x10Aeaf63194db8d453d4D85a06E5eFE1dd0b5417": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
+    },
     "0xea17E5a9efEBf1477dB45082d67010E2245217f1": {
       "to": "coingecko#solana", 
       "decimals": 9,

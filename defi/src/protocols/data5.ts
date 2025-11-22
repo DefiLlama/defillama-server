@@ -3063,5 +3063,28 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1763734633,
   },
+  {
+    id: "7023",
+    name: "Altai Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://altai.exchange",
+    description:
+      "Altai Exchange - RWA protocol on BNB Chain tokenizing physical gold, silver, platinum & palladium with on-chain Pyth Network pricing.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/altai-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Commodities"],
+    chains: ["Binance"],
+    module: "altai-exchange/index.js",
+    twitter: "altaiexchange",
+    forkedFrom: [],
+    audit_links: [],
+    github: ["AltaiExchange"],
+    listedAt: 1763830355,
+  },
 ];
 export default data5;

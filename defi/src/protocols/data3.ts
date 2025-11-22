@@ -48894,12 +48894,16 @@ const data3_2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Bridge Aggregator",
     chains: ["Bitcoin", "Binance", "Stacks", "Ethereum"],
     forkedFrom: [],
     module: "xlink/index.js",
     twitter: "Brotocol_xyz",
     listedAt: 1718188954,
+    dimensions: {
+      "bridge-aggregators": "brotocol"
+    }
+    
   },
   {
     id: "4768",

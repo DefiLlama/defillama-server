@@ -1180,29 +1180,29 @@ const data5: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1762203887
   },
-  {
-    id: "6943",
-    name: "Brotocol",
-    address: null,
-    symbol: "-",
-    url: "https://brotocol.xyz/bridge/cross-bridge",
-    description: "Brotocol Bridge is a MPC-based hybrid bi-directional bridge that acts as a 'connector' between Bitcoin and other blockchains, enabling seamless asset transfers and swaps between Bitcoin and its Layer 2 networks (L2s) as well as other blockchain ecosystems",
-    chain: "Bitcoin",
-    logo: `${baseIconsUrl}/brotocol.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Bridge Aggregator",
-    chains: ["Bitcoin", "AILayer", "Arbitrum", "Aurora", "Avalanche", "Base", "Bitlayer", "Binance", "BOB", "Bsquared", "CORE", "Ethereum", "Linea", "Manta", "Merlin", "Mezo", "Mode", "Solana", "Stacks", "X Layer"],
-    forkedFromIds: [],
-    audit_links: ["https://docs.brotocol.xyz/developers/brotocol-contracts/security-audits"],
-    module: "brotocol/index.js",
-    twitter: "Brotocol_xyz",
-    dimensions: {
-      "bridge-aggregators": "brotocol"
-    }
-  },
+  // { Duplicate entry: Brotocol rebranded from Xlink
+  //   id: "6943",
+  //   name: "Brotocol",
+  //   address: null,
+  //   symbol: "-",
+  //   url: "https://brotocol.xyz/bridge/cross-bridge",
+  //   description: "Brotocol Bridge is a MPC-based hybrid bi-directional bridge that acts as a 'connector' between Bitcoin and other blockchains, enabling seamless asset transfers and swaps between Bitcoin and its Layer 2 networks (L2s) as well as other blockchain ecosystems",
+  //   chain: "Bitcoin",
+  //   logo: `${baseIconsUrl}/brotocol.jpg`,
+  //   audits: "2",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Bridge Aggregator",
+  //   chains: ["Bitcoin", "AILayer", "Arbitrum", "Aurora", "Avalanche", "Base", "Bitlayer", "Binance", "BOB", "Bsquared", "CORE", "Ethereum", "Linea", "Manta", "Merlin", "Mezo", "Mode", "Solana", "Stacks", "X Layer"],
+  //   forkedFromIds: [],
+  //   audit_links: ["https://docs.brotocol.xyz/developers/brotocol-contracts/security-audits"],
+  //   module: "brotocol/index.js",
+  //   twitter: "Brotocol_xyz",
+  //   dimensions: {
+  //     "bridge-aggregators": "brotocol"
+  //   }
+  // },
   {
     id: "6944",
     name: "Kensei",

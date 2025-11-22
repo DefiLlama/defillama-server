@@ -17108,7 +17108,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "mimboku_story",
     dimensions: {
-      aggregators: "mimboku-aggregator"
+      aggregators: "mimboku-aggregator",
+      fees: "mimboku-aggregator"
     }
   },
   {

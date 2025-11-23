@@ -2576,7 +2576,7 @@ const data5: Protocol[] = [
     url: "https://web3.gate.com/en/gatefun",
     description: "Gate Fun, built on Gate Layer, is a creator-friendly launchpad that offers no-code token issuance, low-cost deployment, and seamless liquidity building",
     chain: "GateLayer",
-    logo: `${baseIconsUrl}/gatefun.jpg`,
+    logo: `${baseIconsUrl}/gate-fun.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

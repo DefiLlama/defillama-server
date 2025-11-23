@@ -31831,7 +31831,7 @@ const data4: Protocol[] = [
     url: "https://web3.gate.com/en/swap",
     description: `GateSwap is a decentralized exchange (DEX) platform built on the Gate Layer, a high-performance Layer 2 blockchain powered by the Optimism OP Stack. Designed for seamless token swaps, it supports low-cost, high-speed transactions with EVM compatibility, enabling users to trade meme coins, DeFi assets, and more. Integrated with Gate Wallet and Gate Fun for one-click token creation, GateSwap empowers the Web3 ecosystem by fostering fair launches, community-driven liquidity, and innovative features like dual-buy mechanisms to prevent arbitrage, making it a go-to hub for crypto enthusiasts in the Gate.io universe.`,
     chain: "GateLayer",
-    logo: `${baseIconsUrl}/gateswap.jpg`,
+    logo: `${baseIconsUrl}/gate-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

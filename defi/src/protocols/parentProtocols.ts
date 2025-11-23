@@ -8439,6 +8439,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fufuture_io",
   },
+  {
+    id: "parent#swyrl-finance",
+    name: "Swyrl Finance",
+    url: "https://www.swyrl.finance",
+    description:
+      "Swyrl is a Monad-native DEX with dual AMMs and liquid staking, aligning users and protocols via ve(3,3)-driven governance.",
+    logo: `${baseIconsUrl}/swyrl-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SwyrlFi",
+    github: ["SwyrlFi"],
+  },
 ];
 
 export default parentProtocols;

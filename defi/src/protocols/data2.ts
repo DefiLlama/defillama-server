@@ -9771,7 +9771,7 @@ const data2: Protocol[] = [
     name: "Velodrome V1",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velodrome.finance",
+    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v1.png`,

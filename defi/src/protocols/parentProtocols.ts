@@ -4480,7 +4480,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aerodrome",
     name: "Aerodrome",
-    url: "https://aerodrome.finance/",
+    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
     description: "A central trading and liquidity marketplace on Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
     gecko_id: "aerodrome-finance",

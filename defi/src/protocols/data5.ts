@@ -1164,7 +1164,7 @@ const data5: Protocol[] = [
     name: "Aerodrome Ignition",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aerodrome.finance/",
+    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
     description: "Aerodrome Ignition is a DEX-native token launch mechanism on Base that bootstraps liquidity by depositing 10-20% of a project's token supply into Aerodrome pools, allowing veAERO holders to direct emissions incentives and enabling fair, market-driven price discovery and distribution without presales or private allocations",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome-ignition.png`,

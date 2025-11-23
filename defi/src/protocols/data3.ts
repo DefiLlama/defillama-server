@@ -14202,7 +14202,7 @@ const data3_1: Protocol[] = [
     name: "Velodrome V2",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velodrome.finance",
+    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v2.png`,
@@ -17674,7 +17674,7 @@ const data3_1: Protocol[] = [
     name: "Aerodrome V1",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aerodrome.finance/",
+    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -36741,7 +36741,7 @@ const data3_2: Protocol[] = [
     name: "Velodrome V3",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velodrome.finance",
+    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
     description:
       "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
     chain: "Optimism",
@@ -43212,7 +43212,7 @@ const data3_2: Protocol[] = [
     name: "Aerodrome Slipstream",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aerodrome.finance/",
+    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,

@@ -3107,7 +3107,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["6893"],
     audit_links: [],
     dimensions: {
-      fees: "godl-protocol",
+      fees: "godl",
     },
   },
   {

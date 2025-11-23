@@ -3131,7 +3131,7 @@ const data5: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     dimensions: {
-      fees: "upscale",
+      derivatives: "upscale",
     },
   },
 ];

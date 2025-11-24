@@ -25914,7 +25914,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     //previousNames: ["Saros"],
     address: "solana:SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
     symbol: "SAROS",
-    url: "https://dex.saros.xyz/",
+    url: "https://saros.xyz/pools",
     description:
       "A decentralized automated liquidity protocol built on Solana, allowing users to exchange SPL tokens",
     chain: "Solana",

@@ -61654,8 +61654,7 @@ const data3_2: Protocol[] = [
     gecko_id: "nabla",
     cmcId: null,
     category: "Dexs",
-    chains: ["Arbitrum", "Base", "Berachain"],
-    // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12127
+    chains: ["Arbitrum", "Base", "Berachain", "HyperEVM", "Monad"],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "nabla/index.js",

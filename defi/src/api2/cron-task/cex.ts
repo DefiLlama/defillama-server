@@ -240,7 +240,7 @@ async function addSpotAndDerivData() {
 
 async function run() {
   const now = Date.now()
-  const { lastUpdateTS } = (await sdk.cache.readExpiringJsonCache(cacheKey)) ?? { lastUpdateTS: 0 }
+  const { lastUpdateTS } = (await sdk.cache.readExpiringJsonCache(cacheKey).catch(() => null)) ?? { lastUpdateTS: 0 }
   // only run if last update was more than 15 minutes ago
   if (now - lastUpdateTS < updatePeriodMs) {
     console.log('Last cex data pull was less than 15 minutes ago, skipping')

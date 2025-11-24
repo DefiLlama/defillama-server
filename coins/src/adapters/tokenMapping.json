@@ -1697,6 +1697,11 @@
       "to": "coingecko#solv-protocol-solvbtc-jupiter",
       "decimals": 18,
       "symbol": "SOLVBTC.JUP"
+    },
+    "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3": {
+      "to": "coingecko#gate-wrapped-btc",
+      "decimals": 8,
+      "symbol": "gtBTC"
     }
   },
   "stacks": {
@@ -2840,6 +2845,11 @@
       "decimals": "8",
       "symbol": "bfBTC",
       "to": "coingecko#bitcoin"
+    },
+    "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3": {
+      "to": "coingecko#gate-wrapped-btc",
+      "decimals": 8,
+      "symbol": "gtBTC"
     }
   },
   "jbc": {
@@ -3755,6 +3765,11 @@
       "decimals": "2",
       "symbol": "EURCV",
       "to": "coingecko#societe-generale-forge-eurcv"
+    },
+    "gtBTCGWvSRYYoZpU9UZj6i3eUGUpgksXzzsbHk2K9So": {
+      "to": "coingecko#gate-wrapped-btc",
+      "decimals": 8,
+      "symbol": "gtBTC"
     }
   },
   "ton": {

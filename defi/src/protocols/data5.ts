@@ -3155,6 +3155,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["1407"],
     audit_links: [],
     listedAt: 1763914721,
+    parentProtocol: "parent#swyrl-finance",
   },
   {
     id: "7027",
@@ -3177,6 +3178,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     audit_links: [],
     listedAt: 1763914729,
+    parentProtocol: "parent#swyrl-finance",
   },
 ];
 export default data5;

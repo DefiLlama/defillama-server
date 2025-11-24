@@ -3141,7 +3141,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://swyrl.finance/",
     description:
-      "Swyrl CL is a centralized liquidity (CL) decentralized exchange on Monad.",
+      "Swyrl CL is a concentrated liquidity (CL) decentralized exchange on Monad.",
     chain: "Monad",
     logo: `${baseIconsUrl}/swyrl-cl.jpg`,
     audits: "0",

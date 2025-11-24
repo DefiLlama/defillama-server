@@ -8452,6 +8452,30 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SwyrlFi",
     github: ["SwyrlFi"],
   },
+  {
+    id: "parent#kuru",
+    name: "Kuru",
+    url: "https://www.kuru.io",
+    description:
+      "Kuru is a smart aggregator and fully on-chain order book decentralized exchange (DEX) built on Monad. Kuru is dedicated to building the trading hub for Monad, allowing users to access all of Monad’s liquidity with our smart aggregator, Kuru Flow, and bringing a performant central-limit orderbook to the EVM for the first time along with integrated discovery features, a trading terminal, user liquidity provision, and token launchpad.",
+    logo: `${baseIconsUrl}/kuru.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KuruExchange",
+    github: ["Kuru-Labs"],
+  },
+  {
+    id: "parent#cypher",
+    name: "Cypher Ethereum",
+    url: "https://cyphereth.com/",
+    description: "Trade, raise, and launch on Ethereum Layer 1. Purpose-built for Mainnet and owned by its community, Cypher is the engine of Ethereum Capital Markets.",
+    logo: `${baseIconsUrl}/cypher-ethereum.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "cypher_ethereum",
+  },
 ];
 
 export default parentProtocols;

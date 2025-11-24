@@ -5088,9 +5088,9 @@ export const chainCoingeckoIds = {
     url: "https://satori.finance",
   },
   "Monad": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "monad",
+    symbol: "MON",
+    cmcId: "30495",
     categories: ["EVM"],
     twitter: "monad",
     url: "https://www.monad.xyz/",

@@ -3156,6 +3156,9 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1763914721,
     parentProtocol: "parent#swyrl-finance",
+    dimensions: {
+      dexs: "swyrl-cl",
+    },
   },
   {
     id: "7027",
@@ -3179,6 +3182,9 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1763914729,
     parentProtocol: "parent#swyrl-finance",
+    dimensions: {
+      dexs: "swyrl-legacy",
+    },
   },
 ];
 export default data5;

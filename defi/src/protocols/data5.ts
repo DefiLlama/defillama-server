@@ -3562,5 +3562,29 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764008747,
   },
+  {
+    id: "7044",
+    name: "Cybro-LP",
+    address: "0x0964B7A10631f2139dcf2e0aa1b621F97a19e998",
+    symbol: "CYBRO",
+    url: "https://cybro.io",
+    description: "Smart Hub for Liquidity Providers",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/images/token_dark.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: "cybro",
+    cmcId: "32224",
+    category: "Liquidity manager",
+    chains: ["Arbitrum", "Base", "Unichain"],
+    forkedFrom: [],
+    module: "cybro/index.js",
+    twitter: "Cybro_io",
+    audit_links: [
+      "https://github.com/pessimistic-io/audits/blob/5bafc9eb1003bcc443caa7282d381c752373a624/CYBRO%20LPManager%20Security%20Analysis%20by%20Pessimistic.pdf",
+    ],
+    github: ["cybro-io"],
+    listedAt: 1726148577
+  },
 ];
 export default data5;

@@ -61050,7 +61050,7 @@ const data3_2: Protocol[] = [
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "nest-staking/index.js",
-    twitter: "NestStaking",
+    twitter: "nestcredit",
     audit_links: [
       "https://github.com/plumenetwork/contracts/blob/main/staking/audit/slowmist.pdf",
       "https://github.com/plumenetwork/contracts/blob/main/staking/audit/slowmist2.pdf"

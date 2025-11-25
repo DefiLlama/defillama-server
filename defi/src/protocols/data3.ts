@@ -48832,7 +48832,8 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#clober",
     listedAt: 1718186942,
     dimensions: {
-      dexs: "clober-v2"
+      dexs: "clober-v2",
+      fees: "clober-v2",
     }
   },
   {

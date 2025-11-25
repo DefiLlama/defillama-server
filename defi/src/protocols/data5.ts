@@ -3230,6 +3230,9 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.kuru.io/contracts/Audits"],
     parentProtocol: "parent#kuru",
     listedAt: 1764002969,
+    dimensions: {
+      dexs: "kuru-clob",
+    },
   },
   {
     id: "7030",
@@ -3278,6 +3281,10 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1764003422,
+    dimensions: {
+      dexs: "madness-finance",
+      fees: "madness-finance",
+    },
   },
   {
     id: "7032",
@@ -3350,6 +3357,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     audit_links: ["https://app.chainaudits.io/project/purps?cid=101"],
     listedAt: 1764005805,
+    dimensions: {
+      dexs: "purps",
+      fees: "purps",
+    },
   },
   {
     id: "7035",

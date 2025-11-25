@@ -25,7 +25,7 @@ export const tokens: { [chain: string]: TokenInfo[] } = {
       decimals: 18,
     },
   ],
-  arbitrum: [
+  katana: [
     {
       symbol: "sYUSD",
       address: "0xFCeF626dE4A0175ac962DD43EB0A002819FaAEFe",

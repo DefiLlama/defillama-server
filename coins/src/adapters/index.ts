@@ -70,6 +70,7 @@ export default {
   quickperps: require("./yield/quickperps"),
   timeless: require("./yield/timeless"),
   beefy: require("./yield/beefy"),
+  aegis: require("./yield/aegis"),
   platypus: require("./markets/platypus"),
   hop: require("./markets/hop"),
   ankr: require("./liquidStaking/ankr"),

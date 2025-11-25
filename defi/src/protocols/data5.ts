@@ -3685,5 +3685,29 @@ const data5: Protocol[] = [
     github: ["sega-so"],
     listedAt: 1764090362,
   },
+  {
+    id: "7048",
+    name: "AntFun",
+    address: null,
+    symbol: "-",
+    url: "https://ant.fun/",
+    description:
+      "Ant.fun is a mobile-first decentralized trading app offering real-time on-chain swap analysis and cross-chain execution across major networks. It intelligently surfaces trending tokens and high-signal opportunities, helping users choose better targets and improve their trading profitability.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/antfun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "ant_fun_trade",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "antfun"
+    },
+  },
 ];
 export default data5;

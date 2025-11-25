@@ -2657,7 +2657,7 @@ const data5: Protocol[] = [
         proof: ["https://docs.neverland.money","https://github.com/DefiLlama/DefiLlama-Adapters/pull/17018"],
       }
     ],
-    module: "dummy.js",
+    module: "neverland/index.js",
     twitter: "Neverland_Money",
     github: ["0xCatalyst"],
     dimensions: {

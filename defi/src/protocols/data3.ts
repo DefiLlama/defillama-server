@@ -57657,7 +57657,7 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5139",
-    name: "Cybro",
+    name: "Cybro-Vaults",
     address: "0x963eec23618BbC8e1766661d5f263f18094Ae4d5",
     symbol: "CYBRO",
     url: "https://app.cybro.io",

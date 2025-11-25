@@ -1,6 +1,7 @@
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import axios from "axios";
 import { Write } from "../utils/dbInterfaces";
+
 const chain = "cardano";
 
 export function sundaeswapV3(timestamp: number) {
@@ -10,6 +11,8 @@ export function sundaeswapV3(timestamp: number) {
 
   return Promise.all([getTokenPrices(timestamp)]);
 }
+
+const toHex = (str: string): string => Buffer.from(str, "utf8").toString("hex");
 
 async function getPools() {
   const response = await axios.post("https://api.sundae.fi/graphql", {
@@ -70,7 +73,7 @@ async function getTokenPrices(timestamp: number) {
         asset: { decimals, ticker, policyId },
       },
     }: any) => {
-      const token = policyId.toLowerCase();
+      const token = policyId.toLowerCase() + toHex(ticker).toLowerCase();
       const symbol = ticker.replace(/ /g, "-").toUpperCase();
       const price = (amountA * 10 ** (decimals - 6)) / amountB;
 
@@ -87,5 +90,6 @@ async function getTokenPrices(timestamp: number) {
       );
     },
   );
+
   return writes;
 }

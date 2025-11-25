@@ -67,32 +67,48 @@ export async function storeRouteData(subPath: string, data: any) {
   return storeData(subPath, data)
 }
 
-export async function readRouteData(subPath: string) {
+export async function readRouteData(subPath: string, {
+  skipErrorLog = false
+}: {
+  skipErrorLog?: boolean
+} = {}) {
   subPath = fileNameNormalizer(`build/${subPath}`)
-  return readFileData(subPath)
+  return readFileData(subPath, { skipErrorLog })
 }
 
 async function storeData(subPath: string, data: any) {
   const filePath = path.join(CACHE_DIR!, subPath)
   const dirPath = path.dirname(filePath)
   await ensureDirExists(dirPath)
-  return fs.promises.writeFile(filePath, JSON.stringify(data))
+  try {
+    return await fs.promises.writeFile(filePath, JSON.stringify(data))
+  } catch (e) {
+    log(`Error storing data to ${filePath}:`, (e as any)?.message)
+    return null
+  }
 }
 
-async function readFileData(subPath: string) {
+async function readFileData(subPath: string, {
+  skipErrorLog = false
+}: {
+  skipErrorLog?: boolean
+} = {}) {
   const filePath = path.join(CACHE_DIR!, subPath)
   try {
     const data = await fs.promises.readFile(filePath, 'utf8')
     return JSON.parse(data.toString())
   } catch (e) {
-    log((e as any)?.message)
+    if (!skipErrorLog)
+      log((e as any)?.message)
     return null
   }
 }
 
 async function deleteFileData(subPath: string) {
   const filePath = path.join(CACHE_DIR!, subPath)
-  return fs.promises.unlink(filePath)
+  return fs.promises.unlink(filePath).catch((e) => {
+    log(`Error deleting file ${filePath}:`, (e as any)?.message)
+  })
 }
 
 function getCacheFile(key: string) {
@@ -163,12 +179,12 @@ export async function storeTvlCacheAllFile(data: any) {
     throw new Error('Invalid data type. Expected an object.')
   }
   const { allTvlData = {}, ...restCache } = data
-  const  tvlEntries = Object.entries(allTvlData)
+  const tvlEntries = Object.entries(allTvlData)
   const chunkedTvlEntries = sliceIntoChunks(tvlEntries, 1000)
   restCache.tvlEntryCount = chunkedTvlEntries.length
 
   await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, restCache)
-  let i = 0 
+  let i = 0
   for (const chunk of chunkedTvlEntries) {
     const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
     await writeToPGCache(key, chunk)
@@ -191,4 +207,38 @@ export async function readTvlCacheAllFile() {
   }
 
   return { ...restCache, allTvlData }
+}
+
+
+export async function readHistoricalTVLMetadataFile() {
+  const restCache = await readFromPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META)
+  if (!restCache) return {}
+  const { tvlEntryCount } = restCache
+  const historicalProtocolTvls: any = []
+  for (let i = 0; i < tvlEntryCount; i++) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    const chunk = await readFromPGCache(key)
+    historicalProtocolTvls.push(...chunk)
+  }
+
+  return { ...restCache, historicalProtocolTvls }
+}
+
+// allTvlData is quite big, so we need to chunk it
+// into smaller pieces to avoid hitting the file size limit, json.stringify error
+export async function storeHistoricalTVLMetadataFile(data: any) {
+  if (typeof data !== 'object') {
+    throw new Error('Invalid data type. Expected an object.')
+  }
+  const { historicalProtocolTvls = {}, ...restCache } = data
+  const chunkedTvlEntries = sliceIntoChunks(historicalProtocolTvls, 1000)
+  restCache.tvlEntryCount = chunkedTvlEntries.length
+
+  await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, restCache)
+  let i = 0
+  for (const chunk of chunkedTvlEntries) {
+    const key = `${PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META}-tvlChunk-${i}`
+    await writeToPGCache(key, chunk)
+    i++
+  }
 }

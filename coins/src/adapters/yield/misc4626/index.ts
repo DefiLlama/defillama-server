@@ -83,6 +83,17 @@ const siloV2Config: {
   ],
 };
 
+const siloV2VaultConfig: {
+  [chain: string]: { START_BLOCK: number; SILO_FACTORY: string }[];
+} = {
+  sonic: [
+    {
+      START_BLOCK: 21718349,
+      SILO_FACTORY: '0x4e125e605fdcf3b07bde441decf8edad423d5dc6'
+    },
+  ],
+};
+
 export async function siloV2(timestamp: number) {
   return Promise.all(
     Object.keys(siloV2Config).map(async (chain) => {
@@ -98,23 +109,23 @@ export async function siloV2(timestamp: number) {
           toBlock,
           eventAbi:
             "event NewSilo (address indexed implementation, address indexed token0, address indexed token1, address silo0, address silo1, address siloConfig)",
-          topics: [
-            "0x3d6b896c73b628ec6ba0bdfe3cdee1356ea2af31af2a97bbd6b532ca6fa00acb",
-          ],
+          onlyArgs: true,
         });
-        logs = [...logs, ...logChunk];
+        logs.push(...logChunk.map((log: any) => [log.silo0, log.silo1]).flat())
+      }
+      for (let factory of siloV2VaultConfig[chain]) {
+        const { SILO_FACTORY, START_BLOCK } = factory;
+        let logChunk = await api.getLogs({
+          target: SILO_FACTORY,
+          fromBlock: START_BLOCK,
+          toBlock,
+          eventAbi: 'event CreateSiloVault (address indexed SiloVault, address indexed caller, address initialOwner, uint256 initialTimelock, address indexed asset, string name, string symbol)',
+          onlyArgs: true,
+        });
+        logs.push(...logChunk.map((log: any) => log.SiloVault))
       }
 
-      const silos = [
-        ...new Set(
-          logs
-            .map((log: any) => [
-              log.args[3].toLowerCase(),
-              log.args[4].toLowerCase(),
-            ])
-            .flat(),
-        ),
-      ];
+      const silos = [...new Set(logs.map((log: any) => log.toLowerCase())),];
 
       return (
         await calculate4626Prices(chain, timestamp, silos, "silo-v2")

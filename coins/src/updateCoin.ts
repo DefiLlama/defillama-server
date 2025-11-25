@@ -31,7 +31,7 @@ const currentCoins = async (
   event: any,
 ): Promise<{
   coins: Coin[];
-  PKTransforms: { [key: string]: string };
+  PKTransforms: { [key: string]: string[] };
   response: CoinsResponse;
   allRequestedCoins: string[];
 }> => {
@@ -45,13 +45,15 @@ const currentCoins = async (
   coins.forEach((coin) => {
     if (coin.redirect === undefined) {
       if (isFresh(coin.timestamp, searchWidth)) {
-        response[PKTransforms[coin.PK]] = {
-          decimals: coin.decimals,
-          price: coin.price,
-          symbol: coin.symbol,
-          timestamp: coin.timestamp,
-          confidence: coin.confidence,
-        };
+        PKTransforms[coin.PK].forEach((coinName) => {
+          response[coinName] = {
+            decimals: coin.decimals,
+            price: coin.price,
+            symbol: coin.symbol,
+            timestamp: coin.timestamp,
+            confidence: coin.confidence,
+          };
+        });
       }
     } else {
       coinsWithRedirect[coin.redirect] = [
@@ -66,13 +68,15 @@ const currentCoins = async (
     resolvedRedirectedCoins.forEach((redirectedCoin) => {
       coinsWithRedirect[redirectedCoin.PK].forEach((ogCoin) => {
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
-          response[PKTransforms[ogCoin.PK]] = {
-            decimals: ogCoin.decimals,
-            symbol: ogCoin.symbol,
-            price: redirectedCoin.price,
-            timestamp: redirectedCoin.timestamp,
-            confidence: redirectedCoin.confidence,
-          };
+          PKTransforms[ogCoin.PK].forEach((coinName) => {
+            response[coinName] = {
+              decimals: ogCoin.decimals,
+              symbol: ogCoin.symbol,
+              price: redirectedCoin.price,
+              timestamp: redirectedCoin.timestamp,
+              confidence: redirectedCoin.confidence,
+            };
+          });
         }
       });
     });
@@ -86,7 +90,7 @@ const handler = async (event: any): Promise<IResponse> => {
   await setEnvSecrets();
   process.env.tableName = "prod-coins-table";
   const start = new Date().getTime();
-  const currentPromise: any = currentCoins(event);
+  const currentPromise = currentCoins(event);
   const bulkPromise: Promise<any> = getR2(`updated-coins`).then((r) =>
     JSON.parse(r.body!),
   );
@@ -118,7 +122,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const cgIds: { [pk: string]: string } = {};
   let bulk: { [id: string]: any } = await bulkPromise;
   coins.map((d: Coin) => {
-    if (!requestedCoins.includes(PKTransforms[d.PK])) return;
+    if (!requestedCoins.includes(PKTransforms[d.PK][0])) return;
     if (d.PK in bulk && bulk[d.PK] > unixStart - margin) return;
     if (!d.redirect || !d.redirect.startsWith("coingecko#")) return;
     const id = d.redirect.substring(d.redirect.indexOf("#") + 1);
@@ -150,15 +154,18 @@ const handler = async (event: any): Promise<IResponse> => {
       usd_market_cap: mcap,
       usd: price,
       last_updated_at: SK,
+      usd_24h_vol: volume,
     } = newData[id];
 
-    response[PKTransforms[PK]] = {
-      decimals,
-      price,
-      symbol,
-      timestamp: SK,
-      confidence,
-    };
+    PKTransforms[PK].forEach((coinName) => {
+      response[coinName] = {
+        decimals,
+        price,
+        symbol,
+        timestamp: SK,
+        confidence,
+      };
+    });
 
     if (!(PK in bulk && bulk[PK] > unixStart - margin / 2)) {
       writes.push(
@@ -171,6 +178,7 @@ const handler = async (event: any): Promise<IResponse> => {
             timestamp: SK,
             symbol,
             confidence,
+            volume
           },
           {
             PK: `coingecko#${id}`,
@@ -178,6 +186,7 @@ const handler = async (event: any): Promise<IResponse> => {
             price,
             confidence,
             adapter: "updateCoin",
+            volume
           },
         ],
       );
@@ -205,7 +214,7 @@ export default wrap(handler);
 // handler({
 //   pathParameters: {
 //     coins:
-//       "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,base:0x5ae84075f0e34946821a8015dab5299a00992721,fantom:0x582423c10c9e83387a96d00a69ba3d11ee47b7b5,base:0x27d2decb4bfc9c76f0309b8e88dec3a601fe25a8",
+//       "ethereum:0x1f9840a85d5af5bf1d1762f925bdadDC4201f984,ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,base:0x5ae84075f0e34946821a8015dab5299a00992721,fantom:0x582423c10c9e83387a96d00a69ba3d11ee47b7b5,base:0x27d2decb4bfc9c76f0309b8e88dec3a601fe25a8",
 //   },
 // });
 // ts-node coins/src/updateCoin.ts

@@ -148,7 +148,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Gravity",
     "Hedera",
     "Horizen EON",
-    'IDEX',
+    "IDEX",
     "inEVM",
     "IOTA EVM",
     "Kaia",
@@ -176,6 +176,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sanko",
     "Scroll",
     "ShimmerEVM",
+    "Stacks",
     "Taiko",
     "TON",
     "Viction",
@@ -199,7 +200,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sonic",
     "Berachain",
     "Abstract",
-    "Hyperliquid L1"
+    "Hyperliquid L1",
   ],
   "Chainlink": [
     "Ethereum",
@@ -222,7 +223,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Starknet",
     "Solana",
     "Soneium",
-    "Plume Mainnet"
+    "Plume Mainnet",
   ],
   "Switchboard": ["Solana", "Ethereum", "CORE", "Arbitrum", "OP Mainnet", "Base", "Aurora", "Aptos", "Sui"],
   "RedStone": [
@@ -291,7 +292,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Zircuit",
     "Fraxtal",
     "BOB",
-    "Hyperliquid",
+    "Hyperliquid L1",
     "BSquared",
     "Sonic",
     "Radix",
@@ -304,7 +305,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Cronos zkEVM",
     "Kaia",
     "Polynomial",
-    "Plume Mainnet"
+    "Plume Mainnet",
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "OP Mainnet", "Arbitrum", "Gnosis", "Avalanche"],
   "Api3": [
@@ -345,7 +346,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Taiko",
     "X Layer",
     "Zircuit",
-    "Lumia"
+    "Lumia",
   ],
   "Band": [
     "CLV",
@@ -362,6 +363,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Findora",
     "Icon",
     "Meter",
+    "Nibiru",
     "Oasis",
     "Celo",
     "Harmony",
@@ -411,6 +413,22 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Vara",
     "Velas",
     "Wanchain",
+    "BEVM",
+    "BOB",
+    "CrossFi",
+    "EDU Chain",
+    "Goat",
+    "Hydration",
+    "Kadena",
+    "Linea",
+    "Lukso",
+    "Plume Mainnet",
+    "Sonic",
+    "Stacks",
+    "Superseed",
+    "Swellchain",
+    "Unichain",
+    "Ripple"
   ],
   "Witnet": [
     "Arbitrum",
@@ -460,7 +478,7 @@ const chainsByOracle: Record<string, Array<string>> = {
   "Ojo Oracle": ["Archway", "Comdex", "Injective", "Juno", "Neutron", "Osmosis", "Secret", "Stargaze"],
   "Pragma": ["Starknet"],
   "Harbinger": ["Tezos"],
-  "SEDA": ["Aurora", "Evmos", "OP Mainnet", "Plume Mainnet"],
+  "Flux": ["Aurora", "Evmos", "OP Mainnet", "Plume Mainnet"],
   "Nest": ["Ethereum", "BSC", "Aurora", "KCC", "CLV", "Polygon"],
   "Chronicle": [
     "Ethereum",
@@ -475,7 +493,11 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Scroll",
     "Berachain",
     "Plume Mainnet",
-    "Corn"
+    "Corn",
+    "Unichain",
+    "Avalanche",
+    "Linea",
+    "Plasma",
   ],
   "eOracle": [
     "Base",
@@ -487,8 +509,36 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Polygon zkEVM",
     "Scroll",
     "Taiko",
-    "zkLink Nova"
+    "zkLink Nova",
   ],
+  "BackGeoOracle": [
+    "Base",
+    "BSC",
+    "Arbitrum",
+    "Ethereum",
+    "Unichain",
+    "OP Mainnet",
+  ],
+  "Quex": [
+    "Arbitrum",
+  ],
+  "Chaos": [
+    "Arbitrum",
+    "Solana",
+    "Avalanche",
+    "Ethereum",
+    "Corn",
+    "Ink",
+    "Scroll",
+    "Botanix",
+    "BSC",
+    "Optimism",
+    "Linea",
+    "Base",
+    "Polygon",
+    "OP Mainnet",
+    "Gnosis"
+  ]
 };
 
 export { chainsByOracle };

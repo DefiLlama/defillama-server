@@ -79,7 +79,7 @@ async function queryPostgresWithRetry(
   }
 }
 export async function translateItems(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
 ): Promise<Coin[]> {
   const remapped: Coin[] = [];
   const errors: string[] = [];

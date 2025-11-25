@@ -1,3 +1,8 @@
+import { DimensionsConfig } from "../adaptors/data/types";
+
+type DateString = string | number;
+export type Hallmark = [DateString, string] | [[DateString, DateString], string];
+
 export interface Protocol {
   id: string;
   name: string;
@@ -13,9 +18,11 @@ export interface Protocol {
   gecko_id: string | null;
   cmcId: string | null;
   category?: string;
+  tags?: string[];
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   module: string;
   twitter?: string | null;
   language?: string;
@@ -33,8 +40,9 @@ export interface Protocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   rugged?: boolean;
-  deadUrl?: boolean;
-  deadFrom?: number | string;
+  excludeTvlFromParent?: boolean;
+  deadUrl?: boolean; // for all domains that stopped being used, to avoid scammers registering there for a scam page
+  deadFrom?: number | string; // for protocols that are dead, will trigger less frequent TVL updates
   tokensExcludedFromParent?: {
     [chain:string]: string[];
   },
@@ -47,7 +55,8 @@ export interface Protocol {
       | "Secondary" // Oracle that is actively used but secures less than 50% of TVL
       | "Fallback" // Oracle that isn't actively used and is just there in case the primary or secondary oracles fail
       | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
-      | "Aggregator", // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
+      | "Aggregator" // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
+      | "Reference" // Used for price display or off-chain quoting. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
       // pls add more as needed
     proof: Array<string>,
     startDate?: string, // YYYY-MM-DD
@@ -58,7 +67,19 @@ export interface Protocol {
       endDate?: string
     }>
   }>
+  warningBanners?: Array<Banner>;
+  hallmarks?: Hallmark[];
+  misrepresentedTokens?: boolean;
+  doublecounted?: boolean;
+  methodology?: string;
+  dimensions?: DimensionsConfig;
 }
+export interface Banner {
+  message: string;
+  until?: number|string; // unix timestamp or "forever" or date string  in 'YYYY-MM-DD' format, 'forever' if the field is not set
+  level: "low" | "alert" | "rug";
+}
+
 
 export interface IParentProtocol {
   id: string;
@@ -75,10 +96,14 @@ export interface IParentProtocol {
   twitter: string | null;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
+  forkedFromIds?: Array<string>;
   governanceID?: Array<string>;
   github?: Array<string>;
   treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   address?: string | null;
+  warningBanners?: Array<Banner>;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }

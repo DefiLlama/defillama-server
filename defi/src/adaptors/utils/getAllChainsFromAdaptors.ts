@@ -1,14 +1,7 @@
-import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
-import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
+import { AdapterType, SimpleAdapter } from "../data/types"
 import { getChainDisplayName, normalizedChainReplacements } from "../../utils/normalizeChain";
-import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
+import { getMethodologyByType as getDefaultMethodologyByCategory, } from "../data/helpers/methodology";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-
-export const getStringArrUnique = (arr: string[]) => {
-    return arr.filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    })
-}
 
 const chainNameCache: IJSON<string> = {}
 
@@ -17,78 +10,8 @@ export function getDisplayChainNameCached(chain: string) {
   return chainNameCache[chain]
 }
 
-const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter, filter: boolean = true) => {
-    return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
-        const adaptor = moduleAdapter
-        if (!adaptor) return acc
-        if ("adapter" in adaptor) {
-            const chains = Object.keys(adaptor.adapter).filter(c => !filter || c !== DISABLED_ADAPTER_KEY)
-            for (const chain of chains)
-                if (!acc.includes(chain)) acc.push(chain)
-        } else if ("breakdown" in adaptor) {
-            for (const brokenDownDex of Object.values(adaptor.breakdown)) {
-                const chains = Object.keys(brokenDownDex).filter(c => !filter || c !== DISABLED_ADAPTER_KEY)
-                for (const chain of chains)
-                    if (!acc.includes(chain)) acc.push(chain)
-            }
-        } else console.error("Invalid adapter", adapterName, moduleAdapter)
-        return acc
-    }, [] as string[]))
-}
-
-export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
-    return Object.keys(moduleAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
-}
-
-export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {
-    if (!adaptor) return []
-    if ("adapter" in adaptor) {
-        return [adaptorModule]
-    } else if ("breakdown" in adaptor) {
-        return Object.entries(adaptor.breakdown).reduce((acc, [key, adapter]) => {
-            if (!Object.keys(adapter).some(c => c === DISABLED_ADAPTER_KEY))
-                acc.push(key)
-            return acc
-        }, [] as string[])
-    } else
-        throw new Error(`Invalid adapter ${adaptorModule}`)
-}
-
-export const isDisabled = (adaptor: Adapter) => {
-    if ("adapter" in adaptor) {
-        return Object.keys(adaptor.adapter).includes(DISABLED_ADAPTER_KEY)
-    } else if ("breakdown" in adaptor) {
-        for (const brokenDownDex of Object.values(adaptor.breakdown)) {
-            if (!Object.keys(brokenDownDex).includes(DISABLED_ADAPTER_KEY))
-                return false
-        }
-        return true
-    }
-    else
-        throw new Error(`Invalid adapter`)
-}
-
-export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
-    if (
-        'adapter' in moduleAdapter
-        || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)
-    ) {
-        const adapter = 'adapter' in moduleAdapter ? moduleAdapter.adapter : Object.values(moduleAdapter.breakdown)[0]
-        const methodology = Object.values(adapter)[0].meta?.methodology
-        if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
-        if (typeof methodology === 'string') return methodology
-        return {
-            ...(getDefaultMethodologyByCategory(category) ?? {}),
-            ...methodology
-        }
-    }
-    else {
-        return getParentProtocolMethodology(displayName, getAllProtocolsFromAdaptor(adaptorKey, moduleAdapter))
-    }
-}
-
-export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
-    const methodology = Object.values(adapter)[0]?.meta?.methodology
+export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+    let methodology = (moduleObject as any).methodology
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
     if (typeof methodology === 'string') return methodology
     return {
@@ -105,39 +28,36 @@ export const getDisplayChainName = (chain: string) => {
 
 export const normalizeDimensionChainsMap = {
     ...normalizedChainReplacements,
-    'avalanche': CHAIN.AVAX,
-    'terra classic': CHAIN.TERRA,
-    'terra-classic': CHAIN.TERRA,
-    'karura': CHAIN.KARURA,
-    'zksync era': CHAIN.ERA,
-    'zksync lite': CHAIN.ZKSYNC,
-    'multiversx': CHAIN.ELROND,
-    'okxchain': CHAIN.OKEXCHAIN,
-    'gnosis': CHAIN.XDAI,
-    'godwokenv1': CHAIN.GODWOKEN_V1,
-    'milkomeda c1': CHAIN.MILKOMEDA,
-    'oraichain': CHAIN.ORAI,
-    'cosmoshub': CHAIN.COSMOS,
-    'rangers': CHAIN.RPG,
-    'polygon zkevm': CHAIN.POLYGON_ZKEVM,
-    'sxnetwork': CHAIN.SX,
-    'ontologyevm': CHAIN.ONTOLOGY_EVM,
-    'wanchain': CHAIN.WAN,
-    'oasys': CHAIN.OAS,
-    'wemix3.0': CHAIN.WEMIX,
-    'radix': CHAIN.RADIXDLT,
-    'neon': CHAIN.NEON,
-    'zetachain': CHAIN.ZETA,
-    'zklink nova': CHAIN.ZKLINK,
-    'immutable x': CHAIN.IMMUTABLEX,
-    'bitlayer': CHAIN.BITLAYER,
-    'rootstock': CHAIN.ROOTSTOCK,
-} as IJSON<CHAIN>
+    'avalanche': 'avax',
+    'terra classic': "terra",
+    'terra-classic': "terra",
+    'zksync era': "era",
+    'zksync lite': "zksync",
+    'multiversx': "elrond",
+    'okxchain': "okexchain",
+    'gnosis': "xdai",
+    'godwokenv1': "godwoken_v1",
+    'milkomeda c1': "milkomeda",
+    'oraichain': "orai",
+    'cosmoshub': "cosmos",
+    'rangers': "rpg",
+    'polygon zkevm': "polygon_zkevm",
+    'sxnetwork': "sx",
+    'ontologyevm': "ontology_evm",
+    'wanchain': "wan",
+    'oasys': "oas",
+    'wemix3.0': "wemix",
+    'radix': "radixdlt",
+    'neon': "neon_evm",
+    'zetachain': "zeta",
+    'zklink nova': "zklink",
+    'immutable x': "imx",
+    'bitlayer': "btr",
+    'rootstock': "rsk",
+} as IJSON<string>
 
 export const formatChainKey = (chain: string) => {
     if (normalizeDimensionChainsMap[chain.toLowerCase()])
         return normalizeDimensionChainsMap[chain.toLowerCase()]
     return chain
 }
-
-export default getAllChainsFromAdaptors

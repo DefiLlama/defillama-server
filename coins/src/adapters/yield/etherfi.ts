@@ -8,6 +8,13 @@ const accountants: { [chain: string]: { [address: string]: string } } = {
     "0x0d05D94a5F1E76C18fbeB7A13d17C8a314088198": "liquidETH",
     "0xc315D6e14DDCDC7407784e2Caf815d131Bc1D3E7": "liquidUSD",
   },
+  scroll: {
+    "0x0d05D94a5F1E76C18fbeB7A13d17C8a314088198": "liquidETH",
+    "0xc315D6e14DDCDC7407784e2Caf815d131Bc1D3E7": "liquidUSD",
+    "0xEa23aC6D7D11f6b181d6B98174D334478ADAe6b0": "liquidBTC",
+    "0x1b293DC39F94157fA0D1D36d7e0090C8B8B8c13F": "eBTC",
+    "0xEB440B36f61Bf62E0C54C622944545f159C3B790": "eUSD",
+  },
 };
 
 export async function etherfi(timestamp: number) {

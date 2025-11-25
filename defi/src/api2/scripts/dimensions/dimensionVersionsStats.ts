@@ -1,7 +1,6 @@
 
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import loadAdaptorsData from "../../../adaptors/data"
-import { ADAPTER_TYPES } from "../../../adaptors/handlers/triggerStoreAdaptorData"
+import { ADAPTER_TYPES } from "../../../adaptors/data/types"
 
 async function run() {
   const table: any = []

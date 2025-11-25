@@ -20,7 +20,7 @@ async function run() {
       if (processedSet.has(normalizedLabel)) continue;
       processedSet.add(normalizedLabel)
       if (existingTokensSet.has(normalizedLabel)) {
-        console.log('Already have mapping for: ', chain, token)
+        // console.log('Already have mapping for: ', chain, token)
         continue;
       }
       let symbol = ''
@@ -28,7 +28,7 @@ async function run() {
       try {
         symbol = await api.call({ abi: 'string:symbol', target: token })
       } catch (e) {
-        console.log('unable to fetch symbol for ', chain, token)
+        // console.log('unable to fetch symbol for ', chain, token)
         symbol = token
       }
       chainTokenMapping[token] = { to: `coingecko#${coingeckoId}`, decimals, symbol }

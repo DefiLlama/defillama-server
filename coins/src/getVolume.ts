@@ -44,7 +44,7 @@ function formParamsObject(event: any): QueryParams {
 async function fetchDBData(
   timestamps: number[],
   coins: any[],
-  PKTransforms: any,
+  PKTransforms: { [key: string]: string[] },
   searchWidth: number,
 ) {
   let response = {} as any;
@@ -59,9 +59,11 @@ async function fetchDBData(
           searchWidth,
         );
         if (finalCoin.SK === undefined) return;
-        if (response[PKTransforms[coin.PK]] == undefined)
-          response[PKTransforms[coin.PK]] = [finalCoin.volume];
-        else response[PKTransforms[coin.PK]].push(finalCoin.volume);
+        PKTransforms[coin.PK].forEach((coinName) => {
+          if (response[coinName] == undefined)
+            response[coinName] = [finalCoin.volume];
+          else response[coinName].push(finalCoin.volume);
+        });
       }),
     );
   });

@@ -36,13 +36,20 @@ const handler = async (
         return;
         // }
       }
-      response[PKTransforms[coin.PK]] = {
-        decimals: coin.decimals,
-        symbol: coin.symbol,
-        price: finalCoin.price,
-        timestamp: finalCoin.SK,
-        confidence: finalCoin.confidence
-      };
+
+
+      if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+
+      PKTransforms[coin.PK].forEach((coinName) => {
+        response[coinName] = {
+          decimals: coin.decimals,
+          symbol: coin.symbol,
+          price: finalCoin.price,
+          timestamp: finalCoin.SK,
+          confidence: finalCoin.confidence
+        };
+      });
     })
   );
   return successResponse(

@@ -3,13 +3,14 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
+import { getConnection } from "../solana/utils";
+import { PublicKey } from "@solana/web3.js";
 
 type Config = {
   chain: string;
   rate: (params: any) => Promise<number>;
   address: string;
   underlying: string;
-  underlyingChain?: string;
   symbol?: string;
   decimals?: string;
   confidence?: number;
@@ -17,55 +18,15 @@ type Config = {
 const margin = 3 * 60 * 60; // 3hrs
 
 const configs: { [adapter: string]: Config } = {
-  LiNEAR: {
-    rate: async ({ t }) => {
-      const res = await fetch(
-        `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_API_KEY}/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg`,
-        {
-          headers: {
-            accept: "*/*",
-            "accept-language": "en-GB,en;q=0.8",
-            "content-type": "application/json",
-            priority: "u=1, i",
-            "sec-ch-ua":
-              '"Not/A)Brand";v="8", "Chromium";v="126", "Brave";v="126"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": '"macOS"',
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "sec-gpc": "1",
-            Referer: "https://app.linearprotocol.org/",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-          },
-          body: '{"query":"{\\n  prices(first: 1, orderBy: timestamp, orderDirection: desc) {\\n    id\\n    timestamp\\n    price\\n    __typename\\n  }\\n}","variables":{}}',
-          method: "POST",
-        },
-      ).then((r) => r.json());
-      if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
-      const { timestamp, price } = res.data.prices[0];
-      if (t - timestamp > margin) throw new Error(`LiNEAR subgraph stale rate`);
-      return price;
-    },
-    underlyingChain: "ethereum",
-    decimals: "0",
-    chain: "coingecko",
-    address: "linear-protocol",
-    underlying: "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
-    symbol: "LINEAR",
-    confidence: 1.01,
-  },
   USCC: {
     rate: async ({ t }) => {
       const res = await fetch(
         "https://api.superstate.co/v1/funds/2/nav-daily",
       ).then((r) => r.json());
       const { net_asset_value, net_asset_value_date } = res[0];
-
       const [month, day, year] = net_asset_value_date.split("/");
       const date = new Date(`${year}-${month}-${day}T00:00:00.000Z`);
       const timestamp = Math.floor(date.getTime() / 1000);
-
       const margin = 7 * 24 * 60 * 60; // use this margin since no data over weekends
       if (t - timestamp > margin) throw new Error(`USCC stale rate`);
       return net_asset_value;
@@ -139,13 +100,182 @@ const configs: { [adapter: string]: Config } = {
     decimals: "18",
     symbol: "mCAKE",
   },
+  wfragBTC: {
+    rate: async () => {
+      const connection = getConnection();
+      const accountInfo = await connection.getAccountInfo(
+        new PublicKey("DGWv49JvpJcy23UNUqGRuex9FVK8v5dnBdDowszY4RFG"),
+      );
+      if (!accountInfo) throw new Error(`wfragBTC account not found`);
+      const fragBtcInSol = Number(accountInfo.data.readBigUInt64LE(200));
+      const zBtcInSol = Number(accountInfo.data.readBigUInt64LE(4480));
+      return fragBtcInSol / zBtcInSol;
+    },
+    chain: "solana",
+    address: "WFRGB49tP8CdKubqCdt5Spo2BdGS4BpgoinNER5TYUm",
+    underlying: "zBTCug3er3tLyffELcvDNrKkCymbPWysGcWihESYfLg",
+    decimals: "8",
+    symbol: "wfragBTC",
+  },
+  sHYUSD: {
+    rate: async () => {
+      const res = await fetch("https://api.hylo.so/stats").then((r) =>
+        r.json(),
+      );
+      return res.stabilityPoolStats.lpTokenNav;
+    },
+    chain: "solana",
+    address: "HnnGv3HrSqjRpgdFmx7vQGjntNEoex1SU4e9Lxcxuihz",
+    underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
+    decimals: "6",
+    symbol: "sHYUSD",
+  },
+  xSOL: {
+    rate: async () => {
+      const res = await fetch("https://api.hylo.so/stats").then((r) =>
+        r.json(),
+      );
+      return res.stabilityPoolStats.levercoinNav;
+    },
+    chain: "solana",
+    address: "4sWNB8zGWHkh6UnmwiEtzNxL4XrN7uK9tosbESbJFfVs",
+    underlying: "5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E",
+    decimals: "6",
+    symbol: "xSOL",
+  },
+  ampLUNA: {
+    rate: async () => {
+      const { data } = await fetch(
+        "https://api.erisprotocol.com/terra/amplifier/LUNA",
+      ).then((r) => r.json());
+      return data.exchange_rate;
+    },
+    chain: "terra2",
+    address: "uluna",
+    underlying: "terra-luna-2",
+    decimals: "6",
+    symbol: "ampLUNA",
+  },
+  bLUNA: {
+    rate: async () => {
+      const LCD = "https://terra-api.cosmosrescue.dev:8443";
+      const bLUNA =
+        "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml";
+      const pairs = [
+        "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9", // Astroport
+        "terra1j5znhs9jeyty9u9jcagl3vefkvzwqp6u9tq9a3e5qrz4gmj2udyqp0z0xc", // White Whale
+      ];
+
+      async function smartQuery(contract: string, msg: Object) {
+        const base64 = Buffer.from(JSON.stringify(msg)).toString("base64");
+        const url = `${LCD}/cosmwasm/wasm/v1/contract/${contract}/smart/${encodeURIComponent(
+          base64,
+        )}`;
+        const { data } = await fetch(url).then((r) => r.json());
+        return data.data || data;
+      }
+
+      async function cw20TokenInfo(tokenAddr: string) {
+        const r = await smartQuery(tokenAddr, { token_info: {} });
+        if (r.token_info) return r.token_info;
+        return r;
+      }
+
+      async function fetchPoolReserves(poolAddr: string, blunaToken: string) {
+        const r = await smartQuery(poolAddr, { pool: {} });
+        const assets = r.assets || r.result?.assets;
+        if (!assets || assets.length !== 2)
+          throw new Error("Unexpected pool format");
+
+        const parseAmt = (x: any) => BigInt(x?.amount || "0");
+        const isLuna = (info: any) =>
+          !!info?.native_token && info.native_token.denom === "uluna";
+        const isBLuna = (info: any) =>
+          !!info?.token && info.token.contract_addr === blunaToken;
+
+        const [a, b] = assets;
+        let luna = BigInt("0"),
+          bluna = BigInt("0");
+
+        if (isLuna(a.info) && isBLuna(b.info)) {
+          luna = parseAmt(a);
+          bluna = parseAmt(b);
+        } else if (isLuna(b.info) && isBLuna(a.info)) {
+          luna = parseAmt(b);
+          bluna = parseAmt(a);
+        } else {
+          throw new Error(
+            "Pool does not contain the expected uluna + bLUNA pair",
+          );
+        }
+
+        return { luna, bluna };
+      }
+
+      const info = await cw20TokenInfo(bLUNA);
+      const blunaDecimals = Number(info.decimals ?? 6);
+      const scale = 10 ** 6;
+
+      let weightedNum = 0;
+      let weightedDen = 0;
+
+      for (const pool of pairs) {
+        try {
+          const { luna, bluna } = await fetchPoolReserves(pool, bLUNA);
+          const lunaFloat = Number(luna) / scale;
+          const blunaFloat = Number(bluna) / 10 ** blunaDecimals;
+          if (!lunaFloat || !blunaFloat) throw new Error("Zero reserve");
+
+          const priceInLuna = lunaFloat / blunaFloat;
+
+          weightedNum += lunaFloat * priceInLuna;
+          weightedDen += lunaFloat;
+        } catch (e: any) {
+          // console.log(`  Error reading pool ${pool}: ${e.message}`);
+        }
+      }
+
+      if (!weightedDen)
+        throw new Error("No eligible pools (after filter/fetch)");
+      return weightedNum / weightedDen;
+    },
+    chain: "terra2",
+    address: "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
+    underlying: "uluna",
+    decimals: "6",
+    symbol: "bLUNA",
+  },
+  ALP: {
+    rate: async () => {
+      const data = await fetch(
+        "https://lite-api.jup.ag/price/v3?ids=4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+      ).then((r) => r.json());
+      return data["4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj"].usdPrice;
+    },
+    chain: "solana",
+    address: "4yCLi5yWGzpTWMQ1iWHG5CrGYAdBkhyEdsuSugjDUqwj",
+    underlying: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    decimals: "6",
+    symbol: "ALP",
+  },
+  stSUPRA: {
+    rate: async () => {
+      const res = await fetch("https://api.solido.money/protocol/metrics").then((r) => r.json());
+      return res.pricestSUPRA;
+    },
+    chain: "supra",
+    address: "0x81846514536430ea934c7270f86cf5b067e2a2faef0e91379b4f284e91c7f53c::vault_core::VaultShare",
+    underlying: "0x1::supra_coin::SupraCoin",
+    decimals: "8",
+    symbol: "stSUPRA",
+  }
 };
 
 export async function apiDerivs(timestamp: number) {
   return Promise.all(
     Object.keys(configs).map((k: string) =>
       deriv(timestamp, k, configs[k]).catch((e) => {
-        console.log(e);
+        console.log(e?.message, k);
         return [];
       }),
     ),
@@ -157,7 +287,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     chain,
     underlying,
     address,
-    underlyingChain,
     symbol,
     decimals,
     confidence,
@@ -176,7 +305,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   const writes: Write[] = [];
   return (
     await getWrites({
-      underlyingChain,
       chain,
       timestamp,
       pricesObject,

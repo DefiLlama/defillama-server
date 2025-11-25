@@ -5,7 +5,7 @@ import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { padAddress } from "../../utils/coingeckoPlatforms";
 
 function normalize(addr: string, chain?: string) {
-  if (chain == 'starknet') return padAddress(addr.toLowerCase())
+  if (chain == "starknet") return padAddress(addr.toLowerCase());
   if (!addr || chainsThatShouldNotBeLowerCased.includes(chain as any))
     return addr;
   return addr.toLowerCase();
@@ -17,7 +17,6 @@ export default async function getWrites(params: {
   pricesObject: Object;
   writes?: Write[];
   projectName: string;
-  underlyingChain?: string;
   confidence?: number;
 }) {
   let {
@@ -25,57 +24,54 @@ export default async function getWrites(params: {
     timestamp,
     pricesObject,
     writes = [],
-    underlyingChain,
     confidence,
   } = params;
   const entries = Object.entries(pricesObject).map(([token, obj]) => {
     return {
       token: normalize(token, chain),
       price: obj.price,
-      underlying: normalize(obj.underlying, chain),
+      underlying: obj.underlying ? normalize(obj.underlying, chain) : undefined,
       symbol: obj.symbol ?? undefined,
       decimals: obj.decimals ?? undefined,
+      confidence: obj.confidence ?? confidence,
     };
   });
 
   const [tokenInfos, coinsData] = await Promise.all([
-    chain === "solana"
-      ? ({} as any)
-      : getTokenInfo(
-          underlyingChain ?? chain,
-          entries.map((i) => i.token),
-          undefined,
-        ),
-    getTokenAndRedirectDataMap(
-      entries.map((i) => i.underlying).filter((i) => i),
-      underlyingChain ?? chain,
-      timestamp,
-    ),
+    getTokenInfo(chain, entries.map((i) => i.token), undefined,),
+    getTokenAndRedirectDataMap(entries.map((i) => i.underlying as string).filter((i) => i), chain, timestamp,),
   ]);
 
-  entries.map(({ token, price, underlying, symbol, decimals }, i) => {
-    const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
-    const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
-    let coinData: CoinData | undefined = coinsData[underlying];
-    if (!underlying)
-      coinData = {
-        price: 1,
-        confidence: 0.98,
-      } as CoinData;
-    if (!coinData) return;
+  entries.map(
+    ({ token, price, underlying, symbol, decimals, confidence }, i) => {
+      const finalSymbol = symbol ?? tokenInfos.symbols[i].output;
+      const finalDecimals = decimals ?? tokenInfos.decimals[i].output;
+      let coinData: CoinData | undefined = coinsData[underlying ?? 'missing'];
+      if (!underlying)
+        coinData = {
+          price: 1,
+          confidence: 0.98,
+        } as CoinData;
+      if (!coinData) return;
 
-    addToDBWritesList(
-      writes,
-      chain,
-      token,
-      coinData.price * price,
-      finalDecimals,
-      finalSymbol,
-      timestamp,
-      params.projectName,
-      confidence ?? Math.min(0.98, coinData.confidence as number),
-    );
-  });
+      if (!finalDecimals) {
+        console.log(`Missing decimals for ${token} on ${chain}, skipping write.`);
+        return;
+      }
+
+      addToDBWritesList(
+        writes,
+        chain,
+        token,
+        coinData.price * price,
+        finalDecimals,
+        finalSymbol,
+        timestamp,
+        params.projectName,
+        confidence ?? Math.min(0.98, coinData.confidence as number),
+      );
+    },
+  );
 
   const writesObject: any = {};
   writes.forEach((i: any) => (writesObject[i.symbol] = i.price));

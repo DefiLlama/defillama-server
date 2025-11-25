@@ -125,6 +125,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     ethereum: [
       { pool: "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7", unknown: "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", },
+      { pool: "0x14D7AAB5b4bca6a02E52aC22520B033bF35F4091", unknown: "0x6fA0BE17e4beA2fCfA22ef89BF8ac9aab0AB0fc9", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", confidence: 1 },
     ],
     arbitrum: [
       { pool: "0xC977492506E6516102a5687154394Ed747A617ff", unknown: "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", known: "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B", },
@@ -162,6 +163,14 @@ export async function unknownTokens2(timestamp: number = 0) {
       { pool: "0x62191C893DF8d26aC295BA1274a00975dc07190C", unknown: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", known: "0x4200000000000000000000000000000000000006", },
       { pool: "0xAE6c9B2A2777D0396cbE7E13Fc9ACEAC0D052e00", unknown: "0xc38464250f51123078bbd7ea574e185f6623d037", known: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", },
     ],
+    // eni: [
+    //   { pool: "0x70fafce741d7f49f03434690fcb73d1933a90c1d", unknown: "0x6d1e851446f4d004ae2a72f9afed85e8829a205e", known: "0xdc1a8a35b0baa3229b13f348ed708a2fd50b5e3a", },
+    // ], 
+    pulse: [
+      { pool: "0xdca85EFDCe177b24DE8B17811cEC007FE5098586", unknown: "0x30be72a397667FDfD641E3e5Bd68Db657711EB20", known: "0xA1077a294dDE1B09bB078844df40758a5D0f9a27", },
+      { pool: "0xA0126Ac1364606BAfb150653c7Bc9f1af4283DFa", unknown: "0xBc91E5aE4Ce07D0455834d52a9A4Df992e12FE12", known: "0x6B175474E89094C44Da98b954EedeAC495271d0F", },
+      { pool: "0x24264d580711474526e8f2a8ccb184f6438bb95c", unknown: "0x47c3038ad52E06B9B4aCa6D672FF9fF39b126806", known: "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab", },
+    ]
   }
   const projectName = 'unknownTokensV2';
 
@@ -185,7 +194,7 @@ export async function unknownTokens2(timestamp: number = 0) {
       const token = unknowns[i].toLowerCase()
       let underlying = knowns[i]
       let price = (knownBals[i] / unknownBals[i]) * 10 ** (unknownDecimals[i] - knownDecimals[i])
-      pricesObject[token] = { underlying, price }
+      pricesObject[token] = { underlying, price, confidence: data[i].confidence }
     })
     return getWrites({ chain, timestamp, pricesObject, projectName, })
   }

@@ -4,9 +4,9 @@ import loadAdaptorsData from "../../../adaptors/data"
 import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
 
 import { RUN_TYPE, } from "../../utils";
-import { ADAPTER_TYPES } from '../../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
 import * as path from 'path'
+import { ADAPTER_TYPES } from '../../../adaptors/data/types';
 
 // const badWords = ['undefined', 'immutablex', 'chiliz', 'haqq', 'bitlayer', 'superposition', 'archway-1' ]
 const badWords = ['undefined', 'klatyn', 'bnb'].map((word) => `"${word}"`)
@@ -15,7 +15,7 @@ async function run() {
   const overallStats = [] as any
   const protocolDataMap = {} as any
   // Go over all types
-  const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
+  const allCache = await getDimensionsCacheV2()
   for (const adapterType of ADAPTER_TYPES) {
   // for (const adapterType of ['bridge-aggregators']) {
     const { protocolMap } = loadAdaptorsData(adapterType)

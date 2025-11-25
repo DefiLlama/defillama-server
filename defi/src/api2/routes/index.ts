@@ -1,30 +1,29 @@
 import * as HyperExpress from "hyper-express";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
-import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
-import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { get20MinDate } from "../../utils/shared";
-import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
-import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
-import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getCurrentUnixTimestamp } from "../../utils/date";
-import { getTweetStats } from "../../twitter/db";
-import { getClosestProtocolItem } from "../db";
-import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
-import { computeInflowsData } from "../../getInflows";
-import { getFormattedChains } from "../../getFormattedChains";
-import { getR2 } from "../../utils/r2";
+import * as path from "path";
+import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
+import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
-import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getFormattedChains } from "../../getFormattedChains";
+import { pgGetInflows } from "../db/inflows";
+import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
+import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
+import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getTweetStats } from "../../twitter/db";
+import { getCurrentUnixTimestamp } from "../../utils/date";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
-import { setInternalRoutes } from "./internalRoutes";
+import { getR2 } from "../../utils/r2";
+import { get20MinDate } from "../../utils/shared";
+import sluggify from "../../utils/sluggify";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { readRouteData, } from "../cache/file-cache";
+import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
-import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
 import { getHistory } from "../../dexAggregators/db/getHistory";
@@ -66,29 +65,45 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/hacks", defaultFileHandler);
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
+  router.get("/rwa/stats", defaultFileHandler);
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
   router.get("/lite/charts/categories/:category", defaultFileHandler);
-
+  router.get("/lite/chains-by-categories", defaultFileHandler);
+  router.get("/lite/chains-by-tags", defaultFileHandler);
+  router.get("/charts/categories/:category", ew(getCategoryChartByChainData));
+  router.get("/charts/categories/:category/:chain", ew(getCategoryChartByChainData));
+  router.get("/charts/tags/:tag", ew(getTagChartByChainData));
+  router.get("/charts/tags/:tag/:chain", ew(getTagChartByChainData));
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
+
+  router.get("/cexs", (_: any, res: HyperExpress.Response) => fileResponse('cex_agg', res));
 
 
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
   router.get("/lite/protocols2", defaultFileHandler);
   router.get("/lite/v2/protocols", defaultFileHandler);
-  router.get("/chains2", ew(getFormattedChainsData))
-  router.get("/chains2/:category", ew(getFormattedChainsData))
+  router.get("/chains2", (_: any, res: HyperExpress.Response) => fileResponse('chains2/All', res))
+  router.get("/chains2/:category", defaultFileHandler)
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
 
   router.get("/emissions", r2Wrapper({ endpoint: 'emissionsIndex' }))
   router.get("/emissionsList", r2Wrapper({ endpoint: 'emissionsProtocolsList' }))
   router.get("/emissionsBreakdown", r2Wrapper({ endpoint: 'emissionsBreakdown' }))
+  router.get("/emissionsBreakdownAggregated", r2Wrapper({ endpoint: 'emissionsBreakdownAggregated' }))
+  router.get("/emissionsSupplyMetrics", r2Wrapper({ endpoint: 'emissionsSupplyMetrics' }))
   router.get("/emission/:name", emissionProtocolHandler)
-  router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
+
+  router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }));
+  router.get("/chain-assets/chains", r2Wrapper({ endpoint: 'chainAssets' }));
+  router.get("/chain-assets/raw", r2Wrapper({ endpoint: 'chainAssetsRaw' }));
+  router.get("/chain-assets/chart/:chain", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: false, isHistorical: true })));
+  router.get("/chain-assets/flows/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: false })));
+  router.get("/chain-assets/historical-flows/:chain/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: true })));
 
   router.get("/twitter/overview", ew(getTwitterOverview))
   router.get("/twitter/user/:handle", ew(getTwitterData))
@@ -104,11 +119,27 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 
+
+  router.get("/_fe/static/*", defaultFileHandler)
+
+  router.get("/_fe/protocol-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
+    dataType: 'protocol', skipAggregatedTvl: false, restrictResponseSize: false, feMini: true,
+  })));
+  router.get("/_fe/treasury-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury', feMini: true, })));
+  router.get("/_fe/entity-mini/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities', feMini: true, })));
+  router.get("/_fe/updatedProtocol-mini/:name", (async (req, res) => getProtocolishData(req, res, {
+    dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
+    restrictResponseSize: false, feMini: true,
+  })));
+
+
+  router.get("/activeUsers", defaultFileHandler)
+
+
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
     router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
-    router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
   
     router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
     router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set
@@ -121,11 +152,27 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
    */
 
-
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
     const routerPath = fullPath.replace(routerBasePath, '');
-    return fileResponse(routerPath, res);
+    const sanitizedPath = sanitizePath(routerPath);
+    if (!sanitizedPath) {
+      return errorResponse(res, 'Invalid path', { statusCode: 400 });
+    }
+    return fileResponse(sanitizedPath, res);
+
+
+    function sanitizePath(filePath: string): string | null {
+      // Remove leading slash and normalize the path
+      const normalizedPath = path.normalize(filePath.replace(/^\/+/, ''));
+
+      // Check for path traversal attempts
+      if (normalizedPath.includes('..') || normalizedPath.startsWith('/') || path.isAbsolute(normalizedPath)) {
+        return null;
+      }
+
+      return normalizedPath;
+    }
   }
 
   function configRouteResponse(_req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -171,16 +218,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return fileResponse('config/smol/' + req.path_parameters.name, res);
   }
 
-  async function fileResponse(filePath: string, res: HyperExpress.Response) {
-    try {
-      res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
-      res.json(await readRouteData(filePath))
-    } catch (e) {
-      console.error(e);
-      return errorResponse(res, 'Internal server error', { statusCode: 500 })
-    }
-  }
-
 
   function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
     return successResponse(res, cache.twitterOverview, 60);
@@ -195,10 +232,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return successResponse(res, data, 60);
   }
 
-  setInternalRoutes(router, routerBasePath)
 }
 
-async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {
+async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false }: GetProtocolishOptions) {
   let name = decodeURIComponent(req.path_parameters.name);
   name = sluggify({ name } as any);
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
@@ -214,6 +250,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
         parentProtocol: parentProtocol,
         useHourlyData,
         skipAggregatedTvl,
+        feMini,
       });
       return res.json(responseData);
     }
@@ -233,6 +270,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     useHourlyData,
     skipAggregatedTvl,
     restrictResponseSize,
+    feMini,
   });
   return res.json(responseData);
 }
@@ -245,7 +283,7 @@ async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.
   res.setHeaders({ "Expires": get20MinDate() })
 
   const responseData = await getTokensInProtocolsInternal(symbol, {
-    protocolList: cache.metadata.protocols,
+    //protocolList: cache.metadata.protocols,
     protocolHasMisrepresentedTokens: protocolHasMisrepresentedTokens as any,
     getLastHourlyTokensUsd: getLastHourlyTokensUsd as any,
   });
@@ -303,6 +341,7 @@ type GetProtocolishOptions = {
   skipAggregatedTvl?: boolean,
   useNewChainNames?: boolean,
   restrictResponseSize?: boolean,
+  feMini?: boolean, // for fetching only aggregated tvl data without token breakdown & without raw token balances
 }
 
 async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -311,26 +350,34 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
   if (!protocolData)
     return errorResponse(res, 'Protocol not found')
 
-  const protocolId = protocolData.id
+  // const protocolId = protocolData.id
   const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
   const timestamp = Number(req.path_parameters.timestamp)
-  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp());
+  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp())
 
-  const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
+  const response = await pgGetInflows({
+    ids: [{
+      id: protocolData.id, tokensToExclude
+    }],
+    startTimestamp: timestamp,
+    endTimestamp,
+  })
 
-  if (old.SK === undefined)
-    return errorResponse(res, 'No data at that timestamp')
+  const inflowData = response?.[protocolData.id]
 
-  const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, 2 * 3600))
-  );
-
-  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)
+  if (!inflowData)
     return errorResponse(res, 'No data')
 
-  const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
+  return successResponse(res, inflowData, 60)
 
-  return successResponse(res, responseData, 1);
+
+  /*  switch back to pg for inflows data
+    await ddbGetInflows({
+      errorResponse: (message: string) => errorResponse(res, message),
+      successResponse: (data: any) => successResponse(res, data, 10),
+      protocolData, tokensToExclude,
+      skipTokenLogs: true, timestamp, endTimestamp,
+    }) */
 }
 
 async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -371,6 +418,22 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
   return returnR2Data({ endpoint: `emissions/${name}`, errorMessage: `protocol '${name}' has no chart to fetch`, res, parseJson: false })
 }
 
+async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.Response, params?: { isFlows: boolean, isHistorical: boolean }) {
+  let data;
+  try {
+    if (params?.isFlows) {
+      data = params?.isHistorical ? await chainAssetHistoricalFlows(req.path_parameters) : await chainAssetFlows();
+    } else {
+      data = await chainAssetChart(req.path_parameters);
+    }
+  } catch (e: any) {
+    return errorResponse(res, e.message)
+  }
+
+  return successResponse(res, data, 60);
+}
+
+
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
@@ -400,6 +463,22 @@ async function _getChainChartData(name: string) {
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
 }
+
+export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
+
+  const proWrapper = (routeFn: any) => {  // inject isProRoute flag
+
+    return ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
+      (req as any).isProRoute = true
+      return routeFn(req, res)
+    })
+  }
+
+  router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
+}
+
 
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {

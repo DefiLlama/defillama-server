@@ -1,4 +1,4 @@
-import { queryFlipside } from "@defillama/dimension-adapters/helpers/flipsidecrypto"
+import { queryFlipside } from "../dimension_migration/helpers/flipsidecrypto"
 import PromisePool from "@supercharge/promise-pool/dist"
 import fetch from "node-fetch"
 

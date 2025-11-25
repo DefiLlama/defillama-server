@@ -1,11 +1,13 @@
 import '../utils/failOnError'
 
-import { roundVaules, } from "../utils";
+import { roundValues, } from "../utils";
 import * as sdk from "@defillama/sdk";
 // import { sendMessage } from '../../utils/discord';
 import axios from 'axios';
 import { protocolsById } from "../../protocols/data";
 import { importAdapter, } from "../../utils/imports/importAdapter";
+import { sendMessage } from '../../utils/discord';
+import { tableToString } from '../utils';
 
 const lines = [] as string[]
 
@@ -59,6 +61,7 @@ async function run() {
       if (diff > 300) {
         protocol.borrowedDiff = diff/100
         protocol.borrowedDiffHn = (diff/100) + 'x'
+        protocol.borrowedOrig = borrowed
         protocol.borrowed = hn(borrowed)
         verHighBorrowedProtocols.push(protocol)
       }
@@ -81,6 +84,33 @@ async function run() {
   console.log('These are protocols with high borrowed tvl')
   console.table(verHighBorrowedProtocols, ['id', 'name', 'borrowedDiffHn', 'borrowed', 'hnTvl', 'category', 'chain', 'isMarkedDead'])
 
+  const whitelistedSet = new Set([
+    'test market',
+    'Rho Markets',
+    'Orbit Protocol',
+    'MovePosition',
+    'DAOLama',
+    'RealT RMM Marketplace V2',
+  ])
+  const filteredHighBorrowedProtocols = verHighBorrowedProtocols.filter((i: any) => {
+    return i.borrowedOrig  > 200_000 && !i.isMarkedDead && i.borrowedDiff > 5 && i.category === 'Lending' && !whitelistedSet.has(i.name)
+  })
+
+  if (filteredHighBorrowedProtocols.length > 0) {
+    console.log('These are protocols with high borrowed tvl [filtered list]')
+    console.table(filteredHighBorrowedProtocols, ['id', 'name', 'borrowedDiffHn', 'borrowed', 'hnTvl', 'category', 'chain', 'isMarkedDead'])
+
+    if (process.env.UNLISTED_WEBHOOK) {
+      let message = tableToString(filteredHighBorrowedProtocols, ['id', 'name', 'borrowedDiffHn', 'borrowed', 'hnTvl', 'chain',])
+      message = `These are protocols with high borrowed tvl 
+      ${message}
+    (if the protocol has correct data, add it to the whitelist here: https://github.com/DefiLlama/defillama-server/blob/master/defi/src/api2/scripts/checkForDeadProtocols.ts#L87)
+      `
+      await sendMessage(message, process.env.UNLISTED_WEBHOOK!)
+
+    }
+  }
+  
   const timeTaken = Number((Date.now() - start) / 1e3).toFixed(2)
   const timeTakensString = `\nRan check in ${timeTaken}s`
 
@@ -95,7 +125,7 @@ const hn = (n: number) => n ? sdk.humanizeNumber(Math.round(n)) : '0'
 run().catch(console.error).then(() => process.exit(0))
 
 function getDiffPercentage(current: number, other: number) {
-  return roundVaules(current * 100 / other - 100)
+  return roundValues(current * 100 / other - 100)
 }
 
 function getAverageOfObject(obj: Record<string, number> = {}) {

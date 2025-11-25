@@ -3252,6 +3252,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     audit_links: [],
     listedAt: 1764003099,
+    dimensions: {
+      dexs: "taiko-swap",
+      fees: "taiko-swap",
+    },
   },
   {
     id: "7031",

@@ -3709,5 +3709,29 @@ const data5: Protocol[] = [
       fees: "antfun"
     },
   },
+  {
+    id: "7049",
+    name: "Gate Perp DEX",
+    address: null,
+    symbol: "-",
+    url: "https://web3.gate.com/perps",
+    description:
+      "Perp DEX on Gate Layer.",
+    chain: "GateLayer",
+    logo: `${baseIconsUrl}/gate-perp-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["GateLayer"],
+    module: "dummy.js",
+    twitter: "GatePerpDEX",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      derivatives: "gate-perps"
+    },
+  },
 ];
 export default data5;

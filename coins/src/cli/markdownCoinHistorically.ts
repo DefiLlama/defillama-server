@@ -10,6 +10,7 @@ import {
   DELETE,
   getHistoricalValues,
 } from "../utils/shared/dynamodb";
+import { deleteCoins } from "./editEntry";
 
 const start: number = 1690761600;
 const coins: string[] = [
@@ -42,7 +43,7 @@ async function main() {
       coins.slice(i, i + batchStep).map((t) => getHistoricalValues(t, start)),
     );
 
-    await DELETE(current.flat());
+    await deleteCoins(current.flat());
   }
 
   const timestampArray = createTimestampArray(

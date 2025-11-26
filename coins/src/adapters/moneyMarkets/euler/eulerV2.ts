@@ -59,7 +59,6 @@ async function getEulerV2Tokens(
         params: [],
       })),
       abi: vaultAbi.find((m: any) => m.name === "asset"),
-      chain,
       permitFailure: true,
     }),
     api.multiCall({
@@ -68,7 +67,6 @@ async function getEulerV2Tokens(
         params: [sdk.util.convertToBigInt(1e18).toString()],
       })),
       abi: vaultAbi.find((m: any) => m.name === "convertToAssets"),
-      chain,
       permitFailure: true,
     }),
     api.multiCall({
@@ -77,7 +75,6 @@ async function getEulerV2Tokens(
         params: [],
       })),
       abi: vaultAbi.find((m: any) => m.name === "symbol"),
-      chain,
       permitFailure: true,
     }),
     api.multiCall({
@@ -86,7 +83,6 @@ async function getEulerV2Tokens(
         params: [],
       })),
       abi: vaultAbi.find((m: any) => m.name === "dToken"),
-      chain,
       permitFailure: true,
     }),
     api.multiCall({
@@ -94,7 +90,6 @@ async function getEulerV2Tokens(
         target: address,
       })),
       abi: vaultAbi.find((m: any) => m.name === "totalAssets"),
-      chain,
       permitFailure: true,
     }),
     threeDaysAgoApi.multiCall({
@@ -102,7 +97,6 @@ async function getEulerV2Tokens(
         target: address,
       })),
       abi: vaultAbi.find((m: any) => m.name === "totalAssets"),
-      chain,
       permitFailure: true,
     }),
   ]);
@@ -114,7 +108,6 @@ async function getEulerV2Tokens(
         params,
       })),
       abi: "erc20:balanceOf",
-      chain,
       permitFailure: true,
     }),
     threeDaysAgoApi.multiCall({
@@ -123,7 +116,6 @@ async function getEulerV2Tokens(
         params,
       })),
       abi: "erc20:balanceOf",
-      chain,
       permitFailure: true,
     }),
   ]);

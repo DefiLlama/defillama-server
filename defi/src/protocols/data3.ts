@@ -62713,7 +62713,8 @@ const data3_2: Protocol[] = [
     name: "Adrena Protocol",
     address: "solana:AuQaustGiaqxRvj2gtCdrd22PBzTn8kM3kEPEkZCtuDw",
     symbol: "ADX",
-    url: "https://app.adrena.xyz",
+    url: "https://www.adrena.trade/trade?referral=defillama",
+    referralUrl: "https://www.adrena.trade/trade?referral=defillama",
     description:
       "Solana Perps DEX. 100x Leverage. 0% Slippage. 100% Rev Share. Open Source. Community Owned.",
     chain: "Solana",

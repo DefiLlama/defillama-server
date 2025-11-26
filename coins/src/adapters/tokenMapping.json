@@ -556,6 +556,11 @@
     }
   },
   "polygon": {
+    "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
+      "decimals": "18",
+      "symbol": "agUSD",
+      "to": "coingecko#usd-coin"
+    },
     "0x695a61817D468983fd32881ea4CE83E91eF2C11E": {
       "decimals": 18,
       "symbol": "RYT",
@@ -1026,6 +1031,11 @@
     }
   },
   "ethereum": {
+    "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usd-coin"
+    },
     "0xe74dd7525663193b5e5e596b581b5343735a585c": {
       "decimals": "18",
       "symbol": "USDCUSDU",
@@ -1752,6 +1762,11 @@
     }
   },
   "arbitrum": {
+    "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usd-coin"
+    },
     "0x1759AEF9c1Ad57B2D16caEC43f451BA46D504fD7": {
       "decimals": 18,
       "symbol": "RYT",
@@ -2046,6 +2061,11 @@
     }
   },
   "optimism": {
+    "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#usd-coin"
+    },
     "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0": {
       "decimals": "18",
       "symbol": "sUSDS",

@@ -21,10 +21,12 @@ async function getEulerV2Tokens(
   chain: string,
   timestamp: number,
   factory: string,
-  fromBlock: number,
+  fromBlock: number
 ): Promise<Market[]> {
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
+  const threeDaysAgo = t - 3 * 24 * 60 * 60;
   const api = await getApi(chain, t, true);
+  const threeDaysAgoApi = await getApi(chain, threeDaysAgo, true);
   const toBlock = Number(api.block);
 
   // Fetch all pools from factory events
@@ -43,8 +45,15 @@ async function getEulerV2Tokens(
     return vaultDeploy.args[0]; // proxy
   });
 
-  const [assets, sharePrice, symbols, dTokens, amounts] = await Promise.all([
-    sdk.api.abi.multiCall({
+  const [
+    assets,
+    sharePrice,
+    symbols,
+    dTokens,
+    currentAmounts,
+    previousAmounts,
+  ] = await Promise.all([
+    api.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
         params: [],
@@ -53,7 +62,7 @@ async function getEulerV2Tokens(
       chain,
       permitFailure: true,
     }),
-    sdk.api.abi.multiCall({
+    api.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
         params: [sdk.util.convertToBigInt(1e18).toString()],
@@ -62,7 +71,7 @@ async function getEulerV2Tokens(
       chain,
       permitFailure: true,
     }),
-    sdk.api.abi.multiCall({
+    api.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
         params: [],
@@ -71,7 +80,7 @@ async function getEulerV2Tokens(
       chain,
       permitFailure: true,
     }),
-    sdk.api.abi.multiCall({
+    api.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
         params: [],
@@ -80,7 +89,15 @@ async function getEulerV2Tokens(
       chain,
       permitFailure: true,
     }),
-    sdk.api.abi.multiCall({
+    api.multiCall({
+      calls: vaultAddresses.map((address: any) => ({
+        target: address,
+      })),
+      abi: vaultAbi.find((m: any) => m.name === "totalAssets"),
+      chain,
+      permitFailure: true,
+    }),
+    threeDaysAgoApi.multiCall({
       calls: vaultAddresses.map((address: any) => ({
         target: address,
       })),
@@ -90,14 +107,38 @@ async function getEulerV2Tokens(
     }),
   ]);
 
-  const marketData = assets.output.map((asset: any, i: number) => {
+  const [currentCashBalances, previousCashBalances] = await Promise.all([
+    api.multiCall({
+      calls: vaultAddresses.map((params: any, i: number) => ({
+        target: assets[i],
+        params,
+      })),
+      abi: "erc20:balanceOf",
+      chain,
+      permitFailure: true,
+    }),
+    threeDaysAgoApi.multiCall({
+      calls: vaultAddresses.map((params: any, i: number) => ({
+        target: assets[i],
+        params,
+      })),
+      abi: "erc20:balanceOf",
+      chain,
+      permitFailure: true,
+    }),
+  ]);
+
+  const marketData = assets.map((underlying: any, i: number) => {
     return {
       address: vaultAddresses[i],
-      underlying: asset["output"],
-      symbol: symbols.output[i].output,
-      sharePrice: sharePrice.output[i].output / 1e18,
-      dToken: dTokens.output[i].output,
-      amount: amounts.output[i].output,
+      underlying,
+      symbol: symbols[i],
+      sharePrice: sharePrice[i] / 1e18,
+      dToken: dTokens[i],
+      currentAmount: currentAmounts[i],
+      currentCash: currentCashBalances[i],
+      previousAmount: previousAmounts[i],
+      previousCash: previousCashBalances[i],
     };
   });
 
@@ -108,33 +149,57 @@ function formWrites(
   markets: Market[],
   underlyingPrices: { [key: string]: CoinData },
   chain: string,
-  timestamp: number,
+  timestamp: number
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
     const coinData: CoinData | undefined =
       underlyingPrices[m.underlying.toLowerCase()];
     const rate = m.sharePrice;
-    if (coinData == null || rate == null || !m.amount) return;
+    if (coinData == null || rate == null || !m.currentAmount) return;
 
-    const tvl = m.amount * coinData.price / 10 ** coinData.decimals;
+    const tvl = (m.currentAmount * coinData.price) / 10 ** coinData.decimals;
     if (tvl < 1e5) return; // filtering out small markets
 
     const eTokenPrice: number = coinData.price * rate;
 
     if (eTokenPrice == 0) return;
 
-    addToDBWritesList(
-      writes,
-      chain,
-      m.address,
-      eTokenPrice,
-      coinData.decimals,
-      `${m.symbol}`,
-      timestamp,
-      "euler",
-      0.9,
-    );
+    if (
+      m.currentCash / m.currentAmount < 0.01 &&
+      m.previousCash / m.previousAmount < 0.01
+    ) {
+      console.log(
+        `Bad debt in vault ${m.address} on ${chain}: ${(
+          (m.currentCash / m.currentAmount) *
+          100
+        ).toFixed(2)}% liquidity`
+      );
+
+      addToDBWritesList(
+        writes,
+        chain,
+        m.address,
+        0,
+        coinData.decimals,
+        `${m.symbol}`,
+        timestamp,
+        "euler",
+        1.01
+      );
+    } else {
+      addToDBWritesList(
+        writes,
+        chain,
+        m.address,
+        eTokenPrice,
+        coinData.decimals,
+        `${m.symbol}`,
+        timestamp,
+        "euler",
+        0.9
+      );
+    }
 
     addToDBWritesList(
       writes,
@@ -145,7 +210,7 @@ function formWrites(
       `${m.symbol}-DEBT`,
       timestamp,
       "euler",
-      0.9,
+      0.9
     );
   });
 
@@ -156,19 +221,19 @@ export default async function getEulerV2TokenPrices(
   chain: string,
   timestamp: number,
   factory: string,
-  fromBlock: number,
+  fromBlock: number
 ) {
   const eulerV2Tokens = await getEulerV2Tokens(
     chain,
     timestamp,
     factory,
-    fromBlock,
+    fromBlock
   );
 
   const underlyingPrices = await getTokenAndRedirectDataMap(
     eulerV2Tokens.map((m: Market) => m.underlying),
     chain,
-    timestamp,
+    timestamp
   );
 
   return formWrites(eulerV2Tokens, underlyingPrices, chain, timestamp);

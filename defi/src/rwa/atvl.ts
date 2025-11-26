@@ -4,27 +4,17 @@ import { excludedTvlKeys, zero } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { coins } from "@defillama/sdk";
+import { getCsvData } from "./csv";
 
-const rwaTokens: { [protocol: string]: string[] } = {
-  "4133": [
-    "ethereum:0x9d39a5de30E57443bff2a8307A4256c8797a3497",
-    "plasma:0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2",
-    "solana:Eh6XEPhSwoLv5wFApukmnaVSHQ6sAnoD9BmgmwQoN2sN",
-  ],
-  "100001": [
-    "ethereum:0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
-    "base:0x5a0f93d040de44e78f251b03c43be9cf317dcf64",
-    "avax:0x5a0f93d040de44e78f251b03c43be9cf317dcf64", 
-    "bsc:0x58f93d6b1ef2f44ec379cb975657c132cbed3b6b"
-  ]
-};
+const responseKey: string = 'Ticker'
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
   const tokenToProjectMap: { [token: string]: string } = {};
 
   Object.keys(tokens).map((protocol: string) => {
-    tokens[protocol].map((pk: string) => {
+    tokens[protocol].map((pk: any) => {
+      if (pk == false) return;
       const chain = pk.substring(0, pk.indexOf(":"));
 
       if (!tokensSortedByChain[chain]) tokensSortedByChain[chain] = [];
@@ -42,7 +32,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
   await initializeTVLCacheDB();
   const rawTvls = await getLatestProtocolItems(hourlyRawTokensTvl, { filterLast24Hours: true });
 
-  let aggregateRawtvls: { [pk: string]: BigNumber } = {};
+  let aggregateRawtvls: { [pk: string]: { [id: string]: BigNumber} } = {};
   rawTvls.map((protocol: any) => {
     Object.keys(protocol.data).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
@@ -50,9 +40,8 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
 
       Object.keys(protocol.data[chain]).map((pk: string) => {
         if (!rwaTokens[chain].includes(pk)) return;
-        const tokenAmount: string = protocol.data[chain][pk];
-        if (!aggregateRawtvls[pk]) aggregateRawtvls[pk] = zero;
-        aggregateRawtvls[pk] = aggregateRawtvls[pk].plus(tokenAmount);
+        if (!aggregateRawtvls[pk]) aggregateRawtvls[pk] = {};
+        aggregateRawtvls[pk][protocol.id] = BigNumber(protocol.data[chain][pk]);
       });
     });
   });
@@ -61,10 +50,23 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
 }
 
 async function main() {
+  const parsedCsvData = getCsvData();
+  const rwaTokens: { [protocol: string]: string[] } = {};
+  let finalData: { [protocol: string]: { [key: string]: any } } = {};
+  parsedCsvData.map((row: any) => {
+      rwaTokens[`${row.projectID ? row.projectID : ''}-${row[responseKey]}`] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
+      finalData[`${row.projectID ? row.projectID : ''}-${row[responseKey]}`] = row;
+  });
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
   const aggregateRawTvls = await getAggregateRawTvls(tokensSortedByChain);
-  const assetPrices = await coins.getPrices(Object.keys(aggregateRawTvls), "now");
-  const activeTvls: { [protocol: string]: { [chain: string]: string } } = {};
+  const assetPrices = await coins.getPrices(Object.keys(tokenToProjectMap), "now");
+
+  Object.keys(tokenToProjectMap).map((address: string) => {
+    if (!assetPrices[address]) {
+      console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
+      return;
+    }
+  });
 
   getActiveTvls();
 
@@ -76,31 +78,34 @@ async function main() {
       }
 
       const { price, decimals } = assetPrices[pk];
-      const amount = aggregateRawTvls[pk];
+      const amounts = aggregateRawTvls[pk];
 
-      const aum = amount.times(price).div(10 ** decimals);
-      const protocol = tokenToProjectMap[pk];
+      Object.keys(amounts).map((amountId: string) => {
+        const amount = amounts[amountId];
+        const aum = amount.times(price).div(10 ** decimals);
 
-      if (!activeTvls[protocol]) activeTvls[protocol] = {};
+        if (aum.isLessThan(10)) return 
+        const rwaId = tokenToProjectMap[pk];
 
-      const chain = pk.substring(0, pk.indexOf(":"));
-      activeTvls[protocol][chain] = aum.toFixed(0);
+        const [projectId, symbol] = rwaId.split('-');
+        if (amountId == projectId) return;
+
+        if (!finalData[rwaId]['Defi Active']) finalData[rwaId]['Defi Active'] = {}
+        const chain = pk.substring(0, pk.indexOf(":"));
+        if (!finalData[rwaId]['Defi Active'][chain]) finalData[rwaId]['Defi Active'][chain] = {};
+      
+        finalData[rwaId]['Defi Active'][chain][amountId] = aum.toFixed(0);
+      });
     });
-
-    return activeTvls;
   }
 
-  return activeTvls;
+  const filteredFinalData: any = {}
+  Object.keys(finalData).map((rwaId: string) => {
+    if (finalData[rwaId]['Defi Active']) {
+      filteredFinalData[rwaId] = finalData[rwaId];
+    }
+  });
+
+  return finalData;
 }
 main(); // ts-node defi/src/rwa/atvl.ts
-
-const res = {
-    "4133": {
-      ethereum: "2641803784",
-      plasma: "1077200339",
-      solana: "173965",
-    },
-    "100001": {
-      ethereum: "2516674",
-    },
-  }

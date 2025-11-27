@@ -3754,6 +3754,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/metaDAOproject/programs/tree/develop/audits"],
     github: ["metaDAOproject"],
+    treasury: "futarchy-amm",
     dimensions: {
       dexs: "futarchy-amm",
       fees: "futarchy-amm",

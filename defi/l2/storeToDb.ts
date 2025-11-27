@@ -3,6 +3,7 @@ import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
+import { getChainDisplayName } from "../src/utils/normalizeChain";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
@@ -155,15 +156,26 @@ function removeTokenBreakdown(data: FinalChainData): FinalChainData {
 export function parsePgData(timeseries: any[], chain: string, removeBreakdown: boolean = true) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
-    let rawData;
+    let rawData: { [key: string]: FinalChainData } = {}
     try {
       rawData = JSON.parse(t.value);
     } catch (e) {
       console.log(e);
     }
-    if (!rawData) return;
-    const data = removeBreakdown ? removeTokenBreakdown(rawData[chain]) : rawData[chain];
-    result.push({ timestamp: t.timestamp, data });
+    if (!Object.keys(rawData).length) return;
+
+    if (chain != "*") {
+      const data = removeBreakdown ? removeTokenBreakdown(rawData[chain]) : rawData[chain];
+      result.push({ timestamp: t.timestamp, data });
+    } else {
+      const data: { [key: string]: FinalChainData } = {} 
+      Object.keys(rawData).map((c: string) => {
+        if (c == "timestamp") return;
+        data[c] = removeBreakdown ? removeTokenBreakdown(rawData[c]) : rawData[c];
+      });
+
+      result.push({ timestamp: t.timestamp, data });
+    }
   });
 
   result.sort((a: ChartData, b: ChartData) => Number(a.timestamp) - Number(b.timestamp));
@@ -237,7 +249,7 @@ export async function fetchFlows(period: number) {
 
   const timeseries = await queryPostgresWithRetry(
     sql`
-      select * from chainassets
+      select * from chainassets2
       where timestamp > ${timestampWithMargin}
       `,
     sql
@@ -258,19 +270,20 @@ export async function fetchFlows(period: number) {
   const chains = Object.keys(end.data);
 
   chains.map((chain: string) => {
-    res[chain] = {};
+    const readableChain = getChainDisplayName(chain, true);
+    res[readableChain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
       if (!start.data[chain] || !(k in start.data[chain])) {
-        res[chain][k] = { perc: "0", raw: "0" };
+        res[readableChain][k] = { perc: "0", raw: "0" };
         return;
       }
       const a = start.data[chain][k];
       const b = end.data[chain][k];
       const raw = (b - a).toFixed();
-      if (a != "0" && b == "0") res[chain][k] = { perc: "-100", raw };
-      else if (b == "0") res[chain][k] = { perc: "0", raw };
-      else if (a == "0") res[chain][k] = { perc: "100", raw };
-      else res[chain][k] = { perc: ((100 * (b - a)) / a).toFixed(2), raw };
+      if (a != "0" && b == "0") res[readableChain][k] = { perc: "-100", raw };
+      else if (b == "0") res[readableChain][k] = { perc: "0", raw };
+      else if (a == "0") res[readableChain][k] = { perc: "100", raw };
+      else res[readableChain][k] = { perc: ((100 * (b - a)) / a).toFixed(2), raw };
     });
   });
 

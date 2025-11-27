@@ -3612,7 +3612,7 @@ const data5: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "portal-defi/index.js",
-    twitter: "PortalDeFi",
+    twitter: "PortaltoBitcoin",
     forkedFromIds: [],
     audit_links: ["https://github.com/Portaldefi/security-audit-report"],
     listedAt: 1764090337,

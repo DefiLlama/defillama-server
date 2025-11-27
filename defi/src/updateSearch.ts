@@ -5,6 +5,7 @@ import { cexsData } from "./protocols/cex";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
+import { getEnv } from "./api2/env";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -348,7 +349,10 @@ async function generateSearchList() {
     fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
     getAllCurrentSearchResults(),
     fetchJson("https://ask.llama.fi/coins"),
-    fetchJson("https://api.llama.fi/tradfi/institutions"),
+    fetchJson(`https://pro-api.llama.fi/${getEnv('LLAMA_PRO_API_KEY')}/dat/institutions`).catch((e) => {
+      console.log("Error fetching institutions", e);
+      return {};
+    }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -785,7 +789,7 @@ async function generateSearchList() {
   }
 
   const dats: Array<SearchResult> = [];
-  for (const asset in datsData.assetMetadata) {
+  for (const asset in (datsData.assetMetadata ?? {})) {
     dats.push({
       id: `dat_asset_${normalize(datsData.assetMetadata[asset].name)}`,
       name: datsData.assetMetadata[asset].name,
@@ -795,7 +799,7 @@ async function generateSearchList() {
       type: "DAT",
     });
   }
-  for (const institution in datsData.institutionMetadata) {
+  for (const institution in (datsData.institutionMetadata ?? {})) {
     dats.push({
       id: `dat_institution_${normalize(datsData.institutionMetadata[institution].ticker)}`,
       name: datsData.institutionMetadata[institution].name,

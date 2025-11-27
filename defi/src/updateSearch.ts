@@ -5,6 +5,7 @@ import { cexsData } from "./protocols/cex";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
+import { getEnv } from "./api2/env";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -300,6 +301,7 @@ async function generateSearchList() {
     chainsMetadata,
     currentSearchResults,
     coinsData,
+    datsData,
   ]: [
     {
       chains: string[];
@@ -314,7 +316,11 @@ async function generateSearchList() {
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
     Array<SearchResult>,
-    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>
+    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>,
+    {
+      assetMetadata: Record<string, { name: string; ticker: string }>;
+      institutionMetadata: Record<string, { name: string; ticker: string }>;
+    }
   ] = await Promise.all([
     fetchJson("https://api.llama.fi/lite/protocols2"),
     fetchJson("https://stablecoins.llama.fi/stablecoins"),
@@ -343,6 +349,10 @@ async function generateSearchList() {
     fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
     getAllCurrentSearchResults(),
     fetchJson("https://ask.llama.fi/coins"),
+    fetchJson(`https://pro-api.llama.fi/${getEnv('LLAMA_PRO_API_KEY')}/dat/institutions`).catch((e) => {
+      console.log("Error fetching institutions", e);
+      return {};
+    }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -778,6 +788,30 @@ async function generateSearchList() {
     }
   }
 
+  const dats: Array<SearchResult> = [];
+  for (const asset in (datsData.assetMetadata ?? {})) {
+    dats.push({
+      id: `dat_asset_${normalize(datsData.assetMetadata[asset].name)}`,
+      name: datsData.assetMetadata[asset].name,
+      symbol: datsData.assetMetadata[asset].ticker,
+      route: `/digital-asset-treasuries/${asset}`,
+      v: tastyMetrics[`/digital-asset-treasuries/${asset}`] ?? 0,
+      type: "DAT",
+    });
+  }
+  for (const institution in (datsData.institutionMetadata ?? {})) {
+    dats.push({
+      id: `dat_institution_${normalize(datsData.institutionMetadata[institution].ticker)}`,
+      name: datsData.institutionMetadata[institution].name,
+      symbol: datsData.institutionMetadata[institution].ticker,
+      route: `/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`,
+      v:
+        tastyMetrics[`/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`] ??
+        0,
+      type: "DAT",
+    });
+  }
+
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
@@ -789,6 +823,7 @@ async function generateSearchList() {
     tags: tags.sort((a, b) => b.v - a.v),
     cexs: cexs.sort((a, b) => b.v - a.v),
     otherPages: otherPages.sort((a, b) => b.v - a.v),
+    dats: dats.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -805,6 +840,7 @@ async function generateSearchList() {
       .concat(subProtocols)
       .concat(subChains)
       .concat(coins)
+      .concat(results.dats)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,

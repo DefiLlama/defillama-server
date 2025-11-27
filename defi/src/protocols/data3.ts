@@ -43015,7 +43015,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2198"],
     listedAt: 1713869669,
     dimensions: {
-      dexs: "glowswap"
+      // dexs: "glowswap", // fake volume from their API
     }
   },
   {

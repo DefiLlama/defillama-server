@@ -165,6 +165,12 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 18,
       redirect: "coingecko#gho",
     },
+    {
+      symbol: "nDEPS",
+      address: "0xc71104001a3ccda1bef1177d765831bd1bfe8ee6",
+      decimals: 18,
+      redirect: "coingecko#native-decentralized-euro-protocol-share",
+    },
   ],
 };
 

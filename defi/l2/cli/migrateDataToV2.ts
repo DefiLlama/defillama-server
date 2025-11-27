@@ -29,7 +29,6 @@ async function main() {
     // raw data like { <CHAINSLUG>: {canonical: { breakdown: { <RAW>: number }, total: number }}}
     allOldData.forEach(({ timestamp, data }: any) => {
       if (timestamp > 1762509600) {
-        timestamp;
         return;
       }
       Object.keys(data).map((section: string) => {
@@ -44,7 +43,7 @@ async function main() {
   await runInPromisePool({
     items: Object.keys(allNewData),
     concurrency: 1,
-    processor: (timestamp: number) => storeHistoricalToDB({ timestamp, value: allNewData[timestamp] })
+    processor: (timestamp: number) => storeHistoricalToDB({ timestamp: Number(timestamp), value: allNewData[timestamp] })
   })
 
   return;

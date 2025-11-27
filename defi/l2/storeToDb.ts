@@ -155,35 +155,14 @@ function removeTokenBreakdown(data: FinalChainData): FinalChainData {
 export function parsePgData(timeseries: any[], chain: string, removeBreakdown: boolean = true) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
-    if (chain != "*") {
-      let rawData;
-      try {
-        rawData = JSON.parse(t[chain]);
-      } catch (e) {
-        console.log(e);
-      }
-      if (!rawData) return;
-      const data = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
-      result.push({ timestamp: t.timestamp, data });
-      return;
+    let rawData;
+    try {
+      rawData = JSON.parse(t.value);
+    } catch (e) {
+      console.log(e);
     }
-
-    const data: FinalData = {};
-
-    Object.keys(t).map((c: string) => {
-      if (c == "timestamp") return;
-      let rawData;
-      try {
-        rawData = JSON.parse(t[c]);
-      } catch (e) {
-        console.log(e);
-      }
-      if (!rawData) return;
-      // DEBUG:
-      // data[c] = rawData
-      data[c] = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
-    });
-
+    if (!rawData) return;
+    const data = removeBreakdown ? removeTokenBreakdown(rawData[chain]) : rawData[chain];
     result.push({ timestamp: t.timestamp, data });
   });
 
@@ -202,9 +181,7 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
     if (oldTimestamps.length) {
       latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
       oldTimeseries = await queryPostgresWithRetry(
-        chain == "*"
-          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
-          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
+        sql`select * from chainassets2 where timestamp in ${sql(oldTimestamps)}`,
         sql
       );
     }
@@ -214,17 +191,12 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
 
   const newTimeseries =
     getCurrentUnixTimestamp() - latestOldTimestamp > 2 * secondsInADay
-      ? await queryPostgresWithRetry(
-          chain == "*"
-            ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
-            : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
-          sql
-        )
+      ? await queryPostgresWithRetry(sql`select * from chainassets2 where timestamp > ${latestOldTimestamp}`, sql)
       : [];
   sql.end();
 
   const timeseries = [...oldTimeseries, ...newTimeseries];
-  const result = parsePgData(timeseries, chain, false);
+  const result = parsePgData(timeseries, chain);
 
   const { data, timestamps } = findDailyEntries(result);
 

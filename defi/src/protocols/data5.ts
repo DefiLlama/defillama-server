@@ -4068,5 +4068,29 @@ const data5: Protocol[] = [
       "bridge-aggregators": "mynth",
     },
   },
+  {
+    id: "7064",
+    name: "ORE Blue",
+    address: "solana:orebyr4mDiPDVgnfqvF5xiu5gKnh94Szuz8dqgNqdJn",
+    symbol: "ORB",
+    url: "https://ore.blue/",
+    description:
+      "ORE Blue is a digital store of value on the Solana blockchain.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/ore-blue.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "OREdotblue",
+    forkedFromIds: ["6893"],
+    audit_links: [],
+    dimensions: {
+      "fees": "orb",
+    },
+  },
 ];
 export default data5;

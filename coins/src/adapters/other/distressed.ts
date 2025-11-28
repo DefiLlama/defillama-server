@@ -58,7 +58,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
-    // GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3",
     UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568' 
   },
   // beam: {
@@ -145,7 +144,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
     MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
     NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7",
-    // GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -159,7 +157,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     //WIF: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
     TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95",
-    GTBTC: "gtBTCGWvSRYYoZpU9UZj6i3eUGUpgksXzzsbHk2K9So"
   },
   pulse: {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
@@ -327,7 +324,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
-    // GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3" //NEED TO CONFIRM COLLATERAL BEFORE PRIOCING
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",

@@ -3289,6 +3289,7 @@ const data5: Protocol[] = [
       dexs: "madness-finance",
       fees: "madness-finance",
     },
+    deadUrl: true,
   },
   {
     id: "7032",

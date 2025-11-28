@@ -3951,5 +3951,31 @@ const data5: Protocol[] = [
       fees: "nad-fun"
     },
   },
+  {
+    id: "7059",
+    name: "Capricorn",
+    address: null,
+    symbol: "-",
+    url: "https://www.capricorn.exchange/",
+    description:
+      "A composable DEX with HFT-grade liquidity.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/capricorn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Monad"],
+    module: "capricorn-monad/index.js",
+    twitter: "CapricornDEX",
+    forkedFromIds: ["2198"],
+    audit_links: [],
+    listedAt: 1764299732,
+    dimensions: {
+      dexs: "capricorn",
+      fees: "capricorn"
+    },
+  },
 ];
 export default data5;

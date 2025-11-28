@@ -23375,6 +23375,9 @@ const data4: Protocol[] = [
     ],
     forkedFromIds: ["5656"],
     listedAt: 1753985702,
+    dimensions: {
+      fees: "defi-dollar-cdp",
+    },
   },
   {
     id: "6510",

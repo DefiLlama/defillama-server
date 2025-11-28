@@ -3040,6 +3040,10 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.bean.exchange/audit"],
     github: ["BeanExchange"],
     listedAt: 1763734628,
+    dimensions: {
+      dexs: "bean-exchange",
+      fees: "bean-exchange",
+    },
   },
   {
     id: "7022",
@@ -3383,6 +3387,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     audit_links: [],
     listedAt: 1764005842,
+    dimensions: {
+      dexs: "pinot-v3",
+      fees: "pinot-v3"
+    },
   },
   {
     id: "7036",
@@ -3527,6 +3535,11 @@ const data5: Protocol[] = [
       },
     ],
     listedAt: 1764008734,
+    dimensions: {
+      derivatives: "leverup",
+      fees: "leverup",
+      "open-interest": "leverup"
+    },
   },
   {
     id: "7042",
@@ -3594,6 +3607,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     audit_links: ["https://docs.aethonswap.com/technical-docs/audit"],
     listedAt: 1764090329,
+    dimensions: {
+      dexs: "aethonswap",
+      fees: "aethonswap",
+    },
   },
   {
     id: "7045",
@@ -3829,6 +3846,108 @@ const data5: Protocol[] = [
     forkedFromIds: ["3710"],
     audit_links: ["https://app.chainaudits.io/project/atlantis"],
     listedAt: 1764287023,
+  },
+  {
+    id: "7054",
+    name: "Mu Digital",
+    address: null,
+    symbol: "-",
+    url: "https://mudigital.net",
+    description:
+      "Mu Digital is a protocol focused on bringing Asia based fixed income assets onchain through tokenization. The platform structures credit products, such as government bonds, corporate bonds and private credit, into two onchain tokens. AZND (Asia Dollar) represents the senior tranche backed by underlying credit assets. muBOND represents a junior tranche designed to absorb portfolio level volatility.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/mu-digital.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Credit","Other Fixed Income"],
+    chains: ["Monad"],
+    module: "mu-digital/index.js",
+    twitter: "MuDigitalHQ",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Mu%20Protocol%20-%20SlowMist%20Audit%20Report.pdf"],
+    listedAt: 1764288644,
+  },
+  {
+    id: "7054",
+    name: "EulerDebt",
+    address: null,
+    symbol: "-",
+    url: "https://eulerdebt.com/",
+    description:
+      "EulerDebt is a secondary market for distressed Euler shares.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/eulerdebt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Avalanche"],
+    module: "euler-debt/index.js",
+    twitter: "SeaFi_vaults",
+    forkedFromIds: [],
+    listedAt: 1764288651,
+  },
+  {
+    id: "7054",
+    name: "Mustang Finance",
+    address: null,
+    symbol: "-",
+    url: "https://must.finance/",
+    description:
+      "Mustang is the Saga native decentralized stablecoin protocl. MUST is always pegged to $1.00. It is over-collateralized, yield-bearing, and redeemable for $1 worth of collateral at any time.",
+    chain: "Saga",
+    logo: `${baseIconsUrl}/mustang-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Saga"],
+    module: "mustang/index.js",
+    twitter: "mustangfinance",
+    forkedFromIds: ["5656"],
+    audit_links: ["https://github.com/MustangProtocol/audit-reports"],
+    github: ["MustangProtocol"],
+    oraclesBreakdown: [
+      {
+        name: "Tellor",
+        type: "Primary",
+        proof: ["https://docs.must.finance/docs/technical-documentation/oracles"],
+      },
+    ],
+    listedAt: 1764288669,
+    dimensions: {
+      fees: "mustang",
+    },
+  },
+  {
+    id: "7054",
+    name: "Nad.fun",
+    address: null,
+    symbol: "-",
+    url: "https://nad.fun/",
+    description:
+      "Launchpad on Monad.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/nad.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Monad"],
+    module: "nadfun/index.js",
+    twitter: "naddotfun",
+    forkedFromIds: [],
+    audit_links: [],
+    listedAt: 1764288675,
+    dimensions: {
+      dexs: "nad-fun",
+      fees: "nad-fun"
+    },
   },
 ];
 export default data5;

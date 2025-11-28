@@ -4019,6 +4019,7 @@ const data5: Protocol[] = [
     twitter: "MondayTrade_",
     forkedFromIds: [],
     audit_links: ["https://files.monday.trade/files/Monday-Trade-Spot-Audit.pdf"],
+    parentProtocol: "parent#synfutures",
     listedAt: 1764300387,
   },
   {

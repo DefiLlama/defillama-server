@@ -4044,5 +4044,29 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764300395,
   },
+  {
+    id: "7063",
+    name: "Mynth",
+    address: null,
+    symbol: "-",
+    url: "https://www.mynth.ai/",
+    description:
+      "An intents-based protocol that allows seamless cross-chain swaps.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/mynth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregators",
+    chains: ["Base", "Cardano", "Hyperliquid L1", "Plasma", "Solana", "Sui", "Tron"],
+    module: "dummy.js",
+    twitter: "_mynth_",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      "bridge-aggregators": "mynth",
+    },
+  },
 ];
 export default data5;

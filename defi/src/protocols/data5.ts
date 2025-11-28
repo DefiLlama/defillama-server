@@ -3850,7 +3850,7 @@ const data5: Protocol[] = [
     listedAt: 1764287023,
   },
   {
-    id: "7054",
+    id: "7055",
     name: "Mu Digital",
     address: null,
     symbol: "-",
@@ -3872,7 +3872,7 @@ const data5: Protocol[] = [
     listedAt: 1764288644,
   },
   {
-    id: "7054",
+    id: "7056",
     name: "EulerDebt",
     address: null,
     symbol: "-",
@@ -3893,7 +3893,7 @@ const data5: Protocol[] = [
     listedAt: 1764288651,
   },
   {
-    id: "7054",
+    id: "7057",
     name: "Mustang Finance",
     address: null,
     symbol: "-",
@@ -3926,7 +3926,7 @@ const data5: Protocol[] = [
     },
   },
   {
-    id: "7054",
+    id: "7058",
     name: "Nad.fun",
     address: null,
     symbol: "-",

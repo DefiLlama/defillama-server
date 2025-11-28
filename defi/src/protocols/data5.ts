@@ -3290,6 +3290,7 @@ const data5: Protocol[] = [
       fees: "madness-finance",
     },
     deadUrl: true,
+    rugged: true,
   },
   {
     id: "7032",

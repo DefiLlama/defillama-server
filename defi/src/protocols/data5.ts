@@ -4158,5 +4158,30 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
   },
+  {
+    id: "7068",
+    name: "Mon Bridge Dex",
+    address: null,
+    symbol: "-",
+    url: "https://agg.monbridgedex.xyz/",
+    description:
+      "Mon Bridge Dex is an advanced aggregator that bridges multiple DEXes to secure the best swap output for your trades on Monad.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/mon-bridge-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Monad"],
+    module: "dummy.js",
+    twitter: "monbridgedex",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      aggregators: "monbridgedex",
+      fees: "monbridgedex",
+    },
+  },
 ];
 export default data5;

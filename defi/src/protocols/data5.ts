@@ -4137,5 +4137,26 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764374343,
   },
+  {
+    id: "7067",
+    name: "InstaDapp",
+    address: "0x6f40d4a6237c257fff2db00fa0510deeecd303eb",
+    symbol: "INST",
+    url: "https://instadapp.io/",
+    description:
+      "The Instadapp platform is a full feature platform for both users and developers to leverage the full potential of DeFi. The Instadapp protocol ('DSL') acts as the middleware that aggregates multiple DeFi protocols into one upgradable smart contract layer. This structure allows Instadapp to access the full potential of Decentralized Finance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/instadapp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "instadapp/index.js",
+    twitter: "Instadapp",
+    forkedFromIds: [],
+    audit_links: [],
+  },
 ];
 export default data5;

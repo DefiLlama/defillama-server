@@ -4129,7 +4129,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["Carbon Credit"],
+    tags: ["Carbon Credits"],
     chains: ["Aptos"],
     module: "newrl-rwa/index.js",
     twitter: "newrl_RWA",

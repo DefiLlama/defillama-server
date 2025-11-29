@@ -9596,6 +9596,7 @@ const data2: Protocol[] = [
       {
         message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
+        until: "2026-02-28",
       }
     ]
   },

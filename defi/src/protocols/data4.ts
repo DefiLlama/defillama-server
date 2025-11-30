@@ -21085,7 +21085,7 @@ const data4: Protocol[] = [
         proof: ["https://docs.rysk.finance/resources/oracle"],
       },
       {
-        name: "Stork",
+        name: "Pyth",
         type: "Aggregator",
         proof: ["https://docs.rysk.finance/resources/oracle"],
       },

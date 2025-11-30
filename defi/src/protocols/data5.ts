@@ -4137,7 +4137,7 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764374343,
   },
-  {
+  /*{
     id: "7067",
     name: "InstaDapp",
     address: "0x6f40d4a6237c257fff2db00fa0510deeecd303eb",
@@ -4158,6 +4158,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
   },
+  */
   {
     id: "7068",
     name: "Mon Bridge Dex",

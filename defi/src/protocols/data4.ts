@@ -21081,7 +21081,12 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Stork",
-        type: "Primary",
+        type: "Aggregator",
+        proof: ["https://docs.rysk.finance/resources/oracle"],
+      },
+      {
+        name: "Stork",
+        type: "Aggregator",
         proof: ["https://docs.rysk.finance/resources/oracle"],
       },
     ],

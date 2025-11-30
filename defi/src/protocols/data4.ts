@@ -10969,7 +10969,14 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "momentum",
       dexs: "momentum"
-    }
+    },
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions, processes wash trading that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-03-01",
+      }
+    ]
   },
   {
     id: "6006",

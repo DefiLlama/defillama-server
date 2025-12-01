@@ -471,7 +471,10 @@ export const chainCoingeckoIds = {
     cmcId: "4157",
     categories: ["Cosmos"],
     twitter: "THORChain",
-    url: "https://thorchain.org/"
+    url: "https://thorchain.org/",
+    dimensions: {
+      fees: "thorchain"
+    }
   },
   "Tron": {
     geckoId: "tron",

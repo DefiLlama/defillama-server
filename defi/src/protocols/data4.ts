@@ -16061,14 +16061,14 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Unichain", "Corn"],
+    chains: ["Ethereum", "Base", "Unichain", "Corn", "Monad"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }],
+        chains: [{ chain: "Base" }, { chain: "Monad"}],
       },
       {
         name: "Chaos",

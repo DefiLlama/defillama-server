@@ -8488,6 +8488,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ValantisLabs",
     github: ["ValantisLabs"],
   },
+  {
+    id: "parent#octoswap",
+    name: "OctoSwap",
+    url: "https://octo.exchange/",
+    description: "OctoSwap unites the strengths of both classic and concentrated AMMs with an advanced smart router, making it the premier liquidity hub on Monad for efficient liquidity and execution.",
+    logo: `${baseIconsUrl}/octoswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "octoswapdex",
+    github: ["octoswapdex"],
+  },
 ];
 
 export default parentProtocols;

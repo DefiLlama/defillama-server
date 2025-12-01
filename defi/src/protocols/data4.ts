@@ -32170,7 +32170,6 @@ const data4: Protocol[] = [
       dexs: "aquifer"
     }
   },
-  /*
   {
     id: "6885",
     name: "Variational",
@@ -32187,14 +32186,13 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Arbitrum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "variational/index.js",
     twitter: "variational_io",
     dimensions: {
       fees: "variational"
     },
     github: ["variational-research"],
   },
-  */
   {
     id: "6886",
     name: "Open Stablecoin Index",

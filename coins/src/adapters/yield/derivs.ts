@@ -618,6 +618,20 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
     address: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
   },
+  sMON: {
+    rate: async ({ api }) => {
+      const assets = await 
+        api.call({
+          abi: "function convertToAssets(uint96 shares) external view returns (uint96 assets)",
+          target: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+          params: "1000000"
+        })
+      return assets / 1000000;
+    },
+    chain: "monad",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+  },
 };
 
 export async function derivs(timestamp: number) {

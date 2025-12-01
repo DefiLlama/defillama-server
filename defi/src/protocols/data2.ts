@@ -9591,7 +9591,14 @@ const data2: Protocol[] = [
     github: ["Popcorn-Limited"],
     dimensions: {
       fees: "vaultcraft"
-    }
+    },
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-02-28",
+      }
+    ]
   },
   {
     id: "1792",

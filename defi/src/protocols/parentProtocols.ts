@@ -8476,6 +8476,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "cypher_ethereum",
   },
+  {
+    id: "parent#valantis",
+    name: "Valantis",
+    url: "https://www.valantis.xyz",
+    description: "The Modular DEX. Live on HyperEVM with STEX, a next-gen AMM design built specific for staked assets.",
+    logo: `${baseIconsUrl}/valantis.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ValantisLabs",
+    github: ["ValantisLabs"],
+  },
 ];
 
 export default parentProtocols;

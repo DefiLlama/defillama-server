@@ -67,7 +67,7 @@ async function fetchDBData(
 
   await runInPromisePool({
     items: promises,
-    concurrency: 10,
+    concurrency: 7,
     processor: async (promise: any) => await promise,
   });
 

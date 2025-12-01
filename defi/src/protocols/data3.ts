@@ -34293,7 +34293,10 @@ const data3_1: Protocol[] = [
     twitter: "kpk_io",
     forkedFrom: [],
     github: ["karpatkey"],
-    listedAt: 1760637747
+    listedAt: 1760637747,
+    dimensions: {
+      fees: "kpk",
+    },
   },
   {
     id: "4147",

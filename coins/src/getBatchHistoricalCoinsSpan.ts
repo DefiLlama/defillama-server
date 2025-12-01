@@ -8,6 +8,7 @@ import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimest
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { lowercaseAddress } from "./utils/processCoin";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 function generateTimestamps(
   startTimestamp: number,
@@ -85,7 +86,12 @@ async function fetchDBData(
     );
   });
 
-  await Promise.all(promises);
+  await runInPromisePool({
+    items: promises,
+    concurrency: 7,
+    processor: async (promise: any) => await promise,
+  });
+
   return response;
 }
 

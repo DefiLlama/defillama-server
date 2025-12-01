@@ -599,7 +599,25 @@ const configs: { [adapter: string]: Config } = {
     chain: "flow",
     underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
     address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
-  }
+  },
+  earnAUSD: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "uint256:getTotalAssets",
+          target: "0x36eDbF0C834591BFdfCaC0Ef9605528c75c406aA",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+        }),
+      ]);
+      return assets / supply;
+    },
+    chain: "monad",
+    underlying: "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+    address: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+  },
 };
 
 export async function derivs(timestamp: number) {

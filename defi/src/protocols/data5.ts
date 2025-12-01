@@ -3565,6 +3565,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/WaterCoolerStudiosInc/Kintsu-Audits"],
     listedAt: 1764008741,
+    dimensions: {
+      fees: "kintsu",
+    },
   },
   {
     id: "7043",

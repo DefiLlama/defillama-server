@@ -8500,6 +8500,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "octoswapdex",
     github: ["octoswapdex"],
   },
+  {
+    id: "parent#pear-protocol",
+    name: "Pear Protocol",
+    url: "https://pear.finance/",
+    description: "Pear Protocol is a decentralized trading platform that streamlines pair-trading of cryptocurrencies by enabling simultaneous leveraged long and short positions in a single on-chain transaction, integrating with multiple trading engines (e.g., GMX, Vertex, SYMM) to provide liquidity-agnostic trading.",
+    logo: `${baseIconsUrl}/pear-protocol.jpg`,
+    gecko_id: "pear-protocol",
+    cmcId: null,
+    chains: [],
+    twitter: "pear_protocol",
+  },
 ];
 
 export default parentProtocols;

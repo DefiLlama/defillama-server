@@ -145,8 +145,9 @@ export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: numb
   sql.end();
 }
 
-function removeTokenBreakdown(data: FinalChainData): FinalChainData {
+function removeTokenBreakdown(data: FinalChainData): any {
   const overviewData: any = {};
+  if (!data) return overviewData;
   Object.entries(data).map(([key, value]) => {
     overviewData[key] = Number(value.total).toFixed();
   });
@@ -156,7 +157,7 @@ function removeTokenBreakdown(data: FinalChainData): FinalChainData {
 export function parsePgData(timeseries: any[], chain: string, removeBreakdown: boolean = true) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
-    let rawData: { [key: string]: FinalChainData } = {}
+    let rawData: { [key: string]: any } = {}
     try {
       rawData = JSON.parse(t.value);
     } catch (e) {
@@ -168,7 +169,7 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
       const data = removeBreakdown ? removeTokenBreakdown(rawData[chain]) : rawData[chain];
       result.push({ timestamp: t.timestamp, data });
     } else {
-      const data: { [key: string]: FinalChainData } = {} 
+      const data: { [key: string]: any } = {} 
       Object.keys(rawData).map((c: string) => {
         if (c == "timestamp") return;
         data[c] = removeBreakdown ? removeTokenBreakdown(rawData[c]) : rawData[c];

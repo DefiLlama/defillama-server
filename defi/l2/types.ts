@@ -53,5 +53,5 @@ export type McapsApiData = {
   timestamp: number;
 };
 export type AllProtocols = { [id: string]: TokenTvlData };
-export type ChartData = { timestamp: string; data: FinalChainData | FinalData };
+export type ChartData = { timestamp: string; data: FinalChainData | FinalData | undefined };
 export type ChainTokens = { [chain: string]: { [token: string]: BigNumber } };

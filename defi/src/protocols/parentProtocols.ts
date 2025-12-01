@@ -8511,6 +8511,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "pear_protocol",
   },
+  {
+    id: "parent#monday-trade",
+    name: "Monday Trade",
+    url: "https://app.monday.trade/",
+    description: "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+    logo: `${baseIconsUrl}/monday-trade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MondayTrade_",
+  },
 ];
 
 export default parentProtocols;

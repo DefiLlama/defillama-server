@@ -2543,6 +2543,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#kodiak",
     dimensions: {
       fees: "kodiak-perps",
+      derivatives: "kodiak-perps",
     }
   },
   {

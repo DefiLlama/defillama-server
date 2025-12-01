@@ -4279,5 +4279,27 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764611262,
   },
+  {
+    id: "7073",
+    name: "Capx AI",
+    address: "bsc:0x71fb1795b084ff2b65eabf51cad22bbefd42ed5f",
+    symbol: "CAPX",
+    url: "https://capx.ai",
+    description:
+      "Capx Chain is an Ethereum Layer 2 where AI Apps launch ERC20 tokens, distribute ownership to users, and scale on infrastructure secured by more than $220M in restaked assets.",
+    chain: "Capx Chain",
+    logo: `${baseIconsUrl}/capx-ai.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "capx-ai",
+    cmcId: "36557",
+    category: "AI Agents",
+    chains: ["Capx Chain"],
+    module: "capx/index.js",
+    twitter: "0xcapx",
+    forkedFromIds: [],
+    audit_links: ["https://www.capx.ai/openzeppelin-audit-report.pdf"],
+    listedAt: 1764612049,
+  }
 ];
 export default data5;

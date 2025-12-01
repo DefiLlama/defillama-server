@@ -4017,9 +4017,9 @@ const data5: Protocol[] = [
     chains: ["Monad"],
     module: "monday-trade/index.js",
     twitter: "MondayTrade_",
-    forkedFromIds: [],
+    forkedFromIds: ['4215'],
     audit_links: ["https://files.monday.trade/files/Monday-Trade-Spot-Audit.pdf"],
-    parentProtocol: "parent#synfutures",
+    // parentProtocol: "parent#synfutures",
     listedAt: 1764300387,
   },
   {

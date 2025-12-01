@@ -372,6 +372,7 @@ export async function storeTvl(
       return {
         storeFn,
         usdTvls,
+        usdTokenBalances,
         protocol,
         unixTimestamp,
       }

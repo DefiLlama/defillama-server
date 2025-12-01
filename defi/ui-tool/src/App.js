@@ -19,6 +19,21 @@ const { Text } = Typography;
 const { Option } = Select;
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
+function humanizeNumber(num) {
+  if (num === 0) return '0';
+  if (!num || isNaN(num)) return '0';
+
+  const absNum = Math.abs(num);
+  const sign = num < 0 ? '-' : '';
+
+  if (absNum >= 1e12) return `${sign}${(absNum / 1e12).toFixed(2)}T`;
+  if (absNum >= 1e9) return `${sign}${(absNum / 1e9).toFixed(2)}B`;
+  if (absNum >= 1e6) return `${sign}${(absNum / 1e6).toFixed(2)}M`;
+  if (absNum >= 1e3) return `${sign}${(absNum / 1e3).toFixed(2)}K`;
+
+  return num.toLocaleString('en-US', { maximumFractionDigits: 2 });
+}
+
 const App = () => {
 
   const [output, setOutput] = useState('');
@@ -67,6 +82,9 @@ const App = () => {
   const [tvlDeleteWaitingRecordsDeletableIds, setTvlDeleteWaitingRecordsDeletableIds] = useState([]);
   const [tvlDeleteWaitingRecordsShowChart, setTvlDeleteWaitingRecordsShowChart] = useState(true);
   const [tvlDeleteWaitingRecordsSelectedChartColumn, setTvlDeleteWaitingRecordsSelectedChartColumn] = useState('');
+
+  const [tvlRemoveTokensPreviewRecords, setTvlRemoveTokensPreviewRecords] = useState([]);
+  const [tvlSelectedTokensByRecord, setTvlSelectedTokensByRecord] = useState({});
 
 
   // misc tab
@@ -149,6 +167,10 @@ const App = () => {
         case 'tvl-delete-waiting-records':
           setTvlDeleteWaitingRecords(data.data);
           break;
+        // remove tokens preview
+        case 'tvl-remove-tokens-preview-records':
+          setTvlRemoveTokensPreviewRecords(data.data || []);
+          break;
         case 'get-protocols-missing-tokens-response':
         case 'get-protocols-token-dominance-response':
         case 'get-dim-protocols-missing-metrics-response':
@@ -206,6 +228,16 @@ const App = () => {
       } catch (e) {
         console.error('Failed to parse saved TVL form values:', e);
         // Ignore parse errors
+      }
+    }
+
+    const savedMisc = localStorage.getItem(MISC_FORM_STORAGE_KEY);
+    if (savedMisc) {
+      try {
+        const parsedMisc = JSON.parse(savedMisc);
+        miscForm.setFieldsValue(parsedMisc);
+      } catch (e) {
+        console.error('Failed to parse saved Misc form values:', e);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -315,6 +347,7 @@ const App = () => {
               {activeTabKey === 'dimensions' && getWaitingRecordsTable()}
               {activeTabKey === 'tvl' && getTvlStoreWaitingTable()}
               {activeTabKey === 'tvl' && getTvlDeleteWaitingTable()}
+              {activeTabKey === 'tvl' && getTvlRemoveTokensPreviewTable()}
               {activeTabKey === 'misc' && getMiscOutputTable()}
 
 
@@ -579,12 +612,13 @@ const App = () => {
             <Option value="refill">Refill</Option>
             <Option value="refill-last">Refill-last</Option>
             <Option value="tvl-delete-get-list">Delete</Option>
+            <Option value="remove-tokens-preview">Remove tokens (dry)</Option>
             <Option value="clear-cache">Clear Cache</Option>
           </Select>
         </Form.Item>
 
 
-        {['refill', 'tvl-delete-get-list'].includes(tvlAction) &&
+        {['refill', 'tvl-delete-get-list', 'remove-tokens-preview'].includes(tvlAction) &&
 
           <Form.Item
             label="Date Range"
@@ -592,7 +626,7 @@ const App = () => {
             rules={[
               () => ({
                 validator(_, value) {
-                  if (['refill', 'tvl-delete-get-list'].includes(tvlAction) || (value && value.length === 2)) {
+                  if (['refill', 'tvl-delete-get-list', 'remove-tokens-preview'].includes(tvlAction) || (value && value.length === 2)) {
                     return Promise.resolve();
                   }
                   return Promise.reject(new Error('Please select a valid date range'));
@@ -943,6 +977,361 @@ const App = () => {
     );
   }
 
+  function getTvlDeleteWaitingTable() {
+    if (!tvlDeleteWaitingRecords?.length) return null;
+    tvlDeleteWaitingRecords.forEach(record => record.unixTimestamp = '' + record.unixTimestamp);
+
+    const colSet = new Set(['id',])
+    const stringColSet = new Set(['protocolName', 'timeS', 'unixTimestamp'])
+    const columns = []
+    const chartColumnsSet = new Set(['_tvl'])
+    const topLevelColumns = new Set(['tvl', 'staking', 'pool2'])
+    tvlDeleteWaitingRecords.forEach(record => {
+      Object.keys(record).forEach(key => {
+        if (colSet.has(key)) return;
+        if (key.startsWith('_')) {
+          chartColumnsSet.add(key);
+          return;
+        }
+        if (!tvlDeleteWaitingRecordsShowChainColumns && (!stringColSet.has(key) && !topLevelColumns.has(key))) return;
+        const column = { title: key, dataIndex: key, key, }
+        if (stringColSet.has(key))
+          column.sorter = (a, b) => a[key].localeCompare(b[key]);
+        else
+          column.sorter = (a, b) => a['_' + key] - b['_' + key];
+        columns.push(column);
+        colSet.add(key);
+      });
+    });
+    const chartColumns = Array.from(chartColumnsSet)
+    let selectChartElement = null;
+    let chartColumnSelected = tvlDeleteWaitingRecordsSelectedChartColumn ? tvlDeleteWaitingRecordsSelectedChartColumn : chartColumns[0];
+
+    if (chartColumns.length > 1 && tvlDeleteWaitingRecordsShowChart) {
+      selectChartElement = <Select
+        defaultValue={tvlDeleteWaitingRecordsSelectedChartColumn ? tvlDeleteWaitingRecordsSelectedChartColumn : chartColumnSelected}
+        style={{ width: 200 }}
+        onChange={setTvlDeleteWaitingRecordsSelectedChartColumn}
+      >
+        {chartColumns.map((column) => (
+          <Option key={column} value={column}>{column}</Option>
+        ))}
+      </Select>
+    }
+
+    return (
+      <div>
+        [Tvl] Delete Waiting Records
+        <div style={{ marginBottom: 10 }}>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '30px' }}>
+
+            <Button type="primary" icon={<ClearOutlined />}
+              onClick={() => {
+                const payload = {
+                  type: 'tvl-delete-clear-list',
+                  data: [],
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setTvlDeleteWaitingRecordsDeletableIds([]);
+              }}
+
+            > Clear list </Button>
+
+            {/*  <Button type="default" icon={<DeleteOutlined />}
+              onClick={() => {
+                const payload = {
+                  type: 'tvl-delete-delete-all',
+                  data: [],
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setTvlDeleteWaitingRecordsDeletableIds([]);
+              }}
+              danger
+
+            > Delete everything in DB </Button> */}
+
+
+
+
+            <Button
+              type="default"
+              icon={<DeleteOutlined />}
+              disabled={tvlDeleteWaitingRecordsDeletableIds.length === 0}
+              danger
+              onClick={() => {
+                if (tvlDeleteWaitingRecordsDeletableIds.length === 0) {
+                  return;
+                }
+                const payload = {
+                  type: 'tvl-delete-delete-records',
+                  data: tvlDeleteWaitingRecordsDeletableIds,
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setTvlDeleteWaitingRecordsDeletableIds([]);
+              }}
+            >
+              Delete Selected in DB
+            </Button>
+
+
+            <Button
+              type="default"
+              icon={< LineChartOutlined />}
+              onClick={() => setTvlDeleteWaitingRecordsShowChart(!tvlDeleteWaitingRecordsShowChart)}
+            >
+              {tvlDeleteWaitingRecordsShowChart ? 'Hide Chart' : 'Show Chart'}
+            </Button>
+
+            {selectChartElement}
+
+
+            <Switch
+              checked={tvlDeleteWaitingRecordsShowChainColumns}
+              onChange={(checked) => setTvlDeleteWaitingRecordsShowChainColumns(checked)}
+              unCheckedChildren="Show chain info"
+              checkedChildren="Hide chain info"
+            />
+          </div>
+        </div>
+
+        {tvlDeleteWaitingRecordsShowChart && printChartData(tvlDeleteWaitingRecords, chartColumnSelected)}
+
+        <Table
+          columns={columns}
+          dataSource={tvlDeleteWaitingRecords}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+          rowSelection={{
+            type: 'checkbox',
+            onChange: (selectedRowKeys) => {
+              setTvlDeleteWaitingRecordsDeletableIds(selectedRowKeys);
+            },
+          }}
+        />
+      </div >
+    );
+  }
+
+  function computeRemovedAndAfter(record) {
+    const selected = new Set(tvlSelectedTokensByRecord[record.id] || []);
+    let removed = 0;
+    let after = 0;
+    const breakdown = record.tokenBreakdown || [];
+
+    breakdown.forEach((tok) => {
+      const key = `${tok.chain}|${tok.token}`;
+      const val = tok.value ?? tok.valueBefore ?? 0;
+
+      if (selected.has(key)) removed += val;
+      else after += val;
+    });
+
+    if (!after && record.tvlBefore && removed) {
+      after = record.tvlBefore - removed;
+    }
+
+    return { removed, after };
+  }
+
+  function getTvlRemoveTokensPreviewTable() {
+    if (!tvlRemoveTokensPreviewRecords || tvlRemoveTokensPreviewRecords.length === 0) {
+      return (
+        <div>
+          <div style={{ marginBottom: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ fontWeight: 'bold', fontSize: '16px' }}>
+              [Tvl] Remove Tokens Preview
+            </div>
+            <div style={{
+              background: '#fff3cd',
+              color: '#856404',
+              padding: '4px 12px',
+              borderRadius: '4px',
+              fontWeight: 'bold',
+              fontSize: '12px',
+            }}>
+              🔒 DRY MODE - No database changes will be made
+            </div>
+          </div>
+          <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+            No preview data available. Run the preview to see results.
+          </div>
+        </div>
+      );
+    }
+
+    const data = tvlRemoveTokensPreviewRecords.map((r, idx) => ({
+      key: r.id || idx,
+      ...r,
+    }));
+
+    const columns = [
+      {
+        title: 'Protocol',
+        dataIndex: 'protocolName',
+        key: 'protocolName',
+        sorter: (a, b) => a.protocolName.localeCompare(b.protocolName),
+      },
+      {
+        title: 'Date',
+        dataIndex: 'timeS',
+        key: 'timeS',
+        sorter: (a, b) => new Date(a.timeS).getTime() - new Date(b.timeS).getTime(),
+        render: (text) => new Date(text).toLocaleDateString(),
+      },
+      {
+        title: 'TVL before',
+        dataIndex: 'tvlBefore',
+        key: 'tvlBefore',
+        sorter: (a, b) => (a.tvlBefore || 0) - (b.tvlBefore || 0),
+        align: 'right',
+        render: (val) => humanizeNumber(val || 0),
+      },
+      {
+        title: 'TVL after',
+        key: 'tvlAfter',
+        align: 'right',
+        sorter: (a, b) => {
+          const aa = computeRemovedAndAfter(a).after;
+          const bb = computeRemovedAndAfter(b).after;
+          return aa - bb;
+        },
+        render: (_, record) => {
+          const { after } = computeRemovedAndAfter(record);
+          return humanizeNumber(after || 0);
+        },
+      },
+      {
+        title: 'Removed',
+        key: 'removed',
+        align: 'right',
+        sorter: (a, b) => {
+          const aa = computeRemovedAndAfter(a).removed;
+          const bb = computeRemovedAndAfter(b).removed;
+          return aa - bb;
+        },
+        render: (_, record) => {
+          const { removed } = computeRemovedAndAfter(record);
+          return (
+            <span style={{ color: removed > 0 ? '#ff4d4f' : 'inherit' }}>
+              {humanizeNumber(removed || 0)}
+            </span>
+          );
+        },
+      },
+    ];
+
+    return (
+      <div>
+        <div style={{ marginBottom: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ fontWeight: 'bold', fontSize: '16px' }}>
+            [Tvl] Remove Tokens Preview
+          </div>
+          <div style={{
+            background: '#fff3cd',
+            color: '#856404',
+            padding: '4px 12px',
+            borderRadius: '4px',
+            fontWeight: 'bold',
+            fontSize: '12px',
+          }}>
+            🔒 DRY MODE - No database changes will be made
+          </div>
+        </div>
+
+        <Table
+          columns={columns}
+          dataSource={data}
+          pagination={{ pageSize: 50 }}
+          expandable={{
+            expandedRowRender: (record) => {
+              const breakdown = record.tokenBreakdown || [];
+              if (!breakdown.length) {
+                return <div style={{ padding: '16px' }}>No token breakdown available</div>;
+              }
+
+              const selectedKeys = tvlSelectedTokensByRecord[record.id] || [];
+
+              const tableData = breakdown.map((item, idx) => ({
+                key: `${item.chain}|${item.token}`,
+                ...item,
+              }));
+
+              const breakdownCols = [
+                {
+                  title: 'Chain',
+                  dataIndex: 'chain',
+                  key: 'chain',
+                },
+                {
+                  title: 'Token',
+                  dataIndex: 'token',
+                  key: 'token',
+                  render: (text) => (
+                    <span style={{ fontFamily: 'monospace', fontSize: '0.9em' }}>{text}</span>
+                  ),
+                },
+                {
+                  title: 'Value',
+                  dataIndex: 'value',
+                  key: 'value',
+                  align: 'right',
+                  render: (value) => humanizeNumber(value || 0),
+                },
+                {
+                  title: 'Status',
+                  key: 'status',
+                  render: (_, row) => {
+                    const key = `${row.chain}|${row.token}`;
+                    const isRemoved = selectedKeys.includes(key);
+                    return (
+                      <span
+                        style={{
+                          color: isRemoved ? '#ff4d4f' : '#52c41a',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        {isRemoved ? 'REMOVED' : 'KEPT'}
+                      </span>
+                    );
+                  },
+                },
+              ];
+
+              return (
+                <div style={{ padding: '16px' }}>
+                  <div style={{ marginBottom: '12px', fontWeight: 'bold' }}>
+                    Token Breakdown for {new Date(record.timeS).toLocaleDateString()}
+                  </div>
+                  <Table
+                    columns={breakdownCols}
+                    dataSource={tableData}
+                    pagination={false}
+                    size="small"
+                    rowSelection={{
+                      selectedRowKeys: selectedKeys,
+                      onChange: (newSelectedRowKeys) => {
+                        setTvlSelectedTokensByRecord((prev) => ({
+                          ...prev,
+                          [record.id]: newSelectedRowKeys,
+                        }));
+                      },
+                    }}
+                  />
+                </div>
+              );
+            },
+            rowExpandable: (record) =>
+              record.tokenBreakdown && record.tokenBreakdown.length > 0,
+          }}
+        />
+      </div>
+    );
+  }
+
   function getMiscOutputTable() {
     if (!miscOutputTableData?.type) return null;
     let clearButton = (
@@ -1087,145 +1476,6 @@ const App = () => {
         </div>
         {data}
       </div>
-    );
-  }
-
-  function getTvlDeleteWaitingTable() {
-    if (!tvlDeleteWaitingRecords?.length) return null;
-    tvlDeleteWaitingRecords.forEach(record => record.unixTimestamp = '' + record.unixTimestamp);
-
-    const colSet = new Set(['id',])
-    const stringColSet = new Set(['protocolName', 'timeS', 'unixTimestamp'])
-    const columns = []
-    const chartColumnsSet = new Set(['_tvl'])
-    const topLevelColumns = new Set(['tvl', 'staking', 'pool2'])
-    tvlDeleteWaitingRecords.forEach(record => {
-      Object.keys(record).forEach(key => {
-        if (colSet.has(key)) return;
-        if (key.startsWith('_')) {
-          chartColumnsSet.add(key);
-          return;
-        }
-        if (!tvlDeleteWaitingRecordsShowChainColumns && (!stringColSet.has(key) && !topLevelColumns.has(key))) return;
-        const column = { title: key, dataIndex: key, key, }
-        if (stringColSet.has(key))
-          column.sorter = (a, b) => a[key].localeCompare(b[key]);
-        else
-          column.sorter = (a, b) => a['_' + key] - b['_' + key];
-        columns.push(column);
-        colSet.add(key);
-      });
-    });
-    const chartColumns = Array.from(chartColumnsSet)
-    let selectChartElement = null;
-    let chartColumnSelected = tvlDeleteWaitingRecordsSelectedChartColumn ? tvlDeleteWaitingRecordsSelectedChartColumn : chartColumns[0];
-
-    if (chartColumns.length > 1 && tvlDeleteWaitingRecordsShowChart) {
-      selectChartElement = <Select
-        defaultValue={tvlDeleteWaitingRecordsSelectedChartColumn ? tvlDeleteWaitingRecordsSelectedChartColumn : chartColumnSelected}
-        style={{ width: 200 }}
-        onChange={setTvlDeleteWaitingRecordsSelectedChartColumn}
-      >
-        {chartColumns.map((column) => (
-          <Option key={column} value={column}>{column}</Option>
-        ))}
-      </Select>
-    }
-
-    return (
-      <div>
-        [Tvl] Delete Waiting Records
-        <div style={{ marginBottom: 10 }}>
-
-          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '30px' }}>
-
-            <Button type="primary" icon={<ClearOutlined />}
-              onClick={() => {
-                const payload = {
-                  type: 'tvl-delete-clear-list',
-                  data: [],
-                };
-
-                wsRef.current.send(JSON.stringify(payload));
-                setTvlDeleteWaitingRecordsDeletableIds([]);
-              }}
-
-            > Clear list </Button>
-
-            {/*  <Button type="default" icon={<DeleteOutlined />}
-              onClick={() => {
-                const payload = {
-                  type: 'tvl-delete-delete-all',
-                  data: [],
-                };
-
-                wsRef.current.send(JSON.stringify(payload));
-                setTvlDeleteWaitingRecordsDeletableIds([]);
-              }}
-              danger
-
-            > Delete everything in DB </Button> */}
-
-
-
-
-            <Button
-              type="default"
-              icon={<DeleteOutlined />}
-              disabled={tvlDeleteWaitingRecordsDeletableIds.length === 0}
-              danger
-              onClick={() => {
-                if (tvlDeleteWaitingRecordsDeletableIds.length === 0) {
-                  return;
-                }
-                const payload = {
-                  type: 'tvl-delete-delete-records',
-                  data: tvlDeleteWaitingRecordsDeletableIds,
-                };
-
-                wsRef.current.send(JSON.stringify(payload));
-                setTvlDeleteWaitingRecordsDeletableIds([]);
-              }}
-            >
-              Delete Selected in DB
-            </Button>
-
-
-            <Button
-              type="default"
-              icon={< LineChartOutlined />}
-              onClick={() => setTvlDeleteWaitingRecordsShowChart(!tvlDeleteWaitingRecordsShowChart)}
-            >
-              {tvlDeleteWaitingRecordsShowChart ? 'Hide Chart' : 'Show Chart'}
-            </Button>
-
-            {selectChartElement}
-
-
-            <Switch
-              checked={tvlDeleteWaitingRecordsShowChainColumns}
-              onChange={(checked) => setTvlDeleteWaitingRecordsShowChainColumns(checked)}
-              unCheckedChildren="Show chain info"
-              checkedChildren="Hide chain info"
-            />
-          </div>
-        </div>
-
-        {tvlDeleteWaitingRecordsShowChart && printChartData(tvlDeleteWaitingRecords, chartColumnSelected)}
-
-        <Table
-          columns={columns}
-          dataSource={tvlDeleteWaitingRecords}
-          pagination={{ pageSize: 5000 }}
-          rowKey={(record) => record.id}
-          rowSelection={{
-            type: 'checkbox',
-            onChange: (selectedRowKeys) => {
-              setTvlDeleteWaitingRecordsDeletableIds(selectedRowKeys);
-            },
-          }}
-        />
-      </div >
     );
   }
 

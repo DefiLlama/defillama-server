@@ -1,16 +1,17 @@
-import protocols from '../../src/protocols/data'
-import treasuries from '../../src/protocols/treasury'
-import entities from '../../src/protocols/entities'
-import { IProtocol } from '../../src/types';
-import { clearAllDimensionsCache, clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
-import { storeTvl2, storeTvl2Options } from '../../src/storeTvlInterval/getAndStoreTvl';
+
 import { humanizeNumber } from '@defillama/sdk';
 import evmChainProvidersList from '@defillama/sdk/build/providers.json';
 import PromisePool from '@supercharge/promise-pool';
 import { deleteProtocolItems, getProtocolItems, initializeTVLCacheDB } from '../../src/api2/db';
-import dynamodb from '../../src/utils/shared/dynamodb';
-import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl, } from '../../src/utils/getLastRecord';
+import { clearAllDimensionsCache, clearProtocolCacheById } from '../../src/cli/utils/clearProtocolCache';
+import protocols from '../../src/protocols/data';
+import entities from '../../src/protocols/entities';
+import treasuries from '../../src/protocols/treasury';
+import { storeTvl2, storeTvl2Options } from '../../src/storeTvlInterval/getAndStoreTvl';
+import { IProtocol } from '../../src/types';
+import { dailyRawTokensTvl, dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, } from '../../src/utils/getLastRecord';
 import { importAdapterDynamic } from '../../src/utils/imports/importAdapter';
+import dynamodb from '../../src/utils/shared/dynamodb';
 
 const tvlNameMap: Record<string, IProtocol> = {}
 const allItems = [...protocols, ...treasuries, ...entities]
@@ -44,6 +45,9 @@ export async function runTvlAction(ws: any, data: any) {
       break;
     case 'refill':
       await fillOld(ws, protocol, options)
+      break;
+    case 'remove-tokens-preview':
+      await tvlRemoveTokensPreview(ws, protocol, options)
       break;
     default: console.error('Unknown tvl action:', action); break;
   }
@@ -185,6 +189,216 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
     delete process.env.HISTORICAL
 }
 
+async function tvlRemoveTokensPreview(ws: any, protocol: IProtocol, options: any) {
+  const { dateFrom, dateTo } = options;
+
+  console.log(
+    '[remove-tokens-preview] protocol:',
+    protocol.name,
+    'dateFrom:',
+    new Date(dateFrom * 1000).toDateString(),
+    'dateTo:',
+    new Date(dateTo * 1000).toDateString(),
+  );
+
+  let needToResetHistorical = false;
+  if (!process.env.HISTORICAL) {
+    needToResetHistorical = true;
+    process.env.HISTORICAL = 'true';
+  }
+
+  try {
+    const adapter = await importAdapterDynamic(protocol);
+    const start = adapter.start ? Math.round(+new Date(adapter.start) / 1000) : 0;
+
+    let from = dateFrom < start ? start : dateFrom;
+    const currentUnixTs = Math.round(Date.now() / 1000);
+    let to = getClosestDayStartTimestamp(dateTo > currentUnixTs ? currentUnixTs : dateTo);
+    const secondsInDay = 24 * 3600;
+
+    const dates: number[] = [];
+    while (from <= to) {
+      dates.push(to);
+      to -= secondsInDay;
+    }
+
+    const previewRecords: any[] = [];
+    let i = 0;
+
+    const { errors } = await PromisePool.withConcurrency(3)
+      .for(dates)
+      .process(async (unixTimestamp: number) => {
+        console.log(
+          ++i,
+          '[remove-tokens-preview] Processing',
+          new Date(unixTimestamp * 1000).toLocaleDateString(),
+        );
+
+        const storeOptions: storeTvl2Options = {
+          unixTimestamp,
+          protocol,
+          maxRetries: 3,
+          useCurrentPrices: false,
+          isRunFromUITool: true,
+          breakIfTvlIsZero: false,
+          skipBlockData: false,
+        };
+
+        const response: any = await storeTvl2(storeOptions);
+        if (!response || !response.usdTokenBalances) {
+          console.warn('[remove-tokens-preview] No usdTokenBalances for timestamp', unixTimestamp);
+          return;
+        }
+
+        const usdTokenBalances = response.usdTokenBalances || {};
+        const usdTvls = response.usdTvls || {};
+
+        let tvlBefore = 0;
+        for (const v of Object.values(usdTvls)) {
+          tvlBefore += Number(v) || 0;
+        }
+
+        const tokenBreakdown: any[] = [];
+
+        for (const [chainKey, tokensMap] of Object.entries(usdTokenBalances as any)) {
+          const chainTokens: any = tokensMap || {};
+          const tokenKeys = Object.keys(chainTokens);
+
+          for (const tokenKey of tokenKeys) {
+            const usdValue = Number(chainTokens[tokenKey]) || 0;
+            tokenBreakdown.push({
+              chain: chainKey,
+              token: tokenKey,
+              value: usdValue,
+            });
+          }
+        }
+
+        const id = `${protocol.id}-${unixTimestamp}`;
+
+        previewRecords.push({
+          id,
+          protocolName: protocol.name,
+          unixTimestamp,
+          timeS: new Date(unixTimestamp * 1000).toISOString(),
+          tvlBefore,
+          tvlAfter: tvlBefore,
+          removedValue: 0,
+          tokenBreakdown,
+        });
+      });
+
+    if (errors.length > 0) {
+      console.error('[remove-tokens-preview] Errors:', errors);
+    }
+
+    previewRecords.sort((a, b) => b.unixTimestamp - a.unixTimestamp);
+
+    console.log('[remove-tokens-preview] DRY MODE - No database modifications will be made');
+
+    ws.send(
+      JSON.stringify({
+        type: 'tvl-remove-tokens-preview-records',
+        data: previewRecords,
+        isDryRun: true,
+      }),
+    );
+
+    console.log(
+      '[remove-tokens-preview] Sent preview records:',
+      previewRecords.length,
+      '(DRY MODE - No DB changes)',
+    );
+  } catch (e) {
+    console.error('[remove-tokens-preview] Error:', (e as any).message || e);
+  } finally {
+    if (needToResetHistorical) {
+      delete process.env.HISTORICAL;
+    }
+  }
+}
+
+function extractTokensMapFromRawRecord(item: any): Record<string, number> {
+  const preferredFields = ['tokensUsd', 'tokens', 'rawTokens', 'usdTokens', 'tokenBalances'];
+
+  for (const field of preferredFields) {
+    const obj = (item as any)[field];
+    const m = normalizeTokenMap(obj);
+    if (m && Object.keys(m).length) {
+      console.log('[remove-tokens-preview] Using field', field, 'for tokens map');
+      return m;
+    }
+  }
+
+  for (const [field, value] of Object.entries(item)) {
+    const m = normalizeTokenMap(value);
+    if (m && Object.keys(m).length) {
+      console.log('[remove-tokens-preview] Using detected field', field, 'for tokens map');
+      return m;
+    }
+  }
+
+  return {};
+}
+
+function normalizeTokenMap(value: any): Record<string, number> | null {
+  if (!value || typeof value !== 'object') return null;
+
+  const entries = Object.entries(value);
+  if (!entries.length) return null;
+
+  const [sampleKey, sampleVal] = entries[0];
+
+  const isTokenKey = /^[a-z0-9]+:0x[0-9a-fA-F]{40}$/.test(sampleKey);
+  if (!isTokenKey) return null;
+
+  if (typeof sampleVal === 'number') {
+    const out: Record<string, number> = {};
+    for (const [k, v] of entries) {
+      out[k.toLowerCase()] = Number(v) || 0;
+    }
+    return out;
+  }
+
+  if (sampleVal && typeof sampleVal === 'object') {
+    const hasUsd = 'usd' in (sampleVal as any) || 'tvl' in (sampleVal as any);
+    if (!hasUsd) return null;
+
+    const out: Record<string, number> = {};
+    for (const [k, v] of entries) {
+      const vv: any = v;
+      const usdVal = vv.usd ?? vv.tvl ?? 0;
+      out[k.toLowerCase()] = Number(usdVal) || 0;
+    }
+    return out;
+  }
+
+  return null;
+}
+
+async function resolveTokensFromSymbol(protocol: IProtocol, rawRecords: any[], symbol: string): Promise<string[]> {
+  const target = symbol.toLowerCase().trim();
+  const matches = new Set<string>();
+
+  for (const item of rawRecords) {
+    const tokenSymbolsMap =
+      (item.tokenSymbols as Record<string, string>) ||
+      (item.tokensSymbols as Record<string, string>) ||
+      {};
+
+    for (const [tokenKey, sym] of Object.entries(tokenSymbolsMap)) {
+      if ((sym || '').toLowerCase() === target) {
+        matches.add(tokenKey);
+      }
+    }
+  }
+
+  if (matches.size === 0) {
+    console.warn('[resolveTokensFromSymbol] No tokens found for symbol', symbol, 'in protocol', protocol.name);
+  }
+
+  return Array.from(matches);
+}
 
 const recordItems: any = {}
 

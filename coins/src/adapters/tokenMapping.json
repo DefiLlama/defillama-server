@@ -2514,6 +2514,26 @@
     "decimals": "18",
     "symbol": "TRX",
     "to": "coingecko#layerzero-bridged-trx-avalanche"
+  },
+     "0x13af0fe9eb35e91758b467f95cbc78e16fdd8b6b": {
+    "decimals": "18",
+    "symbol": "BYTES",
+    "to": "coingecko#neo-tokyo"
+  },
+  "0x700103766c23fb8da956caf94c756b90106eeb41": {
+    "decimals": "18",
+    "symbol": "WLFI",
+    "to": "coingecko#world-liberty-financial"
+  },
+  "0x7bfd4ca2a6cf3a3fddd645d10b323031afe47ff0": {
+    "decimals": "18",
+    "symbol": "wrsETH",
+    "to": "coingecko#wrapped-rseth"
+  },
+  "0xb02f37a282c028958de65711158422199a61e9ae": {
+    "decimals": "18",
+    "symbol": "SFUND",
+    "to": "coingecko#seedify-fund"
   }
   },
   "base": {

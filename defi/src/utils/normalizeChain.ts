@@ -858,7 +858,10 @@ export const chainCoingeckoIds = {
     },
     chainId: 288,
     twitter: "bobanetwork",
-    url: "https://boba.network/"
+    url: "https://boba.network/",
+    dimensions: {
+      fees: "boba"
+    }
   },
   "Metis": {
     geckoId: "metis-token",

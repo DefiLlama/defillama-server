@@ -27586,6 +27586,9 @@ const data4: Protocol[] = [
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
     listedAt: 1757358307,
+    dimensions: {
+      fees: "bucket-protocol-v2"
+    }
   },
   {
     id: "6687",

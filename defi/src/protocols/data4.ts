@@ -17239,7 +17239,7 @@ const data4: Protocol[] = [
       "Sui Rewards Me is the world's first Rewards DEX + Launchpad, where volume powers rewards, not sells. Every trade delivers SUI to holders, royalties to founders, and deeper LP for traders—without inflation or sell pressure. Now with Lotus, a flat-price, rug-proof launchpad that fixes everything modern launches get wrong. One system. One mission. Everyone wins.",
     chain: "Sui",
     logo: `${baseIconsUrl}/sui-rewards-me.jpg`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

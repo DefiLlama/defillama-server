@@ -15464,7 +15464,7 @@ const data4: Protocol[] = [
           "https://oracles.euler.finance/130/",
           "https://app.morpho.org/ethereum/earn"
         ],
-        chains: [{ chain: "Unichain" }, { chain: "Ethereum" }],
+        chains: [{ chain: "Unichain" }, { chain: "Ethereum" }], { chain: "Monad" }]
       },
       {
         name: "Chainlink",
@@ -15718,7 +15718,7 @@ const data4: Protocol[] = [
           "https://app.morpho.org/unichain/market/0xae4c2c8f12e170497b7282c0c257636546c7dadb56122d18cfae50defb2d6777/wsteth-usdt0",
           "https://oracles.euler.finance/130/",
         ],
-        chains: [{ chain: "Unichain" }, { chain: "Katana" }],
+        chains: [{ chain: "Unichain" }, { chain: "Katana" }], { chain: "Monad" }]
       },
       {
         name: "Chainlink",

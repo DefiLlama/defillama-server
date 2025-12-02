@@ -8,7 +8,7 @@ const priceFeedManager: string = "0x428cfa65310c70bc9e65bddb26c65fe4ca490376";
 
 const pools: { [id: string]: string } = {
   "19": "0x103222f020e98Bba0AD9809A011FDF8e6F067496", //earnAUSD
-  "13": "0xb1a54ea5f0c700454bce454144fb8e6e6254a3c7", //aprMON
+  "13": "0x0c65A0BC65a5D819235B71F554D210D3F80E0852", //aprMON
   "12": "0x8498312A6B3CbD158bf0c93AbdCF29E6e4F55081", //gMON
 };
 
@@ -44,7 +44,7 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
       writes,
       chain,
       token,
-      prices[i],
+      prices[i].price / 10 ** prices[1].decimals ,
       decimals[i],
       symbols[i],
       timestamp,

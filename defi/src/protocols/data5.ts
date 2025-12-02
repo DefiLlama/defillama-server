@@ -4308,23 +4308,26 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://www.nar.bet/",
     description:
-      "Crypto casino native on Monad.",
+      "Provably Fair On-Chain Betting on Monad",
     chain: "Monad",
     logo: `${baseIconsUrl}/narbet.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Luck Games",
     chains: ["Monad"],
-    module: "dummy.js",
+    module: "narbet/index.js",
     twitter: "nardotbet",
     forkedFromIds: [],
-    audit_links: [],
+    audit_links: [
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-NarwhalCasino-v1.0.pdf"
+    ],
     dimensions: {
       fees: "narbet",
       dexs: "narbet",
     },
+    listedAt: 1764547200,
   },
   {
     id: "7075",

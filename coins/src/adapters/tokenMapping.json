@@ -2539,6 +2539,11 @@
     "decimals": "18",
     "symbol": "UNDEAD",
     "to": "coingecko#undead-blocks"
+  },
+    "0xd9c5a9b5fe4006cd0fce1f4020beb9020cbcc6f1": {
+    "decimals": "6",
+    "symbol": "GSCORE",
+    "to": "coingecko#usd-coin"
   }
   },
   "base": {

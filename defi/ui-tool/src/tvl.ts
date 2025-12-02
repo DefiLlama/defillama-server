@@ -116,9 +116,6 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
       }
       const addressesToRemove: Set<string> = new Set(removeTokenTvlSymbols.split(',').filter((s: string) => s.includes(':')).map((s: string) => s.replace('address:', '').trim().toLowerCase()))
       const symbolsToRemove = removeTokenTvlSymbols.split(',').filter((s: string) => !s.includes(':')).map((s: string) => s.trim().toLowerCase())
-      console.log('Removing token tvl for symbols:', symbolsToRemove.join(', '), 'and addresses:', Array.from(addressesToRemove).join(', '))
-
-
 
       const usdTvlRecordsFromDB = await getProtocolItems(dailyUsdTokensTvl, protocol.id, {
         timestampTo: options.dateTo + 86400,
@@ -338,7 +335,7 @@ export function removeTvlStoreWaitingRecords(ws: any, ids: any) {
 
 
 function getRecordItem(record: any) {
-  const { id, protocol, usdTvls, unixTimestamp } = record
+  const { id, protocol, usdTvls, unixTimestamp, existingTvlRecord } = record
   const res: any = {
     id,
     protocolName: protocol.name,
@@ -358,6 +355,26 @@ function getRecordItem(record: any) {
   } catch (e) {
     console.error('Error parsing record data', e)
   }
+
+  if (existingTvlRecord) {
+    try {
+      // so, this shows up first
+      res.pre_tvl = humanizeNumber(existingTvlRecord.tvl)
+      res._pre_tvl = +existingTvlRecord.tvl
+
+
+      Object.entries(existingTvlRecord).forEach(([key, data]: any) => {
+        if (key === 'SK') return;
+        
+        res['pre_' + key] = humanizeNumber(data)
+        res['_pre_' + key] = +data
+      })
+    } catch (e) {
+      console.error('Error parsing record data', e)
+    }
+  }
+
+
   return res
 }
 
@@ -528,7 +545,6 @@ async function buildTokenSymbolMapping(params: {
     for (const key of Object.keys(usdTokenRecord)) {
       if (['tvl', 'pool2', 'staking', 'SK'].includes(key) || key.includes('-')) continue;  // we are looking for chains
       const chain = key
-      console.log(chain)
       const chainData = usdTokenRecord[chain]
       if (!chainSymbolMapping[chain]) chainSymbolMapping[chain] = {}
 
@@ -558,12 +574,10 @@ async function buildTokenSymbolMapping(params: {
           return false
         }).filter(Boolean)
 
-        console.log('Looking up symbols for', chainSymbolKey, rawRecordTokens.length, 'tokens', rawRecordTokens);
 
         if (rawRecordTokens.length === 0) continue;
         const symbols = await sdk.api2.abi.multiCall({ calls: rawRecordTokens as any, abi: 'erc20:symbol', chain, permitFailure: true })
 
-        console.log(symbols)
         rawRecordTokens.forEach((addr, idx) => {
           let tokenSymbol = symbols[idx] as any
           chainSymbolMapping[chain][addr as any] = tokenSymbol

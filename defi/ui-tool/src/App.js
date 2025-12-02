@@ -265,7 +265,7 @@ const App = () => {
             onClick={clearOutput}
           >
             Clear Output
-          </Button> 
+          </Button>
 
           <Button
             style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
@@ -689,7 +689,7 @@ const App = () => {
               <Switch checkedChildren="Yes" unCheckedChildren="No" />
             </Form.Item>
 
-            <Form.Item 
+            <Form.Item
               label="Remove Token TVL Symbols"
               name="removeTokenTvlSymbols"
               layout='horizontal'
@@ -707,6 +707,20 @@ const App = () => {
   function printChartData(data, columnField) {
     if (!columnField) return null;
     data = [...data]
+
+    // this is a hack to support multiple columns in one chart
+    if (Array.isArray(columnField)) {
+      const restFields = columnField.slice(1)
+      columnField = columnField[0]
+      const dataCopy = data.map(d => ({ ...d }))
+      for (const restField of restFields) {
+        // we clone existing data and overwrite protocolName and columnField value
+        const dataCopy2 = dataCopy.map(d => ({ ...d, protocolName: `${d.protocolName} (${restField})`, [columnField]: d[restField] })).filter(i => i.hasOwnProperty(restField))
+        data.push(...dataCopy2)
+      }
+    }
+
+
     data.sort((a, b) => new Date(a.timeS) - new Date(b.timeS))
     data = data.filter(i => i.hasOwnProperty(columnField))
     const config = {
@@ -849,12 +863,13 @@ const App = () => {
     const stringColSet = new Set(['protocolName', 'timeS', 'unixTimestamp'])
     const columns = []
     const chartColumnsSet = new Set(['_tvl'])
-    const topLevelColumns = new Set(['tvl', 'staking', 'pool2'])
+    const topLevelColumns = new Set(['tvl', 'staking', 'pool2', 'pre_tvl'])
     tvlStoreWaitingRecords.forEach(record => {
       Object.keys(record).forEach(key => {
         if (colSet.has(key)) return;
         if (key.startsWith('_')) {
-          chartColumnsSet.add(key);
+          if (!key.includes('pre_'))
+            chartColumnsSet.add(key);
           return;
         }
         if (!tvlStoreWaitingRecordsShowChainColumns && (!stringColSet.has(key) && !topLevelColumns.has(key))) return;
@@ -869,7 +884,9 @@ const App = () => {
     });
     const chartColumns = Array.from(chartColumnsSet)
     let selectChartElement = null;
-    let chartColumnSelected = tvlStoreWaitingRecordsSelectedChartColumn ? tvlStoreWaitingRecordsSelectedChartColumn : chartColumns[0];
+    let chartColumnSelected = tvlStoreWaitingRecordsSelectedChartColumn ? tvlStoreWaitingRecordsSelectedChartColumn : chartColumns[0]
+
+    if (!Array.isArray(chartColumnSelected)) chartColumnSelected = [chartColumnSelected, '_pre' + chartColumnSelected];
 
     if (chartColumns.length > 1 && tvlStoreWaitingRecordsShowChart) {
       selectChartElement = <Select

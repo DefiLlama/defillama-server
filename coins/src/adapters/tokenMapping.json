@@ -2534,6 +2534,11 @@
     "decimals": "18",
     "symbol": "SFUND",
     "to": "coingecko#seedify-fund"
+  },
+    "0x5a3534720a4f29fa0dc53ce474db88973a95f65c": {
+    "decimals": "18",
+    "symbol": "UNDEAD",
+    "to": "coingecko#undead-blocks"
   }
   },
   "base": {

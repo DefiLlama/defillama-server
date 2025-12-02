@@ -9953,6 +9953,11 @@
     }
   },
   "soneium": {
+    "0x3f99231dd03a9f0e7e3421c92b7b90fbe012985a": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDSC"
+    },
     "0xBC63230d1C4d0Cd241D66F5AaE75f3D1d6C0949a": {
       "to": "coingecko#elysia",
       "decimals": 18,

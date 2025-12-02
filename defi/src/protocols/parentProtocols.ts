@@ -8524,6 +8524,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MondayTrade_",
   },
+  {
+    id: "parent#atmos-protocol",
+    name: "Atmos Protocol",
+    url: "https://atmos.ag/",
+    description: "Atmos is the Liquidity Engine and Social-Driven Gamified DeFi Trading Ecosystem & Permissionless Token Studio on Supra Ecosystem",
+    logo: `${baseIconsUrl}/atmos-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["AtmosExchange"],
+    twitter: "AtmosProtocol",
+  },
 ];
 
 export default parentProtocols;

@@ -4601,7 +4601,7 @@ const data5: Protocol[] = [
     dimensions: {
       aggregators: "atmos-aggregator",
     },
-
+    parentProtocol: "parent#atmos-protocol",
     listedAt: 1764708165,
   },
   {
@@ -4626,6 +4626,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "atmos-dex",
     },
+    parentProtocol: "parent#atmos-protocol",
     listedAt: 1764708167,
   },
   {
@@ -4650,7 +4651,32 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "atmos-studio",
     },
+    parentProtocol: "parent#atmos-protocol",
     listedAt: 1764708169,
+  },
+  {
+    id: "7082",
+    name: "Trends fun",
+    address: null,
+    symbol: "-",
+    url: "https://trends.fun/home",
+    description:
+      "Trends.fun brings your local trends and cultures to a global stage and allows you to trade on them",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/trends-fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js", 
+    twitter: "trendsdotfun",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "trends",
+    },
+    listedAt: 1764709075,
   },
 ];
 export default data5;

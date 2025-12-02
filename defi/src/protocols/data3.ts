@@ -52432,6 +52432,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://kinetic.market/assets/Kinetic-audit-reports.pdf"],
     github: ["kinetic-market"],
     listedAt: 1721723353,
+    dimensions: {
+      fees: "kinetic"
+    }
   },
   {
     id: "4916",
@@ -54451,6 +54454,9 @@ const data3_2: Protocol[] = [
     twitter: null,
     audit_links: [],
     listedAt: 1723836209,
+    dimensions: {
+      fees: "capyfi"
+    }
   },
   {
     id: "5002",

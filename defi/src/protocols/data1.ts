@@ -11988,6 +11988,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       },
     ],
     github: ["balmy-protocol"],
+    deprecated: true, // https://x.com/balmy_xyz/status/1940452931482145192
   },
   {
     id: "628",

@@ -17238,21 +17238,22 @@ const data4: Protocol[] = [
     symbol: "SRM",
     url: "https://suirewards.me/",
     description:
-      "Sui Rewards Me is a Rewards DEX providing customizable rewards, to grow projects and support communities, powered by every swap. Users can overlay custom tokenomics onto any Sui coin - rewarding holders, strengthening liquidity, and fueling project development",
+      "Sui Rewards Me is the world's first Rewards DEX + Launchpad, where volume powers rewards, not sells. Every trade delivers SUI to holders, royalties to founders, and deeper LP for traders—without inflation or sell pressure. Now with Lotus, a flat-price, rug-proof launchpad that fixes everything modern launches get wrong. One system. One mission. Everyone wins.",
     chain: "Sui",
     logo: `${baseIconsUrl}/sui-rewards-me.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Dexs, Launchpads",
     chains: ["Sui"],
     forkedFrom: [],
     module: "suirewardsme/index.js",
     twitter: "SuiRewardsMe",
     audit_links: [
-      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewards.me.pdf",
-      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/April_2025/SuiRewardsMe_%24SRM.pdf",
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/70be486adea28f0bafc2522b77e1118631b4fefa/September/SuiRewards.me.pdf",
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/70be486adea28f0bafc2522b77e1118631b4fefa/September/SuiRewardsMe_%24SRM.pdf",
+      "https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/70be486adea28f0bafc2522b77e1118631b4fefa/September/Lotus_Audit.pdf",
     ],
     listedAt: 1748884884,
   },
@@ -27586,6 +27587,9 @@ const data4: Protocol[] = [
     twitter: "bucket_protocol",
     parentProtocol: "parent#bucket-protocol",
     listedAt: 1757358307,
+    dimensions: {
+      fees: "bucket-protocol-v2"
+    }
   },
   {
     id: "6687",
@@ -32170,7 +32174,6 @@ const data4: Protocol[] = [
       dexs: "aquifer"
     }
   },
-  /*
   {
     id: "6885",
     name: "Variational",
@@ -32187,14 +32190,13 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Arbitrum"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "variational/index.js",
     twitter: "variational_io",
     dimensions: {
       fees: "variational"
     },
     github: ["variational-research"],
   },
-  */
   {
     id: "6886",
     name: "Open Stablecoin Index",

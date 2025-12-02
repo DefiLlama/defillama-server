@@ -471,7 +471,10 @@ export const chainCoingeckoIds = {
     cmcId: "4157",
     categories: ["Cosmos"],
     twitter: "THORChain",
-    url: "https://thorchain.org/"
+    url: "https://thorchain.org/",
+    dimensions: {
+      fees: "thorchain"
+    }
   },
   "Tron": {
     geckoId: "tron",
@@ -858,7 +861,10 @@ export const chainCoingeckoIds = {
     },
     chainId: 288,
     twitter: "bobanetwork",
-    url: "https://boba.network/"
+    url: "https://boba.network/",
+    dimensions: {
+      fees: "boba"
+    }
   },
   "Metis": {
     geckoId: "metis-token",
@@ -5096,6 +5102,15 @@ export const chainCoingeckoIds = {
     url: "https://www.monad.xyz/",
     chainId: 143,
   },
+  "Capx Chain": {
+    geckoId: "capx-ai",
+    symbol: "CAPX",
+    cmcId: "36557",
+    categories: ["EVM"],
+    twitter: "0xcapx",
+    url: "https://capx.ai",
+    chainId: 757,
+  },
 } as unknown as ChainCoinGekcoIds
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5316,6 +5331,7 @@ const chainLabelMap = {
   "bittensor_evm": "Bittensor EVM",
   "besc": "BESC Hyperchain",
   "zigchain": "ZIGChain",
+  "capx": "Capx Chain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

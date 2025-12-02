@@ -3514,7 +3514,8 @@ const data5: Protocol[] = [
     name: "LeverUp",
     address: null,
     symbol: "-",
-    url: "http://app.leverup.xyz/",
+    url: "https://app.leverup.xyz?code=DEFILLAMA",
+    referralUrl: "https://app.leverup.xyz?code=DEFILLAMA",
     description:
       "LP-free perps DEX. Unlimited OI. 1001x leverage. Zero fees on losses. 100% fees to traders.",
     chain: "Monad",

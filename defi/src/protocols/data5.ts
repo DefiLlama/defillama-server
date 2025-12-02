@@ -4327,7 +4327,6 @@ const data5: Protocol[] = [
       fees: "narbet",
       dexs: "narbet",
     },
-    listedAt: 1764547200,
   },
   {
     id: "7075",

@@ -2134,6 +2134,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hats.finance",
     name: "Hats.Finance",
     url: "https://hats.finance",
+    deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130
     description:
       "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical and responsible disclosures.",
     logo: `${baseIconsUrl}/hats.finance.png`,
@@ -2675,7 +2676,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#scallop",
     name: "Scallop",
-    url: "https://scallop.io",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     logo: `${baseIconsUrl}/scallop.png`,
@@ -8487,6 +8489,40 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ValantisLabs",
     github: ["ValantisLabs"],
+  },
+  {
+    id: "parent#octoswap",
+    name: "OctoSwap",
+    url: "https://octo.exchange/",
+    description: "OctoSwap unites the strengths of both classic and concentrated AMMs with an advanced smart router, making it the premier liquidity hub on Monad for efficient liquidity and execution.",
+    logo: `${baseIconsUrl}/octoswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "octoswapdex",
+    github: ["octoswapdex"],
+  },
+  {
+    id: "parent#pear-protocol",
+    name: "Pear Protocol",
+    url: "https://pear.finance/",
+    description: "Pear Protocol is a decentralized trading platform that streamlines pair-trading of cryptocurrencies by enabling simultaneous leveraged long and short positions in a single on-chain transaction, integrating with multiple trading engines (e.g., GMX, Vertex, SYMM) to provide liquidity-agnostic trading.",
+    logo: `${baseIconsUrl}/pear-protocol.jpg`,
+    gecko_id: "pear-protocol",
+    cmcId: null,
+    chains: [],
+    twitter: "pear_protocol",
+  },
+  {
+    id: "parent#monday-trade",
+    name: "Monday Trade",
+    url: "https://app.monday.trade/",
+    description: "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+    logo: `${baseIconsUrl}/monday-trade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MondayTrade_",
   },
 ];
 

@@ -13552,7 +13552,8 @@ const data2: Protocol[] = [
     name: "Scallop Lend",
     address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
     symbol: "SCA",
-    url: "https://scallop.io",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
@@ -25607,6 +25608,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
     parentProtocol: "parent#hats.finance",
+    deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130
     listedAt: 1674569878,
   },
   {
@@ -26753,7 +26755,8 @@ const data2: Protocol[] = [
     name: "ENS",
     address: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
     symbol: "ENS",
-    url: "https://ens.domains",
+    url: "https://app.ens.domains/?referrer=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://app.ens.domains/?referrer=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: "Decentralised naming for wallets, websites, & more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ens.jpg`,

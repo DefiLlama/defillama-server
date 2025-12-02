@@ -4333,7 +4333,7 @@ const data5: Protocol[] = [
     symbol: "PEAR",
     url: "https://pear.garden/",
     description:
-      "Pear protocol provides a decentralized interface for trading perps on Hyperliquid L1.",
+      "Pear protocol provides an interface for trading perps on Hyperliquid L1.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/pear-interface.jpg`,
     audits: "0",

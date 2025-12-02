@@ -10733,6 +10733,7 @@ const data3_1: Protocol[] = [
     module: "hats-v2/index.js",
     twitter: "HatsFinance",
     parentProtocol: "parent#hats.finance",
+    deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130
     listedAt: 1687786900,
   },
   {
@@ -50481,7 +50482,7 @@ const data3_2: Protocol[] = [
       {
         message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
         level: "alert",
-        until: "2025-09-23",
+        until: "2026-06-01",
       }
     ]
   },
@@ -56470,7 +56471,8 @@ const data3_2: Protocol[] = [
     name: "Scallop Aggregator",
     address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
     symbol: "SCA",
-    url: "https://app.scallop.io/swap",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "DEX aggregator from Scallop on Sui Network",
     chain: "Sui",
@@ -57957,17 +57959,17 @@ const data3_2: Protocol[] = [
   },
   {
     id: "5151",
-    name: "Pear Protocol",
+    name: "Pear Perps",
     address: "arbitrum:0x3212dc0f8c834e4de893532d27cc9b6001684db0",
     symbol: "PEAR",
     url: "https://pear.garden/",
     description:
       "Pear Protocol is a decentralized trading platform that streamlines pair-trading of cryptocurrencies by enabling simultaneous leveraged long and short positions in a single on-chain transaction, integrating with multiple trading engines (e.g., GMX, Vertex, SYMM) to provide liquidity-agnostic trading",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/pear-protocol.png`,
+    logo: `${baseIconsUrl}/pear-perps.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "pear-protocol",
+    gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
@@ -57975,6 +57977,7 @@ const data3_2: Protocol[] = [
     twitter: "pear_protocol",
     forkedFrom: [],
     audit_links: ["https://docs.pearprotocol.io/smart-contracts/audits-and-security"],
+    parentProtocol: "parent#pear-protocol",
     dimensions: {
       fees: "pear-protocol",
       dexs: "pear-protocol",

@@ -2675,7 +2675,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#scallop",
     name: "Scallop",
-    url: "https://scallop.io",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     logo: `${baseIconsUrl}/scallop.png`,

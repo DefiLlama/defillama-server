@@ -56470,7 +56470,8 @@ const data3_2: Protocol[] = [
     name: "Scallop Aggregator",
     address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
     symbol: "SCA",
-    url: "https://app.scallop.io/swap",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "DEX aggregator from Scallop on Sui Network",
     chain: "Sui",

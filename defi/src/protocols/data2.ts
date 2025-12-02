@@ -13552,7 +13552,8 @@ const data2: Protocol[] = [
     name: "Scallop Lend",
     address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
     symbol: "SCA",
-    url: "https://scallop.io",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",

@@ -1157,7 +1157,10 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-THORSwap-v1.0.pdf"],
     module: "thorswap/index.js",
     twitter: "thorswap",
-    listedAt: 1762192599
+    listedAt: 1762192599,
+    dimensions: {
+      fees: "thorswap"
+    }
   },
   {
     id: "6942",

@@ -23815,6 +23815,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf", "https://volosui.gitbook.io/volo/audit"],
     parentProtocol: "parent#navi-protocol",
     listedAt: 1698603343,
+    dimensions: {
+      fees: "volo-vault"
+    }
   },
   {
     id: "3712",

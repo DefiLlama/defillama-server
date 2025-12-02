@@ -55,6 +55,7 @@ const App = () => {
   // tvl tab
   const [tvlForm] = Form.useForm();
   const tvlAction = Form.useWatch('action', tvlForm);
+  const tvlRemoveTokensEnabled = Form.useWatch('removeTokenTvl', tvlForm);
 
   const [tvlStoreWaitingRecords, setTvlStoreWaitingRecords] = useState([]);
   const [tvlStoreWaitingRecordsShowChainColumns, setTvlStoreWaitingRecordsShowChainColumns] = useState(false);
@@ -552,7 +553,9 @@ const App = () => {
           chains: '',
           skipBlockFetch: false,
           breakIfTvlIsZero: true,
-          action: 'refill'
+          action: 'refill',
+          removeTokenTvl: false,
+          removeTokenTvlSymbols: '',
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -665,7 +668,6 @@ const App = () => {
             </Form.Item>
 
 
-
             <Form.Item
               label="Skip block fetch"
               name="skipBlockFetch"
@@ -676,6 +678,26 @@ const App = () => {
             >
               <Switch checkedChildren="Yes" unCheckedChildren="No" />
             </Form.Item>
+
+
+            <Form.Item
+              label="Remove Token TVL"
+              name="removeTokenTvl"
+              valuePropName="checked"
+              layout='horizontal'
+            >
+              <Switch checkedChildren="Yes" unCheckedChildren="No" />
+            </Form.Item>
+
+            <Form.Item 
+              label="Remove Token TVL Symbols"
+              name="removeTokenTvlSymbols"
+              layout='horizontal'
+              style={{ display: tvlRemoveTokensEnabled ? 'block' : 'none' }}
+            >
+              <Input style={{ width: '100%' }} placeholder="Enter token symbols or address(chain:xxx) (comma separated)" />
+            </Form.Item>
+
           </>
         }
       </Form>

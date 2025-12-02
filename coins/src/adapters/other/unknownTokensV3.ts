@@ -15,6 +15,8 @@ const config: any = {
   bsc: {
     "0xf6718b2701D4a6498eF77D7c152b2137Ab28b8A3":
       "0xfc18301B94a77D91015bb90D5249827c506846Ae", // stBTC
+    "0xb8a1eD561C914F22BD69b0bb4558ad5A89FeAAE1": 
+      "0xc089253e8e28ef1213d7158b0add26e014175339" // ART
   },
   map: {
     "0x756af1d3810a01d3292fad62f295bbcc6c200aea":

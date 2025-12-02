@@ -4210,6 +4210,10 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.octo.exchange/resources-audits"],
     parentProtocol: "parent#octoswap",
     listedAt: 1764610685,
+    dimensions: {
+      dexs: "octoswap-cl",
+      fees: "octoswap-cl",
+    },
   },
   {
     id: "7070",
@@ -4233,6 +4237,10 @@ const data5: Protocol[] = [
     parentProtocol: "parent#octoswap",
     audit_links: ["https://docs.octo.exchange/resources-audits"],
     listedAt: 1764610691,
+    dimensions: {
+      dexs: "octoswap-classic",
+      fees: "octoswap-classic",
+    },
   },
   {
     id: "7071",

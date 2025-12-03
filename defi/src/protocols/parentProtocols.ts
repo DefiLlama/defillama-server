@@ -2134,7 +2134,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hats.finance",
     name: "Hats.Finance",
     url: "https://hats.finance",
-    deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130
+    //deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130 // remove unnecessary parent protocol deprecated flag
     description:
       "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical and responsible disclosures.",
     logo: `${baseIconsUrl}/hats.finance.png`,

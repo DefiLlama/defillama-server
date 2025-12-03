@@ -4166,6 +4166,13 @@ const data5: Protocol[] = [
     module: "monday-trade/index.js",
     twitter: "MondayTrade_",
     forkedFromIds: ["4215"],
+    oraclesBreakdown: [
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.monday.trade/perps-trading/perps-oracle-sources"],
+      },
+    ],
     audit_links: ["https://files.monday.trade/files/Monday-Trade-Spot-Audit.pdf"],
     parentProtocol: "parent#monday-trade",
     listedAt: 1764300387,

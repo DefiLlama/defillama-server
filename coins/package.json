@@ -49,6 +49,7 @@
     "@aws-sdk/client-lambda": "^3.918.0",
     "@aws-sdk/client-s3": "^3.354.0",
     "@aws-sdk/lib-dynamodb": "^3.918.0",
+    "@aws-sdk/util-retry": "^3.370.0",
     "@defillama/sdk": "^5.0.192",
     "@elastic/elasticsearch": "^8.19.1",
     "@ethersproject/bignumber": "^5.5.0",

@@ -3833,6 +3833,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1764090355,
+    dimensions: {
+      fees: "shmonad",
+    },
   },
   {
     id: "7048",

@@ -1202,6 +1202,9 @@ const data5: Protocol[] = [
     module: "thorswap/index.js",
     twitter: "thorswap",
     listedAt: 1762192599,
+    dimensions: {
+      fees: "thorswap"
+    }
   },
   {
     id: "6942",

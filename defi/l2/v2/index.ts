@@ -546,5 +546,6 @@ export async function storeChainAssetsV2(override: boolean = false) {
     symbolMapPromise,
     storeHistoricalToDB({ timestamp: getCurrentUnixTimestamp(), value: rawData }),
     storeR2JSONString("chainAssets2", JSON.stringify({ timestamp: getCurrentUnixTimestamp(), value: symbolData })),
+    storeR2JSONString(`chainAssetsRaw`, JSON.stringify({ timestamps: getCurrentUnixTimestamp(), value: rawData })),
   ]);
 }

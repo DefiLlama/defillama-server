@@ -185,46 +185,26 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 export async function fetchHistoricalFromDB(chain: string = "*") {
   const sql = await iniDbConnection();
 
-  let latestOldTimestamp: any = "0";
-  let oldTimeseries: any[] = [];
+  const allTimestamps = await queryPostgresWithRetry(sql`select timestamp from chainassets2`, sql);
+  const { timestamps } = findDailyEntries(allTimestamps, undefined as any, false);
 
-  try {
-    const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
-    const oldTimestamps: string[] = oldTimestampsObj.timestamps;
-    if (oldTimestamps.length) {
-      latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
-      oldTimeseries = await queryPostgresWithRetry(
-        sql`select * from chainassets2 where timestamp in ${sql(oldTimestamps)}`,
-        sql
-      );
-    }
-  } catch (e) {
-    e;
-  }
-
-  const newTimeseries =
-    getCurrentUnixTimestamp() - latestOldTimestamp > 2 * secondsInADay
-      ? await queryPostgresWithRetry(sql`select * from chainassets2 where timestamp > ${latestOldTimestamp}`, sql)
-      : [];
+  const timeseries = await queryPostgresWithRetry(sql`select * from chainassets2 where timestamp in ${sql(timestamps)}`, sql);
   sql.end();
 
-  const timeseries = [...oldTimeseries, ...newTimeseries];
   const result = parsePgData(timeseries, chain);
-
-  const { data, timestamps } = findDailyEntries(result);
-
-  await storeR2JSONString(`chain-assets-chart-timestamps-${chain}`, JSON.stringify({ timestamps }));
-
+  const { data } = findDailyEntries(result);
   return data;
 }
 function findDailyEntries(
   raw: ChartData[],
-  period: number = secondsInADay
+  period: number = secondsInADay, 
+  filter: boolean = true
 ): { data: ChartData[]; timestamps: string[] } {
-  const nullsFiltered = raw.filter((d: ChartData) => JSON.stringify(d.data) != "{}");
+  const nullsFiltered = filter ? raw.filter((d: ChartData) => JSON.stringify(d.data) != "{}") : raw;
+  console.log(`lost entries length: ${raw.length - nullsFiltered.length}`);
   const clean: ChartData[] = [];
   const timestamps = nullsFiltered.map((r: ChartData) => Number(r.timestamp));
-
+  timestamps.sort((a, b) => a - b)
   let timestamp = Math.floor(timestamps[0] / period) * period;
   const cleanEnd = Math.floor(timestamps[timestamps.length - 1] / period) * period;
 

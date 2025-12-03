@@ -9,7 +9,6 @@ import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./verifyChanges";
 import { getExcludedTvl } from "./excluded";
-import { saveRawBridgedTvls } from "./raw";
 import { coins } from "@defillama/sdk";
 
 export default async function main(override?: boolean, timestamp?: number) {
@@ -64,10 +63,8 @@ export default async function main(override?: boolean, timestamp?: number) {
     delete chains[c];
   });
 
-  if (!timestamp && override != true) await verifyChanges(chains);
+  // if (!timestamp && override != true) await verifyChanges(chains);
   console.log("DBUG verify changes done");
-
-  await saveRawBridgedTvls(chains, symbolMap);
 
   return chains;
 }

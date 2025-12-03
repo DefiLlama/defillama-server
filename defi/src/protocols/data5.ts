@@ -2772,9 +2772,9 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/Neverland-Money/security-audits"],
     oraclesBreakdown: [
       {
-        name: "Chainlink",
+        name: "RedStone",
         type: "Primary",
-        proof: ["https://docs.neverland.money", "https://github.com/DefiLlama/DefiLlama-Adapters/pull/17018"],
+        proof: ["https://docs.neverland.money/smart-contracts#oracle-system"],
       },
     ],
     module: "neverland/index.js",

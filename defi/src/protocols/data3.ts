@@ -51420,7 +51420,6 @@ const data3_2: Protocol[] = [
     github: ["palmy-finance"],
     listedAt: 1720774933,
   },
-  /* // delist 
   {
     id: "4873",
     name: "Midas RWA",
@@ -51443,7 +51442,6 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.midas.app/resources/audits"],
     listedAt: 1720775830,
   },
-  */
   {
     id: "4874",
     name: "re.al protocol",

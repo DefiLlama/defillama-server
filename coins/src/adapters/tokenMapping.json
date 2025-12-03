@@ -2301,6 +2301,11 @@
     }
   },
   "base": {
+    "0x50b95509e8fc9cda3860c2ef80308467ab6534cc": {
+      "decimals": "18",
+      "symbol": "BMMF",
+      "to": "coingecko#balsa-mm-fund"
+    },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",

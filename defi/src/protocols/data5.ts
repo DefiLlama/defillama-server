@@ -2776,6 +2776,11 @@ const data5: Protocol[] = [
         type: "Primary",
         proof: ["https://docs.neverland.money/smart-contracts#oracle-system"],
       },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.neverland.money/smart-contracts#oracle-system"],
+      },
     ],
     module: "neverland/index.js",
     twitter: "Neverland_Money",

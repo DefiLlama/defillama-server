@@ -8847,8 +8847,8 @@ const data4: Protocol[] = [
   {
     id: "5920",
     name: "Tea-REX",
-    address: null,
-    symbol: "-",
+    address: "sei:0xedf7732991b3de8f46fb97dcd4c5cdb28e6ad859",
+    symbol: "TREX",
     url: "https://alpha.trex.trade",
     description:
       "Tea-REX is a margin trading and liquidity management protocol enabling leveraged trading within DEX pools. With transparent fees, we offer a fun and fair way to trade and stake",
@@ -8856,7 +8856,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/tea-rex.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "tea-rex",
     cmcId: null,
     category: "Derivatives",
     chains: ["Sei"],

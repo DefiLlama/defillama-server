@@ -180,4 +180,5 @@ export default {
   suirewards: require("./markets/suirewards"),
   axlp: require("./liquidStaking/axlp"),
   altai: require("./rwa/altai"),
+  usp: require("./yield/usp"),
 };

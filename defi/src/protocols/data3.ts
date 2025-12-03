@@ -23815,6 +23815,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://hacken.io/audits/volo/", "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf", "https://volosui.gitbook.io/volo/audit"],
     parentProtocol: "parent#navi-protocol",
     listedAt: 1698603343,
+    dimensions: {
+      fees: "volo-vault"
+    }
   },
   {
     id: "3712",
@@ -52429,6 +52432,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://kinetic.market/assets/Kinetic-audit-reports.pdf"],
     github: ["kinetic-market"],
     listedAt: 1721723353,
+    dimensions: {
+      fees: "kinetic"
+    }
   },
   {
     id: "4916",
@@ -54448,6 +54454,9 @@ const data3_2: Protocol[] = [
     twitter: null,
     audit_links: [],
     listedAt: 1723836209,
+    dimensions: {
+      fees: "capyfi"
+    }
   },
   {
     id: "5002",

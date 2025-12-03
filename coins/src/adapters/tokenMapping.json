@@ -8616,6 +8616,21 @@
     }
   },
   "fuel": {
+    "0x27821a5432b60fb3e70c64d0a612c2c86218c1088dd0f0f1b0dd6ae5ae17bd5b": {
+      "to": "coingecko#fuel-network",
+      "decimals": 9,
+      "symbol": "uwFUEL"
+    }, 
+    "0xac2aabc1c48e634800a723b1372388ad1eb6a23d0e012cde4c603082fb1a140a": {
+      "to": "coingecko#ethereum",
+      "decimals": 9,
+      "symbol": "uwETH"
+    },
+    "0x6c91bc65f585da1a238f8ec5e410e62616d2b2c8f2cb4701e225deb51240add6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 9,
+      "symbol": "uwUSDC"
+    },
     "0x286c479da40dc953bddc3bb4c453b608bba2e0ac483b077bd475174115395e6b": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -12985,6 +13000,11 @@
     }
   },
   "monad": {
+    "0x111111d2bf19e43C34263401e0CAd979eD1cdb61": {
+      "to": "coingecko#usd1-wlfi",
+      "decimals": 6,
+      "symbol": "USD1"
+    },
     "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a": {
       "to": "coingecko#agora-dollar",
       "decimals": 6,

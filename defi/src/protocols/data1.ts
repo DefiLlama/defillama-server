@@ -22663,6 +22663,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tectonic/index.js",
     twitter: "TectonicFi",
     forkedFromIds: ["114"],
+    dimensions: {
+      fees: "tectonic"
+    },
     audit_links: ["https://tectonic.gitbook.io/docs/developer/smart-contracts-and-security"],
     listedAt: 1640643322,
   },

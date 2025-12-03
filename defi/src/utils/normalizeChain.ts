@@ -5122,6 +5122,9 @@ export const chainCoingeckoIds = {
     twitter: "monad",
     url: "https://www.monad.xyz/",
     chainId: 143,
+    dimensions: {
+      fees: "monad",
+    },
   },
   "Capx Chain": {
     geckoId: "capx-ai",

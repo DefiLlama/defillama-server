@@ -11994,8 +11994,8 @@
     },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
-      "symbol": "WIF",
-      "to": "coingecko#dogwifcoin"
+      "symbol": "TAC",
+      "to": "coingecko#tac"
     },
     "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
       "decimals": "8",

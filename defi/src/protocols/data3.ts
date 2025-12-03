@@ -54451,7 +54451,7 @@ const data3_2: Protocol[] = [
     chains: ["LaChain Network"],
     forkedFromIds: ["114"],
     module: "capyfi/index.js",
-    twitter: null,
+    twitter: "CapyFi_Protocol",
     audit_links: [],
     listedAt: 1723836209,
     dimensions: {

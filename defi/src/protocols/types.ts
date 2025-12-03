@@ -105,6 +105,5 @@ export interface IParentProtocol {
   address?: string | null;
   warningBanners?: Array<Banner>;
   rugged?: boolean;
-  deprecated?: boolean;
   deadUrl?: boolean;
 }

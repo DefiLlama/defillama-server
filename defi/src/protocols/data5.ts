@@ -1203,7 +1203,8 @@ const data5: Protocol[] = [
     twitter: "thorswap",
     listedAt: 1762192599,
     dimensions: {
-      fees: "thorswap"
+      fees: "thorswap",
+      dexs: "thorswap"
     }
   },
   {

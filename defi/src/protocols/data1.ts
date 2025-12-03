@@ -7011,7 +7011,6 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/thorchain"],
     dimensions: {
       fees: "thorchain",
-      dexs: "thorswap"
     }
   },
   {

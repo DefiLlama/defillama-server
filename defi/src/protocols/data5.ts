@@ -1279,15 +1279,15 @@ const data5: Protocol[] = [
   {
     id: "6945",
     name: "Unlock Protocol",
-    address: null,
-    symbol: "-",
+    address: "base:0xac27fa800955849d6d17cc8952ba9dd6eaa66187",
+    symbol: "UP",
     url: "https://unlock-protocol.com/",
     description: "Unlock is an open source protocol for onchain memberships & subscriptions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unlock-protocol.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "unlockprotocoltoken",
     cmcId: null,
     category: "Payments",
     chains: [

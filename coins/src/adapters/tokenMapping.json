@@ -1031,6 +1031,26 @@
     }
   },
   "ethereum": {
+    "0xF169457F89bEeC726e0e9344a59C85328D285f2C": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDC-f",
+      "to": "asset#ethereum:0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1"
+    },
+    "0xd7A7992989C5B20eF48452C96aC4C6B71A17D61e": {
+      "decimals": "18",
+      "symbol": "stakedao-PYcrvUSD",
+      "to": "asset#ethereum:0xf69Fb60B79E463384b40dbFDFB633AB5a863C9A2"
+    },
+    "0x2343f786fc8366f0fA7C9A80B43CDA5731D9d1B4": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDT-f",
+      "to": "asset#ethereum:0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939"
+    },
+    "0xeBc3554f3659e8425e1Fb30E6f99ae08A03EE932": {
+      "decimals": "18",
+      "symbol": "stakedao-crvfrxUSD",
+      "to": "asset#ethereum:0x22804B0F6bE741a9Fa1BbaEcDD6c8D4116E96944"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",

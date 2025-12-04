@@ -8726,7 +8726,6 @@ const data4: Protocol[] = [
     name: "YO Protocol",
     address: null,
     symbol: "-",
-    assetToken: "YOGOLD",
     url: "https://www.yo.xyz/",
     description:
       "Set it and forget it. YO is your secure multi-chain yield optimizer, continuously rebalancing to deliver the best risk-adjusted yield in DeFi.",

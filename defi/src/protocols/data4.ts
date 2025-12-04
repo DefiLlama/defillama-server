@@ -8724,8 +8724,8 @@ const data4: Protocol[] = [
   {
     id: "5915",
     name: "YO Protocol",
-    address: "0x586675a3a46b008d8408933cf42d8ff6c9cc61a1",
-    symbol: "YOGOLD",
+    address: null,
+    symbol: "-",
     url: "https://www.yo.xyz/",
     description:
       "Set it and forget it. YO is your secure multi-chain yield optimizer, continuously rebalancing to deliver the best risk-adjusted yield in DeFi.",
@@ -8733,7 +8733,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/yo-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "yield-optimizer-gold",
+    gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Base"],

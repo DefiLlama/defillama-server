@@ -1,13 +1,12 @@
 import type { IParentProtocol } from "../protocols/types";
 import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
-import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
+import { IProtocolResponse, ICurrentChainTvls, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
-import * as fs from "fs";
 
 export interface ICombinedTvls {
   chainTvls: {

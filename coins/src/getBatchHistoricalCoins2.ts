@@ -62,7 +62,7 @@ async function getRecordClosestToTimestamp2(
   const greaterEqualDiff = Math.abs(greaterEqualItem.SK - timestamp);
   const lessEqualDiff = Math.abs(lessEqualItem.SK - timestamp);
 
-  return greaterEqualDiff <= lessEqualDiff ? greaterEqualItem : lessEqualItem;
+  return greaterEqualDiff < lessEqualDiff ? greaterEqualItem : lessEqualItem;
 }
 
 async function fetchDBData(

@@ -9586,14 +9586,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3107",
-    name: "EigenLayer",
+    name: "EigenCloud",
+    previousNames: ["EigenLayer"],
     address: "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
     symbol: "EIGEN",
     url: "https://www.eigenlayer.xyz/",
     description:
-      "EigenLayer is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
+      "EigenCloud is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/eigenlayer.png`,
+    logo: `${baseIconsUrl}/eigencloud.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "eigenlayer",

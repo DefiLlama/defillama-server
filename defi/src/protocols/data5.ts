@@ -4763,5 +4763,26 @@ const data5: Protocol[] = [
     github: ["Muscadine-Labs"],
     listedAt: 1764779914,
   },
+  {
+    id: "7086",
+    name: "Stable",
+    address: null,
+    symbol: "-",
+    url: "https://www.stable.xyz",
+    description:
+      "Designed for the real economy. StableChain provides a fast, predictable, compliant, and low-cost settlement infrastructure making stablecoin payments scalable for institutions and straightforward for users. Delivering the rails that global institutions and payment systems can trust.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stable.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    twitter: "stable",
+    forkedFromIds: [],
+    github: ["Muscadine-Labs"],
+  },
 ];
 export default data5;

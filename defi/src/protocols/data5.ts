@@ -4874,5 +4874,30 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     listedAt: 1764869673,
   },
+  {
+    id: "7091",
+    name: "Clober Perps",
+    address: null,
+    symbol: "-",
+    url: "https://perp.clober.io/en/perp/",
+    description:
+      "Clober is a fully on-chain orderbook DEX protocol that offers CEX-equivalent trading experience, powered by Limit Order Book with Segment Tree for Efficient Order-matching (LOBSTER) algorithm.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/clober-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Orderly"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "CloberDEX",
+    audit_links: [],
+    parentProtocol: "parent#clober",
+    dimensions: {
+      derivatives: "clober-perps",
+    }
+  },
 ];
 export default data5;

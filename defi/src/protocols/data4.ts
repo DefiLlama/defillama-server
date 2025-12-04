@@ -15375,6 +15375,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.usd.ai/technical-overview/audits"],
     stablecoins: ["usdai"],
     listedAt: 1747659245,
+    dimensions: {
+      fees: "usdai"
+    }
   },
   {
     id: "6191",

@@ -3357,6 +3357,9 @@ export const chainCoingeckoIds = {
     twitter: "taikoxyz",
     url: "https://taiko.xyz",
     chainId: 167000,
+    dimensions: {
+      fees: "taiko",
+    },
   },
   "Genesys": {
     geckoId: "genesys",

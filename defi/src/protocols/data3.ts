@@ -51440,6 +51440,12 @@ const data3_2: Protocol[] = [
     twitter: "MidasRWA",
     forkedFrom: [],
     audit_links: ["https://docs.midas.app/resources/audits"],
+    warningBanners: [
+      {
+        message: "We are not tracking offchain positions either non EVM chains",
+        level: "alert",
+      }
+    ],
     listedAt: 1720775830,
   },
   {

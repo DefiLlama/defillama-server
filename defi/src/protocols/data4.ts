@@ -19752,7 +19752,7 @@ const data4: Protocol[] = [
     category: "Staking Pool",
     chains: ["Ethereum"],
     forkedFromIds: [],
-    module: "dummy.js",
+    module: "ssv-network/index.js",
     twitter: "ssv_network",
     dimensions: {
       fees: "ssv-network"

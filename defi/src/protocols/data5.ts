@@ -4896,7 +4896,7 @@ const data5: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#clober",
     dimensions: {
-      derivatives: "clober-perps",
+      derivatives: "clober-perp",
     }
   },
 ];

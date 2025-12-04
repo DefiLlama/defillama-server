@@ -3566,6 +3566,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"],
     },
+    twitter: "reya_xyz",
     url: "https://reya.network",
     chainId: 1729,
     dimensions: {

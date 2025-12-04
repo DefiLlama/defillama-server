@@ -95,6 +95,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
     return successResponse({ coins: dbData }, 3600); // 1 hour cache
   } catch (e: any) {
+    console.log('Error in getBatchHistoricalCoins', event.queryStringParameters?.coins, e)
     return errorResponse({ message: e.stack });
   }
 };

@@ -4952,5 +4952,27 @@ const data5: Protocol[] = [
       fees: "hyena",
     },
   },
+  {
+    id: "7094",
+    name: "1sec",
+    address: null,
+    symbol: "-",
+    url: "https://1sec.to/",
+    description:
+      "1Sec is a message-passing bridge between ICP and EVM chains.",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/1sec.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["ICP"],
+    forkedFromIds: [],
+    module: "onesec/index.js",
+    twitter: "1SecBridge",
+    audit_links: [],
+    listedAt: 1764869673,
+  },
 ];
 export default data5;

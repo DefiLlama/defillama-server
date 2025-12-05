@@ -267,9 +267,6 @@ export const chainCoingeckoIds = {
     github: ["terra-money"],
     twitter: "terra_money",
     url: "https://www.terra.money/",
-    dimensions: {
-      fees: "flare",
-    },
   },
   "Fantom": {
     geckoId: "fantom",
@@ -1992,6 +1989,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "FlareNetworks",
     url: "https://flare.network/",
+    dimensions: {
+      fees: "flare"
+    },
   },
   "Tlchain": {
     geckoId: "tlchain",

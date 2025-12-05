@@ -3669,6 +3669,9 @@ const data5: Protocol[] = [
       "https://github.com/ramesh-babu-drago/kaching-contract-audit-report/blob/main/KGeN%20Klotto%20Audit%20Report-2025-9-3.pdf",
     ],
     listedAt: 1764008727,
+    dimensions: {
+      fees: "kaching",
+    },
   },
   {
     id: "7041",

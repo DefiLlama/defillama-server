@@ -1576,6 +1576,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "SX_Network",
     url: "https://www.sx.technology/",
+    dimensions: {
+      fees: "sx-network",
+    },
   },
   "Echelon": {
     geckoId: "echelon",
@@ -3824,6 +3827,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "MorphLayer",
     url: "https://www.morphl2.io",
+    dimensions: {
+      fees: "morph",
+    },
   },
   "Eclipse": {
     geckoId: null,

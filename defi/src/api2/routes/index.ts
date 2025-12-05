@@ -477,7 +477,7 @@ export function setProRoutes(router: HyperExpress.Router, _routerBasePath: strin
   router.get("/v2/metrics/:type", proWrapper(getOverviewRoutes('overview')))
   router.get("/v2/metrics/chart/:type", proWrapper(getOverviewRoutes('chart')))
   router.get("/v2/metrics/:type/chain/:chain", proWrapper(getOverviewRoutes('overview')))
-  router.get("/v2/metrics/chart/:type/chain/:chain", proWrapper(getOverviewRoutes('overview')))
+  router.get("/v2/metrics/chart/:type/chain/:chain", proWrapper(getOverviewRoutes('chart')))
   
   // // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolRoutes('overview')))

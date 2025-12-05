@@ -4742,6 +4742,9 @@ const data3_0: Protocol[] = [
     audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
     parentProtocol: "parent#swell",
     listedAt: 1682554957,
+    dimensions: {
+      fees: "swell",
+    },
   },
   {
     id: "2902",

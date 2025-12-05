@@ -4974,5 +4974,27 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764869673,
   },
+  {
+    id: "7095",
+    name: "Aegis Markets",
+    address: null,
+    symbol: "-",
+    url: "https://aegis.markets/",
+    description:
+      "Aegis is a Dynamic Fee Protocol built on Uniswap v4 designed to maximize yield for Liquidity Providers. This is done through a dynamic fee policy that increases pool fees during times of volatility taking advantage of arbitrage opportunities on any given network and pool.",
+    chain: "Unichain",
+    logo: `${baseIconsUrl}/aegis-markets.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Unichain"],
+    forkedFromIds: [],
+    module: "aegis/index.js",
+    twitter: "AegisMarkets",
+    audit_links: ["https://docs.aegis.markets/audits"],
+    listedAt: 1764962057,
+  },
 ];
 export default data5;

@@ -41424,12 +41424,12 @@ const data3_2: Protocol[] = [
   {
     id: "4448",
     name: "Superform",
-    address: null,
-    symbol: "-",
+    address: "0x1d926bbe67425c9f507b9a0e8030eedc7880bf33",
+    symbol: "UP",
     url: "https://www.superform.xyz/",
     description:
       "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
-    chain: "Polygon",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/superform.png`,
     audits: "2",
     audit_note: null,
@@ -41440,7 +41440,11 @@ const data3_2: Protocol[] = [
     module: "superform/index.js",
     forkedFrom: [],
     twitter: "superformxyz",
-    audit_links: ["https://github.com/superform-xyz/superform-core/tree/main/security-review"],
+    audit_links: [
+      "https://github.com/superform-xyz/superform-core/tree/main/security-review", 
+      "https://github.com/superform-xyz/v2-core/tree/dev/audits", 
+      "https://github.com/superform-xyz/v2-periphery/tree/dev/audits"
+    ],
     github: ["superform-xyz"],
     listedAt: 1712365922,
   },

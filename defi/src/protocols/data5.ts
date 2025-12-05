@@ -4949,6 +4949,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#based",
     dimensions: {
       derivatives: "hyena",
+      fees: "hyena",
     },
   },
 ];

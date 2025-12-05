@@ -20,7 +20,7 @@ import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionProtocolFileRoute, getOverviewRoutes, getOverviewFileRoute, getDimensionProtocolRoutes, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -474,9 +474,14 @@ export function setProRoutes(router: HyperExpress.Router, _routerBasePath: strin
     })
   }
 
-  router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
-  router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
-  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
+  router.get("/v2/metrics/:type", proWrapper(getOverviewRoutes('overview')))
+  router.get("/v2/metrics/chart/:type", proWrapper(getOverviewRoutes('chart')))
+  router.get("/v2/metrics/:type/chain/:chain", proWrapper(getOverviewRoutes('overview')))
+  router.get("/v2/metrics/chart/:type/chain/:chain", proWrapper(getOverviewRoutes('overview')))
+  
+  // // this includes special route financial statement
+  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolRoutes('overview')))
+  router.get("/v2/metrics/chart/:type/protocol/:name", proWrapper(getDimensionProtocolRoutes('chart')))
 }
 
 

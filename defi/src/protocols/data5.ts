@@ -4488,7 +4488,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Luck Games",
     chains: ["Monad"],
-    module: "dummy.js",
+    module: "narbet/index.js",
     twitter: "nardotbet",
     forkedFromIds: [],
     audit_links: [
@@ -4498,6 +4498,7 @@ const data5: Protocol[] = [
       fees: "narbet",
       dexs: "narbet",
     },
+    listedAt: 1764954107,
   },
   {
     id: "7075",

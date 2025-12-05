@@ -3666,7 +3666,7 @@ const data5: Protocol[] = [
     twitter: "kachingvip",
     forkedFromIds: [],
     audit_links: [
-      "https://github.com/ramesh-babu-drago/kaching-contract-audit-report/blob/main/KGeN%20Klotto%20Audit%20Report-2025-9-3.pdf",
+      "https://github.com/KachingSupport/kaching_audit_report",
     ],
     listedAt: 1764008727,
     dimensions: {

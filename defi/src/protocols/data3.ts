@@ -23405,11 +23405,11 @@ const data3_1: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Lottery",
-    chains: ["Optimism"],
+    chains: ["Arbitrum", "Base", "Ethereum", "Gnosis", "Optimism", "Scroll", "World Chain"],
     module: "pooltogether-v5/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits"],
-    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
+    oraclesBreakdown: [ { name: "Witnet", type: "Primary", proof: ["https://dev.pooltogether.com/protocol/deployments/", "https://arbiscan.io/address/0xad1b8ec0151f13ba563226092b5f7308d8dc107b#code", "https://basescan.org/address/0x74ebf391831c0757b5a4335f2f3abbb1499d18f0#code", "https://etherscan.io/address/0xf93329e78feff1145fce03a79d5b356588dea215#code", "https://gnosisscan.io/address/0x47c9212cc5c0836521346ce9b3d03ca91edf1123#code", "https://optimistic.etherscan.io/address/0x3d2Ef6C091f7CB69f06Ec3117F36A28BC596aa7B#code", "https://scrollscan.com/address/0x4d971a28bb23c6354f7cf1f4666c34b00e94f608#code", "https://worldscan.org/address/0x4a411d67cd47bfc41395946be069deb97a171437#code" ]} ],
     parentProtocol: "parent#pooltogether",
     listedAt: 1698271658,
     dimensions: {

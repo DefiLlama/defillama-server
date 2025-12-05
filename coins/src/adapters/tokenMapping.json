@@ -1537,6 +1537,11 @@
     }
   },
   "bsc": {
+    "0x2D5BdC96D9C8AabBDB38c9A27398513e7E5ef84F": {
+      "decimals": "6",
+      "symbol": "BUIDL",
+      "to": "coingecko#blackrock-usd-institutional-digital-liquidity-fund"
+    },
     "0x1775504c5873e179Ea2f8ABFcE3861EC74D159bc": {
       "decimals": "18",
       "symbol": "CASH+",

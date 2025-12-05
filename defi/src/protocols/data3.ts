@@ -41430,7 +41430,7 @@ const data3_2: Protocol[] = [
     description:
       "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/superform.png`,
+    logo: `${baseIconsUrl}/superform.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

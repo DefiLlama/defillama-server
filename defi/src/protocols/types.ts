@@ -106,4 +106,5 @@ export interface IParentProtocol {
   warningBanners?: Array<Banner>;
   rugged?: boolean;
   deadUrl?: boolean;
+  deprecated?: boolean;
 }

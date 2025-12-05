@@ -46,6 +46,8 @@ import flow from "./flow";
 import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
+import anvu from "./anvu";
+import monad from "./monad";
 
 export type Token =
   | {
@@ -107,7 +109,7 @@ export const bridges = [
   linea,
   manta,
   astrzk,
-  zklink,
+  // zklink,
   // celer,
   fraxtal,
   symbiosis,
@@ -119,7 +121,9 @@ export const bridges = [
   unichan,
   flow,
   layerzero,
-  initia
+  initia, 
+  anvu,
+  monad
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -207,7 +211,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
+      let decimals: any, symbol: string;
       if ("getAllInfo" in token) {
         try {
           const newToken = await token.getAllInfo();
@@ -222,8 +226,10 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         symbol = token.symbol;
       }
 
+      if (isNaN(decimals) || decimals == '' || decimals == null) return;
       if (i && !decimals) return;
       if (!symbol) return;
+      decimals = Number(decimals)
 
       writes.push({
         PK: `asset#${token.from}`,

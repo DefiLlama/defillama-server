@@ -1,31 +1,29 @@
 import * as HyperExpress from "hyper-express";
 import * as path from "path";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
-import sluggify from "../../utils/sluggify";
-import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
-import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { get20MinDate } from "../../utils/shared";
-import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
-import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
-import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getCurrentUnixTimestamp } from "../../utils/date";
-import { getTweetStats } from "../../twitter/db";
-import { ddbGetInflows } from "../../getInflows";
-import { getFormattedChains } from "../../getFormattedChains";
-import { getR2 } from "../../utils/r2";
+import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
+import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
-import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getFormattedChains } from "../../getFormattedChains";
+import { pgGetInflows } from "../db/inflows";
+import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
+import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
+import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getTweetStats } from "../../twitter/db";
+import { getCurrentUnixTimestamp } from "../../utils/date";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
-import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
-import { getCexs } from "../../getCexs";
-import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
+import { getR2 } from "../../utils/r2";
+import { get20MinDate } from "../../utils/shared";
+import sluggify from "../../utils/sluggify";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { readRouteData, } from "../cache/file-cache";
+import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
-import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
 import { getHistory } from "../../dexAggregators/db/getHistory";
@@ -82,7 +80,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
 
-  router.get("/cexs", ew(getCexs));
+  router.get("/cexs", (_: any, res: HyperExpress.Response) => fileResponse('cex_agg', res));
 
 
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
@@ -135,12 +133,13 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   })));
 
 
+  router.get("/activeUsers", defaultFileHandler)
+
 
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
     router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
-    router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
   
     router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
     router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set
@@ -217,16 +216,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     protocolData = cache.parentProtocolSlugMap[name]
     if (protocolData) return successResponse(res, protocolData, 60);
     return fileResponse('config/smol/' + req.path_parameters.name, res);
-  }
-
-  async function fileResponse(filePath: string, res: HyperExpress.Response) {
-    try {
-      res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
-      res.json(await readRouteData(filePath))
-    } catch (e) {
-      console.error(e);
-      return errorResponse(res, 'Internal server error', { statusCode: 500 })
-    }
   }
 
 
@@ -364,32 +353,31 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
   // const protocolId = protocolData.id
   const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
   const timestamp = Number(req.path_parameters.timestamp)
-  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp());
+  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp())
 
-  await ddbGetInflows({
-    errorResponse: (message: string) => errorResponse(res, message),
-    successResponse: (data: any) => successResponse(res, data, 10),
-    protocolData, tokensToExclude,
-    skipTokenLogs: true, timestamp, endTimestamp,
+  const response = await pgGetInflows({
+    ids: [{
+      id: protocolData.id, tokensToExclude
+    }],
+    startTimestamp: timestamp,
+    endTimestamp,
   })
 
-  /*
-   const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
+  const inflowData = response?.[protocolData.id]
 
-  if (old.SK === undefined)
-    return errorResponse(res, 'No data at that timestamp')
-
-  const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, { searchWidth: 2 * 3600 }))
-  );
-
-  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)
+  if (!inflowData)
     return errorResponse(res, 'No data')
 
-  const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
+  return successResponse(res, inflowData, 60)
 
-  return successResponse(res, responseData, 1); 
-  */
+
+  /*  switch back to pg for inflows data
+    await ddbGetInflows({
+      errorResponse: (message: string) => errorResponse(res, message),
+      successResponse: (data: any) => successResponse(res, data, 10),
+      protocolData, tokensToExclude,
+      skipTokenLogs: true, timestamp, endTimestamp,
+    }) */
 }
 
 async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -475,6 +463,22 @@ async function _getChainChartData(name: string) {
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
 }
+
+export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
+
+  const proWrapper = (routeFn: any) => {  // inject isProRoute flag
+
+    return ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
+      (req as any).isProRoute = true
+      return routeFn(req, res)
+    })
+  }
+
+  router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
+  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
+}
+
 
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {

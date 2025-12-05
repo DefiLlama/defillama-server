@@ -57,7 +57,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // "crvCRVETH-gauge": "0x1cebdb0856dd985fae9b8fea2262469360b8a3a6",
     crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
-    NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C"
+    NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
+    UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568' 
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -96,6 +97,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
     SFUND_1: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -141,13 +143,14 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     coBTC: "0x918b3aa73e2D42D96CF64CBdB16838985992dAbc", // TO SUS , BACKING 2 TOKENS, BEING USED ON YIELDNEST + KERNEL ITS PUMPINP METRICS
     ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
     MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
-    NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7"
+    NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
     MINTME: "0xd652776de7ad802be5ec7bebfafda37600222b48",
   },
   solana: {
+    xSOL: "BdUJucPJyjkHxLMv6ipKNUhSeY3DWrVtgxAES1iSBAov",
     LIBRA: "Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU",
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
     SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
@@ -328,6 +331,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   bera: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
+    UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
@@ -340,6 +344,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   hemi: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
     UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258",
+    UNIBTC: '0xf9775085d726e782e83585033b58606f7731ab18'
     // hemiBTC: "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28", // IS NOT BACKED
   },
   plume: {
@@ -362,6 +367,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   plume_mainnet: {
     BTC: '0xCfEc8129ecf97e56F106392c04eD02BC20fC7FeC',  // dunno the source/backing of these tokens
     pUSDT: '0xCCA84731C19EB911C985E9d1892E0935C104Abce',  // dunno the source/backing of these tokens
+  },
+  cardano: {
+    SUPERIOR: 'a967738feca0f92afa0f781f2db4ec318ee6f06cb515fecf988fabfb0014df105355504552494f52'
+  },
+  bob: {
+    UNIBTC: '0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894' 
+    //https://explorer.gobob.xyz/address/0x631ae97e24f9F30150d31d958d37915975F12ed8?tab=token_transfers , https://explorer.gobob.xyz/address/0x15ee13E98dcacA45125211d03443B251C322bab5?tab=token_transfers , https://app.pell.network/restake/detail?chainid=60808&address=0x631ae97e24f9F30150d31d958d37915975F12ed8
   }
 };
 

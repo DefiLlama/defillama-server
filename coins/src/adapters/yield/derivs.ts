@@ -632,6 +632,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x0000000000000000000000000000000000000000",
     address: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
   },
+  "stBTC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x6d88d2718cfA50EcCf4743ed8E6Bd4A0716a4708",
+      });
+      return rate / 1e18;
+    },
+    chain: "btnx",
+    underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
+    address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
+  },
 };
 
 export async function derivs(timestamp: number) {

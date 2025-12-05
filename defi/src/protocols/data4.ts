@@ -15786,6 +15786,16 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "hyperithm/index.js",
     twitter: "hyperithm",
+      oraclesBreakdown: [
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: [
+          "https://arbiscan.io/address/0x52dea1e79273887ad0bdf3faf3904351ae9460e0#readContract",
+        ],
+        chains: [{ chain: "Arbitrum" }],
+      },
+    ],
     listedAt: 1747734486,
     dimensions: {
       fees: "hyperithm"

@@ -7009,10 +7009,6 @@ const data: Protocol[] = [
     module: "thorchain/index.js",
     twitter: "THORChain",
     audit_links: ["https://www.certik.org/projects/thorchain"],
-    dimensions: {
-      fees: "thorswap",
-      dexs: "thorswap"
-    }
   },
   {
     id: "413",
@@ -11988,6 +11984,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       },
     ],
     github: ["balmy-protocol"],
+    deprecated: true, // https://x.com/balmy_xyz/status/1940452931482145192
   },
   {
     id: "628",
@@ -13207,15 +13204,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "680",
     name: "Tinyman",
-    address: null,
-    symbol: "-",
+    address: "algorand:AOQ42HEI4X3DYXVWD7GGZZBIVOWVMNYMVGIV3GPB3AFI4IYCJDI7KICU6E",
+    symbol: "TINY",
     url: "https://tinyman.org",
     description: "Tinyman is a next-generation decentralized AMM on the Algorand blockchain.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/tinyman.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "tiny",
     cmcId: "1569",
     category: "Dexs",
     chains: ["Algorand"],
@@ -16651,8 +16648,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "848",
     name: "Talent Protocol V1",
-    address: null,
-    symbol: "-",
+    address: "base:0x9a33406165f562e16c3abd82fd1185482e01b49a",
+    symbol: "TALENT",
     url: "https://www.talentprotocol.com",
     description:
       "Talent Protocol is a web3 platform where talent can easily launch a social token (called Talent Tokens) to accelerate their career, and where supporters can back people they believe in.",
@@ -16660,7 +16657,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/talent-protocol-v1.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "talent-protocol",
     cmcId: null,
     category: "SoFi",
     chains: ["Celo"],
@@ -22662,6 +22659,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tectonic/index.js",
     twitter: "TectonicFi",
     forkedFromIds: ["114"],
+    dimensions: {
+      fees: "tectonic"
+    },
     audit_links: ["https://tectonic.gitbook.io/docs/developer/smart-contracts-and-security"],
     listedAt: 1640643322,
   },

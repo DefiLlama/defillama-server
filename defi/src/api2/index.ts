@@ -28,8 +28,9 @@ async function main() {
     initCache({ cacheType: RUN_TYPE.API_SERVER }),
   ])
 
-  if (skipSubPath) {
+  if (skipSubPath) {  // for local testing purposes
     setTvlRoutes(webserver, '/')
+    setProRoutes(webserver, '/')  // pro routes also have tvl routes
   }
 
   if (process.env.API2_SUBPATH) {
@@ -51,7 +52,9 @@ async function main() {
     const proRouter = new HyperExpress.Router()
     const proSubPath = '/' + process.env.API2_SUBPATH + '_pro'
     webserver.use(proSubPath, proRouter)
+
     setProRoutes(proRouter, proSubPath)
+    setTvlRoutes(proRouter, proSubPath)  // pro routes also have tvl routes
   }
 
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
@@ -61,7 +64,7 @@ async function main() {
     const origin = req.headers.origin;
 
     const isFromDefiLlama = origin === 'https://defillama.com'
-    
+
     if (req.headers.authorization && !isFromDefiLlama) {
       res.status(403).send();
     } else {

@@ -203,7 +203,8 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    ...(parentProtocol.deprecated || childProtocolsTvls.every((p) => p.deprecated) ? { deprecated: true } : {}),
   };
 
   if (feMini) {

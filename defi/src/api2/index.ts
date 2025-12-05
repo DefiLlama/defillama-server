@@ -30,6 +30,7 @@ async function main() {
 
   if (skipSubPath) {
     setTvlRoutes(webserver, '/')
+    setProRoutes(webserver, '/')
   }
 
   if (process.env.API2_SUBPATH) {

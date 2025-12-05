@@ -37,7 +37,7 @@ import type { Protocol } from "./types";
   we start tracking it on both polygon and ethereum, then `chain` should be set to `Ethereum`.
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
-const data3_1: Protocol[] = [
+const data3_0: Protocol[] = [
   {
     id: "2701",
     name: "FairySwap V2",
@@ -17650,6 +17650,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.parallel.fi/parallel-finance/security"],
     listedAt: 1693238053,
   },
+]
+
+const data3_1: Protocol[] = [
   {
     id: "3449",
     name: "Parallel Staking",
@@ -47992,6 +47995,9 @@ const data3_2: Protocol[] = [
     ],
     listedAt: 1717598971,
   },
+]
+
+const data3_3: Protocol[] = [
   {
     id: "4728",
     name: "Blasterswap V3",
@@ -67448,5 +67454,5 @@ const data3_2: Protocol[] = [
   },
   // Please don't add new litings here; please use data4.ts
 ];
-const data3 = data3_1.concat(data3_2)
+const data3 = data3_0.concat(data3_1, data3_2, data3_3);
 export default data3;

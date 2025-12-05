@@ -61680,7 +61680,7 @@ const data3_2: Protocol[] = [
     gecko_id: "nabla",
     cmcId: null,
     category: "Dexs",
-    chains: ["Arbitrum", "Base", "Berachain", "HyperEVM", "Monad"],
+    chains: ["Arbitrum", "Base", "Berachain", "Hyperliquid L1", "Monad"],
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "nabla/index.js",

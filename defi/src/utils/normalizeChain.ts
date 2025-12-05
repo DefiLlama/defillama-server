@@ -459,6 +459,9 @@ export const chainCoingeckoIds = {
     cmcId: "4030",
     twitter: "Algorand",
     url: "https://developer.algorand.org/",
+    dimensions: {
+      fees: "algorand",
+    },
   },
   "Osmosis": {
     geckoId: "osmosis",

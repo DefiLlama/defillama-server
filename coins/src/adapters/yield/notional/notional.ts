@@ -120,8 +120,12 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     let price: number;
     const yieldToken = yieldTokens.find((y) => y.vault === vault.id)?.yieldToken
     if (yieldTokenPrices[yieldToken]) {
+      // These are the DefiLlama prices for the yield tokens. It should reflect up to date prices for
+      // Curve Pool Tokens, PT Tokens and most staking tokens. We just discount it here by the vault shares
+      // to yield token price,
       price = yieldTokenPrices[yieldToken].price * sharesPrices[index] / 10 ** (yieldTokenPrices[yieldToken].decimals)
     } else {
+      // If the DefiLlama price is not available, we use the on chain vault price.
       const assetDecimals = vault.asset.decimals
       const vaultPrice = vaultPrices[index] / (10 ** (assetDecimals + 12))
       price = vaultPrice * underlyingPrices[vault.asset.id].price

@@ -8536,6 +8536,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["AtmosExchange"],
     twitter: "AtmosProtocol",
   },
+  {
+    id: "parent#based",
+    name: "Based",
+    url: "https://app.based.one/r/DEFILLAMA",
+    referralUrl: "https://app.based.one/r/DEFILLAMA",
+    description: "Trade, Predict and Spend. Built on Hyperliquid L1, Polymarket. Backed by Ethena Labs.",
+    logo: `${baseIconsUrl}/based.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BasedOneX",
+  },
 ];
 
 export default parentProtocols;

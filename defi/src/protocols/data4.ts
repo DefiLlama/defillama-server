@@ -23694,6 +23694,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     forkedFromIds: [],
     twitter: "BasedOneX",
+    parentProtocol: "parent#based",
     dimensions: {
       fees: "based-app",
       derivatives: "based-app"

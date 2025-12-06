@@ -1717,6 +1717,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "DogechainFamily",
     url: "https://dogechain.dog/",
+    dimensions: {
+      fees: "dogechain",
+    },
   },
   "Canto": {
     geckoId: "canto",
@@ -3828,7 +3831,7 @@ export const chainCoingeckoIds = {
       types: ["L2"],
       da: "Ethereum",
     },
-    twitter: "MorphLayer",
+    twitter: "MorphNetwork",
     url: "https://www.morphl2.io",
     dimensions: {
       fees: "morph",
@@ -5147,6 +5150,17 @@ export const chainCoingeckoIds = {
     twitter: "0xcapx",
     url: "https://capx.ai",
     chainId: 757,
+  },
+  "Seda": {
+    geckoId: "seda-2",
+    symbol: "SEDA",
+    cmcId: "23305",
+    categories: ["Cosmos"],
+    twitter: "sedaprotocol",
+    url: "https://explorer.seda.xyz/trends",
+    dimensions: {
+      fees: "seda",
+    },
   },
 } as unknown as ChainCoinGekcoIds;
 

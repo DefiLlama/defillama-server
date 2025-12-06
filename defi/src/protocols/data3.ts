@@ -52475,6 +52475,9 @@ const data3_3: Protocol[] = [
     twitter: "BosonProtocol",
     github: ["bosonprotocol"],
     listedAt: 1721821003,
+    dimensions: {
+      fees: "boson"
+    }
   },
   {
     id: "4917",

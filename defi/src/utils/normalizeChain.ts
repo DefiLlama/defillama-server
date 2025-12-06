@@ -5160,7 +5160,7 @@ export const chainCoingeckoIds = {
     cmcId: "23305",
     categories: ["Cosmos"],
     twitter: "sedaprotocol",
-    url: "https://explorer.seda.xyz/trends",
+    url: "https://www.seda.xyz/",
     github: ["sedaprotocol"],
     dimensions: {
       fees: "seda",

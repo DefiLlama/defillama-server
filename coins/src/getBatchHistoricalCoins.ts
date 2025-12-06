@@ -76,6 +76,7 @@ async function fetchDBData(
 
 const handler = async (event: any): Promise<IResponse> => {
   try {
+    console.log(`coins: ${event.queryStringParameters?.coins}`)
     const coinsObj = JSON.parse(event.queryStringParameters?.coins ?? "{}");
     const coinQueries: string[] = Object.keys(coinsObj);
     if (coinQueries.length == 0)

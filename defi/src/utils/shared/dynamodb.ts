@@ -1,13 +1,16 @@
 import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
 import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput, NumberValue } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
+import { AdaptiveRetryStrategy } from "@aws-sdk/util-retry";
 
+const maxAttempts = 10
 const ddbClient = new DynamoDBClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
     sslEnabled: false,
     region: "local", 
-    maxAttempts: 10
+    maxAttempts, 
+    retryStrategy: new AdaptiveRetryStrategy(() => Promise.resolve(maxAttempts)),
   })
 });
 

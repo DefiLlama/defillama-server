@@ -13397,6 +13397,16 @@
       "to": "coingecko#theo-short-duration-us-treasury-fund",
       "decimals": 6,
       "symbol": "thBILL"
+    },
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
+    "0xB0F70C0bD6FD87dbEb7C10dC692a2a6106817072": {
+      "to": "coingecko#bitcoin-avalanche-bridged-btc-b",
+      "decimals": 8,
+      "symbol": "BTC.b"
     }
   },
   "botanix": {

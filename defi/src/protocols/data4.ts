@@ -5453,19 +5453,24 @@ const data4: Protocol[] = [
          startDate: "2025-11-12",
       },
       {
-        name: "Api3",
+        name: "RedStone",
         type: "Primary",
         proof: [
           "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
-          "https://app.takaralend.com/market/WSEI",
-          "https://app.takaralend.com/market/spSEI",
-          "https://app.takaralend.com/market/iSEI",
+          "https://app.takaralend.com/market/enzoBTC",
           "https://app.takaralend.com/market/uBTC",
+          "https://app.takaralend.com/market/USD%E2%82%AE0",
           "https://app.takaralend.com/market/MBTC",
-          "https://app.takaralend.com/market/SBTC",
+          "https://app.takaralend.com/market/USDC",
         ],
          endDate: "2025-11-12",
       },
+          {
+        name: "Api3",
+        type: "Fallback",
+        proof: [https://app.takaralend.com/
+          ,
+        ],
       {
         name: "Pyth",
         type: "Fallback",

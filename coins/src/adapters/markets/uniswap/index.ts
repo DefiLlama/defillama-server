@@ -7,7 +7,7 @@ const alternateGetReservesAbi =
   "function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)";
 
 const config = {
-  uniswap: { endpoint: sdk.graph.modifyEndpoint('A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum'), chain: 'ethereum' },
+  uniswap: { factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f', chain: 'ethereum' },
   sushiswap: [
     { endpoint: sdk.graph.modifyEndpoint('6NUtT5mGjZ1tSshKLf5Q3uEEJtjBZJo1TpL5MXsUBqrT'), chain: 'ethereum', factory: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac', },
     { endpoint: sdk.graph.modifyEndpoint('8nFDCAhdnJQEhQF3ZRnfWkJ6FkRsfAiiVabVn4eGoAZH'), chain: 'arbitrum', factory: sushiFactory, },

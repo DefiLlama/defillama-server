@@ -16412,7 +16412,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Cross Chain Bridge",
     chains: ["Near"],
     forkedFrom: [],
     module: "near-intents/index.js",

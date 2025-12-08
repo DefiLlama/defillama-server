@@ -13177,6 +13177,10 @@ const data3_0: Protocol[] = [
       "https://github.com/Narwhal-Finance/Public-docs/blob/main/Zokyo_Narwhal_Finance_Audit_Report_June_2023.pdf",
     ],
     listedAt: 1689860528,
+    dimensions: {
+      fees: "narwhal-finance",
+      derivatives: "narwhal-finance"
+    }
   },
   {
     id: "3259",

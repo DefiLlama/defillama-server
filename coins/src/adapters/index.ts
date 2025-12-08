@@ -7,27 +7,31 @@ import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
 import * as others2 from "./other/others2";
 import * as graphCoins from "./markets/graphCoins";
+import * as morpho from "./moneyMarkets/morpho";
+import * as pyth from "./oracles/pyth";
 
 export default {
   ...compound.adapters,
   ...aave.adapters,
   ...euler.adapters, 
+  ...pyth.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
   ...others2.adapters,
   ...graphCoins.adapters,
+  ...morpho.adapters,
   fraxtalGas: require("./other/fraxtalGas"),
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),
-  midas: require("./rwa/midas"),
+  // midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
-  pyth: require("./oracles/pyth"),
+  // pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),
@@ -172,4 +176,10 @@ export default {
   rhea: require("./markets/rhea"),
   bracket: require("./yield/bracket"),
   goblin: require("./markets/goblin"),
+  ember: require("./yield/ember"),
+  suirewards: require("./markets/suirewards"),
+  axlp: require("./liquidStaking/axlp"),
+  altai: require("./rwa/altai"),
+  wisdomtree: require("./rwa/wisdomtree"),
+  townsquare: require("./townsquare"),
 };

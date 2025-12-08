@@ -175,9 +175,10 @@ type StoreTvlOptions = {
   overwriteExistingData?: boolean,
   runType?: string,
   isRunFromUITool?: boolean
+  skipChainsCheck?: boolean,
 }
 
-export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon'])
+export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,
@@ -250,9 +251,10 @@ export async function storeTvl(
     overwriteExistingData = false,
     runType = 'default',
     isRunFromUITool = false,
+    skipChainsCheck = false,
   } = options
 
-  if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
+  if (partialRefill && (!chainsToRefill.length || !cacheData) && !skipChainsCheck) throw new Error('Missing chain list for refill')
 
   const adapterStartTimestamp = getCurrentUnixTimestamp()
 

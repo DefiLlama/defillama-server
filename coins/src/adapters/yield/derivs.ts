@@ -574,6 +574,76 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0x498D9329555471bF6073A5f2D047F746d522A373",
   },
+  strETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getReport(address asset) external view returns (tuple(uint224 priceD18, uint32 timestamp, bool isSuspicious))",
+        target: "0x8a78e6b7E15C4Ae3aeAeE3bf0DE4F2de4078c1cD",
+        params: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      });
+      return 1e18 / rate.priceD18;
+    },
+    chain: "ethereum",
+    underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    address: "0xcd3c0F51798D1daA92Fb192E57844Ae6cEE8a6c7",
+  },
+  ankrFLOWEVM: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function sharesToBonds(uint256) external view returns (uint256)",
+        target: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+        params: "1000000",
+      });
+      return 1e6 / rate;
+    },
+    chain: "flow",
+    underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
+    address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+  },
+  earnAUSD: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "uint256:getTotalAssets",
+          target: "0x36eDbF0C834591BFdfCaC0Ef9605528c75c406aA",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+        }),
+      ]);
+      return assets / supply;
+    },
+    chain: "monad",
+    underlying: "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+    address: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+  },
+  sMON: {
+    rate: async ({ api }) => {
+      const assets = await 
+        api.call({
+          abi: "function convertToAssets(uint96 shares) external view returns (uint96 assets)",
+          target: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+          params: "1000000"
+        })
+      return assets / 1000000;
+    },
+    chain: "monad",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+  },
+  "stBTC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x6d88d2718cfA50EcCf4743ed8E6Bd4A0716a4708",
+      });
+      return rate / 1e18;
+    },
+    chain: "btnx",
+    underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
+    address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
+  },
 };
 
 export async function derivs(timestamp: number) {
@@ -587,14 +657,7 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const {
-    chain,
-    underlying,
-    address,
-    symbol,
-    decimals,
-    confidence,
-  } = config;
+  const { chain, underlying, address, symbol, decimals, confidence } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {

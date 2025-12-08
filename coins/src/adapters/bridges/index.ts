@@ -47,6 +47,7 @@ import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
 import anvu from "./anvu";
+import monad from "./monad";
 
 export type Token =
   | {
@@ -121,7 +122,8 @@ export const bridges = [
   flow,
   layerzero,
   initia, 
-  anvu
+  anvu,
+  monad
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

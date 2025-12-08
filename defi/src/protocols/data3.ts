@@ -9593,7 +9593,7 @@ const data3_0: Protocol[] = [
     previousNames: ["EigenLayer"],
     address: "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
     symbol: "EIGEN",
-    url: "https://www.eigenlayer.xyz/",
+    url: "https://www.eigencloud.xyz",
     description:
       "EigenCloud is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
     chain: "Ethereum",
@@ -9607,7 +9607,7 @@ const data3_0: Protocol[] = [
     module: "eigenlayer/index.js",
     twitter: "eigenlayer",
     forkedFrom: [],
-    audit_links: ["https://docs.eigenlayer.xyz/security/audits"],
+    audit_links: ["https://docs.eigencloud.xyz/eigenlayer/security/audits"],
     github: ["Layr-Labs"],
     listedAt: 1686776222,
     dimensions: {
@@ -25152,7 +25152,7 @@ const data3_1: Protocol[] = [
     name: "Kamino Lend",
     address: "solana:KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
     symbol: "KMNO",
-    url: "https://kamino.finance/",
+    url: "https://kamino.com/",
     description:
       "Kamino Lend (K-Lend) is a novel peer-to-pool borrowing primitive designed as foundational infrastructure to power complex financial products with leverage and automation and as a decentralized matchmaker between borrowers and lenders",
     chain: "Solana",
@@ -25184,7 +25184,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",
-    audit_links: ["https://github.com/hubbleprotocol/kamino-audits"],
+    audit_links: ["https://kamino.com/security#security-audits"],
     listedAt: 1699615528,
     parentProtocol: "parent#kamino-finance",
     dimensions: {
@@ -25325,7 +25325,7 @@ const data3_1: Protocol[] = [
     name: "Arbitrum Bridge",
     address: "arbitrum:0x912ce59144191c1204e64559fe8253a0e49e6548",
     symbol: "ARB",
-    url: "https://bridge.arbitrum.io",
+    url: "https://portal.arbitrum.io/bridge",
     description:
       "The Arbitrum Bridge acts as a secure channel connecting Ethereum's mainnet (Layer-1) with the Arbitrum Rollup (Layer-2). This bridge allows users to transfer assets, like ETH or ERC-20 tokens, between these layers",
     chain: "Arbitrum",
@@ -25345,7 +25345,7 @@ const data3_1: Protocol[] = [
     name: "Arbitrum Nova Bridge",
     address: "arbitrum:0x912ce59144191c1204e64559fe8253a0e49e6548",
     symbol: "ARB",
-    url: "https://bridge.arbitrum.io/?l2ChainId=42170",
+    url: "https://portal.arbitrum.io/bridge?l2ChainId=42170",
     description:
       "The Arbitrum Nova Bridge acts as a secure channel connecting Ethereum's mainnet (Layer-1) with the Arbitrum Rollup (Layer-2). This bridge allows users to transfer assets, like ETH or ERC-20 tokens, between these layers",
     chain: "Arbitrum",
@@ -35876,7 +35876,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709315721,
     dimensions: {
       fees: "pac-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4212",
@@ -40993,7 +40994,7 @@ const data3_2: Protocol[] = [
     name: "ether.fi Liquid",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://app.ether.fi/liquid",
+    url: "https://www.ether.fi/app/liquid",
     description:
       "Liquid is an automated DeFi strategy vault that provides ether.fi users a simple access point to use their eETH in the DeFi ecosystem",
     chain: "Ethereum",
@@ -42230,7 +42231,7 @@ const data3_2: Protocol[] = [
     name: "Hyperliquid Bridge",
     address: "0x0d01dc56dcaaca66ad901c959b4011ec",
     symbol: "HYPE",
-    url: "https://hyperliquid.xyz",
+    url: "https://hyperfoundation.org",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
     chain: "Arbitrum",
@@ -64962,7 +64963,7 @@ const data3_3: Protocol[] = [
     name: "Hyperliquid HLP",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
     symbol: "HYPE",
-    url: "https://hyperliquid.xyz",
+    url: "https://hyperfoundation.org",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquidity Provider (HLP) is a protocol vault that does market making and liquidations and receives a portion of trading fees",
     chain: "Hyperliquid L1",
@@ -66276,7 +66277,7 @@ const data3_3: Protocol[] = [
     name: "Hyperliquid Perps",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
     symbol: "HYPE",
-    url: "https://hyperliquid.xyz",
+    url: "https://hyperfoundation.org",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
     chain: "Hyperliquid L1",

@@ -5166,6 +5166,15 @@ export const chainCoingeckoIds = {
       fees: "seda",
     },
   },
+  "Stable": {
+    geckoId: "stable-2",
+    symbol: "STABLE",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "stable",
+    url: "https://www.stable.xyz/",
+    chainId: 988,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

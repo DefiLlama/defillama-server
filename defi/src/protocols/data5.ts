@@ -5061,7 +5061,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Interface",
+    category: "Services",
     chains: ["Aptos"],
     forkedFromIds: [],
     module: "dummy.js",

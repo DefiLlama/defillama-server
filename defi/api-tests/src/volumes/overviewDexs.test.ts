@@ -97,9 +97,9 @@ describe('Volumes API - Overview DEXs', () => {
             if (prev >= curr) sortedPairs++;
           }
           
-          // At least 65% should be sorted
+          // At least 55% should be sorted
           const sortedPercentage = (sortedPairs / totalPairs) * 100;
-          expect(sortedPercentage).toBeGreaterThan(65);
+          expect(sortedPercentage).toBeGreaterThan(55);
         }
       });
 

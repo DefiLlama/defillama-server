@@ -123,9 +123,10 @@ export class ApiClient {
     } catch (error) {
       const axiosError = error as AxiosError;
       
-      // Only retry on network errors, not HTTP errors
+      // Retry on network errors AND timeout errors
       const isNetworkError = !axiosError.response;
-      const shouldRetry = retries > 0 && isNetworkError;
+      const isTimeoutError = axiosError.code === 'ECONNABORTED' || axiosError.code === 'ETIMEDOUT';
+      const shouldRetry = retries > 0 && (isNetworkError || isTimeoutError);
       
       if (shouldRetry) {
         // Exponential backoff: base delay * (2 ^ attempt)
@@ -134,7 +135,8 @@ export class ApiClient {
         const jitter = Math.random() * 1000; // Add random jitter (0-1000ms)
         const totalDelay = backoffDelay + jitter;
         
-        console.log(`Network error, retrying in ${Math.round(totalDelay)}ms (attempt ${attempt + 1}/${this.retryCount})...`);
+        const errorType = isTimeoutError ? 'Timeout' : 'Network error';
+        console.log(`${errorType}, retrying in ${Math.round(totalDelay)}ms (attempt ${attempt + 1}/${this.retryCount})...`);
         
         await new Promise((resolve) => setTimeout(resolve, totalDelay));
         return this.retryRequest(requestFn, retries - 1, attempt + 1);

@@ -31426,7 +31426,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "infinit",
     cmcId: "37609",
-    category: "Yield",
+    category: "AI Agents",
     chains: ["Binance","Arbitrum", "Ethereum", "Base", "Optimism", "Sonic", "Hyperliquid L1", "Mantle", "Plasma", "Berachain"],
     module: "infinit/index.js",
     twitter: "Infinit_Labs",

@@ -11054,6 +11054,26 @@
     }
   },
   "saga": {
+    "0x58d9fbBc6037dedfBA99cAfA28e4C371b795ad97": {
+      "to": "coingecko#lrt-squared",
+      "decimals": 18,
+      "symbol": "KING"
+    }, 
+    "0x32604f9ea6c739d0c56b2d01e07a57c7a05ff007": {
+      "to": "coingecko#saga-2",
+      "decimals": 18,
+      "symbol": "wstATOM"
+    },
+    "0xaa5e2ea42f0a9c3b43f2b7d26eaa2ba17ae41dac": {
+      "to": "coingecko#stride-staked-osmo",
+      "decimals": 18,
+      "symbol": "WSAGA"
+    },
+    "0x7cF468a019C5bf734311D10C3a429bB504CAF3Ce": {
+      "to": "coingecko#tbtc",
+      "decimals": 18,
+      "symbol": "TBTC"
+    },
     "0xA6F89de43315B444114258f6E6700765D08bcd56": {
       "to": "coingecko#yieldfi-yeth",
       "decimals": 18,

@@ -2720,7 +2720,10 @@ const data: Protocol[] = [
     module: "enzyme/index.js",
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
-    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
+    oraclesBreakdown: [
+      { name: "Chainlink", type: "Primary", proof: [] },
+      { name: "RedStone", type: "Secondary", proof: [] }
+    ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
   },

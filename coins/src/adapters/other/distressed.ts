@@ -59,7 +59,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
     UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568', 
-    pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
+    // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

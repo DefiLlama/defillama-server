@@ -599,6 +599,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "flow",
     underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
     address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+    confidence: 1,
   },
   earnAUSD: {
     rate: async ({ api }) => {

@@ -35872,7 +35872,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709315721,
     dimensions: {
       fees: "pac-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4212",

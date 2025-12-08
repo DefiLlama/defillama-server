@@ -189,7 +189,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
 
     if (!skipBlockFetch) {
 
-      if (adapter.timetravel === false && !refillWithCachedData) {  // if we are delibrately passing chains, we assume user knows what they are doing
+      if (adapter.timetravel === false && !refillWithCachedData) {  // if we are deliberately passing chains, we assume user knows what they are doing
         console.error("Adapter doesn't support refilling");
         return;
       }

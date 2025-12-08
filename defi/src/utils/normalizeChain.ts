@@ -3158,7 +3158,7 @@ export const chainCoingeckoIds = {
     url: "https://venom.foundation/",
     github: ["venom-blockchain"],
   },
-  "K2": {
+  "OpenGDP": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -3168,8 +3168,8 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
       da: "Celestia",
     },
-    twitter: "Karak_Network",
-    url: "https://karak.network/",
+    twitter: "OpenGDP",
+    url: "https://opengdp.network/",
     chainId: "2410",
     dimensions: {
       fees: "karak",
@@ -5447,7 +5447,8 @@ const newChainLabelMap = {
   "proton": "XPR Network",
   "camp": "Camp Network",
   "reya": "ReyaChain",
-  "goat": "GOAT"
+  "goat": "GOAT",
+  "karak": "OpenGDP",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

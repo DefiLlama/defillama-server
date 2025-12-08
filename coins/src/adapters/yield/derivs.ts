@@ -644,6 +644,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "btnx",
     underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
     address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
+    confidence: 1
   },
 };
 

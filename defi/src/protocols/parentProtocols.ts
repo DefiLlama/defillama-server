@@ -4310,7 +4310,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ether-fi",
     name: "ether.fi",
-    url: "https://app.ether.fi/",
+    url: "https://www.ether.fi",
     description: "Decentralized and non-custodial Ethereum staking protocol",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     gecko_id: "ether-fi",
@@ -4386,7 +4386,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperliquid",
     name: "Hyperliquid",
-    url: "https://hyperliquid.xyz",
+    url: "https://hyperfoundation.org",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description:
       "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",

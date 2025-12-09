@@ -8571,6 +8571,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LiquidLaunchHL",
   },
+  {
+    id: "parent#settlex",
+    name: "SettleX",
+    url: "https://app.nado.xyz/",
+    description: "Built for Stable Chain, SettleX is a next-generation DEX that connects traders, merchants and AI-driven capital into a single stablecoin ecosystem.",
+    logo: `${baseIconsUrl}/settlex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "settlex_finance",
+  },
 ];
 
 export default parentProtocols;

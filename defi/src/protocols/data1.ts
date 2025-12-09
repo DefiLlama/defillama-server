@@ -23927,6 +23927,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "JPoolSolana",
     listedAt: 1641070522,
     openSource: false,
+    dimensions: {
+      fees: "jpool-staked-sol"
+    }
   },
   {
     id: "1174",

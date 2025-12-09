@@ -16087,7 +16087,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Unichain", "Corn", "Monad"],
+    chains: ["Ethereum", "Base", "Unichain", "Corn", "Arbitrum", "Katana"],
     forkedFrom: [],
     oraclesBreakdown: [
       {

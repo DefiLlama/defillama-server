@@ -45900,21 +45900,21 @@ const data3_2: Protocol[] = [
     name: "BounceBit Staking", // previous BBScan than previous BounceBit LSD
     address: null,
     symbol: "-",
-    assetToken: "stBBTC", // also BB
-    url: "https://portal.bouncebit.io/stake",
+    assetToken: "BBTC", // also BB BBUSD BBETH BBSOL
+    url: "https://portal.bouncebit.io/farm",
     description:
-      "BounceBit natively provides a Liquid Staking smart contract. If you stake your BTC or BB, you will receive a Liquid Staking Derivative (LSD). This LSD is like a voucher that testifies that you are delegating your assets to a validator.",
+      "BounceBit Farm lets users stake their rebasing, yield-embedded BB-Tokens—minted natively when subscribing to BounceBit vaults—to earn stBB rewards sourced from node-staking. BB-Tokens are non-bridgeable, redeemable only on BounceBit, and stakeable in Farm contracts for additional incentives.",
     chain: "BounceBit",
     logo: `${baseIconsUrl}/bouncebit-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Farm",
     chains: ["BounceBit"],
     module: "bouncebit-lsd/index.js",
     forkedFrom: [],
-    twitter: "bounce_bit",
+    twitter: "bouncebit",
     listedAt: 1716205027,
   },
   /*

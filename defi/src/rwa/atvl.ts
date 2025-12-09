@@ -12,7 +12,7 @@ import { storeR2JSONString } from "../utils/r2";
 const responseKey: string = "Ticker";
 const defiActiveKey: string = "DeFi Active TVL";
 const onChainKey: string = "On-chain TVL";
-const excludedKeys: string[] = ["Token Status/Potential Airdrop?", "Claimed TVL", `Llama'd`, onChainKey];
+const excludedKeys: string[] = ["Token Status/Potential Airdrop?", "Claimed TVL", `Llama'd?`, onChainKey];
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};

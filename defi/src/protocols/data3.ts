@@ -66298,7 +66298,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: "hyperliquid-perp",
       fees: "hyperliquid-perp",   // now we count separately perps and spot
-      "open-interest": "hyperliquid-perp"
+      "open-interest": "hyperliquid-perp-oi"
     }
   },
   {

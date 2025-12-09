@@ -8193,7 +8193,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Reya",
     url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
-    description: "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
+    description: "The only DEX where speed never compromises security. Uniquely built as a based-rollup powered by zk-proofs, Reya DEX delivers 1 millisecond speed, 0 trading fess and 100% Ethereum uptime and security",
     logo: `${baseIconsUrl}/reya.jpg`,
     gecko_id: null,
     cmcId: null,

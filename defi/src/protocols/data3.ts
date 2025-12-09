@@ -53914,7 +53914,7 @@ const data3_3: Protocol[] = [
     symbol: "-",
     url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
-    description: "Reya DEX is a perpetual futures exchange on the Reya Network",
+    description: "The only DEX where speed never compromises security. Uniquely built as a based-rollup powered by zk-proofs, Reya DEX delivers 1 millisecond speed, 0 trading fess and 100% Ethereum uptime and security",
     chain: "Reya Network",
     logo: `${baseIconsUrl}/reya-perps.jpg`,
     audits: "2",

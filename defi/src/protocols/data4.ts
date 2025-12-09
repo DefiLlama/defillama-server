@@ -20101,13 +20101,14 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/liquidswap-hl.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "liquidlaunch",
+    gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "LiquidLaunchHL",
     forkedFrom: [],
+    parentProtocol: "parent#liquidlabs",
     dimensions: {
       fees: "liquidswap",
       aggregators: "liquidswap"

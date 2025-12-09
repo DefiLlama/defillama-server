@@ -8560,6 +8560,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "nadohq",
     github: ["nadohq"],
   },
+  {
+    id: "parent#liquidlabs",
+    name: "LiquidLabs",
+    url: "https://app.nado.xyz/",
+    description: "Hyperliquid multi-market DEX aggregator and first native ERC20 fair launch platform on HyperEVM.",
+    logo: `${baseIconsUrl}/liquidlabs.jpg`,
+    gecko_id: "liquidlaunch",
+    cmcId: null,
+    chains: [],
+    twitter: "LiquidLaunchHL",
+  },
 ];
 
 export default parentProtocols;

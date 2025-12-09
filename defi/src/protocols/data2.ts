@@ -29293,7 +29293,7 @@ const data2: Protocol[] = [
     name: "ether.fi Stake",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://app.ether.fi/eeth",
+    url: "https://www.ether.fi/app/weeth",
     description: "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,

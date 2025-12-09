@@ -777,6 +777,7 @@ const data: Protocol[] = [
       "eip155:1:0x637deEED4e4deb1D222650bD4B64192abf002c00",
     ],
     github: ["Rari-Capital"], //check
+    deadUrl: true,
   },
   {
     id: "137",
@@ -2720,7 +2721,10 @@ const data: Protocol[] = [
     module: "enzyme/index.js",
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
-    oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
+    oraclesBreakdown: [
+      { name: "Chainlink", type: "Primary", proof: [] },
+      { name: "RedStone", type: "Secondary", proof: [] }
+    ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
   },

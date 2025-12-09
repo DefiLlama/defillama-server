@@ -599,6 +599,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "flow",
     underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
     address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+    confidence: 1,
   },
   earnAUSD: {
     rate: async ({ api }) => {
@@ -643,6 +644,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "btnx",
     underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
     address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
+    confidence: 1
   },
 };
 

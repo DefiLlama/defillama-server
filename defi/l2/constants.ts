@@ -147,6 +147,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "6438": "echelon_initia",
   "6439": "inertia",
   "6440": "milkyway_rollup",
+  "5026": "noble"
 };
 
 export const allChainKeys: string[] = [
@@ -257,4 +258,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
   "plasma": { ticker: "XPL", address: "coingecko:plasma" },
   "linea": { ticker: "LINEA", address: "coingecko:linea" },
+  // noble: { ticker: "", address: "coingecko:" },
 };

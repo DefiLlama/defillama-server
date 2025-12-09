@@ -3,7 +3,7 @@ import path from "path";
 import { parse } from "csv-parse/sync"; // synchronous parsing
 
 function parseCsv(): any {
-    const csvPath = path.join(__dirname, "./productionMetadata.csv");
+    const csvPath = path.join(__dirname, "./rwa9dec.csv");
     const csv = fs.readFileSync(csvPath, "utf8");
     const rows: any[] = parse(csv, {
         columns: true,  // return objects with headers as keys

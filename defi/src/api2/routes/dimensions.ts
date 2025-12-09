@@ -7,7 +7,7 @@ import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap 
 import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
-import { errorResponse, fileResponse, successResponse } from "./utils";
+import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
@@ -325,6 +325,8 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 }
 
 async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpress.Response) {
+  validateProRequest(req, res)  // ensure that only pro users can access financial statement data
+
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`

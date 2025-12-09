@@ -356,7 +356,7 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
   }
 }
 
-export function getDimensionChainRoutes(route: 'overview' | 'chart') {
+export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
   return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
     const { adaptorType, dataType, chainFilter } = getEventParameters(req, true)
   
@@ -369,13 +369,17 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart') {
   
     if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
   
-    data.totalDataChartBreakdown = undefined;
-    
-    if (route === 'overview') {
-      data.totalDataChart = undefined;
-      return successResponse(res, data)
+    if (route === 'chart-protocol-breakdown') {
+      return successResponse(res, data.totalDataChartBreakdown)
     } else {
-      return successResponse(res, data.totalDataChart)
+      data.totalDataChartBreakdown = undefined;
+      
+      if (route === 'overview') {
+        data.totalDataChart = undefined;
+        return successResponse(res, data)
+      } else {
+        return successResponse(res, data.totalDataChart)
+      }
     }
   }
 }

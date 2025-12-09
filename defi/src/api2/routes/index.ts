@@ -136,13 +136,18 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/activeUsers", defaultFileHandler)
 
 
+
   // v2
+
   router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
   router.get("/v2/metrics/chart/:type", ew(getDimensionOverviewRoutes('chart')))
   router.get("/v2/metrics/chart/chain-breakdown/:type", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
   router.get("/v2/metrics/chart/protocol-breakdown/:type", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
+
   router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
   router.get("/v2/metrics/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
+  router.get("/v2/metrics/chart/protocol-breakdown/:type/chain/:chain", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
   router.get("/v2/metrics/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))

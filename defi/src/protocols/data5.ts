@@ -4915,7 +4915,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://accountable.capital/",
     description:
-      "YieldApp by Accountable is a crypto-lending marketplace that uses real-time, cryptographically verified financial data to connect liquidity providers with borrowers, enabling yield generation through verified credit.",
+      "YieldApp by Accountable is the first yield marketplace built on top of Accountable's Data Verification Network. Every opportunity from borrower vaults to structured credit strategies is backed by live, cryptographically verifiable data. Designed for allocators, YieldApp makes it easy to discover, assess and deploy into yield opportunities you can trust.",
     chain: "Monad",
     logo: `${baseIconsUrl}/accountable.jpg`,
     audits: "2",

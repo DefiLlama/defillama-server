@@ -4731,7 +4731,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://linkdefi.xyz",
     description:
-      "LinkDeFi is a yield protocol that routes USDC on Base into a Split ERC-4626 vault, allocating deposits across multiple underlying strategies to optimize yield",
+      "LinkDeFi is an easy to use DeFi strategy platform that offers only professionally curated and safety focused strategies. We simplify complex DeFi and help users deploy capital with confidence through verified strategies.",
     chain: "Base",
     logo: `${baseIconsUrl}/linkdefi.jpg`,
     audits: "0",

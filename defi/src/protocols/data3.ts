@@ -48711,6 +48711,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/symbioticfi/collateral/tree/main/audits"],
     github: ["symbioticfi"],
     listedAt: 1718109849,
+    dimensions: {
+      fees: "symbiotic",
+    }
   },
   {
     id: "4758",
@@ -67166,7 +67169,10 @@ const data3_3: Protocol[] = [
     github: ["hopperlabsxyz"],
     audit_links: ["https://docs.lagoon.finance/resources/audits"],
     twitter: "lagoon_finance",
-    listedAt: 1734930934
+    listedAt: 1734930934,
+    dimensions: {
+      fees: "lagoon",
+    }
    },
   {
     id: "5548",

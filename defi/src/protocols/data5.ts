@@ -5351,7 +5351,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7111",
-    name: "Thesaurus",
+    name: "Thesauros",
     address: null,
     symbol: "-",
     url: "https://thesauros.io",

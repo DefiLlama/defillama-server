@@ -25384,7 +25384,7 @@ const data3_1: Protocol[] = [
     name: "Base Bridge",
     address: null,
     symbol: "-",
-    url: "https://bridge.base.org/deposit",
+    url: "https://docs.base.org/base-chain/network-information/bridges-mainnet",
     description:
       "Base Bridge enables the transfer of certain digital assets and other data back and forth between Ethereum and Base.",
     chain: "Base",
@@ -25398,6 +25398,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "base/index.js",
     twitter: "BuildOnBase",
+    deprecated: true,
   },
   {
     id: "3781",

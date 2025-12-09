@@ -5184,6 +5184,18 @@ export const chainCoingeckoIds = {
     url: "https://www.stable.xyz/",
     chainId: 988,
   },
+  "Appchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "onappchain",
+    url: "https://appchain.xyz/",
+    chainId: 466,
+    dimensions: {
+      fees: "appchain",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

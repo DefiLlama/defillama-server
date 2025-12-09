@@ -511,6 +511,9 @@ export const chainCoingeckoIds = {
     cmcId: "2011",
     twitter: "tezos",
     url: "https://tezos.com/",
+    dimensions: {
+      fees: "tezos",
+    },
   },
   "Celo": {
     geckoId: "celo",
@@ -1743,6 +1746,9 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    dimensions: {
+      fees: "xrpl",
+    },
     stablecoins: ["ripple-usd"],
   },
   "GodwokenV1": {
@@ -4761,6 +4767,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Cosmos"],
     twitter: "Peersyst",
     url: "https://www.xrplevm.org/",
+    dimensions: {
+      fees: "xrplevm",
+    },
     chainId: 1440000,
   },
   "Botanix": {

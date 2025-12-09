@@ -324,6 +324,95 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   return successResponse(res, data)
 }
 
+export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-protocol-breakdown') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType } = getEventParameters(req, true)
+    
+    if (route === 'chart-chain-breakdown') {
+      const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
+      return fileResponse(routeFile, res)
+    } else {
+      const isLiteStr = route === 'overview' ? '-lite' : '-all'
+      const routeSubPath = `${adaptorType}/${dataType}${isLiteStr}`
+      const routeFile = `dimensions/${routeSubPath}`
+    
+      const data = await readRouteData(routeFile)
+    
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
+    
+      if (route === 'chart-protocol-breakdown') {
+        return successResponse(res, data.totalDataChartBreakdown)
+      } else {
+        data.totalDataChartBreakdown = undefined;
+        
+        if (route === 'overview') {
+          data.totalDataChart = undefined;
+          return successResponse(res, data)
+        } else {
+          return successResponse(res, data.totalDataChart)
+        }
+      }
+    }
+  }
+}
+
+export function getDimensionChainRoutes(route: 'overview' | 'chart') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, chainFilter } = getEventParameters(req, true)
+  
+    const isLiteStr = route === 'overview' ? '-lite' : '-all'
+    const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
+    const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
+    const routeFile = `dimensions/${routeSubPath}`
+  
+    const data = await readRouteData(routeFile)
+  
+    if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
+  
+    data.totalDataChartBreakdown = undefined;
+    
+    if (route === 'overview') {
+      data.totalDataChart = undefined;
+      return successResponse(res, data)
+    } else {
+      return successResponse(res, data.totalDataChart)
+    }
+  }
+}
+
+export function getDimensionProtocolRoutes(route: 'overview' | 'chart') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const protocolName = req.path_parameters.name?.toLowerCase()
+    const protocolSlug = sluggifyString(protocolName)
+    const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
+  
+    if ((adaptorType as any) === 'financial-statement') // redirect to financial statement route handler
+      return getProtocolFinancials(req, res)
+  
+    const { dataType, includeLabelBreakdown } = getEventParameters(req, false)
+    let protocolFileExt = route === 'overview' ? '-lite' : '-all'
+  
+    if (includeLabelBreakdown) protocolFileExt = '-bl' // include label breakdown data
+  
+    const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${protocolFileExt}`
+    const routeFile = `dimensions/${routeSubPath}`
+    const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
+  
+    const data = await readRouteData(routeFile)
+    if (!data)
+      return errorResponse(res, errorMessage)
+  
+    data.totalDataChartBreakdown = undefined;
+      
+    if (route === 'overview') {
+      data.totalDataChart = undefined;
+      return successResponse(res, data)
+    } else {
+      return successResponse(res, data.totalDataChart)
+    }
+  }
+}
+
 async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpress.Response) {
   validateProRequest(req, res)  // ensure that only pro users can access financial statement data
 

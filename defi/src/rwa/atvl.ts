@@ -9,10 +9,15 @@ import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
 import { storeR2JSONString } from "../utils/r2";
 
-const responseKey: string = "Ticker";
 const defiActiveKey: string = "DeFi Active TVL";
 const onChainKey: string = "On-chain TVL";
-const excludedKeys: string[] = ["Token Status/Potential Airdrop?", "Claimed TVL", `Llama'd?`, onChainKey];
+const excludedKeys: string[] = [
+  "Token Status/Potential Airdrop?",
+  "Claimed TVL",
+  `Llama'd?`,
+  "Holders to be Removed from Active TVL",
+  onChainKey,
+];
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
@@ -87,7 +92,7 @@ async function main() {
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const ids: string[] = [];
 
-  parsedCsvData.map((row: any) => {
+  parsedCsvData.map((row: any, i: number) => {
     const cleanRow: any = {};
     Object.keys(row).map((key: string) => {
       if (excludedKeys.includes(key)) return;
@@ -95,10 +100,8 @@ async function main() {
     });
 
     if (row.projectID.length > 0) ids.push(row.projectID);
-    rwaTokens[`${row.projectID ? row.projectID : ""}-${row[responseKey]}`] = Array.isArray(row.Contracts)
-      ? row.Contracts
-      : [row.Contracts];
-    finalData[`${row.projectID ? row.projectID : ""}-${row[responseKey]}`] = cleanRow;
+    rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
+    finalData[i] = cleanRow;
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
@@ -136,11 +139,15 @@ async function main() {
         const [projectId, symbol] = rwaId.split("-");
         if (amountId == projectId) return;
 
-        if (!finalData[rwaId][defiActiveKey]) finalData[rwaId][defiActiveKey] = {};
-        const chain = pk.substring(0, pk.indexOf(":"));
-        if (!finalData[rwaId][defiActiveKey][chain]) finalData[rwaId][defiActiveKey][chain] = {};
+        try {
+          if (!finalData[rwaId][defiActiveKey]) finalData[rwaId][defiActiveKey] = {};
+          const chain = pk.substring(0, pk.indexOf(":"));
+          if (!finalData[rwaId][defiActiveKey][chain]) finalData[rwaId][defiActiveKey][chain] = {};
 
-        finalData[rwaId][defiActiveKey][chain][amountId] = aum.toFixed(0);
+          finalData[rwaId][defiActiveKey][chain][amountId] = aum.toFixed(0);
+        } catch (e) {
+          console.error(`Malformed ${defiActiveKey} for ${rwaId}: ${e}`);
+        }
       });
     });
   }
@@ -156,18 +163,22 @@ async function main() {
 
       const rwaId = tokenToProjectMap[pk];
 
-      if (!finalData[rwaId][onChainKey]) finalData[rwaId][onChainKey] = {};
-      const chain = pk.substring(0, pk.indexOf(":"));
-      if (!finalData[rwaId][onChainKey][chain]) finalData[rwaId][onChainKey][chain] = {};
+      try {
+        if (!finalData[rwaId][onChainKey]) finalData[rwaId][onChainKey] = {};
+        const chain = pk.substring(0, pk.indexOf(":"));
+        if (!finalData[rwaId][onChainKey][chain]) finalData[rwaId][onChainKey][chain] = {};
 
-      const aum = (price * supply) / 10 ** decimals;
-      finalData[rwaId][onChainKey][chain] = aum.toFixed(0);
+        const aum = (price * supply) / 10 ** decimals;
+        finalData[rwaId][onChainKey][chain] = aum.toFixed(0);
+      } catch (e) {
+        console.error(`Malformed ${onChainKey} for ${rwaId}: ${e}`);
+      }
     });
   }
 
   const filteredFinalData: any = {};
   Object.keys(finalData).map((rwaId: string) => {
-    if (typeof finalData[rwaId][defiActiveKey] === 'object' && typeof finalData[rwaId][onChainKey] === 'object') {
+    if (typeof finalData[rwaId][defiActiveKey] === "object" && typeof finalData[rwaId][onChainKey] === "object") {
       filteredFinalData[rwaId] = finalData[rwaId];
     }
   });

@@ -4955,6 +4955,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "hyenatrade",
     audit_links: [],
+    oraclesBreakdown: [{ name: "Chaos", type: "Primary", proof: ["https://docs.hyena.trade/trading/oracle-price-and-mark-price"] }],
     parentProtocol: "parent#based",
     dimensions: {
       derivatives: "hyena",

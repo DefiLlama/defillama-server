@@ -4812,6 +4812,7 @@ const data5: Protocol[] = [
     listedAt: 1764868611,
     dimensions: {
       dexs: "nado-spot",
+      fees: "nado-spot",
     },
     parentProtocol: "parent#nado",
   },
@@ -5046,7 +5047,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#nado",
     dimensions: {
-      fees: "nado",
+      fees: "nado-perp",
       derivatives: "nado-perp",
     },
   },

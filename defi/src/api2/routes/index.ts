@@ -141,19 +141,19 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // v2
 
   router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
-  router.get("/v2/metrics/chart/:type", ew(getDimensionOverviewRoutes('chart')))
-  router.get("/v2/metrics/chart/chain-breakdown/:type", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
-  router.get("/v2/metrics/chart/protocol-breakdown/:type", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
+  router.get("/v2/chart/:type", ew(getDimensionOverviewRoutes('chart')))
+  router.get("/v2/chart/:type/chain-breakdown", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol-breakdown", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
 
   router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
-  router.get("/v2/metrics/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
-  router.get("/v2/metrics/chart/protocol-breakdown/:type/chain/:chain", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+  router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
+  router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
 
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
-  router.get("/v2/metrics/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
-  router.get("/v2/metrics/chart/chain-breakdown/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
-  router.get("/v2/metrics/chart/version-breakdown/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
+  router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
 
 
   /* 

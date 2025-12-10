@@ -4935,7 +4935,8 @@ const data5: Protocol[] = [
     name: "HYENA",
     address: null,
     symbol: "-",
-    url: "https://www.hyena.trade/",
+    url: "https://app.hyena.trade/ref/DEFILLAMA",
+    referralUrl: "https://app.hyena.trade/ref/DEFILLAMA",
     description:
       "HyENA leverages Hyperliquid's HIP-3 Builder-Deployed Perpetuals framework. HIP-3 allows HyENA to independently deploy and manage perpetual markets, introduce new pairs faster, and experiment with custom configurations, all while maintaining performance, security, and transparency through Hyperliquid.",
     chain: "Hyperliquid L1",

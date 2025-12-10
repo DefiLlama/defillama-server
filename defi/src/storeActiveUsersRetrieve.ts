@@ -2,10 +2,9 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { PromisePool } from '@supercharge/promise-pool'
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { storeNewUsers } from "./users/storeUsers";
-import { getR2 } from "./utils/r2";
-import { storeUserInfo, userQueriesFilename } from "./storeActiveUsers";
-import { retrieveAlliumResults } from "@defillama/dimension-adapters/helpers/allium";
-import { parseChainResponse, parseUserResponse } from "@defillama/dimension-adapters/users/utils/countUsers";
+import { storeUserInfo, } from "./storeActiveUsers";
+import { retrieveAlliumResults } from "./dimension_migration/helpers/allium";
+import { parseChainResponse, parseUserResponse } from "./dimension_migration/users/utils/countUsers";
 import fetch from "node-fetch";
 
 async function storeActiveUsers() {

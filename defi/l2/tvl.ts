@@ -5,23 +5,34 @@ import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
-import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
-import { verifyChanges } from "./test";
+import { verifyChanges } from "./verifyChanges";
+import { getExcludedTvl } from "./excluded";
+import { saveRawBridgedTvls } from "./raw";
+import { coins } from "@defillama/sdk";
 
 export default async function main(override?: boolean, timestamp?: number) {
-  const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
-  let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
+  let symbolMap: { [pk: string]: string | null } = {};
+  const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp, symbolMap });
+  let [{ tvlData: native, mcapData }, incoming, { data: protocols }, excludedTvls] = await Promise.all([
     fetchMinted({
       chains: canonical,
       timestamp,
       override,
+      symbolMap,
     }),
-    fetchIncoming({ canonical, timestamp }),
+    fetchIncoming({ canonical, timestamp, symbolMap }),
     fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),
+    getExcludedTvl(timestamp ?? getCurrentUnixTimestamp() - 10),
   ]);
-  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native, timestamp });
+
+  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({
+    mcapData,
+    native,
+    timestamp,
+    excludedTvls,
+  });
 
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;
@@ -54,6 +65,9 @@ export default async function main(override?: boolean, timestamp?: number) {
   });
 
   if (!timestamp && override != true) await verifyChanges(chains);
+  console.log("DBUG verify changes done");
+
+  await saveRawBridgedTvls(chains, symbolMap);
 
   return chains;
 }
@@ -72,14 +86,14 @@ async function translateToChainData(
       : `${chain}:${ownTokens[chain].address}`
   );
   const nativeTokenSymbols = Object.keys(ownTokens).map((chain: string) => ownTokens[chain].ticker);
-  const mcapsPromise = getMcaps(nativeTokenKeys, timestamp);
+  const mcapsPromise = coins.getMcaps(nativeTokenKeys, timestamp);
   const nativeTokenTotalValues: any = {};
 
   let translatedData: any = {};
   aggregateNativeTokens();
 
+  console.log(JSON.stringify(nativeTokenTotalValues.BNB));
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
-  // processProperty(data, "metadata");
   combineThirdPartyFlows();
   processNetFlows();
 
@@ -88,11 +102,13 @@ async function translateToChainData(
       allChainKeys.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
-          if (key == "outgoing") return;
           const unwrappedGas =
             symbol.startsWith("W") && nativeTokenSymbols.includes(symbol.substring(1)) ? symbol.substring(1) : symbol;
           if (!(unwrappedGas in nativeTokenTotalValues)) nativeTokenTotalValues[unwrappedGas] = zero;
-          nativeTokenTotalValues[unwrappedGas] = nativeTokenTotalValues[unwrappedGas].plus(data[key][chain][symbol]);
+          nativeTokenTotalValues[unwrappedGas] =
+            key == "outgoing"
+              ? nativeTokenTotalValues[unwrappedGas].minus(data[key][chain][symbol])
+              : nativeTokenTotalValues[unwrappedGas].plus(data[key][chain][symbol]);
         });
       });
     });

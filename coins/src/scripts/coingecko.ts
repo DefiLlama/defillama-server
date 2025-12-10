@@ -20,7 +20,15 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
-import axios from "axios";
+
+// Kill the script after 5 minutes to prevent infinite execution
+const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
+const killTimeout = setTimeout(() => {
+  console.log(`Script execution exceeded ${TIMEOUT_MS/1000} seconds. Forcefully terminating.`);
+  process.exit(1); // Exit with error code 1 to indicate abnormal termination
+}, TIMEOUT_MS);
+// Make sure the timeout doesn't prevent the Node.js process from exiting naturally
+killTimeout.unref();
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -48,13 +56,14 @@ async function storeCoinData(coinData: Write[]) {
       symbol: c.symbol,
       confidence: c.confidence,
       volume: c.volume,
+      adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
-        return ({ adapter: "coingecko", decimals: 0, ...rest } as Dynamo)
+        return ({ decimals: 0, ...rest } as Dynamo)
       }),
     ),
     batchWrite(items, false),
@@ -212,6 +221,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     coinPlatformData[d.PK] = d;
   });
 
+
+  const redirectKeys = [
+    ...new Set(
+      coinPlatformDataArray
+        .map((c: any) => c.redirect)
+        .filter((c: string) => c != undefined),
+    ),
+  ];
+  const redirectDataArray: CgEntry[] = await batchGet(
+    redirectKeys.map((PK: string) => ({ PK, SK: 0 })),
+  );
+  const redirectData: { [key: string]: CgEntry } = {};
+  redirectDataArray.map((d: CgEntry) => {
+    redirectData[d.PK] = d;
+  });
+
   const pricesAndMcaps: {
     [key: string]: { price: number; mcap?: number };
   } = {};
@@ -225,6 +250,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
         coin,
+        redirectData,
         async (PK) => {
 
           if (!pricesAndMcaps[cgPK(coin.id)]) {
@@ -238,7 +264,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
             if (ignoredChainSet.has(chain)) return;
             const normalizedPK = !chainsThatShouldNotBeLowerCased.includes(chain) ? PK.toLowerCase() : PK;
-            const platformData = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
+            const platformData: any = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
             if (platformData && platformData?.confidence > 0.99) return;
 
             const created = getCurrentUnixTimestamp();
@@ -253,16 +279,17 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               decimals = symbolAndDecimals.decimals;
               symbol = symbolAndDecimals.symbol;
             }
-            if (decimals == undefined) return;
+            if (isNaN(decimals) || decimals == '' || decimals == null) return;
 
             const item = {
               PK: normalizedPK,
               SK: 0,
               created,
-              decimals,
+              decimals: Number(decimals),
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,
+              adapter: 'coingecko'
             };
             kafkaItems.push(item);
             await ddb.put(item);
@@ -399,30 +426,11 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     await cacheSolanaTokens();
     console.log("solana tokens received")
     const step = 500;
-    
-          // Retry logic for the coins list request
-      let coins: Coin[] = [];
-      let retryCount = 0;
-      const maxRetries = 3;
-      
-      while (retryCount < maxRetries) {
-        try {
-          console.log(`Attempting to fetch coins list (attempt ${retryCount + 1}/${maxRetries})`);
-          const response = await fetch(
-            `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`
-          ).then(r=>r.json());
-          coins = response as Coin[];
-          console.log(`Successfully fetched ${coins.length} coins`);
-          break;
-        } catch (e: any) {
-          retryCount++;
-          console.error(`/coins/list error details (attempt ${retryCount}):`, e.message);
-          
-          if (retryCount >= maxRetries) {
-            throw new Error(`Failed to fetch coins list after ${maxRetries} attempts: ${e.message}`);
-          }
-        }
-      }
+
+    setTimer();
+    let coins: any = await retryCoingeckoRequest('coins/list?include_platform=true', 5)
+    // coins = coins.filter((coin) => coin.id == 'euro-coin');
+    // if (!coins.length) process.exit(0)
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

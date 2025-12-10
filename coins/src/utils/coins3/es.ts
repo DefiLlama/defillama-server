@@ -63,7 +63,14 @@ export async function init(): Promise<void> {
 
 async function _init(): Promise<void> {
   let records: MetadataRecord[];
-  const currentCache = await sdk.cache.readExpiringJsonCache(cacheFile);
+  let currentCache
+  
+  try {
+    currentCache = await sdk.cache.readExpiringJsonCache(cacheFile);
+  } catch (e) {
+    console.log("Error reading coin metadata cache:", e);
+    currentCache = null;
+  }
 
   if (currentCache) {
     records = currentCache;
@@ -140,7 +147,7 @@ async function fetchAllRecords(index: string): Promise<MetadataRecord[]> {
       },
       size: 100000,
     },
-  });
+  } as any);
 
   while (response.hits.hits.length) {
     allRecords.push(

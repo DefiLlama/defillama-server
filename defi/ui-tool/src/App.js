@@ -8,7 +8,7 @@ import {
   Input,
   Flex,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 import './App.css';
@@ -23,6 +23,7 @@ const App = () => {
 
   const [output, setOutput] = useState('');
   const [isConnected, setIsConnected] = useState(false);
+  const [showDebugLogs, setShowDebugLogs] = useState(true);
   const wsRef = useRef(null);
   const outputRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -38,7 +39,7 @@ const App = () => {
 
   // dimensions tab
   const [dimensionRefillForm] = Form.useForm();
-    const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
+  const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
 
   const [adapterTypes, setAdapterTypes] = useState([]);
   const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
@@ -54,6 +55,7 @@ const App = () => {
   // tvl tab
   const [tvlForm] = Form.useForm();
   const tvlAction = Form.useWatch('action', tvlForm);
+  const tvlRemoveTokensEnabled = Form.useWatch('removeTokenTvl', tvlForm);
 
   const [tvlStoreWaitingRecords, setTvlStoreWaitingRecords] = useState([]);
   const [tvlStoreWaitingRecordsShowChainColumns, setTvlStoreWaitingRecordsShowChainColumns] = useState(false);
@@ -266,6 +268,14 @@ const App = () => {
           </Button>
 
           <Button
+            style={{ marginLeft: 10, display: output?.length > 0 ? 'block' : 'none' }}
+            onClick={() => setShowDebugLogs(!showDebugLogs)}
+            icon={showDebugLogs ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+          >
+            {showDebugLogs ? 'Hide Output' : 'Show Output'}
+          </Button>
+
+          <Button
             type="text"
             shape='round'
             icon={< MoonOutlined />}
@@ -283,7 +293,7 @@ const App = () => {
                   {
                     label: 'dimensions',
                     key: 'dimensions',
-                    children: <div>{getDimensionsRefillForm()}</div>,
+                    children: <div>{GetDimensionsRefillForm()}</div>,
                   },
                   {
                     label: 'tvl',
@@ -309,8 +319,9 @@ const App = () => {
               {activeTabKey === 'misc' && getMiscOutputTable()}
 
 
-              {output && (<Divider>Console Output</Divider>)}
+              {output && showDebugLogs && (<Divider>Console Output</Divider>)}
               <div
+                style={{ display: output && showDebugLogs ? 'block' : 'none' }}
                 ref={outputRef}
                 className="output-container"
               >
@@ -323,7 +334,7 @@ const App = () => {
     </ConfigProvider >
   );
 
-  function getDimensionsRefillForm() {
+  function GetDimensionsRefillForm() {
 
 
     // Handle adapter type change
@@ -344,6 +355,7 @@ const App = () => {
           dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
+          delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -371,7 +383,9 @@ const App = () => {
         initialValues={{
           parallelCount: 3,
           onlyMissing: false,
-          dryRun: false
+          dryRun: false,
+          delayBetweenRuns: 0,
+          delayEnabled: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -440,21 +454,25 @@ const App = () => {
           <InputNumber min={1} max={100} />
         </Form.Item>
 
-        {/*       <Form.Item
-        label="Dry Run"
-        name="dryRun"
-        valuePropName="checked"
-      >
-        <Switch checkedChildren="Yes" unCheckedChildren="No" />
-      </Form.Item>
+        <Form.Item
+          label="Enable Delay Between Runs"
+          name="delayEnabled"
+          valuePropName="checked"
+        >
+          <Switch
+            checkedChildren="Yes"
+            unCheckedChildren="No"
+          />
+        </Form.Item>
 
-      <Form.Item
-        label="Check before inserting data"
-        name="checkBeforeInsert"
-        valuePropName="checked"
-      >
-        <Switch checkedChildren="Yes" unCheckedChildren="No" />
-      </Form.Item> */}
+        <Form.Item
+          label="Delay Between Runs (seconds)"
+          name="delayBetweenRuns"
+          rules={[{ required: false, message: 'Please enter delay between runs' }]}
+          style={{ display: Form.useWatch('delayEnabled', dimensionRefillForm) ? 'block' : 'none' }}
+        >
+          <InputNumber min={0} max={1000} />
+        </Form.Item>
 
         <Form.Item>
           <Button
@@ -535,7 +553,9 @@ const App = () => {
           chains: '',
           skipBlockFetch: false,
           breakIfTvlIsZero: true,
-          action: 'refill'
+          action: 'refill',
+          removeTokenTvl: false,
+          removeTokenTvlSymbols: '',
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -648,7 +668,6 @@ const App = () => {
             </Form.Item>
 
 
-
             <Form.Item
               label="Skip block fetch"
               name="skipBlockFetch"
@@ -659,6 +678,26 @@ const App = () => {
             >
               <Switch checkedChildren="Yes" unCheckedChildren="No" />
             </Form.Item>
+
+
+            <Form.Item
+              label="Remove Token TVL"
+              name="removeTokenTvl"
+              valuePropName="checked"
+              layout='horizontal'
+            >
+              <Switch checkedChildren="Yes" unCheckedChildren="No" />
+            </Form.Item>
+
+            <Form.Item
+              label="Remove Token TVL Symbols"
+              name="removeTokenTvlSymbols"
+              layout='horizontal'
+              style={{ display: tvlRemoveTokensEnabled ? 'block' : 'none' }}
+            >
+              <Input style={{ width: '100%' }} placeholder="Enter token symbols or address(chain:xxx) (comma separated)" />
+            </Form.Item>
+
           </>
         }
       </Form>
@@ -668,6 +707,20 @@ const App = () => {
   function printChartData(data, columnField) {
     if (!columnField) return null;
     data = [...data]
+
+    // this is a hack to support multiple columns in one chart
+    if (Array.isArray(columnField)) {
+      const restFields = columnField.slice(1)
+      columnField = columnField[0]
+      const dataCopy = data.map(d => ({ ...d }))
+      for (const restField of restFields) {
+        // we clone existing data and overwrite protocolName and columnField value
+        const dataCopy2 = dataCopy.map(d => ({ ...d, protocolName: `${d.protocolName} (${restField})`, [columnField]: d[restField] })).filter(i => i.hasOwnProperty(restField))
+        data.push(...dataCopy2)
+      }
+    }
+
+
     data.sort((a, b) => new Date(a.timeS) - new Date(b.timeS))
     data = data.filter(i => i.hasOwnProperty(columnField))
     const config = {
@@ -810,12 +863,13 @@ const App = () => {
     const stringColSet = new Set(['protocolName', 'timeS', 'unixTimestamp'])
     const columns = []
     const chartColumnsSet = new Set(['_tvl'])
-    const topLevelColumns = new Set(['tvl', 'staking', 'pool2'])
+    const topLevelColumns = new Set(['tvl', 'staking', 'pool2', 'pre_tvl'])
     tvlStoreWaitingRecords.forEach(record => {
       Object.keys(record).forEach(key => {
         if (colSet.has(key)) return;
         if (key.startsWith('_')) {
-          chartColumnsSet.add(key);
+          if (!key.includes('pre_'))
+            chartColumnsSet.add(key);
           return;
         }
         if (!tvlStoreWaitingRecordsShowChainColumns && (!stringColSet.has(key) && !topLevelColumns.has(key))) return;
@@ -830,7 +884,9 @@ const App = () => {
     });
     const chartColumns = Array.from(chartColumnsSet)
     let selectChartElement = null;
-    let chartColumnSelected = tvlStoreWaitingRecordsSelectedChartColumn ? tvlStoreWaitingRecordsSelectedChartColumn : chartColumns[0];
+    let chartColumnSelected = tvlStoreWaitingRecordsSelectedChartColumn ? tvlStoreWaitingRecordsSelectedChartColumn : chartColumns[0]
+
+    if (!Array.isArray(chartColumnSelected)) chartColumnSelected = [chartColumnSelected, '_pre' + chartColumnSelected];
 
     if (chartColumns.length > 1 && tvlStoreWaitingRecordsShowChart) {
       selectChartElement = <Select

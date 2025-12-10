@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { sendMessage } from "./utils/discord";
+import PromisePool from "@supercharge/promise-pool";
 
 type ProtocolData = {
   token: string;
@@ -29,8 +30,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
   const protocolsData: ProtocolData[] = [];
   const now: number = Math.floor(Date.now() / 1000);
 
-  await Promise.all(
-    protocols.map(async (protocol: string) => {
+  async function fetchData(protocol: string) {
       let res: any;
       try {
         res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
@@ -120,11 +120,18 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         nextEvent,
         unlocksPerDay,
       });
+    }
+  await PromisePool
+    .withConcurrency(10)
+    .for(protocols)
+    .handleError(async (error, protocol) => {
+      console.error(`Error processing ${protocol}: ${error}`);
     })
-  );
+    .process(fetchData);
 
   return protocolsData;
 };
+
 const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
   const step: number = 25;
   for (let i = 0; i < protocols.length; i = i + step) {
@@ -158,7 +165,7 @@ const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
     });
   }
 };
-const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
+const fetchProtocolEmissionData = (protocol: ProtocolData) => {
   let price = protocol.tokenPrice ? protocol.tokenPrice[0] : undefined;
   if (price) price = price.price;
 
@@ -171,7 +178,7 @@ export default async function handler(): Promise<void> {
     const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
     const data: ProtocolData[] = await fetchProtocolData(allProtocols);
     await fetchCoinsApiData(data);
-    await Promise.all(data.map((d: ProtocolData) => fetchProtocolEmissionData(d)));
+    data.forEach(fetchProtocolEmissionData)
     await storeR2JSONString("emissionsIndex", JSON.stringify({ data: data.sort((a, b) => b.mcap - a.mcap) }));
     console.log("done");
   } catch (e) {

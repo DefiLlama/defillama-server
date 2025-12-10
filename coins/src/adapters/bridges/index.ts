@@ -15,11 +15,11 @@ import avax from "./avax";
 // import bsc from "./bsc";
 // import brc20 from "./brc20";
 import fantom from "./fantom";
-import era from "./era";
+// import era from "./era";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
-import polygon from "./polygon";
+// import polygon from "./polygon";
 // import solana from "./solana";
 // import xdai from "./xdai";
 // import cosmos from "./cosmos";
@@ -40,12 +40,14 @@ import fuel from "./fuel";
 import zircuit from "./zircuit";
 import morph from "./morph";
 import aptos from "./aptosFa";
-import sophon from "./sophon";
+// import sophon from "./sophon";
 import unichan from "./unichain";
 import flow from "./flow";
 import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
+import anvu from "./anvu";
+import monad from "./monad";
 
 export type Token =
   | {
@@ -107,7 +109,7 @@ export const bridges = [
   linea,
   manta,
   astrzk,
-  zklink,
+  // zklink,
   // celer,
   fraxtal,
   symbiosis,
@@ -118,8 +120,10 @@ export const bridges = [
   // sophon,
   unichan,
   flow,
-  // layerzero,
-  initia
+  layerzero,
+  initia, 
+  anvu,
+  monad
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -207,7 +211,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
+      let decimals: any, symbol: string;
       if ("getAllInfo" in token) {
         try {
           const newToken = await token.getAllInfo();
@@ -222,8 +226,10 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         symbol = token.symbol;
       }
 
+      if (isNaN(decimals) || decimals == '' || decimals == null) return;
       if (i && !decimals) return;
       if (!symbol) return;
+      decimals = Number(decimals)
 
       writes.push({
         PK: `asset#${token.from}`,

@@ -7,7 +7,6 @@
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 
-import fetch from "node-fetch";
 // import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
@@ -15,6 +14,8 @@ import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
+import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
+import { runWithRuntimeLogging } from "../utils";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -59,26 +60,35 @@ protocols.forEach((protocol: any) => {
   }
 });
 
-const fetchJson = async (url: string) => fetch(url).then((res) => res.json());
 const slugMap: any = {
   Binance: "BSC",
 };
 
 const slug = (tokenName = "") => {
-  if (!slugMap[tokenName]) slugMap[tokenName] = tokenName?.toLowerCase().split(" ").join("-").split("'").join("");
-  return slugMap[tokenName];
+  try {
+    if (!slugMap[tokenName]) slugMap[tokenName] = (tokenName ?? '')?.toLowerCase().split(" ").join("-").split("'").join("");
+    return slugMap[tokenName];
+  } catch (e: any) {
+    const errorMsg = `Error in slug for tokenName=${tokenName}, ${e.message}`;
+    console.error(errorMsg);
+    return '';
+  }
 };
 
 export async function storeAppMetadata() {
+
+  console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
   try {
-    await pullRaisesDataIfMissing();
+    // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
+    
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
   }
+  console.timeEnd("storeAppMetadata");
 }
 
 async function pullRaisesDataIfMissing() {
@@ -103,6 +113,7 @@ async function _storeAppMetadata() {
   const finalChains: Record<string, IChainMetadata> = {};
   let lendingProtocols = 0;
 
+  console.time("_storeMetadataFile fetch all data");
   const [
     tvlData,
     dimensionsChainAggData,
@@ -133,51 +144,51 @@ async function _storeAppMetadata() {
     chainAssetsData,
     chainsData,
     forksData,
-    stablecoinsTracked,
+    stablecoinsData,
     oraclesData,
     chainNftsData,
     safeHarborData,
     entitiesData,
     nftStatsData,
   ] = await Promise.all([
-    readRouteData("/lite/protocols2"),
-    readRouteData("/dimensions/chain-agg-data"),
-    fetchJson(YIELD_POOLS_API).then((res) => res.data ?? []),
-    fetchJson(PROTOCOLS_EXPENSES_API).catch(() => []),
-    readRouteData("/treasuries").catch(() => []),
-    fetchJson(LIQUIDITY_API).catch(() => []),
-    readRouteData("/hacks").catch(() => []),
-    fetchJson(NFT_MARKETPLACES_STATS_API).catch(() => []),
-    readRouteData("/raises").catch(() => ({ raises: [] })),
-    fetchJson(ACTIVE_USERS_API).catch(() => ({})),
-    readRouteData("/dimensions/fees/df-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dhr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dbr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dtt-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/dexs/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/derivatives/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/derivatives/doi-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/aggregators/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/options/dnv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/options/dpv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => {}),
-    fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [], bridges: [] })),
-    fetchJson(CHAINS_ASSETS).catch(() => ({})),
-    readRouteData("/chains").catch(() => []),
-    readRouteData("/forks").catch(() => ({ forks: {} })),
-    fetchJson(STABLECOINS_API)
-      .then((res) => ({ protocols: res.peggedAssets.length, chains: res.chains.length }))
-      .catch(() => ({ protocols: 0, chains: 0 })),
-    readRouteData("/oracles").catch(() => ({ oracles: {} })),
-    fetchJson(CHAIN_NFTS).catch(() => ({})),
+    readCachedRouteData({ route: "/lite/protocols2" }),
+    readCachedRouteData({ route: "/dimensions/chain-agg-data" }),
+    cachedJSONPull({ endpoint: YIELD_POOLS_API, defaultResponse: { data: [] } }).then((res) => res.data ?? []),
+    cachedJSONPull({ endpoint: PROTOCOLS_EXPENSES_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/treasuries", defaultResponse: [] }),
+    cachedJSONPull({ endpoint: LIQUIDITY_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/hacks", defaultResponse: [] }),
+    cachedJSONPull({ endpoint: NFT_MARKETPLACES_STATS_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/raises", defaultResponse: { raises: [] } }),
+    cachedJSONPull({ endpoint: ACTIVE_USERS_API, defaultResponse: {} }),
+    readCachedRouteData({ route: "/dimensions/fees/df-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dhr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dbr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dtt-lite" }),
+    readCachedRouteData({ route: "/dimensions/dexs/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
+    readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
+    readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),
+    readCachedRouteData({ route: "/dimensions/aggregator-derivatives/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/bridge-aggregators/dbv-lite" }),
+    cachedJSONPull({ endpoint: `https://defillama-datasets.llama.fi/emissionsProtocolsList`, defaultResponse: [] }),
+    cachedJSONPull({ endpoint: `https://defillama-datasets.llama.fi/emissionsBreakdown`, defaultResponse: {} }),
+    cachedJSONPull({ endpoint: `${BRIDGES_API}?includeChains=true`, defaultResponse: { chains: [], bridges: [] } }),
+    cachedJSONPull({ endpoint: CHAINS_ASSETS, defaultResponse: {} }),
+    readCachedRouteData({ route: "/chains", defaultResponse: [] }),
+    readCachedRouteData({ route: "/forks", defaultResponse: { forks: {} } }),
+    cachedJSONPull({ endpoint: STABLECOINS_API, defaultResponse: { peggedAssets: [], chains: [] } }),
+    readCachedRouteData({ route: "/oracles", defaultResponse: { oracles: {} } }),
+    cachedJSONPull({ endpoint: CHAIN_NFTS, defaultResponse: {} }),
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
-    fetchJson("https://api.llama.fi/entities").catch(() => []),
+    cachedJSONPull({ endpoint: "https://api.llama.fi/entities", defaultResponse: [] }),
     getNftStats(),
   ]);
+
+  console.timeEnd("_storeMetadataFile fetch all data");
 
   await _storeMetadataFile();
   await storeRouteData("/_fe/static/safe-harbor-projects", safeHarborData);
@@ -195,13 +206,15 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
+      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        tvl: hasTvl,
+        ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(bridgeCategoriesSet.has(protocol.category) ? { bridge: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -211,7 +224,8 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl != null ? { tvl: true } : {}),
+          ...(hasTvl ? { tvl: true } : {}),
+          ...(hasBorrowed ? { borrowed: true } : {}),
         };
       }
 
@@ -228,6 +242,12 @@ async function _storeAppMetadata() {
       }
     }
     for (const protocol of tvlData.parentProtocols) {
+      if (!finalProtocols[protocol.id]) {
+        console.warn(`Parent Protocol ${protocol.id} not found in finalProtocols`)
+        finalProtocols[protocol.id] = {
+          ...protocol
+        }
+      }
       const { name: _, ...rest } = finalProtocols[protocol.id];
       const slugName: string = slug(protocol.name);
       finalProtocols[protocol.id] = {
@@ -667,7 +687,15 @@ async function _storeAppMetadata() {
       };
     }
 
-    const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+    
+    const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
+
+    for (const protocolId in finalProtocols) {
+      const protocolSlug = (finalProtocols[protocolId] as any)?.name;
+      if (protocolSlug && bridgesBySlug.has(protocolSlug)) {
+        finalProtocols[protocolId] = { ...finalProtocols[protocolId], bridge: true };
+      }
+    }
     const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
     const allEmissionsProtocols = new Set(emmissionsData);
     for (const protocolNameAndId of nameAndIds) {
@@ -686,12 +714,6 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.has(protocolName)) {
-        finalProtocols[protocolId] = {
-          ...finalProtocols[protocolId],
-          bridge: true,
-        };
-      }
 
       if (allNftMarketplaces.has(protocolName)) {
         finalProtocols[protocolId] = {
@@ -746,6 +768,13 @@ async function _storeAppMetadata() {
       }
     }
 
+    for (let chain of stablecoinsData.chains) {
+      chain = chain.name
+      if (finalChains[slug(chain)]) {
+        finalChains[slug(chain)] = { ...(finalChains[slug(chain)] ?? { name: chain }), stablecoins: true };
+      }
+    }
+
     for (const chain of chainsData) {
       if (finalChains[slug(chain.name)] && chain.gecko_id) {
         finalChains[slug(chain.name)] = {
@@ -783,7 +812,7 @@ async function _storeAppMetadata() {
 
     const totalTrackedByMetric = {
       tvl: { protocols: 0, chains: 0 },
-      stablecoins: stablecoinsTracked,
+      stablecoins: { protocols: stablecoinsData.peggedAssets.length, chains: stablecoinsData.chains.length },
       fees: { protocols: 0, chains: 0 },
       revenue: { protocols: 0, chains: 0 },
       chainFees: { protocols: 0, chains: 0 },
@@ -991,18 +1020,14 @@ const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
 
 async function getNftStats() {
   const [collections, marketplaces, chains] = await Promise.all([
-    fetchJson("https://nft.llama.fi/collections")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson("https://nft.llama.fi/exchangeStats")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson("https://nft.llama.fi/mints")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson(CHAIN_NFTS)
-      .then((res) => Object.keys(res).length)
-      .catch(() => 0),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/collections", defaultResponse: [] })
+      .then((res) => res.length),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/exchangeStats", defaultResponse: [] })
+      .then((res) => res.length),
+    // cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
+    //   .then((res) => res.length),  // this route doesnt work, plus we were reading only three items in the .all response
+    cachedJSONPull({ endpoint: CHAIN_NFTS })
+      .then((res) => Object.keys(res).length),
   ]);
   return {
     collections,
@@ -1010,3 +1035,13 @@ async function getNftStats() {
     chains,
   };
 }
+
+runWithRuntimeLogging(storeAppMetadata, {
+  application: 'cron-task',
+  type: 'app-metadata',
+}).catch(console.error).then(() => process.exit(0))
+
+setTimeout(() => {
+  console.log('Running for more than 5 minutes, exiting.');
+  process.exit(1);
+}, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises

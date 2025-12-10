@@ -10754,6 +10754,11 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": 18,
       "symbol": "weETH"
+    },
+    "0xb6168f597cd37a232cb7cb94cd1786be20ead156": {
+      "decimals": "18",
+      "symbol": "PT-cUSD-29JAN2026-(ETH)",
+      "to": "asset#ethereum:0x545a490f9ab534adf409a2e682bc4098f49952e3"
     }
   },
   "sty": {

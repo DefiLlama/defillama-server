@@ -4217,6 +4217,9 @@ export const chainCoingeckoIds = {
     twitter: "AbstractChain",
     url: "https://www.abs.xyz/",
     chainId: 2741,
+    dimensions: {
+      fees: "abstract",
+    },
   },
   "Zero Network": {
     geckoId: null,

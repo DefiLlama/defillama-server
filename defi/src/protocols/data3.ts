@@ -7413,7 +7413,7 @@ const data3_0: Protocol[] = [
     deprecated: true,
     warningBanners: [
       {
-        message: "This product was been deprecated. https://snapshot.box/#/s:morpho.eth/proposal/0x60b31cceca2beee55f8845f86b7988ee36f29ad50f5dda636164ab50b561936b",
+        message: "This product was deprecated. https://snapshot.box/#/s:morpho.eth/proposal/0x60b31cceca2beee55f8845f86b7988ee36f29ad50f5dda636164ab50b561936b",
         level: "alert",
       },
     ],

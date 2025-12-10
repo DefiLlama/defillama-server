@@ -13477,5 +13477,12 @@
       "decimals": 6,
       "symbol": "uzig"
     }
+  }, 
+  "grx": {
+    "0x45C7287F897B3A79Cd3f6e4F14B4CE568f023bD5": {
+      "decimals": "18",
+      "symbol": "WGRX",
+      "to": "coingecko#grx-chain"
+    }
   }
 }

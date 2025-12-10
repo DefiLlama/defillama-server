@@ -263,7 +263,7 @@ process.on('uncaughtException', (err) => {
 
 setTimeout(async () => {
   console.log('Timeout! Shutting down...');
-  preExit()
+  await preExit()
   process.exit(1);
 }, 1000 * 60 * 45); // 45 minutes
 

@@ -62717,11 +62717,12 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5351",
-    name: "Mantle Restaking",
+    name: "mETH Protocol",
+    previousNames: ["Mantle Restaking"],
     address: null,
     symbol: "-",
     assetToken: "mETH",
-    url: "https://meth.mantle.xyz/restake",
+    url: "https://www.methprotocol.xyz/",
     description:
       "Liquid Restaking on Ethereum",
     chain: "Ethereum",
@@ -62733,8 +62734,9 @@ const data3_3: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     module: "mantle-restaking/index.js",
-    twitter: "Mantle_Official",
+    twitter: "mETHProtocol",
     forkedFrom: [],
+    audit_links: ["https://docs.mantle.xyz/meth/security/audits"],
     listedAt: 1731495743
   },
   {

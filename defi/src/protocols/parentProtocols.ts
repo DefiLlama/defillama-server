@@ -8422,7 +8422,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Ramses Exchange HL",
     url: "https://ramses.xyz",
     description:
-      "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
+      "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     logo: `${baseIconsUrl}/ramses-exchange-hl.jpg`,
     gecko_id: null,
     cmcId: null,

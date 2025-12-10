@@ -93,7 +93,7 @@
     "@aws-sdk/client-lambda": "^3.918.0",
     "@aws-sdk/client-s3": "^3.245.0",
     "@aws-sdk/lib-dynamodb": "^3.918.0",
-    "@defillama/sdk": "^5.0.192",
+    "@defillama/sdk": "^5.0.195",
     "@elastic/elasticsearch": "^8.13.1",
     "@solana/web3.js": "^1.98.4",
     "@supercharge/promise-pool": "^2.3.2",

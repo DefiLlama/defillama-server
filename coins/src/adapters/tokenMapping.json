@@ -10779,6 +10779,11 @@
       "decimals": "18",
       "symbol": "PT-cUSD-29JAN2026-(ETH)",
       "to": "asset#ethereum:0x545a490f9ab534adf409a2e682bc4098f49952e3"
+    },
+    "0x0fe4a1bbe013b54e38ef4e4ec8ba1d64d12a0663": {
+      "decimals": "18",
+      "symbol": "PT-USDai-19FEB2026-(ARB)",
+      "to": "asset#arbitrum:0x5b2c615e22272234aacf187632a0531ca1243279"
     }
   },
   "sty": {

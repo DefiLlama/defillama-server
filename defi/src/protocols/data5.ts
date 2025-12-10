@@ -5052,6 +5052,7 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "nado-perp",
       derivatives: "nado-perp",
+      "open-interest": "nado",
     },
   },
   {

@@ -27,8 +27,8 @@ importers:
         specifier: ^3.918.0
         version: 3.918.0(@aws-sdk/client-dynamodb@3.918.0)
       '@defillama/sdk':
-        specifier: ^5.0.192
-        version: 5.0.192(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)
+        specifier: ^5.0.195
+        version: 5.0.195(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)
       '@elastic/elasticsearch':
         specifier: ^8.13.1
         version: 8.19.1
@@ -1096,8 +1096,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@defillama/sdk@5.0.192':
-    resolution: {integrity: sha512-ClUxV00l+eunuVuVfhaFOwj7s3eZIUGn4xx78EZGvFdXUD1fFf4qAmwTr2sOOOzB67FmdLlj5G7bZM5yeK2YNA==}
+  '@defillama/sdk@5.0.195':
+    resolution: {integrity: sha512-QgX+6Kfefw/Nc4zgd7f2ywtHd7MPUwqE8YrQ1arebEd0WhoMHOd21nqx/h+Xm8vzK9wvIWuJ+UyAhltMsR7gkw==}
 
   '@effect/platform-node-shared@0.15.5':
     resolution: {integrity: sha512-PXFdIHMNzv19+aaKBo99KVsqJ65il8j7ejze/srkzOkNu4WK/GGpQuYF32NZLirFgXJe/4aYMRgwD+uJ4mCyuw==}
@@ -5506,8 +5506,8 @@ packages:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
 
-  terser-webpack-plugin@5.3.14:
-    resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
+  terser-webpack-plugin@5.3.15:
+    resolution: {integrity: sha512-PGkOdpRFK+rb1TzVz+msVhw4YMRT9txLF4kRqvJhGhCM324xuR3REBSHALN+l+sAhKUmz0aotnjp5D+P83mLhQ==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -8043,7 +8043,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@defillama/sdk@5.0.192(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)':
+  '@defillama/sdk@5.0.195(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)':
     dependencies:
       '@aws-sdk/client-s3': 3.913.0
       '@elastic/elasticsearch': 8.19.1
@@ -13538,7 +13538,7 @@ snapshots:
       mkdirp: 1.0.4
       yallist: 4.0.0
 
-  terser-webpack-plugin@5.3.14(esbuild@0.14.54)(webpack@5.102.1(esbuild@0.14.54)):
+  terser-webpack-plugin@5.3.15(esbuild@0.14.54)(webpack@5.102.1(esbuild@0.14.54)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
@@ -13931,7 +13931,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.0
-      terser-webpack-plugin: 5.3.14(esbuild@0.14.54)(webpack@5.102.1(esbuild@0.14.54))
+      terser-webpack-plugin: 5.3.15(esbuild@0.14.54)(webpack@5.102.1(esbuild@0.14.54))
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:

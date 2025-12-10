@@ -6716,6 +6716,7 @@ const data3_0: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/zenith-security/reports/blob/main/reports/Zenith%20Audit%20Report%20-%20Stream%20Protocol.pdf"],
     listedAt: 1684246278,
+    deadFrom: "2025-11-04",
   },
   {
     id: "2985",
@@ -7409,6 +7410,13 @@ const data3_0: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1684901863,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.box/#/s:morpho.eth/proposal/0x60b31cceca2beee55f8845f86b7988ee36f29ad50f5dda636164ab50b561936b",
+        level: "alert",
+      },
+    ],
   },
   {
     id: "3015",
@@ -41728,13 +41736,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4460",
-    name: "Karak",
+    name: "OpenGDP Shared Security",
+    previousNames: ["Karak"],
     address: null,
     symbol: "-",
     url: "https://karak.network",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/karak.png`,
+    logo: `${baseIconsUrl}/opengdp-shared-security.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -41743,7 +41752,7 @@ const data3_2: Protocol[] = [
     chains: ["Ethereum", "Arbitrum"],
     module: "karak/index.js",
     forkedFrom: [],
-    twitter: "Karak_Network",
+    twitter: "OpenGDP",
     parentProtocol: "parent#subseaprotocol",
     listedAt: 1712668302,
   },

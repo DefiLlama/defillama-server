@@ -3164,7 +3164,7 @@ export const chainCoingeckoIds = {
     url: "https://venom.foundation/",
     github: ["venom-blockchain"],
   },
-  "OpenGDP": {
+  "K2": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -3174,7 +3174,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
       da: "Celestia",
     },
-    twitter: "OpenGDP",
+    twitter: "Karak_Network",
     url: "https://opengdp.network/",
     chainId: "2410",
     dimensions: {
@@ -5184,6 +5184,18 @@ export const chainCoingeckoIds = {
     url: "https://www.stable.xyz/",
     chainId: 988,
   },
+  "Appchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "onappchain",
+    url: "https://appchain.xyz/",
+    chainId: 466,
+    dimensions: {
+      fees: "appchain",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5457,7 +5469,6 @@ const newChainLabelMap = {
   "camp": "Camp Network",
   "reya": "ReyaChain",
   "goat": "GOAT",
-  "karak": "OpenGDP",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

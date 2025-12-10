@@ -2480,7 +2480,7 @@ const data5: Protocol[] = [
     symbol: "RAM",
     url: "https://ramses.xyz",
     description:
-      "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
+      "ramses-exchange-hl",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/ramses-hl-legacy.jpg`,
     audits: "0",

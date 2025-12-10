@@ -147,7 +147,8 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "6438": "echelon_initia",
   "6439": "inertia",
   "6440": "milkyway_rollup",
-  "5026": "noble"
+  "5026": "noble", 
+  "5599": "grvt"
 };
 
 export const allChainKeys: string[] = [

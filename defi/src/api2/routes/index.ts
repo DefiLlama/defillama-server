@@ -151,6 +151,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
   router.get("/v2/metrics/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
+  router.get("/v2/metrics/chart/chain-breakdown/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
+  router.get("/v2/metrics/chart/version-breakdown/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
 
 
   /* 

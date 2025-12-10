@@ -384,7 +384,7 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
   }
 }
 
-export function getDimensionProtocolRoutes(route: 'overview' | 'chart') {
+export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown') {
   return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
     const protocolName = req.path_parameters.name?.toLowerCase()
     const protocolSlug = sluggifyString(protocolName)
@@ -406,13 +406,45 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart') {
     if (!data)
       return errorResponse(res, errorMessage)
   
-    data.totalDataChartBreakdown = undefined;
-      
-    if (route === 'overview') {
-      data.totalDataChart = undefined;
-      return successResponse(res, data)
+    if (route === 'chart-chain-breakdown' || route === 'chart-version-breakdown') {
+      const chartData: Array<any> = [];
+
+      if (route === 'chart-chain-breakdown') {
+        // sum value from all version on every chain
+        for (const item of data.totalDataChartBreakdown) {
+          const chainItem: any = {}
+          for (const [chain, versions] of Object.entries(item[1])) {
+            chainItem[chain] = chainItem[chain] || 0
+            for (const value of Object.values(versions as any)) {
+              chainItem[chain] += value;
+            }
+          }
+          chartData.push([item[0], chainItem])
+        }
+      } else if (route === 'chart-version-breakdown') {
+        // sum value from all chain on every version
+        for (const item of data.totalDataChartBreakdown) {
+          const versionItem: any = {}
+          for (const versions of Object.values(item[1])) {
+            for (const [version, value] of Object.entries(versions as any)) {
+              versionItem[version] = versionItem[version] || 0;
+              versionItem[version] += value;
+            }
+          }
+          chartData.push([item[0], versionItem])
+        }
+      }
+
+      return successResponse(res, chartData)
     } else {
-      return successResponse(res, data.totalDataChart)
+      data.totalDataChartBreakdown = undefined;
+        
+      if (route === 'overview') {
+        data.totalDataChart = undefined;
+        return successResponse(res, data)
+      } else {
+        return successResponse(res, data.totalDataChart)
+      }
     }
   }
 }

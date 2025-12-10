@@ -3992,6 +3992,7 @@ const data5: Protocol[] = [
         type: "Primary",
         proof: ["https://docs.curvance.com/cve/developer-docs/copy-of-dynamic-liquidation-engine-dle/orderflow-auction-system#oracle-data-flow"]
       }
+    ],
     audit_links: [
       "https://github.com/curvance/curvance-contracts/tree/develop/contracts/audits",
       "https://docs.curvance.com/cve/security/bug-bounty-and-audits",
@@ -5471,6 +5472,28 @@ const data5: Protocol[] = [
     twitter: "stableswap_dex",
     audit_links: [],
     listedAt: 1765391669,
+  },
+  {
+    id: "7116",
+    name: "Lista RWA",
+    address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
+    symbol: "LISTA",
+    url: "https://lista.org/rwa",
+    description: "RWA protocol on BSC by Lista DAO.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/lista-rwa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Money Market Funds"],
+    chains: ["Binance"],
+    forkedFromIds: [],
+    module: "lista-rwa/index.js",
+    twitter: "LISTA_DAO",
+    audit_links: [],
+    parentProtocol: "parent#lista-dao",
+    listedAt: 1765393199,
   },
 ];
 export default data5;

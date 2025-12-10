@@ -4475,6 +4475,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://www.capx.ai/openzeppelin-audit-report.pdf"],
     listedAt: 1764612049,
+    dimensions: {
+      fees: "capx",
+    },
   },
   {
     id: "7074",

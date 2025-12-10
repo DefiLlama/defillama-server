@@ -15359,6 +15359,9 @@ const data4: Protocol[] = [
     module: "phantom-sol/index.js",
     twitter: "phantom",
     listedAt: 1747659045,
+    dimensions: {
+      fees: "phantom-staked-sol",
+    },
   },
   {
     id: "6190",

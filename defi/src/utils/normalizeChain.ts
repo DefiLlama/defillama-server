@@ -3476,6 +3476,9 @@ export const chainCoingeckoIds = {
     twitter: "SankoGameCorp",
     url: "https://sanko.xyz/",
     chainId: 1996,
+    dimensions: {
+      fees: "sanko",
+    },
   },
   "Rari": {
     geckoId: null,

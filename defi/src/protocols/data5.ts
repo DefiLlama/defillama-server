@@ -5041,6 +5041,7 @@ const data5: Protocol[] = [
     chains: ["Ink"],
     module: "dummy.js", 
     twitter: "nadohq",
+    oraclesBreakdown: [{ name: "Chaos", type: "Primary", proof: ["https://docs.nado.xyz/oracles#how-nados-oracle-model-works"] }],
     forkedFromIds: [],
     parentProtocol: "parent#nado",
     dimensions: {

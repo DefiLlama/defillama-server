@@ -3986,6 +3986,12 @@ const data5: Protocol[] = [
     module: "curvance/index.js",
     twitter: "Curvance",
     forkedFromIds: [],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.curvance.com/cve/developer-docs/copy-of-dynamic-liquidation-engine-dle/orderflow-auction-system#oracle-data-flow"]
+      }
     audit_links: [
       "https://github.com/curvance/curvance-contracts/tree/develop/contracts/audits",
       "https://docs.curvance.com/cve/security/bug-bounty-and-audits",

@@ -5438,7 +5438,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://www.everclear.org/",
     description: "The Crosschain Clearing and Settlement Protocol.",
-    chain: "Linea",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/everclear.jpg`,
     audits: "0",
     audit_note: null,

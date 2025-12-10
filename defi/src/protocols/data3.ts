@@ -6716,6 +6716,7 @@ const data3_0: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/zenith-security/reports/blob/main/reports/Zenith%20Audit%20Report%20-%20Stream%20Protocol.pdf"],
     listedAt: 1684246278,
+    deadFrom: "2025-11-04",
   },
   {
     id: "2985",

@@ -3669,9 +3669,9 @@ const data5: Protocol[] = [
       "https://github.com/KachingSupport/kaching_audit_report",
     ],
     listedAt: 1764008727,
-    // dimensions: {
-    //   fees: "kaching",
-    // },
+    dimensions: {
+      fees: "kaching",
+    },
   },
   {
     id: "7041",

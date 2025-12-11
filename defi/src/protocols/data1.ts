@@ -7012,6 +7012,9 @@ const data: Protocol[] = [
     chains: ["Thorchain"],
     module: "thorchain/index.js",
     twitter: "THORChain",
+    dimensions: {
+      fees: "thorchain-dex",
+    },
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },
   {
@@ -21102,6 +21105,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     governanceID: ["snapshot:tempusgov.eth"],
     github: ["tempusfinance"],
   },
+  /* delist
   {
     id: "1046",
     name: "Ouchi Finance",
@@ -21123,6 +21127,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639813156,
     deadUrl: true,
   },
+  */
   {
     id: "1047",
     name: "UnusDao",
@@ -23924,6 +23929,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "JPoolSolana",
     listedAt: 1641070522,
     openSource: false,
+    dimensions: {
+      fees: "jpool-staked-sol"
+    }
   },
   {
     id: "1174",

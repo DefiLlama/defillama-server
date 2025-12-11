@@ -1036,25 +1036,45 @@
       "decimals": 6,
       "symbol": "M"
     },
+    "0xC3361F107c0b82864D5B100A2f3C3E0a1a3586DA": {
+      "decimals": "18",
+      "symbol": "stakedao-PYcrvUSD",
+      "to": "asset#ethereum:0xf69fb60b79e463384b40dbfdfb633ab5a863c9a2"
+    },
+    "0x92abCF6813150a9F78540cAa4feE6115a713F505": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDT-f",
+      "to": "asset#ethereum:0x4e6bb6b7447b7b2aa268c16ab87f4bb48bf57939"
+    },
+    "0x6aEe69A11D5fB0e71c813Fe8419D84b12FB11FdA": {
+      "decimals": "18",
+      "symbol": "stakedao-llsreUSD",
+      "to": "asset#ethereum:0x29e9975561fad3a7988ca96361ab5c5317cb32af"
+    },
+    "0xF7dAf52958690F1dc89CD377d638e9Fc94E76ACF": {
+      "decimals": "18",
+      "symbol": "stakedao-crvfrxUSD",
+      "to": "asset#ethereum:0x22804b0f6be741a9fa1bbaecdd6c8d4116e96944"
+    },
     "0xF169457F89bEeC726e0e9344a59C85328D285f2C": {
       "decimals": "18",
       "symbol": "stakedao-crvUSDUSDC-f",
-      "to": "asset#ethereum:0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1"
+      "to": "asset#ethereum:0x95f00391cb5eebcd190eb58728b4ce23dbfa6ac1"
     },
     "0xd7A7992989C5B20eF48452C96aC4C6B71A17D61e": {
       "decimals": "18",
       "symbol": "stakedao-PYcrvUSD",
-      "to": "asset#ethereum:0xf69Fb60B79E463384b40dbFDFB633AB5a863C9A2"
+      "to": "asset#ethereum:0xf69fb60b79e463384b40dbfdfb633ab5a863c9a2"
     },
     "0x2343f786fc8366f0fA7C9A80B43CDA5731D9d1B4": {
       "decimals": "18",
       "symbol": "stakedao-crvUSDUSDT-f",
-      "to": "asset#ethereum:0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939"
+      "to": "asset#ethereum:0x4e6bb6b7447b7b2aa268c16ab87f4bb48bf57939"
     },
     "0xeBc3554f3659e8425e1Fb30E6f99ae08A03EE932": {
       "decimals": "18",
       "symbol": "stakedao-crvfrxUSD",
-      "to": "asset#ethereum:0x22804B0F6bE741a9Fa1BbaEcDD6c8D4116E96944"
+      "to": "asset#ethereum:0x22804b0f6be741a9fa1bbaecdd6c8d4116e96944"
     },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
@@ -10705,6 +10725,11 @@
     }
   },
   "unichain": {
+    "0x0fe4a1bbe013b54e38ef4e4ec8ba1d64d12a0663": {
+      "to": "asset#arbitrum:0x5b2c615e22272234aacf187632a0531ca1243279",
+      "decimals": 18,
+      "symbol": "PT-USDai-19FEB2026-(ARB)"
+    },
     "0xA06b10Db9F390990364A3984C04FaDf1c13691b5": {
       "decimals": "18",
       "symbol": "sUSDS",
@@ -10754,6 +10779,11 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": 18,
       "symbol": "weETH"
+    },
+    "0xb6168f597cd37a232cb7cb94cd1786be20ead156": {
+      "decimals": "18",
+      "symbol": "PT-cUSD-29JAN2026-(ETH)",
+      "to": "asset#ethereum:0x545a490f9ab534adf409a2e682bc4098f49952e3"
     }
   },
   "sty": {
@@ -13380,7 +13410,7 @@
     },
     "0x779Ded0c9e1022225f8E0630b35a9b54bE713736": {
       "to": "coingecko#tether",
-      "decimals": 18,
+      "decimals": 6,
       "symbol": "USDT0"
     },
     "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
@@ -13451,6 +13481,13 @@
       "to": "coingecko#zignaly",
       "decimals": 6,
       "symbol": "uzig"
+    }
+  }, 
+  "grx": {
+    "0x45C7287F897B3A79Cd3f6e4F14B4CE568f023bD5": {
+      "decimals": "18",
+      "symbol": "WGRX",
+      "to": "coingecko#grx-chain"
     }
   }
 }

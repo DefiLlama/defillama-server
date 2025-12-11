@@ -120,6 +120,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6498": "eventum",
   "6581": "eni",
   //"6730": "eteria",
+  "7118": "appchain",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -147,7 +148,8 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "6438": "echelon_initia",
   "6439": "inertia",
   "6440": "milkyway_rollup",
-  "5026": "noble"
+  "5026": "noble", 
+  "5599": "grvt"
 };
 
 export const allChainKeys: string[] = [

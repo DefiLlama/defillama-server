@@ -51,3 +51,12 @@ export async function fileResponse(filePath: string, res: HyperExpress.Response)
     return errorResponse(res, 'Internal server error', { statusCode: 500 })
   }
 }
+
+export function validateProRequest(req: HyperExpress.Request, res: HyperExpress.Response) {
+  if ((req as any).isProRequest) return;
+
+  // throw error if not pro
+  res.status(403)
+  res.send('Pro access required', true)
+  return (req as any).isProRequest === true
+}

@@ -178,7 +178,7 @@ type StoreTvlOptions = {
   skipChainsCheck?: boolean,
 }
 
-export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom'])
+export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom', 'airdao'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

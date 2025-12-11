@@ -15359,6 +15359,9 @@ const data4: Protocol[] = [
     module: "phantom-sol/index.js",
     twitter: "phantom",
     listedAt: 1747659045,
+    dimensions: {
+      fees: "phantom-staked-sol",
+    },
   },
   {
     id: "6190",
@@ -16087,7 +16090,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Risk Curators",
-    chains: ["Ethereum", "Base", "Unichain", "Corn", "Monad"],
+    chains: ["Ethereum", "Base", "Unichain", "Corn", "Arbitrum", "Katana"],
     forkedFrom: [],
     oraclesBreakdown: [
       {
@@ -20101,13 +20104,14 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/liquidswap-hl.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "liquidlaunch",
+    gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "LiquidLaunchHL",
     forkedFrom: [],
+    parentProtocol: "parent#liquidlabs",
     dimensions: {
       fees: "liquidswap",
       aggregators: "liquidswap"
@@ -22573,6 +22577,9 @@ const data4: Protocol[] = [
     module: "bitlayer-ybtc_b/index.js",
     twitter: "BitlayerLabs",
     listedAt: 1753368932,
+    dimensions: {
+      fees: "bitlayer-ybtc-family"
+    }
   },
   {
     id: "6475",
@@ -24468,16 +24475,16 @@ const data4: Protocol[] = [
   {
     id: "6554",
     name: "HumidiFi",
-    address: null,
-    symbol: "-",
+    address: "solana:WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+    symbol: "WET",
     url: "null",
     description: "Prop AMM on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/humidifi.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "humidifi",
+    cmcId: "39049",
     category: "Dexs",
     chains: ["Solana"],
     module: "dummy.js",

@@ -233,7 +233,7 @@ test("no surprise category", async () => {
     'CDP',
     'Services',
     'Insurance',
-    'Cross Chain Bridge',
+    'Bridge Aggregators',
     'Options',
     'Chain',
     'Derivatives',
@@ -316,7 +316,8 @@ test("no surprise category", async () => {
     "Mining Pools",
     "NFT Automated Strategies",
     "Luck Games",
-    "ve-Incentive Automator"
+    "ve-Incentive Automator",
+    "Cross Chain Bridge"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

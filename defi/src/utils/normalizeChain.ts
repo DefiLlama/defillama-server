@@ -511,6 +511,9 @@ export const chainCoingeckoIds = {
     cmcId: "2011",
     twitter: "tezos",
     url: "https://tezos.com/",
+    dimensions: {
+      fees: "tezos",
+    },
   },
   "Celo": {
     geckoId: "celo",
@@ -595,6 +598,9 @@ export const chainCoingeckoIds = {
     chainId: 8217,
     twitter: "kaiachain",
     url: "https://kaia.io/",
+    dimensions: {
+      fees: "kaia",
+    },
   },
   "IoTeX": {
     geckoId: "iotex",
@@ -1743,6 +1749,9 @@ export const chainCoingeckoIds = {
     cmcId: "52",
     twitter: "RippleXDev",
     url: "https://xrpl.org/",
+    dimensions: {
+      fees: "xrpl",
+    },
     stablecoins: ["ripple-usd"],
   },
   "GodwokenV1": {
@@ -3158,7 +3167,7 @@ export const chainCoingeckoIds = {
     url: "https://venom.foundation/",
     github: ["venom-blockchain"],
   },
-  "OpenGDP": {
+  "K2": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -3168,7 +3177,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
       da: "Celestia",
     },
-    twitter: "OpenGDP",
+    twitter: "Karak_Network",
     url: "https://opengdp.network/",
     chainId: "2410",
     dimensions: {
@@ -3470,6 +3479,9 @@ export const chainCoingeckoIds = {
     twitter: "SankoGameCorp",
     url: "https://sanko.xyz/",
     chainId: 1996,
+    dimensions: {
+      fees: "sanko",
+    },
   },
   "Rari": {
     geckoId: null,
@@ -4208,6 +4220,9 @@ export const chainCoingeckoIds = {
     twitter: "AbstractChain",
     url: "https://www.abs.xyz/",
     chainId: 2741,
+    dimensions: {
+      fees: "abstract",
+    },
   },
   "Zero Network": {
     geckoId: null,
@@ -4761,6 +4776,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Cosmos"],
     twitter: "Peersyst",
     url: "https://www.xrplevm.org/",
+    dimensions: {
+      fees: "xrplevm",
+    },
     chainId: 1440000,
   },
   "Botanix": {
@@ -5175,6 +5193,27 @@ export const chainCoingeckoIds = {
     url: "https://www.stable.xyz/",
     chainId: 988,
   },
+  "Appchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "onappchain",
+    url: "https://appchain.xyz/",
+    chainId: 466,
+    dimensions: {
+      fees: "appchain",
+    },
+  },
+  "Doma": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "domaprotocol",
+    url: "https://doma.xyz/",
+    chainId: 97477,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5448,7 +5487,6 @@ const newChainLabelMap = {
   "camp": "Camp Network",
   "reya": "ReyaChain",
   "goat": "GOAT",
-  "karak": "OpenGDP",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

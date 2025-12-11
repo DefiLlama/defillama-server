@@ -6716,6 +6716,7 @@ const data3_0: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/zenith-security/reports/blob/main/reports/Zenith%20Audit%20Report%20-%20Stream%20Protocol.pdf"],
     listedAt: 1684246278,
+    deadFrom: "2025-11-04",
   },
   {
     id: "2985",
@@ -7409,6 +7410,13 @@ const data3_0: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1684901863,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.box/#/s:morpho.eth/proposal/0x60b31cceca2beee55f8845f86b7988ee36f29ad50f5dda636164ab50b561936b",
+        level: "alert",
+      },
+    ],
   },
   {
     id: "3015",
@@ -25384,7 +25392,7 @@ const data3_1: Protocol[] = [
     name: "Base Bridge",
     address: null,
     symbol: "-",
-    url: "https://bridge.base.org/deposit",
+    url: "https://docs.base.org/base-chain/network-information/bridges-mainnet",
     description:
       "Base Bridge enables the transfer of certain digital assets and other data back and forth between Ethereum and Base.",
     chain: "Base",
@@ -25398,6 +25406,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "base/index.js",
     twitter: "BuildOnBase",
+    deprecated: true,
   },
   {
     id: "3781",
@@ -41727,13 +41736,14 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4460",
-    name: "Karak",
+    name: "OpenGDP Shared Security",
+    previousNames: ["Karak"],
     address: null,
     symbol: "-",
     url: "https://karak.network",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/karak.png`,
+    logo: `${baseIconsUrl}/opengdp-shared-security.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -41742,7 +41752,7 @@ const data3_2: Protocol[] = [
     chains: ["Ethereum", "Arbitrum"],
     module: "karak/index.js",
     forkedFrom: [],
-    twitter: "Karak_Network",
+    twitter: "OpenGDP",
     parentProtocol: "parent#subseaprotocol",
     listedAt: 1712668302,
   },
@@ -48710,6 +48720,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/symbioticfi/collateral/tree/main/audits"],
     github: ["symbioticfi"],
     listedAt: 1718109849,
+    dimensions: {
+      fees: "symbiotic",
+    }
   },
   {
     id: "4758",
@@ -52466,18 +52479,19 @@ const data3_3: Protocol[] = [
     address: "0xc477d038d5420c6a9e0b031712f61c5120090de9",
     symbol: "BOSON",
     url: "https://www.bosonprotocol.io",
-    description: "Sell physical products as NFTs, everywhere using branded $BOSON tokens",
+    description: "Civilization-scale infrastructure for the decentralized exchange of any assets between any agent, human or AI, from everyday commerce to high-value RWAs",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/boson-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "boson-protocol",
     cmcId: "8827",
-    category: "Farm",
+    tags: ["Collectibles"],
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "boson/index.js",
     twitter: "BosonProtocol",
+    audit_links: ["https://github.com/bosonprotocol/boson-protocol-contracts/blob/main/docs/audits.md"],
     github: ["bosonprotocol"],
     listedAt: 1721821003,
     dimensions: {
@@ -53914,7 +53928,7 @@ const data3_3: Protocol[] = [
     symbol: "-",
     url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
-    description: "Reya DEX is a perpetual futures exchange on the Reya Network",
+    description: "The only DEX where speed never compromises security. Uniquely built as a based-rollup powered by zk-proofs, Reya DEX delivers 1 millisecond speed, 0 trading fess and 100% Ethereum uptime and security",
     chain: "Reya Network",
     logo: `${baseIconsUrl}/reya-perps.jpg`,
     audits: "2",
@@ -62704,11 +62718,12 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5351",
-    name: "Mantle Restaking",
+    name: "mETH Protocol",
+    previousNames: ["Mantle Restaking"],
     address: null,
     symbol: "-",
     assetToken: "mETH",
-    url: "https://meth.mantle.xyz/restake",
+    url: "https://www.methprotocol.xyz/",
     description:
       "Liquid Restaking on Ethereum",
     chain: "Ethereum",
@@ -62720,8 +62735,9 @@ const data3_3: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     module: "mantle-restaking/index.js",
-    twitter: "Mantle_Official",
+    twitter: "mETHProtocol",
     forkedFrom: [],
+    audit_links: ["https://docs.mantle.xyz/meth/security/audits"],
     listedAt: 1731495743
   },
   {
@@ -66298,7 +66314,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: "hyperliquid-perp",
       fees: "hyperliquid-perp",   // now we count separately perps and spot
-      "open-interest": "hyperliquid-perp"
+      "open-interest": "hyperliquid-perp-oi"
     }
   },
   {
@@ -67165,7 +67181,10 @@ const data3_3: Protocol[] = [
     github: ["hopperlabsxyz"],
     audit_links: ["https://docs.lagoon.finance/resources/audits"],
     twitter: "lagoon_finance",
-    listedAt: 1734930934
+    listedAt: 1734930934,
+    dimensions: {
+      fees: "lagoon",
+    }
    },
   {
     id: "5548",

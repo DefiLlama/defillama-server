@@ -21833,9 +21833,9 @@ const data2: Protocol[] = [
     name: "Bored Candy City",
     address: "cronos:0x06C04B0AD236e7Ca3B3189b1d049FE80109C7977",
     symbol: "CANDY",
-    url: "https://candycity.finance/",
+    url: "https://new.candycity.finance/",
     description:
-      "Bored Candy City is not just a DEX. We are working on a complete Defi ecosystem around the $CANDY token",
+      "Bored Candy City blends DeFi and gaming: a MultiChain AMM with liquidity yield farms, NFT boosts, and a growing Play2Earn mobile game universe",
     chain: "Cronos",
     logo: `${baseIconsUrl}/bored-candy-city.png`,
     audits: "2",

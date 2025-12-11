@@ -120,6 +120,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6498": "eventum",
   "6581": "eni",
   //"6730": "eteria",
+  "7118": "appchain",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

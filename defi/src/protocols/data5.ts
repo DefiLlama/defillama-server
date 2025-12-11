@@ -5562,5 +5562,28 @@ const data5: Protocol[] = [
     github: ["OnChainGM"],
     listedAt: 1765414171,
   },
+  {
+    id: "7120",
+    name: "Macaron.bid",
+    address: null,
+    symbol: "-",
+    url: "https://www.macaron.bid/",
+    description: "A next-gen bidding protocol built by merging the core mechanisms of $DONUT and $ORE. Macaron uses a Dutch auction mechanism where users bid SOL to mine tokens, with fees distributed to previous miners (85%), buyback/burn (10%), staking (3%), and development (2%).",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/macaron.bid.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "macaron_bid",
+    audit_links: [],
+    dimensions: {
+      fees: "macaron-bid",
+    },
+  },
 ];
 export default data5;

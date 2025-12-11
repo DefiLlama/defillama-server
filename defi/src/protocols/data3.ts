@@ -52486,7 +52486,7 @@ const data3_3: Protocol[] = [
     audit_note: null,
     gecko_id: "boson-protocol",
     cmcId: "8827",
-    category: "RWA",
+    tags: ["Collectibles"],
     chains: ["Ethereum"],
     forkedFrom: [],
     module: "boson/index.js",

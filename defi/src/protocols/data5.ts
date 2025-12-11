@@ -3835,7 +3835,7 @@ const data5: Protocol[] = [
       "Stake MON, get shMON—the liquid staking token that keeps earning + MEV rewards while you commit it to programmable policies. One token secures the network and backs your favourite dApps, all without sacrificing liquidity.",
     chain: "Monad",
     logo: `${baseIconsUrl}/shmonad.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -3844,7 +3844,7 @@ const data5: Protocol[] = [
     module: "shmonad/index.js",
     twitter: "0xFastLane",
     forkedFromIds: [],
-    audit_links: [],
+    audit_links: ["https://github.com/GuardianAudits/Audits/tree/main/FastLane%20Labs"],
     listedAt: 1764090355,
     dimensions: {
       fees: "shmonad",

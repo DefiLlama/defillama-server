@@ -3835,7 +3835,7 @@ const data5: Protocol[] = [
       "Stake MON, get shMON—the liquid staking token that keeps earning + MEV rewards while you commit it to programmable policies. One token secures the network and backs your favourite dApps, all without sacrificing liquidity.",
     chain: "Monad",
     logo: `${baseIconsUrl}/shmonad.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

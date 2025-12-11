@@ -4200,6 +4200,9 @@ const data5: Protocol[] = [
     audit_links: ["https://files.monday.trade/files/Monday-Trade-Spot-Audit.pdf"],
     parentProtocol: "parent#monday-trade",
     listedAt: 1764300387,
+    dimensions: {
+      fees: "monday-trade-perp",
+    },
   },
   {
     id: "7062",
@@ -4781,6 +4784,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     github: ["Muscadine-Labs"],
     listedAt: 1764779914,
+    dimensions: {
+      fees: "muscadine",
+    },
   },
   {
     id: "7086",
@@ -4850,6 +4856,9 @@ const data5: Protocol[] = [
     twitter: "haydotapp",
     forkedFromIds: [],
     listedAt: 1764868972,
+    dimensions: {
+      fees: "haystack",
+    },
   },
   {
     id: "7089",

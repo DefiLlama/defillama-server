@@ -3496,6 +3496,9 @@ export const chainCoingeckoIds = {
     twitter: "RariChain",
     url: "https://rarichain.org/",
     chainId: 1380012617,
+    dimensions: {
+      fees: "rari",
+    },
   },
   "Massa": {
     geckoId: null,

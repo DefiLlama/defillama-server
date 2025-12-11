@@ -5642,6 +5642,7 @@ const data5: Protocol[] = [
     module: "kinetiq-markets/index.js",
     twitter: "markets_xyz",
     audit_links: ["https://audits.kinetiq.xyz/"],
+    parentProtocol: "parent#kinetiq",
     listedAt: 1765486307,
   },
 ];

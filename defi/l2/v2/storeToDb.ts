@@ -136,8 +136,6 @@ export async function fetchCurrentChainAssets() {
   return readable;
 }
 
-
-// None of this flows below is used 
 export async function fetchFlows(period: number = secondsInADay) {
   const sql = await iniDbConnection();
   const targetEnd = getCurrentUnixTimestamp();
@@ -188,6 +186,7 @@ function calculateFlows(startData: any, endData: any) {
   return flows;
 }
 
+// This flows below is used 
 export async function fetchHistoricalFlows(chain: string, period: number) {
   if (period != secondsInADay) throw new Error("period must be 24 hours");
 

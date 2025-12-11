@@ -1,4 +1,4 @@
-import { fetchFlows } from "../l2/storeToDb";
+import { fetchFlows } from "../l2/v2/storeToDb";
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
 import { quantisePeriod } from "../l2/utils";
 import { secondsInDay } from "./utils/date";

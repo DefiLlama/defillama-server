@@ -3,6 +3,9 @@ import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
+import { zero } from "./constants";
+import { fetchCurrentChainAssets } from "./v2/storeToDb";
+import { getChainDisplayName } from "../src/utils/normalizeChain";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
@@ -304,11 +307,43 @@ export async function fetchFlows(period: number) {
   return res;
 }
 export async function fetchHistoricalFlows(period: number, chain: string) {
+  if (period != secondsInADay) throw new Error("period must be 24 hours");
   const sql = await iniDbConnection();
   const timeseries = await queryPostgresWithRetry(sql`select ${sql(chain)}, timestamp from chainassetflows`, sql);
   sql.end();
   const result = parsePgData(timeseries, chain, false);
   return findDailyEntries(result, period);
+}
+export async function fetchCurrentFlows(period: number) {
+  if (period != secondsInADay) throw new Error("period must be 24 hours");
+  const sql = await iniDbConnection();
+  const timeseries = await queryPostgresWithRetry(sql`select timestamp from chainassetflows`, sql);
+  const latestTimestamp = Math.max(...timeseries.map((t: any) => Number(t.timestamp)));
+  const res: any = await queryPostgresWithRetry(sql`select * from chainassetflows where timestamp = ${latestTimestamp}`, sql);
+  sql.end();
+  const data: any = parsePgData(res, "*", false)[0].data;
+
+  const result: any = {};
+  const current = await fetchCurrentChainAssets();
+  Object.keys(data).map((chain: string) => {
+    if (!Object.keys(data[chain]).length) return;
+    const readableChain = getChainDisplayName(chain, true);
+    result[readableChain] = { total: { raw: zero } }
+
+    Object.keys(data[chain]).map((symbol: string) => {
+      result[readableChain].total.raw = result[readableChain].total.raw.plus(data[chain][symbol]);
+    });
+  });
+
+  Object.keys(result).map((chain: string) => {
+    if (!current[chain]) return;
+    const rawFlow = result[chain].total.raw 
+    const totalCurrent = current[chain].total.total;
+    const perc = rawFlow / totalCurrent * 100;
+    result[chain].total.perc = perc.toFixed(2);
+  });
+
+  return result;
 }
 export async function fetchAllChainData(chain: string) {
   const sql = await iniDbConnection();

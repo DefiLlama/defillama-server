@@ -12,6 +12,22 @@ async function iniDbConnection() {
 
   return postgres(auth[0], { idle_timeout: 90 });
 }
+
+export async function fetchColumns() {
+  const sql = await iniDbConnection();
+
+  const read = await queryPostgresWithRetry(
+    sql`
+        select * from chainassets
+        limit 1
+        `,
+    sql
+  );
+  const columns = read.columns.map((c: any) => c.name);
+
+  return columns;
+}
+
 export default async function storeHistoricalToDB(res: any) {
   const sql = await iniDbConnection();
 

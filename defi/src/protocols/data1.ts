@@ -21105,6 +21105,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     governanceID: ["snapshot:tempusgov.eth"],
     github: ["tempusfinance"],
   },
+  /* delist
   {
     id: "1046",
     name: "Ouchi Finance",
@@ -21126,6 +21127,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639813156,
     deadUrl: true,
   },
+  */
   {
     id: "1047",
     name: "UnusDao",

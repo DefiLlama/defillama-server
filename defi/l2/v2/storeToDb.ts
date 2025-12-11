@@ -49,7 +49,7 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
     : dailyData.map((d: any) => ({ timestamp: d.timestamp, ...JSON.parse(d.value) }));
 
   data.sort((a: any, b: any) => a.timestamp - b.timestamp);
-  
+
   if (isRaw) return data;
 
   const symbolMap: { [key: string]: string } = await getR2JSONString("chainAssetsSymbolMap");
@@ -124,43 +124,6 @@ function findDailyTimestamps(timestamps: { timestamp: number }[]): number[] {
   return dailyTimestamps;
 }
 
-export async function fetchFlows(period: number = secondsInADay) {
-  const sql = await iniDbConnection();
-  const targetEnd = getCurrentUnixTimestamp();
-  const targetStart = targetEnd - period * 1.5;
-  const datas: any[] = await queryPostgresWithRetry(
-    sql`select * from chainassets2 where timestamp > ${targetStart}`,
-    sql
-  );
-
-  const actualStart = datas.reduce((prev, curr) =>
-    Math.abs(curr.timestamp - targetStart) < Math.abs(prev.timestamp - targetStart) ? curr : prev
-  );
-  const actualEnd = datas.reduce((prev, curr) =>
-    Math.abs(curr.timestamp - targetEnd) < Math.abs(prev.timestamp - targetEnd) ? curr : prev
-  );
-
-  const startData = JSON.parse(datas.find((d) => d.timestamp == actualStart.timestamp)?.value ?? "{}");
-  const endData = JSON.parse(datas.find((d) => d.timestamp == actualEnd.timestamp)?.value ?? "{}");
-
-  const flows: any = {};
-  Object.keys(endData).map((chain) => {
-    const readableChain = getChainDisplayName(chain, true);
-    flows[readableChain] = {};
-    Object.keys(endData[chain]).map((section) => {
-      flows[readableChain][section] = {};
-      const startValue = startData[chain]?.[section]?.total ?? 0;
-      const endValue = endData[chain][section].total;
-      const raw = endValue - startValue;
-      const perc = (raw / startValue) * 100;
-      flows[readableChain][section].raw = raw;
-      flows[readableChain][section].perc = perc;
-    });
-  });
-
-  return flows;
-}
-
 export async function fetchCurrentChainAssets() {
   const res = await getR2JSONString("chainAssets2");
 
@@ -172,4 +135,106 @@ export async function fetchCurrentChainAssets() {
 
   return readable;
 }
-// fetchFlows(); // ts-node defi/l2/v2/storeToDb.ts
+
+
+// None of this flows below is used 
+export async function fetchFlows(period: number = secondsInADay) {
+  const sql = await iniDbConnection();
+  const targetEnd = getCurrentUnixTimestamp();
+  const targetStart = targetEnd - period * 1.5;
+
+  const timestamps: any[] = await queryPostgresWithRetry(sql`select timestamp from chainassets2`, sql);
+
+  const actualStart = timestamps.reduce((prev, curr) =>
+    Math.abs(curr.timestamp - targetStart) < Math.abs(prev.timestamp - targetStart) ? curr : prev
+  );
+  const actualEnd = timestamps.reduce((prev, curr) =>
+    Math.abs(curr.timestamp - targetEnd) < Math.abs(prev.timestamp - targetEnd) ? curr : prev
+  );
+
+  const datas: any[] = await queryPostgresWithRetry(
+    sql`select * from chainassets2 where timestamp in ${sql([actualStart.timestamp, actualEnd.timestamp])}`,
+    sql
+  );
+
+  const startData = JSON.parse(datas.find((d) => d.timestamp == actualStart.timestamp)?.value ?? "{}");
+  const endData = JSON.parse(datas.find((d) => d.timestamp == actualEnd.timestamp)?.value ?? "{}");
+
+  const flows: any = calculateFlows(startData, endData);
+
+  return flows;
+}
+
+function calculateFlows(startData: any, endData: any) {
+  const flows: any = {};
+  Object.keys(endData).forEach((chain) => {
+    const readableChain = getChainDisplayName(chain, true);
+    flows[readableChain] = {};
+    Object.keys(endData[chain]).map((section) => {
+      flows[readableChain][section] = {};
+      const startValue = startData[chain]?.[section]?.total ?? 0;
+      const endValue = endData[chain][section].total;
+      const raw = endValue - startValue;
+      if (startValue == 0) {
+        flows[readableChain][section].perc = Infinity;
+        flows[readableChain][section].raw = raw;
+        return;
+      }
+      const perc = (raw / startValue) * 100;
+      flows[readableChain][section].raw = raw;
+      flows[readableChain][section].perc = perc;
+    });
+  });
+  return flows;
+}
+
+export async function fetchHistoricalFlows(chain: string, period: number) {
+  if (period != secondsInADay) throw new Error("period must be 24 hours");
+
+  const sql = await iniDbConnection();
+  const timestamps: any[] = await queryPostgresWithRetry(sql`select timestamp from chainassets2`, sql);
+  const dailyEntries = findDailyTimestamps(timestamps);
+  const dailyData = await queryPostgresWithRetry(
+    sql`select * from chainassets2 where timestamp in ${sql(dailyEntries)}`,
+    sql
+  );
+  sql.end();
+
+  const data = dailyData.map((d: any) => ({ timestamp: d.timestamp, [chain]: JSON.parse(d.value)[chain] }));
+
+  data.sort((a: any, b: any) => a.timestamp - b.timestamp);
+
+  // const response: any[] = [];
+  // for (let i = 0; i < data.length - 1; i++) {
+  //   const startData = data[i];
+  //   const endData = data[i + 1];
+  //   const flows = calculateFlows(startData, endData);
+  //   response.push({ timestamp: endData.timestamp, flows });
+  // }
+
+  const symbolMap: { [key: string]: string } = await getR2JSONString("chainAssetsSymbolMap");
+
+  for (let i = 0; i < data.length - 1; i++) {
+    const startData = data[i];
+    const endData = data[i + 1];
+
+    Object.keys(endData[chain]).map((section) => {
+      Object.keys(endData[chain][section].breakdown).map((asset) => {
+        const symbol = symbolMap[asset];
+        if (!symbol) return;
+        const startValue = startData[chain]?.[section]?.breakdown?.[asset] ?? 0;
+        const endValue = endData[chain][section].breakdown[asset];
+        const raw = endValue - startValue;
+        // if (startValue == 0) {
+        //   flows[readableChain][section].perc = Infinity;
+        //   flows[readableChain][section].raw = raw;
+        //   return;
+        // }
+      });
+    });
+    
+  }
+
+
+  return data;
+}

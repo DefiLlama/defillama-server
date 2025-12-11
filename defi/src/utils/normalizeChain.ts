@@ -5217,6 +5217,14 @@ export const chainCoingeckoIds = {
     url: "https://doma.xyz/",
     chainId: 97477,
   },
+  "Allora": {
+    geckoId: "allora",
+    symbol: "ALLO",
+    cmcId: "38908",
+    categories: ["Cosmos"],
+    twitter: "AlloraNetwork",
+    url: "https://allora.network/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

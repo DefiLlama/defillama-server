@@ -5201,7 +5201,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.aarna.ai",
     description:
-      "aarnâ is an advanced decentralized asset management platform, developed by integrating AI quant strategies with advanced on-chain tokenization, providing a fully permissionless, transparent and self-custodial platform for high-value investors, to manage their digital assets' lifecycle.",
+      "aarnâ is building the Agentic Onchain Treasury (AOT), a fully autonomous onchain treasury that allocates, rotates, and secures assets through programmable, transparent agent governance.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aarna-protocol.jpg`,
     audits: "2",

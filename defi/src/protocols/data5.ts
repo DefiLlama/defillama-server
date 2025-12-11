@@ -5565,8 +5565,8 @@ const data5: Protocol[] = [
   {
     id: "7120",
     name: "Macaron.bid",
-    address: null,
-    symbol: "-",
+    address: "solana:8UiPofjkbjqTqrymz4VY3wXxMcPjFuyq3Psofekymaca",
+    symbol: "MACARON",
     url: "https://www.macaron.bid/",
     description: "A next-gen bidding protocol built by merging the core mechanisms of $DONUT and $ORE. Macaron uses a Dutch auction mechanism where users bid SOL to mine tokens, with fees distributed to previous miners (85%), buyback/burn (10%), staking (3%), and development (2%).",
     chain: "Solana",

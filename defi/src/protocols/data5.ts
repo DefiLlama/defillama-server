@@ -5573,7 +5573,7 @@ const data5: Protocol[] = [
     category: "Services",
     chains: ["Plasma","Aurora","Moonriver","Moonbeam","Fuse","Ronin","Katana","Plume Mainnet","Abstract","Sei","Binance","Mantle","Polygon","Celo","Ethereum","Scroll","Hyperliquid L1","Avalanche","zkSync Era", "Arbitrum","Base","Soneium","Optimism","Lisk","Mode","Zora","Linea","Unichain","Ink","BOB","Shape","Blast","Swellchain","Zircuit","Berachain","ZetaChain","Hemi","Flare","Fraxtal","Sonic","Corn","ApeChain","Morph","X Layer","XRPL EVM"],
     forkedFromIds: [],
-    module: "onchaingm/index.js",
+    module: "dummy.js",
     twitter: "OnChainGm",
     audit_links: ["https://github.com/OnChainGM/OnChainGMV2/blob/main/AduitV2.pdf"],
     github: ["OnChainGM"],

@@ -1,5 +1,3 @@
-// timestamp, value
-
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../src/utils/date";
@@ -50,6 +48,8 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
     ? dailyData.map((d: any) => ({ timestamp: d.timestamp, [chain]: JSON.parse(d.value)[chain] }))
     : dailyData.map((d: any) => ({ timestamp: d.timestamp, ...JSON.parse(d.value) }));
 
+  data.sort((a: any, b: any) => a.timestamp - b.timestamp);
+  
   if (isRaw) return data;
 
   const symbolMap: { [key: string]: string } = await getR2JSONString("chainAssetsSymbolMap");
@@ -60,15 +60,20 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
     Object.keys(d).forEach((chain: string) => {
       if (chain == "timestamp") return;
       const readableChain = getChainDisplayName(chain, true);
-      symbolEntry[readableChain] = {};
+      if (!chain) symbolEntry[readableChain] = {};
       Object.keys(d[chain]).map((section) => {
-        symbolEntry[readableChain][section] = { total: d[chain][section].total, breakdown: {} };
+        if (!chain) symbolEntry[readableChain][section] = { total: d[chain][section].total, breakdown: {} };
+        else symbolEntry[section] = { total: d[chain][section].total, breakdown: {} };
+        if (!d[chain][section].breakdown || !Object.keys(d[chain][section].breakdown).length) return;
         Object.keys(d[chain][section].breakdown).forEach((asset: string) => {
           if (!symbolMap[asset]) {
             console.log(`${asset} not found in symbolMap`);
             return;
           }
-          symbolEntry[readableChain][section].breakdown[symbolMap[asset]] = d[chain][section].breakdown[asset];
+
+          if (!chain)
+            symbolEntry[readableChain][section].breakdown[symbolMap[asset]] = d[chain][section].breakdown[asset];
+          else symbolEntry[section].breakdown[symbolMap[asset]] = d[chain][section].breakdown[asset];
         });
       });
     });
@@ -78,29 +83,37 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
   return symbolData;
 }
 
-export async function fetchChartData(chain: string) {
-    const allHistorical = await fetchHistoricalFromDB(chain)
-    const chartData: any[] = []
-    allHistorical.map((h: any) => {
-        const entry: any = { timestamp: h.timestamp }
-        Object.keys(h).map((chain: string) => {
-            if (chain == "timestamp") return;
-            const totalsOnly: { [key: string]: string } = {}
-            Object.keys(h[chain]).map((section: string) => {
-                totalsOnly[section] = h[chain][section].total
-            })
-            entry[chain] = totalsOnly
-        })
-        chartData.push(entry)
-    })
-    return chartData
+export async function fetchChartData(chain: string | undefined = undefined) {
+  const allHistorical = await fetchHistoricalFromDB(chain, true);
+  const chartData: any[] = [];
+  allHistorical.forEach((h: any) => {
+    const entry: any = { timestamp: h.timestamp };
+    Object.keys(h).forEach((c: string) => {
+      if (c == "timestamp") return;
+
+      const totalsOnly: { [key: string]: string } = {};
+      Object.keys(h[c]).forEach((section: string) => {
+        totalsOnly[section] = h[c][section].total;
+      });
+
+      if (!chain) {
+        const readableChain = getChainDisplayName(c, true);
+        entry.data[readableChain] = totalsOnly;
+      } else entry.data = totalsOnly;
+    });
+    chartData.push(entry);
+  });
+
+  return chartData;
 }
 
 function findDailyTimestamps(timestamps: { timestamp: number }[]): number[] {
+  timestamps.sort((a, b) => a.timestamp - b.timestamp);
   const end = getTimestampAtStartOfDay(getCurrentUnixTimestamp());
 
-  const start = getTimestampAtStartOfDay(timestamps[timestamps.length - 1].timestamp + secondsInADay);
-  const dailyTimestamps = [timestamps[timestamps.length - 1].timestamp];
+  const startTimestampRaw = Number(timestamps[0].timestamp) + secondsInADay;
+  const start = getTimestampAtStartOfDay(startTimestampRaw);
+  const dailyTimestamps = [timestamps[0].timestamp];
 
   for (let i = start; i < end; i += secondsInADay) {
     const timestamp = timestamps.reduce((prev, curr) =>

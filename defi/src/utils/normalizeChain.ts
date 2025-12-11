@@ -598,6 +598,9 @@ export const chainCoingeckoIds = {
     chainId: 8217,
     twitter: "kaiachain",
     url: "https://kaia.io/",
+    dimensions: {
+      fees: "kaia",
+    },
   },
   "IoTeX": {
     geckoId: "iotex",

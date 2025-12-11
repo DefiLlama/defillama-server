@@ -4731,6 +4731,10 @@ const data5: Protocol[] = [
     chains: ["Fuel"],
     module: "o2/index.js", 
     twitter: "o2dotapp",
+    audit_links: [
+      "https://github.com/o2-exchange/audits",
+      "https://github.com/FuelLabs/audits/blob/master/fuel_fast_bridge_audit_final.pdf",
+    ],
     forkedFromIds: [],
     listedAt: 1764778937,
   },

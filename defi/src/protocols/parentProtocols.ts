@@ -4641,7 +4641,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CropperFinance",
   },
   {
-    id: "parent#bouncebit-swap",
+    id: "parent#bitswap-bb",
     name: "BounceBit Swap",
     url: "https://portal.bouncebit.io/trade/swap",
     description:

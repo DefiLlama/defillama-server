@@ -45390,7 +45390,7 @@ const data3_2: Protocol[] = [
     module: "bitswap-bb-v2/index.js",
     twitter: "bouncebit",
     audit_links: [],
-    parentProtocol: "parent#bouncebit-swap",
+    parentProtocol: "parent#bitswap-bb",
     listedAt: 1715853154,
   },
   {
@@ -45412,7 +45412,7 @@ const data3_2: Protocol[] = [
     module: "bitswap-bb-v3/index.js",
     twitter: "bouncebit",
     audit_links: [],
-    parentProtocol: "parent#bouncebit-swap",
+    parentProtocol: "parent#bitswap-bb",
     listedAt: 1715853154,
   },
   {

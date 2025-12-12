@@ -61925,7 +61925,7 @@ const data3_3: Protocol[] = [
     name: "Fluid DEX",
     address: "0x6f40d4a6237c257fff2db00fa0510deeecd303eb",
     symbol: "FLUID",
-    url: "https://fluid.io",
+    url: "https://fluid.io/stats/1/dex",
     description:
       "With Smart Collateral, LPs are now able to utilize their position as collateral in Fluid and deploy it as AMM liquidity on the DEX.",
     chain: "Ethereum",

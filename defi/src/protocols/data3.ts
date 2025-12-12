@@ -60369,6 +60369,7 @@ const data3_3: Protocol[] = [
     chains: ["Base"],
     forkedFrom: [],
     module: "truemarkets/index.js",
+    oraclesBreakdown: [ { name: "TruthOracle", type: "Primary", proof: [] } ],
     twitter: "truemarkets",
     listedAt: 1729254083,
     treasury: 'truemarkets.js'

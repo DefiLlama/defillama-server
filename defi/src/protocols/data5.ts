@@ -5851,5 +5851,25 @@ const data5: Protocol[] = [
       derivatives: "toro-perp",
     },
   },
+  {
+    id: "7132",
+    name: "Valiant Trade",
+    address: null,
+    symbol: "-",
+    url: "https://valiant.trade",
+    description: "Institutional trading in your browser. CEX speed. DEX freedom. Building the future of trading on Fogo",
+    chain: "Fogo",
+    logo: `${baseIconsUrl}/valiant-trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fogo"],
+    forkedFromIds: [],
+    module: "valiant-trade/index.js",
+    twitter: "ValiantTrade",
+    listedAt: 1765544171
+  },
 ];
 export default data5;

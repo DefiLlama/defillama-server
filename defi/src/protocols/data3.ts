@@ -57763,7 +57763,10 @@ const data3_3: Protocol[] = [
     twitter: "elixir",
     audit_links: ["https://docs.elixir.xyz/audit"],
     stablecoins: ["elixir-deusd"],
-    listedAt: 1726153138
+    listedAt: 1726153138,
+    dimensions: {
+      fees: "elixir",
+    },
   },
   {
     id: "5141",

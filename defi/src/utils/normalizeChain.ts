@@ -1648,6 +1648,9 @@ export const chainCoingeckoIds = {
     governanceID: ["icp"],
     twitter: "dfinity",
     url: "https://internetcomputer.org/",
+    dimensions: {
+      fees: "icp",
+    },
   },
   "Nova Network": {
     geckoId: "supernova",

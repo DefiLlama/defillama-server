@@ -5235,6 +5235,32 @@ export const chainCoingeckoIds = {
     twitter: "fogo",
     url: "https://www.fogo.io/",
   },
+  "Adventure Layer": {
+    geckoId: "adventure-gold",
+    symbol: "AGLD",
+    cmcId: "11568",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Berachain",
+      types: ["L2"],
+    },
+    twitter: "AdventureLayer",
+    url: "https://adventurelayer.xyz/",
+    dimensions: {
+      fees: "adventure-layer",
+    },
+  },
+  "AlienX": {
+    geckoId: "alienxchain",
+    symbol: "AIX",
+    cmcId: "33598",
+    categories: ["EVM", "Arbitrum Orbit"],
+    twitter: "ALIENXchain",
+    url: "https://alienxchain.io/home",
+    dimensions: {
+      fees: "alienx",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

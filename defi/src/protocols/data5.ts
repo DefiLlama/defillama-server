@@ -5871,5 +5871,28 @@ const data5: Protocol[] = [
     twitter: "ValiantTrade",
     listedAt: 1765544171
   },
+  {
+    id: "7133",
+    name: "Tristero",
+    address: null,
+    symbol: "-",
+    url: "https://www.tristero.com/",
+    description: "Tristero is an encrypted DEX that provides swaps between any two assets on any two chains",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/tristero.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Arbitrum"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "0xtristero",
+    audit_links: [],
+    dimensions: {
+      dexs: "tristero",
+    },
+  },
 ];
 export default data5;

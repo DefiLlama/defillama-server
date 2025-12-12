@@ -5864,7 +5864,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Dexs",
     chains: ["Fogo"],
     forkedFromIds: [],
     module: "valiant-trade/index.js",

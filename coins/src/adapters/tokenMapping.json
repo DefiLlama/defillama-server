@@ -10000,6 +10000,16 @@
       "decimals": 6,
       "symbol": "USDG"
     },
+    "0x9f0a74a92287e323eb95c1cd9ecdbeb0e397cae4": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
+    },
     "0x4200000000000000000000000000000000000006": {
       "to": "coingecko#ethereum",
       "decimals": 18,

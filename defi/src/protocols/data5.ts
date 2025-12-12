@@ -4204,7 +4204,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#monday-trade",
     listedAt: 1764300387,
     dimensions: {
-      fees: "monday-trade-perp",
+      derivatives: "monday-trade-perp",
     },
   },
   {

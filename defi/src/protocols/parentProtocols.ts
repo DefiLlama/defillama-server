@@ -4642,15 +4642,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#bitswap-bb",
-    name: "BitSwap BB",
-    url: "https://app.bouncebit.io/club/1",
+    name: "BounceBit Swap",
+    url: "https://portal.bouncebit.io/trade/swap",
     description:
       "The Native BounceBit Swap for BTC L2 assets, built on bounce_bit",
-    logo: `${baseIconsUrl}/bitswap-bb.jpg`,
+    logo: `${baseIconsUrl}/bouncebit.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "BitSwap_xyz",
+    twitter: "bouncebit",
   },
   {
     id: "parent#verylongswap",

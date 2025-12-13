@@ -228,7 +228,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#frax-finance",
     name: "Frax Finance",
-    url: "https://frax.finance/",
+    url: "https://frax.com/",
     description:
       "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",
     logo: `${baseIconsUrl}/frax finance.png`,
@@ -488,7 +488,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#uniswap",
     name: "Uniswap",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description:
       "Swap, earn, and build on the leading decentralized crypto trading protocol.",
     logo: `${baseIconsUrl}/uniswap.png`,
@@ -5593,7 +5593,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#superstate",
     name: "Superstate",
-    url: "https://superstate.co",
+    url: "https://superstate.com/",
     description:
       "The Superstate Crypto Carry Fund (the “Fund”) offers Qualified Purchasers access to crypto basis (differential between the spot and future price) strategies. The Fund optimizes the yield and risk of crypto cash-and-carry trades across the Bitcoin basis, Ether basis (including staking Ether), and U.S. Treasury securities. ",
     logo: `${baseIconsUrl}/superstate.jpg`,
@@ -5947,7 +5947,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#fluid",
     name: "Fluid",
-    url: "https://fluid.instadapp.io",
+    url: "https://fluid.io/",
     description:
       "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
     logo: `${baseIconsUrl}/fluid.png`,

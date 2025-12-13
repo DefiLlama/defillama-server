@@ -54166,6 +54166,9 @@ const data3_3: Protocol[] = [
     github: ["lindy-labs"],
     stablecoins: ["opus-cash"],
     listedAt: 1723632546,
+    dimensions: {
+      fees: "opus"
+    }
   },
   {
     id: "4988",
@@ -60492,7 +60495,7 @@ const data3_3: Protocol[] = [
     name: "Capybara Perps",
     address: null,
     symbol: "-",
-    url: "https://app.oxiswap.com",
+    url: "https://perp.capybara.exchange/",
     description: "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
     chain: "Klaytn",
     logo: `${baseIconsUrl}/capybara-perps.jpg`,
@@ -60507,9 +60510,9 @@ const data3_3: Protocol[] = [
     twitter: "CapybaraDEX",
     parentProtocol: "parent#capybara-exchange",
     listedAt: 1729608442,
-    deadUrl: true,
     dimensions: {
-      derivatives: "capybara-perp"
+      derivatives: "capybara-perp",
+      "open-interest": "capybara-perp"
     }
   },
   {

@@ -3090,6 +3090,11 @@ const data5: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1763667147,
+    dimensions: {
+      derivatives: "antarctic",
+      fees: "antarctic",
+      "open-interest": "antarctic",
+    },
   },
   {
     id: "7017",

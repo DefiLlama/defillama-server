@@ -30015,7 +30015,10 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://docs.falcon.finance/resources/audits#smart-contract-audits"],
     stablecoins: ["falcon-usd"],
-    listedAt: 1759263444
+    listedAt: 1759263444,
+    dimensions: {
+      fees: "falcon-finance"
+    }
   },
   {
     id: "6791",

@@ -3274,6 +3274,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "okx",
     url: "https://www.okx.com/xlayer",
+    dimensions: {
+      fees: "xlayer",
+    },
   },
   "LaChain Network": {
     geckoId: "la-coin",

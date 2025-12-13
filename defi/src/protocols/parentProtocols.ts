@@ -4646,7 +4646,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://portal.bouncebit.io/trade/swap",
     description:
       "The Native BounceBit Swap for BTC L2 assets, built on bounce_bit",
-    logo: `${baseIconsUrl}/bouncebit.jpg`,
+    logo: `${baseIconsUrl}/bouncebit-swap.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

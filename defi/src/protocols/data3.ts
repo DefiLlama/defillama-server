@@ -32531,7 +32531,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "jupiter-perpetual",
       derivatives: "jupiter-perpetual",
-      "open-interest": "jupiter-perpetual"
+      //"open-interest": "jupiter-perpetual"
     }
   },
   {

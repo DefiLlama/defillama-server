@@ -30115,7 +30115,7 @@ const data4: Protocol[] = [
     name: "Kinetiq Earn",
     address: null,
     symbol: "-",
-    url: "https://xtrade.gg/",
+    url: "https://kinetiq.xyz/stake-hype#kinetiq-earn",
     description: "Kinetiq Earn puts your HYPE and kHYPE to work across leading DeFi protocols on HyperEVM, optimizing for the best risk-adjusted returns. Powered by Veda.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kinetiq-earn.jpg`,

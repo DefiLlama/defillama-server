@@ -27992,6 +27992,9 @@ const data4: Protocol[] = [
     twitter: "Theo_Network",
     parentProtocol: "parent#theo",
     listedAt: 1757469154,
+    dimensions: {
+      fees: "theo"
+    }
   },
   {
     id: "6703",

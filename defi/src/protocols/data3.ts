@@ -40599,6 +40599,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://docs.river.inc/outro/audit-reports"],
     parentProtocol: "parent#river-inc",
     listedAt: 1711912377,
+    dimensions: {
+      fees: "river"
+    }
   },
   {
     id: "4412",

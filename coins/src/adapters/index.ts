@@ -182,4 +182,5 @@ export default {
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
+  jackson: require("./Jackson"),
 };

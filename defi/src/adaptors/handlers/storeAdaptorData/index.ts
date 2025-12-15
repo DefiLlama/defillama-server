@@ -470,11 +470,15 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
 
           if (newSlices.length) {
-            await upsertHourlySlicesForProtocol({
-              adapterType,
-              id: id2,
-              slices: newSlices,
-            })
+            if (!isDryRun) {
+              await upsertHourlySlicesForProtocol({
+                adapterType,
+                id: id2,
+                slices: newSlices,
+              })
+            } else {
+              console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlices.length} slices)`)
+            }
           }
         }
 
@@ -674,6 +678,25 @@ export const handler2 = async (options: DimensionRunOptions) => {
       }
 
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
+
+      if (adapterRecord && isDryRun) {
+        const pgItem = adapterRecord.getPGItem()
+        const ddbItem = adapterRecord.getDDBItem()
+
+        responseObject.debug = {
+          adapterType,
+          module,
+          id: adapterRecord.id,
+          timeS: adapterRecord.timeS,
+          recordTimestamp,
+          pgItem,
+          ddbItem,
+          aggregated: adaptorRecordV2JSON.aggregated,
+          breakdownByLabel: adaptorRecordV2JSON.breakdownByLabel,
+          breakdownByLabelByChain: adaptorRecordV2JSON.breakdownByLabelByChain,
+          tokenBreakdown: breakdownByToken,
+        }
+      }
 
       async function storeTokenBreakdownData() {
         if (!adapterRecord || !breakdownByToken) return;

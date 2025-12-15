@@ -201,12 +201,19 @@ export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestam
       id,
       timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
     },
-    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc'],
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb'],
     raw: true,
     order: [['timestamp', 'ASC']],
   })
 
-  return rows.map(transform)
+  return rows.map((row) => {
+    const mapped = {
+      ...row,
+      tokenBreakdown: (row as any).tb ?? undefined,
+    }
+    delete (mapped as any).tb
+    return transform(mapped)
+  })
 }
 
 export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }: { adapterType: AdapterType, id: string, slices: { timestamp: number, data: any, bl?: any, blc?: any, timeS?: string, tokenBreakdown?: any }[] }) {
@@ -220,11 +227,12 @@ export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }:
     data: slice.data,
     bl: slice.bl ?? null,
     blc: slice.blc ?? null,
+    tb: slice.tokenBreakdown ?? null,
     timeS: slice.timeS ?? getHourlyTimeS(slice.timestamp),
   }))
 
   await Tables.DIMENSIONS_HOURLY_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc'],
+    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb'],
   })
 
   const tokenSlices = slices.filter(s => s.tokenBreakdown)

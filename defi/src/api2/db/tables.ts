@@ -162,6 +162,11 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       allowNull: true,
       defaultValue: null,
     },
+    tb: { // Token breakdown (usdTvl + usdTokenBalances + rawTokenBalances)
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
     timeS: {
       type: DataTypes.STRING,
       primaryKey: true,

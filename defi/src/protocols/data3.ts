@@ -51255,6 +51255,9 @@ const data3_3: Protocol[] = [
     module: "tether-gold/index.js",
     twitter: "tethergold",
     listedAt: 1720549029,
+    dimensions: {
+      fees: "tether-gold"
+    }
   },
   {
     id: "4864",

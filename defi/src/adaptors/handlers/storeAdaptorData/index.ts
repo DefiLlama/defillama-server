@@ -1,15 +1,15 @@
-import { AdapterType, SimpleAdapter, } from "../../data/types"
+import { AdapterType, SimpleAdapter } from "../../data/types"
 import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
-import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { Chain, providers } from "@defillama/sdk/build/general";
 import { PromisePool } from '@supercharge/promise-pool';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import loadAdaptorsData from "../../data";
-import { IJSON, ProtocolAdaptor, } from "../../data/types";
-import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
-import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
+import { IJSON, ProtocolAdaptor } from "../../data/types";
+import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
+import { getAllItemsAfter, storeAdapterRecord, getHourlySlicesForProtocol, upsertHourlySlicesForProtocol } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
@@ -44,10 +44,11 @@ export type DimensionRunOptions = {
   maxRunTime?: number // in milliseconds
   onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
   deadChains?: Set<string>
+  skipHourlyCache?: boolean
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
-
+const ONE_HOUR_IN_SECONDS = 60 * 60
 
 const humanizeDuration = (ms: number) => {
   const totalSeconds = Math.floor(ms / 1000)
@@ -65,9 +66,22 @@ const humanizeDuration = (ms: number) => {
 
 export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
-  let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
-    runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false, deadChains,
+  let {
+    timestamp = timestampAtStartofHour,
+    adapterType,
+    protocolNames,
+    maxConcurrency = defaultMaxConcurrency,
+    isDryRun = false,
+    isRunFromRefillScript = false,
+    runType = 'default',
+    yesterdayIdSet = new Set(),
+    todayIdSet = new Set(),
+    throwError = false,
+    checkBeforeInsert = false,
+    maxRunTime,
+    onlyYesterday = false,
+    deadChains,
+    skipHourlyCache = false,
   } = options
 
   if (!isRunFromRefillScript)
@@ -265,6 +279,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
       const adapterVersion = adaptor.version
       const isAdapterVersionV1 = adapterVersion === 1
+      const isHourlyAdapter = !isAdapterVersionV1 && (adaptor as any).pullHourly === true
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
       const blacklistedRefillAllChains = new Set([
@@ -377,15 +392,246 @@ export const handler2 = async (options: DimensionRunOptions) => {
       if (onlyYesterday)  // we should never reach this point if we are only refilling yesterday
         return refillYesterdayPromise
 
-
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+      let adaptorRecordV2JSON: any
+      let breakdownByToken: any
 
-      // dynamically import runAdapter so we import it only if needed and after the repo is setup
-      const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default
+      if (isHourlyAdapter && runType === 'store-all' && !isRunFromRefillScript) {
+        const anchorTs = endTimestamp       // anchor
+        const fromTs = anchorTs - 23 * ONE_HOUR_IN_SECONDS
 
-      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all', deadChains, },) as any
-      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
+        let existingSlices: any[] = []
+        if (!skipHourlyCache) {
+          existingSlices = await getHourlySlicesForProtocol({
+            adapterType,
+            id: id2,
+            fromTimestamp: fromTs,
+            toTimestamp: anchorTs,
+          })
+        } else {
+          console.log(`[hourly] skipHourlyCache=true for ${adapterType} - ${module}, ignoring existing slices`)
+        }
 
+        const existingByTs = new Map<number, any>()
+        existingSlices.forEach((row: any) => {
+          if (typeof row.timestamp === 'number')
+            existingByTs.set(row.timestamp, row)
+        })
+
+        const targetTimestamps: number[] = []
+        for (let i = 23; i >= 0; i--) {
+          const ts = anchorTs - i * ONE_HOUR_IN_SECONDS
+          targetTimestamps.push(ts)
+        }
+
+        const slicesToFetch: number[] = []
+        for (const ts of targetTimestamps) {
+          if (!existingByTs.has(ts)) slicesToFetch.push(ts)
+        }
+
+        const newSlices: {
+          timestamp: number
+          data: any
+          bl?: any
+          blc?: any
+          timeS?: string
+          tokenBreakdown?: any
+        }[] = []
+
+        if (slicesToFetch.length) {
+          const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
+
+          for (const ts of slicesToFetch) {
+            console.log(`[hourly] Fetching missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+            const res: any = await runAdapter({
+              module: adaptor,
+              endTimestamp: ts,
+              name: module,
+              withMetadata: true,
+              cacheResults: false,
+              deadChains,
+            })
+
+            const sliceRecord = res.adaptorRecordV2JSON as any
+            const sliceBreakdownByToken = res.breakdownByToken
+
+            if (!sliceRecord || !sliceRecord.aggregated || Object.keys(sliceRecord.aggregated).length === 0) {
+              console.log(`[hourly] No data found for slice ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+              continue;
+            }
+
+            newSlices.push({
+              timestamp: ts,
+              data: sliceRecord.aggregated,
+              bl: sliceRecord.breakdownByLabel ?? null,
+              blc: sliceRecord.breakdownByLabelByChain ?? null,
+              tokenBreakdown: sliceBreakdownByToken,
+            })
+          }
+
+          if (newSlices.length) {
+            await upsertHourlySlicesForProtocol({
+              adapterType,
+              id: id2,
+              slices: newSlices,
+            })
+          }
+        }
+
+        const newByTs = new Map<number, any>()
+        newSlices.forEach(s => newByTs.set(s.timestamp, s))
+
+        const fullSlices: {
+          timestamp: number,
+          data: any,
+          bl?: any,
+          blc?: any,
+          tokenBreakdown?: any,
+        }[] = []
+
+        // accumulate daily label breakdown + token breakdown
+        const aggregatedDaily: any = {}
+        const dailyBreakdownByLabel: any = {}
+        const dailyBreakdownByLabelByChain: any = {}
+        const dailyTokenBreakdown: any = {}
+
+        for (const ts of targetTimestamps) {
+          const slice = newByTs.get(ts) || existingByTs.get(ts)
+          if (!slice) {
+            throw new Error(
+              `[hourly] Missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} even after refill`
+            )
+          }
+
+          const sliceBl = (slice as any).bl ?? null
+          const sliceBlc = (slice as any).blc ?? null
+          const sliceToken = (slice as any).tokenBreakdown
+
+          fullSlices.push({
+            timestamp: slice.timestamp,
+            data: slice.data,
+            bl: sliceBl,
+            blc: sliceBlc,
+            tokenBreakdown: sliceToken,
+          })
+
+          // ---- daily breakdownByLabel ----
+          if (sliceBl && typeof sliceBl === 'object') {
+            for (const [metric, labelsAny] of Object.entries(sliceBl as any)) {
+              const labels = labelsAny as Record<string, number>
+              if (!dailyBreakdownByLabel[metric]) dailyBreakdownByLabel[metric] = {}
+              const metricDst = dailyBreakdownByLabel[metric]
+              for (const [label, value] of Object.entries(labels)) {
+                metricDst[label] = (metricDst[label] || 0) + (value as number)
+              }
+            }
+          }
+
+          // ---- daily breakdownByLabelByChain ----
+          if (sliceBlc && typeof sliceBlc === 'object') {
+            for (const [metric, labelsAny] of Object.entries(sliceBlc as any)) {
+              const labels = labelsAny as Record<string, Record<string, number>>
+              if (!dailyBreakdownByLabelByChain[metric]) dailyBreakdownByLabelByChain[metric] = {}
+              const metricDst = dailyBreakdownByLabelByChain[metric]
+              for (const [label, chainsAny] of Object.entries(labels)) {
+                const chains = chainsAny as Record<string, number>
+                if (!metricDst[label]) metricDst[label] = {}
+                const labelDst = metricDst[label]
+                for (const [chain, value] of Object.entries(chains)) {
+                  labelDst[chain] = (labelDst[chain] || 0) + (value as number)
+                }
+              }
+            }
+          }
+
+          // ---- daily token breakdown (usd + raw) ----
+          if (sliceToken && typeof sliceToken === 'object') {
+            // shape: { [chain]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } }
+            for (const [chain, metricsAny] of Object.entries(sliceToken as any)) {
+              const metrics = metricsAny as any
+              if (!dailyTokenBreakdown[chain]) dailyTokenBreakdown[chain] = {}
+              const chainDst = dailyTokenBreakdown[chain]
+
+              for (const [metric, tokenInfoAny] of Object.entries(metrics)) {
+                const tokenInfo = tokenInfoAny as any
+                if (!tokenInfo || typeof tokenInfo !== 'object') continue
+
+                if (!chainDst[metric]) {
+                  chainDst[metric] = {
+                    usdTvl: 0,
+                    usdTokenBalances: {} as Record<string, number>,
+                    rawTokenBalances: {} as Record<string, string | number>,
+                  }
+                }
+                const dst = chainDst[metric]
+
+                if (typeof tokenInfo.usdTvl === 'number')
+                  dst.usdTvl += tokenInfo.usdTvl
+
+                if (tokenInfo.usdTokenBalances && typeof tokenInfo.usdTokenBalances === 'object') {
+                  for (const [token, usd] of Object.entries(tokenInfo.usdTokenBalances as Record<string, number>)) {
+                    dst.usdTokenBalances[token] = (dst.usdTokenBalances[token] || 0) + (usd as number)
+                  }
+                }
+
+                if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
+                  for (const [token, raw] of Object.entries(tokenInfo.rawTokenBalances as Record<string, string | number>)) {
+                    const prev = dst.rawTokenBalances[token]
+                    if (prev === undefined) {
+                      dst.rawTokenBalances[token] = raw as any
+                    } else {
+                      if (typeof prev === 'number' && typeof raw === 'number') {
+                        dst.rawTokenBalances[token] = prev + raw
+                      } else {
+                        dst.rawTokenBalances[token] = raw as any
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        for (const slice of fullSlices) {
+          const agg = slice.data || {}
+          for (const [metric, metricDataAny] of Object.entries(agg)) {
+            const metricData = metricDataAny as any
+            if (!aggregatedDaily[metric]) aggregatedDaily[metric] = { value: 0, chains: {} as any }
+            aggregatedDaily[metric].value += metricData.value || 0
+            if (metricData.chains) {
+              for (const [chain, val] of Object.entries(metricData.chains)) {
+                aggregatedDaily[metric].chains[chain] = (aggregatedDaily[metric].chains[chain] || 0) + (val as number)
+              }
+            }
+          }
+        }
+
+        adaptorRecordV2JSON = {
+          aggregated: aggregatedDaily,
+          breakdownByLabel: Object.keys(dailyBreakdownByLabel).length ? dailyBreakdownByLabel : undefined,
+          breakdownByLabelByChain: Object.keys(dailyBreakdownByLabelByChain).length ? dailyBreakdownByLabelByChain : undefined,
+          timestamp: recordTimestamp,
+        }
+
+        breakdownByToken = Object.keys(dailyTokenBreakdown).length ? dailyTokenBreakdown : undefined
+
+      } else {
+        const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
+
+        const res: any = await runAdapter({
+          module: adaptor,
+          endTimestamp,
+          name: module,
+          withMetadata: true,
+          cacheResults: runType === 'store-all',
+          deadChains,
+        })
+        adaptorRecordV2JSON = res.adaptorRecordV2JSON
+        breakdownByToken = res.breakdownByToken
+      }
+
+      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)
 
       // sort out record timestamp
       const timestampFromResponse = adaptorRecordV2JSON.timestamp
@@ -403,9 +649,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         adaptorRecordV2JSON.timestamp = recordTimestamp
       }
 
-
-
-      if (noDataReturned) noDataReturned = Object.keys(adaptorRecordV2JSON.aggregated).length === 0
+      noDataReturned = !adaptorRecordV2JSON.aggregated || Object.keys(adaptorRecordV2JSON.aggregated).length === 0
 
       if (noDataReturned) {
         const chains = Object.keys(adaptor.adapter || {})
@@ -447,9 +691,23 @@ export const handler2 = async (options: DimensionRunOptions) => {
         // validate against recent data if available
         if (checkAgainstRecentData) {
           const protocolRecentData = recentData[adapterRecord.id]
-          const validationError = adapterRecord.validateWithRecentData({ recentData: protocolRecentData, getSignificantValueThreshold, getSpikeThreshold, skipDefaultSpikeCheck: skipDefaultRecentDataCheckForAdapters.has(adapterRecord.id) })
+          const validationError = adapterRecord.validateWithRecentData({
+            recentData: protocolRecentData,
+            getSignificantValueThreshold,
+            getSpikeThreshold,
+            skipDefaultSpikeCheck: skipDefaultRecentDataCheckForAdapters.has(adapterRecord.id)
+          })
           if (validationError) {
-            sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record', protocolRecentData?.tooFewRecords, protocolRecentData?.hasSignificantData, protocolRecentData?.records?.length, protocolRecentData?.dimStats)
+            sdk.log(
+              '[validation error]',
+              `[${adapterRecord.name}]`,
+              validationError.message,
+              'skipping this record',
+              protocolRecentData?.tooFewRecords,
+              protocolRecentData?.hasSignificantData,
+              protocolRecentData?.records?.length,
+              protocolRecentData?.dimStats
+            )
             await elastic.writeLog('dimension-blocked', validationError)
             return; // skip storing possible invalid data
           }

@@ -164,6 +164,7 @@ export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { ada
 
   return result
 }
+
 export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
   await init()
 
@@ -178,4 +179,77 @@ export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp 
   })
 
   return result
+}
+
+export function getHourlyTimeS(timestamp: number) {
+  const d = new Date(timestamp * 1000)
+  const yyyy = d.getUTCFullYear()
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0')
+  const dd = String(d.getUTCDate()).padStart(2, '0')
+  const hh = String(d.getUTCHours()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd}-${hh}`
+}
+
+export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestamp, toTimestamp, transform = a => a }: { adapterType: AdapterType, id: string, fromTimestamp: number, toTimestamp: number, transform?: (a: any) => any}) {
+  await init()
+
+  if (fromTimestamp < 946684800) fromTimestamp = 946684800 // 2000-01-01
+
+  const rows: any[] = await Tables.DIMENSIONS_HOURLY_DATA.findAll({
+    where: {
+      type: adapterType,
+      id,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  return rows.map(transform)
+}
+
+export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }: { adapterType: AdapterType, id: string, slices: { timestamp: number, data: any, bl?: any, blc?: any, timeS?: string, tokenBreakdown?: any }[] }) {
+  if (!slices?.length) return
+  await init()
+
+  const pgItems = slices.map(slice => ({
+    id,
+    type: adapterType,
+    timestamp: slice.timestamp,
+    data: slice.data,
+    bl: slice.bl ?? null,
+    blc: slice.blc ?? null,
+    timeS: slice.timeS ?? getHourlyTimeS(slice.timestamp),
+  }))
+
+  await Tables.DIMENSIONS_HOURLY_DATA.bulkCreate(pgItems, {
+    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc'],
+  })
+
+  const tokenSlices = slices.filter(s => s.tokenBreakdown)
+  if (!tokenSlices.length) return
+
+  for (const slice of tokenSlices) {
+    const ts = slice.timestamp
+    const timeS = slice.timeS ?? getHourlyTimeS(ts)
+
+    const eventItem: any = {
+      PK: `dimHourlyTokenBreakdown#${adapterType}#${id}`,
+      SK: String(ts),
+      type: adapterType,
+      id,
+      timestamp: ts,
+      timeS,
+      source: 'dimension-adapter',
+      subType: 'token-breakdown-hourly',
+      data: slice.tokenBreakdown, // both usdTokenBalances + rawTokenBalances
+    }
+
+    try {
+      await dynamodb.putEventData(eventItem)
+    } catch (e) {
+      console.error('Error writing hourly token breakdown event to ddb', id, ts, e)
+    }
+  }
 }

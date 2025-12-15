@@ -13521,5 +13521,17 @@
       "decimals": 18,
       "symbol": "GPU"
     }
+  }, 
+  "cross": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#cross-2",
+      "decimals": 18,
+      "symbol": "CROSS"
+    }, 
+    "0x642060e8B44C8f2d6D2974a71a0ca8F995cAfBdA": {
+      "to": "coingecko#cross-2",
+      "decimals": 18,
+      "symbol": "CROSS"
+    }
   }
 }

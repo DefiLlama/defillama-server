@@ -355,7 +355,7 @@ const data5: Protocol[] = [
     name: "Mantle Index Four Fund",
     address: "mantle:0x671642Ac281C760e34251d51bC9eEF27026F3B7a",
     symbol: "MI4",
-    url: "https://www.mantle.xyz/",
+    url: "https://securitize.io/primary-market/mantle-index-four-fund",
     description: `This fund offers diversified exposure to leading cryptocurrencies by tracking a market-cap-weighted index of top Layer 1 and Layer 2 tokens, including assets like BTC, ETH, and SOL. Designed to function as the crypto equivalent of the S&P 500, it allows investors to access broad crypto beta without managing wallets or selecting individual assets. The portfolio is rebalanced quarterly and includes a fixed USD allocation, while the remaining assets are weighted by market cap within set limits. Enhanced yield potential is achieved through the use of staked instruments such as mETH, bbSOL, and sUSDe. Structured for institutional investors, the fund features traditional administration, a 1% management fee, and simplified access to digital assets and stablecoins`,
     chain: "Mantle",
     logo: `${baseIconsUrl}/mantle-index-four-fund.jpg`,

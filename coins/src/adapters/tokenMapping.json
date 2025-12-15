@@ -4101,6 +4101,11 @@
       "to": "coingecko#gate-wrapped-btc",
       "decimals": 8,
       "symbol": "gtBTC"
+    },
+    "9wX6Qz1Y5YQe71dfnFYFfZYXZhKqjYKQwdqfrRkmYUSX": {
+      "to": "coingecko#gmx",
+      "decimals": 9,
+      "symbol": "GMX"
     }
   },
   "ton": {

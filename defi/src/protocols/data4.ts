@@ -23578,6 +23578,9 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Stellar"],
     module: "wisdomtree/index.js",
     forkedFromIds: [],
+    dimensions: {
+      fees: "wisdomtree"
+    }
   },
   {
     id: "6517",

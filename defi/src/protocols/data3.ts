@@ -21132,6 +21132,9 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     github: ["coinbase"],
     listedAt: 1666641682,
+    dimensions: {
+      fees: "cbeth",
+    },
   },
   {
     id: "3595",
@@ -21358,6 +21361,9 @@ const data3_1: Protocol[] = [
     twitter: null,
     forkedFrom: [],
     listedAt: 1696593212,
+    dimensions: {
+      fees: "sdai",
+    },
   },
   {
     id: "3604",
@@ -32557,6 +32563,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
     parentProtocol: "parent#swell",
     listedAt: 1706584385,
+    dimensions: {
+      fees: "swell-restaking"
+    }
   },
   {
     id: "4079",

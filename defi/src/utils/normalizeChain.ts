@@ -3976,6 +3976,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "Duck_Chain",
     url: "https://duckchain.io/",
+    dimensions: {
+      fees: "duck-chain",
+    },
   },
   "Sophon": {
     geckoId: "sophon",

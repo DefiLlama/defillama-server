@@ -4748,6 +4748,10 @@ const data5: Protocol[] = [
     ],
     forkedFromIds: [],
     listedAt: 1764778937,
+    dimensions: {
+      fees: "o2",
+      dexs: "o2",
+    },
   },
   {
     id: "7084",
@@ -5719,6 +5723,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#meteora",
     dimensions: {
       dexs: "polycule",
+      fees: "polycule",
     },
   },
   {

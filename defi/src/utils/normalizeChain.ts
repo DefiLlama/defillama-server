@@ -3130,7 +3130,7 @@ export const chainCoingeckoIds = {
     geckoId: "degen-base",
     symbol: "DEGEN",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Base",
       types: ["L3"],
@@ -5258,10 +5258,29 @@ export const chainCoingeckoIds = {
     symbol: "AIX",
     cmcId: "33598",
     categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"],
+    },
     twitter: "ALIENXchain",
     url: "https://alienxchain.io/home",
     dimensions: {
       fees: "alienx",
+    },
+  },
+  "Deri Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"],
+    },
+    twitter: "DeriProtocol",
+    url: "https://deri.io/#/index",
+    dimensions: {
+      fees: "deri-chain",
     },
   },
 } as unknown as ChainCoinGekcoIds;

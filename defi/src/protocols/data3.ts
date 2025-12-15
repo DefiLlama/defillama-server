@@ -32806,6 +32806,9 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#puffer-finance",
     twitter: "puffer_finance",
     listedAt: 1706793055,
+    dimensions: {
+      fees: "puffer-finance",
+    },
   },
   {
     id: "4089",

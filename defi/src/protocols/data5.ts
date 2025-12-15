@@ -377,6 +377,9 @@ const data5: Protocol[] = [
       },
     ],
     listedAt: 1761284792,
+    dimensions: {
+      fees: "mi4",
+    },
   },
   {
     id: "6908",
@@ -6068,5 +6071,30 @@ const data5: Protocol[] = [
     github: ["kandle-fi"],
     listedAt: 1765831753,
   },
+  {
+    id: "7141",
+    name: "Lighter Spot",
+    address: null,
+    symbol: "-",
+    url: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
+    referralUrl: "https://app.lighter.xyz/trade/ETH?referral=FHT1N8AYKHP4",
+    description:
+      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
+    chain: "zkLighter",
+    logo: `${baseIconsUrl}/lighter-spot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["zkLighter"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Lighter_xyz",
+    parentProtocol: "parent#lighter",
+    dimensions: {
+      dexs: "lighter-spot",
+    }
+  }
 ];
 export default data5;

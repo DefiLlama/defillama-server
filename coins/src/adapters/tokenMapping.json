@@ -13514,5 +13514,12 @@
       "symbol": "WGRX",
       "to": "coingecko#grx-chain"
     }
+  }, 
+  "gan": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#gpunet",
+      "decimals": 18,
+      "symbol": "GPU"
+    }
   }
 }

@@ -33848,6 +33848,9 @@ const data3_1: Protocol[] = [
     twitter: "edgevana",
     audit_links: ["https://spl.solana.com/stake-pool#security-audits"],
     listedAt: 1707924810,
+    dimensions: {
+      fees: "edgevana"
+    }
   },
   {
     id: "4130",

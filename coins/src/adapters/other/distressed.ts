@@ -231,6 +231,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
     SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
+    BITZ: "0x9C6605eEB66bd05858E0cB5204432aA6c7d0fA24", 
+    PLAY: '0x1CCA311B786Dd7906c07414095FA719Eabfd070f'
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",

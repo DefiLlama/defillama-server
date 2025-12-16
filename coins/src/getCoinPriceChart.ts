@@ -101,6 +101,7 @@ async function fetchDBData(
   coins.map(async (coin) => {
     promises.push(
       ...timestamps.map(async (timestamp) => {
+        const isDistressed = coin.distressedFrom && coin.distressedFrom < timestamp ? true : false;
         const finalCoin: any = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
@@ -115,12 +116,12 @@ async function fetchDBData(
               symbol: coin.symbol,
               confidence: coin.confidence,
               decimals: coin.decimals,
-              prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
+              prices: [{ timestamp: finalCoin.SK, price: isDistressed ? 0 : finalCoin.price }],
             };
           } else {
             response[coinName].prices.push({
               timestamp: finalCoin.SK,
-              price: finalCoin.price,
+              price: isDistressed ? 0 : finalCoin.price,
             });
           }
         });

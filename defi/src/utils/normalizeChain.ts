@@ -5298,6 +5298,21 @@ export const chainCoingeckoIds = {
     url: "https://www.ogfcorp.com/",
     chainId: 612055,
   },
+  "Earnm": {
+    geckoId: "earnm",
+    symbol: "EARNM",
+    cmcId: "21158",
+    categories: ["EVM", "Arbitrum Orbit", "Rollup"],
+    twitter: "EARNMrewards",
+    url: "https://max.earnm.com/",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    dimensions: {
+      fees: "earnm",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

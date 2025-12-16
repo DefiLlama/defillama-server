@@ -5723,7 +5723,6 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "pmx_trade",
     audit_links: [],
-    parentProtocol: "parent#meteora",
     dimensions: {
       dexs: "polycule",
       fees: "polycule",

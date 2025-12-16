@@ -32,6 +32,7 @@ export interface DbEntry {
   decimals: number;
   symbol: string;
   confidence: number;
+  distressedFrom?: number;
 }
 export interface CgEntry {
   PK: string;

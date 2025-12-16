@@ -377,6 +377,7 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
 
       let price =
         r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price;
+      if (r.dbEntry.distressedFrom && r.dbEntry.distressedFrom < r.dbEntry.SK) price = 0;
       if (price == undefined) price = -1;
 
       const confidence =

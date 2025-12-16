@@ -6132,7 +6132,7 @@ const data5: Protocol[] = [
     category: "Developer Tools",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "KandleFi",
+    twitter: null,
     forkedFromIds: [],
   },
 ];

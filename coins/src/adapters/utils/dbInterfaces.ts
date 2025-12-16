@@ -17,7 +17,8 @@ export interface Write {
   confidence: number;
   timestamp?: number;
   mcap?: number;
-  volume?: number
+  volume?: number;
+  distressedFrom?: number;
 }
 export interface DbQuery {
   PK: string;

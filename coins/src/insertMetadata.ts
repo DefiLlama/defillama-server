@@ -12,7 +12,7 @@ import { coinToPK } from "./utils/processCoin";
 
 const validKeys = [
   "symbol",
-  "isDistressed",
+  "distressedFrom",
   "confidence",
   "decimals",
   "redirect",
@@ -23,9 +23,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const body: { [key: string]: any } = {};
   Object.keys(stringBody).forEach((key) => {
-    if (stringBody[key] == "true") body[key] = true;
-    else if (stringBody[key] == "false") body[key] = false;
-    else if (!isNaN(Number(stringBody[key])))
+    if (!isNaN(Number(stringBody[key])))
       body[key] = Number(stringBody[key]);
     else body[key] = stringBody[key];
   });

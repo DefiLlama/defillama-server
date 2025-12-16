@@ -1826,6 +1826,13 @@ const data5: Protocol[] = [
     module: "dipcoin-perps/index.js",
     forkedFrom: [],
     audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://dipcoin-doc.gitbook.io/dipcoin/perpetual-trading/oracle-price"],
+      },
+    ],
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
@@ -3265,6 +3272,13 @@ const data5: Protocol[] = [
     twitter: "altaiexchange",
     forkedFrom: [],
     audit_links: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://altai.gitbook.io/docs"],
+      },
+    ],
     github: ["AltaiExchange"],
     listedAt: 1763830355,
   },
@@ -4520,6 +4534,13 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-NarwhalCasino-v1.0.pdf",
+    ],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://narwhal-finance.gitbook.io/nar.bet/casino/provable-fair/pyth-network-entropy"],
+      },
     ],
     dimensions: {
       fees: "narbet",

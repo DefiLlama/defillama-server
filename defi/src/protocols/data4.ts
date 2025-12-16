@@ -27974,6 +27974,13 @@ const data4: Protocol[] = [
       "https://github.com/EXVUL-Sec/AuditReport/blob/main/Smartcontract/Artura%20Audit%20Report-Exvul.pdf",
       "https://github.com/FydeTreasury/Artura/blob/main/Artura%20Analysis%20w%20Addendum.pdf"
     ],
+    oraclesBreakdown: [
+          {
+            name: "Pyth",
+            type: "Primary",
+            proof: ["https://docs.artura.finance/ecosystem/partners"],
+          },
+        ],
     listedAt: 1757445267,
   },
   {

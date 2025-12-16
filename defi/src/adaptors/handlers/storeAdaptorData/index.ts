@@ -785,7 +785,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
         tokenBreakdownByLabel = res.tokenBreakdownByLabel
         tokenBreakdownByLabelByChain = res.tokenBreakdownByLabelByChain
 
-        // Retro-compatible: only add if missing and we have tokenBreakdown + bl/blc
         if (breakdownByToken && (!tokenBreakdownByLabel || !tokenBreakdownByLabelByChain)) {
           const built = buildTokenBreakdownsByLabel({
             tokenBreakdown: breakdownByToken,
@@ -1153,10 +1152,8 @@ function buildTokenBreakdownsByLabel(params: {
   const tbl: any = {}
   const tblc: any = {}
 
-  // weightsByMetricChain: metric -> chainKey -> label -> value
   const weightsByMetricChain: Record<string, Record<string, Record<string, number>>> = {}
 
-  // Prefer blc (metric -> label -> chain -> value)
   if (breakdownByLabelByChain && typeof breakdownByLabelByChain === 'object') {
     for (const [metric, labelsAny] of Object.entries(breakdownByLabelByChain)) {
       const labels = labelsAny as any
@@ -1176,7 +1173,6 @@ function buildTokenBreakdownsByLabel(params: {
       }
     }
   } else if (breakdownByLabel && typeof breakdownByLabel === 'object') {
-    // Fallback bl (metric -> label -> value), apply same weights to any chain ("*")
     for (const [metric, labelsAny] of Object.entries(breakdownByLabel)) {
       const labels = labelsAny as any
       if (!labels || typeof labels !== 'object') continue
@@ -1215,7 +1211,6 @@ function buildTokenBreakdownsByLabel(params: {
       dst.rawTokenBalances[token] = prev + raw
       return
     }
-    // Preserve format: last write wins for non-number
     dst.rawTokenBalances[token] = raw
   }
 
@@ -1245,7 +1240,6 @@ function buildTokenBreakdownsByLabel(params: {
     return bestLabel
   }
 
-  // Iterate tokenBreakdown: chain -> metric -> TokenInfo
   for (const [chain, metricsAny] of Object.entries(tokenBreakdown)) {
     const metrics = metricsAny as any
     if (!metrics || typeof metrics !== 'object') continue
@@ -1269,16 +1263,12 @@ function buildTokenBreakdownsByLabel(params: {
       const sum = entries.reduce((acc, [, w]) => acc + w, 0)
       if (!sum) continue
 
-      // 1) USD allocations (proportional)
       for (const [label, w] of entries) {
         const factor = w / sum
         addUsdTokenInfo(ensureTbl(label, metric), tokenInfo, factor)
         addUsdTokenInfo(ensureTblc(label, String(chain), metric), tokenInfo, factor)
       }
 
-      // 2) RAW allocations:
-      //    - if number: proportional
-      //    - else: assign to dominant label to preserve format w/o duplicating
       if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
         const dominantLabel = getDominantLabel(entries)
 

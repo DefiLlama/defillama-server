@@ -92,7 +92,7 @@ export default async function bridge(): Promise<Token[]> {
         from: `fraxtal:${token}`,
         to: `ethereum:${l1Tokens[idx]}`,
         symbol: symbols[idx],
-        decimals: decimals[idx],
+        decimals: Number(decimals[idx]),
       });
     });
   const response =  [tokens]

@@ -4761,7 +4761,7 @@ const data5: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: null,
-    cmcId: "32920",
+    cmcId: null,
     category: "Dexs",
     chains: ["Fuel"],
     module: "o2/index.js", 

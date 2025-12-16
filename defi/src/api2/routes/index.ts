@@ -20,7 +20,7 @@ import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -136,9 +136,24 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/activeUsers", defaultFileHandler)
 
-  router.get("/v2/metrics/:type/overview", getOverviewFileRoute)
-  router.get("/v2/metrics/:type/overview/:chain", getOverviewFileRoute)
-  router.get("/v2/metrics/:type/protocol/:name", getDimensionProtocolFileRoute)  // this includes special route financial statement
+
+
+  // v2
+
+  router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
+  router.get("/v2/chart/:type", ew(getDimensionOverviewRoutes('chart')))
+  router.get("/v2/chart/:type/chain-breakdown", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol-breakdown", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
+
+  router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
+  router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
+  router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+
+  // this includes special route financial statement
+  router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
+  router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
+  router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
 
 
   /* 

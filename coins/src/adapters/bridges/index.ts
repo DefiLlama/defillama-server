@@ -234,7 +234,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       writes.push({
         PK: `asset#${token.from}`,
         SK: 0,
-        created: getCurrentUnixTimestamp(),
+        timestamp: getCurrentUnixTimestamp(),
         decimals,
         symbol,
         redirect: finalPK,

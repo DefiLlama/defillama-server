@@ -251,7 +251,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             const platformData: any = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
             if (platformData && platformData?.confidence > 0.99) return;
 
-            const created = getCurrentUnixTimestamp();
+            const timestamp = getCurrentUnixTimestamp();
             const address = PK.substring(PK.indexOf(":") + 1);
             let { decimals, symbol } = platformData as any
             if (decimals == undefined || symbol == undefined) {
@@ -268,7 +268,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             const item = {
               PK: normalizedPK,
               SK: 0,
-              created,
+              timestamp,
               decimals: Number(decimals),
               symbol,
               redirect: cgPK(coin.id),

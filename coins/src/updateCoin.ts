@@ -1,5 +1,4 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { batchWrite } from "./utils/shared/dynamodb";
 import {
   CoinsResponse,
   fetchCgPriceData,
@@ -10,6 +9,7 @@ import { setTimer } from "./utils/shared/coingeckoLocks";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { quantisePeriod } from "./utils/timestampUtils";
+import { insertCoins } from "./utils/unifiedInserts";
 
 type Coin = {
   PK: string;
@@ -196,7 +196,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   // store fresh data
   await Promise.all([
-    batchWrite(writes, false),
+    insertCoins(writes),
     storeR2JSONString("updated-coins", JSON.stringify(bulk)),
   ]);
 

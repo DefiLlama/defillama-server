@@ -1,7 +1,7 @@
 require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
+import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
 import {
   Write,
@@ -15,10 +15,10 @@ import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { insertCoins } from "../../utils/unifiedInserts";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -418,8 +418,8 @@ export async function batchWriteWithAlerts(
     const filteredItems: any[] =
       await checkMovement(items, previousItems);
     const writeItems = [...filteredItems, ...redirectChanges]
-    await batchWrite(writeItems, failOnError);
-    await produceKafkaTopics(writeItems as any[]);
+
+    await insertCoins(writeItems, { failOnError });
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;
     console.log(`batchWriteWithAlerts failed with: ${e}`);

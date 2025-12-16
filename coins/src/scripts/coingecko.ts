@@ -1,5 +1,5 @@
 import { setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
+import { batchGet, DELETE } from "../utils/shared/dynamodb";
 import {
   Coin,
   CoinMetadata,
@@ -11,7 +11,6 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
-import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
   fetchCgPriceData,
   retryCoingeckoRequest,
@@ -20,6 +19,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
+import { insertCoins } from "../utils/unifiedInserts";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -59,15 +59,7 @@ async function storeCoinData(coinData: Write[]) {
       adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
-  await Promise.all([
-    produceKafkaTopics(
-      items.map((i) => {
-        const { volume, ...rest } = i;
-        return ({ decimals: 0, ...rest } as Dynamo)
-      }),
-    ),
-    batchWrite(items, false),
-  ]);
+  await insertCoins(items);
 }
 
 async function storeHistoricalCoinData(coinData: Write[]) {
@@ -77,18 +69,10 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     price: c.price,
     confidence: c.confidence,
     volume: c.volume,
+    adapter: 'coingecko', 
   }));
-  await Promise.all([
-    produceKafkaTopics(
-      items.map((i) => ({
-        adapter: "coingecko",
-        timestamp: i.SK,
-        ...i,
-      })) as Dynamo[],
-      ["coins-timeseries"],
-    ),
-    batchWrite(items, false),
-  ]);
+
+  await insertCoins(items, { topics: ["coins-timeseries"] });
 }
 
 const aggregatedPlatforms: string[] = [];
@@ -131,7 +115,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         SK: 0,
       })),
     )
-  ).filter((c) => !c.adapter && c.confidence == 0.99);
+  ).filter((c) => c.adapter == 'coingecko');
 
   const deleteStaleKeysPromise = DELETE(
     staleEntries.map((e) => ({
@@ -245,7 +229,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
   });
 
-  const kafkaItems: any[] = [];
+  const items: any[] = [];
   await Promise.all(
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
@@ -291,8 +275,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               confidence: 0.99,
               adapter: 'coingecko'
             };
-            kafkaItems.push(item);
-            await ddb.put(item);
+
+            items.push(item);
           } catch (e) {
             console.error(
               `[scripts - getAndStoreCoins] Error storing platform data for ${coin.id} on ${PK}`,
@@ -306,13 +290,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
   );
 
-  await Promise.all([
-    produceKafkaTopics(
-      kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
-      ["coins-metadata"],
-    ),
-    deleteStaleKeysPromise,
-  ]);
+  await insertCoins(items, { topics: ["coins-metadata"] });
+  await deleteStaleKeysPromise;
 }
 
 const HOUR = 3600;
@@ -361,15 +340,7 @@ async function getAndStoreHourly(
       confidence: 0.99,
     }));
 
-  await Promise.all([
-    produceKafkaTopics(
-      items.map(
-        (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
-        ["coins-timeseries"],
-      ),
-    ),
-    batchWrite(items, false),
-  ]);
+  await insertCoins(items, { topics: ["coins-timeseries"] });
 }
 
 async function fetchCoingeckoData(
@@ -434,10 +405,10 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
 
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
-        coins.map((coin) => coin.id),
+        coins.map((coin: any) => coin.id),
         coinType,
       );
-      coins = coins.filter((coin) => {
+      coins = coins.filter((coin: any) => {
         const metadata = metadatas[coin.id];
         if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
         if (hourly) {

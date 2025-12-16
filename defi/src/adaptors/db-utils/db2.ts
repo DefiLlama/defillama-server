@@ -201,7 +201,7 @@ export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestam
       id,
       timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
     },
-    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb'],
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
     raw: true,
     order: [['timestamp', 'ASC']],
   })
@@ -210,13 +210,17 @@ export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestam
     const mapped = {
       ...row,
       tokenBreakdown: (row as any).tb ?? undefined,
+      tokenBreakdownByLabel: (row as any).tbl ?? undefined,
+      tokenBreakdownByLabelByChain: (row as any).tblc ?? undefined,
     }
-    delete (mapped as any).tb
+    delete mapped.tb
+    delete mapped.tbl
+    delete mapped.tblc
     return transform(mapped)
   })
 }
 
-export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }: { adapterType: AdapterType, id: string, slices: { timestamp: number, data: any, bl?: any, blc?: any, timeS?: string, tokenBreakdown?: any }[] }) {
+export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }: { adapterType: AdapterType, id: string, slices: { timestamp: number, data: any, bl?: any, blc?: any, timeS?: string, tokenBreakdown?: any, tokenBreakdownByLabel?: any, tokenBreakdownByLabelByChain?: any, }[] }) {
   if (!slices?.length) return
   await init()
 
@@ -228,11 +232,13 @@ export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }:
     bl: slice.bl ?? null,
     blc: slice.blc ?? null,
     tb: slice.tokenBreakdown ?? null,
+    tbl: slice.tokenBreakdownByLabel ?? null,
+    tblc: slice.tokenBreakdownByLabelByChain ?? null,
     timeS: slice.timeS ?? getHourlyTimeS(slice.timestamp),
   }))
 
   await Tables.DIMENSIONS_HOURLY_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb'],
+    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
   })
 
   const tokenSlices = slices.filter(s => s.tokenBreakdown)

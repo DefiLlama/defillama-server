@@ -167,6 +167,16 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       allowNull: true,
       defaultValue: null,
     },
+    tbl: { // Token breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tblc: { // Token breakdown by label and chain
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
     timeS: {
       type: DataTypes.STRING,
       primaryKey: true,

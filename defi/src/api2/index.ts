@@ -23,7 +23,7 @@ async function main() {
     res.append('Access-Control-Allow-Origin', '*');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
 
-    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === process.env.LLAMA_PRO_API_KEY || req.query['llama_pro_key'] === LLAMA_PRO_API_KEY;
+    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === LLAMA_PRO_API_KEY || req.query['x-llama-pro-key'] === LLAMA_PRO_API_KEY;
     // (req as any).isInternalRequest = skipSubPath || req.headers['x-llama-internal-key'] === LLAMA_INTERNAL_API_KEY || req.query['llama_internal_key'] === LLAMA_INTERNAL_API_KEY;
 
     next();

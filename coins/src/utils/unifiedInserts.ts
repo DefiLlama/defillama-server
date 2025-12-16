@@ -1,6 +1,7 @@
 import { batchWrite } from "../utils/shared/dynamodb";
 import produce from "../utils/coins3/produce";
 import { Topic } from "../utils/coins3/jsonValidation";
+import { getBasicCoins } from "./getCoinsUtils";
 
 export async function insertCoins(
   items: any[],
@@ -14,6 +15,15 @@ export async function insertCoins(
       throw new Error("Price or redirect is required");
     if (item.adapter != "coingecko" && !item.decimals)
       throw new Error("Decimals are required for non-coingecko coins");
+  });
+
+  const { coins } = await getBasicCoins(items.map((item) => item.PK));
+  coins.forEach((coin) => {
+    if (coin.distressedFrom) {
+      const item = items.find((item) => item.PK == coin.PK);
+      if (!item) throw new Error("Item not found");
+      item.distressedFrom = coin.distressedFrom;
+    }
   });
 
   await produce(items, topics);

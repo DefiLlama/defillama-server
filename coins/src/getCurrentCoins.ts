@@ -20,16 +20,17 @@ const handler = async (event: any): Promise<IResponse> => {
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
   const response = {} as CoinsResponse;
   const coinsWithRedirect = {} as { [redirect: string]: any[] };
-  coins.forEach((coin) => {
+  coins.forEach((coin) => {    
     if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
       coin.decimals = Number(coin.decimals);
 
     if (coin.redirect === undefined) {
       if (isFresh(coin.timestamp, searchWidth)) {
         PKTransforms[coin.PK].forEach((coinName) => {
+          const price = coin.distressedFrom ? 0 : coin.price;
           response[coinName] = {
             decimals: coin.decimals,
-            price: coin.price,
+            price,
             symbol: coin.symbol.replace(/\0/g, ""),
             timestamp: coin.timestamp,
             confidence: coin.confidence,
@@ -50,14 +51,14 @@ const handler = async (event: any): Promise<IResponse> => {
       coinsWithRedirect[redirectedCoin.PK].forEach((ogCoin) => {
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
           PKTransforms[ogCoin.PK].forEach((coin) => {
-
+            const price = ogCoin.distressedFrom ? 0 : redirectedCoin.price;
             if (typeof ogCoin.decimals === 'string' && !isNaN(Number(ogCoin.decimals)))
               ogCoin.decimals = Number(ogCoin.decimals);
 
             response[coin] = {
               decimals: ogCoin.decimals,
               symbol: ogCoin.symbol.replace(/\0/g, ""),
-              price: redirectedCoin.price,
+              price,
               timestamp: redirectedCoin.timestamp,
               confidence: redirectedCoin.confidence,
             };

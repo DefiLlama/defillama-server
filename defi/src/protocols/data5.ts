@@ -4538,7 +4538,7 @@ const data5: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Pyth",
-        type: "Primary",
+        type: "RNG",
         proof: ["https://narwhal-finance.gitbook.io/nar.bet/casino/provable-fair/pyth-network-entropy"],
       },
     ],

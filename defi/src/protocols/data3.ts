@@ -52541,6 +52541,9 @@ const data3_3: Protocol[] = [
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
     listedAt: 1721821903,
+    dimensions: {
+      fees: "bitfi-btc"
+    }
   },
   {
     id: "4918",

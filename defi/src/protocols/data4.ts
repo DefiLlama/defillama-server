@@ -5535,6 +5535,9 @@ const data4: Protocol[] = [
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
     listedAt: 1739530444,
+    dimensions: {
+      fees: "bitfi-basis"
+    }
   },
   {
     id: "5786",
@@ -16380,6 +16383,9 @@ const data4: Protocol[] = [
     parentProtocol: "parent#avant-protocol",
     audit_links: ["https://docs.avantprotocol.com/security/audits"],
     listedAt: 1747939430,
+    dimensions: {
+      fees: "avant-avusd",
+    },
   },
   {
     id: "6224",
@@ -18897,6 +18903,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#avant-protocol",
     listedAt: 1750202587,
+    dimensions: {
+      fees: "avant-avbtc"
+    }
   },
   {
     id: "6324",

@@ -328,6 +328,9 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.avantprotocol.com/security/contract-and-opsec-audits"],
     parentProtocol: "parent#avant-protocol",
     listedAt: 1761266699,
+    dimensions: {
+      fees: "avant-aveth",
+    },
   },
   {
     id: "6906",
@@ -3623,6 +3626,9 @@ const data5: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#cypher",
     listedAt: 1764006167,
+    dimensions: {
+      dexs: "cypher-v2",
+    },
   },
   {
     id: "7038",
@@ -3646,6 +3652,9 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1764006177,
     parentProtocol: "parent#cypher",
+    dimensions: {
+      dexs: "cypher-v4",
+    },
   },
   {
     id: "7039",
@@ -4227,6 +4236,8 @@ const data5: Protocol[] = [
     listedAt: 1764300387,
     dimensions: {
       derivatives: "monday-trade-perp",
+      fees: "monday-trade-perp",
+      "open-interest": "monday-trade-perp",
     },
   },
   {

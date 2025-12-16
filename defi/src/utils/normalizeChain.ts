@@ -852,6 +852,9 @@ export const chainCoingeckoIds = {
     cmcId: "6892",
     twitter: "MultiversX",
     url: "https://multiversx.com/",
+    dimensions: {
+      fees: "multiversx",
+    },
   },
   "Stellar": {
     geckoId: "stellar",
@@ -4557,6 +4560,9 @@ export const chainCoingeckoIds = {
     twitter: "babylonlabs_io",
     github: ["babylonlabs-io"],
     url: "https://babylonlabs.io",
+    dimensions: {
+      fees: "babylon-genesis",
+    },
   },
   "Haven1": {
     geckoId: "haven1",

@@ -207,7 +207,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     if (req.query_parameters.includeChains === 'true')
       return fileResponse('protocols-with-chains', res);
     if (req.query_parameters.liteV1 === 'true')
-      return fileResponse('lite/protocols', res);
+      return fileResponse('protocols-lite-v1', res);
     return fileResponse('protocols', res);
   }
 

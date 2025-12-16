@@ -30826,7 +30826,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/aspecta-ai/audit-report"],
     dimensions: {
-      fees: "aspecta-ai"
+      fees: "aspecta"
     },
     github: ["aspecta-ai"],
   },

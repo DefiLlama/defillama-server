@@ -14,7 +14,7 @@ const port = +(process.env.PORT ?? 5001)
 const skipSubPath = process.env.API2_SKIP_SUBPATH === 'true'
 
 if (!skipSubPath && !process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
-const LLAMA_PRO_API_KEY = process.env.LLAMA_PRO_API_KEY ?? process.env.API2_SUBPATH
+const LLAMA_PRO_API_KEY = process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
 // const LLAMA_INTERNAL_API_KEY = process.env.LLAMA_INTERNAL_API_KEY ?? process.env.API2_SUBPATH
 
 async function main() {

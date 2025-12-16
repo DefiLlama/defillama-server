@@ -6038,7 +6038,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Identity & Reputation",
+    category: "NFT Marketplace",
     chains: ["Binance"],
     module: "anome/index.js",
     twitter: "Anome_Official",

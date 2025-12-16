@@ -6094,6 +6094,25 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "lighter-spot",
     }
-  }
+  },
+  {
+    id: "7142",
+    name: "Chainlist",
+    address: null,
+    symbol: "-",
+    url: "https://chainlist.org/",
+    description: "ChainList is a list of EVM networks. Users can use the information to connect their wallets and Web3 middleware providers to the appropriate Chain ID and Network ID to connect to the correct chain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chainlist.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Developer Tools",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "KandleFi",
+    forkedFromIds: [],
+  },
 ];
 export default data5;

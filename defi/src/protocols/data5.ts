@@ -6031,7 +6031,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://anome.xyz/events",
-    description: "Anome is a decentralized on-chain identity and reputation protocol that enables users to collect and verify cryptographically provable credentials and reputation signals for use across dapps while preserving privacy.",
+    description: "Anome is a NFT derivative issuance and lending platform that is firstly applied in fully on-chain gaming scenarios.",
     chain: "Binance",
     logo: `${baseIconsUrl}/anome.jpg`,
     audits: "0",

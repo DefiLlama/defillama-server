@@ -8303,6 +8303,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PythNetwork",
     github: ["pyth-network"],
+    treasury: "pyth.js",
   },
   {
     id: "parent#dfs.fun",

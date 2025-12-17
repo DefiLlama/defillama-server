@@ -6,6 +6,7 @@ import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
 import { sluggifyString } from "../utils/sluggify";
 import { ADAPTER_TYPES, AdaptorRecordType } from "../adaptors/data/types";
+import { validateProtocolUniqueness } from "./validateUniqueness";
 const fs = require("fs");
 import loadAdaptorsData from "../adaptors/data";
 
@@ -434,6 +435,24 @@ test.only("Dimensions: No two listings share the same module, name or slug", () 
         throw new Error(`Duplicate slug ${slug} found in ${adaptor.name} and ${slugMap[slug]} for adapter type ${adapterType}`);
       }
       slugMap[slug] = adaptor.name;
+    }
+  }
+})
+
+test("protocol uniqueness validation (twitter, url, github)", () => {
+  const result = validateProtocolUniqueness();
+
+  if (!result.success) {
+    console.log(`\n=== Protocol Uniqueness Report ===`);
+    console.log(`Found ${result.errors.length} field(s) shared by protocols without common parent.`);
+    console.log('Consider adding parentProtocol relationships for related protocols.\n');
+
+    const byField = new Map<string, number>();
+    for (const error of result.errors) {
+      byField.set(error.field, (byField.get(error.field) || 0) + 1);
+    }
+    for (const [field, count] of byField) {
+      console.log(`  ${field}: ${count} duplicate(s)`);
     }
   }
 })

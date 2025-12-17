@@ -1,0 +1,110 @@
+name: Protocol Uniqueness Validation
+
+on:
+  pull_request:
+    paths:
+      - 'defi/src/protocols/data*.ts'
+      - 'defi/src/protocols/parentProtocols.ts'
+      - 'defi/src/protocols/validateUniqueness.ts'
+  push:
+    branches: [master]
+    paths:
+      - 'defi/src/protocols/data*.ts'
+      - 'defi/src/protocols/parentProtocols.ts'
+      - 'defi/src/protocols/validateUniqueness.ts'
+
+defaults:
+  run:
+    working-directory: defi
+
+jobs:
+  validate-uniqueness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: 'defi/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run protocol uniqueness validation
+        id: validate
+        run: |
+          OUTPUT=$(npx ts-node src/protocols/validateUniqueness.ts --json 2>/dev/null || true)
+          echo "$OUTPUT" > validation-result.json
+          SUCCESS=$(echo "$OUTPUT" | jq -r '.success')
+          ERROR_COUNT=$(echo "$OUTPUT" | jq -r '.errors | length')
+          echo "success=$SUCCESS" >> $GITHUB_OUTPUT
+          echo "error_count=$ERROR_COUNT" >> $GITHUB_OUTPUT
+          npx ts-node src/protocols/validateUniqueness.ts
+
+      - name: Create PR comment with results
+        if: github.event_name == 'pull_request' && steps.validate.outputs.success == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('defi/validation-result.json', 'utf8'));
+
+            const byField = {};
+            for (const error of result.errors) {
+              if (!byField[error.field]) byField[error.field] = [];
+              byField[error.field].push(error);
+            }
+
+            let body = `## Protocol Uniqueness Check\n\n`;
+            body += `Found **${result.errors.length}** field(s) shared by protocols without a common \`parentProtocol\`.\n\n`;
+            body += `> **Note:** These are informational warnings. Protocols that share twitter/url/github should either:\n`;
+            body += `> 1. Have a \`parentProtocol\` defined to indicate they are related, or\n`;
+            body += `> 2. Have unique values for these fields\n\n`;
+
+            for (const [field, errors] of Object.entries(byField)) {
+              body += `### ${field} (${errors.length} duplicates)\n\n`;
+              const toShow = errors.slice(0, 10);
+              for (const error of toShow) {
+                body += `- \`${error.value}\`: ${error.protocols.join(', ')}\n`;
+              }
+              if (errors.length > 10) {
+                body += `- ... and ${errors.length - 10} more\n`;
+              }
+              body += `\n`;
+            }
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('Protocol Uniqueness Check')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: body
+              });
+            }

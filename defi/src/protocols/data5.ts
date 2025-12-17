@@ -1762,6 +1762,9 @@ const data5: Protocol[] = [
     twitter: "makinafi",
     github: ["MakinaHQ"],
     listedAt: 1762370744,
+    dimensions: {
+      fees: "makina",
+    },
   },
   {
     id: "6965",
@@ -6387,6 +6390,28 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1765991807,
+  },
+  {
+    id: "7154",
+    name: "Molten Network",
+    address: null,
+    symbol: "-",
+    url: "https://keel.fi/",
+    description: "Keel is an on-chain capital allocation protocol that deploys protocol-owned stablecoin liquidity from the Sky ecosystem into DeFi markets and tokenized assets to deepen liquidity and generate risk-adjusted yield.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/molten-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "molten-network/index.js",
+    twitter: "keel_fi",
+    forkedFromIds: [],
+    audit_links: [],
+    github: ["keel-fi"],
+    listedAt: 1765991129,
   },
 ];
 export default data5;

@@ -29845,6 +29845,10 @@ const data3_1: Protocol[] = [
     module: "eos-ram/index.js",
     twitter: "Vaulta_",
     listedAt: 1703765158,
+    dimensions: {
+      fees: "vaulta-ram",
+      dexs: "vaulta-ram",
+    },
   },
   {
     id: "3969",

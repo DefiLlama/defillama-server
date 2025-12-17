@@ -1473,6 +1473,9 @@ export const chainCoingeckoIds = {
     cmcId: "3992",
     twitter: "COTInetwork",
     url: "https://coti.io/",
+    dimensions: {
+      fees: "coti",
+    },
   },
   "Bitcoincash": {
     geckoId: "bitcoin-cash",

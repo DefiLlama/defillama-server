@@ -5958,8 +5958,11 @@ const data5: Protocol[] = [
     twitter: "Grayscale",
     audit_links: [],
     dimensions: {
-      fees: "grayscale",
-    },
+      fees: {
+        adapter: "grayscale",
+        genuineSpikes: ["1765929600"]
+      }
+    },   
   },
   {
     id: "7135",

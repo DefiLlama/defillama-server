@@ -55915,7 +55915,8 @@ const data3_3: Protocol[] = [
     listedAt: 1724835641,
     dimensions: {
       options: "lyra",
-      "open-interest": "derive-options"
+      "open-interest": "derive-options",
+      fees: "lyra-v2-options"
     }
   },
   {

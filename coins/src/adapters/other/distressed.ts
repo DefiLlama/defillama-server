@@ -61,7 +61,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568', 
     // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
     HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
-    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84"
+    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84", 
+    yTUSD: '0x73a052500105205d34daf004eab301916da8190f'
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

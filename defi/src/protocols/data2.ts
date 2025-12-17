@@ -14412,6 +14412,14 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1660946171,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
+
   },
   {
     id: "1998",
@@ -18495,6 +18503,13 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1665186810,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
   },
   {
     id: "2169",

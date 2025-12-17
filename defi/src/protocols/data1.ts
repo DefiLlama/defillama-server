@@ -7014,6 +7014,7 @@ const data: Protocol[] = [
     twitter: "THORChain",
     dimensions: {
       fees: "thorchain-dex",
+      dexs: "thorchain-dex"
     },
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },

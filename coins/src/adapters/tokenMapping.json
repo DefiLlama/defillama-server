@@ -1041,6 +1041,11 @@
     }
   },
   "ethereum": {
+    "0xd051c326C9Aef673428E6F01eb65d2C52De95D30": {
+      "decimals": "18",
+      "symbol": "ION.au",
+      "to": "coingecko#tether-gold"
+    },
     "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

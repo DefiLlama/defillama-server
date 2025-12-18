@@ -4239,6 +4239,9 @@ const data4: Protocol[] = [
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2F4UT7XaqETfzun5TSBrKU%2FSolera%20-%20Zellic%20Audit%20Report%20-%2005-19-2025.pdf?alt=media&token=065cf5fc-0f75-4e83-b061-c12e251c8c79",
     ],
     listedAt: 1738784157,
+    dimensions: {
+      fees: "solera"
+    }
   },
   {
     id: "5734",
@@ -11342,6 +11345,9 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#mystic-finance",
     listedAt: 1744213581,
+    dimensions: {
+      fees: "mystic-finance"
+    }
   },
   {
     id: "6020",

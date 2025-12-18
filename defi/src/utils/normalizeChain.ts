@@ -5331,6 +5331,15 @@ export const chainCoingeckoIds = {
     twitter: "AlphaSec_Trade",
     url: "https://alphasec.trade/",
   },
+  "GANchain": {
+    geckoId: "gpunet",
+    symbol: "GPU",
+    cmcId: "36772",
+    categories: ["EVM"],
+    twitter: "gpunet",
+    url: "https://www.gpu.net/",
+    chainId: 4048,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5554,6 +5563,7 @@ const chainLabelMap = {
   "capx": "Capx Chain",
   "cross": "CROSS",
   "alphasec": "AlphaSec",
+  "gan": "GANchain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

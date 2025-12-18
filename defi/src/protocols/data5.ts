@@ -6666,5 +6666,26 @@ const data5: Protocol[] = [
       fees: "hylo-plus-staked-sol",
     },
   },*/
+  { 
+    id: "7166",
+    name: "GVEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.gpu.net/",
+    description: "GVEX is a hybrid decentralised exchange platform that combines native orderbook trading with seamless integration to Hyperliquid's spot and perpetual markets.",
+    chain: "GANchain",
+    logo: `${baseIconsUrl}/gvex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["GANchain"],
+    module: "dummy.js",
+    twitter: "gpunet",
+    forkedFromIds: [],
+    audit_links: [],
+    listedAt: 1766102049,
+  },
 ];
 export default data5;

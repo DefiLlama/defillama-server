@@ -14419,7 +14419,7 @@ const data2: Protocol[] = [
         level: "alert",
       },
     ],
-
+    deadUrl: true,
   },
   {
     id: "1998",
@@ -18510,6 +18510,7 @@ const data2: Protocol[] = [
         level: "alert",
       },
     ],
+    deadUrl: true,
   },
   {
     id: "2169",

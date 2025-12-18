@@ -7417,6 +7417,7 @@ const data3_0: Protocol[] = [
         level: "alert",
       },
     ],
+    deadUrl: true,
   },
   {
     id: "3015",

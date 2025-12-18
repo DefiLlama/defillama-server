@@ -1170,6 +1170,8 @@ const data: Protocol[] = [
     twitter: "rook",
     governanceID: ["snapshot:rook.eth"],
     github: ["keeperdao"], // its empty
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "156",
@@ -13797,7 +13799,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1635106127,
     dimensions: {
       dexs: "chainge-finance"
-    }
+    },
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "705",
@@ -17555,10 +17559,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Binance"],
     module: "revault/index.js",
-    twitter: "revaultnetwork",
     audit_links: ["https://paladinsec.co/projects/revault-network/", "https://www.certik.org/projects/revault"],
     listedAt: 1637556774,
     github: ["revault"],
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "889",

@@ -14419,7 +14419,7 @@ const data2: Protocol[] = [
         level: "alert",
       },
     ],
-
+    deadUrl: true,
   },
   {
     id: "1998",
@@ -16044,7 +16044,9 @@ const data2: Protocol[] = [
     listedAt: 1662489763,
     dimensions: {
       dexs: "vanswap"
-    }
+    },
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2067",
@@ -18510,6 +18512,7 @@ const data2: Protocol[] = [
         level: "alert",
       },
     ],
+    deadUrl: true,
   },
   {
     id: "2169",
@@ -28342,14 +28345,15 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "equilibre/index.js",
     treasury: "equilibre.js",
-    twitter: "EquilibreAMM",
     forkedFromIds: ["1407"],
     audit_links: [],
     listedAt: 1677303171,
     dimensions: {
       fees: "equilibre-exchange",
       dexs: "equilibre"
-    }
+    },
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2587",

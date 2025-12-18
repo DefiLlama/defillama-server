@@ -54365,6 +54365,9 @@ const data3_3: Protocol[] = [
     twitter: "bonk_inu",
     audit_links: [],
     listedAt: 1723798801,
+    dimensions: {
+      fees: "bonk-staked-sol"
+    }
   },
   {
     id: "4995",
@@ -62287,7 +62290,10 @@ const data3_3: Protocol[] = [
     module: "bgsol/index.js",
     twitter: "bitgetglobal",
     forkedFrom: [],
-    listedAt: 1731062934
+    listedAt: 1731062934,
+    dimensions: {
+      fees: "bitget-staked-sol"
+    }
   },
   {
     id: "5331",

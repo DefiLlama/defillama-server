@@ -6481,5 +6481,27 @@ const data5: Protocol[] = [
     github: ["gravity-build"],
     listedAt: 1766069399,
   },
+  {
+    id: "7158",
+    name: "Chatter Shield",
+    address: "0xd8B90D2e680ea535eAcCe1b025c998B347892f68",
+    symbol: "SHIELD",
+    url: "https://www.chattershield.io/",
+    description: "Chatter Shield is an X/Twitter raiding bot that integrates directly into Telegram groups, designed to augment community interaction with designated tweets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chatter-shield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "31156",
+    category: "Developer tools",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "chattershield",
+    forkedFromIds: [],
+    dimensions: {
+      fees: "chattershield",
+    },
+  },
 ];
 export default data5;

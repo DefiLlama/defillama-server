@@ -54393,6 +54393,9 @@ const data3_3: Protocol[] = [
     twitter: "heliuslabs",
     audit_links: [],
     listedAt: 1723799416,
+    dimensions: {
+      fees: "helius-staked-sol",
+    },
   },
   {
     id: "4996",

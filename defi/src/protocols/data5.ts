@@ -6595,7 +6595,7 @@ const data5: Protocol[] = [
       fees: "gate-staked-sol",
     },
   },
-  {
+  /*{ // Duplicate entry
     id: "7163",
     name: "Helius SOL",
     address: null,
@@ -6618,7 +6618,7 @@ const data5: Protocol[] = [
       fees: "helius-staked-sol",
     },
   },
-  {
+  { // Duplicate entry
     id: "7164",
     name: "Hylo SOL",
     address: null,
@@ -6642,7 +6642,7 @@ const data5: Protocol[] = [
       fees: "hylo-staked-sol",
     },
   },
-  {
+  { // Duplicate entry
     id: "7165",
     name: "Hylo SOL Plus",
     address: null,
@@ -6665,6 +6665,6 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "hylo-plus-staked-sol",
     },
-  },
+  },*/
 ];
 export default data5;

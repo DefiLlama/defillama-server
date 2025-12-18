@@ -28352,6 +28352,7 @@ const data2: Protocol[] = [
       fees: "equilibre-exchange",
       dexs: "equilibre"
     },
+    twitter: "Equilibre_Labs",
     deadFrom: "2025-12-18",
     deadUrl: true,
   },

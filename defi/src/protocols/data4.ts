@@ -6271,6 +6271,9 @@ const data4: Protocol[] = [
     module: "pico-sol/index.js",
     twitter: "pico__sol",
     listedAt: 1740008934,
+    dimensions: {
+      fees: "pico-staked-sol"
+    }
   },
   {
     id: "5815",
@@ -12883,6 +12886,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#save-protocol",
     listedAt: 1745485876,
+    dimensions: {
+      fees: "save-staked-sol"
+    }
   },
   {
     id: "6086",
@@ -22260,6 +22266,9 @@ const data4: Protocol[] = [
     twitter: "laine_sa_",
     github: ["laine-sa"],
     listedAt: 1753110915,
+    dimensions: {
+      fees: "laine-staked-sol"
+    }
   },
   {
     id: "6461",
@@ -22530,6 +22539,9 @@ const data4: Protocol[] = [
     module: "stronghold-staked-sol/index.js",
     twitter: "StrongholdSOL",
     listedAt: 1753367603,
+    dimensions: {
+      fees: "stronghold-staked-sol"
+    }
   },
   {
     id: "6472",

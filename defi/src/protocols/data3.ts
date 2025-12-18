@@ -20584,6 +20584,9 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#marginfi",
     listedAt: 1695920989,
+    dimensions: {
+      fees: "marginfi-staked-sol"
+    }
   },
   {
     id: "3571",

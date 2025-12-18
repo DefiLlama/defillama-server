@@ -31,7 +31,6 @@ import { coins } from "@defillama/sdk";
 
 const searchWidth = 10800; // 3hr
 const allTokens: { [chain: Chain]: string[] } = {};
-const offChainAssets: string[] = [];
 
 // fetch a list of all token addresses from ES
 async function fetchAllTokens() {
@@ -73,13 +72,6 @@ async function fetchNativeAndMcaps(timestamp: number): Promise<{
 
   const allPrices: { [token: string]: CoinsApiData } = {};
   const allMcaps: { [token: string]: McapsApiData } = {};
-
-  if (offChainAssets.length) {
-    const prices = await coins.getPrices(offChainAssets, timestamp);
-    Object.keys(prices).map((p: string) => {
-      allPrices[p] = prices[p];
-    });
-  }
 
   await runInPromisePool({
     items: allChainKeys,
@@ -231,8 +223,6 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
       if (!sourceChainAmounts[chain]) sourceChainAmounts[chain] = {};
       Object.keys(data[chain]).map((token: string) => {
         const key = normalizeKey(token);
-
-        if (key.startsWith("coingecko:") || key.startsWith("ibc:")) offChainAssets.push(key)
         if (!sourceChainAmounts[chain][key]) sourceChainAmounts[chain][key] = zero;
         sourceChainAmounts[chain][key] = sourceChainAmounts[chain][key].plus(data[chain][token]);
 
@@ -448,7 +438,7 @@ export async function storeChainAssetsV2(override: boolean = false) {
         const coinData = allPrices[key];
         if (!coinData || !coinData.price) return;
 
-        const amount = BigNumber(coinData.price).times(protocolAmount[token]).div(BigNumber(10).pow(coinData.decimals ?? 0));
+        const amount = BigNumber(coinData.price).times(protocolAmount[token]).div(BigNumber(10).pow(coinData.decimals));
         const symbol = allPrices[key].symbol.toUpperCase(); // filter for rwa, lst, stablecoins
 
         let section = "canonical";

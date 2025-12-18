@@ -20,7 +20,7 @@ import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 import { getSheetsHistoricalData, getSheetsData } from "./sheets";
 
@@ -67,6 +67,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/rwa/stats", defaultFileHandler);
+  router.get("/rwa/active-tvls", r2Wrapper({ endpoint: 'rwa/active-tvls' }));
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
@@ -139,7 +140,26 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/_sheets/historical", ew(getSheetsHistoricalData));
   router.get("/_sheets", ew(getSheetsData));
 
-  /*
+
+  // v2
+
+  router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
+  router.get("/v2/chart/:type", ew(getDimensionOverviewRoutes('chart')))
+  router.get("/v2/chart/:type/chain-breakdown", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol-breakdown", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
+
+  router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
+  router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
+  router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+
+  // this includes special route financial statement
+  router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
+  router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
+  router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
+
+
+  /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
     router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
@@ -189,6 +209,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   function protocolsRouteResponse(req: HyperExpress.Request, res: HyperExpress.Response) {
     if (req.query_parameters.includeChains === 'true')
       return fileResponse('protocols-with-chains', res);
+    if (req.query_parameters.liteV1 === 'true')
+      return fileResponse('protocols-lite-v1', res);
     return fileResponse('protocols', res);
   }
 
@@ -466,22 +488,6 @@ async function _getChainChartData(name: string) {
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
 }
-
-export function setProRoutes(router: HyperExpress.Router, _routerBasePath: string) {
-
-  const proWrapper = (routeFn: any) => {  // inject isProRoute flag
-
-    return ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
-      (req as any).isProRoute = true
-      return routeFn(req, res)
-    })
-  }
-
-  router.get("/v2/metrics/:type/overview", proWrapper(getOverviewFileRoute))
-  router.get("/v2/metrics/:type/overview/:chain", proWrapper(getOverviewFileRoute))
-  router.get("/v2/metrics/:type/protocol/:name", proWrapper(getDimensionProtocolFileRoute))  // this includes special route financial statement
-}
-
 
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {

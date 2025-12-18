@@ -1,13 +1,12 @@
 import type { IParentProtocol } from "../protocols/types";
 import protocols, { sortHallmarks } from "../protocols/data";
 import { errorResponse } from "./shared";
-import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
+import { IProtocolResponse, ICurrentChainTvls, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
 import { getObjectKeyCount } from "../api2/utils";
-import * as fs from "fs";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -204,7 +203,8 @@ export async function craftParentProtocolInternal({
         : null) ??
       null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
-    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
+    ...(parentProtocol.deprecated || childProtocolsTvls.every((p) => p.deprecated) ? { deprecated: true } : {}),
   };
 
   if (feMini) {

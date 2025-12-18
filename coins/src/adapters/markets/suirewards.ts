@@ -27,8 +27,12 @@ export async function suirewards(timestamp: number) {
     items: data.map(({ target_currency }: any) => target_currency),
     concurrency: 5,
     processor: async (target_currency: string) => {
-      const info = await getTokenInfo(target_currency);
-      tokenInfos[target_currency] = info;
+      try {
+        const info = await getTokenInfo(target_currency);
+        tokenInfos[target_currency] = info;
+      } catch (e) {
+        console.error(`Error getting token info for ${target_currency}: ${e}`);
+      }
     },
   });
 

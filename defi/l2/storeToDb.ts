@@ -3,7 +3,6 @@ import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
-import { getChainDisplayName } from "../src/utils/normalizeChain";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
@@ -13,23 +12,6 @@ async function iniDbConnection() {
 
   return postgres(auth[0], { idle_timeout: 90 });
 }
-
-
-export async function fetchColumns() {
-  const sql = await iniDbConnection();
-
-  const read = await queryPostgresWithRetry(
-    sql`
-        select * from chainassets
-        limit 1
-        `,
-    sql
-  );
-  const columns = read.columns.map((c: any) => c.name);
-
-  return columns;
-}
-
 export default async function storeHistoricalToDB(res: any) {
   const sql = await iniDbConnection();
 
@@ -145,9 +127,8 @@ export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: numb
   sql.end();
 }
 
-function removeTokenBreakdown(data: FinalChainData): any {
+function removeTokenBreakdown(data: FinalChainData): FinalChainData {
   const overviewData: any = {};
-  if (!data) return overviewData;
   Object.entries(data).map(([key, value]) => {
     overviewData[key] = Number(value.total).toFixed();
   });
@@ -157,26 +138,36 @@ function removeTokenBreakdown(data: FinalChainData): any {
 export function parsePgData(timeseries: any[], chain: string, removeBreakdown: boolean = true) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
-    let rawData: { [key: string]: any } = {}
-    try {
-      rawData = JSON.parse(t.value);
-    } catch (e) {
-      console.log(e);
-    }
-    if (!Object.keys(rawData).length) return;
-
     if (chain != "*") {
-      const data = removeBreakdown ? removeTokenBreakdown(rawData[chain]) : rawData[chain];
+      let rawData;
+      try {
+        rawData = JSON.parse(t[chain]);
+      } catch (e) {
+        console.log(e);
+      }
+      if (!rawData) return;
+      const data = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
       result.push({ timestamp: t.timestamp, data });
-    } else {
-      const data: { [key: string]: any } = {} 
-      Object.keys(rawData).map((c: string) => {
-        if (c == "timestamp") return;
-        data[c] = removeBreakdown ? removeTokenBreakdown(rawData[c]) : rawData[c];
-      });
-
-      result.push({ timestamp: t.timestamp, data });
+      return;
     }
+
+    const data: FinalData = {};
+
+    Object.keys(t).map((c: string) => {
+      if (c == "timestamp") return;
+      let rawData;
+      try {
+        rawData = JSON.parse(t[c]);
+      } catch (e) {
+        console.log(e);
+      }
+      if (!rawData) return;
+      // DEBUG:
+      // data[c] = rawData
+      data[c] = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
+    });
+
+    result.push({ timestamp: t.timestamp, data });
   });
 
   result.sort((a: ChartData, b: ChartData) => Number(a.timestamp) - Number(b.timestamp));
@@ -194,7 +185,9 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
     if (oldTimestamps.length) {
       latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
       oldTimeseries = await queryPostgresWithRetry(
-        sql`select * from chainassets2 where timestamp in ${sql(oldTimestamps)}`,
+        chain == "*"
+          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
+          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
         sql
       );
     }
@@ -204,7 +197,12 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
 
   const newTimeseries =
     getCurrentUnixTimestamp() - latestOldTimestamp > 2 * secondsInADay
-      ? await queryPostgresWithRetry(sql`select * from chainassets2 where timestamp > ${latestOldTimestamp}`, sql)
+      ? await queryPostgresWithRetry(
+          chain == "*"
+            ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
+            : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
+          sql
+        )
       : [];
   sql.end();
 
@@ -250,7 +248,7 @@ export async function fetchFlows(period: number) {
 
   const timeseries = await queryPostgresWithRetry(
     sql`
-      select * from chainassets2
+      select * from chainassets
       where timestamp > ${timestampWithMargin}
       `,
     sql
@@ -271,20 +269,19 @@ export async function fetchFlows(period: number) {
   const chains = Object.keys(end.data);
 
   chains.map((chain: string) => {
-    const readableChain = getChainDisplayName(chain, true);
-    res[readableChain] = {};
+    res[chain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
       if (!start.data[chain] || !(k in start.data[chain])) {
-        res[readableChain][k] = { perc: "0", raw: "0" };
+        res[chain][k] = { perc: "0", raw: "0" };
         return;
       }
       const a = start.data[chain][k];
       const b = end.data[chain][k];
       const raw = (b - a).toFixed();
-      if (a != "0" && b == "0") res[readableChain][k] = { perc: "-100", raw };
-      else if (b == "0") res[readableChain][k] = { perc: "0", raw };
-      else if (a == "0") res[readableChain][k] = { perc: "100", raw };
-      else res[readableChain][k] = { perc: ((100 * (b - a)) / a).toFixed(2), raw };
+      if (a != "0" && b == "0") res[chain][k] = { perc: "-100", raw };
+      else if (b == "0") res[chain][k] = { perc: "0", raw };
+      else if (a == "0") res[chain][k] = { perc: "100", raw };
+      else res[chain][k] = { perc: ((100 * (b - a)) / a).toFixed(2), raw };
     });
   });
 

@@ -18,7 +18,9 @@ const tvlNameMap: Record<string, IProtocol> = {}
 const allItems = [...protocols, ...treasuries, ...entities]
 
 allItems.forEach((protocol: any) => tvlNameMap[protocol.name] = protocol)
-export const tvlProtocolList = allItems.filter(i => i.module !== 'dummy.js').map(i => i.name)
+export const tvlProtocolList = allItems
+  // .filter(i => i.module !== 'dummy.js')
+  .map(i => i.name)
 
 
 export async function runTvlAction(ws: any, data: any) {
@@ -187,7 +189,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
 
     if (!skipBlockFetch) {
 
-      if (adapter.timetravel === false && !refillWithCachedData) {  // if we are delibrately passing chains, we assume user knows what they are doing
+      if (adapter.timetravel === false && !refillWithCachedData) {  // if we are deliberately passing chains, we assume user knows what they are doing
         console.error("Adapter doesn't support refilling");
         return;
       }
@@ -365,7 +367,7 @@ function getRecordItem(record: any) {
 
       Object.entries(existingTvlRecord).forEach(([key, data]: any) => {
         if (key === 'SK') return;
-        
+
         res['pre_' + key] = humanizeNumber(data)
         res['_pre_' + key] = +data
       })

@@ -388,6 +388,7 @@ async function generateSearchList() {
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(parent.name)}`,
+      ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };

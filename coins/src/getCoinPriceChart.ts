@@ -6,7 +6,7 @@ import {
   errorResponse,
 } from "./utils/shared";
 import { getBasicCoins } from "./utils/getCoinsUtils";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
 
@@ -101,7 +101,7 @@ async function fetchDBData(
   coins.map(async (coin) => {
     promises.push(
       ...timestamps.map(async (timestamp) => {
-        const finalCoin = await getRecordClosestToTimestamp(
+        const finalCoin: any = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
           params.searchWidth,

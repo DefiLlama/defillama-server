@@ -120,6 +120,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "6498": "eventum",
   "6581": "eni",
   //"6730": "eteria",
+  "7128": "supra",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -147,6 +148,9 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "6438": "echelon_initia",
   "6439": "inertia",
   "6440": "milkyway_rollup",
+  "5026": "noble", 
+  "5599": "grvt", 
+  "7118": "appchain"
 };
 
 export const allChainKeys: string[] = [
@@ -257,4 +261,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "somnia": { ticker: "SOMI", address: "coingecko:somnia" },
   "plasma": { ticker: "XPL", address: "coingecko:plasma" },
   "linea": { ticker: "LINEA", address: "coingecko:linea" },
+  // noble: { ticker: "", address: "coingecko:" },
 };

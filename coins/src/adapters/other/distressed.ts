@@ -58,7 +58,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
-    UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568' 
+    // UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568', 
+    // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
+    HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
+    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84"
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -228,6 +231,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
     SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
+    BITZ: "0x9C6605eEB66bd05858E0cB5204432aA6c7d0fA24", 
+    PLAY: '0x1CCA311B786Dd7906c07414095FA719Eabfd070f'
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",
@@ -318,6 +323,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   blast: {
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
+    YES: '0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c'
   },
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",

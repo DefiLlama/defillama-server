@@ -6456,5 +6456,30 @@ const data5: Protocol[] = [
       dexs: "alphasec-spot",
     },
   },
+  {
+    id: "7157",
+    name: "gTAC",
+    address: null,
+    symbol: "-",
+    url: "https://grvty.dev",
+    description: "Liquid staking protocol for TAC blockchain.",
+    chain: "TAC",
+    logo: `${baseIconsUrl}/gtac.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["TAC"],
+    module: "dummy.js",
+    twitter: "gTACprotocol",
+    forkedFromIds: [],
+    audit_links: [
+      "https://raw.githubusercontent.com/gravity-build/.github/main/meta/gtac-liquidstake-module-assessment-ssc.pdf",
+      "https://raw.githubusercontent.com/gravity-build/.github/main/meta/liquidstake-precompiles-ssc.pdf"
+    ],
+    github: ["gravity-build"],
+    listedAt: 1766069399,
+  },
 ];
 export default data5;

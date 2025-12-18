@@ -34,6 +34,7 @@ export const zeroDecimalAdapters: string[] = [
   "minswap",
   "optimBonds",
   "distressed",
+  "updateCoin"
 ];
 export type Coin = {
   price: number;

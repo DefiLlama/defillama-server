@@ -6317,7 +6317,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Basis Trading",
+    tags: ["Private Credit"],
     chains: ["Plasma"],
     module: "chateau/index.js",
     twitter: "Chateau_capital",

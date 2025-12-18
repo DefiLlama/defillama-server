@@ -126,7 +126,7 @@ export const chainCoingeckoIds = {
     geckoId: "arbitrum",
     symbol: "ARB",
     cmcId: "11841",
-    categories: ["EVM", "Rollup", "Arbitrum Orbit"],
+    categories: ["EVM", "Rollup", "Arbitrum Chains"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -2947,7 +2947,7 @@ export const chainCoingeckoIds = {
     geckoId: "xai-blockchain",
     symbol: "XAI",
     cmcId: "28374",
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -3139,7 +3139,7 @@ export const chainCoingeckoIds = {
     geckoId: "degen-base",
     symbol: "DEGEN",
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Base",
       types: ["L3"],
@@ -3483,7 +3483,7 @@ export const chainCoingeckoIds = {
     geckoId: "dream-machine-token",
     symbol: "DMT",
     cmcId: "25653",
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -3499,7 +3499,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -3691,7 +3691,7 @@ export const chainCoingeckoIds = {
     geckoId: "aurora-dao",
     symbol: "IDEX",
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -3827,7 +3827,7 @@ export const chainCoingeckoIds = {
     geckoId: "apecoin",
     symbol: "APE",
     cmcId: "18876",
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -3978,7 +3978,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -4147,7 +4147,7 @@ export const chainCoingeckoIds = {
     geckoId: "edu-coin",
     symbol: "EDU",
     cmcId: "24613",
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -4188,7 +4188,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -4269,7 +4269,7 @@ export const chainCoingeckoIds = {
     geckoId: "sx-network-2",
     symbol: "SX",
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -4878,7 +4878,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -5269,7 +5269,7 @@ export const chainCoingeckoIds = {
     geckoId: "alienxchain",
     symbol: "AIX",
     cmcId: "33598",
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -5284,7 +5284,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"],
@@ -5308,7 +5308,7 @@ export const chainCoingeckoIds = {
     geckoId: "earnm",
     symbol: "EARNM",
     cmcId: "21158",
-    categories: ["EVM", "Arbitrum Orbit", "Rollup"],
+    categories: ["EVM", "Arbitrum Chains", "Rollup"],
     twitter: "EARNMrewards",
     url: "https://max.earnm.com/",
     parent: {

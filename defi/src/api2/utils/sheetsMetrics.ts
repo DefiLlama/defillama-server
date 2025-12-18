@@ -250,8 +250,6 @@ function extractCGMetrics(cgData: any): { price: number | null; mcap: number | n
   const prices = cgData.data?.prices;
   const mcaps = cgData.data?.mcaps;
 
-  console.log("cgData", cgData.data);
-
   const price = marketData?.current_price?.usd ?? (prices?.length ? prices[prices.length - 1]?.[1] : null);
   const mcap = marketData?.market_cap?.usd ?? (mcaps?.length ? mcaps[mcaps.length - 1]?.[1] : null);
   const fdv = marketData?.fully_diluted_valuation?.usd ?? null;

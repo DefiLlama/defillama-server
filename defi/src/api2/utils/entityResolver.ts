@@ -13,11 +13,11 @@ export interface ResolvedEntity {
   originalInput: string;
 }
 
-export async function resolveEntity(
+export function resolveEntity(
   input: string,
   chainsMap: Map<string, any>,
   protocolsMap: Map<string, any>
-): Promise<ResolvedEntity | null> {
+): ResolvedEntity | null {
   const inputSlug = sluggifyString(input);
 
   const chain = chainsMap.get(inputSlug);
@@ -52,10 +52,9 @@ export async function resolveEntities(inputs: string[]): Promise<Map<string, Res
 
   const chainsMap = await getChainsMap();
   const protocolsMap = getProtocolsMap();
-
   for (const input of inputs) {
     const slug = sluggifyString(input);
-    const resolved = await resolveEntity(input, chainsMap, protocolsMap);
+    const resolved = resolveEntity(input, chainsMap, protocolsMap);
     results.set(slug, resolved);
   }
 

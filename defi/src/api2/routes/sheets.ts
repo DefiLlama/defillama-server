@@ -42,7 +42,7 @@ export async function getSheetsData(req: HyperExpress.Request, res: HyperExpress
 
   const entitiesParam = params.entities;
   if (!entitiesParam) {
-    return "entities query parameter is required";
+    return errorResponse(res, "entities query parameter is required", { statusCode: 400 });
   }
 
   const entityNames = entitiesParam
@@ -50,18 +50,18 @@ export async function getSheetsData(req: HyperExpress.Request, res: HyperExpress
     .map((input) => input.trim())
     .filter(Boolean);
   if (entityNames.length === 0) {
-    return "entities must contain at least one valid string";
+    return errorResponse(res, "entities must contain at least one valid string", { statusCode: 400 });
   }
 
   if (entityNames.length > MAX_ENTITIES) {
-    return `Maximum ${MAX_ENTITIES} entities allowed per request`;
+    return errorResponse(res, `Maximum ${MAX_ENTITIES} entities allowed per request`, { statusCode: 400 });
   }
 
   const metricsParam = params.metrics ? params.metrics.split(",").map((m: string) => m.trim()) : undefined;
   const metrics = validateMetrics(metricsParam);
 
   if (!metrics) {
-    return `Invalid metrics. Valid values: ${[...VALID_METRICS].join(", ")}`;
+    return errorResponse(res, `Invalid metrics. Valid values: ${[...VALID_METRICS].join(", ")}`, { statusCode: 400 });
   }
 
   const timeframe = validateTimeframe(params.timeframe);

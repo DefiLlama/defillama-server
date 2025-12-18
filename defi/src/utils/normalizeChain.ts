@@ -126,7 +126,7 @@ export const chainCoingeckoIds = {
     geckoId: "arbitrum",
     symbol: "ARB",
     cmcId: "11841",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Arbitrum Orbit"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],

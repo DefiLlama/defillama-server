@@ -26,7 +26,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
         },
         {
           PK: `coingecko#${contracts[chain][s]}`,
-          SK: timestamp,
+          SK: timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
           confidence: 0.9,
           price: 0,
           adapter: "distressed",

@@ -22,6 +22,7 @@ import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
+import { getSheetsHistoricalData, getSheetsData } from "./sheets";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -135,8 +136,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/activeUsers", defaultFileHandler)
 
+  router.get("/_sheets/historical", ew(getSheetsHistoricalData));
+  router.get("/_sheets", ew(getSheetsData));
 
-  /* 
+  /*
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
     router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set

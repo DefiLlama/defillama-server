@@ -6,6 +6,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { contracts } from "./distressed";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
+  throw new Error("Distressed asset adapter is not supported anymore");
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
 

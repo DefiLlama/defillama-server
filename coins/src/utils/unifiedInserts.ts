@@ -13,7 +13,7 @@ export async function insertCoins(
       throw new Error("Symbol is required for coins-metadata");
     if (item.price == undefined && !item.redirect)
       throw new Error("Price or redirect is required");
-    if (item.SK == 0 &&item.adapter != "coingecko" && !item.decimals)
+    if (item.SK == 0 && item.adapter != "coingecko" && !item.decimals)
       throw new Error("Decimals are required for non-coingecko coins");
   });
 
@@ -27,5 +27,11 @@ export async function insertCoins(
   });
 
   await produce(items, topics);
-  await batchWrite(items, failOnError ?? true);
+  await batchWrite(
+    items.map((item) => {
+      if (item.adapter && item.SK != 0) return { ...item, adapter: undefined };
+      return item;
+    }),
+    failOnError ?? true
+  );
 }

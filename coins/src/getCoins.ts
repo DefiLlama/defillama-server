@@ -12,13 +12,13 @@ const handler = async (event: any): Promise<IResponse> => {
   const timestampRequested = body.timestamp;
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
   const response = {} as CoinsResponse;
-  let isDistressed = false
   await Promise.all(
     coins.map(async (coin) => {
+    let isDistressed = false
 
     if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
         coin.decimals = Number(coin.decimals);
-      if (coin.distressedFrom) isDistressed = true;
+      if (coin.distressedFrom) isDistressed = timestampRequested && coin.distressedFrom < timestampRequested ? true : false
       let formattedCoin = {
         decimals: coin.decimals,
         price: isDistressed ? 0 : coin.price,

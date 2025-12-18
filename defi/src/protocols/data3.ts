@@ -29967,7 +29967,7 @@ const data3_1: Protocol[] = [
       "https://chainsecurity.com/security-audit/yearn-yeth-governance/",
       "https://github.com/mixbytes/audits_public/tree/master/Yearn%20Finance/yETH-bootstrap",
     ],
-    // parentProtocol: "parent#yearn",
+    parentProtocol: "parent#yearn",
     deprecated: true,
     listedAt: 1703852065,
     dimensions: {

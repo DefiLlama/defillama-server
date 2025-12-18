@@ -6391,7 +6391,7 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1765991807,
   },
-  {
+  /*{
     id: "7154",
     name: "Molten Network",
     address: null,
@@ -6412,6 +6412,6 @@ const data5: Protocol[] = [
     audit_links: [],
     github: ["keel-fi"],
     listedAt: 1765991129,
-  },
+  },*/
 ];
 export default data5;

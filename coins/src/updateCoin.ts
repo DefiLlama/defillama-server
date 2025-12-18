@@ -187,6 +187,7 @@ const handler = async (event: any): Promise<IResponse> => {
             symbol,
             confidence,
             volume,
+            adapter: "updateCoin",
           },
           {
             PK: `coingecko#${id}`,

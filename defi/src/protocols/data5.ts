@@ -6471,7 +6471,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["TAC"],
-    module: "dummy.js",
+    module: "tac-liquid-staking/index.js",
     twitter: "gTACprotocol",
     forkedFromIds: [],
     audit_links: [

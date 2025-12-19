@@ -20444,14 +20444,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1016",
-    name: "Aztec",
+    name: "Aztec Connect",
+    previousNames: ["Aztec"],
     address: null,
     symbol: "-",
     url: "https://aztec.network",
     description:
       "Aztec is building an open source layer 2 network on Ethereum. Aztec's layer 2 network uses zkSNARK proofs to extend Ethereum's functionality with the addition of private state.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aztec.jpg`,
+    logo: `${baseIconsUrl}/aztec-connect.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

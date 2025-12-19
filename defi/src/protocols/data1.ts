@@ -3914,6 +3914,9 @@ const data: Protocol[] = [
     audit_links: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
     governanceID: ["snapshot:ankr-dao.eth"],
     github: ["Ankr-network"],
+    dimensions: {
+      fees: "ankr-lst"
+    }
   },
   {
     id: "279",

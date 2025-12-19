@@ -3717,7 +3717,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     module: "perena/index.js",
-    twitter: "Perena__",
+    twitter: "Perena",
     forkedFrom: [],
     listedAt: 1738322143,
   },

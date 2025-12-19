@@ -1,3 +1,4 @@
+// index.ts
 import { AdapterType, SimpleAdapter } from "../../data/types"
 import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
@@ -84,12 +85,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
     skipHourlyCache = false,
   } = options
 
+  const localStoreEnabled = process.env.DIM_LOCAL_STORE === 'true'
+
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
 
   let recentData: any = {}
 
-  const checkAgainstRecentData = runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday'
+  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday') && !localStoreEnabled
 
   if (checkAgainstRecentData)
     recentData = await getRecentData(adapterType)
@@ -353,10 +356,13 @@ export const handler2 = async (options: DimensionRunOptions) => {
           recordTimestamp = timestampAtStartofHour
           endTimestamp = timestampAtStartofHour
 
+          const skipRefillYesterday = localStoreEnabled || process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
+
           // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
           if (!runAtCurrTime && !haveYesterdayData) {
-            console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
-            try {
+            if (skipRefillYesterday) console.log(`[refill-yesterday] skipped for ${adapterType} - ${module} (localStore or DIM_SKIP_REFILL_YESTERDAY=true)`)
+            else {
+              console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
               refillYesterdayPromise = handler2({
                 timestamp: yesterdayEndTimestamp,
                 adapterType,
@@ -365,10 +371,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
                 deadChains,
               })
-              if (onlyYesterday)
-                return await refillYesterdayPromise
-            } catch (e) {
-              console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
+              if (onlyYesterday) return await refillYesterdayPromise
             }
           }
 
@@ -403,9 +406,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
       let adaptorRecordV2JSON: any
-      let breakdownByToken: any
-      let tokenBreakdownByLabel: any
-      let tokenBreakdownByLabelByChain: any
+      let tb: any
+      let tbl: any
+      let tblc: any
       let hourlySlicesForDebug: any[] | undefined
 
       if (isHourlyAdapter && runType === 'store-all' && !isRunFromRefillScript) {
@@ -447,9 +450,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           bl?: any
           blc?: any
           timeS?: string
-          tokenBreakdown?: any
-          tokenBreakdownByLabel?: any
-          tokenBreakdownByLabelByChain?: any
+          tb?: any
+          tbl?: any
+          tblc?: any
         }[] = []
 
         if (slicesToFetch.length) {
@@ -467,20 +470,20 @@ export const handler2 = async (options: DimensionRunOptions) => {
             })
 
             const sliceRecord = res.adaptorRecordV2JSON as any
-            const sliceBreakdownByToken = res.breakdownByToken
+            const sliceTb = res.breakdownByToken
 
-            let sliceTokenBreakdownByLabel = res.tokenBreakdownByLabel
-            let sliceTokenBreakdownByLabelByChain = res.tokenBreakdownByLabelByChain
+            let sliceTbl = res.tokenBreakdownByLabel
+            let sliceTblc = res.tokenBreakdownByLabelByChain
 
             // If adapter doesn't provide tbl/tblc, build it from tokenBreakdown + bl/blc
-            if (sliceBreakdownByToken && (!sliceTokenBreakdownByLabel || !sliceTokenBreakdownByLabelByChain)) {
+            if (sliceTb && (!sliceTbl || !sliceTblc)) {
               const built = buildTokenBreakdownsByLabel({
-                tokenBreakdown: sliceBreakdownByToken,
+                tokenBreakdown: sliceTb,
                 breakdownByLabel: sliceRecord?.breakdownByLabel,
                 breakdownByLabelByChain: sliceRecord?.breakdownByLabelByChain,
               })
-              sliceTokenBreakdownByLabel = sliceTokenBreakdownByLabel ?? built.tokenBreakdownByLabel
-              sliceTokenBreakdownByLabelByChain = sliceTokenBreakdownByLabelByChain ?? built.tokenBreakdownByLabelByChain
+              sliceTbl = sliceTbl ?? built.tbl
+              sliceTblc = sliceTblc ?? built.tblc
             }
 
             if (!sliceRecord || !sliceRecord.aggregated || Object.keys(sliceRecord.aggregated).length === 0) {
@@ -493,14 +496,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
               data: sliceRecord.aggregated,
               bl: sliceRecord.breakdownByLabel ?? null,
               blc: sliceRecord.breakdownByLabelByChain ?? null,
-              tokenBreakdown: sliceBreakdownByToken,
-              tokenBreakdownByLabel: sliceTokenBreakdownByLabel ?? null,
-              tokenBreakdownByLabelByChain: sliceTokenBreakdownByLabelByChain ?? null,
+              tb: sliceTb,
+              tbl: sliceTbl ?? null,
+              tblc: sliceTblc ?? null,
             })
           }
 
           if (newSlices.length) {
-            if (!isDryRun) {
+            if (!isDryRun || localStoreEnabled) {
               await upsertHourlySlicesForProtocol({
                 adapterType,
                 id: id2,
@@ -520,9 +523,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           data: any,
           bl?: any,
           blc?: any,
-          tokenBreakdown?: any,
-          tokenBreakdownByLabel?: any,
-          tokenBreakdownByLabelByChain?: any,
+          tb?: any,
+          tbl?: any,
+          tblc?: any,
         }[] = []
 
         // accumulate daily label breakdown + token breakdown
@@ -544,18 +547,18 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
           const sliceBl = (slice as any).bl ?? null
           const sliceBlc = (slice as any).blc ?? null
-          const sliceToken = (slice as any).tokenBreakdown
-          const sliceTokenByLabel = (slice as any).tokenBreakdownByLabel
-          const sliceTokenByLabelByChain = (slice as any).tokenBreakdownByLabelByChain
+          const sliceTb = (slice as any).tb
+          const sliceTbl = (slice as any).tbl
+          const sliceTblc = (slice as any).tblc
 
           fullSlices.push({
             timestamp: slice.timestamp,
             data: slice.data,
             bl: sliceBl,
             blc: sliceBlc,
-            tokenBreakdown: sliceToken,
-            tokenBreakdownByLabel: sliceTokenByLabel,
-            tokenBreakdownByLabelByChain: sliceTokenByLabelByChain,
+            tb: sliceTb,
+            tbl: sliceTbl,
+            tblc: sliceTblc,
           })
 
           // ---- daily breakdownByLabel ----
@@ -588,9 +591,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
 
           // ---- daily token breakdown (usd + raw) ----
-          if (sliceToken && typeof sliceToken === 'object') {
+          if (sliceTb && typeof sliceTb === 'object') {
             // shape: { [chain]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } }
-            for (const [chain, metricsAny] of Object.entries(sliceToken as any)) {
+            for (const [chain, metricsAny] of Object.entries(sliceTb as any)) {
               const metrics = metricsAny as any
               if (!dailyTokenBreakdown[chain]) dailyTokenBreakdown[chain] = {}
               const chainDst = dailyTokenBreakdown[chain]
@@ -636,9 +639,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
 
           // ---- daily token breakdown by label (tbl) ----
-          if (sliceTokenByLabel && typeof sliceTokenByLabel === 'object') {
+          if (sliceTbl && typeof sliceTbl === 'object') {
             // shape: { [label]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } }
-            for (const [label, metricsAny] of Object.entries(sliceTokenByLabel as any)) {
+            for (const [label, metricsAny] of Object.entries(sliceTbl as any)) {
               const metrics = metricsAny as any
               if (!dailyTokenBreakdownByLabel[label]) dailyTokenBreakdownByLabel[label] = {}
               const labelDst = dailyTokenBreakdownByLabel[label]
@@ -682,9 +685,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
 
           // ---- daily token breakdown by label + chain (tblc) ----
-          if (sliceTokenByLabelByChain && typeof sliceTokenByLabelByChain === 'object') {
+          if (sliceTblc && typeof sliceTblc === 'object') {
             // shape: { [label]: { [chain]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } } }
-            for (const [label, chainsAny] of Object.entries(sliceTokenByLabelByChain as any)) {
+            for (const [label, chainsAny] of Object.entries(sliceTblc as any)) {
               const chains = chainsAny as any
               if (!dailyTokenBreakdownByLabelByChain[label]) dailyTokenBreakdownByLabelByChain[label] = {}
               const labelDst = dailyTokenBreakdownByLabelByChain[label]
@@ -755,18 +758,18 @@ export const handler2 = async (options: DimensionRunOptions) => {
           timestamp: recordTimestamp,
         }
 
-        breakdownByToken = Object.keys(dailyTokenBreakdown).length ? dailyTokenBreakdown : undefined
-        tokenBreakdownByLabel = Object.keys(dailyTokenBreakdownByLabel).length ? dailyTokenBreakdownByLabel : undefined
-        tokenBreakdownByLabelByChain = Object.keys(dailyTokenBreakdownByLabelByChain).length ? dailyTokenBreakdownByLabelByChain : undefined
+        tb = Object.keys(dailyTokenBreakdown).length ? dailyTokenBreakdown : undefined
+        tbl = Object.keys(dailyTokenBreakdownByLabel).length ? dailyTokenBreakdownByLabel : undefined
+        tblc = Object.keys(dailyTokenBreakdownByLabelByChain).length ? dailyTokenBreakdownByLabelByChain : undefined
 
         hourlySlicesForDebug = fullSlices.map(s => ({
           timestamp: s.timestamp,
           data: s.data,
           bl: s.bl,
           blc: s.blc,
-          tokenBreakdown: s.tokenBreakdown,
-          tokenBreakdownByLabel: s.tokenBreakdownByLabel,
-          tokenBreakdownByLabelByChain: s.tokenBreakdownByLabelByChain,
+          tb: s.tb,
+          tbl: s.tbl,
+          tblc: s.tblc,
         }))
 
       } else {
@@ -781,18 +784,18 @@ export const handler2 = async (options: DimensionRunOptions) => {
           deadChains,
         })
         adaptorRecordV2JSON = res.adaptorRecordV2JSON
-        breakdownByToken = res.breakdownByToken
-        tokenBreakdownByLabel = res.tokenBreakdownByLabel
-        tokenBreakdownByLabelByChain = res.tokenBreakdownByLabelByChain
+        tb = res.breakdownByToken
+        tbl = res.tokenBreakdownByLabel
+        tblc = res.tokenBreakdownByLabelByChain
 
-        if (breakdownByToken && (!tokenBreakdownByLabel || !tokenBreakdownByLabelByChain)) {
+        if (tb && (!tbl || !tblc)) {
           const built = buildTokenBreakdownsByLabel({
-            tokenBreakdown: breakdownByToken,
+            tokenBreakdown: tb,
             breakdownByLabel: adaptorRecordV2JSON?.breakdownByLabel,
             breakdownByLabelByChain: adaptorRecordV2JSON?.breakdownByLabelByChain,
           })
-          tokenBreakdownByLabel = tokenBreakdownByLabel ?? built.tokenBreakdownByLabel
-          tokenBreakdownByLabelByChain = tokenBreakdownByLabelByChain ?? built.tokenBreakdownByLabelByChain
+          tbl = tbl ?? built.tbl
+          tblc = tblc ?? built.tblc
         }
       }
 
@@ -855,9 +858,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           aggregated: adaptorRecordV2JSON.aggregated,
           breakdownByLabel: adaptorRecordV2JSON.breakdownByLabel,
           breakdownByLabelByChain: adaptorRecordV2JSON.breakdownByLabelByChain,
-          tokenBreakdown: breakdownByToken,
-          tokenBreakdownByLabel,
-          tokenBreakdownByLabelByChain,
+          tb,
+          tbl,
+          tblc,
           hourlySlices: hourlySlicesForDebug,
         }
       }
@@ -868,10 +871,10 @@ export const handler2 = async (options: DimensionRunOptions) => {
         const base = adapterRecord.getDDBItem() as any
 
         // tb (global chain+metric)
-        if (breakdownByToken) {
+        if (tb) {
           const tbItem = {
             ...base,
-            data: breakdownByToken,
+            data: tb,
             source: 'dimension-adapter',
             subType: 'token-breakdown',
             PK: `dimTokenBreakdown#${base.PK}`,
@@ -880,10 +883,10 @@ export const handler2 = async (options: DimensionRunOptions) => {
         }
 
         // tbl (label-level)
-        if (tokenBreakdownByLabel) {
+        if (tbl) {
           const tblItem = {
             ...base,
-            data: tokenBreakdownByLabel,
+            data: tbl,
             source: 'dimension-adapter',
             subType: 'token-breakdown-label',
             PK: `dimTokenBreakdownLabel#${base.PK}`,
@@ -892,10 +895,10 @@ export const handler2 = async (options: DimensionRunOptions) => {
         }
 
         // tblc (label+chain-level)
-        if (tokenBreakdownByLabelByChain) {
+        if (tblc) {
           const tblcItem = {
             ...base,
-            data: tokenBreakdownByLabelByChain,
+            data: tblc,
             source: 'dimension-adapter',
             subType: 'token-breakdown-label-chain',
             PK: `dimTokenBreakdownLabelChain#${base.PK}`,
@@ -931,14 +934,12 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         }
 
-
-        if (!isDryRun) {
-
+        if (!isDryRun || localStoreEnabled) {
           await storeAdapterRecord(adapterRecord)
-          await storeTokenBreakdownData()
-
+          if (!localStoreEnabled && !isDryRun) {
+            await storeTokenBreakdownData()
+          }
         } else if (checkBeforeInsert) {
-
           responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
           responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
           responseObject.recordV2 = adapterRecord
@@ -1139,11 +1140,7 @@ type TokenInfo = {
   rawTokenBalances?: Record<string, string | number>
 }
 
-function buildTokenBreakdownsByLabel(params: {
-  tokenBreakdown?: any
-  breakdownByLabel?: any
-  breakdownByLabelByChain?: any
-}): { tokenBreakdownByLabel?: any, tokenBreakdownByLabelByChain?: any } {
+function buildTokenBreakdownsByLabel(params: { tokenBreakdown?: any, breakdownByLabel?: any, breakdownByLabelByChain?: any }): { tbl?: any, tblc?: any } {
   const { tokenBreakdown, breakdownByLabel, breakdownByLabelByChain } = params
   if (!tokenBreakdown || typeof tokenBreakdown !== 'object') return {}
 
@@ -1291,7 +1288,7 @@ function buildTokenBreakdownsByLabel(params: {
   }
 
   return {
-    tokenBreakdownByLabel: Object.keys(tbl).length ? tbl : undefined,
-    tokenBreakdownByLabelByChain: Object.keys(tblc).length ? tblc : undefined,
+    tbl: Object.keys(tbl).length ? tbl : undefined,
+    tblc: Object.keys(tblc).length ? tblc : undefined,
   }
 }

@@ -4240,7 +4240,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "monday-trade-perp",
       fees: "monday-trade-perp",
-      "open-interest": "monday-trade-perp",
+      "open-interest": "monday-trade-perp-oi",
     },
   },
   {

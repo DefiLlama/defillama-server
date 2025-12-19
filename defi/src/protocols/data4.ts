@@ -8486,6 +8486,9 @@ const data4: Protocol[] = [
     module: "multipli/index.js",
     twitter: "multiplifi",
     listedAt: 1741969274,
+    dimensions: {
+      fees: "multipli-fi"
+    }
   },
   {
     id: "5906",
@@ -26706,6 +26709,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#hylo",
     listedAt: 1756830317,
+    dimensions: {
+      fees: "hylo-lst"
+    }
   },
   {
     id: "6649",
@@ -30037,7 +30043,10 @@ const data4: Protocol[] = [
     ],
     audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
     stablecoins: ["solstice-usx"],
-    listedAt: 1759263438
+    listedAt: 1759263438,
+    dimensions: {
+      fees: "solstice-usx"
+    }
   },
   {
     id: "6790",

@@ -433,6 +433,9 @@ const data: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     governanceID: ["snapshot:community.nexusmutual.eth", "specialresolution.nexusmutual.eth"],
     github: ["NexusMutual"], //check
+    dimensions: {
+      fees: "nexus-mutual"
+    }
   },
   {
     id: "123",

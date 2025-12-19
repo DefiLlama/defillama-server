@@ -6927,6 +6927,9 @@ const data3_0: Protocol[] = [
     twitter: "Node_DAO",
     audit_links: ["https://www.nodedao.com/paf/MetaTrust.pdf", "https://www.nodedao.com/paf/BEOSIN.pdf"],
     listedAt: 1684416874,
+    dimensions: {
+      fees: "node-dao"
+    }
   },
   {
     id: "2994",
@@ -34642,6 +34645,9 @@ const data3_1: Protocol[] = [
     twitter: "cryptocom",
     forkedFrom: [],
     listedAt: 1708604490,
+    dimensions: {
+      fees: "crypto-com-lst"
+    }
   },
   {
     id: "4159",

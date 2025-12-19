@@ -2392,6 +2392,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1762997847,
+    dimensions: {
+      fees: "gate-btc",
+    },
   },
   {
     id: "6990",

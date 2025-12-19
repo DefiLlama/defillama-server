@@ -5340,6 +5340,15 @@ export const chainCoingeckoIds = {
     url: "https://www.gpu.net/",
     chainId: 4048,
   },
+  "JOC": {
+    geckoId: "japan-open-chain",
+    symbol: "JOC",
+    cmcId: "35773",
+    categories: ["EVM"],
+    twitter: "Japanopenchain0",
+    url: "https://www.japanopenchain.org/en/",
+    chainId: 81,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5564,6 +5573,7 @@ const chainLabelMap = {
   "cross": "CROSS",
   "alphasec": "AlphaSec",
   "gan": "GANchain",
+  "joc": "JOC",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

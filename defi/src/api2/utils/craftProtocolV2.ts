@@ -61,7 +61,7 @@ export async function craftProtocolV2({
   const isDummyProtocol = protocolData.module === "dummy.js";
   const skipTokenBreakdownData = heavyProtocols.has(protocolData.id)
 
-  const debug_t0 = performance.now(); // start the timer
+  // const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
   const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData || isDummyProtocol
 
@@ -94,18 +94,13 @@ export async function craftProtocolV2({
     historicalTokenTvl = protocolCache[2] ?? []
   }
 
-  if (skipTokenBreakdownData) {
-    historicalUsdTokenTvl = []
-    historicalTokenTvl = []
-  }
-
-  if (feMini) {
+  if (feMini || skipTokenBreakdownData) {
     historicalUsdTokenTvl = []
     historicalTokenTvl = []
     lastUsdTokenHourlyRecord = null
     lastTokenHourlyRecord = null
   }
-  const debug_dbTimeAll = performance.now() - debug_t0
+  // const debug_dbTimeAll = performance.now() - debug_t0
 
   let response: IProtocolResponse = {
     ...restProtocolData,

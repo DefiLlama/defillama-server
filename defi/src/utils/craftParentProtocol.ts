@@ -368,6 +368,7 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
 
 
   function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
+    if (!data || data.length === 0) return {};
     const dateMap: { [date: number]: any } = {}
     data.sort((a, b) => a.date - b.date) // sort by date
 

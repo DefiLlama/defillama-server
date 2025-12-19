@@ -30798,7 +30798,7 @@ const data4: Protocol[] = [
     category: "Bridge",
     chains: ["Bitcoin"],
     module: "bitget-btc/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFromIds: [],
     listedAt: 1759876842
   },

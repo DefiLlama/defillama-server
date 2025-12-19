@@ -22954,7 +22954,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Polygon", "Solana"],
     module: "bitget/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFrom: [],
     listedAt: 1670842933,
   },

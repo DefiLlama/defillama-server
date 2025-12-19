@@ -62294,7 +62294,7 @@ const data3_3: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "bgsol/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFrom: [],
     listedAt: 1731062934,
     dimensions: {

@@ -1,4 +1,3 @@
-// db2.ts
 import * as sdk from "@defillama/sdk"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { Op, } from "sequelize"

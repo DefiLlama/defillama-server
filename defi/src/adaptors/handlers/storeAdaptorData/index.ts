@@ -1,4 +1,3 @@
-// index.ts
 import { AdapterType, SimpleAdapter } from "../../data/types"
 import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';

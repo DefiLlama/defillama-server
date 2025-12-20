@@ -13538,5 +13538,17 @@
       "decimals": 18,
       "symbol": "CROSS"
     }
+  }, 
+  "mantrachain": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "MANTA"
+    }, 
+    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
+      "to": "coingecko#coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "mantraUSD"
+    }
   }
 }

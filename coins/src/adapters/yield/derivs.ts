@@ -621,19 +621,18 @@ const configs: { [adapter: string]: Config } = {
   },
   sMON: {
     rate: async ({ api }) => {
-      const assets = await 
-        api.call({
-          abi: "function convertToAssets(uint96 shares) external view returns (uint96 assets)",
-          target: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
-          params: "1000000"
-        })
+      const assets = await api.call({
+        abi: "function convertToAssets(uint96 shares) external view returns (uint96 assets)",
+        target: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+        params: "1000000",
+      });
       return assets / 1000000;
     },
     chain: "monad",
     underlying: "0x0000000000000000000000000000000000000000",
     address: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
   },
-  "stBTC": {
+  stBTC: {
     rate: async ({ api }) => {
       const rate = await api.call({
         abi: "function latestAnswer() external view returns (uint256)",
@@ -644,7 +643,19 @@ const configs: { [adapter: string]: Config } = {
     chain: "btnx",
     underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
     address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
-    confidence: 1
+    confidence: 1,
+  },
+  xPM: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:nav",
+        target: "0x75939CEb9FBa27A545fE27d1CBd228c29123687c",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x75939CEb9FBa27A545fE27d1CBd228c29123687c",
   },
 };
 

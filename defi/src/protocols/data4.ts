@@ -17295,7 +17295,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs, Launchpads",
+    category: "Launchpad",
     chains: ["Sui"],
     forkedFrom: [],
     module: "suirewardsme/index.js",

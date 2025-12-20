@@ -5358,6 +5358,21 @@ export const chainCoingeckoIds = {
     url: "https://www.japanopenchain.org/en/",
     chainId: 81,
   },
+  "Flynet": {
+    geckoId: null,
+    symbol: "F2",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    twitter: "blackbird",
+    parent: {
+      chain: "Base",
+      types: ["L3"],
+    },
+    url: "https://www.blackbird.xyz/",
+    dimensions: {
+      fees: "flynet",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -4155,6 +4155,9 @@ export const chainCoingeckoIds = {
     twitter: "opencampus_xyz",
     url: "https://www.opencampus.xyz/",
     chainId: 41923,
+    dimensions: {
+      fees: "edu-chain",
+    },
   },
   "Fluence": {
     geckoId: "fluence-2",

@@ -3064,6 +3064,9 @@ const data5: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/1L2x0aeW6JR56B0TGJbhmSKWx7Vd_v49G/view?usp=sharing"],
     github: ["Reactor-Fuel"],
     listedAt: 1763561057,
+    dimensions: {
+      dexs: "reactor-exchange",
+    },
   },
   {
     id: "7015",
@@ -5518,6 +5521,9 @@ const data5: Protocol[] = [
     twitter: "EverclearOrg",
     audit_links: [],
     listedAt: 1765391662,
+    dimensions: {
+      fees: "everclear",
+    },
   },
   {
     id: "7115",

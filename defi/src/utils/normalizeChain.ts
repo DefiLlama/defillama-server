@@ -4888,6 +4888,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "EveDexOfficial",
     url: "https://evedex.com/en-US/",
+    dimensions: {
+      fees: "eventum",
+    },
   },
   "Bitcichain": {
     geckoId: "bitcicoin",
@@ -5107,6 +5110,9 @@ export const chainCoingeckoIds = {
     twitter: "etherealdex",
     url: "https://www.ethereal.trade/",
     chainId: 5064014,
+    dimensions: {
+      fees: "ethereal",
+    },
   },
   "Bittensor EVM": {
     geckoId: null,

@@ -20819,6 +20819,9 @@ const data3_1: Protocol[] = [
     module: "DigiFT/index.js",
     twitter: "DigiFTTech",
     listedAt: 1695992751,
+    dimensions: {
+      fees: "digift",
+    },
   },
   {
     id: "3581",

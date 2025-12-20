@@ -6710,7 +6710,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Reserve Currency",
+    category: "Luck Games",
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "faithdotgg",

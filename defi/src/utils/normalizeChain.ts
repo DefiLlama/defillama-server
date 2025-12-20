@@ -5373,6 +5373,15 @@ export const chainCoingeckoIds = {
       fees: "flynet",
     },
   },
+  "MANTRACHAIN": {
+    geckoId: null,
+    symbol: "OM",
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    twitter: "MANTRA_Chain",
+    url: "https://www.mantrachain.io/",
+    chainId: 5887,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5598,6 +5607,7 @@ const chainLabelMap = {
   "alphasec": "AlphaSec",
   "gan": "GANchain",
   "joc": "JOC",
+  "mantrachain": "MANTRACHAIN",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

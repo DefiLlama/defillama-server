@@ -28228,13 +28228,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6711",
-    name: "UdonFi",
+    name: "UdonFi Lending",
     address: null,
     symbol: "-",
     url: "https://udonfi.xyz/",
     description: "UdonFi is a lending and borrowing protocol on Chromia that lets users supply and borrow assets within an isolated appchain environment.",
     chain: "Chromia",
-    logo: `${baseIconsUrl}/udonfi.jpg`,
+    logo: `${baseIconsUrl}/udonfi-lending.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28251,6 +28251,7 @@ const data4: Protocol[] = [
     ],
     module: "udon/index.js",
     twitter: "udonfi_chromia",
+    parentProtocol: "parent#udonfi",
     listedAt: 1757530151,
   },
   {

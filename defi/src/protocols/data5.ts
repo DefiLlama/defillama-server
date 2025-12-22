@@ -3867,6 +3867,7 @@ const data5: Protocol[] = [
     twitter: "udonfi_chromia",
     forkedFromIds: [],
     audit_links: [],
+    parentProtocol: "parent#udonfi",
     listedAt: 1764090347,
   },
   {

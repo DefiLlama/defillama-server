@@ -876,7 +876,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://titan.exchange/@defillama",
-    referralUrl: "titan.exchange/@defillama",
+    referralUrl: "https://titan.exchange/@defillama",
     description: "Meta DEX Aggregator on Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/titan-exchange.jpg`,

@@ -13425,6 +13425,11 @@
       "to": "coingecko#monad",
       "decimals": 18,
       "symbol": "MON"
+    },
+    "0xAD96C3dffCD6374294e2573A7fBBA96097CC8d7c": {
+      "to": "coingecko#pixie-dust",
+      "decimals": 18,
+      "symbol": "DUST"
     }
   },
   "stable": {

@@ -24058,7 +24058,8 @@ const data4: Protocol[] = [
     name: "GAIB",
     address: null,
     symbol: "-",
-    url: "https://gaib.ai",
+    url: "https://aid.gaib.ai/spice?ref=4A3909EB",
+    referralUrl: "https://aid.gaib.ai/spice?ref=4A3909EB",
     description:
       "GAIB is a financial layer for AI infrastructure, turning GPU-backed assets into yield-generating opportunities. Its AI synthetic dollar, AID, gives investors exposure to the AI economy while earning yield from compute resources. Users can stake AID (sAID) to earn passive income without giving up liquidity. GAIB also supports cloud providers and data centers by offering capital solutions to improve access to compute. Integrated with DeFi protocols like lending, borrowing, and structured products, GAIB connects AI and blockchain to open new investment opportunities",
     chain: "Ethereum",

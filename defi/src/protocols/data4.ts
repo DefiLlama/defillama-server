@@ -12708,6 +12708,9 @@ const data4: Protocol[] = [
     github: ["SolomonLabs"],
     stablecoins: ["solomon-usdv"],
     listedAt: 1745349218,
+    dimensions: {
+      fees: "solomon-usdv"
+    }
   },
   {
     id: "6078",

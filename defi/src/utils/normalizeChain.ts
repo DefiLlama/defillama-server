@@ -4886,7 +4886,7 @@ export const chainCoingeckoIds = {
       chain: "Arbitrum",
       types: ["L3"],
     },
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
     url: "https://evedex.com/en-US/",
     dimensions: {
       fees: "eventum",

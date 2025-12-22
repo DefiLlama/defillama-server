@@ -6877,7 +6877,7 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1766422211,
   },
-  { 
+  /*{ 
     id: "7175",
     name: "LotusDex V2",
     address: null,
@@ -6898,7 +6898,7 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1766423171,
   },
-  /*{ 
+  { 
     id: "7176",
     name: "LotusDex V3",
     address: null,
@@ -6918,7 +6918,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423181,
-  },
+  },*/
   { 
     id: "7177",
     name: "Yusan",
@@ -6939,7 +6939,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423424,
-  },*/
+  },
   { 
     id: "7178",
     name: "RAAC",

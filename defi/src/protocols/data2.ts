@@ -21891,7 +21891,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#camelot",
     listedAt: 1669242459,
     dimensions: {
-      fees: "camelot-v2",
+      fees: "camelot",
       dexs: "camelot"
     }
   },

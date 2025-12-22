@@ -20874,6 +20874,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#felix",
     listedAt: 1751964664,
+    dimensions: {
+      fees: "felix-usdhl"
+    }
   },
   {
     id: "6405",
@@ -24008,6 +24011,9 @@ const data4: Protocol[] = [
     twitter: "AdrasteaFinance",
     parentProtocol: "parent#adrastea",
     listedAt: 1754499345,
+    dimensions: {
+      fees: "adrastea-lst"
+    }
   },
   {
     id: "6533",

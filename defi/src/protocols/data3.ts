@@ -12500,6 +12500,9 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/ajna-finance/audits"],
     parentProtocol: "parent#ajna",
     listedAt: 1689441053,
+    dimensions: {
+      fees: "ajna-v1"
+    }
   },
   {
     id: "3234",
@@ -31091,6 +31094,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/ajna-finance/audits"],
     parentProtocol: "parent#ajna",
     listedAt: 1705092987,
+    dimensions: {
+      fees: "ajna-v2"
+    }
   },
   {
     id: "4020",
@@ -38557,6 +38563,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/aera-finance/aera-contracts-public/blob/main/v2/audits/spearbit/2023-09-22.pdf"],
     parentProtocol: "parent#aera",
     listedAt: 1710850850,
+    dimensions: {
+      fees: "aera-v2"
+    }
   },
   {
     id: "4324",
@@ -49871,6 +49880,9 @@ const data3_3: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#icecreamswap",
     listedAt: 1718964127,
+    dimensions: {
+      dexs: "icecreamswap-v3"
+    }
   },
   {
     id: "4804",

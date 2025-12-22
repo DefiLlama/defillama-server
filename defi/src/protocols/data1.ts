@@ -1552,6 +1552,9 @@ const data: Protocol[] = [
     twitter: "indexcoop",
     governanceID: ["snapshot:index-coop.eth"],
     github: ["SetProtocol"],
+    dimensions: {
+      fees: "index-coop"
+    }
   },
   {
     id: "173",

@@ -78,6 +78,7 @@ async function getTvl(
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
+          if (prefixMalformed(key)) delete tvlBalances[key]
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
         })
         const isStandard = Object.entries(tvlBalances).every(
@@ -158,6 +159,14 @@ function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsOb
   }
 }
 
+export function prefixMalformed(address: string) {
+  const parts = address.split(':')
+  if (parts.length < 3) return false
+  if (address.indexOf(':coingecko:') != -1) return true
+  if (parts.length > 2 &&parts[0] == parts[1]) return true
+  return false
+}
+
 type StoreTvlOptions = {
   returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
@@ -166,9 +175,10 @@ type StoreTvlOptions = {
   overwriteExistingData?: boolean,
   runType?: string,
   isRunFromUITool?: boolean
+  skipChainsCheck?: boolean,
 }
 
-const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1'])
+export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom', 'airdao'])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,
@@ -241,9 +251,10 @@ export async function storeTvl(
     overwriteExistingData = false,
     runType = 'default',
     isRunFromUITool = false,
+    skipChainsCheck = false,
   } = options
 
-  if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
+  if (partialRefill && (!chainsToRefill.length || !cacheData) && !skipChainsCheck) throw new Error('Missing chain list for refill')
 
   const adapterStartTimestamp = getCurrentUnixTimestamp()
 

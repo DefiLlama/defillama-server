@@ -41,5 +41,3 @@ export async function fluidSmartLending(timestamp: number = 0) {
 
   return writes;
 }
-
-fluidSmartLending(); // ts-node coins/src/adapters/markets/fluidSmartLending.ts

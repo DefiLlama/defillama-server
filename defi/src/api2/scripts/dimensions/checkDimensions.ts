@@ -1,10 +1,10 @@
 import '../../utils/failOnError'
 
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType, } from "../../../adaptors/data/types"
 import loadAdaptorsData from "../../../adaptors/data"
 import { getAllItemsAfter, } from "../../../adaptors/db-utils/db2";
 import { getTimeSDaysAgo, } from "../../utils/time";
-import { roundVaules, tableToString, } from "../../utils";
+import { roundValues, tableToString, } from "../../utils";
 import * as sdk from "@defillama/sdk";
 import { sendMessage } from '../../../utils/discord';
 import { ADAPTER_TYPES, DEFAULT_CHART_BY_ADAPTOR_TYPE } from '../../../adaptors/data/types';
@@ -68,7 +68,7 @@ async function run() {
 
       results.forEach((result: any) => {
         const { id, timestamp, data, timeS, } = result
-        roundVaules(data)
+        roundValues(data)
         if (!adapterData.protocols[id]) adapterData.protocols[id] = {
           records: {}
         }
@@ -297,7 +297,7 @@ const hn = (n: number) => n ? sdk.humanizeNumber(n) : '-'
 run().catch(console.error).then(() => process.exit(0))
 
 function getDiffPercentage(current: number, other: number) {
-  return roundVaules(current * 100 / other - 100)
+  return roundValues(current * 100 / other - 100)
 }
 
 // function that takes a certain field to compare array of objects and sets 'isSignificant' to true if the item is in top 25% of the array

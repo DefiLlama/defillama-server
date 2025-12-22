@@ -36,6 +36,11 @@ const handler = async (
         return;
         // }
       }
+
+
+      if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+
       PKTransforms[coin.PK].forEach((coinName) => {
         response[coinName] = {
           decimals: coin.decimals,

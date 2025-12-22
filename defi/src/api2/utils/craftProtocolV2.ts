@@ -30,6 +30,19 @@ export type CraftProtocolV2Options = CraftProtocolV2Common & {
   getCachedProtocolData?: Function;
 }
 
+const heavyProtocols = new Set([
+  '2198', // uni v3
+  "119", // sushiswap
+  "1613", // nested
+  "2769", // pancake v3
+  "214", // raydium
+  "1541", // portal
+  "4148", // Meteora
+  "2611", // Balancer v2
+  "5690", // Uniswap v4
+  "283", // orca
+])
+
 export async function craftProtocolV2({
   protocolData,
   useNewChainNames,
@@ -44,11 +57,15 @@ export async function craftProtocolV2({
   const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
   const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
-  const debug_t0 = performance.now(); // start the timer
-  let protocolCache: any = {}
-  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
+  // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
+  const isDummyProtocol = protocolData.module === "dummy.js";
+  const skipTokenBreakdownData = heavyProtocols.has(protocolData.id)
 
-  if (!useHourlyData)
+  // const debug_t0 = performance.now(); // start the timer
+  let protocolCache: any = {}
+  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData || isDummyProtocol
+
+  if (!useHourlyData && !isDummyProtocol)
     protocolCache = await getCachedProtocolData(protocolData, true)
 
   let _getLastHourlyRecord: any = null
@@ -72,18 +89,18 @@ export async function craftProtocolV2({
   ]);
 
   if (!useHourlyData) {
-    historicalUsdTvl = protocolCache[0]
-    historicalUsdTokenTvl = protocolCache[1]
-    historicalTokenTvl = protocolCache[2]
+    historicalUsdTvl = protocolCache[0] ?? []
+    historicalUsdTokenTvl = protocolCache[1] ?? []
+    historicalTokenTvl = protocolCache[2] ?? []
   }
 
-  if (feMini) {
+  if (feMini || skipTokenBreakdownData) {
     historicalUsdTokenTvl = []
     historicalTokenTvl = []
     lastUsdTokenHourlyRecord = null
     lastTokenHourlyRecord = null
   }
-  const debug_dbTimeAll = performance.now() - debug_t0
+  // const debug_dbTimeAll = performance.now() - debug_t0
 
   let response: IProtocolResponse = {
     ...restProtocolData,
@@ -98,21 +115,21 @@ export async function craftProtocolV2({
   };
 
   if (!lastUsdHourlyRecord)
-    lastUsdHourlyRecord = historicalUsdTvl[historicalUsdTvl.length - 1]
+    lastUsdHourlyRecord = historicalUsdTvl?.[historicalUsdTvl.length - 1]
   if (!lastUsdTokenHourlyRecord)
-    lastUsdTokenHourlyRecord = historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]
+    lastUsdTokenHourlyRecord = historicalUsdTokenTvl?.[historicalUsdTokenTvl.length - 1]
   if (!lastTokenHourlyRecord)
-    lastTokenHourlyRecord = historicalTokenTvl[historicalTokenTvl.length - 1]
+    lastTokenHourlyRecord = historicalTokenTvl?.[historicalTokenTvl.length - 1]
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
-    lastUsdHourlyRecord &&
+    lastUsdHourlyRecord && historicalUsdTvl &&
       lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1]?.SK &&
       historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord &&
+    lastUsdTokenHourlyRecord && historicalUsdTokenTvl &&
       lastUsdTokenHourlyRecord.SK !== historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]?.SK &&
       historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord &&
+    lastTokenHourlyRecord && historicalTokenTvl &&
       lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK &&
       historicalTokenTvl.push(lastTokenHourlyRecord);
   }
@@ -135,9 +152,9 @@ export async function craftProtocolV2({
       };
     }
 
-    
+
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
-    
+
     if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
       for (const item of historicalUsdTvl) {
         let usdValue = selectChainFromItem(item, chain)
@@ -148,7 +165,7 @@ export async function craftProtocolV2({
         }
       }
     }
-    
+
     if (Array.isArray(container?.tokensInUsd) && Array.isArray(historicalUsdTokenTvl)) {
       for (const item of historicalUsdTokenTvl) {
         const tokens = normalizeEthereum(selectChainFromItem(item, chain))
@@ -245,6 +262,10 @@ export async function craftProtocolV2({
         response.chainTvls[key].tokens = null
       })
     }
+  }
+
+  if (skipTokenBreakdownData) {
+    (response as any).skipTokenBreakdownData = true
   }
 
   return response;

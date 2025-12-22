@@ -55,7 +55,7 @@ export async function getLogs(options: logOptions) {
   let cache = await _getCache(key)
   let response
 
-  // if no new data nees to be fetched
+  // if no new data needs to be fetched
   if (cache.fromBlock && cache.toBlock > toBlock)  // @ts-ignore
     response = cache.logs.filter(i => i.blockNumber < toBlock && i.blockNumber >= fromBlock)
   else

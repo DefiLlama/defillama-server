@@ -28494,6 +28494,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/dinero-protocol/audits/tree/master/dinero-pirex-eth/pirex-eth"],
     parentProtocol: "parent#redacted",
     listedAt: 1702470940,
+    dimensions: {
+      fees: "dinero-pxeth"
+    }
   },
   {
     id: "3913",
@@ -43975,6 +43978,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/MorpheusAIs/Docs/tree/main/Security%20Audit%20Reports"],
     github: ["MorpheusAIs"],
     listedAt: 1714565074,
+    dimensions: {
+      fees: "morpheus-ai"
+    }
   },
   {
     id: "4554",
@@ -56847,7 +56853,10 @@ const data3_3: Protocol[] = [
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
     audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
-    listedAt: 1725449393
+    listedAt: 1725449393,
+    dimensions: {
+      fees: "lombard-lbtc"
+    }
   },
   {
     id: "5098",
@@ -63001,6 +63010,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623189,
+    dimensions: {
+      fees: "solayer-staked-sol"
+    }
   },
   {
     id: "5360",

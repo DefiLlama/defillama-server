@@ -16981,6 +16981,9 @@ const data4: Protocol[] = [
     ],
     stablecoins: ["infinifi-usd"],
     listedAt: 1748465947,
+    dimensions: {
+      fees: "infinifi"
+    }
   },
   {
     id: "6246",

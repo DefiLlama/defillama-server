@@ -6718,6 +6718,7 @@ const data5: Protocol[] = [
     twitter: "faithdotgg",
     forkedFromIds: [],
     audit_links: [],
+    treasury: "faith.js",
     dimensions: {
       fees: "faith",
     },

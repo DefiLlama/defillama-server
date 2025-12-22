@@ -13546,7 +13546,7 @@
       "symbol": "MANTA"
     }, 
     "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
-      "to": "coingecko#coingecko#usd-coin",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "mantraUSD"
     }

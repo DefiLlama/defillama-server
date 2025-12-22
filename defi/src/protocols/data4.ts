@@ -3219,7 +3219,7 @@ const data4: Protocol[] = [
     name: "Uniswap V4",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description:
       "Uniswap v4 inherits all of the capital efficiency gains of Uniswap v3, but provides flexibility via hooks and gas optimizations across the entire lifecycle",
     chain: "Ethereum",
@@ -3717,7 +3717,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     module: "perena/index.js",
-    twitter: "Perena__",
+    twitter: "Perena",
     forkedFrom: [],
     listedAt: 1738322143,
   },
@@ -4239,6 +4239,9 @@ const data4: Protocol[] = [
       "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2F4UT7XaqETfzun5TSBrKU%2FSolera%20-%20Zellic%20Audit%20Report%20-%2005-19-2025.pdf?alt=media&token=065cf5fc-0f75-4e83-b061-c12e251c8c79",
     ],
     listedAt: 1738784157,
+    dimensions: {
+      fees: "solera"
+    }
   },
   {
     id: "5734",
@@ -4934,7 +4937,7 @@ const data4: Protocol[] = [
     name: "Hyperliquid Spot Orderbook",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
     symbol: "HYPE",
-    url: "https://hyperliquid.xyz",
+    url: "https://hyperfoundation.org/",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "The order book works in essentially the same way as all centralized exchanges but is fully on-chain",
     chain: "Hyperliquid L1",
@@ -5201,7 +5204,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.aarna.ai",
     description:
-      "aarnâ is an advanced decentralized asset management platform, developed by integrating AI quant strategies with advanced on-chain tokenization, providing a fully permissionless, transparent and self-custodial platform for high-value investors, to manage their digital assets' lifecycle.",
+      "aarnâ is building the Agentic Onchain Treasury (AOT), a fully autonomous onchain treasury that allocates, rotates, and secures assets through programmable, transparent agent governance.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aarna-protocol.jpg`,
     audits: "2",
@@ -5535,6 +5538,9 @@ const data4: Protocol[] = [
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
     listedAt: 1739530444,
+    dimensions: {
+      fees: "bitfi-basis"
+    }
   },
   {
     id: "5786",
@@ -6265,6 +6271,9 @@ const data4: Protocol[] = [
     module: "pico-sol/index.js",
     twitter: "pico__sol",
     listedAt: 1740008934,
+    dimensions: {
+      fees: "pico-staked-sol"
+    }
   },
   {
     id: "5815",
@@ -8477,6 +8486,9 @@ const data4: Protocol[] = [
     module: "multipli/index.js",
     twitter: "multiplifi",
     listedAt: 1741969274,
+    dimensions: {
+      fees: "multipli-fi"
+    }
   },
   {
     id: "5906",
@@ -11339,6 +11351,9 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#mystic-finance",
     listedAt: 1744213581,
+    dimensions: {
+      fees: "mystic-finance"
+    }
   },
   {
     id: "6020",
@@ -12874,6 +12889,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#save-protocol",
     listedAt: 1745485876,
+    dimensions: {
+      fees: "save-staked-sol"
+    }
   },
   {
     id: "6086",
@@ -15359,6 +15377,9 @@ const data4: Protocol[] = [
     module: "phantom-sol/index.js",
     twitter: "phantom",
     listedAt: 1747659045,
+    dimensions: {
+      fees: "phantom-staked-sol",
+    },
   },
   {
     id: "6190",
@@ -16377,6 +16398,9 @@ const data4: Protocol[] = [
     parentProtocol: "parent#avant-protocol",
     audit_links: ["https://docs.avantprotocol.com/security/audits"],
     listedAt: 1747939430,
+    dimensions: {
+      fees: "avant-avusd",
+    },
   },
   {
     id: "6224",
@@ -17271,7 +17295,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs, Launchpads",
+    category: "Launchpad",
     chains: ["Sui"],
     forkedFrom: [],
     module: "suirewardsme/index.js",
@@ -17903,7 +17927,7 @@ const data4: Protocol[] = [
     name: "AO Bridge",
     address: null,
     symbol: "AO",
-    url: "https://ao.arweave.dev/",
+    url: "https://ao.arweave.net/",
     description: "A decentralized supercomputer built on top of Arweave's permanent data storage.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ao-bridge.png`,
@@ -18894,6 +18918,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#avant-protocol",
     listedAt: 1750202587,
+    dimensions: {
+      fees: "avant-avbtc"
+    }
   },
   {
     id: "6324",
@@ -19310,7 +19337,8 @@ const data4: Protocol[] = [
     name: "Unitas",
     address: null,
     symbol: "-",
-    url: "https://unitas.so/",
+    url: "https://app.unitas.so/points?ref=llama",
+    referralUrl: "https://app.unitas.so/points?ref=llama",
     description:
       "Unitas is a decentralized, yield-bearing stablecoin protocol built for the next generation of finance. It issues stablecoins that earn yield natively — no reliance on traditional banks. Powered by Solana, it's fast, scalable, and censorship-resistant",
     chain: "Solana",
@@ -22174,6 +22202,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.stakedhype.fi/technical/audits"],
     parentProtocol: "parent#valantis",
     listedAt: 1753110072,
+    hallmarks: [
+      [1755561600,"Valantis acquired stakedhype"],
+    ],
   },
   {
     id: "6458",
@@ -22239,6 +22270,9 @@ const data4: Protocol[] = [
     twitter: "laine_sa_",
     github: ["laine-sa"],
     listedAt: 1753110915,
+    dimensions: {
+      fees: "laine-staked-sol"
+    }
   },
   {
     id: "6461",
@@ -22509,6 +22543,9 @@ const data4: Protocol[] = [
     module: "stronghold-staked-sol/index.js",
     twitter: "StrongholdSOL",
     listedAt: 1753367603,
+    dimensions: {
+      fees: "stronghold-staked-sol"
+    }
   },
   {
     id: "6472",
@@ -22574,6 +22611,9 @@ const data4: Protocol[] = [
     module: "bitlayer-ybtc_b/index.js",
     twitter: "BitlayerLabs",
     listedAt: 1753368932,
+    dimensions: {
+      fees: "bitlayer-ybtc-family"
+    }
   },
   {
     id: "6475",
@@ -23572,6 +23612,10 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Stellar"],
     module: "wisdomtree/index.js",
     forkedFromIds: [],
+    twitter: "WisdomTreePrime",
+    dimensions: {
+      fees: "wisdomtree"
+    }
   },
   {
     id: "6517",
@@ -24469,16 +24513,16 @@ const data4: Protocol[] = [
   {
     id: "6554",
     name: "HumidiFi",
-    address: null,
-    symbol: "-",
+    address: "solana:WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+    symbol: "WET",
     url: "null",
     description: "Prop AMM on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/humidifi.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "humidifi",
+    cmcId: "39049",
     category: "Dexs",
     chains: ["Solana"],
     module: "dummy.js",
@@ -25217,7 +25261,7 @@ const data4: Protocol[] = [
     name: "Fluid DEX Lite",
     address: null,
     symbol: "-",
-    url: "https://fluid.io/",
+    url: "https://fluid.io/stats/1/dex-lite",
     description:
       "Fluid DEX Lite is a highly gas-optimized decentralized exchange specially designed for small, frequent swaps of correlated asset pairs",
     chain: "Ethereum",
@@ -26666,6 +26710,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#hylo",
     listedAt: 1756830317,
+    dimensions: {
+      fees: "hylo-lst"
+    }
   },
   {
     id: "6649",
@@ -27964,6 +28011,13 @@ const data4: Protocol[] = [
       "https://github.com/EXVUL-Sec/AuditReport/blob/main/Smartcontract/Artura%20Audit%20Report-Exvul.pdf",
       "https://github.com/FydeTreasury/Artura/blob/main/Artura%20Analysis%20w%20Addendum.pdf"
     ],
+    oraclesBreakdown: [
+          {
+            name: "Pyth",
+            type: "Primary",
+            proof: ["https://docs.artura.finance/ecosystem/partners"],
+          },
+        ],
     listedAt: 1757445267,
   },
   {
@@ -27986,6 +28040,9 @@ const data4: Protocol[] = [
     twitter: "Theo_Network",
     parentProtocol: "parent#theo",
     listedAt: 1757469154,
+    dimensions: {
+      fees: "theo"
+    }
   },
   {
     id: "6703",
@@ -29987,7 +30044,10 @@ const data4: Protocol[] = [
     ],
     audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
     stablecoins: ["solstice-usx"],
-    listedAt: 1759263438
+    listedAt: 1759263438,
+    dimensions: {
+      fees: "solstice-usx"
+    }
   },
   {
     id: "6790",
@@ -30009,7 +30069,10 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://docs.falcon.finance/resources/audits#smart-contract-audits"],
     stablecoins: ["falcon-usd"],
-    listedAt: 1759263444
+    listedAt: 1759263444,
+    dimensions: {
+      fees: "falcon-finance"
+    }
   },
   {
     id: "6791",
@@ -30103,7 +30166,7 @@ const data4: Protocol[] = [
     name: "Kinetiq Earn",
     address: null,
     symbol: "-",
-    url: "https://xtrade.gg/",
+    url: "https://kinetiq.xyz/stake-hype#kinetiq-earn",
     description: "Kinetiq Earn puts your HYPE and kHYPE to work across leading DeFi protocols on HyperEVM, optimizing for the best risk-adjusted returns. Powered by Veda.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/kinetiq-earn.jpg`,
@@ -30745,7 +30808,7 @@ const data4: Protocol[] = [
     category: "Bridge",
     chains: ["Bitcoin"],
     module: "bitget-btc/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFromIds: [],
     listedAt: 1759876842
   },
@@ -30794,7 +30857,7 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://github.com/aspecta-ai/audit-report"],
     dimensions: {
-      fees: "aspecta-ai"
+      fees: "aspecta"
     },
     github: ["aspecta-ai"],
   },

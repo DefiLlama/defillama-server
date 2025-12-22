@@ -61,7 +61,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568', 
     // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
     HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
-    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84"
+    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84", 
+    yTUSD: '0x73a052500105205d34daf004eab301916da8190f'
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -98,6 +99,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
     UXLINK:"0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1",
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
+    RAIN: "0x25118290e6a5f4139381d072181157035864099d"
   },
   bsc: {
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
@@ -231,6 +233,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
     SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
+    BITZ: "0x9C6605eEB66bd05858E0cB5204432aA6c7d0fA24", 
+    PLAY: '0x1CCA311B786Dd7906c07414095FA719Eabfd070f'
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",

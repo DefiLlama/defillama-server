@@ -1112,7 +1112,7 @@ const data2: Protocol[] = [
     address: "avax:0x8729438eb15e2c8b576fcc6aecda6a148776c0f5",
     symbol: "QI",
     assetToken: "SAVAX",
-    url: "https://staking.benqi.fi",
+    url: "https://app.benqi.fi/savax",
     description:
       "Stake AVAX on BENQI's Liquid Staking Protocol and freely utilize it within powerful Decentralized Financial applications.",
     chain: "Avalanche",
@@ -8338,9 +8338,9 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Staking",
     address: null,
     symbol: "BNC",
-    url: "https://bifrost.finance",
+    url: "https://bifrost.io/",
     description:
-      "BIfrost ((https://bifrost.finance) is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+      "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-liquid-staking.png`,
     audits: "2",
@@ -8354,7 +8354,7 @@ const data2: Protocol[] = [
     twitter: "Bifrost",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/tree/master",
-      "https://tokeninsight.com/zh/report/2558",
+      "https://tokeninsight.com/en/research/reports/ti-rating-report-bifrost",
     ],
     listedAt: 1651793295,
     dimensions: {
@@ -8957,7 +8957,7 @@ const data2: Protocol[] = [
     name: "UNCX Network V2",
     address: "0xadb2437e6f65682b85f814fbc12fec0508a7b1d0",
     symbol: "UNCX",
-    url: "https://unicrypt.network",
+    url: "https://uncx.network/",
     description:
       "UNCX Network is a one-stop shop with providing its customers with everything they need to launch and maintain a sustainable and secure protocol. Create your token, secure your LP with our liquidity lockers, vest your supply according to your tokenomics and create farming/staking incentives with customisable rewards.",
     chain: "Ethereum",
@@ -14412,6 +14412,14 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1660946171,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
+    deadUrl: true,
   },
   {
     id: "1998",
@@ -15915,7 +15923,7 @@ const data2: Protocol[] = [
     name: "Kamino Liquidity",
     address: "solana:KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
     symbol: "KMNO",
-    url: "https://kamino.finance/",
+    url: "https://kamino.com/liquidity",
     description:
       "Solana's liquidity layer. Built on top of concentrated liquidity protocols, Kamino facilitates automated liquidity via quantitative models, depositing into optimized ranges, rebalancing positions, and auto-compounding of fees & rewards.",
     chain: "Solana",
@@ -16036,7 +16044,9 @@ const data2: Protocol[] = [
     listedAt: 1662489763,
     dimensions: {
       dexs: "vanswap"
-    }
+    },
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2067",
@@ -18495,6 +18505,14 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1665186810,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
+    deadUrl: true,
   },
   {
     id: "2169",
@@ -19166,7 +19184,7 @@ const data2: Protocol[] = [
     name: "Uniswap V1",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V1",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v1.png`,
@@ -19215,7 +19233,7 @@ const data2: Protocol[] = [
     name: "Uniswap V2",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V2",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v2.png`,
@@ -19264,7 +19282,7 @@ const data2: Protocol[] = [
     name: "Uniswap V3",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V2",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v3.png`,
@@ -21833,9 +21851,9 @@ const data2: Protocol[] = [
     name: "Bored Candy City",
     address: "cronos:0x06C04B0AD236e7Ca3B3189b1d049FE80109C7977",
     symbol: "CANDY",
-    url: "https://candycity.finance/",
+    url: "https://new.candycity.finance/",
     description:
-      "Bored Candy City is not just a DEX. We are working on a complete Defi ecosystem around the $CANDY token",
+      "Bored Candy City blends DeFi and gaming: a MultiChain AMM with liquidity yield farms, NFT boosts, and a growing Play2Earn mobile game universe",
     chain: "Cronos",
     logo: `${baseIconsUrl}/bored-candy-city.png`,
     audits: "2",
@@ -22606,7 +22624,7 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Crowdloan",
     address: null,
     symbol: "-",
-    url: "https://bifrost.finance",
+    url: "https://bifrost.io/",
     description:
       "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
     chain: "Bifrost",
@@ -22936,7 +22954,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Polygon", "Solana"],
     module: "bitget/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFrom: [],
     listedAt: 1670842933,
   },
@@ -24852,7 +24870,7 @@ const data2: Protocol[] = [
     name: "Nexo",
     address: "0xb62132e35a6c13ee1ee0f84dc5d40bad8d815206",
     symbol: "NEXO",
-    url: "https://nexo.io",
+    url: "https://nexo.com/",
     description:
       "Nexo is the all-in-one crypto platform where you can buy assets, earn interest and borrow against them or swap between 500+ pairs.",
     chain: "Ethereum",
@@ -28327,14 +28345,16 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "equilibre/index.js",
     treasury: "equilibre.js",
-    twitter: "EquilibreAMM",
     forkedFromIds: ["1407"],
     audit_links: [],
     listedAt: 1677303171,
     dimensions: {
       fees: "equilibre-exchange",
       dexs: "equilibre"
-    }
+    },
+    twitter: "Equilibre_Labs",
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2587",

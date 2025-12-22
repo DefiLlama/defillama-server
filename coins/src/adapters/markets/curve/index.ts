@@ -231,6 +231,13 @@ export function curve17(timestamp: number = 0) {
     ]),
   ]);
 }
+export function curve18(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices2("monad", [], timestamp, "eth-custom", [
+      "0x942644106B073E30D72c2C5D7529D5C296ea91ab"
+    ]),
+  ]);
+}
 
 export const adapters = {
   curve,
@@ -250,5 +257,6 @@ export const adapters = {
   curve14,
   curve15,
   curve16,
-  curve17
+  curve17, 
+  curve18
 };

@@ -42,6 +42,16 @@
     }
   },
   "supra": {
+    "0xf90b4b9d4a9d87c39fb3140513e52edc3ead5eaddcb9881b02becdeb63c5793d": {
+      "decimals": "6",
+      "symbol": "supUSDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xe4af154ade9551e7f58a23b8f727ae2dca050f1b74582bb518ba361c889d246d": {
+      "decimals": "8",
+      "symbol": "supETH",
+      "to": "coingecko#ethereum"
+    },
     "0xa": {
       "decimals": "8",
       "symbol": "SUPRA",
@@ -1031,6 +1041,11 @@
     }
   },
   "ethereum": {
+    "0xd051c326C9Aef673428E6F01eb65d2C52De95D30": {
+      "decimals": "18",
+      "symbol": "ION.au",
+      "to": "coingecko#tether-gold"
+    },
     "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -4091,6 +4106,11 @@
       "to": "coingecko#gate-wrapped-btc",
       "decimals": 8,
       "symbol": "gtBTC"
+    },
+    "9wX6Qz1Y5YQe71dfnFYFfZYXZhKqjYKQwdqfrRkmYUSX": {
+      "to": "coingecko#gmx",
+      "decimals": 9,
+      "symbol": "GMX"
     }
   },
   "ton": {
@@ -9990,6 +10010,16 @@
       "decimals": 6,
       "symbol": "USDG"
     },
+    "0x9f0a74a92287e323eb95c1cd9ecdbeb0e397cae4": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
+    },
     "0x4200000000000000000000000000000000000006": {
       "to": "coingecko#ethereum",
       "decimals": 18,
@@ -10725,6 +10755,11 @@
     }
   },
   "unichain": {
+    "0x0fe4a1bbe013b54e38ef4e4ec8ba1d64d12a0663": {
+      "to": "asset#arbitrum:0x5b2c615e22272234aacf187632a0531ca1243279",
+      "decimals": 18,
+      "symbol": "PT-USDai-19FEB2026-(ARB)"
+    },
     "0xA06b10Db9F390990364A3984C04FaDf1c13691b5": {
       "decimals": "18",
       "symbol": "sUSDS",
@@ -13405,7 +13440,7 @@
     },
     "0x779Ded0c9e1022225f8E0630b35a9b54bE713736": {
       "to": "coingecko#tether",
-      "decimals": 18,
+      "decimals": 6,
       "symbol": "USDT0"
     },
     "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
@@ -13476,6 +13511,44 @@
       "to": "coingecko#zignaly",
       "decimals": 6,
       "symbol": "uzig"
+    }
+  }, 
+  "grx": {
+    "0x45C7287F897B3A79Cd3f6e4F14B4CE568f023bD5": {
+      "decimals": "18",
+      "symbol": "WGRX",
+      "to": "coingecko#grx-chain"
+    }
+  }, 
+  "gan": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#gpunet",
+      "decimals": 18,
+      "symbol": "GPU"
+    }
+  }, 
+  "cross": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#cross-2",
+      "decimals": 18,
+      "symbol": "CROSS"
+    }, 
+    "0x642060e8B44C8f2d6D2974a71a0ca8F995cAfBdA": {
+      "to": "coingecko#cross-2",
+      "decimals": 18,
+      "symbol": "CROSS"
+    }
+  }, 
+  "mantrachain": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "MANTA"
+    }, 
+    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
+      "to": "coingecko#coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "mantraUSD"
     }
   }
 }

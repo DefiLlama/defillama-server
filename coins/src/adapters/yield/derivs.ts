@@ -657,6 +657,30 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     address: "0x75939CEb9FBa27A545fE27d1CBd228c29123687c",
   },
+  STAC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0xEdC6287D3D41b322AF600317628D7E226DD3add4",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x51C2d74017390CbBd30550179A16A1c28F7210fc",
+  },
+  USP: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getPriceForIssuance",
+        target: "0x433471901bA1A8BDE764E8421790C7D9bAB33552",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x098697ba3fee4ea76294c5d6a466a4e3b3e95fe6",
+  },
 };
 
 export async function derivs(timestamp: number) {

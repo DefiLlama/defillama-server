@@ -19337,7 +19337,8 @@ const data4: Protocol[] = [
     name: "Unitas",
     address: null,
     symbol: "-",
-    url: "https://unitas.so/",
+    url: "https://app.unitas.so/points?ref=llama",
+    referralUrl: "https://app.unitas.so/points?ref=llama",
     description:
       "Unitas is a decentralized, yield-bearing stablecoin protocol built for the next generation of finance. It issues stablecoins that earn yield natively — no reliance on traditional banks. Powered by Solana, it's fast, scalable, and censorship-resistant",
     chain: "Solana",

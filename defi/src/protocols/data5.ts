@@ -6469,13 +6469,13 @@ const data5: Protocol[] = [
   },
   {
     id: "7157",
-    name: "gTAC",
+    name: "Gravity",
     address: null,
     symbol: "-",
     url: "https://grvty.dev",
     description: "Liquid staking protocol for TAC blockchain.",
     chain: "TAC",
-    logo: `${baseIconsUrl}/gtac.jpg`,
+    logo: `https://raw.githubusercontent.com/gravity-gtac/assets/master/gravity-logo.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -6486,10 +6486,10 @@ const data5: Protocol[] = [
     twitter: "gTACprotocol",
     forkedFromIds: [],
     audit_links: [
-      "https://raw.githubusercontent.com/gravity-build/.github/main/meta/gtac-liquidstake-module-assessment-ssc.pdf",
-      "https://raw.githubusercontent.com/gravity-build/.github/main/meta/liquidstake-precompiles-ssc.pdf"
+      "https://raw.githubusercontent.com/gravity-gtac/assets/master/gtac-liquidstake-module-assessment-ssc.pdf",
+      "https://raw.githubusercontent.com/gravity-gtac/assets/master/liquidstake-precompiles-ssc.pdf"
     ],
-    github: ["gravity-build"],
+    github: ["Gravity-gTAC"],
     listedAt: 1766069399,
   },
   {

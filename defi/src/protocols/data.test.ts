@@ -319,7 +319,8 @@ test("no surprise category", async () => {
     "ve-Incentive Automator",
     "Cross Chain Bridge",
     "Decentralized AI",
-    "Identity & Reputation"
+    "Identity & Reputation",
+    "Gamified Mining"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

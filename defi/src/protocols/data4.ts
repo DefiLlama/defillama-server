@@ -32481,7 +32481,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "ore",
     cmcId: "32782",
-    category: "Reserve Currency",
+    category: "Gamified Mining",
     chains: ["Solana"],
     forkedFromIds: [],
     module: "dummy.js",

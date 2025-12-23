@@ -13560,5 +13560,12 @@
       "decimals": 6,
       "symbol": "mantraUSD"
     }
+  }, 
+  "virbicoin": {
+    "0xdf136683B118E95c04A61FEC091c65736d9de059": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }
   }
 }

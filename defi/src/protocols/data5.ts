@@ -3258,7 +3258,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "OnChain Capital Allocator",
+    category: "Onchain Capital Allocator",
     chains: ["Solana"],
     module: "kvants/index.js",
     twitter: "KvantsAI",

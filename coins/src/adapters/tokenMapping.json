@@ -1827,6 +1827,11 @@
     }
   },
   "arbitrum": {
+    "0x3e62fED35c97145e6B445704B8CE74B2544776A9": {
+      "decimals": "18",
+      "symbol": "EARNM",
+      "to": "coingecko#earnm"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",

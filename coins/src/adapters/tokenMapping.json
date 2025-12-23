@@ -1051,6 +1051,11 @@
       "decimals": 6,
       "symbol": "M"
     },
+    "0x393C0cf85E5a60b730e705396f3bea71648FA3A0": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDC-f",
+      "to": "asset#ethereum:0x95f00391cb5eebcd190eb58728b4ce23dbfa6ac1"
+    },
     "0xC3361F107c0b82864D5B100A2f3C3E0a1a3586DA": {
       "decimals": "18",
       "symbol": "stakedao-PYcrvUSD",

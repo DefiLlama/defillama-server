@@ -25651,6 +25651,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
+    dimensions: {
+      fees: "cap-finance-v4"
+    }
   },
   {
     id: "2470",

@@ -1086,6 +1086,9 @@ const data: Protocol[] = [
       "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
     ],
     github: ["Idle-Labs"], //check
+    dimensions: {
+      fees: "idle"
+    }
   },
   {
     id: "151",

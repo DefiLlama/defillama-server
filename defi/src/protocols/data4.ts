@@ -4701,6 +4701,9 @@ const data4: Protocol[] = [
     module: "concrete-xyz/index.js",
     twitter: "ConcreteXYZ",
     listedAt: 1738937447,
+    dimensions: {
+      fees: "concrete"
+    }
   },
   {
     id: "5752",
@@ -23339,6 +23342,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket-protocol",
     listedAt: 1753887812,
+    dimensions: {
+      fees: "bracket-vaults"
+    }
   },
   {
     id: "6505",

@@ -32310,9 +32310,6 @@ const data3_1: Protocol[] = [
     twitter: "Possum_Labs",
     audit_links: ["https://possum-labs.gitbook.io/docs/security/audits"],
     listedAt: 1706291324,
-    dimensions: {
-      fees: "possumlabs"
-    }
   },
   {
     id: "4070",

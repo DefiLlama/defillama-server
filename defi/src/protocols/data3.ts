@@ -51066,6 +51066,9 @@ const data3_3: Protocol[] = [
     stablecoins: ["blackrock-usd"],
     parentProtocol: "parent#securitize",
     listedAt: 1720292439,
+    dimensions: {
+      fees: "securitize"
+    }
   },
   {
     id: "4854",

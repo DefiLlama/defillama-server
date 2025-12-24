@@ -5931,7 +5931,10 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     module: "valiant-trade/index.js",
     twitter: "ValiantTrade",
-    listedAt: 1765544171
+    listedAt: 1765544171,
+    dimensions: {
+      dexs: "valiant-trade",
+    },
   },
   {
     id: "7133",
@@ -6321,6 +6324,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1765948603,
+    dimensions: {
+      fees: "taulabs",
+    },
   },
   {
     id: "7150",

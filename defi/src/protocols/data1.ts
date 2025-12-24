@@ -2802,6 +2802,9 @@ const data: Protocol[] = [
     audit_links: ["https://docs.futureswap.com/other/audits"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     github: ["futureswap"],
+    dimensions: {
+      fees: "futureswap",
+    },
   },
   {
     id: "229",

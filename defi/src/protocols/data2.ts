@@ -20254,6 +20254,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/axelarnetwork/audits"],
     listedAt: 1667045416,
     parentProtocol: "parent#axelar-network",
+    dimensions: {
+      fees: "axelar"
+    }
   },
   {
     id: "2238",

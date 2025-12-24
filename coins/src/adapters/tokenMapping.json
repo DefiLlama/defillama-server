@@ -1051,6 +1051,11 @@
       "decimals": 6,
       "symbol": "M"
     },
+    "0x393C0cf85E5a60b730e705396f3bea71648FA3A0": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDC-f",
+      "to": "asset#ethereum:0x95f00391cb5eebcd190eb58728b4ce23dbfa6ac1"
+    },
     "0xC3361F107c0b82864D5B100A2f3C3E0a1a3586DA": {
       "decimals": "18",
       "symbol": "stakedao-PYcrvUSD",
@@ -1827,6 +1832,11 @@
     }
   },
   "arbitrum": {
+    "0x3e62fED35c97145e6B445704B8CE74B2544776A9": {
+      "decimals": "18",
+      "symbol": "EARNM",
+      "to": "coingecko#earnm"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",
@@ -13554,6 +13564,13 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "mantraUSD"
+    }
+  }, 
+  "virbicoin": {
+    "0xdf136683B118E95c04A61FEC091c65736d9de059": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   }
 }

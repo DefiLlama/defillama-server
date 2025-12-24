@@ -7167,5 +7167,28 @@ const data5: Protocol[] = [
       fees: "omnihub",
     },
   },
+  { 
+    id: "7188",
+    name: "PossumLabs",
+    address: "solana:8C4RygkxmePm9ys1qCcAB46dUCXNQYTaqfxS5mBrpump",
+    symbol: "WTFO",
+    url: "https://possumlabs.wtf",
+    description: "Launch your meme, tech, degen, alpha, shitcoin in seconds on the bonding curve using Raydium Launchlab protocol and enjoy full support and exposure of WTF Ecosystem.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/possumlabs.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "possumlabsalert",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "possumlabs"
+    }
+  },
 ];
 export default data5;

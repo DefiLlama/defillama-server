@@ -7196,5 +7196,43 @@ const data5: Protocol[] = [
       fees: "possumlabs"
     }
   },
+  { 
+    id: "7189",
+    name: "Hypersurface",
+    address: null,
+    symbol: "-",
+    url: "https://hypersurface.io",
+    description: "DeFi structured products platform offering volatility yield through covered calls and cash-secured puts.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypersurface.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Hyperliquid L1", "Base"],
+    module: "dummy.js",
+    twitter: "hypersurfaceX",
+    forkedFromIds: [],
+    audit_links: ["https://github.com/AuditOne/audits/blob/main/Hypersurface/Hypersurface_A1_Audit.pdf"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.hypersurface.io"],
+        chains: [{ chain: "Hyperliquid L1" }],
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.hypersurface.io"],
+        chains: [{ chain: "Base" }],
+      },
+    ],
+    dimensions: {
+      fees: "hypersurface",
+      options: "hypersurface"
+    }
+  },
 ];
 export default data5;

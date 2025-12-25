@@ -15434,7 +15434,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cashio/index.js",
     twitter: "cashioapp",
     listedAt: 1636191361,
-    rugged: true,
+    // rugged: true,
     deadUrl: true,
   },
   {

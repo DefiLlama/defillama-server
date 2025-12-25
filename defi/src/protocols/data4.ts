@@ -7569,6 +7569,9 @@ const data4: Protocol[] = [
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275361,
+    dimensions: {
+      fees: "puffer-vaults"
+    }
   },
   /*{
     id: "5868",

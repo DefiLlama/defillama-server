@@ -3698,6 +3698,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "kumadotbid",
     url: "https://kuma.bid/",
+    dimensions: {
+      fees: "xchain",
+    },
   },
   "Zircuit": {
     geckoId: "zircuit",
@@ -4478,6 +4481,9 @@ export const chainCoingeckoIds = {
     twitter: "mindnetwork_xyz",
     github: ["mind-network"],
     url: "https://www.mindnetwork.xyz",
+    dimensions: {
+      fees: "mind-network",
+    },
   },
   "AO": {
     geckoId: "ao-computer",
@@ -5391,6 +5397,40 @@ export const chainCoingeckoIds = {
     url: "https://www.grxchain.io/",
     chainId: 1110,
   },
+  "HPP": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "aergo_io",
+    url: "https://www.hpp.io/",
+    chainId: 190415,
+    dimensions: {
+      fees: "hpp",
+    },
+  },
+  "Molten Network": {
+    geckoId: "molten-2",
+    symbol: "MOLTEN",
+    cmcId: "8232",
+    categories: ["EVM"],
+    twitter: "MoltenL3",
+    url: "https://www.moltennetwork.com/",
+    dimensions: {
+      fees: "molten-network",
+    },
+  },
+  "Syndicate": {
+    geckoId: "syndicate-3",
+    symbol: "SYND",
+    cmcId: "38602",
+    categories: ["EVM"],
+    twitter: "syndicateio",
+    url: "https://syndicate.io/",
+    dimensions: {
+      fees: "syndicate",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5618,6 +5658,8 @@ const chainLabelMap = {
   "joc": "JOC",
   "mantrachain": "MANTRACHAIN",
   "grx": "GRX Chain",
+  "hpp": "HPP",
+  "molten_network": "Molten Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -42,13 +42,14 @@ async function fetchDBData(
           return;
         }
         PKTransforms[coin.PK].forEach((coinName) => {
+          const isDistressed = coin.distressedFrom && coin.distressedFrom < timestamp ? true : false;
           if (response[coinName] == undefined) {
             response[coinName] = {
               symbol: coin.symbol,
               prices: [
                 {
                   timestamp: finalCoin.SK,
-                  price: finalCoin.price,
+                  price: isDistressed ? 0 : finalCoin.price,
                   confidence: coin.confidence,
                 },
               ],
@@ -56,7 +57,7 @@ async function fetchDBData(
           } else {
             response[coinName].prices.push({
               timestamp: finalCoin.SK,
-              price: finalCoin.price,
+              price: isDistressed ? 0 : finalCoin.price,
               confidence: coin.confidence,
             });
           }

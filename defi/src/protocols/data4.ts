@@ -24535,7 +24535,7 @@ const data4: Protocol[] = [
     name: "HumidiFi",
     address: "solana:WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
     symbol: "WET",
-    url: "null",
+    url: "https://humidifi.xyz/",
     description: "Prop AMM on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/humidifi.jpg`,
@@ -24546,7 +24546,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "humidifi_",
+    twitter: "humidifi",
     forkedFromIds: [],
     dimensions: {
       dexs: {

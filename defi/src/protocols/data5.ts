@@ -7234,5 +7234,25 @@ const data5: Protocol[] = [
       options: "hypersurface"
     }
   },
+  { 
+    id: "7190",
+    name: "smolrefuel",
+    address: null,
+    symbol: "-",
+    url: "https://smolrefuel.com/",
+    description: "Out of gas? Refuel here!.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/smolrefuel.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "smolrefuel",
+    forkedFromIds: [],
+    audit_links: [],
+  },
 ];
 export default data5;

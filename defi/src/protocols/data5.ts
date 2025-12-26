@@ -2812,7 +2812,7 @@ const data5: Protocol[] = [
     ],
     module: "neverland/index.js",
     twitter: "Neverland_Money",
-    github: ["0xCatalyst"],
+    github: ["Neverland-Money"],
     dimensions: {
       fees: "neverland",
     },

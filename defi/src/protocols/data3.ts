@@ -44917,6 +44917,9 @@ const data3_2: Protocol[] = [
       "https://docs.origami.finance/technical-reference/audits",
     ],
     listedAt: 1715612691,
+    dimensions: {
+      fees: "origami-finance",
+    }
   },
   {
     id: "4593",
@@ -49794,6 +49797,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],
     listedAt: 1718906602,
+    dimensions: {
+      fees: "termmax",
+    }
   },
   {
     id: "4800",

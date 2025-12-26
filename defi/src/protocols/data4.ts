@@ -20477,6 +20477,9 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#aera",
     listedAt: 1751553171,
+    dimensions: {
+      fees: "aera-v3"
+    }
   },
   {
     id: "6388",

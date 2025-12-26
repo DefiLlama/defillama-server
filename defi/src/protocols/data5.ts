@@ -7296,5 +7296,28 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1766792767,
   },
+  { 
+    id: "7193",
+    name: "On-Chain Check-in",
+    address: null,
+    symbol: "-",
+    url: "https://www.onchain-checkin.xyz/",
+    description: "On-chain Check-in transforms daily blockchain activity into a simple ritual. By performing a single check-in across 100+ EVM chains.",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/on-chain-check-in.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Soneium"],
+    module: "dummy.js",
+    twitter: "on_check_in",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "onchain-checkin",
+    }
+  },
 ];
 export default data5;

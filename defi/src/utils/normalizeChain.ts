@@ -5401,7 +5401,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Chains", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+    },
     twitter: "aergo_io",
     url: "https://www.hpp.io/",
     chainId: 190415,

@@ -2986,6 +2986,7 @@ const data5: Protocol[] = [
     twitter: "piku_dao",
     audit_links: ["https://docs.piku.co/piku/piku/security-and-risks/audits"],
     github: ["piku-co"],
+    stablecoins: ["USP"],
     listedAt: 1763513599,
   },
   {

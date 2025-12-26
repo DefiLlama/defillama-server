@@ -97,7 +97,7 @@ export function getUniV2Adapter({
         }
             volumeUSD_gt: ${minVolume}
           } 
-        block: { number: ${block} } 
+        ${ ["uniswap", "uni_base"].includes(project) && timestamp == 0 ? "" : `block: { number: ${block} }`} 
         first: 1000
         ) {
           id

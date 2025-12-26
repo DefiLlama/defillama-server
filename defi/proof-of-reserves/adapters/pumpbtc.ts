@@ -27,10 +27,10 @@ const mintedTokens = [
     chain: 'arbitrum',
     address: '0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e',
   },
-  {
-    chain: 'morph',
-    address: '0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E',
-  },
+  // {
+  //   chain: 'morph',
+  //   address: '0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E',
+  // },
   {
     chain: 'sei',
     address: '0xb45aB56AafB1fFb21eE36C9Dee3B7D8ec5779fC8',

@@ -4,10 +4,11 @@ import {
   IResponse,
   errorResponse,
 } from "./utils/shared";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { lowercaseAddress } from "./utils/processCoin";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 function generateTimestamps(
   startTimestamp: number,
@@ -53,7 +54,7 @@ async function fetchDBData(
     
     promises.push(
       ...timestamps.map(async (timestamp) => {
-        const finalCoin = await getRecordClosestToTimestamp(
+        const finalCoin: any = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
           searchWidth,
@@ -85,7 +86,12 @@ async function fetchDBData(
     );
   });
 
-  await Promise.all(promises);
+  await runInPromisePool({
+    items: promises,
+    concurrency: 7,
+    processor: async (promise: any) => await promise,
+  });
+
   return response;
 }
 

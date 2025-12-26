@@ -17,7 +17,9 @@ import getTvlCacheEnv from '../../src/api2/env';
 async function start() {
   await setConfig()
 
-  const isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
+  
+  let isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
+  isProductionMode = isProductionMode && !process.env.UI_TOOL_FORCE_DEV_MODE; // this is needed because of the setConfig()
 
   try {
     getTvlCacheEnv();
@@ -27,7 +29,6 @@ async function start() {
 
 
   const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
-
 
   process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
@@ -56,7 +57,7 @@ async function start() {
         cwd: reactAppPath,
         env: {
           ...process.env,
-          PORT: 5001
+          PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002: 5001
         }
       });
     } catch (error) {

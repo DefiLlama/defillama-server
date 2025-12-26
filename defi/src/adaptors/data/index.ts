@@ -1,8 +1,6 @@
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { ADAPTER_TYPES, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdapterType, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor, ProtocolType } from "./types";
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
-import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import protocols from "../../protocols/data";
 import { chainCoingeckoIds, getChainDisplayName } from "../../utils/normalizeChain";
 import { baseIconsUrl } from "../../constants";
@@ -10,8 +8,11 @@ import { baseIconsUrl } from "../../constants";
 let dimensionsConfig: any
 getDimensionsConfig()
 
+// TODO: reduce the places this is called to improve performance
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
-  const { default: module } = await import('@defillama/dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
+  // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
+  const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
+  const { default: module } = await import('../../../dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
   setModuleDefaults(module)
   return module
 }
@@ -132,7 +133,7 @@ function addImportsDataToMapping() {
 
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
 
-  // the order matters, wait for other importd to be built before running this
+  // the order matters, wait for other imported to be built before running this
   dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
 
 }

@@ -4,18 +4,18 @@ import { TABLES, initializeTVLCacheDB } from '../db/index'
 import * as fs from 'fs'
 import { id } from 'ethers';
 import loadAdaptorsData from '../../adaptors/data';
-import { AdapterType, ProtocolType } from '@defillama/dimension-adapters/adapters/types';
+import { AdapterType, ProtocolType } from "../../adaptors/data/types"
 import { AdapterRecord2 } from '../../adaptors/db-utils/AdapterRecord2';
 import { getTimestampAtStartOfDay } from '../../utils/date';
 import { storeAdapterRecord } from '../../adaptors/db-utils/db2';
 
 let action = () => changeProtocolChain({
-  oldId: '6726',
-  newId: '6726',
-  oldChain: 'ethereum',
-  newChain: 'paradex'
+  oldId: '2776',
+  newId: '2776',
+  oldChain: 'skale_europa',
+  newChain: 'europa'
 })
-action = insertRecord
+// action = storeFromFile
 
 async function changeProtocolChain({
   oldId, newId, oldChain, newChain,
@@ -25,7 +25,7 @@ async function changeProtocolChain({
   const data = await TABLES.DIMENSIONS_DATA.findAll({
     where: {
       id: oldId,
-      type: 'fees',
+      // type: 'fees',
       // timeS: '2024-08-07'
     }
   })
@@ -37,14 +37,15 @@ async function changeProtocolChain({
 
   for (const record of data) {
     let updateNeeded = oldId !== newId
+    // let updateNeeded = false
     // Update chain name in each key of 'data' field
     if (record.dataValues.data && typeof record.dataValues.data === 'object') {
-      if (record.dataValues.data.aggregated.dr) {
+     /*  if (record.dataValues.data.aggregated.dr) {
         delete record.dataValues.data.aggregated.dr
         updateNeeded = true
         updateCount++
-      }
-      /* 
+      } */
+      
      const aggData = Object.values(record.dataValues.data.aggregated) as any
   for (const dimItem of aggData) {
      if (dimItem.chains && dimItem.chains[oldChain] !== undefined) {
@@ -52,7 +53,7 @@ async function changeProtocolChain({
        dimItem.chains[newChain] = dimItem.chains[oldChain]
        delete dimItem.chains[oldChain]
      }
-   } */
+   }
     }
 
     if (!updateNeeded) continue;
@@ -142,7 +143,7 @@ async function createUpdateOIData() {
 
 function getCSVData() {
 
-  const filePath = '/data.csv';
+  const filePath = '/nodeops.csv';
   // Read the file content
   const fileContent = fs.readFileSync(__dirname + filePath, 'utf8');
 
@@ -175,14 +176,54 @@ function getCSVData() {
   }
 
   console.log(`Successfully parsed ${data.length} rows from CSV`);
-  return data;
+
+  const resMap: any = {} as any
+  data.forEach(row => {
+    const usdValue = Math.floor(+row.usd_amount)
+    const timeS = row.timestamp.slice(0, 10)
+    const value = resMap[timeS] ?? {
+      value: 0,
+      chains: {}
+    }
+    value.value += usdValue
+    let hash = row.tx_hash
+    let chain = 'off_chain'
+    if (!hash.startsWith('https://')) {
+      chain = 'off_chain'
+    } else if (hash.includes('optimism')) {
+      chain = 'optimism'
+    } else if (hash.includes('arbiscan')) {
+      chain = 'arbitrum'
+    } else if (hash.includes('etherscan')) {
+      chain = 'ethereum'
+    } else if (hash.includes('bscscan')) {
+      chain = 'bscs'
+    } else if (hash.includes('basescan')) {
+      chain = 'base'
+    } else if (hash.includes('solscan')) {
+      chain = 'solana'
+    } else if (hash.includes('copperx')) {
+      chain = 'off_chain'
+    } else if (hash.includes('polygonscan')) {
+      chain = 'polygon'
+    } else {
+      console.log('unknown chain for hash', hash)
+    }
+    if (!value.chains[chain]) value.chains[chain] = 0
+    value.chains[chain] += usdValue
+
+    resMap[timeS] = value
+  })
+
+  return Object.entries(resMap)
+  // return data;
 }
 
 async function storeFromFile() {
   // Path to the CSV file (in the same folder as the script)
 
-  const protocolId = '6751'
-  const adapterType = AdapterType.OPEN_INTEREST
+  const protocolId = '6825'
+  const adapterType = AdapterType.FEES
   const protocolType = ProtocolType.PROTOCOL
 
   try {
@@ -196,7 +237,23 @@ async function storeFromFile() {
     const protocol = protocolAdaptors.find(p => p.id === protocolId)
 
     const adapterRecords = csvData.map(row => {
-      const value = Math.floor(row['total_open_interest'] || '0')
+      const zeroValues = JSON.parse(JSON.stringify(row[1]))
+      Object.keys(zeroValues.chains).forEach(k => zeroValues.chains[k] = 0)
+      zeroValues.value = 0
+
+      return AdapterRecord2.formAdaptarRecord2({
+        jsonData: {
+          timestamp: getTimestampAtStartOfDay(+(new Date(row[0])) / 1000),
+          aggregated: {
+            df: row[1],
+            dr: row[1],
+            dssr: zeroValues,
+            dpr: row[1],
+            dhr: zeroValues,
+          }
+        }, protocolType, adapterType, protocol: protocol!,
+      })
+
       return AdapterRecord2.formAdaptarRecord2({
         jsonData: {
           timestamp: getTimestampAtStartOfDay(+(new Date(row['day'])) / 1000),
@@ -212,12 +269,14 @@ async function storeFromFile() {
       })
     })
 
+    console.log(adapterRecords.length, 'records to store')
+
     for (const rec of adapterRecords) {
       if (!rec) {
         console.error('Skipping invalid record');
         continue;
       }
-      console.log('Storing record for date:', new Date(rec.timestamp * 1000).toISOString().split('T')[0], 'value:', rec.data.aggregated.doi.value)
+      console.log('Storing record for date:', new Date(rec.timestamp * 1000).toISOString().split('T')[0], 'value:', rec.data.aggregated.df.value)
       await storeAdapterRecord(rec as any)
     }
 

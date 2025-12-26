@@ -9,6 +9,7 @@ import { getConfig } from "../../../utils/cache";
 
 const assetExceptions: string[]  = [
   "0xee9bfff7da99e6f85abc4f7fc33f5278473124e0", // tUSDe
+  '0x30ccf4bbee313fcd19f3e295b3ba2920a24e2f62', // sUSDai
 ]
 
 export default async function getTokenPrices(
@@ -183,7 +184,13 @@ export default async function getTokenPrices(
       const syPrice = allSyPrices[i]
       const lpRate = allLpRates0[i] ?? allLpRates1800[i] ?? allLpRates3600[i]
       if (!syPrice || !lpRate) return;
-      const lpPrice = syPrice * (lpRate / (10 ** allSyDecimals[i]));
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+      if (assetExceptions.includes(info.sy) && !assetPrice) return;
+      const syRate = assetExceptions.includes(info.sy) ? syPrice / assetPrice : syPrice
+
+      const lpPrice = syRate * (lpRate / (10 ** allSyDecimals[i]));
 
       addToDBWritesList(
         writes,
@@ -316,7 +323,7 @@ async function getAllTokenInfos(chainId: number) {
   }
 
   function filterMarketData(resp: { markets: any[] }) {
-    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e5); // filtering out small markets
+    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e4); // filtering out small markets
     return markets.map((m: any) => ({
       lp: m.address,
       sy: formatPendleAddr(m.sy),

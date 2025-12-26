@@ -10,7 +10,7 @@ import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../.
 import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { getRaisesInternal } from "../../getRaises";
 import { getHacksInternal } from "../../getHacks";
-import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
 import { getOraclesInternal } from "../../getOracles";
 import { getForksInternal } from "../../getForks";
@@ -24,6 +24,8 @@ import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
+import { chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { getActiveUsers } from "../routes/getActiveUsers";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -70,6 +72,7 @@ async function run() {
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
+  await storeActiveUsers()
   await storeRWAStats()
 
 
@@ -97,13 +100,13 @@ async function run() {
     // console.timeEnd('getLatestProtocolItems filterADayAgo')
 
     console.time('getLatestProtocolItems filterAWeekAgo')
-    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(hourlyTvl, { filterAWeekAgo: true })
+    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
     const latestProtocolItemsWeekAgoMap: any = {}
     latestProtocolItemsWeekAgo.forEach((data: any) => latestProtocolItemsWeekAgoMap[data.id] = data.data)
     // console.timeEnd('getLatestProtocolItems filterAWeekAgo')
 
     console.time('getLatestProtocolItems filterAMonthAgo')
-    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(hourlyTvl, { filterAMonthAgo: true })
+    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
     const latestProtocolItemsMonthAgoMap: any = {}
     latestProtocolItemsMonthAgo.forEach((data: any) => latestProtocolItemsMonthAgoMap[data.id] = data.data)
     // console.timeEnd('getLatestProtocolItems filterAMonthAgo')
@@ -115,13 +118,13 @@ async function run() {
     // console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
 
     console.time('getLatestProtocolTokensUSD filterAWeekAgo')
-    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAWeekAgo: true })
+    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
     const latestProtocolTokensUSDWeekAgoMap: any = {}
     latestProtocolTokensUSDWeekAgo.forEach((data: any) => latestProtocolTokensUSDWeekAgoMap[data.id] = data.data)
     // console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
 
     console.time('getLatestProtocolTokensUSD filterAMonthAgo')
-    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAMonthAgo: true })
+    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
     const latestProtocolTokensUSDMonthAgoMap: any = {}
     latestProtocolTokensUSDMonthAgo.forEach((data: any) => latestProtocolTokensUSDMonthAgoMap[data.id] = data.data)
     // console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
@@ -264,11 +267,28 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const excludeProtocolFields = [
+      'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
+      'audits', 'audit_note', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'cmcId', 'gecko_id', 'methodology', 'dimensions',
+      'module', 'pool2', 'staking',
+      'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',
+      'listedAt',
+    ]
+
+    // /protocols file is heavy, we create a lite version without some fields
+    const protocolsLite = data.map((p: any) => {
+      const clone = { ...p }
+      excludeProtocolFields.forEach(field => delete clone[field])
+      return clone
+    })
+
     const chainData: IChain[] = await getChainData(false)
     const chainDataV2: IChain[] = await getChainData(true)
     data.push(...(chainData as any))
 
     await storeRouteData('protocols-with-chains', data)
+    await storeRouteData('protocols-lite-v1', protocolsLite)
     await storeRouteData('chains', chainData)
     await storeRouteData('v2/chains', chainDataV2)
 
@@ -299,9 +319,14 @@ async function run() {
     console.time('write /config')
     const data = {
       protocols: cache.metadata.protocols,
+      parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      treasuries: cache.metadata.treasuries,
+      entities: cache.metadata.entities,
+      chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)
+    await storeRouteData('/_fe/static/configs', data)
 
 
     // this is handled in rest server now
@@ -414,14 +439,28 @@ async function storeRWAStats() {
 }
 
 
+async function storeActiveUsers() {
+  try {
+
+    const debugString = 'write /activeUsers'
+    console.time(debugString)
+    const data = await getActiveUsers()
+    await storeRouteData('/activeUsers', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 runWithRuntimeLogging(run, {
-        application: "cron-task",
-        type: 'tvl-data',
-      })
+  application: "cron-task",
+  type: 'tvl-data',
+})
   .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))

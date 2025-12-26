@@ -14,7 +14,7 @@ import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
 // import brc20 from "./brc20";
-import fantom from "./fantom";
+// import fantom from "./fantom";
 // import era from "./era";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
@@ -23,16 +23,16 @@ import optimism from "./optimism";
 // import solana from "./solana";
 // import xdai from "./xdai";
 // import cosmos from "./cosmos";
-import synapse from "./synapse";
+// import synapse from "./synapse";
 import base from "./base";
-import neon_evm from "./neon_evm";
+// import neon_evm from "./neon_evm";
 import arbitrum_nova from "./arbitrum_nova";
 import mantle from "./mantle";
 import axelar from "./axelar";
 import linea from "./linea";
 import manta from "./manta";
-import astrzk from "./astrzk";
-import zklink from "./zklink";
+// import astrzk from "./astrzk";
+// import zklink from "./zklink";
 // import celer from "./celer";
 import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
@@ -46,6 +46,8 @@ import flow from "./flow";
 import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
+import anvu from "./anvu";
+import monad from "./monad";
 
 export type Token =
   | {
@@ -90,7 +92,7 @@ export const bridges = [
   avax,
   // brc20,
   //bsc,
-  fantom,
+  // fantom,
   // era,
   gasTokens,
   //harmony,
@@ -98,16 +100,16 @@ export const bridges = [
   // solana
   //xdai
   // cosmos,
-  synapse,
+  // synapse,
   base,
-  neon_evm,
+  // neon_evm,
   arbitrum_nova,
   mantle,
   axelar,
   linea,
   manta,
-  astrzk,
-  zklink,
+  // astrzk,
+  // zklink,
   // celer,
   fraxtal,
   symbiosis,
@@ -119,7 +121,9 @@ export const bridges = [
   unichan,
   flow,
   layerzero,
-  initia
+  initia, 
+  anvu,
+  monad
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -207,7 +211,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
+      let decimals: any, symbol: string;
       if ("getAllInfo" in token) {
         try {
           const newToken = await token.getAllInfo();
@@ -222,8 +226,10 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         symbol = token.symbol;
       }
 
+      if (isNaN(decimals) || decimals == '' || decimals == null) return;
       if (i && !decimals) return;
       if (!symbol) return;
+      decimals = Number(decimals)
 
       writes.push({
         PK: `asset#${token.from}`,

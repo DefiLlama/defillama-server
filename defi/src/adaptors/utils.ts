@@ -1,6 +1,8 @@
 import fs from 'fs';
 import crypto from 'crypto';
 import path from 'path';
+import * as sdk from '@defillama/sdk'
+
 const { execSync } = require('child_process');
 
 export interface IAdapterInfo {
@@ -89,10 +91,6 @@ export function getCurrentCommitHash(repoPath: string): string {
   }
 }
 
-export function getDimensionsRepoCommitHash(): string {
-  return getCurrentCommitHash(path.join(__dirname, '../../dimension-adapters'));
-}
-
 /**
  * Checks if a file exists
  * @param filePath Path to the file to check
@@ -104,5 +102,46 @@ export function fileExists(filePath: string): boolean {
   } catch (error: any) {
     console.error(`Error checking if file exists ${filePath}:`, error?.message || error);
     return false;
+  }
+}
+
+
+
+export const isBuildServerMode = !!process.env.LLAMA_IS_BUILD_SERVER_MODE
+
+export async function writeFromCache(hashkey: string, outFile: string, { successMessage = 'cache exists, copying from cache', errorMessage = 'error reading from cache' }: {
+  successMessage?: string
+  errorMessage?: string
+} = {}) {
+  if (!isBuildServerMode) return false
+
+  try {
+    const data = await sdk.cache.readExpiringJsonCache(hashkey)
+    if (data) {
+      console.log(successMessage)
+      fs.writeFileSync(outFile, JSON.stringify(data))
+      return true
+    }
+  } catch (e) {
+    console.log(errorMessage)
+  }
+  return false
+}
+
+export async function writeToCache(hashkey: string, data: any, { successMessage = 'cache written', errorMessage = 'error writing to cache', expireAfter = 60 * 60 * 24 }: {
+  successMessage?: string
+  errorMessage?: string
+  expireAfter?: number
+} = {}) {
+
+  // enable only in build server mode
+  if (!isBuildServerMode) return;
+
+
+  try {
+    await sdk.cache.writeExpiringJsonCache(hashkey, data, { expireAfter })
+    console.log(successMessage)
+  } catch (e) {
+    console.log(errorMessage, e)
   }
 }

@@ -170,4 +170,5 @@ export default {
   fluidSmartLending: require("./markets/fluidSmartLending"),
   rhea: require("./markets/rhea"),
   bracket: require("./yield/bracket"),
+  gamingdex: require("./markets/gamingdex"),
 };

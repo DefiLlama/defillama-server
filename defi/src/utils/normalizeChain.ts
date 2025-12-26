@@ -5419,7 +5419,7 @@ export const chainCoingeckoIds = {
     cmcId: "8232",
     categories: ["EVM"],
     twitter: "MoltenL3",
-    url: "https://www.moltennetwork.com/",
+    url: "https://leverage.unidex.exchange/",
     dimensions: {
       fees: "molten-network",
     },

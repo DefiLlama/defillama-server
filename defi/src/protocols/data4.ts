@@ -20477,6 +20477,9 @@ const data4: Protocol[] = [
     twitter: "aerafinance",
     audit_links: [],
     parentProtocol: "parent#aera",
+    dimensions: {
+      fees: "aera-v3"
+    },
     listedAt: 1751553171,
   },
   {
@@ -21258,8 +21261,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PriveX_Official",
     dimensions: {
-      fees: "privex",
-      derivatives: "privex"
+    //  fees: "privex",
+    //  derivatives: "privex"
     }
   },
   {

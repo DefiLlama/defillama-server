@@ -11059,7 +11059,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1655988523,
     dimensions: {
-      fees: "moonwell-artemis"
+      fees: "moonwell"
     }
   },
   {

@@ -2,8 +2,18 @@ import fs from "fs";
 import path from "path";
 import { parse } from "csv-parse/sync"; // synchronous parsing
 
+const listColumns = [
+    'Chain',
+    'Contracts',
+    'Category',
+    'Asset Class',
+    'KYC',
+    'Notes',
+    'Pool ID'
+];
+
 function parseCsv(): any {
-    const csvPath = path.join(__dirname, "./rwa9dec.csv");
+    const csvPath = path.join(__dirname, "./27dec-rwa.csv");
     const csv = fs.readFileSync(csvPath, "utf8");
     const rows: any[] = parse(csv, {
         columns: true,  // return objects with headers as keys
@@ -26,6 +36,8 @@ export function getCsvData() {
                 row[key] = false;
             } else if (row[key].indexOf(";") !== -1) {
                 row[key] = row[key].split(";").map((item: string) => item.trim());
+            } else if (listColumns.includes(key)) {
+                row[key] = [row[key]]
             } else {
                 row[key] = row[key].trim();
             }

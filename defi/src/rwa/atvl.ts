@@ -8,16 +8,12 @@ import { getCsvData } from "./csv";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
 import { storeR2JSONString } from "../utils/r2";
+import { getChainDisplayName } from "../utils/normalizeChain";
+import { stablecoins } from "../getProtocols";
 
 const defiActiveKey: string = "DeFi Active TVL";
 const onChainKey: string = "On-chain TVL";
-const excludedKeys: string[] = [
-  "Token Status/Potential Airdrop?",
-  "Claimed TVL",
-  `Llama'd?`,
-  "Holders to be Removed from Active TVL",
-  onChainKey,
-];
+const excludedKeys: string = "*"; // starts with
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
@@ -95,13 +91,24 @@ async function main() {
   parsedCsvData.map((row: any, i: number) => {
     const cleanRow: any = {};
     Object.keys(row).map((key: string) => {
-      if (excludedKeys.includes(key)) return;
-      cleanRow[key] = row[key];
+      if (key == "*projectID" && row[key].length > 0) ids.push(row.projectID);
+      else if (key.startsWith(excludedKeys)) return;
+      else if (key == "Primary Chain") {
+        cleanRow[key] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
+      } else if (key == "Chain")
+        cleanRow[key] = row[key]
+          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
+          : null;
+      else cleanRow[key] = row[key] == "" ? null : row[key];
     });
 
-    if (row.projectID.length > 0) ids.push(row.projectID);
     rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
     finalData[i] = cleanRow;
+  });
+
+  Object.keys(finalData).map((rowIndex: string) => {
+    const ticker = finalData[rowIndex].Ticker;
+    finalData[rowIndex].stablecoin = ticker ? stablecoins.includes(ticker.toUpperCase()) : false;
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
@@ -142,9 +149,10 @@ async function main() {
         try {
           if (!finalData[rwaId][defiActiveKey]) finalData[rwaId][defiActiveKey] = {};
           const chain = pk.substring(0, pk.indexOf(":"));
-          if (!finalData[rwaId][defiActiveKey][chain]) finalData[rwaId][defiActiveKey][chain] = {};
+          const chainDisplayName = getChainDisplayName(chain, true);
 
-          finalData[rwaId][defiActiveKey][chain][amountId] = aum.toFixed(0);
+          if (!finalData[rwaId][defiActiveKey][chainDisplayName]) finalData[rwaId][defiActiveKey][chainDisplayName] = {};
+          finalData[rwaId][defiActiveKey][chainDisplayName][amountId] = aum.toFixed(0);
         } catch (e) {
           console.error(`Malformed ${defiActiveKey} for ${rwaId}: ${e}`);
         }
@@ -166,10 +174,11 @@ async function main() {
       try {
         if (!finalData[rwaId][onChainKey]) finalData[rwaId][onChainKey] = {};
         const chain = pk.substring(0, pk.indexOf(":"));
-        if (!finalData[rwaId][onChainKey][chain]) finalData[rwaId][onChainKey][chain] = {};
+        const chainDisplayName = getChainDisplayName(chain, true);
+        if (!finalData[rwaId][onChainKey][chainDisplayName]) finalData[rwaId][onChainKey][chainDisplayName] = {};
 
         const aum = (price * supply) / 10 ** decimals;
-        finalData[rwaId][onChainKey][chain] = aum.toFixed(0);
+        finalData[rwaId][onChainKey][chainDisplayName] = aum.toFixed(0);
       } catch (e) {
         console.error(`Malformed ${onChainKey} for ${rwaId}: ${e}`);
       }

@@ -1087,8 +1087,11 @@ const data: Protocol[] = [
     ],
     github: ["Idle-Labs"], //check
     dimensions: {
-      fees: "idle"
-    }
+      fees: {
+        adapter: "idle",
+        genuineSpikes: ["1751241600",],
+      },
+    },
   },
   {
     id: "151",

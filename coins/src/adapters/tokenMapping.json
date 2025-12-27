@@ -10458,7 +10458,7 @@
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#mantra-dao",
       "decimals": 18,
-      "symbol": "MANTA"
+      "symbol": "MANTRA"
     }, 
     "0xE3047710EF6cB36Bcf1E58145529778eA7Cb5598": {
       "to": "coingecko#mantra-dao",

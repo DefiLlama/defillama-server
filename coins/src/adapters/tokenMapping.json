@@ -10454,6 +10454,28 @@
       "to": "coingecko#mantra-dao",
       "decimals": 6,
       "symbol": "uom"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "MANTA"
+    }, 
+    "0xE3047710EF6cB36Bcf1E58145529778eA7Cb5598": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "wOM"
+    }, 
+    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "mantraUSD"
+    }
+  }, 
+  "virbicoin": {
+    "0xdf136683B118E95c04A61FEC091c65736d9de059": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "verus": {
@@ -13552,25 +13574,6 @@
       "to": "coingecko#cross-2",
       "decimals": 18,
       "symbol": "CROSS"
-    }
-  }, 
-  "mantrachain": {
-    "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#mantra-dao",
-      "decimals": 18,
-      "symbol": "MANTA"
-    }, 
-    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
-      "to": "coingecko#usd-coin",
-      "decimals": 6,
-      "symbol": "mantraUSD"
-    }
-  }, 
-  "virbicoin": {
-    "0xdf136683B118E95c04A61FEC091c65736d9de059": {
-      "to": "coingecko#tether",
-      "decimals": 6,
-      "symbol": "USDT"
     }
   }
 }

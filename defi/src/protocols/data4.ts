@@ -20316,7 +20316,8 @@ const data4: Protocol[] = [
     name: "Rango",
     address: null,
     symbol: "-",
-    url: "https://app.rango.exchange/bridge",
+    url: "https://rango.vip/a/XdoHRA",
+    referralUrl: "https://rango.vip/a/XdoHRA",
     description:
       "Rango is a cutting-edge routing and aggregation protocol for all cross-chain and on-chain swaps, aggregating bridges and DEXs in crypto world",
     chain: "Ethereum",
@@ -20477,9 +20478,6 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#aera",
     listedAt: 1751553171,
-    dimensions: {
-      fees: "aera-v3"
-    }
   },
   {
     id: "6388",
@@ -21260,8 +21258,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PriveX_Official",
     dimensions: {
-      // fees: "privex",
-      // derivatives: "privex"
+      fees: "privex",
+      derivatives: "privex"
     }
   },
   {

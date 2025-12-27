@@ -61577,7 +61577,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#loxodrome",
     listedAt: 1730310067,
     dimensions: {
-      derivatives: "loxodrome-perp"
+      derivatives: "loxodrome-perp",
+      fees: "loxodrome-perp",
     }
   },
   {

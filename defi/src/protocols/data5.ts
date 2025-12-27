@@ -7339,7 +7339,7 @@ const data5: Protocol[] = [
     twitter: "variational_io",
     dimensions: {
       //fees: "variational", 
-      dexs: "variational-omni"
+      derivatives: "variational-omni"
     },
     github: ["variational-research"],
   },

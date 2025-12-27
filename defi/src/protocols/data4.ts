@@ -10874,6 +10874,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1744029272,
+    dimensions: {
+      fees: "seamless-vaults",
+    },
   },
   {
     id: "6001",
@@ -18007,6 +18010,9 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/seamless-protocol/audits"],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1749485042,
+    dimensions: {
+      fees: "seamless-v2",
+    },
   },
   {
     id: "6287",

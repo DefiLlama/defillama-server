@@ -4882,6 +4882,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "provenancefdn",
     url: "https://www.provenance.io/",
+    dimensions: {
+      fees: "provenance",
+    },
   },
   "Eventum": {
     geckoId: null,

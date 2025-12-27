@@ -32240,9 +32240,9 @@ const data3_1: Protocol[] = [
     symbol: "PSM",
     url: "https://www.possum.finance/",
     description:
-      "Possum Finance brings No-Loss Prediction Markets to DeFi. Powered by the wisdom of the crowd, the protocol enables speculation while avoiding losses related to wrong predictions.",
+      "Possum Finance brings No-Loss Prediction Markets to DeFi. Powered by the wisdom of the crowd, the protocol enables crowd based speculation while avoiding losses for individuals related to wrong predictions.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/possum-labs.jpg`,
+    logo: `${baseIconsUrl}/possum-finance.jpg`,
     audits: "1",
     audit_note: null,
     gecko_id: "possum",

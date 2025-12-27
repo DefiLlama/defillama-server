@@ -9,7 +9,6 @@ import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
 import { storeR2JSONString } from "../utils/r2";
 import { getChainDisplayName } from "../utils/normalizeChain";
-import { stablecoins } from "../getProtocols";
 
 const defiActiveKey: string = "DeFi Active TVL";
 const onChainKey: string = "On-chain TVL";
@@ -107,8 +106,11 @@ async function main() {
   });
 
   Object.keys(finalData).map((rowIndex: string) => {
-    const ticker = finalData[rowIndex].Ticker;
-    finalData[rowIndex].stablecoin = ticker ? stablecoins.includes(ticker.toUpperCase()) : false;
+    let stablecoin = false;
+    finalData[rowIndex].Category.map((category: string) => {
+      if (category.toLowerCase().includes("stablecoin")) stablecoin = true;
+    });
+    finalData[rowIndex].stablecoin = stablecoin
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);

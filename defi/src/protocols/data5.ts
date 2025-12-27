@@ -7319,5 +7319,30 @@ const data5: Protocol[] = [
       fees: "onchain-checkin",
     }
   },
+  {
+    id: "7194",
+    name: "Variational Omni",
+    address: null,
+    symbol: "-",
+    url: "https://omni.variational.io/?ref=OMNILLAMA",
+    referralUrl: "https://omni.variational.io/?ref=OMNILLAMA",
+    description: "Variational is a protocol that provides infrastructure for peer-to-peer trading, clearing, and settlement of perpetuals and generalized derivatives. The Variational Protocol enables safe and efficient bilateral trading of options, futures, perpetuals, exotics, and more. Multiple apps have been built on the Variational Protocol, including Omni for perpetuals trading and Pro for institutions to trade customizable OTC derivatives.",
+    chain: "Off Chain",
+    logo: `${baseIconsUrl}/variational-omni.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Off Chain"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "variational_io",
+    dimensions: {
+      //fees: "variational", 
+      dexs: "variational-omni"
+    },
+    github: ["variational-research"],
+  },
 ];
 export default data5;

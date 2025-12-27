@@ -51220,7 +51220,8 @@ const data3_3: Protocol[] = [
     name: "Ape Jupiter",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://ape.pro/",
+    url: "https://ape.pro/?ref=rDmlXpoRAD1j",
+    referralUrl: "https://ape.pro/?ref=rDmlXpoRAD1j",
     description:
       "Ape is built around a secure vault that only your wallet can access. Simply deposit SOL and start to trade.",
     chain: "Solana",

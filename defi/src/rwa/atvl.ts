@@ -13,6 +13,7 @@ import { getChainDisplayName } from "../utils/normalizeChain";
 const defiActiveKey: string = "DeFi Active TVL";
 const onChainKey: string = "On-chain TVL";
 const excludedKeys: string = "*"; // starts with
+const excludedProtocolCategories: string[] = ["CEX"];
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
@@ -40,6 +41,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
 
   let aggregateRawtvls: { [pk: string]: { [id: string]: BigNumber } } = {};
   rawTvls.map((protocol: any) => {
+    if (excludedProtocolCategories.includes(protocol.category)) return;
     Object.keys(protocol.data).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
       if (!rwaTokens[chain]) return;

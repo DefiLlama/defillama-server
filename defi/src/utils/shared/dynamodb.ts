@@ -6,7 +6,7 @@ const ddbClient = new DynamoDBClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
     sslEnabled: false,
-    region: "local", 
+    region: "local",
     maxAttempts: 10
   })
 });
@@ -40,9 +40,9 @@ const dynamodb = {
     }),
   update: (
     params: Omit<UpdateCommandInput, "TableName">
-  ) => client.update({ 
-    TableName, 
-    ...params, 
+  ) => client.update({
+    TableName,
+    ...params,
     ...(params.ExpressionAttributeValues && {
       ExpressionAttributeValues: sanitizeForDDBWrite(params.ExpressionAttributeValues)
     })
@@ -89,8 +89,9 @@ const dynamodb = {
     }
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
+    item.sourceTag = process.env.SOURCE_TAG
     try {
-      let response = await client.put({ TableName: 'prod-event-table', Item: sanitizeForDDBWrite(item) })
+      let response = await client.put({ TableName: 'prod-event-table', Item: sanitizeForDDBWrite(item), })
       return response;
     } catch (e: any) {
       console.error("Failed to put event data", item.PK, item.source, e?.message || e);
@@ -238,22 +239,22 @@ function sanitizeForDDBWrite(value: any): any {
   if (value === null || value === undefined) return value;
   if (value instanceof NumberValue) return value;
   if (Array.isArray(value)) return value.map(sanitizeForDDBWrite);
-  
+
   const type = typeof value;
-  
-  if (type=== "bigint") return NumberValue.from(value.toString());
-  
+
+  if (type === "bigint") return NumberValue.from(value.toString());
+
   if (type === "number") {
     if (!Number.isFinite(value)) return value.toString();
     if (Math.abs(value) > Number.MAX_SAFE_INTEGER) return NumberValue.from(value.toString());
     return value;
   }
-  
+
   if (type === "object") {
     const out: any = {};
     for (const [k, val] of Object.entries(value)) out[k] = sanitizeForDDBWrite(val);
     return out;
   }
-  
+
   return value;
 }

@@ -6889,7 +6889,7 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1766422211,
   },
-  /*{ 
+  { 
     id: "7175",
     name: "LotusDex V2",
     address: null,
@@ -6930,7 +6930,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423181,
-  },*/
+  },
   { 
     id: "7177",
     name: "Yusan",

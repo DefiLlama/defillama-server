@@ -89,7 +89,7 @@ const dynamodb = {
     }
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
-    item.sourceTag = process.env.SOURCE_TAG
+    item.sourceTag = process.env.SOURCE_TAG ?? 'unknown';
     try {
       let response = await client.put({ TableName: 'prod-event-table', Item: sanitizeForDDBWrite(item), })
       return response;

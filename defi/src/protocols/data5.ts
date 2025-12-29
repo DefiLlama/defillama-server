@@ -6909,6 +6909,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423171,
+    parentProtocol: "parent#lotusdex",
   },
   { 
     id: "7176",
@@ -6930,6 +6931,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423181,
+    parentProtocol: "parent#lotusdex",
   },
   { 
     id: "7177",

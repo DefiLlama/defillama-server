@@ -8594,17 +8594,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "udonfi_chromia",
   },
-  /*{
+  {
     id: "parent#lotusdex",
     name: "LotusDex",
     url: "https://app.lotusdex.io/",
     description: "UdonFi is a lending and borrowing protocol on Chromia that lets users supply and borrow assets within an isolated appchain environment.",
-    logo: `${baseIconsUrl}/udonfi.jpg`,
+    logo: `${baseIconsUrl}/lotusdex.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "udonfi_chromia",
-  },*/
+    twitter: "LotusDex",
+  },
 ];
 
 export default parentProtocols;

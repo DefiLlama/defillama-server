@@ -5449,6 +5449,14 @@ export const chainCoingeckoIds = {
     github: ["virbicoin"],
     chainId: 329,
   },
+  "Polymesh": {
+    geckoId: "polymesh",
+    symbol: "POLYX",
+    cmcId: "20362",
+    twitter: "PolymeshNetwork",
+    url: "https://polymesh.network/",
+    github: ["PolymeshAssociation"],
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

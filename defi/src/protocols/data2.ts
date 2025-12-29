@@ -11059,7 +11059,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1655988523,
     dimensions: {
-      fees: "moonwell-artemis"
+      fees: "moonwell"
     }
   },
   {
@@ -20254,6 +20254,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/axelarnetwork/audits"],
     listedAt: 1667045416,
     parentProtocol: "parent#axelar-network",
+    dimensions: {
+      fees: "axelar"
+    }
   },
   {
     id: "2238",
@@ -21891,7 +21894,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#camelot",
     listedAt: 1669242459,
     dimensions: {
-      fees: "camelot-v2",
+      fees: "camelot",
       dexs: "camelot"
     }
   },
@@ -25651,6 +25654,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
+    dimensions: {
+      fees: "cap-finance-v4"
+    }
   },
   {
     id: "2470",
@@ -31048,26 +31054,6 @@ const data2: Protocol[] = [
     twitter: "ZukeSwap",
     listedAt: 1679396445,
     rugged: true,
-  },
-  {
-    id: "6778",
-    name: "Snowbl",
-    address: "0xd61bfc9ca1d0d2b03a3dd74e2ab81df8e5f606e8",
-    symbol: "sSnowbl",
-    url: "https://snowbl.capital",
-    description: "Snowbl Capital is an on-chain capital allocator with an USDC vault diversifying across funding, lending, farming, and market-neutral arbitrage to pursue risk-managed yield.",
-    chain: "Base",
-    logo: `https://static.snowbl.capital/logo.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Onchain Capital Allocator",
-    chains: ["Base"],
-    oracles: [],
-    forkedFrom: [],
-    module: "snowbl-capital/index.js",
-    twitter: "snowblcapital",
   },
 ];
 export default data2;

@@ -91,7 +91,7 @@ async function getVaultPrices(chain: string, vaults: string[]) {
 }
 
 async function getConvertSharesToYieldTokens(chain: string, vaults: string[]) {
-  const convertYieldTokenToShares = await multiCall({
+  const convertSharesToYieldTokens = await multiCall({
     chain,
     calls: vaults.map((v) => ({
       target: v,
@@ -100,7 +100,7 @@ async function getConvertSharesToYieldTokens(chain: string, vaults: string[]) {
     abi: "function convertSharesToYieldToken(uint256 amount) view returns (uint256)",
   })
 
-  return convertYieldTokenToShares.output.map((c: { output: string }) => c.output)
+  return convertSharesToYieldTokens.output.map((c: { output: string }) => c.output)
 }
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

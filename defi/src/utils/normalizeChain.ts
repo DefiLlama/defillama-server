@@ -4103,7 +4103,7 @@ export const chainCoingeckoIds = {
     url: "https://waterfall.network/",
     chainId: 181,
   },
-  "Mantra": {
+  "MANTRA": {
     geckoId: "mantra-dao",
     symbol: "OM",
     cmcId: "6536",
@@ -5679,6 +5679,7 @@ const chainLabelMap = {
   "hpp": "HPP",
   "molten_network": "Molten Network",
   "virbicoin": "VirBiCoin",
+  "mantra": "Mantra",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5731,6 +5732,7 @@ const newChainLabelMap = {
   "camp": "Camp Network",
   "reya": "ReyaChain",
   "goat": "GOAT",
+  "mantra": "MANTRA",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

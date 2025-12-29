@@ -16996,7 +16996,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "infinifi",
-        genuineSpikes: ["1766793600"],
+        genuineSpikes: ["1766793600", "1766880000","1766966400"],
       },
     }
   },

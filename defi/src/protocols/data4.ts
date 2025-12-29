@@ -9280,7 +9280,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "pump-swap/index.js",
     forkedFrom: [],
-    twitter: "pumpdotfun",
+    twitter: "Pumpfun",
     parentProtocol: "parent#pump",
     listedAt: 1742516927,
     dimensions: {

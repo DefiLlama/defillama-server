@@ -41534,7 +41534,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     forkedFrom: [],
-    twitter: "pumpdotfun",
+    twitter: "Pumpfun",
     parentProtocol: "parent#pump",
     listedAt: 1712427917,
     dimensions: {

@@ -618,6 +618,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "monad",
     underlying: "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
     address: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+    confidence: 1,
   },
   sMON: {
     rate: async ({ api }) => {

@@ -7343,7 +7343,7 @@ const data5: Protocol[] = [
       //fees: "variational", 
       derivatives: {
         adapter:"variational-omni",
-        genuineSpikes: ["1766793600"],
+        genuineSpikes: ["1766793600","1766966400"],
       },
     },
     github: ["variational-research"],

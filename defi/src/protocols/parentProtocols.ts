@@ -8583,6 +8583,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "settlex_finance",
   },
+  {
+    id: "parent#udonfi",
+    name: "UdonFi",
+    url: "https://udonfi.xyz/",
+    description: "UdonFi is a lending and borrowing protocol on Chromia that lets users supply and borrow assets within an isolated appchain environment.",
+    logo: `${baseIconsUrl}/udonfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "udonfi_chromia",
+  },
+  {
+    id: "parent#lotusdex",
+    name: "LotusDex",
+    url: "https://app.lotusdex.io/",
+    description: "Lotus is the first native DEX for the MANTRA. Lotus is deeply integrated across the MANTRA EVM with most of the top protocols, tokens, and liquidity providers in the ecosystem.",
+    logo: `${baseIconsUrl}/lotusdex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LotusDex",
+  },
 ];
 
 export default parentProtocols;

@@ -382,6 +382,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   bob: {
     UNIBTC: '0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894' 
     //https://explorer.gobob.xyz/address/0x631ae97e24f9F30150d31d958d37915975F12ed8?tab=token_transfers , https://explorer.gobob.xyz/address/0x15ee13E98dcacA45125211d03443B251C322bab5?tab=token_transfers , https://app.pell.network/restake/detail?chainid=60808&address=0x631ae97e24f9F30150d31d958d37915975F12ed8
+  },
+  sui: {
+    BTCvc: '0x647ac1a9d158fed6fe4cba5bf42c51eceb2638518d1a9e71343f8e92ba7349fe::btcvc::BTCVC',
   }
 };
 

@@ -1051,6 +1051,11 @@
       "decimals": 6,
       "symbol": "M"
     },
+    "0x393C0cf85E5a60b730e705396f3bea71648FA3A0": {
+      "decimals": "18",
+      "symbol": "stakedao-crvUSDUSDC-f",
+      "to": "asset#ethereum:0x95f00391cb5eebcd190eb58728b4ce23dbfa6ac1"
+    },
     "0xC3361F107c0b82864D5B100A2f3C3E0a1a3586DA": {
       "decimals": "18",
       "symbol": "stakedao-PYcrvUSD",
@@ -1827,6 +1832,11 @@
     }
   },
   "arbitrum": {
+    "0x3e62fED35c97145e6B445704B8CE74B2544776A9": {
+      "decimals": "18",
+      "symbol": "EARNM",
+      "to": "coingecko#earnm"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",
@@ -10444,6 +10454,38 @@
       "to": "coingecko#mantra-dao",
       "decimals": 6,
       "symbol": "uom"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "MANTRA"
+    }, 
+    "0xE3047710EF6cB36Bcf1E58145529778eA7Cb5598": {
+      "to": "coingecko#mantra-dao",
+      "decimals": 18,
+      "symbol": "wOM"
+    }, 
+    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "mantraUSD"
+    }, 
+    "0x5e76be0f4e09057d75140216f70fd4ce3365bb29": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }, 
+    "0x680e8ecb908a2040232ef139a0a52cbe47b9f15b": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }
+  }, 
+  "virbicoin": {
+    "0xdf136683B118E95c04A61FEC091c65736d9de059": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "verus": {
@@ -13542,18 +13584,6 @@
       "to": "coingecko#cross-2",
       "decimals": 18,
       "symbol": "CROSS"
-    }
-  }, 
-  "mantrachain": {
-    "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#mantra-dao",
-      "decimals": 18,
-      "symbol": "MANTA"
-    }, 
-    "0xd2b95283011E47257917770D28Bb3EE44c849f6F": {
-      "to": "coingecko#coingecko#usd-coin",
-      "decimals": 6,
-      "symbol": "mantraUSD"
     }
   }
 }

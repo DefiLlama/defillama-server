@@ -1086,6 +1086,12 @@ const data: Protocol[] = [
       "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
     ],
     github: ["Idle-Labs"], //check
+    dimensions: {
+      fees: {
+        adapter: "idle",
+        genuineSpikes: ["1751241600",],
+      },
+    },
   },
   {
     id: "151",
@@ -1552,6 +1558,9 @@ const data: Protocol[] = [
     twitter: "indexcoop",
     governanceID: ["snapshot:index-coop.eth"],
     github: ["SetProtocol"],
+    dimensions: {
+      fees: "index-coop"
+    }
   },
   {
     id: "173",
@@ -2796,6 +2805,9 @@ const data: Protocol[] = [
     audit_links: ["https://docs.futureswap.com/other/audits"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     github: ["futureswap"],
+    dimensions: {
+      fees: "futureswap",
+    },
   },
   {
     id: "229",
@@ -15425,7 +15437,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cashio/index.js",
     twitter: "cashioapp",
     listedAt: 1636191361,
-    rugged: true,
+    // rugged: true,
     deadUrl: true,
   },
   {

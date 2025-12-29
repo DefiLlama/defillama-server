@@ -4701,6 +4701,9 @@ const data4: Protocol[] = [
     module: "concrete-xyz/index.js",
     twitter: "ConcreteXYZ",
     listedAt: 1738937447,
+    dimensions: {
+      fees: "concrete"
+    }
   },
   {
     id: "5752",
@@ -7566,6 +7569,9 @@ const data4: Protocol[] = [
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275361,
+    dimensions: {
+      fees: "puffer-vaults"
+    }
   },
   /*{
     id: "5868",
@@ -10868,6 +10874,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1744029272,
+    dimensions: {
+      fees: "seamless-vaults",
+    },
   },
   {
     id: "6001",
@@ -12708,6 +12717,9 @@ const data4: Protocol[] = [
     github: ["SolomonLabs"],
     stablecoins: ["solomon-usdv"],
     listedAt: 1745349218,
+    dimensions: {
+      fees: "solomon-usdv"
+    }
   },
   {
     id: "6078",
@@ -16981,6 +16993,12 @@ const data4: Protocol[] = [
     ],
     stablecoins: ["infinifi-usd"],
     listedAt: 1748465947,
+    dimensions: {
+      fees: {
+        adapter: "infinifi",
+        genuineSpikes: ["1766793600", "1766880000","1766966400"],
+      },
+    }
   },
   {
     id: "6246",
@@ -17995,6 +18013,9 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/seamless-protocol/audits"],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1749485042,
+    dimensions: {
+      fees: "seamless-v2",
+    },
   },
   {
     id: "6287",
@@ -20304,7 +20325,8 @@ const data4: Protocol[] = [
     name: "Rango",
     address: null,
     symbol: "-",
-    url: "https://app.rango.exchange/bridge",
+    url: "https://rango.vip/a/XdoHRA",
+    referralUrl: "https://rango.vip/a/XdoHRA",
     description:
       "Rango is a cutting-edge routing and aggregation protocol for all cross-chain and on-chain swaps, aggregating bridges and DEXs in crypto world",
     chain: "Ethereum",
@@ -20464,6 +20486,9 @@ const data4: Protocol[] = [
     twitter: "aerafinance",
     audit_links: [],
     parentProtocol: "parent#aera",
+    dimensions: {
+      fees: "aera-v3"
+    },
     listedAt: 1751553171,
   },
   {
@@ -20871,6 +20896,9 @@ const data4: Protocol[] = [
     forkedFromIds: [],
     parentProtocol: "parent#felix",
     listedAt: 1751964664,
+    dimensions: {
+      fees: "felix-usdhl"
+    }
   },
   {
     id: "6405",
@@ -21242,8 +21270,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PriveX_Official",
     dimensions: {
-      fees: "privex",
-      derivatives: "privex"
+    //  fees: "privex",
+    //  derivatives: "privex"
     }
   },
   {
@@ -23330,6 +23358,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket-protocol",
     listedAt: 1753887812,
+    dimensions: {
+      fees: "bracket-vaults"
+    }
   },
   {
     id: "6505",
@@ -24005,6 +24036,9 @@ const data4: Protocol[] = [
     twitter: "AdrasteaFinance",
     parentProtocol: "parent#adrastea",
     listedAt: 1754499345,
+    dimensions: {
+      fees: "adrastea-lst"
+    }
   },
   {
     id: "6533",
@@ -24517,7 +24551,7 @@ const data4: Protocol[] = [
     name: "HumidiFi",
     address: "solana:WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
     symbol: "WET",
-    url: "null",
+    url: "https://humidifi.xyz/",
     description: "Prop AMM on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/humidifi.jpg`,
@@ -24528,7 +24562,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "humidifi_",
+    twitter: "humidifi",
     forkedFromIds: [],
     dimensions: {
       dexs: {
@@ -28225,13 +28259,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6711",
-    name: "UdonFi",
+    name: "UdonFi Lending",
     address: null,
     symbol: "-",
     url: "https://udonfi.xyz/",
     description: "UdonFi is a lending and borrowing protocol on Chromia that lets users supply and borrow assets within an isolated appchain environment.",
     chain: "Chromia",
-    logo: `${baseIconsUrl}/udonfi.jpg`,
+    logo: `${baseIconsUrl}/udonfi-lending.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28248,6 +28282,7 @@ const data4: Protocol[] = [
     ],
     module: "udon/index.js",
     twitter: "udonfi_chromia",
+    parentProtocol: "parent#udonfi",
     listedAt: 1757530151,
   },
   {
@@ -32468,7 +32503,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "ore",
     cmcId: "32782",
-    category: "Reserve Currency",
+    category: "Gamified Mining",
     chains: ["Solana"],
     forkedFromIds: [],
     module: "dummy.js",

@@ -12500,6 +12500,9 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/ajna-finance/audits"],
     parentProtocol: "parent#ajna",
     listedAt: 1689441053,
+    dimensions: {
+      fees: "ajna-v1"
+    }
   },
   {
     id: "3234",
@@ -28494,6 +28497,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/dinero-protocol/audits/tree/master/dinero-pirex-eth/pirex-eth"],
     parentProtocol: "parent#redacted",
     listedAt: 1702470940,
+    dimensions: {
+      fees: "dinero-pxeth"
+    }
   },
   {
     id: "3913",
@@ -31088,6 +31094,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/ajna-finance/audits"],
     parentProtocol: "parent#ajna",
     listedAt: 1705092987,
+    dimensions: {
+      fees: "ajna-v2"
+    }
   },
   {
     id: "4020",
@@ -38554,6 +38563,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/aera-finance/aera-contracts-public/blob/main/v2/audits/spearbit/2023-09-22.pdf"],
     parentProtocol: "parent#aera",
     listedAt: 1710850850,
+    dimensions: {
+      fees: "aera-v2"
+    }
   },
   {
     id: "4324",
@@ -43975,6 +43987,9 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/MorpheusAIs/Docs/tree/main/Security%20Audit%20Reports"],
     github: ["MorpheusAIs"],
     listedAt: 1714565074,
+    dimensions: {
+      fees: "morpheus-ai"
+    }
   },
   {
     id: "4554",
@@ -44902,6 +44917,9 @@ const data3_2: Protocol[] = [
       "https://docs.origami.finance/technical-reference/audits",
     ],
     listedAt: 1715612691,
+    dimensions: {
+      fees: "origami-finance",
+    }
   },
   {
     id: "4593",
@@ -49779,6 +49797,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],
     listedAt: 1718906602,
+    dimensions: {
+      fees: "termmax",
+    }
   },
   {
     id: "4800",
@@ -49865,6 +49886,9 @@ const data3_3: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#icecreamswap",
     listedAt: 1718964127,
+    dimensions: {
+      dexs: "icecreamswap-v3"
+    }
   },
   {
     id: "4804",
@@ -51048,6 +51072,9 @@ const data3_3: Protocol[] = [
     stablecoins: ["blackrock-usd"],
     parentProtocol: "parent#securitize",
     listedAt: 1720292439,
+    dimensions: {
+      fees: "securitize"
+    }
   },
   {
     id: "4854",
@@ -51193,7 +51220,8 @@ const data3_3: Protocol[] = [
     name: "Ape Jupiter",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://ape.pro/",
+    url: "https://ape.pro/?ref=rDmlXpoRAD1j",
+    referralUrl: "https://ape.pro/?ref=rDmlXpoRAD1j",
     description:
       "Ape is built around a secure vault that only your wallet can access. Simply deposit SOL and start to trade.",
     chain: "Solana",
@@ -56847,7 +56875,10 @@ const data3_3: Protocol[] = [
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",
     audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
-    listedAt: 1725449393
+    listedAt: 1725449393,
+    dimensions: {
+      fees: "lombard-lbtc"
+    }
   },
   {
     id: "5098",
@@ -61547,7 +61578,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#loxodrome",
     listedAt: 1730310067,
     dimensions: {
-      derivatives: "loxodrome-perp"
+      derivatives: "loxodrome-perp",
+      fees: "loxodrome-perp",
     }
   },
   {
@@ -63001,6 +63033,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623189,
+    dimensions: {
+      fees: "solayer-staked-sol"
+    }
   },
   {
     id: "5360",

@@ -23335,6 +23335,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.bracket.fi/security/audits"],
     parentProtocol: "parent#bracket-protocol",
     listedAt: 1753887804,
+    dimensions: {
+      fees: "bracket-lst"
+    }
   },
   {
     id: "6504",

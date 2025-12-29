@@ -184,4 +184,3 @@ export default {
   townsquare: require("./townsquare"),
   snowbl: require("./yield/snowbl-capital"),
 };
-

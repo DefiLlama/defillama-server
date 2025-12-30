@@ -12810,6 +12810,11 @@
       "decimals": 6,
       "symbol": "ueur.trading"
     },
+    "ueurc.figure.se": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "ueurc.figure.se"
+    },
     "uylds.fcc": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

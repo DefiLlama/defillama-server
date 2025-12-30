@@ -25628,6 +25628,9 @@ const data4: Protocol[] = [
       Solana: ["JUPSOL", "JLP"],
     },
     listedAt: 1755585345,
+    dimensions: {
+      fees: "jupiter-lend",
+    }
   },
   {
     id: "6601",

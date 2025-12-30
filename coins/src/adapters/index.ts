@@ -13,7 +13,7 @@ import * as pyth from "./oracles/pyth";
 export default {
   ...compound.adapters,
   ...aave.adapters,
-  ...euler.adapters, 
+  ...euler.adapters,
   ...pyth.adapters,
   ...uniswap.adapters,
   ...curve.adapters,
@@ -182,4 +182,5 @@ export default {
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
+  changchain: require("./markets/changchain"),
 };

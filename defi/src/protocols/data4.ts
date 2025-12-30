@@ -21270,8 +21270,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     twitter: "PriveX_Official",
     dimensions: {
-    //  fees: "privex",
-    //  derivatives: "privex"
+     fees: "privex",
+     derivatives: "privex"
     }
   },
   {

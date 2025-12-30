@@ -8605,6 +8605,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LotusDex",
   },
+  {
+    id: "parent#hypertrade",
+    name: "Hypertrade",
+    url: "https://ht.xyz",
+    description: "Native on-chain DEX (v2 + v3) and the only DEX aggregator on Hyperliquid with any-to-any swaps across HyperEVM and HyperCore.",
+    logo: `${baseIconsUrl}/hypertrade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HypertradeX",
+  },
 ];
 
 export default parentProtocols;

@@ -5457,6 +5457,19 @@ export const chainCoingeckoIds = {
     url: "https://polymesh.network/",
     github: ["PolymeshAssociation"],
   },
+  "MegaETH": {
+    geckoId: "megaeth ",
+    symbol: "MEGA",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+    },
+    twitter: "megaeth",
+    url: "https://www.megaeth.com/",
+    chainId: 4326,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5688,6 +5701,7 @@ const chainLabelMap = {
   "molten_network": "Molten Network",
   "virbicoin": "VirBiCoin",
   "mantra": "Mantra",
+  "megaeth": "MegaETH",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

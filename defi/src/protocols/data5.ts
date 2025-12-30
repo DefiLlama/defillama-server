@@ -791,6 +791,7 @@ const data5: Protocol[] = [
     listedAt: 1761692153,
     dimensions: {
       fees: "rain-one",
+      dexs: "rain-one",
     },
   },
   {
@@ -7431,6 +7432,9 @@ const data5: Protocol[] = [
     treasury: "pizza-city.js",
     twitter: null,
     listedAt: 1767121831,
+    dimensions: {
+      fees: "pizza-city",
+    }
   },
 ];
 export default data5;

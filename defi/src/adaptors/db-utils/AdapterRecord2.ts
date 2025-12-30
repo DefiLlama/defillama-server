@@ -191,7 +191,9 @@ export class AdapterRecord2 {
         const { value }: { value: number } = aggData[dataType]
         const triggerValue = getSpikeThreshold!(dataType)
 
-        if (value >= triggerValue) {
+        const absoluteValue = Math.abs(value) //negative spikes should be blocked too
+
+        if (absoluteValue >= triggerValue) {
           return this.getValidationError({
             message: `${dataType}: ${humanizeNumber(value)} >= ${humanizeNumber(triggerValue)} (default threshold)`,
             type: 'spike',
@@ -223,7 +225,9 @@ export class AdapterRecord2 {
         triggerValue *= 5  // for old datapoints, we increase the spike trigger level to avoid false positives
       }
 
-      if (value < minSignificantValue) continue; // no need to check for spikes if value is below base level
+      const absoluteValue = Math.abs(value); //negative spikes should be blocked too
+
+      if (absoluteValue < minSignificantValue) continue; // no need to check for spikes if value is below base level
 
       const monthStats = recentData?.dimStats?.[dataType]?.monthStats ?? {
         highest: minSignificantValue
@@ -233,7 +237,7 @@ export class AdapterRecord2 {
       // normally, we call it a spike if it is 5x the highest datapoint in the last month
       // but if value is higher than baseline spike config (say 10M for dex volume), then we treat 3x a spike
       let spikeThresholdRatio = 5
-      let currentRatio = value / monthStats.highest
+      let currentRatio = absoluteValue / monthStats.highest
       if (monthStats.highest > triggerValue) spikeThresholdRatio = 3
 
       if (currentRatio >= spikeThresholdRatio) {

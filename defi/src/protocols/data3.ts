@@ -32250,7 +32250,7 @@ const data3_1: Protocol[] = [
     category: "prediction-market",
     chains: ["Arbitrum"],
     forkedFrom: [],
-    module: "possumFinance/index.js",
+    module: "possumLabs/index.js",
     twitter: "Possum_Finance",
     audit_links: ["https://www.possum.finance/docs/resources/security-audits"],
     listedAt: 1706291324,

@@ -7407,7 +7407,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     forkedFrom: [],
     audit_links: ["https://github.com/openledger-dev/openledger/blob/master/audit/OpenLedger-OPEN-Final-Report.pdf"],
-    module: "openledger/index.js",
+    module: "openLedger/index.js",
     twitter: "OpenledgerHQ",
     github: ["openledger-dev"],
     listedAt: 1767121232,

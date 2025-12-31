@@ -4256,7 +4256,7 @@ const data5: Protocol[] = [
       "open-interest": "monday-trade-perp-oi",
     },
   },
-  {
+/*   {  // we dont track tvl of AVss atm, can re-list to track fees/other metrics later
     id: "7062",
     name: "TriggerX",
     address: null,
@@ -4277,7 +4277,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1764300395,
-  },
+  }, */
   {
     id: "7063",
     name: "Mynth",

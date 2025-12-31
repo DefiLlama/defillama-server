@@ -1321,7 +1321,7 @@ const data5: Protocol[] = [
   },
   {
     id: "6946",
-    name: "Carina Aggregator",
+    name: "Carina",
     address: null,
     symbol: "-",
     url: "https://app.carina.finance/",

@@ -684,8 +684,8 @@ function initSummaryItem(isChain = false) {
     earliestTimestamp: undefined,
     chart: {},
     chartBreakdown: {},
-    total24h: 0,
-    total48hto24h: 0,
+    total24h: null,
+    total48hto24h: null,
     chainSummary: {},
     recordCount: 0,
   }

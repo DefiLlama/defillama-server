@@ -8616,6 +8616,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HypertradeX",
   },
+  {
+    id: "parent#perena",
+    name: "Perena",
+    url: "https://perena.org",
+    description: "Perena is a stablebank offering USD STAR (USD*), a digital dollar that automatically accrues value from real yield sources, including delta-neutral strategies, secured lending, and stablecoins.",
+    logo: `${baseIconsUrl}/perena.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "perena",
+  },
 ];
 
 export default parentProtocols;

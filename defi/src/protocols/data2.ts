@@ -11469,6 +11469,9 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/hunny-swap"],
     listedAt: 1656716851,
     github: ["HunnyFinance"],
+    dimensions: {
+      dexs: "hunnyswap"
+    }
   },
   {
     id: "1872",

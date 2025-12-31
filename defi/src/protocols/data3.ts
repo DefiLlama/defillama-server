@@ -3391,6 +3391,9 @@ const data3_0: Protocol[] = [
     module: "sharky/index.js",
     twitter: "SharkyFi",
     listedAt: 1681557908,
+    dimensions: {
+      fees: "sharky"
+    }
   },
   {
     id: "2843",

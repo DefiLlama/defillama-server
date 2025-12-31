@@ -7148,6 +7148,11 @@
     }
   },
   "sei": {
+    "0xf7fa6725183e603059fc23d95735bf67f72b2d78": {
+      "decimals": "18",
+      "symbol": "ACRED",
+      "to": "coingecko#apollo-diversified-credit-securitize-fund"
+    },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",

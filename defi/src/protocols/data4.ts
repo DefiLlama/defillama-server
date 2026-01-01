@@ -14001,6 +14001,9 @@ const data4: Protocol[] = [
     forkedFrom: [],
     github: ["sentineltraderbot"],
     listedAt: 1746193445,
+    dimensions: {
+      fees: "sentinel-trader-bot"
+    }
   },
   {
     id: "6131",

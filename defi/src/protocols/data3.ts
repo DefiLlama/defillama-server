@@ -11047,6 +11047,7 @@ const data3_0: Protocol[] = [
     listedAt: 1687942915,
     github: ["Ellipsis-Labs"],
     dimensions: {
+      fees: "phoenix",
       dexs: {
         genuineSpikes: ["1722816000"],
         adapter: "phoenix"
@@ -30122,7 +30123,8 @@ const data3_1: Protocol[] = [
     treasury: "dexhunter.js",
     twitter: "DexHunterIO",
     dimensions: {
-      aggregators: "dexhunter"
+      aggregators: "dexhunter",
+      fees: "dexhunter"
     }
   },
   {
@@ -57596,7 +57598,8 @@ const data3_3: Protocol[] = [
     twitter: "predictdotfun",
     listedAt: 1725957058,
     dimensions: {
-      dexs: "predict-fun"
+      dexs: "predict-fun",
+      fees: "predict-fun"
     }
   },
   {
@@ -57926,7 +57929,10 @@ const data3_3: Protocol[] = [
       Binance: ["LBTC"],
       Sonic: ["LBTC"],
     },
-    listedAt: 1726215518
+    listedAt: 1726215518,
+    dimensions: {
+      fees: "lombard-vault"
+    }
   },
   {
     id: "5144",
@@ -65618,7 +65624,10 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     module: "opentrade/index.js",
     twitter: "opentrade_io",
-    listedAt: 1733496042
+    listedAt: 1733496042,
+    dimensions: {
+      fees: "opentrade"
+    }
   },
   {
     id: "5472",

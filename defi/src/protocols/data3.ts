@@ -64203,7 +64203,8 @@ const data3_3: Protocol[] = [
     name: "GMGN",
     address: null,
     symbol: "-",
-    url: "https://gmgn.ai",
+    url: "https://gmgn.ai/r/defillama",
+    referralUrl: "https://gmgn.ai/r/defillama",
     description:
       "Discover faster, Trading in seconds http://gmgn.ai",
     chain: "Solana",

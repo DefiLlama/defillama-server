@@ -3169,7 +3169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#velvet.capital",
     name: "Velvet.Capital",
-    url: "https://www.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
+    referralUrl: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     logo: `${baseIconsUrl}/velvet.capital.png`,

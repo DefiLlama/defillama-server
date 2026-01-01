@@ -7601,7 +7601,7 @@ const data5: Protocol[] = [
     name: "Velvet Capital Staking",
     address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
     symbol: "VELVET",
-    url: "https://dapp.velvet.capital/Rewards",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description: "Staking Velvet to earn rewards.",
     chain: "Binance",
     logo: `${baseIconsUrl}/velvet-capital-staking.jpg`,

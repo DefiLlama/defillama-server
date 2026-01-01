@@ -5403,7 +5403,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aevo",
     name: "Aevo",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
+    referralUrl: "https://app.aevo.xyz/r/defillama",
     description:
       "Trade crypto options on the world's first high-performance decentralized options exchange.",
     logo: `${baseIconsUrl}/aevo.jpg`,

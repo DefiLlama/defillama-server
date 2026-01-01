@@ -2265,7 +2265,7 @@ const data3_0: Protocol[] = [
     name: "Aevo Perps",
     address: "ethereum:0xB528edBef013aff855ac3c50b381f253aF13b997",
     symbol: "AEVO",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
     description: "Trade crypto options on the world's first high-performance decentralized options exchange.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aevo-perps.jpg`,
@@ -55923,7 +55923,7 @@ const data3_3: Protocol[] = [
     name: "Aevo Options",
     address: "ethereum:0xB528edBef013aff855ac3c50b381f253aF13b997",
     symbol: "AEVO",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
     description:
       "Trade crypto options on the world's first high-performance decentralized options exchange.",
     chain: "Ethereum",

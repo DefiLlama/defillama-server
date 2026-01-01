@@ -2356,7 +2356,8 @@ const data4: Protocol[] = [
     name: "Resolv",
     address: "0x259338656198ec7a76c729514d3cb45dfbf768a1",
     symbol: "RESOLV",
-    url: "https://resolv.xyz/",
+    url: "https://app.resolv.xyz/ref/defillama",
+    referralUrl: "https://app.resolv.xyz/ref/defillama",
     description:
       "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
     chain: "Ethereum",

@@ -7652,7 +7652,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.definity.finance/",
-    description: "Staked SOL on Definity, receive definSOL tokens.",
+    description: "Stake SOL on Definity, receive definSOL tokens.",
     chain: "Solana",
     logo: `${baseIconsUrl}/definity-staked-sol.jpg`,
     audits: "0",

@@ -11171,12 +11171,12 @@
       "symbol": "KING"
     },
     "0x32604f9ea6c739d0c56b2d01e07a57c7a05ff007": {
-      "to": "coingecko#saga-2",
+      "to": "coingecko#stride-staked-atom",
       "decimals": 18,
       "symbol": "wstATOM"
     },
     "0xaa5e2ea42f0a9c3b43f2b7d26eaa2ba17ae41dac": {
-      "to": "coingecko#stride-staked-osmo",
+      "to": "coingecko#wrapped-saga",
       "decimals": 18,
       "symbol": "WSAGA"
     },

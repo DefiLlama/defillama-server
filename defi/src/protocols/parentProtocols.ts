@@ -8169,7 +8169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#grvt",
     name: "Grvt",
-    url: "https://grvt.io",
+    url: "https://grvt.io/?ref=WCDISXW",
+    referralUrl: "https://grvt.io/?ref=WCDISXW",
     description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     logo: `${baseIconsUrl}/grvt.jpg`,
     gecko_id: null,

@@ -995,7 +995,8 @@ const data4: Protocol[] = [
     name: "Grvt Bridge", // previous name GRVT
     address: null,
     symbol: "-",
-    url: "https://grvt.io",
+    url: "https://grvt.io/?ref=WCDISXW",
+    referralUrl: "https://grvt.io/?ref=WCDISXW",
     description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/grvt-bridge.jpg`,
@@ -30950,7 +30951,8 @@ const data4: Protocol[] = [
     name: "Grvt Perps",
     address: null,
     symbol: "-",
-    url: "https://grvt.io",
+    url: "https://grvt.io/?ref=WCDISXW",
+    referralUrl: "https://grvt.io/?ref=WCDISXW",
     description:
       "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     chain: "Ethereum",

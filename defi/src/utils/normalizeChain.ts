@@ -5470,6 +5470,18 @@ export const chainCoingeckoIds = {
     url: "https://www.megaeth.com/",
     chainId: 4326,
   },
+  "Quai": {
+    geckoId: "quai-network ",
+    symbol: "QUAI",
+    cmcId: "22354",
+    categories: ["EVM"],
+    twitter: "QuaiNetwork",
+    url: "https://qu.ai",
+    chainId: 9,
+    dimensions: {
+      fees: "quai-network",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

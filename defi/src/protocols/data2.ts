@@ -9121,7 +9121,7 @@ const data2: Protocol[] = [
     previousNames: ["ApolloX"],
     address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
     symbol: "ASTER",
-    url: "https://www.apollox.finance/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",

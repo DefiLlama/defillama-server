@@ -8324,7 +8324,8 @@ const data3_0: Protocol[] = [
     twitter: "FluxBeamDEX",
     listedAt: 1685612658,
     dimensions: {
-      dexs: "fluxbeam"
+      dexs: "fluxbeam",
+      fees: "fluxbeam"
     }
   },
   {

@@ -25319,6 +25319,9 @@ const data2: Protocol[] = [
     twitter: "GuardaWallet",
     forkedFrom: [],
     listedAt: 1674124872,
+    dimensions: {
+      fees: "garuda-staking",
+    },
   },
   /*
   {
@@ -25658,7 +25661,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
     dimensions: {
-      fees: "cap-finance-v4"
+      fees: "cap-finance-v4",
+      derivatives: "cap-finance-v4"
     }
   },
   {

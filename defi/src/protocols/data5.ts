@@ -7729,7 +7729,7 @@ const data5: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "weex-token",
-    cmcId: "36405",
+    cmcId: "32207",
     category: "CEX",
     chains: ["Ethereum"],
     forkedFromIds: [],

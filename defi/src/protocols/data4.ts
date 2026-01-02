@@ -5322,6 +5322,9 @@ const data4: Protocol[] = [
     twitter: "SoSoValueCrypto",
     parentProtocol: "parent#sosovalue",
     listedAt: 1739444198,
+    dimensions: {
+      fees: "sosovalue-basis"
+    }
   },
   {
     id: "5778",
@@ -11479,6 +11482,9 @@ const data4: Protocol[] = [
     github: ["Aegis-im"],
     stablecoins: ["aegis-yusd"],
     listedAt: 1744284096,
+    dimensions: {
+      fees: "aegis-yusd",
+    },
   },
   {
     id: "6025",

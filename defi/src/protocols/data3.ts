@@ -29428,6 +29428,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.parcl.co/security"],
     parentProtocol: "parent#parcl",
     listedAt: 1703211654,
+    dimensions: {
+      fees: "parcl",
+    },
   },
   {
     id: "3951",
@@ -41735,7 +41738,8 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     twitter: "flytrade_",
     dimensions: {
-      aggregators: "magpie"
+      aggregators: "magpie",
+      fees: "fly-trade"
     }
   },
   {
@@ -60467,7 +60471,11 @@ const data3_3: Protocol[] = [
     oraclesBreakdown: [ { name: "TruthOracle", type: "Primary", proof: [] } ],
     twitter: "truemarkets",
     listedAt: 1729254083,
-    treasury: 'truemarkets.js'
+    treasury: 'truemarkets.js',
+    dimensions: {
+      fees: "truemarkets",
+      dexs: "truemarkets",
+    },
   },
   {
     id: "5252",
@@ -62647,7 +62655,10 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
     stablecoins: ["reservoir-stablecoin"],
-    listedAt: 1731322673
+    listedAt: 1731322673,
+    dimensions: {
+      fees: "reservoir-protocol",
+    },
   },
   {
     id: "5344",

@@ -2,20 +2,46 @@ import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
 import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput, NumberValue } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
 
-const ddbClient = new DynamoDBClient({
-  ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
-    endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
-    sslEnabled: false,
-    region: "local",
-    maxAttempts: 10
-  })
+const mockDynamoDBClient = new DynamoDBClient({
+  region: "local",
+  endpoint: "http://localhost:8000",
+  credentials: {
+    accessKeyId: "test",
+    secretAccessKey: "test",
+  }
 });
 
-const client = DynamoDBDocument.from(ddbClient, {
+const mockDynamoDBDocument = DynamoDBDocument.from(mockDynamoDBClient, {
   marshallOptions: {
     convertClassInstanceToMap: true,
   }
-})
+});
+
+let ddbClient = mockDynamoDBClient;
+let client = mockDynamoDBDocument;
+
+try {
+  ddbClient = new DynamoDBClient({
+    ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
+      endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
+      sslEnabled: false,
+      region: "local",
+      maxAttempts: 10
+    })
+  });
+
+  client = DynamoDBDocument.from(ddbClient, {
+    marshallOptions: {
+      convertClassInstanceToMap: true,
+    }
+  })
+} catch (e) {
+  if (process.env.LOCAL_TEST)
+    console.info("Running in local test mode, using local DynamoDB instance");
+  else
+    throw e
+}
+
 
 export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
 
@@ -87,6 +113,7 @@ const dynamodb = {
     if (!item.SK) {
       throw new Error("Item must have a SK");
     }
+
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
     item.sourceTag = process.env.SOURCE_TAG ?? 'unknown';

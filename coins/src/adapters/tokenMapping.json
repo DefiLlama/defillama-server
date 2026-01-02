@@ -1187,7 +1187,7 @@
       "to": "coingecko#bitcoin"
     },
     "0x83599937c2c9bea0e0e8ac096c6f32e86486b410": {
-      "to": "coingecko#bitcoin",
+      "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "liquidBeraETH"
     },

@@ -5657,7 +5657,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Gaming",
+    category: "Gamified Mining",
     chains: ["Solana"],
     forkedFromIds: [],
     module: "dummy.js",

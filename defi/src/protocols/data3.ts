@@ -60793,7 +60793,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateX-Sep-2024-OffsideLabs.final.pdf"],
     listedAt: 1729682377,
     dimensions: {
-      dexs: "rate-x"
+      dexs: "rate-x",
+      fees: "rate-x"
     }
   },
   {

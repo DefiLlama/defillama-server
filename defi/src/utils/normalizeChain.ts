@@ -3672,6 +3672,9 @@ export const chainCoingeckoIds = {
     chainId: 47763,
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/",
+    dimensions: {
+      fees: "neo-x-mainnet",
+    },
   },
   "Gravity by Galxe": {
     geckoId: "g-token",

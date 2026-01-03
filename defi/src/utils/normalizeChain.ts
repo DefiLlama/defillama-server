@@ -4028,7 +4028,7 @@ export const chainCoingeckoIds = {
     symbol: "VANA",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "withvana",
+    twitter: "vana",
     url: "https://www.vana.org",
     dimensions: {
       fees: "vana"

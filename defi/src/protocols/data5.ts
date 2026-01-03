@@ -7764,5 +7764,28 @@ const data5: Protocol[] = [
     github: ["Fluxion-Exchange"],
     listedAt: 1767466189,
   },
+  {
+    id: "7213",
+    name: "Probable",
+    address: null,
+    symbol: "-",
+    url: "https://probable.markets/",
+    description: "Probable is a crypto-native prediction platform on BNB Chain that lets you trade on the outcome of real-world events across politics, economics, sports, crypto, and more.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/probable.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "0xProbable",
+    dimensions: {
+      dexs: "probable",
+    },
+  },
 ];
 export default data5;

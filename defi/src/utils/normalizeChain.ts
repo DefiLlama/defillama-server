@@ -2499,6 +2499,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "ShibariumNet",
     url: "https://shibatoken.com/",
+    dimensions: {
+      fees: "shibarium"
+    }
   },
   "MVC": {
     geckoId: "microvisionchain",
@@ -3202,6 +3205,9 @@ export const chainCoingeckoIds = {
     url: "https://www.kubchain.com/",
     github: ["bitkub-chain", "bitkub-blockchain"],
     chainId: 96,
+    dimensions: {
+      fees: "kub",
+    },
   },
   "Ancient8": {
     geckoId: null,
@@ -4021,6 +4027,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "withvana",
     url: "https://www.vana.org",
+    dimensions: {
+      fees: "vana"
+    }
   },
   "Agoric": {
     geckoId: "agoric",

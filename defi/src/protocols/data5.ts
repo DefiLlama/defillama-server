@@ -7488,6 +7488,10 @@ const data5: Protocol[] = [
     twitter: "HypertradeX",
     parentProtocol: "parent#hypertrade",
     listedAt: 1767124249,
+    dimensions: {
+      fees: "hypertrade-v3",
+      dexs: "hypertrade-v3",
+    },
   },
   {
     id: "7201",

@@ -26620,6 +26620,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
     listedAt: 1675781739,
+    dimensions: {
+      fees: "hawkfi",
+    },
   },
   {
     id: "2512",

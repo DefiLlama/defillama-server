@@ -7574,11 +7574,11 @@ const data5: Protocol[] = [
   },
   {
     id: "7205",
-    name: "Perma-Pod",
+    name: "Permapod",
     address: null,
     symbol: "-",
     url: "https://www.permapod.xyz/",
-    description: "Perma-Pod is a lending protocol on ZigChain featuring a Red Bank for deposits and borrowing.",
+    description: "Permapod is a non custodial DeFi protocol built on Zigchain, part of the Cosmos ecosystem. It enables users to deposit assets as collateral and borrow stablecoins or other tokens in a secure, decentralized environment",
     chain: "ZigChain",
     logo: `${baseIconsUrl}/perma-pod.jpg`,
     audits: "2",

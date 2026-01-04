@@ -5251,7 +5251,12 @@ const data4: Protocol[] = [
     listedAt: 1739442886,
     dimensions: {
       fees: "magma-finance",
-      dexs: "magma-finance"
+      
+      // washing trading
+      // it start wash trading from 13 Oct: ex tx: https://suivision.xyz/txblock/DY3oSw6KHjwuVtQCYvG1S4YoqNZwRtnWcfwWdX77L1T1
+      // from 17-12-2025, it launch gov token MAGMA and start wash trading agains
+      // https://suiscan.xyz/mainnet/tx/EVjTCHWo7Puyd1DKVrEg6MZzzUmwPuhQdFpm5dxXxCrx
+      // dexs: "magma-finance",
     }
   },
   {

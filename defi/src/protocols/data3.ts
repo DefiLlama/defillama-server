@@ -30128,7 +30128,7 @@ const data3_1: Protocol[] = [
     twitter: "DexHunterIO",
     dimensions: {
       aggregators: "dexhunter",
-      fees: "dexhunter"
+   //   fees: "dexhunter" // its wrong 
     }
   },
   {

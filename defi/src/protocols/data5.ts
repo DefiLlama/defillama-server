@@ -7787,5 +7787,28 @@ const data5: Protocol[] = [
       dexs: "probable",
     },
   },
+  {
+    id: "7214",
+    name: "o1.exchange",
+    address: null,
+    symbol: "-",
+    url: "https://o1.exchange/",
+    description: "A trading terminal available on Base and Solana, offering advanced trading tools and 45% Cashback.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/o1.exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "o1_exchange",
+    dimensions: {
+      fees: "o1-exchange",
+    },
+  },
 ];
 export default data5;

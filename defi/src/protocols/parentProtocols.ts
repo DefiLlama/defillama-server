@@ -8611,7 +8611,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hypertrade",
     name: "Hypertrade",
-    url: "https://ht.xyz",
+    url: "https://ht.xyz?referral=defillama",
+    referralUrl: "https://ht.xyz?referral=defillama",
     description: "Native on-chain DEX (v2 + v3) and the only DEX aggregator on Hyperliquid with any-to-any swaps across HyperEVM and HyperCore.",
     logo: `${baseIconsUrl}/hypertrade.jpg`,
     gecko_id: null,

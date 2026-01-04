@@ -5257,7 +5257,14 @@ const data4: Protocol[] = [
       // from 17-12-2025, it launch gov token MAGMA and start wash trading agains
       // https://suiscan.xyz/mainnet/tx/EVjTCHWo7Puyd1DKVrEg6MZzzUmwPuhQdFpm5dxXxCrx
       // dexs: "magma-finance",
-    }
+    },
+    warningBanners: [
+      {
+        message: "Suspected wash trading on Magma Finance, volumes was be inflated.",
+        level: "alert",
+        until: "2026-07-01",
+      },
+    ],
   },
   {
     id: "5775",

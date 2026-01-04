@@ -61,7 +61,6 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
 
 
   const childGeckoId = childProtocols.find((p) => p.gecko_id)?.gecko_id
-  const childReferralUrl = childProtocols.find((p) => p.referralUrl)?.referralUrl
   const childCmcId = childProtocols.find((p) => p.cmcId)?.cmcId
   const childSymbol = childProtocols.find((p) => p.symbol)?.symbol
   const childAddress = childProtocols.find((p) => p.address)?.address
@@ -70,7 +69,6 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
   if (!protocol.cmcId && childCmcId) protocol.cmcId = childCmcId
   if (!protocol.symbol && childSymbol) protocol.symbol = childSymbol
   if (!protocol.address && childAddress) protocol.address = childAddress
-  if (!protocol.referralUrl && childReferralUrl) protocol.referralUrl = childReferralUrl
 })
 
 

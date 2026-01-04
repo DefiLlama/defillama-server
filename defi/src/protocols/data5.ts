@@ -8993,5 +8993,27 @@ const data5: Protocol[] = [
     twitter: "POKVault",
     listedAt: 1769220984,
   },
+  {
+    id: "7304",
+    name: "AXC GIFT",
+    address: null,
+    symbol: "-",
+    url: "https://axc.xyz",
+    description:
+      "GIFT is a permissioned asset-backed token which seeks to match the performance of the GROW Heritage Fond.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/axc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Credit"],
+    chains: ["Binance"],
+    module: "axc/index.js",
+    forkedFromIds: [],
+    audit_links: [],
+    github: ["accelerate-protocol"],
+    twitter: "AXCLabs",
+  },
 ];
 export default data5;

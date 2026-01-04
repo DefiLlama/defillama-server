@@ -46583,6 +46583,9 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#native",
     listedAt: 1716459034,
+    dimensions: {
+      fees: "native-credit-pool",
+    },
   },
   {
     id: "4664",

@@ -22975,6 +22975,9 @@ const data4: Protocol[] = [
     twitter: "VarlamoreCap",
     audit_links: ["https://docs.silo.finance/docs/audits"],
     listedAt: 1753725001,
+    dimensions: {
+      fees: "varlamore",
+    },
   },
   {
     id: "6488",

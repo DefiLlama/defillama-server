@@ -846,6 +846,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "opinion",
       fees: "opinion",
+      "open-interest": "opinion-oi",
     },
   },
   {
@@ -7763,6 +7764,10 @@ const data5: Protocol[] = [
     twitter: "Fluxion_dex",
     github: ["Fluxion-Exchange"],
     listedAt: 1767466189,
+    dimensions: {
+      dexs: "fluxion-network",
+      fees: "fluxion-network",
+    },
   },
   {
     id: "7213",

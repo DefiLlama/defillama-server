@@ -3564,7 +3564,6 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
-      fees: "o1-exchange"
     },
   },
   {

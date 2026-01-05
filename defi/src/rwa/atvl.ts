@@ -13,11 +13,15 @@ import { getChainDisplayName } from "../utils/normalizeChain";
 import protocols from "../protocols/data";
 import entities from "../protocols/entities";
 import treasuries from "../protocols/treasury";
+import { cachedFetch } from "@defillama/sdk/build/util/cache";
 
-const defiActiveKey: string = "defiActiveTvl";
-const onChainKey: string = "onChainMarketcap";
-const excludedKeys: string = "*"; // starts with
 const excludedProtocolCategories: string[] = ["CEX"];
+const keyMap: { [value: string]: string } = {
+  coingeckoId: '*Coingecko ID',
+  onChain: "onChainMarketcap",
+  defiActive: "defiActiveTvl",
+  excluded: '*',
+}
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
@@ -40,9 +44,13 @@ function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
 }
 
 function toCamelCase(str: string) {
-  return str.toLowerCase().replace(/\//g, ' ').replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-    return index === 0 ? word.toLowerCase() : word.toUpperCase();
-  }).replace(/\s+/g, '');
+  return str
+    .toLowerCase()
+    .replace(/\//g, " ")
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, "");
 }
 
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
@@ -52,7 +60,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
   let protocolIdMap: { [id: string]: string } = {};
   [...protocols, ...entities, ...treasuries].map((protocol: any) => {
     protocolIdMap[protocol.id] = protocol.name;
-  }); 
+  });
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
   rawTvls.map((protocol: any) => {
@@ -98,19 +106,55 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
   return totalSupplies;
 }
 
+async function fetchStablecoins(): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+  const { peggedAssets } = await cachedFetch({
+    key: "stablecoin-symbols",
+    endpoint: "https://stablecoins.llama.fi/stablecoins",
+  });
+
+  const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+  peggedAssets.map((coin: any) => {
+    const { chainCirculating, gecko_id, price, pegType } = coin;
+    if (!chainCirculating || !gecko_id || !price || !pegType) return;
+    data[gecko_id] = {};
+    Object.keys(chainCirculating).map((chain: string) => {
+      const circulating = chainCirculating[chain].current;
+      if (!circulating) return;
+      const mcap = circulating[pegType];
+      if (!mcap) return;
+      data[gecko_id][chain] = mcap.toFixed(0);
+    });
+  });
+
+  return data;
+}
+
 async function main() {
   const parsedCsvData = getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const ids: string[] = [];
 
+  const stablecoinsData = await fetchStablecoins();
+
   parsedCsvData.map((row: any, i: number) => {
     const cleanRow: any = {};
     Object.keys(row).map((key: string) => {
       const camelKey = toCamelCase(key);
       if (key == "*projectID" && row[key].length > 0) ids.push(row.projectID);
-      else if (key.startsWith(excludedKeys)) return;
-      else if (key == "Primary Chain") {
+      else if (key.startsWith(keyMap.excluded)) return;
+      else if (key == "Contracts") {
+        const contracts: { [chain: string]: string[] } = {};
+        (Array.isArray(row[key]) ? row[key] : [row[key]]).map((contract: any) => {
+          if (!contract) return;
+          const chainRaw = contract.split(":")[0];
+          const address = contract.substring(contract.indexOf(":") + 1);
+          const chain = getChainDisplayName(chainRaw.toLowerCase(), true);
+          if (!contracts[chain]) contracts[chain] = [];
+          contracts[chain].push(address);
+        });
+        cleanRow[camelKey] = contracts;
+      } else if (key == "Primary Chain") {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       } else if (key == "Chain")
         cleanRow[camelKey] = row[key]
@@ -128,7 +172,7 @@ async function main() {
     finalData[rowIndex].category.map((category: string) => {
       if (category.toLowerCase().includes("stablecoin")) stablecoin = true;
     });
-    finalData[rowIndex].stablecoin = stablecoin
+    finalData[rowIndex].stablecoin = stablecoin;
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
@@ -170,13 +214,14 @@ async function main() {
           const projectName = protocolIdMap[amountId];
           if (!projectName) return;
 
-          if (!finalData[rwaId][defiActiveKey]) finalData[rwaId][defiActiveKey] = {};
+          if (!finalData[rwaId][keyMap.defiActive]) finalData[rwaId][keyMap.defiActive] = {};
           const chain = pk.substring(0, pk.indexOf(":"));
           const chainDisplayName = getChainDisplayName(chain, true);
-          if (!finalData[rwaId][defiActiveKey][chainDisplayName]) finalData[rwaId][defiActiveKey][chainDisplayName] = {};
-          finalData[rwaId][defiActiveKey][chainDisplayName][projectName] = aum.toFixed(0);
+          if (!finalData[rwaId][keyMap.defiActive][chainDisplayName])
+            finalData[rwaId][keyMap.defiActive][chainDisplayName] = {};
+          finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = aum.toFixed(0);
         } catch (e) {
-          console.error(`Malformed ${defiActiveKey} for ${rwaId}: ${e}`);
+          console.error(`Malformed ${keyMap.defiActive} for ${rwaId}: ${e}`);
         }
       });
     });
@@ -184,6 +229,14 @@ async function main() {
 
   function getOnChainTvls() {
     Object.keys(assetPrices).map((pk: string) => {
+      const rwaId = tokenToProjectMap[pk];
+      const cgId = parsedCsvData[rwaId][keyMap.coingeckoId];
+
+      if (cgId && stablecoinsData[cgId]) {
+        finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
+        return;
+      }
+
       const { price, decimals } = assetPrices[pk];
       const supply = totalSupplies[pk];
       if (!supply || !price) {
@@ -191,25 +244,23 @@ async function main() {
         return;
       }
 
-      const rwaId = tokenToProjectMap[pk];
-
       try {
-        if (!finalData[rwaId][onChainKey]) finalData[rwaId][onChainKey] = {};
+        if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
         const chain = pk.substring(0, pk.indexOf(":"));
         const chainDisplayName = getChainDisplayName(chain, true);
-        if (!finalData[rwaId][onChainKey][chainDisplayName]) finalData[rwaId][onChainKey][chainDisplayName] = {};
+        if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
 
         const aum = (price * supply) / 10 ** decimals;
-        finalData[rwaId][onChainKey][chainDisplayName] = aum.toFixed(0);
+        finalData[rwaId][keyMap.onChain][chainDisplayName] = aum.toFixed(0);
       } catch (e) {
-        console.error(`Malformed ${onChainKey} for ${rwaId}: ${e}`);
+        console.error(`Malformed ${keyMap.onChain} for ${rwaId}: ${e}`);
       }
     });
   }
 
   const filteredFinalData: any = {};
   Object.keys(finalData).map((rwaId: string) => {
-    if (typeof finalData[rwaId][defiActiveKey] === "object" && typeof finalData[rwaId][onChainKey] === "object") {
+    if (typeof finalData[rwaId][keyMap.defiActive] === "object" && typeof finalData[rwaId][keyMap.onChain] === "object") {
       filteredFinalData[rwaId] = finalData[rwaId];
     }
   });

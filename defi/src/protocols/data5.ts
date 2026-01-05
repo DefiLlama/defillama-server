@@ -1329,7 +1329,7 @@ const data5: Protocol[] = [
     description:
       "Carina is an intent-based DEX aggregator that turns routing into a solver competition — delivering best execution, and no platform fees",
     chain: "Sei",
-    logo: `${baseIconsUrl}/carina-aggregator.jpg`,
+    logo: `${baseIconsUrl}/carina.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

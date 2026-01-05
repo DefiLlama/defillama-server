@@ -23066,6 +23066,10 @@ const data4: Protocol[] = [
     twitter: "figuremarkets",
     parentProtocol: "parent#figure-markets",
     listedAt: 1753725971,
+    dimensions: {
+      fees: "figure-markets",
+      dexs: "figure-markets"
+    }
   },
   {
     id: "6492",

@@ -1900,6 +1900,9 @@ const data5: Protocol[] = [
     twitter: "Aquabank2025",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/ab/audit.pdf"],
     listedAt: 1762462187,
+    dimensions: {
+      fees: "aquabank"
+    }
   },
   {
     id: "6970",

@@ -2741,6 +2741,9 @@ const data: Protocol[] = [
     ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
+    dimensions: {
+      fees: "enzyme",
+    }
   },
   {
     id: "226",

@@ -183,4 +183,5 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   shift: require("./yield/shift"),
+  syzusd: require("./other/syzusd").default,
 };

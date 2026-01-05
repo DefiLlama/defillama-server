@@ -1,3 +1,4 @@
+import * as sdk from "@defillama/sdk";
 import { request, gql } from "graphql-request";
 import { addToDBWritesList, getTokenAndRedirectDataMap } from "../../utils/database";
 import { multiCall } from "@defillama/sdk/build/abi/index";
@@ -29,7 +30,8 @@ query AllVaults($skip: Int) {
 const subgraphURL: {
   [key: string]: string
 } = {
-  ethereum: "https://api.studio.thegraph.com/query/60626/notional-exponent/version/latest",
+  ethereum: sdk.graph.modifyEndpoint("9fw42E6QrezaPxixKN9H79nWmpVWURkLmcJdgGHyC14B")
+  // ethereum: "https://api.studio.thegraph.com/query/60626/notional-exponent/version/latest"
 }
 
 async function getVaults(subgraphURL: string) {

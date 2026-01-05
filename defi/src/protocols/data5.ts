@@ -7352,10 +7352,8 @@ const data5: Protocol[] = [
     twitter: "variational_io",
     dimensions: {
       //fees: "variational", 
-      derivatives: {
-        adapter:"variational-omni",
-        genuineSpikes: ["1766793600","1766966400"],
-      },
+      derivatives: "variational-omni",
+      "open-interest": "variational-omni",
     },
     github: ["variational-research"],
   },

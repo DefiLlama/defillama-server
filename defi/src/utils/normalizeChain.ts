@@ -2499,6 +2499,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "ShibariumNet",
     url: "https://shibatoken.com/",
+    dimensions: {
+      fees: "shibarium"
+    }
   },
   "MVC": {
     geckoId: "microvisionchain",
@@ -3202,6 +3205,9 @@ export const chainCoingeckoIds = {
     url: "https://www.kubchain.com/",
     github: ["bitkub-chain", "bitkub-blockchain"],
     chainId: 96,
+    dimensions: {
+      fees: "kub",
+    },
   },
   "Ancient8": {
     geckoId: null,
@@ -3666,6 +3672,9 @@ export const chainCoingeckoIds = {
     chainId: 47763,
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/",
+    dimensions: {
+      fees: "neo-x-mainnet",
+    },
   },
   "Gravity by Galxe": {
     geckoId: "g-token",
@@ -4019,8 +4028,11 @@ export const chainCoingeckoIds = {
     symbol: "VANA",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "withvana",
+    twitter: "vana",
     url: "https://www.vana.org",
+    dimensions: {
+      fees: "vana"
+    }
   },
   "Agoric": {
     geckoId: "agoric",
@@ -4103,7 +4115,7 @@ export const chainCoingeckoIds = {
     url: "https://waterfall.network/",
     chainId: 181,
   },
-  "Mantra": {
+  "MANTRA": {
     geckoId: "mantra-dao",
     symbol: "OM",
     cmcId: "6536",
@@ -5449,6 +5461,39 @@ export const chainCoingeckoIds = {
     github: ["virbicoin"],
     chainId: 329,
   },
+  "Polymesh": {
+    geckoId: "polymesh",
+    symbol: "POLYX",
+    cmcId: "20362",
+    twitter: "PolymeshNetwork",
+    url: "https://polymesh.network/",
+    github: ["PolymeshAssociation"],
+  },
+  "MegaETH": {
+    geckoId: "megaeth ",
+    symbol: "MEGA",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+    },
+    twitter: "megaeth",
+    url: "https://www.megaeth.com/",
+    chainId: 4326,
+  },
+  "Quai": {
+    geckoId: "quai-network ",
+    symbol: "QUAI",
+    cmcId: "22354",
+    categories: ["EVM"],
+    twitter: "QuaiNetwork",
+    url: "https://qu.ai",
+    chainId: 9,
+    dimensions: {
+      fees: "quai-network",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5679,6 +5724,8 @@ const chainLabelMap = {
   "hpp": "HPP",
   "molten_network": "Molten Network",
   "virbicoin": "VirBiCoin",
+  "mantra": "Mantra",
+  "megaeth": "MegaETH",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5731,6 +5778,7 @@ const newChainLabelMap = {
   "camp": "Camp Network",
   "reya": "ReyaChain",
   "goat": "GOAT",
+  "mantra": "MANTRA",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

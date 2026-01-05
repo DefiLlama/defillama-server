@@ -284,10 +284,14 @@ export default async function craftProtocol({
     ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol).map((p) => p.name)
     : [];
 
-  const parentName = parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ?? null;
+  const parent = parentProtocols.find((p) => p.id === protocolData.parentProtocol);
 
-  if (childProtocolsNames.length > 0 && parentName) {
-    response.otherProtocols = [parentName, ...childProtocolsNames];
+  if (childProtocolsNames.length > 0 && parent?.name) {
+    response.otherProtocols = [parent.name, ...childProtocolsNames];
+  }
+
+  if (!response.referralUrl && parent?.referralUrl) {
+    response.referralUrl = parent.referralUrl;
   }
 
   if (methodology) {

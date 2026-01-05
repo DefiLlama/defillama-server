@@ -25,8 +25,7 @@ const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
 
 // some protocols have high value data from the moment we list, we add their id here to avoid them being blocked by validation
 const skipDefaultRecentDataCheckForAdapters = new Set([
-  '3923', // derive v2
-  '5060',  // derive options
+  '7194', // Variational
 ])
 
 export type DimensionRunOptions = {

@@ -183,4 +183,5 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   snowbl: require("./yield/snowbl-capital"),
+  shift: require("./yield/shift"),
 };

@@ -70,7 +70,7 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
   if (!protocol.cmcId && childCmcId) protocol.cmcId = childCmcId
   if (!protocol.symbol && childSymbol) protocol.symbol = childSymbol
   if (!protocol.address && childAddress) protocol.address = childAddress
-  if (!protocol.referralUrl && childReferralUrl) protocol.referralUrl = childReferralUrl
+  // if (!protocol.referralUrl && childReferralUrl) protocol.referralUrl = childReferralUrl
 })
 
 

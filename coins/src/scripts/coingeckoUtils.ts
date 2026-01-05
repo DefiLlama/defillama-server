@@ -93,6 +93,7 @@ export async function getSymbolAndDecimals(
             target: tokenAddress,
           }).then((r) => Number(r)),
         ]);
+      if (!symbol.length) throw new Error(`Symbol is empty for ${tokenAddress}`);
         return { symbol, decimals };
       } catch (e) {
         return;

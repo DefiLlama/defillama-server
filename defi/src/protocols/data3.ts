@@ -46584,7 +46584,7 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#native",
     listedAt: 1716459034,
     dimensions: {
-      fees: "native-credit-pool",
+      fees: "native",
     },
   },
   {

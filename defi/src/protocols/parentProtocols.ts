@@ -3169,7 +3169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#velvet.capital",
     name: "Velvet.Capital",
-    url: "https://www.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
+    referralUrl: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     logo: `${baseIconsUrl}/velvet.capital.png`,
@@ -5402,7 +5403,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aevo",
     name: "Aevo",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
+    referralUrl: "https://app.aevo.xyz/r/defillama",
     description:
       "Trade crypto options on the world's first high-performance decentralized options exchange.",
     logo: `${baseIconsUrl}/aevo.jpg`,
@@ -8167,7 +8169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#grvt",
     name: "Grvt",
-    url: "https://grvt.io",
+    url: "https://grvt.io/?ref=WCDISXW",
+    referralUrl: "https://grvt.io/?ref=WCDISXW",
     description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     logo: `${baseIconsUrl}/grvt.jpg`,
     gecko_id: null,
@@ -8604,6 +8607,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "LotusDex",
+  },
+  {
+    id: "parent#hypertrade",
+    name: "Hypertrade",
+    url: "https://ht.xyz?referral=defillama",
+    referralUrl: "https://ht.xyz?referral=defillama",
+    description: "Native on-chain DEX (v2 + v3) and the only DEX aggregator on Hyperliquid with any-to-any swaps across HyperEVM and HyperCore.",
+    logo: `${baseIconsUrl}/hypertrade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HypertradeX",
+  },
+  {
+    id: "parent#perena",
+    name: "Perena",
+    url: "https://perena.org",
+    description: "Perena is a stablebank offering USD STAR (USD*), a digital dollar that automatically accrues value from real yield sources, including delta-neutral strategies, secured lending, and stablecoins.",
+    logo: `${baseIconsUrl}/perena.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "perena",
   },
 ];
 

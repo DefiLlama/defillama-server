@@ -183,4 +183,5 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   notional: require("./yield/notional"),
+  shift: require("./yield/shift"),
 };

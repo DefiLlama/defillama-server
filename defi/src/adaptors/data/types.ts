@@ -250,17 +250,17 @@ export type DIMENSIONS_ADAPTER_CACHE = {
 
 
 export type RecordSummary = {
-    total24h: number
-    total48hto24h: number
+    total24h: number | null
+    total48hto24h: number | null
     chart: IJSON<number>
     chartBreakdown: IJSON<IJSON<number>>
     earliestTimestamp?: number
     chainSummary?: IJSON<RecordSummary>
-    total7d?: number
-    total30d?: number
-    total14dto7d?: number
-    total60dto30d?: number
-    total1y?: number
+    total7d?: number | null
+    total30d?: number | null
+    total14dto7d?: number | null
+    total60dto30d?: number | null
+    total1y?: number | null
     recordCount: number
 }
 

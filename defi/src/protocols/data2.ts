@@ -3564,7 +3564,6 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
-      fees: "o1-exchange"
     },
   },
   {
@@ -9121,7 +9120,7 @@ const data2: Protocol[] = [
     previousNames: ["ApolloX"],
     address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
     symbol: "ASTER",
-    url: "https://www.apollox.finance/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
@@ -11469,6 +11468,9 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/hunny-swap"],
     listedAt: 1656716851,
     github: ["HunnyFinance"],
+    dimensions: {
+      dexs: "hunnyswap"
+    }
   },
   {
     id: "1872",
@@ -25316,6 +25318,9 @@ const data2: Protocol[] = [
     twitter: "GuardaWallet",
     forkedFrom: [],
     listedAt: 1674124872,
+    dimensions: {
+      fees: "garuda-staking",
+    },
   },
   /*
   {
@@ -25655,7 +25660,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
     dimensions: {
-      fees: "cap-finance-v4"
+      fees: "cap-finance-v4",
+      derivatives: "cap-finance-v4"
     }
   },
   {
@@ -26613,13 +26619,16 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
     listedAt: 1675781739,
+    dimensions: {
+      fees: "hawkfi",
+    },
   },
   {
     id: "2512",
     name: "Velvet V1",
     address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
     symbol: "VELVET",
-    url: "https://app.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",

@@ -253,7 +253,8 @@ export const chainToCoingeckoId = {
   redstone: "redstone",
   plasma: 'plasma', 
   kasplex: 'kasplex', 
-  monad: 'monad'
+  monad: 'monad',
+  stable: 'stable'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

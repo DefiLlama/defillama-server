@@ -11054,11 +11054,6 @@
       "decimals": 8,
       "symbol": "hemiBTC"
     },
-    "0x0Af3EC6F9592C193196bEf220BC0Ce4D9311527D": {
-      "to": "coingecko#babypie-wrapped-btc",
-      "decimals": 8,
-      "symbol": "mBTC"
-    },
     "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",

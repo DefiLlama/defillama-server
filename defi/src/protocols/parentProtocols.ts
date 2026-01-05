@@ -1744,7 +1744,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "arbitrum-exchange",
     cmcId: null,
     chains: [],
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
   },
   {
     id: "parent#cozy-finance",

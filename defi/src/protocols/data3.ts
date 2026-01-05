@@ -6197,7 +6197,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "arbitrumexchange-v3/index.js",
     parentProtocol: "parent#arbitrum-exchange",
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
     listedAt: 1683737837,
     dimensions: {
       fees: "ArbitrumExchange-v3",

@@ -30721,7 +30721,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ArbitrumExchange/index.js",
     parentProtocol: "parent#arbitrum-exchange",
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
     audit_links: [
       "https://github.com/Vital-block/Smart-Contract-Audit/blob/03c1a811a69f8e459264c22d140cba99b3a518da/ARBITRUM%20EXCHANGE%20Full%20AUDIT%20Report.pdf",
     ],

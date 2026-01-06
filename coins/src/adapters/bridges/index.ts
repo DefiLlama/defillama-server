@@ -34,7 +34,7 @@ import manta from "./manta";
 // import astrzk from "./astrzk";
 // import zklink from "./zklink";
 // import celer from "./celer";
-import fraxtal from "./fraxtal";
+// import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
@@ -111,7 +111,7 @@ export const bridges = [
   // astrzk,
   // zklink,
   // celer,
-  fraxtal,
+  // fraxtal,
   symbiosis,
   fuel,
   zircuit,

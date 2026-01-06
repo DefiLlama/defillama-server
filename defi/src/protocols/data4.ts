@@ -8770,7 +8770,8 @@ const data4: Protocol[] = [
     name: "YO Protocol",
     address: null,
     symbol: "-",
-    url: "https://www.yo.xyz/",
+    url: "https://app.yo.xyz?ref=defillama",
+    referralUrl: "https://app.yo.xyz?ref=defillama",
     description:
       "Set it and forget it. YO is your secure multi-chain yield optimizer, continuously rebalancing to deliver the best risk-adjusted yield in DeFi.",
     chain: "Base",

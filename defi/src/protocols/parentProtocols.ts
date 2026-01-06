@@ -7681,7 +7681,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#axiom",
     name: "Axiom Pro",
-    url: "https://axiom.trade/",
+    url: "https://axiom.trade/@defillama",
+    referralUrl: "https://axiom.trade/@defillama",
     description: "Axiom is a fast and feature-rich hybrid web trading experience, designed to elevate users' crypto journey with advanced analytics and high-speed execution",
     logo: `${baseIconsUrl}/axiom-pro.jpg`,
     gecko_id: null,

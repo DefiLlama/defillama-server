@@ -1,5 +1,5 @@
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
-import { hourlyRawTokensTvl } from "../utils/getLastRecord";
+import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
 import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
@@ -9,19 +9,17 @@ import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
 import { storeR2JSONString } from "../utils/r2";
 import { getChainDisplayName } from "../utils/normalizeChain";
-
-import protocols from "../protocols/data";
-import entities from "../protocols/entities";
-import treasuries from "../protocols/treasury";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
+import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
+import { storeHistorical, protocolIdMap } from "./historical";
 
 const excludedProtocolCategories: string[] = ["CEX"];
 const keyMap: { [value: string]: string } = {
-  coingeckoId: '*Coingecko ID',
+  coingeckoId: "*Coingecko ID",
   onChain: "onChainMarketcap",
   defiActive: "defiActiveTvl",
-  excluded: '*',
-}
+  excluded: "*",
+};
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
@@ -53,13 +51,12 @@ function toCamelCase(str: string) {
     .replace(/\s+/g, "");
 }
 
-async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
+async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
   await initializeTVLCacheDB();
-  const rawTvls = await getLatestProtocolItems(hourlyRawTokensTvl, { filterLast24Hours: true });
 
-  let protocolIdMap: { [id: string]: string } = {};
-  [...protocols, ...entities, ...treasuries].map((protocol: any) => {
-    protocolIdMap[protocol.id] = protocol.name;
+  const rawTvls = await getLatestProtocolItems(timestamp == 0 ? hourlyRawTokensTvl : dailyRawTokensTvl, {
+    filterLast24Hours: true,
+    timestampTo: timestamp == 0 ? undefined : timestamp,
   });
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
@@ -77,10 +74,15 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }) {
     });
   });
 
-  return { aggregateRawTvls, protocolIdMap };
+  return aggregateRawTvls;
 }
 
-async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[] }) {
+// async function backfillRawTvls(timestampFrom: number, timestampTo: number) {
+//   const rawTvls = await getAllItems(dailyRawTokensTvl, { timestampBefore: timestampTo, timestampAfter: timestampFrom })
+//   return rawTvls
+// }
+
+async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[] }, timestamp: number) {
   const totalSupplies: { [token: string]: number } = {};
 
   await runInPromisePool({
@@ -93,7 +95,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
       });
 
       try {
-        const res = await fetchSupplies(chain, tokens, undefined);
+        const res = await fetchSupplies(chain, tokens, timestamp == 0 ? undefined : timestamp);
         Object.keys(res).map((token: string) => {
           totalSupplies[token] = res[token];
         });
@@ -106,7 +108,8 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
   return totalSupplies;
 }
 
-async function fetchStablecoins(): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+  const validStablecoinIds: string[] = [];
   const { peggedAssets } = await cachedFetch({
     key: "stablecoin-symbols",
     endpoint: "https://stablecoins.llama.fi/stablecoins",
@@ -114,28 +117,146 @@ async function fetchStablecoins(): Promise<{ [gecko_id: string]: { [chain: strin
 
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
   peggedAssets.map((coin: any) => {
-    const { chainCirculating, gecko_id, price, pegType } = coin;
-    if (!chainCirculating || !gecko_id || !price || !pegType) return;
+    const { id, chainCirculating, gecko_id, pegType } = coin;
+    if (!chainCirculating || !gecko_id || !pegType) return;
     data[gecko_id] = {};
     Object.keys(chainCirculating).map((chain: string) => {
       const circulating = chainCirculating[chain].current;
       if (!circulating) return;
       const mcap = circulating[pegType];
       if (!mcap) return;
+      validStablecoinIds.push(id);
       data[gecko_id][chain] = mcap.toFixed(0);
     });
+  });
+
+  if (timestamp != 0) return await fetchHistoricalStablecoins(timestamp, validStablecoinIds);
+
+  return data;
+}
+
+async function fetchHistoricalStablecoins(
+  timestamp: number,
+  validStablecoinIds: string[]
+): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+  const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+
+  await runInPromisePool({
+    items: validStablecoinIds,
+    concurrency: 5,
+    processor: async (id: string) => {
+      const apiData = await cachedFetch({
+        key: `stablecoin-historical-${id}`,
+        endpoint: `https://stablecoins.llama.fi/stablecoin/${id}`,
+      });
+      if (!apiData) return;
+
+      const { chainBalances, gecko_id, pegType } = apiData;
+
+      data[gecko_id] = {};
+      Object.keys(chainBalances).map((chain: string) => {
+        const timeseries = chainBalances[chain].tokens;
+        const entry = timeseries.find((t: any) => t.date == timestamp);
+        if (!entry) return;
+        const circulating = entry.circulating;
+        if (!circulating) return;
+        const mcap = circulating[pegType];
+        if (!mcap) return;
+        data[gecko_id][chain] = mcap.toFixed(0);
+      });
+    },
   });
 
   return data;
 }
 
-async function main() {
+function getActiveTvls(
+  assetPrices: any,
+  tokenToProjectMap: any,
+  finalData: any,
+  protocolIdMap: any,
+  aggregateRawTvls: any
+) {
+  Object.keys(aggregateRawTvls).map((pk: string) => {
+    if (!assetPrices[pk]) {
+      console.error(`No price for ${pk}`);
+      return;
+    }
+
+    const { price, decimals } = assetPrices[pk];
+    const amounts = aggregateRawTvls[pk];
+
+    Object.keys(amounts).map((amountId: string) => {
+      const amount = amounts[amountId];
+      const aum = amount.times(price).div(10 ** decimals);
+
+      if (aum.isLessThan(10)) return;
+      const rwaId = tokenToProjectMap[pk];
+
+      const [projectId, symbol] = rwaId.split("-");
+      if (amountId == projectId) return;
+
+      try {
+        const projectName = protocolIdMap[amountId];
+        if (!projectName) return;
+
+        if (!finalData[rwaId][keyMap.defiActive]) finalData[rwaId][keyMap.defiActive] = {};
+        const chain = pk.substring(0, pk.indexOf(":"));
+        const chainDisplayName = getChainDisplayName(chain, true);
+        if (!finalData[rwaId][keyMap.defiActive][chainDisplayName])
+          finalData[rwaId][keyMap.defiActive][chainDisplayName] = {};
+        finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = aum.toFixed(0);
+      } catch (e) {
+        console.error(`Malformed ${keyMap.defiActive} for ${rwaId}: ${e}`);
+      }
+    });
+  });
+}
+
+function getOnChainTvls(
+  assetPrices: any,
+  tokenToProjectMap: any,
+  finalData: any,
+  parsedCsvData: any,
+  stablecoinsData: any,
+  totalSupplies: any
+) {
+  Object.keys(assetPrices).map((pk: string) => {
+    const rwaId = tokenToProjectMap[pk];
+    const cgId = parsedCsvData[rwaId][keyMap.coingeckoId];
+
+    if (cgId && stablecoinsData[cgId]) {
+      finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
+      return;
+    }
+
+    const { price, decimals, timestamp } = assetPrices[pk];
+    const supply = totalSupplies[pk];
+    if (!supply || !price) {
+      console.error(`No supply or price for ${pk}`);
+      return;
+    }
+
+    try {
+      if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
+      const chain = pk.substring(0, pk.indexOf(":"));
+      const chainDisplayName = getChainDisplayName(chain, true);
+      if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
+
+      const aum = (price * supply) / 10 ** decimals;
+      finalData[rwaId][keyMap.onChain][chainDisplayName] = aum.toFixed(0);
+    } catch (e) {
+      console.error(`Malformed ${keyMap.onChain} for ${rwaId}: ${e}`);
+    }
+  });
+}
+
+async function main(ts: number = 0) {
+  const timestamp = getTimestampAtStartOfDay(ts);
   const parsedCsvData = getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const ids: string[] = [];
-
-  const stablecoinsData = await fetchStablecoins();
 
   parsedCsvData.map((row: any, i: number) => {
     const cleanRow: any = {};
@@ -176,9 +297,9 @@ async function main() {
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
-  const { aggregateRawTvls, protocolIdMap } = await getAggregateRawTvls(tokensSortedByChain);
-  const totalSupplies = await getTotalSupplies(tokensSortedByChain);
-  const assetPrices = await coins.getPrices(Object.keys(tokenToProjectMap), "now");
+  const assetPrices = await coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp);
+  const aggregateRawTvls = await getAggregateRawTvls(tokensSortedByChain, ts);
+  const totalSupplies = await getTotalSupplies(tokensSortedByChain, timestamp);
 
   Object.keys(tokenToProjectMap).map((address: string) => {
     if (!assetPrices[address]) {
@@ -187,85 +308,22 @@ async function main() {
     }
   });
 
-  getActiveTvls();
-  getOnChainTvls();
-
-  function getActiveTvls() {
-    Object.keys(aggregateRawTvls).map((pk: string) => {
-      if (!assetPrices[pk]) {
-        console.error(`No price for ${pk}`);
-        return;
-      }
-
-      const { price, decimals } = assetPrices[pk];
-      const amounts = aggregateRawTvls[pk];
-
-      Object.keys(amounts).map((amountId: string) => {
-        const amount = amounts[amountId];
-        const aum = amount.times(price).div(10 ** decimals);
-
-        if (aum.isLessThan(10)) return;
-        const rwaId = tokenToProjectMap[pk];
-
-        const [projectId, symbol] = rwaId.split("-");
-        if (amountId == projectId) return;
-
-        try {
-          const projectName = protocolIdMap[amountId];
-          if (!projectName) return;
-
-          if (!finalData[rwaId][keyMap.defiActive]) finalData[rwaId][keyMap.defiActive] = {};
-          const chain = pk.substring(0, pk.indexOf(":"));
-          const chainDisplayName = getChainDisplayName(chain, true);
-          if (!finalData[rwaId][keyMap.defiActive][chainDisplayName])
-            finalData[rwaId][keyMap.defiActive][chainDisplayName] = {};
-          finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = aum.toFixed(0);
-        } catch (e) {
-          console.error(`Malformed ${keyMap.defiActive} for ${rwaId}: ${e}`);
-        }
-      });
-    });
-  }
-
-  function getOnChainTvls() {
-    Object.keys(assetPrices).map((pk: string) => {
-      const rwaId = tokenToProjectMap[pk];
-      const cgId = parsedCsvData[rwaId][keyMap.coingeckoId];
-
-      if (cgId && stablecoinsData[cgId]) {
-        finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-        return;
-      }
-
-      const { price, decimals } = assetPrices[pk];
-      const supply = totalSupplies[pk];
-      if (!supply || !price) {
-        console.error(`No supply or price for ${pk}`);
-        return;
-      }
-
-      try {
-        if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
-        const chain = pk.substring(0, pk.indexOf(":"));
-        const chainDisplayName = getChainDisplayName(chain, true);
-        if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
-
-        const aum = (price * supply) / 10 ** decimals;
-        finalData[rwaId][keyMap.onChain][chainDisplayName] = aum.toFixed(0);
-      } catch (e) {
-        console.error(`Malformed ${keyMap.onChain} for ${rwaId}: ${e}`);
-      }
-    });
-  }
+  const stablecoinsData = await fetchStablecoins(timestamp);
+  getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls);
+  getOnChainTvls(assetPrices, tokenToProjectMap, finalData, parsedCsvData, stablecoinsData, totalSupplies);
 
   const filteredFinalData: any = {};
   Object.keys(finalData).map((rwaId: string) => {
-    if (typeof finalData[rwaId][keyMap.defiActive] === "object" && typeof finalData[rwaId][keyMap.onChain] === "object") {
+    if (
+      typeof finalData[rwaId][keyMap.defiActive] === "object" &&
+      typeof finalData[rwaId][keyMap.onChain] === "object"
+    ) {
       filteredFinalData[rwaId] = finalData[rwaId];
     }
   });
 
-  await storeR2JSONString("rwa/active-tvls", JSON.stringify(filteredFinalData));
+  if (timestamp == 0) await storeR2JSONString("rwa/active-tvls", JSON.stringify(filteredFinalData));
+  await storeHistorical(filteredFinalData, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp);
 
   return finalData;
 }

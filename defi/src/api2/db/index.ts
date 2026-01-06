@@ -277,7 +277,7 @@ async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
 }
 
 
-async function _getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, ids = [] } = {}) {
+async function _getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, ids = [], timestampTo = undefined } = {}) {
   const table = getTVLCacheTable(ddbPKFunction)
   let whereClause = '';
 
@@ -287,7 +287,10 @@ async function _getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Ho
     whereClause = ` WHERE timestamp >= '${getUnixTime(date24HoursAgo)}'`;
   }
 
-  if (filterADayAgo || filterAWeekAgo || filterAMonthAgo) {
+  if (timestampTo) {
+    const date24HoursBefore = timestampTo - 24.7 * 3600
+    whereClause = filterLast24Hours ? ` WHERE timestamp BETWEEN '${date24HoursBefore}' AND '${timestampTo}'` : ` WHERE timestamp <= '${timestampTo}'`;
+  } else if (filterADayAgo || filterAWeekAgo || filterAMonthAgo) {
     let dayCount = 1
     if (filterAWeekAgo) dayCount = 7
     if (filterAMonthAgo) dayCount = 30

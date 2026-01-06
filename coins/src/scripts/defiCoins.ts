@@ -36,6 +36,7 @@ async function storeDefiCoins() {
       const adapterKey = a[i][0];
       const b: any = a[i][1];
       const timeKey = `                                                                                  --- Runtime ${adapterKey} `;
+      console.log(`Running ${adapterKey}`);
       console.time(timeKey);
       try {
         const adapterFn = typeof b === "function" ? b : b[adapterKey];

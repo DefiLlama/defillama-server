@@ -56872,7 +56872,7 @@ const data3_3: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "LBTC",
-    url: "https://www.lombard.finance",
+    url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description:
       "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     chain: "Bitcoin",
@@ -57919,7 +57919,7 @@ const data3_3: Protocol[] = [
     name: "Lombard Vaults",
     address: null,
     symbol: "-",
-    url: "https://www.lombard.finance/app/vault",
+    url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description: `Lombard’s DeFi Vault is designed to bridge the gap between bitcoin and DeFi, by offering LBTC holders one-click access to DeFi yields without any of the complexities. It accepts LBTC, a liquid staked token representation of Bitcoin, as well WBTC and seeks to capture the highest risk-adjusted yields derived from multiple DeFi strategies. `,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lombard-vaults.jpg`,

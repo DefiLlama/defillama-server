@@ -5632,7 +5632,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lombard-finance",
     name: "Lombard",
-    url: "https://www.lombard.finance",
+    url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
+    referralUrl: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description:
       "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     logo: `${baseIconsUrl}/lombard-finance.jpg`,

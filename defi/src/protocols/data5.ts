@@ -3912,7 +3912,8 @@ const data5: Protocol[] = [
     name: "AntFun",
     address: null,
     symbol: "-",
-    url: "https://ant.fun/",
+    url: "https://ant.fun/@TGJE3G",
+    referralUrl: "https://ant.fun/@TGJE3G",
     description:
       "Ant.fun is a mobile-first decentralized trading app offering real-time on-chain swap analysis and cross-chain execution across major networks. It intelligently surfaces trending tokens and high-signal opportunities, helping users choose better targets and improve their trading profitability.",
     chain: "Solana",

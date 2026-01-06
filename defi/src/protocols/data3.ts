@@ -32300,14 +32300,15 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4069",
-    name: "Possum Labs",
+    name: "Possum Finance",
+    previousNames: ["Possum Labs"],
     address: "arbitrum:0x17a8541b82bf67e10b0874284b4ae66858cb1fd5",
     symbol: "PSM",
     url: "https://www.possumlabs.io/",
     description:
       "The first protocol released by Possum Labs is called Portals and enables users to receive upfront fixed yield on their staked tokens without any protocol fees.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/possum-labs.jpg`,
+    logo: `${baseIconsUrl}/possum-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "possum",

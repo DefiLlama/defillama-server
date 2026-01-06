@@ -784,6 +784,7 @@ const data5: Protocol[] = [
     category: "Prediction Market",
     chains: ["Arbitrum"],
     module: "rain-one/index.js",
+    treasury: "rain.js",
     forkedFromIds: [],
     audit_links: ["https://hacken.io/audits/rain/sca-rain-token-aug2025/"],
     twitter: "Rain__Protocol",

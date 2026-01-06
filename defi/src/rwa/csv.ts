@@ -13,7 +13,7 @@ const listColumns = [
 ];
 
 function parseCsv(): any {
-    const csvPath = path.join(__dirname, "./27dec-rwa.csv");
+    const csvPath = path.join(__dirname, "./5Jan.csv");
     const csv = fs.readFileSync(csvPath, "utf8");
     const rows: any[] = parse(csv, {
         columns: true,  // return objects with headers as keys

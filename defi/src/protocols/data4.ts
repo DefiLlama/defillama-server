@@ -24565,13 +24565,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6553",
-    name: "SolFi",
+    name: "SolFi V1",
     address: null,
     symbol: "-",
     url: "https://x.com/SolFiAMM",
     description: "Prop AMM on Solana",
     chain: "Solana",
-    logo: `${baseIconsUrl}/solfi.jpg`,
+    logo: `${baseIconsUrl}/solfi-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -24581,6 +24581,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "SolFiAMM",
     forkedFromIds: [],
+    parentProtocol: "parent#solfi",
     dimensions: {
       dexs: "solfi"
     }

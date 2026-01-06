@@ -8631,6 +8631,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "perena",
   },
+  {
+    id: "parent#solfi",
+    name: "SolFi",
+    url: "https://x.com/SolFiAMM",
+    description: "Prop AMM on Solana",
+    logo: `${baseIconsUrl}/solfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SolFiAMM",
+  },
 ];
 
 export default parentProtocols;

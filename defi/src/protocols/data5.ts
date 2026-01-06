@@ -7906,5 +7906,28 @@ const data5: Protocol[] = [
       dexs: "alphaq",
     },
   },
+  {
+    id: "7219",
+    name: "SolFi V2",
+    address: null,
+    symbol: "-",
+    url: "https://x.com/SolFiAMM",
+    description: "Prop AMM on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solfi-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "SolFiAMM",
+    forkedFromIds: [],
+    parentProtocol: "parent#solfi",
+    dimensions: {
+      dexs: "solfi-v2",
+    }
+  },
 ];
 export default data5;

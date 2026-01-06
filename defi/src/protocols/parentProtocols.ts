@@ -3796,6 +3796,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "JupiterExchange",
     github: ["jup-ag"],
+    stablecoins: ["jupusd"],
   },
   {
     id: "parent#tenderize",

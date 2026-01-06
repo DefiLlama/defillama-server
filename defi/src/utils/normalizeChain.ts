@@ -5552,7 +5552,7 @@ export const chainCoingeckoIds = {
     chainId: 4326,
   },
   "Quai": {
-    geckoId: "quai-network ",
+    geckoId: "quai-network",
     symbol: "QUAI",
     cmcId: "22354",
     categories: ["EVM"],
@@ -5562,6 +5562,13 @@ export const chainCoingeckoIds = {
     dimensions: {
       fees: "quai-network",
     },
+  },
+  "StandX": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "StandX_Official",
+    url: "https://standx.com/",
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -5795,6 +5802,7 @@ const chainLabelMap = {
   "virbicoin": "VirBiCoin",
   "mantra": "Mantra",
   "megaeth": "MegaETH",
+  "standx": "StandX",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

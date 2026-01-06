@@ -7958,5 +7958,28 @@ const data5: Protocol[] = [
       fees: "infinex-swap",
     },
   },
+  {
+    id: "7221",
+    name: "StandX",
+    address: null,
+    symbol: "-",
+    url: "https://standx.com/",
+    description: "StandX is a Perps DEX live on Mainnet across BNB and Solana, powered by its native yield bearing DUSD.",
+    chain: "StandX",
+    logo: `${baseIconsUrl}/standx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["StandX"],
+    forkedFromIds: [],
+    audit_links: ["https://docs.standx.com/docs/resources/audits"],
+    module: "dummy.js",
+    twitter: "StandX_Official",
+    dimensions: {
+      derivatives: "standx",
+    },
+  },
 ];
 export default data5;

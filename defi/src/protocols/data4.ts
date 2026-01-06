@@ -26222,7 +26222,8 @@ const data4: Protocol[] = [
     name: "Football.Fun",
     address: null,
     symbol: "-",
-    url: "https://www.football.fun/",
+    url: "https://pro.sport.fun/login/?referral_code=UBJWCCSWOVU",
+    referralUrl: "https://pro.sport.fun/login/?referral_code=UBJWCCSWOVU",
     description:
       "Football.Fun is a Base chain fantasy soccer protocol where users trade fractional player shares backed by actual football performance, using Gold pegged to USDC, with limited-use contracts and active market-driven gameplay",
     chain: "Base",

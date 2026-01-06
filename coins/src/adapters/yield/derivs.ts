@@ -682,6 +682,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     address: "0x098697ba3fee4ea76294c5d6a466a4e3b3e95fe6",
   },
+  MI4: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0x24c8964338Deb5204B096039147B8e8C3AEa42Cc",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "mantle",
+    underlying: "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9",
+    address: "0x671642Ac281C760e34251d51bC9eEF27026F3B7a",
+  },
 };
 
 export async function derivs(timestamp: number) {

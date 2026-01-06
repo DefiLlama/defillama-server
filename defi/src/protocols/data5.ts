@@ -2090,7 +2090,8 @@ const data5: Protocol[] = [
     name: "Astros Perp",
     address: null,
     symbol: "-",
-    url: "https://astros.ag/perp",
+    url: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
+    referralUrl: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
     description:
       "Astros Perp DEX is the next-generation on-chain perp dex on the Sui Network to deliver unmatched performance and scalability.",
     chain: "Sui",

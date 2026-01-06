@@ -99,7 +99,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
     UXLINK:"0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1",
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
-    RAIN: "0x25118290e6a5f4139381d072181157035864099d"
   },
   bsc: {
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity

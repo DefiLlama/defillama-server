@@ -1581,13 +1581,13 @@ const data5: Protocol[] = [
   },
   {
     id: "6956",
-    name: "Infinex",
+    name: "Infinex Perp",
     address: null,
     symbol: "-",
     url: "https://infinex.xyz/",
     description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/infinex.jpg`,
+    logo: `${baseIconsUrl}/infinex-perp.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -1598,6 +1598,7 @@ const data5: Protocol[] = [
     audit_links: [],
     module: "dummy.js",
     twitter: "infinex",
+    parentProtocol: "parent#infinex",
     dimensions: {
       fees: "infinex-perps",
       derivatives: "infinex-perps",
@@ -7928,6 +7929,30 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "solfi-v2",
     }
+  },
+  {
+    id: "7220",
+    name: "Infinex Spot",
+    address: null,
+    symbol: "-",
+    url: "https://infinex.xyz/",
+    description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/infinex-spot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "infinex",
+    parentProtocol: "parent#infinex",
+    dimensions: {
+      fees: "infinex-swap",
+    },
   },
 ];
 export default data5;

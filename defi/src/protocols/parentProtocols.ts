@@ -8642,6 +8642,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SolFiAMM",
   },
+  {
+    id: "parent#infinex",
+    name: "Infinex",
+    url: "https://infinex.xyz/",
+    description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
+    logo: `${baseIconsUrl}/infinex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "infinex",
+  },
+
 ];
 
 export default parentProtocols;

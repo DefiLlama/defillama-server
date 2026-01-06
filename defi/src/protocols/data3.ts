@@ -67255,7 +67255,7 @@ const data3_3: Protocol[] = [
     name: "Theo Straddle Vaults",
     address: null,
     symbol: "-",
-    url: "https://theo.xyz/",
+    url: "https://app.theo.xyz/invite?invite=defillama",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/theo-straddle-vaults.jpg`,

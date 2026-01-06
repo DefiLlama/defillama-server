@@ -7999,7 +7999,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#theo",
     name: "Theo",
-    url: "https://theo.xyz/",
+    url: "https://app.theo.xyz/invite?invite=defillama",
+    referralUrl: "https://app.theo.xyz/invite?invite=defillama",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     logo: `${baseIconsUrl}/theo.jpg`,
     gecko_id: null,

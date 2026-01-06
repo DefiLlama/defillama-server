@@ -7882,5 +7882,29 @@ const data5: Protocol[] = [
     parentProtocol: "parent#jupiter",
     listedAt: 1767651878,
   },
+  {
+    id: "7218",
+    name: "AlphaQ",
+    address: null,
+    symbol: "-",
+    url: "https://www.alphaq.xyz/", 
+    description: "Prop AMM on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/alphaq.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "", // prop amm no twitter
+    dimensions: {
+      fees: "alphaq",
+      dexs: "alphaq",
+    },
+  },
 ];
 export default data5;

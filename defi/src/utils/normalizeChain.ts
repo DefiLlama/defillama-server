@@ -2499,6 +2499,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "ShibariumNet",
     url: "https://shibatoken.com/",
+    dimensions: {
+      fees: "shibarium"
+    }
   },
   "MVC": {
     geckoId: "microvisionchain",
@@ -3202,6 +3205,9 @@ export const chainCoingeckoIds = {
     url: "https://www.kubchain.com/",
     github: ["bitkub-chain", "bitkub-blockchain"],
     chainId: 96,
+    dimensions: {
+      fees: "kub",
+    },
   },
   "Ancient8": {
     geckoId: null,
@@ -3666,6 +3672,9 @@ export const chainCoingeckoIds = {
     chainId: 47763,
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/",
+    dimensions: {
+      fees: "neo-x-mainnet",
+    },
   },
   "Gravity by Galxe": {
     geckoId: "g-token",
@@ -4019,8 +4028,11 @@ export const chainCoingeckoIds = {
     symbol: "VANA",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "withvana",
+    twitter: "vana",
     url: "https://www.vana.org",
+    dimensions: {
+      fees: "vana"
+    }
   },
   "Agoric": {
     geckoId: "agoric",
@@ -4103,13 +4115,14 @@ export const chainCoingeckoIds = {
     url: "https://waterfall.network/",
     chainId: 181,
   },
-  "Mantra": {
+  "MANTRA": {
     geckoId: "mantra-dao",
     symbol: "OM",
     cmcId: "6536",
-    categories: ["Cosmos"],
+    categories: ["Cosmos", "EVM"],
     twitter: "MANTRA_Chain",
     url: "https://www.mantrachain.io/",
+    chainId: 5887,
   },
   "Verus": {
     geckoId: "verus-coin",
@@ -4882,6 +4895,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "provenancefdn",
     url: "https://www.provenance.io/",
+    dimensions: {
+      fees: "provenance",
+    },
   },
   "Eventum": {
     geckoId: null,
@@ -5379,15 +5395,15 @@ export const chainCoingeckoIds = {
       fees: "flynet",
     },
   },
-  "MANTRACHAIN": {
-    geckoId: null,
-    symbol: "OM",
-    cmcId: null,
-    categories: ["EVM", "Cosmos"],
-    twitter: "MANTRA_Chain",
-    url: "https://www.mantrachain.io/",
-    chainId: 5887,
-  },
+  // "MANTRACHAIN": {
+  //   geckoId: null,
+  //   symbol: "OM",
+  //   cmcId: null,
+  //   categories: ["EVM", "Cosmos"],
+  //   twitter: "MANTRA_Chain",
+  //   url: "https://www.mantrachain.io/",
+  //   chainId: 5887,
+  // },
   "GRX Chain": {
     geckoId: "grx-chain",
     symbol: "GRX",
@@ -5401,7 +5417,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Chains", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+    },
     twitter: "aergo_io",
     url: "https://www.hpp.io/",
     chainId: 190415,
@@ -5415,7 +5435,7 @@ export const chainCoingeckoIds = {
     cmcId: "8232",
     categories: ["EVM"],
     twitter: "MoltenL3",
-    url: "https://www.moltennetwork.com/",
+    url: "https://leverage.unidex.exchange/",
     dimensions: {
       fees: "molten-network",
     },
@@ -5429,6 +5449,49 @@ export const chainCoingeckoIds = {
     url: "https://syndicate.io/",
     dimensions: {
       fees: "syndicate",
+    },
+  },
+  "VirBiCoin": {
+    geckoId: null,
+    symbol: "VBC",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "VirBiCoin",
+    url: "https://vbc.digitalregion.jp/",
+    github: ["virbicoin"],
+    chainId: 329,
+  },
+  "Polymesh": {
+    geckoId: "polymesh",
+    symbol: "POLYX",
+    cmcId: "20362",
+    twitter: "PolymeshNetwork",
+    url: "https://polymesh.network/",
+    github: ["PolymeshAssociation"],
+  },
+  "MegaETH": {
+    geckoId: "megaeth ",
+    symbol: "MEGA",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+    },
+    twitter: "megaeth",
+    url: "https://www.megaeth.com/",
+    chainId: 4326,
+  },
+  "Quai": {
+    geckoId: "quai-network ",
+    symbol: "QUAI",
+    cmcId: "22354",
+    categories: ["EVM"],
+    twitter: "QuaiNetwork",
+    url: "https://qu.ai",
+    chainId: 9,
+    dimensions: {
+      fees: "quai-network",
     },
   },
 } as unknown as ChainCoinGekcoIds;
@@ -5656,10 +5719,13 @@ const chainLabelMap = {
   "alphasec": "AlphaSec",
   "gan": "GANchain",
   "joc": "JOC",
-  "mantrachain": "MANTRACHAIN",
+  //"mantrachain": "MANTRACHAIN",
   "grx": "GRX Chain",
   "hpp": "HPP",
   "molten_network": "Molten Network",
+  "virbicoin": "VirBiCoin",
+  "mantra": "Mantra",
+  "megaeth": "MegaETH",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5712,6 +5778,7 @@ const newChainLabelMap = {
   "camp": "Camp Network",
   "reya": "ReyaChain",
   "goat": "GOAT",
+  "mantra": "MANTRA",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

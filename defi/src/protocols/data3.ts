@@ -2265,7 +2265,7 @@ const data3_0: Protocol[] = [
     name: "Aevo Perps",
     address: "ethereum:0xB528edBef013aff855ac3c50b381f253aF13b997",
     symbol: "AEVO",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
     description: "Trade crypto options on the world's first high-performance decentralized options exchange.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aevo-perps.jpg`,
@@ -3391,6 +3391,9 @@ const data3_0: Protocol[] = [
     module: "sharky/index.js",
     twitter: "SharkyFi",
     listedAt: 1681557908,
+    dimensions: {
+      fees: "sharky"
+    }
   },
   {
     id: "2843",
@@ -6194,7 +6197,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2198"],
     module: "arbitrumexchange-v3/index.js",
     parentProtocol: "parent#arbitrum-exchange",
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
     listedAt: 1683737837,
     dimensions: {
       fees: "ArbitrumExchange-v3",
@@ -8321,7 +8324,8 @@ const data3_0: Protocol[] = [
     twitter: "FluxBeamDEX",
     listedAt: 1685612658,
     dimensions: {
-      dexs: "fluxbeam"
+      dexs: "fluxbeam",
+      fees: "fluxbeam"
     }
   },
   {
@@ -11044,6 +11048,7 @@ const data3_0: Protocol[] = [
     listedAt: 1687942915,
     github: ["Ellipsis-Labs"],
     dimensions: {
+      fees: "phoenix",
       dexs: {
         genuineSpikes: ["1722816000"],
         adapter: "phoenix"
@@ -23383,7 +23388,7 @@ const data3_1: Protocol[] = [
     name: "Velvet V2",
     address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
     symbol: "VELVET",
-    url: "https://dapp.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
@@ -29424,6 +29429,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.parcl.co/security"],
     parentProtocol: "parent#parcl",
     listedAt: 1703211654,
+    dimensions: {
+      fees: "parcl",
+    },
   },
   {
     id: "3951",
@@ -30119,7 +30127,8 @@ const data3_1: Protocol[] = [
     treasury: "dexhunter.js",
     twitter: "DexHunterIO",
     dimensions: {
-      aggregators: "dexhunter"
+      aggregators: "dexhunter",
+   //   fees: "dexhunter" // its wrong 
     }
   },
   {
@@ -41534,7 +41543,7 @@ const data3_2: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     forkedFrom: [],
-    twitter: "pumpdotfun",
+    twitter: "Pumpfun",
     parentProtocol: "parent#pump",
     listedAt: 1712427917,
     dimensions: {
@@ -41730,7 +41739,8 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     twitter: "flytrade_",
     dimensions: {
-      aggregators: "magpie"
+      aggregators: "magpie",
+      fees: "fly-trade"
     }
   },
   {
@@ -44917,6 +44927,9 @@ const data3_2: Protocol[] = [
       "https://docs.origami.finance/technical-reference/audits",
     ],
     listedAt: 1715612691,
+    dimensions: {
+      fees: "origami-finance",
+    }
   },
   {
     id: "4593",
@@ -46570,6 +46583,9 @@ const data3_2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#native",
     listedAt: 1716459034,
+    dimensions: {
+      fees: "native",
+    },
   },
   {
     id: "4664",
@@ -49794,6 +49810,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],
     listedAt: 1718906602,
+    dimensions: {
+      fees: "termmax",
+    }
   },
   {
     id: "4800",
@@ -51214,7 +51233,8 @@ const data3_3: Protocol[] = [
     name: "Ape Jupiter",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://ape.pro/",
+    url: "https://ape.pro/?ref=rDmlXpoRAD1j",
+    referralUrl: "https://ape.pro/?ref=rDmlXpoRAD1j",
     description:
       "Ape is built around a secure vault that only your wallet can access. Simply deposit SOL and start to trade.",
     chain: "Solana",
@@ -55019,7 +55039,7 @@ const data3_3: Protocol[] = [
     name: "Velvet V3",
     address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
     symbol: "VELVET",
-    url: "https://dapp.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi platform that allows users to create, manage, and launch on-chain funds and portfolios, with tools for automated trading and earning yield",
     chain: "Base",
@@ -55913,7 +55933,7 @@ const data3_3: Protocol[] = [
     name: "Aevo Options",
     address: "ethereum:0xB528edBef013aff855ac3c50b381f253aF13b997",
     symbol: "AEVO",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
     description:
       "Trade crypto options on the world's first high-performance decentralized options exchange.",
     chain: "Ethereum",
@@ -57586,7 +57606,8 @@ const data3_3: Protocol[] = [
     twitter: "predictdotfun",
     listedAt: 1725957058,
     dimensions: {
-      dexs: "predict-fun"
+      dexs: "predict-fun",
+      fees: "predict-fun"
     }
   },
   {
@@ -57916,7 +57937,10 @@ const data3_3: Protocol[] = [
       Binance: ["LBTC"],
       Sonic: ["LBTC"],
     },
-    listedAt: 1726215518
+    listedAt: 1726215518,
+    dimensions: {
+      fees: "lombard-vault"
+    }
   },
   {
     id: "5144",
@@ -58324,8 +58348,15 @@ const data3_3: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://www.elfi.xyz/Sherlock_Elfi_Audit_Report.pdf"],
     listedAt: 1726752333,
+    warningBanners: [
+      {
+        message: "Suspected wash trading on ELFi Protocol, volumes may be inflated.",
+        level: "alert",
+        until: "2026-03-31",
+      },
+    ],
     dimensions: {
-      derivatives: "elfi"
+      derivatives: "elfi" 
     }
   },
   {
@@ -60451,7 +60482,11 @@ const data3_3: Protocol[] = [
     oraclesBreakdown: [ { name: "TruthOracle", type: "Primary", proof: [] } ],
     twitter: "truemarkets",
     listedAt: 1729254083,
-    treasury: 'truemarkets.js'
+    treasury: 'truemarkets.js',
+    dimensions: {
+      fees: "truemarkets",
+      dexs: "truemarkets",
+    },
   },
   {
     id: "5252",
@@ -60768,7 +60803,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateX-Sep-2024-OffsideLabs.final.pdf"],
     listedAt: 1729682377,
     dimensions: {
-      dexs: "rate-x"
+      dexs: "rate-x",
+      fees: "rate-x"
     }
   },
   {
@@ -61571,7 +61607,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#loxodrome",
     listedAt: 1730310067,
     dimensions: {
-      derivatives: "loxodrome-perp"
+      derivatives: "loxodrome-perp",
+      fees: "loxodrome-perp",
     }
   },
   {
@@ -62630,7 +62667,10 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
     stablecoins: ["reservoir-stablecoin"],
-    listedAt: 1731322673
+    listedAt: 1731322673,
+    dimensions: {
+      fees: "reservoir-protocol",
+    },
   },
   {
     id: "5344",
@@ -64192,7 +64232,8 @@ const data3_3: Protocol[] = [
     name: "GMGN",
     address: null,
     symbol: "-",
-    url: "https://gmgn.ai",
+    url: "https://gmgn.ai/r/defillama",
+    referralUrl: "https://gmgn.ai/r/defillama",
     description:
       "Discover faster, Trading in seconds http://gmgn.ai",
     chain: "Solana",
@@ -65606,7 +65647,10 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     module: "opentrade/index.js",
     twitter: "opentrade_io",
-    listedAt: 1733496042
+    listedAt: 1733496042,
+    dimensions: {
+      fees: "opentrade"
+    }
   },
   {
     id: "5472",

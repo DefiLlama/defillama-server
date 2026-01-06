@@ -1744,7 +1744,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "arbitrum-exchange",
     cmcId: null,
     chains: [],
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
   },
   {
     id: "parent#cozy-finance",
@@ -3169,7 +3169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#velvet.capital",
     name: "Velvet.Capital",
-    url: "https://www.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
+    referralUrl: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     logo: `${baseIconsUrl}/velvet.capital.png`,
@@ -5402,7 +5403,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aevo",
     name: "Aevo",
-    url: "https://www.aevo.xyz",
+    url: "https://app.aevo.xyz/r/defillama",
+    referralUrl: "https://app.aevo.xyz/r/defillama",
     description:
       "Trade crypto options on the world's first high-performance decentralized options exchange.",
     logo: `${baseIconsUrl}/aevo.jpg`,
@@ -6773,7 +6775,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "pumpdotfun",
+    twitter: "Pumpfun",
   },
   {
     id: "parent#termfinance",
@@ -8167,7 +8169,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#grvt",
     name: "Grvt",
-    url: "https://grvt.io",
+    url: "https://grvt.io/?ref=WCDISXW",
+    referralUrl: "https://grvt.io/?ref=WCDISXW",
     description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
     logo: `${baseIconsUrl}/grvt.jpg`,
     gecko_id: null,
@@ -8594,17 +8597,63 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "udonfi_chromia",
   },
-  /*{
+  {
     id: "parent#lotusdex",
     name: "LotusDex",
     url: "https://app.lotusdex.io/",
-    description: "UdonFi is a lending and borrowing protocol on Chromia that lets users supply and borrow assets within an isolated appchain environment.",
-    logo: `${baseIconsUrl}/udonfi.jpg`,
+    description: "Lotus is the first native DEX for the MANTRA. Lotus is deeply integrated across the MANTRA EVM with most of the top protocols, tokens, and liquidity providers in the ecosystem.",
+    logo: `${baseIconsUrl}/lotusdex.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "udonfi_chromia",
-  },*/
+    twitter: "LotusDex",
+  },
+  {
+    id: "parent#hypertrade",
+    name: "Hypertrade",
+    url: "https://ht.xyz?referral=defillama",
+    referralUrl: "https://ht.xyz?referral=defillama",
+    description: "Native on-chain DEX (v2 + v3) and the only DEX aggregator on Hyperliquid with any-to-any swaps across HyperEVM and HyperCore.",
+    logo: `${baseIconsUrl}/hypertrade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HypertradeX",
+  },
+  {
+    id: "parent#perena",
+    name: "Perena",
+    url: "https://perena.org",
+    description: "Perena is a stablebank offering USD STAR (USD*), a digital dollar that automatically accrues value from real yield sources, including delta-neutral strategies, secured lending, and stablecoins.",
+    logo: `${baseIconsUrl}/perena.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "perena",
+  },
+  {
+    id: "parent#solfi",
+    name: "SolFi",
+    url: "https://x.com/SolFiAMM",
+    description: "Prop AMM on Solana",
+    logo: `${baseIconsUrl}/solfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SolFiAMM",
+  },
+  {
+    id: "parent#infinex",
+    name: "Infinex",
+    url: "https://infinex.xyz/",
+    description: "The most CEX-like trading experience onchain. Powered by Hyperliquid.",
+    logo: `${baseIconsUrl}/infinex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "infinex",
+  },
+
 ];
 
 export default parentProtocols;

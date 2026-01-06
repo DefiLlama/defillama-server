@@ -615,6 +615,14 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgDeriv: "levex-futures",
+  },
+  {
+    name: "WEEX",
+    cgId: "weex",
+    slug: "weex",
+    coin: "weex-token",
+    walletsLink: null,
+    cgDeriv: "weex-futures",
   }
 ];
 

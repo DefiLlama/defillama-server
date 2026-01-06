@@ -1087,8 +1087,11 @@ const data: Protocol[] = [
     ],
     github: ["Idle-Labs"], //check
     dimensions: {
-      fees: "idle"
-    }
+      fees: {
+        adapter: "idle",
+        genuineSpikes: ["1751241600",],
+      },
+    },
   },
   {
     id: "151",
@@ -2738,6 +2741,9 @@ const data: Protocol[] = [
     ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
+    dimensions: {
+      fees: "enzyme",
+    }
   },
   {
     id: "226",
@@ -13981,7 +13987,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1635250158,
     dimensions: {
       fees: "polymarket",
-      dexs: "polymarket"
+      dexs: "polymarket",
+      "open-interest": "polymarket-oi"
     }
   },
   {

@@ -183,4 +183,5 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   gamingdex: require("./markets/gamingdex"),
+  shift: require("./yield/shift"),
 };

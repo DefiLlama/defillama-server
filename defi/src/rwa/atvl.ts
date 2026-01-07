@@ -292,10 +292,13 @@ async function main(ts: number = 0) {
 
   Object.keys(finalData).map((rowIndex: string) => {
     let stablecoin = false;
+    let governance = false;
     finalData[rowIndex].category.map((category: string) => {
       if (category.toLowerCase().includes("stablecoin")) stablecoin = true;
+      if (category.toLowerCase().includes("governance")) governance = true;
     });
     finalData[rowIndex].stablecoin = stablecoin;
+    finalData[rowIndex].governance = governance;
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);

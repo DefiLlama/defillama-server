@@ -62847,8 +62847,7 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5351",
-    name: "mETH Protocol",
-    previousNames: ["Mantle Restaking"],
+    name: "Mantle Restaking",
     address: null,
     symbol: "-",
     assetToken: "mETH",

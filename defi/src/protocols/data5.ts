@@ -8031,5 +8031,28 @@ const data5: Protocol[] = [
     twitter: "peridotprotocol",
     listedAt: 1767807362,
   },
+  {
+    id: "7224",
+    name: "GroypFi",
+    address: null,
+    symbol: "-",
+    url: "https://groypfi.io",
+    description: "GroypFi is an all-in-one DeFi Protocol powered by the TON Blockchain.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/groypfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["TON"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "groyp_on_ton",
+    dimensions: {
+      fees: "groypfi",
+    },
+  },
 ];
 export default data5;

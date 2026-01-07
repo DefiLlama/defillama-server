@@ -9,7 +9,6 @@ import * as others2 from "./other/others2";
 import * as graphCoins from "./markets/graphCoins";
 import * as morpho from "./moneyMarkets/morpho";
 import * as pyth from "./oracles/pyth";
-import { harmonix } from "./markets/harmonix-finance";
 
 export default {
   ...compound.adapters,

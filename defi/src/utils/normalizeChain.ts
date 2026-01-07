@@ -1418,7 +1418,7 @@ export const chainCoingeckoIds = {
     cmcId: "11079",
     categories: ["EVM"],
     chainId: 32520,
-    twitter: "bitgertbrise",
+    twitter: null,
     url: "https://bitgert.com/",
     dimensions: {
       fees: "bitgert",
@@ -5392,7 +5392,7 @@ export const chainCoingeckoIds = {
     symbol: "CROSS",
     cmcId: "37166",
     categories: ["EVM"],
-    twitter: "cross_protocol",
+    twitter: "CROSS_gamechain",
     url: "https://www.ogfcorp.com/",
     chainId: 612055,
     dimensions: {

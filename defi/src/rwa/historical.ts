@@ -32,12 +32,12 @@ async function iniDbConnection() {
   return postgres(auth[0], { idle_timeout: 90 });
 }
 
-export async function storeHistorical(data: any) {
-  if (Object.keys(data).length == 1) return;
+export async function storeHistorical(res: any) {
+  const { data, timestamp } = res;
+  if (Object.keys(data).length == 0) return;
 
   const inserts: { timestamp: number; id: string; defiactivetvl: string; mcap: string }[] = [];
   Object.keys(data).forEach((id: any) => {
-    if (id == "timestamp") return;
     const { defiActiveTvl, onChainMarketcap } = data[id];
 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -56,7 +56,7 @@ export async function storeHistorical(data: any) {
     });
 
     inserts.push({
-      timestamp: data.timestamp,
+      timestamp,
       id,
       defiactivetvl: JSON.stringify(defiactivetvl),
       mcap: JSON.stringify(mcap),

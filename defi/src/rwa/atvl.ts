@@ -221,7 +221,8 @@ function getOnChainTvls(
 ) {
   Object.keys(assetPrices).map((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
-    const cgId = parsedCsvData[rwaId][keyMap.coingeckoId];
+    const data = parsedCsvData.find((row: any) => row[keyMap.id] == rwaId);
+    const cgId = data[keyMap.coingeckoId];
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
@@ -322,7 +323,7 @@ async function main(ts: number = 0) {
   });
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
-  const filteredFinalData: any = { timestamp: timestampToPublish };
+  const filteredFinalData: any = {};
   Object.keys(finalData).map((rwaId: string) => {
     if (
       typeof finalData[rwaId][keyMap.defiActive] === "object" &&
@@ -332,13 +333,15 @@ async function main(ts: number = 0) {
     }
   });
 
+  const res = { data: filteredFinalData, timestamp: timestampToPublish }
+
   await Promise.all([
-    timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(filteredFinalData)) : Promise.resolve(),
+    timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(res)) : Promise.resolve(),
     timestamp == 0 ? storeR2JSONString("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
-    storeHistorical(filteredFinalData),
+    storeHistorical(res),
   ]);
 
   return finalData;
 }
 
-main();
+main(); // ts-node defi/src/rwa/atvl.ts

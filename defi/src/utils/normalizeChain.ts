@@ -5015,7 +5015,7 @@ export const chainCoingeckoIds = {
       fees: "somnia",
     },
   },
-  "Orderly": {
+  "Orderly Network": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5804,6 +5804,7 @@ const chainLabelMap = {
   "mantra": "Mantra",
   "megaeth": "MegaETH",
   "standx": "StandX",
+  "orderly": "Orderly",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5857,6 +5858,7 @@ const newChainLabelMap = {
   "reya": "ReyaChain",
   "goat": "GOAT",
   "mantra": "MANTRA",
+  "orderly": "Orderly Network",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

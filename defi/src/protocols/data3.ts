@@ -20816,7 +20816,7 @@ const data3_1: Protocol[] = [
     description:
       "DigiFT is the first regulated exchange for on-chain real-world assets, approved as a Recognised Market Operator with a Capital Markets Services license by the Monetary Authority of Singapore. DigiFT allows asset owners to issue blockchain-based security tokens and investors can trade with continuous liquidity via an AMM.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/digift.jpg`,
+    logo: `${baseIconsUrl}/digift.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

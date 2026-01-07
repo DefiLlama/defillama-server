@@ -17,7 +17,7 @@ export async function craftParentProtocolV2({
   parentProtocol,
   useHourlyData,
   skipAggregatedTvl,
-  feMini = false, 
+  feMini = false,
 }: CraftParentProtocolV2Options) {
   const debug_t0 = performance.now(); // start the timer
   const childProtocols = cache.childProtocols[parentProtocol.id] ?? []
@@ -40,6 +40,21 @@ export async function craftParentProtocolV2({
   const hasMisrepresentedTokens = childProtocols.some((i: IProtocol) => i.misrepresentedTokens)
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.filter((i: IProtocol) => !i.excludeTvlFromParent).map(getProtocolData));
+  const skipTokenBreakdownData = childProtocolsTvls.some((i: any) => i.skipTokenBreakdownData)
+
+  if (skipTokenBreakdownData) {
+
+    // if we are skipping token breakdown data for any of the child protocols, we remove token breakdown data from all child protocols
+    childProtocolsTvls.forEach((protocolTvl) => {
+
+      protocolTvl.tokensInUsd = [];
+      protocolTvl.tokens = [];
+      Object.keys(protocolTvl?.chainTvls ?? {}).forEach((key) => {
+        protocolTvl.chainTvls[key].tokensInUsd = null
+        protocolTvl.chainTvls[key].tokens = null
+      })
+    })
+  }
 
   const debug_t1 = performance.now(); // start the timer
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>

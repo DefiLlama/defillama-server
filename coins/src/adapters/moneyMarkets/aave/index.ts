@@ -71,6 +71,12 @@ export function sparkLend(timestamp: number = 0) {
   ])
 }
 
+export function moolaMarkets(timestamp: number = 0) {
+  return getTokenPrices("celo", "", null, "v2", timestamp, {
+    lendingPool: "0x970b12522CA9b4054807a2c5B736149a5BE6f670"
+  })
+}
+
 export const adapters = {
   aave,
   geist,
@@ -81,5 +87,6 @@ export const adapters = {
   //valas,
   hyperlend, 
   hypurrfi, 
-  sparkLend
+  sparkLend, 
+  moolaMarkets
 };

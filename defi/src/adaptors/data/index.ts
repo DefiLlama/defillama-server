@@ -133,7 +133,7 @@ function addImportsDataToMapping() {
 
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
 
-  // the order matters, wait for other importd to be built before running this
+  // the order matters, wait for other imported to be built before running this
   dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
 
 }

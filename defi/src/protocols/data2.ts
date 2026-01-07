@@ -1112,7 +1112,7 @@ const data2: Protocol[] = [
     address: "avax:0x8729438eb15e2c8b576fcc6aecda6a148776c0f5",
     symbol: "QI",
     assetToken: "SAVAX",
-    url: "https://staking.benqi.fi",
+    url: "https://app.benqi.fi/savax",
     description:
       "Stake AVAX on BENQI's Liquid Staking Protocol and freely utilize it within powerful Decentralized Financial applications.",
     chain: "Avalanche",
@@ -3564,7 +3564,6 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
-      fees: "o1-exchange"
     },
   },
   {
@@ -6953,7 +6952,7 @@ const data2: Protocol[] = [
     id: "1677",
     name: "Timeswap V1",
     address: null,
-    symbol: "-",
+    symbol: "TIME",
     url: "https://timeswap.io",
     description:
       "Timeswap is the first oracleless lending/borrowing protocol. Timeswap enables the creation of money markets for ANY ERC-20 tokens.",
@@ -8338,9 +8337,9 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Staking",
     address: null,
     symbol: "BNC",
-    url: "https://bifrost.finance",
+    url: "https://bifrost.io/",
     description:
-      "BIfrost ((https://bifrost.finance) is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+      "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-liquid-staking.png`,
     audits: "2",
@@ -8354,7 +8353,7 @@ const data2: Protocol[] = [
     twitter: "Bifrost",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/tree/master",
-      "https://tokeninsight.com/zh/report/2558",
+      "https://tokeninsight.com/en/research/reports/ti-rating-report-bifrost",
     ],
     listedAt: 1651793295,
     dimensions: {
@@ -8957,7 +8956,7 @@ const data2: Protocol[] = [
     name: "UNCX Network V2",
     address: "0xadb2437e6f65682b85f814fbc12fec0508a7b1d0",
     symbol: "UNCX",
-    url: "https://unicrypt.network",
+    url: "https://uncx.network/",
     description:
       "UNCX Network is a one-stop shop with providing its customers with everything they need to launch and maintain a sustainable and secure protocol. Create your token, secure your LP with our liquidity lockers, vest your supply according to your tokenomics and create farming/staking incentives with customisable rewards.",
     chain: "Ethereum",
@@ -9121,7 +9120,7 @@ const data2: Protocol[] = [
     previousNames: ["ApolloX"],
     address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
     symbol: "ASTER",
-    url: "https://www.apollox.finance/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
@@ -9591,7 +9590,14 @@ const data2: Protocol[] = [
     github: ["Popcorn-Limited"],
     dimensions: {
       fees: "vaultcraft"
-    }
+    },
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-02-28",
+      }
+    ]
   },
   {
     id: "1792",
@@ -9771,7 +9777,7 @@ const data2: Protocol[] = [
     name: "Velodrome V1",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velodrome.finance",
+    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v1.png`,
@@ -11052,7 +11058,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1655988523,
     dimensions: {
-      fees: "moonwell-artemis"
+      fees: "moonwell"
     }
   },
   {
@@ -11462,6 +11468,9 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/hunny-swap"],
     listedAt: 1656716851,
     github: ["HunnyFinance"],
+    dimensions: {
+      dexs: "hunnyswap"
+    }
   },
   {
     id: "1872",
@@ -12924,7 +12933,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/timeless-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "timeless",
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
@@ -13545,7 +13554,8 @@ const data2: Protocol[] = [
     name: "Scallop Lend",
     address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
     symbol: "SCA",
-    url: "https://scallop.io",
+    url: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
+    referralUrl: "https://app.scallop.io/referral?ref=692ecd3798f63b5f44c040f9",
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
@@ -14404,6 +14414,14 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1660946171,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
+    deadUrl: true,
   },
   {
     id: "1998",
@@ -15907,7 +15925,7 @@ const data2: Protocol[] = [
     name: "Kamino Liquidity",
     address: "solana:KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
     symbol: "KMNO",
-    url: "https://kamino.finance/",
+    url: "https://kamino.com/liquidity",
     description:
       "Solana's liquidity layer. Built on top of concentrated liquidity protocols, Kamino facilitates automated liquidity via quantitative models, depositing into optimized ranges, rebalancing positions, and auto-compounding of fees & rewards.",
     chain: "Solana",
@@ -16028,7 +16046,9 @@ const data2: Protocol[] = [
     listedAt: 1662489763,
     dimensions: {
       dexs: "vanswap"
-    }
+    },
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2067",
@@ -18487,6 +18507,14 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.morpho.org/security-reviews"],
     listedAt: 1665186810,
     parentProtocol: "parent#morpho",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "This product was deprecated. https://snapshot.org/#/s:morpho.eth/proposal/0x026c3360d4616532952f5ed0d728daa090dd9a9670c7bf58160cd0709c7d73f8",
+        level: "alert",
+      },
+    ],
+    deadUrl: true,
   },
   {
     id: "2169",
@@ -19158,7 +19186,7 @@ const data2: Protocol[] = [
     name: "Uniswap V1",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V1",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v1.png`,
@@ -19207,7 +19235,7 @@ const data2: Protocol[] = [
     name: "Uniswap V2",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V2",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v2.png`,
@@ -19256,7 +19284,7 @@ const data2: Protocol[] = [
     name: "Uniswap V3",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://uniswap.org/",
+    url: "https://app.uniswap.org/",
     description: "A fully decentralized protocol for automated liquidity provision on Ethereum. V2",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uniswap-v3.png`,
@@ -20228,6 +20256,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/axelarnetwork/audits"],
     listedAt: 1667045416,
     parentProtocol: "parent#axelar-network",
+    dimensions: {
+      fees: "axelar"
+    }
   },
   {
     id: "2238",
@@ -21825,9 +21856,9 @@ const data2: Protocol[] = [
     name: "Bored Candy City",
     address: "cronos:0x06C04B0AD236e7Ca3B3189b1d049FE80109C7977",
     symbol: "CANDY",
-    url: "https://candycity.finance/",
+    url: "https://new.candycity.finance/",
     description:
-      "Bored Candy City is not just a DEX. We are working on a complete Defi ecosystem around the $CANDY token",
+      "Bored Candy City blends DeFi and gaming: a MultiChain AMM with liquidity yield farms, NFT boosts, and a growing Play2Earn mobile game universe",
     chain: "Cronos",
     logo: `${baseIconsUrl}/bored-candy-city.png`,
     audits: "2",
@@ -21865,7 +21896,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#camelot",
     listedAt: 1669242459,
     dimensions: {
-      fees: "camelot-v2",
+      fees: "camelot",
       dexs: "camelot"
     }
   },
@@ -22598,7 +22629,7 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Crowdloan",
     address: null,
     symbol: "-",
-    url: "https://bifrost.finance",
+    url: "https://bifrost.io/",
     description:
       "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
     chain: "Bifrost",
@@ -22928,7 +22959,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Polygon", "Solana"],
     module: "bitget/index.js",
-    twitter: "bitgetglobal",
+    twitter: "bitget",
     forkedFrom: [],
     listedAt: 1670842933,
   },
@@ -24844,7 +24875,7 @@ const data2: Protocol[] = [
     name: "Nexo",
     address: "0xb62132e35a6c13ee1ee0f84dc5d40bad8d815206",
     symbol: "NEXO",
-    url: "https://nexo.io",
+    url: "https://nexo.com/",
     description:
       "Nexo is the all-in-one crypto platform where you can buy assets, earn interest and borrow against them or swap between 500+ pairs.",
     chain: "Ethereum",
@@ -25287,6 +25318,9 @@ const data2: Protocol[] = [
     twitter: "GuardaWallet",
     forkedFrom: [],
     listedAt: 1674124872,
+    dimensions: {
+      fees: "garuda-staking",
+    },
   },
   /*
   {
@@ -25600,6 +25634,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
     parentProtocol: "parent#hats.finance",
+    deprecated: true, // https://x.com/HatsFinance/status/1995478325641286130
     listedAt: 1674569878,
   },
   {
@@ -25624,6 +25659,10 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
+    dimensions: {
+      fees: "cap-finance-v4",
+      derivatives: "cap-finance-v4"
+    }
   },
   {
     id: "2470",
@@ -26580,13 +26619,16 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
     listedAt: 1675781739,
+    dimensions: {
+      fees: "hawkfi",
+    },
   },
   {
     id: "2512",
     name: "Velvet V1",
-    address: null,
-    symbol: "-",
-    url: "https://app.velvet.capital/",
+    address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
+    symbol: "VELVET",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
@@ -26746,7 +26788,8 @@ const data2: Protocol[] = [
     name: "ENS",
     address: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
     symbol: "ENS",
-    url: "https://ens.domains",
+    url: "https://app.ens.domains/?referrer=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://app.ens.domains/?referrer=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: "Decentralised naming for wallets, websites, & more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ens.jpg`,
@@ -27868,7 +27911,7 @@ const data2: Protocol[] = [
     id: "2567",
     name: "Timeswap V2",
     address: null,
-    symbol: "-",
+    symbol: "TIME",
     url: "https://app.timeswap.io",
     description:
       "Timeswap is the first oracleless lending/borrowing protocol. Timeswap enables the creation of money markets for ANY ERC-20 tokens.",
@@ -28317,14 +28360,16 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "equilibre/index.js",
     treasury: "equilibre.js",
-    twitter: "EquilibreAMM",
     forkedFromIds: ["1407"],
     audit_links: [],
     listedAt: 1677303171,
     dimensions: {
       fees: "equilibre-exchange",
       dexs: "equilibre"
-    }
+    },
+    twitter: "Equilibre_Labs",
+    deadFrom: "2025-12-18",
+    deadUrl: true,
   },
   {
     id: "2587",
@@ -29283,7 +29328,7 @@ const data2: Protocol[] = [
     name: "ether.fi Stake",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://app.ether.fi/eeth",
+    url: "https://www.ether.fi/app/weeth",
     description: "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
@@ -29346,15 +29391,15 @@ const data2: Protocol[] = [
   {
     id: "2629",
     name: "Unamano",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x8ff417e9b7832b09e5717532dc7f251b346442ab",
+    symbol: "WHYPAD",
     url: "https://unamano.io/home",
     description: "Unamano is an ETH2.0 Staking & Project DAOs Protocol, stake #ETH to earn multiple crypto assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unamano.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "unamano",
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
@@ -30676,7 +30721,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ArbitrumExchange/index.js",
     parentProtocol: "parent#arbitrum-exchange",
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
     audit_links: [
       "https://github.com/Vital-block/Smart-Contract-Audit/blob/03c1a811a69f8e459264c22d140cba99b3a518da/ARBITRUM%20EXCHANGE%20Full%20AUDIT%20Report.pdf",
     ],
@@ -30886,7 +30931,7 @@ const data2: Protocol[] = [
   {
     id: "2695",
     name: "SMARDEX AMM",
-    previousNames: ["SmarDex"],
+   // previousNames: ["SmarDex"],
     address: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
     symbol: "SDEX",
     url: "https://smardex.io",

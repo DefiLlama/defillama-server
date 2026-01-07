@@ -5,6 +5,7 @@ import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
 import { getConnection } from "../solana/utils";
 import { PublicKey } from "@solana/web3.js";
+import rpcProxy from "../utils/rpcProxy";
 
 type Config = {
   chain: string;
@@ -268,7 +269,56 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1::supra_coin::SupraCoin",
     decimals: "8",
     symbol: "stSUPRA",
-  }
+  },
+  stFUEL: {
+    rate: async () => {
+      const abi = {
+        programType: "contract",
+        specVersion: "1",
+        encodingVersion: "1",
+        concreteTypes: [
+          {
+            type: "u64",
+            concreteTypeId:
+              "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0",
+          },
+        ],
+        metadataTypes: [],
+        functions: [
+          {
+            inputs: [],
+            name: "get_sanitized_price",
+            output:
+              "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0",
+            attributes: [
+              {
+                name: "storage",
+                arguments: ["read"],
+              },
+            ],
+          },
+        ],
+        loggedTypes: [],
+        messagesTypes: [],
+        configurables: [],
+      };
+
+      const res = await rpcProxy.fuel.query({
+        contractId:
+          "0x2181f1b8e00756672515807cab7de10c70a9b472a4a9b1b6ca921435b0a1f49b",
+        abi,
+        method: "get_sanitized_price",
+      });
+
+      return res / 1e9;
+    },
+    chain: "fuel",
+    address:
+      "0x5505d0f58bea82a052bc51d2f67ab82e9735f0a98ca5d064ecb964b8fd30c474",
+    underlying: "0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82",
+    decimals: "9",
+    symbol: "stFUEL",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {
@@ -277,20 +327,13 @@ export async function apiDerivs(timestamp: number) {
       deriv(timestamp, k, configs[k]).catch((e) => {
         console.log(e?.message, k);
         return [];
-      }),
-    ),
+      })
+    )
   );
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const {
-    chain,
-    underlying,
-    address,
-    symbol,
-    decimals,
-    confidence,
-  } = config;
+  const { chain, underlying, address, symbol, decimals, confidence } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const pricesObject: any = {
     [address]: {

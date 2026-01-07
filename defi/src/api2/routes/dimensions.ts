@@ -7,7 +7,7 @@ import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap 
 import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
-import { errorResponse, fileResponse, successResponse } from "./utils";
+import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
@@ -324,7 +324,134 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   return successResponse(res, data)
 }
 
+export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-protocol-breakdown') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType } = getEventParameters(req, true)
+    
+    if (route === 'chart-chain-breakdown') {
+      const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
+      return fileResponse(routeFile, res)
+    } else {
+      const isLiteStr = route === 'overview' ? '-lite' : '-all'
+      const routeSubPath = `${adaptorType}/${dataType}${isLiteStr}`
+      const routeFile = `dimensions/${routeSubPath}`
+    
+      const data = await readRouteData(routeFile)
+    
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
+    
+      if (route === 'chart-protocol-breakdown') {
+        return successResponse(res, data.totalDataChartBreakdown)
+      } else {
+        data.totalDataChartBreakdown = undefined;
+        
+        if (route === 'overview') {
+          data.totalDataChart = undefined;
+          return successResponse(res, data)
+        } else {
+          return successResponse(res, data.totalDataChart)
+        }
+      }
+    }
+  }
+}
+
+export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, chainFilter } = getEventParameters(req, true)
+  
+    const isLiteStr = route === 'overview' ? '-lite' : '-all'
+    const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
+    const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
+    const routeFile = `dimensions/${routeSubPath}`
+  
+    const data = await readRouteData(routeFile)
+  
+    if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
+  
+    if (route === 'chart-protocol-breakdown') {
+      return successResponse(res, data.totalDataChartBreakdown)
+    } else {
+      data.totalDataChartBreakdown = undefined;
+      
+      if (route === 'overview') {
+        data.totalDataChart = undefined;
+        return successResponse(res, data)
+      } else {
+        return successResponse(res, data.totalDataChart)
+      }
+    }
+  }
+}
+
+export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown') {
+  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const protocolName = req.path_parameters.name?.toLowerCase()
+    const protocolSlug = sluggifyString(protocolName)
+    const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
+  
+    if ((adaptorType as any) === 'financial-statement') // redirect to financial statement route handler
+      return getProtocolFinancials(req, res)
+  
+    const { dataType, includeLabelBreakdown } = getEventParameters(req, false)
+    let protocolFileExt = route === 'overview' ? '-lite' : '-all'
+  
+    if (includeLabelBreakdown) protocolFileExt = '-bl' // include label breakdown data
+  
+    const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${protocolFileExt}`
+    const routeFile = `dimensions/${routeSubPath}`
+    const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
+  
+    const data = await readRouteData(routeFile)
+    if (!data)
+      return errorResponse(res, errorMessage)
+  
+    if (route === 'chart-chain-breakdown' || route === 'chart-version-breakdown') {
+      const chartData: Array<any> = [];
+
+      if (route === 'chart-chain-breakdown') {
+        // sum value from all version on every chain
+        for (const item of data.totalDataChartBreakdown) {
+          const chainItem: any = {}
+          for (const [chain, versions] of Object.entries(item[1])) {
+            chainItem[chain] = chainItem[chain] || 0
+            for (const value of Object.values(versions as any)) {
+              chainItem[chain] += value;
+            }
+          }
+          chartData.push([item[0], chainItem])
+        }
+      } else if (route === 'chart-version-breakdown') {
+        // sum value from all chain on every version
+        for (const item of data.totalDataChartBreakdown) {
+          const versionItem: any = {}
+          for (const versions of Object.values(item[1])) {
+            for (const [version, value] of Object.entries(versions as any)) {
+              versionItem[version] = versionItem[version] || 0;
+              versionItem[version] += value;
+            }
+          }
+          chartData.push([item[0], versionItem])
+        }
+      }
+
+      return successResponse(res, chartData)
+    } else {
+      data.totalDataChartBreakdown = undefined;
+        
+      if (route === 'overview') {
+        data.totalDataChart = undefined;
+        return successResponse(res, data)
+      } else {
+        return successResponse(res, data.totalDataChart)
+      }
+    }
+  }
+}
+
 async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpress.Response) {
+  validateProRequest(req, res)  // ensure that only pro users can access financial statement data
+
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`

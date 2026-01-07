@@ -3839,7 +3839,7 @@ export const chainCoingeckoIds = {
       da: "Ethereum",
     },
     url: "https://shape.network/",
-    twitter: "Shape_L2",
+    twitter: "shape",
     chainId: 360,
     dimensions: {
       fees: "shape",

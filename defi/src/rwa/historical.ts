@@ -6,6 +6,7 @@ import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import protocols from "../protocols/data";
 import entities from "../protocols/entities";
 import treasuries from "../protocols/treasury";
+import { getR2JSONString } from "../utils/r2";
 
 let auth: string[] = [];
 const columns: any = ["timestamp", "id", "defiactivetvl", "mcap"];
@@ -31,36 +32,36 @@ async function iniDbConnection() {
   return postgres(auth[0], { idle_timeout: 90 });
 }
 
-export async function storeHistorical(data: any, ts: number) {
-  if (!Object.keys(data).length) return;
+export async function storeHistorical(data: any) {
+  if (Object.keys(data).length == 1) return;
 
-  const inserts: { timestamp: number; id: string; defiactivetvl: string; mcap: string }[] = Object.keys(data).map(
-    (id: any) => {
-      const { defiActiveTvl, onChainMarketcap } = data[id];
+  const inserts: { timestamp: number; id: string; defiactivetvl: string; mcap: string }[] = [];
+  Object.keys(data).forEach((id: any) => {
+    if (id == "timestamp") return;
+    const { defiActiveTvl, onChainMarketcap } = data[id];
 
-      const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
-      Object.keys(defiActiveTvl).map((chain: string) => {
-        const chainSlug = getChainIdFromDisplayName(chain);
-        defiactivetvl[chainSlug] = {};
-        Object.keys(defiActiveTvl[chain]).map((name: string) => {
-          const id = inverseProtocolIdMap[name];
-          defiactivetvl[chainSlug][id] = defiActiveTvl[chain][name];
-        });
+    const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
+    Object.keys(defiActiveTvl).map((chain: string) => {
+      const chainSlug = getChainIdFromDisplayName(chain);
+      defiactivetvl[chainSlug] = {};
+      Object.keys(defiActiveTvl[chain]).map((name: string) => {
+        const id = inverseProtocolIdMap[name];
+        defiactivetvl[chainSlug][id] = defiActiveTvl[chain][name];
       });
-      const mcap: { [chain: string]: string } = {};
-      Object.keys(onChainMarketcap).map((chain: string) => {
-        const chainSlug = getChainIdFromDisplayName(chain);
-        mcap[chainSlug] = onChainMarketcap[chain];
-      });
+    });
+    const mcap: { [chain: string]: string } = {};
+    Object.keys(onChainMarketcap).map((chain: string) => {
+      const chainSlug = getChainIdFromDisplayName(chain);
+      mcap[chainSlug] = onChainMarketcap[chain];
+    });
 
-      return {
-        timestamp: ts,
-        id,
-        defiactivetvl: JSON.stringify(defiactivetvl),
-        mcap: JSON.stringify(mcap),
-      };
-    }
-  );
+    inserts.push({
+      timestamp: data.timestamp,
+      id,
+      defiactivetvl: JSON.stringify(defiactivetvl),
+      mcap: JSON.stringify(mcap),
+    });
+  });
 
   const sql = await iniDbConnection();
   await queryPostgresWithRetry(
@@ -129,10 +130,9 @@ async function fetchHistorical(id: string) {
 }
 
 export async function rwaChart(name: string) {
-  const id = inverseProtocolIdMap[name];
+  const idMap = await getR2JSONString("rwa/id-map");
+  const id = idMap[name]
   if (!id) throw new Error(`Protocol ${name} not found`);
   const data = await fetchHistorical(id);
   return { data };
 }
-
-fetchHistorical("10"); // ts-node defi/src/rwa/historical.ts

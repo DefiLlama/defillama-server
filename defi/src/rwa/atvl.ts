@@ -19,6 +19,9 @@ const keyMap: { [value: string]: string } = {
   onChain: "onChainMarketcap",
   defiActive: "defiActiveTvl",
   excluded: "*",
+  assetName: "Name",
+  id: "*RWA ID",
+  projectId: "projectID",
 };
 
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
@@ -76,11 +79,6 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
 
   return aggregateRawTvls;
 }
-
-// async function backfillRawTvls(timestampFrom: number, timestampTo: number) {
-//   const rawTvls = await getAllItems(dailyRawTokensTvl, { timestampBefore: timestampTo, timestampAfter: timestampFrom })
-//   return rawTvls
-// }
 
 async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[] }, timestamp: number) {
   const totalSupplies: { [token: string]: number } = {};
@@ -258,11 +256,14 @@ async function main(ts: number = 0) {
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const ids: string[] = [];
 
-  parsedCsvData.map((row: any, i: number) => {
+  parsedCsvData.map((row: any) => {
     const cleanRow: any = {};
+    const i = row[keyMap.id];
+    if (!row.Ticker) return;
     Object.keys(row).map((key: string) => {
       const camelKey = toCamelCase(key);
-      if (key == "*projectID" && row[key].length > 0) ids.push(row.projectID);
+      if (!key) return;
+      if (key == keyMap.projectId && row[key].length > 0) ids.push(row.projectID);
       else if (key.startsWith(keyMap.excluded)) return;
       else if (key == "Contracts") {
         const contracts: { [chain: string]: string[] } = {};
@@ -297,9 +298,12 @@ async function main(ts: number = 0) {
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
-  const assetPrices = await coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp);
-  const aggregateRawTvls = await getAggregateRawTvls(tokensSortedByChain, ts);
-  const totalSupplies = await getTotalSupplies(tokensSortedByChain, timestamp);
+  const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData] = await Promise.all([
+    coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
+    getAggregateRawTvls(tokensSortedByChain, ts),
+    getTotalSupplies(tokensSortedByChain, timestamp),
+    fetchStablecoins(timestamp),
+  ]);
 
   Object.keys(tokenToProjectMap).map((address: string) => {
     if (!assetPrices[address]) {
@@ -308,11 +312,17 @@ async function main(ts: number = 0) {
     }
   });
 
-  const stablecoinsData = await fetchStablecoins(timestamp);
   getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls);
   getOnChainTvls(assetPrices, tokenToProjectMap, finalData, parsedCsvData, stablecoinsData, totalSupplies);
 
-  const filteredFinalData: any = {};
+  const rwaIdMap: { [id: string]: string } = {};
+  Object.keys(finalData).map((rwaId: string) => {
+    const name = finalData[rwaId].name;
+    rwaIdMap[name] = rwaId;
+  });
+
+  const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
+  const filteredFinalData: any = { timestamp: timestampToPublish };
   Object.keys(finalData).map((rwaId: string) => {
     if (
       typeof finalData[rwaId][keyMap.defiActive] === "object" &&
@@ -322,10 +332,13 @@ async function main(ts: number = 0) {
     }
   });
 
-  if (timestamp == 0) await storeR2JSONString("rwa/active-tvls", JSON.stringify(filteredFinalData));
-  await storeHistorical(filteredFinalData, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp);
+  await Promise.all([
+    timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(filteredFinalData)) : Promise.resolve(),
+    timestamp == 0 ? storeR2JSONString("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
+    storeHistorical(filteredFinalData),
+  ]);
 
   return finalData;
 }
 
-main(); // ts-node defi/src/rwa/atvl.ts
+main();

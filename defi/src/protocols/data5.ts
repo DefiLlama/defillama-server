@@ -5898,6 +5898,7 @@ const data5: Protocol[] = [
     chains: ["Base"],
     forkedFromIds: [],
     module: "donut/index.js",
+    treasury: "donut.js",
     twitter: "Glaze_Corp",
     audit_links: [],
     listedAt: 1765500000,

@@ -60352,6 +60352,9 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     audit_links: [], // needs the link to the actual audit report
     listedAt: 1729134541,
+    dimensions: {
+      dexs: "seer",
+    },
   },
   {
     id: "5246",
@@ -62864,7 +62867,10 @@ const data3_3: Protocol[] = [
     twitter: "mETHProtocol",
     forkedFrom: [],
     audit_links: ["https://docs.mantle.xyz/meth/security/audits"],
-    listedAt: 1731495743
+    listedAt: 1731495743,
+    dimensions: {
+      fees: "mantle-restaking",
+    },
   },
   {
     id: "5352",

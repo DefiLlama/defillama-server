@@ -1737,6 +1737,9 @@ const data2: Protocol[] = [
     twitter: "Vaulta_",
     language: "C++",
     listedAt: 1645579151,
+    dimensions: {
+      fees: "vaulta-rex",
+    },
   },
   /*
   {
@@ -23564,6 +23567,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1671639906,
     parentProtocol: "parent#stake.link",
+    dimensions: {
+      fees: "stakedotlink",
+    },
   },
   {
     id: "2379",

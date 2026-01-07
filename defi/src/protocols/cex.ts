@@ -623,6 +623,14 @@ export const cexsData: Array<ICex> = [
     coin: "weex-token",
     walletsLink: null,
     cgDeriv: "weex-futures",
+  },
+  {
+    name: "BYDFi",
+    cgId: "bydfi",
+    slug: "bydfi",
+    coin: null,
+    walletsLink: null,
+    cgDeriv: "bydfi-futures",
   }
 ];
 

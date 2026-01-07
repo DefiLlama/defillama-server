@@ -2329,6 +2329,7 @@ export const chainCoingeckoIds = {
     cmcId: "15261",
     categories: ["EVM"],
     github: ["ONUS-APP"],
+    twitter: "ONUSChain",
     dimensions: {
       fees: "onus",
     },

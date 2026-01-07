@@ -6474,15 +6474,16 @@ const parentProtocols: IParentProtocol[] = [
   //
   {
     id: "parent#reservoir-tools",
-    name: "Reservoir Tools",
-    url: "https://reservoir.tools/",
+    name: "SakuraSwap",
+    url: "https://sakuraswap.com/",
     description:
-      "Reservoir Tools provides infrastructure like SDKs and APIs for developers to integrate NFT trading across multiple blockchains and marketplaces",
-    logo: `${baseIconsUrl}/reservoir-tools.png`,
+      "SakuraSwap is a DEX that allows users to swap tokens on EVM blockchains using Uniswap V2 and V3 style AMM pools",
+    logo: `${baseIconsUrl}/sakuraswap.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "reservoir0x",
+    twitter: "protofire",
+    github: ["protofire"],
   },
   {
     id: "parent#shadow-exchange",

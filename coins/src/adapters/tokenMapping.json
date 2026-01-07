@@ -13565,6 +13565,16 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    },
+    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     }
   },
   "zigchain": {

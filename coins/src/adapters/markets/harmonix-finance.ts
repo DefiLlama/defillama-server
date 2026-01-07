@@ -32,7 +32,7 @@ export async function harmonix(timestamp: number) {
           writes,
           chain,
           address,
-          +price,
+          price,
           18,
           symbol,
           timestamp,

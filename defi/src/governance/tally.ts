@@ -7,7 +7,8 @@ import axios from 'axios'
 import { getTally, setTally, getTallyOverview, setTallyOverview, } from './cache'
 import { GovCache, Proposal, } from './types'
 import { updateStats, getGovernanceSources, getChainNameFromId, } from './utils'
-const TALLY_API_KEY = process.env.TALLY_API_KEY ?? 'bfd8e8db995ffb776a8818329b40f32fec48822ed7b67c45b062c1ac6ce601c9'
+import sleep from '../utils/shared/sleep'
+const TALLY_API_KEY = process.env.TALLY_API_KEY ?? '365b418f59bd6dc4a0d7f23c2e8c12d982f156e9069695a6f0a2dcc3232448df'
 
 const missing = [
   'eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6',
@@ -46,17 +47,25 @@ export function getTallyIds() {
 }
 
 export async function getMetadata(ids: string[]) {
-  const { data: { data: { governors, } } } = await axios.post(graphURLTally, {
-    query: metadataQueryTally,
-    operationName: 'Governers',
-    variables: { ids },
-  }, {
-    headers: {
-      'ContentType': 'application/json',
-      "Api-Key": TALLY_API_KEY
-    }
-  })
-  return governors
+  const governers: any = []
+  for (let i = 0; i < ids.length; i++) {
+    const { data: { data: { governor, } } } = await axios.post(graphURLTally, {
+      query: metadataQueryTally,
+      operationName: 'Governers',
+      variables: { input: { id: ids[i] } },
+    }, {
+      headers: {
+        'ContentType': 'application/json',
+        "Api-Key": TALLY_API_KEY
+      }
+    })
+    console.log('fetched metadata for', ids[i], governor)
+    governor.tokens = governor.token ? [governor.token] : []
+    governers.push(governor)
+    await sleep(3000)
+  }
+
+  return governers
 }
 
 export async function getProposals(ids: string[], chain: string, recent?: boolean) {
@@ -68,7 +77,7 @@ export async function getProposals(ids: string[], chain: string, recent?: boolea
   const variables: any = { ids, skip: 0, chain, length: 200, }
   if (recent) variables.length = 100
   do {
-    const { data: { data } }  = await axios.post(graphURLTally, {
+    const { data: { data } } = await axios.post(graphURLTally, {
       query: proposalQueryTally,
       operationName: 'Proposals',
       variables,
@@ -97,9 +106,10 @@ export async function updateTallys() {
   const overview = await getTallyOverview()
   const idsAll = getTallyIds()
   log('tally gov#', idsAll.length)
-  const idChunks = sliceIntoChunks(idsAll, 31)
+  const idChunks = sliceIntoChunks(idsAll, 5)
   for (const ids of idChunks) {
     const metadataAll = await getMetadata(ids)
+    console.log('fetched metadata for', ids.length, 'governances', metadataAll)
     const caches: GovCache[] = await Promise.all(ids.map(getTally))
     const idMap: { [key: string]: GovCache } = {}
     ids.forEach((id, i) => idMap[id] = caches[i])

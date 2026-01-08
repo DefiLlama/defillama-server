@@ -90,16 +90,11 @@ export const proposalQuery = `query Proposals($ids: [String]!, $skip: Int!, $sta
 }`
 
 
-export const metadataQueryTally = `query Governers($ids: [AccountID!]) {
-  governors(
-    ids: $ids
-    includeInactive: false
-    sort: {field: TOTAL_PROPOSALS, order: DESC}
-    pagination: {limit: 999}
-  ) {
+export const metadataQueryTally = `query Governers($input: GovernorInput!) {
+  governor(input: $input) {
     id
     type
-    tokens {
+    token {
       id
       type
       name

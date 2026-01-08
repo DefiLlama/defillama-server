@@ -27994,6 +27994,7 @@ const data3_1: Protocol[] = [
     module: "degate/index.js",
     twitter: "DeGateDex",
     github: ["degatedev"],
+    deprecated: true,
     audit_links: [
       "https://github.com/degatedev/protocols/blob/degate1.1.0/packages/loopring_v3/security_audit/DeGate_Report_EN-20231115.pdf",
     ],

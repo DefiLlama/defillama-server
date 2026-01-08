@@ -7982,6 +7982,7 @@ const data5: Protocol[] = [
     twitter: "StandX_Official",
     dimensions: {
       derivatives: "standx",
+      "open-interest": "standx",
     },
   },
   {

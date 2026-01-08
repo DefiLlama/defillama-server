@@ -340,15 +340,15 @@ async function main(ts: number = 0) {
   });
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
-  const filteredFinalData: any = {};
-  Object.keys(finalData).map((rwaId: string) => {
-    if (
-      typeof finalData[rwaId][keyMap.defiActive] === "object" &&
-      typeof finalData[rwaId][keyMap.onChain] === "object"
-    ) {
-      filteredFinalData[rwaId] = finalData[rwaId];
-    }
-  });
+  const filteredFinalData: any = finalData // {};
+  // Object.keys(finalData).map((rwaId: string) => {
+  //   if (
+  //     typeof finalData[rwaId][keyMap.defiActive] === "object" &&
+  //     typeof finalData[rwaId][keyMap.onChain] === "object"
+  //   ) {
+  //     filteredFinalData[rwaId] = finalData[rwaId];
+  //   }
+  // });
 
   const res = { data: filteredFinalData, timestamp: timestampToPublish }
 

@@ -1,7 +1,7 @@
 import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl } from "../utils/getLastRecord";
-import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../utils/date";
+import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
 import { PassThrough } from "stream";
 import { getProtocolAllTvlData } from "../api2/utils/cachedFunctions";
@@ -34,7 +34,7 @@ function addTokenRows(
         grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChainTotal(chain), rowName, token];
         // TODO: Optimize this
         historicalTokenTvls.forEach((historicalTvl) => {
-          const timestamp = getClosestDayStartTimestamp(historicalTvl.SK);
+          const timestamp = getTimestampAtStartOfDayUTC(historicalTvl.SK);
           if (timeToColumn[timestamp] === undefined) {
             timeToColumn[timestamp] = {};
           }
@@ -109,7 +109,7 @@ export default async function (protocols: Protocol[], vertical = false, stream =
         }
         grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChainTotal(chain), "TVL"];
         usd.forEach((historicalTvl) => {
-          const timestamp = getClosestDayStartTimestamp(historicalTvl.SK);
+          const timestamp = getTimestampAtStartOfDayUTC(historicalTvl.SK);
           if (timeToColumn[timestamp] === undefined) {
             timeToColumn[timestamp] = {};
           }

@@ -60791,8 +60791,8 @@ const data3_3: Protocol[] = [
   {
     id: "5265",
     name: "RateX",
-    address: null,
-    symbol: "-",
+    address: "solana:J1wnHdKvP34fg7TtYdX63UPJMTdXNzJGEqfNJB22vKjU",
+    symbol: "RTX",
     url: "https://app.rate-x.io/referral?ref=VS71Wksp",
     referralUrl: "https://app.rate-x.io/referral?ref=VS71Wksp",
     description: "World’s 1st Leveraged Yield Exchange",

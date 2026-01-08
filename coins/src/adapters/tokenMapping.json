@@ -3811,6 +3811,36 @@
     }
   },
   "solana": {
+    "8qujzAXj2nz99CmeiCgPPc2JxEuDNYvPffzRomroJnee": {
+      "decimals": "6",
+      "symbol": "nALPHA",
+      "to": "coingecko#nest-alpha-vault"
+    },
+    "2sA2jW9e8EYJkLFpq9hkhxfVUQBwVGJwq6iP4TmTKrL4": {
+      "decimals": "6",
+      "symbol": "nTBILL",
+      "to": "coingecko#nest-treasury-vault"
+    },
+    "G6SkPqYTbtVFYU4krZLDgHf5MVMfARG57G1kog4RYH2n": {
+      "decimals": "6",
+      "symbol": "nBASIS",
+      "to": "coingecko#nest-basis-vault"
+    },
+    "77DTSzxisdQWshFYHP9M2JBDuHNojLAVoC7GBNC2yadT": {
+      "decimals": "6",
+      "symbol": "nWISDOM",
+      "to": "coingecko#nest-wisdomtree-vault"
+    },
+    "GArhnnDj3GYhmQeApKVXaRv4TQFwhPcs3SNF6FXsTeXq": {
+      "decimals": "6",
+      "symbol": "nOPAL",
+      "to": "coingecko#nest-blackopal-liquidstone-ii-vault"
+    },
+    "9DRPPWYud8i6CaSsDsFESs1xyVr8dBCMtjPZji2xiZEa": {
+      "decimals": "6",
+      "symbol": "ULTRA",
+      "to": "asset#ethereum:0x50293dd8889b931eb3441d2664dce8396640b419"
+    },
     "9iq5Q33RSiz1WcupHAQKbHBZkpn92UxBG2HfPWAZhMCa": {
       "decimals": "6",
       "symbol": "sUSDu",

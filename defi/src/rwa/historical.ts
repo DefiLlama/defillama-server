@@ -6,15 +6,17 @@ import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import protocols from "../protocols/data";
 import entities from "../protocols/entities";
 import treasuries from "../protocols/treasury";
-import { getR2JSONString } from "../utils/r2";
+import { cache } from "@defillama/sdk";
 
 let auth: string[] = [];
-const columns: any = ["timestamp", "id", "defiactivetvl", "mcap"];
+const columns: any = ["timestamp", "id", "defiactivetvl", "mcap", "aggregatedefiactivetvl", "aggregatemcap"];
 const twoDaysAgo = getTimestampAtStartOfDay(getCurrentUnixTimestamp() - 2 * secondsInDay);
 
 export const protocolIdMap: { [id: string]: string } = {};
+export const categoryMap: { [category: string]: string } = {};
 [...protocols, ...entities, ...treasuries].map((protocol: any) => {
   protocolIdMap[protocol.id] = protocol.name;
+  categoryMap[protocol.id] = protocol.category;
 });
 
 const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocolIdMap).reduce(
@@ -36,23 +38,37 @@ export async function storeHistorical(res: any) {
   const { data, timestamp } = res;
   if (Object.keys(data).length == 0) return;
 
-  const inserts: { timestamp: number; id: string; defiactivetvl: string; mcap: string }[] = [];
+  const inserts: {
+    timestamp: number;
+    id: string;
+    defiactivetvl: string;
+    mcap: string;
+    aggregatedefiactivetvl: number;
+    aggregatemcap: number;
+  }[] = [];
   Object.keys(data).forEach((id: any) => {
     const { defiActiveTvl, onChainMarketcap } = data[id];
 
+    // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
+    let aggregatedefiactivetvl: number = 0;
     Object.keys(defiActiveTvl).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
       defiactivetvl[chainSlug] = {};
       Object.keys(defiActiveTvl[chain]).map((name: string) => {
         const id = inverseProtocolIdMap[name];
+        aggregatedefiactivetvl += Number(defiActiveTvl[chain][name]);
         defiactivetvl[chainSlug][id] = defiActiveTvl[chain][name];
       });
     });
+
+    // use chain slugs for mcaps and aggregate 
     const mcap: { [chain: string]: string } = {};
+    let aggregatemcap: number = 0;
     Object.keys(onChainMarketcap).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
       mcap[chainSlug] = onChainMarketcap[chain];
+      aggregatemcap += Number(onChainMarketcap[chain]);
     });
 
     inserts.push({
@@ -60,6 +76,8 @@ export async function storeHistorical(res: any) {
       id,
       defiactivetvl: JSON.stringify(defiactivetvl),
       mcap: JSON.stringify(mcap),
+      aggregatedefiactivetvl,
+      aggregatemcap,
     });
   });
 
@@ -74,17 +92,26 @@ export async function storeHistorical(res: any) {
     sql
   );
 
+  // find and delete old hourly data 
   const timestamps = await queryPostgresWithRetry(
     sql`
             select timestamp from activetvls where timestamp < ${twoDaysAgo}`,
     sql
   );
 
-  if (!timestamps.length) return;
+  if (!timestamps.length) {
+    sql.end();
+    return;
+  }
 
   const dailyTimestamps = findDailyTimestamps(timestamps);
 
   const timestampsToDelete = timestamps.filter((t: any) => !dailyTimestamps.includes(t.timestamp));
+  if (!timestampsToDelete.length) {
+    sql.end();
+    return;
+  }
+
   await queryPostgresWithRetry(
     sql`
             delete from activetvls where timestamp in ${sql(timestampsToDelete)}`,
@@ -95,43 +122,38 @@ export async function storeHistorical(res: any) {
 }
 
 async function fetchHistorical(id: string) {
+  const cachedData = await cache.readCache(`rwa/historical-${id}`);
+  const timestamp = getCurrentUnixTimestamp();
+  if (cachedData.timestamp > timestamp - 3600) return cachedData.data;
+
   const sql = await iniDbConnection();
   const data = await queryPostgresWithRetry(
     sql`
-            select * from activetvls where id = ${id}`,
+            select timestamp, aggregatedefiactivetvl, aggregatemcap from activetvls where id = ${id}`,
     sql
   );
   sql.end();
 
   const res: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number }[] = [];
+  data.sort((a: any, b: any) => a.timestamp - b.timestamp);
   data.forEach((d: any) => {
     const timestamp = d.timestamp < twoDaysAgo ? getTimestampAtStartOfDay(d.timestamp) : d.timestamp;
-    const mcapBreakdown = JSON.parse(d.mcap);
-    const datvlBreakdown = JSON.parse(d.defiactivetvl);
-    let onChainMarketcap = 0;
-    Object.keys(mcapBreakdown).forEach((chain: string) => {
-      onChainMarketcap += Number(mcapBreakdown[chain]);
-    });
-    let defiActiveTvl = 0;
-    Object.keys(datvlBreakdown).forEach((chain: string) => {
-      Object.keys(datvlBreakdown[chain]).forEach((protocol: string) => {
-        defiActiveTvl += Number(datvlBreakdown[chain][protocol]);
-      });
-    });
 
     res.push({
       timestamp,
-      onChainMarketcap,
-      defiActiveTvl,
+      onChainMarketcap: d.aggregatemcap,
+      defiActiveTvl: d.aggregatedefiactivetvl,
     });
   });
+
+  await cache.writeCache(`rwa/historical-${id}`, { data: res, timestamp: getCurrentUnixTimestamp() });
 
   return data;
 }
 
 export async function rwaChart(name: string) {
-  const idMap = await getR2JSONString("rwa/id-map");
-  const id = idMap[name]
+  const idMap = await cache.readCache("rwa/id-map");
+  const id = idMap[name];
   if (!id) throw new Error(`Protocol ${name} not found`);
   const data = await fetchHistorical(id);
   return { data };

@@ -1,17 +1,17 @@
-import { getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
+import { getAllItemsAtTimeS, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
 import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
 import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
-import { coins } from "@defillama/sdk";
+import { coins, cache } from "@defillama/sdk";
 import { getCsvData } from "./csv";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
-import { storeR2JSONString } from "../utils/r2";
 import { getChainDisplayName } from "../utils/normalizeChain";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
-import { storeHistorical, protocolIdMap } from "./historical";
+import { storeHistorical, protocolIdMap, categoryMap } from "./historical";
+import { storeR2JSONString } from "../utils/r2";
 
 const excludedProtocolCategories: string[] = ["CEX"];
 const keyMap: { [value: string]: string } = {
@@ -24,6 +24,7 @@ const keyMap: { [value: string]: string } = {
   projectId: "projectID",
 };
 
+// Sort tokens by chain and map token to project for fetching supplies, tvls etc
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
   const tokensSortedByChain: { [chain: string]: string[] } = {};
   const tokenToProjectMap: { [token: string]: string } = {};
@@ -43,7 +44,7 @@ function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
 
   return { tokensSortedByChain, tokenToProjectMap };
 }
-
+// convert spreadsheet titles to API format 
 function toCamelCase(str: string) {
   return str
     .toLowerCase()
@@ -53,18 +54,18 @@ function toCamelCase(str: string) {
     })
     .replace(/\s+/g, "");
 }
-
+// read TVLs from DB and aggregate RWA token tvls 
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
   await initializeTVLCacheDB();
 
-  const rawTvls = await getLatestProtocolItems(timestamp == 0 ? hourlyRawTokensTvl : dailyRawTokensTvl, {
+  const rawTvls = timestamp == 0 ? await getLatestProtocolItems(hourlyRawTokensTvl, {
     filterLast24Hours: true,
-    timestampTo: timestamp == 0 ? undefined : timestamp,
-  });
+  }) : await getAllItemsAtTimeS(dailyRawTokensTvl, timestamp);
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
   rawTvls.map((protocol: any) => {
-    if (excludedProtocolCategories.includes(protocol.category)) return;
+    const category = timestamp == 0 ? protocol.category : categoryMap[protocol.id];
+    if (excludedProtocolCategories.includes(category)) return;
     Object.keys(protocol.data).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
       if (!rwaTokens[chain]) return;
@@ -79,7 +80,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
 
   return aggregateRawTvls;
 }
-
+// fetch total supplies for each token for mcaps 
 async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[] }, timestamp: number) {
   const totalSupplies: { [token: string]: number } = {};
 
@@ -105,7 +106,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
 
   return totalSupplies;
 }
-
+// use stablecoin API to fetch mcaps for stablecoins
 async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
   const validStablecoinIds: string[] = [];
   const { peggedAssets } = await cachedFetch({
@@ -132,7 +133,7 @@ async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]
 
   return data;
 }
-
+// fetch historical mcaps for stablecoins
 async function fetchHistoricalStablecoins(
   timestamp: number,
   validStablecoinIds: string[]
@@ -167,7 +168,7 @@ async function fetchHistoricalStablecoins(
 
   return data;
 }
-
+// calculate defi active tvls 
 function getActiveTvls(
   assetPrices: any,
   tokenToProjectMap: any,
@@ -191,8 +192,7 @@ function getActiveTvls(
       if (aum.isLessThan(10)) return;
       const rwaId = tokenToProjectMap[pk];
 
-      const [projectId, symbol] = rwaId.split("-");
-      if (amountId == projectId) return;
+      if (amountId == rwaId) return;
 
       try {
         const projectName = protocolIdMap[amountId];
@@ -210,7 +210,7 @@ function getActiveTvls(
     });
   });
 }
-
+// calculate on chain mcaps  
 function getOnChainTvls(
   assetPrices: any,
   tokenToProjectMap: any,
@@ -249,23 +249,31 @@ function getOnChainTvls(
     }
   });
 }
-
+// main entry 
 async function main(ts: number = 0) {
   const timestamp = getTimestampAtStartOfDay(ts);
+
+  // read CSV data and parse it 
   const parsedCsvData = getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const ids: string[] = [];
 
+  // clean CSV data 
   parsedCsvData.map((row: any) => {
     const cleanRow: any = {};
     const i = row[keyMap.id];
     if (!row.Ticker) return;
+
     Object.keys(row).map((key: string) => {
       const camelKey = toCamelCase(key);
       if (!key) return;
       if (key == keyMap.projectId && row[key].length > 0) ids.push(row.projectID);
+
+      // exclude columns for internal use  
       else if (key.startsWith(keyMap.excluded)) return;
+
+      // convert to readable chain names
       else if (key == "Contracts") {
         const contracts: { [chain: string]: string[] } = {};
         (Array.isArray(row[key]) ? row[key] : [row[key]]).map((contract: any) => {
@@ -283,13 +291,16 @@ async function main(ts: number = 0) {
         cleanRow[camelKey] = row[key]
           ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
           : null;
+
       else cleanRow[camelKey] = row[key] == "" ? null : row[key];
     });
 
+    // append this RWA to API response 
     rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
     finalData[i] = cleanRow;
   });
 
+  // set category flags
   Object.keys(finalData).map((rowIndex: string) => {
     let stablecoin = false;
     let governance = false;
@@ -304,11 +315,12 @@ async function main(ts: number = 0) {
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
   const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData] = await Promise.all([
     coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
-    getAggregateRawTvls(tokensSortedByChain, ts),
+    getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
     fetchStablecoins(timestamp),
   ]);
 
+  // log missed assets 
   Object.keys(tokenToProjectMap).map((address: string) => {
     if (!assetPrices[address]) {
       console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
@@ -316,9 +328,11 @@ async function main(ts: number = 0) {
     }
   });
 
+  // calculate defi active tvls and on chain mcaps 
   getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls);
   getOnChainTvls(assetPrices, tokenToProjectMap, finalData, parsedCsvData, stablecoinsData, totalSupplies);
 
+  // for read API usage
   const rwaIdMap: { [id: string]: string } = {};
   Object.keys(finalData).map((rwaId: string) => {
     const name = finalData[rwaId].name;
@@ -340,7 +354,7 @@ async function main(ts: number = 0) {
 
   await Promise.all([
     timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(res)) : Promise.resolve(),
-    timestamp == 0 ? storeR2JSONString("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
+    timestamp == 0 ? cache.writeCache("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
     storeHistorical(res),
   ]);
 

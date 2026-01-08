@@ -18017,6 +18017,7 @@ const data4: Protocol[] = [
     twitter: "ShroomyProject",
     audit_links: ["https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"],
     parentProtocol: "parent#shroomy-protocol",
+    deprecated: true,
     listedAt: 1749484357,
   },
   {

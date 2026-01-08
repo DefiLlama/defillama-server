@@ -1117,6 +1117,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "ShroomyProject",
     parentProtocol: "parent#shroomy-protocol",
+    deprecated: true,
     dimensions: {
       dexs: "shroomy-protocol",
       fees: "shroomy-protocol",

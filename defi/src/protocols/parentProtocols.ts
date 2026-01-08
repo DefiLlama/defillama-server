@@ -8378,6 +8378,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "36732",
     chains: [],
     twitter: "ShroomyProject",
+    deprecated: true
   },
   {
     id: "parent#dipcoin",

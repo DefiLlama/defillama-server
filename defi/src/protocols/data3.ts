@@ -33282,7 +33282,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     forkedFrom: [],
     module: "flashtrade/index.js",
-    twitter: "FlashTrade_",
+    twitter: "FlashTrade",
     listedAt: 1707227945,
     dimensions: {
       fees: "flashtrade",

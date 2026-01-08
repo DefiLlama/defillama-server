@@ -51138,8 +51138,8 @@ const data3_3: Protocol[] = [
   {
     id: "4856",
     name: "Harmonix Finance",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x391121d817da42ed3434d281aedbbcc416a2af18",
+    symbol: "HAR",
     url: "https://app.harmonix.fi/?ref=s4rk2Hrs",
     referralUrl: "https://app.harmonix.fi/?ref=s4rk2Hrs",
     description:
@@ -51148,7 +51148,7 @@ const data3_3: Protocol[] = [
     logo: `${baseIconsUrl}/harmonix-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "harmonix-finance",
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum", "Arbitrum", "Base"],

@@ -455,7 +455,9 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
-  return successResponse(res, adjustDataProtocolFinancials(await readRouteData(routeFile)), 10); // cache 10 minutes
+  const data = await readRouteData(routeFile)
+  const adjustedData = adjustDataProtocolFinancials(data)
+  return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
 
 const timeframes = ['yearly', 'quarterly', 'monthly'];

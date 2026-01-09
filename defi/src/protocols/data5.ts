@@ -7073,6 +7073,13 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Insurance",
     chains: ["Ethereum", "Base", "Arbitrum", "Avalanche"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.re.xyz/protocol/how-the-re-protocol-work"],
+      }
+    ],
     module: "re-protocol/index.js",
     twitter: "re",
     forkedFromIds: [],

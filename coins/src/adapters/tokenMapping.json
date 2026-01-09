@@ -2621,6 +2621,11 @@
     }
   },
   "base": {
+    "0x3d8f0ddb4bb9332cb89dec22d273d9be1a91530b": {
+      "decimals": "8",
+      "symbol": "sMAG7.ssi",
+      "to": "coingecko#mag7-ssi"
+    },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",

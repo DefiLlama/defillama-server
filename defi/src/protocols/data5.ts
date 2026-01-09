@@ -8134,7 +8134,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Bridge",
     chains: ["Base", "Ethereum", "Arbitrum", "Bitcoin", "Ripple", "Cardano", "Hyperliquid L1", "Litecoin", "Solana", "Doge", "Binance"],
     forkedFromIds: [],
     audit_links: [],

@@ -8154,5 +8154,37 @@ const data5: Protocol[] = [
     },
     listedAt: 1767896991,
   },
+  {
+    id: "7229",
+    name: "Corex Markets",
+    address: null,
+    symbol: "-",
+    url: "https://corex.markets/",
+    description: "Corex Markets is the flagship Perpetual trading platform on Core, the largest Bitcoin-aligned Layer-1 blockchain. Advanced perpetual futures trading with up to 100% leverage, multi-collateral support, and institutional-grade risk management. Trade perpetual BTC, ETH, CORE and other top cryptocurrencies.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/corex-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["CORE"],
+    forkedFromIds: [],
+    audit_links: [],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://corex.markets/docs/#risk-management"],
+      },
+    ],
+    module: "corex/index.js",
+    twitter: "corex_markets",
+    listedAt: 1767972602,
+    dimensions: {
+      fees: "corex",
+      derivatives: "corex",
+    },
+  },
 ];
 export default data5;

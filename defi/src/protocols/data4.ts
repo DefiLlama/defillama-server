@@ -10237,7 +10237,14 @@ const data4: Protocol[] = [
       // https://basescan.org/address/0x9393a4c8b46a4f796af876a7b782f9400862ff1f
       // https://basescan.org/address/b62ee1e0ad72e1dc0a0bd41c9488de3327c41712
       // derivatives: "rollx"
-    }
+    },
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. It also did wash trading to inflate volume. Be safe.",
+        level: "alert",
+        until: "2026-07-10",
+      }
+    ]
   },
   {
     id: "5974",

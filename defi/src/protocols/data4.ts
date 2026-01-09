@@ -29530,9 +29530,17 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#sun",
     listedAt: 1758724545,
+    // wash trading investigation notes: https://github.com/DefiLlama/dimension-adapters/issues/5552
+    warningBanners: [
+      {
+        message: "Suspected wash trading on SunX, volumes may be inflated.",
+        level: "alert",
+        until: "2026-06-31",
+      },
+    ],
     dimensions: {
-      derivatives: "sunperp",
-      "open-interest": "sunperp-oi"
+      // derivatives: "sunperp",
+      // "open-interest": "sunperp-oi"
     }
   },
   {

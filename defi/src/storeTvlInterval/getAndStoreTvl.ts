@@ -154,6 +154,9 @@ function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsOb
     balancesObject[key] = {}
     storedKeys.map(keyToMerge => {
       Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
+        // ignore balances with invalid token symbol
+        if (balance[0] === '') return;
+        
         let value: any = balance[1]
         if (typeof value === 'string' && value.includes('.')) value = +value
         sdk.util.sumSingleBalance(balancesObject[key], balance[0], value);

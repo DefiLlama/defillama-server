@@ -8186,5 +8186,28 @@ const data5: Protocol[] = [
       derivatives: "corex",
     },
   },
+  {
+    id: "7230",
+    name: "BarterSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.barterswap.xyz",
+    description: "BarterSwap is an intent-based decentralized trading and liquidity routing protocol that matches peer-to-peer swap intents and aggregates liquidity across DeFi venues to optimize execution and reduce slippage and MEV.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/barterswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "dummy.js",
+    twitter: "BarterDeFi",
+    dimensions: {
+      dexs: "barterswap",
+    },
+  },
 ];
 export default data5;

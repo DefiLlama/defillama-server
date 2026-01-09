@@ -182,5 +182,6 @@ export default {
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
+  notional: require("./yield/notional"),
   shift: require("./yield/shift"),
 };

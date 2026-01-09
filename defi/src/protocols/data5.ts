@@ -8112,7 +8112,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "Derivatives",
     chains: ["Solana"],
     forkedFromIds: [],
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateLabs-RateXMooncake-Oct-2025-OffsideLabs.pdf"],

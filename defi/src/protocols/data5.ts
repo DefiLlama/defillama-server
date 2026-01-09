@@ -6971,6 +6971,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: [],
     listedAt: 1766423424,
+    dimensions: {
+      fees: "yusan",
+    },
   },
   { 
     id: "7178",
@@ -7430,6 +7433,9 @@ const data5: Protocol[] = [
     twitter: "OpenledgerHQ",
     github: ["openledger-dev"],
     listedAt: 1767121232,
+    dimensions: {
+      fees: "openledger",
+    },
   },
   {
     id: "7198",

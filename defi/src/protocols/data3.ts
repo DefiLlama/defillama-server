@@ -61476,7 +61476,10 @@ const data3_3: Protocol[] = [
     forkedFrom: [],
     module: "kyros/index.js",
     twitter: "KyrosFi",
-    listedAt: 1730219879
+    listedAt: 1730219879,
+    dimensions: {
+      fees: "kyros"
+    }
   },
   {
     id: "5295",
@@ -67280,7 +67283,10 @@ const data3_3: Protocol[] = [
       "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit_2.md"
     ],
     parentProtocol: "parent#theo",
-    listedAt: 1734734529
+    listedAt: 1734734529,
+    dimensions: {
+      fees: "theo-straddle-vaults"
+    }
   },
   {
     id: "5546",

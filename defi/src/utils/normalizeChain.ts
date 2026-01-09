@@ -2379,6 +2379,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "RolluxL2",
     url: "https://rollux.com/",
+    dimensions: {
+      fees: "rollux",
+    },
   },
   "Tenet": {
     geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
@@ -3369,6 +3372,9 @@ export const chainCoingeckoIds = {
     twitter: "fusionistio",
     chainId: 648,
     url: "https://ace.fusionist.io/",
+    dimensions: {
+      fees: "endurance",
+    },
   },
   "DFS Network": {
     geckoId: null,
@@ -4248,6 +4254,9 @@ export const chainCoingeckoIds = {
     url: "https://swanchain.io/",
     github: ["swanchain"],
     chainId: 254,
+    dimensions: {
+      fees: "swan",
+    },
   },
   "Superposition": {
     geckoId: null,
@@ -4606,6 +4615,9 @@ export const chainCoingeckoIds = {
     twitter: "perenniallabs",
     url: "https://perennial.finance/",
     chainId: 1424,
+    dimensions: {
+      fees: "perennial-chain",
+    },
   },
   "Peaq": {
     geckoId: "peaq-2",
@@ -4934,6 +4946,9 @@ export const chainCoingeckoIds = {
     twitter: "TacBuild",
     url: "https://tac.build/",
     chainId: 239,
+    dimensions: {
+      fees: "tac",
+    },
   },
   "Hydra Chain": {
     geckoId: null,
@@ -4977,6 +4992,9 @@ export const chainCoingeckoIds = {
     twitter: "BitciChain",
     url: "https://bitcichain.com/",
     chainId: 1907,
+    dimensions: {
+      fees: "bitcichain",
+    },
   },
   "ENI": {
     geckoId: null,

@@ -10570,6 +10570,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.valantis.xyz/resources/audits"],
     parentProtocol: "parent#valantis",
     listedAt: 1743672976,
+    dimensions: {
+      dexs: "valantis-stex"
+    }
   },
   {
     id: "5988",

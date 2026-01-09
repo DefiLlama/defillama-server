@@ -455,7 +455,77 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
-  return fileResponse(routeFile, res)
+  return successResponse(res, adjustDataProtocolFinancials(await readRouteData(routeFile)), 10); // cache 10 minutes
+}
+
+const timeframes = ['yearly', 'quarterly', 'monthly'];
+const dataKeys = {
+  df: 'GrossProtocolRevenue',
+  dssr: 'CostOfRevenue',
+  dr: 'GrossProfit',
+  dhr: 'TokenHolderNetIncome',
+}
+const methodologyKeys = {
+  Fees: 'GrossProtocolRevenue',
+  SupplySideRevenue: 'CostOfRevenue',
+  Revenue: 'GrossProfit',
+  HoldersRevenue: 'TokenHolderNetIncome',
+}
+
+function adjustDataProtocolFinancials(data: any): any {
+  const aggregates: any = data.aggregates;
+  const adjustedAggregates: any = {};
+  
+  if (aggregates) {
+    for (const timeframe of timeframes) {
+      if (aggregates[timeframe]) {
+        adjustedAggregates[timeframe] = adjustedAggregates[timeframe] || {}
+        
+        for (const [timeKey, value] of Object.entries(aggregates[timeframe])) {
+          adjustedAggregates[timeframe][timeKey] = adjustedAggregates[timeframe][timeKey] || {}
+          
+          for (const [dataKey, dataLabel] of Object.entries(dataKeys)) {
+            adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
+          }
+          
+          // add dbr to OthersProfit
+          if ((value as any).dbr) {
+            adjustedAggregates[timeframe][timeKey]['OthersProfit'] = {
+              value: (value as any).dbr.value,
+              'by-label': {
+                'Bribes Revenue': (value as any).dbr.value,
+              },
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // use adjusted aggregates data
+  data.aggregates = adjustedAggregates;
+  data.breakdownMethodology = adjustBreakdownMethodology(data.breakdownMethodology);
+  if (data.childProtocols) {
+    for (let i = 0; i < data.childProtocols.length; i++) {
+      data.childProtocols[i].breakdownMethodology = adjustBreakdownMethodology(data.childProtocols[i].breakdownMethodology);
+    }
+  }
+  
+  return data;
+}
+
+function adjustBreakdownMethodology(breakdownMethodology: any): any {
+  let adjustedBreakdownMethodology: any = {}
+  
+  if (breakdownMethodology) {
+    for (const [key, label] of Object.entries(methodologyKeys)) {
+      adjustedBreakdownMethodology[label] = breakdownMethodology[label] || breakdownMethodology[key];
+    }
+  } else {
+    adjustedBreakdownMethodology = breakdownMethodology;
+  }
+  
+  return adjustedBreakdownMethodology;
 }
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {

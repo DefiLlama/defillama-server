@@ -149,14 +149,16 @@ async function getTvl(
   if (chainDashPromise) await chainDashPromise;
 }
 
-function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsObject<TokensValueLocked>) {
+function mergeBalances(key: string, storedKeys: string[], balancesObject: tvlsObject<TokensValueLocked>, options: { replaceEmptyString?: boolean } = {}) {
   if (balancesObject[key] === undefined) {
     balancesObject[key] = {}
     storedKeys.map(keyToMerge => {
       Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
         let value: any = balance[1]
         if (typeof value === 'string' && value.includes('.')) value = +value
-        sdk.util.sumSingleBalance(balancesObject[key], balance[0], value);
+        let token = balance[0]
+        if (options.replaceEmptyString && token === '') token = '<empty>'
+        sdk.util.sumSingleBalance(balancesObject[key], token, value);
       });
     })
   }
@@ -326,8 +328,8 @@ export async function storeTvl(
     Object.entries(chainTvlsToAdd).map(([tvlType, storedKeys]) => {
       if (usdTvls[tvlType] === undefined) {
         usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
-        mergeBalances(tvlType, storedKeys, tokensBalances)
-        mergeBalances(tvlType, storedKeys, usdTokenBalances)
+        mergeBalances(tvlType, storedKeys, tokensBalances, { replaceEmptyString: true })
+        mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
         mergeBalances(tvlType, storedKeys, rawTokenBalances)
       }
     })

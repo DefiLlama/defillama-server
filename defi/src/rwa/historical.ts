@@ -52,7 +52,7 @@ export async function storeHistorical(res: any) {
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
     let aggregatedefiactivetvl: number = 0;
-    Object.keys(defiActiveTvl).map((chain: string) => {
+    Object.keys(defiActiveTvl ?? {}).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
       defiactivetvl[chainSlug] = {};
       Object.keys(defiActiveTvl[chain]).map((name: string) => {
@@ -65,7 +65,7 @@ export async function storeHistorical(res: any) {
     // use chain slugs for mcaps and aggregate 
     const mcap: { [chain: string]: string } = {};
     let aggregatemcap: number = 0;
-    Object.keys(onChainMarketcap).map((chain: string) => {
+    Object.keys(onChainMarketcap ?? {}).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
       mcap[chainSlug] = onChainMarketcap[chain];
       aggregatemcap += Number(onChainMarketcap[chain]);

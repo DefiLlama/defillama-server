@@ -8142,6 +8142,10 @@ const data5: Protocol[] = [
     twitter: "sodex_official",
     github: ["sosovalue-tech"],
     parentProtocol: "parent#sosovalue",
+    tokensExcludedFromParent: {
+      Base: ["SMAG7.SSI", "MAG7.SSI"],
+      Ethereum: ["SMAG7.SSI", "MAG7.SSI"],
+    },
     listedAt: 1767896991,
   },
 ];

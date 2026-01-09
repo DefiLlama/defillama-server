@@ -8001,7 +8001,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#theo",
     name: "Theo",
-    url: "https://app.theo.xyz/invite?invite=defillama",
+    url: "https://app.theo.xyz/invite?invite=defillama",  
     referralUrl: "https://app.theo.xyz/invite?invite=defillama",
     description: "Theo is a full-stack platform connecting onchain capital to global financial markets.",
     logo: `${baseIconsUrl}/theo.jpg`,
@@ -8659,7 +8659,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "infinex",
   },
-
+  {
+    id: "parent#ratex",
+    name: "RateX",
+    url: "https://app.rate-x.io/referral?ref=VS71Wksp",
+    referralUrl: "https://app.rate-x.io/referral?ref=VS71Wksp",
+    description: "World's 1st Leveraged Yield Exchange.",
+    logo: `${baseIconsUrl}/ratex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RateX_Dex",
+  },
 ];
 
 export default parentProtocols;

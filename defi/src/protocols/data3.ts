@@ -60790,14 +60790,14 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5265",
-    name: "RateX",
+    name: "RateX DEX",
     address: "solana:J1wnHdKvP34fg7TtYdX63UPJMTdXNzJGEqfNJB22vKjU",
     symbol: "RTX",
     url: "https://app.rate-x.io/referral?ref=VS71Wksp",
     referralUrl: "https://app.rate-x.io/referral?ref=VS71Wksp",
-    description: "World’s 1st Leveraged Yield Exchange",
+    description: "World's 1st Leveraged Yield Exchange",
     chain: "Solana",
-    logo: `${baseIconsUrl}/ratex.jpg`,
+    logo: `${baseIconsUrl}/ratex-dex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -60809,6 +60809,7 @@ const data3_3: Protocol[] = [
     twitter: "RateX_Dex",
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateX-Sep-2024-OffsideLabs.final.pdf"],
     listedAt: 1729682377,
+    parentProtocol: "parent#ratex",
     dimensions: {
       dexs: "rate-x",
       fees: "rate-x"

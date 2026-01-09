@@ -8118,6 +8118,7 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/RateX-Protocol/Audit-Report/blob/main/RateLabs-RateXMooncake-Oct-2025-OffsideLabs.pdf"],
     module: "mooncake/index.js",
     twitter: "mooncake_fi",
+    parentProtocol: "parent#ratex",
     listedAt: 1767885672,
   },
   {

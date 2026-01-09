@@ -10571,7 +10571,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#valantis",
     listedAt: 1743672976,
     dimensions: {
-      dexs: "valantis-stex"
+      dexs: "valantis-stex",
+      fees: "valantis-stex"
     }
   },
   {

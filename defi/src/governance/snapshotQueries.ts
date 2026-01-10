@@ -118,33 +118,38 @@ export const metadataQueryTally = `query Governers($input: GovernorInput!) {
   }
 }`
 
-export const proposalQueryTally = `query Proposals($ids: [Address!], $chain: ChainID!, $skip: Int, $limit: Int) {
+export const proposalQueryTally = `query Proposals($id: AccountID, $length: Int, $afterCursor: String) {
   proposals(
-    governors: $ids
-    sort: {field: END_BLOCK, order: DESC}
-    pagination: {limit: $limit, offset: $skip}
-    chainId: $chain
+    input: {
+      filters: {governorId: $id},
+    	page: {limit: $length, afterCursor: $afterCursor}
+    	sort: {sortBy: id, isDescending: true}
+    }
   ) {
+    nodes {
+      ...on Proposal {
     id
-    title
-    description
-    eta
+    metadata {
+      title
+    	description
+      eta
+    }
     block {
       id
       number
       timestamp
     }
-    governanceId
+    governor {
+      id
+    }
     voteStats {
-      support
-      weight
-      votes
+      type
+      votesCount
+      votersCount
       percent
     }
-    statusChanges {
+    events {
       type
-      blockNumber
-      blockTimestamp
       block {
         id
         number
@@ -152,5 +157,20 @@ export const proposalQueryTally = `query Proposals($ids: [Address!], $chain: Cha
       }
       txHash
     }
-  }
+    start {
+      ... on Block {
+        number
+      }
+    }
+    end {
+      ... on Block {
+        number
+      }
+    }
+      }
+    }
+    pageInfo {
+      lastCursor
+    }
+	}
 }`

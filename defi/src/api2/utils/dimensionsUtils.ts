@@ -244,7 +244,7 @@ export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
   }
 }
 
-export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRFecordsMessages: Array<any>) {
+export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRecordsMessages: Array<any>) {
   // because of number rounding, we mark it's safe within margin of 100
   const SAFE_NUMBER_MARGIN = 1000;
   
@@ -257,13 +257,15 @@ export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRFec
         if (df && dssr && dr) {
           // Fees = SupplySideRevenue + Revenue
           if (unsafeMargin(dssr + dr, df, SAFE_NUMBER_MARGIN)) {
-            invalidRFecordsMessages.push({
-              protocol: pSummary.info.name,
-              timeframe: timeframe,
-              key: key,
-              error: 'Sum of dssr and dr is not equal to df',
-              debug: `dssr: ${dssr}, dr: ${dr}, df: ${df}`,
-            })
+            if (!invalidRecordsMessages.find(i => i.protocol === pSummary.info.name)) {
+              invalidRecordsMessages.push({
+                protocol: pSummary.info.name,
+                timeframe: timeframe,
+                key: key,
+                error: 'Sum of dssr and dr is not equal to df',
+                debug: `dssr: ${dssr}, dr: ${dr}, df: ${df}`,
+              })
+            }
           }
         }
         
@@ -276,13 +278,15 @@ export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRFec
             }
             
             if (unsafeMargin(sumOfLabels, Number((value as any)[label].value), SAFE_NUMBER_MARGIN)) {
-              invalidRFecordsMessages.push({
-                protocol: pSummary.info.name,
-                timeframe: timeframe,
-                key: key,
-                error: `Sum of ${label} labels is not equal to total`,
-                debug: `sumOfLabels: ${sumOfLabels}, total: ${Number((value as any)[label].value)}`,
-              })
+              if (!invalidRecordsMessages.find(i => i.protocol === pSummary.info.name)) {
+                invalidRecordsMessages.push({
+                  protocol: pSummary.info.name,
+                  timeframe: timeframe,
+                  key: key,
+                  error: `Sum of ${label} labels is not equal to total`,
+                  debug: `sumOfLabels: ${sumOfLabels}, total: ${Number((value as any)[label].value)}`,
+                })
+              }
             }
           }
         }

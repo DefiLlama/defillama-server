@@ -78,13 +78,12 @@ async function run() {
         `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
-  
-  console.log(`Invalid financial statement records detected - Please fix them asap:
-${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key', 'error', 'debug'])}`)
-  
-  if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
+
+  if (process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK) {
     if (invalidFinancialStatementRecords.length) {
       await sendMessage(`Invalid financial statement records detected - Please fix them asap:
+
+
 ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key', 'error', 'debug'])}`,
         process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK!)
     }

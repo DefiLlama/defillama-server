@@ -460,18 +460,29 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
 
+const enum FinancialStatementRecords {
+  grossProtocolRevenue = "Gross Protocol Revenue",
+  costOfRevenue = "Cost Of Revenue",
+  grossProfit = "Gross Profit",
+  othersProfit = "Others Profit",
+  tokenHolderNetIncome = "Token Holder Net Income",
+}
+const enum FinancialStatementLabels {
+  bribesRevenue = "Bribes Revenue",
+}
 const timeframes = ['yearly', 'quarterly', 'monthly'];
 const dataKeys = {
-  df: 'GrossProtocolRevenue',
-  dssr: 'CostOfRevenue',
-  dr: 'GrossProfit',
-  dhr: 'TokenHolderNetIncome',
+  [AdaptorRecordType.dailyFees]: FinancialStatementRecords.grossProtocolRevenue,
+  [AdaptorRecordType.dailySupplySideRevenue]: FinancialStatementRecords.costOfRevenue,
+  [AdaptorRecordType.dailyRevenue]: FinancialStatementRecords.grossProfit,
+  [AdaptorRecordType.dailyHoldersRevenue]: FinancialStatementRecords.tokenHolderNetIncome,
 }
 const methodologyKeys = {
-  Fees: 'GrossProtocolRevenue',
-  SupplySideRevenue: 'CostOfRevenue',
-  Revenue: 'GrossProfit',
-  HoldersRevenue: 'TokenHolderNetIncome',
+  Fees: FinancialStatementRecords.grossProtocolRevenue,
+  SupplySideRevenue: FinancialStatementRecords.costOfRevenue,
+  Revenue: FinancialStatementRecords.grossProfit,
+  BribesRevenue: FinancialStatementRecords.othersProfit,
+  HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
 }
 
 function adjustDataProtocolFinancials(data: any): any {
@@ -490,12 +501,12 @@ function adjustDataProtocolFinancials(data: any): any {
             adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
           }
           
-          // add dbr to OthersProfit
-          if ((value as any).dbr) {
-            adjustedAggregates[timeframe][timeKey]['OthersProfit'] = {
-              value: (value as any).dbr.value,
+          // add dbr to Others Profit
+          if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersProfit] = {
+              value: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
               'by-label': {
-                'Bribes Revenue': (value as any).dbr.value,
+                [FinancialStatementLabels.bribesRevenue]: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
               },
             }
           }
@@ -506,28 +517,29 @@ function adjustDataProtocolFinancials(data: any): any {
   
   // use adjusted aggregates data
   data.aggregates = adjustedAggregates;
-  data.breakdownMethodology = adjustBreakdownMethodology(data.breakdownMethodology);
+  data.breakdownMethodology = adjustMethodology(data.breakdownMethodology);
   if (data.childProtocols) {
     for (let i = 0; i < data.childProtocols.length; i++) {
-      data.childProtocols[i].breakdownMethodology = adjustBreakdownMethodology(data.childProtocols[i].breakdownMethodology);
+      data.childProtocols[i].methodology = adjustMethodology(data.childProtocols[i].methodology);
+      data.childProtocols[i].breakdownMethodology = adjustMethodology(data.childProtocols[i].breakdownMethodology);
     }
   }
   
   return data;
 }
 
-function adjustBreakdownMethodology(breakdownMethodology: any): any {
-  let adjustedBreakdownMethodology: any = {}
+function adjustMethodology(methodology: any): any {
+  let adjustedMethodology: any = {}
   
-  if (breakdownMethodology) {
+  if (methodology) {
     for (const [key, label] of Object.entries(methodologyKeys)) {
-      adjustedBreakdownMethodology[label] = breakdownMethodology[label] || breakdownMethodology[key];
+      adjustedMethodology[label] = methodology[label] || methodology[key];
     }
   } else {
-    adjustedBreakdownMethodology = breakdownMethodology;
+    adjustedMethodology = methodology;
   }
   
-  return adjustedBreakdownMethodology;
+  return adjustedMethodology;
 }
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {

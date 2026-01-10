@@ -455,7 +455,91 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
-  return fileResponse(routeFile, res)
+  const data = await readRouteData(routeFile)
+  const adjustedData = adjustDataProtocolFinancials(data)
+  return successResponse(res, adjustedData, 10); // cache 10 minutes
+}
+
+const enum FinancialStatementRecords {
+  grossProtocolRevenue = "Gross Protocol Revenue",
+  costOfRevenue = "Cost Of Revenue",
+  grossProfit = "Gross Profit",
+  othersProfit = "Others Profit",
+  tokenHolderNetIncome = "Token Holder Net Income",
+}
+const enum FinancialStatementLabels {
+  bribesRevenue = "Bribes Revenue",
+}
+const timeframes = ['yearly', 'quarterly', 'monthly'];
+const dataKeys = {
+  [AdaptorRecordType.dailyFees]: FinancialStatementRecords.grossProtocolRevenue,
+  [AdaptorRecordType.dailySupplySideRevenue]: FinancialStatementRecords.costOfRevenue,
+  [AdaptorRecordType.dailyRevenue]: FinancialStatementRecords.grossProfit,
+  [AdaptorRecordType.dailyHoldersRevenue]: FinancialStatementRecords.tokenHolderNetIncome,
+}
+const methodologyKeys = {
+  Fees: FinancialStatementRecords.grossProtocolRevenue,
+  SupplySideRevenue: FinancialStatementRecords.costOfRevenue,
+  Revenue: FinancialStatementRecords.grossProfit,
+  BribesRevenue: FinancialStatementRecords.othersProfit,
+  HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
+}
+
+function adjustDataProtocolFinancials(data: any): any {
+  const aggregates: any = data.aggregates;
+  const adjustedAggregates: any = {};
+  
+  if (aggregates) {
+    for (const timeframe of timeframes) {
+      if (aggregates[timeframe]) {
+        adjustedAggregates[timeframe] = adjustedAggregates[timeframe] || {}
+        
+        for (const [timeKey, value] of Object.entries(aggregates[timeframe])) {
+          adjustedAggregates[timeframe][timeKey] = adjustedAggregates[timeframe][timeKey] || {}
+          
+          for (const [dataKey, dataLabel] of Object.entries(dataKeys)) {
+            adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
+          }
+          
+          // add dbr to Others Profit
+          if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersProfit] = {
+              value: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
+              'by-label': {
+                [FinancialStatementLabels.bribesRevenue]: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
+              },
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // use adjusted aggregates data
+  data.aggregates = adjustedAggregates;
+  data.breakdownMethodology = adjustMethodology(data.breakdownMethodology);
+  if (data.childProtocols) {
+    for (let i = 0; i < data.childProtocols.length; i++) {
+      data.childProtocols[i].methodology = adjustMethodology(data.childProtocols[i].methodology);
+      data.childProtocols[i].breakdownMethodology = adjustMethodology(data.childProtocols[i].breakdownMethodology);
+    }
+  }
+  
+  return data;
+}
+
+function adjustMethodology(methodology: any): any {
+  let adjustedMethodology: any = {}
+  
+  if (methodology) {
+    for (const [key, label] of Object.entries(methodologyKeys)) {
+      adjustedMethodology[label] = methodology[label] || methodology[key];
+    }
+  } else {
+    adjustedMethodology = methodology;
+  }
+  
+  return adjustedMethodology;
 }
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {

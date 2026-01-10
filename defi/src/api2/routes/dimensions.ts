@@ -466,6 +466,7 @@ const enum FinancialStatementRecords {
   grossProfit = "Gross Profit",
   othersProfit = "Others Profit",
   tokenHolderNetIncome = "Token Holder Net Income",
+  othersTokenHolderFlows = "Others Token Holder Flows",
 }
 const enum FinancialStatementLabels {
   bribesRevenue = "Bribes Revenue",
@@ -503,7 +504,7 @@ function adjustDataProtocolFinancials(data: any): any {
           
           // add dbr to Others Profit
           if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
-            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersProfit] = {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersTokenHolderFlows] = {
               value: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
               'by-label': {
                 [FinancialStatementLabels.bribesRevenue]: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,

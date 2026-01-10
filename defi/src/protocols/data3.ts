@@ -58119,7 +58119,7 @@ const data3_3: Protocol[] = [
     name: "Pear Perps",
     address: "arbitrum:0x3212dc0f8c834e4de893532d27cc9b6001684db0",
     symbol: "PEAR",
-    url: "https://pear.garden/",
+    url: "https://www.pear.garden/",
     description:
       "Pear Protocol is a decentralized trading platform that streamlines pair-trading of cryptocurrencies by enabling simultaneous leveraged long and short positions in a single on-chain transaction, integrating with multiple trading engines (e.g., GMX, Vertex, SYMM) to provide liquidity-agnostic trading",
     chain: "Arbitrum",

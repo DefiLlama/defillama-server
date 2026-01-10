@@ -4592,7 +4592,7 @@ const data5: Protocol[] = [
     name: "Pear Interface",
     address: "arbitrum:0x3212dc0f8c834e4de893532d27cc9b6001684db0",
     symbol: "PEAR",
-    url: "https://pear.garden/",
+    url: "https://www.pear.garden/",
     description: "Pear protocol provides an interface for trading perps on Hyperliquid L1.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/pear-interface.jpg`,

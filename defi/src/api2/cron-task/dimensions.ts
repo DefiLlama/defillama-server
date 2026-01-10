@@ -7,10 +7,10 @@ import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { getDisplayChainNameCached, } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
-import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, } from "../utils/dimensionsUtils";
+import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, validateAggregateRecords, } from "../utils/dimensionsUtils";
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
-import { runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
+import { runWithRuntimeLogging, cronNotifyOnDiscord, tableToString } from "../utils";
 import * as sdk from '@defillama/sdk'
 
 import { generateDimensionsResponseFiles } from "../routes/dimensions"
@@ -78,7 +78,18 @@ async function run() {
         `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
-
+  
+  console.log(`Invalid financial statement records detected - Please fix them asap:
+${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key', 'error', 'debug'])}`)
+  
+  if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
+    if (invalidFinancialStatementRecords.length) {
+      await sendMessage(`Invalid financial statement records detected - Please fix them asap:
+${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key', 'error', 'debug'])}`,
+        process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK!)
+    }
+  }
+  
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
 
@@ -289,6 +300,9 @@ async function run() {
 
       // compute & add monthly/quarterly/annual aggregate records
       addAggregateRecords(protocol)
+      
+      // validate and detect invalid financial statement records
+      validateAggregateRecords(protocol, invalidFinancialStatementRecords)
 
 
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ records, info: protocol.info, adapterType, metadata: dimensionProtocolInfo }) as any
@@ -726,6 +740,7 @@ runWithRuntimeLogging(run, {
 
 const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
+const invalidFinancialStatementRecords = [] as any[]
 
 const NOTIFY_ON_DISCORD = cronNotifyOnDiscord()
 

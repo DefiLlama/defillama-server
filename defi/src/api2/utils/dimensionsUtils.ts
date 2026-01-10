@@ -243,3 +243,54 @@ export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
     }) as any)
   }
 }
+
+export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRFecordsMessages: Array<any>) {
+  // because of number rounding, we mark it's safe within margin of 100
+  const SAFE_NUMBER_MARGIN = 1000;
+  
+  if (pSummary.aggregatedRecords) {
+    for (const timeframe of ['yearly', 'quarterly', 'monthly']) {
+      for (const [key, value] of Object.entries((pSummary.aggregatedRecords as any)[timeframe])) {
+        const df = (value as any)[AdaptorRecordType.dailyFees]?.value || 0
+        const dr = (value as any)[AdaptorRecordType.dailyRevenue]?.value || 0
+        const dssr = (value as any)[AdaptorRecordType.dailySupplySideRevenue]?.value || 0
+        if (df && dssr && dr) {
+          // Fees = SupplySideRevenue + Revenue
+          if (unsafeMargin(dssr + dr, df, SAFE_NUMBER_MARGIN)) {
+            invalidRFecordsMessages.push({
+              protocol: pSummary.info.name,
+              timeframe: timeframe,
+              key: key,
+              error: 'Sum of dssr and dr is not equal to df',
+              debug: `dssr: ${dssr}, dr: ${dr}, df: ${df}`,
+            })
+          }
+        }
+        
+        // sum of breakdown labels should be equal to total
+        for (const label of [AdaptorRecordType.dailyFees, AdaptorRecordType.dailySupplySideRevenue, AdaptorRecordType.dailyRevenue]) {
+          if ((value as any)[label] && (value as any)[label]['by-label']) {
+            let sumOfLabels = 0
+            for (const labelValue of Object.values((value as any)[label]['by-label'])) {
+              sumOfLabels += Number(labelValue);
+            }
+            
+            if (unsafeMargin(sumOfLabels, Number((value as any)[label].value), SAFE_NUMBER_MARGIN)) {
+              invalidRFecordsMessages.push({
+                protocol: pSummary.info.name,
+                timeframe: timeframe,
+                key: key,
+                error: `Sum of ${label} labels is not equal to total`,
+                debug: `sumOfLabels: ${sumOfLabels}, total: ${Number((value as any)[label].value)}`,
+              })
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  function unsafeMargin(valueA: number, valueB: number, valueMargin: number) {
+    return (valueA > valueB + valueMargin) || (valueA < valueB - valueMargin);
+  }
+}

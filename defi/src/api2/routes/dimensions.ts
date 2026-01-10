@@ -464,7 +464,7 @@ const enum FinancialStatementRecords {
   grossProtocolRevenue = "Gross Protocol Revenue",
   costOfRevenue = "Cost Of Revenue",
   grossProfit = "Gross Profit",
-  othersProfit = "Others Profit",
+  // othersProfit = "Others Profit",
   tokenHolderNetIncome = "Token Holder Net Income",
   othersTokenHolderFlows = "Others Token Holder Flows",
 }
@@ -482,7 +482,7 @@ const methodologyKeys = {
   Fees: FinancialStatementRecords.grossProtocolRevenue,
   SupplySideRevenue: FinancialStatementRecords.costOfRevenue,
   Revenue: FinancialStatementRecords.grossProfit,
-  BribesRevenue: FinancialStatementRecords.othersProfit,
+  BribesRevenue: FinancialStatementRecords.othersTokenHolderFlows,
   HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
 }
 

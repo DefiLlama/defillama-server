@@ -8212,5 +8212,30 @@ const data5: Protocol[] = [
       dexs: "barterswap",
     },
   },
+  {
+    id: "7231",
+    name: "RHEA Cross Chain",
+    address: null,
+    symbol: "-",
+    url: "https://www.rhea.finance/",
+    description: "cross chain bridge for the Rhea Finance ecosystem.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/rhea-dex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain Bridge",
+    chains: ["Near"],
+    module: "",
+    twitter: "rhea_finance",
+    forkedFromIds: [],
+    audit_links: ["https://guide.rhea.finance/developers/audits"],
+    parentProtocol: "parent#rhea-finance",
+    listedAt: 1768106993,
+    dimensions: {
+      fees: "rhea-cross-chain"
+    }
+  },
 ];
 export default data5;

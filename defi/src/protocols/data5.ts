@@ -2311,6 +2311,9 @@ const data5: Protocol[] = [
     audit_links: ["https://guide.rhea.finance/developers/audits"],
     parentProtocol: "parent#rhea-finance",
     listedAt: 1762925473,
+    dimensions: {
+      fees: "rhea-lst"
+    }
   },
   {
     id: "6986",

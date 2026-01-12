@@ -406,14 +406,14 @@ functions:
       - schedule: cron(30 0,12 * * ? *)
     environment:
       tableName: prod-coins-table
-  hourly:
-    handler: src/getHourlyData.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: hourly/{protocol}
-          method: get
+  # hourly:
+  #   handler: src/getHourlyData.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: hourly/{protocol}
+  #         method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:

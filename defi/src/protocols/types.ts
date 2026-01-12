@@ -70,6 +70,14 @@ export interface ProtocolResource {
 // Existing types
 // --------------------
 
+export interface TokenRights {
+  rights?: TokenRight[];
+  governanceData?: GovernanceData;
+  holdersRevenueAndValueAccrual?: HoldersRevenueAndValueAccrual;
+  tokenAlignment?: TokenAlignment;
+  resources?: ProtocolResource[];
+}
+
 export interface Protocol {
   id: string;
   name: string;
@@ -141,13 +149,7 @@ export interface Protocol {
   doublecounted?: boolean;
   methodology?: string;
   dimensions?: DimensionsConfig;
-
-  //  NEW FIELDS
-  tokenRights?: TokenRight[];
-  governanceData?: GovernanceData;
-  holdersRevenueAndValueAccrual?: HoldersRevenueAndValueAccrual;
-  tokenAlignment?: TokenAlignment;
-  resources?: ProtocolResource[];
+  tokenRights?: TokenRights;
 }
 
 export interface Banner {
@@ -182,11 +184,5 @@ export interface IParentProtocol {
   rugged?: boolean;
   deadUrl?: boolean;
   deprecated?: boolean;
-
-  // nEW FIELDS
-  tokenRights?: TokenRight[];
-  governanceData?: GovernanceData;
-  holdersRevenueAndValueAccrual?: HoldersRevenueAndValueAccrual;
-  tokenAlignment?: TokenAlignment;
-  resources?: ProtocolResource[];
+  tokenRights?: TokenRights;
 }

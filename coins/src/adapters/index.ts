@@ -184,4 +184,5 @@ export default {
   townsquare: require("./townsquare"),
   notional: require("./yield/notional"),
   shift: require("./yield/shift"),
+  syzusd: require("./other/syzusd").default,
 };

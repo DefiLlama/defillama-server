@@ -8671,6 +8671,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RateX_Dex",
   },
+  {
+    id: "parent#snap",
+    name: "Snap",
+    url: "https://www.snap.club/",
+    description: "Snap is a decentralized exchange on TAC.",
+    logo: `${baseIconsUrl}/snap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SNAP_DEX",
+  },
 ];
 
 export default parentProtocols;

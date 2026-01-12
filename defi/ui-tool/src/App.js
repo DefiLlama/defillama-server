@@ -356,6 +356,7 @@ const App = () => {
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
           delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
+          skipHourlyCache: values.skipHourlyCache || false,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -386,6 +387,7 @@ const App = () => {
           dryRun: false,
           delayBetweenRuns: 0,
           delayEnabled: false,
+          skipHourlyCache: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -472,6 +474,15 @@ const App = () => {
           style={{ display: Form.useWatch('delayEnabled', dimensionRefillForm) ? 'block' : 'none' }}
         >
           <InputNumber min={0} max={1000} />
+        </Form.Item>
+
+        <Form.Item
+          label="Skip Hourly Cache"
+          name="skipHourlyCache"
+          valuePropName="checked"
+          help="If enabled, hourly slices will be refetched instead of using cache"
+        >
+          <Switch checkedChildren="Yes" unCheckedChildren="No" />
         </Form.Item>
 
         <Form.Item>

@@ -26322,6 +26322,7 @@ const data4: Protocol[] = [
     twitter: "the_goblin_fi",
     audit_links: ["https://docs.goblin.fi/security/audit"],
     listedAt: 1756149467,
+    parentProtocol: "parent#goblin-protocols",
   },
   {
     id: "6629",

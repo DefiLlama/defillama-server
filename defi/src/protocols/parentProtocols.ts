@@ -8671,6 +8671,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RateX_Dex",
   },
+  {
+    id: "parent#goblin-protocols",
+    name: "Goblin protocols",
+    url: "https://goblin.fi/",
+    description:
+      "Goblin is the native yield layer for Aptos Defi",
+    logo: `${baseIconsUrl}/goblin.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "the_goblin_fi",
+  },
 ];
 
 export default parentProtocols;

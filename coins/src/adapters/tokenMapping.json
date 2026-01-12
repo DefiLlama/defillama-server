@@ -7184,7 +7184,7 @@
   },
   "sei": {
     "0xf7fa6725183e603059fc23d95735bf67f72b2d78": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "ACRED",
       "to": "coingecko#apollo-diversified-credit-securitize-fund"
     },

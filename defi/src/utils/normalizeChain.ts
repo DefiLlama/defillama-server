@@ -3631,6 +3631,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "noble_xyz",
     url: "https://x.com/noble_xyz",
+    dimensions: {
+      fees: "noble",
+    },
   },
   "Aeternity": {
     geckoId: "aeternity",

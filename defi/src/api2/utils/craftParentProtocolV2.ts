@@ -1,11 +1,10 @@
 import type { IParentProtocol } from "../../protocols/types";
 import { errorResponse } from "../../utils/shared";
-import { IProtocol, IProtocolResponse, IRaise, } from "../../types";
+import { IProtocol, IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
-import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache/index";
+import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, getRaises, } from "../cache/index";
 import { cachedCraftProtocolV2 } from './craftProtocolV2'
 import * as sdk from '@defillama/sdk'
-import { getRaises } from "../../utils/craftProtocol";
 
 type CraftParentProtocolV2Options = {
   parentProtocol: IParentProtocol;
@@ -61,16 +60,13 @@ export async function craftParentProtocolV2({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     tvl.length < 2 || tvl[1]?.date - tvl[0]?.date < 86400 ? true : false;
 
-  const { raises } = await getRaises()
-
   const res = await craftParentProtocolInternal({
     parentProtocol,
     childProtocolsTvls,
     skipAggregatedTvl,
     isHourlyTvl,
     fetchMcap: getCachedMCap,
-    parentRaises:
-      raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === parentProtocol.id.toString()) ?? [],
+    parentRaises: getRaises(parentProtocol.id) ?? [],
     feMini,
   })
 

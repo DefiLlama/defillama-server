@@ -8682,6 +8682,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SNAP_DEX",
   },
+  {
+    id: "parent#dflow",
+    name: "DFlow",
+    url: "https://dflow.net/",
+    description: "DFlow is a high-precision, low-latency Solana DEX aggregator.",
+    logo: `${baseIconsUrl}/dflow.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dflow",
+  },
 ];
 
 export default parentProtocols;

@@ -21,7 +21,7 @@ const keyMap: { [value: string]: string } = {
   excluded: "*",
   assetName: "Name",
   id: "*RWA ID",
-  projectId: "projectID",
+  projectId: "*projectID",
 };
 
 // Sort tokens by chain and map token to project for fetching supplies, tvls etc
@@ -31,7 +31,7 @@ function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
 
   Object.keys(tokens).map((protocol: string) => {
     tokens[protocol].map((pk: any) => {
-      if (pk == false) return;
+      if (pk == false || pk == null) return;
       const chain = pk.substring(0, pk.indexOf(":"));
 
       if (!tokensSortedByChain[chain]) tokensSortedByChain[chain] = [];
@@ -174,7 +174,8 @@ function getActiveTvls(
   tokenToProjectMap: any,
   finalData: any,
   protocolIdMap: any,
-  aggregateRawTvls: any
+  aggregateRawTvls: any, 
+  projectIdsMap: {[rwaId: string]: string }
 ) {
   Object.keys(aggregateRawTvls).map((pk: string) => {
     if (!assetPrices[pk]) {
@@ -191,8 +192,9 @@ function getActiveTvls(
 
       if (aum.isLessThan(10)) return;
       const rwaId = tokenToProjectMap[pk];
+      const projectId = projectIdsMap[rwaId];
 
-      if (amountId == rwaId) return;
+      if (amountId == projectId) return;
 
       try {
         const projectName = protocolIdMap[amountId];
@@ -257,7 +259,7 @@ async function main(ts: number = 0) {
   const parsedCsvData = getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
-  const ids: string[] = [];
+  const projectIdsMap: {[rwaId: string]: string } = {}
 
   // clean CSV data 
   parsedCsvData.map((row: any) => {
@@ -268,7 +270,7 @@ async function main(ts: number = 0) {
     Object.keys(row).map((key: string) => {
       const camelKey = toCamelCase(key);
       if (!key) return;
-      if (key == keyMap.projectId && row[key].length > 0) ids.push(row.projectID);
+      if (key == keyMap.projectId && row[key].length > 0) projectIdsMap[i] = row[key]
 
       // exclude columns for internal use  
       else if (key.startsWith(keyMap.excluded)) return;
@@ -329,7 +331,7 @@ async function main(ts: number = 0) {
   });
 
   // calculate defi active tvls and on chain mcaps 
-  getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls);
+  getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls, projectIdsMap);
   getOnChainTvls(assetPrices, tokenToProjectMap, finalData, parsedCsvData, stablecoinsData, totalSupplies);
 
   // for read API usage

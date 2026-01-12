@@ -13,7 +13,7 @@ const listColumns = [
 ];
 
 function parseCsv(): any {
-    const csvPath = path.join(__dirname, "./9Jan.csv");
+    const csvPath = path.join(__dirname, "./12Jan.csv");
     const csv = fs.readFileSync(csvPath, "utf8");
     const rows: any[] = parse(csv, {
         columns: true,  // return objects with headers as keys
@@ -30,7 +30,9 @@ export function getCsvData() {
 
     const parsedCsvData = rawCsvData.map((row: any) => {
         Object.keys(row).forEach((key: string) => {
-            if (row[key] == '✓') {
+            if (row[key] == '-' || row[key] == '') {
+                row[key] = null;
+            } else if (row[key] == '✓') {
                 row[key] = true;
             } else if (row[key] == 'x') {
                 row[key] = false;

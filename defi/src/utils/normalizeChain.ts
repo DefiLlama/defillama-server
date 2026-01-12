@@ -2060,6 +2060,9 @@ export const chainCoingeckoIds = {
     cmcId: "13916",
     categories: ["EVM"],
     github: ["OMAX-Development"],
+    dimensions: {
+      fees: "omax",
+    },
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
@@ -2175,6 +2178,9 @@ export const chainCoingeckoIds = {
     symbol: "LOOP",
     cmcId: "18761",
     categories: ["EVM"],
+    dimensions: {
+      fees: "loop",
+    },
   },
   "Bone": {
     geckoId: null,
@@ -3087,6 +3093,9 @@ export const chainCoingeckoIds = {
     twitter: "QBlockchain",
     url: "https://q.org/",
     chainId: 35441,
+    dimensions: {
+      fees: "q-protocol",
+    },
   },
   "zkLink Nova": {
     geckoId: "zklink",
@@ -4007,6 +4016,9 @@ export const chainCoingeckoIds = {
     url: "https://www.vinuchain.org/",
     github: ["vinuchain"],
     chainId: 207,
+    dimensions: {
+      fees: "vinu",
+    },
   },
   "Sonic": {
     geckoId: "sonic-3",
@@ -4380,6 +4392,9 @@ export const chainCoingeckoIds = {
     url: "https://www.stratisplatform.com/",
     github: ["stratisproject"],
     chainId: 105105,
+    dimensions: {
+      fees: "stratis",
+    },
   },
   "Silicon zkEVM": {
     geckoId: null,

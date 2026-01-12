@@ -7828,6 +7828,7 @@ const data5: Protocol[] = [
     twitter: "o1_exchange",
     dimensions: {
       fees: "o1-exchange",
+      dexs: "o1-exchange",
     },
   },
   {
@@ -8104,6 +8105,9 @@ const data5: Protocol[] = [
     twitter: "Chopcorpsol",
     github: ["chopcorpio"],
     listedAt: 1767885661,
+    dimensions: {
+      fees: "chopcorp",
+    },
   },
   {
     id: "7227",

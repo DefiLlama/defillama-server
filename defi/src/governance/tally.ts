@@ -98,18 +98,19 @@ export async function getProposals(ids: string[], chain: string, recent?: boolea
   const ONE_WEEK = 7 * 24 * 3600 * 1000
   const cutOfTime = +Date.now() - 12 * ONE_WEEK * 3
   const allProposals: Proposal[] = []
-  let cursor = ""
   for (let i = 0; i < ids.length; i++) {
+    let fetchAgain = true
     const variables: any = { id: `${chain}:${ids[i]}`, length: 20}
-    const {proposals, lastCursor} = await fetchProposals(variables)
-    allProposals.push(...proposals)
-    cursor = lastCursor
-    while (cursor !== "") {
-      variables.afterCursor = cursor
-      console.log('Fetching more recent Tallys', variables)
-      const { proposals: moreProposals, lastCursor: newCursor } = await fetchProposals(variables)
-      allProposals.push(...moreProposals)
-      cursor = newCursor
+    while (fetchAgain) {
+      console.log('fetching', variables.id, 'cursor', variables.afterCursor)
+      const {proposals, lastCursor} = await fetchProposals(variables)
+      allProposals.push(...proposals)
+      if (lastCursor === "") fetchAgain = false
+      variables.afterCursor = lastCursor
+      if (recent) {
+        const lastProposal = proposals[proposals.length - 1]
+        if (+new Date(lastProposal?.start.timestamp) <= cutOfTime) fetchAgain = false
+      }
       await sleep(3000)
     }
   }
@@ -123,9 +124,9 @@ export async function updateTallys() {
   const idChunks = sliceIntoChunks(idsAll, 5)
   for (const ids of idChunks) {
     const metadataAll = await getMetadata(ids)
-    console.log('fetched metadata for', ids.length, 'governances', metadataAll)
     const fetchedIds: any[] = metadataAll.map((metadata: GovCache['metadata']) => metadata.id)
-    const caches: GovCache[] = await Promise.all(ids.map(getTally))
+    const caches: GovCache[] = await Promise.all(fetchedIds.map(getTally))
+    console.log('fetched metadata for', fetchedIds.length, 'governances',metadataAll)
     const idMap: { [key: string]: GovCache } = {}
     fetchedIds.forEach((id, i) => idMap[id] = caches[i])
     const firstFetchIds: string[] = []
@@ -161,7 +162,7 @@ export async function updateTallys() {
       recentProposals.push(...proposals)
     }
     recentProposals.forEach((i: any) => {
-      updateProposal(i, idMap[i.governanceId])
+      updateProposal(i, idMap[i.governor.id])
     })
     Object.entries(idMap).map(([id, cache]) => updateStats(cache, overview, id))
     await Promise.all(Object.values(idMap).map(cache => setTally(cache.id, cache)))
@@ -189,11 +190,9 @@ function chainAndAddrFromId(id: string) {
 
 async function updateProposal(data: any, cache: any) {
   let {
-    // start,
-    // end,
+    start: startBlock,
+    end: endBlock,
     voteStats,
-    start,
-    end,
     events,
     metadata,
     governor,
@@ -207,8 +206,10 @@ async function updateProposal(data: any, cache: any) {
   //   if (!endBlock) endBlock = end.number
   //   end = Math.floor(+new Date(end.timestamp) / 1e3)
   // }
+  delete data.start
+  delete data.end
   events.sort((a: any, b: any) => +new Date(a.block?.timestamp) - +new Date(b.block?.timestamp))
-  const lastStatus = events.pop()
+  const lastStatus = events.pop() ?? {}
   const canceled = lastStatus.type === 'CANCELED'
   const executed = lastStatus.type === 'EXECUTED'
   const state = capitalizeFirstLetter(lastStatus.type)
@@ -216,7 +217,8 @@ async function updateProposal(data: any, cache: any) {
 
   function getVote(vType: any) {
     const voteObj = voteStats.find((i: any) => i.type === vType)
-    return Number(voteObj.votesCount) / (10 ** tokenDecimals)
+    if (voteObj?.votesCount) return Number(voteObj.votesCount) / (10 ** tokenDecimals)
+    return 0
   }
 
   const scores = [getVote('for'), getVote('against'), getVote('abstain'),]
@@ -224,8 +226,8 @@ async function updateProposal(data: any, cache: any) {
 
   let proposal = {
     ...data,
-    start: start.number, 
-    end: end.number,
+    startBlock: startBlock.number, 
+    endBlock: endBlock.number,
     canceled, executed,
     state, scores, scores_total,
     eta: metadata.eta,

@@ -160,6 +160,7 @@ export const proposalQueryTally = `query Proposals($id: AccountID, $length: Int,
     start {
       ... on Block {
         number
+        timestamp
       }
     }
     end {

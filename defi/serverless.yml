@@ -251,14 +251,6 @@ functions:
       - http:
           path: contractName2/{chain}/{contract}
           method: get
-  # protocol:  # moved to api2
-  #   handler: src/getProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: protocol/{protocol}
-  #         method: get
   tokenProtocols:
     handler: src/getTokenInProtocols.default
     timeout: 30
@@ -267,38 +259,6 @@ functions:
       - http:
           path: tokenProtocols/{symbol}
           method: get
-  # treasury:  # moved to api2
-  #   handler: src/getTreasury.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: treasury/{protocol}
-  #         method: get
-  # updatedProtocol:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocol/{protocol}
-  #         method: get
-  # updatedProtocolDraft:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocolDraft/{protocol}
-  #         method: get
-  # debugProtocol:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: debugProtocol/{protocol}
-  #         method: get
   # protocolTvl:  # moved to api2
   #   handler: src/getProtocolTvl.default
   #   events:

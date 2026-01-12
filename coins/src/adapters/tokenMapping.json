@@ -13645,6 +13645,43 @@
       "symbol": "CROSS"
     }
   },
+  "althea": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#althea",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x80b5a32e4f032b2a058b4f29ec95eefeeb87adcd": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xeceeeefcee421d8062ef8d6b4d814efe4dc898265": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xd567b3d7b8fe3c79a1ad8da978812cfc4fa05e75": {
+      "to": "coingecko#usds",
+      "decimals": 18,
+      "symbol": "USDS"
+    },
+    "0x5fd55a1b9fc24967c4db09c513c3ba0dfa7ff687": {
+      "to": "coingecko#susds",
+      "decimals": 18,
+      "symbol": "SUSDS"
+    },
+    "0x1d54ecb8583ca25895c512a8308389ffd581f9c9": {
+      "to": "coingecko#graviton",
+      "decimals": 6,
+      "symbol": "GRAV"
+    },
+    "0xc03345448969dd8c00e9e4a85d2d9722d093af8e": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    }
+  },
   "megaeth": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",

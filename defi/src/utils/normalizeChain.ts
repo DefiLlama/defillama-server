@@ -5604,6 +5604,15 @@ export const chainCoingeckoIds = {
     twitter: "StandX_Official",
     url: "https://standx.com/",
   },
+  "Althea": {
+    geckoId: "althea",
+    symbol: "ALTHEA",
+    cmcId: null,
+    categories: ["Cosmos", "EVM"],
+    twitter: "AltheaNetwork",
+    url: "https://www.althea.net/",
+    chainId: 258432,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

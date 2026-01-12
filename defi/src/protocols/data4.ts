@@ -20182,6 +20182,9 @@ const data4: Protocol[] = [
         proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
     ],
+    dimensions: {
+      fees: "etherfi-cash-cards",
+    },
   },
   {
     id: "6374",

@@ -1,18 +1,19 @@
-import { AdapterType, SimpleAdapter } from "../../data/types"
-import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
+import * as sdk from '@defillama/sdk';
 import { elastic } from '@defillama/sdk';
 import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { Chain, providers } from "@defillama/sdk/build/general";
 import { PromisePool } from '@supercharge/promise-pool';
+import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
-import loadAdaptorsData from "../../data";
-import { IJSON, ProtocolAdaptor } from "../../data/types";
-import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
-import { getAllItemsAfter, storeAdapterRecord, getHourlySlicesForProtocol, upsertHourlySlicesForProtocol } from "../../db-utils/db2";
-import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
-import * as sdk from '@defillama/sdk'
+import loadAdaptorsData from "../../data";
+import { AdapterType, IJSON, ProtocolAdaptor, SimpleAdapter } from "../../data/types";
+import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
+import { getAllItemsAfter, getHourlySlicesForProtocol, getHourlyTimeS, storeAdapterRecord, upsertHourlySlicesForProtocol } from "../../db-utils/db2";
+import { isLocalStoreEnabled } from "../../db-utils/localStore";
+import { sendDiscordAlert } from "../../utils/notify";
+import { aggregateDailyFromHourlySlices, buildHourlyCache, buildTokenBreakdownsByLabel, getCachedSlices, HourlySlice } from "./hourly";
 
 const recentDataByAdapterType: { [adapterType: string]: any } = {}
 
@@ -84,14 +85,12 @@ export const handler2 = async (options: DimensionRunOptions) => {
     skipHourlyCache = false,
   } = options
 
-  const localStoreEnabled = process.env.DIM_LOCAL_STORE === 'true'
-
   if (!isRunFromRefillScript)
     console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
 
   let recentData: any = {}
 
-  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday') && !localStoreEnabled
+  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday') && !isLocalStoreEnabled()
 
   if (checkAgainstRecentData)
     recentData = await getRecentData(adapterType)
@@ -126,6 +125,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
   if (!toTimestamp!) throw new Error('toTimestamp is not set')
 
   const _debugTimeStart = Date.now()
+
+  const shouldBuildHourlyCache = runType === 'store-all' && !skipHourlyCache
+  let hourlyCacheData: { cache: Map<string, Map<number, HourlySlice>>, range: { from: number, to: number } } | undefined
+  if (shouldBuildHourlyCache) {
+    const cacheTo = timestampAtStartofHour
+    const cacheFrom = cacheTo - 50 * ONE_HOUR_IN_SECONDS
+    hourlyCacheData = await buildHourlyCache({ adapterType, fromTimestamp: cacheFrom, toTimestamp: cacheTo })
+  }
 
   // Import data list to be used
   const dataModule = loadAdaptorsData(adapterType)
@@ -355,7 +362,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           recordTimestamp = timestampAtStartofHour
           endTimestamp = timestampAtStartofHour
 
-          const skipRefillYesterday = localStoreEnabled || process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
+          const skipRefillYesterday = process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
 
           // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
           if (!runAtCurrTime && !haveYesterdayData) {
@@ -409,6 +416,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       let tbl: any
       let tblc: any
       let hourlySlicesForDebug: any[] | undefined
+      let hourlyStoreFn: (() => Promise<void>) | undefined
 
       if (isHourlyAdapter && runType === 'store-all' && !isRunFromRefillScript) {
         const anchorTs = endTimestamp       // anchor
@@ -416,14 +424,25 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
         let existingSlices: any[] = []
         if (!skipHourlyCache) {
+          const cached = getCachedSlices({
+            cache: hourlyCacheData?.cache,
+            cacheRange: hourlyCacheData?.range,
+            id: id2,
+            fromTimestamp: fromTs,
+            toTimestamp: anchorTs,
+          })
+          if (cached) existingSlices = cached
+        } else {
+          console.log(`[hourly] skipHourlyCache=true for ${adapterType} - ${module}, ignoring existing slices`)
+        }
+
+        if (!existingSlices.length) {
           existingSlices = await getHourlySlicesForProtocol({
             adapterType,
             id: id2,
             fromTimestamp: fromTs,
             toTimestamp: anchorTs,
           })
-        } else {
-          console.log(`[hourly] skipHourlyCache=true for ${adapterType} - ${module}, ignoring existing slices`)
         }
 
         const existingByTs = new Map<number, any>()
@@ -443,16 +462,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           if (!existingByTs.has(ts)) slicesToFetch.push(ts)
         }
 
-        const newSlices: {
-          timestamp: number
-          data: any
-          bl?: any
-          blc?: any
-          timeS?: string
-          tb?: any
-          tbl?: any
-          tblc?: any
-        }[] = []
+        const newSlices: HourlySlice[] = []
 
         if (slicesToFetch.length) {
           const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
@@ -498,16 +508,23 @@ export const handler2 = async (options: DimensionRunOptions) => {
               tb: sliceTb,
               tbl: sliceTbl ?? null,
               tblc: sliceTblc ?? null,
+              timeS: getHourlyTimeS(ts),
             })
           }
 
           if (newSlices.length) {
-            if (!isDryRun || localStoreEnabled) {
+            const storeHourlySlices = async () => {
               await upsertHourlySlicesForProtocol({
                 adapterType,
                 id: id2,
                 slices: newSlices,
               })
+            }
+
+            if (!isDryRun && !checkBeforeInsert) {
+              await storeHourlySlices()
+            } else if (checkBeforeInsert) {
+              hourlyStoreFn = storeHourlySlices
             } else {
               console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlices.length} slices)`)
             }
@@ -517,25 +534,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         const newByTs = new Map<number, any>()
         newSlices.forEach(s => newByTs.set(s.timestamp, s))
 
-        const fullSlices: {
-          timestamp: number,
-          data: any,
-          bl?: any,
-          blc?: any,
-          tb?: any,
-          tbl?: any,
-          tblc?: any,
-        }[] = []
-
-        // accumulate daily label breakdown + token breakdown
-        const aggregatedDaily: any = {}
-        const dailyBreakdownByLabel: any = {}
-        const dailyBreakdownByLabelByChain: any = {}
-        const dailyTokenBreakdown: any = {}
-        const dailyTokenBreakdownByLabel: any = {}
-        const dailyTokenBreakdownByLabelByChain: any = {}
-
-
+        const fullSlices: HourlySlice[] = []
         for (const ts of targetTimestamps) {
           const slice = newByTs.get(ts) || existingByTs.get(ts)
           if (!slice) {
@@ -543,233 +542,15 @@ export const handler2 = async (options: DimensionRunOptions) => {
               `[hourly] Missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} even after refill`
             )
           }
-
-          const sliceBl = (slice as any).bl ?? null
-          const sliceBlc = (slice as any).blc ?? null
-          const sliceTb = (slice as any).tb
-          const sliceTbl = (slice as any).tbl
-          const sliceTblc = (slice as any).tblc
-
-          fullSlices.push({
-            timestamp: slice.timestamp,
-            data: slice.data,
-            bl: sliceBl,
-            blc: sliceBlc,
-            tb: sliceTb,
-            tbl: sliceTbl,
-            tblc: sliceTblc,
-          })
-
-          // ---- daily breakdownByLabel ----
-          if (sliceBl && typeof sliceBl === 'object') {
-            for (const [metric, labelsAny] of Object.entries(sliceBl as any)) {
-              const labels = labelsAny as Record<string, number>
-              if (!dailyBreakdownByLabel[metric]) dailyBreakdownByLabel[metric] = {}
-              const metricDst = dailyBreakdownByLabel[metric]
-              for (const [label, value] of Object.entries(labels)) {
-                metricDst[label] = (metricDst[label] || 0) + (value as number)
-              }
-            }
-          }
-
-          // ---- daily breakdownByLabelByChain ----
-          if (sliceBlc && typeof sliceBlc === 'object') {
-            for (const [metric, labelsAny] of Object.entries(sliceBlc as any)) {
-              const labels = labelsAny as Record<string, Record<string, number>>
-              if (!dailyBreakdownByLabelByChain[metric]) dailyBreakdownByLabelByChain[metric] = {}
-              const metricDst = dailyBreakdownByLabelByChain[metric]
-              for (const [label, chainsAny] of Object.entries(labels)) {
-                const chains = chainsAny as Record<string, number>
-                if (!metricDst[label]) metricDst[label] = {}
-                const labelDst = metricDst[label]
-                for (const [chain, value] of Object.entries(chains)) {
-                  labelDst[chain] = (labelDst[chain] || 0) + (value as number)
-                }
-              }
-            }
-          }
-
-          // ---- daily token breakdown (usd + raw) ----
-          if (sliceTb && typeof sliceTb === 'object') {
-            // shape: { [chain]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } }
-            for (const [chain, metricsAny] of Object.entries(sliceTb as any)) {
-              const metrics = metricsAny as any
-              if (!dailyTokenBreakdown[chain]) dailyTokenBreakdown[chain] = {}
-              const chainDst = dailyTokenBreakdown[chain]
-
-              for (const [metric, tokenInfoAny] of Object.entries(metrics)) {
-                const tokenInfo = tokenInfoAny as any
-                if (!tokenInfo || typeof tokenInfo !== 'object') continue
-
-                if (!chainDst[metric]) {
-                  chainDst[metric] = {
-                    usdTvl: 0,
-                    usdTokenBalances: {} as Record<string, number>,
-                    rawTokenBalances: {} as Record<string, string | number>,
-                  }
-                }
-                const dst = chainDst[metric]
-
-                if (typeof tokenInfo.usdTvl === 'number')
-                  dst.usdTvl += tokenInfo.usdTvl
-
-                if (tokenInfo.usdTokenBalances && typeof tokenInfo.usdTokenBalances === 'object') {
-                  for (const [token, usd] of Object.entries(tokenInfo.usdTokenBalances as Record<string, number>)) {
-                    dst.usdTokenBalances[token] = (dst.usdTokenBalances[token] || 0) + (usd as number)
-                  }
-                }
-
-                if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
-                  for (const [token, raw] of Object.entries(tokenInfo.rawTokenBalances as Record<string, string | number>)) {
-                    const prev = dst.rawTokenBalances[token]
-                    if (prev === undefined) {
-                      dst.rawTokenBalances[token] = raw as any
-                    } else {
-                      if (typeof prev === 'number' && typeof raw === 'number') {
-                        dst.rawTokenBalances[token] = prev + raw
-                      } else {
-                        dst.rawTokenBalances[token] = raw as any
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-
-          // ---- daily token breakdown by label (tbl) ----
-          if (sliceTbl && typeof sliceTbl === 'object') {
-            // shape: { [label]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } }
-            for (const [label, metricsAny] of Object.entries(sliceTbl as any)) {
-              const metrics = metricsAny as any
-              if (!dailyTokenBreakdownByLabel[label]) dailyTokenBreakdownByLabel[label] = {}
-              const labelDst = dailyTokenBreakdownByLabel[label]
-
-              for (const [metric, tokenInfoAny] of Object.entries(metrics)) {
-                const tokenInfo = tokenInfoAny as any
-                if (!tokenInfo || typeof tokenInfo !== 'object') continue
-
-                if (!labelDst[metric]) {
-                  labelDst[metric] = {
-                    usdTvl: 0,
-                    usdTokenBalances: {} as Record<string, number>,
-                    rawTokenBalances: {} as Record<string, string | number>,
-                  }
-                }
-                const dst = labelDst[metric]
-
-                if (typeof tokenInfo.usdTvl === 'number')
-                  dst.usdTvl += tokenInfo.usdTvl
-
-                if (tokenInfo.usdTokenBalances && typeof tokenInfo.usdTokenBalances === 'object') {
-                  for (const [token, usd] of Object.entries(tokenInfo.usdTokenBalances as Record<string, number>)) {
-                    dst.usdTokenBalances[token] = (dst.usdTokenBalances[token] || 0) + (usd as number)
-                  }
-                }
-
-                if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
-                  for (const [token, raw] of Object.entries(tokenInfo.rawTokenBalances as Record<string, string | number>)) {
-                    const prev = dst.rawTokenBalances[token]
-                    if (prev === undefined) {
-                      dst.rawTokenBalances[token] = raw as any
-                    } else if (typeof prev === 'number' && typeof raw === 'number') {
-                      dst.rawTokenBalances[token] = prev + raw
-                    } else {
-                      dst.rawTokenBalances[token] = raw as any
-                    }
-                  }
-                }
-              }
-            }
-          }
-
-          // ---- daily token breakdown by label + chain (tblc) ----
-          if (sliceTblc && typeof sliceTblc === 'object') {
-            // shape: { [label]: { [chain]: { [metric]: { usdTvl, usdTokenBalances, rawTokenBalances } } } }
-            for (const [label, chainsAny] of Object.entries(sliceTblc as any)) {
-              const chains = chainsAny as any
-              if (!dailyTokenBreakdownByLabelByChain[label]) dailyTokenBreakdownByLabelByChain[label] = {}
-              const labelDst = dailyTokenBreakdownByLabelByChain[label]
-
-              for (const [chain, metricsAny] of Object.entries(chains)) {
-                const metrics = metricsAny as any
-                if (!labelDst[chain]) labelDst[chain] = {}
-                const chainDst = labelDst[chain]
-
-                for (const [metric, tokenInfoAny] of Object.entries(metrics)) {
-                  const tokenInfo = tokenInfoAny as any
-                  if (!tokenInfo || typeof tokenInfo !== 'object') continue
-
-                  if (!chainDst[metric]) {
-                    chainDst[metric] = {
-                      usdTvl: 0,
-                      usdTokenBalances: {} as Record<string, number>,
-                      rawTokenBalances: {} as Record<string, string | number>,
-                    }
-                  }
-                  const dst = chainDst[metric]
-
-                  if (typeof tokenInfo.usdTvl === 'number')
-                    dst.usdTvl += tokenInfo.usdTvl
-
-                  if (tokenInfo.usdTokenBalances && typeof tokenInfo.usdTokenBalances === 'object') {
-                    for (const [token, usd] of Object.entries(tokenInfo.usdTokenBalances as Record<string, number>)) {
-                      dst.usdTokenBalances[token] = (dst.usdTokenBalances[token] || 0) + (usd as number)
-                    }
-                  }
-
-                  if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
-                    for (const [token, raw] of Object.entries(tokenInfo.rawTokenBalances as Record<string, string | number>)) {
-                      const prev = dst.rawTokenBalances[token]
-                      if (prev === undefined) {
-                        dst.rawTokenBalances[token] = raw as any
-                      } else if (typeof prev === 'number' && typeof raw === 'number') {
-                        dst.rawTokenBalances[token] = prev + raw
-                      } else {
-                        dst.rawTokenBalances[token] = raw as any
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          fullSlices.push(slice as HourlySlice)
         }
 
-        for (const slice of fullSlices) {
-          const agg = slice.data || {}
-          for (const [metric, metricDataAny] of Object.entries(agg)) {
-            const metricData = metricDataAny as any
-            if (!aggregatedDaily[metric]) aggregatedDaily[metric] = { value: 0, chains: {} as any }
-            aggregatedDaily[metric].value += metricData.value || 0
-            if (metricData.chains) {
-              for (const [chain, val] of Object.entries(metricData.chains)) {
-                aggregatedDaily[metric].chains[chain] = (aggregatedDaily[metric].chains[chain] || 0) + (val as number)
-              }
-            }
-          }
-        }
-
-        adaptorRecordV2JSON = {
-          aggregated: aggregatedDaily,
-          breakdownByLabel: Object.keys(dailyBreakdownByLabel).length ? dailyBreakdownByLabel : undefined,
-          breakdownByLabelByChain: Object.keys(dailyBreakdownByLabelByChain).length ? dailyBreakdownByLabelByChain : undefined,
-          timestamp: recordTimestamp,
-        }
-
-        tb = Object.keys(dailyTokenBreakdown).length ? dailyTokenBreakdown : undefined
-        tbl = Object.keys(dailyTokenBreakdownByLabel).length ? dailyTokenBreakdownByLabel : undefined
-        tblc = Object.keys(dailyTokenBreakdownByLabelByChain).length ? dailyTokenBreakdownByLabelByChain : undefined
-
-        hourlySlicesForDebug = fullSlices.map(s => ({
-          timestamp: s.timestamp,
-          data: s.data,
-          bl: s.bl,
-          blc: s.blc,
-          tb: s.tb,
-          tbl: s.tbl,
-          tblc: s.tblc,
-        }))
+        const aggregated = aggregateDailyFromHourlySlices(fullSlices, recordTimestamp)
+        adaptorRecordV2JSON = aggregated.adaptorRecordV2JSON
+        tb = aggregated.tb
+        tbl = aggregated.tbl
+        tblc = aggregated.tblc
+        hourlySlicesForDebug = aggregated.hourlySlicesForDebug
 
       } else {
         const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
@@ -933,14 +714,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         }
 
-        if (!isDryRun || localStoreEnabled) {
+        if (!isDryRun && !checkBeforeInsert) {
           await storeAdapterRecord(adapterRecord)
-          if (!localStoreEnabled && !isDryRun) {
-            await storeTokenBreakdownData()
-          }
+          await storeTokenBreakdownData()
+          if (hourlyStoreFn) await hourlyStoreFn()
         } else if (checkBeforeInsert) {
           responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
           responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
+          if (hourlyStoreFn) responseObject.storeDDBFunctions.push(hourlyStoreFn)
           responseObject.recordV2 = adapterRecord
           responseObject.id = `${adapterRecord.adapterType}#${adapterRecord.id}#${adapterRecord.timeS}`
           responseObject.timeS = adapterRecord.timeS
@@ -1131,163 +912,4 @@ function calculateStats(numbers: number[]) {
   }
 
   return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
-}
-
-type TokenInfo = {
-  usdTvl?: number
-  usdTokenBalances?: Record<string, number>
-  rawTokenBalances?: Record<string, string | number>
-}
-
-function buildTokenBreakdownsByLabel(params: { tokenBreakdown?: any, breakdownByLabel?: any, breakdownByLabelByChain?: any }): { tbl?: any, tblc?: any } {
-  const { tokenBreakdown, breakdownByLabel, breakdownByLabelByChain } = params
-  if (!tokenBreakdown || typeof tokenBreakdown !== 'object') return {}
-
-  // tbl:  { [label]: { [metric]: TokenInfo } }
-  // tblc: { [label]: { [chain]: { [metric]: TokenInfo } } }
-  const tbl: any = {}
-  const tblc: any = {}
-
-  const weightsByMetricChain: Record<string, Record<string, Record<string, number>>> = {}
-
-  if (breakdownByLabelByChain && typeof breakdownByLabelByChain === 'object') {
-    for (const [metric, labelsAny] of Object.entries(breakdownByLabelByChain)) {
-      const labels = labelsAny as any
-      if (!labels || typeof labels !== 'object') continue
-
-      for (const [label, chainsAny] of Object.entries(labels)) {
-        const chains = chainsAny as any
-        if (!chains || typeof chains !== 'object') continue
-
-        for (const [chain, vAny] of Object.entries(chains)) {
-          const v = Number(vAny) || 0
-          if (v <= 0) continue
-          weightsByMetricChain[metric] ??= {}
-          weightsByMetricChain[metric][chain] ??= {}
-          weightsByMetricChain[metric][chain][label] = (weightsByMetricChain[metric][chain][label] || 0) + v
-        }
-      }
-    }
-  } else if (breakdownByLabel && typeof breakdownByLabel === 'object') {
-    for (const [metric, labelsAny] of Object.entries(breakdownByLabel)) {
-      const labels = labelsAny as any
-      if (!labels || typeof labels !== 'object') continue
-      weightsByMetricChain[metric] ??= {}
-      weightsByMetricChain[metric]['*'] ??= {}
-
-      for (const [label, vAny] of Object.entries(labels)) {
-        const v = Number(vAny) || 0
-        if (v <= 0) continue
-        weightsByMetricChain[metric]['*'][label] = (weightsByMetricChain[metric]['*'][label] || 0) + v
-      }
-    }
-  }
-
-  const addUsdTokenInfo = (dst: TokenInfo, src: TokenInfo, factor: number) => {
-    if (typeof src.usdTvl === 'number') dst.usdTvl = (dst.usdTvl || 0) + src.usdTvl * factor
-
-    if (src.usdTokenBalances && typeof src.usdTokenBalances === 'object') {
-      dst.usdTokenBalances ??= {}
-      for (const [token, usd] of Object.entries(src.usdTokenBalances)) {
-        const v = typeof usd === 'number' ? usd : Number(usd)
-        if (!Number.isFinite(v)) continue
-        dst.usdTokenBalances[token] = (dst.usdTokenBalances[token] || 0) + v * factor
-      }
-    }
-  }
-
-  const addRaw = (dst: TokenInfo, token: string, raw: string | number) => {
-    dst.rawTokenBalances ??= {}
-    const prev = dst.rawTokenBalances[token]
-    if (prev === undefined) {
-      dst.rawTokenBalances[token] = raw
-      return
-    }
-    if (typeof prev === 'number' && typeof raw === 'number') {
-      dst.rawTokenBalances[token] = prev + raw
-      return
-    }
-    dst.rawTokenBalances[token] = raw
-  }
-
-  const ensureTbl = (label: string, metric: string) => {
-    tbl[label] ??= {}
-    tbl[label][metric] ??= { usdTvl: 0, usdTokenBalances: {}, rawTokenBalances: {} }
-    return tbl[label][metric] as TokenInfo
-  }
-
-  const ensureTblc = (label: string, chain: string, metric: string) => {
-    tblc[label] ??= {}
-    tblc[label][chain] ??= {}
-    tblc[label][chain][metric] ??= { usdTvl: 0, usdTokenBalances: {}, rawTokenBalances: {} }
-    return tblc[label][chain][metric] as TokenInfo
-  }
-
-  const getDominantLabel = (entries: [string, number][]) => {
-    let bestLabel = entries[0][0]
-    let best = entries[0][1]
-    for (let i = 1; i < entries.length; i++) {
-      const [l, w] = entries[i]
-      if (w > best) {
-        best = w
-        bestLabel = l
-      }
-    }
-    return bestLabel
-  }
-
-  for (const [chain, metricsAny] of Object.entries(tokenBreakdown)) {
-    const metrics = metricsAny as any
-    if (!metrics || typeof metrics !== 'object') continue
-
-    for (const [metric, tokenInfoAny] of Object.entries(metrics)) {
-      const tokenInfo = tokenInfoAny as TokenInfo
-      if (!tokenInfo || typeof tokenInfo !== 'object') continue
-
-      const weights =
-        weightsByMetricChain[metric]?.[chain] ??
-        weightsByMetricChain[metric]?.['*']
-
-      if (!weights) continue
-
-      const entries = Object.entries(weights)
-        .map(([label, w]) => [label, Number(w) || 0] as [string, number])
-        .filter(([, w]) => w > 0)
-
-      if (!entries.length) continue
-
-      const sum = entries.reduce((acc, [, w]) => acc + w, 0)
-      if (!sum) continue
-
-      for (const [label, w] of entries) {
-        const factor = w / sum
-        addUsdTokenInfo(ensureTbl(label, metric), tokenInfo, factor)
-        addUsdTokenInfo(ensureTblc(label, String(chain), metric), tokenInfo, factor)
-      }
-
-      if (tokenInfo.rawTokenBalances && typeof tokenInfo.rawTokenBalances === 'object') {
-        const dominantLabel = getDominantLabel(entries)
-
-        for (const [token, rawAny] of Object.entries(tokenInfo.rawTokenBalances)) {
-          if (rawAny === null || rawAny === undefined) continue
-
-          if (typeof rawAny === 'number') {
-            for (const [label, w] of entries) {
-              const factor = w / sum
-              addRaw(ensureTbl(label, metric), token, rawAny * factor)
-              addRaw(ensureTblc(label, String(chain), metric), token, rawAny * factor)
-            }
-          } else {
-            addRaw(ensureTbl(dominantLabel, metric), token, rawAny as any)
-            addRaw(ensureTblc(dominantLabel, String(chain), metric), token, rawAny as any)
-          }
-        }
-      }
-    }
-  }
-
-  return {
-    tbl: Object.keys(tbl).length ? tbl : undefined,
-    tblc: Object.keys(tblc).length ? tblc : undefined,
-  }
 }

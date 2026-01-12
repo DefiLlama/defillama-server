@@ -139,7 +139,7 @@ async function run() {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
 
-      const handlerResults: any[] = await handler2({
+      await handler2({
         adapterType,
         yesterdayIdSet,
         runType: 'store-all',
@@ -153,33 +153,6 @@ async function run() {
         skipHourlyCache,
         protocolNames: singleProtocolEnv ? new Set([singleProtocolEnv]) : undefined,
       })
-
-      if (isDryRun) {
-        const fs = await import('fs')
-        const path = await import('path')
-
-        const outDir = path.join(process.cwd(), 'dim-debug')
-        if (!fs.existsSync(outDir))
-          fs.mkdirSync(outDir, { recursive: true })
-
-        const dateTag = getTodayTimeS()
-        const protoTag = singleProtocolEnv ?? 'all-protocols'
-        const fileName = `dim-${adapterType}-${protoTag}-${dateTag}.json`
-        const filePath = path.join(outDir, fileName)
-
-        const serializable = (handlerResults || [])
-          .filter(Boolean)
-          .map((r: any) => ({
-            adapterType: r.adapterType,
-            protocolName: r.protocolName,
-            id: r.id,
-            timeS: r.timeS,
-            debug: r.debug,
-          }))
-
-        fs.writeFileSync(filePath, JSON.stringify(serializable, null, 2), 'utf8')
-        console.log(`DIM DRY-RUN: JSON debug written to ${filePath}`)
-      }
 
       success = true
 

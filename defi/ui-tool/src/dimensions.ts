@@ -34,6 +34,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const protocolToRun = args.protocol
   const checkBeforeInsert = args.checkBeforeInsert
   const delayBetweenRuns = args.delayBetweenRuns ?? 0
+  const skipHourlyCache = !!args.skipHourlyCache
   const protocolNames = new Set([protocolToRun])
   if (checkBeforeInsert) args.dryRun = true
 
@@ -82,6 +83,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
           protocolNames,
           isRunFromRefillScript: true,
           checkBeforeInsert,
+          skipHourlyCache,
         }
         items.push(eventObj)
       }
@@ -98,6 +100,7 @@ export async function runDimensionsRefill(ws: any, args: any) {
         protocolNames,
         isRunFromRefillScript: true,
         checkBeforeInsert,
+        skipHourlyCache,
       }
       items.push(eventObj)
 

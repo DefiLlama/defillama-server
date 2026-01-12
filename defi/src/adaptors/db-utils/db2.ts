@@ -1,70 +1,24 @@
 import * as sdk from "@defillama/sdk"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
-import { Op, } from "sequelize"
-import { Tables } from "../../api2/db/tables"
-import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
-import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "../data/types"
-import { IJSON } from "../data/types"
 import * as fs from "fs/promises"
 import * as path from "path"
+import { Op, } from "sequelize"
+import { initializeTVLCacheDB } from "../../api2/db"
+import { Tables } from "../../api2/db/tables"
+import dynamodb from "../../utils/shared/dynamodb"
+import { AdapterType, IJSON } from "../data/types"
+import { AdapterRecord2 } from "./AdapterRecord2"
+import {
+  getDailyLocalPath,
+  getHourlyLocalPath,
+  getLocalStoreDir,
+  isLocalStoreEnabled,
+  listJsonFilesRecursively,
+  readJsonIfExists,
+  writeJsonAtomic,
+} from "./localStore"
 
 let isInitialized: any
-
-const isLocalStoreEnabled = () => process.env.DIM_LOCAL_STORE === 'true'
-const getLocalStoreDir = () => process.env.DIM_LOCAL_STORE_DIR || "./dim-local-store"
-
-async function ensureDir(dir: string) {
-  await fs.mkdir(dir, { recursive: true })
-}
-
-async function writeJsonAtomic(filePath: string, data: any) {
-  const dir = path.dirname(filePath)
-  await ensureDir(dir)
-  const tmpPath = `${filePath}.tmp`
-  await fs.writeFile(tmpPath, JSON.stringify(data, null, 2))
-  await fs.rename(tmpPath, filePath)
-}
-
-async function readJsonIfExists(filePath: string) {
-  try {
-    const raw = await fs.readFile(filePath, "utf-8")
-    return JSON.parse(raw)
-  } catch (e: any) {
-    if (e?.code === 'ENOENT') return undefined
-    throw e
-  }
-}
-
-async function listJsonFilesRecursively(root: string): Promise<string[]> {
-  const out: string[] = []
-  let entries: any[] = []
-  try {
-    entries = await fs.readdir(root, { withFileTypes: true })
-  } catch (e: any) {
-    if (e?.code === 'ENOENT') return out
-    throw e
-  }
-
-  for (const ent of entries) {
-    const p = path.join(root, ent.name)
-    if (ent.isDirectory()) {
-      out.push(...await listJsonFilesRecursively(p))
-    } else if (ent.isFile() && ent.name.endsWith(".json")) {
-      out.push(p)
-    }
-  }
-  return out
-}
-
-function getDailyLocalPath(adapterType: AdapterType, id: string, timeS: string) {
-  return path.join(getLocalStoreDir(), "daily", String(adapterType), String(id), `${timeS}.json`)
-}
-
-function getHourlyLocalPath(adapterType: AdapterType, id: string, timeS: string) {
-  return path.join(getLocalStoreDir(), "hourly", String(adapterType), String(id), `${timeS}.json`)
-}
 
 export async function init() {
   if (isLocalStoreEnabled()) return true
@@ -352,6 +306,39 @@ export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestam
     where: {
       type: adapterType,
       id,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  return rows.map(transform)
+}
+
+export async function getHourlySlicesBulk({ adapterType, fromTimestamp, toTimestamp, transform = a => a }: { adapterType: AdapterType, fromTimestamp: number, toTimestamp: number, transform?: (a: any) => any }) {
+  await init()
+
+  if (fromTimestamp < 946684800) fromTimestamp = 946684800 // 2000-01-01
+
+  if (isLocalStoreEnabled()) {
+    const root = require("path").join(getLocalStoreDir(), "hourly", String(adapterType))
+    const files = await listJsonFilesRecursively(root)
+    const rows: any[] = []
+    for (const f of files) {
+      const row = await readJsonIfExists(f)
+      if (!row) continue
+      if (typeof row.timestamp !== 'number') continue
+      if (row.timestamp < fromTimestamp || row.timestamp > toTimestamp) continue
+      rows.push(transform(row))
+    }
+    rows.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+    return rows
+  }
+
+  const rows: any[] = await Tables.DIMENSIONS_HOURLY_DATA.findAll({
+    where: {
+      type: adapterType,
       timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
     },
     attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],

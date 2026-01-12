@@ -10,10 +10,10 @@ import dynamodb from "../../../utils/shared/dynamodb";
 import loadAdaptorsData from "../../data";
 import { AdapterType, IJSON, ProtocolAdaptor, SimpleAdapter } from "../../data/types";
 import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
-import { getAllItemsAfter, getHourlySlicesForProtocol, getHourlyTimeS, storeAdapterRecord, upsertHourlySlicesForProtocol } from "../../db-utils/db2";
+import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { isLocalStoreEnabled } from "../../db-utils/localStore";
 import { sendDiscordAlert } from "../../utils/notify";
-import { aggregateDailyFromHourlySlices, buildHourlyCache, buildTokenBreakdownsByLabel, getCachedSlices, HourlySlice } from "./hourly";
+import { buildHourlyCache, buildTokenBreakdownsByLabel, HourlySlice, processHourlyAdapter } from "./hourly";
 
 const recentDataByAdapterType: { [adapterType: string]: any } = {}
 
@@ -419,139 +419,25 @@ export const handler2 = async (options: DimensionRunOptions) => {
       let hourlyStoreFn: (() => Promise<void>) | undefined
 
       if (isHourlyAdapter && runType === 'store-all' && !isRunFromRefillScript) {
-        const anchorTs = endTimestamp       // anchor
-        const fromTs = anchorTs - 23 * ONE_HOUR_IN_SECONDS
-
-        let existingSlices: any[] = []
-        if (!skipHourlyCache) {
-          const cached = getCachedSlices({
-            cache: hourlyCacheData?.cache,
-            cacheRange: hourlyCacheData?.range,
-            id: id2,
-            fromTimestamp: fromTs,
-            toTimestamp: anchorTs,
-          })
-          if (cached) existingSlices = cached
-        } else {
-          console.log(`[hourly] skipHourlyCache=true for ${adapterType} - ${module}, ignoring existing slices`)
-        }
-
-        if (!existingSlices.length) {
-          existingSlices = await getHourlySlicesForProtocol({
-            adapterType,
-            id: id2,
-            fromTimestamp: fromTs,
-            toTimestamp: anchorTs,
-          })
-        }
-
-        const existingByTs = new Map<number, any>()
-        existingSlices.forEach((row: any) => {
-          if (typeof row.timestamp === 'number')
-            existingByTs.set(row.timestamp, row)
+        const result = await processHourlyAdapter({
+          adapterType,
+          id: id2,
+          module,
+          adaptor,
+          endTimestamp,
+          recordTimestamp,
+          skipHourlyCache,
+          hourlyCacheData,
+          deadChains,
+          isDryRun,
+          checkBeforeInsert,
         })
-
-        const targetTimestamps: number[] = []
-        for (let i = 23; i >= 0; i--) {
-          const ts = anchorTs - i * ONE_HOUR_IN_SECONDS
-          targetTimestamps.push(ts)
-        }
-
-        const slicesToFetch: number[] = []
-        for (const ts of targetTimestamps) {
-          if (!existingByTs.has(ts)) slicesToFetch.push(ts)
-        }
-
-        const newSlices: HourlySlice[] = []
-
-        if (slicesToFetch.length) {
-          const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
-
-          for (const ts of slicesToFetch) {
-            console.log(`[hourly] Fetching missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
-            const res: any = await runAdapter({
-              module: adaptor,
-              endTimestamp: ts,
-              name: module,
-              withMetadata: true,
-              cacheResults: false,
-              deadChains,
-            })
-
-            const sliceRecord = res.adaptorRecordV2JSON as any
-            const sliceTb = res.breakdownByToken
-
-            let sliceTbl = res.tokenBreakdownByLabel
-            let sliceTblc = res.tokenBreakdownByLabelByChain
-
-            // If adapter doesn't provide tbl/tblc, build it from tokenBreakdown + bl/blc
-            if (sliceTb && (!sliceTbl || !sliceTblc)) {
-              const built = buildTokenBreakdownsByLabel({
-                tokenBreakdown: sliceTb,
-                breakdownByLabel: sliceRecord?.breakdownByLabel,
-                breakdownByLabelByChain: sliceRecord?.breakdownByLabelByChain,
-              })
-              sliceTbl = sliceTbl ?? built.tbl
-              sliceTblc = sliceTblc ?? built.tblc
-            }
-
-            if (!sliceRecord || !sliceRecord.aggregated || Object.keys(sliceRecord.aggregated).length === 0) {
-              console.log(`[hourly] No data found for slice ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
-              continue;
-            }
-
-            newSlices.push({
-              timestamp: ts,
-              data: sliceRecord.aggregated,
-              bl: sliceRecord.breakdownByLabel ?? null,
-              blc: sliceRecord.breakdownByLabelByChain ?? null,
-              tb: sliceTb,
-              tbl: sliceTbl ?? null,
-              tblc: sliceTblc ?? null,
-              timeS: getHourlyTimeS(ts),
-            })
-          }
-
-          if (newSlices.length) {
-            const storeHourlySlices = async () => {
-              await upsertHourlySlicesForProtocol({
-                adapterType,
-                id: id2,
-                slices: newSlices,
-              })
-            }
-
-            if (!isDryRun && !checkBeforeInsert) {
-              await storeHourlySlices()
-            } else if (checkBeforeInsert) {
-              hourlyStoreFn = storeHourlySlices
-            } else {
-              console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlices.length} slices)`)
-            }
-          }
-        }
-
-        const newByTs = new Map<number, any>()
-        newSlices.forEach(s => newByTs.set(s.timestamp, s))
-
-        const fullSlices: HourlySlice[] = []
-        for (const ts of targetTimestamps) {
-          const slice = newByTs.get(ts) || existingByTs.get(ts)
-          if (!slice) {
-            throw new Error(
-              `[hourly] Missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} even after refill`
-            )
-          }
-          fullSlices.push(slice as HourlySlice)
-        }
-
-        const aggregated = aggregateDailyFromHourlySlices(fullSlices, recordTimestamp)
-        adaptorRecordV2JSON = aggregated.adaptorRecordV2JSON
-        tb = aggregated.tb
-        tbl = aggregated.tbl
-        tblc = aggregated.tblc
-        hourlySlicesForDebug = aggregated.hourlySlicesForDebug
-
+        adaptorRecordV2JSON = result.adaptorRecordV2JSON
+        tb = result.tb
+        tbl = result.tbl
+        tblc = result.tblc
+        hourlySlicesForDebug = result.hourlySlicesForDebug
+        hourlyStoreFn = result.storeHourlySlicesFn
       } else {
         const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
 

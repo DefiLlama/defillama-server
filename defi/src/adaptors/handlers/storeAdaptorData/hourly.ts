@@ -557,7 +557,6 @@ export async function processHourlyAdapter(params: {
     }
   }
 
-  // Create a function that returns a promise for storing hourly slices
   // This function will be returned for deferred execution when checkBeforeInsert is true
   const storeHourlySlicesFn = newSlices.length ? (async () => {
     await upsertHourlySlicesForProtocol({

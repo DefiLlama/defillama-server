@@ -8,7 +8,7 @@ import {
   transformNewChainName,
   extraSections,
 } from "./utils/normalizeChain";
-// import { storeR2JSONString } from "./utils/r2";
+import { storeR2JSONString } from "./utils/r2";
 import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 
@@ -283,11 +283,13 @@ export async function storeGetCharts({ ...options }: any = {}) {
   const chainTvlByTag: IChainTvlByCategoryOrTag = {}
 
   const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
-  // await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify({
-  //   excludedProcolsIds: data.excludedProcolsIds,
-  //   lastDailyTimestamp: data.lastDailyTimestamp,
-  //   doublecountedProtocolIds: data.doublecountedProtocolIds
-  // }))
+
+  // this is used by llama-ai atm
+  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify({
+    excludedProcolsIds: data.excludedProcolsIds,
+    lastDailyTimestamp: data.lastDailyTimestamp,
+    doublecountedProtocolIds: data.doublecountedProtocolIds
+  }))
   await storeHistoricalTVLMetadataFile(data);
   // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
 

@@ -8645,5 +8645,27 @@ const data5: Protocol[] = [
     twitter: "lendao_lab",
     listedAt: 1768319717
   },
+  {
+    id: "7250",
+    name: "Neura Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://neuravaults.xyz/",
+    description:
+      "Neura Vaults is an AI-powered intelligent liquidity stack on HyperEVM that autonomously rebalances capital across on-chain yield sources to optimize real yield",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/neura-vaults.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Hyperliquid L1"],
+    forkedFromIds: [],
+    audit_links: ["https://docs.lagoon.finance/resources/audits"],
+    module: "neura-vaults/index.js",
+    twitter: "Neuravaults",
+    listedAt: 1768320002
+  },
 ];
 export default data5;

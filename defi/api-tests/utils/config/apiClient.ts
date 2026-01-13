@@ -45,6 +45,8 @@ export class ApiClient {
       // Additional robustness settings
       maxRedirects: 5,
       validateStatus: (status) => status < 600, // Don't reject on any status code
+      maxContentLength: 100 * 1024 * 1024, // 100MB max response size
+      maxBodyLength: 100 * 1024 * 1024, // 100MB max request size
       ...config,
     });
 
@@ -54,7 +56,20 @@ export class ApiClient {
   private setupInterceptors(): void {
     // Don't reject on error responses - we want to handle them gracefully
     this.client.interceptors.response.use(
-      (response) => response,
+      (response) => {
+        // If content-type is text/plain but data looks like JSON, parse it
+        if (response.data && typeof response.data === 'string') {
+          try {
+            // Try to parse as JSON if it looks like JSON
+            if (response.data.trim().startsWith('{') || response.data.trim().startsWith('[')) {
+              response.data = JSON.parse(response.data);
+            }
+          } catch (e) {
+            // If parsing fails, leave as string (might be intentional like error messages)
+          }
+        }
+        return response;
+      },
       (error) => {
         // For HTTP error responses (4xx, 5xx), return a response-like object
         if (error.response) {

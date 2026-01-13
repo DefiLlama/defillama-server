@@ -8234,6 +8234,7 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.goblin.fi/security/audit"],
     module: "goblin-goapt/index.js",
     twitter: "the_goblin_fi",
+    parentProtocol: "parent#goblin-protocols",
     listedAt: 1768235054,
   },
   {

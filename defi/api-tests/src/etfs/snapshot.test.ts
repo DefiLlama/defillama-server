@@ -57,8 +57,8 @@ describe('ETFs API - Snapshot', () => {
       const nowInSeconds = Math.floor(Date.now() / 1000);
       const ageInSeconds = nowInSeconds - maxTimestamp;
       
-      // Data should be less than 7 days old
-      expect(ageInSeconds).toBeLessThan(86400 * 7);
+      // Data should be less than 14 days old (ETF data updates less frequently)
+      expect(ageInSeconds).toBeLessThan(86400 * 14);
     });
 
     it('should have ETFs for different assets', () => {

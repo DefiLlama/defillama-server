@@ -28,9 +28,9 @@ function getProApiBaseUrl(): string {
 export const BASE_URLS = {
   TVL: getBaseUrl(process.env.BETA_API_URL || process.env.BASE_API_URL || 'https://api.llama.fi', 'tvl'),
   COINS: getBaseUrl(process.env.BETA_COINS_URL || 'https://coins.llama.fi', 'coins'),
-  STABLECOINS: getBaseUrl(process.env.BETA_STABLECOINS_URL || 'https://stablecoins.llama.fi', 'stablecoins'),
+  STABLECOINS: getProApiBaseUrl(), // Pro API only, no fallback
   YIELDS: getBaseUrl(process.env.BETA_YIELDS_URL || 'https://yields.llama.fi', 'yields'),
-  BRIDGES: process.env.BETA_BRIDGES_URL || 'https://bridges.llama.fi',
+  BRIDGES: getProApiBaseUrl(), // Pro API only, no fallback
   VOLUMES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'volumes'),
   FEES: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'fees'),
   USERS: getProApiBaseUrl(),
@@ -68,13 +68,13 @@ export const TVL = {
 
 export const STABLECOINS = {
   BASE_URL: stablecoinsBaseUrl,
-  LIST: getEndpoint('/stablecoins', true),
-  CHAINS: getEndpoint('/stablecoinchains', true),
-  PRICES: getEndpoint('/stablecoinprices', true),
-  CHARTS_ALL: getEndpoint('/stablecoincharts/all', true),
-  CHARTS_BY_CHAIN: (chain: string) => getEndpoint(`/stablecoincharts/${chain}`, true),
-  ASSET: (asset: string) => getEndpoint(`/stablecoin/${asset}`, true),
-  DOMINANCE: (chain: string) => getEndpoint(`/stablecoindominance/${chain}`, false),
+  LIST: '/stablecoins/stablecoins',
+  CHAINS: '/stablecoins/stablecoinchains',
+  PRICES: '/stablecoins/stablecoinprices',
+  CHARTS_ALL: '/stablecoins/stablecoincharts/all',
+  CHARTS_BY_CHAIN: (chain: string) => `/stablecoins/stablecoincharts/${chain}`,
+  ASSET: (asset: string) => `/stablecoins/stablecoin/${asset}`,
+  DOMINANCE: (chain: string) => `/stablecoins/stablecoindominance/${chain}`,
 } as const;
 
 export const YIELDS = {
@@ -112,11 +112,11 @@ export const FEES = {
 
 export const BRIDGES = {
   BASE_URL: BASE_URLS.BRIDGES,
-  BRIDGES: '/bridges',
-  BRIDGE: (id: string) => `/bridge/${id}`,
-  BRIDGE_VOLUME: (chain: string) => `/bridgevolume/${chain}`,
-  BRIDGE_DAY_STATS: (timestamp: number, chain: string) => `/bridgedaystats/${timestamp}/${chain}`,
-  TRANSACTIONS: (id: string) => `/transactions/${id}`,
+  BRIDGES: '/bridges/bridges',
+  BRIDGE: (id: string) => `/bridges/bridge/${id}`,
+  BRIDGE_VOLUME: (chain: string) => `/bridges/bridgevolume/${chain}`,
+  BRIDGE_DAY_STATS: (timestamp: number, chain: string) => `/bridges/bridgedaystats/${timestamp}/${chain}`,
+  TRANSACTIONS: (id: string) => `/bridges/transactions/${id}`,
 } as const;
 
 export const USERS = {
@@ -195,7 +195,7 @@ export const endpoints = {
 } as const;
 
 export const API_CONFIG = {
-  timeout: parseInt(process.env.API_TIMEOUT || '30000', 10),
+  timeout: parseInt(process.env.API_TIMEOUT || '90000', 10), // 90s for large responses like oracles
   retryCount: parseInt(process.env.API_RETRY_COUNT || '3', 10),
   retryDelay: parseInt(process.env.API_RETRY_DELAY || '1000', 10),
   apiKey: process.env.API_KEY || '',

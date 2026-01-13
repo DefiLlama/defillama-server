@@ -83,7 +83,7 @@ export async function getSymbolAndDecimals(
 
     case 'starknet':
       try {
-        const [symbol, decimals] = await Promise.all([
+        let [symbol, decimals] = await Promise.all([
           call({
             abi: cairoErc20Abis.symbol,
             target: tokenAddress,
@@ -93,6 +93,7 @@ export async function getSymbolAndDecimals(
             target: tokenAddress,
           }).then((r) => Number(r)),
         ]);
+        if (!symbol?.length) symbol = '-'
         return { symbol, decimals };
       } catch (e) {
         return;

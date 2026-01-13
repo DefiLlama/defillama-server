@@ -133,6 +133,9 @@ export async function craftParentProtocolInternal({
 
   // debug to find bad data
   // -- debug start
+  // data can be null because we dont have token breakdown for some protocols
+
+  /* 
   const isBadDataFormat = (data: any) => {
     if (typeof data !== "object" || !data) return true;
     const { tvl, tokensInUsd, tokens } = data;
@@ -141,6 +144,7 @@ export async function craftParentProtocolInternal({
     if (!Array.isArray(tokens)) return 'tokens'
     return false;
   }
+  
   childProtocolsTvls.forEach((protocolData: any) => {
     if (protocolData.message) {
       console.error(`Error building parent protocol: ${parentProtocol.name}`);
@@ -161,7 +165,7 @@ export async function craftParentProtocolInternal({
         console.error(`Error in chain data for ${chain} in protocol ${protocolData.name}: ${badChainData}`)
       }
     });
-  })
+  }) */
   // -- debug end
 
 
@@ -368,6 +372,7 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
 
 
   function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
+    if (!data || data.length === 0) return {};
     const dateMap: { [date: number]: any } = {}
     data.sort((a, b) => a.date - b.date) // sort by date
 

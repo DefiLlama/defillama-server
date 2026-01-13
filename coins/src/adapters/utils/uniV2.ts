@@ -97,7 +97,7 @@ export function getUniV2Adapter({
         }
             volumeUSD_gt: ${minVolume}
           } 
-        block: { number: ${block} } 
+        ${ ["uniswap", "uni_base"].includes(project) && timestamp == 0 ? "" : `block: { number: ${block} }`} 
         first: 1000
         ) {
           id
@@ -234,42 +234,12 @@ export function getUniV2Adapter({
     factory = factory!.toLowerCase();
     const cacheKey = `tvl-adapter-cache/cache/uniswap-forks/${factory}-${chain}.json`;
 
-    let pairs: any, symbols: any, token0s: any, token1s: any;
-    if (factory == '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f') {
-      const pairsLength = await api.call({
-        abi: 'function allPairsLength() view returns (uint256)',
-        target: factory,
-      });
-      pairs = await api.multiCall({
-        abi: 'function allPairs(uint256) view returns (address)',
-        calls: Array.from({ length: pairsLength }, (_, i) => ({
-          target: factory,
-          params: [i],
-        })),
-      });
-      token0s = await api.multiCall({
-        abi: 'function token0() view returns (address)',
-        calls: pairs.map((i: any) => ({
-          target: i,
-        })),
-      });
-      token1s = await api.multiCall({
-        abi: 'function token1() view returns (address)',
-        calls: pairs.map((i: any) => ({
-          target: i,
-        })),
-      });
-    } else {
-      let res = await cache.readCache(cacheKey, { readFromR2Cache: true });
-      pairs = res.pairs;
-      token0s = res.token0s;
-      token1s = res.token1s;
-      symbols = res.symbols;
-      if (!pairs?.length)
-        throw new Error("No pairs found, is there TVL adapter for this already?");
-      if (pairs.length > 20 * 1000)
-        throw new Error("Too many pairs found, try using the graph?");
-    }
+    let res = await cache.readCache(cacheKey, { readFromR2Cache: true });
+    let { pairs, token0s, token1s, symbols } = res;
+    if (!pairs?.length)
+      throw new Error("No pairs found, is there TVL adapter for this already?");
+    if (pairs.length > 20 * 1000)
+      throw new Error("Too many pairs found, try using the graph?");
 
     pairs = pairs.map((i: any) => i.toLowerCase());
     token0s = token0s.map((i: any) => i.toLowerCase());

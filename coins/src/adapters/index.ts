@@ -27,7 +27,7 @@ export default {
   trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),
-  // midas: require("./rwa/midas"),
+  midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
@@ -182,4 +182,6 @@ export default {
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
+  notional: require("./yield/notional"),
+  shift: require("./yield/shift"),
 };

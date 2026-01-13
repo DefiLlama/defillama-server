@@ -3,7 +3,7 @@ import * as HyperExpress from "hyper-express";
 import process from "process";
 import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";
-import setTvlRoutes, { setProRoutes } from "./routes";
+import setTvlRoutes from "./routes";
 import { setInternalRoutes } from './routes/internalRoutes';
 import { RUN_TYPE } from "./utils";
 import './utils/failOnError';
@@ -14,12 +14,18 @@ const port = +(process.env.PORT ?? 5001)
 const skipSubPath = process.env.API2_SKIP_SUBPATH === 'true'
 
 if (!skipSubPath && !process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
+const LLAMA_PRO_API_KEY = process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
+// const LLAMA_INTERNAL_API_KEY = process.env.LLAMA_INTERNAL_API_KEY ?? process.env.API2_SUBPATH
 
 async function main() {
   console.time('Api Server init')
-  webserver.use((_req, res, next) => {
+  webserver.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', '*');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+
+    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === LLAMA_PRO_API_KEY || req.query['x-llama-pro-key'] === LLAMA_PRO_API_KEY;
+    // (req as any).isInternalRequest = skipSubPath || req.headers['x-llama-internal-key'] === LLAMA_INTERNAL_API_KEY || req.query['llama_internal_key'] === LLAMA_INTERNAL_API_KEY;
+
     next();
   });
 
@@ -30,7 +36,6 @@ async function main() {
 
   if (skipSubPath) {  // for local testing purposes
     setTvlRoutes(webserver, '/')
-    setProRoutes(webserver, '/')  // pro routes also have tvl routes
   }
 
   if (process.env.API2_SUBPATH) {
@@ -46,15 +51,6 @@ async function main() {
     const subPath = '/' + process.env.API2_SUBPATH + '_internal'
     webserver.use(subPath, router)
     setInternalRoutes(router, subPath)
-  }
-
-  if (process.env.API2_SUBPATH) {
-    const proRouter = new HyperExpress.Router()
-    const proSubPath = '/' + process.env.API2_SUBPATH + '_pro'
-    webserver.use(proSubPath, proRouter)
-
-    setProRoutes(proRouter, proSubPath)
-    setTvlRoutes(proRouter, proSubPath)  // pro routes also have tvl routes
   }
 
   webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))

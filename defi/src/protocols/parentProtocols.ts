@@ -8129,6 +8129,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#kinetiq",
     name: "Kinetiq",
     url: "https://kinetiq.xyz/",
+    referralUrl: "https://markets.xyz/join/llama",
     description: "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
     logo: `${baseIconsUrl}/kinetiq.jpg`,
     gecko_id: null,
@@ -8681,6 +8682,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SNAP_DEX",
+  },
+  {
+    id: "parent#dflow",
+    name: "DFlow",
+    url: "https://dflow.net/",
+    description: "DFlow is a high-precision, low-latency Solana DEX aggregator.",
+    logo: `${baseIconsUrl}/dflow.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dflow",
+  },
+  {
+    id: "parent#goblin-protocols",
+    name: "Goblin protocols",
+    url: "https://goblin.fi/",
+    description:
+      "Goblin is the native yield layer for Aptos Defi",
+    logo: `${baseIconsUrl}/goblin.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "the_goblin_fi",
   },
 ];
 

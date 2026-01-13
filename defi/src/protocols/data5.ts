@@ -8569,7 +8569,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["5690"],
     audit_links: [],
     module: "deliswap/index.js",
-    twitter: "deliswap",
+    twitter: "BMXDeFi",
     parentProtocol: "parent#bmx",
     listedAt: 1768256325,
   },

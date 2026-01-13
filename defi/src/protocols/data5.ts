@@ -6278,6 +6278,10 @@ const data5: Protocol[] = [
     twitter: "ape_church",
     forkedFromIds: [],
     listedAt: 1765913334,
+    dimensions: {
+      fees: "ape-church",
+      dexs: "ape-church",
+    },
   },
   {
     id: "7147",
@@ -8597,6 +8601,49 @@ const data5: Protocol[] = [
       fees: "babydoge-bridge",
       "bridge-aggregators": "babydoge-bridge",
     },
+  },
+  {
+    id: "7248",
+    name: "OSL HK",
+    address: null,
+    symbol: "-",
+    url: "https://www.osl.com/en",
+    description:
+      "Public listed (HKEX:863) and SFC-licensed Digital Asset platform & exchange in HK | $1B Insurance by Lloyd's of London",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/osl-hk.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Solana", "Avalanche", "Tron", "Litecoin", "TON", "Ripple", "Binance", "Doge"],
+    module: "osl-hk/index.js",
+    twitter: "OSL_HK",
+    forkedFrom: [],
+    listedAt: 1768319453
+  },
+  {
+    id: "7249",
+    name: "Lendao",
+    address: null,
+    symbol: "-",
+    url: "https://lendao.com",
+    description:
+      "Lendao is the next step in cryptocurrency services and blockchain technology development. It is designed to unite and connect the real world with the virtual currency universe. There are various networks and numerous assets worth billions within the cryptocurrency sphere still unavailable for a regular individual. Our ecosystem makes the world of virtual assets accessible for everyone",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lendao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "lendao/index.js",
+    twitter: "lendao_lab",
+    listedAt: 1768319717
   },
 ];
 export default data5;

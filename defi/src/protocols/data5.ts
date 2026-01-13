@@ -7076,8 +7076,8 @@ const data5: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "Chainlink",
-        type: "Primary",
-        proof: ["https://docs.re.xyz/protocol/how-the-re-protocol-work"],
+        type: "PoR",
+        proof: ["https://docs.re.xyz/protocol/how-the-re-protocol-work", "https://medium.com/reprotocol/re-integrates-chainlink-proof-of-reserve-to-enhance-transparency-of-offchain-reinsurance-collateral-cb1fc441ad6f"],
       }
     ],
     module: "re-protocol/index.js",

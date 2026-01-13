@@ -95,7 +95,7 @@ export async function storeHistorical(res: any) {
   // find and delete old hourly data 
   const timestamps = await queryPostgresWithRetry(
     sql`
-            select timestamp from activetvls where timestamp < ${twoDaysAgo}`,
+            select distinct timestamp from activetvls where timestamp < ${twoDaysAgo}`,
     sql
   );
 
@@ -106,7 +106,7 @@ export async function storeHistorical(res: any) {
 
   const dailyTimestamps = findDailyTimestamps(timestamps);
 
-  const timestampsToDelete = timestamps.filter((t: any) => !dailyTimestamps.includes(t.timestamp));
+  const timestampsToDelete = timestamps.map((t: any) => t.timestamp).filter((t: number) => !dailyTimestamps.includes(t));
   if (!timestampsToDelete.length) {
     sql.end();
     return;

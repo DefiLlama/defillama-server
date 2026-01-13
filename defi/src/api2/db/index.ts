@@ -192,11 +192,11 @@ async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string,
   return items.map((i: any) => i.data)
 }
 
-async function _getAllItemsAtTimeS(ddbPKFunction: Function, timeS: string) {
+async function _getAllItemsAtTimeS(ddbPKFunction: Function, timestamp: number) {
   const table = getTVLCacheTable(ddbPKFunction)
+  const timeS = new Date(timestamp * 1000).toISOString().slice(0, 10);
   const items = await table.sequelize!.query(
-    // `SELECT DISTINCT ON (id) id, "data", "timeS" FROM "${table.getTableName()}" WHERE "timeS" = '${timeS}' ORDER BY id`,
-    `SELECT DISTINCT ON (id) id, "data", "timestamp" FROM "${table.getTableName()}" WHERE "timestamp" = '${timeS}' ORDER BY id`,
+    `SELECT id, "data", "timeS" FROM "${table.getTableName()}" WHERE "timeS" = '${timeS}' ORDER BY id`,
     { type: QueryTypes.SELECT }
   )
   return items

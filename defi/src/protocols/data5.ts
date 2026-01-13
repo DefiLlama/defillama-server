@@ -8569,6 +8569,7 @@ const data5: Protocol[] = [
     audit_links: [],
     module: "deliswap/index.js",
     twitter: "deliswap",
+    parentProtocol: "parent#bmx",
     listedAt: 1768256325,
   },
 ];

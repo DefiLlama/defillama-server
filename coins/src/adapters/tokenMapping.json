@@ -2126,6 +2126,11 @@
       "to": "coingecko#syrupusdc",
       "decimals": 6,
       "symbol": "syrupUSDC"
+    },
+    "0x25118290e6A5f4139381D072181157035864099d": {
+      "to": "coingecko#rain",
+      "decimals": 18,
+      "symbol": "RAIN"
     }
   },
   "tezos": {

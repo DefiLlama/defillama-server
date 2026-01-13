@@ -13713,5 +13713,12 @@
       "decimals": 18,
       "symbol": "MEGA"
     }
+  },
+  "quai": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#quai-network",
+      "decimals": 18,
+      "symbol": "QUAI"
+    }
   }
 }

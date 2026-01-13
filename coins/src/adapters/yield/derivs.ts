@@ -694,6 +694,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9",
     address: "0x671642Ac281C760e34251d51bC9eEF27026F3B7a",
   },
+  ACRDX: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:pricePerShare",
+        target: "0x74a739ea1dc67c5a0179ebad665d1d3c4b80b712",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x9477724Bb54AD5417de8Baff29e59DF3fB4DA74f",
+  },
 };
 
 export async function derivs(timestamp: number) {

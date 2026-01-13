@@ -7,6 +7,8 @@ const coreAssets = require(coreAssetsFile)
 const { fixBalancesTokens, } = require('../../../../defi/DefiLlama-Adapters/projects/helper/tokenMapping.js')
 const sdk = require('@defillama/sdk')
 
+delete fixBalancesTokens.provenance
+
 async function run() {
   for (const [chain, mappings] of Object.entries(fixBalancesTokens)) {
     const api = new sdk.ChainApi({ chain })
@@ -28,7 +30,7 @@ async function run() {
       try {
         symbol = await api.call({ abi: 'string:symbol', target: token })
       } catch (e) {
-        // console.log('unable to fetch symbol for ', chain, token)
+         console.log('unable to fetch symbol for ', chain, token)
         symbol = token
       }
       chainTokenMapping[token] = { to: `coingecko#${coingeckoId}`, decimals, symbol }
@@ -37,7 +39,7 @@ async function run() {
       while (coreTokenMapping[label] && coreTokenMapping[label].toLowerCase() !== normalizedLabel) {
         label = `${symbol}_${++i}`
       }
-      if (token !== '0x0000000000000000000000000000000000000000')
+      if (token !== '0x0000000000000000000000000000000000000000' && token.toLowerCase() !== '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
         coreTokenMapping[label] = token
     }
 

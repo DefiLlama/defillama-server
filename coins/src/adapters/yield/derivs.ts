@@ -587,6 +587,113 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     address: "0xcd3c0F51798D1daA92Fb192E57844Ae6cEE8a6c7",
   },
+  ankrFLOWEVM: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function sharesToBonds(uint256) external view returns (uint256)",
+        target: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+        params: "1000000",
+      });
+      return 1e6 / rate;
+    },
+    chain: "flow",
+    underlying: "0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e",
+    address: "0x1b97100ea1d7126c4d60027e231ea4cb25314bdb",
+    confidence: 1,
+  },
+  earnAUSD: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "uint256:getTotalAssets",
+          target: "0x36eDbF0C834591BFdfCaC0Ef9605528c75c406aA",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+        }),
+      ]);
+      return assets / supply;
+    },
+    chain: "monad",
+    underlying: "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+    address: "0x103222f020e98bba0ad9809a011fdf8e6f067496",
+    confidence: 1,
+  },
+  sMON: {
+    rate: async ({ api }) => {
+      const assets = await api.call({
+        abi: "function convertToAssets(uint96 shares) external view returns (uint96 assets)",
+        target: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+        params: "1000000",
+      });
+      return assets / 1000000;
+    },
+    chain: "monad",
+    underlying: "0x0000000000000000000000000000000000000000",
+    address: "0xA3227C5969757783154C60bF0bC1944180ed81B9",
+  },
+  stBTC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x6d88d2718cfA50EcCf4743ed8E6Bd4A0716a4708",
+      });
+      return rate / 1e18;
+    },
+    chain: "btnx",
+    underlying: "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402",
+    address: "0xf4586028ffda7eca636864f80f8a3f2589e33795",
+    confidence: 1,
+  },
+  xPM: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:nav",
+        target: "0x75939CEb9FBa27A545fE27d1CBd228c29123687c",
+      });
+      return rate / 1e18;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x75939CEb9FBa27A545fE27d1CBd228c29123687c",
+  },
+  STAC: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0xEdC6287D3D41b322AF600317628D7E226DD3add4",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x51C2d74017390CbBd30550179A16A1c28F7210fc",
+  },
+  USP: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:getPriceForIssuance",
+        target: "0x433471901bA1A8BDE764E8421790C7D9bAB33552",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    address: "0x098697ba3fee4ea76294c5d6a466a4e3b3e95fe6",
+  },
+  MI4: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0x24c8964338Deb5204B096039147B8e8C3AEa42Cc",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "mantle",
+    underlying: "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9",
+    address: "0x671642Ac281C760e34251d51bC9eEF27026F3B7a",
+  },
 };
 
 export async function derivs(timestamp: number) {

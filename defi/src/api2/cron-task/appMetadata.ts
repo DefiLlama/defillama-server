@@ -242,6 +242,12 @@ async function _storeAppMetadata() {
       }
     }
     for (const protocol of tvlData.parentProtocols) {
+      if (!finalProtocols[protocol.id]) {
+        console.warn(`Parent Protocol ${protocol.id} not found in finalProtocols`)
+        finalProtocols[protocol.id] = {
+          ...protocol
+        }
+      }
       const { name: _, ...rest } = finalProtocols[protocol.id];
       const slugName: string = slug(protocol.name);
       finalProtocols[protocol.id] = {
@@ -290,6 +296,9 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of liquidityData) {
+      if (protocolInfoMap[protocol.id]?.wrongLiquidity || parentProtocolsInfoMap[protocol.id]?.wrongLiquidity) {
+        continue;
+      }
       finalProtocols[protocol.id] = {
         ...finalProtocols[protocol.id],
         liquidity: true,

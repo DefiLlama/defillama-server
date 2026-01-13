@@ -14,7 +14,7 @@ import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
 // import brc20 from "./brc20";
-import fantom from "./fantom";
+// import fantom from "./fantom";
 // import era from "./era";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
@@ -23,18 +23,18 @@ import optimism from "./optimism";
 // import solana from "./solana";
 // import xdai from "./xdai";
 // import cosmos from "./cosmos";
-import synapse from "./synapse";
+// import synapse from "./synapse";
 import base from "./base";
-import neon_evm from "./neon_evm";
+// import neon_evm from "./neon_evm";
 import arbitrum_nova from "./arbitrum_nova";
 import mantle from "./mantle";
 import axelar from "./axelar";
 import linea from "./linea";
 import manta from "./manta";
-import astrzk from "./astrzk";
-import zklink from "./zklink";
+// import astrzk from "./astrzk";
+// import zklink from "./zklink";
 // import celer from "./celer";
-import fraxtal from "./fraxtal";
+// import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
@@ -47,6 +47,7 @@ import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
 import anvu from "./anvu";
+import monad from "./monad";
 
 export type Token =
   | {
@@ -91,7 +92,7 @@ export const bridges = [
   avax,
   // brc20,
   //bsc,
-  fantom,
+  // fantom,
   // era,
   gasTokens,
   //harmony,
@@ -99,18 +100,18 @@ export const bridges = [
   // solana
   //xdai
   // cosmos,
-  synapse,
+  // synapse,
   base,
-  neon_evm,
+  // neon_evm,
   arbitrum_nova,
   mantle,
   axelar,
   linea,
   manta,
-  astrzk,
+  // astrzk,
   // zklink,
   // celer,
-  fraxtal,
+  // fraxtal,
   symbiosis,
   fuel,
   zircuit,
@@ -121,7 +122,8 @@ export const bridges = [
   flow,
   layerzero,
   initia, 
-  anvu
+  anvu,
+  monad
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

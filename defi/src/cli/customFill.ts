@@ -9,7 +9,7 @@ import { ChainApi } from "@defillama/sdk";
 
 const log = console.log
 
-/// ---------------- Protocol specfic code ----------------- 
+/// ---------------- Protocol specific code ----------------- 
 
 const protocolToRefill = 'SUNSwap V2'
 const chain = 'tron'
@@ -37,7 +37,7 @@ async function fetchData() {
   })
 
 }
-// ---------------- Protocol specfic code ----------------- 
+// ---------------- Protocol specific code ----------------- 
 
 async function getAndStore(
   timestamp: number,

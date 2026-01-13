@@ -9,6 +9,7 @@ import { getConfig } from "../../../utils/cache";
 
 const assetExceptions: string[]  = [
   "0xee9bfff7da99e6f85abc4f7fc33f5278473124e0", // tUSDe
+  '0x30ccf4bbee313fcd19f3e295b3ba2920a24e2f62', // sUSDai
 ]
 
 export default async function getTokenPrices(

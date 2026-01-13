@@ -106,7 +106,9 @@ async function readFileData(subPath: string, {
 
 async function deleteFileData(subPath: string) {
   const filePath = path.join(CACHE_DIR!, subPath)
-  return fs.promises.unlink(filePath)
+  return fs.promises.unlink(filePath).catch((e) => {
+    log(`Error deleting file ${filePath}:`, (e as any)?.message)
+  })
 }
 
 function getCacheFile(key: string) {

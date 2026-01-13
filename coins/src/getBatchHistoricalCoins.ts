@@ -4,38 +4,39 @@ import {
   IResponse,
   errorResponse,
 } from "./utils/shared";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { lowercaseAddress } from "./utils/processCoin";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 async function fetchDBData(
   coinsObj: any,
   coins: any[],
   coinQueries: string[],
   PKTransforms: { [key: string]: string[] },
-  searchWidth: number,
+  searchWidth: number
 ) {
   let response = {} as any;
   const promises: Promise<any>[] = [];
 
-  coinQueries.map(async (coinAddress) => {
+  coinQueries.map((coinAddress) => {
     const timestamps: number[] = coinsObj[coinAddress as keyof typeof coins];
     if (isNaN(timestamps.length)) return;
     const coin = coins.find((c) =>
       c.PK.includes(
         coinAddress.includes("coingecko")
           ? coinAddress.replace(":", "#").toLowerCase()
-          : lowercaseAddress(coinAddress),
-      ),
+          : lowercaseAddress(coinAddress)
+      )
     );
     if (coin == null) return;
     promises.push(
       ...timestamps.map(async (timestamp) => {
-        const finalCoin = await getRecordClosestToTimestamp(
+        const finalCoin: any = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
-          searchWidth,
+          searchWidth
         );
         if (finalCoin.SK === undefined) {
           return;
@@ -60,11 +61,16 @@ async function fetchDBData(
             });
           }
         });
-      }),
+      })
     );
   });
 
-  await Promise.all(promises);
+  await runInPromisePool({
+    items: promises,
+    concurrency: 7,
+    processor: async (promise: any) => await promise,
+  });
+
   return response;
 }
 
@@ -75,7 +81,7 @@ const handler = async (event: any): Promise<IResponse> => {
     if (coinQueries.length == 0)
       return errorResponse({ message: "no coins queried" });
     const searchWidth: number = quantisePeriod(
-      event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h",
+      event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
     );
     const { PKTransforms, coins } = await getBasicCoins(coinQueries);
 
@@ -84,11 +90,12 @@ const handler = async (event: any): Promise<IResponse> => {
       coins,
       coinQueries,
       PKTransforms,
-      searchWidth,
+      searchWidth
     );
 
     return successResponse({ coins: dbData }, 3600); // 1 hour cache
   } catch (e: any) {
+    console.log('Error in getBatchHistoricalCoins', event.queryStringParameters?.coins, e)
     return errorResponse({ message: e.stack });
   }
 };

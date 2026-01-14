@@ -163,6 +163,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
     address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
   },
+  UKTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0x903d5990119bC799423e9C25c56518Ba7DD19474",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0x27f6c8289550fce67f6b50bed1f519966afe5287",
+    address: "0xf695Df6c0f3bB45918A7A82e83348FC59517734E",
+  },
   aETH: {
     rate: async ({ api }) => {
       const rate = await api.call({

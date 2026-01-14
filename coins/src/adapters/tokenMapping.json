@@ -6022,7 +6022,7 @@
     "0x0153d6e0462080bb2842109e9b64f589ef5aa06bb32b26bbdb894aca92674395": {
       "decimals": "5",
       "symbol": "UKTBL",
-      "to": "asset#ethereum:0xf695df6c0f3bb45918a7a82e83348fc59517734e"
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
     },
     "0x02f5eb9a4f77b6c7c83488418e77329d31eb43219745959948a0fce9580905d9": {
       "decimals": "18",

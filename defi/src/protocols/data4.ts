@@ -31121,7 +31121,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.osl.com/en",
     description:
-      "OSL is a regulated, Hong Kong-based digital asset platform offering exchange, custody, brokerage, OTC, and RWA tokenization services under institutional-grade compliance and infrastructure.",
+      "OSL is a centralized digital asset exchange operated under OSL Group (HKEX: 863.HK), it is global exchange sevices, marking a pivotal milestone in the company’s global compliance-driven expansion strategy",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/osl.jpg`,
     audits: "0",

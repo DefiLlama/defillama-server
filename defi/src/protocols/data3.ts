@@ -43864,7 +43864,8 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4548",
-    name: "Mezo Network",
+    name: "Mezo Bridge",
+    previousNames: ["Mezo Network"],
     address: null,
     symbol: "-",
     url: "https://mezo.org",

@@ -167,13 +167,13 @@ const configs: { [adapter: string]: Config } = {
     rate: async ({ api }) => {
       const rate = await api.call({
         abi: "function getLatestPrice() external view returns (uint256)",
-        target: "0x903d5990119bC799423e9C25c56518Ba7DD19474",
+        target: "0xf695Df6c0f3bB45918A7A82e83348FC59517734E",
       });
       return rate / 1e6;
     },
-    chain: "ethereum",
+    chain: "polygon",
     underlying: "0x27f6c8289550fce67f6b50bed1f519966afe5287",
-    address: "0xf695Df6c0f3bB45918A7A82e83348FC59517734E",
+    address: "0x970E2aDC2fdF53AEa6B5fa73ca6dc30eAFEDfe3D",
   },
   aETH: {
     rate: async ({ api }) => {

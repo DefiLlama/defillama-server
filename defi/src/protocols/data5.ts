@@ -5725,6 +5725,10 @@ const data5: Protocol[] = [
     audit_links: ["https://audits.kinetiq.xyz/"],
     parentProtocol: "parent#kinetiq",
     listedAt: 1765486307,
+    dimensions: {
+      dexs: "kinetiq-markets",
+      fees: "kinetiq-markets",
+    },
   },
   {
     id: "7123",

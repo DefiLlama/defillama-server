@@ -29525,7 +29525,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Tron"],
     forkedFromIds: [],
     module: "sunperp/index.js",
@@ -29536,8 +29536,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1758724545,
     dimensions: {
-      derivatives: "sunperp",
-      "open-interest": "sunperp-oi"
+     // derivatives: "sunperp",
+     // "open-interest": "sunperp-oi"
     }
   },
   {

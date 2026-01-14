@@ -56594,7 +56594,7 @@ const data3_3: Protocol[] = [
   {
     id: "5086",
     name: "Intuition",
-    address: null,
+    address: "base:0x6cd905df2ed214b22e0d48ff17cd4200c1c6d8a3",
     symbol: "TRUST",
     url: "https://www.intuition.systems",
     description: "Intuition is an Ethereum-based attestation protocol harnessing the wisdom of the crowds to create an open knowledge and reputation graph.",

@@ -7988,7 +7988,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7221",
-    name: "StandX Perps",
+    name: "StandX",
     address: null,
     symbol: "-",
     url: "https://standx.com/",

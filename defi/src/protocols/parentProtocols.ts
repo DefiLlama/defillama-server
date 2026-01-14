@@ -3307,7 +3307,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Bedrock is a non-custodial solution designed in partnership with RockX, a longstanding blockchain infrastructure company with strong roots in crypto staking. Designed with institutions in mind, Bedrock is a platform focused on security, compliance, and transparency.",
     logo: `${baseIconsUrl}/bedrock.jpg`,
-    gecko_id: null,
+    gecko_id: "bedrock-token",
     cmcId: null,
     chains: [],
     twitter: "Bedrock_DeFi",

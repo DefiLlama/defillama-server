@@ -3108,8 +3108,8 @@ const data3_0: Protocol[] = [
   {
     id: "2832",
     name: "Bedrock uniETH",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xff7d6a96ae471bbcd7713af9cb1feeb16cf56b41",
+    symbol: "BR",
     assetToken: "UNIETH",
     url: "https://bedrock.rockx.com/unieth",
     description:
@@ -25881,8 +25881,8 @@ const data3_1: Protocol[] = [
   {
     id: "3801",
     name: "Bedrock uniIOTX", // previous uniIOTX
-    address: null,
-    symbol: "-",
+    address: "bsc:0xff7d6a96ae471bbcd7713af9cb1feeb16cf56b41",
+    symbol: "BR",
     assetToken: "uniIOTX",
     url: "https://app.bedrock.technology/uniiotx",
     description:
@@ -61485,8 +61485,8 @@ const data3_3: Protocol[] = [
   {
     id: "5295",
     name: "Bedrock uniBTC", // previous uniBTC Restaked
-    address: null,
-    symbol: "-",
+    address: "bsc:0xff7d6a96ae471bbcd7713af9cb1feeb16cf56b41",
+    symbol: "BR",
     url: "https://app.bedrock.technology/",
     description: "BTC staked into babylon",
     chain: "Bitcoin",

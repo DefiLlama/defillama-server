@@ -25638,7 +25638,10 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1699970045,
     dimensions: {
-      fees: "frankencoin"
+      fees: {
+        adapter: "frankencoin",
+        genuineSpikes: ["1768348800"]
+      }
     }
   },
   {

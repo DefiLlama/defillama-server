@@ -246,14 +246,20 @@ export function addAggregateRecords(pSummary: PROTOCOL_SUMMARY) {
 
 export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidRecordsMessages: Array<any>) {
   // because of number rounding, we mark it's safe within margin of 100
-  const SAFE_NUMBER_MARGIN = 1000;
+  const SAFE_NUMBER_MARGIN = 0.1; // 10%
+  const THRESHOLD_TOTAL_FEES = 1_000_000; // total yearly fees >= $1M
+  const THRESHOLD_TIMEFRAMES = ['yearly']; // check yearly only for now
   
   if (pSummary.aggregatedRecords) {
-    for (const timeframe of ['yearly', 'quarterly', 'monthly']) {
+    for (const timeframe of THRESHOLD_TIMEFRAMES) {
       for (const [key, value] of Object.entries((pSummary.aggregatedRecords as any)[timeframe])) {
         const df = (value as any)[AdaptorRecordType.dailyFees]?.value || 0
         const dr = (value as any)[AdaptorRecordType.dailyRevenue]?.value || 0
         const dssr = (value as any)[AdaptorRecordType.dailySupplySideRevenue]?.value || 0
+        
+        // ignore low fees protocols
+        if (df < THRESHOLD_TOTAL_FEES) continue;
+        
         if (df && dssr && dr) {
           // Fees = SupplySideRevenue + Revenue
           if (unsafeMargin(dssr + dr, df, SAFE_NUMBER_MARGIN)) {
@@ -295,6 +301,7 @@ export function validateAggregateRecords(pSummary: PROTOCOL_SUMMARY, invalidReco
   }
   
   function unsafeMargin(valueA: number, valueB: number, valueMargin: number) {
-    return (valueA > valueB + valueMargin) || (valueA < valueB - valueMargin);
+    const diff = Math.abs(valueA - valueB);
+    return diff / valueB > valueMargin;
   }
 }

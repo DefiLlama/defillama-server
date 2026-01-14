@@ -1487,7 +1487,7 @@ const data4: Protocol[] = [
     previousNames: ["SSI"],
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
-    url: "https://ssi.sosovalue.com/",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description:
       "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
     chain: "Base",
@@ -5320,7 +5320,7 @@ const data4: Protocol[] = [
     name: "SoSoValue Basis",
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
-    url: "https://ssi.sosovalue.com",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description:
       "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
     chain: "Base",

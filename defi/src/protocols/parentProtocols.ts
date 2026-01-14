@@ -6584,7 +6584,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sosovalue",
     name: "SoSoValue",
-    url: "https://ssi.sosovalue.com",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
+    referralUrl: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description: "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
     logo: `${baseIconsUrl}/sosovalue.jpg`,
     gecko_id: "sosovalue",

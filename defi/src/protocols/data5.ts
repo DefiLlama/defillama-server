@@ -8158,7 +8158,7 @@ const data5: Protocol[] = [
     name: "SoDEX",
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
-    url: "https://sodex.com/",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description: "SoDEX is a high-performance order book decentralized exchange (DEX) built on ValueChain.",
     chain: "Base",
     logo: `${baseIconsUrl}/sodex.jpg`,

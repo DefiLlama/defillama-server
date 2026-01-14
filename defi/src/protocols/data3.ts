@@ -17303,8 +17303,8 @@ const data3_0: Protocol[] = [
   {
     id: "3432",
     name: "Vooi V1", //previous Vooi, deprecated product
-    address: null,
-    symbol: "-",
+    address: "0xb31561f0e2aac72406103b1926356d756f07a481",
+    symbol: "VOOI",
     url: "https://vooi.io",
     description:
       "Experience seamless stablecoin swaps on your favorite L2 networks. Discover better yields with single-token staking.",
@@ -46388,8 +46388,8 @@ const data3_2: Protocol[] = [
   {
     id: "4655",
     name: "Vooi",
-    address: null,
-    symbol: "-",
+    address: "0xb31561f0e2aac72406103b1926356d756f07a481",
+    symbol: "VOOI",
     url: "https://app.vooi.io/?r=82YXDTJ",
     referralUrl: "https://app.vooi.io/?r=82YXDTJ",
     description: "Enjoy a CEX-like experience while trading across various perp DEXs and blockchain networks",
@@ -46397,8 +46397,8 @@ const data3_2: Protocol[] = [
     logo: `${baseIconsUrl}/vooi.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "vooi",
+    cmcId: "38854",
     category: "Derivatives",
     chains: ["Arbitrum"],
     module: "dummy.js",
@@ -58831,7 +58831,7 @@ const data3_3: Protocol[] = [
   {
     id: "5181",
     name: "Limitless Exchange",
-    address: null,
+    address: "base:0x9eadbe35f3ee3bf3e28180070c429298a1b02f93",
     symbol: "LMTS",
     url: "https://limitless.exchange/?r=0UWWSGL92U",
     referralUrl: "https://limitless.exchange/?r=0UWWSGL92U",
@@ -58841,8 +58841,8 @@ const data3_3: Protocol[] = [
     logo: `${baseIconsUrl}/limitless-exchange.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "limitless-3",
+    cmcId: "38756",
     category: "Prediction Market",
     chains: ["Base"],
     module: "limitless-exchange/index.js",

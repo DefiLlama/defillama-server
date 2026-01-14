@@ -5726,8 +5726,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#kinetiq",
     listedAt: 1765486307,
     dimensions: {
-      dexs: "kinetiq-markets",
       fees: "kinetiq-markets",
+      derivatives: "kinetiq-markets",
     },
   },
   {

@@ -13550,7 +13550,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "693",
     name: "Superfluid",
-    address: null,
+    address: "base:0xa69f80524381275a7ffdb3ae01c54150644c8792",
     symbol: "SUP",
     url: "https://www.superfluid.finance/home",
     description:

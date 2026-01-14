@@ -64382,7 +64382,7 @@ const data3_3: Protocol[] = [
     name: "LinqAI",
     address: "0xd4f4d0a10bcae123bb6655e8fe93a30d01eebd04",
     symbol: "LNQ",
-    url: "https://linqai.fi",
+    url: "https://www.linqai.com/",
     description: "Revolutionizing the business world with cutting-edge AI solutions – Stake, Farm, and Reap the Rewards!",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/linqai.jpg`,

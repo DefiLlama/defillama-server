@@ -5834,7 +5834,7 @@ const data4: Protocol[] = [
     name: "Lazy Summer Protocol",
     address: "base:0x194f360d130f2393a5e9f3117a6a1b78abea1624",
     symbol: "SUMR",
-    url: "https://summer.fi",
+    url: "https://summer.fi/earn?referralCode=2001317",
     description:
       "The Lazy Summer Protocol offers Automated Yield across DeFi's highest quality protocols on Ethereum, Base and Arbitrum. It uses AI Powered Keepers to continually monitor and rebalance the supported Vaults offering users the best available yields within strict risk parameters, set and managed by leading risk management firm BlockAnalitica.",
     chain: "Ethereum",

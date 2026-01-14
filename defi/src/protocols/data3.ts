@@ -48394,7 +48394,7 @@ const data3_3: Protocol[] = [
     // previousNames: ["Summer.fi"], this was causing problems, since it was using the name that we attribute to the parentProtocol
     address: null,
     symbol: "-",
-    url: "https://pro.summer.fi/",
+    url: "https://summer.fi/earn?referralCode=2001317",
     description:
       "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
     chain: "Ethereum",

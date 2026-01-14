@@ -6641,7 +6641,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#summer.fi",
     name: "Summer.fi",
-    url: "https://summer.fi",
+    url: "https://summer.fi/earn?referralCode=2001317",
+    referralUrl: "https://summer.fi/earn?referralCode=2001317",
     description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
     logo: `${baseIconsUrl}/summer.fi.png`,
     gecko_id: "summer-2",

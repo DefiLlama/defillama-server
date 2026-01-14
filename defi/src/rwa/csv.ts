@@ -1,51 +1,28 @@
-import fs from "fs";
-import path from "path";
-import { parse } from "csv-parse/sync"; // synchronous parsing
+import { getAllAirtableRecords } from "../utils/airtable";
 
-const listColumns = [
-    'Chain',
-    'Contracts',
-    'Category',
-    'Asset Class',
-    'KYC',
-    'Notes',
-    'Pool ID'
-];
+const listColumns = ["Chain", "Contracts", "Category", "Asset Class", "KYC", "Notes", "Pool ID"];
 
-function parseCsv(): any {
-    const csvPath = path.join(__dirname, "./12Jan.csv");
-    const csv = fs.readFileSync(csvPath, "utf8");
-    const rows: any[] = parse(csv, {
-        columns: true,  // return objects with headers as keys
-        skip_empty_lines: true,
-        bom: true,      // handles BOM if present
-        trim: true      // trims spaces from cells
-      });
-      
-    return rows;
-}
+export async function getCsvData() {
+  const rawCsvData = await getAllAirtableRecords("appv73DKfa5DrNPP0/tblnrNUJzEiXFB5gU");
 
-export function getCsvData() {
-    const rawCsvData = parseCsv();
-
-    const parsedCsvData = rawCsvData.map((row: any) => {
-        Object.keys(row).forEach((key: string) => {
-            if (row[key] == '-' || row[key] == '') {
-                row[key] = null;
-            } else if (row[key] == '✓') {
-                row[key] = true;
-            } else if (row[key] == 'x') {
-                row[key] = false;
-            } else if (row[key].indexOf(";") !== -1) {
-                row[key] = row[key].split(";").map((item: string) => item.trim());
-            } else if (listColumns.includes(key)) {
-                row[key] = [row[key]]
-            } else {
-                row[key] = row[key].trim();
-            }
-        });
-        return row;
+  const parsedCsvData = rawCsvData.map(({ fields: row }) => {
+    Object.keys(row).forEach((key: string) => {
+      if (row[key] == "-" || row[key] == "") {
+        row[key] = null;
+      } else if (row[key] == "✓" || row[key] == true) {
+        row[key] = true;
+      } else if (row[key] == "x" || row[key] == false) {
+        row[key] = false;
+      } else if (row[key].indexOf(";") !== -1) {
+        row[key] = row[key].split(";").map((item: string) => item.trim());
+      } else if (listColumns.includes(key)) {
+        row[key] = [row[key]];
+      } else {
+        row[key] = row[key].trim();
+      }
     });
+    return row;
+  });
 
-    return parsedCsvData;
+  return parsedCsvData;
 }

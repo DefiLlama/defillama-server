@@ -224,6 +224,8 @@ function getOnChainTvls(
   Object.keys(assetPrices).map((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
     const data = parsedCsvData.find((row: any) => row[keyMap.id] == rwaId);
+    if (!data) return
+
     const cgId = data[keyMap.coingeckoId];
 
     if (cgId && stablecoinsData[cgId]) {
@@ -256,7 +258,7 @@ async function main(ts: number = 0) {
   const timestamp = getTimestampAtStartOfDay(ts);
 
   // read CSV data and parse it 
-  const parsedCsvData = getCsvData();
+  const parsedCsvData = await getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
   const projectIdsMap: {[rwaId: string]: string } = {}

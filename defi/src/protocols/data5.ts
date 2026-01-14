@@ -8624,7 +8624,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://www.osl.com/en",
     description:
-      "Public listed (HKEX:863) and SFC-licensed Digital Asset platform & exchange in HK | $1B Insurance by Lloyd's of London",
+      "OSL Digital Securities is Hong Kong’s first and most established SFC-licensed and insured digital asset exchange. Operating since 2018, the platform provides institutional-grade digital asset services to corporations, financial institutions, professional and retail investors.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/osl-hk.jpg`,
     audits: "0",

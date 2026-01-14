@@ -30153,8 +30153,8 @@ const data4: Protocol[] = [
   {
     id: "6790",
     name: "Falcon Finance",
-    address: null,
-    symbol: "-",
+    address: "0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949",
+    symbol: "FF",
     url: "https://app.falcon.finance?r=ecf7be7f48d1ce67467fc040bcc1abd5",
     referralUrl: "https://app.falcon.finance?r=ecf7be7f48d1ce67467fc040bcc1abd5",
     description: "Falcon Finance is the first universal collateralization infrastructure protocol that creates sustainable yield opportunities.",

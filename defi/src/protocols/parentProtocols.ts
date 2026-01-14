@@ -8711,6 +8711,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "the_goblin_fi",
   },
+  {
+    id: "parent#nest",
+    name: "NEST",
+    url: "https://app.usenest.xyz/",
+    description:
+      "NEST is built for Hyperliquid. Smart pools and efficient swaps power onchain rewards that compound value back to voters and the ecosystem.",
+    logo: `${baseIconsUrl}/nest.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NestExchange",
+  },
 ];
 
 export default parentProtocols;

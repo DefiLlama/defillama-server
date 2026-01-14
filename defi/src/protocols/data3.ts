@@ -56872,8 +56872,8 @@ const data3_3: Protocol[] = [
   {
     id: "5097",
     name: "Lombard LBTC",
-    address: null,
-    symbol: "-",
+    address: "0xf0db65d17e30a966c2ae6a21f6bba71cea6e9754",
+    symbol: "BARD",
     assetToken: "LBTC",
     url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description:
@@ -57920,8 +57920,8 @@ const data3_3: Protocol[] = [
   {
     id: "5143",
     name: "Lombard Vaults",
-    address: null,
-    symbol: "-",
+    address: "0xf0db65d17e30a966c2ae6a21f6bba71cea6e9754",
+    symbol: "BARD",
     url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description: `Lombard’s DeFi Vault is designed to bridge the gap between bitcoin and DeFi, by offering LBTC holders one-click access to DeFi yields without any of the complexities. It accepts LBTC, a liquid staked token representation of Bitcoin, as well WBTC and seeks to capture the highest risk-adjusted yields derived from multiple DeFi strategies. `,
     chain: "Ethereum",

@@ -5639,7 +5639,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     logo: `${baseIconsUrl}/lombard-finance.jpg`,
-    gecko_id: null,
+    gecko_id: "lombard-protocol",
     cmcId: null,
     chains: [],
     twitter: "Lombard_Finance",

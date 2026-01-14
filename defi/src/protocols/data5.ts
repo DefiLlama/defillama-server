@@ -1997,8 +1997,8 @@ const data5: Protocol[] = [
   {
     id: "6974",
     name: "Lombard BTC.b",
-    address: null,
-    symbol: "-",
+    address: "0xf0db65d17e30a966c2ae6a21f6bba71cea6e9754",
+    symbol: "BARD",
     url: "https://www.lombard.finance/app/stake/?referrer=ssybnl",
     description: "BTC.b — is Bitcoin, bridged — decentralized, non-custodial, permissionless Bitcoin for DeFi",
     chain: "Bitcoin",

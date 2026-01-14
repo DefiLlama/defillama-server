@@ -8682,5 +8682,33 @@ const data5: Protocol[] = [
     twitter: "Neuravaults",
     listedAt: 1768320002
   },
+  {
+    id: "7251",
+    name: "SunX",
+    address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
+    symbol: "SUN",
+    url: "https://www.sunx.io/",
+    description:
+      "SunX is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/sunx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Tron"],
+    forkedFromIds: [],
+    module: "dummy.js",
+    twitter: "SunX_DEX",
+    audit_links: [
+      "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Sunperp%20Dex%20-%20SlowMist%20Audit%20Report.pdf"
+    ],
+    parentProtocol: "parent#sun",
+    dimensions: {
+      derivatives: "sunperp",
+      "open-interest": "sunperp-oi"
+    }
+  },
 ];
 export default data5;

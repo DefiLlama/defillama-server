@@ -12055,7 +12055,7 @@ const data2: Protocol[] = [
     symbol: "XAI",
     url: "https://sideshift.ai",
     description:
-      "SideShift.ai is a no sign-up crypto exchange where users can trade between 50+ cryptocurrencies across multiple chains. SideShift Token (XAI) is the native ERC20 token of SideShift.ai. XAI can be staked on-chain and by doing so, users receive a share of 25% of SideShift.ai revenues, distributed daily.",
+      "SideShift.ai is a direct-to-wallet crypto exchange. Launched in 2019, it has processed over $3B in volume. SideShift powers swaps on Trezor, Bitcoin.com Wallet, Aqua Wallet, and more. Currently supporting over 200+ tokens on 40+  chains. The SideShift token ($XAI) is the native ERC20 token of SideShift.ai. XAI can be staked on-chain and by doing so, users receive a share of 25% of SideShift.ai revenues, distributed daily.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sideshift.png`,
     audits: "0",

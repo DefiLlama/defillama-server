@@ -23345,7 +23345,7 @@ const data2: Protocol[] = [
     symbol: "PT",
     url: "https://phemex.com",
     description:
-      "Phemex is a Top derivatives global crypto exchange. Users can now verify their Proof-of-Reserves anytime.",
+      "Founded in 2019, Phemex is a user-first crypto exchange trusted by over 10 million traders worldwide. The platform offers spot and derivatives trading, copy trading, and wealth management products designed to prioritize user experience, transparency, and innovation. With a forward-thinking approach and a commitment to user empowerment, Phemex delivers reliable tools, inclusive access, and evolving opportunities for traders at every level to grow and succeed.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/phemex.jpg`,
     audits: "0",

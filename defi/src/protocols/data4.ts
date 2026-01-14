@@ -17322,7 +17322,7 @@ const data4: Protocol[] = [
     name: "CIAN Curating",
     address: null,
     symbol: "-",
-    url: "https://cian.app",
+    url: "https://yieldlayer.cian.app/vaults/0xB13aa2d0345b0439b064f26B82D8dCf3f508775d?chainId=1&utm_source=TPFDZE",
     description:
       "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
     chain: "Ethereum",

@@ -7591,7 +7591,7 @@ const data5: Protocol[] = [
     name: "Perena Vaults",
     address: null,
     symbol: "-",
-    url: "https://perena.org",
+    url: "https://app.perena.org/?ref=ILPYAL",
     description: "Perena is a stablebank offering USD STAR (USD*), a digital dollar that automatically accrues value from real yield sources, including delta-neutral strategies, secured lending, and stablecoins.",
     chain: "Solana",
     logo: `${baseIconsUrl}/perena-vaults.jpg`,

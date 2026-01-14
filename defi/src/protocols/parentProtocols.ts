@@ -8631,7 +8631,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#perena",
     name: "Perena",
-    url: "https://perena.org",
+    url: "https://app.perena.org/?ref=ILPYAL",
+    referralUrl: "https://app.perena.org/?ref=ILPYAL",
     description: "Perena is a stablebank offering USD STAR (USD*), a digital dollar that automatically accrues value from real yield sources, including delta-neutral strategies, secured lending, and stablecoins.",
     logo: `${baseIconsUrl}/perena.jpg`,
     gecko_id: null,

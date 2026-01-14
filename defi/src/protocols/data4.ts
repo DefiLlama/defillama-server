@@ -3710,7 +3710,7 @@ const data4: Protocol[] = [
     name: "Perena Dex",
     address: null,
     symbol: "-",
-    url: "https://perena.org",
+    url: "https://app.perena.org/?ref=ILPYAL",
     description:
       "Perena is building the infrastructure for stablecoins on Solana, starting with a novel AMM, Numéraire.",
     chain: "Solana",

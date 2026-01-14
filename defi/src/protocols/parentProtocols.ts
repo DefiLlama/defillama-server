@@ -7390,7 +7390,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hydrex",
     name: "Hydrex",
-    url: "https://hydrex.fi",
+    url: "https://www.hydrex.fi?anchorRef=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://www.hydrex.fi?anchorRef=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: "Hydrex is a liquidity-neutral ve(3,3) protocol built on Base for Base, designed to bring new users onchain",
     logo: `${baseIconsUrl}/hydrex.jpg`,
     gecko_id: null,

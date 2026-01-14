@@ -29512,7 +29512,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6763",
-    name: "SunX",
+    name: "SunX Bridge",
     previousNames: ["SunPerp"],
     address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
     symbol: "SUN",
@@ -29520,7 +29520,7 @@ const data4: Protocol[] = [
     description:
       "SunX is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sunx.jpg`,
+    logo: `${baseIconsUrl}/sunx-bridge.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

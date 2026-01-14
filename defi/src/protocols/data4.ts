@@ -18301,8 +18301,8 @@ const data4: Protocol[] = [
   {
     id: "6297",
     name: "Almanak",
-    address: null,
-    symbol: "-",
+    address: "0xdefa1d21c5f1cbeac00eeb54b44c7d86467cc3a3",
+    symbol: "ALMANAK",
     url: "https://almanak.co",
     description:
       "Almanak is an innovative DeFi Agent Platform designed to create and deploy automated financial strategies using financial Agents. The platform combines advanced automation with emerging AI technologies to help strategies adapt to market conditions more effectively than traditional tools",
@@ -18310,8 +18310,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/almanak.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "almanak",
+    cmcId: "39088",
     category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     module: "almanak/index.js",

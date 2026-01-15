@@ -8345,6 +8345,10 @@ const data5: Protocol[] = [
     twitter: "SNAP_DEX",
     parentProtocol: "parent#snap",
     listedAt: 1768236029,
+    dimensions: {
+      dexs: "snap-v3",
+      fees: "snap-v3",
+    },
   },
   {
     id: "7236",

@@ -7083,7 +7083,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Insurance",
+    tags: ["Other Fixed Income"],
     chains: ["Ethereum", "Base", "Arbitrum", "Avalanche"],
     oraclesBreakdown: [
       {

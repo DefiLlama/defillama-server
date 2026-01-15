@@ -51,7 +51,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "sun-token",
     cmcId: "10529",
     chains: [],
-    twitter: "sunpumpmeme",
+    twitter: "OfficialSUNio",
     github: ["sunswapteam"],
   },
   {

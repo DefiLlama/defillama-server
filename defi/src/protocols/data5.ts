@@ -8761,5 +8761,26 @@ const data5: Protocol[] = [
     parentProtocol: "parent#nest",
     listedAt: 1768416291
   },
+  {
+    id: "7254",
+    name: "Lazy",
+    address: null,
+    symbol: "-",
+    url: "https://getlazy.xyz",
+    description: "Patient capital, rewarded. Deposit USDC, earn yield. No staking. No claiming.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lazy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "lazyusd/index.js",
+    twitter: "lazydotxyz",
+    listedAt: 1768495991
+  },
 ];
 export default data5;

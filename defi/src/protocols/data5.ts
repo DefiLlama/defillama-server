@@ -8729,7 +8729,7 @@ const data5: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Binance"],
     forkedFromIds: [],
-    module: "dummy.js",
+    module: "ea-finance/index.js",
     twitter: "EA_Finance",
     audit_links: [],
     listedAt: 1768416221

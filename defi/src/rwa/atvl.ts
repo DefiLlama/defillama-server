@@ -4,7 +4,7 @@ import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { coins, cache } from "@defillama/sdk";
-import { getCsvData } from "./csv";
+import { getCsvData } from "./spreadsheet";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
 import { getChainDisplayName } from "../utils/normalizeChain";

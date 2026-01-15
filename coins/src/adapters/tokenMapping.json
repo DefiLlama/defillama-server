@@ -9026,6 +9026,11 @@
     }
   },
   "fuel": {
+    "0x1a48bde9b03ff7f6ab9d566c3f8968a532a782402976053cebfa113cbb9a03ef": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 9,
+      "symbol": "uwWBTC"
+    },
     "0x2269aa41cf3982753d978a40e0f04618ff9d84b07d1ce10e99831e3217d3a9b0": {
       "to": "coingecko#tether",
       "decimals": 9,

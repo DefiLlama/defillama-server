@@ -194,7 +194,7 @@ function getActiveTvls(
       const rwaId = tokenToProjectMap[pk];
       const projectId = projectIdsMap[rwaId];
 
-      if (amountId == projectId) return;
+      if (Array.isArray(projectId) ? projectId.includes(amountId) : amountId == projectId) return;
 
       try {
         const projectName = protocolIdMap[amountId];

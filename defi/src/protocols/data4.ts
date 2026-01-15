@@ -8514,6 +8514,7 @@ const data4: Protocol[] = [
     module: "multipli/index.js",
     twitter: "multiplifi",
     listedAt: 1741969274,
+    stablecoins: ["rwausdi"],
     dimensions: {
       fees: "multipli-fi"
     }

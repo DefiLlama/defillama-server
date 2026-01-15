@@ -5676,12 +5676,13 @@ const data5: Protocol[] = [
     category: "Gamified Mining",
     chains: ["Solana"],
     forkedFromIds: [],
-    module: "dummy.js",
+    module: "macaron-bid.js",
     twitter: "macaron_bid",
     audit_links: [],
     dimensions: {
       fees: "macaron-bid",
     },
+    listedAt: 1768492247,
   },
   {
     id: "7121",

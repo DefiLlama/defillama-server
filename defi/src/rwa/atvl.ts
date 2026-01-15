@@ -64,7 +64,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
   rawTvls.map((protocol: any) => {
-    const category = timestamp == 0 ? protocol.category : categoryMap[protocol.id];
+    const category = categoryMap[protocol.id];
     if (excludedProtocolCategories.includes(category)) return;
     Object.keys(protocol.data).map((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;

@@ -9,9 +9,11 @@ export async function getCsvData() {
     Object.keys(row).forEach((key: string) => {
       if (row[key] == "-" || row[key] == "") {
         row[key] = null;
-      } else if (row[key] == "✓" || row[key] == true) {
+      } else if (row[key] == '1') {
+        row[key] = '1'
+      } else if (row[key] == "✓" || row[key] == true || row[key].toLowerCase() == 'true') {
         row[key] = true;
-      } else if (row[key] == "x" || row[key] == false) {
+      } else if (row[key] == "x" || row[key] == false || row[key].toLowerCase() == 'false') {
         row[key] = false;
       } else if (row[key].indexOf(";") !== -1) {
         row[key] = row[key].split(";").map((item: string) => item.trim());

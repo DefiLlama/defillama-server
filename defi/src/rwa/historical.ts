@@ -71,6 +71,10 @@ export async function storeHistorical(res: any) {
       aggregatemcap += Number(onChainMarketcap[chain]);
     });
 
+    if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap)) {
+      console.log(`ERROR ON ID ${id}`)
+    }
+
     inserts.push({
       timestamp,
       id,

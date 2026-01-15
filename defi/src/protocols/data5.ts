@@ -5333,7 +5333,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Liquid Restaking",
     chains: ["Flare"],
     forkedFromIds: [],
     module: "firelight/index.js",

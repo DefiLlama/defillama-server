@@ -7097,6 +7097,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://hacken.io/audits/re-protocol/"],
     listedAt: 1766447067,
+    stablecoins: ["re-protocol-reusd"],
     dimensions: {
       fees: "re-protocol"
     }

@@ -8783,5 +8783,26 @@ const data5: Protocol[] = [
     twitter: "lazydotxyz",
     listedAt: 1768495991
   },
+  {
+    id: "7255",
+    name: "Obyte Friends",
+    address: null,
+    symbol: "-",
+    url: "https://friends.obyte.org/",
+    description: "Make 1% a day by making friends every day and spreading the word about Obyte’s unstoppable, censorship-resistant tech.",
+    chain: "Obyte",
+    logo: `${baseIconsUrl}/obyte-friends.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Obyte"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "obyte-friends/index.js",
+    twitter: "ObyteOrg",
+    listedAt: 1768512967
+  },
 ];
 export default data5;

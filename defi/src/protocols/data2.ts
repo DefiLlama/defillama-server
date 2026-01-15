@@ -15954,7 +15954,7 @@ const data2: Protocol[] = [
     ],
     forkedFrom: [],
     module: "kamino/index.js",
-    twitter: "KaminoFinance",
+    twitter: "Kamino",
     audit_links: ["https://smartstate.tech/reports/kamino-finance-report-27082022.html"],
     listedAt: 1662391548,
     parentProtocol: "parent#kamino-finance",

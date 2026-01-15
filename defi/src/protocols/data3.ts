@@ -25188,7 +25188,7 @@ const data3_1: Protocol[] = [
     description:
       "Kamino Lend (K-Lend) is a novel peer-to-pool borrowing primitive designed as foundational infrastructure to power complex financial products with leverage and automation and as a decentralized matchmaker between borrowers and lenders",
     chain: "Solana",
-    logo: `${baseIconsUrl}/kamino.jpg`,
+    logo: `${baseIconsUrl}/kamino-lend.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25215,7 +25215,7 @@ const data3_1: Protocol[] = [
     ],
     forkedFrom: [],
     module: "kamino-lending/index.js",
-    twitter: "KaminoFinance",
+    twitter: "Kamino",
     audit_links: ["https://kamino.com/security#security-audits"],
     listedAt: 1699615528,
     parentProtocol: "parent#kamino-finance",

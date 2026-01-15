@@ -3245,8 +3245,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "kamino",
     cmcId: "30986",
     chains: [],
-    github: ["hubbleprotocol"],
-    twitter: "KaminoFinance",
+    github: ["Kamino-Finance"],
+    twitter: "Kamino",
   },
   {
     id: "parent#chimeradex",

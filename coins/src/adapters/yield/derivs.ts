@@ -1,3 +1,4 @@
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
@@ -721,13 +722,22 @@ const configs: { [adapter: string]: Config } = {
 };
 
 export async function derivs(timestamp: number) {
-  return Promise.all(
-    Object.keys(configs).map((k: string) =>
-      deriv(timestamp, k, configs[k]).catch((e) => {
+  let all = Object.keys(configs)
+  const writes: Write[] = []
+  await runInPromisePool({
+    items: Object.keys(configs), 
+    concurrency: 10, 
+    processor: async (k: string) => {
+      const res = await deriv(timestamp, k, configs[k]).catch((e) => {
         console.log(`API deriv ${k} failed with ${e?.message ?? e}`);
       })
-    )
-  );
+
+      all = all.filter(item => item !== k)
+      if (res) writes.push(...res)
+    }
+  })
+
+  return writes
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {

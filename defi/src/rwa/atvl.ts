@@ -1,17 +1,19 @@
 import { getAllItemsAtTimeS, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
 import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
-import { excludedTvlKeys } from "../../l2/constants";
+import { excludedTvlKeys, zero } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { coins, cache } from "@defillama/sdk";
 import { getCsvData } from "./spreadsheet";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
-import { getChainDisplayName } from "../utils/normalizeChain";
+import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, protocolIdMap, categoryMap } from "./historical";
 import { storeR2JSONString } from "../utils/r2";
+import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import { getBlock } from "@defillama/sdk/build/util/blocks";
 
 const excludedProtocolCategories: string[] = ["CEX"];
 const keyMap: { [value: string]: string } = {
@@ -22,6 +24,8 @@ const keyMap: { [value: string]: string } = {
   assetName: "Name",
   id: "*RWA ID",
   projectId: "*projectID",
+  excludedWallets: "*Holders to be Removed for Active Marketcap",
+  activeMcap: "activeMcap",
 };
 
 // Sort tokens by chain and map token to project for fetching supplies, tvls etc
@@ -44,7 +48,7 @@ function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
 
   return { tokensSortedByChain, tokenToProjectMap };
 }
-// convert spreadsheet titles to API format 
+// convert spreadsheet titles to API format
 function toCamelCase(str: string) {
   return str
     .toLowerCase()
@@ -54,13 +58,16 @@ function toCamelCase(str: string) {
     })
     .replace(/\s+/g, "");
 }
-// read TVLs from DB and aggregate RWA token tvls 
+// read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
   await initializeTVLCacheDB();
 
-  const rawTvls = timestamp == 0 ? await getLatestProtocolItems(hourlyRawTokensTvl, {
-    filterLast24Hours: true,
-  }) : await getAllItemsAtTimeS(dailyRawTokensTvl, timestamp);
+  const rawTvls =
+    timestamp == 0
+      ? await getLatestProtocolItems(hourlyRawTokensTvl, {
+          filterLast24Hours: true,
+        })
+      : await getAllItemsAtTimeS(dailyRawTokensTvl, timestamp);
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
   rawTvls.map((protocol: any) => {
@@ -80,7 +87,7 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
 
   return aggregateRawTvls;
 }
-// fetch total supplies for each token for mcaps 
+// fetch total supplies for each token for mcaps
 async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[] }, timestamp: number) {
   const totalSupplies: { [token: string]: number } = {};
 
@@ -105,6 +112,77 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
   });
 
   return totalSupplies;
+}
+async function getExcludedBalances(
+  timestamp: number,
+  finalData: { [protocol: string]: { [key: string]: any } },
+  tokenToProjectMap: { [token: string]: string }
+) {
+  const walletsSortedByChain: { [chain: string]: { [wallet: string]: { id: string; assets: string[] } } } = {};
+  Object.keys(finalData).forEach((id: string) => {
+    const chains = finalData[id]["*HoldersToBeRemovedForActiveMarketcap"];
+    if (!chains || !Object.keys(chains).length) return;
+    Object.keys(chains).forEach((chain: string) => {
+      const wallets = chains[chain];
+      const chainRaw = getChainIdFromDisplayName(chain);
+      const assets = finalData[id]?.contracts?.[chain];
+
+      if (!assets) return;
+      if (!(chainRaw in walletsSortedByChain)) walletsSortedByChain[chainRaw] = {};
+
+      wallets.forEach((address: string) => {
+        walletsSortedByChain[chainRaw][address] = { id, assets };
+      });
+    });
+  });
+
+  const nonEvmChains = ["solana", "provenance", "stellar"];
+
+  const excludedAmounts: { [id: string]: { [chain: string]: BigNumber } } = {};
+  await runInPromisePool({
+    items: Object.keys(walletsSortedByChain),
+    concurrency: 1,
+    processor: async (chain: any) => {
+      try {
+        if (nonEvmChains.includes(chain)) return;
+        const block = timestamp == 0 ? undefined : (await getBlock(chain, timestamp)).number;
+        const calls: any[] = [];
+        Object.keys(walletsSortedByChain[chain]).forEach((params: string) => {
+          walletsSortedByChain[chain][params].assets.forEach((target: string) => {
+            calls.push({ target, params });
+          });
+        });
+
+        const balances = await multiCall({
+          chain,
+          abi: "erc20:balanceOf",
+          calls,
+          block,
+          permitFailure: true,
+          withMetadata: true,
+        });
+
+        balances.forEach((b: any) => {
+          if (!b) return;
+          const { input, output, success } = b;
+          if (!success || output == "0") return;
+          const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain)
+            ? input.target
+            : input.target.toLowerCase();
+          const id = tokenToProjectMap[`${chain}:${normalizedAddress}`];
+
+          const readableChain = getChainDisplayName(chain, true);
+          if (!(id in excludedAmounts)) excludedAmounts[id] = {};
+          excludedAmounts[id][readableChain] = zero;
+          excludedAmounts[id][readableChain] = excludedAmounts[id][readableChain].plus(output);
+        });
+      } catch (e) {
+        chain;
+      }
+    },
+  });
+
+  return excludedAmounts;
 }
 // use stablecoin API to fetch mcaps for stablecoins
 async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
@@ -168,14 +246,14 @@ async function fetchHistoricalStablecoins(
 
   return data;
 }
-// calculate defi active tvls 
+// calculate defi active tvls
 function getActiveTvls(
   assetPrices: any,
   tokenToProjectMap: any,
   finalData: any,
   protocolIdMap: any,
-  aggregateRawTvls: any, 
-  projectIdsMap: {[rwaId: string]: string }
+  aggregateRawTvls: any,
+  projectIdsMap: { [rwaId: string]: string }
 ) {
   Object.keys(aggregateRawTvls).map((pk: string) => {
     if (!assetPrices[pk]) {
@@ -212,28 +290,33 @@ function getActiveTvls(
     });
   });
 }
-// calculate on chain mcaps  
-function getOnChainTvls(
+// calculate on chain tvls mcaps
+function getOnChainTvlAndActiveMcaps(
   assetPrices: any,
   tokenToProjectMap: any,
   finalData: any,
   parsedCsvData: any,
   stablecoinsData: any,
-  totalSupplies: any
+  totalSupplies: any,
+  excludedAmounts: any
 ) {
   Object.keys(assetPrices).map((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
     const data = parsedCsvData.find((row: any) => row[keyMap.id] == rwaId);
-    if (!data) return
+    if (!data) return;
 
     const cgId = data[keyMap.coingeckoId];
+    const chain = pk.substring(0, pk.indexOf(":"));
+    const chainDisplayName = getChainDisplayName(chain, true);
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
+      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
+      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
       return;
     }
 
-    const { price, decimals, timestamp } = assetPrices[pk];
+    const { price, decimals } = assetPrices[pk];
     const supply = totalSupplies[pk];
     if (!supply || !price) {
       console.error(`No supply or price for ${pk}`);
@@ -242,28 +325,46 @@ function getOnChainTvls(
 
     try {
       if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
-      const chain = pk.substring(0, pk.indexOf(":"));
-      const chainDisplayName = getChainDisplayName(chain, true);
+      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = {};
       if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
 
       const aum = (price * supply) / 10 ** decimals;
       finalData[rwaId][keyMap.onChain][chainDisplayName] = aum.toFixed(0);
+      finalData[rwaId][keyMap.activeMcap][chainDisplayName] = aum.toFixed(0);
+
+      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
       console.error(`Malformed ${keyMap.onChain} for ${rwaId}: ${e}`);
     }
   });
 }
-// main entry 
+// deduct excluded amounts for active mcaps
+function findActiveMcaps(
+  finalData: any,
+  rwaId: string,
+  excludedAmounts: { [id: string]: { [chainSlug: string]: BigNumber } },
+  assetPrices: { price: number; decimals: number },
+  chain: string
+) {
+  if (!(rwaId in excludedAmounts)) return;
+  const thisChainExcluded = excludedAmounts[rwaId][chain];
+  if (!thisChainExcluded) return;
+  const excludedUsdValue = thisChainExcluded.div(BigNumber(10).pow(assetPrices.decimals)).times(assetPrices.price);
+  finalData[rwaId][keyMap.activeMcap][chain] = (
+    finalData[rwaId][keyMap.activeMcap][chain] - excludedUsdValue.toNumber()
+  ).toFixed(0);
+}
+// main entry
 async function main(ts: number = 0) {
   const timestamp = getTimestampAtStartOfDay(ts);
 
-  // read CSV data and parse it 
+  // read CSV data and parse it
   const parsedCsvData = await getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
-  const projectIdsMap: {[rwaId: string]: string } = {}
+  const projectIdsMap: { [rwaId: string]: string } = {};
 
-  // clean CSV data 
+  // clean CSV data
   parsedCsvData.map((row: any) => {
     const cleanRow: any = {};
     const i = row[keyMap.id];
@@ -272,13 +373,9 @@ async function main(ts: number = 0) {
     Object.keys(row).map((key: string) => {
       const camelKey = toCamelCase(key);
       if (!key) return;
-      if (key == keyMap.projectId && row[key].length > 0) projectIdsMap[i] = row[key]
-
-      // exclude columns for internal use  
-      else if (key.startsWith(keyMap.excluded)) return;
-
+      if (key == keyMap.projectId && row[key].length > 0) projectIdsMap[i] = row[key];
       // convert to readable chain names
-      else if (key == "Contracts") {
+      if ([keyMap.excludedWallets, "Contracts"].includes(key)) {
         const contracts: { [chain: string]: string[] } = {};
         (Array.isArray(row[key]) ? row[key] : [row[key]]).map((contract: any) => {
           if (!contract) return;
@@ -289,17 +386,20 @@ async function main(ts: number = 0) {
           contracts[chain].push(address);
         });
         cleanRow[camelKey] = contracts;
-      } else if (key == "Primary Chain") {
+      }
+
+      // exclude columns for internal use
+      else if (key.startsWith(keyMap.excluded)) return;
+      else if (key == "Primary Chain") {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       } else if (key == "Chain")
         cleanRow[camelKey] = row[key]
           ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
           : null;
-
       else cleanRow[camelKey] = row[key] == "" ? null : row[key];
     });
 
-    // append this RWA to API response 
+    // append this RWA to API response
     rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
     finalData[i] = cleanRow;
   });
@@ -317,14 +417,15 @@ async function main(ts: number = 0) {
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
-  const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData] = await Promise.all([
+  const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData, excludedAmounts] = await Promise.all([
     coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
     getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
     fetchStablecoins(timestamp),
+    getExcludedBalances(timestamp, finalData, tokenToProjectMap),
   ]);
 
-  // log missed assets 
+  // log missed assets
   Object.keys(tokenToProjectMap).map((address: string) => {
     if (!assetPrices[address]) {
       console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
@@ -332,9 +433,17 @@ async function main(ts: number = 0) {
     }
   });
 
-  // calculate defi active tvls and on chain mcaps 
+  // calculate defi active tvls and on chain mcaps
   getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls, projectIdsMap);
-  getOnChainTvls(assetPrices, tokenToProjectMap, finalData, parsedCsvData, stablecoinsData, totalSupplies);
+  getOnChainTvlAndActiveMcaps(
+    assetPrices,
+    tokenToProjectMap,
+    finalData,
+    parsedCsvData,
+    stablecoinsData,
+    totalSupplies,
+    excludedAmounts
+  );
 
   // for read API usage
   const rwaIdMap: { [id: string]: string } = {};
@@ -354,7 +463,7 @@ async function main(ts: number = 0) {
   //   }
   // });
 
-  const res = { data: filteredFinalData, timestamp: timestampToPublish }
+  const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
   await Promise.all([
     timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(res)) : Promise.resolve(),

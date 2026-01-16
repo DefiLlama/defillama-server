@@ -8828,7 +8828,7 @@ const data5: Protocol[] = [
     audit_links: ["https://guide.rhea.finance/developers/audits"],
     parentProtocol: "parent#rhea-finance",
     dimensions: {
-    fees: "rhea-cross-chain" 
+      fees: "rhea-cross-chain",
     }
   },
 ];

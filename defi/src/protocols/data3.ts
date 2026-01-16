@@ -6135,7 +6135,8 @@ const data3_0: Protocol[] = [
     listedAt: 1683724915,
     dimensions: {
       fees: "holdstation-defutures",
-      derivatives: "holdstation-defutures"
+      derivatives: "holdstation-defutures",
+      "open-interest": "holdstation-defutures-oi"
     }
   },
   {

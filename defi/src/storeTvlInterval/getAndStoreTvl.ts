@@ -184,7 +184,12 @@ type StoreTvlOptions = {
   runStats?: any,
 }
 
-export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom', 'airdao', 'bevm'])
+export const deadChains = new Set([
+  'heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 
+  'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 
+  'kroma', 'qom', 'airdao', 'bevm',
+  'milkyway', 'milkyway_rollup',
+])
 
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,

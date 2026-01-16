@@ -1842,7 +1842,7 @@ const data5: Protocol[] = [
     chains: ["Sui"],
     module: "dipcoin-perps/index.js",
     forkedFrom: [],
-    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
+    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Perpetual_Final_Report.pdf"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -8755,6 +8755,29 @@ const data5: Protocol[] = [
     twitter: "NestExchange",
     parentProtocol: "parent#nest",
     listedAt: 1768416291
+  },
+  {
+    id: "7254",
+    name: "DipCoin Vault",
+    address: null,
+    symbol: "-",
+    url: "https://www.dipcoin.io/vault/",
+    description:
+      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/dipcoin-perps.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sui"],
+    module: "dipcoin-vault/index.js",
+    forkedFrom: [],
+    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Vault_Final.pdf"],
+    twitter: "DipCoinOfficial",
+    parentProtocol: "parent#dipcoin",
+    listedAt: 1768459069
   },
 ];
 export default data5;

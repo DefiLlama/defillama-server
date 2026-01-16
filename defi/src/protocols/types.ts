@@ -132,11 +132,12 @@ export interface Protocol {
       | "Fallback" // Oracle that isn't actively used and is just there in case the primary or secondary oracles fail
       | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
       | "Aggregator" // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
-      | "Reference"; // Used for price display or off-chain quoting. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
-    // pls add more as needed
-    proof: Array<string>;
-    startDate?: string; // YYYY-MM-DD
-    endDate?: string;
+      | "Reference" // Used for price display or off-chain quoting. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
+      | "PoR" // Proof of Reserve oracle, used to prove the protocol has the reserves to back the TVL
+      // pls add more as needed
+    proof: Array<string>,
+    startDate?: string, // YYYY-MM-DD
+    endDate?: string,
     chains?: Array<{
       chain: string;
       startDate?: string;

@@ -1,86 +1,100 @@
 import fetch from "node-fetch";
-import { chainIdMap } from "../bridges/celer";
-import getWrites from "../utils/getWrites";
+import { chainIdMap } from "../../bridges/celer";
+import getWrites from "../../utils/getWrites";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import getBlock from "../utils/block";
-import { Write } from "../utils/dbInterfaces";
-import { addToDBWritesList } from "../utils/database";
+import getBlock from "../../utils/block";
+import { Write } from "../../utils/dbInterfaces";
+import { addToDBWritesList } from "../../utils/database";
 
-type Pool = {
-  address: string;
-  lpt: Token;
-};
-type Token = {
+const networks = [
+  "mainnet",
+  "arbitrum",
+  "optimism",
+  "base",
+  "sonic",
+  "hemi",
+  "avalanche",
+  "bsc",
+  "hyperevm",
+  "katana",
+  "flare",
+  "monad",
+  "sei",
+];
+
+type TokenInfo = {
   address: string;
   symbol: string;
-  decimals: string;
-};
-type ApiData = {
+  decimals: number;
   chainId: number;
-  address: string;
-  symbol: string;
-  decimals: string;
-  ibt: Token;
-  underlying: Token;
-  pools: Pool[];
 };
+
+type PoolsApiResponse = (TokenInfo & {
+  ibt: TokenInfo;
+  underlying: TokenInfo;
+  pools: {
+    address: string;
+    chainId: number;
+    lpt: TokenInfo;
+  }[];
+})[];
+
+type Pool = PoolsApiResponse[0]["pools"][0];
+
 type PriceData = {
   underlying: string;
   symbol: string;
-  decimals: string;
+  decimals: number;
   price?: number;
   pool?: string;
   pt?: string;
 };
+
 type Rate = { input: { target: string }; output: string; success: boolean };
 
 const dataForLps: { [address: string]: { price: number; decimals: number } } =
   {};
 
 async function buildPricesObject() {
-  const pools = await fetch(
-    `https://app.spectra.finance/api/v1/mainnet/pools`,
-  ).then((r) => r.json());
+  const pts = (
+    await Promise.all(
+      networks.map((network) =>
+        fetch(`https://api.spectra.finance/v1/${network}/pools`).then(
+          (r) => r.json() as Promise<PoolsApiResponse>
+        )
+      )
+    )
+  ).flat();
 
   const prices: {
     [chain: string]: { [type: string]: { [address: string]: PriceData } };
   } = {};
-  pools.map(
-    ({
-      ibt,
-      chainId,
-      underlying,
-      address,
+  pts.map(({ ibt, chainId, underlying, address, symbol, decimals, pools }) => {
+    const chain = chainIdMap[chainId];
+    if (!chain) return;
+    if (!(chain in prices)) prices[chain] = { ibt: {}, pt: {}, lp: {} };
+
+    prices[chain].ibt[ibt.address] = {
+      underlying: underlying.address,
+      symbol: ibt.symbol,
+      decimals: ibt.decimals,
+    };
+    prices[chain].pt[address] = {
+      underlying: ibt.address,
       symbol,
       decimals,
-      pools,
-    }: ApiData) => {
-      const chain = chainIdMap[chainId];
-      if (!chain) return;
-      if (!(chain in prices)) prices[chain] = { ibt: {}, pt: {}, lp: {} };
-
-      prices[chain].ibt[ibt.address] = {
-        underlying: underlying.address,
-        symbol: ibt.symbol,
-        decimals: ibt.decimals,
-      };
-      prices[chain].pt[address] = {
+      pool: pools[0].address,
+    };
+    pools.map((pool: Pool) => {
+      prices[chain].lp[pool.lpt.address] = {
         underlying: ibt.address,
-        symbol,
-        decimals,
-        pool: pools[0].address,
+        symbol: "SPT-PT/IBT",
+        decimals: pool.lpt.decimals,
+        pt: address,
+        pool: pool.address,
       };
-      pools.map((pool: Pool) => {
-        prices[chain].lp[pool.lpt.address] = {
-          underlying: ibt.address,
-          symbol: "SPT-PT/IBT-f",
-          decimals: pool.lpt.decimals,
-          pt: address,
-          pool: pool.address,
-        };
-      });
-    },
-  );
+    });
+  });
 
   return prices;
 }
@@ -89,7 +103,7 @@ async function ibt(
   block: number | undefined,
   timestamp: number,
   pricesObject: { [address: string]: PriceData },
-  writes: Write[],
+  writes: Write[]
 ) {
   if (!Object.keys(pricesObject)) return;
   const [ibtRates]: [Rate[]] = await Promise.all([
@@ -137,18 +151,32 @@ async function pt(
   block: number | undefined,
   timestamp: number,
   pricesObject: { [address: string]: PriceData },
-  writes: Write[],
+  writes: Write[]
 ) {
-  const ptRates: Rate[] = await multiCall({
-    chain,
-    calls: Object.values(pricesObject).map(({ pool }) => ({
-      target: pool,
-    })),
-    abi: "function last_prices() external view returns (uint256)",
-    block,
-    permitFailure: true,
-    withMetadata: true,
-  });
+  const [getP, storedRates]: [Rate[], (Rate & { output: string[] })[]] =
+    await Promise.all([
+      multiCall({
+        chain,
+        calls: Object.values(pricesObject).map(({ pool }) => ({
+          target: pool,
+          params: 0,
+        })),
+        abi: "function get_p(uint256) external view returns (uint256)",
+        block,
+        permitFailure: true,
+        withMetadata: true,
+      }),
+      multiCall({
+        chain,
+        calls: Object.values(pricesObject).map(({ pool }) => ({
+          target: pool,
+        })),
+        abi: "function stored_rates() external view returns (uint256[])",
+        block,
+        permitFailure: true,
+        withMetadata: true,
+      }),
+    ]);
 
   const ibtPrices: { [pool: string]: number } = {};
   Object.keys(pricesObject).map((p: any) => {
@@ -158,15 +186,19 @@ async function pt(
     ibtPrices[p] = write.price;
   });
 
-  ptRates.map(({ success, input, output }: Rate) => {
+  getP.map(({ success, input, output }: Rate, i: number) => {
     if (!success) return;
 
     const pt = Object.keys(pricesObject).find(
-      (pt: string) => pricesObject[pt].pool == input.target,
+      (pt: string) => pricesObject[pt].pool == input.target
     );
     if (!pt) return;
 
-    const price = (Number(output) / 1e18) * ibtPrices[pt];
+    const p = (Number(output) / 1e18) * ibtPrices[pt];
+    const rates = (storedRates[i].output as string[]).map(
+      (r) => Number(r) / 1e18
+    );
+    const price = (p * rates[1]) / rates[0];
     const { decimals, symbol } = pricesObject[pt];
     if (!price || !isFinite(price)) return;
 
@@ -180,7 +212,7 @@ async function pt(
       symbol,
       timestamp,
       "spectra-pt",
-      1,
+      1
     );
   });
 }
@@ -189,7 +221,7 @@ async function lp(
   block: number | undefined,
   timestamp: number,
   pricesObject: { [address: string]: PriceData },
-  writes: Write[],
+  writes: Write[]
 ) {
   const [ibtBalance, ptBalance, supply] = await Promise.all([
     multiCall({
@@ -248,7 +280,7 @@ async function lp(
       pricesObject[token].symbol,
       timestamp,
       "spectra-lp",
-      1,
+      1
     );
   });
 }
@@ -262,7 +294,7 @@ export async function spectra(timestamp: number): Promise<Write[]> {
       await ibt(chain, block, timestamp, prices[chain].ibt, writes);
       await pt(chain, block, timestamp, prices[chain].pt, writes);
       await lp(chain, block, timestamp, prices[chain].lp, writes);
-    }),
+    })
   );
 
   return writes;

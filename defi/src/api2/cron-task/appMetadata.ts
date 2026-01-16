@@ -296,6 +296,9 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of liquidityData) {
+      if (protocolInfoMap[protocol.id]?.wrongLiquidity || parentProtocolsInfoMap[protocol.id]?.wrongLiquidity) {
+        continue;
+      }
       finalProtocols[protocol.id] = {
         ...finalProtocols[protocol.id],
         liquidity: true,

@@ -1041,6 +1041,11 @@
     }
   },
   "ethereum": {
+    "0xf695df6c0f3bb45918a7a82e83348fc59517734e": {
+      "decimals": "5",
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
     "0xd051c326C9Aef673428E6F01eb65d2C52De95D30": {
       "decimals": "18",
       "symbol": "ION.au",
@@ -1832,6 +1837,11 @@
     }
   },
   "arbitrum": {
+    "0x903d5990119bc799423e9c25c56518ba7dd19474": {
+      "decimals": "5",
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
     "0x3e62fED35c97145e6B445704B8CE74B2544776A9": {
       "decimals": "18",
       "symbol": "EARNM",
@@ -2126,6 +2136,11 @@
       "to": "coingecko#syrupusdc",
       "decimals": 6,
       "symbol": "syrupUSDC"
+    },
+    "0x25118290e6A5f4139381D072181157035864099d": {
+      "to": "coingecko#rain",
+      "decimals": 18,
+      "symbol": "RAIN"
     }
   },
   "tezos": {
@@ -2621,6 +2636,16 @@
     }
   },
   "base": {
+    "0xa8de1f55aa0e381cb456e1dcc9ff781ea0079068": {
+      "decimals": "5",
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
+    "0x3d8f0ddb4bb9332cb89dec22d273d9be1a91530b": {
+      "decimals": "8",
+      "symbol": "sMAG7.ssi",
+      "to": "coingecko#mag7-ssi"
+    },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
@@ -3811,6 +3836,36 @@
     }
   },
   "solana": {
+    "8qujzAXj2nz99CmeiCgPPc2JxEuDNYvPffzRomroJnee": {
+      "decimals": "6",
+      "symbol": "nALPHA",
+      "to": "coingecko#nest-alpha-vault"
+    },
+    "2sA2jW9e8EYJkLFpq9hkhxfVUQBwVGJwq6iP4TmTKrL4": {
+      "decimals": "6",
+      "symbol": "nTBILL",
+      "to": "coingecko#nest-treasury-vault"
+    },
+    "G6SkPqYTbtVFYU4krZLDgHf5MVMfARG57G1kog4RYH2n": {
+      "decimals": "6",
+      "symbol": "nBASIS",
+      "to": "coingecko#nest-basis-vault"
+    },
+    "77DTSzxisdQWshFYHP9M2JBDuHNojLAVoC7GBNC2yadT": {
+      "decimals": "6",
+      "symbol": "nWISDOM",
+      "to": "coingecko#nest-wisdomtree-vault"
+    },
+    "GArhnnDj3GYhmQeApKVXaRv4TQFwhPcs3SNF6FXsTeXq": {
+      "decimals": "6",
+      "symbol": "nOPAL",
+      "to": "coingecko#nest-blackopal-liquidstone-ii-vault"
+    },
+    "9DRPPWYud8i6CaSsDsFESs1xyVr8dBCMtjPZji2xiZEa": {
+      "decimals": "6",
+      "symbol": "ULTRA",
+      "to": "asset#ethereum:0x50293dd8889b931eb3441d2664dce8396640b419"
+    },
     "9iq5Q33RSiz1WcupHAQKbHBZkpn92UxBG2HfPWAZhMCa": {
       "decimals": "6",
       "symbol": "sUSDu",
@@ -5979,6 +6034,11 @@
     }
   },
   "starknet": {
+    "0x0153d6e0462080bb2842109e9b64f589ef5aa06bb32b26bbdb894aca92674395": {
+      "decimals": "5",
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
     "0x02f5eb9a4f77b6c7c83488418e77329d31eb43219745959948a0fce9580905d9": {
       "decimals": "18",
       "symbol": "AAVE",
@@ -7149,7 +7209,7 @@
   },
   "sei": {
     "0xf7fa6725183e603059fc23d95735bf67f72b2d78": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "ACRED",
       "to": "coingecko#apollo-diversified-credit-securitize-fund"
     },
@@ -8074,6 +8134,11 @@
     }
   },
   "etlk": {
+    "0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d": {
+      "decimals": "5",
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#tezos",
       "decimals": 18,
@@ -8961,6 +9026,16 @@
     }
   },
   "fuel": {
+    "0x1a48bde9b03ff7f6ab9d566c3f8968a532a782402976053cebfa113cbb9a03ef": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 9,
+      "symbol": "uwWBTC"
+    },
+    "0x2269aa41cf3982753d978a40e0f04618ff9d84b07d1ce10e99831e3217d3a9b0": {
+      "to": "coingecko#tether",
+      "decimals": 9,
+      "symbol": "uwUSDT"
+    },
     "0x27821a5432b60fb3e70c64d0a612c2c86218c1088dd0f0f1b0dd6ae5ae17bd5b": {
       "to": "coingecko#fuel-network",
       "decimals": 9,
@@ -12809,6 +12884,11 @@
       "decimals": 6,
       "symbol": "ueur.trading"
     },
+    "ueurc.figure.se": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "ueurc.figure.se"
+    },
     "uylds.fcc": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -13560,6 +13640,16 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    },
+    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     }
   },
   "zigchain": {
@@ -13595,6 +13685,48 @@
       "symbol": "CROSS"
     }
   },
+  "althea": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#althea",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x80b5a32e4f032b2a058b4f29ec95eefeeb87adcd": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xeceeeefcee421d8062ef8d6b4d814efe4dc898265": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xd567b3d7b8fe3c79a1ad8da978812cfc4fa05e75": {
+      "to": "coingecko#usds",
+      "decimals": 18,
+      "symbol": "USDS"
+    },
+    "0x5fd55a1b9fc24967c4db09c513c3ba0dfa7ff687": {
+      "to": "coingecko#susds",
+      "decimals": 18,
+      "symbol": "SUSDS"
+    },
+    "0x1d54ecb8583ca25895c512a8308389ffd581f9c9": {
+      "to": "coingecko#graviton",
+      "decimals": 6,
+      "symbol": "GRAV"
+    },
+    "0xc03345448969dd8c00e9e4a85d2d9722d093af8e": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }
+  },
   "megaeth": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",
@@ -13610,6 +13742,13 @@
       "to": "coingecko#megaeth",
       "decimals": 18,
       "symbol": "MEGA"
+    }
+  },
+  "quai": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#quai-network",
+      "decimals": 18,
+      "symbol": "QUAI"
     }
   }
 }

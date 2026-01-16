@@ -62,16 +62,3 @@ export async function wrapResponseOrRedirect(response: any, prefix:string = "") 
     return buildRedirectR2(filename, 10 * 60);
   }
 }
-
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const response = await craftProtocolResponse({
-    rawProtocolName: event.pathParameters?.protocol,
-    useNewChainNames: false,
-    useHourlyData: false,
-    skipAggregatedTvl: false,
-  });
-
-  return wrapResponseOrRedirect(response);
-};
-
-export default wrap(handler);

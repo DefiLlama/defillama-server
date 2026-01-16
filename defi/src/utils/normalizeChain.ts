@@ -403,6 +403,9 @@ export const chainCoingeckoIds = {
     cmcId: "2469",
     twitter: "zilliqa",
     url: "https://www.zilliqa.com/",
+    dimensions: {
+      fees: "zilliqa",
+    },
   },
   "NEO": {
     geckoId: "neo",
@@ -559,6 +562,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "KaruraNetwork",
     url: "https://acala.network/karura",
+    dimensions: {
+      fees: "karura",
+    },
   },
   "Moonriver": {
     geckoId: "moonriver",
@@ -708,6 +714,9 @@ export const chainCoingeckoIds = {
     chainId: 19,
     twitter: "FlareNetworks",
     url: "https://flare.network/",
+    dimensions: {
+      fees: "songbird",
+    },
   },
   "EnergyWeb": {
     geckoId: "energy-web-token",
@@ -757,6 +766,9 @@ export const chainCoingeckoIds = {
     chainId: 88,
     twitter: "BuildOnViction",
     url: "https://viction.xyz/",
+    dimensions: {
+      fees: "viction",
+    },
   },
   "Fusion": {
     geckoId: "fsn",
@@ -1406,8 +1418,11 @@ export const chainCoingeckoIds = {
     cmcId: "11079",
     categories: ["EVM"],
     chainId: 32520,
-    twitter: "bitgertbrise",
+    twitter: null,
     url: "https://bitgert.com/",
+    dimensions: {
+      fees: "bitgert",
+    },
   },
   "Reef": {
     geckoId: "reef-finance",
@@ -1645,6 +1660,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "AcalaNetwork",
     url: "https://acala.network/",
+    dimensions: {
+      fees: "acala",
+    },
   },
   "ICP": {
     geckoId: "internet-computer",
@@ -2042,6 +2060,9 @@ export const chainCoingeckoIds = {
     cmcId: "13916",
     categories: ["EVM"],
     github: ["OMAX-Development"],
+    dimensions: {
+      fees: "omax",
+    },
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
@@ -2157,6 +2178,9 @@ export const chainCoingeckoIds = {
     symbol: "LOOP",
     cmcId: "18761",
     categories: ["EVM"],
+    dimensions: {
+      fees: "loop",
+    },
   },
   "Bone": {
     geckoId: null,
@@ -2311,6 +2335,10 @@ export const chainCoingeckoIds = {
     cmcId: "15261",
     categories: ["EVM"],
     github: ["ONUS-APP"],
+    twitter: "ONUSChain",
+    dimensions: {
+      fees: "onus",
+    },
   },
   "Pokt": {
     geckoId: "pocket-network",
@@ -2357,6 +2385,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "RolluxL2",
     url: "https://rollux.com/",
+    dimensions: {
+      fees: "rollux",
+    },
   },
   "Tenet": {
     geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
@@ -2393,6 +2424,9 @@ export const chainCoingeckoIds = {
     chainId: 245022934,
     twitter: "Neon_EVM",
     url: "https://neonevm.org/",
+    dimensions: {
+      fees: "neon",
+    },
   },
   "Base": {
     geckoId: null,
@@ -3059,6 +3093,9 @@ export const chainCoingeckoIds = {
     twitter: "QBlockchain",
     url: "https://q.org/",
     chainId: 35441,
+    dimensions: {
+      fees: "q-protocol",
+    },
   },
   "zkLink Nova": {
     geckoId: "zklink",
@@ -3170,6 +3207,9 @@ export const chainCoingeckoIds = {
     url: "https://www.satoshivm.io/",
     github: ["SatoshiVM"],
     chainId: "3109",
+    dimensions: {
+      fees: "satoshivm",
+    },
   },
   "Venom": {
     geckoId: "venom",
@@ -3341,6 +3381,9 @@ export const chainCoingeckoIds = {
     twitter: "fusionistio",
     chainId: 648,
     url: "https://ace.fusionist.io/",
+    dimensions: {
+      fees: "endurance",
+    },
   },
   "DFS Network": {
     geckoId: null,
@@ -3409,6 +3452,9 @@ export const chainCoingeckoIds = {
     url: "https://genesys.network/",
     github: ["GENESYSBLOCKCHAIN"],
     chainId: 16507,
+    dimensions: {
+      fees: "genesys",
+    },
   },
   "Polkadex": {
     geckoId: "polkadex",
@@ -3585,6 +3631,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "noble_xyz",
     url: "https://x.com/noble_xyz",
+    dimensions: {
+      fees: "noble",
+    },
   },
   "Aeternity": {
     geckoId: "aeternity",
@@ -3603,6 +3652,9 @@ export const chainCoingeckoIds = {
     parent: {
       chain: "Oasys",
       types: ["L2"],
+    },
+    dimensions: {
+      fees: "saakuru",
     },
   },
   "ReyaChain": {
@@ -3790,6 +3842,9 @@ export const chainCoingeckoIds = {
     url: "https://www.matchain.io/",
     twitter: "matchain_io",
     chainId: 698,
+    dimensions: {
+      fees: "matchain",
+    },
   },
   "Shape": {
     geckoId: null,
@@ -3802,8 +3857,11 @@ export const chainCoingeckoIds = {
       da: "Ethereum",
     },
     url: "https://shape.network/",
-    twitter: "Shape_L2",
+    twitter: "shape",
     chainId: 360,
+    dimensions: {
+      fees: "shape",
+    },
   },
   "Fuel Ignition": {
     geckoId: null,
@@ -3898,6 +3956,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "UnitsNetwork",
     url: "https://units.network/",
+    dimensions: {
+      fees: "unit-zero",
+    },
   },
   "Shido": {
     geckoId: "shido-2",
@@ -3924,6 +3985,9 @@ export const chainCoingeckoIds = {
     url: "https://exsat.network/",
     github: ["exsat-network"],
     chainId: 7200,
+    dimensions: {
+      fees: "exsat",
+    },
   },
   "Taraxa": {
     geckoId: "taraxa",
@@ -3955,6 +4019,9 @@ export const chainCoingeckoIds = {
     url: "https://www.vinuchain.org/",
     github: ["vinuchain"],
     chainId: 207,
+    dimensions: {
+      fees: "vinu",
+    },
   },
   "Sonic": {
     geckoId: "sonic-3",
@@ -4202,6 +4269,9 @@ export const chainCoingeckoIds = {
     url: "https://swanchain.io/",
     github: ["swanchain"],
     chainId: 254,
+    dimensions: {
+      fees: "swan",
+    },
   },
   "Superposition": {
     geckoId: null,
@@ -4325,6 +4395,9 @@ export const chainCoingeckoIds = {
     url: "https://www.stratisplatform.com/",
     github: ["stratisproject"],
     chainId: 105105,
+    dimensions: {
+      fees: "stratis",
+    },
   },
   "Silicon zkEVM": {
     geckoId: null,
@@ -4523,6 +4596,9 @@ export const chainCoingeckoIds = {
     twitter: "prom_io",
     url: "https://prom.io/",
     chainId: 277,
+    dimensions: {
+      fees: "prom",
+    },
   },
   "GOAT": {
     geckoId: "goat-network",
@@ -4557,6 +4633,9 @@ export const chainCoingeckoIds = {
     twitter: "perenniallabs",
     url: "https://perennial.finance/",
     chainId: 1424,
+    dimensions: {
+      fees: "perennial-chain",
+    },
   },
   "Peaq": {
     geckoId: "peaq-2",
@@ -4671,6 +4750,9 @@ export const chainCoingeckoIds = {
     github: ["superseed-xyz"],
     twitter: "SuperseedXYZ",
     url: "https://www.superseed.xyz/",
+    dimensions: {
+      fees: "superseed",
+    },
   },
   "Xphere": {
     geckoId: "xphere",
@@ -4769,6 +4851,9 @@ export const chainCoingeckoIds = {
     url: "https://www.numbersprotocol.io/",
     chainId: 10507,
     github: ["numbersprotocol"],
+    dimensions: {
+      fees: "numbers",
+    },
   },
   "Phantasma": {
     geckoId: "phantasma",
@@ -4879,6 +4964,9 @@ export const chainCoingeckoIds = {
     twitter: "TacBuild",
     url: "https://tac.build/",
     chainId: 239,
+    dimensions: {
+      fees: "tac",
+    },
   },
   "Hydra Chain": {
     geckoId: null,
@@ -4922,6 +5010,9 @@ export const chainCoingeckoIds = {
     twitter: "BitciChain",
     url: "https://bitcichain.com/",
     chainId: 1907,
+    dimensions: {
+      fees: "bitcichain",
+    },
   },
   "ENI": {
     geckoId: null,
@@ -4960,7 +5051,7 @@ export const chainCoingeckoIds = {
       fees: "somnia",
     },
   },
-  "Orderly": {
+  "Orderly Network": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -4968,6 +5059,9 @@ export const chainCoingeckoIds = {
     twitter: "OrderlyNetwork",
     url: "https://orderly.network/",
     chainId: 291,
+    dimensions: {
+      fees: "orderly-network",
+    },
   },
   "Camp Network": {
     geckoId: null,
@@ -5265,6 +5359,9 @@ export const chainCoingeckoIds = {
     twitter: "domaprotocol",
     url: "https://doma.xyz/",
     chainId: 97477,
+    dimensions: {
+      fees: "doma",
+    },
   },
   "Allora": {
     geckoId: "allora",
@@ -5331,9 +5428,12 @@ export const chainCoingeckoIds = {
     symbol: "CROSS",
     cmcId: "37166",
     categories: ["EVM"],
-    twitter: "cross_protocol",
+    twitter: "CROSS_gamechain",
     url: "https://www.ogfcorp.com/",
     chainId: 612055,
+    dimensions: {
+      fees: "cross",
+    },
   },
   "Earnm": {
     geckoId: "earnm",
@@ -5379,6 +5479,9 @@ export const chainCoingeckoIds = {
     twitter: "Japanopenchain0",
     url: "https://www.japanopenchain.org/en/",
     chainId: 81,
+    dimensions: {
+      fees: "joc",
+    },
   },
   "Flynet": {
     geckoId: null,
@@ -5412,6 +5515,9 @@ export const chainCoingeckoIds = {
     twitter: "GroveXchange",
     url: "https://www.grxchain.io/",
     chainId: 1110,
+    dimensions: {
+      fees: "grx-chain",
+    },
   },
   "HPP": {
     geckoId: null,
@@ -5483,7 +5589,7 @@ export const chainCoingeckoIds = {
     chainId: 4326,
   },
   "Quai": {
-    geckoId: "quai-network ",
+    geckoId: "quai-network",
     symbol: "QUAI",
     cmcId: "22354",
     categories: ["EVM"],
@@ -5491,8 +5597,24 @@ export const chainCoingeckoIds = {
     url: "https://qu.ai",
     chainId: 9,
     dimensions: {
-      fees: "quai-network",
+      // fees: "quai-network",  // only tx fees should be treated as chain fees
     },
+  },
+  "StandX": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "StandX_Official",
+    url: "https://standx.com/",
+  },
+  "Althea": {
+    geckoId: "althea",
+    symbol: "ALTHEA",
+    cmcId: null,
+    categories: ["Cosmos", "EVM"],
+    twitter: "AltheaNetwork",
+    url: "https://www.althea.net/",
+    chainId: 258432,
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -5726,6 +5848,8 @@ const chainLabelMap = {
   "virbicoin": "VirBiCoin",
   "mantra": "Mantra",
   "megaeth": "MegaETH",
+  "standx": "StandX",
+  "orderly": "Orderly",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5779,6 +5903,7 @@ const newChainLabelMap = {
   "reya": "ReyaChain",
   "goat": "GOAT",
   "mantra": "MANTRA",
+  "orderly": "Orderly Network",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

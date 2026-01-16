@@ -1487,7 +1487,7 @@ const data4: Protocol[] = [
     previousNames: ["SSI"],
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
-    url: "https://ssi.sosovalue.com/",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description:
       "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
     chain: "Base",
@@ -2930,13 +2930,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5678",
-    name: "Reservoir Tools AMM",
+    name: "SakuraSwap AMM",
+    previousNames: ["Reservoir Tools AMM"],
     address: null,
     symbol: "-",
-    url: "https://swap.reservoir.tools/#/swap",
+    url: "https://sakuraswap.com/",
     description: "Uniswap V2 fork",
     chain: "Abstract",
-    logo: `${baseIconsUrl}/reservoir-tools.png`,
+    logo: `${baseIconsUrl}/sakuraswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -2944,7 +2945,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Zero Network", "Abstract", "Ink", "Shape"],
     module: "reservoir-tools-v2/index.js",
-    twitter: "reservoir0x",
+    twitter: "protofire",
     forkedFromIds: ["2197"],
     parentProtocol: "parent#reservoir-tools",
     listedAt: 1738007753,
@@ -2955,13 +2956,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5679",
-    name: "Reservoir Tools CLMM",
+    name: "SakuraSwap CLMM",
+    previousNames: ["Reservoir Tools CLMM"],
     address: null,
     symbol: "-",
-    url: "https://swap.reservoir.tools/#/swap",
+    url: "https://sakuraswap.com/",
     description: "Uniswap V3 fork",
     chain: "Abstract",
-    logo: `${baseIconsUrl}/reservoir-tools.png`,
+    logo: `${baseIconsUrl}/sakuraswap-clmm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -2969,7 +2971,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Zero Network", "Abstract", "Ink", "Shape", "Redstone"],
     module: "reservoir-tools-v3/index.js",
-    twitter: "reservoir0x",
+    twitter: "protofire",
     forkedFromIds: ["2198"],
     parentProtocol: "parent#reservoir-tools",
     listedAt: 1738007759,
@@ -3708,7 +3710,7 @@ const data4: Protocol[] = [
     name: "Perena Dex",
     address: null,
     symbol: "-",
-    url: "https://perena.org",
+    url: "https://app.perena.org/?ref=ILPYAL",
     description:
       "Perena is building the infrastructure for stablecoins on Solana, starting with a novel AMM, Numéraire.",
     chain: "Solana",
@@ -5318,7 +5320,7 @@ const data4: Protocol[] = [
     name: "SoSoValue Basis",
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
-    url: "https://ssi.sosovalue.com",
+    url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description:
       "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
     chain: "Base",
@@ -5832,7 +5834,7 @@ const data4: Protocol[] = [
     name: "Lazy Summer Protocol",
     address: "base:0x194f360d130f2393a5e9f3117a6a1b78abea1624",
     symbol: "SUMR",
-    url: "https://summer.fi",
+    url: "https://summer.fi/earn?referralCode=2001317",
     description:
       "The Lazy Summer Protocol offers Automated Yield across DeFi's highest quality protocols on Ethereum, Base and Arbitrum. It uses AI Powered Keepers to continually monitor and rebalance the supported Vaults offering users the best available yields within strict risk parameters, set and managed by leading risk management firm BlockAnalitica.",
     chain: "Ethereum",
@@ -8512,6 +8514,7 @@ const data4: Protocol[] = [
     module: "multipli/index.js",
     twitter: "multiplifi",
     listedAt: 1741969274,
+    stablecoins: ["rwausdi"],
     dimensions: {
       fees: "multipli-fi"
     }
@@ -8770,7 +8773,8 @@ const data4: Protocol[] = [
     name: "YO Protocol",
     address: null,
     symbol: "-",
-    url: "https://www.yo.xyz/",
+    url: "https://app.yo.xyz?ref=defillama",
+    referralUrl: "https://app.yo.xyz?ref=defillama",
     description:
       "Set it and forget it. YO is your secure multi-chain yield optimizer, continuously rebalancing to deliver the best risk-adjusted yield in DeFi.",
     chain: "Base",
@@ -10234,7 +10238,14 @@ const data4: Protocol[] = [
       // https://basescan.org/address/0x9393a4c8b46a4f796af876a7b782f9400862ff1f
       // https://basescan.org/address/b62ee1e0ad72e1dc0a0bd41c9488de3327c41712
       // derivatives: "rollx"
-    }
+    },
+    warningBanners: [
+      {
+        message: "This protocol includes unproductive positions that may contribute to inflated metrics. It also did wash trading to inflate volume. Be safe.",
+        level: "alert",
+        until: "2026-07-10",
+      }
+    ]
   },
   {
     id: "5974",
@@ -10560,6 +10571,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.valantis.xyz/resources/audits"],
     parentProtocol: "parent#valantis",
     listedAt: 1743672976,
+    dimensions: {
+      dexs: "valantis-stex",
+      fees: "valantis-stex"
+    }
   },
   {
     id: "5988",
@@ -10995,8 +11010,8 @@ const data4: Protocol[] = [
   {
     id: "6005",
     name: "Momentum",
-    address: null,
-    symbol: "-",
+    address: "sui:0x35169bc93e1fddfcf3a82a9eae726d349689ed59e4b065369af8789fe59f8608::mmt::MMT",
+    symbol: "MMT",
     url: "https://app.mmt.finance/trade",
     description:
       "Momentum is the premier ve(3,3) DEX designed to align the interests of traders, liquidity providers, and token holders , driving sustainable, long-term value creation.",
@@ -11004,8 +11019,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/momentum.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "momentum-3",
+    cmcId: "38231",
     category: "Dexs",
     chains: ["Sui"],
     forkedFrom: [],
@@ -17308,7 +17323,7 @@ const data4: Protocol[] = [
     name: "CIAN Curating",
     address: null,
     symbol: "-",
-    url: "https://cian.app",
+    url: "https://yieldlayer.cian.app/vaults/0xB13aa2d0345b0439b064f26B82D8dCf3f508775d?chainId=1&utm_source=TPFDZE",
     description:
       "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
     chain: "Ethereum",
@@ -18014,6 +18029,7 @@ const data4: Protocol[] = [
     twitter: "ShroomyProject",
     audit_links: ["https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"],
     parentProtocol: "parent#shroomy-protocol",
+    deprecated: true,
     listedAt: 1749484357,
   },
   {
@@ -18286,8 +18302,8 @@ const data4: Protocol[] = [
   {
     id: "6297",
     name: "Almanak",
-    address: null,
-    symbol: "-",
+    address: "0xdefa1d21c5f1cbeac00eeb54b44c7d86467cc3a3",
+    symbol: "ALMANAK",
     url: "https://almanak.co",
     description:
       "Almanak is an innovative DeFi Agent Platform designed to create and deploy automated financial strategies using financial Agents. The platform combines advanced automation with emerging AI technologies to help strategies adapt to market conditions more effectively than traditional tools",
@@ -18295,8 +18311,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/almanak.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "almanak",
+    cmcId: "39088",
     category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     module: "almanak/index.js",
@@ -19844,8 +19860,7 @@ const data4: Protocol[] = [
     category: "Staking Pool",
     chains: ["Ethereum"],
     forkedFromIds: [],
-    //module: "ssv-network/index.js", commented while we check on the tvl
-    module: "dummy.js",
+    module: "ssv-network/index.js",
     twitter: "ssv_network",
     dimensions: {
       fees: "ssv-network"
@@ -19958,7 +19973,7 @@ const data4: Protocol[] = [
     previousNames: ["Hdydrex V3"],
     address: null,
     symbol: "HYDX",
-    url: "https://hydrex.fi",
+    url: "https://www.hydrex.fi?anchorRef=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: `Hydrex is a liquidity-neutral ve(3,3) protocol built on Base for Base, designed to bring new users onchain`,
     chain: "Base",
     logo: `${baseIconsUrl}/hydrex-integral.jpg`,
@@ -19981,7 +19996,7 @@ const data4: Protocol[] = [
     previousNames: ["Hydrex V4"],
     address: null,
     symbol: "HYDX",
-    url: "https://hydrex.fi",
+    url: "https://www.hydrex.fi?anchorRef=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: `Hydrex is a liquidity-neutral ve(3,3) protocol built on Base for Base, designed to bring new users onchain`,
     chain: "Base",
     logo: `${baseIconsUrl}/hydrex-omni.jpg`,
@@ -20136,6 +20151,9 @@ const data4: Protocol[] = [
         proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
     ],
+    dimensions: {
+      fees: "etherfi-cash-collateral-management",
+    },
   },
   {
     id: "6373",
@@ -20164,6 +20182,9 @@ const data4: Protocol[] = [
         proof: ["https://etherfi.gitbook.io/etherfi/contracts-and-integrations/integrations","https://github.com/DefiLlama/defillama-server/pull/10407"],
       },
     ],
+    dimensions: {
+      fees: "etherfi-cash-cards",
+    },
   },
   {
     id: "6374",
@@ -20193,8 +20214,8 @@ const data4: Protocol[] = [
   {
     id: "6375",
     name: "Aria Protocol",
-    address: null,
-    symbol: "-",
+    address: "story:0xc9cbbd8f211300dd0e7a3933b7aeedac6f61dd52",
+    symbol: "ARIAIP",
     url: "https://ariaprotocol.xyz",
     description:
       "Founded in 2025, Aria is the first protocol to bring iconic real-world IP—starting with music—onchain as liquid, revenue-generating tradable tokens. Built on Story, Aria transforms cultural assets into IP Real-World Assets (IPRWAs). Retail investors access income-producing IP through Aria. Early offerings include partial rights to works performed by Justin Bieber, Miley Cyrus, and BLACKPINK. Aria enables investors to access IP rights and earn real-world revenue from avenues such as streaming. Looking ahead, Aria will include programmable IP and power a permissioned remix economy, where smart contracts govern how IP is licensed, monetized, and remixed—laying the financial rails for the next era of the IP economy.",
@@ -20202,7 +20223,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/aria-protocol.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "aria-2",
     cmcId: null,
     tags: ["Collectibles"],
     chains: ["Story"],
@@ -22849,13 +22870,14 @@ const data4: Protocol[] = [
       "Liminal is a DeFi protocol on Hyperliquid that offers stable, delta-neutral yields from funding rates, allowing users to earn returns without market exposure",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/liminal.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Basis Trading",
     chains: ["Hyperliquid L1"],
     forkedFromIds: [],
+    audit_links: ["https://docs.liminal.money/more/audits"],
     module: "liminal-money/index.js",
     twitter: "liminalmoney",
     listedAt: 1753556072,
@@ -23066,6 +23088,10 @@ const data4: Protocol[] = [
     twitter: "figuremarkets",
     parentProtocol: "parent#figure-markets",
     listedAt: 1753725971,
+    dimensions: {
+      fees: "figure-markets",
+      dexs: "figure-markets"
+    }
   },
   {
     id: "6492",
@@ -24558,13 +24584,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6553",
-    name: "SolFi",
+    name: "SolFi V1",
     address: null,
     symbol: "-",
     url: "https://x.com/SolFiAMM",
     description: "Prop AMM on Solana",
     chain: "Solana",
-    logo: `${baseIconsUrl}/solfi.jpg`,
+    logo: `${baseIconsUrl}/solfi-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -24574,6 +24600,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "SolFiAMM",
     forkedFromIds: [],
+    parentProtocol: "parent#solfi",
     dimensions: {
       dexs: "solfi"
     }
@@ -26214,7 +26241,8 @@ const data4: Protocol[] = [
     name: "Football.Fun",
     address: null,
     symbol: "-",
-    url: "https://www.football.fun/",
+    url: "https://pro.sport.fun/login/?referral_code=UBJWCCSWOVU",
+    referralUrl: "https://pro.sport.fun/login/?referral_code=UBJWCCSWOVU",
     description:
       "Football.Fun is a Base chain fantasy soccer protocol where users trade fractional player shares backed by actual football performance, using Gold pegged to USDC, with limited-use contracts and active market-driven gameplay",
     chain: "Base",
@@ -26296,6 +26324,7 @@ const data4: Protocol[] = [
     module: "goblin-aptos/index.js",
     twitter: "the_goblin_fi",
     audit_links: ["https://docs.goblin.fi/security/audit"],
+    parentProtocol: "parent#goblin-protocols",
     listedAt: 1756149467,
   },
   {
@@ -28096,7 +28125,7 @@ const data4: Protocol[] = [
     name: "Theo Network thBill",
     address: null,
     symbol: "-",
-    url: "https://theo.xyz/",
+    url: "https://app.theo.xyz/invite?invite=defillama",
     description: "thBILL is a yield-bearing basket of tokenized U.S. Treasury bills from regulated issuers, designed as a stable core asset within the Theo ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/theo-network-thbill.jpg`,
@@ -28763,7 +28792,7 @@ const data4: Protocol[] = [
   {
     id: "6732",
     name: "LAB Terminal",
-    address: null,
+    address: "bsc:0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
     symbol: "LAB",
     url: "https://lab.pro/",
     description: "LAB Terminal is a trading platform that lets users execute advanced order types (limit, stop-loss, Smart Order), customize trade settings, and use overlays/extensions to trade more efficiently",
@@ -28771,8 +28800,8 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/lab-terminal.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "lab",
+    cmcId: "33223",
     category: "Trading App",
     chains: ["Solana"],
     forkedFromIds: [],
@@ -29483,7 +29512,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6763",
-    name: "SunX",
+    name: "SunX Bridge",
     previousNames: ["SunPerp"],
     address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
     symbol: "SUN",
@@ -29491,12 +29520,12 @@ const data4: Protocol[] = [
     description:
       "SunX is the first top-tier decentralized perpetual contract trading platform on the TRON blockchain, dedicated to providing users with an institutional-grade trading experience and ultimate asset security.",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sunx.jpg`,
+    logo: `${baseIconsUrl}/sunx-bridge.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Bridge",
     chains: ["Tron"],
     forkedFromIds: [],
     module: "sunperp/index.js",
@@ -29507,8 +29536,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1758724545,
     dimensions: {
-      derivatives: "sunperp",
-      "open-interest": "sunperp-oi"
+     // derivatives: "sunperp",
+     // "open-interest": "sunperp-oi"
     }
   },
   {
@@ -30124,9 +30153,10 @@ const data4: Protocol[] = [
   {
     id: "6790",
     name: "Falcon Finance",
-    address: null,
-    symbol: "-",
-    url: "https://falcon.finance/",
+    address: "0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949",
+    symbol: "FF",
+    url: "https://app.falcon.finance?r=ecf7be7f48d1ce67467fc040bcc1abd5",
+    referralUrl: "https://app.falcon.finance?r=ecf7be7f48d1ce67467fc040bcc1abd5",
     description: "Falcon Finance is the first universal collateralization infrastructure protocol that creates sustainable yield opportunities.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/falcon-finance.jpg`,
@@ -31091,7 +31121,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.osl.com/en",
     description:
-      "OSL is a regulated, Hong Kong-based digital asset platform offering exchange, custody, brokerage, OTC, and RWA tokenization services under institutional-grade compliance and infrastructure.",
+      "OSL is a centralized digital asset exchange operated under OSL Group (HKEX: 863.HK), it is global exchange sevices, marking a pivotal milestone in the company’s global compliance-driven expansion strategy",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/osl.jpg`,
     audits: "0",

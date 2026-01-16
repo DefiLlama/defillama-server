@@ -52,6 +52,16 @@ async function stOAS(timestamp: number = 0) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
+async function cana(timestamp: number = 0) {
+  const chain = "ethereum";
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
+  const CANA_CONTRACT_ADDRESS = "0x01995A697752266d8E748738aAa3F06464B8350B";
+  const price = await api.call({ abi: "uint256:navprice", target: CANA_CONTRACT_ADDRESS });
+  pricesObject[CANA_CONTRACT_ADDRESS] = { price: price / 1e6, };
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+}
+
 async function wSTBT(timestamp: number = 0) {
   const chain = "ethereum";
   const api = await getApi(chain, timestamp);
@@ -119,7 +129,7 @@ async function cabal(timestamp: number = 0) {
     return parseFloat(clean);
   }
   async function fetchView(functionName: any, moduleName: any, args: any) {
-    const { data: { data }} = await axios.post(REST_URL, {
+    const { data: { data } } = await axios.post(REST_URL, {
       address: CABAL_MODULE_ADDRESS,
       module_name: moduleName,
       function_name: functionName,
@@ -144,7 +154,7 @@ async function cabal(timestamp: number = 0) {
 
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal,
+  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana,
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
       throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");

@@ -45,6 +45,8 @@ export class ApiClient {
       // Additional robustness settings
       maxRedirects: 5,
       validateStatus: (status) => status < 600, // Don't reject on any status code
+      maxContentLength: 100 * 1024 * 1024, // 100MB max response size
+      maxBodyLength: 100 * 1024 * 1024, // 100MB max request size
       ...config,
     });
 
@@ -54,7 +56,20 @@ export class ApiClient {
   private setupInterceptors(): void {
     // Don't reject on error responses - we want to handle them gracefully
     this.client.interceptors.response.use(
-      (response) => response,
+      (response) => {
+        // If content-type is text/plain but data looks like JSON, parse it
+        if (response.data && typeof response.data === 'string') {
+          try {
+            // Try to parse as JSON if it looks like JSON
+            if (response.data.trim().startsWith('{') || response.data.trim().startsWith('[')) {
+              response.data = JSON.parse(response.data);
+            }
+          } catch (e) {
+            // If parsing fails, leave as string (might be intentional like error messages)
+          }
+        }
+        return response;
+      },
       (error) => {
         // For HTTP error responses (4xx, 5xx), return a response-like object
         if (error.response) {
@@ -123,9 +138,10 @@ export class ApiClient {
     } catch (error) {
       const axiosError = error as AxiosError;
       
-      // Only retry on network errors, not HTTP errors
+      // Retry on network errors AND timeout errors
       const isNetworkError = !axiosError.response;
-      const shouldRetry = retries > 0 && isNetworkError;
+      const isTimeoutError = axiosError.code === 'ECONNABORTED' || axiosError.code === 'ETIMEDOUT';
+      const shouldRetry = retries > 0 && (isNetworkError || isTimeoutError);
       
       if (shouldRetry) {
         // Exponential backoff: base delay * (2 ^ attempt)
@@ -134,7 +150,8 @@ export class ApiClient {
         const jitter = Math.random() * 1000; // Add random jitter (0-1000ms)
         const totalDelay = backoffDelay + jitter;
         
-        console.log(`Network error, retrying in ${Math.round(totalDelay)}ms (attempt ${attempt + 1}/${this.retryCount})...`);
+        const errorType = isTimeoutError ? 'Timeout' : 'Network error';
+        console.log(`${errorType}, retrying in ${Math.round(totalDelay)}ms (attempt ${attempt + 1}/${this.retryCount})...`);
         
         await new Promise((resolve) => setTimeout(resolve, totalDelay));
         return this.retryRequest(requestFn, retries - 1, attempt + 1);

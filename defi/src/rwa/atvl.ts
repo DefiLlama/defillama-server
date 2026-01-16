@@ -474,4 +474,7 @@ async function main(ts: number = 0) {
   return finalData;
 }
 
-main(); // ts-node defi/src/rwa/atvl.ts
+main().catch((error) => {
+  console.error('Error running the script: ',error);
+  process.exit(1);
+}).then(() => process.exit(0));

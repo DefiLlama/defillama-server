@@ -144,7 +144,7 @@ const solEndpoint = (isClient: boolean) => {
   return process.env.SOLANA_RPC;
 };
 
-const endpointMap: any = {
+export const endpointMap: any = {
   solana: solEndpoint,
   renec: renecEndpoint,
   eclipse: eclipseEndpoint,
@@ -154,6 +154,27 @@ function getConnection(chain = "solana") {
   if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
   return connection[chain];
 }
+
+export async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
+  const chunks = sliceIntoChunks(inputs, chunkSize);
+  const results = [];
+  for (const chunk of chunks) {
+    results.push(...((await fn(chunk)) ?? []));
+    if (sleepTime) await sleep(sleepTime);
+  }
+
+  return results.flat();
+
+  function sliceIntoChunks(arr: any, chunkSize = 100) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      const chunk = arr.slice(i, i + chunkSize);
+      res.push(chunk);
+    }
+    return res;
+  }
+}
+
 async function getSolanaTokenSupply(
   tokens: string[],
   chain: string,
@@ -192,26 +213,6 @@ async function getSolanaTokenSupply(
   });
 
   return supplies;
-
-  async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
-    const chunks = sliceIntoChunks(inputs, chunkSize);
-    const results = [];
-    for (const chunk of chunks) {
-      results.push(...((await fn(chunk)) ?? []));
-      if (sleepTime) await sleep(sleepTime);
-    }
-
-    return results.flat();
-
-    function sliceIntoChunks(arr: any, chunkSize = 100) {
-      const res = [];
-      for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
-        res.push(chunk);
-      }
-      return res;
-    }
-  }
 }
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);

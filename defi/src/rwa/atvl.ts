@@ -12,8 +12,7 @@ import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, protocolIdMap, categoryMap } from "./historical";
 import { storeR2JSONString } from "../utils/r2";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
+import { fetchEvm, fetchSolana } from './balances';
 
 const excludedProtocolCategories: string[] = ["CEX"];
 const keyMap: { [value: string]: string } = {
@@ -113,6 +112,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
 
   return totalSupplies;
 }
+// fetch balances of wallets to be excluded from active mcap 
 async function getExcludedBalances(
   timestamp: number,
   finalData: { [protocol: string]: { [key: string]: any } },
@@ -136,7 +136,7 @@ async function getExcludedBalances(
     });
   });
 
-  const nonEvmChains = ["solana", "provenance", "stellar"];
+  const unsupportedChains = ["provenance", "stellar"];
 
   const excludedAmounts: { [id: string]: { [chain: string]: BigNumber } } = {};
   await runInPromisePool({
@@ -144,40 +144,11 @@ async function getExcludedBalances(
     concurrency: 1,
     processor: async (chain: any) => {
       try {
-        if (nonEvmChains.includes(chain)) return;
-        const block = timestamp == 0 ? undefined : (await getBlock(chain, timestamp)).number;
-        const calls: any[] = [];
-        Object.keys(walletsSortedByChain[chain]).forEach((params: string) => {
-          walletsSortedByChain[chain][params].assets.forEach((target: string) => {
-            calls.push({ target, params });
-          });
-        });
-
-        const balances = await multiCall({
-          chain,
-          abi: "erc20:balanceOf",
-          calls,
-          block,
-          permitFailure: true,
-          withMetadata: true,
-        });
-
-        balances.forEach((b: any) => {
-          if (!b) return;
-          const { input, output, success } = b;
-          if (!success || output == "0") return;
-          const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain)
-            ? input.target
-            : input.target.toLowerCase();
-          const id = tokenToProjectMap[`${chain}:${normalizedAddress}`];
-
-          const readableChain = getChainDisplayName(chain, true);
-          if (!(id in excludedAmounts)) excludedAmounts[id] = {};
-          excludedAmounts[id][readableChain] = zero;
-          excludedAmounts[id][readableChain] = excludedAmounts[id][readableChain].plus(output);
-        });
+        if (chain == 'solana') await fetchSolana(timestamp , walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        else if (unsupportedChains.includes(chain)) return;
+        else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {
-        chain;
+        console.log(`Failed to fetch balances for ${chain}`)
       }
     },
   });
@@ -422,7 +393,7 @@ async function main(ts: number = 0) {
     getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
     fetchStablecoins(timestamp),
-    getExcludedBalances(timestamp, finalData, tokenToProjectMap),
+    getExcludedBalances(ts, finalData, tokenToProjectMap),
   ]);
 
   // log missed assets
@@ -453,7 +424,7 @@ async function main(ts: number = 0) {
   });
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
-  const filteredFinalData: any = finalData // {};
+  const filteredFinalData: any = finalData; // {};
   // Object.keys(finalData).map((rwaId: string) => {
   //   if (
   //     typeof finalData[rwaId][keyMap.defiActive] === "object" &&

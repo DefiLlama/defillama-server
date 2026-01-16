@@ -1412,7 +1412,7 @@ const data3_0: Protocol[] = [
   },
   {
     id: "2760",
-    name: "Maia V3",
+    name: "Maia CL",
     address: "metis:0x72c232D56542Ba082592DEE7C77b1C6CFA758BCD",
     symbol: "MAIA",
     url: "https://uni.maiadao.io/#/swap",
@@ -1433,7 +1433,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "maia-v3",
       dexs: "maia-v3"
-    }
+    },
+    deprecated: true
   },
   {
     id: "2761",
@@ -7207,7 +7208,7 @@ const data3_0: Protocol[] = [
     category: "Dexs",
     chains: ["Tron"],
     module: "sunswap-v2/index.js",
-    twitter: "DeFi_JUST",
+    twitter: "OfficialSUNio",
     audit_links: ["https://sunswap.com/docs/audit-report_en.pdf"],
     listedAt: 1684765349,
     parentProtocol: "parent#sun",
@@ -31389,7 +31390,7 @@ const data3_1: Protocol[] = [
     chains: ["Tron"],
     forkedFrom: [],
     module: "sunswap-v3/index.js",
-    twitter: "DeFi_JUST",
+    twitter: "OfficialSUNio",
     parentProtocol: "parent#sun",
     listedAt: 1705319990,
     dimensions: {
@@ -54055,7 +54056,7 @@ const data3_3: Protocol[] = [
     chains: ["Tron"],
     forkedFrom: [],
     module: "sunpump/index.js",
-    twitter: "sunpumpmeme",
+    twitter: "OfficialSUNio",
     audit_links: [],
     parentProtocol: "parent#sun",
     listedAt: 1723560357,
@@ -58435,7 +58436,8 @@ const data3_3: Protocol[] = [
       "https://code4rena.com/audits/2023-09-maia-dao-ulysses",
       "https://github.com/Zellic/publications/blob/master/Maia%20DAO%20Ulysses%20Protocol%20-%20Zellic%20Audit%20Report.pdf"
     ],
-    listedAt: 1726861385
+    listedAt: 1726861385,
+    deprecated: true
   },
   {
     id: "5164",

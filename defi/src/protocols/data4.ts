@@ -8514,6 +8514,7 @@ const data4: Protocol[] = [
     module: "multipli/index.js",
     twitter: "multiplifi",
     listedAt: 1741969274,
+    stablecoins: ["rwausdi"],
     dimensions: {
       fees: "multipli-fi"
     }
@@ -19859,8 +19860,7 @@ const data4: Protocol[] = [
     category: "Staking Pool",
     chains: ["Ethereum"],
     forkedFromIds: [],
-    //module: "ssv-network/index.js", commented while we check on the tvl
-    module: "dummy.js",
+    module: "ssv-network/index.js",
     twitter: "ssv_network",
     dimensions: {
       fees: "ssv-network"

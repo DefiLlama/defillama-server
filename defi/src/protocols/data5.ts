@@ -5333,7 +5333,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Liquid Restaking",
     chains: ["Flare"],
     forkedFromIds: [],
     module: "firelight/index.js",
@@ -5676,12 +5676,13 @@ const data5: Protocol[] = [
     category: "Gamified Mining",
     chains: ["Solana"],
     forkedFromIds: [],
-    module: "dummy.js",
+    module: "macaron-bid.js",
     twitter: "macaron_bid",
     audit_links: [],
     dimensions: {
       fees: "macaron-bid",
     },
+    listedAt: 1768492247,
   },
   {
     id: "7121",
@@ -7082,7 +7083,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Insurance",
+    tags: ["Other Fixed Income"],
     chains: ["Ethereum", "Base", "Arbitrum", "Avalanche"],
     oraclesBreakdown: [
       {
@@ -7096,6 +7097,7 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://hacken.io/audits/re-protocol/"],
     listedAt: 1766447067,
+    stablecoins: ["re-protocol-reusd"],
     dimensions: {
       fees: "re-protocol"
     }
@@ -8345,6 +8347,10 @@ const data5: Protocol[] = [
     twitter: "SNAP_DEX",
     parentProtocol: "parent#snap",
     listedAt: 1768236029,
+    dimensions: {
+      dexs: "snap-v3",
+      fees: "snap-v3",
+    },
   },
   {
     id: "7236",
@@ -8758,6 +8764,48 @@ const data5: Protocol[] = [
   },
   {
     id: "7254",
+    name: "Lazy",
+    address: null,
+    symbol: "-",
+    url: "https://getlazy.xyz",
+    description: "Patient capital, rewarded. Deposit USDC, earn yield. No staking. No claiming.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lazy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "lazyusd/index.js",
+    twitter: "lazydotxyz",
+    listedAt: 1768495991
+  },
+  {
+    id: "7255",
+    name: "Obyte Friends",
+    address: null,
+    symbol: "-",
+    url: "https://friends.obyte.org/",
+    description: "Make 1% a day by making friends every day and spreading the word about Obyte’s unstoppable, censorship-resistant tech.",
+    chain: "Obyte",
+    logo: `${baseIconsUrl}/obyte-friends.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Obyte"],
+    forkedFromIds: [],
+    audit_links: [],
+    module: "obyte-friends/index.js",
+    twitter: "ObyteOrg",
+    listedAt: 1768512967
+  },
+  {
+    id: "7256",
     name: "DipCoin Vault",
     address: null,
     symbol: "-",
@@ -8777,7 +8825,7 @@ const data5: Protocol[] = [
     audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Vault_Final.pdf"],
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
-    listedAt: 1768459069
-  },
+    listedAt: 1768534734
+  }
 ];
 export default data5;

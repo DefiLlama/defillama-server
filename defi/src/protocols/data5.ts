@@ -8859,5 +8859,28 @@ const data5: Protocol[] = [
       derivatives: "orderly-broker-coin360",
     }
   },
+  {
+    id: "7258",
+    name: "Gitcoin Passport",
+    address: null,
+    symbol: "-",
+    url: "https://app.passport.xyz/",
+    description: "An identity verification application and Sybil resistance protocol.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gitcoin-passport.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Identity & Reputation",
+    chains: ["Arbitrum", "Optimism", "Base", "Linea", "Scroll"],
+    module: "dummy.js",
+    twitter: "HumnPassport",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "gitcoin-passport",
+    }
+  },
 ];
 export default data5;

@@ -2311,6 +2311,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://guide.rhea.finance/developers/audits"],
     parentProtocol: "parent#rhea-finance",
+    dimensions: {
+      fees: "rhea-lst"
+    },
     listedAt: 1762925473,
   },
   {
@@ -8825,7 +8828,7 @@ const data5: Protocol[] = [
     audit_links: ["https://guide.rhea.finance/developers/audits"],
     parentProtocol: "parent#rhea-finance",
     dimensions: {
-    //  fees: "rhea-cross-chain" need to merge pr first
+    fees: "rhea-cross-chain" 
     }
   },
 ];

@@ -8804,5 +8804,29 @@ const data5: Protocol[] = [
     twitter: "ObyteOrg",
     listedAt: 1768512967
   },
+  {
+    id: "7256",
+    name: "RHEA Cross Chain",
+    address: null,
+    symbol: "-",
+    url: "https://www.rhea.finance/",
+    description: "cross chain bridge for the Rhea Finance ecosystem.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/rhea-cross-chain.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain Bridge",
+    chains: ["Near"],
+    module: "dummy.js",
+    twitter: "rhea_finance",
+    forkedFromIds: [],
+    audit_links: ["https://guide.rhea.finance/developers/audits"],
+    parentProtocol: "parent#rhea-finance",
+    dimensions: {
+    //  fees: "rhea-cross-chain" need to merge pr first
+    }
+  },
 ];
 export default data5;

@@ -2927,6 +2927,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "felix-perp",
       fees: "felix-perp",
+      "open-interest": "felix-perp-oi",
     },
   },
   {
@@ -2951,6 +2952,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "tradexyz",
       fees: "tradexyz",
+      "open-interest": "tradexyz-oi",
     },
   },
   {
@@ -2976,6 +2978,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "ventuals",
       fees: "ventuals",
+      "open-interest": "ventuals-oi",
     },
   },
   {
@@ -5064,6 +5067,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "hyena",
       fees: "hyena",
+      "open-interest": "hyena-oi",
     },
   },
   {
@@ -5733,6 +5737,7 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "kinetiq-markets",
       derivatives: "kinetiq-markets",
+      "open-interest": "kinetiq-markets-oi",
     },
   },
   {

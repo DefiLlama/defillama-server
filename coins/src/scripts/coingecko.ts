@@ -4,6 +4,7 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
+  lowercase,
   staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
@@ -205,7 +206,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           i = chain.toLowerCase();
         }
 
-        return `${i}:${address}`;
+        return `${i}:${lowercase(address, i)}`;
       }).filter(i => i),
     )
     .flat() as string[]

@@ -183,4 +183,8 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   changchain: require("./markets/changchain"),
+  notional: require("./yield/notional"),
+  shift: require("./yield/shift"),
+  makina: require("./yield/makina"),
+  stORE: require("./solana/stORE")
 };

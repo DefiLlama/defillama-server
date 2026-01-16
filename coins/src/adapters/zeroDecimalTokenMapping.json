@@ -31,7 +31,7 @@
             "symbol": "USD"
         },
         "YLDS": {
-            "to": "coingecko#usd-coin",
+            "to": "coingecko#ylds",
             "decimals": 0,
             "symbol": "YLDS"
         },
@@ -39,6 +39,16 @@
             "to": "coingecko#figure-heloc",
             "decimals": 0,
             "symbol": "FIGR_HELOC"
+        },
+        "pm.pool.asset.3hjz8rcr3pejdc3msntlvy": {
+            "to": "coingecko#ylds",
+            "decimals": 0,
+            "symbol": "YLDS"
+        },
+        "pm.pool.asset.1y3flutqcyuf8duew1vj2g": {
+            "to": "coingecko#ylds",
+            "decimals": 0,
+            "symbol": "YLDS"
         }
     },
     "ripple": {

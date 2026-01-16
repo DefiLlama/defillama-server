@@ -2741,6 +2741,9 @@ const data: Protocol[] = [
     ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
+    dimensions: {
+      fees: "enzyme",
+    }
   },
   {
     id: "226",
@@ -7492,7 +7495,7 @@ const data: Protocol[] = [
     category: "Dexs",
     chains: ["Tron"],
     module: "sun/index.js",
-    twitter: "sunpumpmeme",
+    twitter: "OfficialSUNio",
     audit_links: ["https://sun.io/docs/audit-report-sun_en.pdf"],
     parentProtocol: "parent#sun",
   },
@@ -13476,7 +13479,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexs",
     chains: ["Tron"],
     module: "justSwap/index.js",
-    twitter: "DeFi_JUST",
+    twitter: "OfficialSUNio",
     audit_links: ["https://sunswap.com/docs/audit-report_en.pdf"],
     listedAt: 1634757407,
     parentProtocol: "parent#sun",
@@ -13547,7 +13550,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "693",
     name: "Superfluid",
-    address: null,
+    address: "base:0xa69f80524381275a7ffdb3ae01c54150644c8792",
     symbol: "SUP",
     url: "https://www.superfluid.finance/home",
     description:
@@ -13984,7 +13987,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1635250158,
     dimensions: {
       fees: "polymarket",
-      dexs: "polymarket"
+      dexs: "polymarket",
+      "open-interest": "polymarket-oi"
     }
   },
   {

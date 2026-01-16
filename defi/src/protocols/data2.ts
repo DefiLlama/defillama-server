@@ -111,8 +111,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1384",
-    name: "Hermes Protocol",
-    address: "arbitrum:0x45940000009600102a1c002f0097c4a500fa00ab",
+    name: "Hermes V1",
+    address: "metis:0xb27BbeaACA2C00d6258C3118BAB6b5B6975161c8",
     symbol: "HERMES",
     url: "https://hermes.maiadao.io/",
     description:
@@ -133,7 +133,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#maia-dao-ecosystem",
     dimensions: {
       dexs: "hermes-protocol"
-    }
+    },
+    deprecated: true
   },
   {
     id: "1385",
@@ -1737,6 +1738,9 @@ const data2: Protocol[] = [
     twitter: "Vaulta_",
     language: "C++",
     listedAt: 1645579151,
+    dimensions: {
+      fees: "vaulta-rex",
+    },
   },
   /*
   {
@@ -3564,7 +3568,6 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
-      fees: "o1-exchange"
     },
   },
   {
@@ -9121,7 +9124,7 @@ const data2: Protocol[] = [
     previousNames: ["ApolloX"],
     address: "bsc:0x000ae314e2a2172a039b26378814c252734f556a",
     symbol: "ASTER",
-    url: "https://www.apollox.finance/en",
+    url: "https://www.asterdex.com/en/referral/c6eF10",
     description:
       "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
@@ -11469,6 +11472,9 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/hunny-swap"],
     listedAt: 1656716851,
     github: ["HunnyFinance"],
+    dimensions: {
+      dexs: "hunnyswap"
+    }
   },
   {
     id: "1872",
@@ -12050,7 +12056,7 @@ const data2: Protocol[] = [
     symbol: "XAI",
     url: "https://sideshift.ai",
     description:
-      "SideShift.ai is a no sign-up crypto exchange where users can trade between 50+ cryptocurrencies across multiple chains. SideShift Token (XAI) is the native ERC20 token of SideShift.ai. XAI can be staked on-chain and by doing so, users receive a share of 25% of SideShift.ai revenues, distributed daily.",
+      "SideShift.ai is a direct-to-wallet crypto exchange. Launched in 2019, it has processed over $3B in volume. SideShift powers swaps on Trezor, Bitcoin.com Wallet, Aqua Wallet, and more. Currently supporting over 200+ tokens on 40+  chains. The SideShift token ($XAI) is the native ERC20 token of SideShift.ai. XAI can be staked on-chain and by doing so, users receive a share of 25% of SideShift.ai revenues, distributed daily.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sideshift.png`,
     audits: "0",
@@ -15949,7 +15955,7 @@ const data2: Protocol[] = [
     ],
     forkedFrom: [],
     module: "kamino/index.js",
-    twitter: "KaminoFinance",
+    twitter: "Kamino",
     audit_links: ["https://smartstate.tech/reports/kamino-finance-report-27082022.html"],
     listedAt: 1662391548,
     parentProtocol: "parent#kamino-finance",
@@ -21035,7 +21041,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/binance-cex.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "binancecoin",
     cmcId: null,
     category: "CEX",
     chains: ["Ethereum", "Tron", "Bitcoin", "Binance"],
@@ -21104,7 +21110,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/okx.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "okb",
     cmcId: null,
     category: "CEX",
     chains: ["Ethereum", "Bitcoin"],
@@ -23340,7 +23346,7 @@ const data2: Protocol[] = [
     symbol: "PT",
     url: "https://phemex.com",
     description:
-      "Phemex is a Top derivatives global crypto exchange. Users can now verify their Proof-of-Reserves anytime.",
+      "Founded in 2019, Phemex is a user-first crypto exchange trusted by over 10 million traders worldwide. The platform offers spot and derivatives trading, copy trading, and wealth management products designed to prioritize user experience, transparency, and innovation. With a forward-thinking approach and a commitment to user empowerment, Phemex delivers reliable tools, inclusive access, and evolving opportunities for traders at every level to grow and succeed.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/phemex.jpg`,
     audits: "0",
@@ -23562,6 +23568,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1671639906,
     parentProtocol: "parent#stake.link",
+    dimensions: {
+      fees: "stakedotlink",
+    },
   },
   {
     id: "2379",
@@ -25316,6 +25325,9 @@ const data2: Protocol[] = [
     twitter: "GuardaWallet",
     forkedFrom: [],
     listedAt: 1674124872,
+    dimensions: {
+      fees: "garuda-staking",
+    },
   },
   /*
   {
@@ -25655,7 +25667,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cap-finance",
     listedAt: 1674732169,
     dimensions: {
-      fees: "cap-finance-v4"
+      fees: "cap-finance-v4",
+      derivatives: "cap-finance-v4"
     }
   },
   {
@@ -26613,13 +26626,16 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
     listedAt: 1675781739,
+    dimensions: {
+      fees: "hawkfi",
+    },
   },
   {
     id: "2512",
     name: "Velvet V1",
     address: "bsc:0x8b194370825e37b33373e74a41009161808c1488",
     symbol: "VELVET",
-    url: "https://app.velvet.capital/",
+    url: "https://dapp.velvet.capital/Referred/6956901b440d4fc522b2eb7b",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
@@ -30712,7 +30728,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ArbitrumExchange/index.js",
     parentProtocol: "parent#arbitrum-exchange",
-    twitter: "arbidex_fi",
+    twitter: "ArbidexFi",
     audit_links: [
       "https://github.com/Vital-block/Smart-Contract-Audit/blob/03c1a811a69f8e459264c22d140cba99b3a518da/ARBITRUM%20EXCHANGE%20Full%20AUDIT%20Report.pdf",
     ],

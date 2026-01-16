@@ -8831,5 +8831,28 @@ const data5: Protocol[] = [
       fees: "rhea-cross-chain",
     }
   },
+  {
+    id: "7257",
+    name: "COIN360 Perps",
+    address: null,
+    symbol: "-",
+    url: "https://dex.coin360.com/",
+    description: "Perps trading platform.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/coin360-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Orderly"],
+    module: "dummy.js",
+    twitter: "COIN360",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      derivatives: "orderly-broker-coin360",
+    }
+  },
 ];
 export default data5;

@@ -21618,7 +21618,8 @@ const data4: Protocol[] = [
     name: "OnRe",
     address: null,
     symbol: "-",
-    url: "https://www.onre.finance/",
+    url: "https://app.onre.finance/earn/leaderboard?ref=FDHRTE658",
+    referralUrl: "https://app.onre.finance/earn/leaderboard?ref=FDHRTE658",
     description:
       "Connecting on-chain capital to real-world reinsurance risk — unlocking stable, uncorrelated returns that are liquid, composable and accessible for the first time",
     chain: "Solana",
@@ -30162,7 +30163,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/falcon-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "falcon-finance-ff",
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],

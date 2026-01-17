@@ -2311,6 +2311,9 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://guide.rhea.finance/developers/audits"],
     parentProtocol: "parent#rhea-finance",
+    dimensions: {
+      fees: "rhea-lst"
+    },
     listedAt: 1762925473,
   },
   {
@@ -2924,6 +2927,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "felix-perp",
       fees: "felix-perp",
+      "open-interest": "felix-perp-oi",
     },
   },
   {
@@ -2948,6 +2952,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "tradexyz",
       fees: "tradexyz",
+      "open-interest": "tradexyz-oi",
     },
   },
   {
@@ -2973,6 +2978,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "ventuals",
       fees: "ventuals",
+      "open-interest": "ventuals-oi",
     },
   },
   {
@@ -5061,6 +5067,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "hyena",
       fees: "hyena",
+      "open-interest": "hyena-oi",
     },
   },
   {
@@ -5730,6 +5737,7 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "kinetiq-markets",
       derivatives: "kinetiq-markets",
+      "open-interest": "kinetiq-markets-oi",
     },
   },
   {
@@ -8806,6 +8814,76 @@ const data5: Protocol[] = [
   },
   {
     id: "7256",
+    name: "RHEA Cross Chain",
+    address: null,
+    symbol: "-",
+    url: "https://www.rhea.finance/",
+    description: "cross chain bridge for the Rhea Finance ecosystem.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/rhea-cross-chain.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain Bridge",
+    chains: ["Near"],
+    module: "dummy.js",
+    twitter: "rhea_finance",
+    forkedFromIds: [],
+    audit_links: ["https://guide.rhea.finance/developers/audits"],
+    parentProtocol: "parent#rhea-finance",
+    dimensions: {
+      fees: "rhea-cross-chain",
+    }
+  },
+  {
+    id: "7257",
+    name: "COIN360 Perps",
+    address: null,
+    symbol: "-",
+    url: "https://dex.coin360.com/",
+    description: "Perps trading platform.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/coin360-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Orderly"],
+    module: "dummy.js",
+    twitter: "COIN360",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      derivatives: "orderly-broker-coin360",
+    }
+  },
+  {
+    id: "7258",
+    name: "Gitcoin Passport",
+    address: null,
+    symbol: "-",
+    url: "https://app.passport.xyz/",
+    description: "An identity verification application and Sybil resistance protocol.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gitcoin-passport.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Identity & Reputation",
+    chains: ["Arbitrum", "Optimism", "Base", "Linea", "Scroll"],
+    module: "dummy.js",
+    twitter: "HumnPassport",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "gitcoin-passport",
+    }
+  },
+  {
+    id: "7259",
     name: "DipCoin Vault",
     address: null,
     symbol: "-",
@@ -8826,6 +8904,6 @@ const data5: Protocol[] = [
     twitter: "DipCoinOfficial",
     parentProtocol: "parent#dipcoin",
     listedAt: 1768534734
-  }
+  },
 ];
 export default data5;

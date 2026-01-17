@@ -11,7 +11,9 @@ export default async function bridge() {
   const tokens: Token[] = [];
   const nonNativeMap = {} as any
   bridge.forEach((token: any) => {
-    if (token.chainId === 4326 || token.extensions?.bridgeType !== 'canonical')  return;
+    if (token.chainId === 4326
+      //  || token.extensions?.bridgeType !== 'canonical'
+      )  return;
     nonNativeMap[token.name] = token
   })
 

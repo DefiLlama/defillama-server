@@ -30163,7 +30163,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/falcon-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "falcon-finance-ff",
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],

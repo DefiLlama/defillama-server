@@ -68,10 +68,10 @@ const mintedTokens = [
     chain: 'iotex',
     address: '0x0F921c39eFd98809FE6D20a88A4357454578987a',
   },
-  {
-    chain: 'lisk',
-    address: '0x9BFA177621119e64CecbEabE184ab9993E2ef727',
-  },
+  // {
+  //   chain: 'lisk',
+  //   address: '0x9BFA177621119e64CecbEabE184ab9993E2ef727',
+  // },
 ]
 
 const reservesTokens = [

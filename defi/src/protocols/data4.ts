@@ -29002,7 +29002,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ember.so/",
-    description: "Ember Protocol is the leading Structured Vaults Product on Sui. The vaults are non-custodial, permissionless, and managed by top-tier curators, running DeFi, cross-chain, and CeDeFi strategies across lending markets, Spot AMMs, Perps DEXs, and many more protocols to unlock the highest risk-adjusted returns for users. Everything Vaults for Everything Liquidity.",
+    description: "Ember is the investment platform and infrastructure for launching, accessing, and distributing traditional and onchain financial products through crypto capital markets.",
     chain: "Sui",
     logo: `${baseIconsUrl}/ember-protocol.jpg`,
     audits: "2",

@@ -8891,7 +8891,7 @@ const data5: Protocol[] = [
     description:
       "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/dipcoin-perps.jpg`,
+    logo: `${baseIconsUrl}/dipcoin-vault.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

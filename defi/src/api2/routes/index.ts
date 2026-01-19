@@ -15,12 +15,12 @@ import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getR2 } from "../../utils/r2";
 import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
-import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { cache, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionProtocolFileRoute, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
@@ -136,9 +136,24 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/activeUsers", defaultFileHandler)
 
-  router.get("/v2/metrics/:type/overview", getOverviewFileRoute)
-  router.get("/v2/metrics/:type/overview/:chain", getOverviewFileRoute)
-  router.get("/v2/metrics/:type/protocol/:name", getDimensionProtocolFileRoute)  // this includes special route financial statement
+
+
+  // v2
+
+  router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
+  router.get("/v2/chart/:type", ew(getDimensionOverviewRoutes('chart')))
+  router.get("/v2/chart/:type/chain-breakdown", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol-breakdown", ew(getDimensionOverviewRoutes('chart-protocol-breakdown')))
+
+  router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
+  router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
+  router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+
+  // this includes special route financial statement
+  router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
+  router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
+  router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
 
 
   /* 
@@ -191,14 +206,26 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   function protocolsRouteResponse(req: HyperExpress.Request, res: HyperExpress.Response) {
     if (req.query_parameters.includeChains === 'true')
       return fileResponse('protocols-with-chains', res);
+    if (req.query_parameters.liteV1 === 'true')
+      return fileResponse('protocols-lite-v1', res);
     return fileResponse('protocols', res);
   }
 
-  function tvlHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  async function tvlHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     let name = sluggify({ name: req.path_parameters.name } as any)
 
-    let protocolData = cache.protocolSlugMap[name]
-    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 60);
+    const protocolData = cache.protocolSlugMap[name]
+    if (protocolData) {
+      const response = await cachedCraftProtocolV2({
+        protocolData,
+        useNewChainNames: true,
+        useHourlyData: false,
+        skipAggregatedTvl: false,
+      })
+      const tvlArray = response.tvl as any[]
+      const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
+      return successResponse(res, tvl, 60);
+    }
 
     const parentData = cache.parentProtocolSlugMap[name]
     if (parentData) {
@@ -206,8 +233,14 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       if (childProtocols.length < 1 || childProtocols.map((p: any) => p.name).includes(parentData.name))
         return errorResponse(res, 'bad parent protocol')
 
-      const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur?.tvl, 0);
-      if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
+      const response: any = await cachedCraftParentProtocolV2({
+        parentProtocol: parentData,
+        useHourlyData: false,
+        skipAggregatedTvl: false,
+      })
+      if (response.message) return errorResponse(res, response.message)
+      const tvlArray = response.tvl as any[]
+      const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
       return successResponse(res, tvl, 60);
     }
 

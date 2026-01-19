@@ -189,7 +189,10 @@ describe('Bridges API - Bridges List', () => {
       const bridgesWithBothVolumes = bridgesResponse.data.bridges
         .filter((bridge) => 
           bridge.monthlyVolume !== null && bridge.monthlyVolume !== undefined &&
-          bridge.weeklyVolume !== null && bridge.weeklyVolume !== undefined
+          bridge.weeklyVolume !== null && bridge.weeklyVolume !== undefined &&
+          bridge.weeklyVolume > 0 && // Avoid division by zero
+          typeof bridge.monthlyVolume === 'number' &&
+          typeof bridge.weeklyVolume === 'number'
         )
         .slice(0, 20);
 

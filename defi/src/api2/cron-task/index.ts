@@ -71,7 +71,7 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
-  
+
   await storeActiveUsers()
   await storeRWAStats()
 
@@ -267,11 +267,28 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const excludeProtocolFields = [
+      'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
+      'audits', 'audit_note', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'cmcId', 'gecko_id', 'methodology', 'dimensions',
+      'module', 'pool2', 'staking',
+      'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',
+      'listedAt',
+    ]
+
+    // /protocols file is heavy, we create a lite version without some fields
+    const protocolsLite = data.map((p: any) => {
+      const clone = { ...p }
+      excludeProtocolFields.forEach(field => delete clone[field])
+      return clone
+    })
+
     const chainData: IChain[] = await getChainData(false)
     const chainDataV2: IChain[] = await getChainData(true)
     data.push(...(chainData as any))
 
     await storeRouteData('protocols-with-chains', data)
+    await storeRouteData('protocols-lite-v1', protocolsLite)
     await storeRouteData('chains', chainData)
     await storeRouteData('v2/chains', chainDataV2)
 

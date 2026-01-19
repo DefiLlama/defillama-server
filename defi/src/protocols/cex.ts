@@ -615,7 +615,29 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgDeriv: "levex-futures",
-  }
+  },
+  {
+    name: "WEEX",
+    cgId: "weex",
+    slug: "weex",
+    coin: "weex-token",
+    walletsLink: null,
+    cgDeriv: "weex-futures",
+  },
+  {
+    name: "BYDFi",
+    cgId: "bydfi",
+    slug: "bydfi",
+    coin: null,
+    walletsLink: null,
+    cgDeriv: "bydfi-futures",
+  },
+  {
+    name: "OSL HK",
+    slug: "osl-hk",
+    coin: null,
+    walletsLink: null,
+  },
 ];
 
 const cgNameListingIdMap: { [name: string]: string } = {
@@ -729,6 +751,7 @@ const cgNameListingIdMap: { [name: string]: string } = {
   "zipmex": "zipmex",
   "OSL": "osl",
   "Gate US": "gate-us",
+  "OSL HK": "osl-hk",
 }
 
 cexsData.forEach(c => {

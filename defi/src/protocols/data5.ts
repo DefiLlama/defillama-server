@@ -7191,7 +7191,7 @@ const data5: Protocol[] = [
     url: "https://oxedium.com/",
     description: "Algorithmic DEX with single-sided liquidity pools.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/oxedium.jpg`,
+    logo: `${baseIconsUrl}/oxedium.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

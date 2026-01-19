@@ -8933,8 +8933,8 @@ const data5: Protocol[] = [
   {  
     id: "7261",
     name: "Orynth",
-    address: null,
-    symbol: "-",
+    address: "solana:DEHoLKtoFGvLZeA29jsUHxS14MZhjokD52SABiMfBAGS",
+    symbol: "ORY",
     url: "https://www.orynth.dev/",
     description:
       "Where products find their market.",
@@ -8942,7 +8942,7 @@ const data5: Protocol[] = [
     logo: `${baseIconsUrl}/orynth.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "orynth",
     cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],

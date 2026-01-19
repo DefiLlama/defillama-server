@@ -27084,7 +27084,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Undercollateralized Lending",
     chains: ["Ethereum"],
     forkedFromIds: [],
     module: "3jane-lending/index.js",

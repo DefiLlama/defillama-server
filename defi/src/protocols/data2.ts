@@ -27337,6 +27337,7 @@ const data2: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: null,
+    deprecated: true,
     cmcId: null,
     category: "Dexs",
     chains: ["Ethereum", "Polygon", "Arbitrum"],

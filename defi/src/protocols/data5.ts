@@ -8906,5 +8906,53 @@ const data5: Protocol[] = [
       fees: "triggerx",
     }
   },
+  {  
+    id: "7260",
+    name: "ElfomoFi",
+    address: null,
+    symbol: "-",
+    url: "https://elfomo.io/",
+    description:
+      "Oracle-based DEX on EVM.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/elfomofi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "elfomo_fi",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      dexs: "elfomofi",
+    }
+  },
+  {  
+    id: "7261",
+    name: "Orynth",
+    address: null,
+    symbol: "-",
+    url: "https://www.orynth.dev/",
+    description:
+      "Where products find their market.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/orynth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "orynth",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "orynth",
+    }
+  },
 ];
 export default data5;

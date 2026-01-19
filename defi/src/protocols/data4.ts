@@ -3986,6 +3986,9 @@ const data4: Protocol[] = [
       "https://github.com/exponent-finance/exponent-audits/blob/main/jito_restaking_integration_ottersec_audit.pdf",
     ],
     listedAt: 1738617871,
+    dimensions: {
+      fees: "exponent"
+    }
   },
   {
     id: "5723",

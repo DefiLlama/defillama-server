@@ -36584,7 +36584,10 @@ const data3_2: Protocol[] = [
         level: "alert",
         until: "2025-09-23",
       }
-    ]
+    ],
+    dimensions: {
+      fees: "zircuit-staking"
+    }
   },
   {
     id: "4239",

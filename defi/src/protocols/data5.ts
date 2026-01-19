@@ -8882,5 +8882,29 @@ const data5: Protocol[] = [
       fees: "gitcoin-passport",
     }
   },
+  {  
+    id: "7259",
+    name: "TriggerX",
+    address: null,
+    symbol: "-",
+    url: "https://triggerx.network/",
+    description:
+      "TriggerX is a decentralized automation protocol that executes time, event, and condition-based tasks across multiple blockchains using a secure keeper network backed by EigenLayer's AVS model.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/triggerx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Developer Tools",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "triggerxnetwork",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "triggerx",
+    }
+  },
 ];
 export default data5;

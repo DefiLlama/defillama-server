@@ -1,7 +1,7 @@
 import protocols, { _InternalProtocolMetadata, _InternalProtocolMetadataMap, Protocol } from "./protocols/data";
 import { getHistoricalValues } from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from "./utils/getLastRecord";
-import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
+import { DAY, getTimestampAtStartOfDayUTC, secondsInHour } from "./utils/date";
 import {
   getChainDisplayName,
   chainCoingeckoIds,
@@ -16,7 +16,7 @@ import { storeRouteData, storeHistoricalTVLMetadataFile } from "./api2/cache/fil
 import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
-  const timestamp = getClosestDayStartTimestamp(timestampRaw)
+  const timestamp = getTimestampAtStartOfDayUTC(timestampRaw)
   if (sumDailyTvls[chain] === undefined) {
     sumDailyTvls[chain] = {};
   }
@@ -157,7 +157,7 @@ export async function getHistoricalTvlForAllProtocols(
         historicalTvl[historicalTvl.length - 1] = lastTvl;
       }
 
-      const lastTimestamp = getClosestDayStartTimestamp(historicalTvl[historicalTvl.length - 1].SK);
+      const lastTimestamp = getTimestampAtStartOfDayUTC(historicalTvl[historicalTvl.length - 1].SK);
 
       lastDailyTimestamp = Math.max(lastDailyTimestamp, lastTimestamp);
 
@@ -275,19 +275,19 @@ export async function processProtocols(
     const mostRecentTvl = historicalTvl[historicalTvl.length - 1];
     // check if protocol's most recent tvl value is lastDailyTimestamo of all protocols, if not update its latest tvl value timestamp to its closest day start time
     while (lastTimestamp < lastDailyTimestamp) {
-      lastTimestamp = getClosestDayStartTimestamp(lastTimestamp + 24 * secondsInHour);
+      lastTimestamp = getTimestampAtStartOfDayUTC(lastTimestamp + 24 * secondsInHour);
       historicalTvl.push({
         ...mostRecentTvl,
         SK: lastTimestamp,
       });
     }
 
-    let oldestTimestamp = getClosestDayStartTimestamp(historicalTvl[0].SK);
+    let oldestTimestamp = getTimestampAtStartOfDayUTC(historicalTvl[0].SK);
 
     historicalTvl.forEach((item) => {
-      const timestamp = getClosestDayStartTimestamp(item.SK);
+      const timestamp = getTimestampAtStartOfDayUTC(item.SK);
       while (timestamp - oldestTimestamp > 1.5 * DAY) {
-        oldestTimestamp = getClosestDayStartTimestamp(oldestTimestamp + DAY);
+        oldestTimestamp = getTimestampAtStartOfDayUTC(oldestTimestamp + DAY);
         processor(oldestTimestamp, item, protocol, protocolMetadata);
       }
       processor(timestamp, item, protocol, protocolMetadata);

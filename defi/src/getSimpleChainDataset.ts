@@ -1,7 +1,7 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, isDoubleCounted } from "./utils/normalizeChain";
 import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
-import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
+import { formatTimestampAsDate, getTimestampAtStartOfDayUTC, secondsInHour } from "./utils/date";
 import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 import { _InternalProtocolMetadataMap } from "./protocols/data";
 
@@ -48,7 +48,7 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
     const lastTvl = historicalTvl[historicalTvl.length - 1];
 
     while (lastTimestamp < lastDailyTimestamp) {
-      lastTimestamp = getClosestDayStartTimestamp(lastTimestamp + 24 * secondsInHour);
+      lastTimestamp = getTimestampAtStartOfDayUTC(lastTimestamp + 24 * secondsInHour);
       historicalTvl.push({
         ...lastTvl,
         SK: lastTimestamp,
@@ -102,7 +102,7 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
       });
 
       if (dayTvl !== 0) {
-        const timestamp = getClosestDayStartTimestamp(item.SK);
+        const timestamp = getTimestampAtStartOfDayUTC(item.SK);
         if (sumDailyTvls[timestamp] === undefined) {
           sumDailyTvls[timestamp] = {};
         }

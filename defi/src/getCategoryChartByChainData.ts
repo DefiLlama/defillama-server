@@ -1,7 +1,7 @@
 import { errorResponse, successResponse } from "./api2/routes/utils";
 import * as HyperExpress from "hyper-express";
 import { sluggifyString } from "./utils/sluggify";
-import { getClosestDayStartTimestamp } from "./utils/date";
+import { getTimestampAtStartOfDayUTC } from "./utils/date";
 import { get20MinDate } from "./utils/shared";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { chainCoingeckoIds, extraSections, getChainDisplayName, transformNewChainName } from "./utils/normalizeChain";
@@ -18,7 +18,7 @@ interface SumCategoriesOrTagsByChainTvls {
 }
 
 function sum(sumDailyTvls: SumCategoriesOrTagsByChainTvls, tvlSection: string, timestampRaw: number, itemTvl: number) {
-  const timestamp = getClosestDayStartTimestamp(timestampRaw);
+  const timestamp = getTimestampAtStartOfDayUTC(timestampRaw);
   if (!sumDailyTvls[tvlSection]) {
     sumDailyTvls[tvlSection] = {};
   }

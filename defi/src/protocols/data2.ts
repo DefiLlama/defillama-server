@@ -3594,6 +3594,9 @@ const data2: Protocol[] = [
     language: "C++",
     listedAt: 1646953530,
     parentProtocol: "parent#metalx",
+    tokensExcludedFromParent: {
+      Proton: ["XMD"],
+    },
   },
   {
     id: "1533",

@@ -44,7 +44,8 @@ export interface HoldersRevenueAndValueAccrual {
 }
 
 export type FundraisingType = "EQUITY" | "TOKEN" | "NONE" | "UNKNOWN";
-export type EquityRevenueCaptureStatus = "ACTIVE" | "INACTIVE" | "UNKNOWN";
+export type EquityRevenueCaptureStatus = "ACTIVE" | "INACTIVE" | "PARTIAL" | "UNKNOWN";
+
 
 export interface TokenAlignmentLink {
   label: string;

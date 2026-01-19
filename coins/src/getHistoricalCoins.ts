@@ -16,6 +16,7 @@ const handler = async (
   const response = {} as CoinsResponse;
   await Promise.all(
     coins.map(async (coin) => {
+      const isDistressed = coin.distressedFrom && coin.distressedFrom < timestampRequested ? true : false;
       const finalCoin = await getRecordClosestToTimestamp(
         coin.redirect ?? coin.PK,
         timestampRequested,
@@ -45,7 +46,7 @@ const handler = async (
         response[coinName] = {
           decimals: coin.decimals,
           symbol: coin.symbol,
-          price: finalCoin.price,
+          price: isDistressed ? 0 : finalCoin.price,
           timestamp: finalCoin.SK,
           confidence: finalCoin.confidence
         };

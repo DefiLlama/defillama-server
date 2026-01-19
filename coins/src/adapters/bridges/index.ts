@@ -128,11 +128,11 @@ export const bridges = [
   megaeth,
 ].map(normalizeBridgeResults) as Bridge[];
 
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
+import { batchGet } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { sendMessage } from "../../../../defi/src/utils/discord";
+import { insertCoins } from "../../utils/unifiedInserts";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -236,7 +236,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       writes.push({
         PK: `asset#${token.from}`,
         SK: 0,
-        created: getCurrentUnixTimestamp(),
+        timestamp: getCurrentUnixTimestamp(),
         decimals,
         symbol,
         redirect: finalPK,
@@ -246,8 +246,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
     }),
   );
 
-  await batchWrite(writes, true);
-  await produceKafkaTopics(writes, ["coins-metadata"]);
+  await insertCoins(writes, { topics: ["coins-metadata"] });
   return tokens;
 }
 export async function storeTokens() {

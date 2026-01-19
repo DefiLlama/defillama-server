@@ -18,6 +18,7 @@ const schemas: { [topic: string]: Schema } = {
       chain: { type: "string" },
       adapter: { type: "string" },
       redirects: { type: "array", items: { type: "string" } },
+      distressedFrom: { type: "integer" },
     },
     required: ["pid"],
     additionalProperties: false,

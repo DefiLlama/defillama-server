@@ -14,13 +14,14 @@ const handler = async (event: any): Promise<IResponse> => {
   const response = {} as CoinsResponse;
   await Promise.all(
     coins.map(async (coin) => {
+    let isDistressed = false
 
     if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
         coin.decimals = Number(coin.decimals);
-      
+      if (coin.distressedFrom) isDistressed = timestampRequested && coin.distressedFrom < timestampRequested ? true : false
       let formattedCoin = {
         decimals: coin.decimals,
-        price: coin.price,
+        price: isDistressed ? 0 : coin.price,
         symbol: coin.symbol.replace(/\0/g, ""),
         timestamp: coin.timestamp,
       };
@@ -33,7 +34,8 @@ const handler = async (event: any): Promise<IResponse> => {
           if (redirectedCoin.Item === undefined) {
             return;
           }
-          formattedCoin.price = redirectedCoin.Item.price;
+          if (redirectedCoin.Item.distressedFrom) isDistressed = true;
+          formattedCoin.price = isDistressed ? 0 : redirectedCoin.Item.price;
           formattedCoin.timestamp = redirectedCoin.Item.timestamp;
           formattedCoin.symbol =
             formattedCoin.symbol ?? redirectedCoin.Item.symbol;
@@ -45,7 +47,7 @@ const handler = async (event: any): Promise<IResponse> => {
           searchWidth,
         );
         if (finalCoin.SK === undefined) return;
-        formattedCoin.price = finalCoin.price;
+        formattedCoin.price = isDistressed ? 0 : finalCoin.price;
         formattedCoin.timestamp = finalCoin.SK;
         formattedCoin.symbol = formattedCoin.symbol ?? finalCoin.Item.symbol;
       }

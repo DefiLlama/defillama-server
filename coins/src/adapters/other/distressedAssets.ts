@@ -6,6 +6,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { contracts } from "./distressed";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
+  throw new Error("Distressed asset adapter is not supported anymore");
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
 
@@ -16,16 +17,17 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
         {
           PK: `coingecko#${contracts[chain][s]}`,
           SK: 0,
-          confidence: 1.01,
+          confidence: 0.9,
           price: 0,
           symbol: s,
           adapter: "distressed",
           timestamp: timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+          distressedFrom: timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
         },
         {
           PK: `coingecko#${contracts[chain][s]}`,
-          SK: timestamp,
-          confidence: 1.01,
+          SK: timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+          confidence: 0.9,
           price: 0,
           adapter: "distressed",
         },

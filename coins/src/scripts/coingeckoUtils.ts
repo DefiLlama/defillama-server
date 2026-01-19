@@ -166,7 +166,7 @@ export async function getSymbolAndDecimals(
       const tronApi = new sdk.ChainApi({ chain: "tron" });
       return {
         symbol: await tronApi.call({ target: originalAddress!, abi: "erc20:symbol" }),
-        decimals: await tronApi.call({ target: originalAddress!, abi: "erc20:decimals" }),
+        decimals: await tronApi.call({ target: originalAddress!, abi: "erc20:decimals" }).then(r => Number(r)),
       };
 
     case 'stellar':

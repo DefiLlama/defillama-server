@@ -11,7 +11,7 @@ import abi from "./bloom-abi.json";
 const config: { [chain: string]: { org: string; symbol: string }[] } = {
   base: [
     // Add deployed Org contracts here
-    { org: "0x74d9690e111a7577fdd2a2712f1aa3ff0d3ec79c", symbol: "Real Estate Equity"} // symbol Real Estate Equity
+    { org: "0x74d9690e111a7577fdd2a2712f1aa3ff0d3ec79c", symbol: "BLO" }
   ],
 };
 
@@ -36,24 +36,16 @@ export async function bloom(timestamp: number): Promise<Write[]> {
     const api = await getApi(chain, timestamp);
 
     // Batch fetch all prices and token addresses
-    let prices: any[];
-    let tokenAddresses: any[];
-    
-    try {
-      [prices, tokenAddresses] = await Promise.all([
-        api.multiCall({
-          abi: abi.portfolioPricePerToken,
-          calls: orgs.map((o) => o.org),
-        }),
-        api.multiCall({
-          abi: abi.getToken,
-          calls: orgs.map((o) => o.org),
-        }),
-      ]);
-    } catch (e) {
-      console.error(`[bloom] Error fetching data for ${chain}:`, e);
-      continue;
-    }
+    const [prices, tokenAddresses] = await Promise.all([
+      api.multiCall({
+        abi: abi.portfolioPricePerToken,
+        calls: orgs.map((o) => o.org),
+      }),
+      api.multiCall({
+        abi: abi.getToken,
+        calls: orgs.map((o) => o.org),
+      }),
+    ]);
 
     for (let i = 0; i < orgs.length; i++) {
       const { symbol } = orgs[i];

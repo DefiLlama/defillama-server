@@ -3986,6 +3986,9 @@ const data4: Protocol[] = [
       "https://github.com/exponent-finance/exponent-audits/blob/main/jito_restaking_integration_ottersec_audit.pdf",
     ],
     listedAt: 1738617871,
+    dimensions: {
+      fees: "exponent"
+    }
   },
   {
     id: "5723",
@@ -27084,7 +27087,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Undercollateralized Lending",
     chains: ["Ethereum"],
     forkedFromIds: [],
     module: "3jane-lending/index.js",
@@ -29002,7 +29005,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ember.so/",
-    description: "Ember Protocol is the leading Structured Vaults Product on Sui. The vaults are non-custodial, permissionless, and managed by top-tier curators, running DeFi, cross-chain, and CeDeFi strategies across lending markets, Spot AMMs, Perps DEXs, and many more protocols to unlock the highest risk-adjusted returns for users. Everything Vaults for Everything Liquidity.",
+    description: "Ember is the investment platform and infrastructure for launching, accessing, and distributing traditional and onchain financial products through crypto capital markets.",
     chain: "Sui",
     logo: `${baseIconsUrl}/ember-protocol.jpg`,
     audits: "2",

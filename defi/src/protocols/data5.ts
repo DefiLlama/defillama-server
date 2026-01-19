@@ -8882,8 +8882,80 @@ const data5: Protocol[] = [
       fees: "gitcoin-passport",
     }
   },
-  {
+  {  
     id: "7259",
+    name: "TriggerX",
+    address: null,
+    symbol: "-",
+    url: "https://triggerx.network/",
+    description:
+      "TriggerX is a decentralized automation protocol that executes time, event, and condition-based tasks across multiple blockchains using a secure keeper network backed by EigenLayer's AVS model.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/triggerx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Developer Tools",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "triggerxnetwork",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "triggerx",
+    }
+  },
+  {  
+    id: "7260",
+    name: "ElfomoFi",
+    address: null,
+    symbol: "-",
+    url: "https://elfomo.io/",
+    description:
+      "Oracle-based DEX on EVM.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/elfomofi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "elfomo_fi",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      dexs: "elfomofi",
+    }
+  },
+  {  
+    id: "7261",
+    name: "Orynth",
+    address: null,
+    symbol: "-",
+    url: "https://www.orynth.dev/",
+    description:
+      "Where products find their market.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/orynth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "orynth",
+    forkedFromIds: [],
+    audit_links: [],
+    dimensions: {
+      fees: "orynth",
+    }
+  },
+  {
+    id: "7262",
     name: "DipCoin Vault",
     address: null,
     symbol: "-",

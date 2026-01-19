@@ -13742,6 +13742,26 @@
       "to": "coingecko#megaeth",
       "decimals": 18,
       "symbol": "MEGA"
+    },
+    "0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDm"
+    },
+    "0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC": {
+      "to": "coingecko#cap-usd",
+      "decimals": 18,
+      "symbol": "cUSD"
+    },
+    "0xB0F70C0bD6FD87dbEb7C10dC692a2a6106817072": {
+      "to": "coingecko#bitcoin-avalanche-bridged-btc-b",
+      "decimals": 8,
+      "symbol": "BTC.b"
+    },
+    "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT0"
     }
   },
   "quai": {

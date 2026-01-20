@@ -29012,7 +29012,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Risk Curators",
+    category: "Onchain Capital Allocator",
     chains: ["Sui"],
     module: "ember-protocol/index.js",
     forkedFromIds: [],

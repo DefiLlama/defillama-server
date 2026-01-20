@@ -8,6 +8,8 @@ import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
+import { getR2JSONString } from "../../utils/r2";
+import { getTimestampAtStartOfMonth, getTimestampAtStartOfQuarter } from "../../utils/date";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
@@ -455,8 +457,9 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
-  const data = await readRouteData(routeFile)
-  const adjustedData = adjustDataProtocolFinancials(data)
+  let data = await readRouteData(routeFile) // read data from cache file
+  data = await getAdditionalDataProtocolFinancials(data) // add data from external/additional sources
+  const adjustedData = adjustDataProtocolFinancials(data) // tranform data
   return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
 
@@ -467,6 +470,8 @@ const enum FinancialStatementRecords {
   // othersProfit = "Others Profit",
   tokenHolderNetIncome = "Token Holder Net Income",
   othersTokenHolderFlows = "Others Token Holder Flows",
+  incentives = "Incentives",
+  earnings = "Earnings",
 }
 const enum FinancialStatementLabels {
   bribesRevenue = "Bribes Revenue",
@@ -477,6 +482,7 @@ const dataKeys = {
   [AdaptorRecordType.dailySupplySideRevenue]: FinancialStatementRecords.costOfRevenue,
   [AdaptorRecordType.dailyRevenue]: FinancialStatementRecords.grossProfit,
   [AdaptorRecordType.dailyHoldersRevenue]: FinancialStatementRecords.tokenHolderNetIncome,
+  [AdaptorRecordType.tokenIncentives]: FinancialStatementRecords.incentives,
 }
 const methodologyKeys = {
   Fees: FinancialStatementRecords.grossProtocolRevenue,
@@ -502,7 +508,7 @@ function adjustDataProtocolFinancials(data: any): any {
             adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
           }
           
-          // add dbr to Others Profit
+          // add dbr to Others Token Holder Flows
           if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
             adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersTokenHolderFlows] = {
               value: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
@@ -511,6 +517,11 @@ function adjustDataProtocolFinancials(data: any): any {
               },
             }
           }
+
+          // calculate Earnings = Gross Profit - Incentives
+          const r = adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.grossProfit]?.value || 0
+          const i = adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives]?.value || 0
+          adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.earnings] = { value: r - i }
         }
       }
     }
@@ -541,6 +552,65 @@ function adjustMethodology(methodology: any): any {
   }
   
   return adjustedMethodology;
+}
+
+async function getAdditionalDataProtocolFinancials(data: any): Promise<any> {
+  if (data.aggregates) {
+    // get emission data from emission R2
+    try {
+      const emissionData = await getR2JSONString(`emissions/${data.slug}`)
+      if (emissionData && emissionData.unlockUsdChart) {
+        const hasBreakdownData = !!emissionData.componentData && !!emissionData.componentData.sections
+        
+        for (const [timestamp, value] of emissionData.unlockUsdChart) {
+          const firstDayOfMonthDate = getTimestampAtStartOfMonth(timestamp)
+          const firstDayOfQuarterDate = getTimestampAtStartOfQuarter(firstDayOfMonthDate)
+          
+          const keyMaps: Record<string, string> = {
+            monthly: `${new Date(firstDayOfMonthDate * 1e3).toISOString().slice(0, 7)}`,
+            quarterly: `${new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()}-Q${Math.ceil((new Date(firstDayOfQuarterDate * 1e3).getUTCMonth() + 1) / 3)}`,
+            yearly: String(new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()),
+          };
+
+          for (const [timeframe, timeframeKey] of Object.entries(keyMaps)) {
+            if (data.aggregates[timeframe] && data.aggregates[timeframe][timeframeKey]) {
+              // add Incentives
+              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] || { value: 0 }
+              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives].value += Number(value)
+              
+              if (hasBreakdownData) {
+                function findBreakdownLabelsAtTimestamp(sections: any, timestamp: number): any {
+                  const labels: Record<string, number> = {};
+                  for (const section of Object.values(sections)) {
+                    for (const component of Object.values((section as any).components)) {
+                      const compomentItem = component as any
+                      if (compomentItem.name && compomentItem.unlockUsdChart) {
+                        const label = compomentItem.name;
+                        const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
+                        if (item) {
+                          labels[label] = Number(item[1])
+                        }
+                      }
+                    }
+                  }
+                  return labels;
+                }
+                
+                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] || {}
+                const breakdownLabels: any = findBreakdownLabelsAtTimestamp(emissionData.componentData.sections, timestamp)
+                for (const [label, value] of Object.entries(breakdownLabels)) {
+                  data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] || 0
+                  data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] += Number(value)
+                }
+              }
+            }
+          }
+        }
+      }
+    } catch (e: any) {}
+  }
+  
+  return data;
 }
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {

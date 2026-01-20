@@ -85,11 +85,6 @@ const contracts: Record<string, TokenConfig[]> = {
   //     oracle: "0xCF4e49f5e750Af8F2f9Aa1642B68E5839D9c1C00",
   //   },
   //   {
-  //     name: "mHYPER",
-  //     token: "0x9b5528528656DBC094765E2abB79F293c21191B9",
-  //     oracle: "0x92004DCC5359eD67f287F32d12715A37916deCdE",
-  //   },
-  //   {
   //     name: "mAPOLLO",
   //     token: "0x7CF9DEC92ca9FD46f8d86e7798B72624Bc116C05",
   //     oracle: "0x9aEBf5d6F9411BAc355021ddFbe9B2c756BDD358",
@@ -125,6 +120,11 @@ const contracts: Record<string, TokenConfig[]> = {
   //     token: "0x548857309BEfb6Fb6F20a9C5A56c9023D892785B",
   //     oracle: "0x508Fe9556C7919E64406bB4042760d7Bb1F40fC9",
   //   },
+    {
+      name: "mHYPER",
+      token: "0x9b5528528656DBC094765E2abB79F293c21191B9",
+      oracle: "0x92004DCC5359eD67f287F32d12715A37916deCdE",
+    },
     {
       name: "mHyperETH",
       token: "0x5a42864b14C0C8241EF5ab62Dae975b163a2E0C1",
@@ -220,6 +220,13 @@ const contracts: Record<string, TokenConfig[]> = {
   //   token: "0xA1027783fC183A150126b094037A5Eb2F5dB30BA",
   //   oracle: "0xcbf46Aa4b5bAe5850038D9dF4661a58e85CEDC7e",
   // }]
+  monad: [
+    {
+      name: "mHYPER",
+      token: "0xd90F6bFEd23fFDE40106FC4498DD2e9EDB95E4e7",
+      oracle: "0xf3BBD544F8453eE82211709422d8d7906f816584",
+    },
+  ],
 };
 
 async function getBaseAssetPrices(

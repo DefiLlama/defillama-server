@@ -1843,7 +1843,7 @@ const data5: Protocol[] = [
     chains: ["Sui"],
     module: "dipcoin-perps/index.js",
     forkedFrom: [],
-    audit_links: ["https://www.dipcoin.io/doc/DipCoin_Audit_Report.pdf"],
+    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Perpetual_Final_Report.pdf"],
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -9124,7 +9124,7 @@ const data5: Protocol[] = [
       "DipCoin Vaults are a native feature of the DipCoin Perpetual (Perp) trading system, designed to allow users to participate in professional trading strategies without manually managing positions.",
     chain: "Sui",
     logo: `${baseIconsUrl}/dipcoin-vault.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9133,7 +9133,7 @@ const data5: Protocol[] = [
     module: "dipcoin-vault/index.js",
     twitter: "DipCoinOfficial",
     forkedFromIds: [],
-    audit_links: [],
+    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Vault_Final.pdf"],
     parentProtocol: "parent#dipcoin",
     listedAt: 1768928484
   },

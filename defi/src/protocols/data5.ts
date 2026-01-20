@@ -7146,7 +7146,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    tags: ["Prop AMM"],
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "", // prop amm no twitter
@@ -7204,7 +7204,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    tags: ["Prop AMM"],
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "", // prop amm no twitter
@@ -7225,7 +7225,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    tags: ["Prop AMM"],
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "SolFiAMM",

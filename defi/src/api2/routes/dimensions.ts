@@ -557,57 +557,55 @@ function adjustMethodology(methodology: any): any {
 async function getAdditionalDataProtocolFinancials(data: any): Promise<any> {
   if (data.aggregates) {
     // get emission data from emission R2
-    try {
-      const emissionData = await getR2JSONString(`emissions/${data.slug}`)
-      if (emissionData && emissionData.unlockUsdChart) {
-        const hasBreakdownData = !!emissionData.componentData && !!emissionData.componentData.sections
+    const emissionData = await getR2JSONString(`emissions/${data.slug}`)
+    if (emissionData && emissionData.unlockUsdChart) {
+      const hasBreakdownData = !!emissionData.componentData && !!emissionData.componentData.sections
+      
+      for (const [timestamp, value] of emissionData.unlockUsdChart) {
+        const firstDayOfMonthDate = getTimestampAtStartOfMonth(timestamp)
+        const firstDayOfQuarterDate = getTimestampAtStartOfQuarter(firstDayOfMonthDate)
         
-        for (const [timestamp, value] of emissionData.unlockUsdChart) {
-          const firstDayOfMonthDate = getTimestampAtStartOfMonth(timestamp)
-          const firstDayOfQuarterDate = getTimestampAtStartOfQuarter(firstDayOfMonthDate)
-          
-          const keyMaps: Record<string, string> = {
-            monthly: `${new Date(firstDayOfMonthDate * 1e3).toISOString().slice(0, 7)}`,
-            quarterly: `${new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()}-Q${Math.ceil((new Date(firstDayOfQuarterDate * 1e3).getUTCMonth() + 1) / 3)}`,
-            yearly: String(new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()),
-          };
+        const keyMaps: Record<string, string> = {
+          monthly: `${new Date(firstDayOfMonthDate * 1e3).toISOString().slice(0, 7)}`,
+          quarterly: `${new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()}-Q${Math.ceil((new Date(firstDayOfQuarterDate * 1e3).getUTCMonth() + 1) / 3)}`,
+          yearly: String(new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()),
+        };
 
-          for (const [timeframe, timeframeKey] of Object.entries(keyMaps)) {
-            if (data.aggregates[timeframe] && data.aggregates[timeframe][timeframeKey]) {
-              // add Incentives
-              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] || { value: 0 }
-              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives].value += Number(value)
-              
-              if (hasBreakdownData) {
-                function findBreakdownLabelsAtTimestamp(sections: any, timestamp: number): any {
-                  const labels: Record<string, number> = {};
-                  for (const section of Object.values(sections)) {
-                    for (const component of Object.values((section as any).components)) {
-                      const compomentItem = component as any
-                      if (compomentItem.name && compomentItem.unlockUsdChart) {
-                        const label = compomentItem.name;
-                        const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
-                        if (item) {
-                          labels[label] = Number(item[1])
-                        }
+        for (const [timeframe, timeframeKey] of Object.entries(keyMaps)) {
+          if (data.aggregates[timeframe] && data.aggregates[timeframe][timeframeKey]) {
+            // add Incentives
+            data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] || { value: 0 }
+            data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives].value += Number(value)
+            
+            if (hasBreakdownData) {
+              function findBreakdownLabelsAtTimestamp(sections: any, timestamp: number): any {
+                const labels: Record<string, number> = {};
+                for (const section of Object.values(sections)) {
+                  for (const component of Object.values((section as any).components)) {
+                    const compomentItem = component as any
+                    if (compomentItem.name && compomentItem.unlockUsdChart) {
+                      const label = compomentItem.name;
+                      const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
+                      if (item) {
+                        labels[label] = Number(item[1])
                       }
                     }
                   }
-                  return labels;
                 }
-                
-                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] || {}
-                const breakdownLabels: any = findBreakdownLabelsAtTimestamp(emissionData.componentData.sections, timestamp)
-                for (const [label, value] of Object.entries(breakdownLabels)) {
-                  data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] || 0
-                  data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] += Number(value)
-                }
+                return labels;
+              }
+              
+              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] || {}
+              const breakdownLabels: any = findBreakdownLabelsAtTimestamp(emissionData.componentData.sections, timestamp)
+              for (const [label, value] of Object.entries(breakdownLabels)) {
+                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] || 0
+                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] += Number(value)
               }
             }
           }
         }
       }
-    } catch (e: any) {}
+    }
   }
   
   return data;

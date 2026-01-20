@@ -9,7 +9,6 @@ import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
 import PromisePool from '@supercharge/promise-pool';
 import { ADAPTER_TYPES } from '../../data/types';
-import { deadChains } from '../../../storeTvlInterval/getAndStoreTvl';
 
 
 // ================== Script Config ==================
@@ -267,7 +266,6 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
           runType: 'refill-all',
-          deadChains,
         }
         runner.push(handler2(eventObj))
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS

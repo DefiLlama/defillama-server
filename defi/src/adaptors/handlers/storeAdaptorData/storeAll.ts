@@ -8,7 +8,6 @@ import { elastic } from '@defillama/sdk';
 import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
 import { ADAPTER_TYPES } from '../../data/types';
 import loadAdaptorsData from '../../data';
-import { deadChains } from '../../../storeTvlInterval/getAndStoreTvl';
 const MAX_RUNTIME = 1000 * 60 * +(process.env.MAX_RUNTIME_MINUTES ?? 50); // 50 minutes default
 const onlyYesterday = process.env.ONLY_YESTERDAY === 'true';  // if set, we refill only yesterday's missing data
 
@@ -121,7 +120,7 @@ async function run() {
       } catch (e) {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
-      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, maxRunTime: MAX_RUNTIME - 2 * 60 * 1000, onlyYesterday, maxConcurrency, deadChains })
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, maxRunTime: MAX_RUNTIME - 2 * 60 * 1000, onlyYesterday, maxConcurrency })
 
     } catch (e) {
       console.error("error", e)

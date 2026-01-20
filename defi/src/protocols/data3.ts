@@ -41512,7 +41512,8 @@ const data3_2: Protocol[] = [
     name: "Superform",
     address: "0x1d926bbe67425c9f507b9a0e8030eedc7880bf33",
     symbol: "UP",
-    url: "https://www.superform.xyz/",
+    url: "https://app.superform.xyz/earn?ref=3TSV5oRxhsPiRq8F3aoi7",
+    referralUrl: "https://app.superform.xyz/earn?ref=3TSV5oRxhsPiRq8F3aoi7",
     description:
       "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
     chain: "Ethereum",

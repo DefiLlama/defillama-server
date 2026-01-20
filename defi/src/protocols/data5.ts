@@ -1772,6 +1772,7 @@ const data5: Protocol[] = [
     twitter: "makinafi",
     github: ["MakinaHQ"],
     listedAt: 1762370744,
+    hallmarks: [[1768867200, "LP exploited"]],
     dimensions: {
       fees: "makina",
     },

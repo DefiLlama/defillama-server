@@ -29551,7 +29551,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "surfone",
       derivatives: "surfone"
-    }
+    },
+    deprecated: true,
   }, ///
   /*
   {

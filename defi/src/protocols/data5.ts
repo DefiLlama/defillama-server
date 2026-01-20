@@ -9084,7 +9084,7 @@ const data5: Protocol[] = [
     chains: ["Monad"],
     module: "someswap/index.js",
     twitter: "SomethingSwap",
-    forkedFromIds: [],
+    forkedFromIds: ["2197"],
     audit_links: [],
     listedAt: 1768881825
   },

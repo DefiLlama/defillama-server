@@ -31,5 +31,5 @@ async function getTokenPrices(timestamp: number, chain: string) {
 
     pricesObject[t] = { price, underlying: uTokens[i], }
   })
-  return getWrites({ chain, timestamp, pricesObject, projectName: "makina", });
+  return getWrites({ chain, timestamp, pricesObject, projectName: "makina", confidence: 1 });
 }

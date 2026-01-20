@@ -13770,5 +13770,12 @@
       "decimals": 18,
       "symbol": "QUAI"
     }
+  }, 
+  "fogo": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#fogo",
+      "decimals": 18,
+      "symbol": "FOGO"
+    }
   }
 }

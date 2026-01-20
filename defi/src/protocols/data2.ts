@@ -3594,6 +3594,9 @@ const data2: Protocol[] = [
     language: "C++",
     listedAt: 1646953530,
     parentProtocol: "parent#metalx",
+    tokensExcludedFromParent: {
+      Proton: ["XMD"],
+    },
   },
   {
     id: "1533",
@@ -27337,6 +27340,7 @@ const data2: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: null,
+    deprecated: true,
     cmcId: null,
     category: "Dexs",
     chains: ["Ethereum", "Polygon", "Arbitrum"],

@@ -25,6 +25,7 @@ const keyMap: { [value: string]: string } = {
   projectId: "*projectID",
   excludedWallets: "*Holders to be Removed for Active Marketcap",
   activeMcap: "activeMcap",
+  price: "price",
 };
 
 // Sort tokens by chain and map token to project for fetching supplies, tvls etc
@@ -148,7 +149,7 @@ async function getExcludedBalances(
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {
-        console.log(`Failed to fetch balances for ${chain}`)
+        console.error(`Failed to fetch balances for ${chain}`)
       }
     },
   });
@@ -271,6 +272,15 @@ function getOnChainTvlAndActiveMcaps(
   totalSupplies: any,
   excludedAmounts: any
 ) {
+  Object.keys(stablecoinsData).map((cgId: string) => {
+    const data = parsedCsvData.find((row: any) => row[keyMap.coingeckoId] == cgId);
+    if (!data) return;
+    const rwaId = data[keyMap.id];
+    if (!finalData[rwaId]) return;
+    finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
+    if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
+  });
+
   Object.keys(assetPrices).map((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
     const data = parsedCsvData.find((row: any) => row[keyMap.id] == rwaId);
@@ -281,8 +291,6 @@ function getOnChainTvlAndActiveMcaps(
     const chainDisplayName = getChainDisplayName(chain, true);
 
     if (cgId && stablecoinsData[cgId]) {
-      finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
       return;
     }
@@ -293,6 +301,8 @@ function getOnChainTvlAndActiveMcaps(
       console.error(`No supply or price for ${pk}`);
       return;
     }
+
+    if (!finalData[rwaId][keyMap.price]) finalData[rwaId][keyMap.price] = price;
 
     try {
       if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
@@ -448,4 +458,4 @@ async function main(ts: number = 0) {
 main().catch((error) => {
   console.error('Error running the script: ',error);
   process.exit(1);
-}).then(() => process.exit(0));
+}).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

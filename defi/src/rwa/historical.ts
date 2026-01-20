@@ -11,6 +11,7 @@ import { cache } from "@defillama/sdk";
 let auth: string[] = [];
 const columns: any = ["timestamp", "id", "defiactivetvl", "mcap", "aggregatedefiactivetvl", "aggregatemcap"];
 const twoDaysAgo = getTimestampAtStartOfDay(getCurrentUnixTimestamp() - 2 * secondsInDay);
+let sql: any = null;
 
 export const protocolIdMap: { [id: string]: string } = {};
 export const categoryMap: { [category: string]: string } = {};
@@ -85,10 +86,20 @@ export async function storeHistorical(res: any) {
     });
   });
 
-  const sql = await iniDbConnection();
+  if (!sql) sql = await iniDbConnection();
   await queryPostgresWithRetry(
     sql`
             insert into activetvls
+            ${sql(inserts, ...columns)}
+            on conflict (timestamp, id) 
+            do nothing
+            `,
+    sql
+  );
+
+  await queryPostgresWithRetry(
+    sql`
+            insert into activetvlsbackup
             ${sql(inserts, ...columns)}
             on conflict (timestamp, id) 
             do nothing
@@ -103,26 +114,18 @@ export async function storeHistorical(res: any) {
     sql
   );
 
-  if (!timestamps.length) {
-    sql.end();
-    return;
-  }
+  if (!timestamps.length) return;
 
   const dailyTimestamps = findDailyTimestamps(timestamps);
 
   const timestampsToDelete = timestamps.map((t: any) => t.timestamp).filter((t: number) => !dailyTimestamps.includes(t));
-  if (!timestampsToDelete.length) {
-    sql.end();
-    return;
-  }
+  if (!timestampsToDelete.length) return;
 
   await queryPostgresWithRetry(
     sql`
             delete from activetvls where timestamp in ${sql(timestampsToDelete)}`,
     sql
   );
-
-  sql.end();
 }
 
 async function fetchHistorical(id: string) {
@@ -130,13 +133,12 @@ async function fetchHistorical(id: string) {
   const timestamp = getCurrentUnixTimestamp();
   if (cachedData.timestamp > timestamp - 3600) return cachedData.data;
 
-  const sql = await iniDbConnection();
+  if (!sql) sql = await iniDbConnection();
   const data = await queryPostgresWithRetry(
     sql`
             select timestamp, aggregatedefiactivetvl, aggregatemcap from activetvls where id = ${id}`,
     sql
   );
-  sql.end();
 
   const res: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number }[] = [];
   data.sort((a: any, b: any) => a.timestamp - b.timestamp);
@@ -162,3 +164,19 @@ export async function rwaChart(name: string) {
   const data = await fetchHistorical(id);
   return { data };
 }
+
+async function closeConnection() {
+  if (!sql) return;
+  try {
+    const closing = sql.close()
+    sql = null
+    await closing
+    console.log('Database connection closed.');
+  } catch (error) {
+    console.error('Error while closing the database connection:', error);
+  }
+}
+
+// Add a process exit hook to close the database connection
+process.on('beforeExit', closeConnection);
+process.on('exit', closeConnection);

@@ -29133,6 +29133,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "unitus/index.js",
     twitter: "unitusfi",
+    parentProtocol: "parent#dforce",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     github: ["UnitusLabs"],
     listedAt: 1703014661,

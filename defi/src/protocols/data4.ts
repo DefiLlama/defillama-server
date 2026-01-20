@@ -29413,6 +29413,7 @@ const data4: Protocol[] = [
     module: "maxshot/index.js",
     twitter: null,
     audit_links: [],
+    parentProtocol: "parent#dforce",
     listedAt: 1758641734
   },
   {

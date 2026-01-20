@@ -8723,6 +8723,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NestExchange",
   },
+  {
+    id: "parent#dforce",
+    name: "dForce",
+    url: "https://dforce.network/",
+    description:
+      "dForce is a DeFAI network that unleashes DeFi superpowers for AI agents, driving the evolution of a crypto-powered AI economy.",
+    logo: `${baseIconsUrl}/dforce.jpg`,
+    gecko_id: "dforce-token",
+    cmcId: "4758",
+    chains: [],
+    twitter: "dForcenet",
+  },
 ];
 
 export default parentProtocols;

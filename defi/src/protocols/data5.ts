@@ -1772,6 +1772,7 @@ const data5: Protocol[] = [
     twitter: "makinafi",
     github: ["MakinaHQ"],
     listedAt: 1762370744,
+    hallmarks: [[1768867200, "LP exploited"]],
     dimensions: {
       fees: "makina",
     },
@@ -9065,6 +9066,28 @@ const data5: Protocol[] = [
     forkedFromIds: [],
     audit_links: ["https://hastra.io/Hastra_vault-mint_&_vault-stake_Solana_Programs_Summary_Audit_Report.pdf"],
     listedAt: 1768842285
+  },
+  {  
+    id: "7267",
+    name: "SomeSwap",
+    address: null,
+    symbol: "-",
+    url: "https://someswap.org/",
+    description:
+      "Something AMM platform connected to something.tools tokens launchpad.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/someswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Monad"],
+    module: "someswap/index.js",
+    twitter: "SomethingSwap",
+    forkedFromIds: ["2197"],
+    audit_links: [],
+    listedAt: 1768881825
   },
   {
     id: "7267",

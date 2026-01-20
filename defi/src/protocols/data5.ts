@@ -9046,7 +9046,7 @@ const data5: Protocol[] = [
   },
   {  
     id: "7266",
-    name: "Hestra",
+    name: "Hastra",
     address: null,
     symbol: "-",
     url: "https://hastra.io/",

@@ -16171,7 +16171,7 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Monad"}],
+        chains: [{ chain: "Base" }, { chain: "Monad"}, { chain: "Arbitrum"}],
       },
       {
         name: "Chaos",

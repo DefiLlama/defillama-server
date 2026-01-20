@@ -13,6 +13,7 @@ import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
+import { deadChainsSet } from "../../../config/deadChains";
 
 const recentDataByAdapterType: { [adapterType: string]: any } = {}
 
@@ -42,7 +43,6 @@ export type DimensionRunOptions = {
   checkBeforeInsert?: boolean
   maxRunTime?: number // in milliseconds
   onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
-  deadChains?: Set<string>
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -66,7 +66,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
   let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false, deadChains,
+    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false,
   } = options
 
   if (!isRunFromRefillScript)
@@ -125,7 +125,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = protocols.reduce((acc, { chains }) => {
-    chains = chains.filter((chain) => !deadChains || !deadChains.has(chain))  // filter out dead chains
+    chains = chains.filter((chain) => !deadChainsSet.has(chain))  // filter out dead chains
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
@@ -338,7 +338,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
                 protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
-                deadChains,
               })
               if (onlyYesterday)
                 return await refillYesterdayPromise
@@ -382,7 +381,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       // dynamically import runAdapter so we import it only if needed and after the repo is setup
       const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default
 
-      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all', deadChains, },) as any
+      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all', deadChains: deadChainsSet, },) as any
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
 
 
@@ -408,7 +407,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
       if (noDataReturned) {
         const chains = Object.keys(adaptor.adapter || {})
-        const allChainsAreDead = chains.every(chain => deadChains?.has(chain))
+        const allChainsAreDead = chains.every(chain => deadChainsSet?.has(chain))
         if (allChainsAreDead) {
           console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
           return;

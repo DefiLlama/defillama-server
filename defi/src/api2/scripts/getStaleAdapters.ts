@@ -1,46 +1,55 @@
-function getCondition(protocol: any, min: number, threshold: number) {
-    return Number(protocol.total24h >= min) &&
-            Number(protocol.change_1d) >= threshold * -1 &&
-            Number(protocol.change_7d) >= threshold * -1 &&
-            Number(protocol.change_1d) <= threshold &&
-            Number(protocol.change_7d) <= threshold 
+const metrics = [
+  { name: "Fees", endpoint: "https://api.llama.fi/overview/fees?excludeTotalDataChartBreakdown=false&dataType=dailyFees", minValue: 100 },
+  { name: "Revenue", endpoint: "https://api.llama.fi/overview/fees?excludeTotalDataChartBreakdown=false&dataType=dailyRevenue", minValue: 50 },
+  { name: "Aggregator Volume", endpoint: "https://api.llama.fi/overview/aggregators?excludeTotalDataChartBreakdown=false", minValue: 1000 },
+  { name: "Bridge Aggregator Volume", endpoint: "https://api.llama.fi/overview/bridge-aggregators?excludeTotalDataChartBreakdown=false", minValue: 1000 },
+  { name: "DEX Volume", endpoint: "https://api.llama.fi/overview/dexs?excludeTotalDataChartBreakdown=false", minValue: 1000 },
+  { name: "Options Notional Volume", endpoint: "https://api.llama.fi/overview/options?excludeTotalDataChartBreakdown=false", minValue: 1000 },
+  { name: "Options Premium Volume", endpoint: "https://api.llama.fi/overview/options?excludeTotalDataChartBreakdown=false&dataType=dailyPremiumVolume", minValue: 1000 },
+  { name: "Derivatives", endpoint: "https://api.llama.fi/overview/derivatives?excludeTotalDataChartBreakdown=false", minValue: 1000 },
+  { name: "Aggregator Derivatives", endpoint: "https://api.llama.fi/overview/aggregator-derivatives?excludeTotalDataChartBreakdown=false", minValue: 1000 }
+]
+
+function formatResponse(response: any) {
+  const twoWeeks = 60000 * 60 * 24 * 14
+  const twoWeeksAgo = (Number(new Date()) - twoWeeks) / 1000
+  const protocols = response.protocols
+  const chartData = response.totalDataChartBreakdown.filter((row: any[]) => row[0] >= twoWeeksAgo)
+  return [protocols, chartData]
 }
 
 async function _getStaleProtocols() {
-    const [fees,volume] = await Promise.all([
-        fetch("https://api.llama.fi/overview/fees?excludeTotalDataChartBreakdown=true&dataType=dailyFees").then(response => response.json()).then(data => data.protocols),
-        fetch("https://api.llama.fi/overview/dexs?excludeTotalDataChartBreakdown=true").then(response => response.json()).then(data => data.protocols),
-    ])
-    const responseTable : any = []
-    fees.forEach((protocol: Record<string, any>) => {
-        const threshold = protocol.category === "Lending" ? 1 : 3
-        if (getCondition(protocol, 100, threshold))  {
-            responseTable.push({
-                metric: "Fees",
-                protocol: protocol.name,
-                total24h: protocol.total24h,
-                change_1d: protocol.change_1d,
-                change_7d: protocol.change_7d,
-                total7DaysAgo: protocol.total7DaysAgo,
-                total30DaysAgo: protocol.total30DaysAgo,
-                methodologyURL: protocol.methodologyURL
-            })
-        }
+  function calculateChange(chartDataset: number[], protocol: any, min: number, threshold: number, metric: String) {
+    if (Number(protocol.total24h) < min) {
+      return null
+    }
+    const thresholdMin = threshold * - 1
+    const chartData = chartDataset.map((row: any) => row[1][protocol.name])
+    const max14d = Math.max(...chartData)
+    const min14d = Math.min(...chartData)
+    const change = (max14d / min14d) - 1
+    if (change >= thresholdMin && change <= threshold) {
+      responseTable.push({
+        metric: metric,
+        protocol: protocol.name,
+        total24h: protocol.total24h,
+        change: +(change * 100).toFixed(2),
+        max_14d: max14d,
+        min_14d: min14d,
+        methodologyURL: protocol.methodologyURL
+      })
+    }
+  }
+
+  const responseTable: any = []
+  await Promise.all(metrics.map(async (metric) => {
+    const data = await fetch(metric.endpoint).then(response => response.json())
+    const [protocols, chartData] = formatResponse(data)
+    protocols.forEach((protocol: Record<string, any>) => {
+      const threshold = (metric.name === "Fees" && protocol.category === "Lending") ? 0.01 : 0.03
+      calculateChange(chartData, protocol, metric.minValue, threshold, metric.name)
     })
-    volume.forEach((protocol: Record<string, any>) => {
-        if (getCondition(protocol, 1000, 3))  {
-            responseTable.push({
-                metric: "Volume",
-                protocol: protocol.name,
-                total24h: protocol.total24h,
-                change_1d: protocol.change_1d,
-                change_7d: protocol.change_7d,
-                total7DaysAgo: protocol.total7DaysAgo,
-                total30DaysAgo: protocol.total30DaysAgo,
-                methodologyURL: protocol.methodologyURL
-            })
-        }
-    })
+  }))
     return responseTable
 }
 

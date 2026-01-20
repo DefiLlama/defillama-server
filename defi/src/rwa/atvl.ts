@@ -291,6 +291,8 @@ function getOnChainTvlAndActiveMcaps(
     const chainDisplayName = getChainDisplayName(chain, true);
 
     if (cgId && stablecoinsData[cgId]) {
+      finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
+      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
       return;
     }
@@ -337,7 +339,7 @@ function findActiveMcaps(
 }
 // main entry
 async function main(ts: number = 0) {
-  const timestamp = getTimestampAtStartOfDay(ts);
+  const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it
   const parsedCsvData = await getCsvData();

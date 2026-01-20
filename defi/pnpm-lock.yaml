@@ -27,8 +27,8 @@ importers:
         specifier: ^3.918.0
         version: 3.918.0(@aws-sdk/client-dynamodb@3.918.0)
       '@defillama/sdk':
-        specifier: ^5.0.198
-        version: 5.0.198(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.5)
+        specifier: ^5.0.204
+        version: 5.0.204(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)
       '@elastic/elasticsearch':
         specifier: ^8.13.1
         version: 8.19.1
@@ -176,7 +176,7 @@ importers:
         version: 5.9.3
       zod:
         specifier: ^4.1.12
-        version: 4.3.5
+        version: 4.1.12
 
 packages:
 
@@ -1096,8 +1096,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@defillama/sdk@5.0.198':
-    resolution: {integrity: sha512-t23jlODhegAHDvB6DyUHEnvvgera+zJWTw3R70sKe7BsZ9w/+VkyVNDVhUaQHXj1WtcocItPLKFfANydgMoxEA==}
+  '@defillama/sdk@5.0.204':
+    resolution: {integrity: sha512-oR2nW6JWGrWKpVcMcgG/7+HRAZlmWu9nKATsRPLAJR8Si1GxqBHU3K5wu1x4SddULUoNJb1xjLJn5RvFUr39oQ==}
 
   '@effect/platform-node-shared@0.15.5':
     resolution: {integrity: sha512-PXFdIHMNzv19+aaKBo99KVsqJ65il8j7ejze/srkzOkNu4WK/GGpQuYF32NZLirFgXJe/4aYMRgwD+uJ4mCyuw==}
@@ -2032,8 +2032,8 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  abitype@1.2.3:
-    resolution: {integrity: sha512-Ofer5QUnuUdTFsBRwARMoWKOH1ND5ehwYhJ3OJ/BQO+StkwQjHw0XyVh4vDttzHB7QOFhPHa/o413PJ82gU/Tg==}
+  abitype@1.1.0:
+    resolution: {integrity: sha512-6Vh4HcRxNMLA0puzPjM5GBgT4aAcFGKZzSgAXvuZ27shJP6NEpielTuqbBmZILR5/xd0PizkBGy5hReKz9jl5A==}
     peerDependencies:
       typescript: '>=5.0.4'
       zod: ^3.22.0 || ^4.0.0
@@ -4606,8 +4606,8 @@ packages:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
     engines: {node: '>= 0.4'}
 
-  ox@0.11.1:
-    resolution: {integrity: sha512-1l1gOLAqg0S0xiN1dH5nkPna8PucrZgrIJOfS49MLNiMevxu07Iz4ZjuJS9N+xifvT+PsZyIptS7WHM8nC+0+A==}
+  ox@0.9.6:
+    resolution: {integrity: sha512-8SuCbHPvv2eZLYXrNmC0EC12rdzXQLdhnOMlHDW2wiCPLxBrOOJwX5L5E61by+UjTPOryqQiRSnjIKCI+GykKg==}
     peerDependencies:
       typescript: '>=5.4.0'
     peerDependenciesMeta:
@@ -5874,8 +5874,8 @@ packages:
     resolution: {integrity: sha512-QYOx2+7ICdUp2IckrJpjakPopLPDAaYwF26z/ZNsUvrlQLNkNoFvnN0SrbnEWp7tZ88+ybIpvuu/+IB9q1j+jQ==}
     engines: {node: '>=16.0.0'}
 
-  viem@2.43.5:
-    resolution: {integrity: sha512-QuJpuEMEPM3EreN+vX4mVY68Sci0+zDxozYfbh/WfV+SSy/Gthm74PH8XmitXdty1xY54uTCJ+/Gbbd1IiMPSA==}
+  viem@2.40.0:
+    resolution: {integrity: sha512-Y5XoBUzkNiIGfIR+Y7uD6e4xFDsdzR4PgxWgUwSPcRUq86XI+bxZjvvrYU/s+amgt1LpOvvIMdmgQ8+ZIaNi0g==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -6073,8 +6073,8 @@ packages:
     resolution: {integrity: sha512-9qv4rlDiopXg4E69k+vMHjNN63YFMe9sZMrdlvKnCjlCRWeCBswPPMPUfx+ipsAWq1LXHe70RcbaHdJJpS6hyQ==}
     engines: {node: '>= 10'}
 
-  zod@4.3.5:
-    resolution: {integrity: sha512-k7Nwx6vuWx1IJ9Bjuf4Zt1PEllcwe7cls3VNzm4CQ1/hgtFUK2bRNG3rvnpPUhFjmqJKAKtjV576KnUkHocg/g==}
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
 snapshots:
 
@@ -8047,7 +8047,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@defillama/sdk@5.0.198(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.5)':
+  '@defillama/sdk@5.0.204(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)':
     dependencies:
       '@aws-sdk/client-s3': 3.913.0
       '@elastic/elasticsearch': 8.19.1
@@ -8057,7 +8057,7 @@ snapshots:
       p-limit: 3.1.0
       stream-json: 1.9.1
       tron-format-address: 0.1.12
-      viem: 2.43.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.5)
+      viem: 2.40.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12)
     transitivePeerDependencies:
       - '@75lb/nature'
       - aws-crt
@@ -8688,7 +8688,7 @@ snapshots:
 
   '@scure/bip32@1.7.0':
     dependencies:
-      '@noble/curves': 1.9.7
+      '@noble/curves': 1.9.1
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
 
@@ -9526,10 +9526,10 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  abitype@1.2.3(typescript@5.9.3)(zod@4.3.5):
+  abitype@1.1.0(typescript@5.9.3)(zod@4.1.12):
     optionalDependencies:
       typescript: 5.9.3
-      zod: 4.3.5
+      zod: 4.1.12
 
   abort-controller@3.0.0:
     dependencies:
@@ -12448,7 +12448,7 @@ snapshots:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
-  ox@0.11.1(typescript@5.9.3)(zod@4.3.5):
+  ox@0.9.6(typescript@5.9.3)(zod@4.1.12):
     dependencies:
       '@adraffy/ens-normalize': 1.11.1
       '@noble/ciphers': 1.3.0
@@ -12456,7 +12456,7 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.2.3(typescript@5.9.3)(zod@4.3.5)
+      abitype: 1.1.0(typescript@5.9.3)(zod@4.1.12)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.9.3
@@ -13875,15 +13875,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  viem@2.43.5(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.5):
+  viem@2.40.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12):
     dependencies:
       '@noble/curves': 1.9.1
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.2.3(typescript@5.9.3)(zod@4.3.5)
+      abitype: 1.1.0(typescript@5.9.3)(zod@4.1.12)
       isows: 1.0.7(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))
-      ox: 0.11.1(typescript@5.9.3)(zod@4.3.5)
+      ox: 0.9.6(typescript@5.9.3)(zod@4.1.12)
       ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     optionalDependencies:
       typescript: 5.9.3
@@ -14117,4 +14117,4 @@ snapshots:
       compress-commons: 4.1.2
       readable-stream: 3.6.2
 
-  zod@4.3.5: {}
+  zod@4.1.12: {}

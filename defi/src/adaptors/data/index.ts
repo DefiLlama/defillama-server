@@ -159,6 +159,11 @@ function getDimensionsConfig() {
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
       },
     },
+    [AdapterType.NORMALIZED_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
+      },
+    },
     [AdapterType.FEES]: {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyFees],

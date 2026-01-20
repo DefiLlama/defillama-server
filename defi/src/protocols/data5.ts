@@ -9090,7 +9090,7 @@ const data5: Protocol[] = [
     listedAt: 1768881825
   },
   {
-    id: "7267",
+    id: "7268",
     name: "DipCoin Vault",
     address: null,
     symbol: "-",

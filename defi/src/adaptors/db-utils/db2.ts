@@ -1,22 +1,39 @@
 import * as sdk from "@defillama/sdk"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
+import * as fs from "fs/promises"
+import * as path from "path"
 import { Op, } from "sequelize"
+import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
+import { AdapterType, IJSON } from "../data/types"
 import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "../data/types"
-import { IJSON } from "../data/types"
+import {
+  getDailyLocalPath,
+  getHourlyLocalPath,
+  getLocalStoreDir,
+  isLocalStoreEnabled,
+  listJsonFilesRecursively,
+  readJsonIfExists,
+  writeJsonAtomic,
+} from "./localStore"
 
 let isInitialized: any
 
 export async function init() {
+  if (isLocalStoreEnabled()) return true
   if (!isInitialized) isInitialized = initializeTVLCacheDB()
   return isInitialized
 }
 
 export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3) {
   try {
+    if (isLocalStoreEnabled()) {
+      const pgItem: any = record.getPGItem()
+      const filePath = getDailyLocalPath(pgItem.type, pgItem.id, pgItem.timeS)
+      await writeJsonAtomic(filePath, pgItem)
+      return
+    }
 
     await init()
 
@@ -49,6 +66,10 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   records.map(i => recordMap[i.getUniqueKey()] = i)
   records = Object.values(recordMap)
 
+  if (isLocalStoreEnabled()) {
+    for (const r of records) await storeAdapterRecord(r)
+    return
+  }
 
   await init()
 
@@ -91,6 +112,19 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp, transfor
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
+  if (isLocalStoreEnabled()) {
+    const root = path.join(getLocalStoreDir(), "daily", String(adapterType))
+    const files = await listJsonFilesRecursively(root)
+    const rows: any[] = []
+    for (const f of files) {
+      const row = await readJsonIfExists(f)
+      if (!row) continue
+      if (typeof row.timestamp === 'number' && row.timestamp >= timestamp) rows.push(transform(row))
+    }
+    rows.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+    return rows
+  }
+
   const label = `getAllItemsUpdatedAfter(${adapterType})`
   // console.time(label)
 
@@ -123,6 +157,20 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp, transfor
 export async function getAllItemsAfter({ adapterType, timestamp = 0, transform = a => a }: { adapterType: AdapterType, timestamp?: number, transform?: (a: any) => any }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+
+  if (isLocalStoreEnabled()) {
+    const root = path.join(getLocalStoreDir(), "daily", String(adapterType))
+    const files = await listJsonFilesRecursively(root)
+    const rows: any[] = []
+    for (const f of files) {
+      const row = await readJsonIfExists(f)
+      if (!row) continue
+      if (typeof row.timestamp === 'number' && row.timestamp >= timestamp) rows.push(transform(row))
+    }
+    rows.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+    return rows
+  }
+
   const filterCondition: any = { timestamp: { [Op.gte]: timestamp } }
   if (adapterType) filterCondition.type = adapterType
 
@@ -156,6 +204,27 @@ export async function getAllItemsAfter({ adapterType, timestamp = 0, transform =
 export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string }) {
   await init()
 
+  if (isLocalStoreEnabled()) {
+    const root = path.join(getLocalStoreDir(), "daily", String(adapterType))
+    const ids: string[] = []
+    try {
+      const ent = await fs.readdir(root, { withFileTypes: true })
+      ent.forEach(e => { if (e.isDirectory()) ids.push(e.name) })
+    } catch (e: any) {
+      if (e?.code === 'ENOENT') return []
+      throw e
+    }
+
+    const out: any[] = []
+    for (const id of ids) {
+      const fp = getDailyLocalPath(adapterType, id, date)
+      const row = await readJsonIfExists(fp)
+      if (!row) continue
+      out.push({ timestamp: row.timestamp, id: row.id, timeS: row.timeS, updatedat: row.updatedat })
+    }
+    return out
+  }
+
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
     where: { type: adapterType, timeS: date },
     attributes: ['timestamp', 'id', 'timeS', 'updatedat'],
@@ -164,8 +233,30 @@ export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { ada
 
   return result
 }
+
 export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
   await init()
+
+  if (isLocalStoreEnabled()) {
+    const out: any[] = []
+    const root = path.join(getLocalStoreDir(), "daily", String(adapterType))
+    const ids = id ? [id] : (() => {
+      try { return require("fs").readdirSync(root).filter((x: string) => require("fs").statSync(path.join(root, x)).isDirectory()) } catch { return [] }
+    })()
+
+    for (const pid of ids) {
+      const folder = path.join(root, String(pid))
+      const files = await listJsonFilesRecursively(folder)
+      for (const f of files) {
+        const row = await readJsonIfExists(f)
+        if (!row) continue
+        if (timestamp && typeof row.timestamp === 'number' && row.timestamp < timestamp) continue
+        out.push({ timestamp: row.timestamp, id: row.id, timeS: row.timeS })
+      }
+    }
+
+    return out
+  }
 
   const where: any = { type: adapterType, }
   if (id) where['id'] = id
@@ -178,4 +269,154 @@ export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp 
   })
 
   return result
+}
+
+export function getHourlyTimeS(timestamp: number) {
+  const d = new Date(timestamp * 1000)
+  const yyyy = d.getUTCFullYear()
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0')
+  const dd = String(d.getUTCDate()).padStart(2, '0')
+  const hh = String(d.getUTCHours()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd}-${hh}`
+}
+
+export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestamp, toTimestamp, transform = a => a }: { adapterType: AdapterType, id: string, fromTimestamp: number, toTimestamp: number, transform?: (a: any) => any}) {
+  await init()
+
+  if (fromTimestamp < 946684800) fromTimestamp = 946684800 // 2000-01-01
+
+  if (isLocalStoreEnabled()) {
+    const rows: any[] = []
+    const start = fromTimestamp - (fromTimestamp % 3600)
+    const end = toTimestamp - (toTimestamp % 3600)
+    for (let ts = start; ts <= end; ts += 3600) {
+      const timeS = getHourlyTimeS(ts)
+      const fp = getHourlyLocalPath(adapterType, id, timeS)
+      const row = await readJsonIfExists(fp)
+      if (!row) continue
+      rows.push(row)
+    }
+
+    rows.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+
+    return rows.map(transform)
+  }
+
+  const rows: any[] = await Tables.DIMENSIONS_HOURLY_DATA.findAll({
+    where: {
+      type: adapterType,
+      id,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  return rows.map(transform)
+}
+
+export async function getHourlySlicesBulk({ adapterType, fromTimestamp, toTimestamp, transform = a => a }: { adapterType: AdapterType, fromTimestamp: number, toTimestamp: number, transform?: (a: any) => any }) {
+  await init()
+
+  if (fromTimestamp < 946684800) fromTimestamp = 946684800 // 2000-01-01
+
+  if (isLocalStoreEnabled()) {
+    const root = require("path").join(getLocalStoreDir(), "hourly", String(adapterType))
+    const files = await listJsonFilesRecursively(root)
+    const rows: any[] = []
+    for (const f of files) {
+      const row = await readJsonIfExists(f)
+      if (!row) continue
+      if (typeof row.timestamp !== 'number') continue
+      if (row.timestamp < fromTimestamp || row.timestamp > toTimestamp) continue
+      rows.push(transform(row))
+    }
+    rows.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0))
+    return rows
+  }
+
+  const rows: any[] = await Tables.DIMENSIONS_HOURLY_DATA.findAll({
+    where: {
+      type: adapterType,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['timestamp', 'id', 'timeS', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  return rows.map(transform)
+}
+
+export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }: { adapterType: AdapterType, id: string, slices: { timestamp: number, data: any, bl?: any, blc?: any, timeS?: string, tb?: any, tbl?: any, tblc?: any, }[] }) {
+  if (!slices?.length) return
+  await init()
+
+  if (isLocalStoreEnabled()) {
+    for (const slice of slices) {
+      const ts = slice.timestamp
+      const timeS = slice.timeS ?? getHourlyTimeS(ts)
+      const filePath = getHourlyLocalPath(adapterType, id, timeS)
+
+      const row = {
+        id,
+        type: adapterType,
+        timestamp: ts,
+        timeS,
+        data: slice.data,
+        bl: slice.bl ?? null,
+        blc: slice.blc ?? null,
+        tb: slice.tb ?? null,
+        tbl: slice.tbl ?? null,
+        tblc: slice.tblc ?? null,
+      }
+
+      await writeJsonAtomic(filePath, row)
+    }
+    return
+  }
+
+  const pgItems = slices.map(slice => ({
+    id,
+    type: adapterType,
+    timestamp: slice.timestamp,
+    data: slice.data,
+    bl: slice.bl ?? null,
+    blc: slice.blc ?? null,
+    tb: slice.tb ?? null,
+    tbl: slice.tbl ?? null,
+    tblc: slice.tblc ?? null,
+    timeS: slice.timeS ?? getHourlyTimeS(slice.timestamp),
+  }))
+
+  await Tables.DIMENSIONS_HOURLY_DATA.bulkCreate(pgItems, {
+    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
+  })
+
+  const tokenSlices = slices.filter(s => s.tb)
+  if (!tokenSlices.length) return
+
+  for (const slice of tokenSlices) {
+    const ts = slice.timestamp
+    const timeS = slice.timeS ?? getHourlyTimeS(ts)
+
+    const eventItem: any = {
+      PK: `dimHourlyTokenBreakdown#${adapterType}#${id}`,
+      SK: String(ts),
+      type: adapterType,
+      id,
+      timestamp: ts,
+      timeS,
+      source: 'dimension-adapter',
+      subType: 'token-breakdown-hourly',
+      data: slice.tb, // both usdTokenBalances + rawTokenBalances
+    }
+
+    try {
+      await dynamodb.putEventData(eventItem)
+    } catch (e) {
+      console.error('Error writing hourly token breakdown event to ddb', id, ts, e)
+    }
+  }
 }

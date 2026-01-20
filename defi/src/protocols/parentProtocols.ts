@@ -8735,6 +8735,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dForcenet",
   },
+  {
+    id: "parent#standx",
+    name: "StandX",
+    url: "https://standx.com/referral?code=defillama",
+    referralUrl: "https://standx.com/referral?code=defillama",
+    description:
+      "StandX is a Perps DEX live on Mainnet across BNB and Solana, powered by its native yield bearing DUSD.",
+    logo: `${baseIconsUrl}/standx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "StandX_Official",
+  },
 ];
 
 export default parentProtocols;

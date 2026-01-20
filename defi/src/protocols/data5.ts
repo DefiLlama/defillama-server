@@ -8021,6 +8021,7 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.standx.com/docs/resources/audits"],
     module: "dummy.js",
     twitter: "StandX_Official",
+    parentProtocol: "parent#standx",
     dimensions: {
       derivatives: "standx",
       "open-interest": "standx",
@@ -8475,6 +8476,7 @@ const data5: Protocol[] = [
     audit_links: [],
     module: "standx/index.js",
     twitter: "StandX_Official",
+    parentProtocol: "parent#standx",
   },
   {
     id: "7241",

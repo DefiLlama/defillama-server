@@ -1,5 +1,4 @@
-import { getAllAirtableRecords } from "./utils/airtable";
-import { successResponse, wrap, IResponse } from "./utils/shared";
+import { getAllAirtableRecords } from "../../utils/airtable";
 
 const SECTOR = "Description (very smol)";
 const VALUATION = "Valuation (millions)";
@@ -47,9 +46,3 @@ export async function getRaisesInternal() {
     }));
   return { raises: formattedRaises }
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  return successResponse(await getRaisesInternal(), 30 * 60);
-};
-
-export default wrap(handler);

@@ -14,7 +14,7 @@ export const importModule = (adaptorType: AdapterType) => async (mod: string) =>
   const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
   const { importAdapter } = await import('../../../dimension-adapters/adapters/utils/importAdapter')
   const passedFile = dimensionsConfig[adaptorType].imports[mod].moduleFilePath
-  const result = await importAdapter(adaptorType, mod, passedFile)
+  const result = await importAdapter(adaptorType, mod, '../../' + passedFile)
   const adapterModule = result.adapter
   setModuleDefaults(adapterModule)
   return adapterModule
@@ -230,7 +230,7 @@ function getLogoKey(key: string) {
   else return key.toLowerCase()
 }
 
-/*
+/* 
 
 const statsTable: any = {}
 ADAPTER_TYPES.forEach((adapterType) => {

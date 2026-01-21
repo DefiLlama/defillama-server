@@ -17033,7 +17033,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Kava"],
     module: "wrappedBNB.js",
     twitter: null,
-    forkedFromIds: [],
     listedAt: 1637348348,
   },
   {

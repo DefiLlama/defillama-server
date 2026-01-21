@@ -7812,7 +7812,6 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Fantom"],
-    forkedFromIds: [],
     module: "KungFuu-Finance/index.js",
     twitter: "kungfuu_fi",
     listedAt: 1651691931,
@@ -21374,7 +21373,6 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "jito/index.js",
     twitter: "jito_sol",
-    forkedFromIds: [],
     audit_links: [
       "https://spl.solana.com/stake-pool#security-audits",
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
@@ -24095,7 +24093,6 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Synthetics",
     chains: ["Ethereum"],
-    forkedFromIds: [],
     module: "metronome-synth/index.js",
     twitter: "MetronomeDAO",
     parentProtocol: "parent#metronome",

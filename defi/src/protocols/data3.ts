@@ -41054,7 +41054,6 @@ const data3_2: Protocol[] = [
     cmcId: "7245",
     category: "Services",
     chains: ["Binance", "Polygon"],
-    forkedFromIds: [],
     module: "stobox/index.js",
     twitter: "StoboxCompany",
     github: ["StoboxTechnologies"],

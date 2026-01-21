@@ -12,12 +12,9 @@ getDimensionsConfig()
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
   // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
   const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
-  const { importAdapter } = await import('../../../dimension-adapters/adapters/utils/importAdapter')
-  const passedFile = dimensionsConfig[adaptorType].imports[mod].moduleFilePath
-  const result = await importAdapter(adaptorType, mod, passedFile)
-  const adapterModule = result.adapter
-  setModuleDefaults(adapterModule)
-  return adapterModule
+  const { default: module } = await import('../../../dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
+  setModuleDefaults(module)
+  return module
 }
 
 const exportCache = {} as IJSON<AdaptorData>
@@ -160,11 +157,6 @@ function getDimensionsConfig() {
         [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd],
         [AdaptorRecordType.shortOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.shortOpenInterestAtEnd],
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
-      },
-    },
-    [AdapterType.NORMALIZED_VOLUME]: {
-      KEYS_TO_STORE: {
-        [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
       },
     },
     [AdapterType.FEES]: {

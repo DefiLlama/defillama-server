@@ -13492,6 +13492,11 @@
     }
   },
   "monad": {
+    "0xd90f6bfed23ffde40106fc4498dd2e9edb95e4e7": {
+      "to": "coingecko#midas-mhyper",
+      "decimals": 18,
+      "symbol": "mHYPER"
+    },
     "0x111111d2bf19e43C34263401e0CAd979eD1cdb61": {
       "to": "coingecko#usd1-wlfi",
       "decimals": 6,

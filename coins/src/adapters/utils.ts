@@ -1,6 +1,6 @@
 import nodeFetch from "node-fetch"
-import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import * as sdk from "@defillama/sdk";
+import * as sdk from '@defillama/sdk'
+const { decimals, symbol, } = sdk.erc20
 import { lowercaseAddress } from "../utils/processCoin";
 
 export const fetch = async (url: string, requestParams?: any) => nodeFetch(url, requestParams).then(r => r.json())

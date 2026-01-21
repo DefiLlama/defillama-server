@@ -1,5 +1,6 @@
 const abi = require("./abi.json");
-import { call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi
 import getBlock from "../utils/block";
 import { getTokenInfo } from "../utils/erc20";
 import { CoinData, Write } from "../utils/dbInterfaces";

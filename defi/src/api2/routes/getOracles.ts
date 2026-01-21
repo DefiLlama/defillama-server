@@ -1,8 +1,7 @@
-import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
-import { successResponse, wrap, IResponse } from "./utils/shared";
-import { extraSections, getChainDisplayName, getChainIdFromDisplayName } from "./utils/normalizeChain";
-import { chainsByOracle } from "./constants/chainsByOracle";
-import { _InternalProtocolMetadata } from "./protocols/data";
+import { IProtocol, processProtocols, TvlItem } from "../../storeGetCharts";
+import { extraSections, getChainDisplayName, getChainIdFromDisplayName } from "../../utils/normalizeChain";
+import { chainsByOracle } from "../../constants/chainsByOracle";
+import { _InternalProtocolMetadata } from "../../protocols/data";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -267,9 +266,3 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     chainsByOracle: finalChainsByOracle,
   };
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  return successResponse(await getOraclesInternal(), 10 * 60); // 10 mins cache
-};
-
-export default wrap(handler);

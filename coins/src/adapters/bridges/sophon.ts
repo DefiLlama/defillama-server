@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import { Token } from "./index";
 import { nullAddress } from "../../utils/shared/constants";
 

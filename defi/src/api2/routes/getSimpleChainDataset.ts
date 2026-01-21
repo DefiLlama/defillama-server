@@ -1,9 +1,7 @@
-import { wrap, IResponse, errorResponse } from "./utils/shared";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, isDoubleCounted } from "./utils/normalizeChain";
-import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
-import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
-import { _InternalProtocolMetadataMap } from "./protocols/data";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, isDoubleCounted } from "../../utils/normalizeChain";
+import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "../../storeGetCharts";
+import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "../../utils/date";
+import { _InternalProtocolMetadataMap } from "../../protocols/data";
 
 export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
   let categorySelected = undefined
@@ -147,24 +145,8 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
     // convert data to csv format
     const csv = grid.map((r) => r.join(",")).join("\n");
 
-    let filename = `simpleDataset/chain-dataset-${rawChain}-${Object.entries(params).map(t => `${t[0]}=${t[1]}`).sort().join("&")}.csv`;
-
-    if (!params.readFromPG)
-      await storeDatasetR2(filename, csv);
-    else
-      filename = `chain-dataset-${rawChain}.csv`
+    let filename = `chain-dataset-${rawChain}.csv`
 
     return { filename, csv }
   }
 };
-
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const rawChain = decodeURI(event.pathParameters!.chain!);
-  const params = event.queryStringParameters ?? {};
-  const { filename, error } = await getSimpleChainDatasetInternal(rawChain, params);
-  if (error) return errorResponse({ message: error });
-
-  return buildRedirectR2(filename!, 10 * 60);
-};
-
-export default wrap(handler);

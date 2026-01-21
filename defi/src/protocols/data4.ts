@@ -16171,7 +16171,7 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Monad"}],
+        chains: [{ chain: "Base" }, { chain: "Monad"}, { chain: "Arbitrum"}],
       },
       {
         name: "Chaos",
@@ -22239,6 +22239,9 @@ const data4: Protocol[] = [
     twitter: "Virtue_Money",
     audit_links: ["https://github.com/Virtue-CDP/virtue-audits"],
     listedAt: 1752861823,
+    dimensions: {
+      fees: "virtue"
+    },
   },
   {
     id: "6456",
@@ -29012,7 +29015,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Risk Curators",
+    category: "Onchain Capital Allocator",
     chains: ["Sui"],
     module: "ember-protocol/index.js",
     forkedFromIds: [],

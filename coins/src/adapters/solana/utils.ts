@@ -1,6 +1,8 @@
 import axios from "axios";
-import { sliceIntoChunks } from "@defillama/sdk/build/util/index";
-import * as sdk from "@defillama/sdk";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
 import { Connection, Keypair } from "@solana/web3.js";
 import { AnchorProvider as Provider, Wallet } from "@project-serum/anchor";
 

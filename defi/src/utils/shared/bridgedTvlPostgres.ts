@@ -1,9 +1,12 @@
 import sleep from "./sleep";
 import { bridgedTvlMixedCaseChains } from "./constants";
 import { getPgConnection } from "./getDBConnection";
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import { Address } from "@defillama/sdk/build/types";
-import { Chain } from "@defillama/sdk/build/general";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
+type Chain = string;
+type Address = string;
 
 export type TokenInsert = {
   token: Address;

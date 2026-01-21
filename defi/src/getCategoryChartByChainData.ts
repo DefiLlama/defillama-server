@@ -56,7 +56,6 @@ async function getCategoryOrTagByChain({
   if (category) includeBridge = bridgeCategoriesSlugSet.has(category);
 
   const getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
-    isApi2CronProcess: true,
     protocolList: cache.metadata.protocols,
     getLastTvl: getLastHourlyRecord,
     getAllTvlData: (protocol: any) => cache.allTvlData[protocol.id],

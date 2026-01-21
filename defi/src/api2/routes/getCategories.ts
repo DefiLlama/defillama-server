@@ -1,9 +1,8 @@
-import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
-import { successResponse, wrap, IResponse } from "./utils/shared";
-import { extraSections } from "./utils/normalizeChain";
-import { DAY, getClosestDayStartTimestamp } from "./utils/date";
-import { _InternalProtocolMetadata, _InternalProtocolMetadataMap } from "./protocols/data";
-import { hiddenCategoriesFromUISet } from "./utils/excludeProtocols";
+import { getHistoricalTvlForAllProtocols, IProtocol } from "../../storeGetCharts";
+import { extraSections } from "../../utils/normalizeChain";
+import { DAY, getClosestDayStartTimestamp } from "../../utils/date";
+import { _InternalProtocolMetadata, _InternalProtocolMetadataMap } from "../../protocols/data";
+import { hiddenCategoriesFromUISet } from "../../utils/excludeProtocols";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -73,11 +72,7 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
   const categoryProtocols = {} as IProtocolsByCategory;
 
   let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
-  if (options.isApi2CronProcess) {
-    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(false, false, options);
-  } else {
-    historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)
-  }
+  historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(false, false, options);
 
   const { historicalProtocolTvls, } = historicalProtocolTvlsData
 
@@ -135,9 +130,3 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
     categories: Object.fromEntries(Object.entries(categoryProtocols).map((c) => [c[0], Array.from(c[1])])),
   }
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  return successResponse(await getCategoriesInternal(), 10 * 60); // 10 mins cache
-};
-
-export default wrap(handler);

@@ -67,7 +67,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
 
     const pathChain = req.path_parameters.chain
     const chainFilterRaw = pathChain ? decodeURI(pathChain) : pathChain
-    response.chainKeyFilter = getChainKeyFromLabel(chainFilterRaw)
+    response.chainKeyFilter = chainFilterRaw ? getChainKeyFromLabel(chainFilterRaw) : undefined
 
   } else {
     response.protocolName = req.path_parameters.name?.toLowerCase()
@@ -585,8 +585,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       const totalDataChartByChain: any = {}
 
       for (const chainLabel of chains) {
-        let chain = chainLabel.toLowerCase()
-        chain = getChainKeyFromLabel(chain)
+        let chain = getChainKeyFromLabel(chainLabel)
         const data = await getOverviewProcess({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
         for (const [date, value] of data.totalDataChart) {

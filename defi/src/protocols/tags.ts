@@ -19,7 +19,15 @@ export const CategoryTagMap = {
     "Tokenized Trading Strategies"
   ],
   Dexs: [
+    "AMM",
+    "CLMM",
+    "ve(3,3)",
+    "StableSwap",
+    "Weighted Pool AMM",
+    "Hook-based AMM",
     "Prop AMM",
+    "Order Book",
+    "DLMM"
   ],
 }
 

@@ -3986,6 +3986,9 @@ const data4: Protocol[] = [
       "https://github.com/exponent-finance/exponent-audits/blob/main/jito_restaking_integration_ottersec_audit.pdf",
     ],
     listedAt: 1738617871,
+    dimensions: {
+      fees: "exponent"
+    }
   },
   {
     id: "5723",
@@ -16168,7 +16171,7 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Monad"}],
+        chains: [{ chain: "Base" }, { chain: "Monad"}, { chain: "Arbitrum"}],
       },
       {
         name: "Chaos",
@@ -19860,8 +19863,7 @@ const data4: Protocol[] = [
     category: "Staking Pool",
     chains: ["Ethereum"],
     forkedFromIds: [],
-    //module: "ssv-network/index.js", commented while we check on the tvl
-    module: "dummy.js",
+    module: "ssv-network/index.js",
     twitter: "ssv_network",
     dimensions: {
       fees: "ssv-network"
@@ -21619,7 +21621,8 @@ const data4: Protocol[] = [
     name: "OnRe",
     address: null,
     symbol: "-",
-    url: "https://www.onre.finance/",
+    url: "https://app.onre.finance/earn/leaderboard?ref=FDHRTE658",
+    referralUrl: "https://app.onre.finance/earn/leaderboard?ref=FDHRTE658",
     description:
       "Connecting on-chain capital to real-world reinsurance risk — unlocking stable, uncorrelated returns that are liquid, composable and accessible for the first time",
     chain: "Solana",
@@ -22236,6 +22239,9 @@ const data4: Protocol[] = [
     twitter: "Virtue_Money",
     audit_links: ["https://github.com/Virtue-CDP/virtue-audits"],
     listedAt: 1752861823,
+    dimensions: {
+      fees: "virtue"
+    },
   },
   {
     id: "6456",
@@ -27084,7 +27090,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Uncollateralized Lending",
     chains: ["Ethereum"],
     forkedFromIds: [],
     module: "3jane-lending/index.js",
@@ -29002,14 +29008,14 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ember.so/",
-    description: "Ember Protocol is the leading Structured Vaults Product on Sui. The vaults are non-custodial, permissionless, and managed by top-tier curators, running DeFi, cross-chain, and CeDeFi strategies across lending markets, Spot AMMs, Perps DEXs, and many more protocols to unlock the highest risk-adjusted returns for users. Everything Vaults for Everything Liquidity.",
+    description: "Ember is the investment platform and infrastructure for launching, accessing, and distributing traditional and onchain financial products through crypto capital markets.",
     chain: "Sui",
     logo: `${baseIconsUrl}/ember-protocol.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Risk Curators",
+    category: "Onchain Capital Allocator",
     chains: ["Sui"],
     module: "ember-protocol/index.js",
     forkedFromIds: [],
@@ -29410,6 +29416,7 @@ const data4: Protocol[] = [
     module: "maxshot/index.js",
     twitter: null,
     audit_links: [],
+    parentProtocol: "parent#dforce",
     listedAt: 1758641734
   },
   {
@@ -30163,7 +30170,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/falcon-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "falcon-finance-ff",
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],

@@ -186,4 +186,5 @@ export default {
   shift: require("./yield/shift"),
   makina: require("./yield/makina"),
   dexy: require("./markets/dexy"),
+  stORE: require("./solana/stORE")
 };

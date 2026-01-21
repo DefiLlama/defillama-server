@@ -8723,6 +8723,31 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NestExchange",
   },
+  {
+    id: "parent#dforce",
+    name: "dForce",
+    url: "https://dforce.network/",
+    description:
+      "dForce is a DeFAI network that unleashes DeFi superpowers for AI agents, driving the evolution of a crypto-powered AI economy.",
+    logo: `${baseIconsUrl}/dforce.jpg`,
+    gecko_id: "dforce-token",
+    cmcId: "4758",
+    chains: [],
+    twitter: "dForcenet",
+  },
+  {
+    id: "parent#standx",
+    name: "StandX",
+    url: "https://standx.com/referral?code=defillama",
+    referralUrl: "https://standx.com/referral?code=defillama",
+    description:
+      "StandX is a Perps DEX live on Mainnet across BNB and Solana, powered by its native yield bearing DUSD.",
+    logo: `${baseIconsUrl}/standx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "StandX_Official",
+  },
 ];
 
 export default parentProtocols;

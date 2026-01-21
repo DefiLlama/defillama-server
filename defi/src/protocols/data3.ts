@@ -1412,7 +1412,7 @@ const data3_0: Protocol[] = [
   },
   {
     id: "2760",
-    name: "Maia V3",
+    name: "Maia CL",
     address: "metis:0x72c232D56542Ba082592DEE7C77b1C6CFA758BCD",
     symbol: "MAIA",
     url: "https://uni.maiadao.io/#/swap",
@@ -1433,7 +1433,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "maia-v3",
       dexs: "maia-v3"
-    }
+    },
+    deprecated: true
   },
   {
     id: "2761",
@@ -6134,7 +6135,8 @@ const data3_0: Protocol[] = [
     listedAt: 1683724915,
     dimensions: {
       fees: "holdstation-defutures",
-      derivatives: "holdstation-defutures"
+      derivatives: "holdstation-defutures",
+      "open-interest": "holdstation-defutures-oi"
     }
   },
   {
@@ -29131,6 +29133,7 @@ const data3_1: Protocol[] = [
     forkedFrom: [],
     module: "unitus/index.js",
     twitter: "unitusfi",
+    parentProtocol: "parent#dforce",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     github: ["UnitusLabs"],
     listedAt: 1703014661,
@@ -29548,7 +29551,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "surfone",
       derivatives: "surfone"
-    }
+    },
+    deprecated: true,
   }, ///
   /*
   {
@@ -36582,7 +36586,10 @@ const data3_2: Protocol[] = [
         level: "alert",
         until: "2025-09-23",
       }
-    ]
+    ],
+    dimensions: {
+      fees: "zircuit-staking"
+    }
   },
   {
     id: "4239",
@@ -41506,7 +41513,8 @@ const data3_2: Protocol[] = [
     name: "Superform",
     address: "0x1d926bbe67425c9f507b9a0e8030eedc7880bf33",
     symbol: "UP",
-    url: "https://www.superform.xyz/",
+    url: "https://app.superform.xyz/earn?ref=3TSV5oRxhsPiRq8F3aoi7",
+    referralUrl: "https://app.superform.xyz/earn?ref=3TSV5oRxhsPiRq8F3aoi7",
     description:
       "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
     chain: "Ethereum",
@@ -58435,7 +58443,8 @@ const data3_3: Protocol[] = [
       "https://code4rena.com/audits/2023-09-maia-dao-ulysses",
       "https://github.com/Zellic/publications/blob/master/Maia%20DAO%20Ulysses%20Protocol%20-%20Zellic%20Audit%20Report.pdf"
     ],
-    listedAt: 1726861385
+    listedAt: 1726861385,
+    deprecated: true
   },
   {
     id: "5164",
@@ -61265,16 +61274,16 @@ const data3_3: Protocol[] = [
   {
     id: "5286",
     name: "Fragmetric",
-    address: null,
-    symbol: "-",
+    address: "solana:FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
+    symbol: "FRAG",
     url: "https://fragmetric.xyz",
     description: "Fragmetric is a native liquid restaking protocol on Solana that aims to improve the economic potential and security of the Solana ecosystem. Fragmetric succeeded in carrying out NCN reward distribution by utilizing Solana's token extension. Additionally, Fragmetric created useful solutions, such as the Normalized Token Program, for utilizing various LSTs in restaking platforms. The goal of Fragmetric is to create a safe, open, and incredibly effective restaking system that empowers users and supports the stability of the Solana restaking ecosystem.",
     chain: "Solana",
     logo: `${baseIconsUrl}/fragmetric.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "fragmetric",
+    cmcId: "37238",
     category: "Liquid Restaking",
     chains: ["Solana"],
     oraclesBreakdown: [

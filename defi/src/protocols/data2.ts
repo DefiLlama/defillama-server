@@ -111,8 +111,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1384",
-    name: "Hermes Protocol",
-    address: "arbitrum:0x45940000009600102a1c002f0097c4a500fa00ab",
+    name: "Hermes V1",
+    address: "metis:0xb27BbeaACA2C00d6258C3118BAB6b5B6975161c8",
     symbol: "HERMES",
     url: "https://hermes.maiadao.io/",
     description:
@@ -133,7 +133,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#maia-dao-ecosystem",
     dimensions: {
       dexs: "hermes-protocol"
-    }
+    },
+    deprecated: true
   },
   {
     id: "1385",
@@ -3593,6 +3594,9 @@ const data2: Protocol[] = [
     language: "C++",
     listedAt: 1646953530,
     parentProtocol: "parent#metalx",
+    tokensExcludedFromParent: {
+      Proton: ["XMD"],
+    },
   },
   {
     id: "1533",
@@ -27336,6 +27340,7 @@ const data2: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: null,
+    deprecated: true,
     cmcId: null,
     category: "Dexs",
     chains: ["Ethereum", "Polygon", "Arbitrum"],

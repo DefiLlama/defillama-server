@@ -65,8 +65,8 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
   const rawTvls =
     timestamp == 0
       ? await getLatestProtocolItems(hourlyRawTokensTvl, {
-          filterLast24Hours: true,
-        })
+        filterLast24Hours: true,
+      })
       : await getAllItemsAtTimeS(dailyRawTokensTvl, timestamp);
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
@@ -145,7 +145,7 @@ async function getExcludedBalances(
     concurrency: 1,
     processor: async (chain: any) => {
       try {
-        if (chain == 'solana') await fetchSolana(timestamp , walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        if (chain == 'solana') await fetchSolana(timestamp, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {
@@ -245,6 +245,7 @@ function getActiveTvls(
       const projectId = projectIdsMap[rwaId];
 
       if (Array.isArray(projectId) ? projectId.includes(amountId) : amountId == projectId) return;
+      if (Array.isArray(projectId) ? projectId.includes(`${amountId}-treasury`) : `${amountId}-treasury` == projectId) return;
 
       try {
         const projectName = protocolIdMap[amountId];
@@ -278,7 +279,7 @@ function getOnChainTvlAndActiveMcaps(
     const rwaId = data[keyMap.id];
     if (!finalData[rwaId]) return;
     finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-    if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
+    if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
   Object.keys(assetPrices).map((pk: string) => {
@@ -292,7 +293,7 @@ function getOnChainTvlAndActiveMcaps(
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = stablecoinsData[cgId];
+      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
       return;
     }
@@ -458,6 +459,6 @@ async function main(ts: number = 0) {
 }
 
 main().catch((error) => {
-  console.error('Error running the script: ',error);
+  console.error('Error running the script: ', error);
   process.exit(1);
 }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

@@ -8,7 +8,7 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 
 // import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
@@ -790,7 +790,7 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
+      finalChains[chain].dimAgg = dimensionsChainAggData[getChainKeyFromLabel(chain)] ?? {};
     });
 
     const sortedChainData = Object.keys(finalChains)

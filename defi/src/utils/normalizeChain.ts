@@ -6049,14 +6049,14 @@ function addChainLabelMapping(obj: { [key: string]: string }) {
 export function getChainKeyFromLabel(label: string): string {
   let value = _chainLabelToChainIdCache[label]
 
-  if (_chainLabelToChainIdCache[label] === undefined) {
+  if (!value) {
     let sluggifiedLabel = sluggifyString(label)
     value = _chainLabelToChainIdCache[sluggifiedLabel]
     if (!value) {
       value = sluggifiedLabel.replace(/\-/g, '_') // try replacing - with _
+      _chainLabelToChainIdCache[sluggifiedLabel] = value
     }
     _chainLabelToChainIdCache[label] = value
-    _chainLabelToChainIdCache[sluggifiedLabel] = value
   }
 
   return value as string

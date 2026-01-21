@@ -22239,6 +22239,9 @@ const data4: Protocol[] = [
     twitter: "Virtue_Money",
     audit_links: ["https://github.com/Virtue-CDP/virtue-audits"],
     listedAt: 1752861823,
+    dimensions: {
+      fees: "virtue"
+    },
   },
   {
     id: "6456",

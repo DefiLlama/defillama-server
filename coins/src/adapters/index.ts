@@ -185,5 +185,6 @@ export default {
   notional: require("./yield/notional"),
   shift: require("./yield/shift"),
   makina: require("./yield/makina"),
-  stORE: require("./solana/stORE")
+  stORE: require("./solana/stORE"),
+  sky: require("./sky"),
 };

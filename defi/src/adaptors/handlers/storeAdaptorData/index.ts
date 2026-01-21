@@ -1,8 +1,8 @@
 import { AdapterType, SimpleAdapter, } from "../../data/types"
 import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { elastic } from '@defillama/sdk';
-import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
-import { Chain, providers } from "@defillama/sdk/build/general";
+import { providers } from "@defillama/sdk/build/general";
+type Chain = string
 import { PromisePool } from '@supercharge/promise-pool';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
@@ -14,6 +14,7 @@ import { sendDiscordAlert } from "../../utils/notify";
 import dynamodb from "../../../utils/shared/dynamodb";
 import * as sdk from '@defillama/sdk'
 import { deadChainsSet } from "../../../config/deadChains";
+const { humanizeNumber, } = sdk
 
 const recentDataByAdapterType: { [adapterType: string]: any } = {}
 

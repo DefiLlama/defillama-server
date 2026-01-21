@@ -1,6 +1,7 @@
 import { Result, MultiCallResults } from "./sdkInterfaces";
-import { multiCall } from "@defillama/sdk/build/abi/index";
+
 import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 
 export async function requery(
   resultsRaw: MultiCallResults,

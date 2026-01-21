@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
 import { chainIdMap } from "../../bridges/celer";
 import getWrites from "../../utils/getWrites";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import getBlock from "../../utils/block";
 import { Write } from "../../utils/dbInterfaces";
 import { addToDBWritesList } from "../../utils/database";

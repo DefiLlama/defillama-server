@@ -3,8 +3,8 @@ import { CompoundProposal, } from './types'
 import { getLogs, } from './getLogs'
 import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './utils'
 import * as sdk from '@defillama/sdk'
-import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
-import { getProvider } from '@defillama/sdk/build/general'
+const { sliceIntoChunks, } = sdk.util
+const { getProvider, } = sdk
 import { NNS_GOV_ID, addICPProposals } from './icp/nns'
 import { SNS_GOV_ID, addSNSProposals } from './icp/sns'
 import { addTaggrProposals, TAGGR_ID } from './icp/taggr'

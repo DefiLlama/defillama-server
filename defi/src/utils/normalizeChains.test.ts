@@ -1,4 +1,4 @@
-import { getChainDisplayName, addToChains, isDoubleCounted } from './normalizeChain'
+import { getChainDisplayName, addToChains, isDoubleCounted, getChainKeyFromLabel } from './normalizeChain'
 
 const tests = [
     ["gochain", "GoChain"],
@@ -41,4 +41,23 @@ test("isDoubleCounted", () => {
     expect(isDoubleCounted(false, 1236456 as any)).toBe(false)
     expect(isDoubleCounted(false, 'Treasury Manager')).toBe(true)
     expect(isDoubleCounted(true, 'Treasury Manager')).toBe(true)
+})
+
+const tests2 = [
+    ["optimism", "optimism"],
+    ["Optimism", "optimism"],
+    ["Op Mainnet", "optimism"],
+    ["op-mainnet", "optimism"],
+    ["chain-breakdown", "chain-breakdown"],
+    ["OKXChain", "okexchain"],
+    ["terra-classic", "terra"],
+    ["Terra Classic", "terra"],
+    ["Milkomeda C1", "milkomeda"],
+    ["Klaytn", "klaytn"],
+    ["Kaia", "klaytn"],
+    ["kaia", "klaytn"],
+]
+
+test("getChainKeyFromLabel", () => {
+  tests2.forEach(t => expect(getChainKeyFromLabel(t[0])).toBe(t[1]))
 })

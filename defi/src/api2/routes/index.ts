@@ -12,7 +12,7 @@ import { chainNameToIdMap } from "../../utils/normalizeChain";
 import { getR2 } from "../../utils/r2";
 import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
-import { cache, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { cachedCraftProtocolV2, craftProtocolV2 } from "../utils/craftProtocolV2";
@@ -219,7 +219,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     let name = sluggify({ name: req.path_parameters.name } as any)
 
     const protocolData = cache.protocolSlugMap[name]
-    if (protocolData) {
+    // a shortcut to just get tvl number, can uncomment the code below to get the correct number
+    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 60)
+/*     if (protocolData) {
       const response = await cachedCraftProtocolV2({
         protocolData,
         useNewChainNames: true,
@@ -228,7 +230,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       const tvlArray = response.tvl as any[]
       const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
       return successResponse(res, tvl, 60);
-    }
+    } */
 
     const parentData = cache.parentProtocolSlugMap[name]
     if (parentData) {

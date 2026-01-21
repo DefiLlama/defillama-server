@@ -14,8 +14,8 @@ import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
 import { cache, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, } from "../cache/file-cache";
-import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { craftProtocolV2 } from "../utils/craftProtocolV2";
+import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2, craftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
@@ -223,7 +223,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       const response = await cachedCraftProtocolV2({
         protocolData,
         useNewChainNames: true,
-        useHourlyData: false,
         skipAggregatedTvl: false,
       })
       const tvlArray = response.tvl as any[]
@@ -239,7 +238,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
       const response: any = await cachedCraftParentProtocolV2({
         parentProtocol: parentData,
-        useHourlyData: false,
         skipAggregatedTvl: false,
       })
       if (response.message) return errorResponse(res, response.message)

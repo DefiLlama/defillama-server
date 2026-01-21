@@ -5,8 +5,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
 import { sendMessage } from "../../defi/src/utils/discord";
 import { DAY } from "./utils/processCoin";
-import * as sdk from '@defillama/sdk'
-const { getProvider, } = sdk
+import { getProvider } from "@defillama/sdk/build/general"
 
 interface TimestampBlock {
   height: number;

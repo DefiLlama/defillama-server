@@ -16996,7 +16996,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#swaap",
     listedAt: 1663691569,
     dimensions: {
-      dexs: "swaap-v1"
+      dexs: "swaap-v1",
+      fees: "swaap-v1"
     }
   },
   {

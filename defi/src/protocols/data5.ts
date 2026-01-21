@@ -8998,7 +8998,7 @@ const data5: Protocol[] = [
     module: "stroom/index.js",
     twitter: "StroomNetwork",
     forkedFromIds: [],
-    oraclesBreakdown: [{ name: "DIA", type: "PoR", proof: ["https://docs.google.com/document/d/1CooM513_nJHTZhDF3NCLXbptlOya0wsY3AMbllJMB5s/edit?tab=t.0#heading=h.e29ryp9qtwct"] }],
+    oraclesBreakdown: [{ name: "DIA", type: "Primary", proof: ["https://docs.google.com/document/d/1CooM513_nJHTZhDF3NCLXbptlOya0wsY3AMbllJMB5s/edit?tab=t.0#heading=h.e29ryp9qtwct"] }],
     github: ["stroomnetwork"],
     audit_links: ["https://github.com/TheArcadiaGroup/publications/blob/main/audits/stroom-audit-final.pdf"],
     listedAt: 1768841531

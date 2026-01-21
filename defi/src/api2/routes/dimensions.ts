@@ -3,13 +3,11 @@ import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
-import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getChainKeyFromLabel, getChainLabelFromKey, } from "../../utils/normalizeChain";
 import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
-
-const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
 function formatChartData(data: any = {}) {
   const result = [];
@@ -51,7 +49,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
     excludeTotalDataChartBreakdown: boolean,
     category?: CATEGORIES,
     protocolName?: string,  // applicable only for protocol routes
-    chainFilter?: string,   // applicable only for summary routes
+    chainKeyFilter?: string,   // applicable only for summary routes
     fullChart: boolean,
     dataType: AdaptorRecordType,
     includeLabelBreakdown: boolean,
@@ -67,9 +65,9 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
 
   if (isSummary) {
 
-    const pathChain = req.path_parameters.chain?.toLowerCase()
-    const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
-    response.chainFilter = sluggifiedNormalizedChains[chainFilterRaw] ?? chainFilterRaw
+    const pathChain = req.path_parameters.chain
+    const chainFilterRaw = pathChain ? decodeURI(pathChain) : pathChain
+    response.chainKeyFilter = chainFilterRaw ? getChainKeyFromLabel(chainFilterRaw) : undefined
 
   } else {
     response.protocolName = req.path_parameters.name?.toLowerCase()
@@ -86,11 +84,10 @@ async function getOverviewProcess({
   chain?: string,
 }) {
   const { summaries, allChains, protocolSummaries = {} } = cacheData
-  if (chain) {
-    if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
-    chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
-  }
-  const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
+  if (chain)
+    chain = getChainKeyFromLabel(chain) // normalize chain name like 'zksync-era' -> 'era' 
+
+  const chainDisplayName = chain ? getChainLabelFromKey(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
   const response: any = {}
   if (!summary) summary = {}
@@ -103,7 +100,7 @@ async function getOverviewProcess({
   response.breakdown30d = null
   response.chain = chain ?? null
   if (response.chain)
-    response.chain = getDisplayChainNameCached(response.chain)
+    response.chain = getChainLabelFromKey(response.chain)
   response.allChains = allChains
 
   // These fields are for the global/chain level data
@@ -240,12 +237,12 @@ async function getProtocolDataHandler({
     response.labelBreakdownChart = formatChartData(chartLabelBreakdown)
   }
 
-  response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
+  response.chains = response.chains?.map((chain: string) => getChainLabelFromKey(chain))
   if (response.totalDataChartBreakdown) {
     response.totalDataChartBreakdown.forEach(([_, chart]: any) => {
       Object.entries(chart ?? {}).forEach(([chain, value]: any) => {
         delete chart[chain]
-        chart[getDisplayChainNameCached(chain)] = value
+        chart[getChainLabelFromKey(chain)] = value
       })
     })
   }
@@ -271,10 +268,10 @@ async function getProtocolDataHandler({
 
 export async function getOverviewFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
   const {
-    adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
+    adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainKeyFilter,
   } = getEventParameters(req, true)
 
-  const isAllChainDataRequested = chainFilter?.toLowerCase() === 'chain-breakdown'
+  const isAllChainDataRequested = chainKeyFilter === 'chain-breakdown'
 
   if (isAllChainDataRequested && (req as any).isProRoute) {
 
@@ -283,7 +280,7 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
   }
 
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
-  const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
+  const chainStr = (chainKeyFilter && chainKeyFilter !== 'all') ? `-chain/${chainKeyFilter}` : ''
   const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
   const routeFile = `dimensions/${routeSubPath}`
 
@@ -325,9 +322,9 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 }
 
 export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-protocol-breakdown') {
-  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
     const { adaptorType, dataType } = getEventParameters(req, true)
-    
+
     if (route === 'chart-chain-breakdown') {
       const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
       return fileResponse(routeFile, res)
@@ -335,16 +332,16 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
       const isLiteStr = route === 'overview' ? '-lite' : '-all'
       const routeSubPath = `${adaptorType}/${dataType}${isLiteStr}`
       const routeFile = `dimensions/${routeSubPath}`
-    
+
       const data = await readRouteData(routeFile)
-    
+
       if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
-    
+
       if (route === 'chart-protocol-breakdown') {
         return successResponse(res, data.totalDataChartBreakdown)
       } else {
         data.totalDataChartBreakdown = undefined;
-        
+
         if (route === 'overview') {
           data.totalDataChart = undefined;
           return successResponse(res, data)
@@ -357,23 +354,23 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
 }
 
 export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
-  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType, chainFilter } = getEventParameters(req, true)
-  
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, chainKeyFilter } = getEventParameters(req, true)
+
     const isLiteStr = route === 'overview' ? '-lite' : '-all'
-    const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
+    const chainStr = (chainKeyFilter && chainKeyFilter !== 'all') ? `-chain/${chainKeyFilter}` : ''
     const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
     const routeFile = `dimensions/${routeSubPath}`
-  
+
     const data = await readRouteData(routeFile)
-  
+
     if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
-  
+
     if (route === 'chart-protocol-breakdown') {
       return successResponse(res, data.totalDataChartBreakdown)
     } else {
       data.totalDataChartBreakdown = undefined;
-      
+
       if (route === 'overview') {
         data.totalDataChart = undefined;
         return successResponse(res, data)
@@ -385,27 +382,27 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
 }
 
 export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown') {
-  return async function(req: HyperExpress.Request, res: HyperExpress.Response) {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
     const protocolName = req.path_parameters.name?.toLowerCase()
     const protocolSlug = sluggifyString(protocolName)
     const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
-  
+
     if ((adaptorType as any) === 'financial-statement') // redirect to financial statement route handler
       return getProtocolFinancials(req, res)
-  
+
     const { dataType, includeLabelBreakdown } = getEventParameters(req, false)
     let protocolFileExt = route === 'overview' ? '-lite' : '-all'
-  
+
     if (includeLabelBreakdown) protocolFileExt = '-bl' // include label breakdown data
-  
+
     const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${protocolFileExt}`
     const routeFile = `dimensions/${routeSubPath}`
     const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-  
+
     const data = await readRouteData(routeFile)
     if (!data)
       return errorResponse(res, errorMessage)
-  
+
     if (route === 'chart-chain-breakdown' || route === 'chart-version-breakdown') {
       const chartData: Array<any> = [];
 
@@ -438,7 +435,7 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
       return successResponse(res, chartData)
     } else {
       data.totalDataChartBreakdown = undefined;
-        
+
       if (route === 'overview') {
         data.totalDataChart = undefined;
         return successResponse(res, data)
@@ -489,19 +486,19 @@ const methodologyKeys = {
 function adjustDataProtocolFinancials(data: any): any {
   const aggregates: any = data.aggregates;
   const adjustedAggregates: any = {};
-  
+
   if (aggregates) {
     for (const timeframe of timeframes) {
       if (aggregates[timeframe]) {
         adjustedAggregates[timeframe] = adjustedAggregates[timeframe] || {}
-        
+
         for (const [timeKey, value] of Object.entries(aggregates[timeframe])) {
           adjustedAggregates[timeframe][timeKey] = adjustedAggregates[timeframe][timeKey] || {}
-          
+
           for (const [dataKey, dataLabel] of Object.entries(dataKeys)) {
             adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
           }
-          
+
           // add dbr to Others Profit
           if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
             adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersTokenHolderFlows] = {
@@ -515,7 +512,7 @@ function adjustDataProtocolFinancials(data: any): any {
       }
     }
   }
-  
+
   // use adjusted aggregates data
   data.aggregates = adjustedAggregates;
   data.breakdownMethodology = adjustMethodology(data.breakdownMethodology);
@@ -525,13 +522,13 @@ function adjustDataProtocolFinancials(data: any): any {
       data.childProtocols[i].breakdownMethodology = adjustMethodology(data.childProtocols[i].breakdownMethodology);
     }
   }
-  
+
   return data;
 }
 
 function adjustMethodology(methodology: any): any {
   let adjustedMethodology: any = {}
-  
+
   if (methodology) {
     for (const [key, label] of Object.entries(methodologyKeys)) {
       adjustedMethodology[label] = methodology[label] || methodology[key];
@@ -539,7 +536,7 @@ function adjustMethodology(methodology: any): any {
   } else {
     adjustedMethodology = methodology;
   }
-  
+
   return adjustedMethodology;
 }
 
@@ -588,8 +585,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       const totalDataChartByChain: any = {}
 
       for (const chainLabel of chains) {
-        let chain = chainLabel.toLowerCase()
-        chain = sluggifiedNormalizedChains[chain] ?? chain
+        let chain = getChainKeyFromLabel(chainLabel)
         const data = await getOverviewProcess({ recordType, cacheData, chain })
         await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
         for (const [date, value] of data.totalDataChart) {

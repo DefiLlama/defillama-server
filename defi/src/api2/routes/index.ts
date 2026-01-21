@@ -8,7 +8,7 @@ import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getTweetStats } from "../../twitter/db";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { chainNameToIdMap } from "../../utils/normalizeChain";
+import { chainNameToIdMap, chainKeyToChainLabelMap, chainLabelsToKeyMap } from "../../utils/normalizeChain";
 import { getR2 } from "../../utils/r2";
 import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
@@ -115,6 +115,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
   router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
+  router.get("/overview/_internal/chain-name-id-map-v2", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, { chainKeyToChainLabelMap, chainLabelsToKeyMap }, 60))
 
 
   router.get("/_fe/static/*", defaultFileHandler)

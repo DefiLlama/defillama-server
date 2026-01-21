@@ -6508,7 +6508,7 @@ const data5: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["Order Book"],
     chains: ["AlphaSec"],
     module: "dummy.js",
     twitter: "AlphaSec_Trade",

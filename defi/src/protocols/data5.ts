@@ -8021,6 +8021,7 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.standx.com/docs/resources/audits"],
     module: "dummy.js",
     twitter: "StandX_Official",
+    parentProtocol: "parent#standx",
     dimensions: {
       derivatives: "standx",
       "open-interest": "standx",
@@ -8475,6 +8476,7 @@ const data5: Protocol[] = [
     audit_links: [],
     module: "standx/index.js",
     twitter: "StandX_Official",
+    parentProtocol: "parent#standx",
   },
   {
     id: "7241",
@@ -9089,28 +9091,73 @@ const data5: Protocol[] = [
     audit_links: [],
     listedAt: 1768881825
   },
-  {
+  {  
     id: "7268",
+    name: "Brasa Finance",
+    address: null,
+    symbol: "-",
+    assetToken: "stFOGO",
+    url: "https://brasa.finance",
+    description:
+      "Liquid Staking on Fogo. stFOGO is the easiest way to earn staking rewards, while staying liquid and participating in DeFi.",
+    chain: "Fogo",
+    logo: `${baseIconsUrl}/brasa-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Fogo"],
+    module: "brasa/index.js",
+    twitter: "BrasaFinance",
+    forkedFromIds: [],
+    audit_links: ["https://docs.brasa.finance/audits/Neodyme_Report.pdf"],
+    listedAt: 1768928462
+  },
+  {  
+    id: "7269",
     name: "DipCoin Vault",
     address: null,
     symbol: "-",
-    url: "https://www.dipcoin.io/vault/",
+    url: "https://www.dipcoin.io/vault",
     description:
-      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
+      "DipCoin Vaults are a native feature of the DipCoin Perpetual (Perp) trading system, designed to allow users to participate in professional trading strategies without manually managing positions.",
     chain: "Sui",
     logo: `${baseIconsUrl}/dipcoin-vault.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Yield",
     chains: ["Sui"],
     module: "dipcoin-vault/index.js",
-    forkedFrom: [],
-    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Vault_Final.pdf"],
     twitter: "DipCoinOfficial",
+    forkedFromIds: [],
+    audit_links: ["https://www.dipcoin.io/doc/Dipcoin_Vault_Final.pdf"],
     parentProtocol: "parent#dipcoin",
-    listedAt: 1768534734
+    listedAt: 1768928484
+  },
+  {  
+    id: "7270",
+    name: "Mezo Borrow",
+    address: null,
+    symbol: "-",
+    url: "https://mezo.org/",
+    description:
+      "Mezo borrow allows users to borrow against their bitcoin for MUSD, Mezo's native stable coin.",
+    chain: "Mezo",
+    logo: `${baseIconsUrl}/mezo-borrow.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Mezo"],
+    module: "mezo-borrow/index.js",
+    twitter: "MezoNetwork",
+    forkedFromIds: [],
+    audit_links: [],
+    listedAt: 1768928801
   },
 ];
 export default data5;

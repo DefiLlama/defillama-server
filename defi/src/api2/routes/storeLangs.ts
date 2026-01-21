@@ -1,9 +1,7 @@
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
-import { processProtocols, TvlItem } from "./storeGetCharts";
-import type { _InternalProtocolMetadata, Protocol } from "./protocols/data";
-import { storeR2JSONString } from "./utils/r2";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { storeRouteData } from "./api2/cache/file-cache";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "../../utils/normalizeChain";
+import { processProtocols, TvlItem } from "../../storeGetCharts";
+import type { _InternalProtocolMetadata, Protocol } from "../../protocols/data";
+import { storeRouteData } from "../cache/file-cache";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -117,16 +115,5 @@ export async function storeLangs({ ...options }: any = {}) {
     sumDailySolanaOpenSourceTvls,
   }
 
-  if (options.isApi2CronProcess) {
-    await storeRouteData('langs', data)
-    return;
-  } else {
-    await storeR2JSONString("temp/langs.json", JSON.stringify(data), 10 * 60);
-  }
+  await storeRouteData('langs', data)
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent) => {
-  await storeLangs();
-};
-
-export default wrapScheduledLambda(handler);

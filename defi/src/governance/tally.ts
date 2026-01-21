@@ -1,6 +1,7 @@
 
 
-import { sliceIntoChunks, } from '@defillama/sdk/build/util/index'
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 import { log, } from '@defillama/sdk'
 import { graphURLTally, metadataQueryTally, proposalQueryTally, } from './snapshotQueries'
 import axios from 'axios'

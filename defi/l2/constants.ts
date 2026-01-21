@@ -1,4 +1,4 @@
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import BigNumber from "bignumber.js";
 import { ChainData } from "./types";
 import cgSymbols from "../src/utils/symbols/symbols.json";

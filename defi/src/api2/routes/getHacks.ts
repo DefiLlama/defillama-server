@@ -1,6 +1,5 @@
-import protocols from "./protocols/data";
-import { getAllAirtableRecords } from "./utils/airtable";
-import { successResponse, wrap, IResponse } from "./utils/shared";
+import protocols from "../../protocols/data";
+import { getAllAirtableRecords } from "../../utils/airtable";
 
 export async function getHacksInternal() {
   let allRecords = await getAllAirtableRecords("appNED1rpGDbQDjEX/Hacks");
@@ -27,9 +26,3 @@ export async function getHacksInternal() {
       };
     });
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  return successResponse(await getHacksInternal(), 30 * 60);
-};
-
-export default wrap(handler);

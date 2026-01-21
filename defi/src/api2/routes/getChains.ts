@@ -1,9 +1,8 @@
-import { successResponse, wrap, IResponse } from "./utils/shared";
-import protocols, { _InternalProtocolMetadataMap, Protocol } from "./protocols/data";
-import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds, } from "./utils/normalizeChain";
-import { IChain, } from "./types";
-import { excludeProtocolInCharts, } from "./utils/excludeProtocols";
+import protocols, { _InternalProtocolMetadataMap, Protocol } from "../../protocols/data";
+import { getLastRecord, hourlyTvl } from '../../utils/getLastRecord'
+import { getChainDisplayName, chainCoingeckoIds, } from "../../utils/normalizeChain";
+import { IChain, } from "../../types";
+import { excludeProtocolInCharts, } from "../../utils/excludeProtocols";
 
 async function _getLastHourlyRecord(protocol: Protocol) {
   return getLastRecord(hourlyTvl(protocol.id))
@@ -56,12 +55,3 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false, us
   }))
   return chainData
 }
-
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const chainData = await craftChainsResponse(event.path === "/v2/chains", event.path === "/v2/chains")
-  return successResponse(chainData, 10 * 60); // 10 mins cache
-};
-
-export default wrap(handler);

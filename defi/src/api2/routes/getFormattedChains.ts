@@ -1,8 +1,8 @@
-import { chainCoingeckoIds } from "./utils/normalizeChain";
+import { chainCoingeckoIds } from "../../utils/normalizeChain";
 import fetch from "node-fetch";
-import { LiteProtocol } from "./types";
-import { errorResponse, successResponse, wrap } from "./utils/shared";
-import { wrapResponseOrRedirect } from "./getProtocol";
+import { LiteProtocol } from "../../types";
+import { errorResponse, } from "../../utils/shared";
+import { readRouteData } from "../cache/file-cache";
 
 interface IResponse {
   chains: string[];
@@ -43,8 +43,14 @@ export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   return adjustedPercentChange;
 };
 
+let protocol2Data: Promise<IResponse> | null = null;
+
 export const getFormattedChains = async (category: string) => {
-  const res: IResponse = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
+
+  if (!protocol2Data) 
+    protocol2Data = readRouteData('/lite/protocols2')
+  
+  const res: IResponse = await protocol2Data;
   category = decodeURIComponent(category)
 
   // get all chains by parent and not include them in categories below as we don't want to show these links, but user can access with url
@@ -252,12 +258,3 @@ export const getFormattedChains = async (category: string) => {
     tvlTypes, // Object.fromEntries(Object.entries(tvlTypes).map(t=>[t[1], t[0]])) // reverse object
   };
 };
-
-const handler = async (event: AWSLambda.APIGatewayEvent) => {
-  const category = event.pathParameters?.category ?? ""
-  const data = await getFormattedChains(category);
-
-  return wrapResponseOrRedirect(data, `chains/${category}/`);
-};
-
-export default wrap(handler);

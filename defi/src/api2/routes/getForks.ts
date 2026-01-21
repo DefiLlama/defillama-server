@@ -1,8 +1,7 @@
-import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
-import { successResponse, wrap, IResponse, cache20MinResponse } from "./utils/shared";
-import { extraSections } from "./utils/normalizeChain";
-import protocols, { _InternalProtocolMetadata } from "./protocols/data";
-import parentProtocols from "./protocols/parentProtocols";
+import { IProtocol, processProtocols, TvlItem } from "../../storeGetCharts";
+import { extraSections } from "../../utils/normalizeChain";
+import protocols, { _InternalProtocolMetadata } from "../../protocols/data";
+import parentProtocols from "../../protocols/parentProtocols";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -107,9 +106,3 @@ export async function getForksInternal({ ...options }: any = {}) {
     forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
   }
 }
-
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  return cache20MinResponse(await getForksInternal());
-};
-
-export default wrap(handler);

@@ -1,17 +1,26 @@
-import postgres from "postgres";
-import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../src/utils/date";
-import { findDailyTimestamps } from "../../l2/v2/storeToDb";
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import protocols from "../protocols/data";
 import entities from "../protocols/entities";
 import treasuries from "../protocols/treasury";
 import { cache } from "@defillama/sdk";
+import { initPG, fetchHistoricalPG, storeHistoricalPG, storeMetadataPG, fetchCurrentPG } from "./db";
 
-let auth: string[] = [];
-const columns: any = ["timestamp", "id", "defiactivetvl", "mcap", "aggregatedefiactivetvl", "aggregatemcap"];
 const twoDaysAgo = getTimestampAtStartOfDay(getCurrentUnixTimestamp() - 2 * secondsInDay);
-let sql: any = null;
+
+export const keyMap: { [value: string]: string } = {
+  coingeckoId: "*Coingecko ID",
+  onChain: "onChainMarketcap",
+  defiActive: "defiActiveTvl",
+  excluded: "*",
+  assetName: "Name",
+  id: "*RWA ID",
+  projectId: "*projectID",
+  excludedWallets: "*Holders to be Removed for Active Marketcap",
+  activeMcap: "activeMcap",
+  price: "price",
+};
+
 
 export const protocolIdMap: { [id: string]: string } = {};
 export const categoryMap: { [category: string]: string } = {};
@@ -28,13 +37,6 @@ const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocol
   {}
 );
 
-async function iniDbConnection() {
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
-
-  return postgres(auth[0], { idle_timeout: 90 });
-}
-
 export async function storeHistorical(res: any) {
   const { data, timestamp } = res;
   if (Object.keys(data).length == 0) return;
@@ -44,11 +46,13 @@ export async function storeHistorical(res: any) {
     id: string;
     defiactivetvl: string;
     mcap: string;
+    activemcap: string;
     aggregatedefiactivetvl: number;
     aggregatemcap: number;
+    aggregatedactivemcap: number;
   }[] = [];
   Object.keys(data).forEach((id: any) => {
-    const { defiActiveTvl, onChainMarketcap } = data[id];
+    const { defiActiveTvl, onChainMarketcap, activeMcap } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -72,7 +76,16 @@ export async function storeHistorical(res: any) {
       aggregatemcap += Number(onChainMarketcap[chain]);
     });
 
-    if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap)) {
+    // use chain slugs for active mcaps and aggregate 
+    const activemcap: { [chain: string]: string } = {};
+    let aggregatedactivemcap: number = 0;
+    Object.keys(activeMcap ?? {}).map((chain: string) => {
+      const chainSlug = getChainIdFromDisplayName(chain);
+      activemcap[chainSlug] = activeMcap[chain];
+      aggregatedactivemcap += Number(activeMcap[chain]);
+    });
+
+    if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
       console.log(`ERROR ON ID ${id}`)
     }
 
@@ -81,51 +94,15 @@ export async function storeHistorical(res: any) {
       id,
       defiactivetvl: JSON.stringify(defiactivetvl),
       mcap: JSON.stringify(mcap),
+      activemcap: JSON.stringify(activemcap),
       aggregatedefiactivetvl,
       aggregatemcap,
+      aggregatedactivemcap,
     });
   });
 
-  if (!sql) sql = await iniDbConnection();
-  await queryPostgresWithRetry(
-    sql`
-            insert into activetvls
-            ${sql(inserts, ...columns)}
-            on conflict (timestamp, id) 
-            do nothing
-            `,
-    sql
-  );
-
-  await queryPostgresWithRetry(
-    sql`
-            insert into activetvlsbackup
-            ${sql(inserts, ...columns)}
-            on conflict (timestamp, id) 
-            do nothing
-            `,
-    sql
-  );
-
-  // find and delete old hourly data 
-  const timestamps = await queryPostgresWithRetry(
-    sql`
-            select distinct timestamp from activetvls where timestamp < ${twoDaysAgo}`,
-    sql
-  );
-
-  if (!timestamps.length) return;
-
-  const dailyTimestamps = findDailyTimestamps(timestamps);
-
-  const timestampsToDelete = timestamps.map((t: any) => t.timestamp).filter((t: number) => !dailyTimestamps.includes(t));
-  if (!timestampsToDelete.length) return;
-
-  await queryPostgresWithRetry(
-    sql`
-            delete from activetvls where timestamp in ${sql(timestampsToDelete)}`,
-    sql
-  );
+  await initPG();
+  await storeHistoricalPG(inserts, timestamp);
 }
 
 async function fetchHistorical(id: string) {
@@ -133,14 +110,10 @@ async function fetchHistorical(id: string) {
   const timestamp = getCurrentUnixTimestamp();
   if (cachedData.timestamp > timestamp - 3600) return cachedData.data;
 
-  if (!sql) sql = await iniDbConnection();
-  const data = await queryPostgresWithRetry(
-    sql`
-            select timestamp, aggregatedefiactivetvl, aggregatemcap from activetvls where id = ${id}`,
-    sql
-  );
+  await initPG();
+  const data: any = await fetchHistoricalPG(id);
 
-  const res: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number }[] = [];
+  const res: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number; activeMcap: number }[] = [];
   data.sort((a: any, b: any) => a.timestamp - b.timestamp);
   data.forEach((d: any) => {
     const timestamp = d.timestamp < twoDaysAgo ? getTimestampAtStartOfDay(d.timestamp) : d.timestamp;
@@ -149,12 +122,25 @@ async function fetchHistorical(id: string) {
       timestamp,
       onChainMarketcap: d.aggregatemcap,
       defiActiveTvl: d.aggregatedefiactivetvl,
+      activeMcap: d.aggregatedactivemcap,
     });
   });
 
   await cache.writeCache(`rwa/historical-${id}`, { data: res, timestamp: getCurrentUnixTimestamp() });
 
   return data;
+}
+
+export async function storeMetadata(res: any) {
+  const { data } = res;
+  if (Object.keys(data).length == 0) return;
+
+  const inserts = Object.keys(data).map((id: any) => {
+    const { [keyMap.activeMcap]: activeMcap, [keyMap.onChain]: onChain, [keyMap.defiActive]: defiActive, ...rest } = data[id];
+    return { id, data: JSON.stringify(rest) };
+  });
+  await initPG();
+  await storeMetadataPG(inserts);
 }
 
 export async function rwaChart(name: string) {
@@ -165,18 +151,7 @@ export async function rwaChart(name: string) {
   return { data };
 }
 
-async function closeConnection() {
-  if (!sql) return;
-  try {
-    const closing = sql.close()
-    sql = null
-    await closing
-    console.log('Database connection closed.');
-  } catch (error) {
-    console.error('Error while closing the database connection:', error);
-  }
+export async function rwaCurrent() {
+  const data = await fetchCurrentPG();
+  return { data }
 }
-
-// Add a process exit hook to close the database connection
-process.on('beforeExit', closeConnection);
-process.on('exit', closeConnection);

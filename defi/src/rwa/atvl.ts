@@ -1,6 +1,6 @@
 import { getAllItemsAtTimeS, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
 import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
-import { excludedTvlKeys, zero } from "../../l2/constants";
+import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { coins, cache } from "@defillama/sdk";
@@ -10,23 +10,10 @@ import { fetchSupplies } from "../../l2/utils";
 import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
-import { storeHistorical, protocolIdMap, categoryMap } from "./historical";
-import { storeR2JSONString } from "../utils/r2";
+import { storeHistorical, protocolIdMap, categoryMap, storeMetadata, keyMap } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
 
 const excludedProtocolCategories: string[] = ["CEX"];
-const keyMap: { [value: string]: string } = {
-  coingeckoId: "*Coingecko ID",
-  onChain: "onChainMarketcap",
-  defiActive: "defiActiveTvl",
-  excluded: "*",
-  assetName: "Name",
-  id: "*RWA ID",
-  projectId: "*projectID",
-  excludedWallets: "*Holders to be Removed for Active Marketcap",
-  activeMcap: "activeMcap",
-  price: "price",
-};
 
 // Sort tokens by chain and map token to project for fetching supplies, tvls etc
 function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
@@ -452,7 +439,7 @@ async function main(ts: number = 0) {
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
   await Promise.all([
-    timestamp == 0 ? storeR2JSONString("rwa/active-tvls", JSON.stringify(res)) : Promise.resolve(),
+    timestamp == 0 ? storeMetadata(res): Promise.resolve(),
     timestamp == 0 ? cache.writeCache("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
     storeHistorical(res),
   ]);

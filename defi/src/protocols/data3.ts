@@ -46760,7 +46760,8 @@ const data3_3: Protocol[] = [
         genuineSpikes: ["1722816000"],
         adapter: "apex-omni"
       },
-      "open-interest": "apex-omni"
+      "open-interest": "apex-omni",
+      "normalized-volume": "apex-omni"
     }
   },
   {
@@ -61568,7 +61569,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: "hyperliquid-perp",
       fees: "hyperliquid-perp",   // now we count separately perps and spot
-      "open-interest": "hyperliquid-perp-oi"
+      "open-interest": "hyperliquid-perp-oi",
+      "normalized-volume": "hyperliquid"
     }
   },
   {

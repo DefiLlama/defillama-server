@@ -5844,6 +5844,7 @@ const data2: Protocol[] = [
     cmcId: "12572",
     chains: ["Binance", "Avalanche"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
+    category: "Yield Aggregator",
     module: "waterfalldefi/index.js",
     twitter: "Waterfalldefi",
     audit_links: [
@@ -17188,6 +17189,7 @@ const data2: Protocol[] = [
     gecko_id: "numisme",
     cmcId: "20339",
     chains: ["Ethereum"],
+    category: "Yield",
     module: "numisme/index.js",
     twitter: "NUMISMEcoin",
     audit_links: [

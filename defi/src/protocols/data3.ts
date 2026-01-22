@@ -26562,7 +26562,7 @@ const data3_1: Protocol[] = [
     name: "TeddySwap",
     address: "cardano:f6696363e9196289ef4f2b4bf34bc8acca5352cdc7509647afe6888f54454459",
     symbol: "TEDY",
-    url: "https://www.teddyswap.org",
+    url: "https://x.com/TeddySwap",
     description:
       "TeddySwap, the coziest stablecoin DEX on Cardano, aims to revolutionize the Cardano DeFi ecosystem with a secure and efficient stablecoin trading platform. A scalable decentralized exchange and automated liquidity provision protocol for Cardano Stablecoins and Derivatives.",
     chain: "Cardano",
@@ -26576,6 +26576,8 @@ const data3_1: Protocol[] = [
     module: "teddyswap/index.js",
     twitter: "TeddySwap",
     github: ["teddy-swap"],
+    deadUrl: true,
+    rugged: true,
     listedAt: 1702483584,
   },
   {

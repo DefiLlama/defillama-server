@@ -29870,7 +29870,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["CLMM"],
+    tags: ["Weighted Pool AMM"],
     chains: ["Binance"],
     forkedFromIds: ["5491"],
     module: "coinhain/index.js",

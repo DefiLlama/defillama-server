@@ -3790,7 +3790,7 @@ const data2: Protocol[] = [
     name: "BaksDAO",
     address: "bsc:0x8bd22c61b409587d24d87fb56e88bd84e5d91596",
     symbol: "BAKS",
-    url: "https://baksdao.com",
+    url: "https://x.com/BaksDao",
     description:
       "BaksDAO is a DeFi platform where you can get a perpetual loan secured by cryptocurrencies or get high payback in the currency of an asset by depositing.",
     chain: "Binance",
@@ -3806,6 +3806,8 @@ const data2: Protocol[] = [
       "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_BaksDao.pdf",
     ],
     listedAt: 1647396396,
+    rugged: true,
+    deadUrl: true,
     github: ["BaksDAO"],
   },
   {

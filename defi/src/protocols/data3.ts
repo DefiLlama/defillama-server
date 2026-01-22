@@ -26342,6 +26342,9 @@ const data3_1: Protocol[] = [
     twitter: "chainlink",
     parentProtocol: "parent#chainlink",
     listedAt: 1702312086,
+    dimensions: {
+      fees: "chainlink"
+    }
   },
   {
     id: "3906",

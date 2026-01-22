@@ -1837,6 +1837,11 @@
     }
   },
   "arbitrum": {
+    "0x51B0f6AED4a421f09D28A5eDe1DCF460BCB54d30": {
+      "decimals": "18",
+      "symbol": "siUSD",
+      "to": "coingecko#infinifi-staked-iusd"
+    },
     "0x903d5990119bc799423e9c25c56518ba7dd19474": {
       "decimals": "5",
       "symbol": "UKTBL",

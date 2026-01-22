@@ -4879,7 +4879,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Farm",
     chains: ["Flare"],
     module: "firelight/index.js",
     twitter: "Firelightfi",

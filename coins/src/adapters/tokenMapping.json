@@ -1837,6 +1837,11 @@
     }
   },
   "arbitrum": {
+    "0x51B0f6AED4a421f09D28A5eDe1DCF460BCB54d30": {
+      "decimals": "18",
+      "symbol": "siUSD",
+      "to": "coingecko#infinifi-staked-iusd"
+    },
     "0x903d5990119bc799423e9c25c56518ba7dd19474": {
       "decimals": "5",
       "symbol": "UKTBL",
@@ -13492,6 +13497,11 @@
     }
   },
   "monad": {
+    "0xd90f6bfed23ffde40106fc4498dd2e9edb95e4e7": {
+      "to": "coingecko#midas-mhyper",
+      "decimals": 18,
+      "symbol": "mHYPER"
+    },
     "0x111111d2bf19e43C34263401e0CAd979eD1cdb61": {
       "to": "coingecko#usd1-wlfi",
       "decimals": 6,
@@ -13663,6 +13673,11 @@
     "0x45C7287F897B3A79Cd3f6e4F14B4CE568f023bD5": {
       "decimals": "18",
       "symbol": "WGRX",
+      "to": "coingecko#grx-chain"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "GRX",
       "to": "coingecko#grx-chain"
     }
   },

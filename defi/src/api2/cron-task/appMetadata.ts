@@ -8,7 +8,7 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 
 // import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
@@ -133,6 +133,7 @@ async function _storeAppMetadata() {
     volumeData,
     perpsData,
     openInterestData,
+    normalizedVolumeData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -169,6 +170,7 @@ async function _storeAppMetadata() {
     readCachedRouteData({ route: "/dimensions/dexs/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dnvol-lite" }),
     readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),
@@ -560,6 +562,32 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol of normalizedVolumeData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        normalizedVolume: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          normalizedVolume: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of normalizedVolumeData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        normalizedVolume: true,
+      };
+    }
+
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -790,7 +818,7 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
+      finalChains[chain].dimAgg = dimensionsChainAggData[getChainKeyFromLabel(chain)] ?? {};
     });
 
     const sortedChainData = Object.keys(finalChains)
@@ -825,6 +853,7 @@ async function _storeAppMetadata() {
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
       openInterest: { protocols: 0, chains: 0 },
+      normalizedVolume: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -885,6 +914,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.openInterest) {
         totalTrackedByMetric.openInterest.protocols += 1;
+      }
+      if (protocol.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -968,6 +1000,9 @@ async function _storeAppMetadata() {
       }
       if (chain.openInterest) {
         totalTrackedByMetric.openInterest.chains += 1;
+      }
+      if (chain.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.chains += 1;
       }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;

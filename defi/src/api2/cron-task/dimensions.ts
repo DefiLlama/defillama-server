@@ -4,7 +4,7 @@ require("dotenv").config();
 import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getDisplayChainNameCached, } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getChainLabelFromKey } from '../../utils/normalizeChain';
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, validateAggregateRecords, } from "../utils/dimensionsUtils";
@@ -282,7 +282,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
-      protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
+      protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
@@ -552,7 +552,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
                 result[chain][subModuleName] = (result[chain][subModuleName] ?? 0) + value
 
                 if (!skipChainSummary) {
-                  const chainName = getDisplayChainNameCached(chain)
+                  const chainName = getChainLabelFromKey(chain)
                   if (chainMappingToVal[chainName] === undefined) {
                     chainMappingToVal[chainName] = 0
                   }

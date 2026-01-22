@@ -268,7 +268,7 @@ async function run() {
 
     const excludeProtocolFields = [
       'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
-      'audits', 'audit_note', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'audits', 'audit_links', 'hallmarks', 'oraclesBreakdown',
       'cmcId', 'gecko_id', 'methodology', 'dimensions',
       'module', 'pool2', 'staking',
       'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',

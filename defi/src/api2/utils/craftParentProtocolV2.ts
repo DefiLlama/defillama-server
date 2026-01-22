@@ -2,7 +2,7 @@ import type { IParentProtocol } from "../../protocols/types";
 import { errorResponse } from "../../utils/shared";
 import { IProtocol, IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
-import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache/index";
+import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, getRaises, } from "../cache/index";
 import { craftProtocolV2 } from './craftProtocolV2'
 import * as sdk from '@defillama/sdk'
 
@@ -56,7 +56,7 @@ export async function craftParentProtocolV2({
 
   const debug_t1 = performance.now(); // start the timer
 
-  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, fetchMcap: getCachedMCap, parentRaises: [], feMini, })
+  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, fetchMcap: getCachedMCap, parentRaises: getRaises(parentProtocol.id) ?? [], feMini, })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]

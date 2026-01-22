@@ -8,7 +8,7 @@ const LIMIT = 10; // fetch 10 protocols onces
 const CACHE_FOLDER = 'emissions'; // path will be .api2-cache/build/emissions
 const PROTOCOL_CACHE_FILE = (protocol: string) => `${CACHE_FOLDER}/${protocol}`;
 
-export async function storeEmissionsCache() {
+export async function storeEmissionsCache(): Promise<{error: string | null}> {
   async function updateProtocolEmissionsData(emissionsProtocolId: string) {
     const emissionsProtocolData: EmissionsProtocolData = {
       id: emissionsProtocolId,
@@ -47,7 +47,7 @@ export async function storeEmissionsCache() {
       }
     }
     
-    storeRouteData(PROTOCOL_CACHE_FILE(emissionsProtocolId), emissionsProtocolData);
+    await storeRouteData(PROTOCOL_CACHE_FILE(emissionsProtocolId), emissionsProtocolData);
   }
   
   // helper function
@@ -67,12 +67,21 @@ export async function storeEmissionsCache() {
     }
     return labels;
   }
-  
-  const emissionsProtocolsList: Array<string> = await getR2JSONString('emissionsProtocolsList');
-  
-  const limit = pLimit(LIMIT);
-  const limitedPromises = emissionsProtocolsList.map(id => {
-    return limit(() => updateProtocolEmissionsData(id))
-  })
-  await Promise.all(limitedPromises);
+
+  try {
+    const emissionsProtocolsList: Array<string> = await getR2JSONString('emissionsProtocolsList');
+    
+    if (emissionsProtocolsList.length === 0) {
+      throw Error('Got emissions protocols empty list');
+    }
+
+    const limit = pLimit(LIMIT);
+    const limitedPromises = emissionsProtocolsList.map(id => {
+      return limit(() => updateProtocolEmissionsData(id))
+    })
+    await Promise.all(limitedPromises);
+    return { error: null }
+  } catch (e: any) {
+    return { error: e.message }
+  }
 }

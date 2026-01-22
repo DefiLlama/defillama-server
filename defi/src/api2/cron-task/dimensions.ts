@@ -57,7 +57,7 @@ const timeData = {
 
 async function run() {
   // emissions data: pull from R2, aggregate data and save to cache
-  await storeEmissionsCache()
+  const { error: storeEmissionsCacheError } = await storeEmissionsCache()
   
   // Go over all types
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
@@ -80,6 +80,10 @@ async function run() {
         Invalid records detected and removed:
       ${invalidDataRecords.join('\n')}
         `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
+    }
+    if (storeEmissionsCacheError) {
+      console.log(storeEmissionsCacheError)
+      await sendMessage(`ERROR: while updating emissions cache - ${storeEmissionsCacheError}. Please check dimension cron-task.`, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
 

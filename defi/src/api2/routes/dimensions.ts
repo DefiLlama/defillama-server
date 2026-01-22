@@ -1,5 +1,5 @@
 
-import { AdapterType, EmissionsProtocolData, IJSON } from "../../adaptors/data/types"
+import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
@@ -8,7 +8,6 @@ import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
-import { readEmissionsCache } from "../utils/emissionsUtils";
 
 function formatChartData(data: any = {}) {
   const result = [];
@@ -452,9 +451,10 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
 
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
-  const routeFile = `dimensions/${routeSubPath}`
-  const dimentionsData = await readRouteData(routeFile) // read dimensions data from cache file
-  const emissionsData = await readEmissionsCache(protocolSlug) // read emissions data from cache file
+  const dimensionsDataRouteFile = `dimensions/${routeSubPath}`
+  const emisssionDataRouterFile = `emissions/${protocolSlug}`
+  const dimentionsData = await readRouteData(dimensionsDataRouteFile) // read dimensions data from cache file
+  const emissionsData = await readRouteData(emisssionDataRouterFile) // read emissions data from cache file
   const adjustedData = adjustDataProtocolFinancials(dimentionsData, emissionsData) // tranform data
   return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
@@ -487,7 +487,7 @@ const methodologyKeys = {
   HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
 }
 
-function adjustDataProtocolFinancials(data: any, emissionsData: EmissionsProtocolData | null): any {
+function adjustDataProtocolFinancials(data: any, emissionsData: any): any {
   const aggregates: any = data.aggregates;
   const adjustedAggregates: any = {};
 
@@ -514,8 +514,8 @@ function adjustDataProtocolFinancials(data: any, emissionsData: EmissionsProtoco
           }
           
           // add incentives
-          if (emissionsData && (emissionsData as any)[timeframe] && (emissionsData as any)[timeframe][timeKey]) {
-            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives] = (emissionsData as any)[timeframe][timeKey];
+          if (emissionsData && emissionsData[timeframe] && emissionsData[timeframe][timeKey]) {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives] = emissionsData[timeframe][timeKey];
           }
 
           // calculate Earnings = Gross Profit - Incentives

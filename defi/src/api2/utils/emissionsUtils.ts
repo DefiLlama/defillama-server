@@ -2,7 +2,7 @@ import pLimit from 'p-limit';
 import { EmissionsProtocolData } from '../../adaptors/data/types';
 import { getTimestampAtStartOfMonth, getTimestampAtStartOfQuarter } from '../../utils/date';
 import { getR2JSONString } from '../../utils/r2';
-import { readRouteData, storeRouteData } from '../cache/file-cache';
+import { storeRouteData } from '../cache/file-cache';
 
 const LIMIT = 10; // fetch 10 protocols onces
 const CACHE_FOLDER = 'emissions'; // path will be .api2-cache/build/emissions
@@ -75,9 +75,4 @@ export async function storeEmissionsCache() {
     return limit(() => updateProtocolEmissionsData(id))
   })
   await Promise.all(limitedPromises);
-}
-
-export async function readEmissionsCache(emissionsProtocolId: string): Promise<EmissionsProtocolData | null> {
-  const data = await readRouteData(PROTOCOL_CACHE_FILE(emissionsProtocolId));
-  return data ? data as EmissionsProtocolData : null;
 }

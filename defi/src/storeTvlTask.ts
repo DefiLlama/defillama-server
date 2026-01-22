@@ -261,11 +261,13 @@ process.on('uncaughtException', (err) => {
   console.log('UNHANDLED EXCEPTION! Shutting down...');
 })
 
+const tvlTimeoutMinutes = +(process.env.TVL_TIMEOUT_MINUTES ?? 45);
+
 setTimeout(async () => {
   console.log('Timeout! Shutting down...');
   preExit()
   process.exit(1);
-}, 1000 * 60 * 45); // 45 minutes
+}, 1000 * 60 * tvlTimeoutMinutes); // 45 minutes
 
 function getErrorString(e: any) {
   try {

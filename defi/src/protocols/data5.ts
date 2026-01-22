@@ -8542,5 +8542,24 @@ const data5: Protocol[] = [
     twitter: "CalculusFinance",
     listedAt: 1769125125
   },
+  {
+    id: "7283",
+    name: "EVO",
+    address: null,
+    symbol: "-",
+    url: "https://app.evo.market",
+    description: "EVO is a native Concentrated Liquidity Market Maker on Supra",
+    chain: "Supra",
+    logo: `${baseIconsUrl}/evo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Supra"],
+    module: "evo/index.js",
+    twitter: "TradeWithEvo",
+    github: ["EvoMarket"],
+    listedAt: 1769125597
+  },
 ];
 export default data5;

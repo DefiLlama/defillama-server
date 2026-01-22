@@ -55024,6 +55024,7 @@ const data3_3: Protocol[] = [
     category: "AI Agents",
     chains: ["Optimism"],
     module: "infinite/index.js",
+    treasury: "infinite.js",
     twitter: "InfiniteTradePr",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Infinite%20Trading%20Protocol/Infinite%20Trading%20Protocol.pdf"],
     github: ["InfiniteTradingProtocol"],

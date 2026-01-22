@@ -4,46 +4,78 @@ import { addToDBWritesList } from "../utils/database";
 import { getTokenInfo } from "../utils/erc20";
 
 const CHAIN = "ethereum";
-const LAC = "0x0Df3a853e4B604fC2ac0881E9Dc92db27fF7f51b"; // LAC ERC-20 on Ethereum
-const ORACLE = "0x8Ec37E2C6F54a0700fcC079F2e148bC33b31aB4f"; // AggregatorV3Interface proxy for LAC / USD on Ethereum
+const CAPYFI_ORACLE_CONTRACT = "0xfbA2712d3bbcf32c6E0178a21955b61FE1FF424A"; 
+
+const ethereumFeeds: { symbol: string; token: string; cToken: string }[] = [
+  { 
+    symbol: "LAC", 
+    token: "0x0Df3a853e4B604fC2ac0881E9Dc92db27fF7f51b", 
+    cToken: "0x0568F6cb5A0E84FACa107D02f81ddEB1803f3B50" 
+  },
+  { 
+    symbol: "WARS", 
+    token: "0x0DC4F92879B7670e5f4e4e6e3c801D229129D90D", 
+    cToken: "0xf80eeec09f417Fa7FCc4A848Ef03af9dF2658d7B"
+  },
+  { 
+    symbol: "RPC", 
+    token: "0xEd025A9Fe4b30bcd68460BCA42583090c2266468", 
+    cToken: "0xF61159B4a0EE5b1615c9Afb3dA38111043344c32"
+  }
+
+];
 
 // World Chain configuration
 const WORLD_CHAIN = "wc";
-const worldChainFeeds: { symbol: string; token: string; oracle: string }[] = [
-  { symbol: "WARS", token: "0x0DC4F92879B7670e5f4e4e6e3c801D229129D90D", oracle: "0x69B7A672428c2DF42a415Af8E280F58ccf450402" },
-  { symbol: "LAC", token: "0x0fe75cae44e409af8c9e631985d6b3de8e1138de", oracle: "0x8836Af878FC2ee9F11ce9652E39C878c1D7Eb019" }
+const WC_CAPYFI_ORACLE_CONTRACT = "0x9E60d50407520eD4b6d47906B6c74Bc5D99aD282";
+
+const worldChainFeeds: { symbol: string; token: string; cToken: string }[] = [
+  { symbol: "WARS", token: "0x0DC4F92879B7670e5f4e4e6e3c801D229129D90D", cToken: "0xF36749472Ad6dA1CcF9eDe8ff321654990635FfA" }, 
+  { symbol: "LAC", token: "0x0fe75cae44e409af8c9e631985d6b3de8e1138de", cToken: "0x03c1cF154d621E0Fd7e2b88be3aE60CCf07Aca31" }  
 ];
 
-const CHAINLINK_LATEST_ROUND_ABI =
-  "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
+const ORACLE_ABI = "function getUnderlyingPrice(address cToken) view returns (uint256)";
 
 export async function capyfi(timestamp: number) {
   const writes: Write[] = [];
 
-  // Ethereum LAC via Chainlink
-  {
+  // Ethereum tokens via CapyFi Price Oracle
+  if (ethereumFeeds.length) {
     const api = await getApi(CHAIN, timestamp);
-    const result = await api.multiCall({
-      calls: [
-        {
-          target: ORACLE,
-        },
-      ],
-      abi: CHAINLINK_LATEST_ROUND_ABI,
+    
+    const pricesRes = await api.multiCall({
+      calls: ethereumFeeds.map((f) => ({ 
+        target: CAPYFI_ORACLE_CONTRACT,
+        params: [f.cToken]
+      })),
+      abi: ORACLE_ABI,
+      permitFailure: true,
     });
-    const price = Number((result as any)[0].answer) / 1e8; // Chainlink answers are 8 decimals
 
-    addToDBWritesList(
-      writes,
-      CHAIN,
-      LAC,
-      price,
-      18,
-      "LAC",
-      timestamp,
-      "capyfi-oracle",
-      0.9,
-    );
+    const tokens = ethereumFeeds.map((f) => f.token);
+    const tokenInfo = await getTokenInfo(CHAIN, tokens, undefined);
+
+    pricesRes.forEach((res: any, i: number) => {
+      if (!res) return;
+      const decimals = tokenInfo.decimals?.[i]?.output ?? 18;
+      const symbol = tokenInfo.symbols?.[i]?.output ?? ethereumFeeds[i].symbol;
+      
+      // Comptroller returns price as mantissa: price * 1e(36 - underlyingDecimals)
+      const scale = 36 - decimals;
+      const price = Number(res) / Math.pow(10, scale);
+
+      addToDBWritesList(
+        writes,
+        CHAIN,
+        ethereumFeeds[i].token,
+        price,
+        Number(decimals),
+        symbol,
+        timestamp,
+        "capyfi-oracle",
+        0.9,
+      );
+    });
   }
 
   // World Chain tokens via provided oracles
@@ -51,8 +83,11 @@ export async function capyfi(timestamp: number) {
     const wcApi = await getApi(WORLD_CHAIN, timestamp);
 
     const pricesRes = await wcApi.multiCall({
-      calls: worldChainFeeds.map((f) => ({ target: f.oracle })),
-      abi: CHAINLINK_LATEST_ROUND_ABI,
+      calls: worldChainFeeds.map((f) => ({ 
+        target: WC_CAPYFI_ORACLE_CONTRACT,
+        params: [f.cToken]
+      })),
+      abi: ORACLE_ABI,
       permitFailure: true,
     });
 
@@ -60,10 +95,12 @@ export async function capyfi(timestamp: number) {
     const tokenInfo = await getTokenInfo(WORLD_CHAIN, tokens, undefined);
 
     pricesRes.forEach((res: any, i: number) => {
-      if (!res || res.answer === undefined || res.answer === null) return;
-      const price = Number(res.answer) / 1e8;
+      if (!res) return;
       const decimals = tokenInfo.decimals?.[i]?.output ?? 18;
       const symbol = tokenInfo.symbols?.[i]?.output ?? worldChainFeeds[i].symbol;
+
+      const scale = 36 - decimals;
+      const price = Number(res) / Math.pow(10, scale);
 
       addToDBWritesList(
         writes,

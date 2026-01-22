@@ -28755,7 +28755,6 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "grvt-perps",
       "open-interest": "grvt-perps",
-      "normalized-volume": "apex-omni"
    }
   },
   {

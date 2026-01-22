@@ -103,7 +103,7 @@ export default async function main() {
         from: `${destinationChainSlug}:${destinationAddress}`,
         to: `${sourceChainSlug}:${originAddress}`,
         symbol,
-        decimals,
+        decimals: Number(decimals),
       });
     });
   });
@@ -218,13 +218,13 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
         to: oftTokens[to] ?? to,
         from: oftTokens[from] ?? from,
         symbol,
-        decimals: decimals[from],
+        decimals: Number(decimals[from]),
       });
       mappings.push({
         to: oftTokens[from] ?? from,
         from: oftTokens[to] ?? to,
         symbol,
-        decimals: decimals[to],
+        decimals: Number(decimals[to]),
       });
     });
   });

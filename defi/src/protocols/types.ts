@@ -79,7 +79,17 @@ export interface TokenRights {
   resources?: ProtocolResource[];
 }
 
-export interface Protocol {
+type ProtocolCategoryOrTags =
+  | {
+      category: string;
+      tags?: never;
+    }
+  | {
+      tags: string[];
+      category?: never;
+    };
+
+interface ProtocolBase {
   id: string;
   name: string;
   address?: string | null;
@@ -92,8 +102,6 @@ export interface Protocol {
   audits?: string | null;
   gecko_id: string | null;
   cmcId: string | null;
-  category?: string;
-  tags?: string[];
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
@@ -152,6 +160,8 @@ export interface Protocol {
   dimensions?: DimensionsConfig;
   tokenRights?: TokenRights;
 }
+
+export type Protocol = ProtocolBase & ProtocolCategoryOrTags;
 
 export interface Banner {
   message: string;

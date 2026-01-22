@@ -478,7 +478,6 @@ const dataKeys = {
   [AdaptorRecordType.dailySupplySideRevenue]: FinancialStatementRecords.costOfRevenue,
   [AdaptorRecordType.dailyRevenue]: FinancialStatementRecords.grossProfit,
   [AdaptorRecordType.dailyHoldersRevenue]: FinancialStatementRecords.tokenHolderNetIncome,
-  [AdaptorRecordType.tokenIncentives]: FinancialStatementRecords.incentives,
 }
 const methodologyKeys = {
   Fees: FinancialStatementRecords.grossProtocolRevenue,

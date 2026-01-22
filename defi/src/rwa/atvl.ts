@@ -131,7 +131,9 @@ async function getExcludedBalances(
       if (!assets) return;
       if (!(chainRaw in walletsSortedByChain)) walletsSortedByChain[chainRaw] = {};
 
-      wallets.forEach((address: string) => {
+      const burnAddresses = chain == 'solana' ? ['1nc1nerator11111111111111111111111111111111'] 
+        : ['0x0000000000000000000000000000000000000000', '0x000000000000000000000000000000000000dead'];
+      [...wallets, ...burnAddresses].forEach((address: string) => {
         walletsSortedByChain[chainRaw][address] = { id, assets };
       });
     });

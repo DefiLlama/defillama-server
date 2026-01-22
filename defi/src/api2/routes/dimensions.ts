@@ -451,9 +451,11 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
 
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
-  const routeFile = `dimensions/${routeSubPath}`
-  const data = await readRouteData(routeFile)
-  const adjustedData = adjustDataProtocolFinancials(data)
+  const dimensionsDataRouteFile = `dimensions/${routeSubPath}`
+  const emisssionDataRouterFile = `emissions/${protocolSlug}`
+  const dimentionsData = await readRouteData(dimensionsDataRouteFile) // read dimensions data from cache file
+  const emissionsData = await readRouteData(emisssionDataRouterFile) // read emissions data from cache file
+  const adjustedData = adjustDataProtocolFinancials(dimentionsData, emissionsData) // tranform data
   return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
 
@@ -464,6 +466,8 @@ const enum FinancialStatementRecords {
   // othersProfit = "Others Profit",
   tokenHolderNetIncome = "Token Holder Net Income",
   othersTokenHolderFlows = "Others Token Holder Flows",
+  incentives = "Incentives",
+  earnings = "Earnings",
 }
 const enum FinancialStatementLabels {
   bribesRevenue = "Bribes Revenue",
@@ -483,7 +487,7 @@ const methodologyKeys = {
   HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
 }
 
-function adjustDataProtocolFinancials(data: any): any {
+function adjustDataProtocolFinancials(data: any, emissionsData: any): any {
   const aggregates: any = data.aggregates;
   const adjustedAggregates: any = {};
 
@@ -498,8 +502,8 @@ function adjustDataProtocolFinancials(data: any): any {
           for (const [dataKey, dataLabel] of Object.entries(dataKeys)) {
             adjustedAggregates[timeframe][timeKey][dataLabel] = (value as any)[dataKey]
           }
-
-          // add dbr to Others Profit
+          
+          // add dbr to Others Token Holder Flows
           if ((value as any)[AdaptorRecordType.dailyBribesRevenue]) {
             adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.othersTokenHolderFlows] = {
               value: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
@@ -508,6 +512,16 @@ function adjustDataProtocolFinancials(data: any): any {
               },
             }
           }
+          
+          // add incentives
+          if (emissionsData && emissionsData[timeframe] && emissionsData[timeframe][timeKey]) {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives] = emissionsData[timeframe][timeKey];
+          }
+
+          // calculate Earnings = Gross Profit - Incentives
+          const r = adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.grossProfit]?.value || 0
+          const i = adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives]?.value || 0
+          adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.earnings] = { value: r - i }
         }
       }
     }

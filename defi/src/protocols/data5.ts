@@ -8461,5 +8461,28 @@ const data5: Protocol[] = [
       fees: "standx-dusd",
     },
   },
+  {
+    id: "7279",
+    name: "stabble CLMM",
+    address: "solana:STBuyENwJ1GP4yNZCjwavn92wYLEY3t5S1kVS5kwyS1",
+    symbol: "STB",
+    url: "https://stabble.org",
+    description: "Solana's first frictionless liquidity and trading layer",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/stabble.png`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "stabbleorg",
+    audit_links: ["https://github.com/stabbleorg/audit-reports"],
+    parentProtocol: "parent#stabble",
+    dimensions: {
+      dexs: "stabble-clmm",
+      fees: "stabble-clmm",
+    }
+  },
 ];
 export default data5;

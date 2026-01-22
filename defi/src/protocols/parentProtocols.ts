@@ -8748,6 +8748,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "StandX_Official",
   },
+  {
+    id: "parent#stabble",
+    name: "Stabble",
+    url: "https://stabble.org/",
+    description: "Solana's first frictionless liquidity and trading layer.",
+    logo: `${baseIconsUrl}/stabble.jpg`,
+    gecko_id: "stabble",
+    cmcId: null,
+    chains: [],
+    twitter: "stabbleorg",
+    github: ["stabbleorg"],
+  },
 ];
 
 export default parentProtocols;

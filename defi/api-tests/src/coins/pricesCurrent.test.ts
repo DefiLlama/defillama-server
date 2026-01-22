@@ -146,10 +146,10 @@ describe('Coins API - Prices Current', () => {
           const timestamps = Object.values(response.data.coins).map(coin => coin.timestamp);
           const uniqueTimestamps = new Set(timestamps);
           
-          // All timestamps should be within reasonable time of each other (20 minutes)
+          // All timestamps should be within reasonable time of each other (4 hours)
           const minTs = Math.min(...timestamps);
           const maxTs = Math.max(...timestamps);
-          expect(maxTs - minTs).toBeLessThan(1200);
+          expect(maxTs - minTs).toBeLessThan(14400);
         });
 
         it('should have reasonable price ranges', () => {

@@ -7479,7 +7479,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "extended",
       derivatives: "extended",
-      "open-interest": "extended"
+      "open-interest": "extended",
+      "normalized-volume": "extended"
     }
   },
   {
@@ -25215,7 +25216,8 @@ const data4: Protocol[] = [
         genuineSpikes: ["1722988800", "1723075200"],
         adapter: "edgeX"
       },
-      "open-interest": "edgeX"
+      "open-interest": "edgeX",
+      "normalized-volume": "edgex"
     }
   },
   {
@@ -25257,7 +25259,8 @@ const data4: Protocol[] = [
       "open-interest": {
         genuineSpikes: ["1759190400"],
         adapter: "paradex"
-      }
+      },
+      "normalized-volume": "paradex"
     }
   },
   {
@@ -25661,7 +25664,8 @@ const data4: Protocol[] = [
     listedAt: 1757349667,
     dimensions: {
       derivatives: "pacifica",
-      "open-interest": "pacifica"
+      "open-interest": "pacifica",
+      "normalized-volume": "pacifica"
     }
   },
   {
@@ -26597,7 +26601,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "apollox",
       derivatives: "apollox",
-      "open-interest": "apollox"
+      "open-interest": "apollox",
+      "normalized-volume": "aster"
     }
   },
   {
@@ -27123,7 +27128,8 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "lighterv2",
       "open-interest": "lighter-v2",
-      fees: "lighterv2"
+      fees: "lighterv2",
+      "normalized-volume": "lighter"
     }
   },
   {
@@ -28748,7 +28754,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#grvt",
     dimensions: {
       derivatives: "grvt-perps",
-      "open-interest": "grvt-perps"
+      "open-interest": "grvt-perps",
+      "normalized-volume": "apex-omni"
    }
   },
   {

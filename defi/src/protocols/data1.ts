@@ -1836,8 +1836,8 @@ const data: Protocol[] = [
     previousNames: ["1inch Network"],
     address: "0x111111111117dc0aa78b770fa6a738034120c302",
     symbol: "1INCH",
-    url: "https://1inch.io",
-    referralUrl: "https://app.1inch.io/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5",
+    url: "https://1inch.com",
+    referralUrl: "https://app.1inch.com/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5",
     description:
       "1inch is the DeFi ecosystem building financial freedom for everyone",
     chain: "Ethereum",
@@ -1850,7 +1850,7 @@ const data: Protocol[] = [
     module: "1inch/api.js",
     treasury: "1inch.js",
     twitter: "1inch",
-    audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
+    audit_links: ["https://help.1inch.com/en/articles/4585088-how-secure-is-1inch"],
     governanceID: ["snapshot:1inch.eth"],
     github: ["1inch"],
     dimensions: {

@@ -1,5 +1,5 @@
 
-import { AdapterType, IJSON } from "../../adaptors/data/types"
+import { AdapterType, EmissionsProtocolData, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
@@ -8,8 +8,7 @@ import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
-import { getR2JSONString } from "../../utils/r2";
-import { getTimestampAtStartOfMonth, getTimestampAtStartOfQuarter } from "../../utils/date";
+import { readEmissionsCache } from "../utils/emissionsUtils";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
@@ -457,9 +456,9 @@ async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpres
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`
   const routeFile = `dimensions/${routeSubPath}`
-  let data = await readRouteData(routeFile) // read data from cache file
-  data = await getAdditionalDataProtocolFinancials(data) // add data from external/additional sources
-  const adjustedData = adjustDataProtocolFinancials(data) // tranform data
+  const dimentionsData = await readRouteData(routeFile) // read dimensions data from cache file
+  const emissionsData = await readEmissionsCache(protocolSlug) // read emissions data from cache file
+  const adjustedData = adjustDataProtocolFinancials(dimentionsData, emissionsData) // tranform data
   return successResponse(res, adjustedData, 10); // cache 10 minutes
 }
 
@@ -492,7 +491,7 @@ const methodologyKeys = {
   HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
 }
 
-function adjustDataProtocolFinancials(data: any): any {
+function adjustDataProtocolFinancials(data: any, emissionsData: EmissionsProtocolData | null): any {
   const aggregates: any = data.aggregates;
   const adjustedAggregates: any = {};
   
@@ -516,6 +515,11 @@ function adjustDataProtocolFinancials(data: any): any {
                 [FinancialStatementLabels.bribesRevenue]: (value as any)[AdaptorRecordType.dailyBribesRevenue].value,
               },
             }
+          }
+          
+          // add incentives
+          if (emissionsData && (emissionsData as any)[timeframe] && (emissionsData as any)[timeframe][timeKey]) {
+            adjustedAggregates[timeframe][timeKey][FinancialStatementRecords.incentives] = (emissionsData as any)[timeframe][timeKey];
           }
 
           // calculate Earnings = Gross Profit - Incentives
@@ -552,63 +556,6 @@ function adjustMethodology(methodology: any): any {
   }
   
   return adjustedMethodology;
-}
-
-async function getAdditionalDataProtocolFinancials(data: any): Promise<any> {
-  if (data.aggregates) {
-    // get emission data from emission R2
-    const emissionData = await getR2JSONString(`emissions/${data.slug}`)
-    if (emissionData && emissionData.unlockUsdChart) {
-      const hasBreakdownData = !!emissionData.componentData && !!emissionData.componentData.sections
-      
-      for (const [timestamp, value] of emissionData.unlockUsdChart) {
-        const firstDayOfMonthDate = getTimestampAtStartOfMonth(timestamp)
-        const firstDayOfQuarterDate = getTimestampAtStartOfQuarter(firstDayOfMonthDate)
-        
-        const keyMaps: Record<string, string> = {
-          monthly: `${new Date(firstDayOfMonthDate * 1e3).toISOString().slice(0, 7)}`,
-          quarterly: `${new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()}-Q${Math.ceil((new Date(firstDayOfQuarterDate * 1e3).getUTCMonth() + 1) / 3)}`,
-          yearly: String(new Date(firstDayOfMonthDate * 1e3).getUTCFullYear()),
-        };
-
-        for (const [timeframe, timeframeKey] of Object.entries(keyMaps)) {
-          if (data.aggregates[timeframe] && data.aggregates[timeframe][timeframeKey]) {
-            // add Incentives
-            data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives] || { value: 0 }
-            data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives].value += Number(value)
-            
-            if (hasBreakdownData) {
-              function findBreakdownLabelsAtTimestamp(sections: any, timestamp: number): any {
-                const labels: Record<string, number> = {};
-                for (const section of Object.values(sections)) {
-                  for (const component of Object.values((section as any).components)) {
-                    const compomentItem = component as any
-                    if (compomentItem.name && compomentItem.unlockUsdChart) {
-                      const label = compomentItem.name;
-                      const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
-                      if (item) {
-                        labels[label] = Number(item[1])
-                      }
-                    }
-                  }
-                }
-                return labels;
-              }
-              
-              data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'] || {}
-              const breakdownLabels: any = findBreakdownLabelsAtTimestamp(emissionData.componentData.sections, timestamp)
-              for (const [label, value] of Object.entries(breakdownLabels)) {
-                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] = data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] || 0
-                data.aggregates[timeframe][timeframeKey][AdaptorRecordType.tokenIncentives]['by-label'][label] += Number(value)
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  return data;
 }
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {

@@ -1,3 +1,4 @@
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
@@ -162,6 +163,18 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
     address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
+  },
+  UKTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0xf695Df6c0f3bB45918A7A82e83348FC59517734E",
+      });
+      return rate / 1e6;
+    },
+    chain: "polygon",
+    underlying: "0x27f6c8289550fce67f6b50bed1f519966afe5287",
+    address: "0x970E2aDC2fdF53AEa6B5fa73ca6dc30eAFEDfe3D",
   },
   aETH: {
     rate: async ({ api }) => {
@@ -694,16 +707,37 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9",
     address: "0x671642Ac281C760e34251d51bC9eEF27026F3B7a",
   },
+  ACRDX: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:pricePerShare",
+        target: "0x74a739ea1dc67c5a0179ebad665d1d3c4b80b712",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x9477724Bb54AD5417de8Baff29e59DF3fB4DA74f",
+  },
 };
 
 export async function derivs(timestamp: number) {
-  return Promise.all(
-    Object.keys(configs).map((k: string) =>
-      deriv(timestamp, k, configs[k]).catch((e) => {
+  let all = Object.keys(configs)
+  const writes: Write[] = []
+  await runInPromisePool({
+    items: Object.keys(configs), 
+    concurrency: 10, 
+    processor: async (k: string) => {
+      const res = await deriv(timestamp, k, configs[k]).catch((e) => {
         console.log(`API deriv ${k} failed with ${e?.message ?? e}`);
       })
-    )
-  );
+
+      all = all.filter(item => item !== k)
+      if (res) writes.push(...res)
+    }
+  })
+
+  return writes
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {

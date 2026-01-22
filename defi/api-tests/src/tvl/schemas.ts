@@ -33,7 +33,6 @@ export const protocolSchema = z.object({
   chain: z.string().optional(),
   logo: z.string().nullable().optional(),
   audits: z.string().nullable().optional(),
-  audit_note: z.string().nullable().optional(),
   gecko_id: z.string().nullable().optional(),
   cmcId: z.string().nullable().optional(),
   mcap: z.number().finite().nullable().optional(),

@@ -78,7 +78,7 @@ export default {
   xequity: require("./markets/0xequity"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
-  aktionariat: require("./markets/aktionariat"),
+  // aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
   nightshade: require("./markets/nightshade"),
@@ -184,4 +184,6 @@ export default {
   townsquare: require("./townsquare"),
   notional: require("./yield/notional"),
   shift: require("./yield/shift"),
+  makina: require("./yield/makina"),
+  stORE: require("./solana/stORE")
 };

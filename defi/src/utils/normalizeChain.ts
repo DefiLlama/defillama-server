@@ -1,4 +1,5 @@
 import { DimensionsConfig } from "../adaptors/data/types";
+import { sluggifyString } from "./sluggify";
 
 export const normalizedChainReplacements = {
   // keys should be full lowercase
@@ -57,6 +58,7 @@ export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
+export const nonChainsSet = new Set(nonChains)
 
 export function addToChains(chains: string[], chainDisplayName: string) {
   if (chainCoingeckoIds[chainDisplayName] !== undefined && !chains.includes(chainDisplayName)) {
@@ -2060,6 +2062,9 @@ export const chainCoingeckoIds = {
     cmcId: "13916",
     categories: ["EVM"],
     github: ["OMAX-Development"],
+    dimensions: {
+      fees: "omax",
+    },
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
@@ -2175,6 +2180,9 @@ export const chainCoingeckoIds = {
     symbol: "LOOP",
     cmcId: "18761",
     categories: ["EVM"],
+    dimensions: {
+      fees: "loop",
+    },
   },
   "Bone": {
     geckoId: null,
@@ -3087,6 +3095,9 @@ export const chainCoingeckoIds = {
     twitter: "QBlockchain",
     url: "https://q.org/",
     chainId: 35441,
+    dimensions: {
+      fees: "q-protocol",
+    },
   },
   "zkLink Nova": {
     geckoId: "zklink",
@@ -3622,6 +3633,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "noble_xyz",
     url: "https://x.com/noble_xyz",
+    dimensions: {
+      fees: "noble",
+    },
   },
   "Aeternity": {
     geckoId: "aeternity",
@@ -4007,6 +4021,9 @@ export const chainCoingeckoIds = {
     url: "https://www.vinuchain.org/",
     github: ["vinuchain"],
     chainId: 207,
+    dimensions: {
+      fees: "vinu",
+    },
   },
   "Sonic": {
     geckoId: "sonic-3",
@@ -4380,6 +4397,9 @@ export const chainCoingeckoIds = {
     url: "https://www.stratisplatform.com/",
     github: ["stratisproject"],
     chainId: 105105,
+    dimensions: {
+      fees: "stratis",
+    },
   },
   "Silicon zkEVM": {
     geckoId: null,
@@ -5579,7 +5599,7 @@ export const chainCoingeckoIds = {
     url: "https://qu.ai",
     chainId: 9,
     dimensions: {
-      fees: "quai-network",
+      // fees: "quai-network",  // only tx fees should be treated as chain fees
     },
   },
   "StandX": {
@@ -5589,12 +5609,23 @@ export const chainCoingeckoIds = {
     twitter: "StandX_Official",
     url: "https://standx.com/",
   },
+  "Althea": {
+    geckoId: "althea",
+    symbol: "ALTHEA",
+    cmcId: null,
+    categories: ["Cosmos", "EVM"],
+    twitter: "AltheaNetwork",
+    url: "https://www.althea.net/",
+    chainId: 258432,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
 export const currentChainLabelsList = Object.keys(chainCoingeckoIds)
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
+
+export const extraSectionsSet = new Set(extraSections)
 
 export function transformNewChainName(chain: string) {
   return chainOldLabelToNewLabelMap[chain] || chain
@@ -5900,7 +5931,7 @@ addNormalizedChainReplacements(chainLabelMap)
 addNormalizedChainReplacements(newChainLabelMap)
 
 export function getChainIdFromDisplayName(displayName: string): string {
-  if (extraSections.includes(displayName)) {
+  if (extraSectionsSet.has(displayName)) {
     return displayName;
   }
 
@@ -5927,7 +5958,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
   return nameMap[normalizedChain];
 
   function _getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
-    if (extraSections.includes(normalizedChain)) {
+    if (extraSectionsSet.has(normalizedChain)) {
       return normalizedChain
     }
     if (normalizedChain.includes('-')) {
@@ -5963,6 +5994,82 @@ export function getChainNameFromId(id: string | number | undefined) {
 export const chainNameToIdMap: { [name: string]: string } = {
   'Plume': 'plume', // 'plume' key is used for the deprecated chain, so we need to map 'Plume' to 'plume'
 }
-const chainNames = Object.keys(chainCoingeckoIds)
-chainNames.sort()
-chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))
+
+
+// v2 - generate mapping between chain display name and internal chain id from scratch
+// TODO: need to replace all of the v1 code
+const chainLabels = Object.keys(chainCoingeckoIds)
+chainLabels.sort()
+chainLabels.map(i => chainNameToIdMap[i] = normalizeChain(i))
+
+// this is a map of both old and new chain labels to internal chain key
+// compared to _chainLabelToChainIdCache, this only has known/whitelisted labels
+export const chainLabelsToKeyMap: { [label: string]: string } = {
+  // 'OP Mainnet': 'optimism', // multiple labels for the same chain key
+  // 'Optimism': 'optimism',
+
+  // these were missed in the initial mapping
+  'OKXChain': "okexchain",
+  'terra-classic': "terra",
+  'Milkomeda C1': "milkomeda",
+  'chain-breakdown': "chain-breakdown",  // special case, used in dimensions route for fetching chain breakdowns
+}
+const _chainLabelToChainIdCache = {} as { [label: string]: string }
+
+// a final map of our internal chain key to display label (preferring new names)
+export const chainKeyToChainLabelMap: { [key: string]: string } = {}
+
+addChainLabelMapping(chainLabelMap)
+addChainLabelMapping(newChainLabelMap)
+
+Object.entries(chainLabelsToKeyMap).forEach(([label, key]) => {
+    const sluggifiedLabel = sluggifyString(label)
+
+    _chainLabelToChainIdCache[label] = key
+    _chainLabelToChainIdCache[sluggifiedLabel] = key
+})
+
+// add the auto derived chain keys from all known chain labels
+chainLabels.forEach(label => {
+  if (chainLabelsToKeyMap[label]) return; // already added
+  const key = getChainKeyFromLabel(label)
+  chainLabelsToKeyMap[label] = key
+  chainKeyToChainLabelMap[key] = label
+})
+
+function addChainLabelMapping(obj: { [key: string]: string }) {
+  Object.entries(obj).forEach(([key, label]) => {
+    chainLabelsToKeyMap[label] = key
+    chainKeyToChainLabelMap[key] = label
+  })
+}
+
+
+// to be used if we are unsure if a label exists in our system, if it is known, use chainLabelsToKeyMap instead
+export function getChainKeyFromLabel(label: string): string {
+  let value = _chainLabelToChainIdCache[label]
+
+  if (!value) {
+    let sluggifiedLabel = sluggifyString(label)
+    value = _chainLabelToChainIdCache[sluggifiedLabel]
+    if (!value) {
+      value = sluggifiedLabel.replace(/\-/g, '_') // try replacing - with _
+      _chainLabelToChainIdCache[sluggifiedLabel] = value
+    }
+    _chainLabelToChainIdCache[label] = value
+  }
+
+  return value as string
+}
+
+
+// to be used if we are unsure if a label exists in our system, if it is known, use chainKeyToChainLabelMap instead
+export function getChainLabelFromKey(id: string): string { // prefers new name
+  let value = chainKeyToChainLabelMap[id]
+  if (value) return value
+
+  value = id.slice(0, 1).toUpperCase() + id.slice(1)  // Capitalize first letter
+
+  chainKeyToChainLabelMap[id] = value
+  return value
+}

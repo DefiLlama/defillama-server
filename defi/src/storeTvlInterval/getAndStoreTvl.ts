@@ -21,6 +21,7 @@ import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
 import { elastic } from '@defillama/sdk';
 import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
+import { deadChainsSet } from "../config/deadChains";
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -184,8 +185,6 @@ type StoreTvlOptions = {
   runStats?: any,
 }
 
-export const deadChains = new Set(['heco', 'astrzk', 'real', 'milkomeda', 'milkomeda_a1', 'eos_evm', 'eon', 'plume', 'bitrock', 'rpg', 'kadena', 'migaloo', 'kroma', 'qom', 'airdao'])
-
 export type storeTvl2Options = StoreTvlOptions & {
   unixTimestamp: number,
   skipBlockData?: boolean,
@@ -285,7 +284,7 @@ export async function storeTvl(
           return
         }
 
-        if (runType === 'cron-task' && deadChains.has(chain)) tvlFunction = () => ({})
+        if (runType === 'cron-task' && deadChainsSet.has(chain)) tvlFunction = () => ({})
         let storedKey = `${chain}-${tvlType}`
         let tvlFunctionIsFetch = false;
         if (tvlType === "tvl") {

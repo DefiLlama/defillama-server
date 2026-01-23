@@ -638,6 +638,18 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
   },
+  {
+    name: "Byte Exchange",
+    slug: "byte-exchange",
+    coin: null,
+    walletsLink: null,
+  },
+  {
+    name: "GroveX",
+    slug: "grovex",
+    coin: null,
+    walletsLink: null,
+  },
 ];
 
 const cgNameListingIdMap: { [name: string]: string } = {

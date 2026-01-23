@@ -12878,7 +12878,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     gecko_id: null,
     cmcId: "1116",
-    tags: ["AMM"],
+    tags: ["StableSwap"],
     chains: ["Tron"],
     module: "justSwap/index.js",
     twitter: "OfficialSUNio",

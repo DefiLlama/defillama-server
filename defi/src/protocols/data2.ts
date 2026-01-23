@@ -22283,7 +22283,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["DLMM"],
     chains: ["Avalanche", "Arbitrum"],
     module: "traderjoe-lb/index.js",
     twitter: "LFJ_gg",

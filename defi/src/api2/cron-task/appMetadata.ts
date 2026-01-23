@@ -16,6 +16,7 @@ import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
 import { runWithRuntimeLogging } from "../utils";
+import { TagCatetgoryMap } from "../../protocols/tags";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -1037,6 +1038,7 @@ async function _storeAppMetadata() {
     await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
       categories: Array.from(categoriesSet),
       tags: Array.from(tagsSet),
+      tagCategoryMap: TagCatetgoryMap,
     });
 
     console.log("finished building metadata");

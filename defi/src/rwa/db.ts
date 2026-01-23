@@ -1,12 +1,5 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../src/utils/date";
-import { findDailyTimestamps } from "../../l2/v2/storeToDb";
-import { getChainIdFromDisplayName } from "../utils/normalizeChain";
-import protocols from "../protocols/data";
-import entities from "../protocols/entities";
-import treasuries from "../protocols/treasury";
-import { cache } from "@defillama/sdk";
-import getEnv, { validateEnv } from '../api2/env';
-import { DataTypes, Model, ModelStatic, Op, QueryTypes, Sequelize, Options as SequelizeOptions } from 'sequelize'
+import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 
 class META_RWA_DATA extends Model { }
 class DAILY_RWA_DATA extends Model { }
@@ -14,8 +7,10 @@ class HOURLY_RWA_DATA extends Model { }
 class BACKUP_RWA_DATA extends Model { }
 
 let pgConnection: any;
+
 const twoDaysAgo = getTimestampAtStartOfDay(getCurrentUnixTimestamp() - 2 * secondsInDay);
 
+// Initialize the database tables
 async function initPGTables() {
     HOURLY_RWA_DATA.init({
         timestamp: {
@@ -148,8 +143,8 @@ async function initPGTables() {
         ]
     });
 }
-
-async function initializeRwaDB() {
+// Initialize the database connection
+async function initializeRwaDB(): Promise<void> {
     if (!pgConnection) {
         const auth = process.env.COINS2_AUTH?.split(",") ?? [];
         if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
@@ -158,18 +153,18 @@ async function initializeRwaDB() {
         initPGTables()
     }
 }
-
-function getPGConnection() {
+// Get the database connection
+function getPGConnection(): Sequelize {
     return pgConnection
 }
-
-export async function initPG() {
+// Initialize the database connection
+export async function initPG(): Promise<void> {
     if (pgConnection) return;
     await initializeRwaDB();
     pgConnection = getPGConnection();
 }
-
-export async function findDailyTimestampRecords(targetTimestamp: number) {
+// Find records where timestamp equals the target timestamp, one per id
+export async function findDailyTimestampRecords(targetTimestamp: number): Promise<{ [id: string]: { timestamp: number; timestamp_actual: number } }> {
     // Find records where timestamp equals the target timestamp, one per id
     const records = await DAILY_RWA_DATA.sequelize!.query(
         `SELECT DISTINCT ON (id) id, timestamp, timestamp_actual
@@ -194,8 +189,8 @@ export async function findDailyTimestampRecords(targetTimestamp: number) {
 
     return result;
 }
-
-export async function storeHistoricalPG(inserts: any, timestamp: number) {
+// Store historical data
+export async function storeHistoricalPG(inserts: any, timestamp: number): Promise<void> {
     const dayTimestamp = getTimestampAtStartOfDay(timestamp);
     const closestRecord = await findDailyTimestampRecords(dayTimestamp);
 
@@ -204,9 +199,7 @@ export async function storeHistoricalPG(inserts: any, timestamp: number) {
         const { id, timestamp } = i;
         const closestRecordData = closestRecord[id];
         const insert = { ...i, timestamp: dayTimestamp, timestamp_actual: timestamp };  
-        if (isNaN(insert.timestamp_actual)) {
-            const a = insert
-        }
+
         if (!closestRecordData) dailyInserts.push(insert);
         else if (Math.abs(dayTimestamp - closestRecordData.timestamp_actual) > Math.abs(dayTimestamp - timestamp)) dailyInserts.push(insert);
     })
@@ -232,42 +225,47 @@ export async function storeHistoricalPG(inserts: any, timestamp: number) {
         }
     });
 }
-
-export async function storeMetadataPG(inserts: any) {
-    inserts
-    // await META_RWA_DATA.bulkCreate(inserts);
+// Store metadata records
+export async function storeMetadataPG(inserts: any): Promise<void> {
+    await META_RWA_DATA.bulkCreate(inserts, { updateOnDuplicate: ['data'] });
 }
-
-export async function fetchHistoricalPG(id: string) {
-    const data = await DAILY_RWA_DATA.findAll({
+// Get historical and current data for a given id
+export async function fetchHistoricalPG(id: string): Promise<{ historical: any[], current: any }> {
+    const historical = await DAILY_RWA_DATA.findAll({
         attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
         where: { id },
         order: [['timestamp', 'ASC']],
         raw: true,
     });
 
-    return;
-}
+    const current = await HOURLY_RWA_DATA.findOne({
+        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
+        where: { id },
+        order: [['timestamp', 'DESC']],
+        raw: true,
+    });
 
-export async function fetchCurrentPG() {
-    const metadata = await META_RWA_DATA.findAll({
+    return { historical, current };
+}
+// Get all metadata records
+export async function fetchMetadataPG(): Promise<any[]> {
+    return await META_RWA_DATA.findAll({
         attributes: ['id', 'data'],
         order: [['id', 'ASC']],
         raw: true,
     });
-
-    // Get one record per id with the largest timestamp
-    const current = await HOURLY_RWA_DATA.sequelize!.query(
+}
+// Get one record per id with the largest timestamp
+export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[]> {
+    return await HOURLY_RWA_DATA.sequelize!.query(
         `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap 
          FROM "${HOURLY_RWA_DATA.getTableName()}" 
          ORDER BY id, timestamp DESC`,
         { type: QueryTypes.SELECT }
     ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[];
-
-    return { metadata, current };
 }
-
-async function closeConnection() {
+// Close the database connection
+async function closeConnection(): Promise<void> {
     if (!pgConnection) return;
     try {
         const closing = pgConnection.close()
@@ -278,7 +276,6 @@ async function closeConnection() {
         console.error('Error while closing the database connection:', error);
     }
 }
-
 // Add a process exit hook to close the database connection
-process.on('beforeExit', closeConnection);
+process.on('beforeExit', closeConnection); // // ts-node defi/src/rwa/historical.ts
 process.on('exit', closeConnection);

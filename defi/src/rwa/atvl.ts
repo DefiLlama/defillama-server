@@ -2,7 +2,6 @@ import { getAllItemsAtTimeS, getLatestProtocolItems, initializeTVLCacheDB } from
 import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
 import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { coins, cache } from "@defillama/sdk";
 import { getCsvData } from "./spreadsheet";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
@@ -10,41 +9,11 @@ import { fetchSupplies } from "../../l2/utils";
 import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
-import { storeHistorical, protocolIdMap, categoryMap, storeMetadata, keyMap } from "./historical";
+import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
+import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
+import { fetchBurnAddresses, sortTokensByChain, toCamelCase } from "./utils";
 
-const excludedProtocolCategories: string[] = ["CEX"];
-
-// Sort tokens by chain and map token to project for fetching supplies, tvls etc
-function sortTokensByChain(tokens: { [protocol: string]: string[] }) {
-  const tokensSortedByChain: { [chain: string]: string[] } = {};
-  const tokenToProjectMap: { [token: string]: string } = {};
-
-  Object.keys(tokens).map((protocol: string) => {
-    tokens[protocol].map((pk: any) => {
-      if (pk == false || pk == null) return;
-      const chain = pk.substring(0, pk.indexOf(":"));
-
-      if (!tokensSortedByChain[chain]) tokensSortedByChain[chain] = [];
-      const normalizedPk = chainsThatShouldNotBeLowerCased.includes(chain) ? pk : pk.toLowerCase();
-
-      tokensSortedByChain[chain].push(normalizedPk);
-      tokenToProjectMap[normalizedPk] = protocol;
-    });
-  });
-
-  return { tokensSortedByChain, tokenToProjectMap };
-}
-// convert spreadsheet titles to API format
-function toCamelCase(str: string) {
-  return str
-    .toLowerCase()
-    .replace(/\//g, " ")
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-      return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    })
-    .replace(/\s+/g, "");
-}
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
   await initializeTVLCacheDB();
@@ -108,7 +77,7 @@ async function getExcludedBalances(
 ) {
   const walletsSortedByChain: { [chain: string]: { [wallet: string]: { id: string; assets: string[] } } } = {};
   Object.keys(finalData).forEach((id: string) => {
-    const chains = finalData[id]["*HoldersToBeRemovedForActiveMarketcap"];
+    const chains = finalData[id][keyMap.holdersToRemove];
     if (!chains || !Object.keys(chains).length) return;
     Object.keys(chains).forEach((chain: string) => {
       const wallets = chains[chain];
@@ -118,15 +87,12 @@ async function getExcludedBalances(
       if (!assets) return;
       if (!(chainRaw in walletsSortedByChain)) walletsSortedByChain[chainRaw] = {};
 
-      const burnAddresses = chain == 'solana' ? ['1nc1nerator11111111111111111111111111111111'] 
-        : ['0x0000000000000000000000000000000000000000', '0x000000000000000000000000000000000000dead'];
+      const burnAddresses = fetchBurnAddresses(chainRaw);
       [...wallets, ...burnAddresses].forEach((address: string) => {
         walletsSortedByChain[chainRaw][address] = { id, assets };
       });
     });
   });
-
-  const unsupportedChains = ["provenance", "stellar"];
 
   const excludedAmounts: { [id: string]: { [chain: string]: BigNumber } } = {};
   await runInPromisePool({

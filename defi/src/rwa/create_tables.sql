@@ -22,7 +22,6 @@ CREATE INDEX IF NOT EXISTS daily_rwa_data_timestamp_index ON daily_rwa_data(time
 -- Create hourly_rwa_data table
 CREATE TABLE IF NOT EXISTS hourly_rwa_data (
     timestamp INTEGER NOT NULL,
-    timestamp_actual INTEGER NOT NULL,
     id VARCHAR(255) NOT NULL,
     defiactivetvl TEXT,
     mcap TEXT,
@@ -40,7 +39,6 @@ CREATE INDEX IF NOT EXISTS hourly_rwa_data_timestamp_index ON hourly_rwa_data(ti
 -- Create backup_rwa_data table
 CREATE TABLE IF NOT EXISTS backup_rwa_data (
     timestamp INTEGER NOT NULL,
-    timestamp_actual INTEGER NOT NULL,
     id VARCHAR(255) NOT NULL,
     defiactivetvl TEXT,
     mcap TEXT,

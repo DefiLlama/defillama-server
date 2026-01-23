@@ -6,6 +6,7 @@ import * as sdk from "@defillama/sdk";
 import { endpointMap, runInChunks } from "../../l2/utils";
 import axios from "axios";
 
+// Fetch balances for Solana
 export async function fetchSolana(
   timestamp: number,
   wallets: { [wallet: string]: { id: string; assets: string[] } },
@@ -61,7 +62,7 @@ export async function fetchSolana(
     }
   });
 }
-
+// Fetch balances for EVM chains
 export async function fetchEvm(
   timestamp: number,
   chain: string,

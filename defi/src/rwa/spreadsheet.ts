@@ -1,15 +1,17 @@
 import { getAllAirtableRecords } from "../utils/airtable";
+import { keyMap } from "./constants";
 
-const listColumns = ["Chain", "Contracts", "Category", "Asset Class", "KYC", "Notes", "Pool ID"];
+const listColumns: string[] = ["Chain", "Contracts", "Category", "Asset Class", "KYC", "Notes", "Pool ID"];
 
-export async function getCsvData() {
+// Get CSV data from Airtable
+export async function getCsvData(): Promise<Object[]> {
   const rawCsvData = await getAllAirtableRecords("appv73DKfa5DrNPP0/tblnrNUJzEiXFB5gU");
 
-  const parsedCsvData = rawCsvData.map(({ fields: row }) => {
+  const parsedCsvData: Object[] = rawCsvData.map(({ fields: row }) => {
     Object.keys(row).forEach((key: string) => {
       if (row[key] == "-" || row[key] == "") {
         row[key] = null;
-      } else if (row[key] == '1') {
+      } else if (key == keyMap.id && row[key] == '1') {
         row[key] = '1'
       } else if (row[key] == "✓" || row[key] == true || row[key].toLowerCase() == 'true') {
         row[key] = true;

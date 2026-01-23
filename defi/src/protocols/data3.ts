@@ -38149,7 +38149,7 @@ const data3_2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["DLMM"],
     chains: ["Mantle"],
     //https://docs.merchantmoe.com/liquidity-book/vaults#h_e0c60a9c6a
     oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ],

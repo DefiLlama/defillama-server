@@ -2651,6 +2651,11 @@
       "symbol": "sMAG7.ssi",
       "to": "coingecko#mag7-ssi"
     },
+    "0x40287BB8604931592a158B3d036bB089346CBb37": {
+      "decimals": "18",
+      "symbol": "sd-cbeth-f-vault",
+      "to": "asset#base:0x11c1fbd4b3de66bc0565779b35171a6cf3e71f59"
+    },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",

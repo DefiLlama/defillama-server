@@ -18411,7 +18411,8 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Staking Pool",
     chains: ["Ethereum"],
-    module: "ssv-network/index.js",
+    module: "dummy.js", // the adapter is broken
+    // module: "ssv-network/index.js",
     twitter: "ssv_network",
     dimensions: {
       fees: "ssv-network"

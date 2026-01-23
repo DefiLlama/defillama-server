@@ -6878,6 +6878,10 @@ const data5: Protocol[] = [
     module: "kumbaya/index.js",
     twitter: "kumbaya_xyz",
     listedAt: 1767124597,
+    dimensions: {
+      fees: "kumbaya",
+      dexs: "kumbaya",
+    },
   },
   {
     id: "7203",
@@ -7816,12 +7820,13 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Binance", "Solana", "Base", "TON"],
-    module: "dummy.js",
+    module: "babydoge-bridge/index.js",
     twitter: "BabyDoge",
     dimensions: {
       fees: "babydoge-bridge",
       "bridge-aggregators": "babydoge-bridge",
     },
+    listedAt: 1769198148
   },
   {
     id: "7248",
@@ -8003,6 +8008,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#rhea-finance",
     dimensions: {
       fees: "rhea-cross-chain",
+      dexs: "rhea-cross-chain",
     }
   },
   {

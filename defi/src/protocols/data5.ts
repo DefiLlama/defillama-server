@@ -8538,7 +8538,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "AI Agents",
     chains: ["Binance"],
-    module: "dummy.js",
+    module: "calculus/index.js",
     twitter: "CalculusFinance",
     listedAt: 1769125125
   },

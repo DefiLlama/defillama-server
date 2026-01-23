@@ -8071,7 +8071,7 @@ const data5: Protocol[] = [
     name: "ElfomoFi",
     address: null,
     symbol: "-",
-    url: "https://elfomo.io/",
+    url: "https://docs.elfomo.fi/",
     description:
       "Oracle-based DEX on EVM.",
     chain: "Base",
@@ -8079,7 +8079,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "DEX Aggregator",
+    tags: ["Prop AMM"],
     chains: ["Base"],
     module: "dummy.js",
     twitter: "elfomo_fi",

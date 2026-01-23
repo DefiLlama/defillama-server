@@ -22,7 +22,7 @@ import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
-import { rwaChart } from "../../rwa/historical";
+import { rwaChart, rwaCurrent } from "../../rwa/historical";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -67,7 +67,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/rwa/stats", defaultFileHandler);
-  router.get("/rwa/active-tvls", r2Wrapper({ endpoint: 'rwa/active-tvls' }));
+  router.get("/rwa/active-tvls", ew(async (req: any, res: any) => rwaCurrentHandler(req, res)));
   router.get("/rwa/historical/:name", ew(async (req: any, res: any) => rwaChartHandler(req, res)));
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
@@ -463,6 +463,10 @@ async function rwaChartHandler(req: HyperExpress.Request, res: HyperExpress.Resp
   return successResponse(res, data, 60)
 }
 
+async function rwaCurrentHandler(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  const data = await rwaCurrent()
+  return successResponse(res, data, 60)
+}
 
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')

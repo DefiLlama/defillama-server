@@ -49347,7 +49347,7 @@ const data3_3: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Onchain Capital Allocator",
     chains: ["Arbitrum"],
     oraclesBreakdown: [
       {

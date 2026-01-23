@@ -8862,10 +8862,14 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "gmx-sol/index.js",
     twitter: "gmtrade_xyz",
     github: ["gmsol-labs"],
     audit_links: ["https://github.com/gmsol-labs/gmx-solana-audits"],
+    dimensions: {
+      derivatives: "gmx-sol",
+      fees: "gmx-sol",
+    },
     listedAt: 1769159885
   },
 ];

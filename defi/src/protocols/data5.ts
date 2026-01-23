@@ -8878,5 +8878,25 @@ const data5: Protocol[] = [
     },
     listedAt: 1769159885
   },
+  {
+    id: "7298",
+    name: "COAL Works",
+    address: null,
+    symbol: "-",
+    url: "https://coal.works/",
+    description: "Coal Works is a proof of work protocol built on the Solana blockchain. Miners compete for blocks in a 4x4 grid, with each block minting new COAL until the 3 million supply cap is reached",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/coal-works.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Gamified Mining",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "coal_works",
+    dimensions: {
+      fees: "coal-works",
+    },
+  },
 ];
 export default data5;

@@ -17,6 +17,7 @@ import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
 import { runWithRuntimeLogging } from "../utils";
 import { TagCatetgoryMap } from "../../protocols/tags";
+import tokenRightsMap from '../../protocols/tokenRights';
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -218,6 +219,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(tokenRightsMap[protocol.defillamaId] ? { tokenRights: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -263,6 +265,7 @@ async function _storeAppMetadata() {
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(tokenRightsMap[protocol.id] ? { tokenRights: true } : {}),
       };
     }
 

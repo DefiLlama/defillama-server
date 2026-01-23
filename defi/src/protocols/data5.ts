@@ -8847,5 +8847,25 @@ const data5: Protocol[] = [
       fees: "wunder-perps",
     },
   },
+  {
+    id: "7297",
+    name: "GMTrade",
+    address: null,
+    symbol: "-",
+    url: "https://gmtrade.xyz/referrals/?ref=545",
+    description: "GMX-Solana is a decentralized leveraged trading platform built on the Solana blockchain, drawing inspiration from the technical innovations introduced by GMX V2. The platform aims to provide a seamless trading experience with fast transaction times and low fees, while maintaining security and decentralization.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/gmtrade.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "gmtrade_xyz",
+    github: ["gmsol-labs"],
+    audit_links: ["https://github.com/gmsol-labs/gmx-solana-audits"],
+    listedAt: 1769159885
+  },
 ];
 export default data5;

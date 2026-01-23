@@ -2542,7 +2542,7 @@ const data2: Protocol[] = [
     ],
     gecko_id: "minswap",
     cmcId: "12787",
-    tags: ["StableSwap"],
+    tags: ["StableSwap","AMM"],
     chains: ["Cardano"],
     module: "minswap/index.js",
     treasury: "minswap.js",

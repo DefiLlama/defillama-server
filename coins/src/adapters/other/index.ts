@@ -171,7 +171,11 @@ export async function unknownTokens2(timestamp: number = 0) {
       { pool: "0xdca85EFDCe177b24DE8B17811cEC007FE5098586", unknown: "0x30be72a397667FDfD641E3e5Bd68Db657711EB20", known: "0xA1077a294dDE1B09bB078844df40758a5D0f9a27", },
       { pool: "0xA0126Ac1364606BAfb150653c7Bc9f1af4283DFa", unknown: "0xBc91E5aE4Ce07D0455834d52a9A4Df992e12FE12", known: "0x6B175474E89094C44Da98b954EedeAC495271d0F", },
       { pool: "0x24264d580711474526e8f2a8ccb184f6438bb95c", unknown: "0x47c3038ad52E06B9B4aCa6D672FF9fF39b126806", known: "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab", },
-    ]
+    ],
+    monad: [
+      // LEMON token - priced via LEMON/WMON LP on external DEX
+      { pool: "0xcc0352b54474abfd9758f60bb3589af612bc2f9e", unknown: "0xfB5D8892297Bf47F33C5dA9B320F9D74c61955F7", known: "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A", },
+    ],
   }
   const projectName = 'unknownTokensV2';
 

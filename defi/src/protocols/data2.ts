@@ -17913,7 +17913,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["CLMM"],
+    tags: ["AMM"],
     chains: ["Ethereum"],
     module: "uniswap-v1/index.js",
     twitter: "Uniswap",

@@ -179,6 +179,7 @@ export default {
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
   axlp: require("./liquidStaking/axlp"),
+  valiant: require("./liquidStaking/valiant"),
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),

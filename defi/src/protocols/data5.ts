@@ -7701,12 +7701,13 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "dflow-prediction-market/index.js",
     twitter: "dflow",
     parentProtocol: "parent#dflow",
     dimensions: {
       dexs: "dflow-prediction",
     },
+    listedAt: 1769291077,
   },
   {
     id: "7242",

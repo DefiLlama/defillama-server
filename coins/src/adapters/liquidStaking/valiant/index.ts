@@ -78,6 +78,8 @@ export async function valiant(timestamp: number) {
 
         pricesObject[mint] = {
             underlying: "So11111111111111111111111111111111111111112", // native fogo
+            symbol: config.name,
+            decimals: 9,
             price: exchangeRate,
         };
     }

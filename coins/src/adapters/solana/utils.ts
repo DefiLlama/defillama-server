@@ -144,6 +144,7 @@ const endpointMap = {
   solana: solEndpoint,
   renec: renecEndpoint,
   eclipse: eclipseEndpoint,
+  fogo: () => 'https://mainnet.fogo.io',
 };
 
 export function getConnection(chain = "solana") {

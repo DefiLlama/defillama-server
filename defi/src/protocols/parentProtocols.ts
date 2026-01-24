@@ -8760,6 +8760,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "stabbleorg",
     github: ["stabbleorg"],
   },
+  {
+    id: "parent#sectorone",
+    name: "SectorOne",
+    url: "https://sectorone.xyz",
+    description: "SectorOne is the native DLMM DEX on MegaETH, offering the most efficient liquidity layer for traders & liquidity providers.",
+    logo: `${baseIconsUrl}/sectorone.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SectorOneDEX",
+  },
 ];
 
 export default parentProtocols;

@@ -9050,5 +9050,27 @@ const data5: Protocol[] = [
     twitter: "SaiDotFun",
     listedAt: 1769297153,
   },
+  {
+    id: "7307",
+    name: "Flying Tulip",
+    address: "0x5DD1A7A369e8273371d2DBf9d83356057088082c",
+    symbol: "FT",
+    url: "https://flyingtulip.com/",
+    description: "Flying Tulip introduces several first-of-their-kind onchain financial innovations while solving critical problems that limit capital efficiency and market access in existing DeFi protocols.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/flying-tulip.jpg`,
+    audits: "0",
+    gecko_id: "flying-tulip",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "flying-tulip/index.js",
+    treasury: "flying-tulip",
+    twitter: "flyingtulip_",
+    dimensions: {
+      fees: "flying-tulip",
+    },
+    listedAt: 1737817200,
+  },
 ];
 export default data5;

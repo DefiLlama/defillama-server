@@ -51932,7 +51932,6 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#lyra",
     listedAt: 1724835641,
     dimensions: {
-      options: "lyra",
       "open-interest": "derive-options",
       fees: "lyra-v2-options"
     }
@@ -51981,7 +51980,10 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#dodo",
     listedAt: 1724844800,
     dimensions: {
-      aggregators: "dodo-agg"
+      aggregators: {
+        adapter: "dodo-agg",
+        genuineSpikes: ["1769299200"],
+      }
     }
   },
   {

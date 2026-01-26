@@ -2877,6 +2877,12 @@ const data5: Protocol[] = [
       fees: "antarctic",
       "open-interest": "antarctic",
     },
+    warningBanners: [
+      {
+        message: "Antarctic has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "7017",

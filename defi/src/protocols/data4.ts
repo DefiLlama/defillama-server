@@ -27434,7 +27434,8 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "surf-liquid/index.js",
     twitter: "Surf_Liquid",
-    listedAt: 1758736221
+    listedAt: 1758736221,
+    deprecated: true
   },
   {
     id: "6766",

@@ -35226,7 +35226,8 @@ const data3_2: Protocol[] = [
     name: "Trojan",
     address: null,
     symbol: "-",
-    url: "https://trojan.com/",
+     url: "https://trojan.com/@defillama",
+    referralUrl: "https://trojan.com/@defillama",
     description:
       "Trojan is a Telegram trading bot with a wide range of features including a bespoke live price feed, limit and DCA orders, copy trading and sniping",
     chain: "Solana",

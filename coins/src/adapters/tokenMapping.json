@@ -1041,6 +1041,11 @@
     }
   },
   "ethereum": {
+    "0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4": {
+      "decimals": "6",
+      "symbol": "rwaUSDi",
+      "to": "coingecko#usd-coin"
+    },
     "0xf695df6c0f3bb45918a7a82e83348fc59517734e": {
       "decimals": "5",
       "symbol": "UKTBL",

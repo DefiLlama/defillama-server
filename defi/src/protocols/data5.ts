@@ -9000,7 +9000,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://axc.xyz",
     description:
-      "GIFT is a permissioned asset-backed token which seeks to match the performance of the GROW Heritage Fond.",
+      "GIFT is a permissioned asset-backed token which seeks to match the performance of the GROW Heritage Fund.",
     chain: "Binance",
     logo: `${baseIconsUrl}/axc.jpg`,
     audits: "0",

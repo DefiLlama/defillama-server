@@ -218,6 +218,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.tokenRights ? { tokenRights: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -263,6 +264,7 @@ async function _storeAppMetadata() {
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.tokenRights ? { tokenRights: true } : {}),
       };
     }
 

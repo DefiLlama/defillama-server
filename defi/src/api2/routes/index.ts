@@ -458,14 +458,22 @@ async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.R
 }
 
 async function rwaChartHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  try {
   const name = req.path_parameters.name
-  const data = await rwaChart(name)
-  return successResponse(res, data, 60)
+    const data = await rwaChart(name)
+    return successResponse(res, data, 60)
+  } catch (e: any) {
+    return errorResponse(res, 'Error fetching rwa chart data ' + e.message)
+  }
 }
 
 async function rwaCurrentHandler(_req: HyperExpress.Request, res: HyperExpress.Response) {
-  const data = await rwaCurrent()
-  return successResponse(res, data, 60)
+  try {
+    const data = await rwaCurrent()
+    return successResponse(res, data, 60)
+  } catch (e: any) {
+    return errorResponse(res, 'Error fetching rwa current data ' + e.message)
+  }
 }
 
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {

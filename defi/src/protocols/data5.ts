@@ -9065,5 +9065,28 @@ const data5: Protocol[] = [
     twitter: "SaiDotFun",
     listedAt: 1769297153,
   },
+  {
+    id: "7307",
+    name: "Flying Tulip",
+    address: null,
+    symbol: "-",
+    url: "https://flyingtulip.com/",
+    description: "Flying Tulip is a yield aggregation protocol that pools user deposits into wrapper contracts and deploys them into automated yield strategies.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/flying-tulip.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    module: "flying-tulip/index.js",
+    treasury: "flying-tulip.js",
+    audit_links: ["https://docs.flyingtulip.com/risks/"],
+    twitter: "flyingtulip_",
+    listedAt: 1769459609,
+    dimensions: {
+      fees: "flying-tulip"
+    }
+  },
 ];
 export default data5;

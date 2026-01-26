@@ -9164,5 +9164,68 @@ const data5: Protocol[] = [
       fees: "mixoor"
     }
   },
+  {
+    id: "7312",
+    name: "Starke Staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "rkSOL",
+    url: "https://starke.finance/rksol",
+    description: "Starke Staked SOL is a liquid staking protocol on Solana that allows users to stake their SOL and earn rewards.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/starke-staked-sol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "StarkeFinance",
+    dimensions: {
+      fees: "starke-staked-sol"
+    }
+  },
+  {
+    id: "7313",
+    name: "Lantern Staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "lanternSOL",
+    url: "https://www.lantern.one/",
+    description: "Lantern Staked SOL is a liquid staking protocol on Solana that allows users to stake their SOL and earn rewards.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lantern-staked-sol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "LanternStake",
+    dimensions: {
+      fees: "lantern-staked-sol"
+    }
+  },
+  {
+    id: "7314",
+    name: "JagPool Staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "jagSOL",
+    url: "https://www.jagpool.xyz/",
+    description: "JagPool Staked SOL is a liquid staking protocol on Solana that allows users to stake their SOL and earn rewards.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jagpool-staked-sol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "JagPool_xyz",
+    dimensions: {
+      fees: "jagpool-staked-sol"
+    }
+  },
 ];
 export default data5;

@@ -67,8 +67,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/rwa/stats", defaultFileHandler);
-  router.get("/rwa/active-tvls", ew(async (req: any, res: any) => rwaCurrentHandler(req, res)));
-  router.get("/rwa/historical/:name", ew(async (req: any, res: any) => rwaChartHandler(req, res)));
+  //  router.get("/rwa/active-tvls", ew(async (req: any, res: any) => rwaCurrentHandler(req, res)));
+  // router.get("/rwa/historical/:name", ew(async (req: any, res: any) => rwaChartHandler(req, res)));
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);

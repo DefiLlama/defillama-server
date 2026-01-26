@@ -6760,6 +6760,21 @@
     }
   },
   "btnx": {
+    "0x3292c42e8E9Ab3C6a12CFdA556BbCB6f113B1E28": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
+    },
     "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402": {
       "decimals": "6",
       "symbol": "USDC.e",
@@ -13653,23 +13668,6 @@
       "to": "coingecko#bitcoin-avalanche-bridged-btc-b",
       "decimals": 8,
       "symbol": "BTC.b"
-    }
-  },
-  "botanix": {
-    "0x3292c42e8E9Ab3C6a12CFdA556BbCB6f113B1E28": {
-      "to": "coingecko#ethereum",
-      "decimals": 18,
-      "symbol": "ETH"
-    },
-    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
-      "decimals": "18",
-      "symbol": "USDa",
-      "to": "coingecko#usda"
-    },
-    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
-      "decimals": "18",
-      "symbol": "sUSDa",
-      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     }
   },
   "zigchain": {

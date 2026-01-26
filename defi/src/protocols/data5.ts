@@ -8970,6 +8970,9 @@ const data5: Protocol[] = [
     twitter: "solstrategies",
     github: ["SOL-Strategies"],
     listedAt: 1769220964,
+    dimensions: {
+      fees: "stke-staked-sol"
+    }
   },
   {
     id: "7302",

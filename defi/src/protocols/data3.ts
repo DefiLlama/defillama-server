@@ -5296,6 +5296,7 @@ const data3_0: Protocol[] = [
     twitter: "Turbos_finance",
     listedAt: 1683484936,
     dimensions: {
+      fees: "turbos",
       dexs: {
         genuineSpikes: ["1697328000"],
         adapter: "turbos"
@@ -56807,7 +56808,10 @@ const data3_3: Protocol[] = [
     ],
     module: "fragmetric/index.js",
     twitter: "fragmetric",
-    listedAt: 1730019630
+    listedAt: 1730019630,
+    dimensions: {
+      fees: "fragmetric"
+    }
   },
   {
     id: "5287",

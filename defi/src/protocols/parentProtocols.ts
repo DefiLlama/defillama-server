@@ -7956,6 +7956,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "edgeX_exchange",
     github: ["edgex-Tech"],
+    treasury: "edgeX.js",
   },
   {
     id: "parent#paradex",

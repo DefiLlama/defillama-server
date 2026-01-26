@@ -8241,7 +8241,10 @@ const data5: Protocol[] = [
     module: "someswap/index.js",
     twitter: "SomethingSwap",
     forkedFromIds: ["2197"],
-    listedAt: 1768881825
+    listedAt: 1768881825,
+    dimensions: {
+      dexs: "someswap"
+    }
   },
   {  
     id: "7268",
@@ -8554,7 +8557,10 @@ const data5: Protocol[] = [
     chains: ["Binance"],
     module: "calculus/index.js",
     twitter: "CalculusFinance",
-    listedAt: 1769125125
+    listedAt: 1769125125,
+    dimensions: {
+      fees: "calculus"
+    }
   },
   {
     id: "7283",

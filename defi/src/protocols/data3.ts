@@ -49640,6 +49640,7 @@ const data3_3: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "edgeX/index.js",
+    treasury: "edgeX.js",
     twitter: "edgeX_exchange",
     parentProtocol: "parent#edgex",
     listedAt: 1723024710,

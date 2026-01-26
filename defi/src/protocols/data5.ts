@@ -6375,7 +6375,7 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["Commodities"],
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "raac/index.js",
     twitter: "Raacfi",
     audit_links: ["https://docs.raac.io/audits-rwfx"],
     treasury: "raac.js",
@@ -8085,7 +8085,7 @@ const data5: Protocol[] = [
     name: "ElfomoFi",
     address: null,
     symbol: "-",
-    url: "https://elfomo.io/",
+    url: "https://docs.elfomo.fi/",
     description:
       "Oracle-based DEX on EVM.",
     chain: "Base",
@@ -8093,7 +8093,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "DEX Aggregator",
+    tags: ["Prop AMM"],
     chains: ["Base"],
     module: "dummy.js",
     twitter: "elfomo_fi",
@@ -8241,6 +8241,9 @@ const data5: Protocol[] = [
     module: "someswap/index.js",
     twitter: "SomethingSwap",
     forkedFromIds: ["2197"],
+    dimensions: {
+      dexs: "someswap"
+    },
     listedAt: 1768881825
   },
   {  
@@ -8555,6 +8558,9 @@ const data5: Protocol[] = [
     chains: ["Binance"],
     module: "calculus/index.js",
     twitter: "CalculusFinance",
+    dimensions: {
+      fees: "calculus"
+    },
     listedAt: 1769125125
   },
   {
@@ -8889,13 +8895,13 @@ const data5: Protocol[] = [
   },
   {
     id: "7298",
-    name: "COAL Works",
+    name: "COAL",
     address: null,
     symbol: "-",
     url: "https://coal.works/",
-    description: "Coal Works is a proof of work protocol built on the Solana blockchain. Miners compete for blocks in a 4x4 grid, with each block minting new COAL until the 3 million supply cap is reached",
+    description: "Coal is a proof of work protocol built on the Solana blockchain. Miners compete for blocks in a 4x4 grid, with each block minting new COAL until the 3 million supply cap is reached",
     chain: "Solana",
-    logo: `${baseIconsUrl}/coal-works.jpg`,
+    logo: `${baseIconsUrl}/coal.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -8965,6 +8971,9 @@ const data5: Protocol[] = [
     twitter: "solstrategies",
     github: ["SOL-Strategies"],
     listedAt: 1769220964,
+        dimensions: {
+      fees: "stke-staked-sol"
+    }
   },
   {
     id: "7302",

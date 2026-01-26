@@ -7956,6 +7956,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "edgeX_exchange",
     github: ["edgex-Tech"],
+    treasury: "edgeX.js",
   },
   {
     id: "parent#paradex",
@@ -8770,6 +8771,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SectorOneDEX",
+  },
+  {
+    id: "parent#nexion",
+    name: "Nexion",
+    url: "https://nexionpulse.com/",
+    description: "Revolutionary Hyper-Deflationary and Bonded Liquidity Ecosystem.",
+    logo: `${baseIconsUrl}/nexion.jpg`,
+    gecko_id: "nexion",
+    cmcId: null,
+    chains: [],
+    twitter: "nexionpulse",
   },
 ];
 

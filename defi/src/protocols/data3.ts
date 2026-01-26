@@ -5296,6 +5296,7 @@ const data3_0: Protocol[] = [
     twitter: "Turbos_finance",
     listedAt: 1683484936,
     dimensions: {
+      fees: "turbos",
       dexs: {
         genuineSpikes: ["1697328000"],
         adapter: "turbos"
@@ -13962,7 +13963,8 @@ const data3_0: Protocol[] = [
     name: "Banana Gun",
     address: "0x38e68a37e401f7271568cecaac63c6b1e19130b4",
     symbol: "BANANA",
-    url: "https://bananagun.io",
+    url: "https://t.me/BananaGunSniper_bot?start=ref_defillama",
+    referralUrl: "https://t.me/BananaGunSniper_bot?start=ref_defillama",
     description: "The ETH bot that will make your life easier.For degens, by degens. We know what you need.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/banana-gun.png`,
@@ -35224,7 +35226,8 @@ const data3_2: Protocol[] = [
     name: "Trojan",
     address: null,
     symbol: "-",
-    url: "https://trojan.com/",
+     url: "https://trojan.com/@defillama",
+    referralUrl: "https://trojan.com/@defillama",
     description:
       "Trojan is a Telegram trading bot with a wide range of features including a bespoke live price feed, limit and DCA orders, copy trading and sniping",
     chain: "Solana",
@@ -49640,6 +49643,7 @@ const data3_3: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "edgeX/index.js",
+    treasury: "edgeX.js",
     twitter: "edgeX_exchange",
     parentProtocol: "parent#edgex",
     listedAt: 1723024710,
@@ -51932,7 +51936,6 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#lyra",
     listedAt: 1724835641,
     dimensions: {
-      options: "lyra",
       "open-interest": "derive-options",
       fees: "lyra-v2-options"
     }
@@ -51981,7 +51984,10 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#dodo",
     listedAt: 1724844800,
     dimensions: {
-      aggregators: "dodo-agg"
+      aggregators: {
+        adapter: "dodo-agg",
+        genuineSpikes: ["1769299200"],
+      }
     }
   },
   {
@@ -56804,7 +56810,10 @@ const data3_3: Protocol[] = [
     ],
     module: "fragmetric/index.js",
     twitter: "fragmetric",
-    listedAt: 1730019630
+    listedAt: 1730019630,
+    dimensions: {
+      fees: "fragmetric"
+    }
   },
   {
     id: "5287",

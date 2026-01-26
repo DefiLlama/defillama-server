@@ -6,8 +6,6 @@ import { getConnection } from "../adapters/solana/utils";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
 
-import * as sdk from "@defillama/sdk";
-
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
 export async function cacheSolanaTokens() {

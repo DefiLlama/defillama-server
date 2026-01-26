@@ -4835,7 +4835,8 @@ const data2: Protocol[] = [
     listedAt: 1648841191,
     github: ["WingRiders"],
     dimensions: {
-      dexs: "wingriders"
+      dexs: "wingriders",
+      fees: "wingriders"
     }
   },
   {

@@ -31,5 +31,13 @@ export function importAdapter(protocol: Protocol) {
 }
 
 export function importAdapterDynamic(protocol: Protocol) {
+
+    try {  // wrap call to be safe, can be removed later
+        const { allProtocols } = require(`../../../DefiLlama-Adapters/projects/helper/registries`)
+        if (allProtocols[protocol.module]) return allProtocols[protocol.module]
+    } catch (e: any) {
+        console.error("Error loading allProtocols:", e?.message) 
+     }
+    
     return require(`../../../DefiLlama-Adapters/projects/${protocol.module}`)
 }

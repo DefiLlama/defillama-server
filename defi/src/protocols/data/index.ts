@@ -15,7 +15,7 @@ const protocolsJsonPath = path.resolve(__dirname, '../../utils/imports/protocols
 let protocols: Protocol[] = [];
 
 if (fs.existsSync(protocolsJsonPath)) {
-  protocols =require(protocolsJsonPath)
+  protocols = require(protocolsJsonPath)
 } else {
   console.log('hmmm, looks like prebuild step was not run, falling back to data.ts')
   for (const file of DATA_FILES) {
@@ -35,6 +35,12 @@ protocols.forEach((protocol: Protocol) => {
   if (protocol.deadUrl === true) {
     protocol.url = "" // kill urls to prevent urls that are dead from having scammers taking them over
   }
+
+  // set default null values for undefined optional fields
+  if (protocol.gecko_id === undefined) protocol.gecko_id = null;
+  if (protocol.cmcId === undefined) protocol.cmcId = null;
+  if (protocol.symbol === undefined) protocol.symbol = null;
+  if (protocol.address === undefined) protocol.address = null;
 })
 
 export default protocols;
@@ -57,7 +63,7 @@ protocols.forEach((protocol: Protocol) => {
   const tr = tokenRightsMap[protocol.id]
   if (tr)
     protocol.tokenRights = tr
-  
+
 })
 
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
@@ -77,6 +83,16 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
     const childValue = childProtocols.find((p) => p[field] !== undefined)?.[field]
     if (childValue !== undefined) {
       (protocol as any)[field] = childValue
+    }
+
+    // inherit parent fields to children if missing from child
+    const inheritFields = ['twitter', 'url', 'governanceID', 'github', 'treasury', 'description', 'symbol', 'referralUrl'] as const
+    for (const child of childProtocols) {
+      for (const field of inheritFields) {
+        if (child[field] == null && protocol[field] != null) {
+          (child as any)[field] = protocol[field]
+        }
+      }
     }
   }
 })
@@ -171,7 +187,7 @@ export function updateProtocolMetadataUsingCache(protocolAppMetadataMap: any) {
   })
 }
 
-export function sortHallmarks(hallmarks: Hallmark[]| any) {
+export function sortHallmarks(hallmarks: Hallmark[] | any) {
   if (!Array.isArray(hallmarks)) return hallmarks;
   return hallmarks?.sort((a: any, b: any) => {
     let aTimestamp = a[0];

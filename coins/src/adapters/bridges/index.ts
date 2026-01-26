@@ -49,6 +49,7 @@ import zeroDecimalMappings from "./zeroDecimalMappings";
 import anvu from "./anvu";
 import monad from "./monad";
 import megaeth from "./megaeth";
+import pepu from "./pepu";
 
 export type Token =
   | {
@@ -126,6 +127,7 @@ export const bridges = [
   anvu,
   monad,
   megaeth,
+  pepu,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

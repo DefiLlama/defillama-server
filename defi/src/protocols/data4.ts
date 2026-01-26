@@ -2532,13 +2532,13 @@ const data4: Protocol[] = [
   },
   {
     id: "5670",
-    name: "Nexion",
+    name: "Nexion Yield",
     address: "pulse:0xF2Da3942616880E52e841E5C504B5A9Fba23FFF0",
     symbol: "NEON",
     url: "https://nexionpulse.com/",
     description: "NEXION is a dApp ecosystem that offers users a variety of ways to participate and earn rewards",
     chain: "Pulse",
-    logo: `${baseIconsUrl}/nexion.png`,
+    logo: `${baseIconsUrl}/nexion-yield.jpg`,
     audits: "0",
     gecko_id: "nexion",
     cmcId: null,
@@ -2546,6 +2546,7 @@ const data4: Protocol[] = [
     chains: ["Pulse"],
     module: "nexion/index.js",
     twitter: "nexionpulse",
+    parentProtocol: "parent#nexion",
     listedAt: 1737921507,
   },
   {

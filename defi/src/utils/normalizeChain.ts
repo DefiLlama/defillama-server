@@ -5618,6 +5618,19 @@ export const chainCoingeckoIds = {
     url: "https://www.althea.net/",
     chainId: 258432,
   },
+  "Pepu": {
+    geckoId: "pepe-unchained-2",
+    symbol: "PEPU",
+    cmcId: "36696",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    twitter: "pepe_unchained",
+    url: "https://pepeunchained.com/",
+    chainId: 97741,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

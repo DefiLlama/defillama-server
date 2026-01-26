@@ -8772,6 +8772,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SectorOneDEX",
   },
+  {
+    id: "parent#nexion",
+    name: "Nexion",
+    url: "https://nexionpulse.com/",
+    description: "Revolutionary Hyper-Deflationary and Bonded Liquidity Ecosystem.",
+    logo: `${baseIconsUrl}/nexion.jpg`,
+    gecko_id: "nexion",
+    cmcId: null,
+    chains: [],
+    twitter: "nexionpulse",
+  },
 ];
 
 export default parentProtocols;

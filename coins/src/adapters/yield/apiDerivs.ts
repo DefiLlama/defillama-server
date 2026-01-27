@@ -319,6 +319,36 @@ const configs: { [adapter: string]: Config } = {
     decimals: "9",
     symbol: "stFUEL",
   },
+  muBOND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/143/tokens/muBOND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`muBOND stale rate`);
+      return rate;
+    },
+    chain: "monad",
+    address: "0x336d414754967c6682b5a665c7daf6f1409e63e8",
+    underlying: "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+    confidence: 1
+  },
+  AZND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/143/tokens/AZND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`AZND stale rate`);
+      return rate;
+    },
+    chain: "monad",
+    address: "0x4917a5ec9fcb5e10f47cbb197abe6ab63be81fe8",
+    underlying: "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+    confidence: 1
+  },
 };
 
 export async function apiDerivs(timestamp: number) {

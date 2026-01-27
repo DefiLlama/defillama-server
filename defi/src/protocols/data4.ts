@@ -5434,6 +5434,9 @@ const data4: Protocol[] = [
     twitter: "summerfinance_",
     parentProtocol: "parent#summer.fi",
     listedAt: 1739789703,
+    dimensions: {
+      fees: "lazy-summer-protocol",
+    },
   },
   {
     id: "5797",

@@ -4,8 +4,8 @@ import {
 } from "../../utils/database";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import axios from "axios";
-import { multiCall } from "@defillama/sdk/build/abi";
-import * as sdk from "@defillama/sdk";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 const abi = require("./abi.json");
 import getBlock from "../../utils/block";
 import { Result } from "../../utils/sdkInterfaces";

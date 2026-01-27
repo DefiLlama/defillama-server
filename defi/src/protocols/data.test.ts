@@ -320,7 +320,8 @@ test("no surprise category", async () => {
     "Cross Chain Bridge",
     "Decentralized AI",
     "Identity & Reputation",
-    "Gamified Mining"
+    "Gamified Mining",
+    "Secondary Debt Markets"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

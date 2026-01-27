@@ -4,15 +4,15 @@ import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, protocolBridgeIds, z
 import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
-import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
-import { Address } from "@defillama/sdk/build/types";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
+type Address = string;
 import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import PromisePool from "@supercharge/promise-pool";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
-import * as sdk from "@defillama/sdk";
+const { getBlock, } = sdk.util.blocks
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { storeR2JSONString } from "../src/utils/r2";
 const BufferLayout = require("buffer-layout");

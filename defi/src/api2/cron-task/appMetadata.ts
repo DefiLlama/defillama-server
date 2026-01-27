@@ -8,7 +8,7 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 
 // import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
@@ -16,6 +16,7 @@ import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
 import { runWithRuntimeLogging } from "../utils";
+import { TagCatetgoryMap } from "../../protocols/tags";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -50,7 +51,10 @@ protocols.forEach((protocol: any) => {
   if (protocol.category) categoriesSet.add(protocol.category);
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
-    parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
+    if (!parentProtocolsInfoMap[protocol.parentProtocol]) {
+      console.log('Warning: parent protocol not found for ', protocol.name, protocol.parentProtocol);
+    } else
+      parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   } else {
     if (protocol.gecko_id) {
       protocolsWithGeckoIdSet.add(protocol.id);
@@ -83,7 +87,7 @@ export async function storeAppMetadata() {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
-    
+
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -133,6 +137,7 @@ async function _storeAppMetadata() {
     volumeData,
     perpsData,
     openInterestData,
+    normalizedVolumeData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -169,6 +174,7 @@ async function _storeAppMetadata() {
     readCachedRouteData({ route: "/dimensions/dexs/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dnvol-lite" }),
     readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),
@@ -215,6 +221,7 @@ async function _storeAppMetadata() {
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.tokenRights ? { tokenRights: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -260,6 +267,7 @@ async function _storeAppMetadata() {
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(protocol.tokenRights ? { tokenRights: true } : {}),
       };
     }
 
@@ -296,6 +304,9 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of liquidityData) {
+      if (protocolInfoMap[protocol.id]?.wrongLiquidity || parentProtocolsInfoMap[protocol.id]?.wrongLiquidity) {
+        continue;
+      }
       finalProtocols[protocol.id] = {
         ...finalProtocols[protocol.id],
         liquidity: true,
@@ -557,6 +568,32 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol of normalizedVolumeData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        normalizedVolume: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          normalizedVolume: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of normalizedVolumeData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        normalizedVolume: true,
+      };
+    }
+
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -687,7 +724,7 @@ async function _storeAppMetadata() {
       };
     }
 
-    
+
     const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
 
     for (const protocolId in finalProtocols) {
@@ -787,7 +824,7 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
+      finalChains[chain].dimAgg = dimensionsChainAggData[getChainKeyFromLabel(chain)] ?? {};
     });
 
     const sortedChainData = Object.keys(finalChains)
@@ -822,6 +859,7 @@ async function _storeAppMetadata() {
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
       openInterest: { protocols: 0, chains: 0 },
+      normalizedVolume: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -882,6 +920,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.openInterest) {
         totalTrackedByMetric.openInterest.protocols += 1;
+      }
+      if (protocol.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -966,6 +1007,9 @@ async function _storeAppMetadata() {
       if (chain.openInterest) {
         totalTrackedByMetric.openInterest.chains += 1;
       }
+      if (chain.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.chains += 1;
+      }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;
       }
@@ -999,6 +1043,7 @@ async function _storeAppMetadata() {
     await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
       categories: Array.from(categoriesSet),
       tags: Array.from(tagsSet),
+      tagCategoryMap: TagCatetgoryMap,
     });
 
     console.log("finished building metadata");

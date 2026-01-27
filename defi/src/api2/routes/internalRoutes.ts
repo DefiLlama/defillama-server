@@ -91,7 +91,6 @@ async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperEx
       const protocolResponse = await craftProtocolV2({
         protocolData,
         useNewChainNames: true,
-        useHourlyData: false,
         skipAggregatedTvl: false,
         skipCachedHourlyData: true,
         getCachedProtocolData,

@@ -1,4 +1,7 @@
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+
+
+import * as sdk from '@defillama/sdk'
+const { humanizeNumber, } = sdk
 import { hourlyRawTokensTvl, hourlyTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import inquirer from 'inquirer';

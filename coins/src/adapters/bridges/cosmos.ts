@@ -1,7 +1,10 @@
 import { Token } from "./index";
 import fs from "fs";
 import * as git from 'simple-git'
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
 
 export default async function bridge(): Promise<Token[]> {
   const items = await crawlAndPullChainTokens()

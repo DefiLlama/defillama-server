@@ -1,6 +1,6 @@
 import { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getMethodologyDataByBaseAdapter } from "./methodology";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, AdapterType, BaseAdapter, } from "../types";
 import { IParentProtocol } from "../../../protocols/types";

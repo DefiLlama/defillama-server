@@ -8570,7 +8570,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#nado",
     name: "Nado",
-    url: "https://app.nado.xyz/",
+    url: "https://app.nado.xyz?join=sP6or8A",
+    referralUrl: "https://app.nado.xyz?join=sP6or8A",
     description: "Nado is a vertically-integrated decentralized exchange for spot and perpetual futures, featuring an off-chain sequencer and on-chain settlement on Ink. The platform delivers a high-performance CLOB experience where trades execute in milliseconds, with deep liquidity powered in part by the NLP (Nado Liquidity Provider) vault.",
     logo: `${baseIconsUrl}/nado.jpg`,
     gecko_id: null,

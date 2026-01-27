@@ -4491,7 +4491,7 @@ const data5: Protocol[] = [
     name: "Nado Spot",
     address: null,
     symbol: "-",
-    url: "https://app.nado.xyz/",
+    url: "https://app.nado.xyz?join=sP6or8A",
     description:
       "Nado is a vertically-integrated decentralized exchange for spot and perpetual futures, featuring an off-chain sequencer and on-chain settlement on Ink. The platform delivers a high-performance CLOB experience where trades execute in milliseconds, with deep liquidity powered in part by the NLP (Nado Liquidity Provider) vault.",
     chain: "Ink",
@@ -4709,7 +4709,7 @@ const data5: Protocol[] = [
     name: "Nado Perps",
     address: null,
     symbol: "-",
-    url: "https://app.nado.xyz/",
+    url: "https://app.nado.xyz?join=sP6or8A",
     description:
       "Nado is a vertically-integrated decentralized exchange for spot and perpetual futures, featuring an off-chain sequencer and on-chain settlement on Ink. The platform delivers a high-performance CLOB experience where trades execute in milliseconds, with deep liquidity powered in part by the NLP (Nado Liquidity Provider) vault.",
     chain: "Ink",

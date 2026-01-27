@@ -7766,7 +7766,7 @@ const data5: Protocol[] = [
     description: "Harbor Finance is a friendly fork of f(x) Protocol, refactored for broader asset support. It enables liquidation-free leverage and real yield on synthetic assets. Users deposit yield-bearing collateral (e.g., fxSAVE, wstETH) to mint haTOKENS (pegged 1:1 to price feeds like haETH/haBTC, earning yield from stability pools) or hsTOKENS (variable leverage directional positions with auto-rebalancing, no funding fees or margin calls). Expanding to real-world assets like EUR, Gold, Silver.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/harbor.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Yield",

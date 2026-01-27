@@ -7774,6 +7774,8 @@ const data5: Protocol[] = [
     forkedFromIds: ["3344"],
     module: "harborfi/index.js",
     twitter: "0xHarborFi",
+    github: ["baofinance"],
+    audit_links: ["https://www.harborfinance.io/2025_10_21_Final_Harbor_Collaborative_Audit_Report_1761050317.pdf"],
     listedAt: 1768245639,
   },
   {

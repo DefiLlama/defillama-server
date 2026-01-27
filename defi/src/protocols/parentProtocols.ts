@@ -8787,6 +8787,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "nexionpulse",
   },
+  {
+    id: "parent#dreamcash",
+    name: "Dreamcash",
+    url: "https://www.dreamcash.xyz/",
+    description: "Dreamcash is a decentralized exchange on Hyperliquid L1 that allows users to swap tokens with low fees and high liquidity.",
+    logo: `${baseIconsUrl}/dreamcash.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Dreamcash",
+  },
+  {
+    id: "parent#flowbot",
+    name: "FlowBot",
+    url: "https://flowbot.pro",
+    description: "FlowBot was created to help traders participate in perp DEX points programs and communities without the stress and time commitment of manual trading. Our goal is simple: make market making and points earning accessible, affordable, and secure for everyone.",
+    logo: `${baseIconsUrl}/flowbot.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "T0nyCrypt0",
+  },
 ];
 
 export default parentProtocols;

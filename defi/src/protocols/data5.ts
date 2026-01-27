@@ -9521,5 +9521,24 @@ const data5: Protocol[] = [
       dexs: "flowbot-prediction",
     },
   },
+  {
+    id: "7329",
+    name: "Fira",
+    address: null,
+    symbol: "-",
+    url: "https://www.fira.money/",
+    description: "Fixed-rate lending and borrowing, onchain. Lock rates. Sell yield. Exit anytime.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fira.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "fira/index.js",
+    audit_links: ["https://docs.fira.money/resources-and-ecosystem/contracts-and-audits"],
+    twitter: "Fira_Lend",
+    listedAt: 1769555834
+  },
 ];
 export default data5;

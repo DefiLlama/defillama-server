@@ -7048,7 +7048,7 @@ const data5: Protocol[] = [
     address: "0xE6Bfd33F52d82Ccb5b37E16D3dD81f9FFDAbB195",
     symbol: "SXT",
     url: "https://www.spaceandtime.io/",
-    description: "Space and Time is a verifiable compute layer for AI and blockchain that enables smart contracts, dApps, and AI agents to query both on-chain and off-chain data with Proof of SQL cryptographic guarantees.",
+    description: "Space and Time is the data blockchain securing onchain finance. Connects real-world data to onchain systems to power tokenized assets, stablecoins, institutional markets, and DeFi.",
     chain: "Base",
     logo: `${baseIconsUrl}/space-and-time.jpg`,
     audits: "0",

@@ -135,6 +135,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { sendMessage } from "../../../../defi/src/utils/discord";
+import { isDistressed } from "../../utils/shared/distressedCoins";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -212,6 +213,8 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   const writes: any[] = [];
   await Promise.all(
     unlisted.map(async (token) => {
+      if (await isDistressed(token.to)) return;
+
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 

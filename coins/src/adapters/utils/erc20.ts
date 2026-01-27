@@ -17,7 +17,7 @@ export async function getTokenInfo(
 ): Promise<DbTokenInfos> {
   const { withSupply = false, timestamp } = params;
   targets = targets.map((i) => i.toLowerCase());
-  if (chain === 'solana' || chain === 'sui') {
+  if (["solana", "sui", 'fogo'].includes(chain)) {
     console.error('Solana|sui not supported')
     const decimals = targets.map(() => ({ output: undefined, success: true }))
     const symbols = targets.map(() => ({ output: undefined, success: true }))

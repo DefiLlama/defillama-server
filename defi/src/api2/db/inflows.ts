@@ -1,32 +1,11 @@
-import { wrap, IResponse, successResponse, errorResponse } from "../../utils/shared";
-import protocols from "../../protocols/data";
-import sluggify from "../../utils/sluggify";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import cgSymbols from "../../utils/symbols/symbols.json";
-import { getCurrentUnixTimestamp } from "../../utils/date";
 import { IProtocol } from "../../types";
 import { getInflowRecords } from ".";
 import { humanizeNumber } from "@defillama/sdk";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
-
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const protocolName = event.pathParameters?.protocol?.toLowerCase();
-  const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? [];
-  const timestamp = Number(event.pathParameters?.timestamp);
-  const endTimestamp = Number(event.queryStringParameters?.end ?? getCurrentUnixTimestamp());
-  const protocolData = protocols.find((prot) => sluggify(prot) === protocolName) as IProtocol
-  if (!protocolData) {
-    return errorResponse({ message: "Protocol not found" });
-  }
-
-  return ddbGetInflows({
-    errorResponse: (message: string) => errorResponse({ message }),
-    successResponse, tokensToExclude,
-    protocolData, skipTokenLogs: false, timestamp, endTimestamp,
-  }) as any
-}
 
 export async function ddbGetInflows({ errorResponse, successResponse, protocolData, tokensToExclude, skipTokenLogs, timestamp, endTimestamp, }: {
   errorResponse: any, successResponse: any, protocolData: IProtocol, tokensToExclude: string[], skipTokenLogs: boolean, timestamp: number, endTimestamp: number,
@@ -251,8 +230,6 @@ export async function pgGetInflows({ ids, startTimestamp, endTimestamp, withMeta
 
   return response
 }
-
-export default wrap(handler);
 
 const tokenMapping: { [key: string]: string } = {
   WETH: "ETH",

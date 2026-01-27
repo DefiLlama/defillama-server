@@ -1,6 +1,8 @@
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
-import { call } from "@defillama/sdk/build/abi";
+
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi;
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 

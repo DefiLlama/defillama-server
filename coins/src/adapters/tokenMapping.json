@@ -1041,6 +1041,11 @@
     }
   },
   "ethereum": {
+    "0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4": {
+      "decimals": "6",
+      "symbol": "rwaUSDi",
+      "to": "coingecko#usd-coin"
+    },
     "0xf695df6c0f3bb45918a7a82e83348fc59517734e": {
       "decimals": "5",
       "symbol": "UKTBL",
@@ -1837,6 +1842,11 @@
     }
   },
   "arbitrum": {
+    "0x51B0f6AED4a421f09D28A5eDe1DCF460BCB54d30": {
+      "decimals": "18",
+      "symbol": "siUSD",
+      "to": "coingecko#infinifi-staked-iusd"
+    },
     "0x903d5990119bc799423e9c25c56518ba7dd19474": {
       "decimals": "5",
       "symbol": "UKTBL",
@@ -2645,6 +2655,11 @@
       "decimals": "8",
       "symbol": "sMAG7.ssi",
       "to": "coingecko#mag7-ssi"
+    },
+    "0x40287BB8604931592a158B3d036bB089346CBb37": {
+      "decimals": "18",
+      "symbol": "sd-cbeth-f-vault",
+      "to": "asset#base:0x11c1fbd4b3de66bc0565779b35171a6cf3e71f59"
     },
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
@@ -6745,6 +6760,21 @@
     }
   },
   "btnx": {
+    "0x3292c42e8E9Ab3C6a12CFdA556BbCB6f113B1E28": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
+    },
     "0x29ee6138dd4c9815f46d34a4a1ed48f46758a402": {
       "decimals": "6",
       "symbol": "USDC.e",
@@ -13492,6 +13522,11 @@
     }
   },
   "monad": {
+    "0xd90f6bfed23ffde40106fc4498dd2e9edb95e4e7": {
+      "to": "coingecko#midas-mhyper",
+      "decimals": 18,
+      "symbol": "mHYPER"
+    },
     "0x111111d2bf19e43C34263401e0CAd979eD1cdb61": {
       "to": "coingecko#usd1-wlfi",
       "decimals": 6,
@@ -13635,23 +13670,6 @@
       "symbol": "BTC.b"
     }
   },
-  "botanix": {
-    "0x3292c42e8E9Ab3C6a12CFdA556BbCB6f113B1E28": {
-      "to": "coingecko#ethereum",
-      "decimals": 18,
-      "symbol": "ETH"
-    },
-    "0xdB8CAb508ADEeE23443312dC02917fd826d1ca6E": {
-      "decimals": "18",
-      "symbol": "USDa",
-      "to": "coingecko#usda"
-    },
-    "0x4B9d58314AA14ada0B96714cc87486A7a17231D0": {
-      "decimals": "18",
-      "symbol": "sUSDa",
-      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
-    }
-  },
   "zigchain": {
     "uzig": {
       "to": "coingecko#zignaly",
@@ -13663,6 +13681,11 @@
     "0x45C7287F897B3A79Cd3f6e4F14B4CE568f023bD5": {
       "decimals": "18",
       "symbol": "WGRX",
+      "to": "coingecko#grx-chain"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "GRX",
       "to": "coingecko#grx-chain"
     }
   },
@@ -13742,6 +13765,26 @@
       "to": "coingecko#megaeth",
       "decimals": 18,
       "symbol": "MEGA"
+    },
+    "0xFAfDdbb3FC7688494971a79cc65DCa3EF82079E7": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDm"
+    },
+    "0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC": {
+      "to": "coingecko#cap-usd",
+      "decimals": 18,
+      "symbol": "cUSD"
+    },
+    "0xB0F70C0bD6FD87dbEb7C10dC692a2a6106817072": {
+      "to": "coingecko#bitcoin-avalanche-bridged-btc-b",
+      "decimals": 8,
+      "symbol": "BTC.b"
+    },
+    "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT0"
     }
   },
   "quai": {
@@ -13749,6 +13792,18 @@
       "to": "coingecko#quai-network",
       "decimals": 18,
       "symbol": "QUAI"
+    }
+  }, 
+  "fogo": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#fogo",
+      "decimals": 18,
+      "symbol": "FOGO"
+    },
+    "So11111111111111111111111111111111111111112": {
+      "to": "coingecko#fogo",
+      "decimals": 18,
+      "symbol": "FOGO"
     }
   }
 }

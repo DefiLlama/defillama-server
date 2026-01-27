@@ -115,6 +115,22 @@ async function beraborrow(timestamp: number = 0) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
+async function pikeSPA(timestamp: number = 0) {
+  const chain = 'base'
+  const api = await getApi(chain, timestamp);
+  const token = '0xf051deB326EB473eECB221B6D9D16230056089C9'
+  const tapioPool = '0xEE9B4FF3Fa54c7185b7769036938Ad26A6fd0B14'
+  const uTokens = await api.call({ abi: 'address[]:getTokens', target: tapioPool })
+  await api.sumTokens({ owner: tapioPool, tokens: uTokens })
+  const usdValue = await api.getBalancesV2().getUSDValue()
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: token })
+  const decimals = await api.call({ abi: 'erc20:decimals', target: token })
+  const price = (usdValue * (10 ** decimals)) / supply
+  const pricesObject: any = {};
+  pricesObject[token] = { price, }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+}
+
 async function cabal(timestamp: number = 0) {
   const chain = "initia";
   if (timestamp > 0 && Date.now() / 1000 - timestamp > 3600)
@@ -154,7 +170,7 @@ async function cabal(timestamp: number = 0) {
 
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana,
+  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
       throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");

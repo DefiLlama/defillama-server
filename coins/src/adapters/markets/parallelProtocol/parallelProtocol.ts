@@ -1,6 +1,7 @@
 import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
-import { call } from "@defillama/sdk/build/abi";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi
 import getBlock from "../../utils/block";
 
 export const STABLES: Record<

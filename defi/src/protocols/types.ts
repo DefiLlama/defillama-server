@@ -44,7 +44,8 @@ export interface HoldersRevenueAndValueAccrual {
 }
 
 export type FundraisingType = "EQUITY" | "TOKEN" | "NONE" | "UNKNOWN";
-export type EquityRevenueCaptureStatus = "ACTIVE" | "INACTIVE" | "UNKNOWN";
+export type EquityRevenueCaptureStatus = "ACTIVE" | "INACTIVE" | "PARTIAL" | "UNKNOWN";
+
 
 export interface TokenAlignmentLink {
   label: string;
@@ -78,7 +79,17 @@ export interface TokenRights {
   resources?: ProtocolResource[];
 }
 
-export interface Protocol {
+type ProtocolCategoryOrTags =
+  | {
+      category: string;
+      tags?: never;
+    }
+  | {
+      tags: string[];
+      category?: never;
+    };
+
+interface ProtocolBase {
   id: string;
   name: string;
   address?: string | null;
@@ -89,11 +100,8 @@ export interface Protocol {
   chain: string;
   logo: string | null;
   audits?: string | null;
-  audit_note?: string | null;
   gecko_id: string | null;
   cmcId: string | null;
-  category?: string;
-  tags?: string[];
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
@@ -152,6 +160,8 @@ export interface Protocol {
   dimensions?: DimensionsConfig;
   tokenRights?: TokenRights;
 }
+
+export type Protocol = ProtocolBase & ProtocolCategoryOrTags;
 
 export interface Banner {
   message: string;

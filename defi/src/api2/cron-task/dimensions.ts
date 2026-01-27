@@ -4,10 +4,11 @@ require("dotenv").config();
 import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getDisplayChainNameCached, } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getChainLabelFromKey } from '../../utils/normalizeChain';
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, validateAggregateRecords, } from "../utils/dimensionsUtils";
+import { storeEmissionsCache, } from "../utils/emissionsUtils";
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
 import { runWithRuntimeLogging, cronNotifyOnDiscord, tableToString } from "../utils";
@@ -55,6 +56,9 @@ const timeData = {
 }
 
 async function run() {
+  // emissions data: pull from R2, aggregate data and save to cache
+  const { error: storeEmissionsCacheError } = await storeEmissionsCache()
+  
   // Go over all types
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
 
@@ -76,6 +80,10 @@ async function run() {
         Invalid records detected and removed:
       ${invalidDataRecords.join('\n')}
         `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
+    }
+    if (storeEmissionsCacheError) {
+      console.log(storeEmissionsCacheError)
+      await sendMessage(`ERROR: while updating emissions cache - ${storeEmissionsCacheError}. Please check dimension cron-task.`, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
     }
   }
 
@@ -278,7 +286,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
-      protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
+      protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
@@ -548,7 +556,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
                 result[chain][subModuleName] = (result[chain][subModuleName] ?? 0) + value
 
                 if (!skipChainSummary) {
-                  const chainName = getDisplayChainNameCached(chain)
+                  const chainName = getChainLabelFromKey(chain)
                   if (chainMappingToVal[chainName] === undefined) {
                     chainMappingToVal[chainName] = 0
                   }

@@ -41,9 +41,9 @@
             "symbol": "FIGR_HELOC"
         },
         "pm.pool.asset.3hjz8rcr3pejdc3msntlvy": {
-            "to": "coingecko#ylds",
+            "to": "coingecko#figure-heloc",
             "decimals": 0,
-            "symbol": "YLDS"
+            "symbol": "FIGR_HELOC"
         },
         "pm.pool.asset.1y3flutqcyuf8duew1vj2g": {
             "to": "coingecko#ylds",

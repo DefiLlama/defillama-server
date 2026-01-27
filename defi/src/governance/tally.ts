@@ -1,13 +1,15 @@
 
 
-import { sliceIntoChunks, } from '@defillama/sdk/build/util/index'
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 import { log, } from '@defillama/sdk'
 import { graphURLTally, metadataQueryTally, proposalQueryTally, } from './snapshotQueries'
 import axios from 'axios'
 import { getTally, setTally, getTallyOverview, setTallyOverview, } from './cache'
 import { GovCache, Proposal, } from './types'
 import { updateStats, getGovernanceSources, getChainNameFromId, } from './utils'
-const TALLY_API_KEY = process.env.TALLY_API_KEY ?? 'bfd8e8db995ffb776a8818329b40f32fec48822ed7b67c45b062c1ac6ce601c9'
+import sleep from '../utils/shared/sleep'
+const TALLY_API_KEY = process.env.TALLY_API_KEY ?? '365b418f59bd6dc4a0d7f23c2e8c12d982f156e9069695a6f0a2dcc3232448df'
 
 const missing = [
   'eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6',
@@ -46,29 +48,40 @@ export function getTallyIds() {
 }
 
 export async function getMetadata(ids: string[]) {
-  const { data: { data: { governors, } } } = await axios.post(graphURLTally, {
-    query: metadataQueryTally,
-    operationName: 'Governers',
-    variables: { ids },
-  }, {
-    headers: {
-      'ContentType': 'application/json',
-      "Api-Key": TALLY_API_KEY
+  const governers: any = []
+  for (let i = 0; i < ids.length; i++) {
+    const { data } = await axios.post(graphURLTally, {
+      query: metadataQueryTally,
+      operationName: 'Governers',
+      variables: { input: { id: ids[i] } },
+    }, {
+      headers: {
+        'ContentType': 'application/json',
+        "Api-Key": TALLY_API_KEY
+      }
+    })
+    const governor = data.data?.governor
+    if (!governor) { 
+      console.log("could not find", ids[i])
+      continue 
     }
-  })
-  return governors
+    console.log('fetched metadata for', ids[i])
+    governor.tokens = governor?.token ? [governor.token] : []
+    governers.push(governor)
+    await sleep(3000)
+  }
+
+  return governers
 }
 
-export async function getProposals(ids: string[], chain: string, recent?: boolean) {
-  if (!ids.length) return []
-  const ONE_WEEK = 7 * 24 * 3600 * 1000
-  const cutOfTime = +Date.now() - 12 * ONE_WEEK * 3
-  const allProposals: Proposal[] = []
-  let fetchAgain = false
-  const variables: any = { ids, skip: 0, chain, length: 200, }
-  if (recent) variables.length = 100
-  do {
-    const { data: { data } }  = await axios.post(graphURLTally, {
+interface proposalsVariables {
+  id: string,
+  length: Number
+  afterCursor?: string
+}
+
+async function fetchProposals(variables: proposalsVariables) {
+  const { data: { data } } = await axios.post(graphURLTally, {
       query: proposalQueryTally,
       operationName: 'Proposals',
       variables,
@@ -78,18 +91,30 @@ export async function getProposals(ids: string[], chain: string, recent?: boolea
         "Api-Key": TALLY_API_KEY
       }
     })
-    const { proposals = [], } = data ?? {}
-    allProposals.push(...proposals)
-    fetchAgain = proposals?.length && proposals?.length === variables.length
-    if (fetchAgain) {
-      variables.skip += length
+    return {proposals: data.proposals.nodes ?? [], lastCursor: data.proposals.pageInfo.lastCursor }
+}
+
+export async function getProposals(ids: string[], chain: string, recent?: boolean) {
+  if (!ids.length) return []
+  const ONE_WEEK = 7 * 24 * 3600 * 1000
+  const cutOfTime = +Date.now() - 12 * ONE_WEEK * 3
+  const allProposals: Proposal[] = []
+  for (let i = 0; i < ids.length; i++) {
+    let fetchAgain = true
+    const variables: any = { id: `${chain}:${ids[i]}`, length: 20}
+    while (fetchAgain) {
+      console.log('fetching', variables.id, 'cursor', variables.afterCursor)
+      const {proposals, lastCursor} = await fetchProposals(variables)
+      allProposals.push(...proposals)
+      if (lastCursor === "") fetchAgain = false
+      variables.afterCursor = lastCursor
       if (recent) {
         const lastProposal = proposals[proposals.length - 1]
-        if (+new Date(lastProposal.createdTransaction.block.timestamp) > cutOfTime) fetchAgain = false
+        if (+new Date(lastProposal?.start.timestamp) <= cutOfTime) fetchAgain = false
       }
-      log('Fetching more recent Tallys', variables)
+      await sleep(3000)
     }
-  } while (fetchAgain)
+  }
   return allProposals
 }
 
@@ -97,12 +122,14 @@ export async function updateTallys() {
   const overview = await getTallyOverview()
   const idsAll = getTallyIds()
   log('tally gov#', idsAll.length)
-  const idChunks = sliceIntoChunks(idsAll, 31)
+  const idChunks = sliceIntoChunks(idsAll, 5)
   for (const ids of idChunks) {
     const metadataAll = await getMetadata(ids)
-    const caches: GovCache[] = await Promise.all(ids.map(getTally))
+    const fetchedIds: any[] = metadataAll.map((metadata: GovCache['metadata']) => metadata.id)
+    const caches: GovCache[] = await Promise.all(fetchedIds.map(getTally))
+    console.log('fetched metadata for', fetchedIds.length, 'governances',metadataAll)
     const idMap: { [key: string]: GovCache } = {}
-    ids.forEach((id, i) => idMap[id] = caches[i])
+    fetchedIds.forEach((id, i) => idMap[id] = caches[i])
     const firstFetchIds: string[] = []
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
@@ -136,7 +163,7 @@ export async function updateTallys() {
       recentProposals.push(...proposals)
     }
     recentProposals.forEach((i: any) => {
-      updateProposal(i, idMap[i.governanceId])
+      updateProposal(i, idMap[i.governor.id])
     })
     Object.entries(idMap).map(([id, cache]) => updateStats(cache, overview, id))
     await Promise.all(Object.values(idMap).map(cache => setTally(cache.id, cache)))
@@ -164,14 +191,12 @@ function chainAndAddrFromId(id: string) {
 
 async function updateProposal(data: any, cache: any) {
   let {
-    // start,
-    // end,
+    start: startBlock,
+    end: endBlock,
     voteStats,
-    startBlock,
-    endBlock,
-    statusChanges,
-    eta,
-    governanceId,
+    events,
+    metadata,
+    governor,
   } = data
   // if (typeof start === 'object' && start.timestamp) {
   //   if (!startBlock) startBlock = start.number
@@ -182,30 +207,33 @@ async function updateProposal(data: any, cache: any) {
   //   if (!endBlock) endBlock = end.number
   //   end = Math.floor(+new Date(end.timestamp) / 1e3)
   // }
-
-  statusChanges.sort((a: any, b: any) => +new Date(a.blockTimestamp) - +new Date(b.blockTimestamp))
-  const lastStatus = statusChanges.pop()
+  delete data.start
+  delete data.end
+  events.sort((a: any, b: any) => +new Date(a.block?.timestamp) - +new Date(b.block?.timestamp))
+  const lastStatus = events.pop() ?? {}
   const canceled = lastStatus.type === 'CANCELED'
   const executed = lastStatus.type === 'EXECUTED'
   const state = capitalizeFirstLetter(lastStatus.type)
   const tokenDecimals = cache.metadata.tokens[0].decimals ?? 0
 
   function getVote(vType: any) {
-    const voteObj = voteStats.find((i: any) => i.support === vType)
-    if (voteObj?.weight) return +voteObj.weight / (10 ** tokenDecimals)
+    const voteObj = voteStats.find((i: any) => i.type === vType)
+    if (voteObj?.votesCount) return Number(voteObj.votesCount) / (10 ** tokenDecimals)
     return 0
   }
 
-  const scores = [getVote('FOR'), getVote('AGAINST'), getVote('ABSTAIN'),]
+  const scores = [getVote('for'), getVote('against'), getVote('abstain'),]
   const scores_total = scores.reduce((acc, i) => acc + i, 0)
 
   let proposal = {
     ...data,
-    // start, end,
-    startBlock, endBlock, canceled, executed, eta,
+    startBlock: startBlock.number, 
+    endBlock: endBlock.number,
+    canceled, executed,
     state, scores, scores_total,
+    eta: metadata.eta,
     choices: ['For', 'Against', 'Abstain'],
-    network: governanceId.split(':')[1],
+    network: governor?.id.split(':')[1],
     app: 'tally',
     space: {
       id: cache.metadata.id,

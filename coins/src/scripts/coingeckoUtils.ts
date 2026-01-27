@@ -1,11 +1,10 @@
 import fetch from "node-fetch";
-import { decimals, symbol } from "@defillama/sdk/build/erc20";
+import * as sdk from '@defillama/sdk'
+const { decimals, symbol, } = sdk.erc20
 import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
-
-import * as sdk from "@defillama/sdk";
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;

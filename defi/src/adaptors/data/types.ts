@@ -115,6 +115,8 @@ export enum AdaptorRecordType {
 
     dailyAppRevenue = "dar",
     dailyAppFees = "daf",
+
+    dailyNormalizedVolume = "dnvol"
 }
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -128,6 +130,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
     [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
+    [AdapterType.NORMALIZED_VOLUME]: AdaptorRecordType.dailyNormalizedVolume,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -248,6 +251,17 @@ export type DIMENSIONS_ADAPTER_CACHE = {
     allChains?: string[]
 }
 
+export interface EmissionsAggRecord {
+  value: number;
+  'by-label'?: IJSON<number>;
+}
+
+export interface EmissionsProtocolData {
+  id: string; // aave, uniswap, ...
+  yearly: IJSON<EmissionsAggRecord>;
+  quarterly: IJSON<EmissionsAggRecord>;
+  monthly: IJSON<EmissionsAggRecord>;
+}
 
 export type RecordSummary = {
     total24h: number | null

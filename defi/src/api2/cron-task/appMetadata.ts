@@ -51,7 +51,10 @@ protocols.forEach((protocol: any) => {
   if (protocol.category) categoriesSet.add(protocol.category);
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
-    parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
+    if (!parentProtocolsInfoMap[protocol.parentProtocol]) {
+      console.log('Warning: parent protocol not found for ', protocol.name, protocol.parentProtocol);
+    } else
+      parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   } else {
     if (protocol.gecko_id) {
       protocolsWithGeckoIdSet.add(protocol.id);
@@ -84,7 +87,7 @@ export async function storeAppMetadata() {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
-    
+
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -721,7 +724,7 @@ async function _storeAppMetadata() {
       };
     }
 
-    
+
     const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
 
     for (const protocolId in finalProtocols) {

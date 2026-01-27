@@ -9081,7 +9081,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: "flying-tulip",
     cmcId: null,
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "flying-tulip/index.js",
     treasury: "flying-tulip.js",

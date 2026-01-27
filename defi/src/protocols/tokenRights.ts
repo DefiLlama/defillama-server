@@ -222,7 +222,7 @@ export default {
     ],
   },
 
-  "parent#maple": {
+  "parent#maple-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "stSYRUP" },
       { label: "Treasury", hasRight: false }, // x
@@ -322,7 +322,7 @@ export default {
     ],
   },
 
-  "parent#etherfi": {
+  "parent#ether-fi": {
     rights: [
       { label: "Governance", hasRight: true, details: "sETHFI" },
       { label: "Treasury", hasRight: true, details: "Indirect" }, // (indirect)
@@ -421,7 +421,7 @@ export default {
     ],
   },
 
-  "parent#curve": {
+  "parent#curve-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "veCRV" },
       { label: "Treasury", hasRight: false }, // blank in your row; treat as no explicit right

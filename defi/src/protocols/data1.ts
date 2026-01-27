@@ -8750,7 +8750,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#lyra",
     oracles: ["Chainlink", "Pyth"],
     dimensions: {
-      fees: "lyra"
+      fees: "lyra",
+      options: "lyra",
     }
   },
   {

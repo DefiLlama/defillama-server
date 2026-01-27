@@ -7956,6 +7956,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "edgeX_exchange",
     github: ["edgex-Tech"],
+    treasury: "edgeX.js",
   },
   {
     id: "parent#paradex",
@@ -8759,6 +8760,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "stabbleorg",
     github: ["stabbleorg"],
+  },
+  {
+    id: "parent#sectorone",
+    name: "SectorOne",
+    url: "https://sectorone.xyz",
+    description: "SectorOne is the native DLMM DEX on MegaETH, offering the most efficient liquidity layer for traders & liquidity providers.",
+    logo: `${baseIconsUrl}/sectorone.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SectorOneDEX",
+  },
+  {
+    id: "parent#nexion",
+    name: "Nexion",
+    url: "https://nexionpulse.com/",
+    description: "Revolutionary Hyper-Deflationary and Bonded Liquidity Ecosystem.",
+    logo: `${baseIconsUrl}/nexion.jpg`,
+    gecko_id: "nexion",
+    cmcId: null,
+    chains: [],
+    twitter: "nexionpulse",
   },
 ];
 

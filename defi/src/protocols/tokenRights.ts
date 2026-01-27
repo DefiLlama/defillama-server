@@ -7,16 +7,14 @@ export default {
       {
         label: "Governance",
         hasRight: true,
-        details:
-          "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
+        details: "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
       },
       { label: "Treasury", hasRight: false },
       { label: "Revenue", hasRight: false },
     ],
     governanceData: {
       rights: "LIMITED",
-      details:
-        "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
+      details: "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
       feeSwitchStatus: "PENDING",
       feeSwitchDetails: "Proposal pending to burn 0.05% of v2 fees",
       links: [
@@ -36,8 +34,7 @@ export default {
         "Protocol Fee Discount Auctions revenue burned",
         "Aggregator hooks revenue burned",
       ],
-      primaryValueAccrual:
-        "Buybacks - Protocol purchases UNI tokens on the open market",
+      primaryValueAccrual: "Buybacks - Protocol purchases UNI tokens on the open market",
     },
     tokenAlignment: {
       fundraising: "EQUITY",
@@ -47,8 +44,7 @@ export default {
       },
       associatedEntities: ["DAO", "Labs (Equity)", "Foundation"],
       equityRevenueCapture: "PARTIAL",
-      equityStatement:
-        "After UNIfication proposal passes, revenue will not flow to equity holders",
+      equityStatement: "After UNIfication proposal passes, revenue will not flow to equity holders",
     },
     resources: [
       {
@@ -85,8 +81,7 @@ export default {
       dividends: "NONE",
       burns: "NONE",
       burnSources: [],
-      primaryValueAccrual:
-        "Protocol Revenue Share - Fees & protocol emissions are issued to veAERO holders",
+      primaryValueAccrual: "Protocol Revenue Share - Fees & protocol emissions are issued to veAERO holders",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -115,11 +110,9 @@ export default {
     ],
     governanceData: {
       rights: "LIMITED",
-      details:
-        "Limited to parameters; full governance planned according to documentation",
+      details: "Limited to parameters; full governance planned according to documentation",
       feeSwitchStatus: "ON",
-      feeSwitchDetails:
-        "12% of 0.25% swap fees fund RAY buybacks, 4% to treasury",
+      feeSwitchDetails: "12% of 0.25% swap fees fund RAY buybacks, 4% to treasury",
       links: [{ label: "Raydium Docs", url: "https://docs.raydium.io/raydium" }],
     },
     holdersRevenueAndValueAccrual: {
@@ -127,8 +120,7 @@ export default {
       dividends: "NONE",
       burns: "NONE",
       burnSources: [],
-      primaryValueAccrual:
-        "Buybacks - 12% of trading fees go to RAY token buybacks for programmatic purchases",
+      primaryValueAccrual: "Buybacks - 12% of trading fees go to RAY token buybacks for programmatic purchases",
     },
     tokenAlignment: {
       fundraising: "TOKEN",
@@ -191,11 +183,11 @@ export default {
       },
     ],
   },
-    "parent#jupiter": {
+  "parent#jupiter": {
     rights: [
       { label: "Governance", hasRight: true, details: "JUP" },
       { label: "Treasury", hasRight: false }, // x
-      { label: "Revenue", hasRight: false },  // x
+      { label: "Revenue", hasRight: false }, // x
     ],
     governanceData: {
       rights: "LIMITED",
@@ -206,8 +198,7 @@ export default {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual:
-        "Buybacks - 50% of revenue (12.5% of total fees) goes to JUP holders through buybacks",
+      primaryValueAccrual: "Buybacks - 50% of revenue (12.5% of total fees) goes to JUP holders through buybacks",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -222,11 +213,11 @@ export default {
     ],
   },
 
-  "parent#maple": {
+  "parent#maple-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "stSYRUP" },
       { label: "Treasury", hasRight: false }, // x
-      { label: "Revenue", hasRight: false },  // x
+      { label: "Revenue", hasRight: false }, // x
     ],
     governanceData: {
       rights: "LIMITED",
@@ -322,7 +313,7 @@ export default {
     ],
   },
 
-  "parent#etherfi": {
+  "parent#ether-fi": {
     rights: [
       { label: "Governance", hasRight: true, details: "sETHFI" },
       { label: "Treasury", hasRight: true, details: "Indirect" }, // (indirect)
@@ -368,8 +359,7 @@ export default {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual:
-        "Buybacks - Most protocol fees go to the assistance fund which buys back HYPE tokens",
+      primaryValueAccrual: "Buybacks - Most protocol fees go to the assistance fund which buys back HYPE tokens",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -399,8 +389,7 @@ export default {
       buybacks: "NONE",
       dividends: "ACTIVE",
       burns: "NONE",
-      primaryValueAccrual:
-        "Protocol Revenue Share - 100% shared to sENA stakers post-fee switch",
+      primaryValueAccrual: "Protocol Revenue Share - 100% shared to sENA stakers post-fee switch",
     },
     tokenAlignment: {
       fundraising: "EQUITY",
@@ -421,7 +410,7 @@ export default {
     ],
   },
 
-  "parent#curve": {
+  "parent#curve-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "veCRV" },
       { label: "Treasury", hasRight: false }, // blank in your row; treat as no explicit right
@@ -436,8 +425,7 @@ export default {
       buybacks: "NONE",
       dividends: "ACTIVE",
       burns: "NONE",
-      primaryValueAccrual:
-        "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders",
+      primaryValueAccrual: "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -446,16 +434,14 @@ export default {
       equityRevenueCapture: "INACTIVE",
       equityStatement: "N/A",
     },
-    resources: [
-      { label: "Foundation Multisig / Address", address: "0x467947EE34aF926cF1DCac093870f613C96B1E0c" },
-    ],
+    resources: [{ label: "Foundation Multisig / Address", address: "0x467947EE34aF926cF1DCac093870f613C96B1E0c" }],
   },
 
   "parent#chainlink": {
     rights: [
       { label: "Governance", hasRight: true, details: "LINK" },
       { label: "Treasury", hasRight: false }, // x
-      { label: "Revenue", hasRight: false },  // x
+      { label: "Revenue", hasRight: false }, // x
     ],
     governanceData: {
       rights: "LIMITED",
@@ -466,8 +452,7 @@ export default {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual:
-        "Buybacks - Portion of onchain & offchain fees go to purchasing LINK",
+      primaryValueAccrual: "Buybacks - Portion of onchain & offchain fees go to purchasing LINK",
     },
     tokenAlignment: {
       fundraising: "TOKEN",
@@ -480,6 +465,271 @@ export default {
       { label: "Foundation Multisig / Address", address: "0x9A709B7B69EA42D5eeb1ceBC48674C69E1569eC6" },
       { label: "Latest Treasury / Token Report", url: "https://blog.chain.link/quarterly-review-q3-2025/" },
     ],
+  },
+  "parent#pancakeswap": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "CAKE" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals; community can propose ideas with 100,000 CAKE balance",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "Burns are active",
+      links: [
+        { label: "Burn Dashboard", url: "https://pancakeswap.finance/burn-dashboard" },
+        {
+          label: "Example Proposal",
+          url: "https://pancakeswap.finance/voting/proposal/0x79ef496c9737e48d9677a6e291ff2a549dee6729c9996398e453af8ecbf0ceb3",
+        },
+      ],
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      burnSources: ["Fees from perps", "IFOs", "Prediction / Lottery", "Liquidity pools"],
+      primaryValueAccrual: "Deflationary supply reduction",
+    },
+    tokenAlignment: {
+      fundraising: "NONE",
+      associatedEntities: ["DAO"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+    resources: [{ label: "Burn Dashboard", url: "https://pancakeswap.finance/burn-dashboard" }],
+  },
+  "parent#morpho": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "MORPHO" },
+      { label: "Treasury", hasRight: true, details: "MORPHO" },
+      { label: "Revenue", hasRight: true, details: "MORPHO" },
+    ],
+    governanceData: {
+      rights: "FULL",
+      details: "Morpho DAO has complete governance. Morpho protocol cannot be upgraded",
+      feeSwitchStatus: "OFF",
+      feeSwitchDetails: "Morpho DAO can activate fee switch with a governance vote",
+      links: [
+        {
+          label: "Aligning around MORPHO",
+          url: "https://morpho.org/blog/aligning-around-morpho-the-only-asset-for-morpho/",
+        },
+      ],
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Morpho can charge a fee on interest paid by borrowers, decided by DAO",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // details on DL
+      associatedEntities: ["DAO", "Other"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "Morpho Association is legally prohibited from having shareholders, distributing profits to members, or being sold. All resources must be directed towards stated mission. Morpho will only have one asset: MORPHO",
+    },
+    resources: [
+      { label: "Addresses", url: "https://docs.morpho.org/get-started/resources/addresses/" },
+      { label: "Latest Treasury / Token Report", url: "https://morpho.org/blog/morpho-effect-november-2025/" },
+    ],
+  },
+  "182": {
+    //lido
+    rights: [
+      { label: "Governance", hasRight: true, details: "LDO" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "DAO manages operator selection for permissioned modules, parameter adjustments, and upgrades through a phased governance process. stETH holders can express opposition via withdrawals (dual governance concept)",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "N/A",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // Details on DL
+      associatedEntities: ["DAO"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement: "All revenue accrues to DAO",
+    },
+  },
+  "parent#marinade-finance": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "locked MNDE" },
+      { label: "Treasury", hasRight: true, details: "locked MNDE" },
+      { label: "Revenue", hasRight: true, details: "locked MNDE" },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "DAO votes on treasury decisions, fee allocations, and protocol upgrades (locked MNDE voting)",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "50% of fees go to buybacks",
+      links: [
+        {
+          label: "Token Exchange Program",
+          url: "https://marinade.finance/blog/marinade-dao-executes-token-exchange-program-to-align-with-leading-solana-builders",
+        },
+      ],
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks - 50% of protocol fees go to MNDE buybacks",
+    },
+    tokenAlignment: {
+      fundraising: "NONE",
+      raiseDetailsLink: {
+        label: "Token Exchange Program",
+        url: "https://marinade.finance/blog/marinade-dao-executes-token-exchange-program-to-align-with-leading-solana-builders",
+      },
+      associatedEntities: ["DAO", "Labs (DevCo)"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "Private equity entities do not accrue protocol fees. Fees flow to Labs for development. Labs equity has no rights over protocol revenue or DAO treasury. Value accrual is focused on MNDE; no plans to launch additional tokens.",
+    },
+    resources: [{ label: "Foundation Multisig / Address", address: "B56RWQGf9RFw7t8gxPzrRvk5VRmB5DoF94aLoJ25YtvG" }],
+  },
+  "parent#maker": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "SKY" },
+      { label: "Treasury", hasRight: false },
+      { label: "Revenue", hasRight: false },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "SKY can be used for voting or delegating",
+      feeSwitchStatus: "UNKNOWN",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks - SKY token buybacks; staking rewards for SKY stakers",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // MakerDAO token sales (data on DL)
+      associatedEntities: ["DAO"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement: "N/A",
+    },
+  },
+  "parent#ondo-finance": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "ONDO" },
+      { label: "Treasury", hasRight: true, details: "ONDO" },
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "DAO controls protocol, economic parameters, upgrades. 100,000,000 ONDO proposal threshold. No DAO proposals for 18 months",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN", // Equity + Token Sale in row; using UNKNOWN to avoid mislabel
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // data on DL
+      associatedEntities: ["DAO", "Equity", "Foundation"],
+      equityRevenueCapture: "UNKNOWN",
+      equityStatement: "Foundation manages treasury",
+    },
+    resources: [
+      {
+        label: "Foundation Wallet Disclosure",
+        url: "https://blog.ondo.foundation/ondo-foundation-group-wallet-address-disclosure/",
+      },
+    ],
+  },
+  "6631": {
+    //Helium Network
+    rights: [
+      { label: "Governance", hasRight: false }, // x
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "NONE",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "Portion of revenue goes to buybacks & HNT burns",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      burnSources: ["Automated buybacks & burns dependent on usage"],
+      primaryValueAccrual: "Buybacks - Automated buybacks & HNT burns dependent on usage",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // Several rounds raised
+      associatedEntities: ["Equity", "Other"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+  "parent#axelar-network": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "AXL" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // Completed equity raises & token sales
+      associatedEntities: ["Labs (Equity)", "DAO", "Foundation"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+  "parent#pyth": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "PYTH" },
+      { label: "Treasury", hasRight: true, details: "PYTH" },
+      { label: "Revenue", hasRight: true, details: "PYTH" },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "Stake PYTH for voting power; DAO controls treasury & revenue",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "33% of revenue flows to DAO treasury & programmatically purchases PYTH",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks - 33% of revenue to DAO treasury for monthly buybacks",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["DAO"],
+      equityRevenueCapture: "UNKNOWN",
+    },
   },
 } as {
   [id: string]: TokenRights;

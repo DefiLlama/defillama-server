@@ -21,6 +21,7 @@ const maxRetries = 2;
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
 const runOnlyAdapters = process.env.RUN_ONLY_ADAPTERS ? process.env.RUN_ONLY_ADAPTERS.split(',').map((a: string) => a.trim()) : []
+const forcedRun = process.env.FORCED_RUN === 'true' || false
 const allProtocolData: any = {}
 
 async function main() {
@@ -221,6 +222,9 @@ async function saveSdkInternalCache() {
 
 
 function filterProtocol(adapterModule: any, protocol: any) {
+
+  if (forcedRun) return true;
+
   // skip running protocols that are dead/rugged or dont have tvl
   if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
     return false;

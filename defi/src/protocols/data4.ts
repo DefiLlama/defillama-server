@@ -2532,13 +2532,13 @@ const data4: Protocol[] = [
   },
   {
     id: "5670",
-    name: "Nexion",
+    name: "Nexion Yield",
     address: "pulse:0xF2Da3942616880E52e841E5C504B5A9Fba23FFF0",
     symbol: "NEON",
     url: "https://nexionpulse.com/",
     description: "NEXION is a dApp ecosystem that offers users a variety of ways to participate and earn rewards",
     chain: "Pulse",
-    logo: `${baseIconsUrl}/nexion.png`,
+    logo: `${baseIconsUrl}/nexion-yield.jpg`,
     audits: "0",
     gecko_id: "nexion",
     cmcId: null,
@@ -2546,6 +2546,7 @@ const data4: Protocol[] = [
     chains: ["Pulse"],
     module: "nexion/index.js",
     twitter: "nexionpulse",
+    parentProtocol: "parent#nexion",
     listedAt: 1737921507,
   },
   {
@@ -27434,7 +27435,8 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "surf-liquid/index.js",
     twitter: "Surf_Liquid",
-    listedAt: 1758736221
+    listedAt: 1758736221,
+    deprecated: true
   },
   {
     id: "6766",
@@ -29738,13 +29740,13 @@ const data4: Protocol[] = [
   },
   {
     id: "6873",
-    name: "Strata Tranches",
+    name: "Strata Markets",
     address: null,
     symbol: "-",
     url: "https://strata.money",
     description: `Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields. It allows investors to tailor their risk-reward preferences while earning yields through two risk tranches: Senior and Junior`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/strata-tranches.jpg`,
+    logo: `${baseIconsUrl}/strata-markets.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,

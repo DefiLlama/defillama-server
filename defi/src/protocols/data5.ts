@@ -9367,5 +9367,27 @@ const data5: Protocol[] = [
     },
     parentProtocol: "parent#dreamcash",
   },
+  {
+    id: "7322",
+    name: "AXC GIFT",
+    address: null,
+    symbol: "-",
+    url: "https://axc.xyz",
+    description:
+      "GIFT is a permissioned asset-backed token which seeks to match the performance of the GROW Heritage Fund.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/axc-gift.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Credit"],
+    chains: ["Binance"],
+    module: "axc/index.js",
+    forkedFromIds: [],
+    audit_links: [],
+    github: ["accelerate-protocol"],
+    twitter: "AXCLabs",
+    listedAt: 1769511779
+  },
 ];
 export default data5;

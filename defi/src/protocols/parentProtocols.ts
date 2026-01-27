@@ -7358,7 +7358,8 @@ const parentProtocols: IParentProtocol[] = [
    {
     id: "parent#avant-protocol",
     name: "Avant Protocol",
-    url: "https://www.avantprotocol.com",
+    url: "https://app.avantprotocol.com/rewards?ref=defillama",
+    referralUrl: "https://app.avantprotocol.com/rewards?ref=defillama",
     description: "Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through a DeFi-powered stable-value token. The platform introduces avUSD, a stable-value token, and savUSD, its staked, yield-bearing counterpart.",
     logo: `${baseIconsUrl}/avant-protocol.jpg`,
     gecko_id: null,

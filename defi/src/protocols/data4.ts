@@ -15233,7 +15233,7 @@ const data4: Protocol[] = [
     name: "Avant avUSD",
     address: null,
     symbol: "-",
-    url: "https://www.avantprotocol.com",
+    url: "https://app.avantprotocol.com/rewards?ref=defillama",
     description: `Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through a DeFi-powered stable-value token. The platform introduces avUSD, a stable-value token, and savUSD, its staked, yield-bearing counterpart.`,
     chain: "Avalanche",
     logo: `${baseIconsUrl}/avant-avusd.jpg`,
@@ -17580,7 +17580,7 @@ const data4: Protocol[] = [
     name: "Avant avBTC",
     address: null,
     symbol: "-",
-    url: "https://www.avantprotocol.com",
+    url: "https://app.avantprotocol.com/rewards?ref=defillama",
     description:
       "Avant is a DeFi platform established in June 2024 with the mission to create a more inclusive financial system through DeFi-powered stable-value tokens. The platform introduces avBTC, a bitcoin-pegged token, and savBTC, its staked, yield-bearing counterpart.",
     chain: "Avalanche",

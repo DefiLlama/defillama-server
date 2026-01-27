@@ -289,7 +289,7 @@ const data5: Protocol[] = [
     name: "Avant avETH",
     address: null,
     symbol: "-",
-    url: "https://app.avantprotocol.com/products",
+    url: "https://app.avantprotocol.com/rewards?ref=defillama",
     description: `avETH is a stable-value token that can be staked to earn yield with savETH`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/avant-aveth.jpg`,

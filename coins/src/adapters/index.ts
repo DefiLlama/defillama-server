@@ -45,6 +45,7 @@ export default {
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
   ston: require("./markets/ston"),
+  ton4you: require("./other/ton4you"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),
   jeurx: require("./yield/jeurx"),

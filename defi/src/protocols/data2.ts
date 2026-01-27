@@ -28923,5 +28923,26 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true,
   },
+  {
+    id: "2701",
+    name: "Ton4You",
+    address: "ton:EQA0nLHHeZrT1SwWrBd8N5_5CKXJQFL7CnPYDLLnw-sIqoBq",
+    symbol: "T4U",
+    url: "https://ton4u.io",
+    description: "On-chain binary options protocol on TON with multiple settlement jettons (T4U, USDT, etc.).",
+    chain: "TON",
+    logo: "https://ton4u.io/icons/logo.jpeg",
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["TON"],
+    module: "ton4you/index.js",
+    twitter: "ton4uofficial",
+    listedAt: 1769457931,
+    dimensions: {
+      fees: "ton4you",
+    },
+  },
 ];
 export default data2;

@@ -16782,7 +16782,7 @@ const data2: Protocol[] = [
     name: "IPOR Derivatives",
     address: null,
     symbol: "-",
-    url: "https://ipor.io",
+    url: "https://app.ipor.io/fusion?f=D0V4X4doim7oC8cTQZzAZXBOkbwaf",
     description:
       "IPOR (Inter Protocol Over-block Rate) is a DeFi permissionless interest rate index used by IPOR Protocol (an interest rate derivative DEX). IPOR Protocol allows users to hedge their exposure by leveraging non-custodian on-chain interest rate swaps.",
     chain: "Ethereum",

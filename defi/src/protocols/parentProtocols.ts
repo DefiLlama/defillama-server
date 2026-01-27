@@ -5647,7 +5647,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ipor",
     name: "IPOR Protocol",
-    url: "https://ipor.io",
+    url: "https://app.ipor.io/fusion?f=D0V4X4doim7oC8cTQZzAZXBOkbwaf",
+    referralUrl: "https://app.ipor.io/fusion?f=D0V4X4doim7oC8cTQZzAZXBOkbwaf",
     description:
       "IPOR refers to a set of protocols, smart contracts, and software that forms a set of DApps for DeFi focused on interest rate derivatives",
     logo: `${baseIconsUrl}/ipor-protocol.svg`,

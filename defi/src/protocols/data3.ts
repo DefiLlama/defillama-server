@@ -1767,7 +1767,7 @@ const data3_0: Protocol[] = [
     address: "0x6f38e0f1a73c96cb3f42598613ea3474f09cb200",
     symbol: "DAKS",
     url: "https://www.aktionariat.com/",
-    description: "Platform provider for legal security tokens. Buy and sell private equity directly on-chain",
+    description: "Platform provider for security tokens. Buy and sell private equity directly on-chain",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aktionariat.png`,
     audits: "0",

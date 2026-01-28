@@ -9560,5 +9560,24 @@ const data5: Protocol[] = [
     parentProtocol: "parent#mellow-protocol",
     listedAt: 1769604099
   },
+  {
+    id: "7331",
+    name: "Pika V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.pike.finance",
+    description: "Pike is a modular, multi-chain lending protocol with built-in DEX functionality, designed to maximize capital efficiency for lenders, borrowers, and traders. By leveraging advanced liquidity mechanisms while maintaining risk isolation across markets, Pike enables users to supply and borrow assets while delivering competitive yields and superior asset utilization.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/pika-v2.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "pike-local-markets/index.js",
+    twitter: "PikeFinance", 
+    parentProtocol: "parent#pika",
+    listedAt: 1769607030
+  },
 ];
 export default data5;

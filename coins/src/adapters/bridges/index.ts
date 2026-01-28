@@ -34,7 +34,7 @@ import manta from "./manta";
 // import astrzk from "./astrzk";
 // import zklink from "./zklink";
 // import celer from "./celer";
-import fraxtal from "./fraxtal";
+// import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
@@ -48,6 +48,8 @@ import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
 import anvu from "./anvu";
 import monad from "./monad";
+import megaeth from "./megaeth";
+import pepu from "./pepu";
 
 export type Token =
   | {
@@ -111,7 +113,7 @@ export const bridges = [
   // astrzk,
   // zklink,
   // celer,
-  fraxtal,
+  // fraxtal,
   symbiosis,
   fuel,
   zircuit,
@@ -123,7 +125,9 @@ export const bridges = [
   layerzero,
   initia, 
   anvu,
-  monad
+  monad,
+  megaeth,
+  pepu,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

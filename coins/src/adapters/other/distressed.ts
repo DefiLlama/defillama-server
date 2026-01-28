@@ -2,6 +2,7 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
     hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
@@ -99,7 +100,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MBTC: "0x2172fad929e857ddfd7ddc31e24904438434cb0b",
     UXLINK:"0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1",
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
-    RAIN: "0x25118290e6a5f4139381d072181157035864099d"
   },
   bsc: {
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity

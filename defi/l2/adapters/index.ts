@@ -1,6 +1,8 @@
-import { call } from "@defillama/sdk/build/abi/abi2";
-import { Chain } from "@defillama/sdk/build/general";
-import { Address } from "@defillama/sdk/build/types";
+
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api2.abi
+type Chain = string;
+type Address = string;
 import axios from "axios";
 import nodefetch from "node-fetch";
 import sleep from "../../src/utils/shared/sleep";

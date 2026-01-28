@@ -4,7 +4,10 @@ import { Write } from '../utils/dbInterfaces';
 import { getLavaTokens } from './util/lavarage'
 import { getConnection } from './utils'
 import { getTokenSymbolMap } from './util/tokenMetadata';
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
 import axios from 'axios'
 import { addToDBWritesList } from '../utils/database';
 

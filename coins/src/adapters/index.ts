@@ -78,7 +78,7 @@ export default {
   xequity: require("./markets/0xequity"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
-  aktionariat: require("./markets/aktionariat"),
+  // aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
   nightshade: require("./markets/nightshade"),
@@ -179,9 +179,14 @@ export default {
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
   axlp: require("./liquidStaking/axlp"),
+  valiant: require("./liquidStaking/valiant"),
   altai: require("./rwa/altai"),
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   gamingdex: require("./markets/gamingdex"),
+  axc: require("./rwa/axc"),
+  notional: require("./yield/notional"),
   shift: require("./yield/shift"),
+  makina: require("./yield/makina"),
+  stORE: require("./solana/stORE")
 };

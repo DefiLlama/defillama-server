@@ -1,4 +1,4 @@
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 
 export async function fetchMetadata(chain: Chain) {
   return { chain };

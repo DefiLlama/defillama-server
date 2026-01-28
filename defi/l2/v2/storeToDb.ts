@@ -96,7 +96,7 @@ export async function fetchChartData(chain: string) {
     return chartData
 }
 
-function findDailyTimestamps(timestamps: { timestamp: number }[]): number[] {
+export function findDailyTimestamps(timestamps: { timestamp: number }[]): number[] {
   const end = getTimestampAtStartOfDay(getCurrentUnixTimestamp());
 
   const start = getTimestampAtStartOfDay(timestamps[timestamps.length - 1].timestamp + secondsInADay);

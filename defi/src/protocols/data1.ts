@@ -27220,6 +27220,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1644441697,
     parentProtocol: "parent#maia-dao-ecosystem",
+    dimensions: {
+      fees: "maia-dao",
+    },
   },
   {
     id: "1378",

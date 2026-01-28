@@ -15,7 +15,7 @@ export default {
     governanceData: {
       rights: "LIMITED",
       details: "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
-      feeSwitchStatus: "PENDING",
+      feeSwitchStatus: "ON",
       feeSwitchDetails: "Proposal pending to burn 0.05% of v2 fees",
       links: [
         {
@@ -731,6 +731,383 @@ export default {
       equityRevenueCapture: "UNKNOWN",
     },
   },
+  "parent#aave": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "AAVE" },
+      { label: "Treasury", hasRight: true, details: "AAVE" },
+      { label: "Revenue", hasRight: true, details: "AAVE" },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "Governance includes protocol parameters, treasury management, upgrades & onchain revenue",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "$50m annual budget for token buybacks",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks - $50M yearly budget for buybacks",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: {
+        label: "Strategic Round (Decrypt)",
+        url: "https://decrypt.co/44653/aave-raises-25-million-to-bring-defi-to-institutions",
+      },
+      associatedEntities: ["DAO", "Labs", "Parent / Holdings Co"],
+      equityRevenueCapture: "PARTIAL",
+      equityStatement: "Labs owns the interface and offchain revenue",
+    },
+  },
+  "382": {
+    //pendle
+    rights: [
+      { label: "Governance", hasRight: true, details: "sPENDLE" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: true, details: "sPENDLE" },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "Lock PENDLE for vePENDLE for voting power, revenue share, LP boosts and governance. sPENDLE has a 14-day unstaking cooldown, or instant redemption for a 5% fee",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "80% of protocol revenue goes to buybacks with distributions to sPENDLE holders",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "ACTIVE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - 80% of protocol revenue goes to PENDLE buybacks and is distributed amongst sPENDLE holders",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // details on DL
+      associatedEntities: ["DAO", "Other"],
+      equityRevenueCapture: "INACTIVE",
+    },
+  },
+  "parent#meteora": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "MET" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "UNKNOWN",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks - Meteora is conducting discretionary buybacks",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      associatedEntities: ["DevCo", "DAO"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+  "5575": {
+    // Virtuals Protocol
+    rights: [
+      { label: "Governance", hasRight: true, details: "veVIRTUAL" },
+      { label: "Treasury", hasRight: true, details: "veVIRTUAL" },
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "Portion of fees go to token buybacks & burns",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      burnSources: ["Portion of fees go to token buybacks & burns"],
+      primaryValueAccrual: "Buybacks - Portion of fees go to token buybacks & burns",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // Raised through PathDAO, before rebranding
+      associatedEntities: ["DAO", "DevCo"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+  "parent#kamino-finance": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "staked KMNO" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "N/A",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      associatedEntities: ["Foundation"],
+      equityRevenueCapture: "UNKNOWN",
+      equityStatement: "Foundation oversees treasury allocations",
+    },
+  },
+  "parent#lombard-finance": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "BARD" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+      feeSwitchDetails:
+        "As protocol fees grow, Lombard will introduce a structured buyback program designed to reinforce long-term alignment",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "INACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "N/A",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // N/A in row
+      associatedEntities: ["Foundation", "Other"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+    "7051": { //metadao
+    rights: [
+      { label: "Governance", hasRight: true, details: "META" },
+      { label: "Treasury", hasRight: true, details: "META" },
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "FULL",
+      details: "Futarchy decision markets; market-based voting and fundraising",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "N/A",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      associatedEntities: ["DAO"],
+      equityRevenueCapture: "UNKNOWN",
+      equityStatement: "Revenue flows to DAO treasury",
+    },
+  },
+    "parent#grass": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "GRASS" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails:
+        "Team announced buybacks from portion of data / infra sales going toward open market purchases",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - Portion of data / infrastructure sales used for open market purchases",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["Foundation", "DAO", "Labs", "Other"],
+      equityRevenueCapture: "UNKNOWN",
+      equityStatement:
+        "Foundation is owner-less (no shareholders). Subsidiaries under foundation oversight handle network operations and token distributions (OpCo). DataCo receives 100% of product sale revenue.",
+    },
+  },
+    "2314": { // gate cex
+    rights: [
+      { label: "Governance", hasRight: true, details: "GT" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "Not a full DAO. Governance is utility-driven: staking GT on GateChain for validation/rewards and limited participation (e.g., voting on proposals / accessing features).",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      burnSources: ["Portion of profits go to token burns"],
+      primaryValueAccrual: "Deflationary supply reduction",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["Other"],
+      equityRevenueCapture: "ACTIVE",
+      equityStatement: "All fees go to Gate Group (Cayman-based exchange)",
+    },
+  },
+    "5181": { // Limitless Exchang
+    rights: [
+      { label: "Governance", hasRight: true, details: "LMTS" },
+      { label: "Treasury", hasRight: false },
+      { label: "Revenue", hasRight: false },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "Prediction market governance + utility: staking rewards, fee reductions, market creation incentives, ecosystem decisions",
+      feeSwitchStatus: "UNKNOWN",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "Buybacks",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: [],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+    "parent#pump": {
+    rights: [
+      { label: "Governance", hasRight: false }, // x
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // (not specified as token right in row)
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "Buybacks are live",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - Most revenue used for open market buybacks; half of PumpSwap revenue is shared with coin creators",
+    },
+    tokenAlignment: {
+      fundraising: "TOKEN",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // on DL
+      associatedEntities: ["DevCo"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+   "3107": { // EigenCloud
+    rights: [
+      { label: "Governance", hasRight: true, details: "EIGEN" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual: "N/A",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, // "$200m+ raised..." (details on DL)
+      associatedEntities: ["DAO", "Labs (Equity)", "Foundation"],
+      equityRevenueCapture: "PARTIAL",
+      equityStatement: "N/A",
+    },
+  },
 } as {
   [id: string]: TokenRights;
 };
+
+
+/*
+
+  "chain#plasma": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "XPL" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      primaryValueAccrual: "Deflationary supply reduction",
+      burnSources: ["Base transaction fees are burned"],
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, /
+      associatedEntities: ["DevCo", "Foundation"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+
+  */
+
+
+//once we add the listing , use id not parent#slug
+
+/*  "parent#grass": { 
+    rights: [
+      { label: "Governance", hasRight: true, details: "GRASS" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails:
+        "Team announced buybacks from portion of data / infra sales going toward open market purchases",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - Portion of data / infrastructure sales used for open market purchases",
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["Foundation", "DAO", "Labs", "Other"],
+      equityRevenueCapture: "UNKNOWN",
+      equityStatement:
+        "Foundation is owner-less (no shareholders). Subsidiaries under foundation oversight handle network operations and token distributions (OpCo). DataCo receives 100% of product sale revenue.",
+    },
+  }, */

@@ -5631,6 +5631,15 @@ export const chainCoingeckoIds = {
     url: "https://pepeunchained.com/",
     chainId: 97741,
   },
+  "ValueChain": {
+    geckoId: "sosovalue",
+    symbol: "SOSO",
+    cmcId: "35818",
+    categories: ["EVM"],
+    twitter: "sodex_official",
+    url: "https://sosovalue.com/",
+    chainId: 286623,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -81,27 +81,27 @@ export interface TokenRights {
 
 type ProtocolCategoryOrTags =
   | {
-      category: string;
-      tags?: never;
-    }
+    category: string;
+    tags?: never;
+  }
   | {
-      tags: string[];
-      category?: never;
-    };
+    tags: string[];
+    category?: never;
+  };
 
 interface ProtocolBase {
   id: string;
   name: string;
   address?: string | null;
-  symbol: string;
+  symbol?: string | null;
   assetToken?: string;
   url: string;
   description: string | null;
   chain: string;
   logo: string | null;
   audits?: string | null;
-  gecko_id: string | null;
-  cmcId: string | null;
+  gecko_id?: string | null;
+  cmcId?: string | null;
   chains: Array<string>;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
@@ -135,14 +135,14 @@ interface ProtocolBase {
   oraclesBreakdown?: Array<{
     name: string;
     type:
-      | "Primary" // Oracle that secures more than 50% of protocol TVL, if oracle is hacked >50% of TVL will be lost
-      | "Secondary" // Oracle that is actively used but secures less than 50% of TVL
-      | "Fallback" // Oracle that isn't actively used and is just there in case the primary or secondary oracles fail
-      | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
-      | "Aggregator" // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
-      | "Reference" // Used for price display or off-chain quoting. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
-      | "PoR" // Proof of Reserve oracle, used to prove the protocol has the reserves to back the TVL
-      // pls add more as needed
+    | "Primary" // Oracle that secures more than 50% of protocol TVL, if oracle is hacked >50% of TVL will be lost
+    | "Secondary" // Oracle that is actively used but secures less than 50% of TVL
+    | "Fallback" // Oracle that isn't actively used and is just there in case the primary or secondary oracles fail
+    | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
+    | "Aggregator" // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
+    | "Reference" // Used for price display or off-chain quoting. Not directly used for critical protocol operations that would result in TVL loss if the oracle fails.
+    | "PoR" // Proof of Reserve oracle, used to prove the protocol has the reserves to back the TVL
+    // pls add more as needed
     proof: Array<string>,
     startDate?: string, // YYYY-MM-DD
     endDate?: string,

@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
 import * as sdk from '@defillama/sdk'
-const { multiCall, } = sdk.api2.abi
+const { multiCall, call } = sdk.api2.abi
 type Address = string;
 import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";

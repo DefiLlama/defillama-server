@@ -9033,6 +9033,7 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "sectorone-dlmm/index.js",
     twitter: "SectorOneDEX",
+    parentProtocol: "parent#sectorone",
     listedAt: 1769296715,
   },
   {
@@ -9051,6 +9052,7 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "sectorone-dlmm-vaults/index.js",
     twitter: "SectorOneDEX",
+    parentProtocol: "parent#sectorone",
     listedAt: 1769296719,
   },
   {

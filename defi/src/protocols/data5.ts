@@ -9540,5 +9540,25 @@ const data5: Protocol[] = [
     twitter: "Fira_Lend",
     listedAt: 1769555834
   },
+  {
+    id: "7330",
+    name: "Mellow Core",
+    address: null,
+    symbol: "-",
+    url: "https://app.mellow.finance/vaults",
+    description: "Core Vaults encode strategy constraints directly into the vault configuration. This includes which integrations can be used, which actions are permitted, and how capital can move between execution paths. Enforcement happens onchain, making strategy behavior inspectable and resistant to off-policy execution.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mellow-core.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    module: "mellow-protocol-core/index.js",
+    audit_links: ["https://docs.mellow.finance/security"],
+    twitter: "mellowprotocol", 
+    parentProtocol: "parent#mellow-protocol",
+    listedAt: 1769604099
+  },
 ];
 export default data5;

@@ -189,6 +189,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     confidentCoins.push(w);
   });
 
+  sdk.log(`Of ${writes.length} coingecko current prices, ${confidentCoins.length} are confident updates`);
+
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
   const filteredCoins = coins.filter(

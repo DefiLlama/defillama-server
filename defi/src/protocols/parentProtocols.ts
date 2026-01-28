@@ -5446,15 +5446,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dragon-swap",
-    name: "Dragon Swap Sei", // previous Dragon Swap
+    name: "Saphyre", // previous Dragon Swap
     url: "https://dragonswap.app",
     description:
-      "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
-    logo: `${baseIconsUrl}/dragon-swap-sei.jpg`,
+      "Execution Infrastructure for On-Chain Trading.",
+    logo: `${baseIconsUrl}/saphyre.jpg`,
     gecko_id: "dragonswap",
     cmcId: null,
     chains: [],
-    twitter: "dragonswap_dex",
+    twitter: "Saphyre_xyz",
     github: ["dragonswap-app"],
   },
   {

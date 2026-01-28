@@ -2141,7 +2141,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Onchain Capital Allocator",
     chains: ["Near"],
-    module: "dew.js",
+    module: "dew/index.js",
     twitter: "DewFinance",
     listedAt: 1762925479,
   },
@@ -6603,7 +6603,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Hyperliquid L1", "Base"],
-    module: "dummy.js",
+    module: "hypersurface/index.js",
     twitter: "hypersurfaceX",
     audit_links: ["https://github.com/AuditOne/audits/blob/main/Hypersurface/Hypersurface_A1_Audit.pdf"],
     oraclesBreakdown: [
@@ -6620,6 +6620,7 @@ const data5: Protocol[] = [
         chains: [{ chain: "Base" }],
       },
     ],
+    listedAt: 1769622907,
     dimensions: {
       fees: "hypersurface",
       options: "hypersurface"
@@ -9580,6 +9581,45 @@ const data5: Protocol[] = [
     twitter: "PikeFinance", 
     parentProtocol: "parent#pika",
     listedAt: 1769607030
+  },
+  {
+    id: "7332",
+    name: "Jade Currency",
+    address: "bsc:0x330F4fe5ef44B4d0742fE8BED8ca5E29359870DF",
+    symbol: "JADE",
+    url: "https://www.jade1.io",
+    description: "The #1 BNB Gem Voting Platform & Yield Farms on Binance Smart Chain.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/jade-currency.jpg`,
+    audits: "0",
+    gecko_id: "jade-currency",
+    cmcId: "5025",
+    category: "Farm",
+    chains: ["Binance"],
+    module: "jade1/index.js",
+    treasury: "jade1.js",
+    twitter: "jadecurrency1", 
+    listedAt: 1769622901
+  },
+  {
+    id: "7333",
+    name: "Notional Exponent",
+    address: "0xcfeaead4947f0705a14ec42ac3d44129e1ef3ed5",
+    symbol: "NOTE",
+    url: "https://notional.finance",
+    description: "Notional Exponent is built for DeFi power users who deploy leverage to increase yield. The protocol connects directly to leading lending markets like Morpho to source borrow liquidity for specialized yield vaults. This allows users to lever up and increase their returns.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/notional-exponent.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum"],
+    module: "notional-exponent/index.js",
+    twitter: "notionalfinance", 
+    audit_links: ["https://docs.notional.finance/exponent/smart-contracts/security"],
+    parentProtocol: "parent#notional",
+    listedAt: 1769622914
   },
 ];
 export default data5;

@@ -11,7 +11,6 @@ import {
   CoinData,
   Metadata,
 } from "./dbInterfaces";
-import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 
@@ -439,20 +438,6 @@ export async function batchWriteWithAlerts(
         true,
       );
   }
-}
-export async function batchWrite2WithAlerts(
-  items: any[],
-) {
-  const { previousItems, redirectChanges } = await readPreviousValues(items);
-  const filteredItems: any[] =
-    await checkMovement(items, previousItems);
-
-  await batchWrite2(
-    await translateItems(filteredItems),
-    undefined,
-    undefined,
-    "DB 390",
-  );
 }
 async function readPreviousValues(
   items: any[],

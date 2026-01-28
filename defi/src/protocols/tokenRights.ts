@@ -1049,7 +1049,35 @@ export default {
 };
 
 
+/*
 
+  "chain#plasma": {
+    rights: [
+      { label: "Governance", hasRight: true, details: "XPL" },
+      { label: "Treasury", hasRight: false }, // x
+      { label: "Revenue", hasRight: false }, // x
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details: "",
+      feeSwitchStatus: "OFF",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "NONE",
+      dividends: "NONE",
+      burns: "ACTIVE",
+      primaryValueAccrual: "Deflationary supply reduction",
+      burnSources: ["Base transaction fees are burned"],
+    },
+    tokenAlignment: {
+      fundraising: "EQUITY",
+      raiseDetailsLink: { label: "Raise Details", url: "" }, /
+      associatedEntities: ["DevCo", "Foundation"],
+      equityRevenueCapture: "UNKNOWN",
+    },
+  },
+
+  */
 
 
 //once we add the listing , use id not parent#slug

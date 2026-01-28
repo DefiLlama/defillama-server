@@ -187,5 +187,6 @@ export default {
   notional: require("./yield/notional"),
   shift: require("./yield/shift"),
   makina: require("./yield/makina"),
+  dexy: require("./markets/dexy"),
   stORE: require("./solana/stORE")
 };

@@ -43,8 +43,8 @@ export default {
         url: "https://x.com/Uniswap/status/1580532185597026306?s=20",
       },
       associatedEntities: ["DAO", "Labs (Equity)", "Foundation"],
-      equityRevenueCapture: "PARTIAL",
-      equityStatement: "After UNIfication proposal passes, revenue will not flow to equity holders",
+      equityRevenueCapture: "INACTIVE",
+      equityStatement: "After UNIfication proposal passed, revenue no longer flows to equity holders",
     },
     resources: [
       {

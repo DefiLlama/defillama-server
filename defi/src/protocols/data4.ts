@@ -7893,7 +7893,8 @@ const data4: Protocol[] = [
     name: "Multipli.fi",
     address: null,
     symbol: "-",
-    url: "https://multipli.fi",
+    url: "https://app.multipli.fi?referral_code=Y7YQDT",
+    referralUrl: "https://app.multipli.fi?referral_code=Y7YQDT",
     description:
       "Multipli fi is a multi-chain yield generation protocol designed to address two key challenges: the limited number of cryptocurrencies on which yield can be generated and the typically low yields.",
     chain: "Ethereum",

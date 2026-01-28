@@ -51,9 +51,6 @@ async function storeDefiCoins() {
               true,
             ),
           ]);
-          // await batchWrite2WithAlerts(
-          //   resultsWithoutDuplicates.slice(i, i + step),
-          // );
         }
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);

@@ -10,7 +10,7 @@ import {
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
-import { batchReadPostgres, getRedisConnection } from "../../coins2";
+import { getRedisConnection } from "../../coins2";
 import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
@@ -336,25 +336,7 @@ async function getAndStoreHourly(
   }
   const PK = cgPK(coin.id);
 
-  const prevWritenItems = await batchReadPostgres(
-    `coingecko:${coin.id}`,
-    toUNIXTimestamp(coinData.prices[0][0]),
-    toUNIXTimestamp(coinData.prices[coinData.prices.length - 1][0]),
-  );
-  if (
-    prevWritenItems.length > 0 &&
-    prevWritenItems[prevWritenItems.length - 1].confidence > 29700
-  )
-    return;
-  const writtenTimestamps = Object.values(prevWritenItems).map(
-    (c: any) => c.timestamp,
-  );
-
   const items = coinData.prices
-    .filter((price) => {
-      const ts = toUNIXTimestamp(price[0]);
-      return !writtenTimestamps[ts];
-    })
     .map((price) => ({
       SK: toUNIXTimestamp(price[0]),
       PK,

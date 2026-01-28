@@ -414,14 +414,15 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
 export async function batchWriteWithAlerts(
   items: any[],
   failOnError: boolean,
-): Promise<void> {
+): Promise<{ writeCount: number } | undefined> {
   try {
     const { previousItems, redirectChanges } = await readPreviousValues(items);
     const filteredItems: any[] =
       await checkMovement(items, previousItems);
     const writeItems = [...filteredItems, ...redirectChanges]
-    await batchWrite(writeItems, failOnError);
+    const ddbWriteResult = await batchWrite(writeItems, failOnError);
     await produceKafkaTopics(writeItems as any[]);
+    return ddbWriteResult;
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;
     console.log(`batchWriteWithAlerts failed with: ${e}`);

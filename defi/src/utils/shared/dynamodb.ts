@@ -194,20 +194,19 @@ const batchWriteStep = 25; // Max items written at once are 25
 export async function batchWrite(
   items: PutCommandInput["Item"][],
   failOnError: boolean
-) {
-  const writeRequests = [];
+): Promise<{ writeCount: number }> {
+  items = removeDuplicateKeys(items);
+  let writeCount = 0;
   for (let i = 0; i < items.length; i += batchWriteStep) {
     const itemsToWrite = items.slice(i, i + batchWriteStep);
-    const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite);
-    writeRequests.push(
-      underlyingBatchWrite(
-        nonDuplicatedItems.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })),
-        0,
-        failOnError
-      )
-    );
+    writeCount += itemsToWrite.length;
+    await underlyingBatchWrite(
+      itemsToWrite.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })),
+      0,
+      failOnError
+    )
   }
-  await Promise.all(writeRequests);
+  return { writeCount };
 }
 
 const batchGetStep = 100; // Max 100 items per batchGet

@@ -44,14 +44,8 @@ async function storeDefiCoins() {
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
-        for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
-          await Promise.all([
-            batchWriteWithAlerts(
-              resultsWithoutDuplicates.slice(i, i + step),
-              true,
-            ),
-          ]);
-        }
+        const ddbWriteResult = await batchWriteWithAlerts(resultsWithoutDuplicates, true,);
+        console.log(`[DDB] Wrote ${ddbWriteResult?.writeCount} entries for ${adapterKey}`);
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);
         if ((e as any).stack) {

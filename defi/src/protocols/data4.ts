@@ -5228,7 +5228,7 @@ const data4: Protocol[] = [
     category: "Bridge",
     chains: ["Bitcoin"],
     module: "unit-btc/index.js",
-    twitter: "hyperunit",
+    twitter: "unitxyz",
     listedAt: 1739557972,
     dimensions: {
       fees: "hyperunit"

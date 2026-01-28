@@ -15,7 +15,7 @@ export default {
     governanceData: {
       rights: "LIMITED",
       details: "Voting scoped to protocol upgrades. Proposal creation requires 1M UNI",
-      feeSwitchStatus: "PENDING",
+      feeSwitchStatus: "ON",
       feeSwitchDetails: "Proposal pending to burn 0.05% of v2 fees",
       links: [
         {

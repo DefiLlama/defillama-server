@@ -1,7 +1,9 @@
+import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
 import { request, gql } from "graphql-request";
 
+const margin = 7 * 24 * 60 * 60; // 7 days
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));
 
@@ -29,6 +31,13 @@ async function fetchTokensFromSubgraph(subgraph: string, timestamp: number) {
           symbol
           decimals
           derivedUSD
+          tokenHourData(
+            first: 1,
+            orderBy: periodStartUnix,
+            orderDirection: desc,
+          ) {
+            periodStartUnix
+          }
         }
       }`;
     const result: any = await request(subgraph, tkQuery);
@@ -37,7 +46,9 @@ async function fetchTokensFromSubgraph(subgraph: string, timestamp: number) {
     if (tokensRes.length == 0) return tokens;
     reservereThreshold =
       tokensRes[Math.max(tokensRes.length - 1, 0)].tradeVolumeUSD;
-    tokens.push(...tokensRes);
+    const filteredTokens = tokensRes.filter(
+      (token: any) => token.tokenHourData[0].periodStartUnix > (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - margin);
+    tokens.push(...filteredTokens);
     sleep(500);
   }
   return tokens;

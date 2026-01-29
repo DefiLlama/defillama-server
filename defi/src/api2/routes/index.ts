@@ -19,7 +19,6 @@ import { cachedCraftProtocolV2, craftProtocolV2 } from "../utils/craftProtocolV2
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
-import { rwaChart, rwaCurrent } from "../../rwa/historical";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -468,26 +467,6 @@ async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.R
   }
 
   return successResponse(res, data, 60);
-}
-
-  
-async function rwaChartHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
-  try {
-  const name = req.path_parameters.name
-    const data = await rwaChart(name)
-    return successResponse(res, data, 60)
-  } catch (e: any) {
-    return errorResponse(res, 'Error fetching rwa chart data ' + e.message)
-  }
-}
-
-async function rwaCurrentHandler(_req: HyperExpress.Request, res: HyperExpress.Response) {
-  try {
-    const data = await rwaCurrent()
-    return successResponse(res, data, 60)
-  } catch (e: any) {
-    return errorResponse(res, 'Error fetching rwa current data ' + e.message)
-  }
 }
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {

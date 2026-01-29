@@ -2,7 +2,7 @@ import { getAllItemsAtTimeS, getLatestProtocolItems, initializeTVLCacheDB } from
 import { dailyRawTokensTvl, hourlyRawTokensTvl } from "../utils/getLastRecord";
 import { excludedTvlKeys } from "../../l2/constants";
 import BigNumber from "bignumber.js";
-import { coins, cache } from "@defillama/sdk";
+import { coins, } from "@defillama/sdk";
 import { getCsvData } from "./spreadsheet";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { fetchSupplies } from "../../l2/utils";
@@ -406,7 +406,6 @@ async function main(ts: number = 0) {
 
   await Promise.all([
     timestamp == 0 ? storeMetadata(res): Promise.resolve(),
-    timestamp == 0 ? cache.writeCache("rwa/id-map", JSON.stringify(rwaIdMap)) : Promise.resolve(),
     storeHistorical(res),
   ]);
 

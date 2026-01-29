@@ -9661,7 +9661,7 @@ const data5: Protocol[] = [
     listedAt: 1769649445
   },
   {
-    id: "7335",
+    id: "7336",
     name: "Satsuma",
     address: null,
     symbol: "-",

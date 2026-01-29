@@ -118,6 +118,8 @@ async function start() {
     console.log('- Stopping React app');
     if (reactApp)
       reactApp.kill();
+    // Stop any running API tests
+    stopApiTests();
     console.log('✅ Cleanup complete\n');
     process.exit(0);
   };

@@ -20,8 +20,20 @@ interface ApiTestFormProps {
 }
 
 // Parse ANSI codes to HTML for colored terminal output
+export const escapeHtml = (unsafe: string): string => {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 export const parseAnsiToHtml = (text: string): string => {
     if (!text) return '';
+
+    // First escape HTML to prevent XSS
+    const safeText = escapeHtml(text);
 
     // ANSI color code mapping
     const colorMap: Record<string, string> = {
@@ -31,7 +43,7 @@ export const parseAnsiToHtml = (text: string): string => {
         '94': '#64b5f6', '95': '#ce93d8', '96': '#4dd0e1', '97': '#ffffff',
     };
 
-    let result = text;
+    let result = safeText;
 
     // Replace color codes: \x1B[32m -> <span style="color: green">
     result = result.replace(/\x1B\[(\d+)m/g, (_match: string, code: string) => {
@@ -40,6 +52,7 @@ export const parseAnsiToHtml = (text: string): string => {
         if (code === '2') return '';  // Dim text - skip opacity for readability
         if (code === '7') return '<span style="background: #333; padding: 2px 4px">';
         if (code === '27') return '</span>';
+        if (code === '39') return '</span>';
         if (colorMap[code]) return `<span style="color: ${colorMap[code]}">`;
         return '';
     });

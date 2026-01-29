@@ -10,8 +10,8 @@ function extractTestNames(filePath: string): string[] {
         const content = fs.readFileSync(filePath, 'utf-8');
         const testNameRegex = /(?:it|test)(?:\.(?:only|skip|todo|concurrent))?\s*\(\s*['"`]([^'"`]+)['"`]/g;
         const testNames: string[] = [];
-        let match;
-        while ((match = testNameRegex.exec(content)) !== null) {
+
+        for (const match of content.matchAll(testNameRegex)) {
             testNames.push(match[1]);
         }
         return [...new Set(testNames)].sort((a, b) => a.localeCompare(b));
@@ -85,10 +85,11 @@ export interface TestResult {
 
 let currentTestProcess: ChildProcess | null = null;
 
+
 export function stopApiTests(): boolean {
     if (currentTestProcess && currentTestProcess.pid) {
         try {
-            process.kill(-currentTestProcess.pid, 'SIGTERM');
+            process.kill(currentTestProcess.pid, 'SIGTERM');
         } catch (e) {
             currentTestProcess.kill('SIGTERM');
         }
@@ -98,13 +99,44 @@ export function stopApiTests(): boolean {
     return false;
 }
 
+function safeSend(ws: any, message: any) {
+    if (ws.readyState === (ws.OPEN || 1)) {
+        try {
+            ws.send(typeof message === 'string' ? message : JSON.stringify(message));
+        } catch (e) {
+            console.error('[API Tests] Error sending to websocket:', e);
+        }
+    }
+}
+
 export async function runApiTests(
     ws: any,
     options: ApiTestOptions
 ): Promise<TestResult | null> {
     const { category = 'all', testFile, testName, verbose = true } = options;
 
-    const args: string[] = ['jest'];
+    if (category !== 'all' && !apiTestCategories.includes(category)) {
+        safeSend(ws, { type: 'api-test-error', content: 'Invalid category' });
+        return null;
+    }
+    if (testFile && category !== 'all') {
+        const allowedFiles = apiTestFiles[category] || [];
+        if (!allowedFiles.includes(testFile)) {
+            safeSend(ws, { type: 'api-test-error', content: 'Invalid test file' });
+            return null;
+        }
+    }
+    if (testName && testFile && category !== 'all') {
+        const fileKey = `${category}/${testFile}`;
+        const allowedNames = apiTestNames[fileKey] || [];
+        if (!allowedNames.includes(testName)) {
+            safeSend(ws, { type: 'api-test-error', content: 'Invalid test name' });
+            return null;
+        }
+    }
+
+
+    const args: string[] = [];
 
     if (category !== 'all') {
         if (testFile) {
@@ -115,60 +147,72 @@ export async function runApiTests(
     }
 
     if (testName) {
-        args.push('-t', `"${testName}"`);
+        args.push('-t', testName);
     }
     if (verbose) {
         args.push('--verbose');
     }
     args.push('--passWithNoTests');
 
-    console.log(`[API Tests] Running: npx jest ${args.slice(1).join(' ')}`);
+    console.log(`[API Tests] Running: npx jest ${args.join(' ')}`);
     console.log(`[API Tests] Category: ${category}${testFile ? `, File: ${testFile}` : ''}`);
 
     return new Promise((resolve) => {
         const npxPath = 'npx';
 
-        const testProcess = spawn(npxPath, args, {
+        const testProcess = spawn(npxPath, ['jest', ...args], {
             cwd: apiTestsDir,
             env: {
                 ...process.env,
                 FORCE_COLOR: '1',
             },
-            detached: true,
-            shell: true,
+            detached: false,
+            shell: false,
         });
 
         currentTestProcess = testProcess;
+
+        const onWsClose = () => {
+            if (testProcess.pid) {
+                try {
+                    process.kill(testProcess.pid, 'SIGTERM');
+                } catch (e) {
+                    // ignore
+                }
+            }
+        };
+        ws.on('close', onWsClose);
 
         let fullOutput = '';
 
         testProcess.stdout?.on('data', (data: Buffer) => {
             const output = data.toString();
             fullOutput += output;
-            ws.send(JSON.stringify({
+            safeSend(ws, {
                 type: 'api-test-output',
                 content: output,
-            }));
+            });
         });
 
         testProcess.stderr?.on('data', (data: Buffer) => {
             const output = data.toString();
             fullOutput += output;
-            ws.send(JSON.stringify({
+            safeSend(ws, {
                 type: 'api-test-output',
                 content: output,
-            }));
+            });
         });
 
         testProcess.on('close', (code: number | null) => {
+            ws.off('close', onWsClose);
             currentTestProcess = null;
 
             const result = parseJestOutput(fullOutput, code === 0);
 
-            ws.send(JSON.stringify({
+            safeSend(ws, {
                 type: 'api-test-summary',
                 data: result,
-            }));
+            });
 
             console.log(`[API Tests] Completed with exit code: ${code}`);
             console.log(`[API Tests] Results: ${result.tests.passed}/${result.tests.total} tests passed`);
@@ -179,10 +223,10 @@ export async function runApiTests(
         testProcess.on('error', (err: Error) => {
             currentTestProcess = null;
             console.error('[API Tests] Process error:', err);
-            ws.send(JSON.stringify({
+            safeSend(ws, {
                 type: 'api-test-error',
                 content: err.message,
-            }));
+            });
             resolve(null);
         });
     });

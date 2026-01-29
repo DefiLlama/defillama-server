@@ -44,9 +44,13 @@ export async function getRecordClosestToTimestamp(
 
   // If only one exists, return it
   if (!greaterEqualItem) {
+    if (!searchWidth) return lessEqualItem;
+    if (Math.abs(lessEqualItem?.SK - timestamp) > searchWidth) return { SK: undefined };
     return lessEqualItem;
   }
   if (!lessEqualItem) {
+    if (!searchWidth) return greaterEqualItem;
+    if (Math.abs(greaterEqualItem?.SK - timestamp) > searchWidth) return { SK: undefined };
     return greaterEqualItem;
   }
 

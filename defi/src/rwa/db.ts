@@ -39,6 +39,16 @@ async function initPGTables() {
         aggregatedactivemcap: {
             type: DataTypes.DECIMAL,
         },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        updated_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
     }, {
         sequelize: pgConnection,
         timestamps: false,
@@ -46,6 +56,7 @@ async function initPGTables() {
         indexes: [
             { name: 'activetvls_id_index', fields: ['id'], },
             { name: 'activetvls_timestamp_index', fields: ['timestamp'], },
+            { name: 'hourly_rwa_data_updated_at_index', fields: ['updated_at'], },
         ]
     });
 
@@ -79,6 +90,16 @@ async function initPGTables() {
         aggregatedactivemcap: {
             type: DataTypes.DECIMAL,
         },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        updated_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
     }, {
         sequelize: pgConnection,
         timestamps: false,
@@ -86,6 +107,7 @@ async function initPGTables() {
         indexes: [
             { name: 'activetvls_id_index', fields: ['id'], },
             { name: 'activetvls_timestamp_index', fields: ['timestamp'], },
+            { name: 'daily_rwa_data_updated_at_index', fields: ['updated_at'], },
         ]
     });
 
@@ -116,6 +138,16 @@ async function initPGTables() {
         aggregatedactivemcap: {
             type: DataTypes.DECIMAL,
         },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        updated_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
     }, {
         sequelize: pgConnection,
         timestamps: false,
@@ -123,6 +155,7 @@ async function initPGTables() {
         indexes: [
             { name: 'activetvlsbackup_id_index', fields: ['id'], },
             { name: 'activetvlsbackup_timestamp_index', fields: ['timestamp'], },
+            { name: 'backup_rwa_data_updated_at_index', fields: ['updated_at'], },
         ]
     });
 
@@ -134,12 +167,23 @@ async function initPGTables() {
         data: {
             type: DataTypes.JSON,
         },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        updated_at: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
     }, {
         sequelize: pgConnection,
         timestamps: false,
         tableName: 'meta_rwa_data',
         indexes: [
             { name: 'meta_rwa_id_index', fields: ['id'], },
+            { name: 'meta_rwa_data_updated_at_index', fields: ['updated_at'], },
         ]
     });
 }
@@ -193,29 +237,43 @@ export async function findDailyTimestampRecords(targetTimestamp: number): Promis
 export async function storeHistoricalPG(inserts: any, timestamp: number): Promise<void> {
     const dayTimestamp = getTimestampAtStartOfDay(timestamp);
     const closestRecord = await findDailyTimestampRecords(dayTimestamp);
+    const now = new Date();
 
     const dailyInserts: any[] = [];
     inserts.map((i: any) => {
         const { id, timestamp } = i;
         const closestRecordData = closestRecord[id];
-        const insert = { ...i, timestamp: dayTimestamp, timestamp_actual: timestamp };  
+        const insert = {
+            ...i,
+            timestamp: dayTimestamp,
+            timestamp_actual: timestamp,
+            created_at: i.created_at ?? now,
+            updated_at: now,
+        };
 
         if (!closestRecordData) dailyInserts.push(insert);
         else if (Math.abs(dayTimestamp - closestRecordData.timestamp_actual) > Math.abs(dayTimestamp - timestamp)) dailyInserts.push(insert);
     })
 
-    const updateOnDuplicate = ['defiactivetvl', 'mcap', 'activemcap', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'timestamp_actual'];
-    
+    // Add created_at (if missing) and updated_at to all inserts for hourly and backup tables
+    const insertsWithTimestamp = inserts.map((i: any) => ({
+        ...i,
+        created_at: i.created_at ?? now,
+        updated_at: now,
+    }));
+
+    const updateOnDuplicate = ['defiactivetvl', 'mcap', 'activemcap', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'timestamp_actual', 'updated_at'];
+
     // Bulk insert with conflict handling - overwrite on duplicate
     await DAILY_RWA_DATA.bulkCreate(dailyInserts, {
         updateOnDuplicate,
     });
 
-    await HOURLY_RWA_DATA.bulkCreate(inserts, {
+    await HOURLY_RWA_DATA.bulkCreate(insertsWithTimestamp, {
         updateOnDuplicate,
     });
 
-    await BACKUP_RWA_DATA.bulkCreate(inserts, {
+    await BACKUP_RWA_DATA.bulkCreate(insertsWithTimestamp, {
         updateOnDuplicate,
     });
 
@@ -227,7 +285,13 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
 }
 // Store metadata records
 export async function storeMetadataPG(inserts: any): Promise<void> {
-    await META_RWA_DATA.bulkCreate(inserts, { updateOnDuplicate: ['data'] });
+    const now = new Date();
+    const insertsWithTimestamp = inserts.map((i: any) => ({
+        ...i,
+        created_at: i.created_at ?? now,
+        updated_at: now,
+    }));
+    await META_RWA_DATA.bulkCreate(insertsWithTimestamp, { updateOnDuplicate: ['data', 'updated_at'] });
 }
 // Get historical and current data for a given id
 export async function fetchHistoricalPG(id: string): Promise<{ historical: any[], current: any }> {

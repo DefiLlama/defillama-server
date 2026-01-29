@@ -53,8 +53,8 @@ export async function getTokenAndRedirectData(
   const response: CoinData[] = [];
   await rateLimited(async () => {
     if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
-    // if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15)
-    cache = {}; // clear cache every 15 minutes
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15)
+      cache = {}; // clear cache every 15 minutes
 
     const cacheKey = `${chain}-${hoursRange}`;
     if (!cache[cacheKey]) cache[cacheKey] = {};
@@ -385,8 +385,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-          ? r.redirect[0].confidence
-          : undefined;
+            ? r.redirect[0].confidence
+            : undefined;
 
       return {
         chain:
@@ -513,9 +513,8 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
-          previousItem.price
-        } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
+          } to $${d.price}\n`;
         return;
       }
     }

@@ -1,28 +1,41 @@
 import dynamodb from "./dynamodb";
 
+const maxSearchWidth = 60 * 60 * 24 * 2; // 2 days
+const defailtSearchWidth = 60 * 60 * 6; // 6 hours
+
 export async function getRecordClosestToTimestamp(
   PK: any,
   timestamp: number,
   searchWidth: number | undefined = undefined
 ) {
-  // Fetch the first item >= timestamp (ascending order)
+
+  if (!searchWidth && searchWidth !== 0)
+    searchWidth = defailtSearchWidth;
+
+  if (searchWidth > maxSearchWidth)
+    searchWidth = maxSearchWidth;
+
+
+  // Fetch the first item >= timestamp (ascending order), limited by search width
   const greaterEqualQuery = dynamodb.query({
     ExpressionAttributeValues: {
       ":pk": PK,
-      ":timestamp": timestamp
+      ":timestamp": timestamp,
+      ":maxTimestamp": timestamp + searchWidth
     },
-    KeyConditionExpression: "PK = :pk AND SK >= :timestamp",
+    KeyConditionExpression: "PK = :pk AND SK BETWEEN :timestamp AND :maxTimestamp",
     ScanIndexForward: true, // ascending order
     Limit: 1 // only need the first item
   });
 
-  // Fetch the first item <= timestamp (descending order)
+  // Fetch the first item <= timestamp (descending order), limited by search width
   const lessEqualQuery = dynamodb.query({
     ExpressionAttributeValues: {
       ":pk": PK,
-      ":timestamp": timestamp
+      ":timestamp": timestamp,
+      ":minTimestamp": timestamp - searchWidth
     },
-    KeyConditionExpression: "PK = :pk AND SK <= :timestamp",
+    KeyConditionExpression: "PK = :pk AND SK BETWEEN :minTimestamp AND :timestamp",
     ScanIndexForward: false, // descending order
     Limit: 1 // only need the first item
   });

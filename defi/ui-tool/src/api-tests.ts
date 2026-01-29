@@ -115,7 +115,7 @@ export async function runApiTests(
     }
 
     if (testName) {
-        args.push('-t', testName);
+        args.push('-t', `"${testName}"`);
     }
     if (verbose) {
         args.push('--verbose');

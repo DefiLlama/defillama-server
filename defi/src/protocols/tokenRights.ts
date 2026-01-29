@@ -413,19 +413,19 @@ export default {
   "parent#curve-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "veCRV" },
-      { label: "Treasury", hasRight: false }, // blank in your row; treat as no explicit right
+      { label: "Treasury", hasRight: true, details: "veCRV" }, 
       { label: "Revenue", hasRight: true, details: "veCRV" },
     ],
     governanceData: {
-      rights: "LIMITED",
-      details: "Limited to emissions / liquidity",
+      rights: "FULL",
+      details: "Any proposal pushed onchain is voted on by veCRV holders",
       feeSwitchStatus: "ON",
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "NONE",
       dividends: "ACTIVE",
       burns: "NONE",
-      primaryValueAccrual: "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders",
+      primaryValueAccrual: "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders, 80% of accrued interest from crvUSD goes to veCRV holders",
     },
     tokenAlignment: {
       fundraising: "NONE",

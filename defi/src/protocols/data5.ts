@@ -9671,14 +9671,15 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
-    forkedFromIds: ["2197"],
+    tags: ["CLMM"],
+    forkedFromIds: ["1385"],
     chains: ["Citrea"],
-    module: "dummy.js",
+    module: "satsuma/index.js",
     twitter: "SatsumaDEX",
     dimensions: {
       dexs: "satsuma"
-    }
+    },
+    listedAt: 1769723448
   },
 ];
 export default data5;

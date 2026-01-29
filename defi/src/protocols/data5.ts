@@ -8750,7 +8750,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://ranger.finance/",
     description:
-      "Ranger Finance Perps is a decentralized perpetual futures trading platform for trading perps on Hyperliquid L1.",
+      "Ranger Finance Perps is a decentralized perpetual futures trading platform for trading perps.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/ranger-finance-perps.jpg`,
     audits: "0",

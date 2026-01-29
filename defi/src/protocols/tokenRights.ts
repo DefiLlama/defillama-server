@@ -796,20 +796,26 @@ export default {
     ],
     governanceData: {
       rights: "LIMITED",
-      details: "",
-      feeSwitchStatus: "UNKNOWN",
+      details: "Portion of trading fees from DLMM and DAMM go to discretionary buybacks",
+      feeSwitchStatus: "ON",
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual: "Buybacks - Meteora is conducting discretionary buybacks",
+      primaryValueAccrual: "Buybacks - Portion of trading fees from DLMM and DAMM go to discretionary buybacks",
     },
     tokenAlignment: {
       fundraising: "UNKNOWN",
       associatedEntities: ["DevCo"],
       equityRevenueCapture: "UNKNOWN",
     },
+    resources: [
+      {
+        label: "Meteora Buyback Wallet",
+        address: "FzULv8pR9Rd7cyVKjVkzmJ1eqEmgwDnzjYyNUcEJtoG9",
+      },
+    ],
   },
   "5575": {
     // Virtuals Protocol

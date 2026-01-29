@@ -13,6 +13,7 @@ import dayjs from 'dayjs';
 
 import './App.css';
 import { Line } from '@ant-design/plots';
+import { ApiTestForm, parseAnsiToHtml } from './ApiTestTab.tsx';
 
 const { Content, } = Layout;
 const { Text } = Typography;
@@ -34,6 +35,11 @@ const App = () => {
       adapterTypeChoices: { fees: [] },
     },
     tvlProtocolList: [],
+    apiTestFormChoices: {
+      categories: ['all', 'tvl', 'fees', 'stablecoins', 'yields', 'volumes', 'bridges'],
+      testFilesByCategory: {},
+      testNamesByFile: {},
+    },
   });
 
 
@@ -73,6 +79,7 @@ const App = () => {
   // misc tab
   const [miscForm] = Form.useForm();
   const [miscOutputTableData, setMiscOutputTableData] = useState({});
+  const [apiTestRunning, setApiTestRunning] = useState(false);
 
   function addWebSocketConnection() {
     try {
@@ -156,6 +163,20 @@ const App = () => {
         case 'get-fee-chart-default-view-response':
           setMiscOutputTableData(data);
           break;
+        case 'api-test-output':
+          setOutput((prev) => prev + data.content);
+          if (outputRef.current) {
+            outputRef.current.scrollTop = outputRef.current.scrollHeight;
+          }
+          break;
+        case 'api-test-summary':
+          setApiTestRunning(false);
+          break;
+        case 'api-test-error':
+          setOutput((prev) => prev + '\n❌ Error: ' + data.content);
+          setApiTestRunning(false);
+          break;
+
         default:
           console.log('Unknown message type', data);
           break;
@@ -305,6 +326,20 @@ const App = () => {
                     key: 'misc',
                     children: <div>{getMiscForm()}</div>,
                   },
+                  {
+                    label: 'api tests',
+                    key: 'api-tests',
+                    children: (
+                      <ApiTestForm
+                        wsRef={wsRef}
+                        isConnected={isConnected}
+                        formOptions={formOptions}
+                        onOutputChange={setOutput}
+                        apiTestRunning={apiTestRunning}
+                        setApiTestRunning={setApiTestRunning}
+                      />
+                    ),
+                  },
                 ]}
                 onChange={(key) => {
                   setActiveTabKey(key);
@@ -321,12 +356,21 @@ const App = () => {
 
               {output && showDebugLogs && (<Divider>Console Output</Divider>)}
               <div
-                style={{ display: output && showDebugLogs ? 'block' : 'none' }}
+                style={{
+                  display: output && showDebugLogs ? 'block' : 'none',
+                  background: '#1e1e1e',
+                  color: '#d4d4d4',
+                  padding: output ? 15 : 0,
+                  borderRadius: 8,
+                  maxHeight: '600px',
+                  overflow: 'auto',
+                  fontFamily: 'monospace',
+                  fontSize: 12,
+                  whiteSpace: 'pre-wrap',
+                }}
                 ref={outputRef}
-                className="output-container"
-              >
-                <pre>{output || ""}</pre>
-              </div>
+                dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(output || '') }}
+              />
             </Splitter.Panel>
           </Splitter>
         </Content>

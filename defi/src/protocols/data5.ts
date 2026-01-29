@@ -9621,5 +9621,43 @@ const data5: Protocol[] = [
     parentProtocol: "parent#notional",
     listedAt: 1769622914
   },
+  {
+    id: "7334",
+    name: "Supralend",
+    address: null,
+    symbol: "-",
+    url: "https://www.supralend.xyz/",
+    description: "The DeFi money market built for high-performance yields and secure borrowing.",
+    chain: "Supra",
+    logo: `${baseIconsUrl}/supralend.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Supra"],
+    module: "supralend/index.js",
+    twitter: "supralend",
+    listedAt: 1769649227
+  },
+  {
+    id: "7335",
+    name: "Juiceswap",
+    address: null,
+    symbol: "-",
+    url: "https://bapp.juiceswap.com/",
+    description: "JuiceSwap is an AMM Protocol for Citrea (based on Uniswap V3). Swap tokens instantly, earn by providing liquidity, and experience true permissionless trading – optimized for Citrea's ecosystem.",
+    chain: "Citrea",
+    logo: `${baseIconsUrl}/juiceswap.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    forkedFromIds: ["2198"],
+    chains: ["Citrea"],
+    module: "juiceswap/index.js",
+    twitter: "JuiceSwap_com", 
+    audit_links: ["https://github.com/JuiceSwapxyz/documentation/blob/main/AUDIT_SCOPE.md"],
+    listedAt: 1769649445
+  },
 ];
 export default data5;

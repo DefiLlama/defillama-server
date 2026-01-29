@@ -281,6 +281,51 @@ export default {
     ],
   },
 
+  "parent#derive": {
+    rights: [
+      {
+        label: "Governance",
+        hasRight: true,
+        details: "DRV can be staked into stDRV (non-transferable) for onchain governance participation on Derive L2.",
+      },
+      {
+        label: "Treasury",
+        hasRight: true,
+        details: "stDRV holders can vote on DAO-controlled treasury and ecosystem program parameters.",
+      },
+      {
+        label: "Revenue",
+        hasRight: false,
+        details: "DRV does not represent equity, ownership, or a direct claim on protocol revenue or profits.",
+      },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "Governance is executed on Derive L2 via DAO processes (proposal creation, voting, and delegation), subject to DAO-defined rules.",
+      feeSwitchStatus: "ON",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Protocol fees are governed by the DAO and may be allocated across protocol operations and ecosystem initiatives, subject to onchain governance.",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["Foundation", "DAO"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "DRV does not represent equity, ownership, or an entitlement to profits of any entity.",
+    },
+    resources: [
+      { label: "Docs", url: "https://docs.derive.xyz" },
+      { label: "Website", url: "https://derive.xyz" },
+    ],
+  },
+
   "parent#euler": {
     rights: [
       { label: "Governance", hasRight: true, details: "EUL" },

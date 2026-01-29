@@ -1,4 +1,4 @@
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../../utils/shared/getRecordClosestToTimestamp";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import cgSymbols from "../../utils/symbols/symbols.json";
 import { IProtocol } from "../../types";
@@ -11,14 +11,14 @@ export async function ddbGetInflows({ errorResponse, successResponse, protocolDa
   errorResponse: any, successResponse: any, protocolData: IProtocol, tokensToExclude: string[], skipTokenLogs: boolean, timestamp: number, endTimestamp: number,
 }) {
 
-  const oldTokens = await getTVLOfRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
-  if (oldTokens.SK === undefined)
+  const oldTokens = await getRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+  if (oldTokens?.SK === undefined)
     return errorResponse("No data at that timestamp");
 
-  const oldUsdTokens = await getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+  const oldUsdTokens = await getRecordClosestToTimestamp(hourlyUsdTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
 
   const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getTVLOfRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {

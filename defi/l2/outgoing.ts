@@ -1,4 +1,4 @@
-import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
@@ -43,14 +43,14 @@ export default async function fetchBridgeUsdTokenTvls(
   ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
   let tokenBalances: any[] = await Promise.all(
     filteredIds.map((i: string) =>
-      getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
+      getRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
 
   if (!rawTokenBalances.length)
     rawTokenBalances = await Promise.all(
       filteredIds.map((i: string) =>
-        getTVLOfRecordClosestToTimestamp(`hourlyRawTokensTvl#${i}`, timestamp, searchWidth)
+        getRecordClosestToTimestamp(`hourlyRawTokensTvl#${i}`, timestamp, searchWidth)
       )
     );
 

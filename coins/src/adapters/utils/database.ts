@@ -2,7 +2,7 @@ require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../../utils/shared/getRecordClosestToTimestamp";
 import {
   Write,
   DbEntry,
@@ -219,7 +219,7 @@ async function getTokenAndRedirectDataDB(
     // timestamped origin entries
     let timedDbEntries: any[] = await Promise.all(
       tokens.slice(lower, upper).map((t: string) => {
-        return getTVLOfRecordClosestToTimestamp(
+        return getRecordClosestToTimestamp(
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
             : `asset#${chain}:${lowercase(t, chain)}`,
@@ -257,7 +257,7 @@ async function getTokenAndRedirectDataDB(
     let timedRedirects: any[] = await Promise.all(
       redirects.map((r: DbQuery) => {
         if (r.PK == undefined) return;
-        return getTVLOfRecordClosestToTimestamp(
+        return getRecordClosestToTimestamp(
           r.PK,
           timestamp,
           hoursRange * 60 * 60,

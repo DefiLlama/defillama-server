@@ -322,11 +322,49 @@ export async function fetchMetadataPG(): Promise<any[]> {
 // Get one record per id with the largest timestamp
 export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[]> {
     return await HOURLY_RWA_DATA.sequelize!.query(
-        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap 
-         FROM "${HOURLY_RWA_DATA.getTableName()}" 
+        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap
+         FROM "${HOURLY_RWA_DATA.getTableName()}"
          ORDER BY id, timestamp DESC`,
         { type: QueryTypes.SELECT }
     ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[];
+}
+// Fetch all daily records, optionally filtered by updated_at timestamp
+export async function fetchAllDailyRecordsPG(updatedAfter?: Date): Promise<any[]> {
+    const whereClause = updatedAfter
+        ? { updated_at: { [Op.gt]: updatedAfter } }
+        : {};
+
+    return await DAILY_RWA_DATA.findAll({
+        attributes: ['id', 'timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'updated_at'],
+        where: whereClause,
+        order: [['id', 'ASC'], ['timestamp', 'ASC']],
+        raw: true,
+    });
+}
+// Get the list of unique IDs from daily records
+export async function fetchAllDailyIdsPG(): Promise<string[]> {
+    const results = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT id FROM "${DAILY_RWA_DATA.getTableName()}" ORDER BY id`,
+        { type: QueryTypes.SELECT }
+    ) as { id: string }[];
+    return results.map((r) => r.id);
+}
+// Get the max updated_at timestamp from daily records
+export async function fetchMaxUpdatedAtPG(): Promise<Date | null> {
+    const result = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT MAX(updated_at) as max_updated_at FROM "${DAILY_RWA_DATA.getTableName()}"`,
+        { type: QueryTypes.SELECT }
+    ) as { max_updated_at: Date | null }[];
+    return result[0]?.max_updated_at || null;
+}
+// Fetch daily records for a single ID
+export async function fetchDailyRecordsForIdPG(id: string): Promise<any[]> {
+    return await DAILY_RWA_DATA.findAll({
+        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
+        where: { id },
+        order: [['timestamp', 'ASC']],
+        raw: true,
+    });
 }
 // Close the database connection
 async function closeConnection(): Promise<void> {

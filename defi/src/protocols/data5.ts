@@ -9209,11 +9209,12 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "lantern-sol/index.js",
     twitter: "LanternStake",
     dimensions: {
       fees: "lantern-staked-sol"
-    }
+    },
+    listedAt: 1769724853
   },
   {
     id: "7314",

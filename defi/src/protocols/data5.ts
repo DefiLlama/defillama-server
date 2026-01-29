@@ -7711,7 +7711,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Interface",
     chains: ["Solana"],
     module: "dflow-prediction-market/index.js",
     twitter: "dflow",

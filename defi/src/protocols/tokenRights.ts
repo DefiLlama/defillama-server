@@ -44,7 +44,7 @@ export default {
       },
       associatedEntities: ["DAO", "Labs (Equity)", "Foundation"],
       equityRevenueCapture: "INACTIVE",
-      equityStatement: "After UNIfication proposal passed, revenue no longer flows to equity holders",
+      equityStatement: "After UNIfication  +proposal passed, revenue no longer flows to equity holders",
     },
     resources: [
       {
@@ -359,7 +359,7 @@ export default {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual: "Buybacks - Most protocol fees go to the assistance fund which buys back HYPE tokens",
+      primaryValueAccrual: "Most protocol fees go to the assistance fund which buys back & burns HYPE tokens",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -807,7 +807,7 @@ export default {
     },
     tokenAlignment: {
       fundraising: "UNKNOWN",
-      associatedEntities: ["DevCo", "DAO"],
+      associatedEntities: ["DevCo"],
       equityRevenueCapture: "UNKNOWN",
     },
   },

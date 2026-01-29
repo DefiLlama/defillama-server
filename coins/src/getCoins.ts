@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import ddb from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { searchWidth } from "./utils/shared/constants";
@@ -15,9 +15,9 @@ const handler = async (event: any): Promise<IResponse> => {
   await Promise.all(
     coins.map(async (coin) => {
 
-    if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
+      if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
         coin.decimals = Number(coin.decimals);
-      
+
       let formattedCoin = {
         decimals: coin.decimals,
         price: coin.price,
@@ -44,7 +44,7 @@ const handler = async (event: any): Promise<IResponse> => {
           Number(timestampRequested),
           searchWidth,
         );
-        if (finalCoin.SK === undefined) return;
+        if (finalCoin?.SK === undefined) return;
         formattedCoin.price = finalCoin.price;
         formattedCoin.timestamp = finalCoin.SK;
         formattedCoin.symbol = formattedCoin.symbol ?? finalCoin.Item.symbol;
@@ -52,7 +52,7 @@ const handler = async (event: any): Promise<IResponse> => {
       if (
         Math.abs(
           (timestampRequested ?? getCurrentUnixTimestamp()) -
-            formattedCoin.timestamp,
+          formattedCoin.timestamp,
         ) < searchWidth
       )
         PKTransforms[coin.PK].forEach((coinName) => {

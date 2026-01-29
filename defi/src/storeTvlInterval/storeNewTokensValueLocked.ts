@@ -2,7 +2,7 @@ import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
 import { getDay, getTimestampAtStartOfDay, secondsInDay } from "../utils/date";
 import { TokensValueLocked, tvlsObject } from "../types";
-import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../utils/shared/getRecordClosestToTimestamp";
 import { sendMessage } from "../utils/discord";
 import { saveProtocolItem } from "../api2/db";
 
@@ -61,7 +61,7 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 
   const checkForOutliersCoins = hourlyPK.includes("hourlyUsdTokensTvl") && storePreviousData
-  const closestDailyRecord = (overwriteExistingData && !checkForOutliersCoins) ? null : await getTVLOfRecordClosestToTimestamp(
+  const closestDailyRecord = (overwriteExistingData && !checkForOutliersCoins) ? null : await getRecordClosestToTimestamp(
     dailyTvl(protocol.id),
     unixTimestamp,
     secondsInDay * 1.5,

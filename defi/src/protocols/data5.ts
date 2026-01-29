@@ -9682,5 +9682,27 @@ const data5: Protocol[] = [
     },
     listedAt: 1769723448
   },
+  {
+    id: "7337",
+    name: "Chapool",
+    address: null,
+    symbol: "-",
+    url: "https://h5.chapool.net/",
+    description: "Chapool is a Web3+AI+RWA platform on opBNB, offering tiered NFT staking rewards. It blends IP, toy trading, and consumer finance, generating revenue via NFT minting and a C2C marketplace.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/chapool.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Physical TCG",
+    chains: ["Op_Bnb"],
+    module: "dummy.js",
+    twitter: "cv_chapool",
+    github: ["chapool"],
+    dimensions: {
+      dexs: "chapool",
+      fees: "chapool",
+    },
+  },
 ];
 export default data5;

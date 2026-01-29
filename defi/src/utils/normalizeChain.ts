@@ -5640,6 +5640,15 @@ export const chainCoingeckoIds = {
     url: "https://sosovalue.com/",
     chainId: 286623,
   },
+  "Citrea": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "citrea_xyz",
+    url: "https://citrea.xyz/",
+    chainId: 4114,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -27605,7 +27605,10 @@ const data4: Protocol[] = [
     chains: ["Plasma"],
     module: "plasma-saving-vaults/index.js",
     twitter: "Plasma",
-    listedAt: 1758903918
+    listedAt: 1758903918,
+    dimensions: {
+      fees: "plasma-saving-vaults"
+    }
   },
   {
     id: "6774",

@@ -50973,7 +50973,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://cyberperp.io/CyberPerp%20Contracts%20Audit%20Report%20-%20QuillAudits.pdf?url"],
     listedAt: 1724156997,
     dimensions: {
-      derivatives: "cyberperp"
+      derivatives: "cyberperp",
+      fees: "cyberperp"
     }
   },
   {

@@ -9659,5 +9659,26 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/JuiceSwapxyz/documentation/blob/main/AUDIT_SCOPE.md"],
     listedAt: 1769649445
   },
+  {
+    id: "7335",
+    name: "Satsuma",
+    address: null,
+    symbol: "-",
+    url: "https://www.satsuma.exchange/",
+    description: "Satsuma is the main DEX of Citrea, fully supported by Citrea Foundation, the first ZK-Rollup that posts proofs directly to Bitcoin L1. We're building a Bitcoin-first DEX where users can swap, earn yield, and participate in DeFi with BTC-native security.",
+    chain: "Citrea",
+    logo: `${baseIconsUrl}/satsuma.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    forkedFromIds: ["2197"],
+    chains: ["Citrea"],
+    module: "dummy.js",
+    twitter: "SatsumaDEX",
+    dimensions: {
+      dexs: "satsuma"
+    }
+  },
 ];
 export default data5;

@@ -60869,6 +60869,9 @@ const data3_3: Protocol[] = [
     twitter: "HermesOmnichain",
     parentProtocol: "parent#maia-dao-ecosystem",
     listedAt: 1733496042,
+    dimensions: {
+      fees: "hermes-v2"
+    }
   },
   {
     id: "5473",

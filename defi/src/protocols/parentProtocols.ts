@@ -3789,7 +3789,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#jupiter",
     name: "Jupiter",
-    url: "https://jup.ag",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
+    referralUrl: "https://jup.ag/?ref=f6y1ryr2snn3",
     description: `Best exchange in DeFi. Full stack ecosystem play focused on advancing the meta.`,
     logo: `${baseIconsUrl}/jupiter.jpg`,
     gecko_id: "jupiter-exchange-solana",

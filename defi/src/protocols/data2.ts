@@ -16632,7 +16632,7 @@ const data2: Protocol[] = [
     name: "Jupiter Aggregator",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://jup.ag/",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
     description:
       "The best swap aggregator & infrastructure for Solana -  powering best price, token selection and UX for all users and devs",
     chain: "Solana",

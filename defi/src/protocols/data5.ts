@@ -4539,7 +4539,7 @@ const data5: Protocol[] = [
     name: "Jupiter Prediction",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://jup.ag/prediction",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
     description:
       "Prediction markets let you make predictions on real-world events by trading YES or NO.",
     chain: "Solana",
@@ -7196,7 +7196,7 @@ const data5: Protocol[] = [
     name: "JupUSD",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://jupusd.money/",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
     description: "JupUSD is a Solana-native, reserve-backed stablecoin pegged to the U.S. dollar, built by Jupiter in partnership with Ethena.",
     chain: "Solana",
     logo: `${baseIconsUrl}/jupusd.jpg`,

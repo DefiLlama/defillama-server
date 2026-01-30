@@ -55936,10 +55936,7 @@ const data3_3: Protocol[] = [
     module: "kelp-gain/index.js",
     twitter: "KelpDAO",
     parentProtocol: "parent#kelp-dao",
-    listedAt: 1729134534,
-    tokensExcludedFromParent: {
-      Ethereum: ["RSETH"],
-    },
+    listedAt: 1729134534
   },
   {
     id: "5245",

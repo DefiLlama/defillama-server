@@ -11914,6 +11914,11 @@
     }
   },
   "katana": {
+    "0x926a8a63Fa1e1FDBBEb811a0319933B1A0F1EDbb": {
+      "to": "coingecko#midas-mhyper",
+      "decimals": 18,
+      "symbol": "mHYPER"
+    },
     "0xcA52d08737E6Af8763a2bF6034B3B03868f24DDA": {
       "to": "coingecko#dtrinity-usd",
       "decimals": 18,

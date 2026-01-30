@@ -333,6 +333,63 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   return stats;
 }
 
+function generateList(currentData: any[]): { tickers: string[]; platforms: string[]; chains: string[]; categories: string[] } {
+  console.log('Generating list data...');
+  const startTime = Date.now();
+
+  const tickerMcap: { [ticker: string]: number } = {};
+  const platformMcap: { [platform: string]: number } = {};
+  const chainMcap: { [chain: string]: number } = {};
+  const categoryMcap: { [category: string]: number } = {};
+
+  currentData.forEach((item: any) => {
+    // Calculate total mcap for this asset
+    let assetMcap = 0;
+    if (item.mcap && typeof item.mcap === 'object') {
+      Object.entries(item.mcap).forEach(([chain, value]) => {
+        const numValue = Number(value);
+        if (!isNaN(numValue)) {
+          assetMcap += numValue;
+          // Aggregate chain mcap
+          chainMcap[chain] = (chainMcap[chain] || 0) + numValue;
+        }
+      });
+    }
+
+    // Aggregate ticker mcap
+    if (item.ticker) {
+      tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
+    }
+
+    // Aggregate platform mcap
+    if (item.parentPlatform) {
+      platformMcap[item.parentPlatform] = (platformMcap[item.parentPlatform] || 0) + assetMcap;
+    }
+
+    // Aggregate category mcap
+    const categories = item.category || [];
+    categories.forEach((cat: string) => {
+      categoryMcap[cat] = (categoryMcap[cat] || 0) + assetMcap;
+    });
+  });
+
+  // Sort by mcap descending and return as arrays of strings
+  const sortByMcap = (obj: { [key: string]: number }): string[] =>
+    Object.entries(obj)
+      .sort((a, b) => b[1] - a[1])
+      .map(([key]) => key);
+
+  const list = {
+    tickers: sortByMcap(tickerMcap),
+    platforms: sortByMcap(platformMcap),
+    chains: sortByMcap(chainMcap),
+    categories: sortByMcap(categoryMcap),
+  };
+
+  console.log(`Generated list data in ${Date.now() - startTime}ms`);
+  return list;
+}
+
 async function main() {
   console.log('='.repeat(60));
   console.log('RWA Cron Job Started:', new Date().toISOString());
@@ -374,16 +431,9 @@ async function main() {
     const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental();
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
 
-    // Generate a list of all RWA IDs
-    const rwdList = metadata.map(({ id, data: { name, ticker, category } }: RWAMetadata) => {
-      return {
-        id,
-        name,
-        ticker,
-        category,
-      };
-    });
-    await storeRouteData('list.json', rwdList);
+    // Generate lists of tickers, platforms, chains, categories sorted by mcap
+    const list = generateList(currentData);
+    await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));
     console.log(`RWA Cron Job Completed in ${Date.now() - totalStartTime}ms`);

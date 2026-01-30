@@ -9705,5 +9705,30 @@ const data5: Protocol[] = [
       fees: "chapool",
     },
   },
+  {
+    id: "7338",
+    name: "LTV Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://ltv.finance",
+    description: "First fully Curatorless Leveraged Tokenized Vaults boosting your yield for Ethereum and Stables.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ltv-protocol.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum"],
+    module: "ltv-protocol/index.js",
+    twitter: "ltvprotocol",
+    github: ["ltvprotocol"],
+    treasury: "ltv-protocol.js",
+    audit_links: [
+      "https://github.com/ltvprotocol/ltv_v0/blob/main/audits/oxorio_ltv_v0_security_audit.pdf",
+      "https://github.com/ltvprotocol/vault_craft/blob/main/audits/oxorio_vault_craft_security_audit.pdf",
+      "https://github.com/ltvprotocol/transparent_upgradeable_beacon_proxy/blob/main/audits/oxorio_transparent_upgradeable_beacon_proxy_security_audit.pdf"
+    ],
+    listedAt: 1769793157
+  },
 ];
 export default data5;

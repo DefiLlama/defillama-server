@@ -281,7 +281,7 @@ export default {
     ],
   },
 
-  "parent#derive": {
+  "parent#lyra": {
     rights: [
       {
         label: "Governance",

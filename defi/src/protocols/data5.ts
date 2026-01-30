@@ -9679,7 +9679,8 @@ const data5: Protocol[] = [
     module: "satsuma/index.js",
     twitter: "SatsumaDEX",
     dimensions: {
-      dexs: "satsuma"
+      dexs: "satsuma",
+      fees: "satsuma",
     },
     listedAt: 1769723448
   },

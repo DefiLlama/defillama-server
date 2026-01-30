@@ -10,11 +10,14 @@ if (!DISCORD_WEBHOOK_URL) {
 }
 
 function formatDiscordEmbed(data) {
-    const rightsStr = data.rights
-        .map(r => `${r.hasRight ? '✅' : '❌'} **${r.label}**${r.details ? `: ${r.details}` : ''}`)
-        .join('\n');
+    console.log(data);
 
-    const resourcesStr = data.resources
+    // Overview section
+    const tokenTypeStr = data.overview?.tokenType?.length ? data.overview.tokenType.join(', ') : 'Not specified';
+    const utilityStr = data.overview?.utility?.length ? data.overview.utility.join(', ') : 'Not specified';
+
+    // Resources
+    const resourcesStr = (data.resources || [])
         .filter(r => r.label)
         .map(r => {
             let str = `• **${r.label}**`;
@@ -25,7 +28,16 @@ function formatDiscordEmbed(data) {
         })
         .join('\n');
 
-    const entitiesStr = data.tokenAlignment?.associatedEntities?.join(', ') || 'Not specified';
+    // Governance links
+    const govLinksStr = (data.governanceRights?.links || [])
+        .filter(l => l.label && l.url)
+        .map(l => `• [${l.label}](${l.url})`)
+        .join('\n');
+
+    // Ownership entities and ownership details
+    const entitiesStr = data.ownershipRights?.associatedEntities?.length ? data.ownershipRights.associatedEntities.join(', ') : 'Not specified';
+    const ipBrandStr = data.ownershipRights?.ipBrand?.length ? data.ownershipRights.ipBrand.join(', ') : 'Not specified';
+    const domainStr = data.ownershipRights?.domain?.length ? data.ownershipRights.domain.join(', ') : 'Not specified';
 
     const fields = [
         {
@@ -34,23 +46,23 @@ function formatDiscordEmbed(data) {
             inline: false
         },
         {
-            name: '🔗 Token Rights',
-            value: rightsStr || 'None specified',
+            name: '📚 Overview',
+            value: `**Tokens:** ${data.overview?.tokens || 'Not specified'}\n**Type:** ${tokenTypeStr}\n**Utility:** ${utilityStr}${data.overview?.briefDescription ? `\n**Description:** ${data.overview.briefDescription}` : ''}${data.overview?.primaryRevenueSource ? `\n**Revenue Source:** ${data.overview.primaryRevenueSource}` : ''}`,
             inline: false
         },
         {
-            name: '🏛️ Governance',
-            value: `**Rights:** ${data.governanceData?.rights || 'Not specified'}${data.governanceData?.details ? `\n**Details:** ${data.governanceData.details}` : ''}${data.governanceData?.feeSwitchStatus ? `\n**Fee Switch:** ${data.governanceData.feeSwitchStatus}` : ''}${data.governanceData?.feeSwitchDetails ? `\n**Fee Details:** ${data.governanceData.feeSwitchDetails}` : ''}`,
+            name: '🏛️ Governance Rights',
+            value: `**Governance Decisions:** ${data.governanceRights?.governanceDecisions || 'Not specified'}\n**Treasury Decisions:** ${data.governanceRights?.treasuryDecisions || 'Not specified'}\n**Revenue Decisions:** ${data.governanceRights?.revenueDecisions || 'Not specified'}${data.governanceRights?.governanceDetails ? `\n**Details:** ${data.governanceRights.governanceDetails}` : ''}${data.governanceRights?.feeSwitchStatus ? `\n**Fee Switch:** ${data.governanceRights.feeSwitchStatus}` : ''}${data.governanceRights?.feeSwitchDetails ? `\n**Fee Switch Details:** ${data.governanceRights.feeSwitchDetails}` : ''}${govLinksStr ? `\n**Links:**\n${govLinksStr}` : ''}`,
             inline: false
         },
         {
-            name: '💰 Value Accrual',
-            value: `**Buybacks:** ${data.holdersRevenueAndValueAccrual?.buybacks || 'Not specified'}\n**Dividends:** ${data.holdersRevenueAndValueAccrual?.dividends || 'Not specified'}\n**Burns:** ${data.holdersRevenueAndValueAccrual?.burns || 'Not specified'}${data.holdersRevenueAndValueAccrual?.primaryValueAccrual ? `\n**Primary:** ${data.holdersRevenueAndValueAccrual.primaryValueAccrual}` : ''}`,
+            name: '💰 Economic Rights',
+            value: `**Buybacks:** ${data.economicRights?.buybacks || 'Not specified'}\n**Dividends:** ${data.economicRights?.dividends || 'Not specified'}\n**Burns:** ${data.economicRights?.burns || 'Not specified'}${data.economicRights?.primaryValueAccrual ? `\n**Primary Value Accrual:** ${data.economicRights.primaryValueAccrual}` : ''}`,
             inline: false
         },
         {
-            name: '📊 Token Alignment',
-            value: `**Fundraising:** ${data.tokenAlignment?.fundraising || 'Not specified'}\n**Equity Revenue:** ${data.tokenAlignment?.equityRevenueCapture || 'Not specified'}\n**Entities:** ${entitiesStr}${data.tokenAlignment?.equityStatement ? `\n**Statement:** ${data.tokenAlignment.equityStatement}` : ''}`,
+            name: '📊 Ownership Rights',
+            value: `**Fundraising:** ${data.ownershipRights?.fundraising || 'Not specified'}\n**Equity Revenue Capture:** ${data.ownershipRights?.equityRevenueCapture || 'Not specified'}${data.ownershipRights?.raiseDetails ? `\n**Raise Details:** ${data.ownershipRights.raiseDetails}` : ''}${data.ownershipRights?.raiseDetailsUrl ? `\n**Raise URL:** ${data.ownershipRights.raiseDetailsUrl}` : ''}\n**Associated Entities:** ${entitiesStr}\n**IP & Brand:** ${ipBrandStr}\n**Domain:** ${domainStr}${data.ownershipRights?.equityStatement ? `\n**Equity Statement:** ${data.ownershipRights.equityStatement}` : ''}`,
             inline: false
         }
     ];

@@ -4521,7 +4521,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "joe-v2.1",
       dexs: {
-        genuineSpikes: ["1682812800", "1682899200"],
+        genuineSpikes: ["1682812800", "1682899200", "1769731200"],
         adapter: "joe-v2.1"
       }
     }

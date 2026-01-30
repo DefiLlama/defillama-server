@@ -375,18 +375,13 @@ async function main() {
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
 
     // Generate a list of all RWA IDs
-    const rwdList = metadata.map((m: RWAMetadata) => {
-      try {
-        const data = JSON.parse(m.data);
-        return {
-          id: m.id,
-          name: data.name,
-          ticker: data.ticker,
-          category: data.category,
-        };
-      } catch {
-        return { id: m.id };
-      }
+    const rwdList = metadata.map(({ id, data: { name, ticker, category } }: RWAMetadata) => {
+      return {
+        id,
+        name,
+        ticker,
+        category,
+      };
     });
     await storeRouteData('list.json', rwdList);
 

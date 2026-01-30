@@ -1678,6 +1678,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CurveFinance",
     governanceID: ["snapshot:curve.eth"],
+    treasury: "curve.js",
     github: ["curvefi"],
     warningBanners: [
       {

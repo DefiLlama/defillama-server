@@ -192,6 +192,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
 
     const byCategory: { [category: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; count: number } } = {};
     const byChain: { [chain: string]: { mcap: number; activeMcap: number; defiActiveTvl: number } } = {};
+    const byPlatform: { [platform: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; count: number } } = {};
 
     currentData.forEach((item: any) => {
         // Aggregate mcap by chain
@@ -248,6 +249,49 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
             }
             byCategory[cat].count += 1;
         });
+
+        // Aggregate by platform
+        const platform = item.parentPlatform;
+        if (platform) {
+            if (!byPlatform[platform]) {
+                byPlatform[platform] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, count: 0 };
+            }
+            byPlatform[platform].count += 1;
+
+            // Sum mcap for this asset
+            if (item.mcap && typeof item.mcap === 'object') {
+                Object.values(item.mcap).forEach((value) => {
+                    const numValue = Number(value);
+                    if (!isNaN(numValue)) {
+                        byPlatform[platform].mcap += numValue;
+                    }
+                });
+            }
+
+            // Sum activeMcap for this asset
+            if (item.activemcap && typeof item.activemcap === 'object') {
+                Object.values(item.activemcap).forEach((value) => {
+                    const numValue = Number(value);
+                    if (!isNaN(numValue)) {
+                        byPlatform[platform].activeMcap += numValue;
+                    }
+                });
+            }
+
+            // Sum defiActiveTvl for this asset
+            if (item.defiactivetvl && typeof item.defiactivetvl === 'object') {
+                Object.values(item.defiactivetvl).forEach((protocols) => {
+                    if (protocols && typeof protocols === 'object') {
+                        Object.values(protocols as { [key: string]: string }).forEach((value) => {
+                            const numValue = Number(value);
+                            if (!isNaN(numValue)) {
+                                byPlatform[platform].defiActiveTvl += numValue;
+                            }
+                        });
+                    }
+                });
+            }
+        }
     });
 
     const stats = {
@@ -257,6 +301,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
         totalAssets: currentData.length,
         byChain,
         byCategory,
+        byPlatform,
     };
 
     console.log(`Generated aggregate stats in ${Date.now() - startTime}ms`);

@@ -9,7 +9,8 @@ import {
     mergeHistoricalData,
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG } from './db';
-import { cache } from '@defillama/sdk';
+
+import * as sdk from '@defillama/sdk';
 
 interface RWACurrentData {
     id: string;
@@ -19,9 +20,19 @@ interface RWACurrentData {
     activemcap: string;
 }
 
+// Convert chain keys to chain labels in an object
+function convertChainKeysToLabels(obj: { [chainKey: string]: any }): { [chainLabel: string]: any } {
+    const result: { [chainLabel: string]: any } = {};
+    for (const chainKey of Object.keys(obj)) {
+        const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+        result[chainLabel] = obj[chainKey];
+    }
+    return result;
+}
+
 interface RWAMetadata {
     id: string;
-    data: string;
+    data: any;
 }
 
 async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any[]; timestamp: number }> {
@@ -41,19 +52,18 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
         const idCurrent = currentMap[m.id];
         if (!idCurrent) return;
 
-        const dataJson = JSON.parse(m.data);
-
         Object.keys(idCurrent).forEach((key: string) => {
             if (key === 'timestamp' && idCurrent[key] > timestamp) {
                 timestamp = idCurrent[key];
             } else if (key === 'id') {
                 return;
             } else if (['defiactivetvl', 'mcap', 'activemcap'].includes(key)) {
-                dataJson[key] = JSON.parse((idCurrent as any)[key]);
+                const parsed = JSON.parse((idCurrent as any)[key]);
+                m.data[key] = convertChainKeysToLabels(parsed);
             }
         });
 
-        data.push(dataJson);
+        data.push(m.data);
     });
 
     console.log(`Generated current data in ${Date.now() - startTime}ms`);
@@ -64,13 +74,8 @@ async function generateIdMap(metadata: RWAMetadata[]): Promise<{ [name: string]:
     const idMap: { [name: string]: string } = {};
 
     metadata.forEach((m: RWAMetadata) => {
-        try {
-            const data = JSON.parse(m.data);
-            if (data.name) {
-                idMap[data.name] = m.id;
-            }
-        } catch (e) {
-            console.error(`Error parsing metadata for id ${m.id}:`, (e as any)?.message);
+        if (m.data.name) {
+            idMap[m.data.name] = m.id;
         }
     });
 
@@ -290,7 +295,6 @@ async function main() {
         console.log('Generating ID map...');
         const idMap = await generateIdMap(metadata);
         await storeRouteData('id-map.json', idMap);
-        await cache.writeCache('rwa/id-map', JSON.stringify(idMap));
 
         // Generate aggregate stats
         const stats = await generateAggregateStats(currentData);

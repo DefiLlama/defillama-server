@@ -313,12 +313,23 @@ export async function fetchHistoricalPG(id: string): Promise<{ historical: any[]
 }
 // Get all metadata records
 export async function fetchMetadataPG(): Promise<any[]> {
-    return await META_RWA_DATA.findAll({
+    await initPG();
+    const data = await META_RWA_DATA.findAll({
         attributes: ['id', 'data'],
         order: [['id', 'ASC']],
         raw: true,
     });
+    data.forEach((d: any) => {
+        try {
+            d.data = JSON.parse(d.data)
+        } catch (e) {
+            console.error(`Error parsing metadata for id ${d.id}:`, (e as any)?.message);
+            delete d.data;
+        }
+    })
+    return data.filter((d: any) => d.data)
 }
+
 // Get one record per id with the largest timestamp
 export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[]> {
     return await HOURLY_RWA_DATA.sequelize!.query(

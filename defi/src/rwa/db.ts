@@ -331,13 +331,27 @@ export async function fetchMetadataPG(): Promise<any[]> {
 }
 
 // Get one record per id with the largest timestamp
-export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[]> {
-    return await HOURLY_RWA_DATA.sequelize!.query(
+export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: object; mcap: object; activemcap: object }[]> {
+    const data = await HOURLY_RWA_DATA.sequelize!.query(
         `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap
          FROM "${HOURLY_RWA_DATA.getTableName()}"
          ORDER BY id, timestamp DESC`,
         { type: QueryTypes.SELECT }
     ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[];
+    const jsonFields = ['defiactivetvl', 'mcap', 'activemcap']
+
+    return data.map((d: any) => {
+        const copy: any = { ...d }
+        jsonFields.forEach((field) => {
+            try {
+                copy[field] = JSON.parse(d[field]);
+            } catch (e) {
+                console.error(`Error parsing field ${field} for id ${d.id}:`, (e as any)?.message);
+                copy[field] = {};
+            }
+        })
+        return copy
+    }) as any
 }
 // Fetch all daily records, optionally filtered by updated_at timestamp
 export async function fetchAllDailyRecordsPG(updatedAfter?: Date): Promise<any[]> {

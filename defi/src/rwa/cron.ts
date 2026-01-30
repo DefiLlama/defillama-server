@@ -74,8 +74,8 @@ async function generateIdMap(metadata: RWAMetadata[]): Promise<{ [name: string]:
   const idMap: { [name: string]: string } = {};
 
   metadata.forEach((m: RWAMetadata) => {
-    if (m.data.name) {
-      idMap[m.data.name] = m.id;
+    if (m.data.ticker) {
+      idMap[m.data.ticker] = m.id;
     }
   });
 

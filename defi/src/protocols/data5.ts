@@ -9773,7 +9773,7 @@ const data5: Protocol[] = [
   {
     id: "7341",
     name: "Pyth Core",
-    address: "solana:HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+    address: null,
     symbol: "PYTH",
     url: "https://docs.pyth.network/price-feeds/core",
     description: "Decentralized price feeds for DeFi and TradFi builders with deterministic on-chain delivery.",
@@ -9878,7 +9878,7 @@ const data5: Protocol[] = [
   {
     id: "7342",
     name: "Pyth Pro",
-    address: "solana:HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+    address: null,
     symbol: "PYTH",
     url: "https://docs.pyth.network/price-feeds/pro",
     description: "Subscription-based price data for institutions and advanced use cases. Previously known as Lazer.",

@@ -7,8 +7,13 @@ import {
   storeHistoricalDataForId,
   readHistoricalDataForId,
   mergeHistoricalData,
+  storePGCacheForId,
+  readPGCacheForId,
+  mergePGCacheData,
+  PGCacheData,
+  PGCacheRecord,
 } from './file-cache';
-import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG } from './db';
+import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
 
@@ -126,7 +131,7 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
       try {
         const newRecords = recordsById[id];
         const existingData = await readHistoricalDataForId(id);
-        const mergedData = await mergeHistoricalData(existingData, newRecords);
+        const mergedData = mergeHistoricalData(existingData, newRecords);
         await storeHistoricalDataForId(id, mergedData);
         updatedIds++;
         totalRecords += newRecords.length;
@@ -177,6 +182,121 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
 
   console.log(`Generated historical data for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
   return { updatedIds, totalRecords };
+}
+
+function sumObjectValues(obj: any): number {
+  if (!obj || typeof obj !== 'object') return 0;
+  return Object.values(obj).reduce((sum: number, val) => {
+    const num = Number(val);
+    return sum + (isNaN(num) ? 0 : num);
+  }, 0);
+}
+
+function processRecordsToPGCache(records: any[]): PGCacheData {
+  const data: PGCacheData = {};
+  for (const record of records) {
+    // DB functions already parse JSON fields
+    const { mcap: mcapObj, activemcap: activemcapObj, defiactivetvl: defitvlObj } = record;
+
+    const chains: PGCacheRecord['chains'] = {};
+    let totalMcap = 0;
+    let totalActiveMcap = 0;
+    let totalDefiActiveTvl = 0;
+
+    for (const [chainKey, value] of Object.entries(mcapObj)) {
+      if (!chains[chainKey]) chains[chainKey] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      const numValue = Number(value) || 0;
+      chains[chainKey].mcap = numValue;
+      totalMcap += numValue;
+    }
+
+    for (const [chainKey, value] of Object.entries(activemcapObj)) {
+      if (!chains[chainKey]) chains[chainKey] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      const numValue = Number(value) || 0;
+      chains[chainKey].activeMcap = numValue;
+      totalActiveMcap += numValue;
+    }
+
+    for (const [chainKey, protocols] of Object.entries(defitvlObj)) {
+      if (!chains[chainKey]) chains[chainKey] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      const numValue = sumObjectValues(protocols);
+      chains[chainKey].defiActiveTvl = numValue;
+      totalDefiActiveTvl += numValue;
+    }
+
+    data[record.timestamp] = {
+      mcap: totalMcap,
+      activeMcap: totalActiveMcap,
+      defiActiveTvl: totalDefiActiveTvl,
+      chains,
+    };
+  }
+  return data;
+}
+
+async function generatePGCache(): Promise<{ updatedIds: number }> {
+  console.log('Generating PG cache with chain breakdown...');
+  const startTime = Date.now();
+
+  const syncMetadata = await getSyncMetadata();
+  const lastSyncTimestamp = syncMetadata?.lastSyncTimestamp
+    ? new Date(syncMetadata.lastSyncTimestamp)
+    : undefined;
+
+  let updatedIds = 0;
+
+  if (lastSyncTimestamp) {
+    // Incremental sync: fetch only updated records
+    console.log(`Incremental PG cache sync: fetching records updated after ${lastSyncTimestamp.toISOString()}`);
+    const records = await fetchDailyRecordsWithChainsPG(lastSyncTimestamp);
+    console.log(`Fetched ${records.length} updated records for PG cache`);
+
+    if (records.length === 0) {
+      console.log('No new records for PG cache');
+      return { updatedIds: 0 };
+    }
+
+    // Group by ID
+    const recordsById: { [id: string]: any[] } = {};
+    records.forEach((record) => {
+      if (!recordsById[record.id]) recordsById[record.id] = [];
+      recordsById[record.id].push(record);
+    });
+
+    for (const [id, idRecords] of Object.entries(recordsById)) {
+      const existingCache = await readPGCacheForId(id);
+      const newData = processRecordsToPGCache(idRecords);
+      const merged = mergePGCacheData(existingCache, newData);
+      await storePGCacheForId(id, merged);
+      updatedIds++;
+    }
+  } else {
+    // Full sync: fetch one ID at a time
+    console.log('Full PG cache sync: fetching all records one ID at a time');
+    const allIds = await fetchAllDailyIdsPG();
+    console.log(`Found ${allIds.length} unique IDs to process`);
+
+    for (let i = 0; i < allIds.length; i++) {
+      const id = allIds[i];
+      try {
+        const records = await fetchDailyRecordsWithChainsForIdPG(id);
+        if (records.length === 0) continue;
+
+        const data = processRecordsToPGCache(records);
+        await storePGCacheForId(id, data);
+        updatedIds++;
+
+        if ((i + 1) % 100 === 0) {
+          console.log(`PG cache: processed ${i + 1}/${allIds.length} IDs`);
+        }
+      } catch (e) {
+        console.error(`Error processing PG cache for ${id}:`, (e as any)?.message);
+      }
+    }
+  }
+
+  console.log(`Generated PG cache for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
+  return { updatedIds };
 }
 
 async function generateAggregateStats(currentData: any[]): Promise<any> {
@@ -390,6 +510,98 @@ function generateList(currentData: any[]): { tickers: string[]; platforms: strin
   return list;
 }
 
+interface HistoricalDataPoint {
+  timestamp: number;
+  mcap: number;
+  activeMcap: number;
+  defiActiveTvl: number;
+}
+
+async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Promise<void> {
+  console.log('Generating aggregated historical charts...');
+  const startTime = Date.now();
+
+  // Aggregation maps: key -> timestamp -> values
+  const byChain: { [chain: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
+  const byCategory: { [category: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
+  const byPlatform: { [platform: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
+
+  function ensureDataPoint(map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } }, key: string, timestamp: number): HistoricalDataPoint {
+    if (!map[key]) map[key] = {};
+    if (!map[key][timestamp]) map[key][timestamp] = { timestamp, mcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+    return map[key][timestamp];
+  }
+
+  // Process each asset's pg-cache for chain breakdown
+  let processedCount = 0;
+  for (const m of metadata) {
+    const pgCache = await readPGCacheForId(m.id);
+    if (!pgCache) continue;
+
+    const categories = m.data.category || [];
+    const platform = m.data.parentPlatform;
+
+    for (const [timestampStr, record] of Object.entries(pgCache)) {
+      const timestamp = Number(timestampStr);
+      const { mcap: totalMcap, activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
+
+      // Aggregate by individual chains (using chain keys)
+      for (const [chainKey, chainData] of Object.entries(chains)) {
+        const chainDp = ensureDataPoint(byChain, chainKey, timestamp);
+        chainDp.mcap += chainData.mcap || 0;
+        chainDp.activeMcap += chainData.activeMcap || 0;
+        chainDp.defiActiveTvl += chainData.defiActiveTvl || 0;
+      }
+
+      // Aggregate to "All"
+      const allDp = ensureDataPoint(byChain, 'all', timestamp);
+      allDp.mcap += totalMcap;
+      allDp.activeMcap += totalActiveMcap;
+      allDp.defiActiveTvl += totalTvl;
+
+      // Aggregate by category
+      for (const cat of categories) {
+        const dp = ensureDataPoint(byCategory, cat, timestamp);
+        dp.mcap += totalMcap;
+        dp.activeMcap += totalActiveMcap;
+        dp.defiActiveTvl += totalTvl;
+      }
+
+      // Aggregate by platform
+      if (platform) {
+        const dp = ensureDataPoint(byPlatform, platform, timestamp);
+        dp.mcap += totalMcap;
+        dp.activeMcap += totalActiveMcap;
+        dp.defiActiveTvl += totalTvl;
+      }
+    }
+    processedCount++;
+  }
+
+  // Convert to sorted arrays and store
+  function toSortedArray(map: { [timestamp: number]: HistoricalDataPoint }): HistoricalDataPoint[] {
+    return Object.values(map).sort((a, b) => a.timestamp - b.timestamp);
+  }
+
+  // Store chain charts (includes "All" and individual chains)
+  for (const [chain, timestampMap] of Object.entries(byChain)) {
+    await storeRouteData(`charts/chain/${chain}.json`, { data: toSortedArray(timestampMap) });
+  }
+
+  // Store category charts
+  for (const [category, timestampMap] of Object.entries(byCategory)) {
+    await storeRouteData(`charts/category/${category}.json`, { data: toSortedArray(timestampMap) });
+  }
+
+  // Store platform charts
+  for (const [platform, timestampMap] of Object.entries(byPlatform)) {
+    await storeRouteData(`charts/platform/${platform}.json`, { data: toSortedArray(timestampMap) });
+  }
+
+  console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
+  console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}`);
+}
+
 async function main() {
   console.log('='.repeat(60));
   console.log('RWA Cron Job Started:', new Date().toISOString());
@@ -430,6 +642,12 @@ async function main() {
     // Generate historical data incrementally
     const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental();
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
+
+    // Generate PG cache with chain breakdown
+    await generatePGCache();
+
+    // Generate aggregated historical charts by chain, category, platform
+    await generateAggregatedHistoricalCharts(metadata);
 
     // Generate lists of tickers, platforms, chains, categories sorted by mcap
     const list = generateList(currentData);

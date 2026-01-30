@@ -1,5 +1,6 @@
 import * as HyperExpress from 'hyper-express';
-import { readRouteData, getCacheVersion } from './file-cache';
+import * as sdk from '@defillama/sdk';
+import { readRouteData, getCacheVersion, readPGCacheForId, PGCacheData } from './file-cache';
 
 const webserver = new HyperExpress.Server();
 const port = +(process.env.RWA_PORT ?? 5002);
@@ -132,6 +133,64 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             return fileResponse(`charts/${id}.json`, res, 30);
+        })
+    );
+
+    // Get historical chart data by chain (accepts label, converts to key)
+    router.get(
+        '/chart/chain/:chain',
+        errorWrapper(async (req, res) => {
+            const { chain } = req.params;
+            if (!chain) {
+                return errorResponse(res, 'Missing chain parameter', 400);
+            }
+            // Convert chain label to key (e.g., "Ethereum" -> "ethereum")
+            const chainKey = chain === 'all' ? 'all' : sdk.chainUtils.getChainKeyFromLabel(chain) || chain;
+            return fileResponse(`charts/chain/${chainKey}.json`, res, 30);
+        })
+    );
+
+    // Get historical chart data for asset by ID (from pg-cache)
+    router.get(
+        '/chart/asset/:id',
+        errorWrapper(async (req, res) => {
+            const { id } = req.params;
+            if (!id) {
+                return errorResponse(res, 'Missing id parameter', 400);
+            }
+            const pgCache = await readPGCacheForId(id);
+            if (!pgCache) {
+                return errorResponse(res, `Asset "${id}" not found`, 404);
+            }
+            // Convert pg-cache map to sorted array
+            const data = Object.entries(pgCache)
+                .map(([timestamp, record]) => ({ timestamp: Number(timestamp), ...record }))
+                .sort((a, b) => a.timestamp - b.timestamp);
+            return successResponse(res, { data }, 30);
+        })
+    );
+
+    // Get historical chart data by category
+    router.get(
+        '/chart/category/:category',
+        errorWrapper(async (req, res) => {
+            const { category } = req.params;
+            if (!category) {
+                return errorResponse(res, 'Missing category parameter', 400);
+            }
+            return fileResponse(`charts/category/${category}.json`, res, 30);
+        })
+    );
+
+    // Get historical chart data by platform
+    router.get(
+        '/chart/platform/:platform',
+        errorWrapper(async (req, res) => {
+            const { platform } = req.params;
+            if (!platform) {
+                return errorResponse(res, 'Missing platform parameter', 400);
+            }
+            return fileResponse(`charts/platform/${platform}.json`, res, 30);
         })
     );
 

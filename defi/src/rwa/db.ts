@@ -391,6 +391,73 @@ export async function fetchDailyRecordsForIdPG(id: string): Promise<any[]> {
         raw: true,
     });
 }
+const PAGE_SIZE = 5000;
+
+function parseJsonSafe(str: string): any {
+    try {
+        return JSON.parse(str);
+    } catch {
+        return {};
+    }
+}
+
+function parseChainFields(record: any): any {
+    return {
+        ...record,
+        mcap: parseJsonSafe(record.mcap),
+        activemcap: parseJsonSafe(record.activemcap),
+        defiactivetvl: parseJsonSafe(record.defiactivetvl),
+    };
+}
+
+// Fetch daily records with chain-level data, filtered by updated_at (for incremental sync)
+export async function fetchDailyRecordsWithChainsPG(updatedAfter: Date): Promise<any[]> {
+    const results: any[] = [];
+    let offset = 0;
+
+    while (true) {
+        const batch = await DAILY_RWA_DATA.findAll({
+            attributes: ['id', 'timestamp', 'mcap', 'activemcap', 'defiactivetvl', 'updated_at'],
+            where: { updated_at: { [Op.gt]: updatedAfter } },
+            order: [['id', 'ASC'], ['timestamp', 'ASC']],
+            limit: PAGE_SIZE,
+            offset,
+            raw: true,
+        });
+
+        if (batch.length === 0) break;
+        results.push(...batch.map(parseChainFields));
+        if (batch.length < PAGE_SIZE) break;
+        offset += PAGE_SIZE;
+    }
+
+    return results;
+}
+
+// Fetch daily records with chain-level data for a single ID (for full sync)
+export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<any[]> {
+    const results: any[] = [];
+    let offset = 0;
+
+    while (true) {
+        const batch = await DAILY_RWA_DATA.findAll({
+            attributes: ['timestamp', 'mcap', 'activemcap', 'defiactivetvl'],
+            where: { id },
+            order: [['timestamp', 'ASC']],
+            limit: PAGE_SIZE,
+            offset,
+            raw: true,
+        });
+
+        if (batch.length === 0) break;
+        results.push(...batch.map(parseChainFields));
+        if (batch.length < PAGE_SIZE) break;
+        offset += PAGE_SIZE;
+    }
+
+    return results;
+}
+
 // Close the database connection
 async function closeConnection(): Promise<void> {
     if (!pgConnection) return;

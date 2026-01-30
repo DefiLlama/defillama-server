@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Bump this version to reset the cache
-const CACHE_VERSION = 'v1.1';
+const CACHE_VERSION = 'v1.2';
 
 const CACHE_DIR = process.env.RWA_CACHE_DIR || path.join(__dirname, '.rwa-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);
@@ -136,10 +136,10 @@ export async function readHistoricalDataForId(id: string): Promise<any[] | null>
     return result?.data || null;
 }
 
-export async function mergeHistoricalData(
+export function mergeHistoricalData(
     existingData: any[] | null,
     newRecords: any[]
-): Promise<any[]> {
+): any[] {
     if (!existingData || existingData.length === 0) {
         return newRecords;
     }
@@ -160,6 +160,37 @@ export async function mergeHistoricalData(
     merged.sort((a, b) => a.timestamp - b.timestamp);
 
     return merged;
+}
+
+// PG Cache - stores asset data with chain breakdown (chain keys), keyed by timestamp
+export interface PGCacheRecord {
+    mcap: number;
+    activeMcap: number;
+    defiActiveTvl: number;
+    chains: {
+        [chainKey: string]: {
+            mcap: number;
+            activeMcap: number;
+            defiActiveTvl: number;
+        };
+    };
+}
+
+export type PGCacheData = { [timestamp: number]: PGCacheRecord };
+
+export async function storePGCacheForId(id: string, data: PGCacheData): Promise<void> {
+    const subPath = fileNameNormalizer(`pg-cache/${id}.json`);
+    return storeData(subPath, data);
+}
+
+export async function readPGCacheForId(id: string): Promise<PGCacheData | null> {
+    const subPath = fileNameNormalizer(`pg-cache/${id}.json`);
+    return readFileData(subPath, { skipErrorLog: true });
+}
+
+export function mergePGCacheData(existing: PGCacheData | null, newRecords: PGCacheData): PGCacheData {
+    if (!existing) return newRecords;
+    return { ...existing, ...newRecords };
 }
 
 export async function clearOldCacheVersions(): Promise<void> {

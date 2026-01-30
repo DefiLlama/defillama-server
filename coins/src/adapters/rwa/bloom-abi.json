@@ -1,0 +1,16 @@
+{
+  "portfolioPricePerToken": {
+    "inputs": [],
+    "name": "portfolioPricePerToken",
+    "outputs": [{ "internalType": "uint64", "name": "", "type": "uint64" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getToken": {
+    "inputs": [],
+    "name": "getToken",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

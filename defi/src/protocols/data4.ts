@@ -12210,7 +12210,8 @@ const data4: Protocol[] = [
     twitter: "lifiprotocol",
     audit_links: ["https://docs.li.fi/smart-contracts/audits"],
     dimensions: {
-      fees: "lifi"
+      fees: "lifi",
+      "bridge-aggregators": "lifi",
     }
   },
   {

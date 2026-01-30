@@ -9730,5 +9730,24 @@ const data5: Protocol[] = [
     ],
     listedAt: 1769793157
   },
+  {
+    id: "7339",
+    name: "Denaria",
+    address: null,
+    symbol: "-",
+    url: "https://denaria.finance",
+    description: "Denaria is an onchain perpetual DEX powered by a dynamic virtual AMM that blends oracle pricing with virtual AMM liquidity. Trade assets with leverage, backed by stablecoin collateral and enjoy ultra-low slippage.",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/denaria.png`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Linea"],
+    module: "denaria/index.js",
+    twitter: "DenariaFinance",
+    audit_links: ["https://docs.denaria.finance/additional/security_audits"],
+    listedAt: 1769793447
+  },
 ];
 export default data5;

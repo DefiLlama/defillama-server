@@ -598,7 +598,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>URL</label>
-                                        <input type="url" name="govLink_url_0" placeholder="https://...">
+                                        <input type="text" name="govLink_url_0" placeholder="https://...">
                                     </div>
                                 </div>
                             </div>
@@ -692,7 +692,7 @@
                         </div>
                         <div class="form-group">
                             <label>Raise Details URL</label>
-                            <input type="url" name="raiseDetailsUrl" placeholder="https://...">
+                            <input type="text" name="raiseDetailsUrl" placeholder="https://...">
                         </div>
                     </div>
 
@@ -823,7 +823,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>URL (if applicable)</label>
-                                    <input type="url" name="resource_url_0" placeholder="https://...">
+                                    <input type="text" name="resource_url_0" placeholder="https://...">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -924,7 +924,7 @@
                         </div>
                         <div class="form-group">
                             <label>URL</label>
-                            <input type="url" name="govLink_url_${governanceLinkCount}" placeholder="https://...">
+                            <input type="text" name="govLink_url_${governanceLinkCount}" placeholder="https://...">
                         </div>
                     </div>
                 </div>
@@ -949,7 +949,7 @@
                         </div>
                         <div class="form-group">
                             <label>URL (if applicable)</label>
-                            <input type="url" name="resource_url_${resourceCount}" placeholder="https://...">
+                            <input type="text" name="resource_url_${resourceCount}" placeholder="https://...">
                         </div>
                     </div>
                     <div class="form-group">
@@ -1075,32 +1075,29 @@
             data.additionalNotes = formData.get('additionalNotes');
 
             try {
-                const response = await fetch('/api/submit', {
+                await fetch('https://script.google.com/macros/s/AKfycbwdgvqWGFo6CnHM5eSQQMJTWf3d5ZZCAdOHnQJgKcolqO9MGjgNtfShtFpgnVbggDnu/exec', {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
                 });
 
-                const result = await response.json();
-
-                if (response.ok) {
-                    showAlert('Thank you! Your submission has been received. Our team will review it shortly.', 'success');
-                    form.reset();
-                    // Reset multi-select displays
-                    document.querySelectorAll('.multi-select-wrapper').forEach(wrapper => {
-                        wrapper.querySelector('.placeholder').style.display = 'inline';
-                        wrapper.querySelector('.selected-items').innerHTML = '';
-                    });
-                    // Reset checkbox styling
-                    document.querySelectorAll('.checkbox-item.checked').forEach(item => {
-                        item.classList.remove('checked');
-                    });
-                } else {
-                    showAlert(result.error || 'Something went wrong. Please try again.', 'error');
-                }
+                // With no-cors mode, we can't read the response, so assume success
+                showAlert('Thank you! Your submission has been received. Our team will review it shortly.', 'success');
+                form.reset();
+                // Reset multi-select displays
+                document.querySelectorAll('.multi-select-wrapper').forEach(wrapper => {
+                    wrapper.querySelector('.placeholder').style.display = 'inline';
+                    wrapper.querySelector('.selected-items').innerHTML = '';
+                });
+                // Reset checkbox styling
+                document.querySelectorAll('.checkbox-item.checked').forEach(item => {
+                    item.classList.remove('checked');
+                });
             } catch (error) {
+                console.error('Submit error:', error);
                 showAlert('Network error. Please check your connection and try again.', 'error');
             } finally {
                 submitBtn.disabled = false;

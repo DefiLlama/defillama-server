@@ -263,9 +263,9 @@ function setRoutes(router: HyperExpress.Router): void {
 
             const chainLower = chain.toLowerCase();
             const filtered = currentData.data.filter((item: any) => {
-                // Check if chain exists in onChainMarketcap/activeMcap/defiActiveTvl.
+                // Check if chain exists in onChainMcap/activeMcap/defiActiveTvl.
                 const chains = [
-                    ...Object.keys(item.onChainMarketcap || {}),
+                    ...Object.keys(item.onChainMcap || {}),
                     ...Object.keys(item.activeMcap || {}),
                     ...Object.keys(item.defiActiveTvl || {}),
                 ];

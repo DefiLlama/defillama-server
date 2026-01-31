@@ -6,7 +6,7 @@ export const excludedProtocolCategories: string[] = ["CEX"];
 
 export const keyMap: { [value: string]: string } = {
     coingeckoId: "*Coingecko ID",
-    onChain: "onChainMarketcap",
+    onChain: "onChainMcap",
     defiActive: "defiActiveTvl",
     excluded: "*",
     assetName: "Name",

@@ -164,12 +164,12 @@ export function mergeHistoricalData(
 
 // PG Cache - stores asset data with chain breakdown (chain keys), keyed by timestamp
 export interface PGCacheRecord {
-    onChainMarketcap: number;
+    onChainMcap: number;
     activeMcap: number;
     defiActiveTvl: number;
     chains: {
         [chainKey: string]: {
-            onChainMarketcap: number;
+            onChainMcap: number;
             activeMcap: number;
             defiActiveTvl: number;
         };

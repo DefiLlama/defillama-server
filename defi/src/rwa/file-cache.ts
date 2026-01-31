@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Bump this version to reset the cache
-const CACHE_VERSION = 'v1.2';
+const CACHE_VERSION = 'v1.3';
 
 const CACHE_DIR = process.env.RWA_CACHE_DIR || path.join(__dirname, '.rwa-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);
@@ -164,12 +164,12 @@ export function mergeHistoricalData(
 
 // PG Cache - stores asset data with chain breakdown (chain keys), keyed by timestamp
 export interface PGCacheRecord {
-    mcap: number;
+    onChainMarketcap: number;
     activeMcap: number;
     defiActiveTvl: number;
     chains: {
         [chainKey: string]: {
-            mcap: number;
+            onChainMarketcap: number;
             activeMcap: number;
             defiActiveTvl: number;
         };

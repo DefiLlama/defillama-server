@@ -243,8 +243,7 @@ function processRecordsToPGCache(records: any[]): PGCacheData {
       if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
       const numValue = Number(value) || 0;
       chains[chainKey].onChainMcap = numValue;
-      totalOnChainMcap
-       += numValue;
+      totalOnChainMcap += numValue;
     }
 
     for (const [chainKey, value] of Object.entries(activemcapObj)) {

@@ -71,14 +71,14 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
   return { data, timestamp };
 }
 
-async function generateIdMap(
-  metadataOrCurrentData: Array<{ id?: string; data?: any; ticker?: string }>
-): Promise<{ [name: string]: string }> {
+function generateIdMap(
+  metadataOrCurrentData: Array<{ id: string; data: any; ticker: string }>
+): { [name: string]: string } {
   const idMap: { [name: string]: string } = {};
 
   metadataOrCurrentData.forEach((m: any) => {
-    const ticker = m?.data?.ticker ?? m?.ticker;
-    const id = m?.id ?? m?.data?.id;
+    const ticker = m.data.ticker
+    const id = m.id
     if (ticker && id) idMap[ticker] = id;
   });
 
@@ -332,7 +332,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
     // Sum mcap for this asset
-    if (typeof item.mcap === 'object') {
+    if (item.mcap && typeof item.mcap === 'object') {
       Object.values(item.mcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
@@ -342,7 +342,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum activeMcap for this asset
-    if (typeof item.activeMcap === 'object') {
+    if (item.activeMcap && typeof item.activeMcap === 'object') {
       Object.values(item.activeMcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
@@ -352,9 +352,9 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum defiActiveTvl for this asset
-    if (typeof item.defiActiveTvl === 'object') {
+    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
       Object.values(item.defiActiveTvl).forEach((protocols) => {
-        if (typeof protocols === 'object') {
+        if (protocols && typeof protocols === 'object') {
           Object.values(protocols as { [key: string]: string }).forEach((value) => {
             const numValue = Number(value);
             if (!isNaN(numValue)) {
@@ -385,7 +385,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     const seenChainsForAsset = new Set<string>();
 
     // mcap by chain
-    if (typeof item.mcap === 'object') {
+    if (item.mcap && typeof item.mcap === 'object') {
       Object.entries(item.mcap).forEach(([chain, value]: any) => {
         const numValue = Number(value);
         if (isNaN(numValue)) return;
@@ -401,7 +401,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // active mcap by chain
-    if (typeof item.activeMcap === 'object') {
+    if (item.activeMcap && typeof item.activeMcap === 'object') {
       Object.entries(item.activeMcap).forEach(([chain, value]: any) => {
         const numValue = Number(value);
         if (isNaN(numValue)) return;
@@ -417,7 +417,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // defi active tvl by chain (nested object per chain)
-    if (typeof item.defiActiveTvl === 'object') {
+    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
       Object.entries(item.defiActiveTvl).forEach(([chain, protocols]: any) => {
         const numValue = sumObjectValues(protocols);
         if (!numValue) {
@@ -504,11 +504,12 @@ async function generateList(currentData: any[]): Promise<{
   const platformMcap: { [platform: string]: number } = {};
   const chainMcap: { [chain: string]: number } = {};
   const categoryMcap: { [category: string]: number } = {};
+  const idMap: { [ticker: string]: string } = {};
 
   currentData.forEach((item: any) => {
     // Calculate total mcap for this asset
     let assetMcap = 0;
-    if (typeof item.mcap === 'object') {
+    if (item.mcap && typeof item.mcap === 'object') {
       Object.entries(item.mcap).forEach(([chain, value]) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
@@ -522,6 +523,7 @@ async function generateList(currentData: any[]): Promise<{
     // Aggregate ticker mcap
     if (item.ticker) {
       tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
+      idMap[item.ticker] = item.id;
     }
 
     // Aggregate platform mcap
@@ -547,12 +549,11 @@ async function generateList(currentData: any[]): Promise<{
     platforms: sortByMcap(platformMcap),
     chains: sortByMcap(chainMcap),
     categories: sortByMcap(categoryMcap),
+    idMap,
   };
 
-  const idMap = await generateIdMap(currentData);
-
   console.log(`Generated list data in ${Date.now() - startTime}ms`);
-  return { ...list, idMap };
+  return list;
 }
 
 interface HistoricalDataPoint {

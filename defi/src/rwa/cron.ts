@@ -29,7 +29,7 @@ interface RWACurrentData {
 function convertChainKeysToLabels(obj: { [chainKey: string]: any }): { [chainLabel: string]: any } {
   const result: { [chainLabel: string]: any } = {};
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
     result[chainLabel] = obj[chainKey];
   }
   return result;

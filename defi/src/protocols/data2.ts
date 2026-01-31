@@ -15625,7 +15625,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: "ethichub",
     cmcId: "8442",
-    category: "Lending",
+    category: "RWA Lending",
     chains: ["Ethereum", "Celo"],
     module: "ethichub/index.js",
     twitter: "EthicHub",

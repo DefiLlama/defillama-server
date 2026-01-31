@@ -204,3 +204,149 @@ export function toStringArrayOrNull(value: any): string[] | null {
   // Dedup while preserving order
   return Array.from(new Set(items));
 }
+
+// Some metadata fields should always be exposed as string arrays in the API,
+// even if the underlying stored metadata is a single string (legacy) or mixed types.
+export const ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
+  "website",
+  "twitter",
+  "chain",
+  "assetClass",
+  "category",
+  "issuerSourceLink",
+  "issuerRegistryInfo",
+  "attestationLinks",
+  "descriptionNotes",
+]);
+
+export function normalizeStringArrayFieldsInPlace(
+  target: any,
+  fields: ReadonlySet<string> = ALWAYS_STRING_ARRAY_FIELDS
+): any {
+  if (!target || typeof target !== "object") return target;
+  for (const field of fields) {
+    if (field in target) target[field] = toStringArrayOrNull(target[field]);
+  }
+  return target;
+}
+
+export function normalizeDashToNull(value: any) {
+  if (typeof value === "string" && value.trim() === "-") return null;
+  return value;
+}
+
+export function toStringOrNull(value: any): string | null {
+  value = normalizeDashToNull(value);
+  if (value == null) return null;
+  if (typeof value === "string") {
+    const s = value.trim();
+    return s ? s : null;
+  }
+  // Preserve existing semantics (avoid "[object Object]" as much as possible)
+  if (typeof value === "number" && !Number.isFinite(value)) return String(value);
+  return String(value);
+}
+
+export function toBooleanOrNull(value: any): boolean | null {
+  value = normalizeDashToNull(value);
+  if (value == null) return null;
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") {
+    if (value === 1) return true;
+    if (value === 0) return false;
+    return null;
+  }
+  if (typeof value === "string") {
+    const s = value.trim().toLowerCase();
+    if (!s) return null;
+    if (["true", "t", "yes", "y", "1"].includes(s)) return true;
+    if (["false", "f", "no", "n", "0"].includes(s)) return false;
+    return null;
+  }
+  return null;
+}
+
+export type RwaAccessModel =
+  | "Permissioned"
+  | "Permissionless"
+  | "Non-transferable"
+  | "Custodial Only"
+  | "Unknown";
+
+const ACCESS_MODEL_NORMALIZATION_MAP = new Map<string, RwaAccessModel>([
+  ["permissioned", "Permissioned"],
+  ["permissionless", "Permissionless"],
+  ["non-transferable", "Non-transferable"],
+  ["nontransferable", "Non-transferable"],
+  ["non transferable", "Non-transferable"],
+  ["custodial only", "Custodial Only"],
+  ["custodial-only", "Custodial Only"],
+  ["custodial", "Custodial Only"],
+  ["unknown", "Unknown"],
+]);
+
+export function normalizeAccessModel(value: any): RwaAccessModel {
+  const raw = toStringOrNull(value);
+  if (!raw) return "Unknown";
+  const key = raw.trim().toLowerCase();
+  return ACCESS_MODEL_NORMALIZATION_MAP.get(key) ?? "Unknown";
+}
+
+const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
+  "ticker",
+  "name",
+  "primaryChain",
+  "type",
+  "rwaClassification",
+  "issuer",
+  "isin",
+]);
+
+const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
+  "attestations",
+  "redeemable",
+  "cexListed",
+  "kycForMintRedeem",
+  "kycAllowlistedWhitelistedToTransferHold",
+  "transferable",
+  "selfCustody",
+  "stablecoin",
+  "governance",
+]);
+
+/**
+ * Normalize RWA metadata object into stable API-friendly types.
+ * - specified list fields -> string[]|null
+ * - specified scalar fields -> string|null
+ * - accessModel -> fixed enum (defaults to "Unknown")
+ * - specified flags -> boolean|null
+ * - price -> number|null
+ */
+export function normalizeRwaMetadataForApiInPlace(target: any): any {
+  if (!target || typeof target !== "object") return target;
+
+  // Normalize list fields
+  normalizeStringArrayFieldsInPlace(target, ALWAYS_STRING_ARRAY_FIELDS);
+
+  // Normalize scalar string fields
+  for (const field of RWA_STRING_OR_NULL_FIELDS) {
+    if (field in target) target[field] = toStringOrNull(target[field]);
+  }
+
+  // Normalize access model enum
+  // Must always be a valid enum value (default to "Unknown" when missing/invalid)
+  target.accessModel = normalizeAccessModel((target as any).accessModel);
+
+  // Normalize boolean flags
+  for (const field of RWA_BOOLEAN_OR_NULL_FIELDS) {
+    if (field in target) target[field] = toBooleanOrNull(target[field]);
+  }
+
+  // Normalize price
+  if ("price" in target) {
+    target.price = toFiniteNumberOrNull(target.price);
+    if (target.price != null) target.price = formatNumAsNumber(target.price);
+  }
+
+  return target;
+}

@@ -57,13 +57,12 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 
     if (!idCurrent) return;
 
-    Object.keys(idCurrent).forEach((key: string) => {
-      if (key === 'timestamp' && idCurrent[key] > timestamp) {
-        timestamp = idCurrent[key];
-      } else if (['defiactivetvl', 'mcap', 'activemcap'].includes(key)) {
-        m.data[key] = convertChainKeysToLabels((idCurrent as any)[key]);
-      }
-    });
+    if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
+
+    // Keep DB field names intact in storage, but expose camelCase in API responses.
+    m.data.mcap = convertChainKeysToLabels(idCurrent.mcap as any);
+    m.data.activeMcap = convertChainKeysToLabels(idCurrent.activemcap as any);
+    m.data.defiActiveTvl = convertChainKeysToLabels(idCurrent.defiactivetvl as any);
 
     data.push(m.data);
   });
@@ -333,7 +332,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
     // Sum mcap for this asset
-    if (item.mcap && typeof item.mcap === 'object') {
+    if (typeof item.mcap === 'object') {
       Object.values(item.mcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
@@ -343,8 +342,8 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum activeMcap for this asset
-    if (item.activemcap && typeof item.activemcap === 'object') {
-      Object.values(item.activemcap).forEach((value) => {
+    if (typeof item.activeMcap === 'object') {
+      Object.values(item.activeMcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
           aggItem.activeMcap += numValue;
@@ -353,9 +352,9 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum defiActiveTvl for this asset
-    if (item.defiactivetvl && typeof item.defiactivetvl === 'object') {
-      Object.values(item.defiactivetvl).forEach((protocols) => {
-        if (protocols && typeof protocols === 'object') {
+    if (typeof item.defiActiveTvl === 'object') {
+      Object.values(item.defiActiveTvl).forEach((protocols) => {
+        if (typeof protocols === 'object') {
           Object.values(protocols as { [key: string]: string }).forEach((value) => {
             const numValue = Number(value);
             if (!isNaN(numValue)) {
@@ -379,14 +378,14 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   }
 
   currentData.forEach((item: any) => {
-    // NOTE: current data uses DB field names (lowercase):
+    // NOTE: current data uses camelCase field names:
     // - item.mcap: { [chainLabel]: number-string }
-    // - item.activemcap: { [chainLabel]: number-string }
-    // - item.defiactivetvl: { [chainLabel]: { [protocol]: number-string } }
+    // - item.activeMcap: { [chainLabel]: number-string }
+    // - item.defiActiveTvl: { [chainLabel]: { [protocol]: number-string } }
     const seenChainsForAsset = new Set<string>();
 
     // mcap by chain
-    if (item.mcap && typeof item.mcap === 'object') {
+    if (typeof item.mcap === 'object') {
       Object.entries(item.mcap).forEach(([chain, value]: any) => {
         const numValue = Number(value);
         if (isNaN(numValue)) return;
@@ -402,8 +401,8 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // active mcap by chain
-    if (item.activemcap && typeof item.activemcap === 'object') {
-      Object.entries(item.activemcap).forEach(([chain, value]: any) => {
+    if (typeof item.activeMcap === 'object') {
+      Object.entries(item.activeMcap).forEach(([chain, value]: any) => {
         const numValue = Number(value);
         if (isNaN(numValue)) return;
 
@@ -418,8 +417,8 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // defi active tvl by chain (nested object per chain)
-    if (item.defiactivetvl && typeof item.defiactivetvl === 'object') {
-      Object.entries(item.defiactivetvl).forEach(([chain, protocols]: any) => {
+    if (typeof item.defiActiveTvl === 'object') {
+      Object.entries(item.defiActiveTvl).forEach(([chain, protocols]: any) => {
         const numValue = sumObjectValues(protocols);
         if (!numValue) {
           // keep the chain "seen" if it exists, even if TVL is 0
@@ -509,7 +508,7 @@ async function generateList(currentData: any[]): Promise<{
   currentData.forEach((item: any) => {
     // Calculate total mcap for this asset
     let assetMcap = 0;
-    if (item.mcap && typeof item.mcap === 'object') {
+    if (typeof item.mcap === 'object') {
       Object.entries(item.mcap).forEach(([chain, value]) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {

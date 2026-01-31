@@ -111,7 +111,7 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
-    if (process.env.URGENT_COINS_WEBHOOK)
+    if (process.env.URGENT_COINS_WEBHOOK && new Date('2026-02-21') > new Date())
       await sendMessage(
         `bridge ${i} storeTokens failed with: ${e}`,
         process.env.URGENT_COINS_WEBHOOK,

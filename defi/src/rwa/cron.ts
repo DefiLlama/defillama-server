@@ -221,13 +221,6 @@ function sumObjectValues(obj: any): number {
   }, 0);
 }
 
-function sumNestedObjectValues(obj: any): number {
-  if (!obj || typeof obj !== 'object') return 0;
-  return Object.values(obj).reduce((sum: number, inner: any) => {
-    return sum + sumObjectValues(inner);
-  }, 0);
-}
-
 function processRecordsToPGCache(records: any[]): PGCacheData {
   const data: PGCacheData = {};
   for (const record of records) {
@@ -335,198 +328,307 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
   return { updatedIds };
 }
 
-async function generateAggregateStats(currentData: any[]): Promise<any> {
-  console.log('Generating aggregate stats...');
+type AggregateStatsBucket = {
+  onChainMcap: number;
+  activeMcap: number;
+  defiActiveTvl: number;
+  assetCount: number;
+  assetIssuers: number;
+};
+
+/**
+ * Chain buckets are DISJOINT so the UI can sum without double-counting.
+ *
+ * Frontend toggle computation:
+ * - both off: base
+ * - stable on only: base + stablecoinsOnly + stablecoinsAndGovernance
+ * - gov on only: base + governanceOnly + stablecoinsAndGovernance
+ * - both on: base + stablecoinsOnly + governanceOnly + stablecoinsAndGovernance
+ */
+type AggregateStatsChainBucket = {
+  base: AggregateStatsBucket;
+  stablecoinsOnly: AggregateStatsBucket;
+  governanceOnly: AggregateStatsBucket;
+  stablecoinsAndGovernance: AggregateStatsBucket; // intersection (stablecoin && governance)
+};
+
+type AggregateStats = {
+  totalOnChainMcap: number;
+  totalActiveMcap: number;
+  totalDefiActiveTvl: number;
+  assetCount: number;
+  assetIssuers: number;
+  byCategory: { [category: string]: AggregateStatsBucket };
+  byChain: { [chain: string]: AggregateStatsChainBucket };
+  byPlatform: { [platform: string]: AggregateStatsBucket };
+};
+
+type AggregateStatsBucketInternal = {
+  onChainMcap: number;
+  activeMcap: number;
+  defiActiveTvl: number;
+  assetCount: number;
+  assetIssuers: Set<string>;
+};
+
+function generateAggregateStats(currentData: any[]): AggregateStats {
+  console.log("Generating aggregate stats...");
   const startTime = Date.now();
 
-  let totals = {
+  const makeAgg = (): AggregateStatsBucketInternal => ({
     onChainMcap: 0,
     activeMcap: 0,
     defiActiveTvl: 0,
     assetCount: 0,
-    assetIssuers: 0,
-  }
+    assetIssuers: new Set<string>(),
+  });
 
-  const byCategory: { [category: string]: { onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
+  const addToAgg = (
+    agg: AggregateStatsBucketInternal,
+    delta: { onChainMcap: any; activeMcap: any; defiActiveTvl: any },
+    issuer: string | null | undefined
+  ) => {
+    agg.onChainMcap += toFiniteNumberOrZero(delta.onChainMcap);
+    agg.activeMcap += toFiniteNumberOrZero(delta.activeMcap);
+    agg.defiActiveTvl += toFiniteNumberOrZero(delta.defiActiveTvl);
+    agg.assetCount += 1;
+    if (issuer) agg.assetIssuers.add(issuer);
+  };
+
+  const sumNumberMap = (obj: any): number => {
+    if (!obj || typeof obj !== "object") return 0;
+    if (Array.isArray((obj as any).breakdown)) {
+      return (obj as any).breakdown.reduce((acc: number, entry: any) => {
+        if (!Array.isArray(entry) || entry.length < 2) return acc;
+        return acc + toFiniteNumberOrZero(entry[1]);
+      }, 0);
+    }
+    return Object.entries(obj).reduce((acc, [k, v]) => {
+      if (k === "total" || k === "breakdown") return acc;
+      return acc + toFiniteNumberOrZero(v);
+    }, 0);
+  };
+
+  const normalizeNumberMap = (obj: any): { [key: string]: number } => {
+    const out: { [key: string]: number } = {};
+    if (!obj || typeof obj !== "object") return out;
+
+    // Support API-shaped { total, breakdown: [[key, value], ...] }
+    if (Array.isArray((obj as any).breakdown)) {
+      for (const entry of (obj as any).breakdown) {
+        if (!Array.isArray(entry) || entry.length < 2) continue;
+        const key = String(entry[0]);
+        out[key] = (out[key] || 0) + toFiniteNumberOrZero(entry[1]);
+      }
+      return out;
+    }
+
+    // Standard map-shaped { [key]: number }
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === "total" || k === "breakdown") continue;
+      out[k] = (out[k] || 0) + toFiniteNumberOrZero(v);
+    }
+    return out;
+  };
+
+  const normalizeNestedNumberMap = (obj: any): { [chain: string]: { [protocol: string]: number } } => {
+    const out: { [chain: string]: { [protocol: string]: number } } = {};
+    if (!obj || typeof obj !== "object") return out;
+
+    // If this is the chain-filtered API output { total, breakdown }, we can't recover the chain key here.
+    if (Array.isArray((obj as any).breakdown)) return out;
+
+    for (const [chain, protocols] of Object.entries(obj)) {
+      if (!protocols || typeof protocols !== "object") continue;
+      const inner: { [protocol: string]: number } = {};
+      for (const [p, v] of Object.entries(protocols as any)) {
+        inner[p] = (inner[p] || 0) + toFiniteNumberOrZero(v);
+      }
+      out[chain] = inner;
+    }
+    return out;
+  };
+
+  const sumProtocolMap = (obj: any): number => {
+    if (!obj || typeof obj !== "object") return 0;
+    let total = 0;
+    for (const v of Object.values(obj as any)) {
+      total += toFiniteNumberOrZero(v);
+    }
+    return total;
+  };
+
+  const byCategory: { [category: string]: AggregateStatsBucketInternal } = {};
   const byChain: {
     [chain: string]: {
-      onChainMcap: number; activeMcap: number; defiActiveTvl: number, assetCount: number, assetIssuers: Set<string>, stablecoins: {
-        onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
-      }, governance: {
-        onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
-      }
-    }
+      base: AggregateStatsBucketInternal;
+      stablecoinsOnly: AggregateStatsBucketInternal;
+      governanceOnly: AggregateStatsBucketInternal;
+      stablecoinsAndGovernance: AggregateStatsBucketInternal;
+    };
   } = {};
-  const byPlatform: { [platform: string]: { onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
 
-  function addToAggStats(item: any, value: string, aggObj: any) {
-    if (!value) return;
-    if (!aggObj[value]) {
-      aggObj[value] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() };
-    }
-    const aggItem = aggObj[value];
-    aggItem.assetCount += 1;
-    if (item.issuer) aggItem.assetIssuers.add(item.issuer)
+  const byPlatform: { [platform: string]: AggregateStatsBucketInternal } = {};
 
-    // Sum on-chain marketcap for this asset
-    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
-      Object.values(item.onChainMcap).forEach((value) => {
-        const numValue = Number(value);
-        if (!isNaN(numValue)) {
-          aggItem.onChainMcap += numValue;
-        }
-      });
-    }
+  let totalOnChainMcap = 0;
+  let totalActiveMcap = 0;
+  let totalDefiActiveTvl = 0;
+  let assetCount = 0;
+  const allIssuers = new Set<string>();
 
-    // Sum activeMcap for this asset
-    if (item.activeMcap && typeof item.activeMcap === 'object') {
-      Object.values(item.activeMcap).forEach((value) => {
-        const numValue = Number(value);
-        if (!isNaN(numValue)) {
-          aggItem.activeMcap += numValue;
-        }
-      });
-    }
+  for (const item of currentData || []) {
+    if (!item || typeof item !== "object") continue;
 
-    // Sum defiActiveTvl for this asset
-    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
-      aggItem.defiActiveTvl += sumNestedObjectValues(item.defiActiveTvl);
-    }
+    assetCount += 1;
 
-  }
+    const issuer: string | null = typeof item.issuer === "string" && item.issuer.trim() ? item.issuer.trim() : null;
+    if (issuer) allIssuers.add(issuer);
 
-  function initByChainIfNeeded(chain: string) {
-    if (!byChain[chain]) {
-      byChain[chain] = {
-        onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>(),
-        stablecoins: { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() },
-        governance: { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() }
-      };
-    }
-  }
+    const stablecoin = item.stablecoin === true;
+    const governance = item.governance === true;
 
-  for (const item of currentData) {
-    // NOTE: current data uses camelCase field names:
-    // - item.onChainMcap: { [chainLabel]: number-string }
-    // - item.activeMcap: { [chainLabel]: number-string }
-    // - item.defiActiveTvl: { [chainLabel]: { [protocol]: number-string } }
-    const seenChainsForAsset = new Set<string>();
-    const excludeFromChainOverall = Boolean(item.stablecoin || item.governance);
+    const onChainMcapByChain = normalizeNumberMap(item.onChainMcap);
+    const activeMcapByChain = normalizeNumberMap(item.activeMcap);
+    const defiActiveTvlByChain = normalizeNestedNumberMap(item.defiActiveTvl);
 
-    totals.assetCount += 1;
-    if (item.issuer) totals.assetIssuers += 1;
+    const assetOnChainTotal = sumNumberMap(onChainMcapByChain);
+    const assetActiveTotal = sumNumberMap(activeMcapByChain);
+    const assetDefiActiveTotal = Object.values(defiActiveTvlByChain).reduce(
+      (acc, protocols) => acc + sumProtocolMap(protocols),
+      0
+    );
 
-    // on-chain marketcap by chain
-    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
-        for (const [chain, value] of Object.entries(item.onChainMcap)) {
-        const numValue = Number(value);
-        if (Number.isNaN(numValue)) continue;
+    totalOnChainMcap += assetOnChainTotal;
+    totalActiveMcap += assetActiveTotal;
+    totalDefiActiveTvl += assetDefiActiveTotal;
 
-        totals.onChainMcap += numValue;
-        initByChainIfNeeded(chain);
-        seenChainsForAsset.add(chain);
-
-        // Chain "overall" should exclude stablecoin + governance assets
-        if (!excludeFromChainOverall) byChain[chain].onChainMcap += numValue;
-        if (item.stablecoin) byChain[chain].stablecoins.onChainMcap += numValue;
-        if (item.governance) byChain[chain].governance.onChainMcap += numValue;
-      };
-    }
-
-    // active mcap by chain
-    if (item.activeMcap && typeof item.activeMcap === 'object') {
-      for (const [chain, value] of Object.entries(item.activeMcap)) {
-        const numValue = Number(value);
-        if (Number.isNaN(numValue)) continue;
-
-        totals.activeMcap += numValue;
-        initByChainIfNeeded(chain);
-        seenChainsForAsset.add(chain);
-
-        // Chain "overall" should exclude stablecoin + governance assets
-        if (!excludeFromChainOverall) byChain[chain].activeMcap += numValue;
-        if (item.stablecoin) byChain[chain].stablecoins.activeMcap += numValue;
-        if (item.governance) byChain[chain].governance.activeMcap += numValue;
-      };
-    }
-
-    // defi active tvl by chain (nested object per chain)
-    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
-      for (const [chain, protocols] of Object.entries(item.defiActiveTvl)) {
-        const numValue = sumObjectValues(protocols);
-        if (Number.isNaN(numValue)) continue;
-
-        totals.defiActiveTvl += numValue;
-        initByChainIfNeeded(chain);
-
-        // Count asset towards this chain if it has any defiActiveTvl protocols there.
-        seenChainsForAsset.add(chain);
-        // Chain "overall" should exclude stablecoin + governance assets
-        if (!excludeFromChainOverall) byChain[chain].defiActiveTvl += numValue;
-        if (item.stablecoin) byChain[chain].stablecoins.defiActiveTvl += numValue;
-        if (item.governance) byChain[chain].governance.defiActiveTvl += numValue;
-      };
-    }
-
-    // Count assets per chain once (not once per metric)
-    for (const chain of seenChainsForAsset) {
-      initByChainIfNeeded(chain);
-      // Chain "overall" should exclude stablecoin + governance assets
-      if (!excludeFromChainOverall) {
-        byChain[chain].assetCount += 1;
-        if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
-      }
-
-      if (item.stablecoin) {
-        byChain[chain].stablecoins.assetCount += 1;
-        if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
-      }
-
-      if (item.governance) {
-        byChain[chain].governance.assetCount += 1;
-        if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
-      }
-    }
-
-    // Aggregate by category
-    const categories = item.category || [];
+    // Category aggregation (note: assets can have multiple categories; totals may exceed global totals)
+    const categories: string[] = Array.isArray(item.category) ? item.category : [];
     for (const cat of categories) {
-      addToAggStats(item, cat, byCategory);
+      if (!cat) continue;
+      if (!byCategory[cat]) byCategory[cat] = makeAgg();
+      addToAgg(
+        byCategory[cat],
+        {
+          onChainMcap: assetOnChainTotal,
+          activeMcap: assetActiveTotal,
+          defiActiveTvl: assetDefiActiveTotal,
+        },
+        issuer
+      );
     }
-    addToAggStats(item, item.parentPlatform, byPlatform);
-  };
 
-  function switchSetToCount(aggObj: any) {
-    Object.values(aggObj).forEach((stats: any) => {
-      stats.assetIssuers = stats.assetIssuers.size;
+    // Platform aggregation (bucket missing into "Unknown")
+    const platform: string =
+      typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : "Unknown";
+    if (!byPlatform[platform]) byPlatform[platform] = makeAgg();
+    addToAgg(
+      byPlatform[platform],
+      {
+        onChainMcap: assetOnChainTotal,
+        activeMcap: assetActiveTotal,
+        defiActiveTvl: assetDefiActiveTotal,
+      },
+      issuer
+    );
 
-      if (stats.stablecoins)
-        stats.stablecoins.assetIssuers = stats.stablecoins.assetIssuers.size;
+    // Chain aggregation + stablecoin/governance subgroups
+    const chains = new Set<string>([
+      ...Object.keys(onChainMcapByChain || {}),
+      ...Object.keys(activeMcapByChain || {}),
+      ...Object.keys(defiActiveTvlByChain || {}),
+    ]);
 
-      if (stats.governance)
-        stats.governance.assetIssuers = stats.governance.assetIssuers.size;
+    for (const chain of chains) {
+      if (!chain) continue;
+      const onChain = toFiniteNumberOrZero(onChainMcapByChain?.[chain]);
+      const active = toFiniteNumberOrZero(activeMcapByChain?.[chain]);
+      const tvl = sumProtocolMap(defiActiveTvlByChain?.[chain]);
 
-    });
+      if (!byChain[chain]) {
+        byChain[chain] = {
+          base: makeAgg(),
+          stablecoinsOnly: makeAgg(),
+          governanceOnly: makeAgg(),
+          stablecoinsAndGovernance: makeAgg(),
+        };
+      }
+
+      const chainAgg = byChain[chain];
+
+      // Disjoint buckets for UI toggles without double-counting:
+      // - base excludes stablecoins & governance by default
+      if (stablecoin && governance) {
+        addToAgg(
+          chainAgg.stablecoinsAndGovernance,
+          { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl },
+          issuer
+        );
+      } else if (stablecoin) {
+        addToAgg(chainAgg.stablecoinsOnly, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
+      } else if (governance) {
+        addToAgg(chainAgg.governanceOnly, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
+      } else {
+        addToAgg(chainAgg.base, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
+      }
+    }
   }
 
-  switchSetToCount(byCategory);
-  switchSetToCount(byPlatform);
-  switchSetToCount(byChain);
+  const outByCategory: { [category: string]: AggregateStatsBucket } = {};
+  for (const [k, v] of Object.entries(byCategory)) {
+    outByCategory[k] = {
+      onChainMcap: v.onChainMcap,
+      activeMcap: v.activeMcap,
+      defiActiveTvl: v.defiActiveTvl,
+      assetCount: v.assetCount,
+      assetIssuers: v.assetIssuers.size,
+    };
+  }
 
-  const stats = {
-    totalOnChainMcap: totals.onChainMcap,
-    totalActiveMcap: totals.activeMcap,
-    totalDefiActiveTvl: totals.defiActiveTvl,
-    totalAssets: totals.assetCount,
-    totalIssuers: totals.assetIssuers,
-    byChain,
-    byCategory,
-    byPlatform,
-  };
+  const outByPlatform: { [platform: string]: AggregateStatsBucket } = {};
+  for (const [k, v] of Object.entries(byPlatform)) {
+    outByPlatform[k] = {
+      onChainMcap: v.onChainMcap,
+      activeMcap: v.activeMcap,
+      defiActiveTvl: v.defiActiveTvl,
+      assetCount: v.assetCount,
+      assetIssuers: v.assetIssuers.size,
+    };
+  }
+
+  const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
+
+  for (const [chain, v] of Object.entries(byChain)) {
+    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucket => ({
+      onChainMcap: a.onChainMcap,
+      activeMcap: a.activeMcap,
+      defiActiveTvl: a.defiActiveTvl,
+      assetCount: a.assetCount,
+      assetIssuers: a.assetIssuers.size,
+    });
+
+    outByChain[chain] = {
+      base: toAggOut(v.base),
+      stablecoinsOnly: toAggOut(v.stablecoinsOnly),
+      governanceOnly: toAggOut(v.governanceOnly),
+      stablecoinsAndGovernance: toAggOut(v.stablecoinsAndGovernance),
+    };
+  }
 
   console.log(`Generated aggregate stats in ${Date.now() - startTime}ms`);
-  return stats;
+
+  return {
+    totalOnChainMcap,
+    totalActiveMcap,
+    totalDefiActiveTvl,
+    assetCount,
+    assetIssuers: allIssuers.size,
+    byCategory: outByCategory,
+    byChain: outByChain,
+    byPlatform: outByPlatform,
+  };
 }
+
 
 function generateList(currentData: any[]): {
   tickers: string[];
@@ -738,7 +840,7 @@ async function main() {
     await storeRouteData('id-map.json', idMap);
 
     // Generate aggregate stats
-    const stats = await generateAggregateStats(currentData);
+    const stats = generateAggregateStats(currentData);
     await storeRouteData('stats.json', stats);
 
     // Generate historical data incrementally

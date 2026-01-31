@@ -310,25 +310,25 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     defiActiveTvl: 0,
   }
 
-  const byCategory: { [category: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string> } } = {};
+  const byCategory: { [category: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
   const byChain: {
     [chain: string]: {
-      mcap: number; activeMcap: number; defiActiveTvl: number, assetsCount: number, assetIssuers: Set<string>, stablecoins: {
-        mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string>
+      mcap: number; activeMcap: number; defiActiveTvl: number, assetCount: number, assetIssuers: Set<string>, stablecoins: {
+        mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }, governance: {
-        mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string>
+        mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }
     }
   } = {};
-  const byPlatform: { [platform: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string> } } = {};
+  const byPlatform: { [platform: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
 
   function addToAggStats(item: any, value: string, aggObj: any) {
     if (!value) return;
     if (!aggObj[value]) {
-      aggObj[value] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() };
+      aggObj[value] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() };
     }
     const aggItem = aggObj[value];
-    aggItem.assetsCount += 1;
+    aggItem.assetCount += 1;
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
     // Sum mcap for this asset
@@ -370,9 +370,9 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   function initByChainIfNeeded(chain: string) {
     if (!byChain[chain]) {
       byChain[chain] = {
-        mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>(),
-        stablecoins: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() },
-        governance: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() }
+        mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>(),
+        stablecoins: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() },
+        governance: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() }
       };
     }
   }
@@ -439,16 +439,16 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     // Count assets per chain once (not once per metric)
     for (const chain of seenChainsForAsset) {
       initByChainIfNeeded(chain);
-      byChain[chain].assetsCount += 1;
+      byChain[chain].assetCount += 1;
       if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
 
       if (item.stablecoin) {
-        byChain[chain].stablecoins.assetsCount += 1;
+        byChain[chain].stablecoins.assetCount += 1;
         if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
       }
 
       if (item.governance) {
-        byChain[chain].governance.assetsCount += 1;
+        byChain[chain].governance.assetCount += 1;
         if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
       }
     }

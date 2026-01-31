@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Bump this version to reset the cache
-const CACHE_VERSION = 'v1.3';
+const CACHE_VERSION = 'v1.4';
 
 const CACHE_DIR = process.env.RWA_CACHE_DIR || path.join(__dirname, '.rwa-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);

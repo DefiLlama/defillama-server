@@ -57,13 +57,12 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 
     if (!idCurrent) return;
 
-    Object.keys(idCurrent).forEach((key: string) => {
-      if (key === 'timestamp' && idCurrent[key] > timestamp) {
-        timestamp = idCurrent[key];
-      } else if (['defiactivetvl', 'mcap', 'activemcap'].includes(key)) {
-        m.data[key] = convertChainKeysToLabels((idCurrent as any)[key]);
-      }
-    });
+    if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
+
+    // Keep DB field names intact in storage, but expose camelCase in API responses.
+    m.data.mcap = convertChainKeysToLabels(idCurrent.mcap as any);
+    m.data.activeMcap = convertChainKeysToLabels(idCurrent.activemcap as any);
+    m.data.defiActiveTvl = convertChainKeysToLabels(idCurrent.defiactivetvl as any);
 
     data.push(m.data);
   });
@@ -72,13 +71,15 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
   return { data, timestamp };
 }
 
-async function generateIdMap(metadata: RWAMetadata[]): Promise<{ [name: string]: string }> {
+function generateIdMap(
+  metadata: Array<{ id: string; data: any; ticker: string }>
+): { [name: string]: string } {
   const idMap: { [name: string]: string } = {};
 
   metadata.forEach((m: RWAMetadata) => {
-    if (m.data.ticker) {
-      idMap[m.data.ticker] = m.id;
-    }
+    const ticker = m.data.ticker
+    const id = m.id
+    if (ticker && id) idMap[ticker] = id;
   });
 
   return idMap;
@@ -309,27 +310,25 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     defiActiveTvl: 0,
   }
 
-  const byCategory: { [category: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string> } } = {};
+  const byCategory: { [category: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
   const byChain: {
     [chain: string]: {
-      mcap: number; activeMcap: number; defiActiveTvl: number, assetsCount: number, assetIssuers: Set<string>, stablecoins: {
-        mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string>
+      mcap: number; activeMcap: number; defiActiveTvl: number, assetCount: number, assetIssuers: Set<string>, stablecoins: {
+        mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }, governance: {
-        mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string>
+        mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }
     }
   } = {};
-  const byPlatform: { [platform: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetsCount: number, assetIssuers: Set<string> } } = {};
+  const byPlatform: { [platform: string]: { mcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
 
   function addToAggStats(item: any, value: string, aggObj: any) {
     if (!value) return;
     if (!aggObj[value]) {
-      aggObj[value] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() };
+      aggObj[value] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() };
     }
     const aggItem = aggObj[value];
-    aggObj[value].assetsCount += 1;
-
-    aggItem.assetsCount += 1;
+    aggItem.assetCount += 1;
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
     // Sum mcap for this asset
@@ -343,8 +342,8 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum activeMcap for this asset
-    if (item.activemcap && typeof item.activemcap === 'object') {
-      Object.values(item.activemcap).forEach((value) => {
+    if (item.activeMcap && typeof item.activeMcap === 'object') {
+      Object.values(item.activeMcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
           aggItem.activeMcap += numValue;
@@ -353,8 +352,8 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
 
     // Sum defiActiveTvl for this asset
-    if (item.defiactivetvl && typeof item.defiactivetvl === 'object') {
-      Object.values(item.defiactivetvl).forEach((protocols) => {
+    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
+      Object.values(item.defiActiveTvl).forEach((protocols) => {
         if (protocols && typeof protocols === 'object') {
           Object.values(protocols as { [key: string]: string }).forEach((value) => {
             const numValue = Number(value);
@@ -371,50 +370,88 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   function initByChainIfNeeded(chain: string) {
     if (!byChain[chain]) {
       byChain[chain] = {
-        mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>(),
-        stablecoins: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() },
-        governance: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() }
+        mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>(),
+        stablecoins: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() },
+        governance: { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() }
       };
     }
   }
 
-  const keyMap = {
-    mcap: 'mcap',
-    activeMcap: 'activeMcap',
-    defiActiveTvl: 'defiActiveTvl',
-  }
-
   currentData.forEach((item: any) => {
+    // NOTE: current data uses camelCase field names:
+    // - item.mcap: { [chainLabel]: number-string }
+    // - item.activeMcap: { [chainLabel]: number-string }
+    // - item.defiActiveTvl: { [chainLabel]: { [protocol]: number-string } }
+    const seenChainsForAsset = new Set<string>();
 
-    Object.entries(keyMap).forEach(([key, mappedKey]) => {
-      if (item[key] && typeof item[key] === 'object') {
-        Object.entries(item[key]).forEach(([chain, value]: any) => {
-          const numValue = Number(value);
-          if (!isNaN(numValue)) {
+    // mcap by chain
+    if (item.mcap && typeof item.mcap === 'object') {
+      Object.entries(item.mcap).forEach(([chain, value]: any) => {
+        const numValue = Number(value);
+        if (isNaN(numValue)) return;
 
-            totals[mappedKey as keyof typeof totals] += numValue;
+        totals.mcap += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].mcap += numValue;
+        seenChainsForAsset.add(chain);
 
-            initByChainIfNeeded(chain)
+        if (item.stablecoin) (byChain[chain].stablecoins as any).mcap += numValue;
+        if (item.governance) (byChain[chain].governance as any).mcap += numValue;
+      });
+    }
 
-            byChain[chain].assetsCount += 1;
-            if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
-            (byChain[chain] as any)[mappedKey] += numValue;
+    // active mcap by chain
+    if (item.activeMcap && typeof item.activeMcap === 'object') {
+      Object.entries(item.activeMcap).forEach(([chain, value]: any) => {
+        const numValue = Number(value);
+        if (isNaN(numValue)) return;
 
-            if (item.stablecoin) {
-              (byChain[chain].stablecoins as any)[mappedKey] += numValue;
-              byChain[chain].stablecoins.assetsCount += 1;
-              if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
-            }
+        totals.activeMcap += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].activeMcap += numValue;
+        seenChainsForAsset.add(chain);
 
-            if (item.governance) {
-              (byChain[chain].governance as any)[mappedKey] += numValue;
-              byChain[chain].governance.assetsCount += 1;
-              if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
-            }
-          }
-        });
+        if (item.stablecoin) (byChain[chain].stablecoins as any).activeMcap += numValue;
+        if (item.governance) (byChain[chain].governance as any).activeMcap += numValue;
+      });
+    }
+
+    // defi active tvl by chain (nested object per chain)
+    if (item.defiActiveTvl && typeof item.defiActiveTvl === 'object') {
+      Object.entries(item.defiActiveTvl).forEach(([chain, protocols]: any) => {
+        const numValue = sumObjectValues(protocols);
+        if (!numValue) {
+          // keep the chain "seen" if it exists, even if TVL is 0
+          if (chain) seenChainsForAsset.add(chain);
+          return;
+        }
+
+        totals.defiActiveTvl += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].defiActiveTvl += numValue;
+        seenChainsForAsset.add(chain);
+
+        if (item.stablecoin) (byChain[chain].stablecoins as any).defiActiveTvl += numValue;
+        if (item.governance) (byChain[chain].governance as any).defiActiveTvl += numValue;
+      });
+    }
+
+    // Count assets per chain once (not once per metric)
+    for (const chain of seenChainsForAsset) {
+      initByChainIfNeeded(chain);
+      byChain[chain].assetCount += 1;
+      if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
+
+      if (item.stablecoin) {
+        byChain[chain].stablecoins.assetCount += 1;
+        if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
       }
-    });
+
+      if (item.governance) {
+        byChain[chain].governance.assetCount += 1;
+        if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
+      }
+    }
 
     // Aggregate by category
     const categories = item.category || [];
@@ -453,7 +490,13 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   return stats;
 }
 
-function generateList(currentData: any[]): { tickers: string[]; platforms: string[]; chains: string[]; categories: string[] } {
+function generateList(currentData: any[]): {
+  tickers: string[];
+  platforms: string[];
+  chains: string[];
+  categories: string[];
+  idMap: { [name: string]: string };
+} {
   console.log('Generating list data...');
   const startTime = Date.now();
 
@@ -461,6 +504,7 @@ function generateList(currentData: any[]): { tickers: string[]; platforms: strin
   const platformMcap: { [platform: string]: number } = {};
   const chainMcap: { [chain: string]: number } = {};
   const categoryMcap: { [category: string]: number } = {};
+  const idMap: { [ticker: string]: string } = {};
 
   currentData.forEach((item: any) => {
     // Calculate total mcap for this asset
@@ -479,6 +523,7 @@ function generateList(currentData: any[]): { tickers: string[]; platforms: strin
     // Aggregate ticker mcap
     if (item.ticker) {
       tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
+      idMap[item.ticker] = item.id;
     }
 
     // Aggregate platform mcap
@@ -504,6 +549,7 @@ function generateList(currentData: any[]): { tickers: string[]; platforms: strin
     platforms: sortByMcap(platformMcap),
     chains: sortByMcap(chainMcap),
     categories: sortByMcap(categoryMcap),
+    idMap,
   };
 
   console.log(`Generated list data in ${Date.now() - startTime}ms`);

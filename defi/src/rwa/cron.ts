@@ -72,11 +72,11 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 }
 
 function generateIdMap(
-  metadataOrCurrentData: Array<{ id: string; data: any; ticker: string }>
+  metadata: Array<{ id: string; data: any; ticker: string }>
 ): { [name: string]: string } {
   const idMap: { [name: string]: string } = {};
 
-  metadataOrCurrentData.forEach((m: any) => {
+  metadata.forEach((m: RWAMetadata) => {
     const ticker = m.data.ticker
     const id = m.id
     if (ticker && id) idMap[ticker] = id;
@@ -490,13 +490,13 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   return stats;
 }
 
-async function generateList(currentData: any[]): Promise<{
+function generateList(currentData: any[]): {
   tickers: string[];
   platforms: string[];
   chains: string[];
   categories: string[];
   idMap: { [name: string]: string };
-}> {
+} {
   console.log('Generating list data...');
   const startTime = Date.now();
 
@@ -696,7 +696,7 @@ async function main() {
     await generateAggregatedHistoricalCharts(metadata);
 
     // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = await generateList(currentData);
+    const list = generateList(currentData);
     await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));

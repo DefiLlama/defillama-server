@@ -16,6 +16,7 @@ import {
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
+import { formatNumAsNumber, toFiniteNumberOrNull, toFiniteNumberOrZero } from './utils';
 
 interface RWACurrentData {
   id: string;
@@ -23,12 +24,6 @@ interface RWACurrentData {
   defiactivetvl: object;
   mcap: object;
   activemcap: object;
-}
-
-// Convert chain keys to chain labels in an object
-function toFiniteNumberOrZero(value: any): number {
-  const num = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(num) ? num : 0;
 }
 
 // Convert chain keys to chain labels in an object, coercing values to numbers
@@ -86,9 +81,16 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 
     if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
 
-    // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMarketcap" instead).
+    // Ensure consistent types in API output
+    // price must always be number|null (never a string)
+    if ('price' in (m.data as any)) {
+      (m.data as any).price = toFiniteNumberOrNull((m.data as any).price);
+      if ((m.data as any).price != null) (m.data as any).price = formatNumAsNumber((m.data as any).price);
+    }
+
+    // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;
-    m.data.onChainMarketcap = convertChainKeysToLabelsNumber(idCurrent.mcap as any);
+    m.data.onChainMcap = convertChainKeysToLabelsNumber(idCurrent.mcap as any);
     m.data.activeMcap = convertChainKeysToLabelsNumber(idCurrent.activemcap as any);
     m.data.defiActiveTvl = convertChainKeysToLabelsNestedNumber(idCurrent.defiactivetvl as any);
 
@@ -146,7 +148,7 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
       }
       recordsById[record.id].push({
         timestamp: record.timestamp,
-        onChainMarketcap: record.aggregatemcap,
+        onChainMcap: record.aggregatemcap,
         defiActiveTvl: record.aggregatedefiactivetvl,
         activeMcap: record.aggregatedactivemcap,
       });
@@ -183,7 +185,7 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
 
         const historicalData = records.map((record) => ({
           timestamp: record.timestamp,
-          onChainMarketcap: record.aggregatemcap,
+          onChainMcap: record.aggregatemcap,
           defiActiveTvl: record.aggregatedefiactivetvl,
           activeMcap: record.aggregatedactivemcap,
         }));
@@ -235,33 +237,33 @@ function processRecordsToPGCache(records: any[]): PGCacheData {
     const { mcap: mcapObj, activemcap: activemcapObj, defiactivetvl: defitvlObj } = record;
 
     const chains: PGCacheRecord['chains'] = {};
-    let totalMcap = 0;
+    let totalOnChainMcap = 0;
     let totalActiveMcap = 0;
     let totalDefiActiveTvl = 0;
 
     for (const [chainKey, value] of Object.entries(mcapObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
       const numValue = Number(value) || 0;
-      chains[chainKey].onChainMarketcap = numValue;
-      totalMcap += numValue;
+      chains[chainKey].onChainMcap = numValue;
+      totalOnChainMcap += numValue;
     }
 
     for (const [chainKey, value] of Object.entries(activemcapObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
       const numValue = Number(value) || 0;
       chains[chainKey].activeMcap = numValue;
       totalActiveMcap += numValue;
     }
 
     for (const [chainKey, protocols] of Object.entries(defitvlObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
       const numValue = sumObjectValues(protocols);
       chains[chainKey].defiActiveTvl = numValue;
       totalDefiActiveTvl += numValue;
     }
 
     data[record.timestamp] = {
-      onChainMarketcap: totalMcap,
+      onChainMcap: totalOnChainMcap,
       activeMcap: totalActiveMcap,
       defiActiveTvl: totalDefiActiveTvl,
       chains,
@@ -340,40 +342,40 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   const startTime = Date.now();
 
   let totals = {
-    onChainMarketcap: 0,
+    onChainMcap: 0,
     activeMcap: 0,
     defiActiveTvl: 0,
     assetCount: 0,
     assetIssuers: 0,
   }
 
-  const byCategory: { [category: string]: { onChainMarketcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
+  const byCategory: { [category: string]: { onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
   const byChain: {
     [chain: string]: {
-      onChainMarketcap: number; activeMcap: number; defiActiveTvl: number, assetCount: number, assetIssuers: Set<string>, stablecoins: {
-        onChainMarketcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
+      onChainMcap: number; activeMcap: number; defiActiveTvl: number, assetCount: number, assetIssuers: Set<string>, stablecoins: {
+        onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }, governance: {
-        onChainMarketcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
+        onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string>
       }
     }
   } = {};
-  const byPlatform: { [platform: string]: { onChainMarketcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
+  const byPlatform: { [platform: string]: { onChainMcap: number; activeMcap: number; defiActiveTvl: number; assetCount: number, assetIssuers: Set<string> } } = {};
 
   function addToAggStats(item: any, value: string, aggObj: any) {
     if (!value) return;
     if (!aggObj[value]) {
-      aggObj[value] = { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() };
+      aggObj[value] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() };
     }
     const aggItem = aggObj[value];
     aggItem.assetCount += 1;
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
     // Sum on-chain marketcap for this asset
-    if (item.onChainMarketcap && typeof item.onChainMarketcap === 'object') {
-      Object.values(item.onChainMarketcap).forEach((value) => {
+    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
+      Object.values(item.onChainMcap).forEach((value) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
-          aggItem.onChainMarketcap += numValue;
+          aggItem.onChainMcap += numValue;
         }
       });
     }
@@ -398,16 +400,16 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   function initByChainIfNeeded(chain: string) {
     if (!byChain[chain]) {
       byChain[chain] = {
-        onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>(),
-        stablecoins: { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() },
-        governance: { onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() }
+        onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>(),
+        stablecoins: { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() },
+        governance: { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, assetCount: 0, assetIssuers: new Set<string>() }
       };
     }
   }
 
   for (const item of currentData) {
     // NOTE: current data uses camelCase field names:
-    // - item.onChainMarketcap: { [chainLabel]: number-string }
+    // - item.onChainMcap: { [chainLabel]: number-string }
     // - item.activeMcap: { [chainLabel]: number-string }
     // - item.defiActiveTvl: { [chainLabel]: { [protocol]: number-string } }
     const seenChainsForAsset = new Set<string>();
@@ -417,19 +419,19 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     if (item.issuer) totals.assetIssuers += 1;
 
     // on-chain marketcap by chain
-    if (item.onChainMarketcap && typeof item.onChainMarketcap === 'object') {
-        for (const [chain, value] of Object.entries(item.onChainMarketcap)) {
+    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
+        for (const [chain, value] of Object.entries(item.onChainMcap)) {
         const numValue = Number(value);
         if (Number.isNaN(numValue)) continue;
 
-        totals.onChainMarketcap += numValue;
+        totals.onChainMcap += numValue;
         initByChainIfNeeded(chain);
         seenChainsForAsset.add(chain);
 
         // Chain "overall" should exclude stablecoin + governance assets
-        if (!excludeFromChainOverall) byChain[chain].onChainMarketcap += numValue;
-        if (item.stablecoin) byChain[chain].stablecoins.onChainMarketcap += numValue;
-        if (item.governance) byChain[chain].governance.onChainMarketcap += numValue;
+        if (!excludeFromChainOverall) byChain[chain].onChainMcap += numValue;
+        if (item.stablecoin) byChain[chain].stablecoins.onChainMcap += numValue;
+        if (item.governance) byChain[chain].governance.onChainMcap += numValue;
       };
     }
 
@@ -514,7 +516,7 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   switchSetToCount(byChain);
 
   const stats = {
-    totalOnChainMarketcap: totals.onChainMarketcap,
+    totalOnChainMcap: totals.onChainMcap,
     totalActiveMcap: totals.activeMcap,
     totalDefiActiveTvl: totals.defiActiveTvl,
     totalAssets: totals.assetCount,
@@ -547,8 +549,8 @@ function generateList(currentData: any[]): {
   currentData.forEach((item: any) => {
     // Calculate total on-chain marketcap for this asset
     let assetMcap = 0;
-    if (item.onChainMarketcap && typeof item.onChainMarketcap === 'object') {
-      Object.entries(item.onChainMarketcap).forEach(([chain, value]) => {
+    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
+      Object.entries(item.onChainMcap).forEach(([chain, value]) => {
         const numValue = Number(value);
         if (!isNaN(numValue)) {
           assetMcap += numValue;
@@ -596,7 +598,7 @@ function generateList(currentData: any[]): {
 
 interface HistoricalDataPoint {
   timestamp: number;
-  onChainMarketcap: number;
+  onChainMcap: number;
   activeMcap: number;
   defiActiveTvl: number;
 }
@@ -612,7 +614,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
   function ensureDataPoint(map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } }, key: string, timestamp: number): HistoricalDataPoint {
     if (!map[key]) map[key] = {};
-    if (!map[key][timestamp]) map[key][timestamp] = { timestamp, onChainMarketcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+    if (!map[key][timestamp]) map[key][timestamp] = { timestamp, onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
     return map[key][timestamp];
   }
 
@@ -627,26 +629,26 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
     for (const [timestampStr, record] of Object.entries(pgCache)) {
       const timestamp = Number(timestampStr);
-      const { onChainMarketcap: totalMcap, activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
+      const { onChainMcap: totalOnChainMcap, activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
 
       // Aggregate by individual chains (using chain keys)
       for (const [chainKey, chainData] of Object.entries(chains)) {
         const chainDp = ensureDataPoint(byChain, chainKey, timestamp);
-        chainDp.onChainMarketcap += chainData.onChainMarketcap || 0;
+        chainDp.onChainMcap += chainData.onChainMcap || 0;
         chainDp.activeMcap += chainData.activeMcap || 0;
         chainDp.defiActiveTvl += chainData.defiActiveTvl || 0;
       }
 
       // Aggregate to "All"
       const allDp = ensureDataPoint(byChain, 'all', timestamp);
-      allDp.onChainMarketcap += totalMcap;
+      allDp.onChainMcap += totalOnChainMcap;
       allDp.activeMcap += totalActiveMcap;
       allDp.defiActiveTvl += totalTvl;
 
       // Aggregate by category
       for (const cat of categories) {
         const dp = ensureDataPoint(byCategory, cat, timestamp);
-        dp.onChainMarketcap += totalMcap;
+        dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
       }
@@ -654,7 +656,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       // Aggregate by platform
       if (platform) {
         const dp = ensureDataPoint(byPlatform, platform, timestamp);
-        dp.onChainMarketcap += totalMcap;
+        dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
       }

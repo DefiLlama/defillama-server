@@ -12,7 +12,16 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date
 import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
 import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
-import { fetchBurnAddresses, sortTokensByChain, toCamelCase } from "./utils";
+import { fetchBurnAddresses, formatNumAsNumber, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
+
+const ALWAYS_STRING_ARRAY_FIELDS = new Set([
+  "website",
+  "twitter",
+  "issuerSourceLink",
+  "issuerRegistryInfo",
+  "attestationLinks",
+  "descriptionNotes",
+]);
 
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
@@ -130,7 +139,7 @@ async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]
       const mcap = circulating[pegType];
       if (!mcap) return;
       validStablecoinIds.push(id);
-      data[gecko_id][chain] = mcap.toFixed(0);
+      data[gecko_id][chain] = toFixedNumber(mcap, 0);
     });
   });
 
@@ -166,7 +175,7 @@ async function fetchHistoricalStablecoins(
         if (!circulating) return;
         const mcap = circulating[pegType];
         if (!mcap) return;
-        data[gecko_id][chain] = mcap.toFixed(0);
+        data[gecko_id][chain] = toFixedNumber(mcap, 0);
       });
     },
   });
@@ -211,7 +220,7 @@ function getActiveTvls(
         const chainDisplayName = getChainDisplayName(chain, true);
         if (!finalData[rwaId][keyMap.defiActive][chainDisplayName])
           finalData[rwaId][keyMap.defiActive][chainDisplayName] = {};
-        finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = aum.toFixed(0);
+        finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
       } catch (e) {
         console.error(`Malformed ${keyMap.defiActive} for ${rwaId}: ${e}`);
       }
@@ -260,7 +269,14 @@ function getOnChainTvlAndActiveMcaps(
       return;
     }
 
-    if (!finalData[rwaId][keyMap.price]) finalData[rwaId][keyMap.price] = price;
+    // Ensure price is always number|null for API consumers.
+    // If missing in metadata, keep it null (do not backfill from price feed).
+    if ((finalData[rwaId][keyMap.price] ?? null) == null) {
+      finalData[rwaId][keyMap.price] = null;
+    } else {
+      const parsedPrice = toFiniteNumberOrNull(finalData[rwaId][keyMap.price]);
+      finalData[rwaId][keyMap.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    }
 
     try {
       if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
@@ -268,8 +284,8 @@ function getOnChainTvlAndActiveMcaps(
       if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
 
       const aum = (price * supply) / 10 ** decimals;
-      finalData[rwaId][keyMap.onChain][chainDisplayName] = aum.toFixed(0);
-      finalData[rwaId][keyMap.activeMcap][chainDisplayName] = aum.toFixed(0);
+      finalData[rwaId][keyMap.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+      finalData[rwaId][keyMap.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
@@ -289,9 +305,10 @@ function findActiveMcaps(
   const thisChainExcluded = excludedAmounts[rwaId][chain];
   if (!thisChainExcluded) return;
   const excludedUsdValue = thisChainExcluded.div(BigNumber(10).pow(assetPrices.decimals)).times(assetPrices.price);
-  finalData[rwaId][keyMap.activeMcap][chain] = (
-    finalData[rwaId][keyMap.activeMcap][chain] - excludedUsdValue.toNumber()
-  ).toFixed(0);
+  finalData[rwaId][keyMap.activeMcap][chain] = toFixedNumber(
+    finalData[rwaId][keyMap.activeMcap][chain] - excludedUsdValue.toNumber(),
+    0
+  );
 }
 // main entry
 async function main(ts: number = 0) {
@@ -329,6 +346,14 @@ async function main(ts: number = 0) {
 
       // exclude columns for internal use
       else if (key.startsWith(keyMap.excluded)) return;
+      // ensure consistent arrays for string-list fields
+      else if (ALWAYS_STRING_ARRAY_FIELDS.has(camelKey)) {
+        cleanRow[camelKey] = toStringArrayOrNull(row[key]);
+      }
+      // ensure price is never a string in API payloads
+      else if (camelKey === keyMap.price || camelKey === "price") {
+        cleanRow[camelKey] = toFiniteNumberOrNull(row[key]);
+      }
       else if (key == "Primary Chain") {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       } else if (key == "Chain")
@@ -337,6 +362,13 @@ async function main(ts: number = 0) {
           : null;
       else cleanRow[camelKey] = row[key] == "" ? null : row[key];
     });
+
+    // Ensure accessModel is always present for API consumers
+    // (Airtable may have it blank/undefined for some assets)
+    if (cleanRow.accessModel == null) cleanRow.accessModel = "Unknown";
+    // Ensure price is number|null for API consumers
+    const parsedPrice = toFiniteNumberOrNull(cleanRow[keyMap.price]);
+    cleanRow[keyMap.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
 
     // append this RWA to API response
     rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];

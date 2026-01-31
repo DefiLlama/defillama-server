@@ -10,7 +10,7 @@ const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocol
   {}
 );
 // Store historical data
-export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMarketcap: { [chain: string]: string }, activeMcap: { [chain: string]: string } } }, timestamp: number }): Promise<void> {
+export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMcap: { [chain: string]: string }, activeMcap: { [chain: string]: string } } }, timestamp: number }): Promise<void> {
   const { data, timestamp } = res;
   if (Object.keys(data).length == 0) return;
 
@@ -25,7 +25,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     aggregatedactivemcap: number;
   }[] = [];
   Object.keys(data).forEach((id: any) => {
-    const { defiActiveTvl, onChainMarketcap, activeMcap } = data[id];
+    const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -43,10 +43,10 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     // use chain slugs for mcaps and aggregate 
     const mcap: { [chain: string]: string } = {};
     let aggregatemcap: number = 0;
-    Object.keys(onChainMarketcap ?? {}).map((chain: string) => {
+    Object.keys(onChainMcap ?? {}).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
-      mcap[chainSlug] = onChainMarketcap[chain];
-      aggregatemcap += Number(onChainMarketcap[chain]);
+      mcap[chainSlug] = onChainMcap[chain];
+      aggregatemcap += Number(onChainMcap[chain]);
     });
 
     // use chain slugs for active mcaps and aggregate 

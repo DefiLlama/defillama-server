@@ -29,7 +29,7 @@ interface RWACurrentData {
 function convertChainKeysToLabels(obj: { [chainKey: string]: any }): { [chainLabel: string]: any } {
   const result: { [chainLabel: string]: any } = {};
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
     result[chainLabel] = obj[chainKey];
   }
   return result;
@@ -72,13 +72,15 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
   return { data, timestamp };
 }
 
-async function generateIdMap(metadata: RWAMetadata[]): Promise<{ [name: string]: string }> {
+async function generateIdMap(
+  metadataOrCurrentData: Array<{ id?: string; data?: any; ticker?: string }>
+): Promise<{ [name: string]: string }> {
   const idMap: { [name: string]: string } = {};
 
-  metadata.forEach((m: RWAMetadata) => {
-    if (m.data.ticker) {
-      idMap[m.data.ticker] = m.id;
-    }
+  metadataOrCurrentData.forEach((m: any) => {
+    const ticker = m?.data?.ticker ?? m?.ticker;
+    const id = m?.id ?? m?.data?.id;
+    if (ticker && id) idMap[ticker] = id;
   });
 
   return idMap;
@@ -327,8 +329,6 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
       aggObj[value] = { mcap: 0, activeMcap: 0, defiActiveTvl: 0, assetsCount: 0, assetIssuers: new Set<string>() };
     }
     const aggItem = aggObj[value];
-    aggObj[value].assetsCount += 1;
-
     aggItem.assetsCount += 1;
     if (item.issuer) aggItem.assetIssuers.add(item.issuer)
 
@@ -378,43 +378,81 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
     }
   }
 
-  const keyMap = {
-    mcap: 'mcap',
-    activeMcap: 'activeMcap',
-    defiActiveTvl: 'defiActiveTvl',
-  }
-
   currentData.forEach((item: any) => {
+    // NOTE: current data uses DB field names (lowercase):
+    // - item.mcap: { [chainLabel]: number-string }
+    // - item.activemcap: { [chainLabel]: number-string }
+    // - item.defiactivetvl: { [chainLabel]: { [protocol]: number-string } }
+    const seenChainsForAsset = new Set<string>();
 
-    Object.entries(keyMap).forEach(([key, mappedKey]) => {
-      if (item[key] && typeof item[key] === 'object') {
-        Object.entries(item[key]).forEach(([chain, value]: any) => {
-          const numValue = Number(value);
-          if (!isNaN(numValue)) {
+    // mcap by chain
+    if (item.mcap && typeof item.mcap === 'object') {
+      Object.entries(item.mcap).forEach(([chain, value]: any) => {
+        const numValue = Number(value);
+        if (isNaN(numValue)) return;
 
-            totals[mappedKey as keyof typeof totals] += numValue;
+        totals.mcap += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].mcap += numValue;
+        seenChainsForAsset.add(chain);
 
-            initByChainIfNeeded(chain)
+        if (item.stablecoin) (byChain[chain].stablecoins as any).mcap += numValue;
+        if (item.governance) (byChain[chain].governance as any).mcap += numValue;
+      });
+    }
 
-            byChain[chain].assetsCount += 1;
-            if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
-            (byChain[chain] as any)[mappedKey] += numValue;
+    // active mcap by chain
+    if (item.activemcap && typeof item.activemcap === 'object') {
+      Object.entries(item.activemcap).forEach(([chain, value]: any) => {
+        const numValue = Number(value);
+        if (isNaN(numValue)) return;
 
-            if (item.stablecoin) {
-              (byChain[chain].stablecoins as any)[mappedKey] += numValue;
-              byChain[chain].stablecoins.assetsCount += 1;
-              if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
-            }
+        totals.activeMcap += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].activeMcap += numValue;
+        seenChainsForAsset.add(chain);
 
-            if (item.governance) {
-              (byChain[chain].governance as any)[mappedKey] += numValue;
-              byChain[chain].governance.assetsCount += 1;
-              if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
-            }
-          }
-        });
+        if (item.stablecoin) (byChain[chain].stablecoins as any).activeMcap += numValue;
+        if (item.governance) (byChain[chain].governance as any).activeMcap += numValue;
+      });
+    }
+
+    // defi active tvl by chain (nested object per chain)
+    if (item.defiactivetvl && typeof item.defiactivetvl === 'object') {
+      Object.entries(item.defiactivetvl).forEach(([chain, protocols]: any) => {
+        const numValue = sumObjectValues(protocols);
+        if (!numValue) {
+          // keep the chain "seen" if it exists, even if TVL is 0
+          if (chain) seenChainsForAsset.add(chain);
+          return;
+        }
+
+        totals.defiActiveTvl += numValue;
+        initByChainIfNeeded(chain);
+        byChain[chain].defiActiveTvl += numValue;
+        seenChainsForAsset.add(chain);
+
+        if (item.stablecoin) (byChain[chain].stablecoins as any).defiActiveTvl += numValue;
+        if (item.governance) (byChain[chain].governance as any).defiActiveTvl += numValue;
+      });
+    }
+
+    // Count assets per chain once (not once per metric)
+    for (const chain of seenChainsForAsset) {
+      initByChainIfNeeded(chain);
+      byChain[chain].assetsCount += 1;
+      if (item.issuer) byChain[chain].assetIssuers.add(item.issuer);
+
+      if (item.stablecoin) {
+        byChain[chain].stablecoins.assetsCount += 1;
+        if (item.issuer) byChain[chain].stablecoins.assetIssuers.add(item.issuer);
       }
-    });
+
+      if (item.governance) {
+        byChain[chain].governance.assetsCount += 1;
+        if (item.issuer) byChain[chain].governance.assetIssuers.add(item.issuer);
+      }
+    }
 
     // Aggregate by category
     const categories = item.category || [];
@@ -453,7 +491,13 @@ async function generateAggregateStats(currentData: any[]): Promise<any> {
   return stats;
 }
 
-function generateList(currentData: any[]): { tickers: string[]; platforms: string[]; chains: string[]; categories: string[] } {
+async function generateList(currentData: any[]): Promise<{
+  tickers: string[];
+  platforms: string[];
+  chains: string[];
+  categories: string[];
+  idMap: { [name: string]: string };
+}> {
   console.log('Generating list data...');
   const startTime = Date.now();
 
@@ -506,8 +550,10 @@ function generateList(currentData: any[]): { tickers: string[]; platforms: strin
     categories: sortByMcap(categoryMcap),
   };
 
+  const idMap = await generateIdMap(currentData);
+
   console.log(`Generated list data in ${Date.now() - startTime}ms`);
-  return list;
+  return { ...list, idMap };
 }
 
 interface HistoricalDataPoint {
@@ -650,7 +696,7 @@ async function main() {
     await generateAggregatedHistoricalCharts(metadata);
 
     // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = generateList(currentData);
+    const list = await generateList(currentData);
     await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));

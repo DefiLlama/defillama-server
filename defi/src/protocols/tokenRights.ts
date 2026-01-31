@@ -1095,6 +1095,39 @@ export default {
       equityStatement: "N/A",
     },
   },
+  "parent#lighter": {
+    rights: [
+      { label: "Governance", hasRight: false },
+      { label: "Treasury", hasRight: false },
+      { label: "Revenue", hasRight: false },
+    ],
+    governanceData: {
+      rights: "NONE",
+      details: "Lighter team will share relevant governance updates",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails:
+        "LIT is bought back by the protocol using trading fee revenue. Buybacks are executed via daily 24-hour TWAPs, with the flexibility to use shorter timeframes depending on market conditions",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - LIT is bought back by the protocol using trading fee revenue. Buybacks are executed via daily 24-hour TWAPs, with the flexibility to use shorter timeframes depending on market conditions. Revenues from core DEX product as well as future products and services will be allocated between growth and buybacks depending on market conditions",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN", // Equity + Token Sale in row; using UNKNOWN to avoid mislabel
+      raiseDetailsLink: {
+        label: "Raise Details",
+        url: "",
+      }, // Two funding rounds; one in 2024 for $21m and one for $68m @ $1.5b valuation through equity & token warrants
+      associatedEntities: ["DevCo", "C-Corp"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "The value created by all Lighter products and services will fully accrue to LIT holders",
+    },
+    resources: [{ label: "Docs", url: "https://docs.lighter.xyz" }],
+  },
 } as {
   [id: string]: TokenRights;
 };

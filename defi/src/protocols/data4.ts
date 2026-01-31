@@ -16786,13 +16786,14 @@ const data4: Protocol[] = [
     cmcId: null,
     tags: ["AMM"],
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "meteora-damm-v2/index.js",
     twitter: "MeteoraAG",
     parentProtocol: "parent#meteora",
     dimensions: {
       fees: "meteora-damm-v2",
       dexs: "meteora-damm-v2"
-    }
+    },
+    listedAt: 1769883372,
   },
   {
     id: "6289",

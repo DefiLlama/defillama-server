@@ -7517,6 +7517,9 @@ const data5: Protocol[] = [
     twitter: "the_goblin_fi",
     parentProtocol: "parent#goblin-protocols",
     listedAt: 1768235054,
+    dimensions: {
+      fees: "goblin",
+    },
   },
   {
     id: "7232",

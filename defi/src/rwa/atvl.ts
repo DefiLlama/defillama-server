@@ -14,6 +14,132 @@ import { fetchEvm, fetchSolana } from './balances';
 import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
 import { fetchBurnAddresses, sortTokensByChain, toCamelCase } from "./utils";
 
+const ALWAYS_STRING_ARRAY_FIELDS = new Set([
+  "website",
+  "twitter",
+  "issuerSourceLink",
+  "issuerRegistryInfo",
+  "attestationLinks",
+  "descriptionNotes",
+]);
+
+function toStringArrayOrNull(value: any): string[] | null {
+  if (value == null) return null;
+
+  const items = (Array.isArray(value) ? value : [value])
+    .flatMap((v) => {
+      if (v == null) return [];
+      if (typeof v === "string") return [v];
+      return [String(v)];
+    })
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (!items.length) return null;
+  // Dedup while preserving order
+  return Array.from(new Set(items));
+}
+
+function toFiniteNumberOrNull(value: any): number | null {
+  if (value == null) return null;
+  const num = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(num) ? num : null;
+}
+
+const formatNum = (value: any, maxDecimals?: number): string => {
+  if (!value && value !== 0) return "0";
+
+  // Convert to number for validation
+  const numValue = Number(value);
+  if (Number.isNaN(numValue) || !Number.isFinite(numValue)) {
+    return Number.isNaN(numValue) ? "0" : String(numValue);
+  }
+
+  // Handle scientific notation
+  let processedValue = typeof value === "number" ? value.toString() : String(value);
+  const isScientificNotation = /[eE]/.test(processedValue);
+
+  if (isScientificNotation) {
+    // Convert to fixed decimal string with enough precision
+    processedValue = numValue.toFixed(20).replace(/\.?0+$/, "");
+  }
+
+  const [num, decimals] = processedValue.split(".");
+
+  if (!decimals) return num;
+
+  if (decimals?.startsWith("999")) {
+    return Number(value).toLocaleString("en-US", { maximumFractionDigits: 2 });
+  }
+
+  if (decimals?.startsWith("0000000000")) {
+    return Number(value).toFixed(0);
+  }
+
+  if (maxDecimals !== undefined) {
+    const decimalsToShow = decimals.substring(0, maxDecimals);
+    // Check if all digits are zeros
+    let allZeros = true;
+    for (let i = 0; i < decimalsToShow.length; i++) {
+      if (decimalsToShow[i] !== "0") {
+        allZeros = false;
+        break;
+      }
+    }
+    // If all decimal digits are zeros, return without decimal point
+    if (allZeros) {
+      return num;
+    }
+    return num + "." + decimalsToShow;
+  }
+
+  // No maxDecimals provided - default behavior
+  const absValue = Math.abs(numValue);
+  const isLessThanPointOne = absValue > 0 && absValue < 0.1;
+
+  // Count leading zeros (needed for determining decimal places)
+  let leadingZeros = 0;
+  for (let i = 0; i < decimals.length; i++) {
+    if (decimals[i] === "0") {
+      leadingZeros++;
+    } else {
+      break;
+    }
+  }
+
+  if (isLessThanPointOne) {
+    // If 3 or more zeros, return "0"
+    if (leadingZeros >= 3) {
+      return "0";
+    }
+
+    // Only show all digits if there are exactly 2 leading zeros AND the decimal is short (like 0.002, 0.001)
+    // For longer decimals or 1 leading zero, show max 2 decimals (like 0.008, 0.07)
+    if (leadingZeros === 2 && decimals.length <= 4) {
+      // For very small numbers < 0.1 with exactly 2 leading zeros and short decimals, show all digits
+      return num + "." + decimals;
+    }
+    // Fall through to max 2 decimals logic below
+  }
+
+  // For numbers >= 0.1 but < 1, or >= 1, show max 2 decimals
+  // For numbers < 0.1, show 3 decimals only if there are 2 leading zeros (to get 0.008), otherwise 2 decimals
+  const maxDecimalsToShow = absValue < 0.1 && leadingZeros === 2 ? 3 : 2;
+  const decimalsToShow = decimals.substring(0, maxDecimalsToShow);
+
+  // Remove trailing zeros
+  let endIndex = decimalsToShow.length;
+  while (endIndex > 0 && decimalsToShow[endIndex - 1] === "0") {
+    endIndex--;
+  }
+
+  if (endIndex === 0) {
+    return num;
+  }
+
+  return num + "." + decimalsToShow.substring(0, endIndex);
+};
+
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
   await initializeTVLCacheDB();
@@ -261,6 +387,9 @@ function getOnChainTvlAndActiveMcaps(
     }
 
     if (!finalData[rwaId][keyMap.price]) finalData[rwaId][keyMap.price] = price;
+    if ((finalData[rwaId][keyMap.price] ?? null) != null) {
+      finalData[rwaId].priceFormatted = formatNum(finalData[rwaId][keyMap.price]);
+    }
 
     try {
       if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
@@ -329,6 +458,14 @@ async function main(ts: number = 0) {
 
       // exclude columns for internal use
       else if (key.startsWith(keyMap.excluded)) return;
+      // ensure consistent arrays for string-list fields
+      else if (ALWAYS_STRING_ARRAY_FIELDS.has(camelKey)) {
+        cleanRow[camelKey] = toStringArrayOrNull(row[key]);
+      }
+      // ensure price is never a string in API payloads
+      else if (camelKey === keyMap.price || camelKey === "price") {
+        cleanRow[camelKey] = toFiniteNumberOrNull(row[key]);
+      }
       else if (key == "Primary Chain") {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       } else if (key == "Chain")
@@ -337,6 +474,13 @@ async function main(ts: number = 0) {
           : null;
       else cleanRow[camelKey] = row[key] == "" ? null : row[key];
     });
+
+    // Ensure accessModel is always present for API consumers
+    // (Airtable may have it blank/undefined for some assets)
+    if (cleanRow.accessModel == null) cleanRow.accessModel = "Unknown";
+    // Ensure price is number|null for API consumers
+    if (cleanRow[keyMap.price] != null) cleanRow[keyMap.price] = toFiniteNumberOrNull(cleanRow[keyMap.price]);
+    if (cleanRow[keyMap.price] != null) cleanRow.priceFormatted = formatNum(cleanRow[keyMap.price]);
 
     // append this RWA to API response
     rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];

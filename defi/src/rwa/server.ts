@@ -145,7 +145,7 @@ function setRoutes(router: HyperExpress.Router): void {
                 return errorResponse(res, 'Missing chain parameter', 400);
             }
             // Convert chain label to key (e.g., "Ethereum" -> "ethereum")
-            const chainKey = chain === 'all' ? 'all' : sdk.chainUtils.getChainKeyFromLabel(chain) || chain;
+            const chainKey = chain === 'all' ? 'all' : (sdk as any).chainUtils?.getChainKeyFromLabel?.(chain) || chain;
             return fileResponse(`charts/chain/${chainKey}.json`, res, 30);
         })
     );
@@ -204,13 +204,15 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !currentData.data) {
+            if (!currentData || !Array.isArray(currentData.data)) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
+            const idParam = String(id).toLowerCase();
+
             const rwa = currentData.data.find((item: any) => {
-                // Match by ID in the data or by name
-                return item['*rwaId'] === id || item.name === id;
+                const itemId = item?.id ?? item?.['*rwaId'];
+                return typeof itemId !== 'undefined' && String(itemId).toLowerCase() === idParam;
             });
 
             if (!rwa) {
@@ -261,11 +263,11 @@ function setRoutes(router: HyperExpress.Router): void {
 
             const chainLower = chain.toLowerCase();
             const filtered = currentData.data.filter((item: any) => {
-                // Check if chain exists in mcap, activemcap, or defiactivetvl
+                // Check if chain exists in onChainMarketcap/activeMcap/defiActiveTvl.
                 const chains = [
-                    ...Object.keys(item.mcap || {}),
-                    ...Object.keys(item.activemcap || {}),
-                    ...Object.keys(item.defiactivetvl || {}),
+                    ...Object.keys(item.onChainMarketcap || {}),
+                    ...Object.keys(item.activeMcap || {}),
+                    ...Object.keys(item.defiActiveTvl || {}),
                 ];
                 return chains.some((c) => c.toLowerCase() === chainLower);
             });

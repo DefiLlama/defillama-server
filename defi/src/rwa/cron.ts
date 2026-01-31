@@ -628,8 +628,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
     for (const [timestampStr, record] of Object.entries(pgCache)) {
       const timestamp = Number(timestampStr);
-      const { onChainMcap: totalOnChainMcap
-        , activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
+      const { onChainMcap: totalOnChainMcap, activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
 
       // Aggregate by individual chains (using chain keys)
       for (const [chainKey, chainData] of Object.entries(chains)) {
@@ -641,16 +640,14 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
       // Aggregate to "All"
       const allDp = ensureDataPoint(byChain, 'all', timestamp);
-      allDp.onChainMcap += totalOnChainMcap
-      ;
+      allDp.onChainMcap += totalOnChainMcap;
       allDp.activeMcap += totalActiveMcap;
       allDp.defiActiveTvl += totalTvl;
 
       // Aggregate by category
       for (const cat of categories) {
         const dp = ensureDataPoint(byCategory, cat, timestamp);
-        dp.onChainMcap += totalOnChainMcap
-        ;
+        dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
       }
@@ -658,8 +655,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       // Aggregate by platform
       if (platform) {
         const dp = ensureDataPoint(byPlatform, platform, timestamp);
-        dp.onChainMcap += totalOnChainMcap
-        ;
+        dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
       }

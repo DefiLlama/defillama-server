@@ -53,6 +53,32 @@ export function toFiniteNumberOrNull(value: any): number | null {
   return Number.isFinite(num) ? num : null;
 }
 
+// JS `.toFixed()` returns a string; this helper forces a numeric output.
+// Useful for API fields where consumers expect numbers (not fixed strings).
+export function toFixedNumber(value: any, decimals: number = 0): number {
+  const d = Number.isFinite(decimals) ? decimals : 0;
+  if (value == null) return 0;
+
+  try {
+    // Native number
+    if (typeof value === "number") return Number(value.toFixed(d));
+
+    // bignumber.js / other numeric-like objects
+    if (typeof (value as any)?.toFixed === "function") {
+      const fixed = (value as any).toFixed(d);
+      const parsed = Number(fixed);
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
+
+    // Fallback: coerce then round
+    const num = Number(value);
+    if (!Number.isFinite(num)) return 0;
+    return Number(num.toFixed(d));
+  } catch {
+    return 0;
+  }
+}
+
 const formatNum = (value: any, maxDecimals?: number): string => {
   if (!value && value !== 0) return "0";
 

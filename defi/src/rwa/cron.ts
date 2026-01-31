@@ -85,7 +85,7 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
     // price must always be number|null (never a string)
     if ('price' in (m.data as any)) {
       (m.data as any).price = toFiniteNumberOrNull((m.data as any).price);
-      if ((m.data as any).price != null) (m.data as any).priceFormatted = formatNumAsNumber((m.data as any).price);
+      if ((m.data as any).price != null) (m.data as any).price = formatNumAsNumber((m.data as any).price);
     }
 
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).

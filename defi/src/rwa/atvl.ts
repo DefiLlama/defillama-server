@@ -12,16 +12,7 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date
 import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
 import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
-import { fetchBurnAddresses, formatNumAsNumber, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
-
-const ALWAYS_STRING_ARRAY_FIELDS = new Set([
-  "website",
-  "twitter",
-  "issuerSourceLink",
-  "issuerRegistryInfo",
-  "attestationLinks",
-  "descriptionNotes",
-]);
+import { ALWAYS_STRING_ARRAY_FIELDS, fetchBurnAddresses, formatNumAsNumber, normalizeDashToNull, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
 
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
@@ -354,13 +345,21 @@ async function main(ts: number = 0) {
       else if (camelKey === keyMap.price || camelKey === "price") {
         cleanRow[camelKey] = toFiniteNumberOrNull(row[key]);
       }
+      // normalize placeholder "-" in name/ticker
+      else if (camelKey === "name" || camelKey === "ticker") {
+        const v = normalizeDashToNull(row[key]);
+        cleanRow[camelKey] = v === "" ? null : v;
+      }
       else if (key == "Primary Chain") {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       } else if (key == "Chain")
         cleanRow[camelKey] = row[key]
           ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
           : null;
-      else cleanRow[camelKey] = row[key] == "" ? null : row[key];
+      else {
+        const v = normalizeDashToNull(row[key]);
+        cleanRow[camelKey] = v == "" ? null : v;
+      }
     });
 
     // Ensure accessModel is always present for API consumers
@@ -420,7 +419,7 @@ async function main(ts: number = 0) {
   const rwaIdMap: { [id: string]: string } = {};
   Object.keys(finalData).map((rwaId: string) => {
     const name = finalData[rwaId].name;
-    rwaIdMap[name] = rwaId;
+    if (name != null && name !== "") rwaIdMap[name] = rwaId;
   });
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;

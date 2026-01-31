@@ -16,7 +16,7 @@ import {
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
-import { formatNumAsNumber, toFiniteNumberOrNull, toFiniteNumberOrZero } from './utils';
+import { normalizeRwaMetadataForApiInPlace, toFiniteNumberOrZero } from './utils';
 
 interface RWACurrentData {
   id: string;
@@ -81,12 +81,8 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 
     if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
 
-    // Ensure consistent types in API output
-    // price must always be number|null (never a string)
-    if ('price' in (m.data as any)) {
-      (m.data as any).price = toFiniteNumberOrNull((m.data as any).price);
-      if ((m.data as any).price != null) (m.data as any).price = formatNumAsNumber((m.data as any).price);
-    }
+    // Ensure consistent types in API output (format once)
+    normalizeRwaMetadataForApiInPlace(m.data);
 
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;
@@ -148,9 +144,10 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
       }
       recordsById[record.id].push({
         timestamp: record.timestamp,
-        onChainMcap: record.aggregatemcap,
-        defiActiveTvl: record.aggregatedefiactivetvl,
-        activeMcap: record.aggregatedactivemcap,
+        // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
+        onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
+        defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
+        activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
       });
     });
 
@@ -185,9 +182,10 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
 
         const historicalData = records.map((record) => ({
           timestamp: record.timestamp,
-          onChainMcap: record.aggregatemcap,
-          defiActiveTvl: record.aggregatedefiactivetvl,
-          activeMcap: record.aggregatedactivemcap,
+          // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
+          onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
+          defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
+          activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
         }));
 
         await storeHistoricalDataForId(id, historicalData);
@@ -629,14 +627,25 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
     for (const [timestampStr, record] of Object.entries(pgCache)) {
       const timestamp = Number(timestampStr);
-      const { onChainMcap: totalOnChainMcap, activeMcap: totalActiveMcap, defiActiveTvl: totalTvl, chains } = record;
+      // Defensive: pg-cache *should* be numeric, but if any legacy cache has strings
+      // we must coerce before using `+=` (otherwise JS turns it into string concatenation).
+      const {
+        onChainMcap: rawTotalOnChainMcap,
+        activeMcap: rawTotalActiveMcap,
+        defiActiveTvl: rawTotalTvl,
+        chains,
+      } = record as any;
+
+      const totalOnChainMcap = toFiniteNumberOrZero(rawTotalOnChainMcap);
+      const totalActiveMcap = toFiniteNumberOrZero(rawTotalActiveMcap);
+      const totalTvl = toFiniteNumberOrZero(rawTotalTvl);
 
       // Aggregate by individual chains (using chain keys)
-      for (const [chainKey, chainData] of Object.entries(chains)) {
+      for (const [chainKey, chainData] of Object.entries(chains || {})) {
         const chainDp = ensureDataPoint(byChain, chainKey, timestamp);
-        chainDp.onChainMcap += chainData.onChainMcap || 0;
-        chainDp.activeMcap += chainData.activeMcap || 0;
-        chainDp.defiActiveTvl += chainData.defiActiveTvl || 0;
+        chainDp.onChainMcap += toFiniteNumberOrZero((chainData as any)?.onChainMcap);
+        chainDp.activeMcap += toFiniteNumberOrZero((chainData as any)?.activeMcap);
+        chainDp.defiActiveTvl += toFiniteNumberOrZero((chainData as any)?.defiActiveTvl);
       }
 
       // Aggregate to "All"
@@ -666,7 +675,14 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
   // Convert to sorted arrays and store
   function toSortedArray(map: { [timestamp: number]: HistoricalDataPoint }): HistoricalDataPoint[] {
-    return Object.values(map).sort((a, b) => a.timestamp - b.timestamp);
+    return Object.values(map)
+      .map((dp) => ({
+        timestamp: toFiniteNumberOrZero(dp.timestamp),
+        onChainMcap: toFiniteNumberOrZero(dp.onChainMcap),
+        activeMcap: toFiniteNumberOrZero(dp.activeMcap),
+        defiActiveTvl: toFiniteNumberOrZero(dp.defiActiveTvl),
+      }))
+      .sort((a, b) => a.timestamp - b.timestamp);
   }
 
   // Store chain charts (includes "All" and individual chains)

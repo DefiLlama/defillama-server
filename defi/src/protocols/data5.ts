@@ -9754,5 +9754,25 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.denaria.finance/additional/security_audits"],
     listedAt: 1769793447
   },
+  {
+    id: "7340",
+    name: "Bankr",
+    address: "base:0x22af33fe49fd1fa80c7149773dde5890d3c76f3b",
+    symbol: "BNKR",
+    url: "https://bankr.bot/terminal",
+    description: "Self-custodial DeFi terminal for viewing multi-chain positions and executing wallet-signed swaps and protocol actions",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bankr.jpg`,
+    audits: "2",
+    gecko_id: "bankercoin-2",
+    cmcId: "37545",
+    category: "Interface",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "bankrbot",
+    dimensions: {
+      fees: "bankr",
+    },
+  },
 ];
 export default data5;

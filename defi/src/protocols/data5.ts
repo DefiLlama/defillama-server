@@ -9659,7 +9659,11 @@ const data5: Protocol[] = [
     module: "juiceswap/index.js",
     twitter: "JuiceSwap_com", 
     audit_links: ["https://github.com/JuiceSwapxyz/documentation/blob/main/AUDIT_SCOPE.md"],
-    listedAt: 1769649445
+    listedAt: 1769649445,
+    dimensions: {
+      dexs: "juiceswap",
+      fees: "juiceswap",
+    },
   },
   {
     id: "7336",

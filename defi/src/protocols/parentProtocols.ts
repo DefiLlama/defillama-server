@@ -8712,7 +8712,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://goblin.fi/",
     description:
       "Goblin is the native yield layer for Aptos Defi",
-    logo: `${baseIconsUrl}/goblin.png`,
+    logo: `${baseIconsUrl}/goblin-protocols.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

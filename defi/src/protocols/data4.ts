@@ -3644,7 +3644,8 @@ const data4: Protocol[] = [
     name: "Noon",
     address: null,
     symbol: "-",
-    url: "https://app.noon.capital",
+    url: "https://app.noon.capital/get?referralCode=f6f6df83-3c3a-479f-950a-d6f24907b4fa",
+    referralUrl: "https://app.noon.capital/get?referralCode=f6f6df83-3c3a-479f-950a-d6f24907b4fa",
     description:
       "Noon is a yield optimization protocol that generates delta-neutral returns, maximizes governance token utility, and ensures fair, sustainable value distribution",
     chain: "Ethereum",

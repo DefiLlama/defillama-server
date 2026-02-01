@@ -7789,7 +7789,8 @@ const data3_0: Protocol[] = [
     name: "OpenEden TBILL",
     address: null,
     symbol: "-",
-    url: "https://app.openeden.com/",
+    url: "https://portal.openeden.com/bills-campaign?refCode=x1z3OOidAS",
+    referralUrl: "https://portal.openeden.com/bills-campaign?refCode=x1z3OOidAS",
     description:
       "A Moody's A-rated smart contract vault offering 24/7 and direct access to U.S. Treasury Bills, with BNY as Manager and Custodian",
     chain: "Ethereum",

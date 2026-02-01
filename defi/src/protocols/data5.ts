@@ -9774,5 +9774,23 @@ const data5: Protocol[] = [
       fees: "bankr",
     },
   },
+  {
+    id: "7341",
+    name: "Convertibles",
+    address: null,
+    symbol: "-",
+    url: "https://www.convertibles.io/",
+    description: "Structured credit protocol issuing convertible tokens that redeem at $1 or convert into ETH at a fixed price, offering stablecoin downside protection with ETH upside",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/convertibles.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    module: "convertibles/index.js",
+    twitter: null,
+    listedAt: 1769967274
+  },
 ];
 export default data5;

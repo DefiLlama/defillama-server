@@ -15775,7 +15775,8 @@ const data4: Protocol[] = [
     name: "infiniFi",
     address: null,
     symbol: "-",
-    url: "https://infinifi.xyz/",
+    url: "https://infinifi.xyz?ref=XXKTY1S9",
+    referralUrl: "https://infinifi.xyz?ref=XXKTY1S9",
     description:
       "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure—on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers superior yields to depositors without increasing systemic risk. Founded in 2024, infiniFi is backed by top Web3 investors and is integrated with major protocols like AAVE, Pendle, and Ethena.",
     chain: "Ethereum",

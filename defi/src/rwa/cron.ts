@@ -518,19 +518,21 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
       );
     }
 
-    // Platform aggregation (bucket missing into "Unknown")
-    const platform: string =
-      typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : "Unknown";
-    if (!byPlatform[platform]) byPlatform[platform] = makeAgg();
-    addToAgg(
-      byPlatform[platform],
-      {
-        onChainMcap: assetOnChainTotal,
-        activeMcap: assetActiveTotal,
-        defiActiveTvl: assetDefiActiveTotal,
-      },
-      issuer
-    );
+    // Platform aggregation (ONLY when asset has a valid parentPlatform; never synthesize "Unknown")
+    const platform =
+      typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
+    if (platform && platform !== "Unknown") {
+      if (!byPlatform[platform]) byPlatform[platform] = makeAgg();
+      addToAgg(
+        byPlatform[platform],
+        {
+          onChainMcap: assetOnChainTotal,
+          activeMcap: assetActiveTotal,
+          defiActiveTvl: assetDefiActiveTotal,
+        },
+        issuer
+      );
+    }
 
     // Chain aggregation + stablecoin/governance subgroups
     const chains = new Set<string>([
@@ -666,9 +668,11 @@ function generateList(currentData: any[]): {
       idMap[item.ticker] = item.id;
     }
 
-    // Aggregate platform mcap
-    if (item.parentPlatform) {
-      platformMcap[item.parentPlatform] = (platformMcap[item.parentPlatform] || 0) + assetMcap;
+    // Aggregate platform mcap (ONLY when asset has a valid parentPlatform; never include "Unknown")
+    const parentPlatform =
+      typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
+    if (parentPlatform && parentPlatform !== "Unknown") {
+      platformMcap[parentPlatform] = (platformMcap[parentPlatform] || 0) + assetMcap;
     }
 
     // Aggregate category mcap

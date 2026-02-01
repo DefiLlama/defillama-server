@@ -24427,6 +24427,9 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.goblin.fi/security/audit"],
     parentProtocol: "parent#goblin-protocols",
     listedAt: 1756149467,
+    dimensions: {
+      fees: "goblin",
+    },
   },
   {
     id: "6629",

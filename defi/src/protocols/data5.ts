@@ -9189,11 +9189,12 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "starke-sol/index.js",
     twitter: "StarkeFinance",
     dimensions: {
       fees: "starke-staked-sol"
-    }
+    },
+    listedAt: 1770053107
   },
   {
     id: "7313",
@@ -9232,11 +9233,12 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "jagpool-sol/index.js",
     twitter: "JagPool_xyz",
     dimensions: {
       fees: "jagpool-staked-sol"
-    }
+    },
+    listedAt: 1770053141
   },
   {
     id: "7315",

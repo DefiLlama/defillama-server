@@ -18531,6 +18531,9 @@ const data4: Protocol[] = [
     twitter: "hydrexfi",
     audit_links: ["https://hydrex.gitbook.io/home/resources/security-and-audits"],
     listedAt: 1751133829,
+    dimensions: {
+      fees: "hydrex",
+    }
   },
   {
     id: "6366",
@@ -26788,7 +26791,8 @@ const data4: Protocol[] = [
     twitter: "Aster_DEX",
     parentProtocol: "parent#astherus",
     dimensions: {
-      dexs: "aster-spot"
+      dexs: "aster-spot",
+      fees: "aster-spot"
     }
   },
   {
@@ -29765,7 +29769,10 @@ const data4: Protocol[] = [
     twitter: "Strata_Money",
     parentProtocol: "parent#strata",
     audit_links: ["https://docs.strata.money/security/audits"],
-    listedAt: 1760577905
+    listedAt: 1760577905,
+    dimensions: {
+      fees: "strata-markets"
+    }
   },
   {
     id: "6874",

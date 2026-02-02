@@ -9186,7 +9186,7 @@
   "citrea": {
     "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b": {
       "decimals": 6,
-      "symbol": "wM",
+      "symbol": "M",
       "to": "coingecko#wrappedm-by-m0"
     }
   }

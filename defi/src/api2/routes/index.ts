@@ -513,16 +513,16 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
     
     if (dataType === 'protocol') {
       if ((route === 'chart-total' || route === 'chart-chain-breakdown') && !AllowedProtocolKeys.includes(key)) {
-        return errorResponse(res, `Query key=${key} is now allowed`);
+        return errorResponse(res, `Query key=${key} is not allowed`);
       }
     } else if (dataType === 'treasury') {
       if (!AllowedTreasuryKeys.includes(key)) {
-        return errorResponse(res, `Query key=${key} is now allowed`);
+        return errorResponse(res, `Query key=${key} is not allowed`);
       }
     }
     
     if (route === 'chart-token-breakdown' && !AllowedCurrencies.includes(currency)) {
-      return errorResponse(res, `Query currency=${currency} is now allowed with data type protocol`);
+      return errorResponse(res, `Query currency=${currency} is not allowed`);
     }
 
     name = sluggify({ name } as any);
@@ -542,6 +542,8 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
           skipAggregatedTvl: false,
           feMini: false,
         });
+      } else {
+        return errorResponse(res, `Protocol ${name} not found`)
       }
     } else {
       if (!protocolData)
@@ -616,7 +618,6 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
           if (key === keyFilter || key === 'all') {
             for (const tvlItem of Object.values((chainData as any)[dataKey])) {
               if (route === 'chart-total') {
-                console.log(keyFilter, chainFilter, Number((tvlItem as any).totalLiquidityUSD))
                 itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || 0;
                 itemByDates[(tvlItem as any).date] += Number((tvlItem as any).totalLiquidityUSD);
               } else if (route === 'chart-chain-breakdown') {

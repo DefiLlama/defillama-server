@@ -2646,6 +2646,11 @@
     }
   },
   "base": {
+    "0xd74FB32112b1eF5b4C428Fead8dA8d85A0019009": {
+      "decimals": "6",
+      "symbol": "rwaUSDi",
+      "to": "coingecko#usd-coin"
+    },
     "0xa8de1f55aa0e381cb456e1dcc9ff781ea0079068": {
       "decimals": "5",
       "symbol": "UKTBL",

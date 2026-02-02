@@ -51,8 +51,11 @@ function convertChainKeysToLabelsNestedNumber(
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
       for (const [protocolKey, value] of Object.entries(protocols)) {
-        const protocolLabel = (String(protocolKey).startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
-        outProtocols[protocolLabel] = toFiniteNumberOrZero(value);
+        const isTreasury = protocolKey.endsWith('-treasury');
+        const normalizedProtocolKey = isTreasury ? protocolKey.slice(0, -'-treasury'.length) : protocolKey;
+        const protocolLabel = (normalizedProtocolKey.startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
+        const finalProtocolLabel = isTreasury ? `${protocolLabel} (Treasury)` : protocolLabel;
+        outProtocols[finalProtocolLabel] = toFiniteNumberOrZero(value);
       }
     }
     result[chainLabel] = outProtocols;

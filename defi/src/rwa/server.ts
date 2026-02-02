@@ -145,7 +145,7 @@ function setRoutes(router: HyperExpress.Router): void {
                 return errorResponse(res, 'Missing chain parameter', 400);
             }
             // Convert chain label to key (e.g., "Ethereum" -> "ethereum")
-            const chainKey = chain === 'all' ? 'all' : (sdk as any).chainUtils?.getChainKeyFromLabel?.(chain) || chain;
+            const chainKey = chain === 'all' ? 'all' : sdk.chainUtils?.getChainKeyFromLabel?.(chain) || chain;
             return fileResponse(`charts/chain/${chainKey}.json`, res, 30);
         })
     );

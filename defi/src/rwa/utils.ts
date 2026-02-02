@@ -219,7 +219,7 @@ export const ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
   "descriptionNotes",
 ]);
 
-export function normalizeStringArrayFieldsInPlace(
+function normalizeStringArrayFieldsInPlace(
   target: any,
   fields: ReadonlySet<string> = ALWAYS_STRING_ARRAY_FIELDS
 ): any {
@@ -235,7 +235,7 @@ export function normalizeDashToNull(value: any) {
   return value;
 }
 
-export function toStringOrNull(value: any): string | null {
+function toStringOrNull(value: any): string | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
   if (typeof value === "string") {
@@ -247,7 +247,7 @@ export function toStringOrNull(value: any): string | null {
   return String(value);
 }
 
-export function toBooleanOrNull(value: any): boolean | null {
+function toBooleanOrNull(value: any): boolean | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
   if (typeof value === "boolean") return value;
@@ -266,30 +266,50 @@ export function toBooleanOrNull(value: any): boolean | null {
   return null;
 }
 
-export type RwaAccessModel =
+type RwaAccessModel =
   | "Permissioned"
   | "Permissionless"
   | "Non-transferable"
   | "Custodial Only"
   | "Unknown";
 
-const ACCESS_MODEL_NORMALIZATION_MAP = new Map<string, RwaAccessModel>([
-  ["permissioned", "Permissioned"],
-  ["permissionless", "Permissionless"],
-  ["non-transferable", "Non-transferable"],
-  ["nontransferable", "Non-transferable"],
-  ["non transferable", "Non-transferable"],
-  ["custodial only", "Custodial Only"],
-  ["custodial-only", "Custodial Only"],
-  ["custodial", "Custodial Only"],
-  ["unknown", "Unknown"],
-]);
+function getAccessModel(asset: {
+  kycAllowlistedWhitelistedToTransferHold?: boolean | null;
+  transferable?: boolean | null;
+  selfCustody?: boolean | null;
+}): RwaAccessModel {
+  // IMPORTANT: Ignore Airtable's `accessModel` and always derive it from flags.
+  //
+  // Methodology:
+  // - If Whitelisted hold/transfer = ✓ → Permissioned
+  // - Else if Transferable ✓ and Self Custody ✓ → Permissionless
+  // - Else if Transferable x and Self Custody ✓ → Non-transferable
+  // - Else if Self Custody x → Custodial Only
+  //
+  // Notes:
+  // - This intentionally matches the "truthy/falsy + null-check" behavior provided by the user.
+  if (asset.kycAllowlistedWhitelistedToTransferHold) {
+    return "Permissioned";
+  }
 
-export function normalizeAccessModel(value: any): RwaAccessModel {
-  const raw = toStringOrNull(value);
-  if (!raw) return "Unknown";
-  const key = raw.trim().toLowerCase();
-  return ACCESS_MODEL_NORMALIZATION_MAP.get(key) ?? "Unknown";
+  if (asset.transferable && asset.selfCustody) {
+    return "Permissionless";
+  }
+
+  if (!asset.transferable && asset.selfCustody) {
+    return "Non-transferable";
+  }
+
+  if (
+    asset.transferable != null &&
+    !asset.transferable &&
+    asset.selfCustody != null &&
+    !asset.selfCustody
+  ) {
+    return "Custodial Only";
+  }
+
+  return "Unknown";
 }
 
 const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
@@ -318,8 +338,8 @@ const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
  * Normalize RWA metadata object into stable API-friendly types.
  * - specified list fields -> string[]|null
  * - specified scalar fields -> string|null
- * - accessModel -> fixed enum (defaults to "Unknown")
  * - specified flags -> boolean|null
+ * - accessModel -> derived enum from flags (defaults to "Unknown")
  * - price -> number|null
  */
 export function normalizeRwaMetadataForApiInPlace(target: any): any {
@@ -333,14 +353,14 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
     if (field in target) target[field] = toStringOrNull(target[field]);
   }
 
-  // Normalize access model enum
-  // Must always be a valid enum value (default to "Unknown" when missing/invalid)
-  target.accessModel = normalizeAccessModel((target as any).accessModel);
-
   // Normalize boolean flags
   for (const field of RWA_BOOLEAN_OR_NULL_FIELDS) {
     if (field in target) target[field] = toBooleanOrNull(target[field]);
   }
+
+  // Derive access model enum (ignore Airtable `accessModel`)
+  // Must always be a valid enum value (default to "Unknown" when missing/unknown)
+  target.accessModel = getAccessModel(target as any);
 
   // Normalize price
   if ("price" in target) {

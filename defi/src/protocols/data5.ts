@@ -5419,7 +5419,7 @@ const data5: Protocol[] = [
     category: "Interface",
     chains: ["Orderly"],
     module: "dummy.js",
-    twitter: "Toro_DEX",
+    twitter: "torodex_xyz",
     dimensions: {
       fees: "toro-perp",
       derivatives: "toro-perp",

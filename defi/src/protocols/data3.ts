@@ -58988,7 +58988,8 @@ const data3_3: Protocol[] = [
     chains: ["TON"],
     module: "Delea/index.js",
     twitter: "deleafinance",
-    listedAt: 1732037858
+    listedAt: 1732037858,
+    deprecated: true
   },
   {
     id: "5384",

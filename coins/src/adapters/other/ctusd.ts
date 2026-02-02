@@ -31,7 +31,7 @@ export async function ctusd(timestamp: number) {
         6,
         "ctUSD",
         timestamp,
-        "ctUSD",
+        "ctusd",
         0.9,
     );
 

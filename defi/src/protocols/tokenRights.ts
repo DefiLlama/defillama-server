@@ -34,7 +34,7 @@ export default {
         "Protocol Fee Discount Auctions revenue burned",
         "Aggregator hooks revenue burned",
       ],
-      primaryValueAccrual: "Buybacks - Protocol purchases UNI tokens on the open market",
+      primaryValueAccrual: "Deflationary Supply Reduction - Protocol purchases UNI tokens on the open market. Portion of swap fees, 85% of sequencer revenue, Protocol Fee Discount Auctions & Aggregator hooks go to UNI burns",
     },
     tokenAlignment: {
       fundraising: "EQUITY",
@@ -73,12 +73,12 @@ export default {
       rights: "LIMITED",
       details: "Limited to emissions / liquidity (via veAERO)",
       feeSwitchStatus: "ON",
-      feeSwitchDetails: "Equivalent via emissions",
+      feeSwitchDetails: "Protocol fees are issued to veAERO holders, and programmatic buybacks are implemented",
       links: [{ label: "Aerodrome App", url: "https://aerodrome.finance/" }],
     },
     holdersRevenueAndValueAccrual: {
-      buybacks: "NONE",
-      dividends: "NONE",
+      buybacks: "ACTIVE",
+      dividends: "ACTIVE",
       burns: "NONE",
       burnSources: [],
       primaryValueAccrual: "Protocol Revenue Share - Fees & protocol emissions are issued to veAERO holders",
@@ -191,8 +191,9 @@ export default {
     ],
     governanceData: {
       rights: "LIMITED",
-      details: "Voting paused until 2026. Team holds 20% voting power",
-      feeSwitchStatus: "OFF",
+      details: "Users stake JUP for vote access on governance proposals. Consistent voting participation is yield-bearing through Jupiter's Active Staking Rewards",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "50% of protocol's take rate fund JUP buybacks and locks them"
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
@@ -1126,7 +1127,16 @@ export default {
       equityStatement:
         "The value created by all Lighter products and services will fully accrue to LIT holders",
     },
-    resources: [{ label: "Docs", url: "https://docs.lighter.xyz" }],
+      resources: [
+      {
+        label: "Foundation Multisig",
+        address: "0x0000000000000000000000000000000000000000",
+      },
+      {
+        label: "Docs",
+        url: "https://docs.lighter.xyz",
+      },
+    ],
   },
 } as {
   [id: string]: TokenRights;

@@ -3395,7 +3395,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/strikex.png`,
     audits: "2",
     gecko_id: "strikecoin",
-    cmcId: "STRX",
+    cmcId: "9220",
     category: "Farm",
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
@@ -13921,7 +13921,7 @@ const data2: Protocol[] = [
   {
     id: "2021",
     name: "Router Protocol",
-    address: "0x16ECCfDbb4eE1A85A33f3A9B21175Cd7Ae753dB4",
+    address: "0x60f67e1015b3f069dd4358a78c38f83fe3a667a9",
     symbol: "ROUTE",
     url: "https://www.routerprotocol.com/",
     description:
@@ -13929,8 +13929,8 @@ const data2: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/router-protocol.png`,
     audits: "2",
-    gecko_id: "route",
-    cmcId: "8292",
+    gecko_id: "router-protocol-2",
+    cmcId: "32544",
     category: "Cross Chain Bridge",
     chains: [
       "Ethereum",

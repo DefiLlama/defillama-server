@@ -8897,7 +8897,7 @@ const data3_0: Protocol[] = [
     logo: `${baseIconsUrl}/unibot.png`,
     audits: "0",
     gecko_id: "unibot",
-    cmcId: "25436",
+    cmcId: "27009",
     category: "Telegram Bot",
     chains: ["Ethereum"],
     module: "dummy.js",
@@ -17629,7 +17629,7 @@ const data3_1: Protocol[] = [
     logo: `${baseIconsUrl}/the-standard.jpg`,
     audits: "2",
     gecko_id: "standard-token",
-    cmcId: "22108",
+    cmcId: "33450",
     category: "CDP",
     chains: ["Arbitrum"],
     module: "standard-smart-vaults/index.js",
@@ -56348,7 +56348,7 @@ const data3_3: Protocol[] = [
     chain: "AirDAO",
     logo: `${baseIconsUrl}/harbor-liquid-staking.png`,
     audits: "0",
-    gecko_id: "harbor-4",
+    gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
     chains: ["AirDAO"],
@@ -61976,7 +61976,8 @@ const data3_3: Protocol[] = [
     chains: ["Matchain"],
     module: "fomogame/index.js",
     twitter: "TheRealDontFOMO",
-    listedAt: 1734641788
+    listedAt: 1734641788,
+    deadUrl: true
   },
   {
     id: "5528",

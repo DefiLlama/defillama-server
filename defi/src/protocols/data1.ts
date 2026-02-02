@@ -17295,6 +17295,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "GolffProtocol",
     audit_links: ["https://github.com/golfffinance/audit"],
     listedAt: 1637812811,
+    deadUrl: true
   },
   {
     id: "911",

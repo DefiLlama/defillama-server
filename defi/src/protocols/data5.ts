@@ -9853,7 +9853,7 @@ const data5: Protocol[] = [
     name: "Ton4You",
     address: "ton:EQA0nLHHeZrT1SwWrBd8N5_5CKXJQFL7CnPYDLLnw-sIqoBq",
     symbol: "T4U",
-    url: "https://ton4u.io",
+    url: "https://trade.ton4u.app/",
     description: "On-chain binary options protocol on TON with multiple settlement jettons (T4U, USDT, etc.).",
     chain: "TON",
     logo: `${baseIconsUrl}/ton4you.jpg`,

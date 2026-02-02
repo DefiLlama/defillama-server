@@ -1,6 +1,6 @@
 import * as HyperExpress from 'hyper-express';
-import * as sdk from '@defillama/sdk';
-import { readRouteData, getCacheVersion, readPGCacheForId, PGCacheData } from './file-cache';
+import { readRouteData, getCacheVersion, readPGCacheForId } from './file-cache';
+import { rwaSlug } from './utils';
 
 const webserver = new HyperExpress.Server();
 const port = +(process.env.RWA_PORT ?? 5002);
@@ -144,9 +144,8 @@ function setRoutes(router: HyperExpress.Router): void {
             if (!chain) {
                 return errorResponse(res, 'Missing chain parameter', 400);
             }
-            // Convert chain label to key (e.g., "Ethereum" -> "ethereum")
-            const chainKey = chain === 'all' ? 'all' : sdk.chainUtils?.getChainKeyFromLabel?.(chain) || chain;
-            return fileResponse(`charts/chain/${chainKey}.json`, res, 30);
+            const key = rwaSlug(chain);
+            return fileResponse(`charts/chain/${key}.json`, res, 30);
         })
     );
 
@@ -166,7 +165,7 @@ function setRoutes(router: HyperExpress.Router): void {
             const data = Object.entries(pgCache)
                 .map(([timestamp, record]) => ({ timestamp: Number(timestamp), ...record }))
                 .sort((a, b) => a.timestamp - b.timestamp);
-            return successResponse(res, { data }, 30);
+            return successResponse(res, data, 30);
         })
     );
 
@@ -178,7 +177,8 @@ function setRoutes(router: HyperExpress.Router): void {
             if (!category) {
                 return errorResponse(res, 'Missing category parameter', 400);
             }
-            return fileResponse(`charts/category/${category}.json`, res, 30);
+            const key = rwaSlug(category);
+            return fileResponse(`charts/category/${key}.json`, res, 30);
         })
     );
 
@@ -190,7 +190,8 @@ function setRoutes(router: HyperExpress.Router): void {
             if (!platform) {
                 return errorResponse(res, 'Missing platform parameter', 400);
             }
-            return fileResponse(`charts/platform/${platform}.json`, res, 30);
+            const key = rwaSlug(platform);
+            return fileResponse(`charts/platform/${key}.json`, res, 30);
         })
     );
 
@@ -204,19 +205,48 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !Array.isArray(currentData.data)) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const idParam = String(id).toLowerCase();
 
-            const rwa = currentData.data.find((item: any) => {
+            const rwa = currentData.find((item: any) => {
                 const itemId = item?.id ?? item?.['*rwaId'];
                 return typeof itemId !== 'undefined' && String(itemId).toLowerCase() === idParam;
             });
 
             if (!rwa) {
                 return errorResponse(res, `RWA "${id}" not found`, 404);
+            }
+
+            return successResponse(res, rwa, 20);
+        })
+    );
+
+    // Get specific RWA data by ID from current data
+    router.get(
+        '/asset/:ticker',
+        errorWrapper(async (req, res) => {
+            const { ticker } = req.params;
+            if (!ticker) {
+                return errorResponse(res, 'Missing ticker parameter', 400);
+            }
+
+            const currentData = await readRouteData('current.json');
+            if (!currentData) {
+                return errorResponse(res, 'Data not found', 500);
+            }
+
+            const tickerParam = rwaSlug(ticker);
+
+            const rwa = currentData.find((item: any) => {
+                const itemTicker = item?.ticker;
+                return typeof itemTicker !== 'undefined' && rwaSlug(itemTicker) === tickerParam;
+            });
+
+            if (!rwa) {
+                return errorResponse(res, `Asset "${ticker}" not found`, 404);
             }
 
             return successResponse(res, rwa, 20);
@@ -233,12 +263,12 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !currentData.data) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const categoryLower = category.toLowerCase();
-            const filtered = currentData.data.filter((item: any) => {
+            const filtered = currentData.filter((item: any) => {
                 const categories = item.category || [];
                 return categories.some((cat: string) => cat.toLowerCase() === categoryLower);
             });
@@ -257,12 +287,12 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !currentData.data) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const chainLower = chain.toLowerCase();
-            const filtered = currentData.data.filter((item: any) => {
+            const filtered = currentData.filter((item: any) => {
                 // Check if chain exists in onChainMcap/activeMcap/defiActiveTvl.
                 const chains = [
                     ...Object.keys(item.onChainMcap || {}),

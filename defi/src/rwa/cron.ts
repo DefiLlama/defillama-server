@@ -16,7 +16,7 @@ import {
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
-import { normalizeRwaMetadataForApiInPlace, toFiniteNumberOrZero } from './utils';
+import { normalizeRwaMetadataForApiInPlace, rwaSlug, toFiniteNumberOrZero } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 
@@ -51,8 +51,11 @@ function convertChainKeysToLabelsNestedNumber(
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
       for (const [protocolKey, value] of Object.entries(protocols)) {
-        const protocolLabel = (String(protocolKey).startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
-        outProtocols[protocolLabel] = toFiniteNumberOrZero(value);
+        const isTreasury = protocolKey.endsWith('-treasury');
+        const normalizedProtocolKey = isTreasury ? protocolKey.slice(0, -'-treasury'.length) : protocolKey;
+        const protocolLabel = (normalizedProtocolKey.startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
+        const finalProtocolLabel = isTreasury ? `${protocolLabel} (Treasury)` : protocolLabel;
+        outProtocols[finalProtocolLabel] = toFiniteNumberOrZero(value);
       }
     }
     result[chainLabel] = outProtocols;
@@ -65,7 +68,7 @@ interface RWAMetadata {
   data: any;
 }
 
-async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any[]; timestamp: number }> {
+async function generateCurrentData(metadata: RWAMetadata[]): Promise<any[]> {
   console.log('Generating current RWA data...');
   const startTime = Date.now();
 
@@ -97,7 +100,7 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
   });
 
   console.log(`Generated current data in ${Date.now() - startTime}ms`);
-  return { data, timestamp };
+  return data;
 }
 
 function generateIdMap(
@@ -339,6 +342,12 @@ type AggregateStatsBucket = {
   assetIssuers: number;
 };
 
+// For chain buckets we need issuer identity (not a non-additive count),
+// because the frontend may union issuer sets across multiple disjoint buckets.
+type AggregateStatsBucketWithIssuers = Omit<AggregateStatsBucket, "assetIssuers"> & {
+  assetIssuers: string[];
+};
+
 /**
  * Chain buckets are DISJOINT so the UI can sum without double-counting.
  *
@@ -349,10 +358,10 @@ type AggregateStatsBucket = {
  * - both on: base + stablecoinsOnly + governanceOnly + stablecoinsAndGovernance
  */
 type AggregateStatsChainBucket = {
-  base: AggregateStatsBucket;
-  stablecoinsOnly: AggregateStatsBucket;
-  governanceOnly: AggregateStatsBucket;
-  stablecoinsAndGovernance: AggregateStatsBucket; // intersection (stablecoin && governance)
+  base: AggregateStatsBucketWithIssuers;
+  stablecoinsOnly: AggregateStatsBucketWithIssuers;
+  governanceOnly: AggregateStatsBucketWithIssuers;
+  stablecoinsAndGovernance: AggregateStatsBucketWithIssuers; // intersection (stablecoin && governance)
 };
 
 type AggregateStats = {
@@ -604,12 +613,12 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
   const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
 
   for (const [chain, v] of Object.entries(byChain)) {
-    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucket => ({
+    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
       onChainMcap: a.onChainMcap,
       activeMcap: a.activeMcap,
       defiActiveTvl: a.defiActiveTvl,
       assetCount: a.assetCount,
-      assetIssuers: a.assetIssuers.size,
+      assetIssuers: Array.from(a.assetIssuers).sort(),
     });
 
     outByChain[chain] = {
@@ -796,17 +805,21 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
   // Store chain charts (includes "All" and individual chains)
   for (const [chain, timestampMap] of Object.entries(byChain)) {
-    await storeRouteData(`charts/chain/${chain}.json`, { data: toSortedArray(timestampMap) });
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chain);
+    const key = rwaSlug(chainLabel);
+    await storeRouteData(`charts/chain/${key}.json`, toSortedArray(timestampMap));
   }
 
   // Store category charts
   for (const [category, timestampMap] of Object.entries(byCategory)) {
-    await storeRouteData(`charts/category/${category}.json`, { data: toSortedArray(timestampMap) });
+    const key = rwaSlug(category);
+    await storeRouteData(`charts/category/${key}.json`, toSortedArray(timestampMap));
   }
 
   // Store platform charts
   for (const [platform, timestampMap] of Object.entries(byPlatform)) {
-    await storeRouteData(`charts/platform/${platform}.json`, { data: toSortedArray(timestampMap) });
+    const key = rwaSlug(platform);
+    await storeRouteData(`charts/platform/${key}.json`, toSortedArray(timestampMap));
   }
 
   console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
@@ -834,12 +847,15 @@ async function main() {
     const metadata = await fetchMetadataPG();
 
     // Generate current data
-    const { data: currentData, timestamp } = await generateCurrentData(metadata);
+    const currentData = await generateCurrentData(metadata);
 
     // Store current data
-    console.log('Storing current data...');
-    await storeRouteData('current.json', { data: currentData, timestamp });
-
+    if (currentData.length > 0) {
+      console.log('Storing current data...');
+      await storeRouteData('current.json', currentData);
+    } else {
+      console.log("No current data to store");
+    }
 
     // Generate and store ID map
     console.log('Generating ID map...');

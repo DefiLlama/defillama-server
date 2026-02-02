@@ -238,7 +238,7 @@ function setRoutes(router: HyperExpress.Router): void {
                 return errorResponse(res, 'Data not found', 500);
             }
 
-            const tickerParam = String(ticker).toLowerCase();
+            const tickerParam = rwaSlug(ticker);
 
             const rwa = currentData.find((item: any) => {
                 const itemTicker = item?.ticker;

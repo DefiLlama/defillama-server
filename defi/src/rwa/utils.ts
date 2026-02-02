@@ -296,15 +296,13 @@ function getAccessModel(asset: {
     return "Permissionless";
   }
 
-  if (!asset.transferable && asset.selfCustody) {
+  if (asset.transferable === false && asset.selfCustody) {
     return "Non-transferable";
   }
 
   if (
-    asset.transferable != null &&
-    !asset.transferable &&
-    asset.selfCustody != null &&
-    !asset.selfCustody
+    asset.transferable === false &&
+    asset.selfCustody === false
   ) {
     return "Custodial Only";
   }

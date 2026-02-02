@@ -17,6 +17,8 @@ import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchM
 
 import * as sdk from '@defillama/sdk';
 import { normalizeRwaMetadataForApiInPlace, toFiniteNumberOrZero } from './utils';
+import { parentProtocolsById } from '../protocols/parentProtocols';
+import { protocolsById } from '../protocols/data';
 
 interface RWACurrentData {
   id: string;
@@ -31,7 +33,7 @@ function convertChainKeysToLabelsNumber(obj: { [chainKey: string]: any }): { [ch
   const result: { [chainLabel: string]: number } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
     result[chainLabel] = toFiniteNumberOrZero(obj[chainKey]);
   }
   return result;
@@ -44,12 +46,13 @@ function convertChainKeysToLabelsNestedNumber(
   const result: { [chainLabel: string]: { [key: string]: number } } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
     const protocols = obj[chainKey];
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
-      for (const [p, v] of Object.entries(protocols)) {
-        outProtocols[p] = toFiniteNumberOrZero(v);
+      for (const [protocolKey, value] of Object.entries(protocols)) {
+        const protocolLabel = (String(protocolKey).startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
+        outProtocols[protocolLabel] = toFiniteNumberOrZero(value);
       }
     }
     result[chainLabel] = outProtocols;

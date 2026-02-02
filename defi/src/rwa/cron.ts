@@ -850,9 +850,12 @@ async function main() {
     const currentData = await generateCurrentData(metadata);
 
     // Store current data
-    console.log('Storing current data...');
-    await storeRouteData('current.json', currentData);
-
+    if (currentData.length > 0) {
+      console.log('Storing current data...');
+      await storeRouteData('current.json', currentData);
+    } else {
+      console.log("No current data to store");
+    }
 
     // Generate and store ID map
     console.log('Generating ID map...');

@@ -4,19 +4,16 @@ import {
   getCacheVersion,
   getSyncMetadata,
   setSyncMetadata,
-  storeHistoricalDataForId,
-  readHistoricalDataForId,
-  mergeHistoricalData,
   storePGCacheForId,
   readPGCacheForId,
   mergePGCacheData,
   PGCacheData,
   PGCacheRecord,
 } from './file-cache';
-import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
+import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyIdsPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
-import { normalizeRwaMetadataForApiInPlace, toFiniteNumberOrZero } from './utils';
+import { toFiniteNumberOrZero } from './utils';
 
 interface RWACurrentData {
   id: string;
@@ -31,7 +28,7 @@ function convertChainKeysToLabelsNumber(obj: { [chainKey: string]: any }): { [ch
   const result: { [chainLabel: string]: number } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
     result[chainLabel] = toFiniteNumberOrZero(obj[chainKey]);
   }
   return result;
@@ -44,7 +41,7 @@ function convertChainKeysToLabelsNestedNumber(
   const result: { [chainLabel: string]: { [key: string]: number } } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = (sdk as any).chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
     const protocols = obj[chainKey];
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
@@ -81,9 +78,6 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<{ data: any
 
     if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
 
-    // Ensure consistent types in API output (format once)
-    normalizeRwaMetadataForApiInPlace(m.data);
-
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;
     m.data.onChainMcap = convertChainKeysToLabelsNumber(idCurrent.mcap as any);
@@ -109,108 +103,6 @@ function generateIdMap(
   });
 
   return idMap;
-}
-
-async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: number; totalRecords: number }> {
-  console.log('Generating historical data incrementally...');
-  const startTime = Date.now();
-
-  // Get sync metadata to determine if this is a full or incremental sync
-  const syncMetadata = await getSyncMetadata();
-  const lastSyncTimestamp = syncMetadata?.lastSyncTimestamp
-    ? new Date(syncMetadata.lastSyncTimestamp)
-    : undefined;
-
-  let updatedIds = 0;
-  let totalRecords = 0;
-
-  if (lastSyncTimestamp) {
-    // Incremental sync: fetch only updated records
-    console.log(`Incremental sync: fetching records updated after ${lastSyncTimestamp.toISOString()}`);
-
-    const dailyRecords = await fetchAllDailyRecordsPG(lastSyncTimestamp);
-    console.log(`Fetched ${dailyRecords.length} updated daily records from database`);
-
-    if (dailyRecords.length === 0) {
-      console.log('No new records to process');
-      return { updatedIds: 0, totalRecords: 0 };
-    }
-
-    // Group records by ID
-    const recordsById: { [id: string]: any[] } = {};
-    dailyRecords.forEach((record) => {
-      if (!recordsById[record.id]) {
-        recordsById[record.id] = [];
-      }
-      recordsById[record.id].push({
-        timestamp: record.timestamp,
-        // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
-        onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
-        defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-        activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
-      });
-    });
-
-    const ids = Object.keys(recordsById);
-    console.log(`Processing ${ids.length} unique IDs with updates`);
-
-    // Process each ID with updates
-    for (const id of ids) {
-      try {
-        const newRecords = recordsById[id];
-        const existingData = await readHistoricalDataForId(id);
-        const mergedData = mergeHistoricalData(existingData, newRecords);
-        await storeHistoricalDataForId(id, mergedData);
-        updatedIds++;
-        totalRecords += newRecords.length;
-      } catch (e) {
-        console.error(`Error processing historical data for ${id}:`, (e as any)?.message);
-      }
-    }
-  } else {
-    // Full sync: fetch one ID at a time to avoid memory issues
-    console.log('Full sync: fetching all daily records one ID at a time');
-
-    const allIds = await fetchAllDailyIdsPG();
-    console.log(`Found ${allIds.length} unique IDs to process`);
-
-    for (let i = 0; i < allIds.length; i++) {
-      const id = allIds[i];
-      try {
-        const records = await fetchDailyRecordsForIdPG(id);
-        if (records.length === 0) continue;
-
-        const historicalData = records.map((record) => ({
-          timestamp: record.timestamp,
-          // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
-          onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
-          defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-          activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
-        }));
-
-        await storeHistoricalDataForId(id, historicalData);
-        updatedIds++;
-        totalRecords += records.length;
-
-        if ((i + 1) % 100 === 0) {
-          console.log(`Processed ${i + 1}/${allIds.length} IDs`);
-        }
-      } catch (e) {
-        console.error(`Error processing historical data for ${id}:`, (e as any)?.message);
-      }
-    }
-  }
-
-  // Update sync metadata
-  const maxUpdatedAt = await fetchMaxUpdatedAtPG();
-  await setSyncMetadata({
-    lastSyncTimestamp: maxUpdatedAt?.toISOString() || null,
-    lastSyncDate: new Date().toISOString(),
-    totalIds: updatedIds,
-  });
-
-  console.log(`Generated historical data for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
-  return { updatedIds, totalRecords };
 }
 
 function sumObjectValues(obj: any): number {
@@ -265,6 +157,7 @@ function processRecordsToPGCache(records: any[]): PGCacheData {
 
 async function generatePGCache(): Promise<{ updatedIds: number }> {
   console.log('Generating PG cache with chain breakdown...');
+  const dateNow = new Date();
   const startTime = Date.now();
 
   const syncMetadata = await getSyncMetadata();
@@ -323,6 +216,9 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
       }
     }
   }
+
+  // Update sync metadata with current timestamp
+  await setSyncMetadata({ lastSyncTimestamp: dateNow.toISOString(), totalIds: updatedIds, lastSyncDate: dateNow.toISOString() });
 
   console.log(`Generated PG cache for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
   return { updatedIds };
@@ -842,10 +738,6 @@ async function main() {
     // Generate aggregate stats
     const stats = generateAggregateStats(currentData);
     await storeRouteData('stats.json', stats);
-
-    // Generate historical data incrementally
-    const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental();
-    console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
 
     // Generate PG cache with chain breakdown
     await generatePGCache();

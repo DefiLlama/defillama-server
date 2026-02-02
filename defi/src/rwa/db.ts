@@ -1,5 +1,6 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../src/utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
+import { normalizeRwaMetadataForApiInPlace } from "./utils";
 
 class META_RWA_DATA extends Model { }
 class DAILY_RWA_DATA extends Model { }
@@ -11,7 +12,7 @@ let pgConnection: any;
 const twoDaysAgo = getTimestampAtStartOfDay(getCurrentUnixTimestamp() - 2 * secondsInDay);
 
 // Initialize the database tables
-async function initPGTables() {
+async function _initPGTables() {
     HOURLY_RWA_DATA.init({
         timestamp: {
             type: DataTypes.INTEGER,
@@ -188,27 +189,23 @@ async function initPGTables() {
     });
 }
 // Initialize the database connection
-async function initializeRwaDB(): Promise<void> {
+function _initializeRwaDB() {
     if (!pgConnection) {
         const auth = process.env.COINS2_AUTH?.split(",") ?? [];
         if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
         pgConnection = new Sequelize(auth[0]);
-        initPGTables()
+        // _initPGTables()
     }
 }
-// Get the database connection
-function getPGConnection(): Sequelize {
-    return pgConnection
-}
+
 // Initialize the database connection
 export async function initPG(): Promise<void> {
     if (pgConnection) return;
-    await initializeRwaDB();
-    pgConnection = getPGConnection();
+    _initializeRwaDB();
 }
 // Find records where timestamp equals the target timestamp, one per id
-export async function findDailyTimestampRecords(targetTimestamp: number): Promise<{ [id: string]: { timestamp: number; timestamp_actual: number } }> {
+async function findDailyTimestampRecords(targetTimestamp: number): Promise<{ [id: string]: { timestamp: number; timestamp_actual: number } }> {
     // Find records where timestamp equals the target timestamp, one per id
     const records = await DAILY_RWA_DATA.sequelize!.query(
         `SELECT DISTINCT ON (id) id, timestamp, timestamp_actual
@@ -235,26 +232,6 @@ export async function findDailyTimestampRecords(targetTimestamp: number): Promis
 }
 // Store historical data
 export async function storeHistoricalPG(inserts: any, timestamp: number): Promise<void> {
-    const dayTimestamp = getTimestampAtStartOfDay(timestamp);
-    const closestRecord = await findDailyTimestampRecords(dayTimestamp);
-    const now = new Date();
-
-    const dailyInserts: any[] = [];
-    inserts.map((i: any) => {
-        const { id, timestamp } = i;
-        const closestRecordData = closestRecord[id];
-        const insert = {
-            ...i,
-            timestamp: dayTimestamp,
-            timestamp_actual: timestamp,
-            created_at: i.created_at ?? now,
-            updated_at: now,
-        };
-
-        if (!closestRecordData) dailyInserts.push(insert);
-        else if (Math.abs(dayTimestamp - closestRecordData.timestamp_actual) > Math.abs(dayTimestamp - timestamp)) dailyInserts.push(insert);
-    })
-
     // Add created_at (if missing) and updated_at to all inserts for hourly and backup tables
     const insertsWithTimestamp = inserts.map((i: any) => ({
         ...i,
@@ -262,21 +239,36 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
         updated_at: now,
     }));
 
+    const dayTimestamp = getTimestampAtStartOfDay(timestamp);
+    // const closestRecord = await findDailyTimestampRecords(dayTimestamp);
+    const now = new Date();
+
+    const dailyInserts: any[] = [];
+    insertsWithTimestamp.map((i: any) => {
+        const { id, timestamp } = i;
+        // const closestRecordData = closestRecord[id];
+        const insert = {
+            ...i,
+            timestamp: dayTimestamp,
+            timestamp_actual: timestamp,
+        };
+        dailyInserts.push(insert);
+
+        // if (!closestRecordData) dailyInserts.push(insert);
+        // else if (Math.abs(dayTimestamp - closestRecordData.timestamp_actual) > Math.abs(dayTimestamp - timestamp)) dailyInserts.push(insert);
+    })
+
+
     const updateOnDuplicate = ['defiactivetvl', 'mcap', 'activemcap', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'timestamp_actual', 'updated_at'];
 
-    // Bulk insert with conflict handling - overwrite on duplicate
-    await DAILY_RWA_DATA.bulkCreate(dailyInserts, {
-        updateOnDuplicate,
-    });
+    // Bulk insert with conflict handling - skip duplicates (don't update existing records)
+    await DAILY_RWA_DATA.bulkCreate(dailyInserts, { updateOnDuplicate });
 
-    await HOURLY_RWA_DATA.bulkCreate(insertsWithTimestamp, {
-        updateOnDuplicate,
-    });
+    await HOURLY_RWA_DATA.bulkCreate(insertsWithTimestamp, { updateOnDuplicate, });
 
-    await BACKUP_RWA_DATA.bulkCreate(insertsWithTimestamp, {
-        updateOnDuplicate,
-    });
+    await BACKUP_RWA_DATA.bulkCreate(insertsWithTimestamp, { updateOnDuplicate, });
 
+    // Clean up old hourly data
     await HOURLY_RWA_DATA.destroy({
         where: {
             timestamp: { [Op.lte]: twoDaysAgo }
@@ -293,24 +285,7 @@ export async function storeMetadataPG(inserts: any): Promise<void> {
     }));
     await META_RWA_DATA.bulkCreate(insertsWithTimestamp, { updateOnDuplicate: ['data', 'updated_at'] });
 }
-// Get historical and current data for a given id
-export async function fetchHistoricalPG(id: string): Promise<{ historical: any[], current: any }> {
-    const historical = await DAILY_RWA_DATA.findAll({
-        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
-        where: { id },
-        order: [['timestamp', 'ASC']],
-        raw: true,
-    });
 
-    const current = await HOURLY_RWA_DATA.findOne({
-        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
-        where: { id },
-        order: [['timestamp', 'DESC']],
-        raw: true,
-    });
-
-    return { historical, current };
-}
 // Get all metadata records
 export async function fetchMetadataPG(): Promise<any[]> {
     await initPG();
@@ -322,6 +297,7 @@ export async function fetchMetadataPG(): Promise<any[]> {
     data.forEach((d: any) => {
         try {
             d.data = JSON.parse(d.data)
+            normalizeRwaMetadataForApiInPlace(d.data)
         } catch (e) {
             console.error(`Error parsing metadata for id ${d.id}:`, (e as any)?.message);
             delete d.data;
@@ -353,19 +329,7 @@ export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number;
         return copy
     }) as any
 }
-// Fetch all daily records, optionally filtered by updated_at timestamp
-export async function fetchAllDailyRecordsPG(updatedAfter?: Date): Promise<any[]> {
-    const whereClause = updatedAfter
-        ? { updated_at: { [Op.gt]: updatedAfter } }
-        : {};
 
-    return await DAILY_RWA_DATA.findAll({
-        attributes: ['id', 'timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'updated_at'],
-        where: whereClause,
-        order: [['id', 'ASC'], ['timestamp', 'ASC']],
-        raw: true,
-    });
-}
 // Get the list of unique IDs from daily records
 export async function fetchAllDailyIdsPG(): Promise<string[]> {
     const results = await DAILY_RWA_DATA.sequelize!.query(
@@ -374,23 +338,7 @@ export async function fetchAllDailyIdsPG(): Promise<string[]> {
     ) as { id: string }[];
     return results.map((r) => r.id);
 }
-// Get the max updated_at timestamp from daily records
-export async function fetchMaxUpdatedAtPG(): Promise<Date | null> {
-    const result = await DAILY_RWA_DATA.sequelize!.query(
-        `SELECT MAX(updated_at) as max_updated_at FROM "${DAILY_RWA_DATA.getTableName()}"`,
-        { type: QueryTypes.SELECT }
-    ) as { max_updated_at: Date | null }[];
-    return result[0]?.max_updated_at || null;
-}
-// Fetch daily records for a single ID
-export async function fetchDailyRecordsForIdPG(id: string): Promise<any[]> {
-    return await DAILY_RWA_DATA.findAll({
-        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
-        where: { id },
-        order: [['timestamp', 'ASC']],
-        raw: true,
-    });
-}
+
 const PAGE_SIZE = 5000;
 
 function parseJsonSafe(str: string): any {

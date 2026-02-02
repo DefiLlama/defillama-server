@@ -126,42 +126,6 @@ export async function setSyncMetadata(metadata: SyncMetadata): Promise<void> {
     await storeRouteData(SYNC_METADATA_FILE, metadata);
 }
 
-// Historical data per ID
-export async function storeHistoricalDataForId(id: string, data: any[]): Promise<void> {
-    await storeRouteData(`charts/${id}.json`, { data });
-}
-
-export async function readHistoricalDataForId(id: string): Promise<any[] | null> {
-    const result = await readRouteData(`charts/${id}.json`, { skipErrorLog: true });
-    return result?.data || null;
-}
-
-export function mergeHistoricalData(
-    existingData: any[] | null,
-    newRecords: any[]
-): any[] {
-    if (!existingData || existingData.length === 0) {
-        return newRecords;
-    }
-
-    // Create a map of existing records by timestamp for quick lookup
-    const dataMap = new Map<number, any>();
-    existingData.forEach((record) => {
-        dataMap.set(record.timestamp, record);
-    });
-
-    // Merge/update with new records
-    newRecords.forEach((record) => {
-        dataMap.set(record.timestamp, record);
-    });
-
-    // Convert back to sorted array
-    const merged = Array.from(dataMap.values());
-    merged.sort((a, b) => a.timestamp - b.timestamp);
-
-    return merged;
-}
-
 // PG Cache - stores asset data with chain breakdown (chain keys), keyed by timestamp
 export interface PGCacheRecord {
     onChainMcap: number;

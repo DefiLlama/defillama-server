@@ -9663,8 +9663,6 @@ const data5: Protocol[] = [
   },
   {
     id: "7336",
-  {
-    id: "7336",
     name: "Satsuma",
     address: null,
     symbol: "-",
@@ -9786,7 +9784,7 @@ const data5: Protocol[] = [
     chains: [
       "0G",
       "Abstract",
-      "Apechain",
+      "ApeChain",
       "Aptos",
       "Arbitrum",
       "Aurora",
@@ -9820,7 +9818,7 @@ const data5: Protocol[] = [
       "Hedera",
       "Hemi",
       "Horizen EON",
-      "Hyperliquid",
+      "Hyperliquid L1",
       "Injective",
       "Ink",
       "IOTA EVM",
@@ -9843,7 +9841,7 @@ const data5: Protocol[] = [
       "Near",
       "Neon",
       "Neutron",
-      "opBNB",
+      "Op_Bnb",
       "Optimism",
       "Osmosis",
       "Polygon",

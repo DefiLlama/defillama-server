@@ -11028,7 +11028,7 @@
   },
   "hyperliquid": {
     "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#wrappedm-by-m0",
       "decimals": 6,
       "symbol": "M"
     },

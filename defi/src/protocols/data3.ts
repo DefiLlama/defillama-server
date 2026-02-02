@@ -15181,7 +15181,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "sanctum",
       dexs: {
-        genuineSpikes: ["1704240000", "1760054400"],
+        genuineSpikes: ["1704240000", "1760054400", "1769817600"],
         adapter: "sanctum"
       }
     }

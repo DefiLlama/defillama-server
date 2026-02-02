@@ -339,6 +339,12 @@ type AggregateStatsBucket = {
   assetIssuers: number;
 };
 
+// For chain buckets we need issuer identity (not a non-additive count),
+// because the frontend may union issuer sets across multiple disjoint buckets.
+type AggregateStatsBucketWithIssuers = Omit<AggregateStatsBucket, "assetIssuers"> & {
+  assetIssuers: string[];
+};
+
 /**
  * Chain buckets are DISJOINT so the UI can sum without double-counting.
  *
@@ -349,10 +355,10 @@ type AggregateStatsBucket = {
  * - both on: base + stablecoinsOnly + governanceOnly + stablecoinsAndGovernance
  */
 type AggregateStatsChainBucket = {
-  base: AggregateStatsBucket;
-  stablecoinsOnly: AggregateStatsBucket;
-  governanceOnly: AggregateStatsBucket;
-  stablecoinsAndGovernance: AggregateStatsBucket; // intersection (stablecoin && governance)
+  base: AggregateStatsBucketWithIssuers;
+  stablecoinsOnly: AggregateStatsBucketWithIssuers;
+  governanceOnly: AggregateStatsBucketWithIssuers;
+  stablecoinsAndGovernance: AggregateStatsBucketWithIssuers; // intersection (stablecoin && governance)
 };
 
 type AggregateStats = {
@@ -604,12 +610,12 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
   const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
 
   for (const [chain, v] of Object.entries(byChain)) {
-    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucket => ({
+    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
       onChainMcap: a.onChainMcap,
       activeMcap: a.activeMcap,
       defiActiveTvl: a.defiActiveTvl,
       assetCount: a.assetCount,
-      assetIssuers: a.assetIssuers.size,
+      assetIssuers: Array.from(a.assetIssuers).sort(),
     });
 
     outByChain[chain] = {

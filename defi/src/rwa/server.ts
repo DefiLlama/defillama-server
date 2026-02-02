@@ -1,6 +1,6 @@
 import * as HyperExpress from 'hyper-express';
 import * as sdk from '@defillama/sdk';
-import { readRouteData, getCacheVersion, readPGCacheForId, PGCacheData } from './file-cache';
+import { readRouteData, getCacheVersion, readPGCacheForId, PGCacheData, initCache } from './sqlite-cache';
 
 const webserver = new HyperExpress.Server();
 const port = +(process.env.RWA_PORT ?? 5002);
@@ -280,6 +280,9 @@ function setRoutes(router: HyperExpress.Router): void {
 async function main() {
     console.log('Starting RWA REST Server...');
     console.log('Cache Version:', getCacheVersion());
+
+    // Initialize SQLite cache
+    initCache();
 
     // CORS middleware
     webserver.use((req, res, next) => {

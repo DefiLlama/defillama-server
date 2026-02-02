@@ -9,7 +9,9 @@ import {
   mergePGCacheData,
   PGCacheData,
   PGCacheRecord,
-} from './file-cache';
+  initCache,
+  closeCache,
+} from './sqlite-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyIdsPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
 import * as sdk from '@defillama/sdk';
@@ -711,6 +713,9 @@ async function main() {
   const totalStartTime = Date.now();
 
   try {
+    // Initialize SQLite cache
+    initCache();
+
     // Clear old cache versions
     console.log('Clearing old cache versions...');
     await clearOldCacheVersions();
@@ -755,6 +760,9 @@ async function main() {
   } catch (error) {
     console.error('Error in RWA cron job:', error);
     process.exit(1);
+  } finally {
+    // Clean shutdown of SQLite
+    closeCache();
   }
 }
 

@@ -1,3 +1,8 @@
+/**
+ * @deprecated This module is deprecated. Use sqlite-cache.ts instead.
+ * This file is kept for backwards compatibility during the migration period.
+ */
+
 import fs from 'fs';
 import path from 'path';
 

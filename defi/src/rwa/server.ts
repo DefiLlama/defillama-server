@@ -205,13 +205,13 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !Array.isArray(currentData.data)) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const idParam = String(id).toLowerCase();
 
-            const rwa = currentData.data.find((item: any) => {
+            const rwa = currentData.find((item: any) => {
                 const itemId = item?.id ?? item?.['*rwaId'];
                 return typeof itemId !== 'undefined' && String(itemId).toLowerCase() === idParam;
             });
@@ -234,13 +234,13 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !Array.isArray(currentData.data)) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const tickerParam = String(ticker).toLowerCase();
 
-            const rwa = currentData.data.find((item: any) => {
+            const rwa = currentData.find((item: any) => {
                 const itemTicker = item?.ticker;
                 return typeof itemTicker !== 'undefined' && rwaSlug(itemTicker) === tickerParam;
             });
@@ -263,12 +263,12 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !currentData.data) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const categoryLower = category.toLowerCase();
-            const filtered = currentData.data.filter((item: any) => {
+            const filtered = currentData.filter((item: any) => {
                 const categories = item.category || [];
                 return categories.some((cat: string) => cat.toLowerCase() === categoryLower);
             });
@@ -287,12 +287,12 @@ function setRoutes(router: HyperExpress.Router): void {
             }
 
             const currentData = await readRouteData('current.json');
-            if (!currentData || !currentData.data) {
+            if (!currentData) {
                 return errorResponse(res, 'Data not found', 500);
             }
 
             const chainLower = chain.toLowerCase();
-            const filtered = currentData.data.filter((item: any) => {
+            const filtered = currentData.filter((item: any) => {
                 // Check if chain exists in onChainMcap/activeMcap/defiActiveTvl.
                 const chains = [
                     ...Object.keys(item.onChainMcap || {}),

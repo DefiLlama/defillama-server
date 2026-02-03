@@ -815,6 +815,11 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       allDp.onChainMcap += totalOnChainMcap;
       allDp.activeMcap += totalActiveMcap;
       allDp.defiActiveTvl += totalTvl;
+      
+      const allDpa = ensureBreakdownDataPoint(byChainTickerBreakdown, 'all', timestamp, ticker);
+      allDpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+      allDpa.activeMcap[timestamp][ticker] += totalOnChainMcap;
+      allDpa.defiActiveTvl[timestamp][ticker] += totalOnChainMcap;
 
       // Aggregate by category
       for (const cat of categories) {

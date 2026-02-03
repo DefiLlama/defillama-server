@@ -21537,6 +21537,10 @@ const data4: Protocol[] = [
     twitter: "EveDexOfficial",
     treasury: "evedex.js",
     listedAt: 1753803222,
+    dimensions: {
+      derivatives: "evedex",
+      "open-interest": "evedex",
+    }
   },
   {
     id: "6498",

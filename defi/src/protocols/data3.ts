@@ -44496,7 +44496,7 @@ const data3_2: Protocol[] = [
     //previousName: ["Dragon Swap V2 Sei"],
     address: 'sei:0x0a526e425809aEA71eb279d24ae22Dee6C92A4Fe',
     symbol: "DRG",
-    url: "https://dragonswap.app",
+    url: "https://saphyre.xyz/",
     description: "Execution Infrastructure for On-Chain Trading.",
     chain: "Sei",
     logo: `${baseIconsUrl}/saphyre-v2.jpg`,

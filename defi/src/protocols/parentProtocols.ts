@@ -5450,7 +5450,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dragon-swap",
     name: "Saphyre", // previous Dragon Swap
-    url: "https://dragonswap.app",
+    url: "https://saphyre.xyz/",
     description:
       "Execution Infrastructure for On-Chain Trading.",
     logo: `${baseIconsUrl}/saphyre.jpg`,

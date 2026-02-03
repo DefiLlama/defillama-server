@@ -10070,5 +10070,22 @@ const data5: Protocol[] = [
     twitter: "Clawloan",
     listedAt: 1770152755,
   },
+  {
+    id: "7355",
+    name: "Futarchy AMM",
+    address: null,
+    symbol: "-",
+    url: "https://metadao.fi",
+    description: "Raise money while putting ownership into the hands of your early users and believers.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/futarchy-amm.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "MetaDAOProject",
+  },
 ];
 export default data5;

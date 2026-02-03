@@ -42,6 +42,16 @@
     }
   },
   "supra": {
+    "0x80f0251b74c76f1c477b9209ade65ffb5cfecd9b259875c3865ad645f6c33a3d": {
+      "decimals": "8",
+      "symbol": "iSUPRA",
+      "to": "coingecko#supra"
+    },
+    "0x90a8e901e02ac1539af4a865bbe4a6b96edc27375488803cfbbd6875ec57b281": {
+      "decimals": "8",
+      "symbol": "iUSDC",
+      "to": "coingecko#usd-coin"
+    },
     "0xf90b4b9d4a9d87c39fb3140513e52edc3ead5eaddcb9881b02becdeb63c5793d": {
       "decimals": "6",
       "symbol": "supUSDC",

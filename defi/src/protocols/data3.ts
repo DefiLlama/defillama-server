@@ -56075,13 +56075,14 @@ const data3_3: Protocol[] = [
   },*/
   {
     id: "5251",
-    name: "Truemarkets",
+    name: "Trueo",
+    previousNames: ["TrueMarkets"],
     address: "base:0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab",
     symbol: "TRUE",
-    url: "https://truemarkets.org",
+    url: "https://trueo.com/",
     description: "News through markets. Bounties on truth.",
     chain: "Base",
-    logo: `${baseIconsUrl}/truemarkets.jpg`,
+    logo: `${baseIconsUrl}/trueo.jpg`,
     audits: "0",
     gecko_id: "true",
     cmcId: null,
@@ -56089,13 +56090,14 @@ const data3_3: Protocol[] = [
     chains: ["Base"],
     module: "truemarkets/index.js",
     oraclesBreakdown: [ { name: "TruthOracle", type: "Primary", proof: [] } ],
-    twitter: "truemarkets",
+    twitter: "Trueo_app",
     listedAt: 1729254083,
     treasury: 'truemarkets.js',
     dimensions: {
       fees: "truemarkets",
       dexs: "truemarkets",
     },
+    github: ["trueo-protocol"],
   },
   {
     id: "5252",

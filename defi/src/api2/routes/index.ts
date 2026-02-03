@@ -495,7 +495,7 @@ interface TvlProtocolRequestParams {
   currency: string; // token/raw, usd, default = usd
 }
 
-const AllowedProtocolKeys = ['tvl', 'staking', 'borrowed', 'pool2', 'all'];
+const AllowedProtocolKeys = ['tvl', 'staking', 'borrowed', 'pool2', 'vesting', 'all'];
 const AllowedTreasuryKeys = ['tvl', 'OwnTokens', 'all'];
 const AllowedCurrencies = ['token', 'raw', 'usd'];
 

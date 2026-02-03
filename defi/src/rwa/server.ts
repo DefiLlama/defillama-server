@@ -227,7 +227,7 @@ function setRoutes(router: HyperExpress.Router): void {
         errorWrapper(async (req, res) => {
             const { platform } = req.params;
             if (!platform) {
-                return errorResponse(res, 'Missing category parameter', 400);
+                return errorResponse(res, 'Missing platform parameter', 400);
             }
             const key = rwaSlug(platform);
             return fileResponse(`charts/platform-ticker-breakdown/${key}.json`, res, 30);

@@ -30176,7 +30176,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Base", "XDC", "Hyperliquid L1"],
     module: "primefi-xyz/index.js",
-    twitter: "PrimeNumbersFi",
+    twitter: "PrimeFi",
     oraclesBreakdown: [
       {
         name: "Chainlink",

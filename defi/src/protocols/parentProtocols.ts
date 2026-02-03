@@ -5795,7 +5795,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#kelp-dao", //
     name: "KernelDAO", //previous KelpDAO
-    url: "https://kerneldao.com",
+    url: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description:
       "KernelDAO is a suite of top restaking products, with over $2 billion in total value locked and live on 10+ chains including Ethereum, BNB Chain, and expanding further. KernelDAO’s three key products include Kernel, Kelp and Gain.",
     logo: `${baseIconsUrl}/kerneldao.jpg`,

@@ -27260,7 +27260,7 @@ const data3_1: Protocol[] = [
     name: "Kelp",
     address: null,
     symbol: "-",
-    url: "https://kerneldao.com/kelp/restake/",
+    url: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     assetToken: "rsETH",
     description:
       "Kelp is the second largest liquid restaking protocol with ~$2B+ in TVL. Its liquid restaked token, rsETH, is live across 10+ major L2s and 40+ DeFi platforms, allowing users to restake while maintaining full liquidity.",
@@ -55933,7 +55933,7 @@ const data3_3: Protocol[] = [
     name: "Gain",
     address: null,
     symbol: "-",
-    url: "https://kerneldao.com/kelp/gain/",
+    url: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description:
       "Gain is an actively managed vaults program with $150M+ in TVL, designed for users to maximise their earning potential through tokenized rewards, supported by a seamless user experience. Its flagship products are Airdrop Gain, High Gain and Grizzly Gain.",
     chain: "Ethereum",
@@ -62184,7 +62184,7 @@ const data3_3: Protocol[] = [
     name: "Kernel", //previous KernelDAO
     address: null,
     symbol: "-",
-    url: "https://kerneldao.com/restake",
+    url: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description: "Kernel is pioneering restaking on the BNB Chain. Restake BNB, BTC and other yield-bearing tokens and earn higher rewards.",
     chain: "Binance",
     logo: `${baseIconsUrl}/kernel.jpg`,

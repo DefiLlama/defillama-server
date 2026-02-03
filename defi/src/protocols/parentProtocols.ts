@@ -8292,7 +8292,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#strata",
     name: "Strata",
     url: "https://strata.money",
-    description: "Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields",
+    description: "Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies",
     logo: `${baseIconsUrl}/strata.jpg`,
     gecko_id: null,
     cmcId: null,

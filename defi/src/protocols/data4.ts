@@ -29762,7 +29762,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://strata.money",
-    description: `Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields. It allows investors to tailor their risk-reward preferences while earning yields through two risk tranches: Senior and Junior`,
+    description: `Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strata-markets.jpg`,
     audits: "2",

@@ -180,6 +180,7 @@ export type PGCacheData = { [timestamp: number]: PGCacheRecord };
 
 export async function storePGCacheForId(id: string, data: PGCacheData): Promise<void> {
     const subPath = fileNameNormalizer(`pg-cache/${id}.json`);
+    console.log(`Storing PG cache for ID ${id} with ${Object.keys(data).length} records`);
     return storeData(subPath, data);
 }
 

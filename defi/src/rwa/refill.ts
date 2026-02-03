@@ -1,17 +1,21 @@
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import atvl from './atvl';
-import setEnvSecrets from '../utils/shared/setEnvSecrets';
-import { getCurrentUnixTimestamp } from "../utils/date";
+import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
+import { fetchTimestampsPG, initPG } from "./db";
 
 const start = 1735690215; // 1 Jan 2025
 const end = getCurrentUnixTimestamp()
 
 async function main() {
-    await setEnvSecrets()
+    await initPG();
+    const done = await fetchTimestampsPG();
     const timestamps: number[] = []
     let workingNumber = end;
+    let finished = 0;
     while (workingNumber > start) {
-        timestamps.push(workingNumber);
+        const cleanTimestamp = getTimestampAtStartOfDay(workingNumber);
+        if (done.includes(cleanTimestamp)) finished ++
+        if (!done.includes(cleanTimestamp)) timestamps.push(cleanTimestamp);
         workingNumber -= 86400;
     }
 

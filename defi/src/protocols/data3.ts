@@ -1412,6 +1412,8 @@ const data3_0: Protocol[] = [
     module: "cexdex-stacking/index.js",
     twitter: "Cexdexapp",
     listedAt: 1680529377,
+    deadUrl: true,
+    rugged: true,
   },
   {
     id: "2765",
@@ -4746,6 +4748,8 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "DirectexchangeX",
     listedAt: 1682949297,
+    deadUrl: true,
+    rugged: true,
   },
   {
     id: "2917",
@@ -18468,6 +18472,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["3377"],
     twitter: "polyfriendtech",
     listedAt: 1695254714,
+    deadUrl: true,
   },
   {
     id: "3540",
@@ -28608,6 +28613,7 @@ const data3_1: Protocol[] = [
     twitter: "shimmerbridge",
     github: ["zokyo-sec"],
     listedAt: 1704837211,
+    deadUrl: true
   },
   {
     id: "4006",
@@ -32297,6 +32303,7 @@ const data3_1: Protocol[] = [
     module: "blackrock-fund/index.js",
     twitter: "BlackRockFi",
     listedAt: 1708611494,
+    deadUrl: true,
   },
   {
     id: "4161",
@@ -32531,6 +32538,7 @@ const data3_2: Protocol[] = [
     twitter: "deltafixyz",
     audit_links: ["https://skynet.certik.com/ko/projects/deltafixyz"],
     listedAt: 1708948249,
+    deadUrl: true,
   },
   {
     id: "4171",
@@ -35765,6 +35773,7 @@ const data3_2: Protocol[] = [
       "https://github.com/LiquiX-Finance/Private-Pool-Vault/blob/main/SlowMist%20Audit%20Report%20-%20LiquiX.pdf",
     ],
     listedAt: 1710785382,
+    deadUrl: true,
   },
   {
     id: "4319",

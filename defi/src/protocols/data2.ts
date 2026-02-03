@@ -21544,6 +21544,7 @@ const data2: Protocol[] = [
     twitter: "DexitNetwork",
     forkedFromIds: ["2197"],
     listedAt: 1670977584,
+    deadUrl: true,
   },
   {
     id: "2359",

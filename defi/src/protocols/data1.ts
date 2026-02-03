@@ -13462,6 +13462,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://rugdoc.io/project/smartcoin/",
     ],
     listedAt: 1635279168,
+    deadUrl: true,
   },
   {
     id: "716",
@@ -15970,7 +15971,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Capital DAO",
     address: "0x3c48ca59bf2699e51d4974d4b6d284ae52076e5e",
     symbol: "CDS",
-    url: "https://capital-dao.io",
+    url: "https://capital-dao.xyz/",
     description:
       "Capital DAO Protocol is the First Decentralized Venture Capital Using DAO for MultiChain. It disrupts Venture 2.0 and moves to Venture 3.0",
     chain: "Ethereum",
@@ -17472,6 +17473,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "klondike/index.js",
     twitter: "KlondikeFinance",
     listedAt: 1637892596,
+    deadUrl: true,
   },
   // {
   //   id: "919",
@@ -18884,6 +18886,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "GalaxyGoggleDAO",
     forkedFromIds: ["340"],
     listedAt: 1638809285,
+    deadUrl: true,
+    rugged: true,
   },
   {
     id: "985",

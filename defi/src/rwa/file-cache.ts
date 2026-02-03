@@ -110,6 +110,7 @@ export function getCacheVersion(): string {
 
 // Sync metadata for tracking incremental updates
 const SYNC_METADATA_FILE = 'sync-metadata.json';
+const PG_SYNC_METADATA_FILE = 'pg_sync-metadata.json';
 
 interface SyncMetadata {
     lastSyncTimestamp: string | null;
@@ -125,6 +126,17 @@ export async function getSyncMetadata(): Promise<SyncMetadata | null> {
 export async function setSyncMetadata(metadata: SyncMetadata): Promise<void> {
     await storeRouteData(SYNC_METADATA_FILE, metadata);
 }
+
+
+export async function getPGSyncMetadata(): Promise<SyncMetadata | null> {
+    const data = await readRouteData(PG_SYNC_METADATA_FILE, { skipErrorLog: true });
+    return data;
+}
+
+export async function setPGSyncMetadata(metadata: SyncMetadata): Promise<void> {
+    await storeRouteData(PG_SYNC_METADATA_FILE, metadata);
+}
+
 
 // Historical data per ID
 export async function storeHistoricalDataForId(id: string, data: any[]): Promise<void> {

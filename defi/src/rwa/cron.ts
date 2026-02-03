@@ -14,6 +14,8 @@ import {
   mergePGCacheData,
   PGCacheData,
   PGCacheRecord,
+  getPGSyncMetadata,
+  setPGSyncMetadata,
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
@@ -275,10 +277,11 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
   console.log('Generating PG cache with chain breakdown...');
   const startTime = Date.now();
 
-  const syncMetadata = await getSyncMetadata();
+  const syncMetadata = await getPGSyncMetadata();
   const lastSyncTimestamp = syncMetadata?.lastSyncTimestamp
     ? new Date(syncMetadata.lastSyncTimestamp)
     : undefined;
+  const timeNow = new Date()
 
   let updatedIds = 0;
 
@@ -331,6 +334,14 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
       }
     }
   }
+  
+
+  // Update sync metadata
+  setPGSyncMetadata({
+    lastSyncTimestamp: timeNow.toISOString(),
+    lastSyncDate: timeNow.toISOString(),
+    totalIds: updatedIds,
+  })
 
   console.log(`Generated PG cache for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
   return { updatedIds };
@@ -928,13 +939,14 @@ async function main() {
 
     // Get metadata for ID map and historical generation
     const metadata = await fetchMetadataPG();
+    console.log(`Fetched metadata for ${metadata.length} RWA assets`);
 
     // Generate current data
     const currentData = await generateCurrentData(metadata);
 
     // Store current data
     if (currentData.length > 0) {
-      console.log('Storing current data...');
+      console.log(`Storing current data for ${currentData.length} assets...`);
       await storeRouteData('current.json', currentData);
     } else {
       console.log("No current data to store");

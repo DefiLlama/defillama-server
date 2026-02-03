@@ -193,7 +193,9 @@ async function initializeRwaDB(): Promise<void> {
         const auth = process.env.COINS2_AUTH?.split(",") ?? [];
         if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
-        pgConnection = new Sequelize(auth[0]);
+        pgConnection = new Sequelize(auth[0], {
+            logging: false,
+        });
         initPGTables()
     }
 }

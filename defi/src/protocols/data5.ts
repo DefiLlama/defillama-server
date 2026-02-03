@@ -8112,7 +8112,7 @@ const data5: Protocol[] = [
   {
     id: "7261",
     name: "Orynth",
-    address: "solana:DEHoLKtoFGvLZeA29jsUHxS14MZhjokD52SABiMfBAGS",
+    address: "solana:FBaQqJAuYkuKQpAcDuHtuupSPpqi33fbTxKXSjLDQory",
     symbol: "ORY",
     url: "https://www.orynth.dev/",
     description:

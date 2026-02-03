@@ -9866,5 +9866,24 @@ const data5: Protocol[] = [
     twitter: "ton4uofficial",
     listedAt: 1770055474
   },
+  {
+    id: "7345",
+    name: "Sierra Protocol",
+    address: "avax:0x6E6080e15f8C0010d333D8CAeEaD29292ADb78f7",
+    symbol: "SIERRA",
+    url: "https://sierra.money/",
+    description: "The Sierra Protocol reimagines money by issuing SIERRA, a Liquid Yield Token (LYT) built to deliver the best user experience across CeFi and DeFi",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/sierra-protocol.png`,
+    audits: "2",
+    gecko_id: "sierra-2",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche"],
+    module: "sierra-money/index.js",
+    twitter: "SierraIsMoney",
+    audit_links: ["https://cantina.xyz/portfolio/967eeb2b-b6f6-4b17-b819-9bfb450876ca"],
+    listedAt: 1770100267
+  },
 ];
 export default data5;

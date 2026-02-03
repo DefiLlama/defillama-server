@@ -675,6 +675,7 @@ async function generateSearchList() {
   const categories: Array<SearchResult> = [];
 
   for (const category in categoryTvl) {
+    if (category === "RWA") continue;
     categories.push({
       id: `category_${normalize(category)}`,
       name: category,

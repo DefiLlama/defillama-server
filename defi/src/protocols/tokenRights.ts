@@ -366,7 +366,7 @@ export default {
       { label: "Revenue", hasRight: true, details: "ETHFI" },
     ],
     governanceData: {
-      rights: "LIMITED",
+      rights: "FULL",
       details: "Can vote on grants, parameters & upgrades, treasury diversification activities",
       feeSwitchStatus: "ON",
       feeSwitchDetails: "Foundation to utilise a portion of the treasury to conduct buy-backs of ETHFI tokens while the market price is below US $3, up to a total amount of US $50 million",

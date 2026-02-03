@@ -91,10 +91,6 @@ export function getCurrentCommitHash(repoPath: string): string {
   }
 }
 
-export function getDimensionsRepoCommitHash(): string {
-  return getCurrentCommitHash(path.join(__dirname, '../../dimension-adapters'));
-}
-
 /**
  * Checks if a file exists
  * @param filePath Path to the file to check

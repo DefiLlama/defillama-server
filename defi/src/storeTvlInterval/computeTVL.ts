@@ -227,9 +227,10 @@ interface Counter {
 
 const priceQueryFilterCoins = !!process.env.PRICE_QUERY_FILTER_FOR_KNOWN_COINS
 const whitelistedTokenSet = new Set() as Set<string>;
+export const whitelistedTokenSetRawPids = new Set() as Set<string>;
 let priceQueryFilterInitializedPromise: any
 
-async function initializePriceQueryFilter() {
+export async function initializePriceQueryFilter() {
   if (!priceQueryFilterInitializedPromise) priceQueryFilterInitializedPromise = _initializePriceQueryFilter()
   return priceQueryFilterInitializedPromise
   async function _initializePriceQueryFilter() {
@@ -251,6 +252,7 @@ async function initializePriceQueryFilter() {
 
       while (response.hits.hits.length) {
         response.hits.hits.map((i: any) => {
+          whitelistedTokenSetRawPids.add(`${i._source.chain}:${i._source.address}`);
           whitelistedTokenSet.add(normalizeCoinId(i._source.pid));
         })
         sdk.log(`Fetched ${whitelistedTokenSet.size} records, ${response.hits.hits.length} in batch`);

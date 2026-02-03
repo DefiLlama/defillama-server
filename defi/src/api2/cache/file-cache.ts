@@ -3,7 +3,8 @@ import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
 import { log, } from '@defillama/sdk'
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 export { PG_CACHE_KEYS }
 
 const CACHE_DIR = getEnv().api2CacheDir;
@@ -68,12 +69,14 @@ export async function storeRouteData(subPath: string, data: any) {
 }
 
 export async function readRouteData(subPath: string, {
-  skipErrorLog = false
+  skipErrorLog = false,
+  readAsArrayBuffer = false,
 }: {
   skipErrorLog?: boolean
+  readAsArrayBuffer?: boolean
 } = {}) {
   subPath = fileNameNormalizer(`build/${subPath}`)
-  return readFileData(subPath, { skipErrorLog })
+  return readFileData(subPath, { skipErrorLog, readAsArrayBuffer })
 }
 
 async function storeData(subPath: string, data: any) {
@@ -89,14 +92,22 @@ async function storeData(subPath: string, data: any) {
 }
 
 async function readFileData(subPath: string, {
-  skipErrorLog = false
+  skipErrorLog = false,
+  readAsArrayBuffer = false,
 }: {
-  skipErrorLog?: boolean
+  skipErrorLog?: boolean,
+  readAsArrayBuffer?: boolean,
 } = {}) {
   const filePath = path.join(CACHE_DIR!, subPath)
   try {
-    const data = await fs.promises.readFile(filePath, 'utf8')
-    return JSON.parse(data.toString())
+    let data = await fs.promises.readFile(filePath, readAsArrayBuffer ? null : 'utf8')
+
+    if (readAsArrayBuffer)
+      return data
+
+    data = data.toString()
+
+    return JSON.parse(data)
   } catch (e) {
     if (!skipErrorLog)
       log((e as any)?.message)
@@ -106,7 +117,9 @@ async function readFileData(subPath: string, {
 
 async function deleteFileData(subPath: string) {
   const filePath = path.join(CACHE_DIR!, subPath)
-  return fs.promises.unlink(filePath)
+  return fs.promises.unlink(filePath).catch((e) => {
+    log(`Error deleting file ${filePath}:`, (e as any)?.message)
+  })
 }
 
 function getCacheFile(key: string) {

@@ -27,26 +27,19 @@ export function importAdapter(protocol: Protocol) {
         }
         return {}
     }
-    return mockFunctions(adapterModule)
+    return adapterModule
 }
 
 export function importAdapterDynamic(protocol: Protocol) {
-    return require(`@defillama/adapters/projects/${protocol.module}`)
-}
 
-function mockTvlFunction() {
-    throw new Error('This is a mock function, you should not be calling it, maybe you need to use importAdapterDynamic instead?')
-}
+    try {  // wrap call to be safe, can be removed later
+        const { allProtocols } = require(`../../../DefiLlama-Adapters/projects/helper/registries`)
+        let pModule = protocol.module.replace(/\.js$/, '').replace(/\/index$/, '').replace(/\/api$/, '')
+        let _module = allProtocols[pModule] || allProtocols[protocol.module]
+        if (_module) return _module
+    } catch (e: any) {
+        console.error("Error loading allProtocols:", e?.message)
+    }
 
-
-// code to replace function string with mock functions in an object all the way down
-function mockFunctions(obj: any) {
-    // disabling the unmocking block as we never use it
-
-    /* if (obj === "_f") {  // llamaMockedTVLFunction
-        return mockTvlFunction
-    } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
-    } */
-    return obj
+    return require(`../../../DefiLlama-Adapters/projects/${protocol.module}`)
 }

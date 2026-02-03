@@ -1,5 +1,5 @@
 import { util } from "@defillama/sdk";
-import { Chain, } from "@defillama/sdk/build/general";
+type Chain = string
 import providers from "@defillama/sdk/build/providers.json";
 
 const { blocks: { getBlocks, getCurrentBlocks, } } = util
@@ -38,7 +38,7 @@ function getChainlist(adapterModule: any) {
 export async function getCurrentBlock(options: blockObjects = {}): Promise<getCurrentBlockResponse> {
   let { chains, adapterModule, catchOnlyStaleRPC } = options
   if (adapterModule) chains = getChainlist(adapterModule)
-  chains = chains?.filter((i: string) => (providers as any)[i]).filter((i: string) => !['filecoin', 'crab', 'echelon','kava', 'boba_avax', 'milkomeda_a1', 'dogechain', 'clv', 'okexchain', 'bitcoin',].includes(i))
+  chains = chains?.filter((i: string) => (providers as any)[i]).filter((i: string) => !['filecoin', 'crab', 'echelon','kava', 'boba_avax', 'milkomeda_a1', 'dogechain', 'clv', 'okexchain', 'bitcoin', 'tron'].includes(i))
   try {
     const data = await getCurrentBlocks(chains)
     return data

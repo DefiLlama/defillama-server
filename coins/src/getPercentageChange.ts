@@ -3,7 +3,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { getTimestampsArray, quantisePeriod } from "./utils/timestampUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 
 type QueryParams = {
   coins: string[];

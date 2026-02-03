@@ -30,12 +30,13 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await PromisePool.withConcurrency(13)
+  await PromisePool.withConcurrency(10)
     .for(protocolIndexes)
     .process(async (i) => {
       const adapterKey = a[i][0];
       const b: any = a[i][1];
       const timeKey = `                                                                                  --- Runtime ${adapterKey} `;
+      console.log(`Running ${adapterKey}`);
       console.time(timeKey);
       try {
         const adapterFn = typeof b === "function" ? b : b[adapterKey];
@@ -43,17 +44,8 @@ async function storeDefiCoins() {
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
-        for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
-          await Promise.all([
-            batchWriteWithAlerts(
-              resultsWithoutDuplicates.slice(i, i + step),
-              true,
-            ),
-          ]);
-          // await batchWrite2WithAlerts(
-          //   resultsWithoutDuplicates.slice(i, i + step),
-          // );
-        }
+        const ddbWriteResult = await batchWriteWithAlerts(resultsWithoutDuplicates, true,);
+        console.log(`[DDB] Wrote ${ddbWriteResult?.writeCount} entries for ${adapterKey}`);
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);
         if ((e as any).stack) {

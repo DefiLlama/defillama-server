@@ -1,7 +1,7 @@
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
 import protocols from "./data";
-import parentProtocols from "./parentProtocols";
+import parentProtocols, { parentProtocolsById } from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
 import { sluggifyString } from "../utils/sluggify";
@@ -13,6 +13,18 @@ test("operational expenses: script has been run", async () => {
   const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
 
   expect(outputData).toEqual(operationalCosts)
+});
+
+
+test("Check parent protocols exist", async () => {
+  protocols.forEach(protocol => {
+    if (protocol.parentProtocol) {
+      const parent = parentProtocolsById[protocol.parentProtocol];
+      if (!parent) {
+        throw new Error(`Protocol ${protocol.name} has unknown parentProtocol id ${protocol.parentProtocol}`);
+      }
+    }
+  })
 });
 
 test("all the dynamic imports work", async () => {
@@ -221,7 +233,7 @@ test("no surprise category", async () => {
     'CDP',
     'Services',
     'Insurance',
-    'Cross Chain Bridge',
+    'Bridge Aggregators',
     'Options',
     'Chain',
     'Derivatives',
@@ -303,7 +315,13 @@ test("no surprise category", async () => {
     "Physical TCG",
     "Mining Pools",
     "NFT Automated Strategies",
-    "Luck Games"
+    "Luck Games",
+    "ve-Incentive Automator",
+    "Cross Chain Bridge",
+    "Decentralized AI",
+    "Identity & Reputation",
+    "Gamified Mining",
+    "Secondary Debt Markets"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

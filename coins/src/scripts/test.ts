@@ -1,5 +1,4 @@
 import {
-  batchWrite2WithAlerts,
   batchWriteWithAlerts,
 } from "../adapters/utils/database";
 import { getCurrentUnixTimestamp } from "../utils/date";
@@ -27,7 +26,6 @@ export default async function test() {
 
     await Promise.all([
       batchWriteWithAlerts(result, true),
-      batchWrite2WithAlerts(result),
     ]);
     console.log(`test runner done`);
   } catch (e) {

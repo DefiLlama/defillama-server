@@ -1,4 +1,4 @@
-// exactly same as storeNewTvl.ts but with reads data from postgres instead of dynamodb
+// exactly same as storeNewTvl.ts but reads data from postgres instead of dynamodb
 
 import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
@@ -42,7 +42,8 @@ export default async function (
 
   if (currentTvl < 0) {
     const errorMessage = `TVL for ${protocol.name} is negative TVL(${currentTvl}), fix the adapter.`
-    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+    if (!(tvl?.bitcoin < 0))   // TODO: there is some bitcoin bug that cause negative tvl sometimes, this needs to be fixed, but it is known issue so not spamming the team webhook for now
+      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
     throw new Error(errorMessage);
   }
 
@@ -138,23 +139,48 @@ export default async function (
     }
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
       let tvlFromMissingTokens = 0;
-      let missingTokens = '';
+      let missingTokens: { coin: string, value: number, valueHN: string }[] = [];
+      let highValueDrop: { coin: string, value: number, valueHN: string }[] = [];
       [...extraSections, "tvl"].forEach(section => {
         if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
         Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
-          if (usdTokenBalances[section]?.[coin] === undefined) {
+          const currentTokenUSDTvl = usdTokenBalances[section]?.[coin]
+          if (currentTokenUSDTvl === undefined) {
             tvlFromMissingTokens += Number(tvl)
-            missingTokens += `${coin},`
+            missingTokens.push({ coin, valueHN: humanizeNumber(tvl as any), value: tvl as number })
+          }
+
+          if (tvl as number > 10e6 && typeof +currentTokenUSDTvl === 'number' && (tvl as number) / 4 > +currentTokenUSDTvl) {
+            const diff = (tvl as number) - (+currentTokenUSDTvl || 0)
+            highValueDrop.push({ coin, valueHN: humanizeNumber(diff as any), value: diff as number })
           }
         })
       })
-      if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
-        console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
-        if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
-          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
-          await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-          throw new Error(errorMessage);
-        }
+
+      missingTokens = missingTokens.sort((a, b) => b.value - a.value)
+      let missingTokenString = missingTokens.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+      missingTokenString = missingTokenString.length ? `missing tokens: ${missingTokenString}` : ""
+      highValueDrop = highValueDrop.sort((a, b) => b.value - a.value)
+      const highValueDropString = highValueDrop.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+      if (highValueDrop.length)
+        missingTokenString += ` high drop: ${highValueDropString}`
+      const lastHourlyTVLHN = humanizeNumber(lastHourlyTVL)
+      const currentTvlHN = humanizeNumber(currentTvl)
+
+      // if tvl was more than 50M send an high severity alert
+      if (lastHourlyTVL > 50e6) {
+        const ignoredTvl = new Set(['Olympus DAO'])
+        if (!ignoredTvl.has(protocol.name))
+          await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVLHN} to ${currentTvlHN}. ${missingTokenString}`, process.env.TEAM_WEBHOOK!)
+      }
+
+      console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN} . ${missingTokenString}`)
+
+      if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN}. ${missingTokenString}`
+        console.log(errorMessage, 'skipping db update')
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(errorMessage);
       }
     }
   }

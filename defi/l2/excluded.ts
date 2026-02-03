@@ -1,7 +1,9 @@
-import { getPrices } from "./utils";
+import { coins } from "@defillama/sdk";
 import { excludedTvlId } from "./constants";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
+const { getBlock, } = sdk.util.blocks
+
 
 const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
   base: [
@@ -54,7 +56,7 @@ export async function getExcludedTvl(timestamp: number) {
           block: block.number,
           withMetadata: true,
         }),
-        getPrices(
+        coins.getPrices(
           uniqueTokens.map((token) => `${chain}:${token}`),
           timestamp
         ),

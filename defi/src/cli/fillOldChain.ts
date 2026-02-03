@@ -13,10 +13,9 @@ import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
-import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import * as sdk from '@defillama/sdk'
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 import { closeConnection } from "../api2/db";
 
@@ -24,12 +23,12 @@ const { humanizeNumber: { humanizeNumber } } = sdk.util
 
 const secondsInDay = 24 * 3600;
 
-type DailyItems = (DocumentClient.ItemList | undefined)[];
+type DailyItems = (any)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   for (const items of dailyItems) {
     const itemsOnSameDay =
       items?.filter(
-        (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+        (item: any) => getClosestDayStartTimestamp(item.SK) === timestamp
       ) ?? [];
     for (const item of itemsOnSameDay) {
       await dynamodb.delete({
@@ -56,12 +55,12 @@ async function getAndStore(
   _dailyItems: DailyItems,
   options: {
     chainsToRefill: string[],
-    rawTokenTvl: DocumentClient.ItemList
+    rawTokenTvl: any
   }
 ) {
   const { chainsToRefill, rawTokenTvl = [] } = options
   let cacheData = rawTokenTvl.find(
-    (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+    (item: any) => getClosestDayStartTimestamp(item.SK) === timestamp
   )
 
   if (compensateMissingData) {
@@ -71,8 +70,8 @@ async function getAndStore(
     for (let i = 1; i <= 5 && !closestData; i++) {
       const nextDay = getClosestDayStartTimestamp(timestamp + secondsInDay * i)
       const previousDay = getClosestDayStartTimestamp(timestamp - secondsInDay * i)
-      const nextDayData = rawTokenTvl.find((item) => getClosestDayStartTimestamp(item.SK) === nextDay)
-      const previousDayData = rawTokenTvl.find((item) => getClosestDayStartTimestamp(item.SK) === previousDay)
+      const nextDayData = rawTokenTvl.find((item: any) => getClosestDayStartTimestamp(item.SK) === nextDay)
+      const previousDayData = rawTokenTvl.find((item: any) => getClosestDayStartTimestamp(item.SK) === previousDay)
       closestData = nextDayData ?? previousDayData
       closestDataTimestamp = nextDayData ? nextDay : previousDay
     }

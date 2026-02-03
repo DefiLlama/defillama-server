@@ -10,12 +10,12 @@ import { getTimestampAtStartOfDay } from '../../utils/date';
 import { storeAdapterRecord } from '../../adaptors/db-utils/db2';
 
 let action = () => changeProtocolChain({
-  oldId: '6726',
-  newId: '6726',
-  oldChain: 'ethereum',
-  newChain: 'paradex'
+  oldId: '2776',
+  newId: '2776',
+  oldChain: 'skale_europa',
+  newChain: 'europa'
 })
-action = storeFromFile
+// action = storeFromFile
 
 async function changeProtocolChain({
   oldId, newId, oldChain, newChain,
@@ -25,7 +25,7 @@ async function changeProtocolChain({
   const data = await TABLES.DIMENSIONS_DATA.findAll({
     where: {
       id: oldId,
-      type: 'fees',
+      // type: 'fees',
       // timeS: '2024-08-07'
     }
   })
@@ -37,14 +37,15 @@ async function changeProtocolChain({
 
   for (const record of data) {
     let updateNeeded = oldId !== newId
+    // let updateNeeded = false
     // Update chain name in each key of 'data' field
     if (record.dataValues.data && typeof record.dataValues.data === 'object') {
-      if (record.dataValues.data.aggregated.dr) {
+     /*  if (record.dataValues.data.aggregated.dr) {
         delete record.dataValues.data.aggregated.dr
         updateNeeded = true
         updateCount++
-      }
-      /* 
+      } */
+      
      const aggData = Object.values(record.dataValues.data.aggregated) as any
   for (const dimItem of aggData) {
      if (dimItem.chains && dimItem.chains[oldChain] !== undefined) {
@@ -52,7 +53,7 @@ async function changeProtocolChain({
        dimItem.chains[newChain] = dimItem.chains[oldChain]
        delete dimItem.chains[oldChain]
      }
-   } */
+   }
     }
 
     if (!updateNeeded) continue;

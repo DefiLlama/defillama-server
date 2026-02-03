@@ -17,10 +17,10 @@ export async function getTokenInfo(
 ): Promise<DbTokenInfos> {
   const { withSupply = false, timestamp } = params;
   targets = targets.map((i) => i.toLowerCase());
-  if (chain === 'solana') {
-    console.error('Solana not supported')
-    const decimals = targets.map(() => ({ output: 0, success: true }))
-    const symbols = targets.map(() => ({ output: '-', success: true }))
+  if (["solana", "sui", 'fogo'].includes(chain)) {
+    console.error('Solana|sui not supported')
+    const decimals = targets.map(() => ({ output: undefined, success: true }))
+    const symbols = targets.map(() => ({ output: undefined, success: true }))
     return { decimals, symbols, } as any
   }
 

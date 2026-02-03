@@ -1,15 +1,16 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
-import { McapData, TokenTvlData, DollarValues, CoinsApiData } from "./types";
-import { Chain } from "@defillama/sdk/build/general";
+import { McapData, TokenTvlData, DollarValues } from "./types";
+type Chain = string;
 import BigNumber from "bignumber.js";
-import { Address } from "@defillama/sdk/build/types";
+type Address = string;
 import { geckoSymbols, ownTokens, zero } from "./constants";
-import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
+import { fetchBridgeTokenList, fetchSupplies } from "./utils";
 import { fetchAdaTokens } from "./adapters/ada";
-import { nativeWhitelist } from "./adapters/manual";
+import { nativeBlacklist, nativeWhitelist } from "./adapters/manual";
 import { withTimeout } from "../src/utils/shared/withTimeout";
 import PromisePool from "@supercharge/promise-pool";
+import { coins } from "@defillama/sdk";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;
@@ -49,9 +50,11 @@ export async function fetchMinted(params: {
             : undefined;
           if (ownTokenCgid) storedTokens.push(ownTokenCgid);
 
+          storedTokens = storedTokens.filter((t: string) => !nativeBlacklist[chain]?.includes(t));
+
           console.log(`DBUG start for ${chain}`);
           // do these in order to lighten rpc, rest load
-          const prices = await getPrices(
+          const prices = await coins.getPrices(
             storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
             timestamp
           );
@@ -61,7 +64,7 @@ export async function fetchMinted(params: {
           Object.keys(prices).map((p: string) => {
             if (p.startsWith("coingecko:")) prices[p].decimals = 0;
           });
-          const mcaps = await getMcaps(Object.keys(prices), timestamp);
+          const mcaps = await coins.getMcaps(Object.keys(prices), timestamp);
 
           console.log(`DBUG mcaps done for ${chain}`);
 

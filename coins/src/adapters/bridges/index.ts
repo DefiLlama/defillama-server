@@ -9,43 +9,31 @@ process.on("unhandledRejection", (err) => {
   process.exit(1);
 });
 
-// import anyswap from "./anyswap";
 import arbitrum from "./arbitrum";
 import avax from "./avax";
-// import bsc from "./bsc";
-// import brc20 from "./brc20";
-import fantom from "./fantom";
-// import era from "./era";
 import gasTokens from "./gasTokens";
-//import harmony from "./harmony";
 import optimism from "./optimism";
-// import polygon from "./polygon";
-// import solana from "./solana";
-// import xdai from "./xdai";
-// import cosmos from "./cosmos";
-import synapse from "./synapse";
 import base from "./base";
-import neon_evm from "./neon_evm";
 import arbitrum_nova from "./arbitrum_nova";
 import mantle from "./mantle";
 import axelar from "./axelar";
 import linea from "./linea";
 import manta from "./manta";
-import astrzk from "./astrzk";
-import zklink from "./zklink";
-// import celer from "./celer";
-import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
 import morph from "./morph";
 import aptos from "./aptosFa";
-// import sophon from "./sophon";
 import unichan from "./unichain";
 import flow from "./flow";
 import layerzero from "./layerzero";
 import initia from "./initia";
 import zeroDecimalMappings from "./zeroDecimalMappings";
+import anvu from "./anvu";
+import monad from "./monad";
+import megaeth from "./megaeth";
+import pepu from "./pepu";
+import * as sdk from "@defillama/sdk";
 
 export type Token =
   | {
@@ -85,41 +73,28 @@ function normalizeBridgeResults(bridge: Bridge) {
 export const bridges = [
   zeroDecimalMappings, // THIS SHOULD BE AT INDEX 0
   optimism,
-  // anyswap,
   arbitrum,
   avax,
-  // brc20,
-  //bsc,
-  fantom,
-  // era,
   gasTokens,
-  //harmony,
-  // polygon,
-  // solana
-  //xdai
-  // cosmos,
-  synapse,
   base,
-  neon_evm,
   arbitrum_nova,
   mantle,
   axelar,
   linea,
   manta,
-  astrzk,
-  zklink,
-  // celer,
-  fraxtal,
   symbiosis,
   fuel,
   zircuit,
   morph,
   aptos,
-  // sophon,
   unichan,
   flow,
   layerzero,
-  initia
+  initia, 
+  anvu,
+  monad,
+  megaeth,
+  pepu,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -136,7 +111,7 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
-    if (process.env.URGENT_COINS_WEBHOOK)
+    if (process.env.URGENT_COINS_WEBHOOK && new Date('2026-02-21') < new Date())
       await sendMessage(
         `bridge ${i} storeTokens failed with: ${e}`,
         process.env.URGENT_COINS_WEBHOOK,
@@ -207,7 +182,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
-      let decimals: number, symbol: string;
+      let decimals: any, symbol: string;
       if ("getAllInfo" in token) {
         try {
           const newToken = await token.getAllInfo();
@@ -222,8 +197,10 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         symbol = token.symbol;
       }
 
+      if (isNaN(decimals) || decimals == '' || decimals == null) return;
       if (i && !decimals) return;
       if (!symbol) return;
+      decimals = Number(decimals)
 
       writes.push({
         PK: `asset#${token.from}`,
@@ -238,7 +215,8 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
     }),
   );
 
-  await batchWrite(writes, true);
+  const ddbWriteRes = await batchWrite(writes, true);
+  sdk.log(`Wrote ${ddbWriteRes.writeCount} bridge token entries`);
   await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }

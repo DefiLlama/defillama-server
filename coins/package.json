@@ -15,7 +15,7 @@
     "runner-test": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/test.ts",
     "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts true",
     "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
-    "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
+    "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' &&  npx ts-node --transpile-only src/scripts/defiCoins.ts",
     "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
     "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js",
     "check-rpc-blocks": "ts-node src/scripts/checkRpcBlocks.ts"
@@ -28,7 +28,6 @@
     "@types/jest": "^29.0.0",
     "@types/node": "^14.14.35",
     "@types/node-fetch": "^2.5.10",
-    "aws-sdk": "^2.1692.0",
     "babel-jest": "^29.0.0",
     "babel-loader": "^8.2.2",
     "esbuild": "^0.14.38",
@@ -45,8 +44,13 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudfront": "^3.918.0",
+    "@aws-sdk/client-dynamodb": "^3.918.0",
+    "@aws-sdk/client-lambda": "^3.918.0",
     "@aws-sdk/client-s3": "^3.354.0",
-    "@defillama/sdk": "^5.0.152",
+    "@aws-sdk/lib-dynamodb": "^3.918.0",
+    "@defillama/sdk": "^5.0.206",
+    "@elastic/elasticsearch": "^8.19.1",
     "@ethersproject/bignumber": "^5.5.0",
     "@project-serum/anchor": "^0.26.0",
     "@sentry/serverless": "^6.19.7",

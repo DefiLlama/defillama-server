@@ -1,11 +1,10 @@
 import fetch from "node-fetch";
-import { decimals, symbol } from "@defillama/sdk/build/erc20";
+import * as sdk from '@defillama/sdk'
+const { decimals, symbol, } = sdk.erc20
 import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
-
-import * as sdk from "@defillama/sdk";
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
@@ -83,7 +82,7 @@ export async function getSymbolAndDecimals(
 
     case 'starknet':
       try {
-        const [symbol, decimals] = await Promise.all([
+        let [symbol, decimals] = await Promise.all([
           call({
             abi: cairoErc20Abis.symbol,
             target: tokenAddress,
@@ -93,6 +92,7 @@ export async function getSymbolAndDecimals(
             target: tokenAddress,
           }).then((r) => Number(r)),
         ]);
+        if (!symbol?.length) symbol = '-'
         return { symbol, decimals };
       } catch (e) {
         return;

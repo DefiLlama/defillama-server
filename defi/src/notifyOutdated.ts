@@ -63,7 +63,7 @@ export async function notifyOutdatedPG() {
   if (currentHour % 4 === 0) {
     const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
     const ignoredSet = new Set(['Synthetix', 'Defi Saver']);
-    const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
+    const failedOver100m = hour12Outdated.filter((o: any) => o?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
     if (failedOver100m.length > 0) {
       await sendMessage(buildOutdatedMessage(failedOver100m) as any, teamwebhookUrl)
     }
@@ -79,7 +79,7 @@ export async function notifyOutdatedPG() {
   const message = buildOutdatedMessage(outdated)
 
   const cexOutdated = await findOutdatedPG(maxDrift, { categories: ['CEX'] })
-  const cexOver100m = cexOutdated.filter((o: any) => o[1]?.tvl > 100_000_000);
+  const cexOver100m = cexOutdated.filter((o: any) => o?.tvl > 100_000_000);
   if (cexOver100m.length > 0) {
     await sendMessage(buildOutdatedMessage(cexOver100m) as any, teamwebhookUrl)
   }

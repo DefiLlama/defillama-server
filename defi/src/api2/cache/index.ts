@@ -11,7 +11,6 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
-// import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 import { RUN_TYPE } from "../utils";
 import { updateProtocolMetadataUsingCache } from "../../protocols/data";

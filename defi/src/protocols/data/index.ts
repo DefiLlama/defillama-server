@@ -4,6 +4,7 @@ import parentProtocols from "../parentProtocols";
 import { sluggifyString } from "../../utils/sluggify";
 import { importAdapter } from "../../utils/imports/importAdapter";
 import { isDoubleCounted } from "../../utils/normalizeChain";
+import tokenRightsMap from '../tokenRights';
 
 import fs from 'fs';
 import path from 'path';
@@ -52,25 +53,32 @@ protocols.forEach((protocol: Protocol) => {
     }
     parentChildProtocolMap[protocol.parentProtocol].push(protocol);
   }
+
+  const tr = tokenRightsMap[protocol.id]
+  if (tr)
+    protocol.tokenRights = tr
+  
 })
 
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
 parentProtocols.forEach((protocol: IParentProtocol) => {
+
+  const tr = tokenRightsMap[protocol.id]
+  if (tr)
+    protocol.tokenRights = tr
+
   const childProtocols = parentChildProtocolMap[protocol.id] ?? []
   if (!childProtocols.length) return;
 
+  const fields = ['gecko_id', 'cmcId', 'symbol', 'address', 'tokenRights'] as (keyof Protocol)[]
 
-  const childGeckoId = childProtocols.find((p) => p.gecko_id)?.gecko_id
-  const childReferralUrl = childProtocols.find((p) => p.referralUrl)?.referralUrl
-  const childCmcId = childProtocols.find((p) => p.cmcId)?.cmcId
-  const childSymbol = childProtocols.find((p) => p.symbol)?.symbol
-  const childAddress = childProtocols.find((p) => p.address)?.address
-
-  if (!protocol.gecko_id && childGeckoId) protocol.gecko_id = childGeckoId
-  if (!protocol.cmcId && childCmcId) protocol.cmcId = childCmcId
-  if (!protocol.symbol && childSymbol) protocol.symbol = childSymbol
-  if (!protocol.address && childAddress) protocol.address = childAddress
-  if (!protocol.referralUrl && childReferralUrl) protocol.referralUrl = childReferralUrl
+  for (const field of fields) {
+    if ((protocol as Protocol)[field] !== undefined) continue;  // already has the field
+    const childValue = childProtocols.find((p) => p[field] !== undefined)?.[field]
+    if (childValue !== undefined) {
+      (protocol as any)[field] = childValue
+    }
+  }
 })
 
 

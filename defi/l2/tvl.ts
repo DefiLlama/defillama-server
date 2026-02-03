@@ -4,13 +4,13 @@ import { fetchMinted } from "./native";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
-import { Chain } from "@defillama/sdk/build/general";
-import { getMcaps } from "./utils";
+type Chain = string;
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
-import { verifyChanges } from "./test";
+import { verifyChanges } from "./verifyChanges";
 import { getExcludedTvl } from "./excluded";
 import { saveRawBridgedTvls } from "./raw";
+import { coins } from "@defillama/sdk";
 
 export default async function main(override?: boolean, timestamp?: number) {
   let symbolMap: { [pk: string]: string | null } = {};
@@ -86,7 +86,7 @@ async function translateToChainData(
       : `${chain}:${ownTokens[chain].address}`
   );
   const nativeTokenSymbols = Object.keys(ownTokens).map((chain: string) => ownTokens[chain].ticker);
-  const mcapsPromise = getMcaps(nativeTokenKeys, timestamp);
+  const mcapsPromise = coins.getMcaps(nativeTokenKeys, timestamp);
   const nativeTokenTotalValues: any = {};
 
   let translatedData: any = {};

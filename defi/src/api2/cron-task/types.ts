@@ -9,6 +9,7 @@ export interface IChainMetadata {
 	chainRevenue?: boolean
 	perps?: boolean
 	openInterest?: boolean
+	normalizedVolume?: boolean
 	dexAggregators?: boolean
 	optionsPremiumVolume?: boolean
 	optionsNotionalVolume?: boolean
@@ -26,8 +27,9 @@ export interface IChainMetadata {
 }
 
 export interface IProtocolMetadata {
-    name: string
+  name: string
 	tvl?: boolean
+	borrowed?: boolean
 	yields?: boolean
 	forks?: boolean
 	liquidity?: boolean
@@ -38,6 +40,7 @@ export interface IProtocolMetadata {
 	dexs?: boolean
 	perps?: boolean
 	openInterest?: boolean
+	normalizedVolume?: boolean
 	dexAggregators?: boolean
 	optionsPremiumVolume?: boolean
 	optionsNotionalVolume?: boolean

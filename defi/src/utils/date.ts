@@ -71,6 +71,13 @@ export const getTimestampAtStartOfMonth = (timestamp: number) => {
   return firstDay.valueOf() / 1000;
 };
 
+// return start quarter timestamp
+export const getTimestampAtStartOfQuarter = (timestamp: number) => {
+	const date = new Date(timestamp * 1000)
+  const firstMonth = Math.floor(date.getUTCMonth() / 3) * 3
+	return Math.trunc(Date.UTC(date.getUTCFullYear(), firstMonth, 1) / 1000)
+}
+
 export const getTimestampAtStartOfNextMonth = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
   const firstDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1);

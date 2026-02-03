@@ -1,4 +1,4 @@
-import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "@defillama/dimension-adapters/adapters/types"
+import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "../../dimension_migration/adapters/types"
 import { Protocol } from "../../protocols/types"
 
 export { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, }
@@ -29,6 +29,7 @@ export interface ProtocolAdaptor extends Protocol {
     adapterType?: ProtocolType
     methodologyURL: string
     methodology?: string | IJSON<string> | any
+    breakdownMethodology?: IJSON<IJSON<string>> | any
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
@@ -114,6 +115,8 @@ export enum AdaptorRecordType {
 
     dailyAppRevenue = "dar",
     dailyAppFees = "daf",
+
+    dailyNormalizedVolume = "dnvol"
 }
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -127,6 +130,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
     [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
+    [AdapterType.NORMALIZED_VOLUME]: AdaptorRecordType.dailyNormalizedVolume,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -193,3 +197,95 @@ export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((ac
 export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
 
 export const ADAPTER_TYPES = Object.values(AdapterType).filter((adapterType: any) => adapterType !== AdapterType.PROTOCOLS)
+
+export type DimensionsDataRecord = {
+    value: number,
+    chains: IJSON<number>
+    labelBreakdown?: IJSON<number>  // it is not really stored in the db, but added in the transform function while reading from db
+}
+
+export type DimensionsDataRecordMap = Partial<Record<AdaptorRecordType, DimensionsDataRecord>>
+
+export type DIMENSIONS_DB_RECORD = {
+    id: string,
+    timestamp: number,
+    timeS: string,
+    type: AdapterType,
+    data: {
+        aggregated: DimensionsDataRecordMap,
+    },
+    bl?: Partial<Record<AdaptorRecordType, IJSON<number>>>
+}
+
+
+export type PROTOCOL_SUMMARY = {
+    records: IJSON<{
+        aggObject: DimensionsDataRecordMap,
+    }>, // key is timeS
+    aggregatedRecords: {
+        yearly: IJSON<DimensionsDataRecordMap>, // probably chain key is not needed/ignored
+        quarterly: IJSON<DimensionsDataRecordMap>,
+        monthly: IJSON<DimensionsDataRecordMap>,
+    },
+    info: Protocol,
+    dataTypes: Set<AdaptorRecordType>,  // set of all record types present in records
+    misc?: IJSON<any>,  // not really used atm
+    summaries: Partial<Record<AdaptorRecordType, RecordSummary>>,
+}
+
+export type DIMENSIONS_ADAPTER_CACHE = {
+    lastUpdated: number,  // cached
+    protocols: {  // cached
+        [id: string]: {
+            records: {
+                [timeS: string]: {
+                    timestamp: number,
+                    aggObject: DimensionsDataRecordMap,
+                },
+            },
+        }
+    },
+    protocolSummaries?: IJSON<PROTOCOL_SUMMARY>, // key is protocol id
+    parentProtocolSummaries?: IJSON<PROTOCOL_SUMMARY>, // key is parent protocol id
+    summaries?: Partial<Record<AdaptorRecordType, RecordSummary>>,
+    allChains?: string[]
+}
+
+export interface EmissionsAggRecord {
+  value: number;
+  'by-label'?: IJSON<number>;
+}
+
+export interface EmissionsProtocolData {
+  id: string; // aave, uniswap, ...
+  yearly: IJSON<EmissionsAggRecord>;
+  quarterly: IJSON<EmissionsAggRecord>;
+  monthly: IJSON<EmissionsAggRecord>;
+}
+
+export type RecordSummary = {
+    total24h: number | null
+    total48hto24h: number | null
+    chart: IJSON<number>
+    chartBreakdown: IJSON<IJSON<number>>
+    earliestTimestamp?: number
+    chainSummary?: IJSON<RecordSummary>
+    total7d?: number | null
+    total30d?: number | null
+    total14dto7d?: number | null
+    total60dto30d?: number | null
+    total1y?: number | null
+    recordCount: number
+}
+
+export type ProtocolSummary = RecordSummary & {
+    change_1d?: number
+    change_7d?: number
+    change_1m?: number
+    change_7dover7d?: number
+    average1y?: number
+    monthlyAverage1y?: number
+    totalAllTime?: number
+    breakdown24h?: any
+    breakdown30d?: any
+}

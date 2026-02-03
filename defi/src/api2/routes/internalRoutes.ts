@@ -8,6 +8,7 @@ import { hourlyTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getL
 import { Protocol } from "../../protocols/types";
 import { protocolsById } from "../../protocols/data";
 import * as sdk from '@defillama/sdk';
+import { clearDimensionsCacheV2 } from "../utils/dimensionsUtils";
 
 
 export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: string) {
@@ -28,7 +29,10 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
         case 'GET':
           return res.json(await readFromPGCache(routerPath))
         case 'DELETE':
-          await deleteFromPGCache(routerPath)
+          if (routerPath === '/clear-dimensions-cache') {
+            await clearDimensionsCacheV2()
+          } else
+            await deleteFromPGCache(routerPath)
           return res.json({ success: true })
         default:
           throw new Error('Unsupported method')
@@ -60,7 +64,7 @@ async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperEx
     protocolIdArray.push(item.id)
     allProtocolItemsMap[item.id] = [item.data]
   })
-  
+
   allProtocolUSDItems.forEach((item: any) => {
     allProtocolUSDItemsMap[item.id] = [item.data]
   })
@@ -87,7 +91,6 @@ async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperEx
       const protocolResponse = await craftProtocolV2({
         protocolData,
         useNewChainNames: true,
-        useHourlyData: false,
         skipAggregatedTvl: false,
         skipCachedHourlyData: true,
         getCachedProtocolData,
@@ -100,7 +103,7 @@ async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperEx
 
   const endTime = Date.now()
   const elapsedTime = endTime - startTime
-  sdk.log('Elapsed time:', elapsedTime/1000, 's')
+  sdk.log('Elapsed time:', elapsedTime / 1000, 's')
 
   return res.json(responseData);
 }

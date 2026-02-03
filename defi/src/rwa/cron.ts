@@ -805,9 +805,9 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         chainDp.defiActiveTvl += toFiniteNumberOrZero((chainData as any)?.defiActiveTvl);
         
         const dpa = ensureBreakdownDataPoint(byChainTickerBreakdown, chainKey, timestamp, ticker);
-        dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.activeMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.defiActiveTvl[timestamp][ticker] += totalOnChainMcap;
+        dpa.onChainMcap[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.onChainMcap);
+        dpa.activeMcap[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.activeMcap);
+        dpa.defiActiveTvl[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.defiActiveTvl);
       }
 
       // Aggregate to "All"
@@ -830,8 +830,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         
         const dpa = ensureBreakdownDataPoint(byCategoryTickerBreakdown, cat, timestamp, ticker);
         dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.activeMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.defiActiveTvl[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
       }
 
       // Aggregate by platform
@@ -843,8 +843,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         
         const dpa = ensureBreakdownDataPoint(byPlatformTickerBreakdown, platform, timestamp, ticker);
         dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.activeMcap[timestamp][ticker] += totalOnChainMcap;
-        dpa.defiActiveTvl[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
       }
     }
     processedCount++;

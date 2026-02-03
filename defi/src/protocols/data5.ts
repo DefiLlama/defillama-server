@@ -9885,5 +9885,42 @@ const data5: Protocol[] = [
     audit_links: ["https://cantina.xyz/portfolio/967eeb2b-b6f6-4b17-b819-9bfb450876ca"],
     listedAt: 1770100267
   },
+  {
+    id: "7346",
+    name: "Chutes",
+    address: null,
+    symbol: "-",
+    url: "https://chutes.ai/",
+    description: "The Decentralized, Distributed Serverless AI Compute Platform",
+    chain: "Bittensor",
+    logo: `${baseIconsUrl}/chutes.png`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Decentralized AI",
+    chains: ["Bittensor"],
+    module: "chutes/index.js",
+    twitter: "chutes_ai",
+    listedAt: 1770102359
+  },
+  {
+    id: "7347",
+    name: "BaseVol",
+    address: "base:0xE095B8127823708dC07E739ef4149050aCC836E7",
+    symbol: "ATM",
+    url: "https://www.basevol.com",
+    description: "BaseVol is building the onchain options stack for everyone, from zero-day options trading to vaults",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basevol.png`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Base"],
+    module: "basevol/index.js",
+    twitter: "BaseVolApp",
+    audit_links: ["https://getfailsafe.com/basevol-smart-contract-audit/"],
+    listedAt: 1770102369
+  },
 ];
 export default data5;

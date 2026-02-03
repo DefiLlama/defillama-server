@@ -19,6 +19,7 @@ import * as sdk from '@defillama/sdk';
 import { normalizeRwaMetadataForApiInPlace, rwaSlug, toFiniteNumberOrZero } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
+import { getChainLabelFromKey } from '../utils/normalizeChain';
 
 interface RWACurrentData {
   id: string;
@@ -33,7 +34,7 @@ function convertChainKeysToLabelsNumber(obj: { [chainKey: string]: any }): { [ch
   const result: { [chainLabel: string]: number } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = getChainLabelFromKey(chainKey);
     result[chainLabel] = toFiniteNumberOrZero(obj[chainKey]);
   }
   return result;
@@ -46,7 +47,7 @@ function convertChainKeysToLabelsNestedNumber(
   const result: { [chainLabel: string]: { [key: string]: number } } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = getChainLabelFromKey(chainKey);
     const protocols = obj[chainKey];
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
@@ -805,7 +806,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
   // Store chain charts (includes "All" and individual chains)
   for (const [chain, timestampMap] of Object.entries(byChain)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chain);
+    const chainLabel = getChainLabelFromKey(chain);
     const key = rwaSlug(chainLabel);
     await storeRouteData(`charts/chain/${key}.json`, toSortedArray(timestampMap));
   }

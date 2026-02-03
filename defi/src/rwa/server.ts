@@ -149,6 +149,19 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
+    // Get historical chart data by chain (accepts label, converts to key)
+    router.get(
+        '/chart/chain/:chain/ticker-breakdown',
+        errorWrapper(async (req, res) => {
+            const { chain } = req.params;
+            if (!chain) {
+                return errorResponse(res, 'Missing chain parameter', 400);
+            }
+            const key = rwaSlug(chain);
+            return fileResponse(`charts/chain-ticker-breakdown/${key}.json`, res, 30);
+        })
+    );
+
     // Get historical chart data for asset by ID (from pg-cache)
     router.get(
         '/chart/asset/:id',
@@ -182,6 +195,19 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
+    // Get historical chart data by category - breakdown by tickers
+    router.get(
+        '/chart/category/:category/ticker-breakdown',
+        errorWrapper(async (req, res) => {
+            const { category } = req.params;
+            if (!category) {
+                return errorResponse(res, 'Missing category parameter', 400);
+            }
+            const key = rwaSlug(category);
+            return fileResponse(`charts/category-ticker-breakdown/${key}.json`, res, 30);
+        })
+    );
+
     // Get historical chart data by platform
     router.get(
         '/chart/platform/:platform',
@@ -192,6 +218,19 @@ function setRoutes(router: HyperExpress.Router): void {
             }
             const key = rwaSlug(platform);
             return fileResponse(`charts/platform/${key}.json`, res, 30);
+        })
+    );
+  
+    // Get historical chart data by platform - breakdown by tickers
+    router.get(
+        '/chart/platform/:platform/ticker-breakdown',
+        errorWrapper(async (req, res) => {
+            const { platform } = req.params;
+            if (!platform) {
+                return errorResponse(res, 'Missing category parameter', 400);
+            }
+            const key = rwaSlug(platform);
+            return fileResponse(`charts/platform-ticker-breakdown/${key}.json`, res, 30);
         })
     );
 

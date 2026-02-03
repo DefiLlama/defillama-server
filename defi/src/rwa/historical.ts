@@ -1,6 +1,7 @@
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
 import { keyMap, protocolIdMap } from "./constants";
+import { sendMessage } from "../utils/discord";
 
 const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocolIdMap).reduce(
   (acc: { [name: string]: string }, [id, name]: [string, string]) => {
@@ -59,7 +60,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
-      console.log(`ERROR ON ID ${id}`)
+      throw sendMessage(`ERROR ON ID ${id}`, process.env.ERROR_REPORTS_WEBHOOK, false)
     }
 
     inserts.push({

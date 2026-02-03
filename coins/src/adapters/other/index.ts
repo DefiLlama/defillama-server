@@ -122,6 +122,7 @@ export async function unknownTokens2(timestamp: number = 0) {
       { pool: "0x604bd24343134066c16ffc3efce5d3ca160c1fee", unknown: "0x5b52bfb8062ce664d74bbcd4cd6dc7df53fd7233", known: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", },
       { pool: "0xC597952437Fa67B4a28bb03B19BF786AD26A4036", unknown: "0x1702EC380e924B0E12d5C2e838B6b91A1fB3A052", known: "0x55d398326f99059fF775485246999027B3197955", },
       { pool: "0xeAdff72aBdA0709CD795CEFa3A44f45a22440144", unknown: "0x1f88e9956c8f8f64c8d5fef5ed8a818e2237112c", known: "0x55d398326f99059fF775485246999027B3197955", },
+      { pool: "0x7245D36825acFE58dE64E1b4A5F6d95662628faA", unknown: "0xafbe3b8b0939a5538DE32f7752A78e08C8492295", known: "0x74ccbe53F77b08632ce0CB91D3A545bF6B8E0979" }
     ],
     ethereum: [
       { pool: "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7", unknown: "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", },

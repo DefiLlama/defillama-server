@@ -846,13 +846,14 @@ async function main() {
 
     // Get metadata for ID map and historical generation
     const metadata = await fetchMetadataPG();
+    console.log(`Fetched metadata for ${metadata.length} RWA assets`);
 
     // Generate current data
     const currentData = await generateCurrentData(metadata);
 
     // Store current data
     if (currentData.length > 0) {
-      console.log('Storing current data...');
+      console.log(`Storing current data for ${currentData.length} assets...`);
       await storeRouteData('current.json', currentData);
     } else {
       console.log("No current data to store");

@@ -4315,7 +4315,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ether-fi",
     name: "ether.fi",
-    url: "https://www.ether.fi",
+    url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description: "Decentralized and non-custodial Ethereum staking protocol",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     gecko_id: "ether-fi",
@@ -7432,7 +7433,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#etherfi-cash",
     name: "EtherFi Cash",
-    url: "https://www.ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     logo: `${baseIconsUrl}/etherfi-cash.jpg`,
     gecko_id: null,

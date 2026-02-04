@@ -7739,6 +7739,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["114"],
     github: ["Paribus"],
     listedAt: 1685645869,
+    deadFrom: "2025-01-20",
   },
   {
     id: "3055",
@@ -11519,6 +11520,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["114"],
     parentProtocol: "parent#mare-finance",
     listedAt: 1689257696,
+    deadFrom: "2025-12-23",
   },
   {
     id: "3230",
@@ -26899,7 +26901,8 @@ const data3_1: Protocol[] = [
     treasury: "syncus.js",
     twitter: "Syncus_Fi",
     listedAt: 1702903725,
-    deadUrl: true
+    deadUrl: true,
+    deadFrom: "2024-04-21"
   },
   {
     id: "3930",
@@ -38529,6 +38532,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/pashov/audits/blob/master/solo/pdf/Lumin-security-review.pdf"],
     listedAt: 1712324027,
+    deadFrom: "2024-11-30",
   },
   {
     id: "4445",

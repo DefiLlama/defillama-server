@@ -7211,6 +7211,7 @@ const data2: Protocol[] = [
     twitter: "FenrirFi",
     listedAt: 1651375509,
     deadUrl: true,
+    deadFrom: "2025-10-12",
   },
   {
     id: "1711",

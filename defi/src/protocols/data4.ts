@@ -21994,6 +21994,7 @@ const data4: Protocol[] = [
     module: "teralend/index.js",
     twitter: "TeralendFinance",
     listedAt: 1754325942,
+    deadFrom: "2025-09-20",
   },
   {
     id: "6518",

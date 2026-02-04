@@ -1,5 +1,6 @@
 const abi = require("./abi.json");
-import { call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi
 import getBlock from "../../utils/block";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write } from "../../utils/dbInterfaces";
@@ -10,6 +11,7 @@ const ORACLE_MANAGER = "0xC67316Ed17E0C793041CFE12F674af250a294aab";
 const token_oracle_id: { [token: string]: string } = {
     "0x63FC3F743eE2e70e670864079978a1deB9c18b76": "0x42daefd962c3b559d6e382fcbc0e89e3fb7d87e836025141066e2f1f02fd5e99",
     "0xb6A307Bb281BcA13d69792eAF5Db7c2BBe6De248": "0x32cbf6a5839965f0e6439db08f6e9ec0250c2bc6af874f153616ed8d66dd139e",
+    "0x3ee6f82498d4e40DB33bac3adDABd8b41eCa1c9c": "0x9a1aef8f05fbbb282f9a65374552602898df8f3bacaf12f1c6ba000c4eb901bb"
 }
 
 const PRICE_DECIMALS = 18;

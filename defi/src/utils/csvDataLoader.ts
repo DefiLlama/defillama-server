@@ -21,7 +21,7 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
-import { FetchOptions, FetchResult } from '../../dimension-adapters/adapters/types';
+import { FetchOptions, FetchResult } from "../adaptors/data/types"
 
 const GLOBAL_CSV_BASE_PATH = ''; // change if you want to use a different folder
 

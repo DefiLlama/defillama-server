@@ -24,7 +24,7 @@ async function generateReportsSD() {
 
 async function updateProjectReportMapping() {
   console.log('Updating project report mapping')
-  // fetch all but only cetain fields
+  // fetch all but only certain fields
   const projectReports = await ProjectReport.findAll({
     attributes: { exclude: ['report', 'createdat', 'updatedat'] },
   })

@@ -11,7 +11,7 @@ export default async function bridge(): Promise<Token[]> {
     if (faAddress && coinGeckoId)
       tokens.push({
         from: `aptos:${faAddress}`,
-        to: `coingecko:${coinGeckoId}`,
+        to: `coingecko#${coinGeckoId}`,
         decimals,
         symbol,
       });
@@ -25,7 +25,7 @@ export default async function bridge(): Promise<Token[]> {
     if (coinGeckoId && tokenAddress)
       tokens.push({
         from: `aptos:${tokenAddress}`,
-        to: `coingecko:${coinGeckoId}`,
+        to: `coingecko#${coinGeckoId}`,
         decimals,
         symbol,
       });

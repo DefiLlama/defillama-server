@@ -1,4 +1,6 @@
-import { multiCall } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -28,9 +30,9 @@ async function processDbData(
       const coinData: CoinData = coinsData[token];
 
       if (coinData == undefined) {
-        console.log(
-          `Couldn't find underlying data for ${chain}:${token} on stargate`,
-        );
+        // console.log(
+        //   `Couldn't find underlying data for ${chain}:${token} on stargate`,
+        // );
         return;
       }
       return {

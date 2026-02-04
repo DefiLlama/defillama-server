@@ -1,5 +1,6 @@
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 const projectName = "unknownTokensV3";
 
 const slot0Abi =
@@ -14,6 +15,8 @@ const config: any = {
   bsc: {
     "0xf6718b2701D4a6498eF77D7c152b2137Ab28b8A3":
       "0xfc18301B94a77D91015bb90D5249827c506846Ae", // stBTC
+    "0xb8a1eD561C914F22BD69b0bb4558ad5A89FeAAE1": 
+      "0xc089253e8e28ef1213d7158b0add26e014175339" // ART
   },
   map: {
     "0x756af1d3810a01d3292fad62f295bbcc6c200aea":
@@ -42,6 +45,8 @@ const config: any = {
       "0x970A7749EcAA4394C8B2Bf5F2471F41FD6b79288", // wM
     "0x1DB1591540d7A6062Be0837ca3C808aDd28844F6":
       "0xD80e75fAf4cc02F6447287D5b1EF195EAc19FfD9", // hOHM
+    "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19":
+      "0x2a943E0432b22a3C3cD65B8c9045259B791f96B8" // HAUST
   },
   kroma: {
     "0x61e0D34b5206Fa8005EC1De8000df9B9dDee23Db":
@@ -59,7 +64,28 @@ const config: any = {
     "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a":
       "0x42514fa59DD4689573D35119CF9E0bda218e15ee", // aUSD
   },
+  scroll: {
+    "0xdb9E8F82D6d45fFf803161F2a5f75543972B229a":
+      "0xb17ccD860337209e2665afD5E7eAE9c0e5716b48", // USDQ
+  },
+  base: {
+    "0xf7178122A087eF8F5c7BeA362b7DaBE38F20Bf05":
+      "0x2019DEB4E18107A2FD8B4acBC7e3878037336fc2", // OMNI
+  },
+  hyperliquid: {
+    "0x876e7F2f30935118a654fc0E1f807aFc49EFe500":
+      "0xe9c02ca07931f9670fa87217372b3c9aa5a8a934", // PUP
+  },
 };
+
+const configCustomAbi: any = {
+  base: {
+    "0xe66E3A37C3274Ac24FE8590f7D84A2427194DC17": { 
+      pool: "0x9d228792a392838be03293ba93f406f3e8077b8d", // stkWELL
+      abi: "function slot0() view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, bool unlocked)"
+    }
+  },
+}
 
 export function unknownTokensV3(timestamp: number = 0) {
   return Promise.all(
@@ -70,11 +96,21 @@ export function unknownTokensV3(timestamp: number = 0) {
 async function getTokenPrice(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);
   const pricesObject: any = {};
+
   const pools: any = Object.values(config[chain]);
-  const tokens = Object.keys(config[chain]);
-  const token0s = await api.multiCall({ abi: "address:token0", calls: pools });
-  const token1s = await api.multiCall({ abi: "address:token1", calls: pools });
-  const slot0s = await api.multiCall({ abi: slot0Abi, calls: pools });
+  const customAbiPools: any = Object.values(configCustomAbi[chain] ?? {});
+
+  const tokens = [...Object.keys(config[chain]), ...Object.keys(configCustomAbi[chain] ?? [])];
+  const token0s = await api.multiCall({ abi: "address:token0", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
+  const token1s = await api.multiCall({ abi: "address:token1", calls: [...pools, ...customAbiPools.map((p: any) => p.pool)] });
+
+  const regularSlot0s = await api.multiCall({ abi: slot0Abi, calls: pools });
+  const customSlot0s: any[] = await runInPromisePool({
+    items: customAbiPools,
+    concurrency: 5,
+    processor: async (p: any) =>  api.call({ abi: p.abi, target: p.pool })
+  })
+
   const tokens0Decimals = await api.multiCall({
     abi: "erc20:decimals",
     calls: token0s,
@@ -84,7 +120,7 @@ async function getTokenPrice(chain: string, timestamp: number) {
     calls: token1s,
   });
 
-  slot0s.forEach((v: any, i: number) => {
+  [...regularSlot0s, ...customSlot0s].forEach((v: any, i: number) => {
     const token = tokens[i].toLowerCase();
     let token0 = token0s[i].toLowerCase();
     let price =

@@ -1,7 +1,9 @@
-import { getPrices } from "./utils";
+import { coins } from "@defillama/sdk";
 import { excludedTvlId } from "./constants";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
+const { getBlock, } = sdk.util.blocks
+
 
 const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
   base: [
@@ -13,6 +15,10 @@ const excludedTokensAndOwners: { [chain: string]: [string, string][] } = {
   hyperliquid: [
     ["0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463", "0x20000000000000000000000000000000000000c5"], // UBTC
     ["0xbe6727b535545c67d5caa73dea54865b92cf7907", "0x20000000000000000000000000000000000000dD"], // UETH
+    ["0x068f321fa8fb9f0d135f290ef6a3e2813e1c8a29", "0x20000000000000000000000000000000000000fE"], // USOL
+  ],
+  metis: [
+    ["0x2692BE44A6E38B698731fDDf417d060f0d20A0cB", "0x92370f368242CF442EA10dC299BA8CdB1e6aEE03"], // BNB
   ],
 };
 
@@ -50,7 +56,7 @@ export async function getExcludedTvl(timestamp: number) {
           block: block.number,
           withMetadata: true,
         }),
-        getPrices(
+        coins.getPrices(
           uniqueTokens.map((token) => `${chain}:${token}`),
           timestamp
         ),

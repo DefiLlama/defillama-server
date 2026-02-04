@@ -15,7 +15,19 @@ export const CategoryTagMap = {
     "Commodities",
     "Collectibles",
     "Hedge Funds",
-    "Private Equity"
+    "Private Equity",
+    "Tokenized Trading Strategies"
+  ],
+  Dexs: [
+    "AMM",
+    "CLMM",
+    "ve(3,3)",
+    "StableSwap",
+    "Weighted Pool AMM",
+    "Hook-based AMM",
+    "Prop AMM",
+    "Order Book",
+    "DLMM"
   ],
 }
 

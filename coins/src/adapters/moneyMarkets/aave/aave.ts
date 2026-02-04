@@ -1,5 +1,6 @@
 const abi = require("./abi.json");
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { multiCall, call } = sdk.api.abi
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -106,7 +107,7 @@ export default async function getTokenPrices(
       tokenInfo.symbols[i].output,
       timestamp,
       "aave",
-      1,
+      0.99,
       redirect,
     );
   });

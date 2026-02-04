@@ -1,4 +1,4 @@
-import { addressList } from "../../../dimension-adapters/users/list";
+import { addressList } from "../../dimension_migration/users/list";
 
 const count = {} as any
 addressList.forEach((c:any)=>{

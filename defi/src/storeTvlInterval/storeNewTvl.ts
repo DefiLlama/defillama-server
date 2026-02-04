@@ -10,7 +10,7 @@ import {
 } from "../utils/date";
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
-import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../utils/shared/getRecordClosestToTimestamp";
 import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
@@ -26,7 +26,7 @@ async function getTVLOfRecordClosestToTimestamp(
   timestamp: number,
   searchWidth: number) {
   const record = await getRecordClosestToTimestamp(PK, timestamp, searchWidth)
-  if (record.SK === undefined) {
+  if (record?.SK === undefined) {
     return {
       SK: undefined,
       tvl: 0
@@ -55,27 +55,11 @@ export default async function (
         tvl: 0,
       }
   );
-  const lastDailyTVLRecord = getTVLOfRecordClosestToTimestamp(
-    hourlyPK,
-    unixTimestamp - secondsInDay,
-    secondsBetweenCallsExtra
-  );
-  const lastWeeklyTVLRecord = getTVLOfRecordClosestToTimestamp(
-    hourlyPK,
-    unixTimestamp - secondsInWeek,
-    secondsBetweenCallsExtra
-  );
+  const lastDailyTVLRecord = getTVLOfRecordClosestToTimestamp(hourlyPK, unixTimestamp - secondsInDay, secondsBetweenCallsExtra);
+  const lastWeeklyTVLRecord = getTVLOfRecordClosestToTimestamp(hourlyPK, unixTimestamp - secondsInWeek, secondsBetweenCallsExtra);
   const dailyPK = dailyTvl(protocol.id);
-  const dayDailyTvlRecord = getTVLOfRecordClosestToTimestamp(
-    dailyPK,
-    unixTimestamp - secondsInDay,
-    secondsInDay
-  );
-  const weekDailyTvlRecord = getTVLOfRecordClosestToTimestamp(
-    dailyPK,
-    unixTimestamp - secondsInWeek,
-    secondsInDay
-  );
+  const dayDailyTvlRecord = getTVLOfRecordClosestToTimestamp(dailyPK, unixTimestamp - secondsInDay, secondsInDay);
+  const weekDailyTvlRecord = getTVLOfRecordClosestToTimestamp(dailyPK, unixTimestamp - secondsInWeek, secondsInDay);
 
   const lastHourlyTVLObject = await lastHourlyTVLRecord;
 
@@ -93,8 +77,8 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
-    if (currentTvl > 200e9 && excludedTvlId != protocol.id) {
-      let errorMessage = `TVL of ${protocol.name} is over 200bn`
+    if (currentTvl > 300e9 && excludedTvlId != protocol.id) {
+      let errorMessage = `TVL of ${protocol.name} is over 300bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {

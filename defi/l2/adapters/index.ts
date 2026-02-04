@@ -1,6 +1,8 @@
-import { call } from "@defillama/sdk/build/abi/abi2";
-import { Chain } from "@defillama/sdk/build/general";
-import { Address } from "@defillama/sdk/build/types";
+
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api2.abi
+type Chain = string;
+type Address = string;
 import axios from "axios";
 import nodefetch from "node-fetch";
 import sleep from "../../src/utils/shared/sleep";
@@ -59,7 +61,7 @@ export const linea = async (): Promise<Address[]> => {
   const data = await fetch(
     "https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-shortlist.json"
   );
-  addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
+  addresses.linea = data.tokens.filter((t: any) => !t.tokenType.includes("native")).map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
 export const metis = async (): Promise<Address[]> => {
@@ -131,19 +133,19 @@ export const starknet = async (): Promise<Address[]> => {
   addresses.starknet = data.map((t: any) => t.l2_token_address?.toLowerCase()).filter((t: any) => t != null);
   return addresses.starknet;
 };
-export const era = async (): Promise<Address[]> => {
-  if (addresses.era) return addresses.era;
-  const {
-    data: { result: data },
-  } = await axios.post("https://mainnet.era.zksync.io", {
-    method: "zks_getConfirmedTokens",
-    params: [0, 255],
-    id: 1,
-    jsonrpc: "2.0",
-  });
-  addresses.era = data.map((d: any) => d.l2Address.toLowerCase());
-  return addresses.era;
-};
+// export const era = async (): Promise<Address[]> => {
+//   if (addresses.era) return addresses.era;
+//   const {
+//     data: { result: data },
+//   } = await axios.post("https://mainnet.era.zksync.io", {
+//     method: "zks_getConfirmedTokens",
+//     params: [0, 255],
+//     id: 1,
+//     jsonrpc: "2.0",
+//   });
+//   addresses.era = data.map((d: any) => d.l2Address.toLowerCase());
+//   return addresses.era;
+// };
 export const tron = async (): Promise<Address[]> => {
   if (!("tron" in addresses)) addresses.tron = [];
   addresses.tron.push(
@@ -177,19 +179,19 @@ export const mode = async (): Promise<Address[]> => {
   );
   return addresses.mode;
 };
-export const zklink = async (): Promise<Address[]> => {
-  if (addresses.zklink) return addresses.zklink;
-  const allTokens = [];
-  let page = 1;
-  do {
-    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`);
-    allTokens.push(...items);
-    page++;
-    if (page >= meta.totalPages) break;
-  } while (page < 100);
-  addresses.zklink = allTokens.map((d: any) => d.l2Address.toLowerCase());
-  return addresses.zklink;
-};
+// export const zklink = async (): Promise<Address[]> => {
+//   if (addresses.zklink) return addresses.zklink;
+//   const allTokens = [];
+//   let page = 1;
+//   do {
+//     const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`);
+//     allTokens.push(...items);
+//     page++;
+//     if (page >= meta.totalPages) break;
+//   } while (page < 100);
+//   addresses.zklink = allTokens.map((d: any) => d.l2Address.toLowerCase());
+//   return addresses.zklink;
+// };
 export const manta = async (): Promise<Address[]> => {
   if (addresses.manta) return addresses.manta;
   const bridge = (

@@ -21,7 +21,7 @@ const config = {
   'eddy-fi': { factory: '0x9fd96203f7b22bCF72d9DCb40ff98302376cE09c', chain: 'zeta', getReservesAbi: alternateGetReservesAbi, },
   // pancakeswap: { endpoint: 'https://info-gateway.pancakeswap.com/subgraphs/v2/bsc/graphql', chain: 'bsc', factory: '0xca143ce32fe78f1f7019d7d551a6402fc5350c73', },
   traderJoe: { chain: 'avax', factory: '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10', endpoint: sdk.graph.modifyEndpoint('9ZjERoA7jGANYNz1YNuFMBt11fK44krveEhzssJTWokM') },
-  vvsFinance: { chain: 'cronos', factory: '0x3b44b2a187a7b3824131f8db5a74194d0a42fc15', },
+  // vvsFinance: { chain: 'cronos', factory: '0x3b44b2a187a7b3824131f8db5a74194d0a42fc15', },
   quickswap: { chain: 'polygon', factory: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', endpoint: sdk.graph.modifyEndpoint('FUWdkXWpi8JyhAnhKL5pZcVshpxuaUQG8JHMDqNCxjPd') },
   biswap: { chain: 'bsc', factory: '0x858e3312ed3a876947ea49d572a7c42de08af7ee', },
   // mmFinance: { chain: 'cronos', factory: '0xd590cC180601AEcD6eeADD9B7f2B7611519544f4', },
@@ -61,7 +61,9 @@ const config = {
   kodiakv2: { chain: 'berachain', factory: '0x5e705e184d233ff2a7cb1553793464a9d0c3028f' },
   swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663' },
   shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8' },
-  hyperswapv2: { chain: 'hyperliquid', factory: '0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48' }
+  hyperswapv2: { chain: 'hyperliquid', factory: '0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48' },
+  etherex: { chain: "linea", factory: "0xC0b920f6f1d6122B8187c031554dc8194F644592", hasStablePools: true },
+  pulsex2: { chain: 'pulse', factory: '0x29eA7545DEf87022BAdc76323F373EA1e707C523' },
 };
 
 export function extraUniV2Lps(timestamp: number = 0) {
@@ -95,6 +97,24 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "0x3A0eF60e803aae8e94f741E7F61c7CBe9501e569",
       "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "ethereum",
+    ),
+    getExtras(
+      timestamp,
+      "0xdca85EFDCe177b24DE8B17811cEC007FE5098586",
+      "0xA1077a294dDE1B09bB078844df40758a5D0f9a27",
+      "pulse",
+    ),
+    getExtras(
+      timestamp,
+      "0xA0126Ac1364606BAfb150653c7Bc9f1af4283DFa",
+      "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "pulse",
+    ),
+    getExtras(
+      timestamp,
+      "0x24264d580711474526e8f2a8ccb184f6438bb95c",
+      "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
+      "pulse",
     ),
   ]);
 }

@@ -16742,6 +16742,13 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/seamless-protocol/audits"],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1749485042,
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.seamlessprotocol.com/technical/oracles",],
+      },
+    ],
     dimensions: {
       fees: "seamless-v2",
     },

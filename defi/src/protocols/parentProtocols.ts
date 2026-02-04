@@ -8814,7 +8814,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "T0nyCrypt0",
   },
-    {
+  {
     id: "parent#pike",
     name: "Pike",
     url: "https://www.pike.finance/",
@@ -8824,6 +8824,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PikeFinance",
+  },
+  {
+    id: "parent#warpx",
+    name: "WarpX",
+    url: "https://www.warpx.exchange/",
+    description: "WarpX is a high-performance DEX built on MegaETH.",
+    logo: `${baseIconsUrl}/warpx.jpg`,
+    gecko_id: "warpx-exchange",
+    cmcId: null,
+    chains: [],
+    twitter: "warpexchange",
   },
 ];
 

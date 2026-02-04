@@ -9,6 +9,13 @@ const config = {
   },
 };
 
+/**
+ * Fetches token prices from Stobox oracle for a specific chain.
+ * Token list is retrieved dynamically from StoboxRWAVaultFactory contract.
+ * @param chain - The blockchain network name
+ * @param timestamp - Unix timestamp for price query (0 for current)
+ * @returns Array of Write objects containing token prices
+ */
 async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);
   const { oracle, factory } = config[chain as keyof typeof config];
@@ -39,6 +46,12 @@ async function getTokenPrices(chain: string, timestamp: number) {
   return writes;
 }
 
+/**
+ * Main adapter function for Stobox RWA tokens.
+ * Fetches prices for all configured chains (Arbitrum).
+ * @param timestamp - Unix timestamp for price query (0 for current)
+ * @returns Promise resolving to array of Write objects for all chains
+ */
 export function stobox(timestamp: number = 0) {
   return Promise.all(Object.keys(config).map((chain) => getTokenPrices(chain, timestamp)));
 }

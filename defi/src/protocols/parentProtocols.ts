@@ -8836,6 +8836,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "warpexchange",
   },
+  {
+    id: "parent#metadao",
+    name: "MetaDao",
+    url: "https://metadao.fi",
+    description: "Raise money while putting ownership into the hands of your early users and believers.",
+    logo: `${baseIconsUrl}/metadao.jpg`,
+    gecko_id: "meta-2-2",
+    cmcId: "38146",
+    chains: [],
+    twitter: "MetaDAOProject",
+    github: ["metaDAOproject"],
+  },
 ];
 
 export default parentProtocols;

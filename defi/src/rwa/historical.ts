@@ -60,7 +60,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
-      throw sendMessage(`ERROR ON ID ${id}`, process.env.ERROR_REPORTS_WEBHOOK, false)
+      throw sendMessage(`ERROR ON ID ${id}`, process.env.RWA_WEBHOOK!, false)
     }
 
     inserts.push({

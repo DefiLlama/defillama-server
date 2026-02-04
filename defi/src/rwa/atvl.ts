@@ -13,6 +13,7 @@ import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
 import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
 import { ALWAYS_STRING_ARRAY_FIELDS, fetchBurnAddresses, formatNumAsNumber, normalizeDashToNull, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
+import { sendMessage } from "../utils/discord";
 
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
@@ -447,5 +448,6 @@ async function main(ts: number = 0) {
 
 main().catch((error) => {
   console.error('Error running the script: ', error);
+  sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
   process.exit(1);
 }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

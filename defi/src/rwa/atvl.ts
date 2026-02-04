@@ -202,6 +202,7 @@ function getActiveTvls(
 
       if (Array.isArray(projectId) ? projectId.includes(amountId) : amountId == projectId) return;
       if (Array.isArray(projectId) ? projectId.includes(`${amountId}-treasury`) : `${amountId}-treasury` == projectId) return;
+      if (Array.isArray(projectId) ? projectId.map((p: string) => `${p}-treasury`).includes(amountId) : amountId == `${projectId}-treasury`) return;
 
       try {
         const projectName = protocolIdMap[amountId];

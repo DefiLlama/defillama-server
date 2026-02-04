@@ -69,6 +69,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     projectName: "aave-debt",
   });
 
+  // previously we have had underlying assets returned so they must be filtered out 
   const pksToInclude: string[] = []
   writes.forEach((w: Write) => {
     if (w.symbol?.toLowerCase().includes("debt")) {

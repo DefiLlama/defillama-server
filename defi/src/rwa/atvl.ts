@@ -303,7 +303,7 @@ function findActiveMcaps(
   );
 }
 // main entry
-async function main(ts: number = 0) {
+export default async function main(ts: number = 0) {
   const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it

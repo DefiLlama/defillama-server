@@ -293,6 +293,7 @@ function findActiveMcaps(
   assetPrices: { price: number; decimals: number },
   chain: string
 ) {
+  if (!finalData[rwaId][keyMap.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;
   const thisChainExcluded = excludedAmounts[rwaId][chain];
   if (!thisChainExcluded) return;
@@ -338,6 +339,10 @@ export default async function main(ts: number = 0) {
 
       // exclude columns for internal use
       else if (key.startsWith(keyMap.excluded)) return;
+      else if (key == "Chain")
+        cleanRow[camelKey] = row[key]
+          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
+          : null;
       // ensure consistent arrays for string-list fields
       else if (ALWAYS_STRING_ARRAY_FIELDS.has(camelKey)) {
         cleanRow[camelKey] = toStringArrayOrNull(row[key]);
@@ -350,13 +355,8 @@ export default async function main(ts: number = 0) {
       else if (camelKey === "name" || camelKey === "ticker") {
         const v = normalizeDashToNull(row[key]);
         cleanRow[camelKey] = v === "" ? null : v;
-      }
-      else if (key == "Primary Chain") {
+      } else if (key == "Primary Chain")
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
-      } else if (key == "Chain")
-        cleanRow[camelKey] = row[key]
-          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
-          : null;
       else {
         const v = normalizeDashToNull(row[key]);
         cleanRow[camelKey] = v == "" ? null : v;
@@ -437,7 +437,7 @@ export default async function main(ts: number = 0) {
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
   await Promise.all([
-    timestamp == 0 ? storeMetadata(res): Promise.resolve(),
+    timestamp == 0 ? storeMetadata(res) : Promise.resolve(),
     storeHistorical(res),
   ]);
 
@@ -446,8 +446,8 @@ export default async function main(ts: number = 0) {
   return finalData;
 }
 
-main().catch((error) => {
+main().catch(async (error) => {
   console.error('Error running the script: ', error);
-  sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
+  await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
   process.exit(1);
 }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

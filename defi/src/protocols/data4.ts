@@ -28334,7 +28334,7 @@ const data4: Protocol[] = [
     name: "Sentora",
     address: null,
     symbol: "-",
-    url: "https://app.euler.finance/governor/sentora?network=ethereum",
+    url: "https://sentora.com/",
     description: "Sentora provides the institutional-grade foundation for powering the next generation of DeFi solutions. Sentora's vault platform unlocks access to DeFi through sophisticated strategies, robust risk management, and enterprise-grade security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sentora.jpg`,

@@ -440,6 +440,8 @@ async function main(ts: number = 0) {
     storeHistorical(res),
   ]);
 
+  console.log(`Exitting atvl.ts`)
+
   return finalData;
 }
 

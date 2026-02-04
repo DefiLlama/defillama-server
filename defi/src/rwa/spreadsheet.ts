@@ -5,8 +5,13 @@ const listColumns: string[] = ["Chain", "Contracts", "Category", "Asset Class", 
 
 function deepTrimStrings(value: any): any {
   if (value == null) return value;
-  if (typeof value === "string") return value.trim();
-  if (Array.isArray(value)) return value.map(deepTrimStrings);
+  if (typeof value === "string") {
+    const s = value.trim();
+    return s === "" ? null : s;
+  }
+  if (Array.isArray(value)) {
+    return value.map(deepTrimStrings).filter((v) => v != null);
+  }
   if (typeof value === "object") {
     const out: any = Array.isArray(value) ? [] : {};
     for (const [k, v] of Object.entries(value)) out[k] = deepTrimStrings(v);
@@ -65,7 +70,8 @@ export async function getCsvData(): Promise<Object[]> {
 
       // Force list columns into arrays (avoid nested arrays)
       if (listColumns.includes(key)) {
-        row[key] = Array.isArray(raw) ? raw : [raw];
+        if (raw == null) row[key] = [];
+        else row[key] = Array.isArray(raw) ? raw : [raw];
         return;
       }
     });

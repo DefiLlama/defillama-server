@@ -522,7 +522,7 @@ export default {
     governanceData: {
       rights: "LIMITED",
       details:
-        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals; community can propose ideas with 100,000 CAKE balance",
+        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals, community can propose ideas with 10,000 CAKE balance",
       feeSwitchStatus: "ON",
       feeSwitchDetails: "Burns are active",
       links: [

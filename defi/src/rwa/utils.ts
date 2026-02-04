@@ -1,15 +1,15 @@
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { getChainDisplayName } from "../utils/normalizeChain";
 import {
-  ALWAYS_STRING_ARRAY_FIELDS,
-  governanceAssetClasses,
-  governanceCategories,
-  governanceClassifications,
+  RWA_ALWAYS_STRING_ARRAY_FIELDS,
   RWA_BOOLEAN_OR_NULL_FIELDS,
   RWA_STRING_OR_NULL_FIELDS,
-  stablecoinAssetClasses,
-  stablecoinCategories,
-  stablecoinClassifications,
+  RWA_STABLECOIN_ASSET_CLASSES,
+  RWA_STABLECOIN_CATEGORIES,
+  RWA_STABLECOIN_CLASSIFICATIONS,
+  RWA_GOVERNANCE_ASSET_CLASSES,
+  RWA_GOVERNANCE_CATEGORIES,
+  RWA_GOVERNANCE_CLASSIFICATIONS,
 } from "./metadataConstants";
 
 // convert spreadsheet titles to API format
@@ -250,7 +250,7 @@ export function toStringArrayOrNull(value: any): string[] | null {
 
 function normalizeStringArrayFieldsInPlace(
   target: any,
-  fields: ReadonlySet<string> = ALWAYS_STRING_ARRAY_FIELDS
+  fields: ReadonlySet<string> = RWA_ALWAYS_STRING_ARRAY_FIELDS
 ): any {
   if (!target || typeof target !== "object") return target;
   for (const field of fields) {
@@ -382,14 +382,14 @@ function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean;
   const hasAny = (arr: string[], pred: (s: string) => boolean) => arr.some(pred);
 
   const stablecoin =
-    hasAny(categories, (c) => c.toLowerCase().includes("stablecoin") || stablecoinCategories.has(c)) ||
-    hasAny(assetClasses, (c) => stablecoinAssetClasses.has(c)) ||
-    hasAny(classifications, (c) => stablecoinClassifications.has(c));
+    hasAny(categories, (c) => c.toLowerCase().includes("stablecoin") || RWA_STABLECOIN_CATEGORIES.has(c)) ||
+    hasAny(assetClasses, (c) => RWA_STABLECOIN_ASSET_CLASSES.has(c)) ||
+    hasAny(classifications, (c) => RWA_STABLECOIN_CLASSIFICATIONS.has(c));
 
   const governance =
-    hasAny(categories, (c) => c.toLowerCase().includes("governance") || governanceCategories.has(c)) ||
-    hasAny(assetClasses, (c) => governanceAssetClasses.has(c)) ||
-    hasAny(classifications, (c) => governanceClassifications.has(c));
+    hasAny(categories, (c) => c.toLowerCase().includes("governance") || RWA_GOVERNANCE_CATEGORIES.has(c)) ||
+    hasAny(assetClasses, (c) => RWA_GOVERNANCE_ASSET_CLASSES.has(c)) ||
+    hasAny(classifications, (c) => RWA_GOVERNANCE_CLASSIFICATIONS.has(c));
 
   return { stablecoin, governance };
 }
@@ -406,7 +406,7 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   if (!target || typeof target !== "object") return target;
 
   // Normalize list fields
-  normalizeStringArrayFieldsInPlace(target, ALWAYS_STRING_ARRAY_FIELDS);
+  normalizeStringArrayFieldsInPlace(target, RWA_ALWAYS_STRING_ARRAY_FIELDS);
 
   // Normalize scalar string fields
   for (const field of RWA_STRING_OR_NULL_FIELDS) {

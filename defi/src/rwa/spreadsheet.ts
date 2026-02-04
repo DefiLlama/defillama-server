@@ -1,5 +1,5 @@
 import { getAllAirtableRecords } from "../utils/airtable";
-import { keyMap } from "./metadataConstants";
+import { RWA_KEY_MAP } from "./metadataConstants";
 
 const listColumns: string[] = ["Chain", "Contracts", "Category", "Asset Class", "KYC", "Notes", "Pool ID"];
 
@@ -34,7 +34,7 @@ export async function getCsvData(): Promise<Object[]> {
         return;
       }
 
-      if (key === keyMap.id && raw === "1") {
+      if (key === RWA_KEY_MAP.id && raw === "1") {
         row[key] = "1";
         return;
       }

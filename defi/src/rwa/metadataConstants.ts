@@ -1,7 +1,7 @@
 // Lightweight constants for RWA metadata normalization.
 // Keep this file free of heavy imports (e.g. protocol lists) so it can be used by `utils.ts`.
 
-export const keyMap: { [value: string]: string } = {
+export const RWA_KEY_MAP: { [value: string]: string } = {
   coingeckoId: "*Coingecko ID",
   onChain: "onChainMcap",
   defiActive: "defiActiveTvl",
@@ -17,7 +17,7 @@ export const keyMap: { [value: string]: string } = {
 
 // Some metadata fields should always be exposed as string arrays in the API,
 // even if the underlying stored metadata is a single string (legacy) or mixed types.
-export const ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
+export const RWA_ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
   "website",
   "twitter",
   "chain",
@@ -51,12 +51,12 @@ export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
   "governance",
 ]);
 
-export const stablecoinCategories = new Set([
+export const RWA_STABLECOIN_CATEGORIES = new Set([
   "Fiat-Backed Stablecoins",
   "Stablecoins backed by RWAs",
   "Non-RWA Stablecoins",
 ]);
-export const stablecoinAssetClasses = new Set([
+export const RWA_STABLECOIN_ASSET_CLASSES = new Set([
   "USD fiat stablecoin",
   "Synthetic backed stablecoin",
   "Crypto-collateralized stablecoin (non-RWA)",
@@ -70,12 +70,12 @@ export const stablecoinAssetClasses = new Set([
   "Yield-bearing fiat stablecoin",
   "Bank deposit token",
 ]);
-export const stablecoinClassifications = new Set<string>([]);
+export const RWA_STABLECOIN_CLASSIFICATIONS = new Set<string>([]);
 
-export const governanceCategories = new Set(["Governance & Protocol Tokens"]);
-export const governanceAssetClasses = new Set([
+export const RWA_GOVERNANCE_CATEGORIES = new Set(["Governance & Protocol Tokens"]);
+export const RWA_GOVERNANCE_ASSET_CLASSES = new Set([
   "Governance / voting token (RWA protocol)",
   "Revenue / fee share token (RWA protocol)",
 ]);
-export const governanceClassifications = new Set(["Non-RWA (Gov/Utility)"]);
+export const RWA_GOVERNANCE_CLASSIFICATIONS = new Set(["Non-RWA (Gov/Utility)"]);
 

@@ -21536,7 +21536,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Eventum"],
     module: "evedex/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
     treasury: "evedex.js",
     listedAt: 1753803222,
     dimensions: {
@@ -21559,7 +21559,7 @@ const data4: Protocol[] = [
     category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "eventum/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
   },
   {
     id: "6499",

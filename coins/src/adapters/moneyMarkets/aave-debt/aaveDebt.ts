@@ -70,14 +70,15 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   });
 
   // previously we have had underlying assets returned so they must be filtered out 
-  const pksToInclude: string[] = []
+  // if we filter directly without collecting pksToInclude, historical writes which do not have symbol would be ignored
+  const pksToInclude: Set<string> = new Set();
   writes.forEach((w: Write) => {
     if (w.symbol?.toLowerCase().includes("debt")) {
-      pksToInclude.push(w.PK);
+      pksToInclude.add(w.PK);
     }
   });
 
-  return writes.filter((w: Write) => pksToInclude.includes(w.PK));
+  return writes.filter((w: Write) => pksToInclude.has(w.PK));
 }
 
 const abi: any = {

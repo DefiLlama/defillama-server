@@ -1837,7 +1837,7 @@ const data: Protocol[] = [
     address: "0x111111111117dc0aa78b770fa6a738034120c302",
     symbol: "1INCH",
     url: "https://1inch.com",
-    referralUrl: "https://app.1inch.com/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5",
+   // referralUrl: "https://app.1inch.com/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5", while we fixing
     description:
       "1inch is the DeFi ecosystem building financial freedom for everyone",
     chain: "Ethereum",

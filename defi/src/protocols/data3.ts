@@ -19887,7 +19887,7 @@ const data3_1: Protocol[] = [
     name: "sDAI",
     address: "gnosis:0xaf204776c7245bF4147c2612BF6e5972Ee483701",
     symbol: "sDAI",
-    url: "https://agavefinance.eth.limo/",
+    url: "https://agavefinance.eth.limo/sdai/",
     description:
       "All the DAI bridged to Gnosis Chain is earning interest at MakerDAO. This interest is redirected to the sDAI holder. You can use sDAI in Defi like you would normally use xDAI.",
     chain: "xDai",

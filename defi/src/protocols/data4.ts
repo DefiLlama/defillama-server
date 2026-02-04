@@ -18400,6 +18400,7 @@ const data4: Protocol[] = [
       dexs: "eulerswap"
     }
   },
+/*
   {
     id: "6359",
     name: "SSV Network",
@@ -18420,6 +18421,7 @@ const data4: Protocol[] = [
       fees: "ssv-network"
     }
   },
+*/
   {
     id: "6360",
     name: "TR ENERGY",

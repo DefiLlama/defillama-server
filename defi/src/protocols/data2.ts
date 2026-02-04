@@ -3335,6 +3335,7 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
+      "open-interest": "01-xyz",
     },
   },
   {
@@ -15629,6 +15630,7 @@ const data2: Protocol[] = [
     category: "RWA Lending",
     chains: ["Ethereum", "Celo"],
     module: "ethichub/index.js",
+    treasury: "ethichub.js",
     twitter: "EthicHub",
     audit_links: [
       "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf",

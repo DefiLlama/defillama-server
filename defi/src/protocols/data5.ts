@@ -3664,13 +3664,17 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Treasury Manager",
+    tags: ["AMM"],
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "MetaDAOProject",
     audit_links: ["https://github.com/metaDAOproject/programs/tree/develop/audits"],
     treasury: "futarchy-amm",
     parentProtocol: "parent#metadao",
+    dimensions: {
+      dexs: "futarchy-amm",
+      fees: "futarchy-amm",
+    },
     listedAt: 1769530071,
   },
   {
@@ -10078,16 +10082,12 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    category: "Treasury Manager",
     chains: ["Solana"],
     module: "dummy.js",
     treasury: "metadao-treasuries.js",
     twitter: "MetaDAOProject",
     parentProtocol: "parent#metadao",
-    dimensions: {
-      dexs: "futarchy-amm",
-      fees: "futarchy-amm",
-    },
   },
 ];
 export default data5;

@@ -2,6 +2,7 @@ import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
 import { keyMap, protocolIdMap } from "./constants";
 import { sendMessage } from "../utils/discord";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocolIdMap).reduce(
   (acc: { [name: string]: string }, [id, name]: [string, string]) => {
@@ -25,8 +26,11 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     aggregatemcap: number;
     aggregatedactivemcap: number;
   }[] = [];
-  Object.keys(data).forEach((id: any) => {
-    const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
+  await runInPromisePool({
+    items: Object.keys(data),
+    concurrency: 5,
+    processor: async (id: any) => {
+      const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -60,7 +64,8 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
-      throw sendMessage(`ERROR ON ID ${id}`, process.env.RWA_WEBHOOK!, false)
+      await sendMessage(`ERROR ON ID ${id}`, process.env.RWA_WEBHOOK!, false)
+      throw new Error(`ERROR ON ID ${id}`)
     }
 
     inserts.push({
@@ -73,7 +78,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
       aggregatemcap,
       aggregatedactivemcap,
     });
-  });
+  }});
 
   await initPG();
   await storeHistoricalPG(inserts, timestamp);

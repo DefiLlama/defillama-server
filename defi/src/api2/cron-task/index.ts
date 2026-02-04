@@ -1,51 +1,59 @@
-import { cache, initCache, checkModuleDoubleCounted, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
-import { storeRouteData, writeToPGCache } from "../cache/file-cache";
+import { cache, initCache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
+import { readRouteData, storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
-import { PG_CACHE_KEYS } from "../constants";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
-import { craftChainsResponse } from "../../getChains";
+import { craftChainsResponse } from "../routes/getChains";
 import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../../getProtocols";
 import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { getRaisesInternal } from "../../getRaises";
-import { getHacksInternal } from "../../getHacks";
-import { hourlyTvl } from "../../utils/getLastRecord";
-import { log } from '@defillama/sdk'
+import { getRaisesInternal } from "../routes/getRaises";
+import { getHacksInternal } from "../routes/getHacks";
+import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
-import { getOraclesInternal } from "../../getOracles";
-import { getForksInternal } from "../../getForks";
-import { getCategoriesInternal } from "../../getCategories";
-import { storeLangs } from "../../storeLangs";
+import { getOraclesInternal } from "../routes/getOracles";
+import { getForksInternal } from "../routes/getForks";
+import { getCategoriesInternal } from "../routes/getCategories";
+import { storeLangs } from "../routes/storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
+import * as sdk from '@defillama/sdk'
+import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
+import { genFormattedChains } from "./genFormattedChains";
+import { fetchRWAStats } from "../../rwa";
+import { sendMessage } from "../../utils/discord";
+import { chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { getActiveUsers } from "../routes/getActiveUsers";
 
 const protocolDataMap: { [key: string]: any } = {}
 
 let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Function
+let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
 async function run() {
+
   await initializeTVLCacheDB()
-  await initCache({ cacheType: 'cron' })
+  await initCache({ cacheType: RUN_TYPE.CRON })
+
+  console.time('init protocol data map')
   await initializeProtocolDataMap()
-  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
-  await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this
+  console.timeEnd('init protocol data map')
+
+  await addProtocolAppMetadataToCache()
+
+  await storeTvlCacheAllFile(cache)
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
-    isApi2CronProcess: true,
     protocolList: cache.metadata.protocols,
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
-    getModule: (protocol: any) => ({
-      doublecounted: checkModuleDoubleCounted(protocol),
-    })
   }
 
-
   // await writeProtocolTvlData()  // to be served from rest api instead
+  await writeBitcoinAddressesFile()
   await writeProtocols()
   await writeConfig()
   await writeOracles()
@@ -63,6 +71,12 @@ async function run() {
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
+  await storeActiveUsers()
+  await storeRWAStats()
+
+
+  // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
+
   // await writeRaises() // moved to different cron task
   // await writeHacks()  // moved to different cron task
 
@@ -75,35 +89,56 @@ async function run() {
     const latestProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
     const latestProtocolItemsMap: any = {}
     latestProtocolItems.forEach((data: any) => latestProtocolItemsMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterLast24Hours')
+    // console.timeEnd('getLatestProtocolItems filterLast24Hours')
 
 
     console.time('getLatestProtocolItems filterADayAgo')
     const latestProtocolItemsDayAgo = await getLatestProtocolItems(hourlyTvl, { filterADayAgo: true })
     const latestProtocolItemsDayAgoMap: any = {}
     latestProtocolItemsDayAgo.forEach((data: any) => latestProtocolItemsDayAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterADayAgo')
+    // console.timeEnd('getLatestProtocolItems filterADayAgo')
 
     console.time('getLatestProtocolItems filterAWeekAgo')
-    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(hourlyTvl, { filterAWeekAgo: true })
+    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
     const latestProtocolItemsWeekAgoMap: any = {}
     latestProtocolItemsWeekAgo.forEach((data: any) => latestProtocolItemsWeekAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAWeekAgo')
+    // console.timeEnd('getLatestProtocolItems filterAWeekAgo')
 
     console.time('getLatestProtocolItems filterAMonthAgo')
-    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(hourlyTvl, { filterAMonthAgo: true })
+    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
     const latestProtocolItemsMonthAgoMap: any = {}
     latestProtocolItemsMonthAgo.forEach((data: any) => latestProtocolItemsMonthAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAMonthAgo')
+    // console.timeEnd('getLatestProtocolItems filterAMonthAgo')
+
+    console.time('getLatestProtocolTokensUSD filterADayAgo')
+    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true, })
+    const latestProtocolTokensUSDMap: any = {}
+    latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
+    // console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
+
+    console.time('getLatestProtocolTokensUSD filterAWeekAgo')
+    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
+    const latestProtocolTokensUSDWeekAgoMap: any = {}
+    latestProtocolTokensUSDWeekAgo.forEach((data: any) => latestProtocolTokensUSDWeekAgoMap[data.id] = data.data)
+    // console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
+
+    console.time('getLatestProtocolTokensUSD filterAMonthAgo')
+    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
+    const latestProtocolTokensUSDMonthAgoMap: any = {}
+    latestProtocolTokensUSDMonthAgo.forEach((data: any) => latestProtocolTokensUSDMonthAgoMap[data.id] = data.data)
+    // console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
+
 
     console.time('getAllProtocolItems')
     getYesterdayTvl = (protocol: any) => latestProtocolItemsDayAgoMap[protocol.id] ?? {}
     getLastWeekTvl = (protocol: any) => latestProtocolItemsWeekAgoMap[protocol.id] ?? {}
     getLastMonthTvl = (protocol: any) => latestProtocolItemsMonthAgoMap[protocol.id] ?? {}
+    getYesterdayTokensUsd = (protocol: any) => latestProtocolTokensUSDMap[protocol.id] ?? {}
+    getLastWeekTokensUsd = (protocol: any) => latestProtocolTokensUSDWeekAgoMap[protocol.id] ?? {}
+    getLastMonthTokensUsd = (protocol: any) => latestProtocolTokensUSDMonthAgoMap[protocol.id] ?? {}
 
-    await PromisePool.withConcurrency(20)
-      .for(cache.metadata.protocols)
-      .process(async (protocol: any) => {
+    cache.metadata.protocols
+      .map((protocol: any) => {
         try {
           const dataObj: any = {}
           protocolDataMap[protocol.id] = dataObj
@@ -126,7 +161,7 @@ async function run() {
   async function writeProtocolRoute() {
     console.time('write /protocol/:name')
     const withConcurrency = 25
-    const options = { useNewChainNames: false, useHourlyData: false, skipAggregatedTvl: false }
+    const options = { useNewChainNames: false, skipAggregatedTvl: false }
 
     let items = shuffleArray(Object.entries(cache.protocolSlugMap))
 
@@ -231,11 +266,28 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const excludeProtocolFields = [
+      'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
+      'audits', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'cmcId', 'gecko_id', 'methodology', 'dimensions',
+      'module', 'pool2', 'staking',
+      'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',
+      'listedAt',
+    ]
+
+    // /protocols file is heavy, we create a lite version without some fields
+    const protocolsLite = data.map((p: any) => {
+      const clone = { ...p }
+      excludeProtocolFields.forEach(field => delete clone[field])
+      return clone
+    })
+
     const chainData: IChain[] = await getChainData(false)
     const chainDataV2: IChain[] = await getChainData(true)
     data.push(...(chainData as any))
 
     await storeRouteData('protocols-with-chains', data)
+    await storeRouteData('protocols-lite-v1', protocolsLite)
     await storeRouteData('chains', chainData)
     await storeRouteData('v2/chains', chainDataV2)
 
@@ -266,14 +318,19 @@ async function run() {
     console.time('write /config')
     const data = {
       protocols: cache.metadata.protocols,
+      parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      treasuries: cache.metadata.treasuries,
+      entities: cache.metadata.entities,
+      chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)
+    await storeRouteData('/_fe/static/configs', data)
 
 
     // this is handled in rest server now
     // const withConcurrency = 25
- 
+
     // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
     // await PromisePool.withConcurrency(withConcurrency).for(items)
     //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
@@ -324,10 +381,37 @@ async function run() {
   async function writeProtocolsChart() {
     const debugString = 'write /lite/protocols2'
     console.time(debugString)
-    const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, })
+    const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, getYesterdayTokensUsd, getLastWeekTokensUsd, getLastMonthTokensUsd, })
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
     console.timeEnd(debugString)
+  }
+
+  async function writeBitcoinAddressesFile() {
+    try {
+
+      const debugString = 'write /config/smol/bitcoin-addresses'
+      console.time(debugString)
+      const Bucket = "tvl-adapter-cache"
+      const data = await await sdk.cache.readCache(`${Bucket}/bitcoin-addresses.json`)
+      await storeRouteData('/config/smol/bitcoin-addresses.json', data)
+      console.timeEnd(debugString)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function addProtocolAppMetadataToCache() {
+    console.time('addProtocolAppMetadataToCache')
+    try {
+
+      cache.metadata.protocolAppMetadata = await readRouteData('/config/smol/appMetadata-protocols.json') ?? {}
+
+    } catch (e) {
+      console.error('Error reading appMetadata-protocols.json:', e)
+      cache.metadata.protocolAppMetadata = {}
+    }
+    console.timeEnd('addProtocolAppMetadataToCache')
   }
 }
 
@@ -335,8 +419,47 @@ async function getChainData(isV2: boolean) {
   return craftChainsResponse(isV2, isV2, {
     protocolList: cache.metadata.protocols,
     getLastHourlyRecord: getLastHourlyRecord as any,
-    checkModuleDoubleCounted: checkModuleDoubleCounted as any,
   })
 
 }
-run().catch(console.error).then(() => process.exit(0))
+
+
+async function storeRWAStats() {
+  try {
+
+    const debugString = 'write /config/smol/rwa-stats'
+    console.time(debugString)
+    const data = await fetchRWAStats()
+    await storeRouteData('/rwa/stats', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+
+async function storeActiveUsers() {
+  try {
+
+    const debugString = 'write /activeUsers'
+    console.time(debugString)
+    const data = await getActiveUsers()
+    await storeRouteData('/activeUsers', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+runWithRuntimeLogging(run, {
+  application: "cron-task",
+  type: 'tvl-data',
+})
+  .then(genFormattedChains)
+  .catch(async e => {
+    console.error(e)
+    const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
+  })
+  .then(() => process.exit(0))

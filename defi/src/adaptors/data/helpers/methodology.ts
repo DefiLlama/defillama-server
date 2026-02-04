@@ -1,7 +1,7 @@
-import { IJSON } from "../types"
+import { AdapterType, IJSON, ProtocolAdaptor, SimpleAdapter } from "../types"
 
 const genericMethodologies: IJSON<IJSON<string>> = {
-    "Dexes": {
+    "Dexs": {
         UserFees: "Swap fees paid by users",
         Fees: "Swap fees paid by users",
         Revenue: "Percentage of swap fees going to treasury and/or token holders",
@@ -122,4 +122,15 @@ export const getParentProtocolMethodology = (name: string, versionNames: string[
 
 export const getMethodologyByType = (category: string) => {
     return genericMethodologies?.[category]
+}
+
+
+export const getMethodologyDataByBaseAdapter = (moduleObject: SimpleAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+    let methodology = (moduleObject as any).methodology
+    if (!methodology && type === AdapterType.FEES) return { ...(getMethodologyByType(category ?? '') ?? {}) }
+    if (typeof methodology === 'string') return methodology
+    return {
+        ...(getMethodologyByType(category ?? '') ?? {}),
+        ...methodology
+    }
 }

@@ -17,6 +17,12 @@ export async function getTokenInfo(
 ): Promise<DbTokenInfos> {
   const { withSupply = false, timestamp } = params;
   targets = targets.map((i) => i.toLowerCase());
+  if (["solana", "sui", 'fogo'].includes(chain)) {
+    console.error('Solana|sui not supported')
+    const decimals = targets.map(() => ({ output: undefined, success: true }))
+    const symbols = targets.map(() => ({ output: undefined, success: true }))
+    return { decimals, symbols, } as any
+  }
 
   const api = new sdk.ChainApi({ chain, block, timestamp });
   const [decimals, symbols] = await Promise.all([
@@ -38,6 +44,25 @@ export async function getTokenInfo(
     symbols,
   };
 }
+
+export async function getTokenInfoMap(chain: string = "ethereum", targets: string[]) {
+  const res = await getTokenInfo(chain, targets, undefined);
+  const map: {
+    [address: string]: {
+      symbol: string;
+      decimals: number;
+    };
+  } = {};
+  res.decimals.forEach((d, i) => {
+    if (!res.symbols[i].success || !d.success) return;
+    map[targets[i]] = {
+      symbol: res.symbols[i].output,
+      decimals: d.output,
+    };
+  });
+  return map;
+}
+
 interface Lp {
   address: string;
   primaryUnderlying: string;
@@ -127,6 +152,7 @@ export async function listUnknownTokens(
   unknownTokens = unknownTokens.map(
     (t, i) => `${unknownSymbols[i].output}-${t}`,
   );
+  if (!unknownTokens.length) return;
   console.log(chain);
   console.log(unknownTokens);
 }

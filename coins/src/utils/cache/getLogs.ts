@@ -17,6 +17,7 @@ export interface logOptions {
   timestamp?: number;
   toBlock?: number;
   fromBlock: number;
+  skipCacheRead?: boolean;
 }
 
 export async function getLogs(options: logOptions) {
@@ -37,13 +38,24 @@ export async function getLogs(options: logOptions) {
   if (!fromBlock) throw new Error('Missing fromBlock!')
   if (!toBlock) throw new Error('Missing fromBlock!')
 
+  let iface
+
+  if (eventAbi) {
+    iface = new ethers.Interface([eventAbi])
+    if (!topics?.length) {
+      const fragment = iface.fragments[0]
+      topics = undefined
+      topic = `${(fragment as any).name}(${fragment.inputs.map(i => i.type).join(',')})`
+    }
+  }
+
   target = target.toLowerCase()
   const key = `${chain}/${target}`
 
   let cache = await _getCache(key)
   let response
 
-  // if no new data nees to be fetched
+  // if no new data needs to be fetched
   if (cache.fromBlock && cache.toBlock > toBlock)  // @ts-ignore
     response = cache.logs.filter(i => i.blockNumber < toBlock && i.blockNumber >= fromBlock)
   else
@@ -93,7 +105,7 @@ export async function getLogs(options: logOptions) {
   async function _getCache(key: string) {
     let cache = await getCache(cacheFolder, key)
     // set initial structure if it is missing / reset if from block is moved to something older
-    if (!cache.logs || fromBlock < cache.fromBlock) {
+    if (!cache.logs || fromBlock < cache.fromBlock || options.skipCacheRead) {
       cache = {
         logs: []
       }

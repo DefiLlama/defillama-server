@@ -36,14 +36,13 @@ const POOL_ADDRESS_LIST: string[] = [
 const api: AxiosInstance = axios.create({
   baseURL: "https://cardano-mainnet.blockfrost.io/api/v0",
   headers: {
-    project_id: 'mai'+'nnetcxT8VaeCgVMzMTSe'+'zZijWlVkyh6XytpS',
+    project_id: process.env.BLOCKFROST_PROJECT_ID ?? 'mai'+'nnetBfkdsCOvb4BS'+'VA6pb1D43ptQ7t3cLt06',
     "Content-Type": "application/json",
   },
   timeout: 300000,
 });
 let calls: number = 0;
 export function minswap(timestamp: number) {
-  console.log("starting minswap");
   return getTokenPrices(timestamp);
 }
 function normalizeAssets(a: string, b: string): [string, string] {
@@ -263,12 +262,12 @@ function priceTokensThroughPoolWeights(
 async function getTokenPrices(timestamp: number): Promise<Write[]> {
   const writes: Write[] = [];
 
-  const basePrice: CoinData[] = await getTokenAndRedirectData(
+  const [basePrice]: CoinData[] = await getTokenAndRedirectData(
     ["cardano"],
     "coingecko",
     timestamp,
   );
-  const cardanoPrice: number = basePrice[0].price;
+  const cardanoPrice: number = basePrice.price;
   const pricedTokens: PricedTokens = {
     lovelace: { price: cardanoPrice, reserve: 100000000000 },
   };
@@ -312,6 +311,6 @@ async function getTokenPrices(timestamp: number): Promise<Write[]> {
 
   appendAdaPrices();
 
-  console.log(`${calls} bitfrost calls were made`);
+  // console.log(`${calls} bitfrost calls were made`);
   return writes;
 }

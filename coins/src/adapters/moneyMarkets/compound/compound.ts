@@ -1,15 +1,15 @@
 const abi = require("./abi.json");
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, Price, CoinData } from "../../utils/dbInterfaces";
 import { Result } from "../../utils/sdkInterfaces";
 import getBlock from "../../utils/block";
-import { constants } from "buffer";
 
 interface CToken {
   symbol: string;
@@ -72,7 +72,7 @@ export default async function getTokenPrices(
 
   const cTokens: CToken[] = await getcTokens(chain, comptroller, block);
 
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     cTokens.map((c: CToken) => c.underlying),
     chain,
     timestamp,
@@ -113,9 +113,7 @@ export default async function getTokenPrices(
 
   cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: CoinData | undefined = coinsData.find(
-        (c: CoinData) => c.address == t.underlying,
-      );
+      const coinData: CoinData | undefined = coinsData[t.underlying]
       if (
         coinData == null ||
         underlyingDecimals[i].output == null ||

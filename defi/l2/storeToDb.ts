@@ -1,15 +1,14 @@
 import postgres from "postgres";
-import { queryPostgresWithRetry } from "../l2/layer2pg";
+import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
-import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
 async function iniDbConnection() {
-  await setEnvSecrets();
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+  if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
   return postgres(auth[0], { idle_timeout: 90 });
 }
@@ -53,12 +52,31 @@ export default async function storeHistoricalToDB(res: any) {
     sql`
         insert into chainassets
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );
 
+  sql.end();
+}
+export async function overwrite(res: { [key: string]: string }) {
+  const sql = await iniDbConnection();
+  const columns = Object.keys(res);
+  const insert: { [key: string]: string } = {};
+  columns.map((k: string) => {
+    insert[k] = k in res ? JSON.stringify(res[k]) : "{}";
+  });
+  try {
+    await queryPostgresWithRetry(
+      sql`
+        update chainassets
+        set ${sql(insert, ...columns)}
+        where timestamp = ${insert.timestamp}
+        `,
+      sql
+    );
+  } catch (e) {
+    e;
+  }
   sql.end();
 }
 export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: number) {
@@ -102,8 +120,6 @@ export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: numb
     sql`
         insert into chainassetflows
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );
@@ -123,7 +139,12 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {
-      const rawData = JSON.parse(t[chain]);
+      let rawData;
+      try {
+        rawData = JSON.parse(t[chain]);
+      } catch (e) {
+        console.log(e);
+      }
       if (!rawData) return;
       const data = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
       result.push({ timestamp: t.timestamp, data });
@@ -134,7 +155,12 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 
     Object.keys(t).map((c: string) => {
       if (c == "timestamp") return;
-      const rawData = JSON.parse(t[c]);
+      let rawData;
+      try {
+        rawData = JSON.parse(t[c]);
+      } catch (e) {
+        console.log(e);
+      }
       if (!rawData) return;
       // DEBUG:
       // data[c] = rawData
@@ -150,36 +176,68 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 export async function fetchHistoricalFromDB(chain: string = "*") {
   const sql = await iniDbConnection();
 
-  const timeseries = await queryPostgresWithRetry(
-    chain == "*" ? sql`select * from chainassets` : sql`select ${sql(chain)}, timestamp from chainassets`,
-    sql
-  );
+  let latestOldTimestamp: any = "0";
+  let oldTimeseries: any[] = [];
+
+  try {
+    const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
+    const oldTimestamps: string[] = oldTimestampsObj.timestamps;
+    if (oldTimestamps.length) {
+      latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
+      oldTimeseries = await queryPostgresWithRetry(
+        chain == "*"
+          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
+          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
+        sql
+      );
+    }
+  } catch (e) {
+    e;
+  }
+
+  const newTimeseries =
+    getCurrentUnixTimestamp() - latestOldTimestamp > 2 * secondsInADay
+      ? await queryPostgresWithRetry(
+          chain == "*"
+            ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
+            : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
+          sql
+        )
+      : [];
   sql.end();
 
+  const timeseries = [...oldTimeseries, ...newTimeseries];
   const result = parsePgData(timeseries, chain);
-  // DEBUG:
-  // return result
-  return findDailyEntries(result);
+
+  const { data, timestamps } = findDailyEntries(result);
+
+  await storeR2JSONString(`chain-assets-chart-timestamps-${chain}`, JSON.stringify({ timestamps }));
+
+  return data;
 }
-function findDailyEntries(raw: ChartData[], period: number = secondsInADay): ChartData[] {
+function findDailyEntries(
+  raw: ChartData[],
+  period: number = secondsInADay
+): { data: ChartData[]; timestamps: string[] } {
+  const nullsFiltered = raw.filter((d: ChartData) => JSON.stringify(d.data) != "{}");
   const clean: ChartData[] = [];
-  const timestamps = raw.map((r: ChartData) => Number(r.timestamp));
+  const timestamps = nullsFiltered.map((r: ChartData) => Number(r.timestamp));
 
   let timestamp = Math.floor(timestamps[0] / period) * period;
   const cleanEnd = Math.floor(timestamps[timestamps.length - 1] / period) * period;
 
+  const filtered: string[] = [];
   while (timestamp < cleanEnd) {
     const index = timestamps.indexOf(
       timestamps.reduce((p, c) => (Math.abs(c - timestamp) < Math.abs(p - timestamp) ? c : p))
     );
-    clean.push({ data: raw[index].data, timestamp: timestamp.toString() });
+    clean.push({ data: nullsFiltered[index].data, timestamp: timestamp.toString() });
+    filtered.push(nullsFiltered[index].timestamp);
     timestamp += period;
   }
-  if (raw.length > 0) {
-    clean.push(raw[raw.length - 1]);
-  }
+  if (nullsFiltered.length) clean.push(nullsFiltered[nullsFiltered.length - 1]);
 
-  return clean;
+  return { data: clean, timestamps: filtered };
 }
 export async function fetchFlows(period: number) {
   const sql = await iniDbConnection();
@@ -213,6 +271,10 @@ export async function fetchFlows(period: number) {
   chains.map((chain: string) => {
     res[chain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
+      if (!start.data[chain] || !(k in start.data[chain])) {
+        res[chain][k] = { perc: "0", raw: "0" };
+        return;
+      }
       const a = start.data[chain][k];
       const b = end.data[chain][k];
       const raw = (b - a).toFixed();
@@ -231,4 +293,9 @@ export async function fetchHistoricalFlows(period: number, chain: string) {
   sql.end();
   const result = parsePgData(timeseries, chain, false);
   return findDailyEntries(result, period);
+}
+export async function fetchAllChainData(chain: string) {
+  const sql = await iniDbConnection();
+  const res: any = await queryPostgresWithRetry(sql`select ${sql(chain)}, timestamp from chainassets`, sql);
+  return res;
 }

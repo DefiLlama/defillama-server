@@ -6,10 +6,12 @@ CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
 # start API2 server
-timeout 4m npx pm2 startOrReload src/api2/ecosystem.config.js
+timeout 8m npx pm2 startOrReload src/api2/ecosystem.config.js
 exit_status=$?
 
 handle_error_and_rollback() {
+  cd $ROOT_DIR
+  npx pm2 logs --nostream --lines 250
   SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
   MESSAGE_2="$MESSAGE | rolling back to use last successful commit: $SAFE_COMMIT_HASH. Current: $CURRENT_COMMIT_HASH"
   echo "ERROR: $MESSAGE_2"
@@ -34,7 +36,7 @@ handle_error_and_rollback() {
 
 if [ $exit_status -eq 124 ]
 then
-    MESSAGE="pm2 command was terminated because it ran for more than 4 minutes."
+    MESSAGE="pm2 command was terminated because it ran for more than 8 minutes."
     handle_error_and_rollback
 elif [ $exit_status -ne 0 ]
 then

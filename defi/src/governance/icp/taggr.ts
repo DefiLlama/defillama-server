@@ -1,3 +1,5 @@
+import '../../api2/utils/failOnError'
+
 import axios from 'axios'
 import { Proposal, GovCache } from '../types';
 import { updateStats } from '../utils';
@@ -27,7 +29,7 @@ export type Payload =
           ["Release"]: Release;
       }
     | {
-          ["Fund"]: [string, number];
+          ["Funding"]: [string, number];
       }
     | {
           ["ICPTransfer"]: [number[], ICP];
@@ -36,7 +38,7 @@ export type Payload =
           ["AddRealmController"]: [number, number];
       }
     | {
-          ["Reward"]: Reward;
+          ["Rewards"]: Reward;
       };
 
 function stringifyPayload(payload: Payload) {
@@ -89,7 +91,7 @@ export interface TaggrProposalReponse {
 export async function get_metadata ()
 {
    var { data, } = await axios.get(
-        TAGGR_URL + "/api/v1/metadata"
+        TAGGR_URL + "api/v1/metadata"
         ,
         {
             headers: {
@@ -218,16 +220,6 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
 
     return overview
 }
-
-
-
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason)
-    })
-process.on('uncaughtException', (error) => {
-    console.error('Uncaught Exception thrown', error)
-})
-
 
 /* 
 import * as fs from 'fs'

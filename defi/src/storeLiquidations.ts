@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
@@ -9,6 +8,7 @@ import { performance } from "perf_hooks";
 export const standaloneProtocols: string[] = ["venus", "maker"];
 export const excludedProtocols: string[] = ["angle", "euler"];
 
+// WARNING: This is deprecated, the feature is scraped.
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(

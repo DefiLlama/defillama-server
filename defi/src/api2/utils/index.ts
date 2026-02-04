@@ -1,3 +1,6 @@
+import { getEnv } from "../env";
+import * as sdk from "@defillama/sdk";
+
 export function unixTSToDateString(unixTimestamp: number) {
   return unixTSToHourString(unixTimestamp).slice(0, 10)
 }
@@ -45,4 +48,126 @@ export function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | und
     }
   }
   return deduped
+}
+
+export enum RUN_TYPE {
+  CRON = 'cron',
+  API_SERVER = 'api-server',
+}
+
+export function roundValues(obj: any) {
+  if (!obj) return obj;
+  if (typeof obj === 'number') return Math.round(obj)
+  if (typeof obj === 'object') {
+    Object.entries(obj).forEach(([key, value]) => {
+      obj[key] = roundValues(value)
+    })
+  }
+  return obj
+}
+
+export function getObjectKeyCount(obj: any) {
+  if (!obj || typeof obj !== 'object') {
+    return 1
+  }
+  let count = 1
+  for (const key in obj) {
+    count += getObjectKeyCount(obj[key])
+  }
+  return count
+}
+
+export function roundNumbersInObject(obj: any): any {
+  if (typeof obj === 'number') {
+    return Math.round(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map(roundNumbersInObject);
+  } else if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, roundNumbersInObject(value)])
+    );
+  }
+  return obj;
+}
+
+
+export function tableToString(data: any, columns: any) {
+  let tableString = '';
+
+  // Add the header row
+  // tableString += columns.join(' | ') + '\n';
+  // tableString += columns.map(() => '---').join(' | ') + '\n';
+  const headerObject: any = {}
+  const headerObject1: any = {}
+  columns.forEach((col: any) => {
+    headerObject[col] = col
+    headerObject1[col] = '---'
+  })
+  data.unshift(headerObject1)
+  data.unshift(headerObject)
+  // Calculate the maximum width for each column
+  const columnWidths = columns.map((col: any) =>
+    Math.max(col.length, ...data.map((row: any) => (row[col] !== undefined ? String(row[col]).length : 0)))
+  );
+
+  // Add the data rows
+  data.forEach((row: any) => {
+
+    // Format the row with padded values
+    const tableRow = columns.map((col: any, index: number) => {
+      const cell = row[col] !== undefined ? String(row[col]) : '';
+      return cell.padEnd(columnWidths[index], ' ');
+    }).join(' | ');
+    tableString += tableRow + '\n';
+  });
+
+  return tableString;
+}
+
+export function cronNotifyOnDiscord(): boolean {
+  return getEnv('DIM_CRON_NOTIFY_ON_DISCORD') as boolean
+}
+
+export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
+  application: string;
+  type: string;
+}) {
+
+  let addRuntimeLog = true
+  if (metadata.application === 'cron-task') addRuntimeLog = cronNotifyOnDiscord()
+
+  if (!addRuntimeLog) return fn()
+
+
+  const startTime = Date.now()
+  try {
+
+
+    const response = await fn()
+
+    const endTime = Date.now()
+    await sdk.elastic.addRuntimeLog({
+      metadata,
+      success: true,
+      runtime: (endTime - startTime) / 1e3,
+    })
+
+    return response
+
+  } catch (e) {
+
+    const endTime = Date.now()
+
+    await sdk.elastic.addErrorLog({
+      error: (e as any)?.message ? (e as any).message : e,
+      metadata
+    })
+
+    await sdk.elastic.addRuntimeLog({
+      metadata,
+      success: false,
+      runtime: (endTime - startTime) / 1e3,
+    })
+    throw e
+  }
 }

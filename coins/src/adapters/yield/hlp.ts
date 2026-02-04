@@ -17,6 +17,5 @@ async function getTokenPrices(chain: string, timestamp: number) {
 }
 
 export function hlp(timestamp: number = 0) {
-  console.log("starting hlp");
   return getTokenPrices("arbitrum", timestamp);
 }

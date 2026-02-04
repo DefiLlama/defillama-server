@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { sendMessage } from "./utils/discord";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
+import PromisePool from "@supercharge/promise-pool";
 
 type ProtocolData = {
   token: string;
@@ -11,6 +11,7 @@ type ProtocolData = {
   protocolId?: string;
   name: string;
   circSupply: number;
+  circSupply30d?: number;
   totalLocked: number;
   maxSupply: number;
   nextEvent?: {
@@ -21,6 +22,7 @@ type ProtocolData = {
   gecko_id?: string;
   mcap?: any;
   events?: any;
+  unlockEvents?: any;
   unlocksPerDay: number;
 };
 
@@ -28,8 +30,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
   const protocolsData: ProtocolData[] = [];
   const now: number = Math.floor(Date.now() / 1000);
 
-  await Promise.all(
-    protocols.map(async (protocol: string) => {
+  async function fetchData(protocol: string) {
       let res: any;
       try {
         res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
@@ -40,12 +41,14 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       if ((res.documentedData?.data ?? res.data) == null) return;
 
       const data: { [date: number]: number } = {};
+      let previous: number = 0;
       try {
         (res.documentedData?.data ?? res.data).forEach(
           (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
             if (item.data == null) return;
-            item.data.forEach((value) => {
-              data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+            item.data.forEach((value, i) => {
+              previous = Math.max(i > 0 ? item.data[i - 1].unlocked : 0, previous);
+              data[value.timestamp] = (data[value.timestamp] || 0) + Math.max(value.unlocked, previous);
             });
           }
         );
@@ -59,25 +62,47 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         console.error(`${protocol} failed with 0 length data section`);
         return;
       }
-      const maxSupply = res.metadata.total ?? formattedData[formattedData.length - 1][1];
-      const rawNextEvent = res.metadata.events.find((e: any) => e.timestamp > now);
+
+      const maxSupply =
+        res.metadata.total ??
+        (res.documentedData?.data ?? res.data).reduce(
+          (a: number, b: any) => (a += b.data[b.data.length - 1].unlocked),
+          0
+        );
+      const rawNextEvent = res.metadata.events?.find((e: any) => e.timestamp > now);
 
       let nextEvent;
       if (!rawNextEvent) {
         nextEvent = undefined;
-      } else if ((rawNextEvent.noOfTokens.length = 1)) {
+      } else if ((rawNextEvent.noOfTokens.length === 1)) {
         nextEvent = {
           date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[0], 0),
         };
       } else {
         nextEvent = {
-          date: Math.ceil(now / 86400) * 86400,
+          date: rawNextEvent.timestamp,
           toUnlock: Math.max(rawNextEvent.noOfTokens[1], 0),
         };
       }
       const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
-      const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
+
+      function getCircSupplyAtIndex(index: number): number {
+        if (index == -1) return maxSupply;
+        let supply: number = 0;
+        (res.documentedData?.data ?? res.data).forEach(
+          (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+            if (item.data == null) return;
+            supply += item.data[index].unlocked;
+          }
+        );
+        return supply;
+      }
+
+      const circSupply = getCircSupplyAtIndex(nextUnlockIndex);
+      const timestamp30dAgo = now - (30 * 86400);
+      const index30dAgo = formattedData.findIndex(([date]) => Number(date) > timestamp30dAgo);
+      const circSupply30d = getCircSupplyAtIndex(index30dAgo);
       const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1];
 
       protocolsData.push({
@@ -86,18 +111,27 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         protocolId: res.metadata.protocolIds?.[0] ?? null,
         name: res.name,
         circSupply,
+        circSupply30d,
         totalLocked: maxSupply - circSupply,
         maxSupply,
         gecko_id: res.gecko_id,
         events: res.metadata.events,
+        unlockEvents: res.metadata.unlockEvents,
         nextEvent,
         unlocksPerDay,
       });
+    }
+  await PromisePool
+    .withConcurrency(10)
+    .for(protocols)
+    .handleError(async (error, protocol) => {
+      console.error(`Error processing ${protocol}: ${error}`);
     })
-  );
+    .process(fetchData);
 
   return protocolsData;
 };
+
 const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
   const step: number = 25;
   for (let i = 0; i < protocols.length; i = i + step) {
@@ -111,8 +145,10 @@ const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
       .map((p: ProtocolData) => `coingecko:${p.gecko_id}`);
 
     const [tokenPrices, mcapRes] = await Promise.all([
-      fetch(`https://coins.llama.fi/prices/current/${tokens}?searchWidth=4h`).then((res) => res.json()),
-      fetch("https://coins.llama.fi/mcaps", {
+      fetch(`https://coins.llama.fi/prices/current/${tokens}?searchWidth=4h?apikey=${process.env.COINS_KEY}`).then(
+        (res) => res.json()
+      ),
+      fetch(`https://coins.llama.fi/mcaps?apikey=${process.env.COINS_KEY}`, {
         method: "POST",
         body: JSON.stringify({
           coins,
@@ -129,7 +165,7 @@ const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
     });
   }
 };
-const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
+const fetchProtocolEmissionData = (protocol: ProtocolData) => {
   let price = protocol.tokenPrice ? protocol.tokenPrice[0] : undefined;
   if (price) price = price.price;
 
@@ -139,12 +175,12 @@ const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
 };
 export default async function handler(): Promise<void> {
   try {
-    await setEnvSecrets();
     const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
     const data: ProtocolData[] = await fetchProtocolData(allProtocols);
     await fetchCoinsApiData(data);
-    await Promise.all(data.map((d: ProtocolData) => fetchProtocolEmissionData(d)));
+    data.forEach(fetchProtocolEmissionData)
     await storeR2JSONString("emissionsIndex", JSON.stringify({ data: data.sort((a, b) => b.mcap - a.mcap) }));
+    console.log("done");
   } catch (e) {
     await sendMessage(`Store index error: ${e}`, process.env.UNLOCKS_WEBHOOK!);
   }

@@ -1,16 +1,18 @@
 
 const timeSDaysAgoCache: { [days: number]: string } = {}
 const getNextTimeSCache: { [timeS: string]: string } = {}
+const timeSQuarterCache: { [timeS: string]: string } = {}
 const getTimeSToUnix: { [timeS: string]: number } = {}
 const getTimeSToUnixString: { [timeS: string]: string } = {}
 
-export function getTimeSDaysAgo(days: number) {
+export function getTimeSDaysAgo(days: number, moveADayBack = false) { 
+  if (moveADayBack) days++
   if (!timeSDaysAgoCache[days]) timeSDaysAgoCache[days] = _getTimeSDaysAgo()
   return timeSDaysAgoCache[days]
 
   function _getTimeSDaysAgo() {
     const date = new Date();
-    date.setDate(date.getDate() - days - 1) // move a day back
+    date.setDate(date.getDate() - days)
     return dateToTimeS(date);
   }
 }
@@ -51,4 +53,20 @@ let startOfTodayTime: number
 export function getStartOfTodayTime() {
   if (!startOfTodayTime) startOfTodayTime = timeSToUnix(dateToTimeS(new Date()))
   return startOfTodayTime
+}
+
+export function unixTimeToTimeS(unixTime: number): string {
+  return dateToTimeS(new Date(unixTime * 1000))
+}
+
+export function getTimeSQuarter(timeS: string) {
+  if (!timeSQuarterCache[timeS]) timeSQuarterCache[timeS] = _getTimeSQuarter()
+  return timeSQuarterCache[timeS]
+
+  function _getTimeSQuarter() {
+    const year = timeS.slice(0, 4)
+    const month = +timeS.slice(5, 7)
+    const quarter = Math.floor((month - 1) / 3) + 1
+    return `${year}-Q${quarter}`
+  }
 }

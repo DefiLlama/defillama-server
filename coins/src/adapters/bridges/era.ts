@@ -9,7 +9,7 @@ async function getTokens() {
   do {
     const {
       data: { result },
-    } = await axios.post(`https://mainnet.era.zksync.io`, {
+    } = await axios.post(process.env.ERA_RPC || `https://mainnet.era.zksync.io`, {
       jsonrpc: "2.0",
       id: 1,
       method: "zks_getConfirmedTokens",
@@ -50,3 +50,5 @@ export default async function bridge() {
 }
 
 const extraTokens = formatExtraTokens("era", []);
+
+bridge(); // ts-node coins/src/adapters/bridges/era.ts

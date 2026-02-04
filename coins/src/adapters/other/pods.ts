@@ -1,4 +1,6 @@
-import { call } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi
 import getBlock from "../utils/block";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
@@ -16,7 +18,7 @@ export default async function getTokenPrices(timestamp: number) {
   const [
     { output: totalAssets },
     { output: totalSupply },
-    stEthInfo,
+    [{ price: stEthPrice }],
     stEthVvInfo
   ] = await Promise.all([
     call({
@@ -35,7 +37,7 @@ export default async function getTokenPrices(timestamp: number) {
     getTokenInfo(chain, [stETHvv], block)
   ]);
   const price: number =
-    (parseInt(totalAssets) / totalSupply) * stEthInfo[0].price;
+    (parseInt(totalAssets) / totalSupply) * stEthPrice;
 
   addToDBWritesList(
     writes,

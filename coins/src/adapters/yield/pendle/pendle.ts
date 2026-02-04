@@ -1,312 +1,346 @@
 import { ChainApi } from "@defillama/sdk";
-import { getLogs } from "../../../utils/cache/getLogs";
-import { CoinData, Write } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
+import { getConfig } from "../../../utils/cache";
 
-const customMapping: { [chain: string]: { [key: string]: string } } = {
-  arbitrum: {
-    "0x0000000000000000000000000000000000000000":
-      "0xa1290d69c65a6fe4df752f95823fae25cb99e5a7",
-    "0x35fa164735182de50811e8e2e824cfb9b6118ac2":
-      "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
-  },
-};
+const assetExceptions: string[]  = [
+  "0xee9bfff7da99e6f85abc4f7fc33f5278473124e0", // tUSDe
+  '0x30ccf4bbee313fcd19f3e295b3ba2920a24e2f62', // sUSDai
+]
 
 export default async function getTokenPrices(
   timestamp: number,
   chain: string,
-  config: any,
+  config: {pendleOracle: string},
 ): Promise<Write[]> {
   const writes: Write[] = [];
-  const { factories, toAsset } = config;
+  const { pendleOracle } = config;
   const api: ChainApi = await getApi(chain, timestamp);
-  const logs: any[][] = [];
 
-  await Promise.all(
-    factories.map(async (f: any) => {
-      const { factory: target, fromBlock, toBlock, eventAbi, topics } = f;
-      const factoryLogs: any[][] = await newMarkets();
-      logs.push(...factoryLogs);
+  const allTokenInfos = await getAllTokenInfos(api.getChainId()!)
+  const allYieldTokens: string[] = await api.multiCall({
+    abi: "function yieldToken() view returns (address)",
+    calls: allTokenInfos.map((i) => i.sy),
+    permitFailure: true,
+  }).then((r: any[]) => r.map((i: any) => i.toLowerCase()));
 
-      async function newMarkets() {
-        return await getLogs({
-          api,
-          target,
-          topics,
-          eventAbi,
-          onlyArgs: true,
-          fromBlock,
-          toBlock,
-        });
-      }
-    }),
-  );
+  const { scaleMapping, aaveTokens } = await getYieldTokenInfo(api, allYieldTokens);
 
-  const markets: string[] = logs.map((l: any) => l.market);
+  const allSyRates = await api.multiCall({
+    abi: "function exchangeRate() view returns (uint256)",
+    calls: allTokenInfos.map((i) => i.sy),
+    permitFailure: true,
+  }).then((r: any[]) => r.map((i: any) => Number(i) / 1e18));
 
-  if (chain == "arbitrum")
-    markets.push(
-      ...[
-        "0xe11f9786b06438456b044b3e21712228adcaa0d1",
-        "0x6f02c88650837c8dfe89f66723c4743e9cf833cd",
-        "0xb7ffe52ea584d2169ae66e7f0423574a5e15056f",
-        "0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14",
-        "0x99e9028e274feafa2e1d8787e1ee6de39c6f7724",
-        "0x60712e3c9136cf411c561b4e948d4d26637561e7",
-        "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
-      ],
-    );
-  if (chain == "ethereum")
-    markets.push(
-      ...[
-        "0x1729981345aa5cacdc19ea9eeffea90cf1c6e28b",
-        "0xbce250b572955c044c0c4e75b2fa8016c12cabf9",
-        "0x17be998a578fd97687b24e83954fec86dc20c979",
-        "0xb4460e76d99ecad95030204d3c25fb33c4833997",
-        "0x8f7627bd46b30e296aa3aabe1df9bfac10920b6e",
-      ],
-    );
-  const tokens: string[][] = await api.multiCall({
-    calls: markets,
-    abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",
+  const allAssetInfos = await api.multiCall({
+    abi: "function assetInfo() view returns (uint8 assetType, address assetAddress, uint8 assetDecimals)",
+    calls: allTokenInfos.map((i) => i.sy),
+    permitFailure: true,
+  }).then((r: any[]) => r.map((i: any) => ({
+    assetType: i.assetType,
+    assetAddress: i.assetAddress.toLowerCase(),
+    assetDecimals: i.assetDecimals,
+    })));
+
+  const allSyDecimals = await api.multiCall({
+    abi: "uint8:decimals",
+    calls: allTokenInfos.map((i) => i.sy),
+    permitFailure: true,
   });
 
-  const SYs: string[] = tokens.map((t: any) => t._SY.toLowerCase());
-  const PTs: string[] = tokens.map((t: any) => t._PT.toLowerCase());
-  const yieldTokens: string[] = (
-    await api.multiCall({
-      abi: "function yieldToken() view returns (address )",
-      calls: SYs,
-    })
-  ).map((i: any) => i.toLowerCase());
-  let underlyingTokens: string[] = (
-    await api.multiCall({
-      abi: "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
-      calls: SYs,
-    })
-  ).map((i: any) => i.assetAddress.toLowerCase());
+  const allYieldTokenDataArray: any[] = allYieldTokens.map(
+    (t) => scaleMapping.has(t) ? scaleMapping.get(t) : t).concat(
+    allAssetInfos.map((info: any) => info.assetAddress)
+  )
 
-  let underlyingTokenData: CoinData[] = await getTokenAndRedirectData(
-    [...new Set([...yieldTokens, ...underlyingTokens])],
+  const yieldTokenDataMap = await getTokenAndRedirectDataMap(
+    [
+      ...new Set(allYieldTokenDataArray
+        )
+    ].filter((t) => t != null),
     chain,
-    timestamp,
-  );
+    timestamp
+  )
 
-  if (chain == "arbitrum")
-    underlyingTokenData.push(
-      ...(await getTokenAndRedirectData(
-        [
-          "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-          "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
-        ],
-        "ethereum",
-        timestamp,
-      )),
-    );
+  const allSyPrices = allYieldTokens.map((t: string, i: number) => {
+    const remap = scaleMapping.get(t) ?? t;
+    const data = yieldTokenDataMap[remap]
 
-  if (chain in customMapping) {
-    underlyingTokens = underlyingTokens.map((t: string) =>
-      t in customMapping[chain] ? customMapping[chain][t] : t,
-    );
-    underlyingTokenData = underlyingTokenData.filter(
-      (u: CoinData) => !(u.address in customMapping[chain]),
-    );
-  }
+    if (!data) {
+
+      const dataAsset = yieldTokenDataMap[allAssetInfos[i].assetAddress]
+      if (!dataAsset) {
+        return undefined;
+      }
+
+      const rateFloat = allSyRates[i] * (10 ** allSyDecimals[i]) / (10 ** dataAsset.decimals);
+      return dataAsset.price * rateFloat;
+    }
+
+    
+    if (aaveTokens.has(t)) {
+      return data.price * allSyRates[i];
+    }
+    else {
+      return data.price;
+    }
+  })
+
+  const allTokenSymbols = await api.multiCall({
+    abi: "erc20:symbol",
+    calls: allTokenInfos.map((i) => i.sy).concat(allTokenInfos.map((i) => i.pt)).concat(allTokenInfos.map((i) => i.lp)).concat(allTokenInfos.map((i) => i.yt)),
+    permitFailure: true,
+  });
 
   async function syWrites() {
-    const [decimals, symbols] = await Promise.all([
-      api.multiCall({ abi: "uint8:decimals", calls: SYs }),
-      api.multiCall({ abi: "string:symbol", calls: SYs }),
-    ]);
-
-    SYs.map((SY: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == yieldTokens[i],
-      );
-
-      const redirect: string =
-        underlying && underlying.redirect
-          ? underlying.redirect
-          : `asset#${chain}:${yieldTokens[i]}`;
-
+    const symbols: string[] = allTokenSymbols.slice(0, allTokenInfos.length);
+    allTokenInfos.map((info, i: number) => {
+      if (!allSyPrices[i]) return;
       addToDBWritesList(
         writes,
         chain,
-        SY,
-        undefined,
-        decimals[i],
+        info.sy,
+        allSyPrices[i],
+        allSyDecimals[i],
         symbols[i],
         timestamp,
         "pendle-sy",
         1,
-        redirect,
+        undefined,
       );
     });
   }
 
   async function ptWrites() {
-    const [exchangeRates, decimals, symbols] = await Promise.all([
-      Promise.all(
-        // PromisePool error when multicalled on mainnet
-        markets.map((params: string) =>
-          api.call({
-            target: toAsset,
-            params,
-            abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
-          }),
-        ),
-      ),
-      // api.multiCall({
-      //   calls: markets.map((params: string) => ({ target: toAsset, params })),
-      //   abi:
-      //     "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
-      //   requery: true,
-      // }),
+    const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length, allTokenInfos.length * 2);
+    const [allPtRates0, allPtRates1800, allPtRates3600] = await Promise.all([
       api.multiCall({
-        abi: "uint8:decimals",
-        calls: PTs,
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
       }),
       api.multiCall({
-        abi: "string:symbol",
-        calls: PTs,
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
       }),
-    ]);
+      api.multiCall({
+        abi: "function getPtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
 
-    PTs.map((PT: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == underlyingTokens[i],
-      );
+    allTokenInfos.map((info, i: number) => {
+      const syPrice = allSyPrices[i]
+      const ptRate = allPtRates0[i] ?? allPtRates1800[i] ?? allPtRates3600[i]
+      if (!syPrice || !ptRate) return;
 
-      if (!underlying || !exchangeRates[i] || !decimals[i] || !symbols[i])
-        return;
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
 
-      const price = (underlying.price * exchangeRates[i]) / 10 ** 18;
+      const ptPrice =  assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ptRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18; 
 
       addToDBWritesList(
         writes,
         chain,
-        PT,
-        price,
-        decimals[i],
+        info.pt,
+        ptPrice,
+        allAssetInfos[i].assetDecimals,
         symbols[i],
         timestamp,
         "pendle-pt",
-        1,
+        0.9,
+        undefined,
       );
+    }) 
+  }
+
+  async function lpWrites() {
+    const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 2, allTokenInfos.length * 3);
+    const [allLpRates0, allLpRates1800, allLpRates3600] = await Promise.all([
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getLpToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
+
+    allTokenInfos.map((info, i: number) => {
+      const syPrice = allSyPrices[i]
+      const lpRate = allLpRates0[i] ?? allLpRates1800[i] ?? allLpRates3600[i]
+      if (!syPrice || !lpRate) return;
+
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
+      if (assetExceptions.includes(info.sy) && !assetPrice) return;
+      const syRate = assetExceptions.includes(info.sy) ? syPrice / assetPrice : syPrice
+
+      const lpPrice = syRate * (lpRate / (10 ** allSyDecimals[i]));
+
+      addToDBWritesList(
+        writes,
+        chain,
+        info.lp,
+        lpPrice,
+        18,
+        symbols[i],
+        timestamp,
+        "pendle-lp",
+        0.9,
+        undefined,
+      );
+
+      if (info.lpWrapper) {
+        addToDBWritesList(
+          writes,
+          chain,
+          info.lpWrapper,
+          lpPrice,
+          18,
+          `${symbols[i]}-wrapper`,
+          timestamp,
+          "pendle-lp-wrapper",
+          0.9,
+          undefined,
+        );
+      }
     });
   }
 
   async function ytWrites() {
-    const YTs: string[] = tokens.map((t: any) => t._YT);
+    const symbols: string[] = allTokenSymbols.slice(allTokenInfos.length * 3, allTokenInfos.length * 4);
 
-    const [decimals, symbols] = await Promise.all([
+    const [allYtRates0, allYtRates1800, allYtRates3600] = await Promise.all([
       api.multiCall({
-        abi: "uint8:decimals",
-        calls: YTs,
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 0] })),
+        permitFailure: true,
       }),
       api.multiCall({
-        abi: "string:symbol",
-        calls: YTs,
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 1800] })),
+        permitFailure: true,
       }),
-    ]);
+      api.multiCall({
+        abi: "function getYtToSyRate(address, uint32) external view returns (uint256)",
+        calls: allTokenInfos.map((i) => ({ target: pendleOracle, params: [i.lp, 3600] })),
+        permitFailure: true,
+      })
+    ])
+    
+    allTokenInfos.map((info, i: number) => {
+      const syPrice = allSyPrices[i]
+      const ytRate = allYtRates0[i] ?? allYtRates1800[i] ?? allYtRates3600[i]
+      if (!syPrice || !ytRate) return;
 
-    YTs.map((YT: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == underlyingTokens[i],
-      );
-      const PT: Write | undefined = writes.find((u: Write) =>
-        u.PK.includes(PTs[i]),
-      );
+      const asset = allAssetInfos[i].assetAddress
+      const assetPrice = yieldTokenDataMap[asset]?.price
 
-      if (!underlying || !PT || !decimals[i] || !symbols[i] || !PT.price)
-        return;
-
-      const price = underlying.price - PT.price;
-
+      const ytPrice = assetExceptions.includes(info.sy) ? assetPrice : syPrice * (ytRate * (10 ** allAssetInfos[i].assetDecimals) / (10 ** allSyDecimals[i])) / 1e18;
+      
       addToDBWritesList(
         writes,
         chain,
-        YT,
-        price,
-        decimals[i],
+        info.yt,
+        ytPrice,
+        allAssetInfos[i].assetDecimals,
         symbols[i],
         timestamp,
         "pendle-yt",
-        1,
+        0.9,
+        undefined,
       );
     });
   }
 
-  async function lpWrites() {
-    const [ptBalances, syBalances, supplies, decimals, symbols] =
-      await Promise.all([
-        api.multiCall({
-          abi: "erc20:balanceOf",
-          calls: markets.map((m: string, i: number) => ({
-            target: PTs[i],
-            params: m,
-          })),
-        }),
-        api.multiCall({
-          abi: "erc20:balanceOf",
-          calls: markets.map((m: string, i: number) => ({
-            target: SYs[i],
-            params: m,
-          })),
-        }),
-        api.multiCall({
-          abi: "erc20:totalSupply",
-          calls: markets,
-        }),
-        api.multiCall({
-          abi: "erc20:decimals",
-          calls: markets,
-        }),
-        api.multiCall({
-          abi: "erc20:symbol",
-          calls: markets,
-        }),
-      ]);
-
-    markets.map((m: string, i: number) => {
-      if (!m || !PTs[i] || !SYs[i]) return;
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) =>
-          u.address == yieldTokens[i] || u.address == underlyingTokens[i],
-      );
-      const PT: Write | undefined = writes.find(
-        (u: Write) => u.PK.includes(PTs[i]) && u.SK == 0,
-      );
-
-      if (!PT || !underlying || !PT.price || !PT.decimals) return;
-
-      const price: number =
-        ((ptBalances[i] * PT.price) / 10 ** PT.decimals +
-          (syBalances[i] * underlying.price) / 10 ** underlying.decimals) /
-        (supplies[i] / 10 ** decimals[i]);
-
-      if (isNaN(price)) return;
-
-      addToDBWritesList(
-        writes,
-        chain,
-        m,
-        price,
-        decimals[i],
-        symbols[i],
-        timestamp,
-        "pendle-lp",
-        1,
-      );
-    });
-  }
-
-  await Promise.all([syWrites(), ptWrites()]);
-  await Promise.all([ytWrites(), lpWrites()]);
-
+  await Promise.all([syWrites(), ptWrites(), lpWrites(), ytWrites()]);
   return writes;
+}
+
+async function getYieldTokenInfo(api: ChainApi, allYieldTokens: string[]): Promise<{
+  scaleMapping: Map<string, string>,
+  aaveTokens: Set<string>,
+}> {
+  const scaleMapping = new Map<string, string>();
+  const aaveTokens = new Set<string>();
+
+  const allYieldTokensNames: string[] = await api.multiCall({
+    abi: "function name() view returns (string)",
+    calls: allYieldTokens,
+    permitFailure: true,
+  });
+
+  const scaledIndexes: number[] = []; 
+  allYieldTokensNames.forEach((name: string, i: number) => {
+    if (name.includes("scaled")) {
+      scaledIndexes.push(i);
+    }
+    if (name.toLowerCase().includes("aave")) {
+      aaveTokens.add(allYieldTokens[i]);
+    }
+  });
+
+  const rawTokens: string[] = await api.multiCall({
+    abi: "function rawToken() external view returns (address)",
+    calls: scaledIndexes.map((i: number) => allYieldTokens[i]),
+    permitFailure: true,
+  }).then((r: any[]) => r.map((i: any) => i.toLowerCase()));
+
+  scaledIndexes.forEach((scaledIndex: number, i: number) => {
+    if (rawTokens[i]) {
+      scaleMapping.set(allYieldTokens[scaledIndex], rawTokens[i]);
+    }}
+  )
+  return { scaleMapping, aaveTokens };
+}
+
+async function getAllTokenInfos(chainId: number) {
+  const markets: {
+    lp: string;
+    sy: string;
+    pt: string;
+    yt: string;
+    lpWrapper?: string;
+  }[] = [];
+
+  function formatPendleAddr(rawAddr: string): string {
+    return rawAddr.split('-')[1];
+  }
+
+  function filterMarketData(resp: { markets: any[] }) {
+    const markets = resp.markets.filter((m: any) => (m.details?.liquidity ?? 0) > 1e4); // filtering out small markets
+    return markets.map((m: any) => ({
+      lp: m.address,
+      sy: formatPendleAddr(m.sy),
+      pt: formatPendleAddr(m.pt),
+      yt: formatPendleAddr(m.yt),
+      lpWrapper: m.lpWrapper ? formatPendleAddr(m.lpWrapper) : undefined,
+    }));
+  }
+
+  {
+    const resp = await getConfig(`pendle-v2/active-markets-${chainId}`, `https://api-v2.pendle.finance/core/v1/${chainId}/markets/active`)
+    markets.push(...filterMarketData(resp))
+  }
+
+  {
+    const resp = await getConfig(`pendle-v2/inactive-markets-${chainId}`, `https://api-v2.pendle.finance/core/v1/${chainId}/markets/inactive`)
+    markets.push(...filterMarketData(resp))
+  }
+  return markets;
 }

@@ -1,12 +1,14 @@
-import { multiCall } from "@defillama/sdk/build/abi";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import getBlock from "../../utils/block";
 import { Result } from "./../../utils/sdkInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write } from "../../utils/dbInterfaces";
+import { CoinData, Write } from "../../utils/dbInterfaces";
 import abi from "./abi.json";
 import addresses from "./addresses.json";
 
@@ -43,15 +45,13 @@ function formWrites(
   lpInfos: any,
   virtualPrices: Result[],
   addressMap: map[],
-  underlyingTokenInfos: any[],
+  underlyingTokenInfos: {[key: string]: CoinData },
 ): Write[] {
   const writes: Write[] = [];
   addressMap.map((m: any, i: number) => {
     if (Object.values(m).includes(null) || Number(virtualPrices[i].output) == 0)
       return;
-    const underlyingInfo = underlyingTokenInfos.find(
-      (u) => u.address == m.underlying,
-    );
+    const underlyingInfo = underlyingTokenInfos[m.underlying]
     if (underlyingInfo == null) return;
     const price = (underlyingInfo.price * virtualPrices[i].output) / 10 ** 18;
 
@@ -79,7 +79,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     const l2Chains = addresses.bridges[coin as keyof typeof addresses.bridges];
     const contracts: { [contract: string]: string | number } =
       l2Chains[indexingChain as keyof typeof l2Chains];
-    if (contracts != undefined)
+    if (contracts != undefined && contracts.l2SaddleSwap !== '0x0000000000000000000000000000000000000000')
       correspondingContracts.push({
         target: contracts.l2SaddleSwap,
         lp: contracts.l2SaddleLpToken,
@@ -104,7 +104,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
   );
 
   const [underlyingTokenInfos, lpInfos] = await Promise.all([
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       addressMap.map((m) => m.underlying),
       chain,
       timestamp,

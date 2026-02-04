@@ -1,8 +1,17 @@
 import { Protocol } from "../../protocols/types";
-// import adapters from "./adapters"
-import adaptersData from "./tvlAdapterData.json"
+import fs from "fs";
+import path from "path";
 
+let adaptersData = {} as any
 
+try {
+    const _adaptersData = fs.readFileSync(path.join(__dirname, "tvlAdapterData.json"), "utf8");
+    adaptersData = JSON.parse(_adaptersData) as any
+} catch (error: any) {
+    console.error("Error loading adapter data:", error?.message)
+}
+
+let missingAdapterErrorCount = 0
 /**
  * 
  * @param protocol 
@@ -10,25 +19,27 @@ import adaptersData from "./tvlAdapterData.json"
  */
 export function importAdapter(protocol: Protocol) {
     let adapterModule = (adaptersData as any)[protocol.module]
-    if (!adapterModule) throw new Error(`Could not find adapter for ${protocol.module}`)
-    return mockFunctions(adapterModule)
+    if (!adapterModule) {
+        missingAdapterErrorCount++
+        if (missingAdapterErrorCount <= 3) {
+            // throw new Error(`Could not find adapter for ${protocol.module}`)
+            console.error(`Could not find adapter for ${protocol.module} ${missingAdapterErrorCount === 3 ? '(Last warning)' : ''}`)
+        }
+        return {}
+    }
+    return adapterModule
 }
 
 export function importAdapterDynamic(protocol: Protocol) {
-    return require(`@defillama/adapters/projects/${protocol.module}`)
-}
 
-function mockTvlFunction() {
-    throw new Error('This is a mock function, you should not be calling it, maybe you need to use importAdapterDynamic instead?')
-}
-
-
-// code to replace function string with mock functions in an object all the way down
-function mockFunctions(obj: any) {
-    if (obj === "llamaMockedTVLFunction") {
-        return mockTvlFunction
-    } else if (typeof obj === "object") {
-        Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
+    try {  // wrap call to be safe, can be removed later
+        const { allProtocols } = require(`../../../DefiLlama-Adapters/projects/helper/registries`)
+        let pModule = protocol.module.replace(/\.js$/, '').replace(/\/index$/, '').replace(/\/api$/, '')
+        let _module = allProtocols[pModule] || allProtocols[protocol.module]
+        if (_module) return _module
+    } catch (e: any) {
+        console.error("Error loading allProtocols:", e?.message)
     }
-    return obj
+
+    return require(`../../../DefiLlama-Adapters/projects/${protocol.module}`)
 }

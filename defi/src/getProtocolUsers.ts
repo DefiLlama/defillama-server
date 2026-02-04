@@ -39,7 +39,7 @@ export async function getProtocolUsersHandler(protocolId?: string, type?: string
             })
         }
     }
-    return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])).sort((a,b)=>a[0]-b[0]))
+    return records.map((d)=>([d.start, d[selectedTypeInfo.column]])).sort((a,b)=>a[0]-b[0])
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

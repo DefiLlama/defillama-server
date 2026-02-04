@@ -1,32 +1,82 @@
-import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
-import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
+import { getRecordClosestToTimestamp } from "../src/utils/shared/getRecordClosestToTimestamp";
+import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
+import {
+  canonicalBridgeIds,
+  chainsWithoutCanonicalBridges,
+  excludedTvlId,
+  fetchNotifsSent,
+  geckoSymbols,
+  protocolBridgeIds,
+  zero,
+} from "./constants";
 import BigNumber from "bignumber.js";
+import { getR2JSONString } from "../src/utils/r2";
+import { sendMessage } from "../src/utils/discord";
+import { getExcludedTvl } from "./excluded";
 
 let allProtocols: AllProtocols = {};
+let failedDeps: string[] = [];
+let rawTokenBalances: any[] = [];
 
 export default async function fetchBridgeUsdTokenTvls(
   timestamp: number,
   searchWidth: number,
   persist: boolean = true,
-  usd: boolean = true
+  usd: boolean = true,
+  excludedIds: string[] = []
 ): Promise<AllProtocols | void> {
+  const deps: { [chain: string]: string[] } = await getR2JSONString("L2-dependancies");
+  const inverseDeps: { [chain: string]: string[] } = {};
+  Object.keys(deps).map((chain) => {
+    deps[chain].map((c2: string) => {
+      if (!(c2 in inverseDeps)) inverseDeps[c2] = [];
+      inverseDeps[c2].push(chain);
+    });
+  });
+
   const allProtocolsTemp: AllProtocols = persist ? allProtocols : {};
   if (Object.keys(allProtocolsTemp).length) return;
-  const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
-  const tokenBalances: any[] = await Promise.all(
-    ids.map((i: string) =>
-      getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
+  const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds), excludedTvlId];
+  const filteredIds: string[] = [];
+  ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
+  let tokenBalances: any[] = await Promise.all(
+    filteredIds.map((i: string) =>
+      getRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
 
-  ids.map((id: string, i: number) => {
+  if (!rawTokenBalances.length)
+    rawTokenBalances = await Promise.all(
+      filteredIds.map((i: string) =>
+        getRecordClosestToTimestamp(`hourlyRawTokensTvl#${i}`, timestamp, searchWidth)
+      )
+    );
+
+  tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
+
+  let errorString = `canonical bridge issue around:`;
+  filteredIds.map((id: string, i: number) => {
     if (tokenBalances[i].SK == null) {
-      console.error(`missing hourly${usd ? "Usd" : ""}TokensTvl for id ${id}`);
+      const chain = canonicalBridgeIds[id] ?? protocolBridgeIds[id];
+
+      if (chain in deps) failedDeps.push(...deps[chain]);
+      Object.keys(inverseDeps).map((dep: string) => {
+        if (inverseDeps[dep].includes(chain) && !failedDeps.includes(dep)) {
+          failedDeps.push(dep);
+        }
+      });
     } else allProtocolsTemp[id] = tokenBalances[i];
   });
+
+  const notifs = fetchNotifsSent();
+
+  [...new Set(failedDeps)].map((dep: string) => (errorString = `${errorString} ${dep},`));
+
+  process.env.CHAIN_ASSET_WEBHOOK && errorString.length > 30 && notifs > 1
+    ? await sendMessage(errorString, process.env.CHAIN_ASSET_WEBHOOK!)
+    : console.log(errorString);
 
   if (persist) allProtocols = allProtocolsTemp;
   return allProtocolsTemp;
@@ -40,21 +90,33 @@ export async function fetchTvls(
     isProtocol?: boolean;
     mcapData?: McapData;
     native?: TokenTvlData;
+    excludedTvls?: any;
+    symbolMap?: { [pk: string]: string | null };
   } = {}
 ): Promise<{ data: TokenTvlData; native?: TokenTvlData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const searchWidth: number = params.searchWidth ?? (params.timestamp ? 43200 : 10800); // 12,3hr either side
+  const searchWidth: number = params.searchWidth ?? 43200; // (params.timestamp ? 43200 : 10800); // 12,3hr either side
   const isCanonical: boolean = params.isCanonical ?? false;
   const isProtocol: boolean = params.isProtocol ?? false;
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
 
+  if (params.symbolMap) digestAndAddToSymbolMap(rawTokenBalances, params.symbolMap);
   if (isCanonical) return sortCanonicalBridgeBalances(isProtocol);
-  const aggregate = aggregateChainTokenBalances(allProtocols);
+  const aggregate = await aggregateChainTokenBalances(allProtocols);
 
-  if (params.mcapData && params.native) return addOutgoingToMcapData(aggregate, params.mcapData);
+  if (params.mcapData && params.native && params.excludedTvls)
+    return addOutgoingToMcapData(aggregate, params.mcapData, params.excludedTvls);
   return { data: aggregate };
 }
 
+function digestAndAddToSymbolMap(rawTokenBalances: any[], symbolMap: { [pk: string]: string | null }) {
+  rawTokenBalances.map((rawTokenBalance: any) => {
+    if (!rawTokenBalance.SK) return;
+    Object.keys(rawTokenBalance.tvl).map((pk: string) => {
+      symbolMap[pk] = null;
+    });
+  });
+}
 function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData; native?: TokenTvlData } {
   const ids = isProtocol ? protocolBridgeIds : canonicalBridgeIds;
   const canonicalBridgeTokenBalances: TokenTvlData = {};
@@ -65,11 +127,13 @@ function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData;
 
     const bigNumberBalances: DollarValues = {};
     Object.keys(data.tvl).map((s: string) => {
-      bigNumberBalances[s] = BigNumber(data.tvl[s]);
+      const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+      bigNumberBalances[symbol] = BigNumber(data.tvl[s]);
     });
     if (data.staking) {
       Object.keys(data.staking).map((s: string) => {
-        bigNumberBalances[s] = BigNumber(data.staking[s]);
+        const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+        bigNumberBalances[symbol] = BigNumber(data.staking[s]);
       });
     }
 
@@ -92,7 +156,8 @@ function sortChains(chains: string[]) {
 
 function addOutgoingToMcapData(
   allOutgoing: TokenTvlData,
-  allMcapData: McapData
+  allMcapData: McapData,
+  excluded: any
 ): { data: TokenTvlData; native: TokenTvlData } {
   // use mcap data to find more realistic values on each chain
   const chains = sortChains(Object.keys(allMcapData));
@@ -108,8 +173,15 @@ function addOutgoingToMcapData(
         if (!searchKey) return;
         interchainMcap = allMcapData.total[searchKey].native;
       }
-      const percOnThisChain = chainMcap.div(interchainMcap);
+      let deductions = zero;
+      try {
+        deductions = BigNumber(excluded[chain]?.[symbol] ?? zero);
+        if (!deductions.isNaN()) allMcapData.total[symbol].native = allMcapData.total[symbol].native.minus(deductions);
+      } catch (e) {}
+
+      const percOnThisChain = chainMcap.minus(deductions).div(interchainMcap);
       const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+
       allMcapData[chain][symbol].native = thisAssetMcap;
     });
   });
@@ -123,7 +195,7 @@ function addOutgoingToMcapData(
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};
     Object.keys(allMcapData[chain]).map((symbol: string) => {
       const { native, outgoing } = allMcapData[chain][symbol];
-      adjustedNative[chain][symbol] = native;
+      if (!native.isNaN()) adjustedNative[chain][symbol] = native;
       if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
     });
   });
@@ -139,3 +211,5 @@ function addOutgoingToMcapData(
 
   return { data: adjustedOutgoing, native: adjustedNative };
 }
+
+export const fetchFailedDeps = () => failedDeps;

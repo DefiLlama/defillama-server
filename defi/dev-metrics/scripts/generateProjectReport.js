@@ -24,7 +24,7 @@ async function generateReportsSD() {
 
 async function updateProjectReportMapping() {
   console.log('Updating project report mapping')
-  // fetch all but only cetain fields
+  // fetch all but only certain fields
   const projectReports = await ProjectReport.findAll({
     attributes: { exclude: ['report', 'createdat', 'updatedat'] },
   })
@@ -73,6 +73,8 @@ async function updateProjectReportMapping() {
   }
 }
 
+const blacklistedProjects = new Set(['5226'])
+
 async function pushReportsToR2() {
   console.log('Pushing reports to R2')
   const projectReports = await ProjectReport.findAll({
@@ -83,7 +85,8 @@ async function pushReportsToR2() {
   })
   console.log('Reports not yet in R2', projectReports.length)
   for (const projectReport of projectReports) {
-    await saveGithubData(projectReport.project_id, projectReport)
+    if (!blacklistedProjects.has(projectReport.project_id + ''))
+      await saveGithubData(projectReport.project_id, projectReport)
     await projectReport.update({ exported_to_r2: true })
   }
 }

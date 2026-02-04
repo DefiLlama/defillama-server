@@ -1,5 +1,6 @@
 // https://api.coingecko.com/api/v3/asset_platforms
 export const chainToCoingeckoId = {
+  shibarium: "shibarium",
   bsc: "binance-smart-chain",
   ethereum: "ethereum",
   polygon: "polygon-pos",
@@ -27,7 +28,7 @@ export const chainToCoingeckoId = {
   secret: "secret",
   rsk: "rootstock",
   neo: "neo",
-  tezos: "tezos",
+  // tezos: "tezos",
   wan: "wanchain",
   ontology: "ontology",
   algorand: "algorand",
@@ -126,15 +127,171 @@ export const chainToCoingeckoId = {
   fraxtal: "fraxtal",
   map: "map-protocol",
   zora: "zora-network",
-  dydx: "dydx"
-  
-  // chz: "chiliz",
+  dydx: "dydx",
+  manta: "manta-pacific",
+  bouncebit: "bouncebit",
+  taiko: "taiko",
+  genesys: "genesys-network",
+  lukso: "lukso",
+  sanko: "sanko",
+  massa: "massa",
+  etherlink: "etherlink",
+  endurance: "endurance",
+  bitlayer: "bitlayer",
+  bob: "bob-network",
+  xlayer: "x-layer",
+  planq: "planq-network",
+  bsquared: "bsquared-network",
+  nibiru: "nibiru",
+  // hyperliquid: "hyperliquid",  // this is not evm?
+  ancient8: "ancient8",
+  degen: "degen",
+  cronos_zkevm: "cronos-zkevm",
+  iotaevm: "iota-evm",
+  real: "re-al",
+  eclipse: "eclipse",
+  kusama: "kusama",
+  empire: "empire",
+  vite: "vite",
+  hoo: "hoo",
+  neutron: "neutron",
+  celestia: "celestia",
+  aura: "aura-network",
+  echelon: "echelon",
+  ton: "the-open-network",
+  alephium: "alephium",
+  berachain: "berachain",
+  apechain: "apechain",
+  boba_bnb: "boba-bnb",
+  sui: "sui",
+  sonic: "sonic",
+  abstract: "abstract",
+  // dl: cg
+  chz: "chiliz",
   // stellar: "stellar",
-  // stacks: "stacks",
+  stacks: "stacks",
   // cosmos: "cosmos",
-  // sui: "sui",
   // xrp: "xrp",
-  // hedera: "hedera-hashgraph",
+  hedera: "hedera-hashgraph",
+  bfc: "bifrost-network",
+  occ: "edu-chain",
+  wc: "world-chain",
+  soneium: "soneium",
+  // hyperliquid: "hyperevm",
+  unichain: "unichain",
+  ink: "ink",
+  swellchain: "swellchain",
+  plume_mainnet: "plume-network",
+  hemi: "hemi",
+  sty: "story",
+  hydration: "hydration",
+  stellar: "stellar",
+  xrp: "xrp",
+  corn: "corn",
+  morph: "morph-l2",
+  ronin: "ronin",
+  zircuit: "zircuit",
+  op_bnb: "opbnb",
+  xcc: "cyber",
+  sophon: "sophon",
+  lisk: "lisk",
+  move: "movement",
+  tezos: "tezos",
+  artela: "artela",
+  kroma: "kroma",
+  lrs: "larissa",
+  lightlink_phoenix: "lightlink",
+  ftn: "bahamut",
+  ethereumclassic: "ethereum-classic",
+  flow: "flow-evm",
+  shimmer_evm: "shimmer_evm",
+  sapphire: "oasis-sapphire",
+  xdc: "xdc-network",
+  q: "q-mainnet",
+  islm: "haqq-network",
+  zklink: "zklink-nova",
+  gravity: "gravity-alpha",
+  tara: "taraxa",
+  europa: "skale",
+  duckchain: "duckchain",
+  mint: "mint",
+  defiverse: "defiverse",
+  meld: "meld",
+  bevm: "bevm",
+  laika: "laikachain",
+  shido: "shido",
+  sseed: "superseed",
+  hela: "hela",
+  lens: "lens",
+  sxr: "sx-rollup",
+  saga: "saga",
+  inevm: "inevm",
+  airdao: "airdao",
+  goat: "goat",
+  etn: "electroneum",
+  godwoken_v1: "godwoken",
+  defichain_evm: "defichain",
+  unit0: "units-network",
+  rss3_vsl: "rss3-vsl",
+  area: "areon-network ",
+  zero_network: "zero-network",
+  astrzk: "astar-zkevm",
+  tac: "tac", 
+  btnx: "botanix", 
+  fuel: "fuel-ignition",
+  vana: "vana",
+  peaq: "peaq",
+  saakuru: "saakuru",
+  somnia: "somnia",
+  mezo: "mezo",
+  supra: "supra",
+  initia: "initia",
+  haven1: "haven1",
+  crossfi: "crossfi",
+  provenance: "provenance",
+  qubic: "qubic",
+  redstone: "redstone",
+  plasma: 'plasma', 
+  kasplex: 'kasplex', 
+  monad: 'monad',
+  stable: 'stable', 
+  megaeth: 'megaeth', 
+  'metal-l2': 'metal',
+  henesys: 'nxpc',
+  'bittensor-evm': 'bittensor_evm',
+  katana: 'katana',
+  'hashkey-chain': 'hsk',
 };
 
+export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(
+  (acc: any, [chain, cgId]) => {
+    acc[cgId] = chain;
+    return acc;
+  },
+  {},
+);
+
+cgPlatformtoChainId["hyperevm"] = "hyperliquid";
+cgPlatformtoChainId["sei-v2"] = "sei";
+cgPlatformtoChainId["zilliqa-evm"] = "zilliqa";
+
 export default chainToCoingeckoId;
+
+// const fetch = require("node-fetch");
+// async function generateNewObject() {
+//   const res: { id: string }[] = await fetch(
+//     "https://api.coingecko.com/api/v3/asset_platforms",
+//   ).then((r: any) => r.json());
+
+//   const currentChains = Object.values(chainToCoingeckoId);
+//   let missing: string = ``;
+//   res.map((r) => {
+//     if (currentChains.includes(r.id)) return;
+//     missing = `${missing} ${r.id},`;
+//   });
+
+//   console.log(missing);
+// }
+// generateNewObject();
+// ts-node common/chainToCoingeckoId.ts
+

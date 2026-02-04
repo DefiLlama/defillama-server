@@ -49,12 +49,16 @@ export default [
     {
         protocolId: "340", // olympus
         sources: ["https://lookerstudio.google.com/u/0/reporting/cb74b814-7ce1-4449-88e5-eac57637b934/page/ZK0YC"],
-        headcount: 31,
+        headcount: 8,
         annualUsdCost: {
-            salaries: 257507*12,
+            subscriptions: 19384,
+            salaries: 580392,
+            legal: 69593,
+            hypernative: 60000,
+            audits: 91000,
         },
-        notes: ["Using data from March 2023"],
-        lastUpdate: "2023-04-29"
+        notes: ["Using FY2024 data from Looker Studio"],
+        lastUpdate: "2025-05-20"
     },
     {
         protocolId: "326", // beefy
@@ -123,16 +127,25 @@ export default [
     },
     {
         protocolId: "parent#aave",
-        sources: ["https://aave.tokenlogic.com.au/aave-runway"],
+        sources: ["https://aave.tokenlogic.xyz/runway"],
         annualUsdCost: {
-            all: (2.1+4.2+2.2*4+0.9+0.2+0.166*6)*365*1e3,
+            all: (16600000+1300000+169700),// gho, aEthUSDC , aUSDT
         },
         annualTokenCosts: {
             "coingecko:aave": {
-                salaries: (13.3+0.7+27.6)*365
+                "Technical Spend": (4800)
+            },
+            "coingecko:aave-polygon-wmatic": {
+                "Other Spend": (280000)
+            },
+            "coingecko:chainlink": {
+                "Operations Spend": (4000)
+            },
+            "coingecko:ethereum": {
+                "Growth Spend": (678)
             }
         },
-        lastUpdate: "2023-12-12"
+        lastUpdate: "2024-09-24" //year-month-day
     },
     {
         protocolId: "587", // Maple

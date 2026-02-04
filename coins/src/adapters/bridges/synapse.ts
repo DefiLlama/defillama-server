@@ -17,6 +17,7 @@ const tokenAddresses: { [symbol: string]: { [chain: string]: string } } = {
     dfk: "0x3AD9DFE640E1A9Cc1D9B0948620820D975c3803a",
     aurora: "0x07379565cD8B0CaE7c60Dc78e7f601b34AF2A21c",
     harmony: "0xED2a7edd7413021d440b09D654f3b87712abAB66",
+    blast: "0x3194B0A295D87fDAA54DF852c248F7a6BAF6c6e0",
   },
   nETH: {
     reference: "ethereum:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
@@ -31,11 +32,12 @@ const tokenAddresses: { [symbol: string]: { [chain: string]: string } } = {
     arbitrum: "0x3ea9B0ab55F34Fb188824Ee288CeaEfC63cf908e",
     avax: "0x19E1ae0eE35c0404f835521146206595d37981ae",
     harmony: "0x0b5740c6b4a97f90eF2F0220651Cca420B868FfB",
+    blast: "0xce971282faac9fabcf121944956da7142cccc855",
   },
   nUSD2: {
     reference: "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-    optimism: "0x2c6d91accc5aa38c84653f28a80aec69325bdd12"
-  }
+    optimism: "0x2c6d91accc5aa38c84653f28a80aec69325bdd12",
+  },
 };
 
 export default async function bridge(): Promise<Token[]> {

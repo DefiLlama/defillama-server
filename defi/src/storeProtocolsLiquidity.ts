@@ -51,7 +51,7 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
     })
     const tokenPools = dexPools.filter(pool =>{
         if(pool.underlyingTokens){
-            return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
+            return pool.underlyingTokens?.map((t:any)=>t?.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
         } else if(symbol!.length > 2) {
             return pool.symbol.toUpperCase().split("-").includes(symbol?.toUpperCase())
         }
@@ -93,7 +93,7 @@ async function getDexPools(){
         bridgedCoins[to].push(from)
     })
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes" && !excludedPools.includes(p.pool))
+        (p) => config.protocols[p.project]?.category === "Dexs" && !excludedPools.includes(p.pool))
     return {dexPools, cgCoins, bridgedCoins}
 }
 

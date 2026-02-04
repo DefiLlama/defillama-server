@@ -1,17 +1,16 @@
-
+import * as sdk from "@defillama/sdk"
+const { sliceIntoChunks, } = sdk.util
+import { Op, } from "sequelize"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
 import { initializeTVLCacheDB } from "../../api2/db"
 import { AdapterRecord2 } from "./AdapterRecord2"
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import configs from "../data/configs"
-import { Op, QueryTypes } from "sequelize"
-import { sliceIntoChunks } from "@defillama/sdk/build/util"
+import { AdapterType } from "../data/types"
 import { IJSON } from "../data/types"
 
 let isInitialized: any
 
-async function init() {
+export async function init() {
   if (!isInitialized) isInitialized = initializeTVLCacheDB()
   return isInitialized
 }
@@ -22,13 +21,15 @@ export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3
     await init()
 
     const pgItem = record.getPGItem()
-    const hourlyDDbItem = record.getHourlyDDBItem()
+    // const hourlyDDbItem = record.getHourlyDDBItem()  // we are storing this as event record
     const ddbItem = record.getDDBItem()
+    const eventItem = { ...record.getDDBItem(), source: 'dimension-adapter' }
 
     await Promise.all([
       Tables.DIMENSIONS_DATA.upsert(pgItem),
       dynamodb.putDimensionsData(ddbItem),
-      dynamodb.putDimensionsData(hourlyDDbItem),
+      // dynamodb.putDimensionsData(hourlyDDbItem),
+      dynamodb.putEventData(eventItem),
     ])
   } catch (error) {
     if (retriesLeft > 0) {
@@ -66,7 +67,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
@@ -86,96 +87,95 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 }
 
-export async function getItemsLastUpdated(adapterType: AdapterType) {
-  await init()
-
-  const label = `getItemsLastUpdated(${adapterType})`
-  console.time(label)
-
-  const result = await (Tables.DIMENSIONS_DATA! as any).sequelize.query(`
-  SELECT t1.id, t1.latest_timestamp, t2.data
-  FROM (
-    SELECT id, MAX(timestamp) as latest_timestamp
-    FROM DIMENSIONS_DATA
-    WHERE type = :adapterType AND timestamp >=  (EXTRACT(EPOCH FROM NOW() - INTERVAL '7 days'))
-    GROUP BY id
-  ) as t1
-  JOIN DIMENSIONS_DATA as t2
-  ON t1.id = t2.id AND t1.latest_timestamp = t2.timestamp AND t2.type = :adapterType
-`, {
-    replacements: { adapterType: adapterType },
-    type: QueryTypes.SELECT
-  })
-
-  console.timeEnd(label)
-  const response: {
-    [key: string]: {
-      latest_timestamp: number
-      data: any
-      id: string
-    }
-  } = {}
-  result.forEach((item: any) => {
-    response[item.id] = item
-  })
-
-  return response
-}
-
-// to get all last two data points of each project for a given adapter type in the last 7 days
-export async function getLastTwoRecordsWIP(adapterType: AdapterType) {
-  await init()
-
-  const label = `getItemsLastButOneUpdated(${adapterType})`
-  console.time(label)
-  const result = await (Tables.DIMENSIONS_DATA! as any).sequelize.query(`
-  SELECT t1.id, t1.latest_two_timestamps, ARRAY[t2.data, t3.data] as latest_two_data
-  FROM (
-    SELECT id, 
-      ARRAY[(ARRAY_AGG(timestamp ORDER BY timestamp DESC))[1], (ARRAY_AGG(timestamp ORDER BY timestamp DESC))[2]] as latest_two_timestamps
-    FROM DIMENSIONS_DATA
-    WHERE type = :adapterType AND timestamp >= (EXTRACT(EPOCH FROM NOW() - INTERVAL '7 days'))
-    GROUP BY id
-  ) as t1
-  JOIN DIMENSIONS_DATA as t2
-  ON t1.id = t2.id AND t1.latest_two_timestamps[1] = t2.timestamp AND t2.type = :adapterType
-  JOIN DIMENSIONS_DATA as t3
-  ON t1.id = t3.id AND t1.latest_two_timestamps[2] = t3.timestamp AND t3.type = :adapterType
-`, {
-    replacements: { adapterType: adapterType },
-    type: QueryTypes.SELECT
-  });
-
-  console.timeEnd(label)
-  console.log(result)
-  /* const response: {
-    [key: string]: {
-      latest_timestamp: number
-      data: any
-      id: string
-    }
-  } = {}
-  result.forEach((item: any) => {
-    response[item.id] = item
-  })
-
-  return response */
-}
-
-export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number}) {
+export async function getAllItemsUpdatedAfter({ adapterType, timestamp, transform = a => a }: { adapterType: AdapterType, timestamp: number, transform?: (a: any) => any }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
   const label = `getAllItemsUpdatedAfter(${adapterType})`
+  // console.time(label)
+
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch.map(transform))
+    // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+    if (batch.length < limit) break
+    offset += limit
+  }
+
+  // sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+  // console.timeEnd(label)
+  return result
+}
+
+
+export async function getAllItemsAfter({ adapterType, timestamp = 0, transform = a => a }: { adapterType: AdapterType, timestamp?: number, transform?: (a: any) => any }) {
+  await init()
+  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+  const filterCondition: any = { timestamp: { [Op.gte]: timestamp } }
+  if (adapterType) filterCondition.type = adapterType
+
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+  const label = `getAllItemsAfter(${adapterType}, ${timestamp})`
   console.time(label)
 
-  const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, timestamp: { [Op.gte]: timestamp  } },
-    attributes: ['data', 'timestamp', 'id', 'timeS'],
-    raw: true,
-    order: [['timestamp', 'ASC']],
-  })
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where: filterCondition,
+      attributes: ['data', 'timestamp', 'id', 'timeS', 'bl'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch.map(transform))
+    sdk.log(`getAllItemsAfter(${adapterType}, ${timestamp}) found ${batch.length} total fetched: ${result.length} items after ${new Date(timestamp * 1000)}`)
+    if (batch.length < limit) break
+    offset += limit
+  }
 
   console.timeEnd(label)
+
+  return result
+}
+
+export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string }) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timeS: date },
+    attributes: ['timestamp', 'id', 'timeS', 'updatedat'],
+    raw: true,
+  })
+
+  return result
+}
+export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
+  await init()
+
+  const where: any = { type: adapterType, }
+  if (id) where['id'] = id
+  if (timestamp) where['timestamp'] = { [Op.gte]: timestamp }
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where,
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
   return result
 }

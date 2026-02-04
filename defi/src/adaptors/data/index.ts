@@ -1,120 +1,248 @@
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
-import * as dexData from "./dexs"
-import * as derivativesData from "./derivatives"
-import * as feesData from "./fees"
-import * as aggregatorsData from "./aggregators"
-import * as optionsData from "./options"
-import * as incentivesData from "./incentives"
-import * as protocolsData from "./protocols"
-import * as royaltiesData from "./royalties"
-import * as aggregatorDerivativesData from "./aggregator-derivatives";
-import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
-import { ADAPTER_TYPES } from "../handlers/triggerStoreAdaptorData";
+import { ADAPTER_TYPES, AdapterType, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor, ProtocolType } from "./types";
+import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
+import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
+import protocols from "../../protocols/data";
+import { chainCoingeckoIds, getChainDisplayName } from "../../utils/normalizeChain";
+import { baseIconsUrl } from "../../constants";
 
-const mapping = {
-  [AdapterType.DEXS]: dexData,
-  [AdapterType.DERIVATIVES]: derivativesData,
-  [AdapterType.FEES]: feesData,
-  [AdapterType.AGGREGATORS]: aggregatorsData,
-  [AdapterType.OPTIONS]: optionsData,
-  [AdapterType.INCENTIVES]: incentivesData,
-  [AdapterType.PROTOCOLS]: protocolsData,
-  [AdapterType.ROYALTIES]: royaltiesData,
-  [AdapterType.AGGREGATOR_DERIVATIVES]: aggregatorDerivativesData
+let dimensionsConfig: any
+getDimensionsConfig()
+
+// TODO: reduce the places this is called to improve performance
+export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
+  // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
+  const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
+  const { importAdapter } = await import('../../../dimension-adapters/adapters/utils/importAdapter')
+  const passedFile = dimensionsConfig[adaptorType].imports[mod].moduleFilePath
+  const result = await importAdapter(adaptorType, mod, '../../' + passedFile)
+  const adapterModule = result.adapter
+  setModuleDefaults(adapterModule)
+  return adapterModule
 }
-
-export const importModule = (adaptorType: AdapterType) => (mod: string) => import(all.imports[adaptorType][mod].moduleFilePath)
-
-const all = { imports: {} } as { imports: IJSON<IImportsMap> }
 
 const exportCache = {} as IJSON<AdaptorData>
 
-export default (adaptorType: AdapterType): AdaptorData => {
+export default loadAdaptorsData
+
+function loadAdaptorsData(adaptorType: AdapterType): AdaptorData {
   if (!exportCache[adaptorType]) exportCache[adaptorType] = _getAdapterData(adaptorType)
   return exportCache[adaptorType]
-}
-
-const protocolImports = protocolsData.imports
-
-function getOtherAdaperTypeId2s(adapterType: AdapterType): Set<string> {
-  const otherAdapterIds = new Set<string>()
-
-  ADAPTER_TYPES.forEach((type) => {
-    if (type === adapterType) return;
-    if (!mapping[type]) return;
-    const imports = getImports(type)
-    const config = mapping[type].config
-    Object.entries(imports).forEach(([adapterKey, adapterObj]) => {
-      if (!config[adapterKey]?.enabled) return;
-      const isChain = adapterObj.module.default?.protocolType === ProtocolType.CHAIN
-      const id = isChain ? 'chain#' + config[adapterKey].id : config[adapterKey].id
-      otherAdapterIds.add(id)
-      Object.values(config[adapterKey].protocolsData ?? {}).forEach(config => {
-        if (config.enabled) otherAdapterIds.add(config.id)
-      })
-    })
-  })
-
-  return otherAdapterIds
-}
-
-const allImportsSqaushed = Object.values(mapping).reduce((acc, curr) => {
-  return { ...acc, ...curr.imports }
-}, {})
-
-function getImports(adapterType: AdapterType) {
-  if (!all.imports[adapterType])
-    all.imports[adapterType] = {
-      ...allImportsSqaushed,
-      ...protocolImports,
-      ...mapping[adapterType].imports,
-    }
-  return all.imports[adapterType]
 }
 
 const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 
   // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
   // Thats why we create an object with all adapters using the spread operator which only references the objects (they load all of them into memory anyways)
-  if (!mapping[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
-  const { config, KEYS_TO_STORE, imports } = mapping[adapterType]
-  const isProtocolTypeDexsOrFees = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType);
-  const protocolConfig = isProtocolTypeDexsOrFees ? mapping[AdapterType.PROTOCOLS].config : {};
-  const allImportsByAdaptertype = getImports(adapterType)
-  const allImportsTypeProtocols = isProtocolTypeDexsOrFees ? getImports(AdapterType.PROTOCOLS) : {}
-  const allImports = Object.entries(allImportsTypeProtocols).reduce((acc, [key, value]) => {
-    if (!acc.hasOwnProperty(key)) {
-        acc[key] = value;
+  if (!dimensionsConfig[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
+  const { KEYS_TO_STORE, imports: allImports } = dimensionsConfig[adapterType]
+  const config: any = {}
+  const configMetadataMap: any = {}
+
+  protocols.forEach((p) => {
+    if (!p.dimensions?.[adapterType]) return;
+    let { adapterKey, dimConfig } = getDimensionsConfigAndKey(p.dimensions[adapterType])
+    dimConfig.id = p.id
+    dimConfig.isChain = false
+    dimConfig.isProtocolInOtherCategories = Object.keys(dimensionsConfig).length > 1
+    config[adapterKey] = dimConfig
+    configMetadataMap[adapterKey] = p
+  })
+
+  Object.entries(chainCoingeckoIds).forEach(([chainName, obj]) => {
+    if (!obj.dimensions?.[adapterType]) return;
+
+    // let id = obj.chainId ?? obj.cmcId  // NOTE: we are instead using adapterKey as id because it is safer than when chain first has cmcId but we end up adding chainId
+
+    // switch (chainName) {
+    //   case 'Ethereum': // because ethereum chain id clashes with bitcoin cmcId
+    //   case 'Kardia':  // kardia has chainId 0
+    //     id = '' + obj.cmcId;
+    //     break;
+    // }
+    let { adapterKey, dimConfig } = getDimensionsConfigAndKey(obj.dimensions[adapterType])
+
+    if (config[adapterKey]) {
+      // you can reach here because there are two labels for the same chain: like Optimism & 'OP Mainnet'
+      return;
     }
-    return acc;
-  }, {...allImportsByAdaptertype});
-  const allConfig = Object.entries(protocolConfig).reduce((acc, [key, value]) => {
-    if (!acc.hasOwnProperty(key)) {
-        acc[key] = value;
+
+    const objClone = {
+      ...obj,
+      displayName: getChainDisplayName(chainName, true),
+      name: chainName,
+      id: 'chain#' + adapterKey,
+      gecko_id: obj.geckoId,
+      isChain: true,
+      protocolType: ProtocolType.CHAIN,
+      category: 'Chain',
+      logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(chainName)}.jpg`
     }
-    return acc;
-  }, {...config});
-  const otherATId2s = getOtherAdaperTypeId2s(adapterType)
-  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
-  const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
+
+    dimConfig.id = objClone.id
+    config[adapterKey] = dimConfig
+    configMetadataMap[adapterKey] = objClone
+  })
+
+  function getDimensionsConfigAndKey(data: any) {
+    let adapterKey: string
+    let dimConfig: any = data
+    if (typeof dimConfig === 'string') {
+      adapterKey = dimConfig
+      dimConfig = {}
+    } else {
+      adapterKey = dimConfig.adapter
+      dimConfig = { ...dimConfig } // make a copy
+      delete dimConfig.adapter
+    }
+
+    return { adapterKey, dimConfig }
+  }
+
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, configMetadataMap, })
   const protocolMap = protocolAdaptors.reduce((acc, curr) => {
     acc[curr.id2] = curr
     return acc
   }, {} as IJSON<ProtocolAdaptor>)
 
   return {
-    default: generateProtocolAdaptorsList(allImports, allConfig, adapterType),
+    default: protocolAdaptors,
     KEYS_TO_STORE,
     importModule: importModule(adapterType),
-    config: allConfig,
-    rules: getRules(adapterType),
+    config,
     protocolAdaptors,
-    childProtocolAdaptors,
     protocolMap,
   }
 }
 
-export const getRules = (adapterType: AdapterType): AdaptorData['rules'] => {
-  return (mapping[adapterType] as any).rules
+function addImportsDataToMapping() {
+  const allImportsSquashed: any = {}
+  Object.entries(dimensions_imports).forEach(([adapterType, imports]) => {
+    Object.entries(imports).forEach(([adapterKey, adapterObj]: any) => {
+      adapterObj.module = { default: adapterObj.module }
+      allImportsSquashed[adapterKey] = adapterObj
+    })
+
+    dimensionsConfig[adapterType].imports = imports
+  })
+
+
+  Object.keys(dimensionsConfig).forEach((adapterType) => {
+    if (adapterType === AdapterType.DERIVATIVES) return; // derivatives use dexs imports
+    if (adapterType === AdapterType.OPEN_INTEREST) return; // OI prioritizes dexs imports (if present) over rest (other than oi itself), so first, we need to build dex imports
+
+    dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
+  })
+
+
+  dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
+
+  // the order matters, wait for other imported to be built before running this
+  dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
+
 }
+
+function getDimensionsConfig() {
+  dimensionsConfig = {
+    [AdapterType.DEXS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume]
+      },
+    },
+    [AdapterType.DERIVATIVES]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume],
+      },
+    },
+    [AdapterType.OPEN_INTEREST]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd],
+        [AdaptorRecordType.shortOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.shortOpenInterestAtEnd],
+        [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
+      },
+    },
+    [AdapterType.NORMALIZED_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
+      },
+    },
+    [AdapterType.FEES]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyFees],
+        [AdaptorRecordType.dailyRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyRevenue],
+        [AdaptorRecordType.dailyUserFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyUserFees],
+        [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailySupplySideRevenue],
+        [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyProtocolRevenue],
+        [AdaptorRecordType.dailyHoldersRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyHoldersRevenue],
+        [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyCreatorRevenue],
+        [AdaptorRecordType.totalFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalFees],
+        [AdaptorRecordType.totalRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalRevenue],
+        [AdaptorRecordType.totalUserFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalUserFees],
+        [AdaptorRecordType.totalSupplySideRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalSupplySideRevenue],
+        [AdaptorRecordType.totalProtocolRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalProtocolRevenue],
+        [AdaptorRecordType.totalHoldersRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalHoldersRevenue],
+        [AdaptorRecordType.totalCreatorRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalCreatorRevenue],
+        [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyBribesRevenue],
+        [AdaptorRecordType.dailyTokenTaxes]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyTokenTaxes]
+      },
+    },
+    [AdapterType.AGGREGATORS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume]
+      },
+    },
+    [AdapterType.OPTIONS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.totalPremiumVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalPremiumVolume],
+        [AdaptorRecordType.totalNotionalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalNotionalVolume],
+        [AdaptorRecordType.dailyPremiumVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyPremiumVolume],
+        [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNotionalVolume]
+      },
+    },
+    [AdapterType.INCENTIVES]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.tokenIncentives]: AdaptorRecordTypeMapReverse[AdaptorRecordType.tokenIncentives]
+      },
+    },
+    // [AdapterType.ROYALTIES]: royaltiesData,
+    [AdapterType.AGGREGATOR_DERIVATIVES]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume]
+      },
+    },
+    [AdapterType.BRIDGE_AGGREGATORS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyBridgeVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyBridgeVolume],
+        [AdaptorRecordType.totalBridgeVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalBridgeVolume]
+      },
+    },
+  }
+
+
+  addImportsDataToMapping()
+}
+
+function getLogoKey(key: string) {
+  if (key.toLowerCase() === 'bsc') return 'binance'
+  else return key.toLowerCase()
+}
+
+/* 
+
+const statsTable: any = {}
+ADAPTER_TYPES.forEach((adapterType) => {
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const totalCount = protocolAdaptors.length
+  const deadCount = protocolAdaptors.filter(p => p.isDead).length
+  const liveCount = totalCount - deadCount
+  const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
+  // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
+  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime }
+})
+
+console.table(statsTable)
+
+*/

@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
 import ddb from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { coinToPK, DAY } from "./utils/processCoin";
 
 const handler = async (
@@ -17,6 +17,10 @@ const handler = async (
     if (coin === undefined) {
         return errorResponse({ message: "Coin doesn't exist" })
     }
+
+    if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+
     const response = {
         decimals: coin.decimals,
         symbol: coin.symbol,
@@ -27,7 +31,7 @@ const handler = async (
     }
     await Promise.all(timestampsRequested.map(async timestampRequested => {
         const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY / 2);
-        if (finalCoin.SK === undefined) {
+        if (finalCoin?.SK === undefined) {
             return
         }
         response.prices.push({

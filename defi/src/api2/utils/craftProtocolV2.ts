@@ -1,58 +1,96 @@
 import type { Protocol } from "../../protocols/types";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
-import { getAvailableMetricsById } from "../../adaptors/data/configs";
 import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, getLastHourlyRecord, getLastHourlyTokensUsd, getLastHourlyTokens } from "../cache/index";
-import { getAllProtocolItems, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
-import {
-  hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
-} from "../../utils/getLastRecord"
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
+import { getObjectKeyCount } from ".";
+import { parentProtocolsById } from "../../protocols/parentProtocols";
+import sluggify from "../../utils/sluggify";
+import { _InternalProtocolMetadataMap } from "../../protocols/data";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
-  useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  restrictResponseSize?: boolean;
+  skipCachedHourlyData?: boolean;
+  feMini?: boolean; // for fetching only aggregated tvl data without token breakdown & without raw token balancesMi
+  skipFeMiniTransform?: boolean; // for feMini we return data in ([date, usdValue]: [number, number]) instead of default { date: number, totalLiquidityUSD: number } format
 }
 
 
 export type CraftProtocolV2Options = CraftProtocolV2Common & {
   protocolData: Protocol;
+  getCachedProtocolData?: Function;
 }
+
+const heavyProtocols = new Set([
+  '2198', // uni v3
+  "119", // sushiswap
+  "1613", // nested
+  "2769", // pancake v3
+  "214", // raydium
+  "1541", // portal
+  "4148", // Meteora
+  "2611", // Balancer v2
+  "5690", // Uniswap v4
+  "283", // orca
+])
 
 export async function craftProtocolV2({
   protocolData,
   useNewChainNames,
-  useHourlyData,
   skipAggregatedTvl,
+  restrictResponseSize,
+  getCachedProtocolData = getProtocolAllTvlData,
+  skipCachedHourlyData = false,
+  feMini = false,
+  skipFeMiniTransform = false,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
+  const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
-  const debug_t0 = performance.now(); // start the timer
+  // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
+  const isDummyProtocol = protocolData.module === "dummy.js";
+  const skipTokenBreakdownData = heavyProtocols.has(protocolData.id)
+
+  // const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
-  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
+  const isDeadProtocol = !!protocolData.deadFrom || isDummyProtocol
 
-  if (!useHourlyData)
-    protocolCache = await getProtocolAllTvlData(protocolData, true)
+  if (!isDummyProtocol)
+    protocolCache = await getCachedProtocolData(protocolData, true)
 
-  let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
-    !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
+  let _getLastHourlyRecord: any = null
+  let _getLastHourlyTokensUsd: any = null
+  let _getLastHourlyTokens: any = null
+
+  if (!isDeadProtocol && !skipCachedHourlyData) {
+    _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
+    _getLastHourlyTokensUsd = getLastHourlyTokensUsd(protocolData as any)
+    _getLastHourlyTokens = getLastHourlyTokens(protocolData as any)
+  }
+
+  let historicalUsdTvl: any = protocolCache[0] ?? []
+  let historicalUsdTokenTvl: any = protocolCache[1] ?? []
+  let historicalTokenTvl: any = protocolCache[2] ?? []
+
+  let [mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     getCachedMCap(protocolData.gecko_id),
-    isDeadProtocolOrHourly ? null : getLastHourlyRecord(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokensUsd(protocolData as any),
-    isDeadProtocolOrHourly ? null : getLastHourlyTokens(protocolData as any),
+    _getLastHourlyRecord,
+    _getLastHourlyTokensUsd,
+    _getLastHourlyTokens,
   ]);
 
-  if (!useHourlyData) {
-    historicalUsdTvl = protocolCache[0]
-    historicalUsdTokenTvl = protocolCache[1]
-    historicalTokenTvl = protocolCache[2]
+
+  if (feMini || skipTokenBreakdownData) {
+    historicalUsdTokenTvl = []
+    historicalTokenTvl = []
+    lastUsdTokenHourlyRecord = null
+    lastTokenHourlyRecord = null
   }
-  const debug_dbTimeAll = performance.now() - debug_t0
+  // const debug_dbTimeAll = performance.now() - debug_t0
 
   let response: IProtocolResponse = {
     ...restProtocolData,
@@ -63,29 +101,23 @@ export async function craftProtocolV2({
     chains: [],
     currentChainTvls: {},
     raises: getRaises(protocolData.id),
-    metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
 
   if (!lastUsdHourlyRecord)
-    lastUsdHourlyRecord = historicalUsdTvl[historicalUsdTvl.length - 1]
+    lastUsdHourlyRecord = historicalUsdTvl?.[historicalUsdTvl.length - 1]
   if (!lastUsdTokenHourlyRecord)
-    lastUsdTokenHourlyRecord = historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]
+    lastUsdTokenHourlyRecord = historicalUsdTokenTvl?.[historicalUsdTokenTvl.length - 1]
   if (!lastTokenHourlyRecord)
-    lastTokenHourlyRecord = historicalTokenTvl[historicalTokenTvl.length - 1]
+    lastTokenHourlyRecord = historicalTokenTvl?.[historicalTokenTvl.length - 1]
 
-  if (!useHourlyData) {
-    // check for falsy values and push lastHourlyRecord to dataset
-    lastUsdHourlyRecord &&
-      lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1]?.SK &&
-      historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord &&
-      lastUsdTokenHourlyRecord.SK !== historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]?.SK &&
-      historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord &&
-      lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK &&
-      historicalTokenTvl.push(lastTokenHourlyRecord);
-  }
+  // check for falsy values and push lastHourlyRecord to dataset
+  if (lastUsdHourlyRecord && historicalUsdTvl && lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1]?.SK)
+    historicalUsdTvl.push(lastUsdHourlyRecord);
+  if (lastUsdTokenHourlyRecord && historicalUsdTokenTvl && lastUsdTokenHourlyRecord.SK !== historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]?.SK)
+    historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+  if (lastTokenHourlyRecord && historicalTokenTvl && lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK)
+    historicalTokenTvl.push(lastTokenHourlyRecord);
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]: [string, any]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
@@ -104,34 +136,34 @@ export async function craftProtocolV2({
         tokens: [],
       };
     }
+
+
     const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
 
-    container?.tvl?.push(
-      ...historicalUsdTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
-        }))
-        .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
-    );
+    if (Array.isArray(container?.tvl) && Array.isArray(historicalUsdTvl)) {
+      for (const item of historicalUsdTvl) {
+        let usdValue = selectChainFromItem(item, chain)
+        if (typeof usdValue === 'number') {
+          usdValue = Math.floor(usdValue)
+          if (feMini && !skipFeMiniTransform) container.tvl.push([item.SK, usdValue] as any)
+          else container.tvl.push({ date: item.SK, totalLiquidityUSD: usdValue })
+        }
+      }
+    }
 
-    container?.tokensInUsd?.push(
-      ...historicalUsdTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
+    if (Array.isArray(container?.tokensInUsd) && Array.isArray(historicalUsdTokenTvl)) {
+      for (const item of historicalUsdTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokensInUsd.push({ date: item.SK, tokens })
+      }
+    }
 
-    container?.tokens?.push(
-      ...historicalTokenTvl
-        ?.map((item: any) => ({
-          date: item.SK,
-          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-        }))
-        .filter((item: any) => item.tokens)
-    );
+    if (Array.isArray(container?.tokens) && Array.isArray(historicalTokenTvl)) {
+      for (const item of historicalTokenTvl) {
+        const tokens = normalizeEthereum(selectChainFromItem(item, chain))
+        if (tokens) container.tokens.push({ date: item.SK, tokens })
+      }
+    }
   });
 
   const singleChain = transformNewChainName(protocolData.chain);
@@ -139,7 +171,7 @@ export async function craftProtocolV2({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
@@ -147,11 +179,11 @@ export async function craftProtocolV2({
 
   if (
     response.chainTvls[singleChain] !== undefined &&
-    response.chainTvls[singleChain].tvl.length < response.tvl.length
+    response.chainTvls[singleChain].tvl.length < (response.tvl ?? []).length
   ) {
     const singleChainTvls = response.chainTvls[singleChain].tvl;
     const first = singleChainTvls[0].date;
-    response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
+    response.chainTvls[singleChain].tvl = (response.tvl ?? []).filter((t: any) => t.date < first).concat(singleChainTvls);
   }
 
   if (skipAggregatedTvl) {
@@ -164,35 +196,72 @@ export async function craftProtocolV2({
   let childProtocolsNames: string[] = [];
   let parentProtocolId = protocolData.parentProtocol;
 
-  if (parentProtocolId) {
-    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
-    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).map((p) => p.name);
+  if (parentProtocolId && parentProtocolsById[parentProtocolId]) {
+    const parent = parentProtocolsById[parentProtocolId]
+    response.parentProtocolSlug = sluggify(parent as any);
+    parentName = parent.name ?? null;
+    childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 
   if (childProtocolsNames.length > 0 && parentName) {
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (methodology)
-    response.methodology = methodology;
+  if (restProtocolData.methodology) {
+    response.methodology = restProtocolData.methodology;
+  }
 
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
 
   if (Array.isArray(hallmarks) && hallmarks.length > 0) {
-    response.hallmarks = hallmarks;
-    response.hallmarks?.sort((a, b) => a[0] - b[0]);
+    response.hallmarks = hallmarks as any
+  }
+
+  if (restProtocolData.deprecated) {
+    response.deprecated = true
+  }
+
+  if (restProtocolData.warningBanners) {
+    response.warningBanners = restProtocolData.warningBanners;
+  }
+
+  if (restProtocolData.rugged) {
+    response.rugged = true;
+  }
+  if (restProtocolData.deadUrl) {
+    response.deadUrl = true;
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
-  const debug_totalTime = performance.now() - debug_t0
-  // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+  // const debug_totalTime = performance.now() - debug_t0
+  // sdk.log(`${protocolData.name} | #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+
+
+  if (!feMini && restrictResponseSize) {
+    const keyCount = getObjectKeyCount(response)
+    if (keyCount > 1.5e5) { // there are more than 150k keys
+      // console.log(`${response.name} Response size is too large: ${keyCount} keys. Limiting response size.`)
+      Object.keys(response?.chainTvls ?? {}).forEach((key) => {
+        response.chainTvls[key].tokensInUsd = null
+        response.chainTvls[key].tokens = null
+      })
+    }
+  }
+
+  if (skipTokenBreakdownData) {
+    (response as any).skipTokenBreakdownData = true
+  }
 
   return response;
 }
 
 export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
-  const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
+  const sizeKey = options.restrictResponseSize ? 'smol' : 'normal'
+  const protoId = options.protocolData.id
+  const aggKey = options.skipAggregatedTvl ? 'noAgg' : 'agg'
+  const newChainKey = options.useNewChainNames ? 'new' : 'old'
+  const id = `${protoId}-${aggKey}-${newChainKey}-${sizeKey}`
   const CACHE_KEY = CACHE_KEYS.PROTOCOL
   return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
 }

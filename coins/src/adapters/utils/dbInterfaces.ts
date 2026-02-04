@@ -17,6 +17,7 @@ export interface Write {
   confidence: number;
   timestamp?: number;
   mcap?: number;
+  volume?: number
 }
 export interface DbQuery {
   PK: string;
@@ -30,6 +31,16 @@ export interface DbEntry {
   decimals: number;
   symbol: string;
   confidence: number;
+}
+export interface CgEntry {
+  PK: string;
+  SK: number;
+  price: number;
+  symbol: string;
+  confidence: number;
+  mcap?: number
+  timestamp?: number
+  volume?: number
 }
 export interface Read {
   dbEntry: DbEntry;

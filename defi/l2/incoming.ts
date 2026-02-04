@@ -1,11 +1,16 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import BigNumber from "bignumber.js";
 import { DollarValues, TokenTvlData } from "./types";
-import { zero } from "./constants";
-import { fetchBridgeTokenList, fetchSupplies, getPrices } from "./utils";
+import { geckoSymbols, zero } from "./constants";
+import { fetchBridgeTokenList, fetchSupplies } from "./utils";
+import { coins } from "@defillama/sdk";
 
-export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp?: number }): Promise<TokenTvlData> {
+export async function fetchIncoming(params: {
+  canonical: TokenTvlData;
+  timestamp?: number;
+  symbolMap: { [pk: string]: string | null };
+}): Promise<TokenTvlData> {
   const canonicalTvls: TokenTvlData = params.canonical;
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const data: TokenTvlData = {};
@@ -19,7 +24,7 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
           return;
         }
 
-        const prices = await getPrices(
+        const prices = await coins.getPrices(
           tokens.map((t: string) => `${chain}:${t}`),
           timestamp
         );
@@ -38,11 +43,13 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
             const priceInfo = prices[t];
             const supply = supplies[t];
             if (!priceInfo || !supply) return;
-            if (priceInfo.symbol in canonicalTvls[chain]) return;
-            if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+            const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+            if (!t.startsWith("coingecko:") && params.symbolMap) params.symbolMap[t] = symbol;
+            if (symbol in canonicalTvls[chain]) return;
+            if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
             const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-            dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+            dollarValues[symbol] = BigNumber(usdValue).plus(dollarValues[symbol]);
           });
 
           return dollarValues;
@@ -52,5 +59,6 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
       }
     })
   );
+
   return data;
 }

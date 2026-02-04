@@ -46,6 +46,22 @@ export async function storeR2(
   return await R2.send(command);
 }
 
+export async function deleteR2(
+  filename: string,
+) {
+  const command = new DeleteObjectsCommand({
+    Bucket: datasetBucket,
+    Delete: {
+      Objects: [
+        {
+          Key: filename
+        }
+      ]
+    } 
+  })
+  return await R2.send(command)
+}
+
 export async function storeR2JSONString(filename: string, body: string | Readable, cache?: number) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,
@@ -169,6 +185,7 @@ export function buildRedirectR2(filename: string, cache?: number) {
 
 export const liquidationsFilename = `liquidations.json`;
 
+// these cache file doesnt exist/not used anywhere?
 export async function deleteProtocolCache(protocolId: string) {
   const cacheKey = (useNewChainNames: boolean, useHourlyData: boolean) =>
     `protocolCache/${protocolId}-${useNewChainNames}-${useHourlyData}`;

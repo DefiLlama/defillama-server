@@ -1,10 +1,10 @@
 require("dotenv").config();
-import { addressList } from "../../../dimension-adapters/users/list";
+import { addressList } from "../../dimension_migration/users/list";
 import getRecordEarliestTimestamp from "../../utils/shared/getRecordEarliestTimestamp";
 import { dailyTvl } from "../../utils/getLastRecord";
 import { DAY } from "../../utils/date";
 import {date} from '../utils'
-import { getAccountsDBConnection } from "../../getDBConnection";
+import { getAccountsDBConnection } from "../../utils/shared/getDBConnection";
 
 async function main(){
     const table = [

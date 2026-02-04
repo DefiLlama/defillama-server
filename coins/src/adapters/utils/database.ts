@@ -1,8 +1,8 @@
 require("dotenv").config();
-import axios, { all } from "axios";
+import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../../utils/shared/getRecordClosestToTimestamp";
 import {
   Write,
   DbEntry,
@@ -11,14 +11,19 @@ import {
   CoinData,
   Metadata,
 } from "./dbInterfaces";
-import { sendMessage } from "./../../../../defi/src/utils/discord";
-import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import * as sdk from "@defillama/sdk";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
+
+import produceKafkaTopics from "../../utils/coins3/produce";
+import { lowercase } from "../../utils/coingeckoPlatforms";
+import { sendMessage } from "../../../../defi/src/utils/discord";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
+process.env.tableName = "prod-coins-table";
 
 let cache: any = {};
 let lastCacheClear: number;
@@ -48,7 +53,8 @@ export async function getTokenAndRedirectData(
   const response: CoinData[] = [];
   await rateLimited(async () => {
     if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
-    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}; // clear cache every 15 minutes
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15)
+      cache = {}; // clear cache every 15 minutes
 
     const cacheKey = `${chain}-${hoursRange}`;
     if (!cache[cacheKey]) cache[cacheKey] = {};
@@ -64,7 +70,7 @@ export async function getTokenAndRedirectData(
     if (tokens.length == 0) return response;
 
     let apiRes;
-    if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
+    if (process.env.LOCAL_TEST === "true") {
       apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
     } else {
       apiRes = await getTokenAndRedirectDataDB(
@@ -88,6 +94,27 @@ export async function getTokenAndRedirectData(
   return response;
 }
 
+export async function getTokenAndRedirectDataMap(
+  tokens: string[],
+  chain: string,
+  timestamp: number,
+  hoursRange: number = 12,
+) {
+  const res = await getTokenAndRedirectData(
+    tokens,
+    chain,
+    timestamp,
+    hoursRange,
+  );
+  const map: {
+    [address: string]: CoinData;
+  } = {};
+  res.forEach((r: CoinData) => {
+    map[r.address] = r;
+  });
+  return map;
+}
+
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -103,15 +130,26 @@ export function addToDBWritesList(
   const PK: string =
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
-      : `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`;
-  if (timestamp == 0) {
+      : `asset#${chain}:${lowercase(token, chain)}`;
+  if (redirect && timestamp == 0) {
+    writes.push({
+      SK: 0,
+      PK,
+      price,
+      symbol,
+      decimals: Number(decimals),
+      redirect,
+      timestamp: getCurrentUnixTimestamp(),
+      adapter,
+      confidence: Number(confidence),
+    });
+  } else if (timestamp == 0) {
     writes.push(
       ...[
         {
           SK: getCurrentUnixTimestamp(),
           PK,
           price,
-          redirect,
           adapter,
           confidence: Number(confidence),
         },
@@ -158,7 +196,10 @@ async function getTokenAndRedirectDataFromAPI(
     const pk = e[0];
     let data = e[1];
     data.chain = pk.substring(0, pk.indexOf(":"));
-    data.address = pk.substring(pk.indexOf(":") + 1);
+    const address = pk.substring(pk.indexOf(":") + 1);
+    data.address = chainsThatShouldNotBeLowerCased.includes(data.chain)
+      ? address
+      : address.toLowerCase();
     return data;
   });
 }
@@ -178,10 +219,10 @@ async function getTokenAndRedirectDataDB(
     // timestamped origin entries
     let timedDbEntries: any[] = await Promise.all(
       tokens.slice(lower, upper).map((t: string) => {
-        return getTVLOfRecordClosestToTimestamp(
+        return getRecordClosestToTimestamp(
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+            : `asset#${chain}:${lowercase(t, chain)}`,
           timestamp,
           hoursRange * 60 * 60,
         );
@@ -195,7 +236,7 @@ async function getTokenAndRedirectDataDB(
         PK:
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+            : `asset#${chain}:${lowercase(t, chain)}`,
         SK: 0,
       })),
     );
@@ -216,9 +257,9 @@ async function getTokenAndRedirectDataDB(
     let timedRedirects: any[] = await Promise.all(
       redirects.map((r: DbQuery) => {
         if (r.PK == undefined) return;
-        return getTVLOfRecordClosestToTimestamp(
+        return getRecordClosestToTimestamp(
           r.PK,
-          r.SK,
+          timestamp,
           hoursRange * 60 * 60,
         );
       }),
@@ -241,7 +282,7 @@ async function getTokenAndRedirectDataDB(
           dbEntry.symbol = latestDbEntry?.symbol;
         }
         let redirect = timedRedirects.find((e: any) => {
-          if (e != null) return e.PK == ld.redirect;
+          if (e != null) return e.PK == ld.redirect && e.PK != null;
         });
 
         if (dbEntry == null && redirect == null)
@@ -265,7 +306,10 @@ export async function filterWritesWithLowConfidence(
   allWrites = allWrites.filter((w: Write) => w != undefined);
   const allReads = (
     await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
-  ).filter((w: Write) => (w.timestamp ?? 0) > recentTime);
+  ).filter(
+    (w: any) =>
+      (w.timestamp ?? 0) > recentTime || (w.created ?? 0 > recentTime),
+  );
 
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
@@ -341,8 +385,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-          ? r.redirect[0].confidence
-          : undefined;
+            ? r.redirect[0].confidence
+            : undefined;
 
       return {
         chain:
@@ -368,35 +412,41 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
   return coinData;
 }
 export async function batchWriteWithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   failOnError: boolean,
-): Promise<void> {
-  const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
-  await batchWrite(filteredItems, failOnError);
-}
-export async function batchWrite2WithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-) {
-  const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
-
-  await batchWrite2(
-    await translateItems(filteredItems),
-    undefined,
-    undefined,
-    "DB 390",
-  );
+): Promise<{ writeCount: number } | undefined> {
+  try {
+    const { previousItems, redirectChanges } = await readPreviousValues(items);
+    const filteredItems: any[] =
+      await checkMovement(items, previousItems);
+    const writeItems = [...filteredItems, ...redirectChanges]
+    const ddbWriteResult = await batchWrite(writeItems, failOnError);
+    await produceKafkaTopics(writeItems as any[]);
+    return ddbWriteResult;
+  } catch (e) {
+    const adapter = items.find((i) => i.adapter != null)?.adapter;
+    console.log(`batchWriteWithAlerts failed with: ${e}`);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `batchWriteWithAlerts ${adapter} failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK!,
+        true,
+      );
+    else
+      await sendMessage(
+        "batchWriteWithAlerts error but missing urgent webhook",
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
+  }
 }
 async function readPreviousValues(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   latencyHours: number = 6,
-): Promise<DbEntry[]> {
+): Promise<{ previousItems: DbEntry[]; redirectChanges: any[] }> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
-    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
+    (t: any, i: number) => {
       if (i % 2) return;
       queries.push({
         PK: t.PK,
@@ -406,16 +456,48 @@ async function readPreviousValues(
   );
   const results = await batchGet(queries);
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
-  return results.filter(
+  const previousItems = results.filter(
     (r: any) => r.timestamp > recentTime || r.confidence > 1,
   );
+
+  const redirectChanges = findRedirectChanges(items, results);
+  return { previousItems, redirectChanges };
+}
+function findRedirectChanges(items: any[], results: any[]): any[] {
+  const newRedirects: { [key: string]: any } = {};
+  const oldRedirects: { [key: string]: any } = {};
+  items.map((i: any) => {
+    if (!i.redirect) return;
+    newRedirects[i.PK] = i;
+  });
+  results.map((i: any) => {
+    if (!i.redirect) return;
+    oldRedirects[i.PK] = i;
+  });
+
+  const redirectChanges: any[] = [];
+  Object.keys(newRedirects).map((n: string) => {
+    const old = oldRedirects[n];
+    if (!old) return;
+    const { redirect, timestamp, PK, confidence } = newRedirects[n];
+    if (old.redirect == redirect) return;
+    redirectChanges.push({
+      SK: timestamp,
+      PK,
+      adapter: old.adapter,
+      confidence,
+      redirect: old.redirect,
+    });
+  });
+
+  return redirectChanges;
 }
 async function checkMovement(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   previousItems: DbEntry[],
   margin: number = 0.5,
-): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+): Promise<any[]> {
+  const filteredItems: any[] =
     [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
@@ -431,9 +513,8 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
-          previousItem.price
-        } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
+          } to $${d.price}\n`;
         return;
       }
     }
@@ -454,7 +535,7 @@ export async function getDbMetadata(
       PK:
         chain == "coingecko"
           ? `coingecko#${a.toLowerCase()}`
-          : `asset#${chain}:${chain == "solana" ? a : a.toLowerCase()}`,
+          : `asset#${chain}:${lowercase(a, chain)}`,
       SK: 0,
     })),
   );

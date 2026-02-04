@@ -1,6 +1,6 @@
 require("dotenv").config();
-import { addressList } from "../../../dimension-adapters/users/list";
-import { getAccountsDBConnection } from "../../getDBConnection";
+import { addressList } from "../../dimension_migration/users/list";
+import { getAccountsDBConnection } from "../../utils/shared/getDBConnection";
 import { DAY } from "../../utils/date";
 import { storeAllNewUsers } from "./queries/newUsers";
 

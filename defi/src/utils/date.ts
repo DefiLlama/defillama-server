@@ -2,6 +2,7 @@ export const secondsBetweenCalls = 60 * 60;
 export const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 export const secondsInDay = 60 * 60 * 24;
 export const secondsInWeek = secondsInDay * 7;
+export const secondsInMonth = secondsInDay * 30;
 export const secondsInHour = 60 * 60;
 export const HOUR = 3600;
 export const DAY = HOUR * 24;
@@ -70,6 +71,13 @@ export const getTimestampAtStartOfMonth = (timestamp: number) => {
   return firstDay.valueOf() / 1000;
 };
 
+// return start quarter timestamp
+export const getTimestampAtStartOfQuarter = (timestamp: number) => {
+	const date = new Date(timestamp * 1000)
+  const firstMonth = Math.floor(date.getUTCMonth() / 3) * 3
+	return Math.trunc(Date.UTC(date.getUTCFullYear(), firstMonth, 1) / 1000)
+}
+
 export const getTimestampAtStartOfNextMonth = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
   const firstDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1);
@@ -84,21 +92,29 @@ export function getDay(timestamp: number | undefined): string {
   return `${dt.getUTCDate()}-${dt.getUTCMonth()}-${dt.getUTCFullYear()}`;
 }
 
+const _getClosestDayStartTimestampMap: { [number: string]: number } = {};
+
 export function getClosestDayStartTimestamp(timestamp: number) {
-  const dt = new Date(timestamp * 1000);
-  dt.setUTCHours(0, 0, 0, 0);
-  const prevDayTimestamp = toUNIXTimestamp(dt.getTime());
-  dt.setUTCHours(24);
-  const nextDayTimestamp = toUNIXTimestamp(dt.getTime());
-  if (
-    Math.abs(prevDayTimestamp - timestamp) <
-    Math.abs(nextDayTimestamp - timestamp)
-  ) {
-    return prevDayTimestamp;
-  } else {
-    return nextDayTimestamp;
+  if (!_getClosestDayStartTimestampMap[timestamp]) _getClosestDayStartTimestampMap[timestamp] = _getClosestDayStartTimestamp(timestamp);
+  return _getClosestDayStartTimestampMap[timestamp];
+
+  function _getClosestDayStartTimestamp(timestamp: number) {
+    const dt = new Date(timestamp * 1000);
+    dt.setUTCHours(0, 0, 0, 0);
+    const prevDayTimestamp = toUNIXTimestamp(dt.getTime());
+    dt.setUTCHours(24);
+    const nextDayTimestamp = toUNIXTimestamp(dt.getTime());
+    if (
+      Math.abs(prevDayTimestamp - timestamp) <
+      Math.abs(nextDayTimestamp - timestamp)
+    ) {
+      return prevDayTimestamp;
+    } else {
+      return nextDayTimestamp;
+    }
   }
 }
+
 
 function pad(s: number) {
   return s < 10 ? "0" + s : s;

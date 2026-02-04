@@ -1,7 +1,6 @@
 import getTokenPrices from "./mean-finance";
 
 export function meanFinance(timestamp: number = 0) {
-  console.log("starting Mean Finance");
   return Promise.all([
     getTokenPrices("optimism", timestamp),
     getTokenPrices("polygon", timestamp),
@@ -10,5 +9,8 @@ export function meanFinance(timestamp: number = 0) {
     getTokenPrices("bsc", timestamp),
     getTokenPrices("xdai", timestamp),
     getTokenPrices("moonbeam", timestamp),
+    getTokenPrices("rsk", timestamp),
+    getTokenPrices("avax", timestamp),
+    getTokenPrices("base", timestamp),
   ]);
 }

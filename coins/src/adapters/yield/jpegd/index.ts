@@ -2,7 +2,9 @@ const abi = require("./abi.json");
 import { addToDBWritesList } from "../../utils/database";
 import { CoinData, DbTokenInfos, Write } from "../../utils/dbInterfaces";
 import { MultiCallResults, Result } from "../../utils/sdkInterfaces";
-import { multiCall } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import getBlock from "../../utils/block";
 import { getTokenInfo } from "../../utils/erc20";
 import { getTokenAndRedirectData } from "../../utils/database";
@@ -76,6 +78,5 @@ async function main(timestamp: number) {
 }
 
 export function jpegd(timestamp: number = 0) {
-  console.log("starting jpegd");
   return main(timestamp);
 }

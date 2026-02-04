@@ -1,7 +1,6 @@
 import getTokenPrices from "./stargate";
 
 export function stargate(timestamp: number = 0) {
-  console.log("starting stargate");
   return Promise.all([
     getTokenPrices("ethereum", timestamp),
     getTokenPrices("bsc", timestamp),
@@ -11,6 +10,7 @@ export function stargate(timestamp: number = 0) {
     getTokenPrices("optimism", timestamp),
     getTokenPrices("base", timestamp),
     getTokenPrices("fantom", timestamp),
-    getTokenPrices("kava", timestamp)
+    getTokenPrices("kava", timestamp),
+    getTokenPrices("lightlink", timestamp)
   ]);
 }

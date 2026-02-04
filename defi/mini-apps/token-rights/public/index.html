@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Rights Submission | DefiLlama</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --success: #3fb950;
+            --error: #f85149;
+            --warning: #d29922;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .form-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        label .required {
+            color: var(--error);
+            margin-left: 2px;
+        }
+
+        label .hint {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        /* Multi-select dropdown */
+        .multi-select-wrapper {
+            position: relative;
+        }
+
+        .multi-select-trigger {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 46px;
+        }
+
+        .multi-select-trigger:hover {
+            border-color: var(--accent);
+        }
+
+        .multi-select-trigger.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        .multi-select-trigger .placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .multi-select-trigger .selected-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .multi-select-trigger .selected-tag {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .multi-select-trigger .arrow {
+            margin-left: 10px;
+            transition: transform 0.2s;
+        }
+
+        .multi-select-trigger.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .multi-select-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 4px;
+            z-index: 100;
+            display: none;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .multi-select-dropdown.show {
+            display: block;
+        }
+
+        .multi-select-option {
+            padding: 10px 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.15s;
+        }
+
+        .multi-select-option:hover {
+            background: var(--bg-secondary);
+        }
+
+        .multi-select-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--accent);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-item.checked {
+            border-color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .inline-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .triple-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .triple-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .inline-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .resource-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .resource-item .form-group {
+            margin-bottom: 15px;
+        }
+
+        .resource-item .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .add-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .add-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .remove-btn {
+            background: transparent;
+            border: none;
+            color: var(--error);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 5px;
+            margin-left: auto;
+            display: block;
+        }
+
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.success {
+            background: rgba(63, 185, 80, 0.15);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .alert.error {
+            background: rgba(248, 81, 73, 0.15);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Token Rights Submission</h1>
+            <p>Submit governance and token economics information for your protocol</p>
+        </header>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="tokenRightsForm">
+            
+            <!-- Section 1: Protocol Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📚</span> Protocol Information</h2>
+
+                    <div class="form-group">
+                        <label>Protocol Name <span class="required">*</span></label>
+                        <input type="text" name="protocolName" required placeholder="Protocol Name">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" name="contactEmail" placeholder="team@protocol.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Telegram/Discord</label>
+                            <input type="text" name="contactTelegram" placeholder="@username">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Overview -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📋</span> Overview</h2>
+
+                    <div class="form-group">
+                        <label>Token(s)
+                            <span class="hint">List all tokens associated with your protocol</span>
+                        </label>
+                        <input type="text" name="tokens" placeholder="e.g., TOKEN, veTOKEN, stTOKEN">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Token Type
+                            <span class="hint">Select all that apply</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="tokenType" value="Governance"> Governance
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="tokenType" value="Utility"> Utility
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="tokenType" value="Network"> Network
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="tokenType" value="Community"> Community
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brief Description</label>
+                        <textarea name="briefDescription" placeholder="Provide a 1-2 sentence description of your protocol and what your token does."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Utility
+                            <span class="hint">Select all that apply</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Staking"> Staking
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Liquidity Incentives"> Liquidity Incentives
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Fee Discounts"> Fee Discounts
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Protocol Access"> Protocol Access
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Gas Token"> Gas Token
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="utility" value="Other"> Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primary Revenue Source</label>
+                        <input type="text" name="primaryRevenueSource" placeholder="e.g., Trading fees, Lending interest, Tips">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Governance Rights -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏛️</span> Governance Rights</h2>
+
+                    <div class="triple-fields" style="margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label>Governance Decisions
+                                <span class="hint">Which token symbol grants governance voting power?</span>
+                            </label>
+                            <input type="text" name="governanceDecisions" placeholder="e.g., TOKEN or None">
+                        </div>
+                        <div class="form-group">
+                            <label>Treasury Decisions
+                                <span class="hint">Which token symbol grants voting power over treasury?</span>
+                            </label>
+                            <input type="text" name="treasuryDecisions" placeholder="e.g., veTOKEN or None">
+                        </div>
+                        <div class="form-group">
+                            <label>Revenue Decisions
+                                <span class="hint">Which token symbol grants voting power over revenue distribution?</span>
+                            </label>
+                            <input type="text" name="revenueDecisions" placeholder="e.g., veTOKEN or None">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Governance Details
+                            <span class="hint">Describe voting mechanics, proposal thresholds, etc.</span>
+                        </label>
+                        <textarea name="governanceDetails" placeholder="e.g., Voting scoped to protocol upgrades. Proposal creation requires 1M tokens"></textarea>
+                    </div>
+
+                    <div class="inline-fields" style="margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label>Fee Switch Status</label>
+                            <select name="feeSwitchStatus">
+                                <option value="">Select...</option>
+                                <option value="ON">On</option>
+                                <option value="OFF">Off</option>
+                                <option value="PENDING">Pending</option>
+                                <option value="UNKNOWN">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <!-- Spacer for alignment -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fee Switch Details</label>
+                        <textarea name="feeSwitchDetails" placeholder="e.g., 50% of fees go to buybacks"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Governance Links</label>
+                        <div id="governanceLinks">
+                            <div class="resource-item">
+                                <div class="inline-fields">
+                                    <div class="form-group">
+                                        <label>Label</label>
+                                        <input type="text" name="govLink_label_0" placeholder="e.g., Governance Docs">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>URL</label>
+                                        <input type="text" name="govLink_url_0" placeholder="https://...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addGovernanceLink()">+ Add Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Economic Rights -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">💰</span> Economic Rights</h2>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Buybacks</label>
+                            <select name="buybacks">
+                                <option value="">Select...</option>
+                                <option value="ACTIVE">Active</option>
+                                <option value="INACTIVE">Inactive</option>
+                                <option value="NONE">None</option>
+                                <option value="UNKNOWN">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dividends</label>
+                            <select name="dividends">
+                                <option value="">Select...</option>
+                                <option value="ACTIVE">Active</option>
+                                <option value="INACTIVE">Inactive</option>
+                                <option value="NONE">None</option>
+                                <option value="UNKNOWN">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Burns</label>
+                        <select name="burns">
+                            <option value="">Select...</option>
+                            <option value="ACTIVE">Active</option>
+                            <option value="INACTIVE">Inactive</option>
+                            <option value="NONE">None</option>
+                            <option value="UNKNOWN">Unknown</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primary Value Accrual
+                            <span class="hint">Describe how value flows to token holders</span>
+                        </label>
+                        <textarea name="primaryValueAccrual" placeholder="e.g., Buybacks - 50% of revenue goes to token buybacks"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Ownership Rights -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📊</span> Ownership Rights</h2>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Fundraising Type</label>
+                            <select name="fundraising">
+                                <option value="">Select...</option>
+                                <option value="EQUITY">Equity</option>
+                                <option value="TOKEN">Token</option>
+                                <option value="BOTH">Both</option>
+                                <option value="NONE">None</option>
+                                <option value="UNKNOWN">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Equity Revenue Capture</label>
+                            <select name="equityRevenueCapture">
+                                <option value="">Select...</option>
+                                <option value="ACTIVE">Active</option>
+                                <option value="INACTIVE">Inactive</option>
+                                <option value="PARTIAL">Partial</option>
+                                <option value="UNKNOWN">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Raise Details</label>
+                            <input type="text" name="raiseDetails" placeholder="e.g., Series A - $10M (2023)">
+                        </div>
+                        <div class="form-group">
+                            <label>Raise Details URL</label>
+                            <input type="text" name="raiseDetailsUrl" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Associated Entities
+                            <span class="hint">Select all that apply</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="DAO"> DAO
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="Labs (DevCo)"> Labs (DevCo)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="Labs (Equity)"> Labs (Equity)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="Foundation"> Foundation
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="Equity"> Equity
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="entities" value="Other"> Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>IP & Brand
+                                <span class="hint">Which entity owns the protocol's IP and brand?</span>
+                            </label>
+                            <div class="multi-select-wrapper" data-name="ipBrand">
+                                <div class="multi-select-trigger" onclick="toggleMultiSelect(this)">
+                                    <span class="placeholder">Select...</span>
+                                    <span class="selected-items"></span>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <div class="multi-select-dropdown">
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="DAO"> DAO
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Labs (DevCo)"> Labs (DevCo)
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Labs (Equity)"> Labs (Equity)
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Foundation"> Foundation
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Equity"> Equity
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Other"> Other
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="ipBrand" value="Unknown"> Unknown
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Domain
+                                <span class="hint">Which entity owns the protocol's primary domain?</span>
+                            </label>
+                            <div class="multi-select-wrapper" data-name="domain">
+                                <div class="multi-select-trigger" onclick="toggleMultiSelect(this)">
+                                    <span class="placeholder">Select...</span>
+                                    <span class="selected-items"></span>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <div class="multi-select-dropdown">
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="DAO"> DAO
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Labs (DevCo)"> Labs (DevCo)
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Labs (Equity)"> Labs (Equity)
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Foundation"> Foundation
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Equity"> Equity
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Other"> Other
+                                    </label>
+                                    <label class="multi-select-option">
+                                        <input type="checkbox" name="domain" value="Unknown"> Unknown
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Equity Statement
+                            <span class="hint">Describe the relationship between your equity entity and token holders regarding revenue and value capture.</span>
+                        </label>
+                        <textarea name="equityStatement" placeholder="e.g., Revenue does not flow to equity holders"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Resources -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📎</span> Resources</h2>
+
+                    <div id="resources">
+                        <div class="resource-item">
+                            <button type="button" class="remove-btn" onclick="removeResource(this)">Remove</button>
+                            <div class="form-group">
+                                <label>Label</label>
+                                <input type="text" name="resource_label_0" placeholder="e.g., Foundation Multisig">
+                            </div>
+                            <div class="inline-fields">
+                                <div class="form-group">
+                                    <label>Address (if applicable)</label>
+                                    <input type="text" name="resource_address_0" placeholder="0x... or Solana address">
+                                </div>
+                                <div class="form-group">
+                                    <label>URL (if applicable)</label>
+                                    <input type="text" name="resource_url_0" placeholder="https://...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Note</label>
+                                <input type="text" name="resource_note_0" placeholder="Additional context">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addResource()">+ Add Resource</button>
+                </div>
+            </div>
+
+            <!-- Section 7: Additional Notes -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📝</span> Additional Notes</h2>
+                    <div class="form-group">
+                        <label>Any additional information</label>
+                        <textarea name="additionalNotes" placeholder="Anything else we should know..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Token Rights Information</button>
+        </form>
+
+        <footer>
+            <p>Questions? Reach out on <a href="https://discord.defillama.com" target="_blank">Discord</a> or <a href="https://twitter.com/defillama" target="_blank">Twitter</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let governanceLinkCount = 1;
+        let resourceCount = 1;
+
+        // Multi-select dropdown functionality
+        function toggleMultiSelect(trigger) {
+            const wrapper = trigger.parentElement;
+            const dropdown = wrapper.querySelector('.multi-select-dropdown');
+            const isOpen = dropdown.classList.contains('show');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.multi-select-dropdown.show').forEach(d => {
+                d.classList.remove('show');
+                d.previousElementSibling.classList.remove('active');
+            });
+            
+            if (!isOpen) {
+                dropdown.classList.add('show');
+                trigger.classList.add('active');
+            }
+        }
+
+        // Update multi-select display when checkboxes change
+        document.querySelectorAll('.multi-select-option input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const wrapper = this.closest('.multi-select-wrapper');
+                const trigger = wrapper.querySelector('.multi-select-trigger');
+                const placeholder = trigger.querySelector('.placeholder');
+                const selectedItems = trigger.querySelector('.selected-items');
+                const checkboxes = wrapper.querySelectorAll('input[type="checkbox"]:checked');
+                
+                selectedItems.innerHTML = '';
+                
+                if (checkboxes.length === 0) {
+                    placeholder.style.display = 'inline';
+                } else {
+                    placeholder.style.display = 'none';
+                    checkboxes.forEach(cb => {
+                        const tag = document.createElement('span');
+                        tag.className = 'selected-tag';
+                        tag.textContent = cb.value;
+                        selectedItems.appendChild(tag);
+                    });
+                }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.multi-select-wrapper')) {
+                document.querySelectorAll('.multi-select-dropdown.show').forEach(d => {
+                    d.classList.remove('show');
+                    d.previousElementSibling.classList.remove('active');
+                });
+            }
+        });
+
+        function addGovernanceLink() {
+            const container = document.getElementById('governanceLinks');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">Remove</button>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" name="govLink_label_${governanceLinkCount}" placeholder="e.g., Governance Docs">
+                        </div>
+                        <div class="form-group">
+                            <label>URL</label>
+                            <input type="text" name="govLink_url_${governanceLinkCount}" placeholder="https://...">
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+            governanceLinkCount++;
+        }
+
+        function addResource() {
+            const container = document.getElementById('resources');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeResource(this)">Remove</button>
+                    <div class="form-group">
+                        <label>Label</label>
+                        <input type="text" name="resource_label_${resourceCount}" placeholder="e.g., Foundation Multisig">
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Address (if applicable)</label>
+                            <input type="text" name="resource_address_${resourceCount}" placeholder="0x... or Solana address">
+                        </div>
+                        <div class="form-group">
+                            <label>URL (if applicable)</label>
+                            <input type="text" name="resource_url_${resourceCount}" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Note</label>
+                        <input type="text" name="resource_note_${resourceCount}" placeholder="Additional context">
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+            resourceCount++;
+        }
+
+        function removeResource(btn) {
+            const items = document.querySelectorAll('#resources .resource-item');
+            if (items.length > 1) {
+                btn.parentElement.remove();
+            }
+        }
+
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type} show`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alert.className = 'alert';
+                }, 5000);
+            }
+        }
+
+        // Checkbox styling
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.addEventListener('change', () => {
+                item.classList.toggle('checked', checkbox.checked);
+            });
+        });
+
+        document.getElementById('tokenRightsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const formData = new FormData(form);
+            const data = {};
+
+            // Protocol Information
+            data.protocolName = formData.get('protocolName');
+            data.contactEmail = formData.get('contactEmail');
+            data.contactTelegram = formData.get('contactTelegram');
+
+            // Overview
+            data.overview = {
+                tokens: formData.get('tokens'),
+                tokenType: formData.getAll('tokenType'),
+                briefDescription: formData.get('briefDescription'),
+                utility: formData.getAll('utility'),
+                primaryRevenueSource: formData.get('primaryRevenueSource')
+            };
+
+            // Governance Rights
+            data.governanceRights = {
+                governanceDecisions: formData.get('governanceDecisions'),
+                treasuryDecisions: formData.get('treasuryDecisions'),
+                revenueDecisions: formData.get('revenueDecisions'),
+                governanceDetails: formData.get('governanceDetails'),
+                feeSwitchStatus: formData.get('feeSwitchStatus'),
+                feeSwitchDetails: formData.get('feeSwitchDetails'),
+                links: []
+            };
+
+            // Governance links
+            for (let i = 0; i < governanceLinkCount; i++) {
+                const label = formData.get(`govLink_label_${i}`);
+                const url = formData.get(`govLink_url_${i}`);
+                if (label && url) {
+                    data.governanceRights.links.push({ label, url });
+                }
+            }
+
+            // Economic Rights
+            data.economicRights = {
+                buybacks: formData.get('buybacks'),
+                dividends: formData.get('dividends'),
+                burns: formData.get('burns'),
+                primaryValueAccrual: formData.get('primaryValueAccrual')
+            };
+
+            // Ownership Rights
+            data.ownershipRights = {
+                fundraising: formData.get('fundraising'),
+                equityRevenueCapture: formData.get('equityRevenueCapture'),
+                raiseDetails: formData.get('raiseDetails'),
+                raiseDetailsUrl: formData.get('raiseDetailsUrl'),
+                associatedEntities: formData.getAll('entities'),
+                ipBrand: formData.getAll('ipBrand'),
+                domain: formData.getAll('domain'),
+                equityStatement: formData.get('equityStatement')
+            };
+
+            // Resources
+            data.resources = [];
+            for (let i = 0; i < resourceCount; i++) {
+                const label = formData.get(`resource_label_${i}`);
+                if (label) {
+                    const resource = { label };
+                    const address = formData.get(`resource_address_${i}`);
+                    const url = formData.get(`resource_url_${i}`);
+                    const note = formData.get(`resource_note_${i}`);
+                    if (address) resource.address = address;
+                    if (url) resource.url = url;
+                    if (note) resource.note = note;
+                    data.resources.push(resource);
+                }
+            }
+
+            // Additional Notes
+            data.additionalNotes = formData.get('additionalNotes');
+
+            try {
+                await fetch('https://script.google.com/macros/s/AKfycbwdgvqWGFo6CnHM5eSQQMJTWf3d5ZZCAdOHnQJgKcolqO9MGjgNtfShtFpgnVbggDnu/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // With no-cors mode, we can't read the response, so assume success
+                showAlert('Thank you! Your submission has been received. Our team will review it shortly.', 'success');
+                form.reset();
+                // Reset multi-select displays
+                document.querySelectorAll('.multi-select-wrapper').forEach(wrapper => {
+                    wrapper.querySelector('.placeholder').style.display = 'inline';
+                    wrapper.querySelector('.selected-items').innerHTML = '';
+                });
+                // Reset checkbox styling
+                document.querySelectorAll('.checkbox-item.checked').forEach(item => {
+                    item.classList.remove('checked');
+                });
+            } catch (error) {
+                console.error('Submit error:', error);
+                showAlert('Network error. Please check your connection and try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Token Rights Information';
+            }
+        });
+    </script>
+</body>
+</html>

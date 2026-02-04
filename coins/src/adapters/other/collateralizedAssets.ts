@@ -1,9 +1,15 @@
-import { multiCall } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import getBlock from "../utils/block";
 import { MultiCallResults } from "../utils/sdkInterfaces";
 import { getTokenInfo } from "../utils/erc20";
 import { Write, CoinData, DbTokenInfos } from "../utils/dbInterfaces";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import {
+  addToDBWritesList,
+  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
+} from "../utils/database";
 
 type Asset = {
   token: string;
@@ -18,7 +24,7 @@ export default async function getTokenPrices(
 ): Promise<Write[]> {
   let collateralBalances: MultiCallResults;
   let tokenInfos: DbTokenInfos;
-  let underlyingPrices: CoinData[];
+  let underlyingPrices: { [key: string]: CoinData };
   const writes: Write[] = [];
 
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -39,7 +45,7 @@ export default async function getTokenPrices(
       block,
       { withSupply: true },
     ),
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       assets.map((a: Asset) => a.collateral),
       chain,
       timestamp,
@@ -47,9 +53,7 @@ export default async function getTokenPrices(
   ]);
 
   assets.map((a: Asset, i: number) => {
-    const underlying: CoinData | undefined = underlyingPrices.find(
-      (c: CoinData) => c.address == a.collateral.toLowerCase(),
-    );
+    const underlying: CoinData | undefined = underlyingPrices[a.collateral.toLowerCase()]
     if (!underlying) return;
 
     const price =

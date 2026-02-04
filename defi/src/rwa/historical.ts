@@ -1,6 +1,7 @@
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
-import { keyMap, protocolIdMap } from "./constants";
+import { protocolIdMap } from "./constants";
+import { keyMap } from "./metadataConstants";
 import { sendMessage } from "../utils/discord";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 

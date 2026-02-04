@@ -1,7 +1,19 @@
 import { getAllAirtableRecords } from "../utils/airtable";
-import { keyMap } from "./constants";
+import { keyMap } from "./metadataConstants";
 
 const listColumns: string[] = ["Chain", "Contracts", "Category", "Asset Class", "KYC", "Notes", "Pool ID"];
+
+function deepTrimStrings(value: any): any {
+  if (value == null) return value;
+  if (typeof value === "string") return value.trim();
+  if (Array.isArray(value)) return value.map(deepTrimStrings);
+  if (typeof value === "object") {
+    const out: any = Array.isArray(value) ? [] : {};
+    for (const [k, v] of Object.entries(value)) out[k] = deepTrimStrings(v);
+    return out;
+  }
+  return value;
+}
 
 // Get CSV data from Airtable
 export async function getCsvData(): Promise<Object[]> {
@@ -9,20 +21,52 @@ export async function getCsvData(): Promise<Object[]> {
 
   const parsedCsvData: Object[] = rawCsvData.map(({ fields: row }) => {
     Object.keys(row).forEach((key: string) => {
-      if (row[key] == "-" || row[key] == "") {
+      const raw = deepTrimStrings(row[key]);
+      row[key] = raw;
+
+      if (raw === "-" || raw === "") {
         row[key] = null;
-      } else if (key == keyMap.id && row[key] == '1') {
-        row[key] = '1'
-      } else if (row[key] == "✓" || row[key] == true || row[key].toLowerCase() == 'true') {
+        return;
+      }
+
+      if (key === keyMap.id && raw === "1") {
+        row[key] = "1";
+        return;
+      }
+
+      // Booleans (Airtable may return ✓/x or strings)
+      if (raw === true) return;
+      if (raw === false) return;
+      if (raw === "✓") {
         row[key] = true;
-      } else if (row[key] == "x" || row[key] == false || row[key].toLowerCase() == 'false') {
+        return;
+      }
+      if (raw === "x") {
         row[key] = false;
-      } else if (row[key].indexOf(";") !== -1) {
-        row[key] = row[key].split(";").map((item: string) => item.trim());
-      } else if (listColumns.includes(key)) {
-        row[key] = [row[key]];
-      } else {
-        row[key] = row[key].trim();
+        return;
+      }
+      if (typeof raw === "string") {
+        const lower = raw.toLowerCase();
+        if (lower === "true") {
+          row[key] = true;
+          return;
+        }
+        if (lower === "false") {
+          row[key] = false;
+          return;
+        }
+
+        // Semicolon list
+        if (raw.includes(";")) {
+          row[key] = raw.split(";").map((item: string) => item.trim()).filter(Boolean);
+          return;
+        }
+      }
+
+      // Force list columns into arrays (avoid nested arrays)
+      if (listColumns.includes(key)) {
+        row[key] = Array.isArray(raw) ? raw : [raw];
+        return;
       }
     });
     return row;

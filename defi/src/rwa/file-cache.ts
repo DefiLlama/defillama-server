@@ -140,7 +140,7 @@ export async function setPGSyncMetadata(metadata: SyncMetadata): Promise<void> {
 
 // Historical data per ID
 export async function storeHistoricalDataForId(id: string, data: any[]): Promise<void> {
-    await storeRouteData(`charts/${id}.json`, { data });
+    await storeRouteData(`charts/${id}.json`, data);
 }
 
 export async function readHistoricalDataForId(id: string): Promise<any[] | null> {

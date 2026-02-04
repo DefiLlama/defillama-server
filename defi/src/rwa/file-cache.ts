@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Bump this version to reset the cache
-const CACHE_VERSION = 'v1.6';
+const CACHE_VERSION = 'v1.7';
 
 const CACHE_DIR = process.env.RWA_CACHE_DIR || path.join(__dirname, '.rwa-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);
@@ -140,7 +140,7 @@ export async function setPGSyncMetadata(metadata: SyncMetadata): Promise<void> {
 
 // Historical data per ID
 export async function storeHistoricalDataForId(id: string, data: any[]): Promise<void> {
-    await storeRouteData(`charts/${id}.json`, { data });
+    await storeRouteData(`charts/${id}.json`, data);
 }
 
 export async function readHistoricalDataForId(id: string): Promise<any[] | null> {

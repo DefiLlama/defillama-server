@@ -3666,7 +3666,7 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["AMM"],
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "futarchy-amm/index.js",
     twitter: "MetaDAOProject",
     audit_links: ["https://github.com/metaDAOproject/programs/tree/develop/audits"],
     treasury: "futarchy-amm",

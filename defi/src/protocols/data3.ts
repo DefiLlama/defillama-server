@@ -5396,7 +5396,7 @@ const data3_0: Protocol[] = [
     name: "GroveCoin",
     address: "bsc:0xf33893de6eb6ae9a67442e066ae9abd228f5290c",
     symbol: "GRV",
-    url: "https://app.groveswap.io/swap",
+    url: "https://grovecoin.io/",
     description:
       "Grove Token is a decentralized and secure green Token built for the future of our planet. Our mission is to Create wealth, for all Grovers, by harnessing the opportunities of a secure, decentralized digital currency in an environmentally conscious way. By compensating nature for years of abuse, Grove will create a healthier, wealthier future for all.",
     chain: "Binance",
@@ -61076,7 +61076,7 @@ const data3_3: Protocol[] = [
     name: "HashAI",
     address: "0x292fcdd1b104de5a00250febba9bc6a5092a0076",
     symbol: "HASHAI",
-    url: "https://hashai.fi",
+    url: "https://hashai.co.uk/",
     description: "AI-Optimised Crypto Mining. High-Performance Nodes - Available for Rent.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashai.jpg`,

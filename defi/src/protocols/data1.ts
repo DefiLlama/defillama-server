@@ -6973,6 +6973,7 @@ const data: Protocol[] = [
       "https://hacken.io/wp-content/uploads/2021/06/Bunicorndefi_11062021SC_Audit_Report_2.pdf",
     ],
     github: ["bunicorndefi"],
+    deadUrl: true,
   },
   {
     id: "423",
@@ -10874,6 +10875,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://valuedefi.io/audit"],
     forkedFromIds: ["2611"],
     parentProtocol: "parent#value-finance",
+    deadUrl: true,
   },
   {
     id: "601",

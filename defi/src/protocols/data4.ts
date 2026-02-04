@@ -25574,7 +25574,7 @@ const data4: Protocol[] = [
     name: "SOLID",
     address: null,
     symbol: "-",
-    url: "https://solid.online",
+    url: "https://app.solidcapa.com/dashboard",
     description:
       "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
     chain: "Terra2",

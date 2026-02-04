@@ -463,7 +463,7 @@ const data: Protocol[] = [
     name: "KEEP Network",
     address: "0x85eee30c52b0b379b046fb0f85f4f3dc3009afec",
     symbol: "KEEP",
-    url: "https://tbtc.network/",
+    url: "https://app.threshold.network/",
     description: "Deposit and redeem BTC in DeFi without intermediaries.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/keep-network.png`,
@@ -2123,7 +2123,7 @@ const data: Protocol[] = [
     name: "Siren",
     address: "0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
     symbol: "SI",
-    url: "https://sirenmarkets.com/",
+    url: "https://siren.xyz/",
     description: "Decentralized option markets on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/siren.png`,
@@ -2275,6 +2275,7 @@ const data: Protocol[] = [
     github: ["autofarmnetwork"],
     audit_links: ["https://www.certik.org/projects/autofarm"],
     forkedFromIds: ["113"],
+    deadUrl: true,
   },
   {
     id: "210",
@@ -20008,6 +20009,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "btcst.js",
     twitter: "BTCST2020",
     listedAt: 1639793638,
+    deadUrl: true,
   },
   {
     id: "1037",
@@ -22877,6 +22879,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //https://twitter.com/PsyOptions/status/1584729631269482496?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
     listedAt: 1641069495,
     github: ["mithraiclabs"],
+    deadUrl: true,
   },
   {
     id: "1173",

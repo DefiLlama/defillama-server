@@ -8848,6 +8848,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MetaDAOProject",
     github: ["metaDAOproject"],
   },
+  {
+    id: "parent#xpanse",
+    name: "Xpanse",
+    url: "https://xpanse.trade/",
+    description: "Xpanse is an AI-powered, multi-layered liquidity perpetual exchange designed to empower traders for their various trading strategies.",
+    logo: `${baseIconsUrl}/xpanse.jpg`,
+    gecko_id: "horizon-protocol",
+    cmcId: "9237",
+    chains: [],
+    twitter: "XpanseTrade",
+  },
 ];
 
 export default parentProtocols;

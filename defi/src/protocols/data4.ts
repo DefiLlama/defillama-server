@@ -25597,7 +25597,7 @@ const data4: Protocol[] = [
     name: "Mansory",
     address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
     symbol: "MNSRY",
-    url: "https://mansorytoken.io/",
+    url: "https://www.mansory.com/",
     description:
       "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
     chain: "Binance",
@@ -29143,7 +29143,7 @@ const data4: Protocol[] = [
       derivatives: "spooky-perps"
     }
   },
-  /*{ // need to fix this if Horizon Protocol is rebranded to Xpanse
+  { 
     id: "6845",
     name: "Xpanse Perps",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
@@ -29159,10 +29159,11 @@ const data4: Protocol[] = [
     chains: ["Base", "Mode", "Arbitrum"],
     module: "dummy.js",
     twitter: "XpanseTrade",
+    parentProtocol: "parent#xpanse",
     dimensions: {
       derivatives: "xpanse-perps"
     }
-  },*/
+  },
   {
     id: "6846",
     name: "LODE",

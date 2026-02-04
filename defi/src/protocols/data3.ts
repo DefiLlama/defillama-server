@@ -9594,7 +9594,7 @@ const data3_0: Protocol[] = [
     name: "ImmutableX",
     address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
     symbol: "IMX",
-    url: "https://www.immutable.com/",
+    url: "https://imx.community/",
     description:
       "Immutable is the leading platform for building web3 games on Ethereum. Powering the next generation of web3 games",
     chain: "Ethereum",

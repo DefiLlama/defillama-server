@@ -8300,7 +8300,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     github: ["Strata-Money"],
   },
   {

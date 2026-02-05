@@ -2369,7 +2369,8 @@ const data5: Protocol[] = [
     name: "Yuzu Money",
     address: null,
     symbol: "-",
-    url: "https://yuzu.money/",
+    url: "https://app.yuzu.money?ref=ZRSJY3HG",
+    referralUrl: "https://app.yuzu.money?ref=ZRSJY3HG",
     description:
       "An overcollateralized stablecoin backed by curated on-chain strategies designed to offer some of the highest yields in DeFi. Users can stake yzUSD to receive the yield-bearing syzUSD. Depositors in yzPP accept first-loss risk on the underlying strategies in exchange for a higher target yield, which is partially funded by a Reserve Fund.",
     chain: "Plasma",

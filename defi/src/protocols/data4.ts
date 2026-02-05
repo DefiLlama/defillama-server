@@ -18941,7 +18941,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
     dimensions: {
       aggregators: "rango",
-      "bridge-aggregators": "rango"
+      "bridge-aggregators": {
+        adapter: "rango",
+        genuineSpikes: ["1770163200"]
+      }
     }
   },
   {

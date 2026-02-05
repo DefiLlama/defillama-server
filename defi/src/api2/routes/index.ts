@@ -13,12 +13,12 @@ import { getR2 } from "../../utils/r2";
 import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
 import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { cachedCraftProtocolV2, craftProtocolV2 } from "../utils/craftProtocolV2";
+import { craftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
+import { readRouteData } from "../cache/file-cache";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -151,6 +151,13 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/treasury/protocol/:name", ew(getTvlProtocolRoutes('treasury', 'chart-total')))
   router.get("/v2/chart/treasury/protocol/:name/chain-breakdown", ew(getTvlProtocolRoutes('treasury', 'chart-chain-breakdown')))
   router.get("/v2/chart/treasury/protocol/:name/token-breakdown", ew(getTvlProtocolRoutes('treasury', 'chart-token-breakdown')))
+  
+  // v2 - oracle
+  
+  router.get("/v2/metrics/oracle", ew(getOraclesRoutes('overview')))
+  router.get("/v2/chart/oracle", ew(getOraclesRoutes('chart-total')))
+  router.get("/v2/chart/oracle/protocol-breakdown", ew(getOraclesRoutes('chart-protocol-breakdown')))
+  router.get("/v2/chart/oracle/chain-breakdown", ew(getOraclesRoutes('chart-chain-breakdown')))
 
   // v2 - dimensions
 
@@ -499,7 +506,7 @@ const AllowedProtocolKeys = ['tvl', 'staking', 'borrowed', 'pool2', 'vesting', '
 const AllowedTreasuryKeys = ['tvl', 'OwnTokens', 'all'];
 const AllowedCurrencies = ['token', 'raw', 'usd'];
 
-function decodeRequestParams(req: HyperExpress.Request): TvlProtocolRequestParams {
+function decodeTvlRequestParams(req: HyperExpress.Request): TvlProtocolRequestParams {
   return {
     name: decodeURIComponent(req.path_parameters.name),
     key: req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl',
@@ -509,7 +516,7 @@ function decodeRequestParams(req: HyperExpress.Request): TvlProtocolRequestParam
 
 export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: 'overview' | 'chart-total' | 'chart-chain-breakdown' | 'chart-token-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    let { name, key, currency } = decodeRequestParams(req);
+    let { name, key, currency } = decodeTvlRequestParams(req);
     
     if (dataType === 'protocol') {
       if ((route === 'chart-total' || route === 'chart-chain-breakdown') && !AllowedProtocolKeys.includes(key)) {
@@ -642,6 +649,79 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
     }
     
     return res.json(responseData);
+  }
+}
+
+export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-protocol-breakdown' | 'chart-chain-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const data = await readRouteData('oracles');
+    
+    if (!data)
+      return errorResponse(res, 'Oracles data not found');
+    
+    let responseData: any = null;
+    
+    if (route === 'overview') {
+      responseData = {
+        oracles: data.oracles,
+        chainsByOracle: data.chainsByOracle,
+        oraclesTVS: data.oraclesTVS,
+      };
+    } else {
+      const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
+      if (!AllowedProtocolKeys.includes(keyFilter)) {
+        return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+      }
+      
+      const itemByTimestamps: Record<number, any> = {}
+      
+      if (route === 'chart-total' || route === 'chart-protocol-breakdown') {
+        for (const [timestamp, oracles] of Object.entries(data.chart)) {
+          const ts = Number(timestamp);
+          const os = oracles as any;
+          
+          itemByTimestamps[ts] = itemByTimestamps[ts] || route === 'chart-total' ? 0 : {};
+          
+          for (const [oracle, keys] of Object.entries(os)) {
+            for (const [itemKey, itemValue] of Object.entries(keys as any)) {
+              if (keyFilter === itemKey || keyFilter === 'all') {
+                if (route === 'chart-total') {
+                  itemByTimestamps[ts] += Number(itemValue);
+                } else {
+                  itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
+                  itemByTimestamps[ts][oracle] += Number(itemValue);
+                }
+              }
+            }
+          }
+        }
+      } else if (route === 'chart-chain-breakdown') {
+        for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
+          const ts = Number(timestamp);
+          const os = oracles as any;
+          
+          itemByTimestamps[ts] = itemByTimestamps[ts] || {};
+          
+          for (const chains of Object.values(os)) {
+            for (const [itemKey, itemValue] of Object.entries(chains as any)) {
+              let [chain, key] = itemKey.split('-');
+              if (key === undefined) key = 'tvl';
+              if (keyFilter === key || keyFilter === 'all') {
+                itemByTimestamps[ts][chain] = itemByTimestamps[ts][chain] || 0;
+                itemByTimestamps[ts][chain] += Number(itemValue);
+              }
+            }
+          }
+        }
+      }
+      
+      responseData = [];
+      for (const [timestamp, items] of Object.entries(itemByTimestamps)) {
+        responseData.push([Number(timestamp), route === 'chart-total' ? Number(items) : items]);
+      }
+    }
+    
+    return successResponse(res, responseData)
   }
 }
 

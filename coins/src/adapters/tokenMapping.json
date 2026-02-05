@@ -1802,6 +1802,26 @@
       "to": "coingecko#gate-wrapped-btc",
       "decimals": 8,
       "symbol": "gtBTC"
+    },
+    "0x0de7336c70a8dad4bdea1b2bca8efb3c955e989d": {
+      "decimals": "18",
+      "symbol": "SolvBTC.STRK",
+      "to": "coingecko#solv-btc"
+    },
+    "0xcf6fd5ba51cc279240629370ac7009ea268c22f7": {
+      "decimals": "18",
+      "symbol": "SolvBTC.XLM",
+      "to": "coingecko#solv-btc"
+    },
+    "0x52a912a78d9261a2aaebc4834f84de9f77a2d03a": {
+      "decimals": "18",
+      "symbol": "SolvBTC.RWA",
+      "to": "coingecko#solv-btc"
+    },
+    "0x8260c40beddcb8f63c56b6c73476ef5e20f156a5": {
+      "decimals": "18",
+      "symbol": "SolvBTC.HYBRID",
+      "to": "coingecko#solv-btc"
     }
   },
   "stacks": {

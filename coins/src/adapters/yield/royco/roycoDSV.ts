@@ -9,6 +9,8 @@ const ROYCO_DAWN_SENIOR_VAULT_ADDRESSES: { [chain: string]: string } = {
 
 export default async function getDSVSharePrice(chain: string, timestamp: number): Promise<Write[]> {
     const vault = ROYCO_DAWN_SENIOR_VAULT_ADDRESSES[chain];
+    if (!vault) return [];
+
     const api = await getApi(chain, timestamp, true);
 
     const assetsPerShare = await api.call({
@@ -18,6 +20,7 @@ export default async function getDSVSharePrice(chain: string, timestamp: number)
     });
 
     const price = assetsPerShare / 1e6;
+    if (!price || isNaN(price)) return [];
 
     const writes: Write[] = [];
     addToDBWritesList(

@@ -38207,6 +38207,7 @@ const data3_2: Protocol[] = [
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
     url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description:
       "Liquid is an automated DeFi strategy vault that provides ether.fi users a simple access point to use their eETH in the DeFi ecosystem",
     chain: "Ethereum",
@@ -49272,6 +49273,7 @@ const data3_3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
+    referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description:
       "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
     chain: "Ethereum",
@@ -57743,6 +57745,7 @@ const data3_3: Protocol[] = [
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX",
     url: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
+    referralUrl: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
     description:
       "Astros - A DEX Aggregator and perpetual market on SUI, powered by NAVI Protocol",
     chain: "Sui",

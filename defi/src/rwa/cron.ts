@@ -19,7 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import { normalizeRwaMetadataForApiInPlace, rwaSlug, toFiniteNumberOrZero } from './utils';
+import { rwaSlug, toFiniteNumberOrZero } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
@@ -90,9 +90,6 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<any[]> {
     if (!idCurrent) return;
 
     if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
-
-    // Ensure consistent types in API output (format once)
-    normalizeRwaMetadataForApiInPlace(m.data);
 
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;

@@ -251,7 +251,7 @@ function setRoutes(router: HyperExpress.Router): void {
             const idParam = String(id).toLowerCase();
 
             const rwa = currentData.find((item: any) => {
-                const itemId = item?.id ?? item?.['*rwaId'];
+                const itemId = item?.id;
                 return typeof itemId !== 'undefined' && String(itemId).toLowerCase() === idParam;
             });
 
@@ -351,7 +351,7 @@ async function main() {
     console.log('Cache Version:', getCacheVersion());
 
     // CORS middleware
-    webserver.use((req, res, next) => {
+    webserver.use((_req, res, next) => {
         res.append('Access-Control-Allow-Origin', '*');
         res.append('Access-Control-Allow-Methods', 'GET,OPTIONS');
         res.append('Access-Control-Allow-Headers', 'Content-Type');

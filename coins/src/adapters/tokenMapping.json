@@ -6254,10 +6254,15 @@
       "decimals": 5,
       "symbol": "EUTBL"
     },
-    "0x062a1600278af88706fab962821051939841a494674319ca19230a784e57bfff": {
+    "0x046e4e83fe6a22f243f73d0f2e4cdbc4e9ebd868050e9f7e9cbd90f1436d8b44": {
       "decimals": "8",
       "symbol": "FBTC",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x03975bf0ccb0ab5f0a0cc3012234406812824d9d3b890c402ed59609b5f52726": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda-2"
     }
   },
   "milkomeda": {

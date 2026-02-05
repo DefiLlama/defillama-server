@@ -18941,7 +18941,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
     dimensions: {
       aggregators: "rango",
-      "bridge-aggregators": "rango"
+      "bridge-aggregators": {
+        adapter: "rango",
+        genuineSpikes: ["1770163200"]
+      }
     }
   },
   {
@@ -20768,6 +20771,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.app.ethena.fi/join/3y20d",
+    referralUrl: "https://www.app.ethena.fi/join/3y20d",
     description: "tsUSDe is a special version of sUSDe deployed on TON",
     chain: "TON",
     logo: `${baseIconsUrl}/ethena-tsusde.jpg`,

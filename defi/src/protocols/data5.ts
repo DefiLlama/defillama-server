@@ -4712,6 +4712,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.nado.xyz?join=sP6or8A",
+    referralUrl: "https://app.nado.xyz?join=sP6or8A",
     description:
       "Nado is a vertically-integrated decentralized exchange for spot and perpetual futures, featuring an off-chain sequencer and on-chain settlement on Ink. The platform delivers a high-performance CLOB experience where trades execute in milliseconds, with deep liquidity powered in part by the NLP (Nado Liquidity Provider) vault.",
     chain: "Ink",
@@ -7433,6 +7434,7 @@ const data5: Protocol[] = [
     address: "0x624e2e7fdc8903165f64891672267ab0fcb98831",
     symbol: "SOSO",
     url: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
+    referralUrl: "https://ssi.sosovalue.com/share/MAG7.ssi/0TC050BY?tid=ssi-invite-share-0TC050BY",
     description: "SoDEX is a high-performance order book decentralized exchange (DEX) built on ValueChain.",
     chain: "Base",
     logo: `${baseIconsUrl}/sodex-bridge.jpg`,

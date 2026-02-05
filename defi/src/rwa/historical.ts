@@ -1,6 +1,7 @@
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
-import { keyMap, protocolIdMap } from "./constants";
+import { protocolIdMap } from "./constants";
+import { RWA_KEY_MAP } from "./metadataConstants";
 import { sendMessage } from "../utils/discord";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
@@ -90,7 +91,7 @@ export async function storeMetadata(res: { data: { [id: string]: { [key: string]
   if (Object.keys(data).length == 0) return;
 
   const inserts = Object.keys(data).map((id: any) => {
-    const { [keyMap.activeMcap]: activeMcap, [keyMap.onChain]: onChain, [keyMap.defiActive]: defiActive, ...rest } = data[id];
+    const { [RWA_KEY_MAP.activeMcap]: activeMcap, [RWA_KEY_MAP.onChain]: onChain, [RWA_KEY_MAP.defiActive]: defiActive, ...rest } = data[id];
     return { id, data: JSON.stringify(rest) };
   });
   await initPG();

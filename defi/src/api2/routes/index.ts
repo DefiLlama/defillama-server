@@ -680,14 +680,14 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
           const ts = Number(timestamp);
           const os = oracles as any;
           
-          itemByTimestamps[ts] = itemByTimestamps[ts] || route === 'chart-total' ? 0 : {};
-          
           for (const [oracle, keys] of Object.entries(os)) {
             for (const [itemKey, itemValue] of Object.entries(keys as any)) {
               if (keyFilter === itemKey || keyFilter === 'all') {
                 if (route === 'chart-total') {
+                  itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
                   itemByTimestamps[ts] += Number(itemValue);
                 } else {
+                  itemByTimestamps[ts] = itemByTimestamps[ts] || {};
                   itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
                   itemByTimestamps[ts][oracle] += Number(itemValue);
                 }
@@ -700,13 +700,12 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
           const ts = Number(timestamp);
           const os = oracles as any;
           
-          itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-          
           for (const chains of Object.values(os)) {
             for (const [itemKey, itemValue] of Object.entries(chains as any)) {
               let [chain, key] = itemKey.split('-');
               if (key === undefined) key = 'tvl';
               if (keyFilter === key || keyFilter === 'all') {
+                itemByTimestamps[ts] = itemByTimestamps[ts] || {};
                 itemByTimestamps[ts][chain] = itemByTimestamps[ts][chain] || 0;
                 itemByTimestamps[ts][chain] += Number(itemValue);
               }

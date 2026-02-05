@@ -5104,8 +5104,14 @@ const data4: Protocol[] = [
       },
       {
         name: "Api3",
-        type: "Fallback",
-        proof: ["https://app.takaralend.com/"],
+        type: "Secondary",
+        proof: [
+          "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
+          "https://app.takaralend.com/market/WSEI",
+          "https://app.takaralend.com/market/spSEI",
+          "https://app.takaralend.com/market/USDY",
+        ],
+        startDate: "2025-11-12",
       },
       {
         name: "Pyth",

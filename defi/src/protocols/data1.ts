@@ -2026,6 +2026,7 @@ const data: Protocol[] = [
     audit_links: ["https://docs.ooki.com/developers/audits"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     governanceID: ["snapshot:ooki.eth", "eip155:1:0x3133b4F4dcffc083724435784fEFAD510FA659c6"],
+    deadUrl: true,
   },
   /*
   {
@@ -2435,7 +2436,7 @@ const data: Protocol[] = [
   },
   {
     id: "217",
-    name: "Connext",
+    name: "Connext", // rebranded to Everclear
     address: "0xfe67a4450907459c3e1fff623aa927dd4e28c67a",
     symbol: "NEXT",
     url: "https://connext.network/",
@@ -2448,7 +2449,7 @@ const data: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum", "Polygon", "xDai"],
     module: "connext/index.js",
-    twitter: "ConnextNetwork",
+    twitter: "EverclearOrg",
     audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view?pli=1"],
   },
   {
@@ -7293,6 +7294,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Helmet_insure",
     audit_links: ["https://www.certik.org/projects/helmet"],
     github: ["app-helmet-insure"],
+    deadUrl: true,
   },
   {
     id: "438",
@@ -8362,6 +8364,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     audit_links: ["https://lending-docs.unfederalreserve.com/docs/security/#security-audits"],
     github: ["UnFederalReserve"],
+    deadUrl: true,
   },
   {
     id: "487",
@@ -9726,7 +9729,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "DFS Network",
     address: "dfs:DFS",
     symbol: "DFS",
-    url: "https://dfs.land",
+    url: "https://dfs.fun/",
     description:
       "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
     chain: "EOS",
@@ -10049,7 +10052,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Timewarp",
     address: "0x485d17a6f1b8780392d53d64751824253011a260",
     symbol: "TIME",
-    url: "https://timewarp.finance",
+    url: "https://chrono.tech/",
     description: "TimeWarp is a DeFi staking program for TIME, the native token of the Chrono.tech ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/timewarp.png`,
@@ -12899,7 +12902,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "JustStables",
     address: "tron:TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT",
     symbol: "USDJ",
-    url: "https://juststable.tronscan.org/#/login",
+    url: "https://just.network/",
     description: "JustStable is a decentralized finance system of USDJ stablecoin for everyone, anywhere, anytime.",
     chain: "Tron",
     logo: `${baseIconsUrl}/juststables.png`,
@@ -23703,7 +23706,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "CEX",
     chains: ["Ethereum"],
     module: "voyager/index.js",
-    twitter: "investvoyager",
+    twitter: "VGXFoundation",
     listedAt: 1641535544,
   },
   {
@@ -24249,6 +24252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "ultra/index.js",
     twitter: "UltraProtocol",
     listedAt: 1641934055,
+    deadUrl: true,
   },
   {
     id: "1236",
@@ -26413,7 +26417,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Api3",
     address: "0x0b38210ea11411557c13457d4da7dc6ea731b88a",
     symbol: "API3",
-    url: "https://api3.eth.link/#/",
+    url: "https://api3.org/",
     description:
       "Oracles that pay you: Api3 first-party oracles deliver secure, transparent data while also turning data feed updates into a source of revenue for your dApp.",
     chain: "Ethereum",
@@ -27045,7 +27049,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Velhalla",
     address: "bsc:0x8d9fb713587174ee97e91866050c383b5cee6209",
     symbol: "SCAR",
-    url: "https://velhalla.io",
+    url: "https://scarquest.com/",
     description: "Velhalla - The Velas MetaVerse  Viking mythology meets a hyper-futuristic universe.",
     chain: "Velas",
     logo: `${baseIconsUrl}/velhalla.jpg`,
@@ -27055,7 +27059,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Gaming",
     chains: ["Velas"],
     module: "velhalla.js",
-    twitter: "velhallaproject",
+    twitter: "ScarQuest",
     language: "Solidity",
     listedAt: 1644230549,
   },

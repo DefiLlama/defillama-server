@@ -1104,7 +1104,7 @@ const data4: Protocol[] = [
     name: "Marlin Protocol",
     address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
     symbol: "POND",
-    url: "https://marlinprotocol.fi/relay/operator",
+    url: "https://www.marlin.org/",
     description: "TEE coprocessors for decentralized AI",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/marlin-protocol.png`,
@@ -6612,7 +6612,7 @@ const data4: Protocol[] = [
     name: "Shield Protocol",
     address: "bsc:0xd9e90df21f4229249e8841580cde7048bf935710",
     symbol: "SHIELD",
-    url: "https://www.shieldprotocol.net",
+    url: "https://www.shieldprotocol.io/",
     description:
       "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
     chain: "Binance",

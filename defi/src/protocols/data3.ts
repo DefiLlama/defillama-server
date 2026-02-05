@@ -49271,7 +49271,7 @@ const data3_3: Protocol[] = [
     name: "Reya Bridge",
     address: null,
     symbol: "-",
-    url: "https://reya.network",
+    url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description:
       "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
     chain: "Ethereum",

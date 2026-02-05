@@ -58102,7 +58102,8 @@ const data3_3: Protocol[] = [
     name: "Reservoir Protocol",
     address: null,
     symbol: "-",
-    url: "https://www.reservoir.xyz",
+    url: "https://app.reservoir.xyz/leaderboard/?referral_code=4bf702ff7d",
+    referralUrl: "https://app.reservoir.xyz/leaderboard/?referral_code=4bf702ff7d",
     description:
       "Reservoir is a pioneering stablecoin protocol designed to be the most trusted and scalable solution in decentralized finance. Offering a suite of products, including the rUSD stablecoin, srUSD liquid yielding asset, and trUSD term-based yielding asset, Reservoir is at the forefront of DeFi innovation. With a focus on real-world asset integration and consistent yield generation, Reservoir is poised to play a crucial role in onboarding the next trillion dollars of assets into the decentralized economy.",
     chain: "Ethereum",

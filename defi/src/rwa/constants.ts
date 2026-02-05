@@ -15,7 +15,8 @@ export const keyMap: { [value: string]: string } = {
     excludedWallets: "*Holders to be Removed for Active Marketcap",
     activeMcap: "activeMcap",
     price: "price",
-    holdersToRemove: "*HoldersToBeRemovedForActiveMarketcap"
+    holdersToRemove: "*HoldersToBeRemovedForActiveMarketcap",
+    activeMcapChecked: "activeMcapData",
 };
 
 export const unsupportedChains = ["provenance", "stellar"];

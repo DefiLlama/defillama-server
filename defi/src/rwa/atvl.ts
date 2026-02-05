@@ -236,7 +236,7 @@ function getOnChainTvlAndActiveMcaps(
     const rwaId = data[keyMap.id];
     if (!finalData[rwaId]) return;
     finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-    if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
+    if (!finalData[rwaId][keyMap.activeMcap] && finalData[rwaId][keyMap.activeMcapChecked]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
   Object.keys(assetPrices).map((pk: string) => {
@@ -250,8 +250,10 @@ function getOnChainTvlAndActiveMcaps(
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
-      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      if (finalData[rwaId][keyMap.activeMcapChecked]) {
+        if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
+        findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      }
       return;
     }
 
@@ -278,6 +280,8 @@ function getOnChainTvlAndActiveMcaps(
 
       const aum = (price * supply) / 10 ** decimals;
       finalData[rwaId][keyMap.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+      if (!finalData[rwaId][keyMap.activeMcapChecked]) return;
+
       finalData[rwaId][keyMap.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
@@ -360,7 +364,7 @@ export default async function main(ts: number = 0) {
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
       else {
         const v = normalizeDashToNull(row[key]);
-        cleanRow[camelKey] = v == "" ? null : v;
+        cleanRow[camelKey] = v == "" && v !== false ? null : v;
       }
     });
 

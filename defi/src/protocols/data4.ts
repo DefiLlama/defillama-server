@@ -15092,7 +15092,7 @@ const data4: Protocol[] = [
     name: "Revert Lend",
     address: null,
     symbol: "-",
-    url: "https://revert.finance/#/lending",
+    url: "https://revert.finance/#/ref/w6vno3",
     description: `Revert Lend is a decentralized lending platform for Uniswap v3 Liquidity Providers. It lets users use their Uniswap v3 positions as collateral to borrow ERC-20 tokens.`,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/revert-lend.jpg`,

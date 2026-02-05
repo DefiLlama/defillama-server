@@ -12331,7 +12331,7 @@ const data2: Protocol[] = [
     name: "Revert Compoundor",
     address: null,
     symbol: "-",
-    url: "https://revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
     description:
       "Revert Compoundor is a protocol to automate compounding of liquidity provider fees for positions in Uniswap v3.",
     chain: "Ethereum",
@@ -20334,7 +20334,7 @@ const data2: Protocol[] = [
     name: "Revert V3 Staker",
     address: null,
     symbol: "-",
-    url: "https://v3staker.revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
     description:
       "Liquidity mining for Uniswap v3 that incentivizes sticky liquidity by distributing rewards that vest over time.",
     chain: "Polygon",

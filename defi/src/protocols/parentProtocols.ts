@@ -635,7 +635,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#revert",
     name: "Revert",
-    url: "https://revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
+    referralUrl: "https://revert.finance/#/ref/w6vno3",
     description: "Actionable analytics for AMM liquidity providers.",
     logo: `${baseIconsUrl}/revert.png`,
     gecko_id: null,

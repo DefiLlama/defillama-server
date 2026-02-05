@@ -771,6 +771,13 @@ const data5: Protocol[] = [
     ],
     twitter: "opinionlabsxyz",
     listedAt: 1761694223,
+    warningBanners: [
+      {
+        message: "Suspicious trading activity, volumes may be inflated. ",
+        level: "alert",
+        until: "2026-04-10",
+      },
+    ],
     dimensions: {
       dexs: "opinion",
       fees: "opinion",

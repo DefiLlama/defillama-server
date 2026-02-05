@@ -1104,7 +1104,7 @@ const data4: Protocol[] = [
     name: "Marlin Protocol",
     address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
     symbol: "POND",
-    url: "https://marlinprotocol.fi/relay/operator",
+    url: "https://www.marlin.org/",
     description: "TEE coprocessors for decentralized AI",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/marlin-protocol.png`,
@@ -6612,7 +6612,7 @@ const data4: Protocol[] = [
     name: "Shield Protocol",
     address: "bsc:0xd9e90df21f4229249e8841580cde7048bf935710",
     symbol: "SHIELD",
-    url: "https://www.shieldprotocol.net",
+    url: "https://www.shieldprotocol.io/",
     description:
       "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
     chain: "Binance",
@@ -18400,6 +18400,7 @@ const data4: Protocol[] = [
       dexs: "eulerswap"
     }
   },
+/*
   {
     id: "6359",
     name: "SSV Network",
@@ -18420,6 +18421,7 @@ const data4: Protocol[] = [
       fees: "ssv-network"
     }
   },
+*/
   {
     id: "6360",
     name: "TR ENERGY",
@@ -21005,7 +21007,7 @@ const data4: Protocol[] = [
     category: "Farm",
     chains: ["Ethereum"],
     module: "strata/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     audit_links: ["https://strata-money.gitbook.io/docs/security/audits"],
     listedAt: 1753367619,
   },
@@ -21534,7 +21536,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Eventum"],
     module: "evedex/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
     treasury: "evedex.js",
     listedAt: 1753803222,
     dimensions: {
@@ -21557,7 +21559,7 @@ const data4: Protocol[] = [
     category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "eventum/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
   },
   {
     id: "6499",
@@ -25572,7 +25574,7 @@ const data4: Protocol[] = [
     name: "SOLID",
     address: null,
     symbol: "-",
-    url: "https://solid.online",
+    url: "https://app.solidcapa.com/dashboard",
     description:
       "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
     chain: "Terra2",
@@ -25595,7 +25597,7 @@ const data4: Protocol[] = [
     name: "Mansory",
     address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
     symbol: "MNSRY",
-    url: "https://mansorytoken.io/",
+    url: "https://www.mansory.com/",
     description:
       "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
     chain: "Binance",
@@ -28334,7 +28336,7 @@ const data4: Protocol[] = [
     name: "Sentora",
     address: null,
     symbol: "-",
-    url: "https://app.euler.finance/governor/sentora?network=ethereum",
+    url: "https://sentora.com/",
     description: "Sentora provides the institutional-grade foundation for powering the next generation of DeFi solutions. Sentora's vault platform unlocks access to DeFi through sophisticated strategies, robust risk management, and enterprise-grade security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sentora.jpg`,
@@ -29141,7 +29143,7 @@ const data4: Protocol[] = [
       derivatives: "spooky-perps"
     }
   },
-  /*{ // need to fix this if Horizon Protocol is rebranded to Xpanse
+  { 
     id: "6845",
     name: "Xpanse Perps",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
@@ -29157,10 +29159,11 @@ const data4: Protocol[] = [
     chains: ["Base", "Mode", "Arbitrum"],
     module: "dummy.js",
     twitter: "XpanseTrade",
+    parentProtocol: "parent#xpanse",
     dimensions: {
       derivatives: "xpanse-perps"
     }
-  },*/
+  },
   {
     id: "6846",
     name: "LODE",
@@ -29772,7 +29775,7 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "strata-tranches/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     parentProtocol: "parent#strata",
     audit_links: ["https://docs.strata.money/security/audits"],
     listedAt: 1760577905,

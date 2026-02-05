@@ -460,6 +460,30 @@ export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<an
     return results;
 }
 
+// Fetch unique timestamps
+export async function fetchTimestampsPG(): Promise<number[]> {
+    const results = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT timestamp FROM "${DAILY_RWA_DATA.getTableName()}" ORDER BY timestamp ASC`,
+        { type: QueryTypes.SELECT }
+    ) as { timestamp: number }[];
+    return results.map((r) => r.timestamp);
+}
+
+// Delete all entries with a given timestamp from DAILY_RWA_DATA and HOURLY_RWA_DATA
+export async function deleteTimestampsPG(timestamp: number): Promise<void> {
+    await DAILY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
+
+    await HOURLY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
+}
+
 // Close the database connection
 async function closeConnection(): Promise<void> {
     if (!pgConnection) return;

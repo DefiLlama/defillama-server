@@ -13,6 +13,7 @@ import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
 import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
 import { ALWAYS_STRING_ARRAY_FIELDS, fetchBurnAddresses, formatNumAsNumber, normalizeDashToNull, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
+import { sendMessage } from "../utils/discord";
 
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
@@ -201,6 +202,7 @@ function getActiveTvls(
 
       if (Array.isArray(projectId) ? projectId.includes(amountId) : amountId == projectId) return;
       if (Array.isArray(projectId) ? projectId.includes(`${amountId}-treasury`) : `${amountId}-treasury` == projectId) return;
+      if (Array.isArray(projectId) ? projectId.map((p: string) => `${p}-treasury`).includes(amountId) : amountId == `${projectId}-treasury`) return;
 
       try {
         const projectName = protocolIdMap[amountId];
@@ -292,6 +294,7 @@ function findActiveMcaps(
   assetPrices: { price: number; decimals: number },
   chain: string
 ) {
+  if (!finalData[rwaId][keyMap.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;
   const thisChainExcluded = excludedAmounts[rwaId][chain];
   if (!thisChainExcluded) return;
@@ -302,7 +305,7 @@ function findActiveMcaps(
   );
 }
 // main entry
-async function main(ts: number = 0) {
+export default async function main(ts: number = 0) {
   const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it
@@ -337,6 +340,10 @@ async function main(ts: number = 0) {
 
       // exclude columns for internal use
       else if (key.startsWith(keyMap.excluded)) return;
+      else if (key == "Chain")
+        cleanRow[camelKey] = row[key]
+          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
+          : null;
       // ensure consistent arrays for string-list fields
       else if (ALWAYS_STRING_ARRAY_FIELDS.has(camelKey)) {
         cleanRow[camelKey] = toStringArrayOrNull(row[key]);
@@ -349,13 +356,8 @@ async function main(ts: number = 0) {
       else if (camelKey === "name" || camelKey === "ticker") {
         const v = normalizeDashToNull(row[key]);
         cleanRow[camelKey] = v === "" ? null : v;
-      }
-      else if (key == "Primary Chain") {
+      } else if (key == "Primary Chain")
         cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
-      } else if (key == "Chain")
-        cleanRow[camelKey] = row[key]
-          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
-          : null;
       else {
         const v = normalizeDashToNull(row[key]);
         cleanRow[camelKey] = v == "" ? null : v;
@@ -436,14 +438,17 @@ async function main(ts: number = 0) {
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
   await Promise.all([
-    timestamp == 0 ? storeMetadata(res): Promise.resolve(),
+    timestamp == 0 ? storeMetadata(res) : Promise.resolve(),
     storeHistorical(res),
   ]);
+
+  console.log(`Exitting atvl.ts`)
 
   return finalData;
 }
 
-main().catch((error) => {
+main().catch(async (error) => {
   console.error('Error running the script: ', error);
+  await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
   process.exit(1);
 }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

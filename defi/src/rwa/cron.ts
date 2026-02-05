@@ -504,6 +504,9 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
   for (const item of currentData || []) {
     if (!item || typeof item !== "object") continue;
 
+    const assetType = typeof item.type === "string" ? item.type.trim() : "";
+    if (assetType.toLowerCase() === "wrapper") continue;
+
     assetCount += 1;
 
     const issuer: string | null = typeof item.issuer === "string" && item.issuer.trim() ? item.issuer.trim() : null;

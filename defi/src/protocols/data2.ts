@@ -3102,24 +3102,25 @@ const data2: Protocol[] = [
     //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
-    url: "https://horizonprotocol.com/",
+    url: "https://xpanse.trade/",
     description:
       "Horizon Protocol facilitates the on-chain trading of synthetic assets that represent the real economy. Seeks to provide exposure to real-world assets risk/return profiles via smart contracts on the binance smart chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/horizon-protocol.png`,
     audits: "2",
-    gecko_id: "horizon-protocol",
-    cmcId: "9237",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Chainlink", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     forkedFromIds: ["115"],
     module: "horizon/index.js",
-    twitter: "HorizonProtocol",
+    twitter: "XpanseTrade",
     audit_links: ["https://static.horizonprotocol.com/Horizon-Protocol-Smart-Contract-Audit-Report.pdf"],
     listedAt: 1646762203,
     governanceID: ["snapshot:horizonprotocol.eth"],
     github: ["Horizon-Protocol"],
+    parentProtocol: "parent#xpanse",
   },
   /*
   { //TVL was always $0
@@ -3335,6 +3336,7 @@ const data2: Protocol[] = [
     ],
     dimensions: {
       derivatives: "01-exchange",
+      "open-interest": "01-xyz",
     },
   },
   {
@@ -3388,7 +3390,7 @@ const data2: Protocol[] = [
     name: "StrikeX",
     address: "bsc:0xd6fdde76b8c1c45b33790cc8751d5b88984c44ec",
     symbol: "STRX",
-    url: "https://strikex.com",
+    url: "https://tradestrike.io/",
     description:
       "StrikeX is the native currency of the blockchain powered eco-system developed & deployed by the UK Registered Company StrikeX Technologies Ltd. Their flag ship product, TradeStrike, will utilise the power of tokenisation to offer trading in Stocks, Cryptocurrencies, NFT's & even Real Estate. Fully compliant, fully collateralised trading, 24/7 - 365 days a year. #ForThePeople",
     chain: "Binance",
@@ -5259,6 +5261,7 @@ const data2: Protocol[] = [
     twitter: "AmaterasuFi",
     listedAt: 1649284344,
     github: ["Amaterasu-Finance"],
+    deadUrl: true,
   },
   {
     id: "1621",
@@ -8577,6 +8580,7 @@ const data2: Protocol[] = [
     twitter: "ESG_Financial",
     audit_links: ["https://www.certik.com/projects/esg-financial"],
     listedAt: 1653037836,
+    deadUrl: true,
   },
   {
     id: "1776",
@@ -15629,6 +15633,7 @@ const data2: Protocol[] = [
     category: "RWA Lending",
     chains: ["Ethereum", "Celo"],
     module: "ethichub/index.js",
+    treasury: "ethichub.js",
     twitter: "EthicHub",
     audit_links: [
       "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf",
@@ -18093,7 +18098,7 @@ const data2: Protocol[] = [
     name: "Bepro Network",
     address: "0xcf3c8be2e2c42331da80ef210e9b1b307c03d36a",
     symbol: "BEPRO",
-    url: "https://bepro.network",
+    url: "https://layerx.xyz/",
     description: "Web3 bounty network for open-source development.",
     chain: "Moonbeam",
     logo: `${baseIconsUrl}/bepro-network.png`,
@@ -18103,7 +18108,7 @@ const data2: Protocol[] = [
     category: "Services",
     chains: ["Moonbeam", "Moonriver"],
     module: "bepro/index.js",
-    twitter: "bepronet",
+    twitter: "LayerXlab",
     audit_links: ["https://hacken.io/audits/#bepro"],
     listedAt: 1666273430,
     github: ["bepronetwork"],
@@ -22579,14 +22584,14 @@ const data2: Protocol[] = [
   {
     id: "2406",
     name: "Tegro Finance",
-    address: null,
-    symbol: "-",
-    url: "https://tegro.finance",
+    address: "bsc:0xd9780513292477c4039dfda1cfcd89ff111e9da5",
+    symbol: "TGR",
+    url: "https://tegro.money/",
     description: "TegroFinance - A next evolution DeFi exchange on The Open Network (TON).",
     chain: "TON",
     logo: `${baseIconsUrl}/tegro-finance.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "tegro",
     cmcId: null,
     tags: ["AMM"],
     chains: ["TON"],
@@ -24995,7 +25000,7 @@ const data2: Protocol[] = [
     name: "Ethereum Foundation",
     address: null,
     symbol: "ETH",
-    url: "https://ethereum.foundation",
+    url: "https://ethereum.org/",
     description:
       "The Ethereum Foundation (EF) is a non-profit that supports the Ethereum ecosystem. We are part of a larger community of organizations and individuals that fund protocol development, grow the ecosystem, and advocate for Ethereum.",
     chain: "Ethereum",
@@ -28164,7 +28169,7 @@ const data2: Protocol[] = [
     name: "ApeCoin",
     address: "0x4d224452801aced8b2f0aebe155379bb5d594381",
     symbol: "APE",
-    url: "https://apecoin.com",
+    url: "https://apechain.com/",
     description:
       "ApeCoin is an ERC-20 governance and utility token used to empower a decentralized community building at the forefront of web3.",
     chain: "Ethereum",
@@ -28574,7 +28579,7 @@ const data2: Protocol[] = [
     name: "Arc Swap",
     address: "0xc82e3db60a52cf7529253b4ec688f631aad9e7c2",
     symbol: "ARC",
-    url: "https://www.arc.market",
+    url: "https://arc.ai/",
     description:
       "Build with Arc's Reactor tech. At the forefront of Web3 & AI innovation. Smart contract & dApp development across multiple blockchains including zkEVM. Trade using our multi-market aggregator using SOR technology. Build Anything. Trade Everything. Web3 Development, Solved.",
     chain: "Ethereum",
@@ -28585,7 +28590,7 @@ const data2: Protocol[] = [
     category: "Services",
     chains: ["Ethereum"],
     module: "arc-swap/index.js",
-    twitter: "DeFi_ARC",
+    twitter: "ARCreactorAI",
     listedAt: 1679146737,
   },
   {

@@ -8199,6 +8199,11 @@
     }
   },
   "etlk": {
+    "0x5542f82389b76c23f5848268893234d8a63fd5c8": {
+      "to": "coingecko#midas-mmev",
+      "decimals": 18,
+      "symbol": "mMEV"
+    },
     "0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d": {
       "decimals": "5",
       "symbol": "UKTBL",

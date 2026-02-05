@@ -5578,7 +5578,7 @@ export const chainCoingeckoIds = {
     github: ["PolymeshAssociation"],
   },
   "MegaETH": {
-    geckoId: "megaeth ",
+    geckoId: "megaeth",
     symbol: "MEGA",
     cmcId: null,
     categories: ["EVM", "Rollup"],

@@ -300,10 +300,7 @@ function getAccessModel(asset: {
     return "Non-transferable";
   }
 
-  if (
-    asset.transferable === false &&
-    asset.selfCustody === false
-  ) {
+  if (asset.selfCustody === false) {
     return "Custodial Only";
   }
 

@@ -5,7 +5,7 @@ const listColumns: string[] = ["Chain", "Contracts", "Category", "Asset Class", 
 
 // Get CSV data from Airtable
 export async function getCsvData(): Promise<Object[]> {
-  const rawCsvData = await getAllAirtableRecords("appv73DKfa5DrNPP0/rwa");
+  const rawCsvData = await getAllAirtableRecords("appv73DKfa5DrNPP0/tblnrNUJzEiXFB5gU");
 
   const parsedCsvData: Object[] = rawCsvData.map(({ fields: row }) => {
     Object.keys(row).forEach((key: string) => {

@@ -8300,7 +8300,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     github: ["Strata-Money"],
   },
   {
@@ -8835,6 +8835,29 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "warpexchange",
+  },
+  {
+    id: "parent#metadao",
+    name: "MetaDao",
+    url: "https://metadao.fi",
+    description: "Raise money while putting ownership into the hands of your early users and believers.",
+    logo: `${baseIconsUrl}/metadao.jpg`,
+    gecko_id: "meta-2-2",
+    cmcId: "38146",
+    chains: [],
+    twitter: "MetaDAOProject",
+    github: ["metaDAOproject"],
+  },
+  {
+    id: "parent#xpanse",
+    name: "Xpanse",
+    url: "https://xpanse.trade/",
+    description: "Xpanse is an AI-powered, multi-layered liquidity perpetual exchange designed to empower traders for their various trading strategies.",
+    logo: `${baseIconsUrl}/xpanse.jpg`,
+    gecko_id: "horizon-protocol",
+    cmcId: "9237",
+    chains: [],
+    twitter: "XpanseTrade",
   },
 ];
 

@@ -17792,7 +17792,7 @@ const data4: Protocol[] = [
     category: "Launchpad",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "LaunchOnBags",
+    twitter: "BagsApp",
     dimensions: {
       fees: "launch-on-bags"
     }

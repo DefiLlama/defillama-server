@@ -182,30 +182,30 @@ export function getUniV2Adapter({
     allData.forEach((pair: any, i: number) => {
       const token0 = pair.token0;
       const token1 = pair.token1;
-      const confidence = calculateConfidence(pair.reserveUSD);
-      const price = pair.reserveUSD / pair.totalSupply;
       const symbol = getLPSymbol(token0.symbol, token1.symbol, LP_SYMBOL);
 
-      if (checkFaults()) return;
+      const { price, confidence } = findPrice();
 
       // return true if subgraph data is inflated
-      function checkFaults() {
-        if (!assetsToTestAgainst[chain]) return false;
+      function findPrice() {
+        const confidence = calculateConfidence(pair.reserveUSD);
+        const subgraphPrice = pair.reserveUSD / pair.totalSupply;
+        if (!assetsToTestAgainst[chain]) return { price: subgraphPrice, confidence };
+        
         let knownToken;
         if (assetsToTestAgainst[chain].includes(token0.id)) knownToken = token0;
         else if (assetsToTestAgainst[chain].includes(token1.id)) knownToken = token1;
-        else return false;
+        else return { price: subgraphPrice, confidence };
 
         const knownTokenPrice = underlyingPrices[knownToken.id];
         const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];
-        if (!knownTokenBalance) return false;
+        if (!knownTokenBalance) return { price: subgraphPrice, confidence };
 
         const supply = pair.totalSupply;
         const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
 
         const onChainPrice = aum / supply;
-        const ratio = onChainPrice / price;
-        return (ratio < 0.85) 
+        return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };
       }
 
       if (confidence > 0.8)

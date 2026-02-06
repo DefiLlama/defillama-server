@@ -1655,6 +1655,7 @@ const data: Protocol[] = [
     forkedFromIds: ["2197"],
     governanceID: ["snapshot:varen.eth"],
     github: ["varenfinance"],
+    deadUrl: true,
   },
   /*
   {
@@ -3431,6 +3432,7 @@ const data: Protocol[] = [
     twitter: null,
     audit_links: ["https://qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf"],
     github: ["QIAN-protocol"],
+    deadUrl: true
   },
   {
     id: "264",
@@ -5735,7 +5737,8 @@ const data: Protocol[] = [
     github: ["pinkmoonfinance"],
     dimensions: {
       dexs: "pinkswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "368",
@@ -12563,6 +12566,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "darkmatterdefi",
     forkedFromIds: ["205"],
     listedAt: 1634342862,
+    deadUrl: true
   },
   {
     id: "676",
@@ -13283,6 +13287,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/tomochain/luaswap-core/tree/master/audit"],
     forkedFromIds: ["2197"],
     listedAt: 1635108394,
+    deadUrl: true,
     dimensions: {
       dexs: "luaswap"
     }
@@ -13891,6 +13896,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFromIds: ["2197"],
     listedAt: 1635798336,
+    deadUrl: true,
     github: ["openswapdex"],
   },
   {
@@ -15005,6 +15011,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "otterclam",
     governanceID: ["snapshot:otterclam.eth"],
     listedAt: 1636363218,
+    deadUrl: true,
     github: ["OtterClam"],
   },
   {
@@ -18442,6 +18449,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "VexchangeIO",
     forkedFromIds: ["2197"],
     listedAt: 1638464939,
+    deadUrl: true,
     dimensions: {
       dexs: "vexchange"
     }
@@ -20947,6 +20955,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     audit_links: ["https://github.com/IFWallet/ifpool_staking/blob/main/audits/IFPool%20Security%20Assessment.pdf"],
     listedAt: 1640179280,
+    deadUrl: true,
   },
   {
     id: "1080",

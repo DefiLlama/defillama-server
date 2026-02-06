@@ -1180,6 +1180,7 @@ const data4: Protocol[] = [
     module: "cvex/index.js",
     twitter: "Jetstreamtrade",
     listedAt: 1736469235,
+    deadUrl: true,
     dimensions: {
       fees: "cvex",
       derivatives: "cvex"

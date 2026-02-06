@@ -5347,6 +5347,7 @@ const data3_0: Protocol[] = [
     module: "croswap/index.js",
     twitter: "CroswapOfficial",
     listedAt: 1683539601,
+    deadUrl: true,
     dimensions: {
       dexs: "croswap"
     }
@@ -7428,6 +7429,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["265"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1685390267,
+    deadUrl: true
   },
   {
     id: "3040",
@@ -7758,6 +7760,7 @@ const data3_0: Protocol[] = [
     module: "unlimited-trade/index.js",
     twitter: "unlimited_defi",
     listedAt: 1685645872,
+    deadUrl: true,
     dimensions: {
       fees: "unlimited-network"
     }
@@ -40136,10 +40139,10 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4517",
-    name: "1INTRO",
+    name: "1INTRO", // rebrand to Coinchef
     address: "solana:inTCqHJaLAETUxvRZ2kC45G2sThq9BFWVimfaQw7t6w",
     symbol: "INTRO",
-    url: "https://www.1intro.com",
+    url: "https://app.coinchef.com/trending",
     description:
       "1INTRO redefines the finance ecosystem on Solana with a smart platform that uses AI to improve Liquidity Bootstrapping Pool (LBP), DEX, and token deployment, elevating both the user experience and operational efficiency",
     chain: "Solana",
@@ -40150,7 +40153,7 @@ const data3_2: Protocol[] = [
     tags: ["AMM"],
     chains: ["Solana"],
     module: "1intro/index.js",
-    twitter: "1intro",
+    twitter: "coinchefsol",
     audit_links: [
       "https://files.1intro.com/public/SecurityCodeReview.pdf",
       "https://files.1intro.com/public/SecurityCodeReview1DEX.pdf",

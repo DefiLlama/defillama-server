@@ -6950,6 +6950,7 @@ const data2: Protocol[] = [
     twitter: "pandora_swap",
     audit_links: ["https://paladinsec.co/projects/pandora-swap"],
     listedAt: 1651146705,
+    deadUrl: true,
     dimensions: {
       fees: "pandoraswap",
       dexs: "pandoraswap"
@@ -13304,7 +13305,7 @@ const data2: Protocol[] = [
     name: "Sphynx",
     address: "bsc:0x6e281f90c6d1b5e5a01fb6f14c428aff69c04c3f",
     symbol: "SPHYNX",
-    url: "https://linktr.ee/sphynxlabs",
+    url: "https://thesphynx.co/",
     description: "An AIO(All-In-One) solution for trading, farming, staking and holding",
     chain: "Binance",
     logo: `${baseIconsUrl}/sphynx.png`,

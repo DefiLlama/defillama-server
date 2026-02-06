@@ -2941,7 +2941,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 252,
     twitter: "fraxfinance",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     dimensions: {
       fees: "fraxtal",
     },

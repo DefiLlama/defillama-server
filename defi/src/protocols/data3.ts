@@ -13220,7 +13220,7 @@ const data3_0: Protocol[] = [
     name: "Velodrome V2",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/", 
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v2.png`,
@@ -16473,7 +16473,7 @@ const data3_1: Protocol[] = [
     name: "Aerodrome V1",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/", 
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -19377,7 +19377,7 @@ const data3_1: Protocol[] = [
     name: "DigiFT",
     address: null,
     symbol: "-",
-    url: "https://www.digift.sg",
+    url: "https://www.digift.io/",
     description:
       "DigiFT is the first regulated exchange for on-chain real-world assets, approved as a Recognised Market Operator with a Capital Markets Services license by the Monetary Authority of Singapore. DigiFT allows asset owners to issue blockchain-based security tokens and investors can trade with continuous liquidity via an AMM.",
     chain: "Ethereum",
@@ -21223,7 +21223,7 @@ const data3_1: Protocol[] = [
     previousNames: ["Maker RWA"],
     address: "0x56072c95faa701256059aa122697b133aded9279",
     symbol: "SKY",
-    url: "https://makerdao.com/en/",
+    url: "https://sky.money/",
     description:
       "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",
     chain: "Ethereum",
@@ -34277,7 +34277,7 @@ const data3_2: Protocol[] = [
     name: "Velodrome V3",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/",
     description:
       "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
     chain: "Optimism",
@@ -38893,7 +38893,7 @@ const data3_2: Protocol[] = [
     previousNames: ["Karak"],
     address: null,
     symbol: "-",
-    url: "https://karak.network",
+    url: "https://opengdp.network/",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opengdp-shared-security.jpg`,
@@ -40293,7 +40293,7 @@ const data3_2: Protocol[] = [
     name: "Aerodrome Slipstream",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/",
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -61255,7 +61255,7 @@ const data3_3: Protocol[] = [
     name: "Balancer V3",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer V3 is a decentralized AMM protocol featuring a flexible vault architecture and customizable pools with dynamic swap fees and hooks for tailored liquidity management.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer-v3.jpg`,

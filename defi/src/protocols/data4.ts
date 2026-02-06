@@ -3090,7 +3090,7 @@ const data4: Protocol[] = [
     name: "Fraxtal",
     address: null,
     symbol: "FXTL",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     description:
       "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
     chain: "Ethereum",
@@ -14501,7 +14501,7 @@ const data4: Protocol[] = [
     name: "Block Analitica",
     address: null,
     symbol: "-",
-    url: "https://blockanalitica.substack.com",
+    url: "https://blockanalitica.com/",
     description: `The risk team behind the DAI (USDS) stablecoin`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/block-analitica.jpg`,
@@ -18815,7 +18815,7 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.com/",
+    url: "https://xstocks.fi/",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -21969,7 +21969,7 @@ const data4: Protocol[] = [
     name: "WisdomTree",
     address: null,
     symbol: "-",
-    url: "https://www.wisdomtreeconnect.com/",
+    url: "https://www.wisdomtreeprime.com/",
     description:
       "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
     chain: "Ethereum",

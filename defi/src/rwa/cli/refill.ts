@@ -1,7 +1,7 @@
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
-import atvl from './atvl';
-import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
-import { fetchTimestampsPG, initPG } from "./db";
+import atvl from '../atvl';
+import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
+import { fetchTimestampsPG, initPG } from "../db";
 
 const start = 1735690215; // 1 Jan 2025
 const end = getCurrentUnixTimestamp()

@@ -2,8 +2,8 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from 
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 
 class META_RWA_DATA extends Model { }
-class DAILY_RWA_DATA extends Model { }
-class HOURLY_RWA_DATA extends Model { }
+export class DAILY_RWA_DATA extends Model { }
+export class HOURLY_RWA_DATA extends Model { }
 class BACKUP_RWA_DATA extends Model { }
 
 let pgConnection: any;

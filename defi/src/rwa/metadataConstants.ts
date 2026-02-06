@@ -13,6 +13,7 @@ export const RWA_KEY_MAP: { [value: string]: string } = {
   activeMcap: "activeMcap",
   price: "price",
   holdersToRemove: "*HoldersToBeRemovedForActiveMarketcap",
+  activeMcapChecked: "activeMcapData",
 };
 
 // Some metadata fields should always be exposed as string arrays in the API,

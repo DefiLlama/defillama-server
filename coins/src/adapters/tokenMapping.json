@@ -13847,5 +13847,22 @@
       "symbol": "M",
       "to": "coingecko#usd-coin"
     }
+  },
+  "keeta": {
+    "keeta_anqdilpazdekdu4acw65fj7smltcp26wbrildkqtszqvverljpwpezmd44ssg": {
+      "to": "coingecko#keeta",
+      "decimals": 18,
+      "symbol": "KTA"
+    },
+    "keeta_amnkge74xitii5dsobstldatv3irmyimujfjotftx7plaaaseam4bntb7wnna": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "keeta_apblhar4ncp3ln62wrygsn73pt3houuvj7ic47aarnolpcu67oqn4xqcji3au": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "EURC"
+    }
   }
 }

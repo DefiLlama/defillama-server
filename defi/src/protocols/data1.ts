@@ -6017,6 +6017,7 @@ const data: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     forkedFromIds: ["114"],
     github: ["lendhub"],
+    deadUrl: true,
   },
   {
     id: "381",
@@ -12491,7 +12492,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Fegex",
     address: "0x389999216860ab8e0175387a0c90e5c52522c945",
     symbol: "FEG",
-    url: "https://fegtoken.com",
+    url: "https://feg.io/",
     description: "The All-in-One exchange",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fegex.png`,
@@ -19052,6 +19053,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Midas_DAO",
     forkedFromIds: ["340"],
     listedAt: 1638897038,
+    deadUrl: true,
   },
   {
     id: "992",
@@ -19780,6 +19782,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://defiyield.app/audit-database/shellboxes/defyswap"],
     forkedFromIds: ["2197"],
     listedAt: 1639510919,
+    deadUrl: true,
   },
   {
     id: "1025",
@@ -23392,6 +23395,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "instrumental/index.js",
     twitter: "InstrumentalFi",
     listedAt: 1641404391,
+    deadUrl: true,
   },
   {
     id: "1196",
@@ -23786,7 +23790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Karma DAO",
     address: "avax:0x5ccff6723f592c223e7b31c6872ba999a028653f",
     symbol: "KARMA",
-    url: "https://karmadao.money/",
+    url: "https://app.karmadao.money/",
     description: "OHM fork with a built in lottery game that rewards stakers weekly.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/karma-dao.png`,
@@ -23799,6 +23803,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "KarmaDAO_",
     forkedFromIds: ["340"],
     listedAt: 1641663496,
+    deadUrl: true,
   },
   {
     id: "1215",
@@ -26525,6 +26530,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_Devil.pdf",
     ],
     listedAt: 1643804913,
+    deadUrl: true,
   },
   {
     id: "1344",

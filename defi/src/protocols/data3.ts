@@ -22451,7 +22451,7 @@ const data3_1: Protocol[] = [
     name: "PAAL AI",
     address: "0x14fee680690900ba0cccfc76ad70fd1b95d10e16",
     symbol: "PAAL",
-    url: "https://paalai.io",
+    url: "https://www.paal.ai/",
     description:
       "PAAL is an AI-powered digital companion that enhances user experiences on platforms like Discord and Telegram. Using advanced NLP, Machine Learning, and Automation, it offers personalized interactions.",
     chain: "Ethereum",

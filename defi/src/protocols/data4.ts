@@ -5926,7 +5926,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "foomclub",
+    twitter: "foomclub_",
     treasury: "foom.js",
   },
   {

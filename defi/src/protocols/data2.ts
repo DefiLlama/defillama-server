@@ -4071,6 +4071,7 @@ const data2: Protocol[] = [
       "https://github.com/coinscope-co/audits/blob/main/ring/audit.pdf",
     ],
     listedAt: 1647811513,
+    deadUrl: true
   },
   {
     id: "1566",
@@ -7234,6 +7235,7 @@ const data2: Protocol[] = [
     module: "candle/index.js",
     twitter: "Candle_Labs",
     listedAt: 1651486174,
+    deadUrl: true
   },
   {
     id: "1712",
@@ -12937,6 +12939,7 @@ const data2: Protocol[] = [
     module: "dogeswap/index.js",
     twitter: "Dogeswap_",
     listedAt: 1660611953,
+    deadUrl: true
   },
   {
     id: "1976",

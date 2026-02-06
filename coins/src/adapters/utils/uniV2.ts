@@ -5,31 +5,6 @@ import { Write } from "./dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectDataMap } from "./database";
 import { getTokenInfoMap } from "./erc20";
 
-const assetsToTestAgainst: {
-  [chain: string]: string[];
-} = {
-  ethereum: [
-    "0xdac17f958d2ee523a2206206994597c13d831ec7",
-    "0x0000000000000000000000000000000000000000",
-    "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    "0x6b175474e89094c44da98b954eedeac495271d0f"
-  ].map((i) => i.toLowerCase()),
-  arbitrum: [
-    "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
-    "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
-    "0x0fBcbaEA96Ce0cF7Ee00A8c19c3ab6f5Dc8E1921",
-    "0x6491c05A82219b8D1479057361ff1654749b876b",
-    "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
-    "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
-    "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
-    "0xdDb46999F8891663a8F2828d25298f70416d7610",
-    "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1"
-  ].map((i) => i.toLowerCase()),
-};
-
 const coreAssetsCache: {
   [chain: string]: Set<string>;
 } = {};
@@ -173,7 +148,8 @@ export function getUniV2Adapter({
       abi: "erc20:symbol",
       target: allData[0].id,
     });
-    const underlyingPrices = await getTokenAndRedirectDataMap(assetsToTestAgainst[chain] ?? [], chain, timestamp);
+
+    const underlyingPrices = await getTokenAndRedirectDataMap(Array.from(coreAssetsCache[chain]) ?? [], chain, timestamp);
     const token0Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token0.id, params: p.id })), permitFailure: true  })
     const token1Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token1.id, params: p.id })), permitFailure: true  })
     const writes: Write[] = [];
@@ -185,17 +161,18 @@ export function getUniV2Adapter({
       const symbol = getLPSymbol(token0.symbol, token1.symbol, LP_SYMBOL);
 
       const { price, confidence } = findPrice();
+      if (!price) return;
 
       // return true if subgraph data is inflated
       function findPrice() {
         const confidence = calculateConfidence(pair.reserveUSD);
         const subgraphPrice = pair.reserveUSD / pair.totalSupply;
-        if (!assetsToTestAgainst[chain]) return { price: subgraphPrice, confidence };
+        if (!coreAssetsCache[chain]) return { price: subgraphPrice, confidence };
         
         let knownToken;
-        if (assetsToTestAgainst[chain].includes(token0.id)) knownToken = token0;
-        else if (assetsToTestAgainst[chain].includes(token1.id)) knownToken = token1;
-        else return { price: subgraphPrice, confidence };
+        if (coreAssetsCache[chain].has(token0.id)) knownToken = token0;
+        else if (coreAssetsCache[chain].has(token1.id)) knownToken = token1;
+        else return { price: undefined, confidence };
 
         const knownTokenPrice = underlyingPrices[knownToken.id];
         const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];

@@ -85,11 +85,6 @@ const contracts: Record<string, TokenConfig[]> = {
   //     oracle: "0xCF4e49f5e750Af8F2f9Aa1642B68E5839D9c1C00",
   //   },
   //   {
-  //     name: "mHYPER",
-  //     token: "0x9b5528528656DBC094765E2abB79F293c21191B9",
-  //     oracle: "0x92004DCC5359eD67f287F32d12715A37916deCdE",
-  //   },
-  //   {
   //     name: "mAPOLLO",
   //     token: "0x7CF9DEC92ca9FD46f8d86e7798B72624Bc116C05",
   //     oracle: "0x9aEBf5d6F9411BAc355021ddFbe9B2c756BDD358",
@@ -131,12 +126,12 @@ const contracts: Record<string, TokenConfig[]> = {
       oracle: "0xbD560c1E87752717C34912D128168BfE26021EA2",
       denomination: "ETH",
     },
-  //   {
-  //     name: "mHyperBTC",
-  //     token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
-  //     oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
-  //     denomination: "BTC",
-  //   },
+    {
+      name: "mHyperBTC",
+      token: "0xC8495EAFf71D3A563b906295fCF2f685b1783085",
+      oracle: "0xb75B82b2012138815d1A2c4aB5B8b987da043157",
+      denomination: "BTC",
+    },
   ],
   // base: [
   //   {
@@ -327,6 +322,7 @@ async function getTokenPrices(
     timestamp,
     pricesObject: prices,
     projectName: "midas",
+    confidence: 1
   });
 }
 

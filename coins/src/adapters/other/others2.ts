@@ -52,6 +52,16 @@ async function stOAS(timestamp: number = 0) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
+async function cana(timestamp: number = 0) {
+  const chain = "ethereum";
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
+  const CANA_CONTRACT_ADDRESS = "0x01995A697752266d8E748738aAa3F06464B8350B";
+  const price = await api.call({ abi: "uint256:navprice", target: CANA_CONTRACT_ADDRESS });
+  pricesObject[CANA_CONTRACT_ADDRESS] = { price: price / 1e6, };
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+}
+
 async function wSTBT(timestamp: number = 0) {
   const chain = "ethereum";
   const api = await getApi(chain, timestamp);
@@ -105,6 +115,22 @@ async function beraborrow(timestamp: number = 0) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
 }
 
+async function pikeSPA(timestamp: number = 0) {
+  const chain = 'base'
+  const api = await getApi(chain, timestamp);
+  const token = '0xf051deB326EB473eECB221B6D9D16230056089C9'
+  const tapioPool = '0xEE9B4FF3Fa54c7185b7769036938Ad26A6fd0B14'
+  const uTokens = await api.call({ abi: 'address[]:getTokens', target: tapioPool })
+  await api.sumTokens({ owner: tapioPool, tokens: uTokens })
+  const usdValue = await api.getBalancesV2().getUSDValue()
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: token })
+  const decimals = await api.call({ abi: 'erc20:decimals', target: token })
+  const price = (usdValue * (10 ** decimals)) / supply
+  const pricesObject: any = {};
+  pricesObject[token] = { price, }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+}
+
 async function cabal(timestamp: number = 0) {
   const chain = "initia";
   if (timestamp > 0 && Date.now() / 1000 - timestamp > 3600)
@@ -119,7 +145,7 @@ async function cabal(timestamp: number = 0) {
     return parseFloat(clean);
   }
   async function fetchView(functionName: any, moduleName: any, args: any) {
-    const { data: { data }} = await axios.post(REST_URL, {
+    const { data: { data } } = await axios.post(REST_URL, {
       address: CABAL_MODULE_ADDRESS,
       module_name: moduleName,
       function_name: functionName,
@@ -144,7 +170,8 @@ async function cabal(timestamp: number = 0) {
 
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal,
+  wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
+
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
       throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");
@@ -160,5 +187,20 @@ export const adapters = {
     const writes: Write[] = [];
     addToDBWritesList(writes, chain, springSUI, price * basePrice.price, 9, "other2", timestamp, "other", 0.95,);
     return writes;
-  }
+  },
+
+  ctUSD: async (timestamp: number = 0) => {
+    const ctUsd = "0x8D82c4E3c936C7B5724A382a9c5a4E6Eb7aB6d5D";
+    const m = "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b";
+    const chain = "citrea";
+    const api = await getApi(chain, timestamp, true)
+    const bal = await api.call({ abi: "erc20:balanceOf", target: m, params: [ctUsd] });
+    const supply = await api.call({ abi: "erc20:totalSupply", target: ctUsd });
+
+    return getWrites({
+      chain, timestamp, pricesObject: {
+        [ctUsd]: { price: bal / supply, underlying: m, }
+      }, projectName: "other2",
+    });
+  },
 };

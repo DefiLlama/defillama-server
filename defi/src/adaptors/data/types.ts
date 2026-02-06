@@ -115,6 +115,8 @@ export enum AdaptorRecordType {
 
     dailyAppRevenue = "dar",
     dailyAppFees = "daf",
+
+    dailyNormalizedVolume = "dnvol"
 }
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -128,6 +130,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATOR_DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
     [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
+    [AdapterType.NORMALIZED_VOLUME]: AdaptorRecordType.dailyNormalizedVolume,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -248,19 +251,30 @@ export type DIMENSIONS_ADAPTER_CACHE = {
     allChains?: string[]
 }
 
+export interface EmissionsAggRecord {
+  value: number;
+  'by-label'?: IJSON<number>;
+}
+
+export interface EmissionsProtocolData {
+  id: string; // aave, uniswap, ...
+  yearly: IJSON<EmissionsAggRecord>;
+  quarterly: IJSON<EmissionsAggRecord>;
+  monthly: IJSON<EmissionsAggRecord>;
+}
 
 export type RecordSummary = {
-    total24h: number
-    total48hto24h: number
+    total24h: number | null
+    total48hto24h: number | null
     chart: IJSON<number>
     chartBreakdown: IJSON<IJSON<number>>
     earliestTimestamp?: number
     chainSummary?: IJSON<RecordSummary>
-    total7d?: number
-    total30d?: number
-    total14dto7d?: number
-    total60dto30d?: number
-    total1y?: number
+    total7d?: number | null
+    total30d?: number | null
+    total14dto7d?: number | null
+    total60dto30d?: number | null
+    total1y?: number | null
     recordCount: number
 }
 

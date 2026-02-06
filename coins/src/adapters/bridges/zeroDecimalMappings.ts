@@ -20,5 +20,3 @@ export default async function bridge(): Promise<Token[]> {
 
   return response.flat();
 }
-
-bridge(); // ts-node coins/src/adapters/bridges/zeroDecimalMappings.ts

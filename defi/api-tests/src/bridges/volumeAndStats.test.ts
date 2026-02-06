@@ -173,20 +173,20 @@ describe('Bridges API - Volume and Stats', () => {
     it('should have correct bridge volume path', () => {
       const chain = 'ethereum';
       const path = endpoints.BRIDGES.BRIDGE_VOLUME(chain);
-      expect(path).toBe(`/bridgevolume/${chain}`);
+      expect(path).toBe(`/bridges/bridgevolume/${chain}`);
     });
 
     it('should have correct bridge day stats path', () => {
       const timestamp = 1234567890;
       const chain = 'ethereum';
       const path = endpoints.BRIDGES.BRIDGE_DAY_STATS(timestamp, chain);
-      expect(path).toBe(`/bridgedaystats/${timestamp}/${chain}`);
+      expect(path).toBe(`/bridges/bridgedaystats/${timestamp}/${chain}`);
     });
 
     it('should have correct transactions path', () => {
       const id = '123';
       const path = endpoints.BRIDGES.TRANSACTIONS(id);
-      expect(path).toBe(`/transactions/${id}`);
+      expect(path).toBe(`/bridges/transactions/${id}`);
     });
   });
 });

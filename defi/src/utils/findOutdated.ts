@@ -34,13 +34,13 @@ function printOutdated(outdated: OutdatedData[], { title, now = toUNIXTimestamp(
   })
   const tableData = sorted.map((data) => {
     const res: any = {}
-    if (data.protocolName.length > maxLengthProtocolName)  data.protocolName = data.protocolName.slice(0, maxLengthProtocolName - 3) + '...'
+    if (data.protocolName.length > maxLengthProtocolName) data.protocolName = data.protocolName.slice(0, maxLengthProtocolName - 3) + '...'
     res.Name = data.protocolName
     res['Last Update'] = data.lastUpdate ? humanizeTimeDifference(now - data.lastUpdate) : '-'
     res['Tvl'] = data.tvl ? humanizeNumber(data.tvl) : 'No TVL'
     return res
   })
-  
+
   return tableToString(tableData, { title, columns: ['Name', 'Last Update', 'Tvl'] })
 }
 
@@ -82,6 +82,14 @@ export async function getOutdated(maxDrift: number, getLatestTvl: any, options: 
     if (module.deadFrom) {
       return
     }
+
+
+    const ignoredSet = new Set(['Synthetix', 'Defi Saver']);
+    if (ignoredSet.has(protocol.name))
+      return;
+
+
+
     const refillable = !(module.fetch || module.timetravel === false)
     outdated.push({
       protocolName: protocol.name,

@@ -56,7 +56,6 @@ async function getCategoryOrTagByChain({
   if (category) includeBridge = bridgeCategoriesSlugSet.has(category);
 
   const getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
-    isApi2CronProcess: true,
     protocolList: cache.metadata.protocols,
     getLastTvl: getLastHourlyRecord,
     getAllTvlData: (protocol: any) => cache.allTvlData[protocol.id],
@@ -93,7 +92,7 @@ async function getCategoryOrTagByChain({
           // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
           const formattedChainName = getChainDisplayName(pchain, true);
 
-          // if its an extra tvl section, include those values in "total" tvl of chart
+          // if it's an extra tvl section, include those values in "total" tvl of chart
           if (extraSections.includes(formattedChainName)) {
             sum(sumCategoryOrTagTvls, formattedChainName, timestamp, item[pchain]);
             continue;
@@ -106,7 +105,7 @@ async function getCategoryOrTagByChain({
           // formatted chain name maybe chainName (ethereum, solana etc) or extra tvl sections (staking, pool2 etc)
           const formattedChainName = getChainDisplayName(pchain, true);
 
-          // if its an extra tvl section, skip
+          // if it's an extra tvl section, skip
           if (extraSections.includes(formattedChainName)) {
             continue;
           }
@@ -132,7 +131,7 @@ async function getCategoryOrTagByChain({
               sum(sumCategoryOrTagTvls, "dcAndLsOverlap", timestamp, item[pchain]);
             }
 
-            //  if its a valid chain name, record that this protocol is on atleast more than one chain
+            // if it's a valid chain name, record that this protocol is on at least more than one chain
             // reason to track this value is if a protocol is only on single chain, then it would only have 'tvl' in the above tvlSection value
             // and you want this protocol to appear on 'All Chains' page and its individual chain
             hasAtLeastOneChain = true;

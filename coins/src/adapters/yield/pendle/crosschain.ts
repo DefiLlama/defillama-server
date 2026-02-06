@@ -1,8 +1,8 @@
-import axios from "axios";
 import { Write } from "../../utils/dbInterfaces";
 import { getConfig } from "../../../utils/cache";
 import { addToDBWritesList } from "../../utils/database";
 import { getApi } from "../../utils/sdk";
+import { chainIdMap } from "../../bridges/celer";
 
 export async function addPendleCrosschainPrices(
     writes: Write[][],
@@ -23,7 +23,7 @@ export async function addPendleCrosschainPrices(
     const flat = writes.flat();
 
     async function addToWrite(chainId: number, address: string, price: number) {
-        const chain = getChainFromChainId(chainId);
+        const chain = chainIdMap[chainId]
         if (!chain) return;
 
         let foundWs: Write[] | null = null;
@@ -75,21 +75,4 @@ export async function addPendleCrosschainPrices(
             }
         }
     }
-}
-
-function getChainFromChainId(chainId: number): string | null {
-    switch (chainId) {
-        case 1: return "ethereum";
-        case 10: return "optimism";
-        case 56: return "bsc";
-        case 42161: return "arbitrum";
-        case 5000: return "mantle";
-        case 146: return "sonic";
-        case 8453: return "base";
-        case 80094: return "berachain";
-        case 999: return "hyperliquid";
-        case 9745: return "plasma";
-        case 43114: return "avax";
-    }
-    return null;
 }

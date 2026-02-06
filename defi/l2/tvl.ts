@@ -4,7 +4,7 @@ import { fetchMinted } from "./native";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { allChainKeys, ownTokens, tokenFlowCategories, zero } from "./constants";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./verifyChanges";

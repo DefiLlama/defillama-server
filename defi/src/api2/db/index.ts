@@ -192,6 +192,16 @@ async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string,
   return items.map((i: any) => i.data)
 }
 
+async function _getAllItemsAtTimeS(ddbPKFunction: Function, timestamp: number) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  const timeS = new Date(timestamp * 1000).toISOString().slice(0, 10);
+  const items = await table.sequelize!.query(
+    `SELECT id, "data", "timeS" FROM "${table.getTableName()}" WHERE "timeS" = '${timeS}' ORDER BY id`,
+    { type: QueryTypes.SELECT }
+  )
+  return items
+}
+
 async function _getLatestProtocolItem(ddbPKFunction: Function, protocolId: string) {
   const table = getTVLCacheTable(ddbPKFunction)
   const item: any = await withPgRetries(() =>
@@ -465,6 +475,7 @@ const saveProtocolItem = callWrapper(_saveProtocolItem)
 const getProtocolItems = callWrapper(_getProtocolItems)
 const getLatestProtocolItems = callWrapper(_getLatestProtocolItems)
 const getInflowRecords = callWrapper(_getInflowRecords)
+const getAllItemsAtTimeS = callWrapper(_getAllItemsAtTimeS)
 
 function getPGConnection() {
   return sequelize
@@ -473,7 +484,7 @@ function getPGConnection() {
 export {
   closeConnection, deleteFromPGCache, deleteProtocolItems, getAllProtocolItems,
   getClosestProtocolItem, getDailyTvlCacheId, getDimensionsUpdatedRecordsCount, getHourlyTvlUpdatedRecordsCount, getLatestProtocolItem, getLatestProtocolItems, getPGConnection, getProtocolItems, getTweetsPulledCount, initializeTVLCacheDB, readFromPGCache, saveProtocolItem, sequelize, TABLES, writeToPGCache,
-  getInflowRecords,
+  getInflowRecords, getAllItemsAtTimeS,
 }
 
 // Add a process exit hook to close the database connection

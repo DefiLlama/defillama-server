@@ -5,7 +5,8 @@ import '../../utils/failOnError'
 import * as fs from 'fs'
 import path from 'path';
 import { init } from '../../../adaptors/db-utils/db2';
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 import { Tables } from '../../db/tables';
 
 const file = 'protocol-data-2025-05-21-1156.log'

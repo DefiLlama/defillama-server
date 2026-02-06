@@ -1,4 +1,4 @@
-// exactly same as storeNewTvl.ts but with reads data from postgres instead of dynamodb
+// exactly same as storeNewTvl.ts but reads data from postgres instead of dynamodb
 
 import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";

@@ -1,4 +1,6 @@
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import abi from "./abi.json";
 import {
   addToDBWritesList,
@@ -9,7 +11,6 @@ import { Write, Read, CoinData } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
-import * as sdk from "@defillama/sdk";
 
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));

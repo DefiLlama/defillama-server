@@ -12,9 +12,12 @@ getDimensionsConfig()
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
   // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
   const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
-  const { default: module } = await import('../../../dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
-  setModuleDefaults(module)
-  return module
+  const { importAdapter } = await import('../../../dimension-adapters/adapters/utils/importAdapter')
+  const passedFile = dimensionsConfig[adaptorType].imports[mod].moduleFilePath
+  const result = await importAdapter(adaptorType, mod, '../../' + passedFile)
+  const adapterModule = result.adapter
+  setModuleDefaults(adapterModule)
+  return adapterModule
 }
 
 const exportCache = {} as IJSON<AdaptorData>
@@ -159,6 +162,11 @@ function getDimensionsConfig() {
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
       },
     },
+    [AdapterType.NORMALIZED_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
+      },
+    },
     [AdapterType.FEES]: {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyFees],
@@ -222,7 +230,7 @@ function getLogoKey(key: string) {
   else return key.toLowerCase()
 }
 
-/*
+/* 
 
 const statsTable: any = {}
 ADAPTER_TYPES.forEach((adapterType) => {

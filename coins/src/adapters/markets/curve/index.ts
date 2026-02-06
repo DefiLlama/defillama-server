@@ -156,6 +156,7 @@ export function curve6(timestamp: number = 0) {
       "0x5ab01ee6208596f2204b85bdfa39d34c2add98f6",
       "0x02d55af4813a3a6826ef185935e4fc1defa45fb0",
       "0x798d81d60966d2e909468d87e7e4b6a8dafb1c36",
+      "0x11C1fBd4b3De66bC0565779b35171a6CF3E71f59"
     ]),
   ]);
 }

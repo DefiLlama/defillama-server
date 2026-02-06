@@ -1,7 +1,7 @@
 import * as sdk from "@defillama/sdk"
-import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import * as fs from "fs/promises"
 import * as path from "path"
+const { sliceIntoChunks, } = sdk.util
 import { Op, } from "sequelize"
 import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"

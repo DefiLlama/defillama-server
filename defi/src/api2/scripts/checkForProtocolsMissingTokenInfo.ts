@@ -2,7 +2,7 @@
 import '../utils/failOnError'
 import { sendMessage } from "../../utils/discord";
 import * as sdk from '@defillama/sdk';
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
+const { sliceIntoChunks, } = sdk.util
 import axios from 'axios';
 import protocols from '../../protocols/data'
 import parentProtocols, { parentProtocolsById } from "../../protocols/parentProtocols";

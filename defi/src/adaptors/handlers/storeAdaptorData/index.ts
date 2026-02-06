@@ -1,7 +1,7 @@
 import * as sdk from '@defillama/sdk';
 import { elastic } from '@defillama/sdk';
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
-import { Chain, providers } from "@defillama/sdk/build/general";
+import { providers } from "@defillama/sdk/build/general";
+type Chain = string
 import { PromisePool } from '@supercharge/promise-pool';
 import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { getUnixTimeNow } from "../../../api2/utils/time";
@@ -14,6 +14,8 @@ import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { isLocalStoreEnabled } from "../../db-utils/localStore";
 import { sendDiscordAlert } from "../../utils/notify";
 import { buildHourlyCache, buildTokenBreakdownsByLabel, HourlySlice, processHourlyAdapter } from "./hourly";
+import { deadChainsSet } from "../../../config/deadChains";
+const { humanizeNumber, } = sdk
 
 const recentDataByAdapterType: { [adapterType: string]: any } = {}
 
@@ -26,8 +28,7 @@ const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
 
 // some protocols have high value data from the moment we list, we add their id here to avoid them being blocked by validation
 const skipDefaultRecentDataCheckForAdapters = new Set([
-  '3923', // derive v2
-  '5060',  // derive options
+  '7194', // Variational
 ])
 
 export type DimensionRunOptions = {
@@ -81,7 +82,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
     checkBeforeInsert = false,
     maxRunTime,
     onlyYesterday = false,
-    deadChains,
     skipHourlyCache = false,
   } = options
 
@@ -148,8 +148,8 @@ export const handler2 = async (options: DimensionRunOptions) => {
   protocols = protocols.sort(() => Math.random() - 0.5)
 
   // Get closest block to clean day. Only for EVM compatible ones.
-  const allChains = protocols.reduce((acc, { chains }) => {
-    chains = chains.filter((chain) => !deadChains || !deadChains.has(chain))  // filter out dead chains
+  const allChains = protocols.reduce((acc, { chains }: any) => {
+    chains = chains.filter((chain: any) => !deadChainsSet.has(chain))  // filter out dead chains
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
@@ -375,7 +375,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
                 protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
-                deadChains,
               })
               if (onlyYesterday) return await refillYesterdayPromise
             }
@@ -428,7 +427,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
           recordTimestamp,
           skipHourlyCache,
           hourlyCacheData,
-          deadChains,
           isDryRun,
           checkBeforeInsert,
         })
@@ -447,12 +445,13 @@ export const handler2 = async (options: DimensionRunOptions) => {
           name: module,
           withMetadata: true,
           cacheResults: runType === 'store-all',
-          deadChains,
+          deadChains: deadChainsSet,
         })
         adaptorRecordV2JSON = res.adaptorRecordV2JSON
         tb = res.breakdownByToken
         tbl = res.tokenBreakdownByLabel
         tblc = res.tokenBreakdownByLabelByChain
+        convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
 
         if (tb && (!tbl || !tblc)) {
           const built = buildTokenBreakdownsByLabel({
@@ -487,7 +486,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
       if (noDataReturned) {
         const chains = Object.keys(adaptor.adapter || {})
-        const allChainsAreDead = chains.every(chain => deadChains?.has(chain))
+        const allChainsAreDead = chains.every(chain => deadChainsSet?.has(chain))
         if (allChainsAreDead) {
           console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
           return;

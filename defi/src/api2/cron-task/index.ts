@@ -5,17 +5,17 @@ import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
-import { craftChainsResponse } from "../../getChains";
+import { craftChainsResponse } from "../routes/getChains";
 import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../../getProtocols";
 import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { getRaisesInternal } from "../../getRaises";
-import { getHacksInternal } from "../../getHacks";
+import { getRaisesInternal } from "../routes/getRaises";
+import { getHacksInternal } from "../routes/getHacks";
 import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
-import { getOraclesInternal } from "../../getOracles";
-import { getForksInternal } from "../../getForks";
-import { getCategoriesInternal } from "../../getCategories";
-import { storeLangs } from "../../storeLangs";
+import { getOraclesInternal } from "../routes/getOracles";
+import { getForksInternal } from "../routes/getForks";
+import { getCategoriesInternal } from "../routes/getCategories";
+import { storeLangs } from "../routes/storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
@@ -47,7 +47,6 @@ async function run() {
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
-    isApi2CronProcess: true,
     protocolList: cache.metadata.protocols,
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
@@ -71,7 +70,7 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
-  
+
   await storeActiveUsers()
   await storeRWAStats()
 
@@ -162,7 +161,7 @@ async function run() {
   async function writeProtocolRoute() {
     console.time('write /protocol/:name')
     const withConcurrency = 25
-    const options = { useNewChainNames: false, useHourlyData: false, skipAggregatedTvl: false }
+    const options = { useNewChainNames: false, skipAggregatedTvl: false }
 
     let items = shuffleArray(Object.entries(cache.protocolSlugMap))
 
@@ -267,11 +266,28 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const excludeProtocolFields = [
+      'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
+      'audits', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'cmcId', 'gecko_id', 'methodology', 'dimensions',
+      'module', 'pool2', 'staking',
+      'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',
+      'listedAt',
+    ]
+
+    // /protocols file is heavy, we create a lite version without some fields
+    const protocolsLite = data.map((p: any) => {
+      const clone = { ...p }
+      excludeProtocolFields.forEach(field => delete clone[field])
+      return clone
+    })
+
     const chainData: IChain[] = await getChainData(false)
     const chainDataV2: IChain[] = await getChainData(true)
     data.push(...(chainData as any))
 
     await storeRouteData('protocols-with-chains', data)
+    await storeRouteData('protocols-lite-v1', protocolsLite)
     await storeRouteData('chains', chainData)
     await storeRouteData('v2/chains', chainDataV2)
 

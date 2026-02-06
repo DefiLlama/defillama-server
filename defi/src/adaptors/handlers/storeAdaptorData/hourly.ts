@@ -1,3 +1,4 @@
+import { deadChainsSet } from "../../../config/deadChains"
 import { AdapterType } from "../../data/types"
 import { getHourlySlicesBulk, getHourlySlicesForProtocol, getHourlyTimeS, upsertHourlySlicesForProtocol } from "../../db-utils/db2"
 
@@ -444,7 +445,6 @@ export async function processHourlyAdapter(params: {
   recordTimestamp: number
   skipHourlyCache: boolean
   hourlyCacheData?: { cache: HourlyCache, range: { from: number, to: number } }
-  deadChains?: Set<string>
   isDryRun: boolean
   checkBeforeInsert: boolean
 }): Promise<ProcessHourlyAdapterResult> {
@@ -457,7 +457,6 @@ export async function processHourlyAdapter(params: {
     recordTimestamp,
     skipHourlyCache,
     hourlyCacheData,
-    deadChains,
     isDryRun,
     checkBeforeInsert,
   } = params
@@ -519,7 +518,7 @@ export async function processHourlyAdapter(params: {
         name: module,
         withMetadata: true,
         cacheResults: false,
-        deadChains,
+        deadChains: deadChainsSet,
       })
 
       const sliceRecord = res.adaptorRecordV2JSON as any

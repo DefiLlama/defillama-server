@@ -8208,7 +8208,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "MetaMask",
     url: "https://metamask.io",
     description: "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

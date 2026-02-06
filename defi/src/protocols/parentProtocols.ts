@@ -6424,6 +6424,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SoneFi_xyz",
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
   },
   {
     id: "parent#filament",

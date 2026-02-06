@@ -2004,6 +2004,11 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
   },

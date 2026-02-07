@@ -468,7 +468,7 @@ const data4: Protocol[] = [
       fees: "SwapX-algebra",
       dexs: {
         adapter: "SwapX-algebra",
-        genuineSpikes: ["1760054400"],
+        genuineSpikes: [["2025-10-10", "-"]],
       },
     }
   },
@@ -4126,7 +4126,7 @@ const data4: Protocol[] = [
     listedAt: 1738858207,
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1738540800", "1738627200", "1738713600", "1746489600"],
+        genuineSpikes: [["2025-02-03", "-"], ["2025-02-04", "-"], ["2025-02-05", "-"], ["2025-05-06", "-"]],
         adapter: "enso"
       }
     }
@@ -5729,7 +5729,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "flashbot",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -6318,7 +6318,7 @@ const data4: Protocol[] = [
       fees: "hyperswap-v2",
       dexs: {
         adapter: "hyperswap-v2",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
     }
   },
@@ -11766,7 +11766,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "launchlab",
       dexs: {
-        genuineSpikes: ["1745539200"],
+        genuineSpikes: [["2025-04-25", "-"]],
         adapter: "launchlab"
       }
     }
@@ -15803,7 +15803,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "infinifi",
-        genuineSpikes: ["1766793600", "1766880000","1766966400"],
+        genuineSpikes: [["2025-12-27", "-"], ["2025-12-28", "-"],["2025-12-29", "-"]],
       },
     }
   },
@@ -18952,7 +18952,7 @@ const data4: Protocol[] = [
       aggregators: "rango",
       "bridge-aggregators": {
         adapter: "rango",
-        genuineSpikes: ["1770163200"]
+        genuineSpikes: [["2026-02-04", "-"]]
       }
     }
   },
@@ -19547,7 +19547,7 @@ const data4: Protocol[] = [
       fees: "carbon",
       derivatives: {
         adapter: "carbon",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -22438,11 +22438,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       derivatives: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       "open-interest": "boros-oi"
     },
@@ -22842,7 +22842,7 @@ const data4: Protocol[] = [
     twitter: "humidifi",
     dimensions: {
       dexs: {
-        genuineSpikes: ["1755129600"],
+        genuineSpikes: [["2025-08-14", "-"]],
         adapter: "humidifi"
       }
     }
@@ -24600,7 +24600,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#opensea",
     dimensions: {
       "bridge-aggregators": {
-        genuineSpikes: ["1751414400", "1752105600"],
+        genuineSpikes: [["2025-07-02", "-"], ["2025-07-10", "-"]],
         adapter: "opensea"
       }
     }
@@ -25126,7 +25126,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "woofi-pro-perp",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "woofi-pro-perp"
       }
     }
@@ -25245,7 +25245,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "edgex",
       derivatives: {
-        genuineSpikes: ["1722988800", "1723075200"],
+        genuineSpikes: [["2024-08-07", "-"], ["2024-08-08", "-"]],
         adapter: "edgeX"
       },
       "open-interest": "edgeX",
@@ -25285,11 +25285,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "paradex",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "paradex"
       },
       "open-interest": {
-        genuineSpikes: ["1759190400"],
+        genuineSpikes: [["2025-09-30", "-"]],
         adapter: "paradex"
       },
       "normalized-volume": "paradex"
@@ -27106,7 +27106,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: {
         adapter: "injective-derivatives",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
       "open-interest": "injective-derivatives"
     },

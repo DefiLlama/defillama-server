@@ -116,9 +116,9 @@ export const chainCoingeckoIds = {
     dimensions: {
       fees: {
         genuineSpikes: [
-          "1651449600",
-          "1651363200", // otherside mint
-          "1760054400", // 2025-10-10 - sharp drop in the market - Black Friday
+          ["2022-05-02", "-"],
+          ["2022-05-01", "Otherside mint"], // otherside mint
+          ["2025-10-10", "Sharp drop in the market - Black friday"], // 2025-10-10 - sharp drop in the market - Black Friday
         ],
         adapter: "ethereum",
       },

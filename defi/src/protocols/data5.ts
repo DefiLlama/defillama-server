@@ -5907,7 +5907,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.alphasec.trade",
-    description: "AlphaSec is a high performance orderbook DEX on the Kaia network, built on a custom Arbitrum Nitro rollup. It delivers a gasless, CEX-like trading experience with sub-10ms execution and full onchain transparency.",
+    description: "The AlphaSec Bridge enables seamless asset transfers between Kaia mainnet and the AlphaSec Layer 2, a custom Arbitrum Nitro rollup powering a high-performance orderbook DEX.",
     chain: "Kaia",
     logo: `${baseIconsUrl}/alphasec-bridge.jpg`,
     audits: "2",

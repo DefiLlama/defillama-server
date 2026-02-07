@@ -1051,6 +1051,11 @@
     }
   },
   "ethereum": {
+    "0x0b4c655bc989baafe728f8270ff988a7c2b40fd1": {
+      "decimals": "18",
+      "symbol": "afiUSD",
+      "to": "asset#ethereum:0x0b4c655bc989baafe728f8270ff988a7c2b40fd1"
+    },
     "0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4": {
       "decimals": "6",
       "symbol": "rwaUSDi",

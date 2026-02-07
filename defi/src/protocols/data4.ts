@@ -7010,6 +7010,9 @@ const data4: Protocol[] = [
     treasury: "flrbank.js",
     twitter: "FlareBank",
     listedAt: 1741195062,
+    dimensions: {
+      fees: "flarebank"
+    }
   },
   {
     id: "5866",

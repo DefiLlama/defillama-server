@@ -22180,7 +22180,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["CLMM"],
     chains: ["Polygon"],
     module: "dummy.js",
     twitter: "CryptoAlgebra",

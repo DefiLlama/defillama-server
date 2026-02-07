@@ -7815,6 +7815,7 @@ const data3_0: Protocol[] = [
       "https://hacken.io/audits/openeden/sca-openeden-vault-nov2024",
     ],
     parentProtocol: "parent#openeden",
+    stablecoins: ["openeden-tbill"],
     listedAt: 1685661527,
     dimensions: {
       fees: "openeden-t-bills"
@@ -14720,6 +14721,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["psystablecoin"],
     audit_links: ["https://github.com/psystablecoin/psy-contract/tree/main/audit"],
+    stablecoins: ["psy"],
     listedAt: 1691675187,
     deadUrl: true,  },
   {
@@ -31675,6 +31677,7 @@ const data3_1: Protocol[] = [
     tokensExcludedFromParent: {
       Ethereum: ["USDTB"],
     },
+    stablecoins: ["ethena-usde"],
     listedAt: 1708016301,
     dimensions: {
       fees: {
@@ -57451,6 +57454,7 @@ const data3_3: Protocol[] = [
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",
     parentProtocol: "parent#avalon-labs",
+    stablecoins: ["avalon-usda"],
     listedAt: 1730473542,
     dimensions: {
       fees: "avalon-usda"
@@ -58521,6 +58525,7 @@ const data3_3: Protocol[] = [
     ],
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
+    stablecoins: ["solayer-usd"],
     listedAt: 1731623194,
   },
   {
@@ -61585,6 +61590,7 @@ const data3_3: Protocol[] = [
     module: "ethena-usdtb/index.js",
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
+    stablecoins: ["ethena-usdtb"],
     listedAt: 1734350466
   },
   {

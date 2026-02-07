@@ -1317,6 +1317,7 @@ const data4: Protocol[] = [
     twitter: "zothdotio",
     audit_links: ["https://docs.zoth.io/zoth/resources/audits"],
     parentProtocol: "parent#zoth",
+    stablecoins: ["zoth-zeusd"],
     listedAt: 1736774553,
   },
   {
@@ -9143,6 +9144,7 @@ const data4: Protocol[] = [
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf",
     ],
     parentProtocol: "parent#secured-finance",
+    stablecoins: ["usdfc"],
     listedAt: 1743107377,
   },
   {
@@ -15613,6 +15615,7 @@ const data4: Protocol[] = [
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
+    stablecoins: ["smardex-usdn"],
     listedAt: 1748362857,
     dimensions: {
       dexs: "smardex-usdn"
@@ -15850,6 +15853,7 @@ const data4: Protocol[] = [
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
     parentProtocol: "parent#asymmetry",
+    stablecoins: ["asymmetry-usdaf"],
     listedAt: 1748466717,
     dimensions: {
       fees: "asymmetry-usdaf"
@@ -23790,6 +23794,7 @@ const data4: Protocol[] = [
     module: "frax-rwa/index.js",
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
+    stablecoins: ["frax-usd"],
     listedAt: 1755567417,
   },
   {
@@ -28218,6 +28223,7 @@ const data4: Protocol[] = [
       fees: "metamask-musd"
     },
     parentProtocol: "parent#metamask",
+    stablecoins: ["metamask-usd"],
   },
   {
     id: "6801",

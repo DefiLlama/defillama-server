@@ -11,7 +11,6 @@ import loadAdaptorsData from "../../data";
 import { AdapterType, IJSON, ProtocolAdaptor, SimpleAdapter } from "../../data/types";
 import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
 import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
-import { isLocalStoreEnabled } from "../../db-utils/localStore";
 import { sendDiscordAlert } from "../../utils/notify";
 import { buildHourlyCache, buildTokenBreakdownsByLabel, HourlySlice, processHourlyAdapter } from "./hourly";
 import { deadChainsSet } from "../../../config/deadChains";
@@ -90,7 +89,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
   let recentData: any = {}
 
-  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday') && !isLocalStoreEnabled()
+  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday')
 
   if (checkAgainstRecentData)
     recentData = await getRecentData(adapterType)
@@ -366,7 +365,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
           // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
           if (!runAtCurrTime && !haveYesterdayData) {
-            if (skipRefillYesterday) console.log(`[refill-yesterday] skipped for ${adapterType} - ${module} (localStore or DIM_SKIP_REFILL_YESTERDAY=true)`)
+            if (skipRefillYesterday) console.log(`[refill-yesterday] skipped for ${adapterType} - ${module}`)
             else {
               console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
               refillYesterdayPromise = handler2({

@@ -2,7 +2,7 @@
 MASTER_KEY=""
 
 curl \
-  -X POST 'https://search.defillama.com/keys' \
+  -X POST 'https://search-core.defillama.com/keys' \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $MASTER_KEY" \
   --data-binary '{
@@ -13,15 +13,15 @@ curl \
   }'
 
 curl \
-  -X POST 'https://search.defillama.com/indexes/pages/documents'\
+  -X POST 'https://search-core.defillama.com/indexes/pages/documents'\
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $MASTER_KEY" \
   --data-binary @searchlist.json
 
-curl -X GET 'https://search.defillama.com/tasks/0' -H "Authorization: Bearer $MASTER_KEY"
+curl -X GET 'https://search-core.defillama.com/tasks/0' -H "Authorization: Bearer $MASTER_KEY"
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/searchable-attributes' \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/searchable-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
@@ -31,7 +31,7 @@ curl \
   ]'
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/ranking-rules' \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/ranking-rules' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
@@ -46,7 +46,7 @@ curl \
   ]'
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/filterable-attributes' \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/filterable-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
@@ -54,7 +54,7 @@ curl \
   ]'
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/sortable-attributes' \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/sortable-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
@@ -66,7 +66,7 @@ curl \
   ]'
 
 curl \
-  -X PUT 'https://search.defillama.com/indexes/pages/settings/displayed-attributes' \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/displayed-attributes' \
   -H "Authorization: Bearer $MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[

@@ -258,7 +258,7 @@ async function getAllCurrentSearchResults() {
 
   while (hasMore) {
     const res: { total: number; results: Array<SearchResult> } = await fetchJson(
-      `https://search.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
+      `https://search-core.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -873,7 +873,7 @@ const main = async () => {
 
   const resultsToDelete = getResultsToDelete(currentSearchResults, results);
 
-  const deletedResults = await fetchJson(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
+  const deletedResults = await fetchJson(`https://search-core.defillama.com/indexes/pages/documents/delete-batch`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -888,7 +888,7 @@ const main = async () => {
   }
 
   // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
-  const submit = await fetchJson(`https://search.defillama.com/indexes/pages/documents`, {
+  const submit = await fetchJson(`https://search-core.defillama.com/indexes/pages/documents`, {
     method: "PUT",
     headers: {
       "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -897,7 +897,7 @@ const main = async () => {
     body: JSON.stringify(results),
   });
 
-  const status = await fetchJson(`https://search.defillama.com/tasks/${submit.taskUid}`, {
+  const status = await fetchJson(`https://search-core.defillama.com/tasks/${submit.taskUid}`, {
     headers: {
       Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
     },

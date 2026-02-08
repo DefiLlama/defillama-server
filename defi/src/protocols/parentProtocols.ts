@@ -6603,7 +6603,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35818",
     chains: [],
     twitter: "SoSoValueCrypto",
-    github: ["SoSoValueLabs"],
+    github: ["SoSoValueLabs","sosovalue-tech"],
   },
   {
     id: "parent#piperx",
@@ -8354,6 +8354,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "milky_way_zone",
+    github: ["milkyway-labs"],
   },
   {
     id: "parent#flow-swap",
@@ -8750,6 +8751,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "4758",
     chains: [],
     twitter: "dForcenet",
+    governanceID: ["snapshot:dforcenet.eth"],
+    github: ["dforce-network", "UnitusLabs"],
   },
   {
     id: "parent#standx",
@@ -8865,6 +8868,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "9237",
     chains: [],
     twitter: "XpanseTrade",
+    governanceID: ["snapshot:horizonprotocol.eth"],
+    github: ["Horizon-Protocol"],
   },
 ];
 

@@ -454,9 +454,7 @@ const data: Protocol[] = [
         chains: [{ chain: "Conflux" }]
       }
     ],
-    governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
-    github: ["dforce-network"], //check
   },
   {
     id: "124",

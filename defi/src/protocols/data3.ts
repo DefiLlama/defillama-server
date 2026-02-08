@@ -27110,7 +27110,6 @@ const data3_1: Protocol[] = [
     twitter: "unitusfi",
     parentProtocol: "parent#dforce",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
-    github: ["UnitusLabs"],
     listedAt: 1703014661,
   },
   /*{
@@ -27462,7 +27461,6 @@ const data3_1: Protocol[] = [
       "https://twitter.com/SecurityOak/status/1734504283880448246",
       "https://github.com/oak-security/audit-reports/blob/master/MilkyWay/2023-12-12%20Audit%20Report%20-%20MilkyWay%20Staking%20v1.0.pdf",
     ],
-    github: ["milkyway-labs"],
     parentProtocol: "parent#milkyway-protocol",
     listedAt: 1703359758,
     dimensions: {

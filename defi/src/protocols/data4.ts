@@ -3112,7 +3112,6 @@ const data4: Protocol[] = [
   {
     id: "5695",
     name: "Gravity by Galxe",
-    previousNames: ["Gravity"],
     address: "0x9c7beba8f6ef6643abd725e45a4e8387ef260649",
     symbol: "G",
     url: "https://gravity.xyz/",

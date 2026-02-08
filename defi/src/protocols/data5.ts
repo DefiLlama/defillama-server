@@ -4508,7 +4508,6 @@ const data5: Protocol[] = [
     chains: ["Ink"],
     module: "nado/index.js",
     twitter: "nadohq",
-    github: ["nadohq"],
     listedAt: 1764868611,
     dimensions: {
       dexs: "nado-spot",
@@ -7450,7 +7449,6 @@ const data5: Protocol[] = [
     chains: ["Base", "Ethereum", "Arbitrum", "Bitcoin", "Ripple", "Cardano", "Hyperliquid L1", "Litecoin", "Solana", "Doge", "Binance"],
     module: "sodex/index.js",
     twitter: "sodex_official",
-    github: ["sosovalue-tech"],
     parentProtocol: "parent#sosovalue",
     tokensExcludedFromParent: {
       Base: ["SMAG7.SSI", "MAG7.SSI"],
@@ -9593,7 +9591,7 @@ const data5: Protocol[] = [
     chains: ["Base"],
     module: "pike-local-markets/index.js",
     twitter: "PikeFinance", 
-    parentProtocol: "parent#pika",
+    parentProtocol: "parent#pike",
     listedAt: 1769607030
   },
   {

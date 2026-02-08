@@ -3118,8 +3118,6 @@ const data2: Protocol[] = [
     twitter: "XpanseTrade",
     audit_links: ["https://static.horizonprotocol.com/Horizon-Protocol-Smart-Contract-Audit-Report.pdf"],
     listedAt: 1646762203,
-    governanceID: ["snapshot:horizonprotocol.eth"],
-    github: ["Horizon-Protocol"],
     parentProtocol: "parent#xpanse",
   },
   /*
@@ -19636,14 +19634,14 @@ const data2: Protocol[] = [
     id: "2269",
     name: "Binance CEX",
     address: null,
-    symbol: "-",
+    symbol: "BNB",
     url: "https://www.binance.com",
     description:
       "Binance is a cryptocurrency exchange which is the largest exchange in the world in terms of daily trading volume of cryptocurrencies",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/binance-cex.jpg`,
     audits: "0",
-    gecko_id: "binancecoin",
+    gecko_id: null, // can't be repeated
     cmcId: null,
     category: "CEX",
     chains: ["Ethereum", "Tron", "Bitcoin", "Binance"],

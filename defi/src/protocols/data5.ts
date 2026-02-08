@@ -5647,6 +5647,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#lighter",
     dimensions: {
       dexs: "lighter-spot",
+      fees: "lighterv2-spot",
     }
   },
   {
@@ -9762,7 +9763,12 @@ const data5: Protocol[] = [
     module: "denaria/index.js",
     twitter: "DenariaFinance",
     audit_links: ["https://docs.denaria.finance/additional/security_audits"],
-    listedAt: 1769793447
+    listedAt: 1769793447,
+    dimensions: {
+      derivatives: "denaria",
+      fees: "denaria",
+      "open-interest": "denaria",
+    }
   },
   {
     id: "7340",

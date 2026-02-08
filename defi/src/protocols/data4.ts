@@ -26701,7 +26701,10 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "musical-chairs/index.js",
     twitter: null,
-    listedAt: 1757960251
+    listedAt: 1757960251,
+    dimensions: {
+      fees: "musical-chairs",
+    }
   },
   {
     id: "6730",

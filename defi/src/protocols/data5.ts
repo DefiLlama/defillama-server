@@ -277,7 +277,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "RWA Lending",
-    chains: ["Hedera", "Plume Mainnet"],
+    chains: ["Hedera"],
     module: "isle-finance/index.js",
     twitter: "IsleFinance",
     audit_links: ["https://github.com/isle-labs/isle-contract/tree/main/audits"],

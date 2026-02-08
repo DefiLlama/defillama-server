@@ -39488,7 +39488,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Privacy",
-    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Binance", "Avalanche"],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base"],
     module: "hinkal/index.js",
     twitter: "hinkal_protocol",
     audit_links: [

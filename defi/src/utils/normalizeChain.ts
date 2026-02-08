@@ -5857,7 +5857,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
-  "hashkey": "HashKey Chain",
+  //"hashkey": "HashKey Chain", not possible to have two different chains with the same name
   "fhe": "Mind Network",
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",

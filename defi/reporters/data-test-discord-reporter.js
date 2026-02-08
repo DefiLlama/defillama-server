@@ -33,6 +33,13 @@ class DataTestDiscordReporter {
       }
     }
 
+    let failedTestsValue = failures.slice(0, 10).map(f =>
+      `- **${f.testName}**\n  ${f.error}`
+    ).join('\n') + (failures.length > 10 ? `\n... and ${failures.length - 10} more` : '');
+
+    if (!failedTestsValue) failedTestsValue = 'No individual test details available (suite-level error)';
+    if (failedTestsValue.length > 1024) failedTestsValue = failedTestsValue.substring(0, 1021) + '...';
+
     const embed = {
       title: 'data.ts tests failed',
       color: 0xff0000,
@@ -44,9 +51,7 @@ class DataTestDiscordReporter {
         },
         {
           name: 'Failed Tests',
-          value: failures.slice(0, 10).map(f =>
-            `- **${f.testName}**\n  ${f.error}`
-          ).join('\n') + (failures.length > 10 ? `\n... and ${failures.length - 10} more` : ''),
+          value: failedTestsValue,
           inline: false,
         },
       ],

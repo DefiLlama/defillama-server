@@ -5488,7 +5488,7 @@ const data5: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "grayscale",
-        genuineSpikes: ["1765929600"]
+        genuineSpikes: [["2025-12-17", "-"]]
       }
     },
   },

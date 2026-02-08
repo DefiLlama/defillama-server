@@ -895,7 +895,7 @@ function mergeSpikeConfigs(childProtocols: any[]) {
   childProtocols.forEach((childConfig: any = {}) => {
     if (Array.isArray(childConfig.genuineSpikes)) {
       childConfig.genuineSpikes.forEach((key: any) => {
-        genuineSpikesSet.add(key)
+        genuineSpikesSet.add(key[0])
       })
     }
   })
@@ -906,7 +906,7 @@ function mergeSpikeConfigs(childProtocols: any[]) {
 function getSpikeConfig(protocol: any): SpikeConfig {
   if (!protocol?.genuineSpikes) return {}
   let info = (protocol as any)?.genuineSpikes ?? []
-  const whitelistedSpikeSet = new Set(info.map(unixTimeToTimeS)) as Set<string>
+  const whitelistedSpikeSet = new Set(info.map((i: any) => i[0])) as Set<string>
   return { whitelistedSpikeSet }
 }
 

@@ -636,7 +636,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "syncswap",
       dexs: {
-        genuineSpikes: ["1748390400"],
+        genuineSpikes: [["2025-05-28", "-"]],
         adapter: "syncswap"
       }
     }
@@ -2120,7 +2120,7 @@ const data3_0: Protocol[] = [
     listedAt: 1681122429,
     dimensions: {
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "aevo"
       },
       "open-interest": "aevo-perps-oi"
@@ -4058,12 +4058,12 @@ const data3_0: Protocol[] = [
     dimensions: {
       derivatives: {
         genuineSpikes: [
-          "1700179200",
-          "1700265600",
-          "1700352000",
-          "1700438400",
-          "1700524800",
-          "1749600000"
+          ["2023-11-17", "-"],
+          ["2023-11-18", "-"],
+          ["2023-11-19", "-"],
+          ["2023-11-20", "-"],
+          ["2023-11-21", "-"],
+          ["2025-06-11", "-"]
         ],
         adapter: "rabbitx"
       },
@@ -4523,7 +4523,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "joe-v2.1",
       dexs: {
-        genuineSpikes: ["1682812800", "1682899200", "1769731200"],
+        genuineSpikes: [["2023-04-30", "-"], ["2023-05-01", "-"], ["2026-01-30", "-"]],
         adapter: "joe-v2.1"
       }
     }
@@ -5302,7 +5302,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "turbos",
       dexs: {
-        genuineSpikes: ["1697328000"],
+        genuineSpikes: [["2023-10-15", "-"]],
         adapter: "turbos"
       }
     }
@@ -6185,7 +6185,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "satori",
       derivatives: {
-        genuineSpikes: ["1691625600"],
+        genuineSpikes: [["2023-08-10", "-"]],
         adapter: "satori"
       },
       "open-interest": "satori-oi"
@@ -6479,7 +6479,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "pulsex-v1",
       dexs: {
-        genuineSpikes: ["1686009600"],
+        genuineSpikes: [["2023-06-06", "-"]],
         adapter: "pulsex-v1"
       }
     }
@@ -7881,7 +7881,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "pulsex-v2",
       dexs: {
-        genuineSpikes: ["1686009600"],
+        genuineSpikes: [["2023-06-06", "-"]],
         adapter: "pulsex-v2"
       }
     }
@@ -8937,7 +8937,7 @@ const data3_0: Protocol[] = [
     listedAt: 1686776222,
     dimensions: {
       fees: {
-        genuineSpikes: ["1729209600"],
+        genuineSpikes: [["2024-10-18", "-"]],
         adapter: "eigenlayer"
       }
     }
@@ -10253,7 +10253,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "phoenix",
       dexs: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "phoenix"
       }
     }
@@ -10358,7 +10358,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "mango-v4",
       derivatives: {
-        genuineSpikes: ["1695081600"],
+        genuineSpikes: [["2023-09-19", "-"]],
         adapter: "mango-v4-perp"
       }
     }
@@ -11310,7 +11310,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       dexs: {
         adapter: "swaap-v2",
-        genuineSpikes: ["1761350400"],
+        genuineSpikes: [["2025-10-25", "-"]],
       }
     }
   },
@@ -12671,11 +12671,11 @@ const data3_0: Protocol[] = [
     listedAt: 1690193404,
     dimensions: {
       fees: {
-        genuineSpikes: ["1722211200"],
+        genuineSpikes: [["2024-07-29", "-"]],
         adapter: "dexswap"
       },
       dexs: {
-        genuineSpikes: ["1722211200"],
+        genuineSpikes: [["2024-07-29", "-"]],
         adapter: "dexswap"
       }
     }
@@ -13238,7 +13238,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "velodrome-v2",
       dexs: {
-        genuineSpikes: ["1690156800", "1690243200", "1690329600", "1690416000"],
+        genuineSpikes: [["2023-07-24", "-"], ["2023-07-25", "-"], ["2023-07-26", "-"], ["2023-07-27", "-"]],
         adapter: "velodrome-v2"
       }
     }
@@ -14225,7 +14225,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "dackieswap",
       dexs: {
-        genuineSpikes: ["1691712000", "1691798400", "1691884800", "1691971200"],
+        genuineSpikes: [["2023-08-11", "-"], ["2023-08-12", "-"], ["2023-08-13", "-"], ["2023-08-14", "-"]],
         adapter: "dackieswap"
       }
     }
@@ -14922,7 +14922,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "aark",
       derivatives: {
-        genuineSpikes: ["1691884800", "1691971200"],
+        genuineSpikes: [["2023-08-13", "-"], ["2023-08-14", "-"]],
         adapter: "aark"
       }
     }
@@ -15191,7 +15191,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "sanctum",
       dexs: {
-        genuineSpikes: ["1704240000", "1760054400", "1769817600"],
+        genuineSpikes: [["2024-01-03", "-"], ["2025-10-10", "-"], ["2026-01-31", "-"]],
         adapter: "sanctum"
       }
     }
@@ -18099,7 +18099,7 @@ const data3_1: Protocol[] = [
     github: ["jumperexchange"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1698883200"],
+        genuineSpikes: [["2023-11-02", "-"]],
         adapter: "jumper-exchange"
       },
       "bridge-aggregators": "jumper.exchange"
@@ -18455,7 +18455,7 @@ const data3_1: Protocol[] = [
     listedAt: 1695222044,
     dimensions: {
       derivatives: {
-        genuineSpikes: ["1736640000"],
+        genuineSpikes: [["2025-01-12", "-"]],
         adapter: "panacakeswap-perp"
       }
     }
@@ -19881,7 +19881,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "contango",
       derivatives: {
-        genuineSpikes: ["1697328000", "1697414400"],
+        genuineSpikes: [["2023-10-15", "-"], ["2023-10-16", "-"]],
         adapter: "contango"
       },
       "open-interest": "contango"
@@ -20804,11 +20804,11 @@ const data3_1: Protocol[] = [
     listedAt: 1697592311,
     dimensions: {
       fees: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-basic"
       },
       dexs: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-basic"
       }
     }
@@ -22968,7 +22968,7 @@ const data3_1: Protocol[] = [
       fees: "intent-x",
       derivatives: {
         adapter: "intent-x",
-        genuineSpikes: ["1760054400", "1761868800"],
+        genuineSpikes: [["2025-10-10", "-"], ["2025-10-31", "-"]],
       }
     }
   },
@@ -25809,7 +25809,7 @@ const data3_1: Protocol[] = [
     listedAt: 1701694470,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1707177600"],
+        genuineSpikes: [["2024-02-06", "-"]],
         adapter: "starkdefi"
       }
     }
@@ -25879,7 +25879,7 @@ const data3_1: Protocol[] = [
       fees: "stormtrade",
       derivatives: {
         adapter: "stormtrade",
-        genuineSpikes: ["1761350400"],
+        genuineSpikes: [["2025-10-25", "-"]],
       }
     }
   },
@@ -27150,7 +27150,7 @@ const data3_1: Protocol[] = [
     listedAt: 1703074387,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1710288000"],
+        genuineSpikes: [["2024-03-13", "-"]],
         adapter: "archly-finance-v2"
       }
     }
@@ -27413,7 +27413,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "odos",
       aggregators: {
-        genuineSpikes: ["1708128000", "1708214400", "1708300800", "1708387200"],
+        genuineSpikes: [["2024-02-17", "-"], ["2024-02-18", "-"], ["2024-02-19", "-"], ["2024-02-20", "-"]],
         adapter: "odos"
       }
     }
@@ -28104,7 +28104,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "kyberswap-aggregator",
       aggregators: {
-        genuineSpikes: ["1704067200", "1704153600"],
+        genuineSpikes: [["2024-01-01", "-"], ["2024-01-02", "-"]],
         adapter: "kyberswap"
       }
     }
@@ -30031,7 +30031,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "dydx-v4",
       derivatives: {
-        genuineSpikes: ["1706140800"],
+        genuineSpikes: [["2024-01-25", "-"]],
         adapter: "dydx-v4"
       },
       "open-interest": "dydx-v4"
@@ -30223,7 +30223,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "equation-v2",
       derivatives: {
-        genuineSpikes: ["1706227200", "1706313600", "1706400000"],
+        genuineSpikes: [["2024-01-26", "-"], ["2024-01-27", "-"], ["2024-01-28", "-"]],
         adapter: "equation-v2"
       }
     }
@@ -30693,7 +30693,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "hyperionx",
       derivatives: {
-        genuineSpikes: ["1706832000"],
+        genuineSpikes: [["2024-02-02", "-"]],
         adapter: "hyperionx"
       }
     }
@@ -30870,7 +30870,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "pingu",
       derivatives: {
-        genuineSpikes: ["1716422400"],
+        genuineSpikes: [["2024-05-23", "-"]],
         adapter: "pingu"
       }
     }
@@ -31010,7 +31010,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "avantis",
       derivatives: {
-        genuineSpikes: ["1743552000"],
+        genuineSpikes: [["2025-04-02", "-"]],
         adapter: "avantis"
       },
       "open-interest": "avantis"
@@ -31678,7 +31678,7 @@ const data3_1: Protocol[] = [
     listedAt: 1708016301,
     dimensions: {
       fees: {
-        genuineSpikes: ["1754524800"],
+        genuineSpikes: [["2025-08-07", "-"]],
         adapter: "ethena"
       }
     }
@@ -32036,7 +32036,7 @@ const data3_1: Protocol[] = [
     listedAt: 1708387360,
     dimensions: {
       fees: {
-        genuineSpikes: ["1755734400"],
+        genuineSpikes: [["2025-08-21", "-"]],
         adapter: "meteora-dlmm"
       },
       dexs: "meteora-dlmm"
@@ -33047,7 +33047,7 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "cellana-finance",
       dexs: {
-        genuineSpikes: ["1747785600", "1748476800"],
+        genuineSpikes: [["2025-05-21", "-"], ["2025-05-29", "-"]],
         adapter: "cellana-finance"
       }
     }
@@ -35812,7 +35812,7 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "myx-finance",
       derivatives: {
-        genuineSpikes: ["1712534400", "1712620800"],
+        genuineSpikes: [["2024-04-08", "-"], ["2024-04-09", "-"]],
         adapter: "myx-finance"
       },
       "open-interest": "myx-finance"
@@ -36890,7 +36890,7 @@ const data3_2: Protocol[] = [
       fees: "sanctum-infinity",
       dexs: {
         adapter: "sanctum-infinity",
-        genuineSpikes: ["1761782400"]
+        genuineSpikes: [["2025-10-30", "-"]]
       }
     }
   },
@@ -38661,11 +38661,11 @@ const data3_2: Protocol[] = [
     listedAt: 1712427917,
     dimensions: {
       fees: {
-        genuineSpikes: ["1752537600", "1754956800"],
+        genuineSpikes: [["2025-07-15", "-"], ["2025-08-12", "-"]],
         adapter: "pumpdotfun"
       },
       dexs: {
-        genuineSpikes: ["1732320000", "1732406400", "1732492800"],
+        genuineSpikes: [["2024-11-23", "-"], ["2024-11-24", "-"], ["2024-11-25", "-"]],
         adapter: "pumpfun"
       }
     }
@@ -39051,7 +39051,7 @@ const data3_2: Protocol[] = [
     listedAt: 1712786283,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1712793600"],
+        genuineSpikes: [["2024-04-11", "-"]],
         adapter: "hbarsuite-dex"
       }
     }
@@ -39885,11 +39885,11 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#fjord-foundry",
     dimensions: {
       fees: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v2"
       },
       dexs: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v2"
       }
     }
@@ -40310,11 +40310,11 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "aerodrome-slipstream",
-        genuineSpikes: ["1757548800"],
+        genuineSpikes: [["2025-09-11", "-"]],
       },
       dexs: {
         adapter: "aerodrome-slipstream",
-        genuineSpikes: ["1757548800"]
+        genuineSpikes: [["2025-09-11", "-"]]
       }
     }
   },
@@ -41023,11 +41023,11 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#fjord-foundry",
     dimensions: {
       fees: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v1"
       },
       dexs: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v1"
       }
     }
@@ -42062,7 +42062,7 @@ const data3_2: Protocol[] = [
     openSource: false,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1715731200"],
+        genuineSpikes: [["2024-05-15", "-"]],
         adapter: "cropper-clmm"
       }
     }
@@ -42552,7 +42552,7 @@ const data3_2: Protocol[] = [
     github: ["0xProject"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1674172800", "1678492800", "1680739200"],
+        genuineSpikes: [["2023-01-20", "-"], ["2023-03-11", "-"], ["2023-04-06", "-"]],
         adapter: "zrx"
       }
     }
@@ -42578,11 +42578,11 @@ const data3_2: Protocol[] = [
     listedAt: 1715954045,
     dimensions: {
       fees: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-precision"
       },
       dexs: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-precision"
       }
     }
@@ -46016,11 +46016,11 @@ const data3_3: Protocol[] = [
     listedAt: 1718803914,
     dimensions: {
       fees: {
-        genuineSpikes: ["1718755200", "1718841600"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-06-20", "-"]],
         adapter: "dusa"
       },
       dexs: {
-        genuineSpikes: ["1718755200", "1718841600"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-06-20", "-"]],
         adapter: "dusa"
       }
     }
@@ -46780,7 +46780,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "apex-omni",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "apex-omni"
       },
       "open-interest": "apex-omni",
@@ -46827,7 +46827,7 @@ const data3_3: Protocol[] = [
     github: ["coinhall"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1724457600"],
+        genuineSpikes: [["2024-08-24", "-"]],
         adapter: "hallswap"
       }
     }
@@ -47216,12 +47216,12 @@ const data3_3: Protocol[] = [
     dimensions: {
       "aggregator-derivatives": {
         genuineSpikes: [
-          "1724198400",
-          "1724284800",
-          "1724371200",
-          "1724457600",
-          "1724544000",
-          "1724630400"
+          ["2024-08-21", "-"],
+          ["2024-08-22", "-"],
+          ["2024-08-23", "-"],
+          ["2024-08-24", "-"],
+          ["2024-08-25", "-"],
+          ["2024-08-26", "-"]
         ],
         adapter: "bitoro"
       }
@@ -48120,7 +48120,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "usual",
-        genuineSpikes: ["1760054400"],
+        genuineSpikes: [["2025-10-10", "-"]],
       }
     }
   },
@@ -49749,7 +49749,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#cetus",
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1724803200"],
+        genuineSpikes: [["2024-08-28", "-"]],
         adapter: "cetus-aggregator"
       }
     }
@@ -51823,7 +51823,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724762254,
     dimensions: {
       "aggregator-derivatives": {
-        genuineSpikes: ["1749686400", "1760054400"],
+        genuineSpikes: [["2025-06-12", "-"], ["2025-10-10", "-"]],
         adapter: "mux-protocol-agge"
       }
     }
@@ -52009,7 +52009,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       aggregators: {
         adapter: "dodo-agg",
-        genuineSpikes: ["1769299200"],
+        genuineSpikes: [["2026-01-25", "-"]],
       }
     }
   },
@@ -52193,7 +52193,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724921375,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1722902400", "1722988800", "1723075200"],
+        genuineSpikes: [["2024-08-06", "-"], ["2024-08-07", "-"], ["2024-08-08", "-"]],
         adapter: "gmx-v2-gmx-v2-swap"
       }
     }
@@ -52219,7 +52219,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724922727,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1749081600"],
+        genuineSpikes: [["2025-06-05", "-"]],
         adapter: "drift-protocol-swap"
       }
     }
@@ -52301,7 +52301,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: {
         adapter: "helix-helix-perp",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
       "open-interest": "helix-helix-perp"
     }
@@ -53201,7 +53201,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#Edge",
     dimensions: {
       dexs: {
-        genuineSpikes: ["1689811200"],
+        genuineSpikes: [["2023-07-20", "-"]],
         adapter: "vertex-protocol-swap"
       }
     }
@@ -53308,7 +53308,7 @@ const data3_3: Protocol[] = [
     deadUrl: true,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1695081600"],
+        genuineSpikes: [["2023-09-19", "-"]],
         adapter: "mango-v4-spot"
       }
     }
@@ -55031,7 +55031,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#okx-dex",
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1746403200"],
+        genuineSpikes: [["2025-05-05", "-"]],
         adapter: "okx"
       },
       fees: "okx-swap"

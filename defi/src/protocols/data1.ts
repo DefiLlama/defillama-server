@@ -87,7 +87,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "curve",
       dexs: {
-        genuineSpikes: ["1758758400"],
+        genuineSpikes: [["2025-09-25", "-"]],
         adapter: "curve"
       }
     }
@@ -233,7 +233,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "synthetix",
       derivatives: {
-        genuineSpikes: ["1689292800", "1689379200", "1689465600", "1689638400", "1689811309"],
+        genuineSpikes: [["2023-07-14", "-"], ["2023-07-15", "-"], ["2023-07-16", "-"], ["2023-07-18", "-"], ["2023-07-20", "-"]],
         adapter: "synthetix"
       },
       "open-interest": "synthetix"
@@ -260,7 +260,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "balancer-v1",
       dexs: {
-        genuineSpikes: ["1718755200", "1722297600", "1722816000", "1738540800"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-07-30", "-"], ["2024-08-05", "-"], ["2025-02-03", "-"]],
         adapter: "balancer-v1"
       }
     }
@@ -1046,7 +1046,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "idle",
-        genuineSpikes: ["1751241600",],
+        genuineSpikes: [["2025-06-30", "-"],],
       },
     },
   },
@@ -1856,7 +1856,7 @@ const data: Protocol[] = [
     github: ["1inch"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1747699200"],
+        genuineSpikes: [["2025-05-20", "-"]],
         adapter: "1inch-agg"
       }
     }
@@ -2540,7 +2540,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "defi-swap",
       dexs: {
-        genuineSpikes: ["1700524800"],
+        genuineSpikes: [["2023-11-21", "-"]],
         adapter: "defi-swap"
       }
     }
@@ -4369,7 +4369,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "quickswap-v2",
       dexs: {
-        genuineSpikes: ["1706918400"],
+        genuineSpikes: [["2024-02-03", "-"]],
         adapter: "quickswap-v2"
       }
     }
@@ -5051,11 +5051,11 @@ const data: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     dimensions: {
       fees: {
-        genuineSpikes: ["1743984000", "1744070398"],
+        genuineSpikes: [["2025-04-07", "-"], ["2025-04-07", "-"]],
         adapter: "gmx"
       },
       derivatives: {
-        genuineSpikes: ["1692230400"],
+        genuineSpikes: [["2023-08-17", "-"]],
         adapter: "gmx-derivatives"
       },
       "open-interest": "gmx-derivatives"
@@ -6076,7 +6076,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "pendle",
       dexs: {
-        genuineSpikes: ["1746230400"],
+        genuineSpikes: [["2025-05-03", "-"]],
         adapter: "pendle"
       }
     }
@@ -6154,11 +6154,11 @@ const data: Protocol[] = [
     parentProtocol: "parent#meteora",
     dimensions: {
       fees: {
-        genuineSpikes: ["1747180800"],
+        genuineSpikes: [["2025-05-14", "-"]],
         adapter: "meteora"
       },
       dexs: {
-        genuineSpikes: ["1714867200", "1714953600", "1747180800"],
+        genuineSpikes: [["2024-05-05", "-"], ["2024-05-06", "-"], ["2025-05-14", "-"]],
         adapter: "meteora"
       }
     }
@@ -8323,7 +8323,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#marinade-finance",
     dimensions: {
       fees: {
-        genuineSpikes: ["1708387200", "1708473600", "1708560000", "1708646400"],
+        genuineSpikes: [["2024-02-20", "-"], ["2024-02-21", "-"], ["2024-02-22", "-"], ["2024-02-23", "-"]],
         adapter: "marinade-liquid-staking"
       }
     }
@@ -8410,7 +8410,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.ubeswap.org/code-and-contracts/security#audits"],
     dimensions: {
       dexs: {
-        genuineSpikes: ["1675555200"],
+        genuineSpikes: [["2023-02-05", "-"]],
         adapter: "ubeswap"
       }
     }
@@ -10368,7 +10368,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "allbridge-classic",
       dexs: {
-        genuineSpikes: ["1747872000"],
+        genuineSpikes: [["2025-05-22", "-"]],
         adapter: "allbridge-classic"
       }
     }
@@ -16959,7 +16959,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["paraswap"],
     dimensions: {
       fees: {
-        genuineSpikes: ["1684800000"],
+        genuineSpikes: [["2023-05-23", "-"]],
         adapter: "paraswap"
       },
       aggregators: "paraswap"

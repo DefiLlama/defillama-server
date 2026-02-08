@@ -10303,5 +10303,26 @@ const data5: Protocol[] = [
       fees: "miracletrade",
     },
   },
+  {
+    id: "7366",
+    name: "Canonic",
+    address: null,
+    symbol: "-",
+    url: "https://canonic.trade",
+    description: "World's first Midpoint Anchored Order Book (MAOB) exchange, on MegaETH.",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/canonic.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Order Book"],
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "_canonic",
+    dimensions: {
+      dexs: "canonic",
+      fees: "canonic",
+    },
+  },
 ];
 export default data5;

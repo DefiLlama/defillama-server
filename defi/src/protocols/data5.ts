@@ -5979,7 +5979,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: "31156",
-    category: "Developer tools",
+    category: "Developer Tools",
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "chattershield",

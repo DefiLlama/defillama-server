@@ -8527,7 +8527,7 @@ const data5: Protocol[] = [
     name: "Byte Exchange",
     address: null,
     symbol: "-",
-    url: "https://bexc.io//",
+    url: "https://bexc.io/",
     description: "Byte Exchange is a centralized cryptocurrency exchange platform offering spot trading, P2P markets, staking/earn products, and OTC services",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/byte-exchange.jpg`,

@@ -4815,7 +4815,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Stablecoin",
+    category: "Stablecoin Wrapper",
     chains: ["Scroll"],
     module: "usx.capital/index.js",
     twitter: "usxcapital",

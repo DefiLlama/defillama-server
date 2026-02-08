@@ -2387,6 +2387,7 @@ const data5: Protocol[] = [
       "https://github.com/pashov/audits/blob/master/team/pdf/YuzuUSD-security-review_2025-08-28.pdf",
       "https://dedaub.com/audits/yuzu-money/yuzuusd-october-6-2025/",
     ],
+    stablecoins: ["yuzu-usd"],
     listedAt: 1763085858,
   },
   {
@@ -10279,6 +10280,27 @@ const data5: Protocol[] = [
     twitter: "gnosispay",
     dimensions: {
       dexs: "gnosispay",
+    },
+  },
+  {
+    id: "7365",
+    name: "Miracle Trade",
+    address: null,
+    symbol: "-",
+    url: "https://gnosispay.com/",
+    description: "Gnosis Pay is a decentralized payments infrastructure.",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/gnosis-pay.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["xDai"],
+    module: "dummy.js",
+    twitter: "gnosispay",
+    dimensions: {
+      dexs: "miracletrade",
+      fees: "miracletrade",
     },
   },
 ];

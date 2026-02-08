@@ -15853,7 +15853,7 @@ const data4: Protocol[] = [
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
     parentProtocol: "parent#asymmetry",
-    stablecoins: ["asymmetry-usdaf"],
+    stablecoins: ["asymmetry-usdaf", "asymmetry-usdaf-v2"],
     listedAt: 1748466717,
     dimensions: {
       fees: "asymmetry-usdaf"
@@ -23398,6 +23398,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["cap-labs-dev"],
+    stablecoins: ["cap-cusd"],
     listedAt: 1755167300,
     dimensions: {
       fees: "cap"
@@ -29502,6 +29503,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["uncaplabs"],
+    stablecoins: ["uncap-usd"],
     listedAt: 1760475689,
   },
   {

@@ -8763,6 +8763,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "StandX_Official",
+    stablecoins: ["standx-dusd"],
   },
   {
     id: "parent#stabble",

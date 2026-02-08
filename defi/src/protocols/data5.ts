@@ -3819,6 +3819,7 @@ const data5: Protocol[] = [
         proof: ["https://docs.must.finance/docs/technical-documentation/oracles"],
       },
     ],
+    stablecoins: ["mustang-finance"],
     listedAt: 1764288669,
     dimensions: {
       fees: "mustang",
@@ -7214,6 +7215,7 @@ const data5: Protocol[] = [
     audit_links: ["https://support.jup.ag/hc/en-us/articles/24444189827100-Is-JupUSD-audited"],
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",
+    stablecoins: ["jupusd"],
     listedAt: 1767651878,
   },
   {
@@ -8492,6 +8494,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "StandX_Official",
     parentProtocol: "parent#standx",
+    stablecoins: ["standx-dusd"],
     dimensions: {
       fees: "standx-dusd",
     },

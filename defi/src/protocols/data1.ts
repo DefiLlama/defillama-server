@@ -23375,6 +23375,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/Sperax/Audit_Reports",
     ],
     parentProtocol: "parent#sperax",
+    stablecoins: ["sperax-usd"],
     listedAt: 1641400651,
   },
   {

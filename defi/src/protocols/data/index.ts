@@ -79,6 +79,15 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
       (protocol as any)[field] = childValue
     }
   }
+
+  // Merge parent + child stablecoins
+  const mergedStablecoins = new Set<string>(protocol.stablecoins ?? []);
+  childProtocols.forEach((child) => {
+    (child.stablecoins ?? []).forEach((s: string) => mergedStablecoins.add(s));
+  });
+  if (mergedStablecoins.size > 0) {
+    protocol.stablecoins = [...mergedStablecoins];
+  }
 })
 
 

@@ -132,15 +132,6 @@ export async function craftParentProtocolInternal({
     ...(parentProtocol.deprecated || childProtocolsTvls.every((p) => p.deprecated) ? { deprecated: true } : {}),
   };
 
-  // Merge parent + child stablecoins
-  const mergedStablecoins = new Set<string>(parentProtocol.stablecoins ?? []);
-  childProtocolsTvls.forEach((child) => {
-    (child.stablecoins ?? []).forEach((s: string) => mergedStablecoins.add(s));
-  });
-  if (mergedStablecoins.size > 0) {
-    response.stablecoins = [...mergedStablecoins];
-  }
-
   if (feMini) {
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;

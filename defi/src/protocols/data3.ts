@@ -14653,7 +14653,7 @@ const data3_0: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Avalanche", "Solana"],
+    chains: ["Arbitrum", "Avalanche",],
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     // https://x.com/GMX_IO/status/1866794916392874021 https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861
@@ -49667,7 +49667,6 @@ const data3_3: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "edgeX/index.js",
-    treasury: "edgeX.js",
     twitter: "edgeX_exchange",
     parentProtocol: "parent#edgex",
     listedAt: 1723024710,

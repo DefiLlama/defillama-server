@@ -15,6 +15,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
+    "test:protocols-metadata": "npm run prebuild && jest --testPathPattern='protocols/data.test' --reporters=default --reporters=./reporters/data-test-discord-reporter.js --no-coverage --forceExit",
     "test:api": "cd api-tests && jest",
     "pretest": "npm run prebuild",
     "build": "sls package",

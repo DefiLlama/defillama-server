@@ -99,7 +99,11 @@ test("valid treasury fields", async () => {
 
 
 test("treasury on parent protocol when it exists", async () => {
-  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol)
+  const whitelistedChilds = new Set([
+    'Futarchy AMM', 
+    'Metadao Treasuries', // futrarchy & metadao should not be added up as one is metadao treasury, other belongs to projects deployed on top of metadao
+  ])
+  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol && !whitelistedChilds.has(i.name))
   if (childWithTreasury.length)
     console.log('Migrate treasuries for: ', childWithTreasury.map(i => i.name))
   expect(childWithTreasury.length).toBeLessThanOrEqual(0)
@@ -361,7 +365,7 @@ test("No duplicated adapter type", async () => {
   expect(isArrayUnique(values)).toBeTruthy();
 });
 
-test.only("Dimensions: No two listings share the same module, name or slug", () => {
+test("Dimensions: No two listings share the same module, name or slug", () => {
 
   const moduleMapFromMetadata = {} as Record<string, Record<string, string>>; // adapterType -> protocolName -> module
 

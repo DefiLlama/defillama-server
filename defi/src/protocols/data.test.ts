@@ -440,3 +440,38 @@ test.only("Dimensions: No two listings share the same module, name or slug", () 
     }
   }
 })
+
+const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
+
+test("genuineSpikes entries are in [yyyy-mm-dd, reason] format", () => {
+  const addedChains = new Set<any>();
+  const chainMetadata = Object.entries(chainCoingeckoIds).map(([symbol, data]) => {
+    if (addedChains.has(data)) return;
+    addedChains.add(data);
+    return { ...data, name: symbol };
+  }).filter(Boolean);
+
+  const allMetadata = protocols.concat(chainMetadata as any);
+
+  allMetadata.forEach((p: any) => {
+    if (!p.dimensions) return;
+    for (const [adapterType, config] of Object.entries(p.dimensions)) {
+      if (typeof config !== "object" || !config) continue;
+      const spikes = (config as any).genuineSpikes;
+      if (!spikes) continue;
+
+      expect(Array.isArray(spikes)).toBe(true);
+      spikes.forEach((entry: any, idx: number) => {
+        const context = `${p.name} > ${adapterType} > genuineSpikes[${idx}]`;
+        expect(Array.isArray(entry)).toBe(true);
+        expect(entry).toHaveLength(2);
+        expect(typeof entry[0]).toBe("string");
+        expect(typeof entry[1]).toBe("string");
+        expect(entry[0]).toMatch(DATE_REGEX);
+        // validate it's a real date
+        const parsed = new Date(entry[0]);
+        expect(isNaN(parsed.getTime())).toBe(false);
+      });
+    }
+  });
+})

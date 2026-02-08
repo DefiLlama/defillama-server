@@ -5051,7 +5051,7 @@ const data: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     dimensions: {
       fees: {
-        genuineSpikes: [["2025-04-07", "-"], ["2025-04-07", "-"]],
+        genuineSpikes: [["2025-04-07", "-"],],
         adapter: "gmx"
       },
       derivatives: {

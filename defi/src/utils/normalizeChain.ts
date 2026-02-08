@@ -5649,7 +5649,7 @@ export const chainCoingeckoIds = {
     url: "https://citrea.xyz/",
     chainId: 4114,
   },
-  "ZCash": {
+  "Zcash": {
     geckoId: "zcash",
     symbol: "ZEC",
     cmcId: "1437",

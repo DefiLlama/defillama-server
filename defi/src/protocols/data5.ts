@@ -9384,7 +9384,7 @@ const data5: Protocol[] = [
     },
     parentProtocol: "parent#dreamcash",
   },
-  {
+  /*{ // the adapter does not yet exist
     id: "7322",
     name: "AXC GIFT",
     address: null,
@@ -9405,7 +9405,7 @@ const data5: Protocol[] = [
     github: ["accelerate-protocol"],
     twitter: "AXCLabs",
     listedAt: 1769511779
-  },
+  },*/
   {
     id: "7323",
     name: "Playground",

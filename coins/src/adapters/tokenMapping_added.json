@@ -7879,6 +7879,16 @@
       "symbol": "aeUSDC",
       "to": "coingecko#usd-coin"
     },
+    "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx::usdcx-token": {
+      "decimals": "6",
+      "symbol": "USDCx",
+      "to": "coingecko#usd-coin"
+    },
+    "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx": {
+      "decimals": "6",
+      "symbol": "USDCx",
+      "to": "coingecko#usd-coin"
+    },
     "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin::wrapped-bitcoin": {
       "decimals": "8",
       "symbol": "BTC",

@@ -1,6 +1,9 @@
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
 import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
-import { keyMap, protocolIdMap } from "./constants";
+import { protocolIdMap } from "./constants";
+import { RWA_KEY_MAP } from "./metadataConstants";
+import { sendMessage } from "../utils/discord";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocolIdMap).reduce(
   (acc: { [name: string]: string }, [id, name]: [string, string]) => {
@@ -24,8 +27,11 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     aggregatemcap: number;
     aggregatedactivemcap: number;
   }[] = [];
-  Object.keys(data).forEach((id: any) => {
-    const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
+  await runInPromisePool({
+    items: Object.keys(data),
+    concurrency: 5,
+    processor: async (id: any) => {
+      const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -59,7 +65,8 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
-      console.log(`ERROR ON ID ${id}`)
+      await sendMessage(`ERROR ON ID ${id}`, process.env.RWA_WEBHOOK!, false)
+      throw new Error(`ERROR ON ID ${id}`)
     }
 
     inserts.push({
@@ -72,7 +79,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
       aggregatemcap,
       aggregatedactivemcap,
     });
-  });
+  }});
 
   await initPG();
   await storeHistoricalPG(inserts, timestamp);
@@ -84,7 +91,7 @@ export async function storeMetadata(res: { data: { [id: string]: { [key: string]
   if (Object.keys(data).length == 0) return;
 
   const inserts = Object.keys(data).map((id: any) => {
-    const { [keyMap.activeMcap]: activeMcap, [keyMap.onChain]: onChain, [keyMap.defiActive]: defiActive, ...rest } = data[id];
+    const { [RWA_KEY_MAP.activeMcap]: activeMcap, [RWA_KEY_MAP.onChain]: onChain, [RWA_KEY_MAP.defiActive]: defiActive, ...rest } = data[id];
     return { id, data: JSON.stringify(rest) };
   });
   await initPG();

@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import {
   storeRouteData,
   clearOldCacheVersions,
@@ -12,13 +14,15 @@ import {
   mergePGCacheData,
   PGCacheData,
   PGCacheRecord,
+  getPGSyncMetadata,
+  setPGSyncMetadata,
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import * as sdk from '@defillama/sdk';
-import { normalizeRwaMetadataForApiInPlace, rwaSlug, toFiniteNumberOrZero } from './utils';
+import { rwaSlug, toFiniteNumberOrZero } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
+import { getChainLabelFromKey } from '../utils/normalizeChain';
 
 interface RWACurrentData {
   id: string;
@@ -33,7 +37,7 @@ function convertChainKeysToLabelsNumber(obj: { [chainKey: string]: any }): { [ch
   const result: { [chainLabel: string]: number } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = getChainLabelFromKey(chainKey);
     result[chainLabel] = toFiniteNumberOrZero(obj[chainKey]);
   }
   return result;
@@ -46,7 +50,7 @@ function convertChainKeysToLabelsNestedNumber(
   const result: { [chainLabel: string]: { [key: string]: number } } = {};
   if (!obj || typeof obj !== 'object') return result;
   for (const chainKey of Object.keys(obj)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chainKey);
+    const chainLabel = getChainLabelFromKey(chainKey);
     const protocols = obj[chainKey];
     const outProtocols: { [key: string]: number } = {};
     if (protocols && typeof protocols === 'object') {
@@ -87,13 +91,10 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<any[]> {
 
     if (idCurrent.timestamp > timestamp) timestamp = idCurrent.timestamp;
 
-    // Ensure consistent types in API output (format once)
-    normalizeRwaMetadataForApiInPlace(m.data);
-
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;
     m.data.onChainMcap = convertChainKeysToLabelsNumber(idCurrent.mcap as any);
-    m.data.activeMcap = convertChainKeysToLabelsNumber(idCurrent.activemcap as any);
+    if (m.data.activeMcapData) m.data.activeMcap = convertChainKeysToLabelsNumber(idCurrent.activemcap as any);
     m.data.defiActiveTvl = convertChainKeysToLabelsNestedNumber(idCurrent.defiactivetvl as any);
 
     data.push(m.data);
@@ -117,9 +118,15 @@ function generateIdMap(
   return idMap;
 }
 
-async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: number; totalRecords: number }> {
+async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Promise<{ updatedIds: number; totalRecords: number }> {
   console.log('Generating historical data incrementally...');
   const startTime = Date.now();
+
+  // Create a map of id -> activeMcapData for quick lookup
+  const activeMcapDataMap: { [id: string]: boolean } = {};
+  metadata.forEach((m) => {
+    activeMcapDataMap[m.id] = !!m.data.activeMcapData;
+  });
 
   // Get sync metadata to determine if this is a full or incremental sync
   const syncMetadata = await getSyncMetadata();
@@ -148,12 +155,13 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
       if (!recordsById[record.id]) {
         recordsById[record.id] = [];
       }
+      const activeMcapData = activeMcapDataMap[record.id] ?? false;
       recordsById[record.id].push({
         timestamp: record.timestamp,
         // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
         onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
         defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-        activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
+        activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
       });
     });
 
@@ -186,12 +194,13 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
         const records = await fetchDailyRecordsForIdPG(id);
         if (records.length === 0) continue;
 
+        const activeMcapData = activeMcapDataMap[id] ?? false;
         const historicalData = records.map((record) => ({
           timestamp: record.timestamp,
           // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
           onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
           defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-          activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
+          activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
         }));
 
         await storeHistoricalDataForId(id, historicalData);
@@ -273,10 +282,11 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
   console.log('Generating PG cache with chain breakdown...');
   const startTime = Date.now();
 
-  const syncMetadata = await getSyncMetadata();
+  const syncMetadata = await getPGSyncMetadata();
   const lastSyncTimestamp = syncMetadata?.lastSyncTimestamp
     ? new Date(syncMetadata.lastSyncTimestamp)
     : undefined;
+  const timeNow = new Date()
 
   let updatedIds = 0;
 
@@ -329,6 +339,14 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
       }
     }
   }
+  
+
+  // Update sync metadata
+  setPGSyncMetadata({
+    lastSyncTimestamp: timeNow.toISOString(),
+    lastSyncDate: timeNow.toISOString(),
+    totalIds: updatedIds,
+  })
 
   console.log(`Generated PG cache for ${updatedIds} IDs in ${Date.now() - startTime}ms`);
   return { updatedIds };
@@ -490,6 +508,9 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
 
   for (const item of currentData || []) {
     if (!item || typeof item !== "object") continue;
+
+    const assetType = typeof item.type === "string" ? item.type.trim() : "";
+    if (assetType.toLowerCase() === "wrapper") continue;
 
     assetCount += 1;
 
@@ -719,6 +740,12 @@ interface HistoricalDataPoint {
   defiActiveTvl: number;
 }
 
+interface HistoricalBreakdownDataPoint {
+  onChainMcap: any;
+  activeMcap: any;
+  defiActiveTvl: any;
+}
+
 async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Promise<void> {
   console.log('Generating aggregated historical charts...');
   const startTime = Date.now();
@@ -728,10 +755,29 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const byCategory: { [category: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
   const byPlatform: { [platform: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
 
+  // breakdown by asset
+  const byChainTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
+  const byCategoryTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
+  const byPlatformTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
+  
   function ensureDataPoint(map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } }, key: string, timestamp: number): HistoricalDataPoint {
     if (!map[key]) map[key] = {};
     if (!map[key][timestamp]) map[key][timestamp] = { timestamp, onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
     return map[key][timestamp];
+  }
+
+  function ensureBreakdownDataPoint(map: { [category: string]: HistoricalBreakdownDataPoint }, key: string, timestamp: number, ticker: string): HistoricalBreakdownDataPoint {
+    if (!map[key]) map[key] = { onChainMcap: {}, activeMcap: {}, defiActiveTvl: {} };
+    
+    map[key].onChainMcap[timestamp] = map[key].onChainMcap[timestamp] || {};
+    map[key].activeMcap[timestamp] = map[key].activeMcap[timestamp] || {};
+    map[key].defiActiveTvl[timestamp] = map[key].defiActiveTvl[timestamp] || {};
+    
+    map[key].onChainMcap[timestamp][ticker] = map[key].onChainMcap[timestamp][ticker] || 0;
+    map[key].activeMcap[timestamp][ticker] = map[key].activeMcap[timestamp][ticker] || 0;
+    map[key].defiActiveTvl[timestamp][ticker] = map[key].defiActiveTvl[timestamp][ticker] || 0;
+    
+    return map[key];
   }
 
   // Process each asset's pg-cache for chain breakdown
@@ -753,6 +799,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         defiActiveTvl: rawTotalTvl,
         chains,
       } = record as any;
+      const ticker = m.data.ticker;
 
       const totalOnChainMcap = toFiniteNumberOrZero(rawTotalOnChainMcap);
       const totalActiveMcap = toFiniteNumberOrZero(rawTotalActiveMcap);
@@ -764,6 +811,11 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         chainDp.onChainMcap += toFiniteNumberOrZero((chainData as any)?.onChainMcap);
         chainDp.activeMcap += toFiniteNumberOrZero((chainData as any)?.activeMcap);
         chainDp.defiActiveTvl += toFiniteNumberOrZero((chainData as any)?.defiActiveTvl);
+        
+        const dpa = ensureBreakdownDataPoint(byChainTickerBreakdown, chainKey, timestamp, ticker);
+        dpa.onChainMcap[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.onChainMcap);
+        dpa.activeMcap[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.activeMcap);
+        dpa.defiActiveTvl[timestamp][ticker] += toFiniteNumberOrZero((chainData as any)?.defiActiveTvl);
       }
 
       // Aggregate to "All"
@@ -771,6 +823,11 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       allDp.onChainMcap += totalOnChainMcap;
       allDp.activeMcap += totalActiveMcap;
       allDp.defiActiveTvl += totalTvl;
+      
+      const allDpa = ensureBreakdownDataPoint(byChainTickerBreakdown, 'all', timestamp, ticker);
+      allDpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+      allDpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+      allDpa.defiActiveTvl[timestamp][ticker] += totalTvl;
 
       // Aggregate by category
       for (const cat of categories) {
@@ -778,6 +835,11 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
+        
+        const dpa = ensureBreakdownDataPoint(byCategoryTickerBreakdown, cat, timestamp, ticker);
+        dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
       }
 
       // Aggregate by platform
@@ -786,6 +848,11 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         dp.onChainMcap += totalOnChainMcap;
         dp.activeMcap += totalActiveMcap;
         dp.defiActiveTvl += totalTvl;
+        
+        const dpa = ensureBreakdownDataPoint(byPlatformTickerBreakdown, platform, timestamp, ticker);
+        dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
       }
     }
     processedCount++;
@@ -802,12 +869,32 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       }))
       .sort((a, b) => a.timestamp - b.timestamp);
   }
+  
+  function toSortedArrayBreakdown(map: { [timestamp: string]: any }): any[] {
+    return Object.keys(map)
+      .map((timestamp: string) => ({
+        timestamp: toFiniteNumberOrZero(timestamp),
+        ...map[timestamp],
+      }))
+      .sort((a, b) => a.timestamp - b.timestamp);
+  }
 
   // Store chain charts (includes "All" and individual chains)
   for (const [chain, timestampMap] of Object.entries(byChain)) {
-    const chainLabel = sdk.chainUtils.getChainLabelFromKey(chain);
+    const chainLabel = getChainLabelFromKey(chain);
     const key = rwaSlug(chainLabel);
     await storeRouteData(`charts/chain/${key}.json`, toSortedArray(timestampMap));
+  }
+  
+  // Store chain charts - breakdown by tickers
+  for (const [chain, dataMap] of Object.entries(byChainTickerBreakdown)) {
+    const chainLabel = getChainLabelFromKey(chain);
+    const key = rwaSlug(chainLabel);
+    await storeRouteData(`charts/chain-ticker-breakdown/${key}.json`, {
+      onChainMcap: toSortedArrayBreakdown(dataMap.onChainMcap),
+      activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
+      defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
+    });
   }
 
   // Store category charts
@@ -815,11 +902,31 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     const key = rwaSlug(category);
     await storeRouteData(`charts/category/${key}.json`, toSortedArray(timestampMap));
   }
+  
+  // Store category charts - breakdown by tickers
+  for (const [category, dataMap] of Object.entries(byCategoryTickerBreakdown)) {
+    const key = rwaSlug(category);
+    await storeRouteData(`charts/category-ticker-breakdown/${key}.json`, {
+      onChainMcap: toSortedArrayBreakdown(dataMap.onChainMcap),
+      activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
+      defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
+    });
+  }
 
   // Store platform charts
   for (const [platform, timestampMap] of Object.entries(byPlatform)) {
     const key = rwaSlug(platform);
     await storeRouteData(`charts/platform/${key}.json`, toSortedArray(timestampMap));
+  }
+  
+  // Store platform charts - breakdown by tickers
+  for (const [platform, dataMap] of Object.entries(byPlatformTickerBreakdown)) {
+    const key = rwaSlug(platform);
+    await storeRouteData(`charts/platform-ticker-breakdown/${key}.json`, {
+      onChainMcap: toSortedArrayBreakdown(dataMap.onChainMcap),
+      activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
+      defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
+    });
   }
 
   console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
@@ -845,13 +952,14 @@ async function main() {
 
     // Get metadata for ID map and historical generation
     const metadata = await fetchMetadataPG();
+    console.log(`Fetched metadata for ${metadata.length} RWA assets`);
 
     // Generate current data
     const currentData = await generateCurrentData(metadata);
 
     // Store current data
     if (currentData.length > 0) {
-      console.log('Storing current data...');
+      console.log(`Storing current data for ${currentData.length} assets...`);
       await storeRouteData('current.json', currentData);
     } else {
       console.log("No current data to store");
@@ -867,7 +975,7 @@ async function main() {
     await storeRouteData('stats.json', stats);
 
     // Generate historical data incrementally
-    const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental();
+    const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental(metadata);
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
 
     // Generate PG cache with chain breakdown

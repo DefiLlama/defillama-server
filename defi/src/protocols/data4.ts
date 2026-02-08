@@ -1104,7 +1104,7 @@ const data4: Protocol[] = [
     name: "Marlin Protocol",
     address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
     symbol: "POND",
-    url: "https://marlinprotocol.fi/relay/operator",
+    url: "https://www.marlin.org/",
     description: "TEE coprocessors for decentralized AI",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/marlin-protocol.png`,
@@ -1180,6 +1180,7 @@ const data4: Protocol[] = [
     module: "cvex/index.js",
     twitter: "Jetstreamtrade",
     listedAt: 1736469235,
+    deadUrl: true,
     dimensions: {
       fees: "cvex",
       derivatives: "cvex"
@@ -2003,6 +2004,11 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
   },
@@ -3089,7 +3095,7 @@ const data4: Protocol[] = [
     name: "Fraxtal",
     address: null,
     symbol: "FXTL",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     description:
       "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
     chain: "Ethereum",
@@ -5925,7 +5931,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "foomclub",
+    twitter: "foomclub_",
     treasury: "foom.js",
   },
   {
@@ -6612,7 +6618,7 @@ const data4: Protocol[] = [
     name: "Shield Protocol",
     address: "bsc:0xd9e90df21f4229249e8841580cde7048bf935710",
     symbol: "SHIELD",
-    url: "https://www.shieldprotocol.net",
+    url: "https://www.shieldprotocol.io/",
     description:
       "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
     chain: "Binance",
@@ -7004,6 +7010,9 @@ const data4: Protocol[] = [
     treasury: "flrbank.js",
     twitter: "FlareBank",
     listedAt: 1741195062,
+    dimensions: {
+      fees: "flarebank"
+    }
   },
   {
     id: "5866",
@@ -14500,7 +14509,7 @@ const data4: Protocol[] = [
     name: "Block Analitica",
     address: null,
     symbol: "-",
-    url: "https://blockanalitica.substack.com",
+    url: "https://blockanalitica.com/",
     description: `The risk team behind the DAI (USDS) stablecoin`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/block-analitica.jpg`,
@@ -15092,7 +15101,7 @@ const data4: Protocol[] = [
     name: "Revert Lend",
     address: null,
     symbol: "-",
-    url: "https://revert.finance/#/lending",
+    url: "https://revert.finance/#/ref/w6vno3",
     description: `Revert Lend is a decentralized lending platform for Uniswap v3 Liquidity Providers. It lets users use their Uniswap v3 positions as collateral to borrow ERC-20 tokens.`,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/revert-lend.jpg`,
@@ -17792,7 +17801,7 @@ const data4: Protocol[] = [
     category: "Launchpad",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "LaunchOnBags",
+    twitter: "BagsApp",
     dimensions: {
       fees: "launch-on-bags"
     }
@@ -18400,6 +18409,7 @@ const data4: Protocol[] = [
       dexs: "eulerswap"
     }
   },
+/*
   {
     id: "6359",
     name: "SSV Network",
@@ -18420,6 +18430,7 @@ const data4: Protocol[] = [
       fees: "ssv-network"
     }
   },
+*/
   {
     id: "6360",
     name: "TR ENERGY",
@@ -18661,7 +18672,7 @@ const data4: Protocol[] = [
     name: "EtherFi Borrowing Market",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-borrowing-market.fi.jpg`,
@@ -18693,7 +18704,7 @@ const data4: Protocol[] = [
     name: "EtherFi Cash Liquid",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-cash-liquid.fi.jpg`,
@@ -18812,7 +18823,7 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.com/",
+    url: "https://xstocks.fi/",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -18939,7 +18950,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
     dimensions: {
       aggregators: "rango",
-      "bridge-aggregators": "rango"
+      "bridge-aggregators": {
+        adapter: "rango",
+        genuineSpikes: ["1770163200"]
+      }
     }
   },
   {
@@ -20766,6 +20780,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.app.ethena.fi/join/3y20d",
+    referralUrl: "https://www.app.ethena.fi/join/3y20d",
     description: "tsUSDe is a special version of sUSDe deployed on TON",
     chain: "TON",
     logo: `${baseIconsUrl}/ethena-tsusde.jpg`,
@@ -21005,7 +21020,7 @@ const data4: Protocol[] = [
     category: "Farm",
     chains: ["Ethereum"],
     module: "strata/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     audit_links: ["https://strata-money.gitbook.io/docs/security/audits"],
     listedAt: 1753367619,
   },
@@ -21524,7 +21539,8 @@ const data4: Protocol[] = [
     name: "Evedex",
     address: null,
     symbol: "-",
-    url: "https://exchange.evedex.com/en-US/",
+    url: "https://invite.evedex.com/fua0uojd",
+    referralUrl: "https://invite.evedex.com/fua0uojd",
     description: "Perpetual DEX & Next-Gen Web3 financial ecosystem built on its own L3 blockchain",
     chain: "Eventum",
     logo: `${baseIconsUrl}/evedex.jpg`,
@@ -21534,7 +21550,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Eventum"],
     module: "evedex/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
     treasury: "evedex.js",
     listedAt: 1753803222,
     dimensions: {
@@ -21557,7 +21573,7 @@ const data4: Protocol[] = [
     category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "eventum/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
   },
   {
     id: "6499",
@@ -21961,7 +21977,7 @@ const data4: Protocol[] = [
     name: "WisdomTree",
     address: null,
     symbol: "-",
-    url: "https://www.wisdomtreeconnect.com/",
+    url: "https://www.wisdomtreeprime.com/",
     description:
       "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
     chain: "Ethereum",
@@ -21994,6 +22010,7 @@ const data4: Protocol[] = [
     module: "teralend/index.js",
     twitter: "TeralendFinance",
     listedAt: 1754325942,
+    deadFrom: "2025-09-20",
   },
   {
     id: "6518",
@@ -25571,7 +25588,7 @@ const data4: Protocol[] = [
     name: "SOLID",
     address: null,
     symbol: "-",
-    url: "https://solid.online",
+    url: "https://app.solidcapa.com/dashboard",
     description:
       "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
     chain: "Terra2",
@@ -25594,7 +25611,7 @@ const data4: Protocol[] = [
     name: "Mansory",
     address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
     symbol: "MNSRY",
-    url: "https://mansorytoken.io/",
+    url: "https://www.mansory.com/",
     description:
       "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
     chain: "Binance",
@@ -28333,7 +28350,7 @@ const data4: Protocol[] = [
     name: "Sentora",
     address: null,
     symbol: "-",
-    url: "https://app.euler.finance/governor/sentora?network=ethereum",
+    url: "https://sentora.com/",
     description: "Sentora provides the institutional-grade foundation for powering the next generation of DeFi solutions. Sentora's vault platform unlocks access to DeFi through sophisticated strategies, robust risk management, and enterprise-grade security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sentora.jpg`,
@@ -29140,7 +29157,7 @@ const data4: Protocol[] = [
       derivatives: "spooky-perps"
     }
   },
-  /*{ // need to fix this if Horizon Protocol is rebranded to Xpanse
+  { 
     id: "6845",
     name: "Xpanse Perps",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
@@ -29156,10 +29173,11 @@ const data4: Protocol[] = [
     chains: ["Base", "Mode", "Arbitrum"],
     module: "dummy.js",
     twitter: "XpanseTrade",
+    parentProtocol: "parent#xpanse",
     dimensions: {
       derivatives: "xpanse-perps"
     }
-  },*/
+  },
   {
     id: "6846",
     name: "LODE",
@@ -29771,7 +29789,7 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "strata-tranches/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     parentProtocol: "parent#strata",
     audit_links: ["https://docs.strata.money/security/audits"],
     listedAt: 1760577905,

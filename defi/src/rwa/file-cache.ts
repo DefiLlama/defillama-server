@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Bump this version to reset the cache
-const CACHE_VERSION = 'v1.6';
+const CACHE_VERSION = 'v2.0';
 
 const CACHE_DIR = process.env.RWA_CACHE_DIR || path.join(__dirname, '.rwa-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);
@@ -110,6 +110,7 @@ export function getCacheVersion(): string {
 
 // Sync metadata for tracking incremental updates
 const SYNC_METADATA_FILE = 'sync-metadata.json';
+const PG_SYNC_METADATA_FILE = 'pg_sync-metadata.json';
 
 interface SyncMetadata {
     lastSyncTimestamp: string | null;
@@ -126,9 +127,20 @@ export async function setSyncMetadata(metadata: SyncMetadata): Promise<void> {
     await storeRouteData(SYNC_METADATA_FILE, metadata);
 }
 
+
+export async function getPGSyncMetadata(): Promise<SyncMetadata | null> {
+    const data = await readRouteData(PG_SYNC_METADATA_FILE, { skipErrorLog: true });
+    return data;
+}
+
+export async function setPGSyncMetadata(metadata: SyncMetadata): Promise<void> {
+    await storeRouteData(PG_SYNC_METADATA_FILE, metadata);
+}
+
+
 // Historical data per ID
 export async function storeHistoricalDataForId(id: string, data: any[]): Promise<void> {
-    await storeRouteData(`charts/${id}.json`, { data });
+    await storeRouteData(`charts/${id}.json`, data);
 }
 
 export async function readHistoricalDataForId(id: string): Promise<any[] | null> {

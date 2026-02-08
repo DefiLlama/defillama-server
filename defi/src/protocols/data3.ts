@@ -1864,7 +1864,7 @@ const data3_0: Protocol[] = [
     name: "Acala",
     address: null,
     symbol: "ACA",
-    url: "https://bitcoin.org/",
+    url: "https://acala.network/",
     description: "The DeFi & Liquidity Hub of Polkadot.",
     chain: "Acala",
     logo: `${baseIconsUrl}/acala.png`,
@@ -3236,7 +3236,7 @@ const data3_0: Protocol[] = [
     name: "World Mobile Token",
     address: "cardano:asset1h7jsujzt4s8pup6nrzthr9nhajl0gmwhlzcqw7",
     symbol: "WMT",
-    url: "https://worldmobiletoken.com",
+    url: "https://worldmobile.io/",
     description:
       "World Mobile Token (WMT) is a cryptocurrency used to power the World Mobile Network, a decentralized mobile network that provides affordable and reliable internet access to remote areas.",
     chain: "Cardano",
@@ -3248,7 +3248,7 @@ const data3_0: Protocol[] = [
     chains: ["Cardano"],
     oracles: ["Blockfrost"],
     module: "worldmobiletoken/index.js",
-    twitter: "wmtoken",
+    twitter: "wmchain",
     listedAt: 1681644928,
   },
   {
@@ -5347,6 +5347,7 @@ const data3_0: Protocol[] = [
     module: "croswap/index.js",
     twitter: "CroswapOfficial",
     listedAt: 1683539601,
+    deadUrl: true,
     dimensions: {
       dexs: "croswap"
     }
@@ -5396,7 +5397,7 @@ const data3_0: Protocol[] = [
     name: "GroveCoin",
     address: "bsc:0xf33893de6eb6ae9a67442e066ae9abd228f5290c",
     symbol: "GRV",
-    url: "https://app.groveswap.io/swap",
+    url: "https://grovecoin.io/",
     description:
       "Grove Token is a decentralized and secure green Token built for the future of our planet. Our mission is to Create wealth, for all Grovers, by harnessing the opportunities of a secure, decentralized digital currency in an environmentally conscious way. By compensating nature for years of abuse, Grove will create a healthier, wealthier future for all.",
     chain: "Binance",
@@ -7428,6 +7429,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["265"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1685390267,
+    deadUrl: true
   },
   {
     id: "3040",
@@ -7739,6 +7741,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["114"],
     github: ["Paribus"],
     listedAt: 1685645869,
+    deadFrom: "2025-01-20",
   },
   {
     id: "3055",
@@ -7757,6 +7760,7 @@ const data3_0: Protocol[] = [
     module: "unlimited-trade/index.js",
     twitter: "unlimited_defi",
     listedAt: 1685645872,
+    deadUrl: true,
     dimensions: {
       fees: "unlimited-network"
     }
@@ -9593,7 +9597,7 @@ const data3_0: Protocol[] = [
     name: "ImmutableX",
     address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
     symbol: "IMX",
-    url: "https://www.immutable.com/",
+    url: "https://imx.community/",
     description:
       "Immutable is the leading platform for building web3 games on Ethereum. Powering the next generation of web3 games",
     chain: "Ethereum",
@@ -11519,6 +11523,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["114"],
     parentProtocol: "parent#mare-finance",
     listedAt: 1689257696,
+    deadFrom: "2025-12-23",
   },
   {
     id: "3230",
@@ -13215,7 +13220,7 @@ const data3_0: Protocol[] = [
     name: "Velodrome V2",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/", 
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v2.png`,
@@ -13571,6 +13576,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://certificate.quantstamp.com/full/nayms-2/79da5daf-4326-4f12-a71c-828b72fbea09/index.html"],
     listedAt: 1690838171,
     github: ["nayms"],
+    deadUrl: true,
   },
   {
     id: "3319",
@@ -16467,7 +16473,7 @@ const data3_1: Protocol[] = [
     name: "Aerodrome V1",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/", 
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -18951,20 +18957,21 @@ const data3_1: Protocol[] = [
   {
     id: "3561",
     name: "Tegro",
-    address: "0xc7026a20a640bc71b9074f7aed52a00cd9147091",
-    symbol: "TGR",
+    address: null,
+    symbol: "-",
     url: "https://tegro.com",
     description: "Market & Limit Orders | Orderbooks | Aggregated Liquidity | Real-time Token & NFT Price Charts",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tegro.jpg`,
     audits: "0",
-    gecko_id: "tegro",
+    gecko_id: null,
     cmcId: null,
     tags: ["Order Book"],
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "dummy.js",
     twitter: "TegroFi",
     listedAt: 1695740353,
+    deadUrl: true,
     dimensions: {
       dexs: "tegro"
     }
@@ -19370,7 +19377,7 @@ const data3_1: Protocol[] = [
     name: "DigiFT",
     address: null,
     symbol: "-",
-    url: "https://www.digift.sg",
+    url: "https://www.digift.io/",
     description:
       "DigiFT is the first regulated exchange for on-chain real-world assets, approved as a Recognised Market Operator with a Capital Markets Services license by the Monetary Authority of Singapore. DigiFT allows asset owners to issue blockchain-based security tokens and investors can trade with continuous liquidity via an AMM.",
     chain: "Ethereum",
@@ -19885,7 +19892,7 @@ const data3_1: Protocol[] = [
     name: "sDAI",
     address: "gnosis:0xaf204776c7245bF4147c2612BF6e5972Ee483701",
     symbol: "sDAI",
-    url: "https://agavefinance.eth.limo/",
+    url: "https://agavefinance.eth.limo/sdai/",
     description:
       "All the DAI bridged to Gnosis Chain is earning interest at MakerDAO. This interest is redirected to the sDAI holder. You can use sDAI in Defi like you would normally use xDAI.",
     chain: "xDai",
@@ -21216,7 +21223,7 @@ const data3_1: Protocol[] = [
     previousNames: ["Maker RWA"],
     address: "0x56072c95faa701256059aa122697b133aded9279",
     symbol: "SKY",
-    url: "https://makerdao.com/en/",
+    url: "https://sky.money/",
     description:
       "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",
     chain: "Ethereum",
@@ -22173,7 +22180,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["CLMM"],
     chains: ["Polygon"],
     module: "dummy.js",
     twitter: "CryptoAlgebra",
@@ -22444,7 +22451,7 @@ const data3_1: Protocol[] = [
     name: "PAAL AI",
     address: "0x14fee680690900ba0cccfc76ad70fd1b95d10e16",
     symbol: "PAAL",
-    url: "https://paalai.io",
+    url: "https://www.paal.ai/",
     description:
       "PAAL is an AI-powered digital companion that enhances user experiences on platforms like Discord and Telegram. Using advanced NLP, Machine Learning, and Automation, it offers personalized interactions.",
     chain: "Ethereum",
@@ -26899,7 +26906,8 @@ const data3_1: Protocol[] = [
     treasury: "syncus.js",
     twitter: "Syncus_Fi",
     listedAt: 1702903725,
-    deadUrl: true
+    deadUrl: true,
+    deadFrom: "2024-04-21"
   },
   {
     id: "3930",
@@ -31357,10 +31365,10 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4122",
-    name: "Octopus Network",
+    name: "Octopus Network", // rebranded to Omnity Network
     address: "near:f5cfbc74057c610c8ef151a439252680ac68c6dc.factory.bridge.near",
     symbol: "OCT",
-    url: "https://oct.network/",
+    url: "https://www.omnity.network/",
     description:
       "The Octopus Network is a multi-chain Web3 infrastructure that empowers appchains with flexible and affordable share security, trust-minimized interoperability, and more",
     chain: "Near",
@@ -31371,7 +31379,7 @@ const data3_1: Protocol[] = [
     category: "Restaking",
     chains: ["Near"],
     module: "octopus-network.js",
-    twitter: "oct_network",
+    twitter: "OmnityNetwork",
     audit_links: [
       "https://github.com/octopus-network/restaking-base/blob/main/blocksec_octopus_network_restaking_v1.0_signed.pdf",
     ],
@@ -34269,7 +34277,7 @@ const data3_2: Protocol[] = [
     name: "Velodrome V3",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/",
     description:
       "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
     chain: "Optimism",
@@ -34485,7 +34493,7 @@ const data3_2: Protocol[] = [
     name: "ETCMC DEX", // previous ETCPOW
     address: "ethereumclassic:0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83",
     symbol: "ETCPOW",
-    url: "https://etc-mc.com",
+    url: "https://swap.etcmc.xyz/#/swap",
     description:
       "ETCPOW is an ERC20 token on the Ethereum Classic network. It is designed to become the lifeblood of the ETCMC ecosystem, a community-driven initiative aimed at promoting decentralization and rewarding network participation. With a fixed supply of 1 billion tokens, ETCPOW is poised to become a cornerstone of the Ethereum Classic landscape.",
     chain: "EthereumClassic",
@@ -34526,7 +34534,7 @@ const data3_2: Protocol[] = [
     name: "Gomble Games",
     address: "bsc:0xd8002d4bd1d50136a731c141e3206d516e6d3b3d",
     symbol: "GM",
-    url: "https://gomblegames.com",
+    url: "https://gomble.io/",
     description: "Strategic Casual Game Studio",
     chain: "Binance",
     logo: `${baseIconsUrl}/gomble-games.jpg`,
@@ -35511,7 +35519,7 @@ const data3_2: Protocol[] = [
     name: "MVL Staking",
     address: "0xa849eaae994fb86afa73382e9bd88c2b6b18dc71",
     symbol: "MVL",
-    url: "https://mvlbridge.io/",
+    url: "https://mvlchain.io/",
     description: `For the past few years, MVL has successfully operated 'TADA', a fast-growing ride-hailing service in Southeast Asia, and 'ONiON Mobility', which develops and operates electric vehicle production and energy infrastructure. MVL is in the process of connecting this to the blockchain ecosystem. MVL Staking rewards are based on the actual business profits of TADA and ONiON. MVL uses Ethereum and BSC and has single staking and LP staking. It is divided into staking with daily rewards and staking with lock up`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mvl-staking.jpg`,
@@ -38201,7 +38209,8 @@ const data3_2: Protocol[] = [
     name: "ether.fi Liquid",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://www.ether.fi/app/liquid",
+    url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description:
       "Liquid is an automated DeFi strategy vault that provides ether.fi users a simple access point to use their eETH in the DeFi ecosystem",
     chain: "Ethereum",
@@ -38529,6 +38538,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/pashov/audits/blob/master/solo/pdf/Lumin-security-review.pdf"],
     listedAt: 1712324027,
+    deadFrom: "2024-11-30",
   },
   {
     id: "4445",
@@ -38883,7 +38893,7 @@ const data3_2: Protocol[] = [
     previousNames: ["Karak"],
     address: null,
     symbol: "-",
-    url: "https://karak.network",
+    url: "https://opengdp.network/",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opengdp-shared-security.jpg`,
@@ -40129,10 +40139,10 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4517",
-    name: "1INTRO",
+    name: "1INTRO", // rebrand to Coinchef
     address: "solana:inTCqHJaLAETUxvRZ2kC45G2sThq9BFWVimfaQw7t6w",
     symbol: "INTRO",
-    url: "https://www.1intro.com",
+    url: "https://app.coinchef.com/trending",
     description:
       "1INTRO redefines the finance ecosystem on Solana with a smart platform that uses AI to improve Liquidity Bootstrapping Pool (LBP), DEX, and token deployment, elevating both the user experience and operational efficiency",
     chain: "Solana",
@@ -40143,7 +40153,7 @@ const data3_2: Protocol[] = [
     tags: ["AMM"],
     chains: ["Solana"],
     module: "1intro/index.js",
-    twitter: "1intro",
+    twitter: "coinchefsol",
     audit_links: [
       "https://files.1intro.com/public/SecurityCodeReview.pdf",
       "https://files.1intro.com/public/SecurityCodeReview1DEX.pdf",
@@ -40283,7 +40293,7 @@ const data3_2: Protocol[] = [
     name: "Aerodrome Slipstream",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/",
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -44496,7 +44506,7 @@ const data3_2: Protocol[] = [
     //previousName: ["Dragon Swap V2 Sei"],
     address: 'sei:0x0a526e425809aEA71eb279d24ae22Dee6C92A4Fe',
     symbol: "DRG",
-    url: "https://dragonswap.app",
+    url: "https://saphyre.xyz/",
     description: "Execution Infrastructure for On-Chain Trading.",
     chain: "Sei",
     logo: `${baseIconsUrl}/saphyre-v2.jpg`,
@@ -49265,7 +49275,8 @@ const data3_3: Protocol[] = [
     name: "Reya Bridge",
     address: null,
     symbol: "-",
-    url: "https://reya.network",
+    url: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
+    referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description:
       "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
     chain: "Ethereum",
@@ -56075,13 +56086,14 @@ const data3_3: Protocol[] = [
   },*/
   {
     id: "5251",
-    name: "Truemarkets",
+    name: "Trueo",
+    previousNames: ["TrueMarkets"],
     address: "base:0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab",
     symbol: "TRUE",
-    url: "https://truemarkets.org",
+    url: "https://trueo.com/",
     description: "News through markets. Bounties on truth.",
     chain: "Base",
-    logo: `${baseIconsUrl}/truemarkets.jpg`,
+    logo: `${baseIconsUrl}/trueo.jpg`,
     audits: "0",
     gecko_id: "true",
     cmcId: null,
@@ -56089,13 +56101,14 @@ const data3_3: Protocol[] = [
     chains: ["Base"],
     module: "truemarkets/index.js",
     oraclesBreakdown: [ { name: "TruthOracle", type: "Primary", proof: [] } ],
-    twitter: "truemarkets",
+    twitter: "Trueo_app",
     listedAt: 1729254083,
     treasury: 'truemarkets.js',
     dimensions: {
       fees: "truemarkets",
       dexs: "truemarkets",
     },
+    github: ["trueo-protocol"],
   },
   {
     id: "5252",
@@ -56661,7 +56674,7 @@ const data3_3: Protocol[] = [
     name: "Morkie",
     address: "polygon:0xAFb755c5f2ea2aadBaE693d3BF2Dc2C35158dC04",
     symbol: "MORK",
-    url: "https://morkie.finance",
+    url: "https://www.morkie.xyz/",
     description:
       "Morkie is an NFT-FI platform designed to make NFTs accessible to everyone.",
     chain: "Polygon",
@@ -56973,7 +56986,7 @@ const data3_3: Protocol[] = [
     name: "NeuralAI",
     address: "0x32b053f2cba79f80ada5078cb6b305da92bde6e1",
     symbol: "NEURAL",
-    url: "https://stake.goneural.io",
+    url: "https://goneural.ai/",
     description: "AI Toolkit for end-to-end game creation. Generate assets and create fully realized 3D worlds, decentralized and in near realtime",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/neuralai.png`,
@@ -57734,7 +57747,8 @@ const data3_3: Protocol[] = [
     previousNames: ["NAVI Aggregator"],
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX",
-    url: "https://astros.ag/",
+    url: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
+    referralUrl: "https://astros.ag/perp/SUI-USD?referralCode=LHTO2T",
     description:
       "Astros - A DEX Aggregator and perpetual market on SUI, powered by NAVI Protocol",
     chain: "Sui",
@@ -58035,7 +58049,7 @@ const data3_3: Protocol[] = [
     name: "Ocean Point",
     address: "0x509a38b7a1cc0dcd83aa9d06214663d9ec7c7f4a",
     symbol: "BST",
-    url: "https://staking.oceanpoint.finance",
+    url: "https://app.oceanpoint.fi/",
     description:
       "Oceanpoint is a DeFi protocol powered by Blocksquare that tokenizes real estate assets, enabling users to stake and provide liquidity for rewards. Built on Ethereum, it aims to bring liquidity and yield generation to the real estate sector .",
     chain: "Ethereum",
@@ -58094,7 +58108,8 @@ const data3_3: Protocol[] = [
     name: "Reservoir Protocol",
     address: null,
     symbol: "-",
-    url: "https://www.reservoir.xyz",
+    url: "https://app.reservoir.xyz/leaderboard/?referral_code=4bf702ff7d",
+    referralUrl: "https://app.reservoir.xyz/leaderboard/?referral_code=4bf702ff7d",
     description:
       "Reservoir is a pioneering stablecoin protocol designed to be the most trusted and scalable solution in decentralized finance. Offering a suite of products, including the rUSD stablecoin, srUSD liquid yielding asset, and trUSD term-based yielding asset, Reservoir is at the forefront of DeFi innovation. With a focus on real-world asset integration and consistent yield generation, Reservoir is poised to play a crucial role in onboarding the next trillion dollars of assets into the decentralized economy.",
     chain: "Ethereum",
@@ -58377,7 +58392,7 @@ const data3_3: Protocol[] = [
     name: "based AI",
     address: "0x44971abf0251958492fee97da3e5c5ada88b9185",
     symbol: "BASEDAI",
-    url: "https://basedai.fi",
+    url: "https://www.getbased.ai/",
     description:
       "Based AI is a decentralized protocol merging AI with DeFi, offering unique farming opportunities and rewards, including the use of meme tokens like Pepecoin.",
     chain: "Ethereum",
@@ -61070,7 +61085,7 @@ const data3_3: Protocol[] = [
     name: "HashAI",
     address: "0x292fcdd1b104de5a00250febba9bc6a5092a0076",
     symbol: "HASHAI",
-    url: "https://hashai.fi",
+    url: "https://hashai.co.uk/",
     description: "AI-Optimised Crypto Mining. High-Performance Nodes - Available for Rent.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashai.jpg`,
@@ -61145,7 +61160,7 @@ const data3_3: Protocol[] = [
     name: "IoTeX",
     address: "0x6fb3e0a217407efff7ca062d46c26e5d60a14d69",
     symbol: "IOTX",
-    url: "https://eosnetwork.com/eos-evm/",
+    url: "https://iotex.io/",
     description: "The DePIN modular infrastructure for everyone",
     chain: "IoTeX",
     logo: `${baseIconsUrl}/iotex.jpg`,
@@ -61240,7 +61255,7 @@ const data3_3: Protocol[] = [
     name: "Balancer V3",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer V3 is a decentralized AMM protocol featuring a flexible vault architecture and customizable pools with dynamic swap fees and hooks for tailored liquidity management.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer-v3.jpg`,
@@ -61626,7 +61641,7 @@ const data3_3: Protocol[] = [
     name: "OpenGPU",
     address: "0x067Def80D66fB69C276e53b641f37ff7525162f6",
     symbol: "oGPU",
-    url: "https://stake.opengpu.fi",
+    url: "https://opengpu.network/",
     description: "OpenGPU ($oGPU) is a decentralized platform for sharing GPU computing power, enabling scalable AI, rendering, and other high-performance tasks with staking rewards for participants.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opengpu.jpg`,
@@ -61772,7 +61787,7 @@ const data3_3: Protocol[] = [
     name: "DevvE",
     address: "0x8248270620Aa532E4d64316017bE5E873E37cc09",
     symbol: "DEVVE",
-    url: "https://devve.fi",
+    url: "https://devve.com/",
     description: "DevvE is a decentralized launchpad that helps blockchain projects with token launches, fundraising, and community engagement. It offers tools like staking, vesting, and liquidity management for sustainable growth",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/inkswap.jpg`,
@@ -62144,7 +62159,7 @@ const data3_3: Protocol[] = [
     name: "Vader AI",
     address: "base:0x731814e491571a2e9ee3c5b1f7f3b962ee8f4870",
     symbol: "VADER",
-    url: "https://vaderai.fi",
+    url: "https://www.vaderai.ai/",
     description: "Vader AI is an AI agent from VaderResearch, built for farming and staking.",
     chain: "Base",
     logo: `${baseIconsUrl}/vader-ai.jpg`,
@@ -62241,7 +62256,7 @@ const data3_3: Protocol[] = [
     name: "Zeebu",
     address: "0xe77f6acd24185e149e329c1c0f479201b9ec2f4b",
     symbol: "ZBU",
-    url: "https://zeebu.fi",
+    url: "https://www.zeebu.com/",
     description: "ZBU Protocol offers a decentralized liquidity solution specifically tailored for the DeFi ecosystem. It utilizes a unique combination of participant roles and innovative mechanisms to facilitate efficient, secure, and scalable settlements.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zeebu.jpg`,
@@ -62663,7 +62678,7 @@ const data3_3: Protocol[] = [
     name: "Orbs",
     address: "0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa",
     symbol: "ORBS",
-    url: "https://staking.orbs.fi",
+    url: "https://www.orbs.com/",
     description: "Orbs is a decentralized Layer-3 (L3) blockchain infrastructure designed specifically for advanced on-chain trading. Orbs improves on-chain trading by providing technology for aggregated liquidity, advanced trading orders, and decentralized derivatives",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/orbs.jpg`,

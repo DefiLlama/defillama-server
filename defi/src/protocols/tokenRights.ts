@@ -366,7 +366,7 @@ export default {
       { label: "Revenue", hasRight: true, details: "ETHFI" },
     ],
     governanceData: {
-      rights: "LIMITED",
+      rights: "FULL",
       details: "Can vote on grants, parameters & upgrades, treasury diversification activities",
       feeSwitchStatus: "ON",
       feeSwitchDetails: "Foundation to utilise a portion of the treasury to conduct buy-backs of ETHFI tokens while the market price is below US $3, up to a total amount of US $50 million",
@@ -522,7 +522,7 @@ export default {
     governanceData: {
       rights: "LIMITED",
       details:
-        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals; community can propose ideas with 100,000 CAKE balance",
+        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals, community can propose ideas with 10,000 CAKE balance",
       feeSwitchStatus: "ON",
       feeSwitchDetails: "Burns are active",
       links: [

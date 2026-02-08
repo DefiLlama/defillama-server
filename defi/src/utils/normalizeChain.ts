@@ -2941,7 +2941,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 252,
     twitter: "fraxfinance",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     dimensions: {
       fees: "fraxtal",
     },
@@ -5578,7 +5578,7 @@ export const chainCoingeckoIds = {
     github: ["PolymeshAssociation"],
   },
   "MegaETH": {
-    geckoId: "megaeth ",
+    geckoId: "megaeth",
     symbol: "MEGA",
     cmcId: null,
     categories: ["EVM", "Rollup"],
@@ -5833,6 +5833,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
+  "hashkey": "HashKey Chain",
   "fhe": "Mind Network",
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",

@@ -138,6 +138,22 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   // v2
 
+  // v2 - tvl
+  
+  router.get("/v2/metrics/tvl/protocol/:name", ew(getTvlProtocolRoutes('protocol', 'overview')))
+  router.get("/v2/chart/tvl/protocol/:name", ew(getTvlProtocolRoutes('protocol', 'chart-total')))
+  router.get("/v2/chart/tvl/protocol/:name/chain-breakdown", ew(getTvlProtocolRoutes('protocol', 'chart-chain-breakdown')))
+  router.get("/v2/chart/tvl/protocol/:name/token-breakdown", ew(getTvlProtocolRoutes('protocol', 'chart-token-breakdown')))
+  
+  // v2 - treasury
+  
+  router.get("/v2/metrics/treasury/protocol/:name", ew(getTvlProtocolRoutes('treasury', 'overview')))
+  router.get("/v2/chart/treasury/protocol/:name", ew(getTvlProtocolRoutes('treasury', 'chart-total')))
+  router.get("/v2/chart/treasury/protocol/:name/chain-breakdown", ew(getTvlProtocolRoutes('treasury', 'chart-chain-breakdown')))
+  router.get("/v2/chart/treasury/protocol/:name/token-breakdown", ew(getTvlProtocolRoutes('treasury', 'chart-token-breakdown')))
+
+  // v2 - dimensions
+
   router.get("/v2/metrics/:type", ew(getDimensionOverviewRoutes('overview')))
   router.get("/v2/chart/:type", ew(getDimensionOverviewRoutes('chart')))
   router.get("/v2/chart/:type/chain-breakdown", ew(getDimensionOverviewRoutes('chart-chain-breakdown')))
@@ -152,6 +168,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
   router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
   router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/label-breakdown", ew(getDimensionProtocolRoutes('chart-label-breakdown')))
 
 
   /* 
@@ -471,6 +488,162 @@ async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.R
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
+interface TvlProtocolRequestParams {
+  name: string; // protocol id ex: aave, uniswap
+  key: string; // tvl, pool2, staking, borrowed, all, default = tvl
+  currency: string; // token/raw, usd, default = usd
+}
+
+const AllowedProtocolKeys = ['tvl', 'staking', 'borrowed', 'pool2', 'vesting', 'all'];
+const AllowedTreasuryKeys = ['tvl', 'OwnTokens', 'all'];
+const AllowedCurrencies = ['token', 'raw', 'usd'];
+
+function decodeRequestParams(req: HyperExpress.Request): TvlProtocolRequestParams {
+  return {
+    name: decodeURIComponent(req.path_parameters.name),
+    key: req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl',
+    currency: req.query_parameters.currency ? decodeURIComponent(req.query_parameters.currency) : 'usd',
+  }
+}
+
+export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: 'overview' | 'chart-total' | 'chart-chain-breakdown' | 'chart-token-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    let { name, key, currency } = decodeRequestParams(req);
+    
+    if (dataType === 'protocol') {
+      if ((route === 'chart-total' || route === 'chart-chain-breakdown') && !AllowedProtocolKeys.includes(key)) {
+        return errorResponse(res, `Query key=${key} is not allowed`);
+      }
+    } else if (dataType === 'treasury') {
+      if (!AllowedTreasuryKeys.includes(key)) {
+        return errorResponse(res, `Query key=${key} is not allowed`);
+      }
+    }
+    
+    if (route === 'chart-token-breakdown' && !AllowedCurrencies.includes(currency)) {
+      return errorResponse(res, `Query currency=${currency} is not allowed`);
+    }
+
+    name = sluggify({ name } as any);
+    const protocolData = (cache as any)[dataType + 'SlugMap'][name];
+    res.setHeaders({
+      "Expires": get20MinDate()
+    })
+    
+    let protocolDataFull: any = {}
+    
+    // check if it is a parent protocol
+    if (!protocolData && dataType === 'protocol') {
+      const parentProtocol = (cache as any)['parentProtocolSlugMap'][name];
+      if (parentProtocol) {
+        protocolDataFull = await craftParentProtocolV2({
+          parentProtocol: parentProtocol,
+          skipAggregatedTvl: false,
+          feMini: false,
+        });
+      } else {
+        return errorResponse(res, `Protocol ${name} not found`)
+      }
+    } else {
+      if (!protocolData)
+        return errorResponse(res, `Protocol ${name} not found`)
+      
+      protocolDataFull = await craftProtocolV2({
+        protocolData,
+        useNewChainNames: true,
+        skipAggregatedTvl: false,
+        restrictResponseSize: false,
+        feMini: false,
+      });
+    }
+
+    let responseData: any;
+    if (route === 'overview') {
+      responseData = protocolDataFull;
+      delete responseData.tvl;
+      delete responseData.chainTvls;
+      delete responseData.tokens;
+      delete responseData.tokensInUsd;
+    } else {
+      responseData = [];
+      
+      if (dataType === 'protocol') {
+        if (route === 'chart-total' || route === 'chart-chain-breakdown') {
+          const itemByDates: Record<number, any> = {}
+          for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
+            let [chainFilter, keyFilter] = chainAndKey.split('-');
+            
+            if (AllowedProtocolKeys.includes(chainFilter)) continue;
+            if (!keyFilter) keyFilter = 'tvl';
+            
+            if (key === keyFilter || key === 'all') {
+              for (const tvlItem of Object.values((chainData as any).tvl)) {
+                if (route === 'chart-total') {
+                  itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || 0;
+                  itemByDates[(tvlItem as any).date] += Number((tvlItem as any).totalLiquidityUSD);
+                } else {
+                  itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
+                  itemByDates[(tvlItem as any).date][chainFilter] = itemByDates[(tvlItem as any).date][chainFilter] || 0;
+                  itemByDates[(tvlItem as any).date][chainFilter] += Number((tvlItem as any).totalLiquidityUSD);
+                }
+              }
+            }
+          }
+          
+          for (const [date, items] of Object.entries(itemByDates)) {
+            responseData.push([date, items]);
+          }
+        } else if (dataType === 'protocol' && route === 'chart-token-breakdown') {
+          const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
+          for (const item of Object.values(protocolDataFull[tokenKey])) {
+            responseData.push([(item as any).date, (item as any).tokens]);
+          }
+        }
+      } else if (dataType === 'treasury') {
+        const itemByDates: Record<number, any> = {}
+        for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
+          let [chainFilter, keyFilter] = chainAndKey.split('-');
+          
+          if (chainFilter === 'OwnTokens') continue;
+          
+          if (AllowedProtocolKeys.includes(chainFilter)) continue;
+          if (!keyFilter) keyFilter = 'tvl';
+          
+          let dataKey: string = 'tvl';
+          if (route === 'chart-token-breakdown') {
+            dataKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
+          }
+          
+          if (key === keyFilter || key === 'all') {
+            for (const tvlItem of Object.values((chainData as any)[dataKey])) {
+              if (route === 'chart-total') {
+                itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || 0;
+                itemByDates[(tvlItem as any).date] += Number((tvlItem as any).totalLiquidityUSD);
+              } else if (route === 'chart-chain-breakdown') {
+                itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
+                itemByDates[(tvlItem as any).date][chainFilter] = itemByDates[(tvlItem as any).date][chainFilter] || 0;
+                itemByDates[(tvlItem as any).date][chainFilter] += Number((tvlItem as any).totalLiquidityUSD);
+              } else if (route === 'chart-token-breakdown') {
+                itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
+                for (const [symbol, balance] of Object.entries((tvlItem as any).tokens)) {
+                  itemByDates[(tvlItem as any).date][symbol] = itemByDates[(tvlItem as any).date][symbol] || 0;
+                  itemByDates[(tvlItem as any).date][symbol] += Number(balance);
+                }
+              }
+            }
+          }
+        }
+        
+        for (const [date, items] of Object.entries(itemByDates)) {
+          responseData.push([date, items]);
+        }
+      }
+    }
+    
+    return res.json(responseData);
+  }
 }
 
 /* 

@@ -5665,6 +5665,14 @@ export const chainCoingeckoIds = {
     twitter: "union_build",
     url: "https://union.build/",
   },
+  "Open": {
+    geckoId: "openledger-2",
+    symbol: "OPEN",
+    cmcId: "37456",
+    categories: [],
+    twitter: "OpenledgerHQ",
+    url: "https://www.openledger.xyz/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -5657,6 +5657,14 @@ export const chainCoingeckoIds = {
     twitter: "Zcash",
     url: "https://z.cash/",
   },
+  "Union": {
+    geckoId: "union-2",
+    symbol: "U",
+    cmcId: "38270",
+    categories: [],
+    twitter: "union_build",
+    url: "https://union.build/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

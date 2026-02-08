@@ -23872,7 +23872,7 @@ const data3_1: Protocol[] = [
     gecko_id: "cacao",
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Bitcoin", "Kujira", "Ethereum", "Dash", "Mayachain"],
+    chains: ["Bitcoin", "Kujira", "Ethereum", "Dash", "Mayachain", "Zcash"],
     module: "mayachain/index.js",
     twitter: "Maya_Protocol",
     audit_links: [
@@ -30823,7 +30823,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.pike.finance/introduction-to-pike/pyth-oracles-and-price-feeds
     module: "pike/index.js",
     twitter: "PikeFinance",
-    parentProtocol: "parent#pika",
+    parentProtocol: "parent#pike",
     listedAt: 1706973667,
   },
   {

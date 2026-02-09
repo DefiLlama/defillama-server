@@ -263,11 +263,8 @@ function getOnChainTvlAndActiveMcaps(
 
     // Ensure price is always number|null for API consumers.
     // If missing in metadata, keep it null (do not backfill from price feed).
-    if ((finalData[rwaId][RWA_KEY_MAP.price] ?? null) == null) {
-      finalData[rwaId][RWA_KEY_MAP.price] = null;
-    } else {
-      const parsedPrice = toFiniteNumberOrNull(finalData[rwaId][RWA_KEY_MAP.price]);
-      finalData[rwaId][RWA_KEY_MAP.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+      finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(price);
     }
 
     try {

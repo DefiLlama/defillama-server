@@ -89,7 +89,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
   let recentData: any = {}
 
-  const checkAgainstRecentData = (runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday')
+  const checkAgainstRecentData = runType === 'store-all' || runType === 'refill-all' || runType === 'refill-yesterday'
 
   if (checkAgainstRecentData)
     recentData = await getRecentData(adapterType)
@@ -125,10 +125,11 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
   const _debugTimeStart = Date.now()
 
+  // pull all hourly records generated in the last 50 hours to build an hourly cache to speed up hourly adapters that need to pull data for every hour in the day, this is only used when we run store-all to avoid building cache when we run refill for a specific day
   const shouldBuildHourlyCache = runType === 'store-all' && !skipHourlyCache
-  let hourlyCacheData: { cache: Map<string, Map<number, HourlySlice>>, range: { from: number, to: number } } | undefined
+  let hourlyCacheData: { cache: Map<string, Map<string, HourlySlice>>, range: { from: number, to: number } } | undefined
   if (shouldBuildHourlyCache) {
-    const cacheTo = timestampAtStartofHour
+    const cacheTo = timestampAtStartofHour + 2 * ONE_HOUR_IN_SECONDS // we add 2 hours to the current hour to have some buffer
     const cacheFrom = cacheTo - 50 * ONE_HOUR_IN_SECONDS
     hourlyCacheData = await buildHourlyCache({ adapterType, fromTimestamp: cacheFrom, toTimestamp: cacheTo })
   }
@@ -410,13 +411,19 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
       let adaptorRecordV2JSON: any
-      let tb: any
-      let tbl: any
-      let tblc: any
+      let tb: any  // token breakdown global
+      let tbl: any  // token breakdown by label
+      let tblc: any // token breakdown by label by chain
       let hourlySlicesForDebug: any[] | undefined
       let hourlyStoreFn: (() => Promise<void>) | undefined
 
-      if (isHourlyAdapter && runType === 'store-all' && !isRunFromRefillScript) {
+      // if the adapter supports pulling hourly data, we process it with a different function that handles pulling and storing hourly slices, otherwise we run the adapter as normal - we only use the hourly cache for store-all to speed up processing, for refill we want to pull fresh data even for hourly adapters
+      if (isHourlyAdapter) {
+        let parallelProcessCount = 1  // (default) process one hourly slice at a time to avoid overwhelming the system with too many parallel processes
+
+        // if (process.env.UI_TOOL_MODE)
+        //   parallelProcessCount = 3
+
         const result = await processHourlyAdapter({
           adapterType,
           id: id2,
@@ -428,6 +435,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           hourlyCacheData,
           isDryRun,
           checkBeforeInsert,
+          parallelProcessCount,
         })
         adaptorRecordV2JSON = result.adaptorRecordV2JSON
         tb = result.tb

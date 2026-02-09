@@ -1,46 +1,40 @@
 import { deadChainsSet } from "../../../config/deadChains"
 import { AdapterType } from "../../data/types"
-import { getHourlySlicesBulk, getHourlySlicesForProtocol, getHourlyTimeS, upsertHourlySlicesForProtocol } from "../../db-utils/db2"
+import { getHourlySlicesBulk, getHourlySlicesForProtocol, getHourlyTimeS, getUnixTsFromHourlyTimeS, upsertHourlySlicesForProtocol } from "../../db-utils/db2"
 
 export type HourlySlice = {
   timestamp: number
-  id?: string
+  id: string
   data: any
   bl?: any
   blc?: any
   tb?: any
   tbl?: any
   tblc?: any
-  timeS?: string
+  timeS: string
 }
 
-export type HourlyCache = Map<string, Map<number, HourlySlice>>
+export type HourlyCache = Map<string, Map<string, HourlySlice>>
 
 export async function buildHourlyCache({ adapterType, fromTimestamp, toTimestamp }: { adapterType: AdapterType, fromTimestamp: number, toTimestamp: number }): Promise<{ cache: HourlyCache, range: { from: number, to: number } }> {
   const rows = await getHourlySlicesBulk({ adapterType, fromTimestamp, toTimestamp })
   const cache: HourlyCache = new Map()
   rows.forEach((row: any) => {
-    if (!row?.id || typeof row.timestamp !== 'number') return
-    const perProtocol = cache.get(row.id) ?? new Map<number, HourlySlice>()
-    perProtocol.set(row.timestamp, row)
+    if (!row?.id || !row.timeS) return;
+    const perProtocol = cache.get(row.id) ?? new Map<string, HourlySlice>()
+    perProtocol.set(row.timeS, row)
     cache.set(row.id, perProtocol)
   })
   return { cache, range: { from: fromTimestamp, to: toTimestamp } }
 }
 
-export function getCachedSlices(params: { cache?: HourlyCache, cacheRange?: { from: number, to: number }, id: string, fromTimestamp: number, toTimestamp: number }): HourlySlice[] | undefined {
+function getCachedSlices(params: { cache?: HourlyCache, cacheRange?: { from: number, to: number }, id: string, fromTimestamp: number, toTimestamp: number }): Map<string, HourlySlice> | undefined {
   const { cache, cacheRange, id, fromTimestamp, toTimestamp } = params
   if (!cache || !cacheRange) return undefined
   const withinRange = fromTimestamp >= cacheRange.from && toTimestamp <= cacheRange.to
   if (!withinRange) return undefined
-  const perProtocol = cache.get(id)
-  if (!perProtocol) return []
-  const out: HourlySlice[] = []
-  for (const [ts, row] of perProtocol.entries()) {
-    if (ts < fromTimestamp || ts > toTimestamp) continue
-    out.push(row)
-  }
-  return out.sort((a, b) => a.timestamp - b.timestamp)
+  const protocolCache = cache.get(id) ?? new Map<string, HourlySlice>()
+  return protocolCache
 }
 
 type TokenInfo = {
@@ -202,7 +196,7 @@ export function buildTokenBreakdownsByLabel(params: { tokenBreakdown?: any, brea
   }
 }
 
-export function aggregateDailyFromHourlySlices(slices: HourlySlice[], recordTimestamp: number) {
+function aggregateDailyFromHourlySlices(slices: HourlySlice[], recordTimestamp: number) {
   const aggregatedDaily: any = {}
   const dailyBreakdownByLabel: any = {}
   const dailyBreakdownByLabelByChain: any = {}
@@ -427,7 +421,7 @@ export function aggregateDailyFromHourlySlices(slices: HourlySlice[], recordTime
   return { adaptorRecordV2JSON, tb, tbl, tblc, hourlySlicesForDebug }
 }
 
-export type ProcessHourlyAdapterResult = {
+type ProcessHourlyAdapterResult = {
   adaptorRecordV2JSON: any
   tb?: any
   tbl?: any
@@ -447,8 +441,9 @@ export async function processHourlyAdapter(params: {
   hourlyCacheData?: { cache: HourlyCache, range: { from: number, to: number } }
   isDryRun: boolean
   checkBeforeInsert: boolean
+  parallelProcessCount?: number
 }): Promise<ProcessHourlyAdapterResult> {
-  const {
+  let {
     adapterType,
     id,
     module,
@@ -459,13 +454,23 @@ export async function processHourlyAdapter(params: {
     hourlyCacheData,
     isDryRun,
     checkBeforeInsert,
+    // parallelProcessCount = 1,
   } = params
+
+  // if the end timestamp is current time & this hour is not complete yet, we pull the last complete hour instead to avoid having incomplete data for the current hour
+  const now = Math.floor(Date.now() / 1000)
+  if (endTimestamp > now - (now % 3600)) {
+    endTimestamp = now - 3600
+    console.log(`[hourly] Adjusted endTimestamp to last complete hour: ${new Date(endTimestamp * 1e3).toISOString()}`)
+  }
 
   const ONE_HOUR_IN_SECONDS = 60 * 60
   const anchorTs = endTimestamp
   const fromTs = anchorTs - 23 * ONE_HOUR_IN_SECONDS
+  const dbCacheFromTimestamp = endTimestamp + ONE_HOUR_IN_SECONDS * 3 // we add 3 hours to the endTimestamp to have some buffer
+  const dbCacheToTimestamp = anchorTs - 27 * ONE_HOUR_IN_SECONDS
 
-  let existingSlices: any[] = []
+  let existingSlices: Map<string, HourlySlice> = new Map()
   if (!skipHourlyCache) {
     const cached = getCachedSlices({
       cache: hourlyCacheData?.cache,
@@ -475,34 +480,28 @@ export async function processHourlyAdapter(params: {
       toTimestamp: anchorTs,
     })
     if (cached) existingSlices = cached
+    else {
+
+      const res = await getHourlySlicesForProtocol({ adapterType, id, fromTimestamp: dbCacheFromTimestamp, toTimestamp: dbCacheToTimestamp, })
+      res.forEach((row: any) => {
+        existingSlices.set(row.timeS, row)
+      })
+    }
   } else {
     console.log(`[hourly] skipHourlyCache=true for ${adapterType} - ${module}, ignoring existing slices`)
   }
 
-  if (!existingSlices.length) {
-    existingSlices = await getHourlySlicesForProtocol({
-      adapterType,
-      id,
-      fromTimestamp: fromTs,
-      toTimestamp: anchorTs,
-    })
+  const targetTS: string[] = []
+  for (let i = 0; i <= 23; i++) {
+    const hourlyTS = getHourlyTimeS(anchorTs - i * ONE_HOUR_IN_SECONDS)
+    targetTS.push(hourlyTS)
   }
 
-  const existingByTs = new Map<number, any>()
-  existingSlices.forEach((row: any) => {
-    if (typeof row.timestamp === 'number')
-      existingByTs.set(row.timestamp, row)
-  })
-
-  const targetTimestamps: number[] = []
-  for (let i = 23; i >= 0; i--) {
-    const ts = anchorTs - i * ONE_HOUR_IN_SECONDS
-    targetTimestamps.push(ts)
-  }
-
-  const slicesToFetch: number[] = []
-  for (const ts of targetTimestamps) {
-    if (!existingByTs.has(ts)) slicesToFetch.push(ts)
+  const slicesToFetch: string[] = []
+  const existingByTS = new Map<string, HourlySlice>()
+  for (const ts of targetTS) {
+    if (!existingSlices.has(ts)) slicesToFetch.push(ts)
+    else existingByTS.set(ts, existingSlices.get(ts)!)
   }
 
   const newSlices: HourlySlice[] = []
@@ -510,15 +509,20 @@ export async function processHourlyAdapter(params: {
   if (slicesToFetch.length) {
     const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
 
-    for (const ts of slicesToFetch) {
-      console.log(`[hourly] Fetching missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+    for (const timeString of slicesToFetch) { // switch to PromisePool if we want to parallelize with parallelProcessCount > 1
+      const ts = getUnixTsFromHourlyTimeS(timeString)
+      let endTimestampForSlice = ts + ONE_HOUR_IN_SECONDS - 1
+      
+      // console.log(`[hourly] Fetching missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+      
       const res: any = await runAdapter({
         module: adaptor,
-        endTimestamp: ts,
+        endTimestamp: endTimestampForSlice,
         name: module,
         withMetadata: true,
         cacheResults: false,
         deadChains: deadChainsSet,
+        runWindowInSeconds: ONE_HOUR_IN_SECONDS,
       })
 
       const sliceRecord = res.adaptorRecordV2JSON as any
@@ -544,6 +548,7 @@ export async function processHourlyAdapter(params: {
       }
 
       newSlices.push({
+        id,
         timestamp: ts,
         data: sliceRecord.aggregated,
         bl: sliceRecord.breakdownByLabel ?? null,
@@ -551,7 +556,7 @@ export async function processHourlyAdapter(params: {
         tb: sliceTb,
         tbl: sliceTbl ?? null,
         tblc: sliceTblc ?? null,
-        timeS: getHourlyTimeS(ts),
+        timeS: timeString,
       })
     }
   }
@@ -563,7 +568,7 @@ export async function processHourlyAdapter(params: {
       id,
       slices: newSlices,
     })
-  }) : undefined
+  }) : () => (Promise.resolve())
 
   if (newSlices.length && !isDryRun && !checkBeforeInsert) {
     // Execute immediately if not dry-run and not check-before-insert
@@ -572,22 +577,25 @@ export async function processHourlyAdapter(params: {
     console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlices.length} slices)`)
   }
 
-  const newByTs = new Map<number, any>()
-  newSlices.forEach(s => newByTs.set(s.timestamp, s))
+  const newByTS = new Map<string, any>()
+  newSlices.forEach(s => newByTS.set(s.timeS, s))
 
   const fullSlices: HourlySlice[] = []
-  for (const ts of targetTimestamps) {
-    const slice = newByTs.get(ts) || existingByTs.get(ts)
+  for (const ts of targetTS) {
+    const slice = newByTS.get(ts) || existingByTS.get(ts)
     if (!slice) {
       throw new Error(
-        `[hourly] Missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} even after refill`
+        `[hourly] Missing slice for ${adapterType} - ${module} at ${ts} even after refill`
       )
     }
     fullSlices.push(slice as HourlySlice)
   }
 
+  if (fullSlices.length !== 24) 
+    throw new Error(`Expected 24 hourly slices for ${adapterType} - ${module} but got ${fullSlices.length}`)
+
   const aggregated = aggregateDailyFromHourlySlices(fullSlices, recordTimestamp)
-  
+
   // Return the function only if we haven't executed it yet (checkBeforeInsert mode)
   return {
     ...aggregated,

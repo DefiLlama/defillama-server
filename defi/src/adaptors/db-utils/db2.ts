@@ -189,6 +189,12 @@ export function getHourlyTimeS(timestamp: number) {
   return `${yyyy}-${mm}-${dd}-${hh}`
 }
 
+export function getUnixTsFromHourlyTimeS(timeS: string) {
+  const [yyyy, mm, dd, hh] = timeS.split('-').map(Number)
+  const d = new Date(Date.UTC(yyyy, mm - 1, dd, hh))
+  return Math.floor(d.getTime() / 1000)
+}
+
 export async function getHourlySlicesForProtocol({ adapterType, id, fromTimestamp, toTimestamp, transform = a => a }: { adapterType: AdapterType, id: string, fromTimestamp: number, toTimestamp: number, transform?: (a: any) => any}) {
   await init()
 

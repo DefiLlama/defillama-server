@@ -12,13 +12,13 @@ export type ChartBreakdownOptions = 'daily' | 'weekly' | 'monthly'
 export type ProtocolDimensionsExtraConfig = {
     defaultChartView?: ChartBreakdownOptions;
     adapter: string;
-    genuineSpikes?: string[]  // list of unix timestamps with valid spikes,
+    genuineSpikes?: [string, string][]  // list of [yyyy-mm-dd date, reason] with valid spikes
 }
 
 export type DimensionsConfig = {
     [K in AdapterType]?: string | ProtocolDimensionsExtraConfig;
 }
-export interface ProtocolAdaptor extends Protocol {
+export type ProtocolAdaptor = Protocol & {
     defillamaId: string
     displayName: string
     defaultChartView?: ChartBreakdownOptions
@@ -26,7 +26,7 @@ export interface ProtocolAdaptor extends Protocol {
     id2: string
     isProtocolInOtherCategories?: boolean
     protocolType?: ProtocolType
-    adapterType?: ProtocolType
+    adapterType?: AdapterType
     methodologyURL: string
     methodology?: string | IJSON<string> | any
     breakdownMethodology?: IJSON<IJSON<string>> | any

@@ -99,7 +99,11 @@ test("valid treasury fields", async () => {
 
 
 test("treasury on parent protocol when it exists", async () => {
-  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol)
+  const whitelistedChilds = new Set([
+    'Futarchy AMM', 
+    'Metadao Treasuries', // futrarchy & metadao should not be added up as one is metadao treasury, other belongs to projects deployed on top of metadao
+  ])
+  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol && !whitelistedChilds.has(i.name))
   if (childWithTreasury.length)
     console.log('Migrate treasuries for: ', childWithTreasury.map(i => i.name))
   expect(childWithTreasury.length).toBeLessThanOrEqual(0)
@@ -321,7 +325,9 @@ test("no surprise category", async () => {
     "Decentralized AI",
     "Identity & Reputation",
     "Gamified Mining",
-    "Secondary Debt Markets"
+    "Secondary Debt Markets",
+    "Block Builders",
+    "Stablecoin Wrapper"
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -360,7 +366,7 @@ test("No duplicated adapter type", async () => {
   expect(isArrayUnique(values)).toBeTruthy();
 });
 
-test.only("Dimensions: No two listings share the same module, name or slug", () => {
+test("Dimensions: No two listings share the same module, name or slug", () => {
 
   const moduleMapFromMetadata = {} as Record<string, Record<string, string>>; // adapterType -> protocolName -> module
 
@@ -438,4 +444,39 @@ test.only("Dimensions: No two listings share the same module, name or slug", () 
       slugMap[slug] = adaptor.name;
     }
   }
+})
+
+const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
+
+test("genuineSpikes entries are in [yyyy-mm-dd, reason] format", () => {
+  const addedChains = new Set<any>();
+  const chainMetadata = Object.entries(chainCoingeckoIds).map(([symbol, data]) => {
+    if (addedChains.has(data)) return;
+    addedChains.add(data);
+    return { ...data, name: symbol };
+  }).filter(Boolean);
+
+  const allMetadata = protocols.concat(chainMetadata as any);
+
+  allMetadata.forEach((p: any) => {
+    if (!p.dimensions) return;
+    for (const [adapterType, config] of Object.entries(p.dimensions)) {
+      if (typeof config !== "object" || !config) continue;
+      const spikes = (config as any).genuineSpikes;
+      if (!spikes) continue;
+
+      expect(Array.isArray(spikes)).toBe(true);
+      spikes.forEach((entry: any, idx: number) => {
+        const context = `${p.name} > ${adapterType} > genuineSpikes[${idx}]`;
+        expect(Array.isArray(entry)).toBe(true);
+        expect(entry).toHaveLength(2);
+        expect(typeof entry[0]).toBe("string");
+        expect(typeof entry[1]).toBe("string");
+        expect(entry[0]).toMatch(DATE_REGEX);
+        // validate it's a real date
+        const parsed = new Date(entry[0]);
+        expect(isNaN(parsed.getTime())).toBe(false);
+      });
+    }
+  });
 })

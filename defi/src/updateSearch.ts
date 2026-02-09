@@ -2,12 +2,31 @@ import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./protocols/cex";
+import protocols from "./protocols/data";
+import parentProtocolsList from "./protocols/parentProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
+
+// Split camelCase/PascalCase into space-separated words: "MakerDAO" → "Maker DAO", "DexScreener" → "Dex Screener"
+const splitCamelCase = (str: string) =>
+  str.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
+
+// Build search name variants (no-spaces + camelCase-split) for a list of names, excluding duplicates and the original names
+function buildNameVariants(names: string[]): string[] {
+  const originals = new Set(names.map(n => n.toLowerCase()));
+  const variants = new Set<string>();
+  for (const name of names) {
+    const noSpaces = name.replace(/\s+/g, "");
+    const split = splitCamelCase(name);
+    if (!originals.has(noSpaces.toLowerCase())) variants.add(noSpaces);
+    if (!originals.has(split.toLowerCase())) variants.add(split);
+  }
+  return [...variants];
+}
 
 interface SearchResult {
   id: string;
@@ -20,9 +39,11 @@ interface SearchResult {
   mcap?: number;
   volume?: number;
   deprecated?: boolean;
-  type: string;
+  type?: string;
   hideType?: boolean;
   mcapRank?: number;
+  previousNames?: string[];
+  nameVariants?: string[];
   v: number;
 }
 
@@ -250,7 +271,7 @@ const getProtocolSubSections = ({
   }));
 };
 
-async function getAllCurrentSearchResults() {
+async function getAllCurrentSearchResults(index: string) {
   const allResults: Array<SearchResult> = [];
   let offset = 0;
   const limit = 100e3;
@@ -258,7 +279,7 @@ async function getAllCurrentSearchResults() {
 
   while (hasMore) {
     const res: { total: number; results: Array<SearchResult> } = await fetchJson(
-      `https://search.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
+      `https://search-core.defillama.com/indexes/${index}/documents?limit=${limit}&offset=${offset}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -288,6 +309,104 @@ function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Arr
       return !newResultsSet.has(itemId);
     });
 }
+
+// Build previousNames lookup from raw protocol data (keyed by name)
+const previousNamesMap = new Map<string, string[]>();
+for (const p of protocols) {
+  if (p.previousNames?.length) previousNamesMap.set(p.name, p.previousNames as string[]);
+}
+for (const p of parentProtocolsList) {
+  if ((p as any).previousNames?.length) previousNamesMap.set(p.name, (p as any).previousNames);
+}
+
+function buildDirectoryResults(
+  tvlData: { parentProtocols: any[]; protocols: any[] },
+  parentTvl: Record<string, number>,
+  cexs: Array<SearchResult>,
+  tastyMetrics: Record<string, number>,
+) {
+  const otherPages = [
+  {
+    "name": "LlamaFeed",
+    "route": "https://llamafeed.io"
+  }].map(page=>({
+    id: `others_${normalize(page.name)}`,
+    name: page.name,
+    route: page.route,
+    v: 1000,
+  })) as Array<SearchResult>;
+
+  // Deduplicate by protocol url, preferring parent protocols
+  const stripTrailingSlash = (url: string) => url.replace(/\/+$/, "");
+  const urlToIndex = new Map<string, number>();
+  const directoryResults: Array<SearchResult> = [];
+
+  for (const parent of tvlData.parentProtocols) {
+    const route = `/protocol/${sluggifyString(parent.name)}`;
+    const prevNames = previousNamesMap.get(parent.name);
+    if (parent.url) urlToIndex.set(stripTrailingSlash(parent.url), directoryResults.length);
+    const allNames = [parent.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
+    directoryResults.push({
+      id: `directory_parent_${normalize(parent.name)}`,
+      name: parent.name,
+      ...(parent.symbol && parent.symbol !== "-" ? { symbol: parent.symbol } : {}),
+      tvl: parentTvl[parent.id] ?? 0,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
+      route: parent.url,
+      ...(parent.deprecated ? { deprecated: true } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
+      v: tastyMetrics[route] ?? 0
+    });
+  }
+
+  for (const protocol of tvlData.protocols) {
+    const prevNames = previousNamesMap.get(protocol.name) ?? [];
+    const protocolUrl = protocol.url ? stripTrailingSlash(protocol.url) : "";
+    if (protocolUrl && urlToIndex.has(protocolUrl)) {
+      if(prevNames.length > 0){
+        // Child shares URL with an existing entry — merge its previousNames into the parent
+        const parentIdx = urlToIndex.get(protocolUrl)!;
+        const parentEntry = directoryResults[parentIdx];
+        if (!parentEntry.previousNames) parentEntry.previousNames = [];
+        for (const name of prevNames) {
+          if (name !== parentEntry.name && !parentEntry.previousNames.includes(name)) {
+            parentEntry.previousNames.push(name);
+          }
+        }
+        // Rebuild variants with updated previousNames
+        const allNames = [parentEntry.name, ...parentEntry.previousNames];
+        const variants = buildNameVariants(allNames);
+        parentEntry.nameVariants = variants.length ? variants : undefined;
+      }
+      continue;
+    }
+    if (protocolUrl) urlToIndex.set(protocolUrl, directoryResults.length);
+    const route = `/protocol/${sluggifyString(protocol.name)}`;
+    const allNames = [protocol.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
+    directoryResults.push({
+      id: `directory_child_${normalize(protocol.name)}`,
+      name: protocol.name,
+      ...(protocol.symbol && protocol.symbol !== "-" ? { symbol: protocol.symbol } : {}),
+      tvl: protocol.tvl,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
+      route: protocol.url,
+      ...(protocol.deprecated ? { deprecated: true } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
+      v: tastyMetrics[route] ?? 0,
+    });
+  }
+
+  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "");
+  const maxV = Math.max(...allResults.map(r => r.v));
+  const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
+  if (swapEntry) swapEntry.v = maxV;
+  return allResults;
+}
+
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
@@ -299,7 +418,6 @@ async function generateSearchList() {
     tastyMetrics,
     protocolsMetadata,
     chainsMetadata,
-    currentSearchResults,
     coinsData,
     datsData,
   ]: [
@@ -315,7 +433,6 @@ async function generateSearchList() {
     Record<string, number>,
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
-    Array<SearchResult>,
     Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>,
     {
       assetMetadata: Record<string, { name: string; ticker: string }>;
@@ -329,7 +446,7 @@ async function generateSearchList() {
       console.log("Error fetching frontend pages", e);
       return {};
     }),
-    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
+    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`, {
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
@@ -347,7 +464,6 @@ async function generateSearchList() {
       }),
     fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    getAllCurrentSearchResults(),
     fetchJson("https://ask.llama.fi/coins"),
     fetchJson(`https://pro-api.llama.fi/${getEnv('LLAMA_PRO_API_KEY')}/dat/institutions`).catch((e) => {
       console.log("Error fetching institutions", e);
@@ -847,6 +963,7 @@ async function generateSearchList() {
         ...result,
         r: result.r ?? 1,
       })),
+    directoryResults: buildDirectoryResults(tvlData, parentTvl, results.cexs, tastyMetrics),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))
@@ -858,64 +975,69 @@ async function generateSearchList() {
       .map((r) => ({
         ...r,
         v: 0,
-      })),
-    currentSearchResults,
+      }))
   };
 }
 
+async function syncIndex(index: string, newResults: Array<SearchResult>) {
+  const currentResults = await getAllCurrentSearchResults(index);
+  const toDelete = getResultsToDelete(currentResults, newResults);
+
+  if (toDelete.length > 0) {
+    const deleteRes = await fetchJson(`https://search-core.defillama.com/indexes/${index}/documents/delete-batch`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toDelete),
+    });
+
+    const deleteError = deleteRes?.details?.error?.message;
+    if (deleteError) {
+      console.log(`[${index}] delete error:`, deleteError);
+    }
+  }
+
+  if (newResults.length > 0) {
+    const submit = await fetchJson(`https://search-core.defillama.com/indexes/${index}/documents`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newResults),
+    });
+
+    const status = await fetchJson(`https://search-core.defillama.com/tasks/${submit.taskUid}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      },
+    });
+
+    const submitError = status?.details?.error?.message;
+    if (submitError) {
+      console.log(`[${index}] submit error:`, submitError);
+    }
+    console.log(`[${index}] status:`, status);
+  }
+}
+
 const main = async () => {
-  const { results, topResults, currentSearchResults } = await generateSearchList();
+  const { results, directoryResults, topResults } = await generateSearchList();
 
   if (results.length === 0) {
     console.log("No results to submit");
     return;
   }
 
-  const resultsToDelete = getResultsToDelete(currentSearchResults, results);
-
-  const deletedResults = await fetchJson(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(resultsToDelete),
-  });
-
-  const deletedResultsErrorMessage = deletedResults?.details?.error?.message;
-  if (deletedResultsErrorMessage) {
-    console.log(deletedResultsErrorMessage);
-  }
-
-  // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
-  const submit = await fetchJson(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "PUT",
-    headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(results),
-  });
-
-  const status = await fetchJson(`https://search.defillama.com/tasks/${submit.taskUid}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-    },
-  });
+  await syncIndex("pages", results);
+  await syncIndex("directory", directoryResults);
 
   await storeR2("searchlist.json", JSON.stringify(topResults), true, false).catch((e) => {
     console.log("Error storing top results search list", e);
   });
-
-  const submitErrorMessage = status?.details?.error?.message;
-  if (submitErrorMessage) {
-    console.log(submitErrorMessage);
-  }
-  console.log(status);
 };
-
-//export default main
-// main()
 
 // Add retry logic to main function
 const executeWithRetry = async () => {

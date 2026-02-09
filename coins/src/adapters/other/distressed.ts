@@ -324,6 +324,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
   },
   blast: {
+    'USD+': "0x4fee793d435c6d2c10c135983bb9d6d4fc7b9bbd", // got rekt https://blastscan.io/tx/0x7ea97521e9df5837836718f149fcd4bd02633c7ec76e1f03eafeda101a13ecce
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
     YES: '0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c'
   },

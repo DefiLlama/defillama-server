@@ -127,7 +127,7 @@ export function getUniV2Adapter({
         pair.token0.id = pair.token0.id.toLowerCase();
         pair.token1.id = pair.token1.id.toLowerCase();
       });
-      allData.push(
+        allData.push(
         ...pairs.filter(
           ({ token0, token1 }: any) =>
             coreTokenSet.has(token0.id) || coreTokenSet.has(token1.id),
@@ -180,6 +180,8 @@ export function getUniV2Adapter({
 
         const supply = pair.totalSupply;
         const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
+
+        if (aum < minLiquidity) return { price: undefined, confidence };
 
         const onChainPrice = aum / supply;
         return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };

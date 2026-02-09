@@ -8878,6 +8878,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:horizonprotocol.eth"],
     github: ["Horizon-Protocol"],
   },
+  {
+    id: "parent#comet-swap",
+    name: "Comet Swap",
+    url: "https://www.cometswap.app/",
+    description: "Comet Swap is an Astar-native, liquidity-efficient CLMM DEX with ASTR-anchored giveback loop that routes value back to ASTR stakers.",
+    logo: `${baseIconsUrl}/comet-swap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Comet_Swap",
+  },
 ];
 
 export default parentProtocols;

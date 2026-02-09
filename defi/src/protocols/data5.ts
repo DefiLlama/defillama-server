@@ -5921,7 +5921,6 @@ const data5: Protocol[] = [
     chains: ["Kaia"],
     module: "alphasec-bridge/index.js",
     twitter: "AlphaSec_Trade",
-    github: ["alphasec-dex"],
     parentProtocol: "parent#alphasec",
     listedAt: 1766022883,
   },
@@ -5942,7 +5941,6 @@ const data5: Protocol[] = [
     chains: ["AlphaSec"],
     module: "dummy.js",
     twitter: "AlphaSec_Trade",
-    github: ["alphasec-dex"],
     parentProtocol: "parent#alphasec",
     dimensions: {
       fees: "alphasec-spot",

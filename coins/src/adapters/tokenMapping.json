@@ -1051,6 +1051,11 @@
     }
   },
   "ethereum": {
+    "0xc0c17dd08263c16f6b64e772fb9b723bf1344ddf": {
+      "decimals": "18",
+      "symbol": "pmUSD",
+      "to": "coingecko#precious-metals-usd"
+    },
     "0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4": {
       "decimals": "6",
       "symbol": "rwaUSDi",

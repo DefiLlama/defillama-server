@@ -8889,6 +8889,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Comet_Swap",
   },
+  {
+    id: "parent#alphasec",
+    name: "AlphaSec",
+    url: "https://app.alphasec.trade",
+    description: "AlphaSec is a high performance orderbook DEX on the Kaia network, built on a custom Arbitrum Nitro rollup. It delivers a gasless, CEX-like trading experience with sub-10ms execution and full onchain transparency.",
+    logo: `${baseIconsUrl}/alphasec-spot.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlphaSec_Trade",
+    github: ["alphasec-dex"],
+  },
 ];
 
 export default parentProtocols;

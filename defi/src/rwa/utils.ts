@@ -1,4 +1,16 @@
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import { getChainDisplayName } from "../utils/normalizeChain";
+import {
+  RWA_ALWAYS_STRING_ARRAY_FIELDS,
+  RWA_BOOLEAN_OR_NULL_FIELDS,
+  RWA_STRING_OR_NULL_FIELDS,
+  RWA_STABLECOIN_ASSET_CLASSES,
+  RWA_STABLECOIN_CATEGORIES,
+  RWA_STABLECOIN_CLASSIFICATIONS,
+  RWA_GOVERNANCE_ASSET_CLASSES,
+  RWA_GOVERNANCE_CATEGORIES,
+  RWA_GOVERNANCE_CLASSIFICATIONS,
+} from "./metadataConstants";
 
 // convert spreadsheet titles to API format
 export function toCamelCase(str: string): string {
@@ -39,6 +51,37 @@ export const fetchBurnAddresses = (chain: string): string[] =>
   chain == "solana"
     ? ["1nc1nerator11111111111111111111111111111111"]
     : ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"];
+
+/**
+ * Create a fast Airtable header -> canonical key mapper.
+ *
+ * - Known headers are mapped using the provided `keyMap` (canonicalKey -> AirtableHeader).
+ * - Unknown headers fall back to cached `toCamelCase(header)`.
+ * - Unmapped Airtable internal fields starting with `*` are skipped (return null).
+ */
+export function createAirtableHeaderToCanonicalKeyMapper(keyMap: Record<string, string>) {
+  const headerToCanonicalKey: Record<string, string> = {};
+  for (const [canonicalKey, header] of Object.entries(keyMap || {})) {
+    if (typeof header === "string" && header) headerToCanonicalKey[header] = canonicalKey;
+  }
+
+  const camelCache = new Map<string, string>();
+
+  return (header: string): string | null => {
+    if (!header) return null;
+    const mapped = headerToCanonicalKey[header];
+    if (mapped) return mapped;
+
+    // Skip Airtable internal columns by default
+    if (header.startsWith("*")) return null;
+
+    const cached = camelCache.get(header);
+    if (cached) return cached;
+    const computed = toCamelCase(header);
+    camelCache.set(header, computed);
+    return computed;
+  };
+}
 
 // Convert chain keys to chain labels in an object
 export function toFiniteNumberOrZero(value: any): number {
@@ -205,23 +248,9 @@ export function toStringArrayOrNull(value: any): string[] | null {
   return Array.from(new Set(items));
 }
 
-// Some metadata fields should always be exposed as string arrays in the API,
-// even if the underlying stored metadata is a single string (legacy) or mixed types.
-export const ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
-  "website",
-  "twitter",
-  "chain",
-  "assetClass",
-  "category",
-  "issuerSourceLink",
-  "issuerRegistryInfo",
-  "attestationLinks",
-  "descriptionNotes",
-]);
-
 function normalizeStringArrayFieldsInPlace(
   target: any,
-  fields: ReadonlySet<string> = ALWAYS_STRING_ARRAY_FIELDS
+  fields: ReadonlySet<string> = RWA_ALWAYS_STRING_ARRAY_FIELDS
 ): any {
   if (!target || typeof target !== "object") return target;
   for (const field of fields) {
@@ -300,37 +329,70 @@ function getAccessModel(asset: {
     return "Non-transferable";
   }
 
-  if (
-    asset.transferable === false &&
-    asset.selfCustody === false
-  ) {
+  if (asset.selfCustody === false) {
     return "Custodial Only";
   }
 
   return "Unknown";
 }
 
-const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
-  "ticker",
-  "name",
-  "primaryChain",
-  "type",
-  "rwaClassification",
-  "issuer",
-  "isin",
-]);
+function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {
+  const items = toStringArrayOrNull(value);
+  if (!items || !items.length) return null;
 
-const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
-  "attestations",
-  "redeemable",
-  "cexListed",
-  "kycForMintRedeem",
-  "kycAllowlistedWhitelistedToTransferHold",
-  "transferable",
-  "selfCustody",
-  "stablecoin",
-  "governance",
-]);
+  const out: { [chainLabel: string]: string[] } = {};
+  for (const raw of items) {
+    if (!raw) continue;
+    const idx = raw.indexOf(":");
+    if (idx === -1) continue;
+    const chainRaw = raw.slice(0, idx);
+    const address = raw.slice(idx + 1);
+    if (!chainRaw || !address) continue;
+    const chainLabel = getChainDisplayName(chainRaw.toLowerCase(), true);
+    if (!out[chainLabel]) out[chainLabel] = [];
+    out[chainLabel].push(address);
+  }
+
+  // Dedup while preserving order
+  for (const chain of Object.keys(out)) {
+    out[chain] = Array.from(new Set(out[chain]));
+  }
+
+  return Object.keys(out).length ? out : null;
+}
+
+function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean; governance: boolean } {
+  const normalizeStringList = (value: any): string[] => {
+    if (!Array.isArray(value)) return [];
+    return value
+      .filter((v) => typeof v === "string")
+      .map((v: string) => v.trim())
+      .filter(Boolean);
+  };
+
+  const categories = normalizeStringList(target?.category);
+  const assetClasses = normalizeStringList(target?.assetClass);
+
+  const classifications = Array.isArray(target?.rwaClassification)
+    ? normalizeStringList(target?.rwaClassification)
+    : typeof target?.rwaClassification === "string"
+      ? [target.rwaClassification.trim()].filter(Boolean)
+      : [];
+
+  const hasAny = (arr: string[], pred: (s: string) => boolean) => arr.some(pred);
+
+  const stablecoin =
+    hasAny(categories, (c) => c.toLowerCase().includes("stablecoin") || RWA_STABLECOIN_CATEGORIES.has(c)) ||
+    hasAny(assetClasses, (c) => RWA_STABLECOIN_ASSET_CLASSES.has(c)) ||
+    hasAny(classifications, (c) => RWA_STABLECOIN_CLASSIFICATIONS.has(c));
+
+  const governance =
+    hasAny(categories, (c) => c.toLowerCase().includes("governance") || RWA_GOVERNANCE_CATEGORIES.has(c)) ||
+    hasAny(assetClasses, (c) => RWA_GOVERNANCE_ASSET_CLASSES.has(c)) ||
+    hasAny(classifications, (c) => RWA_GOVERNANCE_CLASSIFICATIONS.has(c));
+
+  return { stablecoin, governance };
+}
 
 /**
  * Normalize RWA metadata object into stable API-friendly types.
@@ -344,7 +406,7 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   if (!target || typeof target !== "object") return target;
 
   // Normalize list fields
-  normalizeStringArrayFieldsInPlace(target, ALWAYS_STRING_ARRAY_FIELDS);
+  normalizeStringArrayFieldsInPlace(target, RWA_ALWAYS_STRING_ARRAY_FIELDS);
 
   // Normalize scalar string fields
   for (const field of RWA_STRING_OR_NULL_FIELDS) {
@@ -360,11 +422,43 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   // Must always be a valid enum value (default to "Unknown" when missing/unknown)
   target.accessModel = getAccessModel(target as any);
 
-  // Normalize price
-  if ("price" in target) {
-    target.price = toFiniteNumberOrNull(target.price);
-    if (target.price != null) target.price = formatNumAsNumber(target.price);
+  // Normalize chain display names
+  if (Array.isArray(target.chain)) {
+    target.chain = target.chain.length
+      ? target.chain.map((c: any) => (typeof c === "string" ? getChainDisplayName(c.toLowerCase(), true) : c)).filter(Boolean)
+      : null;
   }
+  if (typeof target.primaryChain === "string" && target.primaryChain) {
+    target.primaryChain = getChainDisplayName(target.primaryChain.toLowerCase(), true);
+  }
+
+  // Normalize Contracts -> { [chainLabel]: string[] }
+  if ("contracts" in target) {
+    const parsed = parseChainAddressListToLabelMap(target.contracts);
+    target.contracts = parsed;
+  }
+
+  // Normalize holdersToRemove (support legacy excludedWallets alias too)
+  if (target.holdersToRemove == null && target.excludedWallets != null) {
+    target.holdersToRemove = target.excludedWallets;
+  }
+  if ("holdersToRemove" in target) {
+    target.holdersToRemove = parseChainAddressListToLabelMap(target.holdersToRemove);
+  }
+  if ("excludedWallets" in target) {
+    // Prevent storing both legacy and canonical variants
+    delete target.excludedWallets;
+  }
+
+  // Derive category flags
+  const flags = deriveStablecoinAndGovernanceFlags(target);
+  target.stablecoin = flags.stablecoin;
+  target.governance = flags.governance;
+
+  // Normalize price
+  if (!("price" in target)) target.price = null;
+  target.price = toFiniteNumberOrNull(target.price);
+  if (target.price != null) target.price = formatNumAsNumber(target.price);
 
   return target;
 }

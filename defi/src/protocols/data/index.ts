@@ -24,6 +24,9 @@ if (fs.existsSync(protocolsJsonPath)) {
   }
 }
 
+// filter out disabled protocols
+protocols = protocols.filter(i => !i.disabled)
+
 export type { Protocol };
 
 protocols.forEach(setProtocolCategory)
@@ -78,6 +81,15 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
     if (childValue !== undefined) {
       (protocol as any)[field] = childValue
     }
+  }
+
+  // Merge parent + child stablecoins
+  const mergedStablecoins = new Set<string>(protocol.stablecoins ?? []);
+  childProtocols.forEach((child) => {
+    (child.stablecoins ?? []).forEach((s: string) => mergedStablecoins.add(s));
+  });
+  if (mergedStablecoins.size > 0) {
+    protocol.stablecoins = [...mergedStablecoins];
   }
 })
 

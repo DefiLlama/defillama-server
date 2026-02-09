@@ -2,8 +2,8 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from 
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 
 class META_RWA_DATA extends Model { }
-class DAILY_RWA_DATA extends Model { }
-class HOURLY_RWA_DATA extends Model { }
+export class DAILY_RWA_DATA extends Model { }
+export class HOURLY_RWA_DATA extends Model { }
 class BACKUP_RWA_DATA extends Model { }
 
 let pgConnection: any;
@@ -193,7 +193,9 @@ async function initializeRwaDB(): Promise<void> {
         const auth = process.env.COINS2_AUTH?.split(",") ?? [];
         if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
-        pgConnection = new Sequelize(auth[0]);
+        pgConnection = new Sequelize(auth[0], {
+            logging: false,
+        });
         initPGTables()
     }
 }
@@ -456,6 +458,30 @@ export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<an
     }
 
     return results;
+}
+
+// Fetch unique timestamps
+export async function fetchTimestampsPG(): Promise<number[]> {
+    const results = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT timestamp FROM "${DAILY_RWA_DATA.getTableName()}" ORDER BY timestamp ASC`,
+        { type: QueryTypes.SELECT }
+    ) as { timestamp: number }[];
+    return results.map((r) => r.timestamp);
+}
+
+// Delete all entries with a given timestamp from DAILY_RWA_DATA and HOURLY_RWA_DATA
+export async function deleteTimestampsPG(timestamp: number): Promise<void> {
+    await DAILY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
+
+    await HOURLY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
 }
 
 // Close the database connection

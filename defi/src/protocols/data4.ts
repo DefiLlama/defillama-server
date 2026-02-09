@@ -468,7 +468,7 @@ const data4: Protocol[] = [
       fees: "SwapX-algebra",
       dexs: {
         adapter: "SwapX-algebra",
-        genuineSpikes: ["1760054400"],
+        genuineSpikes: [["2025-10-10", "-"]],
       },
     }
   },
@@ -1104,7 +1104,7 @@ const data4: Protocol[] = [
     name: "Marlin Protocol",
     address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
     symbol: "POND",
-    url: "https://marlinprotocol.fi/relay/operator",
+    url: "https://www.marlin.org/",
     description: "TEE coprocessors for decentralized AI",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/marlin-protocol.png`,
@@ -1180,6 +1180,7 @@ const data4: Protocol[] = [
     module: "cvex/index.js",
     twitter: "Jetstreamtrade",
     listedAt: 1736469235,
+    deadUrl: true,
     dimensions: {
       fees: "cvex",
       derivatives: "cvex"
@@ -1316,6 +1317,7 @@ const data4: Protocol[] = [
     twitter: "zothdotio",
     audit_links: ["https://docs.zoth.io/zoth/resources/audits"],
     parentProtocol: "parent#zoth",
+    stablecoins: ["zoth-zeusd"],
     listedAt: 1736774553,
   },
   {
@@ -2003,6 +2005,11 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
   },
@@ -3089,7 +3096,7 @@ const data4: Protocol[] = [
     name: "Fraxtal",
     address: null,
     symbol: "FXTL",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     description:
       "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
     chain: "Ethereum",
@@ -3105,7 +3112,6 @@ const data4: Protocol[] = [
   {
     id: "5695",
     name: "Gravity by Galxe",
-    previousNames: ["Gravity"],
     address: "0x9c7beba8f6ef6643abd725e45a4e8387ef260649",
     symbol: "G",
     url: "https://gravity.xyz/",
@@ -3919,7 +3925,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Plume (Deprecated)", "Plume Mainnet"],
+    chains: ["Plume Mainnet"],
     module: "solera/index.js",
     twitter: "SoleraLabs",
     oraclesBreakdown: [
@@ -4120,7 +4126,7 @@ const data4: Protocol[] = [
     listedAt: 1738858207,
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1738540800", "1738627200", "1738713600", "1746489600"],
+        genuineSpikes: [["2025-02-03", "-"], ["2025-02-04", "-"], ["2025-02-05", "-"], ["2025-05-06", "-"]],
         adapter: "enso"
       }
     }
@@ -5104,8 +5110,14 @@ const data4: Protocol[] = [
       },
       {
         name: "Api3",
-        type: "Fallback",
-        proof: ["https://app.takaralend.com/"],
+        type: "Secondary",
+        proof: [
+          "https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures",
+          "https://app.takaralend.com/market/WSEI",
+          "https://app.takaralend.com/market/spSEI",
+          "https://app.takaralend.com/market/USDY",
+        ],
+        startDate: "2025-11-12",
       },
       {
         name: "Pyth",
@@ -5120,6 +5132,13 @@ const data4: Protocol[] = [
     module: "takara/index.js",
     twitter: "TakaraLend",
     audit_links: ["https://takara.gitbook.io/takara-lend/protocol-information/audits"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-05-09",
+      }],
     listedAt: 1739459439,
     dimensions: {
       fees: "takara-lend"
@@ -5723,7 +5742,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "flashbot",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -5925,7 +5944,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "foomclub",
+    twitter: "foomclub_",
     treasury: "foom.js",
   },
   {
@@ -6312,7 +6331,7 @@ const data4: Protocol[] = [
       fees: "hyperswap-v2",
       dexs: {
         adapter: "hyperswap-v2",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
     }
   },
@@ -6612,7 +6631,7 @@ const data4: Protocol[] = [
     name: "Shield Protocol",
     address: "bsc:0xd9e90df21f4229249e8841580cde7048bf935710",
     symbol: "SHIELD",
-    url: "https://www.shieldprotocol.net",
+    url: "https://www.shieldprotocol.io/",
     description:
       "Shield Protocol is an AI-powered DeFi platform built to redefine security, risk management, and profitability in decentralized finance. By integrating advanced AI algorithms, smart hedging strategies, and liquidity optimization, $SHIELD ensures that users can maximize their gains while minimizing risks.",
     chain: "Binance",
@@ -7004,6 +7023,9 @@ const data4: Protocol[] = [
     treasury: "flrbank.js",
     twitter: "FlareBank",
     listedAt: 1741195062,
+    dimensions: {
+      fees: "flarebank"
+    }
   },
   {
     id: "5866",
@@ -9134,6 +9156,7 @@ const data4: Protocol[] = [
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf",
     ],
     parentProtocol: "parent#secured-finance",
+    stablecoins: ["usdfc"],
     listedAt: 1743107377,
   },
   {
@@ -11450,7 +11473,6 @@ const data4: Protocol[] = [
       "Berachain",
       "Scroll",
       "Chiliz",
-      "IoTeX",
       "Mode",
       "Sei",
       "Unichain",
@@ -11757,7 +11779,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "launchlab",
       dexs: {
-        genuineSpikes: ["1745539200"],
+        genuineSpikes: [["2025-04-25", "-"]],
         adapter: "launchlab"
       }
     }
@@ -14500,7 +14522,7 @@ const data4: Protocol[] = [
     name: "Block Analitica",
     address: null,
     symbol: "-",
-    url: "https://blockanalitica.substack.com",
+    url: "https://blockanalitica.com/",
     description: `The risk team behind the DAI (USDS) stablecoin`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/block-analitica.jpg`,
@@ -15092,7 +15114,7 @@ const data4: Protocol[] = [
     name: "Revert Lend",
     address: null,
     symbol: "-",
-    url: "https://revert.finance/#/lending",
+    url: "https://revert.finance/#/ref/w6vno3",
     description: `Revert Lend is a decentralized lending platform for Uniswap v3 Liquidity Providers. It lets users use their Uniswap v3 positions as collateral to borrow ERC-20 tokens.`,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/revert-lend.jpg`,
@@ -15604,6 +15626,7 @@ const data4: Protocol[] = [
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
+    stablecoins: ["smardex-usdn"],
     listedAt: 1748362857,
     dimensions: {
       dexs: "smardex-usdn"
@@ -15794,7 +15817,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "infinifi",
-        genuineSpikes: ["1766793600", "1766880000","1766966400"],
+        genuineSpikes: [["2025-12-27", "-"], ["2025-12-28", "-"],["2025-12-29", "-"]],
       },
     }
   },
@@ -15841,6 +15864,7 @@ const data4: Protocol[] = [
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
     parentProtocol: "parent#asymmetry",
+    stablecoins: ["asymmetry-usdaf", "asymmetry-usdaf-v2"],
     listedAt: 1748466717,
     dimensions: {
       fees: "asymmetry-usdaf"
@@ -16742,6 +16766,13 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/seamless-protocol/audits"],
     parentProtocol: "parent#seamless-protocol",
     listedAt: 1749485042,
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.seamlessprotocol.com/technical/oracles",],
+      },
+    ],
     dimensions: {
       fees: "seamless-v2",
     },
@@ -17792,7 +17823,7 @@ const data4: Protocol[] = [
     category: "Launchpad",
     chains: ["Solana"],
     module: "dummy.js",
-    twitter: "LaunchOnBags",
+    twitter: "BagsApp",
     dimensions: {
       fees: "launch-on-bags"
     }
@@ -18400,6 +18431,7 @@ const data4: Protocol[] = [
       dexs: "eulerswap"
     }
   },
+/*
   {
     id: "6359",
     name: "SSV Network",
@@ -18420,6 +18452,7 @@ const data4: Protocol[] = [
       fees: "ssv-network"
     }
   },
+*/
   {
     id: "6360",
     name: "TR ENERGY",
@@ -18661,7 +18694,7 @@ const data4: Protocol[] = [
     name: "EtherFi Borrowing Market",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-borrowing-market.fi.jpg`,
@@ -18693,7 +18726,7 @@ const data4: Protocol[] = [
     name: "EtherFi Cash Liquid",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     chain: "Scroll",
     logo: `${baseIconsUrl}/etherfi-cash-liquid.fi.jpg`,
@@ -18715,6 +18748,7 @@ const data4: Protocol[] = [
     ],
     dimensions: {
       fees: "etherfi-cash-cards",
+      dexs: "etherfi-cash-cards",
     },
   },
   {
@@ -18812,7 +18846,7 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.com/",
+    url: "https://xstocks.fi/",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -18939,7 +18973,10 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.rango.exchange/smart-contracts/audit-reports"],
     dimensions: {
       aggregators: "rango",
-      "bridge-aggregators": "rango"
+      "bridge-aggregators": {
+        adapter: "rango",
+        genuineSpikes: [["2026-02-04", "-"]]
+      }
     }
   },
   {
@@ -19533,7 +19570,7 @@ const data4: Protocol[] = [
       fees: "carbon",
       derivatives: {
         adapter: "carbon",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -20766,6 +20803,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.app.ethena.fi/join/3y20d",
+    referralUrl: "https://www.app.ethena.fi/join/3y20d",
     description: "tsUSDe is a special version of sUSDe deployed on TON",
     chain: "TON",
     logo: `${baseIconsUrl}/ethena-tsusde.jpg`,
@@ -21005,7 +21043,7 @@ const data4: Protocol[] = [
     category: "Farm",
     chains: ["Ethereum"],
     module: "strata/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     audit_links: ["https://strata-money.gitbook.io/docs/security/audits"],
     listedAt: 1753367619,
   },
@@ -21524,7 +21562,8 @@ const data4: Protocol[] = [
     name: "Evedex",
     address: null,
     symbol: "-",
-    url: "https://exchange.evedex.com/en-US/",
+    url: "https://invite.evedex.com/fua0uojd",
+    referralUrl: "https://invite.evedex.com/fua0uojd",
     description: "Perpetual DEX & Next-Gen Web3 financial ecosystem built on its own L3 blockchain",
     chain: "Eventum",
     logo: `${baseIconsUrl}/evedex.jpg`,
@@ -21534,7 +21573,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Eventum"],
     module: "evedex/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
     treasury: "evedex.js",
     listedAt: 1753803222,
     dimensions: {
@@ -21557,7 +21596,7 @@ const data4: Protocol[] = [
     category: "Canonical Bridge",
     chains: ["Arbitrum"],
     module: "eventum/index.js",
-    twitter: "EveDexOfficial",
+    twitter: "EVEDEX",
   },
   {
     id: "6499",
@@ -21961,7 +22000,7 @@ const data4: Protocol[] = [
     name: "WisdomTree",
     address: null,
     symbol: "-",
-    url: "https://www.wisdomtreeconnect.com/",
+    url: "https://www.wisdomtreeprime.com/",
     description:
       "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
     chain: "Ethereum",
@@ -21994,6 +22033,7 @@ const data4: Protocol[] = [
     module: "teralend/index.js",
     twitter: "TeralendFinance",
     listedAt: 1754325942,
+    deadFrom: "2025-09-20",
   },
   {
     id: "6518",
@@ -22421,11 +22461,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       derivatives: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       "open-interest": "boros-oi"
     },
@@ -22825,7 +22865,7 @@ const data4: Protocol[] = [
     twitter: "humidifi",
     dimensions: {
       dexs: {
-        genuineSpikes: ["1755129600"],
+        genuineSpikes: [["2025-08-14", "-"]],
         adapter: "humidifi"
       }
     }
@@ -23082,6 +23122,10 @@ const data4: Protocol[] = [
     module: "daoaas-swap/index.js",
     twitter: "DAOaaS_Official",
     listedAt: 1754929605,
+    dimensions: {
+      dexs: "daoaas-swap",
+      fees: "daoaas-swap"
+    }
   },
   {
     id: "6567",
@@ -23377,6 +23421,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["cap-labs-dev"],
+    stablecoins: ["cap-cusd"],
     listedAt: 1755167300,
     dimensions: {
       fees: "cap"
@@ -23773,6 +23818,7 @@ const data4: Protocol[] = [
     module: "frax-rwa/index.js",
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
+    stablecoins: ["frax-usd"],
     listedAt: 1755567417,
   },
   {
@@ -24583,7 +24629,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#opensea",
     dimensions: {
       "bridge-aggregators": {
-        genuineSpikes: ["1751414400", "1752105600"],
+        genuineSpikes: [["2025-07-02", "-"], ["2025-07-10", "-"]],
         adapter: "opensea"
       }
     }
@@ -25109,7 +25155,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "woofi-pro-perp",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "woofi-pro-perp"
       }
     }
@@ -25228,7 +25274,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "edgex",
       derivatives: {
-        genuineSpikes: ["1722988800", "1723075200"],
+        genuineSpikes: [["2024-08-07", "-"], ["2024-08-08", "-"]],
         adapter: "edgeX"
       },
       "open-interest": "edgeX",
@@ -25268,11 +25314,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "paradex",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "paradex"
       },
       "open-interest": {
-        genuineSpikes: ["1759190400"],
+        genuineSpikes: [["2025-09-30", "-"]],
         adapter: "paradex"
       },
       "normalized-volume": "paradex"
@@ -25571,7 +25617,7 @@ const data4: Protocol[] = [
     name: "SOLID",
     address: null,
     symbol: "-",
-    url: "https://solid.online",
+    url: "https://app.solidcapa.com/dashboard",
     description:
       "SOLID is an over-collateralized stablecoin protocol on Terra (Phoenix). Users deposit LSTs & IBC assets to mint SOLID; governance token is CAPA.",
     chain: "Terra2",
@@ -25594,7 +25640,7 @@ const data4: Protocol[] = [
     name: "Mansory",
     address: "solana:1xdtu7y3LkkrVCAbm5KGKfYzq1qgKhxxk5AaJBqpump",
     symbol: "MNSRY",
-    url: "https://mansorytoken.io/",
+    url: "https://www.mansory.com/",
     description:
       "Mansory Token (MNSRY) is a branded utility token empowering holders with tiered luxury benefits like VIP events, NFT-authenticated assets, and lifestyle rewards—anchored in the Mansory automotive world.",
     chain: "Binance",
@@ -26679,7 +26725,10 @@ const data4: Protocol[] = [
     chains: ["Arbitrum", "Base", "Ethereum"],
     module: "musical-chairs/index.js",
     twitter: "MusChairs",
-    listedAt: 1757960251
+    listedAt: 1757960251,
+    dimensions: {
+      fees: "musical-chairs",
+    },
   },
   {
     id: "6730",
@@ -27089,7 +27138,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: {
         adapter: "injective-derivatives",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
       "open-interest": "injective-derivatives"
     },
@@ -28201,6 +28250,7 @@ const data4: Protocol[] = [
       fees: "metamask-musd"
     },
     parentProtocol: "parent#metamask",
+    stablecoins: ["metamask-usd"],
   },
   {
     id: "6801",
@@ -28333,7 +28383,7 @@ const data4: Protocol[] = [
     name: "Sentora",
     address: null,
     symbol: "-",
-    url: "https://app.euler.finance/governor/sentora?network=ethereum",
+    url: "https://sentora.com/",
     description: "Sentora provides the institutional-grade foundation for powering the next generation of DeFi solutions. Sentora's vault platform unlocks access to DeFi through sophisticated strategies, robust risk management, and enterprise-grade security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sentora.jpg`,
@@ -29140,7 +29190,7 @@ const data4: Protocol[] = [
       derivatives: "spooky-perps"
     }
   },
-  /*{ // need to fix this if Horizon Protocol is rebranded to Xpanse
+  { 
     id: "6845",
     name: "Xpanse Perps",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
@@ -29156,10 +29206,11 @@ const data4: Protocol[] = [
     chains: ["Base", "Mode", "Arbitrum"],
     module: "dummy.js",
     twitter: "XpanseTrade",
+    parentProtocol: "parent#xpanse",
     dimensions: {
       derivatives: "xpanse-perps"
     }
-  },*/
+  },
   {
     id: "6846",
     name: "LODE",
@@ -29475,6 +29526,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["uncaplabs"],
+    stablecoins: ["uncap-usd"],
     listedAt: 1760475689,
   },
   {
@@ -29762,7 +29814,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://strata.money",
-    description: `Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields. It allows investors to tailor their risk-reward preferences while earning yields through two risk tranches: Senior and Junior`,
+    description: `Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strata-markets.jpg`,
     audits: "2",
@@ -29771,7 +29823,7 @@ const data4: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "strata-tranches/index.js",
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     parentProtocol: "parent#strata",
     audit_links: ["https://docs.strata.money/security/audits"],
     listedAt: 1760577905,
@@ -29960,7 +30012,7 @@ const data4: Protocol[] = [
     gecko_id: "bio-protocol",
     cmcId: "34812",
     category: "Launchpad",
-    chains: ["Ethereum", "Base", "Solana"],
+    chains: ["Ethereum", "Base"],
     module: "bio/index.js",
     twitter: "BioProtocol",
     github: ["bio-xyz"],
@@ -30141,7 +30193,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
+    chains: ["Ethereum"],
     module: "ultrayield/index.js",
     twitter: "ultrayieldapp",
     listedAt: 1761083071,

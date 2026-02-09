@@ -42,6 +42,16 @@
     }
   },
   "supra": {
+    "0x80f0251b74c76f1c477b9209ade65ffb5cfecd9b259875c3865ad645f6c33a3d": {
+      "decimals": "8",
+      "symbol": "iSUPRA",
+      "to": "coingecko#supra"
+    },
+    "0x90a8e901e02ac1539af4a865bbe4a6b96edc27375488803cfbbd6875ec57b281": {
+      "decimals": "8",
+      "symbol": "iUSDC",
+      "to": "coingecko#usd-coin"
+    },
     "0xf90b4b9d4a9d87c39fb3140513e52edc3ead5eaddcb9881b02becdeb63c5793d": {
       "decimals": "6",
       "symbol": "supUSDC",
@@ -6244,10 +6254,15 @@
       "decimals": 5,
       "symbol": "EUTBL"
     },
-    "0x062a1600278af88706fab962821051939841a494674319ca19230a784e57bfff": {
+    "0x046e4e83fe6a22f243f73d0f2e4cdbc4e9ebd868050e9f7e9cbd90f1436d8b44": {
       "decimals": "8",
       "symbol": "FBTC",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x03975bf0ccb0ab5f0a0cc3012234406812824d9d3b890c402ed59609b5f52726": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda-2"
     }
   },
   "milkomeda": {
@@ -8169,6 +8184,11 @@
     }
   },
   "etlk": {
+    "0x5542f82389b76c23f5848268893234d8a63fd5c8": {
+      "to": "coingecko#midas-mmev",
+      "decimals": 18,
+      "symbol": "mMEV"
+    },
     "0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d": {
       "decimals": "5",
       "symbol": "UKTBL",
@@ -13826,6 +13846,23 @@
       "decimals": 6,
       "symbol": "M",
       "to": "coingecko#usd-coin"
+    }
+  },
+  "keeta": {
+    "keeta_anqdilpazdekdu4acw65fj7smltcp26wbrildkqtszqvverljpwpezmd44ssg": {
+      "to": "coingecko#keeta",
+      "decimals": 18,
+      "symbol": "KTA"
+    },
+    "keeta_amnkge74xitii5dsobstldatv3irmyimujfjotftx7plaaaseam4bntb7wnna": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "keeta_apblhar4ncp3ln62wrygsn73pt3houuvj7ic47aarnolpcu67oqn4xqcji3au": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "EURC"
     }
   }
 }

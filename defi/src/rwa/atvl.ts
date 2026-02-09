@@ -11,8 +11,10 @@ import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, storeMetadata } from "./historical";
 import { fetchEvm, fetchSolana } from './balances';
-import { excludedProtocolCategories, keyMap, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
-import { ALWAYS_STRING_ARRAY_FIELDS, fetchBurnAddresses, formatNumAsNumber, normalizeDashToNull, sortTokensByChain, toCamelCase, toFiniteNumberOrNull, toFixedNumber, toStringArrayOrNull } from "./utils";
+import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
+import { RWA_KEY_MAP } from "./metadataConstants";
+import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
+import { sendMessage } from "../utils/discord";
 
 // read TVLs from DB and aggregate RWA token tvls
 async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, timestamp: number) {
@@ -26,14 +28,14 @@ async function getAggregateRawTvls(rwaTokens: { [chain: string]: string[] }, tim
       : await getAllItemsAtTimeS(dailyRawTokensTvl, timestamp);
 
   let aggregateRawTvls: { [pk: string]: { [id: string]: BigNumber } } = {};
-  rawTvls.map((protocol: any) => {
+  rawTvls.forEach((protocol: any) => {
     const category = categoryMap[protocol.id];
     if (excludedProtocolCategories.includes(category)) return;
-    Object.keys(protocol.data).map((chain: string) => {
+    Object.keys(protocol.data).forEach((chain: string) => {
       if (excludedTvlKeys.includes(chain)) return;
       if (!rwaTokens[chain]) return;
 
-      Object.keys(protocol.data[chain]).map((pk: string) => {
+      Object.keys(protocol.data[chain]).forEach((pk: string) => {
         if (!rwaTokens[chain].includes(pk)) return;
         if (!aggregateRawTvls[pk]) aggregateRawTvls[pk] = {};
         aggregateRawTvls[pk][protocol.id] = BigNumber(protocol.data[chain][pk]);
@@ -52,13 +54,13 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
     concurrency: 5,
     processor: async (chain: string) => {
       const tokens: string[] = [];
-      tokensSortedByChain[chain].map((token: string) => {
+      tokensSortedByChain[chain].forEach((token: string) => {
         tokens.push(token.substring(token.indexOf(":") + 1));
       });
 
       try {
         const res = await fetchSupplies(chain, tokens, timestamp == 0 ? undefined : timestamp);
-        Object.keys(res).map((token: string) => {
+        Object.keys(res).forEach((token: string) => {
           totalSupplies[token] = res[token];
         });
       } catch (e) {
@@ -77,7 +79,7 @@ async function getExcludedBalances(
 ) {
   const walletsSortedByChain: { [chain: string]: { [wallet: string]: { id: string; assets: string[] } } } = {};
   Object.keys(finalData).forEach((id: string) => {
-    const chains = finalData[id][keyMap.holdersToRemove];
+    const chains = finalData[id]?.holdersToRemove;
     if (!chains || !Object.keys(chains).length) return;
     Object.keys(chains).forEach((chain: string) => {
       const wallets = chains[chain];
@@ -120,11 +122,11 @@ async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]
   });
 
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
-  peggedAssets.map((coin: any) => {
+  peggedAssets.forEach((coin: any) => {
     const { id, chainCirculating, gecko_id, pegType } = coin;
     if (!chainCirculating || !gecko_id || !pegType) return;
     data[gecko_id] = {};
-    Object.keys(chainCirculating).map((chain: string) => {
+    Object.keys(chainCirculating).forEach((chain: string) => {
       const circulating = chainCirculating[chain].current;
       if (!circulating) return;
       const mcap = circulating[pegType];
@@ -158,7 +160,7 @@ async function fetchHistoricalStablecoins(
       const { chainBalances, gecko_id, pegType } = apiData;
 
       data[gecko_id] = {};
-      Object.keys(chainBalances).map((chain: string) => {
+      Object.keys(chainBalances).forEach((chain: string) => {
         const timeseries = chainBalances[chain].tokens;
         const entry = timeseries.find((t: any) => t.date == timestamp);
         if (!entry) return;
@@ -182,7 +184,7 @@ function getActiveTvls(
   aggregateRawTvls: any,
   projectIdsMap: { [rwaId: string]: string }
 ) {
-  Object.keys(aggregateRawTvls).map((pk: string) => {
+  Object.keys(aggregateRawTvls).forEach((pk: string) => {
     if (!assetPrices[pk]) {
       console.error(`No price for ${pk}`);
       return;
@@ -191,7 +193,7 @@ function getActiveTvls(
     const { price, decimals } = assetPrices[pk];
     const amounts = aggregateRawTvls[pk];
 
-    Object.keys(amounts).map((amountId: string) => {
+    Object.keys(amounts).forEach((amountId: string) => {
       const amount = amounts[amountId];
       const aum = amount.times(price).div(10 ** decimals);
 
@@ -201,19 +203,20 @@ function getActiveTvls(
 
       if (Array.isArray(projectId) ? projectId.includes(amountId) : amountId == projectId) return;
       if (Array.isArray(projectId) ? projectId.includes(`${amountId}-treasury`) : `${amountId}-treasury` == projectId) return;
+      if (Array.isArray(projectId) ? projectId.map((p: string) => `${p}-treasury`).includes(amountId) : amountId == `${projectId}-treasury`) return;
 
       try {
         const projectName = protocolIdMap[amountId];
         if (!projectName) return;
 
-        if (!finalData[rwaId][keyMap.defiActive]) finalData[rwaId][keyMap.defiActive] = {};
+        if (!finalData[rwaId][RWA_KEY_MAP.defiActive]) finalData[rwaId][RWA_KEY_MAP.defiActive] = {};
         const chain = pk.substring(0, pk.indexOf(":"));
         const chainDisplayName = getChainDisplayName(chain, true);
-        if (!finalData[rwaId][keyMap.defiActive][chainDisplayName])
-          finalData[rwaId][keyMap.defiActive][chainDisplayName] = {};
-        finalData[rwaId][keyMap.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
+        if (!finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName])
+          finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName] = {};
+        finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
       } catch (e) {
-        console.error(`Malformed ${keyMap.defiActive} for ${rwaId}: ${e}`);
+        console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
       }
     });
   });
@@ -223,33 +226,31 @@ function getOnChainTvlAndActiveMcaps(
   assetPrices: any,
   tokenToProjectMap: any,
   finalData: any,
-  parsedCsvData: any,
+  coingeckoIdToRwaId: { [cgId: string]: string },
   stablecoinsData: any,
   totalSupplies: any,
   excludedAmounts: any
 ) {
-  Object.keys(stablecoinsData).map((cgId: string) => {
-    const data = parsedCsvData.find((row: any) => row[keyMap.coingeckoId] == cgId);
-    if (!data) return;
-    const rwaId = data[keyMap.id];
+  Object.keys(stablecoinsData).forEach((cgId: string) => {
+    const rwaId = coingeckoIdToRwaId[cgId];
     if (!finalData[rwaId]) return;
-    finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-    if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
+    finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
+    if (!finalData[rwaId][RWA_KEY_MAP.activeMcap] && finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
-  Object.keys(assetPrices).map((pk: string) => {
+  Object.keys(assetPrices).forEach((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
-    const data = parsedCsvData.find((row: any) => row[keyMap.id] == rwaId);
-    if (!data) return;
-
-    const cgId = data[keyMap.coingeckoId];
+    if (!finalData[rwaId]) return;
+    const cgId = finalData[rwaId]?.coingeckoId;
     const chain = pk.substring(0, pk.indexOf(":"));
     const chainDisplayName = getChainDisplayName(chain, true);
 
     if (cgId && stablecoinsData[cgId]) {
-      finalData[rwaId][keyMap.onChain] = stablecoinsData[cgId];
-      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = { ...stablecoinsData[cgId] };
-      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
+      if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
+        if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
+        findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      }
       return;
     }
 
@@ -260,27 +261,24 @@ function getOnChainTvlAndActiveMcaps(
       return;
     }
 
-    // Ensure price is always number|null for API consumers.
-    // If missing in metadata, keep it null (do not backfill from price feed).
-    if ((finalData[rwaId][keyMap.price] ?? null) == null) {
-      finalData[rwaId][keyMap.price] = null;
-    } else {
-      const parsedPrice = toFiniteNumberOrNull(finalData[rwaId][keyMap.price]);
-      finalData[rwaId][keyMap.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+      finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(price);
     }
 
     try {
-      if (!finalData[rwaId][keyMap.onChain]) finalData[rwaId][keyMap.onChain] = {};
-      if (!finalData[rwaId][keyMap.activeMcap]) finalData[rwaId][keyMap.activeMcap] = {};
-      if (!finalData[rwaId][keyMap.onChain][chainDisplayName]) finalData[rwaId][keyMap.onChain][chainDisplayName] = {};
+      if (!finalData[rwaId][RWA_KEY_MAP.onChain]) finalData[rwaId][RWA_KEY_MAP.onChain] = {};
+      if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = {};
+      if (!finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName]) finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = {};
 
       const aum = (price * supply) / 10 ** decimals;
-      finalData[rwaId][keyMap.onChain][chainDisplayName] = toFixedNumber(aum, 0);
-      finalData[rwaId][keyMap.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
+      finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+      if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
+
+      finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
-      console.error(`Malformed ${keyMap.onChain} for ${rwaId}: ${e}`);
+      console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
   });
 }
@@ -292,98 +290,59 @@ function findActiveMcaps(
   assetPrices: { price: number; decimals: number },
   chain: string
 ) {
+  if (!finalData[rwaId][RWA_KEY_MAP.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;
   const thisChainExcluded = excludedAmounts[rwaId][chain];
   if (!thisChainExcluded) return;
   const excludedUsdValue = thisChainExcluded.div(BigNumber(10).pow(assetPrices.decimals)).times(assetPrices.price);
-  finalData[rwaId][keyMap.activeMcap][chain] = toFixedNumber(
-    finalData[rwaId][keyMap.activeMcap][chain] - excludedUsdValue.toNumber(),
+  finalData[rwaId][RWA_KEY_MAP.activeMcap][chain] = toFixedNumber(
+    finalData[rwaId][RWA_KEY_MAP.activeMcap][chain] - excludedUsdValue.toNumber(),
     0
   );
 }
+
 // main entry
-async function main(ts: number = 0) {
+export default async function main(ts: number = 0) {
   const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it
   const parsedCsvData = await getCsvData();
   const rwaTokens: { [protocol: string]: string[] } = {};
   let finalData: { [protocol: string]: { [key: string]: any } } = {};
-  const projectIdsMap: { [rwaId: string]: string } = {};
+  const projectIdsMap: { [rwaId: string]: any } = {};
+  const coingeckoIdToRwaId: { [cgId: string]: string } = {};
 
-  // clean CSV data
-  parsedCsvData.map((row: any) => {
-    const cleanRow: any = {};
-    const i = row[keyMap.id];
-    if (!row.Ticker) return;
+  const headerToKey = createAirtableHeaderToCanonicalKeyMapper(RWA_KEY_MAP);
 
-    Object.keys(row).map((key: string) => {
-      const camelKey = toCamelCase(key);
-      if (!key) return;
-      if (key == keyMap.projectId && row[key].length > 0) projectIdsMap[i] = row[key];
-      // convert to readable chain names
-      if ([keyMap.excludedWallets, "Contracts"].includes(key)) {
-        const contracts: { [chain: string]: string[] } = {};
-        (Array.isArray(row[key]) ? row[key] : [row[key]]).map((contract: any) => {
-          if (!contract) return;
-          const chainRaw = contract.split(":")[0];
-          const address = contract.substring(contract.indexOf(":") + 1);
-          const chain = getChainDisplayName(chainRaw.toLowerCase(), true);
-          if (!contracts[chain]) contracts[chain] = [];
-          contracts[chain].push(address);
-        });
-        cleanRow[camelKey] = contracts;
-      }
+  // Normalize Airtable rows into canonical keys + API-friendly value types
+  parsedCsvData.forEach((row: any) => {
+    const mapped: any = {};
+    for (const [header, value] of Object.entries(row || {})) {
+      const key = headerToKey(String(header));
+      if (!key) continue;
+      mapped[key] = value;
+    }
 
-      // exclude columns for internal use
-      else if (key.startsWith(keyMap.excluded)) return;
-      // ensure consistent arrays for string-list fields
-      else if (ALWAYS_STRING_ARRAY_FIELDS.has(camelKey)) {
-        cleanRow[camelKey] = toStringArrayOrNull(row[key]);
-      }
-      // ensure price is never a string in API payloads
-      else if (camelKey === keyMap.price || camelKey === "price") {
-        cleanRow[camelKey] = toFiniteNumberOrNull(row[key]);
-      }
-      // normalize placeholder "-" in name/ticker
-      else if (camelKey === "name" || camelKey === "ticker") {
-        const v = normalizeDashToNull(row[key]);
-        cleanRow[camelKey] = v === "" ? null : v;
-      }
-      else if (key == "Primary Chain") {
-        cleanRow[camelKey] = row[key] ? getChainDisplayName(row[key].toLowerCase(), true) : null;
-      } else if (key == "Chain")
-        cleanRow[camelKey] = row[key]
-          ? row[key].map((chain: string) => getChainDisplayName(chain.toLowerCase(), true))
-          : null;
-      else {
-        const v = normalizeDashToNull(row[key]);
-        cleanRow[camelKey] = v == "" ? null : v;
-      }
-    });
+    const id = mapped.id;
+    if (!id) return;
+    if (!mapped.ticker) return;
 
-    // Ensure accessModel is always present for API consumers
-    // (Airtable may have it blank/undefined for some assets)
-    if (cleanRow.accessModel == null) cleanRow.accessModel = "Unknown";
-    // Ensure price is number|null for API consumers
-    const parsedPrice = toFiniteNumberOrNull(cleanRow[keyMap.price]);
-    cleanRow[keyMap.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    // Keep raw token identifiers for TVL pipeline BEFORE parsing contracts into {chainLabel: addresses}
+    rwaTokens[id] = Array.isArray(mapped.contracts) ? mapped.contracts : mapped.contracts ? [mapped.contracts] : [];
 
-    // append this RWA to API response
-    rwaTokens[i] = Array.isArray(row.Contracts) ? row.Contracts : [row.Contracts];
-    finalData[i] = cleanRow;
-  });
+    // Store project ID(s) map for treasury exclusion logic
+    const projectId = mapped.projectId;
+    if (Array.isArray(projectId) ? projectId.length > 0 : typeof projectId === "string" ? projectId.length > 0 : !!projectId) {
+      projectIdsMap[id] = projectId;
+    }
 
-  // set category flags
-  Object.keys(finalData).map((rowIndex: string) => {
-    let stablecoin = false;
-    let governance = false;
-    finalData[rowIndex].category.map((category: string) => {
-      if (category.toLowerCase().includes("stablecoin")) stablecoin = true;
-      if (category.toLowerCase().includes("governance")) governance = true;
-    });
-    finalData[rowIndex].stablecoin = stablecoin;
-    finalData[rowIndex].governance = governance;
+    // Store cgId -> rwaId map for stablecoin mcaps
+    if (typeof mapped.coingeckoId === "string" && mapped.coingeckoId) {
+      coingeckoIdToRwaId[mapped.coingeckoId] = id;
+    }
+
+    normalizeRwaMetadataForApiInPlace(mapped);
+    finalData[id] = mapped;
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
@@ -396,7 +355,7 @@ async function main(ts: number = 0) {
   ]);
 
   // log missed assets
-  Object.keys(tokenToProjectMap).map((address: string) => {
+  Object.keys(tokenToProjectMap).forEach((address: string) => {
     if (!assetPrices[address]) {
       console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
       return;
@@ -409,25 +368,25 @@ async function main(ts: number = 0) {
     assetPrices,
     tokenToProjectMap,
     finalData,
-    parsedCsvData,
+    coingeckoIdToRwaId,
     stablecoinsData,
     totalSupplies,
     excludedAmounts
   );
 
   // for read API usage
-  const rwaIdMap: { [id: string]: string } = {};
-  Object.keys(finalData).map((rwaId: string) => {
-    const name = finalData[rwaId].name;
-    if (name != null && name !== "") rwaIdMap[name] = rwaId;
-  });
+  // const rwaIdMap: { [id: string]: string } = {};
+  // Object.keys(finalData).forEach((rwaId: string) => {
+  //   const name = finalData[rwaId].name;
+  //   if (name != null && name !== "") rwaIdMap[name] = rwaId;
+  // });
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const filteredFinalData: any = finalData; // {};
-  // Object.keys(finalData).map((rwaId: string) => {
+  // Object.keys(finalData).forEach((rwaId: string) => {
   //   if (
-  //     typeof finalData[rwaId][keyMap.defiActive] === "object" &&
-  //     typeof finalData[rwaId][keyMap.onChain] === "object"
+  //     typeof finalData[rwaId][RWA_KEY_MAP.defiActive] === "object" &&
+  //     typeof finalData[rwaId][RWA_KEY_MAP.onChain] === "object"
   //   ) {
   //     filteredFinalData[rwaId] = finalData[rwaId];
   //   }
@@ -436,14 +395,17 @@ async function main(ts: number = 0) {
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
   await Promise.all([
-    timestamp == 0 ? storeMetadata(res): Promise.resolve(),
+    timestamp == 0 ? storeMetadata(res) : Promise.resolve(),
     storeHistorical(res),
   ]);
+
+  console.log(`Exitting atvl.ts`)
 
   return finalData;
 }
 
-main().catch((error) => {
+main().catch(async (error) => {
   console.error('Error running the script: ', error);
+  await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
   process.exit(1);
 }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

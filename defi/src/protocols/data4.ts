@@ -5126,6 +5126,13 @@ const data4: Protocol[] = [
     module: "takara/index.js",
     twitter: "TakaraLend",
     audit_links: ["https://takara.gitbook.io/takara-lend/protocol-information/audits"],
+    warningBanners: [
+      {
+        message:
+          "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-05-09",
+      }],
     listedAt: 1739459439,
     dimensions: {
       fees: "takara-lend"

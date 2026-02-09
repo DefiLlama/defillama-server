@@ -24,6 +24,9 @@ if (fs.existsSync(protocolsJsonPath)) {
   }
 }
 
+// filter out disabled protocols
+protocols = protocols.filter(i => !i.disabled)
+
 export type { Protocol };
 
 protocols.forEach(setProtocolCategory)

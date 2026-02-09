@@ -5221,6 +5221,7 @@ const data5: Protocol[] = [
     module: "allora/index.js",
     twitter: "AlloraNetwork",
     listedAt: 1765466803,
+    disabled: "the tvl adapter is tracking chain staking, need to list defi projects on the chain"
   },
   {
     id: "7122",
@@ -6454,7 +6455,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["Other Fixed Income"],
-    chains: ["Ethereum", "Base", "Arbitrum", "Avalanche"],
+    chains: ["Ethereum",],
     oraclesBreakdown: [
       {
         name: "Chainlink",
@@ -10050,7 +10051,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Algo-Stables",
-    chains: ["Ethereum", "Monad"],
+    chains: ["Ethereum",],
     module: "generic-money/index.js",
     oraclesBreakdown: [
       {

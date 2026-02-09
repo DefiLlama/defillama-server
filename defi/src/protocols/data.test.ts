@@ -1,4 +1,4 @@
-import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
+import { importAdapter, } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
 import protocols from "./data";
 import parentProtocols, { parentProtocolsById } from "./parentProtocols";
@@ -84,14 +84,15 @@ test("all chains are on chainMap", async () => {
  */
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])
-  const ignoredKeys = new Set(['default'])
+  const ignoredKeys = new Set(['default', 'hallmarks'])
   await Promise.all(treasuries.map(async protocol => {
-    const module = await importAdapterDynamic(protocol)
+    const module = await importAdapter(protocol)
     for (const [chain, value] of Object.entries(module)) {
       if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
       for (const [key, _module] of Object.entries(value as Object)) {
-        if ((typeof _module !== 'function' && _module !== '_lmtf') || !treasuryKeys.has(key))
+        if ((typeof _module !== 'function' && (_module !== '_lmtf' && _module !== '_f')) || !treasuryKeys.has(key)) {
           throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
+        }
       }
     }
   }))
@@ -133,7 +134,7 @@ test("Github: track only orgs", async () => {
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;
-    const module = await importAdapterDynamic(protocol)
+    const module = await importAdapter(protocol)
     const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
       chains.forEach((chain) => {

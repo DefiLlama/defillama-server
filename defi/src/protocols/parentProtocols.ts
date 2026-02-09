@@ -4489,7 +4489,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aerodrome",
     name: "Aerodrome",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/", 
     description: "A central trading and liquidity marketplace on Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
     gecko_id: "aerodrome-finance",
@@ -6424,6 +6424,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SoneFi_xyz",
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
   },
   {
     id: "parent#filament",
@@ -6598,7 +6603,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35818",
     chains: [],
     twitter: "SoSoValueCrypto",
-    github: ["SoSoValueLabs"],
+    github: ["SoSoValueLabs","sosovalue-tech"],
   },
   {
     id: "parent#piperx",
@@ -8070,6 +8075,13 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rezervemoney",
     github: ["rezervemoney"],
     treasury: "rezerve.js",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "Rezerve has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#flamingo",
@@ -8203,7 +8215,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "MetaMask",
     url: "https://metamask.io",
     description: "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -8349,6 +8361,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "milky_way_zone",
+    github: ["milkyway-labs"],
   },
   {
     id: "parent#flow-swap",
@@ -8745,6 +8758,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "4758",
     chains: [],
     twitter: "dForcenet",
+    governanceID: ["snapshot:dforcenet.eth"],
+    github: ["dforce-network", "UnitusLabs"],
   },
   {
     id: "parent#standx",
@@ -8758,6 +8773,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "StandX_Official",
+    stablecoins: ["standx-dusd"],
   },
   {
     id: "parent#stabble",
@@ -8859,6 +8875,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "9237",
     chains: [],
     twitter: "XpanseTrade",
+    governanceID: ["snapshot:horizonprotocol.eth"],
+    github: ["Horizon-Protocol"],
   },
 ];
 

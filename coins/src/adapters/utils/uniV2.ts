@@ -127,7 +127,7 @@ export function getUniV2Adapter({
         pair.token0.id = pair.token0.id.toLowerCase();
         pair.token1.id = pair.token1.id.toLowerCase();
       });
-      allData.push(
+        allData.push(
         ...pairs.filter(
           ({ token0, token1 }: any) =>
             coreTokenSet.has(token0.id) || coreTokenSet.has(token1.id),
@@ -148,15 +148,44 @@ export function getUniV2Adapter({
       abi: "erc20:symbol",
       target: allData[0].id,
     });
+
+    const underlyingPrices = await getTokenAndRedirectDataMap(Array.from(coreAssetsCache[chain]) ?? [], chain, timestamp);
+    const token0Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token0.id, params: p.id })), permitFailure: true  })
+    const token1Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token1.id, params: p.id })), permitFailure: true  })
     const writes: Write[] = [];
 
     const tokenData: any = {};
-    allData.forEach((pair: any) => {
+    allData.forEach((pair: any, i: number) => {
       const token0 = pair.token0;
       const token1 = pair.token1;
-      const confidence = calculateConfidence(pair.reserveUSD);
-      const price = pair.reserveUSD / pair.totalSupply;
       const symbol = getLPSymbol(token0.symbol, token1.symbol, LP_SYMBOL);
+
+      const { price, confidence } = findPrice();
+      if (!price) return;
+
+      // return true if subgraph data is inflated
+      function findPrice() {
+        const confidence = calculateConfidence(pair.reserveUSD);
+        const subgraphPrice = pair.reserveUSD / pair.totalSupply;
+        if (!coreAssetsCache[chain]) return { price: subgraphPrice, confidence };
+        
+        let knownToken;
+        if (coreAssetsCache[chain].has(token0.id)) knownToken = token0;
+        else if (coreAssetsCache[chain].has(token1.id)) knownToken = token1;
+        else return { price: undefined, confidence };
+
+        const knownTokenPrice = underlyingPrices[knownToken.id];
+        const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];
+        if (!knownTokenBalance) return { price: subgraphPrice, confidence };
+
+        const supply = pair.totalSupply;
+        const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
+
+        if (aum < minLiquidity) return { price: undefined, confidence };
+
+        const onChainPrice = aum / supply;
+        return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };
+      }
 
       if (confidence > 0.8)
         addToDBWritesList(

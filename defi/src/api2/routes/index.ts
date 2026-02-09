@@ -175,6 +175,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/:type/protocol/:name", ew(getDimensionProtocolRoutes('chart')))
   router.get("/v2/chart/:type/protocol/:name/chain-breakdown", ew(getDimensionProtocolRoutes('chart-chain-breakdown')))
   router.get("/v2/chart/:type/protocol/:name/version-breakdown", ew(getDimensionProtocolRoutes('chart-version-breakdown')))
+  router.get("/v2/chart/:type/protocol/:name/label-breakdown", ew(getDimensionProtocolRoutes('chart-label-breakdown')))
 
 
   /* 

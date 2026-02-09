@@ -116,9 +116,9 @@ export const chainCoingeckoIds = {
     dimensions: {
       fees: {
         genuineSpikes: [
-          "1651449600",
-          "1651363200", // otherside mint
-          "1760054400", // 2025-10-10 - sharp drop in the market - Black Friday
+          ["2022-05-02", "-"],
+          ["2022-05-01", "Otherside mint"], // otherside mint
+          ["2025-10-10", "Sharp drop in the market - Black friday"], // 2025-10-10 - sharp drop in the market - Black Friday
         ],
         adapter: "ethereum",
       },
@@ -2941,7 +2941,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 252,
     twitter: "fraxfinance",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     dimensions: {
       fees: "fraxtal",
     },
@@ -5649,6 +5649,30 @@ export const chainCoingeckoIds = {
     url: "https://citrea.xyz/",
     chainId: 4114,
   },
+  "Zcash": {
+    geckoId: "zcash",
+    symbol: "ZEC",
+    cmcId: "1437",
+    categories: [],
+    twitter: "Zcash",
+    url: "https://z.cash/",
+  },
+  "Union": {
+    geckoId: "union-2",
+    symbol: "U",
+    cmcId: "38270",
+    categories: [],
+    twitter: "union_build",
+    url: "https://union.build/",
+  },
+  "Open": {
+    geckoId: "openledger-2",
+    symbol: "OPEN",
+    cmcId: "37456",
+    categories: [],
+    twitter: "OpenledgerHQ",
+    url: "https://www.openledger.xyz/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5833,7 +5857,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
-  "hashkey": "HashKey Chain",
+  //"hashkey": "HashKey Chain", not possible to have two different chains with the same name
   "fhe": "Mind Network",
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",

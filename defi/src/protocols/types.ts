@@ -159,6 +159,7 @@ interface ProtocolBase {
   methodology?: string;
   dimensions?: DimensionsConfig;
   tokenRights?: TokenRights;
+  disabled?: string; // if set, the protocol is considered disabled, and ignored
 }
 
 export type Protocol = ProtocolBase & ProtocolCategoryOrTags;

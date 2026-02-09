@@ -636,7 +636,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "syncswap",
       dexs: {
-        genuineSpikes: ["1748390400"],
+        genuineSpikes: [["2025-05-28", "-"]],
         adapter: "syncswap"
       }
     }
@@ -2120,7 +2120,7 @@ const data3_0: Protocol[] = [
     listedAt: 1681122429,
     dimensions: {
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "aevo"
       },
       "open-interest": "aevo-perps-oi"
@@ -4058,12 +4058,12 @@ const data3_0: Protocol[] = [
     dimensions: {
       derivatives: {
         genuineSpikes: [
-          "1700179200",
-          "1700265600",
-          "1700352000",
-          "1700438400",
-          "1700524800",
-          "1749600000"
+          ["2023-11-17", "-"],
+          ["2023-11-18", "-"],
+          ["2023-11-19", "-"],
+          ["2023-11-20", "-"],
+          ["2023-11-21", "-"],
+          ["2025-06-11", "-"]
         ],
         adapter: "rabbitx"
       },
@@ -4523,7 +4523,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "joe-v2.1",
       dexs: {
-        genuineSpikes: ["1682812800", "1682899200", "1769731200"],
+        genuineSpikes: [["2023-04-30", "-"], ["2023-05-01", "-"], ["2026-01-30", "-"]],
         adapter: "joe-v2.1"
       }
     }
@@ -5302,7 +5302,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "turbos",
       dexs: {
-        genuineSpikes: ["1697328000"],
+        genuineSpikes: [["2023-10-15", "-"]],
         adapter: "turbos"
       }
     }
@@ -5347,6 +5347,7 @@ const data3_0: Protocol[] = [
     module: "croswap/index.js",
     twitter: "CroswapOfficial",
     listedAt: 1683539601,
+    deadUrl: true,
     dimensions: {
       dexs: "croswap"
     }
@@ -6184,7 +6185,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "satori",
       derivatives: {
-        genuineSpikes: ["1691625600"],
+        genuineSpikes: [["2023-08-10", "-"]],
         adapter: "satori"
       },
       "open-interest": "satori-oi"
@@ -6478,7 +6479,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "pulsex-v1",
       dexs: {
-        genuineSpikes: ["1686009600"],
+        genuineSpikes: [["2023-06-06", "-"]],
         adapter: "pulsex-v1"
       }
     }
@@ -7428,6 +7429,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["265"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1685390267,
+    deadUrl: true
   },
   {
     id: "3040",
@@ -7758,6 +7760,7 @@ const data3_0: Protocol[] = [
     module: "unlimited-trade/index.js",
     twitter: "unlimited_defi",
     listedAt: 1685645872,
+    deadUrl: true,
     dimensions: {
       fees: "unlimited-network"
     }
@@ -7812,6 +7815,7 @@ const data3_0: Protocol[] = [
       "https://hacken.io/audits/openeden/sca-openeden-vault-nov2024",
     ],
     parentProtocol: "parent#openeden",
+    stablecoins: ["openeden-tbill"],
     listedAt: 1685661527,
     dimensions: {
       fees: "openeden-t-bills"
@@ -7878,7 +7882,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "pulsex-v2",
       dexs: {
-        genuineSpikes: ["1686009600"],
+        genuineSpikes: [["2023-06-06", "-"]],
         adapter: "pulsex-v2"
       }
     }
@@ -8934,7 +8938,7 @@ const data3_0: Protocol[] = [
     listedAt: 1686776222,
     dimensions: {
       fees: {
-        genuineSpikes: ["1729209600"],
+        genuineSpikes: [["2024-10-18", "-"]],
         adapter: "eigenlayer"
       }
     }
@@ -10250,7 +10254,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "phoenix",
       dexs: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "phoenix"
       }
     }
@@ -10355,7 +10359,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "mango-v4",
       derivatives: {
-        genuineSpikes: ["1695081600"],
+        genuineSpikes: [["2023-09-19", "-"]],
         adapter: "mango-v4-perp"
       }
     }
@@ -11307,7 +11311,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       dexs: {
         adapter: "swaap-v2",
-        genuineSpikes: ["1761350400"],
+        genuineSpikes: [["2025-10-25", "-"]],
       }
     }
   },
@@ -12668,11 +12672,11 @@ const data3_0: Protocol[] = [
     listedAt: 1690193404,
     dimensions: {
       fees: {
-        genuineSpikes: ["1722211200"],
+        genuineSpikes: [["2024-07-29", "-"]],
         adapter: "dexswap"
       },
       dexs: {
-        genuineSpikes: ["1722211200"],
+        genuineSpikes: [["2024-07-29", "-"]],
         adapter: "dexswap"
       }
     }
@@ -13217,7 +13221,7 @@ const data3_0: Protocol[] = [
     name: "Velodrome V2",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/", 
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v2.png`,
@@ -13235,7 +13239,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "velodrome-v2",
       dexs: {
-        genuineSpikes: ["1690156800", "1690243200", "1690329600", "1690416000"],
+        genuineSpikes: [["2023-07-24", "-"], ["2023-07-25", "-"], ["2023-07-26", "-"], ["2023-07-27", "-"]],
         adapter: "velodrome-v2"
       }
     }
@@ -14222,7 +14226,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "dackieswap",
       dexs: {
-        genuineSpikes: ["1691712000", "1691798400", "1691884800", "1691971200"],
+        genuineSpikes: [["2023-08-11", "-"], ["2023-08-12", "-"], ["2023-08-13", "-"], ["2023-08-14", "-"]],
         adapter: "dackieswap"
       }
     }
@@ -14649,7 +14653,7 @@ const data3_0: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Avalanche", "Solana"],
+    chains: ["Arbitrum", "Avalanche",],
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     // https://x.com/GMX_IO/status/1866794916392874021 https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861
@@ -14717,6 +14721,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     github: ["psystablecoin"],
     audit_links: ["https://github.com/psystablecoin/psy-contract/tree/main/audit"],
+    stablecoins: ["psy"],
     listedAt: 1691675187,
     deadUrl: true,  },
   {
@@ -14919,7 +14924,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "aark",
       derivatives: {
-        genuineSpikes: ["1691884800", "1691971200"],
+        genuineSpikes: [["2023-08-13", "-"], ["2023-08-14", "-"]],
         adapter: "aark"
       }
     }
@@ -15188,7 +15193,7 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "sanctum",
       dexs: {
-        genuineSpikes: ["1704240000", "1760054400", "1769817600"],
+        genuineSpikes: [["2024-01-03", "-"], ["2025-10-10", "-"], ["2026-01-31", "-"]],
         adapter: "sanctum"
       }
     }
@@ -16470,7 +16475,7 @@ const data3_1: Protocol[] = [
     name: "Aerodrome V1",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/", 
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -18096,7 +18101,7 @@ const data3_1: Protocol[] = [
     github: ["jumperexchange"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1698883200"],
+        genuineSpikes: [["2023-11-02", "-"]],
         adapter: "jumper-exchange"
       },
       "bridge-aggregators": "jumper.exchange"
@@ -18452,7 +18457,7 @@ const data3_1: Protocol[] = [
     listedAt: 1695222044,
     dimensions: {
       derivatives: {
-        genuineSpikes: ["1736640000"],
+        genuineSpikes: [["2025-01-12", "-"]],
         adapter: "panacakeswap-perp"
       }
     }
@@ -19374,7 +19379,7 @@ const data3_1: Protocol[] = [
     name: "DigiFT",
     address: null,
     symbol: "-",
-    url: "https://www.digift.sg",
+    url: "https://www.digift.io/",
     description:
       "DigiFT is the first regulated exchange for on-chain real-world assets, approved as a Recognised Market Operator with a Capital Markets Services license by the Monetary Authority of Singapore. DigiFT allows asset owners to issue blockchain-based security tokens and investors can trade with continuous liquidity via an AMM.",
     chain: "Ethereum",
@@ -19878,7 +19883,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "contango",
       derivatives: {
-        genuineSpikes: ["1697328000", "1697414400"],
+        genuineSpikes: [["2023-10-15", "-"], ["2023-10-16", "-"]],
         adapter: "contango"
       },
       "open-interest": "contango"
@@ -20801,11 +20806,11 @@ const data3_1: Protocol[] = [
     listedAt: 1697592311,
     dimensions: {
       fees: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-basic"
       },
       dexs: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-basic"
       }
     }
@@ -21220,7 +21225,7 @@ const data3_1: Protocol[] = [
     previousNames: ["Maker RWA"],
     address: "0x56072c95faa701256059aa122697b133aded9279",
     symbol: "SKY",
-    url: "https://makerdao.com/en/",
+    url: "https://sky.money/",
     description:
       "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",
     chain: "Ethereum",
@@ -22177,7 +22182,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["CLMM"],
     chains: ["Polygon"],
     module: "dummy.js",
     twitter: "CryptoAlgebra",
@@ -22448,7 +22453,7 @@ const data3_1: Protocol[] = [
     name: "PAAL AI",
     address: "0x14fee680690900ba0cccfc76ad70fd1b95d10e16",
     symbol: "PAAL",
-    url: "https://paalai.io",
+    url: "https://www.paal.ai/",
     description:
       "PAAL is an AI-powered digital companion that enhances user experiences on platforms like Discord and Telegram. Using advanced NLP, Machine Learning, and Automation, it offers personalized interactions.",
     chain: "Ethereum",
@@ -22965,7 +22970,7 @@ const data3_1: Protocol[] = [
       fees: "intent-x",
       derivatives: {
         adapter: "intent-x",
-        genuineSpikes: ["1760054400", "1761868800"],
+        genuineSpikes: [["2025-10-10", "-"], ["2025-10-31", "-"]],
       }
     }
   },
@@ -23867,7 +23872,7 @@ const data3_1: Protocol[] = [
     gecko_id: "cacao",
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Bitcoin", "Kujira", "Ethereum", "Dash", "Mayachain"],
+    chains: ["Bitcoin", "Kujira", "Ethereum", "Dash", "Mayachain", "Zcash"],
     module: "mayachain/index.js",
     twitter: "Maya_Protocol",
     audit_links: [
@@ -25806,7 +25811,7 @@ const data3_1: Protocol[] = [
     listedAt: 1701694470,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1707177600"],
+        genuineSpikes: [["2024-02-06", "-"]],
         adapter: "starkdefi"
       }
     }
@@ -25876,7 +25881,7 @@ const data3_1: Protocol[] = [
       fees: "stormtrade",
       derivatives: {
         adapter: "stormtrade",
-        genuineSpikes: ["1761350400"],
+        genuineSpikes: [["2025-10-25", "-"]],
       }
     }
   },
@@ -27105,7 +27110,6 @@ const data3_1: Protocol[] = [
     twitter: "unitusfi",
     parentProtocol: "parent#dforce",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
-    github: ["UnitusLabs"],
     listedAt: 1703014661,
   },
   /*{
@@ -27147,7 +27151,7 @@ const data3_1: Protocol[] = [
     listedAt: 1703074387,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1710288000"],
+        genuineSpikes: [["2024-03-13", "-"]],
         adapter: "archly-finance-v2"
       }
     }
@@ -27410,7 +27414,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "odos",
       aggregators: {
-        genuineSpikes: ["1708128000", "1708214400", "1708300800", "1708387200"],
+        genuineSpikes: [["2024-02-17", "-"], ["2024-02-18", "-"], ["2024-02-19", "-"], ["2024-02-20", "-"]],
         adapter: "odos"
       }
     }
@@ -27457,7 +27461,6 @@ const data3_1: Protocol[] = [
       "https://twitter.com/SecurityOak/status/1734504283880448246",
       "https://github.com/oak-security/audit-reports/blob/master/MilkyWay/2023-12-12%20Audit%20Report%20-%20MilkyWay%20Staking%20v1.0.pdf",
     ],
-    github: ["milkyway-labs"],
     parentProtocol: "parent#milkyway-protocol",
     listedAt: 1703359758,
     dimensions: {
@@ -28101,7 +28104,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "kyberswap-aggregator",
       aggregators: {
-        genuineSpikes: ["1704067200", "1704153600"],
+        genuineSpikes: [["2024-01-01", "-"], ["2024-01-02", "-"]],
         adapter: "kyberswap"
       }
     }
@@ -30028,7 +30031,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "dydx-v4",
       derivatives: {
-        genuineSpikes: ["1706140800"],
+        genuineSpikes: [["2024-01-25", "-"]],
         adapter: "dydx-v4"
       },
       "open-interest": "dydx-v4"
@@ -30220,7 +30223,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "equation-v2",
       derivatives: {
-        genuineSpikes: ["1706227200", "1706313600", "1706400000"],
+        genuineSpikes: [["2024-01-26", "-"], ["2024-01-27", "-"], ["2024-01-28", "-"]],
         adapter: "equation-v2"
       }
     }
@@ -30690,7 +30693,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "hyperionx",
       derivatives: {
-        genuineSpikes: ["1706832000"],
+        genuineSpikes: [["2024-02-02", "-"]],
         adapter: "hyperionx"
       }
     }
@@ -30818,7 +30821,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.pike.finance/introduction-to-pike/pyth-oracles-and-price-feeds
     module: "pike/index.js",
     twitter: "PikeFinance",
-    parentProtocol: "parent#pika",
+    parentProtocol: "parent#pike",
     listedAt: 1706973667,
   },
   {
@@ -30867,7 +30870,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "pingu",
       derivatives: {
-        genuineSpikes: ["1716422400"],
+        genuineSpikes: [["2024-05-23", "-"]],
         adapter: "pingu"
       }
     }
@@ -31007,7 +31010,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "avantis",
       derivatives: {
-        genuineSpikes: ["1743552000"],
+        genuineSpikes: [["2025-04-02", "-"]],
         adapter: "avantis"
       },
       "open-interest": "avantis"
@@ -31672,10 +31675,11 @@ const data3_1: Protocol[] = [
     tokensExcludedFromParent: {
       Ethereum: ["USDTB"],
     },
+    stablecoins: ["ethena-usde"],
     listedAt: 1708016301,
     dimensions: {
       fees: {
-        genuineSpikes: ["1754524800"],
+        genuineSpikes: [["2025-08-07", "-"]],
         adapter: "ethena"
       }
     }
@@ -32033,7 +32037,7 @@ const data3_1: Protocol[] = [
     listedAt: 1708387360,
     dimensions: {
       fees: {
-        genuineSpikes: ["1755734400"],
+        genuineSpikes: [["2025-08-21", "-"]],
         adapter: "meteora-dlmm"
       },
       dexs: "meteora-dlmm"
@@ -33044,7 +33048,7 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "cellana-finance",
       dexs: {
-        genuineSpikes: ["1747785600", "1748476800"],
+        genuineSpikes: [["2025-05-21", "-"], ["2025-05-29", "-"]],
         adapter: "cellana-finance"
       }
     }
@@ -34274,7 +34278,7 @@ const data3_2: Protocol[] = [
     name: "Velodrome V3",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/",
     description:
       "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
     chain: "Optimism",
@@ -35809,7 +35813,7 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "myx-finance",
       derivatives: {
-        genuineSpikes: ["1712534400", "1712620800"],
+        genuineSpikes: [["2024-04-08", "-"], ["2024-04-09", "-"]],
         adapter: "myx-finance"
       },
       "open-interest": "myx-finance"
@@ -36887,7 +36891,7 @@ const data3_2: Protocol[] = [
       fees: "sanctum-infinity",
       dexs: {
         adapter: "sanctum-infinity",
-        genuineSpikes: ["1761782400"]
+        genuineSpikes: [["2025-10-30", "-"]]
       }
     }
   },
@@ -38658,11 +38662,11 @@ const data3_2: Protocol[] = [
     listedAt: 1712427917,
     dimensions: {
       fees: {
-        genuineSpikes: ["1752537600", "1754956800"],
+        genuineSpikes: [["2025-07-15", "-"], ["2025-08-12", "-"]],
         adapter: "pumpdotfun"
       },
       dexs: {
-        genuineSpikes: ["1732320000", "1732406400", "1732492800"],
+        genuineSpikes: [["2024-11-23", "-"], ["2024-11-24", "-"], ["2024-11-25", "-"]],
         adapter: "pumpfun"
       }
     }
@@ -38890,7 +38894,7 @@ const data3_2: Protocol[] = [
     previousNames: ["Karak"],
     address: null,
     symbol: "-",
-    url: "https://karak.network",
+    url: "https://opengdp.network/",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opengdp-shared-security.jpg`,
@@ -39048,7 +39052,7 @@ const data3_2: Protocol[] = [
     listedAt: 1712786283,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1712793600"],
+        genuineSpikes: [["2024-04-11", "-"]],
         adapter: "hbarsuite-dex"
       }
     }
@@ -39484,7 +39488,7 @@ const data3_2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Privacy",
-    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Binance", "Avalanche"],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base"],
     module: "hinkal/index.js",
     twitter: "hinkal_protocol",
     audit_links: [
@@ -39882,11 +39886,11 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#fjord-foundry",
     dimensions: {
       fees: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v2"
       },
       dexs: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v2"
       }
     }
@@ -40136,10 +40140,10 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4517",
-    name: "1INTRO",
+    name: "1INTRO", // rebrand to Coinchef
     address: "solana:inTCqHJaLAETUxvRZ2kC45G2sThq9BFWVimfaQw7t6w",
     symbol: "INTRO",
-    url: "https://www.1intro.com",
+    url: "https://app.coinchef.com/trending",
     description:
       "1INTRO redefines the finance ecosystem on Solana with a smart platform that uses AI to improve Liquidity Bootstrapping Pool (LBP), DEX, and token deployment, elevating both the user experience and operational efficiency",
     chain: "Solana",
@@ -40150,7 +40154,7 @@ const data3_2: Protocol[] = [
     tags: ["AMM"],
     chains: ["Solana"],
     module: "1intro/index.js",
-    twitter: "1intro",
+    twitter: "coinchefsol",
     audit_links: [
       "https://files.1intro.com/public/SecurityCodeReview.pdf",
       "https://files.1intro.com/public/SecurityCodeReview1DEX.pdf",
@@ -40290,7 +40294,7 @@ const data3_2: Protocol[] = [
     name: "Aerodrome Slipstream",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/",
     description: "A central trading and liquidity marketplace on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
@@ -40307,11 +40311,11 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "aerodrome-slipstream",
-        genuineSpikes: ["1757548800"],
+        genuineSpikes: [["2025-09-11", "-"]],
       },
       dexs: {
         adapter: "aerodrome-slipstream",
-        genuineSpikes: ["1757548800"]
+        genuineSpikes: [["2025-09-11", "-"]]
       }
     }
   },
@@ -41020,11 +41024,11 @@ const data3_2: Protocol[] = [
     parentProtocol: "parent#fjord-foundry",
     dimensions: {
       fees: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v1"
       },
       dexs: {
-        genuineSpikes: ["1713657600", "1713744000"],
+        genuineSpikes: [["2024-04-21", "-"], ["2024-04-22", "-"]],
         adapter: "fjord-foundry-v1"
       }
     }
@@ -42059,7 +42063,7 @@ const data3_2: Protocol[] = [
     openSource: false,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1715731200"],
+        genuineSpikes: [["2024-05-15", "-"]],
         adapter: "cropper-clmm"
       }
     }
@@ -42549,7 +42553,7 @@ const data3_2: Protocol[] = [
     github: ["0xProject"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1674172800", "1678492800", "1680739200"],
+        genuineSpikes: [["2023-01-20", "-"], ["2023-03-11", "-"], ["2023-04-06", "-"]],
         adapter: "zrx"
       }
     }
@@ -42575,11 +42579,11 @@ const data3_2: Protocol[] = [
     listedAt: 1715954045,
     dimensions: {
       fees: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-precision"
       },
       dexs: {
-        genuineSpikes: ["1715817600"],
+        genuineSpikes: [["2024-05-16", "-"]],
         adapter: "ociswap-precision"
       }
     }
@@ -46013,11 +46017,11 @@ const data3_3: Protocol[] = [
     listedAt: 1718803914,
     dimensions: {
       fees: {
-        genuineSpikes: ["1718755200", "1718841600"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-06-20", "-"]],
         adapter: "dusa"
       },
       dexs: {
-        genuineSpikes: ["1718755200", "1718841600"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-06-20", "-"]],
         adapter: "dusa"
       }
     }
@@ -46777,7 +46781,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "apex-omni",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "apex-omni"
       },
       "open-interest": "apex-omni",
@@ -46824,7 +46828,7 @@ const data3_3: Protocol[] = [
     github: ["coinhall"],
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1724457600"],
+        genuineSpikes: [["2024-08-24", "-"]],
         adapter: "hallswap"
       }
     }
@@ -47213,12 +47217,12 @@ const data3_3: Protocol[] = [
     dimensions: {
       "aggregator-derivatives": {
         genuineSpikes: [
-          "1724198400",
-          "1724284800",
-          "1724371200",
-          "1724457600",
-          "1724544000",
-          "1724630400"
+          ["2024-08-21", "-"],
+          ["2024-08-22", "-"],
+          ["2024-08-23", "-"],
+          ["2024-08-24", "-"],
+          ["2024-08-25", "-"],
+          ["2024-08-26", "-"]
         ],
         adapter: "bitoro"
       }
@@ -48117,7 +48121,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "usual",
-        genuineSpikes: ["1760054400"],
+        genuineSpikes: [["2025-10-10", "-"]],
       }
     }
   },
@@ -49661,7 +49665,6 @@ const data3_3: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "edgeX/index.js",
-    treasury: "edgeX.js",
     twitter: "edgeX_exchange",
     parentProtocol: "parent#edgex",
     listedAt: 1723024710,
@@ -49746,7 +49749,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#cetus",
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1724803200"],
+        genuineSpikes: [["2024-08-28", "-"]],
         adapter: "cetus-aggregator"
       }
     }
@@ -51820,7 +51823,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724762254,
     dimensions: {
       "aggregator-derivatives": {
-        genuineSpikes: ["1749686400", "1760054400"],
+        genuineSpikes: [["2025-06-12", "-"], ["2025-10-10", "-"]],
         adapter: "mux-protocol-agge"
       }
     }
@@ -52006,7 +52009,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       aggregators: {
         adapter: "dodo-agg",
-        genuineSpikes: ["1769299200"],
+        genuineSpikes: [["2026-01-25", "-"]],
       }
     }
   },
@@ -52190,7 +52193,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724921375,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1722902400", "1722988800", "1723075200"],
+        genuineSpikes: [["2024-08-06", "-"], ["2024-08-07", "-"], ["2024-08-08", "-"]],
         adapter: "gmx-v2-gmx-v2-swap"
       }
     }
@@ -52216,7 +52219,7 @@ const data3_3: Protocol[] = [
     listedAt: 1724922727,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1749081600"],
+        genuineSpikes: [["2025-06-05", "-"]],
         adapter: "drift-protocol-swap"
       }
     }
@@ -52298,7 +52301,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: {
         adapter: "helix-helix-perp",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
       "open-interest": "helix-helix-perp"
     }
@@ -53198,7 +53201,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#Edge",
     dimensions: {
       dexs: {
-        genuineSpikes: ["1689811200"],
+        genuineSpikes: [["2023-07-20", "-"]],
         adapter: "vertex-protocol-swap"
       }
     }
@@ -53305,7 +53308,7 @@ const data3_3: Protocol[] = [
     deadUrl: true,
     dimensions: {
       dexs: {
-        genuineSpikes: ["1695081600"],
+        genuineSpikes: [["2023-09-19", "-"]],
         adapter: "mango-v4-spot"
       }
     }
@@ -55028,7 +55031,7 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#okx-dex",
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1746403200"],
+        genuineSpikes: [["2025-05-05", "-"]],
         adapter: "okx"
       },
       fees: "okx-swap"
@@ -57448,6 +57451,7 @@ const data3_3: Protocol[] = [
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",
     parentProtocol: "parent#avalon-labs",
+    stablecoins: ["avalon-usda"],
     listedAt: 1730473542,
     dimensions: {
       fees: "avalon-usda"
@@ -58518,6 +58522,7 @@ const data3_3: Protocol[] = [
     ],
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
+    stablecoins: ["solayer-usd"],
     listedAt: 1731623194,
   },
   {
@@ -61252,7 +61257,7 @@ const data3_3: Protocol[] = [
     name: "Balancer V3",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer V3 is a decentralized AMM protocol featuring a flexible vault architecture and customizable pools with dynamic swap fees and hooks for tailored liquidity management.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer-v3.jpg`,
@@ -61582,6 +61587,7 @@ const data3_3: Protocol[] = [
     module: "ethena-usdtb/index.js",
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
+    stablecoins: ["ethena-usdtb"],
     listedAt: 1734350466
   },
   {

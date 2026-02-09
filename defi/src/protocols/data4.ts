@@ -468,7 +468,7 @@ const data4: Protocol[] = [
       fees: "SwapX-algebra",
       dexs: {
         adapter: "SwapX-algebra",
-        genuineSpikes: ["1760054400"],
+        genuineSpikes: [["2025-10-10", "-"]],
       },
     }
   },
@@ -1180,6 +1180,7 @@ const data4: Protocol[] = [
     module: "cvex/index.js",
     twitter: "Jetstreamtrade",
     listedAt: 1736469235,
+    deadUrl: true,
     dimensions: {
       fees: "cvex",
       derivatives: "cvex"
@@ -1316,6 +1317,7 @@ const data4: Protocol[] = [
     twitter: "zothdotio",
     audit_links: ["https://docs.zoth.io/zoth/resources/audits"],
     parentProtocol: "parent#zoth",
+    stablecoins: ["zoth-zeusd"],
     listedAt: 1736774553,
   },
   {
@@ -2003,6 +2005,11 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
   },
@@ -3089,7 +3096,7 @@ const data4: Protocol[] = [
     name: "Fraxtal",
     address: null,
     symbol: "FXTL",
-    url: "https://frax.finance",
+    url: "https://frax.com/",
     description:
       "Fraxtal, launched by Frax finance, is an L2 ETH scaling solution featuring a modular rollup design on the OP stack. It uses frxETH for gas, adds Blockspace Incentives (FLOX) for rewarding engagement, and offers a veFXS contract for cross-chain staking",
     chain: "Ethereum",
@@ -3105,7 +3112,6 @@ const data4: Protocol[] = [
   {
     id: "5695",
     name: "Gravity by Galxe",
-    previousNames: ["Gravity"],
     address: "0x9c7beba8f6ef6643abd725e45a4e8387ef260649",
     symbol: "G",
     url: "https://gravity.xyz/",
@@ -3919,7 +3925,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Plume (Deprecated)", "Plume Mainnet"],
+    chains: ["Plume Mainnet"],
     module: "solera/index.js",
     twitter: "SoleraLabs",
     oraclesBreakdown: [
@@ -4120,7 +4126,7 @@ const data4: Protocol[] = [
     listedAt: 1738858207,
     dimensions: {
       aggregators: {
-        genuineSpikes: ["1738540800", "1738627200", "1738713600", "1746489600"],
+        genuineSpikes: [["2025-02-03", "-"], ["2025-02-04", "-"], ["2025-02-05", "-"], ["2025-05-06", "-"]],
         adapter: "enso"
       }
     }
@@ -5723,7 +5729,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "flashbot",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -5925,7 +5931,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "foomclub",
+    twitter: "foomclub_",
     treasury: "foom.js",
   },
   {
@@ -6312,7 +6318,7 @@ const data4: Protocol[] = [
       fees: "hyperswap-v2",
       dexs: {
         adapter: "hyperswap-v2",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
     }
   },
@@ -7004,6 +7010,9 @@ const data4: Protocol[] = [
     treasury: "flrbank.js",
     twitter: "FlareBank",
     listedAt: 1741195062,
+    dimensions: {
+      fees: "flarebank"
+    }
   },
   {
     id: "5866",
@@ -9134,6 +9143,7 @@ const data4: Protocol[] = [
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf",
     ],
     parentProtocol: "parent#secured-finance",
+    stablecoins: ["usdfc"],
     listedAt: 1743107377,
   },
   {
@@ -11450,7 +11460,6 @@ const data4: Protocol[] = [
       "Berachain",
       "Scroll",
       "Chiliz",
-      "IoTeX",
       "Mode",
       "Sei",
       "Unichain",
@@ -11757,7 +11766,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "launchlab",
       dexs: {
-        genuineSpikes: ["1745539200"],
+        genuineSpikes: [["2025-04-25", "-"]],
         adapter: "launchlab"
       }
     }
@@ -14500,7 +14509,7 @@ const data4: Protocol[] = [
     name: "Block Analitica",
     address: null,
     symbol: "-",
-    url: "https://blockanalitica.substack.com",
+    url: "https://blockanalitica.com/",
     description: `The risk team behind the DAI (USDS) stablecoin`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/block-analitica.jpg`,
@@ -15604,6 +15613,7 @@ const data4: Protocol[] = [
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
+    stablecoins: ["smardex-usdn"],
     listedAt: 1748362857,
     dimensions: {
       dexs: "smardex-usdn"
@@ -15794,7 +15804,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "infinifi",
-        genuineSpikes: ["1766793600", "1766880000","1766966400"],
+        genuineSpikes: [["2025-12-27", "-"], ["2025-12-28", "-"],["2025-12-29", "-"]],
       },
     }
   },
@@ -15841,6 +15851,7 @@ const data4: Protocol[] = [
     twitter: "asymmetryfin",
     audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties"],
     parentProtocol: "parent#asymmetry",
+    stablecoins: ["asymmetry-usdaf", "asymmetry-usdaf-v2"],
     listedAt: 1748466717,
     dimensions: {
       fees: "asymmetry-usdaf"
@@ -18814,7 +18825,7 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.com/",
+    url: "https://xstocks.fi/",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -18943,7 +18954,7 @@ const data4: Protocol[] = [
       aggregators: "rango",
       "bridge-aggregators": {
         adapter: "rango",
-        genuineSpikes: ["1770163200"]
+        genuineSpikes: [["2026-02-04", "-"]]
       }
     }
   },
@@ -19538,7 +19549,7 @@ const data4: Protocol[] = [
       fees: "carbon",
       derivatives: {
         adapter: "carbon",
-        genuineSpikes: ["1760054400"]
+        genuineSpikes: [["2025-10-10", "-"]]
       }
     }
   },
@@ -21968,7 +21979,7 @@ const data4: Protocol[] = [
     name: "WisdomTree",
     address: null,
     symbol: "-",
-    url: "https://www.wisdomtreeconnect.com/",
+    url: "https://www.wisdomtreeprime.com/",
     description:
       "WisdomTree Connect is designed to offer seamless access to WisdomTree’s tokenized real world assets (RWA) for a range of investors and businesses. The WisdomTree Connect platform integrates the features of blockchain technology with the investment needs of both traditional and crypto-native financial institutions. By simplifying access to tokenized funds and digital assets, WisdomTree Connect paves the way for a new era in financial services",
     chain: "Ethereum",
@@ -22429,11 +22440,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       derivatives: {
         adapter: "boros",
-        genuineSpikes: ["1759449600"],
+        genuineSpikes: [["2025-10-03", "-"]],
       },
       "open-interest": "boros-oi"
     },
@@ -22833,7 +22844,7 @@ const data4: Protocol[] = [
     twitter: "humidifi",
     dimensions: {
       dexs: {
-        genuineSpikes: ["1755129600"],
+        genuineSpikes: [["2025-08-14", "-"]],
         adapter: "humidifi"
       }
     }
@@ -23385,6 +23396,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["cap-labs-dev"],
+    stablecoins: ["cap-cusd"],
     listedAt: 1755167300,
     dimensions: {
       fees: "cap"
@@ -23781,6 +23793,7 @@ const data4: Protocol[] = [
     module: "frax-rwa/index.js",
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
+    stablecoins: ["frax-usd"],
     listedAt: 1755567417,
   },
   {
@@ -24591,7 +24604,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#opensea",
     dimensions: {
       "bridge-aggregators": {
-        genuineSpikes: ["1751414400", "1752105600"],
+        genuineSpikes: [["2025-07-02", "-"], ["2025-07-10", "-"]],
         adapter: "opensea"
       }
     }
@@ -25117,7 +25130,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "woofi-pro-perp",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "woofi-pro-perp"
       }
     }
@@ -25236,7 +25249,7 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "edgex",
       derivatives: {
-        genuineSpikes: ["1722988800", "1723075200"],
+        genuineSpikes: [["2024-08-07", "-"], ["2024-08-08", "-"]],
         adapter: "edgeX"
       },
       "open-interest": "edgeX",
@@ -25276,11 +25289,11 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "paradex",
       derivatives: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "paradex"
       },
       "open-interest": {
-        genuineSpikes: ["1759190400"],
+        genuineSpikes: [["2025-09-30", "-"]],
         adapter: "paradex"
       },
       "normalized-volume": "paradex"
@@ -26687,7 +26700,10 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "musical-chairs/index.js",
     twitter: null,
-    listedAt: 1757960251
+    listedAt: 1757960251,
+    dimensions: {
+      fees: "musical-chairs",
+    }
   },
   {
     id: "6730",
@@ -27097,7 +27113,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: {
         adapter: "injective-derivatives",
-        genuineSpikes: ["1759104000"],
+        genuineSpikes: [["2025-09-29", "-"]],
       },
       "open-interest": "injective-derivatives"
     },
@@ -28209,6 +28225,7 @@ const data4: Protocol[] = [
       fees: "metamask-musd"
     },
     parentProtocol: "parent#metamask",
+    stablecoins: ["metamask-usd"],
   },
   {
     id: "6801",
@@ -29484,6 +29501,7 @@ const data4: Protocol[] = [
       },
     ],
     github: ["uncaplabs"],
+    stablecoins: ["uncap-usd"],
     listedAt: 1760475689,
   },
   {
@@ -29969,7 +29987,7 @@ const data4: Protocol[] = [
     gecko_id: "bio-protocol",
     cmcId: "34812",
     category: "Launchpad",
-    chains: ["Ethereum", "Base", "Solana"],
+    chains: ["Ethereum", "Base"],
     module: "bio/index.js",
     twitter: "BioProtocol",
     github: ["bio-xyz"],
@@ -30150,7 +30168,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Ethereum", "TAC", "Base", "Optimism", "Hyperliquid L1", "Plume Mainnet", "Etherlink"],
+    chains: ["Ethereum"],
     module: "ultrayield/index.js",
     twitter: "ultrayieldapp",
     listedAt: 1761083071,

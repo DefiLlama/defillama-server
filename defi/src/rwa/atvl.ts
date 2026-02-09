@@ -235,7 +235,7 @@ function getOnChainTvlAndActiveMcaps(
     const rwaId = coingeckoIdToRwaId[cgId];
     if (!finalData[rwaId]) return;
     finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
-    if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
+    if (!finalData[rwaId][RWA_KEY_MAP.activeMcap] && finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
   Object.keys(assetPrices).forEach((pk: string) => {
@@ -247,8 +247,10 @@ function getOnChainTvlAndActiveMcaps(
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
-      if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
-      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
+        if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
+        findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      }
       return;
     }
 
@@ -259,13 +261,8 @@ function getOnChainTvlAndActiveMcaps(
       return;
     }
 
-    // Ensure price is always number|null for API consumers.
-    // If missing in metadata, keep it null (do not backfill from price feed).
-    if ((finalData[rwaId][RWA_KEY_MAP.price] ?? null) == null) {
-      finalData[rwaId][RWA_KEY_MAP.price] = null;
-    } else {
-      const parsedPrice = toFiniteNumberOrNull(finalData[rwaId][RWA_KEY_MAP.price]);
-      finalData[rwaId][RWA_KEY_MAP.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+      finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(price);
     }
 
     try {
@@ -275,6 +272,8 @@ function getOnChainTvlAndActiveMcaps(
 
       const aum = (price * supply) / 10 ** decimals;
       finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+      if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
+
       finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);

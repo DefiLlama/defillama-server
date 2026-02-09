@@ -381,7 +381,7 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
   }
 }
 
-export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown') {
+export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown' | 'chart-label-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
     const protocolName = req.path_parameters.name?.toLowerCase()
     const protocolSlug = sluggifyString(protocolName)
@@ -390,10 +390,10 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
     if ((adaptorType as any) === 'financial-statement') // redirect to financial statement route handler
       return getProtocolFinancials(req, res)
 
-    const { dataType, includeLabelBreakdown } = getEventParameters(req, false)
+    const { dataType } = getEventParameters(req, false)
     let protocolFileExt = route === 'overview' ? '-lite' : '-all'
 
-    if (includeLabelBreakdown) protocolFileExt = '-bl' // include label breakdown data
+    if (route === 'chart-label-breakdown') protocolFileExt = '-bl' // include label breakdown data
 
     const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${protocolFileExt}`
     const routeFile = `dimensions/${routeSubPath}`
@@ -433,6 +433,12 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
       }
 
       return successResponse(res, chartData)
+    } else if (route === 'chart-label-breakdown') {
+      if (data.hasLabelBreakdown) {
+        return successResponse(res, data.labelBreakdownChart);
+      } else {
+        return errorResponse(res, `Protocol ${protocolName} doesn't have ${dataType} breakdown labels data`);
+      }
     } else {
       data.totalDataChartBreakdown = undefined;
 

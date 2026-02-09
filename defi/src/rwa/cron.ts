@@ -57,7 +57,9 @@ function convertChainKeysToLabelsNestedNumber(
       for (const [protocolKey, value] of Object.entries(protocols)) {
         const isTreasury = protocolKey.endsWith('-treasury');
         const normalizedProtocolKey = isTreasury ? protocolKey.slice(0, -'-treasury'.length) : protocolKey;
-        const protocolLabel = (normalizedProtocolKey.startsWith('parent#') ? parentProtocolsById[protocolKey]?.name : protocolsById[protocolKey]?.name) ?? protocolKey;
+        const protocolLabel = (normalizedProtocolKey.startsWith('parent#')
+          ? parentProtocolsById[normalizedProtocolKey]?.name
+          : protocolsById[normalizedProtocolKey]?.name) ?? protocolKey;
         const finalProtocolLabel = isTreasury ? `${protocolLabel} (Treasury)` : protocolLabel;
         outProtocols[finalProtocolLabel] = toFiniteNumberOrZero(value);
       }
@@ -94,7 +96,7 @@ async function generateCurrentData(metadata: RWAMetadata[]): Promise<any[]> {
     // Expose camelCase fields in API responses; do not expose "mcap" (use "onChainMcap" instead).
     delete (m.data as any).mcap;
     m.data.onChainMcap = convertChainKeysToLabelsNumber(idCurrent.mcap as any);
-    m.data.activeMcap = convertChainKeysToLabelsNumber(idCurrent.activemcap as any);
+    if (m.data.activeMcapData) m.data.activeMcap = convertChainKeysToLabelsNumber(idCurrent.activemcap as any);
     m.data.defiActiveTvl = convertChainKeysToLabelsNestedNumber(idCurrent.defiactivetvl as any);
 
     data.push(m.data);
@@ -118,9 +120,15 @@ function generateIdMap(
   return idMap;
 }
 
-async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: number; totalRecords: number }> {
+async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Promise<{ updatedIds: number; totalRecords: number }> {
   console.log('Generating historical data incrementally...');
   const startTime = Date.now();
+
+  // Create a map of id -> activeMcapData for quick lookup
+  const activeMcapDataMap: { [id: string]: boolean } = {};
+  metadata.forEach((m) => {
+    activeMcapDataMap[m.id] = !!m.data.activeMcapData;
+  });
 
   // Get sync metadata to determine if this is a full or incremental sync
   const syncMetadata = await getSyncMetadata();
@@ -149,12 +157,13 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
       if (!recordsById[record.id]) {
         recordsById[record.id] = [];
       }
+      const activeMcapData = activeMcapDataMap[record.id] ?? false;
       recordsById[record.id].push({
         timestamp: record.timestamp,
         // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
         onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
         defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-        activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
+        activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
       });
     });
 
@@ -187,12 +196,13 @@ async function generateAllHistoricalDataIncremental(): Promise<{ updatedIds: num
         const records = await fetchDailyRecordsForIdPG(id);
         if (records.length === 0) continue;
 
+        const activeMcapData = activeMcapDataMap[id] ?? false;
         const historicalData = records.map((record) => ({
           timestamp: record.timestamp,
           // Sequelize returns DECIMAL as string; normalize to numbers for API consumers
           onChainMcap: toFiniteNumberOrZero(record.aggregatemcap),
           defiActiveTvl: toFiniteNumberOrZero(record.aggregatedefiactivetvl),
-          activeMcap: toFiniteNumberOrZero(record.aggregatedactivemcap),
+          activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
         }));
 
         await storeHistoricalDataForId(id, historicalData);
@@ -967,7 +977,7 @@ async function main() {
     await storeRouteData('stats.json', stats);
 
     // Generate historical data incrementally
-    const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental();
+    const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental(metadata);
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
 
     // Generate PG cache with chain breakdown

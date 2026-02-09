@@ -10323,5 +10323,26 @@ const data5: Protocol[] = [
       fees: "canonic",
     },
   },
+  {
+    id: "7367",
+    name: "Neptune Swap Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://neptunehub.app",
+    description: "Neptune Swap Aggregator is a DEX aggregator on Cronos that routes trades across multiple DEXs (VVS Finance, MM Finance, etc.) to find the best price. 0.35% protocol fee on swaps.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/neptune-swap-aggregator.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Cronos"],
+    module: "dummy.js",
+    twitter: "NeptuneHubCro",
+    dimensions: {
+      aggregators: "neptune-swap",
+      fees: "neptune-swap",
+    },
+  },
 ];
 export default data5;

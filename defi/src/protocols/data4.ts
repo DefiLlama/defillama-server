@@ -23109,6 +23109,10 @@ const data4: Protocol[] = [
     module: "daoaas-swap/index.js",
     twitter: "DAOaaS_Official",
     listedAt: 1754929605,
+    dimensions: {
+      dexs: "daoaas-swap",
+      fees: "daoaas-swap"
+    }
   },
   {
     id: "6567",

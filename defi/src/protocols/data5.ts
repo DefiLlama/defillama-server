@@ -9384,7 +9384,7 @@ const data5: Protocol[] = [
     },
     parentProtocol: "parent#dreamcash",
   },
-  { // the adapter does not yet exist
+  {
     id: "7322",
     name: "AXC GIFT",
     address: null,

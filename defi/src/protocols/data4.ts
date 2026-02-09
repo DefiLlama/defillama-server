@@ -18735,6 +18735,7 @@ const data4: Protocol[] = [
     ],
     dimensions: {
       fees: "etherfi-cash-cards",
+      dexs: "etherfi-cash-cards",
     },
   },
   {

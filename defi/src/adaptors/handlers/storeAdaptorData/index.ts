@@ -46,6 +46,7 @@ export type DimensionRunOptions = {
   onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
   deadChains?: Set<string>
   skipHourlyCache?: boolean
+  parallelHourlyProcessCount?: number
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -82,6 +83,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
     maxRunTime,
     onlyYesterday = false,
     skipHourlyCache = false,
+    parallelHourlyProcessCount = 1,
   } = options
 
   if (!isRunFromRefillScript)
@@ -419,11 +421,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
       // if the adapter supports pulling hourly data, we process it with a different function that handles pulling and storing hourly slices, otherwise we run the adapter as normal - we only use the hourly cache for store-all to speed up processing, for refill we want to pull fresh data even for hourly adapters
       if (isHourlyAdapter) {
-        let parallelProcessCount = 1  // (default) process one hourly slice at a time to avoid overwhelming the system with too many parallel processes
-
-        // if (process.env.UI_TOOL_MODE)
-        //   parallelProcessCount = 3
-
         const result = await processHourlyAdapter({
           adapterType,
           id: id2,
@@ -435,7 +432,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           hourlyCacheData,
           isDryRun,
           checkBeforeInsert,
-          parallelProcessCount,
+          parallelProcessCount: parallelHourlyProcessCount,
         })
         adaptorRecordV2JSON = result.adaptorRecordV2JSON
         tb = result.tb

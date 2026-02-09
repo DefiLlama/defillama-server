@@ -383,6 +383,7 @@ const App = () => {
         onValuesChange={handleFormChange}
         initialValues={{
           parallelCount: 3,
+          parallelHourlyProcessCount: 3,
           onlyMissing: false,
           dryRun: false,
           delayBetweenRuns: 0,
@@ -452,6 +453,15 @@ const App = () => {
           label="Parallel Count"
           name="parallelCount"
           rules={[{ required: true, message: 'Please enter parallel count' }]}
+        >
+          <InputNumber min={1} max={100} />
+        </Form.Item>
+
+        <Form.Item
+          label="Parallel Hourly Process Count"
+          name="parallelHourlyProcessCount"
+          help="Number of parallel processes for hourly slices (only for adapters that support hourly cache), set to 1 to disable parallel processing of hourly slices"
+          rules={[{ required: false, message: 'Please enter parallel hourly process count' }]}
         >
           <InputNumber min={1} max={100} />
         </Form.Item>

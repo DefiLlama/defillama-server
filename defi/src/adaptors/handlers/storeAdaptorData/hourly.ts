@@ -1,6 +1,7 @@
 import { deadChainsSet } from "../../../config/deadChains"
 import { AdapterType } from "../../data/types"
 import { getHourlySlicesBulk, getHourlySlicesForProtocol, getHourlyTimeS, getUnixTsFromHourlyTimeS, upsertHourlySlicesForProtocol } from "../../db-utils/db2"
+import * as sdk from "@defillama/sdk";
 
 export type HourlySlice = {
   timestamp: number
@@ -504,81 +505,93 @@ export async function processHourlyAdapter(params: {
     else existingByTS.set(ts, existingSlices.get(ts)!)
   }
 
-  const newSlices: HourlySlice[] = []
+  const newSlicesToStoreInDB: HourlySlice[] = []
+  const newByTS = new Map<string, any>()
 
   if (slicesToFetch.length) {
     const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
 
-    for (const timeString of slicesToFetch) { // switch to PromisePool if we want to parallelize with parallelProcessCount > 1
-      const ts = getUnixTsFromHourlyTimeS(timeString)
-      let endTimestampForSlice = ts + ONE_HOUR_IN_SECONDS - 1
-      
-      // console.log(`[hourly] Fetching missing slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
-      
-      const res: any = await runAdapter({
-        module: adaptor,
-        endTimestamp: endTimestampForSlice,
-        name: module,
-        withMetadata: true,
-        cacheResults: false,
-        deadChains: deadChainsSet,
-        runWindowInSeconds: ONE_HOUR_IN_SECONDS,
-      })
+    await sdk.util.runInPromisePool({
+      items: slicesToFetch,
+      concurrency: params.parallelProcessCount ?? 1,
+      permitFailure: false,
+      processor: async (timeString: string) => {
 
-      const sliceRecord = res.adaptorRecordV2JSON as any
-      const sliceTb = res.breakdownByToken
+        const ts = getUnixTsFromHourlyTimeS(timeString)
+        let endTimestampForSlice = ts + ONE_HOUR_IN_SECONDS - 1
 
-      let sliceTbl = res.tokenBreakdownByLabel
-      let sliceTblc = res.tokenBreakdownByLabelByChain
+        if (process.env.UI_TOOL_MODE)
+          console.log(`[hourly] Fetching missing hourly slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
 
-      // If adapter doesn't provide tbl/tblc, build it from tokenBreakdown + bl/blc
-      if (sliceTb && (!sliceTbl || !sliceTblc)) {
-        const built = buildTokenBreakdownsByLabel({
-          tokenBreakdown: sliceTb,
-          breakdownByLabel: sliceRecord?.breakdownByLabel,
-          breakdownByLabelByChain: sliceRecord?.breakdownByLabelByChain,
+        const res: any = await runAdapter({
+          module: adaptor,
+          endTimestamp: endTimestampForSlice,
+          name: module,
+          withMetadata: true,
+          cacheResults: false,
+          deadChains: deadChainsSet,
+          runWindowInSeconds: ONE_HOUR_IN_SECONDS,
         })
-        sliceTbl = sliceTbl ?? built.tbl
-        sliceTblc = sliceTblc ?? built.tblc
-      }
 
-      if (!sliceRecord || !sliceRecord.aggregated || Object.keys(sliceRecord.aggregated).length === 0) {
-        console.log(`[hourly] No data found for slice ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
-        continue;
-      }
+        const sliceRecord = res.adaptorRecordV2JSON as any
+        const sliceTb = res.breakdownByToken
 
-      newSlices.push({
-        id,
-        timestamp: ts,
-        data: sliceRecord.aggregated,
-        bl: sliceRecord.breakdownByLabel ?? null,
-        blc: sliceRecord.breakdownByLabelByChain ?? null,
-        tb: sliceTb,
-        tbl: sliceTbl ?? null,
-        tblc: sliceTblc ?? null,
-        timeS: timeString,
-      })
-    }
+        let sliceTbl = res.tokenBreakdownByLabel
+        let sliceTblc = res.tokenBreakdownByLabelByChain
+
+        // If adapter doesn't provide tbl/tblc, build it from tokenBreakdown + bl/blc
+        if (sliceTb && (!sliceTbl || !sliceTblc)) {
+          const built = buildTokenBreakdownsByLabel({
+            tokenBreakdown: sliceTb,
+            breakdownByLabel: sliceRecord?.breakdownByLabel,
+            breakdownByLabelByChain: sliceRecord?.breakdownByLabelByChain,
+          })
+          sliceTbl = sliceTbl ?? built.tbl
+          sliceTblc = sliceTblc ?? built.tblc
+        }
+
+        if (!sliceRecord || !sliceRecord.aggregated || Object.keys(sliceRecord.aggregated).length === 0) {
+          console.log(`[hourly] No data found for slice ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+          return;
+        }
+
+        const slice: HourlySlice = {
+          id,
+          timestamp: ts,
+          data: sliceRecord.aggregated,
+          bl: sliceRecord.breakdownByLabel ?? null,
+          blc: sliceRecord.breakdownByLabelByChain ?? null,
+          tb: sliceTb,
+          tbl: sliceTbl ?? null,
+          tblc: sliceTblc ?? null,
+          timeS: timeString,
+        }
+
+        newByTS.set(timeString, slice)
+
+        // we store the new slices in the DB immediately if it's not a dry run and we're not in check-before-insert mode, otherwise we defer storing them until after we process all slices to aggregate the daily data, this is to avoid having the hourly slices stored without the daily aggregate if something goes wrong during processing
+        if (!isDryRun && !checkBeforeInsert) {
+          await upsertHourlySlicesForProtocol({ adapterType, id, slices: [slice], })
+        } else {
+          newSlicesToStoreInDB.push(slice)
+        }
+
+      }
+    })
   }
 
   // This function will be returned for deferred execution when checkBeforeInsert is true
-  const storeHourlySlicesFn = newSlices.length ? (async () => {
+  const storeHourlySlicesFn = newSlicesToStoreInDB.length ? (async () => {
     await upsertHourlySlicesForProtocol({
       adapterType,
       id,
-      slices: newSlices,
+      slices: newSlicesToStoreInDB,
     })
   }) : () => (Promise.resolve())
 
-  if (newSlices.length && !isDryRun && !checkBeforeInsert) {
-    // Execute immediately if not dry-run and not check-before-insert
-    await storeHourlySlicesFn!()
-  } else if (newSlices.length && isDryRun && !checkBeforeInsert) {
-    console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlices.length} slices)`)
+  if (newSlicesToStoreInDB.length && isDryRun && !checkBeforeInsert) {
+    console.log(`[hourly][dry-run] Skipping upsertHourlySlicesForProtocol for ${adapterType} - ${module} (${newSlicesToStoreInDB.length} slices)`)
   }
-
-  const newByTS = new Map<string, any>()
-  newSlices.forEach(s => newByTS.set(s.timeS, s))
 
   const fullSlices: HourlySlice[] = []
   for (const ts of targetTS) {
@@ -591,7 +604,7 @@ export async function processHourlyAdapter(params: {
     fullSlices.push(slice as HourlySlice)
   }
 
-  if (fullSlices.length !== 24) 
+  if (fullSlices.length !== 24)
     throw new Error(`Expected 24 hourly slices for ${adapterType} - ${module} but got ${fullSlices.length}`)
 
   const aggregated = aggregateDailyFromHourlySlices(fullSlices, recordTimestamp)

@@ -8075,6 +8075,13 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rezervemoney",
     github: ["rezervemoney"],
     treasury: "rezerve.js",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "Rezerve has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#flamingo",

@@ -10238,7 +10238,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "useTria",
     dimensions: {
-      dexs: "tria-card",
+      fees: "tria-card",
     },
   },
   {

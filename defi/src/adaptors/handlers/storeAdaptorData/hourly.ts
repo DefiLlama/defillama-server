@@ -468,8 +468,8 @@ export async function processHourlyAdapter(params: {
   const ONE_HOUR_IN_SECONDS = 60 * 60
   const anchorTs = endTimestamp
   const fromTs = anchorTs - 23 * ONE_HOUR_IN_SECONDS
-  const dbCacheFromTimestamp = endTimestamp + ONE_HOUR_IN_SECONDS * 3 // we add 3 hours to the endTimestamp to have some buffer
-  const dbCacheToTimestamp = anchorTs - 27 * ONE_HOUR_IN_SECONDS
+  const dbCacheToTimestamp = endTimestamp + ONE_HOUR_IN_SECONDS * 3 // we add 3 hours to the endTimestamp to have some buffer
+  const dbCacheFromTimestamp = anchorTs - 27 * ONE_HOUR_IN_SECONDS
 
   let existingSlices: Map<string, HourlySlice> = new Map()
   if (!skipHourlyCache) {
@@ -484,6 +484,7 @@ export async function processHourlyAdapter(params: {
     else {
 
       const res = await getHourlySlicesForProtocol({ adapterType, id, fromTimestamp: dbCacheFromTimestamp, toTimestamp: dbCacheToTimestamp, })
+      console.log(`[hourly] No valid cache found for ${adapterType} - ${module}, pulled ${res.length} existing slices from DB to check for missing slices`)
       res.forEach((row: any) => {
         existingSlices.set(row.timeS, row)
       })
@@ -575,6 +576,9 @@ export async function processHourlyAdapter(params: {
         } else {
           newSlicesToStoreInDB.push(slice)
         }
+
+        if (process.env.UI_TOOL_MODE)
+          console.log(`[hourly] Fetched slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}, parallel count: ${params.parallelProcessCount}, isDryRun: ${isDryRun}, checkBeforeInsert: ${checkBeforeInsert}`)
 
       }
     })

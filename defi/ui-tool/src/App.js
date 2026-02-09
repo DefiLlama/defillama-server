@@ -357,6 +357,7 @@ const App = () => {
           parallelCount: values.parallelCount,
           delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
           skipHourlyCache: values.skipHourlyCache || false,
+          parallelHourlyProcessCount: values.parallelHourlyProcessCount || 1,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,

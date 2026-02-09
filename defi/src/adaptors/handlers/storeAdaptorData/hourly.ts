@@ -455,7 +455,7 @@ export async function processHourlyAdapter(params: {
     hourlyCacheData,
     isDryRun,
     checkBeforeInsert,
-    // parallelProcessCount = 1,
+    parallelProcessCount = 1,
   } = params
 
   // if the end timestamp is current time & this hour is not complete yet, we pull the last complete hour instead to avoid having incomplete data for the current hour
@@ -484,7 +484,7 @@ export async function processHourlyAdapter(params: {
     else {
 
       const res = await getHourlySlicesForProtocol({ adapterType, id, fromTimestamp: dbCacheFromTimestamp, toTimestamp: dbCacheToTimestamp, })
-      console.log(`[hourly] No valid cache found for ${adapterType} - ${module}, pulled ${res.length} existing slices from DB to check for missing slices`)
+      // console.log(`[hourly] No valid cache found for ${adapterType} - ${module}, pulled ${res.length} existing slices from DB to check for missing slices`)
       res.forEach((row: any) => {
         existingSlices.set(row.timeS, row)
       })
@@ -514,7 +514,7 @@ export async function processHourlyAdapter(params: {
 
     await sdk.util.runInPromisePool({
       items: slicesToFetch,
-      concurrency: params.parallelProcessCount ?? 1,
+      concurrency: parallelProcessCount,
       permitFailure: false,
       processor: async (timeString: string) => {
 
@@ -522,7 +522,7 @@ export async function processHourlyAdapter(params: {
         let endTimestampForSlice = ts + ONE_HOUR_IN_SECONDS - 1
 
         if (process.env.UI_TOOL_MODE)
-          console.log(`[hourly] Fetching missing hourly slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
+          console.log(`[hourly] Fetching missing hourly slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} with endTimestamp ${new Date(endTimestampForSlice * 1e3).toISOString()}, parallel count: ${parallelProcessCount}, isDryRun: ${isDryRun}, checkBeforeInsert: ${checkBeforeInsert}`)
 
         const res: any = await runAdapter({
           module: adaptor,

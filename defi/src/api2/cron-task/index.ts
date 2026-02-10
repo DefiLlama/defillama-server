@@ -570,7 +570,7 @@ function buildTimeseriesItemValue(valueByTimestamp: Record<number, number>): Arr
   return shortedItem.sort((a, b) => a[0] > b[0] ? 1 : -1);
 }
 
-function buildTimeseriesItemValueBreakdown(valueByTimestamp: Record<number, Record<string, number>>): Array<Array<number>> {
+function buildTimeseriesItemValueBreakdown(valueByTimestamp: Record<number, Record<string, number>>): Array<any> {
   const shortedItem: Array<any> = [];
   for (const [timestamp, labelsAndValues] of Object.entries(valueByTimestamp)) {
     shortedItem.push({

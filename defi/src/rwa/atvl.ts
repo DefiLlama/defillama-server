@@ -222,7 +222,7 @@ function getActiveTvls(
   });
 }
 // calculate on chain tvls mcaps
-function getOnChainTvlAndActiveMcaps(
+async function getOnChainTvlAndActiveMcaps(
   assetPrices: any,
   tokenToProjectMap: any,
   finalData: any,
@@ -231,6 +231,7 @@ function getOnChainTvlAndActiveMcaps(
   totalSupplies: any,
   excludedAmounts: any
 ) {
+  let stablecoinsAlert: string = ``;
   Object.keys(stablecoinsData).forEach((cgId: string) => {
     const rwaId = coingeckoIdToRwaId[cgId];
     if (!finalData[rwaId]) return;
@@ -246,6 +247,11 @@ function getOnChainTvlAndActiveMcaps(
     const chainDisplayName = getChainDisplayName(chain, true);
 
     if (cgId && stablecoinsData[cgId]) {
+      if (!(chainDisplayName in stablecoinsData[cgId])) {
+        console.error(`RWA address on ${chain} for ${cgId} not in stablecoins data`);
+        stablecoinsAlert = `${stablecoinsAlert}\nRWA address on ${chain} for ${cgId} not in stablecoins data`
+        return;
+      }
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
         if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
@@ -281,6 +287,8 @@ function getOnChainTvlAndActiveMcaps(
       console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
   });
+
+  await sendMessage(stablecoinsAlert, process.env.RWA_WEBHOOK!, false);
 }
 // deduct excluded amounts for active mcaps
 function findActiveMcaps(
@@ -364,7 +372,7 @@ export default async function main(ts: number = 0) {
 
   // calculate defi active tvls and on chain mcaps
   getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls, projectIdsMap);
-  getOnChainTvlAndActiveMcaps(
+  await getOnChainTvlAndActiveMcaps(
     assetPrices,
     tokenToProjectMap,
     finalData,

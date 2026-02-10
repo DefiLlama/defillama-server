@@ -2,6 +2,7 @@ require("dotenv").config();
 import {
   batchWriteWithAlerts,
   filterWritesWithLowConfidence,
+  processRedirectsToStaleCoinGeckoKeys,
 } from "../adapters/utils/database";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
 console.log(process.version);
@@ -44,7 +45,8 @@ async function storeDefiCoins() {
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
-        const ddbWriteResult = await batchWriteWithAlerts(resultsWithoutDuplicates, true,);
+        const withCgUpdates = await processRedirectsToStaleCoinGeckoKeys(resultsWithoutDuplicates);
+        const ddbWriteResult = await batchWriteWithAlerts(withCgUpdates, true,);
         console.log(`[DDB] Wrote ${ddbWriteResult?.writeCount} entries for ${adapterKey}`);
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);

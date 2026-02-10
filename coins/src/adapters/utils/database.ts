@@ -21,6 +21,7 @@ import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { isCoinGeckoKeyActive } from "../../utils/activeCoingeckoKeys";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -411,6 +412,148 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
 
   return coinData;
 }
+/**
+ * Processes writes to handle tokens that redirect to stale CoinGecko keys.
+ * If a token redirects to a CoinGecko key that's not in the active Redis set,
+ * the write is transformed to update the CG listing directly.
+ *
+ * @param items - Array of write items
+ * @returns Processed array of write items
+ */
+export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promise<any[]> {
+  if (items.length === 0) return items;
+
+  // Get unique PKs to fetch redirects
+  const uniquePKs = [...new Set(items.map(item => item.PK))];
+
+  // Fetch current entries to check for redirects
+  const currentEntries = await batchGet(
+    uniquePKs.map((PK) => ({ PK, SK: 0 }))
+  );
+
+  // Build a map of PK -> redirect
+  const redirectMap: { [pk: string]: string } = {};
+  currentEntries.forEach((entry: any) => {
+    if (entry.redirect && entry.redirect.startsWith('coingecko#')) {
+      redirectMap[entry.PK] = entry.redirect;
+    }
+  });
+
+  // Also check for redirects in the incoming items
+  items.forEach((item) => {
+    if (item.redirect && item.redirect.startsWith('coingecko#')) {
+      redirectMap[item.PK] = item.redirect;
+    }
+  });
+
+  // If no redirects to CoinGecko, return items unchanged
+  const coingeckoRedirects = Object.values(redirectMap).filter(r => r.startsWith('coingecko#'));
+  if (coingeckoRedirects.length === 0) {
+    return items;
+  }
+
+  // Extract unique CoinGecko IDs and check if they're active in parallel
+  const uniqueCoinGeckoKeys = [...new Set(coingeckoRedirects)];
+  const uniqueCoinGeckoIds = uniqueCoinGeckoKeys.map(r => r.replace('coingecko#', ''));
+
+  const activeStatusPromises = uniqueCoinGeckoIds.map(async (cgId, idx) => {
+    const isActive = await isCoinGeckoKeyActive(cgId);
+    return { key: uniqueCoinGeckoKeys[idx], isActive };
+  });
+
+  const activeStatuses = await Promise.all(activeStatusPromises);
+  const activeStatusMap = new Map<string, boolean>();
+  activeStatuses.forEach(({ key, isActive }) => {
+    activeStatusMap.set(key, isActive);
+  });
+
+  // Fetch metadata for all CG listings that will be updated (batch fetch)
+  const cgListingsToUpdate = [...new Set(
+    Object.entries(redirectMap)
+      .filter(([_, redirect]) => activeStatusMap.get(redirect) === false)
+      .map(([_, redirect]) => redirect)
+  )];
+
+  const cgMetadataMap: { [pk: string]: any } = {};
+  if (cgListingsToUpdate.length > 0) {
+    const cgMetadata = await batchGet(
+      cgListingsToUpdate.map(PK => ({ PK, SK: 0 }))
+    );
+    cgMetadata.forEach(entry => {
+      if (entry.PK) {
+        cgMetadataMap[entry.PK] = entry;
+      }
+    });
+  }
+
+  // Process items
+  const processedItems: any[] = [];
+  const itemsToSkip = new Set<number>();
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const redirect = redirectMap[item.PK];
+
+    // If this item redirects to a CoinGecko key
+    if (redirect && redirect.startsWith('coingecko#')) {
+      const isActive = activeStatusMap.get(redirect);
+
+      // If the CoinGecko key is NOT active (stale), redirect the write to the CG listing
+      if (isActive === false) {
+        // Only process if this is a price update from a non-coingecko adapter
+        if (item.price !== undefined && item.adapter !== 'coingecko') {
+          const existingMetadata = cgMetadataMap[redirect] || {};
+
+          // For SK=0 writes, create both time series and current entries for CG listing
+          if (item.SK === 0) {
+            // Create time series entry (SK=timestamp) for CG listing
+            processedItems.push({
+              SK: item.timestamp,
+              PK: redirect,
+              price: item.price,
+              adapter: item.adapter,
+              confidence: Math.min(item.confidence, 0.98)
+            });
+
+            // Create current entry (SK=0) for CG listing
+            processedItems.push({
+              SK: 0,
+              PK: redirect,
+              price: item.price,
+              symbol: existingMetadata.symbol || item.symbol,
+              decimals: existingMetadata.decimals || item.decimals,
+              timestamp: item.timestamp,
+              adapter: item.adapter,
+              confidence: Math.min(item.confidence, 0.98)
+            });
+
+            // Skip the original item (since it redirects to the CG listing)
+            itemsToSkip.add(i);
+            console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, updating CG listing directly)`);
+            continue;
+          } else if (item.SK !== 0) {
+            // For time series entries, just redirect to the CG listing
+            processedItems.push({
+              ...item,
+              PK: redirect,
+            });
+            itemsToSkip.add(i);
+            console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, time series)`);
+            continue;
+          }
+        }
+      }
+    }
+
+    // Keep the original item if not skipped
+    if (!itemsToSkip.has(i)) {
+      processedItems.push(item);
+    }
+  }
+
+  return processedItems;
+}
+
 export async function batchWriteWithAlerts(
   items: any[],
   failOnError: boolean,

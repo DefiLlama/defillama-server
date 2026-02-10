@@ -46,7 +46,7 @@ async function getTokenPrices(
 
     const pricesObject: any = {};
     tokens.forEach((token, i) => {
-        // skip multi-asset contracts as pricing would be inaccurate
+        // skip contracts that don't have exactly one asset
         if (allAssets[i].length !== 1) return;
         pricesObject[token] = {
             underlying: underlyingTokens[i],

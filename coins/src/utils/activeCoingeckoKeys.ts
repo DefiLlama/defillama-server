@@ -75,9 +75,7 @@ export async function areCoinGeckoKeysActive(
   try {
     const redis = getRedis();
     const keys = coingeckoIds.map(id => `active_cg:${id}`);
-    const exists = await redis.exists(...keys);
 
-    // exists returns the count of keys that exist
     // We need to check each key individually
     const pipeline = redis.pipeline();
     for (const key of keys) {

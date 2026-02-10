@@ -14,8 +14,8 @@ import {
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 
-import * as sdk from '@defillama/sdk'
-const { sliceIntoChunks, } = sdk.util
+import * as sdk from "@defillama/sdk";
+const { sliceIntoChunks } = sdk.util;
 
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
@@ -54,8 +54,7 @@ export async function getTokenAndRedirectData(
   const response: CoinData[] = [];
   await rateLimited(async () => {
     if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
-    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15)
-      cache = {}; // clear cache every 15 minutes
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}; // clear cache every 15 minutes
 
     const cacheKey = `${chain}-${hoursRange}`;
     if (!cache[cacheKey]) cache[cacheKey] = {};
@@ -386,8 +385,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-            ? r.redirect[0].confidence
-            : undefined;
+          ? r.redirect[0].confidence
+          : undefined;
 
       return {
         chain:
@@ -421,42 +420,44 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
  * @returns Processed array of write items
  */
 export async function processRedirectsToStaleCoinGeckoKeys(
-  items: any[]
-): Promise<{ staleCgWrites: any[], remaining: any[] }> {
+  items: any[],
+): Promise<{ staleCgWrites: any[]; remaining: any[] }> {
   if (items.length === 0) return { staleCgWrites: [], remaining: items };
 
   // Get unique PKs to fetch redirects
-  const uniquePKs = [...new Set(items.map(item => item.PK))];
+  const uniquePKs = [...new Set(items.map((item) => item.PK))];
 
   // Fetch current entries to check for redirects
-  const currentEntries = await batchGet(
-    uniquePKs.map((PK) => ({ PK, SK: 0 }))
-  );
+  const currentEntries = await batchGet(uniquePKs.map((PK) => ({ PK, SK: 0 })));
 
   // Build a map of PK -> redirect
   const redirectMap: { [pk: string]: string } = {};
   currentEntries.forEach((entry: any) => {
-    if (entry.redirect && entry.redirect.startsWith('coingecko#')) {
+    if (entry.redirect && entry.redirect.startsWith("coingecko#")) {
       redirectMap[entry.PK] = entry.redirect;
     }
   });
 
   // Also check for redirects in the incoming items
   items.forEach((item) => {
-    if (item.redirect && item.redirect.startsWith('coingecko#')) {
+    if (item.redirect && item.redirect.startsWith("coingecko#")) {
       redirectMap[item.PK] = item.redirect;
     }
   });
 
   // If no redirects to CoinGecko, return items unchanged
-  const coingeckoRedirects = Object.values(redirectMap).filter(r => r.startsWith('coingecko#'));
+  const coingeckoRedirects = Object.values(redirectMap).filter((r) =>
+    r.startsWith("coingecko#"),
+  );
   if (coingeckoRedirects.length === 0) {
     return { staleCgWrites: [], remaining: items };
   }
 
   // Extract unique CoinGecko IDs and check if they're active in parallel
   const uniqueCoinGeckoKeys = [...new Set(coingeckoRedirects)];
-  const uniqueCoinGeckoIds = uniqueCoinGeckoKeys.map(r => r.replace('coingecko#', ''));
+  const uniqueCoinGeckoIds = uniqueCoinGeckoKeys.map((r) =>
+    r.replace("coingecko#", ""),
+  );
 
   const activeStatusPromises = uniqueCoinGeckoIds.map(async (cgId, idx) => {
     const isActive = await isCoinGeckoKeyActive(cgId);
@@ -470,18 +471,20 @@ export async function processRedirectsToStaleCoinGeckoKeys(
   });
 
   // Fetch metadata for all CG listings that will be updated (batch fetch)
-  const cgListingsToUpdate = [...new Set(
-    Object.entries(redirectMap)
-      .filter(([_, redirect]) => activeStatusMap.get(redirect) === false)
-      .map(([_, redirect]) => redirect)
-  )];
+  const cgListingsToUpdate = [
+    ...new Set(
+      Object.entries(redirectMap)
+        .filter(([_, redirect]) => activeStatusMap.get(redirect) === false)
+        .map(([_, redirect]) => redirect),
+    ),
+  ];
 
   const cgMetadataMap: { [pk: string]: any } = {};
   if (cgListingsToUpdate.length > 0) {
     const cgMetadata = await batchGet(
-      cgListingsToUpdate.map(PK => ({ PK, SK: 0 }))
+      cgListingsToUpdate.map((PK) => ({ PK, SK: 0 })),
     );
-    cgMetadata.forEach(entry => {
+    cgMetadata.forEach((entry) => {
       if (entry.PK) {
         cgMetadataMap[entry.PK] = entry;
       }
@@ -497,46 +500,38 @@ export async function processRedirectsToStaleCoinGeckoKeys(
     const redirect = redirectMap[item.PK];
 
     // If this item redirects to a CoinGecko key
-    if (redirect && redirect.startsWith('coingecko#')) {
+    if (redirect && redirect.startsWith("coingecko#")) {
       const isActive = activeStatusMap.get(redirect);
 
       // If the CoinGecko key is NOT active (stale), redirect the write to the CG listing
-      if (isActive === false) {
+      if (isActive === false && item.SK === 0) {
         // Only process if this is a price update from a non-coingecko adapter
-        if (item.price !== undefined && item.adapter !== 'coingecko') {
+        if (item.price !== undefined && item.adapter !== "coingecko") {
           const existingMetadata = cgMetadataMap[redirect] || {};
 
-          // For SK=0 writes, create both time series and current entries for CG listing
-          if (item.SK === 0) {
-            staleCgWrites.push({
-              SK: item.timestamp,
-              PK: redirect,
-              price: item.price,
-              adapter: item.adapter,
-              confidence: Math.min(item.confidence, 0.98)
-            });
+          staleCgWrites.push({
+            SK: item.timestamp,
+            PK: redirect,
+            price: item.price,
+            adapter: item.adapter,
+            confidence: Math.min(item.confidence, 0.98),
+          });
 
-            staleCgWrites.push({
-              SK: 0,
-              PK: redirect,
-              price: item.price,
-              symbol: existingMetadata.symbol || item.symbol,
-              decimals: existingMetadata.decimals || item.decimals,
-              timestamp: item.timestamp,
-              adapter: item.adapter,
-              confidence: Math.min(item.confidence, 0.98)
-            });
+          staleCgWrites.push({
+            SK: 0,
+            PK: redirect,
+            price: item.price,
+            symbol: existingMetadata.symbol || item.symbol,
+            decimals: existingMetadata.decimals || item.decimals,
+            timestamp: item.timestamp,
+            adapter: item.adapter,
+            confidence: Math.min(item.confidence, 0.98),
+          });
 
-            console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, updating CG listing directly)`);
-            continue;
-          } else if (item.SK !== 0) {
-            staleCgWrites.push({
-              ...item,
-              PK: redirect,
-            });
-            console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, time series)`);
-            continue;
-          }
+          console.log(
+            `[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, updating CG listing directly)`,
+          );
+          continue;
         }
       }
     }
@@ -553,9 +548,8 @@ export async function batchWriteWithAlerts(
 ): Promise<{ writeCount: number } | undefined> {
   try {
     const { previousItems, redirectChanges } = await readPreviousValues(items);
-    const filteredItems: any[] =
-      await checkMovement(items, previousItems);
-    const writeItems = [...filteredItems, ...redirectChanges]
+    const filteredItems: any[] = await checkMovement(items, previousItems);
+    const writeItems = [...filteredItems, ...redirectChanges];
     const ddbWriteResult = await batchWrite(writeItems, failOnError);
     await produceKafkaTopics(writeItems as any[]);
     return ddbWriteResult;
@@ -581,15 +575,13 @@ async function readPreviousValues(
   latencyHours: number = 6,
 ): Promise<{ previousItems: DbEntry[]; redirectChanges: any[] }> {
   let queries: { PK: string; SK: number }[] = [];
-  items.map(
-    (t: any, i: number) => {
-      if (i % 2) return;
-      queries.push({
-        PK: t.PK,
-        SK: 0,
-      });
-    },
-  );
+  items.map((t: any, i: number) => {
+    if (i % 2) return;
+    queries.push({
+      PK: t.PK,
+      SK: 0,
+    });
+  });
   const results = await batchGet(queries);
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
   const previousItems = results.filter(
@@ -633,8 +625,7 @@ async function checkMovement(
   previousItems: DbEntry[],
   margin: number = 0.5,
 ): Promise<any[]> {
-  const filteredItems: any[] =
-    [];
+  const filteredItems: any[] = [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
   previousItems.map((i: any) => (obj[i.PK] = i));
@@ -649,8 +640,9 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
-          } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
         return;
       }
     }

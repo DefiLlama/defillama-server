@@ -4576,7 +4576,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sundaeswap",
     name: "SundaeSwap",
-    url: "https://www.sundaeswap.finance/",
+    url: "https://sundae.fi/",
     description:
       "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     logo: `${baseIconsUrl}/sundaeswap.jpg`,

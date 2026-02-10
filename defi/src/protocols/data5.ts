@@ -1085,7 +1085,7 @@ const data5: Protocol[] = [
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX",
     assetToken: "vSUI",
-    url: "https://www.volo.fi/",
+    url: "https://www.volosui.com/",
     description:
       "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
     chain: "Sui",
@@ -5546,7 +5546,7 @@ const data5: Protocol[] = [
     name: "Enosys Loans",
     address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
     symbol: "EXFI",
-    url: "https://xfx.flr.finance/",
+    url: "https://enosys.global/products/loans",
     description:
       "Liquity V2 fork on Flare",
     chain: "Flare",

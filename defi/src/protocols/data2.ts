@@ -16590,7 +16590,7 @@ const data2: Protocol[] = [
     name: "Sommelier",
     address: "0xa670d7237398238de01267472c6f13e5b8010fd1",
     symbol: "SOMM",
-    url: "https://www.sommelier.finance",
+    url: "https://somm.finance/",
     description: "Provider of automated vaults that find best-in-class yields while mitigating risk.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sommelier.png`,
@@ -16609,7 +16609,7 @@ const data2: Protocol[] = [
     module: "sommelier/index.js",
     twitter: "sommfinance",
     audit_links: [
-      "https://www.sommelier.finance/audits",
+      "https://somm.finance/audits",
       "https://github.com/PeggyJV/cellar-contracts/tree/main/audits",
     ],
     listedAt: 1664536707,
@@ -19239,7 +19239,7 @@ const data2: Protocol[] = [
     name: "Llamalend",
     address: null,
     symbol: "-",
-    url: "https://llamalendnft.com/",
+    url: "https://www.curve.finance/llamalend/",
     description:
       "Deposit NFTs and borrow ETH for small illiquid NFT collections that can't get into the main NFT lending markets",
     chain: "Ethereum",
@@ -24706,10 +24706,10 @@ const data2: Protocol[] = [
   },
   {
     id: "2507",
-    name: "BitVenus",
+    name: "BitVenus", // now BVOX
     address: null,
     symbol: "-",
-    url: "https://www.bitvenus.com",
+    url: "https://www.bvox.com/",
     description:
       "BitVenus (BV for short) is a well-known digital asset trading platform in Europe, supporting hundreds of digital asset transactions. Officially established in London County, England in June 2018",
     chain: "Ethereum",
@@ -24720,7 +24720,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Binance", "Bitcoin"],
     module: "bitvenus/index.js",
-    twitter: "bitvenus_global",
+    twitter: "BVOX_global",
     listedAt: 1675767017,
   },
   {

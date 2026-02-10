@@ -2833,7 +2833,7 @@ export const chainCoingeckoIds = {
     cmcId: "18248",
     categories: ["Cosmos"],
     twitter: "sommfinance",
-    url: "https://www.sommelier.finance/",
+    url: "https://somm.finance/",
   },
   "Bahamut": {
     geckoId: "fasttoken",
@@ -3669,7 +3669,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
     },
     twitter: "reya_xyz",
-    url: "https://reya.network",
+    url: "https://reya.xyz/",
     chainId: 1729,
     dimensions: {
       fees: "reya",

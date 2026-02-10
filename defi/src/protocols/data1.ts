@@ -2634,7 +2634,7 @@ const data: Protocol[] = [
     name: "Erasure",
     address: "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
     symbol: "NMR",
-    url: "https://erasure.world/",
+    url: "https://numer.ai/",
     description: "A new kind of hedge fund built by a network of data scientists",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/erasure.png`,
@@ -6419,7 +6419,7 @@ const data: Protocol[] = [
     name: "ApeSwap AMM",
     address: "bsc:0x34294afabcbaffc616ac6614f6d2e17260b78bed",
     symbol: "ABOND",
-    url: "https://apeswap.finance",
+    url: "https://www.ape.bond/",
     description:
       "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
@@ -7065,7 +7065,7 @@ const data: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "OUSD",
-    url: "https://www.ousd.com",
+    url: "https://www.originprotocol.com/ousd",
     description:
       "Origin Dollar (OUSD) is a new stablecoin that was initially launched on the Ethereum network. Its design is superior to existing stablecoins because OUSD captures competitive yields while being passively held in wallets.",
     chain: "Ethereum",
@@ -12962,7 +12962,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Superfluid",
     address: "base:0xa69f80524381275a7ffdb3ae01c54150644c8792",
     symbol: "SUP",
-    url: "https://www.superfluid.finance/home",
+    url: "https://superfluid.org/",
     description:
       "Programmable Cashflows. Handle subscriptions, salaries, rewards and any composable stream of value, with continuous settlement and per-second netting for extreme capital efficiency.",
     chain: "Polygon",
@@ -16741,7 +16741,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Enosys AMM V2",
     address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
     symbol: "EXFI",
-    url: "https://xfx.flr.finance",
+    url: "https://enosys.global/products/dex",
     description:
       "Flare Networks has launched Songbird, a full-value experimental development network.Flare Finance has decided to follow in the footsteps of the main network, and deployed an experimental playground of our own. The Experimental Finance (or 'ExFi') platform on the Songbird Network",
     chain: "Songbird",
@@ -17336,7 +17336,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "FLRLoans",
     address: null,
     symbol: "-",
-    url: "https://xfl.flr.finance",
+    url: "https://enosys.global/products/loans",
     description:
       "FlareLoans is a decentralized borrowing protocol that allows the users to draw interest-free loans against SGB/WSGB used as collateral.",
     chain: "Songbird",
@@ -24745,7 +24745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "FLRFarm",
     address: "songbird:0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
     symbol: "SFIN",
-    url: "https://xff.flr.finance",
+    url: "https://enosys.global/products/farms",
     description:
       "FlareFarm is the ecosystem's yield farming and fair launch distribution platform (launchpad) for new projects entering the Flare Network and/or Flare Finance Ecosystem.",
     chain: "Songbird",
@@ -25651,7 +25651,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "SundaeSwap V2",
     address: "cardano:9a9693a9a37912a5097918f97918d15240c92ab729a0b7c4aa144d7753554e444145",
     symbol: "SUNDAE",
-    url: "https://www.sundaeswap.finance/",
+    url: "https://sundae.fi/",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/sundaeswap-v2.jpg`,

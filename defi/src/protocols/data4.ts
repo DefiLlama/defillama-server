@@ -628,7 +628,7 @@ const data4: Protocol[] = [
     previousNames: ["Coinbase Wallet"],
     address: null,
     symbol: "-",
-    url: "https://wallet.coinbase.com/",
+    url: "https://join.base.app/",
     description: "Crypto wallet and dapp browser",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/base-app.jpg`,
@@ -2083,6 +2083,7 @@ const data4: Protocol[] = [
     module: "yoko-live/index.js",
     twitter: "yokodotlive",
     listedAt: 1737416137,
+    deadUrl: true
   },
   {
     id: "5650",
@@ -2125,6 +2126,7 @@ const data4: Protocol[] = [
     module: "5ire-dapp-staking/index.js",
     twitter: "5ireChain",
     listedAt: 1737483187,
+    deadUrl: true
   },
   {
     id: "5652",
@@ -7615,6 +7617,7 @@ const data4: Protocol[] = [
     twitter: "canopyxyz",
     audit_links: ["https://docs.canopyhub.xyz/audits/audit-reports"],
     listedAt: 1741789722,
+    deadUrl: true
   },
   {
     id: "5893",
@@ -10940,7 +10943,7 @@ const data4: Protocol[] = [
     name: "Plume Mainnet",
     address: "0x4c1746a800d224393fe2470c70a35717ed4ea5f1",
     symbol: "PLUME",
-    url: "https://plumenetwork.xyz",
+    url: "https://plume.org/",
     description: "Bringing the real world onchain",
     chain: "Plume Mainnet",
     logo: `${baseIconsUrl}/plume-mainnet.jpg`,
@@ -10974,7 +10977,7 @@ const data4: Protocol[] = [
     name: "QuantixAI",
     address: "0xcb21311d3b91b5324f6c11b4f5a656fcacbff122",
     symbol: "QAI",
-    url: "https://quantixai.io/",
+    url: "https://quantixcapital.xyz/",
     description:
       "QuantixAI is an advanced AI-driven trading software designed to optimize investment strategies through sophisticated algorithms and data analysis.",
     chain: "Ethereum",
@@ -11789,7 +11792,7 @@ const data4: Protocol[] = [
     name: "Beezie",
     address: null,
     symbol: "-",
-    url: "https://beezie.io/",
+    url: "https://beezie.com/",
     description: `Platform for collectors and resellers. Vault, Buy & Sell graded Pokemon, One Piece, Sports cards, Video Games & more`,
     chain: "Flow",
     logo: `${baseIconsUrl}/beezie.jpg`,
@@ -12442,7 +12445,7 @@ const data4: Protocol[] = [
     name: "Tron",
     address: null,
     symbol: "TRX",
-    url: "https://tron.network",
+    url: "https://trondao.org/",
     description: "TRON is dedicated to building the infrastructure for a decentralized internet. ",
     chain: "Tron",
     logo: `${baseIconsUrl}/tron.jpg`,
@@ -15550,7 +15553,7 @@ const data4: Protocol[] = [
     name: "Moss Genomics",
     address: null,
     symbol: "-",
-    url: "https://mossethereum.com/",
+    url: "https://mossgenomics.com/",
     description: `A public company accumulating ETH for its treasury and exploring tokenized shares, Moss Genomics aims to bring transparent, blockchain-based ownership to public markets.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/moss-genomics.jpg`,
@@ -16677,7 +16680,7 @@ const data4: Protocol[] = [
     name: "BOOKUSD",
     address: null,
     symbol: "-",
-    url: "https://app.bookusd.com/",
+    url: "https://www.bookmemebsc.com/",
     description:
       "Decentralized stablecoin on BSC. Borrow BUD with BOOK, earn BUSS by staking BUD, and earn BUD by staking BUSS",
     chain: "Binance",

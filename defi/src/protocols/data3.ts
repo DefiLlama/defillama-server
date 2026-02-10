@@ -10454,7 +10454,7 @@ const data3_0: Protocol[] = [
     address: "avax:0x69260B9483F9871ca57f81A90D91E2F96c2Cd11d",
     symbol: "GGP",
     assetToken: "stAVAX",
-    url: "https://www.gogopool.com",
+    url: "https://www.hypha.sh/",
     description:
       "Hypha is the first permissionless staking protocol built for Avalanche Subnets and node operators to launch  for cheaper and faster using the GGP token. Currently, we cater to node operators and liquid stakers.",
     chain: "Avalanche",
@@ -15864,7 +15864,7 @@ const data3_0: Protocol[] = [
     name: "Mendi Finance",
     address: "linea:0x43e8809ea748eff3204ee01f08872f063e44065f",
     symbol: "MENDI",
-    url: "https://mendi.finance",
+    url: "https://malda.xyz/",
     description:
       "Mendi Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Linea. Users can deposit their assets, use them as collateral and borrow against them.",
     chain: "Linea",
@@ -22195,7 +22195,7 @@ const data3_1: Protocol[] = [
     address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
     symbol: "NAVX", // parentProtocol governance token
     assetToken: "vSUI",
-    url: "https://www.volo.fi/",
+    url: "https://www.volosui.com/",
     description:
       "Volo is the go-to Earn Hub for all your assets on Sui that offers much more than its established status in offering its fully decentralized LST Sui (vSui). Volo is expanding to offering vaults of all major assets on Sui especially BTCFi-related token that allows users to simply earn yield on their assets with one click.",
     chain: "Sui",
@@ -36601,6 +36601,7 @@ const data3_2: Protocol[] = [
     twitter: "Euclidfi",
     audit_links: ["https://docs.euclidfinance.io/mechanism/audit"],
     listedAt: 1711375955,
+    deadUrl: true,
   },
   {
     id: "4357",
@@ -41513,7 +41514,7 @@ const data3_2: Protocol[] = [
     name: "SundaeSwap V3",
     address: "cardano:9a9693a9a37912a5097918f97918d15240c92ab729a0b7c4aa144d7753554e444145",
     symbol: "SUNDAE",
-    url: "https://www.sundaeswap.finance",
+    url: "https://sundae.fi/",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/sundaeswap-v3.jpg`,
@@ -42162,7 +42163,7 @@ const data3_2: Protocol[] = [
     name: "Omni Network",
     address: null,
     symbol: "OMNI",
-    url: "https://omni.network/",
+    url: "https://www.nomina.io/",
     description: "Omni is a blockchain purpose-built to connect all rollups securely through the use of restaking.",
     chain: "Ethereum", // we dont track omni chain, if we add omni here it will break the server
     logo: `${baseIconsUrl}/omni.png`,
@@ -42172,7 +42173,7 @@ const data3_2: Protocol[] = [
     category: "Chain",
     chains: ["Ethereum"], // we dont track omni chain, if we add omni here it will break the server
     module: "dummy.js",
-    twitter: "OmniFDN",
+    twitter: "Nomina",
     listedAt: 1715748037,
   },
   {
@@ -47158,7 +47159,7 @@ const data3_3: Protocol[] = [
     name: "Common Wealth",
     address: "base:0x99b2B1A2aDB02B38222ADcD057783D7e5D1FCC7D",
     symbol: "WLTH",
-    url: "https://joincommonwealth.xyz/",
+    url: "https://app.wlth.xyz/",
     description: "Early-stage VC access for the 99%. Fully decentralised. Fully on-chain. The way it was meant to be.",
     chain: "Base",
     logo: `${baseIconsUrl}/common-wealth.jpg`,
@@ -50177,7 +50178,7 @@ const data3_3: Protocol[] = [
     oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ],
     module: "reya-perp/index.js",
     twitter: "reya_xyz",
-    audit_links: ["https://docs.reya.network/more-resources/technical-resources"],
+    audit_links: ["https://docs.reya.xyz/technical-docs/audits"],
     listedAt: 1723560145,
     parentProtocol: "parent#reya",
     dimensions: {
@@ -54075,7 +54076,7 @@ const data3_3: Protocol[] = [
     name: "Enosys AMM V3",
     address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
     symbol: "EXFI",
-    url: "https://xfx.flr.finance/",
+    url: "https://enosys.global/products/dexV3",
     description:
       "Uniswap v3 fork on Songbird",
     chain: "Songbird",
@@ -59922,7 +59923,7 @@ const data3_3: Protocol[] = [
     name: "ShardingDAO",
     address: null,
     symbol: "-",
-    url: "https://shardingdao.io",
+    url: "https://shardingdao.com/",
     description: "Protocol for staking WBTC and ETH with rewards, featuring NFT fragmentation and a shard marketplace.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/shardingdao.jpg`,
@@ -61127,7 +61128,7 @@ const data3_3: Protocol[] = [
     name: "EOS EVM Bridge",
     address: null,
     symbol: "-",
-    url: "https://eosnetwork.com/eos-evm/",
+    url: "https://www.vaulta.com/",
     description: "The EOS EVM is an Ethereum VM compatible environment on EOS",
     chain: "EOS",
     logo: `${baseIconsUrl}/eos-evm-bridge.jpg`,
@@ -61137,7 +61138,7 @@ const data3_3: Protocol[] = [
     category: "Bridge",
     chains: ["EOS"],
     module: "eos-evm/index.js",
-    twitter: "EOSNetworkFDN",
+    twitter: "Vaulta_",
   },
   {
     id: "5485",

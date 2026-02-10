@@ -8901,6 +8901,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AlphaSec_Trade",
     github: ["alphasec-dex"],
   },
+  {
+    id: "parent#supernova",
+    name: "Supernova",
+    url: "https://supernova.xyz/",
+    description: "Supernova is a Next-gen ve(3,3) DEX on Ethereum",
+    logo: `${baseIconsUrl}/supernova.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SupernovaDEX",
+  },
 ];
 
 export default parentProtocols;

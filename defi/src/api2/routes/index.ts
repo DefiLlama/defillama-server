@@ -662,108 +662,30 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
     const chainFilter = req.path_parameters.chain ? getChainLabelFromKey(decodeURIComponent(req.path_parameters.chain)) : null;
     const protocolFilter = req.path_parameters.protocol ? decodeURIComponent(req.path_parameters.protocol) : null;
     
-    const data = await readRouteData('oracles');
+    const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
     
-    if (!data)
-      return errorResponse(res, 'Oracles data not found');
-    
-    let responseData: any = null;
-    
+    let routeFilePath = `oraclesv2`;
     if (route === 'overview') {
-      responseData = {
-        oracles: data.oracles,
-        chainsByOracle: data.chainsByOracle,
-        oraclesTVS: data.oraclesTVS,
-      };
+      routeFilePath += `/overview`;
+      const data = await readRouteData(routeFilePath);
+      return successResponse(res, data);
     } else {
-      const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
-      if (!AllowedProtocolKeys.includes(keyFilter)) {
-        return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+      if (chainFilter) {
+        routeFilePath += `/charts/chains/${chainFilter}${keyFilter}`;
+        if (route === 'chart-protocol-breakdown') routeFilePath += `protocolbreakdown`;
+      } else if (protocolFilter) {
+        routeFilePath += `/charts/protocols/${protocolFilter}${keyFilter}`;
+        if (route === 'chart-chain-breakdown') routeFilePath += `chainbreakdown`;
+      } else {
+        // chart total
+        routeFilePath += `/charts/total${keyFilter}`;
+        if (route === 'chart-chain-breakdown') routeFilePath += `chainbreakdown`;
+        else if (route === 'chart-protocol-breakdown') routeFilePath += `protocolbreakdown`;
       }
-      
-      const itemByTimestamps: Record<number, any> = {}
-      
-      if (route === 'chart-total' || route === 'chart-protocol-breakdown') {
-        if (chainFilter !== null) {
-          for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
-            const ts = Number(timestamp);
-            const os = oracles as any;
-            
-            for (const [oracle, chains] of Object.entries(os)) {
-              for (const [itemKey, itemValue] of Object.entries(chains as any)) {
-                let [chain, key] = itemKey.split('-');
-                if (key === undefined) key = 'tvl';
-                if (chain === chainFilter) {
-                  if (route === 'chart-total') {
-                    itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
-                    itemByTimestamps[ts] += Number(itemValue);
-                  } else {
-                    itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-                    itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
-                    itemByTimestamps[ts][oracle] += Number(itemValue);
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          for (const [timestamp, oracles] of Object.entries(data.chart)) {
-            const ts = Number(timestamp);
-            const os = oracles as any;
-            
-            for (const [oracle, keys] of Object.entries(os)) {
-              for (const [itemKey, itemValue] of Object.entries(keys as any)) {
-                if (keyFilter === itemKey || keyFilter === 'all') {
-                  if (route === 'chart-total') {
-                    if (protocolFilter === null || protocolFilter === oracle) {
-                      itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
-                      itemByTimestamps[ts] += Number(itemValue);
-                    }
-                  } else {
-                    itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-                    itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
-                    itemByTimestamps[ts][oracle] += Number(itemValue);
-                  }
-                }
-              }
-            }
-          }
-        }
-      } else if (route === 'chart-chain-breakdown') {
-        for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
-          const ts = Number(timestamp);
-          const os = oracles as any;
-          
-          for (const [oracle, chains] of Object.entries(os)) {
-            for (const [itemKey, itemValue] of Object.entries(chains as any)) {
-              let [chain, key] = itemKey.split('-');
-              if (key === undefined) key = 'tvl';
-              if (keyFilter === key || keyFilter === 'all') {
-                if (protocolFilter === null || protocolFilter === oracle) {
-                  itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-                  itemByTimestamps[ts][chain] = itemByTimestamps[ts][chain] || 0;
-                  itemByTimestamps[ts][chain] += Number(itemValue);
-                }
-              }
-            }
-          }
-        }
-      }
-      
-      responseData = [];
-      for (const [timestamp, items] of Object.entries(itemByTimestamps)) {
-        if (route === 'chart-total') {
-          responseData.push([Number(timestamp), Number(items)]);
-        } else {
-          responseData.push({
-            timestamp: Number(timestamp),
-            ...items,
-          });
-        }
-      }
+      const data = await readRouteData(routeFilePath);
+      if (!data) return errorResponse(res, 'Request data not found');
+      return successResponse(res, data);
     }
-    
-    return successResponse(res, responseData)
   }
 }
 

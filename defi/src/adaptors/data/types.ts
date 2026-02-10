@@ -116,7 +116,8 @@ export enum AdaptorRecordType {
     dailyAppRevenue = "dar",
     dailyAppFees = "daf",
 
-    dailyNormalizedVolume = "dnvol"
+    dailyNormalizedVolume = "dnvol",
+    dailyActiveLiquidity = "dal"
 }
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {

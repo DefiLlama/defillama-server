@@ -8189,7 +8189,7 @@ const data5: Protocol[] = [
     name: "Megaswap",
     address: "megaeth:0xf0b6efF16f6A0C326C3432D08f15f84416d83115",
     symbol: "MGS",
-    url: "https://megaswap.co/swap",
+    url: "https://megaswaps.org/swap",
     description:
       "The Fastest DEX on MegaETH.",
     chain: "MegaETH",

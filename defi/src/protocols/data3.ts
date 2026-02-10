@@ -7499,7 +7499,8 @@ const data3_0: Protocol[] = [
     name: "Steer Protocol",
     address: null,
     symbol: "-",
-    url: "https://steer.finance",
+    url: "https://app.steer.finance?af=defillama",
+    referralUrl: "https://app.steer.finance?af=defillama",
     description:
       "Steer is a decentralized compute protocol that provides a scaling solution for data processing through its robust off-chain infrastructure. Services are targeted at leveraging off-chain data for on-chain automation, such as automated liquidity management in DeFi.",
     chain: "Polygon",

@@ -175,6 +175,7 @@ async function _storeAppMetadata() {
     readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
     readCachedRouteData({ route: "/dimensions/normalized-volume/dnvol-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dal-lite" }),
     readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),

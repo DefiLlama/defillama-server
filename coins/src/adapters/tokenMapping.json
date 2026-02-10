@@ -1051,6 +1051,11 @@
     }
   },
   "ethereum": {
+    "0x6DFF69eb720986E98Bb3E8b26cb9E02Ec1a35D12": {
+      "decimals": "18",
+      "symbol": "syzUSD",
+      "to": "coingecko#staked-yuzu-usd"
+    },
     "0xc0c17dd08263c16f6b64e772fb9b723bf1344ddf": {
       "decimals": "18",
       "symbol": "pmUSD",
@@ -8988,6 +8993,11 @@
     }
   },
   "lisk": {
+    "0x316cd39632Cac4F4CdfC21757c4500FE12f64514": {
+      "decimals": "18",
+      "symbol": "wsrUSD",
+      "to": "coingecko#wrapped-savings-rusd"
+    },
     "0x05d032ac25d322df992303dca074ee7392c117b9": {
       "to": "coingecko#tether",
       "decimals": 6,
@@ -9923,6 +9933,11 @@
     }
   },
   "corn": {
+    "0x0Fe4A1BBE013B54e38Ef4E4ec8ba1d64d12a0663": {
+      "decimals": "18",
+      "symbol": "PT-USDai-19FEB2026-(ARB)",
+      "to": "asset#arbitrum:0x5b2c615e22272234aacf187632a0531ca1243279"
+    },
     "0x85aDfA60dDf86b67E6fD493Bd2c774b2eD772D14": {
       "to": "coingecko#wrapped-eeth",
       "decimals": 18,

@@ -8901,6 +8901,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AlphaSec_Trade",
     github: ["alphasec-dex"],
   },
+  {
+    id: "parent#zest",
+    name: "Zest",
+    url: "https://www.zestprotocol.com/",
+    description: "Zest Protocol is an open-source, on-chain lending platform built for Bitcoin, allowing users to earn or borrow against their BTC",
+    logo: `${baseIconsUrl}/zest.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ZestProtocol",
+  },
 ];
 
 export default parentProtocols;

@@ -9413,7 +9413,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     previousNames: ["Thales"],
     address: "0x90ce5720c17587d28e4af120ae2d313b3bad1722",
     symbol: "OVER",
-    url: "https://www.overtime.io/",
+    url: "https://www.overtimemarkets.xyz/markets?referrerId=defillama",
+    referralUrl: "https://www.overtimemarkets.xyz/markets?referrerId=defillama",
     description:
       "Overtime is a decentralized onchain sportsbook ecosystem enabling sports betting and digital options trading. Built on smart contracts with Chainlink data feeds, it operates without centralized control. Features pioneering AMM architecture and trustless liquidity pools for seamless, transparent betting experiences across popular sporting events.",
     chain: "Ethereum",

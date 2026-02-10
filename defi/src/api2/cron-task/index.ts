@@ -457,8 +457,6 @@ async function run() {
       for (const [key, valueByTimestamp] of Object.entries(totalChartByChainsAndProtocolBreakdown)) {
         await storeRouteData(`oracles-v2/charts/chains/${key}-protocol-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
       }
-      
-      process.exit(0)
     }
   }
 

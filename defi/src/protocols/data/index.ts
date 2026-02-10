@@ -15,7 +15,7 @@ const protocolsJsonPath = path.resolve(__dirname, '../../utils/imports/protocols
 let protocols: Protocol[] = [];
 
 if (fs.existsSync(protocolsJsonPath)) {
-  protocols =require(protocolsJsonPath)
+  protocols = require(protocolsJsonPath)
 } else {
   console.log('hmmm, looks like prebuild step was not run, falling back to data.ts')
   for (const file of DATA_FILES) {
@@ -60,7 +60,7 @@ protocols.forEach((protocol: Protocol) => {
   const tr = tokenRightsMap[protocol.id]
   if (tr)
     protocol.tokenRights = tr
-  
+
 })
 
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
@@ -123,6 +123,11 @@ export function setProtocolMetadata(protocol: Protocol) {
     const module = importAdapter(protocol)
     const isDoublecounted = isDoubleCounted(module.doublecounted, category)
 
+    // copy deadFrom field from tvl module object to protocol object if it exists in the module and not in the protocol, this is to ensure that we can use the deadFrom field in the protocol object for filtering in the UI and other places without having to import the module again
+    if (module.deadFrom && !protocol.deadFrom)
+      protocol.deadFrom = module.deadFrom
+
+
     const metadata = {
       id: protocol.id,
       category,
@@ -130,7 +135,7 @@ export function setProtocolMetadata(protocol: Protocol) {
       isLiquidStaking: category === "Liquid Staking",
       slugTagSet,
       isDoublecounted,
-      isDead: !!module.deadFrom,
+      isDead: !!protocol.deadFrom,
       hasTvl: protocol.module !== 'dummy.js',
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
@@ -183,7 +188,7 @@ export function updateProtocolMetadataUsingCache(protocolAppMetadataMap: any) {
   })
 }
 
-export function sortHallmarks(hallmarks: Hallmark[]| any) {
+export function sortHallmarks(hallmarks: Hallmark[] | any) {
   if (!Array.isArray(hallmarks)) return hallmarks;
   return hallmarks?.sort((a: any, b: any) => {
     let aTimestamp = a[0];

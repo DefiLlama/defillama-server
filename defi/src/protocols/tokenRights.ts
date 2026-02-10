@@ -34,7 +34,7 @@ export default {
         "Protocol Fee Discount Auctions revenue burned",
         "Aggregator hooks revenue burned",
       ],
-      primaryValueAccrual: "Buybacks - Protocol purchases UNI tokens on the open market",
+      primaryValueAccrual: "Deflationary Supply Reduction - Protocol purchases UNI tokens on the open market. Portion of swap fees, 85% of sequencer revenue, Protocol Fee Discount Auctions & Aggregator hooks go to UNI burns",
     },
     tokenAlignment: {
       fundraising: "EQUITY",
@@ -44,7 +44,7 @@ export default {
       },
       associatedEntities: ["DAO", "Labs (Equity)", "Foundation"],
       equityRevenueCapture: "INACTIVE",
-      equityStatement: "After UNIfication proposal passed, revenue no longer flows to equity holders",
+      equityStatement: "After UNIfication  +proposal passed, revenue no longer flows to equity holders",
     },
     resources: [
       {
@@ -73,12 +73,12 @@ export default {
       rights: "LIMITED",
       details: "Limited to emissions / liquidity (via veAERO)",
       feeSwitchStatus: "ON",
-      feeSwitchDetails: "Equivalent via emissions",
+      feeSwitchDetails: "Protocol fees are issued to veAERO holders, and programmatic buybacks are implemented",
       links: [{ label: "Aerodrome App", url: "https://aerodrome.finance/" }],
     },
     holdersRevenueAndValueAccrual: {
-      buybacks: "NONE",
-      dividends: "NONE",
+      buybacks: "ACTIVE",
+      dividends: "ACTIVE",
       burns: "NONE",
       burnSources: [],
       primaryValueAccrual: "Protocol Revenue Share - Fees & protocol emissions are issued to veAERO holders",
@@ -191,8 +191,9 @@ export default {
     ],
     governanceData: {
       rights: "LIMITED",
-      details: "Voting paused until 2026. Team holds 20% voting power",
-      feeSwitchStatus: "OFF",
+      details: "Users stake JUP for vote access on governance proposals. Consistent voting participation is yield-bearing through Jupiter's Active Staking Rewards",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails: "50% of protocol's take rate fund JUP buybacks and locks them"
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
@@ -281,6 +282,51 @@ export default {
     ],
   },
 
+  "parent#lyra": {
+    rights: [
+      {
+        label: "Governance",
+        hasRight: true,
+        details: "DRV can be staked into stDRV (non-transferable) for onchain governance participation on Derive L2.",
+      },
+      {
+        label: "Treasury",
+        hasRight: true,
+        details: "stDRV holders can vote on DAO-controlled treasury and ecosystem program parameters.",
+      },
+      {
+        label: "Revenue",
+        hasRight: false,
+        details: "DRV does not represent equity, ownership, or a direct claim on protocol revenue or profits.",
+      },
+    ],
+    governanceData: {
+      rights: "LIMITED",
+      details:
+        "Governance is executed on Derive L2 via DAO processes (proposal creation, voting, and delegation), subject to DAO-defined rules.",
+      feeSwitchStatus: "ON",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Protocol fees are governed by the DAO and may be allocated across protocol operations and ecosystem initiatives, subject to onchain governance.",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN",
+      raiseDetailsLink: { label: "Raise Details", url: "" },
+      associatedEntities: ["Foundation", "DAO"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "DRV does not represent equity, ownership, or an entitlement to profits of any entity.",
+    },
+    resources: [
+      { label: "Docs", url: "https://docs.derive.xyz" },
+      { label: "Website", url: "https://derive.xyz" },
+    ],
+  },
+
   "parent#euler": {
     rights: [
       { label: "Governance", hasRight: true, details: "EUL" },
@@ -315,14 +361,15 @@ export default {
 
   "parent#ether-fi": {
     rights: [
-      { label: "Governance", hasRight: true, details: "sETHFI" },
-      { label: "Treasury", hasRight: true, details: "Indirect" }, // (indirect)
-      { label: "Revenue", hasRight: true, details: "sETHFI" },
+      { label: "Governance", hasRight: true, details: "ETHFI" },
+      { label: "Treasury", hasRight: true, details: "ETHFI" }, // (indirect)
+      { label: "Revenue", hasRight: true, details: "ETHFI" },
     ],
     governanceData: {
-      rights: "LIMITED",
+      rights: "FULL",
       details: "Can vote on grants, parameters & upgrades, treasury diversification activities",
       feeSwitchStatus: "ON",
+      feeSwitchDetails: "Foundation to utilise a portion of the treasury to conduct buy-backs of ETHFI tokens while the market price is below US $3, up to a total amount of US $50 million",
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
@@ -359,7 +406,7 @@ export default {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual: "Buybacks - Most protocol fees go to the assistance fund which buys back HYPE tokens",
+      primaryValueAccrual: "Most protocol fees go to the assistance fund which buys back & burns HYPE tokens",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -413,19 +460,19 @@ export default {
   "parent#curve-finance": {
     rights: [
       { label: "Governance", hasRight: true, details: "veCRV" },
-      { label: "Treasury", hasRight: false }, // blank in your row; treat as no explicit right
+      { label: "Treasury", hasRight: true, details: "veCRV" }, 
       { label: "Revenue", hasRight: true, details: "veCRV" },
     ],
     governanceData: {
-      rights: "LIMITED",
-      details: "Limited to emissions / liquidity",
+      rights: "FULL",
+      details: "Any proposal pushed onchain is voted on by veCRV holders",
       feeSwitchStatus: "ON",
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "NONE",
       dividends: "ACTIVE",
       burns: "NONE",
-      primaryValueAccrual: "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders",
+      primaryValueAccrual: "Protocol Revenue Share - 50% of trading fees distributed weekly to veCRV holders, 80% of accrued interest from crvUSD goes to veCRV holders",
     },
     tokenAlignment: {
       fundraising: "NONE",
@@ -475,7 +522,7 @@ export default {
     governanceData: {
       rights: "LIMITED",
       details:
-        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals; community can propose ideas with 100,000 CAKE balance",
+        "1 CAKE = 1 vote. Only PancakeSwap Core Team can propose Core Proposals, community can propose ideas with 10,000 CAKE balance",
       feeSwitchStatus: "ON",
       feeSwitchDetails: "Burns are active",
       links: [
@@ -796,20 +843,26 @@ export default {
     ],
     governanceData: {
       rights: "LIMITED",
-      details: "",
-      feeSwitchStatus: "UNKNOWN",
+      details: "Portion of trading fees from DLMM and DAMM go to discretionary buybacks",
+      feeSwitchStatus: "ON",
     },
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
       dividends: "NONE",
       burns: "NONE",
-      primaryValueAccrual: "Buybacks - Meteora is conducting discretionary buybacks",
+      primaryValueAccrual: "Buybacks - Portion of trading fees from DLMM and DAMM go to discretionary buybacks",
     },
     tokenAlignment: {
       fundraising: "UNKNOWN",
-      associatedEntities: ["DevCo", "DAO"],
+      associatedEntities: ["DevCo"],
       equityRevenueCapture: "UNKNOWN",
     },
+    resources: [
+      {
+        label: "Meteora Buyback Wallet",
+        address: "FzULv8pR9Rd7cyVKjVkzmJ1eqEmgwDnzjYyNUcEJtoG9",
+      },
+    ],
   },
   "5575": {
     // Virtuals Protocol
@@ -1043,6 +1096,48 @@ export default {
       equityRevenueCapture: "PARTIAL",
       equityStatement: "N/A",
     },
+  },
+  "parent#lighter": {
+    rights: [
+      { label: "Governance", hasRight: false },
+      { label: "Treasury", hasRight: false },
+      { label: "Revenue", hasRight: false },
+    ],
+    governanceData: {
+      rights: "NONE",
+      details: "Lighter team will share relevant governance updates",
+      feeSwitchStatus: "ON",
+      feeSwitchDetails:
+        "LIT is bought back by the protocol using trading fee revenue. Buybacks are executed via daily 24-hour TWAPs, with the flexibility to use shorter timeframes depending on market conditions",
+    },
+    holdersRevenueAndValueAccrual: {
+      buybacks: "ACTIVE",
+      dividends: "NONE",
+      burns: "NONE",
+      primaryValueAccrual:
+        "Buybacks - LIT is bought back by the protocol using trading fee revenue. Buybacks are executed via daily 24-hour TWAPs, with the flexibility to use shorter timeframes depending on market conditions. Revenues from core DEX product as well as future products and services will be allocated between growth and buybacks depending on market conditions",
+    },
+    tokenAlignment: {
+      fundraising: "UNKNOWN", // Equity + Token Sale in row; using UNKNOWN to avoid mislabel
+      raiseDetailsLink: {
+        label: "Raise Details",
+        url: "",
+      }, // Two funding rounds; one in 2024 for $21m and one for $68m @ $1.5b valuation through equity & token warrants
+      associatedEntities: ["DevCo", "C-Corp"],
+      equityRevenueCapture: "INACTIVE",
+      equityStatement:
+        "The value created by all Lighter products and services will fully accrue to LIT holders",
+    },
+      resources: [
+      {
+        label: "Foundation Multisig",
+        address: "0x0000000000000000000000000000000000000000",
+      },
+      {
+        label: "Docs",
+        url: "https://docs.lighter.xyz",
+      },
+    ],
   },
 } as {
   [id: string]: TokenRights;

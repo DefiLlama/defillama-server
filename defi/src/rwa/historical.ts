@@ -1,8 +1,9 @@
-import { getCurrentUnixTimestamp } from "../../src/utils/date";
 import { getChainIdFromDisplayName } from "../utils/normalizeChain";
-import { cache } from "@defillama/sdk";
-import { initPG, fetchHistoricalPG, storeHistoricalPG, storeMetadataPG, fetchCurrentPG, fetchMetadataPG } from "./db";
-import { keyMap, protocolIdMap } from "./constants";
+import { initPG, storeHistoricalPG, storeMetadataPG,  } from "./db";
+import { protocolIdMap } from "./constants";
+import { RWA_KEY_MAP } from "./metadataConstants";
+import { sendMessage } from "../utils/discord";
+import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocolIdMap).reduce(
   (acc: { [name: string]: string }, [id, name]: [string, string]) => {
@@ -12,7 +13,7 @@ const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocol
   {}
 );
 // Store historical data
-export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMarketcap: { [chain: string]: string }, activeMcap: { [chain: string]: string } } }, timestamp: number }): Promise<void> {
+export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMcap: { [chain: string]: string }, activeMcap: { [chain: string]: string } } }, timestamp: number }): Promise<void> {
   const { data, timestamp } = res;
   if (Object.keys(data).length == 0) return;
 
@@ -26,8 +27,11 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     aggregatemcap: number;
     aggregatedactivemcap: number;
   }[] = [];
-  Object.keys(data).forEach((id: any) => {
-    const { defiActiveTvl, onChainMarketcap, activeMcap } = data[id];
+  await runInPromisePool({
+    items: Object.keys(data),
+    concurrency: 5,
+    processor: async (id: any) => {
+      const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -45,10 +49,10 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     // use chain slugs for mcaps and aggregate 
     const mcap: { [chain: string]: string } = {};
     let aggregatemcap: number = 0;
-    Object.keys(onChainMarketcap ?? {}).map((chain: string) => {
+    Object.keys(onChainMcap ?? {}).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
-      mcap[chainSlug] = onChainMarketcap[chain];
-      aggregatemcap += Number(onChainMarketcap[chain]);
+      mcap[chainSlug] = onChainMcap[chain];
+      aggregatemcap += Number(onChainMcap[chain]);
     });
 
     // use chain slugs for active mcaps and aggregate 
@@ -61,7 +65,8 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
-      console.log(`ERROR ON ID ${id}`)
+      await sendMessage(`ERROR ON ID ${id}`, process.env.RWA_WEBHOOK!, false)
+      throw new Error(`ERROR ON ID ${id}`)
     }
 
     inserts.push({
@@ -74,82 +79,21 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
       aggregatemcap,
       aggregatedactivemcap,
     });
-  });
+  }});
 
   await initPG();
   await storeHistoricalPG(inserts, timestamp);
 }
-// Fetch historical data
-async function fetchHistorical(id: string): Promise<{ timestamp: number; onChainMarketcap: number; defiActiveTvl: number; activeMcap: number }[]> {
-  const cachedData = await cache.readCache(`rwa/historical-${id}`);
-  const timestamp = getCurrentUnixTimestamp();
-  if (cachedData.timestamp > timestamp - 3600) return cachedData.data;
 
-  await initPG();
-  const { historical, current } = await fetchHistoricalPG(id);
-
-  const data: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number; activeMcap: number }[] = [];
-  historical.sort((a: any, b: any) => a.timestamp - b.timestamp);
-  [...historical, current].forEach((d: any) => {
-    data.push({
-      timestamp: d.timestamp,
-      onChainMarketcap: d.aggregatemcap,
-      defiActiveTvl: d.aggregatedefiactivetvl,
-      activeMcap: d.aggregatedactivemcap,
-    });
-  });
-
-  await cache.writeCache(`rwa/historical-${id}`, { data, timestamp: getCurrentUnixTimestamp() });
-
-  return data;
-}
 // Store metadata
 export async function storeMetadata(res: { data: { [id: string]: { [key: string]: any } } }): Promise<void> {
   const { data } = res;
   if (Object.keys(data).length == 0) return;
 
   const inserts = Object.keys(data).map((id: any) => {
-    const { [keyMap.activeMcap]: activeMcap, [keyMap.onChain]: onChain, [keyMap.defiActive]: defiActive, ...rest } = data[id];
+    const { [RWA_KEY_MAP.activeMcap]: activeMcap, [RWA_KEY_MAP.onChain]: onChain, [RWA_KEY_MAP.defiActive]: defiActive, ...rest } = data[id];
     return { id, data: JSON.stringify(rest) };
   });
   await initPG();
   await storeMetadataPG(inserts);
-}
-// Fetch historical data for a given protocol
-export async function rwaChart(name: string): Promise<{ data: { timestamp: number; onChainMarketcap: number; defiActiveTvl: number; activeMcap: number }[] }> {
-  await initPG();
-  const idMap = await cache.readCache("rwa/id-map");
-  const id = JSON.parse(idMap)[name];
-  if (!id) throw new Error(`Protocol ${name} not found`);
-  const data = await fetchHistorical(id);
-  return { data };
-}
-// Fetch current data
-export async function rwaCurrent(): Promise<{ data: any[], timestamp: number }> {
-  await initPG();
-  const [current, metadata] = await Promise.all([fetchCurrentPG(), fetchMetadataPG()]);
-
-  const currentMap: { [id: string]: any } = {};
-  current.forEach((c: any) => {
-    currentMap[c.id] = c;
-  });
-
-  const data: { [id: string]: any }[] = [];
-  let timestamp = 0;
-
-  metadata.forEach((m: any) => {
-    const idCurrent = currentMap[m.id];
-    if (!idCurrent) return;
-    const dataJson = JSON.parse(m.data);
-
-    Object.keys(idCurrent).forEach((key: string) => {
-      if (key == 'timestamp' && idCurrent[key] > timestamp) timestamp = idCurrent[key];
-      else if (key == 'id') return;
-      else dataJson[key] = JSON.parse(idCurrent[key]);
-    });
-
-    data.push(dataJson);
-  });
-
-  return { data, timestamp }
 }

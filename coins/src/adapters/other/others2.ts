@@ -171,6 +171,7 @@ async function cabal(timestamp: number = 0) {
 export const adapters = {
   solanaAVS,
   wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
+
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {
       throw new Error("Timestamp is more than a day old, this adapter does not support historical prices");
@@ -186,5 +187,20 @@ export const adapters = {
     const writes: Write[] = [];
     addToDBWritesList(writes, chain, springSUI, price * basePrice.price, 9, "other2", timestamp, "other", 0.95,);
     return writes;
-  }
+  },
+
+  ctUSD: async (timestamp: number = 0) => {
+    const ctUsd = "0x8D82c4E3c936C7B5724A382a9c5a4E6Eb7aB6d5D";
+    const m = "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b";
+    const chain = "citrea";
+    const api = await getApi(chain, timestamp, true)
+    const bal = await api.call({ abi: "erc20:balanceOf", target: m, params: [ctUsd] });
+    const supply = await api.call({ abi: "erc20:totalSupply", target: ctUsd });
+
+    return getWrites({
+      chain, timestamp, pricesObject: {
+        [ctUsd]: { price: bal / supply, underlying: m, }
+      }, projectName: "other2",
+    });
+  },
 };

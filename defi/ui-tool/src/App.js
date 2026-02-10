@@ -400,6 +400,8 @@ const App = () => {
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
           delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
+          skipHourlyCache: values.skipHourlyCache || false,
+          parallelHourlyProcessCount: values.parallelHourlyProcessCount || 1,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -426,10 +428,12 @@ const App = () => {
         onValuesChange={handleFormChange}
         initialValues={{
           parallelCount: 3,
+          parallelHourlyProcessCount: 3,
           onlyMissing: false,
           dryRun: false,
           delayBetweenRuns: 0,
           delayEnabled: false,
+          skipHourlyCache: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -499,6 +503,15 @@ const App = () => {
         </Form.Item>
 
         <Form.Item
+          label="Parallel Hourly Process Count"
+          name="parallelHourlyProcessCount"
+          help="Number of parallel processes for hourly slices (only for adapters that support hourly cache), set to 1 to disable parallel processing of hourly slices"
+          rules={[{ required: false, message: 'Please enter parallel hourly process count' }]}
+        >
+          <InputNumber min={1} max={100} />
+        </Form.Item>
+
+        <Form.Item
           label="Enable Delay Between Runs"
           name="delayEnabled"
           valuePropName="checked"
@@ -516,6 +529,15 @@ const App = () => {
           style={{ display: Form.useWatch('delayEnabled', dimensionRefillForm) ? 'block' : 'none' }}
         >
           <InputNumber min={0} max={1000} />
+        </Form.Item>
+
+        <Form.Item
+          label="Skip Hourly Cache"
+          name="skipHourlyCache"
+          valuePropName="checked"
+          help="If enabled, hourly slices will be refetched instead of using cache"
+        >
+          <Switch checkedChildren="Yes" unCheckedChildren="No" />
         </Form.Item>
 
         <Form.Item>

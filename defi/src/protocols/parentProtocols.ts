@@ -635,7 +635,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#revert",
     name: "Revert",
-    url: "https://revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
+    referralUrl: "https://revert.finance/#/ref/w6vno3",
     description: "Actionable analytics for AMM liquidity providers.",
     logo: `${baseIconsUrl}/revert.png`,
     gecko_id: null,
@@ -1678,6 +1679,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CurveFinance",
     governanceID: ["snapshot:curve.eth"],
+    treasury: "curve.js",
     github: ["curvefi"],
     warningBanners: [
       {
@@ -3788,7 +3790,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#jupiter",
     name: "Jupiter",
-    url: "https://jup.ag",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
+    referralUrl: "https://jup.ag/?ref=f6y1ryr2snn3",
     description: `Best exchange in DeFi. Full stack ecosystem play focused on advancing the meta.`,
     logo: `${baseIconsUrl}/jupiter.jpg`,
     gecko_id: "jupiter-exchange-solana",
@@ -4313,7 +4316,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ether-fi",
     name: "ether.fi",
-    url: "https://www.ether.fi",
+    url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description: "Decentralized and non-custodial Ethereum staking protocol",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     gecko_id: "ether-fi",
@@ -4364,7 +4368,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab
     name: "Karak Protocol", // previous SubseaProtocol
-    url: "https://karak.network",
+    url: "https://opengdp.network/",
     description: "Risk management marketplace for digital assets.",
     logo: `${baseIconsUrl}/karak-protocol.png`, //karak-protocol.jpg
     gecko_id: null,
@@ -4372,7 +4376,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     governanceID: ["snapshot:riskharbor.eth"],
     github: ["Risk-Harbor"],
-    twitter: "SubseaProtocol",
+    twitter: "OpenGDP",
   },
   {
     id: "parent#particle",
@@ -4485,7 +4489,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aerodrome",
     name: "Aerodrome",
-    url: "https://aero.drome.eth.limo/", //"https://aerodrome.finance/" add back on website is good
+    url: "https://aerodrome.finance/", 
     description: "A central trading and liquidity marketplace on Base",
     logo: `${baseIconsUrl}/aerodrome.png`,
     gecko_id: "aerodrome-finance",
@@ -4572,7 +4576,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sundaeswap",
     name: "SundaeSwap",
-    url: "https://www.sundaeswap.finance/",
+    url: "https://sundae.fi/",
     description:
       "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     logo: `${baseIconsUrl}/sundaeswap.jpg`,
@@ -5447,7 +5451,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dragon-swap",
     name: "Saphyre", // previous Dragon Swap
-    url: "https://dragonswap.app",
+    url: "https://saphyre.xyz/",
     description:
       "Execution Infrastructure for On-Chain Trading.",
     logo: `${baseIconsUrl}/saphyre.jpg`,
@@ -5793,7 +5797,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#kelp-dao", //
     name: "KernelDAO", //previous KelpDAO
-    url: "https://kerneldao.com",
+    url: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://kelpdao.xyz/restake/?utm_source=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description:
       "KernelDAO is a suite of top restaking products, with over $2 billion in total value locked and live on 10+ chains including Ethereum, BNB Chain, and expanding further. KernelDAO’s three key products include Kernel, Kelp and Gain.",
     logo: `${baseIconsUrl}/kerneldao.jpg`,
@@ -6419,6 +6424,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SoneFi_xyz",
+    warningBanners: [
+      {
+        message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }],
   },
   {
     id: "parent#filament",
@@ -6593,7 +6603,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "35818",
     chains: [],
     twitter: "SoSoValueCrypto",
-    github: ["SoSoValueLabs"],
+    github: ["SoSoValueLabs","sosovalue-tech"],
   },
   {
     id: "parent#piperx",
@@ -7429,7 +7439,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#etherfi-cash",
     name: "EtherFi Cash",
-    url: "https://www.ether.fi/",
+    url: "https://www.ether.fi/refer/04bb2542",
+    referralUrl: "https://www.ether.fi/refer/04bb2542",
     description: "Take control of your crypto. Save, grow, and spend. Start now at www.ether.fi",
     logo: `${baseIconsUrl}/etherfi-cash.jpg`,
     gecko_id: null,
@@ -7451,7 +7462,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#moonshot",
     name: "Moonshot.com",
-    url: "https://moonshot.com/",
+    url: "https://moonshot.money/",
     description: "Buy, Sell, and Create Memes with Apple Pay. Live on App Store and Google Play in 130+ Countries",
     logo: `${baseIconsUrl}/moonshot.com.jpg`,
     gecko_id: null,
@@ -7930,7 +7941,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://rabby.io/",
     description: "Rabby is a wallet for Ethereum and all EVM chains By DeBank",
     logo: `${baseIconsUrl}/rabby.jpg`,
-    gecko_id: "rabby",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Rabby_io",
@@ -8064,6 +8075,13 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rezervemoney",
     github: ["rezervemoney"],
     treasury: "rezerve.js",
+    deprecated: true,
+    warningBanners: [
+      {
+        message: "Rezerve has some red flags and multiple users have reported concerns. Be careful.",
+        level: "alert",
+      }
+    ]
   },
   {
     id: "parent#flamingo",
@@ -8197,7 +8215,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "MetaMask",
     url: "https://metamask.io",
     description: "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
-    logo: `${baseIconsUrl}/metamask.png`,
+    logo: `${baseIconsUrl}/metamask.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -8290,12 +8308,12 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#strata",
     name: "Strata",
     url: "https://strata.money",
-    description: "Strata is a perpetual risk-tranching protocol that offers structured yield products on crypto-native yields",
+    description: "Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies.",
     logo: `${baseIconsUrl}/strata.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "Strata_Money",
+    twitter: "strata_markets",
     github: ["Strata-Money"],
   },
   {
@@ -8343,6 +8361,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "milky_way_zone",
+    github: ["milkyway-labs"],
   },
   {
     id: "parent#flow-swap",
@@ -8710,7 +8729,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://goblin.fi/",
     description:
       "Goblin is the native yield layer for Aptos Defi",
-    logo: `${baseIconsUrl}/goblin.png`,
+    logo: `${baseIconsUrl}/goblin-protocols.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -8739,6 +8758,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "4758",
     chains: [],
     twitter: "dForcenet",
+    governanceID: ["snapshot:dforcenet.eth"],
+    github: ["dforce-network", "UnitusLabs"],
   },
   {
     id: "parent#standx",
@@ -8752,6 +8773,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "StandX_Official",
+    stablecoins: ["standx-dusd"],
   },
   {
     id: "parent#stabble",
@@ -8809,7 +8831,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "T0nyCrypt0",
   },
-    {
+  {
     id: "parent#pike",
     name: "Pike",
     url: "https://www.pike.finance/",
@@ -8819,6 +8841,65 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PikeFinance",
+  },
+  {
+    id: "parent#warpx",
+    name: "WarpX",
+    url: "https://www.warpx.exchange/",
+    description: "WarpX is a high-performance DEX built on MegaETH.",
+    logo: `${baseIconsUrl}/warpx.jpg`,
+    gecko_id: "warpx-exchange",
+    cmcId: null,
+    chains: [],
+    twitter: "warpexchange",
+  },
+  {
+    id: "parent#metadao",
+    name: "MetaDao",
+    url: "https://metadao.fi",
+    description: "Raise money while putting ownership into the hands of your early users and believers.",
+    logo: `${baseIconsUrl}/metadao.jpg`,
+    gecko_id: "meta-2-2",
+    cmcId: "38146",
+    chains: [],
+    twitter: "MetaDAOProject",
+    github: ["metaDAOproject"],
+  },
+  {
+    id: "parent#xpanse",
+    name: "Xpanse",
+    url: "https://xpanse.trade/",
+    description: "Xpanse is an AI-powered, multi-layered liquidity perpetual exchange designed to empower traders for their various trading strategies.",
+    logo: `${baseIconsUrl}/xpanse.jpg`,
+    gecko_id: "horizon-protocol",
+    cmcId: "9237",
+    chains: [],
+    twitter: "XpanseTrade",
+    governanceID: ["snapshot:horizonprotocol.eth"],
+    github: ["Horizon-Protocol"],
+  },
+  {
+    id: "parent#comet-swap",
+    name: "Comet Swap",
+    url: "https://www.cometswap.app/",
+    description: "Comet Swap is an Astar-native, liquidity-efficient CLMM DEX with ASTR-anchored giveback loop that routes value back to ASTR stakers.",
+    logo: `${baseIconsUrl}/comet-swap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Comet_Swap",
+  },
+  {
+    id: "parent#alphasec",
+    name: "AlphaSec",
+    url: "https://app.alphasec.trade",
+    description: "AlphaSec is a high performance orderbook DEX on the Kaia network, built on a custom Arbitrum Nitro rollup. It delivers a gasless, CEX-like trading experience with sub-10ms execution and full onchain transparency.",
+    logo: `${baseIconsUrl}/alphasec-spot.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlphaSec_Trade",
+    github: ["alphasec-dex"],
   },
 ];
 

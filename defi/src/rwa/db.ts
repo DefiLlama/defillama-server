@@ -2,8 +2,8 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from 
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 
 class META_RWA_DATA extends Model { }
-class DAILY_RWA_DATA extends Model { }
-class HOURLY_RWA_DATA extends Model { }
+export class DAILY_RWA_DATA extends Model { }
+export class HOURLY_RWA_DATA extends Model { }
 class BACKUP_RWA_DATA extends Model { }
 
 let pgConnection: any;
@@ -193,7 +193,9 @@ async function initializeRwaDB(): Promise<void> {
         const auth = process.env.COINS2_AUTH?.split(",") ?? [];
         if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
-        pgConnection = new Sequelize(auth[0]);
+        pgConnection = new Sequelize(auth[0], {
+            logging: false,
+        });
         initPGTables()
     }
 }
@@ -313,21 +315,175 @@ export async function fetchHistoricalPG(id: string): Promise<{ historical: any[]
 }
 // Get all metadata records
 export async function fetchMetadataPG(): Promise<any[]> {
-    return await META_RWA_DATA.findAll({
+    await initPG();
+    const data = await META_RWA_DATA.findAll({
         attributes: ['id', 'data'],
         order: [['id', 'ASC']],
         raw: true,
     });
+    data.forEach((d: any) => {
+        try {
+            d.data = JSON.parse(d.data)
+        } catch (e) {
+            console.error(`Error parsing metadata for id ${d.id}:`, (e as any)?.message);
+            delete d.data;
+        }
+    })
+    return data.filter((d: any) => d.data)
 }
+
 // Get one record per id with the largest timestamp
-export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[]> {
-    return await HOURLY_RWA_DATA.sequelize!.query(
-        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap 
-         FROM "${HOURLY_RWA_DATA.getTableName()}" 
+export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: object; mcap: object; activemcap: object }[]> {
+    const data = await HOURLY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap
+         FROM "${HOURLY_RWA_DATA.getTableName()}"
          ORDER BY id, timestamp DESC`,
         { type: QueryTypes.SELECT }
     ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[];
+    const jsonFields = ['defiactivetvl', 'mcap', 'activemcap']
+
+    return data.map((d: any) => {
+        const copy: any = { ...d }
+        jsonFields.forEach((field) => {
+            try {
+                copy[field] = JSON.parse(d[field]);
+            } catch (e) {
+                console.error(`Error parsing field ${field} for id ${d.id}:`, (e as any)?.message);
+                copy[field] = {};
+            }
+        })
+        return copy
+    }) as any
 }
+// Fetch all daily records, optionally filtered by updated_at timestamp
+export async function fetchAllDailyRecordsPG(updatedAfter?: Date): Promise<any[]> {
+    const whereClause = updatedAfter
+        ? { updated_at: { [Op.gt]: updatedAfter } }
+        : {};
+
+    return await DAILY_RWA_DATA.findAll({
+        attributes: ['id', 'timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'updated_at'],
+        where: whereClause,
+        order: [['id', 'ASC'], ['timestamp', 'ASC']],
+        raw: true,
+    });
+}
+// Get the list of unique IDs from daily records
+export async function fetchAllDailyIdsPG(): Promise<string[]> {
+    const results = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT id FROM "${DAILY_RWA_DATA.getTableName()}" ORDER BY id`,
+        { type: QueryTypes.SELECT }
+    ) as { id: string }[];
+    return results.map((r) => r.id);
+}
+// Get the max updated_at timestamp from daily records
+export async function fetchMaxUpdatedAtPG(): Promise<Date | null> {
+    const result = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT MAX(updated_at) as max_updated_at FROM "${DAILY_RWA_DATA.getTableName()}"`,
+        { type: QueryTypes.SELECT }
+    ) as { max_updated_at: Date | null }[];
+    return result[0]?.max_updated_at || null;
+}
+// Fetch daily records for a single ID
+export async function fetchDailyRecordsForIdPG(id: string): Promise<any[]> {
+    return await DAILY_RWA_DATA.findAll({
+        attributes: ['timestamp', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap'],
+        where: { id },
+        order: [['timestamp', 'ASC']],
+        raw: true,
+    });
+}
+const PAGE_SIZE = 5000;
+
+function parseJsonSafe(str: string): any {
+    try {
+        return JSON.parse(str);
+    } catch {
+        return {};
+    }
+}
+
+function parseChainFields(record: any): any {
+    return {
+        ...record,
+        mcap: parseJsonSafe(record.mcap),
+        activemcap: parseJsonSafe(record.activemcap),
+        defiactivetvl: parseJsonSafe(record.defiactivetvl),
+    };
+}
+
+// Fetch daily records with chain-level data, filtered by updated_at (for incremental sync)
+export async function fetchDailyRecordsWithChainsPG(updatedAfter: Date): Promise<any[]> {
+    const results: any[] = [];
+    let offset = 0;
+
+    while (true) {
+        const batch = await DAILY_RWA_DATA.findAll({
+            attributes: ['id', 'timestamp', 'mcap', 'activemcap', 'defiactivetvl', 'updated_at'],
+            where: { updated_at: { [Op.gt]: updatedAfter } },
+            order: [['id', 'ASC'], ['timestamp', 'ASC']],
+            limit: PAGE_SIZE,
+            offset,
+            raw: true,
+        });
+
+        if (batch.length === 0) break;
+        results.push(...batch.map(parseChainFields));
+        if (batch.length < PAGE_SIZE) break;
+        offset += PAGE_SIZE;
+    }
+
+    return results;
+}
+
+// Fetch daily records with chain-level data for a single ID (for full sync)
+export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<any[]> {
+    const results: any[] = [];
+    let offset = 0;
+
+    while (true) {
+        const batch = await DAILY_RWA_DATA.findAll({
+            attributes: ['timestamp', 'mcap', 'activemcap', 'defiactivetvl'],
+            where: { id },
+            order: [['timestamp', 'ASC']],
+            limit: PAGE_SIZE,
+            offset,
+            raw: true,
+        });
+
+        if (batch.length === 0) break;
+        results.push(...batch.map(parseChainFields));
+        if (batch.length < PAGE_SIZE) break;
+        offset += PAGE_SIZE;
+    }
+
+    return results;
+}
+
+// Fetch unique timestamps
+export async function fetchTimestampsPG(): Promise<number[]> {
+    const results = await DAILY_RWA_DATA.sequelize!.query(
+        `SELECT DISTINCT timestamp FROM "${DAILY_RWA_DATA.getTableName()}" ORDER BY timestamp ASC`,
+        { type: QueryTypes.SELECT }
+    ) as { timestamp: number }[];
+    return results.map((r) => r.timestamp);
+}
+
+// Delete all entries with a given timestamp from DAILY_RWA_DATA and HOURLY_RWA_DATA
+export async function deleteTimestampsPG(timestamp: number): Promise<void> {
+    await DAILY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
+
+    await HOURLY_RWA_DATA.destroy({
+        where: {
+            timestamp
+        }
+    });
+}
+
 // Close the database connection
 async function closeConnection(): Promise<void> {
     if (!pgConnection) return;

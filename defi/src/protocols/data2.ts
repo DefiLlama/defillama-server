@@ -3102,24 +3102,23 @@ const data2: Protocol[] = [
     //previousNames: ["Horizon Protocol"],
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
-    url: "https://horizonprotocol.com/",
+    url: "https://xpanse.trade/",
     description:
       "Horizon Protocol facilitates the on-chain trading of synthetic assets that represent the real economy. Seeks to provide exposure to real-world assets risk/return profiles via smart contracts on the binance smart chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/horizon-protocol.png`,
     audits: "2",
-    gecko_id: "horizon-protocol",
-    cmcId: "9237",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Chainlink", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     forkedFromIds: ["115"],
     module: "horizon/index.js",
-    twitter: "HorizonProtocol",
+    twitter: "XpanseTrade",
     audit_links: ["https://static.horizonprotocol.com/Horizon-Protocol-Smart-Contract-Audit-Report.pdf"],
     listedAt: 1646762203,
-    governanceID: ["snapshot:horizonprotocol.eth"],
-    github: ["Horizon-Protocol"],
+    parentProtocol: "parent#xpanse",
   },
   /*
   { //TVL was always $0
@@ -3334,7 +3333,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange",
+   //   derivatives: "01-exchange",
+   //   "open-interest": "01-xyz", old product, keep the open interest on the enw listing id 7373
     },
   },
   {
@@ -3388,14 +3388,14 @@ const data2: Protocol[] = [
     name: "StrikeX",
     address: "bsc:0xd6fdde76b8c1c45b33790cc8751d5b88984c44ec",
     symbol: "STRX",
-    url: "https://strikex.com",
+    url: "https://tradestrike.io/",
     description:
       "StrikeX is the native currency of the blockchain powered eco-system developed & deployed by the UK Registered Company StrikeX Technologies Ltd. Their flag ship product, TradeStrike, will utilise the power of tokenisation to offer trading in Stocks, Cryptocurrencies, NFT's & even Real Estate. Fully compliant, fully collateralised trading, 24/7 - 365 days a year. #ForThePeople",
     chain: "Binance",
     logo: `${baseIconsUrl}/strikex.png`,
     audits: "2",
     gecko_id: "strikecoin",
-    cmcId: "STRX",
+    cmcId: "9220",
     category: "Farm",
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
@@ -4069,6 +4069,7 @@ const data2: Protocol[] = [
       "https://github.com/coinscope-co/audits/blob/main/ring/audit.pdf",
     ],
     listedAt: 1647811513,
+    deadUrl: true
   },
   {
     id: "1566",
@@ -4790,7 +4791,7 @@ const data2: Protocol[] = [
     wrongLiquidity: true,
     dimensions: {
       fees: {
-        genuineSpikes: ["1722816000", "1738540800"],
+        genuineSpikes: [["2024-08-05", "-"], ["2025-02-03", "-"]],
         adapter: "aave-v3"
       }
     }
@@ -5259,6 +5260,7 @@ const data2: Protocol[] = [
     twitter: "AmaterasuFi",
     listedAt: 1649284344,
     github: ["Amaterasu-Finance"],
+    deadUrl: true,
   },
   {
     id: "1621",
@@ -6947,6 +6949,7 @@ const data2: Protocol[] = [
     twitter: "pandora_swap",
     audit_links: ["https://paladinsec.co/projects/pandora-swap"],
     listedAt: 1651146705,
+    deadUrl: true,
     dimensions: {
       fees: "pandoraswap",
       dexs: "pandoraswap"
@@ -7211,6 +7214,7 @@ const data2: Protocol[] = [
     twitter: "FenrirFi",
     listedAt: 1651375509,
     deadUrl: true,
+    deadFrom: "2025-10-12",
   },
   {
     id: "1711",
@@ -7229,6 +7233,7 @@ const data2: Protocol[] = [
     module: "candle/index.js",
     twitter: "Candle_Labs",
     listedAt: 1651486174,
+    deadUrl: true
   },
   {
     id: "1712",
@@ -8576,6 +8581,7 @@ const data2: Protocol[] = [
     twitter: "ESG_Financial",
     audit_links: ["https://www.certik.com/projects/esg-financial"],
     listedAt: 1653037836,
+    deadUrl: true,
   },
   {
     id: "1776",
@@ -9109,7 +9115,7 @@ const data2: Protocol[] = [
     name: "Velodrome V1",
     address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
-    url: "https://velo.drome.eth.limo/", //"https://velodrome.finance" add back on website is good
+    url: "https://velodrome.finance/", 
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v1.png`,
@@ -10836,7 +10842,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "apex",
       derivatives: {
-        genuineSpikes: ["1697328000", "1697414400", "1722816000", "1738540800"],
+        genuineSpikes: [["2023-10-15", "-"], ["2023-10-16", "-"], ["2024-08-05", "-"], ["2025-02-03", "-"]],
         adapter: "apex"
       },
       "open-interest": "apex"
@@ -10955,7 +10961,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "iziswap",
       dexs: {
-        genuineSpikes: ["1700524800", "1700611200", "1700697600", "1700784000", "1700870400"],
+        genuineSpikes: [["2023-11-21", "-"], ["2023-11-22", "-"], ["2023-11-23", "-"], ["2023-11-24", "-"], ["2023-11-25", "-"]],
         adapter: "iziswap"
       }
     }
@@ -12326,7 +12332,7 @@ const data2: Protocol[] = [
     name: "Revert Compoundor",
     address: null,
     symbol: "-",
-    url: "https://revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
     description:
       "Revert Compoundor is a protocol to automate compounding of liquidity provider fees for positions in Uniswap v3.",
     chain: "Ethereum",
@@ -12931,6 +12937,7 @@ const data2: Protocol[] = [
     module: "dogeswap/index.js",
     twitter: "Dogeswap_",
     listedAt: 1660611953,
+    deadUrl: true
   },
   {
     id: "1976",
@@ -13016,7 +13023,7 @@ const data2: Protocol[] = [
       fees: "saucerswap",
       dexs: {
         adapter: "saucerswap",
-        genuineSpikes: ["1760400000"],
+        genuineSpikes: [["2025-10-14", "-"]],
       },
     }
   },
@@ -13299,7 +13306,7 @@ const data2: Protocol[] = [
     name: "Sphynx",
     address: "bsc:0x6e281f90c6d1b5e5a01fb6f14c428aff69c04c3f",
     symbol: "SPHYNX",
-    url: "https://linktr.ee/sphynxlabs",
+    url: "https://thesphynx.co/",
     description: "An AIO(All-In-One) solution for trading, farming, staking and holding",
     chain: "Binance",
     logo: `${baseIconsUrl}/sphynx.png`,
@@ -13921,7 +13928,7 @@ const data2: Protocol[] = [
   {
     id: "2021",
     name: "Router Protocol",
-    address: "0x16ECCfDbb4eE1A85A33f3A9B21175Cd7Ae753dB4",
+    address: "0x60f67e1015b3f069dd4358a78c38f83fe3a667a9",
     symbol: "ROUTE",
     url: "https://www.routerprotocol.com/",
     description:
@@ -13929,8 +13936,8 @@ const data2: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/router-protocol.png`,
     audits: "2",
-    gecko_id: "route",
-    cmcId: "8292",
+    gecko_id: "router-protocol-2",
+    cmcId: "32544",
     category: "Cross Chain Bridge",
     chains: [
       "Ethereum",
@@ -15152,7 +15159,7 @@ const data2: Protocol[] = [
     name: "Fraxlend",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
     symbol: "FRAX",
-    url: "https://app.frax.finance/fraxlend/available-pairs",
+    url: "https://frax.com/lend",
     description:
       "Fraxlend is a lending platform that allows anyone to create a market between a pair of ERC-20 tokens. Any token part of a Chainlink data feed can be lent to borrowers or used as collateral",
     chain: "Ethereum",
@@ -15625,9 +15632,10 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: "ethichub",
     cmcId: "8442",
-    category: "Lending",
+    category: "RWA Lending",
     chains: ["Ethereum", "Celo"],
     module: "ethichub/index.js",
+    treasury: "ethichub.js",
     twitter: "EthicHub",
     audit_links: [
       "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf",
@@ -16184,7 +16192,7 @@ const data2: Protocol[] = [
     name: "Frax Swap",
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
     symbol: "FRAX",
-    url: "https://app.frax.finance/swap/main",
+    url: "https://frax.com/swap",
     description:
       "Fraxswap is the first constant product automated market maker with an embedded time-weighted average market maker (TWAMM) for conducting large trades over long periods of time trustlessly. It is fully permissionless and the core AMM is based on Uniswap V2.",
     chain: "Ethereum",
@@ -16582,7 +16590,7 @@ const data2: Protocol[] = [
     name: "Sommelier",
     address: "0xa670d7237398238de01267472c6f13e5b8010fd1",
     symbol: "SOMM",
-    url: "https://www.sommelier.finance",
+    url: "https://somm.finance/",
     description: "Provider of automated vaults that find best-in-class yields while mitigating risk.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sommelier.png`,
@@ -16601,7 +16609,7 @@ const data2: Protocol[] = [
     module: "sommelier/index.js",
     twitter: "sommfinance",
     audit_links: [
-      "https://www.sommelier.finance/audits",
+      "https://somm.finance/audits",
       "https://github.com/PeggyJV/cellar-contracts/tree/main/audits",
     ],
     listedAt: 1664536707,
@@ -16632,7 +16640,7 @@ const data2: Protocol[] = [
     name: "Jupiter Aggregator",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",
-    url: "https://jup.ag/",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
     description:
       "The best swap aggregator & infrastructure for Solana -  powering best price, token selection and UX for all users and devs",
     chain: "Solana",
@@ -16650,7 +16658,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "jupiter",
       aggregators: {
-        genuineSpikes: ["1741564800"],
+        genuineSpikes: [["2025-03-10", "-"]],
         adapter: "jupiter-aggregator"
       }
     }
@@ -16800,12 +16808,12 @@ const data2: Protocol[] = [
     dimensions: {
       derivatives: {
         genuineSpikes: [
-          "1676678400",
-          "1715126400",
-          "1716336000",
-          "1717718400",
-          "1722297600",
-          "1724457600"
+          ["2023-02-18", "-"],
+          ["2024-05-08", "-"],
+          ["2024-05-22", "-"],
+          ["2024-06-07", "-"],
+          ["2024-07-30", "-"],
+          ["2024-08-24", "-"]
         ],
         adapter: "ipor"
       }
@@ -17928,23 +17936,23 @@ const data2: Protocol[] = [
     dimensions: {
       fees: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v1"
       },
       dexs: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v1"
       }
@@ -17976,23 +17984,23 @@ const data2: Protocol[] = [
     dimensions: {
       fees: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v2"
       },
       dexs: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v2"
       }
@@ -18024,23 +18032,23 @@ const data2: Protocol[] = [
     dimensions: {
       fees: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v3"
       },
       dexs: {
         genuineSpikes: [
-          "1603670400",
-          "1661990400",
-          "1665446400",
-          "1670630400",
-          "1722816000",
-          "1725580800"
+          ["2020-10-26", "-"],
+          ["2022-09-01", "-"],
+          ["2022-10-11", "-"],
+          ["2022-12-10", "-"],
+          ["2024-08-05", "-"],
+          ["2024-09-06", "-"]
         ],
         adapter: "uniswap-v3"
       }
@@ -18092,7 +18100,7 @@ const data2: Protocol[] = [
     name: "Bepro Network",
     address: "0xcf3c8be2e2c42331da80ef210e9b1b307c03d36a",
     symbol: "BEPRO",
-    url: "https://bepro.network",
+    url: "https://layerx.xyz/",
     description: "Web3 bounty network for open-source development.",
     chain: "Moonbeam",
     logo: `${baseIconsUrl}/bepro-network.png`,
@@ -18102,7 +18110,7 @@ const data2: Protocol[] = [
     category: "Services",
     chains: ["Moonbeam", "Moonriver"],
     module: "bepro/index.js",
-    twitter: "bepronet",
+    twitter: "LayerXlab",
     audit_links: ["https://hacken.io/audits/#bepro"],
     listedAt: 1666273430,
     github: ["bepronetwork"],
@@ -18955,7 +18963,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "quickswap-v3",
       dexs: {
-        genuineSpikes: ["1751587200"],
+        genuineSpikes: [["2025-07-04", "-"]],
         adapter: "quickswap-v3"
       }
     }
@@ -19231,7 +19239,7 @@ const data2: Protocol[] = [
     name: "Llamalend",
     address: null,
     symbol: "-",
-    url: "https://llamalendnft.com/",
+    url: "https://www.curve.finance/llamalend/",
     description:
       "Deposit NFTs and borrow ETH for small illiquid NFT collections that can't get into the main NFT lending markets",
     chain: "Ethereum",
@@ -19295,7 +19303,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "mux",
       derivatives: {
-        genuineSpikes: ["1746489600"],
+        genuineSpikes: [["2025-05-06", "-"]],
         adapter: "mux-protocol-perps"
       }
     }
@@ -19626,14 +19634,14 @@ const data2: Protocol[] = [
     id: "2269",
     name: "Binance CEX",
     address: null,
-    symbol: "-",
+    symbol: "BNB",
     url: "https://www.binance.com",
     description:
       "Binance is a cryptocurrency exchange which is the largest exchange in the world in terms of daily trading volume of cryptocurrencies",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/binance-cex.jpg`,
     audits: "0",
-    gecko_id: "binancecoin",
+    gecko_id: null, // can't be repeated
     cmcId: null,
     category: "CEX",
     chains: ["Ethereum", "Tron", "Bitcoin", "Binance"],
@@ -20328,7 +20336,7 @@ const data2: Protocol[] = [
     name: "Revert V3 Staker",
     address: null,
     symbol: "-",
-    url: "https://v3staker.revert.finance",
+    url: "https://revert.finance/#/ref/w6vno3",
     description:
       "Liquidity mining for Uniswap v3 that incentivizes sticky liquidity by distributing rewards that vest over time.",
     chain: "Polygon",
@@ -21544,6 +21552,7 @@ const data2: Protocol[] = [
     twitter: "DexitNetwork",
     forkedFromIds: ["2197"],
     listedAt: 1670977584,
+    deadUrl: true,
   },
   {
     id: "2359",
@@ -22577,14 +22586,14 @@ const data2: Protocol[] = [
   {
     id: "2406",
     name: "Tegro Finance",
-    address: null,
-    symbol: "-",
-    url: "https://tegro.finance",
+    address: "bsc:0xd9780513292477c4039dfda1cfcd89ff111e9da5",
+    symbol: "TGR",
+    url: "https://tegro.money/",
     description: "TegroFinance - A next evolution DeFi exchange on The Open Network (TON).",
     chain: "TON",
     logo: `${baseIconsUrl}/tegro-finance.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "tegro",
     cmcId: null,
     tags: ["AMM"],
     chains: ["TON"],
@@ -24697,10 +24706,10 @@ const data2: Protocol[] = [
   },
   {
     id: "2507",
-    name: "BitVenus",
+    name: "BitVenus", // now BVOX
     address: null,
     symbol: "-",
-    url: "https://www.bitvenus.com",
+    url: "https://www.bvox.com/",
     description:
       "BitVenus (BV for short) is a well-known digital asset trading platform in Europe, supporting hundreds of digital asset transactions. Officially established in London County, England in June 2018",
     chain: "Ethereum",
@@ -24711,7 +24720,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Binance", "Bitcoin"],
     module: "bitvenus/index.js",
-    twitter: "bitvenus_global",
+    twitter: "BVOX_global",
     listedAt: 1675767017,
   },
   {
@@ -24993,7 +25002,7 @@ const data2: Protocol[] = [
     name: "Ethereum Foundation",
     address: null,
     symbol: "ETH",
-    url: "https://ethereum.foundation",
+    url: "https://ethereum.org/",
     description:
       "The Ethereum Foundation (EF) is a non-profit that supports the Ethereum ecosystem. We are part of a larger community of organizations and individuals that fund protocol development, grow the ecosystem, and advocate for Ethereum.",
     chain: "Ethereum",
@@ -25187,7 +25196,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "pancakeswap-stableswap",
       dexs: {
-        genuineSpikes: ["1747612800"],
+        genuineSpikes: [["2025-05-19", "-"]],
         adapter: "pancakeswap-stableswap"
       }
     }
@@ -26564,7 +26573,7 @@ const data2: Protocol[] = [
     name: "Balancer V1",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer is a protocol for programmable liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer.png`,
@@ -26586,7 +26595,7 @@ const data2: Protocol[] = [
     name: "Balancer V2",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer is a protocol for programmable liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer-v2.png`,
@@ -26887,7 +26896,7 @@ const data2: Protocol[] = [
     name: "Frax FPI",
     address: "0xc2544a32872a91f4a553b404c6950e89de901fdb",
     symbol: "FPIS",
-    url: "https://app.frax.finance/fpifpis/fpi",
+    url: "https://frax.com/",
     description:
       "The Frax Price Index (FPI) is the second stablecoin of the Frax Finance ecosystem. FPI is the first stablecoin pegged to a basket of real-world consumer items as defined by the US CPI-U average. The FPI stablecoin is intended to keep its price constant to the price of all items within the CPI basket and thus hold its purchasing power with on-chain stability mechanisms.f locking the asset.",
     chain: "Ethereum",
@@ -26977,7 +26986,7 @@ const data2: Protocol[] = [
     name: "Balancer V2",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
-    url: "https://balancer.finance/",
+    url: "https://balancer.fi/",
     description: "Balancer is a protocol for programmable liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer-v2.png`,
@@ -26993,7 +27002,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "balancer-v2",
       dexs: {
-        genuineSpikes: ["1718755200", "1722297600", "1722816000", "1738540800"],
+        genuineSpikes: [["2024-06-19", "-"], ["2024-07-30", "-"], ["2024-08-05", "-"], ["2025-02-03", "-"]],
         adapter: "balancer-v2"
       }
     }
@@ -27125,7 +27134,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "dedust",
       dexs: {
-        genuineSpikes: ["1721606400"],
+        genuineSpikes: [["2024-07-22", "-"]],
         adapter: "dedust"
       },
       aggregators: "dedust"
@@ -27321,7 +27330,7 @@ const data2: Protocol[] = [
     name: "ether.fi Stake",
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
-    url: "https://www.ether.fi/app/weeth",
+    url: "https://www.ether.fi/refer/04bb2542",
     description: "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
@@ -27711,7 +27720,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "cow-protocol",
       aggregators: {
-        genuineSpikes: ["1722816000"],
+        genuineSpikes: [["2024-08-05", "-"]],
         adapter: "cowswap"
       }
     }
@@ -28162,7 +28171,7 @@ const data2: Protocol[] = [
     name: "ApeCoin",
     address: "0x4d224452801aced8b2f0aebe155379bb5d594381",
     symbol: "APE",
-    url: "https://apecoin.com",
+    url: "https://apechain.com/",
     description:
       "ApeCoin is an ERC-20 governance and utility token used to empower a decentralized community building at the forefront of web3.",
     chain: "Ethereum",
@@ -28210,7 +28219,7 @@ const data2: Protocol[] = [
     name: "Arrakis V2",
     address: null,
     symbol: "-",
-    url: "https://app.arrakis.fi/v2-vaults",
+    url: "https://arrakis.finance/",
     description:
       "Arrakis V2 is a next-generation market-making infrastructure built on top of Uniswap V3. Its unique functionalities allow the creation and automated execution of sophisticated market-making strategies on Uniswap V3 that previously were only feasible on CEXs.",
     chain: "Ethereum",
@@ -28572,7 +28581,7 @@ const data2: Protocol[] = [
     name: "Arc Swap",
     address: "0xc82e3db60a52cf7529253b4ec688f631aad9e7c2",
     symbol: "ARC",
-    url: "https://www.arc.market",
+    url: "https://arc.ai/",
     description:
       "Build with Arc's Reactor tech. At the forefront of Web3 & AI innovation. Smart contract & dApp development across multiple blockchains including zkEVM. Trade using our multi-market aggregator using SOR technology. Build Anything. Trade Everything. Web3 Development, Solved.",
     chain: "Ethereum",
@@ -28583,7 +28592,7 @@ const data2: Protocol[] = [
     category: "Services",
     chains: ["Ethereum"],
     module: "arc-swap/index.js",
-    twitter: "DeFi_ARC",
+    twitter: "ARCreactorAI",
     listedAt: 1679146737,
   },
   {

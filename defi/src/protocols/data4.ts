@@ -3132,7 +3132,7 @@ const data4: Protocol[] = [
     name: "K2",
     address: null,
     symbol: "-",
-    url: "https://karak.network/",
+    url: "https://opengdp.network/",
     description:
       "Karak Network is a universal restaking layer that enables the use of staked assets from various blockchains to secure new protocols, reducing the need for their own validator rewards",
     chain: "Ethereum",
@@ -3143,7 +3143,7 @@ const data4: Protocol[] = [
     category: "Chain",
     chains: ["Ethereum"],
     module: "karak_chain/index.js",
-    twitter: "Karak_Network",
+    twitter: "OpenGDP",
   },
   {
     id: "5697",
@@ -18884,7 +18884,7 @@ const data4: Protocol[] = [
     name: "Moonshot Create",
     address: null,
     symbol: "-",
-    url: "https://moonshot.com/",
+    url: "https://moonshot.money/",
     description: "The easiest way for anyone to launch a memecoin with Apple Pay",
     chain: "Solana",
     logo: `${baseIconsUrl}/moonshot-create.jpg`,
@@ -22808,6 +22808,7 @@ const data4: Protocol[] = [
   {
     id: "6552",
     name: "Nordstern.Finance",
+    previousNames: ["Icecream Swap"],
     address: null,
     symbol: "-",
     url: "http://nordstern.finance/",
@@ -22821,7 +22822,7 @@ const data4: Protocol[] = [
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "icecream_swap",
+    twitter: "nordstern_fi",
     dimensions: {
       aggregators: "nordstern-finance"
     }
@@ -22958,7 +22959,7 @@ const data4: Protocol[] = [
     name: "HyperDash",
     address: null,
     symbol: "-",
-    url: "https://hyperdash.info/",
+    url: "https://hyperdash.com/",
     description:
       "Hyperdash empowers traders with real-time analytics and insights by tracking the most successful derivatives traders on Hyperliquid",
     chain: "Hyperliquid L1",
@@ -23799,6 +23800,8 @@ const data4: Protocol[] = [
     module: "hypervault/index.js",
     twitter: "hypervaultfi",
     listedAt: 1755534171,
+    rugged: true,
+    deadUrl: true,
   },
   {
     id: "6598",

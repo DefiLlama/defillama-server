@@ -2716,7 +2716,7 @@ const data: Protocol[] = [
     name: "IDEX Classic",
     address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
     symbol: "IDEX",
-    url: "https://idex.io/",
+    url: "https://kuma.bid/",
     description: "The fastest, most secure decentralized exchange.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/idex.png`,
@@ -2726,7 +2726,7 @@ const data: Protocol[] = [
     tags: ["AMM"],
     chains: ["Ethereum"],
     module: "idex/index.js",
-    twitter: "idexio",
+    twitter: "kumadotbid",
     audit_links: [
       "https://github.com/idexio/idex-contracts/tree/master/audits",
       "https://callisto.network/idex-security-audit/",

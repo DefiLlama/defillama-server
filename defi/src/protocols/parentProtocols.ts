@@ -4368,7 +4368,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab
     name: "Karak Protocol", // previous SubseaProtocol
-    url: "https://karak.network",
+    url: "https://opengdp.network/",
     description: "Risk management marketplace for digital assets.",
     logo: `${baseIconsUrl}/karak-protocol.png`, //karak-protocol.jpg
     gecko_id: null,
@@ -4376,7 +4376,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     governanceID: ["snapshot:riskharbor.eth"],
     github: ["Risk-Harbor"],
-    twitter: "SubseaProtocol",
+    twitter: "OpenGDP",
   },
   {
     id: "parent#particle",
@@ -7462,7 +7462,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#moonshot",
     name: "Moonshot.com",
-    url: "https://moonshot.com/",
+    url: "https://moonshot.money/",
     description: "Buy, Sell, and Create Memes with Apple Pay. Live on App Store and Google Play in 130+ Countries",
     logo: `${baseIconsUrl}/moonshot.com.jpg`,
     gecko_id: null,

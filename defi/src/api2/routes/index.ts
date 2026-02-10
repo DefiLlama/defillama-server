@@ -664,23 +664,23 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
     
     const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
     
-    let routeFilePath = `oraclesv2`;
+    let routeFilePath = `oracles-v2`;
     if (route === 'overview') {
       routeFilePath += `/overview`;
       const data = await readRouteData(routeFilePath);
       return successResponse(res, data);
     } else {
       if (chainFilter) {
-        routeFilePath += `/charts/chains/${chainFilter}${keyFilter}`;
-        if (route === 'chart-protocol-breakdown') routeFilePath += `protocolbreakdown`;
+        routeFilePath += `/charts/chains/${chainFilter}-${keyFilter}`;
+        if (route === 'chart-protocol-breakdown') routeFilePath += `protocol-breakdown`;
       } else if (protocolFilter) {
-        routeFilePath += `/charts/protocols/${protocolFilter}${keyFilter}`;
-        if (route === 'chart-chain-breakdown') routeFilePath += `chainbreakdown`;
+        routeFilePath += `/charts/protocols/${protocolFilter}-${keyFilter}`;
+        if (route === 'chart-chain-breakdown') routeFilePath += `chain-breakdown`;
       } else {
         // chart total
-        routeFilePath += `/charts/total${keyFilter}`;
-        if (route === 'chart-chain-breakdown') routeFilePath += `chainbreakdown`;
-        else if (route === 'chart-protocol-breakdown') routeFilePath += `protocolbreakdown`;
+        routeFilePath += `/charts/total-${keyFilter}`;
+        if (route === 'chart-chain-breakdown') routeFilePath += `chain-breakdown`;
+        else if (route === 'chart-protocol-breakdown') routeFilePath += `protocol-breakdown`;
       }
       const data = await readRouteData(routeFilePath);
       if (!data) return errorResponse(res, 'Request data not found');

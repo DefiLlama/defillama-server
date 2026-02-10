@@ -42,11 +42,12 @@ async function storeDefiCoins() {
       try {
         const adapterFn = typeof b === "function" ? b : b[adapterKey];
         const results = await withTimeout(timeout, adapterFn(timestamp));
-        const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
-        );
-        const withCgUpdates = await processRedirectsToStaleCoinGeckoKeys(resultsWithoutDuplicates);
-        const ddbWriteResult = await batchWriteWithAlerts(withCgUpdates, true,);
+        const allResults = results.flat().filter((c: any) => c.symbol != null || c.SK != 0);
+        // Extract stale CG writes BEFORE filterWritesWithLowConfidence, which would
+        // drop them since the existing redirect entry has higher confidence (0.99)
+        const { staleCgWrites, remaining } = await processRedirectsToStaleCoinGeckoKeys(allResults);
+        const filtered = await filterWritesWithLowConfidence(remaining);
+        const ddbWriteResult = await batchWriteWithAlerts([...filtered, ...staleCgWrites], true,);
         console.log(`[DDB] Wrote ${ddbWriteResult?.writeCount} entries for ${adapterKey}`);
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);

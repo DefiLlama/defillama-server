@@ -420,8 +420,10 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
  * @param items - Array of write items
  * @returns Processed array of write items
  */
-export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promise<any[]> {
-  if (items.length === 0) return items;
+export async function processRedirectsToStaleCoinGeckoKeys(
+  items: any[]
+): Promise<{ staleCgWrites: any[], remaining: any[] }> {
+  if (items.length === 0) return { staleCgWrites: [], remaining: items };
 
   // Get unique PKs to fetch redirects
   const uniquePKs = [...new Set(items.map(item => item.PK))];
@@ -449,7 +451,7 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
   // If no redirects to CoinGecko, return items unchanged
   const coingeckoRedirects = Object.values(redirectMap).filter(r => r.startsWith('coingecko#'));
   if (coingeckoRedirects.length === 0) {
-    return items;
+    return { staleCgWrites: [], remaining: items };
   }
 
   // Extract unique CoinGecko IDs and check if they're active in parallel
@@ -486,9 +488,9 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
     });
   }
 
-  // Process items
-  const processedItems: any[] = [];
-  const itemsToSkip = new Set<number>();
+  // Process items: separate stale CG writes from remaining items
+  const staleCgWrites: any[] = [];
+  const remaining: any[] = [];
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
@@ -506,8 +508,7 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
 
           // For SK=0 writes, create both time series and current entries for CG listing
           if (item.SK === 0) {
-            // Create time series entry (SK=timestamp) for CG listing
-            processedItems.push({
+            staleCgWrites.push({
               SK: item.timestamp,
               PK: redirect,
               price: item.price,
@@ -515,8 +516,7 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
               confidence: Math.min(item.confidence, 0.98)
             });
 
-            // Create current entry (SK=0) for CG listing
-            processedItems.push({
+            staleCgWrites.push({
               SK: 0,
               PK: redirect,
               price: item.price,
@@ -527,17 +527,13 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
               confidence: Math.min(item.confidence, 0.98)
             });
 
-            // Skip the original item (since it redirects to the CG listing)
-            itemsToSkip.add(i);
             console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, updating CG listing directly)`);
             continue;
           } else if (item.SK !== 0) {
-            // For time series entries, just redirect to the CG listing
-            processedItems.push({
+            staleCgWrites.push({
               ...item,
               PK: redirect,
             });
-            itemsToSkip.add(i);
             console.log(`[Stale CG Redirect] ${item.PK} -> ${redirect} (CG key is stale, time series)`);
             continue;
           }
@@ -545,13 +541,10 @@ export async function processRedirectsToStaleCoinGeckoKeys(items: any[]): Promis
       }
     }
 
-    // Keep the original item if not skipped
-    if (!itemsToSkip.has(i)) {
-      processedItems.push(item);
-    }
+    remaining.push(item);
   }
 
-  return processedItems;
+  return { staleCgWrites, remaining };
 }
 
 export async function batchWriteWithAlerts(

@@ -247,10 +247,11 @@ export async function upsertHourlySlicesForProtocol({ adapterType, id, slices }:
     tbl: slice.tbl ?? null,
     tblc: slice.tblc ?? null,
     timeS: slice.timeS ?? getHourlyTimeS(slice.timestamp),
+    updatedat: Date.now(),
   }))
 
   await Tables.DIMENSIONS_HOURLY_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc'],
+    updateOnDuplicate: ['timestamp', 'data', 'bl', 'blc', 'tb', 'tbl', 'tblc', 'updatedat'],
   })
 
   const tokenSlices = slices.filter(s => s.tb)

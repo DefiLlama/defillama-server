@@ -10465,6 +10465,7 @@ const data5: Protocol[] = [
     twitter: "01Exchange",
     dimensions: {
       "open-interest": "01-xyz",
+      derivatives: "01-xyz",
     },
   },
 ];

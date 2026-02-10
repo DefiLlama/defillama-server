@@ -10625,9 +10625,10 @@ const data5: Protocol[] = [
     twitter: "SupernovaDEX",
     parentProtocol: "parent#supernova",
     listedAt: 1770743742,
-    dimensions: {
-      dexs: "supernova",
-    },
+    // dimensions: {
+    //   dexs: "supernova",
+    //   fees: "supernova",
+    // },
   },
   {
     id: "7382",
@@ -10647,9 +10648,10 @@ const data5: Protocol[] = [
     twitter: "SupernovaDEX",
     parentProtocol: "parent#supernova",
     listedAt: 1770743747,
-    dimensions: {
-      dexs: "supernova-CL",
-    },
+    // dimensions: {
+    //   dexs: "supernova-CL",
+    //   fees: "supernova-CL",
+    // },
   },
 ];
 export default data5;

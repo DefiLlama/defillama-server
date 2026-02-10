@@ -10446,5 +10446,26 @@ const data5: Protocol[] = [
     twitter: "avon_xyz",
     listedAt: 1770701684,
   },
+  {
+    id: "7373",
+    name: "01 Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://01.xyz/ref/019c475c-7cd7-70aa-909a-48db25273752",
+    referralUrl: "https://01.xyz/ref/019c475c-7cd7-70aa-909a-48db25273752",
+    description: "Perpetual futures with structured strategies and multichain deposits",
+    chain: "N1",
+    logo: `${baseIconsUrl}/01-exchange.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["N1"],
+    module: "dummy.js",
+    twitter: "01Exchange",
+    dimensions: {
+      "open-interest": "01-xyz",
+    },
+  },
 ];
 export default data5;

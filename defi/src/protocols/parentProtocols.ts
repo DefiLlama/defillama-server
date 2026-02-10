@@ -7941,7 +7941,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://rabby.io/",
     description: "Rabby is a wallet for Ethereum and all EVM chains By DeBank",
     logo: `${baseIconsUrl}/rabby.jpg`,
-    gecko_id: "rabby",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Rabby_io",

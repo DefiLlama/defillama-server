@@ -183,6 +183,9 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.OPEN_INTEREST]: [
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,
+    ],
+    [AdapterType.NORMALIZED_VOLUME]: [
+        AdaptorRecordType.dailyActiveLiquidity,
     ]
 }
 

@@ -6,10 +6,12 @@ import * as sdk from "@defillama/sdk";
 import { endpointMap, runInChunks } from "../../l2/utils";
 import axios from "axios";
 
+export type WalletEntry = { id: string; assets: string[] };
+
 // Fetch balances for Solana
 export async function fetchSolana(
   timestamp: number,
-  wallets: { [wallet: string]: { id: string; assets: string[] } },
+  wallets: WalletEntry[],
   tokenToProjectMap: { [token: string]: string },
   excludedAmounts: { [id: string]: { [chain: string]: BigNumber } }
 ) {
@@ -18,8 +20,8 @@ export async function fetchSolana(
   if (timestamp != 0) throw new Error("Solana Active Mcap cannot be refilled");
 
   const tokensAndAccounts: any[] = [];
-  Object.keys(wallets).forEach((account: string) => {
-    wallets[account].assets.forEach((token: string) => {
+  wallets.forEach(({ id: account, assets }) => {
+    assets.forEach((token: string) => {
       tokensAndAccounts.push([token, account]);
     });
   });
@@ -66,15 +68,15 @@ export async function fetchSolana(
 export async function fetchEvm(
   timestamp: number,
   chain: string,
-  wallets: { [wallet: string]: { id: string; assets: string[] } },
+  wallets: WalletEntry[],
   tokenToProjectMap: { [token: string]: string },
   excludedAmounts: { [id: string]: { [chain: string]: BigNumber } }
 ) {
   const api = new sdk.ChainApi({ chain, timestamp: timestamp == 0 ? undefined : timestamp });
   const calls: any[] = [];
-  Object.keys(wallets).forEach((params: string) => {
-    wallets[params].assets.forEach((target: string) => {
-      calls.push({ target, params });
+  wallets.forEach(({ id: wallet, assets }) => {
+    assets.forEach((target: string) => {
+      calls.push({ target, params: wallet });
     });
   });
 

@@ -3333,8 +3333,8 @@ const data2: Protocol[] = [
       },
     ],
     dimensions: {
-      derivatives: "01-exchange",
-      "open-interest": "01-xyz",
+   //   derivatives: "01-exchange",
+   //   "open-interest": "01-xyz", old product, keep the open interest on the enw listing id 7373
     },
   },
   {

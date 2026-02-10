@@ -10,6 +10,7 @@ export interface IChainMetadata {
 	perps?: boolean
 	openInterest?: boolean
 	normalizedVolume?: boolean
+	activeLiquidity?: boolean
 	dexAggregators?: boolean
 	optionsPremiumVolume?: boolean
 	optionsNotionalVolume?: boolean
@@ -41,6 +42,7 @@ export interface IProtocolMetadata {
 	perps?: boolean
 	openInterest?: boolean
 	normalizedVolume?: boolean
+	activeLiquidity?: boolean
 	dexAggregators?: boolean
 	optionsPremiumVolume?: boolean
 	optionsNotionalVolume?: boolean

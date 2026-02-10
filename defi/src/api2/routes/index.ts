@@ -8,7 +8,7 @@ import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getTweetStats } from "../../twitter/db";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { chainNameToIdMap, chainKeyToChainLabelMap, chainLabelsToKeyMap } from "../../utils/normalizeChain";
+import { chainNameToIdMap, chainKeyToChainLabelMap, chainLabelsToKeyMap, getChainLabelFromKey } from "../../utils/normalizeChain";
 import { getR2 } from "../../utils/r2";
 import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
@@ -158,6 +158,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/oracle", ew(getOraclesRoutes('chart-total')))
   router.get("/v2/chart/oracle/protocol-breakdown", ew(getOraclesRoutes('chart-protocol-breakdown')))
   router.get("/v2/chart/oracle/chain-breakdown", ew(getOraclesRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/oracle/protocol/:protocol", ew(getOraclesRoutes('chart-total')))
+  router.get("/v2/chart/oracle/protocol/:protocol/chain-breakdown", ew(getOraclesRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/oracle/chain/:chain", ew(getOraclesRoutes('chart-total')))
+  router.get("/v2/chart/oracle/chain/:chain/protocol-breakdown", ew(getOraclesRoutes('chart-protocol-breakdown')))
 
   // v2 - dimensions
 
@@ -655,6 +659,9 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
 
 export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-protocol-breakdown' | 'chart-chain-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const chainFilter = req.path_parameters.chain ? getChainLabelFromKey(decodeURIComponent(req.path_parameters.chain)) : null;
+    const protocolFilter = req.path_parameters.protocol ? decodeURIComponent(req.path_parameters.protocol) : null;
+    
     const data = await readRouteData('oracles');
     
     if (!data)
@@ -677,20 +684,46 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
       const itemByTimestamps: Record<number, any> = {}
       
       if (route === 'chart-total' || route === 'chart-protocol-breakdown') {
-        for (const [timestamp, oracles] of Object.entries(data.chart)) {
-          const ts = Number(timestamp);
-          const os = oracles as any;
-          
-          for (const [oracle, keys] of Object.entries(os)) {
-            for (const [itemKey, itemValue] of Object.entries(keys as any)) {
-              if (keyFilter === itemKey || keyFilter === 'all') {
-                if (route === 'chart-total') {
-                  itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
-                  itemByTimestamps[ts] += Number(itemValue);
-                } else {
-                  itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-                  itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
-                  itemByTimestamps[ts][oracle] += Number(itemValue);
+        if (chainFilter !== null) {
+          for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
+            const ts = Number(timestamp);
+            const os = oracles as any;
+            
+            for (const [oracle, chains] of Object.entries(os)) {
+              for (const [itemKey, itemValue] of Object.entries(chains as any)) {
+                let [chain, key] = itemKey.split('-');
+                if (key === undefined) key = 'tvl';
+                if (chain === chainFilter) {
+                  if (route === 'chart-total') {
+                    itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
+                    itemByTimestamps[ts] += Number(itemValue);
+                  } else {
+                    itemByTimestamps[ts] = itemByTimestamps[ts] || {};
+                    itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
+                    itemByTimestamps[ts][oracle] += Number(itemValue);
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          for (const [timestamp, oracles] of Object.entries(data.chart)) {
+            const ts = Number(timestamp);
+            const os = oracles as any;
+            
+            for (const [oracle, keys] of Object.entries(os)) {
+              for (const [itemKey, itemValue] of Object.entries(keys as any)) {
+                if (keyFilter === itemKey || keyFilter === 'all') {
+                  if (route === 'chart-total') {
+                    if (protocolFilter === null || protocolFilter === oracle) {
+                      itemByTimestamps[ts] = itemByTimestamps[ts] || 0;
+                      itemByTimestamps[ts] += Number(itemValue);
+                    }
+                  } else {
+                    itemByTimestamps[ts] = itemByTimestamps[ts] || {};
+                    itemByTimestamps[ts][oracle] = itemByTimestamps[ts][oracle] || 0;
+                    itemByTimestamps[ts][oracle] += Number(itemValue);
+                  }
                 }
               }
             }
@@ -701,14 +734,16 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
           const ts = Number(timestamp);
           const os = oracles as any;
           
-          for (const chains of Object.values(os)) {
+          for (const [oracle, chains] of Object.entries(os)) {
             for (const [itemKey, itemValue] of Object.entries(chains as any)) {
               let [chain, key] = itemKey.split('-');
               if (key === undefined) key = 'tvl';
               if (keyFilter === key || keyFilter === 'all') {
-                itemByTimestamps[ts] = itemByTimestamps[ts] || {};
-                itemByTimestamps[ts][chain] = itemByTimestamps[ts][chain] || 0;
-                itemByTimestamps[ts][chain] += Number(itemValue);
+                if (protocolFilter === null || protocolFilter === oracle) {
+                  itemByTimestamps[ts] = itemByTimestamps[ts] || {};
+                  itemByTimestamps[ts][chain] = itemByTimestamps[ts][chain] || 0;
+                  itemByTimestamps[ts][chain] += Number(itemValue);
+                }
               }
             }
           }
@@ -717,7 +752,14 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
       
       responseData = [];
       for (const [timestamp, items] of Object.entries(itemByTimestamps)) {
-        responseData.push([Number(timestamp), route === 'chart-total' ? Number(items) : items]);
+        if (route === 'chart-total') {
+          responseData.push([Number(timestamp), Number(items)]);
+        } else {
+          responseData.push({
+            timestamp: Number(timestamp),
+            ...items,
+          });
+        }
       }
     }
     

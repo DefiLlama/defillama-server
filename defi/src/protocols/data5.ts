@@ -8208,7 +8208,8 @@ const data5: Protocol[] = [
     name: "Prism DEX",
     address: null,
     symbol: "-",
-    url: "https://www.prismfi.cc/",
+    url: "https://prismfi.cc?ref=L9VP4U2Z",
+    referralUrl: "https://prismfi.cc?ref=L9VP4U2Z",
     description:
       "Uniswap V3 fork on MegaETH providing concentrated liquidity and efficient trading.",
     chain: "MegaETH",

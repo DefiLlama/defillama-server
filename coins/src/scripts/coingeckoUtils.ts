@@ -185,6 +185,18 @@ export async function getSymbolAndDecimals(
           decimals: await ethApi.call({ target: tokenAddress, abi: "erc20:decimals" }),
         };
       } else { return; }
+    case 'algorand':
+      try {
+        const { asset: { params: algoParams } } = await fetch(
+          `https://mainnet-api.algonode.cloud/v2/assets/${tokenAddress}`,
+        ).then((r) => r.json()) as any;
+        return {
+          symbol: algoParams['unit-name'] ?? algoParams.name ?? coingeckoSymbol.toUpperCase(),
+          decimals: algoParams.decimals,
+        };
+      } catch (e) {
+        return;
+      }
   }
 
 

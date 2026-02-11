@@ -234,7 +234,7 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(hasTvl ? { tvl: true } : {}),
+          ...(hasTvl ? { tvl: true, inflows: true } : {}),
           ...(hasBorrowed ? { borrowed: true } : {}),
         };
       }

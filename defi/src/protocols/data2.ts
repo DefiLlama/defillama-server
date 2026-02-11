@@ -21599,7 +21599,7 @@ const data2: Protocol[] = [
     name: "MahaLend",
     address: null,
     symbol: "-",
-    url: "http://mahalend.com",
+    url: "https://maha.xyz/",
     description: "MahaLend is a lending protocol that allows you to leverage DeFi yields with ARTH.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mahalend.png`,

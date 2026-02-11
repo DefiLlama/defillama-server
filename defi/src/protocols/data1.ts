@@ -5122,6 +5122,9 @@ const data: Protocol[] = [
     audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"],
     github: ["OlympusDAO"],
+    dimensions: {
+      fees: "olympus-dao"
+    },
     hallmarks: [
       ['2021-03-24', 'Olympus Launch'],
       ['2021-10-19', 'OHM v2 Migration begins'],

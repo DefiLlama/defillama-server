@@ -7544,13 +7544,13 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#international-meme-fund",
     name: "International Meme Fund",
-    url: "https://internationalmeme.fund",
+    url: "https://imf.bz/",
     description: "International Meme Fund.",
     logo: `${baseIconsUrl}/international-meme-fund.png`,
     gecko_id: "international-meme-fund",
     cmcId: null,
     chains: [],
-    twitter: "intlmemefund",
+    twitter: "imfcrypto",
     github: ["International-Meme-Fund"],
   },
   {
@@ -8097,7 +8097,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#babydogecoin",
     name: "BabyDogeCoin",
-    url: "https://babydogeswap.com",
+    url: "https://swap.babydoge.com/",
     description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap.",
     logo: `${baseIconsUrl}/babydoge.jpg`,
     gecko_id: "baby-doge-coin",

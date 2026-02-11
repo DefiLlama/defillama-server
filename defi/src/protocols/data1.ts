@@ -8281,7 +8281,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "NFTX",
     address: "0x87d73e916d7057945c9bcd8cdd94e42a6f47f776",
     symbol: "NFTX",
-    url: "https://nftx.org",
+    url: "https://nftx.io",
     description: "NFTX is a platform for making ERC20 tokens that are backed by NFT collectibles.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/nftx.jpg`,

@@ -3415,9 +3415,10 @@ const data3_0: Protocol[] = [
     chains: ["EOS EVM"],
     forkedFromIds: ["2197"],
     module: "noahark/index.js",
-    twitter: "Noah_DeFi",
+    twitter: " ",// suspended account
     audit_links: ["https://skynet.certik.com/projects/noah-swap"],
     listedAt: 1681749464,
+    deadUrl: true,
     dimensions: {
       fees: "noah-swap",
       dexs: "noah-swap"
@@ -4775,7 +4776,7 @@ const data3_0: Protocol[] = [
     name: "DebtDAO",
     address: null,
     symbol: "-",
-    url: "https://debtdao.finance/#/mainnet/market",
+    url: "https://debtdao.finance/#/mainnet/market", //deadUrl
     description:
       "An open, permissionless, onchain marketplace for DAOs and DeFi protocols to borrow from future cash flows for the first time ever.",
     chain: "Ethereum",
@@ -4789,6 +4790,7 @@ const data3_0: Protocol[] = [
     twitter: "debtdao",
     listedAt: 1682951215,
     github: ["debtdao"],
+    deadUrl: true
   },
   {
     id: "2919",
@@ -5586,7 +5588,7 @@ const data3_0: Protocol[] = [
     name: "AirSwap",
     address: "0x27054b13b1b798b345b591a4d22e6562d47ea75a",
     symbol: "AST",
-    url: "https://www.airswap.io",
+    url: "https://www.airswap.xyz/",
     description:
       "AirSwap is an open-source community that powers the original peer-to-peer DEX: efficient swaps with no slippage and no counter-party risk.",
     chain: "Ethereum",
@@ -6217,7 +6219,7 @@ const data3_0: Protocol[] = [
     name: "Stream Finance",
     address: null,
     symbol: "-",
-    url: "https://streamprotocol.money",
+    url: "https://streamprotocol.money",// deadUrl
     description:
       "Stream offers exposure to market making opportunities and delta neutral strategies via decentralized strategies. In exchange for using this software, users may pay up to 10% in performance fees and Stream may keep more if it outperforms predicted APY. These strategies focus primarily on DEX and DeFi only trades. However in the event of reaching over capacity, Stream reserves the right to work with third parties such as major market makers to earn yield for users. If these positions are entered into there will be an announcement and it will be visible in the transparency dashboard.",
     chain: "Ethereum",
@@ -6232,6 +6234,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/zenith-security/reports/blob/main/reports/Zenith%20Audit%20Report%20-%20Stream%20Protocol.pdf"],
     listedAt: 1684246278,
     deadFrom: "2025-11-04",
+    deadUrl: true
   },
   {
     id: "2985",
@@ -9276,7 +9279,7 @@ const data3_0: Protocol[] = [
     category: "NFT Marketplace",
     chains: ["Arbitrum"],
     module: "dummy.js",
-    twitter: "tryfriendtech",
+    twitter: "friendtech",
     dimensions: {
       fees: "stealcam"
     }
@@ -9656,7 +9659,7 @@ const data3_0: Protocol[] = [
     name: "Primal",
     address: "0xcb5327ed4649548e0d73e70b633cdfd99af6da87",
     symbol: "PRIMAL",
-    url: "https://www.getprimal.com/app",
+    url: "https://www.getprimal.com/app",//deadurl
     description:
       "PRIMAL is the 1st athlete fan token project with integrated Move2Earn. Represented by sports stars with millions of fans.",
     chain: "Binance",
@@ -9668,6 +9671,7 @@ const data3_0: Protocol[] = [
     chains: ["Binance"],
     module: "dummy.js", // need
     twitter: "enterprimal",
+    deadUrl: true
   },
   {
     id: "3143",
@@ -12453,7 +12457,7 @@ const data3_0: Protocol[] = [
     name: "Solid World",
     address: null,
     symbol: "-",
-    url: "https://www.solid.world",
+    url: "https://www.solid.world",// deadUrl
     description: "Solid World is a commodities trading platform that makes climate financing liquid and transparent.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/solid-world.jpg`,
@@ -12467,6 +12471,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/Dedaub/audits/tree/main/Solid%20World"],
     github: ["solid-world"],
     listedAt: 1689931379,
+    deadUrl: true,
   },
   {
     id: "3268",
@@ -16744,7 +16749,7 @@ const data3_1: Protocol[] = [
     name: "Tutellus",
     address: "polygon:0x12a34A6759c871C4C1E8A0A42CFc97e4D7Aaf68d",
     symbol: "TUT",
-    url: "https://tutellus.io",
+    url: "https://tutellus.com/",
     description: "El protocolo de los crypto builders",
     chain: "Polygon",
     logo: `${baseIconsUrl}/tutellus.jpg`,
@@ -21577,7 +21582,7 @@ const data3_1: Protocol[] = [
     name: "Slingshot",
     address: null,
     symbol: "-",
-    url: "https://slingshot.finance",
+    url: "https://slingshot.app/",
     description: "Say goodbye to CeFi. Swap over 50k cryptocurrencies at the best prices with 0% swap fees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/slingshot.jpg`,
@@ -22008,7 +22013,7 @@ const data3_1: Protocol[] = [
     name: "CyberConnect",
     address: "0x14778860e937f509e651192a90589de711fb88a9",
     symbol: "CYBER",
-    url: "https://cyberconnect.me",
+    url: "https://cyber.co/",
     description: "CyberConnect is web3's earliest and biggest decentralized social network.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cyberconnect.jpg`,
@@ -24765,7 +24770,7 @@ const data3_1: Protocol[] = [
     name: "Sailing Protocol",
     address: null,
     symbol: "-",
-    url: "https://sailingprotocol.org",
+    url: "https://sailing.global/",
     description: "Sailing Protocol brings traditional stocks onchain.",
     chain: "Kava",
     logo: `${baseIconsUrl}/sailing-protocol.png`,
@@ -25911,7 +25916,7 @@ const data3_1: Protocol[] = [
     name: "Arcane Dex",
     address: "0x2391b8147caef113787972abbdaf77f4bae0cf22",
     symbol: "ARC",
-    url: "https://arcanedex.com",
+    url: "https://www.arcane.finance/",
     description: `Dexs Aggregator on arbitrum network.`,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/arcane-dex.jpg`,
@@ -27251,7 +27256,7 @@ const data3_1: Protocol[] = [
     name: "Gracy Staking",
     address: "0x7C95e7AD2B349dc2f82d0f1117a44B561fA2699a",
     symbol: "GRACY",
-    url: "https://staking.gracy.io/",
+    url: "https://www.gracy.ai/en",
     description:
       "Gracy is launching GRACY Staking system, where token holders will be incentivized to deposit their tokens and be rewarded for participating in stabilizing token price to activate the Gracy platform.Staking rewards will be paid out from the predefined reward pool, and the exact amount of reward will be jointly determined by the Gracy team and the community through snapshot voting",
     chain: "Ethereum",
@@ -28205,7 +28210,7 @@ const data3_1: Protocol[] = [
     name: "BracketX",
     address: null,
     symbol: "-",
-    url: "https://app.bracketx.fi/",
+    url: "https://app.bracket.fi/",
     description: "Simple range-bound products to make money in any volatility condition",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/bracketx.png`,
@@ -30184,7 +30189,7 @@ const data3_1: Protocol[] = [
     name: "Xenwave",
     address: "bitnet:0x738f255b9d3386e49e1c4392a9c7d850c6c7c86d",
     symbol: "STRAT",
-    url: "https://xenwave.com",
+    url: "https://xenwave.com",// deadUrl
     description:
       "Xenwave is the all-powerful app where you can unleash your creativity, productivity, and socialize on the Web 3.0",
     chain: "Bitnet",
@@ -30199,6 +30204,7 @@ const data3_1: Protocol[] = [
     twitter: "RestratagemTech",
     github: ["Restratagem"],
     listedAt: 1706367520,
+    deadUrl: true,
   },
   {
     id: "4074",
@@ -31940,7 +31946,7 @@ const data3_1: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "stWEMIX.e",
-    url: "https://wemixonkroma.xyz",
+    url: "https://wemixonkroma.xyz",// deadUrl
     description: "Liquid Staking Service: Offers liquid staking for WEMIX.e tokens on the Kroma network.",
     chain: "Kroma",
     logo: `${baseIconsUrl}/wemix-on-kroma.jpg`,
@@ -31952,6 +31958,7 @@ const data3_1: Protocol[] = [
     module: "wemix-on-kroma/index.js",
     twitter: "kroma_network",
     listedAt: 1708354998,
+    deadUrl: true,
   },
   {
     id: "4146",
@@ -37879,7 +37886,7 @@ const data3_2: Protocol[] = [
     name: "Thorchain Lending",
     address: null,
     symbol: "-",
-    url: "https://linktr.ee/thorchain",
+    url: "https://thorchain.org/",
     description: `THORChain Lending provides USD-denominated loans against native assets as collateral, with no interest or expiry`,
     chain: "Thorchain",
     logo: `${baseIconsUrl}/thorchain-lending.png`,
@@ -40238,7 +40245,7 @@ const data3_2: Protocol[] = [
     name: "Helix Markets",
     address: null,
     symbol: "-",
-    url: "https://www.helixmarkets.io/",
+    url: "https://helixapp.com/",
     description:
       "Bridging Web2 speed and Web3 security with a hybrid multi-chain orderbook exchange for seamless, secure trading.",
     chain: "ICP",
@@ -43468,7 +43475,7 @@ const data3_2: Protocol[] = [
     name: "Sailing Portfolios",
     address: null,
     symbol: "-",
-    url: "https://sailingprotocol.org/",
+    url: "https://sailing.global/",
     description:
       "Sailing Portfolios enable depositing assets into bots that ensure your assets track your specified investment strategy according to your rules and target prices.",
     chain: "Kava",
@@ -48351,7 +48358,7 @@ const data3_3: Protocol[] = [
     name: "International Meme Fund V1",
     address: "0x05be1d4c307c19450a6fd7ce7307ce72a3829a60",
     symbol: "IMF",
-    url: "https://internationalmeme.fund",
+    url: "https://imf.bz/",
     description: "International Meme Fund",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/international-meme-fund-v1.jpg`,
@@ -48361,7 +48368,7 @@ const data3_3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "imf-money/index.js",
-    twitter: "intlmemefund",
+    twitter: "imfcrypto",
     parentProtocol: "parent#international-meme-fund",
     listedAt: 1721214362,
   },

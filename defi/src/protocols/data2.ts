@@ -2308,7 +2308,7 @@ const data2: Protocol[] = [
     name: "WhaleEx",
     address: "eos:whaleextoken",
     symbol: "WAL",
-    url: "https://www.whaleex.com/",
+    url: "https://www.whaleex.com/",// deadUrl
     description:
       "WhaleEx is world's first exchange to implement multi-signature smart contract for decentralized asset custody.",
     chain: "EOS",
@@ -2321,6 +2321,7 @@ const data2: Protocol[] = [
     module: "whaleex/index.js",
     twitter: "WhaleExchange",
     listedAt: 1646137364,
+    deadUrl: true,
   },
   {
     id: "1486",
@@ -3491,7 +3492,7 @@ const data2: Protocol[] = [
     name: "CityCoins",
     address: null,
     symbol: "-",
-    url: "https://www.citycoins.co",
+    url: "https://minecitycoins.com/",
     description:
       "CityCoins gives communities the power to improve their cities, while providing crypto rewards to individual contributors and city governments alike. Each city has their own coin, starting with Miami and MiamiCoin (MIA).",
     chain: "Stacks",
@@ -13138,7 +13139,7 @@ const data2: Protocol[] = [
     name: "Canto Dex",
     address: null,
     symbol: "-",
-    url: "https://app.slingshot.finance/swap/CANTO",
+    url: "https://slingshot.app/",
     description: "Dex on canto blockchain",
     chain: "Canto",
     logo: `${baseIconsUrl}/canto-dex.jpg`,
@@ -17288,7 +17289,7 @@ const data2: Protocol[] = [
     name: "BabyDogeSwap",
     address: "bsc:0xc748673057861a797275CD8A068AbB95A902e8de",
     symbol: "BabyDoge",
-    url: "https://babydogeswap.com",
+    url: "https://swap.babydoge.com/",
     description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap",
     chain: "Binance",
     logo: `${baseIconsUrl}/babydogeswap.jpg`,

@@ -19466,7 +19466,7 @@ const data4: Protocol[] = [
     name: "International Meme Fund V2",
     address: "0x05be1d4c307c19450a6fd7ce7307ce72a3829a60",
     symbol: "IMF",
-    url: "https://internationalmeme.fund",
+    url: "https://imf.bz/",
     description: "International Meme Fund",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/international-meme-fund-v2.jpg`,
@@ -19476,7 +19476,7 @@ const data4: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     module: "imf-money-v2/index.js",
-    twitter: "intlmemefund",
+    twitter: "imfcrypto",
     parentProtocol: "parent#international-meme-fund",
     oraclesBreakdown: [
       {
@@ -26909,7 +26909,7 @@ const data4: Protocol[] = [
     name: "BabyDoge Algebra",
     address: "bsc:0xc748673057861a797275CD8A068AbB95A902e8de",
     symbol: "BabyDoge",
-    url: "https://babydogeswap.com",
+    url: "https://swap.babydoge.com/",
     description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap.",
     chain: "Binance",
     logo: `${baseIconsUrl}/babydoge-algebra.jpg`,

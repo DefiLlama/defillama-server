@@ -13857,7 +13857,7 @@
     },
     "So11111111111111111111111111111111111111112": {
       "to": "coingecko#fogo",
-      "decimals": 18,
+      "decimals": 9,
       "symbol": "FOGO"
     }
   },

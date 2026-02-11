@@ -3032,7 +3032,7 @@ const data3_0: Protocol[] = [
     name: "Stakehouse",
     address: "0x534D1F5E617e0f72A6b06a04Aa599839AF776A5e",
     symbol: "BSN",
-    url: "https://joinstakehouse.com/",
+    url: "https://blockswap.network/",
     description:
       "Join a liquid staking network or create your own. Always know which validator your ETH is staked in. Fungible tokens with unique yield",
     chain: "Ethereum",
@@ -4536,7 +4536,7 @@ const data3_0: Protocol[] = [
     name: "Chronos V1",
     address: "arbitrum:0x15b2fb8f08E4Ac1Ce019EADAe02eE92AeDF06851",
     symbol: "CHR",
-    url: "https://app.chronos.exchange/",
+    url: "https://app.chronos.exchange/",// deadUrl
     description:
       "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
     chain: "Arbitrum",
@@ -4554,6 +4554,7 @@ const data3_0: Protocol[] = [
     ],
     parentProtocol: "parent#chronos",
     listedAt: 1682633327,
+    deadUrl: true,
     dimensions: {
       fees: "chronos",
       dexs: "chronos"
@@ -8954,7 +8955,7 @@ const data3_0: Protocol[] = [
     name: "Pawnfi APE Staking",
     address: null,
     symbol: "-",
-    url: "https://www.polarise.org/",
+    url: "https://app.polarise.org/",
     description:
       "When $APE holders stake through Pawnfi, their $APE is directly deposited into the official Horizen Labs contract. A key advantage of staking with Pawnfi is the automated compounding of returns",
     chain: "Ethereum",
@@ -8975,7 +8976,7 @@ const data3_0: Protocol[] = [
     name: "Pawnfi Lending",
     address: null,
     symbol: "-",
-    url: "https://www.polarise.org/",
+    url: "https://app.polarise.org/",
     description:
       "The Pawnfi Lending Market is a decentralized, cross-margin market that enables the supplying and borrowing of different tokens from liquidity pools, and earning interest on assets supplied",
     chain: "Ethereum",
@@ -12664,7 +12665,7 @@ const data3_0: Protocol[] = [
     name: "dexSWAP",
     address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
     symbol: "GDEX",
-    url: "https://app.dexfinance.com/swap",
+    url: "https://dexfi.com/",
     description: "Bringing the world tools to optimize and simplify DeFi investing.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/dexswap.png`,
@@ -14091,7 +14092,7 @@ const data3_0: Protocol[] = [
     name: "Chronos V2",
     address: "arbitrum:0x15b2fb8f08E4Ac1Ce019EADAe02eE92AeDF06851",
     symbol: "CHR",
-    url: "https://app.chronos.exchange/",
+    url: "https://app.chronos.exchange/",// deadUrl
     description:
       "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
     chain: "Arbitrum",
@@ -14106,6 +14107,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#chronos",
     listedAt: 1691087952,
+    deadUrl: true,
     dimensions: {
       dexs: "chronos-v2"
     }
@@ -18053,7 +18055,7 @@ const data3_1: Protocol[] = [
     name: "w3bank",
     address: "pego:0xCe721D6C56c628A5eBde4783abb9D70d2053AAb9",
     symbol: "W3K",
-    url: "https://w3bank.finance",
+    url: "https://w3bank.finance",// deadUrl
     description:
       "W3BANK is a decentralized lending protocol built on the PEGO Network where users can deposit, withdraw, borrow, and repay loan.",
     chain: "Pego",
@@ -18069,6 +18071,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://w3bank.finance/audit/W3BANK_Audit_Report_en.pdf"],
     parentProtocol: "parent#w3-foundation",
     listedAt: 1694613903,
+    deadUrl: true,
   },
   {
     id: "3523",
@@ -25390,7 +25393,7 @@ const data3_1: Protocol[] = [
     name: "Hot Cross",
     address: "0x4297394c20800e8a38a619a243e9bbe7681ff24e",
     symbol: "HOTCROSS",
-    url: "https://app.hotcross.com",
+    url: "https://app.hotcross.com",// deadUrl
     description: "Multi-Chain Infra & Web3 Playground",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hot-cross.jpg`,
@@ -25401,6 +25404,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum", "Binance"],
     module: "hotcross/index.js",
     twitter: "hotcrosscom",
+    deadUrl: true,
   },
   {
     id: "3861",
@@ -32952,7 +32956,7 @@ const data3_2: Protocol[] = [
     name: "RealT RMM Marketplace V2",
     address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
     symbol: "REG",
-    url: "RealTPlatform",
+    url: "http://realt.co/",
     description:
       "RMM V3, building on Aave V3, is a specialized platform for lending and borrowing that leverages RealTokens - tokens tied to real estate assets - as collateral. Users can use these RealTokens to borrow stablecoins, merging real estate investment with the DeFi space. This innovative approach offers a streamlined way for property investors to maintain liquidity and leverage their investments in the digital finance realm.",
     chain: "xDai",
@@ -46914,7 +46918,7 @@ const data3_3: Protocol[] = [
     name: "DexFinance ETF",
     address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
     symbol: "GDEX",
-    url: "https://www.dexfinance.com/dexETF",
+    url: "https://dexfi.com/",
     description:
       "DexFinance ETF auto-balances portfolios with every mint or burn, optimizing gains by buying dips and selling highs. It offers diversified crypto exposure and reduces single-token risk",
     chain: "Arbitrum",
@@ -48532,7 +48536,7 @@ const data3_3: Protocol[] = [
     name: "dexVAULTS",
     address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
     symbol: "GDEX",
-    url: "https://www.dexfinance.com/vaults",
+    url: "https://dexfi.com/",
     description:
       "dexVAULTS is the modern way to manage yield farm investments. It empowers investors by incorporating advanced trading strategies employed by experienced investors",
     chain: "Arbitrum",
@@ -57803,7 +57807,7 @@ const data3_3: Protocol[] = [
     name: "HeadStarter",
     address: "hedera:0.0.968069",
     symbol: "HST",
-    url: "https://headstarter.org/",
+    url: "https://app.headstarter.org/",
     description:
       "Hedera-focused Web3 launchpad and crowdfunding platform with acceleration, incubation, and grants programs",
     chain: "Hedera",
@@ -58609,7 +58613,7 @@ const data3_3: Protocol[] = [
     name: "Ora Protocol",
     address: "0xe5018913f2fdf33971864804ddb5fca25c539032",
     symbol: "OLM",
-    url: "https://oraprotocol.fi",
+    url: "https://www.ora.io/",
     description: "Stake, Contribute, Shape the Future. Help secure the future of decentralized AI inference and be part of a community shaping the AI landscape.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ora-protocol.jpg`,

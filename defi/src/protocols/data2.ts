@@ -9779,7 +9779,7 @@ const data2: Protocol[] = [
     name: "Interest Protocol",
     address: "0x2a54ba2964c8cd459dc568853f79813a60761b58",
     symbol: "USDI",
-    url: "https://interestprotocol.io",
+    url: "https://interestprotocol.io/#/",
     description:
       "Interest Protocol is a borrow/lend protocol that is highly capital-efficient thanks to its unique combination of fractional reserves and over-collateralization. Depositors may mint USDi, which is a stablecoin pegged 1-1 with USDC that automatically pays interest to holders via rebasing.",
     chain: "Ethereum",
@@ -10102,7 +10102,7 @@ const data2: Protocol[] = [
     name: "Stipend",
     address: "kava:0x2de4BA963636beDdE79ea7cc42796315E27f44ac",
     symbol: "PAY",
-    url: "https://governordao.org",
+    url: "https://governordao.org",// deadUrl
     description:
       'Governor DAO presents Stipend - a gamified, PVP staking app designed to facilitate Universal Basic Income. Stipend utilizes anti-whale mechanics, giving smaller depositors larger share of earnings. Stipend leverages Governor DAO Proof-of-Existence to protect against sybil vulnerabilities that otherwise discredit any "anti-whale" games.',
     chain: "Kava",
@@ -10116,6 +10116,7 @@ const data2: Protocol[] = [
     twitter: "Governor_DAO",
     listedAt: 1655839104,
     github: ["Stipend-Developer"],
+    deadUrl: true,
   },
   {
     id: "1845",
@@ -12215,7 +12216,7 @@ const data2: Protocol[] = [
     name: "Lago Bridge",
     address: null,
     symbol: "-",
-    url: "https://www.lago.finance/",
+    url: "https://www.lago.finance/",// deadUrl
     description:
       "The Lago Bridge is the first bridge built on the Kadena blockchain. It is bi-directional and supports wrapping ERC-20 tokens to Kadena.",
     chain: "Ethereum",
@@ -12228,6 +12229,7 @@ const data2: Protocol[] = [
     module: "lagobridge/index.js",
     twitter: "lagofinance",
     listedAt: 1659126091,
+    deadUrl: true,
   },
   {
     id: "1942",
@@ -14017,7 +14019,7 @@ const data2: Protocol[] = [
     name: "RCPswap",
     address: null,
     symbol: "-",
-    url: "https://rcpswap.com/#/swap",
+    url: "https://rcpswap.com/#/swap",// deadUrl
     description: "The First Reddit Community Points Swap on Arbitrum Nova.",
     chain: "Arbitrum Nova",
     logo: `${baseIconsUrl}/rcpswap.png`,
@@ -14030,6 +14032,7 @@ const data2: Protocol[] = [
     module: "rcpswap/index.js",
     twitter: "MoonsSwap",
     listedAt: 1661508169,
+    deadUrl: true,
   },
   {
     id: "2025",
@@ -15922,7 +15925,7 @@ const data2: Protocol[] = [
     name: "W3swap",
     address: null,
     symbol: "-",
-    url: "https://w3swap.finance/",
+    url: "https://w3swap.finance/",// deadUrl
     description: "W3Swap DEX on Pego Network",
     chain: "Binance",
     logo: `${baseIconsUrl}/w3swap.jpg`,
@@ -15936,6 +15939,7 @@ const data2: Protocol[] = [
     twitter: "w3_foundation",
     parentProtocol: "parent#w3-foundation",
     listedAt: 1663772859,
+    deadUrl: true,
   },
   {
     id: "2109",
@@ -17414,19 +17418,18 @@ const data2: Protocol[] = [
     name: "DexFinance BSC",
     address: "bsc:0xf4914E6D97a75f014AcFcF4072f11be5CfFc4cA6",
     symbol: "dexSHARE",
-    url: "https://www.dexfinance.com",
+    url: "https://dexfi.com/",
     description:
       "Dex Finance is a decentralized organization providing an ecosystem of sustainable investment vehicles. Our protocols are designed to empower users by simplifying the advanced trading strategies employed by experienced investors. Core products consist of the Dex Money Market, dexIRA, dexETF and dexVAULTS+ offering multi-layered investment portfolio management with the world's most advanced yield optimizer.",
     chain: "Binance",
     logo: `${baseIconsUrl}/dexfinance-bsc.png`,
-    audits: "2",
+    audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Binance"],
     module: "dexfinance/index.js",
     twitter: "DexFinance",
-    audit_links: ["https://www.dexfinance.com/audits"],
     parentProtocol: "parent#dexfinance",
     listedAt: 1665530503,
   },

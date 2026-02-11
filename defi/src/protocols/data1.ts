@@ -657,6 +657,7 @@ const data: Protocol[] = [
     module: "hbtc.js",
     twitter: "HBTC_official",
     audit_links: ["https://www.htokens.finance/static/pdf/audit-report-en.pdf"],
+    deadFrom: "2025-03-31",
   },
   {
     id: "133",
@@ -1907,7 +1908,7 @@ const data: Protocol[] = [
     name: "Governor DAO",
     address: "0x515d7E9D75E2b76DB60F8a051Cd890eBa23286Bc",
     symbol: "GDAO",
-    url: "https://governordao.org/",
+    url: "https://governordao.org/",// deadUrl
     description:
       "All projects can benefit from decentralized governance. Governor DAO aids new and existing projects alike in transitioning to a DAO via Governance-as-a-Service.",
     chain: "Ethereum",
@@ -1920,6 +1921,7 @@ const data: Protocol[] = [
     module: "gdao.js",
     twitter: "Governor_DAO",
     governanceID: ["snapshot:gdao.eth"],
+    deadUrl: true,
   },
   {
     id: "193",
@@ -4763,7 +4765,7 @@ const data: Protocol[] = [
     name: "MochiSwap",
     address: "bsc:0x055dab90880613a556a5ae2903b2682f8a5b8d27",
     symbol: "MOCHI",
-    url: "https://mochiswap.io",
+    url: "https://mochiswap.io",// deadUrl
     description:
       'MochiSwap is a Decentralized DEX exchange and supports users around the world offering decentralized asset swapping and liquidity pools, security is high concern and the DAO is under control with a "Gnosis Safe” multisignature wallet. MochiSwap currently supports Harmony ONE, Binance Smart Chain along with Incentivized liquidity pools for yield mining.',
     chain: "Binance",
@@ -4776,6 +4778,7 @@ const data: Protocol[] = [
     module: "mochiswap/index.js",
     forkedFromIds: ["2197"],
     twitter: "mochiswap",
+    deadUrl: true,
   },
   {
     id: "326",
@@ -17000,7 +17003,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "KwikSwap",
     address: "0x286c0936c7eaf6651099ab5dab9ee5a6cb5d229d",
     symbol: "KWIK",
-    url: "https://home.kwikswap.org",
+    url: "https://home.kwikswap.org",// deadUrl
     description:
       "Kwikswap is a revolutionary Multi Cross Chain Swap Protocol with Layer 2 Scaling powered by Ethereum, Polkadot, Shiden, Astar (formerly Plasm), Reef Chain, BSC & Acala Network. Use Kwikswap for Swapping, Market Creation, Provide Liquidity & Staking",
     chain: "Ethereum",
@@ -17015,6 +17018,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     listedAt: 1637684497,
     github: ["kwikswap"],
+    deadUrl: true,
   },
   {
     id: "897",
@@ -17327,7 +17331,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "SumSwap",
     address: "0x043c308bb8a5ae96d0093444be7f56459f1340b1",
     symbol: "SUM",
-    url: "https://www.sumswap.org/#/",
+    url: "https://www.sumswap.org/#/",// deadUrl
     description:
       "The Sumswap unites decentralized protocols whose synergy enables the most lucrative, fastest and protected operations in the DeFi space.",
     chain: "Ethereum",
@@ -17342,6 +17346,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/sumswap"],
     forkedFromIds: ["2197"],
     listedAt: 1637813174,
+    deadUrl: true,
   },
   {
     id: "912",
@@ -24742,7 +24747,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "CrossChain Bridge",
     address: "0x92868a5255c628da08f550a858a802f5351c5223",
     symbol: "BRIDGE",
-    url: "https://crosschainbridge.org",
+    url: "https://app.crosschainbridge.org/",
     description:
       "The Cross-Chain Bridge v2.0 has an ambitious goal: It should be possible to move any token to almost any network. The Cross-Chain Bridge will attract and incentivize all players to participate in the ecosystem. Similar to projects launching tokens on a DEX (e.g. Uniswap), communities and/or creators will be able to add their own token via the Cross-Chain Bridge intuitively and permissionless, benefiting from greater accessibility and security. Meanwhile, yield farmers AND projects will be incentivized to provide liquidity with fee-participation and yield farming.",
     chain: "Ethereum",
@@ -27057,7 +27062,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "AstroSwap",
     address: "bsc:0x72eb7ca07399ec402c5b7aa6a65752b6a1dc0c27",
     symbol: "ASTRO",
-    url: "https://www.astroswap.app",
+    url: "https://www.astroswap.app",// deadUrl
     description:
       "AstroSwap is built on the Velas blockchain, which has been clocked at 75,000 transactions per second. Additionally, AstroSwap is supported by WagyuSwap, the leading decentralized exchange on Velas. Despite AstroSwap being on the Velas blockchain, AstroSwap will have your favourite Cardano tokens with integrated bridge to maximise the user experience.",
     chain: "Velas",
@@ -27072,6 +27077,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFromIds: ["2197"],
     listedAt: 1644230266,
+    deadUrl: true,
     dimensions: {
       dexs: "astroswap"
     }

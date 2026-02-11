@@ -13545,7 +13545,7 @@ const data4: Protocol[] = [
     name: "ZAMM",
     address: null,
     symbol: "-",
-    url: "https://coin.nani.ooo",
+    url: "https://www.zamm.finance/swap",
     description: "Simplest Swapping with Best LP UX.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zamm.jpg`,

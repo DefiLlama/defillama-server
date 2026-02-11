@@ -2423,7 +2423,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dexfinance",
     name: "DexFinance",
-    url: "https://app.dexfinance.com/swap",
+    url: "https://dexfi.com/",
     description:
       "Bringing the world tools to optimize and simplify DeFi investing.",
     logo: `${baseIconsUrl}/dexfinance.png`,
@@ -2541,7 +2541,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#chronos",
     name: "Chronos",
-    url: "https://chronos.exchange/",
+    url: "https://chronos.exchange/",// deadUrl
     description:
       "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
     logo: `${baseIconsUrl}/chronos.png`,
@@ -2550,6 +2550,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ChronosFi_",
     github: ["ChronosEx"],
+    deadUrl: true,
   },
   {
     id: "parent#echodex",
@@ -2856,7 +2857,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#w3-foundation",
     name: "W3 Foundation",
-    url: "https://w3swap.link/",
+    url: "https://w3swap.link/",// deadUrl
     description:
       "W3 Foundation: A decentralized organization built on the W3 community, dedicated to the sustainable development of the W3 ecosystem. ",
     logo: `${baseIconsUrl}/w3-foundation.jpg`,
@@ -2864,6 +2865,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "w3_foundation",
+    deadUrl: true,
   },
   {
     id: "parent#kinetix",

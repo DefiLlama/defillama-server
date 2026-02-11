@@ -464,8 +464,34 @@ async function run() {
     const debugString = 'write /forks'
     console.time(debugString)
     const data = await getForksInternal(processProtocolsOptions)
+
+    // keep old cache file for old api routes
     await storeRouteData('forks', data)
+    
+    // write breakdown forks cache files for v2 routes
+    await writeForksBreakdown(data);
+    
     console.timeEnd(debugString)
+    
+    async function writeForksBreakdown(data: any) {
+      // overview data without charts
+      await storeRouteData('forks-v2/overview', data.forks)
+      
+      // key => timestamp => protocol => value
+      const chartByKeys: Record<string, Record<number, Record<string, number>>> = {};
+      for (const [timestamp, forks] of Object.entries(data.chart)) {
+        for (const [protocol, items] of Object.entries(forks as any)) {
+          for (const [key, value] of Object.entries(items as any)) {
+            ensureItemValueBreakdown(chartByKeys, `${key}`, Number(timestamp), protocol, Number(value));
+            ensureItemValueBreakdown(chartByKeys, 'all', Number(timestamp), protocol, Number(value));
+          }
+        }
+      }
+      
+      for (const [key, valueByTimestamp] of Object.entries(chartByKeys)) {
+        await storeRouteData(`forks-v2/charts/${key}`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+    }
   }
 
   async function writeCategories() {

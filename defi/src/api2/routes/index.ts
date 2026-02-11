@@ -162,6 +162,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/oracle/protocol/:protocol/chain-breakdown", ew(getOraclesRoutes('chart-chain-breakdown')))
   router.get("/v2/chart/oracle/chain/:chain", ew(getOraclesRoutes('chart-total')))
   router.get("/v2/chart/oracle/chain/:chain/protocol-breakdown", ew(getOraclesRoutes('chart-protocol-breakdown')))
+  
+  // v2 - fork
+  router.get("/v2/metrics/fork", ew(getForksRoutes('overview')))
+  router.get("/v2/chart/fork", ew(getForksRoutes('chart-total')))
 
   // v2 - dimensions
 
@@ -682,6 +686,26 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
         if (route === 'chart-chain-breakdown') routeFilePath += `chain-breakdown`;
         else if (route === 'chart-protocol-breakdown') routeFilePath += `protocol-breakdown`;
       }
+      const data = await readRouteData(routeFilePath);
+      if (!data) return errorResponse(res, 'Request data not found');
+      return successResponse(res, data);
+    }
+  }
+}
+
+export function getForksRoutes(route: 'overview' | 'chart-total') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
+    
+    let routeFilePath = `forks-v2`;
+    if (route === 'overview') {
+      routeFilePath += `/overview`;
+      const data = await readRouteData(routeFilePath);
+      if (!data) return errorResponse(res, 'Request data not found');
+      return successResponse(res, data);
+    } else {
+      // chart total
+      routeFilePath += `/charts/${keyFilter}`;
       const data = await readRouteData(routeFilePath);
       if (!data) return errorResponse(res, 'Request data not found');
       return successResponse(res, data);

@@ -3616,11 +3616,11 @@ const data5: Protocol[] = [
   },
   {
     id: "7049",
-    name: "Gate Perp DEX",
+    name: "Gate DEX",
     address: null,
     symbol: "-",
-    url: "https://www.gatesite.casa/web3/ref?code=nufLft0L",
-    referralUrl: "https://www.gatesite.casa/web3/ref?code=nufLft0L",
+    url: "https://www.gatedex.com/r/nufLft0L",
+    referralUrl: "https://www.gatedex.com/r/nufLft0L",
     description: "Perp DEX on Gate Layer.",
     chain: "GateLayer",
     logo: `${baseIconsUrl}/gate-perp-dex.jpg`,
@@ -3630,7 +3630,7 @@ const data5: Protocol[] = [
     category: "Derivatives",
     chains: ["GateLayer"],
     module: "dummy.js",
-    twitter: "GatePerpDEX",
+    twitter: "GateDEX",
     dimensions: {
       derivatives: "gate-perps",
     },

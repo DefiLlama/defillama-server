@@ -10226,6 +10226,7 @@ const data5: Protocol[] = [
     chains: ["Flare"],
     module: "sparkdex-stflr/index.js",
     twitter: "SparkDexAI",
+    parentProtocol: "parent#sparkdex",
     listedAt: 1770423577,
   },
   {

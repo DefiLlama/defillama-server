@@ -41,7 +41,7 @@ const data2: Protocol[] = [
     name: "Bright Union",
     address: "0xbeab712832112bd7664226db7cd025b153d3af55",
     symbol: "BRIGHT",
-    url: "https://brightunion.io",
+    url: "https://brightunion.io",// deadUrl
     description: "DeFi coverage aggregator",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bright-union.png`,
@@ -60,6 +60,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1644447080,
     github: ["Bright-Union"],
+    deadUrl: true,
   },
   {
     id: "1382",
@@ -1159,7 +1160,7 @@ const data2: Protocol[] = [
     name: "PegaSys V2",
     address: "syscoin:0xE18c200A70908c89fFA18C628fE1B83aC0065EA4",
     symbol: "PSYS",
-    url: "https://pegasys.finance",
+    url: "https://www.pegasys.fi/",
     description: "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
     chain: "Syscoin",
     logo: `${baseIconsUrl}/pegasys-v2.png`,
@@ -3728,7 +3729,7 @@ const data2: Protocol[] = [
     name: "METF Finance",
     address: "cronos:0xb8df27c687c6af9afe845a2afad2d01e199f4878",
     symbol: "METF",
-    url: "https://metf.finance/#/",
+    url: "https://metf.finance/#/",// deadUrl
     description:
       "MM ETF is the first decentralized ETF protocol that runs on METF token. The DTF term is thus coined by our team as the DEX Traded Fund, being the first of its kind.",
     chain: "Cronos",
@@ -3742,13 +3743,14 @@ const data2: Protocol[] = [
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
     listedAt: 1647390824,
+    deadUrl: true,
   },
   {
     id: "1551",
     name: "Kujira Orca",
     address: null,
     symbol: "KUJI",
-    url: "https://orca.kujira.app/",
+    url: "https://kujira.network/liquidate",
     description: "Public marketplace for liquidated collateral.",
     chain: "Terra",
     logo: `${baseIconsUrl}/kujira-orca.png`,
@@ -4847,7 +4849,7 @@ const data2: Protocol[] = [
     previousNames: ["Aada"],
     address: "cardano:asset1khk46tdfsknze9k84ae0ee0k2x8mcwhz93k70d",
     symbol: "AADA",
-    url: "https://aada.finance",
+    url: "https://aada.finance",// deadUrl
     description: "Open-source and decentralized Lending and Borrowing protocol.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/lenfi.png`,
@@ -4860,6 +4862,7 @@ const data2: Protocol[] = [
     twitter: "LenfiOfficial",
     listedAt: 1648841508,
     github: ["aadafinance"],
+    deadUrl: true,
   },
   {
     id: "1603",
@@ -11878,7 +11881,7 @@ const data2: Protocol[] = [
     name: "Midas Capital",
     address: null,
     symbol: "-",
-    url: "https://midascapital.xyz/",
+    url: "https://midascapital.xyz/",// deadUrl
     description: "Permissionless isolated lending pools for customizable creation of lending/borrowing markets.",
     chain: "Binance",
     logo: `${baseIconsUrl}/midas-capital.jpg`,
@@ -11893,6 +11896,7 @@ const data2: Protocol[] = [
     twitter: "MidasCapitalxyz",
     audit_links: ["https://medium.com/midas-capital/audit-with-zellic-29b63f1be25a"],
     listedAt: 1658754928,
+    deadUrl: true,
   },
   {
     id: "1926",
@@ -12144,7 +12148,7 @@ const data2: Protocol[] = [
     name: "MetalSwap",
     address: "0x3E5D9D8a63CC8a88748f229999CF59487e90721e",
     symbol: "XMT",
-    url: "https://metalswap.finance",
+    url: "https://app.metalswap.finance/",
     description:
       "MetalSwap is a decentralized platform that allows hedging swaps on financial markets with the aim of providing a coverage to those who work with commodities and an investment opportunity for those who contribute to increase the shared liquidity of the project.",
     chain: "Ethereum",
@@ -12736,7 +12740,7 @@ const data2: Protocol[] = [
     name: "MM Finance Polygon",
     address: "polygon:0x22a31bD4cB694433B6de19e0aCC2899E553e9481",
     symbol: "MMF",
-    url: "https://polymm.finance/",
+    url: "https://polymm.finance/",// deadUrl
     description: "Launchpad for the largest ecosystem on Cronos coming to Polygon!",
     chain: "Polygon",
     logo: `${baseIconsUrl}/mm-finance-polygon.png`,
@@ -12751,6 +12755,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/mmfinance"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1660328599,
+    deadUrl: true,
   },
   {
     id: "1967",
@@ -13575,7 +13580,7 @@ const data2: Protocol[] = [
     name: "MM Optimizer Polygon",
     address: "polygon:0x859a50979fdB2A2fD8Ba1AdCC66977C6f6b1CD5B",
     symbol: "MMO",
-    url: "https://vaults.polymm.finance/vault",
+    url: "https://vaults.polymm.finance/vault",// deadUrl
     description:
       "MM Optimizer aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of MM Finance, giving you the tastiest MMFs topped with MMOs.",
     chain: "Polygon",
@@ -13590,6 +13595,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["254"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1661152341,
+    deadUrl: true,
   },
   {
     id: "2005",
@@ -13796,7 +13802,7 @@ const data2: Protocol[] = [
     name: "MM Stableswap Polygon",
     address: null,
     symbol: "-",
-    url: "https://polymm.finance",
+    url: "https://polymm.finance",// deadUrl
     description: "MM Finance swap on Polygon network",
     chain: "Polygon",
     logo: `${baseIconsUrl}/mm-stableswap-polygon.jpg`,
@@ -13809,6 +13815,7 @@ const data2: Protocol[] = [
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
     listedAt: 1661361356,
+    deadUrl: true,
     dimensions: {
       fees: "mm-stableswap-polygon",
       dexs: "mm-stableswap-polygon"
@@ -14405,7 +14412,7 @@ const data2: Protocol[] = [
     name: "Dawn Star Finance",
     address: "polygon:0x095bc617b36ab227a379550633dfdcbf43f236f6",
     symbol: "DSF",
-    url: "https://dawnstar.finance",
+    url: "https://dawnstar.finance",// deadUrl
     description:
       "The First Algorithmic Stablecoin on Polygon backed by real yields & pegged to the price of 1 MMF via seigniorage.",
     chain: "Polygon",
@@ -14419,6 +14426,7 @@ const data2: Protocol[] = [
     module: "dawn-star-finance/index.js",
     twitter: "MMFcrypto",
     listedAt: 1661937384,
+    deadUrl: true,
   },
   {
     id: "2042",
@@ -14885,7 +14893,7 @@ const data2: Protocol[] = [
     name: "Madmex",
     address: null,
     symbol: "-",
-    url: "https://madmex.io/#/dashboard",
+    url: "https://madmex.io/#/dashboard",// deadUrl
     description: "GMX fork on polygon network",
     chain: "Polygon",
     logo: `${baseIconsUrl}/madmex.png`,
@@ -14899,6 +14907,7 @@ const data2: Protocol[] = [
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
     listedAt: 1662456710,
+    deadUrl: true,
   },
   {
     id: "2064",
@@ -18338,7 +18347,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "sTLOS",
-    url: "https://www.teloscan.io/staking",
+    url: "https://www.telos.net/",
     description:
       "sTLOS is the liquid staking protocol on the Telos EVM. This Protocol accounts for all Telos staked in the ERC4626 vault that issues sTLOS and delegates the received Telos to the native rewards staking program",
     chain: "Telos",
@@ -21431,7 +21440,7 @@ const data2: Protocol[] = [
     name: "X7 Finance",
     address: "0x70008f18fc58928dce982b0a69c2c21ff80dca54",
     symbol: "X7R",
-    url: "https://x7.finance",
+    url: "https://www.x7finance.org/",
     description:
       "X7 Finance. Leveraged Decentralized Exchange. Launch your project on Xchange with 10-1000x the initial liquidity into the Ethereum ecosystem where anyone can Swap, Borrow and Lend!. Trust no one. Trust code. Long live",
     chain: "Ethereum",
@@ -21560,7 +21569,7 @@ const data2: Protocol[] = [
     name: "RealT RMM Marketplace",
     address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
     symbol: "REG",
-    url: "https://rmm.realtoken.network/markets",
+    url: "https://realt.co/",
     description:
       "Based on the Aave protocol V2, Liquidity providers (Lenders) gain the ability to earn interest and generate passive income returns, while providing liquidity for Borrowers",
     chain: "xDai",
@@ -22189,7 +22198,7 @@ const data2: Protocol[] = [
     name: "Harbor Protocol",
     address: null,
     symbol: "-",
-    url: "https://app.harborprotocol.one/dashboard",
+    url: "https://app.harborprotocol.one/dashboard",// deadUrl
     description: "Interchain Stablecoin Protocol.",
     chain: "Comdex",
     logo: `${baseIconsUrl}/harbor-protocol.jpg`,
@@ -22202,6 +22211,7 @@ const data2: Protocol[] = [
     twitter: "Harbor_Protocol",
     listedAt: 1672065667,
     stablecoins: ["composite"],
+    deadUrl: true,
   },
   {
     id: "2389",
@@ -23303,7 +23313,7 @@ const data2: Protocol[] = [
     name: "FIN",
     address: null,
     symbol: "-",
-    url: "https://fin.kujira.app",
+    url: "https://kujira.network/spot/",
     description: "Decentralized, permissionless, on-chain order book style token exchange.",
     chain: "Kujira",
     logo: `${baseIconsUrl}/fin.png`,
@@ -23345,7 +23355,7 @@ const data2: Protocol[] = [
     name: "Bow",
     address: null,
     symbol: "-",
-    url: "https://bow.kujira.app",
+    url: "https://bow.kujira.network/",
     description: "Automated yield-generating public market making pools.",
     chain: "Kujira",
     logo: `${baseIconsUrl}/bow.png`,
@@ -23364,7 +23374,7 @@ const data2: Protocol[] = [
     name: "USK",
     address: null,
     symbol: "-",
-    url: "https://blue.kujira.app",
+    url: "https://kujira.network/dashboard",
     description: "Fully decentralised, overcollateralised stablecoin",
     chain: "Kujira",
     logo: `${baseIconsUrl}/usk.png`,
@@ -24574,7 +24584,7 @@ const data2: Protocol[] = [
     name: "Bankless",
     address: "0x2d94aa3e47d9d5024503ca8491fce9a2fb4da198",
     symbol: "BANK",
-    url: "https://www.bankless.community",
+    url: "https://www.bankless.com/",
     description: "Media and Social DAO Onboarding 1 billion people to crypto.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bankless.jpg`,
@@ -24632,7 +24642,7 @@ const data2: Protocol[] = [
     name: "PleasrDAO",
     address: null,
     symbol: "-",
-    url: "https://pleasr.house",
+    url: "https://pleasr.org/",
     description: "PleasrDAO is a collective of DeFi leaders, early NFT collectors and digital artists",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/pleasrdao.png`,
@@ -24919,7 +24929,7 @@ const data2: Protocol[] = [
     name: "ParaSpace Lending V1",
     address: null,
     symbol: "-",
-    url: "https://para.space",
+    url: "https://parallel.fi/",
     description:
       "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
     chain: "Ethereum",
@@ -24930,7 +24940,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "paraspace/index.js",
-    twitter: "ParaSpace_NFT",
+    twitter: "ParallelFi_HQ",
     oracles: ["Internal"],
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130,
@@ -25719,7 +25729,7 @@ const data2: Protocol[] = [
     name: "Lenen",
     address: "vision:VFt1YjfxwkZBYZ6wAr8g7x9KEc8pPWSLHw",
     symbol: "LEN",
-    url: "https://lenen.network/home",
+    url: "https://lenen.network/home",// deadUrl
     description: "A Decentralized Lending Platform. Supply, Borrow & Earn Anytime.",
     chain: "Vision",
     logo: `${baseIconsUrl}/lenen.png`,
@@ -25732,6 +25742,7 @@ const data2: Protocol[] = [
     twitter: "LenenProtocol",
     forkedFromIds: ["2088"],
     listedAt: 1676806751,
+    deadUrl: true,
   },
   {
     id: "2554",

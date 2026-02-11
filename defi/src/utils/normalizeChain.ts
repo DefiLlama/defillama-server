@@ -2638,7 +2638,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 4337,
     twitter: "MeritCircle_IO",
-    url: "https://meritcircle.io/",
+    url: "https://onbeam.com/",
   },
   "NOS": {
     geckoId: null,

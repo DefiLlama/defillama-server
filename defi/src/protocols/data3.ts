@@ -1182,7 +1182,7 @@ const data3_0: Protocol[] = [
     name: "MM Finance Arbitrum",
     address: "arbitrum:0x56b251d4b493ee3956E3f899D36b7290902D2326",
     symbol: "MMF",
-    url: "https://arbimm.finance",
+    url: "https://arbimm.finance",// deadUrl
     description: "The lowest fee dex on Arbitrum and first to incorporate NFT into its DeFI ecosystem seamlessly.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/mm-finance-arbitrum.png`,
@@ -1196,6 +1196,7 @@ const data3_0: Protocol[] = [
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
     listedAt: 1680257948,
+    deadUrl: true,
     dimensions: {
       dexs: "mm-finance-arbitrum"
     }
@@ -3512,7 +3513,7 @@ const data3_0: Protocol[] = [
     name: "MM Finance Arbitrum V3",
     address: null,
     symbol: "-",
-    url: "https://arbimm.finance",
+    url: "https://arbimm.finance",// deadUrl
     description: "Uniswap V3 fork on Arbitrum",
     chain: "Binance",
     logo: `${baseIconsUrl}/mm-finance-arbitrum-v3.jpg`,
@@ -3526,6 +3527,7 @@ const data3_0: Protocol[] = [
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
     listedAt: 1681840766,
+    deadUrl: true,
   },
   {
     id: "2861",
@@ -3637,7 +3639,7 @@ const data3_0: Protocol[] = [
     name: "Ghost",
     address: null,
     symbol: "-",
-    url: "https://ghost.kujira.app",
+    url: "https://kujira.network/borrow",
     description: "Ghost is the native lending and borrowing market on the Kujira blockchain",
     chain: "Kujira",
     logo: `${baseIconsUrl}/ghost.png`,
@@ -17512,7 +17514,7 @@ const data3_1: Protocol[] = [
     name: "Liquis",
     address: "0xD82fd4D6D62f89A1E50b1db69AD19932314aa408",
     symbol: "LIQ",
-    url: "https://www.liquis.app/",
+    url: "https://www.liquis.app/",// deadUrl
     description:
       "Liquis is a liquid governance wrapper for Bunni Pro, a liquidity management solution on top of Uniswap v3. With Liquis, users gain access to max-locked veLIT with secondary liquidity, subsidizing its opportunity cost",
     chain: "Ethereum",
@@ -17531,6 +17533,7 @@ const data3_1: Protocol[] = [
       "https://github.com/liquisfi/security/blob/main/audits/Liquis_Audit_Report_by_WatchPug_prelaunch.pdf",
     ],
     listedAt: 1694123371,
+    deadUrl: true,
     dimensions: {
       fees: "liquis"
     }
@@ -24471,7 +24474,7 @@ const data3_1: Protocol[] = [
     name: "Stryke CLAMM",
     address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
     symbol: "DPX",
-    url: "https://www.dopex.io",
+    url: "https://www.stryke.xyz/en",
     description: "Stryke is a maximum liquidity and minimal exposure options protocol",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/stryke-clamm.jpg`,
@@ -25137,7 +25140,7 @@ const data3_1: Protocol[] = [
     name: "BackBone Labs",
     address: null,
     symbol: "-",
-    url: "https://backbonelabs.io",
+    url: "https://app.backbonelabs.io/",
     description: "NFTs and LSTs fused with NFT Communities",
     chain: "Terra2",
     logo: `${baseIconsUrl}/backbone-labs.png`,
@@ -25404,7 +25407,7 @@ const data3_1: Protocol[] = [
     name: "RSK Bridge",
     address: null,
     symbol: "-",
-    url: "https://tokenbridge.rsk.co",
+    url: "https://rootstock.io/",
     description: "RSK bridge with Ethereum. You can convert your tokens from RSK to Ethereum and viceversa.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/rsk-bridge.jpg`,
@@ -28614,7 +28617,7 @@ const data3_1: Protocol[] = [
     name: "ShimmerBridge",
     address: null,
     symbol: "-",
-    url: "https://shimmerbridge.org/bridge",
+    url: "https://shimmerbridge.org/bridge",// deadUrl
     description: "ShimmerBridge is the official LayerZero Wrapped Asset Bridge on ShimmerEVM",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/shimmerbridge.png`,
@@ -30884,10 +30887,10 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4103",
-    name: "Prime Staked ETH",
+    name: "Prime Staked ETH",// migrated to YieldNest
     address: null,
     symbol: "-",
-    url: "https://www.primestaked.com/",
+    url: "https://app.primestaked.com/#/restake",
     assetToken: "primeETH",
     description:
       "PrimeStaked allows EigenLayer restakers to retain liquidity on their restaked assets and earn extra rewards",
@@ -32949,7 +32952,7 @@ const data3_2: Protocol[] = [
     name: "RealT RMM Marketplace V2",
     address: "xdai:0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
     symbol: "REG",
-    url: "https://rmm.realtoken.network/markets/",
+    url: "RealTPlatform",
     description:
       "RMM V3, building on Aave V3, is a specialized platform for lending and borrowing that leverages RealTokens - tokens tied to real estate assets - as collateral. Users can use these RealTokens to borrow stablecoins, merging real estate investment with the DeFi space. This innovative approach offers a streamlined way for property investors to maintain liquidity and leverage their investments in the digital finance realm.",
     chain: "xDai",
@@ -36225,7 +36228,7 @@ const data3_2: Protocol[] = [
     name: "Velar AMM",
     address: "stacks:SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.velar-token",
     symbol: "VELAR",
-    url: "https://www.velar.co",
+    url: "https://velar.com/",
     description: `DeFi Liquidity Protocol on Bitcoin`,
     chain: "Stacks",
     logo: `${baseIconsUrl}/velar-amm.jpg`,
@@ -48890,7 +48893,7 @@ const data3_3: Protocol[] = [
     name: "Convergence Fi",
     address: null,
     symbol: "-",
-    url: "https://app.cvg.finance",
+    url: "https://app.cvg.finance",//deadurl
     description: "Boosting yields across the CurveFinance ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/convergence-fi.jpg`,
@@ -48902,6 +48905,7 @@ const data3_3: Protocol[] = [
     module: "convergence-fi/index.js",
     twitter: "Convergence_fi",
     listedAt: 1721828538,
+    deadUrl: true
   },
   {
     id: "4919",

@@ -14153,7 +14153,7 @@ const data4: Protocol[] = [
     name: "GT3",
     address: "polygon:0x06737d16ad9c1e41aa44fee2a952b26723b20673",
     symbol: "GT3",
-    url: "https://gt3.finance/",
+    url: "https://dapp.gt3.finance/",
     description: `A new AMM based 100% designed for mobile and based on veTokens.`,
     chain: "Polygon",
     logo: `${baseIconsUrl}/gt3.jpg`,
@@ -15899,7 +15899,7 @@ const data4: Protocol[] = [
     name: "Jiko",
     address: null,
     symbol: "-",
-    url: "https://app.beraji.com/",
+    url: "https://app.jiko.finance/",
     description:
       "JIKO is a yield optimizer powering a PvP idle card game. With single-staked pools, we maximize yields via Proof of Liquidity (PoL) on Berachain, making finance both fun and profitable",
     chain: "Berachain",
@@ -30149,7 +30149,7 @@ const data4: Protocol[] = [
     name: "Molecular",
     address: null,
     symbol: "-",
-    url: "https://molecular.finance/",
+    url: "https://molecular.finance/",// deadUrl
     description: "Molecular Protocol ($MOLE) is a modularized leveraged farming protocol that finances leveraged LP positions with organically raised bluechip assets to realize amplified yield.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/molecular.jpg`,
@@ -30161,7 +30161,8 @@ const data4: Protocol[] = [
     module: "molecular/index.js",
     twitter: "molecular_fi",
     audit_links: ["https://beosin.com/audits/Molecular-Protocol_202509161103.pdf"],
-    listedAt: 1761018029
+    listedAt: 1761018029,
+    deadUrl: true,
   },
   {
     id: "6889",

@@ -833,7 +833,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#kujira-protocol",
     name: "Kujira Protocol",
-    url: "https://kujira.app",
+    url: "https://kujira.network/",
     description:
       "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
     logo: `${baseIconsUrl}/kujira-protocol.png`,
@@ -2215,7 +2215,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#pegasys",
     name: "PegaSys",
-    url: "https://pegasys.finance",
+    url: "https://www.pegasys.fi/",
     description:
       "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
     logo: `${baseIconsUrl}/pegasys.png`,

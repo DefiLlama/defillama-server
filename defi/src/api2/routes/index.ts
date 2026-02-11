@@ -669,6 +669,10 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
     
     const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
     
+    if (!AllowedProtocolKeys.concat(AllowedTreasuryKeys).includes(keyFilter)) {
+      return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+    }
+    
     let routeFilePath = `oracles-v2`;
     if (route === 'overview') {
       routeFilePath += `/overview`;
@@ -698,6 +702,10 @@ export function getForksRoutes(route: 'overview' | 'chart-total') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
     const protocolFilter = req.path_parameters.protocol ? decodeURIComponent(req.path_parameters.protocol) : null;
     const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
+    
+    if (!AllowedProtocolKeys.concat(AllowedTreasuryKeys).includes(keyFilter)) {
+      return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+    }
     
     let routeFilePath = `forks-v2`;
     if (route === 'overview') {

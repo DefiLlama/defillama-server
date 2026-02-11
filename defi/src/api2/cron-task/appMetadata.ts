@@ -219,6 +219,7 @@ async function _storeAppMetadata() {
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,
+        inflows: hasTvl,
         ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),

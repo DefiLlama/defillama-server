@@ -3682,7 +3682,7 @@ const data3_0: Protocol[] = [
     name: "zkFox",
     address: "era:0xaAf72D359ABC19751aC01f52f33A820041903322",
     symbol: "ZKFOX",
-    url: "https://zkfox.io",
+    url: "https://zkfox.io",// deadUrl
     description:
       "zkFox is a leveraged income aggregator focusing on the DeFi ecology, built on zkSync. It is committed to building a complete ecological infrastructure of the public chain, allowing users to use leverage more conveniently to obtain higher returns.",
     chain: "zkSync Era",
@@ -3695,6 +3695,7 @@ const data3_0: Protocol[] = [
     module: "zkfox/index.js",
     twitter: "zk_zkfox",
     listedAt: 1682023939,
+    deadUrl: true,
   },
   {
     id: "2869",
@@ -23823,7 +23824,7 @@ const data3_1: Protocol[] = [
     name: "Hummus Weighted",
     address: null,
     symbol: "-",
-    url: "https://app.hummus.exchange/pool",
+    url: "https://app.hummus.exchange/pool",// deadUrl
     description: "Yield Pools on Metis Network",
     chain: "Metis",
     logo: `${baseIconsUrl}/hummus-weighted.jpg`,
@@ -23837,6 +23838,7 @@ const data3_1: Protocol[] = [
     twitter: "hummusdefi",
     parentProtocol: "parent#hummus-exchange",
     listedAt: 1699970029,
+    deadUrl: true,
   },
   {
     id: "3790",
@@ -27836,7 +27838,7 @@ const data3_1: Protocol[] = [
     name: "Sideswap",
     address: null,
     symbol: "-",
-    url: "https://sideswap.finance/#/swap",
+    url: "https://sideswap.finance/#/swap",// deadUrl
     description: "The leading dex and liquidity marketplace on Zkfair powered by ZK-RaaS.",
     chain: "Zkfair",
     logo: `${baseIconsUrl}/magma-finance.jpg`,
@@ -27849,6 +27851,7 @@ const data3_1: Protocol[] = [
     module: "sideswap-fi/index.js",
     twitter: "SideswapZK",
     listedAt: 1703778458,
+    deadUrl: true,
   },
   {
     id: "3971",
@@ -28531,7 +28534,7 @@ const data3_1: Protocol[] = [
     name: "DONASWAP V2",
     address: null,
     symbol: "-",
-    url: "https://donaswap.com",
+    url: "https://donaswap.com",// deadUrl
     description:
       "DONASWAP is the primary multichain dex for the Firechain Ecosystem which sprouted by the Donaswap Token",
     chain: "Ethereum",
@@ -28574,6 +28577,7 @@ const data3_1: Protocol[] = [
     module: "donaswap-v2/index.js",
     twitter: "0xdonaswap",
     listedAt: 1704837191,
+    deadUrl: true,
   },
   {
     id: "4003",
@@ -33612,7 +33616,7 @@ const data3_2: Protocol[] = [
     name: "Wand Protocol",
     address: null,
     symbol: "-",
-    url: "https://wand.fi",
+    url: "https://app.wandfi.io/",
     description:
       "Wand protocol offers stablecoins for low-risk stability and margin tokens for higher volatility, catering to diverse investment strategies through standardized, pooled assets",
     chain: "Blast",
@@ -33634,7 +33638,7 @@ const data3_2: Protocol[] = [
     name: "Roguex",
     address: null,
     symbol: "ROX",
-    url: "https://roguex.io/",
+    url: "https://roguex.ai/",
     description:
       "RogueX is an AMM designed to maximize the use of underutilized assets in traditional liquidity pools. We go beyond typical spot trading by integrating perpetual trading within these pools, creating a dynamic trading environment that enhances opportunities for users and fosters a sustainable ecosystem",
     chain: "Blast",
@@ -48207,7 +48211,7 @@ const data3_3: Protocol[] = [
     name: "Opal DeFi",
     address: "0x0447d3454b25935eed47f65b4bd22b9b23be326a",
     symbol: "GEM",
-    url: "https://opaldefi.xyz",
+    url: "https://opaldefi.xyz",// deadUrl
     description:
       "Opal is an Omnipool based decentralized liquidity manager. In the concept it’s the bridge between educated DeFi users and retail ETH/stable holders, the game theory equilibrium that broadens access to sophisticated on-chain farming strategies.",
     chain: "Ethereum",
@@ -48222,6 +48226,7 @@ const data3_3: Protocol[] = [
     oracles: ["Chainlink", "RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10996
     audit_links: ["https://jumpshare.com/s/WnQOF42DwpkItgn7NIB8", "https://jumpshare.com/s/0IQAiRfFU1g523SeqUUA"],
     listedAt: 1721123991,
+    deadUrl: true,
   },
   {
     id: "4887",

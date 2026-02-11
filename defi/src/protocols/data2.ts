@@ -7307,7 +7307,7 @@ const data2: Protocol[] = [
     name: "Hummus AMM",
     address: "metis:0x4aac94985cd83be30164dfe7e9af7c054d7d2121",
     symbol: "HUM",
-    url: "https://www.hummus.exchange",
+    url: "https://www.hummus.exchange",// deadUrl
     description:
       "The Hummus protocol is a single-side Automated Market Maker designed for exchanging stable cryptocurrencies on the Metis blockchain.",
     chain: "Metis",
@@ -7323,6 +7323,7 @@ const data2: Protocol[] = [
     twitter: "hummusdefi",
     parentProtocol: "parent#hummus-exchange",
     listedAt: 1651533290,
+    deadUrl: true,
     dimensions: {
       dexs: "hummus"
     }
@@ -10380,7 +10381,7 @@ const data2: Protocol[] = [
     name: "FATExFi",
     address: "polygon:0x4853365bC81f8270D902076892e13F27c27e7266",
     symbol: "FATE",
-    url: "https://fatex.io",
+    url: "https://fatex.io",// deadUrl
     description:
       "A payment protocol for FxD, a fiat & FX payments protocol & store-of-value reserve token that finishes what BTC started.",
     chain: "Polygon",
@@ -10394,6 +10395,7 @@ const data2: Protocol[] = [
     module: "fatex/index.js",
     twitter: "FATExDAO",
     listedAt: 1656337948,
+    deadUrl: true,
   },
   {
     id: "1858",
@@ -18723,7 +18725,7 @@ const data2: Protocol[] = [
     name: "Silo Protocol",
     address: "algorand:137594422",
     symbol: "HDL",
-    url: "https://www.silodefi.com",
+    url: "https://www.silodefi.com",// deadUrl
     description:
       "Silo picks up where TEAL leaves off, providing next-gen DeFi vaults and strategies for the Algorand ecosystem. The Silo Protocol is built on decentralized vaults as a core primitive. Decentralized vaults allow for permissionless, trustless access to strategy-based DeFi instruments.",
     chain: "Algorand",
@@ -18738,6 +18740,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/headline-design/silo-protocol/tree/main/smartContract_audits"],
     listedAt: 1666868708,
     governanceID: ["compound:ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61"],
+    deadUrl: true,
   },
   {
     id: "2230",
@@ -27858,7 +27861,7 @@ const data2: Protocol[] = [
     name: "CoreSwap",
     address: "0x8326321a7777Cd5D650c1da6A497f0D06633781e",
     symbol: "cSWAP",
-    url: "https://www.coreswap.io/",
+    url: "https://www.coreswap.io/",// deadUrl
     description:
       "coreswap.io is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
     chain: "CORE",
@@ -27872,6 +27875,7 @@ const data2: Protocol[] = [
     module: "coreswap/index.js",
     twitter: "CoreSwapFinance",
     listedAt: 1678365386,
+    deadUrl: true,
   },
   {
     id: "2650",

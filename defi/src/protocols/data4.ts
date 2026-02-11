@@ -496,7 +496,7 @@ const data4: Protocol[] = [
     name: "Aquadex",
     address: null,
     symbol: "-",
-    url: "https://aquadex.co/swap",
+    url: "https://aquadex.co/swap",// deadUrl
     description: "Decentralized exchange on Waterfall Network",
     chain: "Waterfall",
     logo: `${baseIconsUrl}/aquadex.jpg`,
@@ -510,6 +510,7 @@ const data4: Protocol[] = [
     twitter: "waterfall_dag",
     github: ["AquaDEX"],
     listedAt: 1736174541,
+    deadUrl: true,
   },
   {
     id: "5582",
@@ -5598,7 +5599,7 @@ const data4: Protocol[] = [
     name: "Ginseng Swap",
     address: null,
     symbol: "-",
-    url: "https://www.ginsengswap.org/",
+    url: "https://www.ginsengswap.org/",// deadUrl
     description: "Ginseng Swap is a concentrated liquidity stablecoin marketplace",
     chain: "Conflux",
     logo: `${baseIconsUrl}/ginseng-swap.png`,
@@ -5612,6 +5613,7 @@ const data4: Protocol[] = [
     twitter: "ginsengswap",
     audit_links: ["https://github.com/ginsengswap/ginsengswapaudit/tree/main/auditreports"],
     listedAt: 1739890021,
+    deadUrl: true,
     dimensions: {
       fees: "ginsengswap",
       dexs: "ginsengswap"
@@ -12716,7 +12718,7 @@ const data4: Protocol[] = [
     name: "Eden Finance",
     address: null,
     symbol: "-",
-    url: "https://www.eden-finance.xyz",
+    url: "https://edenfinance.org/",
     description:
       "Eden Finance combines yield-bearing stablecoins, decentralized lending, and AI risk management to create a more secure, efficient, and accessible DeFi ecosystem.",
     chain: "Asset Chain",

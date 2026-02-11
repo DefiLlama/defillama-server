@@ -3268,7 +3268,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hummus-exchange",
     name: "Hummus Exchange",
-    url: "https://www.hummus.exchange",
+    url: "https://www.hummus.exchange",// deadUrl
     description:
       "The Hummus protocol is a single-side Automated Market Maker designed for exchanging stable cryptocurrencies on the Metis blockchain.",
     logo: `${baseIconsUrl}/hummus-exchange.png`,
@@ -3276,6 +3276,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19625",
     chains: [],
     twitter: "hummusdefi",
+    deadUrl: true,
   },
   {
     id: "parent#voodoo-trade",

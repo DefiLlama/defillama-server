@@ -162,6 +162,11 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/chart/oracle/protocol/:protocol/chain-breakdown", ew(getOraclesRoutes('chart-chain-breakdown')))
   router.get("/v2/chart/oracle/chain/:chain", ew(getOraclesRoutes('chart-total')))
   router.get("/v2/chart/oracle/chain/:chain/protocol-breakdown", ew(getOraclesRoutes('chart-protocol-breakdown')))
+  
+  // v2 - fork
+  router.get("/v2/metrics/fork", ew(getForksRoutes('overview')))
+  router.get("/v2/chart/fork/protocol-breakdown", ew(getForksRoutes('chart-total')))
+  router.get("/v2/chart/fork/protocol/:protocol", ew(getForksRoutes('chart-total')))
 
   // v2 - dimensions
 
@@ -666,6 +671,10 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
     
     const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
     
+    if (!AllowedProtocolKeys.concat(AllowedTreasuryKeys).includes(keyFilter)) {
+      return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+    }
+    
     let routeFilePath = `oracles-v2`;
     if (route === 'overview') {
       routeFilePath += `/overview`;
@@ -688,6 +697,34 @@ export function getOraclesRoutes(route: 'overview' | 'chart-total' | 'chart-prot
       if (!data) return errorResponse(res, 'Request data not found');
       return successResponse(res, data);
     }
+  }
+}
+
+export function getForksRoutes(route: 'overview' | 'chart-total') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const protocolFilter = req.path_parameters.protocol ? decodeURIComponent(req.path_parameters.protocol) : null;
+    const keyFilter = req.query_parameters.key ? decodeURIComponent(req.query_parameters.key) : 'tvl';
+    
+    if (!AllowedProtocolKeys.concat(AllowedTreasuryKeys).includes(keyFilter)) {
+      return errorResponse(res, `Query key=${keyFilter} is not allowed`);
+    }
+    
+    let routeFilePath = `forks-v2`;
+    if (route === 'overview') {
+      routeFilePath += `/overview`;
+    } else {
+      if (protocolFilter) {
+        // chart protocol
+        routeFilePath += `/charts/protocols/${protocolFilter}-${keyFilter}`;
+      } else {
+        // chart total
+        routeFilePath += `/charts/total-${keyFilter}-protocol-breakdown`;
+      }
+    }
+    
+    const data = await readRouteData(routeFilePath);
+    if (!data) return errorResponse(res, 'Request data not found');
+    return successResponse(res, data);
   }
 }
 

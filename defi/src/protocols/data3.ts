@@ -36822,7 +36822,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.echelon.market/",
-    description: `Composable, Efficient & Secure Move Money Market.`,
+    description: `Move Money Market`,
     chain: "Aptos",
     logo: `${baseIconsUrl}/echelon-market.png`,
     audits: "2",

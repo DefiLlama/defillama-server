@@ -1985,7 +1985,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }],
     listedAt: 1737379687,
     dimensions: {
-      dexs: "metastable-musd"
+      // dexs: "metastable-musd", it's not a DEX, the adapter is tracking volume from stablecoin dex pools
     }
   },
   {

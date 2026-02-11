@@ -10337,7 +10337,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://neptunehub.app",
-    description: "Neptune Swap Aggregator is a DEX aggregator on Cronos that routes trades across multiple DEXs (VVS Finance, MM Finance, etc.) to find the best price. 0.35% protocol fee on swaps.",
+    description: "NeptuneHub is a DEX aggregator on Cronos that routes trades across multiple DEXs (VVS Finance, MM Finance, etc.) to find the best price. 0.35% protocol fee on swaps.",
     chain: "Cronos",
     logo: `${baseIconsUrl}/neptune-swap-aggregator.jpg`,
     audits: "0",

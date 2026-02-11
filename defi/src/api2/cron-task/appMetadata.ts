@@ -216,10 +216,11 @@ async function _storeAppMetadata() {
       const slugName: string = slug(protocol.name);
       const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
       const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
+      const hasInflows = (hasTvl && protocolInfo.misrepresentedToken) ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,
-        inflows: hasTvl,
+        inflows: hasInflows,
         ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
@@ -234,8 +235,9 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(hasTvl ? { tvl: true, inflows: true } : {}),
+          ...(hasTvl ? { tvl: true } : {}),
           ...(hasBorrowed ? { borrowed: true } : {}),
+          ...(hasInflows ? { inflows: true } : {}),
         };
       }
 

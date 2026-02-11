@@ -3876,6 +3876,11 @@
     }
   },
   "solana": {
+    "5aLhp9VnUEKcsdtkfsf2DUgpJfomx7GmYVny24dHUZoB": {
+      "decimals": "9",
+      "symbol": "XAUM",
+      "to": "coingecko#matrixdock-gold"
+    },
     "8qujzAXj2nz99CmeiCgPPc2JxEuDNYvPffzRomroJnee": {
       "decimals": "6",
       "symbol": "nALPHA",

@@ -586,6 +586,8 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
           for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
             let [chainFilter, keyFilter] = chainAndKey.split('-');
             
+            console.log(chainAndKey)
+            
             if (AllowedProtocolKeys.includes(chainFilter)) continue;
             if (!keyFilter) keyFilter = 'tvl';
             
@@ -604,12 +606,12 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
           }
           
           for (const [date, items] of Object.entries(itemByDates)) {
-            responseData.push([date, items]);
+            responseData.push([Number(date), items]);
           }
         } else if (dataType === 'protocol' && route === 'chart-token-breakdown') {
           const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
           for (const item of Object.values(protocolDataFull[tokenKey])) {
-            responseData.push([(item as any).date, (item as any).tokens]);
+            responseData.push([Number((item as any).date), (item as any).tokens]);
           }
         }
       } else if (dataType === 'treasury') {
@@ -648,7 +650,7 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
         }
         
         for (const [date, items] of Object.entries(itemByDates)) {
-          responseData.push([date, items]);
+          responseData.push([Number(date), items]);
         }
       }
     }

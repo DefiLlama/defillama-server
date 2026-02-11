@@ -5589,6 +5589,7 @@ export const chainCoingeckoIds = {
     twitter: "megaeth",
     url: "https://www.megaeth.com/",
     chainId: 4326,
+    stablecoins: ["megausd"],
   },
   "Quai": {
     geckoId: "quai-network",

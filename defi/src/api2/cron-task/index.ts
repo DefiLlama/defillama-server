@@ -479,17 +479,28 @@ async function run() {
       
       // key => timestamp => protocol => value
       const chartByKeys: Record<string, Record<number, Record<string, number>>> = {};
+      
+      // protocol => timestamp => value
+      const chartByProtocols: Record<string, Record<number, number>> = {};
+      
       for (const [timestamp, forks] of Object.entries(data.chart)) {
         for (const [protocol, items] of Object.entries(forks as any)) {
           for (const [key, value] of Object.entries(items as any)) {
-            ensureItemValueBreakdown(chartByKeys, `${key}`, Number(timestamp), protocol, Number(value));
-            ensureItemValueBreakdown(chartByKeys, 'all', Number(timestamp), protocol, Number(value));
+            ensureItemValue(chartByProtocols, `${protocol}-${key}`, Number(timestamp), Number(value));
+            ensureItemValue(chartByProtocols, `${protocol}-all`, Number(timestamp), Number(value));
+            
+            ensureItemValueBreakdown(chartByKeys, `total-${key}-protocol-breakdown`, Number(timestamp), protocol, Number(value));
+            ensureItemValueBreakdown(chartByKeys, 'total-all-protocol-breakdown', Number(timestamp), protocol, Number(value));
           }
         }
       }
       
       for (const [key, valueByTimestamp] of Object.entries(chartByKeys)) {
         await storeRouteData(`forks-v2/charts/${key}`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+
+      for (const [key, valueByTimestamp] of Object.entries(chartByProtocols)) {
+        await storeRouteData(`forks-v2/charts/protocols/${key}`, buildTimeseriesItemValue(valueByTimestamp));
       }
     }
   }

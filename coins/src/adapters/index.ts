@@ -63,6 +63,7 @@ export default {
   meanFinance: require("./yield/mean-finance"),
   misc4626: require("./yield/misc4626"),
   // spectra: require("./yield/misc4626"),
+  rage: require("./yield/rage"),
   balancer4626: require("./yield/balancer4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),

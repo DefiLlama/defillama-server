@@ -10333,7 +10333,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7367",
-    name: "Neptune Swap Aggregator",
+    name: "NeptuneHub",
     address: null,
     symbol: "-",
     url: "https://neptunehub.app",

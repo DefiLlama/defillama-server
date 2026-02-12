@@ -10751,7 +10751,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Alephium"],
-    module: "twyne/index.js",
+    module: "linx/index.js",
     twitter: "RiftsFinance",
     github: ["0xTwyne"],
     audit_links: ["https://github.com/InferenceAG/ReportPublications/blob/master/Inference%20AG%20-%20Linx%20on%20Alephium%20-%20v1.0.pdf"],

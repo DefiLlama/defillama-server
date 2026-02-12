@@ -56746,7 +56746,11 @@ const data3_3: Protocol[] = [
     twitter: "OriginProtocol",
     audit_links: ["https://docs.originprotocol.com/security-and-risk/audits"],
     parentProtocol: "parent#origin-defi",
-    listedAt: 1729847936
+    listedAt: 1729847936,
+    tokensExcludedFromParent: {
+      Ethereum: ["OETH"],
+      Sonic: ["OS"],
+    },
   },
   {
     id: "5281",

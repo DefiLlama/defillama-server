@@ -75,8 +75,6 @@ const config: any = {
   hyperliquid: {
     "0x876e7F2f30935118a654fc0E1f807aFc49EFe500":
       "0xe9c02ca07931f9670fa87217372b3c9aa5a8a934", // PUP
-    "0x067b0C72aa4C6Bd3BFEFfF443c536DCd6a25a9C8":
-      "0x006418DcD73f6Da03A667ad161cCB9B39CeEEa60", // HYBR
   },
 };
 

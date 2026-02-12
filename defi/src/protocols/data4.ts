@@ -18744,7 +18744,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Onchain Capital Allocator",
+    category: "Crypto Card Issuer",
     chains: ["Scroll"],
     module: "etherfi-cash-liquid/index.js",
     twitter: "ether_fi",

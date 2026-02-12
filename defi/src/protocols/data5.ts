@@ -10281,7 +10281,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Payments",
+    category: "Crypto Card Issuer",
     chains: ["xDai"],
     module: "dummy.js",
     twitter: "gnosispay",

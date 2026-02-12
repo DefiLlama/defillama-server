@@ -772,6 +772,7 @@ const data2: Protocol[] = [
     audit_links: ["https://mmfinance.gitbook.io/docs/audit"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1644884068,
+    deadUrl: true,
   },
   {
     id: "1414",
@@ -2158,6 +2159,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.edgeprotocol.io/overview/extras/security"],
     openSource: false,
     listedAt: 1645900975,
+    deadUrl: true,
   },
   {
     id: "1478",
@@ -3205,6 +3207,7 @@ const data2: Protocol[] = [
     audit_links: ["https://omniscia.io/vector-finance-core-protocol/"],
     listedAt: 1646854535,
     github: ["VectorFinance"],
+    deadUrl: true,
   },
   {
     id: "1526",
@@ -3308,6 +3311,7 @@ const data2: Protocol[] = [
     twitter: "ExcaliburDeFi",
     audit_links: ["https://paladinsec.co/projects/excalibur/"],
     listedAt: 1646949250,
+    deadUrl: true,
   },
   {
     id: "1531",
@@ -4373,6 +4377,7 @@ const data2: Protocol[] = [
     twitter: "HexaCapital",
     language: "Solidity++",
     listedAt: 1648148802,
+    deadUrl: true
   },
   {
     id: "1580",
@@ -6760,6 +6765,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1650988125,
     github: ["Tapera-Finance"],
+    deadUrl: true,
   },
   {
     id: "1690",
@@ -6805,6 +6811,7 @@ const data2: Protocol[] = [
       "https://github.com/Good-Ghosting/goodghosting-protocol-v2/tree/master/docs/audits",
     ],
     listedAt: 1650999421,
+    deadUrl: true,
   },
   {
     id: "1692",
@@ -8133,6 +8140,7 @@ const data2: Protocol[] = [
     twitter: "CashCatsBCH",
     audit_links: ["https://github.com/catsluck/catsluck/blob/main/audit/Catsluck_final-audit-report.pdf"],
     listedAt: 1652206255,
+    deadUrl: true,
   },
   {
     id: "1755",
@@ -8703,6 +8711,7 @@ const data2: Protocol[] = [
     module: "coslend/index.js",
     twitter: "coslend",
     listedAt: 1653409255,
+    deadUrl: true,
   },
   {
     id: "1781",
@@ -9841,6 +9850,7 @@ const data2: Protocol[] = [
     module: "vitcswap/index.js",
     twitter: "Vitamin_Coin",
     listedAt: 1655546864,
+    deadUrl: true
   },
   {
     id: "1832",
@@ -10271,7 +10281,7 @@ const data2: Protocol[] = [
     name: "Gardens DAO",
     address: null,
     symbol: "-",
-    url: "https://gardensdao.eth.limo/#/home",
+    url: "https://app.gardens.fund/",
     description:
       "Based on the 1hive model, Gardens is a framework for a new kind of DAO - a composable, sufficiently decentralized, and self-improving system, limited only by your community's collective imagination.",
     chain: "xDai",
@@ -12875,6 +12885,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["3"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1660493037,
+    deadUrl: true,
   },
   {
     id: "1972",
@@ -13942,7 +13953,7 @@ const data2: Protocol[] = [
     name: "Router Protocol",
     address: "0x60f67e1015b3f069dd4358a78c38f83fe3a667a9",
     symbol: "ROUTE",
-    url: "https://www.routerprotocol.com/",
+    url: "https://app.routerprotocol.com/",
     description:
       "Router Protocol is a cross-chain communication protocol, that can not only enable the transfer of assets but can also support the passing of arbitrary data across chains. Developers can leverage its infra to build diverse cross-chain applications with ease. Router Protocol has built an open-source developer tooling suite that includes a CrossTalk smart contract library, a NodeJS SDK, a cross-chain block explorer, and other tools to help with the continuous integration and development of cross-chain dApps.",
     chain: "Ethereum",
@@ -14509,6 +14520,7 @@ const data2: Protocol[] = [
     module: "forlend/index.js",
     twitter: "forlend_finance",
     listedAt: 1661956958,
+    deadUrl: true,
   },
   {
     id: "2046",
@@ -16046,6 +16058,7 @@ const data2: Protocol[] = [
     module: "wojakfinance/index.js",
     twitter: "wojakfi",
     listedAt: 1663855849,
+    deadUrl: true,
     dimensions: {
       dexs: "wojak-finance"
     }
@@ -18237,6 +18250,7 @@ const data2: Protocol[] = [
     language: "Move",
     audit_links: ["https://docs.argo.fi/assets/files/argo_audit-43ec7be6d291130e1ae7793bec34fc3d.pdf"],
     listedAt: 1666310264,
+    deadUrl: true,
   },
   {
     id: "2207",
@@ -18474,7 +18488,7 @@ const data2: Protocol[] = [
     name: "AnimeSwap",
     address: "aptos:0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::AnimeCoin::ANI",
     symbol: "ANI",
-    url: "https://animeswap.org",
+    url: "https://app.animeswap.org/",
     description: "Swap, farm, and earn on the Aptos Sui.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/animeswap.png`,
@@ -19911,7 +19925,8 @@ const data2: Protocol[] = [
     listedAt: 1668523056,
     dimensions: {
       dexs: "3xcalibur"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2284",
@@ -23826,6 +23841,7 @@ const data2: Protocol[] = [
     twitter: "omaxtoken",
     forkedFromIds: ["2197"],
     listedAt: 1674403191,
+    deadUrl: true,
     dimensions: {
       fees: "omax-swap",
       dexs: "omax-swap"
@@ -27942,7 +27958,7 @@ const data2: Protocol[] = [
     name: "NF3 APE",
     address: null,
     symbol: "-",
-    url: "https://apecoinstaking.io",
+    url: "https://parallel.fi/",
     description: "Auto-Compounding Pool to stake APE",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/nf3-ape.png`,
@@ -27963,7 +27979,7 @@ const data2: Protocol[] = [
     name: "ParaSpace APE Staking V1",
     address: null,
     symbol: "-",
-    url: "https://apecoinstaking.io",
+    url: "https://parallel.fi/",
     description:
       "Earn more rewards across APE Staking pools, manage all your APE staking, and access instant APE liquidity for staking.",
     chain: "Ethereum",

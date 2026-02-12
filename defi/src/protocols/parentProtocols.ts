@@ -170,6 +170,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MMFcrypto",
     governanceID: ["snapshot:mmfinance.eth"],
+    deadUrl: true,
   },
   {
     id: "parent#mycelium",
@@ -2159,6 +2160,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Themis_Pro",
     treasury: "themis-capital-ohm.js",
     github: ["ThemisCapital"],
+    deadUrl: true,
   },
   {
     id: "parent#pepeteam",
@@ -6577,6 +6579,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VicunaFinance",
     github: ["VicunaFinance-com"],
+    deadUrl: true,
   },
   {
     id: "parent#beralis",

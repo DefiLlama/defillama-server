@@ -2612,6 +2612,7 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#vicuna",
     listedAt: 1737981273,
+    deadUrl: true,
     dimensions: {
       fees: "vicuna-finance"
     }
@@ -4466,6 +4467,7 @@ const data4: Protocol[] = [
     twitter: "VicunaFinance",
     parentProtocol: "parent#vicuna",
     listedAt: 1738953589,
+    deadUrl: true,
     dimensions: {
       fees: "vicuna-lending"
     }
@@ -5569,6 +5571,7 @@ const data4: Protocol[] = [
     twitter: "CadabraFinance",
     github: ["cadabra-finance"],
     listedAt: 1739812869,
+    deadUrl: true,
   },
   {
     id: "5802",
@@ -9661,7 +9664,7 @@ const data4: Protocol[] = [
     name: "LiquidOps",
     address: "n2MhPK0O3yEvY2zW73sqcmWqDktJxAifJDrri4qireI",
     symbol: "LQD",
-    url: "https://liquidops.io",
+    url: "https://app.liquidops.io/",
     description:
       "LiquidOps is an over collateralized lending and borrowing protocol built on ao.arweave.dev and arweave.org",
     chain: "AO",
@@ -10194,6 +10197,7 @@ const data4: Protocol[] = [
     twitter: "TwinFinance",
     audit_links: ["https://github.com/TWIN-Protocol/Audits/blob/main/TwinFinance%20Audit%20-%20Report.pdf"],
     listedAt: 1744041325,
+    deadUrl: true,
   },
   {
     id: "6003",
@@ -13764,6 +13768,7 @@ const data4: Protocol[] = [
     github: ["roots-fi"],
     listedAt: 1747077337,
     stablecoins: ["mead"],
+    deadUrl: true,
     dimensions: {
       fees: "roots"
     }
@@ -14860,7 +14865,7 @@ const data4: Protocol[] = [
     name: "Ouroboros Capital",
     address: null,
     symbol: "-",
-    url: "https://x.com/ouroboroscap8",
+    url: "https://yuzu.money/",
     description: `Multi-Strategy Crypto Fund - NFA`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ouroboros-capital.jpg`,
@@ -19763,6 +19768,7 @@ const data4: Protocol[] = [
     module: "blazeswap-io/index.js",
     twitter: "Blaze_Swap",
     listedAt: 1752240991,
+    deadUrl: true,
   },
   {
     id: "6418",

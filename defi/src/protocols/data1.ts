@@ -1352,7 +1352,7 @@ const data: Protocol[] = [
     name: "TrueFi",
     address: "0x4c19596f5aaff459fa38b0f7ed92f11ae6543784",
     symbol: "TRU",
-    url: "https://truefi.io/",
+    url: "https://app.truefi.io/",
     description: "Earn high yields on stablecoin loans and borrow capital without collateral",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/truefi.jpg`,
@@ -1681,7 +1681,7 @@ const data: Protocol[] = [
     name: "MANTRA DAO",
     address: "0x3593d125a4f7849a1b059e64f4517a86dd60c95d",
     symbol: "OM",
-    url: "https://mantradao.com",
+    url: "https://mantrachain.io/",
     description:
       "MANTRA DAO leverages the wisdom of the crowd to give financial control back to the people to grow wealth together.",
     chain: "Ethereum",
@@ -6763,6 +6763,7 @@ const data: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Spectrum_Protocol_CosmWasm_Smart_Contract_Security_Audit_Halborn_Report_v1_1.pdf",
     ],
     openSource: true,
+    deadUrl: true,
   },
   {
     id: "414",
@@ -9672,6 +9673,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "soulswap/index.js",
     twitter: "SoulSwapFinance",
     forkedFromIds: ["2197"],
+    deadUrl: true,
     dimensions: {
       dexs: "soulswap"
     }
@@ -10635,6 +10637,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     governanceID: ["snapshot:strikeorg.eth", "compound:ethereum:0x29e2a3af8ec2d537cbd484c6ec430abe1c7fe2d8"],
     github: ["StrikeFinance"],
+    deadUrl: true,
     dimensions: {
       fees: "strike"
     }
@@ -10743,6 +10746,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.tranche.finance/tranchefinance/governance/security-and-development#security-audits"],
     governanceID: ["snapshot:tranche.eth"],
     github: ["tranche-jibrel"],
+    deadUrl: true,
   },
   {
     id: "594",
@@ -13555,6 +13559,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1635389421,
     forkedFromIds: ["2197"],
     github: ["Alium-Finance"],
+    deadUrl: true,
   },
   {
     id: "719",
@@ -14213,7 +14218,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "MistSwap",
     address: "smartbch:0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129",
     symbol: "MIST",
-    url: "https://mistswap.fi",
+    url: "https://app.mistswap.fi/swap",
     description: "Trade, launch, stake, farm, invest, automate, build on the premier DeFi platform of smartBCH",
     chain: "smartBCH",
     logo: `${baseIconsUrl}/mistswap.png`,
@@ -15676,7 +15681,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "BSCStation",
     address: "bsc:0xbcb24AFb019BE7E93EA9C43B7E22Bb55D5B7f45D",
     symbol: "BSCS",
-    url: "https://bscstation.finance/",
+    url: "https://defai.bscs.finance/",
     description: "BSCStation (BSCS) aims to build a Full-Stack DEFI with NFT Auction on the Binance Smart Chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/bsc-station.png`,
@@ -16749,6 +16754,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "corgidogeestate",
     forkedFromIds: ["2197"],
     listedAt: 1637394147,
+    deadUrl: true,
   },
   {
     id: "885",
@@ -19880,6 +19886,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/mmfinance"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1639599260,
+    deadUrl: true,
   },
   {
     id: "1029",
@@ -22310,6 +22317,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["254"],
     parentProtocol: "parent#mm-finance",
     listedAt: 1640798436,
+    deadUrl: true,
   },
   {
     id: "1143",
@@ -22598,6 +22606,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cykurafi",
     listedAt: 1640830327,
     github: ["cykura"],
+    deadUrl: true,
   },
   // {
   //   id: "1157",

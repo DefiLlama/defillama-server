@@ -11343,6 +11343,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/zkSwap"],
     github: ["ZK-Swap-xyz"],
     listedAt: 1689081995,
+    deadUrl: true
   },
   {
     id: "3220",
@@ -12977,7 +12978,7 @@ const data3_0: Protocol[] = [
     name: "FVM Exchange",
     address: "fantom:0x07bb65faac502d4996532f834a1b7ba5dc32ff96",
     symbol: "FVM",
-    url: "https://www.fvm.exchange/home",
+    url: "https://www.velocimeter.xyz/?chain=fantom",
     description: "Solidly fork",
     chain: "Fantom",
     logo: `${baseIconsUrl}/velocimeter.png`,
@@ -14649,6 +14650,7 @@ const data3_0: Protocol[] = [
     twitter: "ThemisProtocol",
     parentProtocol: "parent#themis-pro",
     listedAt: 1691614732,
+    deadUrl: true,
   },
   {
     id: "3365",
@@ -18312,6 +18314,7 @@ const data3_1: Protocol[] = [
     ],
     listedAt: 1695092233,
     github: ["Manga-Token"],
+    deadUrl: true,
     dimensions: {
       fees: "hono"
     }
@@ -20913,7 +20916,7 @@ const data3_1: Protocol[] = [
     name: "Loanshark Core",
     address: null,
     symbol: "-",
-    url: "https://loanshark.tech/",
+    url: "https://app.loanshark.tech/",
     description:
       "A lending protocol with a risk isolated lending pool structure that offers superior capital efficiency on Scroll",
     chain: "Scroll",
@@ -20980,6 +20983,7 @@ const data3_1: Protocol[] = [
     module: "mellow/index.js",
     twitter: "join_mellow",
     listedAt: 1697669403,
+    deadUrl: true,
   },
   {
     id: "3654",
@@ -22822,6 +22826,7 @@ const data3_1: Protocol[] = [
     twitter: "blockswap_team",
     audit_links: ["https://www.blockswap.network/security/"],
     listedAt: 1699210502,
+    deadUrl: true,
   },
   {
     id: "3740",
@@ -23608,6 +23613,7 @@ const data3_1: Protocol[] = [
     module: "ducky-city-sofi/index.js",
     twitter: "duckycity_io",
     listedAt: 1699936214,
+    deadUrl: true,
   },
   {
     id: "3777",
@@ -26696,6 +26702,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/Secure3Audit/Butter_UniSwap_Similarity_Analysis"],
     github: ["spinaqdex-xyz"],
     listedAt: 1702568985,
+    deadUrl: true,
   },
   {
     id: "3920",
@@ -28825,13 +28832,14 @@ const data3_1: Protocol[] = [
     module: "bswap/index.js",
     twitter: "BSwap_BEVM",
     listedAt: 1705001480,
+    deadUrl: true,
   },
   {
     id: "4014",
     name: "BEVM",
     address: null,
     symbol: "-",
-    url: "https://www.bevm.io/",
+    url: "https://www.geb.network/",
     description:
       "BEVM is the first fully decentralized EVM-compatible Bitcoin L2 that uses BTC as Gas. It allows all DApps which can run in the Ethereum ecosystem to operate on Bitcoin L2.",
     chain: "Bitcoin",
@@ -28842,7 +28850,7 @@ const data3_1: Protocol[] = [
     category: "Chain",
     chains: ["Bitcoin"],
     module: "bevm/index.js",
-    twitter: "BTClayer2",
+    twitter: "BitAgere",
     listedAt: 1705008584,
   },
   {
@@ -40154,6 +40162,7 @@ const data3_2: Protocol[] = [
     // https://medium.com/@bountive/discover-degressive-fees-mechanism-with-pragma-oracle-57bf71c31fed
     oracles: ["Pragma"],
     listedAt: 1713895965,
+    deadUrl: true,
     dimensions: {
       aggregators: "bountive"
     }
@@ -40853,7 +40862,7 @@ const data3_2: Protocol[] = [
     name: "TenderSwap",
     address: null,
     symbol: "-",
-    url: "https://tenderize.com/swap",
+    url: "https://app.tenderize.me/",
     description: "Unified liquidity for staked assets",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tenderswap.jpg`,
@@ -40867,6 +40876,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/Tenderize/tenderswap/tree/main/audits"],
     parentProtocol: "parent#tenderize",
     listedAt: 1714517311,
+    deadUrl: true,
   },
   {
     id: "4550",
@@ -42452,6 +42462,7 @@ const data3_2: Protocol[] = [
     module: "bit-reserve/index.js",
     twitter: "BitReserveFi",
     listedAt: 1715942987,
+    deadUrl: true,
   },
   {
     id: "4623",
@@ -44502,7 +44513,7 @@ const data3_2: Protocol[] = [
     name: "Physica Finance",
     address: null,
     symbol: "-",
-    url: "https://www.physica.finance",
+    url: "https://app.physica.finance/",
     description: "Trade, earn, and bridge your assets with ease on the Planq's native one-stop DeFI hub",
     chain: "Planq",
     logo: `${baseIconsUrl}/physica-finance.png`,
@@ -44629,6 +44640,7 @@ const data3_2: Protocol[] = [
     twitter: "InjeraOfficial",
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //  https://docs.injera.io/injera-money-market/oracles
     listedAt: 1717589987,
+    deadUrl: true,
   },
   {
     id: "4724",
@@ -45973,6 +45985,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/lovelyinu"],
     github: ["lovelyswap-v1"],
     listedAt: 1718718663,
+    deadUrl: true,
   },
   {
     id: "4786",
@@ -46022,7 +46035,7 @@ const data3_3: Protocol[] = [
     name: "Dusa Protocol",
     address: null,
     symbol: "-",
-    url: "https://dusa.io",
+    url: "https://app.dusa.io/",
     description: "Advanced, customizable and fully decentralized trading protocol. Now live on Massa Mainnet.",
     chain: "Massa",
     logo: `${baseIconsUrl}/dusa-protocol.jpg`,
@@ -48308,7 +48321,7 @@ const data3_3: Protocol[] = [
     name: "SigmaSwap",
     address: null,
     symbol: "-",
-    url: "https://sigmaswap.io",
+    url: "https://lukso.sigmaswap.io/en",
     description: "Bridging LUKSO, Ethereum and EVM Blockchains",
     chain: "LUKSO",
     logo: `${baseIconsUrl}/sigmaswap.png`,
@@ -49414,7 +49427,7 @@ const data3_3: Protocol[] = [
     name: "Blend Finance",
     address: null,
     symbol: "-",
-    url: "https://www.blend.fan/",
+    url: "https://app.blend.fan/",
     description: "Lending Protocol on EDU Chain",
     chain: "BEVM",
     logo: `${baseIconsUrl}/blend-finance.jpg`,
@@ -49587,7 +49600,7 @@ const data3_3: Protocol[] = [
     name: "TON Hedge",
     address: null,
     symbol: "-",
-    url: "https://x.com/tonhedge",
+    url: "https://tonhedge.com/options",
     description: "Options trading protocol on ton_blockchain",
     chain: "TON",
     logo: `${baseIconsUrl}/ton-hedge.jpg`,
@@ -50342,7 +50355,7 @@ const data3_3: Protocol[] = [
     name: "DiviSwap",
     address: null,
     symbol: "-",
-    url: "https://diviswap.io",
+    url: "https://diviswap.io/swap",
     description: "DSwap is a decentralized exchange (DEX) built on the Chiliz Chain, The Sports Blockchain.",
     chain: "Chiliz",
     logo: `${baseIconsUrl}/diviswap.jpg`,
@@ -54962,7 +54975,8 @@ const data3_3: Protocol[] = [
     module: "movepump/index.js",
     twitter: "BlueMove_OA",
     parentProtocol: "parent#bluemove",
-    listedAt: 1727951393
+    listedAt: 1727951393,
+    deadUrl: true,
   },
   {
     id: "5198",

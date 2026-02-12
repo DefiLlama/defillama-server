@@ -3022,7 +3022,7 @@ const data5: Protocol[] = [
     name: "Altai Exchange",
     address: null,
     symbol: "-",
-    url: "https://altai.exchange",
+    url: "https://altai.exchange/trade",
     description:
       "Altai Exchange - RWA protocol on BNB Chain tokenizing physical gold, silver, platinum & palladium with on-chain Pyth Network pricing.",
     chain: "Binance",

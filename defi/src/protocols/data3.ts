@@ -44756,7 +44756,7 @@ const data3_3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Polygon", "Mantle", "Fantom", "Fuse", "Binance", "Optimism", "Linea"],
+    chains: ["Flare", "Sonic"],
     module: "lynx/index.js",
     twitter: "Lynx_Protocol",
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing / https://github.com/DefiLlama/defillama-server/pull/7359

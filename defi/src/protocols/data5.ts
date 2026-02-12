@@ -10787,5 +10787,23 @@ const data5: Protocol[] = [
     ],
     listedAt: 1770851974,
   },
+  {
+    id: "7389",
+    name: "World Markets Inc",
+    address: null,
+    symbol: "-",
+    url: "https://world.inc/",
+    description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/world-markets-inc.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Order Book"],
+    chains: ["MegaETH"],
+    module: "worldinc/index.js",
+    twitter: "worldmarketsinc",
+    listedAt: 1770909499,
+  },
 ];
 export default data5;

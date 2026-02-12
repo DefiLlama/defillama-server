@@ -10328,7 +10328,7 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["Order Book"],
     chains: ["MegaETH"],
-    module: "dummy.js",
+    module: "canonic/index.js",
     twitter: "_canonic",
     dimensions: {
       dexs: "canonic",

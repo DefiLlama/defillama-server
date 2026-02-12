@@ -10208,6 +10208,10 @@ const data5: Protocol[] = [
     forkedFromIds: ["3710"],
     parentProtocol: "parent#sparkdex",
     listedAt: 1770423369,
+    dimensions: {
+      fees: "sparkdex-v4",
+      dexs: "sparkdex-v4"
+    }
   },
   {
     id: "7361",

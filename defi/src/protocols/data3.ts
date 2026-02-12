@@ -47805,6 +47805,9 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "LayerZero_Labs",
+    dimensions: {
+      fees: "layerzero",
+    }
   },
   {
     id: "4868",

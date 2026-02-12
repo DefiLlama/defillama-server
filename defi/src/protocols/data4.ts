@@ -27275,7 +27275,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://vishwanetwork.xyz/",
     description:
-      "Vishwa is the trust layer for agentic AI transactions. Autonomous agents already move real money at machine speed, but today’s financial rails are built around post-execution checks designed for human operators. In an agentic world, this model breaks: funds may never have existed, double-spends are only discovered after settlement, and accountability disappears once no human is in the loop. Vishwa introduces a new primitive for agent economies using zero-knowledge proofs: a cryptographic Letter of Credit enforced before execution. Every agent transaction must be proven authorized, solvent, and intention-consistent before funds move, not audited after the damage is done. No proof, no execution.",
+      "Vishwa is the trust layer for agentic AI transactions. Vishwa introduces a new primitive for agent economies using zero-knowledge proofs: a cryptographic Letter of Credit enforced before execution. Every agent transaction must be proven authorized, solvent, and intention-consistent before funds move—not audited after the damage is done. All executions are supported by 1:1 hard-pegged proofs of assets generated through zk proofs. No proof, no execution.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/vishwa.jpg`,
     audits: "2",

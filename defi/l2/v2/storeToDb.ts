@@ -35,7 +35,11 @@ export async function storeHistoricalToDB(res: { timestamp: number; value: any }
   sql.end();
 }
 
-export async function fetchHistoricalFromDB(chain: string | undefined = undefined, isRaw: boolean = false) {
+export async function fetchHistoricalFromDB(
+  chain: string | undefined = undefined,
+  isRaw: boolean = false,
+  breakdown: boolean = false
+) {
   const sql = await iniDbConnection();
 
   const timestamps = await queryPostgresWithRetry(sql`select timestamp from chainassets2`, sql);
@@ -50,28 +54,68 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
     ? dailyData.map((d: any) => ({ timestamp: d.timestamp, [chain]: JSON.parse(d.value)[chain] }))
     : dailyData.map((d: any) => ({ timestamp: d.timestamp, ...JSON.parse(d.value) }));
 
+  data.sort((a: any, b: any) => a.timestamp - b.timestamp);
   if (isRaw) return data;
+
+  if (!breakdown) {
+    const totalsData: any[] = [];
+    data.map((d: any) => {
+      const totalsEntry: any = { timestamp: d.timestamp, data: {} };
+      Object.keys(d).forEach((c: string) => {
+        if (!c || c == "timestamp") return;
+        if (chain) {
+          Object.keys(d[chain]).map((section) => {
+            totalsEntry.data[section] = d[chain][section].total;
+          });
+        } else {
+          const readableChain = getChainDisplayName(c, true);
+          totalsEntry.data[readableChain] = {};
+          Object.keys(d[c]).map((section) => {
+            totalsEntry.data[readableChain][section] = d[c][section].total;
+          });
+        }
+      });
+      
+      totalsData.push(totalsEntry);
+    });
+
+    return totalsData;
+  }
 
   const symbolMap: { [key: string]: string } = await getR2JSONString("chainAssetsSymbolMap");
 
   const symbolData: any[] = [];
   data.map((d: any) => {
-    const symbolEntry: any = { timestamp: d.timestamp };
-    Object.keys(d).forEach((chain: string) => {
-      if (chain == "timestamp") return;
-      const readableChain = getChainDisplayName(chain, true);
-      symbolEntry[readableChain] = {};
-      Object.keys(d[chain]).map((section) => {
-        symbolEntry[readableChain][section] = { total: d[chain][section].total, breakdown: {} };
-        Object.keys(d[chain][section].breakdown).forEach((asset: string) => {
-          if (!symbolMap[asset]) {
-            console.log(`${asset} not found in symbolMap`);
-            return;
-          }
-          symbolEntry[readableChain][section].breakdown[symbolMap[asset]] = d[chain][section].breakdown[asset];
+    const symbolEntry: any = { timestamp: d.timestamp, data: {} };
+    Object.keys(d).forEach((c: string) => {
+      if (!c || c == "timestamp") return;
+      if (chain) {
+        Object.keys(d[chain]).map((section) => {
+          symbolEntry.data[section] = { total: d[c][section].total, breakdown: {} };
+          Object.keys(d[c][section].breakdown ?? {}).forEach((asset: string) => {
+            if (!symbolMap[asset]) {
+              // console.log(`${asset} not found in symbolMap`);
+              return;
+            }
+            symbolEntry.data[section].breakdown[symbolMap[asset]] = d[c][section].breakdown[asset];
+          });
         });
-      });
+      } else {
+        const readableChain = getChainDisplayName(c, true);
+        symbolEntry.data[readableChain] = {};
+        Object.keys(d[c]).map((section) => {
+          symbolEntry.data[readableChain][section] = { total: d[c][section].total, breakdown: {} };
+          Object.keys(d[c][section].breakdown ?? {}).forEach((asset: string) => {
+            if (!symbolMap[asset]) {
+              // console.log(`${asset} not found in symbolMap`);
+              return;
+            }
+            symbolEntry.data[readableChain][section].breakdown[symbolMap[asset]] = d[c][section].breakdown[asset];
+          });
+        });
+      }
     });
+
     symbolData.push(symbolEntry);
   });
 
@@ -79,27 +123,27 @@ export async function fetchHistoricalFromDB(chain: string | undefined = undefine
 }
 
 export async function fetchChartData(chain: string) {
-    const allHistorical = await fetchHistoricalFromDB(chain)
-    const chartData: any[] = []
-    allHistorical.map((h: any) => {
-        const entry: any = { timestamp: h.timestamp }
-        Object.keys(h).map((chain: string) => {
-            if (chain == "timestamp") return;
-            const totalsOnly: { [key: string]: string } = {}
-            Object.keys(h[chain]).map((section: string) => {
-                totalsOnly[section] = h[chain][section].total
-            })
-            entry[chain] = totalsOnly
-        })
-        chartData.push(entry)
-    })
-    return chartData
+  const allHistorical = await fetchHistoricalFromDB(chain);
+  const chartData: any[] = [];
+  allHistorical.map((h: any) => {
+    const entry: any = { timestamp: h.timestamp };
+    Object.keys(h).map((chain: string) => {
+      if (chain == "timestamp") return;
+      const totalsOnly: { [key: string]: string } = {};
+      Object.keys(h[chain]).map((section: string) => {
+        totalsOnly[section] = h[chain][section].total;
+      });
+      entry[chain] = totalsOnly;
+    });
+    chartData.push(entry);
+  });
+  return chartData;
 }
 
 export function findDailyTimestamps(timestamps: { timestamp: number }[]): number[] {
+  timestamps.sort((a, b) => a.timestamp - b.timestamp);
   const end = getTimestampAtStartOfDay(getCurrentUnixTimestamp());
-
-  const start = getTimestampAtStartOfDay(timestamps[timestamps.length - 1].timestamp + secondsInADay);
+  const start = getTimestampAtStartOfDay(Number(timestamps[0].timestamp) + secondsInADay);
   const dailyTimestamps = [timestamps[timestamps.length - 1].timestamp];
 
   for (let i = start; i < end; i += secondsInADay) {

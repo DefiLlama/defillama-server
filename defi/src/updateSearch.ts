@@ -399,11 +399,12 @@ function buildDirectoryResults(
     });
   }
 
-  const cexs: Array<SearchResult> = cexsData.map(cex=>({
+  const cexs: Array<SearchResult> = cexsData
+  .filter((c) => c.slug && c.url).map(cex=>({
     id: `cex_${normalize(cex.name)}`,
     name: cex.name,
     ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
-    route: cex.url ?? "",
+    route: cex.url!,
     logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
     v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
   }));

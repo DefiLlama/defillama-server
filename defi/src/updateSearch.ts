@@ -340,19 +340,22 @@ function buildDirectoryResults(
   const urlToIndex = new Map<string, number>();
   const directoryResults: Array<SearchResult> = [];
 
+  const deadUrlsBlacklist = new Set<string>();
+
   for (const parent of tvlData.parentProtocols) {
     const route = `/protocol/${sluggifyString(parent.name)}`;
     const prevNames = previousNamesMap.get(parent.name);
     if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
     const allNames = [parent.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
+    if (parent.deadUrl) deadUrlsBlacklist.add(parent.url);
     directoryResults.push({
       id: `directory_parent_${normalize(parent.name)}`,
       name: parent.name,
       ...(parent.symbol && parent.symbol !== "-" ? { symbol: parent.symbol } : {}),
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
-      route: parent.url,
+      route: parent.deadUrl ? "" : parent.url,
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
@@ -385,13 +388,14 @@ function buildDirectoryResults(
     const route = `/protocol/${sluggifyString(protocol.name)}`;
     const allNames = [protocol.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
+    if (protocol.deadUrl) deadUrlsBlacklist.add(protocol.url);
     directoryResults.push({
       id: `directory_child_${normalize(protocol.name)}`,
       name: protocol.name,
       ...(protocol.symbol && protocol.symbol !== "-" ? { symbol: protocol.symbol } : {}),
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
-      route: protocol.url,
+      route: protocol.deadUrl ? "" : protocol.url,
       ...(protocol.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
@@ -409,7 +413,7 @@ function buildDirectoryResults(
     v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
   }));
 
-  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "");
+  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
   const maxV = Math.max(...allResults.map(r => r.v));
   const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
   if (swapEntry) swapEntry.v = maxV;

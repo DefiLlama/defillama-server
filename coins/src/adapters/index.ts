@@ -190,5 +190,6 @@ export default {
   shift: require("./yield/shift"),
   makina: require("./yield/makina"),
   stORE: require("./solana/stORE"),
-  accountable: require("./yield/accountable")
+  accountable: require("./yield/accountable"),
+  roycodawn: require("./yield/roycodawn")
 };

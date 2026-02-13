@@ -2,6 +2,10 @@ import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import { getLogs } from "../../../utils/cache/getLogs";
 import { calculate4626Prices } from "../../utils/erc4626";
+import { getTokenAndRedirectDataMap } from "../../utils/database";
+import { log } from "@defillama/sdk";
+
+const MIN_AUM_USD = 10_000;
 
 // BeefyWrapperFactory contracts per chain
 // These factories emit `ProxyCreated(address proxy)` when deploying ERC-4626 wrappers around vaults
@@ -32,12 +36,32 @@ export async function getWrappedBeefyPrices(chain: string, timestamp: number): P
         onlyArgs: true,
     });
 
-    let wrappers = logs.map((l: any) => l.proxy.toLowerCase());
-    wrappers = [...new Set(wrappers)];
-
+    const wrappers = logs.map((l: any) => l.proxy.toLowerCase());
     if (!wrappers.length) return [];
 
-    return calculate4626Prices(chain, timestamp, wrappers, "beefy");
+    // Filter by AUM >= $10k
+    const assets = await api.multiCall({ abi: 'address:asset', calls: wrappers, permitFailure: true });
+    const totalAssets = await api.multiCall({ abi: 'uint256:totalAssets', calls: wrappers, permitFailure: true });
+
+    const validAssets = assets.filter((a: any) => a != null);
+    const priceMap = await getTokenAndRedirectDataMap(validAssets, chain, timestamp);
+
+    const filteredWrappers = wrappers.filter((_: string, i: number) => {
+        const asset = assets[i];
+        const total = totalAssets[i];
+        if (!asset || !total) return false;
+
+        const priceData = priceMap[asset.toLowerCase()];
+        if (!priceData?.price) return false;
+
+        const aum = (Number(total) / 10 ** priceData.decimals) * priceData.price;
+        return aum >= MIN_AUM_USD;
+    });
+
+    log(`${wrappers.length} total Beefy wrappers filtered to ${filteredWrappers.length} wrappers with AUM >= $${MIN_AUM_USD.toLocaleString()} on ${chain}`);
+    if (!filteredWrappers.length) return [];
+
+    return calculate4626Prices(chain, timestamp, filteredWrappers, "beefy");
 }
 
 export const wrappedBeefyChains = Object.keys(factories);

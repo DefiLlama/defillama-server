@@ -491,6 +491,7 @@ const methodologyKeys = {
   Revenue: FinancialStatementRecords.grossProfit,
   BribesRevenue: FinancialStatementRecords.othersTokenHolderFlows,
   HoldersRevenue: FinancialStatementRecords.tokenHolderNetIncome,
+  Incentives: FinancialStatementRecords.incentives,
 }
 
 function adjustDataProtocolFinancials(data: any, emissionsData: any): any {

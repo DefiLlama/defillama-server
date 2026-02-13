@@ -3623,7 +3623,7 @@ const data5: Protocol[] = [
     referralUrl: "https://www.gatedex.com/r/nufLft0L",
     description: "Perp DEX on Gate Layer.",
     chain: "GateLayer",
-    logo: `${baseIconsUrl}/gate-perp-dex.jpg`,
+    logo: `${baseIconsUrl}/gate-dex.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

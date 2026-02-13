@@ -1538,7 +1538,7 @@
     },
     "0x325DC9EBceC31940C658aCACa45f8293418d811E": {
       "decimals": "18",
-      "symbol": "SolvBTC.ENA",
+      "symbol": "SolvBTC.TRADING",
       "to": "coingecko#solv-btc"
     },
     "0x75A66958919f47870f62b2780c34a235dC357586": {
@@ -1710,7 +1710,7 @@
     },
     "0x53e63a31fd1077f949204b94f431bcab98f72bce": {
       "decimals": "18",
-      "symbol": "SolvBTC.ENA",
+      "symbol": "SolvBTC.TRADING",
       "to": "coingecko#solv-btc"
     },
     "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a": {
@@ -1812,6 +1812,26 @@
       "to": "coingecko#gate-wrapped-btc",
       "decimals": 8,
       "symbol": "gtBTC"
+    },
+    "0x0de7336c70a8dad4bdea1b2bca8efb3c955e989d": {
+      "decimals": "18",
+      "symbol": "SolvBTC.STRK",
+      "to": "coingecko#solv-btc"
+    },
+    "0xcf6fd5ba51cc279240629370ac7009ea268c22f7": {
+      "decimals": "18",
+      "symbol": "SolvBTC.XLM",
+      "to": "coingecko#solv-btc"
+    },
+    "0x52a912a78d9261a2aaebc4834f84de9f77a2d03a": {
+      "decimals": "18",
+      "symbol": "SolvBTC.RWA",
+      "to": "coingecko#solv-btc"
+    },
+    "0x8260c40beddcb8f63c56b6c73476ef5e20f156a5": {
+      "decimals": "18",
+      "symbol": "SolvBTC.HYBRID",
+      "to": "coingecko#solv-btc"
     }
   },
   "stacks": {

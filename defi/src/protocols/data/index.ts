@@ -38,6 +38,12 @@ protocols.forEach((protocol: Protocol) => {
   if (protocol.deadUrl === true) {
     protocol.url = "" // kill urls to prevent urls that are dead from having scammers taking them over
   }
+
+  // set default null values for undefined optional fields
+  if (protocol.gecko_id === undefined) protocol.gecko_id = null;
+  if (protocol.cmcId === undefined) protocol.cmcId = null;
+  if (protocol.symbol === undefined) protocol.symbol = null;
+  if (protocol.address === undefined) protocol.address = null;
 })
 
 export default protocols;
@@ -84,6 +90,16 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
     const childValue = childProtocols.find((p) => p[field] !== undefined)?.[field]
     if (childValue !== undefined) {
       (protocol as any)[field] = childValue
+    }
+
+    // inherit parent fields to children if missing from child
+    const inheritFields = ['twitter', 'url', 'governanceID', 'github', 'treasury', 'description', 'symbol', 'referralUrl'] as const
+    for (const child of childProtocols) {
+      for (const field of inheritFields) {
+        if (child[field] == null && protocol[field] != null) {
+          (child as any)[field] = protocol[field]
+        }
+      }
     }
   }
 

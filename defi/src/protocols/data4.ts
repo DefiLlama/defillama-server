@@ -3904,7 +3904,7 @@ const data4: Protocol[] = [
     name: "SX Rollup Bridge",
     address: null,
     symbol: "-",
-    url: "https://bridge.sx.technology/",
+    url: "https://sx.bet/wallet/bridge",
     description: "Bridge between Ethereum and SX Network",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sx-bridge.jpg`,
@@ -4681,6 +4681,7 @@ const data4: Protocol[] = [
     module: "beracaine/index.js",
     twitter: "beracaine",
     listedAt: 1739208691,
+    deadUrl: true,
   },
   {
     id: "5765",
@@ -8844,6 +8845,7 @@ const data4: Protocol[] = [
     github: ["UmbraDEX"],
     twitter: "UmbraFi",
     listedAt: 1742845591,
+    deadUrl: true,
     dimensions: {
       dexs: "umbra"
     }
@@ -21176,7 +21178,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "btcSOL",
-    url: "https://btcsol.co/",
+    url: "https://app.zeusnetwork.xyz/",
     description: "btcSOL enables Solana token holders to stake their SOL and accumulate BTC daily.",
     chain: "Solana",
     logo: `${baseIconsUrl}/zeus-btcsol.jpg`,

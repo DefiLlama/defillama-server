@@ -2222,6 +2222,7 @@ const data2: Protocol[] = [
     twitter: "xrayswap",
     audit_links: ["https://rugdoc.io/project/xray-swap/"],
     listedAt: 1646019216,
+    deadUrl: true,
   },
   {
     id: "1481",
@@ -5249,6 +5250,7 @@ const data2: Protocol[] = [
     listedAt: 1649284165,
     github: ["jpegd"],
     stablecoins: ["pusd"],
+    deadUrl: true,
   },
   {
     id: "1620",
@@ -14177,6 +14179,7 @@ const data2: Protocol[] = [
     module: "liquid-finance/index.js",
     twitter: "FinanceLiquid",
     listedAt: 1661767369,
+    deadUrl: true,
   },
   {
     id: "2031",
@@ -14611,7 +14614,8 @@ const data2: Protocol[] = [
     listedAt: 1662044235,
     dimensions: {
       dexs: "klex-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2050",
@@ -14697,6 +14701,7 @@ const data2: Protocol[] = [
     twitter: "cega_fi",
     parentProtocol: "parent#cega",
     listedAt: 1662140513,
+    deadUrl: true,
   },
   {
     id: "2054",
@@ -18273,6 +18278,7 @@ const data2: Protocol[] = [
     language: "Move",
     listedAt: 1666310374,
     github: ["ditto-research"],
+    deadUrl: true,
   },
   {
     id: "2208",
@@ -21285,6 +21291,7 @@ const data2: Protocol[] = [
     language: "Cairo",
     parentProtocol: "parent#jediswap",
     listedAt: 1670534876,
+    deadUrl: true
   },
   {
     id: "2345",
@@ -23867,6 +23874,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["337"],
     parentProtocol: "parent#tethys-finance",
     listedAt: 1674434859,
+    deadUrl: true,
   },
   {
     id: "2466",

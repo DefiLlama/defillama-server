@@ -638,6 +638,7 @@ const data: Protocol[] = [
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     governanceID: ["snapshot:barnbridge.eth"],
     github: ["BarnBridge"], //check
+    deadUrl: true,
   },
   {
     id: "132",
@@ -1808,6 +1809,7 @@ const data: Protocol[] = [
     module: "unagii.js",
     twitter: "unagiidotcom",
     audit_links: ["https://docs.unagii.com/unagii-vaults/vaults-audits"],
+    deadUrl: true,
   },
   {
     id: "188",
@@ -6355,6 +6357,7 @@ const data: Protocol[] = [
     twitter: "Reaper_Farm",
     audit_links: ["https://solidity.finance/audits/ReaperFarm"],
     parentProtocol: "parent#oath-foundation",
+    deadUrl: true,
   },
   {
     id: "395",
@@ -6615,6 +6618,7 @@ const data: Protocol[] = [
     twitter: "delv_tech",
     parentProtocol: "parent#delv",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
+    deadUrl: true,
   },
   {
     id: "407",
@@ -9506,6 +9510,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.projectlarix.com/how-to-prove/audit"],
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }],
     openSource: false,
+    deadUrl: true
   },
   {
     id: "537",
@@ -10331,6 +10336,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     audit_links: ["https://www.certik.org/projects/coinswap"],
     github: ["CoinSwap-Space"],
+    deadUrl: true,
   },
   {
     id: "576",
@@ -10831,6 +10837,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "babyswap_bsc",
     audit_links: ["https://www.certik.org/projects/babyswap"],
     forkedFromIds: ["2197"],
+    deadUrl: true,
     dimensions: {
       fees: "babyswap",
       dexs: "babyswap"
@@ -11051,6 +11058,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     governanceID: ["hundredfinance.eth"],
     github: ["hundred-finance"],
+    deadUrl: true,
   },
   {
     id: "608",
@@ -12650,6 +12658,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://www.slowmist.com/en/security-audit-certificate.html?id=e18f32468d1c52dc0682fbf1c1137df933fabb09526b124c84cd391fce7149bb",
     ],
     listedAt: 1634496168,
+    deadUrl: true,
     dimensions: {
       dexs: "jswap"
     }
@@ -22246,6 +22255,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197", "343"],
     parentProtocol: "parent#tethys-finance",
     listedAt: 1640746550,
+    deadUrl: true,
     dimensions: {
       dexs: "tethys-finance"
     }
@@ -27001,6 +27011,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     listedAt: 1644153456,
     github: ["narwhalswap"],
+    deadUrl: true,
   },
   {
     id: "1365",

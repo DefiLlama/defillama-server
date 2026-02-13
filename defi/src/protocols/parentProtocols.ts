@@ -885,6 +885,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tethysfinance",
     governanceID: ["snapshot:tethysswap.eth"],
+    deadUrl: true,
   },
   // { rebranded to bunni
   //   id: "parent#timeless",
@@ -1403,6 +1404,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "HadoukenFinance",
+    deadUrl: true,
   },
   {
     id: "parent#synthetix",
@@ -2746,6 +2748,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LybraFinanceLSD",
     github: ["LybraFinance"],
     stablecoins: ["peg-eusd"],
+    deadUrl: true,
   },
   {
     id: "parent#astarter",
@@ -3646,6 +3649,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cega_fi",
+    deadUrl: true,
   },
   {
     id: "parent#squadswap",
@@ -3668,6 +3672,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Cod3xOrg",
+    deadUrl: true,
   },
   {
     id: "parent#ajna",
@@ -3716,6 +3721,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "29102",
     chains: [],
     twitter: "Dojo_Swap",
+    deadUrl: true,
   },
   {
     id: "parent#meridian",
@@ -3944,6 +3950,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "JediSwap",
+    deadUrl: true,
   },
   {
     id: "parent#prisma",
@@ -4640,6 +4647,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "VanillaSwap1",
+    deadUrl: true,
   },
   {
     id: "parent#cropper",
@@ -5762,6 +5770,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "delv_tech",
     github: ["delvtech"],
+    deadUrl: true,
   },
   {
     id: "parent#trado-finance",

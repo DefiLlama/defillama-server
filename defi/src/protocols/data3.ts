@@ -1049,6 +1049,7 @@ const data3_0: Protocol[] = [
     twitter: "HadoukenFinance",
     parentProtocol: "parent#hadouken-finance",
     listedAt: 1680182608,
+    deadUrl: true,
   },
   {
     id: "2748",
@@ -1068,6 +1069,7 @@ const data3_0: Protocol[] = [
     twitter: "HadoukenFinance",
     parentProtocol: "parent#hadouken-finance",
     listedAt: 1680182612,
+    deadUrl: true,
     dimensions: {
       fees: "hadouken-amm",
       dexs: "hadouken-amm"
@@ -2621,6 +2623,7 @@ const data3_0: Protocol[] = [
     twitter: "stfil_io",
     audit_links: ["https://skynet.certik.com/projects/stfil"],
     listedAt: 1681382689,
+    deadUrl: true
   },
   {
     id: "2820",
@@ -4481,6 +4484,7 @@ const data3_0: Protocol[] = [
     listedAt: 1682586612,
     parentProtocol: "parent#lybra-finance",
     stablecoins: ["eusd"],
+    deadUrl: true,
     dimensions: {
       fees: "lybra-finance"
     }
@@ -6576,6 +6580,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://docsend.com/view/szchhyvbcbiv3ti9"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1684502476,
+    deadUrl: true,
   },
   {
     id: "3000",
@@ -13783,6 +13788,7 @@ const data3_0: Protocol[] = [
     twitter: "Mufex_Official",
     audit_links: ["https://metatrust.io/score/audit/mufex"],
     listedAt: 1690969719,
+    deadUrl: true,
   },
   {
     id: "3327",
@@ -16878,6 +16884,7 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#lybra-finance",
     stablecoins: ["eusd-(v2)"],
     listedAt: 1693434433,
+    deadUrl: true,
     dimensions: {
       fees: "lybra-v2"
     }
@@ -17704,6 +17711,7 @@ const data3_1: Protocol[] = [
     module: "cubiswap/index.js",
     twitter: "CUBISWAP",
     listedAt: 1694196707,
+    deadUrl: true,
   },
   {
     id: "3506",
@@ -19875,6 +19883,7 @@ const data3_1: Protocol[] = [
       "https://www.rugfreecoins.com/coin-details/18825",
     ],
     listedAt: 1696566243,
+    deadUrl: true,
   },
   {
     id: "3602",
@@ -27752,6 +27761,7 @@ const data3_1: Protocol[] = [
     twitter: "Dojo_Swap",
     parentProtocol: "parent#dojoswap",
     listedAt: 1703694681,
+    deadUrl: true,
   },
   {
     id: "3966",
@@ -28495,6 +28505,7 @@ const data3_1: Protocol[] = [
     module: "cega-v2/index.js",
     twitter: "cega_fi",
     parentProtocol: "parent#cega",
+    deadUrl: true,
   },
   {
     id: "4000",
@@ -29789,6 +29800,7 @@ const data3_1: Protocol[] = [
     twitter: "Dojo_Swap",
     parentProtocol: "parent#dojoswap",
     listedAt: 1706108284,
+    deadUrl: true,
   },
   {
     id: "4057",
@@ -31540,6 +31552,7 @@ const data3_1: Protocol[] = [
     module: "econia.js",
     twitter: "EconiaLabs",
     listedAt: 1708387853,
+    deadUrl: true,
     dimensions: {
       fees: "econia",
       dexs: "econia"
@@ -31955,6 +31968,7 @@ const data3_1: Protocol[] = [
     language: "Cairo",
     parentProtocol: "parent#jediswap",
     listedAt: 1708338490,
+    deadUrl: true,
     dimensions: {
       dexs: "jediswap-v2"
     }
@@ -32092,6 +32106,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.aurelius.finance/security"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708396298,
+    deadUrl: true,
   },
   {
     id: "4150",
@@ -32275,6 +32290,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9032
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708559017,
+    deadUrl: true,
   },
   {
     id: "4158",
@@ -32919,6 +32935,7 @@ const data3_2: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/21.co_Wrapped_Assets_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf",
     ],
     listedAt: 1709078063,
+    deadUrl: true,
   },
   {
     id: "4188",
@@ -33525,6 +33542,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["114"],
     oracles: ["Api3", "RedStone", "Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
     listedAt: 1709316471,
+    deadUrl: true,
   },
   {
     id: "4214",
@@ -34346,6 +34364,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["111"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1709767737,
+    deadUrl: true,
   },
   {
     id: "4251",
@@ -39346,7 +39365,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "BREAD",
-    url: "https://app.breadchain.xyz",
+    url: "https://fund.bread.coop/",
     description:
       "Breadchain is a collective federation of decentralized cooperative projects looking to advance a post-capitalist vision for blockchain and its effect on society.",
     chain: "xDai",
@@ -39357,7 +39376,7 @@ const data3_2: Protocol[] = [
     category: "CDP",
     chains: ["xDai"],
     module: "breadchain/index.js",
-    twitter: "breadchain_",
+    twitter: "breadcoop",
     github: ["BreadchainCoop"],
     stablecoins: ["bread"],
     listedAt: 1713193791,
@@ -41995,6 +42014,7 @@ const data3_2: Protocol[] = [
     twitter: "VanillaSwap1",
     parentProtocol: "parent#vanillaswap",
     listedAt: 1715689429,
+    deadUrl: true,
     dimensions: {
       fees: "vanillaswap-v2",
       dexs: "vanillaswap-v2"
@@ -42020,6 +42040,7 @@ const data3_2: Protocol[] = [
     twitter: "VanillaSwap1",
     parentProtocol: "parent#vanillaswap",
     listedAt: 1715689629,
+    deadUrl: true,
     dimensions: {
       fees: "vanillaswap-v3",
       dexs: "vanillaswap-v3"
@@ -50108,6 +50129,7 @@ const data3_3: Protocol[] = [
     twitter: "LoreFinance",
     parentProtocol: "parent#oath-foundation",
     listedAt: 1723454655,
+    deadUrl: true,
   },
   {
     id: "4974",
@@ -55450,7 +55472,8 @@ const data3_3: Protocol[] = [
     twitter: "HyperVueFDN",
     parentProtocol: "parent#delv",
     audit_links: ["https://github.com/delvtech/hyperdrive/tree/main/audits"],
-    listedAt: 1728467936
+    listedAt: 1728467936,
+    deadUrl: true,
   },
   {
     id: "5220",
@@ -55906,7 +55929,8 @@ const data3_3: Protocol[] = [
     chains: ["HAQQ"],
     module: "microcreditproject/index.js",
     twitter: "microcredittoken",
-    listedAt: 1728924133
+    listedAt: 1728924133,
+    deadUrl: true,
   },
   {
     id: "5241",
@@ -60555,6 +60579,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://econia-labs.notion.site/emojicoin-dot-fun-audit-8806ffea2b594c8e846ce3d32e5630b9"],
     github: ["econia-labs"],
     listedAt: 1733150717,
+    deadUrl: true,
     dimensions: {
       fees: "emojicoin",
       dexs: "emojicoin"

@@ -16288,7 +16288,8 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#uniwswap",
     listedAt: 1664061499,
-    deadUrl: true,  },
+    deadUrl: true,
+  },
   {
     id: "2124",
     name: "PowSea",

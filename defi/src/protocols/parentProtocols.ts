@@ -770,6 +770,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "uniwswap",
     github: ["uniwswap"],
+    deadUrl: true,
   },
   {
     id: "parent#metronome",
@@ -4398,7 +4399,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperliquid",
     name: "Hyperliquid",
-    url: "https://hyperfoundation.org",
+    url: "https://app.hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description:
       "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",

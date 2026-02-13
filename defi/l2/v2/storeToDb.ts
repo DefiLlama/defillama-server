@@ -75,7 +75,7 @@ export async function fetchHistoricalFromDB(
           });
         }
       });
-      
+
       totalsData.push(totalsEntry);
     });
 
@@ -153,43 +153,6 @@ export function findDailyTimestamps(timestamps: { timestamp: number }[]): number
     dailyTimestamps.push(timestamp.timestamp);
   }
   return dailyTimestamps;
-}
-
-export async function fetchFlows(period: number = secondsInADay) {
-  const sql = await iniDbConnection();
-  const targetEnd = getCurrentUnixTimestamp();
-  const targetStart = targetEnd - period * 1.5;
-  const datas: any[] = await queryPostgresWithRetry(
-    sql`select * from chainassets2 where timestamp > ${targetStart}`,
-    sql
-  );
-
-  const actualStart = datas.reduce((prev, curr) =>
-    Math.abs(curr.timestamp - targetStart) < Math.abs(prev.timestamp - targetStart) ? curr : prev
-  );
-  const actualEnd = datas.reduce((prev, curr) =>
-    Math.abs(curr.timestamp - targetEnd) < Math.abs(prev.timestamp - targetEnd) ? curr : prev
-  );
-
-  const startData = JSON.parse(datas.find((d) => d.timestamp == actualStart.timestamp)?.value ?? "{}");
-  const endData = JSON.parse(datas.find((d) => d.timestamp == actualEnd.timestamp)?.value ?? "{}");
-
-  const flows: any = {};
-  Object.keys(endData).map((chain) => {
-    const readableChain = getChainDisplayName(chain, true);
-    flows[readableChain] = {};
-    Object.keys(endData[chain]).map((section) => {
-      flows[readableChain][section] = {};
-      const startValue = startData[chain]?.[section]?.total ?? 0;
-      const endValue = endData[chain][section].total;
-      const raw = endValue - startValue;
-      const perc = (raw / startValue) * 100;
-      flows[readableChain][section].raw = raw;
-      flows[readableChain][section].perc = perc;
-    });
-  });
-
-  return flows;
 }
 
 export async function fetchCurrentChainAssets() {

@@ -265,6 +265,7 @@ export interface EmissionsProtocolData {
   yearly: IJSON<EmissionsAggRecord>;
   quarterly: IJSON<EmissionsAggRecord>;
   monthly: IJSON<EmissionsAggRecord>;
+  breakdownMethodology?: IJSON<string>;
 }
 
 export type RecordSummary = {

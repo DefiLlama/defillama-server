@@ -526,22 +526,33 @@ function adjustDataProtocolFinancials(data: any, emissionsData: any): any {
       }
     }
   }
+  
+  // inject emission breakdownMethodology
+  if (emissionsData) {
+    if (emissionsData.breakdownMethodology) {
+      if (!data.breakdownMethodology) data.breakdownMethodology = {};
+      data.breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
+    }
+    
+    if (data.childProtocols) {
+      for (let i = 0; i < data.childProtocols.length; i++) {
+        if (emissionsData.breakdownMethodology) {
+          if (!data.childProtocols[i].breakdownMethodology) data.childProtocols[i].breakdownMethodology = {};
+          data.childProtocols[i].breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
+        }
+      }
+    }
+  }
 
   // use adjusted aggregates data
   data.aggregates = adjustedAggregates;
+  data.methodology = adjustMethodology(data.methodology);
   data.breakdownMethodology = adjustMethodology(data.breakdownMethodology);
-  if (emissionsData?.breakdownMethodology) {
-    if (!data.breakdownMethodology) data.breakdownMethodology = {};
-    data.breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
-  }
+  
   if (data.childProtocols) {
     for (let i = 0; i < data.childProtocols.length; i++) {
       data.childProtocols[i].methodology = adjustMethodology(data.childProtocols[i].methodology);
       data.childProtocols[i].breakdownMethodology = adjustMethodology(data.childProtocols[i].breakdownMethodology);
-      if (emissionsData?.breakdownMethodology) {
-        if (!data.childProtocols[i].breakdownMethodology) data.childProtocols[i].breakdownMethodology = {};
-        data.childProtocols[i].breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
-      }
     }
   }
 

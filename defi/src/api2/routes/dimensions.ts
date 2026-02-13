@@ -530,10 +530,18 @@ function adjustDataProtocolFinancials(data: any, emissionsData: any): any {
   // use adjusted aggregates data
   data.aggregates = adjustedAggregates;
   data.breakdownMethodology = adjustMethodology(data.breakdownMethodology);
+  if (emissionsData?.breakdownMethodology) {
+    if (!data.breakdownMethodology) data.breakdownMethodology = {};
+    data.breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
+  }
   if (data.childProtocols) {
     for (let i = 0; i < data.childProtocols.length; i++) {
       data.childProtocols[i].methodology = adjustMethodology(data.childProtocols[i].methodology);
       data.childProtocols[i].breakdownMethodology = adjustMethodology(data.childProtocols[i].breakdownMethodology);
+      if (emissionsData?.breakdownMethodology) {
+        if (!data.childProtocols[i].breakdownMethodology) data.childProtocols[i].breakdownMethodology = {};
+        data.childProtocols[i].breakdownMethodology[FinancialStatementRecords.incentives] = emissionsData.breakdownMethodology;
+      }
     }
   }
 

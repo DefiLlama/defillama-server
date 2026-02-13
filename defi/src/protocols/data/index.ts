@@ -66,6 +66,10 @@ protocols.forEach((protocol: Protocol) => {
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
 parentProtocols.forEach((protocol: IParentProtocol) => {
 
+  if (protocol.deadUrl === true) {
+    protocol.url = ""
+  }
+
   const tr = tokenRightsMap[protocol.id]
   if (tr)
     protocol.tokenRights = tr

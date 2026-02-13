@@ -1485,6 +1485,7 @@ export const chainCoingeckoIds = {
     chainId: 225,
     twitter: "0xLachain",
     url: "https://lachain.io/",
+    deadUrl: true,
   },
   "Coti": {
     geckoId: "coti",
@@ -2886,6 +2887,7 @@ export const chainCoingeckoIds = {
     governanceID: ["snapshot:airdaofoundation.eth"],
     url: "https://airdao.io/",
     chainId: 16718,
+    deadUrl: true,
   },
   "dYdX": {
     geckoId: "dydx-chain",
@@ -3495,6 +3497,7 @@ export const chainCoingeckoIds = {
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"],
+    deadUrl: true,
   },
   "IOTA": {
     geckoId: "iota",

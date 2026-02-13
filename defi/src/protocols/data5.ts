@@ -1544,6 +1544,7 @@ const data5: Protocol[] = [
     twitter: "luckypeachxyz",
     github: ["luckypeachxyz"],
     listedAt: 1762301789,
+    deadUrl: true,
   },
   {
     id: "6961",
@@ -2542,6 +2543,7 @@ const data5: Protocol[] = [
     module: "mining-tycoon/index.js",
     twitter: "MiningGPU",
     listedAt: 1763158389,
+    deadUrl: true,
   },
   {
     id: "7004",
@@ -5103,6 +5105,7 @@ const data5: Protocol[] = [
     module: "stableswap-dex/index.js",
     twitter: "stableswap_dex",
     listedAt: 1765391669,
+    deadUrl: true,
   },
   {
     id: "7116",

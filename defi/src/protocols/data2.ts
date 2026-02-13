@@ -4096,7 +4096,8 @@ const data2: Protocol[] = [
     module: "anedak/index.js",
     twitter: null,
     listedAt: 1647812879,
-    deprecated: true
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "1567",
@@ -4288,6 +4289,7 @@ const data2: Protocol[] = [
     module: "penguin-finance/index.js",
     twitter: "png_fi",
     listedAt: 1648061569,
+    deadUrl: true,
     dimensions: {
       dexs: "penguin"
     }
@@ -4629,6 +4631,7 @@ const data2: Protocol[] = [
     audit_links: ["https://occamx.gitbook.io/occamx-faq/audits"],
     listedAt: 1648599278,
     github: ["OccamX-MilkomedaDEX"],
+    deadUrl: true,
   },
   {
     id: "1592",
@@ -5140,7 +5143,8 @@ const data2: Protocol[] = [
     github: ["0Vix"],
     dimensions: {
       fees: "0vix"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1615",
@@ -7954,6 +7958,8 @@ const data2: Protocol[] = [
     module: "joystickclub/index.js",
     twitter: "joystickclub",
     listedAt: 1652007652,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "1746",
@@ -8815,6 +8821,7 @@ const data2: Protocol[] = [
     twitter: "VersaGamesHQ",
     audit_links: ["https://paladinsec.co/projects/versagames/"],
     listedAt: 1653591854,
+    deadUrl: true,
   },
   {
     id: "1786",
@@ -9872,6 +9879,8 @@ const data2: Protocol[] = [
     module: "lachain-yield-market.js",
     twitter: "0xLachain",
     listedAt: 1655466324,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "1833",
@@ -9917,6 +9926,7 @@ const data2: Protocol[] = [
     module: "optimus/index.js",
     twitter: "OptimusDeFi",
     listedAt: 1655547687,
+    deadUrl: true,
   },
   {
     id: "1835",
@@ -10639,7 +10649,8 @@ const data2: Protocol[] = [
     listedAt: 1656665210,
     dimensions: {
       dexs: "surfswap-classic"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1869",
@@ -14089,6 +14100,7 @@ const data2: Protocol[] = [
     twitter: "Champion_io",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Champion%20Finance/Champion%20Finance.pdf"],
     listedAt: 1661585507,
+    deadUrl: true,
   },
   {
     id: "2027",
@@ -16896,6 +16908,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#based-finance",
     audit_links: ["https://obeliskauditing.com/audits/based3", "https://obeliskauditing.com/audits/based2"],
     listedAt: 1664904106,
+    deadUrl: true,
   },
   {
     id: "2150",
@@ -17150,6 +17163,7 @@ const data2: Protocol[] = [
     module: "powerswap/index.js",
     twitter: "PowerSwapPOW",
     listedAt: 1665052722,
+    deadUrl: true,
   },
   {
     id: "2162",
@@ -17481,7 +17495,8 @@ const data2: Protocol[] = [
     listedAt: 1665568360,
     dimensions: {
       derivatives: "goosefx"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2176",
@@ -18300,6 +18315,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.tortuga.finance/product-docs/protocol/security-audits"],
     language: "Move",
     listedAt: 1666310467,
+    deadUrl: true,
   },
   {
     id: "2209",
@@ -19226,7 +19242,8 @@ const data2: Protocol[] = [
     listedAt: 1667558693,
     dimensions: {
       aggregators: "dexible"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2250",
@@ -24895,7 +24912,8 @@ const data2: Protocol[] = [
     listedAt: 1675860426,
     dimensions: {
       fees: "liquid-bolt"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2514",
@@ -25862,6 +25880,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1676983479,
     github: ["Bhavish-finance"],
+    deadUrl: true,
   },
   {
     id: "2558",
@@ -26722,7 +26741,8 @@ const data2: Protocol[] = [
   twitter: "SurfswapDEX",
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
   listedAt: 1656665210,
-  parentProtocol: "parent#surfswap"
+  parentProtocol: "parent#surfswap",
+  deadUrl: true,
 },
 */
   {
@@ -26749,7 +26769,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#surfswap",
     dimensions: {
       dexs: "surfswap-stable-amm"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2599",

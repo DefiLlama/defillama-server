@@ -332,6 +332,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "17954",
     chains: [],
     twitter: "BasedDEFI",
+    deadUrl: true,
   },
   {
     id: "parent#ribbon-finance",
@@ -1094,6 +1095,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SurfswapDEX",
+    deadUrl: true,
   },
   {
     id: "parent#balancer",
@@ -3600,6 +3602,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "baptswap",
     github: ["BAPTSWAP"],
+    deadUrl: true,
   },
   {
     id: "parent#yearn",
@@ -3964,6 +3967,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
+    deadUrl: true,
     // stablecoins: ["mkusd","prismalrt-ultra"], since its not possible to show both/more than 1 stablecoins under the parentProtocol. Will add each stablecoin under their respective listing
   },
   {
@@ -4522,6 +4526,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24792",
     chains: [],
     twitter: "rabbitx_io",
+    deadUrl: true,
   },
   {
     id: "parent#atlendis",
@@ -4685,6 +4690,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VeryLong_Swap",
     github: ["verylongswap"],
+    deadUrl: true,
   },
   {
     id: "parent#ociswap",
@@ -4948,6 +4954,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["joltify-finance"],
     twitter: "joltify_finance",
+    deadUrl: true,
   },
   {
     id: "parent#macaron",
@@ -6970,6 +6977,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GooseFX1",
     github: ["GooseFX1"],
+    deadUrl: true,
   },
   {
     id: "parent#seamless-protocol",
@@ -7761,6 +7769,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Kura_Dex",
+    deadUrl: true,
   },
   {
     id: "parent#fomoswap",

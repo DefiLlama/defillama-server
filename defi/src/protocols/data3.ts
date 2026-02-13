@@ -142,6 +142,7 @@ const data3_0: Protocol[] = [
       "https://blocksafu.com/project-detail/0x43B35e89d15B91162Dea1C51133C4c93bdd1C4aF",
     ],
     listedAt: 1679408968,
+    deadUrl: true,
   },
   {
     id: "2705",
@@ -268,6 +269,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_BAPT_SWAP.pdf"],
     parentProtocol: "parent#baptswap",
     listedAt: 1679483195,
+    deadUrl: true
   },
   {
     id: "2711",
@@ -1309,6 +1311,7 @@ const data3_0: Protocol[] = [
     module: "OCTOplace/index.js",
     twitter: "octoplace",
     listedAt: 1680356318,
+    deadUrl: true,
   },
   {
     id: "2760",
@@ -4075,7 +4078,8 @@ const data3_0: Protocol[] = [
         adapter: "rabbitx"
       },
       "open-interest": "rabbitx"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2887",
@@ -4691,6 +4695,7 @@ const data3_0: Protocol[] = [
     module: "rising-undead/index.js",
     twitter: "RisingUndead1",
     listedAt: 1682736659,
+    deadUrl: true,
   },
   {
     id: "2914",
@@ -6115,6 +6120,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],
     audit_links: ["https://docsend.com/view/mfqrf4mcdxk9jvwf"],
     listedAt: 1684183136,
+    deadUrl: true,
     dimensions: {
       fees: "tsunami-fi"
     }
@@ -9858,6 +9864,7 @@ const data3_0: Protocol[] = [
     github: ["TiTi-Finance"],
     audit_links: ["https://github.com/TiTi-Finance/TiTi-Protocol/tree/main/audits"],
     listedAt: 1687630493,
+    deadUrl: true
   },
   {
     id: "3152",
@@ -9940,6 +9947,7 @@ const data3_0: Protocol[] = [
     twitter: "StakedICP",
     github: ["AegirFinance"],
     listedAt: 1687769686,
+    deadUrl: true,
   },
   {
     id: "3156",
@@ -12716,6 +12724,7 @@ const data3_0: Protocol[] = [
     twitter: "TheWhaleGame",
     wrongLiquidity: true, // using an incorrect token
     listedAt: 1690193408,
+    deadUrl: true
   },
   {
     id: "3279",
@@ -12738,6 +12747,7 @@ const data3_0: Protocol[] = [
       "https://2474115411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FgSs7UmtCefVntVTkogKf%2Fuploads%2Fu9FNEjoK2kztwmuTa5o8%2FPalmSwap-audit-report.pdf?alt=media&token=120b83f0-1a98-4c59-919c-986c81dae7ad",
     ],
     listedAt: 1690194324,
+    deadUrl: true,
   },
   {
     id: "3280",
@@ -13573,6 +13583,7 @@ const data3_0: Protocol[] = [
     twitter: "vivaleverage",
     audit_links: ["https://docs.vivaleva.com/protocol-overview/security-audit"],
     listedAt: 1690831706,
+    deadUrl: true,
   },
   {
     id: "3318",
@@ -13965,6 +13976,7 @@ const data3_0: Protocol[] = [
     twitter: "galadorfi",
     forkedFromIds: ["2197"],
     listedAt: 1691068455,
+    deadUrl: true,
   },
   {
     id: "3335",
@@ -14027,7 +14039,8 @@ const data3_0: Protocol[] = [
     twitter: "nonethio",
     dimensions: {
       fees: "none-trading-bot"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3338",
@@ -16051,6 +16064,7 @@ const data3_0: Protocol[] = [
     ],
     github: ["Intswap-Labs"],
     listedAt: 1692703661,
+    deadUrl: true,
   },
   {
     id: "3429",
@@ -16996,6 +17010,7 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#prisma",
     stablecoins: ["mkusd"],
     listedAt: 1693488775,
+    deadUrl: true,
     dimensions: {
       fees: "prisma-finance"
     }
@@ -17425,7 +17440,8 @@ const data3_1: Protocol[] = [
     listedAt: 1694092169,
     dimensions: {
       fees: "friend-room"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3494",
@@ -17799,6 +17815,7 @@ const data3_1: Protocol[] = [
     twitter: "netherlabs_",
     listedAt: 1694374527,
     github: ["nether-labs"],
+    deadUrl: true,
     dimensions: {
       fees: "nether-fi",
       dexs: "nether-fi-swap",
@@ -18188,7 +18205,8 @@ const data3_1: Protocol[] = [
     twitter: "Blazebot_io",
     dimensions: {
       fees: "blazebot"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3528",
@@ -20896,6 +20914,7 @@ const data3_1: Protocol[] = [
     module: "sui-pearl/index.js",
     twitter: "suipearlfi",
     listedAt: 1697648547,
+    deadUrl: true,
   },
   {
     id: "3650",
@@ -22086,6 +22105,7 @@ const data3_1: Protocol[] = [
     twitter: "MatchFinance",
     audit_links: ["https://beosin.com/audits/Match-Finance_202309281659.pdf"],
     listedAt: 1698345189,
+    deadUrl: true,
   },
   {
     id: "3705",
@@ -22194,6 +22214,7 @@ const data3_1: Protocol[] = [
     twitter: "frenslyio",
     forkedFromIds: ["3377"],
     listedAt: 1698517487,
+    deadUrl: true,
   },
   {
     id: "3710",
@@ -22427,6 +22448,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "SpookyBase",
     listedAt: 1698750092,
+    deadUrl: true,
   },
   {
     id: "3721",
@@ -23167,6 +23189,7 @@ const data3_1: Protocol[] = [
     module: "hot-takes/index.js",
     twitter: "0xHot",
     listedAt: 1699529543,
+    deadUrl: true,
   },
   {
     id: "3756",
@@ -23316,6 +23339,7 @@ const data3_1: Protocol[] = [
     module: "xfamtech/index.js",
     twitter: "xfamtech",
     listedAt: 1699554042,
+    deadUrl: true,
   },
   {
     id: "3763",
@@ -27781,7 +27805,8 @@ const data3_1: Protocol[] = [
     twitter: "baptswap",
     audit_links: ["https://docs.baptswap.com/technical-references/security"],
     parentProtocol: "parent#baptswap",
-    listedAt: 1703726463,
+    listedAt: 1703726463, 
+    deadUrl: true,
   },
   {
     id: "3967",
@@ -28526,6 +28551,7 @@ const data3_1: Protocol[] = [
     twitter: "ArtdeFinance",
     github: ["Artdefinance"],
     listedAt: 1704800522,
+    deadUrl: true,
   },
   {
     id: "4001",
@@ -28956,6 +28982,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://docs.baptswap.com/technical-references/security"],
     parentProtocol: "parent#baptswap",
     listedAt: 1705091436,
+    deadUrl: true,
   },
   {
     id: "4019",
@@ -29326,6 +29353,7 @@ const data3_1: Protocol[] = [
     twitter: "airdao_io",
     github: ["Firepot-Finance"],
     listedAt: 1705418998,
+    deadUrl: true,
   },
   {
     id: "4036",
@@ -29609,6 +29637,7 @@ const data3_1: Protocol[] = [
     module: "CirclePacific/index.js",
     twitter: "circlepacificEN",
     listedAt: 1705709807,
+    deadUrl: true,
   },
   {
     id: "4049",
@@ -29667,6 +29696,7 @@ const data3_1: Protocol[] = [
     module: "applepie/index.js",
     twitter: "Applepiefin",
     listedAt: 1705936845,
+    deadUrl: true,
   },
   {
     id: "4052",
@@ -29890,6 +29920,7 @@ const data3_1: Protocol[] = [
     ],
     github: ["PRINT3Rxyz"],
     listedAt: 1706109818,
+    deadUrl: true,
   },
   {
     id: "4061",
@@ -30093,6 +30124,7 @@ const data3_1: Protocol[] = [
     module: "basexfi/index.js",
     twitter: "basex_fi",
     listedAt: 1706284436,
+    deadUrl: true,
   },
   {
     id: "4069",
@@ -31809,6 +31841,7 @@ const data3_1: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Seneca_SenecaDefi_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf",
     ],
     listedAt: 1708081532,
+    deadUrl: true,
   },
   {
     id: "4138",
@@ -32337,6 +32370,7 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#prisma",
     stablecoins: ["prismalrt-ultra"],
     listedAt: 1708605362,
+    deadUrl: true,
   },
   {
     id: "4160",
@@ -33743,6 +33777,7 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], //github.com/DefiLlama/defillama-server/pull/6111
     parentProtocol: "parent#rabbitx-fusion",
     listedAt: 1709403349,
+    deadUrl: true,
   },
   {
     id: "4222",
@@ -35499,6 +35534,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/VeryLongSwap/contracts/blob/main/audit/VeryLongSwap.pdf"],
     parentProtocol: "parent#verylongswap",
     listedAt: 1710508948,
+    deadUrl: true,
   },
   {
     id: "4302",
@@ -35600,6 +35636,7 @@ const data3_2: Protocol[] = [
     twitter: "jellybeancash",
     github: ["cyberminter"],
     listedAt: 1710591541,
+    deadUrl: true,
   },
   {
     id: "4307",
@@ -35655,6 +35692,7 @@ const data3_2: Protocol[] = [
     twitter: "Frontrun_market",
     github: ["frontrun-market"],
     listedAt: 1710596650,
+    deadUrl: true,
   },
   {
     id: "4310",
@@ -40473,6 +40511,7 @@ const data3_2: Protocol[] = [
     twitter: "openex_network",
     github: ["openex-network"],
     listedAt: 1714228724,
+    deadUrl: true,
   },
   {
     id: "4530",
@@ -42503,6 +42542,7 @@ const data3_2: Protocol[] = [
     twitter: "VeryLong_Swap",
     parentProtocol: "parent#verylongswap",
     listedAt: 1715943532,
+    deadUrl: true,
   },
   {
     id: "4624",
@@ -42526,6 +42566,7 @@ const data3_2: Protocol[] = [
     ],
     github: ["EnzoFinance"],
     listedAt: 1715944028,
+    deadUrl: true,
   },
   {
     id: "4625",
@@ -42582,6 +42623,7 @@ const data3_2: Protocol[] = [
     module: "trustin/index.js",
     twitter: "TrustIn_Finance",
     listedAt: 1715946353,
+    deadUrl: true,
   },
   {
     id: "4628",
@@ -43511,7 +43553,8 @@ const data3_2: Protocol[] = [
     listedAt: 1716544663,
     dimensions: {
       dexs: "c3-exchange"
-    }
+    },
+    deadUrl: true,
   },
   /*{
     id: "4671",
@@ -43747,6 +43790,7 @@ const data3_2: Protocol[] = [
     chains: ["Bitlayer"],
     module: "dummy.js",
     twitter: "TNA_Protocol",
+    deadUrl: true,
   },
   {
     id: "4682",
@@ -43794,7 +43838,8 @@ const data3_2: Protocol[] = [
         message: "DaikoDEX has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true,
   },
   {
     id: "4684",
@@ -44090,6 +44135,7 @@ const data3_2: Protocol[] = [
     twitter: "prixmswap",
     audit_links: ["https://docs.prixmswap.com/protocol-overview/security-audit"],
     listedAt: 1717098612,
+    deadUrl: true,
   },
   {
     id: "4698",
@@ -44506,6 +44552,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/joltify"],
     parentProtocol: "parent#joltify-finance",
     listedAt: 1717517815,
+    deadUrl: true,
   },
   {
     id: "4718",
@@ -45097,6 +45144,7 @@ const data3_3: Protocol[] = [
       "https://github.com/BinLayer/binlayer-contracts/blob/main/audits/PeckShield-Audit-Report-BinLayer-v1.0.pdf",
     ],
     listedAt: 1717861641,
+    deadUrl: true,
   },
   {
     id: "4744",
@@ -45631,6 +45679,7 @@ const data3_3: Protocol[] = [
     twitter: "joltify_finance",
     parentProtocol: "parent#joltify-finance",
     listedAt: 1718189554,
+    deadUrl: true,
   },
   {
     id: "4769",
@@ -46098,6 +46147,7 @@ const data3_3: Protocol[] = [
     module: "airdao-hera-pool/index.js",
     twitter: "airdao_io",
     listedAt: 1718804114,
+    deadUrl: true,
   },
   {
     id: "4790",
@@ -48220,6 +48270,7 @@ const data3_3: Protocol[] = [
     module: "kosmos/index.js",
     twitter: "AirDAOStarFleet",
     listedAt: 1721046921,
+    deadUrl: true,
   },
   /* grouped under one listing, same product
   {
@@ -48553,6 +48604,7 @@ const data3_3: Protocol[] = [
     ],
     github: ["ambrosus"],
     listedAt: 1721294482,
+    deadUrl: true,
   },
   {
     id: "4900",
@@ -50030,6 +50082,7 @@ const data3_3: Protocol[] = [
     module: "Astra/index.js",
     twitter: "airdaostarfleet",
     listedAt: 1723210017,
+    deadUrl: true,
   },
   {
     id: "4969",
@@ -50548,6 +50601,7 @@ const data3_3: Protocol[] = [
     twitter: "Paxe_fi",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/paxe/liquidFarming.pdf"],
     listedAt: 1723720581,
+    deadUrl: true,
   },
   {
     id: "4993",
@@ -51841,7 +51895,8 @@ const data3_3: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "asteroneo/index.js",
     twitter: "Asteroneo",
-    listedAt: 1724749819
+    listedAt: 1724749819,
+    deadUrl: true,
   },
   {
     id: "5053",
@@ -52486,7 +52541,8 @@ const data3_3: Protocol[] = [
     module: "boomswap/index.js",
     twitter: "eBoomSwap",
     forkedFromIds: ["2197"],
-    listedAt: 1725008219
+    listedAt: 1725008219,
+    deadUrl: true,
   },
   {
     id: "5081",
@@ -53282,7 +53338,8 @@ const data3_3: Protocol[] = [
     chains: ["TON"],
     module: "tonpools/index.js",
     twitter: "TonPools_Com",
-    listedAt: 1725887061
+    listedAt: 1725887061,
+    deadUrl: true,
   },
   {
     id: "5119",
@@ -55223,7 +55280,8 @@ const data3_3: Protocol[] = [
     chains: ["Matchain"],
     module: "mswap/index.js",
     twitter: null,
-    listedAt: 1728143577
+    listedAt: 1728143577,
+    deadUrl: true,
   },
   {
     id: "5208",
@@ -56439,7 +56497,8 @@ const data3_3: Protocol[] = [
     chains: ["AirDAO"],
     module: "airdao-harbor/index.js",
     twitter: "airdaostarfleet",
-    listedAt: 1729665505
+    listedAt: 1729665505,
+    deadUrl: true,
   },
   {
     id: "5265",
@@ -56877,7 +56936,8 @@ const data3_3: Protocol[] = [
     chains: ["Sui"],
     module: "suimarket/index.js",
     twitter: "SuiMarketNet",
-    listedAt: 1730019464
+    listedAt: 1730019464,
+    deadUrl: true,
   },
   {
     id: "5286",
@@ -58110,7 +58170,8 @@ const data3_3: Protocol[] = [
     module: "fluxusbase/index.js",
     twitter: "FluxusFinance",
     forkedFromIds: ["1407"],
-    listedAt: 1731320629
+    listedAt: 1731320629,
+    deadUrl: true,
   },
   {
     id: "5340",
@@ -60098,7 +60159,8 @@ const data3_3: Protocol[] = [
     module: "tonyielding/index.js",
     twitter: "Tonyielding",
     audit_links: ["https://beosin.com/audits/TonYielding_202411181700.pdf"],
-    listedAt: 1732790108
+    listedAt: 1732790108,
+    deadUrl: true,
   },
   {
     id: "5431",
@@ -60558,7 +60620,8 @@ const data3_3: Protocol[] = [
     twitter: "TheEMUmeme",
     audit_links: ["https://github.com/emumeme/techrate-audit/blob/main/Emu%20Quick%20Check.docx.pdf"],
     github: ["emumeme"],
-    listedAt: 1733150397
+    listedAt: 1733150397,
+    deadUrl: true,
   },
   {
     id: "5454",
@@ -61277,7 +61340,8 @@ const data3_3: Protocol[] = [
     chains: ["Bitcoin"],
     module: "jbtc/index.js",
     twitter: null,
-    listedAt: 1733926608
+    listedAt: 1733926608,
+    deadUrl: true,
   },
   {
     id: "5489",
@@ -61749,7 +61813,8 @@ const data3_3: Protocol[] = [
         message: "Sboom has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true,
   },
   {
     id: "5511",
@@ -61850,8 +61915,9 @@ const data3_3: Protocol[] = [
     chains: ["Ink"],
     forkedFromIds: ["2197"],
     module: "inkswap/index.js",
-    twitter: "inswap_",
-    listedAt: 1734521678
+    twitter: "inkSwap_",
+    listedAt: 1734521678,
+    deadUrl: true,
   },
   {
     id: "5516",

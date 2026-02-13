@@ -77,6 +77,7 @@ const data4: Protocol[] = [
     module: "windfall/index.js",
     twitter: "lendinggame",
     listedAt: 1735271597,
+    deadUrl: true,
   },
   {
     id: "5563",
@@ -2455,7 +2456,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "artexswap",
       dexs: "artexswap"
-    }
+    },
+    deadUrl: true,
   },
   /* DELISTED - SUPPLY OF MBTC DOES NOT MATCH SUPPLY OF NBTC THAT IT SELF DONT MATCH THE NTBTC RESERVERS.
   {
@@ -4750,6 +4752,7 @@ const data4: Protocol[] = [
     module: "ucs-finance/index.js",
     twitter: null, // account disable i think https://x.com/UniChainSwap
     listedAt: 1739284494,
+    deadUrl: true,
   },
   {
     id: "5768",
@@ -6231,6 +6234,7 @@ const data4: Protocol[] = [
     module: "curves/index.js",
     twitter: "0xForm",
     listedAt: 1740338327,
+    deadUrl: true,
   },
   {
     id: "5832",
@@ -6447,6 +6451,7 @@ const data4: Protocol[] = [
     module: "roll-fun/index.js",
     twitter: "tryrollhq",
     listedAt: 1740408830,
+    deadUrl: true,
   },
   {
     id: "5841",
@@ -8153,6 +8158,7 @@ const data4: Protocol[] = [
       "https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FU7Q6UV6CGLwU33vLuGwo%2Fuploads%2FtzTGuvytvqAikGukksoj%2FeGMX%20Exit%20Tech%20Audit%20Report.pdf?alt=media&token=9b9afe04-c6ab-431b-9075-d9d9d6517e4b",
     ],
     listedAt: 1742305759,
+    deadUrl: true,
   },
   /*{ // merged both into ekubo
     id: "5914",
@@ -8554,7 +8560,8 @@ const data4: Protocol[] = [
     listedAt: 1755011597,
     dimensions: {
       fees: "sedge"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5931",
@@ -9048,6 +9055,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1743001221,
     hallmarks: [[1758585600, "Rug Pull"]],
+    deadUrl: true,
   },
   {
     id: "5953",
@@ -10111,7 +10119,8 @@ const data4: Protocol[] = [
     listedAt: 1743849733,
     dimensions: {
       dexs: "goosefx_v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5999",
@@ -11729,6 +11738,7 @@ const data4: Protocol[] = [
     ],
     listedAt: 1745245775,
     github: ["LNDfi"],
+    deadUrl: true,
   },
   {
     id: "6072",
@@ -16581,6 +16591,7 @@ const data4: Protocol[] = [
     module: "nebula/index.js",
     twitter: "NebulaLending_",
     listedAt: 1749220364,
+    deadUrl: true,
   },
   {
     id: "6279",
@@ -19751,7 +19762,8 @@ const data4: Protocol[] = [
     twitter: "apstation_io",
     dimensions: {
       aggregators: "apstation"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6417",
@@ -22749,6 +22761,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#kuraswap",
     listedAt: 1754658688,
+    deadUrl: true,
     dimensions: {
       fees: "kura-v3",
       dexs: "kura-v3"
@@ -22777,7 +22790,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "kura-v2",
       dexs: "kura-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6550",
@@ -23344,7 +23358,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "aquabot",
       dexs: "aquabot"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6576",

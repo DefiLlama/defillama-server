@@ -5183,6 +5183,7 @@ const data: Protocol[] = [
       "https://github.com/CompliFi/complifi-amm/tree/master/audits",
     ],
     github: ["CompliFi"],
+    deadUrl: true,
   },
   {
     id: "343",
@@ -14782,6 +14783,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pinyottas.js",
     twitter: "pinyottas",
     listedAt: 1636177842,
+    deadUrl: true,
   },
   {
     id: "793",
@@ -17208,6 +17210,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://drive.google.com/file/d/1AZlcJmF1WJE1km3p0ajUKP6vTqhcvqh3/view"],
     forkedFromIds: ["148"],
     listedAt: 1637727721,
+    deadUrl: true,
   },
   {
     id: "905",
@@ -18119,6 +18122,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "freeliquidUSDFL",
     audit_links: ["https://freeliquid.io/wp/Smart_contract_security_audit_report_freeliquid.pdf"],
     listedAt: 1638358117,
+    deadUrl: true,
   },
   {
     id: "947",
@@ -20798,6 +20802,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["376"],
     audit_links: ["https://rugdoc.io/project/nachoxyz"],
     listedAt: 1640096151,
+    deadUrl: true,
   },
   {
     id: "1071",
@@ -20863,6 +20868,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "KittyAVAX",
     forkedFromIds: ["376"],
     listedAt: 1640109287,
+    deadUrl: true,
   },
   {
     id: "1074",
@@ -23325,6 +23331,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Magnet_DAO",
     forkedFromIds: ["340"],
     listedAt: 1641334964,
+    deadUrl: true,
   },
   {
     id: "1191",
@@ -24946,6 +24953,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "x-xyz/index.js",
     twitter: "Xdotxyz",
     listedAt: 1642194932,
+    deadUrl: true,
   },
   {
     id: "1266",
@@ -26549,6 +26557,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "croblanc/index.js",
     twitter: "croblancdotcom",
     listedAt: 1643803105,
+    deadUrl: true,
   },
   {
     id: "1343",
@@ -27339,6 +27348,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Based.pdf"],
     parentProtocol: "parent#based-finance",
     listedAt: 1644443064,
+    deadUrl: true,
   },
   {
     id: "1380",

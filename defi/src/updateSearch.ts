@@ -322,7 +322,6 @@ for (const p of parentProtocolsList) {
 function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
-  cexs: Array<SearchResult>,
   tastyMetrics: Record<string, number>,
 ) {
   const otherPages = [
@@ -344,7 +343,7 @@ function buildDirectoryResults(
   for (const parent of tvlData.parentProtocols) {
     const route = `/protocol/${sluggifyString(parent.name)}`;
     const prevNames = previousNamesMap.get(parent.name);
-    if (parent.url) urlToIndex.set(stripTrailingSlash(parent.url), directoryResults.length);
+    if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
     const allNames = [parent.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
     directoryResults.push({
@@ -353,7 +352,7 @@ function buildDirectoryResults(
       ...(parent.symbol && parent.symbol !== "-" ? { symbol: parent.symbol } : {}),
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
-      route: parent.url,
+      route: parent.referralUrl ?? parent.url,
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
@@ -363,7 +362,7 @@ function buildDirectoryResults(
 
   for (const protocol of tvlData.protocols) {
     const prevNames = previousNamesMap.get(protocol.name) ?? [];
-    const protocolUrl = protocol.url ? stripTrailingSlash(protocol.url) : "";
+    const protocolUrl = protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
     if (protocolUrl && urlToIndex.has(protocolUrl)) {
       if(prevNames.length > 0){
         // Child shares URL with an existing entry — merge its previousNames into the parent
@@ -392,13 +391,22 @@ function buildDirectoryResults(
       ...(protocol.symbol && protocol.symbol !== "-" ? { symbol: protocol.symbol } : {}),
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
-      route: protocol.url,
+      route: protocolUrl,
       ...(protocol.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[route] ?? 0,
     });
   }
+
+  const cexs: Array<SearchResult> = cexsData.map(cex=>({
+    id: `cex_${normalize(cex.name)}`,
+    name: cex.name,
+    ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
+    route: cex.url ?? "",
+    logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+    v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
+  }));
 
   const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "");
   const maxV = Math.max(...allResults.map(r => r.v));
@@ -963,7 +971,7 @@ async function generateSearchList() {
         ...result,
         r: result.r ?? 1,
       })),
-    directoryResults: buildDirectoryResults(tvlData, parentTvl, results.cexs, tastyMetrics),
+    directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))

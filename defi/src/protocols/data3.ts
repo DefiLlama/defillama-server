@@ -35100,6 +35100,7 @@ const data3_2: Protocol[] = [
     twitter: "maduckclub",
     github: ["maduck-club"],
     listedAt: 1710245185,
+    deadUrl: true,
   },
   {
     id: "4282",

@@ -4070,6 +4070,7 @@ const data4: Protocol[] = [
     twitter: "magsinio",
     forkedFromIds: ["1599"],
     listedAt: 1738844659,
+    deadUrl: true,
   },
   {
     id: "5739",

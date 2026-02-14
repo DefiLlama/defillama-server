@@ -20111,7 +20111,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [
       { name: "Internal", type: "Primary", proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/15151"] },
     ],
-    module: "OnRe/index.js",
+    module: "onre/index.js",
     twitter: "onrefinance",
     github: ["onre-finance"],
     listedAt: 1752511417,

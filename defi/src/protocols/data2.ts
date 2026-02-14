@@ -951,7 +951,7 @@ const data2: Protocol[] = [
     name: "Winkyverse",
     address: "bsc:0xb160A5F19ebccd8E0549549327e43DDd1D023526",
     symbol: "WNK",
-    url: "https://getwinkies.com",
+    url: "https://www.winkyverse.io/",
     description: "The First Global Education Games Metaverse",
     chain: "Binance",
     logo: `${baseIconsUrl}/winkyverse.png`,
@@ -4861,7 +4861,7 @@ const data2: Protocol[] = [
     previousNames: ["Aada"],
     address: "cardano:asset1khk46tdfsknze9k84ae0ee0k2x8mcwhz93k70d",
     symbol: "AADA",
-    url: "https://aada.finance",// deadUrl
+    url: "https://lenfi.io/",// deadUrl
     description: "Open-source and decentralized Lending and Borrowing protocol.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/lenfi.png`,
@@ -5725,7 +5725,7 @@ const data2: Protocol[] = [
     name: "EPNS",
     address: "0xf418588522d5dd018b425E472991E52EBBeEEEEE",
     symbol: "PUSH",
-    url: "https://epns.io",
+    url: "https://push.org/",
     description:
       "The native communication layer of Web3. Send / receive multi-chain push notifications among dapps & users.",
     chain: "Ethereum",
@@ -18584,7 +18584,7 @@ const data2: Protocol[] = [
     address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
     symbol: "FRAX",
     assetToken: "FRXETH",
-    url: "https://app.frax.finance/frxeth/mint",
+    url: "https://frax.com/",
     description:
       "Frax Ether is a liquid ETH staking derivative designed to uniquely leverage the Frax Finance ecosystem to maximize staking yield and smoothen the Ethereum staking process for a simplified, secure, and DeFi-native way to earn interest on ETH. ",
     chain: "Ethereum",
@@ -26044,7 +26044,7 @@ const data2: Protocol[] = [
     name: "Perion",
     address: "0x60bE1e1fE41c1370ADaF5d8e66f07Cf1C2Df2268",
     symbol: "PERC",
-    url: "https://perion.gg",
+    url: "https://xp.gg/",
     description:
       "Perion is a multifaceted DAO on a mission to back and build next generation products and teams at the intersect of web3, eSports, gaming and NFTs. We see web3 as being synonymous with the future of gaming and culture, a future that we will build upon utilitarian web3 technology.",
     chain: "Ethereum",
@@ -26059,6 +26059,7 @@ const data2: Protocol[] = [
     twitter: "PerionDAO",
     audit_links: ["https://www.certik.com/projects/perion"],
     listedAt: 1677066683,
+    deadUrl: true,
   },
   {
     id: "2566",

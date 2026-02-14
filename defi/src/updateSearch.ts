@@ -510,6 +510,9 @@ async function generateSearchList() {
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
+    const prevNames = previousNamesMap.get(parent.name);
+    const allNames = [parent.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
@@ -518,6 +521,8 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(parent.name)}`,
       ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -539,6 +544,9 @@ async function generateSearchList() {
 
   for (const protocol of tvlData.protocols) {
     if (protocol.name === "LlamaSwap") continue;
+    const prevNames = previousNamesMap.get(protocol.name);
+    const allNames = [protocol.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_${normalize(protocol.name)}`,
       name: protocol.name,
@@ -547,6 +555,8 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,
       ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };

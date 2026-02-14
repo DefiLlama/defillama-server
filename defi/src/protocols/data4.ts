@@ -3779,6 +3779,7 @@ const data4: Protocol[] = [
     twitter: "PassDEX",
     forkedFromIds: ["2198"],
     listedAt: 1738668464,
+    deadUrl: true
   },
   {
     id: "5726",
@@ -19186,6 +19187,7 @@ const data4: Protocol[] = [
     module: "riddle/index.js",
     twitter: "rddldotfun",
     listedAt: 1751554664,
+    deadUrl: true
   },
   {
     id: "6392",

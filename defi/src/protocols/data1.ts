@@ -11392,6 +11392,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "composable/index.js",
     twitter: "ComposableFin",
     github: ["ComposableFi"],
+    deadUrl: true
   },
   {
     id: "624",

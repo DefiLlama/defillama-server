@@ -2073,7 +2073,7 @@ const data4: Protocol[] = [
     name: "Yoko",
     address: "sonic:0x59524d5667b299c0813ba3c99a11c038a3908fbc",
     symbol: "YOKO",
-    url: "https://yoko.live/",
+    url: "https://yoko.live/",//deadUrl
     description: "Yoko is a no-code platform for launching AI Agents",
     chain: "Sonic",
     logo: `${baseIconsUrl}/yoko.png`,
@@ -8569,7 +8569,7 @@ const data4: Protocol[] = [
     name: "Spartacadabra",
     address: "fantom:0x248cb87dda803028dfead98101c9465a2fbda0d4",
     symbol: "CHARM",
-    url: "https://spartacadabra.money/",
+    url: "https://spartacadabra.money/",//deadUrl
     description: "Spartacadabra unlocks yield bearing assets and conjures magic crypto money Lambda (λ)",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spartacadabra.jpg`,
@@ -8582,6 +8582,7 @@ const data4: Protocol[] = [
     module: "spartacadabra/index.js",
     twitter: "spartacadabra",
     listedAt: 1742497621,
+    deadUrl: true,
   },
   // {
   //   id: "5932",
@@ -16390,6 +16391,7 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1749019352,
+    deadUrl: true,
   },
   {
     id: "6270", // TODO: add back once the contract in the adapter is deployed
@@ -22049,7 +22051,7 @@ const data4: Protocol[] = [
     name: "Teralend",
     address: null,
     symbol: "-",
-    url: "https://teralend.finance/",
+    url: "https://teralend.finance/",//deadUrl
     description: "Teralend is an open lending and borrowing protocol on Flare",
     chain: "Flare",
     logo: `${baseIconsUrl}/teralend.jpg`,
@@ -22062,6 +22064,7 @@ const data4: Protocol[] = [
     twitter: "TeralendFinance",
     listedAt: 1754325942,
     deadFrom: "2025-09-20",
+    deadUrl: true,
   },
   {
     id: "6518",
@@ -23818,7 +23821,7 @@ const data4: Protocol[] = [
     name: "HyperVault",
     address: null,
     symbol: "-",
-    url: "https://app.hypervault.finance/",
+    url: "https://app.hypervault.finance/",//deadUrl
     description:
       "Hypervault Finance is the premier multichain DeFi hub for yield. Hypervault allows users to deposit capital which is then deployed by Hypervault across various different DeFi protocols in order to deliver the best yield to the end user",
     chain: "Hyperliquid L1",

@@ -3269,6 +3269,7 @@ const data: Protocol[] = [
     ],
     stablecoins: ["fei-usd"],
     github: ["fei-protocol"],
+    deadUrl: true,
   },
   {
     id: "256",
@@ -15135,6 +15136,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["111"],
     github: ["pe1kko"],
     listedAt: 1636390733,
+    deadUrl: true,
   },
   {
     id: "808",
@@ -17724,7 +17726,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Fortress",
     address: "avax:0xf6d46849db378ae01d93732585bec2c4480d1fd5",
     symbol: "FORT",
-    url: "https://app.fortressdao.finance",
+    url: "https://app.fortressdao.finance",//deadUrl
     description: "An adventure in treasure management on Avalanche",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/fortress-DAO.svg`,
@@ -17739,13 +17741,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["340"],
     listedAt: 1638132365,
     github: ["Fortress-DAO"],
+    deadUrl: true,
   },
   {
     id: "929",
     name: "RaDao",
     address: "bsc:0xcc238200cFfdA7A5E2810086c26d5334e64F1155",
     symbol: "RA",
-    url: "https://radao.finance",
+    url: "https://radao.finance",//deadUrl
     description: "RaDAO is a decentralized protocol based on the $RA token – collateralized and backed by the Ra DAO.",
     chain: "Binance",
     logo: `${baseIconsUrl}/radao.png`,
@@ -17758,6 +17761,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "radao_bsc",
     forkedFromIds: ["340"],
     listedAt: 1638133081,
+    deadUrl: true,
   },
   {
     id: "930",
@@ -17967,6 +17971,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["340"],
     listedAt: 1638200165,
     github: ["RuGenerous"],
+    deadUrl: true,
   },
   {
     id: "940",
@@ -19803,7 +19808,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "DefySwap",
     address: "fantom:0x84b0b7718f8480A9eDa3133Fd385D7EDf2b1d1c4",
     symbol: "DFY",
-    url: "https://defyswap.finance/",
+    url: "https://defyswap.finance/",//deadUrl
     description: "Automated Market Maker with Limit Order Features, Impermanent Loss Protection & Futuristic UI",
     chain: "Fantom",
     logo: `${baseIconsUrl}/defyswap.png`,
@@ -22246,7 +22251,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Tethys AMM",
     address: "metis:0x69fdb77064ec5c84FA2F21072973eB28441F43F3",
     symbol: "TETHYS",
-    url: "https://tethys.finance",
+    url: "https://tethys.finance",//deadUrl
     description:
       "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
     chain: "Metis",
@@ -24602,6 +24607,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "hermes_avax",
     forkedFromIds: ["376"],
     listedAt: 1642027191,
+    deadUrl: true,
   },
   {
     id: "1249",
@@ -25799,7 +25805,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "ProtoFi",
     address: "fantom:0xa23c4e69e5Eaf4500F2f9301717f12B578b948FB",
     symbol: "PROTO",
-    url: "https://fantombank.protofi.app/",
+    url: "https://fantombank.protofi.app/",//deadUrl
     description: "The First AMM on Fantom in which you are the owner of the Protocol",
     chain: "Fantom",
     logo: `${baseIconsUrl}/protofi.jpg`,
@@ -25815,7 +25821,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     dimensions: {
       dexs: "protofi"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1307",

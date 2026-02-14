@@ -1405,7 +1405,7 @@ const data3_0: Protocol[] = [
     name: "CexDex",
     address: null,
     symbol: "-",
-    url: "https://cexdex.app",
+    url: "https://cexdex.app",//deadUrl
     description: "Vaults on Kava Network",
     chain: "Kava",
     logo: `${baseIconsUrl}/cexdex.jpg`,
@@ -2656,7 +2656,7 @@ const data3_0: Protocol[] = [
     name: "Hamburger Finance",
     address: null,
     symbol: "BURGER",
-    url: "https://hamburger.finance",
+    url: "https://hamburger.finance",//deadUrl
     description:
       "Solving the Big TVL problem, the Arbitrum Hamburger brings the best & juicy APR patties that grow as the TVL & veToken locks grow!",
     chain: "Arbitrum",
@@ -2670,6 +2670,7 @@ const data3_0: Protocol[] = [
     module: "hamburger/index.js",
     twitter: "HamburgerDEX",
     listedAt: 1681384860,
+    deadUrl: true,
   },
   {
     id: "2822",
@@ -4126,7 +4127,7 @@ const data3_0: Protocol[] = [
     name: "Rollup Finance vAMM",
     address: null,
     symbol: "-",
-    url: "https://app.rollup.finance",
+    url: "https://app.rollup.finance",//deadUrl
     description: "Decentralized perpetual protocol on zkSync Era.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/rollup-finance.png`,
@@ -4147,7 +4148,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "rollup-finace",
       derivatives: "rollup-finace-perps"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2890",
@@ -8452,7 +8454,7 @@ const data3_0: Protocol[] = [
     name: "UrDEX Finance",
     address: "arbitrum:0x842216e0aa2ae608699f7b1063f26ce6b30c5311",
     symbol: "URD",
-    url: "https://urdex.finance",
+    url: "https://urdex.finance",//deadUrl
     description: "A non-custodial, Perpetual Decentralized Exchange on the Arbitrum One",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/urdex-finance.jpg`,
@@ -8471,7 +8473,8 @@ const data3_0: Protocol[] = [
     listedAt: 1686231971,
     dimensions: {
       derivatives: "urdex"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3086",
@@ -8542,7 +8545,7 @@ const data3_0: Protocol[] = [
     name: "Heraswap",
     address: null,
     symbol: "-",
-    url: "https://heraswap.finance/swap/",
+    url: "https://heraswap.finance/swap/",//deadUrl
     description:
       "Heraswap is a decentralized exchange (DEX) for cryptocurrencies with robust liquidity through a diverse range of permissionless services and products.",
     chain: "Onus",
@@ -8558,7 +8561,8 @@ const data3_0: Protocol[] = [
     listedAt: 1686243246,
     dimensions: {
       dexs: "heraswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3090",
@@ -9277,6 +9281,7 @@ const data3_0: Protocol[] = [
     twitter: "Mono_Lend",
     forkedFromIds: ["111"],
     listedAt: 1687018321,
+    deadUrl: true,
   },
   {
     id: "3123",
@@ -11399,7 +11404,7 @@ const data3_0: Protocol[] = [
     name: "Tenx",
     address: "tenet:0x22001c881848b523dbb66df0832f1835cf2c4298",
     symbol: "TENX",
-    url: "https://www.tenx.exchange/#/swap",
+    url: "https://www.tenx.exchange/#/swap",//deadUrl
     description: `Dex on Tenet`,
     chain: "Tenet",
     logo: `${baseIconsUrl}/tenx.jpg`,
@@ -11412,6 +11417,7 @@ const data3_0: Protocol[] = [
     twitter: null,
     github: ["tenxexchange"],
     listedAt: 1689091199,
+    deadUrl: true,
   },
   {
     id: "3223",
@@ -14138,7 +14144,7 @@ const data3_0: Protocol[] = [
     name: "Magnate Finance",
     address: "base:0x2dc1cda9186a4993bd36de60d08787c0c382bead",
     symbol: "MAG",
-    url: "https://www.magnate.finance",
+    url: "https://www.magnate.finance",//deadUrl
     description:
       "Build a novel lending protocol with a dynamic interest rate model and more capital-efficient risk management pools.",
     chain: "Base",
@@ -14159,7 +14165,8 @@ const data3_0: Protocol[] = [
         message: "Magnate finance has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true,
   },
   {
     id: "3343",
@@ -16401,7 +16408,7 @@ const data3_0: Protocol[] = [
     name: "Xops Finance",
     address: "op_bnb:0xE413045ae03E56f0F627eA4f1272637e155D445f",
     symbol: "XOS",
-    url: "http://xops.finance",
+    url: "http://xops.finance",//deadUrl
     description:
       "The cutting-edge decentralised exchange (DEX) Xops Finance has swiftly become the most popular DEX on OpBNB, an Ethereum layer-2 scaling solution.",
     chain: "Op_Bnb",
@@ -16416,6 +16423,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2197"],
     github: ["xopsfinance"],
     listedAt: 1693230705,
+    deadUrl: true,
   },
   {
     id: "3446",
@@ -17058,6 +17066,7 @@ const data3_1: Protocol[] = [
     module: "base3d/index.js",
     twitter: "BaseChain3D",
     listedAt: 1693574830,
+    deadUrl: true,
   },
   {
     id: "3476",
@@ -17100,6 +17109,7 @@ const data3_1: Protocol[] = [
     github: ["0xAlternity"],
     stablecoins: ["alternity-cny"],
     listedAt: 1693576999,
+    deadUrl: true,
   },
   {
     id: "3478",
@@ -17285,7 +17295,7 @@ const data3_1: Protocol[] = [
     name: "Aeria",
     address: null,
     symbol: "-",
-    url: "https://aeria.finance/",
+    url: "https://aeria.finance/",//deadUrl
     description: "Protocol for exotic options trading strategies",
     chain: "Base",
     logo: `${baseIconsUrl}/aeria.png`,
@@ -17297,6 +17307,7 @@ const data3_1: Protocol[] = [
     module: "aeria/index.js",
     twitter: "aeriafinance",
     listedAt: 1693938331,
+    deadUrl: true,
   },
   {
     id: "3487",
@@ -19703,7 +19714,7 @@ const data3_1: Protocol[] = [
     name: "NewThrone",
     address: null,
     symbol: "THRO",
-    url: "https://newthrone.gg",
+    url: "https://newthrone.gg",//deadUrl
     description:
       "Join NewThrone today, a browser-based PVP Game project built on the Base Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
     chain: "Base",
@@ -19716,6 +19727,7 @@ const data3_1: Protocol[] = [
     module: "newthrone/index.js",
     twitter: "newthronegg",
     listedAt: 1696418075,
+    deadUrl: true,
   },
   {
     id: "3594",
@@ -20341,7 +20353,7 @@ const data3_1: Protocol[] = [
     name: "Monocerus",
     address: "manta:0x657218E3535B32EDef9a722E35dcd6EA40E1202e",
     symbol: "CERUS",
-    url: "https://monocerus.world",
+    url: "https://monocerus.world",//deadUrl
     description:
       "Monocerus is a MMORPG 3.0 (Massive Multi-players Online Role Playing Game on Web3) with CLMM DEX Gamification",
     chain: "Avalanche",
@@ -20359,7 +20371,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "monocerus",
       dexs: "monocerus"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3623",
@@ -20681,7 +20694,7 @@ const data3_1: Protocol[] = [
     name: "RoseonX",
     address: "arbitrum:0xdc8184ba488e949815d4aafb35b3c56ad03b4179",
     symbol: "ROSX",
-    url: "https://dex.roseon.world",
+    url: "https://dex.roseon.world",//deadUrl
     description: "The gamified perpetual DEX that takes trading to a whole new level",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/roseonx.jpg`,
@@ -20697,6 +20710,7 @@ const data3_1: Protocol[] = [
       "https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20Roseon%20Perpetual%20Exchange%20-%20v1.1.pdf",
     ],
     listedAt: 1697549584,
+    deadUrl: true,
   },
   {
     id: "3640",
@@ -21925,7 +21939,7 @@ const data3_1: Protocol[] = [
     name: "BaseYield",
     address: "base:0xF45116C2E5bE608152Ea8A6a73917DFE75b707dC",
     symbol: "BAY",
-    url: "https://app.baseyield.finance/",
+    url: "https://app.baseyield.finance/",//deadUrl
     description:
       "BaseYield is a decentralized Yield Optimizer on Base Chain that allows its users to earn compound interest on their crypto holdings. BaseYield earns you the highest APYs with safety and efficiency in mind",
     chain: "Base",
@@ -21940,6 +21954,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["326"],
     github: ["BAyield"],
     listedAt: 1698272677,
+    deadUrl: true,
   },
   {
     id: "3697",
@@ -22303,7 +22318,8 @@ const data3_1: Protocol[] = [
     listedAt: 1698667058,
     dimensions: {
       fees: "touch.fan"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3714",
@@ -22455,7 +22471,7 @@ const data3_1: Protocol[] = [
     name: "Perseid Finance",
     address: "scroll:0xfeC65bFB6e5BbCC9ab8aE98f62A8AaB2EA51c495",
     symbol: "PED",
-    url: "https://www.perseid.finance",
+    url: "https://www.perseid.finance",//deadUrl
     description:
       "Perseid Finance is a cutting-edge leveraged farming protocol that revolutionizes the world of decentralized finance (DeFi). With Perseid, users can amplify their earning potential by utilizing leverage to maximize their returns on farming strategies.",
     chain: "Scroll",
@@ -22468,6 +22484,7 @@ const data3_1: Protocol[] = [
     module: "perseid-finance/index.js",
     twitter: "perseidfi",
     listedAt: 1698750099,
+    deadUrl: true,
   },
   {
     id: "3722",
@@ -24157,7 +24174,7 @@ const data3_1: Protocol[] = [
     name: "Krunch Defi",
     address: null,
     symbol: "-",
-    url: "https://krunch.world",
+    url: "https://krunch.world",//deadUrl
     description:
       "Krunch Defi: Decentralized Trading for Equities, Crypto and Forex. No liquidations. Trade at 10x Leverage. Earn fees rewards.",
     chain: "Polygon",
@@ -24171,6 +24188,7 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     twitter: null,
     listedAt: 1700221855,
+    deadUrl: true,
   },
   {
     id: "3803",
@@ -24241,7 +24259,7 @@ const data3_1: Protocol[] = [
     name: "Rollup Finance Stake",
     address: null,
     symbol: "-",
-    url: "https://app.rollup.finance",
+    url: "https://app.rollup.finance",//deadUrl
     description: "Token staking for real yield.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/rollup-finance.png`,
@@ -24254,6 +24272,7 @@ const data3_1: Protocol[] = [
     twitter: "Rollup_Finance",
     parentProtocol: "parent#rollup-finance",
     listedAt: 1700323758,
+    deadUrl: true,
   },
   {
     id: "3807",
@@ -24599,7 +24618,7 @@ const data3_1: Protocol[] = [
     name: "Particles Money",
     address: "base:0xaFe5451185513925F5E757F001425338Ff93412D",
     symbol: "PARTICLE",
-    url: "https://app.particles.money/dapp",
+    url: "https://app.particles.money/dapp",//deadUrl
     description:
       "Particles Money is a decentralized solution developing synthetic ETH with a fractional collateralized system",
     chain: "Base",
@@ -24613,6 +24632,7 @@ const data3_1: Protocol[] = [
     module: "particle-money/index.js",
     twitter: "ParticlesMoney",
     listedAt: 1700593464,
+    deadUrl: true,
   },
   {
     id: "3822",
@@ -31639,7 +31659,7 @@ const data3_1: Protocol[] = [
     name: "Harbor Market",
     address: "bsc:0x42c95788f791a2be3584446854c8d9bb01be88a9",
     symbol: "HBR",
-    url: "https://www.harbor.market",
+    url: "https://www.harbor.market",//deadUrl
     description: "Decentralized lending protocol on BNBChain",
     chain: "Binance",
     logo: `${baseIconsUrl}/harbor-market.jpg`,
@@ -31659,6 +31679,7 @@ const data3_1: Protocol[] = [
     module: "harbor/index.js",
     twitter: "0xHarborMarket",
     listedAt: 1707950813,
+    deadUrl: true,
   },
   {
     id: "4132",
@@ -31962,7 +31983,7 @@ const data3_1: Protocol[] = [
     name: "SOBAX",
     address: "zeta:0xb36377f643f67e5f9775f62b624e8907c214de3c",
     symbol: "SBX",
-    url: "https://sobax.app/",
+    url: "https://sobax.app/",//deadUrl
     description:
       "Decentralised Perpetual Exchange. Trade BTC, ETH, MATIC and more with up to 100x leverage directly from your wallet at SobaX open-source ecosystem",
     chain: "Polygon",
@@ -31980,7 +32001,8 @@ const data3_1: Protocol[] = [
     listedAt: 1708338460,
     dimensions: {
       fees: "sobax-io"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4144",
@@ -32377,7 +32399,7 @@ const data3_1: Protocol[] = [
     name: "BlackrockFund",
     address: "0xbD6323A83b613F668687014E8A5852079494fB68",
     symbol: "BTC",
-    url: "https://www.blackrockfund.finance",
+    url: "https://www.blackrockfund.finance",//deadUrl
     description: "State of the art Defi Hedge Fund with disruptive debase mechanism",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/blackrockfund.jpg`,
@@ -32670,7 +32692,7 @@ const data3_2: Protocol[] = [
     name: "Satsat",
     address: "map:0xF5a59f961a8e86285Dae2e45ac4Ae50E4E47Ba97",
     symbol: "STST",
-    url: "https://satsat.exchange",
+    url: "https://satsat.exchange",//deadUrl
     description:
       "STST is a Community-Oriented Bitcoin Layer2 BRC20 Trading Platform with Fairness, Shared Benefits, Transparency, and Low Gas Fees SATSAT is an order book trading system for BRC20 tokens that is built on the Bitcoin second-layer network,MAP Protocol.",
     chain: "Map",
@@ -32683,6 +32705,7 @@ const data3_2: Protocol[] = [
     module: "satsat/index.js",
     twitter: "satsatstst",
     listedAt: 1708951549,
+    deadUrl: true,
   },
   {
     id: "4174",
@@ -34181,7 +34204,7 @@ const data3_2: Protocol[] = [
     name: "Lava",
     address: null,
     symbol: "-",
-    url: "https://lava.ag",
+    url: "https://lava.ag",//deadUrl
     description:
       "Decentralised, non-custodial, multichain liquidity optimisation. Lend, borrow, lever liquidity positions from Uniswap, Curve, GMX, and more.",
     chain: "Arbitrum",
@@ -34205,7 +34228,8 @@ const data3_2: Protocol[] = [
     listedAt: 1709648597,
     dimensions: {
       fees: "lava"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4242",
@@ -34975,7 +34999,7 @@ const data3_2: Protocol[] = [
     name: "OPT Finance",
     address: null,
     symbol: "-",
-    url: "https://www.opt.finance",
+    url: "https://www.opt.finance",//deadUrl
     description:
       "OPT Finance is the aggregator service that integrates fragmented liquidity across various decentralized exchanges.",
     chain: "WEMIX",
@@ -34990,7 +35014,8 @@ const data3_2: Protocol[] = [
     audit_links: ["https://skynet.certik.com/ko/projects/opt-finance"],
     dimensions: {
       aggregators: "opt-agg"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4278",
@@ -35519,7 +35544,7 @@ const data3_2: Protocol[] = [
     name: "VeryLongSwap AMM",
     address: null,
     symbol: "-",
-    url: "https://verylongswap.xyz",
+    url: "https://verylongswap.xyz",//deadUrl
     description: `Permissionless AMM-based exchange that supercharges spot trades with concentrated liquidity within preferred price ranges.`,
     chain: "Astar zkEVM",
     logo: `${baseIconsUrl}/verylongswap-amm.jpg`,
@@ -36985,7 +37010,7 @@ const data3_2: Protocol[] = [
     name: "Munchables",
     address: null,
     symbol: "-",
-    url: "https://www.munchables.app",
+    url: "https://www.munchables.app",//deadUrl
     description: `munchables is a unique crypto strategy game fused with evolving NFTs.`,
     chain: "Blast",
     logo: `${baseIconsUrl}/munchables.jpg`,
@@ -36998,6 +37023,7 @@ const data3_2: Protocol[] = [
     twitter: "_munchables_",
     github: ["munchablesorg"],
     listedAt: 1711405751,
+    deadUrl: true,
   },
   {
     id: "4370",
@@ -37281,7 +37307,8 @@ const data3_2: Protocol[] = [
     listedAt: 1711540820,
     dimensions: {
       derivatives: "increment-protocol"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4383",
@@ -37392,7 +37419,7 @@ const data3_2: Protocol[] = [
     name: "Keller Finance V2",
     address: "scroll:0xCF4706120623c527e32493057A4DC0cae5FC8201",
     symbol: "KELL",
-    url: "https://kellerfinance.app",
+    url: "https://kellerfinance.app",//deadUrl
     description: "A revolutionary new AMM based on Solidly launched on Scroll.",
     chain: "Scroll",
     logo: `${baseIconsUrl}/keller-finance.jpg`,
@@ -37409,7 +37436,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "keller",
       dexs: "keller"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4389",
@@ -38813,14 +38841,15 @@ const data3_2: Protocol[] = [
     listedAt: 1712583915,
     dimensions: {
       options: "moby"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4453",
     name: "fMoney",
     address: "fantom:0x1e2Ea3f3209D66647f959CF00627107e079B870d",
     symbol: "fBUX",
-    url: "https://www.fmoney.market",
+    url: "https://www.fmoney.market",//deadUrl
     description: "Your friendly neighborhood Money Market of the Fantom Opera chain.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/fmoney.jpg`,
@@ -38834,6 +38863,7 @@ const data3_2: Protocol[] = [
     twitter: "fMoneyMarkets",
     github: ["Fantom-Money-Market"],
     listedAt: 1712584115,
+    deadUrl: true,
   },
   {
     id: "4454",
@@ -41351,7 +41381,7 @@ const data3_2: Protocol[] = [
     name: "NLX Protocol",
     address: null,
     symbol: "-",
-    url: "https://nlx.trade/",
+    url: "https://nlx.trade/",//deadUrl
     description:
       "NLX is a decentralized spot perpetual exchange that built on the CORE network. Through NX Pools market participants can earn BTC yield by providing single-sided BTC liquidity to isolated markets, earning from trading fees and borrow rates taking advantage of market volatility while still maintaining exposure to BTC",
     chain: "CORE",
@@ -41372,7 +41402,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       dexs: "nlx-nlx-swap",
       derivatives: "nlx-nlx-trade"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4569",
@@ -41665,7 +41696,7 @@ const data3_2: Protocol[] = [
     name: "Keller Finance V3",
     address: "scroll:0xCF4706120623c527e32493057A4DC0cae5FC8201",
     symbol: "KELL",
-    url: "https://kellerfinance.app",
+    url: "https://kellerfinance.app",//deadUrl
     description: "Concentrated Liquidity DEX launched on Scroll.",
     chain: "Scroll",
     logo: `${baseIconsUrl}/keller-finance.jpg`,
@@ -41682,7 +41713,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "keller-cl",
       dexs: "keller-cl"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4584",
@@ -42529,7 +42561,7 @@ const data3_2: Protocol[] = [
     name: "VeryLongSwap Farm",
     address: null,
     symbol: "-",
-    url: "https://verylongswap.xyz/simple-staking",
+    url: "https://verylongswap.xyz/simple-staking",//deadUrl
     description: "Farm on Astar zkEVM chain",
     chain: "Astar zkEVM",
     logo: `${baseIconsUrl}/verylongswap-farm.jpg`,
@@ -42585,6 +42617,7 @@ const data3_2: Protocol[] = [
     module: "pump-markets/index.js",
     twitter: "pumpmarkets",
     listedAt: 1715948028,
+    deadUrl: true,
   },
   {
     id: "4626",
@@ -43165,7 +43198,7 @@ const data3_2: Protocol[] = [
     name: "ponzi.market",
     address: null,
     symbol: "-",
-    url: "https://ponzi.market",
+    url: "https://ponzi.market",//deadUrl
     description:
       "Our platform offers a game based on a Ponzi scheme with deposits in the Arbitrum network. Users create games by setting minimum and maximum bets, fees, and ROI (return on investment) percentages. New participants' deposits are distributed among previous players. When the ROI is reached, players can withdraw their funds with interest. If no deposits are made within 10 hours, the game ends, and the last participant receives the jackpot, consisting of all remaining deposits.",
     chain: "Arbitrum",
@@ -43178,6 +43211,7 @@ const data3_2: Protocol[] = [
     module: "ponzi-market/index.js",
     twitter: "ponzidev",
     listedAt: 1716371823,
+    deadUrl: true,
   },
   {
     id: "4653",
@@ -44675,7 +44709,7 @@ const data3_2: Protocol[] = [
     name: "Munchables V2",
     address: null,
     symbol: "-",
-    url: "https://munchables.app",
+    url: "https://munchables.app",//deadUrl
     description: "Munchables is a unique NFT/gamefi project. The more you munch, the more you're rewarded.",
     chain: "Blast",
     logo: `${baseIconsUrl}/munchables-v2.jpg`,
@@ -44688,6 +44722,7 @@ const data3_2: Protocol[] = [
     twitter: "_munchables_",
     audit_links: ["https://munchables.gitbook.io/munchables/resources/audit"],
     listedAt: 1717589487,
+    deadUrl: true,
   },
   {
     id: "4723",
@@ -51162,7 +51197,7 @@ const data3_3: Protocol[] = [
     name: "seiyan fun",
     address: null,
     symbol: "-",
-    url: "https://seiyan.fun",
+    url: "https://seiyan.fun",//deadUrl
     description: "the memecoin launchpad on sei",
     chain: "Sei",
     logo: `${baseIconsUrl}/seiyan-fun.png`,
@@ -51175,7 +51210,8 @@ const data3_3: Protocol[] = [
     twitter: "seiyandotfun",
     dimensions: {
       dexs: "seiyan-fun"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5020",
@@ -55876,7 +55912,7 @@ const data3_3: Protocol[] = [
     name: "MultEX",
     address: "shape:0x874D98E8c6B172A4944554ECa42194ad09836919",
     symbol: "MULTEX",
-    url: "https://multex.network/swap?chain=SHAPE",
+    url: "https://multex.network/swap?chain=SHAPE",//deadUrl
     description:
       "Decentralized exchange on Shape L2",
     chain: "Shape",
@@ -55889,7 +55925,8 @@ const data3_3: Protocol[] = [
     module: "multex/index.js",
     twitter: "Multex_Network",
     forkedFromIds: ["2197"],
-    listedAt: 1728668062
+    listedAt: 1728668062,
+    deadUrl: true,
   },
   {
     id: "5236",
@@ -58540,7 +58577,7 @@ const data3_3: Protocol[] = [
     name: "Moki",
     address: null,
     symbol: "-",
-    url: "https://moki.ag/",
+    url: "https://moki.ag/",//deadUrl
     description:
       "DEX aggregator for TON blockchain.",
     chain: "TON",
@@ -58555,7 +58592,8 @@ const data3_3: Protocol[] = [
     listedAt: 1731592547,
     dimensions: {
       aggregators: "moki"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5357",
@@ -61564,7 +61602,7 @@ const data3_3: Protocol[] = [
     name: "GMS Vaults",
     address: null,
     symbol: "-",
-    url: "https://www.gmsvaults.com",
+    url: "https://www.gmsvaults.com",//deadUrl
     description: "GMS Protocol is a yield optimizing and aggregating platform built on top of BMX and GMS’s reserve token on Base. GMS Vaults employs delta-neutral or pseudo-delta-neutral strategies to aggregate yields from an index pool or an LP to its constituent individual assets, eliminating their risks of impermanent loss or exposure to unwanted assets",
     chain: "Base",
     logo: `${baseIconsUrl}/gms-vaults.jpg`,
@@ -61575,7 +61613,8 @@ const data3_3: Protocol[] = [
     chains: ["Base"],
     module: "gmsvaults/index.js",
     twitter: "GMSVaults",
-    listedAt: 1734234184
+    listedAt: 1734234184,
+    deadUrl: true,
   },
   {
     id: "5500",
@@ -62225,6 +62264,7 @@ const data3_3: Protocol[] = [
     twitter: "GoblinsCash",
     parentProtocol: "parent#goblins-cash",
     listedAt: 1734643502,
+    deadUrl: true,
     dimensions: {
       dexs: "goblin-dex"
     }

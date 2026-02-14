@@ -10867,5 +10867,22 @@ const data5: Protocol[] = [
     audit_links: ["https://d3cny4im7ppv5.cloudfront.net/Abyss.pdf"],
     listedAt: 1771028559,
   },
+  {
+    id: "7393",
+    name: "Velto",
+    address: null,
+    symbol: "-",
+    url: "https://velto.com",
+    description: "Velto is a non‑custodial Web3 interface built by traders for fellow traders. All trading and execution happen on‑chain, so you’re always in control",
+    chain: "Base",
+    logo: `${baseIconsUrl}/velto.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "veltoapp",
+  },
 ];
 export default data5;

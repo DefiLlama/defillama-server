@@ -877,7 +877,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#tethys-finance",
     name: "Tethys Finance",
-    url: "https://tethys.finance",
+    url: "https://tethys.finance",//deadUrl
     description:
       "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
     logo: `${baseIconsUrl}/tethys-finance.png`,
@@ -3329,13 +3329,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#rollup-finance",
     name: "Rollup Finance",
-    url: "https://www.rollup.finance/",
+    url: "https://www.rollup.finance/",//deadUrl
     description: "Decentralized Perpetual Derivatives Trading Exchange",
     logo: `${baseIconsUrl}/rollup-finance.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Rollup_Finance",
+    deadUrl: true,
   },
   {
     id: "parent#dopex",
@@ -4619,13 +4620,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#keller-finance",
     name: "Keller Finance",
-    url: "https://kellerfinance.app/",
+    url: "https://kellerfinance.app/",//deadUrl
     description: "A DEX launched on Scroll",
     logo: `${baseIconsUrl}/keller-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Equilibre_Labs",
+    deadUrl: true,
   },
   /*
   {
@@ -4681,7 +4683,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#verylongswap",
     name: "VeryLongSwap",
-    url: "https://verylongswap.xyz",
+    url: "https://verylongswap.xyz",//deadUrl
     description:
       "Permissionless AMM-based exchange that supercharges spot trades with concentrated liquidity within preferred price ranges.",
     logo: `${baseIconsUrl}/verylongswap.jpg`,
@@ -6311,6 +6313,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GoblinsCash",
     treasury: "goblinscash.js",
+    deadUrl: true,
   },
   {
     id: "parent#extra-finance",

@@ -225,7 +225,7 @@ const data2: Protocol[] = [
     name: "Polyquail",
     address: "polygon:0x6116A2A8Ea71890Cf749823Ee9DEC991930a9eEa",
     symbol: "CHK",
-    url: "https://www.polyquail.finance",
+    url: "https://www.polyquail.finance",//deadUrl
     description: "Polygon yield farm",
     chain: "Polygon",
     logo: `${baseIconsUrl}/polyquail.png`,
@@ -243,6 +243,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1644528043,
     github: ["polyquail-finance"],
+    deadUrl: true,
   },
   {
     id: "1390",
@@ -2908,6 +2909,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1646455528,
     github: ["Seedifyfund"],
+    deadUrl: true,
   },
   {
     id: "1512",
@@ -4183,6 +4185,7 @@ const data2: Protocol[] = [
     twitter: "RikkeiFinance",
     audit_links: ["https://hacken.io/audits/#rikkei"],
     listedAt: 1647974345,
+    deadUrl: true,
   },
   {
     id: "1571",
@@ -5068,7 +5071,7 @@ const data2: Protocol[] = [
     name: "Concave",
     address: "0x000000007a58f5f58e697e51ab0357bc9e260a04",
     symbol: "CNV",
-    url: "https://concave.lol",
+    url: "https://concave.lol",//deadUrl
     description:
       "Concave is a community-driven, product and investment organization that aims to bring value to stakers through the development of innovative DeFi products and active treasury management.",
     chain: "Ethereum",
@@ -5082,6 +5085,7 @@ const data2: Protocol[] = [
     twitter: "ConcaveFi",
     listedAt: 1649155527,
     github: ["ConcaveFi"],
+    deadUrl: true,
   },
   {
     id: "1613",
@@ -7636,6 +7640,7 @@ const data2: Protocol[] = [
     twitter: "GoblinsCash",
     parentProtocol: "parent#goblins-cash",
     listedAt: 1651751884,
+    deadUrl: true
   },
   {
     id: "1731",
@@ -8352,7 +8357,7 @@ const data2: Protocol[] = [
     name: "AmesDefi",
     address: "bsc:0xb9e05b4c168b56f73940980ae6ef366354357009",
     symbol: "AMES",
-    url: "https://www.ames-defi.app",
+    url: "https://www.ames-defi.app",//deadUrl
     description: "BUSD pegged algorithmic stablecoin ecosystem running on BNB Chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/amesdefi.png`,
@@ -8366,6 +8371,7 @@ const data2: Protocol[] = [
     module: "amesdefi/index.js",
     twitter: "ames_defi",
     listedAt: 1652732749,
+    deadUrl: true,
   },
   {
     id: "1765",
@@ -10767,7 +10773,7 @@ const data2: Protocol[] = [
     name: "Lending Pond",
     address: null,
     symbol: "-",
-    url: "https://lendingpond.app",
+    url: "https://lendingpond.app",//deadUrl
     description: "Provide or Receive ADA through Cardano's premier P2P lending marketplace.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/lending-pond.png`,
@@ -10779,6 +10785,7 @@ const data2: Protocol[] = [
     module: "lendingpond/index.js",
     twitter: "lendingpond_ada",
     listedAt: 1656755511,
+    deadUrl: true,
   },
   {
     id: "1875",
@@ -14302,7 +14309,7 @@ const data2: Protocol[] = [
     name: "SSAP",
     address: null,
     symbol: "-",
-    url: "https://app.ssap.finance/dashboard",
+    url: "https://app.ssap.finance/dashboard",//deadUrl
     description: "An open-source noncustodial lending protocol",
     chain: "Oasis",
     logo: `${baseIconsUrl}/ssap.png`,
@@ -14319,6 +14326,7 @@ const data2: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SSAP-v1.0.pdf",
     ],
     listedAt: 1661854029,
+    deadUrl: true,
   },
   {
     id: "2037",
@@ -20198,6 +20206,7 @@ const data2: Protocol[] = [
     module: "crypto-lottery/index.js",
     twitter: "__cryptolottery",
     listedAt: 1668782160,
+    deadUrl: true,
   },
   {
     id: "2295",
@@ -21525,7 +21534,7 @@ const data2: Protocol[] = [
     name: "Athos Finance",
     address: "moonbeam:0xCBABEe0658725b5B21e1512244734A5D5C6B51D6",
     symbol: "ATH",
-    url: "http://athos.finance",
+    url: "http://athos.finance",//deadUrl
     description: "The first decentralized delta-one asset protocol on Moonbeam.",
     chain: "Moonbeam",
     logo: `${baseIconsUrl}/athos-finance.png`,
@@ -21538,6 +21547,7 @@ const data2: Protocol[] = [
     twitter: "Athos_Finance",
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1670855631,
+    deadUrl: true,
   },
   {
     id: "2356",
@@ -21595,7 +21605,7 @@ const data2: Protocol[] = [
     name: "Dexit Finance Swap",
     address: "bsc:0x2b2ff80c489dad868318a19fd6f258889a026da5",
     symbol: "DXT",
-    url: "https://dexit.finance/swap/",
+    url: "https://dexit.finance/swap/",//deadUrl
     description: "AMM DEX on Dexit Network",
     chain: "Dexit",
     logo: `${baseIconsUrl}/dexit-finance-swap.png`,
@@ -22593,7 +22603,7 @@ const data2: Protocol[] = [
     name: "cSwap",
     address: null,
     symbol: "-",
-    url: "https://app.cswap.one",
+    url: "https://app.cswap.one",//deadUrl
     description: "An orderbook-style Interchain DEX built on Comdex",
     chain: "Comdex",
     logo: `${baseIconsUrl}/cswap.jpg`,
@@ -22605,6 +22615,7 @@ const data2: Protocol[] = [
     module: "cswap/index.js",
     twitter: "cSwap_DEX",
     listedAt: 1672835623,
+    deadUrl: true,
   },
   {
     id: "2405",
@@ -23561,6 +23572,7 @@ const data2: Protocol[] = [
       "https://github.com/oak-security/audit-reports/blob/master/Comdex/2022-12-07%20Audit%20Report%20-%20Comdex%20v1.0.pdf",
     ],
     listedAt: 1673965094,
+    deadUrl: true,
   },
   {
     id: "2450",
@@ -23877,7 +23889,7 @@ const data2: Protocol[] = [
     name: "Tethys Perpetual",
     address: "metis:0x69fdb77064ec5c84fa2f21072973eb28441f43f3",
     symbol: "TETHYS",
-    url: "https://tethys.finance/#/trade",
+    url: "https://tethys.finance/#/trade",//deadUrl
     description: "A decentralized perpetual exchange to offer $METIS leverage trading, trade up to 50x leverage",
     chain: "Metis",
     logo: `${baseIconsUrl}/tethys-finance.png`,
@@ -25710,7 +25722,7 @@ const data2: Protocol[] = [
     name: "VeniceSwap",
     address: null,
     symbol: "-",
-    url: "https://venice.finance",
+    url: "https://venice.finance",//deadUrl
     description:
       "Vencieswap, the second DEX on Findora (FRA) delivering great trading experience and earning opportunities",
     chain: "Findora",
@@ -25726,7 +25738,8 @@ const data2: Protocol[] = [
     listedAt: 1676732567,
     dimensions: {
       dexs: "veniceswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2551",
@@ -26196,7 +26209,7 @@ const data2: Protocol[] = [
     name: "QuantumX Network",
     address: null,
     symbol: "-",
-    url: "https://www.quantumx.network",
+    url: "https://www.quantumx.network",//deadUrl
     description:
       "QuantumX Network is a decentralized platform that provides a tightly integrated ecosystem of dApps aiming to get full advantage of the power of MultiversX.",
     chain: "Elrond",
@@ -26212,6 +26225,7 @@ const data2: Protocol[] = [
       "https://bhero.com/pdf/audits/elrond/SuperRareBears_SmartContract_Audit_FarmsSmartContract_v.0.1.pdf",
     ],
     listedAt: 1677155709,
+    deadUrl: true,
   },
   {
     id: "2574",
@@ -27132,6 +27146,7 @@ const data2: Protocol[] = [
     twitter: "grappafinance",
     listedAt: 1677611970,
     github: ["grappafinance"],
+    deadUrl: true,
   },
   {
     id: "2615",
@@ -27354,6 +27369,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["1018"],
     audit_links: ["https://www.certik.com/projects/mymetatrader"],
     listedAt: 1677769575,
+    deadUrl: true,
   },
   {
     id: "2625",

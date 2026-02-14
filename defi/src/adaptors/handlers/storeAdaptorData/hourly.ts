@@ -521,8 +521,8 @@ export async function processHourlyAdapter(params: {
         const ts = getUnixTsFromHourlyTimeS(timeString)
         let endTimestampForSlice = ts + ONE_HOUR_IN_SECONDS - 1
 
-        if (process.env.UI_TOOL_MODE)
-          console.log(`[hourly] Fetching missing hourly slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} with endTimestamp ${new Date(endTimestampForSlice * 1e3).toISOString()}, parallel count: ${parallelProcessCount}, isDryRun: ${isDryRun}, checkBeforeInsert: ${checkBeforeInsert}`)
+        // if (process.env.UI_TOOL_MODE)
+        //   console.log(`[hourly] Fetching missing hourly slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()} with endTimestamp ${new Date(endTimestampForSlice * 1e3).toISOString()}, parallel count: ${parallelProcessCount}, isDryRun: ${isDryRun}, checkBeforeInsert: ${checkBeforeInsert}`)
 
         const res: any = await runAdapter({
           module: adaptor,
@@ -578,7 +578,7 @@ export async function processHourlyAdapter(params: {
         }
 
         if (process.env.UI_TOOL_MODE)
-          console.log(`[hourly] Fetched slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}, parallel count: ${params.parallelProcessCount}, isDryRun: ${isDryRun}, checkBeforeInsert: ${checkBeforeInsert}`)
+          console.log(`[hourly] Fetched slice for ${adapterType} - ${module} at ${new Date(ts * 1e3).toISOString()}`)
 
       }
     })

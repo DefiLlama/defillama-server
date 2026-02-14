@@ -1485,6 +1485,7 @@ export const chainCoingeckoIds = {
     chainId: 225,
     twitter: "0xLachain",
     url: "https://lachain.io/",
+    deadUrl: true,
   },
   "Coti": {
     geckoId: "coti",
@@ -2638,7 +2639,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 4337,
     twitter: "MeritCircle_IO",
-    url: "https://meritcircle.io/",
+    url: "https://onbeam.com/",
   },
   "NOS": {
     geckoId: null,
@@ -2833,7 +2834,7 @@ export const chainCoingeckoIds = {
     cmcId: "18248",
     categories: ["Cosmos"],
     twitter: "sommfinance",
-    url: "https://www.sommelier.finance/",
+    url: "https://somm.finance/",
   },
   "Bahamut": {
     geckoId: "fasttoken",
@@ -2886,6 +2887,7 @@ export const chainCoingeckoIds = {
     governanceID: ["snapshot:airdaofoundation.eth"],
     url: "https://airdao.io/",
     chainId: 16718,
+    deadUrl: true,
   },
   "dYdX": {
     geckoId: "dydx-chain",
@@ -3495,6 +3497,7 @@ export const chainCoingeckoIds = {
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"],
+    deadUrl: true,
   },
   "IOTA": {
     geckoId: "iota",
@@ -3669,7 +3672,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
     },
     twitter: "reya_xyz",
-    url: "https://reya.network",
+    url: "https://reya.xyz/",
     chainId: 1729,
     dimensions: {
       fees: "reya",
@@ -5589,6 +5592,7 @@ export const chainCoingeckoIds = {
     twitter: "megaeth",
     url: "https://www.megaeth.com/",
     chainId: 4326,
+    stablecoins: ["megausd"],
   },
   "Quai": {
     geckoId: "quai-network",
@@ -5672,6 +5676,14 @@ export const chainCoingeckoIds = {
     categories: [],
     twitter: "OpenledgerHQ",
     url: "https://www.openledger.xyz/",
+  },
+    "N1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "N1Chain",
+    url: "https://www.n1.xyz/",
   },
 } as unknown as ChainCoinGekcoIds;
 

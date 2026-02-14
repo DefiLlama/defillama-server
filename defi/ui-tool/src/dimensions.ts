@@ -166,9 +166,8 @@ export async function storeAllWaitingRecords(ws: any) {
     .for(allRecords)
     .process(async ([id, record]: any) => {
       // if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
-      const { storeRecordV2Function, storeDDBFunctions } = record as any
-      if (storeRecordV2Function) await storeRecordV2Function()
-      if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))
+      const { storeFunctions } = record as any
+      if (storeFunctions?.length) await Promise.all(storeFunctions.map((f: any) => f()))
       delete recordItems[id]
     })
 

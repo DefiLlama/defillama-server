@@ -455,7 +455,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
         tb = res.breakdownByToken
         tbl = res.tokenBreakdownByLabel
         tblc = res.tokenBreakdownByLabelByChain
-        convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
 
         if (tb && (!tbl || !tblc)) {
           const built = buildTokenBreakdownsByLabel({
@@ -468,7 +467,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         }
       }
 
-      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)
+      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)   // remove unmapped record types and convert keys to short names
 
       // sort out record timestamp
       const timestampFromResponse = adaptorRecordV2JSON.timestamp
@@ -498,41 +497,18 @@ export const handler2 = async (options: DimensionRunOptions) => {
       }
 
       if (noDataReturned && isRunFromRefillScript) {
-        // console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
         return;
       }
 
       const responseObject: any = {
         recordV2: undefined,
-        storeDDBFunctions: [],
-        storeRecordV2Function: undefined,
+        storeFunctions: [],
         adapterType: adapterType,
         protocolName: protocol.displayName,
       }
 
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
-
-      if (adapterRecord && isDryRun) {
-        const pgItem = adapterRecord.getPGItem()
-        const ddbItem = adapterRecord.getDDBItem()
-
-        responseObject.debug = {
-          adapterType,
-          module,
-          id: adapterRecord.id,
-          timeS: adapterRecord.timeS,
-          recordTimestamp,
-          pgItem,
-          ddbItem,
-          aggregated: adaptorRecordV2JSON.aggregated,
-          breakdownByLabel: adaptorRecordV2JSON.breakdownByLabel,
-          breakdownByLabelByChain: adaptorRecordV2JSON.breakdownByLabelByChain,
-          tb,
-          tbl,
-          tblc,
-          hourlySlices: hourlySlicesForDebug,
-        }
-      }
 
       async function storeTokenBreakdownData() {
         if (!adapterRecord) return;
@@ -608,9 +584,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           await storeTokenBreakdownData()
           if (hourlyStoreFn) await hourlyStoreFn()
         } else if (checkBeforeInsert) {
-          responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
-          responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
-          if (hourlyStoreFn) responseObject.storeDDBFunctions.push(hourlyStoreFn)
+          responseObject.storeFunctions.push(async () => storeAdapterRecord(adapterRecord))
+          responseObject.storeFunctions.push(storeTokenBreakdownData)
+          if (hourlyStoreFn) responseObject.storeFunctions.push(hourlyStoreFn)
           responseObject.recordV2 = adapterRecord
           responseObject.id = `${adapterRecord.adapterType}#${adapterRecord.id}#${adapterRecord.timeS}`
           responseObject.timeS = adapterRecord.timeS

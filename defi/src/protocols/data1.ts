@@ -1468,7 +1468,8 @@ const data: Protocol[] = [
     module: "synlev.js",
     twitter: null,
     github: ["SynLev"],
-    rugged: true
+    rugged: true,
+    deadUrl: true,
   },
   {
     id: "172",
@@ -9219,6 +9220,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "CryptYieldFocus",
     forkedFromIds: ["205"],
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "524",
@@ -9570,6 +9572,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "carbonfi_io",
     forkedFromIds: ["537"],
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "540",
@@ -16286,6 +16289,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BearFinanceOrg",
     listedAt: 1637345368,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "862",
@@ -18744,6 +18748,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["340"],
     listedAt: 1638599279,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "975",
@@ -22921,6 +22926,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["340"],
     listedAt: 1641061623,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "1172",
@@ -24832,6 +24838,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DevPillar",
     listedAt: 1642144681,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "1260",

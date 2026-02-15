@@ -1413,6 +1413,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#onering",
     listedAt: 1645453599,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "1444",
@@ -2806,6 +2807,7 @@ const data2: Protocol[] = [
     twitter: "ThePULSE_DAO",
     listedAt: 1646425665,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "1507",
@@ -9604,6 +9606,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1655070947,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "1820",
@@ -15271,6 +15274,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/Corgi_Finance"],
     listedAt: 1662635941,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2078",
@@ -16240,6 +16244,7 @@ const data2: Protocol[] = [
     twitter: "ApexFoundation_",
     listedAt: 1663941507,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2121",
@@ -22552,6 +22557,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/Syrup-Finance/syrup-contracts/tree/main/audits"],
     listedAt: 1672682063,
     rugged: true,
+    deadUrl: true,
     dimensions: {
       dexs: "syrup-finance"
     }
@@ -24527,6 +24533,8 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#rehold",
     listedAt: 1675454199,
+    deadUrl: true,
+    rugged: true,
     warningBanners: [
       {
         message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",
@@ -28535,6 +28543,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/Cthulhu"],
     listedAt: 1678918257,
     rugged: true,
+    deadUrl: true,
   },
   /* added back to the leverage farming
   {
@@ -29014,6 +29023,7 @@ const data2: Protocol[] = [
     twitter: "ZukeSwap",
     listedAt: 1679396445,
     rugged: true,
+    deadUrl: true,
   },
 ];
 export default data2;

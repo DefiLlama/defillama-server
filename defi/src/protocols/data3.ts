@@ -661,6 +661,7 @@ const data3_0: Protocol[] = [
     twitter: "GemSwap_ZKS",
     listedAt: 1679891989,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2730",
@@ -730,6 +731,7 @@ const data3_0: Protocol[] = [
     twitter: "Atlasaggregator",
     listedAt: 1679923806,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2733",
@@ -1483,6 +1485,7 @@ const data3_0: Protocol[] = [
     ],
     listedAt: 1680540285,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2768",
@@ -2809,6 +2812,7 @@ const data3_0: Protocol[] = [
     twitter: "satoshicoreswap",
     listedAt: 1681436914,
     rugged: true,
+    deadUrl: true,
     dimensions: {
       dexs: "satoshiswap"
     }
@@ -12140,6 +12144,8 @@ const data3_0: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/rehold"],
     parentProtocol: "parent#rehold",
     listedAt: 1689773129,
+    deadUrl: true,
+    rugged: true,
     warningBanners: [
       {
         message: "$700,000 Unsanctioned Withdrawal Be cautious when interacting with ReHold, ReHold V1, and ReHold V2. It is important to review both sides of the story: Check both the history here: medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd and the other side here: prnt.sc/HspPo_049Lzk. On rehold.io. Made on 26/09/2024.",

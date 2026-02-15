@@ -8940,6 +8940,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SupernovaDEX",
   },
+  {
+    id: "parent#lunar-finance",
+    name: "Lunar Finance",
+    url: "https://lunarfinance.io",
+    description: "Lunar finance is a multichain aggregator that allows users to swap and bridge on 40+ chains.",
+    logo: `${baseIconsUrl}/lunar-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Lunar_finance",
+  },
 ];
 
 export default parentProtocols;

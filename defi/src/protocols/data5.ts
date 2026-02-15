@@ -10972,5 +10972,26 @@ const data5: Protocol[] = [
       dexs: "egas-swap",
     },
   },
+  {
+    id: "7398",
+    name: "Fwog.fun",
+    address: "solana:FWoGYRhR6YagBSqncPSdn43GHNikSPw1ggrGzyM3H5rE",
+    symbol: "COW",
+    url: "https://www.fwog.fun/",
+    description: "FWOG is a Solana-based meme token launchpad.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/fwog.fun.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "PerpetualCow",
+    dimensions: {
+      dexs: "fwogfun",
+      fees: "fwogfun",
+    },
+  },
 ];
 export default data5;

@@ -752,7 +752,7 @@ interface HistoricalDataPointAssetTypes {
   base: HistoricalBreakdownDataPoint;
   includeStablecoin: HistoricalBreakdownDataPoint; // base + stablecoin
   includeGovernance: HistoricalBreakdownDataPoint; // base + governance
-  all: HistoricalBreakdownDataPoint; // base + stablecoin + governancec
+  all: HistoricalBreakdownDataPoint; // base + stablecoin + governance
 }
 
 async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Promise<void> {
@@ -843,14 +843,14 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       if (m.data.governance) {
         // add to includeGovernance only
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
-        _updateBreakdownAndAssetTypes(map,timestamp,"includeGovernance","activeMcap",itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
-        _updateBreakdownAndAssetTypes(map,timestamp,"includeGovernance","defiActiveTvl",itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+        _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
       }
   
       // add to all
-      _updateBreakdownAndAssetTypes(map,timestamp,"all","onChainMcap",itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
-      _updateBreakdownAndAssetTypes(map,timestamp,"all","activeMcap",itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
-      _updateBreakdownAndAssetTypes(map,timestamp,"all","defiActiveTvl",itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+      _updateBreakdownAndAssetTypes(map, timestamp, "all", "onChainMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
+      _updateBreakdownAndAssetTypes(map, timestamp, "all", "activeMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+      _updateBreakdownAndAssetTypes(map, timestamp, "all", "defiActiveTvl", itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
     }
   }
 
@@ -989,7 +989,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   }
 
   // Store chain charts - chain breakdown by asset types
-  const rawChainBreakdownAndAssetTypes = toTimeseriesBreakdownChart(chainBreakdownAndAssetTypes);
+  const rawChainBreakdownAndAssetTypes = toTimeseriesBreakdownChart(chainBreakdownAndAssetTypes, true);
   for (const [rawKey, rawData] of Object.entries(rawChainBreakdownAndAssetTypes)) {
     await storeRouteData(`charts/chain-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
   }
@@ -1042,7 +1042,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}`);
 }
 
-function toTimeseriesBreakdownChart(data: any): any {
+function toTimeseriesBreakdownChart(data: any, chainLabel?: boolean): any {
   const timeseries: any = {};
   for (const [timestamp, dataMap] of Object.entries(data)) {
     for (const assetType of ["base", "includeStablecoin", "includeGovernance", "all"]) {
@@ -1050,9 +1050,9 @@ function toTimeseriesBreakdownChart(data: any): any {
         const rawKey = `${assetType}-${key}`;
         timeseries[rawKey] = timeseries[rawKey] || [];
         const item: any = { timestamp: Number(timestamp) };
-        for (const [chainKey, tvl] of Object.entries((dataMap as any)[assetType][key])) {
-          const chainLabel = getChainLabelFromKey(chainKey);
-          item[chainLabel] = Number(tvl);
+        for (const [itemKey, itemTvl] of Object.entries((dataMap as any)[assetType][key])) {
+          const label = chainLabel ? getChainLabelFromKey(itemKey) : itemKey;
+          item[label] = Number(itemTvl);
         }
         timeseries[rawKey].push(item);
       }

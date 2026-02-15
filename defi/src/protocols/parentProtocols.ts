@@ -3414,7 +3414,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
-    gecko_id: null,
+    gecko_id: "lighter",
     cmcId: null,
     chains: [],
     twitter: "Lighter_xyz",

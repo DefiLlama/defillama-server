@@ -10951,5 +10951,26 @@ const data5: Protocol[] = [
     parentProtocol: "parent#currentx",
     listedAt: 1771171119,
   },
+  {
+    id: "7396",
+    name: "EGAS swap",
+    address: null,
+    symbol: "-",
+    url: "https://xplan.eniac.network/egas",
+    description: "EGAS Swap is a native swap protocol on the ENI chain that allows users to swap between EGAS and supported ERC20 assets. The protocol uses an ERC1967 proxy contract to custody liquidity. EGAS Swap primarily serves as a utility swap to provide users access to EGAS for gas payments, with additional assets planned to be supported in the future.",
+    chain: "ENI",
+    logo: `${baseIconsUrl}/egas-swap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["ENI"],
+    forkedFromIds: ["2197"],
+    module: "dummy.js",
+    twitter: "ENI__Official",
+    dimensions: {
+      dexs: "egas-swap",
+    },
+  },
 ];
 export default data5;

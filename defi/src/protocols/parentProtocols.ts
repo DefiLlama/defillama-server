@@ -8951,6 +8951,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lunar_finance",
   },
+  {
+    id: "parent#currentx",
+    name: "CurrentX",
+    url: "https://currentx.app/",
+    description: "High-performance decentralized exchange on MegaETH.",
+    logo: `${baseIconsUrl}/currentx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "currentxdex",
+  },
 ];
 
 export default parentProtocols;

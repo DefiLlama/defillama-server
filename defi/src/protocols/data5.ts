@@ -10952,7 +10952,7 @@ const data5: Protocol[] = [
     listedAt: 1771171119,
   },
   {
-    id: "7396",
+    id: "7397",
     name: "EGAS swap",
     address: null,
     symbol: "-",

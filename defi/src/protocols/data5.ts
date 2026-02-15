@@ -10993,5 +10993,26 @@ const data5: Protocol[] = [
       fees: "fwogfun",
     },
   },
+  {
+    id: "7399",
+    name: "Flashnet",
+    address: null,
+    symbol: "-",
+    url: "https://www.flashnet.xyz/",
+    description: "Flashnet is a modular exchange stack for Bitcoin. It is designed to rival the performance of TradFi exchange systems without any of the custody, and without introducing blockchain-related innefficiencies to execution.",
+    chain: "Spark",
+    logo: `${baseIconsUrl}/flashnet.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Spark"],
+    module: "dummy.js",
+    twitter: "flashnet",
+    github: ["flashnetxyz"],
+    dimensions: {
+      dexs: "flashnet",
+    },
+  },
 ];
 export default data5;

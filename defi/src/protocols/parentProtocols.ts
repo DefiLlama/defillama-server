@@ -8962,6 +8962,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "currentxdex",
   },
+  {
+    id: "parent#parity",
+    name: "Parity",
+    url: "https://app.parity.exchange/",
+    description: "The native liquidity layer on Monad. Solidly V2 AMM + Concentrated Liquidity with ve(3,3) tokenomics.",
+    logo: `${baseIconsUrl}/parity.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParityDEX",
+  },
 ];
 
 export default parentProtocols;

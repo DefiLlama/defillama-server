@@ -11096,7 +11096,7 @@ const data5: Protocol[] = [
     gecko_id: "stobox-token",
     cmcId: "7245",
     category: "Services",
-    chains: ["Binance", "Polygon", "Arbitrum"],
+    chains: ["Arbitrum"],
     module: "stobox/index.js",
     twitter: "StoboxCompany",
     github: ["StoboxTechnologies"],

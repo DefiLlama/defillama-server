@@ -4472,6 +4472,7 @@ export const chainCoingeckoIds = {
     chainId: 478,
     twitter: "0xForm",
     url: "https://form.network/",
+    deadUrl: true,
   },
   "HyperEVM": {
     geckoId: null,

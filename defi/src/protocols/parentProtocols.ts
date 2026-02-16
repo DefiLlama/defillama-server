@@ -1174,6 +1174,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rocifi",
     github: ["RociFi"],
+    deadUrl: true,
   },
   {
     id: "parent#lfgswap",
@@ -1622,6 +1623,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "smbswap",
     github: ["Cr3k"],
+    deadUrl: true,
   },
   {
     id: "parent#hydradex",
@@ -1960,7 +1962,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#predy-finance",
     name: "Predy Finance",
-    url: "https://www.predy.finance",
+    url: "https://app.predy.finance/",
     description: "Trade, Hedge, and Earn through pVault connected AMM.",
     logo: `${baseIconsUrl}/predy-finance.png`,
     gecko_id: null,
@@ -3156,7 +3158,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lifinity",
     name: "Lifinity",
-    url: "https://lifinity.io/pools",
+    url: "https://lifinity.io/",
     description:
       "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
     logo: `${baseIconsUrl}/lifinity.jpg`,
@@ -3164,6 +3166,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19842",
     chains: [],
     twitter: "Lifinity_io",
+    deprecated: true,
   },
   {
     id: "parent#swell",
@@ -3432,6 +3435,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DFXFinance",
     governanceID: ["snapshot:dfx.eth"],
     github: ["dfx-finance"],
+    deadUrl: true,
   },
   {
     id: "parent#ascent-exchange",
@@ -4144,6 +4148,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "NileExchange",
+    deadUrl: true,
   },
   {
     id: "parent#cleopatra-exchange",
@@ -4156,6 +4161,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "CleopatraDEX",
+    deadUrl: true,
   },
   {
     id: "parent#pharaoh-exchange",
@@ -4330,6 +4336,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AstariaXYZ",
     github: ["AstariaXYZ"],
+    deadUrl: true,
   },
   {
     id: "parent#ether-fi",
@@ -6094,6 +6101,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "DegenHive",
+    deadUrl: true,
   },
   {
     id: "parent#bluefin",

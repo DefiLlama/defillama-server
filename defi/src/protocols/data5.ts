@@ -1034,6 +1034,7 @@ const data5: Protocol[] = [
     twitter: "ShroomyProject",
     parentProtocol: "parent#shroomy-protocol",
     deprecated: true,
+    deadUrl: true,
     dimensions: {
       dexs: "shroomy-protocol",
       fees: "shroomy-protocol",
@@ -1665,7 +1666,7 @@ const data5: Protocol[] = [
     name: "TurboFlow",
     address: null,
     symbol: "-",
-    url: "https://www.turboflow.xyz/home",
+    url: "https://www.turboflow.xyz/trade/",
     description: "The most retail-friendly PerpDEX, where retail trades like pros.",
     chain: "Binance",
     logo: `${baseIconsUrl}/turboflow.jpg`,
@@ -5870,6 +5871,7 @@ const data5: Protocol[] = [
     module: "novis/index.js",
     twitter: "NOVISdefi",
     listedAt: 1765991567,
+    deadUrl: true,
   },
   {
     id: "7153",

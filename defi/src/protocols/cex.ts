@@ -363,8 +363,8 @@ export const cexsData: Array<ICex> = [
     slug: "klever-exchange",
     coin: "KLV",
     coinSymbol: "KLV",
-    cgId: "klever_exchange",
-    url: "https://bitcoin.me/us",
+    cgId: "klever_io",
+    url: "https://klever.io/",
   },
   {
     name: "BTSE",

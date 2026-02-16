@@ -730,7 +730,7 @@ const data4: Protocol[] = [
     name: "dTRINITY dUSD",
     address: null,
     symbol: "-",
-    url: "https://app.dtrinity.org/dusd/",
+    url: "https://app.dtrinity.org/mint/dusd/",
     description:
       `dTRINITY (short for "DeFi Trinity") is the world's first subsidized stablecoin protocol, a new DeFi primitive designed to supercharge on-chain credit markets. At its core is dUSD, a decentralized stablecoin fully backed by exogenous, yield-bearing reserve assets. Rather than paying yield to passive stablecoin holders or stakers, dTRINITY distributes its reserve earnings as interest rebates to subsidize dUSD borrowers directly. By stimulating credit, the protocol is able to raise its natural supply-demand equilibrium, unlocking greater yields and capital efficiency for stablecoin users.`,
     chain: "Fraxtal",
@@ -5716,7 +5716,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "mpSOL",
-    url: "https://www.metapool.app/es/restake/",
+    url: "https://www.metapool.app/stake?token=sol",
     description:
       "mpSOL is the first Restaking Aggregator for the Solana blockchain. mpSOL is being deployed in Solana by the Meta Pool DAO, in order to provide users early easy access to the benefits of all restaking projects in Solana.",
     chain: "Solana",
@@ -6279,6 +6279,7 @@ const data4: Protocol[] = [
     module: "form-l2/index.js",
     twitter: "0xForm",
     listedAt: 1740338348,
+    deadUrl: true,
   },
   {
     id: "5834",
@@ -6850,7 +6851,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "degen-launchpad",
       dexs: "degen-launchpad"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5858",
@@ -6959,7 +6961,7 @@ const data4: Protocol[] = [
     name: "HyperYield",
     address: null,
     symbol: "-",
-    url: "https://hyperyield.com/",
+    url: "https://app.hyperyield.com/",
     description: "Lend, Borrow, Earn at Hyper Speed on HyperLiquid L1",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperyield.png`,
@@ -9353,7 +9355,7 @@ const data4: Protocol[] = [
     name: "Sandglass",
     address: null,
     symbol: "-",
-    url: "https://sandglass.so/markets",
+    url: "https://sandglass.so/",
     description: "Solana's yield trading protocol. Built by the Lifinity team",
     chain: "Solana",
     logo: `${baseIconsUrl}/sandglass.jpg`,
@@ -9364,6 +9366,7 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "sandglass/index.js",
     twitter: "sandglass_so",
+    deprecated: true,
     dimensions: {
       dexs: "sandglass"
     }
@@ -14016,7 +14019,7 @@ const data4: Protocol[] = [
     name: "IVX Protocol",
     address: null,
     symbol: "-",
-    url: "https://diem.ivx.fi/trade",
+    url: "https://diem.ivx.fi/",
     description:
       "IVX is the hub of Berivatives on Berachain, offering Diem, a fully fledged liquid 0dte options market for $BERA, $ETH and $BTC",
     chain: "Berachain",
@@ -16219,6 +16222,7 @@ const data4: Protocol[] = [
     twitter: "drefinance",
     github: ["dredotfinance"],
     listedAt: 1748928247,
+    deadUrl: true,
   },
   {
     id: "6262",
@@ -16304,7 +16308,7 @@ const data4: Protocol[] = [
     name: "Haiku",
     address: null,
     symbol: "-",
-    url: "https://haiku.trade/trade",
+    url: "https://app.haiku.trade/trade",
     description:
       "Haiku is an AI-powered DeFi protocol that lets users execute trading strategies through plain language commands",
     chain: "Ethereum",
@@ -16326,7 +16330,7 @@ const data4: Protocol[] = [
     name: "Stellar DEX",
     address: null,
     symbol: "XLM",
-    url: "https://developers.stellar.org/docs/learn/encyclopedia/sdex/liquidity-on-stellar-sdex-liquidity-pools#sdex",
+    url: "https://developers.stellar.org/docs/learn/fundamentals/liquidity-on-stellar-sdex-liquidity-pools",
     description:
       "The Stellar network acts as a decentralized distributed exchange that allows users to trade and convert assets with the network's Offer operations",
     chain: "Stellar",
@@ -16771,6 +16775,7 @@ const data4: Protocol[] = [
     audit_links: ["https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"],
     parentProtocol: "parent#shroomy-protocol",
     deprecated: true,
+    deadUrl: true,
     listedAt: 1749484357,
   },
   {
@@ -16978,7 +16983,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "gliquid",
       dexs: "gliquid"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6295",
@@ -17300,6 +17306,7 @@ const data4: Protocol[] = [
     twitter: "GloomOnSonic",
     forkedFromIds: ["2197"],
     listedAt: 1750066146,
+    deadUrl: true,
   },
   {
     id: "6308",
@@ -17993,7 +18000,8 @@ const data4: Protocol[] = [
     dimensions: {
       options: "optfun",
       fees: "optfun"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6338",
@@ -18071,7 +18079,7 @@ const data4: Protocol[] = [
     name: "Katana Pre-Launch",
     address: null,
     symbol: "-",
-    url: "https://app.katana.network/krates?p=deposit",
+    url: "https://app.katana.network/",
     description:
       "Katana Pre-Launch lets users deposit eligible tokens into Yearn vaults to earn randomized reward NFTs called Krates, while securing a pro-rata share of 70M KAT, with deposits remaining user-owned and withdrawable after mainnet",
     chain: "Ethereum",
@@ -18147,7 +18155,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "alkimiya",
       derivatives: "alkimiya"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6345",
@@ -19447,7 +19456,7 @@ const data4: Protocol[] = [
     name: "xSui",
     address: null,
     symbol: "-",
-    url: "https://app.mmt.finance/stake",
+    url: "https://app.mmt.finance/xsui",
     description:
       "xSUI is a tokenized version of staked SUI. When users stake SUI via Momentum Finance, they receive xSUI in return, a liquid token that continuously accrues staking rewards while remaining usable across DeFi protocols..",
     chain: "Sui",
@@ -23708,7 +23717,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "hx-finance",
       dexs: "hx-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6592",
@@ -24862,6 +24872,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.aggrelend.com/security/audits"],
     github: ["AggreLend"],
     listedAt: 1756577348,
+    deadUrl: true,
   },
   {
     id: "6645",

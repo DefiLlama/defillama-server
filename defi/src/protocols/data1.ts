@@ -617,6 +617,8 @@ const data: Protocol[] = [
     twitter: "tokenlon",
     audit_links: ["https://cure53.de/pentest-report_imtoken.pdf"],
     github: ["consenlabs"], //check
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "131",
@@ -5726,7 +5728,8 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/dfx-finance/protocol/blob/main/audits/2021-05-03-Trail_of_Bits.pdf"],
     dimensions: {
       dexs: "dfx-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "367",
@@ -10300,6 +10303,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
     forkedFromIds: ["114"],
     github: ["Liqee"],
+    deadUrl: true,
   },
   {
     id: "574",
@@ -13990,9 +13994,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     tags: ["AMM"],
     chains: ["Binance"],
     module: "dinoexchange/index.js",
-    twitter: "dinoexchange",
+    twitter: null,
     forkedFromIds: ["2197"],
     listedAt: 1635801116,
+    deadUrl: true,
   },
   {
     id: "738",
@@ -14873,6 +14878,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "dracoforce/index.js",
     twitter: "DracoForceDeFi",
     listedAt: 1636220121,
+    deadUrl: true,
   },
   {
     id: "797",
@@ -20504,7 +20510,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Redacted Protocol",
     address: "0xc55126051B22eBb829D00368f4B12Bde432de5Da",
     symbol: "BTRFLY",
-    url: "https://www.redacted.finance",
+    url: "https://dinero.xyz/",
     description:
       "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance and cash flow for DeFi protocols.",
     chain: "Ethereum",
@@ -20515,7 +20521,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum"],
     module: "redacted/index.js",
-    twitter: "redactedcartel",
+    twitter: "dinero_xyz",
     audit_links: ["https://omniscia.io/reports/redacted-cartel-butterfly-token-v2/"],
     listedAt: 1639972343,
     parentProtocol: "parent#redacted",
@@ -23800,6 +23806,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://thorus.fi/Thorus_Bonds-Inspex_Audit.pdf"],
     listedAt: 1641573897,
     forkedFromIds: ["2197"],
+    deadUrl: true,
   },
   {
     id: "1212",
@@ -24499,6 +24506,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://contact-stackswap.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FR2Qy2jO41SJwWbgnrvP4%2Fuploads%2F9tk4xdtFNupBe79yjKqY%2FTintash%20-%20Stackswap%20Contract%20audit.pdf?alt=media&token=b58b7f73-60a6-45e3-a8a5-b5e6f1bde584",
     ],
     listedAt: 1641952294,
+    deadUrl: true,
   },
   {
     id: "1244",
@@ -24845,7 +24853,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "ThetaSwap",
     address: null,
     symbol: "-",
-    url: "https://swap.thetatoken.org/swap/",
+    url: "https://thetaswap.org/swap",
     description:
       "ThetaSwap is the first decentralized exchange built on Theta blockchain, using an open-source smart contract system built based on Automated Market Maker logic similar to that of Uniswap.",
     chain: "Theta",
@@ -26002,7 +26010,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "NeoBurger",
     address: null,
     symbol: "-",
-    url: "https://neoburger.io/home",
+    url: "https://app.neoburger.io/en/home/",
     description: "Delegate your NEO Governance to NeoBurger to mint bNEO and receive GAS",
     chain: "NEO",
     logo: `${baseIconsUrl}/neoburger.jpg`,
@@ -26014,6 +26022,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "neoburger/index.js",
     twitter: "NeoBurger_io",
     listedAt: 1643142923,
+    deprecated: true,
   },
   {
     id: "1316",

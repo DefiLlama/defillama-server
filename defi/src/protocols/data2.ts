@@ -2420,6 +2420,7 @@ const data2: Protocol[] = [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=d7be22a7a68e2a72f3c9c1266effbc65e2b14bde7dfd4667bda1b81fbb37e192",
     ],
     listedAt: 1646159389,
+    deadUrl: true,
   },
   {
     id: "1490",
@@ -5235,6 +5236,7 @@ const data2: Protocol[] = [
     twitter: "deltatheta_tech",
     audit_links: ["https://hacken.io/wp-content/uploads/2021/12/DeltaTheta_06122021SCAudit_Report_2.pdf"],
     listedAt: 1649283926,
+    deadUrl: true,
   },
   {
     id: "1619",
@@ -5545,7 +5547,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "smbswap-v2",
       dexs: "smbswap-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1633",
@@ -6066,7 +6069,7 @@ const data2: Protocol[] = [
     name: "Predy V3.2",
     address: null,
     symbol: "-",
-    url: "https://www.predy.finance",
+    url: "https://app.predy.finance/",
     description:
       "Predy V3.2 allows traders to utilize portfolio margin for Squart and ETH perpetual trading while simplifying the creation of delta-neutral and leveraged LP positions. Rest assured, LP positions will always remain in-range, Squart addresses the liquidity fragmentation issue commonly found in perpetual options by eliminating strikes. This ensures positions consistently possess gamma, similar to at-the-money options.",
     chain: "Arbitrum",
@@ -10748,6 +10751,7 @@ const data2: Protocol[] = [
     twitter: "RiftFinance",
     listedAt: 1656755201,
     github: ["recursive-research"],
+    deadUrl: true,
   },
   {
     id: "1873",
@@ -14488,6 +14492,7 @@ const data2: Protocol[] = [
     module: "cantoswap/index.js",
     twitter: "cantoswapfi",
     listedAt: 1661944214,
+    deadUrl: true,
   },
   {
     id: "2043",
@@ -14847,6 +14852,7 @@ const data2: Protocol[] = [
     module: "goatswap/index.js",
     twitter: "goatswapxyz",
     listedAt: 1662370314,
+    deadUrl: true,
   },
   {
     id: "2060",
@@ -14973,6 +14979,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/rociFi/docs"],
     parentProtocol: "parent#rocifi",
     listedAt: 1662456730,
+    deadUrl: true,
   },
   {
     id: "2065",
@@ -15123,6 +15130,7 @@ const data2: Protocol[] = [
     twitter: "dammfinance",
     audit_links: ["https://docs.google.com/document/d/1ScxXxRSXsIYy-ERAYw4qC-L-GlvXuY1_M8FmxScZi3Q/edit"],
     listedAt: 1662533692,
+    deadUrl: true,
   },
   {
     id: "2072",
@@ -15767,7 +15775,7 @@ const data2: Protocol[] = [
     name: "OKCSwap",
     address: null,
     symbol: "-",
-    url: "https://www.okx.com/okc/swap",
+    url: "https://www.okx.com/",
     description: "OKC Swap is the official AMM dex based on OKX Chain.",
     chain: "OKExChain",
     logo: `${baseIconsUrl}/okcswap.png`,
@@ -15875,6 +15883,7 @@ const data2: Protocol[] = [
     twitter: "OrbitFi",
     audit_links: ["https://byterocket.com/audit/orbit-defi"],
     listedAt: 1663691375,
+    deadUrl: true,
   },
   {
     id: "2104",
@@ -16558,6 +16567,7 @@ const data2: Protocol[] = [
     listedAt: 1664361294,
     stablecoins: ["usdlemma"],
     github: ["lemma-finance"],
+    deadUrl: true,
   },
   {
     id: "2135",
@@ -16831,7 +16841,7 @@ const data2: Protocol[] = [
     name: "Sushi Furo",
     address: null,
     symbol: "-",
-    url: "https://www.sushi.com/furo",
+    url: "https://www.sushi.com/",
     description: "Earn, stream and automate your DAO salaries and token vesting with Furo.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sushi-furo.png`,
@@ -17009,7 +17019,7 @@ const data2: Protocol[] = [
     name: "Lifinity V1",
     address: "solana:LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp",
     symbol: "LFNTY",
-    url: "https://lifinity.io/pools",
+    url: "https://lifinity.io/",
     description:
       "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
     chain: "Solana",
@@ -17028,7 +17038,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "lifinity",
       dexs: "lifinity"
-    }
+    },
+    deprecated: true,
   },
   {
     id: "2155",
@@ -20685,6 +20696,7 @@ const data2: Protocol[] = [
     twitter: "InVarFinance",
     audit_links: ["https://github.com/HashEx/public_audits/blob/master/InVaria2222/InVaria2222.pdf"],
     listedAt: 1669639785,
+    deadUrl: true,
   },
   {
     id: "2316",
@@ -25183,7 +25195,8 @@ const data2: Protocol[] = [
     listedAt: 1676226573,
     dimensions: {
       fees: "covo-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2526",
@@ -27879,6 +27892,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/RociFi/docs/blob/main/RociFi_Hexens_Dec_2022_SMA_public.pdf"],
     parentProtocol: "parent#rocifi",
     listedAt: 1678336553,
+    deadUrl: true,
   },
   {
     id: "2647",

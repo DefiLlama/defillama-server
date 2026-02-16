@@ -26433,7 +26433,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Services",
     chains: ["Ethereum"],
     module: "chainlink/index.js",
     twitter: "chainlink",

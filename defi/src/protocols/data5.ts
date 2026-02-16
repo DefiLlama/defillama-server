@@ -3708,8 +3708,7 @@ const data5: Protocol[] = [
     name: "Curvance",
     address: null,
     symbol: "-",
-    url: "https://app.curvance.com/?referral=defillama",
-    referralUrl: "https://app.curvance.com/?referral=defillama",
+    url: "",
     description:
       "Curvance is Monad's hyper-efficient lending layer, helping users earn more yield and access simple, one-click leverage.",
     chain: "Monad",

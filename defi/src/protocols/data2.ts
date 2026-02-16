@@ -14794,6 +14794,7 @@ const data2: Protocol[] = [
     module: "unknown/index.js",
     twitter: "UnknownFinance",
     listedAt: 1662283721,
+    deadUrl: true,
   },
   {
     id: "2057",
@@ -16120,6 +16121,7 @@ const data2: Protocol[] = [
     module: "nudes.js",
     twitter: "SendnudesToken",
     listedAt: 1663857059,
+    deadUrl: true,
   },
   {
     id: "2115",
@@ -20375,6 +20377,7 @@ const data2: Protocol[] = [
     twitter: "StrxFinance",
     audit_links: ["https://github.com/strxfinance/audits"],
     listedAt: 1669060847,
+    deadUrl: true,
   },
   {
     id: "2301",
@@ -24854,6 +24857,7 @@ const data2: Protocol[] = [
     module: "business-builders-nfts/index.js",
     twitter: "NFTBBuilders",
     listedAt: 1675772062,
+    deadUrl: true,
   },
   {
     id: "2510",
@@ -27874,6 +27878,7 @@ const data2: Protocol[] = [
     twitter: "skullswapdex",
     parentProtocol: "parent#skullswap",
     listedAt: 1678295426,
+    deadUrl: true,
   },
   {
     id: "2646",

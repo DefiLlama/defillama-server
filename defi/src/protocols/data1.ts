@@ -7143,13 +7143,14 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Binance"],
     module: "bamboodefi/index.js",
     forkedFromIds: ["2197"],
-    twitter: "FiBamboo",
+    twitter: "BambooDeFi",
     audit_links: [
       "https://www.bamboodefi.com/assets/Bamboo%20DeFi%20-%20Security%20Audit%20Report.pdf",
       "https://www.bamboodefi.com/assets/bridge_audit.pdf",
     ],
     governanceID: ["snapshot:bamboodefi.eth"],
     github: ["bamboo-defi"],
+    deadUrl: true,
   },
   {
     id: "430",
@@ -8408,6 +8409,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "sunny.js",
     twitter: "SunnyAggregator",
     openSource: false,
+    deadUrl: true,
   },
   {
     id: "488",
@@ -9265,6 +9267,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "CycleProtocol",
     forkedFromIds: ["113"],
     github: ["CycleProtocol"],
+    deadUrl: true,
   },
   {
     id: "526",

@@ -1161,6 +1161,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "skullswapdex",
+    deadUrl: true,
   },
   {
     id: "parent#rocifi",

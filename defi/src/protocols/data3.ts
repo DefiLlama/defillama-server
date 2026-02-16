@@ -12694,6 +12694,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2484"],
     oracles: ["Witnet"],
     listedAt: 1690192235,
+    deadUrl: true,
   },
   {
     id: "3277",
@@ -20342,7 +20343,8 @@ const data3_1: Protocol[] = [
       fees: "xena-finance",
       dexs: "xena-finance",
       derivatives: "xena-finance-derivative"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3621",
@@ -38688,6 +38690,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/pashov/audits/blob/master/solo/pdf/Lumin-security-review.pdf"],
     listedAt: 1712324027,
     deadFrom: "2024-11-30",
+    deadUrl: true
   },
   {
     id: "4445",
@@ -51273,6 +51276,7 @@ const data3_3: Protocol[] = [
     github: ["0xGenesisDAO"],
     treasury: "genesis-dao.js",
     listedAt: 1724177568,
+    deadUrl: true,
   },
   {
     id: "5021",
@@ -55721,7 +55725,8 @@ const data3_3: Protocol[] = [
     module: "crouton/index.js",
     twitter: "croutonfi",
     github: ["croutonfi"],
-    listedAt: 1728469932
+    listedAt: 1728469932,
+    deadUrl: true,
   },
   {
     id: "5225",
@@ -58537,7 +58542,8 @@ const data3_3: Protocol[] = [
     listedAt: 1731495943,
     dimensions: {
       dexs: "spark"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5353",

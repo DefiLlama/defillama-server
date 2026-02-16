@@ -324,6 +324,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "383bc735a4de6722af80546ec9eeb3cff508f2f68e97da19489ce69f3e703200": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "kava": {

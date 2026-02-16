@@ -11081,5 +11081,24 @@ const data5: Protocol[] = [
     github: ["offshore-ltd"],
     listedAt: 1771260169,
   },
+    {
+    id: "7403",
+    name: "Stobox",
+    address: "0xa6422e3e219ee6d4c1b18895275fe43556fd50ed",
+    symbol: "STBU",
+    url: "https://www.stobox.io",
+    description: "Stobox is a top-tier award-winning tokenization company that provides technology and consulting to help clients leverage digital assets and tokenized securities. Our mission is to make it easier than ever for businesses to embrace tokenization and unlock new opportunities with Real World Assets.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/stobox.jpg`,
+    audits: "0",
+    gecko_id: "stobox-token",
+    cmcId: "7245",
+    category: "Services",
+    chains: ["Binance", "Polygon"],
+    module: "stobox/index.js",
+    twitter: "StoboxCompany",
+    github: ["StoboxTechnologies"],
+    listedAt: 1771265068
+  },
 ];
 export default data5;

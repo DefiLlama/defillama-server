@@ -478,7 +478,7 @@ async function generateSearchList() {
     fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
     fetchJson("https://ask.llama.fi/coins"),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('LLAMA_PRO_API_KEY')}/dat/institutions`).catch((e) => {
+    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`).catch((e) => {
       console.log("Error fetching institutions", e);
       return {};
     }),

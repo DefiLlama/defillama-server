@@ -67,7 +67,8 @@ export default function getTvlCacheEnv() {
 }
 
 const WHITLISTED_ENV_VARS = [
-  'LLAMA_PRO_API_KEY',
+  'INTERNAL_API_KEY',
+  'LLAMA_PRO_API2_SECRET_KEY',
 ]
 
 const booleanEnvVarsSet = new Set(['DIM_CRON_NOTIFY_ON_DISCORD'])

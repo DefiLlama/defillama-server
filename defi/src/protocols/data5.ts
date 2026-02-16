@@ -8550,6 +8550,7 @@ const data5: Protocol[] = [
     twitter: "ByteExchange",
     listedAt: 1769124363
   },
+  /* it only have their own token on GRX Chain
   {
     id: "7281",
     name: "GroveX",
@@ -8568,6 +8569,7 @@ const data5: Protocol[] = [
     twitter: "GroveXchange",
     listedAt: 1769124773
   },
+  */
   {
     id: "7282",
     name: "Calculus",

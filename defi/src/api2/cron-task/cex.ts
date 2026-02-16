@@ -29,7 +29,7 @@ const cexes = protocols.filter(p => p.category === 'CEX')
 const cexNameMap: { [name: string]: any } = {}
 const cexMetadataIdMap: { [id: string]: any } = {}
 
-
+const HIDE_INFLOWS = new Set(['Binance'])
 
 cexes.forEach(c => {
   let name = c.name
@@ -176,7 +176,7 @@ async function addAssetData() {
         console.warn(`CEX with id ${id} not found in protocols data: ${fieldName} ${cexMetadataIdMap[item.id]?.name}`)
         return
       }
-
+      if (HIDE_INFLOWS.has(cex.name)) return
       cex[fieldName] = item.outflows
 
       if (isTESTMode) {

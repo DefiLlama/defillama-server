@@ -32142,7 +32142,10 @@ const data3_1: Protocol[] = [
         genuineSpikes: [["2025-08-21", "-"]],
         adapter: "meteora-dlmm"
       },
-      dexs: "meteora-dlmm"
+      dexs: {
+        genuineSpikes: [["2025-03-03", "Memecoin craze on solana"]],
+        adapter: "meteora-dlmm"
+      }
     }
   },
   {

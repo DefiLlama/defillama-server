@@ -68,12 +68,18 @@ export async function accountable(timestamp: number = 0) {
     getChainIdMap(),
   ]);
 
-  const details = await Promise.all(
-    loans.map(async (loan) => ({
-      chain_id: loan.chain_id,
-      detail: await fetchLoanDetail(loan.loan_address),
-    })),
-  );
+  const BATCH_SIZE = 10;
+  const details: { chain_id: number; detail: LoanDetail | null }[] = [];
+  for (let i = 0; i < loans.length; i += BATCH_SIZE) {
+    const batch = loans.slice(i, i + BATCH_SIZE);
+    const batchResults = await Promise.all(
+      batch.map(async (loan) => ({
+        chain_id: loan.chain_id,
+        detail: await fetchLoanDetail(loan.loan_address),
+      })),
+    );
+    details.push(...batchResults);
+  }
 
   const chainVaults: { [chain: string]: VaultInfo[] } = {};
 
@@ -83,6 +89,7 @@ export async function accountable(timestamp: number = 0) {
     if (!chain) continue;
     const { vault, vault_asset } = detail.on_chain_loan;
     if (!vault?.share || !vault?.asset || !vault_asset) continue;
+    if (vault.decimals == null || vault_asset.decimals == null) continue;
     if (!chainVaults[chain]) chainVaults[chain] = [];
     chainVaults[chain].push({
       token: vault.share,
@@ -110,7 +117,7 @@ async function getAccountablePrices(
     abi: "function convertToAssets(uint256 shares) external view returns (uint256)",
     calls: vaults.map((v) => ({
       target: v.token,
-      params: (10 ** v.vaultDecimals).toString(),
+      params: (BigInt(10) ** BigInt(v.vaultDecimals)).toString(),
     })),
   });
 

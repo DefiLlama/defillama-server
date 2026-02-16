@@ -832,25 +832,38 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        
+        // add to all
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "onChainMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "activeMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "defiActiveTvl", itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
       }
-  
+      
       if (m.data.stablecoin) {
         // add to includeStablecoin only
         _updateBreakdownAndAssetTypes( map, timestamp, "includeStablecoin", "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
         _updateBreakdownAndAssetTypes( map, timestamp, "includeStablecoin", "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
-        _updateBreakdownAndAssetTypes( map, timestamp, "includeStablecoin", "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        _updateBreakdownAndAssetTypes(map, timestamp, "includeStablecoin", "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        
+        // add to all
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "onChainMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "activeMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+        _updateBreakdownAndAssetTypes(map, timestamp, "all", "defiActiveTvl", itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
       }
+
       if (m.data.governance) {
         // add to includeGovernance only
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
         _updateBreakdownAndAssetTypes(map, timestamp, "includeGovernance", "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        
+        // add to all only if not stablecoin, otherwise we will double-count stablecoin and governance
+        if (!m.data.stablecoin) {
+          _updateBreakdownAndAssetTypes(map, timestamp, "all", "onChainMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
+          _updateBreakdownAndAssetTypes(map, timestamp, "all", "activeMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+          _updateBreakdownAndAssetTypes(map, timestamp, "all", "defiActiveTvl", itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+        }
       }
-  
-      // add to all
-      _updateBreakdownAndAssetTypes(map, timestamp, "all", "onChainMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
-      _updateBreakdownAndAssetTypes(map, timestamp, "all", "activeMcap", itemKey,toFiniteNumberOrZero((itemValues as any)?.activeMcap));
-      _updateBreakdownAndAssetTypes(map, timestamp, "all", "defiActiveTvl", itemKey,toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
     }
   }
 

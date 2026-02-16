@@ -44,8 +44,12 @@ type VaultInfo = {
 };
 
 async function fetchLoans(): Promise<Loan[]> {
-  const res = await fetch(API_BASE);
-  return res.items ?? [];
+  try {
+    const res = await fetch(API_BASE);
+    return res.items ?? [];
+  } catch {
+    return [];
+  }
 }
 
 async function fetchLoanDetail(address: string): Promise<LoanDetail | null> {
@@ -74,11 +78,11 @@ export async function accountable(timestamp: number = 0) {
   const chainVaults: { [chain: string]: VaultInfo[] } = {};
 
   for (const { chain_id, detail } of details) {
-    if (!detail) continue;
+    if (!detail?.on_chain_loan) continue;
     const chain = chainIdMap[chain_id]?.toLowerCase();
     if (!chain) continue;
     const { vault, vault_asset } = detail.on_chain_loan;
-    if (!vault?.share || !vault?.asset) continue;
+    if (!vault?.share || !vault?.asset || !vault_asset) continue;
     if (!chainVaults[chain]) chainVaults[chain] = [];
     chainVaults[chain].push({
       token: vault.share,

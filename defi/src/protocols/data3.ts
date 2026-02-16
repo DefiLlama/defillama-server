@@ -4378,7 +4378,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "vertex-protocol",
       derivatives: "vertex-protocol-derivatives"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2900",
@@ -18491,7 +18492,7 @@ const data3_1: Protocol[] = [
     name: "PancakeSwap Perps",
     address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     symbol: "CAKE",
-    url: "https://perp.pancakeswap.finance/en/futures/v2/BTCUSD",
+    url: "https://perp.pancakeswap.finance/",
     description:
       "The bunnies have rubbed their paws and worked very hard in conjunction with ApolloX to bring this new feature to PancakeSwap. Trade your favorite pairs in a decentralized way on the site! Without intermediaries, easy, fast, safe and within reach of your legs, well, hands",
     chain: "Binance",
@@ -22188,7 +22189,7 @@ const data3_1: Protocol[] = [
     name: "TokenFi",
     address: "0x4507cef57c46789ef8d1a19ea45f4216bae2b528",
     symbol: "TOKEN",
-    url: "https://tokenfi.com/tokenfi",
+    url: "https://www.tokenfi.com/",
     description:
       "TokenFi is a platform for crypto and asset tokenization. It aims to make tokenization seamless and easy",
     chain: "Ethereum",
@@ -28296,6 +28297,7 @@ const data3_1: Protocol[] = [
     module: "DropCopy/index.js",
     twitter: "dropcopy_io",
     listedAt: 1704484985,
+    deadUrl: true,
   },
   {
     id: "3987",
@@ -28703,6 +28705,7 @@ const data3_1: Protocol[] = [
     github: ["CSRfi"],
     treasury: "csrfi.js",
     listedAt: 1704837203,
+    deadUrl: true,
   },
   {
     id: "4005",
@@ -34297,7 +34300,7 @@ const data3_2: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "srETH2",
-    url: "https://www.stakingrewards.com/sreth",
+    url: "https://www.stakingrewards.com/",
     description:
       "Staking Rewards ETH (srETH) is a robust Ethereum Liquid Staking Index, which minimises volatility with a more predictable yield. srETH is owned and managed by the Staking Rewards team and powered by Spool V2 Smart Vault technology",
     chain: "Ethereum",
@@ -42040,7 +42043,7 @@ const data3_2: Protocol[] = [
     address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
     symbol: "THL",
     assetToken: "veTHL",
-    url: "https://app.thala.fi/ve",
+    url: "https://app.thala.fi/farming",
     description: "Deposited THL and get veTHL",
     chain: "Aptos",
     logo: `${baseIconsUrl}/thala-vethl.png`,
@@ -46632,6 +46635,7 @@ const data3_3: Protocol[] = [
     twitter: null,
     github: ["Jabr0nie"],
     listedAt: 1719231083,
+    deadUrl: true,
   },
   {
     id: "4808",
@@ -48735,6 +48739,7 @@ const data3_3: Protocol[] = [
     twitter: "every_finance",
     github: ["EveryFinance"],
     listedAt: 1721335482,
+    deadUrl: true,
   },
   {
     id: "4903",
@@ -53392,7 +53397,8 @@ const data3_3: Protocol[] = [
         genuineSpikes: [["2023-07-20", "-"]],
         adapter: "vertex-protocol-swap"
       }
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5118",
@@ -53972,7 +53978,9 @@ const data3_3: Protocol[] = [
     chains: ["Kadena"],
     module: "cabinet/index.js",
     twitter: "kadena_io",
-    listedAt: 1726227417
+    listedAt: 1726227417,
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "5145",
@@ -60200,7 +60208,8 @@ const data3_3: Protocol[] = [
     chains: ["Base"],
     module: "dexodus/index.js",
     twitter: "DexodusFinance",
-    listedAt: 1732789521
+    listedAt: 1732789521,
+    deadUrl: true,
   },
   {
     id: "5429",
@@ -60678,6 +60687,7 @@ const data3_3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "dummy.js",
     twitter: "GrixFinance",
+    deadUrl: true
   },
   {
     id: "5453",

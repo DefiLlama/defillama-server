@@ -3483,6 +3483,7 @@ const data4: Protocol[] = [
     module: "eth-strategy/index.js",
     twitter: "ethstrateg",
     listedAt: 1738322943,
+    deadUrl: true,
   },
   {
     id: "5713",
@@ -3637,7 +3638,7 @@ const data4: Protocol[] = [
     name: "Club MusangKing",
     address: null,
     symbol: "-",
-    url: "https://club.bouncebit.io/MusangKing",
+    url: "https://club.bouncebit.io/strategy",
     description: "Stake stBB and complete tasks to claim a share of the DUR airdrop",
     chain: "BounceBit",
     logo: `${baseIconsUrl}/club-musangking.png`,
@@ -7328,6 +7329,7 @@ const data4: Protocol[] = [
     twitter: "axion_finance_",
     parentProtocol: "parent#axion-finance",
     listedAt: 1741397577,
+    deadUrl: true,
   },
   {
     id: "5879",
@@ -7348,6 +7350,7 @@ const data4: Protocol[] = [
     twitter: "axion_finance_",
     parentProtocol: "parent#axion-finance",
     listedAt: 1741397587,
+    deadUrl: true,
   },
   {
     id: "5880",
@@ -12304,6 +12307,7 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.plaza.finance/contracts/audit-reports"],
     github: ["Convexity-Research"],
     listedAt: 1745590547,
+    deadUrl: true,
   },
   {
     id: "6096",
@@ -22187,7 +22191,7 @@ const data4: Protocol[] = [
     name: "Immutable Orderbook",
     address: null,
     symbol: "-",
-    url: "https://www.immutable.com/products/orderbook",
+    url: "https://docs.immutable.com/docs/products/orderbook/overview",
     description:
       "Immutable Orderbook is a shared liquidity layer for NFT trading on Immutable zkEVM, enabling marketplaces and developers to share listings and bids across all integrated platforms while enforcing royalties",
     chain: "Immutable zkEVM",
@@ -28687,7 +28691,7 @@ const data4: Protocol[] = [
     name: "Quanto",
     address: null,
     symbol: "-",
-    url: "https://quanto.trade/en",
+    url: "https://quanto.trade/",
     description:
       "Quanto is a derivatives exchange for memecoin futures and perpetuals, allowing up to 100x leverage and denominate/settle trades entirely using its native token QTO",
     chain: "Solana",

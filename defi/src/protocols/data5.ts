@@ -3268,6 +3268,7 @@ const data5: Protocol[] = [
     dimensions: {
       aggregators: "madhouse",
     },
+    deadUrl: true,
   },
   {
     id: "7034",
@@ -7703,6 +7704,7 @@ const data5: Protocol[] = [
       fees: "tephra",
       aggregators: "tephra",
     },
+    deadUrl: true,
   },
   {
     id: "7240",
@@ -8211,7 +8213,8 @@ const data5: Protocol[] = [
     module: "megaswap/index.js",
     twitter: "megaswap_eth",
     forkedFromIds: ["2197"],
-    listedAt: 1768842047
+    listedAt: 1768842047,
+    deadUrl: true,
   },
   {  
     id: "7265",

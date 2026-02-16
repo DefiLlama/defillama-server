@@ -16233,6 +16233,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://piggybankdao.finance/TECHAUDIT_PIGGYBANK.pdf"],
     forkedFromIds: ["340"],
     listedAt: 1637289184,
+    deadUrl: true,
   },
   {
     id: "859",

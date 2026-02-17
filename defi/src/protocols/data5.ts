@@ -11259,7 +11259,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Solana", "Citrea", "Botanix"],
+    chains: ["Solana", "Citrea", "Botanix", "Starknet"],
     module: "atomiq-exchange/index.js",
     twitter: "atomiqlabs",
     github: ["atomiqlabs"],

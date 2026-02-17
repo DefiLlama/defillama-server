@@ -8982,6 +8982,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ParityDEX",
   },
+  {
+    id: "parent#etmc",
+    name: "ETMC",
+    url: "https://app.parity.exchange/",
+    description: "ETCMCv2 is a fully decentralized protocol for Ethereum Classic.",
+    logo: `${baseIconsUrl}/etmc.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "etcmcv2",
+    github: ["Nowalski"],
+  },
+  {
+    id: "parent#honeyplay",
+    name: "HoneyPlay",
+    url: "https://honeyplay.fun",
+    description: "DeFi infrastructure on Sui with programmable token taxes (HoneyTax), AMM with multi-curve support, NFT marketplace, and ggSUI liquid staking.",
+    logo: `${baseIconsUrl}/honeyplay.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HoneyPlaydotfun",
+    github: ["LifeOrDream"],
+  },
 ];
 
 export default parentProtocols;

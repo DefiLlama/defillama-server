@@ -34631,7 +34631,7 @@ const data3_2: Protocol[] = [
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcmc-dex.jpg`,
     audits: "2",
-    gecko_id: "etcpow",
+    gecko_id: null,
     cmcId: null,
     tags: ["AMM"],
     chains: ["EthereumClassic"],
@@ -34639,6 +34639,7 @@ const data3_2: Protocol[] = [
     twitter: "ETCMC777",
     forkedFromIds: ["2197"],
     audit_links: ["https://github.com/Nowalski/ETCMC_Audit/blob/main/ETCMC_Farming_Audit_Report_20Feb.pdf"],
+    parentProtocol: "parent#etmc",
     listedAt: 1709850484,
   },
   {

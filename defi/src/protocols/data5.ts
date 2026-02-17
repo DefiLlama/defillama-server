@@ -4805,6 +4805,9 @@ const data5: Protocol[] = [
       "https://github.com/Kasu-Finance/security/tree/main/audits/Kasu_ChainSecurity.pdf",
     ],
     listedAt: 1765221913,
+    dimensions: {
+      fees: "kasu",
+    },
   },
   {
     id: "7101",

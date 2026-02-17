@@ -11322,5 +11322,25 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/mixbytes/audits_public/tree/master/Tramplin/Tramplin"],
     listedAt: 1771340521
   },
+  {  
+    id: "7415",
+    name: "Shinjo",
+    address: null,
+    symbol: "-",
+    url: "https://shinjo.app/",
+    description:
+      "Principal-protected optionality. Shinjo is a a game to 'get ahead' that doesn't punish players: deposits → yield → random prize distributions.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/shinjo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Base"],
+    module: "shinjo/index.js",
+    forkedFromIds: ["3693"],
+    twitter: "ShinjoApp",
+    listedAt: 1771343047
+  },
 ];
 export default data5;

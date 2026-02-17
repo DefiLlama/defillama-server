@@ -11323,3 +11323,4 @@ const data5: Protocol[] = [
     listedAt: 1771340521
   },
 ];
+export default data5;

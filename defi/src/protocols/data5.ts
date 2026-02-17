@@ -11183,5 +11183,42 @@ const data5: Protocol[] = [
     github: ["deltadefi-protocol"],
     listedAt: 1771287737
   },
+  {
+    id: "7408",
+    name: "Alpaca Dex",
+    address: "keeta:keeta_ao55q4okjv4hrbo7z7zl3hivrf64og3fpokup5hvt2wfejim5mxzxcykboc3w",
+    symbol: "PACA",
+    url: "https://alpacadex.com/",
+    description: "Alpaca DEX is a native decentralized exchange and token launch platform on the Keeta network..",
+    chain: "Keeta",
+    logo: `${baseIconsUrl}/alpaca-dex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Keeta"],
+    module: "alpaca-dex/index.js",
+    twitter: "AlpacaDex",
+    listedAt: 1771289887
+  },
+  {
+    id: "7409",
+    name: "OK-BITOK Vault",
+    address: null,
+    symbol: "-",
+    url: "https://ok-bitok.com",
+    description: "Onchain delta-neutral funding arbitrage vault deploying capital to Hyperliquid, with NAV and accounting recorded fully onchain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ok-bitok-vault.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "ok-bitok/index.js",
+    twitter: "ok_bitok",
+    github: ["Alex-bitok"],
+    listedAt: 1771289901
+  },
 ];
 export default data5;

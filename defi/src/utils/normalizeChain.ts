@@ -5694,6 +5694,14 @@ export const chainCoingeckoIds = {
     twitter: "spark",
     url: "https://www.spark.money/",
   },
+  "Keeta": {
+    geckoId: "keeta",
+    symbol: "KTA",
+    cmcId: "36066",
+    categories: [],
+    twitter: "KeetaNetwork",
+    url: "https://www.keeta.com/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

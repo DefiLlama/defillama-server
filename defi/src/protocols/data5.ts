@@ -8259,14 +8259,14 @@ const data5: Protocol[] = [
   },
   {  
     id: "7267",
-    name: "SomeSwap",
+    name: "SomeSwap AMM",
     address: null,
     symbol: "-",
     url: "https://someswap.org/",
     description:
       "Something AMM platform connected to something.tools tokens launchpad.",
     chain: "Monad",
-    logo: `${baseIconsUrl}/someswap.jpg`,
+    logo: `${baseIconsUrl}/someswap-amm.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -8278,6 +8278,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "someswap"
     },
+    parentProtocol: "parent#someswap",
     listedAt: 1768881825
   },
   {  
@@ -11220,5 +11221,45 @@ const data5: Protocol[] = [
     github: ["Alex-bitok"],
     listedAt: 1771289901
   },
+  {  
+    id: "7410",
+    name: "SomeSwap CL",
+    address: null,
+    symbol: "-",
+    url: "https://someswap.org/",
+    description:
+      "Something CL is a concentrated liquidity (CL) decentralized exchange on Monad.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/someswap-cl.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Monad"],
+    module: "someswap-cl/index.js",
+    twitter: "SomethingSwap",
+    forkedFromIds: ["2197"],
+    parentProtocol: "parent#someswap",
+    listedAt: 1771339177
+  },
+  {  
+    id: "7411",
+    name: "atomiq exchange",
+    address: null,
+    symbol: "-",
+    url: "https://app.atomiq.exchange/",
+    description:
+      "Fully trustless, zero slippage swaps between native Bitcoin (on-chain & lightning) & Solana + Starknet + Citrea + Botanix secured by Bitcoin's proof of work.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/atomiq-exchange.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain Bridge",
+    chains: ["Starknet", "Solana", "Citrea", "Botanix"],
+    module: "atomiq-exchange/index.js",
+    twitter: "atomiqlabs",
+    github: ["atomiqlabs"],
+    listedAt: 1771339425
+  },
 ];
-export default data5;

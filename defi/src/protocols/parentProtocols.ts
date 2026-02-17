@@ -9006,6 +9006,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "HoneyPlaydotfun",
     github: ["LifeOrDream"],
   },
+  {
+    id: "parent#someswap",
+    name: "SomeSwap",
+    url: "https://someswap.org/",
+    description: "A community-driven DEX on Monad.",
+    logo: `${baseIconsUrl}/someswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SomethingSwap",
+  },
 ];
 
 export default parentProtocols;

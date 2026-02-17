@@ -23688,7 +23688,7 @@ const data4: Protocol[] = [
       "Atrium is a distributed staking protocol on Cardano that enables users to delegate stake across multiple pools via smart contract powered staking baskets. The Diffusion basket, Cardano's first staking basket, allows simultaneous delegation to 50 community-selected stake pool operators while earning ADA rewards and ATMA tokens.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/atrium.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Farm",
@@ -23696,6 +23696,7 @@ const data4: Protocol[] = [
     module: "atrium/index.js",
     twitter: "atrium_lab",
     github: ["atma-community"],
+    audit_links: ["https://github.com/atma-community/staking-baskets/blob/main/Anastasia_Labs____Atrium_Labs.pdf"],
     listedAt: 1755530137,
   },
   {

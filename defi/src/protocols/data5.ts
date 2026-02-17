@@ -11092,7 +11092,7 @@ const data5: Protocol[] = [
     address: "0xa6422e3e219ee6d4c1b18895275fe43556fd50ed",
     symbol: "STBU",
     url: "https://www.stobox.io",
-    description: "Stobox is a top-tier award-winning tokenization company that provides technology and consulting to help clients leverage digital assets and tokenized securities. Our mission is to make it easier than ever for businesses to embrace tokenization and unlock new opportunities with Real World Assets.",
+    description: "Stobox is a turnkey tokenization technology provider delivering regulated digital asset infrastructure for compliant security tokens and real-world assets. We build enterprise-grade platforms that enable businesses to issue, manage, and scale tokenized assets with embedded compliance, automation, and regulatory alignment. Our mission is to bridge traditional finance and blockchain by making regulated tokenization seamless, secure, and accessible for companies at every stage.",
     chain: "Binance",
     logo: `${baseIconsUrl}/stobox.jpg`,
     audits: "0",

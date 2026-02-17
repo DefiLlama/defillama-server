@@ -28125,7 +28125,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://ploutos.money/",
     description: "Ploutos is a non-custodial money market and leveraged farming platform.",
-    chain: "Ethereum",
+    chain: "Polygon",
     logo: `${baseIconsUrl}/ploutos-money.jpg`,
     audits: "2",
     audit_links: ["https://github.com/Credshields/audit-reports/blob/dd56467855ab269df6884adec251e6a7d40c84c6/Ploutos_Final_Audit_Report.pdf"],

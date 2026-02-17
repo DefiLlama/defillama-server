@@ -1,6 +1,6 @@
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "../../src/adaptors/data/types";
-import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
+import { getAllDimensionsRecordsTimeS, init as initDB } from "../../src/adaptors/db-utils/db2";
 import { getTimestampString } from "../../src/api2/utils";
 import { handler2, DimensionRunOptions } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
@@ -8,6 +8,23 @@ import { humanizeNumber } from "@defillama/sdk";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
 import sleep from "../../src/utils/shared/sleep";
 import { getTimestampAtStartOfDayUTC } from "../../src/utils/date";
+import { Tables } from "../../src/api2/db/tables";
+import { toStartOfDay } from "../../src/adaptors/db-utils/AdapterRecord2";
+
+const FEES_VOLUME_TABLE = 'fees-volume'
+
+function getFeesVolumeClient() {
+  const { DynamoDBClient } = require("@aws-sdk/client-dynamodb")
+  const { DynamoDBDocument } = require("@aws-sdk/lib-dynamodb")
+  const ddbClient = new DynamoDBClient({})
+  return DynamoDBDocument.from(ddbClient, { marshallOptions: { convertClassInstanceToMap: true } })
+}
+
+let _feesVolumeClient: any
+function feesVolumeClient() {
+  if (!_feesVolumeClient) _feesVolumeClient = getFeesVolumeClient()
+  return _feesVolumeClient
+}
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
@@ -207,6 +224,196 @@ function getRecordItem(record: any) {
     })
   } catch (e) {
     console.error('Error parsing record data', e)
+  }
+  return res
+}
+
+// --- Dimension Delete Functionality ---
+
+const deleteRecordsList: any = {}
+
+export async function dimensionsDeleteGetList(ws: any, args: any) {
+  await initDB()
+
+  const adapterType = args.adapterType as AdapterType
+  const protocolToRun = args.protocol
+  const fromTimestamp = args.dateFrom
+  const toTimestamp = args.dateTo
+
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const protocol = protocolAdaptors.find((p: any) => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
+
+  if (!protocol) {
+    console.error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
+    return
+  }
+
+  // Query PostgreSQL for dimension records in the date range
+  const records: any[] = await Tables.DIMENSIONS_DATA.findAll({
+    where: {
+      type: adapterType,
+      id: protocol.id2,
+      timestamp: {
+        [require('sequelize').Op.gte]: fromTimestamp,
+        [require('sequelize').Op.lte]: toTimestamp,
+      },
+    },
+    attributes: ['id', 'timestamp', 'timeS', 'type', 'data'],
+    raw: true,
+  })
+
+  console.log('Pulled', records.length, 'dimension records for protocol:', protocol.displayName, 'type:', adapterType, 'from:', new Date(fromTimestamp * 1000).toDateString(), 'to:', new Date(toTimestamp * 1000).toDateString())
+
+  records.forEach((record: any) => {
+    const uniqueId = `${adapterType}#${record.id}#${record.timeS}`
+    deleteRecordsList[uniqueId] = {
+      id: uniqueId,
+      protocolId: record.id,
+      protocolName: protocol.displayName,
+      adapterType,
+      timeS: record.timeS,
+      timestamp: record.timestamp,
+      data: record.data,
+    }
+  })
+
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export async function dimensionsDeleteSelectedRecords(ws: any, ids: any) {
+  await _deleteDimensionRecords(ws, ids)
+}
+
+export async function dimensionsDeleteAllRecords(ws: any) {
+  await _deleteDimensionRecords(ws)
+}
+
+async function _deleteDimensionRecords(ws: any, ids?: any) {
+  if (!ids) ids = Object.keys(deleteRecordsList)
+  if (!ids.length) return
+
+  const validIds = ids.filter((id: string) => deleteRecordsList[id])
+  if (validIds.length === 0) {
+    console.error('No valid records found for deletion')
+    return
+  }
+
+  if (validIds.length !== ids.length) {
+    console.error(`Warning: ${ids.length - validIds.length} invalid IDs were filtered out`)
+  }
+
+  await initDB()
+
+  validIds.sort(() => Math.random() - 0.5)
+
+  const { errors } = await PromisePool
+    .withConcurrency(7)
+    .for(validIds)
+    .process(async (id: any) => {
+      const record = deleteRecordsList[id]
+      if (!record) {
+        console.error('Record not found in deleteRecordsList:', id)
+        return
+      }
+
+      const { protocolId, adapterType, timestamp, timeS } = record
+
+      if (!protocolId || !adapterType || !timeS) {
+        console.error('Invalid record data:', { id, protocolId, adapterType, timeS })
+        throw new Error(`Invalid record data for id: ${id}`)
+      }
+
+      try {
+        await Tables.DIMENSIONS_DATA.destroy({
+          where: {
+            id: protocolId,
+            type: adapterType,
+            timeS: timeS,
+          },
+          limit: 1,
+        })
+
+        const ddbPK = `daily#${adapterType}#${protocolId}`
+        const ddbSK = toStartOfDay(timestamp)
+        try {
+          const client = feesVolumeClient()
+          const ddbData = await client.query({
+            TableName: FEES_VOLUME_TABLE,
+            ExpressionAttributeValues: {
+              ":pk": ddbPK,
+              ":from": ddbSK - 1,
+              ":to": ddbSK + 1,
+            },
+            KeyConditionExpression: "PK = :pk AND SK BETWEEN :from AND :to",
+          })
+          const items = ddbData.Items ?? []
+          if (items.length > 1) {
+            console.error(`Warning: Found ${items.length} DynamoDB items for deletion (expected 1):`, ddbPK, ddbSK)
+          }
+          for (const item of items) {
+            if (item.PK !== ddbPK) {
+              console.error('Skipping DynamoDB item with mismatched PK:', item.PK, 'expected:', ddbPK)
+              continue
+            }
+            await client.delete({
+              TableName: FEES_VOLUME_TABLE,
+              Key: { PK: item.PK, SK: item.SK },
+            })
+          }
+        } catch (e) {
+          console.error('Error deleting from DynamoDB fees-volume for:', protocolId, timeS, (e as any)?.message)
+        }
+
+        delete deleteRecordsList[id]
+      } catch (e) {
+        console.error('Error deleting dimension record:', id, (e as any)?.message || e)
+        throw e
+      }
+    })
+
+  if (errors.length > 0) {
+    console.error('Errors deleting dimension records:', errors.length, errors.map((e: any) => e.message || e))
+  }
+
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export function dimensionsDeleteClearList(ws: any) {
+  console.log('Clearing dimension delete records list', Object.keys(deleteRecordsList).length)
+  Object.keys(deleteRecordsList).forEach((id) => delete deleteRecordsList[id])
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export function sendDimensionsDeleteWaitingRecords(ws: any) {
+  ws.send(JSON.stringify({
+    type: 'dimensions-delete-waiting-records',
+    data: Object.values(deleteRecordsList).map(getDeleteRecordItem),
+  }))
+}
+
+function getDeleteRecordItem(record: any) {
+  const { id, protocolName, timeS, adapterType, data } = record
+  const res: any = {
+    id,
+    protocolName,
+    timeS,
+    adapterType,
+  }
+  try {
+    if (data?.aggregated) {
+      Object.entries(data.aggregated).forEach(([key, d]: any) => {
+        res[key] = humanizeNumber(d.value)
+        res['_' + key] = +d.value
+        if (d.chains) {
+          Object.entries(d.chains).forEach(([chain, value]: any) => {
+            res[`${key}_${chain}`] = humanizeNumber(value)
+            res[`_${key}_${chain}`] = value
+          })
+        }
+      })
+    }
+  } catch (e) {
+    console.error('Error parsing delete record data', e)
   }
   return res
 }

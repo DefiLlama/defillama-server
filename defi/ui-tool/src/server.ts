@@ -7,7 +7,7 @@ process.env.LLAMA_DEBUG_MODE = 'TRUE'
 const WS = require('ws');
 const { spawn, } = require('child_process');
 
-import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
+import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
@@ -146,6 +146,7 @@ async function start() {
     sendWaitingRecords(ws);
     sendTvlStoreWaitingRecords(ws);
     sendTvlDeleteWaitingRecords(ws);
+    sendDimensionsDeleteWaitingRecords(ws);
 
     // start streaming logs to the client
     const wrappedLog = (...args: any) => {
@@ -186,6 +187,18 @@ async function start() {
           break;
         case 'reload-table':
           sendWaitingRecords(ws);
+          break;
+        case 'dimensions-delete-get-list':
+          await dimensionsDeleteGetList(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-records':
+          await dimensionsDeleteSelectedRecords(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-all':
+          await dimensionsDeleteAllRecords(ws);
+          break;
+        case 'dimensions-delete-clear-list':
+          dimensionsDeleteClearList(ws);
           break;
 
 

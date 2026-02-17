@@ -10752,7 +10752,7 @@ const data5: Protocol[] = [
     twitter: "RiftsFinance",
     github: ["riftsprotocol"],
     audit_links: ["https://github.com/Assure-DeFi/Audits/blob/main/RIFTS_ADV_10_11_25.pdf"],
-    treasury: "rift.js",
+    treasury: "rifts.js",
     listedAt: 1770850917,
   },
   {

@@ -8191,7 +8191,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#kinetiq",
     name: "Kinetiq",
-    url: "https://kinetiq.xyz/",
+    url: "https://markets.xyz/",
     referralUrl: "https://markets.xyz/join/llama",
     description: "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
     logo: `${baseIconsUrl}/kinetiq.jpg`,

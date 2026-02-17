@@ -178,10 +178,10 @@ export function getUniV2Adapter({
         const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];
         if (!knownTokenBalance) return { price: subgraphPrice, confidence };
 
-        const supply = pair.totalSupply;
         const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
 
-        const onChainPrice = aum / supply;
+        if (aum < minLiquidity) return { price: undefined, confidence };
+        const onChainPrice = aum / pair.totalSupply;
         return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };
       }
 
@@ -203,8 +203,9 @@ export function getUniV2Adapter({
 
       function addTokenData(token: any) {
         if (skipToken(token)) return;
-        const liquidity = pair.reserveUSD / 2;
-        const supply = token.id === token0.id ? pair.reserve0 : pair.reserve1;
+        if (!price) return;
+        const liquidity = price * pair.totalSupply / 2;
+        const supply = token.id === token0.id ? token0Balances[i] : token1Balances[i];
         if (!tokenData[token.id]) {
           tokenData[token.id] = {
             metadata: token,

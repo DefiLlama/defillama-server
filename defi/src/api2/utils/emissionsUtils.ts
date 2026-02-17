@@ -20,7 +20,19 @@ export async function storeEmissionsCache(): Promise<{error: string | null}> {
     const _emissionsData: any = await getR2JSONString(`emissions/${emissionsProtocolId}`);
     if (_emissionsData && _emissionsData.unlockUsdChart) {
       const hasBreakdownData = !!_emissionsData.componentData && !!_emissionsData.componentData.sections;
-      
+
+      if (hasBreakdownData) {
+        const breakdownMethodology: Record<string, string> = {};
+        for (const section of Object.values(_emissionsData.componentData.sections)) {
+          const s = section as any;
+          for (const component of Object.values(s.components || {})) {
+            const c = component as any;
+            if (c.methodology && c.name) breakdownMethodology[c.name] = c.methodology;
+          }
+        }
+        if (Object.keys(breakdownMethodology).length) emissionsProtocolData.breakdownMethodology = breakdownMethodology;
+      }
+
       for (const [timestamp, value] of _emissionsData.unlockUsdChart) {
         const firstDayOfMonthDate = getTimestampAtStartOfMonth(timestamp);
         const firstDayOfQuarterDate = getTimestampAtStartOfQuarter(firstDayOfMonthDate);

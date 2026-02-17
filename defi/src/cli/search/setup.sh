@@ -8,7 +8,7 @@ curl \
   --data-binary '{
     "description": "Search for frontend",
     "actions": ["search"],
-    "indexes": ["pages"],
+    "indexes": ["pages", "directory"],
     "expiresAt": null
   }'
 
@@ -27,6 +27,8 @@ curl \
   --data-binary '[
     "name",
     "symbol",
+    "previousNames",
+    "nameVariants",
     "type"
   ]'
 
@@ -62,7 +64,8 @@ curl \
     "tvl",
     "name",
     "deprecated",
-    "mcapRank"
+    "mcapRank",
+    "r"
   ]'
 
 curl \
@@ -77,5 +80,60 @@ curl \
     "route",
     "deprecated",
     "hideType",
-    "subName"
+    "previousNames",
+    "subName",
+    "symbol"
+  ]'
+
+# --- Directory index setup ---
+
+curl \
+  -X PUT 'https://search-core.defillama.com/indexes/directory/settings/ranking-rules' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "words",
+    "v:desc",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+    "r:desc"
+  ]'
+
+curl \
+  -X PUT 'https://search-core.defillama.com/indexes/directory/settings/displayed-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "name",
+    "symbol",
+    "logo",
+    "route",
+    "deprecated",
+    "previousNames"
+  ]'
+
+curl \
+  -X PUT 'https://search-core.defillama.com/indexes/directory/settings/searchable-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "name",
+    "previousNames",
+    "nameVariants",
+    "symbol"
+  ]'
+
+curl \
+  -X PUT 'https://search-core.defillama.com/indexes/directory/settings/sortable-attributes' \
+  -H "Authorization: Bearer $MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '[
+    "v",
+    "tvl",
+    "name",
+    "r",
+    "deprecated"
   ]'

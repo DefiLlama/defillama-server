@@ -10,7 +10,7 @@ import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normali
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, storeMetadata } from "./historical";
-import { fetchEvm, fetchSolana } from './balances';
+import { fetchEvm, fetchSolana, type WalletEntry } from './balances';
 import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
 import { RWA_KEY_MAP } from "./metadataConstants";
 import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
@@ -77,7 +77,7 @@ async function getExcludedBalances(
   finalData: { [protocol: string]: { [key: string]: any } },
   tokenToProjectMap: { [token: string]: string }
 ) {
-  const walletsSortedByChain: { [chain: string]: { [wallet: string]: { id: string; assets: string[] } } } = {};
+  const walletsByChain: { [chain: string]: { [wallet: string]: WalletEntry[] } } = {};
   Object.keys(finalData).forEach((id: string) => {
     const chains = finalData[id]?.holdersToRemove;
     if (!chains || !Object.keys(chains).length) return;
@@ -87,13 +87,24 @@ async function getExcludedBalances(
       const assets = finalData[id]?.contracts?.[chain];
 
       if (!assets) return;
-      if (!(chainRaw in walletsSortedByChain)) walletsSortedByChain[chainRaw] = {};
+      if (!(chainRaw in walletsByChain)) walletsByChain[chainRaw] = {};
 
       const burnAddresses = fetchBurnAddresses(chainRaw);
       [...wallets, ...burnAddresses].forEach((address: string) => {
-        walletsSortedByChain[chainRaw][address] = { id, assets };
+        if (!(address in walletsByChain[chainRaw])) walletsByChain[chainRaw][address] = [];
+        walletsByChain[chainRaw][address].push({ id, assets });
       });
     });
+  });
+
+  // Convert to array of { id: wallet, assets } per chain for balance fetchers
+  const walletsSortedByChain: { [chain: string]: WalletEntry[] } = {};
+  Object.keys(walletsByChain).forEach((chain: string) => {
+    const byWallet = walletsByChain[chain];
+    walletsSortedByChain[chain] = Object.entries(byWallet).map(([wallet, entries]) => ({
+      id: wallet,
+      assets: [...new Set(entries.flatMap((e) => e.assets))],
+    }));
   });
 
   const excludedAmounts: { [id: string]: { [chain: string]: BigNumber } } = {};
@@ -261,13 +272,8 @@ function getOnChainTvlAndActiveMcaps(
       return;
     }
 
-    // Ensure price is always number|null for API consumers.
-    // If missing in metadata, keep it null (do not backfill from price feed).
-    if ((finalData[rwaId][RWA_KEY_MAP.price] ?? null) == null) {
-      finalData[rwaId][RWA_KEY_MAP.price] = null;
-    } else {
-      const parsedPrice = toFiniteNumberOrNull(finalData[rwaId][RWA_KEY_MAP.price]);
-      finalData[rwaId][RWA_KEY_MAP.price] = parsedPrice == null ? null : formatNumAsNumber(parsedPrice);
+    if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+      finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(price);
     }
 
     try {

@@ -34,6 +34,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const protocolToRun = args.protocol
   const checkBeforeInsert = args.checkBeforeInsert
   const delayBetweenRuns = args.delayBetweenRuns ?? 0
+  const parallelHourlyProcessCount = args.parallelHourlyProcessCount ?? 1
+  const skipHourlyCache = !!args.skipHourlyCache
   const protocolNames = new Set([protocolToRun])
   if (checkBeforeInsert) args.dryRun = true
 
@@ -82,6 +84,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
           protocolNames,
           isRunFromRefillScript: true,
           checkBeforeInsert,
+          skipHourlyCache,
+          parallelHourlyProcessCount,
         }
         items.push(eventObj)
       }
@@ -98,6 +102,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
         protocolNames,
         isRunFromRefillScript: true,
         checkBeforeInsert,
+        skipHourlyCache,
+        parallelHourlyProcessCount,
       }
       items.push(eventObj)
 
@@ -160,9 +166,8 @@ export async function storeAllWaitingRecords(ws: any) {
     .for(allRecords)
     .process(async ([id, record]: any) => {
       // if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
-      const { storeRecordV2Function, storeDDBFunctions } = record as any
-      if (storeRecordV2Function) await storeRecordV2Function()
-      if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))
+      const { storeFunctions } = record as any
+      if (storeFunctions?.length) await Promise.all(storeFunctions.map((f: any) => f()))
       delete recordItems[id]
     })
 

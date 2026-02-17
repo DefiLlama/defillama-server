@@ -1485,6 +1485,7 @@ export const chainCoingeckoIds = {
     chainId: 225,
     twitter: "0xLachain",
     url: "https://lachain.io/",
+    deadUrl: true,
   },
   "Coti": {
     geckoId: "coti",
@@ -2638,7 +2639,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 4337,
     twitter: "MeritCircle_IO",
-    url: "https://meritcircle.io/",
+    url: "https://onbeam.com/",
   },
   "NOS": {
     geckoId: null,
@@ -2833,7 +2834,7 @@ export const chainCoingeckoIds = {
     cmcId: "18248",
     categories: ["Cosmos"],
     twitter: "sommfinance",
-    url: "https://www.sommelier.finance/",
+    url: "https://somm.finance/",
   },
   "Bahamut": {
     geckoId: "fasttoken",
@@ -2886,6 +2887,7 @@ export const chainCoingeckoIds = {
     governanceID: ["snapshot:airdaofoundation.eth"],
     url: "https://airdao.io/",
     chainId: 16718,
+    deadUrl: true,
   },
   "dYdX": {
     geckoId: "dydx-chain",
@@ -3495,6 +3497,7 @@ export const chainCoingeckoIds = {
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"],
+    deadUrl: true,
   },
   "IOTA": {
     geckoId: "iota",
@@ -3669,7 +3672,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"],
     },
     twitter: "reya_xyz",
-    url: "https://reya.network",
+    url: "https://reya.xyz/",
     chainId: 1729,
     dimensions: {
       fees: "reya",
@@ -4469,6 +4472,7 @@ export const chainCoingeckoIds = {
     chainId: 478,
     twitter: "0xForm",
     url: "https://form.network/",
+    deadUrl: true,
   },
   "HyperEVM": {
     geckoId: null,
@@ -5589,6 +5593,7 @@ export const chainCoingeckoIds = {
     twitter: "megaeth",
     url: "https://www.megaeth.com/",
     chainId: 4326,
+    stablecoins: ["megausd"],
   },
   "Quai": {
     geckoId: "quai-network",
@@ -5648,6 +5653,54 @@ export const chainCoingeckoIds = {
     twitter: "citrea_xyz",
     url: "https://citrea.xyz/",
     chainId: 4114,
+  },
+  "Zcash": {
+    geckoId: "zcash",
+    symbol: "ZEC",
+    cmcId: "1437",
+    categories: [],
+    twitter: "Zcash",
+    url: "https://z.cash/",
+  },
+  "Union": {
+    geckoId: "union-2",
+    symbol: "U",
+    cmcId: "38270",
+    categories: [],
+    twitter: "union_build",
+    url: "https://union.build/",
+  },
+  "Open": {
+    geckoId: "openledger-2",
+    symbol: "OPEN",
+    cmcId: "37456",
+    categories: [],
+    twitter: "OpenledgerHQ",
+    url: "https://www.openledger.xyz/",
+  },
+    "N1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "N1Chain",
+    url: "https://www.n1.xyz/",
+  },
+  "Spark": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "spark",
+    url: "https://www.spark.money/",
+  },
+  "Keeta": {
+    geckoId: "keeta",
+    symbol: "KTA",
+    cmcId: "36066",
+    categories: [],
+    twitter: "KeetaNetwork",
+    url: "https://www.keeta.com/",
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -5833,7 +5886,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
-  "hashkey": "HashKey Chain",
+  //"hashkey": "HashKey Chain", not possible to have two different chains with the same name
   "fhe": "Mind Network",
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",

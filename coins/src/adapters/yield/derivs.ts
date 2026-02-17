@@ -319,7 +319,7 @@ const configs: { [adapter: string]: Config } = {
     rate: async ({ api }) => {
       const rate = await api.call({
         abi: "function convertToAssets(uint256 shares) external view returns (uint256)",
-        target: "0x36036fFd9B1C6966ab23209E073c68Eb9A992f50",
+        target: "0xfe6920eb6c421f1179ca8c8d4170530cdbdfd77a",
         params: 1e12,
       });
       return rate / 1e12;

@@ -85,6 +85,12 @@ const configCustomAbi: any = {
       abi: "function slot0() view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, bool unlocked)"
     }
   },
+  hyperliquid: {
+    "0x067b0C72aa4C6Bd3BFEFfF443c536DCd6a25a9C8": { 
+      pool: "0x006418DcD73f6Da03A667ad161cCB9B39CeEEa60", // HYBR
+      abi: "function slot0() view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, bool unlocked)"
+    }
+  },
 }
 
 export function unknownTokensV3(timestamp: number = 0) {

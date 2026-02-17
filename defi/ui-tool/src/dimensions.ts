@@ -237,8 +237,18 @@ export async function dimensionsDeleteGetList(ws: any, args: any) {
 
   const adapterType = args.adapterType as AdapterType
   const protocolToRun = args.protocol
-  const fromTimestamp = args.dateFrom
-  const toTimestamp = args.dateTo
+  const fromTimestamp = Number(args.dateFrom)
+  const toTimestamp = Number(args.dateTo)
+
+  if (!Number.isFinite(fromTimestamp) || !Number.isFinite(toTimestamp)) {
+    console.error('Invalid timestamp range: fromTimestamp and toTimestamp must be finite numbers')
+    return
+  }
+
+  if (fromTimestamp > toTimestamp) {
+    console.error('Invalid timestamp range: fromTimestamp must be <= toTimestamp')
+    return
+  }
 
   const { protocolAdaptors } = loadAdaptorsData(adapterType)
   const protocol = protocolAdaptors.find((p: any) => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
@@ -248,7 +258,6 @@ export async function dimensionsDeleteGetList(ws: any, args: any) {
     return
   }
 
-  // Query PostgreSQL for dimension records in the date range
   const records: any[] = await Tables.DIMENSIONS_DATA.findAll({
     where: {
       type: adapterType,
@@ -324,27 +333,18 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
       }
 
       try {
-        await Tables.DIMENSIONS_DATA.destroy({
-          where: {
-            id: protocolId,
-            type: adapterType,
-            timeS: timeS,
-          },
-          limit: 1,
-        })
-
         const ddbPK = `daily#${adapterType}#${protocolId}`
         const ddbSK = toStartOfDay(timestamp)
+        
         try {
           const client = feesVolumeClient()
           const ddbData = await client.query({
             TableName: FEES_VOLUME_TABLE,
             ExpressionAttributeValues: {
               ":pk": ddbPK,
-              ":from": ddbSK - 1,
-              ":to": ddbSK + 1,
+              ":sk": ddbSK,
             },
-            KeyConditionExpression: "PK = :pk AND SK BETWEEN :from AND :to",
+            KeyConditionExpression: "PK = :pk AND SK = :sk",
           })
           const items = ddbData.Items ?? []
           if (items.length > 1) {
@@ -361,7 +361,20 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
             })
           }
         } catch (e) {
-          console.error('Error deleting from DynamoDB fees-volume for:', protocolId, timeS, (e as any)?.message)
+          console.error('Error deleting from DynamoDB fees-volume for:', { protocolId, timeS, adapterType, ddbPK, ddbSK, error: (e as any)?.message })
+          throw e
+        }
+
+        const pgRecord = await Tables.DIMENSIONS_DATA.findOne({
+          where: {
+            id: protocolId,
+            type: adapterType,
+            timeS: timeS,
+          },
+        })
+
+        if (pgRecord) {
+          await pgRecord.destroy()
         }
 
         delete deleteRecordsList[id]

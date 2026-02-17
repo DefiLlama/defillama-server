@@ -974,6 +974,11 @@ const App = () => {
       if (dimDeleteConfirmText !== 'DELETE') {
         return;
       }
+
+      if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+        alert('WebSocket connection is not open. Please reconnect.');
+        return;
+      }
       
       const payload = {
         type: 'dimensions-delete-delete-records',
@@ -1029,6 +1034,11 @@ const App = () => {
 
             <Button type="primary" icon={<ClearOutlined />}
               onClick={() => {
+                if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+                  alert('WebSocket connection is not open. Please reconnect.');
+                  return;
+                }
+
                 const payload = {
                   type: 'dimensions-delete-clear-list',
                   data: [],

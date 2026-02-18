@@ -1,6 +1,7 @@
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "../../src/adaptors/data/types";
-import { getAllDimensionsRecordsTimeS, getDimensionsRecordsInRange, deleteDimensionsRecord } from "../../src/adaptors/db-utils/db2";
+import { getAllDimensionsRecordsTimeS, getDimensionsRecordsInRange } from "../../src/adaptors/db-utils/db2";
+import { AdapterRecord2 } from "../../src/adaptors/db-utils/AdapterRecord2";
 import { getTimestampString } from "../../src/api2/utils";
 import { handler2, DimensionRunOptions } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
@@ -297,7 +298,7 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
 
       try {
         // TODO: uncomment to enable actual deletion
-        await deleteDimensionsRecord({ adapterType, id: protocolId, timeS })
+        await AdapterRecord2.deleteFromDB({ adapterType, id: protocolId, timeS })
         // console.log('[DRY RUN] Would delete dimension record:', adapterType, protocolId, timeS, 'data:', JSON.stringify(record.data?.aggregated ?? {}))
         delete deleteRecordsList[id]
       } catch (e) {

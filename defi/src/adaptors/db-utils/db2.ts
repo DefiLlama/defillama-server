@@ -196,14 +196,6 @@ export async function getDimensionsRecordsInRange({ adapterType, id, fromTimesta
   return result
 }
 
-export async function deleteDimensionsRecord({ adapterType, id, timeS }: { adapterType: AdapterType, id: string, timeS: string }) {
-  await init()
-
-  await Tables.DIMENSIONS_DATA.destroy({
-    where: { type: adapterType, id, timeS },
-  })
-}
-
 export function getHourlyTimeS(timestamp: number) {
   const d = new Date(timestamp * 1000)
   const yyyy = d.getUTCFullYear()

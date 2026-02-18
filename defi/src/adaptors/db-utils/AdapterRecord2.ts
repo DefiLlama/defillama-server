@@ -3,6 +3,8 @@ import { AdapterType, ProtocolType, AdaptorRecordType, IJSON, ProtocolAdaptor } 
 import { getTimestampString } from "../../api2/utils"
 import { getUnixTimeNow } from "../../api2/utils/time"
 import { humanizeNumber } from "@defillama/sdk"
+import { initializeTVLCacheDB } from "../../api2/db"
+import { Tables } from "../../api2/db/tables"
 
 export function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -285,6 +287,11 @@ export class AdapterRecord2 {
         })
       }
     }
+  }
+
+  static async deleteFromDB({ adapterType, id, timeS }: { adapterType: AdapterType, id: string, timeS: string }) {
+    await initializeTVLCacheDB()
+    await Tables.DIMENSIONS_DATA.destroy({ where: { type: adapterType, id, timeS } })
   }
 
   getValidationError(data: { message: string, metadata?: any, type?: string }) {

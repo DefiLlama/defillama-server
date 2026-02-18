@@ -60,6 +60,10 @@ async function start() {
           PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002: 5001
         }
       });
+
+      // Pipe stdout and stderr to terminal
+      reactApp.stdout.pipe(process.stdout);
+      reactApp.stderr.pipe(process.stderr);
     } catch (error) {
       console.error('Error starting React app:', error);
     }

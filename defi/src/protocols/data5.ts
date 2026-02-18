@@ -1131,7 +1131,7 @@ const data5: Protocol[] = [
     name: "Aerodrome Ignition",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
-    url: "https://aerodrome.finance/", 
+    url: "https://aerodrome.finance/",
     description:
       "Aerodrome Ignition is a DEX-native token launch mechanism on Base that bootstraps liquidity by depositing 10-20% of a project's token supply into Aerodrome pools, allowing veAERO holders to direct emissions incentives and enabling fair, market-driven price discovery and distribution without presales or private allocations",
     chain: "Base",
@@ -2372,7 +2372,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.yuzu.money?ref=ZRSJY3HG",
-    referralUrl: "https://app.yuzu.money?ref=ZRSJY3HG",
+    referralUrl: "https://app.yuzu.money?ref=ZRSJY3HG",
     description:
       "An overcollateralized stablecoin backed by curated on-chain strategies designed to offer some of the highest yields in DeFi. Users can stake yzUSD to receive the yield-bearing syzUSD. Depositors in yzPP accept first-loss risk on the underlying strategies in exchange for a higher target yield, which is partially funded by a Reserve Fund.",
     chain: "Plasma",
@@ -3690,7 +3690,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
-    referralUrl: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    referralUrl: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
     description:
       "Quantus is a decentralized lending platform built on the Monad blockchain, designed to make borrowing and lending crypto simple, fast, and cost-effective. Thanks to Monad’s high speed and low latency, transactions confirm quickly and funds move smoothly, giving users a seamless experience.",
     chain: "Monad",
@@ -4805,6 +4805,9 @@ const data5: Protocol[] = [
       "https://github.com/Kasu-Finance/security/tree/main/audits/Kasu_ChainSecurity.pdf",
     ],
     listedAt: 1765221913,
+    dimensions: {
+      fees: "kasu",
+    },
   },
   {
     id: "7101",
@@ -6611,7 +6614,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.hypersurface.io/rewards?referrer=defillama",
-    referralUrl: "https://app.hypersurface.io/rewards?referrer=defillama",
+    referralUrl: "https://app.hypersurface.io/rewards?referrer=defillama",
     description: "DeFi structured products platform offering volatility yield through covered calls and cash-secured puts.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypersurface.jpg`,
@@ -7153,7 +7156,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://o1.exchange/@defillama",
-    referralUrl: "https://o1.exchange/@defillama",
+    referralUrl: "https://o1.exchange/@defillama",
     description: "A trading terminal available on Base and Solana, offering advanced trading tools and 45% Cashback.",
     chain: "Solana",
     logo: `${baseIconsUrl}/o1.exchange.jpg`,
@@ -8154,7 +8157,7 @@ const data5: Protocol[] = [
       fees: "orynth",
     }
   },
-  {  
+  {
     id: "7262",
     name: "Hydro Inflow",
     address: null,
@@ -8173,7 +8176,7 @@ const data5: Protocol[] = [
     twitter: "hydromarkets",
     listedAt: 1768841429
   },
-  {  
+  {
     id: "7263",
     name: "Stroom",
     address: null,
@@ -8195,7 +8198,7 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/TheArcadiaGroup/publications/blob/main/audits/stroom-audit-final.pdf"],
     listedAt: 1768841531
   },
-  {  
+  {
     id: "7264",
     name: "Megaswap",
     address: "megaeth:0xf0b6efF16f6A0C326C3432D08f15f84416d83115",
@@ -8216,13 +8219,13 @@ const data5: Protocol[] = [
     listedAt: 1768842047,
     deadUrl: true,
   },
-  {  
+  {
     id: "7265",
     name: "Prism DEX",
     address: null,
     symbol: "-",
     url: "https://prismfi.cc?ref=L9VP4U2Z",
-    referralUrl: "https://prismfi.cc?ref=L9VP4U2Z",
+    referralUrl: "https://prismfi.cc?ref=L9VP4U2Z",
     description:
       "Uniswap V3 fork on MegaETH providing concentrated liquidity and efficient trading.",
     chain: "MegaETH",
@@ -8237,7 +8240,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     listedAt: 1768842182
   },
-  {  
+  {
     id: "7266",
     name: "Hastra",
     address: null,
@@ -8250,14 +8253,14 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["Other Fixed Income","Private Credit"],
+    tags: ["Other Fixed Income", "Private Credit"],
     chains: ["Solana"],
     module: "hastra/index.js",
     twitter: "HastraFi",
     audit_links: ["https://hastra.io/Hastra_vault-mint_&_vault-stake_Solana_Programs_Summary_Audit_Report.pdf"],
     listedAt: 1768842285
   },
-  {  
+  {
     id: "7267",
     name: "SomeSwap AMM",
     address: null,
@@ -8281,7 +8284,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#someswap",
     listedAt: 1768881825
   },
-  {  
+  {
     id: "7268",
     name: "Brasa Finance",
     address: null,
@@ -8302,7 +8305,7 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.brasa.finance/audits/Neodyme_Report.pdf"],
     listedAt: 1768928462
   },
-  {  
+  {
     id: "7269",
     name: "DipCoin Vault",
     address: null,
@@ -8323,7 +8326,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#dipcoin",
     listedAt: 1768928484
   },
-  {  
+  {
     id: "7270",
     name: "Mezo Borrow",
     address: null,
@@ -8342,7 +8345,7 @@ const data5: Protocol[] = [
     twitter: "MezoNetwork",
     listedAt: 1768928801
   },
-  {  
+  {
     id: "7271",
     name: "Coinpilot",
     address: null,
@@ -8364,7 +8367,7 @@ const data5: Protocol[] = [
       fees: "coinpilot-perps",
     },
   },
-  {  
+  {
     id: "7272",
     name: "OneKey Perps",
     address: null,
@@ -8386,7 +8389,7 @@ const data5: Protocol[] = [
       fees: "onekey-perps",
     },
   },
-  {  
+  {
     id: "7273",
     name: "Gem Wallet Perps",
     address: null,
@@ -8408,7 +8411,7 @@ const data5: Protocol[] = [
       fees: "gemwallet-perps",
     },
   },
-  {  
+  {
     id: "7274",
     name: "Katoshi Perps",
     address: null,
@@ -8430,14 +8433,14 @@ const data5: Protocol[] = [
       fees: "katoshi-perps",
     },
   },
-  {  
+  {
     id: "7275",
     name: "Metascalp Perps",
     address: null,
     symbol: "-",
     url: "https://metascalp.io/",
     description:
-        "Metascalp Perps is a decentralized perpetual futures trading platform for trading perps on Hyperliquid L1.",
+      "Metascalp Perps is a decentralized perpetual futures trading platform for trading perps on Hyperliquid L1.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/metascalp-perps.jpg`,
     audits: "0",
@@ -8452,7 +8455,7 @@ const data5: Protocol[] = [
       fees: "metascalp-perps",
     },
   },
-  {  
+  {
     id: "7276",
     name: "Splash Wallet Perps",
     address: null,
@@ -8474,13 +8477,13 @@ const data5: Protocol[] = [
       fees: "splashos-perps",
     },
   },
-  {  
+  {
     id: "7277",
     name: "Tread.fi Perps",
     address: null,
     symbol: "-",
     url: "https://app.tread.fi/referral/BUN3ZKL5",
-    referralUrl: "https://app.tread.fi/referral/BUN3ZKL5",
+    referralUrl: "https://app.tread.fi/referral/BUN3ZKL5",
     description:
       "Tread.fi Perps is a decentralized perpetual futures trading platform for trading perps on Hyperliquid L1.",
     chain: "Hyperliquid L1",
@@ -8620,7 +8623,7 @@ const data5: Protocol[] = [
     github: ["EvoMarket"],
     listedAt: 1769125597
   },
-  {  
+  {
     id: "7284",
     name: "Apexliquid Perps",
     address: null,
@@ -8642,7 +8645,7 @@ const data5: Protocol[] = [
       fees: "apexliquid-perps",
     },
   },
-  {  
+  {
     id: "7285",
     name: "Coin98 Perps",
     address: null,
@@ -8664,7 +8667,7 @@ const data5: Protocol[] = [
       fees: "coin98-perps",
     },
   },
-  {  
+  {
     id: "7286",
     name: "EchoSync Perps",
     address: null,
@@ -8708,7 +8711,7 @@ const data5: Protocol[] = [
   //     fees: "fomo-perps",
   //   },
   // },
-  {  
+  {
     id: "7288",
     name: "GTR.trade Perps",
     address: null,
@@ -8730,7 +8733,7 @@ const data5: Protocol[] = [
       fees: "gtr-trade-perps",
     },
   },
-  {  
+  {
     id: "7289",
     name: "Hyprearn Perps",
     address: null,
@@ -8752,7 +8755,7 @@ const data5: Protocol[] = [
       fees: "hyprearn-perps",
     },
   },
-  {  
+  {
     id: "7290",
     name: "MoonTrader Perps",
     address: null,
@@ -8774,7 +8777,7 @@ const data5: Protocol[] = [
       fees: "moontrader-perps",
     },
   },
-  {  
+  {
     id: "7291",
     name: "Ranger Finance Perps",
     address: null,
@@ -8796,7 +8799,7 @@ const data5: Protocol[] = [
       fees: "ranger-finance-perps",
     },
   },
-  {  
+  {
     id: "7292",
     name: "Senpi Perps",
     address: null,
@@ -8818,7 +8821,7 @@ const data5: Protocol[] = [
       fees: "senpi-perps",
     },
   },
-  {  
+  {
     id: "7293",
     name: "supurr.app Perps",
     address: null,
@@ -8840,7 +8843,7 @@ const data5: Protocol[] = [
       fees: "supurr-perps",
     },
   },
-  {  
+  {
     id: "7294",
     name: "Unigox Perps",
     address: null,
@@ -8862,7 +8865,7 @@ const data5: Protocol[] = [
       fees: "unigox-perps",
     },
   },
-  {  
+  {
     id: "7295",
     name: "Uxuy Perps",
     address: null,
@@ -8884,7 +8887,7 @@ const data5: Protocol[] = [
       fees: "uxuy-perps",
     },
   },
-  {  
+  {
     id: "7296",
     name: "WunderTrading Perps",
     address: null,
@@ -8976,7 +8979,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.altura.trade?referral=defillama",
-    referralUrl: "https://app.altura.trade?referral=defillama",
+    referralUrl: "https://app.altura.trade?referral=defillama",
     description: "Altura is an on-chain capital management protocol offering a multi-strategy stablecoin vault on HyperEVM.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/altura.jpg`,
@@ -9010,7 +9013,7 @@ const data5: Protocol[] = [
     twitter: "solstrategies",
     github: ["SOL-Strategies"],
     listedAt: 1769220964,
-        dimensions: {
+    dimensions: {
       fees: "stke-staked-sol"
     }
   },
@@ -9107,7 +9110,7 @@ const data5: Protocol[] = [
     twitter: "SaiDotFun",
     listedAt: 1769297153,
   },
-   {
+  {
     id: "7307",
     name: "Flying Tulip",
     address: "0x5DD1A7A369e8273371d2DBf9d83356057088082c",
@@ -9143,7 +9146,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Base","Avalanche"],
+    chains: ["Base", "Avalanche"],
     module: "stackfi/index.js",
     twitter: "StackFi_",
     listedAt: 1769460204,
@@ -9594,7 +9597,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "mellow-protocol-core/index.js",
     audit_links: ["https://docs.mellow.finance/security"],
-    twitter: "mellowprotocol", 
+    twitter: "mellowprotocol",
     parentProtocol: "parent#mellow-protocol",
     listedAt: 1769604099
   },
@@ -9613,7 +9616,7 @@ const data5: Protocol[] = [
     category: "Lending",
     chains: ["Base"],
     module: "pike-local-markets/index.js",
-    twitter: "PikeFinance", 
+    twitter: "PikeFinance",
     parentProtocol: "parent#pike",
     listedAt: 1769607030
   },
@@ -9633,7 +9636,7 @@ const data5: Protocol[] = [
     chains: ["Binance"],
     module: "jade1/index.js",
     treasury: "jade1.js",
-    twitter: "jadecurrency1", 
+    twitter: "jadecurrency1",
     listedAt: 1769622901
   },
   {
@@ -9651,7 +9654,7 @@ const data5: Protocol[] = [
     category: "Leveraged Farming",
     chains: ["Ethereum"],
     module: "notional-exponent/index.js",
-    twitter: "notionalfinance", 
+    twitter: "notionalfinance",
     audit_links: ["https://docs.notional.finance/exponent/smart-contracts/security"],
     parentProtocol: "parent#notional",
     listedAt: 1769622914
@@ -9690,7 +9693,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["2198"],
     chains: ["Citrea"],
     module: "juiceswap/index.js",
-    twitter: "JuiceSwap_com", 
+    twitter: "JuiceSwap_com",
     audit_links: ["https://github.com/JuiceSwapxyz/documentation/blob/main/AUDIT_SCOPE.md"],
     listedAt: 1769649445,
     dimensions: {
@@ -10100,7 +10103,7 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Uncollateralized Lending",
-    chains: ["Base","Arbitrum", "Optimism"],
+    chains: ["Base", "Arbitrum", "Optimism"],
     module: "clawloan/index.js",
     twitter: "Clawloan",
     listedAt: 1770152755,
@@ -10126,7 +10129,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7356",
-    name: "BeaverBuild", 
+    name: "BeaverBuild",
     address: null,
     symbol: "-",
     url: "https://beaverbuild.org/",
@@ -10146,7 +10149,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7357",
-    name: "Quasar Builder", 
+    name: "Quasar Builder",
     address: null,
     symbol: "-",
     url: "https://quasar.win/",
@@ -10166,7 +10169,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7358",
-    name: "ShimmerBlocks", 
+    name: "ShimmerBlocks",
     address: null,
     symbol: "-",
     url: "https://www.shimmerblocks.com/",
@@ -10186,7 +10189,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7359",
-    name: "Titan Builder", 
+    name: "Titan Builder",
     address: null,
     symbol: "-",
     url: "https://www.titanbuilder.xyz/",
@@ -10645,10 +10648,10 @@ const data5: Protocol[] = [
     twitter: "SupernovaDEX",
     parentProtocol: "parent#supernova",
     listedAt: 1770743742,
-    // dimensions: {
-    //   dexs: "supernova",
-    //   fees: "supernova",
-    // },
+    dimensions: {
+      dexs: "supernova",
+      fees: "supernova",
+    },
   },
   {
     id: "7382",
@@ -10668,10 +10671,10 @@ const data5: Protocol[] = [
     twitter: "SupernovaDEX",
     parentProtocol: "parent#supernova",
     listedAt: 1770743747,
-    // dimensions: {
-    //   dexs: "supernova-CL",
-    //   fees: "supernova-CL",
-    // },
+    dimensions: {
+      dexs: "supernova-CL",
+      fees: "supernova-CL",
+    },
   },
   {
     id: "7383",
@@ -11221,7 +11224,7 @@ const data5: Protocol[] = [
     github: ["Alex-bitok"],
     listedAt: 1771289901
   },
-  {  
+  {
     id: "7410",
     name: "SomeSwap CL",
     address: null,
@@ -11242,7 +11245,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#someswap",
     listedAt: 1771339177
   },
-  {  
+  {
     id: "7411",
     name: "atomiq exchange",
     address: null,
@@ -11256,13 +11259,13 @@ const data5: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain Bridge",
-    chains: ["Solana", "Citrea", "Botanix"],
+    chains: ["Solana", "Citrea", "Botanix", "Starknet"],
     module: "atomiq-exchange/index.js",
     twitter: "atomiqlabs",
     github: ["atomiqlabs"],
     listedAt: 1771339425
   },
-  {  
+  {
     id: "7412",
     name: "Owockibot",
     address: "base:0xfDC933Ff4e2980d18beCF48e4E030d8463A2Bb07",
@@ -11281,7 +11284,7 @@ const data5: Protocol[] = [
     twitter: "owockibot",
     listedAt: 1771340503
   },
-  {  
+  {
     id: "7413",
     name: "Stone Vault",
     address: null,
@@ -11301,7 +11304,7 @@ const data5: Protocol[] = [
     github: ["StoneVault"],
     listedAt: 1771340515
   },
-  {  
+  {
     id: "7414",
     name: "tramplin.io",
     address: null,
@@ -11322,7 +11325,7 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/mixbytes/audits_public/tree/master/Tramplin/Tramplin"],
     listedAt: 1771340521
   },
-  {  
+  {
     id: "7415",
     name: "Shinjo",
     address: null,
@@ -11341,6 +11344,106 @@ const data5: Protocol[] = [
     forkedFromIds: ["3693"],
     twitter: "ShinjoApp",
     listedAt: 1771343047
+  },
+  {
+    id: "7416",
+    name: "PumpClaw",
+    address: null,
+    symbol: "-",
+    url: " ", // https://pumpclaw.com flagged as malicious by metamask
+    description:
+      "Free token launcher for AI agents on Base with Uniswap V4 liquidity. 80% of trading fees go to creators, LP locked forever.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/pumpclaw.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "pumpclaw/index.js",
+    twitter: "clawd800",
+    github: ["clawd800"],
+    listedAt: 1771346959
+  },
+  {
+    id: "7417",
+    name: "PredMart",
+    address: null,
+    symbol: "-",
+    url: "https://predmart.com",
+    description:
+      "Prediction market on Base chain focused on niche markets with clear resolution rules. Like Polymarket, but for markets the big platforms ignore.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/predmart.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    oraclesBreakdown: [{ name: "UMA", type: "Primary", proof: ["https://basescan.org/address/0xc079017562af749e9ED897082766f00020C20047#code"] }],
+    chains: ["Base"],
+    module: "predmart/index.js",
+    twitter: null,
+    listedAt: 1771346967
+  },
+  {
+    id: "7418",
+    name: "Paimon",
+    address: null,
+    symbol: "-",
+    url: "https://paimon.finance/",
+    description:
+      "Paimon is a BSC-based RWA and DeFi protocol focused on bringing institutional-grade real-world financial assets on-chain through tokenization and decentralized infrastructure bridging TradFi and DeFi.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/paimon.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Equity"],
+    chains: ["Binance"],
+    module: "paimon/index.js",
+    audit_links: ["https://github.com/Paimon-R-D/paimon-gitbook/blob/main/.gitbook/assets/audit-report-2026-01.pdf"],
+    twitter: "Paimon_Finance",
+    github: ["Paimon-R-D"],
+    listedAt: 1771346975
+  },
+  {
+    id: "7419",
+    name: "Zentra Finance",
+    address: null,
+    symbol: "-",
+    url: "https://zentra.finance/",
+    description:
+      "Ctirea's Native DeFi Money Market.",
+    chain: "Citrea",
+    logo: `${baseIconsUrl}/zentra-finance.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: ["https://zentrafinance.gitbook.io/zentra/protocol/contract-addresses#oracle-contracts"] }],
+    chains: ["Citrea"],
+    module: "zentra/index.js",
+    twitter: "ZentraFinance",
+    listedAt: 1771346982
+  },
+  {
+    id: "7420",
+    name: "Spreads Finance",
+    address: null,
+    symbol: "-",
+    url: "https://spreads.fi/",
+    description:
+      "Spreads Finance has a suite of DeFi products starting with a yield and points vault for users to passively earn yield via market neutral derivative strategies or points from tokenless DeFi markets, all via a vault.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/spreads-finance.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "spreads-fi/index.js",
+    twitter: "spreads_fi",
+    listedAt: 1771346989
   },
 ];
 export default data5;

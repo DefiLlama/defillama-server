@@ -4386,7 +4386,8 @@ const data3_0: Protocol[] = [
     name: "Wasabi",
     address: null,
     symbol: "-",
-    url: "https://www.wasabi.xyz",
+    url: "https://app.wasabi.xyz/p/LKHR9",
+    referralUrl: "https://app.wasabi.xyz/p/LKHR9",
     description:
       "Wasabi is a leverage trading protocol: Long, short, and earn on your favorite long tail assets such as memecoins and NFTs. Wasabi’s asset-backed perps keep the position value closely pegged to the underlying asset, reflecting the true price action on your PnL. It also generates additional downstream effects such as moving the spot price with leverage, listing pairs as soon as they launch, and generating low-risk yield opportunities through single sided staking",
     chain: "Ethereum",

@@ -30626,6 +30626,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
     //parentProtocol: "parent#garden",
     listedAt: 1706793085,
+    hallmarks: [
+      ['2025-10-30', 'solver exploit']
+    ],
     dimensions: {
       fees: "garden",
       dexs: "garden",

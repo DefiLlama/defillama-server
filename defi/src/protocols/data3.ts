@@ -38109,7 +38109,8 @@ const data3_2: Protocol[] = [
     name: "Ithaca Protocol",
     address: "bsc:0x49f1d4db3ea1a64390e990c6debeac88eac007ca",
     symbol: "ITHACA",
-    url: "https://www.ithacaprotocol.io",
+    url: "https://app.ithacaprotocol.io/points/referral?referral=CFGBE",
+    referralUrl: "https://app.ithacaprotocol.io/points/referral?referral=CFGBE",
     description:
       "Ithaca is a Non-Custodial, Composable Option Protocol. Ithaca’s mission is to build permissionless cross-chain infrastructure enabling optimal risk sharing across time and event horizons. The protocol allows for instant deployment of ‘liquidity self-enhancing’ complete, composable option, structured product and lending markets on any underlying.",
     chain: "Arbitrum",

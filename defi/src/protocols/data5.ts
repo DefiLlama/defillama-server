@@ -11526,5 +11526,25 @@ const data5: Protocol[] = [
       fees: "czt",
     },
   },
+  {
+    id: "7425",
+    name: "Royco V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.royco.org",
+    description:
+      "The Incentivized Action Market (IAM) Protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/royco-v2.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Avalanche"],
+    module: "royco-v2/index.js",
+    twitter: "roycoprotocol",
+    listedAt: 1771444045,
+    parentProtocol: "parent#royco-protocol",
+  },
 ];
 export default data5;

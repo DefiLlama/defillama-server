@@ -9016,6 +9016,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SomethingSwap",
   },
+  {
+    id: "parent#royco-protocol",
+    name: "Royco Protocol",
+    url: "https://www.royco.org",
+    description: "The Incentivized Action Market (IAM) Protocol.",
+    logo: `${baseIconsUrl}/royco-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "roycoprotocol",
+  },
 ];
 
 export default parentProtocols;

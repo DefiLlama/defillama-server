@@ -58208,14 +58208,14 @@ const data3_3: Protocol[] = [
   },*/
   {
     id: "5337",
-    name: "Royco Protocol",
+    name: "Royco V1",
     address: null,
     symbol: "-",
     url: "https://www.royco.org",
     description:
       "The Incentivized Action Market (IAM) Protocol.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/royco-protocol.jpg`,
+    logo: `${baseIconsUrl}/royco-v1.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -58224,6 +58224,7 @@ const data3_3: Protocol[] = [
     module: "royco/index.js",
     twitter: "roycoprotocol",
     listedAt: 1731234885,
+    parentProtocol: "parent#royco-protocol",
     dimensions: {
       fees: "royco"
     }

@@ -10535,7 +10535,7 @@ const data3_0: Protocol[] = [
     parentProtocol: "parent#zkswap-finance",
     listedAt: 1688134493,
     dimensions: {
-      fees: "zkswap-finance",
+      fees: "zkSwap_Finance",
       dexs: "zkSwap_Finance"
     }
   },

@@ -180,6 +180,30 @@ export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp 
   return result
 }
 
+export async function getDimensionsRecordsInRange({ adapterType, id, fromTimestamp, toTimestamp }: { adapterType: AdapterType, id: string, fromTimestamp: number, toTimestamp: number }) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: {
+      type: adapterType,
+      id,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['id', 'timestamp', 'timeS', 'type', 'data'],
+    raw: true,
+  })
+
+  return result
+}
+
+export async function deleteDimensionsRecord({ adapterType, id, timeS }: { adapterType: AdapterType, id: string, timeS: string }) {
+  await init()
+
+  await Tables.DIMENSIONS_DATA.destroy({
+    where: { type: adapterType, id, timeS },
+  })
+}
+
 export function getHourlyTimeS(timestamp: number) {
   const d = new Date(timestamp * 1000)
   const yyyy = d.getUTCFullYear()

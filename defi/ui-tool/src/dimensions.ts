@@ -1,6 +1,6 @@
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "../../src/adaptors/data/types";
-import { getAllDimensionsRecordsTimeS, init as initDB } from "../../src/adaptors/db-utils/db2";
+import { getAllDimensionsRecordsTimeS, getDimensionsRecordsInRange, deleteDimensionsRecord } from "../../src/adaptors/db-utils/db2";
 import { getTimestampString } from "../../src/api2/utils";
 import { handler2, DimensionRunOptions } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
@@ -8,23 +8,6 @@ import { humanizeNumber } from "@defillama/sdk";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
 import sleep from "../../src/utils/shared/sleep";
 import { getTimestampAtStartOfDayUTC } from "../../src/utils/date";
-import { Tables } from "../../src/api2/db/tables";
-import { toStartOfDay } from "../../src/adaptors/db-utils/AdapterRecord2";
-
-const FEES_VOLUME_TABLE = 'fees-volume'
-
-function getFeesVolumeClient() {
-  const { DynamoDBClient } = require("@aws-sdk/client-dynamodb")
-  const { DynamoDBDocument } = require("@aws-sdk/lib-dynamodb")
-  const ddbClient = new DynamoDBClient({})
-  return DynamoDBDocument.from(ddbClient, { marshallOptions: { convertClassInstanceToMap: true } })
-}
-
-let _feesVolumeClient: any
-function feesVolumeClient() {
-  if (!_feesVolumeClient) _feesVolumeClient = getFeesVolumeClient()
-  return _feesVolumeClient
-}
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
@@ -233,8 +216,6 @@ function getRecordItem(record: any) {
 const deleteRecordsList: any = {}
 
 export async function dimensionsDeleteGetList(ws: any, args: any) {
-  await initDB()
-
   const adapterType = args.adapterType as AdapterType
   const protocolToRun = args.protocol
   const fromTimestamp = Number(args.dateFrom)
@@ -258,18 +239,7 @@ export async function dimensionsDeleteGetList(ws: any, args: any) {
     return
   }
 
-  const records: any[] = await Tables.DIMENSIONS_DATA.findAll({
-    where: {
-      type: adapterType,
-      id: protocol.id2,
-      timestamp: {
-        [require('sequelize').Op.gte]: fromTimestamp,
-        [require('sequelize').Op.lte]: toTimestamp,
-      },
-    },
-    attributes: ['id', 'timestamp', 'timeS', 'type', 'data'],
-    raw: true,
-  })
+  const records = await getDimensionsRecordsInRange({ adapterType, id: protocol.id2, fromTimestamp, toTimestamp })
 
   console.log('Pulled', records.length, 'dimension records for protocol:', protocol.displayName, 'type:', adapterType, 'from:', new Date(fromTimestamp * 1000).toDateString(), 'to:', new Date(toTimestamp * 1000).toDateString())
 
@@ -311,8 +281,6 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
     console.error(`Warning: ${ids.length - validIds.length} invalid IDs were filtered out`)
   }
 
-  await initDB()
-
   validIds.sort(() => Math.random() - 0.5)
 
   const { errors } = await PromisePool
@@ -325,58 +293,12 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
         return
       }
 
-      const { protocolId, adapterType, timestamp, timeS } = record
-
-      if (!protocolId || !adapterType || !timeS) {
-        console.error('Invalid record data:', { id, protocolId, adapterType, timeS })
-        throw new Error(`Invalid record data for id: ${id}`)
-      }
+      const { protocolId, adapterType, timeS } = record
 
       try {
-        const ddbPK = `daily#${adapterType}#${protocolId}`
-        const ddbSK = toStartOfDay(timestamp)
-        
-        try {
-          const client = feesVolumeClient()
-          const ddbData = await client.query({
-            TableName: FEES_VOLUME_TABLE,
-            ExpressionAttributeValues: {
-              ":pk": ddbPK,
-              ":sk": ddbSK,
-            },
-            KeyConditionExpression: "PK = :pk AND SK = :sk",
-          })
-          const items = ddbData.Items ?? []
-          if (items.length > 1) {
-            console.error(`Warning: Found ${items.length} DynamoDB items for deletion (expected 1):`, ddbPK, ddbSK)
-          }
-          for (const item of items) {
-            if (item.PK !== ddbPK) {
-              console.error('Skipping DynamoDB item with mismatched PK:', item.PK, 'expected:', ddbPK)
-              continue
-            }
-            await client.delete({
-              TableName: FEES_VOLUME_TABLE,
-              Key: { PK: item.PK, SK: item.SK },
-            })
-          }
-        } catch (e) {
-          console.error('Error deleting from DynamoDB fees-volume for:', { protocolId, timeS, adapterType, ddbPK, ddbSK, error: (e as any)?.message })
-          throw e
-        }
-
-        const pgRecord = await Tables.DIMENSIONS_DATA.findOne({
-          where: {
-            id: protocolId,
-            type: adapterType,
-            timeS: timeS,
-          },
-        })
-
-        if (pgRecord) {
-          await pgRecord.destroy()
-        }
-
+        // TODO: uncomment to enable actual deletion
+        await deleteDimensionsRecord({ adapterType, id: protocolId, timeS })
+        // console.log('[DRY RUN] Would delete dimension record:', adapterType, protocolId, timeS, 'data:', JSON.stringify(record.data?.aggregated ?? {}))
         delete deleteRecordsList[id]
       } catch (e) {
         console.error('Error deleting dimension record:', id, (e as any)?.message || e)

@@ -24371,6 +24371,14 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://aave.com/blog/aave-aptos", "https://aave.com/docs/aave-v3/aptos/smart-contracts/oracles"],
+        chains: [{ chain: "Aptos"}]
+      }
+    ],
     chains: ["Aptos"],
     module: "aave-aptos/index.js",
     twitter: "aave",

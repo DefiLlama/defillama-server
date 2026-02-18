@@ -9,6 +9,7 @@ import { getBasicCoins } from "./utils/getCoinsUtils";
 import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
+import pLimit from "p-limit";
 
 type TimedPrice = {
   price: number;
@@ -89,6 +90,8 @@ function formParamsObject(event: any): QueryParams {
 
   return params;
 }
+const limit = pLimit(20);
+
 async function fetchDBData(
   params: QueryParams,
   timestamps: number[],
@@ -100,31 +103,33 @@ async function fetchDBData(
 
   coins.map(async (coin) => {
     promises.push(
-      ...timestamps.map(async (timestamp) => {
-        const finalCoin: any = await getRecordClosestToTimestamp(
-          coin.redirect ?? coin.PK,
-          timestamp,
-          params.searchWidth,
-        );
-        if (finalCoin.SK === undefined) {
-          return;
-        }
-        PKTransforms[coin.PK].forEach((coinName) => {
-          if (response[coinName] == undefined) {
-            response[coinName] = {
-              symbol: coin.symbol,
-              confidence: coin.confidence,
-              decimals: coin.decimals,
-              prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
-            };
-          } else {
-            response[coinName].prices.push({
-              timestamp: finalCoin.SK,
-              price: finalCoin.price,
-            });
+      ...timestamps.map((timestamp) =>
+        limit(async () => {
+          const finalCoin: any = await getRecordClosestToTimestamp(
+            coin.redirect ?? coin.PK,
+            timestamp,
+            params.searchWidth,
+          );
+          if (finalCoin.SK === undefined) {
+            return;
           }
-        });
-      }),
+          PKTransforms[coin.PK].forEach((coinName) => {
+            if (response[coinName] == undefined) {
+              response[coinName] = {
+                symbol: coin.symbol,
+                confidence: coin.confidence,
+                decimals: coin.decimals,
+                prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
+              };
+            } else {
+              response[coinName].prices.push({
+                timestamp: finalCoin.SK,
+                price: finalCoin.price,
+              });
+            }
+          });
+        }),
+      ),
     );
   });
 

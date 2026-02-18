@@ -69,7 +69,7 @@ const humanizeDuration = (ms: number) => {
 export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
   let {
-    timestamp = timestampAtStartofHour,
+    timestamp = timestampAnHourAgo,
     adapterType,
     protocolNames,
     maxConcurrency = defaultMaxConcurrency,
@@ -85,9 +85,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
     skipHourlyCache = false,
     parallelHourlyProcessCount = 1,
   } = options
-
-  if (!isRunFromRefillScript)
-    console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
 
   let recentData: any = {}
 
@@ -119,7 +116,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       }
     }
   } else if (runType === 'store-all') {
-    fromTimestamp = timestampAtStartofHour - ONE_DAY_IN_SECONDS
+    fromTimestamp = timestamp - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
   }
 
@@ -131,7 +128,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
   const shouldBuildHourlyCache = runType === 'store-all' && !skipHourlyCache
   let hourlyCacheData: { cache: Map<string, Map<string, HourlySlice>>, range: { from: number, to: number } } | undefined
   if (shouldBuildHourlyCache) {
-    const cacheTo = timestampAtStartofHour + 2 * ONE_HOUR_IN_SECONDS // we add 2 hours to the current hour to have some buffer
+    const cacheTo = timestamp + 3 * ONE_HOUR_IN_SECONDS // we add 3 hours to the current hour to have some buffer
     const cacheFrom = cacheTo - 50 * ONE_HOUR_IN_SECONDS
     hourlyCacheData = await buildHourlyCache({ adapterType, fromTimestamp: cacheFrom, toTimestamp: cacheTo })
   }
@@ -361,8 +358,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
 
         if (runAtCurrTime || !isAdapterVersionV1) {
-          recordTimestamp = timestampAtStartofHour
-          endTimestamp = timestampAtStartofHour
+          if (runAtCurrTime) {  // for adapters running at current time, we want to store the record at the timestamp of the run
+            recordTimestamp = timestampAtStartofHour
+            endTimestamp = timestampAtStartofHour
+          } else if (!isAdapterVersionV1) { // for v2 adapters, we run one hour ago to give time for data to be available
+            recordTimestamp =  timestamp  
+            endTimestamp = timestamp
+          }
+
 
           const skipRefillYesterday = process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
 

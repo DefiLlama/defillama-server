@@ -5,6 +5,7 @@ import { getUnixTimeNow } from "../../api2/utils/time"
 import { humanizeNumber } from "@defillama/sdk"
 import { initializeTVLCacheDB } from "../../api2/db"
 import { Tables } from "../../api2/db/tables"
+import dynamodb from "../../utils/shared/dynamodb"
 
 export function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -289,8 +290,20 @@ export class AdapterRecord2 {
     }
   }
 
-  static async deleteFromDB({ adapterType, id, timeS }: { adapterType: AdapterType, id: string, timeS: string }) {
+  static async deleteFromDB({ adapterType, id, timeS, timestamp, data, bl, blc }: { adapterType: AdapterType, id: string, timeS: string, timestamp?: number, data?: any, bl?: any, blc?: any }) {
     await initializeTVLCacheDB()
+    await dynamodb.putEventData({
+      PK: `dimension-delete#${adapterType}#${id}`,
+      SK: String(timestamp ?? timeS),
+      source: 'dimension-delete',
+      adapterType,
+      id,
+      timeS,
+      timestamp,
+      data,
+      bl,
+      blc,
+    })
     await Tables.DIMENSIONS_DATA.destroy({ where: { type: adapterType, id, timeS } })
   }
 

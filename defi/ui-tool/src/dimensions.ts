@@ -294,11 +294,11 @@ async function _deleteDimensionRecords(ws: any, ids?: any) {
         return
       }
 
-      const { protocolId, adapterType, timeS } = record
+      const { protocolId, adapterType, timeS, timestamp, data, bl, blc } = record
 
       try {
         // TODO: uncomment to enable actual deletion
-        await AdapterRecord2.deleteFromDB({ adapterType, id: protocolId, timeS })
+        await AdapterRecord2.deleteFromDB({ adapterType, id: protocolId, timeS, timestamp, data, bl, blc })
         // console.log('[DRY RUN] Would delete dimension record:', adapterType, protocolId, timeS, 'data:', JSON.stringify(record.data?.aggregated ?? {}))
         delete deleteRecordsList[id]
       } catch (e) {

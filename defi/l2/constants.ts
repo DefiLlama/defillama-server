@@ -269,4 +269,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // noble: { ticker: "", address: "coingecko:" },
   "mezo": { ticker: "MEZO", address: "" },
   "monad": { ticker: "MON", address: "coingecko:monad" },
+  "keeta": { ticker: "KTA", address: "coingecko:keeta" },
 };

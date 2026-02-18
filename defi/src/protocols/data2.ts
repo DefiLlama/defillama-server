@@ -16835,7 +16835,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1664803068,
     dimensions: {
-      fees: "xswap-v2",
+      fees: "xswap-protocol",
       dexs: "xswap-protocol"
     }
   },

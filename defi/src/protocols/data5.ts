@@ -664,7 +664,8 @@ const data5: Protocol[] = [
     name: "fomo",
     address: null,
     symbol: "-",
-    url: "https://fomo.family/",
+    url: "https://fomo.family/r/llamas",
+    referralUrl: "https://fomo.family/r/llamas",
     description:
       "Fomo is a social trading app that enables self-custodial, gasless token swaps on mobile, combining social feeds and copy-trading features.",
     chain: "Solana",

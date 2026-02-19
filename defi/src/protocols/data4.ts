@@ -8606,7 +8606,7 @@ const data4: Protocol[] = [
   //   category: "Chain",
   //   chains: ["Ethereum"],
   //
-  //   
+  //
   //   module: "dummy.js",
   //   twitter: "energywebx",
   // },
@@ -10453,7 +10453,7 @@ const data4: Protocol[] = [
     category: "Leveraged Farming",
     chains: ["Aptos"],
     oraclesBreakdown: [
-      { name: "Pyth", type: "Primary", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] }, 
+      { name: "Pyth", type: "Primary", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] },
       { name: "Switchboard", type: "Fallback", proof: ["https://docs.moar.market/protocol-overview/tiered-oracle#oracle-sources-and-tiers"] },
     ],
     module: "moar/index.js",
@@ -12090,7 +12090,7 @@ const data4: Protocol[] = [
   //   module: "Magic-Fi/index.js",
   //   twitter: "marbletoken",
   //
-  //   
+  //
   //   listedAt: 1745492824
   // },
   {
@@ -13722,7 +13722,7 @@ const data4: Protocol[] = [
   //   chains: ["Ethereum"],
   //   module: "neutrl/index.js",
   //   twitter: "neutrl_labs",
-  //   
+  //
   //
   //   listedAt: 1747077131
   // },
@@ -13887,7 +13887,7 @@ const data4: Protocol[] = [
   //   chains: ["Berachain"],
   //   module: "kuma-v1/index.js",
   //   twitter: "kumadotbid",
-  //   
+  //
   //   listedAt: 1747233246
   // },
   {
@@ -15276,7 +15276,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   tags: ["Real Estate"],
   //   chains: ["Polygon"],
-  //   
+  //
   //   module: "propchain/index.js",
   //   twitter: "PropChainGlobal",
   //   listedAt: 1747922995
@@ -17591,7 +17591,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   tags: ["Money Market Funds"],
   //   chains: ["HashKey Chain"],
-  //   
+  //
   //   oraclesBreakdown: [
   //     {
   //       name: "NexaToken",
@@ -22329,7 +22329,7 @@ const data4: Protocol[] = [
   //       chains: [{ chain: "TAC" }],
   //     },
   //     ],
-  //   
+  //
   //   twitter: "EdgeCapitalMgmt",
   //   listedAt: 1754418907,
   //   dimensions: {
@@ -24237,7 +24237,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "Bridge Aggregator",
   //   chains: ["Bitcoin"],
-  //   
+  //
   //   module: "dummy.js",
   //   twitter: "gardenfi",
   //   audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
@@ -26111,7 +26111,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "DEX Aggregator",
   //   chains: ["Ethereum", "Solana", "Binance", "Scroll", "Base", "Bitcoin", "Arbitrum", "Polygon", "Optimism", "Linea", "Celo", "Avalanche", "zkSync Era", "Mode", "Tron", "Zora", "Blast", "Osmosis", "Cosmos", "Fantom", "Moonriver", "Taiko", "Starknet", "Polygon zkEVM", "Sui", "Cronos", "Noble", "Boba", "Thorchain", "Fuse", "xDai", "Harmony", "Moonbeam", "Sonic", "TON", "Berachain", "Aurora", "RSK", "Klaytn", "Kava", "Evmos", "Filecoin", "CORE", "Kroma", "X Layer", "ZetaChain", "Pulse"],
-  //   
+  //
   //   module: "dummy.js",
   //   twitter: "VirtUsPlatform",
   // },
@@ -26129,7 +26129,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "Bridge Aggregator",
   //   chains: ["Ethereum", "Solana", "Binance", "Scroll", "Base", "Bitcoin", "Arbitrum", "Polygon", "Optimism", "Linea", "Celo", "Avalanche", "zkSync Era", "Mode", "Tron", "Zora", "Blast", "Osmosis", "Cosmos", "Fantom", "Moonriver", "Taiko", "Starknet", "Polygon zkEVM", "Sui", "Cronos", "Noble", "Boba", "Thorchain", "Fuse", "xDai", "Harmony", "Moonbeam", "Sonic", "TON", "Berachain", "Aurora", "RSK", "Klaytn", "Kava", "Evmos", "Filecoin", "CORE", "Kroma", "X Layer", "ZetaChain", "Pulse"],
-  //   
+  //
   //   module: "dummy.js",
   //   twitter: "VirtUsPlatform",
   // },
@@ -26345,7 +26345,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "Dexs",
   //   chains: ["Goat"],
-  //   
+  //
   //   module: "okutrade-goat/index.js",
   //   twitter: "okutrade",
   //   listedAt: 1757527823,
@@ -26544,7 +26544,7 @@ const data4: Protocol[] = [
   //   cmcId: null,
   //   category: "Chain",
   //   chains: ["Ethereum"],
-  //   
+  //
   //   module: "dummy.js",
   //   twitter: "helium",
   // },
@@ -28141,7 +28141,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Hemi", "Polygon", "Katana", "Arbitrum", "Base", "Plasma"],
+    chains: ["Ethereum", "Hemi", "Polygon", "Katana", "Arbitrum", "Base", "Plasma", "Avalanche", "HyperEVM"],
     module: "ploutos/index.js",
     twitter: "ploutos_money",
     forkedFromIds: ["1599"],
@@ -29252,7 +29252,7 @@ const data4: Protocol[] = [
       derivatives: "spooky-perps"
     }
   },
-  { 
+  {
     id: "6845",
     name: "Xpanse Perps",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
@@ -29396,7 +29396,7 @@ const data4: Protocol[] = [
   //   chains: ["Base"],
   //   module: "dummy.js",
   //   twitter: "basedmarkets",
-  //   
+  //
   //   dimensions: {
   //     derivatives: "based-perps"
   //   },

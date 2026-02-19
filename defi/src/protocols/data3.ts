@@ -9422,7 +9422,7 @@ const data3_0: Protocol[] = [
     ],
     twitter: "vestigefi",
     listedAt: 1687208165,
-	disabled: "The protocol's tvl was actually tracking tvl across various Algorand protocols, e.g. Tinyman"
+	  disabled: "The protocol's tvl was actually tracking tvl across various Algorand protocols, e.g. Tinyman"
   },
   {
     id: "3129",

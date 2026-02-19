@@ -9416,12 +9416,13 @@ const data3_0: Protocol[] = [
     cmcId: "21683",
     category: "Launchpad",
     chains: ["Algorand"],
-    module: "dummy.js",
+    module: "vestige/index.js",
     audit_links: [
       "https://github.com/vestigefi/SmartContracts/blob/main/Vestige%20-%20Secure%20Code%20Review%20of%20VestigeSafe%2C%20TinyStake%2C%20%26%20TinyStart%20v1.1.pdf",
     ],
     twitter: "vestigefi",
     listedAt: 1687208165,
+	disabled: "The protocol's tvl was actually tracking tvl across various Algorand protocols, e.g. Tinyman"
   },
   {
     id: "3129",

@@ -64,7 +64,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl', 'blc', 'tb', 'tbl', 'tblc']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {

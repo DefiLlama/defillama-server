@@ -5017,9 +5017,9 @@ export const chainCoingeckoIds = {
     },
   },
   "ENI": {
-    geckoId: "eni",
+    geckoId: null,
     symbol: "ENI",
-    cmcId: "36784",
+    cmcId: null,
     categories: ["EVM"],
     twitter: "ENI__Official",
     url: "https://eni.top/",

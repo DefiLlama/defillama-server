@@ -2349,13 +2349,13 @@ const data: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "RedStone",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain", "https://docs-v4.venus.io/risk/resilient-price-oracle", "https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool"],
         chains: [{ chain: "Binance" }, { chain: "Unichain" }]
       },
       {
         name: "Chainlink",
-        type: "Primary",
+        type: "Aggregator",
         proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle"],
         chains: [{ chain: "Binance" }, { chain: "Ethereum" }, { chain: "Arbitrum"}, { chain: "zkSync"}, { chain: "Optimism"}, { chain: "Base"}]
       }

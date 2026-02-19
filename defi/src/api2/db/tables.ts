@@ -115,7 +115,7 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       allowNull: true, // Assuming 'breakdownByLabelByChain' can be null
       defaultValue: null, // Ensure it defaults to null if not provided
     },
-    tb: { // Token breakdown (usdTvl + usdTokenBalances + rawTokenBalances)
+    tb: { // Token breakdown
       type: DataTypes.JSON,
       allowNull: true,
       defaultValue: null,

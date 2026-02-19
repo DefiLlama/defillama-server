@@ -224,6 +224,10 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Solana",
     "Soneium",
     "Plume Mainnet",
+    "Plasma",
+    "Tron",
+    "Monad",
+    "Sonic",
   ],
   "Switchboard": ["Solana", "Ethereum", "CORE", "Arbitrum", "OP Mainnet", "Base", "Aurora", "Aptos", "Sui"],
   "RedStone": [

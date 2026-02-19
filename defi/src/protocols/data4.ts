@@ -21079,7 +21079,7 @@ const data4: Protocol[] = [
     description:
       "Users can deposit USDe/eUSDe into the Strata Points Farm on Ethereum Mainnet to mint pUSDe and start accruing Strata Points, unlocking early access, referral rewards, and boosted multipliers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/strata-season-0.jpg`,
+    logo: `${baseIconsUrl}/strata-season-0.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -29870,7 +29870,7 @@ const data4: Protocol[] = [
     url: "https://strata.money",
     description: `Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/strata-markets.jpg`,
+    logo: `${baseIconsUrl}/strata-markets.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,

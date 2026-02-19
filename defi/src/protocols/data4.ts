@@ -28141,7 +28141,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Hemi", "Polygon", "Katana", "Arbitrum", "Base", "Plasma", "Avalanche", "HyperEVM"],
+    chains: ["Ethereum", "Hemi", "Polygon", "Katana", "Arbitrum", "Base", "Plasma", "Avalanche", "Hyperliquid L1"],
     module: "ploutos/index.js",
     twitter: "ploutos_money",
     forkedFromIds: ["1599"],

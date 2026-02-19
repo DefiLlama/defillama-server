@@ -17049,7 +17049,7 @@ const data4: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Ethereum"],
     module: "almanak/index.js",
-    twitter: "Almanak__",
+    twitter: "almanak",
     github: ["almanak-co"],
     audit_links: ["https://zokyo.io/reports/almanak"],
     listedAt: 1749770193,

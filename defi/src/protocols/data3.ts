@@ -19979,7 +19979,7 @@ const data3_1: Protocol[] = [
     category: "Yield",
     chains: ["xDai"],
     module: "sdai/index.js",
-    twitter: null,
+    twitter: "gnosis_",
     listedAt: 1696593212,
     dimensions: {
       fees: "sdai",
@@ -25203,7 +25203,7 @@ const data3_1: Protocol[] = [
       "Fantom",
     ],
     module: "dummy.js",
-    twitter: "deBridgeFinance",
+    twitter: "debridge",
   }, */
   {
     id: "3847",
@@ -39207,7 +39207,7 @@ const data3_2: Protocol[] = [
     tags: ["AMM"],
     chains: ["Hedera"],
     module: "hbarsuite-dex/index.js",
-    twitter: "HbarSuite",
+    twitter: "HSuiteNetwork",
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Web%20Pentest/HBarSuite_WebApp_SmartNode_FrontEnd_BackEnd_Pentest_Report_Halborn_Final.pdf",
     ],
@@ -51091,7 +51091,7 @@ const data3_3: Protocol[] = [
     category: "Canonical Bridge",
     chains: ["Ethereum"],
     module: "lisk-l2/index.js",
-    twitter: "LiskHQ",
+    twitter: "Lisk",
     github: ["LiskHQ"],
   },
   {
@@ -52885,7 +52885,7 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum"],
     module: "ethervista/index.js",
     forkedFromIds: ["2197"],
-    twitter: "LairFinance",
+    twitter: "ethervista",
     listedAt: 1725274551,
     dimensions: {
       fees: "ethervista"

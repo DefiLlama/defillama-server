@@ -3819,7 +3819,7 @@ export const chainCoingeckoIds = {
       da: "Ethereum",
     },
     url: "https://lisk.com/",
-    twitter: "LiskHQ",
+    twitter: "Lisk",
     github: ["LiskHQ"],
     chainId: 1135,
     dimensions: {

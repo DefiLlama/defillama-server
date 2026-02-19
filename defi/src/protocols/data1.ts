@@ -471,7 +471,7 @@ const data: Protocol[] = [
     category: "Cross Chain Bridge",
     chains: ["Ethereum"],
     module: "keep.js",
-    twitter: null,
+    twitter: "keep_project",
     audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
     oraclesBreakdown: [{ name: "Chronicle", type: "Primary", proof: [] }],
     github: ["keep-network"], //check
@@ -888,7 +888,7 @@ const data: Protocol[] = [
     category: "Payments",
     chains: ["Ethereum"],
     module: "flexa.js",
-    twitter: "amptoken",
+    twitter: "ampdotxyz",
     audit_links: [
       "https://consensys.net/diligence/audits/2020/06/amp",
       "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",

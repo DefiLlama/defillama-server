@@ -3971,7 +3971,7 @@ export const chainCoingeckoIds = {
     symbol: "SHIDO",
     cmcId: "28211",
     categories: ["EVM", "Cosmos"],
-    twitter: "ShidoGlobal",
+    twitter: "ShidoNetwork",
     url: "https://shido.io/",
   },
   "Redbelly": {

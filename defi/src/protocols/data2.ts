@@ -21701,7 +21701,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Fantom"],
     module: "mummy/index.js",
-    twitter: "mummyftm",
+    twitter: null,
     forkedFromIds: ["337"],
     // https://docs.mummy.finance/trade/trading-v2/platform-mechanics/pyth-price-feed
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ],

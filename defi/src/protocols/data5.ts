@@ -11607,6 +11607,7 @@ const data5: Protocol[] = [
     chains: ["Solana", "Base", "Polygon"],
     module: "dummy.js",
     twitter: "PagCryptoFi",
+    github: ["pagcrypto"],
     dimensions: {
       fees: "pagcrypto",
     },

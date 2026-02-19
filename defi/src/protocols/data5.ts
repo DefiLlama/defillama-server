@@ -11590,5 +11590,26 @@ const data5: Protocol[] = [
     twitter: "FloeLabs",
     listedAt: 1771517635,
   },
+  {
+    id: "7428",
+    name: "PagCrypto",
+    address: null,
+    symbol: "-",
+    url: "https://pagcrypto.finance",
+    description:
+      "PagCrypto is a crypto-to-fiat payments infrastructure that enables on-chain assets to be used for real-world payments through local payment rails such as PIX, with multi-chain support.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pagcrypto.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Solana", "Base", "Polygon"],
+    module: "dummy.js",
+    twitter: "PagCryptoFi",
+    dimensions: {
+      fees: "pagcrypto",
+    },
+  },
 ];
 export default data5;

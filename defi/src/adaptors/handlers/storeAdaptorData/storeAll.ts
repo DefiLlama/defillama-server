@@ -25,10 +25,15 @@ const checkBeforeInsert = isDryRun || process.env.DIM_CHECK_BEFORE_INSERT === 't
 
 const singleAdapterTypeEnv = process.env.DIM_ADAPTER_TYPE as AdapterType | undefined;
 const singleProtocolEnv = process.env.DIM_PROTOCOL_NAME;
+const excludedAdapterTypesSet = new Set<AdapterType>(process.env.DIM_EXCLUDE_ADAPTER_TYPES ? process.env.DIM_EXCLUDE_ADAPTER_TYPES.split(',').map(s => s.trim() as AdapterType) : [])
 
 const skipHourlyCache = process.env.DIM_SKIP_HOURLY_CACHE === 'true';
 
 console.log('This will run with MAX_RUNTIME:', MAX_RUNTIME / 60000, 'minutes');
+
+if (excludedAdapterTypesSet.size > 0)
+  console.log('Excluding adapter types:', Array.from(excludedAdapterTypesSet).join(', '))
+
 if (isDryRun) {
   console.log('>>> DIMENSIONS DRY-RUN MODE ENABLED <<<');
   if (singleAdapterTypeEnv) console.log('Limiting to adapterType:', singleAdapterTypeEnv);
@@ -48,6 +53,11 @@ async function run() {
   await Promise.all(adapterTypesToRun.map(runAdapterType))
 
   async function runAdapterType(adapterType: AdapterType) {
+    if (excludedAdapterTypesSet.has(adapterType)) {
+      console.log(`Skipping adapter type ${adapterType} as it's in the excluded list`)
+      return;
+    }
+
     const startTimeCategory = getUnixTimeNow()
     // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType

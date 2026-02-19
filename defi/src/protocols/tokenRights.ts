@@ -405,8 +405,8 @@ export default {
     holdersRevenueAndValueAccrual: {
       buybacks: "ACTIVE",
       dividends: "NONE",
-      burns: "NONE",
-      primaryValueAccrual: "Most protocol fees go to the assistance fund which buys back & burns HYPE tokens",
+      burns: "ACTIVE",
+      primaryValueAccrual: "Most protocol fees go to the assistance fund which buys back & burns HYPE tokens. HYPE in the Assistance Fund is formally recognized as burned",
     },
     tokenAlignment: {
       fundraising: "NONE",

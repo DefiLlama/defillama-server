@@ -27081,7 +27081,7 @@ const data3_1: Protocol[] = [
     //assetToken: "ezETH", comment to show the REZ token info on the protocol page
     url: "https://app.renzoprotocol.com/restake",
     description:
-      "The Renzo Protocol acts as an interface on top of EigenLayer, enhancing Ethereum staking by securing Actively Validated Services and offering higher yields",
+      "Renzo is an institutional-grade onchain platform for staking, restaking, and capital deployment, offering transparent, secure access to advanced yield strategies through modular products: Reserve Vaults, Staking Suite, and Enterprise Suite.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/renzo.png`,
     audits: "2",

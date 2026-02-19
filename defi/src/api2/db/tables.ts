@@ -115,6 +115,21 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       allowNull: true, // Assuming 'breakdownByLabelByChain' can be null
       defaultValue: null, // Ensure it defaults to null if not provided
     },
+    tb: { // Token breakdown
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tbl: { // Token breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tblc: { // Token breakdown by label and chain
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
     timeS: {
       type: DataTypes.STRING,
       primaryKey: true,

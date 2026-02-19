@@ -511,7 +511,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         protocolName: protocol.displayName,
       }
 
-      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
+      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, tokenBreakdown: tb, tokenBreakdownByLabel: tbl, tokenBreakdownByLabelByChain: tblc, })
 
       async function storeTokenBreakdownData() {
         if (!adapterRecord) return;

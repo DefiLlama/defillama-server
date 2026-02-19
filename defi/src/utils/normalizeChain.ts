@@ -2648,8 +2648,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
   },
   "Scroll": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'scroll',
+    symbol: 'SCR',
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["scroll-tech"],

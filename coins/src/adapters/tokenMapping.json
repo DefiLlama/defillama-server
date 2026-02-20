@@ -12004,6 +12004,11 @@
     }
   },
   "katana": {
+    "0x4200000000000000000000000000000000000006": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
     "0x926a8a63Fa1e1FDBBEb811a0319933B1A0F1EDbb": {
       "to": "coingecko#midas-mhyper",
       "decimals": 18,

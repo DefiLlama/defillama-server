@@ -529,7 +529,6 @@ export const cexsData: Array<ICex> = [
     slug: "hotbit",
     coin: "HTB",
     coinSymbol: "HTB",
-    url: "https://www.hotbit.io",
   },
   {
     name: "BiTomato",

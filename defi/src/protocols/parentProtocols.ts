@@ -929,6 +929,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CapDotFinance",
     github: ["capofficial"],
+    deadUrl: true,
   },
   {
     id: "parent#sphere",
@@ -1227,6 +1228,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AlpacaFinance",
     governanceID: ["snapshot:alpacafinance.eth"],
     github: ["alpaca-finance"],
+    deadUrl: true,
   },
   {
     id: "parent#spin",
@@ -1346,6 +1348,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fairy_swap",
     github: ["Fairyswap"],
+    deadUrl: true,
   },
   {
     id: "parent#wemix.fi",
@@ -6026,6 +6029,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SwapModeFi",
     github: ["swapmode"],
+    deadUrl: true,
   },
   {
     id: "parent#superswap",

@@ -1632,6 +1632,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     github: ["squidswap-ink"],
     listedAt: 1736960299,
+    deadUrl: true,
   },
   {
     id: "5630",
@@ -6999,6 +7000,7 @@ const data4: Protocol[] = [
     module: "zino-finance/index.js",
     twitter: "zinoprotocol",
     listedAt: 1741174839,
+    deadUrl: true,
   },
   {
     id: "5864",
@@ -7043,7 +7045,8 @@ const data4: Protocol[] = [
     listedAt: 1741195062,
     dimensions: {
       fees: "flarebank"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5866",
@@ -13293,6 +13296,7 @@ const data4: Protocol[] = [
     twitter: "takoswap",
     forkedFromIds: ["2197"],
     listedAt: 1746560861,
+    deadUrl: true,
   },
   {
     id: "6142",
@@ -16427,6 +16431,7 @@ const data4: Protocol[] = [
     module: "indx/index.js",
     twitter: "indxsapp",
     listedAt: 1749084415,
+    deadUrl: true,
   },
   {
     id: "6271",
@@ -28744,7 +28749,8 @@ const data4: Protocol[] = [
         proof: ["https://bitfire.gitbook.io/bitcoin-backed-loan"],
       },
     ],
-    listedAt: 1759875947
+    listedAt: 1759875947,
+    deadUrl: true,
   },
   {
     id: "6821",

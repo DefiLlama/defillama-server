@@ -6228,6 +6228,7 @@ const data2: Protocol[] = [
     module: "thunderpokt/index.js",
     twitter: null,
     listedAt: 1650364599,
+    deadUrl: true,
   },
   {
     id: "1664",
@@ -6395,7 +6396,8 @@ const data2: Protocol[] = [
     listedAt: 1650569731,
     dimensions: {
       dexs: "fairyswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1672",
@@ -7796,6 +7798,7 @@ const data2: Protocol[] = [
     module: "emberswap/index.js",
     twitter: "EmberSwapDEX",
     listedAt: 1651792987,
+    deadUrl: true,
   },
   {
     id: "1738",
@@ -9190,6 +9193,7 @@ const data2: Protocol[] = [
     twitter: "ArgoProtocol",
     audit_links: ["https://www.certik.com/projects/argo"],
     listedAt: 1654203331,
+    deadUrl: true,
   },
   {
     id: "1801",
@@ -21731,6 +21735,7 @@ const data2: Protocol[] = [
     twitter: "liqui_space",
     oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     listedAt: 1671064853,
+    deadUrl: true,
   },
   {
     id: "2363",
@@ -21750,6 +21755,7 @@ const data2: Protocol[] = [
     module: "hotbit/index.js",
     twitter: "Hotbit_news",
     listedAt: 1671107470,
+    deadUrl: true,
   },
   {
     id: "2364",
@@ -24017,7 +24023,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "cap-finance-v4",
       derivatives: "cap-finance-v4"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2470",
@@ -28152,6 +28159,7 @@ const data2: Protocol[] = [
     twitter: "AlpacaFinance",
     parentProtocol: "parent#alpaca-finance",
     listedAt: 1678446144,
+    deadUrl: true,
     dimensions: {
       fees: "alpacafinance-gmx"
     }
@@ -28986,6 +28994,7 @@ const data2: Protocol[] = [
     twitter: "Bond_Protocol",
     listedAt: 1679351635,
     github: ["Bond-Protocol"],
+    deadUrl: true,
   },
   {
     id: "2698",

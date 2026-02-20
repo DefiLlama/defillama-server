@@ -5255,6 +5255,7 @@ const data: Protocol[] = [
     twitter: "AlpacaFinance",
     parentProtocol: "parent#alpaca-finance",
     audit_links: ["https://docs.alpacafinance.org/our-protocol-1/transparency"],
+    deadUrl: true,
   },
   {
     id: "346",
@@ -9740,6 +9741,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ommfinance",
     audit_links: ["https://docs.omm.finance/technical-info/smart-contracts"],
     oraclesBreakdown: [{ name: "Band", type: "Primary", proof: [] }],
+    deadUrl: true,
   },
   {
     id: "547",
@@ -11098,6 +11100,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "CapDotFinance",
     parentProtocol: "parent#cap-finance",
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
+    deadUrl: true,
   },
   {
     id: "609",
@@ -13674,6 +13677,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.summitdefi.com/code/audit-completed"],
     listedAt: 1635464909,
     github: ["summit-defi"],
+    deadUrl: true,
   },
   {
     id: "723",
@@ -17254,6 +17258,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/tangoswap/TangoSwap_final-audit.pdf"],
     forkedFromIds: ["2197"],
     listedAt: 1637729126,
+    deadUrl: true,
   },
   {
     id: "906",
@@ -25259,6 +25264,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "YieldWolf",
     audit_links: ["https://paladinsec.co/projects/yieldwolf"],
     listedAt: 1642454522,
+    deadUrl: true,
   },
   {
     id: "1279",

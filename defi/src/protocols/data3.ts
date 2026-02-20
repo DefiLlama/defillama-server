@@ -57,6 +57,7 @@ const data3_0: Protocol[] = [
     twitter: "fairy_swap",
     parentProtocol: "parent#fairyswap",
     listedAt: 1679396448,
+    deadUrl: true,
   },
   {
     id: "2702",
@@ -6701,6 +6702,7 @@ const data3_0: Protocol[] = [
     module: "bfx/index.js",
     twitter: "BFXfi",
     listedAt: 1684761281,
+    deadUrl: true,
   },
   {
     id: "3005",
@@ -7210,6 +7212,7 @@ const data3_0: Protocol[] = [
     twitter: "AlpacaFinance",
     parentProtocol: "parent#alpaca-finance",
     listedAt: 1685048181,
+    deadUrl: true
   },
   {
     id: "3028",
@@ -8843,6 +8846,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["1525"],
     audit_links: ["https://docs.athenafinance.io/athena-finance-protocol/risk-prevention/audit"],
     listedAt: 1686606767,
+    deadUrl: true,
   },
   {
     id: "3102",
@@ -9595,6 +9599,7 @@ const data3_0: Protocol[] = [
     twitter: "MineFiDAO",
     audit_links: ["https://beosin.com/audits/Minefi_202306120951.pdf"],
     listedAt: 1687352489,
+    deadUrl: true,
   },
   {
     id: "3137",
@@ -10578,6 +10583,7 @@ const data3_0: Protocol[] = [
     twitter: "EXIT10_ETH",
     github: ["open-bakery"],
     listedAt: 1688204416,
+    deadUrl: true,
   },
   {
     id: "3183",
@@ -14022,6 +14028,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2197"],
     audit_links: ["https://docs.spartadex.io/technical-documentation/or-audits"],
     listedAt: 1691072418,
+    deadUrl: true,
   },
   {
     id: "3336",
@@ -16738,6 +16745,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "dogswapshib",
     listedAt: 1693328575,
+    deadUrl: true,
   },
   {
     id: "3460",
@@ -19349,6 +19357,7 @@ const data3_1: Protocol[] = [
     twitter: "0xArcanum",
     github: ["arcanum-protocol"],
     listedAt: 1695959969,
+    deadUrl: true,
   },
   {
     id: "3575",
@@ -20451,6 +20460,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     listedAt: 1697304358,
     github: ["nanoswapbase"],
+    deadUrl: true,
   },
   {
     id: "3626",
@@ -22360,6 +22370,7 @@ const data3_1: Protocol[] = [
     twitter: "SharkSwapDEX",
     forkedFromIds: ["2197"],
     listedAt: 1698667069,
+    deadUrl: true,
   },
   {
     id: "3715",
@@ -24748,6 +24759,7 @@ const data3_1: Protocol[] = [
     twitter: "ayincoin",
     github: ["0dd431c8"],
     listedAt: 1700654983,
+    deadUrl: true,
   },
   {
     id: "3826",
@@ -25885,6 +25897,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://github.com/aadafinance/materials/blob/main/Aada_finance_audit.pdf"],
     github: ["CherryLend"],
     listedAt: 1701694059,
+    deadUrl: true,
   },
   {
     id: "3880",
@@ -31364,7 +31377,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "swapmode-v2",
       dexs: "swapmode-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4117",
@@ -32264,7 +32278,8 @@ const data3_1: Protocol[] = [
     listedAt: 1708444740,
     dimensions: {
       fees: "polter"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4153",
@@ -35577,6 +35592,7 @@ const data3_2: Protocol[] = [
     treasury: "hyperblast.js",
     twitter: "HyperBlastDex",
     listedAt: 1710508638,
+    deadUrl: true,
   },
   {
     id: "4301",
@@ -37201,7 +37217,7 @@ const data3_2: Protocol[] = [
     name: "POWERCITY Earn Protocol",
     address: "pulse:0xb513038BbFdF9D40B676F41606f4F61D4b02c4A2",
     symbol: "EARN",
-    url: "https://www.earn.powercity.io/",
+    url: "https://earn.powercity.io/",
     description: `EARN Protocol is a decentralized borrowing protocol on PulseChain that allows you to draw interest-free loans against $PLSX used as collateral. Loans are paid out in PXDC (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.`,
     chain: "Pulse",
     logo: `${baseIconsUrl}/powercity-earn-protocol.png`,
@@ -37270,7 +37286,7 @@ const data3_2: Protocol[] = [
     name: "POWERCITY Core Protocol",
     address: "pulse:0xdfdc2836fd2e63bba9f0ee07901ad465bff4de71",
     symbol: "WATT",
-    url: "https://www.core.powercity.io/",
+    url: "https://core.powercity.io/",
     description:
       "The CORE is the central staking platform for the $WATT Token through which revenue collected from all the DApps in the POWERCITY ecosystem can be shared with stakers.",
     chain: "Pulse",
@@ -40615,7 +40631,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "FeeFree",
       dexs: "FeeFree"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4531",
@@ -40930,6 +40947,7 @@ const data3_2: Protocol[] = [
     twitter: "XRGB404",
     audit_links: ["https://github.com/XRGB/xrgb-contracts-v1/blob/main/audit-report/Certik_XRGB_Audit_Report-v1.0.pdf"],
     listedAt: 1714483369,
+    deadUrl: true,
   },
   {
     id: "4546",
@@ -42686,6 +42704,7 @@ const data3_2: Protocol[] = [
     module: "goat-tech/index.js",
     twitter: "goatxtech",
     listedAt: 1715944633,
+    deadUrl: true,
   },
   {
     id: "4627",
@@ -44576,6 +44595,7 @@ const data3_2: Protocol[] = [
     twitter: "Blastup_io",
     audit_links: ["https://hacken.io/audits/blastup"],
     listedAt: 1717510877,
+    deadUrl: true,
   },
   {
     id: "4715",
@@ -47278,6 +47298,7 @@ const data3_3: Protocol[] = [
     twitter: "StipFlip",
     github: ["stip-flip"],
     listedAt: 1719950938,
+    deadUrl: true,
   },
   {
     id: "4836",
@@ -48254,7 +48275,7 @@ const data3_3: Protocol[] = [
     name: "Powercity Flex Protocol",
     address: "pulse:0x9c6fA17D92898B684676993828143596894AA2A6",
     symbol: "FLEX",
-    url: "https://www.flex.powercity.io",
+    url: "https://flex.powercity.io",
     description:
       "FLEX Protocol is a decentralized borrowing protocol on PulseChain that allows you to draw interest-free loans against $HEX used as collateral. Loans are paid out in HEXDC (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.",
     chain: "Pulse",
@@ -49728,7 +49749,7 @@ const data3_3: Protocol[] = [
     name: "Gluon Gold",
     address: null,
     symbol: "-",
-    url: "https://www.gluon.gold",
+    url: "https://gluon.gold/swap",
     description:
       "Gluon is a novel stabilization protocol inspired by nuclear physics, offering reliable stability or exposure to volatility based on your needs. Have digital Gold on-chain, backed by ERG, without the risks and inconveniences of physical gold.",
     chain: "Ergo",
@@ -56453,7 +56474,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       derivatives: "capybara-perp",
       "open-interest": "capybara-perp"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5258",
@@ -58798,7 +58820,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "swapmode-v3",
       dexs: "swapmode-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5363",

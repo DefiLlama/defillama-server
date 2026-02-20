@@ -207,6 +207,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (!isRunFromRefillScript && !isDryRun) {
       console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+      console.log('[JSON-log]', JSON.stringify({ success: results.length, errors: errors.length, timeTaken: timeTakenSeconds, type: 'adapterFinalRes', key: 'adapterFinalRes-'+adapterType, adapterType }))
       try {
         await sendDiscordAlert(
           `[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`,
@@ -221,6 +222,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (errorObjects.length) {
       const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
+      console.log('[JSON-log]', JSON.stringify({ errors: logs, type: 'adapterErrors', key: 'adapterErrors-'+adapterType, adapterType }))
 
       if (!isRunFromRefillScript && !isDryRun) {
         try {

@@ -11056,6 +11056,10 @@ const data5: Protocol[] = [
     twitter: "ParityDEX",
     parentProtocol: "parent#parity",
     listedAt: 1771259769,
+    dimensions: {
+      dexs: "parity-dex",
+      fees: "parity-dex",
+    },
   },
   {
     id: "7401",
@@ -11076,6 +11080,10 @@ const data5: Protocol[] = [
     twitter: "ParityDEX",
     parentProtocol: "parent#parity",
     listedAt: 1771259775,
+    dimensions: {
+      dexs: "parity-dex-cl",
+      fees: "parity-dex-cl",
+    },
   },
   {
     id: "7402",

@@ -54024,6 +54024,9 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1726236262,
     parentProtocol: "parent#ipor",
+    dimensions: {
+      fees: "ipor-protocol",
+    },
   },
   {
     id: "5146",

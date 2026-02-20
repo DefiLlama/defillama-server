@@ -7,6 +7,7 @@ export const deadChains = [
   'kardia', // deprecated in favor of kai 2.0 https://docs.kardiachain.io/docs/from-kyokai-to-kai-2.0
   'nos', 'dfs','curio', 'cube', 
   'saga', // chain paused after the hack
+  'vision',
 ]
 
 

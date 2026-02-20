@@ -14042,5 +14042,13 @@
       "decimals": 18,
       "symbol": "OPEN"
     }
+  },
+  "algorand": {
+    "213345970": {
+      "name": "algorand",
+      "decimals": "8",
+      "symbol": "EXOD",
+      "to": "coingecko#exod"
+    }
   }
 }

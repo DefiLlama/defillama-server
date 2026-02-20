@@ -205,7 +205,7 @@ export function getUniV2Adapter({
         if (skipToken(token)) return;
         if (!price) return;
         const liquidity = price * pair.totalSupply / 2;
-        const supply = token.id === token0.id ? token0Balances[i] : token1Balances[i];
+        const supply = (token.id === token0.id ? token0Balances[i] : token1Balances[i]) / 10 ** token.decimals
         if (!tokenData[token.id]) {
           tokenData[token.id] = {
             metadata: token,

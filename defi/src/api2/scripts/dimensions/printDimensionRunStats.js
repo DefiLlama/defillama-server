@@ -1,12 +1,33 @@
 const fs = require('fs');
+const sdk = require('@defillama/sdk')
 const allLogs = fs.readFileSync(__dirname + '/../../../../dimensionsRun.log', 'utf8').split('\n')
 const outputFile = __dirname + '/../../../../dimensionsRunStats.log'
 fs.writeFileSync(outputFile, '') // reset file before appending to it
+
+const finalStatsData = {}
 
 printBlockLogStats()
 printIndexerLogs()
 printRPCLogs()
 printAdapterStats()
+
+saveStats().catch(console.error).then(() => {
+  process.exit(0)
+})
+
+async function saveStats() {
+  fs.writeFileSync(__dirname + '/../../../../dimensionsRunStats.json.log', JSON.stringify(finalStatsData), 'utf8');
+  let cacheKey = `dimensionRunStats-latest-all`
+  if (process.env.DIM_ADAPTER_TYPE)
+    cacheKey = `dimensionRunStats-latest-${process.env.DIM_ADAPTER_TYPE}`
+  else if (process.env.DIM_EXCLUDE_ADAPTER_TYPES)
+    cacheKey = `dimensionRunStats-latest-excluding-rest`
+  await sdk.cache.writeCache(cacheKey, finalStatsData, {
+    skipCompression: true,
+    skipR2CacheWrite: false,
+  })
+  process.exit(0)
+}
 
 function printIndexerLogs() {
   log('[Indexer getLogs stats] ')
@@ -15,6 +36,13 @@ function printIndexerLogs() {
   const iErrorNotCaughtUp = allLogs.filter(i => i.startsWith('Error in  indexer getLogs Indexer not up to date'))
   const parsedIErrorNotCaughtUp = iErrorNotCaughtUp.map(parseIndexerOldLogs).filter(i => i)
   const parsedIErrorNotCaughtUp2 = iErrorNotCaughtUp.map(parseIndexerOldLogs).filter(i => !['bsc', 'polygon'].includes(i.chain))
+  finalStatsData.jsonLogs = allLogs.filter(i => i.startsWith('[JSON-log]')).map(i => i.replace('[JSON-log] ', '')).map(i => {
+    try {
+      return JSON.parse(i)
+    } catch (e) {
+      return null
+    }
+  }).filter(i => i)
 
   parsedIErrorNotCaughtUp2.sort((a, b) => b.diff - a.diff)
   log(`query count: ${startedLogs.length}`)
@@ -23,6 +51,10 @@ function printIndexerLogs() {
   log(`skipped because not yet indexed [excluding polygon & bsc]: ${parsedIErrorNotCaughtUp2.length}`)
 
   table(parsedIErrorNotCaughtUp2, undefined, 'Skipped Queries');
+  finalStatsData.indexerNotCaughtUpCount = parsedIErrorNotCaughtUp.length
+  finalStatsData.indexerNotCaughtUpCountExcludingPolygonBSC = parsedIErrorNotCaughtUp2.length
+  finalStatsData.queryCount = startedLogs.length
+  finalStatsData.successQueryCount = endLogs.length
 
   const eventHashStats = {}
   const chainStats = {}
@@ -63,6 +95,8 @@ function printIndexerLogs() {
 
   table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by event hash')
   table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by chain')
+  finalStatsData.indexerEventHashStats = eStatsArray
+  finalStatsData.indexerChainStats = cStatsArray
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -105,6 +139,8 @@ function printRPCLogs() {
   const endLogs = allLogs.filter(i => i.startsWith('getLogs')).map(parseGetLogsLine).filter(i => i)
   log(`query count: ${startedLogs.length}`)
   log(`success query count: ${endLogs.length}`)
+  finalStatsData.rpcQueryCount = startedLogs.length
+  finalStatsData.rpcSuccessQueryCount = endLogs.length
 
   const eventHashStats = {}
   const chainStats = {}
@@ -142,6 +178,9 @@ function printRPCLogs() {
 
   table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
   table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], 'Breakdown by chain')
+  finalStatsData.rpcEventHashStats = eStatsArray.filter(filterOutSmallStats)
+  finalStatsData.rpcChainStats = cStatsArray.filter(filterOutSmallStats)
+  finalStatsData.rpcChainStatsBreakdownByEventHash = {}
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -150,6 +189,7 @@ function printRPCLogs() {
     chainStats.sort((a, b) => b.queryCount - a.queryCount)
     chainStats.forEach(i => i.timeTaken = Math.floor(i.timeTaken))
     table(chainStats.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], title)
+    finalStatsData.rpcChainStatsBreakdownByEventHash[eStats.hash] = chainStats.filter(filterOutSmallStats)
   })
 
   function parseGetLogsLine(line) {
@@ -171,6 +211,7 @@ function printBlockLogStats() {
   const logs = allLogs.filter(i => i.startsWith('chain: ') && i.includes('#calls')).map(parseBlockStatsString).filter(i => i)
 
   log(`block query count: ${logs.length}`)
+  finalStatsData.blockQueryCount = logs.length
 
   const chainStats = {}
 
@@ -195,6 +236,7 @@ function printBlockLogStats() {
     i.timeTaken = Math.floor(i.timeTaken)
   })
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
+  finalStatsData.blockLogChainStats = cStatsArray
 
   table(cStatsArray, ['chain', 'queryCount', 'callCount', 'timeTaken', 'avgTimeTakenInSec', 'avgImpresicionInMins'], 'Breakdown by chain')
 
@@ -287,6 +329,7 @@ function printAdapterStats() {
 
 
   table(statsArray, ['adapterType', 'started', 'running', 'skipped', 'dead', 'haveData', 'notFinished',], 'Breakdown by adapter type')
+  finalStatsData.adapterStats = statsArray
 
 
   const longRunners = []
@@ -319,6 +362,7 @@ function printAdapterStats() {
 
   longRunners.sort((a, b) => b.timeTakenMS - a.timeTakenMS)
   table(longRunners.slice(0, 50), ['adapterType', 'name', 'timeHN', 'chains'], 'Longest 50 adapter runs')
+  finalStatsData.longRunners = longRunners
 
   const chainStatsArray = Object.values(chainStats)
   chainStatsArray.forEach(i => {
@@ -329,7 +373,7 @@ function printAdapterStats() {
   })
   chainStatsArray.sort((a, b) => b.avgTimeTaken - a.avgTimeTaken)
   table(chainStatsArray.slice(0, 31), ['chain', 'protocols', 'avgTimeTakenHN', 'timeTakenHN'], 'Breakdown by chain')
-
+  finalStatsData.chainStats = chainStatsArray
 
   function parseEndLog(statsString) {
     if (!statsString.includes('done!')) return null

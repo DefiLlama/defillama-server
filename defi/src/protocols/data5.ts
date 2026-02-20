@@ -11633,7 +11633,7 @@ const data5: Protocol[] = [
     url: "https://murasaki.club/",
     description:
       "Murasaki is the first metaverse ACG virtual idol and decentralized IP ecological community. It aims to create the most valuable virtual idol created and owned.",
-    chain: "Solana",
+    chain: "Binance",
     logo: `${baseIconsUrl}/murasaki.jpg`,
     audits: "0",
     gecko_id: "murasaki",

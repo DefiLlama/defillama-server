@@ -5,7 +5,7 @@ export const deadChains = [
   'kroma', 'qom', 'airdao', 'bevm',
   'milkyway', 'milkyway_rollup', 'boba_bnb',
   'kardia', // deprecated in favor of kai 2.0 https://docs.kardiachain.io/docs/from-kyokai-to-kai-2.0
-  'nos', 'dfs',
+  'nos', 'dfs','curio', 'cube', 
   'saga', // chain paused after the hack
 ]
 

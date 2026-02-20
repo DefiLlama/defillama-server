@@ -8239,6 +8239,10 @@ const data5: Protocol[] = [
     module: "prism-dex/index.js",
     twitter: "PrismFi_",
     forkedFromIds: ["2198"],
+    dimensions: {
+      dexs: "prism-dex",
+      fees: "prism-dex",
+    },
     listedAt: 1768842182
   },
   {

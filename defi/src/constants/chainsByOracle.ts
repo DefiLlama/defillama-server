@@ -241,7 +241,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Canto",
     "CLV",
     "Conflux",
-    "Core",
+    "CORE",
     "Cronos",
     "Dogechain",
     "Elastos",

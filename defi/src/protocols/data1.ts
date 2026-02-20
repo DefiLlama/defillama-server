@@ -1365,7 +1365,7 @@ const data: Protocol[] = [
     category: "Uncollateralized Lending",
     chains: ["Ethereum"],
     module: "truefi/index.js",
-    twitter: "TrustToken",
+    twitter: "TrueFiDAO",
     audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
     governanceID: ["snapshot:truefigov.eth", "eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9"],
     github: ["trusttoken"],
@@ -2867,10 +2867,10 @@ const data: Protocol[] = [
   },
   {
     id: "237",
-    name: "Swipe",
+    name: "Swipe", // rebranded to Solar
     address: "0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9",
     symbol: "SXP",
-    url: "https://swap.swipe.org",
+    url: "https://solar.org/",
     description: "Swipe Swap enables a cross-chain automated market maker protocol on Binance Smart Chain & Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/swipe.jpg`,
@@ -2880,9 +2880,8 @@ const data: Protocol[] = [
     tags: ["AMM"],
     chains: ["Ethereum", "Binance"],
     module: "swipeswap.js",
-    twitter: "Swipe",
+    twitter: "SolarNetwork",
     audit_links: ["https://www.certik.org/projects/swipe"],
-    deadUrl: true,
   },
   {
     id: "238",
@@ -5431,10 +5430,10 @@ const data: Protocol[] = [
   },
   {
     id: "353",
-    name: "Armor",
+    name: "Armor", // rebranded to Ease.org
     address: "0x1337def16f9b486faed0293eb623dc8395dfe46a",
     symbol: "ARMOR",
-    url: "https://armor.fi/",
+    url: "https://armor.easedefi.org/",
     description: "Insurance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/armor.png`,
@@ -5444,9 +5443,10 @@ const data: Protocol[] = [
     category: "Insurance",
     chains: ["Ethereum"],
     module: "armorfinance/index.js",
-    twitter: "ArmorFi",
+    twitter: "EaseDeFi",
     governanceID: ["eip155:1:0x5aFeDeF1454CDd11d4705c06aa4D66Aa396343f6"],
     github: ["ArmorFi"],
+    deadUrl: true
   },
   {
     id: "354",
@@ -15723,7 +15723,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     tags: ["AMM"],
     chains: ["Binance"],
     module: "bscstation/index.js",
-    twitter: "bscstation",
+    twitter: "BSCS_Global",
     audit_links: [
       "https://www.certik.org/projects/bscstation",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-BSCStationStartPools-v1.0.pdf",
@@ -18338,7 +18338,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Moonriver"],
     module: "rome-dao/index.js",
-    twitter: "romedaofinance",
+    twitter: "housesofrome",
     forkedFromIds: ["340"],
     listedAt: 1638412597,
     deadUrl: true,
@@ -21100,7 +21100,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum"],
     module: "everipedia/index.js",
-    twitter: "IQWIKI",
+    twitter: "IQAICOM",
     listedAt: 1640256058,
   },
   {
@@ -21293,7 +21293,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1093",
-    name: "SuperFarm",
+    name: "SuperFarm", // rebranded to SuperVerse
     address: "0xe53ec727dbdeb9e2d5456c3be40cff031ab40a55",
     symbol: "SUPER",
     url: "https://superverse.co/",
@@ -21306,7 +21306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum"],
     module: "superfarm/index.js",
-    twitter: "SuperFarmDAO",
+    twitter: "SuperVerse",
     listedAt: 1640518619,
     github: ["SuperFarmDAO"],
   },
@@ -24197,7 +24197,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "NFT Marketplace",
     chains: ["Ethereum"],
     module: "looks-rare/index.js",
-    twitter: "LooksRareNFT",
+    twitter: "LooksRare",
     audit_links: [
       "https://github.com/trailofbits/publications/blob/master/reviews/LooksRare.pdf",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LooksRare-v1.0.pdf",

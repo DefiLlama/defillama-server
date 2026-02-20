@@ -3413,7 +3413,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     module: "StrikeX.js",
-    twitter: "StrikeXofficial",
+    twitter: "TradeStrikeBVI",
     audit_links: ["https://www.certik.com/projects/trade-strike"],
     listedAt: 1646958812,
   },

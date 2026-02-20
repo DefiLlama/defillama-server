@@ -5482,7 +5482,7 @@ const data3_0: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "iq.js",
-    twitter: "IQWIKI",
+    twitter: "IQAICOM",
   },
   {
     id: "2948",
@@ -20834,7 +20834,7 @@ const data3_1: Protocol[] = [
     category: "NFT Marketplace",
     chains: ["Ethereum"],
     module: "flooring-io/index.js",
-    twitter: "flooringproto_",
+    twitter: "floorprotocol",
     listedAt: 1697566485,
   },
   {
@@ -30179,7 +30179,7 @@ const data3_1: Protocol[] = [
     previousNames: ["Possum Labs"],
     address: "arbitrum:0x17a8541b82bf67e10b0874284b4ae66858cb1fd5",
     symbol: "PSM",
-    url: "https://www.possumlabs.io/",
+    url: "https://www.possum.finance/",
     description:
       "The first protocol released by Possum Labs is called Portals and enables users to receive upfront fixed yield on their staked tokens without any protocol fees.",
     chain: "Arbitrum",
@@ -30190,7 +30190,7 @@ const data3_1: Protocol[] = [
     category: "Yield",
     chains: ["Arbitrum"],
     module: "possumLabs/index.js",
-    twitter: "Possum_Labs",
+    twitter: "Possum_Finance",
     audit_links: ["https://possum-labs.gitbook.io/docs/security/audits"],
     listedAt: 1706291324,
   },

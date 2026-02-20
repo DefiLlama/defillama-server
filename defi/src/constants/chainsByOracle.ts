@@ -233,7 +233,6 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Astar zkEVM",
     "Aurora",
     "Berachain",
-    "Bitcoin",
     "Bittorrent",
     "Blast",
     "BOB",

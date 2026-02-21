@@ -77,10 +77,10 @@ const data5: Protocol[] = [
   //   cmcId: null,
   //   category: "Dexs",
   //   chains: ["0G"],
-  //   
+  //
   //   module: "skatechain/index.js",
   //   twitter: "skate_chain",
-  //   
+  //
   //   listedAt: 1761111387,
   // },
   {
@@ -1161,7 +1161,7 @@ const data5: Protocol[] = [
   //   cmcId: null,
   //   category: "Bridge Aggregator",
   //   chains: ["Bitcoin", "AILayer", "Arbitrum", "Aurora", "Avalanche", "Base", "Bitlayer", "Binance", "BOB", "Bsquared", "CORE", "Ethereum", "Linea", "Manta", "Merlin", "Mezo", "Mode", "Solana", "Stacks", "X Layer"],
-  //   
+  //
   //   audit_links: ["https://docs.brotocol.xyz/developers/brotocol-contracts/security-audits"],
   //   module: "brotocol/index.js",
   //   twitter: "Brotocol_xyz",
@@ -1876,7 +1876,7 @@ const data5: Protocol[] = [
   //   chains: ["Sui"],
   //   module: "astros-perp/index.js",
   //   twitter: "astros_ag",
-  //   
+  //
   //   audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FEagmjVMVJsuZQ0TvRYt7%2Fuploads%2Fg2IKp2ER5qhU3uX1Nr85%2F20250311-Navi-Perp-Vault-Final-Audit-Report.pdf?alt=media&token=34b676be-3da6-4be3-bce5-7a31bd214d5f"],
   //   listedAt: 1762584873,
   //   parentProtocol: "parent#navi-protocol",
@@ -4582,7 +4582,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Saga"],
-    module: "goaradio/index.js", 
+    module: "goaradio/index.js",
     twitter: "goaradio_",
     listedAt: 1764869673,
   },*/
@@ -6740,7 +6740,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "variational_io",
     dimensions: {
-      //fees: "variational", 
+      //fees: "variational",
       derivatives: "variational-omni",
       "open-interest": "variational-omni",
     },
@@ -8696,7 +8696,7 @@ const data5: Protocol[] = [
       fees: "echosync-perps",
     },
   },
-  // {  
+  // {
   //   id: "7287",
   //   name: "Fomo Perps",
   //   address: null,
@@ -11734,7 +11734,7 @@ const data5: Protocol[] = [
     id: "7434",
     name: "Murphy",
     address: "keeta:keeta_ao7nitutebhm2pkrfbtniepivaw324hecyb43wsxts5rrhi2p5ckgof37racm",
-    symbol: "MURPH",
+    symbol: "MURF",
     url: "",
     description:
       "Liquidity pools associated with Murphy on Keeta Network.",

@@ -4,7 +4,9 @@ const allLogs = fs.readFileSync(__dirname + '/../../../../dimensionsRun.log', 'u
 const outputFile = __dirname + '/../../../../dimensionsRunStats.log'
 fs.writeFileSync(outputFile, '') // reset file before appending to it
 
-const finalStatsData = {}
+const finalStatsData = {
+  generationTime: new Date().toISOString(),
+}
 
 printBlockLogStats()
 printIndexerLogs()
@@ -26,6 +28,7 @@ async function saveStats() {
     cacheKey = `dimensionRunStats-latest-${process.env.DIM_ADAPTER_TYPE}`
   else if (process.env.DIM_EXCLUDE_ADAPTER_TYPES)
     cacheKey = `dimensionRunStats-latest-excluding-rest`
+  finalStatsData.cacheKey = cacheKey
   await sdk.cache.writeCache(cacheKey, finalStatsData, {
     skipCompression: true,
     skipR2CacheWrite: false,

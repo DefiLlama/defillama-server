@@ -11798,7 +11798,7 @@ const data5: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cooler-loans.jpg`,
     audits: "0",
-    gecko_id: "exod",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],

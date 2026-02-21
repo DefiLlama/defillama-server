@@ -207,7 +207,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (!isRunFromRefillScript && !isDryRun) {
       console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
-      console.log('[JSON-log]', JSON.stringify({ success: results.length, errors: errors.length, timeTaken: timeTakenSeconds, type: 'adapterFinalRes', key: 'adapterFinalRes-'+adapterType, adapterType }))
+      console.log('[JSON-log]', JSON.stringify({ success: results.length, errors: errors.length, timeTaken: timeTakenSeconds, type: 'adapterFinalRes', key: 'adapterFinalRes-' + adapterType, adapterType }))
       try {
         await sendDiscordAlert(
           `[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`,
@@ -222,7 +222,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (errorObjects.length) {
       const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
-      console.log('[JSON-log]', JSON.stringify({ errors: logs, type: 'adapterErrors', key: 'adapterErrors-'+adapterType, adapterType }))
 
       if (!isRunFromRefillScript && !isDryRun) {
         try {
@@ -232,9 +231,12 @@ export const handler2 = async (options: DimensionRunOptions) => {
         }
       }
 
-      if (errorObjects.length > 1)
+      if (errorObjects.length > 1) {
+        const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
+        console.log('[JSON-log]', JSON.stringify({ errors: logs, type: 'adapterErrors', key: 'adapterErrors-' + adapterType, adapterType }))
+
         console.table(errorObjects)
-      else
+      } else
         console.log('dim run error:', `${errorObjects[0].adapter} - ${errorObjects[0].message} - ${errorObjects[0].chain}`)
     }
 
@@ -364,7 +366,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
             recordTimestamp = timestampAtStartofHour
             endTimestamp = timestampAtStartofHour
           } else if (!isAdapterVersionV1) { // for v2 adapters, we run one hour ago to give time for data to be available
-            recordTimestamp =  timestamp  
+            recordTimestamp = timestamp
             endTimestamp = timestamp
           }
 
@@ -496,7 +498,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         const chains = Object.keys(adaptor.adapter || {})
         const allChainsAreDead = chains.every(chain => deadChainsSet?.has(chain))
         if (allChainsAreDead) {
-          console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
+          console.log(`Skipping ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
           return;
         }
       }

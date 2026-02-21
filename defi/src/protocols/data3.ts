@@ -614,7 +614,7 @@ const data3_0: Protocol[] = [
     listedAt: 1679676617,
     parentProtocol: "parent#koi-finance",
     dimensions: {
-      fees: "koi-finance",
+      fees: "mute.io",
       dexs: "mute.io"
     }
   },

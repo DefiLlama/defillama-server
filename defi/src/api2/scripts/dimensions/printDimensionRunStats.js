@@ -15,6 +15,10 @@ saveStats().catch(console.error).then(() => {
   process.exit(0)
 })
 
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
 async function saveStats() {
   fs.writeFileSync(__dirname + '/../../../../dimensionsRunStats.json.log', JSON.stringify(finalStatsData), 'utf8');
   let cacheKey = `dimensionRunStats-latest-all`
@@ -93,10 +97,10 @@ function printIndexerLogs() {
   eStatsArray.sort((a, b) => b.queryCount - a.queryCount)
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
 
+  finalStatsData.indexerEventHashStats = clone(eStatsArray)
+  finalStatsData.indexerChainStats = clone(cStatsArray)
   table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by event hash')
   table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by chain')
-  finalStatsData.indexerEventHashStats = eStatsArray
-  finalStatsData.indexerChainStats = cStatsArray
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -176,11 +180,11 @@ function printRPCLogs() {
   eStatsArray.sort((a, b) => b.queryCount - a.queryCount)
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
 
-  table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
-  table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], 'Breakdown by chain')
   finalStatsData.rpcEventHashStats = eStatsArray.filter(filterOutSmallStats)
   finalStatsData.rpcChainStats = cStatsArray.filter(filterOutSmallStats)
   finalStatsData.rpcChainStatsBreakdownByEventHash = {}
+  table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], 'Breakdown by chain')
+  table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -188,8 +192,8 @@ function printRPCLogs() {
     const chainStats = Object.values(eStats.chainStats)
     chainStats.sort((a, b) => b.queryCount - a.queryCount)
     chainStats.forEach(i => i.timeTaken = Math.floor(i.timeTaken))
-    table(chainStats.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], title)
     finalStatsData.rpcChainStatsBreakdownByEventHash[eStats.hash] = chainStats.filter(filterOutSmallStats)
+    table(chainStats.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], title)
   })
 
   function parseGetLogsLine(line) {
@@ -236,7 +240,7 @@ function printBlockLogStats() {
     i.timeTaken = Math.floor(i.timeTaken)
   })
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
-  finalStatsData.blockLogChainStats = cStatsArray
+  finalStatsData.blockLogChainStats = clone(cStatsArray)
 
   table(cStatsArray, ['chain', 'queryCount', 'callCount', 'timeTaken', 'avgTimeTakenInSec', 'avgImpresicionInMins'], 'Breakdown by chain')
 
@@ -328,8 +332,8 @@ function printAdapterStats() {
 
 
 
+  finalStatsData.adapterStats = clone(statsArray)
   table(statsArray, ['adapterType', 'started', 'running', 'skipped', 'dead', 'haveData', 'notFinished',], 'Breakdown by adapter type')
-  finalStatsData.adapterStats = statsArray
 
 
   const longRunners = []
@@ -361,8 +365,8 @@ function printAdapterStats() {
   })
 
   longRunners.sort((a, b) => b.timeTakenMS - a.timeTakenMS)
+  finalStatsData.longRunners = clone(longRunners)
   table(longRunners.slice(0, 50), ['adapterType', 'name', 'timeHN', 'chains'], 'Longest 50 adapter runs')
-  finalStatsData.longRunners = longRunners
 
   const chainStatsArray = Object.values(chainStats)
   chainStatsArray.forEach(i => {
@@ -372,8 +376,8 @@ function printAdapterStats() {
     i.avgTimeTakenHN = humanizeDuration(i.avgTimeTaken)
   })
   chainStatsArray.sort((a, b) => b.avgTimeTaken - a.avgTimeTaken)
+  finalStatsData.chainStats = clone(chainStatsArray)
   table(chainStatsArray.slice(0, 31), ['chain', 'protocols', 'avgTimeTakenHN', 'timeTakenHN'], 'Breakdown by chain')
-  finalStatsData.chainStats = chainStatsArray
 
   function parseEndLog(statsString) {
     if (!statsString.includes('done!')) return null

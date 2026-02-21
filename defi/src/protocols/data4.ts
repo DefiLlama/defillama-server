@@ -24922,7 +24922,7 @@ const data4: Protocol[] = [
     audits: "3",
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Farm", // not using lending since users only depositing uniBTC, earning incentives / emissions, possibly looping for boosted rewards, not meaningfully borrowing
     chains: ["Neutron"],
     forkedFromIds: ["1524"],
     module: "amber-finance/index.js",

@@ -11933,5 +11933,22 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Plasma",
   },
+  {
+    id: "7445",
+    name: "Grass",
+    address: "solana:Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+    symbol: "GRASS",
+    url: "https://www.grass.io/",
+    description: "Lets users share their unused internet bandwidth and earn rewards for contributing to the network.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/grass.jpg`,
+    audits: "0",
+    gecko_id: "grass",
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "grass",
+  },
 ];
 export default data5;

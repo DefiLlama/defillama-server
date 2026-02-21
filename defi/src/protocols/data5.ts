@@ -11968,5 +11968,27 @@ const data5: Protocol[] = [
     github: ["Tokenlabs-LLC"],
     listedAt: 1771697373,
   },
+  {
+    id: "7447",
+    name: "Printr Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.printr.money/",
+    description: "Omnichain token launchpad with bonding curves for creating and trading Telecoins across multiple chains.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/printr-protocol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum", "Binance", "Arbitrum", "Base", "Avalanche", "Mantle", "Monad"],
+    module: "dummy.js",
+    twitter: "Printr",
+    github: ["PrintrFi"],
+    dimensions: {
+      fees: "printr-protocol",
+      dexs: "printr-protocol",
+    },
+  },
 ];
 export default data5;

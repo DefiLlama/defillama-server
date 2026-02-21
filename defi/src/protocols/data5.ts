@@ -11805,7 +11805,7 @@ const data5: Protocol[] = [
     module: "cooler-loans/index.js",
     twitter: "OlympusDAO",
     listedAt: 1771638877,
-    parentProtocol: "parent#olympus-dao",
+    //parentProtocol: "parent#olympus-dao",
   },
   {
     id: "7438",

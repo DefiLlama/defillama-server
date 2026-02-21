@@ -7237,6 +7237,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "daoventures/index.js",
     twitter: "VenturesDao",
+    deadUrl: true,
   },
   {
     id: "434",
@@ -7306,6 +7307,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "witswap/index.js",
     twitter: "WitSwap",
     audit_links: ["https://github.com/witswap/contracts/blob/master/eWit_Security_Audit_Report_Final_Mainnet.pdf"],
+    deadUrl: true,
   },
   {
     id: "437",
@@ -15052,6 +15054,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SquidDao",
     forkedFromIds: ["340"],
     listedAt: 1636315439,
+    deadUrl: true,
   },
   {
     id: "803",
@@ -19088,6 +19091,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFromIds: ["2197"],
     listedAt: 1638882307,
+    deadUrl: true,
   },
   {
     id: "990",
@@ -19458,6 +19462,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "thorstarter",
     listedAt: 1639176726,
     github: ["Thorstarter"],
+    deadUrl: true,
   },
   {
     id: "1007",
@@ -22221,6 +22226,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "meowswap",
     audit_links: ["https://www.certik.org/projects/meowswap"],
     listedAt: 1640733854,
+    deadUrl: true,
   },
   {
     id: "1136",

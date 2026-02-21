@@ -6045,6 +6045,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SuperSwapFi",
+    deadUrl: true,
   },
   {
     id: "parent#ocelex",
@@ -7802,6 +7803,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fomodotbiz",
     github: ["fomodotbiz"],
+    deadUrl: true,
   },
   {
     id: "parent#superlend-xyz",

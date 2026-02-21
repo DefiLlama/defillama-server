@@ -4866,6 +4866,7 @@ const data5: Protocol[] = [
     module: "stableswap/index.js",
     twitter: "stablesswap",
     listedAt: 1765222561,
+    deadUrl: true,
   },
   {
     id: "7104",

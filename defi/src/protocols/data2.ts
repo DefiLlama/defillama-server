@@ -2443,6 +2443,7 @@ const data2: Protocol[] = [
     twitter: "Demodyfi",
     listedAt: 1646160467,
     github: ["Demodyfi"],
+    deadUrl: true,
   },
   {
     id: "1491",
@@ -4836,6 +4837,7 @@ const data2: Protocol[] = [
     twitter: "GREENHOUSEDEX",
     listedAt: 1648835853,
     github: ["greenhousedex"],
+    deadUrl: true,
   },
   {
     id: "1601",
@@ -23630,6 +23632,7 @@ const data2: Protocol[] = [
     module: "bullionFX/index.js",
     twitter: "BullionFx",
     listedAt: 1674041471,
+    deadUrl: true,
   },
   {
     id: "2451",
@@ -24447,7 +24450,8 @@ const data2: Protocol[] = [
     listedAt: 1675348415,
     dimensions: {
       dexs: "dpex"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2489",

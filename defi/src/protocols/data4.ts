@@ -3744,6 +3744,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["1916"],
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
     listedAt: 1738617883,
+    deadUrl: true,
   },
   {
     id: "5724",
@@ -4716,7 +4717,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "mondrain",
       dexs: "mondrain"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5766",
@@ -6668,6 +6670,7 @@ const data4: Protocol[] = [
     twitter: "ShieldProtocols",
     audit_links: ["https://spywolf.co/audits/Shield_Protocol_0xD9E90DF21F4229249E8841580cDE7048bF935710.pdf"],
     listedAt: 1740574589,
+    deadUrl: true,
   },
   {
     id: "5849",
@@ -11688,6 +11691,7 @@ const data4: Protocol[] = [
     twitter: "fomodotbiz",
     parentProtocol: "parent#fomoswap",
     listedAt: 1745005003,
+    deadUrl: true,
   },
   {
     id: "6069",
@@ -19071,7 +19075,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "archfi",
       dexs: "archfi"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6385",
@@ -23143,6 +23148,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["3710"],
     parentProtocol: "parent#fomoswap",
     listedAt: 1754929587,
+    deadUrl: true,
   },
   {
     id: "6565",
@@ -23333,6 +23339,7 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1755096289,
+    deadUrl: true,
   },
   {
     id: "6573",
@@ -27658,6 +27665,7 @@ const data4: Protocol[] = [
     twitter: "FractItLabs",
     audit_links: ["https://docs.fractit.com/information/security-audit"],
     listedAt: 1758815161,
+    deadUrl: true,
   },
   {
     id: "6770",

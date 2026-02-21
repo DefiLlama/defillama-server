@@ -3015,6 +3015,7 @@ const data3_0: Protocol[] = [
     twitter: "TronNRG",
     audit_links: ["https://support.tronnrg.com/nrg-security-audit/smart-contract-audit"],
     listedAt: 1681518731,
+    deadUrl: true
   },
   {
     id: "2837",
@@ -6112,6 +6113,7 @@ const data3_0: Protocol[] = [
     twitter: "ProtossDEX",
     forkedFromIds: ["2197"],
     listedAt: 1684183134,
+    deadUrl: true
   },
   {
     id: "2979",
@@ -6285,6 +6287,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Pyth", type: "Primary", proof: [] } ], // https://docs.vega.xyz/mainnet/tutorials/using-data-sources#using-a-pyth-price-feed
     listedAt: 1684246282,
     github: ["vegaprotocol"],
+    deadUrl: true,
   },
   {
     id: "2986",
@@ -12505,6 +12508,7 @@ const data3_0: Protocol[] = [
     twitter: "pulseshib",
     forkedFromIds: ["2197"],
     listedAt: 1689931376,
+    deadUrl: true
   },
   {
     id: "3267",
@@ -16423,7 +16427,7 @@ const data3_0: Protocol[] = [
     name: "Liquid Finance Protocol",
     address: null,
     symbol: "-",
-    url: "https://liquidfinance.xyz",
+    url: "https://app.liquidfinance.xyz/",
     description: "Non-custodial liquid staking protocol focused on unlocking liquidity within the archwayHQ ecosystem.",
     chain: "Archway",
     logo: `${baseIconsUrl}/liquid-finance-protocol.jpg`,
@@ -17260,6 +17264,7 @@ const data3_1: Protocol[] = [
     twitter: "ComfySwap",
     audit_links: ["https://gist.github.com/HollaDieWaldfee100/4a17ad22191753abba1cef6edd7efe60"],
     listedAt: 1693850602,
+    deadUrl: true,
   },
   {
     id: "3483",
@@ -19811,6 +19816,7 @@ const data3_1: Protocol[] = [
     github: ["iotabee"],
     audit_links: ["https://iotabee.com/Numen%20Smart%20Contract%20Audit%20Report%20for%20Iotabee.pdf"],
     listedAt: 1696511556,
+    deadUrl: true,
   },
   {
     id: "3596",
@@ -21188,6 +21194,7 @@ const data3_1: Protocol[] = [
     module: "Solidpulse/index.js",
     twitter: "solid_pulse",
     listedAt: 1697722100,
+    deadUrl: true,
   },
   {
     id: "3660",
@@ -26131,6 +26138,7 @@ const data3_1: Protocol[] = [
     twitter: "yieldlend",
     github: ["yieldlend"],
     listedAt: 1701950319,
+    deadUrl: true,
   },
   {
     id: "3890",
@@ -26833,6 +26841,7 @@ const data3_1: Protocol[] = [
     twitter: "borb_fi",
     github: ["borb-fi"],
     listedAt: 1702602847,
+    deadUrl: true,
   },
   {
     id: "3921",
@@ -32038,6 +32047,7 @@ const data3_1: Protocol[] = [
       "https://github.com/stratum-exchange/v1/tree/main/audit",
     ],
     listedAt: 1708269198,
+    deadUrl: true,
   },
   {
     id: "4143",
@@ -34592,6 +34602,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://app.monroeprotocol.com/audit-Peckshield.pdf"],
     github: ["MonroeProtocol"],
     listedAt: 1709822785,
+    deadUrl: true,
   },
   {
     id: "4256",
@@ -35210,6 +35221,7 @@ const data3_2: Protocol[] = [
     twitter: "blasterdex__",
     github: ["Blaster-Labs"],
     listedAt: 1710246595,
+    deadUrl: true,
   },
   {
     id: "4284",
@@ -36133,10 +36145,10 @@ const data3_2: Protocol[] = [
   },
   {
     id: "4326",
-    name: "Cadence Protocol",
+    name: "Cadence Protocol", //rename to Symphony
     address: "canto:0x8f20150205165c31d9b29c55a7b01f4911396306",
     symbol: "CAD",
-    url: "https://www.cadenceprotocol.io",
+    url: "https://www.symphony.io/",
     description: `Cadence Protocol is an intent-based perpetuals aggregator that unites DeFi by enabling an omnichain perpetuals experience with near-instant cross-chain execution speeds. It abstracts away all bridges, wallets, and chains into a simple one-click experience.`,
     chain: "Canto",
     logo: `${baseIconsUrl}/cadence-protocol.jpg`,
@@ -36159,7 +36171,7 @@ const data3_2: Protocol[] = [
     ],
     forkedFromIds: ["337"],
     module: "cadence-protocol/index.js",
-    twitter: "CadenceProtocol",
+    twitter: "symphonyio",
     listedAt: 1710938784,
   },
   {
@@ -40745,6 +40757,7 @@ const data3_2: Protocol[] = [
     twitter: "BitLen_Finance",
     github: ["bitlen-Protocol"],
     listedAt: 1714384548,
+    deadUrl: true,
   },
   {
     id: "4535",
@@ -41635,6 +41648,7 @@ const data3_2: Protocol[] = [
     module: "chilizswap/index.js",
     twitter: "chilizswap",
     listedAt: 1715185739,
+    deadUrl: true,
   },
   {
     id: "4576",
@@ -42528,7 +42542,7 @@ const data3_2: Protocol[] = [
     name: "Chi Protocol",
     address: "0x3b21418081528845a6df4e970bd2185545b712ba",
     symbol: "CHI",
-    url: "https://chiprotocol.io",
+    url: "https://app.chiprotocol.io/",
     description:
       "Chi Protocol is the scalable LST-backed stablecoin protocol powered by USC and CHI. Users can mint USC 1:1 vs. ETH/stETH, and LSTs are used to payout real yield to the governance token CHI. Smart contracts and arbitrage incentives automatically maintain the protocol's stability and solvency.",
     chain: "Ethereum",
@@ -51702,7 +51716,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "tanukix",
       dexs: "tanukix"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5039",
@@ -55740,7 +55755,8 @@ const data3_3: Protocol[] = [
     module: "donkeswap/index.js",
     twitter: "donkeswap",
     forkedFromIds: ["2197"],
-    listedAt: 1728468992
+    listedAt: 1728468992,
+    deadUrl: true,
   },
   {
     id: "5223",
@@ -56713,7 +56729,8 @@ const data3_3: Protocol[] = [
     twitter: "AquaPatina",
     audit_links: ["https://audits.hacken.io/aqua-patina/sca-aqua-patina-ap-contracts-sep2024"],
     github: ["AvadoDServer"],
-    listedAt: 1729683111
+    listedAt: 1729683111,
+    deadUrl: true
   },
   {
     id: "5268",
@@ -57888,7 +57905,8 @@ const data3_3: Protocol[] = [
     oracles: ["Supra"], // https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration "Supra is the primary oracle, Pyth is the fallback oracle"
     module: "hliquity/index.js",
     twitter: "HLiquity_",
-    listedAt: 1730801574
+    listedAt: 1730801574,
+    deadUrl: true
   },
   {
     id: "5320",
@@ -59053,7 +59071,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "superswap-v2",
       dexs: "superswap-v2"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5373",
@@ -59077,7 +59096,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "superswap-v3",
       dexs: "superswap-v3"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5374",

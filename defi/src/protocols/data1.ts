@@ -20619,6 +20619,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "sheesha.js",
     twitter: "SheeshaFinance_",
     listedAt: 1640000895,
+    deadUrl: true,
   },
   {
     id: "1060",

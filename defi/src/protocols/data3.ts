@@ -413,6 +413,7 @@ const data3_0: Protocol[] = [
       "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa32a4032b263_audit%20(1).pdf",
     ],
     listedAt: 1679573389,
+    deadUrl: true,
   },
   {
     id: "2718",
@@ -4308,7 +4309,8 @@ const data3_0: Protocol[] = [
     listedAt: 1682515756,
     dimensions: {
       dexs: "pheasantswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2897",
@@ -9700,6 +9702,7 @@ const data3_0: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js", // need
     twitter: "DeFiatoOfficial",
+    deadUrl: true,
   },
   {
     id: "3142",
@@ -10697,6 +10700,7 @@ const data3_0: Protocol[] = [
     treasury: "cryptodickbutts.js",
     twitter: "CryptoDickbutts",
     listedAt: 1688373470,
+    deadUrl: true,
   },
   {
     id: "3188",
@@ -17893,6 +17897,7 @@ const data3_1: Protocol[] = [
     github: ["abachi-io"],
     audit_links: ["https://paladinsec.co/projects/abachi"],
     twitter: "Abachi_io",
+    deadUrl: true,
   },
   {
     id: "3511",
@@ -18107,7 +18112,8 @@ const data3_1: Protocol[] = [
     listedAt: 1694538314,
     dimensions: {
       fees: "monarchpay"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3521",
@@ -26512,6 +26518,7 @@ const data3_1: Protocol[] = [
     module: "rangers/index.js",
     twitter: "RangersProtocol",
     listedAt: 1702380485,
+    deadUrl: true,
   },
   {
     id: "3907",

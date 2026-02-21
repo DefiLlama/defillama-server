@@ -5819,6 +5819,7 @@ const data2: Protocol[] = [
     module: "trustednode/index.js",
     twitter: "Trustednode",
     listedAt: 1649792915,
+    deadUrl: true,
   },
   {
     id: "1645",
@@ -14915,6 +14916,7 @@ const data2: Protocol[] = [
       "https://github.com/interfinetwork/smart-contract-audits/blob/audit-updates/PuliInu_0xAEf0a177c8c329CBC8508292Bb7E06c00786BBfC.pdf",
     ],
     listedAt: 1662389427,
+    deadUrl: true,
   },
   {
     id: "2062",
@@ -24176,6 +24178,7 @@ const data2: Protocol[] = [
     oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     listedAt: 1675014442,
     stablecoins: ["meme-dollar"],
+    deadUrl: true,
   },
   {
     id: "2477",

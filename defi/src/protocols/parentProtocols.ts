@@ -486,6 +486,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AmuletProtocol",
     github: ["Amulet-Protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#uniswap",
@@ -1886,6 +1887,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23043",
     chains: [],
     twitter: "y2kfinance",
+    deadUrl: true,
   },
   {
     id: "parent#tropykus-finance",
@@ -5853,6 +5855,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "eddy_protocol",
+    deadUrl: true,
   },
   {
     id: "parent#lorenzo-protocol",
@@ -6492,6 +6495,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "31673",
     chains: [],
     twitter: "UmojaProtocol",
+    deadUrl: true,
   },
   {
     id: "parent#liquity",
@@ -8057,6 +8061,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "KintoXYZ",
+    deadUrl: true,
   },
   {
     id: "parent#theo",

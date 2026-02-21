@@ -3125,6 +3125,7 @@ export const chainCoingeckoIds = {
     twitter: "KintoXYZ",
     github: ["KintoXYZ"],
     url: "https://www.kinto.xyz/",
+    deadUrl: true,
   },
   "Immutable zkEVM": {
     geckoId: "immutable-x",

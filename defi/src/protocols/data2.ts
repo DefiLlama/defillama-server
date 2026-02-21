@@ -925,6 +925,7 @@ const data2: Protocol[] = [
     listedAt: 1644992134,
     stablecoins: ["arusd"],
     github: ["ArableProtocol"],
+    deadUrl: true
   },
   /*
   {
@@ -1535,10 +1536,10 @@ const data2: Protocol[] = [
     deadUrl: true,  },
   {
     id: "1449",
-    name: "ImpactMarket",
+    name: "ImpactMarket", // renamed to Pact Foundation
     address: "celo:0x46c9757c5497c5b1f2eb73ae79b6b67d119b0b58",
     symbol: "PACT",
-    url: "https://www.impactmarket.com",
+    url: "https://pactfoundation.com/",
     description:
       "ImpactMarket is a Decentralized poverty alleviation protocol that allows the creation and distribution of unconditional basic income between communities and their beneficiaries.",
     chain: "Celo",
@@ -1549,9 +1550,10 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Celo"],
     module: "impact-market/index.js",
-    twitter: "IPCTmarket",
+    twitter: "pactfinance",
     listedAt: 1645572803,
     github: ["impactMarket"],
+    deadUrl: true,
   },
   {
     id: "1450",
@@ -7717,6 +7719,7 @@ const data2: Protocol[] = [
     audit_links: [
       "https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf",
     ],
+    deadUrl: true,
   },
   {
     id: "1734",
@@ -10736,7 +10739,8 @@ const data2: Protocol[] = [
     github: ["HunnyFinance"],
     dimensions: {
       dexs: "hunnyswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1872",
@@ -13721,6 +13725,7 @@ const data2: Protocol[] = [
     module: "canto-forte/index.js",
     twitter: null,
     listedAt: 1661212761,
+    deadUrl: true,
   },
   {
     id: "2009",
@@ -14141,6 +14146,7 @@ const data2: Protocol[] = [
     twitter: "Energyfi_io",
     audit_links: ["https://docs.energyfi.io/security/audits"],
     listedAt: 1661588621,
+    deadUrl: true
   },
   {
     id: "2028",
@@ -17155,6 +17161,7 @@ const data2: Protocol[] = [
     audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
     parentProtocol: "parent#amulet",
     listedAt: 1665048387,
+    deadUrl: true
   },
   {
     id: "2160",
@@ -17938,6 +17945,7 @@ const data2: Protocol[] = [
     audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
     parentProtocol: "parent#amulet",
     listedAt: 1666174560,
+    deadUrl: true,
   },
   {
     id: "2194",
@@ -19532,6 +19540,7 @@ const data2: Protocol[] = [
     twitter: "FinanceLeo",
     audit_links: ["https://www.certik.com/projects/cubfinance"],
     listedAt: 1668014137,
+    deadUrl: true,
   },
   {
     id: "2261",
@@ -21285,7 +21294,7 @@ const data2: Protocol[] = [
     name: "VaporDex V1",
     address: "avax:0x7bddaf6dbab30224aa2116c4291521c7a60d5f55",
     symbol: "VAPE",
-    url: "https://www.vapordex.io",
+    url: "https://app.vapordex.io/swap",
     description:
       "The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
     chain: "Avalanche",
@@ -21301,7 +21310,7 @@ const data2: Protocol[] = [
     listedAt: 1670517161,
     dimensions: {
       dexs: "vapordex-v1"
-    }
+    },
   },
   {
     id: "2343",
@@ -22013,7 +22022,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "y2k-v1",
       derivatives: "y2k-v1"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2376",
@@ -24345,6 +24355,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/blob/main/audits/PeckShield-Audit-Report-Djed-2.pdf"],
     listedAt: 1675229824,
     stablecoins: ["djed-stablecoin"],
+    deadUrl: true,
   },
   {
     id: "2485",
@@ -24650,6 +24661,7 @@ const data2: Protocol[] = [
     audit_links: ["https://umeeversity.umee.cc/overview/umee-overview/security-audits.html"],
     listedAt: 1675684784,
     github: ["umee-network"],
+    deadUrl: true,
   },
   {
     id: "2499",
@@ -25382,7 +25394,8 @@ const data2: Protocol[] = [
     twitter: "ZonicApp",
     dimensions: {
       fees: "zonic"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2533",

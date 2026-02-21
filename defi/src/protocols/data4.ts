@@ -1361,6 +1361,7 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/aave/aave-v3-core/tree/master/audits"],
     github: ["aurum-protocol"],
     listedAt: 1736775047,
+    deadUrl: true
   },
   {
     id: "5618",
@@ -2192,6 +2193,7 @@ const data4: Protocol[] = [
     twitter: "UmojaProtocol",
     parentProtocol: "parent#umoja-protocol",
     listedAt: 1737625162,
+    deadUrl: true,
   },
   {
     id: "5655",
@@ -2401,7 +2403,7 @@ const data4: Protocol[] = [
     name: "EddyFinance V3",
     address: null,
     symbol: "-",
-    url: "https://www.eddy.finance/",
+    url: "https://app.eddy.finance/",
     description: "EddyFinance is a dex built on top of ZetaChain",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/eddyfinance.png`,
@@ -2415,6 +2417,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#eddyfinance",
     listedAt: 1737725817,
+    deadUrl: true,
   },
   {
     id: "5664",
@@ -3567,6 +3570,7 @@ const data4: Protocol[] = [
     module: "suprafi/index.js",
     twitter: "SupraFi_Sonic",
     listedAt: 1738581869,
+    deadUrl: true
   },
   {
     id: "5717",
@@ -6199,6 +6203,7 @@ const data4: Protocol[] = [
     module: "OneDollarDCAE/index.js",
     twitter: null,
     listedAt: 1740166867,
+    deadUrl: true
   },
   {
     id: "5830",
@@ -8653,7 +8658,8 @@ const data4: Protocol[] = [
     twitter: "FinderBotX",
     dimensions: {
       fees: "finder-bot"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5935",
@@ -10777,7 +10783,8 @@ const data4: Protocol[] = [
     listedAt: 1744329003,
     dimensions: {
       aggregators: "cro-ag"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6027",
@@ -11019,6 +11026,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     audit_links: ["https://drive.google.com/file/d/1-o219PWlwHO3EQXhSPWn4mT86ajk4FVB/view"],
     twitter: "QuantixCapital",
+    deadUrl: true,
   },
   {
     id: "6040",
@@ -15498,7 +15506,8 @@ const data4: Protocol[] = [
     twitter: "EdenNetwork",
     dimensions: {
       fees: "eden"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6233",
@@ -19869,7 +19878,8 @@ const data4: Protocol[] = [
     github: ["ApeBotOfficial"],
     dimensions: {
       fees: "apebot"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6421",
@@ -23046,7 +23056,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#kinto",
     dimensions: {
       fees: "kinto-xyz"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6561",
@@ -29638,6 +29649,7 @@ const data4: Protocol[] = [
     twitter: "CronosAry",
     github: ["Aryioshin"],
     listedAt: 1760475992,
+    deadUrl: true
   },
   {
     id: "6862",
@@ -30172,7 +30184,7 @@ const data4: Protocol[] = [
     name: "Open Stablecoin Index",
     address: "0x7ebab7190d3d574ce82d29f2fa1422f18e29969c",
     symbol: "SQUILL",
-    url: "https://www.openstablecoinindex.com/",
+    url: "https://app.reserve.org/ethereum/index-dtf/0x323c03c48660fe31186fa82c289b0766d331ce21/overview/",
     description: "Open stablecoin index is an equal-weight index tracking leading stablecoin-networks advancing transparency, composability, and user-led governance.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/open-stablecoin-index.jpg`,

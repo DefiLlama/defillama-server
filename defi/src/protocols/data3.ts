@@ -2610,6 +2610,7 @@ const data3_0: Protocol[] = [
     twitter: "Tonpound_com",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Tonpound%20Lending/Tonpound%20Lending.pdf"],
     listedAt: 1681312681,
+    deadUrl: true
   },
   {
     id: "2819",
@@ -3954,6 +3955,7 @@ const data3_0: Protocol[] = [
     module: "reactorfusion/index.js",
     twitter: "ReactorFusionR",
     listedAt: 1682329070,
+    deadUrl: true,
   },
   {
     id: "2881",
@@ -4936,6 +4938,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/GoodEntry-io/audits/blob/main/Roe-Protofire-Audit.pdf"],
     listedAt: 1683061507,
+    deadUrl: true,
   },
   {
     id: "2925",
@@ -6534,6 +6537,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/blob/main/audits/PeckShield-Audit-Report-Djed-2.pdf"],
     listedAt: 1684477891,
     stablecoins: ["djed-stablecoin"],
+    deadUrl: true,
   },
   {
     id: "2997",
@@ -7824,7 +7828,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "y2k-v2",
       derivatives: "y2k-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3057",
@@ -8759,6 +8764,7 @@ const data3_0: Protocol[] = [
     twitter: "OMTFinance",
     forkedFromIds: ["337"],
     listedAt: 1686357437,
+    deadUrl: true,
   },
   {
     id: "3098",
@@ -11678,7 +11684,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "DerpDEX",
       dexs: "DerpDEX"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3235",
@@ -12662,6 +12669,7 @@ const data3_0: Protocol[] = [
     twitter: "0xDYAD",
     stablecoins: ["dyad"],
     listedAt: 1690137305,
+    deadUrl: true,
   },
   {
     id: "3275",
@@ -16892,6 +16900,7 @@ const data3_1: Protocol[] = [
     github: ["blueberryfi"],
     audit_links: ["https://docs.bloom.garden/audit"],
     listedAt: 1693433262,
+    deadUrl: true,
   },
   {
     id: "3467",
@@ -20761,6 +20770,7 @@ const data3_1: Protocol[] = [
     module: "VoltageSwap/index.js",
     twitter: "VoltageSwap",
     listedAt: 1697549595,
+    deadUrl: true
   },
   {
     id: "3641",
@@ -21062,7 +21072,7 @@ const data3_1: Protocol[] = [
     name: "VaporDex V2",
     address: "avax:0x7bddaf6dbab30224aa2116c4291521c7a60d5f55",
     symbol: "VAPE",
-    url: "https://www.vapordex.io",
+    url: "https://app.vapordex.io/swap",
     description: "Concentrated liquidity AMM on Avalanche",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/vapordex.jpg`,
@@ -21079,7 +21089,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "vapordex-v2",
       dexs: "vapordex-v2"
-    }
+    },
   },
   {
     id: "3655",
@@ -23633,7 +23643,8 @@ const data3_1: Protocol[] = [
     listedAt: 1699910678,
     dimensions: {
       dexs: "elektrik"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3774",
@@ -25262,7 +25273,7 @@ const data3_1: Protocol[] = [
     name: "Button Tranche",
     address: null,
     symbol: "-",
-    url: "https://www.button.finance",
+    url: "https://app.button.finance/",
     description:
       "Tranche is a protocol for stratifying price risk of crypto-assets. At the core, it allows users to deposit an asset in return for several Tranche assets, each representing a different risk level. The safer assets have relatively stable value, while the risky assets have value roughly equivalent to a leveraged position of the underlying asset.",
     chain: "Ethereum",
@@ -25464,6 +25475,7 @@ const data3_1: Protocol[] = [
     twitter: "AmuletProtocol",
     parentProtocol: "parent#amulet",
     listedAt: 1701257587,
+    deadUrl: true,
   },
   {
     id: "3859",
@@ -25792,6 +25804,7 @@ const data3_1: Protocol[] = [
     twitter: "issuaaOfficial",
     github: ["issuaa"],
     listedAt: 1701572447,
+    deadUrl: true,
   },
   {
     id: "3875",
@@ -25819,7 +25832,7 @@ const data3_1: Protocol[] = [
     name: "Button Wrappers",
     address: null,
     symbol: "-",
-    url: "https://tranche.button.finance",
+    url: "https://app.button.finance/",
     description: `Easily segment your crypto assets into senior and junior tranches to use across DeFi.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/button-wrappers.jpg`,
@@ -26585,6 +26598,7 @@ const data3_1: Protocol[] = [
     twitter: "Gryphon_fi",
     github: ["GryphonProtocolDAO"],
     listedAt: 1702394752,
+    deadUrl: true,
   },
   {
     id: "3911",
@@ -31051,6 +31065,7 @@ const data3_1: Protocol[] = [
     twitter: "KatanaSwap",
     github: ["KatanaSwapXYZ"],
     listedAt: 1707219457,
+    deadUrl: true
   },
   {
     id: "4105",
@@ -31459,7 +31474,7 @@ const data3_1: Protocol[] = [
     name: "EddyFinance AMM",
     address: null,
     symbol: "-",
-    url: "https://www.eddy.finance/",
+    url: "https://app.eddy.finance/",
     description: "EddyFinance is a dex built on top of ZetaChain",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/eddyfinance.png`,
@@ -31477,7 +31492,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "eddyfinance-v2",
       dexs: "eddyfinance-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4121",
@@ -35905,6 +35921,7 @@ const data3_2: Protocol[] = [
     twitter: "kaoyaswap",
     github: ["kaoya1125"],
     listedAt: 1710776821,
+    deadUrl: true,
   },
   {
     id: "4317",
@@ -36337,6 +36354,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/KintoXYZ/security/tree/main/audits"],
     twitter: "KintoXYZ",
     parentProtocol: "parent#kinto",
+    deadUrl: true,
   },
   {
     id: "4337",
@@ -36877,6 +36895,7 @@ const data3_2: Protocol[] = [
     module: "brrr/index.js",
     twitter: "blastbrrr",
     listedAt: 1711393328,
+    deadUrl: true,
   },
   {
     id: "4363",
@@ -40251,6 +40270,7 @@ const data3_2: Protocol[] = [
     twitter: "MateSwapXYZ",
     forkedFromIds: ["2197"],
     listedAt: 1713867508,
+    deadUrl: true
   },
   {
     id: "4514",
@@ -50085,7 +50105,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "umoja",
       options: "umoja"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4964",
@@ -50126,6 +50147,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/tree/main/audits"],
     twitter: "DjedAlliance",
     listedAt: 1723145012,
+    deadUrl: true,
   },
   /* // tracked under the restaking listing
   {
@@ -52591,7 +52613,8 @@ const data3_3: Protocol[] = [
     module: "zprotocol-dex/index.js",
     twitter: "zprotocolxyz",
     parentProtocol: "parent#z-protocol",
-    listedAt: 1724939413
+    listedAt: 1724939413,
+    deadUrl: true
   },
   {
     id: "5078",
@@ -52610,7 +52633,8 @@ const data3_3: Protocol[] = [
     module: "zprotocol-masterchef/index.js",
     twitter: "zprotocolxyz",
     parentProtocol: "parent#z-protocol",
-    listedAt: 1724939421
+    listedAt: 1724939421,
+    deadUrl: true
   },
   {
     id: "5079",
@@ -54619,7 +54643,8 @@ const data3_3: Protocol[] = [
     module: "solbank-finance/index.js",
     twitter: "Solbankfi",
     github: ["SolbankFinance"],
-    listedAt: 1727088061
+    listedAt: 1727088061,
+    deadUrl: true
   },
   {
     id: "5172",
@@ -56293,7 +56318,7 @@ const data3_3: Protocol[] = [
     name: "EddyFinance StableSwap",
     address: null,
     symbol: "-",
-    url: "https://www.eddy.finance/",
+    url: "https://app.eddy.finance/",
     description: "EddyFinance is a dex built on top of ZetaChain",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/eddyfinance.png`,
@@ -56306,6 +56331,7 @@ const data3_3: Protocol[] = [
     module: "eddyfinance-stableswap/index.js",
     twitter: "eddy_protocol",
     parentProtocol: "parent#eddyfinance",
+    deadUrl: true,
   },
   /*{ Delisted as it is a fiat-backed stablecoin only, already listed on Stables Dashboard
     id: "5250",
@@ -57644,7 +57670,8 @@ const data3_3: Protocol[] = [
     github: ["kyexHead"],
     dimensions: {
       dexs: "kyex"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5311",
@@ -62030,7 +62057,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/ComposableFi/composable/tree/main/audits/mantis-contracts"],
     dimensions: {
       dexs: "mantis"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5515",

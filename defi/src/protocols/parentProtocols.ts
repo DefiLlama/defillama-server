@@ -9052,6 +9052,17 @@ const parentProtocols: IParentProtocol[] = [
   //   github: ["OlympusDAO"],
   //   treasury: "olympus-dao.js",
   // },
+  {
+    id: "parent#world-markets-inc",
+    name: "World Markets Inc",
+    url: "https://world.inc/",
+    description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
+    logo: `${baseIconsUrl}/world-markets-inc.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "worldmarketsinc",
+  },
 ];
 
 export default parentProtocols;

@@ -20,7 +20,7 @@ async function fetch(url: string, i: number = 3) {
 let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
   if (addresses.arbitrum) return addresses.arbitrum;
-  const data = await fetch("https://bridge.arbitrum.io/token-list-42161.json");
+  const data = await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/arbed_arb_whitelist_era.json");
   addresses.arbitrum = data.tokens.map((token: any) => token.address.toLowerCase());
   return addresses.arbitrum;
 };

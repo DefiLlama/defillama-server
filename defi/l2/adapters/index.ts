@@ -21,7 +21,10 @@ let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
   if (addresses.arbitrum) return addresses.arbitrum;
   const data = await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/arbed_arb_whitelist_era.json");
-  addresses.arbitrum = data.tokens.map((token: any) => token.address.toLowerCase());
+  addresses.arbitrum = data.tokens
+    .filter((token: any) => token.chainId === 42161)
+    .map((token: any) => token.address.toLowerCase());
+
   return addresses.arbitrum;
 };
 export const nova = async (): Promise<Address[]> => {

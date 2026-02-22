@@ -10838,6 +10838,7 @@ const data5: Protocol[] = [
     listedAt: 1770909499,
     dimensions: {
       dexs: "worldinc-spot",
+      fees: "worldinc-spot",
     },
   },
   {
@@ -12025,6 +12026,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#world-markets-inc",
     dimensions: {
       derivatives: "worldinc-perps",
+      fees: "worldinc-perps",
     },
   },
 ];

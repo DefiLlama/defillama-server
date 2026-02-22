@@ -5153,6 +5153,7 @@ export const chainCoingeckoIds = {
     twitter: "eteriaio",
     url: "https://eteria.io/",
     chainId: 140,
+    deadUrl: true,
   },
   "Plasma": {
     geckoId: "plasma",

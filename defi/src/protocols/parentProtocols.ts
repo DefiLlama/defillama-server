@@ -1951,6 +1951,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:palvote.eth"],
     treasury: "paladin-finance.js",
     github: ["PaladinFinance"],
+    deadUrl: true,
   },
   {
     id: "parent#quipuswap",
@@ -6484,6 +6485,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FilamentFinance",
     github: ["FilamentFinance"],
+    deadUrl: true,
   },
   {
     id: "parent#umoja-protocol",

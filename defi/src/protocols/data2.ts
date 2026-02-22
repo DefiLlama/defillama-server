@@ -2186,6 +2186,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/graviton"],
     listedAt: 1645901181,
     github: ["GTON-capital"],
+    deadUrl: true,
   },
   {
     id: "1479",
@@ -3736,7 +3737,8 @@ const data2: Protocol[] = [
     twitter: "BabenaFinance",
     language: "Pact",
     listedAt: 1647387814,
-    deprecated: true
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "1550",
@@ -6900,6 +6902,7 @@ const data2: Protocol[] = [
     twitter: "RavelinFinance",
     audit_links: ["https://rugdoc.io/project/ravelin-finance/", "https://www.ravcube.finance/audit.pdf"],
     listedAt: 1651103376,
+    deadUrl: true,
   },
   {
     id: "1695",
@@ -15508,7 +15511,7 @@ const data2: Protocol[] = [
     name: "Chee Finance",
     address: null,
     symbol: "-",
-    url: "https://www.chee.finance",
+    url: "https://app.chee.finance/",
     description: "Chee Finance is a web3 money market built on Celo, Meter.io, BNB Chain and Ethereum",
     chain: "Celo",
     logo: `${baseIconsUrl}/chee-finance.jpg`,
@@ -15523,6 +15526,7 @@ const data2: Protocol[] = [
     twitter: "CheeFinance",
     listedAt: 1663153491,
     github: ["chee-finance"],
+    deadUrl: true,
   },
   {
     id: "2088",
@@ -19901,6 +19905,7 @@ const data2: Protocol[] = [
     module: "weldfinance/index.js",
     twitter: "KnitFinance",
     listedAt: 1668371791,
+    deadUrl: true,
   },
   {
     id: "2278",
@@ -21637,6 +21642,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/RoeFinance/RoeMarkets/blob/main/reports/Akira-Roe-Report.pdf"],
     listedAt: 1670855639,
     github: ["RoeFinance"],
+    deadUrl: true,
   },
   {
     id: "2358",

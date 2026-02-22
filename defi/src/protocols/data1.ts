@@ -11331,6 +11331,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://vee.finance/home#contract"],
     forkedFromIds: ["114"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
+    deadUrl: true,
   },
   {
     id: "620",
@@ -11423,7 +11424,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Paladin Vote",
     address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
     symbol: "PAL",
-    url: "https://www.paladin.vote",
+    url: "https://dullahan.paladin.vote/",
     description:
       "Paladin is a decentralized, non-custodial governance lending protocol where users can either loan the voting power in their governance token, or borrow some voting power.",
     chain: "Ethereum",
@@ -11439,7 +11440,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/pessimistic-io/audits/blob/914e35fdfc879451a61d2a3969f3be839b8c808f/Paladin%20Security%20Analysis%20by%20Pessimistic.pdf",
     ],
     parentProtocol: "parent#paladin-finance",
-    deprecated: true
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "625",
@@ -17989,6 +17991,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HelloBitANT",
     audit_links: ["https://www.certik.com/projects/bitant"],
     listedAt: 1638195393,
+    deadUrl: true,
   },
   {
     id: "939",
@@ -20303,6 +20306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639812368,
     governanceID: ["snapshot:tempusgov.eth"],
     github: ["tempusfinance"],
+    deadUrl: true,
   },
   /* delist
   {
@@ -21004,6 +21008,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BringFinance",
     audit_links: ["https://hacken.io/audits/#bring_finance"],
     listedAt: 1640177167,
+    deadUrl: true,
   },
   {
     id: "1078",

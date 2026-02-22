@@ -2111,7 +2111,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "filament",
       derivatives: "filament"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5651",
@@ -5905,6 +5906,7 @@ const data4: Protocol[] = [
     module: "colors/index.js",
     twitter: "ColorsFinance",
     listedAt: 1740008941,
+    deadUrl: true,
   },
   {
     id: "5816",
@@ -18209,7 +18211,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "volta-markets",
       dexs: "volta-markets"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6346",
@@ -27771,7 +27774,8 @@ const data4: Protocol[] = [
     module: "fuseon/index.js",
     twitter: "fuseon_finance",
     forkedFromIds: ["1407"],
-    listedAt: 1758903932
+    listedAt: 1758903932,
+    deadUrl: true,
   },
   {
     id: "6775",

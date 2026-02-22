@@ -1587,6 +1587,7 @@ const data3_0: Protocol[] = [
     module: "multialt-stacking/index.js",
     twitter: "MultialtC",
     listedAt: 1680599832,
+    deadUrl: true,
   },
   {
     id: "2773",
@@ -3772,6 +3773,7 @@ const data3_0: Protocol[] = [
     module: "kimberlite/index.js",
     twitter: "KimberliteLabs",
     listedAt: 1682115289,
+    deadUrl: true,
   },
   {
     id: "2872",
@@ -8063,6 +8065,7 @@ const data3_0: Protocol[] = [
     parentProtocol: "parent#paladin-finance",
     wrongLiquidity: true, // not listed on coingecko, showing liquidity for another WAR token
     deprecated: true,
+    deadUrl: true,
     listedAt: 1685977922,
   },
   {
@@ -10921,6 +10924,7 @@ const data3_0: Protocol[] = [
     twitter: "FinanceFlorence",
     audit_links: ["https://github.com/pashov/audits/blob/master/solo/FlorenceFinance-security-review.md"],
     listedAt: 1688474868,
+    deadUrl: true,
   },
   {
     id: "3198",
@@ -14456,7 +14460,8 @@ const data3_0: Protocol[] = [
     ],
     parentProtocol: "parent#paladin-finance",
     listedAt: 1691414989,
-    deprecated: true
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "3353",
@@ -15297,6 +15302,7 @@ const data3_0: Protocol[] = [
     treasury: "mantadao.js", //
     twitter: "Manta_DAO",
     listedAt: 1692111232,
+    deadUrl: true,
   },
   {
     id: "3390",
@@ -16781,6 +16787,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "wooffinance",
     listedAt: 1693390723,
+    deadUrl: true,
   },
   {
     id: "3461",
@@ -20144,7 +20151,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "based-markets",
       derivatives: "based-markets"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3610",
@@ -23028,6 +23036,7 @@ const data3_1: Protocol[] = [
     module: "CofferCity/index.js",
     twitter: "CofferCity",
     listedAt: 1699358625,
+    deadUrl: true,
   },
   {
     id: "3745",
@@ -25777,7 +25786,8 @@ const data3_1: Protocol[] = [
     twitter: "bvb_matic",
     dimensions: {
       fees: "up-vs-down-game"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3873",
@@ -36842,6 +36852,7 @@ const data3_2: Protocol[] = [
     module: "degofinance/index.js",
     twitter: "dego_finance",
     listedAt: 1711376563,
+    deadUrl: true,
   },
   {
     id: "4359",
@@ -39082,7 +39093,8 @@ const data3_2: Protocol[] = [
     listedAt: 1712661648,
     dimensions: {
       derivatives: "bsx"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4459",
@@ -39294,6 +39306,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/Bidohub/Audit-Report/blob/main/Supremacy-Audit-Report-Bido-v1.0.pdf"],
     github: ["Bidohub"],
     listedAt: 1712786583,
+    deadUrl: true,
   },
   {
     id: "4469",
@@ -40082,6 +40095,7 @@ const data3_2: Protocol[] = [
     module: "rebalance/index.js",
     twitter: "rebalancefin",
     listedAt: 1713802887,
+    deadUrl: true,
   },
   {
     id: "4505",
@@ -42979,7 +42993,8 @@ const data3_2: Protocol[] = [
     listedAt: 1716203652,
     dimensions: {
       derivatives: "rollie-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4637",
@@ -45007,6 +45022,7 @@ const data3_3: Protocol[] = [
     twitter: "LinkswapFinance",
     forkedFromIds: ["2197"],
     listedAt: 1717667533,
+    deadUrl: true,
   },
   {
     id: "4731",
@@ -47480,7 +47496,8 @@ const data3_3: Protocol[] = [
         ],
         adapter: "bitoro"
       }
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4842",
@@ -54796,7 +54813,8 @@ const data3_3: Protocol[] = [
     module: "filament/index.js",
     twitter: "FilamentFinance",
     parentProtocol: "parent#filament",
-    listedAt: 1727184099
+    listedAt: 1727184099,
+    deadUrl: true,
   },
   {
     id: "5178",
@@ -59054,7 +59072,8 @@ const data3_3: Protocol[] = [
     module: "farmix/index.js",
     twitter: "TonFarmix",
     github: ["tonfarmix"],
-    listedAt: 1731927114
+    listedAt: 1731927114,
+    deadUrl: true,
   },
   {
     id: "5372",
@@ -59755,7 +59774,8 @@ const data3_3: Protocol[] = [
       "https://github.com/CryptonStudio/Audits/blob/main/PV01/Smart%20Contract%20Audit%20report%20-%20PV01%20OnChain%20bonds%20-%2011.01.2024.pdf",
       "https://github.com/CryptonStudio/Audits/blob/main/PV01/Smart%20Contract%20Audit%20report%20-%20PV01%20OnChain%20bonds%20-%2016.09.2024.pdf"
     ],
-    listedAt: 1732315858
+    listedAt: 1732315858,
+    deadUrl: true,
   },
   {
     id: "5403",

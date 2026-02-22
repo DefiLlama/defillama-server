@@ -7210,6 +7210,7 @@ const data5: Protocol[] = [
     listedAt: 1767650613,
     dimensions: {
       fees: "warpx-v2",
+      dexs: "warpx-v2",
     },
   },
   {
@@ -8220,6 +8221,7 @@ const data5: Protocol[] = [
     deadUrl: true,
     dimensions: {
       fees: "megaswap",
+      dexs: "megaswap"
     },
   },
   {
@@ -10052,6 +10054,7 @@ const data5: Protocol[] = [
     listedAt: 1770151823,
     dimensions: {
       fees: "warpx-v3",
+      dexs: "warpx-v3",
     },
   },
   {

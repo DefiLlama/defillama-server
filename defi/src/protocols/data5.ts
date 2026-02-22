@@ -8234,6 +8234,12 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "prism-dex/index.js",
     twitter: "PrismFi_",
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://prismfi.cc/docs/overview"],
+      },
     forkedFromIds: ["2198"],
     dimensions: {
       dexs: "prism-dex",
@@ -10350,6 +10356,12 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "canonic/index.js",
     twitter: "_canonic",
+     oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.canonic.trade/trading/contract-deployments"],
+      },
     dimensions: {
       dexs: "canonic",
       fees: "canonic",
@@ -10822,6 +10834,12 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "worldinc/index.js",
     twitter: "worldmarketsinc",
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.world.inc/venue/technical-overview#general"],
+      },
     listedAt: 1770909499,
   },
   {

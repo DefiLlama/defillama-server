@@ -1071,6 +1071,26 @@
     }
   },
   "ethereum": {
+    "0x4fdb3cb3DBD6D24B64276645c1ADCb85cbB39dC6": {
+      "decimals": "18",
+      "symbol": "sd-FrxMsUSD-vault",
+      "to": "asset#ethereum:0x9a9e2e70919c75d80aaaa1d483c46cdbb8ac4d1b"
+    },
+    "0xCA137e3853Eab95541290B372223e7F2ee4c0cFa": {
+      "decimals": "18",
+      "symbol": "sd-crvfrxUSD-vault",
+      "to": "asset#ethereum:0x13e12bb0e6a2f1a3d6901a59a9d585e89a6243e1"
+    },
+    "0x715AAAc9b7c35b88299376147eE7B0c09A0F1B22": {
+      "decimals": "18",
+      "symbol": "sd-frxUSDOUSD-vault",
+      "to": "asset#ethereum:0x68d03ed49800e92d7aa8ab171424007e55fd1f49"
+    },
+    "0x814fe989C3b894413c245bf466B3e4208Ab86B2a": {
+      "decimals": "18",
+      "symbol": "sd-av/frxUSD-vault",
+      "to": "asset#ethereum:0xf76329c6dc10fdfbee6ca520d0bf4d474e95e46e"
+    },
     "0x6DFF69eb720986E98Bb3E8b26cb9E02Ec1a35D12": {
       "decimals": "18",
       "symbol": "syzUSD",

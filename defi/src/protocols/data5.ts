@@ -11775,7 +11775,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: "exod",
     cmcId: null,
-    category: "Wallets",
+    tags: ["Onchain Equity"],
     chains: ["Arbitrum", "Algorand"],
     module: "exod/index.js",
     twitter: "exodus",

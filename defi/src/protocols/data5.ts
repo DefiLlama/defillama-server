@@ -7208,6 +7208,9 @@ const data5: Protocol[] = [
     twitter: "warpexchange",
     parentProtocol: "parent#warpx",
     listedAt: 1767650613,
+    dimensions: {
+      fees: "warpx-v2",
+    },
   },
   {
     id: "7217",
@@ -8215,6 +8218,9 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     listedAt: 1768842047,
     deadUrl: true,
+    dimensions: {
+      fees: "megaswap",
+    },
   },
   {
     id: "7265",
@@ -10044,6 +10050,9 @@ const data5: Protocol[] = [
     twitter: "warpexchange",
     parentProtocol: "parent#warpx",
     listedAt: 1770151823,
+    dimensions: {
+      fees: "warpx-v3",
+    },
   },
   {
     id: "7352",

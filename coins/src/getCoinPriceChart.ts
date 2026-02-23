@@ -12,6 +12,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
 import pLimit from "p-limit";
 
+
 type TimedPrice = {
   price: number;
   timestamp: number;
@@ -92,21 +93,25 @@ function formParamsObject(event: any): QueryParams {
   return params;
 }
 
-// Fetches all records for a PK in a single paginated range query.
+// Fetches all records for a PK in a single paginated range query till the limit is reached
 // DynamoDB returns items sorted ascending by SK by default.
-async function queryRange(pk: string, minSK: number, maxSK: number) {
+async function queryRangeLimited(pk: string, minSK: number, maxSK: number, limit = 1000) {
   const items: any[] = [];
   let lastKey: any = undefined;
-  do {
-    const result = await dynamodb.query({
-      ExpressionAttributeValues: { ":pk": pk, ":minSK": minSK, ":maxSK": maxSK },
-      KeyConditionExpression: "PK = :pk AND SK BETWEEN :minSK AND :maxSK",
-      ExclusiveStartKey: lastKey,
-    });
-    if (result.Items) items.push(...result.Items);
-    lastKey = result.LastEvaluatedKey;
-  } while (lastKey);
-  return items;
+  // do {  // Pagination is currently disabled since we want to change strategy to per-timestamp queries for large periods, but the function is left here for potential future use if we want to fetch more records at once.
+  const result = await dynamodb.query({
+    ExpressionAttributeValues: { ":pk": pk, ":minSK": minSK, ":maxSK": maxSK },
+    KeyConditionExpression: "PK = :pk AND SK BETWEEN :minSK AND :maxSK",
+    ExclusiveStartKey: lastKey,
+    Limit: limit, // max items per page
+  });
+  if (result.Items) items.push(...result.Items);
+  //   lastKey = result.LastEvaluatedKey;
+  // } while (lastKey);
+  return {
+    items,
+    limitReached: items.length >= limit,
+  };
 }
 
 // Binary search for the record closest to `timestamp` within the sorted records array.
@@ -190,14 +195,37 @@ async function fetchDBData(
   for (const coin of coins) {
     const pk = coin.redirect ?? coin.PK;
 
+    // Per-timestamp queries: 2 DynamoDB queries each with Limit:1.
+    // Cheaper when the time range is large relative to requested points,
+    // avoiding fetching thousands of unneeded records from dense coins.
+    const runSingleQueries = async () => await Promise.all(
+      timestamps.map((timestamp) =>
+        limit(async () => {
+          const finalCoin: any = await getRecordClosestToTimestamp(
+            pk,
+            timestamp,
+            params.searchWidth,
+          );
+          if (finalCoin.SK === undefined) return;
+          addToResponse(response, coin, finalCoin, PKTransforms);
+        }),
+      ),
+    );
+
     if (useRangeQuery) {
       // Single range query: fetch all records at once, match in memory.
       // Efficient for short time spans or small period values (e.g. 5m, 1h).
-      const records = await queryRange(
+      const {items: records, limitReached } = await queryRangeLimited(
         pk,
         minTimestamp - params.searchWidth,
         maxTimestamp + params.searchWidth,
       );
+
+      if (limitReached) {
+        // console.log(`${pk} returns too many logs, switching to single queries`)
+        await runSingleQueries();
+        continue;
+      }
 
       for (const timestamp of timestamps) {
         const finalCoin = findClosestRecord(records, timestamp, params.searchWidth);
@@ -205,22 +233,7 @@ async function fetchDBData(
         addToResponse(response, coin, finalCoin, PKTransforms);
       }
     } else {
-      // Per-timestamp queries: 2 DynamoDB queries each with Limit:1.
-      // Cheaper when the time range is large relative to requested points,
-      // avoiding fetching thousands of unneeded records from dense coins.
-      await Promise.all(
-        timestamps.map((timestamp) =>
-          limit(async () => {
-            const finalCoin: any = await getRecordClosestToTimestamp(
-              pk,
-              timestamp,
-              params.searchWidth,
-            );
-            if (finalCoin.SK === undefined) return;
-            addToResponse(response, coin, finalCoin, PKTransforms);
-          }),
-        ),
-      );
+      await runSingleQueries();
     }
   }
 

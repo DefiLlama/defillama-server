@@ -1485,6 +1485,7 @@ export const chainCoingeckoIds = {
     chainId: 225,
     twitter: "0xLachain",
     url: "https://lachain.io/",
+    deadUrl: true,
   },
   "Coti": {
     geckoId: "coti",
@@ -2638,7 +2639,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 4337,
     twitter: "MeritCircle_IO",
-    url: "https://meritcircle.io/",
+    url: "https://onbeam.com/",
   },
   "NOS": {
     geckoId: null,
@@ -2647,8 +2648,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
   },
   "Scroll": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'scroll',
+    symbol: 'SCR',
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["scroll-tech"],
@@ -2886,6 +2887,7 @@ export const chainCoingeckoIds = {
     governanceID: ["snapshot:airdaofoundation.eth"],
     url: "https://airdao.io/",
     chainId: 16718,
+    deadUrl: true,
   },
   "dYdX": {
     geckoId: "dydx-chain",
@@ -3123,6 +3125,7 @@ export const chainCoingeckoIds = {
     twitter: "KintoXYZ",
     github: ["KintoXYZ"],
     url: "https://www.kinto.xyz/",
+    deadUrl: true,
   },
   "Immutable zkEVM": {
     geckoId: "immutable-x",
@@ -3495,6 +3498,7 @@ export const chainCoingeckoIds = {
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"],
+    deadUrl: true,
   },
   "IOTA": {
     geckoId: "iota",
@@ -3816,7 +3820,7 @@ export const chainCoingeckoIds = {
       da: "Ethereum",
     },
     url: "https://lisk.com/",
-    twitter: "LiskHQ",
+    twitter: "Lisk",
     github: ["LiskHQ"],
     chainId: 1135,
     dimensions: {
@@ -3968,7 +3972,7 @@ export const chainCoingeckoIds = {
     symbol: "SHIDO",
     cmcId: "28211",
     categories: ["EVM", "Cosmos"],
-    twitter: "ShidoGlobal",
+    twitter: "ShidoNetwork",
     url: "https://shido.io/",
   },
   "Redbelly": {
@@ -4469,6 +4473,7 @@ export const chainCoingeckoIds = {
     chainId: 478,
     twitter: "0xForm",
     url: "https://form.network/",
+    deadUrl: true,
   },
   "HyperEVM": {
     geckoId: null,
@@ -5148,6 +5153,7 @@ export const chainCoingeckoIds = {
     twitter: "eteriaio",
     url: "https://eteria.io/",
     chainId: 140,
+    deadUrl: true,
   },
   "Plasma": {
     geckoId: "plasma",
@@ -5589,6 +5595,7 @@ export const chainCoingeckoIds = {
     twitter: "megaeth",
     url: "https://www.megaeth.com/",
     chainId: 4326,
+    stablecoins: ["megausd"],
   },
   "Quai": {
     geckoId: "quai-network",
@@ -5672,6 +5679,30 @@ export const chainCoingeckoIds = {
     categories: [],
     twitter: "OpenledgerHQ",
     url: "https://www.openledger.xyz/",
+  },
+    "N1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "N1Chain",
+    url: "https://www.n1.xyz/",
+  },
+  "Spark": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "spark",
+    url: "https://www.spark.money/",
+  },
+  "Keeta": {
+    geckoId: "keeta",
+    symbol: "KTA",
+    cmcId: "36066",
+    categories: [],
+    twitter: "KeetaNetwork",
+    url: "https://www.keeta.com/",
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -5910,6 +5941,7 @@ const chainLabelMap = {
   "megaeth": "MegaETH",
   "standx": "StandX",
   "orderly": "Orderly",
+  "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

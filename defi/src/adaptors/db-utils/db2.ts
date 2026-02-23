@@ -64,7 +64,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
-    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl']
+    updateOnDuplicate: ['timestamp', 'data', 'type', 'bl', 'blc', 'tb', 'tbl', 'tblc']
   });
 
   async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
@@ -174,6 +174,22 @@ export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
     where,
     attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
+  return result
+}
+
+export async function getDimensionsRecordsInRange({ adapterType, id, fromTimestamp, toTimestamp }: { adapterType: AdapterType, id: string, fromTimestamp: number, toTimestamp: number }) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: {
+      type: adapterType,
+      id,
+      timestamp: { [Op.gte]: fromTimestamp, [Op.lte]: toTimestamp },
+    },
+    attributes: ['id', 'timestamp', 'timeS', 'type', 'data'],
     raw: true,
   })
 

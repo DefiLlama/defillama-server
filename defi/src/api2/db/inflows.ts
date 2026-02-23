@@ -104,7 +104,7 @@ export function computeInflowsData({
   })
 
 
-  const tokenDiffUSD: { [token: string]: string } = {}
+  const tokenDiffUSD: { [token: string]: number } = {}
 
   let response: any = {
     outflows: 0,
@@ -133,12 +133,20 @@ export function computeInflowsData({
     response.oldTokens.tvl[token] = oldAmount
     response.currentTokens.tvl[token] = currentAmount
 
-    if (withMetadata)
-      tokenDiffUSD[token] = humanizeNumber(usdDiff)
+    if (withMetadata) 
+      tokenDiffUSD[token] = usdDiff
+
   }
 
-  if (withMetadata)
-    response.tokenDiffUSD = tokenDiffUSD
+  if (withMetadata) {
+    const sortedTokenDiffUSD: { [token: string]: string } = {};
+    Object.entries(tokenDiffUSD)
+      .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
+      .forEach(([token, value]) => {
+        sortedTokenDiffUSD[token] = humanizeNumber(Number(value));
+      });
+    response.tokenDiffUSD = sortedTokenDiffUSD;
+  }
 
   // delete response.tokenDiffUSD
 

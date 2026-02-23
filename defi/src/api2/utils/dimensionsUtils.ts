@@ -7,7 +7,7 @@ import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 
 function getFileCacheKeyV2(adapterType: AdapterType) {
-  return `dimensions-data-v3.0.3/${adapterType}`
+  return `dimensions-data-v3.0.4/${adapterType}`
 }
 
 async function _getDimensionsCacheV2(adapterType: AdapterType) {

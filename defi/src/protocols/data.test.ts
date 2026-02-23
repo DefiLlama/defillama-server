@@ -32,7 +32,7 @@ test("all the dynamic imports work", async () => {
   await Promise.all(treasuries.map(importAdapter))
 });
 
-const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed", "ownTokens"]
+const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed", "ownTokens", "meta"]
 test("all chains are on chainMap", async () => {
   const allProtocols = [protocols, treasuries].flat()
   for (const protocol of allProtocols) {
@@ -84,7 +84,7 @@ test("all chains are on chainMap", async () => {
  */
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])
-  const ignoredKeys = new Set(['default', 'hallmarks'])
+  const ignoredKeys = new Set(['default', 'hallmarks', 'meta'])
   await Promise.all(treasuries.map(async protocol => {
     const module = await importAdapter(protocol)
     for (const [chain, value] of Object.entries(module)) {
@@ -328,7 +328,8 @@ test("no surprise category", async () => {
     "Gamified Mining",
     "Secondary Debt Markets",
     "Block Builders",
-    "Stablecoin Wrapper"
+    "Stablecoin Wrapper",
+    "Crypto Card Issuer",
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

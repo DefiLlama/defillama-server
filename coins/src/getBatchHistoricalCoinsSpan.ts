@@ -128,6 +128,7 @@ const handler = async (event: any): Promise<IResponse> => {
   }
 };
 
-export default wrap(handler);
+// disabled as it is not used by anyone
+// export default wrap(handler);
 
 // // ts-node coins/src/getBatchHistoricalCoinsSpan.ts

@@ -170,6 +170,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MMFcrypto",
     governanceID: ["snapshot:mmfinance.eth"],
+    deadUrl: true,
   },
   {
     id: "parent#mycelium",
@@ -331,6 +332,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "17954",
     chains: [],
     twitter: "BasedDEFI",
+    deadUrl: true,
   },
   {
     id: "parent#ribbon-finance",
@@ -484,6 +486,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AmuletProtocol",
     github: ["Amulet-Protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#uniswap",
@@ -769,6 +772,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "uniwswap",
     github: ["uniwswap"],
+    deadUrl: true,
   },
   {
     id: "parent#metronome",
@@ -833,7 +837,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#kujira-protocol",
     name: "Kujira Protocol",
-    url: "https://kujira.app",
+    url: "https://kujira.network/",
     description:
       "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
     logo: `${baseIconsUrl}/kujira-protocol.png`,
@@ -874,7 +878,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#tethys-finance",
     name: "Tethys Finance",
-    url: "https://tethys.finance",
+    url: "https://tethys.finance",//deadUrl
     description:
       "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
     logo: `${baseIconsUrl}/tethys-finance.png`,
@@ -883,6 +887,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tethysfinance",
     governanceID: ["snapshot:tethysswap.eth"],
+    deadUrl: true,
   },
   // { rebranded to bunni
   //   id: "parent#timeless",
@@ -925,6 +930,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CapDotFinance",
     github: ["capofficial"],
+    deadUrl: true,
   },
   {
     id: "parent#sphere",
@@ -1091,6 +1097,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SurfswapDEX",
+    deadUrl: true,
   },
   {
     id: "parent#balancer",
@@ -1156,6 +1163,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "skullswapdex",
+    deadUrl: true,
   },
   {
     id: "parent#rocifi",
@@ -1169,6 +1177,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rocifi",
     github: ["RociFi"],
+    deadUrl: true,
   },
   {
     id: "parent#lfgswap",
@@ -1220,6 +1229,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AlpacaFinance",
     governanceID: ["snapshot:alpacafinance.eth"],
     github: ["alpaca-finance"],
+    deadUrl: true,
   },
   {
     id: "parent#spin",
@@ -1339,6 +1349,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fairy_swap",
     github: ["Fairyswap"],
+    deadUrl: true,
   },
   {
     id: "parent#wemix.fi",
@@ -1401,6 +1412,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "HadoukenFinance",
+    deadUrl: true,
   },
   {
     id: "parent#synthetix",
@@ -1616,6 +1628,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "smbswap",
     github: ["Cr3k"],
+    deadUrl: true,
   },
   {
     id: "parent#hydradex",
@@ -1874,6 +1887,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23043",
     chains: [],
     twitter: "y2kfinance",
+    deadUrl: true,
   },
   {
     id: "parent#tropykus-finance",
@@ -1937,6 +1951,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:palvote.eth"],
     treasury: "paladin-finance.js",
     github: ["PaladinFinance"],
+    deadUrl: true,
   },
   {
     id: "parent#quipuswap",
@@ -1954,7 +1969,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#predy-finance",
     name: "Predy Finance",
-    url: "https://www.predy.finance",
+    url: "https://app.predy.finance/",
     description: "Trade, Hedge, and Earn through pVault connected AMM.",
     logo: `${baseIconsUrl}/predy-finance.png`,
     gecko_id: null,
@@ -2159,6 +2174,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Themis_Pro",
     treasury: "themis-capital-ohm.js",
     github: ["ThemisCapital"],
+    deadUrl: true,
   },
   {
     id: "parent#pepeteam",
@@ -2215,7 +2231,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#pegasys",
     name: "PegaSys",
-    url: "https://pegasys.finance",
+    url: "https://www.pegasys.fi/",
     description:
       "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
     logo: `${baseIconsUrl}/pegasys.png`,
@@ -2423,7 +2439,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dexfinance",
     name: "DexFinance",
-    url: "https://app.dexfinance.com/swap",
+    url: "https://dexfi.com/",
     description:
       "Bringing the world tools to optimize and simplify DeFi investing.",
     logo: `${baseIconsUrl}/dexfinance.png`,
@@ -2541,7 +2557,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#chronos",
     name: "Chronos",
-    url: "https://chronos.exchange/",
+    url: "https://chronos.exchange/",// deadUrl
     description:
       "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
     logo: `${baseIconsUrl}/chronos.png`,
@@ -2550,6 +2566,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ChronosFi_",
     github: ["ChronosEx"],
+    deadUrl: true,
   },
   {
     id: "parent#echodex",
@@ -2742,6 +2759,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LybraFinanceLSD",
     github: ["LybraFinance"],
     stablecoins: ["peg-eusd"],
+    deadUrl: true,
   },
   {
     id: "parent#astarter",
@@ -2856,7 +2874,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#w3-foundation",
     name: "W3 Foundation",
-    url: "https://w3swap.link/",
+    url: "https://w3swap.link/",// deadUrl
     description:
       "W3 Foundation: A decentralized organization built on the W3 community, dedicated to the sustainable development of the W3 ecosystem. ",
     logo: `${baseIconsUrl}/w3-foundation.jpg`,
@@ -2864,6 +2882,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "w3_foundation",
+    deadUrl: true,
   },
   {
     id: "parent#kinetix",
@@ -3146,7 +3165,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lifinity",
     name: "Lifinity",
-    url: "https://lifinity.io/pools",
+    url: "https://lifinity.io/",
     description:
       "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
     logo: `${baseIconsUrl}/lifinity.jpg`,
@@ -3154,6 +3173,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19842",
     chains: [],
     twitter: "Lifinity_io",
+    deprecated: true,
   },
   {
     id: "parent#swell",
@@ -3266,7 +3286,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hummus-exchange",
     name: "Hummus Exchange",
-    url: "https://www.hummus.exchange",
+    url: "https://www.hummus.exchange",// deadUrl
     description:
       "The Hummus protocol is a single-side Automated Market Maker designed for exchanging stable cryptocurrencies on the Metis blockchain.",
     logo: `${baseIconsUrl}/hummus-exchange.png`,
@@ -3274,6 +3294,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19625",
     chains: [],
     twitter: "hummusdefi",
+    deadUrl: true,
   },
   {
     id: "parent#voodoo-trade",
@@ -3318,13 +3339,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#rollup-finance",
     name: "Rollup Finance",
-    url: "https://www.rollup.finance/",
+    url: "https://www.rollup.finance/",//deadUrl
     description: "Decentralized Perpetual Derivatives Trading Exchange",
     logo: `${baseIconsUrl}/rollup-finance.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Rollup_Finance",
+    deadUrl: true,
   },
   {
     id: "parent#dopex",
@@ -3402,7 +3424,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
-    gecko_id: null,
+    gecko_id: "lighter",
     cmcId: null,
     chains: [],
     twitter: "Lighter_xyz",
@@ -3420,6 +3442,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DFXFinance",
     governanceID: ["snapshot:dfx.eth"],
     github: ["dfx-finance"],
+    deadUrl: true,
   },
   {
     id: "parent#ascent-exchange",
@@ -3591,6 +3614,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "baptswap",
     github: ["BAPTSWAP"],
+    deadUrl: true,
   },
   {
     id: "parent#yearn",
@@ -3640,6 +3664,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cega_fi",
+    deadUrl: true,
   },
   {
     id: "parent#squadswap",
@@ -3662,6 +3687,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Cod3xOrg",
+    deadUrl: true,
   },
   {
     id: "parent#ajna",
@@ -3710,6 +3736,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "29102",
     chains: [],
     twitter: "Dojo_Swap",
+    deadUrl: true,
   },
   {
     id: "parent#meridian",
@@ -3938,6 +3965,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "JediSwap",
+    deadUrl: true,
   },
   {
     id: "parent#prisma",
@@ -3951,6 +3979,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
+    deadUrl: true,
     // stablecoins: ["mkusd","prismalrt-ultra"], since its not possible to show both/more than 1 stablecoins under the parentProtocol. Will add each stablecoin under their respective listing
   },
   {
@@ -4126,6 +4155,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "NileExchange",
+    deadUrl: true,
   },
   {
     id: "parent#cleopatra-exchange",
@@ -4138,6 +4168,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "CleopatraDEX",
+    deadUrl: true,
   },
   {
     id: "parent#pharaoh-exchange",
@@ -4312,6 +4343,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AstariaXYZ",
     github: ["AstariaXYZ"],
+    deadUrl: true,
   },
   {
     id: "parent#ether-fi",
@@ -4393,7 +4425,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperliquid",
     name: "Hyperliquid",
-    url: "https://hyperfoundation.org",
+    url: "https://app.hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description:
       "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
@@ -4509,6 +4541,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24792",
     chains: [],
     twitter: "rabbitx_io",
+    deadUrl: true,
   },
   {
     id: "parent#atlendis",
@@ -4601,13 +4634,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#keller-finance",
     name: "Keller Finance",
-    url: "https://kellerfinance.app/",
+    url: "https://kellerfinance.app/",//deadUrl
     description: "A DEX launched on Scroll",
     logo: `${baseIconsUrl}/keller-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Equilibre_Labs",
+    deadUrl: true,
   },
   /*
   {
@@ -4634,6 +4668,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "VanillaSwap1",
+    deadUrl: true,
   },
   {
     id: "parent#cropper",
@@ -4662,7 +4697,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#verylongswap",
     name: "VeryLongSwap",
-    url: "https://verylongswap.xyz",
+    url: "https://verylongswap.xyz",//deadUrl
     description:
       "Permissionless AMM-based exchange that supercharges spot trades with concentrated liquidity within preferred price ranges.",
     logo: `${baseIconsUrl}/verylongswap.jpg`,
@@ -4671,6 +4706,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VeryLong_Swap",
     github: ["verylongswap"],
+    deadUrl: true,
   },
   {
     id: "parent#ociswap",
@@ -4934,6 +4970,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["joltify-finance"],
     twitter: "joltify_finance",
+    deadUrl: true,
   },
   {
     id: "parent#macaron",
@@ -5756,6 +5793,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "delv_tech",
     github: ["delvtech"],
+    deadUrl: true,
   },
   {
     id: "parent#trado-finance",
@@ -5818,6 +5856,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "eddy_protocol",
+    deadUrl: true,
   },
   {
     id: "parent#lorenzo-protocol",
@@ -5994,6 +6033,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SwapModeFi",
     github: ["swapmode"],
+    deadUrl: true,
   },
   {
     id: "parent#superswap",
@@ -6006,6 +6046,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SuperSwapFi",
+    deadUrl: true,
   },
   {
     id: "parent#ocelex",
@@ -6070,6 +6111,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "DegenHive",
+    deadUrl: true,
   },
   {
     id: "parent#bluefin",
@@ -6289,6 +6331,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GoblinsCash",
     treasury: "goblinscash.js",
+    deadUrl: true,
   },
   {
     id: "parent#extra-finance",
@@ -6442,6 +6485,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FilamentFinance",
     github: ["FilamentFinance"],
+    deadUrl: true,
   },
   {
     id: "parent#umoja-protocol",
@@ -6454,6 +6498,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "31673",
     chains: [],
     twitter: "UmojaProtocol",
+    deadUrl: true,
   },
   {
     id: "parent#liquity",
@@ -6574,6 +6619,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VicunaFinance",
     github: ["VicunaFinance-com"],
+    deadUrl: true,
   },
   {
     id: "parent#beralis",
@@ -6954,6 +7000,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GooseFX1",
     github: ["GooseFX1"],
+    deadUrl: true,
   },
   {
     id: "parent#seamless-protocol",
@@ -7544,13 +7591,13 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#international-meme-fund",
     name: "International Meme Fund",
-    url: "https://internationalmeme.fund",
+    url: "https://imf.bz/",
     description: "International Meme Fund.",
     logo: `${baseIconsUrl}/international-meme-fund.png`,
     gecko_id: "international-meme-fund",
     cmcId: null,
     chains: [],
-    twitter: "intlmemefund",
+    twitter: "imfcrypto",
     github: ["International-Meme-Fund"],
   },
   {
@@ -7745,6 +7792,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Kura_Dex",
+    deadUrl: true,
   },
   {
     id: "parent#fomoswap",
@@ -7757,6 +7805,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fomodotbiz",
     github: ["fomodotbiz"],
+    deadUrl: true,
   },
   {
     id: "parent#superlend-xyz",
@@ -8016,6 +8065,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "KintoXYZ",
+    deadUrl: true,
   },
   {
     id: "parent#theo",
@@ -8097,7 +8147,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#babydogecoin",
     name: "BabyDogeCoin",
-    url: "https://babydogeswap.com",
+    url: "https://swap.babydoge.com/",
     description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap.",
     logo: `${baseIconsUrl}/babydoge.jpg`,
     gecko_id: "baby-doge-coin",
@@ -8155,11 +8205,10 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#kinetiq",
     name: "Kinetiq",
     url: "https://kinetiq.xyz/",
-    referralUrl: "https://markets.xyz/join/llama",
     description: "Kinetiq is a non-custodial liquid staking protocol that allows users to stake HYPE tokens on Hyperliquid L1 and receive kHYPE, a yield-bearing representation of staked HYPE that is usable in DeFi.",
     logo: `${baseIconsUrl}/kinetiq.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "kinetiq",
+    cmcId: "39070",
     chains: [],
     twitter: "Kinetiq_xyz",
     treasury: "kinetiq.js",
@@ -8309,7 +8358,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Strata",
     url: "https://strata.money",
     description: "Strata is a generalized risk-tranching protocol designed to offer structured yields via tokenized senior and junior tranches across diverse on-chain and off-chain yield strategies.",
-    logo: `${baseIconsUrl}/strata.jpg`,
+    logo: `${baseIconsUrl}/strata.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -8911,6 +8960,121 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ZestProtocol",
+  },
+  {
+    id: "parent#supernova",
+    name: "Supernova",
+    url: "https://supernova.xyz/",
+    description: "Supernova is a Next-gen ve(3,3) DEX on Ethereum",
+    logo: `${baseIconsUrl}/supernova.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SupernovaDEX",
+  },
+  {
+    id: "parent#lunar-finance",
+    name: "Lunar Finance",
+    url: "https://lunarfinance.io",
+    description: "Lunar finance is a multichain aggregator that allows users to swap and bridge on 40+ chains.",
+    logo: `${baseIconsUrl}/lunar-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Lunar_finance",
+  },
+  {
+    id: "parent#currentx",
+    name: "CurrentX",
+    url: "https://currentx.app/",
+    description: "High-performance decentralized exchange on MegaETH.",
+    logo: `${baseIconsUrl}/currentx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "currentxdex",
+  },
+  {
+    id: "parent#parity",
+    name: "Parity",
+    url: "https://app.parity.exchange/",
+    description: "The native liquidity layer on Monad. Solidly V2 AMM + Concentrated Liquidity with ve(3,3) tokenomics.",
+    logo: `${baseIconsUrl}/parity.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParityDEX",
+  },
+  {
+    id: "parent#etmc",
+    name: "ETMC",
+    url: "https://app.parity.exchange/",
+    description: "ETCMCv2 is a fully decentralized protocol for Ethereum Classic.",
+    logo: `${baseIconsUrl}/etmc.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "etcmcv2",
+    github: ["Nowalski"],
+  },
+  {
+    id: "parent#honeyplay",
+    name: "HoneyPlay",
+    url: "https://honeyplay.fun",
+    description: "DeFi infrastructure on Sui with programmable token taxes (HoneyTax), AMM with multi-curve support, NFT marketplace, and ggSUI liquid staking.",
+    logo: `${baseIconsUrl}/honeyplay.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HoneyPlaydotfun",
+    github: ["LifeOrDream"],
+  },
+  {
+    id: "parent#someswap",
+    name: "SomeSwap",
+    url: "https://someswap.org/",
+    description: "A community-driven DEX on Monad.",
+    logo: `${baseIconsUrl}/someswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SomethingSwap",
+  },
+  {
+    id: "parent#royco-protocol",
+    name: "Royco Protocol",
+    url: "https://www.royco.org",
+    description: "The Incentivized Action Market (IAM) Protocol.",
+    logo: `${baseIconsUrl}/royco-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "roycoprotocol",
+  },
+  // {
+  //   id: "parent#olympus-dao",
+  //   name: "Olympus DAO",
+  //   url: "https://www.olympusdao.finance",
+  //   description: "Olympus DAO is a decentralized organization that governs the Olympus DAO protocol.",
+  //   logo: `${baseIconsUrl}/olympus-dao.jpg`,
+  //   gecko_id: "olympus",
+  //   cmcId: "9067",
+  //   chains: [],
+  //   twitter: "OlympusDAO",
+  //   governanceID: ["snapshot:olympusdao.eth"],
+  //   github: ["OlympusDAO"],
+  //   treasury: "olympus-dao.js",
+  // },
+  {
+    id: "parent#world-markets-inc",
+    name: "World Markets Inc",
+    url: "https://world.inc/",
+    description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
+    logo: `${baseIconsUrl}/world-markets-inc.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "worldmarketsinc",
   },
 ];
 

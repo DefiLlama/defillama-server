@@ -126,7 +126,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     ethereum: [
       { pool: "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7", unknown: "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", },
-      { pool: "0x14D7AAB5b4bca6a02E52aC22520B033bF35F4091", unknown: "0x6fA0BE17e4beA2fCfA22ef89BF8ac9aab0AB0fc9", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", confidence: 1 },
+      //{ pool: "0x14D7AAB5b4bca6a02E52aC22520B033bF35F4091", unknown: "0x6fA0BE17e4beA2fCfA22ef89BF8ac9aab0AB0fc9", known: "0xdac17f958d2ee523a2206206994597c13d831ec7", confidence: 1 }, wrong price, likely decimal issue
       { pool: '0x6061A36ad6B7958F68129BB313e6eFf81Cd9113c', unknown: '0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13', known: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', }
     ],
     arbitrum: [

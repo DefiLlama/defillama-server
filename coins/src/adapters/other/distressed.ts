@@ -2,6 +2,7 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    TARA: "0x2f42b7d686ca3effc69778b6ed8493a7787b4d6e", // https://etherscan.io/tx/0xce58cfa4e259fbcdf282eefaad83a769299d3e4899fcf2d11e9c5427e490c852
     TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
@@ -344,7 +345,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   berachain: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
-    UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
+    // UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",

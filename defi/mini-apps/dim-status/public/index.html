@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIM Status</title>
+  <style>
+    :root {
+      --bg:       #0e1117;
+      --surface:  #161a26;
+      --surface2: #1e2235;
+      --surface3: #252a40;
+      --border:   #2a2f48;
+      --text:     #dde3f0;
+      --muted:    #6b7591;
+      --accent:   #4d87f5;
+      --green:    #34d399;
+      --red:      #f87171;
+      --yellow:   #fbbf24;
+      --green-bg: rgba(52,211,153,.12);
+      --red-bg:   rgba(248,113,113,.12);
+      --yellow-bg:rgba(251,191,36,.12);
+      --accent-bg:rgba(77,135,245,.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+    body {
+      height: 100%;
+      display: flex; flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      font-size: 13px; line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    #header {
+      flex: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    #header h1 { font-size: 15px; font-weight: 600; }
+    #clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* ── Run-type tab bar ── */
+    #tab-bar {
+      flex: none;
+      display: flex; gap: 2px; padding: 7px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .run-tab {
+      padding: 5px 14px; border-radius: 6px; border: none;
+      background: transparent; color: var(--muted);
+      font-size: 12px; font-weight: 500; cursor: pointer;
+      transition: background .12s, color .12s;
+    }
+    .run-tab:hover  { background: var(--surface3); color: var(--text); }
+    .run-tab.active { background: var(--accent); color: #fff; }
+
+    /* ── Scrollable content ── */
+    #content { flex: 1; overflow-y: auto; padding: 20px; }
+    .loading   { color: var(--muted); text-align: center; padding: 60px 20px; font-size: 14px; }
+    .err-state { color: var(--red);   text-align: center; padding: 40px 20px; }
+
+    /* ── Stats (always visible) ── */
+    .stats-header {
+      display: flex; align-items: center; justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+    .gen-time {
+      font-size: 11px; color: var(--muted);
+    }
+    .gen-time .rel { color: var(--accent); margin-left: 6px; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* ── Stat chips ── */
+    .stats-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; }
+    .stat-chip {
+      background: var(--surface2); border-radius: 6px;
+      padding: 10px 14px; min-width: 100px;
+      border: 1px solid var(--border);
+    }
+    .stat-chip.success { border-color: rgba(52,211,153,.3); background: var(--green-bg); }
+    .stat-chip.danger  { border-color: rgba(248,113,113,.3); background: var(--red-bg); }
+    .stat-chip.warn    { border-color: rgba(251,191,36,.3);  background: var(--yellow-bg); }
+    .stat-chip.accent  { border-color: rgba(77,135,245,.3);  background: var(--accent-bg); }
+    .stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+    .stat-val { font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .stat-chip.success .stat-val { color: var(--green); }
+    .stat-chip.danger  .stat-val { color: var(--red); }
+    .stat-chip.warn    .stat-val { color: var(--yellow); }
+    .stats-divider { width: 1px; background: var(--border); align-self: stretch; margin: 8px 4px; }
+
+    /* ── Sub-section nav (inline, below stats) ── */
+    .sub-nav {
+      display: flex; align-items: center;
+      border-bottom: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    .sub-tab {
+      padding: 8px 14px; border: none; border-bottom: 2px solid transparent;
+      background: transparent; color: var(--muted);
+      font-size: 12px; font-weight: 500; cursor: pointer;
+      transition: color .12s, border-color .12s;
+      white-space: nowrap;
+      margin-bottom: -1px;
+    }
+    .sub-tab:hover  { color: var(--text); }
+    .sub-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+    /* ── Sub-section panels ── */
+    .sub-panel        { display: none; padding-top: 16px; }
+    .sub-panel.active { display: block; }
+
+    /* ── Tables ── */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      background: var(--surface2);
+      color: var(--muted); font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em;
+      padding: 8px 12px; text-align: left;
+      white-space: nowrap; user-select: none;
+      border-bottom: 1px solid var(--border);
+    }
+    thead th.sortable { cursor: pointer; }
+    thead th.sortable:hover { color: var(--text); }
+    thead th.active { color: var(--accent); }
+    .sort-arrow { color: var(--accent); margin-left: 3px; }
+    tbody td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: var(--surface2); }
+    .no-data td { text-align: center; color: var(--muted); padding: 24px !important; }
+
+    .err-msg { max-width: 480px; font-size: 12px; color: var(--text); word-break: break-word; line-height: 1.4; }
+    .bold { font-weight: 500; }
+    .tag {
+      display: inline-block; padding: 1px 7px; border-radius: 10px;
+      font-size: 10px; font-weight: 500;
+      background: var(--accent-bg); color: var(--accent); white-space: nowrap;
+    }
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+      font-size: 11px; background: var(--surface3);
+      padding: 1px 5px; border-radius: 3px; cursor: help;
+    }
+    .empty { padding: 24px; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <h1>DIM Status Dashboard</h1>
+  <span id="clock"></span>
+</div>
+
+<nav id="tab-bar"></nav>
+
+<main id="content"><div class="loading">Loading…</div></main>
+
+<script>
+'use strict';
+
+const RUN_TYPES = ['fees', 'dexs', 'derivatives', 'aggregators', 'options', 'open-interest'];
+
+const SUB_SECTIONS = [
+  { key: 'errors',        label: 'Failures'            },
+  { key: 'long',          label: 'Long Runners'        },
+  { key: 'chain',         label: 'Chain Stats'         },
+  { key: 'rpc-hash',      label: 'RPC Hash Stats'      },
+  { key: 'rpc-chain',     label: 'RPC Chain Stats'     },
+  { key: 'rpc-breakdown', label: 'RPC Breakdown'       },
+  { key: 'idx-hash',      label: 'Indexer Hash Stats'  },
+  { key: 'idx-chain',     label: 'Indexer Chain Stats' },
+];
+
+const _cache = {};
+let activeRunType = null;
+let activeSection = SUB_SECTIONS[0].key;
+
+// ── Fetch ─────────────────────────────────────────────────────────────────────
+async function getJson(key) {
+  if (!_cache[key]) {
+    const r = await fetch(`/cache/${key}`);
+    if (!r.ok) throw new Error(`HTTP ${r.status} for ${key}`);
+    _cache[key] = await r.json();
+  }
+  return _cache[key];
+}
+
+// ── Formatters ────────────────────────────────────────────────────────────────
+function relTime(iso) {
+  if (!iso) return '';
+  const s = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (s < 60)    return `${s}s ago`;
+  if (s < 3600)  return `${Math.floor(s/60)}m ${s%60}s ago`;
+  const h = Math.floor(s/3600);
+  if (s < 86400) return `${h}h ${Math.floor((s%3600)/60)}m ago`;
+  return `${Math.floor(s/86400)}d ago`;
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleString(undefined, {
+    year:'numeric', month:'short', day:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+  });
+}
+
+function fmtDurMs(ms) {
+  if (ms == null || ms === '') return '—';
+  ms = Number(ms);
+  if (isNaN(ms)) return '—';
+  if (ms < 1000)  return `${ms}ms`;
+  if (ms < 60000) return `${(ms/1000).toFixed(1)}s`;
+  const m = Math.floor(ms/60000), s = Math.round((ms%60000)/1000);
+  return `${m}m ${s}s`;
+}
+
+function fmtDurSec(sec) {
+  if (sec == null || sec === '') return '—';
+  return fmtDurMs(Number(sec) * 1000);
+}
+
+function fmtN(n) {
+  if (n == null) return '—';
+  return Number(n).toLocaleString();
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function shortHash(h) {
+  if (!h) return '—';
+  return `${h.slice(0,8)}…${h.slice(-6)}`;
+}
+
+// ── Sortable table ─────────────────────────────────────────────────────────────
+function renderTable(containerId, rows, cols, defaultSortKey, defaultSortDir) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  let sortKey = defaultSortKey ?? null;
+  let sortDir = defaultSortDir ?? -1;
+
+  function draw() {
+    let sorted = rows;
+    if (sortKey) {
+      const col = cols.find(c => c.key === sortKey);
+      sorted = [...rows].sort((a, b) => {
+        const av = col?.sortVal ? col.sortVal(a) : (a[sortKey] ?? null);
+        const bv = col?.sortVal ? col.sortVal(b) : (b[sortKey] ?? null);
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        const cmp = (typeof av === 'number' && typeof bv === 'number')
+          ? av - bv
+          : String(av).localeCompare(String(bv), undefined, { numeric: true });
+        return cmp * sortDir;
+      });
+    }
+
+    const hdr = cols.map(c => {
+      const isActive = c.key === sortKey;
+      const arrow = isActive ? `<span class="sort-arrow">${sortDir > 0 ? '↑' : '↓'}</span>` : '';
+      return `<th class="sortable${isActive ? ' active' : ''}" data-key="${esc(c.key)}">${esc(c.label)}${arrow}</th>`;
+    }).join('');
+
+    const body = sorted.length
+      ? sorted.map(row => {
+          const cells = cols.map(c => {
+            const val = c.render ? c.render(row) : esc(row[c.key] ?? '');
+            return `<td>${val}</td>`;
+          }).join('');
+          return `<tr>${cells}</tr>`;
+        }).join('')
+      : `<tr class="no-data"><td colspan="${cols.length}">No data</td></tr>`;
+
+    el.innerHTML = `<div class="tbl-wrap"><table>
+      <thead><tr>${hdr}</tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>`;
+
+    el.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const k = th.dataset.key;
+        if (k === sortKey) { sortDir *= -1; }
+        else { sortKey = k; sortDir = -1; }
+        draw();
+      });
+    });
+  }
+
+  draw();
+}
+
+// ── Sub-section switching ──────────────────────────────────────────────────────
+function showSection(key) {
+  activeSection = key;
+  document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(`panel-${key}`);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.sub-tab[data-sec="${key}"]`);
+  if (tab) tab.classList.add('active');
+}
+
+// ── Stat chips ────────────────────────────────────────────────────────────────
+function chips(arr) {
+  return arr.map(([lbl, val, cls]) =>
+    `<div class="stat-chip ${cls ?? ''}">
+      <div class="stat-lbl">${lbl}</div>
+      <div class="stat-val">${val}</div>
+    </div>`
+  ).join('');
+}
+
+function renderAdapterAndRunStats(id, adapterStats, finalRes, run) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const adapterRows = adapterStats.map(s => `
+    <div class="stats-row">
+      ${chips([
+        ['Adapter Type', esc(s.adapterType),  'accent'],
+        ['Started',      fmtN(s.started),      ''],
+        ['Finished',     fmtN(s.endCount),      ''],
+        ['Skipped',      fmtN(s.skipped),       s.skipped  > 0 ? 'warn'    : ''],
+        ['Dead',         fmtN(s.dead),          s.dead     > 0 ? 'danger'  : ''],
+        ['Have Data',    fmtN(s.haveData),      s.haveData > 0 ? 'success' : ''],
+        ['Running',      fmtN(s.running),       ''],
+      ])}
+    </div>`
+  ).join('');
+
+  const runRow = finalRes?.type ? `
+    <div class="stats-row" style="border-top:1px solid var(--border)">
+      ${chips([
+        ['Succeeded',    fmtN(finalRes.success),         'success'],
+        ['Errors',       fmtN(finalRes.errors),          finalRes.errors > 0 ? 'danger' : ''],
+        ['Run Time',     fmtDurSec(finalRes.timeTaken),  ''],
+      ])}
+      <div class="stats-divider"></div>
+      ${chips([
+        ['Block Queries',  fmtN(run.blockQueryCount),                                        ''],
+        ['Queries',        `${fmtN(run.successQueryCount)} / ${fmtN(run.queryCount)}`,       ''],
+        ['RPC Queries',    `${fmtN(run.rpcSuccessQueryCount)} / ${fmtN(run.rpcQueryCount)}`, ''],
+        ['Indexer Behind', fmtN(run.indexerNotCaughtUpCount), run.indexerNotCaughtUpCount > 0 ? 'warn' : ''],
+      ])}
+    </div>` : '';
+
+  el.innerHTML = `<div class="card">${adapterRows}${runRow}</div>`;
+}
+
+// ── Tab loader ─────────────────────────────────────────────────────────────────
+async function loadTab(runType) {
+  const content = document.getElementById('content');
+  content.innerHTML = '<div class="loading">Loading…</div>';
+
+  try {
+    const [run, dim] = await Promise.all([
+      getJson(`run-data-${runType}`),
+      getJson(`dim-data-${runType}`).catch(() => ({})),
+    ]);
+
+    const genTime       = run.generationTime;
+    const adapterStats  = run.adapterStats            ?? [];
+    const jsonLogs      = run.jsonLogs                ?? [];
+    const longRunners   = run.longRunners             ?? [];
+    const chainStats    = run.chainStats              ?? [];
+    const rpcHashStats  = run.rpcEventHashStats       ?? [];
+    const rpcChainStats = run.rpcChainStats           ?? [];
+    const rpcBreakdown  = run.rpcChainStatsBreakdownByEventHash ?? {};
+    const idxHashStats  = run.indexerEventHashStats   ?? [];
+    const idxChainStats = run.indexerChainStats       ?? [];
+
+    const finalRes = jsonLogs.find(l => l.type === 'adapterFinalRes') ?? {};
+    const errLogs  = jsonLogs.filter(l => l.type === 'adapterErrors');
+
+    // Flatten errors + enrich with dim-data (protocol name as key)
+    const errors = errLogs.flatMap(entry =>
+      (entry.errors ?? []).map(e => {
+        const d = dim[e.adapter] ?? {};
+        return {
+          i:            e.i            ?? 0,
+          adapter:      e.adapter      ?? '',
+          adapterType:  entry.adapterType ?? '',
+          chain:        e.chain        ?? '',
+          error:        e.error        ?? '',
+          category:     d.category     ?? '',
+          module:       d.module       ?? '',
+          total24h:     d.total24h     ?? null,
+          total30d:     d.total30d     ?? null,
+          totalAllTime: d.totalAllTime ?? null,
+        };
+      })
+    );
+
+    // Flatten rpcChainStatsBreakdownByEventHash dict → rows
+    const rpcBreakdownFlat = Object.entries(rpcBreakdown).flatMap(([hash, chains]) =>
+      (Array.isArray(chains) ? chains : []).map(c => ({ hash, ...c }))
+    );
+
+    // Sub-section tab labels (with counts where relevant)
+    const subDefs = SUB_SECTIONS.map(s => {
+      if (s.key === 'errors') return { ...s, label: `Failures (${errors.length})` };
+      if (s.key === 'long')   return { ...s, label: `Long Runners (${longRunners.length})` };
+      return s;
+    });
+
+    // Build content: always-on stats + inline sub-nav + sub-panels
+    content.innerHTML = `
+      <div class="stats-header">
+        <div class="gen-time">
+          ${fmtDate(genTime)}<span class="rel">${relTime(genTime)}</span>
+        </div>
+      </div>
+      <div id="tbl-adapter"></div>
+
+      <div class="sub-nav" id="sub-nav">
+        ${subDefs.map(s =>
+          `<button class="sub-tab${s.key === activeSection ? ' active' : ''}" data-sec="${esc(s.key)}">${esc(s.label)}</button>`
+        ).join('')}
+      </div>
+
+      ${subDefs.map(s =>
+        `<div class="sub-panel${s.key === activeSection ? ' active' : ''}" id="panel-${esc(s.key)}">
+          <div id="tbl-${esc(s.key)}"></div>
+        </div>`
+      ).join('')}
+    `;
+
+    // Wire sub-nav clicks
+    document.getElementById('sub-nav').addEventListener('click', e => {
+      const btn = e.target.closest('.sub-tab');
+      if (btn) showSection(btn.dataset.sec);
+    });
+
+    // ── Render stats (always visible) ──
+    renderAdapterAndRunStats('tbl-adapter', adapterStats, finalRes, run);
+
+    // ── Render sub-sections ──
+    renderTable('tbl-errors', errors, [
+      { key: 'i',           label: '#',         sortVal: r => r.i },
+      { key: 'adapter',     label: 'Adapter',   render: r => `<span class="bold">${esc(r.adapter)}</span>` },
+      { key: 'adapterType', label: 'Type',      render: r => r.adapterType ? `<span class="tag">${esc(r.adapterType)}</span>` : '—' },
+      { key: 'chain',       label: 'Chain',     render: r => r.chain    || '—' },
+      { key: 'category',    label: 'Category',  render: r => r.category || '—' },
+      { key: 'total24h',    label: '24h',       render: r => r.total24h    != null ? `$${fmtN(r.total24h)}`    : '—', sortVal: r => r.total24h    },
+      { key: 'total30d',    label: '30d',       render: r => r.total30d    != null ? `$${fmtN(r.total30d)}`    : '—', sortVal: r => r.total30d    },
+      { key: 'totalAllTime',label: 'All Time',  render: r => r.totalAllTime != null ? `$${fmtN(r.totalAllTime)}` : '—', sortVal: r => r.totalAllTime },
+      { key: 'error',       label: 'Error',     render: r => `<div class="err-msg">${esc(r.error)}</div>` },
+    ], 'total24h', -1);
+
+    renderTable('tbl-long', longRunners, [
+      { key: 'name',        label: 'Adapter',   render: r => `<span class="bold">${esc(r.name)}</span>` },
+      { key: 'adapterType', label: 'Type',      render: r => r.adapterType ? `<span class="tag">${esc(r.adapterType)}</span>` : '—' },
+      { key: 'timeTakenMS', label: 'Time',      render: r => r.timeHN || fmtDurMs(r.timeTakenMS) },
+      { key: 'chains',      label: 'Chains',    render: r => (r.chains ?? []).join(', ') || '—' },
+    ], 'timeTakenMS', -1);
+
+    renderTable('tbl-chain', chainStats, [
+      { key: 'chain',        label: 'Chain' },
+      { key: 'protocols',    label: 'Protocols' },
+      { key: 'timeTaken',    label: 'Total Time',  render: r => r.timeTakenHN    || fmtDurMs(r.timeTaken) },
+      { key: 'avgTimeTaken', label: 'Avg Time',    render: r => r.avgTimeTakenHN || fmtDurMs(r.avgTimeTaken) },
+    ], 'timeTaken', -1);
+
+    renderTable('tbl-rpc-hash', rpcHashStats, [
+      { key: 'hash',        label: 'Event Hash',  render: r => `<code title="${esc(r.hash)}">${shortHash(r.hash)}</code>` },
+      { key: 'queryCount',  label: 'Queries' },
+      { key: 'timeTaken',   label: 'Time' },
+    ], 'queryCount', -1);
+
+    renderTable('tbl-rpc-chain', rpcChainStats, [
+      { key: 'chain',       label: 'Chain' },
+      { key: 'queryCount',  label: 'Queries' },
+      { key: 'timeTaken',   label: 'Time' },
+    ], 'queryCount', -1);
+
+    renderTable('tbl-rpc-breakdown', rpcBreakdownFlat, [
+      { key: 'hash',        label: 'Event Hash',  render: r => `<code title="${esc(r.hash)}">${shortHash(r.hash)}</code>` },
+      { key: 'chain',       label: 'Chain' },
+      { key: 'queryCount',  label: 'Queries' },
+      { key: 'timeTaken',   label: 'Time' },
+    ], 'queryCount', -1);
+
+    renderTable('tbl-idx-hash', idxHashStats, [
+      { key: 'hash',         label: 'Event Hash',  render: r => `<code title="${esc(r.hash)}">${shortHash(r.hash)}</code>` },
+      { key: 'addressCount', label: 'Addresses' },
+      { key: 'queryCount',   label: 'Queries' },
+      { key: 'timeTaken',    label: 'Time' },
+    ], 'queryCount', -1);
+
+    renderTable('tbl-idx-chain', idxChainStats, [
+      { key: 'chain',        label: 'Chain' },
+      { key: 'queryCount',   label: 'Queries' },
+      { key: 'addressCount', label: 'Addresses' },
+      { key: 'timeTaken',    label: 'Time' },
+    ], 'queryCount', -1);
+
+  } catch (err) {
+    content.innerHTML = `<div class="err-state">Error loading <strong>${esc(runType)}</strong>: ${esc(err.message)}</div>`;
+    console.error(err);
+  }
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────────
+function initRunTabs() {
+  const bar = document.getElementById('tab-bar');
+  bar.innerHTML = RUN_TYPES.map(rt =>
+    `<button class="run-tab" data-tab="${esc(rt)}">${esc(rt)}</button>`
+  ).join('');
+
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.run-tab');
+    if (!btn) return;
+    const tab = btn.dataset.tab;
+    if (tab === activeRunType) return;
+    bar.querySelectorAll('.run-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeRunType = tab;
+    loadTab(tab);
+  });
+}
+
+function initClock() {
+  const el = document.getElementById('clock');
+  function tick() { if (el) el.textContent = new Date().toLocaleTimeString(); }
+  tick();
+  setInterval(tick, 1000);
+}
+
+function init() {
+  initRunTabs();
+  initClock();
+  const first = document.querySelector('.run-tab');
+  if (first) {
+    first.classList.add('active');
+    activeRunType = first.dataset.tab;
+    loadTab(activeRunType);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

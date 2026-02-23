@@ -183,6 +183,9 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.OPEN_INTEREST]: [
         AdaptorRecordType.shortOpenInterestAtEnd,
         AdaptorRecordType.longOpenInterestAtEnd,
+    ],
+    [AdapterType.NORMALIZED_VOLUME]: [
+        AdaptorRecordType.dailyActiveLiquidity,
     ]
 }
 
@@ -262,6 +265,7 @@ export interface EmissionsProtocolData {
   yearly: IJSON<EmissionsAggRecord>;
   quarterly: IJSON<EmissionsAggRecord>;
   monthly: IJSON<EmissionsAggRecord>;
+  breakdownMethodology?: IJSON<string>;
 }
 
 export type RecordSummary = {

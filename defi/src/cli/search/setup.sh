@@ -27,6 +27,8 @@ curl \
   --data-binary '[
     "name",
     "symbol",
+    "previousNames",
+    "nameVariants",
     "type"
   ]'
 
@@ -62,7 +64,8 @@ curl \
     "tvl",
     "name",
     "deprecated",
-    "mcapRank"
+    "mcapRank",
+    "r"
   ]'
 
 curl \
@@ -77,7 +80,9 @@ curl \
     "route",
     "deprecated",
     "hideType",
-    "subName"
+    "previousNames",
+    "subName",
+    "symbol"
   ]'
 
 # --- Directory index setup ---

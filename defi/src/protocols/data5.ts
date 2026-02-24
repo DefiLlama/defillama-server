@@ -2385,6 +2385,13 @@ const data5: Protocol[] = [
     chains: ["Plasma"],
     module: "yuzu-money/index.js",
     twitter: "YuzuMoneyX",
+     oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://yuzu-money.gitbook.io/yuzu-money/transparency/oracles"]
+      }
+    ],
     audit_links: [
       "https://yuzu-money.gitbook.io/yuzu-money/security-infrastructure/audits",
       "https://github.com/pashov/audits/blob/master/team/pdf/YuzuUSD-security-review_2025-08-28.pdf",

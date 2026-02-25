@@ -10353,7 +10353,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "miracletrade",
     dimensions: {
-      dexs: "miracletrade",
+      derivatives: "miracletrade",
       fees: "miracletrade",
     },
   },

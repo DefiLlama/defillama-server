@@ -16807,7 +16807,7 @@ const data4: Protocol[] = [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://docs.seamlessprotocol.com/technical/oracles"],
+        proof: ["https://docs.seamlessprotocol.com/technical/oracles",],
         endDate: "2026-02-24"
       },
       {

@@ -719,6 +719,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0x9477724Bb54AD5417de8Baff29e59DF3fB4DA74f",
   },
+  "eUSD0-4": {
+    rate: async ({ api }) => {
+      const raw = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0xd001f0a15d272542687b2677ba627f48a4333b5d",
+        params: [1e10],
+      });
+      return raw / 1e10;
+    },
+    chain: "ethereum",
+    underlying: "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+    address: "0xd001f0a15d272542687b2677ba627f48a4333b5d",
+  },
 };
 
 export async function derivs(timestamp: number) {

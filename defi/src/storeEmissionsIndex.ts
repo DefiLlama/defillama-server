@@ -2,6 +2,9 @@ import fetch from "node-fetch";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { sendMessage } from "./utils/discord";
 import PromisePool from "@supercharge/promise-pool";
+import { protocolsById } from "./protocols/data";
+import parentProtocols from "./protocols/parentProtocols";
+import { sluggifyString } from "./utils/sluggify";
 
 type ProtocolData = {
   token: string;
@@ -9,6 +12,7 @@ type ProtocolData = {
   symbol?: string;
   sources: string[];
   protocolId?: string;
+  protocolSlug?: string;
   name: string;
   circSupply: number;
   circSupply30d?: number;
@@ -25,6 +29,20 @@ type ProtocolData = {
   unlockEvents?: any;
   unlocksPerDay: number;
 };
+
+const parentSlugById: Record<string, string> = {};
+for (const pp of parentProtocols) {
+  parentSlugById[pp.id] = sluggifyString(pp.name);
+}
+
+function getProtocolSlug(protocolId: string | null): string | undefined {
+  if (!protocolId) return undefined;
+  if (parentSlugById[protocolId]) return parentSlugById[protocolId];
+  const p = protocolsById[protocolId];
+  if (!p) return undefined;
+  if (p.parentProtocol) return parentSlugById[p.parentProtocol] ?? sluggifyString(p.name);
+  return sluggifyString(p.name);
+}
 
 const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> => {
   const protocolsData: ProtocolData[] = [];
@@ -105,10 +123,12 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       const circSupply30d = getCircSupplyAtIndex(index30dAgo);
       const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1];
 
+      const protocolId = res.metadata.protocolIds?.[0] ?? null;
       protocolsData.push({
         token: res.metadata.token,
         sources: res.metadata.sources,
-        protocolId: res.metadata.protocolIds?.[0] ?? null,
+        protocolId,
+        protocolSlug: getProtocolSlug(protocolId),
         name: res.name,
         circSupply,
         circSupply30d,

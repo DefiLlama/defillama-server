@@ -195,7 +195,7 @@ async function _storeAppMetadata() {
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
     cachedJSONPull({ endpoint: "https://api.llama.fi/entities", defaultResponse: [] }),
     getNftStats(),
-    readCachedRouteData({ route: "https://api.llama.fi/token-rights" }).catch(() => []),
+    readCachedRouteData({ route: "/token-rights" }).catch(() => []),
   ]);
 
   console.timeEnd("_storeMetadataFile fetch all data");

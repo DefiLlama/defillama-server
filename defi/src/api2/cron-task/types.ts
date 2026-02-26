@@ -64,4 +64,5 @@ export interface IProtocolMetadata {
 	stablecoins?: boolean
 	incentives?: boolean
 	safeHarbor?: boolean
+	tokenRights?: boolean
 }

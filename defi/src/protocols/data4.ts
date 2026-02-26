@@ -13553,7 +13553,7 @@ const data4: Protocol[] = [
     tags: ["AMM"],
     chains: ["Avalanche"],
     module: "arena-dex/index.js",
-    twitter: "TheArenaApp",
+    twitter: "TheArena",
     forkedFromIds: ["2197"],
     listedAt: 1746742252,
     parentProtocol: "parent#the-arena",
@@ -13578,7 +13578,7 @@ const data4: Protocol[] = [
     category: "Launchpad",
     chains: ["Avalanche"],
     module: "arena-launch/index.js",
-    twitter: "TheArenaApp",
+    twitter: "TheArena",
     listedAt: 1746742259,
     parentProtocol: "parent#the-arena",
     dimensions: {
@@ -16828,6 +16828,13 @@ const data4: Protocol[] = [
         name: "RedStone",
         type: "Primary",
         proof: ["https://docs.seamlessprotocol.com/technical/oracles",],
+        endDate: "2026-02-24"
+      },
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.seamlessprotocol.com/overview/leverage-tokens-lts/ethereum-mainnet-lts/wsteth-eth-25x", "https://docs.seamlessprotocol.com/overview/leverage-tokens-lts/ethereum-mainnet-lts/susds-usdt-25x", "https://docs.seamlessprotocol.com/overview/leverage-tokens-lts/ethereum-mainnet-lts/siusd-usdc-11x", "https://docs.seamlessprotocol.com/overview/leverage-tokens-lts/ethereum-mainnet-lts/rlp-usdc-6.75x"],
+        startDate: "2026-02-25"
       },
     ],
     dimensions: {
@@ -20732,7 +20739,8 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "stHYPE",
-    url: "https://app.valantis.xyz/staking",
+    url: "https://app.valantis.xyz/vaults?af=defillama",
+    referralUrl: "https://app.valantis.xyz/vaults?af=defillama",
     description: "The Hyperliquid liquid staking platform.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/sthype.jpg`,
@@ -25813,7 +25821,7 @@ const data4: Protocol[] = [
     listedAt: 1757349667,
     dimensions: {
       derivatives: "pacifica",
-      "open-interest": "pacifica",
+      "open-interest": "pacifica-oi",
       "normalized-volume": "pacifica"
     }
   },

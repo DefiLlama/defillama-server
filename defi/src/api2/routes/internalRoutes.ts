@@ -11,6 +11,8 @@ import * as sdk from '@defillama/sdk';
 import { clearDimensionsCacheV2 } from "../utils/dimensionsUtils";
 
 
+const INTERNAL_SECRET_KEY = process.env.LLAMA_INTERNAL_ROUTE_KEY ?? process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
+
 export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: string) {
 
   // router.get('/_internal/all-protocol-data', getAllProtocolLatestData)
@@ -24,6 +26,9 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
     const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
     sdk.log('debug-pg', routerPath)
     try {
+
+      if (process.env.API2_SKIP_SUBPATH === 'true')
+        if (!req.headers['x-internal-secret'] || req.headers['x-internal-secret'] !== INTERNAL_SECRET_KEY) throw new Error('Unauthorized')
 
       switch (req.method) {
         case 'GET':

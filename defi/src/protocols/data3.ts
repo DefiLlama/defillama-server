@@ -10325,7 +10325,8 @@ const data3_0: Protocol[] = [
     name: "Kinza Finance",
     address: null,
     symbol: "KZA",
-    url: "https://kinza.finance",
+    url: "https://app.kinza.finance/#/referral?referralCode=28UAHQ",
+    referralUrl: "https://app.kinza.finance/#/referral?referralCode=28UAHQ",
     description:
       "A reliable lending protocol is core to a solid DeFi ecosystem. Kinza focuses on security relentlessly, and aims to connect demand and supply of liquidity to create the best on-chain money market.",
     chain: "Binance",
@@ -19143,7 +19144,7 @@ const data3_1: Protocol[] = [
     category: "SoFi",
     chains: ["Avalanche"],
     module: "starshares/index.js",
-    twitter: "TheArenaApp",
+    twitter: "TheArena",
     forkedFromIds: ["3377"],
     listedAt: 1695774131,
     parentProtocol: "parent#the-arena",

@@ -156,6 +156,7 @@ async function _storeAppMetadata() {
     safeHarborData,
     entitiesData,
     nftStatsData,
+    tokenRightsData
   ] = await Promise.all([
     readCachedRouteData({ route: "/lite/protocols2" }),
     readCachedRouteData({ route: "/dimensions/chain-agg-data" }),
@@ -194,6 +195,7 @@ async function _storeAppMetadata() {
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
     cachedJSONPull({ endpoint: "https://api.llama.fi/entities", defaultResponse: [] }),
     getNftStats(),
+    readCachedRouteData({ route: "/token-rights" }).catch(() => []),
   ]);
 
   console.timeEnd("_storeMetadataFile fetch all data");
@@ -224,8 +226,7 @@ async function _storeAppMetadata() {
         ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.tokenRights ? { tokenRights: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
 
       if (protocol.parentProtocol) {
@@ -271,8 +272,7 @@ async function _storeAppMetadata() {
           : false,
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.tokenRights ? { tokenRights: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
     }
 
@@ -789,6 +789,15 @@ async function _storeAppMetadata() {
           nfts: true,
         };
       }
+    }
+
+    for (const tokenRight of tokenRightsData) {
+      const protocolId = tokenRight['DefiLlama ID']
+      if (!protocolId || !finalProtocols[protocolId]) continue
+      finalProtocols[protocolId] = {
+        ...finalProtocols[protocolId],
+        tokenRights: true
+      };
     }
 
     const chainProtocolCount: any = {};

@@ -7214,7 +7214,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "the-arena",
     cmcId: "33708",
     chains: [],
-    twitter: "TheArenaApp",
+    twitter: "TheArena",
   },
   {
     id: "parent#lendle",

@@ -4,7 +4,6 @@ import parentProtocols from "../parentProtocols";
 import { sluggifyString } from "../../utils/sluggify";
 import { importAdapter } from "../../utils/imports/importAdapter";
 import { isDoubleCounted } from "../../utils/normalizeChain";
-import tokenRightsMap from '../tokenRights';
 
 import fs from 'fs';
 import path from 'path';
@@ -15,7 +14,7 @@ const protocolsJsonPath = path.resolve(__dirname, '../../utils/imports/protocols
 let protocols: Protocol[] = [];
 
 if (fs.existsSync(protocolsJsonPath)) {
-  protocols =require(protocolsJsonPath)
+  protocols = require(protocolsJsonPath)
 } else {
   console.log('hmmm, looks like prebuild step was not run, falling back to data.ts')
   for (const file of DATA_FILES) {
@@ -23,6 +22,9 @@ if (fs.existsSync(protocolsJsonPath)) {
     protocols = protocols.concat(module.default);
   }
 }
+
+// filter out disabled protocols
+protocols = protocols.filter(i => !i.disabled)
 
 export type { Protocol };
 
@@ -32,7 +34,7 @@ protocols.forEach((protocol: Protocol) => {
   // TODO: this is a hack to remove bad addresses like 'sui:-', we should fix this in the listings and remove this code
   if (typeof protocol.address === "string" && protocol.address.endsWith(':-'))
     protocol.address = null
-  if (protocol.deadUrl === true) {
+  if (protocol.deadUrl === true || protocol.rugged === true) {
     protocol.url = "" // kill urls to prevent urls that are dead from having scammers taking them over
   }
 })
@@ -53,24 +55,19 @@ protocols.forEach((protocol: Protocol) => {
     }
     parentChildProtocolMap[protocol.parentProtocol].push(protocol);
   }
-
-  const tr = tokenRightsMap[protocol.id]
-  if (tr)
-    protocol.tokenRights = tr
-  
 })
 
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
 parentProtocols.forEach((protocol: IParentProtocol) => {
 
-  const tr = tokenRightsMap[protocol.id]
-  if (tr)
-    protocol.tokenRights = tr
+  if (protocol.deadUrl === true || protocol.rugged === true) {
+    protocol.url = ""
+  }
 
   const childProtocols = parentChildProtocolMap[protocol.id] ?? []
   if (!childProtocols.length) return;
 
-  const fields = ['gecko_id', 'cmcId', 'symbol', 'address', 'tokenRights'] as (keyof Protocol)[]
+  const fields = ['gecko_id', 'cmcId', 'symbol', 'address'] as (keyof Protocol)[]
 
   for (const field of fields) {
     if ((protocol as Protocol)[field] !== undefined) continue;  // already has the field
@@ -78,6 +75,15 @@ parentProtocols.forEach((protocol: IParentProtocol) => {
     if (childValue !== undefined) {
       (protocol as any)[field] = childValue
     }
+  }
+
+  // Merge parent + child stablecoins
+  const mergedStablecoins = new Set<string>(protocol.stablecoins ?? []);
+  childProtocols.forEach((child) => {
+    (child.stablecoins ?? []).forEach((s: string) => mergedStablecoins.add(s));
+  });
+  if (mergedStablecoins.size > 0) {
+    protocol.stablecoins = [...mergedStablecoins];
   }
 })
 
@@ -94,6 +100,7 @@ export type _InternalProtocolMetadata = {
   misrepresentedTokens: boolean;
   methodology?: string;
   hallmarks?: Hallmark[];
+  tvlCodePath?: string;
   hasChainSlug: (chainSlug: string) => boolean;
 }
 
@@ -111,6 +118,16 @@ export function setProtocolMetadata(protocol: Protocol) {
     const module = importAdapter(protocol)
     const isDoublecounted = isDoubleCounted(module.doublecounted, category)
 
+    // copy deadFrom field from tvl module object to protocol object if it exists in the module and not in the protocol, this is to ensure that we can use the deadFrom field in the protocol object for filtering in the UI and other places without having to import the module again
+    if (module.deadFrom && !protocol.deadFrom)
+      protocol.deadFrom = module.deadFrom
+
+    let modulePath = protocol.module
+    if (module.meta?.moduleFilePath)
+      modulePath = module.meta.moduleFilePath
+    else 
+      modulePath = `projects/${modulePath}`
+
     const metadata = {
       id: protocol.id,
       category,
@@ -118,17 +135,18 @@ export function setProtocolMetadata(protocol: Protocol) {
       isLiquidStaking: category === "Liquid Staking",
       slugTagSet,
       isDoublecounted,
-      isDead: !!module.deadFrom,
+      isDead: !!protocol.deadFrom,
       hasTvl: protocol.module !== 'dummy.js',
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
       hallmarks: module.hallmarks,
+      tvlCodePath: `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${modulePath}`,
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
     }
 
     _InternalProtocolMetadataMap[protocol.id] = metadata
 
-    const protocolMissingFields = ['methodology', 'misrepresentedTokens', 'deadFrom', 'doublecounted']
+    const protocolMissingFields = ['methodology', 'misrepresentedTokens', 'deadFrom', 'doublecounted', 'tvlCodePath']
 
     protocolMissingFields.forEach((field) => {
       if ((protocol as any)[field] === undefined) {
@@ -171,7 +189,7 @@ export function updateProtocolMetadataUsingCache(protocolAppMetadataMap: any) {
   })
 }
 
-export function sortHallmarks(hallmarks: Hallmark[]| any) {
+export function sortHallmarks(hallmarks: Hallmark[] | any) {
   if (!Array.isArray(hallmarks)) return hallmarks;
   return hallmarks?.sort((a: any, b: any) => {
     let aTimestamp = a[0];

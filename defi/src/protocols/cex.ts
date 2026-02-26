@@ -4,6 +4,7 @@ interface ICex {
   coin?: string | null;
   coinSymbol?: string | null;
   walletsLink?: string | null;
+  url?: string | null;
   cgId?: string | null;
   cgDeriv?: string | null;
   cgSpotId?: string | null;
@@ -22,6 +23,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://www.binance.com/en/blog/community/our-commitment-to-transparency-2895840147147652626",
     cgId: "binance",
     cgDeriv: "binance_futures",
+    url: "https://www.binance.com",
   },
   {
     name: "OKX",
@@ -31,6 +33,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://twitter.com/okx/status/1590812545346330624",
     cgId: "okex",
     cgDeriv: "okex_swap",
+    url: "https://www.okx.com",
   },
   {
     name: "Bitfinex",
@@ -40,6 +43,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://github.com/bitfinexcom/pub/blob/main/wallets.txt",
     cgId: "bitfinex",
     cgDeriv: "bitfinex_futures",
+    url: "https://www.bitfinex.com",
   },
   {
     name: "Robinhood",
@@ -47,6 +51,7 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgId: null,
+    url: "https://robinhood.com",
   },
   {
     name: "Gemini",
@@ -54,6 +59,7 @@ export const cexsData: Array<ICex> = [
     coin: null,
     cgId: "gemini",
     walletsLink: "https://www.gemini.com/trust-center/",
+    url: "https://www.gemini.com",
   },
   {
     name: "Bybit",
@@ -64,6 +70,7 @@ export const cexsData: Array<ICex> = [
     cgId: "bybit_spot",
     cgDeriv: "bybit",
     ownTokens: ['MNT'],
+    url: "https://www.bybit.com",
   },
   /* */
 	{
@@ -72,7 +79,8 @@ export const cexsData: Array<ICex> = [
 		coin: null,
 		walletsLink: null,
 		cgId: 'kraken',
-		cgDeriv: 'kraken_futures'
+		cgDeriv: 'kraken_futures',
+		url: 'https://www.kraken.com/',
 	},
 	/**/
   {
@@ -83,6 +91,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://crypto.com/document/proof-of-reserves",
     cgId: "crypto_com",
     cgDeriv: "crypto_com_futures",
+    url: "https://crypto.com",
   },
   {
     name: "HTX",
@@ -92,6 +101,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://www.huobi.com/support/en-us/detail/24922606430831",
     cgId: "huobi",
     cgDeriv: "huobi_dm",
+    url: "https://www.htx.com/",
   },
   {
     name: "KuCoin",
@@ -101,6 +111,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://www.kucoin.com/blog/transparency-and-trust-a-detailed-list-of-kucoin-s-wallets",
     cgId: "kucoin",
     cgDeriv: "kumex",
+    url: "https://www.kucoin.com",
   },
   {
     name: "Bitstamp",
@@ -108,6 +119,7 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgId: "bitstamp",
+    url: "https://www.bitstamp.net",
   },
   {
     name: "Deribit",
@@ -115,6 +127,7 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: "https://insights.deribit.com/exchange-updates/proof-of-reserves-deribit/",
     cgDeriv: "deribit",
+    url: "https://www.deribit.com",
   },
   {
     name: "Bitkub",
@@ -122,6 +135,7 @@ export const cexsData: Array<ICex> = [
     coin: "KUB",
     coinSymbol: "KUB",
     cgId: "bitkub",
+    url: "https://www.bitkub.com/",
   },
   {
     name: "Gate", // Used to be 'Gate.io'
@@ -131,6 +145,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://github.com/gateio/proof-of-reserves",
     cgId: "gate",
     cgDeriv: "gate_futures",
+    url: "https://www.gate.com",
   },
   {
     name: "Bitget",
@@ -140,6 +155,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://twitter.com/bitgetglobal/status/1602256957376794624",
     cgId: "bitget",
     cgDeriv: "bitget_futures",
+    url: "https://www.bitget.com",
   },
   {
     name: "MEXC",
@@ -148,6 +164,7 @@ export const cexsData: Array<ICex> = [
     coinSymbol: "MX",
     cgId: "mxc",
     cgDeriv: "mxc_futures",
+    url: "https://www.mexc.com",
   },
   {
     name: "Bitmex",
@@ -156,6 +173,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://github.com/BitMEX/proof-of-reserves-liabilities",
     cgId: "bitmex_spot",
     cgDeriv: "bitmex",
+    url: "https://www.bitmex.com",
   },
   {
     name: "SwissBorg",
@@ -163,18 +181,21 @@ export const cexsData: Array<ICex> = [
     coin: "BORG",
     coinSymbol: "BORG",
     walletsLink: "https://github.com/swissborg/pub",
+    url: "https://swissborg.com",
   },
   {
     name: "MaskEX",
     slug: "maskex",
     coin: null,
     walletsLink: "https://blog.maskex.com/news/announcements/embracing-transparency-maskex-reveals-wallet-addresses",
+    url: "https://www.maskex.com",
   },
   {
     name: "Korbit",
     slug: "korbit",
     coin: null,
     walletsLink: "https://korbit.co.kr/reserve",
+    url: "https://korbit.co.kr",
   },
   {
     name: "Phemex",
@@ -183,12 +204,14 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://phemex.com/proof-of-reserves",
     cgId: "phemex",
     cgDeriv: "phemex_futures",
+    url: "https://phemex.com",
   },
   {
     name: "Firi",
     slug: "firi",
     coin: null,
     walletsLink: null,
+    url: "https://firi.com",
   },
   {
     name: "ProBit Global",
@@ -196,6 +219,7 @@ export const cexsData: Array<ICex> = [
     coin: "PROB",
     coinSymbol: "PROB",
     walletsLink: null,
+    url: "https://www.probit.com",
   },
   {
     name: "WOO X",
@@ -203,12 +227,14 @@ export const cexsData: Array<ICex> = [
     coin: "WOO",
     coinSymbol: "WOO",
     walletsLink: "https://woo.org/proof-of-reserves",
+    url: "https://x.woo.org/en/trade",
   },
   {
     name: "Bake.io",
     slug: "bake.io",
     coin: null,
     walletsLink: "https://blog.bake.io/proof-of-reserves/",
+    url: "https://www.bake.io",
   },
   {
     name: "BingX",
@@ -216,12 +242,14 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: "https://bingx.com/en/balance-reserve/",
     cgId: "bingx",
+    url: "https://bingx.com",
   },
   {
     name: "Coinsquare",
     slug: "coinsquare",
     coin: null,
     walletsLink: "https://twitter.com/Coinsquare/status/1594176519986810881",
+    url: "https://coinsquare.com",
   },
   {
     name: "Toobit",
@@ -229,12 +257,14 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink:
       "https://support.toobit.com/hc/en-us/articles/35739879881881-Toobit-Asset-Transparency-Report-Safeguarding-User-Assets",
+    url: "https://www.toobit.com",
   },
   {
     name: "CoinW",
     slug: "coinw",
     coin: null,
     walletsLink: null,
+    url: "https://www.coinw.com",
   },
 
   {
@@ -242,6 +272,7 @@ export const cexsData: Array<ICex> = [
     slug: "coindcx",
     coin: null,
     walletsLink: "https://twitter.com/smtgpt/status/1595745395787071497",
+    url: "https://coindcx.com",
   },
   {
     name: "Fastex",
@@ -250,42 +281,49 @@ export const cexsData: Array<ICex> = [
     coinSymbol: "FTN",
     walletsLink: "https://www.fastex.com/proof-of-reserves",
     cgId: "fastex",
+    url: "https://exchange.fastex.com",
   },
   {
     name: "NBX",
     slug: "nbx",
     coin: null,
     walletsLink: "https://nbx.com/en/proof-of-reserves",
+    url: "https://nbx.com",
   },
   {
     name: "Okcoin",
     slug: "okcoin",
     coin: null,
     walletsLink: "https://www.okcoin.com/proof-of-reserves/download",
+    url: "https://www.okcoin.com",
   },
   {
     name: "BitVenus",
     slug: "bitvenus",
     coin: null,
     walletsLink: null,
+    url: "https://www.bvox.com/",
   },
   {
     name: "Coin8",
     slug: "coin8",
     coin: null,
     walletsLink: null,
+    url: "https://www.coin8.co",
   },
   {
     name: "Exmo",
     slug: "exmo",
     coin: null,
     walletsLink: null,
+    url: "https://exmo.com",
   },
   {
     name: "Flipster",
     slug: "flipster",
     coin: null,
     walletsLink: "https://flipster.io/support/proof-of-reserves",
+    url: "https://flipster.io",
   },
   {
     name: "NonKYC",
@@ -294,6 +332,7 @@ export const cexsData: Array<ICex> = [
     coinSymbol: "NKYC",
     walletsLink: "https://nonkyc.io/allreserves",
     cgId: "nonkyc_io",
+    url: "https://nonkyc.io",
   },
   {
     name: "Bitrue",
@@ -301,12 +340,14 @@ export const cexsData: Array<ICex> = [
     coin: "BTR",
     cgId: "bitrue",
     cgDeriv: "bitrue_futures",
+    url: "https://www.bitrue.com",
   },
   {
     name: "Latoken",
     slug: "latoken",
     coin: null,
     walletsLink: null,
+    url: "https://latoken.com",
   },
   {
     name: "BitMart",
@@ -315,13 +356,15 @@ export const cexsData: Array<ICex> = [
     coinSymbol: "BMX",
     cgId: "bitmart",
     cgDeriv: "bitmart_futures",
+    url: "https://www.bitmart.com",
   },
   {
     name: "Klever Exchange",
     slug: "klever-exchange",
     coin: "KLV",
     coinSymbol: "KLV",
-    cgId: "klever_exchange",
+    cgId: "klever_io",
+    url: "https://klever.io/",
   },
   {
     name: "BTSE",
@@ -329,24 +372,28 @@ export const cexsData: Array<ICex> = [
     coin: "BTSE",
     coinSymbol: "BTSE",
     cgId: "btse",
+    url: "https://www.btse.com",
   },
   {
     name: "HashKey Exchange",
     slug: "hashkey-exchange",
     coin: null,
     walletsLink: null,
+    url: "https://www.hashkey.com",
   },
   {
     name: "Biconomy.com",
     slug: "biconomy.com",
     coin: null,
     walletsLink: null,
+    url: "https://www.biconomy.com",
   },
   {
     name: "Pionex",
     slug: "pionex",
     coin: null,
     walletsLink: null,
+    url: "https://www.pionex.com/en",
   },
   {
     name: "Bitunix",
@@ -354,12 +401,14 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink:
       "https://support.bitunix.com/hc/en-us/articles/36928276763289-Bitunix-Launching-Proof-or-Reserve-to-Improve-Transparency",
+    url: "https://www.bitunix.com",
   },
   {
     name: "BloFin",
     slug: "blofin",
     coin: null,
     walletsLink: null,
+    url: "https://www.blofin.com",
   },
   {
     name: "Backpack",
@@ -367,12 +416,14 @@ export const cexsData: Array<ICex> = [
     coin: null,
     coinSymbol: null,
     walletsLink: "https://dune.com/21co/backpack-exchange",
+    url: "https://backpack.exchange",
   },
   {
     name: "Hotcoin",
     slug: "hotcoin",
     coin: null,
     walletsLink: null,
+    url: "https://www.hotcoin.com",
   },
   {
     name: "Ourbit",
@@ -380,48 +431,56 @@ export const cexsData: Array<ICex> = [
     coin: null,
     coinSymbol: null,
     walletsLink: "https://www.ourbit.com/assets/reserve-proof",
+    url: "https://www.ourbit.com",
   },
   {
     name: "Indodax",
     slug: "indodax",
     coin: null,
     walletsLink: null,
+    url: "https://www.indodax.com",
   },
   {
     name: "Tothemoon",
     slug: "tothemoon",
     coin: null,
     walletsLink: null,
+    url: "https://tothemoon.com",
   },
   {
     name: "HashKey Global",
     slug: "hashkey-global",
     coin: null,
     coinSymbol: null,
+    url: "https://www.hashkey.com",
   },
   {
     name: "P2PB2B",
     slug: "p2pb2b",
     coin: null,
     walletsLink: null,
+    url: "https://p2pb2b.com/",
   },
   {
     name: "Tapbit",
     slug: "tapbit",
     coin: null,
     walletsLink: null,
+    url: "https://www.tapbit.com",
   },
   {
     name: "OrangeX",
     slug: "orangex",
     coin: null,
     walletsLink: null,
+    url: "https://www.orangex.com",
   },
   {
     name: "Bitcointry",
     slug: "bitcointry",
     coin: "BTTY",
     coinSymbol: "BTTY",
+    url: "https://www.bitcointry.com",
   },
   {
     name: "BigONE",
@@ -429,35 +488,41 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgId: "bigone",
+    url: "https://big.one",
   },
   {
-    name: "Bitmake",
+    name: "BitMake",
     slug: "bitmake",
     coin: null,
     walletsLink: null,
+    url: "https://www.bitmake.com",
   },
   {
     name: "Arkham Exchange",
     slug: "arkham-exchange",
     coin: "ARKM",
     coinSymbol: "ARKM",
+    url: "https://arkm.com/",
   },
   {
     name: "Hibt",
     slug: "hibt",
     coin: null,
     walletsLink: null,
+    url: "https://hibt.com",
   },
   {
     name: "LBank",
     slug: "lbank",
     cgId: "lbank",
+    url: "https://www.lbank.com",
   },
   {
     name: "TradeOgre",
     slug: "tradeogre",
     coin: null,
     walletsLink: null,
+    url: "https://tradeogre.com/markets",
   },
   {
     name: "Hotbit",
@@ -470,12 +535,14 @@ export const cexsData: Array<ICex> = [
     slug: "bitomato",
     coin: null,
     walletsLink: null,
+    url: "https://bitomato.com/",
   },
   {
     name: "Zoomex",
     slug: "zoomex",
     coin: null,
     walletsLink: null,
+    url: "https://www.zoomex.com",
   },
   {
     name: "CoinEx",
@@ -485,6 +552,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     cgId: "coinex",
     cgDeriv: "coinex_futures",
+    url: "https://www.coinex.com/en",
   },
   /*
 	{
@@ -501,6 +569,7 @@ export const cexsData: Array<ICex> = [
     auditor: "Deloitte",
     auditLink: "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001679788/8e5e0508-da75-434d-9505-cba99fa00147.pdf",
     cgId: "gdax",
+    url: "https://www.coinbase.com",
   },
   {
     name: "Coinone",
@@ -511,6 +580,7 @@ export const cexsData: Array<ICex> = [
   },
   {
     name: "NEXO",
+    url: "https://nexo.com/",
   },
   {
     name: "Coincheck",
@@ -566,6 +636,7 @@ export const cexsData: Array<ICex> = [
     slug: "cex.io",
     coin: null,
     walletsLink: null,
+    url: "http://cex.io/",
   },
   {
     name: "Bitlo",
@@ -573,6 +644,7 @@ export const cexsData: Array<ICex> = [
     slug: "bitlo",
     coin: null,
     walletsLink: null,
+    url: "https://www.bitlo.com/",
   },
   {
     name: "VALR",
@@ -580,6 +652,7 @@ export const cexsData: Array<ICex> = [
     slug: "valr",
     coin: null,
     walletsLink: null,
+    url: "https://valr.com/",
   },
   {
     name: "BitKan",
@@ -588,18 +661,21 @@ export const cexsData: Array<ICex> = [
     coin: "KAN",
     coinSymbol: "KAN",
     walletsLink: null,
+    url: "https://bitkan.com/",
   },
   {
     name: "OSL",
     slug: "osl",
     coin: null,
     walletsLink: null,
+    url: "https://www.osl.com/en",
   },
   {
     name: "Voyager",
     slug: "voyager",
     coin: null,
     walletsLink: null,
+    url: "https://www.investvoyager.com",
   },
   {
     name: "Gate US",
@@ -607,6 +683,7 @@ export const cexsData: Array<ICex> = [
     slug: "gate-us",
     coin: null,
     walletsLink: null,
+    url: "https://www.gate.com/en-us",
   },
   {
     name: "LeveX",
@@ -615,6 +692,7 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgDeriv: "levex-futures",
+    url: "https://levex.com/",
   },
   {
     name: "WEEX",
@@ -623,6 +701,7 @@ export const cexsData: Array<ICex> = [
     coin: "weex-token",
     walletsLink: null,
     cgDeriv: "weex-futures",
+    url: "https://www.weex.com/",
   },
   {
     name: "BYDFi",
@@ -631,24 +710,28 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     cgDeriv: "bydfi-futures",
+    url: "https://www.bydfi.com/en",
   },
   {
     name: "OSL HK",
     slug: "osl-hk",
     coin: null,
     walletsLink: null,
+    url: "https://www.osl.com/en",
   },
   {
     name: "Byte Exchange",
     slug: "byte-exchange",
     coin: null,
     walletsLink: null,
+    url: "https://bexc.io/",
   },
   {
     name: "GroveX",
     slug: "grovex",
     coin: null,
     walletsLink: null,
+    url: "https://grovex.io/en_US/",
   },
 ];
 

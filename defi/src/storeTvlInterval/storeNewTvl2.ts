@@ -10,7 +10,6 @@ import {
   HOUR,
 } from "../utils/date";
 import { hourlyTvl, dailyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
-import { reportError } from "../utils/error";
 import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
@@ -108,35 +107,41 @@ export default async function (
       }
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
+      let spikeRatio = 5
+      if (currentTvl > 50e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
+
+
       if (
         timeElapsed < (timeLimitDisableHours * HOUR) &&
-        lastHourlyTVL * 5 < currentTvl &&
-        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
+        lastHourlyTVL * spikeRatio < currentTvl &&
+        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * spikeRatio < currentTvl &&
         currentTvl > 1e6
       ) {
-        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
-        if (timeElapsed > (5 * HOUR)) {
+
+        const errorMessage = `TVL for ${protocol.name} has >${spikeRatio}x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
+        if (timeElapsed > (3 * HOUR)) {
           if (currentTvl > 10e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           }
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
         }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-        throw new Error(
-          errorMessage
-        );
+        throw new Error(errorMessage)
+
+
       } else {
+        
         const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
         if (currentTvl > 10e6) {
           await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
         }
-        reportError(
-          errorMessage,
-          protocol.name
-        );
+        console.error(protocol.name, errorMessage);
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       }
+
     }
+
+
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
       let tvlFromMissingTokens = 0;
       let missingTokens: { coin: string, value: number, valueHN: string }[] = [];

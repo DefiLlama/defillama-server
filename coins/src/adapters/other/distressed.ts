@@ -2,6 +2,7 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    TARA: "0x2f42b7d686ca3effc69778b6ed8493a7787b4d6e", // https://etherscan.io/tx/0xce58cfa4e259fbcdf282eefaad83a769299d3e4899fcf2d11e9c5427e490c852
     TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
@@ -63,7 +64,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
     HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
     USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84", 
-    yTUSD: '0x73a052500105205d34daf004eab301916da8190f'
+    yTUSD: '0x73a052500105205d34daf004eab301916da8190f',
+    DGLD: "0xa9299c296d7830a99414d1e5546f5171fa01e9c8",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -102,6 +104,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    'USD+': "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65", // https://x.com/overnight_fi/status/2000631797848187322
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
     SFUND_1: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
@@ -222,6 +225,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
   },
   polygon: {
+    'USD+': "0x236eec6359fb44cce8f97e99387aa7f8cd5cde1f", // https://x.com/overnight_fi/status/2000631797848187322
     FEVR: "0xe6b9d092223f39013656702a40dbe6b7decc5746",
     BELUGA: "0x47536f17f4ff30e64a96a7555826b8f9e66ec468",
     BIFI: "0xfbdd194376de19a88118e84e279b977f165d01b8",
@@ -250,11 +254,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x218c3c3d49d0e7b37aff0d8bb079de36ae61a4c0",
   },
   optimism: {
+    'USD+': "0x73cb180bf0521828d8849bc8CF2B920918e23032", // https://x.com/overnight_fi/status/2000631797848187322
     MIM: "0xb153fb3d196a8eb25522705560ac152eeec57901",
     GRAIN: "0xfd389dc9533717239856190f42475d3f263a270d",
     clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
   },
   era: {
+    'USD+': "0x8E86e46278518EFc1C5CEd245cBA2C7e3ef11557", // https://x.com/overnight_fi/status/2000631797848187322
     MVX: "0xc8ac6191cdc9c7bf846ad6b52aaaa7a0757ee305",
   },
   metis: {
@@ -324,6 +330,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
   },
   blast: {
+    'USD+': "0x4fee793d435c6d2c10c135983bb9d6d4fc7b9bbd", // got rekt https://blastscan.io/tx/0x7ea97521e9df5837836718f149fcd4bd02633c7ec76e1f03eafeda101a13ecce
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
     YES: '0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c'
   },
@@ -333,13 +340,14 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
+    DGLD: "0xd02f50e1017f493ffffa70c8fcf09e349e11d6c9", // dropped to 0, coingecko mispriced it
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",
   },
-  bera: {
+  berachain: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
-    UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
+    // UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
@@ -360,6 +368,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   xsat: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+  },
+  linea: {
+    'USD+': "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376", // https://x.com/overnight_fi/status/2000631797848187322
   },
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"

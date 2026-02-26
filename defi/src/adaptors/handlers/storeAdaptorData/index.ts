@@ -1,18 +1,18 @@
-import { AdapterType, SimpleAdapter, } from "../../data/types"
-import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
+import * as sdk from '@defillama/sdk';
 import { elastic } from '@defillama/sdk';
 import { providers } from "@defillama/sdk/build/general";
 type Chain = string
 import { PromisePool } from '@supercharge/promise-pool';
+import { getBlock } from "../../../../dimension-adapters/helpers/getBlock";
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
+import dynamodb from "../../../utils/shared/dynamodb";
 import loadAdaptorsData from "../../data";
-import { IJSON, ProtocolAdaptor, } from "../../data/types";
-import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
+import { AdapterType, IJSON, ProtocolAdaptor, SimpleAdapter } from "../../data/types";
+import { AdapterRecord2 } from "../../db-utils/AdapterRecord2";
 import { getAllItemsAfter, storeAdapterRecord } from "../../db-utils/db2";
 import { sendDiscordAlert } from "../../utils/notify";
-import dynamodb from "../../../utils/shared/dynamodb";
-import * as sdk from '@defillama/sdk'
+import { buildHourlyCache, buildTokenBreakdownsByLabel, HourlySlice, processHourlyAdapter } from "./hourly";
 import { deadChainsSet } from "../../../config/deadChains";
 const { humanizeNumber, } = sdk
 
@@ -44,10 +44,13 @@ export type DimensionRunOptions = {
   checkBeforeInsert?: boolean
   maxRunTime?: number // in milliseconds
   onlyYesterday?: boolean  // if set, we refill only yesterday's missing data
+  deadChains?: Set<string>
+  skipHourlyCache?: boolean
+  parallelHourlyProcessCount?: number
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
-
+const ONE_HOUR_IN_SECONDS = 60 * 60
 
 const humanizeDuration = (ms: number) => {
   const totalSeconds = Math.floor(ms / 1000)
@@ -65,13 +68,23 @@ const humanizeDuration = (ms: number) => {
 
 export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
-  let { timestamp = timestampAtStartofHour, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
-    runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
-    throwError = false, checkBeforeInsert = false, maxRunTime, onlyYesterday = false,
+  let {
+    timestamp = timestampAnHourAgo,
+    adapterType,
+    protocolNames,
+    maxConcurrency = defaultMaxConcurrency,
+    isDryRun = false,
+    isRunFromRefillScript = false,
+    runType = 'default',
+    yesterdayIdSet = new Set(),
+    todayIdSet = new Set(),
+    throwError = false,
+    checkBeforeInsert = false,
+    maxRunTime,
+    onlyYesterday = false,
+    skipHourlyCache = false,
+    parallelHourlyProcessCount = 1,
   } = options
-
-  if (!isRunFromRefillScript)
-    console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
 
   let recentData: any = {}
 
@@ -103,13 +116,22 @@ export const handler2 = async (options: DimensionRunOptions) => {
       }
     }
   } else if (runType === 'store-all') {
-    fromTimestamp = timestampAtStartofHour - ONE_DAY_IN_SECONDS
+    fromTimestamp = timestamp - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
   }
 
   if (!toTimestamp!) throw new Error('toTimestamp is not set')
 
   const _debugTimeStart = Date.now()
+
+  // pull all hourly records generated in the last 50 hours to build an hourly cache to speed up hourly adapters that need to pull data for every hour in the day, this is only used when we run store-all to avoid building cache when we run refill for a specific day
+  const shouldBuildHourlyCache = runType === 'store-all' && !skipHourlyCache
+  let hourlyCacheData: { cache: Map<string, Map<string, HourlySlice>>, range: { from: number, to: number } } | undefined
+  if (shouldBuildHourlyCache) {
+    const cacheTo = timestamp + 3 * ONE_HOUR_IN_SECONDS // we add 3 hours to the current hour to have some buffer
+    const cacheFrom = cacheTo - 50 * ONE_HOUR_IN_SECONDS
+    hourlyCacheData = await buildHourlyCache({ adapterType, fromTimestamp: cacheFrom, toTimestamp: cacheTo })
+  }
 
   // Import data list to be used
   const dataModule = loadAdaptorsData(adapterType)
@@ -125,8 +147,8 @@ export const handler2 = async (options: DimensionRunOptions) => {
   protocols = protocols.sort(() => Math.random() - 0.5)
 
   // Get closest block to clean day. Only for EVM compatible ones.
-  const allChains = protocols.reduce((acc, { chains }) => {
-    chains = chains.filter((chain) => !deadChainsSet.has(chain))  // filter out dead chains
+  const allChains = protocols.reduce((acc, { chains }: any) => {
+    chains = chains.filter((chain: any) => !deadChainsSet.has(chain))  // filter out dead chains
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
@@ -172,34 +194,49 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     const errorObjects = errors.map(({ raw, item, }: any) => {
       let message = raw?.message || (raw && raw.toString()) || 'Unknown error'
-
       return {
         adapter: item?.name,
         message: shortenString(typeof message === 'string' ? message : ''),
         chain: raw?.chain,
-        // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
       }
     })
-
 
     const debugTimeEnd = Date.now()
     const notificationType = 'dimensionLogs'
     const timeTakenSeconds = Math.floor((debugTimeEnd - _debugTimeStart) / 1000)
 
-    if (!isRunFromRefillScript) {
+    if (!isRunFromRefillScript && !isDryRun) {
       console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
-      await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
+      console.log('[JSON-log]', JSON.stringify({ success: results.length, errors: errors.length, timeTaken: timeTakenSeconds, type: 'adapterFinalRes', key: 'adapterFinalRes-' + adapterType, adapterType }))
+      try {
+        await sendDiscordAlert(
+          `[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`,
+          notificationType
+        )
+      } catch (e: any) {
+        console.error('sendDiscordAlert failed:', e?.message || e)
+      }
+    } else if (!isRunFromRefillScript) {
+      console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s (dry-run, no Discord)`)
     }
 
     if (errorObjects.length) {
       const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
 
-      if (!isRunFromRefillScript)
-        await sendDiscordAlert(sdk.util.tableToString(logs), notificationType, true)
+      if (!isRunFromRefillScript && !isDryRun) {
+        try {
+          await sendDiscordAlert(sdk.util.tableToString(logs), notificationType, true)
+        } catch (e: any) {
+          console.error('sendDiscordAlert failed (errors):', e?.message || e)
+        }
+      }
 
-      if (errorObjects.length > 1)
+      if (errorObjects.length > 1) {
+        const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
+        console.log('[JSON-log]', JSON.stringify({ errors: logs, type: 'adapterErrors', key: 'adapterErrors-' + adapterType, adapterType }))
+
         console.table(errorObjects)
-      else
+      } else
         console.log('dim run error:', `${errorObjects[0].adapter} - ${errorObjects[0].message} - ${errorObjects[0].chain}`)
     }
 
@@ -208,12 +245,10 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (isRunFromRefillScript)
       return results
-    // console.log(JSON.stringify(errorObjects, null, 2))
-    /* console.log(` ${adapterType} Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
-    console.table(timeTable) */
 
     console.log(`**************************`)
 
+    return results
   }
 
   // if the maxRunTime is not set, we just run the promise and wait for it to complete
@@ -265,6 +300,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
       const adapterVersion = adaptor.version
       const isAdapterVersionV1 = adapterVersion === 1
+      const isHourlyAdapter = !isAdapterVersionV1 && (adaptor as any).pullHourly === true
       const { isExpensiveAdapter, runAtCurrTime } = adaptor
 
       const blacklistedRefillAllChains = new Set([
@@ -326,13 +362,22 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
 
         if (runAtCurrTime || !isAdapterVersionV1) {
-          recordTimestamp = timestampAtStartofHour
-          endTimestamp = timestampAtStartofHour
+          if (runAtCurrTime) {  // for adapters running at current time, we want to store the record at the timestamp of the run
+            recordTimestamp = timestampAtStartofHour
+            endTimestamp = timestampAtStartofHour
+          } else if (!isAdapterVersionV1) { // for v2 adapters, we run one hour ago to give time for data to be available
+            recordTimestamp = timestamp
+            endTimestamp = timestamp
+          }
+
+
+          const skipRefillYesterday = process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
 
           // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
           if (!runAtCurrTime && !haveYesterdayData) {
-            console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
-            try {
+            if (skipRefillYesterday) console.log(`[refill-yesterday] skipped for ${adapterType} - ${module}`)
+            else {
+              console.log(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
               refillYesterdayPromise = handler2({
                 timestamp: yesterdayEndTimestamp,
                 adapterType,
@@ -340,10 +385,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
                 isRunFromRefillScript: true,
                 runType: 'refill-yesterday',  // if this is store-all, we end up in a loop
               })
-              if (onlyYesterday)
-                return await refillYesterdayPromise
-            } catch (e) {
-              console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
+              if (onlyYesterday) return await refillYesterdayPromise
             }
           }
 
@@ -376,15 +418,63 @@ export const handler2 = async (options: DimensionRunOptions) => {
       if (onlyYesterday)  // we should never reach this point if we are only refilling yesterday
         return refillYesterdayPromise
 
-
       let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+      let adaptorRecordV2JSON: any
+      let tb: any  // token breakdown global
+      let tbl: any  // token breakdown by label
+      let tblc: any // token breakdown by label by chain
+      let hourlySlicesForDebug: any[] | undefined
+      let hourlyStoreFn: (() => Promise<void>) | undefined
 
-      // dynamically import runAdapter so we import it only if needed and after the repo is setup
-      const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default
+      // if the adapter supports pulling hourly data, we process it with a different function that handles pulling and storing hourly slices, otherwise we run the adapter as normal - we only use the hourly cache for store-all to speed up processing, for refill we want to pull fresh data even for hourly adapters
+      if (isHourlyAdapter) {
+        const result = await processHourlyAdapter({
+          adapterType,
+          id: id2,
+          module,
+          adaptor,
+          endTimestamp,
+          recordTimestamp,
+          skipHourlyCache,
+          hourlyCacheData,
+          isDryRun,
+          checkBeforeInsert,
+          parallelProcessCount: parallelHourlyProcessCount,
+        })
+        adaptorRecordV2JSON = result.adaptorRecordV2JSON
+        tb = result.tb
+        tbl = result.tbl
+        tblc = result.tblc
+        hourlySlicesForDebug = result.hourlySlicesForDebug
+        hourlyStoreFn = result.storeHourlySlicesFn
+      } else {
+        const runAdapter = (await import("../../../../dimension-adapters/adapters/utils/runAdapter")).default as any
 
-      const { adaptorRecordV2JSON, breakdownByToken, } = await runAdapter({ module: adaptor, endTimestamp, name: module, withMetadata: true, cacheResults: runType === 'store-all', deadChains: deadChainsSet, },) as any
-      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)  // remove unmapped record types and convert keys to short names
+        const res: any = await runAdapter({
+          module: adaptor,
+          endTimestamp,
+          name: module,
+          withMetadata: true,
+          cacheResults: runType === 'store-all',
+          deadChains: deadChainsSet,
+        })
+        adaptorRecordV2JSON = res.adaptorRecordV2JSON
+        tb = res.breakdownByToken
+        tbl = res.tokenBreakdownByLabel
+        tblc = res.tokenBreakdownByLabelByChain
 
+        if (tb && (!tbl || !tblc)) {
+          const built = buildTokenBreakdownsByLabel({
+            tokenBreakdown: tb,
+            breakdownByLabel: adaptorRecordV2JSON?.breakdownByLabel,
+            breakdownByLabelByChain: adaptorRecordV2JSON?.breakdownByLabelByChain,
+          })
+          tbl = tbl ?? built.tbl
+          tblc = tblc ?? built.tblc
+        }
+      }
+
+      convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)   // remove unmapped record types and convert keys to short names
 
       // sort out record timestamp
       const timestampFromResponse = adaptorRecordV2JSON.timestamp
@@ -402,68 +492,108 @@ export const handler2 = async (options: DimensionRunOptions) => {
         adaptorRecordV2JSON.timestamp = recordTimestamp
       }
 
-
-
-      if (noDataReturned) noDataReturned = Object.keys(adaptorRecordV2JSON.aggregated).length === 0
+      noDataReturned = !adaptorRecordV2JSON.aggregated || Object.keys(adaptorRecordV2JSON.aggregated).length === 0
 
       if (noDataReturned) {
         const chains = Object.keys(adaptor.adapter || {})
         const allChainsAreDead = chains.every(chain => deadChainsSet?.has(chain))
         if (allChainsAreDead) {
-          console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
+          console.log(`Skipping ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
           return;
         }
       }
 
       if (noDataReturned && isRunFromRefillScript) {
-        // console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        console.log(`[${new Date(endTimestamp * 1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
         return;
       }
 
       const responseObject: any = {
         recordV2: undefined,
-        storeDDBFunctions: [],
-        storeRecordV2Function: undefined,
+        storeFunctions: [],
         adapterType: adapterType,
         protocolName: protocol.displayName,
       }
 
-      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
+      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, tokenBreakdown: tb, tokenBreakdownByLabel: tbl, tokenBreakdownByLabelByChain: tblc, })
 
       async function storeTokenBreakdownData() {
-        if (!adapterRecord || !breakdownByToken) return;
-        const ddbItem = { ...adapterRecord.getDDBItem() } as any
-        ddbItem.data = breakdownByToken
-        ddbItem.source = 'dimension-adapter'
-        ddbItem.subType = 'token-breakdown'
-        ddbItem.PK = `dimTokenBreakdown#${ddbItem.PK}`
-        await dynamodb.putEventData(ddbItem)
+        if (!adapterRecord) return;
+
+        const base = adapterRecord.getDDBItem() as any
+
+        // tb (global chain+metric)
+        if (tb) {
+          const tbItem = {
+            ...base,
+            data: tb,
+            source: 'dimension-adapter',
+            subType: 'token-breakdown',
+            PK: `dimTokenBreakdown#${base.PK}`,
+          }
+          await dynamodb.putEventData(tbItem)
+        }
+
+        // tbl (label-level)
+        if (tbl) {
+          const tblItem = {
+            ...base,
+            data: tbl,
+            source: 'dimension-adapter',
+            subType: 'token-breakdown-label',
+            PK: `dimTokenBreakdownLabel#${base.PK}`,
+          }
+          await dynamodb.putEventData(tblItem)
+        }
+
+        // tblc (label+chain-level)
+        if (tblc) {
+          const tblcItem = {
+            ...base,
+            data: tblc,
+            source: 'dimension-adapter',
+            subType: 'token-breakdown-label-chain',
+            PK: `dimTokenBreakdownLabelChain#${base.PK}`,
+          }
+          await dynamodb.putEventData(tblcItem)
+        }
       }
 
       if (adapterRecord) {
 
-
         // validate against recent data if available
         if (checkAgainstRecentData) {
           const protocolRecentData = recentData[adapterRecord.id]
-          const validationError = adapterRecord.validateWithRecentData({ recentData: protocolRecentData, getSignificantValueThreshold, getSpikeThreshold, skipDefaultSpikeCheck: skipDefaultRecentDataCheckForAdapters.has(adapterRecord.id) })
+          const validationError = adapterRecord.validateWithRecentData({
+            recentData: protocolRecentData,
+            getSignificantValueThreshold,
+            getSpikeThreshold,
+            skipDefaultSpikeCheck: skipDefaultRecentDataCheckForAdapters.has(adapterRecord.id)
+          })
           if (validationError) {
-            sdk.log('[validation error]', `[${adapterRecord.name}]`, validationError.message, 'skipping this record', protocolRecentData?.tooFewRecords, protocolRecentData?.hasSignificantData, protocolRecentData?.records?.length, protocolRecentData?.dimStats)
+            sdk.log(
+              '[validation error]',
+              `[${adapterRecord.name}]`,
+              validationError.message,
+              'skipping this record',
+              protocolRecentData?.tooFewRecords,
+              protocolRecentData?.hasSignificantData,
+              protocolRecentData?.records?.length,
+              protocolRecentData?.dimStats
+            )
             await elastic.writeLog('dimension-blocked', validationError)
             return; // skip storing possible invalid data
           }
         }
 
-
-        if (!isDryRun) {
-
+        if (!isDryRun && !checkBeforeInsert) {
           await storeAdapterRecord(adapterRecord)
           await storeTokenBreakdownData()
-
+          if (hourlyStoreFn) await hourlyStoreFn()
         } else if (checkBeforeInsert) {
-
-          responseObject.storeRecordV2Function = () => storeAdapterRecord(adapterRecord)
-          responseObject.storeDDBFunctions.push(storeTokenBreakdownData)
+          responseObject.storeFunctions.push(async () => storeAdapterRecord(adapterRecord))
+          responseObject.storeFunctions.push(storeTokenBreakdownData)
+          if (hourlyStoreFn) responseObject.storeFunctions.push(hourlyStoreFn)
           responseObject.recordV2 = adapterRecord
           responseObject.id = `${adapterRecord.adapterType}#${adapterRecord.id}#${adapterRecord.timeS}`
           responseObject.timeS = adapterRecord.timeS
@@ -594,7 +724,6 @@ async function getRecentData(adapterType: AdapterType) {
             const item = dimStats[key]
             item.records.push(value)
 
-
             if (!item.hasSignificantData && value > getSignificantValueThreshold(key)) item.hasSignificantData = true
 
             if (r.timestamp >= aWeekAgo)
@@ -617,7 +746,6 @@ async function getRecentData(adapterType: AdapterType) {
           delete item.lastWeekRecords
         })
       }
-
 
       console.log(`[db] Fetched ${lastMonthData.length} records for last 30 days for ${adapterType}, ${ids.length} unique ids`)
     } catch (e) {

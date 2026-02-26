@@ -69,7 +69,16 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     projectName: "aave-debt",
   });
 
-  return writes.filter((w: Write) => w.symbol?.toLowerCase().includes("debt"));
+  // previously we have had underlying assets returned so they must be filtered out 
+  // if we filter directly without collecting pksToInclude, historical writes which do not have symbol would be ignored
+  const pksToInclude: Set<string> = new Set();
+  writes.forEach((w: Write) => {
+    if (w.symbol?.toLowerCase().includes("debt")) {
+      pksToInclude.add(w.PK);
+    }
+  });
+
+  return writes.filter((w: Write) => pksToInclude.has(w.PK));
 }
 
 const abi: any = {

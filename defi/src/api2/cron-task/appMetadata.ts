@@ -138,6 +138,7 @@ async function _storeAppMetadata() {
     perpsData,
     openInterestData,
     normalizedVolumeData,
+    activeLiquidityData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -155,6 +156,7 @@ async function _storeAppMetadata() {
     safeHarborData,
     entitiesData,
     nftStatsData,
+    tokenRightsData
   ] = await Promise.all([
     readCachedRouteData({ route: "/lite/protocols2" }),
     readCachedRouteData({ route: "/dimensions/chain-agg-data" }),
@@ -175,6 +177,7 @@ async function _storeAppMetadata() {
     readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
     readCachedRouteData({ route: "/dimensions/normalized-volume/dnvol-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dal-lite" }),
     readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
     readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),
@@ -192,6 +195,7 @@ async function _storeAppMetadata() {
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
     cachedJSONPull({ endpoint: "https://api.llama.fi/entities", defaultResponse: [] }),
     getNftStats(),
+    readCachedRouteData({ route: "/token-rights" }).catch(() => []),
   ]);
 
   console.timeEnd("_storeMetadataFile fetch all data");
@@ -214,14 +218,15 @@ async function _storeAppMetadata() {
       const slugName: string = slug(protocol.name);
       const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
       const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
+      const hasInflows = (hasTvl && !protocolInfo.misrepresentedToken) ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,
+        inflows: hasInflows,
         ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.tokenRights ? { tokenRights: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
 
       if (protocol.parentProtocol) {
@@ -233,6 +238,7 @@ async function _storeAppMetadata() {
           ...finalProtocols[protocol.parentProtocol],
           ...(hasTvl ? { tvl: true } : {}),
           ...(hasBorrowed ? { borrowed: true } : {}),
+          ...(hasInflows ? { inflows: true } : {}),
         };
       }
 
@@ -266,8 +272,7 @@ async function _storeAppMetadata() {
           : false,
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(protocol.tokenRights ? { tokenRights: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
     }
 
@@ -594,6 +599,32 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol of activeLiquidityData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        activeLiquidity: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          activeLiquidity: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of activeLiquidityData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        activeLiquidity: true,
+      };
+    }
+
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -760,6 +791,15 @@ async function _storeAppMetadata() {
       }
     }
 
+    for (const tokenRight of tokenRightsData) {
+      const protocolId = tokenRight['DefiLlama ID']
+      if (!protocolId || !finalProtocols[protocolId]) continue
+      finalProtocols[protocolId] = {
+        ...finalProtocols[protocolId],
+        tokenRights: true
+      };
+    }
+
     const chainProtocolCount: any = {};
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
@@ -860,6 +900,7 @@ async function _storeAppMetadata() {
       perps: { protocols: 0, chains: 0 },
       openInterest: { protocols: 0, chains: 0 },
       normalizedVolume: { protocols: 0, chains: 0 },
+      activeLiquidity: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -923,6 +964,9 @@ async function _storeAppMetadata() {
       }
       if (protocol.normalizedVolume) {
         totalTrackedByMetric.normalizedVolume.protocols += 1;
+      }
+      if (protocol.activeLiquidity) {
+        totalTrackedByMetric.activeLiquidity.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -1009,6 +1053,9 @@ async function _storeAppMetadata() {
       }
       if (chain.normalizedVolume) {
         totalTrackedByMetric.normalizedVolume.chains += 1;
+      }
+      if (chain.activeLiquidity) {
+        totalTrackedByMetric.activeLiquidity.chains += 1;
       }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;

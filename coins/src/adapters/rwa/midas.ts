@@ -322,6 +322,7 @@ async function getTokenPrices(
     timestamp,
     pricesObject: prices,
     projectName: "midas",
+    confidence: 1
   });
 }
 

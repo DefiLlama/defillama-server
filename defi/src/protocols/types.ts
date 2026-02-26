@@ -158,7 +158,7 @@ interface ProtocolBase {
   doublecounted?: boolean;
   methodology?: string;
   dimensions?: DimensionsConfig;
-  tokenRights?: TokenRights;
+  disabled?: string; // if set, the protocol is considered disabled, and ignored
 }
 
 export type Protocol = ProtocolBase & ProtocolCategoryOrTags;
@@ -195,5 +195,4 @@ export interface IParentProtocol {
   rugged?: boolean;
   deadUrl?: boolean;
   deprecated?: boolean;
-  tokenRights?: TokenRights;
 }

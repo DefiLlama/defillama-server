@@ -7,8 +7,9 @@ import {
   Table,
   Input,
   Flex,
+  Modal,
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 import './App.css';
@@ -40,6 +41,7 @@ const App = () => {
   // dimensions tab
   const [dimensionRefillForm] = Form.useForm();
   const dimRefillOnlyMissing = Form.useWatch('onlyMissing', dimensionRefillForm);
+  const dimRefillDelayEnabled = Form.useWatch('delayEnabled', dimensionRefillForm);
 
   const [adapterTypes, setAdapterTypes] = useState([]);
   const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
@@ -50,7 +52,16 @@ const App = () => {
   const [waitingRecordsSelectedChartColumn, setWaitingRecordsSelectedChartColumn] = useState('');
   const [activeTabKey, setActiveTabKey] = useState('dimensions');
 
-
+  // dimensions delete
+  const [dimDeleteWaitingRecords, setDimDeleteWaitingRecords] = useState([]);
+  const [dimDeleteWaitingRecordsShowChainColumns, setDimDeleteWaitingRecordsShowChainColumns] = useState(false);
+  const [dimDeleteWaitingRecordsDeletableIds, setDimDeleteWaitingRecordsDeletableIds] = useState([]);
+  const [dimDeleteWaitingRecordsShowChart, setDimDeleteWaitingRecordsShowChart] = useState(true);
+  const [dimDeleteWaitingRecordsSelectedChartColumn, setDimDeleteWaitingRecordsSelectedChartColumn] = useState('');
+  const [dimDeleteAction, setDimDeleteAction] = useState(false);
+  const [dimDeleteConfirmModalOpen, setDimDeleteConfirmModalOpen] = useState(false);
+  const [dimDeleteConfirmText, setDimDeleteConfirmText] = useState('');
+  const [dimDeletePendingIds, setDimDeletePendingIds] = useState([]);
 
   // tvl tab
   const [tvlForm] = Form.useForm();
@@ -141,6 +152,9 @@ const App = () => {
           break;
         case 'waiting-records':
           setDimRefillWaitingRecords(data.data);
+          break;
+        case 'dimensions-delete-waiting-records':
+          setDimDeleteWaitingRecords(data.data);
           break;
 
         // tvl tab
@@ -314,6 +328,7 @@ const App = () => {
             </Splitter.Panel>
             <Splitter.Panel>
               {activeTabKey === 'dimensions' && getWaitingRecordsTable()}
+              {activeTabKey === 'dimensions' && getDimDeleteWaitingTable()}
               {activeTabKey === 'tvl' && getTvlStoreWaitingTable()}
               {activeTabKey === 'tvl' && getTvlDeleteWaitingTable()}
               {activeTabKey === 'misc' && getMiscOutputTable()}
@@ -344,7 +359,23 @@ const App = () => {
 
     // Handle form submission
     const handleSubmit = (values) => {
-      // setOutput('');
+      if (dimDeleteAction) {
+        // Delete mode: fetch records for deletion review
+        const payload = {
+          type: 'dimensions-delete-get-list',
+          data: {
+            adapterType: values.adapterType,
+            protocol: values.protocol,
+            dateFrom: Math.floor(values.dateRange[0].valueOf() / 1000),
+            dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
+          }
+        };
+
+        if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+          wsRef.current.send(JSON.stringify(payload));
+        }
+        return;
+      }
 
       const payload = {
         type: 'dimensions-refill-runCommand',
@@ -356,6 +387,8 @@ const App = () => {
           onlyMissing: values.onlyMissing || false,
           parallelCount: values.parallelCount,
           delayBetweenRuns: values.delayEnabled ? values.delayBetweenRuns ?? 0 : 0,
+          skipHourlyCache: values.skipHourlyCache || false,
+          parallelHourlyProcessCount: values.parallelHourlyProcessCount || 1,
           // dryRun: values.dryRun || false,
           // checkBeforeInsert: values.checkBeforeInsert || false,
           dryRun: false,
@@ -382,10 +415,12 @@ const App = () => {
         onValuesChange={handleFormChange}
         initialValues={{
           parallelCount: 3,
+          parallelHourlyProcessCount: 3,
           onlyMissing: false,
           dryRun: false,
           delayBetweenRuns: 0,
           delayEnabled: false,
+          skipHourlyCache: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -421,9 +456,21 @@ const App = () => {
         </Form.Item>
 
         <Form.Item
+          label="Delete Mode"
+        >
+          <Switch
+            checked={dimDeleteAction}
+            onChange={(checked) => setDimDeleteAction(checked)}
+            checkedChildren="Delete"
+            unCheckedChildren="Refill"
+          />
+        </Form.Item>
+
+        <Form.Item
           label="Only Missing"
           name="onlyMissing"
           valuePropName="checked"
+          style={{ display: dimDeleteAction ? 'none' : 'block' }}
         >
           <Switch checkedChildren="Yes" unCheckedChildren="No" />
         </Form.Item>
@@ -431,7 +478,7 @@ const App = () => {
         <Form.Item
           label="Date Range"
           name="dateRange"
-          style={{ display: dimRefillOnlyMissing ? 'none' : 'block' }}
+          style={{ display: (dimRefillOnlyMissing && !dimDeleteAction) ? 'none' : 'block' }}
           rules={[
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -446,10 +493,20 @@ const App = () => {
           <DatePicker.RangePicker />
         </Form.Item>
 
+        {!dimDeleteAction && <>
         <Form.Item
           label="Parallel Count"
           name="parallelCount"
           rules={[{ required: true, message: 'Please enter parallel count' }]}
+        >
+          <InputNumber min={1} max={100} />
+        </Form.Item>
+
+        <Form.Item
+          label="Parallel Hourly Process Count"
+          name="parallelHourlyProcessCount"
+          help="Number of parallel processes for hourly slices (only for adapters that support hourly cache), set to 1 to disable parallel processing of hourly slices"
+          rules={[{ required: false, message: 'Please enter parallel hourly process count' }]}
         >
           <InputNumber min={1} max={100} />
         </Form.Item>
@@ -469,19 +526,30 @@ const App = () => {
           label="Delay Between Runs (seconds)"
           name="delayBetweenRuns"
           rules={[{ required: false, message: 'Please enter delay between runs' }]}
-          style={{ display: Form.useWatch('delayEnabled', dimensionRefillForm) ? 'block' : 'none' }}
+          style={{ display: dimRefillDelayEnabled ? 'block' : 'none' }}
         >
           <InputNumber min={0} max={1000} />
         </Form.Item>
 
+        <Form.Item
+          label="Skip Hourly Cache"
+          name="skipHourlyCache"
+          valuePropName="checked"
+          help="If enabled, hourly slices will be refetched instead of using cache"
+        >
+          <Switch checkedChildren="Yes" unCheckedChildren="No" />
+        </Form.Item>
+        </>}
+
         <Form.Item>
           <Button
-            type="primary"
+            type={dimDeleteAction ? "default" : "primary"}
             htmlType="submit"
-            icon={<PlayCircleOutlined />}
+            icon={dimDeleteAction ? <DeleteOutlined /> : <PlayCircleOutlined />}
             disabled={!isConnected}
+            danger={dimDeleteAction}
           >
-            Run
+            {dimDeleteAction ? 'Fetch Records for Deletion' : 'Run'}
           </Button>
         </Form.Item>
 
@@ -851,6 +919,204 @@ const App = () => {
             },
           }}
         />
+      </div >
+    );
+  }
+
+  function getDimDeleteWaitingTable() {
+    if (!dimDeleteWaitingRecords?.length) return null;
+
+    const colSet = new Set(['id', 'adapterType'])
+    const stringColSet = new Set(['id', 'adapterType', 'protocolName', 'timeS'])
+    const columns = []
+    const chartColumnsSet = new Set([])
+    dimDeleteWaitingRecords.forEach(record => {
+      Object.keys(record).forEach(key => {
+        if (colSet.has(key)) return;
+        if (key.startsWith('_')) {
+          if (key.startsWith('_d') && key.lastIndexOf('_') === 0) chartColumnsSet.add(key);
+          return;
+        }
+        if (!dimDeleteWaitingRecordsShowChainColumns && key.includes('_')) return;
+        const column = { title: key, dataIndex: key, key, }
+        if (stringColSet.has(key))
+          column.sorter = (a, b) => a[key].localeCompare(b[key]);
+        else
+          column.sorter = (a, b) => a['_' + key] - b['_' + key];
+        columns.push(column);
+        colSet.add(key);
+      });
+    });
+    const chartColumns = Array.from(chartColumnsSet)
+    let selectChartElement = null;
+    let chartColumnSelected = dimDeleteWaitingRecordsSelectedChartColumn ? dimDeleteWaitingRecordsSelectedChartColumn : chartColumns[0];
+
+    if (chartColumns.length > 1 && dimDeleteWaitingRecordsShowChart) {
+      selectChartElement = <Select
+        defaultValue={dimDeleteWaitingRecordsSelectedChartColumn ? dimDeleteWaitingRecordsSelectedChartColumn : chartColumnSelected}
+        style={{ width: 200 }}
+        onChange={setDimDeleteWaitingRecordsSelectedChartColumn}
+      >
+        {chartColumns.map((column) => (
+          <Option key={column} value={column}>{column}</Option>
+        ))}
+      </Select>
+    }
+
+    const showDeleteConfirm = (ids) => {
+      if (!ids || ids.length === 0) return;
+      setDimDeletePendingIds(ids);
+      setDimDeleteConfirmModalOpen(true);
+      setDimDeleteConfirmText('');
+    };
+
+    const handleDeleteConfirm = () => {
+      if (dimDeleteConfirmText !== 'DELETE') {
+        return;
+      }
+
+      if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+        alert('WebSocket connection is not open. Please reconnect.');
+        return;
+      }
+      
+      const payload = {
+        type: 'dimensions-delete-delete-records',
+        data: dimDeletePendingIds,
+      };
+      wsRef.current.send(JSON.stringify(payload));
+      setDimDeleteWaitingRecordsDeletableIds([]);
+      setDimDeleteConfirmModalOpen(false);
+      setDimDeleteConfirmText('');
+      setDimDeletePendingIds([]);
+    };
+
+    const getDeleteConfirmModalContent = () => {
+      const selectedRecords = dimDeleteWaitingRecords.filter(r => dimDeletePendingIds.includes(r.id));
+      const protocolAdapterMap = {};
+      selectedRecords.forEach(r => {
+        const key = `${r.protocolName}`;
+        if (!protocolAdapterMap[key]) {
+          protocolAdapterMap[key] = new Set();
+        }
+        protocolAdapterMap[key].add(r.adapterType);
+      });
+      
+      const protocolList = Object.entries(protocolAdapterMap).map(([protocol, types]) => 
+        `${protocol} (${Array.from(types).join(', ')})`
+      ).join(', ');
+
+      return (
+        <div>
+          <p><strong style={{ color: 'red' }}>WARNING: This action cannot be undone!</strong></p>
+          <p>You are about to permanently delete:</p>
+          <ul>
+            <li><strong>Records:</strong> {dimDeletePendingIds.length}</li>
+            <li><strong>Protocols:</strong> {protocolList}</li>
+          </ul>
+          <p>Type <strong>DELETE</strong> below to confirm:</p>
+          <Input
+            value={dimDeleteConfirmText}
+            onChange={(e) => setDimDeleteConfirmText(e.target.value)}
+            placeholder="Type DELETE to confirm"
+            onPressEnter={handleDeleteConfirm}
+          />
+        </div>
+      );
+    };
+
+    return (
+      <div>
+        <Divider>[Dimensions] Delete Waiting Records</Divider>
+        <div style={{ marginBottom: 10 }}>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '30px' }}>
+
+            <Button type="primary" icon={<ClearOutlined />}
+              onClick={() => {
+                if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+                  alert('WebSocket connection is not open. Please reconnect.');
+                  return;
+                }
+
+                const payload = {
+                  type: 'dimensions-delete-clear-list',
+                  data: [],
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setDimDeleteWaitingRecordsDeletableIds([]);
+              }}
+
+            > Clear list </Button>
+
+
+            <Button
+              type="default"
+              icon={<DeleteOutlined />}
+              disabled={dimDeleteWaitingRecordsDeletableIds.length === 0}
+              danger
+              onClick={() => {
+                if (dimDeleteWaitingRecordsDeletableIds.length === 0) return;
+                showDeleteConfirm(dimDeleteWaitingRecordsDeletableIds);
+              }}
+            >
+              Delete Selected in DB
+            </Button>
+
+
+            <Button
+              type="default"
+              icon={< LineChartOutlined />}
+              onClick={() => setDimDeleteWaitingRecordsShowChart(!dimDeleteWaitingRecordsShowChart)}
+            >
+              {dimDeleteWaitingRecordsShowChart ? 'Hide Chart' : 'Show Chart'}
+            </Button>
+
+            {selectChartElement}
+
+
+            <Switch
+              checked={dimDeleteWaitingRecordsShowChainColumns}
+              onChange={(checked) => setDimDeleteWaitingRecordsShowChainColumns(checked)}
+              unCheckedChildren="Show chain info"
+              checkedChildren="Hide chain info"
+            />
+          </div>
+        </div>
+
+        {dimDeleteWaitingRecordsShowChart && printChartData(dimDeleteWaitingRecords, chartColumnSelected)}
+
+        <Table
+          columns={columns}
+          dataSource={dimDeleteWaitingRecords}
+          pagination={{ pageSize: 5000 }}
+          rowKey={(record) => record.id}
+          rowSelection={{
+            type: 'checkbox',
+            onChange: (selectedRowKeys) => {
+              setDimDeleteWaitingRecordsDeletableIds(selectedRowKeys);
+            },
+          }}
+        />
+
+        <Modal
+          title={<span><ExclamationCircleOutlined style={{ color: '#ff4d4f' }} /> Confirm Deletion</span>}
+          open={dimDeleteConfirmModalOpen}
+          onOk={handleDeleteConfirm}
+          onCancel={() => {
+            setDimDeleteConfirmModalOpen(false);
+            setDimDeleteConfirmText('');
+            setDimDeletePendingIds([]);
+          }}
+          okText="Confirm Delete"
+          okType="danger"
+          okButtonProps={{ disabled: dimDeleteConfirmText !== 'DELETE' }}
+          cancelText="Cancel"
+          width={600}
+        >
+          {getDeleteConfirmModalContent()}
+        </Modal>
       </div >
     );
   }

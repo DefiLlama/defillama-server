@@ -165,6 +165,7 @@ function getDimensionsConfig() {
     [AdapterType.NORMALIZED_VOLUME]: {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
+        [AdaptorRecordType.dailyActiveLiquidity]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyActiveLiquidity],
       },
     },
     [AdapterType.FEES]: {

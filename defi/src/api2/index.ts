@@ -14,7 +14,7 @@ const port = +(process.env.PORT ?? 5001)
 const skipSubPath = process.env.API2_SKIP_SUBPATH === 'true'
 
 if (!skipSubPath && !process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
-const LLAMA_PRO_API_KEY = process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
+const PRO_SECRET_KEY = process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
 // const LLAMA_INTERNAL_API_KEY = process.env.LLAMA_INTERNAL_API_KEY ?? process.env.API2_SUBPATH
 
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
     res.append('Access-Control-Allow-Origin', '*');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
 
-    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === LLAMA_PRO_API_KEY || req.query['x-llama-pro-key'] === LLAMA_PRO_API_KEY;
+    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === PRO_SECRET_KEY || req.query['x-llama-pro-key'] === PRO_SECRET_KEY;
     // (req as any).isInternalRequest = skipSubPath || req.headers['x-llama-internal-key'] === LLAMA_INTERNAL_API_KEY || req.query['llama_internal_key'] === LLAMA_INTERNAL_API_KEY;
 
     next();

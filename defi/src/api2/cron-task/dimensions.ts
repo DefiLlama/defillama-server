@@ -891,22 +891,21 @@ type SpikeConfig = {
 }
 
 function mergeSpikeConfigs(childProtocols: any[]) {
-  const genuineSpikesSet = new Set<string>()
+  const spikesMapping: IJSON<string> = {}
   childProtocols.forEach((childConfig: any = {}) => {
     if (Array.isArray(childConfig.genuineSpikes)) {
       childConfig.genuineSpikes.forEach((key: any) => {
-        genuineSpikesSet.add(key)
+        spikesMapping[key[0]] = key[1]
       })
     }
   })
-  const response = [...genuineSpikesSet]
-  return response
+  return Object.entries(spikesMapping)
 }
 
 function getSpikeConfig(protocol: any): SpikeConfig {
   if (!protocol?.genuineSpikes) return {}
   let info = (protocol as any)?.genuineSpikes ?? []
-  const whitelistedSpikeSet = new Set(info.map(unixTimeToTimeS)) as Set<string>
+  const whitelistedSpikeSet = new Set(info.map((i: any) => i[0])) as Set<string>
   return { whitelistedSpikeSet }
 }
 

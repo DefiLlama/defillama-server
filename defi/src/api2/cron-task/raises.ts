@@ -1,7 +1,8 @@
 import { storeRouteData, } from "../cache/file-cache";
 import { getRaisesInternal } from "../routes/getRaises";
 import { getHacksInternal } from "../routes/getHacks";
-// import { fetchArticles } from "../../getNewsArticles";
+import { getTokenRightsInternal } from "../routes/getTokenRights";
+import { fetchArticles } from "../../getNewsArticles";
 import * as sdk from '@defillama/sdk'
 import { runWithRuntimeLogging } from "../utils";
 
@@ -18,7 +19,8 @@ async function run() {
 
   await writeRaises()
   await writeHacks()
-  // await writeArticles()
+  await writeTokenRights()
+  await writeArticles()
 
   await sdk.cache.writeExpiringJsonCache('cron-task/raises-last-update', { lastUpdateTS: now }, { expireAfter: 24 * 60 * 60 * 1000 }) // expire after 24 hours
 
@@ -36,12 +38,19 @@ async function run() {
     console.timeEnd('write /hacks')
   }
 
-  /* async function writeArticles() {
+  async function writeTokenRights() {
+    console.time('write /token-rights')
+    const data = await getTokenRightsInternal()
+    await storeRouteData('token-rights', data)
+    console.timeEnd('write /token-rights')
+  }
+
+  async function writeArticles() {
     console.time('write /news/articles')
     const data = await fetchArticles()
     await storeRouteData('news/articles', data)
     console.timeEnd('write /news/articles')
-  } */
+  }
 }
 
 

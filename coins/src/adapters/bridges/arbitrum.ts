@@ -2,7 +2,7 @@ import { fetch, formatExtraTokens } from "../utils";
 
 export default async function bridge() {
   const bridge = (
-    await fetch("https://bridge.arbitrum.io/token-list-42161.json")
+    await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/arbed_arb_whitelist_era.json")
   ).tokens as any[];
 
   return bridge

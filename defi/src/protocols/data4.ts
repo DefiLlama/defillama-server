@@ -25821,7 +25821,7 @@ const data4: Protocol[] = [
     listedAt: 1757349667,
     dimensions: {
       derivatives: "pacifica",
-      "open-interest": "pacifica",
+      "open-interest": "pacifica-oi",
       "normalized-volume": "pacifica"
     }
   },

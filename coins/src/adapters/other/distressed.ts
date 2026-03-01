@@ -104,6 +104,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    BP: "0xacb8f52dc63bb752a51186d1c55868adbffee9c1", // infinity mint https://bscscan.com/tx/0x6fe1f9a035c334c2c3f44dbb0db220aeb250e5e5532277af61d6eedf6276b8c5
     'USD+': "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65", // https://x.com/overnight_fi/status/2000631797848187322
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",

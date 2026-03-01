@@ -22,6 +22,7 @@ import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import * as sdk from "@defillama/sdk";
+import { addActiveCoinGeckoKeys } from "../utils/activeCoingeckoKeys";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -193,6 +194,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
+
+  // Add active CoinGecko keys to Redis (4-hour expiry)
+  // ALL non-stale coins are added (not just confidentCoins), because CoinGecko
+  // returned fresh data for them even if we skip the DDB write due to higher confidence
+  const activeCoingeckoIds = writes.map(c => c.PK.replace('coingecko#', ''));
+  await addActiveCoinGeckoKeys(activeCoingeckoIds);
+  sdk.log(`Marked ${activeCoingeckoIds.length} CoinGecko keys as active in Redis (${staleIds.length} stale keys excluded)`);
   const filteredCoins = coins.filter(
     (coin) =>
       coinData[coin.id]?.usd !== undefined && !staleIds.includes(coin.id),

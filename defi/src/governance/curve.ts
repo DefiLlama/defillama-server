@@ -37,6 +37,7 @@ interface CurveAPIResponse {
   count: number
 }
 
+/** Derives proposal state from on-chain Aragon voting thresholds (support_required, min_accept_quorum) */
 function getProposalState(p: CurveProposalRaw): string {
   const now = Math.floor(Date.now() / 1e3)
   const endTime = p.start_date + VOTE_DURATION
@@ -59,6 +60,7 @@ function getProposalState(p: CurveProposalRaw): string {
   return 'Denied'
 }
 
+/** Converts a raw Curve API proposal to the DefiLlama Proposal format */
 function toProposal(p: CurveProposalRaw): Proposal {
   const votesFor = Number(BigInt(p.votes_for) / BigInt('1000000000000000000'))
   const votesAgainst = Number(BigInt(p.votes_against) / BigInt('1000000000000000000'))
@@ -97,6 +99,7 @@ function toProposal(p: CurveProposalRaw): Proposal {
   }
 }
 
+/** Fetches all Curve DAO proposals via paginated API calls (used on first run) */
 async function fetchAllProposals(): Promise<CurveProposalRaw[]> {
   const all: CurveProposalRaw[] = []
   let page = 1
@@ -119,6 +122,7 @@ async function fetchAllProposals(): Promise<CurveProposalRaw[]> {
   return all
 }
 
+/** Fetches recent Curve DAO proposals (first 3 pages) for incremental updates */
 async function fetchRecentProposals(): Promise<CurveProposalRaw[]> {
   // fetch first 3 pages (300 proposals) to catch any recent activity
   const all: CurveProposalRaw[] = []
@@ -132,6 +136,7 @@ async function fetchRecentProposals(): Promise<CurveProposalRaw[]> {
   return all
 }
 
+/** Main entry point: fetches Curve Aragon governance proposals and updates the cache */
 export async function updateCurve() {
   const overview: any = await getCurveOverview()
   const cache: GovCache = await getCurve(CURVE_GOV_ID) as any

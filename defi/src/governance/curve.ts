@@ -9,6 +9,7 @@ const VOTE_DURATION = 7 * 24 * 3600 // Aragon votes last 7 days
 const PAGE_SIZE = 100
 
 const CURVE_GOV_ID = 'curve'
+const REQUEST_TIMEOUT = 30_000
 
 interface CurveProposalRaw {
   vote_id: number
@@ -107,6 +108,7 @@ async function fetchAllProposals(): Promise<CurveProposalRaw[]> {
   // first request to get total count
   const { data: first } = await axios.get<CurveAPIResponse>(CURVE_API, {
     params: { pagination: PAGE_SIZE, page: 1, status_filter: 'all', type_filter: 'all' },
+    timeout: REQUEST_TIMEOUT,
   })
   all.push(...first.proposals)
   const totalPages = Math.ceil(first.count / PAGE_SIZE)
@@ -115,6 +117,7 @@ async function fetchAllProposals(): Promise<CurveProposalRaw[]> {
   for (page = 2; page <= totalPages; page++) {
     const { data } = await axios.get<CurveAPIResponse>(CURVE_API, {
       params: { pagination: PAGE_SIZE, page, status_filter: 'all', type_filter: 'all' },
+      timeout: REQUEST_TIMEOUT,
     })
     all.push(...data.proposals)
   }
@@ -129,6 +132,7 @@ async function fetchRecentProposals(): Promise<CurveProposalRaw[]> {
   for (let page = 1; page <= 3; page++) {
     const { data } = await axios.get<CurveAPIResponse>(CURVE_API, {
       params: { pagination: PAGE_SIZE, page, status_filter: 'all', type_filter: 'all' },
+      timeout: REQUEST_TIMEOUT,
     })
     all.push(...data.proposals)
     if (data.proposals.length < PAGE_SIZE) break

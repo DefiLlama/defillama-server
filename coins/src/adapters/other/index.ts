@@ -32,6 +32,7 @@ import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
 import opal from "./opal";
 import gmdV2 from "./gmdV2";
+import { glorb as glorbAdapter } from "./glorb";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
 
@@ -580,5 +581,6 @@ export const adapters = {
   reyaUSD,
   karakWrapped,
   matrixdock,
-  dsu
+  dsu,
+  glorb: glorbAdapter,
 };

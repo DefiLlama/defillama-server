@@ -3707,6 +3707,8 @@ const data5: Protocol[] = [
     module: "quantus/index.js",
     twitter: "Quantus_Lending",
     forkedFromIds: ["114"],
+    deadUrl: true,
+    rugged: true,
     listedAt: 1764287011,
   },
   {

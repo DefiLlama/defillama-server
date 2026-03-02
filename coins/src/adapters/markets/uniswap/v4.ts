@@ -11,11 +11,6 @@ const stateViews: Record<string, string> = {
   base: "0xa3c0c9b65bad0b08107aa264b0f3db444b867a71",
 };
 
-// used as underlying when paired token is native ETH
-const wrappedNative: Record<string, string> = {
-  base: "0x4200000000000000000000000000000000000006",
-};
-
 const config: Record<string, Array<{ poolId: string; token: string; paired: string }>> = {
   base: [
     {
@@ -70,8 +65,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
     let price = sqrtPrice * sqrtPrice * 10 ** (dec0 - dec1);
     if (!tokenIsCurrency0) price = 1 / price;
 
-    const underlying = paired === NATIVE ? wrappedNative[chain] : paired;
-    pricesObject[token] = { underlying, price };
+    pricesObject[token] = { underlying: paired, price };
   });
 
   return getWrites({ chain, timestamp, pricesObject, projectName });

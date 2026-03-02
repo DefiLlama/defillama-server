@@ -206,7 +206,7 @@ async function fetchDBData(
             timestamp,
             params.searchWidth,
           );
-          if (finalCoin.SK === undefined) return;
+          if (finalCoin.SK === undefined || finalCoin.price === undefined) return;
           addToResponse(response, coin, finalCoin, PKTransforms);
         }),
       ),
@@ -228,7 +228,7 @@ async function fetchDBData(
       }
 
       for (const timestamp of timestamps) {
-        const finalCoin = findClosestRecord(records, timestamp, params.searchWidth);
+        const finalCoin = findClosestRecord(records.filter(r => r.price != undefined), timestamp, params.searchWidth);
         if (!finalCoin || finalCoin.SK === undefined) continue;
         addToResponse(response, coin, finalCoin, PKTransforms);
       }
@@ -298,3 +298,15 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+handler({
+  queryStringParameters: {
+    period: "3h",
+    span: "10",
+    start: "1769048758",
+    searchWidth: "3h",
+  },
+  pathParameters: {
+    coins: "polygon:0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+  },
+}); // ts-node coins/src/getCoinPriceChart.ts

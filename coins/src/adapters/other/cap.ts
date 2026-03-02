@@ -27,7 +27,7 @@ export default async function getTokenPrices(timestamp: number) {
         chain,
         cUSD,
         Number(cUSDPriceRes.output) / (10 ** 8),
-        8,
+        18,
         "cUSD",
         timestamp,
         "cap",

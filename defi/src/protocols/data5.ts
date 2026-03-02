@@ -3623,14 +3623,14 @@ const data5: Protocol[] = [
   },
   {
     id: "7049",
-    name: "Gate DEX",
+    name: "Gate Perp", // previous Gate DEX
     address: null,
     symbol: "-",
     url: "https://www.gatedex.com/r/nufLft0L",
     referralUrl: "https://www.gatedex.com/r/nufLft0L",
     description: "Perp DEX on Gate Layer.",
     chain: "GateLayer",
-    logo: `${baseIconsUrl}/gate-dex.jpg`,
+    logo: `${baseIconsUrl}/gate-perp.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

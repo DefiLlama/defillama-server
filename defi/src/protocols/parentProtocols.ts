@@ -9090,10 +9090,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#gate-products",
-    name: "Gate Products",
+    name: "Gate DEX",
     url: "https://www.gatedex.com/r/nufLft0L",
-    description: "Gate Products combine",
-    logo: `${baseIconsUrl}/gate-products.jpg`,
+    description: "Established in 2013, Gate is a cryptocurrency exchange serving over 49 million global users. The platform supports spot trading, futures trading, margin trading, and wealth management products for more than 4,400 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets.",
+    logo: `${baseIconsUrl}/gate-dex.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

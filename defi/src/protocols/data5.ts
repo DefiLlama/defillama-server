@@ -12675,7 +12675,7 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["Order Book"],
     chains: ["Proton"],
-    module: "dummy.js",
+    module: "simple-dex/index.js",
     twitter: "protonnz",
     listedAt: 1772243119,
   },

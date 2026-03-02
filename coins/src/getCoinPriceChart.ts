@@ -206,7 +206,7 @@ async function fetchDBData(
             timestamp,
             params.searchWidth,
           );
-          if (finalCoin.SK === undefined) return;
+          if (finalCoin.SK === undefined || finalCoin.price === undefined) return;
           addToResponse(response, coin, finalCoin, PKTransforms);
         }),
       ),
@@ -228,7 +228,7 @@ async function fetchDBData(
       }
 
       for (const timestamp of timestamps) {
-        const finalCoin = findClosestRecord(records, timestamp, params.searchWidth);
+        const finalCoin = findClosestRecord(records.filter(r => r.price != undefined), timestamp, params.searchWidth);
         if (!finalCoin || finalCoin.SK === undefined) continue;
         addToResponse(response, coin, finalCoin, PKTransforms);
       }

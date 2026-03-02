@@ -298,15 +298,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-
-handler({
-  queryStringParameters: {
-    period: "3h",
-    span: "10",
-    start: "1769048758",
-    searchWidth: "3h",
-  },
-  pathParameters: {
-    coins: "polygon:0x0000206329b97DB379d5E1Bf586BbDB969C63274",
-  },
-}); // ts-node coins/src/getCoinPriceChart.ts

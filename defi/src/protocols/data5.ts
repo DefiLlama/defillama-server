@@ -12868,5 +12868,26 @@ const data5: Protocol[] = [
       fees: "minebean",
     },
   },
+  {
+    id: "7487",
+    name: "MoonBot",
+    address: null,
+    symbol: "-",
+    url: "https://moon-bot.com/en/",
+    description: "MoonBot is a decentralized perpetual futures trading platform for trading perps on Hyperliquid L1.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/moonbot.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "MoonBotTerminal",
+    dimensions: {
+      fees: "moonbot",
+      derivatives: "moonbot"
+    }
+  },
 ];
 export default data5;

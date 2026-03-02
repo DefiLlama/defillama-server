@@ -4,10 +4,14 @@ import axios from 'axios'
 import { getHourlyTvlUpdatedRecordsCount, initializeTVLCacheDB, getDimensionsUpdatedRecordsCount, getTweetsPulledCount, } from './api2/db';
 import { elastic, cache } from '@defillama/sdk';
 import { tableToString } from './api2/utils';
+// import fs from 'fs';
 
 const maxDrift = 6 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
 
+const globalRunStats: any = {
+  cacheKey: 'globalRunStats',
+}
 
 async function checkBuildStatus(webhookUrl: string) {
   const actionsApi = 'https://api.github.com/repos/DefiLlama/defillama-server/actions/runs?per_page=100'
@@ -41,7 +45,13 @@ export async function notifyOutdatedPG() {
   tweets pulled count: ${tweetsPulledCount} (in the last 3 days)
     `
 
-
+    globalRunStats.tvlUpdateCount = tvlUpdateCount
+    globalRunStats.tvlUpdateDuration = 'last 2 hours'
+    globalRunStats.dimUpdateCount = dimUpdateCount
+    globalRunStats.dimUpdateDuration = 'last 2 hours'
+    globalRunStats.tweetsPulledCount = tweetsPulledCount
+    globalRunStats.tweetsPulledDuration = 'last 3 days'
+    globalRunStats.timestamp = new Date().toISOString()
 
     console.log(debugString)
     await sendMessage(debugString, webhookUrl)
@@ -62,7 +72,7 @@ export async function notifyOutdatedPG() {
   // now this check runs every 4th hour
   if (currentHour % 4 === 0) {
     const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
-    const ignoredSet = new Set(['Synthetix', 'Defi Saver']);
+    const ignoredSet = new Set(['Synthetix', 'Defi Saver',]);
     const failedOver100m = hour12Outdated.filter((o: any) => o?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
     if (failedOver100m.length > 0) {
       await sendMessage(buildOutdatedMessage(failedOver100m) as any, teamwebhookUrl)
@@ -71,6 +81,8 @@ export async function notifyOutdatedPG() {
 
   // await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
   const hourlyOutdated = await findOutdatedPG((60 * 4 + 20) * 60); // 4.5hr
+  globalRunStats.hourlyOutdatedCount = hourlyOutdated.length
+  globalRunStats.hourlyOutdatedProtocols = hourlyOutdated
 
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
@@ -92,6 +104,12 @@ export async function notifyOutdatedPG() {
   }
 
   await checkBuildStatus(webhookUrl)
+
+  await cache.writeCache('globalRunStats', globalRunStats, {
+    skipCompression: true,
+    skipR2CacheWrite: false,
+  })
+  // fs.writeFileSync('./globalRunStats.json.log', JSON.stringify(globalRunStats, null, 2))
 }
 
 async function notifyBlockedDimensionUpdates() {
@@ -118,12 +136,32 @@ async function notifyBlockedDimensionUpdates() {
       }
     })
 
+
+
+    let { hits: { hits: blockedDimensionUpdatesInThePast24h } }: any = await esClient?.search({
+      index: 'dimension-blocked*',
+      size: 9999,
+      body: {
+        query: {
+          range: { // find records with reportTime > lastCheckTS
+            reportTime: {
+              gt: aDayAgo * 1000, // reportTime is in ms
+            }
+          }
+        }
+      }
+    })
+
+    globalRunStats.blockedDimensionUpdatesInThePast24h = blockedDimensionUpdatesInThePast24h
+
+
     if (!blockedDataSinceLastNotification?.length) return;
 
     blockedDataSinceLastNotification = blockedDataSinceLastNotification.map((h: any) => h._source)
 
 
     let linkToKibana = process.env.ES_KIBANA_LINK ?? ''
+    if (linkToKibana) globalRunStats.linkToKibana = linkToKibana 
 
     if (linkToKibana)
       linkToKibana = ` Please check the logs ${linkToKibana} for more details.`

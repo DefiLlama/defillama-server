@@ -27318,7 +27318,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "lit_trade",
     dimensions: {
-      fees: "lit-trade"
+      fees: "lit-trade",
+      derivatives: "lit-trade",
     }
   },
   {
@@ -28217,6 +28218,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#xtrade-protocol",
     dimensions: {
       fees: "xtrade-protocol-perps",
+      derivatives: "xtrade-protocol-perps",
     }
   },
   {
@@ -29585,7 +29587,8 @@ const data4: Protocol[] = [
     twitter: "rainbowdotme",
     parentProtocol: "parent#rainbow",
     dimensions: {
-      fees: "rainbow-perps"
+      fees: "rainbow-perps",
+      derivatives: "rainbow-perps",
     }
   },
   {

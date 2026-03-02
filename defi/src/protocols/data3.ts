@@ -12848,7 +12848,8 @@ const data3_0: Protocol[] = [
     listedAt: 1690197679,
     dimensions: {
       fees: "pika-protocol-v4",
-      derivatives: "pika-protocol-v4"
+      derivatives: "pika-protocol-v4",
+      'open-interest': "pika-v4",
     }
   },
   {

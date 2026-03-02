@@ -62,7 +62,7 @@
     .run-tab.active { background: var(--accent); color: #fff; }
 
     /* ── Scrollable content ── */
-    #content { flex: 1; overflow-y: auto; padding: 20px; }
+    #content, #tvl-content { flex: 1; overflow-y: auto; padding: 20px; }
     .loading   { color: var(--muted); text-align: center; padding: 60px 20px; font-size: 14px; }
     .err-state { color: var(--red);   text-align: center; padding: 40px 20px; }
 
@@ -160,6 +160,45 @@
       padding: 1px 5px; border-radius: 3px; cursor: help;
     }
     .empty { padding: 24px; color: var(--muted); text-align: center; }
+
+    /* ── Top-level tab bar ── */
+    #top-tab-bar {
+      flex: none;
+      display: flex; gap: 0; padding: 0 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .top-tab {
+      padding: 10px 20px; border: none;
+      border-bottom: 2px solid transparent;
+      background: transparent; color: var(--muted);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: color .12s, border-color .12s;
+      margin-bottom: -1px;
+    }
+    .top-tab:hover  { color: var(--text); }
+    .top-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .top-panel        { display: none; flex-direction: column; flex: 1; min-height: 0; }
+    .top-panel.active { display: flex; }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      display: flex; gap: 8px; align-items: center;
+      padding: 12px 0; flex-wrap: wrap;
+    }
+    .filter-bar input, .filter-bar select {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); border-radius: 6px;
+      padding: 6px 10px; font-size: 12px;
+      font-family: inherit;
+    }
+    .filter-bar input:focus, .filter-bar select:focus {
+      outline: none; border-color: var(--accent);
+    }
+    .filter-bar label {
+      font-size: 11px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .04em;
+    }
   </style>
 </head>
 <body>
@@ -169,9 +208,19 @@
   <span id="clock"></span>
 </div>
 
-<nav id="tab-bar"></nav>
+<nav id="top-tab-bar">
+  <button class="top-tab active" data-top="dimensions">Dimensions</button>
+  <button class="top-tab" data-top="tvl">TVL</button>
+</nav>
 
-<main id="content"><div class="loading">Loading…</div></main>
+<div class="top-panel active" id="panel-dimensions">
+  <nav id="tab-bar"></nav>
+  <main id="content"><div class="loading">Loading…</div></main>
+</div>
+
+<div class="top-panel" id="panel-tvl">
+  <main id="tvl-content"><div class="loading">Loading…</div></main>
+</div>
 
 <script>
 'use strict';
@@ -249,6 +298,21 @@ function esc(s) {
 function shortHash(h) {
   if (!h) return '—';
   return `${h.slice(0,8)}…${h.slice(-6)}`;
+}
+
+function humanTvl(n) {
+  if (n == null) return '—';
+  n = Number(n);
+  if (isNaN(n)) return '—';
+  const abs = Math.abs(n);
+  if (abs >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+  if (abs >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+  if (abs >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function sluggify(name) {
+  return name.toLowerCase().split(' ').join('-').split("'").join('');
 }
 
 // ── Sortable table ─────────────────────────────────────────────────────────────
@@ -547,7 +611,159 @@ function initClock() {
   setInterval(tick, 1000);
 }
 
+// ── TVL tab ────────────────────────────────────────────────────────────────────
+let tvlLoaded = false;
+
+async function loadTvlTab() {
+  const content = document.getElementById('tvl-content');
+  content.innerHTML = '<div class="loading">Loading…</div>';
+
+  try {
+    const data = await getJson('run-data-globalRunStats');
+
+    const ts = data.timestamp;
+    const outdated = (data.hourlyOutdatedProtocols ?? []).map(p => ({
+      protocolName: p.protocolName ?? '',
+      slug:         p.slug ?? sluggify(p.protocolName ?? ''),
+      category:     p.category ?? '',
+      lastUpdate:   p.lastUpdate ?? null,
+      tvl:          p.tvl ?? null,
+      chains:       p.chains ?? [],
+      module:       p.module ?? null,
+    }));
+
+    // Collect unique categories for filter
+    const categories = [...new Set(outdated.map(p => p.category).filter(Boolean))].sort();
+
+    content.innerHTML = `
+      <div style="padding:20px;overflow-y:auto;flex:1">
+        <div class="stats-header">
+          <div class="gen-time">
+            ${fmtDate(ts)}<span class="rel">${relTime(ts)}</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="stats-row">
+            ${chips([
+              ['TVL Updates',   `${esc(data.tvlUpdateCount ?? '—')}<div style="font-size:10px;color:var(--muted);margin-top:2px">${esc(data.tvlUpdateDuration ?? '—')}</div>`,  'success'],
+            ])}
+            <div class="stats-divider"></div>
+            ${chips([
+              ['Dim Updates',   `${esc(data.dimUpdateCount ?? '—')}<div style="font-size:10px;color:var(--muted);margin-top:2px">${esc(data.dimUpdateDuration ?? '—')}</div>`,  'accent'],
+            ])}
+            <div class="stats-divider"></div>
+            ${chips([
+              ['Tweets Pulled', `${String(data.tweetsPulledCount ?? 0)}<div style="font-size:10px;color:var(--muted);margin-top:2px">${esc(data.tweetsPulledDuration ?? '—')}</div>`, Number(data.tweetsPulledCount) > 0 ? 'success' : 'warn'],
+            ])}
+          </div>
+        </div>
+
+        <h3 style="margin:20px 0 8px;font-size:14px;font-weight:600">
+          Hourly Outdated Protocols
+          <span style="font-weight:400;color:var(--muted);font-size:12px;margin-left:6px">(${outdated.length})</span>
+        </h3>
+
+        <div class="filter-bar" id="tvl-filters">
+          <label>Search</label>
+          <input type="text" id="tvl-filter-name" placeholder="Protocol name…" style="width:180px">
+          <label>Category</label>
+          <select id="tvl-filter-category">
+            <option value="">All</option>
+            ${categories.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('')}
+          </select>
+          <label>Min TVL</label>
+          <select id="tvl-filter-min-tvl">
+            <option value="0">Any</option>
+            <option value="1000">$1K</option>
+            <option value="10000">$10K</option>
+            <option value="100000">$100K</option>
+            <option value="1000000" selected>$1M</option>
+            <option value="10000000">$10M</option>
+            <option value="100000000">$100M</option>
+          </select>
+          <label>Min Age</label>
+          <select id="tvl-filter-min-age">
+            <option value="0" selected>Any</option>
+            <option value="3600">1 hour</option>
+            <option value="21600">6 hours</option>
+            <option value="86400">1 day</option>
+            <option value="259200">3 days</option>
+            <option value="604800">1 week</option>
+            <option value="2592000">30 days</option>
+          </select>
+        </div>
+        <div id="tvl-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+
+        <div class="card">
+          <div id="tbl-tvl-outdated"></div>
+        </div>
+      </div>
+    `;
+
+    // Render with filter support
+    function renderTvlTable() {
+      const nameFilter = (document.getElementById('tvl-filter-name')?.value ?? '').toLowerCase();
+      const catFilter  = document.getElementById('tvl-filter-category')?.value ?? '';
+      const minTvl     = Number(document.getElementById('tvl-filter-min-tvl')?.value ?? 0);
+      const minAgeSec  = Number(document.getElementById('tvl-filter-min-age')?.value ?? 0);
+      const nowSec     = Math.floor(Date.now() / 1000);
+
+      let filtered = outdated;
+      if (nameFilter) filtered = filtered.filter(p => p.protocolName.toLowerCase().includes(nameFilter));
+      if (catFilter)  filtered = filtered.filter(p => p.category === catFilter);
+      if (minTvl > 0) filtered = filtered.filter(p => (p.tvl ?? 0) >= minTvl);
+      if (minAgeSec > 0) filtered = filtered.filter(p => p.lastUpdate != null && (nowSec - p.lastUpdate) >= minAgeSec);
+
+      // Add index after filtering
+      const indexed = filtered.map((r, i) => ({ ...r, _idx: i + 1 }));
+
+      const countEl = document.getElementById('tvl-filter-count');
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + outdated.length + ' protocols';
+
+      renderTable('tbl-tvl-outdated', indexed, [
+        { key: '_idx',         label: '#',            sortVal: r => r._idx },
+        { key: 'protocolName', label: 'Protocol',    render: r => '<a href="https://defillama.com/protocol/' + encodeURIComponent(r.slug) + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:500">' + esc(r.protocolName) + '</a>', sortVal: r => r.protocolName },
+        { key: 'category',     label: 'Category',    render: r => r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '—' },
+        { key: 'lastUpdateRel',label: 'Age',          render: r => r.lastUpdate ? relTime(new Date(r.lastUpdate * 1000).toISOString()) : '—', sortVal: r => r.lastUpdate ? -r.lastUpdate : null },
+        { key: 'tvl',          label: 'TVL',          render: r => humanTvl(r.tvl), sortVal: r => r.tvl },
+        { key: 'chains',       label: 'Top Chains',   render: r => (r.chains ?? []).slice(0, 5).map(c => '<span class="tag" style="margin:1px 2px">' + esc(c) + '</span>').join('') || '', sortVal: r => (r.chains ?? []).length },
+        { key: 'module',       label: 'Code',         render: r => r.module ? '<a href="'+r.module + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + r.module.replace('https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/', '').replace('projects/', '') + '</a>' : '' },
+      ], 'tvl', -1);
+    }
+
+    renderTvlTable();
+
+    document.getElementById('tvl-filter-name')?.addEventListener('input', renderTvlTable);
+    document.getElementById('tvl-filter-category')?.addEventListener('change', renderTvlTable);
+    document.getElementById('tvl-filter-min-tvl')?.addEventListener('change', renderTvlTable);
+    document.getElementById('tvl-filter-min-age')?.addEventListener('change', renderTvlTable);
+
+    tvlLoaded = true;
+  } catch (err) {
+    content.innerHTML = '<div class="err-state">Error loading TVL data: ' + esc(err.message) + '</div>';
+    console.error(err);
+  }
+}
+
+// ── Top-level tab switching ─────────────────────────────────────────────────
+function initTopTabs() {
+  const bar = document.getElementById('top-tab-bar');
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.top-tab');
+    if (!btn) return;
+    const tab = btn.dataset.top;
+    bar.querySelectorAll('.top-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.top-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-' + tab);
+    if (panel) panel.classList.add('active');
+
+    if (tab === 'tvl' && !tvlLoaded) loadTvlTab();
+  });
+}
+
 function init() {
+  initTopTabs();
   initRunTabs();
   initClock();
   const first = document.querySelector('.run-tab');

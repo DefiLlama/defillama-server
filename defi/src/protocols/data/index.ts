@@ -100,7 +100,8 @@ export type _InternalProtocolMetadata = {
   misrepresentedTokens: boolean;
   methodology?: string;
   hallmarks?: Hallmark[];
-  tvlCodePath?: string;
+  tvlCodePath?: string | null;
+  treasuryCodePath?: string | null;
   hasChainSlug: (chainSlug: string) => boolean;
 }
 
@@ -128,6 +129,8 @@ export function setProtocolMetadata(protocol: Protocol) {
     else 
       modulePath = `projects/${modulePath}`
 
+    let treasuryModulePath = protocol.treasury ? `projects/treasury/${protocol.treasury}` : null
+
     const metadata = {
       id: protocol.id,
       category,
@@ -140,7 +143,8 @@ export function setProtocolMetadata(protocol: Protocol) {
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
       hallmarks: module.hallmarks,
-      tvlCodePath: `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${modulePath}`,
+      tvlCodePath: modulePath.includes("dummy.js") ? null : `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${modulePath}`,
+      treasuryCodePath: treasuryModulePath ? `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${treasuryModulePath}` : null,
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
     }
 

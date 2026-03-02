@@ -12,17 +12,15 @@ const chain: any = "ethereum";
 
 export default async function getTokenPrices(timestamp: number) {
     const writes: Write[] = [];
-    let block: number | undefined = await getBlock(chain, timestamp);
+    const block = await getBlock(chain, timestamp);
 
-    const [cUSDPriceRes] = await Promise.all([
-        call({
-            target: pythcUSDReserveOracle,
-            params: [],
-            chain,
-            abi: 'uint256:latestAnswer',
-            block
-        }),
-    ]);
+    const cUSDPriceRes = await call({
+        target: pythcUSDReserveOracle,
+        params: [],
+        chain,
+        abi: 'uint256:latestAnswer',
+        block
+    });
 
     addToDBWritesList(
         writes,

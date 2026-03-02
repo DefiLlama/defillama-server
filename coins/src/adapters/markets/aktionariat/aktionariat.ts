@@ -46,7 +46,7 @@ async function filterTokensByLiquidity(tokens: SubgraphToken[]): Promise<Subgrap
   const { data } = await axios.post<LiquidityData>("https://ext.aktionariat.com/defillama/getLiquidity", { tokenAddresses });
   return tokens.filter((t) => {
     const liquidity = data.liquidityByTokenAddress[t.id];
-    return liquidity && liquidity.totalLiquidity >= 1000000; 
+    return liquidity && liquidity.totalBuyLiquidityDepth >= 1000000; 
   });
 }
 

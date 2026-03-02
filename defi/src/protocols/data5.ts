@@ -12678,6 +12678,10 @@ const data5: Protocol[] = [
     module: "simple-dex/index.js",
     twitter: "protonnz",
     listedAt: 1772243119,
+    dimensions: {
+      dexs: "simpledex",
+      fees: "simpledex",
+    },
   },
   {
     id: "7478",

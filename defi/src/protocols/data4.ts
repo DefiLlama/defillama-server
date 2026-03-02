@@ -10116,7 +10116,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Cardano"],
-    module: "dummy.js",
+    module: "strike-finance-forwards/index.js",
     twitter: "strikecardano",
     audit_links: ["https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf"],
     parentProtocol: "parent#strike-finance",

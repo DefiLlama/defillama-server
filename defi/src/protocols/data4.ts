@@ -29201,6 +29201,7 @@ const data4: Protocol[] = [
     module: "tidc-vault/index.js",
     twitter: "liqibr",
     listedAt: 1760109429,
+    disabled:"can not verify RWA backing assets"
   },
   {
     id: "6840",

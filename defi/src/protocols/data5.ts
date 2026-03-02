@@ -12889,5 +12889,26 @@ const data5: Protocol[] = [
       derivatives: "moonbot"
     }
   },
+  {
+    id: "7488",
+    name: "Aave Labs",
+    address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    symbol: "AAVE",
+    url: "https://aave.com/",
+    description: "Aave Labs is the original author and key contributor of the Aave Protocol and a software technology company founded by Stani Kulechov. The team builds blockchain-based products that power decentralized finance, including the Aave Protocol, the Aave-native stablecoin GHO, and Horizon, an institutional platform for borrowing against tokenized real-world assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aave-labs.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DAO Service Provider",
+    chains: ["Ethereum", "Base", "Arbitrum", "xDai"],
+    module: "dummy.js",
+    twitter: "aave",
+    parentProtocol: "parent#aave",
+    dimensions: {
+      fees: "aave-labs",
+    }
+  },
 ];
 export default data5;

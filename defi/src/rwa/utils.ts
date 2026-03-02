@@ -464,6 +464,118 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
 }
 
 
+// ---------------------------------------------------------------------------
+// Historical time-series smoothing
+// ---------------------------------------------------------------------------
+
+const DAY_SECONDS = 86400;
+
+export interface HistoricalRecord {
+  timestamp: number;
+  onChainMcap: number;
+  defiActiveTvl: number;
+  activeMcap?: number;
+}
+
+const HISTORICAL_NUMERIC_KEYS: ReadonlyArray<keyof HistoricalRecord> = [
+  'onChainMcap',
+  'defiActiveTvl',
+  'activeMcap',
+];
+
+/**
+ * Removes isolated single-point spikes and dips from a sorted time series.
+ *
+ * A data point is considered anomalous when it is less than 10% or more than
+ * 10× the average of its two immediate neighbours (and those neighbours are
+ * both above a $1 threshold so we do not interpolate in flat-zero regions).
+ * Anomalous values are replaced by linear interpolation between the neighbours.
+ *
+ * This fixes one-day dips/spikes caused by a missing token price or TVL feed.
+ */
+function removeSpikes(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (data.length < 3) return data.map((r) => ({ ...r }));
+
+  const result = data.map((r) => ({ ...r }));
+
+  for (let i = 1; i < result.length - 1; i++) {
+    const prev = result[i - 1];
+    const curr = result[i];
+    const next = result[i + 1];
+
+    for (const key of HISTORICAL_NUMERIC_KEYS) {
+      const prevVal = prev[key];
+      const currVal = curr[key];
+      const nextVal = next[key];
+
+      if (prevVal === undefined || currVal === undefined || nextVal === undefined) continue;
+      if (!Number.isFinite(prevVal) || !Number.isFinite(currVal) || !Number.isFinite(nextVal)) continue;
+
+      const avgNeighbors = (prevVal + nextVal) / 2;
+      if (avgNeighbors < 1) continue; // both neighbours near zero – no reference to interpolate against
+
+      const ratio = currVal / avgNeighbors;
+      if (ratio < 0.1 || ratio > 10) {
+        // Replace the anomalous value with linear interpolation
+        const t = (curr.timestamp - prev.timestamp) / (next.timestamp - prev.timestamp);
+        (result[i] as any)[key] = prevVal + (nextVal - prevVal) * t;
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Inserts linearly-interpolated records for any gaps larger than one day.
+ * Mirrors the approach used in getCategories.ts for protocol TVL.
+ */
+function fillGaps(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (data.length < 2) return [...data];
+
+  const result: HistoricalRecord[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    result.push(data[i]);
+
+    if (i < data.length - 1) {
+      const curr = data[i];
+      const next = data[i + 1];
+      const daysDiff = Math.round((next.timestamp - curr.timestamp) / DAY_SECONDS);
+
+      for (let j = 1; j < daysDiff; j++) {
+        const fraction = j / daysDiff;
+        const interpolated: HistoricalRecord = {
+          timestamp: curr.timestamp + DAY_SECONDS * j,
+          onChainMcap: curr.onChainMcap + (next.onChainMcap - curr.onChainMcap) * fraction,
+          defiActiveTvl: curr.defiActiveTvl + (next.defiActiveTvl - curr.defiActiveTvl) * fraction,
+        };
+        if (curr.activeMcap !== undefined && next.activeMcap !== undefined) {
+          interpolated.activeMcap = curr.activeMcap + (next.activeMcap - curr.activeMcap) * fraction;
+        }
+        result.push(interpolated);
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Smooths RWA historical chart data:
+ *   1. Removes isolated one-day spikes/dips (missing price or TVL data).
+ *   2. Fills any multi-day gaps with linear interpolation.
+ *
+ * Safe to call on already-sorted or unsorted data; returns a new sorted array.
+ */
+export function smoothHistoricalData(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (!data || data.length < 2) return data;
+  const sorted = [...data].sort((a, b) => a.timestamp - b.timestamp);
+  return fillGaps(removeSpikes(sorted));
+}
+
+// ---------------------------------------------------------------------------
+
 const LEADING_DASH_REGEX = /^-+/
 const TRAILING_DASH_REGEX = /-+$/
 const NON_WORD_REGEX = /[^\w]+/g

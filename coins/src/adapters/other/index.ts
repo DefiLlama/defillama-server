@@ -34,6 +34,7 @@ import opal from "./opal";
 import gmdV2 from "./gmdV2";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
+import cap from "./cap";
 
 export { glp };
 
@@ -580,5 +581,6 @@ export const adapters = {
   reyaUSD,
   karakWrapped,
   matrixdock,
-  dsu
+  dsu, 
+  cap
 };

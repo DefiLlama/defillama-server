@@ -1672,6 +1672,11 @@
     }
   },
   "bsc": {
+    "0x3d0a2a3a30a43a2c1c4b92033609245e819ae6a6": {
+      "decimals": "18",
+      "symbol": "iBENJI",
+      "to": "coingecko#franklin-templeton-benji"
+    },
     "0x2D5BdC96D9C8AabBDB38c9A27398513e7E5ef84F": {
       "decimals": "6",
       "symbol": "BUIDL",

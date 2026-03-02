@@ -36074,7 +36074,10 @@ const data3_2: Protocol[] = [
     listedAt: 1710843413,
     dimensions: {
       fees: "llamalend-curve",
-      dexs: "llamalend-curve"
+      dexs: {
+        genuineSpikes: [["2026-03-02", "sDola price spike (Donation attack)"]],
+        adapter: "llamalend-curve"
+      }
     }
   },
   {

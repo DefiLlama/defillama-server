@@ -4,7 +4,7 @@ import treasuries from "../protocols/treasury";
 
 export const excludedProtocolCategories: string[] = ["CEX"];
 
-export const unsupportedChains = ["provenance", "stellar"];
+export const unsupportedChains: string[] = [];
 
 
 export const protocolIdMap: { [id: string]: string } = {};

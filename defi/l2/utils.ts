@@ -214,6 +214,53 @@ async function getSolanaTokenSupply(
 
   return supplies;
 }
+async function getProvenanceSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Provenance adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const PROVENANCE_LCD = "https://api.provenance.io";
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(
+          `${PROVENANCE_LCD}/cosmos/bank/v1beta1/supply/by_denom?denom=${encodeURIComponent(token)}`
+        ).then((r) => r.json());
+        if (res?.amount?.amount) supplies[`provenance:${token}`] = Number(res.amount.amount);
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
+async function getStellarSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Stellar adapter!`);
+  const supplies: { [token: string]: number } = {};
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        // Token format: "{asset_code}-{asset_issuer}" (dash-separated to avoid clashing with chain:address colon)
+        const dashIdx = token.lastIndexOf("-");
+        if (dashIdx === -1) return;
+        const asset_code = token.substring(0, dashIdx);
+        const asset_issuer = token.substring(dashIdx + 1);
+        const res = await fetch(
+          `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
+        ).then((r) => r.json());
+        const record = res?._embedded?.records?.[0];
+        if (record?.amount != null) {
+          // Horizon exposes amount in display units with 7 implicit decimal places.
+          // Multiply by 1e7 to align with decimals=7 returned by the price API.
+          supplies[`stellar:${token}`] = Math.round(parseFloat(record.amount) * 1e7);
+        }
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -300,6 +347,8 @@ export async function fetchSupplies(
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
+    if (chain == "provenance") return await getProvenanceSupplies(tokens, timestamp);
+    if (chain == "stellar") return await getStellarSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);

@@ -18773,7 +18773,8 @@ const data4: Protocol[] = [
     chains: ["Scroll"],
     module: "etherfi-cash-collateral-management/index.js",
     twitter: "ether_fi",
-    parentProtocol: "parent#etherfi-cash",
+    parentProtocol: "parent#ether-fi",
+    // previous under parent protocol etherfi-cash
     tokensExcludedFromParent: {
       Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
     },
@@ -18805,7 +18806,8 @@ const data4: Protocol[] = [
     chains: ["Scroll"],
     module: "etherfi-cash-liquid/index.js",
     twitter: "ether_fi",
-    parentProtocol: "parent#etherfi-cash",
+    parentProtocol: "parent#ether-fi",
+    // previous under parent protocol etherfi-cash
     listedAt: 1751313285,
     oraclesBreakdown: [
       {

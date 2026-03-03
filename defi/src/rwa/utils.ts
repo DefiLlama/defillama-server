@@ -1,4 +1,4 @@
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import { bridgedTvlMixedCaseChains } from "../utils/shared/constants";
 import { getChainDisplayName } from "../utils/normalizeChain";
 import {
   RWA_ALWAYS_STRING_ARRAY_FIELDS,
@@ -37,7 +37,7 @@ export function sortTokensByChain(tokens: { [protocol: string]: string[] }): {
       const chain: string = pk.substring(0, pk.indexOf(":"));
 
       if (!tokensSortedByChain[chain]) tokensSortedByChain[chain] = [];
-      const normalizedPk: string = chainsThatShouldNotBeLowerCased.includes(chain) ? pk : pk.toLowerCase();
+      const normalizedPk: string = bridgedTvlMixedCaseChains.includes(chain) ? pk : pk.toLowerCase();
 
       tokensSortedByChain[chain].push(normalizedPk);
       tokenToProjectMap[normalizedPk] = protocol;

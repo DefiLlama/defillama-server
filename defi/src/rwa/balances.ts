@@ -1,6 +1,5 @@
 import BigNumber from "bignumber.js";
 import { zero } from "../../l2/constants";
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { getChainDisplayName } from "../utils/normalizeChain";
 import * as sdk from "@defillama/sdk";
 import { endpointMap, runInChunks } from "../../l2/utils";
@@ -177,10 +176,7 @@ export async function fetchEvm(
     if (!b) return;
     const { input, output, success } = b;
     if (!success || output == "0") return;
-    const normalizedAddress = chainsThatShouldNotBeLowerCased.includes(chain)
-      ? input.target
-      : input.target.toLowerCase();
-    const id = tokenToProjectMap[`${chain}:${normalizedAddress}`];
+    const id = tokenToProjectMap[`${chain}:${input.target.toLowerCase()}`];
 
     const readableChain = getChainDisplayName(chain, true);
     if (!(id in excludedAmounts)) excludedAmounts[id] = {};

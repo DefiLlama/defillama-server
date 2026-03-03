@@ -240,9 +240,66 @@ function sumObjectValues(obj: any): number {
 
 const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl'] as const;
 
+// Maximum consecutive anomalous days to bridge (must match utils.ts MAX_SPIKE_RUN)
+const MAX_SPIKE_RUN = 5;
+
+/**
+ * Applies forward-looking spike removal to a single numeric stream within
+ * the PG-cache entries array.  Mutates entries in place.
+ *
+ * `getValue` / `setValue` abstract over whether we're operating on the
+ * aggregate level or on a specific chain's metric.
+ */
+function removePGSpikes(
+  entries: Array<{ timestamp: number; [k: string]: any }>,
+  getValue: (entry: any) => number,
+  setValue: (entry: any, v: number) => void
+) {
+  if (entries.length < 3) return;
+
+  let lastGoodIdx = 0;
+  let i = 1;
+
+  while (i < entries.length) {
+    const lastGoodVal = getValue(entries[lastGoodIdx]);
+    const currVal = getValue(entries[i]);
+
+    if (!Number.isFinite(lastGoodVal) || !Number.isFinite(currVal) || lastGoodVal < 1) {
+      lastGoodIdx = i; i++; continue;
+    }
+
+    const ratio = currVal / lastGoodVal;
+    if (ratio >= 0.1 && ratio <= 10) { lastGoodIdx = i; i++; continue; }
+
+    // Anomalous — scan ahead for next good reference
+    let nextGoodIdx = -1;
+    for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, entries.length); j++) {
+      const jVal = getValue(entries[j]);
+      if (!Number.isFinite(jVal)) break;
+      const jRatio = jVal / lastGoodVal;
+      if (jRatio >= 0.2 && jRatio <= 5) { nextGoodIdx = j; break; }
+    }
+
+    if (nextGoodIdx === -1) { lastGoodIdx = i; i++; continue; }
+
+    // Interpolate the entire anomalous run [i, nextGoodIdx)
+    const prevTs = entries[lastGoodIdx].timestamp;
+    const nextTs = entries[nextGoodIdx].timestamp;
+    const nextVal = getValue(entries[nextGoodIdx]);
+
+    for (let k = i; k < nextGoodIdx; k++) {
+      const t = (entries[k].timestamp - prevTs) / (nextTs - prevTs);
+      setValue(entries[k], lastGoodVal + (nextVal - lastGoodVal) * t);
+    }
+
+    lastGoodIdx = nextGoodIdx;
+    i = nextGoodIdx + 1;
+  }
+}
+
 /**
  * Smooths PG cache time-series data (chain-level breakdown) by:
- *   1. Removing isolated single-day spikes/dips at both aggregate and per-chain level.
+ *   1. Removing spikes/dips (including multi-day runs) at aggregate and per-chain level.
  *   2. Filling multi-day gaps with linear interpolation.
  */
 function smoothPGCacheData(data: PGCacheData): PGCacheData {
@@ -264,38 +321,27 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
     ),
   }));
 
-  // Step 1: remove isolated spikes/dips
-  for (let i = 1; i < entries.length - 1; i++) {
-    const prev = entries[i - 1];
-    const curr = entries[i];
-    const next = entries[i + 1];
-    const t = (curr.timestamp - prev.timestamp) / (next.timestamp - prev.timestamp);
+  // Step 1: remove spikes/dips — aggregate metrics
+  for (const metric of PG_CACHE_METRICS) {
+    removePGSpikes(
+      entries,
+      (e) => e[metric],
+      (e, v) => { e[metric] = v; }
+    );
+  }
 
+  // Step 1b: remove spikes/dips — per-chain metrics
+  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+  for (const chainKey of allChainKeys) {
     for (const metric of PG_CACHE_METRICS) {
-      const prevVal = prev[metric];
-      const currVal = curr[metric];
-      const nextVal = next[metric];
-      const avg = (prevVal + nextVal) / 2;
-      if (avg < 1) continue;
-      const ratio = currVal / avg;
-      if (ratio < 0.1 || ratio > 10) {
-        curr[metric] = prevVal + (nextVal - prevVal) * t;
-      }
-    }
-
-    for (const chainKey of allChainKeys) {
-      const prevC = prev.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-      const currC = curr.chains[chainKey];
-      const nextC = next.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-      if (!currC) continue;
-      for (const metric of PG_CACHE_METRICS) {
-        const avg = (prevC[metric] + nextC[metric]) / 2;
-        if (avg < 1) continue;
-        const ratio = currC[metric] / avg;
-        if (ratio < 0.1 || ratio > 10) {
-          currC[metric] = prevC[metric] + (nextC[metric] - prevC[metric]) * t;
+      removePGSpikes(
+        entries,
+        (e) => (e.chains[chainKey] ?? zeroPGChain)[metric],
+        (e, v) => {
+          if (!e.chains[chainKey]) e.chains[chainKey] = { ...zeroPGChain };
+          e.chains[chainKey][metric] = v;
         }
-      }
+      );
     }
   }
 
@@ -315,8 +361,8 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
         const intTs = curr.timestamp + 86400 * j;
         const intChains: PGCacheRecord['chains'] = {};
         for (const chainKey of allChainKeys) {
-          const cC = curr.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-          const nC = next.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+          const cC = curr.chains[chainKey] ?? zeroPGChain;
+          const nC = next.chains[chainKey] ?? zeroPGChain;
           intChains[chainKey] = {
             onChainMcap: cC.onChainMcap + (nC.onChainMcap - cC.onChainMcap) * f,
             activeMcap: cC.activeMcap + (nC.activeMcap - cC.activeMcap) * f,

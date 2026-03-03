@@ -4,26 +4,39 @@ import fetch from "node-fetch";
 
 const BASE_URL = "https://middleware.jobstash.xyz/public/jobs/list";
 const PAGE_LIMIT = 100;
+const TIMEOUT_MS = 15_000;
 
 async function fetchPage(page: number): Promise<any> {
   const url = `${BASE_URL}?orderBy=publicationDate&page=${page}&limit=${PAGE_LIMIT}`;
-  const res = await fetch(url, { headers: { accept: "application/json" } });
-  if (!res.ok) throw new Error(`JobStash API returned ${res.status}: ${res.statusText}`);
-  return res.json();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { headers: { accept: "application/json" }, signal: controller.signal as any });
+    if (!res.ok) throw new Error(`JobStash API returned ${res.status}: ${res.statusText}`);
+    return res.json();
+  } catch (e: any) {
+    if (e?.name === "AbortError") throw new Error(`JobStash API request timed out after ${TIMEOUT_MS}ms (page ${page})`);
+    throw e;
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function fetchAllJobs(): Promise<any[]> {
   const allJobs: any[] = [];
 
   const firstPage = await fetchPage(1);
+  if (!firstPage || typeof firstPage !== "object") throw new Error("JobStash API returned invalid response for page 1");
+  if (typeof firstPage.total !== "number") throw new Error(`JobStash API missing numeric total, got: ${typeof firstPage.total}`);
+
   const total: number = firstPage.total;
-  allJobs.push(...firstPage.data);
+  if (Array.isArray(firstPage.data)) allJobs.push(...firstPage.data);
 
   const totalPages = Math.ceil(total / PAGE_LIMIT);
 
   for (let page = 2; page <= totalPages; page++) {
     const pageData = await fetchPage(page);
-    allJobs.push(...pageData.data);
+    if (pageData && Array.isArray(pageData.data)) allJobs.push(...pageData.data);
   }
 
   return allJobs;

@@ -9147,6 +9147,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "pumpspace10000",
   },
+  {
+    id: "parent#tideswap",
+    name: "TideSwap",
+    url: "https://www.tideswap.app/",
+    description: "Meta-aggregator (0x + LI.FI) and Uniswap V2 AMM on Ink L2.",
+    logo: `${baseIconsUrl}/tideswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TideSwapApp",
+    github: ["Cryptodian1"],
+  },
 ];
 
 export default parentProtocols;

@@ -20479,6 +20479,7 @@ const data2: Protocol[] = [
     listedAt: 1669204672,
     parentProtocol: "parent#zkbob_",
   },
+  /*
   {
     id: "2305",
     name: "MaskEX",
@@ -20497,6 +20498,7 @@ const data2: Protocol[] = [
     twitter: "MaskEXGlobal",
     listedAt: 1669209266,
   },
+  */
   {
     id: "2306",
     name: "Bored Candy City",
@@ -20665,6 +20667,7 @@ const data2: Protocol[] = [
       dexs: "step-exchange"
     }
   },
+  /*
   {
     id: "2313",
     name: "Firi",
@@ -20683,6 +20686,7 @@ const data2: Protocol[] = [
     twitter: "firiapp",
     listedAt: 1669465526,
   },
+  */
   {
     id: "2314",
     name: "Gate",
@@ -21756,6 +21760,7 @@ const data2: Protocol[] = [
     listedAt: 1671064853,
     deadUrl: true,
   },
+  /*
   {
     id: "2363",
     name: "Hotbit",
@@ -21776,6 +21781,7 @@ const data2: Protocol[] = [
     listedAt: 1671107470,
     deadUrl: true,
   },
+  */
   {
     id: "2364",
     name: "Butter Network", //previous Butter Swap

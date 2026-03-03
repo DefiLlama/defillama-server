@@ -9136,7 +9136,9 @@ const data3_0: Protocol[] = [
     module: "xlsd/index.js",
     twitter: "ext_lsd",
     listedAt: 1686823126,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
+  /* missing PoR data
   {
     id: "3115",
     name: "BitMake",
@@ -9157,6 +9159,7 @@ const data3_0: Protocol[] = [
     listedAt: 1686838812,
     deadUrl: true,
   },
+  */
   {
     id: "3116",
     name: "Basilisk",
@@ -19455,6 +19458,7 @@ const data3_1: Protocol[] = [
     module: "bitmark/index.js",
     twitter: "BitMartExchange",
   },
+  /*
   {
     id: "3578",
     name: "Klever Exchange",
@@ -19473,6 +19477,7 @@ const data3_1: Protocol[] = [
     module: "klever-exchange/index.js",
     twitter: "klever_io",
   },
+  */
   {
     id: "3579",
     name: "BTSE",
@@ -55636,6 +55641,7 @@ const data3_3: Protocol[] = [
     github: ["metrom-xyz"],
     listedAt: 1728378198
   },
+  /*
   {
     id: "5215",
     name: "Bitcointry",
@@ -55655,6 +55661,7 @@ const data3_3: Protocol[] = [
     twitter: "Bitcointrycom",
     listedAt: 1728378235
   },
+  */
   {
     id: "5216",
     name: "Pit Finance",
@@ -61334,6 +61341,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.gud.tech/audits"],
     listedAt: 1733597319
   },
+  /*
   {
     id: "5477",
     name: "Tapbit",
@@ -61352,6 +61360,7 @@ const data3_3: Protocol[] = [
     twitter: "Tapbitglobal",
     listedAt: 1733744113
   },
+  */
   {
     id: "5478",
     name: "STONEBTC",

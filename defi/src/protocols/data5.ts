@@ -12913,5 +12913,24 @@ const data5: Protocol[] = [
       fees: "aave-labs",
     }
   },
+  {
+    id: "7489",
+    name: "Coinstore",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinstore.com/",
+    description:
+      "Coinstore is a centralized cryptocurrency exchange established in 2020 and is registered in British Virgin Islands..",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinstore.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Tron", "Solana",  "Polygon", "Optimism", "Arbitrum"],
+    module: "coinstore/index.js",
+    twitter: "CoinstoreExc",
+    listedAt: 1772550765
+  },
 ];
 export default data5;

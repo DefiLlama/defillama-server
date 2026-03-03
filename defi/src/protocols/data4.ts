@@ -18512,7 +18512,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/ssv-network.jpg`,
     audits: "2",
     gecko_id: "ssv-network",
-    cmcId: 12999,
+    cmcId: "12999",
     category: "Staking Pool",
     chains: ["Ethereum"],
     module: "ssv-network/index.js",

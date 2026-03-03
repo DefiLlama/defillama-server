@@ -1715,14 +1715,14 @@ const data5: Protocol[] = [
   },
   {
     id: "6968",
-    name: "PumpSpace",
+    name: "PumpSpace V2",
     address: null,
     symbol: "-",
     url: "https://pumpspace.io/",
     description:
       "PumpSpace is a decentralized liquidity platform on Avalanche supporting both V2 and V3 (Trident) AMM models, offering multi-token farms and on-chain yield optimization for community-driven tokens.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/pumpspace.jpg`,
+    logo: `${baseIconsUrl}/pumpspace-v2.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -1732,6 +1732,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "pumpspace/index.js",
     twitter: "pumpspace10000",
+    parentProtocol: "parent#pumpspace",
     dimensions: {
       fees: "pumpspace-v2"
     },
@@ -12932,6 +12933,35 @@ const data5: Protocol[] = [
     module: "coinstore/index.js",
     twitter: "CoinstoreExc",
     listedAt: 1772550765
+  },
+  {
+    id: "7490",
+    name: "PumpSpace V3",
+    address: null,
+    symbol: "-",
+    url: "https://pumpspace.io/",
+    description:
+      "PumpSpace is a decentralized liquidity platform on Avalanche supporting both V2 and V3 (Trident) AMM models, offering multi-token farms and on-chain yield optimization for community-driven tokens.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/pumpspace-v3.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFromIds: ["2198"],
+    module: "dummy.js",
+    twitter: "pumpspace10000",
+    parentProtocol: "parent#pumpspace",
+    dimensions: {
+      fees: "pumpspace-v3",
+      dexs: "pumpspace-v3",
+    },
+    audit_links: [
+      "https://www.cyberscope.io/audits/pumpspace?assessmentIndex=1https://github.com/cyberscope-io/audits/blob/main/pumpspace/dexAudit.pdf",
+      "https://github.com/cyberscope-io/audits/blob/main/pumpspace/audit.pdf",
+    ],
   },
 ];
 export default data5;

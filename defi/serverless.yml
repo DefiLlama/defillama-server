@@ -429,6 +429,12 @@ functions:
   #     - http:
   #         path: deposited-contracts/{addresses}/{threshold}
   #         method: get
+  storeJobsList:
+    handler: src/storeJobsList.default
+    timeout: 120
+    memorySize: 512
+    events:
+      - schedule: cron(0 6 * * ? *)
 
 resources:
   # CORS for api gateway errors

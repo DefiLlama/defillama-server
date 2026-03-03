@@ -1,6 +1,6 @@
-import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { storeR2JSONString } from "./utils/r2";
+import { storeR2JSONString } from "../utils/r2";
 import fetch from "node-fetch";
+import * as sdk from "@defillama/sdk";
 
 const BASE_URL = "https://middleware.jobstash.xyz/public/jobs/list";
 const PAGE_LIMIT = 100;
@@ -36,6 +36,9 @@ async function fetchAllJobs(): Promise<any[]> {
   const totalPages = Math.ceil(total / PAGE_LIMIT);
 
   for (let page = 2; page <= totalPages; page++) {
+    console.log(`Fetching JobStash API page ${page}/${totalPages}...`);
+    await sdk.util.sleep(3100); // brief pause to avoid overwhelming the API
+
     const pageData = await fetchPage(page);
     if (!pageData || !Array.isArray(pageData.data)) throw new Error(`JobStash API page ${page} returned invalid .data: ${typeof pageData?.data}`);
     allJobs.push(...pageData.data);
@@ -54,10 +57,19 @@ async function storeJobsList() {
     }
 
     console.log(`Fetched ${allJobs.length} jobs from JobStash, storing to R2`);
-    await storeR2JSONString("jobslist/jobstash.json", JSON.stringify(allJobs), 24 * 60 * 60);
+    await storeR2JSONString("jobslist/jobstash.json", JSON.stringify({
+      data: allJobs,
+      updatedAt: new Date().toISOString(),
+    }), 24 * 60 * 60);
   } catch (e) {
     console.error("Failed to fetch jobs from JobStash, skipping R2 update:", e);
   }
 }
 
-export default wrapScheduledLambda(storeJobsList);
+storeJobsList().then(() => {
+  console.log("storeJobsList completed successfully");
+  process.exit(0);
+}).catch(e => {
+  console.error("Unexpected error in storeJobsList:", e);
+  process.exit(1);
+})

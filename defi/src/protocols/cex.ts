@@ -72,7 +72,7 @@ export const cexsData: Array<ICex> = [
     ownTokens: ['MNT'],
     url: "https://www.bybit.com",
   },
-  /* */
+  /*
 	{
 		name: 'Kraken',
 		slug: 'kraken',
@@ -82,7 +82,7 @@ export const cexsData: Array<ICex> = [
 		cgDeriv: 'kraken_futures',
 		url: 'https://www.kraken.com/',
 	},
-	/**/
+*/
   {
     name: "Crypto.com",
     slug: "Crypto-com",

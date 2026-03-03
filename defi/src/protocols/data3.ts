@@ -18693,6 +18693,7 @@ const data3_1: Protocol[] = [
     twitter: "CoinWOfficial",
     listedAt: 1695297555,
   },
+/*
   {
     id: "3545",
     name: "Kraken",
@@ -18711,6 +18712,7 @@ const data3_1: Protocol[] = [
     twitter: "krakenfx",
     listedAt: 1695298418,
   },
+*/
   {
     id: "3546",
     name: "CoinEx",

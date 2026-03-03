@@ -1732,6 +1732,9 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "pumpspace/index.js",
     twitter: "pumpspace10000",
+    dimensions: {
+      fees: "pumpspace-v2"
+    },
     audit_links: [
       "https://www.cyberscope.io/audits/pumpspace?assessmentIndex=1https://github.com/cyberscope-io/audits/blob/main/pumpspace/dexAudit.pdf",
       "https://github.com/cyberscope-io/audits/blob/main/pumpspace/audit.pdf",

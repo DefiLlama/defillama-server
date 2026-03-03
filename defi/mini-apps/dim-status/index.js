@@ -7,6 +7,7 @@ const runTypes = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options',
   // 'rest',
   'open-interest',
+  'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
 ]
 
 const adapterTypes = [

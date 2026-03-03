@@ -199,6 +199,24 @@
       font-size: 11px; color: var(--muted); text-transform: uppercase;
       letter-spacing: .04em;
     }
+
+    /* ── Collapsible summary ── */
+    .collapse-toggle {
+      display: flex; align-items: center; gap: 8px;
+      width: 100%; padding: 12px 16px; border: none;
+      background: var(--surface); color: var(--text);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .collapse-toggle:hover { background: var(--surface2); }
+    .collapse-arrow {
+      display: inline-block; transition: transform .15s;
+      font-size: 11px; color: var(--muted);
+    }
+    .collapse-toggle.open .collapse-arrow { transform: rotate(90deg); }
+    .collapse-body { display: none; }
+    .collapse-body.open { display: block; }
   </style>
 </head>
 <body>
@@ -209,13 +227,16 @@
 </div>
 
 <nav id="top-tab-bar">
-  <button class="top-tab active" data-top="dimensions">Dimensions</button>
+  <button class="top-tab" data-top="dimensions">Dimensions</button>
   <button class="top-tab" data-top="tvl">TVL</button>
 </nav>
 
-<div class="top-panel active" id="panel-dimensions">
+<div class="top-panel" id="panel-dimensions">
   <nav id="tab-bar"></nav>
-  <main id="content"><div class="loading">Loading…</div></main>
+  <main id="content">
+    <div id="dim-summary"></div>
+    <div id="dim-detail"><div class="loading">Loading…</div></div>
+  </main>
 </div>
 
 <div class="top-panel" id="panel-tvl">
@@ -225,7 +246,11 @@
 <script>
 'use strict';
 
-const RUN_TYPES = ['fees', 'dexs', 'derivatives', 'aggregators', 'options', 'open-interest'];
+const RUN_TYPES = [
+  'fees', 'dexs', 'derivatives', 'aggregators', 'options',
+  'open-interest',
+  'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+]
 
 const SUB_SECTIONS = [
   { key: 'errors',        label: 'Failures'            },
@@ -241,6 +266,11 @@ const SUB_SECTIONS = [
 const _cache = {};
 let activeRunType = null;
 let activeSection = SUB_SECTIONS[0].key;
+
+// ── LocalStorage helpers ──────────────────────────────────────────────────────
+const LS_KEYS = { topTab: 'dim-top-tab', runTab: 'dim-run-tab', subSec: 'dim-sub-sec' };
+function lsGet(k, fallback) { try { return localStorage.getItem(k) ?? fallback; } catch { return fallback; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch {} }
 
 // ── Fetch ─────────────────────────────────────────────────────────────────────
 async function getJson(key) {
@@ -376,8 +406,7 @@ function renderTable(containerId, rows, cols, defaultSortKey, defaultSortDir) {
 
 // ── Sub-section switching ──────────────────────────────────────────────────────
 function showSection(key) {
-  activeSection = key;
-  document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  activeSection = key;  lsSet(LS_KEYS.subSec, key);  document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
   const panel = document.getElementById(`panel-${key}`);
   if (panel) panel.classList.add('active');
   document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
@@ -434,8 +463,8 @@ function renderAdapterAndRunStats(id, adapterStats, finalRes, run) {
 
 // ── Tab loader ─────────────────────────────────────────────────────────────────
 async function loadTab(runType) {
-  const content = document.getElementById('content');
-  content.innerHTML = '<div class="loading">Loading…</div>';
+  const detail = document.getElementById('dim-detail');
+  detail.innerHTML = '<div class="loading">Loading…</div>';
 
   try {
     const [run, dim] = await Promise.all([
@@ -489,7 +518,7 @@ async function loadTab(runType) {
     });
 
     // Build content: always-on stats + inline sub-nav + sub-panels
-    content.innerHTML = `
+    detail.innerHTML = `
       <div class="stats-header">
         <div class="gen-time">
           ${fmtDate(genTime)}<span class="rel">${relTime(genTime)}</span>
@@ -580,7 +609,8 @@ async function loadTab(runType) {
     ], 'queryCount', -1);
 
   } catch (err) {
-    content.innerHTML = `<div class="err-state">Error loading <strong>${esc(runType)}</strong>: ${esc(err.message)}</div>`;
+    const detail = document.getElementById('dim-detail');
+    detail.innerHTML = `<div class="err-state">Error loading <strong>${esc(runType)}</strong>: ${esc(err.message)}</div>`;
     console.error(err);
   }
 }
@@ -600,6 +630,7 @@ function initRunTabs() {
     bar.querySelectorAll('.run-tab').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeRunType = tab;
+    lsSet(LS_KEYS.runTab, tab);
     loadTab(tab);
   });
 }
@@ -609,6 +640,93 @@ function initClock() {
   function tick() { if (el) el.textContent = new Date().toLocaleTimeString(); }
   tick();
   setInterval(tick, 1000);
+}
+
+// ── Dimensions summary table ───────────────────────────────────────────
+let summaryLoaded = false;
+
+async function loadDimSummary() {
+  const el = document.getElementById('dim-summary');
+  el.innerHTML = '<div class="loading" style="padding:16px">Loading summary…</div>';
+
+  try {
+    // Fetch all run data in parallel
+    const results = await Promise.allSettled(
+      RUN_TYPES.map(rt => getJson(`run-data-${rt}`))
+    );
+
+    const summaryRows = RUN_TYPES.map((rt, i) => {
+      if (results[i].status !== 'fulfilled') return null;
+      const run = results[i].value;
+      const stats  = run.adapterStats ?? [];
+      const logs   = run.jsonLogs ?? [];
+      const finalRes = logs.find(l => l.type === 'adapterFinalRes') ?? {};
+
+      // Aggregate across adapter types within this run
+      const started  = stats.reduce((s, a) => s + (a.started  ?? 0), 0);
+      const finished = stats.reduce((s, a) => s + (a.endCount ?? 0), 0);
+      const skipped  = stats.reduce((s, a) => s + (a.skipped  ?? 0), 0);
+      const dead     = stats.reduce((s, a) => s + (a.dead     ?? 0), 0);
+      const haveData = stats.reduce((s, a) => s + (a.haveData ?? 0), 0);
+      const running  = stats.reduce((s, a) => s + (a.running  ?? 0), 0);
+
+      return {
+        runType:  rt,
+        started,
+        finished,
+        success:  finalRes.success  ?? null,
+        errors:   finalRes.errors   ?? null,
+        skipped,
+        dead,
+        haveData,
+        running,
+        runtime:  finalRes.timeTaken != null ? Number(finalRes.timeTaken) : null,
+        genTime:  run.generationTime ?? null,
+      };
+    }).filter(Boolean);
+
+    const collapsed = lsGet('dim-summary-collapsed', 'false') === 'true';
+
+    el.innerHTML = `
+      <div class="card" style="margin-bottom:16px">
+        <button class="collapse-toggle${collapsed ? '' : ' open'}" id="summary-toggle">
+          <span class="collapse-arrow">▶</span>
+          All Runs Summary
+          <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${summaryRows.length} types)</span>
+        </button>
+        <div class="collapse-body${collapsed ? '' : ' open'}" id="summary-body">
+          <div id="tbl-dim-summary"></div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('summary-toggle').addEventListener('click', () => {
+      const toggle = document.getElementById('summary-toggle');
+      const body   = document.getElementById('summary-body');
+      toggle.classList.toggle('open');
+      body.classList.toggle('open');
+      lsSet('dim-summary-collapsed', !body.classList.contains('open'));
+    });
+
+    renderTable('tbl-dim-summary', summaryRows, [
+      { key: 'runType',  label: 'Adapter Type', render: r => '<span class="bold">' + esc(r.runType) + '</span>' },
+      { key: 'started',  label: 'Started',      sortVal: r => r.started },
+      { key: 'finished', label: 'Finished',     sortVal: r => r.finished },
+      { key: 'success',  label: 'Success',      render: r => r.success != null ? '<span style="color:var(--green)">' + fmtN(r.success) + '</span>' : '—', sortVal: r => r.success },
+      { key: 'errors',   label: 'Errors',       render: r => r.errors  != null ? (r.errors > 0 ? '<span style="color:var(--red)">' + fmtN(r.errors) + '</span>' : '0') : '—', sortVal: r => r.errors },
+      { key: 'skipped',  label: 'Skipped',      render: r => r.skipped > 0 ? '<span style="color:var(--yellow)">' + fmtN(r.skipped) + '</span>' : '0', sortVal: r => r.skipped },
+      { key: 'dead',     label: 'Dead',         render: r => r.dead    > 0 ? '<span style="color:var(--red)">'    + fmtN(r.dead) + '</span>'    : '0', sortVal: r => r.dead },
+      { key: 'haveData', label: 'Have Data',    render: r => r.haveData > 0 ? '<span style="color:var(--green)">' + fmtN(r.haveData) + '</span>' : '0', sortVal: r => r.haveData },
+      { key: 'running',  label: 'Running',      sortVal: r => r.running },
+      { key: 'runtime',  label: 'Runtime',      render: r => fmtDurSec(r.runtime), sortVal: r => r.runtime },
+      { key: 'genTime',  label: 'Generated',    render: r => r.genTime ? relTime(r.genTime) : '—', sortVal: r => r.genTime ? new Date(r.genTime).getTime() : 0 },
+    ], 'errors', -1);
+
+    summaryLoaded = true;
+  } catch (err) {
+    el.innerHTML = '<div class="err-state">Error loading summary: ' + esc(err.message) + '</div>';
+    console.error(err);
+  }
 }
 
 // ── TVL tab ────────────────────────────────────────────────────────────────────
@@ -746,19 +864,26 @@ async function loadTvlTab() {
 }
 
 // ── Top-level tab switching ─────────────────────────────────────────────────
+function switchTopTab(tab) {
+  const bar = document.getElementById('top-tab-bar');
+  bar.querySelectorAll('.top-tab').forEach(b => b.classList.remove('active'));
+  const btn = bar.querySelector(`.top-tab[data-top="${tab}"]`);
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.top-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + tab);
+  if (panel) panel.classList.add('active');
+  lsSet(LS_KEYS.topTab, tab);
+
+  if (tab === 'tvl' && !tvlLoaded) loadTvlTab();
+  if (tab === 'dimensions' && !summaryLoaded) loadDimSummary();
+}
+
 function initTopTabs() {
   const bar = document.getElementById('top-tab-bar');
   bar.addEventListener('click', e => {
     const btn = e.target.closest('.top-tab');
     if (!btn) return;
-    const tab = btn.dataset.top;
-    bar.querySelectorAll('.top-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.top-panel').forEach(p => p.classList.remove('active'));
-    const panel = document.getElementById('panel-' + tab);
-    if (panel) panel.classList.add('active');
-
-    if (tab === 'tvl' && !tvlLoaded) loadTvlTab();
+    switchTopTab(btn.dataset.top);
   });
 }
 
@@ -766,12 +891,25 @@ function init() {
   initTopTabs();
   initRunTabs();
   initClock();
-  const first = document.querySelector('.run-tab');
-  if (first) {
-    first.classList.add('active');
-    activeRunType = first.dataset.tab;
-    loadTab(activeRunType);
+
+  // Restore sub-section from localStorage
+  const savedSubSec = lsGet(LS_KEYS.subSec, SUB_SECTIONS[0].key);
+  if (SUB_SECTIONS.some(s => s.key === savedSubSec)) activeSection = savedSubSec;
+
+  // Restore run tab from localStorage
+  const savedRunTab = lsGet(LS_KEYS.runTab, RUN_TYPES[0]);
+  const runTabToLoad = RUN_TYPES.includes(savedRunTab) ? savedRunTab : RUN_TYPES[0];
+  const targetBtn = document.querySelector(`.run-tab[data-tab="${runTabToLoad}"]`);
+  if (targetBtn) {
+    targetBtn.classList.add('active');
+    activeRunType = runTabToLoad;
+    lsSet(LS_KEYS.runTab, runTabToLoad);
+    loadTab(runTabToLoad);
   }
+
+  // Restore top tab from localStorage
+  const savedTopTab = lsGet(LS_KEYS.topTab, 'dimensions');
+  switchTopTab(['dimensions', 'tvl'].includes(savedTopTab) ? savedTopTab : 'dimensions');
 }
 
 init();

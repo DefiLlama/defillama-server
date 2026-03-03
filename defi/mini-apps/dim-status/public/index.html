@@ -217,6 +217,31 @@
     .collapse-toggle.open .collapse-arrow { transform: rotate(90deg); }
     .collapse-body { display: none; }
     .collapse-body.open { display: block; }
+
+    /* ── Expandable error detail ── */
+    .err-truncated {
+      max-width: 220px; white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis; font-size: 11px; color: var(--red);
+      cursor: pointer;
+    }
+    .err-truncated:hover { color: var(--text); }
+    tr.err-detail-row td {
+      background: var(--surface2); padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .err-detail-block { font-size: 11px; line-height: 1.5; }
+    .err-detail-block dt {
+      color: var(--muted); font-size: 10px; text-transform: uppercase;
+      letter-spacing: .04em; margin-top: 8px;
+    }
+    .err-detail-block dt:first-child { margin-top: 0; }
+    .err-detail-block dd {
+      color: var(--text); word-break: break-all; white-space: pre-wrap;
+      font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+      max-height: 200px; overflow-y: auto;
+      background: var(--surface3); padding: 6px 8px; border-radius: 4px;
+      margin-top: 2px;
+    }
   </style>
 </head>
 <body>
@@ -741,13 +766,18 @@ async function loadTvlTab() {
 
     const ts = data.timestamp;
     const outdated = (data.hourlyOutdatedProtocols ?? []).map(p => ({
-      protocolName: p.protocolName ?? '',
-      slug:         p.slug ?? sluggify(p.protocolName ?? ''),
-      category:     p.category ?? '',
-      lastUpdate:   p.lastUpdate ?? null,
-      tvl:          p.tvl ?? null,
-      chains:       p.chains ?? [],
-      module:       p.module ?? null,
+      protocolName:        p.protocolName ?? '',
+      slug:                p.slug ?? sluggify(p.protocolName ?? ''),
+      category:            p.category ?? '',
+      lastUpdate:          p.lastUpdate ?? null,
+      tvl:                 p.tvl ?? null,
+      chains:              p.chains ?? [],
+      module:              p.module ?? null,
+      errorChains:         p.errorChains ?? [],
+      errorString_tvl:     p.errorString_tvl ?? '',
+      errorString_protocol:p.errorString_protocol ?? '',
+      errorStack:          p.errorStack ?? '',
+      error_storedKey:     p.error_storedKey ?? '',
     }));
 
     // Collect unique categories for filter
@@ -818,6 +848,9 @@ async function loadTvlTab() {
       </div>
     `;
 
+    // Current filtered+indexed data — shared with the click handler
+    let currentIndexed = [];
+
     // Render with filter support
     function renderTvlTable() {
       const nameFilter = (document.getElementById('tvl-filter-name')?.value ?? '').toLowerCase();
@@ -833,23 +866,65 @@ async function loadTvlTab() {
       if (minAgeSec > 0) filtered = filtered.filter(p => p.lastUpdate != null && (nowSec - p.lastUpdate) >= minAgeSec);
 
       // Add index after filtering
-      const indexed = filtered.map((r, i) => ({ ...r, _idx: i + 1 }));
+      currentIndexed = filtered.map((r, i) => ({ ...r, _idx: i + 1 }));
 
       const countEl = document.getElementById('tvl-filter-count');
       if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + outdated.length + ' protocols';
 
-      renderTable('tbl-tvl-outdated', indexed, [
+      renderTable('tbl-tvl-outdated', currentIndexed, [
         { key: '_idx',         label: '#',            sortVal: r => r._idx },
         { key: 'protocolName', label: 'Protocol',    render: r => '<a href="https://defillama.com/protocol/' + encodeURIComponent(r.slug) + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:500">' + esc(r.protocolName) + '</a>', sortVal: r => r.protocolName },
         { key: 'category',     label: 'Category',    render: r => r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '—' },
         { key: 'lastUpdateRel',label: 'Age',          render: r => r.lastUpdate ? relTime(new Date(r.lastUpdate * 1000).toISOString()) : '—', sortVal: r => r.lastUpdate ? -r.lastUpdate : null },
         { key: 'tvl',          label: 'TVL',          render: r => humanTvl(r.tvl), sortVal: r => r.tvl },
         { key: 'chains',       label: 'Top Chains',   render: r => (r.chains ?? []).slice(0, 5).map(c => '<span class="tag" style="margin:1px 2px">' + esc(c) + '</span>').join('') || '', sortVal: r => (r.chains ?? []).length },
+        { key: 'errorChains',  label: 'Err Chains',   render: r => (r.errorChains ?? []).slice(0, 3).map(c => '<span class="tag" style="margin:1px 2px;background:var(--red-bg);color:var(--red)">' + esc(c) + '</span>').join('') + ((r.errorChains ?? []).length > 3 ? '<span style="color:var(--muted);font-size:10px"> +' + ((r.errorChains ?? []).length - 3) + '</span>' : '') || '', sortVal: r => (r.errorChains ?? []).length },
+        { key: 'errorString',  label: 'Error',        render: r => {
+          const err = r.errorString_protocol || r.errorString_tvl || '';
+          if (!err) return '';
+          const uid = 'err-' + r._idx;
+          return '<div class="err-truncated" data-err-id="' + uid + '" title="Click to expand">' + esc(err) + '</div>';
+        }, sortVal: r => (r.errorString_protocol || r.errorString_tvl) ? 1 : 0 },
         { key: 'module',       label: 'Code',         render: r => r.module ? '<a href="'+r.module + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + r.module.replace('https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/', '').replace('projects/', '') + '</a>' : '' },
       ], 'tvl', -1);
     }
 
     renderTvlTable();
+
+    // Wire expandable error rows once (reads currentIndexed by reference)
+    const tblEl = document.getElementById('tbl-tvl-outdated');
+    if (tblEl) {
+      tblEl.addEventListener('click', e => {
+        const trunc = e.target.closest('.err-truncated');
+        if (!trunc) return;
+        const uid = trunc.dataset.errId;
+        const existing = tblEl.querySelector('tr.err-detail-row[data-for="' + uid + '"]');
+        if (existing) { existing.remove(); return; }
+        const idx = Number(uid.replace('err-', '')) - 1;
+        const row = currentIndexed[idx];
+        if (!row) return;
+        const errTvl   = row.errorString_tvl || '';
+        const errProto = row.errorString_protocol || '';
+        const stack    = row.errorStack || '';
+        const sKey     = row.error_storedKey || '';
+        const colSpan  = tblEl.querySelector('thead tr')?.children.length || 10;
+        let dl = '';
+        if (errTvl)   dl += '<dt>getTvl Error</dt><dd>' + esc(errTvl) + '</dd>';
+        if (errProto) dl += '<dt>Protocol Error</dt><dd>' + esc(errProto) + '</dd>';
+        if (stack)    dl += '<dt>Stack Trace</dt><dd>' + esc(stack) + '</dd>';
+        if (sKey)     dl += '<dt>Stored Key</dt><dd>' + esc(sKey) + '</dd>';
+        const detailRow = document.createElement('tr');
+        detailRow.className = 'err-detail-row';
+        detailRow.dataset.for = uid;
+        detailRow.innerHTML = '<td colspan="' + colSpan + '"><dl class="err-detail-block">' + dl + '</dl></td>';
+        const parentTr = trunc.closest('tr');
+        if (parentTr && parentTr.nextSibling) {
+          parentTr.parentNode.insertBefore(detailRow, parentTr.nextSibling);
+        } else if (parentTr) {
+          parentTr.parentNode.appendChild(detailRow);
+        }
+      });
+    }
 
     document.getElementById('tvl-filter-name')?.addEventListener('input', renderTvlTable);
     document.getElementById('tvl-filter-category')?.addEventListener('change', renderTvlTable);

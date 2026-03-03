@@ -30,13 +30,15 @@ async function fetchAllJobs(): Promise<any[]> {
   if (typeof firstPage.total !== "number") throw new Error(`JobStash API missing numeric total, got: ${typeof firstPage.total}`);
 
   const total: number = firstPage.total;
-  if (Array.isArray(firstPage.data)) allJobs.push(...firstPage.data);
+  if (!Array.isArray(firstPage.data)) throw new Error(`JobStash API page 1 .data is not an array, got: ${typeof firstPage.data}`);
+  allJobs.push(...firstPage.data);
 
   const totalPages = Math.ceil(total / PAGE_LIMIT);
 
   for (let page = 2; page <= totalPages; page++) {
     const pageData = await fetchPage(page);
-    if (pageData && Array.isArray(pageData.data)) allJobs.push(...pageData.data);
+    if (!pageData || !Array.isArray(pageData.data)) throw new Error(`JobStash API page ${page} returned invalid .data: ${typeof pageData?.data}`);
+    allJobs.push(...pageData.data);
   }
 
   return allJobs;

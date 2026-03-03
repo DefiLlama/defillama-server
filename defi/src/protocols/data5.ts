@@ -12678,7 +12678,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["Order Book"],
+    tags: ["AMM"],
     chains: ["Proton"],
     module: "simple-dex/index.js",
     twitter: "protonnz",

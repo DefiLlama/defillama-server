@@ -10716,6 +10716,7 @@ const data5: Protocol[] = [
     module: "supernova-CL/index.js",
     twitter: "SupernovaDEX",
     parentProtocol: "parent#supernova",
+    forkedFromIds: ["3710"],
     listedAt: 1770743747,
     dimensions: {
       dexs: "supernova-CL",

@@ -196,7 +196,7 @@ const data3_0: Protocol[] = [
     previousNames: ["SPL Governance"],
     address: "solana:CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP",
     symbol: "EPCT",
-    url: "https://app.realms.today/realms",
+    url: "https://v2.realms.today/",
     description:
       "SPL Governance is a program which provides core building blocks and primitives to create Decentralized Autonomous Organizations (DAOs) on the Solana blockchain. The program is DAO type and asset type agnostic and can be used to build any type of DAOs which can own and manage any type of assets",
     chain: "Solana",

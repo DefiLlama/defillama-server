@@ -9136,6 +9136,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["minswap"],
     treasury: "minswap.js",
   },
+  {
+    id: "parent#pumpspace",
+    name: "PumpSpace",
+    url: "https://pumpspace.io/",
+    description: "PumpSpace is a decentralized liquidity platform on Avalanche supporting both V2 and V3 (Trident) AMM models, offering multi-token farms and on-chain yield optimization for community-driven tokens.",
+    logo: `${baseIconsUrl}/pumpspace.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "pumpspace10000",
+  },
 ];
 
 export default parentProtocols;

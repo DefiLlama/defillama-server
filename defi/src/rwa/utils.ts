@@ -483,43 +483,89 @@ const HISTORICAL_NUMERIC_KEYS: ReadonlyArray<keyof HistoricalRecord> = [
   'activeMcap',
 ];
 
+// Maximum number of consecutive anomalous days to bridge over.
+// Runs longer than this are treated as genuine level shifts.
+const MAX_SPIKE_RUN = 5;
+
 /**
- * Removes isolated single-point spikes and dips from a sorted time series.
+ * Removes spikes and dips (including multi-day runs) from a sorted time series.
  *
- * A data point is considered anomalous when it is less than 10% or more than
- * 10× the average of its two immediate neighbours (and those neighbours are
- * both above a $1 threshold so we do not interpolate in flat-zero regions).
- * Anomalous values are replaced by linear interpolation between the neighbours.
+ * For each metric the algorithm tracks the last known-good value and scans
+ * forward.  When a point deviates by more than 10× or less than 10% of the
+ * last good value, it marks the start of an anomalous run.  It then looks
+ * ahead (up to MAX_SPIKE_RUN days) for the next point that is within 5× of
+ * the last good value.  The entire run is replaced by linear interpolation
+ * between the two good bookends.
  *
- * This fixes one-day dips/spikes caused by a missing token price or TVL feed.
+ * This correctly handles both isolated one-day dips *and* consecutive runs
+ * (e.g. April 10 + 11 both missing price data).
  */
 function removeSpikes(data: HistoricalRecord[]): HistoricalRecord[] {
   if (data.length < 3) return data.map((r) => ({ ...r }));
 
   const result = data.map((r) => ({ ...r }));
 
-  for (let i = 1; i < result.length - 1; i++) {
-    const prev = result[i - 1];
-    const curr = result[i];
-    const next = result[i + 1];
+  for (const key of HISTORICAL_NUMERIC_KEYS) {
+    let lastGoodIdx = 0;
+    let i = 1;
 
-    for (const key of HISTORICAL_NUMERIC_KEYS) {
-      const prevVal = prev[key];
-      const currVal = curr[key];
-      const nextVal = next[key];
+    while (i < result.length) {
+      const lastGoodVal = result[lastGoodIdx][key];
+      const currVal = result[i][key];
 
-      if (prevVal === undefined || currVal === undefined || nextVal === undefined) continue;
-      if (!Number.isFinite(prevVal) || !Number.isFinite(currVal) || !Number.isFinite(nextVal)) continue;
-
-      const avgNeighbors = (prevVal + nextVal) / 2;
-      if (avgNeighbors < 1) continue; // both neighbours near zero – no reference to interpolate against
-
-      const ratio = currVal / avgNeighbors;
-      if (ratio < 0.1 || ratio > 10) {
-        // Replace the anomalous value with linear interpolation
-        const t = (curr.timestamp - prev.timestamp) / (next.timestamp - prev.timestamp);
-        (result[i] as any)[key] = prevVal + (nextVal - prevVal) * t;
+      // Skip undefined / non-finite / near-zero reference values
+      if (lastGoodVal === undefined || currVal === undefined ||
+          !Number.isFinite(lastGoodVal) || !Number.isFinite(currVal)) {
+        lastGoodIdx = i;
+        i++;
+        continue;
       }
+      if (lastGoodVal < 1) {
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      const ratio = currVal / lastGoodVal;
+      if (ratio >= 0.1 && ratio <= 10) {
+        // Consistent with last good value
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      // Current point looks anomalous — scan ahead for next good reference
+      let nextGoodIdx = -1;
+      for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, result.length); j++) {
+        const jVal = result[j][key];
+        if (jVal === undefined || !Number.isFinite(jVal)) break;
+        const jRatio = jVal / lastGoodVal;
+        if (jRatio >= 0.2 && jRatio <= 5) {
+          nextGoodIdx = j;
+          break;
+        }
+      }
+
+      if (nextGoodIdx === -1) {
+        // No good reference ahead within window — treat as genuine level shift
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      // Linearly interpolate the entire anomalous run [i, nextGoodIdx)
+      const prevTs = result[lastGoodIdx].timestamp;
+      const nextTs = result[nextGoodIdx].timestamp;
+      const prevVal = lastGoodVal;
+      const nextVal = result[nextGoodIdx][key] as number;
+
+      for (let k = i; k < nextGoodIdx; k++) {
+        const t = (result[k].timestamp - prevTs) / (nextTs - prevTs);
+        (result[k] as any)[key] = prevVal + (nextVal - prevVal) * t;
+      }
+
+      lastGoodIdx = nextGoodIdx;
+      i = nextGoodIdx + 1;
     }
   }
 
@@ -563,7 +609,8 @@ function fillGaps(data: HistoricalRecord[]): HistoricalRecord[] {
 
 /**
  * Smooths RWA historical chart data:
- *   1. Removes isolated one-day spikes/dips (missing price or TVL data).
+ *   1. Removes spikes/dips — including runs of up to 5 consecutive bad days
+ *      (e.g. missing price or TVL data on Apr 10 + 11).
  *   2. Fills any multi-day gaps with linear interpolation.
  *
  * Safe to call on already-sorted or unsorted data; returns a new sorted array.

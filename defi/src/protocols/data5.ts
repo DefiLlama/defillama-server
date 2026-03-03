@@ -7399,6 +7399,7 @@ const data5: Protocol[] = [
     twitter: "groyp_on_ton",
     dimensions: {
       fees: "groypfi",
+      dexs: "groypfi",
     },
   },
   {

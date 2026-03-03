@@ -1734,7 +1734,8 @@ const data5: Protocol[] = [
     twitter: "pumpspace10000",
     parentProtocol: "parent#pumpspace",
     dimensions: {
-      fees: "pumpspace-v2"
+      fees: "pumpspace-v2",
+      dexs: "pumpspace-v2"
     },
     audit_links: [
       "https://www.cyberscope.io/audits/pumpspace?assessmentIndex=1https://github.com/cyberscope-io/audits/blob/main/pumpspace/dexAudit.pdf",

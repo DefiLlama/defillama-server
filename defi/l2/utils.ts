@@ -250,10 +250,10 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
           `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
         ).then((r) => r.json());
         const record = res?._embedded?.records?.[0];
-        if (record?.amount != null) {
+        if (record?.balances?.authorized != null) {
           // Horizon exposes amount in display units with 7 implicit decimal places.
           // Multiply by 1e7 to align with decimals=7 returned by the price API.
-          supplies[`stellar:${token}`] = Math.round(parseFloat(record.amount) * 1e7);
+          supplies[`stellar:${token}`] = Math.round(parseFloat(record.balances.authorized) * 1e7);
         }
       } catch (e) {}
     });

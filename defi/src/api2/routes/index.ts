@@ -618,7 +618,10 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
           }
         } else if (dataType === 'protocol' && route === 'chart-token-breakdown') {
           const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
-          for (const item of Object.values(protocolDataFull[tokenKey])) {
+          let dataObject = protocolDataFull[tokenKey] 
+          if (key !== 'tvl')
+            dataObject = protocolDataFull.chainTvls?.[key]?.[tokenKey] ?? {}
+          for (const item of Object.values(dataObject)) {
             responseData.push([Number((item as any).date), (item as any).tokens]);
           }
         }

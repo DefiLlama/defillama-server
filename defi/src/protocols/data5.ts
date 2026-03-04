@@ -9239,7 +9239,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Privacy",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "mixoor/index.js",
     twitter: "Mixoordotfun",
     dimensions: {
       fees: "mixoor"

@@ -9473,6 +9473,9 @@ const data2: Protocol[] = [
     module: "fluidtokens/index.js",
     twitter: "FluidTokens",
     listedAt: 1654771434,
+    dimensions: {
+      fees: "fluidtokens",
+    },
   },
   {
     id: "1813",

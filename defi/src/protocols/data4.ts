@@ -8200,8 +8200,8 @@ const data4: Protocol[] = [
   {
     id: "5915",
     name: "YO Protocol",
-    address: null,
-    symbol: "-",
+    address: "0x1925450f5e5fb974b0aae1f3408cf5286fbd1a72",
+    symbol: "YO",
     url: "https://app.yo.xyz?ref=defillama",
     referralUrl: "https://app.yo.xyz?ref=defillama",
     description:
@@ -8209,16 +8209,15 @@ const data4: Protocol[] = [
     chain: "Base",
     logo: `${baseIconsUrl}/yo-protocol.png`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "yo",
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Base"],
+    chains: ["Base", "Ethereum", "Arbitrum"],
     module: "yo/index.js",
     twitter: "yield",
     github: ["yoprotocol"],
     audit_links: [
-      "https://www.yo.xyz/files/Yo-Protocol-Hunter-Security-Audit-Report.pdf",
-      "https://www.yo.xyz/files/Yo-Protocol-Offbeat-Security-Review.pdf",
+      "https://docs.yo.xyz/protocol/security-audits"
     ],
     listedAt: 1742382739,
     dimensions: {

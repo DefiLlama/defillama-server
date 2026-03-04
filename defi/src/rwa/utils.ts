@@ -331,11 +331,7 @@ function getAccessModel(asset: {
     return "Non-transferable";
   }
 
-  if (asset.selfCustody === false) {
-    return "Custodial Only";
-  }
-
-  return "Unknown";
+  return "Custodial Only";
 }
 
 function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {

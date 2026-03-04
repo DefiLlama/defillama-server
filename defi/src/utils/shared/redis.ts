@@ -8,7 +8,6 @@ const client: RedisClientType = createClient({
 
 client.on('error', (err) => {
   console.log('Redis Client Error', err);
-  process.exit(0);
 });
 
 export async function setJSON(key: string, data: any) {
@@ -22,8 +21,19 @@ export async function getJSON(key: string): Promise<any> {
   return data ? JSON.parse(data) : null;
 }
 
+let connectPromise: Promise<void> | null = null;
+
 async function startConnection() {
-  if (!client.isOpen) await client.connect();
+  if (client.isOpen) return;
+  if (!connectPromise) {
+    connectPromise = client.connect().then(() => {
+      connectPromise = null;
+    }, (err) => {
+      connectPromise = null;
+      throw err;
+    });
+  }
+  await connectPromise;
 }
 
 async function closeConnection() {

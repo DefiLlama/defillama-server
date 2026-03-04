@@ -392,8 +392,8 @@ export async function storeTvl(
               const ratio = totalTvl > 0 ? cacheTvl / totalTvl : 0;
 
               let thresholdTvl = 1_000_000;
-              for (const value of Object.values(thresholds)) {
-                if (totalTvl > value) thresholdTvl = value;
+              for (const value of Object.keys(thresholds)) {
+                if (totalTvl > Number(value)) thresholdTvl = Number(value);
               }
 
               // validate cache age and ratio of key tvl with total tvlType
@@ -407,6 +407,10 @@ export async function storeTvl(
                 invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
               })
             }
+            
+            // invalid cache
+            if (!tempResultCache.usdTvls[key] || tempResultCache.tokensBalances[key] || tempResultCache.usdTokenBalances[key] || tempResultCache.rawTokenBalances[key])
+              throw getTvlErrors[key];
 
             usdTvls[key] = tempResultCache.usdTvls[key];
             tokensBalances[key] = tempResultCache.tokensBalances[key];

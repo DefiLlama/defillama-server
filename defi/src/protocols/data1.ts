@@ -1661,7 +1661,6 @@ const data: Protocol[] = [
     audit_links: ["https://certificate.quantstamp.com/full/linkswap"],
     forkedFromIds: ["2197"],
     governanceID: ["snapshot:varen.eth"],
-    github: ["varenfinance"],
     deadUrl: true,
   },
   /*

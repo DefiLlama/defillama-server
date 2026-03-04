@@ -4675,7 +4675,6 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
     listedAt: 1682688586,
-    github: ["Aboard-Exchange"],
     deadUrl: true,  
   },
   {
@@ -20501,7 +20500,6 @@ const data3_1: Protocol[] = [
     twitter: "NanoswapBase",
     forkedFromIds: ["2197"],
     listedAt: 1697304358,
-    github: ["nanoswapbase"],
     deadUrl: true,
   },
   {
@@ -33295,7 +33293,6 @@ const data3_2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "dinari/index.js",
     twitter: "DinariGlobal",
-    github: ["sbt-contracts"],
     listedAt: 1709208650,
   },
   {
@@ -55613,7 +55610,6 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Base", "Scroll", "zkSync Era", "Arbitrum", "Optimism"],
     module: "dummy.js",
     twitter: "Jeton_Protocol",
-    github: ["jeton_demo"],
     listedAt: 1728351822,
     dimensions: {
       fees: "jeton",

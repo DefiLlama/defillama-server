@@ -569,7 +569,6 @@ const data4: Protocol[] = [
     module: "astrolend/index.js",
     twitter: "AstrolFinance",
     audit_links: ["https://doc.astrol.io/astrolend/security"],
-    github: ["Astrol-Finance"],
     listedAt: 1736175355,
   },
   {
@@ -6012,7 +6011,6 @@ const data4: Protocol[] = [
     module: "memeswap/index.js",
     twitter: "memeswapfi",
     audit_links: ["https://github.com/memeswapfi/memeswap-contracts/tree/main/audits"],
-    github: ["memeswapfi"],
     listedAt: 1740078089,
   },
   {
@@ -6903,7 +6901,6 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "ERC_Burner",
-    github: ["ercburner"],
     dimensions: {
       fees: "erc-burner",
       aggregators: "erc-burner"
@@ -9496,7 +9493,6 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Jpg.Store-audit-report.pdf",
     ],
-    github: ["NFT Marketplace"],
     listedAt: 1743432881,
     dimensions: {
       fees: "jpg-store"
@@ -11763,7 +11759,6 @@ const data4: Protocol[] = [
       "https://github.com/LNDfi/LNDfi-Salus-Audit-Report/blob/main/LNDfi-V3-core_report_2025-03-14%20(1).pdf",
     ],
     listedAt: 1745245775,
-    github: ["LNDfi"],
     deadUrl: true,
   },
   {
@@ -11934,7 +11929,6 @@ const data4: Protocol[] = [
     chains: ["Binance"],
     module: "vanillaFinance/index.js",
     twitter: "Superp_xyz",
-    github: ["VanillaDevTeam"],
     listedAt: 1745416525,
   },
   {
@@ -16243,7 +16237,6 @@ const data4: Protocol[] = [
     module: "drefinance/index.js",
     treasury: "drefinance.js",
     twitter: "drefinance",
-    github: ["dredotfinance"],
     listedAt: 1748928247,
     deadUrl: true,
   },
@@ -22297,7 +22290,6 @@ const data4: Protocol[] = [
     chains: ["Lisk"],
     module: "faet/index.js",
     twitter: "FaetStudio",
-    github: ["FaetStudio"],
     listedAt: 1754371231,
   },
   {

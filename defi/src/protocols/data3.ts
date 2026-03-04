@@ -10863,7 +10863,6 @@ const data3_0: Protocol[] = [
     twitter: "arpaofficial",
     audit_links: ["https://docsend.com/view/ih328hdccd7h8sxm"],
     listedAt: 1688472915,
-    github: ["arpachain"],
   },
   {
     id: "3195",
@@ -10972,7 +10971,6 @@ const data3_0: Protocol[] = [
     twitter: "CollectifDAO",
     audit_links: ["https://github.com/collectif-dao/collectif-audits"],
     listedAt: 1688494775,
-    github: ["collective-dao"],
   },
  /*  {
     id: "3200",
@@ -11272,7 +11270,6 @@ const data3_0: Protocol[] = [
     oracles: ["Chainlink", "TWAP"],
     forkedFromIds: ["1504"],
     listedAt: 1688857145,
-    github: ["dinotopiafi"],
     deadUrl: true,
   },
   {
@@ -11738,7 +11735,6 @@ const data3_0: Protocol[] = [
     twitter: "ColaFactoryEN",
     forkedFromIds: ["205"],
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/July_2023/ColaToken.pdf"],
-    github: ["Cola-Factory"],
     listedAt: 1689589539,
   },
   {
@@ -12539,7 +12535,6 @@ const data3_0: Protocol[] = [
     module: "solid-world/index.js",
     twitter: "solidworldhq",
     audit_links: ["https://github.com/Dedaub/audits/tree/main/Solid%20World"],
-    github: ["solid-world"],
     listedAt: 1689931379,
     deadUrl: true,
   },
@@ -14208,7 +14203,6 @@ const data3_0: Protocol[] = [
     twitter: "MagnateFi",
     forkedFromIds: ["114"],
     audit_links: ["https://github.com/MagnateArb/Audits/blob/main/SmartContract_Audit_Solidproof_MagnateProtocol.pdf"],
-    github: ["MagnateArb"],
     listedAt: 1691144362,
     warningBanners: [
       {
@@ -16666,7 +16660,6 @@ const data3_1: Protocol[] = [
     chains: ["Cardano"],
     module: "danogo/index.js",
     twitter: "danogo_2023",
-    github: ["danogo2023"],
     audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
     listedAt: 1693321887,
     dimensions: {
@@ -17007,7 +17000,6 @@ const data3_1: Protocol[] = [
     module: "andromeada/index.js",
     forkedFromIds: ["1407"],
     twitter: "andromeada_",
-    github: ["andromedafi"],
     listedAt: 1693488744,
     deadUrl: true,
   },
@@ -17345,7 +17337,6 @@ const data3_1: Protocol[] = [
     module: "basetasm/index.js",
     forkedFromIds: ["1504"],
     twitter: "BasetasmFinance",
-    github: ["basetasmfinance"],
     listedAt: 1693922475,
     deadUrl: true,
   },
@@ -17506,7 +17497,6 @@ const data3_1: Protocol[] = [
     module: "friendroom/index.js",
     forkedFromIds: ["3377"],
     twitter: "friendroomorg",
-    github: ["FriendRoomRepo"],
     listedAt: 1694092169,
     dimensions: {
       fees: "friend-room"
@@ -18411,7 +18401,6 @@ const data3_1: Protocol[] = [
       "https://github.com/solidproof/projects/blob/main/2023/Manga%20Fi/SmartContract_Audit_Solidproof_MangaFi.pdf",
     ],
     listedAt: 1695092233,
-    github: ["Manga-Token"],
     deadUrl: true,
     dimensions: {
       fees: "hono"
@@ -19772,7 +19761,6 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum"],
     module: "promethium/index.js",
     twitter: "promethiumpro",
-    github: ["Spectrum-Dev-Team"],
     listedAt: 1696418066,
     deadUrl: true,
   },
@@ -21698,7 +21686,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["205"],
     module: "statixfarm/index.js",
     twitter: "StatixFarm",
-    github: ["statixfarm"],
     listedAt: 1698055999,
     deadUrl: true,
   },
@@ -22387,7 +22374,6 @@ const data3_1: Protocol[] = [
     chains: ["zkSync Era"],
     module: "touch-fan/index.js",
     twitter: "TouchFanGlobal",
-    github: ["TouchFan"],
     listedAt: 1698667058,
     dimensions: {
       fees: "touch.fan"
@@ -22784,7 +22770,6 @@ const data3_1: Protocol[] = [
       }
     ],
     twitter: "XaveFinance",
-    github: ["bleu-fi"],
     audit_links: ["https://docs.xave.co/contract-audits/fxpool-final-audit"],
     listedAt: 1698939999,
   },
@@ -25209,7 +25194,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["270"],
     module: "zkUSD/index.js",
     twitter: "zkUSD_Official",
-    github: ["zkUSD"],
     listedAt: 1701085917,
     deadUrl: true,  },
   {
@@ -25942,7 +25926,6 @@ const data3_1: Protocol[] = [
     module: "cherrylend/index.js",
     twitter: "Cherry_Lend",
     audit_links: ["https://github.com/aadafinance/materials/blob/main/Aada_finance_audit.pdf"],
-    github: ["CherryLend"],
     listedAt: 1701694059,
     deadUrl: true,
   },
@@ -27868,7 +27851,6 @@ const data3_1: Protocol[] = [
     chains: ["TON"],
     module: "stakee/index.js",
     twitter: null,
-    github: ["stakee-metadata"],
     listedAt: 1703591969,
     dimensions: {
       fees: "stakee"
@@ -28044,7 +28026,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "agus/index.js",
     twitter: "agusCryptocom",
-    github: ["aguscryptocom"],
     listedAt: 1703852046,
     deadUrl: true,
   },
@@ -28573,7 +28554,6 @@ const data3_1: Protocol[] = [
     chains: ["JBC"],
     module: "cmdao-gameswap/index.js",
     twitter: null,
-    github: ["coshi-labs"],
     listedAt: 1704733585,
   },
   {
@@ -28770,7 +28750,6 @@ const data3_1: Protocol[] = [
     chains: ["Canto"],
     module: "csrfi/index.js",
     twitter: "CSR_fi",
-    github: ["CSRfi"],
     treasury: "csrfi.js",
     listedAt: 1704837203,
     deadUrl: true,
@@ -29337,7 +29316,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "manxswap/index.js",
     twitter: "ManXSwap",
-    github: ["manxswap"],
     listedAt: 1705319831,
     deadUrl: true,
   },
@@ -29462,7 +29440,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "FirepotSwap/index.js",
     twitter: "airdao_io",
-    github: ["Firepot-Finance"],
     listedAt: 1705418998,
     deadUrl: true,
   },
@@ -29503,7 +29480,6 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum"],
     module: "lila-finance/index.js",
     twitter: "LilaFinance",
-    github: ["Lila-Finance"],
     deadUrl: true,
     listedAt: 1705438657,
   },
@@ -29549,7 +29525,6 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     module: "size/index.js",
     twitter: "SizeLending",
-    github: ["SizeLending"],
     listedAt: 1705488185,
   },
   {
@@ -30900,7 +30875,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ocelot-dex/index.js",
     twitter: "OcelotDex",
-    github: ["Ocelotdex"],
     listedAt: 1706820470,
     deadUrl: true,
   },
@@ -31100,7 +31074,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "katanaswap/index.js",
     twitter: "KatanaSwap",
-    github: ["KatanaSwapXYZ"],
     listedAt: 1707219457,
     deadUrl: true
   },
@@ -31314,7 +31287,6 @@ const data3_1: Protocol[] = [
     oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/8880
     module: "sygma/index.js",
     twitter: "buildwithsygma",
-    github: ["sygmaprotocol"],
     audit_links: ["https://docs.buildwithsygma.com/audits/"],
     listedAt: 1707280300,
   },
@@ -33857,7 +33829,6 @@ const data3_2: Protocol[] = [
     module: "gassswap/index.js",
     twitter: "GasSwapOfficial",
     forkedFromIds: ["1407"],
-    github: ["zerotwodao"],
     listedAt: 1709402747,
     deadUrl: true,
   },
@@ -34110,7 +34081,6 @@ const data3_2: Protocol[] = [
     module: "Gas404Swap/index.js",
     twitter: "Gas404Official",
     forkedFromIds: ["1407"],
-    github: ["zerotwodao"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/Gas404"],
     listedAt: 1709552390,
     deadUrl: true,
@@ -34945,7 +34915,6 @@ const data3_2: Protocol[] = [
     chains: ["Blast", "Binance"],
     module: "gasline/index.js",
     twitter: "GaslineMarkets",
-    github: ["zerotwodao"],
     forkedFromIds: ["4234"],
     listedAt: 1710005544,
     deadUrl: true,  },
@@ -34966,7 +34935,6 @@ const data3_2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "perfectswap/index.js",
     twitter: "perfectswapio",
-    github: ["perfect-swap"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
     listedAt: 1710125372,
     deadUrl: true,
@@ -36977,7 +36945,6 @@ const data3_2: Protocol[] = [
     module: "ixswap/index.js",
     twitter: "IxsFinance",
     audit_links: ["https://ixswap.gitbook.io/ix-swap-gitbook/other-documentation/smart-contract-audits"],
-    github: ["IX-Swap"],
     listedAt: 1711394081,
   },
   {
@@ -39011,7 +38978,6 @@ const data3_2: Protocol[] = [
     module: "LeaperFinance/index.js",
     twitter: "Leaperfinance",
     audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
-    github: ["leaperfinance"],
     listedAt: 1712585675,
     deadUrl: true
   },
@@ -39292,7 +39258,6 @@ const data3_2: Protocol[] = [
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Web%20Pentest/HBarSuite_WebApp_SmartNode_FrontEnd_BackEnd_Pentest_Report_Halborn_Final.pdf",
     ],
-    github: ["HbarSuite"],
     listedAt: 1712786283,
     dimensions: {
       dexs: {
@@ -39381,7 +39346,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "aquas-trade/index.js",
     twitter: "AquasTrade",
-    github: ["RubyAquaMarine"],
     listedAt: 1712918385,
   },
   {
@@ -40672,7 +40636,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "openex/index.js",
     twitter: "openex_network",
-    github: ["openex-network"],
     listedAt: 1714228724,
     deadUrl: true,
   },
@@ -40741,7 +40704,6 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9998
     module: "ion-protocol/index.js",
     twitter: "ionprotocol",
-    github: ["Ion-Protocol"],
     audit_links: [
       "https://blog.openzeppelin.com/ion-protocol-audit",
       "https://app.hats.finance/audit-competitions/ion-protocol-0x20c44e7b618d58f9982e28de66d8d6ee176eb481/leaderboard",
@@ -41559,7 +41521,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "OreSwap/index.js",
     twitter: "oreswap",
-    github: ["oreswap"],
     listedAt: 1715016813,
   },
   {
@@ -45426,7 +45387,6 @@ const data3_3: Protocol[] = [
     module: "zkx/index.js",
     twitter: "zkxprotocol",
     audit_links: ["https://media.zkx.fi/audit.pdf"],
-    github: ["zkxprotocol"],
     listedAt: 1718050520,
   },
   {
@@ -45556,7 +45516,6 @@ const data3_3: Protocol[] = [
     chains: ["Endurance"],
     module: "catalist/index.js",
     twitter: "CatalistFinance",
-    github: ["catalist-ace"],
     listedAt: 1718102947,
   },
   {
@@ -46231,7 +46190,6 @@ const data3_3: Protocol[] = [
     module: "lovelyswap-v2/index.js",
     twitter: "lovely_swap",
     audit_links: ["https://skynet.certik.com/projects/lovelyinu"],
-    github: ["lovelyswap-v1"],
     listedAt: 1718718663,
     deadUrl: true,
   },
@@ -46375,7 +46333,6 @@ const data3_3: Protocol[] = [
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "hopaggregator",
-    github: ["hopaggregator"],
     listedAt: 1718821117,
     dimensions: {
       aggregators: "hop-aggregator"
@@ -46738,7 +46695,6 @@ const data3_3: Protocol[] = [
     chains: ["EthereumClassic"],
     module: "nyke/index.js",
     twitter: null,
-    github: ["Jabr0nie"],
     listedAt: 1719231083,
     deadUrl: true,
   },
@@ -47676,7 +47632,6 @@ const data3_3: Protocol[] = [
     chains: ["Optimism", "Blast", "Base"],
     module: "catalyst/index.js",
     twitter: "CatalystAMM",
-    github: ["catalystdao"],
     listedAt: 1720176967,
   },
   {
@@ -52811,7 +52766,6 @@ const data3_3: Protocol[] = [
     module: "lucidly/index.js",
     twitter: "LucidlyFinance",
     audit_links: ["https://docs.lucidly.finance/resources/audits"],
-    github: ["lucidlyfi"],
     listedAt: 1725009405
   },
   {
@@ -54697,7 +54651,6 @@ const data3_3: Protocol[] = [
     chains: ["Solana"],
     module: "solbank-finance/index.js",
     twitter: "Solbankfi",
-    github: ["SolbankFinance"],
     listedAt: 1727088061,
     deadUrl: true
   },
@@ -55756,7 +55709,6 @@ const data3_3: Protocol[] = [
     module: "Metahub-Finance/index.js",
     twitter: "MetaHubFinance",
     audit_links: ["https://skynet.certik.com/projects/metahub-finance"],
-    github: ["metahubfinance"],
     listedAt: 1728468309,
     deadUrl: true,  },
   {
@@ -57996,7 +57948,6 @@ const data3_3: Protocol[] = [
     chains: ["Binance"],
     module: "aqualoan/index.js",
     twitter: "aqualoan_io",
-    github: ["techaqualoan"],
     audit_links: ["https://github.com/techaqualoan/audits/blob/main/blocksec_aqualoan_v1.0-signed.pdf"],
     listedAt: 1730894395,
     deadUrl: true,
@@ -59821,7 +59772,6 @@ const data3_3: Protocol[] = [
       "https://file.cytonic.com/cytonic-fuzzland-report.pdf",
       "https://file.cytonic.com/ZellicAuditReport.pdf"
     ],
-    github: ["cytonic-network"],
     listedAt: 1732315862
   },
   {

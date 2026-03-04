@@ -1544,7 +1544,6 @@ const data5: Protocol[] = [
     forkedFromIds: ["111"],
     module: "luckypeaches/index.js",
     twitter: "luckypeachxyz",
-    github: ["luckypeachxyz"],
     listedAt: 1762301789,
     deadUrl: true,
   },

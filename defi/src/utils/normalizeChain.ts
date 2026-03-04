@@ -1340,7 +1340,6 @@ export const chainCoingeckoIds = {
   },
   "DFK": {
     geckoId: "defi-kingdoms",
-    github: ["DefiKingdoms"],
     symbol: "JEWEL",
     cmcId: "12319",
     categories: ["EVM"],
@@ -2069,7 +2068,6 @@ export const chainCoingeckoIds = {
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
-    github: ["bitindi"],
     symbol: "BNI",
     cmcId: "22026",
     categories: ["EVM"],

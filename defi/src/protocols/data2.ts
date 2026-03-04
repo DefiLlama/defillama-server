@@ -172,7 +172,6 @@ const data2: Protocol[] = [
     module: "soluna/index.js",
     twitter: "solunaDAO",
     listedAt: 1644516018,
-    github: ["soluna-protocol"],
     deadUrl: true,
   },
   {
@@ -4642,7 +4641,6 @@ const data2: Protocol[] = [
     twitter: "occamDEX",
     audit_links: ["https://occamx.gitbook.io/occamx-faq/audits"],
     listedAt: 1648599278,
-    github: ["OccamX-MilkomedaDEX"],
     deadUrl: true,
   },
   {
@@ -4790,7 +4788,6 @@ const data2: Protocol[] = [
     module: "crystalvale/index.js",
     twitter: "DefiKingdoms",
     listedAt: 1648769543,
-    github: ["DefiKingdoms"],
   },
   {
     id: "1599",
@@ -5116,7 +5113,6 @@ const data2: Protocol[] = [
     twitter: "NestedFi",
     audit_links: ["https://github.com/NestedFinance/nested-core-lego/tree/master/audits"],
     listedAt: 1649155995,
-    github: ["NestedFi"],
   },
   {
     id: "1614",
@@ -12303,7 +12299,6 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "imMoonSwap",
     listedAt: 1659175114,
-    github: ["moon-migration"],
     dimensions: {
       dexs: "moon-swap"
     }
@@ -12493,7 +12488,6 @@ const data2: Protocol[] = [
     module: "dotoracle/index.js",
     twitter: "DoTOracle",
     listedAt: 1659607635,
-    github: ["dotoracle"],
     deadUrl: true,
   },
   {
@@ -15459,7 +15453,6 @@ const data2: Protocol[] = [
     twitter: "HectagonFinance",
     audit_links: ["https://github.com/DAudit/Smart-Contract-Audits/blob/main/audit_hectagon_20220803.pdf"],
     listedAt: 1663070181,
-    github: ["hectagon-finance"],
   },
   {
     id: "2085",
@@ -19572,7 +19565,6 @@ const data2: Protocol[] = [
       "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-zellic-audit.pdf",
     ],
     listedAt: 1668080722,
-    github: ["alwaysbegrowing"],
   },
   {
     id: "2262",
@@ -20190,7 +20182,6 @@ const data2: Protocol[] = [
       "https://github.com/abdk-consulting/audits/blob/main/voltz/ABDK_Voltz_Project1_v_1_0.pdf",
     ],
     listedAt: 1668700069,
-    github: ["voltz-energy"],
   },
   {
     id: "2292",
@@ -22279,7 +22270,6 @@ const data2: Protocol[] = [
     twitter: "SandclockOrg",
     audit_links: ["https://docs.sandclock.org/current/technical-documentation/security/external"],
     listedAt: 1671893485,
-    github: ["sandclock-org"],
   },
   {
     id: "2387",
@@ -24071,7 +24061,6 @@ const data2: Protocol[] = [
     twitter: "bitindichain",
     forkedFromIds: ["2197"],
     listedAt: 1674733691,
-    github: ["bitindi"],
     deadUrl: true,  },
   {
     id: "2471",
@@ -28046,7 +28035,6 @@ const data2: Protocol[] = [
     module: "numoen/index.js",
     twitter: "numoen",
     listedAt: 1678371764,
-    github: ["Numoen"],
   },
   {
     id: "2652",

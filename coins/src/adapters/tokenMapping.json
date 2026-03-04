@@ -1672,6 +1672,11 @@
     }
   },
   "bsc": {
+    "0x3d0a2a3a30a43a2c1c4b92033609245e819ae6a6": {
+      "decimals": "18",
+      "symbol": "iBENJI",
+      "to": "coingecko#franklin-templeton-benji"
+    },
     "0x2D5BdC96D9C8AabBDB38c9A27398513e7E5ef84F": {
       "decimals": "6",
       "symbol": "BUIDL",
@@ -1939,6 +1944,11 @@
       "to": "coingecko#bitcoin",
       "decimals": 8,
       "symbol": "sBTC"
+    },
+    "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx": {
+      "to": "coingecko#usdcx-stacks",
+      "decimals": 6,
+      "symbol": "USDCx"
     },
     "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx::usdcx-token": {
       "to": "coingecko#usdcx-stacks",
@@ -4320,6 +4330,11 @@
       "to": "coingecko#superstate-uscc",
       "decimals": 6,
       "symbol": "USCC"
+    },
+    "8yXrtJ54jZtE84xEBzTESKuegjcAkAuDrdAhRd8i8n3T": {
+      "to": "coingecko#usdtb",
+      "decimals": 6,
+      "symbol": "USDtb"
     }
   },
   "ton": {
@@ -9031,6 +9046,36 @@
       "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
       "decimals": 7,
       "symbol": "USDY"
+    },
+    "BENJI-GBHNGLLIE3KWGKCHIKMHJ5HVZHYIK7WTBE4QF5PLAKL4CJGSEU7HZIW5": {
+      "to": "coingecko#franklin-templeton-benji",
+      "decimals": 7,
+      "symbol": "BENJI"
+    },
+    "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6": {
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
+      "decimals": 7,
+      "symbol": "USDY"
+    },
+    "VEUR-GDXLSLCOPPHTWOQXLLKSVN4VN3G67WD2ENU7UMVAROEYVJLSPSEWXIZN": {
+      "to": "coingecko#vnx-euro",
+      "decimals": 7,
+      "symbol": "VEUR"
+    },
+    "VCHF-GDXLSLCOPPHTWOQXLLKSVN4VN3G67WD2ENU7UMVAROEYVJLSPSEWXIZN": {
+      "to": "coingecko#vnx-swiss-franc",
+      "decimals": 7,
+      "symbol": "VCHF"
+    },
+    "gBENJI-GD5J73EKK5IYL5XS3FBTHHX7CZIYRP7QXDL57XFWGC2WVYWT326OBXRP": {
+      "to": "coingecko#franklin-templeton-benji",
+      "decimals": 7,
+      "symbol": "gBENJI"
+    },
+    "sgBENJI-GAGICV3VBJSKKH5H5MQQIUTUP462YVHC23KUHZY6FJERRJFBDIVZBM5C": {
+      "to": "coingecko#franklin-templeton-benji",
+      "decimals": 7,
+      "symbol": "gBENJI"
     },
     "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA": {
       "to": "coingecko#stellar",

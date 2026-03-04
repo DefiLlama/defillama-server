@@ -3881,6 +3881,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "fuel_network",
     url: "https://fuel.network/",
+    dimensions: {
+      fees: "fuel-ignition",
+    },
   },
   "World Chain": {
     geckoId: "worldcoin-wld",

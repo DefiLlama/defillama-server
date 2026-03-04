@@ -810,7 +810,8 @@ async function storeBlacklistPermitHandler(req: HyperExpress.Request, res: Hyper
 }
 
 async function reportErrorHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  const bodyText = await req.text();
+  const body = JSON.parse(bodyText);
 
   await reportError(body);
   return successResponse(res, { message: "success" }, undefined, { isPost: true })

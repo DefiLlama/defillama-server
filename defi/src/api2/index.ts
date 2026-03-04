@@ -22,6 +22,7 @@ async function main() {
   webserver.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', '*');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.append('Access-Control-Allow-Headers', '*');
 
     (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === PRO_SECRET_KEY || req.query['x-llama-pro-key'] === PRO_SECRET_KEY;
     // (req as any).isInternalRequest = skipSubPath || req.headers['x-llama-internal-key'] === LLAMA_INTERNAL_API_KEY || req.query['llama_internal_key'] === LLAMA_INTERNAL_API_KEY;
@@ -36,6 +37,7 @@ async function main() {
 
   if (skipSubPath) {  // for local testing purposes
     setTvlRoutes(webserver, '/')
+    setInternalRoutes(webserver, '')
   }
 
   if (process.env.API2_SUBPATH) {

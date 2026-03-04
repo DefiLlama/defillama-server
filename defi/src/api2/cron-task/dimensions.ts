@@ -155,7 +155,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
 
       // remove empty records at the start of each protocol
       // commented out as we want to retain empty records
-      // Object.keys(adapterData.protocols).forEach(removeEmptyRecordsAtStart)
+      Object.keys(adapterData.protocols).forEach(removeEmptyRecordsAtStart)
 
       function removeEmptyRecordsAtStart(protocolId: any) {
         const records = adapterData.protocols[protocolId]?.records
@@ -163,7 +163,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         // console.log('trying for protocol', protocolId, 'adapterType', adapterType, 'records', Object.keys(records).length)
         const days = Object.keys(records).sort()
 
-        if (days.length < 2) return; // we need at least 2 days of data to do anything
+        if (days.length < 31) return; // ignore small dataset
         days.pop(); // we want to maintain the latest data even if it is zero
 
         let foundDayWithData = false
@@ -177,7 +177,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
           })
 
           if (totalValue === 0) {
-            // delete records[day]
+            delete records[day]
             deleteCount++
           } else {
             // console.log('found day with data', day, 'totalValue', totalValue)
@@ -291,17 +291,10 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
 
-      const isBreakdownAdapter = !isParentProtocol && (dimensionProtocolInfo?.childProtocols ?? []).length > 0
-
       if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
 
       if (!records)
         records = adapterTypeRecords
-
-      if (isBreakdownAdapter) {
-        console.log('Fix this code should not reach here, there are no more breakdown adapters')
-        return;
-      }
 
       protocol.records = records
 

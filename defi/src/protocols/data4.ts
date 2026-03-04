@@ -2806,8 +2806,8 @@ const data4: Protocol[] = [
     parentProtocol: "parent#beethoven-x",
     listedAt: 1738009211,
     dimensions: {
-      fees: "beethoven-x-v3",
-      dexs: "beets-v3"
+      fees: "beets-v3",
+      dexs: "beets-v3",
     }
   },
   {
@@ -4632,7 +4632,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1738964061,
     dimensions: {
-      fees: "hyperliquid",
+      fees: "hyperliquid-spot",
       dexs: "hyperliquid-spot"
     }
   },
@@ -10116,7 +10116,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Cardano"],
-    module: "dummy.js",
+    module: "strike-finance-forwards/index.js",
     twitter: "strikecardano",
     audit_links: ["https://github.com/strike-finance/forwards-smart-contracts/blob/main/audit/audit.pdf"],
     parentProtocol: "parent#strike-finance",
@@ -18504,15 +18504,15 @@ const data4: Protocol[] = [
   {
     id: "6359",
     name: "SSV Network",
-    address: null,
-    symbol: "-",
+    address: "0x9D65fF81a3c488d585bBfb0Bfe3c7707c7917f54",
+    symbol: "SSV",
     url: "https://ssv.network/",
     description: `SSV Network enables decentralized Ethereum validation by distributing validator operations across multiple nodes, providing infrastructure for secure and decentralized staking.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ssv-network.jpg`,
-    audits: "0",
-    gecko_id: null,
-    cmcId: null,
+    audits: "2",
+    gecko_id: "ssv-network",
+    cmcId: "12999",
     category: "Staking Pool",
     chains: ["Ethereum"],
     module: "ssv-network/index.js",
@@ -18773,7 +18773,8 @@ const data4: Protocol[] = [
     chains: ["Scroll"],
     module: "etherfi-cash-collateral-management/index.js",
     twitter: "ether_fi",
-    parentProtocol: "parent#etherfi-cash",
+    parentProtocol: "parent#ether-fi",
+    // previous under parent protocol etherfi-cash
     tokensExcludedFromParent: {
       Scroll: ["LIQUIDETH", "LIQUIDUSD", "LIQUIDBTC", "EBTC"],
     },
@@ -18805,7 +18806,8 @@ const data4: Protocol[] = [
     chains: ["Scroll"],
     module: "etherfi-cash-liquid/index.js",
     twitter: "ether_fi",
-    parentProtocol: "parent#etherfi-cash",
+    parentProtocol: "parent#ether-fi",
+    // previous under parent protocol etherfi-cash
     listedAt: 1751313285,
     oraclesBreakdown: [
       {
@@ -22947,6 +22949,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "humidifi",
     dimensions: {
+      fees: "humidifi",
       dexs: {
         genuineSpikes: [["2025-08-14", "-"]],
         adapter: "humidifi"
@@ -27317,7 +27320,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "lit_trade",
     dimensions: {
-      fees: "lit-trade"
+      fees: "lit-trade",
+      derivatives: "lit-trade",
     }
   },
   {
@@ -28216,6 +28220,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#xtrade-protocol",
     dimensions: {
       fees: "xtrade-protocol-perps",
+      derivatives: "xtrade-protocol-perps",
     }
   },
   {
@@ -29198,6 +29203,7 @@ const data4: Protocol[] = [
     module: "tidc-vault/index.js",
     twitter: "liqibr",
     listedAt: 1760109429,
+    disabled:"can not verify RWA backing assets"
   },
   {
     id: "6840",
@@ -29584,7 +29590,8 @@ const data4: Protocol[] = [
     twitter: "rainbowdotme",
     parentProtocol: "parent#rainbow",
     dimensions: {
-      fees: "rainbow-perps"
+      fees: "rainbow-perps",
+      derivatives: "rainbow-perps",
     }
   },
   {

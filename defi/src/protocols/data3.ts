@@ -196,7 +196,7 @@ const data3_0: Protocol[] = [
     previousNames: ["SPL Governance"],
     address: "solana:CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP",
     symbol: "EPCT",
-    url: "https://app.realms.today/realms",
+    url: "https://v2.realms.today/",
     description:
       "SPL Governance is a program which provides core building blocks and primitives to create Decentralized Autonomous Organizations (DAOs) on the Solana blockchain. The program is DAO type and asset type agnostic and can be used to build any type of DAOs which can own and manage any type of assets",
     chain: "Solana",
@@ -9136,7 +9136,9 @@ const data3_0: Protocol[] = [
     module: "xlsd/index.js",
     twitter: "ext_lsd",
     listedAt: 1686823126,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
+  /* missing PoR data
   {
     id: "3115",
     name: "BitMake",
@@ -9157,6 +9159,7 @@ const data3_0: Protocol[] = [
     listedAt: 1686838812,
     deadUrl: true,
   },
+  */
   {
     id: "3116",
     name: "Basilisk",
@@ -12848,7 +12851,8 @@ const data3_0: Protocol[] = [
     listedAt: 1690197679,
     dimensions: {
       fees: "pika-protocol-v4",
-      derivatives: "pika-protocol-v4"
+      derivatives: "pika-protocol-v4",
+      'open-interest': "pika-v4",
     }
   },
   {
@@ -18692,6 +18696,7 @@ const data3_1: Protocol[] = [
     twitter: "CoinWOfficial",
     listedAt: 1695297555,
   },
+/*
   {
     id: "3545",
     name: "Kraken",
@@ -18710,6 +18715,7 @@ const data3_1: Protocol[] = [
     twitter: "krakenfx",
     listedAt: 1695298418,
   },
+*/
   {
     id: "3546",
     name: "CoinEx",
@@ -19452,6 +19458,7 @@ const data3_1: Protocol[] = [
     module: "bitmark/index.js",
     twitter: "BitMartExchange",
   },
+  /*
   {
     id: "3578",
     name: "Klever Exchange",
@@ -19470,6 +19477,7 @@ const data3_1: Protocol[] = [
     module: "klever-exchange/index.js",
     twitter: "klever_io",
   },
+  */
   {
     id: "3579",
     name: "BTSE",
@@ -36074,7 +36082,10 @@ const data3_2: Protocol[] = [
     listedAt: 1710843413,
     dimensions: {
       fees: "llamalend-curve",
-      dexs: "llamalend-curve"
+      dexs: {
+        genuineSpikes: [["2026-03-02", "sDola price spike (Donation attack)"]],
+        adapter: "llamalend-curve"
+      }
     }
   },
   {
@@ -55368,7 +55379,10 @@ const data3_3: Protocol[] = [
     twitter: "InfiniteTradePr",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Infinite%20Trading%20Protocol/Infinite%20Trading%20Protocol.pdf"],
     github: ["InfiniteTradingProtocol"],
-    listedAt: 1727970587
+    listedAt: 1727970587,
+    dimensions: {
+      fees: "infinite"
+    }
   },
   {
     id: "5203",
@@ -55627,6 +55641,7 @@ const data3_3: Protocol[] = [
     github: ["metrom-xyz"],
     listedAt: 1728378198
   },
+  /*
   {
     id: "5215",
     name: "Bitcointry",
@@ -55646,6 +55661,7 @@ const data3_3: Protocol[] = [
     twitter: "Bitcointrycom",
     listedAt: 1728378235
   },
+  */
   {
     id: "5216",
     name: "Pit Finance",
@@ -58524,6 +58540,9 @@ const data3_3: Protocol[] = [
     module: "solar-studios/index.js",
     twitter: "solar_dex",
     listedAt: 1731426568,
+    deadFrom: "2025-08-11",
+    deadUrl: true,
+    deprecated: true,
     dimensions: {
       fees: "solar-studios",
       dexs: "solar-studios"
@@ -61325,6 +61344,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.gud.tech/audits"],
     listedAt: 1733597319
   },
+  /*
   {
     id: "5477",
     name: "Tapbit",
@@ -61343,6 +61363,7 @@ const data3_3: Protocol[] = [
     twitter: "Tapbitglobal",
     listedAt: 1733744113
   },
+  */
   {
     id: "5478",
     name: "STONEBTC",

@@ -719,6 +719,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0x9477724Bb54AD5417de8Baff29e59DF3fB4DA74f",
   },
+  deCRDx: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:pricePerShare",
+        target: "0x67fDa49952Cd0b059d019E51B58e742F9592bB8f",
+      });
+      return rate / 1e6;
+    },
+    chain: "optimism",
+    underlying: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+    address: "0x9E2679eABFF131b8b1b48fF7566140794E0eEdc4",
+  },
   "eUSD0-4": {
     rate: async ({ api }) => {
       const raw = await api.call({

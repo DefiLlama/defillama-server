@@ -19,7 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import { rwaSlug, toFiniteNumberOrZero } from './utils';
+import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
@@ -176,7 +176,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
         const newRecords = recordsById[id];
         const existingData = await readHistoricalDataForId(id);
         const mergedData = mergeHistoricalData(existingData, newRecords);
-        await storeHistoricalDataForId(id, mergedData);
+        await storeHistoricalDataForId(id, smoothHistoricalData(mergedData));
         updatedIds++;
         totalRecords += newRecords.length;
       } catch (e) {
@@ -205,7 +205,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
           activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
         }));
 
-        await storeHistoricalDataForId(id, historicalData);
+        await storeHistoricalDataForId(id, smoothHistoricalData(historicalData));
         updatedIds++;
         totalRecords += records.length;
 
@@ -236,6 +236,150 @@ function sumObjectValues(obj: any): number {
     const num = Number(val);
     return sum + (isNaN(num) ? 0 : num);
   }, 0);
+}
+
+const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl'] as const;
+
+// Maximum consecutive anomalous days to bridge (must match utils.ts MAX_SPIKE_RUN)
+const MAX_SPIKE_RUN = 5;
+
+/**
+ * Applies forward-looking spike removal to a single numeric stream within
+ * the PG-cache entries array.  Mutates entries in place.
+ *
+ * `getValue` / `setValue` abstract over whether we're operating on the
+ * aggregate level or on a specific chain's metric.
+ */
+function removePGSpikes(
+  entries: Array<{ timestamp: number; [k: string]: any }>,
+  getValue: (entry: any) => number,
+  setValue: (entry: any, v: number) => void
+) {
+  if (entries.length < 3) return;
+
+  let lastGoodIdx = 0;
+  let i = 1;
+
+  while (i < entries.length) {
+    const lastGoodVal = getValue(entries[lastGoodIdx]);
+    const currVal = getValue(entries[i]);
+
+    if (!Number.isFinite(lastGoodVal) || !Number.isFinite(currVal) || lastGoodVal < 1) {
+      lastGoodIdx = i; i++; continue;
+    }
+
+    const ratio = currVal / lastGoodVal;
+    if (ratio >= 0.1 && ratio <= 10) { lastGoodIdx = i; i++; continue; }
+
+    // Anomalous — scan ahead for next good reference
+    let nextGoodIdx = -1;
+    for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, entries.length); j++) {
+      const jVal = getValue(entries[j]);
+      if (!Number.isFinite(jVal)) break;
+      const jRatio = jVal / lastGoodVal;
+      if (jRatio >= 0.2 && jRatio <= 5) { nextGoodIdx = j; break; }
+    }
+
+    if (nextGoodIdx === -1) { lastGoodIdx = i; i++; continue; }
+
+    // Interpolate the entire anomalous run [i, nextGoodIdx)
+    const prevTs = entries[lastGoodIdx].timestamp;
+    const nextTs = entries[nextGoodIdx].timestamp;
+    const nextVal = getValue(entries[nextGoodIdx]);
+
+    for (let k = i; k < nextGoodIdx; k++) {
+      const t = (entries[k].timestamp - prevTs) / (nextTs - prevTs);
+      setValue(entries[k], lastGoodVal + (nextVal - lastGoodVal) * t);
+    }
+
+    lastGoodIdx = nextGoodIdx;
+    i = nextGoodIdx + 1;
+  }
+}
+
+/**
+ * Smooths PG cache time-series data (chain-level breakdown) by:
+ *   1. Removing spikes/dips (including multi-day runs) at aggregate and per-chain level.
+ *   2. Filling multi-day gaps with linear interpolation.
+ */
+function smoothPGCacheData(data: PGCacheData): PGCacheData {
+  const timestamps = Object.keys(data).map(Number).sort((a, b) => a - b);
+  if (timestamps.length < 2) return data;
+
+  const allChainKeys = new Set<string>();
+  timestamps.forEach((ts) => Object.keys(data[ts].chains || {}).forEach((k) => allChainKeys.add(k)));
+
+  // Build a mutable working copy as a sorted array
+  type Entry = { timestamp: number } & PGCacheRecord;
+  const entries: Entry[] = timestamps.map((ts) => ({
+    timestamp: ts,
+    onChainMcap: data[ts].onChainMcap,
+    activeMcap: data[ts].activeMcap,
+    defiActiveTvl: data[ts].defiActiveTvl,
+    chains: Object.fromEntries(
+      Object.entries(data[ts].chains || {}).map(([k, v]) => [k, { ...v }])
+    ),
+  }));
+
+  // Step 1: remove spikes/dips — aggregate metrics
+  for (const metric of PG_CACHE_METRICS) {
+    removePGSpikes(
+      entries,
+      (e) => e[metric],
+      (e, v) => { e[metric] = v; }
+    );
+  }
+
+  // Step 1b: remove spikes/dips — per-chain metrics
+  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+  for (const chainKey of allChainKeys) {
+    for (const metric of PG_CACHE_METRICS) {
+      removePGSpikes(
+        entries,
+        (e) => (e.chains[chainKey] ?? zeroPGChain)[metric],
+        (e, v) => {
+          if (!e.chains[chainKey]) e.chains[chainKey] = { ...zeroPGChain };
+          e.chains[chainKey][metric] = v;
+        }
+      );
+    }
+  }
+
+  // Step 2: fill gaps with linear interpolation
+  const result: PGCacheData = {};
+  for (let i = 0; i < entries.length; i++) {
+    const { timestamp, chains, onChainMcap, activeMcap, defiActiveTvl } = entries[i];
+    result[timestamp] = { onChainMcap, activeMcap, defiActiveTvl, chains };
+
+    if (i < entries.length - 1) {
+      const curr = entries[i];
+      const next = entries[i + 1];
+      const daysDiff = Math.round((next.timestamp - curr.timestamp) / 86400);
+
+      for (let j = 1; j < daysDiff; j++) {
+        const f = j / daysDiff;
+        const intTs = curr.timestamp + 86400 * j;
+        const intChains: PGCacheRecord['chains'] = {};
+        for (const chainKey of allChainKeys) {
+          const cC = curr.chains[chainKey] ?? zeroPGChain;
+          const nC = next.chains[chainKey] ?? zeroPGChain;
+          intChains[chainKey] = {
+            onChainMcap: cC.onChainMcap + (nC.onChainMcap - cC.onChainMcap) * f,
+            activeMcap: cC.activeMcap + (nC.activeMcap - cC.activeMcap) * f,
+            defiActiveTvl: cC.defiActiveTvl + (nC.defiActiveTvl - cC.defiActiveTvl) * f,
+          };
+        }
+        result[intTs] = {
+          onChainMcap: curr.onChainMcap + (next.onChainMcap - curr.onChainMcap) * f,
+          activeMcap: curr.activeMcap + (next.activeMcap - curr.activeMcap) * f,
+          defiActiveTvl: curr.defiActiveTvl + (next.defiActiveTvl - curr.defiActiveTvl) * f,
+          chains: intChains,
+        };
+      }
+    }
+  }
+
+  return result;
 }
 
 function processRecordsToPGCache(records: any[]): PGCacheData {
@@ -314,7 +458,7 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
       const existingCache = await readPGCacheForId(id);
       const newData = processRecordsToPGCache(idRecords);
       const merged = mergePGCacheData(existingCache, newData);
-      await storePGCacheForId(id, merged);
+      await storePGCacheForId(id, smoothPGCacheData(merged));
       updatedIds++;
     }
   } else {
@@ -330,7 +474,7 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
         if (records.length === 0) continue;
 
         const data = processRecordsToPGCache(records);
-        await storePGCacheForId(id, data);
+        await storePGCacheForId(id, smoothPGCacheData(data));
         updatedIds++;
 
         if ((i + 1) % 100 === 0) {

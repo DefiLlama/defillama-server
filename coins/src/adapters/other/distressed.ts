@@ -104,6 +104,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    BP: "0xacb8f52dc63bb752a51186d1c55868adbffee9c1", // infinity mint https://bscscan.com/tx/0x6fe1f9a035c334c2c3f44dbb0db220aeb250e5e5532277af61d6eedf6276b8c5
     'USD+': "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65", // https://x.com/overnight_fi/status/2000631797848187322
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
@@ -370,6 +371,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   },
   linea: {
+    SolvBTCb: "0x96155858A02c410c3C814BB32Fdc413b3241b62E", // minted bridge token withou backing assets
+    SolvBTCm: "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c", // minted bridge token withou backing assets
     'USD+': "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376", // https://x.com/overnight_fi/status/2000631797848187322
   },
   // merlin: {
@@ -396,7 +399,22 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   sui: {
     BTCvc: '0x647ac1a9d158fed6fe4cba5bf42c51eceb2638518d1a9e71343f8e92ba7349fe::btcvc::BTCVC',
-  }
+  },
+  zklink: {
+    SolvBTCb: '0x586E593Ffa60c15Ed722342f3C08cc90410e4fEA', // minted bridge token withou backing assets
+    SolvBTCm: '0xbEAf16cFD8eFe0FC97C2a07E349B9411F5dC272C', // minted bridge token withou backing assets
+  },
+  core: {
+    SolvBTCb: '0x5B1Fb849f1F76217246B8AAAC053b5C7b15b7dc3', // minted bridge token withou backing assets
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
+  scroll: {
+    SolvBTCb: '0x3Ba89d490AB1C0c9CC2313385b30710e838370a4', // minted bridge token withou backing assets
+    SolvBTCm: '0x2365649F604377bA6472579e8c19fACFED13C9DC', // minted bridge token withou backing assets
+  },
+  btr: {
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

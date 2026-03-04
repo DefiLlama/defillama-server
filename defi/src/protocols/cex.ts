@@ -72,7 +72,7 @@ export const cexsData: Array<ICex> = [
     ownTokens: ['MNT'],
     url: "https://www.bybit.com",
   },
-  /* */
+  /*
 	{
 		name: 'Kraken',
 		slug: 'kraken',
@@ -82,7 +82,7 @@ export const cexsData: Array<ICex> = [
 		cgDeriv: 'kraken_futures',
 		url: 'https://www.kraken.com/',
 	},
-	/**/
+*/
   {
     name: "Crypto.com",
     slug: "Crypto-com",
@@ -183,6 +183,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://github.com/swissborg/pub",
     url: "https://swissborg.com",
   },
+  /*
   {
     name: "MaskEX",
     slug: "maskex",
@@ -190,6 +191,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: "https://blog.maskex.com/news/announcements/embracing-transparency-maskex-reveals-wallet-addresses",
     url: "https://www.maskex.com",
   },
+  */
   {
     name: "Korbit",
     slug: "korbit",
@@ -206,6 +208,7 @@ export const cexsData: Array<ICex> = [
     cgDeriv: "phemex_futures",
     url: "https://phemex.com",
   },
+  /*
   {
     name: "Firi",
     slug: "firi",
@@ -213,6 +216,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://firi.com",
   },
+  */
   {
     name: "ProBit Global",
     slug: "probit-global",
@@ -358,6 +362,7 @@ export const cexsData: Array<ICex> = [
     cgDeriv: "bitmart_futures",
     url: "https://www.bitmart.com",
   },
+  /*
   {
     name: "Klever Exchange",
     slug: "klever-exchange",
@@ -366,6 +371,7 @@ export const cexsData: Array<ICex> = [
     cgId: "klever_io",
     url: "https://klever.io/",
   },
+  */
   {
     name: "BTSE",
     slug: "btse",
@@ -461,6 +467,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://p2pb2b.com/",
   },
+  /*
   {
     name: "Tapbit",
     slug: "tapbit",
@@ -468,6 +475,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://www.tapbit.com",
   },
+  */
   {
     name: "OrangeX",
     slug: "orangex",
@@ -475,6 +483,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://www.orangex.com",
   },
+  /*
   {
     name: "Bitcointry",
     slug: "bitcointry",
@@ -482,6 +491,7 @@ export const cexsData: Array<ICex> = [
     coinSymbol: "BTTY",
     url: "https://www.bitcointry.com",
   },
+  */
   {
     name: "BigONE",
     slug: "bigone",
@@ -490,6 +500,7 @@ export const cexsData: Array<ICex> = [
     cgId: "bigone",
     url: "https://big.one",
   },
+  /* BitMake
   {
     name: "BitMake",
     slug: "bitmake",
@@ -497,6 +508,7 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://www.bitmake.com",
   },
+  */
   {
     name: "Arkham Exchange",
     slug: "arkham-exchange",
@@ -524,12 +536,14 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://tradeogre.com/markets",
   },
+  /*
   {
     name: "Hotbit",
     slug: "hotbit",
     coin: "HTB",
     coinSymbol: "HTB",
   },
+  */
   {
     name: "BiTomato",
     slug: "bitomato",
@@ -578,8 +592,12 @@ export const cexsData: Array<ICex> = [
     auditLink: "https://coinone.co.kr/info/notice/1967",
     cgId: "coinone",
   },
-  {
+   {
     name: "NEXO",
+    slug: "nexo",
+    coin: "NEXO",
+    coinSymbol: "NEXO",
+    walletsLink: null,
     url: "https://nexo.com/",
   },
   {
@@ -592,7 +610,12 @@ export const cexsData: Array<ICex> = [
   },
   {
     name: "Poloniex",
+    slug: "poloniex",
+    coin: null,
+    walletsLink: null,
+    url: "https://www.poloniex.com/",
     cgId: "poloniex",
+    cgDeriv: "poloniex_futures",
   },
   {
     name: "Upbit",

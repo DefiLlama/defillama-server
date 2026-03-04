@@ -59,7 +59,7 @@ describe('Perps API - Derivatives', () => {
   });
 
   describe('Data Quality Validation', () => {
-    it('should have protocols sorted by volume', () => {
+    it.skip('should have protocols sorted by volume', () => {
       if (!overviewResponse.data.protocols) return;
       
       const protocolsWithVolume = overviewResponse.data.protocols

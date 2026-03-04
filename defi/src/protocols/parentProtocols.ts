@@ -4442,6 +4442,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "WiseLending",
+    deadUrl: true,
   },
   {
     id: "parent#Edge",
@@ -4455,6 +4456,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EdgeLayer",
     github: ["vertex-protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#btcfi",

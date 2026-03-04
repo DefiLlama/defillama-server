@@ -1878,7 +1878,7 @@ const data4: Protocol[] = [
     name: "Citrex Markets",
     address: null,
     symbol: "-",
-    url: "https://app.citrex.markets/",
+    url: "https://dex.citrex.markets/",
     description:
       "Citrex is a decentralised exchange offering low fee and fast CEX-like perpetual and spot trading from a self-custodial cross-margin account built on the Sei blockchain.Trade perps on your favourite assets like SEI, BTC, ETH, XRP or DOGE, with low fees.",
     chain: "Sei",
@@ -5436,7 +5436,7 @@ const data4: Protocol[] = [
     name: "PulseX StableSwap",
     address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
     symbol: "PLSX",
-    url: "https://app.pulsex.com/swap",
+    url: "https://app.pulsex.com/",
     description: `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
     chain: "Pulse",
     logo: `${baseIconsUrl}/pulsex-stableswap.png`,

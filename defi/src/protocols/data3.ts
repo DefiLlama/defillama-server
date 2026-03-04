@@ -6502,7 +6502,7 @@ const data3_0: Protocol[] = [
     name: "PulseX V1",
     address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
     symbol: "PLSX",
-    url: "https://app.pulsex.com/swap",
+    url: "https://app.pulsex.com/",
     description: `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
     chain: "Pulse",
     logo: `${baseIconsUrl}/pulsex.png`,
@@ -17461,6 +17461,7 @@ const data3_1: Protocol[] = [
     twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
     listedAt: 1694020053,
+    deadUrl: true,
   },
   {
     id: "3492",
@@ -33705,7 +33706,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "blitz",
       derivatives: "blitz-derivatives"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4215",
@@ -39854,9 +39856,11 @@ const data3_2: Protocol[] = [
       "https://app.wiselending.com/omni-audit-v1.pdf",
     ],
     listedAt: 1694020053,
+    hallmarks: [["2024-02-28", "Protocol Exploit"]],
     dimensions: {
       fees: "wise-lending-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4495",
@@ -47866,7 +47870,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "jup-ape",
       dexs: "jup-ape"
-    }
+    },
+    deprecated: true,
   },
   {
     id: "4861",
@@ -53682,7 +53687,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#Edge",
     dimensions: {
       dexs: "blitz-swap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5128",
@@ -58702,7 +58708,8 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum"],
     module: "basedai/index.js",
     twitter: "getbasedai",
-    listedAt: 1731584443
+    listedAt: 1731584443,
+    deadUrl: true,
   },
   {
     id: "5356",

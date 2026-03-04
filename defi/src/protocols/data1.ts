@@ -27428,7 +27428,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MinimaxFinance",
     language: "Solidity",
     listedAt: 1644446314,
-    github: ["minimaxdefi", "minimaxfinance"],
+    github: ["minimaxfinance"],
   },
 ];
 export default data;

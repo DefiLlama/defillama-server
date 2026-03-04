@@ -13012,5 +13012,24 @@ const data5: Protocol[] = [
     twitter: "TideSwapApp",
     listedAt: 1772570322
   },
+  {
+    id: "7493",
+    name: "Ample",
+    address: null,
+    symbol: "-",
+    url: "https://ample.money/",
+    description:
+      "Ample is a prize-linked savings protocol where users deposit USDC, retain their principal with no lockups, and pool yield to fund rewards distributed via verifiable on-chain randomness.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ample.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Base","Arbitrum", "Katana"],
+    module: "ample/index.js",
+    twitter: "AmpleHQ",
+    listedAt: 1772599975
+  },
 ];
 export default data5;

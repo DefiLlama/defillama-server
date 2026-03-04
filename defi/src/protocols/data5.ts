@@ -3469,7 +3469,7 @@ const data5: Protocol[] = [
     dimensions: {
       "derivatives": "leverup",
       "fees": "leverup",
-      "open-interest": "leverup",
+      "open-interest": "leverup-oi",
     },
   },
   {

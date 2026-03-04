@@ -1672,6 +1672,11 @@
     }
   },
   "bsc": {
+    "0x8E9d4cEa39299323FE8eda678cAD449718556c4e": {
+      "decimals": 6,
+      "symbol": "syrupUSDT",
+      "to": "coingecko#syrupusdt"
+    },
     "0x3d0a2a3a30a43a2c1c4b92033609245e819ae6a6": {
       "decimals": "18",
       "symbol": "iBENJI",

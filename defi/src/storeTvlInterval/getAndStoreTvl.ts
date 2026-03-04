@@ -22,6 +22,7 @@ import { elastic } from '@defillama/sdk';
 import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { deadChainsSet } from "../config/deadChains";
+import { getJSON, setJSON } from "../utils/shared/redis";
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -49,6 +50,7 @@ async function getTvl(
   tokensBalances: tvlsObject<TokensValueLocked>,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
   rawTokenBalances: tvlsObject<TokensValueLocked>,
+  getTvlErrors: tvlsObject<Error>,
   tvlFunction: any,
   isFetchFunction: boolean,
   storedKey: string,
@@ -140,7 +142,12 @@ async function getTvl(
         },
       } as any)
       if (i >= maxRetries - 1) {
-        throw e
+        if (options.runType === 'cron-task') {
+          // if cron-task run, don't throw Error, try to catch errors and process later in caller function
+          getTvlErrors[storedKey] = e;
+        } else {
+          throw e
+        }
       } else {
         insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
         continue;
@@ -173,6 +180,14 @@ export function prefixMalformed(address: string) {
   return false
 }
 
+export interface StoreTvlTempCacheInfo {
+  protocolName: string;
+  tvl: number;
+  storeKey: string;
+  cacheTime: number;
+  invalidCacheTime: number;
+}
+
 type StoreTvlOptions = {
   returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
@@ -183,6 +198,7 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
   skipChainsCheck?: boolean,
   runStats?: any,
+  tempCacheInfo?: Array<StoreTvlTempCacheInfo>,
 }
 
 export type storeTvl2Options = StoreTvlOptions & {
@@ -267,6 +283,7 @@ export async function storeTvl(
   const tokensBalances: tvlsObject<TokensValueLocked> = {};
   const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
   const rawTokenBalances: tvlsObject<TokensValueLocked> = {};
+  const getTvlErrors: tvlsObject<Error> = {};
   const chainTvlsToAdd: {
     [name: string]: string[]
   } = {}
@@ -296,7 +313,7 @@ export async function storeTvl(
         }
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
+          usdTokenBalances, rawTokenBalances, getTvlErrors, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
           { ...options, partialRefill, chainsToRefill, cacheData, runStats, })
         let keyToAddChainBalances = tvlType;
         if (tvlType === "tvl" || tvlType === "fetch") {
@@ -313,27 +330,109 @@ export async function storeTvl(
     })
     if (module.tvl || module.fetch) {
       throw new Error("Top level tvl or fetch functions are not allowed outside chain object. Please move them inside the chain object.")
-      let mainTvlIsFetch: boolean;
-      if (module.tvl) {
-        mainTvlIsFetch = false
-      } else {
-        mainTvlIsFetch = true
-      }
-      const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-        usdTokenBalances, rawTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, staleCoins)
-      tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
+      // let mainTvlIsFetch: boolean;
+      // if (module.tvl) {
+      //   mainTvlIsFetch = false
+      // } else {
+      //   mainTvlIsFetch = true
+      // }
+      // const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
+      //   usdTokenBalances, rawTokenBalances, getTvlErrors, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, staleCoins)
+      // tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
-    Object.entries(chainTvlsToAdd).map(([tvlType, storedKeys]) => {
-      if (usdTvls[tvlType] === undefined) {
-        usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
-        mergeBalances(tvlType, storedKeys, tokensBalances, { replaceEmptyString: true })
-        mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
-        mergeBalances(tvlType, storedKeys, rawTokenBalances)
+    const tempResultCacheKey = `storeTvlInterval-cache-${protocol.id}`;
+    let tempResultCache: any = undefined;
+    for (const [tvlType, storedKeys] of Object.entries(chainTvlsToAdd)) {
+      // get all chain keys and sum to total
+      for (const key of storedKeys) {
+        if (getTvlErrors[key]) {
+          if (options.runType !== 'cron-task' || options.tempCacheInfo === undefined) {
+            throw getTvlErrors[key];
+          }
+
+          // cron-task and allow to use temp cache
+
+          if (tempResultCache === undefined) {
+            tempResultCache = await getJSON(tempResultCacheKey);
+          }
+
+          // query redis but cache was not found, throw Error
+          if (tempResultCache === null) {
+            throw getTvlErrors[key];
+          } else {
+            const thresholds: Record<number, any> = {
+              1_000_000: { // tvl <= $1M
+                cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
+                chainRatio: 0.001, // 0.1%, accept cache if chain has <= 0.01% total tvl
+              },
+              10_000_000: { // tvl <= $10M
+                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                chainRatio: 0.001, // 0.1%
+              },
+              50_000_000: { // tvl <= $50M
+                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                chainRatio: 0.0001, // 0.01%
+              },
+              100_000_000: { // tvl <= $100M
+                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                chainRatio: 0.0001, // 0.01%
+              },
+              1_000_000_000: { // tvl <= $1B
+                cacheTime: 1 * 24 * 60 * 60, // cache age 2 days
+                chainRatio: 0.00005, // 0.005% ~ $50k
+              },
+            }
+
+            const current = getCurrentUnixTimestamp();
+            const cacheAge = current - tempResultCache.timestamp;
+            const totalTvl = Number(tempResultCache.usdTvls[tvlType]);
+            const cacheTvl = Number(tempResultCache.usdTvls[key]);
+            if (key !== tvlType) {
+              const ratio = totalTvl > 0 ? cacheTvl / totalTvl : 0;
+
+              let thresholdTvl = 1_000_000;
+              for (const value of Object.values(thresholds)) {
+                if (totalTvl > value) thresholdTvl = value;
+              }
+
+              // validate cache age and ratio of key tvl with total tvlType
+              if (cacheAge > thresholds[thresholdTvl].cacheTime || ratio >= thresholds[thresholdTvl].chainRatio) throw getTvlErrors[key];
+
+              options.tempCacheInfo.push({
+                protocolName: protocol.name,
+                tvl: cacheTvl,
+                storeKey: key,
+                cacheTime: tempResultCache.timestamp,
+                invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
+              })
+            }
+
+            usdTvls[key] = tempResultCache.usdTvls[key];
+            tokensBalances[key] = tempResultCache.tokensBalances[key];
+            usdTokenBalances[key] = tempResultCache.usdTokenBalances[key];
+            rawTokenBalances[key] = tempResultCache.rawTokenBalances[key];
+          }
+        }
       }
-    })
+
+      usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
+      mergeBalances(tvlType, storedKeys, tokensBalances, { replaceEmptyString: true })
+      mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
+      mergeBalances(tvlType, storedKeys, rawTokenBalances)
+    }
+
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
+    } else {
+      // success fully run adapter, save result to latest redis cache
+      await setJSON(tempResultCacheKey, {
+        usdTvls,
+        tokensBalances,
+        usdTokenBalances,
+        rawTokenBalances,
+        timestamp: getCurrentUnixTimestamp(),
+      })
     }
 
     logRunStats()
@@ -384,7 +483,7 @@ export async function storeTvl(
     })
 
     Object.entries(aggData).forEach(([key, value]) => {
-        let minValue = key === 'getLogs' ? 10 : 20
+      let minValue = key === 'getLogs' ? 10 : 20
       if (typeof value === 'number' && value < minValue) {
         delete (aggData as any)[key]; // Remove low count stats to reduce log size
       }

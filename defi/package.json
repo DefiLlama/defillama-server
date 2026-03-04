@@ -124,6 +124,7 @@
     "pm2": "^5.3.0",
     "postgres": "^3.3.1",
     "promise.allsettled": "^1.0.5",
+    "redis": "^5.11.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
     "typeorm": "^0.3.11"

@@ -13054,5 +13054,25 @@ const data5: Protocol[] = [
       dexs: "otomate"
     },
   },
+  {
+    id: "7495",
+    name: "Venus Flux",
+    address: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+    symbol: "XVS",
+    url: "https://flux.venus.io/lending/56",
+    description:
+      "Venus Flux is a lending protocol within the Venus ecosystem that allows users to supply assets to a unified liquidity layer to earn interest and provide liquidity for borrowers across Venus Flux markets.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/venus-flux.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "venus-fluid/index.js",
+    twitter: "VenusProtocol",
+    parentProtocol: "parent#venus-finance",
+    listedAt: 1772661088
+  },
 ];
 export default data5;

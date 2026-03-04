@@ -99,6 +99,10 @@ function setRoutes(router: HyperExpress.Router): void {
             return fileResponse('id-map.json', res, 60);
         })
     );
+  
+    router.get('/chart/chain-breakdown', handleGetChartBreakdown('chain-breakdown'));
+    router.get('/chart/category-breakdown', handleGetChartBreakdown('category-breakdown'));
+    router.get('/chart/platform-breakdown', handleGetChartBreakdown('platform-breakdown'));
 
     // Get historical chart data for a specific RWA by ID
     router.get(
@@ -344,6 +348,30 @@ function setRoutes(router: HyperExpress.Router): void {
             return successResponse(res, { data: filtered, timestamp: currentData.timestamp }, 20);
         })
     );
+  
+    function handleGetChartBreakdown(breakdown: 'chain-breakdown' | 'category-breakdown' | 'platform-breakdown') {
+        return errorWrapper(async (req, res) => {
+            const { key, includeStablecoin, includeGovernance } = req.query;
+            
+            const queryKey = (key && ['onChainMcap', 'activeMcap', 'defiActiveTvl'].includes(String(key))) ? key : 'onChainMcap';
+            const queryIncludeStablecoin = includeStablecoin && String(includeStablecoin) === 'true';
+            const queryIncludeGovernance = includeGovernance && String(includeGovernance) === 'true';
+          
+            let filePath = `charts/${breakdown}`;
+            if (!queryIncludeStablecoin && !queryIncludeGovernance) {
+              filePath += '/base';
+            } else if (queryIncludeStablecoin && queryIncludeGovernance) {
+              filePath += '/all';
+            } else if (queryIncludeStablecoin && !queryIncludeGovernance) {
+              filePath += '/includestablecoin';
+            } else if (!queryIncludeStablecoin && queryIncludeGovernance) {
+              filePath += '/includegovernance';
+            }
+            filePath += `-${String(queryKey).toLowerCase()}.json`;
+          
+            return fileResponse(filePath, res, 30);
+        })
+    }
 }
 
 async function main() {

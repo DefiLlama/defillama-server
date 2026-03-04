@@ -128,7 +128,7 @@ async function getTvl(
         errorString = JSON.stringify(e)
       } catch (e) { }
       await elastic.addErrorLog({
-        error: e as any,
+        errorStringFull: JSON.stringify(e),
         errorString,
         metadata: {
           application: 'tvl',

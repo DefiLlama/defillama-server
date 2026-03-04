@@ -158,6 +158,7 @@ export const chainToCoingeckoId = {
   celestia: "celestia",
   aura: "aura-network",
   echelon: "echelon",
+  eni: "eni",
   ton: "the-open-network",
   alephium: "alephium",
   berachain: "berachain",

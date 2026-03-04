@@ -22,12 +22,12 @@ const config: any = {
     processor: "0xA8a48C202AF4E73ad19513D37158A872A4ac79Cb",
     quoteToken: "0x4300000000000000000000000000000000000003",
   },
-  kinto: {
-    factory: "0xE4Daa69e99F48AD0C4D4843deF4447253248A906",
-    processor: "0xa089dC07A4baFd941a4323a9078D2c24be8A747C",
-    quoteToken: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
-    usdplus: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
-  },
+  // kinto: {
+  //   factory: "0xE4Daa69e99F48AD0C4D4843deF4447253248A906",
+  //   processor: "0xa089dC07A4baFd941a4323a9078D2c24be8A747C",
+  //   quoteToken: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+  //   usdplus: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+  // },
   base: {
     factory: "0xBCE6410A175a1C9B1a25D38d7e1A900F8393BC4D",
     processor: "0x9A17bb2171469d0DFfE0C1a01Ff3Bdfc6A851e09",
@@ -46,9 +46,9 @@ async function getTokenPrices(chain: string, timestamp: number, writes: Write[] 
   const api = await getApi(chain, timestamp);
   const { getTokensAbi = _getTokensAbi, latestPriceAbi = _latestPriceAbi, factory, processor, quoteToken, usdplus } = config[chain];
   // dShares prices
-  let [tokens] = await api.call({ target: factory, abi: getTokensAbi, })
-  const supplies = await api.multiCall({  abi: 'erc20:totalSupply', calls: tokens})
-  tokens = tokens.filter((_: any, idx: number) => +supplies[idx] > 0)
+  let [tokens] = (await api.call({ target: factory, abi: getTokensAbi, permitFailure: true}) ) ?? [[]]
+  const supplies = await api.multiCall({  abi: 'erc20:totalSupply', calls: tokens, permitFailure: true})
+  tokens = tokens.filter((_: any, idx: number) => supplies[idx] && +supplies[idx] > 0)
   const prices = (await api.multiCall({
     abi: latestPriceAbi,
     target: processor,

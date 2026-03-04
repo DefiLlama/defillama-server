@@ -2,6 +2,7 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    TARA: "0x2f42b7d686ca3effc69778b6ed8493a7787b4d6e", // https://etherscan.io/tx/0xce58cfa4e259fbcdf282eefaad83a769299d3e4899fcf2d11e9c5427e490c852
     TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
@@ -63,7 +64,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
     HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
     USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84", 
-    yTUSD: '0x73a052500105205d34daf004eab301916da8190f'
+    yTUSD: '0x73a052500105205d34daf004eab301916da8190f',
+    DGLD: "0xa9299c296d7830a99414d1e5546f5171fa01e9c8",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -102,6 +104,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    BP: "0xacb8f52dc63bb752a51186d1c55868adbffee9c1", // infinity mint https://bscscan.com/tx/0x6fe1f9a035c334c2c3f44dbb0db220aeb250e5e5532277af61d6eedf6276b8c5
     'USD+': "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65", // https://x.com/overnight_fi/status/2000631797848187322
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
@@ -338,13 +341,14 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
+    DGLD: "0xd02f50e1017f493ffffa70c8fcf09e349e11d6c9", // dropped to 0, coingecko mispriced it
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",
   },
   berachain: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
-    UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
+    // UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
@@ -367,6 +371,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
   },
   linea: {
+    SolvBTCb: "0x96155858A02c410c3C814BB32Fdc413b3241b62E", // minted bridge token withou backing assets
+    SolvBTCm: "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c", // minted bridge token withou backing assets
     'USD+': "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376", // https://x.com/overnight_fi/status/2000631797848187322
   },
   // merlin: {
@@ -393,7 +399,22 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   sui: {
     BTCvc: '0x647ac1a9d158fed6fe4cba5bf42c51eceb2638518d1a9e71343f8e92ba7349fe::btcvc::BTCVC',
-  }
+  },
+  zklink: {
+    SolvBTCb: '0x586E593Ffa60c15Ed722342f3C08cc90410e4fEA', // minted bridge token withou backing assets
+    SolvBTCm: '0xbEAf16cFD8eFe0FC97C2a07E349B9411F5dC272C', // minted bridge token withou backing assets
+  },
+  core: {
+    SolvBTCb: '0x5B1Fb849f1F76217246B8AAAC053b5C7b15b7dc3', // minted bridge token withou backing assets
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
+  scroll: {
+    SolvBTCb: '0x3Ba89d490AB1C0c9CC2313385b30710e838370a4', // minted bridge token withou backing assets
+    SolvBTCm: '0x2365649F604377bA6472579e8c19fACFED13C9DC', // minted bridge token withou backing assets
+  },
+  btr: {
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

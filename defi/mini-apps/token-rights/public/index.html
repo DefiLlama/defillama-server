@@ -1086,6 +1086,7 @@
 
                 // With no-cors mode, we can't read the response, so assume success
                 showAlert('Thank you! Your submission has been received. Our team will review it shortly.', 'success');
+                /* skip form reset
                 form.reset();
                 // Reset multi-select displays
                 document.querySelectorAll('.multi-select-wrapper').forEach(wrapper => {
@@ -1095,7 +1096,7 @@
                 // Reset checkbox styling
                 document.querySelectorAll('.checkbox-item.checked').forEach(item => {
                     item.classList.remove('checked');
-                });
+                }); */
             } catch (error) {
                 console.error('Submit error:', error);
                 showAlert('Network error. Please check your connection and try again.', 'error');

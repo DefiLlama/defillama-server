@@ -322,7 +322,6 @@ for (const p of parentProtocolsList) {
 function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
-  cexs: Array<SearchResult>,
   tastyMetrics: Record<string, number>,
 ) {
   const otherPages = [
@@ -341,19 +340,22 @@ function buildDirectoryResults(
   const urlToIndex = new Map<string, number>();
   const directoryResults: Array<SearchResult> = [];
 
+  const deadUrlsBlacklist = new Set<string>();
+
   for (const parent of tvlData.parentProtocols) {
     const route = `/protocol/${sluggifyString(parent.name)}`;
     const prevNames = previousNamesMap.get(parent.name);
-    if (parent.url) urlToIndex.set(stripTrailingSlash(parent.url), directoryResults.length);
+    if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
     const allNames = [parent.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
+    if (parent.deadUrl) deadUrlsBlacklist.add(parent.url);
     directoryResults.push({
       id: `directory_parent_${normalize(parent.name)}`,
       name: parent.name,
       ...(parent.symbol && parent.symbol !== "-" ? { symbol: parent.symbol } : {}),
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
-      route: parent.url,
+      route: parent.deadUrl ? "" : parent.referralUrl ?? parent.url,
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
@@ -363,7 +365,7 @@ function buildDirectoryResults(
 
   for (const protocol of tvlData.protocols) {
     const prevNames = previousNamesMap.get(protocol.name) ?? [];
-    const protocolUrl = protocol.url ? stripTrailingSlash(protocol.url) : "";
+    const protocolUrl = protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
     if (protocolUrl && urlToIndex.has(protocolUrl)) {
       if(prevNames.length > 0){
         // Child shares URL with an existing entry — merge its previousNames into the parent
@@ -386,13 +388,14 @@ function buildDirectoryResults(
     const route = `/protocol/${sluggifyString(protocol.name)}`;
     const allNames = [protocol.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
+    if (protocol.deadUrl) deadUrlsBlacklist.add(protocol.url);
     directoryResults.push({
       id: `directory_child_${normalize(protocol.name)}`,
       name: protocol.name,
       ...(protocol.symbol && protocol.symbol !== "-" ? { symbol: protocol.symbol } : {}),
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
-      route: protocol.url,
+      route: protocol.deadUrl ? "" : protocolUrl,
       ...(protocol.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
@@ -400,7 +403,17 @@ function buildDirectoryResults(
     });
   }
 
-  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "");
+  const cexs: Array<SearchResult> = cexsData
+  .filter((c) => c.slug && c.url).map(cex=>({
+    id: `cex_${normalize(cex.name)}`,
+    name: cex.name,
+    ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
+    route: cex.url!,
+    logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+    v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
+  }));
+
+  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
   const maxV = Math.max(...allResults.map(r => r.v));
   const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
   if (swapEntry) swapEntry.v = maxV;
@@ -465,7 +478,7 @@ async function generateSearchList() {
     fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
     fetchJson("https://ask.llama.fi/coins"),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('LLAMA_PRO_API_KEY')}/dat/institutions`).catch((e) => {
+    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`).catch((e) => {
       console.log("Error fetching institutions", e);
       return {};
     }),
@@ -497,6 +510,9 @@ async function generateSearchList() {
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
+    const prevNames = previousNamesMap.get(parent.name);
+    const allNames = [parent.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
@@ -505,6 +521,8 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(parent.name)}`,
       ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -526,6 +544,9 @@ async function generateSearchList() {
 
   for (const protocol of tvlData.protocols) {
     if (protocol.name === "LlamaSwap") continue;
+    const prevNames = previousNamesMap.get(protocol.name);
+    const allNames = [protocol.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_${normalize(protocol.name)}`,
       name: protocol.name,
@@ -534,6 +555,8 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,
       ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -963,7 +986,7 @@ async function generateSearchList() {
         ...result,
         r: result.r ?? 1,
       })),
-    directoryResults: buildDirectoryResults(tvlData, parentTvl, results.cexs, tastyMetrics),
+    directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))

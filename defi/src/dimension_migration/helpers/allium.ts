@@ -95,7 +95,7 @@ async function _queryAllium(sqlQuery: string) {
   } catch (e) {
     let endTime = +Date.now()
     await elastic.addRuntimeLog({ runtime: endTime - startTime, success, metadata, })
-    await elastic.addErrorLog({ error: (e?.toString()) as any, metadata, })
+    await elastic.addErrorLog({ errorStringFull: JSON.stringify(e), metadata, } as any)
     throw e
   }
   return response

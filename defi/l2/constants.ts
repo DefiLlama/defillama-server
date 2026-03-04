@@ -30,7 +30,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "berachain",
   "flow",
   "somnia",
-  "plasma"
+  "plasma", 
+  "monad"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -122,7 +123,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   //"6730": "eteria",
   "7128": "supra",
   "7203": "megaeth",
-  "4548": "mezo"
+  "4548": "mezo",
+  "7371": "keeta",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -266,4 +268,6 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "linea": { ticker: "LINEA", address: "coingecko:linea" },
   // noble: { ticker: "", address: "coingecko:" },
   "mezo": { ticker: "MEZO", address: "" },
+  "monad": { ticker: "MON", address: "coingecko:monad" },
+  "keeta": { ticker: "KTA", address: "coingecko:keeta" },
 };

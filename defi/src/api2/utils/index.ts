@@ -159,9 +159,9 @@ export async function runWithRuntimeLogging(fn: () => Promise<void>, metadata: {
     const endTime = Date.now()
 
     await sdk.elastic.addErrorLog({
-      error: (e as any)?.message ? (e as any).message : e,
+      errorStringFull: JSON.stringify((e as any)?.message ? (e as any).message : e),
       metadata
-    })
+    } as any)
 
     await sdk.elastic.addRuntimeLog({
       metadata,

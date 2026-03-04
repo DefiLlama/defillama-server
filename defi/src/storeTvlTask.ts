@@ -119,7 +119,7 @@ async function main() {
       console.log('FAILED: ', protocol?.name, errorString)
 
       await elastic.addErrorLog({
-        error: e as any,
+        errorStringFull: JSON.stringify(e as any),
         errorString: typeof errorString === 'string' ? errorString : '',
         errorStack,
         metadata,

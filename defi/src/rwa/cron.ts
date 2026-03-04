@@ -19,7 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import { rwaSlug, toFiniteNumberOrZero } from './utils';
+import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
@@ -176,7 +176,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
         const newRecords = recordsById[id];
         const existingData = await readHistoricalDataForId(id);
         const mergedData = mergeHistoricalData(existingData, newRecords);
-        await storeHistoricalDataForId(id, mergedData);
+        await storeHistoricalDataForId(id, smoothHistoricalData(mergedData));
         updatedIds++;
         totalRecords += newRecords.length;
       } catch (e) {
@@ -205,7 +205,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
           activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
         }));
 
-        await storeHistoricalDataForId(id, historicalData);
+        await storeHistoricalDataForId(id, smoothHistoricalData(historicalData));
         updatedIds++;
         totalRecords += records.length;
 
@@ -236,6 +236,150 @@ function sumObjectValues(obj: any): number {
     const num = Number(val);
     return sum + (isNaN(num) ? 0 : num);
   }, 0);
+}
+
+const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl'] as const;
+
+// Maximum consecutive anomalous days to bridge (must match utils.ts MAX_SPIKE_RUN)
+const MAX_SPIKE_RUN = 5;
+
+/**
+ * Applies forward-looking spike removal to a single numeric stream within
+ * the PG-cache entries array.  Mutates entries in place.
+ *
+ * `getValue` / `setValue` abstract over whether we're operating on the
+ * aggregate level or on a specific chain's metric.
+ */
+function removePGSpikes(
+  entries: Array<{ timestamp: number; [k: string]: any }>,
+  getValue: (entry: any) => number,
+  setValue: (entry: any, v: number) => void
+) {
+  if (entries.length < 3) return;
+
+  let lastGoodIdx = 0;
+  let i = 1;
+
+  while (i < entries.length) {
+    const lastGoodVal = getValue(entries[lastGoodIdx]);
+    const currVal = getValue(entries[i]);
+
+    if (!Number.isFinite(lastGoodVal) || !Number.isFinite(currVal) || lastGoodVal < 1) {
+      lastGoodIdx = i; i++; continue;
+    }
+
+    const ratio = currVal / lastGoodVal;
+    if (ratio >= 0.1 && ratio <= 10) { lastGoodIdx = i; i++; continue; }
+
+    // Anomalous — scan ahead for next good reference
+    let nextGoodIdx = -1;
+    for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, entries.length); j++) {
+      const jVal = getValue(entries[j]);
+      if (!Number.isFinite(jVal)) break;
+      const jRatio = jVal / lastGoodVal;
+      if (jRatio >= 0.2 && jRatio <= 5) { nextGoodIdx = j; break; }
+    }
+
+    if (nextGoodIdx === -1) { lastGoodIdx = i; i++; continue; }
+
+    // Interpolate the entire anomalous run [i, nextGoodIdx)
+    const prevTs = entries[lastGoodIdx].timestamp;
+    const nextTs = entries[nextGoodIdx].timestamp;
+    const nextVal = getValue(entries[nextGoodIdx]);
+
+    for (let k = i; k < nextGoodIdx; k++) {
+      const t = (entries[k].timestamp - prevTs) / (nextTs - prevTs);
+      setValue(entries[k], lastGoodVal + (nextVal - lastGoodVal) * t);
+    }
+
+    lastGoodIdx = nextGoodIdx;
+    i = nextGoodIdx + 1;
+  }
+}
+
+/**
+ * Smooths PG cache time-series data (chain-level breakdown) by:
+ *   1. Removing spikes/dips (including multi-day runs) at aggregate and per-chain level.
+ *   2. Filling multi-day gaps with linear interpolation.
+ */
+function smoothPGCacheData(data: PGCacheData): PGCacheData {
+  const timestamps = Object.keys(data).map(Number).sort((a, b) => a - b);
+  if (timestamps.length < 2) return data;
+
+  const allChainKeys = new Set<string>();
+  timestamps.forEach((ts) => Object.keys(data[ts].chains || {}).forEach((k) => allChainKeys.add(k)));
+
+  // Build a mutable working copy as a sorted array
+  type Entry = { timestamp: number } & PGCacheRecord;
+  const entries: Entry[] = timestamps.map((ts) => ({
+    timestamp: ts,
+    onChainMcap: data[ts].onChainMcap,
+    activeMcap: data[ts].activeMcap,
+    defiActiveTvl: data[ts].defiActiveTvl,
+    chains: Object.fromEntries(
+      Object.entries(data[ts].chains || {}).map(([k, v]) => [k, { ...v }])
+    ),
+  }));
+
+  // Step 1: remove spikes/dips — aggregate metrics
+  for (const metric of PG_CACHE_METRICS) {
+    removePGSpikes(
+      entries,
+      (e) => e[metric],
+      (e, v) => { e[metric] = v; }
+    );
+  }
+
+  // Step 1b: remove spikes/dips — per-chain metrics
+  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+  for (const chainKey of allChainKeys) {
+    for (const metric of PG_CACHE_METRICS) {
+      removePGSpikes(
+        entries,
+        (e) => (e.chains[chainKey] ?? zeroPGChain)[metric],
+        (e, v) => {
+          if (!e.chains[chainKey]) e.chains[chainKey] = { ...zeroPGChain };
+          e.chains[chainKey][metric] = v;
+        }
+      );
+    }
+  }
+
+  // Step 2: fill gaps with linear interpolation
+  const result: PGCacheData = {};
+  for (let i = 0; i < entries.length; i++) {
+    const { timestamp, chains, onChainMcap, activeMcap, defiActiveTvl } = entries[i];
+    result[timestamp] = { onChainMcap, activeMcap, defiActiveTvl, chains };
+
+    if (i < entries.length - 1) {
+      const curr = entries[i];
+      const next = entries[i + 1];
+      const daysDiff = Math.round((next.timestamp - curr.timestamp) / 86400);
+
+      for (let j = 1; j < daysDiff; j++) {
+        const f = j / daysDiff;
+        const intTs = curr.timestamp + 86400 * j;
+        const intChains: PGCacheRecord['chains'] = {};
+        for (const chainKey of allChainKeys) {
+          const cC = curr.chains[chainKey] ?? zeroPGChain;
+          const nC = next.chains[chainKey] ?? zeroPGChain;
+          intChains[chainKey] = {
+            onChainMcap: cC.onChainMcap + (nC.onChainMcap - cC.onChainMcap) * f,
+            activeMcap: cC.activeMcap + (nC.activeMcap - cC.activeMcap) * f,
+            defiActiveTvl: cC.defiActiveTvl + (nC.defiActiveTvl - cC.defiActiveTvl) * f,
+          };
+        }
+        result[intTs] = {
+          onChainMcap: curr.onChainMcap + (next.onChainMcap - curr.onChainMcap) * f,
+          activeMcap: curr.activeMcap + (next.activeMcap - curr.activeMcap) * f,
+          defiActiveTvl: curr.defiActiveTvl + (next.defiActiveTvl - curr.defiActiveTvl) * f,
+          chains: intChains,
+        };
+      }
+    }
+  }
+
+  return result;
 }
 
 function processRecordsToPGCache(records: any[]): PGCacheData {
@@ -314,7 +458,7 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
       const existingCache = await readPGCacheForId(id);
       const newData = processRecordsToPGCache(idRecords);
       const merged = mergePGCacheData(existingCache, newData);
-      await storePGCacheForId(id, merged);
+      await storePGCacheForId(id, smoothPGCacheData(merged));
       updatedIds++;
     }
   } else {
@@ -330,7 +474,7 @@ async function generatePGCache(): Promise<{ updatedIds: number }> {
         if (records.length === 0) continue;
 
         const data = processRecordsToPGCache(records);
-        await storePGCacheForId(id, data);
+        await storePGCacheForId(id, smoothPGCacheData(data));
         updatedIds++;
 
         if ((i + 1) % 100 === 0) {
@@ -748,6 +892,13 @@ interface HistoricalBreakdownDataPoint {
   defiActiveTvl: any;
 }
 
+interface HistoricalDataPointAssetTypes {
+  base: HistoricalBreakdownDataPoint;
+  includeStablecoin: HistoricalBreakdownDataPoint; // base + stablecoin
+  includeGovernance: HistoricalBreakdownDataPoint; // base + governance
+  all: HistoricalBreakdownDataPoint; // base + stablecoin + governance
+}
+
 async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Promise<void> {
   console.log('Generating aggregated historical charts...');
   const startTime = Date.now();
@@ -761,8 +912,23 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const byChainTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byCategoryTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byPlatformTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
-  
-  function ensureDataPoint(map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } }, key: string, timestamp: number): HistoricalDataPoint {
+
+  // charts breakdown
+  // keys: onChainMcap, activeMcap, defiActiveTvl
+  // assetType: base, stblecoin, governance
+
+  // timestamp => assetType => key => chain
+  const chainBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+  // timestamp => assetType => key => category
+  const categoryBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+  // timestamp => assetType => key => platform
+  const platformBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+
+  function ensureDataPoint(
+    map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } },
+    key: string,
+    timestamp: number
+  ): HistoricalDataPoint {
     if (!map[key]) map[key] = {};
     if (!map[key][timestamp]) map[key][timestamp] = { timestamp, onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
     return map[key][timestamp];
@@ -780,6 +946,48 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     map[key].defiActiveTvl[timestamp][ticker] = map[key].defiActiveTvl[timestamp][ticker] || 0;
     
     return map[key];
+  }
+
+  function _updateBreakdownAndAssetTypes(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, timestamp: number, assetType: string, key: string, chain: string, value: number) {
+    map[timestamp] = map[timestamp] || {
+      base: { onChainMcap: {}, activeMcap: {}, defiActiveTvl: {} },
+      includeStablecoin: { onChainMcap: {}, activeMcap: {}, defiActiveTvl: {} },
+      includeGovernance: { onChainMcap: {}, activeMcap: {}, defiActiveTvl: {} },
+      all: { onChainMcap: {}, activeMcap: {}, defiActiveTvl: {} },
+    };
+    (map[timestamp] as any)[assetType][key][chain] = (map[timestamp] as any)[assetType][key][chain] || 0;
+    (map[timestamp] as any)[assetType][key][chain] += value;
+  }
+  
+  function updateBreakdownAndAssetTypes(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, m: any, timestamp: number, data: any) {
+    function _addToBreakdownItem(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, timestamp: number, assetType: string, itemKey: string, itemValues: any) {
+      _updateBreakdownAndAssetTypes(map, timestamp, assetType, "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
+      _updateBreakdownAndAssetTypes(map, timestamp, assetType, "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
+      _updateBreakdownAndAssetTypes(map, timestamp, assetType, "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
+    }
+    
+    for (const [itemKey, itemValues] of Object.entries(data || {})) {
+      if (m.data.stablecoin && m.data.governance) {
+        // add to includeStablecoin, includeGovernance, and all
+        _addToBreakdownItem(map, timestamp, "includeStablecoin", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "includeGovernance", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "all", itemKey, itemValues)
+      } else if (m.data.stablecoin) {
+        // add to includeStablecoin and all
+        _addToBreakdownItem(map, timestamp, "includeStablecoin", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "all", itemKey, itemValues)
+      } else if (m.data.governance) {
+        // add to includeGovernance and all
+        _addToBreakdownItem(map, timestamp, "includeGovernance", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "all", itemKey, itemValues)
+      } else {
+        // add to base, includeStablecoin, includeGovernance, and all
+        _addToBreakdownItem(map, timestamp, "base", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "includeStablecoin", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "includeGovernance", itemKey, itemValues)
+        _addToBreakdownItem(map, timestamp, "all", itemKey, itemValues)
+      }
+    }
   }
 
   // Process each asset's pg-cache for chain breakdown
@@ -832,6 +1040,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       allDpa.defiActiveTvl[timestamp][ticker] += totalTvl;
 
       // Aggregate by category
+      const categoryItems: Record<string, any> = {};
       for (const cat of categories) {
         const dp = ensureDataPoint(byCategory, cat, timestamp);
         dp.onChainMcap += totalOnChainMcap;
@@ -842,9 +1051,15 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
         dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
         dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
+        
+        categoryItems[cat] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+        categoryItems[cat].onChainMcap += totalOnChainMcap;
+        categoryItems[cat].activeMcap += totalActiveMcap;
+        categoryItems[cat].defiActiveTvl += totalTvl;
       }
 
       // Aggregate by platform
+      const platformItems: Record<string, any> = {};
       if (platform) {
         const dp = ensureDataPoint(byPlatform, platform, timestamp);
         dp.onChainMcap += totalOnChainMcap;
@@ -855,7 +1070,17 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
         dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
         dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
+        
+        platformItems[platform] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+        platformItems[platform].onChainMcap += totalOnChainMcap;
+        platformItems[platform].activeMcap += totalActiveMcap;
+        platformItems[platform].defiActiveTvl += totalTvl;
       }
+      
+      // update chart breakdown
+      updateBreakdownAndAssetTypes(chainBreakdownAndAssetTypes, m, timestamp, chains);
+      updateBreakdownAndAssetTypes(categoryBreakdownAndAssetTypes, m, timestamp, categoryItems);
+      updateBreakdownAndAssetTypes(platformBreakdownAndAssetTypes, m, timestamp, platformItems);
     }
     processedCount++;
   }
@@ -899,6 +1124,12 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     });
   }
 
+  // Store chain charts - chain breakdown by asset types
+  const rawChainBreakdownAndAssetTypes = toTimeseriesBreakdownChart(chainBreakdownAndAssetTypes, true);
+  for (const [rawKey, rawData] of Object.entries(rawChainBreakdownAndAssetTypes)) {
+    await storeRouteData(`charts/chain-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
+  }
+
   // Store category charts
   for (const [category, timestampMap] of Object.entries(byCategory)) {
     const key = rwaSlug(category);
@@ -913,6 +1144,12 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
       defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
     });
+  }
+  
+  // Store chain charts - category breakdown by asset types
+  const rawCategoryBreakdownAndAssetTypes = toTimeseriesBreakdownChart(categoryBreakdownAndAssetTypes);
+  for (const [rawKey, rawData] of Object.entries(rawCategoryBreakdownAndAssetTypes)) {
+    await storeRouteData(`charts/category-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
   }
 
   // Store platform charts
@@ -930,9 +1167,34 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
     });
   }
+  
+  // Store chain charts - platform breakdown by asset types
+  const rawPlatformBreakdownAndAssetTypes = toTimeseriesBreakdownChart(platformBreakdownAndAssetTypes);
+  for (const [rawKey, rawData] of Object.entries(rawPlatformBreakdownAndAssetTypes)) {
+    await storeRouteData(`charts/platform-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
+  }
 
   console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
   console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}`);
+}
+
+function toTimeseriesBreakdownChart(data: any, chainLabel?: boolean): any {
+  const timeseries: any = {};
+  for (const [timestamp, dataMap] of Object.entries(data)) {
+    for (const assetType of ["base", "includeStablecoin", "includeGovernance", "all"]) {
+      for (const key of ["onChainMcap", "activeMcap", "defiActiveTvl"]) {
+        const rawKey = `${assetType}-${key}`;
+        timeseries[rawKey] = timeseries[rawKey] || [];
+        const item: any = { timestamp: Number(timestamp) };
+        for (const [itemKey, itemTvl] of Object.entries((dataMap as any)[assetType][key])) {
+          const label = chainLabel ? getChainLabelFromKey(itemKey) : itemKey;
+          item[label] = Number(itemTvl);
+        }
+        timeseries[rawKey].push(item);
+      }
+    }
+  }
+  return timeseries;
 }
 
 async function main() {

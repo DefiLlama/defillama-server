@@ -10,7 +10,7 @@ import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normali
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, storeMetadata } from "./historical";
-import { fetchEvm, fetchSolana, type WalletEntry } from './balances';
+import { fetchEvm, fetchSolana, fetchProvenance, fetchStellar, type WalletEntry } from './balances';
 import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
 import { RWA_KEY_MAP } from "./metadataConstants";
 import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
@@ -114,6 +114,8 @@ async function getExcludedBalances(
     processor: async (chain: any) => {
       try {
         if (chain == 'solana') await fetchSolana(timestamp, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        else if (chain == 'provenance') await fetchProvenance(timestamp, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        else if (chain == 'stellar') await fetchStellar(timestamp, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {

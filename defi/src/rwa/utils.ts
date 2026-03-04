@@ -1,4 +1,4 @@
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import { bridgedTvlMixedCaseChains } from "../utils/shared/constants";
 import { getChainDisplayName } from "../utils/normalizeChain";
 import {
   RWA_ALWAYS_STRING_ARRAY_FIELDS,
@@ -37,7 +37,7 @@ export function sortTokensByChain(tokens: { [protocol: string]: string[] }): {
       const chain: string = pk.substring(0, pk.indexOf(":"));
 
       if (!tokensSortedByChain[chain]) tokensSortedByChain[chain] = [];
-      const normalizedPk: string = chainsThatShouldNotBeLowerCased.includes(chain) ? pk : pk.toLowerCase();
+      const normalizedPk: string = bridgedTvlMixedCaseChains.includes(chain) ? pk : pk.toLowerCase();
 
       tokensSortedByChain[chain].push(normalizedPk);
       tokenToProjectMap[normalizedPk] = protocol;
@@ -47,10 +47,12 @@ export function sortTokensByChain(tokens: { [protocol: string]: string[] }): {
   return { tokensSortedByChain, tokenToProjectMap };
 }
 
-export const fetchBurnAddresses = (chain: string): string[] =>
-  chain == "solana"
-    ? ["1nc1nerator11111111111111111111111111111111"]
-    : ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"];
+export const fetchBurnAddresses = (chain: string): string[] => {
+  if (chain == "solana") return ["1nc1nerator11111111111111111111111111111111"];
+  // Provenance and Stellar have no conventional burn address
+  if (chain == "provenance" || chain == "stellar") return [];
+  return ["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"];
+};
 
 /**
  * Create a fast Airtable header -> canonical key mapper.
@@ -329,11 +331,7 @@ function getAccessModel(asset: {
     return "Non-transferable";
   }
 
-  if (asset.selfCustody === false) {
-    return "Custodial Only";
-  }
-
-  return "Unknown";
+  return "Custodial Only";
 }
 
 function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {
@@ -463,6 +461,165 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   return target;
 }
 
+
+// ---------------------------------------------------------------------------
+// Historical time-series smoothing
+// ---------------------------------------------------------------------------
+
+const DAY_SECONDS = 86400;
+
+export interface HistoricalRecord {
+  timestamp: number;
+  onChainMcap: number;
+  defiActiveTvl: number;
+  activeMcap?: number;
+}
+
+const HISTORICAL_NUMERIC_KEYS: ReadonlyArray<keyof HistoricalRecord> = [
+  'onChainMcap',
+  'defiActiveTvl',
+  'activeMcap',
+];
+
+// Maximum number of consecutive anomalous days to bridge over.
+// Runs longer than this are treated as genuine level shifts.
+const MAX_SPIKE_RUN = 5;
+
+/**
+ * Removes spikes and dips (including multi-day runs) from a sorted time series.
+ *
+ * For each metric the algorithm tracks the last known-good value and scans
+ * forward.  When a point deviates by more than 10× or less than 10% of the
+ * last good value, it marks the start of an anomalous run.  It then looks
+ * ahead (up to MAX_SPIKE_RUN days) for the next point that is within 5× of
+ * the last good value.  The entire run is replaced by linear interpolation
+ * between the two good bookends.
+ *
+ * This correctly handles both isolated one-day dips *and* consecutive runs
+ * (e.g. April 10 + 11 both missing price data).
+ */
+function removeSpikes(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (data.length < 3) return data.map((r) => ({ ...r }));
+
+  const result = data.map((r) => ({ ...r }));
+
+  for (const key of HISTORICAL_NUMERIC_KEYS) {
+    let lastGoodIdx = 0;
+    let i = 1;
+
+    while (i < result.length) {
+      const lastGoodVal = result[lastGoodIdx][key];
+      const currVal = result[i][key];
+
+      // Skip undefined / non-finite / near-zero reference values
+      if (lastGoodVal === undefined || currVal === undefined ||
+          !Number.isFinite(lastGoodVal) || !Number.isFinite(currVal)) {
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+      if (lastGoodVal < 1) {
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      const ratio = currVal / lastGoodVal;
+      if (ratio >= 0.1 && ratio <= 10) {
+        // Consistent with last good value
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      // Current point looks anomalous — scan ahead for next good reference
+      let nextGoodIdx = -1;
+      for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, result.length); j++) {
+        const jVal = result[j][key];
+        if (jVal === undefined || !Number.isFinite(jVal)) break;
+        const jRatio = jVal / lastGoodVal;
+        if (jRatio >= 0.2 && jRatio <= 5) {
+          nextGoodIdx = j;
+          break;
+        }
+      }
+
+      if (nextGoodIdx === -1) {
+        // No good reference ahead within window — treat as genuine level shift
+        lastGoodIdx = i;
+        i++;
+        continue;
+      }
+
+      // Linearly interpolate the entire anomalous run [i, nextGoodIdx)
+      const prevTs = result[lastGoodIdx].timestamp;
+      const nextTs = result[nextGoodIdx].timestamp;
+      const prevVal = lastGoodVal;
+      const nextVal = result[nextGoodIdx][key] as number;
+
+      for (let k = i; k < nextGoodIdx; k++) {
+        const t = (result[k].timestamp - prevTs) / (nextTs - prevTs);
+        (result[k] as any)[key] = prevVal + (nextVal - prevVal) * t;
+      }
+
+      lastGoodIdx = nextGoodIdx;
+      i = nextGoodIdx + 1;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Inserts linearly-interpolated records for any gaps larger than one day.
+ * Mirrors the approach used in getCategories.ts for protocol TVL.
+ */
+function fillGaps(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (data.length < 2) return [...data];
+
+  const result: HistoricalRecord[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    result.push(data[i]);
+
+    if (i < data.length - 1) {
+      const curr = data[i];
+      const next = data[i + 1];
+      const daysDiff = Math.round((next.timestamp - curr.timestamp) / DAY_SECONDS);
+
+      for (let j = 1; j < daysDiff; j++) {
+        const fraction = j / daysDiff;
+        const interpolated: HistoricalRecord = {
+          timestamp: curr.timestamp + DAY_SECONDS * j,
+          onChainMcap: curr.onChainMcap + (next.onChainMcap - curr.onChainMcap) * fraction,
+          defiActiveTvl: curr.defiActiveTvl + (next.defiActiveTvl - curr.defiActiveTvl) * fraction,
+        };
+        if (curr.activeMcap !== undefined && next.activeMcap !== undefined) {
+          interpolated.activeMcap = curr.activeMcap + (next.activeMcap - curr.activeMcap) * fraction;
+        }
+        result.push(interpolated);
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Smooths RWA historical chart data:
+ *   1. Removes spikes/dips — including runs of up to 5 consecutive bad days
+ *      (e.g. missing price or TVL data on Apr 10 + 11).
+ *   2. Fills any multi-day gaps with linear interpolation.
+ *
+ * Safe to call on already-sorted or unsorted data; returns a new sorted array.
+ */
+export function smoothHistoricalData(data: HistoricalRecord[]): HistoricalRecord[] {
+  if (!data || data.length < 2) return data;
+  const sorted = [...data].sort((a, b) => a.timestamp - b.timestamp);
+  return fillGaps(removeSpikes(sorted));
+}
+
+// ---------------------------------------------------------------------------
 
 const LEADING_DASH_REGEX = /^-+/
 const TRAILING_DASH_REGEX = /-+$/

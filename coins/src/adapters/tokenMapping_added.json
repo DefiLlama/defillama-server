@@ -6503,66 +6503,6 @@
       "symbol": "ELK",
       "to": "coingecko#elk-finance"
     },
-    "0x6fbcdc1169b5130c59e72e51ed68a84841c98cd1": {
-      "name": "Tether USD",
-      "decimals": "6",
-      "symbol": "ioUSDT",
-      "to": "coingecko#tether"
-    },
-    "0x3cdb7c48e70b854ed2fa392e21687501d84b3afc": {
-      "name": "Matic Tether USD",
-      "decimals": "6",
-      "symbol": "USDT-matic",
-      "to": "coingecko#tether"
-    },
-    "0x3b2bf2b523f54c4e454f08aa286d03115aff326c": {
-      "name": "USD Coin",
-      "decimals": "6",
-      "symbol": "ioUSDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0xc04da3a99d17135857bb937d2fbb321d3b6c6a81": {
-      "name": "Matic USD Coin",
-      "decimals": "6",
-      "symbol": "USDC-matic",
-      "to": "coingecko#usd-coin"
-    },
-    "0x42c9255d5e522e83b16ea11a3ba04c2d3afca079": {
-      "name": "BSC Tether USD",
-      "decimals": "18",
-      "symbol": "USDT_b",
-      "to": "coingecko#tether"
-    },
-    "0x037346e5a5722957ac2cab6ceb8c74fc18cea91d": {
-      "name": "BSC USD Coin",
-      "decimals": "18",
-      "symbol": "USDC_b",
-      "to": "coingecko#usd-coin"
-    },
-    "0x84abcb2832be606341a50128aeb1db43aa017449": {
-      "name": "Binance USD",
-      "decimals": "18",
-      "symbol": "BUSD-bsc",
-      "to": "coingecko#binance-usd"
-    },
-    "0xacee9b11cd4b3f57e58880277ac72c8c41abe4e4": {
-      "name": "Binance USD",
-      "decimals": "18",
-      "symbol": "ioBUSD",
-      "to": "coingecko#iobusd"
-    },
-    "0x62a9d987cbf4c45a550deed5b57b200d7a319632": {
-      "name": "Matic DAI stablecoin",
-      "decimals": "18",
-      "symbol": "DAI-matic",
-      "to": "coingecko#dai"
-    },
-    "0x1cbad85aa66ff3c12dc84c5881886eeb29c1bb9b": {
-      "name": "Dai Stablecoin",
-      "decimals": "18",
-      "symbol": "ioDAI",
-      "to": "coingecko#dai"
-    },
     "0xec690cdd448e3cbb51ed135df72301c3265a8f80": {
       "name": "xDollar Interverse Money",
       "decimals": "18",
@@ -6574,18 +6514,6 @@
       "decimals": "18",
       "symbol": "CYC",
       "to": "coingecko#cyclone-protocol"
-    },
-    "0x0258866edaf84d6081df17660357ab20a07d0c80": {
-      "name": "Wrapped Ether",
-      "decimals": "18",
-      "symbol": "ioETH",
-      "to": "coingecko#ethereum"
-    },
-    "0xc7b93720f73b037394ce00f954f849ed484a3dea": {
-      "name": "Wrapped BTC",
-      "decimals": "8",
-      "symbol": "ioWBTC",
-      "to": "coingecko#wrapped-btcoin"
     },
     "0x17df9fbfc1cdab0f90eddc318c4f6fcada730cf2": {
       "name": "Game Fantasy Token",
@@ -6604,12 +6532,6 @@
       "decimals": "18",
       "symbol": "iMAGIC",
       "to": "coingecko#imagictoken"
-    },
-    "0x97e6c48867fdc391a8dfe9d169ecd005d1d90283": {
-      "name": "Binance Coin",
-      "decimals": "18",
-      "symbol": "BNB-bsc",
-      "to": "coingecko#binancecoin"
     },
     "0x86702a7f8898b172de396eb304d7d81207127915": {
       "name": "ZoomToken",

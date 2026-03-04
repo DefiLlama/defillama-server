@@ -33,7 +33,7 @@ export function importAdapter(protocol: Protocol) {
 export function importAdapterDynamic(protocol: Protocol) {
 
     try {  // wrap call to be safe, can be removed later
-        const { allProtocols } = require(`../../../DefiLlama-Adapters/projects/helper/registries`)
+        const { allProtocols } = require(`../../../DefiLlama-Adapters/registries`)
         let pModule = protocol.module.replace(/\.js$/, '').replace(/\/index$/, '').replace(/\/api$/, '')
         let _module = allProtocols[pModule] || allProtocols[protocol.module]
         if (_module) return _module

@@ -349,6 +349,26 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x754704bc059f8c67012fed69bc8a327a5aafb603",
     confidence: 1
   },
+  stZIG: {
+    rate: async () => {
+      const LCD = "https://public-zigchain-lcd.numia.xyz";
+      const stakerContract =
+        "zig18nnde5tpn76xj3wm53n0tmuf3q06nruj3p6kdemcllzxqwzkpqzqk7ue55";
+      const query = Buffer.from(
+        JSON.stringify({ reverse_st_zig_price: { amount: "1000000" } }),
+      ).toString("base64");
+      const url = `${LCD}/cosmwasm/wasm/v1/contract/${stakerContract}/smart/${encodeURIComponent(query)}`;
+      const { data } = await fetch(url).then((r) => r.json());
+      return Number(data.uzig_amount) / Number(data.stzig_amount);
+    },
+    chain: "zigchain",
+    address:
+      "coin.zig109f7g2rzl2aqee7z6gffn8kfe9cpqx0mjkk7ethmx8m2hq4xpe9snmaam2.stzig",
+    underlying: "uzig",
+    decimals: "6",
+    symbol: "stZIG",
+    confidence: 1
+  },
 };
 
 export async function apiDerivs(timestamp: number) {

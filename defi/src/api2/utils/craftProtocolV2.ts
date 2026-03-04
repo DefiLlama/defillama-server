@@ -49,7 +49,7 @@ export async function craftProtocolV2({
   skipFeMiniTransform = false,
 }: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, ...restProtocolData } = protocolData as any
-  const { hallmarks } = _InternalProtocolMetadataMap[protocolData.id] || {};
+  const { tvlCodePath, hallmarks, treasuryCodePath } = _InternalProtocolMetadataMap[protocolData.id] || {};
 
   // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
   const isDummyProtocol = protocolData.module === "dummy.js";
@@ -212,7 +212,13 @@ export async function craftProtocolV2({
   }
 
   if (misrepresentedTokens === true)
-    response.misrepresentedTokens = true;
+    response.misrepresentedTokens = true
+
+  if (tvlCodePath)
+    response.tvlCodePath = tvlCodePath
+
+  if (treasuryCodePath)
+    response.treasuryCodePath = treasuryCodePath
 
   if (Array.isArray(hallmarks) && hallmarks.length > 0) {
     response.hallmarks = hallmarks as any

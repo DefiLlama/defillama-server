@@ -71,6 +71,8 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   otherProtocols?: Array<string>;
   parentProtocolSlug?: string;
   methodology?: string;
+  tvlCodePath?: string;   // tvl code path
+  treasuryCodePath?: string;   // treasury code path
   misrepresentedTokens?: boolean;
   hallmarks?: [number, string][];
   chainTvls: IChainTvl;

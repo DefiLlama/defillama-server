@@ -5211,7 +5211,7 @@ const data4: Protocol[] = [
     {
       name: "Chainlink",
       type: "Primary",
-      startDate: "2026-03-04",
+      startDate: "2026-03-03",
       proof: ["https://docs.bitfi.one/developer/using-contract/bfusd-oracle", "https://docs.bitfi.one/developer/bfusd-overview/"]
     }
   ],

@@ -58541,6 +58541,7 @@ const data3_3: Protocol[] = [
     twitter: "solar_dex",
     listedAt: 1731426568,
     deadFrom: "2025-08-11",
+    deadUrl: true,
     deprecated: true,
     dimensions: {
       fees: "solar-studios",

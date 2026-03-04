@@ -2629,7 +2629,6 @@ export const chainCoingeckoIds = {
   },
   "Beam": {
     geckoId: null,
-    github: ["Merit-Circle"],
     symbol: "MC",
     cmcId: null,
     categories: ["EVM"],

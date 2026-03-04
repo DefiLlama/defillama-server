@@ -8591,7 +8591,6 @@ const data5: Protocol[] = [
     twitter: "ByteExchange",
     listedAt: 1769124363
   },
-  /* it only have their own token on GRX Chain
   {
     id: "7281",
     name: "GroveX",
@@ -8599,18 +8598,17 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://grovex.io/en_US/",
     description: "GroveX is a global centralized exchange on GRX Chain.",
-    chain: "GRX Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/grovex.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: ["GRX Chain"],
+    chains: ["Ethereum"],
     module: "grovex/index.js",
     twitter: "GroveXchange",
     listedAt: 1769124773
   },
-  */
   {
     id: "7282",
     name: "Calculus",

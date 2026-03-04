@@ -399,14 +399,6 @@ export async function storeTvl(
               // validate cache age and ratio of key tvl with total tvlType
               if (cacheAge > thresholds[thresholdTvl].cacheTime || ratio >= thresholds[thresholdTvl].chainRatio) throw getTvlErrors[key];
 
-              options.tempCacheInfo.push({
-                protocolName: protocol.name,
-                tvl: cacheTvl,
-                storeKey: key,
-                cacheTime: tempResultCache.timestamp,
-                invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
-              })
-              
               // invalid cache
               if (!tempResultCache.usdTvls[key] || !tempResultCache.tokensBalances[key] || !tempResultCache.usdTokenBalances[key] || !tempResultCache.rawTokenBalances[key])
                 throw getTvlErrors[key];
@@ -415,6 +407,14 @@ export async function storeTvl(
               tokensBalances[key] = tempResultCache.tokensBalances[key];
               usdTokenBalances[key] = tempResultCache.usdTokenBalances[key];
               rawTokenBalances[key] = tempResultCache.rawTokenBalances[key];
+              
+              options.tempCacheInfo.push({
+                protocolName: protocol.name,
+                tvl: cacheTvl,
+                storeKey: key,
+                cacheTime: tempResultCache.timestamp,
+                invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
+              })
             }
           }
         }

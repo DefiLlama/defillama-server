@@ -47,7 +47,11 @@ const PAIRS = [
  * without relying on bigint literals.
  * We truncate fractional digits to avoid huge float parsing.
  */
-function formatUnitsToNumber(raw: any, decimals: number, fracDigits = 12): number {
+function formatUnitsToNumber(
+  raw: any,
+  decimals: number,
+  fracDigits = 12,
+): number {
   if (raw === null || raw === undefined) return 0;
 
   const s0 = raw.toString();
@@ -61,7 +65,8 @@ function formatUnitsToNumber(raw: any, decimals: number, fracDigits = 12): numbe
 
   const len = s.length;
   const intPart = len > decimals ? s.slice(0, len - decimals) : "0";
-  let fracPart = len > decimals ? s.slice(len - decimals) : s.padStart(decimals, "0");
+  let fracPart =
+    len > decimals ? s.slice(len - decimals) : s.padStart(decimals, "0");
 
   // Truncate fractional part for stable float parse
   fracPart = fracPart.slice(0, Math.max(0, fracDigits));
@@ -81,27 +86,43 @@ async function getPrices(timestamp: number): Promise<Write[]> {
   const api = await getApi(CHAIN, timestamp, true);
 
   // Pull bUSDt price from DB (should be ~1 due to mapping)
-  const busdtData = (await getTokenAndRedirectData([BUSDt], CHAIN, timestamp))?.[0];
+  const busdtData = (
+    await getTokenAndRedirectData([BUSDt], CHAIN, timestamp)
+  )?.[0];
   const busdtPrice = busdtData?.price ?? 1;
 
   // We still fetch onchain decimals to avoid relying on DB metadata
-  let busdtDecimals = 18;
+  let busdtDecimals = 6;
   try {
-    busdtDecimals = Number(await api.call({ target: BUSDt, abi: "erc20:decimals" }));
+    busdtDecimals = Number(
+      await api.call({ target: BUSDt, abi: "erc20:decimals" }),
+    );
   } catch {}
 
   const pairAddrs = PAIRS.map((p) => p.pair);
   const tokenAddrs = PAIRS.map((p) => p.token);
 
   const [token0s, token1s, reserves, tokenDecimals] = await Promise.all([
-    api.multiCall({ abi: "address:token0", calls: pairAddrs, permitFailure: true }),
-    api.multiCall({ abi: "address:token1", calls: pairAddrs, permitFailure: true }),
+    api.multiCall({
+      abi: "address:token0",
+      calls: pairAddrs,
+      permitFailure: true,
+    }),
+    api.multiCall({
+      abi: "address:token1",
+      calls: pairAddrs,
+      permitFailure: true,
+    }),
     api.multiCall({
       abi: "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
       calls: pairAddrs,
       permitFailure: true,
     }),
-    api.multiCall({ abi: "erc20:decimals", calls: tokenAddrs, permitFailure: true }),
+    api.multiCall({
+      abi: "erc20:decimals",
+      calls: tokenAddrs,
+      permitFailure: true,
+    }),
   ]);
 
   const writes: Write[] = [];
@@ -118,8 +139,12 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     if (!r) continue;
 
     // Handle tuple/object formats
-    const reserve0 = Array.isArray(r) ? r[0] : (r as any).reserve0 ?? (r as any)[0];
-    const reserve1 = Array.isArray(r) ? r[1] : (r as any).reserve1 ?? (r as any)[1];
+    const reserve0 = Array.isArray(r)
+      ? r[0]
+      : (r as any).reserve0 ?? (r as any)[0];
+    const reserve1 = Array.isArray(r)
+      ? r[1]
+      : (r as any).reserve1 ?? (r as any)[1];
     if (reserve0 === undefined || reserve1 === undefined) continue;
 
     const tokenDec = Number(tokenDecimals?.[i] ?? 18);
@@ -142,7 +167,8 @@ async function getPrices(timestamp: number): Promise<Write[]> {
       continue;
     }
 
-    const busdtAmt = formatUnitsToNumber(busdtReserveRaw, busdtDecimals) * busdtPrice; // USD
+    const busdtAmt =
+      formatUnitsToNumber(busdtReserveRaw, busdtDecimals) * busdtPrice; // USD
     const tokenAmt = formatUnitsToNumber(tokenReserveRaw, tokenDec);
 
     if (busdtAmt <= 0 || tokenAmt <= 0) continue;
@@ -162,7 +188,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
       symbol,
       timestamp,
       PROJECT,
-      confidence
+      confidence,
     );
   }
 

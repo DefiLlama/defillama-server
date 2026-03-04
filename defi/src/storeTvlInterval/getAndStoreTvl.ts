@@ -363,23 +363,23 @@ export async function storeTvl(
           } else {
             const thresholds: Record<number, any> = {
               1_000_000: { // tvl <= $1M
-                cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
+                cacheTime: 4 * 24 * 60 * 60, // cache age 4 days
                 chainRatio: 0.001, // 0.1%, accept cache if chain has <= 0.01% total tvl
               },
               10_000_000: { // tvl <= $10M
-                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                cacheTime: 4 * 24 * 60 * 60, // cache age 4 days
                 chainRatio: 0.001, // 0.1%
               },
               50_000_000: { // tvl <= $50M
-                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
                 chainRatio: 0.0001, // 0.01%
               },
               100_000_000: { // tvl <= $100M
-                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
+                cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
                 chainRatio: 0.0001, // 0.01%
               },
               1_000_000_000: { // tvl <= $1B
-                cacheTime: 1 * 24 * 60 * 60, // cache age 2 days
+                cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
                 chainRatio: 0.00005, // 0.005% ~ $50k
               },
             }
@@ -406,16 +406,16 @@ export async function storeTvl(
                 cacheTime: tempResultCache.timestamp,
                 invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
               })
+              
+              // invalid cache
+              if (!tempResultCache.usdTvls[key] || !tempResultCache.tokensBalances[key] || !tempResultCache.usdTokenBalances[key] || !tempResultCache.rawTokenBalances[key])
+                throw getTvlErrors[key];
+  
+              usdTvls[key] = tempResultCache.usdTvls[key];
+              tokensBalances[key] = tempResultCache.tokensBalances[key];
+              usdTokenBalances[key] = tempResultCache.usdTokenBalances[key];
+              rawTokenBalances[key] = tempResultCache.rawTokenBalances[key];
             }
-            
-            // invalid cache
-            if (!tempResultCache.usdTvls[key] || tempResultCache.tokensBalances[key] || tempResultCache.usdTokenBalances[key] || tempResultCache.rawTokenBalances[key])
-              throw getTvlErrors[key];
-
-            usdTvls[key] = tempResultCache.usdTvls[key];
-            tokensBalances[key] = tempResultCache.tokensBalances[key];
-            usdTokenBalances[key] = tempResultCache.usdTokenBalances[key];
-            rawTokenBalances[key] = tempResultCache.rawTokenBalances[key];
           }
         }
       }

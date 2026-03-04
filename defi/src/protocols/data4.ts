@@ -30277,6 +30277,8 @@ const data4: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Molecular-Protocol_202509161103.pdf"],
     listedAt: 1761018029,
     deadUrl: true,
+    rugged: true,
+    hallmarks: [["2026-01-31", "Rug Pull"]],
   },
   {
     id: "6889",

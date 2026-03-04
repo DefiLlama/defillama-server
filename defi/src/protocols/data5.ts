@@ -13030,5 +13030,27 @@ const data5: Protocol[] = [
     twitter: "AmpleHQ",
     listedAt: 1772599975
   },
+  {
+    id: "7494",
+    name: "Otomate",
+    address: null,
+    symbol: "-",
+    url: "https://otomate.trade",
+    description:
+      "The ultimate on-chain trading automation app on Ink. Copy trading, market making, yield strategies, AI agents, and more — non-custodial, fully automated.",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/otomate.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Ink"],
+    module: "dummy.js",
+    twitter: "otomate_trade",
+    dimensions: {
+      fees: "otomate",
+      dexs: "otomate"
+    },
+  },
 ];
 export default data5;

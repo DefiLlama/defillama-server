@@ -13009,7 +13009,11 @@ const data5: Protocol[] = [
     module: "tideswap/index.js",
     parentProtocol: "parent#tideswap",
     twitter: "TideSwapApp",
-    listedAt: 1772570322
+    listedAt: 1772570322,
+    dimensions: {
+      dexs: "tideswap-dex",
+      fees: "tideswap-dex",
+    },
   },
   {
     id: "7493",

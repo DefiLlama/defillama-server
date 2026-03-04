@@ -58540,6 +58540,8 @@ const data3_3: Protocol[] = [
     module: "solar-studios/index.js",
     twitter: "solar_dex",
     listedAt: 1731426568,
+    deadFrom: "2025-08-11",
+    deprecated: true,
     dimensions: {
       fees: "solar-studios",
       dexs: "solar-studios"

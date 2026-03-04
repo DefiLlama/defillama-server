@@ -192,5 +192,6 @@ export default {
   makina: require("./yield/makina"),
   stORE: require("./solana/stORE"),
   accountable: require("./yield/accountable"),
-  ledgity: require("./yield/ledgity")
+  ledgity: require("./yield/ledgity"),
+  pumpspace: require("./markets/pumpspace")
 };

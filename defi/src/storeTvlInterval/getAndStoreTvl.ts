@@ -354,7 +354,7 @@ export async function storeTvl(
           // cron-task and allow to use temp cache
 
           if (tempResultCache === undefined) {
-            tempResultCache = await getJSON(tempResultCacheKey);
+            tempResultCache = await getJSON(tempResultCacheKey, { throwErrorWhenFailed: false });
           }
 
           // query redis but cache was not found, throw Error
@@ -436,7 +436,7 @@ export async function storeTvl(
         usdTokenBalances,
         rawTokenBalances,
         timestamp: getCurrentUnixTimestamp(),
-      })
+      },{ throwErrorWhenFailed: false })
     }
 
     logRunStats()

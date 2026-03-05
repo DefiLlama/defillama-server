@@ -744,6 +744,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
     address: "0xd001f0a15d272542687b2677ba627f48a4333b5d",
   },
+  iSUSD: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:tokenPrice",
+        target: "0xd8D25f03EBbA94E15Df2eD4d6D38276B595593c1",
+      });
+      return rate / 1e18;
+    },
+    chain: "rsk",
+    underlying: "0xe700691dA7b9851F2F35f8b8182c69c53CcaD9Db",
+    address: "0xd8D25f03EBbA94E15Df2eD4d6D38276B595593c1",
+  },
 };
 
 export async function derivs(timestamp: number) {

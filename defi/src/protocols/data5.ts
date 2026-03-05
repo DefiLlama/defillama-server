@@ -11256,7 +11256,11 @@ const data5: Protocol[] = [
     module: "deltadefi/index.js",
     twitter: "DeltaDeFi",
     github: ["deltadefi-protocol"],
-    listedAt: 1771287737
+    listedAt: 1771287737,
+    dimensions: {
+      dexs: "deltadefi",
+      fees: "deltadefi",
+    },
   },
   {
     id: "7408",

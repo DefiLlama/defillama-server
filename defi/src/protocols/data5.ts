@@ -13183,5 +13183,25 @@ const data5: Protocol[] = [
     twitter: "WChainNetwork",
     listedAt: 1772731701
   },
+  {
+    id: "7502",
+    name: "stETH Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://steth.exchange/",
+    description:
+      "An exchange designed specifically for stETH to ETH swaps.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/steth-exchange.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    forkedFromIds: ["2197"],
+    chains: ["Ethereum"],
+    module: "steth-exchange/index.js",
+    twitter: null,
+    listedAt: 1772732418
+  },
 ];
 export default data5;

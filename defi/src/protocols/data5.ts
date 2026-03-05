@@ -13203,5 +13203,25 @@ const data5: Protocol[] = [
     twitter: null,
     listedAt: 1772732418
   },
+  {
+    id: "7503",
+    name: "Human ID",
+    address: null,
+    symbol: "-",
+    url: "https://app.passport.xyz/",
+    description: "An identity verification application and Sybil resistance protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/human-id.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Identity & Reputation",
+    chains: ["Ethereum","Arbitrum", "Optimism", "Fantom", "Avalanche", "Base", "Linea", "Scroll", "zkSync Era"],
+    module: "dummy.js",
+    twitter: "HumnPassport",
+    dimensions: {
+      fees: "human-id",
+    }
+  },
 ];
 export default data5;

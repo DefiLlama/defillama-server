@@ -13802,6 +13802,11 @@
     }
   },
   "monad": {
+    "0x650b616b46fF94000Eb115926aB8393B90788D76": {
+      "decimals": "6",
+      "symbol": "rwaUSDi",
+      "to": "coingecko#usd-coin"
+    },
     "0xd90f6bfed23ffde40106fc4498dd2e9edb95e4e7": {
       "to": "coingecko#midas-mhyper",
       "decimals": 18,

@@ -25390,7 +25390,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "tradeparadex",
+    twitter: "paradex",
     oraclesBreakdown: [
       {
         name: "Stork",

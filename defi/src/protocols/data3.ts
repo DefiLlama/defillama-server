@@ -20967,7 +20967,7 @@ const data3_1: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "paradex/index.js",
-    twitter: "tradeparadex",
+    twitter: "paradex",
     parentProtocol: "parent#paradex",
     listedAt: 1697648373,
   },

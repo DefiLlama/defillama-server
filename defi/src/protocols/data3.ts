@@ -39078,6 +39078,7 @@ const data3_2: Protocol[] = [
       derivatives: "bsx"
     },
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "4459",

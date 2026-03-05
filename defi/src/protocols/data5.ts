@@ -13059,7 +13059,7 @@ const data5: Protocol[] = [
     },
   },
   {
-    id: "7495",
+    id: "7496",
     name: "Venus Flux",
     address: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
     symbol: "XVS",
@@ -13079,7 +13079,7 @@ const data5: Protocol[] = [
     listedAt: 1772661088
   },
   {
-    id: "7495",
+    id: "7497",
     name: "Rip.xyz",
     address: null,
     symbol: "-",
@@ -13099,7 +13099,7 @@ const data5: Protocol[] = [
     listedAt: 1772727215
   },
   {
-    id: "7495",
+    id: "7498",
     name: "EZManager",
     address: null,
     symbol: "-",
@@ -13120,7 +13120,7 @@ const data5: Protocol[] = [
     listedAt: 1772727222
   },
   {
-    id: "7495",
+    id: "7499",
     name: "BitChill",
     address: null,
     symbol: "-",

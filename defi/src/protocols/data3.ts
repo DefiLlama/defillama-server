@@ -39055,31 +39055,6 @@ const data3_2: Protocol[] = [
     }
   },
   {
-    id: "4458",
-    name: "BSX Exchange",
-    address: null,
-    symbol: "-",
-    url: "https://www.bsx.exchange",
-    description:
-      "Optimized trading engine built for traders and powered by next-generation decentralized blockchain infrastructure enabling low fees and deep liquidity - built by traders, for traders.",
-    chain: "Base",
-    logo: `${baseIconsUrl}/bsx-exchange.jpg`,
-    audits: "0",
-    gecko_id: null,
-    cmcId: null,
-    category: "Derivatives",
-    chains: ["Base"],
-    module: "bsx-exchange/index.js",
-    // https://docs.bsx.exchange/bsx-docs/architectural-overview/oracle
-    oraclesBreakdown: [ { name: "Stork", type: "Primary", proof: [] } ],
-    twitter: "bsx_labs",
-    listedAt: 1712661648,
-    dimensions: {
-      derivatives: "bsx"
-    },
-    deadUrl: true,
-  },
-  {
     id: "4459",
     name: "Zebra Protocol",
     address: null,

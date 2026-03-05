@@ -5763,7 +5763,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "flashbot",
-        genuineSpikes: [["2025-10-10", "-"]]
+        genuineSpikes: [["2025-10-10", "-"], ["2024-08-05", "Higher usage due to ETH price volatility"],
+        ["2025-02-03", "Higher usage due to ETH price volatility"]]
       }
     }
   },

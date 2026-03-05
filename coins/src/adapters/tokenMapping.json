@@ -1071,6 +1071,16 @@
     }
   },
   "ethereum": {
+    "0x52c66B5E7f8Fde20843De900C5C8B4b0F23708A0": {
+      "decimals": "18",
+      "symbol": "AZND",
+      "to": "coingecko#mu-digital-aznd"
+    },
+    "0x09AD9c6DcadCc3aB0b3E107E8E7DA69c2eEa8599": {
+      "decimals": "18",
+      "symbol": "muBOND",
+      "to": "coingecko#mu-digital-mubond"
+    },
     "0x4fdb3cb3DBD6D24B64276645c1ADCb85cbB39dC6": {
       "decimals": "18",
       "symbol": "sd-FrxMsUSD-vault",

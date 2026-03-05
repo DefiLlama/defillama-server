@@ -291,7 +291,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dinero_xyz",
     governanceID: ["snapshot:redactedcartel.eth"],
-    github: ["redacted-cartel", "dinero-protocol"],
+    github: ["dinero-protocol"],
     treasury: "redacted.js",
   },
   {
@@ -1950,7 +1950,6 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Paladin_vote",
     governanceID: ["snapshot:palvote.eth"],
     treasury: "paladin-finance.js",
-    github: ["PaladinFinance"],
     deadUrl: true,
   },
   {
@@ -2447,7 +2446,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     treasury: "dexfinance.js",
-    github: ["dexIRA"],
     twitter: "DexFinance",
   },
   {
@@ -2757,7 +2755,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24700",
     chains: [],
     twitter: "LybraFinanceLSD",
-    github: ["LybraFinance"],
     stablecoins: ["peg-eusd"],
     deadUrl: true,
   },
@@ -3358,7 +3355,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "stryke",
     cmcId: "32215",
     chains: [],
-    github: ["dopex-io", "stryke-xyz"],
+    github: ["stryke-xyz"],
     treasury: "dopex.js",
     twitter: "stryke_xyz",
   },
@@ -3711,7 +3708,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "kimprotocol",
-    github: ["kizuna-dex"],
   },
   {
     id: "parent#swapr",
@@ -4055,7 +4051,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "9251",
     chains: [],
     twitter: "standarddotim",
-    github: ["standardweb3", "standarddotim"],
+    github: ["standarddotim"],
   },
   {
     id: "parent#crunchy-network",
@@ -4407,7 +4403,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     governanceID: ["snapshot:riskharbor.eth"],
-    github: ["Risk-Harbor"],
     twitter: "OpenGDP",
   },
   {
@@ -4447,6 +4442,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "WiseLending",
+    deadUrl: true,
   },
   {
     id: "parent#Edge",
@@ -4460,6 +4456,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EdgeLayer",
     github: ["vertex-protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#btcfi",
@@ -6742,7 +6739,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "29121",
     chains: [],
     twitter: "TradeOnDESK",
-    github: ["HMXOrg","TradeOnDESK"],
+    github: ["TradeOnDESK"],
   },
  /* {
     id: "parent#defive",

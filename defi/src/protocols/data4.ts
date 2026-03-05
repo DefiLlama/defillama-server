@@ -569,7 +569,6 @@ const data4: Protocol[] = [
     module: "astrolend/index.js",
     twitter: "AstrolFinance",
     audit_links: ["https://doc.astrol.io/astrolend/security"],
-    github: ["Astrol-Finance"],
     listedAt: 1736175355,
   },
   {
@@ -1879,7 +1878,7 @@ const data4: Protocol[] = [
     name: "Citrex Markets",
     address: null,
     symbol: "-",
-    url: "https://app.citrex.markets/",
+    url: "https://dex.citrex.markets/",
     description:
       "Citrex is a decentralised exchange offering low fee and fast CEX-like perpetual and spot trading from a self-custodial cross-margin account built on the Sei blockchain.Trade perps on your favourite assets like SEI, BTC, ETH, XRP or DOGE, with low fees.",
     chain: "Sei",
@@ -5437,7 +5436,7 @@ const data4: Protocol[] = [
     name: "PulseX StableSwap",
     address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
     symbol: "PLSX",
-    url: "https://app.pulsex.com/swap",
+    url: "https://app.pulsex.com/",
     description: `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
     chain: "Pulse",
     logo: `${baseIconsUrl}/pulsex-stableswap.png`,
@@ -6012,7 +6011,6 @@ const data4: Protocol[] = [
     module: "memeswap/index.js",
     twitter: "memeswapfi",
     audit_links: ["https://github.com/memeswapfi/memeswap-contracts/tree/main/audits"],
-    github: ["memeswapfi"],
     listedAt: 1740078089,
   },
   {
@@ -6903,7 +6901,6 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "ERC_Burner",
-    github: ["ercburner"],
     dimensions: {
       fees: "erc-burner",
       aggregators: "erc-burner"
@@ -8203,8 +8200,8 @@ const data4: Protocol[] = [
   {
     id: "5915",
     name: "YO Protocol",
-    address: null,
-    symbol: "-",
+    address: "0x1925450f5e5fb974b0aae1f3408cf5286fbd1a72",
+    symbol: "YO",
     url: "https://app.yo.xyz?ref=defillama",
     referralUrl: "https://app.yo.xyz?ref=defillama",
     description:
@@ -8212,16 +8209,15 @@ const data4: Protocol[] = [
     chain: "Base",
     logo: `${baseIconsUrl}/yo-protocol.png`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "yo",
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Base"],
+    chains: ["Base", "Ethereum", "Arbitrum"],
     module: "yo/index.js",
     twitter: "yield",
     github: ["yoprotocol"],
     audit_links: [
-      "https://www.yo.xyz/files/Yo-Protocol-Hunter-Security-Audit-Report.pdf",
-      "https://www.yo.xyz/files/Yo-Protocol-Offbeat-Security-Review.pdf",
+      "https://docs.yo.xyz/protocol/security-audits"
     ],
     listedAt: 1742382739,
     dimensions: {
@@ -9496,7 +9492,6 @@ const data4: Protocol[] = [
     audit_links: [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Jpg.Store-audit-report.pdf",
     ],
-    github: ["NFT Marketplace"],
     listedAt: 1743432881,
     dimensions: {
       fees: "jpg-store"
@@ -11763,7 +11758,6 @@ const data4: Protocol[] = [
       "https://github.com/LNDfi/LNDfi-Salus-Audit-Report/blob/main/LNDfi-V3-core_report_2025-03-14%20(1).pdf",
     ],
     listedAt: 1745245775,
-    github: ["LNDfi"],
     deadUrl: true,
   },
   {
@@ -11934,7 +11928,6 @@ const data4: Protocol[] = [
     chains: ["Binance"],
     module: "vanillaFinance/index.js",
     twitter: "Superp_xyz",
-    github: ["VanillaDevTeam"],
     listedAt: 1745416525,
   },
   {
@@ -16243,7 +16236,6 @@ const data4: Protocol[] = [
     module: "drefinance/index.js",
     treasury: "drefinance.js",
     twitter: "drefinance",
-    github: ["dredotfinance"],
     listedAt: 1748928247,
     deadUrl: true,
   },
@@ -22297,7 +22289,6 @@ const data4: Protocol[] = [
     chains: ["Lisk"],
     module: "faet/index.js",
     twitter: "FaetStudio",
-    github: ["FaetStudio"],
     listedAt: 1754371231,
   },
   {
@@ -30277,6 +30268,8 @@ const data4: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Molecular-Protocol_202509161103.pdf"],
     listedAt: 1761018029,
     deadUrl: true,
+    rugged: true,
+    hallmarks: [["2026-01-31", "Rug Pull"]],
   },
   {
     id: "6889",

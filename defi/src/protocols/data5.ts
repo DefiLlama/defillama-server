@@ -1544,7 +1544,6 @@ const data5: Protocol[] = [
     forkedFromIds: ["111"],
     module: "luckypeaches/index.js",
     twitter: "luckypeachxyz",
-    github: ["luckypeachxyz"],
     listedAt: 1762301789,
     deadUrl: true,
   },
@@ -3469,7 +3468,7 @@ const data5: Protocol[] = [
     dimensions: {
       "derivatives": "leverup",
       "fees": "leverup",
-      "open-interest": "leverup",
+      "open-interest": "leverup-oi",
     },
   },
   {
@@ -8592,7 +8591,6 @@ const data5: Protocol[] = [
     twitter: "ByteExchange",
     listedAt: 1769124363
   },
-  /* it only have their own token on GRX Chain
   {
     id: "7281",
     name: "GroveX",
@@ -8600,18 +8598,17 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://grovex.io/en_US/",
     description: "GroveX is a global centralized exchange on GRX Chain.",
-    chain: "GRX Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/grovex.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: ["GRX Chain"],
+    chains: ["Ethereum"],
     module: "grovex/index.js",
     twitter: "GroveXchange",
     listedAt: 1769124773
   },
-  */
   {
     id: "7282",
     name: "Calculus",
@@ -9240,7 +9237,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Privacy",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "mixoor/index.js",
     twitter: "Mixoordotfun",
     dimensions: {
       fees: "mixoor"
@@ -13010,7 +13007,11 @@ const data5: Protocol[] = [
     module: "tideswap/index.js",
     parentProtocol: "parent#tideswap",
     twitter: "TideSwapApp",
-    listedAt: 1772570322
+    listedAt: 1772570322,
+    dimensions: {
+      dexs: "tideswap-dex",
+      fees: "tideswap-dex",
+    },
   },
   {
     id: "7493",
@@ -13030,6 +13031,48 @@ const data5: Protocol[] = [
     module: "ample/index.js",
     twitter: "AmpleHQ",
     listedAt: 1772599975
+  },
+  {
+    id: "7494",
+    name: "Otomate",
+    address: null,
+    symbol: "-",
+    url: "https://otomate.trade",
+    description:
+      "The ultimate on-chain trading automation app on Ink. Copy trading, market making, yield strategies, AI agents, and more — non-custodial, fully automated.",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/otomate.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Ink"],
+    module: "dummy.js",
+    twitter: "otomate_trade",
+    dimensions: {
+      fees: "otomate",
+      dexs: "otomate"
+    },
+  },
+  {
+    id: "7495",
+    name: "Venus Flux",
+    address: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+    symbol: "XVS",
+    url: "https://flux.venus.io/lending/56",
+    description:
+      "Venus Flux is a lending protocol within the Venus ecosystem that allows users to supply assets to a unified liquidity layer to earn interest and provide liquidity for borrowers across Venus Flux markets.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/venus-flux.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "venus-fluid/index.js",
+    twitter: "VenusProtocol",
+    parentProtocol: "parent#venus-finance",
+    listedAt: 1772661088
   },
 ];
 export default data5;

@@ -589,38 +589,40 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
       responseData = [];
 
       if (dataType === 'protocol') {
-        if (route === 'chart-total' || route === 'chart-chain-breakdown') {
-          const itemByDates: Record<number, any> = {}
-          for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
-            let [chainFilter, keyFilter] = chainAndKey.split('-');
+        const itemByDates: Record<number, any> = {}
+        for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
+          let [chainFilter, keyFilter] = chainAndKey.split('-');
 
-            console.log(chainAndKey)
+          if (AllowedProtocolKeys.includes(chainFilter)) continue;
+          if (!keyFilter) keyFilter = 'tvl';
 
-            if (AllowedProtocolKeys.includes(chainFilter)) continue;
-            if (!keyFilter) keyFilter = 'tvl';
-
-            if (key === keyFilter || key === 'all') {
+          if (key === keyFilter || key === 'all') {
+            if (route === 'chart-total' || route === 'chart-chain-breakdown') {
               for (const tvlItem of Object.values((chainData as any).tvl)) {
                 if (route === 'chart-total') {
                   itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || 0;
                   itemByDates[(tvlItem as any).date] += Number((tvlItem as any).totalLiquidityUSD);
-                } else {
+                } else if (route === 'chart-chain-breakdown') {
                   itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
                   itemByDates[(tvlItem as any).date][chainFilter] = itemByDates[(tvlItem as any).date][chainFilter] || 0;
                   itemByDates[(tvlItem as any).date][chainFilter] += Number((tvlItem as any).totalLiquidityUSD);
                 }
               }
+            } else if (route === 'chart-token-breakdown') {
+              const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
+              for (const tvlItem of (chainData as any)[tokenKey]) {
+                for (const [symbol, value] of Object.entries((tvlItem as any).tokens)) {
+                  itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
+                  itemByDates[(tvlItem as any).date][symbol] = itemByDates[(tvlItem as any).date][symbol] || 0;
+                  itemByDates[(tvlItem as any).date][symbol] += Number(value);
+                }
+              }
             }
           }
+        }
 
-          for (const [date, items] of Object.entries(itemByDates)) {
-            responseData.push([Number(date), items]);
-          }
-        } else if (dataType === 'protocol' && route === 'chart-token-breakdown') {
-          const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
-          for (const item of Object.values(protocolDataFull[tokenKey])) {
-            responseData.push([Number((item as any).date), (item as any).tokens]);
-          }
+        for (const [date, items] of Object.entries(itemByDates)) {
+          responseData.push([Number(date), items]);
         }
       } else if (dataType === 'treasury') {
         const itemByDates: Record<number, any> = {}

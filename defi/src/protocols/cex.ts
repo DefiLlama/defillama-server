@@ -308,6 +308,13 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://www.bvox.com/",
   },
+    {
+    name: "Coinstore",
+    slug: "coinstore",
+    coin: null,
+    walletsLink: null,
+    url: "https://www.coinstore.com/",
+  },
   {
     name: "Coin8",
     slug: "coin8",

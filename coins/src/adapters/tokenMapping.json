@@ -14180,5 +14180,47 @@
       "symbol": "EXOD",
       "to": "coingecko#exod"
     }
+  },
+  "wchain": {
+    "0xedb8008031141024d50ca2839a607b2f82c1c045": {
+      "to": "coingecko#wadzcoin",
+      "decimals": 18,
+      "symbol": "WWCO"
+    },
+    "0x643ec74ed2b79098a37dc45dcc7f1abfe2ade6d8": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x40cb2cccf80ed2192b53fb09720405f6fe349743": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x4560d5eb0c32a05fa59acd2e8d639f84a15a2414": {
+      "to": "coingecko#ripple",
+      "decimals": 18,
+      "symbol": "XRP"
+    },
+    "0x6cdfda79787caa4ad1a95456095bedc95abd2d75": {
+      "to": "coingecko#dogecoin",
+      "decimals": 8,
+      "symbol": "DOGE"
+    },
+    "0xd4f93cacd6d607789c8ecf1dddeba8b0c4d915a8": {
+      "to": "coingecko#solana",
+      "decimals": 18,
+      "symbol": "SOL"
+    },
+    "0x9b4805dc867c279a96f3ed0745c8bc15153a22e6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "bUSDC"
+    },
+    "0x0ab978880d3bf13e448f4f773acd817e83bddb0e": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "bUSDT"
+    }
   }
 }

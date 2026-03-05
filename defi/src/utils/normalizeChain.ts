@@ -5707,6 +5707,15 @@ export const chainCoingeckoIds = {
     twitter: "KeetaNetwork",
     url: "https://www.keeta.com/",
   },
+  "W Chain": {
+    geckoId: "wadzcoin",
+    symbol: "WCO",
+    cmcId: "35082",
+    categories: ["EVM"],
+    twitter: "WChainNetwork",
+    url: "https://w-chain.com/",
+    chainId: 171717,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5891,6 +5900,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
+  "wchain": "W Chain",
   //"hashkey": "HashKey Chain", not possible to have two different chains with the same name
   "fhe": "Mind Network",
   "ao": "AO",

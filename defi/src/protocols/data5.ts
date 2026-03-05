@@ -13143,5 +13143,45 @@ const data5: Protocol[] = [
     ],
     listedAt: 1772727229
   },
+  {
+    id: "7500",
+    name: "Wswap Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.w-chain.com/",
+    description:
+      "Bridge between Ethereum, BSC and W Chain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wswap-bridge.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Binance"],
+    module: "wswap-bridge/index.js",
+    twitter: "WChainNetwork",
+    github: ["Wswap"],
+    listedAt: 1772731695
+  },
+  {
+    id: "7501",
+    name: "Wswap",
+    address: null,
+    symbol: "-",
+    url: "https://app.w-swap.com/#/",
+    description:
+      "W Swap is a next-generation decentralized exchange (DEX) on the W Chain ecosystem, delivering lightning-fast, secure, and cost-efficient crypto swaps.",
+    chain: "W Chain",
+    logo: `${baseIconsUrl}/wswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    forkedFromIds: ["2197"],
+    chains: ["W Chain"],
+    module: "wswap/index.js",
+    twitter: "WChainNetwork",
+    listedAt: 1772731701
+  },
 ];
 export default data5;

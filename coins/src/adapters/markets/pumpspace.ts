@@ -10,14 +10,14 @@ const PROJECT = "pumpspace";
 const BUSDt = "0x3C594084dC7AB1864AC69DFd01AB77E8f65B83B7".toLowerCase();
 
 /**
- * We price PumpSpace tokens from explicit UniswapV2 pairs against bUSDt.
- * These pair addresses are on Avalanche.
+ * We price PumpSpace ecosystem tokens from explicit UniswapV2 pairs against bUSDt,
+ * using on-chain reserves.
  *
- * Pairs provided by PumpSpace team:
+ * Pairs (Avalanche):
  * - bUSDt + KRILL : 0x7EFbB1B0a4dDF0FC82A2Ca9EFFf45104090BC7D4
  * - bUSDt + sBWPM : 0x083Fa2AcD819dd33B57cB918A4f47c14668fdCD2
  * - bUSDt + sADOL : 0xb568658A197A6a3436CFe1a9e6A137890c7b2840
- * - CLAM + bUSDt  : 0xC573C783270057cB420a4Ba2523dB70E7D385Ff0
+ * - CLAM  + bUSDt : 0xC573C783270057cB420a4Ba2523dB70E7D385Ff0
  */
 const PAIRS = [
   {
@@ -42,10 +42,15 @@ const PAIRS = [
   },
 ] as const;
 
+/** Unwrap ChainApi multiCall/call outputs if they are wrapped. */
+function unwrapCallResult(v: any) {
+  if (v && typeof v === "object" && "output" in v) return (v as any).output;
+  return v;
+}
+
 /**
- * Safely convert a big integer-like (string/BN/etc) into a JS number in "human units",
- * without relying on bigint literals.
- * We truncate fractional digits to avoid huge float parsing.
+ * Convert an integer-like value (string/BN/etc.) into a JS number in human units.
+ * Truncates fractional digits to keep float parsing stable.
  */
 function formatUnitsToNumber(
   raw: any,
@@ -54,135 +59,257 @@ function formatUnitsToNumber(
 ): number {
   if (raw === null || raw === undefined) return 0;
 
-  const s0 = raw.toString();
+  const s0 = raw.toString?.() ?? String(raw);
   if (!s0 || s0 === "0") return 0;
 
-  // Remove any non-digit prefix (just in case)
   const negative = s0.startsWith("-");
   const s = negative ? s0.slice(1) : s0;
 
-  if (decimals <= 0) return (negative ? -1 : 1) * Number(s);
+  if (decimals <= 0) {
+    const out = Number(`${negative ? "-" : ""}${s}`);
+    return Number.isFinite(out) ? out : 0;
+  }
 
   const len = s.length;
   const intPart = len > decimals ? s.slice(0, len - decimals) : "0";
   let fracPart =
     len > decimals ? s.slice(len - decimals) : s.padStart(decimals, "0");
 
-  // Truncate fractional part for stable float parse
+  // truncate fractional part for stable parsing
   fracPart = fracPart.slice(0, Math.max(0, fracDigits));
-
   const out = Number(`${negative ? "-" : ""}${intPart}.${fracPart || "0"}`);
   return Number.isFinite(out) ? out : 0;
 }
 
+/** Confidence heuristic based on approximate liquidity in USD. */
 function confidenceFromLiquidityUsd(liqUsd: number): number {
   if (!Number.isFinite(liqUsd) || liqUsd <= 0) return 0.35;
-  // Scale: ~0.6 at $1k, ~0.9 at $1m, capped
+  // ~0.6 at $1k, ~0.9 at $1m, capped
   const c = 0.3 + Math.log10(liqUsd + 1) / 10;
   return Math.max(0.3, Math.min(0.95, c));
 }
 
+/**
+ * Fetch PumpSpace token prices at the given timestamp (Avalanche).
+ * Fail-closed: if required metadata is missing/invalid, skip or return empty writes.
+ */
 async function getPrices(timestamp: number): Promise<Write[]> {
   const api = await getApi(CHAIN, timestamp, true);
 
-  // Pull bUSDt price from DB (should be ~1 due to mapping)
+  // bUSDt price from DB (must exist; do NOT default to 1)
   const busdtData = (
     await getTokenAndRedirectData([BUSDt], CHAIN, timestamp)
   )?.[0];
-  const busdtPrice = busdtData?.price ?? 1;
+  const busdtPrice = Number(busdtData?.price);
 
-  // We still fetch onchain decimals to avoid relying on DB metadata
-  let busdtDecimals = 6;
+  if (!Number.isFinite(busdtPrice) || busdtPrice <= 0) {
+    console.log("[pumpspace] invalid bUSDt price (fail-closed)", {
+      chain: CHAIN,
+      timestamp,
+      token: BUSDt,
+      price: busdtData?.price,
+    });
+    return [];
+  }
+
+  // bUSDt decimals from chain (must exist; do NOT default)
+  let busdtDecimals: number | null = null;
   try {
-    busdtDecimals = Number(
-      await api.call({ target: BUSDt, abi: "erc20:decimals" }),
-    );
-  } catch {}
+    const res = await api.call({ target: BUSDt, abi: "erc20:decimals" });
+    const dec = unwrapCallResult(res);
+    busdtDecimals = Number(dec?.toString?.() ?? dec);
+  } catch (e: any) {
+    console.log("[pumpspace] failed to fetch bUSDt decimals (fail-closed)", {
+      chain: CHAIN,
+      timestamp,
+      token: BUSDt,
+      error: e?.message ?? String(e),
+    });
+  }
+
+  if (
+    busdtDecimals === null ||
+    !Number.isInteger(busdtDecimals) ||
+    busdtDecimals < 0 ||
+    busdtDecimals > 255
+  ) {
+    console.log("[pumpspace] invalid bUSDt decimals (fail-closed)", {
+      chain: CHAIN,
+      timestamp,
+      token: BUSDt,
+      decimals: busdtDecimals,
+    });
+    return [];
+  }
 
   const pairAddrs = PAIRS.map((p) => p.pair);
   const tokenAddrs = PAIRS.map((p) => p.token);
 
-  const [token0s, token1s, reserves, tokenDecimals] = await Promise.all([
-    api.multiCall({
-      abi: "address:token0",
-      calls: pairAddrs,
-      permitFailure: true,
-    }),
-    api.multiCall({
-      abi: "address:token1",
-      calls: pairAddrs,
-      permitFailure: true,
-    }),
-    api.multiCall({
-      abi: "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
-      calls: pairAddrs,
-      permitFailure: true,
-    }),
-    api.multiCall({
-      abi: "erc20:decimals",
-      calls: tokenAddrs,
-      permitFailure: true,
-    }),
-  ]);
+  const [token0sRaw, token1sRaw, reservesRaw, tokenDecimalsRaw] =
+    await Promise.all([
+      api.multiCall({
+        abi: "address:token0",
+        calls: pairAddrs,
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "address:token1",
+        calls: pairAddrs,
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+        calls: pairAddrs,
+        permitFailure: true,
+      }),
+      api.multiCall({
+        abi: "erc20:decimals",
+        calls: tokenAddrs,
+        permitFailure: true,
+      }),
+    ]);
 
   const writes: Write[] = [];
 
   for (let i = 0; i < PAIRS.length; i++) {
-    const expectedToken = PAIRS[i].token.toLowerCase();
+    const pair = PAIRS[i].pair;
+    const tokenAddress = PAIRS[i].token;
+    const expectedTokenLc = tokenAddress.toLowerCase();
     const symbol = PAIRS[i].symbol;
 
-    const t0 = (token0s?.[i] ?? "").toString().toLowerCase();
-    const t1 = (token1s?.[i] ?? "").toString().toLowerCase();
-    if (!t0 || !t1) continue;
+    const t0 = (unwrapCallResult((token0sRaw as any)?.[i]) ?? "")
+      .toString()
+      .toLowerCase();
+    const t1 = (unwrapCallResult((token1sRaw as any)?.[i]) ?? "")
+      .toString()
+      .toLowerCase();
+    if (!t0 || !t1) {
+      console.log("[pumpspace] missing token0/token1", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+      });
+      continue;
+    }
 
-    const r = reserves?.[i];
-    if (!r) continue;
+    // unwrap reserves
+    const rUnwrapped = unwrapCallResult((reservesRaw as any)?.[i]);
+    if (!rUnwrapped) {
+      console.log("[pumpspace] missing reserves", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+      });
+      continue;
+    }
 
-    // Handle tuple/object formats
-    const reserve0 = Array.isArray(r)
-      ? r[0]
-      : (r as any).reserve0 ?? (r as any)[0];
-    const reserve1 = Array.isArray(r)
-      ? r[1]
-      : (r as any).reserve1 ?? (r as any)[1];
-    if (reserve0 === undefined || reserve1 === undefined) continue;
+    // reserves can appear as array or object; support both
+    let reserve0: any = null;
+    let reserve1: any = null;
 
-    const tokenDec = Number(tokenDecimals?.[i] ?? 18);
+    if (Array.isArray(rUnwrapped)) {
+      reserve0 = rUnwrapped[0];
+      reserve1 = rUnwrapped[1];
+    } else if (typeof rUnwrapped === "object") {
+      reserve0 =
+        (rUnwrapped as any).reserve0 ??
+        (rUnwrapped as any)._reserve0 ??
+        (rUnwrapped as any)[0];
+      reserve1 =
+        (rUnwrapped as any).reserve1 ??
+        (rUnwrapped as any)._reserve1 ??
+        (rUnwrapped as any)[1];
+    }
+
+    if (
+      reserve0 === null ||
+      reserve0 === undefined ||
+      reserve1 === null ||
+      reserve1 === undefined
+    ) {
+      console.log("[pumpspace] invalid reserves shape", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+      });
+      continue;
+    }
+
+    // token decimals (must exist; do NOT default to 18)
+    const tokenDecRaw = unwrapCallResult((tokenDecimalsRaw as any)?.[i]);
+    if (tokenDecRaw === null || tokenDecRaw === undefined) {
+      console.log("[pumpspace] missing token decimals", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+      });
+      continue;
+    }
+
+    const tokenDec = Number(tokenDecRaw?.toString?.() ?? tokenDecRaw);
+    if (!Number.isInteger(tokenDec) || tokenDec < 0 || tokenDec > 255) {
+      console.log("[pumpspace] invalid token decimals", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+        decimals: tokenDecRaw,
+      });
+      continue;
+    }
 
     // Determine which side is bUSDt
     let busdtReserveRaw: any = null;
     let tokenReserveRaw: any = null;
-    let tokenAddr: string | null = null;
 
-    if (t0 === BUSDt && t1 === expectedToken) {
+    if (t0 === BUSDt && t1 === expectedTokenLc) {
       busdtReserveRaw = reserve0;
       tokenReserveRaw = reserve1;
-      tokenAddr = expectedToken;
-    } else if (t1 === BUSDt && t0 === expectedToken) {
+    } else if (t1 === BUSDt && t0 === expectedTokenLc) {
       busdtReserveRaw = reserve1;
       tokenReserveRaw = reserve0;
-      tokenAddr = expectedToken;
     } else {
-      // Pair is not (bUSDt, expectedToken) – skip for safety
+      // Pair not matching (bUSDt, token) - skip for safety
+      console.log("[pumpspace] pair does not match expected (bUSDt, token)", {
+        chain: CHAIN,
+        timestamp,
+        pair,
+        token: tokenAddress,
+        token0: t0,
+        token1: t1,
+      });
       continue;
     }
 
     const busdtAmt =
-      formatUnitsToNumber(busdtReserveRaw, busdtDecimals) * busdtPrice; // USD
+      formatUnitsToNumber(busdtReserveRaw, busdtDecimals) * busdtPrice; // USD value
     const tokenAmt = formatUnitsToNumber(tokenReserveRaw, tokenDec);
 
-    if (busdtAmt <= 0 || tokenAmt <= 0) continue;
+    if (
+      !Number.isFinite(busdtAmt) ||
+      !Number.isFinite(tokenAmt) ||
+      busdtAmt <= 0 ||
+      tokenAmt <= 0
+    ) {
+      continue;
+    }
 
     const price = busdtAmt / tokenAmt;
+    if (!Number.isFinite(price) || price <= 0) continue;
 
-    // Use ~2x quote side as a rough liquidity proxy
+    // Approx liquidity proxy: ~2x quote side
     const liquidityUsd = busdtAmt * 2;
     const confidence = confidenceFromLiquidityUsd(liquidityUsd);
 
+    // console.log(symbol + ' : ' + price);
     addToDBWritesList(
       writes,
       CHAIN,
-      tokenAddr!,
+      tokenAddress,
       price,
       tokenDec,
       symbol,
@@ -195,6 +322,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
   return writes;
 }
 
+/** PumpSpace market adapter entry point. */
 export async function pumpspace(timestamp: number): Promise<Write[][]> {
   const ts = timestamp === 0 ? getCurrentUnixTimestamp() : timestamp;
   return [await getPrices(ts)];

@@ -8036,7 +8036,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://securitize.io/",
     description: "Securitize is making real-world assets available to institutions and investors through tokenization, a process that registers ownership rights on the blockchain",
     logo: `${baseIconsUrl}/securitize.jpg`,
-    gecko_id: null,
+    gecko_id: "paradex",
     cmcId: null,
     chains: [],
     twitter: "Securitize",

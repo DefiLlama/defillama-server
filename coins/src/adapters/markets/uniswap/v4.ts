@@ -1,6 +1,7 @@
 import { getApi } from "../../utils/sdk";
 import getWrites from "../../utils/getWrites";
 import { getTokenAndRedirectDataMap } from "../../utils/database";
+import { log } from "@defillama/sdk";
 
 const projectName = "uniV4";
 const NATIVE = "0x0000000000000000000000000000000000000000";
@@ -78,7 +79,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
     const dec0 = tokenIsCurrency0 ? decimalsMap[tokenLower] : decimalsMap[pairedLower];
     const dec1 = tokenIsCurrency0 ? decimalsMap[pairedLower] : decimalsMap[tokenLower];
 
-    // Use tick for price (avoids uint160→Number precision loss with sqrtPriceX96)
+    // Use tick for price (avoids precision loss with sqrtPriceX96)
     let price = Math.pow(1.0001, tick) * 10 ** (dec0 - dec1);
     if (!tokenIsCurrency0) price = 1 / price;
 
@@ -92,8 +93,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
       const pairedReserveUsd = pairedReserveHuman * pairedData.price;
       const impact = SELL_AMOUNT_USD / pairedReserveUsd;
       if (impact > MAX_PRICE_IMPACT) {
-        console.log(
-          `uniV4: skipping ${token} on ${chain} — est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired reserve $${pairedReserveUsd.toFixed(0)})`,
+        log(
+          `uniV4: skipping ${token} on ${chain} - est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired reserve $${pairedReserveUsd.toFixed(0)})`,
         );
         return;
       }

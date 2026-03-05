@@ -13223,5 +13223,25 @@ const data5: Protocol[] = [
       fees: "human-id",
     }
   },
+  {
+    id: "7504",
+    name: "Megamble",
+    address: null,
+    symbol: "-",
+    url: "https://megamble.xyz/",
+    description: "Fully on-chain competitive last-clicker-wins game on MegaETH with integrated swap & bridge aggregator.",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/megamble.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Luck Games",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "megamble_xyz",
+    dimensions: {
+      fees: "megamble",
+    }
+  },
 ];
 export default data5;

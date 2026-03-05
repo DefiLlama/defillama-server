@@ -608,7 +608,7 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
-  const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);``
+  const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
   for (const chain of tvlData.chains) {
@@ -1011,7 +1011,7 @@ async function generateSearchList() {
     const name = rwaTickerToNameMap[ticker];
     const tickerSlug = rwaSlug(ticker);
     rwaList.push({
-      id: `rwa_${normalize(tickerSlug)}`,
+      id: `rwa_asset_${normalize(tickerSlug)}`,
       ...(name ? { name, symbol: ticker } : { name: ticker }),
       route: `/rwa/asset/${tickerSlug}`,
       v: tastyMetrics[`/rwa/asset/${tickerSlug}`] ?? 0,
@@ -1021,7 +1021,7 @@ async function generateSearchList() {
   for (const platform of rwaListData.platforms) {
     const platformSlug = rwaSlug(platform);
     rwaList.push({
-      id: `rwa_${normalize(platformSlug)}`,
+      id: `rwa_platform_${normalize(platformSlug)}`,
       name: platform,
       route: `/rwa/platform/${platformSlug}`,
       v: tastyMetrics[`/rwa/platform/${platformSlug}`] ?? 0,
@@ -1031,7 +1031,7 @@ async function generateSearchList() {
   for (const category of rwaListData.categories) {
     const categorySlug = rwaSlug(category);
     rwaList.push({
-      id: `rwa_${normalize(categorySlug)}`,
+      id: `rwa_category_${normalize(categorySlug)}`,
       name: category,
       route: `/rwa/category/${categorySlug}`,
       v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
@@ -1051,6 +1051,7 @@ async function generateSearchList() {
     cexs: cexs.sort((a, b) => b.v - a.v),
     otherPages: otherPages.sort((a, b) => b.v - a.v),
     dats: dats.sort((a, b) => b.v - a.v),
+    rwaList: rwaList.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -1068,6 +1069,7 @@ async function generateSearchList() {
       .concat(subChains)
       .concat(coins)
       .concat(results.dats)
+      .concat(results.rwaList)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,

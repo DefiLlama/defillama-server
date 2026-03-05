@@ -93,19 +93,19 @@ function confidenceFromLiquidityUsd(liqUsd: number): number {
  * Fetch PumpSpace token prices at the given timestamp (Avalanche).
  * Fail-closed: if required metadata is missing/invalid, skip or return empty writes.
  */
-async function getPrices(timestamp: number): Promise<Write[]> {
-  const api = await getApi(CHAIN, timestamp, true);
+async function getPrices(readTimestamp: number, writeTimestamp: number): Promise<Write[]> {
+  const api = await getApi(CHAIN, readTimestamp, true);
 
   // bUSDt price from DB (must exist; do NOT default to 1)
   const busdtData = (
-    await getTokenAndRedirectData([BUSDt], CHAIN, timestamp)
+    await getTokenAndRedirectData([BUSDt], CHAIN, readTimestamp)
   )?.[0];
   const busdtPrice = Number(busdtData?.price);
 
   if (!Number.isFinite(busdtPrice) || busdtPrice <= 0) {
     console.log("[pumpspace] invalid bUSDt price (fail-closed)", {
       chain: CHAIN,
-      timestamp,
+      writeTimestamp,
       token: BUSDt,
       price: busdtData?.price,
     });
@@ -121,7 +121,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
   } catch (e: any) {
     console.log("[pumpspace] failed to fetch bUSDt decimals (fail-closed)", {
       chain: CHAIN,
-      timestamp,
+      writeTimestamp,
       token: BUSDt,
       error: e?.message ?? String(e),
     });
@@ -135,7 +135,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
   ) {
     console.log("[pumpspace] invalid bUSDt decimals (fail-closed)", {
       chain: CHAIN,
-      timestamp,
+      writeTimestamp,
       token: BUSDt,
       decimals: busdtDecimals,
     });
@@ -186,7 +186,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     if (!t0 || !t1) {
       console.log("[pumpspace] missing token0/token1", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
       });
@@ -198,7 +198,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     if (!rUnwrapped) {
       console.log("[pumpspace] missing reserves", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
       });
@@ -231,7 +231,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     ) {
       console.log("[pumpspace] invalid reserves shape", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
       });
@@ -243,7 +243,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     if (tokenDecRaw === null || tokenDecRaw === undefined) {
       console.log("[pumpspace] missing token decimals", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
       });
@@ -254,7 +254,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     if (!Number.isInteger(tokenDec) || tokenDec < 0 || tokenDec > 255) {
       console.log("[pumpspace] invalid token decimals", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
         decimals: tokenDecRaw,
@@ -276,7 +276,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
       // Pair not matching (bUSDt, token) - skip for safety
       console.log("[pumpspace] pair does not match expected (bUSDt, token)", {
         chain: CHAIN,
-        timestamp,
+        writeTimestamp,
         pair,
         token: tokenAddress,
         token0: t0,
@@ -305,7 +305,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
     const liquidityUsd = busdtAmt * 2;
     const confidence = confidenceFromLiquidityUsd(liquidityUsd);
 
-    // console.log(symbol + ' : ' + price);
+    console.log(symbol + ' : ' + price);
     addToDBWritesList(
       writes,
       CHAIN,
@@ -313,7 +313,7 @@ async function getPrices(timestamp: number): Promise<Write[]> {
       price,
       tokenDec,
       symbol,
-      timestamp,
+      writeTimestamp,
       PROJECT,
       confidence,
     );
@@ -324,6 +324,6 @@ async function getPrices(timestamp: number): Promise<Write[]> {
 
 /** PumpSpace market adapter entry point. */
 export async function pumpspace(timestamp: number): Promise<Write[][]> {
-  const ts = timestamp === 0 ? getCurrentUnixTimestamp() : timestamp;
-  return [await getPrices(ts)];
+  const readTimestamp = timestamp === 0 ? getCurrentUnixTimestamp() : timestamp;
+  return [await getPrices(readTimestamp, timestamp)];
 }

@@ -305,7 +305,6 @@ async function getPrices(readTimestamp: number, writeTimestamp: number): Promise
     const liquidityUsd = busdtAmt * 2;
     const confidence = confidenceFromLiquidityUsd(liquidityUsd);
 
-    // console.log(symbol + ' : ' + price);
     addToDBWritesList(
       writes,
       CHAIN,

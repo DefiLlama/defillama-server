@@ -962,6 +962,9 @@ export const chainCoingeckoIds = {
     cmcId: "2634",
     twitter: "XDCNetwork",
     url: "https://xinfin.org/",
+    dimensions: {
+      fees: "xdc",
+    },
   },
   "Velas": {
     geckoId: "velas",
@@ -2312,6 +2315,9 @@ export const chainCoingeckoIds = {
     chainid: 369,
     twitter: "PulsechainCom",
     url: "https://pulsechain.com/",
+    dimensions: {
+      fees: "pulsechain",
+    },
   },
   "XPLA": {
     geckoId: "xpla",
@@ -4924,6 +4930,9 @@ export const chainCoingeckoIds = {
     twitter: "BotanixLabs",
     url: "https://botanixlabs.com",
     chainId: 3637,
+    dimensions: {
+      fees: "botanix",
+    },
   },
   "DChain": {
     geckoId: null,

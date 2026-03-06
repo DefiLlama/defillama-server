@@ -9156,6 +9156,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TideSwapApp",
     github: ["Cryptodian1"],
   },
+  {
+    id: "parent#barterswap",
+    name: "BarterSwap",
+    url: "https://app.barterswap.xyz",
+    description: "BarterSwap is an intent-based decentralized trading and liquidity routing protocol that matches peer-to-peer swap intents and aggregates liquidity across DeFi venues to optimize execution and reduce slippage and MEV.",
+    logo: `${baseIconsUrl}/barterswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BarterDeFi",
+  },
 ];
 
 export default parentProtocols;

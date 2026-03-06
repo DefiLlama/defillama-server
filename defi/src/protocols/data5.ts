@@ -7529,23 +7529,23 @@ const data5: Protocol[] = [
   },
   {
     id: "7230",
-    name: "BarterSwap",
+    name: "BarterSwap Superposition",
     address: null,
     symbol: "-",
     url: "https://app.barterswap.xyz",
     description: "BarterSwap is an intent-based decentralized trading and liquidity routing protocol that matches peer-to-peer swap intents and aggregates liquidity across DeFi venues to optimize execution and reduce slippage and MEV.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/barterswap.jpg`,
+    logo: `${baseIconsUrl}/barterswap-superposition.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "DEX Aggregator",
+    tags: ["AMM"],
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "BarterDeFi",
+    parentProtocol: "parent#barterswap",
     dimensions: {
-      //dexs: "barterswap",
-      aggregators: "barter"
+      dexs: "barterswap",
     },
   },
   {
@@ -13368,6 +13368,27 @@ const data5: Protocol[] = [
   //   parentProtocol: "parent#alphafi",
   //   listedAt: 1772813455,
   // },
+  {
+    id: "7511",
+    name: "BarterSwap Solver",
+    address: null,
+    symbol: "-",
+    url: "https://app.barterswap.xyz",
+    description: "BarterSwap is an intent-based decentralized trading and liquidity routing protocol that matches peer-to-peer swap intents and aggregates liquidity across DeFi venues to optimize execution and reduce slippage and MEV.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/barterswap-solver.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "BarterDeFi",
+    parentProtocol: "parent#barterswap",
+    dimensions: {
+      aggregators: "barter"
+    },
+  },
 
 ];
 export default data5;

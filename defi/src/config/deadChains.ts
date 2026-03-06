@@ -8,8 +8,8 @@ export const deadChains = [
   'nos', 'dfs','curio', 'cube', 
   'saga', // chain paused after the hack
   'vision',
-   'kinto', // chain is dead,
-   'inevm'
+  'kinto', // chain is dead,
+  'inevm'
 ]
 
 

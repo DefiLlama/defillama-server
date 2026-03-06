@@ -4195,9 +4195,9 @@ export const chainCoingeckoIds = {
     chainId: 181,
   },
   "MANTRA": {
-    geckoId: "mantra-dao",
+    geckoId: "mantra",
     symbol: "MANTRA",
-    cmcId: "6536",
+    cmcId: "39611",
     categories: ["Cosmos", "EVM"],
     twitter: "MANTRA_Chain",
     url: "https://www.mantrachain.io/",

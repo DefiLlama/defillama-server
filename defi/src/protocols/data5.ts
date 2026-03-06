@@ -7539,7 +7539,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    tags: ["DLL"],
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "BarterDeFi",

@@ -13239,9 +13239,30 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "megamble/index.js",
     twitter: "megamble_xyz",
+    listedAt: 1772764658,
     dimensions: {
       fees: "megamble",
     }
+  },
+  {
+    id: "7505",
+    name: "2xSwap",
+    address: null,
+    symbol: "-",
+    url: "https://2xswap.com",
+    description: "2x leverage swaps with no liquidation and no interest. Liquidity providers deposit USDC into an ERC-4626 vault.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/2xswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "twoxswap/index.js",
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://github.com/XUser77/2x-swap"] } ],
+    twitter: "2xswap",
+    github: ["XUser77"],
+    listedAt: 1772764667,
   },
 ];
 export default data5;

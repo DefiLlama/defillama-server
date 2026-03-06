@@ -6735,7 +6735,7 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "onchain-checkin",
     },
-    disabled: "broken adapter"
+    disabled: "broken adapter: not a defi protocol/service"
   },
   {
     id: "7194",

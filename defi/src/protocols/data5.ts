@@ -7544,7 +7544,8 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "BarterDeFi",
     dimensions: {
-      dexs: "barterswap",
+      //dexs: "barterswap",
+      aggregators: "barter"
     },
   },
   {
@@ -13347,6 +13348,25 @@ const data5: Protocol[] = [
     module: "zenydex/index.js",
     twitter: "zenydex",
     listedAt: 1772813449,
+  },
+  {
+    id: "7510",
+    name: "Lending by AlphaFi",
+    address: "sui:0xfe3afec26c59e874f3c1d60b8203cb3852d2bb2aa415df9548b8d688e6683f93::alpha::ALPHA",
+    symbol: "ALPHA",
+    url: "https://alphafi.xyz/",
+    description: "Lending by AlphaFi is a lending protocol on SUI.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/lending-by-alphafi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sui"],
+    module: "lending-by-alphafi/index.js",
+    twitter: "AlphaFiSUI",
+    parentProtocol: "parent#alphafi",
+    listedAt: 1772813455,
   },
 ];
 export default data5;

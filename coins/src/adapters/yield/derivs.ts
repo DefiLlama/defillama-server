@@ -812,4 +812,3 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     confidence,
   });
 }
-derivs(0) // ts-node coins/src/adapters/yield/derivs.ts

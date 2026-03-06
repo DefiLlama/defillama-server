@@ -58582,7 +58582,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/TeleportDAO/audits/blob/main/reports/Quantstamp-Bitcoin-EVM.pdf"],
     listedAt: 1731495458,
     dimensions: {
-      fees: "teleswap"
+      fees: "teleswap",
+      dexs: "teleswap"
     }
   },
   {
@@ -62440,7 +62441,7 @@ const data3_3: Protocol[] = [
     twitter: "TeleSwapTON",
     deadUrl: true,
     dimensions: {
-      "bridge-aggregators": "teleswap"
+      "bridge-aggregators": "teleswap-ton"
     }
   },
   {

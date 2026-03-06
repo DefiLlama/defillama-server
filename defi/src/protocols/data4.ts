@@ -26679,7 +26679,7 @@ const data4: Protocol[] = [
       "Alkimi is a decentralised Ad Platform that records ad impressions and spend data on-chain. Alkimi is building AdFi or Decentralised Advertising Finance",
     chain: "Sui",
     logo: `${baseIconsUrl}/alkimi.jpg`,
-    audits: "1",
+    audits: "2",
     gecko_id: "alkimi-2",
     cmcId: "38131",
     category: "Services",

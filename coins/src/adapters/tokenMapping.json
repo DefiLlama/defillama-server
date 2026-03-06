@@ -2786,6 +2786,11 @@
     }
   },
   "base": {
+    "0xF5cA55f3ea5Bcd180aEa6dF9E05a0E63A66f5608": {
+      "decimals": "18",
+      "symbol": "efixDI",
+      "to": "asset#polygon:0x04082b283818d9d0dd9ee8742892eee5cc396441"
+    },
     "0xd74FB32112b1eF5b4C428Fead8dA8d85A0019009": {
       "decimals": "6",
       "symbol": "rwaUSDi",

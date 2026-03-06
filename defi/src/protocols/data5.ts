@@ -13330,5 +13330,23 @@ const data5: Protocol[] = [
       dexs: "aptos-caliber-prop-amm",
     }
   },
+  {
+    id: "7509",
+    name: "ZenyDex",
+    address: null,
+    symbol: "-",
+    url: "https://zenydex.com",
+    description: "ZenyDex is a peer-to-peer lending protocol on Base where lenders create USDC offers with custom interest rates and borrowers take offers using ETH as collateral. Unlike pool-based lending protocols, each loan is a direct match between lender and borrower.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/zenydex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "zenydex/index.js",
+    twitter: "zenydex",
+    listedAt: 1772813449,
+  },
 ];
 export default data5;

@@ -5973,6 +5973,7 @@ const chainLabelMap = {
   "standx": "StandX",
   "orderly": "Orderly",
   "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
+  "qiev3": "QIE",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

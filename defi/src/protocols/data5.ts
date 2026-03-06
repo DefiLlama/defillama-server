@@ -6731,7 +6731,8 @@ const data5: Protocol[] = [
     twitter: "on_check_in",
     dimensions: {
       fees: "onchain-checkin",
-    }
+    },
+    disabled: "broken adapter"
   },
   {
     id: "7194",

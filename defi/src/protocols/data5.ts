@@ -13237,7 +13237,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Luck Games",
     chains: ["MegaETH"],
-    module: "dummy.js",
+    module: "megamble/index.js",
     twitter: "megamble_xyz",
     dimensions: {
       fees: "megamble",

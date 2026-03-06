@@ -1074,12 +1074,12 @@
     "0x52c66B5E7f8Fde20843De900C5C8B4b0F23708A0": {
       "decimals": "18",
       "symbol": "AZND",
-      "to": "coingecko#mu-digital-aznd"
+      "to": "asset#monad:0x4917a5ec9fcb5e10f47cbb197abe6ab63be81fe8"
     },
     "0x09AD9c6DcadCc3aB0b3E107E8E7DA69c2eEa8599": {
       "decimals": "18",
       "symbol": "muBOND",
-      "to": "coingecko#mu-digital-mubond"
+      "to": "asset#monad:0x336d414754967c6682b5a665c7daf6f1409e63e8"
     },
     "0x4fdb3cb3DBD6D24B64276645c1ADCb85cbB39dC6": {
       "decimals": "18",
@@ -2786,6 +2786,11 @@
     }
   },
   "base": {
+    "0xF5cA55f3ea5Bcd180aEa6dF9E05a0E63A66f5608": {
+      "decimals": "18",
+      "symbol": "efixDI",
+      "to": "asset#polygon:0x04082b283818d9d0dd9ee8742892eee5cc396441"
+    },
     "0xd74FB32112b1eF5b4C428Fead8dA8d85A0019009": {
       "decimals": "6",
       "symbol": "rwaUSDi",

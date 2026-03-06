@@ -756,6 +756,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xe700691dA7b9851F2F35f8b8182c69c53CcaD9Db",
     address: "0xd8D25f03EBbA94E15Df2eD4d6D38276B595593c1",
   },
+  efixDI: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0xB90DA3ff54C3ED09115abf6FbA0Ff4645586af2c",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "polygon",
+    underlying: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    address: "0x04082b283818D9d0dd9Ee8742892eEe5CC396441",
+  },
 };
 
 export async function derivs(timestamp: number) {

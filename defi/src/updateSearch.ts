@@ -9,6 +9,7 @@ import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
 import { rwaSlug } from "./rwa/utils";
+import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -471,17 +472,16 @@ async function generateSearchList() {
     },
     Record<string, string>
   ] = await Promise.all([
-    fetchJson("https://api.llama.fi/lite/protocols2"),
-    fetchJson("https://stablecoins.llama.fi/stablecoins"),
-    fetchJson("https://bridges.llama.fi/bridges"),
-    fetchJson("https://defillama.com/pages.json").catch((e) => {
-      console.log("Error fetching frontend pages", e);
-      return {};
-    }),
-    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`, {
+    cachedJSONPull("https://api.llama.fi/lite/protocols2"),
+    cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
+    cachedJSONPull("https://bridges.llama.fi/bridges"),
+    cachedJSONPull("https://defillama.com/pages.json"),
+    cachedJSONPull({
+      endpoint: `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`,
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
+      defaultResponse: [],
     })
       .then((res: Array<{ x: string; y: number }>) => {
         const final = {} as Record<string, number>;
@@ -489,26 +489,13 @@ async function generateSearchList() {
           final[xy.x] = xy.y;
         }
         return final;
-      })
-      .catch((e) => {
-        console.log("Error fetching tasty metrics", e);
-        return {};
       }),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    fetchJson("https://ask.llama.fi/coins"),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`).catch((e) => {
-      console.log("Error fetching institutions", e);
-      return {};
-    }),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/list`).catch((e) => {
-      console.log("Error fetching rwa list", e);
-      return {};
-    }),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/current`).catch((e) => {
-      console.log("Error fetching rwa current", e);
-      return [];
-    }).then(res => {
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
+    cachedJSONPull("https://ask.llama.fi/coins"),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/list`),
+    cachedJSONPull({ endpoint: `https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/current`, defaultResponse: [] }).then(res => {
       const final = {} as Record<string, string>;
       for (const rwa of res) {
         if (final[rwa.ticker]) continue;

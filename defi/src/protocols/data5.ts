@@ -5142,6 +5142,9 @@ const data5: Protocol[] = [
     twitter: "LISTA_DAO",
     parentProtocol: "parent#lista-dao",
     listedAt: 1765393199,
+    dimensions: {
+      fees: "lista-rwa",
+    },
   },
   {
     id: "7117",
@@ -8958,6 +8961,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "gmx-sol",
       fees: "gmx-sol",
+      "open-interest": "gmtrade-oi",
     },
     listedAt: 1769159885
   },

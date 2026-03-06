@@ -13269,5 +13269,66 @@ const data5: Protocol[] = [
     github: ["XUser77"],
     listedAt: 1772764667,
   },
+  {
+    id: "7506",
+    name: "b402",
+    address: null,
+    symbol: "-",
+    url: "https://www.b402.ai/",
+    description: "Confidential, gasless transactions for the agentic economy.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/b402.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "b402ai",
+    dimensions: {
+      fees: "b402",
+      dexs: "b402",
+    }
+  },
+  {
+    id: "7507",
+    name: "QIELend",
+    address: null,
+    symbol: "-",
+    url: "https://www.qielend.qie.digital/",
+    description: "QIELend is a decentralized lending and borrowing protocol deployed on the QIE blockchain. It enables users to supply assets to earn yield and borrow against their collateral in a capital-efficient manner.",
+    chain: "QIE",
+    logo: `${baseIconsUrl}/qielend.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["QIE"],
+    module: "dummy.js",
+    twitter: "qieblockchain",
+    dimensions: {
+      fees: "qie-lend",
+    }
+  },
+  {
+    id: "7508",
+    name: "Caliber",
+    address: null,
+    symbol: "-",
+    url: "", // Prop AMM no url available
+    description: "PropAMM on Aptos.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/caliber.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Prop AMM"],
+    chains: ["Aptos"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      dexs: "aptos-caliber-prop-amm",
+    }
+  },
 ];
 export default data5;

@@ -5725,6 +5725,15 @@ export const chainCoingeckoIds = {
     url: "https://w-chain.com/",
     chainId: 171717,
   },
+  "QIE": {
+    geckoId: "qie",
+    symbol: "QIE",
+    cmcId: "21988",
+    categories: ["EVM"],
+    twitter: "qieblockchain",
+    url: "https://www.qie.digital/",
+    chainId: 1990,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

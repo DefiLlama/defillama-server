@@ -5,7 +5,7 @@ import { _InternalProtocolMetadataMap } from "../../protocols/data";
 
 export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
   let categorySelected = undefined
-  const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain.toLowerCase(), true);
+  const globalChain = rawChain === "All" ? null : rawChain;
   if (params.category) {
     categorySelected = decodeURI(params.category).replace(/_/g, " ")
     if (params.doublecounted !== "true" && isDoubleCounted(false, categorySelected)) {

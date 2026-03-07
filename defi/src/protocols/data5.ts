@@ -3645,6 +3645,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#gate-products",
     dimensions: {
       derivatives: "gate-perps",
+      fees: "gate-perps",
     },
   },
   {

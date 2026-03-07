@@ -13430,5 +13430,25 @@ const data5: Protocol[] = [
       fees: "harmonic",
     }
   },
+  {
+    id: "7514",
+    name: "Nozomi",
+    address: null,
+    symbol: "-",
+    url: "https://www.temporal.xyz/",
+    description: "Nozomi is a fully custom proprietary client written by HPC and HFT engineers designed to land transactions as fast as possible.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/nozomi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DePIN",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "temporal_xyz",
+    dimensions: {
+      fees: "nozomi",
+    }
+  },
 ];
 export default data5;

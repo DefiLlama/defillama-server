@@ -7404,7 +7404,8 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/TheArcadiaGroup/publications/blob/main/audits/FXDX%20Final.pdf"],
     listedAt: 1685364021,
     dimensions: {
-      dexs: "fxdx"
+      dexs: "fxdx",
+      fees: "fxdx"
     }
   },
   {

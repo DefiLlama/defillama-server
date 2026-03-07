@@ -13442,7 +13442,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "DePIN",
+    category: "Developer Tools",
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "temporal_xyz",

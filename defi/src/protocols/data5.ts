@@ -12876,10 +12876,11 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "minebean/index.js",
     twitter: "minebean_",
     oraclesBreakdown: [ { name: "Chainlink", type: "RNG", proof: ["https://www.minebean.com/about","https://basescan.org/address/0x9632495bDb93FD6B0740Ab69cc6c71C9c01da4f0#code"] } ],
     github: ["nu11dotfun"],
+    listedAt: 1772898855,
     dimensions: {
       fees: "minebean",
     },
@@ -13306,8 +13307,9 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["QIE"],
-    module: "dummy.js",
+    module: "qie-lend/index.js",
     twitter: "qieblockchain",
+    listedAt: 1772898685,
     dimensions: {
       fees: "qie-lend",
     }
@@ -13390,6 +13392,43 @@ const data5: Protocol[] = [
       aggregators: "barter"
     },
   },
-
+  {
+    id: "7512",
+    name: "QIE Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.bridge.qie.digital/bridge",
+    description: "QIE Bridge enables seamless asset transfers between Ethereum and Binance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/qie-bridge.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Binance"],
+    module: "qie-bridge/index.js",
+    twitter: "qieblockchain",
+    listedAt: 1772898692,
+  },
+  {
+    id: "7513",
+    name: "Harmonic",
+    address: null,
+    symbol: "-",
+    url: "https://harmonic.gg/",
+    description: "Harmonic is an open block-building marketplace for Solana that aggregates blocks from multiple independent builders and lets validators select the most valuable block each slot to maximize revenue and improve market fairness.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/harmonic.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "MEV",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "harmonic_gg",
+    dimensions: {
+      fees: "harmonic",
+    }
+  },
 ];
 export default data5;

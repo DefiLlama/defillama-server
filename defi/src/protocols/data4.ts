@@ -7646,7 +7646,6 @@ const data4: Protocol[] = [
     twitter: "canopyxyz",
     audit_links: ["https://docs.canopyhub.xyz/audits/audit-reports"],
     listedAt: 1741789722,
-    deadUrl: true
   },
   {
     id: "5893",

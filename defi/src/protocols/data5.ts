@@ -1137,7 +1137,7 @@ const data5: Protocol[] = [
       "Aerodrome Ignition is a DEX-native token launch mechanism on Base that bootstraps liquidity by depositing 10-20% of a project's token supply into Aerodrome pools, allowing veAERO holders to direct emissions incentives and enabling fair, market-driven price discovery and distribution without presales or private allocations",
     chain: "Base",
     logo: `${baseIconsUrl}/aerodrome-ignition.png`,
-    audits: "0",
+    audits: "3",
     gecko_id: null,
     cmcId: null,
     category: "Launchpad",

@@ -13489,9 +13489,6 @@ const data5: Protocol[] = [
     audit_links: ["https://github.com/zokyo-sec/audit-reports/tree/main/Shido"],
     parentProtocol: "parent#shido-dex",
     listedAt: 1772990944,
-    dimensions: {
-      dexs: "shido-dex"
-    }
   },
 ];
 export default data5;

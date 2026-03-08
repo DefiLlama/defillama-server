@@ -13245,6 +13245,7 @@ const data5: Protocol[] = [
     category: "Luck Games",
     chains: ["MegaETH"],
     module: "megamble/index.js",
+    treasury: "megamble.js",
     twitter: "megamble_xyz",
     listedAt: 1772764658,
     dimensions: {

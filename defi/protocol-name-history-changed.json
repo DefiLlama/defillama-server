@@ -1,0 +1,4043 @@
+{
+  "1384": [
+    "Hermes Protocol",
+    "Hermes V1"
+  ],
+  "1385": [
+    "Algebra DEX",
+    "Algebra DEX V1"
+  ],
+  "1395": [
+    "ArthSwap",
+    "ArthSwap V2"
+  ],
+  "1410": [
+    "Cropper",
+    "Cropper AMM"
+  ],
+  "1413": [
+    "Savannah Finance",
+    "Savanna Finance"
+  ],
+  "1432": [
+    "PegaSys",
+    "PegaSys V2"
+  ],
+  "1443": [
+    "OneRing",
+    "OneRing V1"
+  ],
+  "1448": [
+    "White Whale",
+    "White Whale Vaults"
+  ],
+  "1453": [
+    "EOS REX",
+    "Vaulta REX"
+  ],
+  "1455": [
+    "ClaimSwap",
+    "ClaimSwap V1"
+  ],
+  "1458": [
+    "Equilibrium",
+    "Equilibrium Lending"
+  ],
+  "1459": [
+    "Elysia",
+    "ELYFI"
+  ],
+  "1461": [
+    "WOOFi",
+    "WOOFi Swap"
+  ],
+  "1464": [
+    "Tropykus Finance",
+    "Tropykus RSK"
+  ],
+  "1467": [
+    "Farmton",
+    "Farmtom"
+  ],
+  "1469": [
+    "AlgoFi",
+    "BtnGroup"
+  ],
+  "1475": [
+    "MahaDAO",
+    "MahaDAO Arth"
+  ],
+  "1481": [
+    "FDoge Finance",
+    "2Doge Finance"
+  ],
+  "1494": [
+    "Minswap",
+    "Minswap DEX"
+  ],
+  "1499": [
+    "Llavafall",
+    "Lavafall"
+  ],
+  "1502": [
+    "The Parallel",
+    "Floor Dao"
+  ],
+  "1514": [
+    "The Granary",
+    "Granary Finance"
+  ],
+  "1520": [
+    "Paraluni",
+    "Paraluni Masterchef"
+  ],
+  "1524": [
+    "Mars Protocol",
+    "Mars Lend"
+  ],
+  "1532": [
+    "Proton Loan",
+    "MetalX Lending"
+  ],
+  "1541": [
+    "Wormhole",
+    "Portal"
+  ],
+  "1546": [
+    "Burrow",
+    "Rhea Lend"
+  ],
+  "1548": [
+    "Chaotic Exchange",
+    "Chaotic Finance"
+  ],
+  "1551": [
+    "Kujira",
+    "Kujira Orca"
+  ],
+  "1563": [
+    "iZUMi Finance",
+    "iZUMi LiquidBox"
+  ],
+  "1568": [
+    "Kaddex",
+    "eckoDAO",
+    "Mercatus"
+  ],
+  "1571": [
+    "Stargate",
+    "Stargate V1"
+  ],
+  "1577": [
+    "Sturdy",
+    "Sturdy V1"
+  ],
+  "1578": [
+    "Biconomy",
+    "Hyphen"
+  ],
+  "1582": [
+    "Aperture Finance",
+    "Aperture LM"
+  ],
+  "1594": [
+    "Symbiosis Finance",
+    "Symbiosis"
+  ],
+  "1599": [
+    "AAVE V3",
+    "Aave V3"
+  ],
+  "1602": [
+    "Aada",
+    "Lenfi"
+  ],
+  "1609": [
+    "Proton Swap",
+    "MetalX Swap"
+  ],
+  "1614": [
+    "0vix",
+    "Keom Protocol"
+  ],
+  "1615": [
+    "Polynomial Protocol",
+    "Polynomial Earn"
+  ],
+  "1621": [
+    "Astar Exchange",
+    "Astar Exchange V2"
+  ],
+  "1631": [
+    "Chain",
+    "Onyx Protocol"
+  ],
+  "1632": [
+    "SMBSwap",
+    "SMBSwap-v2",
+    "SMBSwap V2"
+  ],
+  "1635": [
+    "Clearpool",
+    "Clearpool Lending"
+  ],
+  "1657": [
+    "Predy Finance",
+    "Predy V3.2"
+  ],
+  "1661": [
+    "Swapscanner",
+    "Swapscanner Dex"
+  ],
+  "1667": [
+    "Solv Protocol",
+    "Solv Protocol V2",
+    "Solv V2",
+    "Solv Vesting"
+  ],
+  "1671": [
+    "FairySwap",
+    "FairySwap V1"
+  ],
+  "1673": [
+    "Hydradex",
+    "Hydradex V2"
+  ],
+  "1691": [
+    "GoodGhosting",
+    "HaloFi"
+  ],
+  "1692": [
+    "Sienna Network",
+    "SiennaSwap"
+  ],
+  "1694": [
+    "Ravelin Finance",
+    "Ravcube Finance"
+  ],
+  "1715": [
+    "Hummus Exchange",
+    "Hummus AMM"
+  ],
+  "1730": [
+    "Goblins Cash",
+    "Goblins Cash Reserve"
+  ],
+  "1738": [
+    "Bifrost Staking",
+    "Bifrost Liquid Staking"
+  ],
+  "1752": [
+    "Spool Protocol",
+    "Spool V1",
+    "Yelay V1"
+  ],
+  "1759": [
+    "SpaceFi",
+    "SpaceFi Evmos"
+  ],
+  "1765": [
+    "UniCrypt",
+    "UniCrypt V2",
+    "UNCX Network V2"
+  ],
+  "1770": [
+    "ClayStack",
+    "ClayStack ETH"
+  ],
+  "1771": [
+    "Arch Ethereum Web3",
+    "Arch Finance",
+    "Arch"
+  ],
+  "1772": [
+    "ApolloX",
+    "APX Finance",
+    "APX Bridge"
+  ],
+  "1778": [
+    "Oswap",
+    "Oswap AMM"
+  ],
+  "1782": [
+    "MilkyWay",
+    "MilkyWay Protocol",
+    "MilkyWay Protocol Milkomeda"
+  ],
+  "1784": [
+    "Tenderize",
+    "Tenderize V1"
+  ],
+  "1787": [
+    "Diamond Protocol",
+    "Diamond Protocol V1"
+  ],
+  "1791": [
+    "Popcorn",
+    "VaultCraft"
+  ],
+  "1799": [
+    "Velodrome",
+    "Velodrome V1"
+  ],
+  "1813": [
+    "Spin",
+    "Spin AMM",
+    "Spin Spot"
+  ],
+  "1820": [
+    "Unipilot",
+    "A51 Finance V2"
+  ],
+  "1824": [
+    "Swapsicle",
+    "Swapsicle V1"
+  ],
+  "1825": [
+    "Nirvana",
+    "Nirvana V1"
+  ],
+  "1833": [
+    "UniDex",
+    "UniDex Perp"
+  ],
+  "1838": [
+    "AAVE V1",
+    "Aave V1"
+  ],
+  "1849": [
+    "Acala Liquid-Staking",
+    "Acala Liquid Staking"
+  ],
+  "1853": [
+    "Moonwell Artemis",
+    "Moonwell (WELL)",
+    "MoonwellDeFi",
+    "Moonwell",
+    "Moonwell Lending"
+  ],
+  "1858": [
+    "Fringe",
+    "Fringe V1"
+  ],
+  "1867": [
+    "Sonic",
+    "Sonic ICP"
+  ],
+  "1868": [
+    "Surfswap",
+    "Surfswap Classic"
+  ],
+  "1875": [
+    "Atlendis",
+    "Atlendis V1"
+  ],
+  "1878": [
+    "ApeX Protocol",
+    "ApeX Pro"
+  ],
+  "1883": [
+    "iziSwap",
+    "iZiSwap"
+  ],
+  "1891": [
+    "Blur Finance",
+    "Blur RUG"
+  ],
+  "1894": [
+    "Filet",
+    "Filet Finance"
+  ],
+  "1899": [
+    "Taiga Protocol",
+    "Taiga Karura"
+  ],
+  "1900": [
+    "Tapio Protocol",
+    "Taiga Acala"
+  ],
+  "1917": [
+    "SudoSwap",
+    "SudoSwap V1",
+    "Sudoswap V1"
+  ],
+  "1922": [
+    "Radiant",
+    "Radiant V1"
+  ],
+  "1930": [
+    "Bubbleswap",
+    "Bubbleswap v1",
+    "Bubbleswap V1"
+  ],
+  "1934": [
+    "ETCswap",
+    "ETCswap V1",
+    "ETCswap V2"
+  ],
+  "1940": [
+    "ApeSwap Lending",
+    "ApeBond Lending"
+  ],
+  "1955": [
+    "Parallel Lending",
+    "Parallel Polkadot Lending"
+  ],
+  "1956": [
+    "Parallel AMM",
+    "Parallel Polkadot AMM"
+  ],
+  "1957": [
+    "Parallel DAOfi",
+    "Parallel Polkadot DAOfi"
+  ],
+  "1958": [
+    "Parallel Liquid Staking",
+    "Parallel Polkadot Liquid Staking"
+  ],
+  "1961": [
+    "Scallop",
+    "Scallop Lend"
+  ],
+  "1979": [
+    "SaucerSwap",
+    "SaucerSwap V1"
+  ],
+  "1990": [
+    "IcecreamSwap",
+    "IcecreamSwap V2"
+  ],
+  "1997": [
+    "Morpho Compound",
+    "Morpho V0 CompoundV2"
+  ],
+  "2001": [
+    "Demex",
+    "Demex Perp"
+  ],
+  "2007": [
+    "GrizzlyFi",
+    "GrizzlyFi Hives"
+  ],
+  "2020": [
+    "Silo Finance",
+    "Silo V1"
+  ],
+  "2022": [
+    "MetaStreet",
+    "MetaStreet V1"
+  ],
+  "2023": [
+    "Arbswap",
+    "Arbswap AMM"
+  ],
+  "2038": [
+    "Helio Protocol",
+    "lisUSD",
+    "Lista CDP"
+  ],
+  "2053": [
+    "Cega",
+    "Cega V1"
+  ],
+  "2062": [
+    "Kamino",
+    "Kamino Liquidity"
+  ],
+  "2064": [
+    "RociFi",
+    "RociFi V1"
+  ],
+  "2083": [
+    "Pluto",
+    "Pluto on Waves"
+  ],
+  "2086": [
+    "Rage Trade",
+    "Rage Trade v1 (Deprecated)",
+    "Rage Trade v1"
+  ],
+  "2104": [
+    "Swaap",
+    "Swaap V1",
+    "Swaap Maker V1"
+  ],
+  "2138": [
+    "FX Swap",
+    "MarginX",
+    "MarginX DEX"
+  ],
+  "2145": [
+    "XSwap Protocol",
+    "XSwap V2"
+  ],
+  "2147": [
+    "IPOR",
+    "IPOR Derivatives"
+  ],
+  "2154": [
+    "Lifinity",
+    "Lifinity V1"
+  ],
+  "2159": [
+    "Amulet Protocol",
+    "Amulet V1"
+  ],
+  "2162": [
+    "Ease.org",
+    "Easedefi.org"
+  ],
+  "2166": [
+    "LFGSwap",
+    "LFGSwap EthereumPoW"
+  ],
+  "2168": [
+    "Morpho Aave",
+    "Morpho V0 AaveV2"
+  ],
+  "2172": [
+    "Kleva Protocol",
+    "Kleva Farm"
+  ],
+  "2174": [
+    "Dex Finance",
+    "DexFinance BSC"
+  ],
+  "2175": [
+    "GooseFX",
+    "GooseFX V1"
+  ],
+  "2179": [
+    "Trader Joe Lend",
+    "Joe Lend"
+  ],
+  "2219": [
+    "Vendor Finance",
+    "Vendor V1"
+  ],
+  "2231": [
+    "Tangible",
+    "Tangible RWA"
+  ],
+  "2235": [
+    "Algo Liquid Governance",
+    "gALGO Liquid Governance"
+  ],
+  "2249": [
+    "Dexible",
+    "Dexible V2"
+  ],
+  "2254": [
+    "MUX Derivatives",
+    "MUX Protocol",
+    "MUX Perps"
+  ],
+  "2258": [
+    "Opensea",
+    "Opensea Seaport"
+  ],
+  "2259": [
+    "Helix",
+    "Helix AMM",
+    "Helix Spot",
+    "Helix Perp"
+  ],
+  "2264": [
+    "Orderly Network",
+    "Orderly Perps",
+    "Orderly Bridge"
+  ],
+  "2271": [
+    "Magpie",
+    "Wompie"
+  ],
+  "2274": [
+    "Kucoin",
+    "KuCoin"
+  ],
+  "2276": [
+    "Huobi",
+    "HTX"
+  ],
+  "2287": [
+    "THORSwap",
+    "ThorChain DEX"
+  ],
+  "2289": [
+    "Cetus",
+    "Cetus AMM",
+    "Cetus CLMM"
+  ],
+  "2292": [
+    "Cake DeFi",
+    "Bake.io (formerly Cake DeFi)",
+    "Bake.io"
+  ],
+  "2296": [
+    "Perp88",
+    "HMX"
+  ],
+  "2307": [
+    "Camelot",
+    "Camelot V1",
+    "Camelot V2"
+  ],
+  "2308": [
+    "Jito",
+    "Jito Liquid Staking"
+  ],
+  "2314": [
+    "Gate-io",
+    "Gate"
+  ],
+  "2317": [
+    "Archly Finance",
+    "Archly V1"
+  ],
+  "2318": [
+    "Stabl.fi",
+    "Stabl.fi V1"
+  ],
+  "2324": [
+    "Jexchange",
+    "JEXchangeDefi"
+  ],
+  "2328": [
+    "SynFutures",
+    "SynFutures V1"
+  ],
+  "2339": [
+    "Lodestar Finance",
+    "Lodestar V0"
+  ],
+  "2342": [
+    "VaporDex",
+    "VaporDex V1"
+  ],
+  "2344": [
+    "JediSwap",
+    "JediSwap V1"
+  ],
+  "2364": [
+    "Butter Network",
+    "Butter Swap"
+  ],
+  "2367": [
+    "mySwap",
+    "mySwap V1"
+  ],
+  "2368": [
+    "Aptin Finance",
+    "Aptin Finance V1"
+  ],
+  "2374": [
+    "Contango",
+    "Contango V1"
+  ],
+  "2375": [
+    "Y2K Finance",
+    "Y2K V1"
+  ],
+  "2378": [
+    "stake.link",
+    "stake.link liquid"
+  ],
+  "2394": [
+    "MessinaOne",
+    "Messina Cross",
+    "Messina Bridge"
+  ],
+  "2395": [
+    "Level Finance",
+    "Level Perps"
+  ],
+  "2396": [
+    "BlueMove",
+    "BlueMove Staking"
+  ],
+  "2414": [
+    "Blur",
+    "Blur Bids"
+  ],
+  "2417": [
+    "Thena",
+    "Thena V2",
+    "Thena V1",
+    "THENA V1"
+  ],
+  "2434": [
+    "MYSO",
+    "MYSO~V1",
+    "MYSO V1"
+  ],
+  "2436": [
+    "Arcade xyz",
+    "Arcade V2",
+    "Arcade.xyz"
+  ],
+  "2452": [
+    "Metropolis",
+    "Maximus"
+  ],
+  "2456": [
+    "Bunni",
+    "Bunni v1"
+  ],
+  "2458": [
+    "Unlockd",
+    "Unlockd V1"
+  ],
+  "2460": [
+    "SkullSwap",
+    "SkullSwap V2"
+  ],
+  "2468": [
+    "Hats.Finance",
+    "Hats.V1"
+  ],
+  "2469": [
+    "Cap V4",
+    "Cap Finance V4"
+  ],
+  "2483": [
+    "Perennial",
+    "Perennial V1"
+  ],
+  "2484": [
+    "Djed Stablecoin",
+    "Djed Alliance"
+  ],
+  "2485": [
+    "HiveSwap",
+    "HiveSwap V2"
+  ],
+  "2489": [
+    "Caviar",
+    "Caviar V1"
+  ],
+  "2493": [
+    "Brewlabs",
+    "Brewlabs Yield"
+  ],
+  "2494": [
+    "ReHold",
+    "ReHold V1"
+  ],
+  "2502": [
+    "BitDAO",
+    "Mantle Treasury"
+  ],
+  "2511": [
+    "Hawksight",
+    "HawkFi"
+  ],
+  "2512": [
+    "Velvet.Capital",
+    "Velvet V1"
+  ],
+  "2517": [
+    "ParaSpace",
+    "ParaSpace NFT",
+    "ParaSpace Lending",
+    "ParaSpace Lending V1"
+  ],
+  "2525": [
+    "Covo Finance",
+    "Covo V1"
+  ],
+  "2528": [
+    "SolidLizard",
+    "SolidLizard Dex"
+  ],
+  "2538": [
+    "Parcl",
+    "Parcl V2"
+  ],
+  "2541": [
+    "Clober",
+    "Clober V1"
+  ],
+  "2542": [
+    "Ondo Finance V2",
+    "Ondo Finance",
+    "Ondo Yield Assets"
+  ],
+  "2557": [
+    "Bhavish Finance",
+    "Nexter"
+  ],
+  "2560": [
+    "Unibot V2",
+    "Diamond Protocol V2"
+  ],
+  "2570": [
+    "marginfi",
+    "marginfi Lending",
+    "marginfi LST"
+  ],
+  "2584": [
+    "Velocimeter",
+    "Velocimeter V1"
+  ],
+  "2589": [
+    "Dexalot",
+    "Dexalot DEX"
+  ],
+  "2593": [
+    "Balancer V1",
+    "Balancer V2"
+  ],
+  "2600": [
+    "Symmetry",
+    "Zyberswap V3"
+  ],
+  "2601": [
+    "Shoebill Finance",
+    "AlienFi",
+    "Shoebill V1"
+  ],
+  "2602": [
+    "Zyberswap V3",
+    "DSU Money"
+  ],
+  "2603": [
+    "AlienFi",
+    "Rysk Finance"
+  ],
+  "2604": [
+    "Lockless Protocol",
+    "Frax FPI",
+    "DSU Money"
+  ],
+  "2605": [
+    "Streamflow",
+    "Rysk Finance",
+    "Rysk V1"
+  ],
+  "2606": [
+    "Hord",
+    "Lockless Protocol"
+  ],
+  "2610": [
+    "ZORA",
+    "ZORA Marketplace"
+  ],
+  "2613": [
+    "Mellow Protocol",
+    "Mellow Yield"
+  ],
+  "2619": [
+    "Proton Dex",
+    "MetalX Dex"
+  ],
+  "2622": [
+    "Mare Finance",
+    "Mare Finance V1"
+  ],
+  "2623": [
+    "Chainlink",
+    "Chainlink Requests"
+  ],
+  "2625": [
+    "Bluefin",
+    "Bluefin Perps",
+    "Bluefin Legacy"
+  ],
+  "2626": [
+    "ether.fi",
+    "ether.fi Stake"
+  ],
+  "2633": [
+    "AnyHedge v0.11",
+    "AnyHedge"
+  ],
+  "2636": [
+    "Lighter",
+    "Lighter V1"
+  ],
+  "2641": [
+    "Fulcrom",
+    "Fulcrom Perps"
+  ],
+  "2643": [
+    "CoW Swap",
+    "CoWSwap"
+  ],
+  "2644": [
+    "Maverick Protocol",
+    "Maverick V1"
+  ],
+  "2647": [
+    "LFGSwap CORE",
+    "LFGSwap",
+    "LFGSwap Core"
+  ],
+  "2653": [
+    "NF3 APE",
+    "ParaSpace APE"
+  ],
+  "2654": [
+    "ParaSpace APE",
+    "ParaSpace APE Staking",
+    "ParaSpace APE Staking V1"
+  ],
+  "2655": [
+    "SnowSwap",
+    "SnowSwap AMM"
+  ],
+  "2656": [
+    "Metavault Bo",
+    "PonytaSwap",
+    "Metavault Binary Options"
+  ],
+  "2662": [
+    "Morphex Perp",
+    "Morphex",
+    "Morphex V2"
+  ],
+  "2666": [
+    "Paxo Finance",
+    "Wefi",
+    "wefi"
+  ],
+  "2674": [
+    "WEMIX.FI",
+    "WEMIX.FI AMM",
+    "WEMIX Full Range Deposit"
+  ],
+  "2675": [
+    "Ramses Exchange",
+    "Ramses V1",
+    "Ramses Legacy"
+  ],
+  "2678": [
+    "Alpaca Lending",
+    "Kleva Lend"
+  ],
+  "2685": [
+    "Arbitrum Exchange",
+    "Arbitrum Exchange V2"
+  ],
+  "2686": [
+    "Factor",
+    "Factor V1"
+  ],
+  "2691": [
+    "Doora Inu",
+    "Sohei"
+  ],
+  "2695": [
+    "SmarDex",
+    "SMARDEX AMM"
+  ],
+  "2696": [
+    "Overnight ETS",
+    "Overnight DAI+"
+  ],
+  "2701": [
+    "FairySwap V2",
+    "LlamaSwap"
+  ],
+  "2704": [
+    "Sakai Vault",
+    "WEMIX.FI Lend"
+  ],
+  "2707": [
+    "SPL Governance",
+    "Realms"
+  ],
+  "2710": [
+    "BaptSwap",
+    "BaptSwap V1"
+  ],
+  "2714": [
+    "Bonerium Tech",
+    "BoneSwap Bonerium"
+  ],
+  "2727": [
+    "Mute.io",
+    "Koi Finance",
+    "Koi Finance AMM"
+  ],
+  "2731": [
+    "Swapline",
+    "Atlas Aggregator",
+    "Swapline V1"
+  ],
+  "2732": [
+    "Citrus",
+    "Atlas Aggregator"
+  ],
+  "2733": [
+    "Blast API",
+    "Citrus"
+  ],
+  "2737": [
+    "Dexter",
+    "Persistence DEX"
+  ],
+  "2746": [
+    "Nexon Finance",
+    "Eralend",
+    "EraLend"
+  ],
+  "2748": [
+    "Hadouken AMM",
+    "Antfarm finance"
+  ],
+  "2751": [
+    "LFGSwap Arbitrum",
+    "Onchain Trade"
+  ],
+  "2752": [
+    "LFGSwap Arbitrum",
+    "Onchain Trade"
+  ],
+  "2753": [
+    "Velocore",
+    "Velocore V1"
+  ],
+  "2757": [
+    "Glacier Finance",
+    "Glacier Exchange V2"
+  ],
+  "2760": [
+    "Maia V3",
+    "Maia CL"
+  ],
+  "2763": [
+    "Dove Swap",
+    "Dove Swap V2"
+  ],
+  "2768": [
+    "LSDx Finance",
+    "LSDx Farm"
+  ],
+  "2773": [
+    "Auriga Finance",
+    "Auragi Finance"
+  ],
+  "2789": [
+    "Thala Labs",
+    "Thala Labs CDP",
+    "Thala CDP"
+  ],
+  "2792": [
+    "Camelot V2",
+    "Camelot V3"
+  ],
+  "2797": [
+    "Aevo",
+    "Aevo Perps"
+  ],
+  "2803": [
+    "Native",
+    "Native Swap"
+  ],
+  "2805": [
+    "ixETH Index",
+    "stake.link index"
+  ],
+  "2807": [
+    "MatrixDock",
+    "MatrixDock STBT"
+  ],
+  "2811": [
+    "Forge SX",
+    "Forge SX Ovens"
+  ],
+  "2823": [
+    "Shade Protocol",
+    "ShadeSwap"
+  ],
+  "2825": [
+    "Nostra",
+    "Nostra mainnet",
+    "Nostra Money Market"
+  ],
+  "2827": [
+    "SatoshiSwap",
+    "SatoshiCoreSwap"
+  ],
+  "2829": [
+    "TruFin",
+    "TruFin Legacy Vaults"
+  ],
+  "2832": [
+    "uniETH",
+    "Bedrock uniETH"
+  ],
+  "2858": [
+    "GLIF Infinity Pool",
+    "GLIF Pools Infinity Pool",
+    "GLIF"
+  ],
+  "2862": [
+    "Hyperliquid",
+    "Hyperliquid Perp"
+  ],
+  "2864": [
+    "Thena V3",
+    "THENA FUSION"
+  ],
+  "2874": [
+    "Tealswap",
+    "Tealswap V2"
+  ],
+  "2884": [
+    "Zolidly Finance",
+    "Asymetrix Protocol"
+  ],
+  "2889": [
+    "Rollup Finance",
+    "Rollup Finance vAMM"
+  ],
+  "2899": [
+    "Vertex Protocol",
+    "Vertex",
+    "Vertex Perps"
+  ],
+  "2901": [
+    "Swell",
+    "Swell Liquid Staking"
+  ],
+  "2904": [
+    "Lybra Finance",
+    "Lybra V1"
+  ],
+  "2907": [
+    "Chronos",
+    "Chronos V1"
+  ],
+  "2914": [
+    "Binance Wrapped Beacon ETH",
+    "Binance staked ETH"
+  ],
+  "2923": [
+    "TProtocol",
+    "TProtocol V1"
+  ],
+  "2929": [
+    "Spark Lend",
+    "Spark",
+    "SparkLend"
+  ],
+  "2930": [
+    "Curve USD",
+    "crvUSD"
+  ],
+  "2939": [
+    "KriyaDEX",
+    "KriyaDEX Swap",
+    "Kriya Swap",
+    "Kriya AMM"
+  ],
+  "2944": [
+    "Ajira Pay Finance",
+    "Ajira Pay Finance V1"
+  ],
+  "2946": [
+    "Typus Finance",
+    "Typus DOV"
+  ],
+  "2956": [
+    "Affine DeFi",
+    "Affine DeFi Earn"
+  ],
+  "2971": [
+    "StarkEx",
+    "Astro Swap",
+    "AstroSwap AMM"
+  ],
+  "2974": [
+    "Extra Finance",
+    "Extra Finance Leverage Farming"
+  ],
+  "2979": [
+    "Tsunami.Finance",
+    "TsunamiX"
+  ],
+  "2982": [
+    "Satori Finance",
+    "Satori",
+    "Satori Perp"
+  ],
+  "2983": [
+    "Zomma protocol",
+    "Zomma Protocol"
+  ],
+  "2989": [
+    "multiverseC2C",
+    "multiverse"
+  ],
+  "2995": [
+    "PulseX",
+    "PulseX V1"
+  ],
+  "3004": [
+    "BFX Finance",
+    "BFXfi"
+  ],
+  "3014": [
+    "Morpho AaveV3",
+    "Morpho V0 AaveV3"
+  ],
+  "3018": [
+    "CowSwap smartBCH",
+    "Old CowSwap smartBCH"
+  ],
+  "3025": [
+    "KTX.Finance",
+    "KTX Perps"
+  ],
+  "3029": [
+    "Caviar V2",
+    "Enosys Bridge"
+  ],
+  "3031": [
+    "MetaMask",
+    "MetaMask DEX Aggregator",
+    "MetaMask Wallet"
+  ],
+  "3037": [
+    "Range Protocol",
+    "Skate Fi",
+    "nor"
+  ],
+  "3038": [
+    "Rainbow",
+    "Rainbow Wallet"
+  ],
+  "3044": [
+    "MarginX",
+    "MarginX Perp"
+  ],
+  "3045": [
+    "Astaria",
+    "Astaria V1"
+  ],
+  "3057": [
+    "OpenEden T-Bills",
+    "OpenEden",
+    "OpenEden TBILL"
+  ],
+  "3061": [
+    "SynFutures V2",
+    "SynFutures V2 (Deprecated)"
+  ],
+  "3062": [
+    "MagicFox",
+    "MagicFox Swap"
+  ],
+  "3063": [
+    "ShadeLend",
+    "stkd-SCRT"
+  ],
+  "3064": [
+    "SILK",
+    "stkd-SCRT"
+  ],
+  "3072": [
+    "QuipuSwap V3",
+    "Dubble Exchange"
+  ],
+  "3073": [
+    "Dubble Exchange",
+    "Predy V2"
+  ],
+  "3077": [
+    "Fathom Dex",
+    "Fathom",
+    "Fathom AMM"
+  ],
+  "3083": [
+    "PenPie",
+    "Penpie"
+  ],
+  "3095": [
+    "SudoSwap V2",
+    "Sudoswap V2"
+  ],
+  "3096": [
+    "Ramses V2",
+    "Ramses CL"
+  ],
+  "3102": [
+    "Kannagi Finance",
+    "Maple RWA"
+  ],
+  "3104": [
+    "ambient",
+    "Ambient"
+  ],
+  "3106": [
+    "TeamUnibot",
+    "Unibot"
+  ],
+  "3107": [
+    "EigenLayer",
+    "EigenCloud"
+  ],
+  "3121": [
+    "PearlFi",
+    "Pearl V1"
+  ],
+  "3124": [
+    "zkBob Vault",
+    "BOB CDP"
+  ],
+  "3146": [
+    "Scatter",
+    "MegaMoon"
+  ],
+  "3154": [
+    "AVNU",
+    "StakedICP"
+  ],
+  "3156": [
+    "Voodoo Trade",
+    "Voodoo Trade Fantom"
+  ],
+  "3161": [
+    "Themis OHM",
+    "Themis Staking"
+  ],
+  "3163": [
+    "Levvy.Fi",
+    "Levvy for NFTs"
+  ],
+  "3170": [
+    "Ellipsis Labs",
+    "Phoenix",
+    "Phoenix Trade"
+  ],
+  "3174": [
+    "Mango Markets V4",
+    "Mango Markets V4 Perps"
+  ],
+  "3179": [
+    "GoGoPool",
+    "Hypha"
+  ],
+  "3180": [
+    "zkSwap Finance",
+    "zkSwap V2"
+  ],
+  "3181": [
+    "Sui",
+    "Sui Foundation"
+  ],
+  "3188": [
+    "BiSwap V3",
+    "Biswap V3"
+  ],
+  "3191": [
+    "xALGO Liquid Governance",
+    "xALGO Liquid Staking"
+  ],
+  "3196": [
+    "FlowX Finance",
+    "FlowX Finance AMM",
+    "FlowX Finance CLMM",
+    "FlowX V2"
+  ],
+  "3206": [
+    "Bucket Protocol",
+    "Bucket CDP"
+  ],
+  "3207": [
+    "BitKeep Wallet",
+    "BitKeep Swap",
+    "Bitget Swap"
+  ],
+  "3208": [
+    "UniCrypt V3",
+    "UNCX Network V3"
+  ],
+  "3210": [
+    "Arcadia Finance",
+    "Arcadia V1"
+  ],
+  "3215": [
+    "ImmutableX",
+    "Aerie Lab"
+  ],
+  "3216": [
+    "bemo",
+    "bemo V1"
+  ],
+  "3218": [
+    "Swaap V2",
+    "Swaap Maker V2"
+  ],
+  "3233": [
+    "Ajna",
+    "Ajna V1"
+  ],
+  "3238": [
+    "FusionX Finance",
+    "FusionX V1",
+    "FusionX V2"
+  ],
+  "3239": [
+    "FusionX V2",
+    "FusionX V3"
+  ],
+  "3242": [
+    "Moraswap",
+    "Moraswap V2"
+  ],
+  "3243": [
+    "ZeroLend",
+    "ZeroLend Lending"
+  ],
+  "3250": [
+    "LineaBank",
+    "LayerBank"
+  ],
+  "3251": [
+    "Beamex",
+    "Beamex Perps"
+  ],
+  "3256": [
+    "EchoDEX",
+    "EchoDEX V2"
+  ],
+  "3259": [
+    "Aftermath Finance",
+    "Aftermath AMM"
+  ],
+  "3263": [
+    "Crust Finance",
+    "Crust V1"
+  ],
+  "3265": [
+    "AGNI",
+    "Agni.finance",
+    "Agni Finance"
+  ],
+  "3268": [
+    "DeepBook",
+    "DeepBook V2"
+  ],
+  "3277": [
+    "DexFinance",
+    "DexFinance Arbitrum",
+    "dexSWAP"
+  ],
+  "3280": [
+    "ZKSpace",
+    "ZKSwap (ZKSync)",
+    "ZKBase"
+  ],
+  "3285": [
+    "Teahouse V2",
+    "Teahouse Managed"
+  ],
+  "3286": [
+    "Teahouse V3",
+    "Teahouse Permissionless"
+  ],
+  "3287": [
+    "TruFin MATIC LSD",
+    "TruStake MATIC",
+    "TruStake"
+  ],
+  "3289": [
+    "JewelSwap NFT",
+    "JewelSwap NFT Lending"
+  ],
+  "3300": [
+    "lendle",
+    "Lendle",
+    "Lendle Lend",
+    "Lendle Pooled Markets"
+  ],
+  "3301": [
+    "Grizzly Trade",
+    "Grizzly Trade Perps"
+  ],
+  "3307": [
+    "Lodestar V1",
+    "Sablier V2"
+  ],
+  "3308": [
+    "Sablier V2",
+    "Sablier Lockup"
+  ],
+  "3313": [
+    "Openworld",
+    "Openworld Perps"
+  ],
+  "3316": [
+    "Brine.fi",
+    "TanX.fi"
+  ],
+  "3322": [
+    "Synthswap",
+    "Synthswap V2"
+  ],
+  "3323": [
+    "NAVI Protocol",
+    "Predy V5",
+    "NAVI Lending"
+  ],
+  "3328": [
+    "SwapBased",
+    "SwapBased AMM"
+  ],
+  "3333": [
+    "BaseSwap",
+    "BaseSwap V2"
+  ],
+  "3345": [
+    "DackieSwap",
+    "DackieSwap V3"
+  ],
+  "3346": [
+    "CookieBase",
+    "CookieBase Dex"
+  ],
+  "3354": [
+    "Synclub Staked BNB",
+    "slisBNB",
+    "Lista Liquid Staking"
+  ],
+  "3361": [
+    "Alien Base",
+    "Alien Base AMM",
+    "Alien Base V2"
+  ],
+  "3362": [
+    "Orchai",
+    "Orchai LST"
+  ],
+  "3363": [
+    "HaloTrade",
+    "HaloTrade Cosmos",
+    "HaloTrade EVM"
+  ],
+  "3365": [
+    "GMX V2",
+    "GMX V2 Perps"
+  ],
+  "3375": [
+    "EDE(BASE)",
+    "EDEBASE"
+  ],
+  "3377": [
+    "friend.tech",
+    "friend.tech V1"
+  ],
+  "3386": [
+    "Meridian Trade",
+    "Bryan on Base"
+  ],
+  "3388": [
+    "Sanctum",
+    "Sanctum Reserve"
+  ],
+  "3393": [
+    "TermFinance",
+    "TermFinance Lend"
+  ],
+  "3396": [
+    "LogX",
+    "LogX V1"
+  ],
+  "3407": [
+    "FuzioNetwork DEX",
+    "Fuzio"
+  ],
+  "3408": [
+    "Lynex",
+    "Lynex V2",
+    "Lynex Fusion"
+  ],
+  "3409": [
+    "SwapBased Consentrated Liquidity",
+    "SwapBased Concentrated Liquidity"
+  ],
+  "3415": [
+    "LuigiSwap",
+    "Knight DEX"
+  ],
+  "3416": [
+    "UncleSam Protocol",
+    "Knight DEX"
+  ],
+  "3432": [
+    "Vooi",
+    "Vooi V1 (Deprecated)",
+    "Vooi V1"
+  ],
+  "3439": [
+    "HydraDX",
+    "Hydration",
+    "Hydration DEX"
+  ],
+  "3445": [
+    "Xoswap",
+    "Xops Finance"
+  ],
+  "3448": [
+    "ParaSpace Lending V2",
+    "Parallel Lending"
+  ],
+  "3449": [
+    "ParaSpace APE Staking V2",
+    "Parallel Staking"
+  ],
+  "3450": [
+    "Aerodrome",
+    "Aerodrome V2",
+    "Aerodrome V1"
+  ],
+  "3451": [
+    "Astarter",
+    "Astarter Launch",
+    "Astarter Launch ISPO"
+  ],
+  "3457": [
+    "Shibbex",
+    "Shibex"
+  ],
+  "3458": [
+    "WoofSwap",
+    "WoofSwap Shibarium"
+  ],
+  "3465": [
+    "Kinetix",
+    "Kinetix Derivatives"
+  ],
+  "3473": [
+    "Prisma Finance",
+    "PrismaLST"
+  ],
+  "3483": [
+    "Morphex Old",
+    "Morphex V1",
+    "Morphex V1 Perps"
+  ],
+  "3487": [
+    "StealthPad",
+    "Sparkswap"
+  ],
+  "3491": [
+    "Wise Lending",
+    "Wise Lending V1"
+  ],
+  "3496": [
+    "Esper Finance",
+    "Premia V3"
+  ],
+  "3502": [
+    "Seamless Protocol",
+    "Seamless V1"
+  ],
+  "3512": [
+    "CairoFiSwap",
+    "CairoFi"
+  ],
+  "3518": [
+    "Messina Liquid",
+    "Messina Liquid Staking"
+  ],
+  "3530": [
+    "BMX",
+    "BMX Classic",
+    "BMX Classic Perps"
+  ],
+  "3537": [
+    "THENA ALPHA",
+    "THENA PERPS"
+  ],
+  "3542": [
+    "Tonstakers",
+    "Tonstakers LSD"
+  ],
+  "3551": [
+    "Tholgar",
+    "Tholgar Yield"
+  ],
+  "3558": [
+    "StakeStone",
+    "StakeStone STONE"
+  ],
+  "3564": [
+    "Star Shares",
+    "Stars Arena",
+    "The Arena",
+    "Arena SocialFi"
+  ],
+  "3571": [
+    "ShimmerSea",
+    "MagicSea",
+    "MagicSea AMM"
+  ],
+  "3572": [
+    "Solv Protocol Funds",
+    "Solv Funds",
+    "Solv Basis Trading"
+  ],
+  "3573": [
+    "Solv Protocol RWA",
+    "Solv RWA"
+  ],
+  "3576": [
+    "GammaSwap",
+    "GammaSwap Classic"
+  ],
+  "3578": [
+    "Klever Exchange",
+    "DigiFT"
+  ],
+  "3581": [
+    "Algebra DEX V2",
+    "Glacier Exchange V3"
+  ],
+  "3591": [
+    "Ton Locker",
+    "TON Locker"
+  ],
+  "3596": [
+    "YieldFlow",
+    "YieldFlow Yield Farming"
+  ],
+  "3602": [
+    "Contango V2",
+    "sDAI"
+  ],
+  "3608": [
+    "New Bitcoin",
+    "New Bitcoin City",
+    "Alpha"
+  ],
+  "3618": [
+    "Levvy.fi Tokens",
+    "Levvy for Tokens"
+  ],
+  "3636": [
+    "Money Mates",
+    "Aftermath afSUI"
+  ],
+  "3637": [
+    "Hope Lend",
+    "HOPE Lend"
+  ],
+  "3638": [
+    "Hope Collateral",
+    "HOPE Collateral"
+  ],
+  "3639": [
+    "RoseonX",
+    "VoltageSwap"
+  ],
+  "3645": [
+    "CaviarNine",
+    "CaviarNine Shape Liquidity"
+  ],
+  "3646": [
+    "Ociswap",
+    "Ociswap Basic"
+  ],
+  "3648": [
+    "Paradex",
+    "Paradex Bridge"
+  ],
+  "3652": [
+    "Nostra alpha",
+    "Nostra Money Market Alpha"
+  ],
+  "3665": [
+    "Maker RWA",
+    "Sky RWA"
+  ],
+  "3668": [
+    "Zebra",
+    "Zebra V1",
+    "Zebra V2"
+  ],
+  "3675": [
+    "Chainlink Cross Chain",
+    "Chainlink CCIP"
+  ],
+  "3690": [
+    "Swell Vault",
+    "SuperSweth Vault"
+  ],
+  "3698": [
+    "Hashnote",
+    "Hashnote USYC",
+    "Circle USYC"
+  ],
+  "3711": [
+    "Volo",
+    "Volo Vault"
+  ],
+  "3712": [
+    "Spirit Farm",
+    "SharkSwap DEX"
+  ],
+  "3726": [
+    "Equation",
+    "Equation V1"
+  ],
+  "3728": [
+    "Gondi",
+    "Gondi V1"
+  ],
+  "3729": [
+    "BackToBitcoin",
+    "B2B"
+  ],
+  "3735": [
+    "Baki Exchange",
+    "Baki"
+  ],
+  "3753": [
+    "XOXNO",
+    "XOXNO NFT Marketplace"
+  ],
+  "3790": [
+    "FrankCoin",
+    "Frankencoin",
+    "FrankenCoin"
+  ],
+  "3794": [
+    "9inch",
+    "9inch V2"
+  ],
+  "3801": [
+    "uniIOTX",
+    "Bedrock uniIOTX"
+  ],
+  "3817": [
+    "Dopex CLAMM",
+    "Stryke CLAMM"
+  ],
+  "3821": [
+    "Particle Money",
+    "Particles Money"
+  ],
+  "3824": [
+    "Blast",
+    "Blast pre-launch Farm"
+  ],
+  "3826": [
+    "Spool V2",
+    "Yelay V2"
+  ],
+  "3835": [
+    "SubstanceX",
+    "Substance Exchange"
+  ],
+  "3836": [
+    "Chimp Exchange",
+    "ChimpX AI",
+    "ChimpX AI DEX"
+  ],
+  "3837": [
+    "DyorSwap",
+    "DyorSwap AMM"
+  ],
+  "3840": [
+    "PlunderSwap",
+    "PlunderSwap V2"
+  ],
+  "3846": [
+    "DLN",
+    "deBridge",
+    "deBridge fees"
+  ],
+  "3849": [
+    "Buttonwood",
+    "Button Wrappers",
+    "Button Tranche"
+  ],
+  "3865": [
+    "Hatom Boster",
+    "Hatom Booster"
+  ],
+  "3876": [
+    "Tranche",
+    "Button Wrappers"
+  ],
+  "3882": [
+    "Mantle LSP",
+    "Mantle Staked ETH",
+    "mETH Protocol"
+  ],
+  "3886": [
+    "Fortunafi U.S. Short-Term Treasuries",
+    "Fortunafi fBill",
+    "Fortunafi"
+  ],
+  "3894": [
+    "dVOL.Finance",
+    "dVOL"
+  ],
+  "3903": [
+    " Rain.fi",
+    "Rain.fi"
+  ],
+  "3904": [
+    "Weft Finance",
+    "Weft V1"
+  ],
+  "3912": [
+    "Dinero",
+    "Dinero-Pirex ETH",
+    "Dinero-PirexETH",
+    "Dinero (Pirex ETH)",
+    "Dinero (pxETH)"
+  ],
+  "3913": [
+    "Kizuna Exchange",
+    "KIM Exchange",
+    "KIM Exchange V1"
+  ],
+  "3921": [
+    "Pharaoh Exchange",
+    "Pharaoh V3",
+    "Pharaoh CL"
+  ],
+  "3923": [
+    "Lyra V2",
+    "Derive V2"
+  ],
+  "3926": [
+    "Accumulated Finance",
+    "Accumulated Finance Liquid Staking"
+  ],
+  "3946": [
+    "Kelp Dao",
+    "Kelp DAO",
+    "Kelp rsETH",
+    "Kelp"
+  ],
+  "3947": [
+    "DeSyn Protocol",
+    "DeSyn Restaking",
+    "DeSyn Safe"
+  ],
+  "3948": [
+    "ckBTC",
+    "Chain Key Tokens",
+    "Chain Fusion"
+  ],
+  "3953": [
+    "MilkyWay Zone",
+    "MilkyWay",
+    "MilkyWay Protocol",
+    "MilkyWay Liquid Staking"
+  ],
+  "3954": [
+    "Surf.one",
+    "Surf Protocol"
+  ],
+  "3965": [
+    "Dojoswap",
+    "Dojoswap AMM"
+  ],
+  "3968": [
+    "EOS RAM",
+    "Vaulta RAM"
+  ],
+  "3976": [
+    "Orion RFQ",
+    "Orion Liquidity Nodes"
+  ],
+  "3985": [
+    "Cleopatra Exchange",
+    "Cleopatra V3",
+    "Cleopatra CL"
+  ],
+  "3995": [
+    "Repl",
+    "Parasail"
+  ],
+  "4006": [
+    "Merchant Moe",
+    "Merchant Moe DEX"
+  ],
+  "4008": [
+    "SwapGPT",
+    "Panora"
+  ],
+  "4016": [
+    "Kana Labs",
+    "Kana Labs Aggregator",
+    "Xyra Labs Aggregator"
+  ],
+  "4017": [
+    "F1rst Crypto Bank",
+    "Bank AI"
+  ],
+  "4024": [
+    "Tropical Swap",
+    "TropicalSwap"
+  ],
+  "4025": [
+    "Morpho Blue",
+    "Morpho V1"
+  ],
+  "4026": [
+    "FWX",
+    "FWX Derivatives"
+  ],
+  "4030": [
+    "Genesis LRT",
+    "GenesisLRT (Native Restaking)"
+  ],
+  "4045": [
+    "Sudo Finance",
+    "Sudo Perps"
+  ],
+  "4052": [
+    "Minterest",
+    "Pyth Network"
+  ],
+  "4053": [
+    "Pyth Network",
+    "Pyth Staking",
+    "Nostra Pools"
+  ],
+  "4063": [
+    "Peapods Finance",
+    "Peapods Options"
+  ],
+  "4065": [
+    "iLend",
+    "iLend V1"
+  ],
+  "4069": [
+    "Possum Labs",
+    "Possum Finance"
+  ],
+  "4072": [
+    "Nile Exchange",
+    "Nile Exchange V3",
+    "Nile CL"
+  ],
+  "4078": [
+    "Swell Restake",
+    "Swell Liquid Restaking"
+  ],
+  "4080": [
+    "Blueberry Lend",
+    "Blueberry"
+  ],
+  "4081": [
+    "InceptionLRT",
+    "InceptionLRT (Isolated Restaking)"
+  ],
+  "4084": [
+    "Hydro Protocol",
+    "Hydro LST"
+  ],
+  "4088": [
+    "Puffer Finance",
+    "Puffer Stake"
+  ],
+  "4098": [
+    "ZetaEarn",
+    "Zearn Protocol"
+  ],
+  "4100": [
+    "Pike",
+    "Pike V1"
+  ],
+  "4105": [
+    "Anzen Finance",
+    "Anzen V1"
+  ],
+  "4112": [
+    "Synonym Finance",
+    "SYNO Finance"
+  ],
+  "4116": [
+    "SwapMode",
+    "SwapMode V2"
+  ],
+  "4120": [
+    "EddyFinance",
+    "ZetaHub",
+    "EddyFinance AMM",
+    "EddyFinance StableSwap"
+  ],
+  "4124": [
+    "Merlin's Seal",
+    "Merlins Seal"
+  ],
+  "4126": [
+    "Beethoven X sFTMx",
+    "Beets - LST",
+    "Beets LST"
+  ],
+  "4133": [
+    "Ethena",
+    "Ethena USDe"
+  ],
+  "4138": [
+    "DragonSwap V2",
+    "DragonSwap V2 Kaia"
+  ],
+  "4139": [
+    "DragonSwap V3",
+    "DragonSwap V3 Kaia"
+  ],
+  "4141": [
+    "B² Network",
+    "B2 Buzz"
+  ],
+  "4146": [
+    "karpatkey",
+    "kpk"
+  ],
+  "4150": [
+    "GGP Vault",
+    "SeaFi"
+  ],
+  "4155": [
+    "ApeBond Bonding",
+    "ApeBond Staking"
+  ],
+  "4158": [
+    "Crypto.com Staked ETH",
+    "Crypto.com Liquid Staking"
+  ],
+  "4164": [
+    "Mori",
+    "Mori-Protocol",
+    "Mori Protocol"
+  ],
+  "4167": [
+    "Fluid",
+    "Fluid Lending"
+  ],
+  "4168": [
+    "Bouncebit",
+    "BounceBit",
+    "BounceBit pre-launch Farm"
+  ],
+  "4172": [
+    "Satori AMM",
+    "Satori Spots"
+  ],
+  "4174": [
+    "hyperswap",
+    "hyperswap on Areon Network"
+  ],
+  "4175": [
+    "IMONSwap",
+    "KEWL EXCHANGE"
+  ],
+  "4179": [
+    "Fixes World",
+    "Fixes 𝔉rc20",
+    "Fixes frc20"
+  ],
+  "4180": [
+    "Fixes World Staking",
+    "Fixes 𝔉rc20 Staking",
+    "Fixes frc20 Staking"
+  ],
+  "4188": [
+    "Voltage AMM V3",
+    "Voltage V3"
+  ],
+  "4193": [
+    "Crunchy Network V2",
+    "Crunchy Liquid Staking"
+  ],
+  "4195": [
+    "Compx",
+    "Compx Yield",
+    "Compx CDP",
+    "Compx Streaming"
+  ],
+  "4197": [
+    "Secured Finance",
+    "Secured Finance Lending"
+  ],
+  "4199": [
+    "Thruster",
+    "Thruster V3"
+  ],
+  "4206": [
+    "BladeSwap",
+    "BladeSwap AMM"
+  ],
+  "4209": [
+    "MonoSwap",
+    "MonoSwap V2"
+  ],
+  "4212": [
+    "Particle",
+    "Particle LAMM"
+  ],
+  "4214": [
+    "Blitz",
+    "Blitz Perps"
+  ],
+  "4215": [
+    "SynFutures V2",
+    "SynFutures V3"
+  ],
+  "4221": [
+    "Blast Futures",
+    "BFX Finance",
+    "BFX (Blast Futures)"
+  ],
+  "4222": [
+    "Ring DEX",
+    "Ring Swap"
+  ],
+  "4223": [
+    "Ring Earn",
+    "Ring Few"
+  ],
+  "4242": [
+    "Voltage Lending",
+    "Fusefi Lending"
+  ],
+  "4257": [
+    "Definitive.fi",
+    "Definitive"
+  ],
+  "4259": [
+    "ETCPOW",
+    "ETCMC DEX"
+  ],
+  "4265": [
+    "Superstate",
+    "Superstate USTB"
+  ],
+  "4276": [
+    "CIAN LSTs",
+    "CIAN Vaults"
+  ],
+  "4285": [
+    "Nile Exchange V2",
+    "Nile Legacy"
+  ],
+  "4286": [
+    "Cleopatra V2",
+    "Cleopatra Legacy"
+  ],
+  "4287": [
+    "Pharaoh V2",
+    "Pharaoh Legacy"
+  ],
+  "4293": [
+    "Primordium",
+    "Trojan"
+  ],
+  "4296": [
+    "Blasterswap",
+    "Blasterswap V2"
+  ],
+  "4301": [
+    "VeryLongSwap",
+    "VeryLongSwap AMM"
+  ],
+  "4303": [
+    "BTCFi",
+    "BTCFi Farm"
+  ],
+  "4308": [
+    "wx network",
+    "Waves Exchange"
+  ],
+  "4323": [
+    "Aera",
+    "Aera V2"
+  ],
+  "4328": [
+    "Orchai Lending",
+    "Orchai Money Market"
+  ],
+  "4329": [
+    "Bitstaq",
+    "StaQ"
+  ],
+  "4339": [
+    "Velar Protocol",
+    "Velar AMM"
+  ],
+  "4344": [
+    "DTX",
+    "DTX Derivatives"
+  ],
+  "4345": [
+    "HiveSwap Pro",
+    "SingularX"
+  ],
+  "4347": [
+    "Glyph Exchange",
+    "Glyph V2"
+  ],
+  "4350": [
+    "Smilee Finance",
+    "Smilee Finance Arbitrum"
+  ],
+  "4364": [
+    "IXSwap RWA",
+    "IX Swap RWA",
+    "IXS"
+  ],
+  "4370": [
+    "Aloe Capital",
+    "Aloe"
+  ],
+  "4385": [
+    "Poolz Network",
+    "Poolz Vesting"
+  ],
+  "4388": [
+    "Keller Finance",
+    "Keller Finance V2"
+  ],
+  "4391": [
+    "GullNetwork",
+    "GullNetwork Service"
+  ],
+  "4400": [
+    "Vest Exchange",
+    "Vest Markets"
+  ],
+  "4404": [
+    "Trader Joe Stek",
+    "Joe Stek"
+  ],
+  "4408": [
+    "Frogswap",
+    "Frogswap AMM"
+  ],
+  "4411": [
+    "Satoshi Protocol",
+    "River",
+    "River Omni-CDP"
+  ],
+  "4413": [
+    "Blackwing",
+    "Blackwing BXP"
+  ],
+  "4420": [
+    "Zest",
+    "Zest V1",
+    "Zest V2"
+  ],
+  "4421": [
+    "AINN Layer2",
+    "AILayer",
+    "AILayer farm"
+  ],
+  "4423": [
+    "Fraxlend AMO",
+    "Frax AMO",
+    "Fathom CDP"
+  ],
+  "4424": [
+    "Fathom Vault",
+    "Fathom CDP"
+  ],
+  "4433": [
+    "KriyaDEX Earn",
+    "Kriya Earn",
+    "Kriya Strats"
+  ],
+  "4442": [
+    "Fufuture",
+    "Fufuture V1"
+  ],
+  "4449": [
+    "Pump",
+    "pump.fun"
+  ],
+  "4452": [
+    "Moby Options",
+    "Moby"
+  ],
+  "4456": [
+    "Particle Duo Exchange",
+    "Particle DUO"
+  ],
+  "4457": [
+    "Magpie Protocol",
+    "Fly",
+    "fly.trade"
+  ],
+  "4460": [
+    "Karak",
+    "OpenGDP Shared Security"
+  ],
+  "4464": [
+    "Nimbora",
+    "Nimbora Lending"
+  ],
+  "4473": [
+    "Avalon Finance",
+    "Avalon Labs",
+    "Avalon Labs Lending"
+  ],
+  "4477": [
+    "Loxodrome",
+    "Loxodrome AMM"
+  ],
+  "4487": [
+    "Hinkal Protocol",
+    "Hinkal"
+  ],
+  "4489": [
+    "GammaSwap",
+    "GammaSwap Open Interest"
+  ],
+  "4500": [
+    "Firefly Dex",
+    "firefly"
+  ],
+  "4503": [
+    "Flat Money",
+    "Flat Money V1"
+  ],
+  "4505": [
+    "Fjord Foundry",
+    "Fjord V2"
+  ],
+  "4512": [
+    "PotatoSwap",
+    "PotatoSwap V2"
+  ],
+  "4520": [
+    "BitGenie",
+    "BitGenie Farm"
+  ],
+  "4523": [
+    "Open Dollar",
+    "Aerodrome V3"
+  ],
+  "4524": [
+    "Aerodrome V3",
+    "Aerodrome Slipstream"
+  ],
+  "4540": [
+    "PulseGun AMM",
+    "PulseGun Farm"
+  ],
+  "4541": [
+    "PulseGun Farm",
+    "PulseGun AMM"
+  ],
+  "4544": [
+    "PenPad",
+    "Pencils Protocol"
+  ],
+  "4546": [
+    "dlcBTC",
+    "iBTC Network"
+  ],
+  "4548": [
+    "Mezo Network",
+    "Mezo Bridge"
+  ],
+  "4561": [
+    "Ebisu Finance",
+    "Ebisu Finance V1",
+    "Ebisu V1"
+  ],
+  "4563": [
+    "Fenix Finance",
+    "Fenix Concentrated Liquidity",
+    "Fenix Standard Pools"
+  ],
+  "4564": [
+    "Nuri V1",
+    "Nuri Legacy"
+  ],
+  "4565": [
+    "Nuri V2",
+    "Nuri CL"
+  ],
+  "4575": [
+    "ChilizSwap",
+    "NonKYC"
+  ],
+  "4582": [
+    "FlowX Finance CLMM",
+    "FlowX V3"
+  ],
+  "4590": [
+    "Macaron",
+    "Macaron AMM"
+  ],
+  "4593": [
+    "Free.tech",
+    "Free Protocol"
+  ],
+  "4595": [
+    "Untangled",
+    "Untangled RWA"
+  ],
+  "4597": [
+    "Thala veETH",
+    "Thala veTHL"
+  ],
+  "4607": [
+    "Cheelee",
+    "Mangrove"
+  ],
+  "4614": [
+    "BitSwap BB V2",
+    "Internet Computer",
+    "BounceBit Swap V2"
+  ],
+  "4615": [
+    "BitSwap BB V3",
+    "BounceBit Swap V3"
+  ],
+  "4620": [
+    "Solv BTC",
+    "SolvBTC"
+  ],
+  "4624": [
+    "ENZO Protocol",
+    "ENZO Finance"
+  ],
+  "4628": [
+    "0x — Aggregator",
+    "0x Aggregator"
+  ],
+  "4637": [
+    "BBScan",
+    "BounceBit LSD",
+    "BounceBit Staking"
+  ],
+  "4645": [
+    "NovaSwap",
+    "NovaSwap V1"
+  ],
+  "4650": [
+    "Huma Finance",
+    "BounceBit"
+  ],
+  "4663": [
+    "Native Lend",
+    "Native Credit Pool"
+  ],
+  "4667": [
+    "Arcana Finance",
+    "Tangible Arcana"
+  ],
+  "4682": [
+    "NX Finance",
+    "DaikoDEX"
+  ],
+  "4684": [
+    "TaikoSwap",
+    "Tkoswap"
+  ],
+  "4690": [
+    "Lorenzo Protocol",
+    "Lorenzo",
+    "Lorenzo stBTC"
+  ],
+  "4692": [
+    "Taiko",
+    "Taiko Bridge"
+  ],
+  "4699": [
+    "Polkadex Trade",
+    "Polkadex"
+  ],
+  "4700": [
+    "HashKey Exchange",
+    "HashKey Global"
+  ],
+  "4709": [
+    "Vesta Equity",
+    "Physica Finance"
+  ],
+  "4716": [
+    "Physica Finance",
+    "DTX Dex"
+  ],
+  "4717": [
+    "Joltify Finance",
+    "Joltify Lend"
+  ],
+  "4720": [
+    "Dragon Swap",
+    "Dragon Swap V2",
+    "Dragon Swap V2 Sei",
+    "Saphyre V2"
+  ],
+  "4721": [
+    "Yei Finance",
+    "YeiLend"
+  ],
+  "4734": [
+    "stabble",
+    "stabble Stableswap"
+  ],
+  "4736": [
+    "DoubleUp Pumpup",
+    "DoubleUp"
+  ],
+  "4741": [
+    "Summer.fi",
+    "Summer.fi Pro"
+  ],
+  "4742": [
+    "Instadapp Lite",
+    "Fluid Lite"
+  ],
+  "4747": [
+    "Capybara Exchange",
+    "Capybara Dexs"
+  ],
+  "4751": [
+    "The Vault",
+    "The Vault Liquid Staking"
+  ],
+  "4756": [
+    "Mellow V2",
+    "Mellow LRT",
+    "Mellow Restaking"
+  ],
+  "4767": [
+    "XLink",
+    "Brotocol"
+  ],
+  "4770": [
+    "3Jane",
+    "3jane Options",
+    "3Jane Options"
+  ],
+  "4772": [
+    "jellyverse",
+    "Jellyverse"
+  ],
+  "4776": [
+    "Mutuari",
+    "Percentme"
+  ],
+  "4792": [
+    "ScorePlay",
+    "ScorePlay.xyz"
+  ],
+  "4799": [
+    "Term Structure",
+    "TermMax"
+  ],
+  "4802": [
+    "Solayer",
+    "Solayer SOL",
+    "Solayer USD"
+  ],
+  "4806": [
+    "Stable Jack",
+    "Stable Jack aUSD",
+    "Stable Jack V1"
+  ],
+  "4811": [
+    "MintSwap V3",
+    "MintSwap Finance"
+  ],
+  "4813": [
+    "Moonshot",
+    "Moonshot App",
+    "moon.it"
+  ],
+  "4820": [
+    "Resolv",
+    "Resolv RLP"
+  ],
+  "4821": [
+    "Kayen Protocol",
+    "FanX Protocol"
+  ],
+  "4826": [
+    "Affine Defi Liquid",
+    "Affine Restaking"
+  ],
+  "4830": [
+    "Kayak",
+    "Kayak V2"
+  ],
+  "4832": [
+    "DeSyn Farm",
+    "DeSyn Yield",
+    "DeSyn Liquid Strategy"
+  ],
+  "4834": [
+    "Napier Finance",
+    "Napier"
+  ],
+  "4839": [
+    "Commonwealth",
+    "Common Wealth"
+  ],
+  "4840": [
+    "ether.fi Symbiotic",
+    "ether.fi Vaults"
+  ],
+  "4841": [
+    "Bitoro",
+    "Bitoro Network"
+  ],
+  "4845": [
+    "Danzo Arena",
+    "Danzo App"
+  ],
+  "4847": [
+    "Astherus",
+    "Astherus Perps",
+    "Aster Perps",
+    "Aster Bridge"
+  ],
+  "4848": [
+    "AlphaFi",
+    "AlphaFi Agg"
+  ],
+  "4853": [
+    "BlackRock USD",
+    "BlackRock BUIDL"
+  ],
+  "4868": [
+    "7K Aggregator",
+    "Bluefin7K Aggregator"
+  ],
+  "4871": [
+    "Yaka Finance",
+    "Yaka V2"
+  ],
+  "4880": [
+    "Glyph V4",
+    "Molten V4"
+  ],
+  "4882": [
+    "Usual Money",
+    "Usual",
+    "Usual USD0"
+  ],
+  "4888": [
+    "SparkDEX V2",
+    "SparkDEX V3"
+  ],
+  "4889": [
+    "DeSyn Liquid Strategy",
+    "DeSyn Basis Trading"
+  ],
+  "4893": [
+    "International Meme Fund",
+    "International Meme Fund V1",
+    "International Meme Fund V2"
+  ],
+  "4903": [
+    "Freestyle",
+    "BMX Freestyle"
+  ],
+  "4904": [
+    "Size Credit",
+    "Rheo"
+  ],
+  "4907": [
+    "ProBit",
+    "ProBit Global"
+  ],
+  "4908": [
+    "GoldlLink",
+    "GoldLink"
+  ],
+  "4917": [
+    "BitFi",
+    "BitFi BTC"
+  ],
+  "4924": [
+    "XRPL DEX",
+    "Echelon Prime"
+  ],
+  "4940": [
+    "Bracket",
+    "Bracket Escrow Staking"
+  ],
+  "4945": [
+    "MEVXs Social",
+    "MEVX"
+  ],
+  "4947": [
+    "Ignition FBTC",
+    "Function",
+    "Function FBTC"
+  ],
+  "4951": [
+    "Balancer Cow AMM",
+    "Balancer CoW AMM"
+  ],
+  "4952": [
+    "STRKFarm",
+    "Troves"
+  ],
+  "4954": [
+    "edgeX",
+    "edgeX Bridge"
+  ],
+  "4963": [
+    "Umoja Protocol",
+    "Umoja Synths"
+  ],
+  "4977": [
+    "GoPlus Security",
+    "GoPlus Security App"
+  ],
+  "4978": [
+    "Reya Perps DEX",
+    "Reya DEX",
+    "Reya Perps"
+  ],
+  "4982": [
+    "Crack & Stack",
+    "Crack And Stack"
+  ],
+  "4993": [
+    "Drop",
+    "Bonk Staked SOL"
+  ],
+  "4997": [
+    "Arrland",
+    "Dexalot Bridge"
+  ],
+  "4998": [
+    "Dexalot Bridge",
+    "Dexalot Portfolio"
+  ],
+  "5016": [
+    "cyberPerp",
+    "Cyberperp"
+  ],
+  "5024": [
+    "Double 2 Win",
+    "Double"
+  ],
+  "5027": [
+    "4Cast",
+    "MEMECAST.AI"
+  ],
+  "5030": [
+    "Delegate",
+    "Delegate Marketplace"
+  ],
+  "5049": [
+    "Farcaster",
+    "Farcaster SoFi"
+  ],
+  "5050": [
+    "Delta Trade",
+    "DeltaTrade"
+  ],
+  "5058": [
+    "ModeMax Perp",
+    "ModeMax Perps"
+  ],
+  "5060": [
+    "Lyra Options",
+    "Derive Options"
+  ],
+  "5066": [
+    "Dragon Swap V3",
+    "Dragon Swap V3 Sei",
+    "Saphyre V3"
+  ],
+  "5074": [
+    "Helix Perp",
+    "Helix Spot"
+  ],
+  "5079": [
+    "IDEX V2",
+    "IDEX V4",
+    "Kuma V1",
+    "Kuma",
+    "Kuma Perpetuals DEX"
+  ],
+  "5090": [
+    "Level Money",
+    "Level"
+  ],
+  "5096": [
+    "Torch Finance",
+    "Torch Stable Swap",
+    "Torch",
+    "Torch Dexs"
+  ],
+  "5097": [
+    "Lombard Liquid Bitcoin",
+    "Lombard",
+    "Lombard LBTC"
+  ],
+  "5101": [
+    "Avalon Labs CeDeFi",
+    "Avalon CeDeFi"
+  ],
+  "5105": [
+    "Adrastea",
+    "Adrastea Yield"
+  ],
+  "5108": [
+    "Biconomy CEX",
+    "Biconomy.com"
+  ],
+  "5119": [
+    "PixelSwap(PIX)",
+    "PixelSwap (PIX)"
+  ],
+  "5121": [
+    "KTX AMM",
+    "KTX spot"
+  ],
+  "5135": [
+    "Binance staked SOL",
+    "Binance Staked SOL"
+  ],
+  "5139": [
+    "Cybro",
+    "Elixir"
+  ],
+  "5142": [
+    "Zoth",
+    "Zoth ZTLN"
+  ],
+  "5143": [
+    "Lombard Vault",
+    "Lombard Vaults"
+  ],
+  "5145": [
+    "IPOR Fusion",
+    "Fusion by IPOR"
+  ],
+  "5146": [
+    "CrossCurve",
+    "CrossCurve (by EYWA)"
+  ],
+  "5151": [
+    "Pear Protocol",
+    "Pear Perps"
+  ],
+  "5153": [
+    "Tako Tako",
+    "TakoTako"
+  ],
+  "5177": [
+    "Filament Finance",
+    "Filament Beta"
+  ],
+  "5182": [
+    "Limitless Exchange",
+    "Sygnum Bank",
+    "Sygnum FIUSD Liquidity Fund"
+  ],
+  "5183": [
+    "Sygnum Bank",
+    "Erinaceus",
+    "Erinaceus VRF"
+  ],
+  "5192": [
+    "Club Fram",
+    "Club Farm"
+  ],
+  "5201": [
+    "OKX DEX Aggregator",
+    "OKX DEX",
+    "OKX Swap"
+  ],
+  "5203": [
+    "KittyPunch",
+    "KittyPunch PunchSwap"
+  ],
+  "5206": [
+    "Yay Staking",
+    "Yay!"
+  ],
+  "5209": [
+    "Oblisk BTC",
+    "ObeliskBTC"
+  ],
+  "5210": [
+    "Hela Bridge",
+    "HeLa Bridge"
+  ],
+  "5231": [
+    "AscentYield",
+    "Ascent Yield"
+  ],
+  "5234": [
+    "USDX Money",
+    "Stables Labs USDX"
+  ],
+  "5237": [
+    "Falcon",
+    "Falcon Bot"
+  ],
+  "5238": [
+    "ALLO",
+    "alloBTC"
+  ],
+  "5241": [
+    "m0",
+    "M^0",
+    "M0"
+  ],
+  "5244": [
+    "Kelp GAIN",
+    "Gain"
+  ],
+  "5248": [
+    "Fuel",
+    "Fuel Bridge"
+  ],
+  "5251": [
+    "Truemarkets",
+    "Trueo"
+  ],
+  "5252": [
+    "Mira Protocol",
+    "Microchain"
+  ],
+  "5258": [
+    "Babylon",
+    "Babylon Protocol"
+  ],
+  "5259": [
+    "GOLDSTATION",
+    "GOLDSTATION DEX"
+  ],
+  "5260": [
+    "GOLDSTATION DEX",
+    "GOLDSTATION RWA"
+  ],
+  "5262": [
+    "Swell ETH Earn Vault",
+    "Swell Earn"
+  ],
+  "5265": [
+    "RateX",
+    "RateX DEX"
+  ],
+  "5271": [
+    "SwayLend",
+    "Swaylend"
+  ],
+  "5284": [
+    "Nest Staking",
+    "Nest Credit"
+  ],
+  "5293": [
+    "NeuralAI ",
+    "NeuralAI"
+  ],
+  "5295": [
+    "uniBTC Restaked",
+    "Bedrock uniBTC"
+  ],
+  "5297": [
+    "Liquidity Slicing Protocol",
+    "LSP.Finance"
+  ],
+  "5311": [
+    "Spring Sui",
+    "SpringSui"
+  ],
+  "5316": [
+    "exSat Credit Staking",
+    "exSat Staking BTC"
+  ],
+  "5320": [
+    "MORE Markets",
+    "MORE Lend"
+  ],
+  "5326": [
+    "NAVI Aggregator",
+    "Astros"
+  ],
+  "5333": [
+    "Carrot",
+    "Carrot Liquidity"
+  ],
+  "5337": [
+    "Royco Protocol",
+    "Royco V1"
+  ],
+  "5344": [
+    "BitFLUX",
+    "Molten",
+    "Molten V3"
+  ],
+  "5345": [
+    "BagelFinance",
+    "Bagel Finance",
+    "Bagel Finance V1"
+  ],
+  "5351": [
+    "Mantle Restaking",
+    "mETH Protocol"
+  ],
+  "5352": [
+    "Spark Finance",
+    "V12"
+  ],
+  "5359": [
+    "Solayer SOL",
+    "Solayer Restaking"
+  ],
+  "5367": [
+    "powpeg",
+    "PowPeg Fast Mode"
+  ],
+  "5377": [
+    "Blazing Bot",
+    "BlazingApp"
+  ],
+  "5386": [
+    "Astherus USDF",
+    "Aster USDF"
+  ],
+  "5397": [
+    "Bitlayer Bridge",
+    "Bitlayer YBTC Family"
+  ],
+  "5398": [
+    "Phantom",
+    "Phantom Wallet"
+  ],
+  "5403": [
+    "Cytonic Airdrop Capmpaign",
+    "Cytonic Airdrop Campaign"
+  ],
+  "5404": [
+    "iBTC",
+    "iBTC Finance"
+  ],
+  "5406": [
+    "RFX Exchange",
+    "RFX Exchange V1"
+  ],
+  "5414": [
+    "LinqA",
+    "LinqAI"
+  ],
+  "5418": [
+    "Astherus asBTC",
+    "Aster asBTC"
+  ],
+  "5427": [
+    "Bluefin AMM",
+    "Bluefin Spot"
+  ],
+  "5469": [
+    "Thetis Market",
+    "Thetis Perps"
+  ],
+  "5472": [
+    "Hermes V2",
+    "Arena of Faith"
+  ],
+  "5473": [
+    "PlunderSwap V3",
+    "Arena of Faith"
+  ],
+  "5474": [
+    "Swing",
+    "Gud.Tech"
+  ],
+  "5480": [
+    "Hyperfluid",
+    "Hyperion"
+  ],
+  "5490": [
+    "Taraxa",
+    "Taraxa Foundation"
+  ],
+  "5502": [
+    "BBBPump",
+    "BBBFI"
+  ],
+  "5507": [
+    "Hyperliquid Perp",
+    "Hyperliquid Perps"
+  ],
+  "5524": [
+    "Vana Swap",
+    "DataDex"
+  ],
+  "5526": [
+    "Rings",
+    "Trevee Earn"
+  ],
+  "5534": [
+    "Stacks sBTC",
+    "Vader AI"
+  ],
+  "5537": [
+    "Kernel DAO",
+    "Kernel"
+  ],
+  "5539": [
+    "Panoptic",
+    "Panoptic V1"
+  ],
+  "5545": [
+    "Theo Network",
+    "Theo",
+    "Theo Straddle Vaults"
+  ],
+  "5553": [
+    "Kopi",
+    "Kopi DEX"
+  ],
+  "5558": [
+    "Astherus asBNB",
+    "Aster asBNB"
+  ],
+  "5568": [
+    "FIVA Protocol",
+    "FIVA"
+  ],
+  "5570": [
+    "Shadow Exchange",
+    "Shadow Exchange CLMM"
+  ],
+  "5576": [
+    "CrossFi xSwap",
+    "xSwap DEX"
+  ],
+  "5580": [
+    "Aethir",
+    "Latch"
+  ],
+  "5582": [
+    "Mantra AMM",
+    "Mantra Swap",
+    "MANTRA Swap"
+  ],
+  "5587": [
+    "Coinbase Wallet",
+    "Base App"
+  ],
+  "5597": [
+    "dappOS",
+    "dappOS IntentEX"
+  ],
+  "5599": [
+    "GRVT",
+    "GRVT Bridge",
+    "Grvt Bridge"
+  ],
+  "5602": [
+    "NODO Global",
+    "NODO"
+  ],
+  "5603": [
+    "Equalizer CL",
+    "2THICK"
+  ],
+  "5610": [
+    "Crypto Valley Exchange",
+    "Jetstream"
+  ],
+  "5619": [
+    "SSI",
+    "SoSoValue Indexes"
+  ],
+  "5623": [
+    "SoneFi",
+    "SoneFi AMM"
+  ],
+  "5630": [
+    "OOIA",
+    "Movement"
+  ],
+  "5645": [
+    "Metastable mUSD",
+    "Metastable"
+  ],
+  "5659": [
+    "Treble",
+    "Treble Spot"
+  ],
+  "5670": [
+    "Nexion",
+    "Nexion Yield"
+  ],
+  "5672": [
+    "Vicuna Finance",
+    "Vicuna Leveraged Farming"
+  ],
+  "5676": [
+    "Sonus Exchange CLMM",
+    "NOXA"
+  ],
+  "5678": [
+    "Reservoir Tools CLMM",
+    "Reservoir Tools AMM",
+    "SakuraSwap AMM"
+  ],
+  "5679": [
+    "Reservoir Tools CLMM",
+    "SakuraSwap CLMM"
+  ],
+  "5689": [
+    "Libre Capital",
+    "KAIO"
+  ],
+  "5695": [
+    "Gravity",
+    "Gravity by Galxe"
+  ],
+  "5704": [
+    "Rooster Protocol",
+    "Rooster Protocol V1"
+  ],
+  "5708": [
+    "Enclabs",
+    "Overnight Finance"
+  ],
+  "5709": [
+    "Angles",
+    "Angles Stake",
+    "Angles Liquid"
+  ],
+  "5711": [
+    "Perena",
+    "Perena Dex"
+  ],
+  "5715": [
+    "ƒlaunch",
+    "flaunch"
+  ],
+  "5719": [
+    "WINK Finance",
+    "WINK"
+  ],
+  "5726": [
+    "Factorial",
+    "Affluent"
+  ],
+  "5732": [
+    "SX Bridge",
+    "SX Rollup Bridge"
+  ],
+  "5741": [
+    "Enso Finance",
+    "Enso"
+  ],
+  "5742": [
+    "BeraSwap",
+    "BEX"
+  ],
+  "5751": [
+    "Concrete Ethena",
+    "Concrete"
+  ],
+  "5782": [
+    "Verio",
+    "Takara Lend"
+  ],
+  "5807": [
+    "GoPlus Locker",
+    "GoPlus Locker V2"
+  ],
+  "5810": [
+    "Coinbase BTC",
+    "Coinbase Bridge"
+  ],
+  "5816": [
+    "DeFive V2",
+    "DeFive"
+  ],
+  "5819": [
+    "DefiApp",
+    "Defi App"
+  ],
+  "5828": [
+    "Canary Protocol",
+    "Legacy Canary Protocol"
+  ],
+  "5834": [
+    "Ethereal",
+    "Ethereal Season Zero"
+  ],
+  "5838": [
+    "HypurrFi",
+    "HypurrFi Pooled"
+  ],
+  "5842": [
+    "SIR Trading",
+    "SIR"
+  ],
+  "5866": [
+    "Apollo zBTC",
+    "Zeus Network"
+  ],
+  "5876": [
+    "Kittenswap",
+    "Kittenswap AMM"
+  ],
+  "5890": [
+    "Mosaic",
+    "Bridged TVL Excluded Asets",
+    "Mosaic Aggregator"
+  ],
+  "5897": [
+    "USDD",
+    "Bridged TVL Excluded Asets",
+    "Bridged TVL Excluded Assets"
+  ],
+  "5898": [
+    "Bitbond Lockers",
+    "USDD"
+  ],
+  "5907": [
+    "DefiTuna",
+    "DefiTuna Dex",
+    "DefiTuna AMM"
+  ],
+  "5940": [
+    "HyperLend",
+    "HyperLend Pooled"
+  ],
+  "5947": [
+    "MTT Dex",
+    "Yaakoswap"
+  ],
+  "5948": [
+    "Centrifuge Pool",
+    "Centrifuge Protocol"
+  ],
+  "5960": [
+    "Hyperpie",
+    "SpinUp",
+    "SpinUp Liquid Staking"
+  ],
+  "5973": [
+    "Rolldex",
+    "RollX"
+  ],
+  "5978": [
+    "Polkadot",
+    "Polkadot Treasury"
+  ],
+  "5986": [
+    "BitZap yUSD",
+    "Hotcoin"
+  ],
+  "5987": [
+    "Valantis",
+    "Valantis STEX"
+  ],
+  "5997": [
+    "Strike Finance",
+    "Strike Finance Forwards"
+  ],
+  "6009": [
+    "Stable Jack scUSD",
+    "Stable Jack V2"
+  ],
+  "6015": [
+    "Felix",
+    "Felix CDP"
+  ],
+  "6019": [
+    "Mystic Finance",
+    "Mystic Finance Lending"
+  ],
+  "6033": [
+    "Uranium",
+    "Uranium.io"
+  ],
+  "6034": [
+    "Interest Labs",
+    "Interest Protocol Stable Swap"
+  ],
+  "6042": [
+    "Lighter V2",
+    "Lighter Bridge"
+  ],
+  "6052": [
+    "Catex MetaDEX",
+    "Catex"
+  ],
+  "6068": [
+    "FomoSwap",
+    "FomoSwap V2"
+  ],
+  "6071": [
+    "LNDfi",
+    "LND"
+  ],
+  "6074": [
+    "Launchlab",
+    "LaunchLab"
+  ],
+  "6079": [
+    "Vanilla Finance",
+    "Superp"
+  ],
+  "6089": [
+    "Haven1 Swap",
+    "Haven1 hSwap"
+  ],
+  "6091": [
+    "Echo",
+    "Echo.xyz"
+  ],
+  "6093": [
+    "LI.FI",
+    "LI.FI Bridge Aggregator"
+  ],
+  "6107": [
+    "Hyperbeat",
+    "Hyperbeat Earn"
+  ],
+  "6118": [
+    "BetterSwap V2",
+    "BetterSwap"
+  ],
+  "6155": [
+    "Arena.Trade",
+    "Arena Launch"
+  ],
+  "6165": [
+    "Lendle Earn",
+    "Lendle Yield"
+  ],
+  "6169": [
+    "Strike Finance Perpetuals",
+    "Jito Mev Tips",
+    "Jito MEV Tips"
+  ],
+  "6170": [
+    "Kuma V2",
+    "Solv Others"
+  ],
+  "6175": [
+    "Kana Labs Perps",
+    "Xyra Labs Perps"
+  ],
+  "6176": [
+    "Kofi Finance",
+    "IVX Protocol"
+  ],
+  "6178": [
+    "Holdstation DEX Aggregator",
+    "Holdstation Wallet Miniapp"
+  ],
+  "6186": [
+    "Hyperstable",
+    "Hyperstable CDP"
+  ],
+  "6190": [
+    "USD.AI",
+    "USD AI"
+  ],
+  "6195": [
+    "Alphaping",
+    "AlphaPing"
+  ],
+  "6218": [
+    "SPICE",
+    "SPICE Protocol"
+  ],
+  "6223": [
+    "Avant Protocol",
+    "Avant avUSD"
+  ],
+  "6227": [
+    "Rho Vaults",
+    "Rho Vaults v1"
+  ],
+  "6239": [
+    "Royal Government of Bhutan Treasury",
+    "Government of Bhutan Crypto Reserve"
+  ],
+  "6243": [
+    "Berachain Bribes",
+    "Berachain Incentive Buys"
+  ],
+  "6255": [
+    "Hybra",
+    "Hybra V2"
+  ],
+  "6256": [
+    "BitcoinBridge.app",
+    "Permute"
+  ],
+  "6275": [
+    "Marinade Select",
+    "AAVE Umbrella"
+  ],
+  "6276": [
+    "TradingStrategy.",
+    "TradingStrategy"
+  ],
+  "6282": [
+    "letsBONK.fun",
+    "BONK.fun",
+    "BONK.fun Launchpad"
+  ],
+  "6285": [
+    "Shroomy Protocol",
+    "Shroomy Protocol Lending"
+  ],
+  "6295": [
+    "Namada",
+    "Namada Shielded Pools"
+  ],
+  "6297": [
+    "Almamak",
+    "Almanak"
+  ],
+  "6299": [
+    "Civitia",
+    "Civitia Game"
+  ],
+  "6306": [
+    "Realms World ",
+    "Realms World"
+  ],
+  "6311": [
+    "tzBTC",
+    "Jolt"
+  ],
+  "6313": [
+    "Nemo Protocol",
+    "Nemo Yield Trading"
+  ],
+  "6320": [
+    "Nusa",
+    "Bosera USD Money Market ETF"
+  ],
+  "6321": [
+    "Nusa",
+    "Stobix"
+  ],
+  "6329": [
+    "Hyperbloom",
+    "HyperBloom"
+  ],
+  "6332": [
+    "Launch On Bags",
+    "Bags"
+  ],
+  "6337": [
+    "optfun",
+    "Racks"
+  ],
+  "6365": [
+    "Hydrex V3",
+    "Hydrex Integral"
+  ],
+  "6366": [
+    "Hydrex V4",
+    "Hydrex Omni"
+  ],
+  "6390": [
+    "ZKP2P",
+    "Peer"
+  ],
+  "6397": [
+    "More Vaults",
+    "MORE Vaults"
+  ],
+  "6401": [
+    "Embr Bridge",
+    "BIM"
+  ],
+  "6411": [
+    "DipCoin AMM",
+    "DipCoin Spot"
+  ],
+  "6413": [
+    "FullSail Finance",
+    "Full Sail"
+  ],
+  "6423": [
+    "Ebisu Finance V2",
+    "Ebisu V2"
+  ],
+  "6427": [
+    "Z3Z",
+    "OnRe"
+  ],
+  "6438": [
+    "Echelon Bridge",
+    "Echelon Initia Bridge"
+  ],
+  "6447": [
+    "Kinetiq",
+    "Kinetiq kHYPE"
+  ],
+  "6457": [
+    "stakedhype",
+    "stHYPE"
+  ],
+  "6458": [
+    "Flareporium",
+    "FPeX - Nexapia",
+    "Nexapia"
+  ],
+  "6461": [
+    "Coinbase Bridge",
+    "Loopscale"
+  ],
+  "6467": [
+    "Pangolin V4",
+    "Pangolin V3",
+    "Hibachi"
+  ],
+  "6482": [
+    "Liminal Money",
+    "Liminal"
+  ],
+  "6493": [
+    "Hylo",
+    "Hylo CDP",
+    "Hylo hyUSD",
+    "Hylo Protocol"
+  ],
+  "6494": [
+    "Flow Lending",
+    "Surf Lending"
+  ],
+  "6502": [
+    "Etherex CL",
+    "Bracket Vaults"
+  ],
+  "6506": [
+    "Omni Exchange",
+    "Omni Exchange V3"
+  ],
+  "6523": [
+    "Paintswap Sonic",
+    "Paintswap on Sonic"
+  ],
+  "6550": [
+    "AoABT",
+    "Asseto AoABT"
+  ],
+  "6553": [
+    "SolFi",
+    "SolFi V1"
+  ],
+  "6563": [
+    "Choice ExchangeV",
+    "Choice Exchange"
+  ],
+  "6566": [
+    "DAOaaS",
+    "Dswap"
+  ],
+  "6578": [
+    "R3R Bet",
+    "R3R"
+  ],
+  "6579": [
+    "capmoney",
+    "cap"
+  ],
+  "6587": [
+    "Turtle",
+    "Turtle Cronos"
+  ],
+  "6598": [
+    "Walrus",
+    "Frax RWA",
+    "Frax USD"
+  ],
+  "6637": [
+    "TAC Asset Custody",
+    "TAC Cross Chain Layer"
+  ],
+  "6659": [
+    "3jane Lending",
+    "3Jane Lending"
+  ],
+  "6667": [
+    "Botanix stBTC",
+    "Chainlink"
+  ],
+  "6671": [
+    "Hyperpie Launchpad",
+    "SpinUp Launchpad"
+  ],
+  "6672": [
+    "Hyperpie DEX",
+    "SpinUp DEX"
+  ],
+  "6696": [
+    "Lendle Vault Allocator",
+    "Lendle Earn"
+  ],
+  "6711": [
+    "UdonFi",
+    "UdonFi Lending"
+  ],
+  "6727": [
+    "APX Finance",
+    "Somnia Exchange"
+  ],
+  "6751": [
+    "Lighter V2 Perps",
+    "Lighter Perps"
+  ],
+  "6763": [
+    "SunPerp",
+    "SunX",
+    "SunX Bridge"
+  ],
+  "6767": [
+    "Qubic Mining",
+    "Idle Mining",
+    "Qubic Idle Compute"
+  ],
+  "6772": [
+    "Flare Assets",
+    "FAssets"
+  ],
+  "6776": [
+    "XTrade Protocol",
+    "XTrade Protocol Spot",
+    "XTrade Protocol Perps"
+  ],
+  "6794": [
+    "Tigris",
+    "Tigris Mezo"
+  ],
+  "6826": [
+    "GRVT Perps",
+    "Grvt Perps"
+  ],
+  "6835": [
+    "Aborigen AMM",
+    "Aborean AMM"
+  ],
+  "6871": [
+    "GateSwap",
+    "Gate Swap"
+  ],
+  "6873": [
+    "Strata Tranches",
+    "Strata Markets"
+  ],
+  "6890": [
+    "UltraYield",
+    "UltraYield Vaults"
+  ],
+  "6893": [
+    "ORE protocol",
+    "ORE Protocol"
+  ],
+  "6923": [
+    "CASH+",
+    "Asseto CASH+"
+  ],
+  "6929": [
+    "KFC DEX",
+    "Kaspa Finance V3"
+  ],
+  "6939": [
+    "DoubleZero",
+    "DoubleZero Network"
+  ],
+  "6946": [
+    "Carina Aggregator",
+    "Carina"
+  ],
+  "6951": [
+    "Dreamcash",
+    "Dreamcash Interface"
+  ],
+  "6956": [
+    "Infinex",
+    "Infinex Perp"
+  ],
+  "6962": [
+    "DFlow",
+    "DFlow Aggregator"
+  ],
+  "6964": [
+    "Makina Finance",
+    "Makina"
+  ],
+  "6968": [
+    "PumpSpace",
+    "PumpSpace V2"
+  ],
+  "6975": [
+    "Astros Perp",
+    "B-Lucky"
+  ],
+  "6992": [
+    "Legacy Definitive Vaults",
+    "Definitive Yield Vaults"
+  ],
+  "7002": [
+    "GateFun",
+    "Gate Fun"
+  ],
+  "7010": [
+    "trade[XYZ]",
+    "tradeXYZ"
+  ],
+  "7016": [
+    "Antarctic Exchange",
+    "Antarctic"
+  ],
+  "7029": [
+    "Kuru CLOB",
+    "Kuru Aggregator"
+  ],
+  "7047": [
+    "ShMonad",
+    "Sega Swap"
+  ],
+  "7049": [
+    "Gate Perp DEX",
+    "Gate DEX",
+    "Gate Perp"
+  ],
+  "7051": [
+    "MetaDAO",
+    "Futarchy AMM"
+  ],
+  "7054": [
+    "Atlantis DEX",
+    "Mu Digital",
+    "EulerDebt",
+    "Mustang Finance",
+    "Nad.fun"
+  ],
+  "7061": [
+    "Monday Trade",
+    "Monday Trade Perps"
+  ],
+  "7064": [
+    "ORE Blue",
+    "ZORB"
+  ],
+  "7087": [
+    "Nado",
+    "Nado Spot"
+  ],
+  "7111": [
+    "Thesaurus",
+    "Thesauros"
+  ],
+  "7157": [
+    "gTAC",
+    "Gravity"
+  ],
+  "7194": [
+    "Variational Omni",
+    "Variational"
+  ],
+  "7205": [
+    "Perma-Pod",
+    "Permapod"
+  ],
+  "7209": [
+    "NEST",
+    "NEST V1"
+  ],
+  "7216": [
+    "WarpX",
+    "WarpX V2"
+  ],
+  "7221": [
+    "StandX",
+    "StandX Perp",
+    "StandX Perps"
+  ],
+  "7225": [
+    "CurrentX",
+    "CurrentX V2"
+  ],
+  "7228": [
+    "SoDEX",
+    "SoDEX Bridge"
+  ],
+  "7230": [
+    "BarterSwap",
+    "BarterSwap Superposition"
+  ],
+  "7258": [
+    "Gitcoin Passport",
+    "Human Passport"
+  ],
+  "7266": [
+    "Hestra",
+    "Hastra"
+  ],
+  "7267": [
+    "SomeSwap",
+    "SomeSwap AMM"
+  ],
+  "7298": [
+    "COAL Works",
+    "COAL"
+  ],
+  "7331": [
+    "Pika V2",
+    "Pike V2"
+  ],
+  "7335": [
+    "Juiceswap",
+    "Satsuma"
+  ],
+  "7355": [
+    "Futarchy AMM",
+    "Metadao Treasuries"
+  ],
+  "7365": [
+    "Miracle Trade",
+    "Miracle"
+  ],
+  "7367": [
+    "Neptune Swap Aggregator",
+    "NeptuneHub"
+  ],
+  "7389": [
+    "World Markets Inc",
+    "World Markets Inc Spot"
+  ],
+  "7396": [
+    "CurrentX V3",
+    "EGAS swap"
+  ],
+  "7400": [
+    "Flashnet",
+    "Parity DEX"
+  ],
+  "7401": [
+    "Flashnet",
+    "Parity DEX CL"
+  ],
+  "7447": [
+    "Printr Protocol",
+    "Printr"
+  ],
+  "7462": [
+    "Defa by InvoiceMate",
+    "Defa By InvoiceMate"
+  ],
+  "7470": [
+    "Doma Conduit Bridge",
+    "Conduit Bridge"
+  ],
+  "7495": [
+    "Venus Flux",
+    "Rip.xyz",
+    "EZManager",
+    "BitChill"
+  ]
+}

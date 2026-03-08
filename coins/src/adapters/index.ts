@@ -121,6 +121,7 @@ export default {
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
   uniV3: require("./markets/uniswap/v3"),
+  uniV4: require("./markets/uniswap/v4"),
   liquity: require("./other/liquity"),
   fxProtocol: require("./yield/fx-protocol"),
   crosscurve: require("./markets/crosscurve"),

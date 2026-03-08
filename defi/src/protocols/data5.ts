@@ -13449,5 +13449,49 @@ const data5: Protocol[] = [
       fees: "nozomi",
     }
   },
+  {
+    id: "7515",
+    name: "Amigo",
+    address: null,
+    symbol: "-",
+    url: "https://amigo.cool/",
+    description: "Own a stake in creators you believe in.",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/amigo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Abstract"],
+    module: "amigo/index.js",
+    twitter: "TryAmigoApp",
+    dimensions: {
+      fees: "amigo",
+      dexs: "amigo",
+    }
+  },
+  {
+    id: "7516",
+    name: "Shido Dex V3",
+    address: "shido:0xe550bde2f0898552b38a41635d7a8ddb1fd81276",
+    symbol: "SHDX",
+    url: "https://shido.io/",
+    description: "Build without limits. Shido combines the interoperability of the Cosmos, development power of EVM and WASM",
+    chain: "Shido",
+    logo: `${baseIconsUrl}/shido-dex-v3.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Shido"],
+    module: "shido-dex-v3/index.js",
+    twitter: "ShidoNetwork",
+    audit_links: ["https://github.com/zokyo-sec/audit-reports/tree/main/Shido"],
+    parentProtocol: "parent#shido-dex",
+    listedAt: 1772990944,
+    dimensions: {
+      dexs: "shido-dex"
+    }
+  },
 ];
 export default data5;

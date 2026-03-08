@@ -9167,6 +9167,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BarterDeFi",
   },
+  {
+    id: "parent#shido-dex",
+    name: "Shido Dex",
+    url: "https://shido.io/",
+    description: "Build without limits. Shido combines the interoperability of the Cosmos, development power of EVM and WASM.",
+    logo: `${baseIconsUrl}/shido-dex.jpg`,
+    gecko_id: "shido-dex",
+    cmcId: "35960",
+    chains: [],
+    twitter: "ShidoNetwork",
+    github: ["ShidoGlobal"],
+  },
 ];
 
 export default parentProtocols;

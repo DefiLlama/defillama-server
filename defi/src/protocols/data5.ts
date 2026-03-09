@@ -13631,5 +13631,25 @@ const data5: Protocol[] = [
       fees: "spritz-card",
     }
   },
+  {
+    id: "7524",
+    name: "Megamine",
+    address: "megaeth:0x16513005e80a20683b3527f977ff74166f6bcf73",
+    symbol: "MINE",
+    url: "https://megamine.app/",
+    description: "Gamified mining game.",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/megamine.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Gamified Mining",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "0xmegamine",
+    dimensions: {
+      fees: "megamine",
+    }
+  },
 ];
 export default data5;

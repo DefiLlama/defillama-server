@@ -9179,6 +9179,25 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ShidoNetwork",
     github: ["ShidoGlobal"],
   },
+  {
+    id: "parent#pareto",
+    name: "Pareto",
+    url: "https://idle.finance",
+    description: "Pareto is a decentralized protocol and set of products that aim to unlock the power of decentralized finance as a one-stop source of yield. It allows users to algorithmically optimize their digital asset allocation across leading DeFi protocols, whether they want to maximize it or keep tabs on their risk/return profile.",
+    logo: `${baseIconsUrl}/pareto.jpg`,
+    gecko_id: "idle",
+    cmcId: "7841",
+    chains: [],
+    twitter: "paretocredit",
+    treasury: "idle-dao.js",
+    governanceID: [
+      "snapshot:staking.idlefinance.eth",
+      "snapshot:idlefinance.eth",
+      "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
+      "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
+    ],
+    github: ["Idle-Labs"], 
+  },
 ];
 
 export default parentProtocols;

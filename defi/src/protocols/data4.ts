@@ -20082,6 +20082,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Optimism", "Polygon", "Arbitrum"],
     module: "pareto/index.js",
     twitter: "paretocredit",
+    parentProtocol: "parent#pareto",
     audit_links: ["https://docs.pareto.credit/developers/security/audits"],
     github: ["pareto-credit"],
     listedAt: 1752511411,

@@ -1029,22 +1029,15 @@ const data: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/idle.jpg`,
     audits: "2",
-    gecko_id: "idle",
-    cmcId: "7841",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "idle/index.js",
-    treasury: "idle-dao.js",
-    twitter: "idlefinance",
+    twitter: "paretocredit",
+    parentProtocol: "parent#pareto",
     audit_links: ["https://docs.idle.finance/developers/security/audits"],
     // https://github.com/DefiLlama/defillama-server/pull/5147
-    governanceID: [
-      "snapshot:staking.idlefinance.eth",
-      "snapshot:idlefinance.eth",
-      "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
-      "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
-    ],
-    github: ["Idle-Labs"], //check
     dimensions: {
       fees: {
         adapter: "idle",

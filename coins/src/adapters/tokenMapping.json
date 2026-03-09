@@ -1071,16 +1071,6 @@
     }
   },
   "ethereum": {
-    "0x52c66B5E7f8Fde20843De900C5C8B4b0F23708A0": {
-      "decimals": "18",
-      "symbol": "AZND",
-      "to": "asset#monad:0x4917a5ec9fcb5e10f47cbb197abe6ab63be81fe8"
-    },
-    "0x09AD9c6DcadCc3aB0b3E107E8E7DA69c2eEa8599": {
-      "decimals": "18",
-      "symbol": "muBOND",
-      "to": "asset#monad:0x336d414754967c6682b5a665c7daf6f1409e63e8"
-    },
     "0x4fdb3cb3DBD6D24B64276645c1ADCb85cbB39dC6": {
       "decimals": "18",
       "symbol": "sd-FrxMsUSD-vault",
@@ -14132,6 +14122,11 @@
     }
   },
   "citrea": {
+    "0xac8c1aeb584765db16ac3e08d4736cfce198589b": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "GUSD"
+    },
     "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b": {
       "decimals": 6,
       "symbol": "M",

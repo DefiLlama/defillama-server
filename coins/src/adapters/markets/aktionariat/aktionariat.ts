@@ -1,81 +1,73 @@
-import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
 import { request, gql } from "graphql-request";
+import axios from "axios";
 
-const margin = 7 * 24 * 60 * 60; // 7 days
-const sleep = (delay: number) =>
-  new Promise((resolve) => setTimeout(resolve, delay));
-
-async function fetchTokensFromSubgraph(subgraph: string, timestamp: number) {
-  let tokens: any = [];
-  let reservereThreshold: Number = 0;
-  for (let i = 0; i < 20; i++) {
-    const tkQuery = gql`
-      query token {
-        tokens(first: 1000, orderBy: tradeVolumeUSD, orderDirection: desc,
-          where: {${`tradeVolumeUSD_gt: 0`}
-          ${
-            i == 0
-              ? ``
-              : `tradeVolumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
-          }
-          ${
-            timestamp == 0
-              ? ``
-              : `firstTradeTimestamp_lt: ${timestamp.toString()}`
-          }
-        }) {
-          id
-          tradeVolumeUSD
-          symbol
-          decimals
-          derivedUSD
-          tokenHourData(
-            first: 1,
-            orderBy: periodStartUnix,
-            orderDirection: desc,
-          ) {
-            periodStartUnix
-          }
-        }
-      }`;
-    const result: any = await request(subgraph, tkQuery);
-    const tokensRes = result.tokens;
-    if (tokensRes.length < 1000) i = 20;
-    if (tokensRes.length == 0) return tokens;
-    reservereThreshold =
-      tokensRes[Math.max(tokensRes.length - 1, 0)].tradeVolumeUSD;
-    const filteredTokens = tokensRes.filter(
-      (token: any) => token.tokenHourData[0].periodStartUnix > (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - margin);
-    tokens.push(...filteredTokens);
-    sleep(500);
-  }
-  return tokens;
+interface SubgraphToken {
+  id: string;
+  symbol: string;
+  decimals: number;
+  priceUSD: string;
 }
 
-export default async function getTokenPrices(
-  chain: string,
-  subgraph: string,
-  timestamp: number,
-  ignoreAddresses: string[], // ignore stablecoin addresses
-) {
-  let tokenInfos: any[];
-  tokenInfos = await fetchTokensFromSubgraph(subgraph, timestamp);
+interface TokenLiquidity {
+  buyOrdersCount: number;
+  totalBuyLiquidityDepth: number;
+  sellOrdersCount: number;
+  totalSellLiquidityDepth: number;
+  totalPrimaryLiquidity: number;
+  totalLiquidity: number;
+}
+
+interface LiquidityData {
+  liquidityByTokenAddress: Record<string, TokenLiquidity>;
+}
+
+// Fetches all Aktionariat tokens with data from the subgraph.
+async function fetchTokensFromSubgraph(subgraph: string): Promise<SubgraphToken[]> {
+  const query = gql`
+    query tokens {
+      tokens(first: 1000) {
+        id
+        symbol
+        decimals
+        priceUSD
+      }
+    }`;
+  const result = await request<{ tokens: SubgraphToken[] }>(subgraph, query);
+  return result.tokens;
+}
+
+// Filter out tokens that have lower than CHF 10'000 total liquidity at the current price. 
+// The liquidity returned from the API is in CHF and in Rappen, i.e. 123.45 CHF is returned as 12345. 
+// Therefore, the liquidity needed to be considered to have active trading is >= 1000000 
+async function filterTokensByLiquidity(tokens: SubgraphToken[]): Promise<SubgraphToken[]> {
+  const tokenAddresses = tokens.map((t) => t.id);
+  const { data } = await axios.post<LiquidityData>("https://ext.aktionariat.com/defillama/getLiquidity", { tokenAddresses });
+  return tokens.filter((t) => {
+    const liquidity = data.liquidityByTokenAddress[t.id];
+    return liquidity && liquidity.totalBuyLiquidityDepth >= 1000000; 
+  });
+}
+
+// Simply fetch tokens, filter them by liquidity and add relevant tokens to the DB Writes.
+export default async function getTokenPrices(chain: string, subgraph: string, timestamp: number): Promise<Write[]> {
+  const allTokens = await fetchTokensFromSubgraph(subgraph);
+  const tokenInfos = await filterTokensByLiquidity(allTokens);
   const writes: Write[] = [];
-  tokenInfos.forEach((token: any) => {
-    if (ignoreAddresses.includes(token.id)) return;
+  tokenInfos.forEach((token) => {
     addToDBWritesList(
       writes,
       chain,
       token.id,
-      token.derivedUSD,
+      Number(token.priceUSD),
       token.decimals,
       token.symbol,
       timestamp,
       "aktionariat",
-      1, //confidence 1 as aktionariat is the only official price source of this security token
+      1, // confidence 1 as aktionariat is the only official price source of this security token
     );
   });
+
   return writes;
 }

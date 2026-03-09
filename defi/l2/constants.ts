@@ -125,6 +125,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "7203": "megaeth",
   "4548": "mezo",
   "7371": "keeta",
+  //"7512": "qiev3",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

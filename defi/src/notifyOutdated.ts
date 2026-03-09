@@ -4,6 +4,7 @@ import axios from 'axios'
 import { getHourlyTvlUpdatedRecordsCount, initializeTVLCacheDB, getDimensionsUpdatedRecordsCount, getTweetsPulledCount, } from './api2/db';
 import { elastic, cache } from '@defillama/sdk';
 import { tableToString } from './api2/utils';
+import * as sdk from '@defillama/sdk'
 // import fs from 'fs';
 
 const maxDrift = 6 * 3600; // Max 4 updates missed
@@ -83,6 +84,7 @@ export async function notifyOutdatedPG() {
   const hourlyOutdated = await findOutdatedPG((60 * 4 + 20) * 60); // 4.5hr
   globalRunStats.hourlyOutdatedCount = hourlyOutdated.length
   globalRunStats.hourlyOutdatedProtocols = hourlyOutdated
+  await addToGlobalRunStats()
 
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
@@ -137,31 +139,13 @@ async function notifyBlockedDimensionUpdates() {
     })
 
 
-
-    let { hits: { hits: blockedDimensionUpdatesInThePast24h } }: any = await esClient?.search({
-      index: 'dimension-blocked*',
-      size: 9999,
-      body: {
-        query: {
-          range: { // find records with reportTime > lastCheckTS
-            reportTime: {
-              gt: aDayAgo * 1000, // reportTime is in ms
-            }
-          }
-        }
-      }
-    })
-
-    globalRunStats.blockedDimensionUpdatesInThePast24h = blockedDimensionUpdatesInThePast24h
-
-
     if (!blockedDataSinceLastNotification?.length) return;
 
     blockedDataSinceLastNotification = blockedDataSinceLastNotification.map((h: any) => h._source)
 
 
     let linkToKibana = process.env.ES_KIBANA_LINK ?? ''
-    if (linkToKibana) globalRunStats.linkToKibana = linkToKibana 
+    if (linkToKibana) globalRunStats.linkToKibana = linkToKibana
 
     if (linkToKibana)
       linkToKibana = ` Please check the logs ${linkToKibana} for more details.`
@@ -181,9 +165,128 @@ async function notifyBlockedDimensionUpdates() {
 
     const timeNow = Math.floor(Date.now() / 1000)
     await cache.writeExpiringJsonCache(cacheFileName, { lastCheckTS: timeNow }, { expireAfter: 7 * 24 * 3600 })
-    await esClient?.close()
+    // await esClient?.close()
 
   } catch (e) {
     console.error('Error in notifyBlockedDimensionUpdates', e)
+  }
+}
+
+async function addToGlobalRunStats() {
+  try {
+    const esClient = elastic.getClient()
+    const aDayAgo = Math.floor(Date.now() / 1000) - 24 * 3600
+    const threeHoursAgo = Math.floor(Date.now() / 1000) - 3 * 3600
+    let { hits: { hits: blockedDimensionUpdatesInThePast24h } }: any = await esClient?.search({
+      index: 'dimension-blocked*',
+      size: 9999,
+      body: {
+        query: {
+          range: { // find records with reportTime > lastCheckTS
+            reportTime: {
+              gt: aDayAgo * 1000, // reportTime is in ms
+            }
+          }
+        }
+      }
+    })
+    sdk.log('Blocked dimension updates in the past 24h: ' + blockedDimensionUpdatesInThePast24h.length)
+
+    globalRunStats.blockedDimensionUpdatesInThePast24h = blockedDimensionUpdatesInThePast24h
+
+    let { hits: { hits: tvlProtocolErrors } }: any = await esClient?.search({
+      index: 'error-logs*',
+      size: 9999,
+      body: {
+        query: {
+          bool: {
+            must: [
+              {
+                range: { // find records with reportTime > lastCheckTS
+                  timestamp: {
+                    gt: threeHoursAgo * 1000, // reportTime is in ms
+                  }
+                }
+              },
+              {
+                match_phrase: {
+                  'metadata.type': 'protocol'
+                }
+              },
+              {
+                match_phrase: {
+                  'metadata.application': 'tvl'
+                }
+              }
+            ]
+          }
+        },
+        sort: [{ timestamp: { order: 'desc' } }]
+      }
+    })
+    sdk.log('Protocol errors in the past 3 hours: ' + tvlProtocolErrors.length)
+
+    let { hits: { hits: tvlGetTvlErrors } }: any = await esClient?.search({
+      index: 'error-logs*',
+      size: 9999,
+      body: {
+        query: {
+          bool: {
+            must: [
+              {
+                range: { // find records with reportTime > lastCheckTS
+                  timestamp: {
+                    gt: threeHoursAgo * 1000, // reportTime is in ms
+                  }
+                }
+              },
+              {
+                match_phrase: {
+                  "metadata.type.keyword": "getTvl"
+                }
+              },
+              {
+                match_phrase: {
+                  'metadata.application': 'tvl'
+                }
+              }
+            ]
+          }
+        },
+        sort: [{ timestamp: { order: 'desc' } }]
+      }
+    })
+    sdk.log('Protocol getTvl errors in the past 3 hours: ' + tvlGetTvlErrors.length)
+
+    const protocolNameMap: any = {}
+    globalRunStats.hourlyOutdatedProtocols?.forEach((p: any) => {
+      protocolNameMap[p.protocolName] = p
+    })
+
+    tvlGetTvlErrors.forEach(({ _source: error }: any) => {
+      const protocolName = error?.metadata?.name
+      const protocolObject = protocolNameMap[protocolName]
+      if (!protocolObject) return;
+      if (!protocolObject.errorChains) protocolObject.errorChains = []
+      if (error?.metadata?.chain && !protocolObject.errorChains.includes(error.metadata.chain)) {
+        protocolObject.errorChains.push(error.metadata.chain)
+      }
+      if (!protocolObject.errorString_tvl && error?.errorString) {
+        protocolObject.errorString_tvl = error.errorString
+      }
+      if (!protocolObject.error_storedKey) protocolObject.error_storedKey = error?.metadata?.storedKey
+    })
+
+    tvlProtocolErrors.forEach(({ _source: error }: any) => {
+      const protocolName = error?.metadata?.name
+      const protocolObject = protocolNameMap[protocolName]
+      if (!protocolObject) return;
+      if (!protocolObject.errorString_protocol && error?.errorString) {
+        protocolObject.errorString_protocol = error.errorString
+        protocolObject.errorStack = error.errorStack
+      }
+    })
+  } catch (e) {
+    console.error('Error in addToGlobalRunStats', e)
   }
 }

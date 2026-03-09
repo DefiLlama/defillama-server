@@ -223,7 +223,7 @@ export function getUniV2Adapter({
       ({ metadata: { id, symbol, decimals }, supply, liquidity }: any) => {
         const confidence = calculateConfidence(liquidity, minLiquidity / 2);
         const price = liquidity / supply;
-        if (isNaN(price) || !isFinite(price)) {
+        if (isNaN(price)) {
           // console.log("bug in uni v2 pricing", { id, symbol, supply, liquidity, price, decimals, });
           return;
         }

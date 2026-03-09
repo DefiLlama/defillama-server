@@ -196,7 +196,7 @@ const data3_0: Protocol[] = [
     previousNames: ["SPL Governance"],
     address: "solana:CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP",
     symbol: "EPCT",
-    url: "https://app.realms.today/realms",
+    url: "https://v2.realms.today/",
     description:
       "SPL Governance is a program which provides core building blocks and primitives to create Decentralized Autonomous Organizations (DAOs) on the Solana blockchain. The program is DAO type and asset type agnostic and can be used to build any type of DAOs which can own and manage any type of assets",
     chain: "Solana",
@@ -514,7 +514,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Polygon", "Arbitrum", "Binance", "Optimism"],
     module: "metavisor/index.js",
     twitter: "0xMetavisor",
@@ -1095,7 +1095,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: "antfarm-governance-token",
     cmcId: "23758",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Polygon zkEVM"],
     oraclesBreakdown: [ { name: "TWAP", type: "Primary", proof: [] } ],
     forkedFromIds: ["2197"],
@@ -4675,7 +4675,6 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
     listedAt: 1682688586,
-    github: ["Aboard-Exchange"],
     deadUrl: true,  
   },
   {
@@ -6503,7 +6502,7 @@ const data3_0: Protocol[] = [
     name: "PulseX V1",
     address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
     symbol: "PLSX",
-    url: "https://app.pulsex.com/swap",
+    url: "https://app.pulsex.com/",
     description: `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
     chain: "Pulse",
     logo: `${baseIconsUrl}/pulsex.png`,
@@ -7405,7 +7404,8 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/TheArcadiaGroup/publications/blob/main/audits/FXDX%20Final.pdf"],
     listedAt: 1685364021,
     dimensions: {
-      dexs: "fxdx"
+      dexs: "fxdx",
+      fees: "fxdx"
     }
   },
   {
@@ -7420,7 +7420,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
     module: "range/index.js",
     twitter: "Range_Protocol",
@@ -7553,7 +7553,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Polygon", "Arbitrum", "Optimism"],
     module: "steer/index.js",
     twitter: "steerprotocol",
@@ -9136,7 +9136,9 @@ const data3_0: Protocol[] = [
     module: "xlsd/index.js",
     twitter: "ext_lsd",
     listedAt: 1686823126,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
+  /* missing PoR data
   {
     id: "3115",
     name: "BitMake",
@@ -9157,6 +9159,7 @@ const data3_0: Protocol[] = [
     listedAt: 1686838812,
     deadUrl: true,
   },
+  */
   {
     id: "3116",
     name: "Basilisk",
@@ -10861,7 +10864,6 @@ const data3_0: Protocol[] = [
     twitter: "arpaofficial",
     audit_links: ["https://docsend.com/view/ih328hdccd7h8sxm"],
     listedAt: 1688472915,
-    github: ["arpachain"],
   },
   {
     id: "3195",
@@ -10970,7 +10972,6 @@ const data3_0: Protocol[] = [
     twitter: "CollectifDAO",
     audit_links: ["https://github.com/collectif-dao/collectif-audits"],
     listedAt: 1688494775,
-    github: ["collective-dao"],
   },
  /*  {
     id: "3200",
@@ -11270,7 +11271,6 @@ const data3_0: Protocol[] = [
     oracles: ["Chainlink", "TWAP"],
     forkedFromIds: ["1504"],
     listedAt: 1688857145,
-    github: ["dinotopiafi"],
     deadUrl: true,
   },
   {
@@ -11736,7 +11736,6 @@ const data3_0: Protocol[] = [
     twitter: "ColaFactoryEN",
     forkedFromIds: ["205"],
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/July_2023/ColaToken.pdf"],
-    github: ["Cola-Factory"],
     listedAt: 1689589539,
   },
   {
@@ -12537,7 +12536,6 @@ const data3_0: Protocol[] = [
     module: "solid-world/index.js",
     twitter: "solidworldhq",
     audit_links: ["https://github.com/Dedaub/audits/tree/main/Solid%20World"],
-    github: ["solid-world"],
     listedAt: 1689931379,
     deadUrl: true,
   },
@@ -12951,7 +12949,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum", "Optimism"],
     module: "teahouse-v3/index.js",
     twitter: "TeahouseFinance",
@@ -14206,7 +14204,6 @@ const data3_0: Protocol[] = [
     twitter: "MagnateFi",
     forkedFromIds: ["114"],
     audit_links: ["https://github.com/MagnateArb/Audits/blob/main/SmartContract_Audit_Solidproof_MagnateProtocol.pdf"],
-    github: ["MagnateArb"],
     listedAt: 1691144362,
     warningBanners: [
       {
@@ -15987,7 +15984,7 @@ const data3_0: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "orange-finance/index.js",
     twitter: "0xOrangeFinance",
@@ -16664,7 +16661,6 @@ const data3_1: Protocol[] = [
     chains: ["Cardano"],
     module: "danogo/index.js",
     twitter: "danogo_2023",
-    github: ["danogo2023"],
     audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
     listedAt: 1693321887,
     dimensions: {
@@ -17005,7 +17001,6 @@ const data3_1: Protocol[] = [
     module: "andromeada/index.js",
     forkedFromIds: ["1407"],
     twitter: "andromeada_",
-    github: ["andromedafi"],
     listedAt: 1693488744,
     deadUrl: true,
   },
@@ -17343,7 +17338,6 @@ const data3_1: Protocol[] = [
     module: "basetasm/index.js",
     forkedFromIds: ["1504"],
     twitter: "BasetasmFinance",
-    github: ["basetasmfinance"],
     listedAt: 1693922475,
     deadUrl: true,
   },
@@ -17468,6 +17462,7 @@ const data3_1: Protocol[] = [
     twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
     listedAt: 1694020053,
+    deadUrl: true,
   },
   {
     id: "3492",
@@ -17504,7 +17499,6 @@ const data3_1: Protocol[] = [
     module: "friendroom/index.js",
     forkedFromIds: ["3377"],
     twitter: "friendroomorg",
-    github: ["FriendRoomRepo"],
     listedAt: 1694092169,
     dimensions: {
       fees: "friend-room"
@@ -18409,7 +18403,6 @@ const data3_1: Protocol[] = [
       "https://github.com/solidproof/projects/blob/main/2023/Manga%20Fi/SmartContract_Audit_Solidproof_MangaFi.pdf",
     ],
     listedAt: 1695092233,
-    github: ["Manga-Token"],
     deadUrl: true,
     dimensions: {
       fees: "hono"
@@ -19043,7 +19036,7 @@ const data3_1: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Solana"],
     module: "armada/index.js",
     twitter: "ArmadaFi",
@@ -19455,6 +19448,7 @@ const data3_1: Protocol[] = [
     module: "bitmark/index.js",
     twitter: "BitMartExchange",
   },
+  /*
   {
     id: "3578",
     name: "Klever Exchange",
@@ -19473,6 +19467,7 @@ const data3_1: Protocol[] = [
     module: "klever-exchange/index.js",
     twitter: "klever_io",
   },
+  */
   {
     id: "3579",
     name: "BTSE",
@@ -19768,7 +19763,6 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum"],
     module: "promethium/index.js",
     twitter: "promethiumpro",
-    github: ["Spectrum-Dev-Team"],
     listedAt: 1696418066,
     deadUrl: true,
   },
@@ -19852,7 +19846,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "yieldflow/index.js",
     twitter: "yieldflowdotcom",
@@ -20496,7 +20490,6 @@ const data3_1: Protocol[] = [
     twitter: "NanoswapBase",
     forkedFromIds: ["2197"],
     listedAt: 1697304358,
-    github: ["nanoswapbase"],
     deadUrl: true,
   },
   {
@@ -20975,7 +20968,7 @@ const data3_1: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "paradex/index.js",
-    twitter: "tradeparadex",
+    twitter: "paradex",
     parentProtocol: "parent#paradex",
     listedAt: 1697648373,
   },
@@ -21695,7 +21688,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["205"],
     module: "statixfarm/index.js",
     twitter: "StatixFarm",
-    github: ["statixfarm"],
     listedAt: 1698055999,
     deadUrl: true,
   },
@@ -22384,7 +22376,6 @@ const data3_1: Protocol[] = [
     chains: ["zkSync Era"],
     module: "touch-fan/index.js",
     twitter: "TouchFanGlobal",
-    github: ["TouchFan"],
     listedAt: 1698667058,
     dimensions: {
       fees: "touch.fan"
@@ -22468,7 +22459,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Mantle", "Manta"],
     module: "rivera_money/index.js",
     twitter: "Rivera_Money_",
@@ -22781,7 +22772,6 @@ const data3_1: Protocol[] = [
       }
     ],
     twitter: "XaveFinance",
-    github: ["bleu-fi"],
     audit_links: ["https://docs.xave.co/contract-audits/fxpool-final-audit"],
     listedAt: 1698939999,
   },
@@ -23564,7 +23554,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Optimism", "Polygon"],
     module: "reyield-finance/index.js",
     twitter: "REYIELDLabs",
@@ -25206,7 +25196,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["270"],
     module: "zkUSD/index.js",
     twitter: "zkUSD_Official",
-    github: ["zkUSD"],
     listedAt: 1701085917,
     deadUrl: true,  },
   {
@@ -25725,7 +25714,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Optimism", "Polygon", "Base", "Boba", "Arbitrum"],
     module: "charm-fi-vaults-v2/index.js",
     twitter: "CharmFinance",
@@ -25939,7 +25928,6 @@ const data3_1: Protocol[] = [
     module: "cherrylend/index.js",
     twitter: "Cherry_Lend",
     audit_links: ["https://github.com/aadafinance/materials/blob/main/Aada_finance_audit.pdf"],
-    github: ["CherryLend"],
     listedAt: 1701694059,
     deadUrl: true,
   },
@@ -27865,7 +27853,6 @@ const data3_1: Protocol[] = [
     chains: ["TON"],
     module: "stakee/index.js",
     twitter: null,
-    github: ["stakee-metadata"],
     listedAt: 1703591969,
     dimensions: {
       fees: "stakee"
@@ -28041,7 +28028,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "agus/index.js",
     twitter: "agusCryptocom",
-    github: ["aguscryptocom"],
     listedAt: 1703852046,
     deadUrl: true,
   },
@@ -28570,7 +28556,6 @@ const data3_1: Protocol[] = [
     chains: ["JBC"],
     module: "cmdao-gameswap/index.js",
     twitter: null,
-    github: ["coshi-labs"],
     listedAt: 1704733585,
   },
   {
@@ -28767,7 +28752,6 @@ const data3_1: Protocol[] = [
     chains: ["Canto"],
     module: "csrfi/index.js",
     twitter: "CSR_fi",
-    github: ["CSRfi"],
     treasury: "csrfi.js",
     listedAt: 1704837203,
     deadUrl: true,
@@ -29334,7 +29318,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "manxswap/index.js",
     twitter: "ManXSwap",
-    github: ["manxswap"],
     listedAt: 1705319831,
     deadUrl: true,
   },
@@ -29459,7 +29442,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "FirepotSwap/index.js",
     twitter: "airdao_io",
-    github: ["Firepot-Finance"],
     listedAt: 1705418998,
     deadUrl: true,
   },
@@ -29500,7 +29482,6 @@ const data3_1: Protocol[] = [
     chains: ["Arbitrum"],
     module: "lila-finance/index.js",
     twitter: "LilaFinance",
-    github: ["Lila-Finance"],
     deadUrl: true,
     listedAt: 1705438657,
   },
@@ -29546,7 +29527,6 @@ const data3_1: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     module: "size/index.js",
     twitter: "SizeLending",
-    github: ["SizeLending"],
     listedAt: 1705488185,
   },
   {
@@ -30897,7 +30877,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "ocelot-dex/index.js",
     twitter: "OcelotDex",
-    github: ["Ocelotdex"],
     listedAt: 1706820470,
     deadUrl: true,
   },
@@ -31097,7 +31076,6 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "katanaswap/index.js",
     twitter: "KatanaSwap",
-    github: ["KatanaSwapXYZ"],
     listedAt: 1707219457,
     deadUrl: true
   },
@@ -31311,7 +31289,6 @@ const data3_1: Protocol[] = [
     oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/8880
     module: "sygma/index.js",
     twitter: "buildwithsygma",
-    github: ["sygmaprotocol"],
     audit_links: ["https://docs.buildwithsygma.com/audits/"],
     listedAt: 1707280300,
   },
@@ -32019,7 +31996,7 @@ const data3_1: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Binance", "Linea"],
     module: "clip-finance/index.js",
     twitter: "ClipFinance",
@@ -33290,7 +33267,6 @@ const data3_2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "dinari/index.js",
     twitter: "DinariGlobal",
-    github: ["sbt-contracts"],
     listedAt: 1709208650,
   },
   {
@@ -33731,7 +33707,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "blitz",
       derivatives: "blitz-derivatives"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4215",
@@ -33855,7 +33832,6 @@ const data3_2: Protocol[] = [
     module: "gassswap/index.js",
     twitter: "GasSwapOfficial",
     forkedFromIds: ["1407"],
-    github: ["zerotwodao"],
     listedAt: 1709402747,
     deadUrl: true,
   },
@@ -34108,7 +34084,6 @@ const data3_2: Protocol[] = [
     module: "Gas404Swap/index.js",
     twitter: "Gas404Official",
     forkedFromIds: ["1407"],
-    github: ["zerotwodao"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/Gas404"],
     listedAt: 1709552390,
     deadUrl: true,
@@ -34167,7 +34142,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: "yes-money",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Blast"],
     module: "baseline/index.js",
     twitter: "BaselineMarkets",
@@ -34471,7 +34446,7 @@ const data3_2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Blast"],
     module: "kaisen/index.js",
     twitter: "kaisenxyz",
@@ -34488,7 +34463,8 @@ const data3_2: Protocol[] = [
       "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/velodrome-v3.jpg`,
-    audits: "0",
+    audits: "2",
+    audit_links: ["https://velodrome.finance/security"],
     gecko_id: null,
     cmcId: null,
     tags: ["CLMM"],
@@ -34642,7 +34618,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: "stability",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Polygon"],
     module: "stability/index.js",
     twitter: "stabilitydao",
@@ -34939,11 +34915,10 @@ const data3_2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Blast", "Binance"],
     module: "gasline/index.js",
     twitter: "GaslineMarkets",
-    github: ["zerotwodao"],
     forkedFromIds: ["4234"],
     listedAt: 1710005544,
     deadUrl: true,  },
@@ -34964,7 +34939,6 @@ const data3_2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "perfectswap/index.js",
     twitter: "perfectswapio",
-    github: ["perfect-swap"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
     listedAt: 1710125372,
     deadUrl: true,
@@ -35219,7 +35193,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Injective"],
     module: "mito/index.js",
     twitter: "MitoFinance",
@@ -35993,7 +35967,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "liquix/index.js",
     twitter: "liqui_x",
@@ -36572,7 +36546,7 @@ const data3_2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Map"],
     module: "hiveswap-pro/index.js",
     twitter: "hiveswap_io",
@@ -36975,7 +36949,6 @@ const data3_2: Protocol[] = [
     module: "ixswap/index.js",
     twitter: "IxsFinance",
     audit_links: ["https://ixswap.gitbook.io/ix-swap-gitbook/other-documentation/smart-contract-audits"],
-    github: ["IX-Swap"],
     listedAt: 1711394081,
   },
   {
@@ -37313,7 +37286,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: "unipilot",
     cmcId: "11113",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "a51-finance-v3/index.js",
     twitter: "A51_Fi",
@@ -39009,7 +38982,6 @@ const data3_2: Protocol[] = [
     module: "LeaperFinance/index.js",
     twitter: "Leaperfinance",
     audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
-    github: ["leaperfinance"],
     listedAt: 1712585675,
     deadUrl: true
   },
@@ -39026,7 +38998,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/arcadia-finance/arcadia-finance-audits/tree/main/audits-v2"],
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Base"],
     module: "arcadia-finance-v2/index.js",
     oraclesBreakdown: [
@@ -39108,6 +39080,7 @@ const data3_2: Protocol[] = [
       derivatives: "bsx"
     },
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "4459",
@@ -39290,7 +39263,6 @@ const data3_2: Protocol[] = [
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Web%20Pentest/HBarSuite_WebApp_SmartNode_FrontEnd_BackEnd_Pentest_Report_Halborn_Final.pdf",
     ],
-    github: ["HbarSuite"],
     listedAt: 1712786283,
     dimensions: {
       dexs: {
@@ -39379,7 +39351,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "aquas-trade/index.js",
     twitter: "AquasTrade",
-    github: ["RubyAquaMarine"],
     listedAt: 1712918385,
   },
   {
@@ -39888,9 +39859,11 @@ const data3_2: Protocol[] = [
       "https://app.wiselending.com/omni-audit-v1.pdf",
     ],
     listedAt: 1694020053,
+    hallmarks: [["2024-02-28", "Protocol Exploit"]],
     dimensions: {
       fees: "wise-lending-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4495",
@@ -40670,7 +40643,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "openex/index.js",
     twitter: "openex_network",
-    github: ["openex-network"],
     listedAt: 1714228724,
     deadUrl: true,
   },
@@ -40739,7 +40711,6 @@ const data3_2: Protocol[] = [
     oraclesBreakdown: [ { name: "RedStone", type: "Primary", proof: [] } ], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9998
     module: "ion-protocol/index.js",
     twitter: "ionprotocol",
-    github: ["Ion-Protocol"],
     audit_links: [
       "https://blog.openzeppelin.com/ion-protocol-audit",
       "https://app.hats.finance/audit-competitions/ion-protocol-0x20c44e7b618d58f9982e28de66d8d6ee176eb481/leaderboard",
@@ -41557,7 +41528,6 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     module: "OreSwap/index.js",
     twitter: "oreswap",
-    github: ["oreswap"],
     listedAt: 1715016813,
   },
   {
@@ -45424,7 +45394,6 @@ const data3_3: Protocol[] = [
     module: "zkx/index.js",
     twitter: "zkxprotocol",
     audit_links: ["https://media.zkx.fi/audit.pdf"],
-    github: ["zkxprotocol"],
     listedAt: 1718050520,
   },
   {
@@ -45554,7 +45523,6 @@ const data3_3: Protocol[] = [
     chains: ["Endurance"],
     module: "catalist/index.js",
     twitter: "CatalistFinance",
-    github: ["catalist-ace"],
     listedAt: 1718102947,
   },
   {
@@ -46229,7 +46197,6 @@ const data3_3: Protocol[] = [
     module: "lovelyswap-v2/index.js",
     twitter: "lovely_swap",
     audit_links: ["https://skynet.certik.com/projects/lovelyinu"],
-    github: ["lovelyswap-v1"],
     listedAt: 1718718663,
     deadUrl: true,
   },
@@ -46373,7 +46340,6 @@ const data3_3: Protocol[] = [
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "hopaggregator",
-    github: ["hopaggregator"],
     listedAt: 1718821117,
     dimensions: {
       aggregators: "hop-aggregator"
@@ -46736,7 +46702,6 @@ const data3_3: Protocol[] = [
     chains: ["EthereumClassic"],
     module: "nyke/index.js",
     twitter: null,
-    github: ["Jabr0nie"],
     listedAt: 1719231083,
     deadUrl: true,
   },
@@ -47674,7 +47639,6 @@ const data3_3: Protocol[] = [
     chains: ["Optimism", "Blast", "Base"],
     module: "catalyst/index.js",
     twitter: "CatalystAMM",
-    github: ["catalystdao"],
     listedAt: 1720176967,
   },
   {
@@ -47909,7 +47873,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "jup-ape",
       dexs: "jup-ape"
-    }
+    },
+    deprecated: true,
   },
   {
     id: "4861",
@@ -48481,7 +48446,7 @@ const data3_3: Protocol[] = [
     symbol: "GEM",
     url: "https://opaldefi.xyz",// deadUrl
     description:
-      "Opal is an Omnipool based decentralized liquidity manager. In the concept it’s the bridge between educated DeFi users and retail ETH/stable holders, the game theory equilibrium that broadens access to sophisticated on-chain farming strategies.",
+      "Opal is an Omnipool based decentralized Liquidity Manager. In the concept it’s the bridge between educated DeFi users and retail ETH/stable holders, the game theory equilibrium that broadens access to sophisticated on-chain farming strategies.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opal-defi.jpg`,
     audits: "2",
@@ -52809,7 +52774,6 @@ const data3_3: Protocol[] = [
     module: "lucidly/index.js",
     twitter: "LucidlyFinance",
     audit_links: ["https://docs.lucidly.finance/resources/audits"],
-    github: ["lucidlyfi"],
     listedAt: 1725009405
   },
   {
@@ -53726,7 +53690,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#Edge",
     dimensions: {
       dexs: "blitz-swap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5128",
@@ -54695,7 +54660,6 @@ const data3_3: Protocol[] = [
     chains: ["Solana"],
     module: "solbank-finance/index.js",
     twitter: "Solbankfi",
-    github: ["SolbankFinance"],
     listedAt: 1727088061,
     deadUrl: true
   },
@@ -55608,7 +55572,6 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Base", "Scroll", "zkSync Era", "Arbitrum", "Optimism"],
     module: "dummy.js",
     twitter: "Jeton_Protocol",
-    github: ["jeton_demo"],
     listedAt: 1728351822,
     dimensions: {
       fees: "jeton",
@@ -55636,6 +55599,7 @@ const data3_3: Protocol[] = [
     github: ["metrom-xyz"],
     listedAt: 1728378198
   },
+  /*
   {
     id: "5215",
     name: "Bitcointry",
@@ -55655,6 +55619,7 @@ const data3_3: Protocol[] = [
     twitter: "Bitcointrycom",
     listedAt: 1728378235
   },
+  */
   {
     id: "5216",
     name: "Pit Finance",
@@ -55753,7 +55718,6 @@ const data3_3: Protocol[] = [
     module: "Metahub-Finance/index.js",
     twitter: "MetaHubFinance",
     audit_links: ["https://skynet.certik.com/projects/metahub-finance"],
-    github: ["metahubfinance"],
     listedAt: 1728468309,
     deadUrl: true,  },
   {
@@ -56744,7 +56708,7 @@ const data3_3: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Base", "Arbitrum"],
     module: "arrakis-modular/index.js",
     twitter: "ArrakisFinance",
@@ -57993,7 +57957,6 @@ const data3_3: Protocol[] = [
     chains: ["Binance"],
     module: "aqualoan/index.js",
     twitter: "aqualoan_io",
-    github: ["techaqualoan"],
     audit_links: ["https://github.com/techaqualoan/audits/blob/main/blocksec_aqualoan_v1.0-signed.pdf"],
     listedAt: 1730894395,
     deadUrl: true,
@@ -58533,6 +58496,9 @@ const data3_3: Protocol[] = [
     module: "solar-studios/index.js",
     twitter: "solar_dex",
     listedAt: 1731426568,
+    deadFrom: "2025-08-11",
+    deadUrl: true,
+    deprecated: true,
     dimensions: {
       fees: "solar-studios",
       dexs: "solar-studios"
@@ -58618,7 +58584,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/TeleportDAO/audits/blob/main/reports/Quantstamp-Bitcoin-EVM.pdf"],
     listedAt: 1731495458,
     dimensions: {
-      fees: "teleswap"
+      fees: "teleswap",
+      dexs: "teleswap"
     }
   },
   {
@@ -58745,7 +58712,8 @@ const data3_3: Protocol[] = [
     chains: ["Ethereum"],
     module: "basedai/index.js",
     twitter: "getbasedai",
-    listedAt: 1731584443
+    listedAt: 1731584443,
+    deadUrl: true,
   },
   {
     id: "5356",
@@ -58972,22 +58940,22 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5366",
-    name: "Shido Dex",
+    name: "Shido Dex V2",
     address: "shido:0xe550bde2f0898552b38a41635d7a8ddb1fd81276",
     symbol: "SHDX",
     url: "https://shido.io/",
     description: "Build without limits. Shido combines the interoperability of the Cosmos, development power of EVM and WASM",
     chain: "Shido",
-    logo: `${baseIconsUrl}/shido-dex.jpg`,
+    logo: `${baseIconsUrl}/shido-dex-v2.jpg`,
     audits: "2",
-    gecko_id: "shido-dex",
-    cmcId: "35960",
+    gecko_id: null,
+    cmcId: null,
     tags: ["AMM"],
     chains: ["Shido"],
     module: "shido-dex/index.js",
     twitter: "ShidoNetwork",
     audit_links: ["https://github.com/zokyo-sec/audit-reports/tree/main/Shido"],
-    github: ["ShidoGlobal"],
+    parentProtocol: "parent#shido-dex",
     listedAt: 1731691978,
     dimensions: {
       dexs: "shido-dex"
@@ -59435,7 +59403,7 @@ const data3_3: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "tcv_platform/index.js",
     twitter: "tcv_platform",
@@ -59479,7 +59447,7 @@ const data3_3: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Scroll", "Ethereum"],
     module: "tempest-finance/index.js",
     twitter: "tempest_fi",
@@ -59815,7 +59783,6 @@ const data3_3: Protocol[] = [
       "https://file.cytonic.com/cytonic-fuzzland-report.pdf",
       "https://file.cytonic.com/ZellicAuditReport.pdf"
     ],
-    github: ["cytonic-network"],
     listedAt: 1732315862
   },
   {
@@ -60296,7 +60263,7 @@ const data3_3: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum", "Blast", "Ethereum", "Linea"],
     module: "levva/index.js",
     twitter: "levva_fi",
@@ -61334,6 +61301,7 @@ const data3_3: Protocol[] = [
     audit_links: ["https://docs.gud.tech/audits"],
     listedAt: 1733597319
   },
+  /*
   {
     id: "5477",
     name: "Tapbit",
@@ -61352,6 +61320,7 @@ const data3_3: Protocol[] = [
     twitter: "Tapbitglobal",
     listedAt: 1733744113
   },
+  */
   {
     id: "5478",
     name: "STONEBTC",
@@ -62474,7 +62443,7 @@ const data3_3: Protocol[] = [
     twitter: "TeleSwapTON",
     deadUrl: true,
     dimensions: {
-      "bridge-aggregators": "teleswap"
+      "bridge-aggregators": "teleswap-ton"
     }
   },
   {

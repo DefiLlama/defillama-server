@@ -57,6 +57,7 @@ export default async function (balances: { [address: string]: string }, timestam
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
+  const symbolToAddresses: { [symbol: string]: string[] } = {};
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   const tokenData = await getTokenData(readKeys, timestamp)
   const staleCoinsInclusive: any = {};
@@ -75,6 +76,8 @@ export default async function (balances: { [address: string]: string }, timestam
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;
+        if (!symbolToAddresses[symbol]) symbolToAddresses[symbol] = [];
+        if (!symbolToAddresses[symbol].includes(address)) symbolToAddresses[symbol].push(address);
       });
     }
   });
@@ -85,6 +88,7 @@ export default async function (balances: { [address: string]: string }, timestam
     usdTvl,
     tokenBalances,
     usdTokenBalances,
+    symbolToAddresses,
   };
 }
 

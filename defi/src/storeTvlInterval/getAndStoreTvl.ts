@@ -60,6 +60,7 @@ async function getTvl(
 ) {
   let chainDashPromise
   let chain
+  const symbolToAddresses = options.symbolToAddresses ?? {}
   for (let i = 0; i < maxRetries; i++) {
     try {
       chain = storedKey.split('-')[0]
@@ -96,6 +97,14 @@ async function getTvl(
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
         usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
+        if (tvlResults.symbolToAddresses) {
+          for (const [sym, addrs] of Object.entries(tvlResults.symbolToAddresses)) {
+            if (!symbolToAddresses[sym]) symbolToAddresses[sym] = [];
+            for (const addr of addrs as string[]) {
+              if (!symbolToAddresses[sym].includes(addr)) symbolToAddresses[sym].push(addr);
+            }
+          }
+        }
         if (isStandard) {
           rawTokenBalances[storedKey] = tvlBalances;
         } else {
@@ -199,6 +208,7 @@ type StoreTvlOptions = {
   skipChainsCheck?: boolean,
   runStats?: any,
   tempCacheInfo?: Array<StoreTvlTempCacheInfo>,
+  symbolToAddresses: { [symbol: string]: string[] },
 }
 
 export type storeTvl2Options = StoreTvlOptions & {
@@ -284,6 +294,8 @@ export async function storeTvl(
   const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
   const rawTokenBalances: tvlsObject<TokensValueLocked> = {};
   const getTvlErrors: tvlsObject<Error> = {};
+  const symbolToAddresses: { [symbol: string]: string[] } = {};
+
   const chainTvlsToAdd: {
     [name: string]: string[]
   } = {}
@@ -314,7 +326,7 @@ export async function storeTvl(
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, getTvlErrors, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
-          { ...options, partialRefill, chainsToRefill, cacheData, runStats, })
+          { ...options, partialRefill, chainsToRefill, cacheData, runStats, symbolToAddresses })
         let keyToAddChainBalances = tvlType;
         if (tvlType === "tvl" || tvlType === "fetch") {
           keyToAddChainBalances = "tvl"
@@ -507,7 +519,7 @@ export async function storeTvl(
   try {
     const storeFn = async () => {
       await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData, {
-        debugData: { tokensBalances, usdTokenBalances, rawTokenBalances, usdTvls },
+        debugData: { tokensBalances, usdTokenBalances, rawTokenBalances, usdTvls, symbolToAddresses },
       }); // Checks circuit breakers
 
       const options = { protocol, unixTimestamp, storePreviousData, overwriteExistingData, }

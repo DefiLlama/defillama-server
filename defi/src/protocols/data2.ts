@@ -172,7 +172,6 @@ const data2: Protocol[] = [
     module: "soluna/index.js",
     twitter: "solunaDAO",
     listedAt: 1644516018,
-    github: ["soluna-protocol"],
     deadUrl: true,
   },
   {
@@ -4449,7 +4448,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Avalanche", "Terra"],
     module: "aperture/index.js",
     twitter: "ApertureFinance",
@@ -4642,7 +4641,6 @@ const data2: Protocol[] = [
     twitter: "occamDEX",
     audit_links: ["https://occamx.gitbook.io/occamx-faq/audits"],
     listedAt: 1648599278,
-    github: ["OccamX-MilkomedaDEX"],
     deadUrl: true,
   },
   {
@@ -4790,7 +4788,6 @@ const data2: Protocol[] = [
     module: "crystalvale/index.js",
     twitter: "DefiKingdoms",
     listedAt: 1648769543,
-    github: ["DefiKingdoms"],
   },
   {
     id: "1599",
@@ -5116,7 +5113,6 @@ const data2: Protocol[] = [
     twitter: "NestedFi",
     audit_links: ["https://github.com/NestedFinance/nested-core-lego/tree/master/audits"],
     listedAt: 1649155995,
-    github: ["NestedFi"],
   },
   {
     id: "1614",
@@ -7814,9 +7810,9 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Staking",
     address: null,
     symbol: "BNC",
-    url: "https://bifrost.io/",
+    url: "https://app.bifrost.io/?channelId=17",
     description:
-      "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+      "Bifrost is a staking yield layer that establishes a standardized multi-chain liquid staking rewards infrastructure, delivering composable crypto-native yields for stablecoins, RWAs, and DeFi across various blockchains. Its modular design allows developers to tap into multi-chain staking rewards with one integration, greatly lowering development costs and enhancing user simplicity.",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-liquid-staking.png`,
     audits: "2",
@@ -9477,6 +9473,9 @@ const data2: Protocol[] = [
     module: "fluidtokens/index.js",
     twitter: "FluidTokens",
     listedAt: 1654771434,
+    dimensions: {
+      fees: "fluidtokens",
+    },
   },
   {
     id: "1813",
@@ -9639,7 +9638,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "unipilot/index.js",
     twitter: "A51_Fi",
@@ -12303,7 +12302,6 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "imMoonSwap",
     listedAt: 1659175114,
-    github: ["moon-migration"],
     dimensions: {
       dexs: "moon-swap"
     }
@@ -12493,7 +12491,6 @@ const data2: Protocol[] = [
     module: "dotoracle/index.js",
     twitter: "DoTOracle",
     listedAt: 1659607635,
-    github: ["dotoracle"],
     deadUrl: true,
   },
   {
@@ -14934,7 +14931,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Solana"],
     oraclesBreakdown: [
       {
@@ -15459,7 +15456,6 @@ const data2: Protocol[] = [
     twitter: "HectagonFinance",
     audit_links: ["https://github.com/DAudit/Smart-Contract-Audits/blob/main/audit_hectagon_20220803.pdf"],
     listedAt: 1663070181,
-    github: ["hectagon-finance"],
   },
   {
     id: "2085",
@@ -19572,7 +19568,6 @@ const data2: Protocol[] = [
       "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-zellic-audit.pdf",
     ],
     listedAt: 1668080722,
-    github: ["alwaysbegrowing"],
   },
   {
     id: "2262",
@@ -20190,7 +20185,6 @@ const data2: Protocol[] = [
       "https://github.com/abdk-consulting/audits/blob/main/voltz/ABDK_Voltz_Project1_v_1_0.pdf",
     ],
     listedAt: 1668700069,
-    github: ["voltz-energy"],
   },
   {
     id: "2292",
@@ -20450,7 +20444,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Polygon"],
     module: "revert-v3-staker/index.js",
     twitter: "revertfinance",
@@ -20479,6 +20473,7 @@ const data2: Protocol[] = [
     listedAt: 1669204672,
     parentProtocol: "parent#zkbob_",
   },
+  /*
   {
     id: "2305",
     name: "MaskEX",
@@ -20497,6 +20492,7 @@ const data2: Protocol[] = [
     twitter: "MaskEXGlobal",
     listedAt: 1669209266,
   },
+  */
   {
     id: "2306",
     name: "Bored Candy City",
@@ -20665,6 +20661,7 @@ const data2: Protocol[] = [
       dexs: "step-exchange"
     }
   },
+  /*
   {
     id: "2313",
     name: "Firi",
@@ -20683,6 +20680,7 @@ const data2: Protocol[] = [
     twitter: "firiapp",
     listedAt: 1669465526,
   },
+  */
   {
     id: "2314",
     name: "Gate",
@@ -21139,7 +21137,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "defiedge/index.js",
     twitter: "DefiEdge",
@@ -21222,9 +21220,9 @@ const data2: Protocol[] = [
     name: "Bifrost Liquid Crowdloan",
     address: null,
     symbol: "-",
-    url: "https://bifrost.io/",
+    url: "https://app.bifrost.io/?channelId=17",
     description:
-      "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+      "Bifrost is a staking yield layer that establishes a standardized multi-chain liquid staking rewards infrastructure, delivering composable crypto-native yields for stablecoins, RWAs, and DeFi across various blockchains. Its modular design allows developers to tap into multi-chain staking rewards with one integration, greatly lowering development costs and enhancing user simplicity.",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-liquid-crowdloan.jpg`,
     audits: "0",
@@ -21748,7 +21746,7 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: "hedgehog",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "hedgehog/index.js",
     twitter: "liqui_space",
@@ -21756,6 +21754,7 @@ const data2: Protocol[] = [
     listedAt: 1671064853,
     deadUrl: true,
   },
+  /*
   {
     id: "2363",
     name: "Hotbit",
@@ -21776,6 +21775,7 @@ const data2: Protocol[] = [
     listedAt: 1671107470,
     deadUrl: true,
   },
+  */
   {
     id: "2364",
     name: "Butter Network", //previous Butter Swap
@@ -22273,7 +22273,6 @@ const data2: Protocol[] = [
     twitter: "SandclockOrg",
     audit_links: ["https://docs.sandclock.org/current/technical-documentation/security/external"],
     listedAt: 1671893485,
-    github: ["sandclock-org"],
   },
   {
     id: "2387",
@@ -23589,7 +23588,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Avalanche", "Arbitrum"],
     module: "steakHut-lb/index.js",
     twitter: "steakhut_fi",
@@ -23655,7 +23654,7 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Polygon", "Arbitrum", "Optimism"],
     module: "quadrat/index.js",
     twitter: "0xQuadrat",
@@ -23761,7 +23760,7 @@ const data2: Protocol[] = [
     audits: "3",
     gecko_id: "bunni",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     module: "bunni/index.js",
     twitter: "bunni_xyz",
@@ -24065,7 +24064,6 @@ const data2: Protocol[] = [
     twitter: "bitindichain",
     forkedFromIds: ["2197"],
     listedAt: 1674733691,
-    github: ["bitindi"],
     deadUrl: true,  },
   {
     id: "2471",
@@ -24825,7 +24823,7 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Polygon", "Optimism", "Arbitrum"],
     module: "dyson-money/index.js",
     twitter: "dyson_money",
@@ -24927,7 +24925,7 @@ const data2: Protocol[] = [
     audits: "2",
     gecko_id: "hawksight",
     cmcId: "19677",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Solana"],
     module: "hawksight/index.js",
     twitter: "HawksightCo",
@@ -26007,7 +26005,7 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum", "Binance"],
     module: "diamond-unibot-v2/index.js",
     twitter: "DiamondProtocol",
@@ -28040,7 +28038,6 @@ const data2: Protocol[] = [
     module: "numoen/index.js",
     twitter: "numoen",
     listedAt: 1678371764,
-    github: ["Numoen"],
   },
   {
     id: "2652",
@@ -28372,7 +28369,7 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "arrakis-v2/index.js",
     twitter: "ArrakisFinance",

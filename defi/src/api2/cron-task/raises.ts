@@ -20,7 +20,11 @@ async function run() {
   await writeRaises()
   await writeHacks()
   await writeTokenRights()
-  await writeArticles()
+  try {
+    await writeArticles()
+  } catch (e) {
+    console.log('Failed to fetch/write articles, skipping:', e)
+  }
 
   await sdk.cache.writeExpiringJsonCache('cron-task/raises-last-update', { lastUpdateTS: now }, { expireAfter: 24 * 60 * 60 * 1000 }) // expire after 24 hours
 
@@ -57,7 +61,7 @@ async function run() {
 runWithRuntimeLogging(run, {
   application: "cron-task",
   type: 'raises',
-}).catch(console.error).then(() => process.exit(0))
+}).catch(console.log).then(() => process.exit(0))
 
 setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');

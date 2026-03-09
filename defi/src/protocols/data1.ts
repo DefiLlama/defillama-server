@@ -1029,22 +1029,15 @@ const data: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/idle.jpg`,
     audits: "2",
-    gecko_id: "idle",
-    cmcId: "7841",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "idle/index.js",
-    treasury: "idle-dao.js",
-    twitter: "idlefinance",
+    twitter: "paretocredit",
+    parentProtocol: "parent#pareto",
     audit_links: ["https://docs.idle.finance/developers/security/audits"],
     // https://github.com/DefiLlama/defillama-server/pull/5147
-    governanceID: [
-      "snapshot:staking.idlefinance.eth",
-      "snapshot:idlefinance.eth",
-      "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
-      "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
-    ],
-    github: ["Idle-Labs"], //check
     dimensions: {
       fees: {
         adapter: "idle",
@@ -1451,7 +1444,6 @@ const data: Protocol[] = [
     twitter: "fin_nexus",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink", "Band"],
-    github: ["FinNexus"],
     deadUrl: true,
   },
   {
@@ -1661,7 +1653,6 @@ const data: Protocol[] = [
     audit_links: ["https://certificate.quantstamp.com/full/linkswap"],
     forkedFromIds: ["2197"],
     governanceID: ["snapshot:varen.eth"],
-    github: ["varenfinance"],
     deadUrl: true,
   },
   /*
@@ -2210,7 +2201,7 @@ const data: Protocol[] = [
     audits: "2",
     gecko_id: "xtoken",
     cmcId: "8599",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "xtoken/index.js",
     twitter: "xtokenterminal",
@@ -2251,7 +2242,7 @@ const data: Protocol[] = [
     audits: "2",
     gecko_id: "acryptos",
     cmcId: "7844",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Binance", "Arbitrum", "Optimism", "Base", "Polygon", "Linea", "Avalanche", "Fantom", "Moonriver", "Moonbeam", "Kava"],
     oraclesBreakdown: [
       {
@@ -2355,13 +2346,13 @@ const data: Protocol[] = [
         name: "RedStone",
         type: "Aggregator",
         proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle#bnb-chain", "https://docs-v4.venus.io/risk/resilient-price-oracle", "https://docs-v4.venus.io/risk/resilient-price-oracle#unichain-mainnet:~:text=%2D-,Unichain%20Mainnet,-Pool"],
-        chains: [{ chain: "Binance" }, { chain: "Unichain" }]
+        //chains: [{ chain: "Binance" }, { chain: "Unichain" }]
       },
       {
         name: "Chainlink",
         type: "Aggregator",
         proof: ["https://docs-v4.venus.io/risk/resilient-price-oracle"],
-        chains: [{ chain: "Binance" }, { chain: "Ethereum" }, { chain: "Arbitrum"}, { chain: "zkSync"}, { chain: "Optimism"}, { chain: "Base"}]
+       // chains: [{ chain: "Binance" }, { chain: "Ethereum" }, { chain: "Arbitrum"}, { chain: "zkSync"}, { chain: "Optimism"}, { chain: "Base"}]
       }
     ],
     parentProtocol: "parent#venus-finance",
@@ -5485,7 +5476,7 @@ const data: Protocol[] = [
     audits: "2",
     gecko_id: "gamma-strategies",
     cmcId: "9170",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "visor/index.js",
     twitter: "GammaStrategies",
@@ -5707,7 +5698,7 @@ const data: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "charmfinance/index.js",
     twitter: "CharmFinance",
@@ -5849,7 +5840,6 @@ const data: Protocol[] = [
     twitter: "KokomoSwap",
     forkedFromIds: ["2197"],
     audit_links: ["https://docs.kokomoswap.io/risk-and-security-1/audit"],
-    github: ["KokomoSwap"],
   },
   {
     id: "372",
@@ -7926,13 +7916,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "LIX",
     url: "https://lixir.finance",
     description:
-      "Lixir Finance is a fully automated and optimized concentrated liquidity manager. Through Lixir, users and other protocols can deploy liquidity in a tight price range on AMMs like Uniswap V3 and Trident without having to worry about the added complexity of active management - Lixir automates this for them. By deploying liquidity in a tight range around the current price, both capital efficiency and liquidity conditions improve dramatically, and liquidity providers enjoy greatly increased LP fees. In order to maximize efficiency, Lixir makes sure the liquidity maintains in a tight range around the constantly changing price by actively managing it.",
+      "Lixir Finance is a fully automated and optimized concentrated Liquidity Manager. Through Lixir, users and other protocols can deploy liquidity in a tight price range on AMMs like Uniswap V3 and Trident without having to worry about the added complexity of active management - Lixir automates this for them. By deploying liquidity in a tight range around the current price, both capital efficiency and liquidity conditions improve dramatically, and liquidity providers enjoy greatly increased LP fees. In order to maximize efficiency, Lixir makes sure the liquidity maintains in a tight range around the constantly changing price by actively managing it.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lixir-finance.png`,
     audits: "2",
     gecko_id: "lixir-protocol",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "lixir/index.js",
     twitter: "lixirfinance",
@@ -9679,7 +9669,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://docs.cherryswap.net/knownsec",
       "https://docs.cherryswap.net/certik",
     ],
-    github: ["cherryswapnet"],
     deadUrl: true,
     dimensions: {
       dexs: "cherryswap"
@@ -9966,7 +9955,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://solidity.finance/audits/DefiKingdoms/"],
     forkedFromIds: ["2197"],
     governanceID: ["snapshot:dfkvote.eth"],
-    github: ["DefiKingdoms"],
     dimensions: {
       dexs: "defi-kingdoms"
     }
@@ -10386,7 +10374,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "LunosDAO",
     audit_links: ["https://github.com/Uno-Re/audit-reports"],
     oraclesBreakdown: [{ name: "Chainlink", type: "Primary", proof: [] }],
-    github: ["Uno-Re"],
   },
   {
     id: "577",
@@ -10574,7 +10561,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     gecko_id: "ice-token",
     cmcId: "9073",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Fantom", "Binance"],
     module: "popsicle/index.js",
     twitter: "PopsicleFinance",
@@ -11801,7 +11788,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "enterdao/index.js",
     twitter: "EnterDao",
-    github: ["EnterDAO"],
     deadUrl: true,
   },
   {
@@ -11842,7 +11828,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "sorbetfinance/index.js",
     twitter: "ArrakisFinance",
@@ -13617,7 +13603,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     gecko_id: "universe-finance-token",
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum"],
     module: "universe-finance/index.js",
     twitter: "Universe_FIN",
@@ -14112,7 +14098,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oraclesBreakdown: [{ name: "TWAP", type: "Primary", proof: [] }],
     forkedFromIds: ["112"],
     governanceID: ["snapshot:harvestfi.eth"],
-    github: ["VaultyFinance"],
     listedAt: 1635803932,
     deadUrl: true,
   },
@@ -14185,7 +14170,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["114"],
     audit_links: ["https://www.certik.com/projects/tranquil-finance"],
     listedAt: 1635819874,
-    github: ["tranquil-finance"],
     deadUrl: true,
   },
   {
@@ -14210,7 +14194,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Atlantis-v1.0.pdf",
     ],
     listedAt: 1635820333,
-    github: ["atlantis-loans"],
     rugged: true,
     deadUrl: true,
   },
@@ -15750,7 +15733,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/Quillhash/Audit_Reports/blob/master/BSCS%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf",
     ],
     listedAt: 1636756382,
-    github: ["BSCStationSwap"],
   },
   {
     id: "835",
@@ -16305,7 +16287,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cougarswap",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/CougarSwap.pdf"],
     listedAt: 1637344672,
-    github: ["cougarswap"],
     deadUrl: true,
   },
   {
@@ -16590,7 +16571,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     gecko_id: "ichi",
     cmcId: "7726",
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Ethereum", "Polygon"],
     module: "ichifarm/index.js",
     twitter: "ichifoundation",
@@ -20308,7 +20289,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TempusFinance",
     listedAt: 1639812368,
     governanceID: ["snapshot:tempusgov.eth"],
-    github: ["tempusfinance"],
     deadUrl: true,
   },
   /* delist
@@ -20376,7 +20356,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     governanceID: ["snapshot:meritcircle.eth"],
     listedAt: 1639869375,
-    github: ["Merit-Circle"],
     treasury: "merit-circle",
   },
   {
@@ -23286,7 +23265,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "marginswap/index.js",
     twitter: "marginswap",
     listedAt: 1641252045,
-    github: ["marginswap"],
   },
   {
     id: "1186",
@@ -27443,7 +27421,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MinimaxFinance",
     language: "Solidity",
     listedAt: 1644446314,
-    github: ["minimaxdefi", "minimaxfinance"],
+    github: ["minimaxfinance"],
   },
 ];
 export default data;

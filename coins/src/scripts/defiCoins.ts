@@ -3,7 +3,7 @@ import {
   batchWriteWithAlerts,
   filterWritesWithLowConfidence,
 } from "../adapters/utils/database";
-import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
+import { withTimeout } from "../utils/shared/withTimeout";
 console.log(process.version);
 import adapters from "../adapters/index";
 console.log("adapters imported");

@@ -6,10 +6,6 @@ import getBlock from "../utils/block";
 
 import * as sdk from '@defillama/sdk'
 const { multiCall, } = sdk.api.abi
-import {
-  readFromPGCache,
-  writeToPGCache,
-} from "../../../../defi/src/api2/cache/file-cache";
 import dayjs from "dayjs";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 
@@ -29,7 +25,10 @@ async function getForexRates(
     .reduce((p: string, c: string) => `${p},${c}`, "")
     .substring(1);
 
-  const cachedRates = await readFromPGCache("coins-forexRates");
+  const cachedRates = await sdk.cache.readCache("coins-forexRates", {
+    skipCompression: true,
+    skipR2Cache: true,
+  });
   let rates: any;
   if (
     cachedRates &&
@@ -43,7 +42,10 @@ async function getForexRates(
         `http://data.fixer.io/api/${date}?access_key=${process.env.FIXER_IO_KEY}&symbols=${symbols}`,
       )
     ).data.rates;
-    await writeToPGCache("coins-forexRates", { data: rates, timestamp: now });
+    await sdk.cache.writeCache("coins-forexRates", { data: rates, timestamp: now }, {
+      skipCompression: true,
+      skipR2CacheWrite: true,
+    });
   }
 
   const forexPrices: { [string: string]: number } = {};

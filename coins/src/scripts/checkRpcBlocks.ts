@@ -1,7 +1,7 @@
 import { getProvider } from "@defillama/sdk";
 import PromisePool from "@supercharge/promise-pool";
 import { adaptersRepoChainsJson as chains } from "../getChains";
-import { sendMessage } from "../../../defi/src/utils/discord";
+import { sendMessage } from "../utils/discord";
 
 type Rpc = {
   rpc: string;

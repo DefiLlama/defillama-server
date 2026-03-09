@@ -1,4 +1,4 @@
-import chainToCoingeckoId from "../../common/chainToCoingeckoId";
+import chainToCoingeckoId from "../common/chainToCoingeckoId";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 export const adaptersRepoChainsJson: string[] = [
   "abstract",

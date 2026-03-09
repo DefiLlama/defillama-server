@@ -18,7 +18,7 @@ import {
   retryCoingeckoRequest,
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
-import { sendMessage } from "../../../defi/src/utils/discord";
+import { sendMessage } from "../utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
 import * as sdk from "@defillama/sdk";

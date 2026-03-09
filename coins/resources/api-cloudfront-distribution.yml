@@ -1,0 +1,67 @@
+Resources:
+  ApiCloudfront:
+    Type: AWS::CloudFront::Distribution
+    DependsOn:
+    - ApiGatewayRestApi
+    Properties:
+      DistributionConfig:
+        Origins:
+        - Id: ApiGateway
+          DomainName:
+            Fn::Join:
+              - ""
+              - - Ref: ApiGatewayRestApi
+                - ".execute-api."
+                - Ref: AWS::Region
+                - ".amazonaws.com"
+          CustomOriginConfig:
+            HTTPPort: 80
+            HTTPSPort: 443
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols: [ "TLSv1.2" ]
+          OriginPath: /${self:custom.stage}
+        Enabled: true
+        HttpVersion: http2
+        Comment: CDN for API Gateway (${self:custom.stage})
+        Aliases:
+          - ${self:custom.domain}
+        PriceClass: PriceClass_All
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          CachedMethods:
+          - HEAD
+          - GET
+          - OPTIONS
+          MinTTL: 0
+          ForwardedValues:
+            QueryString: 'true'
+            Cookies:
+              Forward: none
+          DefaultTTL: 0
+          TargetOriginId: ApiGateway
+          ViewerProtocolPolicy: redirect-to-https
+        CustomErrorResponses: []
+        ViewerCertificate:
+          AcmCertificateArn: ${self:custom.certificateArn}
+          SslSupportMethod: sni-only
+  ApiDNSName:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: ${self:custom.hostedZone}.
+      RecordSets:
+      - Name: ${self:custom.domain}
+        Type: A
+        AliasTarget:
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !GetAtt [ApiCloudfront, DomainName]
+Outputs:
+  ApiCloudfrontDistribution:
+    Value: !Ref 'ApiCloudfront'
+    Description: Id of Cloudfront distribution that fronts the API

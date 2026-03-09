@@ -1,0 +1,18 @@
+Resources:
+  DynamoTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain # Make sure the tables can't be deleted by CloudFormation/Serverless
+    Properties:
+      TableName: ${self:custom.tableName}
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: N
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST

@@ -11,10 +11,11 @@ import {
   dailyTokensTvl,
   dailyUsdTokensTvl,
   dailyRawTokensTvl,
+  hourlyTvl,
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import { TABLES } from "../api2/db"
+import { TABLES, getLatestProtocolItem } from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
@@ -148,7 +149,50 @@ async function getTvl(
           chain,
         },
       } as any)
+
       if (i >= maxRetries - 1) {
+        // Fallback Logic
+        try {
+          const lastHourlyTVLObject = await getLatestProtocolItem(hourlyTvl, protocol.id) ?? {};
+          const totalLastTvl = Number(lastHourlyTVLObject.tvl || 0);
+          const chainLastTvl = Number(lastHourlyTVLObject[storedKey] || 0);
+
+          const isSmallChain = totalLastTvl > 0 && (chainLastTvl / totalLastTvl) < 0.05;
+          const isFreshEnough = lastHourlyTVLObject.SK ? (unixTimestamp - lastHourlyTVLObject.SK) < 7 * 24 * 3600 : false;
+
+          if (isSmallChain && isFreshEnough) {
+            const [
+              lastHourlyTokens,
+              lastHourlyUsdTokens,
+              lastHourlyRawTokens,
+            ] = await Promise.all([
+              getLatestProtocolItem(hourlyTokensTvl, protocol.id),
+              getLatestProtocolItem(hourlyUsdTokensTvl, protocol.id),
+              getLatestProtocolItem(hourlyRawTokensTvl, protocol.id),
+            ]);
+
+            usdTvls[storedKey] = chainLastTvl;
+            tokensBalances[storedKey] = lastHourlyTokens?.[storedKey] ?? {};
+            usdTokenBalances[storedKey] = lastHourlyUsdTokens?.[storedKey] ?? {};
+            rawTokenBalances[storedKey] = lastHourlyRawTokens?.[storedKey] ?? {};
+
+            insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: `[FALLBACK] ${String(e)}`, protocol: protocol.name, chain: storedKey.split('-')[0], storedKey });
+            return;
+          }
+
+          if (isSmallChain && !isFreshEnough) {
+            // Chain has been broken for >7 days — zero it out instead of failing the whole protocol
+            usdTvls[storedKey] = 0;
+            tokensBalances[storedKey] = {};
+            usdTokenBalances[storedKey] = {};
+            rawTokenBalances[storedKey] = {};
+            insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: `[DROPPED] Chain broken >7d: ${String(e)}`, protocol: protocol.name, chain: storedKey.split('-')[0], storedKey });
+            return;
+          }
+        } catch (fallbackErr) {
+          console.error(`Fallback failed for ${protocol.name} on ${storedKey}`, fallbackErr);
+        }
+
         throw e
       } else {
         insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
@@ -395,7 +439,7 @@ export async function storeTvl(
     })
 
     Object.entries(aggData).forEach(([key, value]) => {
-        let minValue = key === 'getLogs' ? 10 : 20
+      let minValue = key === 'getLogs' ? 10 : 20
       if (typeof value === 'number' && value < minValue) {
         delete (aggData as any)[key]; // Remove low count stats to reduce log size
       }
@@ -463,4 +507,5 @@ export async function storeTvl(
   if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }
+
 

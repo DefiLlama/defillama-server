@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot of error provided executes as expected 1`] = `
-Object {
-  "body": "{\\"message\\":\\"This endpoint doesn't exist\\"}",
-  "headers": Object {
+{
+  "body": "{"message":"This endpoint doesn't exist"}",
+  "headers": {
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Allow-Origin": "*",
+    "Cache-Control": "max-age=3600",
     "Content-Type": "application/json",
   },
   "statusCode": 400,

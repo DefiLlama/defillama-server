@@ -14221,6 +14221,28 @@
       "to": "coingecko#exod"
     }
   },
+  "qiev3": {
+    "0x9e02ba5dE6d26D5Ca5688Ed3999C6bcF4F3e966E": {
+      "decimals": "18",
+      "symbol": "WBNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x95322ccB3fb8dDefD210805EE18662762a0bc4A2": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x0087904D95BEe9E5F24dc8852804b547981A9139": {
+      "decimals": "18",
+      "symbol": "WQIE",
+      "to": "coingecko#wqie"
+    },
+    "0x3F43DA82eC9A4f5285F10FaF1F26EcA7319E5DA5": {
+      "decimals": "6",
+      "symbol": "QUSDC",
+      "to": "coingecko#usd-coin"
+    }
+  },
   "wchain": {
     "0xedb8008031141024d50ca2839a607b2f82c1c045": {
       "to": "coingecko#wadzcoin",

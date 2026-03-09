@@ -4496,7 +4496,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Solana"],
     module: "krystal/index.js",
     twitter: "KrystalDeFi",
@@ -5763,7 +5763,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "flashbot",
-        genuineSpikes: [["2025-10-10", "-"]]
+        genuineSpikes: [["2025-10-10", "-"], ["2024-08-05", "Higher usage due to ETH price volatility"],
+        ["2025-02-03", "Higher usage due to ETH price volatility"]]
       }
     }
   },
@@ -6567,7 +6568,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Berachain"],
     module: "aquabera/index.js",
     twitter: "aqua_bera",
@@ -7645,7 +7646,6 @@ const data4: Protocol[] = [
     twitter: "canopyxyz",
     audit_links: ["https://docs.canopyhub.xyz/audits/audit-reports"],
     listedAt: 1741789722,
-    deadUrl: true
   },
   {
     id: "5893",
@@ -8166,7 +8166,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Arbitrum"],
     module: "exit-tech/index.js",
     twitter: "exit_tech_",
@@ -8200,8 +8200,8 @@ const data4: Protocol[] = [
   {
     id: "5915",
     name: "YO Protocol",
-    address: null,
-    symbol: "-",
+    address: "0x1925450f5e5fb974b0aae1f3408cf5286fbd1a72",
+    symbol: "YO",
     url: "https://app.yo.xyz?ref=defillama",
     referralUrl: "https://app.yo.xyz?ref=defillama",
     description:
@@ -8209,16 +8209,15 @@ const data4: Protocol[] = [
     chain: "Base",
     logo: `${baseIconsUrl}/yo-protocol.png`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "yo",
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Base"],
+    chains: ["Base", "Ethereum", "Arbitrum"],
     module: "yo/index.js",
     twitter: "yield",
     github: ["yoprotocol"],
     audit_links: [
-      "https://www.yo.xyz/files/Yo-Protocol-Hunter-Security-Audit-Report.pdf",
-      "https://www.yo.xyz/files/Yo-Protocol-Offbeat-Security-Review.pdf",
+      "https://docs.yo.xyz/protocol/security-audits"
     ],
     listedAt: 1742382739,
     dimensions: {
@@ -20083,6 +20082,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum", "Optimism", "Polygon", "Arbitrum"],
     module: "pareto/index.js",
     twitter: "paretocredit",
+    parentProtocol: "parent#pareto",
     audit_links: ["https://docs.pareto.credit/developers/security/audits"],
     github: ["pareto-credit"],
     listedAt: 1752511411,
@@ -20654,7 +20654,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Base", "Celo", "Ink", "Katana"],
     module: "thedeep/index.js",
     twitter: "TheDeep_xyz",
@@ -25391,7 +25391,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "tradeparadex",
+    twitter: "paradex",
     oraclesBreakdown: [
       {
         name: "Stork",
@@ -26679,13 +26679,14 @@ const data4: Protocol[] = [
       "Alkimi is a decentralised Ad Platform that records ad impressions and spend data on-chain. Alkimi is building AdFi or Decentralised Advertising Finance",
     chain: "Sui",
     logo: `${baseIconsUrl}/alkimi.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: "alkimi-2",
     cmcId: "38131",
     category: "Services",
     chains: ["Sui"],
     module: "alkimi/index.js",
     twitter: "AlkimiExchange",
+    audit_links: ["https://info.asymptotic.tech/Alkimi-TokenGen-Audit-Report-233159bbd66d80048260fb48ff44f913"],
     listedAt: 1757693764,
     dimensions: {
       fees: "alkimi"
@@ -27369,7 +27370,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "AI Agents",
+    category: "Anchor BTC",
     chains: ["Bitcoin"],
     module: "vishwa/index.js",
     twitter: "Vishwa_xyz",
@@ -27470,7 +27471,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Solana"],
     module: "defituna_liquidity.js",
     twitter: "DeFiTuna",
@@ -29527,7 +29528,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Liquidity Manager",
     chains: ["Neutron"],
     module: "supervaults/index.js",
     twitter: "neutron_org",

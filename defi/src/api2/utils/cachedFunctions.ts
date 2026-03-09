@@ -7,7 +7,10 @@ import { log, cache } from "@defillama/sdk"
 import { createHash } from "crypto"
 import fetch from "node-fetch";
 
-const fetchJson = async (url: string) => fetch(url).then((res) => res.json())
+const fetchJson = async (url: string, options?: { headers?: Record<string, string> }) => {
+  const response = await fetch(url, { headers: options?.headers });
+  return response.json();
+};
 
 
 export async function getProtocolAllTvlData(protocol: Protocol, useOnlyCachedData = true) {
@@ -68,13 +71,24 @@ export async function getProtocolAllTvlData(protocol: Protocol, useOnlyCachedDat
   ]
 }
 
-export async function cachedJSONPull({
-  endpoint,
-  defaultResponse = {},
-}: {
+export async function cachedJSONPull(options: {
   endpoint: string
   defaultResponse?: any
-}) {
+  headers?: Record<string, string>
+}|string) {
+
+  let endpoint: string
+  let defaultResponse: any = {}
+  let headers: Record<string, string> | undefined = undefined
+
+  if (typeof options === "string") {
+    endpoint = options
+  } else {
+    endpoint = options.endpoint
+    defaultResponse = options.defaultResponse ?? {}
+    headers = options.headers
+  }
+
   // Create a cache key based on the endpoint
   const hash = createHash('sha256').update(endpoint).digest('hex').substring(0, 16)
   const cacheKey = `json-pull-${hash}`
@@ -82,7 +96,7 @@ export async function cachedJSONPull({
   let data: any = null
   try {
     // Try to get data from cache
-    data = await fetchJson(endpoint)
+    data = await fetchJson(endpoint, { headers })
     cache.writeCache(cacheKey, data)
     return data;
   } catch (error: any) {

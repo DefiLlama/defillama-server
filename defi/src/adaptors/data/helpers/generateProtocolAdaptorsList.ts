@@ -17,6 +17,7 @@ interface IImportObj {
   module: { default: Adapter },
   codePath: string
   moduleFilePath: string
+  commit?: string
 }
 type IImportsMap = IJSON<IImportObj>
 
@@ -31,7 +32,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
-      const isDead = moduleObject.deadFrom || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.deadFrom)
+      const isDead = moduleObject.deadFrom || (Object.values(moduleObject.adapter ?? {}).every((adapter: any) => adapter.deadFrom) && Object.values(moduleObject.adapter ?? {}).length > 0)
       const runAtCurrentTime = moduleObject.runAtCurrTime || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.runAtCurrTime)
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
@@ -64,7 +65,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         displayName: (protocol as any).displayName ?? protocol!.name,
         protocolType,
         isDead,
-        methodologyURL: 'https://github.com/DefiLlama/dimension-adapters/blob/master/' + adapterObj.codePath,
+        methodologyURL: `https://github.com/DefiLlama/dimension-adapters/blob/${adapterObj.commit ?? "master"}/${adapterObj.codePath}`,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
         _stat_runAtCurrTime: runAtCurrentTime,

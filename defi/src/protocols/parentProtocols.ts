@@ -9041,7 +9041,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#royco-protocol",
     name: "Royco Protocol",
     url: "https://www.royco.org",
-    description: "The Incentivized Action Market (IAM) Protocol.",
+    description: "Royco is an onchain protocol for risk-tranching and curated DeFi vaults.",
     logo: `${baseIconsUrl}/royco-protocol.jpg`,
     gecko_id: null,
     cmcId: null,

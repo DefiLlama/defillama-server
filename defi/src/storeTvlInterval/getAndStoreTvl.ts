@@ -191,8 +191,9 @@ export function prefixMalformed(address: string) {
 
 export interface StoreTvlTempCacheInfo {
   protocolName: string;
-  tvl: number;
+  totalTvl: number;
   storeKey: string;
+  storeKeyTvl: number;
   cacheTime: number;
   invalidCacheTime: number;
 }
@@ -353,11 +354,13 @@ export async function storeTvl(
       // tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
-    const tempResultCacheKey = `storeTvlInterval-cache-${protocol.id}`;
-    let tempResultCache: any = undefined;
+    const tempProtocolResultCacheKey = `storeTvlInterval-cache-${protocol.id}`;
+    let tempProtocolResultCache: any = undefined;
     for (const [tvlType, storedKeys] of Object.entries(chainTvlsToAdd)) {
       // get all chain keys and sum to total
       for (const key of storedKeys) {
+        const tempStoreKeyResultCaheKey = `storeTvlInterval-cache-${protocol.id}-${key}`;
+        
         if (getTvlErrors[key]) {
           if (options.runType !== 'cron-task' || options.tempCacheInfo === undefined) {
             throw getTvlErrors[key];
@@ -365,12 +368,13 @@ export async function storeTvl(
 
           // cron-task and allow to use temp cache
 
-          if (tempResultCache === undefined) {
-            tempResultCache = await getJSON(tempResultCacheKey, { throwErrorWhenFailed: false });
+          if (tempProtocolResultCache === undefined) {
+            tempProtocolResultCache = await getJSON(tempProtocolResultCacheKey, { throwErrorWhenFailed: false });
           }
+          const tempStoreKeyCache = await getJSON(tempStoreKeyResultCaheKey, { throwErrorWhenFailed: false });
 
           // query redis but cache was not found, throw Error
-          if (tempResultCache === null) {
+          if (tempProtocolResultCache === null || tempStoreKeyCache === null) {
             throw getTvlErrors[key];
           } else {
             const thresholds: Record<number, any> = {
@@ -397,39 +401,49 @@ export async function storeTvl(
             }
 
             const current = getCurrentUnixTimestamp();
-            const cacheAge = current - tempResultCache.timestamp;
-            const totalTvl = Number(tempResultCache.usdTvls[tvlType]);
-            const cacheTvl = Number(tempResultCache.usdTvls[key]);
+            const cacheAge = current - tempStoreKeyCache.timestamp;
+            const totalCacheTvl = Number(tempProtocolResultCache.usdTvls[tvlType]);
+            const storeKeyCacheTvl = Number(tempStoreKeyCache.usdTvls[key]);
             if (key !== tvlType) {
-              const ratio = totalTvl > 0 ? cacheTvl / totalTvl : 0;
+              const ratio = totalCacheTvl > 0 ? storeKeyCacheTvl / totalCacheTvl : 0;
 
               let thresholdTvl = 1_000_000;
               for (const value of Object.keys(thresholds)) {
-                if (totalTvl > Number(value)) thresholdTvl = Number(value);
+                if (totalCacheTvl > Number(value)) thresholdTvl = Number(value);
               }
 
               // validate cache age and ratio of key tvl with total tvlType
               if (cacheAge > thresholds[thresholdTvl].cacheTime || ratio >= thresholds[thresholdTvl].chainRatio) throw getTvlErrors[key];
 
               // invalid cache
-              if (!tempResultCache.usdTvls[key] || !tempResultCache.tokensBalances[key] || !tempResultCache.usdTokenBalances[key] || !tempResultCache.rawTokenBalances[key])
+              if (!tempStoreKeyCache.usdTvls || !tempStoreKeyCache.tokensBalances || !tempStoreKeyCache.usdTokenBalances || !tempStoreKeyCache.rawTokenBalances)
                 throw getTvlErrors[key];
   
-              usdTvls[key] = tempResultCache.usdTvls[key];
-              tokensBalances[key] = tempResultCache.tokensBalances[key];
-              usdTokenBalances[key] = tempResultCache.usdTokenBalances[key];
-              rawTokenBalances[key] = tempResultCache.rawTokenBalances[key];
+              usdTvls[key] = tempStoreKeyCache.usdTvls;
+              tokensBalances[key] = tempStoreKeyCache.tokensBalances;
+              usdTokenBalances[key] = tempStoreKeyCache.usdTokenBalances;
+              rawTokenBalances[key] = tempStoreKeyCache.rawTokenBalances;
               
               options.tempCacheInfo.push({
                 protocolName: protocol.name,
-                tvl: cacheTvl,
+                totalTvl: totalCacheTvl,
                 storeKey: key,
-                cacheTime: tempResultCache.timestamp,
-                invalidCacheTime: tempResultCache.timestamp + thresholds[thresholdTvl].cacheTime,
+                storeKeyTvl: storeKeyCacheTvl,
+                cacheTime: tempStoreKeyCache.timestamp,
+                invalidCacheTime: tempStoreKeyCache.timestamp + thresholds[thresholdTvl].cacheTime,
               })
             }
           }
         }
+        
+        // store temp result cache for key
+        await setJSON(tempStoreKeyResultCaheKey, {
+          usdTvls: usdTvls[key],
+          tokensBalances: tokensBalances[key],
+          usdTokenBalances: usdTokenBalances[key],
+          rawTokenBalances: rawTokenBalances[key],
+          timestamp: getCurrentUnixTimestamp(),
+        },{ throwErrorWhenFailed: false })
       }
 
       usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
@@ -442,7 +456,7 @@ export async function storeTvl(
       throw new Error("Project doesn't have total tvl")
     } else {
       // success fully run adapter, save result to latest redis cache
-      await setJSON(tempResultCacheKey, {
+      await setJSON(tempProtocolResultCacheKey, {
         usdTvls,
         tokensBalances,
         usdTokenBalances,

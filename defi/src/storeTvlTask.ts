@@ -104,7 +104,7 @@ async function main() {
 
       // if (protocolName) runningSet.add(protocolName)
 
-      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', tempCacheInfo })
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', tempCacheInfo, symbolToAddresses: {} })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
 
@@ -313,14 +313,15 @@ async function notifyTempCacheInfo() {
   
   // notify cron-task result cache info if any
   function printItems(items: Array<StoreTvlTempCacheInfo>, { title, now = toUNIXTimestamp(Date.now()), maxLengthProtocolName = 31 }: { title?: string, now?: number, maxLengthProtocolName?: number } = {}) {
-    const sorted = items.sort((a, b) => a.tvl > b.tvl ? -1 : 1);
+    const sorted = items.sort((a, b) => a.totalTvl > b.totalTvl ? -1 : 1);
     const tableData = sorted.map((data) => {
       const res: any = {}
       if (data.protocolName.length > maxLengthProtocolName) data.protocolName = data.protocolName.slice(0, maxLengthProtocolName - 3) + '...'
       res.Name = data.protocolName
       // res['Last Update'] = data.lastUpdate ? humanizeTimeDifference(now - data.lastUpdate) : '-'
       res['Store Key'] = data.storeKey
-      res['Tvl'] = data.tvl ? humanizeNumber(data.tvl) : 'No TVL'
+      res['Store Key Tvl'] = data.storeKeyTvl ? humanizeNumber(data.storeKeyTvl) : 'No TVL'
+      res['Total Tvl'] = data.totalTvl ? humanizeNumber(data.totalTvl) : 'No TVL'
       res['Last Result Cache'] = data.cacheTime ? humanizeTimeDifference(now - data.cacheTime) : '-'
       res['Invalid Result Cache'] = data.invalidCacheTime ? humanizeTimeDifference(data.invalidCacheTime - now) : '-'
       return res

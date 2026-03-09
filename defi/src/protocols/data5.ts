@@ -12059,8 +12059,9 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Ethereum", "Binance", "Arbitrum", "Base", "Avalanche", "Mantle", "Monad"],
-    module: "dummy.js",
+    module: "printr-protocol/index.js",
     twitter: "Printr",
+    listedAt: 1773084639,
     github: ["PrintrFi"],
     dimensions: {
       fees: "printr-protocol",

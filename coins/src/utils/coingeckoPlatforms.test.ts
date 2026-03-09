@@ -1,4 +1,4 @@
-import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import chainToCoingeckoId from "../../common/chainToCoingeckoId";
 import {platformMap} from "./coingeckoPlatforms"
 
 test("platformMap", () => {

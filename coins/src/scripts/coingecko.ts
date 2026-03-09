@@ -11,7 +11,7 @@ import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { getRedisConnection } from "../../coins2";
-import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
+import chainToCoingeckoId, { cgPlatformtoChainId } from "../../common/chainToCoingeckoId";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
   fetchCgPriceData,

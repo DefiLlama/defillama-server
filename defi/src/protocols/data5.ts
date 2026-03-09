@@ -13652,5 +13652,24 @@ const data5: Protocol[] = [
       fees: "megamine",
     }
   },
+  {
+    id: "7525",
+    name: "PredPred",
+    address: "sei:0x4846b60588749D2d33F90B99c9E9cFd20D2C485a",
+    symbol: "PPT",
+    url: "https://PredP.red/",
+    description: "PredP.red is the first unlimited liquidity Prediction Market with bonding curve, powered by SeiNetwork.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/predpred.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Sei"],
+    module: "predpred/index.js",
+    twitter: "PredPred_HQ",
+    github: ["PredPred-HQ"],
+    listedAt: 1773084921,
+  },
 ];
 export default data5;

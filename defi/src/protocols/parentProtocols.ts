@@ -9182,7 +9182,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#pareto",
     name: "Pareto",
-    url: "https://idle.finance",
+    url: "https://pareto.credit/",
     description: "Pareto is a decentralized protocol and set of products that aim to unlock the power of decentralized finance as a one-stop source of yield. It allows users to algorithmically optimize their digital asset allocation across leading DeFi protocols, whether they want to maximize it or keep tabs on their risk/return profile.",
     logo: `${baseIconsUrl}/pareto.jpg`,
     gecko_id: "idle",

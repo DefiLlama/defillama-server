@@ -23,6 +23,8 @@ import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { deadChainsSet } from "../config/deadChains";
 import { getJSON, setJSON } from "../utils/shared/redis";
+import axios from "axios";
+import sluggify from "../utils/sluggify";
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -354,8 +356,18 @@ export async function storeTvl(
       // tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
-    const tempProtocolResultCacheKey = `storeTvlInterval-cache-${protocol.id}`;
-    let tempProtocolResultCache: any = undefined;
+    
+    async function pullTvlNumber(protocol: Protocol): Promise<number | null> {
+      try {
+        const response = await axios.get(`https://api.llama.fi/tvl/${sluggify(protocol)}`);
+        return Number(response.data);
+      } catch (e: any) {
+        console.log(e)
+        return null;
+      }
+    }
+    
+    let totalTvl: number | null = null;
     for (const [tvlType, storedKeys] of Object.entries(chainTvlsToAdd)) {
       // get all chain keys and sum to total
       for (const key of storedKeys) {
@@ -368,13 +380,13 @@ export async function storeTvl(
 
           // cron-task and allow to use temp cache
 
-          if (tempProtocolResultCache === undefined) {
-            tempProtocolResultCache = await getJSON(tempProtocolResultCacheKey, { throwErrorWhenFailed: false });
+          if (totalTvl === null) {
+            totalTvl = await pullTvlNumber(protocol);
           }
           const tempStoreKeyCache = await getJSON(tempStoreKeyResultCaheKey, { throwErrorWhenFailed: false });
 
           // query redis but cache was not found, throw Error
-          if (tempProtocolResultCache === null || tempStoreKeyCache === null) {
+          if (totalTvl === null || tempStoreKeyCache === null) {
             throw getTvlErrors[key];
           } else {
             const thresholds: Record<number, any> = {
@@ -402,14 +414,13 @@ export async function storeTvl(
 
             const current = getCurrentUnixTimestamp();
             const cacheAge = current - tempStoreKeyCache.timestamp;
-            const totalCacheTvl = Number(tempProtocolResultCache.usdTvls[tvlType]);
             const storeKeyCacheTvl = Number(tempStoreKeyCache.usdTvls[key]);
             if (key !== tvlType) {
-              const ratio = totalCacheTvl > 0 ? storeKeyCacheTvl / totalCacheTvl : 0;
+              const ratio = totalTvl > 0 ? storeKeyCacheTvl / totalTvl : 0;
 
               let thresholdTvl = 1_000_000;
               for (const value of Object.keys(thresholds)) {
-                if (totalCacheTvl > Number(value)) thresholdTvl = Number(value);
+                if (totalTvl > Number(value)) thresholdTvl = Number(value);
               }
 
               // validate cache age and ratio of key tvl with total tvlType
@@ -426,9 +437,9 @@ export async function storeTvl(
               
               options.tempCacheInfo.push({
                 protocolName: protocol.name,
-                totalTvl: totalCacheTvl,
+                totalTvl: totalTvl,
                 storeKey: key,
-                storeKeyTvl: storeKeyCacheTvl,
+                storeKeyTvl: tempStoreKeyCache.usdTvls,
                 cacheTime: tempStoreKeyCache.timestamp,
                 invalidCacheTime: tempStoreKeyCache.timestamp + thresholds[thresholdTvl].cacheTime,
               })
@@ -454,15 +465,6 @@ export async function storeTvl(
 
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
-    } else {
-      // success fully run adapter, save result to latest redis cache
-      await setJSON(tempProtocolResultCacheKey, {
-        usdTvls,
-        tokensBalances,
-        usdTokenBalances,
-        rawTokenBalances,
-        timestamp: getCurrentUnixTimestamp(),
-      },{ throwErrorWhenFailed: false })
     }
 
     logRunStats()

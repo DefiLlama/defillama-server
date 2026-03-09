@@ -320,14 +320,14 @@ async function notifyTempCacheInfo() {
       res.Name = data.protocolName
       // res['Last Update'] = data.lastUpdate ? humanizeTimeDifference(now - data.lastUpdate) : '-'
       res['Store Key'] = data.storeKey
-      res['Store Key Tvl'] = data.storeKeyTvl ? humanizeNumber(data.storeKeyTvl) : 'No TVL'
+      res['Store Key Cache Tvl'] = data.storeKeyTvl ? humanizeNumber(data.storeKeyTvl) : 'No TVL'
       res['Total Tvl'] = data.totalTvl ? humanizeNumber(data.totalTvl) : 'No TVL'
-      res['Last Result Cache'] = data.cacheTime ? humanizeTimeDifference(now - data.cacheTime) : '-'
-      res['Invalid Result Cache'] = data.invalidCacheTime ? humanizeTimeDifference(data.invalidCacheTime - now) : '-'
+      res['Last Cache'] = data.cacheTime ? humanizeTimeDifference(now - data.cacheTime) : '-'
+      res['Invalid Cache In'] = data.invalidCacheTime ? humanizeTimeDifference(data.invalidCacheTime - now) : '-'
       return res
     })
   
-    return sdk.util.tableToString(tableData, { title, columns: ['Name', 'Store Key', 'Tvl', 'Last Result Cache', 'Invalid Result Cache'] })
+    return sdk.util.tableToString(tableData, { title, columns: ['Name', 'Store Key', 'Store Key Cache Tvl', 'Total Tvl', 'Last Cache', 'Invalid Cache In'] })
   }
 
   function buildTempCacheMessage(items: Array<StoreTvlTempCacheInfo>): string {

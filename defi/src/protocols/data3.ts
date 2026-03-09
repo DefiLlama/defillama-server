@@ -55243,7 +55243,8 @@ const data3_3: Protocol[] = [
     forkedFromIds: ["2198"],
     listedAt: 1727951893,
     dimensions: {
-      dexs: "harmony-swap"
+      dexs: "harmony-swap",
+      fees: "harmony-swap"
     }
   },
   {
@@ -58958,7 +58959,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#shido-dex",
     listedAt: 1731691978,
     dimensions: {
-      dexs: "shido-dex"
+      dexs: "shido-dex",
+      fees: "shido-dex"
     }
   },
   {

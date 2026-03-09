@@ -13688,10 +13688,6 @@ const data5: Protocol[] = [
     module: "velox/index.js",
     twitter: null,
     listedAt: 1773086587,
-    dimensions: {
-      dexs: "velox",
-      fees: "velox",
-    }
   },
 ];
 export default data5;

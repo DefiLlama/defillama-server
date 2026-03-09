@@ -13671,5 +13671,27 @@ const data5: Protocol[] = [
     github: ["PredPred-HQ"],
     listedAt: 1773084921,
   },
+  {
+    id: "7526",
+    name: "Velox DEX",
+    address: null,
+    symbol: "-",
+    url: "",
+    description: "Velox DEX is a decentralized exchange on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/velox-dex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Base"],
+    module: "velox/index.js",
+    twitter: null,
+    listedAt: 1773086587,
+    dimensions: {
+      dexs: "velox",
+      fees: "velox",
+    }
+  },
 ];
 export default data5;

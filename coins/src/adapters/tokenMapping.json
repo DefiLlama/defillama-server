@@ -14236,7 +14236,8 @@
       "decimals": "6",
       "symbol": "QUSDC",
       "to": "coingecko#usd-coin"
-    },
+    }
+  },
   "wchain": {
     "0xedb8008031141024d50ca2839a607b2f82c1c045": {
       "to": "coingecko#wadzcoin",

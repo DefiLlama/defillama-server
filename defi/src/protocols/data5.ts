@@ -6517,8 +6517,9 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "nickel/index.js",
     twitter: "NickelSupply",
+    listedAt: 1773165757,
     dimensions: {
       fees: "nickel",
     },
@@ -13689,6 +13690,10 @@ const data5: Protocol[] = [
     twitter: null,
     github: ["Sigmabrogz"],
     listedAt: 1773086587,
+    dimensions: {
+      dexs: "velox",
+      fees: "velox",
+    }
   },
   {
     id: "7527",
@@ -13805,6 +13810,24 @@ const data5: Protocol[] = [
     module: "perpl/index.js",
     twitter: "perpltrade",
     listedAt: 1773154239,
+  },
+  {
+    id: "7533",
+    name: "Solvr",
+    address: null,
+    symbol: "-",
+    url: "https://solvrbot.com",
+    description: "Onchain social network on Base with token staking, tipping, and trading.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/solvr.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    module: "solvr/index.js",
+    twitter: "solvrbot",
+    listedAt: 1773165907,
   },
 ];
 export default data5;

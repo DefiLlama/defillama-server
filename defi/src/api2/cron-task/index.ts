@@ -377,10 +377,36 @@ async function run() {
     
     async function writeOraclesBreakdown(data: any) {
       // overview data without charts
+      function transformOraclesTVS(oraclesTVS: any): any {
+        const transformedOraclesTVS = oraclesTVS;
+        
+        // staking, pool2, borrowed
+        const keys = new Set();
+        
+        for (const [oracle, protocolTvs] of Object.entries(oraclesTVS)) {
+          // we try to get all available key in oraclesTVS object
+          for (const keyAndTvs of Object.values(protocolTvs as any)) {
+            for (const chainAndKey of Object.keys(keyAndTvs as any)) {
+              const [, key] = chainAndKey.split('-');
+              if (key) keys.add(key);
+            }
+          }
+          
+          // delete keys from oraclesTVS
+          for (const [protocolName, keyAndTvs] of Object.entries(protocolTvs as any)) {
+            for (const key of Array.from(keys) as Array<string>) {
+              delete transformedOraclesTVS[oracle][protocolName][key];
+            }
+          }
+        }
+        
+        return transformedOraclesTVS;
+      }
+
       await storeRouteData('oracles-v2/overview', {
         oracles: data.oracles,
         chainsByOracle: data.chainsByOracle,
-        oraclesTVS: data.oraclesTVS,
+        oraclesTVS: transformOraclesTVS(data.oraclesTVS),
       })
       
       // total chart per key, key => timestamp => value

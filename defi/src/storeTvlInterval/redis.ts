@@ -1,6 +1,6 @@
 import { createClient, RedisClientType } from 'redis';
 
-const URL = process.env.COMMON_REDIS_CACHE || 'redis://127.0.0.1:6379';
+const URL = process.env.COMMON_TVL_REDIS_CACHE || 'redis://127.0.0.1:6379';
 
 const client: RedisClientType = createClient({
   url: URL,

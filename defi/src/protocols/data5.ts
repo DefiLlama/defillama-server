@@ -341,13 +341,6 @@ const data5: Protocol[] = [
     chains: ["Mantle"],
     module: "mi4/index.js",
     twitter: "Mantle_Official",
-    oraclesBreakdown: [
-      {
-        name: "RedStone",
-        type: "Primary",
-        proof: ["https://app.redstone.finance/app/feeds/mantle/mi4_mantle_fundamental/"],
-      },
-    ],
     listedAt: 1761284792,
     dimensions: {
       fees: "mi4",

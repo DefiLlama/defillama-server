@@ -40,6 +40,7 @@ export const BASE_URLS = {
   PERPS: getProApiBaseUrl(),
   ETFS: getProApiBaseUrl(),
   NARRATIVES: getProApiBaseUrl(),
+  RWA: getBaseUrl(process.env.RWA_BASE_URL || 'http://localhost:5002/', 'rwa'),
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;
@@ -176,6 +177,27 @@ export const TOKEN_LIQUIDITY = {
   HISTORICAL_LIQUIDITY: (token: string) => `/api/historicalLiquidity/${token}`,
 } as const;
 
+export const RWA = {
+  BASE_URL: BASE_URLS.RWA,
+  CURRENT: '/current',
+  LIST: '/list',
+  STATS: '/stats',
+  ID_MAP: '/id-map',
+  CHART_CHAIN_BREAKDOWN: '/chart/chain-breakdown',
+  CHART_CATEGORY_BREAKDOWN: '/chart/category-breakdown',
+  CHART_PLATFORM_BREAKDOWN: '/chart/platform-breakdown',
+  CHART_BY_ID: (id: string) => `/chart/${id}`,
+  CHART_BY_NAME: (name: string) => `/chart/name/${name}`,
+  CHART_BY_CHAIN: (chain: string) => `/chart/chain/${chain}`,
+  CHART_ASSET: (id: string) => `/chart/asset/${id}`,
+  CHART_BY_CATEGORY: (category: string) => `/chart/category/${category}`,
+  CHART_BY_PLATFORM: (platform: string) => `/chart/platform/${platform}`,
+  RWA_BY_ID: (id: string) => `/rwa/${id}`,
+  ASSET_BY_TICKER: (ticker: string) => `/asset/${ticker}`,
+  CATEGORY: (category: string) => `/category/${category}`,
+  CHAIN: (chain: string) => `/chain/${chain}`,
+} as const;
+
 export const endpoints = {
   TVL,
   STABLECOINS,
@@ -192,6 +214,7 @@ export const endpoints = {
   ETFS,
   NARRATIVES,
   TOKEN_LIQUIDITY,
+  RWA,
 } as const;
 
 export const API_CONFIG = {
